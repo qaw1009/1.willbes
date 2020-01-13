@@ -72,7 +72,7 @@
                     <tr>
                         <td>일반상식 기출핵심정리(이론+문제) 강의</td>
                         <td>70일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160517" target="_blank">수강신청 ></a></td>
                     </tr>     
                 </tbody>
             </table>

@@ -350,8 +350,17 @@ class OrderListModel extends BaseOrderModel
                 $from .= '
                     left join ' . $this->_table['order_unpaid_hist'] . ' as OUH		
                         on O.OrderIdx = OUH.OrderIdx';
-                $column .= ', OUH.UnPaidIdx, OUH.IsFirst, if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
+                $column .= ', OUH.UnPaidIdx, OUH.IsFirstUnPaid, if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
                 $excel_column .= ', if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
+            }
+
+            // 강사배정 로그 추가
+            if (in_array('assign_prof_log', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_product_activity_log'] . ' as LAP
+                        on O.OrderIdx = LAP.OrderIdx and OP.OrderProdIdx = LAP.OrderProdIdx and LAP.ActType = "ProfAssign" and LAP.IsFirstAct = "Y"';
+                $column .= ', if(LAP.OrderIdx is not null, "Y", "N") as IsProfAssign';
+                $excel_column .= ', if(LAP.OrderIdx is not null, "Y", "N") as IsProfAssign';
             }
 
             // 학원접수 수강증출력 로그 추가
@@ -594,7 +603,7 @@ class OrderListModel extends BaseOrderModel
             , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo';
         $arr_condition = [
             'EQ' => [
-                'OUI.ProdCode' => get_var($prod_code, 0), 'OUI.MemIdx' => get_var($mem_idx, 0), 'OUH.IsFirst' => 'Y',
+                'OUI.ProdCode' => get_var($prod_code, 0), 'OUI.MemIdx' => get_var($mem_idx, 0), 'OUH.IsFirstUnPaid' => 'Y',
                 'OUI.UnPaidIdx' => $unpaid_idx
             ]
         ];
@@ -616,7 +625,7 @@ class OrderListModel extends BaseOrderModel
     public function findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx = null, $limit = null)
     {
         $column = 'OUI.UnPaidIdx, OUI.MemIdx, OUI.ProdCode, OUI.OrgOrderPrice, OUI.OrgPayPrice, OUI.DiscPrice, OUI.DiscRate, OUI.DiscType, OUI.DiscReason
-            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo, OUH.IsFirst
+            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo, OUH.IsFirstUnPaid
 	        , O.OrderNo, O.SiteCode, O.CompleteDatm, OP.PayStatusCcd, OP.RealPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
 	        , (OUH.UnPaidPrice + ifnull(OPR.RefundPrice, 0)) as RealUnPaidPrice
 	        , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.CampusCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
@@ -659,38 +668,64 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * 최초 주문미수금 정보의 상품코드서브 리턴 (선택형(강사배정) 패키지에서만 사용)
-     * @param $prod_code
-     * @param $mem_idx
+     * 최초 주문미수금 수강증번호 조회
      * @param $unpaid_idx
-     * @return string
+     * @return mixed
      */
-    public function getProdCodeSubToFirstOrderUnPaidInfo($prod_code, $mem_idx, $unpaid_idx)
+    public function getCertNoFirstOrderUnPaidInfo($unpaid_idx)
     {
-        $result = '';
-        $column = 'OSP.ProdCodeSub';
+        $column = 'ifnull(OOI.CertNo, "") as CertNo';
+        $arr_condition = ['EQ' => ['OUH.UnPaidIdx' => get_var($unpaid_idx, 0), 'OUH.IsFirstUnPaid' => 'Y']];
+
+        $data = $this->_conn->getJoinFindResult($this->_table['order_unpaid_hist'] . ' as OUH', 'left', $this->_table['order_other_info'] . ' as OOI'
+            , 'OUH.OrderIdx = OOI.OrderIdx'
+            , $column, $arr_condition);
+
+        return element('CertNo', $data);
+    }
+
+    /**
+     * 학원종합반 서브강좌 조회 (강사배정 전용)
+     * @param int $prod_code [학원종합반 상품코드]
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @return mixed
+     */
+    public function getOffPackSubLectureForAssign($prod_code, $order_idx, $order_prod_idx)
+    {
+        $vw_off_lecture = 'vw_product_off_lecture';     // 학원단과 뷰 테이블
+        $column = 'PS.ProdCode, PS.IsEssential
+            , VP.ProdCode as ProdCodeSub, VP.ProdName as ProdNameSub, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName
+            , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate, VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
+            , (select count(0) 
+                from ' . $this->_table['order_product'] . ' as A 
+                    inner join ' . $this->_table['order_sub_product'] . ' as B 
+                        on A.OrderProdIdx = B.OrderProdIdx
+                where A.ProdCode = PS.ProdCode
+                    and B.ProdCodeSub = VP.ProdCode
+                    and A.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+              ) as AssignCnt
+            , (select if(count(0) > 0, "Y", "N")
+                from ' . $this->_table['order_product_activity_log'] . '
+                where ActType = "SubLecCert"
+                    and OrderIdx = ?
+                    and OrderProdIdx = ? 
+                    and ProdCodeSub = VP.ProdCode
+              ) as IsPrintCert              
+        ';
         $from = '
-            from ' . $this->_table['order_unpaid_info'] . ' as OUI
-                inner join ' . $this->_table['order_unpaid_hist'] . ' as OUH
-                    on OUI.UnPaidIdx = OUH.UnPaidIdx
-                inner join ' . $this->_table['order_product'] . ' as OP
-                    on OUH.OrderIdx = OP.OrderIdx and OUI.ProdCode = OP.ProdCode
-                inner join ' . $this->_table['order_sub_product'] . ' as OSP
-                    on OP.OrderProdIdx = OSP.OrderProdIdx
-            where OUI.ProdCode = ?
-                and OUI.MemIdx = ?
-                and OUI.UnPaidIdx = ?
-                and OUH.IsFirst = "Y"            
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $vw_off_lecture . ' as VP
+                    on PS.ProdCodeSub = VP.ProdCode
+            where PS.ProdCode = ?
+                and PS.IsStatus = "Y"
+            order by VP.OrderNumCourse, VP.OrderNumSubject asc, VP.ProfIdx asc 
         ';
 
         // 쿼리 실행
-        $data = $this->_conn->query('select ' . $column . $from, [$prod_code, $mem_idx, $unpaid_idx])->result_array();
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $prod_code]);
 
-        if (empty($data) === false) {
-            $result = implode(',', array_pluck($data, 'ProdCodeSub'));
-        }
-
-        return $result;
+        return $query->result_array();
     }
 
     /**
@@ -705,9 +740,6 @@ class OrderListModel extends BaseOrderModel
         if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($site_code) === true) {
             return '필수 파라미터 오류입니다.';
         }
-
-        $data = [];
-        $add_data = [];
 
         if ($site_code == '2002') {
             // 경찰학원
@@ -765,7 +797,7 @@ class OrderListModel extends BaseOrderModel
             // 공무원학원
             // 주문상품 조회
             $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-            $data = $this->listAllOrder('O.OrderNo, M.MemName, P.ProdName', $arr_condition, null, null, []);
+            $data = $this->listAllOrder('O.OrderNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
             if (empty($data) === true) {
                 return '데이터 조회에 실패했습니다.';
             }
@@ -776,10 +808,100 @@ class OrderListModel extends BaseOrderModel
             // 주문정보 추출
             $data = element('0', $data);
             $data['ViewType'] = 'G';
+        } elseif ($site_code == '2010' || $site_code == '2011' || $site_code == '2013') {
+            // 고등고시, 자격증, 경찰간부 학원
+            // 주문상품 조회
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+            $data = $this->listAllOrder('O.OrderNo, OOI.CertNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+
+            // 주문상품명 추출 및 가공
+            $page_cnt = 4;  // 한 페이지당 출력되는 상품수
+            $cut_str = 14;  // 라인당 출력되는 상품명 길이
+            $arr_idx = 0;   // 페이지 인덱스
+            $arr_line = [];
+
+            foreach ($data as $idx => $row) {
+                if ($idx > 0 && $idx % $page_cnt == 0) {
+                    $arr_idx++;
+                }
+
+                if (mb_strlen($row['ProdName']) > $cut_str) {
+                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($row['ProdName'], 0, $cut_str)), 'Bold' => 'true'];
+                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($row['ProdName'], $cut_str)), 'Bold' => 'false'];
+                } else {
+                    $arr_line[$arr_idx][] = ['Name' => trim($row['ProdName']), 'Bold' => 'true'];
+                    $arr_line[$arr_idx][] = ['Name' => '', 'Bold' => 'false'];
+                }
+            }
+
+            $add_data['OrderProdNameData'] = $arr_line;
+            $add_data['LineCnt'] = $page_cnt * 2;
+            $add_data['StartLine'] = 7;
+
+            // 주문정보 추출
+            $data = element('0', $data);
+            $data['ViewType'] = 'H';
+        } else {
+            return '일치하는 사이트코드가 없습니다.';
         }
 
         // 데이터 병합
         $data = array_merge($data, $add_data);
+
+        return $data;
+    }
+
+    /**
+     * 학원수강증 단과별 출력 데이터 조회
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code_sub [상품코드서브]
+     * @param int $site_code [사이트코드]
+     * @return array|string
+     */
+    public function getPrintCertSubLectureData($order_idx, $order_prod_idx, $prod_code_sub, $site_code)
+    {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code_sub) === true || empty($site_code) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        if ($site_code == '2010' || $site_code == '2011' || $site_code == '2013') {
+            // 고등고시, 자격증, 경찰간부 학원
+            // 주문상품 조회
+            $column = 'O.OrderNo, OOI.CertNo, M.MemName, P.ProdName, fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData';
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+            $data = $this->listAllOrder($column, $arr_condition, null, null, [], [], false);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+            $data = element('0', $data);
+
+            if (empty($data['OrderSubProdData']) === true) {
+                return '서브강좌 데이터가 없습니다.';
+            }
+
+            // 주문상품명 추출 및 가공
+            $arr_prod_sub_name = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdName', 'ProdCode');
+            $prod_name = element($prod_code_sub, $arr_prod_sub_name) . ' (' . $data['ProdName'] . ')';
+
+            $cut_str = 14;  // 라인당 출력되는 상품명 길이
+            $arr_line = [];
+
+            for($i = 0; $i < ceil(mb_strlen($prod_name) / $cut_str); $i++) {
+                $is_bold = $i == 0 ? 'true' : 'false';
+                $arr_line[0][] = ['Name' => trim(mb_substr($prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+            }
+
+            $data['OrderProdNameData'] = $arr_line;
+            $data['LineCnt'] = 8;
+            $data['StartLine'] = 7;
+            $data['ViewType'] = 'H';
+        } else {
+            return '일치하는 사이트코드가 없습니다.';
+        }
 
         return $data;
     }
@@ -848,23 +970,35 @@ class OrderListModel extends BaseOrderModel
 
     /**
      * 주문상품 관련 활동로그 저장
-     * @param string $act_type [활동타입, PrintCert : 수강증출력]
+     * @param string $act_type [활동타입, PrintCert : 수강증출력, SubLecCert : 서브강좌 수강증출력, ProfAssign : 강사배정]
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code_sub [상품코드서브]
      * @param null|string $act_content [활동내용]
      * @return bool|string
      */
-    public function addActivityLog($act_type, $order_idx, $order_prod_idx, $act_content = null)
+    public function addActivityLog($act_type, $order_idx, $order_prod_idx, $prod_code_sub = null, $act_content = null)
     {
-        if (empty($act_type) === true && empty($act_type) === true && empty($act_type) === true) {
+        if (empty($act_type) === true && empty($order_idx) === true && empty($order_prod_idx) === true) {
             return '필수 파라미터 오류입니다.';
         }
 
+        // 최초활동여부 체크
+        $is_first_act = 'Y';
+        $arr_condition = ['EQ' => ['ActType' => $act_type, 'OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx, 'ProdCodeSub' => $prod_code_sub]];
+        $log_cnt = $this->_conn->getFindResult($this->_table['order_product_activity_log'], true, $arr_condition);
+        if ($log_cnt > 0) {
+            $is_first_act = 'N';
+        }
+        
+        // 활동로그 저장
         $data = [
             'ActType' => $act_type,
             'OrderIdx' => $order_idx,
             'OrderProdIdx' => $order_prod_idx,
+            'ProdCodeSub' => $prod_code_sub,
             'ActContent' => $act_content,
+            'IsFirstAct' => $is_first_act,
             'RegAdminIdx' => $this->session->userdata('admin_idx'),
             'RegIp' => $this->input->ip_address()
         ];

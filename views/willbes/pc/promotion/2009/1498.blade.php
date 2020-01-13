@@ -99,22 +99,22 @@
                         <tr>
                             <td class="tx-left">박희주 / Case로 만나는 취업 훈련도감(이력서&자기소개서)</td>
                             <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160519" target="_blank">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>박희주 / Case로 만나는 취업 훈련도감(면접)</td>
                             <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160518" target="_blank">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>박희주 / Case로 만나는 취업 훈련도감(면접&자기소개서) 종합반 </td>
                             <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/package/show/cate/3102/pack/648001/prod-code/160833" target="_blank">수강신청 ></a></td>
                         </tr>   
                         <tr>
                             <td>손세훈 / 소개팅의 전략으로 알아보는 취업 자기소개서 특강  </td>
                             <td>10일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160520" target="_blank">수강신청 ></a></td>
                         </tr>       
                     </tbody>
                 </table>
@@ -142,12 +142,12 @@
                         <tr>
                             <td>Case로 만나는 취업 훈련도감(이력서&자기소개서) </td>
                             <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160519" target="_blank">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>Case로 만나는 취업 훈련도감(면접)</td>
                             <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160518" target="_blank">수강신청 ></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -175,7 +175,7 @@
                         <tr>
                             <td class="tx-left">소개팅의 전략으로 알아보는 취업 자기소개서</td>
                             <td>10일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160520" target="_blank">수강신청 ></a></td>
                         </tr>                       
                     </tbody>
                 </table>

@@ -145,7 +145,7 @@ class PopupModel extends WB_Model
      */
     public function listPopupImageMap($p_idx)
     {
-        $column = "PuiIdx, ImgArea, ImgType, LinkUrl";
+        $column = "PuiIdx, ImgArea, ImgType, LinkType, LinkUrl, LinkUrlType";
         $from = "
             from {$this->_table['popup_imageMap']}
         ";
@@ -225,12 +225,16 @@ class PopupModel extends WB_Model
             //이미지맵 저장
             $image_map_types = element('image_map_type', $input);
             $image_map_areas = element('image_map_area', $input);
+            $image_map_link_type = element('image_map_link_type', $input);
+            $image_map_link_url_type = element('image_map_link_url_type', $input);
             $image_map_link_urls = element('image_map_link_url', $input);
             if (count($image_map_types) >= 0) {
                 foreach ($image_map_types as $key => $val) {
                     $imageMap_data['PIdx'] = $p_idx;
                     $imageMap_data['ImgType'] = $val;
                     $imageMap_data['ImgArea'] = $image_map_areas[$key];
+                    $imageMap_data['LinkType'] = $image_map_link_type[$key];
+                    $imageMap_data['LinkUrlType'] = $image_map_link_url_type[$key];
                     $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
                     $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $imageMap_data['RegIp'] = $this->input->ip_address();
@@ -328,6 +332,8 @@ class PopupModel extends WB_Model
              */
             $image_map_types = element('image_map_type', $input);
             $image_map_areas = element('image_map_area', $input);
+            $image_map_link_type = element('image_map_link_type', $input);
+            $image_map_link_url_type = element('image_map_link_url_type', $input);
             $image_map_link_urls = element('image_map_link_url', $input);
             if (count($image_map_types) >= 0) {
                 $upd_imageMap_data['PIdx'] = $p_idx;
@@ -337,6 +343,8 @@ class PopupModel extends WB_Model
                     $imageMap_data['PIdx'] = $p_idx;
                     $imageMap_data['ImgType'] = $val;
                     $imageMap_data['ImgArea'] = $image_map_areas[$key];
+                    $imageMap_data['LinkType'] = $image_map_link_type[$key];
+                    $imageMap_data['LinkUrlType'] = $image_map_link_url_type[$key];
                     $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
                     $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $imageMap_data['RegIp'] = $this->input->ip_address();

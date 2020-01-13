@@ -46,10 +46,10 @@ class EventLecture extends \app\controllers\BaseController
         $sub_query_condition = [
             'EQ' => [
                 'B.IsStatus' => 'Y'
-            ],
-            'LKR' => [
-                'B.CateCode' => $this->_reqP('search_category')
             ]
+//            'LKR' => [
+//                'B.CateCode' => $this->_reqP('search_category')
+//            ]
         ];
 
         $list = [];
@@ -989,6 +989,22 @@ class EventLecture extends \app\controllers\BaseController
                 // 등록일 기간 검색
                 $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
             }
+        }
+
+        // 카테고리 대분류, 중분류 검색
+        if(empty($this->_reqP('search_category')) === false || empty($this->_reqP('search_md_cate_code')) === false) {
+            if(empty($this->_reqP('search_category')) === false) {
+                $raw_cate_code = ' AND MEC.CateCode LIKE \'' . $this->_reqP('search_category') . '%\'';    //대분류
+            } else {
+                $raw_cate_code = ' AND MEC.CateCode = \'' . $this->_reqP('search_md_cate_code') . '\'';    //중분류
+            }
+            $raw_cate_query = '
+                SELECT MEC.ElIdx
+                FROM lms_event_r_category AS MEC
+                INNER JOIN lms_sys_category AS MSC ON MEC.CateCode = MSC.CateCode AND MEC.IsStatus = \'Y\'
+                WHERE MEC.IsStatus = \'Y\'
+                '.$raw_cate_code;
+            $arr_condition['RAW'][' A.ElIdx IN ('] = $raw_cate_query . ')';
         }
 
         return $arr_condition;

@@ -51,7 +51,7 @@
                                         <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl25">
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 4).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 6).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
@@ -113,7 +113,7 @@
                                         <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl25">
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 4).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 6).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
@@ -200,7 +200,7 @@
                                             <td class="w-list">{{ $row['CourseName'] }}</td>
                                             <td class="w-data tx-left">
                                                 <div class="w-tit w-acad-tit">
-                                                    <a href="#none" onclick="goShowOff('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                    <a href="#none" onclick="goShowOff('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                 </div>
                                                 <dl class="w-info">
                                                     <dt>

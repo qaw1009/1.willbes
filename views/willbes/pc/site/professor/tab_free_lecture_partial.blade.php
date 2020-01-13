@@ -74,7 +74,7 @@
                         <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                         <td class="w-data tx-left pl25">
                             <div class="w-tit">
-                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', 'free');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free');" class="prod-name">{{ $row['ProdName'] }}</a>
                             </div>
                             <dl class="w-info">
                                 <dt class="mr20">
@@ -100,7 +100,7 @@
                                     보강동영상 비밀번호 입력
                                     <div>
                                         <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                        <button type="button" name="btn_check_free_passwd"  onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', 'free');"><span>검색</span></button>
+                                        <button type="button" name="btn_check_free_passwd"  onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free');"><span>검색</span></button>
                                     </div>
                                 </div>
                             @else

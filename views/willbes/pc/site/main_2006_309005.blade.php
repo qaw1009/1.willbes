@@ -56,7 +56,7 @@
         <!-- CS센터 //-->
 
         {{--
-        <div id="QuickMenu" class="MainQuickMenu">
+        <div id="QuickMenuB" class="MainQuickMenu">
             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_sky01.jpg"></a></div>
             <ul>
                 <li><a href="#none">강의 계획서</a></li>

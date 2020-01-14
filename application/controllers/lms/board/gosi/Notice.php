@@ -49,7 +49,7 @@ class Notice extends BaseBoard
         $arr_campus = $this->_getCampusArray('');
 
         //상단탭 사이트코드 조회 (온라인만)
-        $tab_site_list = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsCampus' => 'N'], 'NOT' => ['SiteCode' => '2000']]);
+        //$tab_site_list = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsCampus' => 'N'], 'NOT' => ['SiteCode' => '2000']]);
 
         $this->load->view("board/gosi/notice/index", [
             'bm_idx' => $this->bm_idx,
@@ -61,7 +61,7 @@ class Notice extends BaseBoard
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
             'gosi_site_code' => $this->gosi_site_code,
-            'tab_site_list' => $tab_site_list
+            //'tab_site_list' => $tab_site_list
         ]);
     }
 

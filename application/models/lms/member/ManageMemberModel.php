@@ -58,7 +58,8 @@ class ManageMemberModel extends WB_Model
             Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
-            c1.CcdName AS InterestName  
+            c1.CcdName AS InterestName,
+            IFNULL(Info.HanlimID, '') AS HanlimID
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

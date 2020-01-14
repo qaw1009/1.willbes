@@ -128,13 +128,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="QuestionFile">문제통파일</label>
+                    <label class="control-label col-md-1-1" for="FrontQuestionFile">응시화면용문제파일</label>
+                    <div class="col-md-4">
+                        <input type="file" class="form-control" id="FrontQuestionFile" name="FrontQuestionFile" title="응시화면용문제파일">
+                        @if($method == 'PUT' && !empty($data['FrontQuestionFile']))
+                            <div class="file-wrap" style="cursor:pointer">
+                                <a href="{{ $data['FilePath'].$data['FrontRealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['FrontQuestionFile'] }}</a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="QuestionFile">다운로드용문제파일</label>
                     <div class="col-md-4">
                         <input type="file" class="form-control" id="QuestionFile" name="QuestionFile" title="문제통파일">
                         @if($method == 'PUT' && !empty($data['QuestionFile']))
                             <div class="file-wrap" style="cursor:pointer">
                                 <a href="{{ $data['FilePath'].$data['RealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['QuestionFile'] }}</a>
-                                {{--<span class="act-fileDel" data-file-idx="{{$data['MpIdx']}}" data-file-type="base" data-file-name="QuestionFile"><i class="fa fa-times red"></i></span>--}}
                             </div>
                         @endif
                     </div>

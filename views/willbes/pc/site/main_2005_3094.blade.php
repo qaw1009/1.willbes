@@ -74,18 +74,11 @@
         </div>
         <!-- CS센터 //-->
 
-        <div id="QuickMenu" class="MainQuickMenu">
+        <div id="QuickMenuB" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
     </div>
     <!-- End Container -->
-
-    <script>
-        $(document).ready(function() {
-
-        });
-    </script>
-
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

@@ -175,7 +175,7 @@ class RegExamModel extends WB_Model
         $this->_conn->trans_begin();
         try {
             $this->load->library('upload');
-            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
+            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','FrontQuestionFile','ExplanFile'], 1);
 
             // 데이터 저장
             $input_data = [
@@ -190,6 +190,8 @@ class RegExamModel extends WB_Model
                 'TotalScore' => element('TotalScore', $form_data),
                 'QuestionFile' => $names['QuestionFile']['name'],
                 'RealQuestionFile' => $names['QuestionFile']['real'],
+                'FrontQuestionFile' => $names['FrontQuestionFile']['name'],
+                'FrontRealQuestionFile' => $names['FrontQuestionFile']['real'],
                 'ExplanFile' => $names['ExplanFile']['name'],
                 'RealExplanFile' => $names['ExplanFile']['real'],
                 'IsUse' => element('IsUse', $form_data),
@@ -255,12 +257,12 @@ class RegExamModel extends WB_Model
         try {
             $this->load->library('upload');
             $filePath = $this->upload_path . $this->upload_path_mock . element('idx', $form_data) . '/';
-            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
+            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','FrontQuestionFile','ExplanFile'], 1);
             $uploadSubPath = $this->upload_path_mock . $this->input->post('idx', $form_data);
 
             // 기존데이터 첨부파일 이름 추출
             $fileBackup = [];
-            $beforeDB = $this->_conn->select('RealQuestionFile, RealExplanFile')
+            $beforeDB = $this->_conn->select('RealQuestionFile, FrontRealQuestionFile, RealExplanFile')
                 ->where(['MpIdx' => element('idx', $form_data), 'IsStatus' => 'Y'])
                 ->get($this->_table['mockExamBase'])->row_array();
 
@@ -285,7 +287,11 @@ class RegExamModel extends WB_Model
                 $input_data['RealQuestionFile'] = $names['QuestionFile']['real'];
                 if( !empty($beforeDB['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB['RealQuestionFile'];
             }
-
+            if( isset($names['FrontQuestionFile']['error']) && $names['FrontQuestionFile']['error'] === UPLOAD_ERR_OK && $names['FrontQuestionFile']['size'] > 0 ) {
+                $input_data['FrontQuestionFile'] = $names['FrontQuestionFile']['name'];
+                $input_data['FrontRealQuestionFile'] = $names['FrontQuestionFile']['real'];
+                if( !empty($beforeDB['FrontRealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB['FrontRealQuestionFile'];
+            }
             if( isset($names['ExplanFile']['error']) && $names['ExplanFile']['error'] === UPLOAD_ERR_OK && $names['ExplanFile']['size'] > 0 ) {
                 $input_data['ExplanFile'] = $names['ExplanFile']['name'];
                 $input_data['RealExplanFile'] = $names['ExplanFile']['real'];
@@ -627,9 +633,9 @@ class RegExamModel extends WB_Model
             $query = "
                 {$this->_table['mockExamBase']}
                     (SiteCode, MaIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
-                     QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
+                     QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
                 SELECT SiteCode, MaIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
-                       QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
+                       QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
                 FROM {$this->_table['mockExamBase']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";
             $result = $this->_conn->query('insert into' . $query, [$RegIp, $RegAdminIdx, $RegDatm, $idx]);

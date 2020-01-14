@@ -42,7 +42,7 @@
             <li>
                 <div>   
                     <a href="https://job.willbes.net/m/home/index"> 
-                        <p class="subTit">국가기술/국가전문/국가실무/국사공인</p>
+                        <p class="subTit">노무/감평/변리/관세/스포츠</p>
                         <p class="siteTit">
                             <img src="{{ img_url('m/intro/icon_job.png') }}" alt="어학">
                             자격증

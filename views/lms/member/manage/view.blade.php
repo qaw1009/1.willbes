@@ -56,7 +56,12 @@
                         <button type="button" class="btn btn-default" id="chg_sexual">성별변경</button>
                     </td>
                     <td>{{ $data['MemName'] }} <button type="button" class="btn btn-default" id="chgname">이름변경</button></td>
-                    <td>{{ $data['MemId'] }}</td>
+                    <td>
+                        {{ $data['MemId'] }}
+                        @if(empty($data['HanlimID']) === false)
+                            <br>( 이관아이디 : {{$data['HanlimID']}} )
+                        @endif
+                    </td>
                     <td>{{ $data['CertName'] }}</td>
                     <td>
                         @if($data['IsStatus'] == 'Y')

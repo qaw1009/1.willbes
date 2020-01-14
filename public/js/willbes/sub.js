@@ -426,6 +426,20 @@ $('*[id*=QuickMenu]:visible').ready(function() {
         });
     }
 });
+/*자격증,고등고시*/
+$('*[id*=QuickMenuB]:visible').ready(function() {
+    var stickyOffset = $('#QuickMenuB').offset();
+
+    if (typeof stickyOffset !== 'undefined') {
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > stickyOffset.top) {
+                $('#QuickMenuB').css('top', '20px');
+            } else {
+                $('#QuickMenuB').css('top', '100px');
+            }
+        });
+    }
+});
 
 
 // image flipped

@@ -487,8 +487,7 @@ class Join extends BaseMember
         $count = $this->memberFModel->getMember(true, [
             'EQ' => [
                 'Mem.MemName' => $sms_name,
-                'Mem.PhoneEnc' => $phoneEnc,
-                'Mem.CertifiedInfoTypeCcd' => '655002'
+                'Mem.PhoneEnc' => $phoneEnc
             ],
             'NOT' => [
                 'Mem.IsStatus' => 'N'

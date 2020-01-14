@@ -40,9 +40,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/pass/support/qna/index') }}">
-                        <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                        <div class="nTxt">학원<br/>상담실</div>
+                    <a href="{{ site_url('/support/mobile/index') }}">
+                        <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                        <div class="nTxt">모바일<br/>서비스</div>
                     </a>
                 </li>
                 <li>

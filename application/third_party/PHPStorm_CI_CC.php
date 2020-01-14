@@ -245,6 +245,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property DDayFModel $dDayFModel                                                D-Day Model Class
  * @property MockInfoFModel $mockInfoFModel                                      MockTest Info  Model Class
  * @property MockExamModel $mockExamModel                                      MockExam Class
+ * @property MockExamFModel $mockExamFModel                                      MockExamF Class
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
  * @property SubTitlesFModel $subTitlesFModel                                   SubTitles Model Class
  * @property PredictFModel $predictFModel                                       Predict Model Class

@@ -77,7 +77,7 @@
                             <span><a href="https://gosi.willbes.net/home/index/cate/3099" target="_blank">[변호사]</a></span>                                
                             <span><a href="https://gosi.willbes.net/home/index/cate/3097" target="_blank">[5급헌법]</a></span><br/>
                             <span><a href="https://gosi.willbes.net/home/index/cate/3098" target="_blank">[법행]</a></span>
-                            <span><a href="https://pass.willbes.net/home/index/cate/3096" target="_blank">[PSAT]</a></span>
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3096" target="_blank">[PSAT]</a></span>
                             <br/>
                             <strong>윌비스 한림법학원</strong>
                         </div>

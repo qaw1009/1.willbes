@@ -323,7 +323,14 @@ class EventFModel extends WB_Model
                 $etc_value = '';
                 if (empty($inputData['target_params']) === false && is_array($inputData['target_params'])) {
                     foreach ($inputData['target_params'] as $target_key => $target_param) {
-                        $etc_value .= $inputData[$target_param]. ',';
+                        if(strpos($target_param, '[]') !== false) {
+                            // 체크박스등 name[]로 넘어왔을 경우 처리
+                            foreach ($inputData[str_replace('[]', '', $target_param)] as $m_key => $m_val) {
+                                $etc_value .= $m_val . ',';
+                            }
+                        } else {
+                            $etc_value .= $inputData[$target_param]. ',';
+                        }
                     }
                     $etc_value = substr($etc_value, 0, -1);
                 }

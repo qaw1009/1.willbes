@@ -42,7 +42,7 @@
 
         /*tab*/
         .tabs{width:100%; text-align:center; padding-bottom:20px;}
-        .tabs ul {width:910px;margin:0 auto;}		
+        .tabs ul {width:900px;margin:0 auto;}		
         .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}

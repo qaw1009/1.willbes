@@ -174,7 +174,7 @@ class Player extends \app\controllers\FrontController
             //$limittime = intval($data['RealExpireTime']) * 60;
             // 제한시간 분 -> 초
             if($data['RealExpireTime'] == 0){
-                $limittime = intval($data['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                $limittime = ceil(doubleval($data['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
             } else {
                 $limittime = intval($data['RealExpireTime']) * 60;
             }
@@ -253,7 +253,7 @@ class Player extends \app\controllers\FrontController
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
 
-        $RealExpireTime = intval($data['wRuntime']) * intval($lec['MultipleApply']);
+        $RealExpireTime = ceil(doubleval($data['wRuntime']) * doubleval($lec['MultipleApply']));
 
         // 수강히스토리 기록생성
         $logidx = $this->playerFModel->storeStudyLog([
@@ -719,7 +719,7 @@ class Player extends \app\controllers\FrontController
 
                 // 제한시간 분 -> 초
                 if($row['RealExpireTime'] == 0){
-                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                    $limittime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
                 } else {
                     $limittime = intval($row['RealExpireTime']) * 60;
                 }
@@ -1253,7 +1253,7 @@ class Player extends \app\controllers\FrontController
                 // 제한시간 분 -> 초
                 // $limittime = intval($row['RealExpireTime']) * 60;
                 if($row['RealExpireTime'] == 0){
-                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                    $limittime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
                 } else {
                     $limittime = intval($row['RealExpireTime']) * 60;
                 }
@@ -1320,7 +1320,7 @@ class Player extends \app\controllers\FrontController
                 continue;
             }
 
-            $RealExpireTime = intval($row['wRuntime']) * intval($lec['MultipleApply']);
+            $RealExpireTime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']));
 
             // 수강히스토리 기록생성
             $logidx = $this->playerFModel->storeStudyLog([
@@ -1723,7 +1723,7 @@ class Player extends \app\controllers\FrontController
 
                 // 제한시간 분 -> 초
                 if($row['RealExpireTime'] == 0){
-                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                    $limittime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
                 } else {
                     $limittime = intval($row['RealExpireTime']) * 60;
                 }
@@ -1789,7 +1789,7 @@ class Player extends \app\controllers\FrontController
                 continue;
             }
 
-            $RealExpireTime = intval($row['wRuntime']) * intval($lec['MultipleApply']);
+            $RealExpireTime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']));
 
             // 수강히스토리 기록생성
             $logidx = $this->playerFModel->storeStudyLog([
@@ -2266,7 +2266,7 @@ class Player extends \app\controllers\FrontController
             // 제한시간 분 -> 초
             //$limittime = intval($data['RealExpireTime']) * 60;
             if($data['RealExpireTime'] == 0){
-                $limittime = intval($data['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                $limittime = ceil(doubleval($data['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
             } else {
                 $limittime = intval($data['RealExpireTime']) * 60;
             }

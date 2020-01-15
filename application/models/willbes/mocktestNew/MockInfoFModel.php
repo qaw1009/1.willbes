@@ -3,22 +3,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockInfoFModel extends WB_Model
 {
-    protected $_table = [
+    private $_table = [
         'mock_product' => 'vw_product_mocktest',
         'mock_paper' => 'lms_mock_paper_new',
         'mock_paper_r_category' => 'lms_mock_paper_r_category',
         'mock_r_category' => 'lms_mock_r_category',
         'mock_r_subject' => 'lms_mock_r_subject',
         'mock_register' => 'lms_mock_register',
+        'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'mock_register_print_log' => 'lms_mock_register_print_log',
 
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'product_subject' => 'lms_product_subject',
+
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'sys_code' => 'lms_sys_code',
 
         'board' => 'lms_board',
+        'member' => 'lms_Member',
+        'product_r_category' => 'lms_product_r_category',
+        'lms_sys_category' => 'lms_sys_category',
     ];
+    public $arr_payment_status_ccd = ['676001', '676006'];
 
     public function __construct()
     {
@@ -337,5 +344,123 @@ class MockInfoFModel extends WB_Model
 
         $result = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from. $where)->row_array();
         return $result;
+    }
+
+    /**
+     * 모의고사 주문내역 조회
+     * @param string $query_type
+     * @param bool $is_count
+     * @param array $arr_condition_main
+     * @param array $arr_condition_sub
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findRegisterByOrderProdIdx($query_type = 'classroom', $is_count = false, $arr_condition_main = [], $arr_condition_sub = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $where_main = $this->_conn->makeWhere($arr_condition_main);
+        $where_main = $where_main->getMakeWhere(false);
+
+        $column = "
+            op.ProdCode, op.RealPayPrice, op.IsUseCoupon, op.PayStatusCcd, o.OrderIdx, o.CompleteDatm
+            ,A.MrIdx, A.OrderProdIdx, A.TakeMockPart, A.TakeForm, A.TakeArea, A.AddPoint, A.IsStatus, A.TakeNumber
+            ,pm.ProdName,pm.CateName,pm.TakeStartDatm,pm.TakeEndDatm
+            ,fn_ccd_name(op.PayStatusCcd) AS PayStatusCcd_Name
+            ,fn_ccd_name(o.PayRouteCcd) AS PayRouteCcd_Name
+            ,fn_ccd_name(o.PayMethodCcd) AS PayMethodCcd_Name
+            ,fn_ccd_name(A.TakeMockPart) AS TakeMockPart_Name
+            ,fn_ccd_name(A.TakeArea) AS TakeArea_Name
+            ,fn_ccd_name(A.TakeForm) AS TakeForm_Name
+            ,A.subject_names
+        ";
+
+        $from = "
+            FROM (
+                SELECT mr.ProdCode, mr.OrderProdIdx, mr.MemIdx, GROUP_CONCAT(CONCAT(pmp.MockType,'|',ps.SubjectName)) AS subject_names
+	            ,mr.MrIdx, mr.TakeMockPart, mr.TakeForm, mr.TakeArea, IFNULL(mr.AddPoint,'0') AS AddPoint, mr.IsStatus, mr.TakeNumber
+                FROM {$this->_table['mock_register']} AS mr
+                JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
+                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
+                JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
+                {$where_main}
+                GROUP BY mr.ProdCode
+            ) AS A
+            INNER JOIN {$this->_table['order_product']} AS op on A.OrderProdIdx = op.OrderProdIdx AND op.MemIdx = '{$this->session->userdata('mem_idx')}'
+            INNER JOIN {$this->_table['order']} AS o on op.OrderIdx = o.OrderIdx
+            INNER JOIN {$this->_table['mock_product']} AS pm on A.ProdCode = pm.ProdCode
+        ";
+
+        return $this->{'_findRegistReturn_' . $query_type}($column, $from, $arr_condition_sub, $is_count, $limit, $offset, $order_by);
+    }
+
+    //모의고사 주문내역 조회 [사용처 : 사이트]
+    private function _findRegistReturn_site($column, $from)
+    {
+        return $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from)->row_array();
+    }
+
+    private function _findRegistReturn_classroom($column, $from, $arr_condition_sub = [], $is_count = false, $limit = null, $offset = null, $order_by = [])
+    {
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+
+        if ($is_count === true) {
+            $column = ' COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+        $column .= "
+            ,pm.ProdName, pm.SiteCode, pm.MockYear, pm.MockRotationNo, pm.TakeStartDatm, pm.TakeEndDatm, pm.RegDatm AS PDReg, LENGTH(U.MemId) AS IdLength
+            , OP.IsUseCoupon, OP.OrderPrice, O.CompleteDatm
+            , fn_day_name(pm.TakeStartDatm,'') AS day_name
+            ,C1.CateName, U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone
+            ,o.OrderIdx, o.OrderNo, o.RealPayPrice, o.CompleteDatm, op.PayStatusCcd, o.CompleteDatm
+            ,(
+                SELECT COUNT(*) 
+                FROM {$this->_table['mock_register_print_log']} AS mrpl
+                WHERE mrpl.MrIdx = A.MrIdx
+            ) AS PrintCnt
+            ,(
+                SELECT GROUP_CONCAT(SJ.SubjectName)
+                FROM {$this->_table['mock_register_r_paper']} AS MAS
+                JOIN {$this->_table['product_subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
+                WHERE A.MrIdx = MAS.MrIdx
+            ) AS SubjectNameList
+            ,(
+                SELECT GROUP_CONCAT(ps.SubjectName)
+                FROM {$this->_table['mock_register_r_paper']} as mrp
+                JOIN {$this->_table['product_mock_r_paper']} as pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus='Y'
+                JOIN {$this->_table['mock_paper']} as mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
+                JOIN {$this->_table['mock_paper_r_category']} as mprc ON mp.MpIdx = mprc.MpIdx AND mprc.IsStatus = 'Y'
+                JOIN {$this->_table['mock_r_category']} as mrc ON mprc.MrcIdx = mrc.MrcIdx AND mrc.IsStatus='Y'
+                JOIN {$this->_table['mock_r_subject']} as mrs ON  mrc.MrsIdx = mrs.MrsIdx AND mrs.IsStatus='Y'
+                JOIN {$this->_table['product_subject']} as ps ON mrs.SubjectIdx = ps.SubjectIdx 
+                WHERE pmp.MockType='E' AND mrp.MrIdx = A.MrIdx 
+            ) AS SubjectNameList_Ess
+            ,(
+                SELECT GROUP_CONCAT(ps.SubjectName)
+                FROM {$this->_table['mock_register_r_paper']} as mrp 
+                JOIN {$this->_table['product_mock_r_paper']} as pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus='Y'                
+                JOIN {$this->_table['mock_paper']} as mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
+                JOIN {$this->_table['mock_paper_r_category']} as mprc ON mp.MpIdx = mprc.MpIdx AND mprc.IsStatus = 'Y'
+                JOIN {$this->_table['mock_r_category']} as mrc ON mprc.MrcIdx = mrc.MrcIdx AND mrc.IsStatus='Y'
+                JOIN {$this->_table['mock_r_subject']} as mrs ON  mrc.MrsIdx = mrs.MrsIdx AND mrs.IsStatus='Y'
+                JOIN {$this->_table['product_subject']} as ps ON mrs.SubjectIdx = ps.SubjectIdx
+                WHERE pmp.MockType='S' AND mrp.MrIdx = A.MrIdx
+                ORDER BY mrp.MrrpIdx 
+            ) AS SubjectNameList_Sub
+        ";
+
+        $from .= "
+            JOIN {$this->_table['member']} AS U ON A.MemIdx = U.MemIdx AND U.IsStatus = 'Y'
+            JOIN {$this->_table['product_r_category']} AS PC ON pm.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['lms_sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where_sub . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

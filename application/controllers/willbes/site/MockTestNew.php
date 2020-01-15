@@ -232,29 +232,37 @@ class MockTestNew extends SupportMockTest
      */
     public function apply_order($params=[])
     {
-
         if(empty($params)) {
             return $this->json_error('주문 코드가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
         }
-
         $order_prod_idx = $params[0];
 
         //신청 내역
-        $order_info = $this->mockInfoFModel->findRegistByOrderProdIdx($order_prod_idx);
-
-        //신청 과목정보 추출
-        $regist_subject = $this->mockInfoFModel->findRegistSubject($order_prod_idx);
-
-        $subject_ess = '';
-        $subject_sub = [];
-        foreach ($regist_subject as $rows) {
-            if($rows['MockType'] == 'E') {
-                $subject_ess = $rows['subject_names'];
-            } else if($rows['MockType'] == 'S') {
-                $subject_sub = explode(',',$rows['subject_names']);
-            }
+        $arr_condition = [
+            'EQ' => [
+                'mr.MemIdx' => $this->session->userdata('mem_idx'),
+                'mr.OrderProdIdx' => $order_prod_idx
+            ]
+        ];
+        $order_info = $this->mockInfoFModel->findRegisterByOrderProdIdx('site', false, $arr_condition);
+        if (empty($order_info) === true) {
+            return $this->json_error('조회된 정보가 없습니다.', _HTTP_BAD_REQUEST);
         }
 
+        $subject_ess = ''; $subject_sub = [];
+        $temp_subject_depth1 = explode(',', $order_info['subject_names']);
+        $temp_subject_depth2 = [];
+        foreach ($temp_subject_depth1 as $key => $val) {
+            $temp_subject_depth2[] = explode('|', $val);
+        }
+        foreach ($temp_subject_depth2 as $rows) {
+            if ($rows[0] == 'E' && (empty($rows[1]) === false)) {
+                $subject_ess .= $rows[1].',';
+            } else if ($rows[0] == 'S' && (empty($rows[1]) === false)) {
+                $subject_sub[] = $rows[1];
+            }
+        }
+        $subject_ess = substr($subject_ess, 0, -1);
         $this->load->view('site/mocktestNew/apply_order_popup', [
             'ele_id' => $this->_req('ele_id'),
             'order_info' => $order_info,

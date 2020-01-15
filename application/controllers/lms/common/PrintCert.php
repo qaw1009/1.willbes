@@ -12,12 +12,13 @@ class PrintCert extends \app\controllers\BaseController
     }
 
     /**
-     * 수강증 출력 (상품구분 : off_lecture (학원) / mock_exam (모의고사))
+     * 수강증 출력 (상품구분 : off_lecture (학원) / off_sub_lecture (학원서브강좌) / mock_exam (모의고사))
      * @return object|string
      */
     public function index()
     {
         $prod_type = $this->_reqG('prod_type');
+        $view_page = $prod_type;
         $data = [];
 
         switch ($prod_type) {
@@ -36,8 +37,24 @@ class PrintCert extends \app\controllers\BaseController
                     break;
                 }
                 break;
-            case 'mock_exam' :
+            case 'off_sub_lecture' :
+                $order_idx = $this->_reqG('order_idx');
+                $order_prod_idx = $this->_reqG('order_prod_idx');
+                $prod_code_sub = $this->_reqG('prod_code_sub');
+                $site_code = $this->_reqG('site_code');
+                $view_page = 'off_lecture';
 
+                // 데이터 조회
+                $data = $this->orderListModel->getPrintCertSubLectureData($order_idx, $order_prod_idx, $prod_code_sub, $site_code);
+
+                // 수강증 출력 로그 저장
+                $log_save = $this->orderListModel->addActivityLog('SubLecCert', $order_idx, $order_prod_idx, $prod_code_sub);
+                if($log_save !== true) {
+                    show_alert($log_save,'close');
+                    break;
+                }
+                break;
+            case 'mock_exam' :
                 $mr_idx = $this->_reqG('mr_idx');
 
                 // 데이터 조회
@@ -61,7 +78,7 @@ class PrintCert extends \app\controllers\BaseController
             show_alert($data, 'close');
         }
 
-        return $this->load->view('common/print_cert/' . $prod_type, [
+        return $this->load->view('common/print_cert/' . $view_page, [
             'data' => $data
         ]);
     }

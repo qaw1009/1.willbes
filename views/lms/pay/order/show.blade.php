@@ -51,7 +51,11 @@
                         <tbody>
                         <tr>
                             <th class="bg-odd">주문번호</th>
-                            <td class="bg-white-only"><a class="blue">{{ $data['order']['OrderNo'] }}</a> {{ $data['order']['SiteName'] }} {{ $data['order']['IsEscrow'] == 'Y' ? '(e)' : '' }}</td>
+                            <td class="bg-white-only" style="width: 400px;"><a class="blue">{{ $data['order']['OrderNo'] }}</a>
+                                {{ $data['order']['SiteName'] }}
+                                {{ empty($data['order']['CertNo']) === false ? '(수강증 : ' . $data['order']['CertNo'] . ')' : '' }}
+                                {{ $data['order']['IsEscrow'] == 'Y' ? '(e)' : '' }}
+                            </td>
                             <th class="bg-odd">결제루트</th>
                             <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}</td>
                             <th class="bg-odd">결제완료일</th>
@@ -103,8 +107,8 @@
                         <thead>
                         <tr>
                             <th rowspan="2" class="valign-middle">상품구분</th>
-                        @if(in_array($_order_type, ['order', 'visit']) === true)
-                            {{-- 전체결제현황, 학원방문수강접수일 경우 캠퍼스 노출 --}}
+                        @if(in_array($_order_type, ['order', 'visit', 'offvisitpackage', 'offprofassign']) === true)
+                            {{-- 전체결제현황, 학원방문수강접수, 종합반수강접수, 종합반강사배정일 경우 캠퍼스 노출 --}}
                             <th rowspan="2" class="valign-middle">캠퍼스</th>
                         @endif
                             <th rowspan="2" class="valign-middle">상품코드</th>
@@ -113,7 +117,6 @@
                             <th rowspan="2" class="valign-middle">판매금액</th>
                             <th colspan="2">결제금액</th>
                             <th colspan="2">할인정보</th>
-                            <th colspan="2">미수금정보</th>
                             <th rowspan="2" class="valign-middle">결제상태</th>
                             <th rowspan="2" class="valign-middle">송장번호</th>
                             <th rowspan="2" class="valign-middle">할인사유</th>
@@ -123,8 +126,6 @@
                             <th>학원현금</th>
                             <th>쿠폰적용</th>
                             <th>할인율</th>
-                            <th>미수금</th>
-                            <th>분할여부</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -133,8 +134,8 @@
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}
                                         {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
                                     </td>
-                                @if(in_array($_order_type, ['order', 'visit']) === true)
-                                    {{-- 전체결제현황, 학원방문수강접수일 경우 캠퍼스 노출 --}}
+                                @if(in_array($_order_type, ['order', 'visit', 'offvisitpackage', 'offprofassign']) === true)
+                                    {{-- 전체결제현황, 학원방문수강접수, 종합반수강접수, 종합반강사배정일 경우 캠퍼스 노출 --}}
                                     <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                 @endif
                                     <td>{{ $order_prod_row['ProdCode'] }}</td>
@@ -152,8 +153,6 @@
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                     <td>{{ $order_prod_row['IsUseCoupon'] }} {!! $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' !!}</td>
                                     <td>{{ $order_prod_row['DiscRate'] }}</td>
-                                    <td>0</td>
-                                    <td></td>
                                     <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
                                     <td>{{ $order_prod_row['InvoiceNo'] }}</td>
                                     <td>{{ $order_prod_row['DiscReason'] }}</td>

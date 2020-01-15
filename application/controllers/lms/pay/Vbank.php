@@ -97,7 +97,8 @@ class Vbank extends BaseOrder
                 'EQ' => [
                     'O.OrderIdx' => $this->_reqP('search_prod_value'),
                     'O.OrderNo' => $this->_reqP('search_prod_value'),
-                    'P.ProdCode' => $this->_reqP('search_prod_value')
+                    'P.ProdCode' => $this->_reqP('search_prod_value'),
+                    'OOI.CertNo' => $this->_reqP('search_prod_value')
                 ],
                 'LKB' => [
                     'P.ProdName' => $this->_reqP('search_prod_value')

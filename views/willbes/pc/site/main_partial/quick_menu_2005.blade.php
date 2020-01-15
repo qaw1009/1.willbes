@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free') }}">
+    <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?search_order=course&course_idx=1219') }}">
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky01.jpg">
     </a>
 </div>

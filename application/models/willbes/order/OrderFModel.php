@@ -572,6 +572,14 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
+            // 주문추가정보(학원수강증번호) 등록
+            if ($post_row['CartType'] == 'off_lecture') {
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+                if ($is_add_other_info !== true) {
+                    throw new \Exception($is_add_other_info);
+                }
+            }
+
             // 추가 배송료 주문상품 데이터 등록
             if ($post_row['DeliveryAddPrice'] > 0) {
                 $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $post_row['SiteCode'], $post_row['DeliveryAddPrice']);
@@ -1341,6 +1349,42 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
+     * 주문추가정보 등록
+     * @param int $order_idx [주문식별자]
+     * @param bool $is_add_cert_no [수강증번호추가여부]
+     * @param array $input [추가등록정보]
+     * @return bool|string
+     */
+    public function addOrderOtherInfo($order_idx, $is_add_cert_no = true, $input = [])
+    {
+        try {
+            $def_cert_no = '400000';    // 디폴트 수강증번호
+
+            if ($is_add_cert_no === true) {
+                $query = /** @lang text */ 'insert into ' . $this->_table['order_other_info'] . ' (OrderIdx, CertNo)
+                    select ?, ifnull(max(cast(CertNo as int)) + 1, ?) from ' . $this->_table['order_other_info'] . ' where CertNo != "" limit 1';
+                $is_add_other_info = $this->_conn->query($query, [
+                    $order_idx, $def_cert_no
+                ]);
+            } else {
+                $data = [
+                    'OrderIdx' => $order_idx,
+                    'CertNo' => element('CertNo', $input, '')
+                ];
+                $is_add_other_info = $this->_conn->set($data)->insert($this->_table['order_other_info']);
+            }
+
+            if ($is_add_other_info === false) {
+                throw new \Exception('주문추가정보 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
      * 방문결제 주문 데이터 등록
      * @param int $site_code [사이트코드]
      * @param array $input [직접방문접수 장바구니 저장 데이터]
@@ -1471,6 +1515,12 @@ class OrderFModel extends BaseOrderFModel
 
                 // 주문상품 장바구니 식별자
                 $arr_order_cart_idx[] = $cart_row['CartIdx'];
+            }
+
+            // 주문추가정보(학원수강증번호) 등록
+            $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+            if ($is_add_other_info !== true) {
+                throw new \Exception($is_add_other_info);
             }
 
             // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
@@ -1616,6 +1666,7 @@ class OrderFModel extends BaseOrderFModel
             $total_prod_order_price = 0;    // 전체상품주문금액
             $order_prod_data = [];  // 주문상품 데이터
             $arr_prod_code = [];    // 주문상품 상품코드
+            $is_cert_no_add = false;    // 수강증번호 등록 여부
 
             // 상품코드 추출
             switch ($req_type) {
@@ -1690,6 +1741,11 @@ class OrderFModel extends BaseOrderFModel
                 }
                 $prod_price_data = element('0', json_decode($prod_row['ProdPriceData'], true));
 
+                // 수강증번호 등록 여부 체크
+                if ($is_cert_no_add === false && ($learn_pattern == 'off_lecture' || $learn_pattern == 'off_pack_lecture')) {
+                    $is_cert_no_add = true;
+                }
+
                 // 주문상품 데이터 가공
                 $order_prod_data[] = [
                     'CartType' => array_search($prod_row['ProdTypeCcd'], $this->_prod_type_ccd),
@@ -1762,6 +1818,14 @@ class OrderFModel extends BaseOrderFModel
                 $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row, false);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
+                }
+            }
+
+            // 주문추가정보(학원수강증번호) 등록
+            if ($is_cert_no_add === true) {
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+                if ($is_add_other_info !== true) {
+                    throw new \Exception($is_add_other_info);
                 }
             }
 

@@ -94,7 +94,7 @@
         .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0}
         .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
         .content_guide_wrap .tabs {width:960px; margin:0 auto;}
-        .content_guide_wrap .tabs li {display:inline; float:left; width:320px}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -355,16 +355,17 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">14개월 PASS</a></li>
-                <li><a href="#tab2">0원 PASS</a></li>
-                <li><a href="#tab3">합격 환승 이벤트</a></li>
+                <li><a href="#tab1">8개월 PASS</a></li>
+                <li><a href="#tab2">14개월 PASS</a></li>
+                <li><a href="#tab3">0원 PASS</a></li>
+                <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
-            <!--8,14개월-->
+            <!--8개월-->
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>상품구성</h3>
+                        <h3>8개월 상품구성</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -373,14 +374,92 @@
                             <li>2배수 수강 후에는 수강이 불가합니다. </li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)<br>
                                 <br>
-                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank">배수제한 공지 자세히 보기 ></a>
+                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>
                             </li>
 
                         </ol>
                     </dd>
 
                     <dt>
-                        <h3>이벤트</h3>
+                        <h3>수강관련</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>먼저 내 강의실 메뉴에서 무한PASS존으로 접속합니다.</li>
+                            <li>구매하신 신광은경찰PASS 상품명 선택 후 [강좌추가하기] 버튼 클릭, 원하시는 강좌를 선택 등록 한 후 수강할 수 있습니다.</li>
+                            <li>신광은경찰PASS 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
+                            <li>신광은경찰PASS 강좌 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br />
+                                <strong>PC+Mobile 신광은경찰PASS 수강 시</strong> : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP 신광은경찰PASS는 제공하지 않습니다.)</li>
+                            <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.(무한PASS존 등록기기정보 확인)</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>교재구매</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>신광은경찰PASS는 교재를 별도로 구매하셔야 하며, .각 강좌별 교재는 강좌소개 및  [교재구매] 메뉴에서 별도 구매 가능합니다.</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>체력동영상 수강안내</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>체력 강좌 별 수강 기간은 구매한 패스의 수강기간과 동일한 상품으로 구매가능합니다(단, 평생 0원은 12개월 체력 구매 가능)</li>
+                            <li>체력 동영상 강좌는 매년 차수마다 업데이트 예정이오나, 제휴 등 사정에 따라 신규 강좌 업데이트가 불가할 수 있습니다.</li>
+                            <li>결제 완료 즉시 수강가능하며, 재수강, 일시정지,연장 불가합니다.</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>환불안내</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>결제 후 7일 이내 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로  간주됩니다.</li>
+                            <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)</li>
+                            <li>차감액이 결제 금액을 초과할 시 환불 불가합니다.</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>유의사항</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>본 상품은 특별할인기획 상품으로 쿠폰할인/다다익선할인/적립금사용 등 혜택이 적용되지 않으니 양해 및 참조 부탁 드립니다.</li>
+                            <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.</li>
+                            <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다.</li>
+                            <li>온라인 모의고사는 전범위 모의고사가 무료로 제공되며 학원에서 진행되는 일부 모의고사(불금, 올빼미, 옹달샘)는 혜택에서 제외됩니다.</li>
+                            <li>온.오프라인 동시 시행되는 이벤트, 무료특강의 경우 해당강좌는 미지급되거나 이벤트 종료 후 제공될 수 있습니다.</li>
+                            <li>발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
+                        </ol>
+                    </dd>
+                    <dd>
+                        <p>※ 이용문의 : 고객만족센터 1544-5006</p>
+                    </dd>
+                </dl>
+            </div>
+
+            <!--14개월-->
+            <div class="content_guide_box" id="tab2">
+                <dl>
+                    <dt>
+                        <h3>14개월 상품구성</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
+                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
+                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>14개월 PASS 이벤트</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -489,7 +568,7 @@
 
 
             <!--0원PASS-->
-            <div class="content_guide_box" id="tab2">
+            <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
                         <h3>상품설명: 갱신안내</h3>
@@ -659,14 +738,7 @@
 
 
             <!--환승이벤트-->
-            <div class="content_guide_box" id="tab3">
-                {{--
-                <dl>
-                    <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_09_01.jpg">
-                    </dt>
-                </dl>
-                --}}
+            <div class="content_guide_box" id="tab4">
                 <dl>
                     <dt>
                         <h3>이벤트 참여방법 안내</h3>

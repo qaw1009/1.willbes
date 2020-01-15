@@ -204,7 +204,7 @@
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                     <td>
                                         <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                            @for($i=1;$i<16;$i++)
+                                            @for($i=1;$i<51;$i++)
                                                 <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                             @endfor
                                         </select>
@@ -255,7 +255,7 @@
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                     <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<16;$i++)
+                                                @for($i=1;$i<51;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>
@@ -1079,7 +1079,6 @@
                             $("#teacherDivision").append("<tbody>");
                             for(var i in data_array) {
                                 //console.log(data_array[i].wProfName + ' / ' + data_array[i].ProfIdx);
-
                                 html = "<tr id='"+i+"'>"
                                     +"<input type='hidden' name='ProfIdx[]' id='ProfIdx_"+data_array[i].ProfIdx+'-'+data_array[i].ProdCode+"' value='"+data_array[i].ProfIdx+"'>"
                                     +"<input type='hidden' name='ProdCodeDiv[]' id='ProdCodeDiv_"+data_array[i].ProfIdx+'-'+data_array[i].ProdCode+"' value='"+data_array[i].ProdCode+"'>"
@@ -1097,7 +1096,7 @@
                                 +"<td colspan='3'></td>"
                                 +"<td><span id='rateSum'>&nbsp;</span></td>"
                                 +"<td colspan='2'></td></tr>"
-                            )
+                            );
 
                             //단수적용을 위한 나머지 값 저장용 필드
                             $("#teacherDivision").append("</tbody>");

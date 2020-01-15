@@ -355,7 +355,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">14개월 PASS</a></li>
+                <li><a href="#tab1">8개월, 14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -364,7 +364,7 @@
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>상품구성</h3>
+                        <h3>8개월 상품구성</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -376,6 +376,17 @@
                                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank">배수제한 공지 자세히 보기 ></a>
                             </li>
 
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>14개월 상품구성</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
+                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
+                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                         </ol>
                     </dd>
 

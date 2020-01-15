@@ -373,7 +373,7 @@
                             <li>2배수 수강 후에는 수강이 불가합니다. </li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)<br>
                                 <br>
-                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank">배수제한 공지 자세히 보기 ></a>
+                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>
                             </li>
 
                         </ol>

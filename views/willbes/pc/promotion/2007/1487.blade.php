@@ -42,7 +42,7 @@
 
         /*tab*/
         .tabs{width:100%; text-align:center; padding-bottom:20px;}
-        .tabs ul {width:910px;margin:0 auto;}		
+        .tabs ul {width:900px;margin:0 auto;}		
         .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
@@ -136,6 +136,21 @@
                     $content = $(this.hash);
                     $active.addClass('active');
                     $content.show();
+
+                    // 탭 선택했을 경우 다른탭 영상 정지
+                    if(typeof $content !== 'undefined' && typeof $content.attr('id') !== 'undefined'){
+                        switch ($content.attr('id')){
+                            case 'tab01' :
+                                $('#youtube3').attr('src', $('#youtube3').attr('src'));
+                                $('#youtube4').attr('src', $('#youtube4').attr('src'));
+                                break;
+                            case 'tab02' :
+                                $('#youtube1').attr('src', $('#youtube1').attr('src'));
+                                $('#youtube2').attr('src', $('#youtube2').attr('src'));
+                                break;
+                            default : '';
+                        }
+                    }
                     e.preventDefault()
                 });
             });

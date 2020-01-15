@@ -244,8 +244,8 @@
                 <ul>
                     <li>
                         <div>
-                        <strong>79</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="159909" onClick=""/> <label for="y_pkg1">8개월 PASS</label>
+                        <strong class="line-through">79</strong>만원 > <strong>74</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="160366" onClick=""/> <label for="y_pkg1">5만원 즉시 할인</label>
                         </div>
                     </li>
                     <li>
@@ -268,7 +268,7 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200108.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200114.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -355,7 +355,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">8,14개월 PASS</a></li>
+                <li><a href="#tab1">14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -369,8 +369,13 @@
                     <dd>
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강 할 수 있습니다.</li>
-                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
+                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">2배수</span> 수강 할 수 있습니다.</li>
+                            <li>2배수 수강 후에는 수강이 불가합니다. </li>
+                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)<br>
+                                <br>
+                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank">배수제한 공지 자세히 보기 ></a>
+                            </li>
+
                         </ol>
                     </dd>
 

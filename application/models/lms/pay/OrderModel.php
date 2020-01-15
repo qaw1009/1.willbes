@@ -429,6 +429,7 @@ class OrderModel extends BaseOrderModel
             $real_pay_price = element('real_pay_price', $input, 0);     // 관리자유료결제 실결제금액
             $delivery_price = element('delivery_price', $input, 0);     // 배송료
             $is_delivery_info = false;  // 배송정보 등록 여부
+            $is_cert_no_add = false;    // 수강증번호 등록 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
 
             // 상품코드 기준으로 주문상품 데이터 생성
@@ -470,6 +471,11 @@ class OrderModel extends BaseOrderModel
 
                 if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
                     $is_delivery_info = true;
+                }
+
+                // 수강증번호 등록 여부 체크
+                if ($is_cert_no_add === false && ($learn_pattern == 'off_lecture' || $learn_pattern == 'off_pack_lecture')) {
+                    $is_cert_no_add = true;
                 }
 
                 // 기간제패키지일 경우 연결된 과목/교수 정보 조회
@@ -591,6 +597,14 @@ class OrderModel extends BaseOrderModel
                     $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], false, $prod_row);
                     if ($is_order_product !== true) {
                         throw new \Exception($is_order_product);
+                    }
+                }
+
+                // 주문추가정보(학원수강증번호) 등록
+                if ($is_cert_no_add === true) {
+                    $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+                    if ($is_add_other_info !== true) {
+                        throw new \Exception($is_add_other_info);
                     }
                 }
 
@@ -1247,6 +1261,7 @@ class OrderModel extends BaseOrderModel
             $total_cash_pay_price = 0;
             $total_disc_price = 0;
             $is_auto_add = true;    // 자동지급 상품, 쿠폰 부여 여부
+            $is_cert_no_add = false;    // 수강증번호 등록 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
             $arr_prod_code = [];    // 상품코드 배열
 
@@ -1269,6 +1284,8 @@ class OrderModel extends BaseOrderModel
                     $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
                     throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
                 }
+                
+                $is_cert_no_add = true;     // 수강증번호 등록
             }
 
             // 상품코드 기준으로 주문상품 데이터 생성
@@ -1415,6 +1432,14 @@ class OrderModel extends BaseOrderModel
                 $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], $is_auto_add, $prod_row);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
+                }
+            }
+
+            // 주문추가정보(학원수강증번호) 등록
+            if ($is_cert_no_add === true) {
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+                if ($is_add_other_info !== true) {
+                    throw new \Exception($is_add_other_info);
                 }
             }
 
@@ -1826,6 +1851,23 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
+            // 주문추가정보(학원수강증번호) 등록
+            if ($is_unpaid == 'Y' && empty($unpaid_idx) === false) {
+                // 최초 미수금주문 수강증번호 조회
+                $cert_no = $this->orderListModel->getCertNoFirstOrderUnPaidInfo($unpaid_idx);
+                if (empty($cert_no) === true) {
+                    throw new \Exception('수강증번호 조회에 실패했습니다.');
+                }
+
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, false, ['CertNo' => $cert_no]);
+            } else {
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+            }
+
+            if ($is_add_other_info !== true) {
+                throw new \Exception($is_add_other_info);
+            }
+
             $this->_conn->trans_commit();
 
             // 주문상품 자동문자 발송 (리턴결과 처리안함)
@@ -1909,6 +1951,42 @@ class OrderModel extends BaseOrderModel
 
             if ($this->_conn->set($data)->insert($this->_table['order_unpaid_hist']) === false) {
                 throw new \Exception('주문미수금 이력 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문추가정보 등록
+     * @param int $order_idx [주문식별자]
+     * @param bool $is_add_cert_no [수강증번호추가여부]
+     * @param array $input [추가등록정보]
+     * @return bool|string
+     */
+    public function addOrderOtherInfo($order_idx, $is_add_cert_no = true, $input = [])
+    {
+        try {
+            $def_cert_no = '400000';    // 디폴트 수강증번호
+
+            if ($is_add_cert_no === true) {
+                $query = /** @lang text */ 'insert into ' . $this->_table['order_other_info'] . ' (OrderIdx, CertNo)
+                    select ?, ifnull(max(cast(CertNo as int)) + 1, ?) from ' . $this->_table['order_other_info'] . ' where CertNo != "" limit 1';
+                $is_add_other_info = $this->_conn->query($query, [
+                    $order_idx, $def_cert_no
+                ]);
+            } else {
+                $data = [
+                    'OrderIdx' => $order_idx,
+                    'CertNo' => element('CertNo', $input, '')
+                ];
+                $is_add_other_info = $this->_conn->set($data)->insert($this->_table['order_other_info']);
+            }
+
+            if ($is_add_other_info === false) {
+                throw new \Exception('주문추가정보 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

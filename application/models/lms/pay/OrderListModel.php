@@ -41,11 +41,11 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminReasonCcd, O.AdminEtcReason, O.RegAdminIdx, if(O.RegAdminIdx is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
-                    , O.CompleteDatm, O.OrderDatm
+                    , O.CompleteDatm, O.OrderDatm, OOI.CertNo
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm 
-                    , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
+                    , P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd, P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName';
 
@@ -129,6 +129,8 @@ class OrderListModel extends BaseOrderModel
             from ' . $this->_table['order'] . ' as O
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on O.OrderIdx = OP.OrderIdx
+                left join ' . $this->_table['order_other_info'] . ' as OOI
+                    on O.OrderIdx = OOI.OrderIdx            
                 left join ' . $this->_table['site'] . ' as S
                     on O.SiteCode = S.SiteCode and S.IsStatus = "Y"		
                 left join ' . $this->_table['product'] . ' as P

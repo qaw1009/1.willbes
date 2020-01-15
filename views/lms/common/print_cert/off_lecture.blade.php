@@ -26,6 +26,7 @@
                 ctkprint_bar.prt_text_L22 = '{{ number_format($data['RealPayPrice']) }}원 ({{ $data['PayMethodCcdName'] }})' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L24 = '{{ $data['OrderNo'] }}' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L26 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
+                startPrint();
             @elseif($data['ViewType'] == 'G')
                 {{-- 공무원학원 --}}
                 var txt_blank = '{{ str_repeat(' ', 15) }}';
@@ -39,10 +40,26 @@
                 @endfor
 
                 ctkprint_bar.prt_text_L28 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
-            @endif
+                startPrint();
+            @elseif($data['ViewType'] == 'H')
+                {{-- 고등고시, 자격증, 경찰간부 학원 --}}
+                ctkprint_bar.prt_text_L4 = ' {{ $data['MemName'] }} ({{ $data['CertNo'] }})' + ';굴림;12;true;left';
+                ctkprint_bar.prt_text_L28 = '  {{ date('Y-m-d') }}' + ';굴림;8;false;left';
 
-            // 인쇄 관련 부분 시작
-            ctkprint_bar.CT_DOC_Prt = 1;	    // 인쇄 요청 코드
+                @foreach($data['OrderProdNameData'] as $page_idx => $arr_prod_name)
+                    @for($i = 0; $i < $data['LineCnt']; $i++)
+                        ctkprint_bar.prt_text_R{{ $data['StartLine'] + ($i * 2) }} = '{{ array_get($arr_prod_name, $i . '.Name', '') }}' + ';굴림;8;' + '{{ array_get($arr_prod_name, $i . '.Bold', 'false') }}' + ';left';
+                    @endfor
+
+                    {{-- 페이지별 인쇄 시작 --}}
+                    startPrint();
+                @endforeach
+            @endif
+        }
+
+        function startPrint() {
+            // 인쇄 시작
+            ctkprint_bar.CT_DOC_Prt = 1;    // 인쇄 요청 코드
             ctkprint_bar.CT_DOC_Prt2 = 1; 	// 미리보기 코드 (일반 프린터 인쇄)
         }
     </script>

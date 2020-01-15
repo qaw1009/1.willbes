@@ -116,14 +116,15 @@ class Visit extends BaseOrder
                     'LKR' => [
                         'M.MemName' => $this->_reqP('search_member_value'),
                         'M.MemId' => $this->_reqP('search_member_value'),
-                        'M.Phone3' => $this->_reqP('search_member_value'),
+                        'M.Phone3' => $this->_reqP('search_member_value')
                     ]
                 ],
                 'ORG2' => [
                     'EQ' => [
                         'O.OrderIdx' => $this->_reqP('search_prod_value'),
                         'O.OrderNo' => $this->_reqP('search_prod_value'),
-                        'P.ProdCode' => $this->_reqP('search_prod_value')
+                        'P.ProdCode' => $this->_reqP('search_prod_value'),
+                        'OOI.CertNo' => $this->_reqP('search_prod_value')
                     ],
                     'LKB' => [
                         'P.ProdName' => $this->_reqP('search_prod_value')

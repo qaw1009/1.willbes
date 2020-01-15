@@ -8,6 +8,7 @@ class BaseOrderFModel extends WB_Model
         'site_group' => 'lms_site_group',
         'cart' => 'lms_cart',
         'order' => 'lms_order',
+        'order_other_info' => 'lms_order_other_info',
         'order_product' => 'lms_order_product',
         'order_sub_product' => 'lms_order_sub_product',
         'order_product_prof_subject' => 'lms_order_product_prof_subject',

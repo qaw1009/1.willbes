@@ -392,7 +392,7 @@ class Pass extends \app\controllers\FrontController
 
                 // 제한시간 분 -> 초
                 if($row['RealExpireTime'] == 0){
-                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                    $limittime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
                 } else {
                     $limittime = intval($row['RealExpireTime']) * 60;
                 }

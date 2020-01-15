@@ -84,6 +84,8 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+                <input type="hidden" name="target_params[]" value="register_data1[]"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="희망지원청"/> {{-- 체크 항목 전송 --}}
 
                 <div id="apply">                    
                     <div class="form_area">
@@ -95,22 +97,22 @@
                                 <p class="check_contact">
                                     <strong><span class="star">▶</span>2020년 1차  희망지원청</strong><br>
                                     <ul class="area">
-                                        <li><input type="checkbox" name="aa1" id="aa1" value=""><label for="aa1"> 서울청</label></li>
-                                        <li><input type="checkbox" name="aa2" id="aa2" value=""><label for="aa2"> 대구청</label></li>
-                                        <li><input type="checkbox" name="aa3" id="aa3" value=""><label for="aa3"> 인천청</label></li>
-                                        <li><input type="checkbox" name="aa4" id="aa4" value=""><label for="aa4"> 광주청</label></li>
-                                        <li><input type="checkbox" name="aa5" id="aa5" value=""><label for="aa5"> 대전청</label></li>
-                                        <li><input type="checkbox" name="aa6" id="aa6" value=""><label for="aa6"> 울산청</label></li>
-                                        <li><input type="checkbox" name="aa7" id="aa7" value=""><label for="aa7"> 경기남부</label></li>
-                                        <li><input type="checkbox" name="aa8" id="aa8" value=""><label for="aa8"> 경기북부</label></li>
-                                        <li><input type="checkbox" name="aa9" id="aa9" value=""><label for="aa9"> 강원청</label></li>
-                                        <li><input type="checkbox" name="aa10" id="aa10" value=""><label for="aa10"> 충북청</label></li>
-                                        <li><input type="checkbox" name="aa11" id="aa11" value=""><label for="aa11"> 충남청</label></li>
-                                        <li><input type="checkbox" name="aa12" id="aa12" value=""><label for="aa12"> 전북청</label></li>
-                                        <li><input type="checkbox" name="aa13" id="aa13" value=""><label for="aa13"> 전남청</label></li>
-                                        <li><input type="checkbox" name="aa14" id="aa14" value=""><label for="aa14"> 경북청</label></li>
-                                        <li><input type="checkbox" name="aa15" id="aa15" value=""><label for="aa15"> 경남청</label></li>
-                                        <li><input type="checkbox" name="aa16" id="aa16" value=""><label for="aa16"> 제주청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa5" value="대전청"><label for="aa5"> 대전청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa6" value="울산청"><label for="aa6"> 울산청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa7" value="경기남부"><label for="aa7"> 경기남부</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa8" value="경기북부"><label for="aa8"> 경기북부</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa9" value="강원청"><label for="aa9"> 강원청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa10" value="충북청"><label for="aa10"> 충북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa11" value="충남청"><label for="aa11"> 충남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa16" value="제주청"><label for="aa16"> 제주청</label></li>
                                     </ul>
                                 </p>
                                 <p class="check_contact">

@@ -1,0 +1,181 @@
+@extends('willbes.pc.layouts.master')
+
+@section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
+    <!-- Container -->
+    <style type="text/css">
+        .subContainer {
+            min-height: auto !important;
+            margin-bottom:0 !important;
+        }
+        .evtContent {
+            width:100% !important;
+            min-width:1120px !important;
+            margin-top:20px !important;
+            padding:0 !important;
+            background:#fff;
+        }
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+
+
+        /************************************************************/
+
+        .evt_police{background:#404040}
+
+        .evt_top{background:url("https://static.willbes.net/public/images/promotion/2020/01/1522_top_bg.jpg")}
+        .evt_top span {position:absolute; top:330px; left:50%; margin-left:400px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        @@keyframes swing{
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            25%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            75%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }
+
+        .evt_01 {background:#fff;}         
+        
+        .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px 150px;}
+        .form_area h4{height:50px;line-height:50px;font-size:30px;}
+        .form_area h5{font-size:16px;margin-bottom:10px;font-weight:bold; color:#6585ab;}
+        .form_area strong {display:inline-block; width:120px; color:#6585ab}
+        .form_area .star {color:#363636; margin-right:5px;font-size:7px;}
+        .privacy {text-align:left; border:20px solid #e9e9e9; margin-top:30px; padding:40px; font-size:16px;}
+        .privacy p {margin-bottom:15px}
+
+        .form_area label{font-weight:bold;font-size:14px;display:inline-block; margin-left:5px; margin-right:10px}
+        .form_area label.username{letter-spacing:10px;letter-spacing:3.5px;}
+        .form_area input[type=text],
+        .form_area input[type=tel] { height:30px; line-height:30px}
+        .form_area input[type=checkbox],
+        .form_area input[type=radio]{padding-left:15px; width:18px; height:18px}
+        .form_area .check_contact .check{font-weight:normal;}
+        .form_area .check_contact strong {font-weight:bold; width:100%}   
+        .area li {display:inline !important; float:left; width:16.66666%; line-height:1.5; margin-bottom:5px} 
+        .area:after {content:""; display:block; clear:both}    
+        input:checked + label {color:#1087ef;}
+
+        .privacy .info{padding:20px; border:1px solid #e4e4e4;margin-top:20px}
+        .privacy .info li{font-size:12px; list-style:decimal; margin-left:15px; line-height:1.5}
+        .detail{line-height:20px;}
+        .accept{text-align: center;padding: 20px 0 50px 0;font-size: 17px;font-weight: bold;}        
+
+        .btn a {font-size:30px; display:block; border-radius:50px; background:#333; color:#fff; padding:20px 0}
+        .btn a:hover {background:#6585ab;}    
+
+    </style>
+
+    <div class="p_re evtContent NGR" id="evtContainer">   
+        
+        <div class="evtCtnsBox evt_police">
+            <img src="https://static.willbes.net/public/images/promotion/common/police_promotion_top.jpg" title="대학민국 경찰학원 1위 윌비스 신광은경찰팀">            
+        </div>
+
+        <div class="evtCtnsBox evt_top">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top.jpg" title="경찰학 장정훈 무료특강">
+            <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_img.png" alt="꼭 들어보세요"></span>
+        </div>
+
+        <div class="evtCtnsBox evt_02" id="evt_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_01.jpg" title="완벽분석,개정법령">
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+
+                <div id="apply">                    
+                    <div class="form_area">
+                        <h4 class="NGEB">2020.1.18(토) 장정훈 경찰학 승진기출특강 14:00</h4>
+                        <div class="privacy">
+                            <div class="contacts">
+                                <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
+                                <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>2020년 1차  희망지원청</strong><br>
+                                    <ul class="area">
+                                        <li><input type="checkbox" name="aa1" id="aa1" value=""><label for="aa1"> 서울청</label></li>
+                                        <li><input type="checkbox" name="aa2" id="aa2" value=""><label for="aa2"> 대구청</label></li>
+                                        <li><input type="checkbox" name="aa3" id="aa3" value=""><label for="aa3"> 인천청</label></li>
+                                        <li><input type="checkbox" name="aa4" id="aa4" value=""><label for="aa4"> 광주청</label></li>
+                                        <li><input type="checkbox" name="aa5" id="aa5" value=""><label for="aa5"> 대전청</label></li>
+                                        <li><input type="checkbox" name="aa6" id="aa6" value=""><label for="aa6"> 울산청</label></li>
+                                        <li><input type="checkbox" name="aa7" id="aa7" value=""><label for="aa7"> 경기남부</label></li>
+                                        <li><input type="checkbox" name="aa8" id="aa8" value=""><label for="aa8"> 경기북부</label></li>
+                                        <li><input type="checkbox" name="aa9" id="aa9" value=""><label for="aa9"> 강원청</label></li>
+                                        <li><input type="checkbox" name="aa10" id="aa10" value=""><label for="aa10"> 충북청</label></li>
+                                        <li><input type="checkbox" name="aa11" id="aa11" value=""><label for="aa11"> 충남청</label></li>
+                                        <li><input type="checkbox" name="aa12" id="aa12" value=""><label for="aa12"> 전북청</label></li>
+                                        <li><input type="checkbox" name="aa13" id="aa13" value=""><label for="aa13"> 전남청</label></li>
+                                        <li><input type="checkbox" name="aa14" id="aa14" value=""><label for="aa14"> 경북청</label></li>
+                                        <li><input type="checkbox" name="aa15" id="aa15" value=""><label for="aa15"> 경남청</label></li>
+                                        <li><input type="checkbox" name="aa16" id="aa16" value=""><label for="aa16"> 제주청</label></li>
+                                    </ul>
+                                </p>
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
+                                    @foreach($arr_base['register_list'] as $row)
+                                        <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
+                                    @endforeach
+                                </p>
+                            </div>
+                            <div class="info">
+                                <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
+                                <ul>
+                                    <li>이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대 </li>
+                                    <li>이벤트 참여에 따른 강의 수강자 목록에 활용 </li>
+                                    <li>개인정보 수집 항목- 신청인의 이름,연락처 </li>
+                                    <li>개인정보 이용기간 및 보유기간- 본 수집, 활용목적 달성 후 바로 파기 </li>
+                                    <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익</li>
+                                    <li>귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
+                                    위 제공사항은 이벤트 참여를 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="accept">
+                            <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </p>
+                        <div class="btn NGEB">
+                            <a onclick="javascript:fn_submit();">
+                                장정훈 경찰학 무료특강 신청하기 >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>    
+    </div>
+    <!-- End evtContainer -->
+  
+    <script type="text/javascript">
+      
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
+                alert('참여캠퍼스를 선택해 주세요.'); return;
+            }
+            
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+    </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
+@stop   

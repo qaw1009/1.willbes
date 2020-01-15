@@ -63,12 +63,12 @@
         <div class="evtCtnsBox evt_02" id="evtlec">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1517_03.png" alt="올패스 맴버쉽 신청" usemap="#Map1517B" border="0" />
             <map name="Map1517B" id="Map1517B">
-                <area shape="rect" coords="286,368,450,440" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160844" alt="프리미엄 무한수강" />
-                <area shape="rect" coords="760,367,925,445" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160845" alt="프리미엄 슈퍼세이브" />
-                <area shape="rect" coords="284,626,450,699" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160847" alt="베이직 무한수강" />
-                <area shape="rect" coords="763,622,925,700" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160846" alt="베이직 슈퍼 세이브" />
-                <area shape="rect" coords="285,885,449,957" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160848" alt="기본이론 무한수강" />
-                <area shape="rect" coords="761,883,925,958" href="https://job.stage.willbes.net/package/show/cate/309002/pack/648001/prod-code/160849" alt="기본이론 슈퍼세이브" />
+                <area shape="rect" coords="286,368,450,440" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160844" alt="프리미엄 무한수강" />
+                <area shape="rect" coords="760,367,925,445" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160845" alt="프리미엄 슈퍼세이브" />
+                <area shape="rect" coords="284,626,450,699" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160847" alt="베이직 무한수강" />
+                <area shape="rect" coords="763,622,925,700" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160846" alt="베이직 슈퍼 세이브" />
+                <area shape="rect" coords="285,885,449,957" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160848" alt="기본이론 무한수강" />
+                <area shape="rect" coords="761,883,925,958" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160849" alt="기본이론 슈퍼세이브" />
             </map>
 		</div>
 

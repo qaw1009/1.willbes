@@ -136,22 +136,22 @@
 			<ul class="NG mt50">
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160457">1차 노무패스 [경영] 신청 ></a>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160458">1차 노무패스 [경제] 신청 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/160457">1차 노무패스 [경영] 신청 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/161017">1차 노무패스 [경제] 신청 ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_03.jpg" alt="2차 노무패스"/>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160459">2차 노무패스 신청 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/161015">2차 노무패스 신청 ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_04.jpg" alt="동차 베이직 노무패스"/>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160460">동차 노무패스 베이직 [경영] ></a>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160462">동차 노무패스 베이직 [경제] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/160460">동차 노무패스 베이직 [경영] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/161016">동차 노무패스 베이직 [경제] ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_05.jpg" alt="동차 프리미엄 노무패스"/>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160476">동차 노무패스 프리미엄 [경영] ></a>
-					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160477">동차 노무패스 프리미엄 [경제] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/161014">동차 노무패스 프리미엄 [경영] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/160989">동차 노무패스 프리미엄 [경제] ></a>
 				</li>
 			</ul>
 

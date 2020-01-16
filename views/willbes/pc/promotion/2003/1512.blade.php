@@ -20,7 +20,27 @@
 
         /************************************************************/
         .wb_top {background:#193442 url(https://static.willbes.net/public/images/promotion/2020/01/1512_top_bg.jpg) no-repeat center top;}
+        .wb_top div {width: 1120px;margin: 0 auto;position: relative;}
+        .wb_top span{position:absolute;display:block;top:935px;width:252px;z-index:10;}
+        .wb_top span.sp01 {left: 100px; animation: sp01 1.5s linear infinite;}
+        .wb_top span.sp02 {left: 350px; animation: sp02 1.5s linear infinite;}
+        .wb_top span.sp03 {left: 600px; animation: sp03 1.5s linear infinite;}
+        .wb_top span.sp04 {left: 850px; animation: sp04 1.5s linear infinite;}
 
+        @@keyframes sp01{
+		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
+        @@keyframes sp02{
+            from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
+        }
+        @@keyframes sp03{
+            from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
+        @@keyframes sp04{
+            from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
+        }
+
+        
         .wb_01,.wb_02{background:#fff;}
 
         .wb_03 {background:#253036 url(https://static.willbes.net/public/images/promotion/2020/01/1512_03_bg.jpg) no-repeat center top;}
@@ -33,17 +53,33 @@
      <div class="p_re evtContent NGR" id="evtContainer">      
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top.jpg" usemap="#Map1512a" border="0">
-            <map name="Map1512a" id="Map1512a">
-                <area shape="rect" coords="44,934,293,1174" href="#event01" />
-                <area shape="rect" coords="308,931,556,1175" href="#event02" />
-                <area shape="rect" coords="567,930,817,1173" href="#event03" />
-                <area shape="rect" coords="825,930,1078,1173" href="#event04" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top.jpg">   
+                    <span class="sp01">
+                        <a href="#event01">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_01.png">                    
+                        </a>                
+                    </span>  
+                    <span class="sp02">
+                        <a href="#event02">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_02.png">                    
+                        </a>                
+                    </span>        
+                    <span class="sp03">
+                        <a href="#event03">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_03.png">                    
+                        </a>                
+                    </span>        
+                    <span class="sp04">
+                        <a href="#event04">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_04.png">                    
+                        </a>                
+                    </span>           
+            </div>           
         </div>
 
         <div class="evtCtnsBox wb_01" id="event01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_01.gif">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_01.jpg">
         </div>
 
         {{--댓글--}}
@@ -52,7 +88,8 @@
         @endif
       
         <div class="evtCtnsBox wb_02" id="event02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_02.gif">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_02_1.gif">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_02_2.jpg">
         </div>   
 
          <div class="evtCtnsBox wb_03" id="event03">

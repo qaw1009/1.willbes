@@ -38,6 +38,7 @@ class Book extends \app\controllers\BaseController
                 'LKB' => [
                     'wBookIdx' => $this->_reqP('search_value'),
                     'wBookName' => $this->_reqP('search_value'),
+                    'wIsbn' => $this->_reqP('search_value'),
                 ]
             ],
             'ORG2' => [

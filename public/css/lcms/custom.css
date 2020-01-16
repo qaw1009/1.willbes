@@ -515,6 +515,9 @@ footer {
 }
 
 /* bar_tabs */
+ul.bar_tabs {
+    background: transparent !important;
+}
 ul.bar_tabs > li {
     border-radius: 0;
     display: inline !important;

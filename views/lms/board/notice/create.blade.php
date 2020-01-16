@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="board_content">내용<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="board_content">내용</label>
                     <div class="col-md-10">
                         <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
                     </div>

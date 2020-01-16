@@ -12,7 +12,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        <p class="form-control-static">명칭, 코드, ISBN 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_sale_ccd">조건</label>
                     <div class="col-md-5 form-inline">

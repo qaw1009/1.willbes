@@ -10,7 +10,7 @@
         <div class="Content p_re">
             <div class="w-Guide">
                 <h3 class="NSK-Black">시험일정 및 응시자격</h3>
-                <h4 class="NGR mt20">2019년 5급공채/외교관후보자 1차시험(PSAT)접수기간 및 시험일정</h4>
+                <h4 class="NGR mt20">2020년 5급공채/외교관후보자 1차시험(PSAT)접수기간 및 시험일정</h4>
                 <div>
                     <table cellspacing="0" cellpadding="0" class="table-Guided">
                         <colgroup>
@@ -37,9 +37,9 @@
                                 <td>접수기간 : 2.4 ~ 2.6<br>
                                 (취소마감일 2.9. 21:00)</td>
                                 <td rowspan="2">제1차시험</td>
-                                <td rowspan="2">3.1</td>
-                                <td rowspan="2">3.9</td>
-                                <td rowspan="2">4.8</td>
+                                <td rowspan="2">2.21</td>
+                                <td rowspan="2">2.29</td>
+                                <td rowspan="2">3.31</td>
                             </tr>
                         </tbody>
                     </table>

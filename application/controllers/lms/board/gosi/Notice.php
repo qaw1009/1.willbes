@@ -257,7 +257,6 @@ class Notice extends BaseBoard
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
 
         //사이트코드 통합코드가 아닐경우 카테고리 체크

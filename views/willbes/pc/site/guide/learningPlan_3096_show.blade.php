@@ -11,7 +11,7 @@
             <div class="w-Guide">
                 <h3 class="NSK-Black">연간학습계획</h3>
                 <ul class="guideTab NGR">
-                    <li><a href="#tab01" class="on">국립외교원 2차</a></li>
+                    <li><a href="#tab01" class="on">5급(행정)/국립외교원 2차</a></li>
                     <li><a href="#tab02">PSAT(5급공채 1차)</a></li>
                 </ul>
 

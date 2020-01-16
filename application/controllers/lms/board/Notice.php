@@ -245,9 +245,15 @@ class Notice extends BaseBoard
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
-            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
+
+        if(empty($this->bm_idx) === false && $this->bm_idx != '45') {
+            // 공지게시판이 아닐 경우 내용 필수
+            $rules = array_merge($rules, [
+                ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
+            ]);
+        }
 
         //사이트코드 통합코드가 아닐경우 카테고리 체크
         if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {

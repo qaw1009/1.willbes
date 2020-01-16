@@ -269,7 +269,7 @@
             <div class="ln_solid mt-15"></div>
             <div class="row">
                 <div class="col-md-6">
-                    <h4><strong>학원방문수강접수 전체내역</strong></h4>
+                    <h4 class="mb-0"><strong>학원방문수강접수 전체내역</strong></h4>
                 </div>
                 <div class="col-md-12">
                     {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}

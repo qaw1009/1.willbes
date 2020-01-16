@@ -33,9 +33,17 @@
             100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
         }
 
-        .evt_01 {background:#fff;}         
+        .evt_01 {background:#f4f4f4; padding-bottom:100px}
+        .evt_01 .tabs {width:930px; margin:0 auto 30px;}
+        .evt_01 .tabs li {display:inline; float:left; width:50%}
+        .evt_01 .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020;}
+        .evt_01 .tabs li a:hover,
+        .evt_01 .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #f4f4f4; color:#202020; font-weight:600}
+        .evt_01 .tabs:after {content:""; display:block; clear:both}    
+
+        .evt_02 {background:#fff;}          
         
-        .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px 150px;}
+        .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px;}
         .form_area h4{height:50px;line-height:50px;font-size:30px;}
         .form_area h5{font-size:16px;margin-bottom:10px;font-weight:bold; color:#6585ab;}
         .form_area strong {display:inline-block; width:120px; color:#6585ab}
@@ -76,7 +84,23 @@
             <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_img.png" alt="꼭 들어보세요"></span>
         </div>
 
-        <div class="evtCtnsBox evt_02" id="evt_01">
+        <div class="evtCtnsBox evt_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_02.jpg" title="경찰공무원 승진시험 분석">
+            <div>
+                <ul class="tabs">
+                    <li><a href="#tab01">경찰실무 1</a></li>
+                    <li><a href="#tab02">경찰실무종합(경위)</a></li>
+                </ul>
+                <div id="tab01">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_02_01.jpg" title="경찰실무 1">
+                </div>
+                <div id="tab02">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_02_02.jpg" title="경찰실무종합(경위)">
+                </div>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_01.jpg" title="완벽분석,개정법령">
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
@@ -146,6 +170,7 @@
                     </div>
                 </div>
             </form>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_03.jpg" title="완벽분석,개정법령">
         </div>    
     </div>
     <!-- End evtContainer -->
@@ -176,8 +201,31 @@
             }, showValidateError, null, false, 'alert');
         }
 
+        $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        );
     </script>
-
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop   

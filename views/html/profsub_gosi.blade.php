@@ -2620,7 +2620,7 @@
                                 <!--댓글영역-->
                                 <div class="replySection" id="link">
                                     <div class="reply" id="reply"> 
-                                        <div><input type="text" id="TITLE" name="TITLE" maxlength="10" placeholder="닉네임"></div>                      
+                                        <div class="mb10"><input type="text" id="TITLE" name="TITLE" maxlength="10" placeholder="닉네임"></div>                      
                                         <div class="replyWrite">                                            		           
                                             <div class="textarBx">
                                                 <textarea name="EVENT_TXT" id="EVENT_TXT" cols="30" rows="3" onfocus="javascript:fn_focusComment();"></textarea>                        

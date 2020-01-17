@@ -282,10 +282,12 @@
         
         /*디데이카운트다운*/
         $(document).ready(function() {
-            var day_left = dDayCountLeft('{{$arr_promotion_params['edate']}}');
-            if(typeof day_left !== 'undefined') {
-                $('.dayLeft').html('D-' + day_left);
-            }
+            @if(empty($arr_promotion_params['edate']) === false)
+                var day_left = dDayCountLeft('{{$arr_promotion_params['edate']}}');
+                if(typeof day_left !== 'undefined') {
+                    $('.dayLeft').html('D-' + day_left);
+                }
+            @endif
         });
     </script>
     {{-- 프로모션용 스크립트 include --}}

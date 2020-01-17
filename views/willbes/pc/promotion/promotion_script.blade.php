@@ -114,4 +114,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             $('#newTopDday').hide();
         }
     }
+
+    {{--
+     * 디데이 남은 일수 구하기
+     * @@param end_date [마감일 (YYYY-MM-DD)]
+    --}}
+    function dDayCountLeft(end_date) {
+        var arr_end_date = end_date.split('-');
+        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
+        var now = new Date();
+        var date_left = dDayDateDiff.inDays(now, event_day);
+        return date_left;
+    }
 </script>

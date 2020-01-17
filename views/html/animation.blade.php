@@ -94,6 +94,65 @@
         from{margin-top:0}
         to{margin-top:-370px}
         } 
+
+        .wb_cts05 {height:150px}
+        .wb_cts05 .main_img {
+            position:absolute;
+            width:722px;
+            top:30px;
+            left:50%;
+            margin-left:-361px;
+            z-index:10;
+            animation:flipInX 2s infinite;
+            -webkit-animation:flipInX 2s infinite;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        @@keyframes flipInX {
+             from {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;                
+             }
+             40% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             60% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+                
+             }
+             80% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             to {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);  
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;               
+             }
+         }
+         .wb_cts05 .flipInX {
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+            -webkit-animation-name: flipInX;
+            animation-name: flipInX;
+        }
+
+        .wb_cts06 a {display:block; text-align:center; background:#363636; color:#fff; padding:15px 0; border-radius:30px; margin:0 10px; font-size:24px;
+            -webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+            -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+            box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+        }
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -108,7 +167,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <p>회전</p>
+            <p>스윙좌우</p>
             <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_img.png" alt="꼭 들어보세요"></span>
         </div>
 
@@ -117,6 +176,18 @@
             <a href="#none" target="_blank">
                 <img src="https://police.willbes.net/public/uploads/willbes/banner/2019/1129/banner_20200115095259.jpg" title="평생0원PASS">    
             </a>
+        </div>
+
+        <div class="evtCtnsBox wb_cts05">
+            <p>스윙상하</p>
+            <div class="main_img flipInX">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_top_img01.png" alt="윌비스 7급 외무영사직 PASS" />
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts06">
+            <p>그림자</p>
+            <a href="#none">온라인강의 Coming soon</a>
         </div>
 
     </div>

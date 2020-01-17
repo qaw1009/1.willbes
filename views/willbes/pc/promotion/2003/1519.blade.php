@@ -156,31 +156,31 @@
             <div class="box-book">
                 <ul class="slidesBook NSK">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_01.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_01.gif" alt=""/>
                         <span>국어 기미진</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_02.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_02.gif" alt=""/>
                         <span>한국사 조민주</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_03.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_03.gif" alt=""/>
                         <span>경제학 황정빈</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_04.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_04.gif" alt=""/>
                         <span>행정법 한세훈</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_05.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_05.gif" alt=""/>
                         <span>행정학 김덕관</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_06.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_06.gif" alt=""/>
                         <span>헌법 유시완</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_07.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_07.gif" alt=""/>
                         <span>헌법/행정법 황남기</span>
                     </li>
                 </ul>
@@ -200,7 +200,7 @@
                     </dd>                
                 <dd>
                     <dt>수강기간</dt>
-                    <dl>본 상품은 구매일로부터 1년 간 제공되며, 결제가 완료되는 즉시 수강이 시작됩니다.</dl>
+                    <dl>본 상품은 구매일로부터 상품 상세 안내에 표기된 기간동안 제공되며, 결제가 완료되는 즉시 수강이 시작됩니다.</dl>
                 </dd>
                 <dd>
                     <dt>수강관련</dt>

@@ -184,7 +184,7 @@
                     </li>
                 </ul>
             </div> 
-            <p class="NGEB"><a href="chkInfo">지금 바로 7급 일반행정직 PASS 신청하기 ></a></p> 
+            <p class="NGEB"><a href="#chkInfo">지금 바로 7급 일반행정직 PASS 신청하기 ></a></p> 
         </div>
         
         <div class="wb_ctsInfo NGR" id="ctsInfo">

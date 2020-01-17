@@ -131,7 +131,7 @@
 
             <!-- 타이머 -->
             <div class="dday NSK-Black">
-                2020 일반행정직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span>D-10</span>
+                2020 일반행정직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span class="dayLeft"></span>
             </div>
 
             <div class="check" id="chkInfo">
@@ -282,7 +282,10 @@
         
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            var day_left = dDayCountLeft('{{$arr_promotion_params['edate']}}');
+            if(typeof day_left !== 'undefined') {
+                $('.dayLeft').html('D-' + day_left);
+            }
         });
     </script>
     {{-- 프로모션용 스크립트 include --}}

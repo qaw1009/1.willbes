@@ -190,6 +190,13 @@ function go_PassLecture(code){
         alert("이용안내에 동의하셔야 합니다.");
         return;
     }
+    if(code == 1){
+        code = $('input[name="y_pkg"]:checked').val();
+        if (typeof code == 'undefined' || code == '') {
+            alert('강좌를 선택해 주세요.');
+            return;
+        }
+    }
     location.href = "{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}" + code;
 }
 

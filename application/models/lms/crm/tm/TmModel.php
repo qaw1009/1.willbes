@@ -679,8 +679,11 @@ class TmModel extends WB_Model
             where 
                     o.CompleteDatm is not null 
                     and tc1.TmIdx is not null
-                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
+                    and ('. $this->_getCommonCondition() .')
                 ';
+                /*
+                    and ((p.sitecode = '2001' AND pl.LearnPatternCcd = '615001') OR (p.sitecode IN ('2003','2005','2006','2007','2008','2009') AND pl.LearnPatternCcd IN ('615001','615002','615003','615004')))
+                */
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
@@ -728,18 +731,17 @@ class TmModel extends WB_Model
             where 
                     o.CompleteDatm is not null 
                     and tc1.TmIdx is not null 
-                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') ))
+                    and ('. $this->_getCommonCondition() .')
                 ';
+                //and ( (p.sitecode = '2001' AND pl.LearnPatternCcd = '615001') OR (p.sitecode = '2003' AND pl.LearnPatternCcd IN ('615001','615002','615003','615004') ))
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        //$sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
         $sql  = ' select ' . $column . $from . $where . $order_by_offset_limit ;
 
         $result = $this->_conn->query($sql);
-        //echo $this->_conn->last_query();exit;
         return $result->result_array();
     }
 
@@ -800,13 +802,12 @@ class TmModel extends WB_Model
             where 
                     o.CompleteDatm is not null 
                     and tc1.TmIdx is not null
-                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
+                    and ('. $this->_getCommonCondition() .')             
                 ';
-
+                //and ( (p.sitecode = '2001' AND pl.LearnPatternCcd = '615001') OR (p.sitecode = '2003' AND pl.LearnPatternCcd IN ('615001','615002','615003','615004') ))
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo $this->_conn->last_query();
-        //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+
         return ($is_count === true) ? $result->row_array() : $result->result_array();
     }
 
@@ -819,10 +820,6 @@ class TmModel extends WB_Model
      */
     public function listOrderRefundExcel($arr_condition = [], $order_by = [])
     {
-
-        $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
-                        ,sc2.CcdName as LearnPatternCcd_Name, ProdName, RealPayPrice, RefundPrice, RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
-
         $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
                         ,sc2.CcdName as LearnPatternCcd_Name, p.ProdName, op.RealPayPrice
@@ -851,19 +848,24 @@ class TmModel extends WB_Model
             where 
                     o.CompleteDatm is not null 
                     and tc1.TmIdx is not null
-                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
+                    and ('. $this->_getCommonCondition() .')
                 ';
+                //and ( (p.sitecode = '2001' AND pl.LearnPatternCcd = '615001') OR (p.sitecode = '2003' AND pl.LearnPatternCcd IN ('615001','615002','615003','615004') ))
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        //$sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
         $sql  = ' select ' . $column . $from . $where . $order_by_offset_limit ;
 
         $result = $this->_conn->query($sql);
-        //echo $this->_conn->last_query();exit;
         return $result->result_array();
     }
 
+    private function _getCommonCondition()
+    {
+        return '(p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') 
+                  OR 
+                  (p.sitecode IN (\'2003\',\'2005\',\'2006\',\'2007\',\'2008\',\'2009\') AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\'))';
+    }
 }

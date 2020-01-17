@@ -70,6 +70,12 @@ class SearchLectureAll extends \app\controllers\BaseController
                     'A.ProdName' => $this->_reqP('search_value')
                 ]
             ],
+            'ORG2' => [
+                'LKB' => [
+                    'E.ProfIdx_String' => $this->_reqP('search_prof_value'),
+                    'E.wProfName_String' => $this->_reqP('search_prof_value')
+                ]
+            ],
         ]);
 
         if($LearnPatternCcd === '615001') {

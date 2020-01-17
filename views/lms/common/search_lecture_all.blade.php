@@ -74,6 +74,19 @@
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
         </div>
     </div>
+    @if(in_array($LearnPatternCcd, ['615001', '615006']) === true)
+        {{-- 단강좌/단과반만 노출 --}}
+        <div class="form-group pt-10 pb-5">
+            <label class="control-label col-md-1 pt-5 pl-20" for="search_value">교수검색
+            </label>
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm" id="search_prof_value" name="search_prof_value">
+            </div>
+            <div class="col-md-4">
+                <p class="form-control-static"></p>
+            </div>
+        </div>
+    @endif
     <div class="row mt-20 mb-20">
         <div class="col-md-12 clearfix">
             <table id="_list_ajax_table" class="table table-striped table-bordered">

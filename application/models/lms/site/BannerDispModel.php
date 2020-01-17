@@ -86,16 +86,19 @@ class BannerDispModel extends WB_Model
      */
     public function getBannerDispList($column)
     {
-        $from = " FROM {$this->_table['banner_disp']} ";
-        $arr_condition['EQ']['IsUse'] = 'Y';
-        $arr_condition['EQ']['IsStatus'] = 'Y';
+        $from = " 
+            FROM {$this->_table['banner_disp']} A
+            LEFT OUTER JOIN {$this->_table['sys_category']} B ON A.CateCode = B.CateCode
+        ";
+        $arr_condition['EQ']['A.IsUse'] = 'Y';
+        $arr_condition['EQ']['A.IsStatus'] = 'Y';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['BdIdx' => 'DESC'])->getMakeOrderBy();
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['A.BdIdx' => 'DESC'])->getMakeOrderBy();
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
         return $query->result_array();
     }
 

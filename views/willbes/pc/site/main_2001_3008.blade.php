@@ -78,7 +78,7 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi2.jpg" title="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50742', 'S1');">▶</a></li>
                             <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0
 " target="_blank">교수소개</a></li>
                         </ul>

@@ -16,13 +16,13 @@
                 </div>
                 --}}
                 <div class="sliderNum">
-                    <div><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1379" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1379_banner.jpg" alt="해양경찰 합격 패키지"/></a></div>
+                    <div><a href="https://police.willbes.net/pass/promotion/index/cate/3016/code/1466" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_200117.jpg" alt="해양경찰 합격 패키지"/></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1357" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190826.jpg" alt="해양경찰 공채 PASS"></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1043" target="_blank"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a></div>
                 </div>
                 <ul>                    
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/156658"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" title="오태진 한국사 기본이론"></a></li>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/156660"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li> 
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/157702"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" title="오태진 한국사 기본이론"></a></li>
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/157700"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li> 
                 </ul> 
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="Section mt30">
             <div class="widthAuto bnrSec02">
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" title="신광은 형사소송법"></a></div>
-                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" title="공득인 해양경찰학개론"></a></div>
+                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" title="공득인 해양경찰학개론"></a></div>
             </div>
         </div>
 
@@ -115,7 +115,7 @@
                                 <div>
                                     <img src="{{ img_url('cop_sea/prof/prof_gdi_184.jpg') }}" alt="공득인">
                                     <ul class="ProfBtns">
-                                        <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
+                                        <li><a href="#none" onclick="fnPlayerProf('50742', 'S1');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}">교수소개</a></li>
                                     </ul>
                                 </div>

@@ -6248,6 +6248,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: block;
     clear: both;
 } 
+.willbes-Prof-Profile .prof-banner01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #98cfed;
+}
+.willbes-Prof-Profile .prof-banner01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.willbes-Prof-Profile .prof-banner01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willbes-Prof-Profile .prof-banner01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #98cfed;
+}
 
 .willbes-Prof-Profile .prof-banner02 {
     clear: both;

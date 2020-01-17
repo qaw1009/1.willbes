@@ -16,7 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:auto !important}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/    
@@ -51,8 +51,9 @@
             position:absolute; width:640px; height:50px; line-height:50px; top:680px; left:50%; margin-left:-320px; 
             text-align:center; color:#fff; font-size:24px; z-index:10;            
         }
-        .wb_top .dday span {font-size:26px}
+        .wb_top .dday span {font-size:26px;}
         .wb_top span {
+            vertical-align:top;
             animation:topText01 2s infinite;
             -webkit-animation:topText01 2s infinite;
             -webkit-animation-fill-mode: both;
@@ -131,7 +132,7 @@
 
             <!-- 타이머 -->
             <div class="dday NSK-Black">
-                2020 일반행정직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span>D-10</span>
+                2020 일반행정직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span class="dayLeft"></span>
             </div>
 
             <div class="check" id="chkInfo">
@@ -282,7 +283,12 @@
         
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            @if(empty($arr_promotion_params['edate']) === false)
+                var day_left = dDayCountLeft('{{$arr_promotion_params['edate']}}');
+                if(typeof day_left !== 'undefined') {
+                    $('.dayLeft').html('D-' + day_left);
+                }
+            @endif
         });
     </script>
     {{-- 프로모션용 스크립트 include --}}

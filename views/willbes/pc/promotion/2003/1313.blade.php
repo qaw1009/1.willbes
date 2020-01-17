@@ -35,26 +35,25 @@
 .wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") no-repeat center top}
 
 .wb_cts02{background:#ccc}
-
 .wb_cts03{background:#f4f4f4;position:relative;padding-bottom:100px;}
-
 .wb_cts03 li {position:absolute;margin-left:350px;}
-.wb_cts03 li:nth-child(1) {left:830px;bottom:390px;}
-.wb_cts03 li:nth-child(2) {left:1000px;bottom:390px;}
-.wb_cts03 li:nth-child(3) {left:830px;bottom:325px;} 
-.wb_cts03 li:nth-child(4) {left:1000px;bottom:325px;}
-.wb_cts03 li:nth-child(5) {left:830px;bottom:255px;}
-.wb_cts03 li:nth-child(6) {left:1000px;bottom:255px;} 
-
+.wb_cts03 li:nth-child(1) {left:830px;bottom:535px;}
+.wb_cts03 li:nth-child(2) {left:1000px;bottom:535px;}
+.wb_cts03 li:nth-child(3) {left:830px;bottom:465px;} 
+.wb_cts03 li:nth-child(4) {left:1000px;bottom:465px;}
+.wb_cts03 li:nth-child(5) {left:830px;bottom:395px;}
+.wb_cts03 li:nth-child(6) {left:1000px;bottom:395px;} 
 .wb_cts03 li input {height:30px; width:30px;}
-.btn_area {position:absolute;margin-left:-150px;bottom:110px;}
-.btn_area .btn{background:#b6061b;color:#fff;font-size:18px;font-weight:bold;width:300px;}
-.btn_area a{display:inline-block;height:40px;line-height:40px;border-radius:10px;letter-spacing:-0.5px;transition:all 0.5s linear;}
 
-.check {position:absolute;left:0;top:1200px;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
+.wb_top .check {position:absolute; width:1000px; left:50%; top:900px; margin-left:-500px; letter-spacing:3 !important; color:#fff; font-size:14px; z-index:10}
+.wb_cts04 .check {color:#fff; font-size:14px}
+.check p {margin-bottom:20px;}
+.check p a {display:block; width:432px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#b6061b; text-align:center; border-radius:90px;}
+.check p a:hover {color:#8d0033; background:#eee53b;}
 .check label {cursor:pointer}
-.check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
-.check a{display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#545454; margin-left:50px; border-radius:20px;color:#fff;}
+.check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+.check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+.check a.infotxt:hover {background:#8d0033}       
 
 .tabContaier{width:1120px;margin:0 auto;}
 .tabContaier li{display:inline-block;width:280px;height:84px;line-height:84px;background:#fff;color:#000;float:left;font-size:18px;font-weight:bold;}
@@ -140,13 +139,24 @@
             <li><input type="radio" id="y_pkg" name="y_pkg" value="155385" onClick=""/><label for="y_pkg"></label></li>
             <li><input type="radio" id="y_pkg" name="y_pkg" value="155386" onClick=""/><label for="y_pkg"></label></li>         
         </ul>
+
+        <div class="check" id="chkInfo">
+            <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">윌비스 군무원PASS 신청하기</a></p>      
+            <label>
+                <input name="ischk" type="checkbox" value="Y" />
+                페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+            </label>
+            <a href="#tip" class="infotxt" > 이용안내확인하기 ↓</a>
+        </div>
+        {{--
         <span class="btn_area">
             <a href="#none" onclick="goPassLecture()" class="btn">윌비스 군무원PASS 신청하기</a>
         </span>
         <div class="check NGR" id="chkInfo">
             <input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
             <a href="#tip">이용안내확인하기 ↓</a>
-        </div>    
+        </div>
+        --}}    
     </div>
  
     <div class="evtCtnsBox wb_cts04" id="tip">
@@ -179,6 +189,13 @@ function go_PassLecture(code){
     if($("input[name='ischk']:checked").size() < 1){
         alert("이용안내에 동의하셔야 합니다.");
         return;
+    }
+    if(code == 1){
+        code = $('input[name="y_pkg"]:checked').val();
+        if (typeof code == 'undefined' || code == '') {
+            alert('강좌를 선택해 주세요.');
+            return;
+        }
     }
     location.href = "{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}" + code;
 }

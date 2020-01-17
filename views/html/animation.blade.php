@@ -147,6 +147,12 @@
             -webkit-animation-name: flipInX;
             animation-name: flipInX;
         }
+
+        .wb_cts06 a {display:block; text-align:center; background:#363636; color:#fff; padding:15px 0; border-radius:30px; margin:0 10px; font-size:24px;
+            -webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+            -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+            box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
+        }
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -161,7 +167,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <p>회전</p>
+            <p>스윙좌우</p>
             <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_img.png" alt="꼭 들어보세요"></span>
         </div>
 
@@ -173,10 +179,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <p>상하움직임</p>
+            <p>스윙상하</p>
             <div class="main_img flipInX">
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_top_img01.png" alt="윌비스 7급 외무영사직 PASS" />
             </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts06">
+            <p>그림자</p>
+            <a href="#none">온라인강의 Coming soon</a>
         </div>
 
     </div>

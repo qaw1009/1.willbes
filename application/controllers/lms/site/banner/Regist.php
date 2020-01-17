@@ -26,7 +26,7 @@ class Regist extends \app\controllers\BaseController
         $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
 
         // 노출섹션 데이터 조회
-        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, B.ParentCateCode');
 
         $this->load->view('site/banner/index',[
             'arr_cate_code' => $category_data,
@@ -76,7 +76,7 @@ class Regist extends \app\controllers\BaseController
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         // 노출섹션 데이터 조회
-        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, B.ParentCateCode');
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -198,7 +198,7 @@ class Regist extends \app\controllers\BaseController
         $category_data = $this->_getCategoryArray(1);
 
         // 노출섹션 데이터 조회
-        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, B.ParentCateCode');
 
         $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['A.SiteCode' => 'asc', 'A.BdIdx' => 'asc', 'A.OrderNum' => 'asc', 'A.BIdx' => 'desc']);
 

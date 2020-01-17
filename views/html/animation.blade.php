@@ -153,6 +153,12 @@
             -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
             box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
         }
+
+        .wb_cts07 span.sp01 {left:100px; animation: sp01 1.5s linear infinite;}
+        @@keyframes sp01{
+		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -188,6 +194,13 @@
         <div class="evtCtnsBox wb_cts06">
             <p>그림자</p>
             <a href="#none">온라인강의 Coming soon</a>
+        </div>
+
+        <div class="evtCtnsBox wb_cts07">
+            <p>스케일</p>
+            <span class="sp01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_01.png">                    
+            </span>
         </div>
 
     </div>

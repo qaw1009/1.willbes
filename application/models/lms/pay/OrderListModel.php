@@ -352,7 +352,7 @@ class OrderListModel extends BaseOrderModel
                 $from .= '
                     left join ' . $this->_table['order_unpaid_hist'] . ' as OUH		
                         on O.OrderIdx = OUH.OrderIdx';
-                $column .= ', OUH.UnPaidIdx, OUH.IsFirstUnPaid, if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
+                $column .= ', OUH.UnPaidIdx, OUH.UnPaidUnitNum, if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
                 $excel_column .= ', if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
             }
 
@@ -605,7 +605,7 @@ class OrderListModel extends BaseOrderModel
             , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo';
         $arr_condition = [
             'EQ' => [
-                'OUI.ProdCode' => get_var($prod_code, 0), 'OUI.MemIdx' => get_var($mem_idx, 0), 'OUH.IsFirstUnPaid' => 'Y',
+                'OUI.ProdCode' => get_var($prod_code, 0), 'OUI.MemIdx' => get_var($mem_idx, 0), 'OUH.UnPaidUnitNum' => '1',
                 'OUI.UnPaidIdx' => $unpaid_idx
             ]
         ];
@@ -627,7 +627,7 @@ class OrderListModel extends BaseOrderModel
     public function findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx = null, $limit = null)
     {
         $column = 'OUI.UnPaidIdx, OUI.MemIdx, OUI.ProdCode, OUI.OrgOrderPrice, OUI.OrgPayPrice, OUI.DiscPrice, OUI.DiscRate, OUI.DiscType, OUI.DiscReason
-            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo, OUH.IsFirstUnPaid
+            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidUnitNum, OUH.UnPaidMemo
 	        , O.OrderNo, O.SiteCode, O.CompleteDatm, OP.PayStatusCcd, OP.RealPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
 	        , (OUH.UnPaidPrice + ifnull(OPR.RefundPrice, 0)) as RealUnPaidPrice
 	        , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.CampusCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
@@ -677,7 +677,7 @@ class OrderListModel extends BaseOrderModel
     public function getCertNoFirstOrderUnPaidInfo($unpaid_idx)
     {
         $column = 'ifnull(OOI.CertNo, "") as CertNo';
-        $arr_condition = ['EQ' => ['OUH.UnPaidIdx' => get_var($unpaid_idx, 0), 'OUH.IsFirstUnPaid' => 'Y']];
+        $arr_condition = ['EQ' => ['OUH.UnPaidIdx' => get_var($unpaid_idx, 0), 'OUH.UnPaidUnitNum' => '1']];
 
         $data = $this->_conn->getJoinFindResult($this->_table['order_unpaid_hist'] . ' as OUH', 'left', $this->_table['order_other_info'] . ' as OOI'
             , 'OUH.OrderIdx = OOI.OrderIdx'

@@ -1928,11 +1928,11 @@ class OrderModel extends BaseOrderModel
 
                 $unpaid_idx = $this->_conn->insert_id();
                 $unpaid_price = $org_pay_price - $real_pay_price;
-                $is_first_unpaid = 'Y';
+                $unpaid_unit_num = 1;
             } else {
                 $unpaid_idx = $row['UnPaidIdx'];
                 $unpaid_price = $row['RealUnPaidPrice'] - $real_pay_price;
-                $is_first_unpaid = 'N';
+                $unpaid_unit_num = $row['UnPaidUnitNum'] + 1;
             }
 
             // 미수금액 체크
@@ -1945,8 +1945,8 @@ class OrderModel extends BaseOrderModel
                 'UnPaidIdx' => $unpaid_idx,
                 'OrderIdx' => $order_idx,
                 'UnPaidPrice' => $unpaid_price,
-                'UnPaidMemo' => element('UnPaidMemo', $input),
-                'IsFirstUnPaid' => $is_first_unpaid
+                'UnPaidUnitNum' => $unpaid_unit_num,
+                'UnPaidMemo' => element('UnPaidMemo', $input)
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order_unpaid_hist']) === false) {

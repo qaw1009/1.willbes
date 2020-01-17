@@ -11,14 +11,14 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }	
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
 
@@ -42,7 +42,7 @@
         }    
         
 
-        .wb_cts00 {background:#1c1c1c url(https://static.willbes.net/public/images/promotion/2019/11/1060_c1_bg.jpg) no-repeat center top;}	
+        .wb_cts00 {background:#1c1c1c url(https://static.willbes.net/public/images/promotion/2020/01/1060_top_bg.png) no-repeat center top;}	
         .wb_cts00 ul { width:100%;  margin:0 auto;}
             .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto;   padding:0px 0px 124px 0px; }
             .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
@@ -69,18 +69,15 @@
             .PeMenu li:hover img.off {display:none} 	
             .PeMenu li:hover img.on {display:block}
         
-        .wb_cts03 {height:1169px; background:#f3f5f7 url(https://static.willbes.net/public/images/promotion/2019/04/1060_c7_11.jpg) center top no-repeat;}	
-        .wb_cts03 ul {height:696px}
-        .wb_cts03 li {text-align:center;} 
-        .wb_cts03 .btn {padding-left:300px;}
+        .wb_cts03 {background:#f3f5f7}	
+        .wb_cts03 ul {position:absolute; left:50%; top:437px; margin-left:350px; z-index:2}
+        .wb_cts03 li:nth-child(2) {margin-top:170px}
+        .wb_cts03 li:nth-child(3) {margin-top:90px} 
         .wb_cts03 li input {height:30px; width:30px;}
-        .wb_cts03 .check01 input {margin:430px 0px 0px 740px;}
-        .wb_cts03 .check02 input {margin:95px 0px 0px 740px;}
-        .wb_cts03 .check03 input {margin:135px 0px 0px -280px; }
-        .wb_cts03 .check04 {width:877px; height:112px; margin:20px auto 0;}
-        .btn { position:}
+        .wb_cts03 li label {display:none}
+        .wb_cts03 .btn {padding-left:300px;}       
 
-     
+        .wb_cts03 .check04 {width:877px; height:112px; margin:20px auto 0;}     
         .wb_cts03 .check {width:980px; margin:0 auto;  padding:50px 0px 30px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fffbfb; background:#252525; margin-left:50px; border-radius:20px}
@@ -88,20 +85,17 @@
         .wb_cts04 {width:100%; text-align:center;  min-width:1210px; background:#e5dac9 ;}
         
         .wb_cts05 {width:100%; text-align:center;  min-width:1210px; background:#f3f5f7; padding-top:50px}	
-
-        .skybanner {position:fixed;top:600px;right:0;width:190px;}
-        .skybanner2 {position:fixed;top:250px;right:0;z-index:1;}
-        .skybanner2 li{list-style:none;}
+        .skybanner {position:absolute; top:-150px;right:10px; z-index:1;}
+        .skybanner a {display:block; margin-bottom:10px}
         
     </style>
     
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="skybanner2">
-            <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="할인받고 수강하기"></a></li>          
-        </div> 
         <div class="skybanner">
-			<div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지런칭기념 파격할인" ></a></div>
-        </div>       
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지" ></a>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2020/01/1060_sky01.png" alt="FINAL PASS" ></a>
+        </div>      
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -127,7 +121,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_cts00" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c1_1.png" alt="소방 PASS"/><br>            
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1060_top.png" alt="소방 PASS"/><br>            
         </div>
 
         <div class="evtCtnsBox wb_cts00s" >    
@@ -181,14 +175,14 @@
           
         <div class="evtCtnsBox wb_cts03" id="event">             
             <ul>
-                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/></div></li> <!--공채 12개월 -->
-                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/></div></li> <!--특채 12개월 -->
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="161023" onClick=""/><label for="y_pkg">3개월 공채 전과목 무제한</label></li>   
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/><label for="y_pkg">공채 12개월</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/><label for="y_pkg">특채 12개월</label></li>
             </ul>
-            <div>
-                <a href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c7_22.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
-                </a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1060_07.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" usemap="#Map1060A" border="0" />
+            <map name="Map1060A" id="Map1060A">
+                <area shape="rect" coords="645,974,755,1018" href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank" alt="소방체력풀패키지 상세보기" id="event2"/>
+            </map>
             <div>
                 <div class="check" id="chkInfo">
                     <label>
@@ -261,6 +255,18 @@
 
             location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code.val();
         }
+
+        var quick_top = $(".skybanner").offset().top;
+        $(window).scroll(function(){
+            if ( $(window).scrollTop() > quick_top - 100 ){
+                $(".skybanner").stop().animate({top: $(window).scrollTop() - 150}, 500);
+            }else {
+                $(".skybanner").stop().animate({top: quick_top}, 500);
+            }
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                $(".skybanner").stop().animate({top: $(document).height()-1200}, 500);
+            }
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

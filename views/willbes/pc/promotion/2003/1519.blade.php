@@ -16,7 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:auto !important}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/    
@@ -51,8 +51,9 @@
             position:absolute; width:640px; height:50px; line-height:50px; top:680px; left:50%; margin-left:-320px; 
             text-align:center; color:#fff; font-size:24px; z-index:10;            
         }
-        .wb_top .dday span {font-size:26px}
+        .wb_top .dday span {font-size:26px;}
         .wb_top span {
+            vertical-align:top;
             animation:topText01 2s infinite;
             -webkit-animation:topText01 2s infinite;
             -webkit-animation-fill-mode: both;

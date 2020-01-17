@@ -53,6 +53,7 @@
         }
         .wb_top .dday span {font-size:26px}
         .wb_top span {
+            vertical-align:top;
             animation:topText01 2s infinite;
             -webkit-animation:topText01 2s infinite;
             -webkit-animation-fill-mode: both;

@@ -32,7 +32,7 @@
         }
 
         .evt_01 {background:#fff;}
-        .evt_02 {background:#e9e9e9; padding-bottom:100px} 
+        .evt_02 {background:#e9e9e9; padding-bottom:150px} 
         .evt_02 ul {width:800px; margin:50px auto 0}
         .evt_02 li {display:inline; float:left; width:50%;}
         .evt_02 li a {display:block; text-align:center; background:#363636; color:#fff; padding:15px 0; border-radius:30px; margin:0 10px; font-size:24px}

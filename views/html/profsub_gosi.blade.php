@@ -42,7 +42,6 @@
 }
 .replySection .rnDelBtn {    
     float:right;
-    margin-top:-3px;
 }
 .replySection .rnDelBtn .rdDelpass {display:inline-block;}
 .replySection .rnDelBtn .rdDelpass input {
@@ -72,6 +71,10 @@
     color:#555;
     background: #fafafa;
     border-bottom:1px solid #999;
+}
+.replySection input {height: 25px;
+    border: 1px solid #d4d4d4;
+    width:150px;
 }
 </style>
 <div id="Container" class="subContainer widthAuto c_both">
@@ -233,7 +236,7 @@
                     </li>
                     <li class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/professor/50547/bnr_img_01_1_50547.png" alt="배너명"></a></div>
                             <div><a href="#none"><img src="{{ img_url('prof/bnrA02.jpg') }}" alt="배너명"></a></div>
                         </div>
                     </li>
@@ -2410,7 +2413,12 @@
 
                         <!-- List -->
                         <div class="willbes-Leclist c_both">
-                            <div class="LeclistTable">
+                            <div class="willbes-Lec-Selected tx-gray">
+                                <div class="f_right">
+                                    <div class="subBtn blue NSK f_right"><a href="#none">글쓰기 ></a></div>
+                                </div>
+                            </div>
+                            <div class="LeclistTable mt30">
                                 <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 65px;">
@@ -2535,8 +2543,52 @@
 
                         <br/><br/><br/>
 
+                         <!-- Write -->
+                        <div class="willbes-Leclist mt40 c_both">
+                            <div class="LecWriteTable">                        
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
+                                    <colgroup>
+                                        <col style="width: 120px;">
+                                        <col style="width: 820px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-tit bg-light-white tx-left strong pl30">닉네임<span class="tx-light-blue">(*)</span></td>
+                                            <td class="w-text tx-left pl30" colspan="3">
+                                                <input type="text" id="TITLE" name="TITLE" maxlength="10" style="width:150px">
+                                            </td>
+                                        </tr>    
+                                        <tr>
+                                            <td class="w-tit bg-light-white tx-left strong pl30">제목<span class="tx-light-blue">(*)</span></td>
+                                            <td class="w-text tx-left pl30" colspan="3">
+                                                <input type="text" id="TITLE" name="TITLE" maxlength="30">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-tit bg-light-white tx-left strong pl30">내용<span class="tx-light-blue">(*)</span></td>
+                                            <td class="w-textarea write tx-left pl30" colspan="3">
+                                                <textarea></textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="search-Btn mt20 h36 p_re">
+                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                        <span class="tx-purple-gray">취소</span>
+                                    </button>
+                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                        <span>저장</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br/><br/><br/>
+
                         <!-- View -->
-                        <div class="willbes-Leclist c_both">
+                        <div class="willbes-Leclist c_both">                            
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                     <colgroup>
@@ -2556,12 +2608,6 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="w-file tx-left pl20" colspan="4">
-                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td class="w-txt tx-left" colspan="4">
                                                 이달의 개강 강좌 공지입니다.<br/>
                                                 이달의 개강 강좌 공지입니다.<br/>
@@ -2573,8 +2619,9 @@
 
                                 <!--댓글영역-->
                                 <div class="replySection" id="link">
-                                    <div class="reply" id="reply">                          
-                                        <div class="replyWrite">		           
+                                    <div class="reply" id="reply"> 
+                                        <div><input type="text" id="TITLE" name="TITLE" maxlength="10" placeholder="닉네임"></div>                      
+                                        <div class="replyWrite">                                            		           
                                             <div class="textarBx">
                                                 <textarea name="EVENT_TXT" id="EVENT_TXT" cols="30" rows="3" onfocus="javascript:fn_focusComment();"></textarea>                        
                                             </div>
@@ -2586,14 +2633,10 @@
                                             <li>
                                                 <div class="ryw_info">
                                                     <strong>BTS</strong> 
-                                                    <span>(211.46.***.21)</span> 
+                                                    
                                                     <span class="date">2019-03-07</span>
                                                     <div class="rnDelBtn">
-                                                        <div class="rdDelpass">
-                                                            <input type="password" id="USER_PWD" name="USER_PWD" placeholder="비밀번호" maxlength="10">
-                                                            <button type="submit" onclick="">확인</button>
-                                                        </div>
-                                                        <a onclick="javascript:modify_notice('DEL',2)">삭제</a>
+                                                        <a href="#none">삭제</a>
                                                     </div>
                                                 </div>
                                                 <div class="ryw_cont">
@@ -2605,7 +2648,7 @@
                                                 </div>
                                             </li> 
                                             <li>
-                                                <div class="ryw_info"><strong>소녀시대</strong> <span>(211.46.***.21)</span> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
+                                                <div class="ryw_info"><strong>소녀시대</strong> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
                                                 <div class="ryw_cont">
                                                     <div>
                                                         1. 제가 의경근무할때 조xx경기청장 시절 지휘관 회의실에도 따라가서 느낀점도 있고 제대 후에도 그 사람이 하는 경찰 위한 정책도 너무 마음에 들었습니다
@@ -2615,7 +2658,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="ryw_info"><strong>레드벨벳</strong> <span>(211.46.***.21)</span> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
+                                                <div class="ryw_info"><strong>레드벨벳</strong> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
                                                 <div class="ryw_cont">
                                                     <div>
                                                         1. 제가 의경근무할때 조xx경기청장 시절 지휘관 회의실에도 따라가서 느낀점도 있고 제대 후에도 그 사람이 하는 경찰 위한 정책도 너무 마음에 들었습니다
@@ -2625,7 +2668,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="ryw_info"><strong>아이유</strong> <span>(211.46.***.21)</span> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
+                                                <div class="ryw_info"><strong>아이유</strong> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
                                                 <div class="ryw_cont">
                                                     <div>
                                                         1. 제가 의경근무할때 조xx경기청장 시절 지휘관 회의실에도 따라가서 느낀점도 있고 제대 후에도 그 사람이 하는 경찰 위한 정책도 너무 마음에 들었습니다
@@ -2635,7 +2678,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="ryw_info"><strong>너랑나랑은</strong> <span>(211.46.***.21)</span> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
+                                                <div class="ryw_info"><strong>너랑나랑은</strong> <span class="date">2019-03-07</span> <a class="rnDelBtn f_right" onclick="javascript:modify_notice('DEL',2)">삭제</a></div>
                                                 <div class="ryw_cont">
                                                     <div>
                                                         1. 제가 의경근무할때 조xx경기청장 시절 지휘관 회의실에도 따라가서 느낀점도 있고 제대 후에도 그 사람이 하는 경찰 위한 정책도 너무 마음에 들었습니다
@@ -2647,36 +2690,24 @@
                                         </ul>
                                                     
                                         <div>                
-                                            공통 페이지 넘버링 적용                
+                                            공통 페이지 넘버링 적용  (댓글용)              
                                         </div>
                                     </div>          
                                 </div>
                                 <!--댓글영역//-->
 
-                                <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                                    <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>목록</span>
-                                    </button>
+                                <div class="search-Btn mt20 h36 p_re">
+                                    <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                        <a href="#none" class="tx-purple-gray">삭제</a>
+                                    </div>
+                                    <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
+                                        <a href="#none" class="tx-purple-gray">수정</a>
+                                    </div>
+                                    <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
+                                        <a href="#none">목록</a>
+                                    </div>
                                 </div>
-                                <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 150px;">
-                                        <col style="width: 640px;">
-                                        <col style="width: 150px;">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
-                                            <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
-                                            <td class="w-date">2018-00-00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-next bg-light-gray"><strong>다음글</strong></td>
-                                            <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
-                                            <td class="w-date">2018-00-00</td>
-                                        </tr> 
-                                    </tbody>
-                                </table>
+
                             </div>
                         </div>
                         <!-- willbes-Leclist -->

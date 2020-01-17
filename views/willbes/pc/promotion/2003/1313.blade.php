@@ -35,14 +35,14 @@
 .wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") no-repeat center top}
 
 .wb_cts02{background:#ccc}
-.wb_cts03{background:#f4f4f4;position:relative;padding-bottom:100px;}
-.wb_cts03 li {position:absolute;margin-left:350px;}
-.wb_cts03 li:nth-child(1) {left:830px;bottom:535px;}
-.wb_cts03 li:nth-child(2) {left:1000px;bottom:535px;}
-.wb_cts03 li:nth-child(3) {left:830px;bottom:465px;} 
-.wb_cts03 li:nth-child(4) {left:1000px;bottom:465px;}
-.wb_cts03 li:nth-child(5) {left:830px;bottom:395px;}
-.wb_cts03 li:nth-child(6) {left:1000px;bottom:395px;} 
+.wb_cts03{background:#f4f4f4;position:relative; padding-bottom:100px;}
+.wb_cts03 li {position:absolute; left:50%; margin-left:210px;}
+.wb_cts03 li:nth-child(1) {bottom:535px;}
+.wb_cts03 li:nth-child(2) {bottom:535px; margin-left:380px;}
+.wb_cts03 li:nth-child(3) {bottom:465px;} 
+.wb_cts03 li:nth-child(4) {bottom:465px; margin-left:380px;}
+.wb_cts03 li:nth-child(5) {bottom:395px;}
+.wb_cts03 li:nth-child(6) {bottom:395px; margin-left:380px;} 
 .wb_cts03 li input {height:30px; width:30px;}
 
 .wb_top .check {position:absolute; width:1000px; left:50%; top:900px; margin-left:-500px; letter-spacing:3 !important; color:#fff; font-size:14px; z-index:10}

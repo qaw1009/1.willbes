@@ -156,31 +156,31 @@
             <div class="box-book">
                 <ul class="slidesBook NSK">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_01.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_01.gif" alt=""/>
                         <span>국어 기미진</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_02.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_02.gif" alt=""/>
                         <span>한국사 조민주</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_03.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_03.gif" alt=""/>
                         <span>경제학 황정빈</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_04.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_04.gif" alt=""/>
                         <span>행정법 한세훈</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_05.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_05.gif" alt=""/>
                         <span>행정학 김덕관</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_06.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_06.gif" alt=""/>
                         <span>헌법 유시완</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_07.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_07.gif" alt=""/>
                         <span>헌법/행정법 황남기</span>
                     </li>
                 </ul>

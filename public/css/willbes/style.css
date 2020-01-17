@@ -6225,12 +6225,13 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .prof-banner01 li {
     display: inline;
-    float: left;    
+    float: left;
+    height: 206px;
+    overflow: hidden;
 }
 .willbes-Prof-Profile .prof-banner01 li:first-child {
     background: url("../../img/willbes/prof/viewSample02_bg.jpg") no-repeat 0 0;
-    width: 370px;
-    height: 206px;  
+    width: 370px; 
     margin-right:14px;  
 }
 .willbes-Prof-Profile .prof-banner01 li iframe {
@@ -6239,9 +6240,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .prof-banner01 li:last-child {
     position: relative;
-    width: 188px;
+    width: 188px;    
     height: 206px;
-    overflow: hidden;
 }
 .willbes-Prof-Profile .prof-banner01:after {
     content: '';

@@ -41,7 +41,7 @@
 
         .wb_top {
             font-size:15px; color:#ebebeb;
-            background:url(https://static.willbes.net/public/images/promotion/2020/01/1520_top_bg.jpg) no-repeat center top;
+            background:url(https://static.willbes.net/public/images/promotion/2020/01/1519_top_bg.jpg) no-repeat center top;
         }
         .wb_top .topText {
             position:absolute; width:640px; height:50px; line-height:50px; top:70px; left:50%; margin-left:-320px; border-radius:40px; background:#000;
@@ -92,13 +92,13 @@
         .wb_cts02 .box-book li span {display:block; margin-top:20px; text-align:center; font-size:14px}
         .wb_cts02 p {margin-top:80px}
         .wb_cts02 p a {display:block; width:660px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#0f0f0f; text-align:center; border-radius:90px}
-        .wb_cts02 p a:hover {color:#30ff74; background:#092252;}        
+        .wb_cts02 p a:hover {color:#fed901; background:#13604d;}        
 
         .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
         .wb_ctsInfo div {width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
         }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#30ff74} 
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#fed901} 
         .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
             text-decoration:underline}  
         .wb_ctsInfo div dd {margin-bottom:30px}
@@ -107,7 +107,7 @@
 		    padding-left:10px;
         }
         .wb_ctsInfo div dl:before{
-            background: #30ff74 none repeat scroll 0 0; 
+            background: #fed901 none repeat scroll 0 0; 
             border-radius: 2px;
             content: '';
             display: block;
@@ -123,7 +123,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_top.jpg" alt="윌비스 7급 외무영사직 PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_top.jpg" alt="윌비스 7급 일반행정직 PASS" />
 
             <div class="topText NGEB">
                 2021 국가직 PSAT 도입 전 <span>마지막 기회!</span>
@@ -131,14 +131,14 @@
 
             <!-- 타이머 -->
             <div class="dday NSK-Black">
-                2020 외무영사직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span>D-10</span>
+                2020 일반행정직 PASS <span>{{$arr_promotion_params['turn']}}</span>기 마감 <span>D-10</span>
             </div>
 
             <div class="check" id="chkInfo">
                 <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>      
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 윌비스 7급 외무영사직 PASS를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 윌비스 7급 일반행정직 PASS를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
             </div>
@@ -147,55 +147,55 @@
 
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_01.jpg" alt="윌비스 7급 외무영사직 PASS"  /><br> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_02.jpg" alt="윌비스 7급 외무영사직 PASS"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_01.gif" alt="윌비스 7급 일반행정직 PASS"  /><br> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_02.jpg" alt="윌비스 7급 일반행정직 PASS"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02">
             <div class="box-book">
                 <ul class="slidesBook NSK">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_01.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_01.gif" alt=""/>
                         <span>국어 기미진</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_02.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_02.gif" alt=""/>
                         <span>한국사 조민주</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_03.gif" alt=""/>
-                        <span>국제법/국제정치학 이상구</span>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_03.gif" alt=""/>
+                        <span>경제학 황정빈</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_04.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_04.gif" alt=""/>
+                        <span>행정법 한세훈</span>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_05.gif" alt=""/>
+                        <span>행정학 김덕관</span>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_06.gif" alt=""/>
                         <span>헌법 유시완</span>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_05.gif" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1520_03_07.gif" alt=""/>
                         <span>헌법/행정법 황남기</span>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_06.gif" alt=""/>
-                        <span>중국어 조소현</span>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_03_07.gif" alt=""/>
-                        <span>프랑스어 박훈</span>
                     </li>
                 </ul>
             </div> 
-            <p class="NGEB"><a href="chkInfo">지금 바로 7급 외무영사직 PASS 신청하기 ></a></p> 
+            <p class="NGEB"><a href="chkInfo">지금 바로 7급 일반행정직 PASS 신청하기 ></a></p> 
         </div>
         
         <div class="wb_ctsInfo NGR" id="ctsInfo">
             <div>
-                <h3 class="NGEB">윌비스 7급 외무영사직 PASS 이용안내</h3>
+                <h3 class="NGEB">윌비스 7급 일반행정직 PASS 이용안내</h3>
                 <dd>
                     <dt>상품구성</dt>
                     <dl>본 PASS는 참여교수진의 전 강좌를 수강할 수 있는 상품입니다. 단, 기미진 국어 강좌의 경우, 아침특강 커리큘럼 과정은 제공되지 않습니다.</dl>
-                    <dl>2020년 7급 국가직 외무영사직렬 대비로 진행되는 국어, 한국사, 헌법, 국제법, 국제정치학, 중국어, 프랑스어를 포함하여 신규 진행되는 모든 강좌가 제공됩니다.<br>
-                        (단, 신규 강의가 진행되지 않을 경우 이전 연도에 촬영된 강의를 대체 제공합니다.)</dl>
-                    <dl>제공 교수진 : 국어 기미진, 한국사 조민주, 헌법 황남기, 헌법 유시완, 국제법/국제정치학 이상구, 중국어 조소현, 프랑스어 박훈</dl>
+                    <dl>2020년 7급 일반행정직 대비로 진행되는 국어, 한국사, 헌법, 경제학, 행정학, 행정법을 포함하여 신규 진행되는 모든 강좌가 제공됩니다.<br>
+                    (단, 신규 강의가 진행되지 않을 경우 이전 연도에 촬영된 강의를 대체 제공합니다.)</dl>
+                    <dl>제공 교수진 : 국어 기미진, 한국사 조민주, 헌법/행정법 황남기, 헌법 유시완, 행정법 한세훈, 경제학 황정빈, 행정학 김덕관</dl>
                     </dd>                
                 <dd>
                     <dt>수강기간</dt>
@@ -272,9 +272,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/149331') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/157472') }}";
             }else{
-                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/149331') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/157472') }}";
             }
 
             location.href = lUrl;

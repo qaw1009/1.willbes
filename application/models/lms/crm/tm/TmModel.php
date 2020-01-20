@@ -94,10 +94,10 @@ class TmModel extends WB_Model
         //echo $assign_ccd .' - '.$search_date.' - '.$search_type;exit;
 
         if($search_type === 'search') {
-            $column = ' count(*) AS numrows ';
+            $column = ' straight_join count(*) AS numrows ';
             $limit = '';
         } else {
-            $column = 'A.MemIdx,A.MemId,A.MemName,A.JoinDate';
+            $column = 'straight_join A.MemIdx,A.MemId,A.MemName,A.JoinDate';
             $limit = ' limit '. element('MemCnt',$input);
         }
 
@@ -257,15 +257,15 @@ class TmModel extends WB_Model
                                         )
                             )';
         } elseif($assign_ccd === '687004') {      // 회수(부재중) ( 상담분류값이 부재중으로 등록된 회원 )
-
-            $where .= ' 
-                            /* 검색기간내 부재중으로 등록된 회원 */
+            /* 기존 쿼리 조건
+                $where .= '
+                            ///* 검색기간내 부재중으로 등록된 회원
                             and A.MemIdx in
                             (
-                                select 
+                                select
                                 tta.MemIdx
-                                from 
-                                    lms_tm tt	
+                                from
+                                    lms_tm tt
                                     join lms_tm_assign tta on tt.TmIdx = tta.TmIdx
                                     join lms_tm_consult ttc on tta.TaIdx = ttc.TaIdx
                                 where
@@ -273,6 +273,60 @@ class TmModel extends WB_Model
                                     and ttc.TmClassCcd = \'689003\'
                                     and DATE_FORMAT(ttc.RegDatm,\'%Y-%m-%d\') between \''.$search_date.'\' and \''.$search_end_date.'\'
                             )';
+            */
+
+            /*
+             * 조건 수정 : 2020.01.17 최의식 차장님 요청건ㅁㅇㄹ
+             * 수정 내용 : 부재중으로 검색된 데이터에서 이후 통화기록이 없는 회원을 대상으로 함
+             *               2건이상의 통화이력이 존재할경우 최초 통화일 기준으로 이후 데이터 존재여부로 판단함.
+             * 예 : 회원아이디 aaaa, 부재중으로 등록, 2020.01.01
+             *       회원아이디 aaaa, 부재중으로 등록, 2020.01.03
+             *       결과 - 2건 모두 부재중 조건으로 추출되면 안됨. (검색기간 2020.01.01 ~ 2020.01.03 또는 2020.01.03 ~ 2020.01.03 모두)
+             * */
+                $where .= '
+                    and A.MemIdx in
+                    (
+                        select top_mm.MemIdx
+                        from 
+                        (
+                            select 
+                                *
+                                ,
+                                (
+                                    select 
+                                        count(*) 
+                                    from 
+                                        lms_tm_assign sa
+                                        join lms_tm_consult sb on sa.TaIdx = sb.TaIdx
+                                    where sa.IsStatus=\'Y\' and sb.IsStatus=\'Y\'
+                                        and sa.MemIdx = mm.MemIdx and sb.RegDatm > mm.first_regdatm
+                                ) as over_cnt
+                            from
+                                (
+                                    select 
+                                        tta.taIdx,tta.MemIdx,ttc.TcIdx,ttc.RegDatm
+                                        ,(
+                                            select 
+                                                b.RegDatm
+                                            from 
+                                                lms_tm_consult b 
+                                            where tta.TaIdx = b.TaIdx and b.IsStatus=\'Y\' order by b.RegDatm asc limit 1
+                                        ) as first_regdatm
+                                    from 
+                                        lms_tm tt	
+                                        join lms_tm_assign tta on tt.TmIdx = tta.TmIdx
+                                        join lms_tm_consult ttc on tta.TaIdx = ttc.TaIdx
+                                    where
+                                        tt.IsStatus=\'Y\' and tta.IsStatus=\'Y\' and ttc.IsStatus=\'Y\'
+                                        and ttc.TmClassCcd = \'689003\'
+                                        and DATE_FORMAT(ttc.RegDatm,\'%Y-%m-%d\') between \''.$search_date.'\' and \''.$search_end_date.'\'
+                                ) mm
+                        ) top_mm 
+                        join lms_member m on top_mm.MemIdx = m.MemIdx
+                        where over_cnt=0
+                    )
+                ';
+
 
         } else {
             $where .= ' 1=2 ';

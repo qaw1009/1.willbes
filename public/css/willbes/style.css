@@ -11053,7 +11053,7 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .Quick-Bnr {
     float: left;
-    margin-left:20px;
+    /*margin-left:20px;*/
     width:160px;
 }
 .Quick-Bnr a {

@@ -71,16 +71,53 @@
         .btn a {font-size:30px; display:block; border-radius:50px; background:#333; color:#fff; padding:20px 0}
         .btn a:hover {background:#6585ab;}    
 
+        /*타이머*/
+        .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
+        .newTopDday ul {width:1120px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
+        .newTopDday ul li strong {line-height:70px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
+        .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
+        .newTopDday ul:after {content:""; display:block; clear:both}
+
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">   
+    <div class="p_re evtContent NGR" id="evtContainer">  
+        <!-- 타이머 -->
+        <div id="newTopDday" class="newTopDday">
+            <div>
+                <ul>
+                    <li>
+                        온라인 강의<br>신청이벤트
+                    </li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>일</strong></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li>
+                        남았습니다.
+                    </li>
+                </ul>
+            </div>
+        </div> 
         
         <div class="evtCtnsBox evt_police">
             <img src="https://static.willbes.net/public/images/promotion/common/police_promotion_top.jpg" title="대학민국 경찰학원 1위 윌비스 신광은경찰팀">            
         </div>
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top.jpg" title="경찰학 장정훈 무료특강">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_online.jpg" usemap="#Map1522A" title="경찰학 장정훈 무료특강" border="0">
+            <map name="Map1522A" id="Map1522A">
+                <area shape="rect" coords="585,708,932,850" href="#evt_02" alt="온라인강의 신청하기" />
+            </map>
             <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_img.png" alt="꼭 들어보세요"></span>
         </div>
 
@@ -100,7 +137,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt_02">
+        <div class="evtCtnsBox evt_02" id="evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_top_01.jpg" title="완벽분석,개정법령">
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
@@ -113,7 +150,7 @@
 
                 <div id="apply">                    
                     <div class="form_area">
-                        <h4 class="NGEB">2020.1.18(토) 장정훈 경찰학 승진기출특강 14:00</h4>
+                        <h4 class="NGEB">2020 장정훈 경찰학 승진기출 동영상 강의(개정법령)</h4>
                         <div class="privacy">
                             <div class="contacts">
                                 <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
@@ -139,12 +176,12 @@
                                         <li><input type="checkbox" name="register_data1[]" id="aa16" value="제주청"><label for="aa16"> 제주청</label></li>
                                     </ul>
                                 </p>
-                                <p class="check_contact">
+                                <!--p class="check_contact">
                                     <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
                                     @foreach($arr_base['register_list'] as $row)
                                         <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
                                     @endforeach
-                                </p>
+                                </p-->
                             </div>
                             <div class="info">
                                 <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
@@ -164,13 +201,17 @@
                         </p>
                         <div class="btn NGEB">
                             <a onclick="javascript:fn_submit();">
-                                장정훈 경찰학 무료특강 신청하기 >
+                                2020 장정훈 경찰학특강 동영상 강의 신청하기 >
                             </a>
                         </div>
                     </div>
                 </div>
             </form>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1522_03.jpg" title="완벽분석,개정법령">
+            <div class="mt30 mb100 tx16">
+                * 신청완료시 내강의실에 자동등록 됩니다.<br>
+                <br>
+                * 온라인강의 유효기간은 7일 입니다
+            </div>
         </div>    
     </div>
     <!-- End evtContainer -->
@@ -225,6 +266,11 @@
             
                 e.preventDefault()})})}
         );
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
+        });
     </script>
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

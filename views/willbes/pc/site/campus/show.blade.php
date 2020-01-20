@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="Quick-Bnr ml20">
+        <div class="Quick-Bnr">
             {!! banner('캠퍼스_메인_우측퀵_01', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
             {!! banner('캠퍼스_메인_우측퀵_02', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
         </div>

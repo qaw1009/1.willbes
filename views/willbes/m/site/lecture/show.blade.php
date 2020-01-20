@@ -153,7 +153,7 @@
                     <ul>
                         @foreach($data['LectureUnits'] as $idx => $row)
                             <li>
-                                {{ $row['wUnitLectureNum'] }}강 <span class="tx-blue">{{ $row['wRuntime'] }}분</span><br>
+                                {{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강 <span class="tx-blue">{{ $row['wRuntime'] }}분</span><br>
                                 {{ $row['wUnitName'] }}
                                 <ul class="NGEB mt10">
                                     @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')

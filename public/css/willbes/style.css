@@ -11052,8 +11052,9 @@ table.acadlecInfoPackageTable tr.Top td {
     width: 160px;
 }
 .Quick-Bnr {
-    float: right;
+    float: left;
     margin-left:20px;
+    width:160px;
 }
 .Quick-Bnr a {
     display:block;

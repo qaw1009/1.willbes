@@ -11052,8 +11052,13 @@ table.acadlecInfoPackageTable tr.Top td {
     width: 160px;
 }
 .Quick-Bnr {
-    float: left;
-    margin-left:20px;
+    float: right;
+    /*margin-left:20px;*/
+    width:160px;
+}
+.Quick-Bnr a {
+    display:block;
+    margin-bottom:10px;
 }
 
 /* 제대군인인증팝업 */

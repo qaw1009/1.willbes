@@ -21,7 +21,7 @@
 
         /************************************************************/
         .evt_police{background:#404040}
-        .evt_top{background:url("https://static.willbes.net/public/images/promotion/2020/01/1523_top_bg.jpg")}
+        .evt_top{background:#796143;}
         .evt_top span {position:absolute; top:330px; left:50%; margin-left:-100px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
         @@keyframes swing{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}

@@ -172,11 +172,11 @@
 		</div>        
 
 		<div class="evtCtnsBox wb_04" > 
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1516_04.jpg"  alt="전국모의고사 이벤트" usemap="#Map1516a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1516_04_01.jpg"  alt="전국모의고사 이벤트" usemap="#Map1516a" border="0">
             <map name="Map1516a" id="Map1516a">
-                <area shape="rect" coords="266,1424,854,1564" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" />
-                <area shape="rect" coords="442,2621,678,2702" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
-                <area shape="rect" coords="371,3018,750,3082" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
+                <area shape="rect" coords="266,2713,854,2853" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" />
+                <area shape="rect" coords="443,3910,679,3991" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
+                <area shape="rect" coords="371,4309,750,4373" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
             </map>          
 		</div>
 

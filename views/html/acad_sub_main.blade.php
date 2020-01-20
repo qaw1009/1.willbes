@@ -1143,8 +1143,9 @@
     </div>
     <!-- Content// -->
 
-    <div class="Quick-Bnr ml20">
-        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
+    <div class="Quick-Bnr">
+        <a href="#"><img src="{{ img_url('sample/banner_180605.jpg') }}"></a>
+        <a href="#"><img src="{{ img_url('sample/banner_180605.jpg') }}"></a>
     </div>
     <!-- Quick-Bnr// -->
 </div>

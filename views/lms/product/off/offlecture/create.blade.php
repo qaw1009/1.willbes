@@ -382,8 +382,8 @@
                             <table class="table table-striped table-bordered" id='teacherDivision' >
                                 <thead>
                                 <tr>
-                                    <th width="10%">대표교수</th>
-                                    <th width="">교수명</th>
+                                    <th width="8%">대표교수</th>
+                                    <th width="12%">교수명</th>
                                     <th width="18%">전체가격①</th>
                                     <th width="18%">안분가격②</th>
                                     <th width="15%">안분율(②/①)</th>
@@ -965,7 +965,7 @@
             $("#searchMasterLecture").on('click', function () {
                 $("#searchMasterLecture").setLayer({
                     'url': '{{ site_url('/common/searchWMasterLecture/index/') }}'
-                    , 'width': 1100
+                    , 'width': 1500
                 });
             });
 

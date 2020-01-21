@@ -94,6 +94,15 @@ Class OffLecture extends CommonLecture
             ],
         ]);
 
+        $arr_condition = array_merge($arr_condition,[
+            'ORG3' => [
+                'LKB' => [
+                    'E.ProfIdx_String' => $this->_reqP('search_prof_value'),
+                    'E.wProfName_String' => $this->_reqP('search_prof_value')
+                ]
+            ]
+        ]);
+
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => [

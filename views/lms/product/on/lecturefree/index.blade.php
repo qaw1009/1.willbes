@@ -86,16 +86,17 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
-                    <div class="col-md-6 form-inline">
-
+                    <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
                             <option value="lec">무료강좌</option>
                             <option value="wlec">마스터강의</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
-                    </div>
-                    <div class="col-md-5">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>
+                    </div>
+                    <label class="control-label col-md-1" for="search_value">교수검색</label>
+                    <div class="col-md-5 form-inline">
+                        <input type="text" class="form-control" id="search_prof_value" name="search_prof_value" style="width:100px;">
                     </div>
                 </div>
 

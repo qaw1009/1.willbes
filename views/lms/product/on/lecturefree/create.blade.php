@@ -65,7 +65,7 @@
                             @if($method == 'POST')
                                 <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강좌검색</button>
                             @endif
-                            @if(empty($data['wLecIdx']) == false)<p id="masterTitle" class="form-control-static">[{{$data['wLecIdx']}}] {{$data['wLecName']}}&nbsp;</p>@endif
+                            <p id="masterTitle" class="form-control-static">@if(empty($data['wLecIdx']) == false)[{{$data['wLecIdx']}}] {{$data['wLecName']}}@endif&nbsp;</p>
                             <input type="hidden" name="wLecIdx" id="wLecIdx" value="{{$data['wLecIdx']}}" required="required" title="마스터강좌">
                         </div>
                     </div>
@@ -85,7 +85,6 @@
                                         &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lectureFree/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
-
                             </p>
                         </div>
                     </div>
@@ -295,8 +294,8 @@
                             <table class="table table-striped table-bordered" id='teacherDivision' >
                                 <thead>
                                 <tr>
-                                    <th width="10%">대표교수</th>
-                                    <th width="">교수명</th>
+                                    <th width="8%">대표교수</th>
+                                    <th width="12%">교수명</th>
                                     <th width="18%">전체가격①</th>
                                     <th width="18%">안분가격②</th>
                                     <th width="15%">안분율(②/①)</th>
@@ -952,7 +951,6 @@
             sum_remainValue = parseFloat($("#ProdDivisionRate_"+strGubun).val()) + remainValue;
 
             $("#ProdDivisionRate_"+strGubun).val( sum_remainValue.toFixed(8) );
-
 
             sum_rate = 0;
 

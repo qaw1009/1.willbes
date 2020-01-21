@@ -16,7 +16,6 @@
                     [{{ $row['IsEssential'] == 'Y' ? '필수' : '선택' }}]
                 @elseif($results['data']['LearnPatternCcd'] == $arr_learn_pattern_ccd['userpack_lecture'])
                     {{-- 사용자 패키지 --}}
-                    [20% - 할인정보 추가 필요]
                 @endif
                 {{ $row['ProdNameSub'] }}
             </td>

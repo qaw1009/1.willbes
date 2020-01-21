@@ -338,7 +338,11 @@
 
                     @foreach($data['LectureUnits'] as $idx => $row)
                     <tr>
-                        <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
+                        <td class="w-no">
+                            @if($__cfg['SiteCode'] != '2001' && $__cfg['SiteCode'] != '2003' )
+                                {{ $row['wUnitNum'] }}회차
+                            @endif
+                            {{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
                             @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')

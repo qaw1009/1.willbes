@@ -180,3 +180,17 @@ if (!function_exists('array_set')) {
         return $array;
     }
 }
+
+if (!function_exists('array_key_first')) {
+    /**
+     * $array 배열의 1번째 키값 리턴
+     * @param array $array [대상 배열]
+     * @return int|string|null
+     */
+    function array_key_first(array $array) {
+        foreach($array as $key => $unused) {
+            return $key;
+        }
+        return null;
+    }
+}

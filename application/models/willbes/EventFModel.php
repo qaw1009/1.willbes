@@ -33,7 +33,8 @@ class EventFModel extends WB_Model
         'wbs_cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'wbs_cms_lecture' => 'wbs_cms_lecture',
         'event_r_point' => 'lms_event_r_point',
-        'point_save' => 'lms_point_save'
+        'point_save' => 'lms_point_save',
+        'event_register_r_product' => 'lms_event_register_r_product'
     ];
 
     //등록파일 rule 설정
@@ -104,7 +105,7 @@ class EventFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
-        $this->load->loadModels(['crm/smsF', 'pointF']);
+        $this->load->loadModels(['crm/smsF', 'pointF', 'order/orderF']);
     }
 
     public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
@@ -213,7 +214,7 @@ class EventFModel extends WB_Model
             FROM {$this->_table['event_register']} AS A
             LEFT JOIN (
                 SELECT ErIdx, COUNT(ErIdx) AS MemCount
-                FROM lms_event_member
+                FROM {$this->_table['event_member']}
                 GROUP BY ErIdx
             ) AS B ON A.ErIdx = B.ErIdx
         ";
@@ -413,6 +414,25 @@ class EventFModel extends WB_Model
                     if (count($uploaded) > 0) {
                         $input_register_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
                         $input_register_data['FileRealName'] = $uploaded[0]['client_name'];
+                    }
+                }
+
+                // 지급할 강의상품이 있을 경우
+                if(empty($row['ErIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
+                    //중복신청여부 로그인 아이디 기준으로 체크
+                    $result_register_member = $this->getRegisterMember(['EQ' => [ 'A.ErIdx' => $row['ErIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
+                    if(count($result_register_member) == 0) {
+                        $arr_event_product = $this->listEventPromotionForProduct($row['ErIdx']);
+                        if(empty($arr_event_product) === false && count($arr_event_product) > 0) {
+                            //데이터 배열 가공
+                            $arr_product_code = [];
+                            foreach($arr_event_product as $row){
+                                $arr_product_code = array_merge($arr_product_code, [$row['ProdCode']]);
+                            }
+                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $arr_product_code) !== true) {
+                                throw new \Exception('제공 강의상품이 처리되지 않았습니다.');
+                            }
+                        }
                     }
                 }
 
@@ -1210,6 +1230,26 @@ class EventFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 프로모션 지급 강의상품 리스트
+     * @param $er_idx
+     * @return mixed
+     */
+    public function listEventPromotionForProduct($er_idx)
+    {
+        $column = '
+            B.*
+        ';
+        $from = "
+            FROM {$this->_table['event_register']} AS A
+            INNER JOIN {$this->_table['event_register_r_product']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
+        ";
+        $where = ' WHERE A.ErIdx = ? and A.IsStatus = "Y"';
+        $order_by_offset_limit = ' ORDER BY A.ErIdx ASC';
+
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$er_idx])->result_array();
     }
 
 }

@@ -232,9 +232,9 @@
                                             <tr>
                                                 <th>구분</th>
                                                 <th>정원</th>
-                                                <th>신청자</th>
                                                 <th>특강/설명회명</th>
                                                 <th>만료</th>
+                                                <th>사용</th>
                                                 <th>수정</th>
                                                 <th>삭제</th>
                                             </tr>
@@ -247,16 +247,15 @@
                                                         <td>
                                                             {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
                                                             <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
-                                                            <select class="form-control" name="event_register_parson_limit_type[]" id="event_register_parson_limit_type_{{$i}}">
+                                                            <select class="form-control" name="event_register_parson_limit_type[]" id="event_register_parson_limit_type_{{$i}}" style="min-width: 70px;">
                                                                 <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>인원제한</option>
                                                                 <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
                                                             </select>
                                                         </td>
                                                         <td>
                                                             {{--{{$row['PersonLimit']}}--}}
-                                                            <input type="text" name="event_register_parson_limit[]" id="event_register_parson_limit_{{$i}}" value="{{$row['PersonLimit']}}">
+                                                            <input type="text" name="event_register_parson_limit[]" id="event_register_parson_limit_{{$i}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
                                                         </td>
-                                                        <td></td>
                                                         <td>
                                                             {{--{{$row['Name']}}--}}
                                                             <input type="text" name="event_register_name[]" id="event_register_name_{{$i}}" value="{{$row['Name']}}">
@@ -267,9 +266,15 @@
                                                             @else
                                                                 <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="Y">[<u>복구</u>]</a>
                                                             @endif--}}
-                                                            <select class="form-control" name="expire_status[]" id="expire_status_{{$i}}">
+                                                            <select class="form-control" name="expire_status[]" id="expire_status_{{$i}}" style="min-width: 60px;">
                                                                 <option value="Y" @if($row['RegisterExpireStatus'] == 'Y')selected="selected"@endif>복구</option>
                                                                 <option value="N" @if($row['RegisterExpireStatus'] == 'N')selected="selected"@endif>만료</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="register_is_use[]" id="register_is_use_{{$i}}" style="min-width: 70px;">
+                                                                <option value="Y" @if($row['IsUse'] == 'Y')selected="selected"@endif>사용</option>
+                                                                <option value="N" @if($row['IsUse'] == 'N')selected="selected"@endif>미사용</option>
                                                             </select>
                                                         </td>
                                                         <td>
@@ -678,7 +683,8 @@
                     'person_limit_type' : $("#event_register_parson_limit_type_"+modify_number).val(),
                     'person_limit' : $("#event_register_parson_limit_"+modify_number).val(),
                     'register_name' : $("#event_register_name_"+modify_number).val(),
-                    'expire_status' : $("#expire_status_"+modify_number).val()
+                    'expire_status' : $("#expire_status_"+modify_number).val(),
+                    'is_use' : $("#regist_is_use_"+modify_number).val()
                 };
 
                 if (!confirm('상태를 변경 하시겠습니까?')) {

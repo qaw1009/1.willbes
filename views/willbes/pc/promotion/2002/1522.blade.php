@@ -176,12 +176,12 @@
                                         <li><input type="checkbox" name="register_data1[]" id="aa16" value="제주청"><label for="aa16"> 제주청</label></li>
                                     </ul>
                                 </p>
-                                <!--p class="check_contact">
-                                    <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>신청 동영상</strong><br><br>
                                     @foreach($arr_base['register_list'] as $row)
                                         <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
                                     @endforeach
-                                </p-->
+                                </p>
                             </div>
                             <div class="info">
                                 <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>

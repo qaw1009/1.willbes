@@ -179,8 +179,8 @@
                                                     <div class="lec_disc_info red"></div>
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
-                                                    <input type="hidden" name="sale_price[]" value="{{ $order_prod_row['SalePrice'] }}">
+                                                    <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['RealSalePrice'] }}" readonly="readonly">
+                                                    <input type="hidden" name="sale_price[]" value="{{ $order_prod_row['RealSalePrice'] }}">
                                                 </td>
                                                 <td class="form-inline">
                                                     <select class="form-control input-sm set-pay-price" name="disc_type[]">
@@ -199,7 +199,7 @@
                                                     <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
+                                                    <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealSalePrice'] }}" readonly="readonly">
                                                 </td>
                                                 <td>
                                                     <button type="button" name="btn_surplus_calc" class="btn btn-success">올림</button>
@@ -481,8 +481,8 @@
                             '    ' + '<div class="lec_disc_info red"></div>' +
                             '    </td>\n' +
                             '    <td>\n' +
-                            '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
-                            '       <input type="hidden" name="sale_price[]" value="' + data.salePrice + '">\n' +
+                            '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
+                            '       <input type="hidden" name="sale_price[]" value="' + data.realSalePrice + '">\n' +
                             '    </td>\n' +
                             '    <td class="form-inline">\n' +
                             '        <select class="form-control input-sm set-pay-price" name="disc_type[]">\n' +
@@ -501,7 +501,7 @@
                             '        <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">\n' +
                             '    </td>\n' +
                             '    <td>\n' +
-                            '        <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                            '        <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <button type="button" name="btn_surplus_calc" class="btn btn-success">올림</button>\n' +

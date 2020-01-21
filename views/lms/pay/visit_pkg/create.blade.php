@@ -85,7 +85,7 @@
                             <tr>
                                 <th>캠퍼스</th>
                                 <th width="390">상품명</th>
-                                <th>정상가</th>
+                                <th>주문금액</th>
                                 <th>할인율</th>
                                 <th>할인사유</th>
                                 <th>총주문금액</th>
@@ -403,7 +403,7 @@
                         '    ' + '<input type="hidden" name="prod_code" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
                         '    </td>\n' +
                         '    <td>\n' +
-                        '       <input type="number" name="order_price" class="form-control input-sm" title="주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                        '       <input type="number" name="order_price" class="form-control input-sm" title="주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
                         '    </td>\n' +
                         '    <td class="form-inline">\n' +
                         '        <select class="form-control input-sm set-pay-price" name="disc_type">\n' +
@@ -416,7 +416,7 @@
                         '        <input type="text" name="disc_reason" class="form-control input-sm" title="할인사유" value="">\n' +
                         '    </td>\n' +
                         '    <td>\n' +
-                        '        <input type="number" name="org_pay_price" class="form-control input-sm" title="총주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                        '        <input type="number" name="org_pay_price" class="form-control input-sm" title="총주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
                         '    </td>\n' +
                         '    <td>\n' +
                         '        <a href="#none" data-prod-code="' + code + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>\n' +

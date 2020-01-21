@@ -187,7 +187,8 @@ if (!function_exists('array_key_first')) {
      * @param array $array [대상 배열]
      * @return int|string|null
      */
-    function array_key_first(array $array) {
+    function array_key_first(array $array)
+    {
         foreach($array as $key => $unused) {
             return $key;
         }

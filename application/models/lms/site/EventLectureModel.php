@@ -687,7 +687,7 @@ class EventLectureModel extends WB_Model
      */
     public function listEventForRegister($el_idx)
     {
-        $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus';
+        $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus, IsUse';
         $from = "
             FROM {$this->_table['event_register']}
         ";
@@ -827,6 +827,7 @@ class EventLectureModel extends WB_Model
                 'PersonLimit' => $input['person_limit'],
                 'Name' => $input['register_name'],
                 'RegisterExpireStatus' => $input['expire_status'],
+                'IsUse' => $input['is_use'],
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')
             ];

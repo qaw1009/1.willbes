@@ -25,7 +25,7 @@ class SearchWMasterLectureModel extends WB_Model
     public function listLecture($is_count ,$arr_condition=[] ,$limit=null ,$offset=null ,$order_by=[])
     {
         if ($is_count === true) {
-            $column = ' count(*) as numrows ';
+            $column = ' straight_join count(*) as numrows ';
             $order_by_offset_limit = '';
         } else {
             $column = ' * ';

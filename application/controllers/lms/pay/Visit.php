@@ -232,7 +232,7 @@ class Visit extends BaseOrder
             if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
                 $arr_condition = ['EQ' => ['O.OrderIdx' => $target_order_idx, 'OP.ProdCode' => $target_prod_code, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
                 $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName';
-                $column .= ', CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice';
+                $column .= ', CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
                 $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
                 if (empty($data['order_prod']) === true) {
                     show_error('데이터 조회에 실패했습니다.');

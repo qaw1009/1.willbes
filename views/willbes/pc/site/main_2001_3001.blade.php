@@ -295,7 +295,7 @@
                                 <a href="http://www.wku.ac.kr/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_17.jpg" alt="원광대학교"></a>
                                 <a href="http://www.jj.ac.kr/jj/index.jsp" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_18.jpg" alt="전주대학교"></a>
                                 <a href="http://www.joongbu.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_19.jpg" alt="중부대학교"></a>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_temp.jpg" alt=""></a>
+                                <a href="http://zipzoongso.cafe24.com/wp/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_20.jpg" alt="집중소"></a>
                             </li>
                         </ul>
                     </div>

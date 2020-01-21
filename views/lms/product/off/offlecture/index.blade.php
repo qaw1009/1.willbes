@@ -121,12 +121,16 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">단과반검색</label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-5 form-inline">
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
-                    </div>
-                    <div class="col-md-2">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>
                     </div>
+                    <label class="control-label col-md-1" for="search_value">교수검색</label>
+                    <div class="col-md-5 form-inline">
+                        <input type="text" class="form-control" id="search_prof_value" name="search_prof_value" style="width:100px;">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
                     <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_date_type" name="search_date_type" style="width:120px;">

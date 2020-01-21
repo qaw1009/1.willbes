@@ -201,8 +201,9 @@ class BaseOrder extends \app\controllers\BaseController
      * @param array $headers [엑셀헤더]
      * @param bool $is_huge [대용량 다운로드 메소드 사용여부]
      * @param string $query [엑셀다운로드 쿼리]
+     * @param array $numerics [숫자형 변환 대상 컬럼명 배열]
      */
-    protected function _makeExcel($file_name, $list, $headers, $is_huge = true, $query = '')
+    protected function _makeExcel($file_name, $list, $headers, $is_huge = true, $query = '', $numerics = [])
     {
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
@@ -220,7 +221,7 @@ class BaseOrder extends \app\controllers\BaseController
         $this->load->library('excel');
 
         if ($is_huge === true) {
-            $result = $this->excel->exportHugeExcel($file_name, $list, $headers);
+            $result = $this->excel->exportHugeExcel($file_name, $list, $headers, $numerics);
         } else {
             $result = $this->excel->exportExcel($file_name, $list, $headers);
         }

@@ -47,14 +47,16 @@ class CommonLectureModel extends WB_Model
                         ,Ba.wUnitCnt,Ba.wUnitLectureCnt,Ba.wScheduleCount
                         ,C.CateCode,Ca.CateName,Ca.CateRouteName
                         ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName
-                        ,fn_dec(FreeLecPasswd) as FreeLecPasswd '
+                        ,fn_dec(FreeLecPasswd) as FreeLecPasswd 
+                        ,Bb.ProfInfo_string'
         ;
 
         $from = '
                         from
                                 lms_product A
                                 join lms_product_lecture B on A.ProdCode = B.ProdCode
-                                    left outer join wbs_cms_lecture_basics Ba on B.wLecIdx = Ba.wLecIdx 
+                                    left outer join wbs_cms_lecture_basics Ba on B.wLecIdx = Ba.wLecIdx
+                                    left outer join wbs_cms_lecture_r_professor_concat Bb on B.wLecIdx = Bb.wLecIdx
                                 join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                     join vw_category_concat Ca on C.CateCode = Ca.CateCode
                                 left outer join wbs_sys_admin D on A.RegAdminIdx = D.wAdminIdx
@@ -106,7 +108,7 @@ class CommonLectureModel extends WB_Model
                                 where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\' and D.IsStatus=\'Y\'
                     ';
                 } else {
-                    $column = 'A.*,C.wProfName';
+                    $column = 'A.*,C.wProfName,B.wProfIdx';
 
                     $from = ' from
                                     lms_product SA 

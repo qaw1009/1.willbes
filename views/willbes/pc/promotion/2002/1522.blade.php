@@ -176,12 +176,12 @@
                                         <li><input type="checkbox" name="register_data1[]" id="aa16" value="제주청"><label for="aa16"> 제주청</label></li>
                                     </ul>
                                 </p>
-                                <!--p class="check_contact">
-                                    <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>신청 동영상</strong><br><br>
                                     @foreach($arr_base['register_list'] as $row)
                                         <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
                                     @endforeach
-                                </p-->
+                                </p>
                             </div>
                             <div class="info">
                                 <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
@@ -225,13 +225,23 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
             if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
-                alert('참여캠퍼스를 선택해 주세요.'); return;
+                alert('신청동영상을 선택해 주세요.'); return;
             }
             
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
+
+            if ($regi_form_register.find('input[name="register_data1[]"]:checked').length == 0) {
+                alert('희망지원청을 선택 해주세요.');
+                return;
+            }
+
+            // if ($regi_form_register.find('input[name="register_data1[]"]:checked').length > 2) {
+            //     alert('희망지원청은 2개까지만 선택 가능합니다.');
+            //     return;
+            // }
 
             if (!confirm('신청하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

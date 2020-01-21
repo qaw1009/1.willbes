@@ -68,14 +68,19 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="searchMasterLecture">마스터강좌불러오기 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-4 form-inline item">
                         <div class="item inline-block">
                             @if($method == 'POST')
                                 <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강좌검색</button>
                             @endif
-                                <p id="masterTitle" class="form-control-static">{{$data['wLecName']}}&nbsp;</p>
+                            <p id="masterTitle" class="form-control-static">{{$data['wLecName']}}&nbsp;</p>
                             <input type="hidden" name="wLecIdx" id="wLecIdx" value="{{$data['wLecIdx']}}" required="required" title="마스터강좌">
                         </div>
+                    </div>
+                    <label class="control-label col-md-2">마스터강좌교수정보
+                    </label>
+                    <div class="col-md-4 form-inline">
+                        <span id="masterProf" class="form-control-static">{{$data['ProfInfo_string']}}</span>
                     </div>
                 </div>
 
@@ -382,8 +387,8 @@
                             <table class="table table-striped table-bordered" id='teacherDivision' >
                                 <thead>
                                 <tr>
-                                    <th width="10%">대표교수</th>
-                                    <th width="">교수명</th>
+                                    <th width="8%">대표교수</th>
+                                    <th width="12%">교수명</th>
                                     <th width="18%">전체가격①</th>
                                     <th width="18%">안분가격②</th>
                                     <th width="15%">안분율(②/①)</th>
@@ -414,7 +419,7 @@
                                         <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}" type="hidden" value="{{$row['ProfIdx']}}">
                                         <input name="IsReprProf" id="IsReprProf_{{$row['ProfIdx']}}" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsReprProf']==='Y')checked="checked"@endif>
                                     </td>
-                                    <td>{{$row['wProfName']}}</td>
+                                    <td>{{$row['wProfName']}}[{{$row['wProfIdx']}}]</td>
                                     <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
                                     <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
                                     <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
@@ -965,7 +970,7 @@
             $("#searchMasterLecture").on('click', function () {
                 $("#searchMasterLecture").setLayer({
                     'url': '{{ site_url('/common/searchWMasterLecture/index/') }}'
-                    , 'width': 1100
+                    , 'width': 1500
                 });
             });
 
@@ -1015,13 +1020,13 @@
                                     +"<input type='hidden' name='ProfIdx[]' id='ProfIdx_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' >"
                                     +"<input type='radio' name='IsReprProf' id='IsReprProf_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' "+IsReprProf_checked+">"
                                     +"</td>"
-                                    +"<td>"+data_array[i].wProfName+"</td>"
+                                    +"<td>"+data_array[i].wProfName+"["+data_array[i].wProfIdx+"]</td>"
                                     +"<td><input type='text' name='TotalPrice[]' id='TotalPrice_"+data_array[i].ProfIdx+"' value='"+salesprice+"' class='form-control' size='10' readonly> 원</td>"
                                     +"<td><input type='text' name='ProdDivisionPrice[]' id='ProdDivisionPrice_"+data_array[i].ProfIdx+"' value='' class='form-control' size='10' onkeyup=\"rateCheck('"+data_array[i].ProfIdx+"')\"  required='required' title=\'안분가격\'> 원</td>"
                                     +"<td> <input type='text' name='ProdDivisionRate[]' id='ProdDivisionRate_"+data_array[i].ProfIdx+"' value='' class='form-control' size='10' readonly  required='required' title='안분율'>  </td>"
                                     +"<td><input type='text' name='ProdCalcRate[]' id='ProdCalcRate_"+data_array[i].ProfIdx+"' value='"+data_array[i].CalcRate+"' class='form-control' size=5 required='required' title='정산율'> %</td>"
                                     +"<td><input type='radio' name='IsSingular' id='IsSingular_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' onclick=\"singularCheck('"+data_array[i].ProfIdx+"')\" required='required' title='단수적용'></td>"
-                                    +"</tr>"
+                                    +"</tr>";
                                 $("#teacherDivision").append(html);
                             }
                             $("#teacherDivision").append(

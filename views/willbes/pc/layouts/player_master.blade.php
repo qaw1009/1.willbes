@@ -90,6 +90,7 @@
 <script src="/public/js/willbes/app.js?token={{time()}}"></script>
 -->
 <script src="/public/js/util.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/hls.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui.js?token={{time()}}"></script>

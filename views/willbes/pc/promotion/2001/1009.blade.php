@@ -253,7 +253,8 @@
                             <strong>105</strong>만원<br>
                             <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
                             <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_3">95만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg4_3">21만원 상당 기본서 set (경행경채)</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">95만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>
                     <li>
@@ -261,7 +262,7 @@
                             <strong>119</strong>만원<br>
                             <input type="radio" id="y_pkg3_1" name="y_pkg" value="161169" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
                             <input type="radio" id="y_pkg3_2" name="y_pkg" value="161170" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="161171" onClick=""/> <label for="y_pkg3_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="161171" onClick=""/> <label for="y_pkg3_3">21만원 상당 기본서 set (경행경채)</label><br>
                             <input type="radio" id="y_pkg3_4" name="y_pkg" value="161172" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>

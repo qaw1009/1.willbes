@@ -244,30 +244,31 @@
                 <ul>
                     <li>
                         <div>
-                        <strong>79</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="160366" onClick=""/> <label for="y_pkg1">8개월 패스</label>
+                        <strong class="line-through">79</strong>만원 > <strong>74</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="160366" onClick=""/> <label for="y_pkg1">5만원 즉시 할인</label>
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>105</strong>만원<br>
-                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_3">95만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>131</strong>만원<br>
-                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="161169" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161170" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="161171" onClick=""/> <label for="y_pkg3_3">기본서set(경행경채)</label><br>
-                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="161172" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="158490" onClick=""/> <label for="y_pkg3_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="158491" onClick=""/> <label for="y_pkg3_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="158492" onClick=""/> <label for="y_pkg3_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="159124" onClick=""/> <label for="y_pkg3_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200121.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200114.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -356,7 +357,7 @@
             <ul class="tabs">
                 <li><a href="#tab1">8개월 PASS</a></li>
                 <li><a href="#tab2">14개월 PASS</a></li>
-                <li><a href="#tab3">0원 PASS (20개월)</a></li>
+                <li><a href="#tab3">0원 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
@@ -570,13 +571,23 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <h3>20개월 상품설명</h3>
+                        <h3>상품설명: 갱신안내</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>20개월 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
-                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
+                            <li>0원 PASS는 갱신형 상품이며, 일반/경행경채 직렬 구분 없이 이용 가능한 상품입니다.<br>
+                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신 시 1년 무료연장 됩니다.(갱신횟수:1회가능)<br>                             
+                            유료기간은 구매일로부터 12개월이며, 추후 제공되는 강의는 모두 무료제공기간입니다.<br>
+                            </li>
+                            <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.<br>
+                            ex) 2019년 7월 1일 구매하여 기본수강기간이 2020.12.31 까지일 경우  <br>
+                            2019년도 갱신 신청 불가, 2020년도 갱신 신청 가능<br>
+                            2020년도 1차, 2차 시험 중 하나의 시험 불합격 인증 가능
+                            </li>
+                            <li>불합격 인증시에 전과목 0점일 경우 수강기간 갱신은 불가능합니다.</li>
+                            <li>시험 접수 후 개인사정으로 시험에 응시하지 못한 경우 수강기간 갱신 불가합니다.</li>
+                            <li>수강갱신 갱신신청은 2020년 11월 진행예정입니다.(연장기간 이후 갱신 신청 불가능합니다.) 추후 별도 공지 및 문자 안내할 예정입니다.</li>
+                            <li>갱신 가능 직렬은 순경 채용에 한합니다.(승진,해경제외)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                             <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                         </ol>
@@ -631,18 +642,32 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>환급 요청시에는 최종합격 인증 자료 및 추가 자료 제출이 완료 된 회원에게 환급급이 지급됩니다.  (수강기간이 남아 있지 않은 회원은 환급 불가합니다.)
-</li>
                             <li>환급시 상품 결제금액에서 제세공과금 22% 제외 후 환급됩니다. </li> 
                             &nbsp;&nbsp;&nbsp;&nbsp;- 포인트가 지급된 경우에는 실결제 금액에서 포인트 금액을 차감 후 제세공과금 22%를 공제한 금액으로 환급됩니다. <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;- 교재 및 부가 제공된 혜택에 따라서 추가 차감 후 환급됩니다.
-                            <li>최종합격자 발표일로부터 3개월 경과 후 요청 시에는 환급이 불가합니다. (수강기간이 남아있지 않은 상태에서 환급 신청은 환급신청 불가합니다.)<br />
-                                수강기간이 최종합격자 발표일로부터 3개월 이내에 종료될 시에는 인증기한은 수강기간일 마지막 일 까지 입니다. 
+                            <li>구매 후 유료 수강기간인 12개월 이내에 최종 합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<Br>
+                            (12개월 이내에만 가능하며, 무료 수강기간 연장은 최종합격 인증 기간과 관련이 없습니다.) 
+                            </li>
+                            <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 3개월 이내에만 가능합니다. <br />
+                                최종합격자 발표일로부터 3개월 경과 후 요청 시에는 환급이 불가합니다.<br />
+                                유료 수강기간(12개월)이 최종합격자 발표일로부터 3개월 이내에 종료될 시에는 인증기한은 수강기간일 마지막 일 까지 입니다.
                             </li>
                             <li>패스 수강기간 내에 합격예측 서비스 1회 이상 참여해주셔야 합니다. (해당 서비스는 시즌성 이벤트로 일정 시험에 확인이 불가하니, 참여 후 캡쳐해서 저장해 놓으셔야 합니다.)</li>
                             <li>패스 수강기간 내에 모의고사를 1회 이상 응시하여야 합니다.(온/오프 무관하며, 추후 응시내역 파일 첨부 제출해 주셔야 합니다.)</li>
                             <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                             <li>환급은 순경일반공채,경행,전의경경채,101경비단만 적용됩니다 (기타 직렬및경력채용은 환급대상에 포함되지 않습니다)</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>수강기간</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>구매일로부터 12개월(365일)간 유료 수강 가능기간이여, 이후 20.12.31까지 추가기간은 무료기간입니다.<br>
+                            수강종료일 2020년 12월 31일은 수험생의 편의를 위해 제공되는 기간이며, 환불대상 기간 아닙니다.
+                            </li>
+                            <li>갱신되어 제공되는 기간의 강의는 무료서비스이며, 환불대상이 아닙니다.</li>
                         </ol>
                     </dd>
 

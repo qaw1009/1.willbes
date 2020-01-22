@@ -516,7 +516,7 @@
     z-index: 100;
 }
 .cop_acad .MainQuickMenu ul {
-    margin:0 8px 5px !important;
+    margin:0 8px !important;
     background: #ececec;
 }
 .cop_acad .MainQuickMenu li {

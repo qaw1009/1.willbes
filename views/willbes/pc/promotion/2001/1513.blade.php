@@ -79,7 +79,7 @@
         </div>
 
         <div class="evtCtnsBox wb_01" id="event01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_01.jpg">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1513_01.jpg">
         </div>
 
         {{--댓글--}}

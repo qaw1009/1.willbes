@@ -278,20 +278,6 @@
     content:''; display: block; clear:both;List-Table
 }
 
-/* Main Container : QuickMenu 
-.hanlim3097 .QuickDdayBox .q_dday {
-    font-size: 24px;
-    font-weight: 600;
-    color: #142596;
-    padding-top: 10px;
-    letter-spacing: 0;
-}
-.hanlim3097 .QuickSlider .sliderNum {
-    width: 100px;
-    height: 192px;
-    overflow: hidden;
-}*/
-
 /* Main Container : QuickMenu  */
 .hanlim3097 .MainQuickMenu {
     position: fixed;
@@ -306,8 +292,9 @@
     text-align: right;
 }
 .hanlim3097 .MainQuickMenu ul {    
-    padding:0 8px 5px !important;
-    background: #ececec;    
+    padding:0 8px !important;
+    background: #ececec; 
+    width:100%;     
 }
 .hanlim3097 .MainQuickMenu li {
     border-top:1px solid #f6f6f6;

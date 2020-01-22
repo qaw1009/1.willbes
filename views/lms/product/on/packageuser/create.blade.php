@@ -135,7 +135,7 @@
                                 <th width="30%">할인율</th>
                                 <th width="">수강연장</th>
                             </tr>
-                            @for($i=1;$i<5;$i++)
+                            @for($i=1;$i<8;$i++)
                                     @php
                                         $select_OrderNum = '';
                                         $select_IsApply = '';
@@ -158,7 +158,7 @@
                                         <input type="checkbox" id="IsApply_{{$i}}" name="IsApply[]" value="{{$i}}" class="flat" @if($select_IsApply == 'Y') checked="checked" @endif></td>
                                     <td>
                                         <select name="DiscNum[]" id="DiscNum_{{$i}}" class="form-control">d
-                                            @for($k=2;$k<6;$k++)
+                                            @for($k=2;$k<9;$k++)
                                                 <option value="{{$k}}" @if($select_DiscNum == $k) selected="selected" @endif>{{$k}}</option>
                                             @endfor
                                         </select>

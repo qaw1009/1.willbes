@@ -305,8 +305,9 @@
     text-align: right;
 }
 .nomu .MainQuickMenu ul {    
-    padding:0 8px 5px !important;
-    background: #ececec;    
+    padding:0 8px !important;
+    background: #ececec; 
+    width:100%;   
 }
 .nomu .MainQuickMenu li {
     border-top:1px solid #f6f6f6;

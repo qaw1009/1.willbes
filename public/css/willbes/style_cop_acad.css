@@ -516,8 +516,9 @@
     z-index: 100;
 }
 .cop_acad .MainQuickMenu ul {
-    margin:0 8px !important;
+    padding:0 8px !important;
     background: #ececec;
+    width:100%;
 }
 .cop_acad .MainQuickMenu li {
     border-top:1px solid #f6f6f6;
@@ -534,7 +535,7 @@
     border-bottom:0;
 }
 .cop_acad .MainQuickMenu li a {
-    display: block; padding-left:30px; background-position: 5px center; background-repeat:  no-repeat;
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
 }
 .cop_acad .MainQuickMenu li a:hover {
     color:#00acec; 

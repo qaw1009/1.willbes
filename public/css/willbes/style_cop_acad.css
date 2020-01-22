@@ -534,31 +534,31 @@
     border-bottom:0;
 }
 .cop_acad .MainQuickMenu li a {
-    display: block; padding-left:30px;
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:  no-repeat;
 }
 .cop_acad .MainQuickMenu li a:hover {
-    color:#00acec;
+    color:#00acec; 
 }
 .cop_acad .MainQuickMenu li:nth-child(1) a {
-    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(2) a {
-    background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(3) a {
-    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(4) a {
-    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(5) a {
-    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(6) a {
-    background: url("../../img/willbes/cop_acad/icon_rq06.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
 }
 .cop_acad .MainQuickMenu li:nth-child(7) a {
-    background: url("../../img/willbes/cop_acad/icon_rq08.png") no-repeat 3px center;
+    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
 }
 
 /*sub 메인*/

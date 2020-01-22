@@ -132,7 +132,12 @@
                             <tr @if($row['StudyTime'] > 0)
                                 class="finish"
                                     @endif>
-                                <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
+                                <td class="w-no">
+                                    {{-- 경찰 온/오프 회차 표기 안함 --}}
+                                    @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
+                                        {{$row['wUnitNum']}}회
+                                    @endif
+                                    {{$row['wUnitLectureNum']}}강</td>
                                 <td class="w-lec tx-left">
                                     {{$row['wUnitName']}}
                                     @if(empty($row['wUnitInfo']) == false)<p>[설명] {{$row['wUnitInfo']}}</p>@endif

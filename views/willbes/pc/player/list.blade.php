@@ -27,7 +27,11 @@
                     <ul class="list lec">
                         @forelse($curriculum as $row)
                             <li>
-                                <div class="tt1">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</div>
+                                <div class="tt1">
+                                    @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
+                                        {{$row['wUnitNum']}}회
+                                    @endif
+                                    {{$row['wUnitLectureNum']}}강</div>
                                 <div class="tt2 tx-left">
                                     @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
                                         @if($row['timeover'] == 'N')

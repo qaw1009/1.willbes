@@ -30,7 +30,7 @@
 
 .gosi .VisualBox {
     position: absolute;
-    width:1120px;  
+    width:725px;  
     height: 400px;
     overflow: hidden;
     z-index: 1;
@@ -40,17 +40,15 @@
   }
   
 .gosi .VisualBox .bx-wrapper .bx-controls-auto {
-    left:50%;
+    left:20px;
     bottom: 20px;
-    margin-left: -540px;
     width: 50px;
-    z-index: 100;
+    z-index: 90;
 }
 .gosi .VisualBox .bx-wrapper .bx-pager {
     width: auto;
-    left:50%;
-    margin-left: -500px;
-    bottom: 20px;
+    left:60px;
+    bottom: 22px;
     text-align: left;
     z-index: 90;
 }
@@ -59,12 +57,10 @@
   }
 
 .gosi .VisualsubBox {
-    position: absolute;
-    right:10px;
-    margin-left:196px;
-    top:10px;
-    width: 364px;
-    z-index: 2;
+    width: 384px;
+    padding:10px;
+    float:right;
+    background: #ccc;
 }
 
 

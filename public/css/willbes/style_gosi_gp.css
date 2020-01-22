@@ -35,19 +35,17 @@
 }
 
 .gp .VisualBox .bx-wrapper .bx-controls-auto {
-    left:50%;
-    bottom: 20px;
-    margin-left: -540px;
-    width: 50px;
-    z-index: 50;
+  left:20px;
+  bottom: 20px;
+  width: 50px;
+  z-index: 90;
   }
 .gp .VisualBox .bx-wrapper .bx-pager {
-    width: auto;
-    left:50%;
-    margin-left: -500px;
-    bottom: 20px;
-    text-align: left;
-    z-index: 50;
+  width: auto;
+  left:60px;
+  bottom: 22px;
+  text-align: left;
+  z-index: 90;
 }
 .gp .bx-wrapper .bx-pager.bx-default-pager a {
   background: #ccc !important;
@@ -56,12 +54,10 @@
   margin: 0 2px;
 }
 .gp .VisualsubBox {
-  position: absolute;
-  right:10px;
-  margin-left:196px;
-  top:10px;
-  width: 364px;
-  z-index: 2;
+  width: 384px;
+  padding:10px;
+  float:right;
+  background: #ccc;
 }
 .gp .VisualsubBox .bSlider:nth-child(2) {
   margin-top:3px;
@@ -74,14 +70,14 @@
   bottom: 20px;
   margin: 0;
   width: 50px;
-  z-index: 110;
+  z-index: 90;
 }
 .gp .VisualsubBox .bx-wrapper .bx-pager {
   width: auto;
   left:60px; 
   bottom: 20px;
   text-align: center;
-  z-index: 110;
+  z-index: 90;
 }
 .gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,

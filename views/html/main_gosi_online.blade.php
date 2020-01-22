@@ -547,9 +547,9 @@
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>

@@ -153,7 +153,7 @@
                     <ul>
                         @foreach($data['LectureUnits'] as $idx => $row)
                             <li>
-                                @if($__cfg['SiteCode'] != '2001' && $__cfg['SiteCode'] != '2003' )
+                                @if($data['IsOpenwUnitNum'] === 'Y')
                                     {{ $row['wUnitNum'] }}회
                                 @endif
                                 {{ $row['wUnitLectureNum'] }}강 <span class="tx-blue">{{ $row['wRuntime'] }}분</span><br>

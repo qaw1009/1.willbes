@@ -127,8 +127,7 @@
                     <thead>
                         <tr>
                             <th>분야</th>
-                            <th>일반(남)</th>
-                            <th>일반(여)</th>
+                            <th>남.여 통합</th>
                             <th>세무회계</th>
                             <th>사이버</th>
                             <th>소계</th>
@@ -137,8 +136,7 @@
                     <tbody>
                         <tr>
                             <td>인원(명)</td>
-                            <td>35</td>
-                            <td>5</td>
+                            <td>40</td>
                             <td>5</td>
                             <td>5</td>
                             <td>50</td>
@@ -170,8 +168,8 @@
                         </tr>
                         <tr>
                             <th>병역</th>
-                            <td>남자는 병역을 필한 자제대군인 응시상한 연령은 다음과 같이 연장함. <br />
-                            ※ 군복무기간 1년미만 : 1세 연장, 1년이상 2년미만 : 2세 연장, 2년이상 : 3세 연장 </td>
+                            <td>남자의 경우 병역을 필하였거나 면제된 사람(면접시험 전일까지 전역 예정자 포함)<br />
+                            ※ 만기전역자 외에 가사사정으로 인한 전역, 직권면직자 중 공상으로 전역한 사람도 응시자격 인정</td>
                         </tr>
                         <tr>
                             <th>신체조건</th>
@@ -181,18 +179,28 @@
                         </tr>
                         <tr>
                             <th>운전면허</th>
-                            <td>자동차 운전면허 1종보통 이상의 소지자 (응시원서 접수 마감일까지 소지자에 한함)</td>
+                            <td>자동차 운전면허 1종보통 이상의 소지자 (원서접수일부터 면접시험 최종일까지 유효하여야 함)</td>
+                        </tr>
+                        <tr>
+                            <th>어학</th>
+                            <td>면접시험일까지 유효하여야 함</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <h4 class="NGR mt20">원서접수</h4>
             <ul class="st01">
-                <li>경찰청 인터넷 원서접수 사이트(http://gosi.police.go.kr)로 접수하며, 원서작성 시 6개월 이내에 촬영한 칼라사진(3×4cm) <br>
-                    상반신을 원서접수 페이지에 업로드 및 수입인지대 7,000원 결제 (소정의 결제수수료 별도)<br>
-                    ※ 결제 완료된 원서접수 내용에 대하여는 원서접수 기간 내에만 수정 가능
+                <li>경찰청 인터넷 원서접수 사이트(http://gosi.police.go.kr)로 접수하며, 원서작성 시 최근 1년 이내에 촬영한 상반신 칼라사진(3×4cm) 업로드(원서접수 기간 이후에는 사진 교체 불가)
+                <li>응시자는 영어 능력 검정시험 성적을 입력하고, 해당 어학성적표를 스캔하여 업로드<br>
+                (영어성적은 원서접수 마감일 기준 2년 이내의 성적에 한해 유효하고, 영어성적이 기준점수 미달 시 접수 불가하며, 성적 허위기재 
+                시에는 부정행위로 간주)</li>
+                <li>필기시험 응시지역은 주소지와 상관없이 희망하는 응시지구의 선택이 가능<br>
+                (응시지구-6개소 : 서울, 부산, 대구, 대전, 광주, 경기남부지방경찰청, 필기시험장소는 응시지구별로 지정) (임용시 최초 근무지역은 입교 후 교육성적 등 별도 방법에 의하며, 원서접수 시 선택한 응시지구와는 관련 없음)
                 </li>
-                <li>분야별 응시자(외사분야 제외)는 영어성적 입력(원서접수 마감일 기준 2년 이내의 성적, 영어성적 미 입력자 접수 불가)</li>
+                <li>응시수수료 7,000원</li>
+                <li>응시표는 전형 일정에 따라 인터넷 원서접수 사이트에서 교부 및 시험 장소를 공지<br>
+                (시험 당일 응시표, 신분증, 필기도구를 반드시 지참하여야 함)
+                </li>
             </ul>    
             <h4 class="NGR mt20">필기시험</h4>
             <div>
@@ -338,17 +346,14 @@
                     <colgroup>
                         <col width="10%"/>
                         <col />
-                        <col width="15%"/>
-                        <col width="15%"/>
+                        <col width="20%"/>
                     </colgroup>
                     <thead>
                         <tr>
                             <th rowspan="2" colspan="2" scope="col">시험의 종류</th>
-                            <th colspan="2" scope="col">기준점수</th>
+                            <th scope="col">기준점수</th>
                         </tr>
                         <tr>
-                            <th>경감·경위<br />
-                            (간부후보생)</th>
                             <th>경감·경위<br />
                             (간부후보생)</th>
                         </tr>
@@ -359,32 +364,29 @@
                             (TOFEL)</th>
                             <td>미국 이.티.에스(E.T.S : Education Testing Service)에서 시행하는 시험<Br>(Test of English as a Foreign Language)으로서
                             그 실시 방식에 따라 피.비.티(PBT : Paper Based Test)씨.비.티(CBT : Computer Based Test) 및 아이.비.티(IBT:Internet Based Test)로 구분한다.</td>
-                            <td>PBT  530점이상<br />
-                            CBT 197점이상<br />
-                            IBT 71점이상<br /></td>
-                            <td>PBT 490점이상<br />
-                            CBT 165점이상<br />
+                            <td>PBT 490점이상
+                              <br />
                             IBT 58점이상</td>
                         </tr>
                         <tr>
                             <th>토익<br />
                             (TOEIC)</th>
                             <td>미국 이.티.에스(E.T.S : Education Testing Service)에서 시행하는 시험<Br>(Test of English International Communication)을 말한다.</td>
-                            <td>700점이상</td>
                             <td>625점이상</td>
                         </tr>
                         <tr>
                             <th>텝스<br />
                             (TEPS)</th>
                             <td>서울대 영어능력검정시험(Test of English Proficiency, Seoul National University)을 말한다.</td>
-                            <td>625점이상</td>
-                            <td>520점이상</td>
+                            <td>
+                            520점 이상<Br>(2018. 5. 12. 전에 실시된 시험)<Br>
+                            280점 이상<Br>(2018. 5. 12. 이후 실시된 시험)
+							</td>
                         </tr>
                         <tr>
                             <th>지텔프<br />
                             (G-TELP)</th>
-                            <td>미국 샌디에고 주립대에서 시행하는 시험(General Test of English Language Proficiency)을 말한다.</td>
-                            <td>Level 2의 65점이상</td>
+                            <td>미국 국제테스트연구원(International Testing Services Center)에서 주관하는 시험(General Test of English Language Proficiency)을 말한다.</td>
                             <td>Level 2의<br />
                             50점이상</td>
                         </tr>
@@ -392,15 +394,12 @@
                             <th>플렉스<br />
                             (FLEX)</th>
                             <td>한국외국어대 어학능력검정시험(Foreign Language EXamination)을 말한다.</td>
-                            <td>625점이상</td>
                             <td>520점이상</td>
                         </tr>
                         <tr>
                             <th>펠트<br />
                             (PELT)</th>
                             <td>한국외국어평가원에서 시행하는 시험을 말한다.(Practical English Language Test)</td>
-                            <td>PEL Main<br />
-                            303점이상</td>
                             <td>PEL Main<br />
                             254점이상<br /></td>
                         </tr>
@@ -409,13 +408,16 @@
                             (TOSEL)</th>
                             <td>한국교육방송공사에서 주관하는 시험을 말한다.(Test of the Skills in the English Language)</td>
                             <td>Advanced<br />
-                            690점이상<br /></td>
-                            <td>Advanced<br />
                             550점이상</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="mt10">
+                ※ 영어성적은 정기시험 성적만 인정하고, 기준점수를 충족하지 못한 경우에는 해당 시험의 영어 과목을 불합격으로 처리(합격한 경우 필기시험 성적에는 미반영)
+            </div>
+            
             <h4 class="NGR mt20">신체검사</h4>
             <div class="mt10">
                 <table cellspacing="0" cellpadding="0" class="table-Guided">
@@ -660,8 +662,9 @@
             </div>
             <h4 class="NGR mt20">최종합격자 결정</h4>
             <div>
-                <span class="tx-blue">필기시험(50%) + 체력검사(25%) + 면접시험(20%) + 가산점(5%)</span>를 합산한 성적의 고득점 순으로 선발예정인원을 최종합격자로 결정 </div>
-            </div>      
+                <span class="tx-blue">필기시험(50%) + 체력검사(25%) + 면접시험(20%) + 가산점(5%)</span>를 합산한 성적의 고득점 순으로 선발예정인원을 최종합격자로 결정
+            </div>
+        </div>      
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

@@ -93,7 +93,7 @@
                         <div id="campus1" class="tabContent">
                             <div class="map_img">
                                 <img src="https://static.willbes.net/public/images/promotion/main/2013_map.jpg" alt="경찰간부학원">
-                                <span class="origin">경찰간부학원</span>
+                                <span class="origin">윌비스 한림법학원 경찰간부</span>
                             </div>
                             <div class="campus_info">
                                 <dl>
@@ -103,7 +103,7 @@
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
                                                 <span>
-                                                서울 동작구 관악구 신림로 101 밀라트 나동
+                                                서울 동작구 관악구 신림로 23길 16 일성트루엘 4층
                                             </span>
                                             </div>
                                             <div class="tel">

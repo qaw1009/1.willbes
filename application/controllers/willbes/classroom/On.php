@@ -414,6 +414,7 @@ class On extends \app\controllers\FrontController
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자번호
             ],
             'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pkg, // 패키지
                 'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);

@@ -105,6 +105,7 @@ Class PackageUser extends CommonLecture
         $prodcode = null;
         $data = null;
         $data_memo = [];
+        $data_content = [];
         $data_sms = null;
         $data_autolec = [];
         $data_autocoupon = [];

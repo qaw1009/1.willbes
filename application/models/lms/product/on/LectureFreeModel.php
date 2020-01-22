@@ -397,6 +397,7 @@ class LectureFreeModel extends CommonLectureModel
             ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
             ,'IsEdit'=>element('IsEdit',$input,'N')
             ,'FreeLecTypeCcd'=>element('FreeLecTypeCcd',$input)
+            ,'IsOpenwUnitNum'=>element('IsOpenwUnitNum',$input,'N')
         ];
 
     }

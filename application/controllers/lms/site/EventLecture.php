@@ -157,7 +157,7 @@ class EventLecture extends \app\controllers\BaseController
 
             // 정원제한 데이터 조회 / 타입별 데이터 초기화
             if ($data['LimitType'] == 'S') { $list_event_register['M'] = null; } else if ($data['LimitType'] == 'M') { $list_event_register['S'] = null; }
-            $list_event_register[$data['LimitType']] = $this->eventLectureModel->listEventForRegister($el_idx);
+            $list_event_register[$data['LimitType']] = $this->eventLectureModel->listEventForRegister($el_idx, true);
 
             // 댓글사용영역 데이터 가공
             $arr_comment_use = explode(',', $data['CommentUseArea']);
@@ -394,7 +394,7 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         $result = $this->eventLectureModel->expireRegister($this->_reqP(null, false));
-        $this->json_result($result, '만료상태 수정 정상 처리 되었습니다.', $result);
+        $this->json_result($result, '신청정보 정상 수정 처리 되었습니다.', $result);
     }
 
     /**

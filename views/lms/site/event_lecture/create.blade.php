@@ -226,7 +226,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-11">
+                                        <div class="col-md-12">
                                         <table class="table table-striped table-bordered" id="table_lecture">
                                             <thead>
                                             <tr>
@@ -235,6 +235,7 @@
                                                 <th>특강/설명회명</th>
                                                 <th>만료</th>
                                                 <th>사용</th>
+                                                <th>지급상품 <br> {!! html_site_select('', 'product_site_code', 'product_site_code', '', '운영 사이트', '') !!}</th>
                                                 <th>수정</th>
                                                 <th>삭제</th>
                                             </tr>
@@ -276,6 +277,22 @@
                                                                 <option value="Y" @if($row['IsUse'] == 'Y')selected="selected"@endif>사용</option>
                                                                 <option value="N" @if($row['IsUse'] == 'N')selected="selected"@endif>미사용</option>
                                                             </select>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" data-eridx="{{$row['ErIdx']}}" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
+                                                            <span id="event_register_product_{{$row['ErIdx']}}" class="event_register_product">
+                                                            @if(empty($row['arr_event_product']) === false)
+                                                                @foreach($row['arr_event_product'] as $p_key => $p_val)
+                                                                    <br/>
+                                                                    <span class="pr-10">{{$p_val['ProdName']}}
+                                                                        <a href="#none" data-prod-code="{{$p_val['ProdCode']}}" class="selected-product-delete">
+                                                                            <i class="fa fa-times red"></i>
+                                                                        </a>
+                                                                        <input type="hidden" name="prod_code[]" value="{{$p_val['ProdCode']}}">
+                                                                    </span>
+                                                                @endforeach
+                                                            @endif
+                                                            </span>
                                                         </td>
                                                         <td>
                                                             <button type="button" class="btn btn-success mr-10 btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-modify-number="{{$i}}">수정</button>
@@ -497,7 +514,7 @@
             $('#btn_category_search').on('click', function(event) {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
 
@@ -522,7 +539,7 @@
             $('#btn_banner_search').on('click', function(event) {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
 
@@ -676,6 +693,12 @@
             $regi_form.on('click', '.btn-lecture-expire-submit', function() {
                 var modify_number = $(this).data('modify-number');
                 var _url = '{{ site_url("/site/eventLecture/expireRegister") }}';
+                var arr_p_prod_code = [];
+
+                $(this).parent().parent().children().find('input[name="prod_code[]"]').each(function(i){
+                    arr_p_prod_code.push($(this).val());
+                });
+
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
@@ -684,7 +707,8 @@
                     'person_limit' : $("#event_register_parson_limit_"+modify_number).val(),
                     'register_name' : $("#event_register_name_"+modify_number).val(),
                     'expire_status' : $("#expire_status_"+modify_number).val(),
-                    'is_use' : $("#regist_is_use_"+modify_number).val()
+                    'is_use' : $("#register_is_use_"+modify_number).val(),
+                    'prod_code[]' : arr_p_prod_code
                 };
 
                 if (!confirm('상태를 변경 하시겠습니까?')) {
@@ -797,6 +821,40 @@
                     $sms_content.val($sms_content.val().replace(new RegExp(add_name_msg,'gi'), ''));
                 }
             });
+
+            // 프로모션 지급상품 검색 버튼 클릭. 레이어 팝업 호출.
+            $('.btn_product_search').on('click', function() {
+                var product_site_code = $regi_form.find('select[name="product_site_code"]').val();
+                if (!product_site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.');
+                    $regi_form.find('select[name="product_site_code"]').focus();
+                    return;
+                }
+                var ret_er_idx = $(this).data('eridx');
+
+                $('.btn_product_search').setLayer({
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + product_site_code
+                        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
+                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                    'width' : 1400
+                });
+            });
+
+            // 지급상품 삭제 이벤트
+            $regi_form.on('click', '.selected-product-delete', function() {
+                var that = $(this);
+                var prod_code = that.data('prod-code');
+                var remark = $regi_form.find('#prod_' + prod_code).find('[name="remark[]"]').val();
+                that.parent().prev().remove(); // <br> 삭제
+                that.parent().remove();
+            });
+
+            // 지급상품 결과 이벤트
+            $regi_form.on('change', '.event_register_product', function() {
+                $(this).children('br').remove();
+                $(this).children('span').before('<br>');
+            });
+
         });
 
         function addValidate() {

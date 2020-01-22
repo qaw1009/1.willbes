@@ -21,7 +21,9 @@ class EventLectureModel extends WB_Model
         'banner' => 'lms_banner',
         'admin' => 'wbs_sys_admin',
         'product_subject' => 'lms_product_subject',
-        'professor' => 'lms_professor'
+        'professor' => 'lms_professor',
+        'event_register_r_product' => 'lms_event_register_r_product',
+        'product' => 'lms_product'
     ];
 
     public $_groupCcd = [
@@ -683,19 +685,36 @@ class EventLectureModel extends WB_Model
     /**
      * 이벤트 접수관리(정원제한) 데이터 조회
      * @param $el_idx
+     * @param $prod_list
      * @return bool
      */
-    public function listEventForRegister($el_idx)
+    public function listEventForRegister($el_idx, $prod_list = false)
     {
         $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus, IsUse';
         $from = "
             FROM {$this->_table['event_register']}
         ";
-        $where = ' where ElIdx = ? and IsStatus = "Y"';
-        $order_by_offset_limit = ' order by ErIdx asc';
+        $where = ' WHERE ElIdx = ? and IsStatus = "Y"';
+        $order_by_offset_limit = ' ORDER BY ErIdx ASC';
 
-        // 쿼리 실행
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+        $result = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+
+        // 프로모션 지급상품 조회
+        if($prod_list === true && empty($result) === false) {
+            $event_product_data = $this->listEventPromotionForProduct(['EQ' => ['A.ElIdx' => $el_idx]]);
+            foreach ($result as $key => $val) {
+                $arr_event_product = [];
+                foreach ($event_product_data as $p_key => $p_val) {
+                    if($val['ErIdx'] == $p_val['ErIdx']) {
+                        //$arr_event_product = array_merge($arr_event_product, $p_val);
+                        array_push($arr_event_product, $p_val);
+                    }
+                }
+                $result[$key]['arr_event_product'] = $arr_event_product;
+            }
+        }
+
+        return $result;
     }
 
     /**
@@ -836,11 +855,36 @@ class EventLectureModel extends WB_Model
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
-            /*$this->_conn->set('RegisterExpireStatus', $expire_status)->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
-            if ($this->_conn->update($this->_table['event_register']) === false) {
-                throw new \Exception('접수관리 만료 상태 수정에 실패했습니다.');
-            }*/
-
+            // *** 이벤트접수 지급강의 업데이트 ***
+            if(empty($input['prod_code']) === false) {
+                // 기존 상품 비교하기 위하여 조회
+                $before_data = $this->listEventPromotionForProduct(['EQ' => ['A.ErIdx' => $input['er_idx']]], 'ProdCode');
+                if(empty($before_data) === false && count($before_data) == 0){
+                    // 신규 등록
+                    foreach ($input['prod_code'] as $i_key => $i_val) {
+                        if($this->addEventPromotionForProduct($input['er_idx'], $i_val) !== true) {
+                            throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                        }                        
+                    }
+                } else {
+                    // 비교 삭제
+                    $del_data = array_values(array_diff($before_data, $input['prod_code']));
+                    if(empty($del_data) === false && count($del_data) > 0) {
+                        if($this->removeEventPromotionForProduct($input['er_idx'], $del_data) !== true) {
+                            throw new \Exception('프로모션 지급상품 삭제 업데이트를 실패하였습니다.');
+                        }
+                    }
+                    // 비교 등록
+                    $insert_data = array_values(array_diff($input['prod_code'], $before_data));
+                    if(empty($insert_data) === false) { 
+                        foreach ($insert_data as $i_key => $i_val) {
+                            if($this->addEventPromotionForProduct($input['er_idx'], $i_val) !== true) {
+                                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                            }
+                        }
+                    }
+                }
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -1929,6 +1973,99 @@ class EventLectureModel extends WB_Model
             }
         } catch (\Exception $e) {
             return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 지급 강의상품 리스트
+     * @param $arr_condition
+     * @param $rtn_col
+     * @return mixed
+     */
+    public function listEventPromotionForProduct($arr_condition = [], $rtn_col = '')
+    {
+        if (empty($arr_condition) === true) return false;
+
+        $column = '
+            B.*,
+            C.ProdName
+        ';
+        $from = "
+            FROM {$this->_table['event_register']} AS A
+            INNER JOIN {$this->_table['event_register_r_product']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['product']} AS C ON B.ProdCode = C.ProdCode
+            WHERE A.IsStatus = 'Y' 
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        $order_by_offset_limit = ' ORDER BY A.ErIdx ASC';
+        $result = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit)->result_array();
+
+        if(empty($rtn_col) === false) {
+            //데이터 배열 가공
+            $arr_rtn_col = [];
+            foreach($result as $row){
+                $arr_rtn_col = array_merge($arr_rtn_col, [$row[$rtn_col]]);
+            }
+            $result = $arr_rtn_col;
+        }
+        return $result;
+    }
+
+    /**
+     * 프로모션 지급 강의상품 삭제 업데이트
+     * @param stirng $er_idx
+     * @param array $arr_prod_code
+     * @return mixed
+     */
+    public function removeEventPromotionForProduct($er_idx, $arr_prod_code)
+    {
+        try {
+            if (empty($er_idx) === true || empty($arr_prod_code) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            $data = ['IsStatus' => 'N'];
+
+            $is_update = $this->_conn->set($data)
+                ->where('ErIdx', $er_idx)
+                ->where_in('ProdCode', $arr_prod_code)
+                ->update($this->_table['event_register_r_product']);
+
+            if ($is_update !== true) {
+                throw new \Exception('프로모션 지급상품 삭제 업데이트를 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 지급 강의상품 등록
+     * @param stirng $er_idx
+     * @param string $prod_code
+     * @return mixed
+     */
+    public function addEventPromotionForProduct($er_idx, $prod_code)
+    {
+        try {
+            if (empty($er_idx) === true || empty($prod_code) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            $data = [
+                'ErIdx' => $er_idx,
+                'ProdCode' => $prod_code,
+                'IsStatus' => 'Y',
+                'RegAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            if ($this->_conn->set($data)->insert($this->_table['event_register_r_product']) === false) {
+                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
         return true;
     }

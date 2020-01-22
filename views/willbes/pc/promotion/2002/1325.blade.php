@@ -38,12 +38,12 @@
         .wb_mp4 {background:#000;}
 
         .wb_cts00 {background:#404040}
-        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2019/12/1325_top_bg.jpg) no-repeat center top; }   
+        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2020/01/1325_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#abb1b9}
         .wb_cts04 {background:#696d73}
-		.wb_cts05 {background:#fff; padding-bottom:120px}
+		.wb_cts05 {background:#fff}
         .wb_cts06 {background:#f8f9fa}
         .wb_cts07 {background:#292b31}
         
@@ -117,7 +117,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_top_01.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1325_top.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
@@ -133,7 +133,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_04_top.jpg" alt="슈퍼pass"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1325_04.jpg" alt="슈퍼pass" usemap="#Map1325A" border="0"/>
+            <map name="Map1325A" id="Map1325A">
+                <area shape="rect" coords="386,1349,754,1439" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" alt="신청하기" />
+            </map>
+            {{--
             <div class="tabs">
                 <ul>
                     <li>
@@ -162,6 +166,7 @@
                     </a>
                 </div>                
             </div>
+            --}}
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
@@ -169,7 +174,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_06_01.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1325_06_01.jpg" alt="슈퍼pass"  />
         </div>
     </div>
     <!-- End Container -->

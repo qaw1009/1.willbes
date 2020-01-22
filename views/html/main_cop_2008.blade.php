@@ -64,7 +64,12 @@
     </div>
 
     <div class="Section mt30">
-        <div class="widthAuto bnrSec01 nSlider pick">  
+        <div class="widthAuto">  
+            <div class="widthAuto smallTit mt60">          
+                <p><span>제70기 경찰간부합격 <strong>PROGRAM</strong></span></p>            
+            </div>
+        </div>
+        <div class="widthAuto bnrSec01 nSlider pick mt60">  
             <ul>
                 <li>                        
                     <div class="sliderNum">
@@ -84,6 +89,11 @@
     </div>
 
     <div class="Section mt95">
+        <div class="widthAuto">  
+            <div class="widthAuto smallTit">           
+                <p><span>윌비스한림법학원 경찰간부 <strong>전문 교수진</strong></span></p>            
+            </div>
+        </div>
         <div class="widthAuto">
             <ul class="ProfCopBox mt60">
                 <li>
@@ -179,7 +189,12 @@
     </div>
     
     <div class="Section mt95">
-        <div class="widthAuto bnrSec02">   
+        <div class="widthAuto">  
+            <div class="widthAuto smallTit">          
+                <p><span>윌비스한림법학원 경찰간부 <strong>온라인 Hot Issue</strong></span></p>            
+            </div>
+        </div>
+        <div class="widthAuto bnrSec02 mt60">   
             <ul>
                 <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2008_556x120.jpg" alt="권소현 항해술"></a></li>
                 <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2008_556x120.jpg" alt="황다혜 기관술"></a></li>

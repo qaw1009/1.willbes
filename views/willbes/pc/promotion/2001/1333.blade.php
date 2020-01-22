@@ -45,14 +45,15 @@ to{color:#d63e4d}
 
 
 
-.top_bg {background:#514a48 url(https://static.willbes.net/public/images/promotion/2019/12/1333_top_bg.jpg) no-repeat center top;}
+.top1_bg {background:#514a48 url(https://static.willbes.net/public/images/promotion/2020/01/1333_top1_bg.jpg) no-repeat center top;}
+.top2_bg {background:#514a48 url(https://static.willbes.net/public/images/promotion/2020/01/1333_top2_bg.jpg) no-repeat center top;}
 .evt01 {background:#fff;}
 .evt02 {background:#bac0cc;}
 .evt02 ul {position:absolute; top:1242px; width:1014px; left:50%; margin-left:-507px; z-index:5}
 .evt02 ul li {display:inline; float:left; margin-right:8px}
 .evt02 ul li:last-child {margin-right:0}
 .evt02 ul li a {display:block; width:138px; height:209px; font-size:0; text-indent:-9999px}
-.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2020/01/1333_02_t6s_btn.jpg) no-repeat left top;width:198px;}
 .evt02 ul li:nth-child(7) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7_btn.jpg) no-repeat left top;}
 .evt02 ul li:nth-child(4) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4_btn.jpg) no-repeat left top;}
 .evt02 ul li:nth-child(5) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5_btn.jpg) no-repeat left top;}
@@ -70,7 +71,7 @@ to{color:#d63e4d}
     <div class="evtContent NGR" id="evtContainer"> 
         <ul class="skybanner">
             <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1333_sky01.png" alt="신광은 경찰팀 T-PASS"></a></li>
-            <li style="padding-top:10px;"><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1333_sky02.png" alt="신광은 경찰팀 T-PASS"></a></li>
+            <li style="padding-top:10px;"><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2020/01/1333_sky02.png" alt="신광은 경찰팀 T-PASS"></a></li>
         </ul> 
         <!-- 타이머 -->
         <div class="evtCtnsBox time NGEB"  id="newTopDday">
@@ -95,8 +96,12 @@ to{color:#d63e4d}
             </div>
         </div>
         
-        <div class="evtCtnsBox top_bg">  
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_top.jpg" alt="신광은 경찰팀 T-PASS">  
+        <div class="evtCtnsBox top1_bg">  
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1333_top1.jpg" alt="신광은 경찰팀 T-PASS">  
+        </div>
+
+        <div class="evtCtnsBox top2_bg">  
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1333_top2.jpg" alt="신광은 경찰팀 T-PASS">  
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -117,8 +122,7 @@ to{color:#d63e4d}
                 <li><a href="#tab3">경찰학 장정훈</a></li>  
                 <li><a href="#tab4">한국사 원유철</a></li>   
                 <li><a href="#tab5">한국사 오태진</a></li>
-                <li><a href="#tab6">영어 하승민</a></li>
-                <li><a href="#tab7">영어 김현정</a></li>                          
+                <li><a href="#tab6">영어 하승민</a></li>               
             </ul>
             <div id="tab1" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t1.jpg" alt="형소법 신광은" usemap="#Map1333A" border="0">
@@ -151,29 +155,23 @@ to{color:#d63e4d}
                 </map>
             </div> 
             <div id="tab6" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t6.jpg" alt="영어 하승민" usemap="#Map1333F" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1333_02_t6s.jpg" alt="영어 하승민.김현정" usemap="#Map1333F" border="0">
                 <map name="Map1333F" id="Map1333F">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159221" target="_blank" alt="수강신청" />
-                </map>
+                    <area shape="rect" coords="70,530,510,573" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/161065" target="_blank" alt="수강신청" />
+                </map>                
             </div> 
-            <div id="tab7" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t7.jpg" alt="영어 김현정" usemap="#Map1333G" border="0">
-                <map name="Map1333G" id="Map1333G">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159222" target="_blank" alt="수강신청" />
-                </map>
-            </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1333_02_01.jpg">
             <div id="golec">                
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_bottom.jpg" alt="패스 수강신청" usemap="#map190913" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1333_02_bottom.jpg" alt="패스 수강신청" usemap="#map190913" border="0">
                 <map name="map190913" id="map190913">
-                    <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159223" target="_blank" alt="하승민/오태진" />
-                    <area shape="rect" coords="321,231,488,279" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159224" target="_blank" alt="하승민/원유철" />
+                    <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/161066" target="_blank" alt="하승민/김현정/오태진" />
+                    <area shape="rect" coords="321,231,488,279" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/161067" target="_blank" alt="하승민/김현정/원유철" />
                     <area shape="rect" coords="740,231,903,278" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159225" target="_blank" alt="3법패스" />
                 </map>
             </div>
         </div>
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_03.jpg" alt="실전 모의고사">             
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1333_03.jpg" alt="실전 모의고사">             
         </div>               
     </div>
     <!-- End Container --> 

@@ -5,7 +5,6 @@ require_once  APPPATH . 'models/lms/product/on/CommonLectureModel.php';
 
 class LectureModel extends CommonLectureModel
 {
-
     /**
      * 강좌목록추출
      * @param $is_count
@@ -312,7 +311,6 @@ class LectureModel extends CommonLectureModel
             }
             /*----------------          Json 데이터 등록        ---------------*/
 
-
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -458,104 +456,104 @@ class LectureModel extends CommonLectureModel
      * @param $input_lecture
      */
     public function inputCommon($input=[], &$input_product, &$input_lecture)
-        {
-            $LecTypeCcd = element('LecTypeCcd',$input);
+    {
+        $LecTypeCcd = element('LecTypeCcd',$input);
 
-            $StudyPeriod = element('StudyPeriod',$input);       //수강일수
-            $WorkStudyPeriod = element('WorkStudyPeriod',$input);    //직장인 배수적용수간기간
+        $StudyPeriod = element('StudyPeriod',$input);       //수강일수
+        $WorkStudyPeriod = element('WorkStudyPeriod',$input);    //직장인 배수적용수간기간
 
-            $StudyStartDate = element('StudyStartDate',$input); //개강일
-            $WorkStudyStartDate = element('WorkStudyStartDate',$input); //직장인/재학생반 개강일
+        $StudyStartDate = element('StudyStartDate',$input); //개강일
+        $WorkStudyStartDate = element('WorkStudyStartDate',$input); //직장인/재학생반 개강일
 
-            if($LecTypeCcd==='607003') {        //  직장인/재학생반 일경우
-                $commonStudyPeriod = $WorkStudyPeriod;
-                $commonStudyStartDate = $WorkStudyStartDate;
-            } else {
-                $commonStudyPeriod = $StudyPeriod;
-                $commonStudyStartDate = $StudyStartDate;
-            }
+        if($LecTypeCcd==='607003') {        //  직장인/재학생반 일경우
+            $commonStudyPeriod = $WorkStudyPeriod;
+            $commonStudyStartDate = $WorkStudyStartDate;
+        } else {
+            $commonStudyPeriod = $StudyPeriod;
+            $commonStudyStartDate = $StudyStartDate;
+        }
 
-            $SaleStartDat = element('SaleStartDat',$input);
-            $SaleStartTime = element('SaleStartTime',$input);
-            if($SaleStartDat === '') {
-                $SaleStartDat = date("Y-m-d");
-            }
-            if($SaleStartTime === '') {
-                $SaleStartTime = date('H');
-            }
-            $SaleStartDatm = $SaleStartDat.' '.$SaleStartTime.':00:00';
+        $SaleStartDat = element('SaleStartDat',$input);
+        $SaleStartTime = element('SaleStartTime',$input);
+        if($SaleStartDat === '') {
+            $SaleStartDat = date("Y-m-d");
+        }
+        if($SaleStartTime === '') {
+            $SaleStartTime = date('H');
+        }
+        $SaleStartDatm = $SaleStartDat.' '.$SaleStartTime.':00:00';
 
-            $SaleEndDat = element('SaleEndDat',$input);
-            $SaleEndTime = element('SaleEndTime',$input);
-            if($SaleEndDat === '') {
-                $SaleEndDat = "2030-12-31";
-            }
-            if($SaleEndTime === '') {
-                $SaleEndTime = '23';
-            }
-            $SaleEndDatm = $SaleEndDat.' '.$SaleEndTime.':59:59';
+        $SaleEndDat = element('SaleEndDat',$input);
+        $SaleEndTime = element('SaleEndTime',$input);
+        if($SaleEndDat === '') {
+            $SaleEndDat = "2030-12-31";
+        }
+        if($SaleEndTime === '') {
+            $SaleEndTime = '23';
+        }
+        $SaleEndDatm = $SaleEndDat.' '.$SaleEndTime.':59:59';
 
-            //상품관리 테이블 입력
-            $input_product = [
-                'ProdName'=>element('ProdName',$input)
-                ,'SaleStartDatm'=>$SaleStartDatm
-                ,'SaleEndDatm'=>$SaleEndDatm
-                ,'SaleStatusCcd'=>element('SaleStatusCcd',$input)
-                ,'IsSaleEnd'=>element('IsSaleEnd',$input,'N')
-                ,'IsCoupon'=>element('IsCoupon',$input)
-                ,'IsPoint'=>element('IsPoint',$input)
-                ,'PointApplyCcd'=>element('PointApplyCcd',$input)
-                ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
-                ,'PointSaveType'=>element('PointSaveType',$input)
-                ,'IsBest'=>element('IsBest',$input, 'N')
-                ,'IsNew'=>element('IsNew',$input, 'N')
-                ,'IsCart'=>element('IsCart',$input,'N')
-                ,'IsRefund'=>element('IsRefund',$input,'N')
-                ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
-                ,'IsSms'=>element('IsSms',$input,'N')
-                ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
-                ,'IsUse'=>element('IsUse',$input)
-                ,'Keyword'=>element('Keyword',$input)
-            ];
+        //상품관리 테이블 입력
+        $input_product = [
+            'ProdName'=>element('ProdName',$input)
+            ,'SaleStartDatm'=>$SaleStartDatm
+            ,'SaleEndDatm'=>$SaleEndDatm
+            ,'SaleStatusCcd'=>element('SaleStatusCcd',$input)
+            ,'IsSaleEnd'=>element('IsSaleEnd',$input,'N')
+            ,'IsCoupon'=>element('IsCoupon',$input)
+            ,'IsPoint'=>element('IsPoint',$input)
+            ,'PointApplyCcd'=>element('PointApplyCcd',$input)
+            ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
+            ,'PointSaveType'=>element('PointSaveType',$input)
+            ,'IsBest'=>element('IsBest',$input, 'N')
+            ,'IsNew'=>element('IsNew',$input, 'N')
+            ,'IsCart'=>element('IsCart',$input,'N')
+            ,'IsRefund'=>element('IsRefund',$input,'N')
+            ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
+            ,'IsSms'=>element('IsSms',$input,'N')
+            ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
+            ,'IsUse'=>element('IsUse',$input)
+            ,'Keyword'=>element('Keyword',$input)
+        ];
 
-            $input_lecture = [
-                'wLecIdx'=>element('wLecIdx',$input)
-                ,'SchoolYear'=>element('SchoolYear',$input)
-                ,'CourseIdx'=>element('CourseIdx',$input)
-                ,'SubjectIdx'=>element('SubjectIdx',$input)
-                ,'LecSaleType'=>element('LecSaleType',$input,'N')
-                ,'LecTypeCcd'=>$LecTypeCcd
-                ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input)
-                ,'StudyPeriod'=>$commonStudyPeriod
-                ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
-                ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)
-                ,'WorkBaseStudyPeriod'=>get_var(element('WorkBaseStudyPeriod',$input),0)         //정상수강시간
-                ,'WorkMultipleApply'=>element('WorkMultipleApply',$input)                   //배수제한값
-                ,'WorkWeekDayStartTime'=>element('WorkWeekDayStartTime',$input)     //수강적용시간 : 평일 시작시간
-                ,'WorkWeekDayEndTime'=>element('WorkWeekDayEndTime',$input)         //수강적용시간 : 평일 종료시간
-                ,'WorkHoliDayStartTime'=>element('WorkHoliDayStartTime',$input)          //수강적용시간 : 주말 시작시간
-                ,'WorkHoliDayEndTime'=>element('WorkHoliDayEndTime',$input)              //수강적용시간 : 주말 종료시간
-                ,'PcProvisionCcd'=>element('PcProvisionCcd',$input)                   //PC제공구분
-                ,'MobileProvisionCcd'=>element('MobileProvisionCcd',$input)         //모바일제공구분
-                ,'PlayerTypeCcds'=>implode(',', element('PlayerTypeCcds', $input))                //플레이어선택
-                ,'MultipleApply'=>element('MultipleApply',$input)                        //수강배수정보 - 배수제한값
-                ,'MultipleTypeCcd'=>element('MultipleTypeCcd',$input)               //수강배수정보 - 적용
-                ,'AllLecTime'=>element('AllLecTime',$input)                               //전체강의시간
-                ,'LecCalcType'=>element('LecCalcType',$input)                         //강사료정산 타입
-                ,'IsLecStart'=>element('IsLecStart',$input,'N')
-                ,'IsPause'=>element('IsPause',$input,'N')
-                ,'PauseNum'=>element('PauseNum',$input)
-                ,'IsExten'=>element('IsExten',$input,'N')
-                ,'ExtenNum'=>element('ExtenNum',$input)
-                ,'IsRetake'=>element('IsRetake',$input,'N')
-                ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
-                ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
-                ,'wCpIdx'=>element('wCpIdx',$input)
-                ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
-                ,'IsEdit'=>element('IsEdit',$input,'N')
-                ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
-                ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
-            ];
-
+        $input_lecture = [
+            'wLecIdx'=>element('wLecIdx',$input)
+            ,'SchoolYear'=>element('SchoolYear',$input)
+            ,'CourseIdx'=>element('CourseIdx',$input)
+            ,'SubjectIdx'=>element('SubjectIdx',$input)
+            ,'LecSaleType'=>element('LecSaleType',$input,'N')
+            ,'LecTypeCcd'=>$LecTypeCcd
+            ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input)
+            ,'StudyPeriod'=>$commonStudyPeriod
+            ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
+            ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)
+            ,'WorkBaseStudyPeriod'=>get_var(element('WorkBaseStudyPeriod',$input),0)         //정상수강시간
+            ,'WorkMultipleApply'=>element('WorkMultipleApply',$input)                   //배수제한값
+            ,'WorkWeekDayStartTime'=>element('WorkWeekDayStartTime',$input)     //수강적용시간 : 평일 시작시간
+            ,'WorkWeekDayEndTime'=>element('WorkWeekDayEndTime',$input)         //수강적용시간 : 평일 종료시간
+            ,'WorkHoliDayStartTime'=>element('WorkHoliDayStartTime',$input)          //수강적용시간 : 주말 시작시간
+            ,'WorkHoliDayEndTime'=>element('WorkHoliDayEndTime',$input)              //수강적용시간 : 주말 종료시간
+            ,'PcProvisionCcd'=>element('PcProvisionCcd',$input)                   //PC제공구분
+            ,'MobileProvisionCcd'=>element('MobileProvisionCcd',$input)         //모바일제공구분
+            ,'PlayerTypeCcds'=>implode(',', element('PlayerTypeCcds', $input))                //플레이어선택
+            ,'MultipleApply'=>element('MultipleApply',$input)                        //수강배수정보 - 배수제한값
+            ,'MultipleTypeCcd'=>element('MultipleTypeCcd',$input)               //수강배수정보 - 적용
+            ,'AllLecTime'=>element('AllLecTime',$input)                               //전체강의시간
+            ,'LecCalcType'=>element('LecCalcType',$input)                         //강사료정산 타입
+            ,'IsLecStart'=>element('IsLecStart',$input,'N')
+            ,'IsPause'=>element('IsPause',$input,'N')
+            ,'PauseNum'=>element('PauseNum',$input)
+            ,'IsExten'=>element('IsExten',$input,'N')
+            ,'ExtenNum'=>element('ExtenNum',$input)
+            ,'IsRetake'=>element('IsRetake',$input,'N')
+            ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
+            ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
+            ,'wCpIdx'=>element('wCpIdx',$input)
+            ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
+            ,'IsEdit'=>element('IsEdit',$input,'N')
+            ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
+            ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
+            ,'IsOpenwUnitNum'=>element('IsOpenwUnitNum',$input,'N')
+        ];
    }
 }

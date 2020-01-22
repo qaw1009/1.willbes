@@ -8,7 +8,7 @@
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">공무원<span class="row-line">|</span></li>
-                <li class="subTit">9급</li>
+                <li class="subTit">군무원</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">
@@ -524,9 +524,9 @@
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>

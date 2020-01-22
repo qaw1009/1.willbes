@@ -31,6 +31,7 @@
             <div class="widthAuto bnrSec02">
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" title="신광은 형사소송법"></a></div>
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" title="공득인 해양경찰학개론"></a></div>
+                <div><a href="https://police.willbes.net/professor/show/cate/3007/prof-idx/50759/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0"><img src="https://static.willbes.net/public/images/promotion/main/bnr_1120_03.jpg" title="송광호 해양경찰학개론"></a></div>
             </div>
         </div>
 
@@ -42,21 +43,21 @@
                 </div>
                 <ul class="ProfCopBox mt60 mb100">
                     <li>
-                        <img src="{{ img_url('cop_sea/prof/prof_ske_184.jpg') }}" title="신광은">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_ske_184.jpg" title="신광은">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea/prof/prof_kwu_184.jpg') }}" title="김원욱">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_kwu_184.jpg" title="김원욱">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea/prof/prof_hsm_184.jpg') }}" title="하승민">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_hsm_184.jpg" title="하승민">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
@@ -66,14 +67,14 @@
                         <div class="bSlider">
                             <div class="slider">
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_khj_184.jpg') }}" alt="김현정">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_khj_184.jpg" alt="김현정">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50748', 'OT');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50748/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
                                     </ul>
                                 </div>                            
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_kjg_184.jpg') }}" alt="김준기">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_kjg_184.jpg" alt="김준기">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50749', 'OT');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50749/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
@@ -86,14 +87,14 @@
                         <div class="bSlider">
                             <div class="slider">
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_otj_184.jpg') }}" alt="오태진">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_otj_184.jpg" alt="오태진">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}">교수소개</a></li>
                                     </ul>
                                 </div>                            
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_wuc_184.jpg') }}" alt="원유철">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_wuc_184.jpg" alt="원유철">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}">교수소개</a></li>
@@ -106,14 +107,14 @@
                         <div class="bSlider">
                             <div class="slider">
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_gdi2_184.jpg') }}" alt="공득인">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi2_184.jpg" alt="공득인">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50742', 'OT');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">교수소개</a></li>
                                     </ul>
                                 </div>                            
                                 <div>
-                                    <img src="{{ img_url('cop_sea/prof/prof_gdi_184.jpg') }}" alt="공득인">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi_184.jpg" alt="공득인">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50742', 'S1');">▶</a></li>
                                         <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}">교수소개</a></li>
@@ -121,6 +122,13 @@
                                 </div>
                             </div>
                         </div>                        
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_sgh_184.jpg" title="송광호">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50759', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50759/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">교수소개</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

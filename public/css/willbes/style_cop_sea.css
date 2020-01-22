@@ -97,16 +97,16 @@
     position: relative;
     display: inline;
     float: left;
-    width: 184px;
+    width: 155px;
     height: 281px;
-    margin-left: 2px;
+    margin-left: 5px;
 }
 .sea .Section .ProfCopBox > li:first-child {
     margin-left: 0;
 }
 .sea .Section .ProfCopBox .ProfBtns {
     position: absolute;
-    width: 100%;
+    width:100%;
     bottom: 0;
     left: 0;    
     z-index: 100;

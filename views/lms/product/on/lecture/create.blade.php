@@ -291,8 +291,7 @@
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
                             @foreach($contentprovision_ccd as $key => $val)
-                                <input type="radio" name="PcProvisionCcd" id="PcProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PcProvisionCcd'] == $key)checked="checked"@endif> {{$val}}
-                                &nbsp;
+                                <input type="radio" name="PcProvisionCcd" id="PcProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PcProvisionCcd'] == $key)checked="checked"@endif> {{$val}}&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -550,7 +549,7 @@
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($data['IsLecStart']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •수강기간설정 조건이 '수강기간'일 경우 시작일이 개강일보다 빠르면 개강일에 맞춰 자동 시작
@@ -573,6 +572,7 @@
                             </select>
                             회
                             ]
+                            &nbsp;
                             <input type="radio" name="IsPause" class="flat" value="N" @if($data['IsPause']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •일시정지는 수강 잔여기간 내에서만 설정 가능
@@ -595,6 +595,7 @@
                             </select>
                             회
                             ]
+                            &nbsp;
                             <input type="radio" name="IsExten" class="flat" value="N" @if($data['IsExten']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •수강연장은 본 강좌 수강기간의 50% 범위 내에서만 가능
@@ -926,7 +927,6 @@
                     <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송료 부과여부
                     </label>
                     <div class="col-md-10 form-inline">
-
                         <div class="item inline-block">
                             <input type="radio" name="IsFreebiesTrans" class="flat" value="Y" title="배송료부과여부" @if( $data['IsFreebiesTrans']=='Y')checked="checked"@endif/> 부과
                             &nbsp;
@@ -1008,6 +1008,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">회차노출여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsOpenwUnitNum" class="flat" value="Y" required="required" title="회차노출여부" @if($data['IsOpenwUnitNum']=='Y')checked="checked"@endif/> 노출
+                            &nbsp; <input type="radio" name="IsOpenwUnitNum" class="flat" value="N" title="회차노출여부" @if($method == 'POST' || $data['IsOpenwUnitNum']=='N')checked="checked"@endif/> 숨김
+                        </div>
+                    </div>
                     <label class="control-label col-md-2">외부수강업체연동
                     </label>
                     <div class="col-md-4 form-inline item" >

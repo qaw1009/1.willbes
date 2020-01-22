@@ -231,8 +231,7 @@
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
                             @foreach($contentprovision_ccd as $key => $val)
-                                <input type="radio" name="PcProvisionCcd" id="PcProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PcProvisionCcd'] == $key)checked="checked"@endif> {{$val}}
-                                &nbsp;
+                                <input type="radio" name="PcProvisionCcd" id="PcProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PcProvisionCcd'] == $key)checked="checked"@endif> {{$val}}&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -582,6 +581,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">회차노출여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsOpenwUnitNum" class="flat" value="Y" required="required" title="회차노출여부" @if($data['IsOpenwUnitNum']=='Y')checked="checked"@endif/> 노출
+                            &nbsp; <input type="radio" name="IsOpenwUnitNum" class="flat" value="N" title="회차노출여부" @if($method == 'POST' || $data['IsOpenwUnitNum']=='N')checked="checked"@endif/> 숨김
+                        </div>
+                    </div>
+                </div>
 
                 @if($method === 'PUT')
                     <div class="form-group">
@@ -625,11 +634,9 @@
     <script src="/public/js/editor_util.js"></script>
 
     <script type="text/javascript">
-
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-
             var $editor_1 = new cheditor();
             $editor_1.config.editorHeight = '170px';
             $editor_1.config.editorWidth = '100%';
@@ -659,7 +666,6 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
                     /*
                     $("#selected_category").html("");
                     $("#teacherDivision tbody").remove();
@@ -667,13 +673,11 @@
                     sitecode_chained($(this).val());    //과정.과목 재조정
                     */
                     location.reload();
-
                 } else {
                     $(this).val(prev_val);
                     return false;
                 }
             });
-
 
             //카테고리검색
             $("#searchCategory").on('click', function () {
@@ -704,11 +708,9 @@
                 })
             });
 
-
             //과정, 과목 변경
             $("#CourseIdx").chained("#site_code");
             $("#SubjectIdx").chained("#site_code");
-
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){
@@ -733,11 +735,7 @@
 
                 sendAjax('{{ site_url('common/searchWMasterLecture/wMasterLectureProfessor') }}', data, function(ret) {
                     if(ret.ret_cd) {
-                        //alert( (ret.ret_data).length );
-
                         if((ret.ret_data).length > 0) {
-                            //console.log(ret.ret_data);
-
                             data_array = ret.ret_data;
                             html = "";
 
@@ -763,7 +761,7 @@
                                     +"<td> <input type='text' name='ProdDivisionRate[]' id='ProdDivisionRate_"+data_array[i].ProfIdx+"' value='0' class='form-control' size='10' readonly  required='required' title='안분율'>  </td>"
                                     +"<td><input type='text' name='ProdCalcRate[]' id='ProdCalcRate_"+data_array[i].ProfIdx+"' value='0' class='form-control' size=5 readonly required='required' title='정산율'> %</td>"
                                     +"<td><input type='radio' name='IsSingular' id='IsSingular_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' onclick=\"singularCheck('"+data_array[i].ProfIdx+"')\" "+IsReprProf_checked+" required='required' title='단수적용'></td>"
-                                    +"</tr>"
+                                    +"</tr>";
                                 $("#teacherDivision").append(html);
                             }
                             $("#teacherDivision").append(
@@ -771,7 +769,7 @@
                                 +"<td colspan='4'></td>"
                                 +"<td><span id='rateSum'>1</span></td>"
                                 +"<td colspan='2'></td></tr>"
-                            )
+                            );
 
                             //단수적용을 위한 나머지 값 저장용 필드
                             $("#teacherDivision").append("</tbody>");
@@ -779,7 +777,6 @@
                             $("#rateRemainProfIdx").val(IsSingular_profidx); //선택교수 초기화
                             $("#rateRemain").val('0');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -843,26 +840,20 @@
                 }
                 if($('input:radio[name="FreeLecTypeCcd"]:checked').val() == '652002') {
                     if($('#FreeLecPasswd').val()=='') {
-                        alert('비밀번호를 입력하여 주십시오.');$('#FreeLecPasswd').focus();return;
+                        //alert('비밀번호를 입력하여 주십시오.');$('#FreeLecPasswd').focus();return;
                     }
                 }
                 return true;
             }
-
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lectureFree/') }}' + getQueryString());
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
-        function radioclass() {
-            $("input[name=mainFlag]").attr({"class":"flat"});
-        }
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }
-
 
         //안분율 자동 계산
         function rateCheck(strGubun) {
@@ -920,7 +911,6 @@
                 $("#rateRemainProfIdx").val('') //선택교수 초기화
 
             }
-
         }
 
         //단수체크
@@ -977,7 +967,5 @@
         $('#rateRemain').val('{{$rateRemain}}');
         $('#rateRemainProfIdx').val('{{$rateRemainProfIdx}}');
         @endif
-
     </script>
-
 @stop

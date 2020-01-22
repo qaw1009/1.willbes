@@ -340,7 +340,7 @@
                     <tr>
                         <td class="w-no">
                             @if($__cfg['SiteCode'] != '2001' && $__cfg['SiteCode'] != '2003' )
-                                {{ $row['wUnitNum'] }}회차
+                                {{ $row['wUnitNum'] }}회
                             @endif
                             {{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>

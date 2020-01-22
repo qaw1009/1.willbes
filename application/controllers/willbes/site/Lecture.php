@@ -10,7 +10,7 @@ class Lecture extends \app\controllers\FrontController
 
     private $_learn_pattern = 'on_lecture';     // 학습형태 (단강좌, 무료강좌 구분값)
     private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
-    private $_pattern_banner_section = ['only' => '수강신청_우측퀵', 'free' => '무료특강_우측퀵'];
+    private $_pattern_banner_section = ['only' => '수강신청_우측퀵', 'free' => '수강신청_우측퀵'];
 
     public function __construct()
     {

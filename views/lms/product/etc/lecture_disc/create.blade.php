@@ -80,7 +80,7 @@
                                     </td>
                                     <td>
                                         <select name="disc_num[]" class="form-control" title="할인개수">
-                                        @for($j=2; $j<=5; $j++)
+                                        @for($j=2; $j<=12; $j++)
                                             <option value="{{ $j }}" {{ empty($data['DiscInfo'][$i]) === false && $data['DiscInfo'][$i]['DiscNum'] == $j ? 'selected="selected"' : '' }}>{{ $j }}개</option>
                                         @endfor
                                         </select>

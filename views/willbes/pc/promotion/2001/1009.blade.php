@@ -357,7 +357,7 @@
             <ul class="tabs">
                 <li><a href="#tab1">8개월 PASS</a></li>
                 <li><a href="#tab2">14개월 PASS</a></li>
-                <li><a href="#tab3">0원 PASS (20개월)</a></li>
+                <li><a href="#tab3">20개월 0원 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 

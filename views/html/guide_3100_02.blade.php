@@ -468,6 +468,17 @@
             </div> 
             <h4 class="NGR mt20">체력검사</h4>
             <div class="mt10">
+                <strong>2021년도 경찰간부후보생 공개경쟁선발시험(제70기) 체력검사 평가기준</strong><br/>
+                - 2021년도 경찰간부후보생 공개경쟁선발시험(제70기)부터는 남녀 통합선발하게 됩니다.<br/>
+                - 경찰공무원임용령 시행규칙 제34조의 2가 개정됨에 따라 체력검사 종목 및 체력기준이 변경되오니 확인하시기 바랍니다.
+            </div>
+            <h5 class="NGR mt10 tx-blue">변경후</h4>
+            <div class="mt10">
+                ■ 경찰공무원 임용령 시행규칙 [별표 5의3] <신설 2019. 7.2> [시행일 2020. 1. 1.]<br/>
+                경찰간부후보생 공개경쟁선발시험 체력검사의 평가기준 및 방법<br/>
+                (제34조의2제2항 관련)
+            </div>
+            <div class="mt10">
                 <table cellspacing="0" cellpadding="0" class="table-Guided">
                     <colgroup>
                         <col width="8%"/>
@@ -475,7 +486,7 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th colspan="2">구    분</th>
+                            <th colspan="2">구분</th>
                             <th>10점</th>
                             <th>9점</th>
                             <th>8점</th>
@@ -487,155 +498,176 @@
                             <th>2점</th>
                             <th>1점</th>
                         </tr>
-                    </thaed>
+                    </thead>
                     <tbody>
                         <tr>
-                            <th rowspan="10">남자</th>
-                            <th rowspan="2">100m 달리기(초)</th>
-                            <td rowspan="2">12.7    이내</td>
-                            <td rowspan="2">12.8～13</td>
-                            <td rowspan="2">13.1～13.3</td>
-                            <td rowspan="2">13.4～13.6</td>
-                            <td rowspan="2">13.7～14</td>
-                            <td rowspan="2">14.1～14.4</td>
-                            <td rowspan="2">14.5～14.7</td>
-                            <td rowspan="2">14.8～15.1</td>
-                            <td rowspan="2">15.2～15.3</td>
-                            <td rowspan="2">15.4이후</td>
+                            <th rowspan="5">남자</th>
+                            <th>50m달리기
+                            (초)</th>
+                            <td>7.0
+                            이하</td>
+                            <td>7.01~
+                            7.21</td>
+                            <td>7.22~
+                            7.42</td>
+                            <td>7.43~
+                            7.63</td>
+                            <td>7.64~
+                            7.84</td>
+                            <td>7.85~
+                            8.05</td>
+                            <td>8.06~
+                            8.26</td>
+                            <td>8.27~
+                            8.47</td>
+                            <td>8.48~
+                            8.68</td>
+                            <td>8.69
+                            이상</td>
                         </tr>
-                        <tr></tr>
                         <tr>
-                            <th rowspan="2">1,200m 달리기(초)</th>
-                            <td rowspan="2">250 이내</td>
-                            <td rowspan="2">251～266</td>
-                            <td rowspan="2">267～282</td>
-                            <td rowspan="2">283～298</td>
-                            <td rowspan="2">299～314</td>
-                            <td rowspan="2">315～330</td>
-                            <td rowspan="2">331～346</td>
-                            <td rowspan="2">347～363</td>
-                            <td rowspan="2">364～380</td>
-                            <td rowspan="2">381이후 </td>
+                            <th>왕복오래달리기(회)</th>
+                            <td>77이상</td>
+                            <td>76~72</td>
+                            <td>71~67</td>
+                            <td>66~62</td>
+                            <td>61~57</td>
+                            <td>56~52</td>
+                            <td>51~47</td>
+                            <td>46~41</td>
+                            <td>40~35</td>
+                            <td>34이하</td>
                         </tr>
-                        <tr></tr>
                         <tr>
-                            <th rowspan="2">윗몸일으키기(회/1분)</th>
-                            <td rowspan="2">58 이상</td>
-                            <td rowspan="2">57～55</td>
-                            <td rowspan="2">54～51</td>
-                            <td rowspan="2">50～46</td>
-                            <td rowspan="2">45～40</td>
-                            <td rowspan="2">39～36</td>
-                            <td rowspan="2">35～31</td>
-                            <td rowspan="2">30～25</td>
-                            <td rowspan="2">24～22</td>
-                            <td rowspan="2">21 이하</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th rowspan="2">좌우 악력(kg)</th>
-                            <td rowspan="2">61 이상</td>
-                            <td rowspan="2">60～59</td>
-                            <td rowspan="2">58～56</td>
-                            <td rowspan="2">55～54</td>
-                            <td rowspan="2">53～51</td>
-                            <td rowspan="2">50～48</td>
-                            <td rowspan="2">47～45</td>
-                            <td rowspan="2">44∼42</td>
-                            <td rowspan="2">41～39</td>
-                            <td rowspan="2">38 이하</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th rowspan="2">팔굽혀펴기(회/1분)</th>
-                            <td rowspan="2">58 이상</td>
-                            <td rowspan="2">57-54</td>
-                            <td rowspan="2">53～50</td>
-                            <td rowspan="2">49～46</td>
-                            <td rowspan="2">45～42</td>
-                            <td rowspan="2">41～38</td>
-                            <td rowspan="2">37～33</td>
-                            <td rowspan="2">32～28</td>
-                            <td rowspan="2">27～23</td>
-                            <td rowspan="2">22 이하</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th rowspan="7">여자</th>
-                            <th rowspan="2">100m 달리기(초)</th>
-                            <td rowspan="2">14.0    이내</td>
-                            <td rowspan="2">14.1～14.7</td>
-                            <td rowspan="2">14.8～15.5</td>
-                            <td rowspan="2">15.6～16.3</td>
-                            <td rowspan="2">16.4～17</td>
-                            <td rowspan="2">17.1～17.7</td>
-                            <td rowspan="2">17.8～18.5</td>
-                            <td rowspan="2">18.6～19.2</td>
-                            <td rowspan="2">19.3～20</td>
-                            <td rowspan="2">20.1이후</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th rowspan="2">1,200m 달리기(초)</th>
-                            <td rowspan="2">340 이내</td>
-                            <td rowspan="2">341～358</td>
-                            <td rowspan="2">359～376</td>
-                            <td rowspan="2">377～394</td>
-                            <td rowspan="2">395～413</td>
-                            <td rowspan="2">414～432</td>
-                            <td rowspan="2">433～451</td>
-                            <td rowspan="2">452～470</td>
-                            <td rowspan="2">471～489</td>
-                            <td rowspan="2">490 이후</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th>윗몸일으키기(회/1분)</th>
-                            <td>55 이상</td>
-                            <td>54～50</td>
-                            <td>49～45</td>
-                            <td>44～40</td>
-                            <td>39～35</td>
-                            <td>34～30</td>
-                            <td>29～25</td>
-                            <td>24～19</td>
-                            <td>18～13</td>
-                            <td>12 이하</td>
+                            <th>윗몸일으키기
+                            (회/1분)</th>
+                            <td>58
+                            이상</td>
+                            <td>57~55</td>
+                            <td>54~52</td>
+                            <td>51~49</td>
+                            <td>48~46</td>
+                            <td>45~43</td>
+                            <td>42~40</td>
+                            <td>39~36</td>
+                            <td>35~32</td>
+                            <td>31
+                            이하</td>
                         </tr>
                         <tr>
                             <th>좌우 악력(kg)</th>
-                            <td>40 이상</td>
-                            <td>39～38</td>
-                            <td>37～36</td>
-                            <td>35～34</td>
-                            <td>33～31</td>
-                            <td>30～29</td>
-                            <td>28～27</td>
-                            <td>26～25</td>
-                            <td>24</td>
-                            <td>23 이하</td>
+                            <td>64이상</td>
+                            <td>63~61</td>
+                            <td>60~58</td>
+                            <td>57~55</td>
+                            <td>54~52</td>
+                            <td>51~49</td>
+                            <td>48~46</td>
+                            <td>45~43</td>
+                            <td>42~40</td>
+                            <td>39이하</td>
                         </tr>
                         <tr>
                             <th>팔굽혀펴기(회/1분)</th>
-                            <td>50 이상</td>
-                            <td>49～46</td>
-                            <td>45～42</td>
-                            <td>41～38</td>
-                            <td>37～34</td>
-                            <td>33～30</td>
-                            <td>29～26</td>
-                            <td>25～22</td>
-                            <td>21～19</td>
-                            <td>18 이하</td>
+                            <td>61이상</td>
+                            <td>60~56</td>
+                            <td>55~51</td>
+                            <td>50~46</td>
+                            <td>45~40</td>
+                            <td>39~34</td>
+                            <td>33~28</td>
+                            <td>27~22</td>
+                            <td>21~16</td>
+                            <td>15이하</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">여자</th>
+                            <th>50m달리기
+                            (초)</th>
+                            <td>8.23
+                            이하</td>
+                            <td>8.24~
+                            8.47</td>
+                            <td>8.48~
+                            8.71</td>
+                            <td>8.72~
+                            8.95</td>
+                            <td>8.96~
+                            9.19</td>
+                            <td>9.20~
+                            9.43</td>
+                            <td>9.44~
+                            9.67</td>
+                            <td>9.68~
+                            9.91</td>
+                            <td>9.92~
+                            10.15</td>
+                            <td>10.16
+                            이상</td>
+                        </tr>
+                        <tr>
+                            <th>왕복오래달리기(회)</th>
+                            <td>51이상</td>
+                            <td>50~47</td>
+                            <td>46~44</td>
+                            <td>43~41</td>
+                            <td>40~38</td>
+                            <td>37~35</td>
+                            <td>34~32</td>
+                            <td>31~28</td>
+                            <td>27~24</td>
+                            <td>23이하</td>
+                        </tr>
+                        <tr>
+                            <th>윗몸일으키기
+                            (회/1분)</th>
+                            <td>55
+                            이상</td>
+                            <td>54~51</td>
+                            <td>50~47</td>
+                            <td>46~43</td>
+                            <td>42~39</td>
+                            <td>38~35</td>
+                            <td>34~31</td>
+                            <td>30~27</td>
+                            <td>26~23</td>
+                            <td>22
+                            이하</td>
+                        </tr>
+                        <tr>
+                            <th>좌우 악력(kg)</th>
+                            <td>44이상</td>
+                            <td>43~42</td>
+                            <td>41~40</td>
+                            <td>39~38</td>
+                            <td>37~36</td>
+                            <td>35~34</td>
+                            <td>33~31</td>
+                            <td>30~28</td>
+                            <td>27~25</td>
+                            <td>24이하</td>
+                        </tr>
+                        <tr>
+                            <th>팔굽혀펴기(회/1분)</th>
+                            <td>31이상</td>
+                            <td>30~28</td>
+                            <td>27~25</td>
+                            <td>24~22</td>
+                            <td>21~19</td>
+                            <td>18~16</td>
+                            <td>15~13</td>
+                            <td>12~10</td>
+                            <td>9~7</td>
+                            <td>6이하</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="mt10">
-                * 비고<br>
-                1. 체력검사의 평가종목 중 한 종목 이상 1점을 받은 경우에는 불합격으로 한다. <br>
-                2. 체력검사의 평가종목에 대한 구체적인 측정방법은 경찰청장이 정한다.<br>
-                3. 100m 달리기의 경우에는 측정된 수치 중 소수점 둘째자리 이하는 버리고, 1,200미터 달리기의 경우에는 소수점 첫째자리 이하는 버리며, 좌우 악력의 경우에는 소수점 첫째자리에서 반올림한다. 
+                * 평가방법<br>
+                1. 체력검사의 평가종목 중 1종목이상 1점을 받은 경우에는 불합격으로 한다.<br>
+                2. 50미터 달리기의 경우에는 측정된 수치 중 소수점 셋째자리 이하는 버리고, 좌우 악력의 경우에는 소수 첫째자리에서 반올림한다.<br>
+                3. 체력검사의 평가종목별 구체적인 측정방법은 경찰청장이 정한다. 
             </div>
             <h4 class="NGR mt20">적성검사</h4>
             <div>

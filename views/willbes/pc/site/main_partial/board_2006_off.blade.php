@@ -2,7 +2,7 @@
     <div class="will-listTit">학원 공지사항</div>
     <div class="tabBox noticeBox">
         <div class="tabContent p_re">
-            <a href="{{front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode']).'?s_cate_code='.$__cfg['CateCode']}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['off_notice']) === true)
                     <li><span>등록된 내용이 없습니다.</span></li>
@@ -26,7 +26,7 @@
     <div class="will-listTit">동영상 공지사항</div>
     <div class="tabBox noticeBox">
         <div class="tabContent p_re">
-            <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode']).'?s_cate_code='.$__cfg['CateCode']}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['notice']) === true)
                     <li><span>등록된 내용이 없습니다.</span></li>
@@ -50,7 +50,7 @@
     <div class="will-listTit">수험정보</div>
     <div class="tabBox noticeBox">
         <div class="tabContent p_re">
-            <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode']).'?s_cate_code='.$__cfg['CateCode']}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['exam_news']) === true)
                     <li><span>등록된 내용이 없습니다.</span></li>

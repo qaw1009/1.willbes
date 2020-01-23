@@ -203,7 +203,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
             if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
-                alert('신청동영상을 선택해 주세요.'); return;
+                alert('참여캠퍼스를 선택해 주세요.'); return;
             }
             
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
@@ -216,10 +216,10 @@
                 return;
             }
 
-            // if ($regi_form_register.find('input[name="register_data1[]"]:checked').length > 2) {
-            //     alert('희망지원청은 2개까지만 선택 가능합니다.');
-            //     return;
-            // }
+            if ($regi_form_register.find('input[name="register_data1[]"]:checked').length > 2) {
+                alert('희망지원청은 2개까지만 선택 가능합니다.');
+                return;
+            }
 
             if (!confirm('신청하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

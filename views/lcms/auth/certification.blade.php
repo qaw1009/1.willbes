@@ -23,6 +23,11 @@
         <div class="col-md-9 form-inline">
             <select name="cert_phone1" id="cert_phone1" class="form-control" title="휴대폰번호1">
                 <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
             </select>
             - <input type="number" id="cert_phone2" name="cert_phone2" class="form-control" maxlength="4" title="휴대폰번호2" value="" style="width: 100px">
             - <input type="number" id="cert_phone3" name="cert_phone3" class="form-control" maxlength="4" title="휴대폰번호3" value="" style="width: 100px">

@@ -480,9 +480,10 @@ if (!function_exists('form_data_submit')) {
         $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $_CI->config->item('charset') . '">' . PHP_EOL;
         $output .= '<form name="return_form" method="POST" onsubmit="return false;">';
         $output .= csrf_field() . PHP_EOL;
-        if (is_array($form_data) === true && isset($form_data) === true)
-        foreach ($form_data as $key => $val) {
-            $output .= '<input type="hidden" name="'.$key.'" value="'.$val.'">' . PHP_EOL;
+        if (is_array($form_data) === true && isset($form_data) === true) {
+            foreach ($form_data as $key => $val) {
+                $output .= '<input type="hidden" name="' . $key . '" value="' . $val . '">' . PHP_EOL;
+            }
         }
         $output .= '</form>' . PHP_EOL;
         $output .= '<script type="text/javascript">' . PHP_EOL;

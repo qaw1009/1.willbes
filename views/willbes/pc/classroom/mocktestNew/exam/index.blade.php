@@ -34,7 +34,7 @@
 
                     <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                        <select id="s_IsStatus" name="s_is_take" title="all" class="seleAll mr10 h30 f_left"  onchange="goUrl('s_is_take', document.getElementById('s_is_take').value);">
+                        <select id="s_is_take" name="s_is_take" title="all" class="seleAll mr10 h30 f_left"  onchange="goUrl('s_is_take', document.getElementById('s_is_take').value);">
                             <option value="" {{ element('s_is_take', $arr_input) == '' ? 'selected':''}}>응시상태</option>
                             <option value="N" {{ element('s_is_take', $arr_input) == 'N' ? 'selected':''}}>미응시</option>
                             <option value="Y" {{ element('s_is_take', $arr_input) == 'Y' ? 'selected':''}}>응시완료</option>
@@ -133,25 +133,23 @@
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
-        <!-- End Container -->
-        <script>
-            var win = '';
-            function popwin(prodcode, mridx){
-                if (win == '') {
-                    var _url = '{{ front_url('/classroom/mocktest/exam/winpopupstep1?prodcode=') }}' + prodcode + '&mridx=' + mridx;
+    <!-- End Container -->
+    <script>
+        var win = '';
+        function popwin(prod_code, mr_idx){
+            if (win == '') {
+                var _url = '{{ front_url('/classroom/mocktest/exam/winpopupstep1?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx;
+                win = window.open(_url, 'mockPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
+                win.focus();
+            }else{
+                if(win.closed){
+                    var _url = '{{ front_url('/classroom/mocktest/exam/winpopupstep1?prod_code=') }}' + prod_code+ '&mr_idx=' + mr_idx;
                     win = window.open(_url, 'mockPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
                     win.focus();
-                }else{
-                    if(win.closed){
-                        var _url = '{{ front_url('/classroom/mocktest/exam/winpopupstep1?prodcode=') }}' + prodcode+ '&mridx=' + mridx;
-                        win = window.open(_url, 'mockPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
-                        win.focus();
-                    } else {
-                        //alert('팝업떠있음');
-                    }
+                } else {
+                    //alert('팝업떠있음');
                 }
-
             }
-
-        </script>
+        }
+    </script>
 @stop

@@ -19,9 +19,9 @@
 
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="event_site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
+                        {!! html_site_select($data['SiteCode'], 'event_site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
                     <div class="col-md-4 form-inline ml-12-dot">
@@ -235,7 +235,7 @@
                                                 <th>특강/설명회명</th>
                                                 <th>만료</th>
                                                 <th>사용</th>
-                                                <th>지급상품 <br> {!! html_site_select('', 'product_site_code', 'product_site_code', '', '운영 사이트', '') !!}</th>
+                                                <th>지급상품 <br> {!! html_site_select('', 'site_code', '', '', '운영 사이트', '') !!}</th>
                                                 <th>수정</th>
                                                 <th>삭제</th>
                                             </tr>
@@ -495,13 +495,13 @@
             $promotion_editor_profile.run();
 
             // site-code에 매핑되는 select box 자동 변경
-            $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-            $regi_form.find('select[name="subject_code"]').chained("#site_code");
-            $regi_form.find('select[name="prof_code"]').chained("#site_code");
-            $regi_form.find('select[name="set_other_data_1"]').chained("#site_code");
-            $regi_form.find('select[name="set_other_data_2"]').chained("#site_code");
-            $regi_form.find('select[name="other_prof_idx[]"]').chained("#site_code");
-            $regi_form.find('select[name="other_subject_idx[]"]').chained("#site_code");
+            $regi_form.find('select[name="campus_ccd"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="subject_code"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="prof_code"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="set_other_data_1"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="set_other_data_2"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="other_prof_idx[]"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="other_subject_idx[]"]').chained('select[name="site_code"]');
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -824,20 +824,39 @@
 
             // 프로모션 지급상품 검색 버튼 클릭. 레이어 팝업 호출.
             $('.btn_product_search').on('click', function() {
-                var product_site_code = $regi_form.find('select[name="product_site_code"]').val();
-                if (!product_site_code) {
+                // var site_code = $regi_form.find('select[name="site_code"]').val();
+                var site_code = $regi_form.find('#site_code').val();    //지급상품 사이트코드
+                if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.');
-                    $regi_form.find('select[name="product_site_code"]').focus();
+                    // $regi_form.find('select[name="site_code"]').focus();
+                    $regi_form.find('#site_code').focus();  //지급상품 사이트코드
                     return;
                 }
-                var ret_er_idx = $(this).data('eridx');
+                var p_prod_type;
+                var arr_online = ['2001', '2003', '2005', '2006', '2007', '2008', '2009'];
+                var arr_offline = ['2002', '2004', '2011', '2013'];
+                if(arr_online.lastIndexOf(site_code) !== -1) {
+                    p_prod_type = 'on';
+                } else if(arr_offline.lastIndexOf(site_code) !== -1) {
+                    p_prod_type = 'off';
+                } else {
+                    alert('사이트코드가 잘못 되었습니다.');
+                    return;
+                }
 
+                var ret_er_idx = $(this).data('eridx');
                 $('.btn_product_search').setLayer({
-                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + product_site_code
-                        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
-                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
+                        + '&prod_type=' + p_prod_type + '&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
+                        + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture,adminpack_lecture,periodpack_lecture&is_event=Y',
                     'width' : 1400
                 });
+                {{--$('.btn_product_search').setLayer({--}}
+                {{--    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code--}}
+                {{--        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'--}}
+                {{--        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',--}}
+                {{--    'width' : 1400--}}
+                {{--});--}}
             });
 
             // 지급상품 삭제 이벤트

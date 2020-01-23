@@ -58,8 +58,6 @@ class MockExamFModel extends WB_Model
                 INNER JOIN {$this->_table['mock_register']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND TakeFormsCcd = '690001' -- 온라인응시자
                 INNER JOIN {$this->_table['order_product']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx AND PayStatusCcd = '676001'  -- 결제완료
 				INNER JOIN {$this->_table['order']} AS O ON O.OrderIdx = OP.OrderIdx
-                LEFT JOIN {$this->_table['mock_group_r_product']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['mock_group']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

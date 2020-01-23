@@ -17,7 +17,7 @@
             <div class="curriWrap c_both">
                 {{-- 카테고리 --}}
                 <ul class="curriTabs c_both">
-                    <li><a href="#none" onclick="goUrl('cate_code', '');" class="@if(empty(element('cate_code', $arr_input)) === true) on @endif">전체</a></li>
+                    <!--li><a href="#none" onclick="goUrl('cate_code', '');" class="@if(empty(element('cate_code', $arr_input)) === true) on @endif">전체</a></li//-->
                     @foreach($arr_base['category'] as $idx => $row)
                         <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if(element('cate_code', $arr_input) == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
                     @endforeach

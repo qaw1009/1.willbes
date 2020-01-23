@@ -467,6 +467,36 @@ if (!function_exists('show_alert')) {
     }
 }
 
+if (!function_exists('form_data_submit')) {
+    /**
+     * javascript form submit
+     * @param array $form_data 폼 전송 데이터
+     * @param string $msg
+     * @param string $url [리턴 URL, back : 이전 페이지, url : url 이동, empty : only alert]
+     */
+    function form_data_submit($form_data = [], $msg = '', $url = '')
+    {
+        $_CI =& get_instance();
+        $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $_CI->config->item('charset') . '">' . PHP_EOL;
+        $output .= '<form name="return_form" method="POST" onsubmit="return false;">';
+        $output .= csrf_field() . PHP_EOL;
+        if (is_array($form_data) === true && isset($form_data) === true)
+        foreach ($form_data as $key => $val) {
+            $output .= '<input type="hidden" name="'.$key.'" value="'.$val.'">' . PHP_EOL;
+        }
+        $output .= '</form>' . PHP_EOL;
+        $output .= '<script type="text/javascript">' . PHP_EOL;
+        $output .= (empty($msg) === false) ? 'alert("' . $msg . '");' . PHP_EOL : '' . PHP_EOL;
+        if (empty($url) === false) {
+            $output .= 'document.return_form.action = "'.$url.'"' . PHP_EOL;
+            $output .= 'document.return_form.submit();' . PHP_EOL;
+        }
+        $output .= '</script>' . PHP_EOL;
+        echo($output);
+        exit(1);
+    }
+}
+
 if (!function_exists('snake_case')) {
     /**
      * 언더스코어 표기법(snake case)으로 문자열 변환 (SnakeCase => snake_case)

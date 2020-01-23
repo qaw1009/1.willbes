@@ -33,15 +33,13 @@
 
         .evt_01 {background:#fff;}
         .evt_02 {background:#e9e9e9; padding-bottom:150px} 
-        .evt_02 ul {width:800px; margin:50px auto 0}
-        .evt_02 li {display:inline; float:left; width:50%;}
-        .evt_02 li a {display:block; text-align:center; background:#363636; color:#fff; padding:15px 0; border-radius:30px; margin:0 10px; font-size:24px}
-        .evt_02 li a:hover {background:#806443; color:#f9dd74;
+        .evt_02 div {width:900px; margin:50px auto 0}
+        .evt_02 div a {display:block; text-align:center; background:#363636; color:#fff; padding:20px 0; border-radius:70px; font-size:30px}
+        .evt_02 div a:hover {background:#806443; color:#f9dd74;
             -webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
             -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
             box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
         }
-        .evt_02 ul:after {content:""; display:block; clear:both}
 
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
@@ -94,11 +92,10 @@
         </div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1523_02.jpg" title="완벽분석,개정법령">
-            <ul class="NSK-Black">
-                <li><a href="#none">온라인강의 Coming soon</a></li>
-                <li><a href="#none">학원강의 Coming soon</a></li>
-            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1523_02_01.jpg" title="완벽분석,개정법령">
+            <div class="NSK-Black">
+                <a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/161211" target="_blank">온라인 강의 신청하기 ></a>
+            </div>
         </div>    
     </div>
     <!-- End evtContainer --> 

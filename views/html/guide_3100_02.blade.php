@@ -350,12 +350,8 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th rowspan="2" colspan="2" scope="col">시험의 종류</th>
+                            <th colspan="2" scope="col">시험의 종류</th>
                             <th scope="col">기준점수</th>
-                        </tr>
-                        <tr>
-                            <th>경감·경위<br />
-                            (간부후보생)</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -12,8 +12,6 @@ class MockExamFModel extends WB_Model
         'mock_questions' => 'lms_mock_questions',
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
-        'mock_group_r_product' => 'lms_mock_group_r_product',
-        'mock_group' => 'lms_mock_group',
         'mock_answertemp' => 'lms_mock_answertemp',
         'mock_answerpaper' => 'lms_mock_answerpaper',
         'order' => 'lms_order',

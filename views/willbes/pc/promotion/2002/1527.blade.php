@@ -23,7 +23,7 @@
 
         .evt_police{background:#404040}
 
-        .evt_top{background:url("https://static.willbes.net/public/images/promotion/2020/01/1527_top_bg.jpg")}
+        .evt_top{background:url("https://static.willbes.net/public/images/promotion/2020/01/1527_top_bg.jpg") no-repeat center top}
         .evt_top span {position:absolute; top:80px; left:50%; margin-left:400px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
         @@keyframes swing{
             0%{top:80px;}

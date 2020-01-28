@@ -23,7 +23,7 @@
         .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
         .evtTop00 {background:#404040}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1455_top_bg.jpg) no-repeat center top;}     
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1455_top_bg.jpg) repeat-y center top;}     
 
         .evt01 {background:#f8f8f8;} 
 
@@ -119,7 +119,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_top.jpg" title="문제풀이 풀패키지">                    
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_top.jpg" title="문제풀이 풀패키지">                    
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -133,8 +133,13 @@
                 <area shape="rect" coords="237,970,541,1066" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank" />
                 <area shape="rect" coords="569,969,880,1065" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
             </map>        
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2s.jpg" title="2단계.3단계">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks"><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2s.jpg" alt="2단계 동형모의고사" usemap="#Map1455c" border="0"><br>
+            <map name="Map1455c" id="Map1455c">
+                <area shape="rect" coords="242,1027,541,1120" href="#none" />
+                <area shape="rect" coords="580,1027,880,1120" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2ss.jpg" title="3단계">
         </div>
 
         <div class="evtCtnsBox evt03" id="to_go">

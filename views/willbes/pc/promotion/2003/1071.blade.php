@@ -21,7 +21,6 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:50px;right:10px;width:122px;z-index:10;}
-        .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101;width:100%}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#000}
@@ -33,9 +32,7 @@
         .time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:15px}
         .time .time_txt a:hover {background:#fff; color:#000}
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        .time p {text-alig:center}
-
-        .wb_event{background:#e2cb79 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_event_bg.jpg) no-repeat center top;}
+        .time p {text-align:center}
 
         .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_bg.jpg) no-repeat center top;position:relative;}
 
@@ -55,7 +52,7 @@
         .wb_cts02 {background:#ffd84f;}
       
 
-        .wb_cts03 {background:#ffd84f; padding-bottom:175px}
+        .wb_cts03 {background:#ffd84f; padding-bottom:100px}
         .wb_cts03 ul {width:960px; margin:0 auto}
         .wb_cts03 li {display:inline; float:left; width:16.666666%}
         .wb_cts03 li a {display:block; height:60px; line-height:60px; text-align:center; font-size:16px; position:relative; border:1px solid #1e1e1e; margin-right:5px}
@@ -104,7 +101,7 @@
         
         input[id="cb1"]:checked + label {background-color: red;}
 
-        .wb_tip{background:#fff;padding-bottom:50px;}
+        .wb_tip{background:#fff; padding:100px 0;}
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
@@ -122,25 +119,8 @@
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_sky2.png" alt="">
             </a>
-        </div> 
-
-        {{--
-        <div class="skybannerB">
-            <a href="#evt1">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_scroll_btn.png"/>      
-            </a>    
-        </div>
-        --}}    
-                 
-
-        <div class="evtCtnsBox wb_event">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top_event.gif" alt="수강후기" usemap="#Map" border="0"  >
-            <map name="Map" id="Map">
-                <area shape="rect" coords="173,547,549,631" href="#tabs1" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
-                <area shape="rect" coords="570,546,948,632" href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
-            </map>  
-        </div>    
-
+        </div>         
+        
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
             <div class="tabContaier">
@@ -901,6 +881,7 @@
             </div>
         </div><!--wb_cts03//-->   
         
+        {{--
         <div class="evtCtnsBox wb_cts04">      
             <div class="tabContaier2">    
                 <ul>    
@@ -928,6 +909,7 @@
                 <a href="#tip">이용안내확인하기 ↓</a>
             </div>   
         </div>  
+        --}}
 
          <!-- 타이머 -->
          <div class="evtCtnsBox time NGEB"  id="newTopDday">
@@ -951,11 +933,12 @@
                 </table>                
             </div>
         </div>
-
+        
+        {{--
         <div class="evtCtnsBox wb_tip" id="tip">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_tip.jpg" alt="유의사항"  > 
         </div>        
-               
+        --}}               
     </div>
     <!-- End Container -->
 

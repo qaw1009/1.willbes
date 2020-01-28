@@ -175,7 +175,7 @@
                         <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                         <div class="willbes-Lec NG c_both mt20">
-                            <div class="willbes-Lec-Subject tx-dark-black">단과<span class="MoreBtn"><a href="#none">교제정보 <span>전체보기 ▼</span></a></span></div>
+                            <div class="willbes-Lec-Subject tx-dark-black">단과<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                             <!-- willbes-Lec-Subject -->
 
                             <div class="willbes-Lec-Line">-</div>

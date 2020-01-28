@@ -235,7 +235,7 @@
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
-                <div class="willbes-Lec-Subject tx-dark-black"><span class="MoreBtn"><a href="#none">교제정보 <span>전체보기 ▼</span></a></span></div>
+                <div class="willbes-Lec-Subject tx-dark-black"><span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
 
                 {{-- 과목별 상품 리스트 --}}
                 @foreach($data['subjects'] as $subject_idx => $subject_name)

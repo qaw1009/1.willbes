@@ -136,7 +136,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks"><br>
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2s.jpg" alt="2단계 동형모의고사" usemap="#Map1455c" border="0"><br>
             <map name="Map1455c" id="Map1455c">
-                <area shape="rect" coords="242,1027,541,1120" href="#none" />
+                <area shape="rect" coords="242,1027,541,1120" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" />
                 <area shape="rect" coords="580,1027,880,1120" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
             </map>
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2ss.jpg" title="3단계">

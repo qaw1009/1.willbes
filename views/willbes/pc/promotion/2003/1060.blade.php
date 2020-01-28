@@ -70,9 +70,8 @@
             .PeMenu li:hover img.on {display:block}
         
         .wb_cts03 {background:#f3f5f7}	
-        .wb_cts03 ul {position:absolute; left:50%; top:437px; margin-left:350px; z-index:2}
-        .wb_cts03 li:nth-child(2) {margin-top:170px}
-        .wb_cts03 li:nth-child(3) {margin-top:90px} 
+        .wb_cts03 ul {position:absolute; left:50%; top:375px; margin-left:350px; z-index:2}
+        .wb_cts03 li:nth-child(2) {margin-top:95px}    
         .wb_cts03 li input {height:30px; width:30px;}
         .wb_cts03 li label {display:none}
         .wb_cts03 .btn {padding-left:300px;}       
@@ -94,7 +93,6 @@
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
             <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지" ></a>
-            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2020/01/1060_sky01.png" alt="FINAL PASS" ></a>
         </div>      
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -174,8 +172,7 @@
         </div><!--wb_cts02//-->
           
         <div class="evtCtnsBox wb_cts03" id="event">             
-            <ul>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="161023" onClick=""/><label for="y_pkg">3개월 공채 전과목 무제한</label></li>   
+            <ul>                
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/><label for="y_pkg">공채 12개월</label></li>
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/><label for="y_pkg">특채 12개월</label></li>
             </ul>

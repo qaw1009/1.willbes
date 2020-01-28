@@ -2,10 +2,12 @@
  * 상품 검색
  */
 function prodListChange(prod_type, learn_pattern_ccd) {
+    var $search_form = $('#_search_form');
+    var param = '?site_code='+$search_form.find('#site_code').val()+'&prod_type='+prod_type+'&LearnPatternCcd='+learn_pattern_ccd
+        +'&return_type='+$search_form.find('#return_type').val()+'&target_id='+$search_form.find('#target_id').val()+'&target_field='+$search_form.find('#target_field').val()
+        +'&prod_tabs='+$search_form.find('#prod_tabs').val()+'&hide_tabs='+$search_form.find('#hide_tabs').val()+'&is_event='+$search_form.find('#is_event').val()
+        +'&is_single='+$search_form.find('#is_single').val();
     var url = '';
-    var param = '?site_code='+$("#site_code").val()+'&prod_type='+prod_type+'&LearnPatternCcd='+learn_pattern_ccd
-        +'&return_type='+$("#return_type").val()+'&target_id='+$("#target_id").val()+'&target_field='+$("#target_field").val()
-        +'&prod_tabs='+$("#prod_tabs").val()+'&hide_tabs='+$("#hide_tabs").val()+'&is_event='+$("#is_event").val();
 
     if (prod_type === 'book') {
         url = '/common/searchBook/';

@@ -223,6 +223,32 @@ if (!function_exists('front_url')) {
     }
 }
 
+if (!function_exists('front_device_url')) {
+    /**
+     * site_url 대체 헬퍼 (모바일 또는 앱 사이트를 지정하여 URI 생성)
+     * @param string $uri [URI]
+     * @param string $device [디바이스 (pc/m/app)]
+     * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @return string
+     */
+    function front_device_url($uri, $device, $is_force_pass = false)
+    {
+        $uri_prefix = '';
+
+        if ($device == 'm') {
+            $uri_prefix .= '/' . config_item('app_mobile_site_prefix');
+        } elseif ($device == 'app') {
+            $uri_prefix .= '/' . config_item('app_app_site_prefix');
+        }
+
+        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+            $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+        }
+
+        return site_url($uri_prefix . $uri);
+    }
+}
+
 if (!function_exists('front_app_url')) {
     /**
      * app_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)

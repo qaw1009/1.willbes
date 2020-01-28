@@ -687,6 +687,41 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 최초 주문미수금 정보의 상품코드서브 리턴 (선택형(강사배정) 패키지에서만 사용)
+     * @param $unpaid_idx
+     * @param $prod_code
+     * @param $mem_idx
+     * @return string
+     */
+    public function getProdCodeSubFirstOrderUnPaidInfo($unpaid_idx, $prod_code, $mem_idx)
+    {
+        $result = '';
+        $column = 'OSP.ProdCodeSub';
+        $from = '
+            from ' . $this->_table['order_unpaid_info'] . ' as OUI
+                inner join ' . $this->_table['order_unpaid_hist'] . ' as OUH
+                    on OUI.UnPaidIdx = OUH.UnPaidIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on OUH.OrderIdx = OP.OrderIdx and OUI.ProdCode = OP.ProdCode
+                inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                    on OP.OrderProdIdx = OSP.OrderProdIdx
+            where OUI.UnPaidIdx = ?
+                and OUI.ProdCode = ?            
+                and OUI.MemIdx = ?
+                and OUH.UnPaidUnitNum = 1      
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$unpaid_idx, $prod_code, $mem_idx])->result_array();
+
+        if (empty($data) === false) {
+            $result = implode(',', array_pluck($data, 'ProdCodeSub'));
+        }
+
+        return $result;
+    }
+
+    /**
      * 학원종합반 서브강좌 조회 (강사배정 전용)
      * @param int $prod_code [학원종합반 상품코드]
      * @param int $order_idx [주문식별자]
@@ -968,6 +1003,27 @@ class OrderListModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$order_prod_idx, $prod_code]);
 
         return $query->row_array();
+    }
+
+    /**
+     * 주문상품 관련 활동로그 목록 리턴
+     * @param string $act_type [활동타입, PrintCert : 수강증출력, SubLecCert : 서브강좌 수강증출력, ProfAssign : 강사배정]
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code_sub [상품코드서브]
+     * @return array|int
+     */
+    public function getActivityLogList($act_type, $order_idx, $order_prod_idx, $prod_code_sub = null)
+    {
+        $column = 'LPC.RegDatm, ifnull(A.wAdminId, "") as RegAdminId, ifnull(A.wAdminName, "") as RegAdminName';
+        $arr_condition = ['EQ' => [
+            'ActType' => get_var($act_type, '0'), 'OrderIdx' => get_var($order_idx, '0'), 'OrderProdIdx' => get_var($order_prod_idx, '0'),
+            'ProdCodeSub' => $prod_code_sub
+        ]];
+
+        return $this->_conn->getJoinListResult($this->_table['order_product_activity_log'] . ' as LPC', 'left', $this->_table['admin'] . ' as A'
+            , 'LPC.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"'
+            , $column, $arr_condition, null, null, ['LPC.ActLogIdx' => 'desc']);
     }
 
     /**

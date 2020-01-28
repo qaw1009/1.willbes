@@ -1790,6 +1790,21 @@ class OrderModel extends BaseOrderModel
                 $prod_row['DiscRate'] = 0;
                 $prod_row['DiscType'] = 'R';
                 $prod_row['DiscReason'] = null;
+
+                if (empty($unpaid_idx) === false) {
+                    // 미수금주문일 경우 1번째 주문식별자를 타겟주문식별자로 셋팅
+                    $prod_row['TargetOrderIdx'] = element('OrderIdx', $this->orderListModel->findFirstOrderUnPaidInfo($prod_code, $mem_idx, $unpaid_idx));
+                    if (empty($prod_row['TargetOrderIdx']) === true) {
+                        throw new \Exception('주문미수금 정보가 없습니다.', _HTTP_NOT_FOUND);
+                    }
+                    $prod_row['TargetProdCode'] = $prod_code;
+                    $prod_row['TargetProdCodeSub'] = $prod_code;
+
+                    // 선택형(강사배정) 종합반일 경우 1번째 미수금주문 상품코드서브 조회 (1번째 미수금주문과 동일하게 상품코드서브, 내강의실 정보 저장)
+                    if ($prod_row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice_prof']) {
+                        $prod_row['ProdCodeSub'] = $this->orderListModel->getProdCodeSubFirstOrderUnPaidInfo($unpaid_idx, $prod_code, $mem_idx);
+                    }
+                }
             }
 
             // 실결제금액이 0원이면 자동지급 안함 (0원결제(방문))
@@ -1901,7 +1916,7 @@ class OrderModel extends BaseOrderModel
             if (empty($row) === true) {
                 // 주문미수금식별자 체크
                 if (empty($unpaid_idx) === false) {
-                    throw new \Exception('주문미수금 정보가 없습니다.');
+                    throw new \Exception('주문미수금 이력이 없습니다.');
                 }
 
                 // 주문미수금 정보 등록
@@ -1990,6 +2005,114 @@ class OrderModel extends BaseOrderModel
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문서브상품 정보 등록/수정 (내강의실 포함)
+     * @param string $learn_pattern [학습형태]
+     * @param array $input
+     * @return array|bool
+     */
+    public function replaceOrderSubProduct($learn_pattern, $input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $order_idx = element('order_idx', $input);
+            $order_prod_idx = element('order_prod_idx', $input);
+            $prod_code = element('prod_code', $input);
+            $arr_prod_code_sub = element('prod_code_sub', $input, '');
+            empty($arr_prod_code_sub) === false && $arr_prod_code_sub = array_values(array_unique(explode(',', $arr_prod_code_sub)));
+            $unpaid_idx = element('unpaid_idx', $input);
+            $arr_order_prod = [];   // 강사배정 대상 주문정보
+
+            if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true || empty($arr_prod_code_sub) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 강사배정 대상 주문정보 배열 셋팅 (주문식별자, 주문상품식별자)
+            if (empty($unpaid_idx) === false) {
+                // 미수금주문일 경우 연관된 주문정보 조회
+                $arr_order_prod = $this->_conn->getJoinListResult($this->_table['order_unpaid_hist'] . ' as OUH', 'inner', $this->_table['order_product'] . ' as OP'
+                    , 'OUH.OrderIdx = OP.OrderIdx'
+                    , 'OP.OrderIdx, OP.OrderProdIdx', ['EQ' => ['OUH.UnPaidIdx' => $unpaid_idx, 'OP.ProdCode' => $prod_code]]);
+            } else {
+                $arr_order_prod[0] = ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx];
+            }
+
+            // 강사배정 (기등록된 주문상품코드서브와 비교하여 추가/삭제 처리)
+            foreach ($arr_order_prod as $order_prod_row) {
+                // 기설정된 주문상품코드서브 배열 초기화
+                $org_prod_code_sub = [];
+
+                // 주문상품코드서브 데이터 조회
+                $arr_condition = ['EQ' => ['OP.OrderIdx' => $order_prod_row['OrderIdx'], 'OP.OrderProdIdx' => $order_prod_row['OrderProdIdx'], 'OP.ProdCode' => $prod_code]];
+                $data = $this->_conn->getJoinListResult($this->_table['order_product'] . ' as OP', 'inner', $this->_table['order_sub_product'] . ' as OSP'
+                    , 'OP.OrderProdIdx = OSP.OrderProdIdx'
+                    , 'OSP.OrderProdSubIdx, OSP.ProdCodeSub', $arr_condition);
+                if (empty($data) === false) {
+                    $org_prod_code_sub = array_pluck($data, 'ProdCodeSub', 'OrderProdSubIdx');
+
+                    // 전달된 상품코드서브 중에 기등록된 상품코드서브가 없을 경우 삭제 처리
+                    $arr_delete_prod_code_sub = array_diff($org_prod_code_sub, $arr_prod_code_sub);
+                    if (count($arr_delete_prod_code_sub) > 0) {
+                        // 주문상품서브 데이터 삭제
+                        $is_del_sub_product = $this->_conn->where_in('OrderProdSubIdx', array_keys($arr_delete_prod_code_sub))
+                            ->where('OrderProdIdx', $order_prod_row['OrderProdIdx'])
+                            ->where_in('ProdCodeSub', array_values($arr_delete_prod_code_sub))
+                            ->delete($this->_table['order_sub_product']);
+                        if ($is_del_sub_product === false) {
+                            throw new \Exception('주문상품서브 데이터 삭제에 실패했습니다.');
+                        }
+
+                        // 나의 강좌수정정보 데이터 삭제
+                        $is_del_my_lecture = $this->_conn->where('OrderIdx', $order_prod_row['OrderIdx'])
+                            ->where('OrderProdIdx', $order_prod_row['OrderProdIdx'])->where('ProdCode', $prod_code)
+                            ->where_in('ProdCodeSub', array_values($arr_delete_prod_code_sub))
+                            ->delete($this->_table['my_lecture']);
+                        if ($is_del_my_lecture === false) {
+                            throw new \Exception('나의 강좌수강정보 데이터 삭제에 실패했습니다.');
+                        }
+                    }
+                }
+
+                // 기등록된 상품코드서브 중에 전달된 상품코드서브가 없을 경우 등록 처리
+                $arr_insert_prod_code_sub = array_diff($arr_prod_code_sub, $org_prod_code_sub);
+                if (count($arr_insert_prod_code_sub) > 0) {
+                    foreach ($arr_insert_prod_code_sub as $insert_prod_code_sub) {
+                        // 주문상품서브 등록
+                        $is_add_sub_product = $this->_conn->set([
+                            'OrderProdIdx' => $order_prod_row['OrderProdIdx'],
+                            'ProdCodeSub' => $insert_prod_code_sub,
+                            'RealPayPrice' => 0
+                        ])->insert($this->_table['order_sub_product']);
+
+                        if ($is_add_sub_product === false) {
+                            throw new \Exception('주문상품서브 데이터 등록에 실패했습니다.');
+                        }
+                    }
+
+                    // 나의 강좌수정정보 데이터 등록
+                    $is_add_my_lecture = $this->addMyLecture($order_prod_row['OrderIdx'], $order_prod_row['OrderProdIdx'], $learn_pattern, $prod_code, $arr_insert_prod_code_sub);
+                    if ($is_add_my_lecture !== true) {
+                        throw new \Exception($is_add_my_lecture);
+                    }
+                }
+            }
+
+            // 강사배정 로그 저장
+            $is_add_log = $this->orderListModel->addActivityLog('ProfAssign', $order_idx, $order_prod_idx, null, element('prod_code_sub', $input));
+            if ($is_add_log !== true) {
+                throw new \Exception($is_add_log);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

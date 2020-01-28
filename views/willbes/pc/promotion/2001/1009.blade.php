@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:220px;right:0;z-index:1;}
+        .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
         
         .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
         .evt_top span {position:absolute; left:50%; z-index:100}
@@ -162,7 +162,7 @@
         <ul class="skybanner">
             <li>
                 <a href="#event">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky1.png" alt="pass구매하기">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_sky.png" alt="pass구매하기">
                 </a>
             </li>
             <li style="padding-top:10px;">
@@ -253,7 +253,6 @@
                             <strong>105</strong>만원<br>
                             <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
                             <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg4_3">21만원 상당 기본서 set (경행경채)</label><br>
                             <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">95만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>
@@ -262,13 +261,12 @@
                             <strong>119</strong>만원<br>
                             <input type="radio" id="y_pkg3_1" name="y_pkg" value="161169" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
                             <input type="radio" id="y_pkg3_2" name="y_pkg" value="161170" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="161171" onClick=""/> <label for="y_pkg3_3">21만원 상당 기본서 set (경행경채)</label><br>
                             <input type="radio" id="y_pkg3_4" name="y_pkg" value="161172" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200121.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200128.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -468,7 +466,6 @@
                             - 14개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
                             - 결제 후 교재 순차배송 진행.<br>
                             - 사은품 교재 변경 불가<br>
                             <br>
@@ -481,10 +478,9 @@
                              ② 결제일로부터 10일 이후 패스는 정가기준으로 기간 차감 후 환불진행, 교재는 반품(환불)불가<br>
                              <br>
                             [교재비 차감시 가격]<br>
-                            - 신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
-                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
-                            - 2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            - 신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원<br>
+                            - 신광은 형사소송법 (신정9판): 47,000원,     - 2019 장정훈 경찰학개론: 36,000원,     - 김원욱 형법 2.1 (기본서+부록): 49,000원<br>
+                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     - 2020 오태진 대각국사: 40,000원<br>
+                            - 2020 원유철의 역사일지[전근대]: 23,000원,     - 2020 원유철의 역사일지[근현대]: 20,000원<br>
                             <br>
                             (*환불시 공통사항)<br>
                             - 강의와 별도로 교재만 환불은 불가함<br>
@@ -593,7 +589,6 @@
                             - 0원 패스 구매시 기본서 교재 5권 무료제공 (배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
                             - 결제 후 교재 순차배송 진행.<br>
                             - 사은품 교재 변경 불가<br>
                             <br>
@@ -609,7 +604,6 @@
                             - 신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
                             - 하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
                             - 2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            - 신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원 <br>
                             <br>
                             (*환불시 공통사항)<br>
                             - 강의와 별도로 교재만 환불은 불가함<br>

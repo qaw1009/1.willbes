@@ -845,22 +845,26 @@
                                                                     <div class="w-tit">
                                                                         <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                                                     </div>
-                                                                    <dl class="w-info">
-                                                                        <dt class="mr20">
-                                                                            <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                                                                <strong>강좌상세정보</strong>
-                                                                            </a>
-                                                                        </dt>
+                                                                    <dl class="w-info">   
+                                                                        <dt>학원실강의 : 2020년 1월</dt>      
+                                                                        <dt><span class="row-line">|</span></dt>                                                                      
                                                                         <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                                                         <dt><span class="row-line">|</span></dt>
                                                                         <dt>수강기간 : <span class="tx-blue">50일</span></dt>
                                                                         <dt class="NSK ml15">
                                                                             <span class="nBox n1">2배수</span>
                                                                             <span class="nBox n2">진행중</span>
+                                                                            {{--
                                                                             <span class="nBox n3">예정</span>
                                                                             <span class="nBox n4">완강</span>
+                                                                            --}}
+                                                                        </dt><br>                                                                        
+                                                                        <dt class="mr20">
+                                                                            <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                                                                <strong>강좌상세정보</strong>
+                                                                            </a>
                                                                         </dt>
-                                                                    </dl><br/>
+                                                                    </dl>
                                                                     <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
                                                                 </td>
                                                                 <td class="w-notice p_re">

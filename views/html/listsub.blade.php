@@ -83,17 +83,22 @@
             <div class="lec-profile p_re">
                 <div class="w-list">문제풀이 / 국어</div>
                 <div class="w-tit tx-blue">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137 작품을 알려주마!(4-6월)</div>
-                <dl class="w-info tx-dark-gray">
-                    <dt>강의수 : <span class="tx-black">70강</span></dt>
-                    <dt><span class="row-line">|</span></dt>
-                    <dt>수강기간 : <span class="tx-black">50일</span></dt>
-                    <dt class="NSK ml15">
-                        <span class="nBox n1">2배수</span>
-                        <span class="nBox n2">진행중</span>
-                        <span class="nBox n3">예정</span>
-                        <span class="nBox n4">완강</span>
-                    </dt>
-                </dl>
+                <div class="w-info tx-dark-gray"> 
+                    <div>학원실강의 : 2020년 1월</div>
+                    <dl>
+                        <dt>강의수 : <span class="tx-black">70강</span></dt>
+                        <dt><span class="row-line">|</span></dt>
+                        <dt>수강기간 : <span class="tx-black">50일</span></dt>
+                        <dt class="NSK ml15">
+                            <span class="nBox n1">2배수</span>
+                            <span class="nBox n2">진행중</span>
+                            <span class="nBox n3">예정</span>
+                            <span class="nBox n4">완강</span>
+                        </dt>
+                    </dl>
+                    <div>강의계획서 : 황종휴 원론강의.pdf</div>
+                    <div>수강가능기간 : 2020.01.01 ~ 2020.01.31</div>
+                </div>
                 <div class="view-wrap"> 
                     <div class="w-notice p_re">
                         <div class="w-sp one">

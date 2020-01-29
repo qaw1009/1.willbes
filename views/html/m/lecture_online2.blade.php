@@ -33,8 +33,11 @@
                                 </div>
                                 <div class="w-info tx-gray">
                                     <dl>
+                                        <dt class="h27"><strong>학원실강의</strong>2020년 1월</dt><br/>
                                         <dt class="h27"><strong>강의수</strong>32강 / 55강</dt><br/>
                                         <dt class="h27"><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                        <dt class="h27"><strong>강의계획서</strong>황종휴 원론강의.pdf</dt><br/>
+                                        <dt class="h27"><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt><br/>
                                         <dt class="h27">
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>

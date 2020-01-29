@@ -264,11 +264,8 @@
                                                     <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20">                                       
-                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                                            <strong>강좌상세정보</strong>
-                                                        </a>
-                                                    </dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt> 
                                                     <dt>강의수 : <span class="tx-blue">47강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">90,000원</span></dt>
@@ -277,6 +274,11 @@
                                                         <span class="nBox n2">진행중</span>
                                                         <span class="nBox n3">예정</span>
                                                         <span class="nBox n4">완강</span>
+                                                    </dt><br>
+                                                    <dt>                                       
+                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                                            <strong>강좌상세정보</strong>
+                                                        </a>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -363,7 +365,8 @@
                                                     <dt class="w-tit">2017 정채영 국어 심화이론(7-8월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                     
                                                     <dt>강의수 : <span class="tx-blue">107강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">140,000원</span></dt>
@@ -371,6 +374,8 @@
                                                         <span class="nBox n1">2배수</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -466,7 +471,8 @@
                                                     <dt class="w-tit">2017 한덕현 제니스영어 기본문법(홀수편)(7-8월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                    
                                                     <dt>강의수 : <span class="tx-blue">44강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">75,000원</span></dt>
@@ -474,6 +480,8 @@
                                                         <span class="nBox n3">예정</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -527,7 +535,8 @@
                                                     <dt class="w-tit">2017 이리라 영어 Take-Out 기초영문법/통문장 기출독해(1-2월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                     
                                                     <dt>강의수 : <span class="tx-blue">60강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">140,000원</span></dt>
@@ -535,6 +544,8 @@
                                                         <span class="nBox n2">진행중</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -642,7 +653,8 @@
                                                     <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                     
                                                     <dt>강의수 : <span class="tx-blue">47강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">90,000원</span></dt>
@@ -652,6 +664,8 @@
                                                         <span class="nBox n3">예정</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -737,7 +751,8 @@
                                                     <dt class="w-tit">2017 정채영 국어 심화이론(7-8월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                      
                                                     <dt>강의수 : <span class="tx-blue">107강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">140,000원</span></dt>
@@ -745,6 +760,8 @@
                                                         <span class="nBox n1">2배수</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -840,7 +857,8 @@
                                                     <dt class="w-tit">2017 한덕현 제니스영어 기본문법(홀수편)(7-8월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt>                                                    
                                                     <dt>강의수 : <span class="tx-blue">44강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">75,000원</span></dt>
@@ -848,6 +866,8 @@
                                                         <span class="nBox n3">예정</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">
@@ -901,7 +921,8 @@
                                                     <dt class="w-tit">2017 이리라 영어 Take-Out 기초영문법/통문장 기출독해(1-2월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                                    <dt><span class="row-line">|</span></dt> 
                                                     <dt>강의수 : <span class="tx-blue">60강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">140,000원</span></dt>
@@ -909,6 +930,8 @@
                                                         <span class="nBox n2">진행중</span>
                                                         <span class="nBox n4">완강</span>
                                                     </dt>
+                                                    <br>
+                                                    <dt><strong>강좌상세정보</strong></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">

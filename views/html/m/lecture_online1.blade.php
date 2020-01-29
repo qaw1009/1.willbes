@@ -104,6 +104,7 @@
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
@@ -134,6 +135,7 @@
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
@@ -159,6 +161,7 @@
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>

@@ -155,7 +155,7 @@
             <li><input type="radio" id="y_pkg" name="y_pkg" value="155386" onClick=""/><label for="y_pkg"></label></li>
         </ul>
         <div class="check" id="chkInfo">
-            <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">군무원O원PASS 수강하고 합격하기 ></a></p>      
+            <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">윌비스 군무원PASS와 함께하기</a></p>      
             <label>
                 <input name="ischk" type="checkbox" value="Y" />
                 페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다.

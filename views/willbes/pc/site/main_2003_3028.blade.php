@@ -18,7 +18,7 @@
 
         <div class="Section Section2">
             <div class="widthAuto ">
-                <a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_top.jpg') }}" alt="윌비스TOP 기술직 라인업"></a>
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3028_visual_top.jpg" alt="윌비스 기술직 라인업"></a>
             </div>
         </div>
 
@@ -67,7 +67,7 @@
 
         <div class="Section">
             <div class="widthAuto p_re">
-                <img src="{{ img_url('gosi_tech/visual/visual_tit02.jpg') }}" alt="무엇 하나 빠지지 않는 빈틈없는 라인업 윌비스 TOP 기술직 교수진">
+                <img src="https://static.willbes.net/public/images/promotion/main/3028_visual_tit02.jpg" alt="무엇 하나 빠지지 않는 빈틈없는 라인업 윌비스 기술직 교수진">
                 <ul class="ProfBoxB">
                     @for($i=1; $i<=8; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)

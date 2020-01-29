@@ -118,13 +118,13 @@
                         <tbody>
 
                         @foreach($data['subjects'] as $subject_idx => $subject_name)
-                                <tr class="replyList willbes-Open-Table">
+                                <tr class="replyList willbes-Open-Table hover">
                                     <td class="w-data tx-left">
                                         <div class="w-tit">{{$subject_name}}</div>
                                     </td>
                                     <td class="MoreBtn tx-center">></td>
                                 </tr>
-                                <tr class="willbes-Open-List">
+                                <tr class="willbes-Open-List" style="display: table-row;">
                                     <td class="w-data tx-left" colspan="2">
                                         @foreach($data['professor_names'][$subject_idx] as $prof_idx => $prof_name)
                                             {{-- 과목별 교수에 해당하는 상품이 없을 경우 --}}

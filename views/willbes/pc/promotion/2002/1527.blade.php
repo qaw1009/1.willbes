@@ -78,6 +78,15 @@
         .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
+
+        .skybanner {
+            position:fixed; 
+            width:180px;
+            top:200px; 
+            right:10px;
+            z-index:1;            
+        }
+        .skybanner a {display:block;margin-bottom:10px; }
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -105,6 +114,11 @@
                 </ul>
             </div>
         </div> 
+
+        <div class="skybanner">
+            <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/159627" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1527_sky01.jpg" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1522" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1527_sky02.jpg" alt="스카이베너" ></a>
+        </div>
         
         <div class="evtCtnsBox evt_police">
             <img src="https://static.willbes.net/public/images/promotion/common/police_promotion_top.jpg" title="대학민국 경찰학원 1위 윌비스 신광은경찰팀">            

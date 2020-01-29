@@ -157,15 +157,15 @@
                                 <tr>
                                     <td class="row_{{ $key }}_course_name">{{ $row['CourseName'] }}</td>
                                     <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span class="hide">{{ $row['CourseIdx'] }}</span></td>
-                                    <td><input type="radio" name="prod_code_sub_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {{ in_array($row['ProdCodeSub'], $data['OrderSubProdCodes']) === true ? 'checked="checked"' : '' }}/></td>
+                                    <td><input type="radio" name="prod_code_sub_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {{ $row['IsAssign'] == 'Y' ? 'checked="checked"' : '' }}/></td>
                                     <td>{{ $row['wProfName'] }}</td>
                                     <td>{{ $row['ProdNameSub'] }}</td>
                                     <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>
                                     <td>{{ $row['WeekArrayName'] }}({{ $row['Amount'] }})</td>
-                                    <td>{{ number_format($row['AssignCnt']) }}</td>
+                                    <td>{{ number_format($row['AssignMemCnt']) }}</td>
                                     <td>{{ $row['ProfChoiceStartDate'] }}<br/>~{{ $row['ProfChoiceEndDate'] }}</td>
                                     <td>
-                                        @if(in_array($row['ProdCodeSub'], $data['OrderSubProdCodes']) === true)
+                                        @if($row['IsAssign'] == 'Y')
                                             <a class="blue cs-pointer btn-sub-print" data-site-code="{{ $data['SiteCode'] }}" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">[출력]</a>
                                             @if($row['IsPrintCert'] == 'Y')
                                                 <a class="red cs-pointer btn-sub-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">(Y)</a>
@@ -233,7 +233,7 @@
             });
 
             {{-- 강사미배정일 경우만 과정/과목별 단과반이 1개일 경우 선택 처리 --}}
-            @if(empty($data['OrderSubProdCodes']) === true)
+            @if($is_prof_assign === false)
                 function setOnlyLectureChecked() {
                     $_assign_form.find('.prod-code-sub').each(function () {
                         if ($_assign_form.find('input[name="' + $(this).prop('name') + '"]').length === 1) {

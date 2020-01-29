@@ -65,7 +65,7 @@ class Professor extends \app\controllers\BaseController
         $idx = null;
         $data = null;
 
-        $codes = $this->codeModel->getCcdInArray(['719']);
+        $codes = $this->codeModel->getCcdInArray(['719','724']);
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -98,7 +98,8 @@ class Professor extends \app\controllers\BaseController
             'data' => $data,
             'arr_bm_idx' => $this->professorModel->_bm_idx,
             'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget(),
-            'onlec_view_ccd' => $codes['719']
+            'onlec_view_ccd' => $codes['719'],
+            'appellation_ccd' => $codes['724']
 
         ]);
     }

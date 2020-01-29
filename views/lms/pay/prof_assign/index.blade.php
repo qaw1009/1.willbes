@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 학원에 방문한 수강생의 학원강좌 결제를 진행하는 메뉴입니다.</h5>
+    <h5>- 종합반 중 종합반 유형이 ’선택형(강사배정)’인 상품을 결제한 수강생의 강사배정현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
@@ -17,38 +17,37 @@
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
-                            <option value="">결제루트</option>
-                            @foreach($arr_pay_route_ccd as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
+                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                            <option value="">대분류</option>
+                            @foreach($arr_lg_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_md_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
                             <option value="">결제수단</option>
-                        @foreach($arr_pay_method_ccd as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd">
-                            <option value="">상품구분</option>
-                        @foreach($arr_prod_type_ccd as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
-                            <option value="">상품상세구분</option>
-                            @foreach($arr_learn_pattern_ccd as $key => $val)
+                            @foreach($arr_pay_method_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
                             <option value="">결제상태</option>
-                        @foreach($arr_pay_status_ccd as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
+                            @foreach($arr_pay_status_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_print_cert" name="search_is_print_cert">
-                            <option value="">수강증출력여부</option>
+                        <select class="form-control mr-10" id="search_is_unpaid" name="search_is_unpaid">
+                            <option value="">미수금여부</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                        </select>
+                        <select class="form-control mr-10" id="search_is_prof_assign" name="search_is_prof_assign">
+                            <option value="">강사배정여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>
                         </select>
@@ -76,8 +75,8 @@
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="order">접수신청일</option>
                             <option value="paid">결제완료일</option>
+                            <option value="refund">환불완료일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -110,31 +109,35 @@
         </div>
     </form>
     <div class="x_panel mt-10">
-        <div class="x_title text-right">
-            <h5><span class="required">*</span> 모의고사 수강접수 정보는 `모의고사 > 모의고사접수현황 > 개별접수현황`에서 확인해 주세요.</h5>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="fa-ul mb-0">
+                        <li><i class="fa-li fa fa-check-square-o"></i>[강사배정] 팝업에서 단과반별 수강증 출력이 가능합니다.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="x_panel mt-10">
         <div class="x_content">
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th rowspan="2" class="rowspan valign-middle">선택</th>
-                    <th rowspan="2" class="valign-middle">No</th>
-                    <th rowspan="2" class="rowspan valign-middle">주문번호</th>
-                    <th rowspan="2" class="rowspan valign-middle">회원정보</th>
-                    <th rowspan="2" class="rowspan valign-middle">결제채널</th>
-                    <th rowspan="2" class="rowspan valign-middle">결제루트</th>
-                    <th rowspan="2" class="rowspan valign-middle">결제수단</th>
-                    <th rowspan="2" class="rowspan valign-middle">결제완료일<br/>(접수신청일)</th>
-                    <th colspan="7">상품구분별정보</th>
-                </tr>
-                <tr class="bg-odd">
-                    <th>상품구분</th>
-                    <th>캠퍼스</th>
-                    <th>상품명</th>
-                    <th>결제금액</th>
-                    <th>환불금액</th>
-                    <th>결제상태</th>
-                    <th>수강증출력</th>
+                    <th class="valign-middle">선택</th>
+                    <th class="valign-middle">No</th>
+                    <th class="valign-middle">주문번호</th>
+                    <th class="valign-middle">회원정보</th>
+                    <th class="valign-middle">카테고리</th>
+                    <th class="valign-middle">캠퍼스</th>
+                    <th class="valign-middle">종합반명</th>
+                    <th class="valign-middle">결제루트</th>
+                    <th class="valign-middle">결제수단</th>
+                    <th>결제금액<br/>(환불금액)</th>
+                    <th>결제완료일<br/>(환불완료일)</th>
+                    <th class="valign-middle">결제상태</th>
+                    <th class="valign-middle">미수금여부</th>
+                    <th class="valign-middle">강사배정</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -142,7 +145,6 @@
             </table>
         </div>
     </div>
-    <script src="/public/js/lms/common_order.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -154,38 +156,24 @@
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
             }
 
-            // 캠퍼스 자동 변경
+            // 캠퍼스, 카테고리 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
-                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 수강접수하기', className: 'btn-sm btn-success border-radius-reset btn-visit-order' }
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/visit/listAjax') }}',
+                    'url' : '{{ site_url('/pay/offProfAssign/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
-                },
-                rowsGroup: ['.rowspan'],
-                rowGroup: {
-                    startRender: null,
-                    endRender: function(rows, group) {
-                        var t_real_pay_price = rows.data().pluck('tRealPayPrice')[0];
-                        var t_refund_price = rows.data().pluck('tRefundPrice')[0];
-                        var t_remain_price = rows.data().pluck('tRemainPrice')[0];
-
-                        var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
-                            + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
-
-                        return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="7">' + t_html + '</td></tr>');
-                    },
-                    dataSrc : 'OrderIdx'
                 },
                 columns: [
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
@@ -201,76 +189,57 @@
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
-                    {'data' : 'PayChannelCcdName'},
-                    {'data' : 'PayRouteCcdName'},
-                    {'data' : 'PayMethodCcdName'},
-                    {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                        return data !== null ? data : '' + '(' + row.OrderDatm + ')';
-                    }},
-                    {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                    {'data' : 'LgCateName', 'render' : function(data, type, row, meta) {
+                        return data + (row.MdCateName !== '' ? '>' + row.MdCateName : '');
                     }},
                     {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                        return '[' + row.ProdCode + '] ' + data;
                     }},
+                    {'data' : 'PayRouteCcdName'},
+                    {'data' : 'PayMethodCcdName'},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data)
+                            + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>(' + row.RefundPrice + ')' : '');
                     }},
-                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                    {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
+                        return data
+                            + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>(' + row.RefundDatm + ')' : '');
                     }},
-                    {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return (row.PayStatusCcd === '{{ $_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
-                            + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
-                    }},
-                    {'data' : 'ProdTypeCcd', 'render' : function(data, type, row, meta) {
-                        if (data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}') {
-                            return '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>'
-                                + (row.IsPrintCert === 'Y' ? ' <a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '')
-                        } else {
-                            return '';
-                        }
+                    {'data' : 'PayStatusCcdName'},
+                    {'data' : 'IsUnPaid'},
+                    {'data' : 'IsProfAssign', 'render' : function(data, type, row, meta) {
+                        return ((row.IsUnPaid === 'N' || (row.IsUnPaid === 'Y' && row.UnPaidUnitNum === '1')) ?
+                            '<a class="blue cs-pointer btn-prof-assign" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '" data-prod-code="' + row.ProdCode + '">[강사배정]</a><br/>' + (data === 'Y' ? '<div class="inline-block red">Y</div>' : 'N') : '');
                     }}
                 ]
             });
 
-            // 수강접수하기 버튼 클릭
-            $('.btn-visit-order').on('click', function() {
-                location.href = '{{ site_url('/pay/visit/create') }}' + dtParamsToQueryString($datatable);
-            });
-
-            // 접수대기 버튼 클릭
-            $list_table.on('click', '.btn-visit-order', function() {
-                location.href = '{{ site_url('/pay/visit/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
-            });
-
-            // 수강증 출력 버튼 클릭
-            $list_table.on('click', '.btn-print', function() {
-                var url = '{{ site_url('/common/printCert/') }}?prod_type=off_lecture&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&site_code=' + $(this).data('site-code');
-                popupOpen(url, '_cert_print', 620, 350);
-            });
-
-            // 수강증 출력 로그 보기
-            $list_table.on('mouseover', '.btn-print-log', function() {
-                // 수강증 출력 로그 조회
-                if ($(this).data('content').length < 1) {
-                    var html = getPrintCertLog('PrintCert', $(this).data('order-idx'), $(this).data('order-prod-idx'), '');
-                    $(this).data('content', html);
-                }
+            // 강사배정 버튼 클릭
+            $list_table.on('click', '.btn-prof-assign', function() {
+                $('.btn-prof-assign').setLayer({
+                    'url' : '{{ site_url('/pay/offProfAssign/assign') }}',
+                    'width' : 1200,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : $(this).data('order-idx'), 'required' : true },
+                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : $(this).data('order-prod-idx'), 'required' : true },
+                        { 'id' : 'prod_code', 'name' : '상품코드', 'value' : $(this).data('prod-code'), 'required' : true }
+                    ]
+                });
             });
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/visit/excel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/offProfAssign/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 주문내역 보기
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/visit/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/offProfAssign/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

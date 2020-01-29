@@ -139,6 +139,7 @@
             </table>
         </div>
     </div>
+    <script src="/public/js/lms/common_order.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -224,7 +225,12 @@
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         {{-- 결제완료 일반형 종합반일 경우만 수강증 출력 버튼 노출 (미수금 주문일 경우 1번째 주문건만 노출) --}}
-                        return row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}' && row.PackTypeCcd === '{{ $chk_pack_type_ccd['normal'] }}' && (row.IsUnPaid === 'N' || (row.IsUnPaid === 'Y' && row.UnPaidUnitNum === '1')) ? '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' + (row.IsPrintCert === 'Y' ? ' <div class="inline-block red">(Y)</div>' : '') : '';
+                        if (row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}' && row.PackTypeCcd === '{{ $chk_pack_type_ccd['normal'] }}' && (row.IsUnPaid === 'N' || (row.IsUnPaid === 'Y' && row.UnPaidUnitNum === '1'))) {
+                            return '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' +
+                                (row.IsPrintCert === 'Y' ? ' <a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '');
+                        } else {
+                            return '';
+                        }
                     }}
                 ]
             });
@@ -243,6 +249,15 @@
             $list_table.on('click', '.btn-print', function() {
                 var url = '{{ site_url('/common/printCert/') }}?prod_type=off_lecture&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&site_code=' + $(this).data('site-code');
                 popupOpen(url, '_cert_print', 620, 350);
+            });
+
+            // 수강증 출력 로그 보기
+            $list_table.on('mouseover', '.btn-print-log', function() {
+                // 수강증 출력 로그 조회
+                if ($(this).data('content').length < 1) {
+                    var html = getPrintCertLog('PrintCert', $(this).data('order-idx'), $(this).data('order-prod-idx'), '');
+                    $(this).data('content', html);
+                }
             });
 
             // 엑셀다운로드 버튼 클릭

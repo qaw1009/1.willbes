@@ -82,4 +82,28 @@ class PrintCert extends \app\controllers\BaseController
             'data' => $data
         ]);
     }
+
+    /**
+     * 수강증 출력 로그 보기
+     * @return CI_Output
+     */
+    protected function showPrintCertLog()
+    {
+        $act_type = $this->_reqG('act_type');   // 수강증 출력구분 (PrintCert, SubLecCert)
+        $order_idx = $this->_reqG('order_idx');
+        $order_prod_idx = $this->_reqG('order_prod_idx');
+        $prod_code_sub = $this->_reqG('prod_code_sub');
+
+        if (empty($act_type) === true || empty($order_idx) === true || empty($order_prod_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        if ($act_type == 'SubLecCert' && empty($prod_code_sub) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.[2]', _HTTP_BAD_REQUEST);
+        }
+
+        $data = $this->orderListModel->getActivityLogList($act_type, $order_idx, $order_prod_idx, $prod_code_sub);
+
+        return $this->response($data);
+    }    
 }

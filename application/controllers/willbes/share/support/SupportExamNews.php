@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportExamNews extends BaseSupport
 {
-    protected $models = array('support/supportBoardF', 'downloadF');
+    protected $models = array('support/supportBoardF', 'downloadF', 'categoryF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -24,10 +24,16 @@ class SupportExamNews extends BaseSupport
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
-        $view_type = element('view_type',$arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $view_type = element('view_type', $arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
         $get_page_params .= '&view_type='.$view_type;
+        $get_page_params .= '&s_cate_code='.element('s_cate_code', $arr_input);
+        $get_page_params .= '&s_cate_code_disabled='.$s_cate_code_disabled;
+
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
         $list = [];
         $arr_condition = [
@@ -45,7 +51,9 @@ class SupportExamNews extends BaseSupport
         ];
 
         $cate_code = '';
-        if ($this->_site_code != config_item('app_intg_site_code')) {
+        if(empty(element('s_cate_code', $arr_input)) === false) {
+            $cate_code = element('s_cate_code', $arr_input);
+        } else if ($this->_site_code != config_item('app_intg_site_code')) {
             $cate_code = $this->_cate_code;
         }
 
@@ -74,6 +82,7 @@ class SupportExamNews extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
+            'arr_base' => $arr_base
         ]);
     }
 

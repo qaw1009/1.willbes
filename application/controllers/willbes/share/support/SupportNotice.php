@@ -37,9 +37,10 @@ class SupportNotice extends BaseSupport
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
         $view_type = element('view_type',$arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $get_page_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
-        $get_page_params .= '&view_type='.$view_type;
+        $get_page_params .= '&view_type='.$view_type.'&s_cate_code_disabled='.$s_cate_code_disabled;
 
         //카테고리목록
 //        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);

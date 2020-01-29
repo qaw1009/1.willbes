@@ -26,7 +26,7 @@ class CategoryFModel extends WB_Model
             'LTE' => ['CateDepth' => $cate_depth]
         ];
 
-        return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth, IsDefault',
+        return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth, IsDefault, OnOffLinkCateCode',
             $arr_condition, null, null, ['CateDepth' => 'asc', 'OrderNum' => 'asc']);
     }
 
@@ -39,7 +39,7 @@ class CategoryFModel extends WB_Model
     public function listSiteCategoryRoute($site_code, $is_lowest = '')
     {
         $column = '
-            S.SiteCode, S.SiteName, C.CateCode, C.CateName, C.GroupCateCode
+            S.SiteCode, S.SiteName, C.CateCode, C.CateName, C.OnOffLinkCateCode, C.GroupCateCode
 			, IFNULL(PC.CateCode, \'\') AS ParentCateCode, IFNULL(PC.CateName, \'\') AS ParentCateName
 			, CONCAT( IF(PC.CateCode IS NULL, \'\', CONCAT(PC.CateName,\' > \')),  C.CateName) AS CateNameRoute
 			, C.OrderNum, ifnull(PC.OrderNum,0) as Parent_OrderNum

@@ -104,6 +104,7 @@
                                     2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                 </div>
                                 <dl class="w-info tx-gray">
+                                    <dt>학원실강의 : 2020년 1월</dt><br>
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
                                     <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
@@ -122,6 +123,7 @@
                                     2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                 </div>
                                 <dl class="w-info tx-gray">
+                                    <dt>학원실강의 : 2020년 1월</dt><br>
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
                                     <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
@@ -149,6 +151,7 @@
                                 <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt><br>
                                 <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
@@ -175,6 +178,7 @@
                                 <a href="#none">원유철 기본 한국사 6월 25일 보강 [7월2일 오전9시 삭제]</a>
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">8강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                             </dl>

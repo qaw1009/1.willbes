@@ -79,11 +79,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -126,12 +129,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        {{--<dt><span class="tx-blue">90,000원</span>(↓0%)</dt>--}}
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -168,12 +173,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        {{--<dt><span class="tx-blue">90,000원</span>(↓0%)</dt>--}}
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -216,11 +223,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -274,11 +284,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -321,11 +334,14 @@
                                         2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                                     </div>
                                     <dl class="w-info tx-gray">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
                                         <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
+                                            <strong>강의수</strong> <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                                            <strong>정상가</strong> <span class="tx-blue">90,000원</span>
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt>
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -758,6 +774,7 @@
             <div class="LecDetailBox">
                 <h5>강좌상세정보</h5>
                 <dl class="w-info tx-gray">
+                    <dt>학원실강의 <span class="ml10">2020년 1월</span></dt>
                     <dt>
                         강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
                         수강기간 <span class="tx-blue">50일</span> 

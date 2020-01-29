@@ -60,6 +60,7 @@
                 </div>
                 <div class="w-info tx-gray">
                     <dl>
+                        <dt class="mb5"><strong>학원실강의</strong>2020년 1월</dt>
                         <dt class="mb5"><strong>강의수</strong><span class="tx-blue">8강</span> <strong class="ml10">정상가</strong><span class="tx-blue">90,000원</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">진행중</span></dt>
                         <dt class="mb5">
                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
@@ -79,6 +80,7 @@
                 </div>
                 <div class="w-info tx-gray">
                     <dl>
+                        <dt class="mb5"><strong>학원실강의</strong>2020년 1월</dt>
                         <dt class="mb5"><strong>강의수</strong><span class="tx-blue">8강</span> <strong class="ml10">정상가</strong><span class="tx-blue">90,000원</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">진행중</span></dt>
                         <dt class="mb5">
                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>

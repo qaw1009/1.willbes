@@ -330,19 +330,20 @@
                                     <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                 </div>
                                 <dl class="w-info">
-                                    <dt class="mr10">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
-                                    </dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt>
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">2배수</span>
                                         <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
+                                    </dt>
+                                    <br>
+                                    <dt class="mr10">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
                                     </dt>
                                 </dl>
                                 <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
@@ -458,19 +459,20 @@
                                     <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                 </div>
                                 <dl class="w-info">
-                                    <dt class="mr10">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
-                                    </dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt>                                    
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
                                         <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
+                                    </dt>
+                                    <br>
+                                    <dt class="mr10">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
                                     </dt>
                                 </dl>
                                 <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
@@ -482,37 +484,7 @@
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
-                                <div class="w-sp"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
-                                <div id="viewBox" class="viewBox">
-                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기1</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기2</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                </div>
-                                <ul class="priceWrap">
-                                    <li>
-                                        <span class="select">[PC]</span>
-                                        <span class="price tx-blue">7,000원</span>
-                                        <span class="discount">(↓20%)</span>
-                                    </li>
-                                    <li> 
-                                        <span class="select">[모바일]</span>
-                                        <span class="price tx-blue">80,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </li>
-                                    <li> 
-                                        <span class="select">[PC+모바일]</span>
-                                        <span class="price tx-blue">101,000원</span>
-                                        <span class="discount">(↓15%)</span>
-                                    </li>
-                                </ul>
+                                <div class="w-sp"><a href="#none" class="bg-black tx-white bd-none">보강동영상 보기</a></div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
@@ -592,15 +564,20 @@
                             <td class="w-data tx-left pl20">
                                 <div class="w-tit">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마! 작품을 알려주마!(4-6월)</div>
                                 <dl class="w-info">
-                                    <dt class="mr10"><strong>강좌상세정보</strong></dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt> 
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
                                         <span class="nBox n4">완강</span>
+                                    </dt>
+                                    <br>
+                                    <dt class="mr10">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
                                     </dt>
                                 </dl>
                             </td>
@@ -701,14 +678,16 @@
                             <td class="w-data tx-left pl20">
                                 <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강[국가직~서울시](3-6개월)</div>
                                 <dl class="w-info">
-                                    <dt class="mr10"><strong>강좌상세정보</strong></dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt>                                     
                                     <dt>강의수 : <span class="tx-blue">48강 (예정)</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">100일</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">2배수</span>
                                         <span class="nBox n2">진행중</span>
-                                    </dt>
+                                    </dt><br>
+                                    <dt class="mr10"><strong>강좌상세정보</strong></dt>
                                 </dl>
                             </td>
                             <td>
@@ -773,7 +752,8 @@
                             <td class="w-data tx-left pl20">
                                 <div class="w-tit">2018 [서울시대비] 기미진 기특한 국어 아침 실전동형모의고사 (5-6월)</div>
                                 <dl class="w-info">
-                                    <dt class="mr10"><strong>강좌상세정보</strong></dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt>                                      
                                     <dt>강의수 : <span class="tx-blue">16강 (예정)</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">40일</span></dt>
@@ -781,6 +761,8 @@
                                         <span class="nBox n1">2배수</span>
                                         <span class="nBox n3">예정</span>
                                     </dt>
+                                    <br>
+                                    <dt class="mr10"><strong>강좌상세정보</strong></dt>
                                 </dl>
                             </td>
                             <td>
@@ -855,6 +837,8 @@
                     <div id="ch1" class="tabLink">
                         <div class="classInfo">
                             <dl class="w-info NG">
+                                <dt>학원실강의 : 2020년 1월</dt>
+                                <dt><span class="row-line">|</span></dt>
                                 <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                 <dt><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span></dt>

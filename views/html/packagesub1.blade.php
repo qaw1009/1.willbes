@@ -232,16 +232,17 @@
                                     <dt class="w-tit">이현나<span class="row-line">|</span>2017 이현나 국어 기출문제(11-12월)</dt>
                                 </dl>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>
+                                    <dt><span class="row-line">|</span></dt>                                    
                                     <dt>강의수 : <span class="tx-blue">47강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>정상가 : <span class="tx-blue">90,000원</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">2배수</span>
                                         <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
                                     </dt>
+                                    <br>
+                                    <dt><strong>강좌상세정보</strong></dt>
                                 </dl>
                             </td>
                             <td class="w-notice p_re">
@@ -326,7 +327,8 @@
                                     <dt class="w-tit">이현나<span class="row-line">|</span>2017 이현나 국어 실전 동형모의고사(3월)</dt>
                                 </dl>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                    <dt>학원실강의 : 2020년 1월</dt>      
+                                    <dt><span class="row-line">|</span></dt>                              
                                     <dt>강의수 : <span class="tx-blue">47강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>정상가 : <span class="tx-blue">90,000원</span></dt>
@@ -336,6 +338,8 @@
                                         <span class="nBox n3">예정</span>
                                         <span class="nBox n4">완강</span>
                                     </dt>
+                                    <br>
+                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                 </dl>
                             </td>
                             <td class="w-notice p_re">

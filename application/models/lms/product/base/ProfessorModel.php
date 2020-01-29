@@ -497,7 +497,7 @@ class ProfessorModel extends WB_Model
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
-                'IsOpenStudyComment' => (empty(element('is_open_studycomment', $input)) === false) ? 'Y' : 'N',
+                'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -578,7 +578,7 @@ class ProfessorModel extends WB_Model
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
-                'IsOpenStudyComment' => (empty(element('is_open_studycomment', $input)) === false) ? 'Y' : 'N',
+                'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

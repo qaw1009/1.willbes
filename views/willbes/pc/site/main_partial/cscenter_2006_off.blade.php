@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/support/qna/index') }}">
+                    <a href="{{ site_url('/support/qna/index?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
                         <img src="{{ img_url('cop/icon_cecenter3.png') }}">
                         <div class="nTxt">동영상<br/>상담실</div>
                     </a>

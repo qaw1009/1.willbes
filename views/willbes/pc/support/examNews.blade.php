@@ -14,12 +14,24 @@
             @endforeach
         </form>
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Search GM mt0 mb20">
-                <div class="inputBox p_re f_left">
-                    <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                    <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
-                        <span>검색</span>
-                    </button>
+            <div class="willbes-Lec-Selected tx-gray mt0">
+                <div class="f_left">
+                    @if(empty($arr_base['category']) === false)
+                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') view-disabled @endif" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') readonly="readonly" @endif>
+                            <option value="">카테고리</option>
+                            @foreach($arr_base['category'] as $row)
+                                <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
+                <div class="willbes-Lec-Search GM f_left mg0">
+                    <div class="inputBox p_re f_left">
+                        <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                            <span>검색</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="Act2">

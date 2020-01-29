@@ -11805,6 +11805,14 @@ table.acadlecInfoPackageTable tr.Top td {
     margin: 15px 5px 0;
 }
 
+/* disabled */
+.view-disabled {
+    pointer-events: none;
+    background-color: #eee;
+    color: #555;
+    opacity: 1;
+}
+
 .table-Guided {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto;}
 .table-Guided th,
 .table-Guided td {padding:10px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center;}

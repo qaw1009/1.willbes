@@ -44,11 +44,13 @@ class SupportOffBoardInfo extends BaseSupport
             $tab_menu = true;
         }
 
-        $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
+        $s_cate_code = element('s_cate_code', $arr_input);
+        $s_campus = element('s_campus', $arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $on_off_link_cate_code = element('on_off_link_cate_code', $arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
 
-        $get_page_params = '&s_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_page_params = '&s_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword.'&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
         //echo current_url();exit;
 
         //카테고리목록
@@ -63,6 +65,7 @@ class SupportOffBoardInfo extends BaseSupport
                 ,'b.IsUse' => 'Y'
                 ,'b.SiteCode' => $this->_site_code
                 ,'b.CampusCcd' => $s_campus
+                ,'d.OnOffLinkCateCode' => $on_off_link_cate_code
 
             ],
             'ORG' => [

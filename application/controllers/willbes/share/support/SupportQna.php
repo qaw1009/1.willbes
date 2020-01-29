@@ -45,12 +45,15 @@ class SupportQna extends BaseSupport
         $subject_idx = element('subject_idx',$arr_input);
         $s_is_display = element('s_is_display',$arr_input);
         $s_is_my_contents = element('s_is_my_contents',$arr_input);
+        $on_off_link_cate_code = element('on_off_link_cate_code', $arr_input);
         $view_type = element('view_type',$arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $get_page_params = 's_keyword='.urlencode($s_keyword);
         $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
         $get_page_params .= '&s_campus='.$s_campus;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
+        $get_page_params .= '&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
@@ -82,7 +85,8 @@ class SupportQna extends BaseSupport
                 'b.TypeCcd' => $s_consult_type,
                 'b.ProfIdx' => $prof_idx,
                 'b.SubjectIdx' => $subject_idx,
-                'b.CampusCcd' => $s_campus
+                'b.CampusCcd' => $s_campus,
+                'd.OnOffLinkCateCode' => $on_off_link_cate_code
             ],
             'ORG' => [
                 'LKB' => [

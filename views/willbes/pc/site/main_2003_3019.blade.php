@@ -46,7 +46,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/2003_visual_tit01.jpg" alt="윌비스 교수진"></div>
                 <ul class="PBcts">
                     @for($i=1; $i<=5; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)

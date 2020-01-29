@@ -3142,6 +3142,7 @@ body.memBody #Footer {
     width: 50px;
     text-align: center;
 }
+.freeLecPass a.view { width:auto; background: #333; margin:0; padding:0 10px}
 .freeLecPass:after {content:""; display:block; clear:both}
 
 /*주문배송관리*/

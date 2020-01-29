@@ -38,7 +38,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
             <a href="#cts04_A">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1066_sky.png" title="원데이영작" >
             </a>
             <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1067_skybanner2.png" title="수강학고 합격하기" >
@@ -86,9 +86,9 @@
                 <area shape="rect" coords="935,976,983,993" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158682" target="_blank" />
                 <area shape="rect" coords="935,998,981,1014" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
             </map>      
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_04s.jpg" usemap="#Map1066x" border="0" id="cts04_A"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1066_04s.jpg" usemap="#Map1066x" border="0" id="cts04_A"/>
             <map name="Map1066x" id="Map1066x">
-                <area shape="circle" coords="755,163,75" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
+                <area shape="circle" coords="755,163,75" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161306" target="_blank" />
             </map> 
         </div>
 

@@ -136,7 +136,7 @@
             </ul>
             <div class="tab-content">
                 @foreach($sub_prod_data as $key => $prod_data)
-                    <div id="tab_{{ $key }}" class="tab-pane {{ $loop->index == 1 ? 'active' : '' }}">
+                    <div id="tab_{{ $key }}" class="tab-pane {{ $key == 'ess' ? 'active' : '' }}">
                         <table class="table table-bordered">
                             <thead>
                             <tr class="bg-odd">

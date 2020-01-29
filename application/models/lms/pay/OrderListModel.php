@@ -734,14 +734,23 @@ class OrderListModel extends BaseOrderModel
         $column = 'PS.ProdCode, PS.IsEssential
             , VP.ProdCode as ProdCodeSub, VP.ProdName as ProdNameSub, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName
             , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate, VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
-            , (select count(0) 
+            , (select count(distinct A.MemIdx)
                 from ' . $this->_table['order_product'] . ' as A 
                     inner join ' . $this->_table['order_sub_product'] . ' as B 
                         on A.OrderProdIdx = B.OrderProdIdx
                 where A.ProdCode = PS.ProdCode
                     and B.ProdCodeSub = VP.ProdCode
                     and A.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
-              ) as AssignCnt
+              ) as AssignMemCnt
+            , (select if(count(0) > 0, "Y", "N")  
+                from ' . $this->_table['order_product'] . ' as A 
+                    inner join ' . $this->_table['order_sub_product'] . ' as B 
+                        on A.OrderProdIdx = B.OrderProdIdx
+                where A.OrderIdx = ?
+                    and A.OrderProdIdx = ?
+                    and A.ProdCode = PS.ProdCode
+                    and B.ProdCodeSub = VP.ProdCode
+              ) as IsAssign              
             , (select if(count(0) > 0, "Y", "N")
                 from ' . $this->_table['order_product_activity_log'] . '
                 where ActType = "SubLecCert"
@@ -760,7 +769,7 @@ class OrderListModel extends BaseOrderModel
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $prod_code]);
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $order_idx, $order_prod_idx, $prod_code]);
 
         return $query->result_array();
     }

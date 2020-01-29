@@ -204,6 +204,7 @@ class OffProfAssign extends BaseOrder
         $unpaid_data = null;
         $unpaid_hist = null;
         $unpaid_idx = null;
+        $is_prof_assign = false;
 
         if (empty($order_idx) === true || empty($order_prod_idx) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
@@ -224,16 +225,10 @@ class OffProfAssign extends BaseOrder
             ]
         ];
 
-        $arr_add_join = ['campus', 'category', 'unpaid_info', 'subproduct'];
+        $arr_add_join = ['campus', 'category', 'unpaid_info'];
         $data = element('0', $this->orderListModel->listAllOrder(false, $arr_condition, 1, 0, [], $arr_add_join));
         if (empty($data) === true) {
             return $this->json_error('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);
-        }
-
-        // 서브상품코드 추출
-        $data['OrderSubProdCodes'] = [];
-        if (empty($data['OrderSubProdData']) === false) {
-            $data['OrderSubProdCodes'] = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdCode');
         }
 
         // 학원종합반 서브강좌 목록 조회
@@ -245,6 +240,11 @@ class OffProfAssign extends BaseOrder
         foreach ($sub_prod_rows as $row) {
             $arr_key = $row['IsEssential'] == 'Y' ? 'ess' : 'choice';
             $sub_prod_data[$arr_key][] = $row;
+
+            // 강사배정 여부
+            if ($is_prof_assign === false && $row['IsAssign'] == 'Y') {
+                $is_prof_assign = true;   
+            }
         }
 
         // 미수금정보이력 조회
@@ -271,6 +271,7 @@ class OffProfAssign extends BaseOrder
             'unpaid_data' => $unpaid_data,
             'unpaid_hist' => $unpaid_hist,
             'sub_prod_data' => $sub_prod_data,
+            'is_prof_assign' => $is_prof_assign,
             'chk_pay_status_ccd' => $this->_target_pay_status_ccd
         ]);
     }

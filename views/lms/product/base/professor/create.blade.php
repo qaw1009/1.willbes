@@ -174,6 +174,24 @@
                         &nbsp;# 사용자단 교수소개 영역내 단강좌 노출형태를 설정합니다.
                     </div>
                 </div>
+                <div class="form-group form-control-static">
+                    <label class="control-label col-md-2">수강후기노출여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <input type="radio" id="is_open_studycomment_y" name="is_open_studycomment" class="flat" value="Y" required="required" title="수강후기노출여부" @if($method == 'POST' || $data['IsOpenStudyComment'] === 'Y') checked="checked" @endif/> 노출
+                        &nbsp;
+                        <input type="radio" id="is_open_studycomment_n" name="is_open_studycomment" class="flat" value="N" @if($data['IsOpenStudyComment'] === 'N') checked="checked" @endif/> 숨김
+                    </div>
+                </div>
+                <div class="form-group form-control-static">
+                    <label class="control-label col-md-2">출력호칭선택 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        @foreach($appellation_ccd as $key => $val)
+                            <input type="radio" name="appellation_ccd" id="appellation_ccd_{{$key}}" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                        @endforeach
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_cafe_use">교수카페정보
                     </label>

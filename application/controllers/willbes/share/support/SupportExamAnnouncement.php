@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportExamAnnouncement extends BaseSupport
 {
-    protected $models = array('support/supportBoardF', '_lms/sys/code', 'downloadF');
+    protected $models = array('support/supportBoardF', '_lms/sys/code', 'downloadF', 'categoryF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -30,16 +30,22 @@ class SupportExamAnnouncement extends BaseSupport
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
 
+        $s_cate_code = element('s_cate_code',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $s_announcement_type = element('s_announcement_type',$arr_input);
         $s_area = element('s_area',$arr_input);
         $s_division = element('s_division',$arr_input);
         $view_type = element('view_type',$arr_input);
-        $get_page_params = 's_keyword='.$s_keyword;
+        $s_cate_code_disabled = element('s_cate_code_disabled',$arr_input);
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_keyword='.$s_keyword;
         $get_page_params .= '&s_announcement_type='.$s_announcement_type;
         $get_page_params .= '&s_area='.$s_area;
         $get_page_params .= '&s_division='.$s_division;
         $get_page_params .= '&view_type='.$view_type;
+        $get_page_params .= '&s_cate_code_disabled='.$s_cate_code_disabled;
+
+        //카테고리
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
         //공고유형
         $arr_base['announcement_type'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_announcement']);
@@ -72,7 +78,10 @@ class SupportExamAnnouncement extends BaseSupport
         ];
 
         $cate_code = '';
-        if ($this->_site_code != config_item('app_intg_site_code')) {
+
+        if(empty($s_cate_code) === false) {
+            $cate_code = $s_cate_code;
+        } else if ($this->_site_code != config_item('app_intg_site_code')) {
             $cate_code = $this->_cate_code;
         }
 

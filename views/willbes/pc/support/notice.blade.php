@@ -25,7 +25,8 @@
                         <div class="willbes-Lec-Selected tx-gray mt0">
                             <div class="f_left">
                                 @if(empty($arr_base['category']) === false)
-                                    <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
+                                    {{-- <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)"> --}}
+                                    <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') view-disabled @endif" onchange="goUrl('s_cate_code',this.value)"@if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') readonly="true"@endif>
                                         <option value="">카테고리</option>
                                         @foreach($arr_base['category'] as $row)
                                             <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>

@@ -810,7 +810,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
         ";
 
-        if (empty($cate_code) === false) {
+        if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {
             $from .= "
                 inner join {$this->_table['lms_board_r_category']} as c
                     on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'

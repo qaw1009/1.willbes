@@ -45,13 +45,7 @@
 
 
     <div class="evtContent NGR" id="evtContainer">     
-
-        <div class="skyBanner">
-            <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/1486_sky.png"> 
-            </a>          
-        </div>
-
+            
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1486_top.gif" alt="0원 무료특강">   
         </div>

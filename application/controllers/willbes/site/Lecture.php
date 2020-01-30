@@ -30,9 +30,14 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        //디폴트 과정순 적용
+        //디폴트 적용
         if (empty(element('search_order', $arr_input))) {
-            $arr_input['search_order'] = 'course' ;
+
+            if($this->_site_code === '2003') {  //공무원
+                $arr_input['search_order'] = 'regist';
+            } else {
+                $arr_input['search_order'] = 'course';
+            }
         }
 
         // 카테고리 셋팅 => 모바일의 경우 select box로 카테고리 전달

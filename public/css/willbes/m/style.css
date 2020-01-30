@@ -2357,6 +2357,10 @@ body.memBody #Footer {
     padding:20px;
     color:#3a3a3a;
 }
+.lec-info-tab .tabBox2 {
+    border-top:1px solid #c9c9c9;
+    margin-top:-1px;
+}
 .lec-info-tab h4 {
     font-size:16px; margin:10px 0; color:#1d1d1d;
 }

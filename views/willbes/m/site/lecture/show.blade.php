@@ -127,7 +127,7 @@
                 <li><a href="#tab04" id="btn_study_board">수강후기</a></li>
                 @endif
             </ul>
-            <div class="tabBox">
+            <div class="tabBox tabBox2">
                 <div id="tab01">
                     @foreach($data['ProdContents'] as $idx => $row)
                         <h4 class="NGEB">강좌{{ $row['ContentTypeCcdName'] }}</h4>

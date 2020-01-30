@@ -103,7 +103,7 @@
                             <tr>
                                 <td class="row_{{ $key }}_course_name">{{ $row['CourseName'] }}</td>
                                 <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span style="display:none;">{{ $row['CourseIdx'] }}</span></td>
-                                <td><input type="radio" name="prod_code_sub_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}"
+                                <td><input type="radio" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}"
                                        class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}"
                                         {{ in_array($row['ProdCodeSub'], $pkginfo['OrderSubProdCodes']) === true ? 'checked="checked"' : '' }}
                                         {{ $row['IsChoice'] == 'Y' ? '' : 'Disabled' }} /></td>

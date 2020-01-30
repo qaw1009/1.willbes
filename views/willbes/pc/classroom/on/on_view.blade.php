@@ -110,6 +110,7 @@
                             <col style="width: 380px;">
                             <col style="width: 90px;">
                             <col style="width: 50px;">
+                            @if($lec['wControlCountUse'] > 0) <col style="width: 90px;"> @endif
                             <col style="width: 80px;">
                             <col style="width: 70px;">
                             <col style="width: 120px;">
@@ -121,6 +122,7 @@
                             <th>강의명<span class="row-line">|</span></th>
                             <th>북페이지<span class="row-line">|</span></th>
                             <th>자료<span class="row-line">|</span></th>
+                            @if($lec['wControlCountUse'] > 0) <th>자료 인쇄<span class="row-line">|</span></th> @endif
                             <th>강의수강<span class="row-line">|</span></th>
                             <th>강의시간<span class="row-line">|</span></th>
                             <th>수강시간/배수시간<span class="row-line">|</span></th>
@@ -166,6 +168,9 @@
                                         @endif
                                     @endif
                                 </td>
+                                @if($lec['wControlCountUse'] > 0)
+                                    <td class="w-free mypage">@if($row['wControlCount'] != 0){{$row['downcount']}} / {{$row['wControlCount']}}@endif</td>
+                                @endif
                                 <td class="w-free mypage">
                                     @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                         <div class="tBox NSK t1 black"><a>수강불가</a></div>

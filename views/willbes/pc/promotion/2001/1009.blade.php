@@ -270,7 +270,7 @@
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
-                        <area shape="rect" coords="566,492,742,535" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
+                        <area shape="rect" coords="566,492,742,535" href="javascript:goDesc('tab4')" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
                 <div>

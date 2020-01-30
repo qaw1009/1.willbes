@@ -83,7 +83,8 @@ class ProductFModel extends WB_Model
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
                             , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
-                            , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum';
+                            , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum, IsOpenStudyComment, AppellationCcdName 
+                            , ProfNickNameAppellation';
                         
                         // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                         if ($learn_pattern == 'on_free_lecture') {
@@ -96,7 +97,8 @@ class ProductFModel extends WB_Model
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear
                             , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
-                            , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData';
+                            , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData, AppellationCcdName
+                            , ProfNickNameAppellation';
                     break;
 
                 // 학원 종합반

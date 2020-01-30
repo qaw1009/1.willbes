@@ -42,6 +42,7 @@
             @endforeach
         </ul>
     </div>
+    @if($data['IsOpenStudyComment'] === 'Y')
     <div class="willbes-listTable willbes-reply mt30 widthAuto460">
         <div class="will-Tit NG">수강후기<a href="#none" class="f_right btn-study" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
@@ -54,6 +55,7 @@
             @endif
         </ul>
     </div>
+    @endif
 
     <div id="WrapReply"></div>
     <!-- willbes-Layer-ReplyBox -->

@@ -225,7 +225,7 @@ class OffProfAssign extends BaseOrder
             ]
         ];
 
-        $arr_add_join = ['campus', 'category', 'unpaid_info'];
+        $arr_add_join = ['refund', 'campus', 'category', 'unpaid_info'];
         $data = element('0', $this->orderListModel->listAllOrder(false, $arr_condition, 1, 0, [], $arr_add_join));
         if (empty($data) === true) {
             return $this->json_error('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);

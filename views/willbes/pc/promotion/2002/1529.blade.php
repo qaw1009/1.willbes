@@ -113,15 +113,20 @@
                                                     @php
                                                         // 강의 기간 지나면 자동 disabled 처리
                                                         // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                                        //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
                                                         $reg_year = '2020';
-                                                        $reg_month_day = explode('.', explode(' ', $val['Name'])[0]);
+                                                        $temp_date = explode(' ', $val['Name'])[0];
+                                                        if(strpos($temp_date, '(') !== false) {
+                                                            $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
+                                                        }
+                                                        $reg_month_day = explode('.', $temp_date);
                                                         $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
                                                         $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
                                                         $reg_date = $reg_year.$reg_month.$reg_day.'0000';
                                                         //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                                     @endphp
                                                     @if(time() >= strtotime($reg_date. '+1 days'))
-                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @else
                                                         <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @endif

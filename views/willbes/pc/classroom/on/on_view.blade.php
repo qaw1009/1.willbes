@@ -147,20 +147,13 @@
                                     @if(empty($row['wUnitAttachFile']) == false)
                                         @if($row['wControlCount'] > 0)
                                             {{-- 파일 인쇄 카운트 관리 --}}
-                                            @if($row['wControlCount'] > $row['downcount'])
-                                                {{-- 인쇄가능  --}}
-                                                <a href="javascript:;" onclick="ezPrint('/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}/{{sess_data('mem_idx')}}/{{$row['wUnitIdx']}}/')">
-                                                    @if($row['downcount'] > 0)
-                                                        <img src="{{ img_url('prof/icon_down.png') }}">
-                                                    @else
-                                                        <img src="{{ img_url('prof/icon_file.gif') }}">
-                                                    @endif
-                                                </a>
-                                            @else
-                                                {{-- 인쇄불가능 --}}
-                                                <a href="javascript:;" onclick="alert('인쇄횟수가 초과되었습니다.');"><img src="{{ img_url('prof/icon_down.png') }}"></a>
-                                            @endif
-
+                                            <a href="javascript:;" onclick="ezPrint('/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}/{{sess_data('mem_idx')}}/{{$row['wUnitIdx']}}/')">
+                                                @if($row['downcount'] > 0)
+                                                    <img src="{{ img_url('prof/icon_down.png') }}">
+                                                @else
+                                                    <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                @endif
+                                            </a>
                                         @else
                                             {{-- 일반 다운로드 --}}
                                             <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">

@@ -13,6 +13,14 @@
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky02.jpg" alt="학원 1:1상담">
     </a>
 </div>
+<div class="mt5">
+    {!! banner_html(element('메인_우측퀵_01', $data['arr_main_banner'])) !!}
+    {{--
+    <a href="{{ site_url('/support/notice/show/cate/' . $__cfg['CateCode'] . '?board_idx=253193') }}">
+        <img src="https://static.willbes.net/public/images/promotion/main/2005_sky01.jpg" alt="신규강의">
+    </a>
+    --}}
+</div>
 <ul>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/109?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">강의 계획서</a></li>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/80?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">강의 시간표</a></li>

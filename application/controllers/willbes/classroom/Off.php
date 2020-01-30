@@ -52,25 +52,20 @@ class Off extends \app\controllers\FrontController
         // 셀렉트박스 수해오기
         $cond_arr = [
             'GTE' => [
-                'RealLecEndDate' => $today // 종료일 >= 오늘
+                'StudyEndDate' => $today // 종료일 >= 오늘
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
-            ],
-            'IN' => [
-                'LearnPatternCcd' => ['615006','615007'] // 학습방식 : 학원단과, 학원종합
             ]
         ];
 
         // 셀렉트박스용 데이타
-        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr, true);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr, true);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr, true);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr, true);
 
-
-
-        // 실제 리스트용
+        // 실제 단과반 리스트용
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
@@ -88,7 +83,7 @@ class Off extends \app\controllers\FrontController
                 ]
             ],
             'IN' => [
-                'LearnPatternCcd' => ['615006','615007'] // 학원종합, 학원단과
+                'LearnPatternCcd' => ['615006'] // 학원단과
             ]
         ];
 
@@ -104,13 +99,37 @@ class Off extends \app\controllers\FrontController
 
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
+        // 학원 종합반 목록 읽어오기
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+            ],
+            'GTE' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+
+        $pkglist = $this->classroomFModel->getPackage($cond_arr, $orderby, false, true);
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ], $orderby, false, true);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
+
         return $this->load->view('/classroom/off/off_ongoing', [
             'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
-            'list' => $leclist
+            'list' => $leclist,
+            'pkglist' => $pkglist
         ]);
     }
 
@@ -124,21 +143,24 @@ class Off extends \app\controllers\FrontController
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
+        if(array_key_exists('search_start_date',$input_arr) == false
+            && empty(element('search_start_date', $input_arr)) == true){
+            $input_arr['search_start_date'] = date("Y-m-d", strtotime("-1 months"));
+            $input_arr['search_end_date'] = $today;
+        }
+
         // 셀렉트박스 수해오기
         $cond_arr = [
             'LT' => [
-                'RealLecEndDate' => $today // 종료일 < 오늘
+                'StudyEndDate' => $today // 종료일 < 오늘
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
-            ],
-            'IN' => [
-                'LearnPatternCcd' => ['615006','615007'] // 학습방식 : 학원단과, 학원종합
             ]
         ];
 
         // 셀렉트박스용 데이타
-        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr, true);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr, true);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr, true);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr, true);
@@ -161,7 +183,7 @@ class Off extends \app\controllers\FrontController
                 ]
             ],
             'IN' => [
-                'LearnPatternCcd' => ['615006','615007'] // 학원종합, 학원단과
+                'LearnPatternCcd' => ['615006'] // 학습방식 : 학원단과
             ],
             'GTE' => [
                 'StudyEndDate' => element('search_start_date', $input_arr)
@@ -172,7 +194,7 @@ class Off extends \app\controllers\FrontController
         ];
 
         $orderby = element('orderby', $input_arr);
-        $orderby = (empty($orderby) == true) ? 'StudyEndDate^DESC' : $orderby;
+       $orderby = (empty($orderby) == true) ? 'StudyEndDate^DESC' : $orderby;
         // 최신순으로
         @list($orderby, $asc_desc) = @explode("^", $orderby);
         if(empty($asc_desc) == false){
@@ -183,6 +205,23 @@ class Off extends \app\controllers\FrontController
 
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby, false, true);
 
+        // 패키지 강좌 읽어오기
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자번호
+            ],
+            'LT' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ],
+            'GTE' => [
+                'StudyEndDate' => element('search_start_date', $input_arr)
+            ],
+            'LTE' => [
+                'StudyEndDate' => element('search_end_date', $input_arr)
+            ]
+
+        ];
+        $pkglist = $this->classroomFModel->getPackage($cond_arr, $orderby, false, true);
 
         return $this->load->view('/classroom/off/off_end', [
             'sitegroup_arr' => $sitegroup_arr,
@@ -190,8 +229,110 @@ class Off extends \app\controllers\FrontController
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
-            'list' => $leclist
+            'list' => $leclist,
+            'pkglist' => $pkglist
         ]);
+    }
+
+
+    /**
+     * 강사배정 layer
+     * @return CI_Output|object|string
+     */
+    public function AssignProf()
+    {
+        $OrderIdx = $this->_req('orderidx');
+        $OrderProdIdx = $this->_req('orderprodidx');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($OrderIdx) == true || empty($OrderProdIdx) == true){
+            return $this->json_error("정보가 올바르지 않습니다.");
+        }
+
+        $today = date("Y-m-d", time());
+        $sub_prod_data = null;
+        $UnPaidInfo = [];
+        $unpaid_data = [];
+
+        // 강의 신청정보 읽어오기
+        $pkginfo = $this->classroomFModel->getPackage([
+            'EQ' => [
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'OrderProdIdx' => $OrderProdIdx
+            ]
+        ],[], false, true);
+        if(count($pkginfo) != 1){
+            return $this->json_error('강좌신청정보가 없습니다.');
+        }
+        $pkginfo = $pkginfo[0];
+
+        // 서브상품코드 추출
+        $pkginfo['OrderSubProdCodes'] = [];
+        if (empty($pkginfo['OrderSubProdData']) === false) {
+            $pkginfo['OrderSubProdCodes'] = array_pluck(json_decode($pkginfo['OrderSubProdData'], true), 'ProdCode');
+        }
+
+        if($pkginfo['IsUnPaid'] == 'Y'){
+            // 결제정보 읽어오기
+            $UnPaidInfo = $this->classroomFModel->getUnPaidInfo($pkginfo['ProdCode'], $MemIdx, $pkginfo['UnPaidIdx']);
+            if (empty($UnPaidInfo) === true) {
+                return $this->json_error('미수금정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 상품정보
+            $unpaid_data = element('0', $UnPaidInfo);
+            $unpaid_data['tRealPayPrice'] = array_sum(array_pluck($UnPaidInfo, 'RealPayPrice')); // 총기결제금액
+            $unpaid_data['tRefundPrice'] = array_sum(array_pluck($UnPaidInfo, 'RefundPrice'));   // 총기환불금액
+            $unpaid_data['tRealUnPaidPrice'] = $unpaid_data['OrgPayPrice'] - ($unpaid_data['tRealPayPrice'] - $unpaid_data['tRefundPrice']);    // 최종미납금액
+        }
+
+        // 선택강좌 정보 읽어오기
+        $sub_prod_rows = $this->classroomFModel->getOffPackageSubLectgure([
+            'EQ' => [
+                'PS.ProdCode' => $pkginfo['ProdCode']
+            ]
+        ]);
+
+        foreach ($sub_prod_rows as $row) {
+            $arr_key = $row['IsEssential'] == 'Y' ? 'ess' : 'choice';
+            if($row['ProfChoiceStartDate'] <= $today && $today <= $row['ProfChoiceEndDate']){
+                $row['IsChoice'] = 'Y';
+            } else {
+                $row['IsChoice'] = 'N';
+            }
+            $sub_prod_data[$arr_key][] = $row;
+        }
+
+        return $this->load->view('/classroom/off/layer/assign_prof',[
+            'pkginfo' => $pkginfo,
+            'unpaidinfo' => $UnPaidInfo,
+            'unpaid_data' => $unpaid_data,
+            'sublec' => $sub_prod_data
+            ]);
+    }
+
+
+    /**
+     *
+     */
+    public function AssignProfStore()
+    {
+        $MemIdx = $this->session->userdata('mem_idx');
+        $ProdCode = $this->_req("prod_code");
+        $OrderIdx = $this->_req("order_idx");
+        $OrderProdIdx = $this->_req("order_prod_idx");
+        $ProdCodeSub = $this->_req("prod_code_sub");
+
+        if(empty($ProdCode) == true || empty($OrderIdx) == true || empty($OrderProdIdx) == true || empty($ProdCodeSub) == true ){
+            return $this->json_error("정보가 올바르지 않습니다.");
+        }
+
+        empty($ProdCodeSub) === false && $ProdCodeSub = array_values(array_unique(explode(',', $ProdCodeSub)));
+
+        $result = $this->classroomFModel->storeOffLectureSub($MemIdx, $OrderIdx, $OrderProdIdx, $ProdCode, $ProdCodeSub);
+
+        return $this->json_result($result, '강사배정이 적용되었습니다.', $result);
     }
 
 

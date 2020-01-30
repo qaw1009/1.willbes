@@ -11,7 +11,7 @@
 
             <div class="willbes-Mypage-TESTZONE c_both">
                 @include('willbes.pc.classroom.mocktestNew.tab_menu_partial')
-                <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
+                <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re mt30">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
                         <tbody>

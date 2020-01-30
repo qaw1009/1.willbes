@@ -9,6 +9,7 @@ class ClassroomFModel extends WB_Model
         'mylecture' => 'vw_on_mylecture',
         'myofflecture' => 'vw_off_mylecture',
         'mylecture_pkg' => 'vw_pkg_mylecture',
+        'myofflecture_pkg' => 'vw_offpkg_mylecture',
         'start_log' => 'lms_my_lecture_history',
         'admin' => 'wbs_sys_admin',
         'pause_log' => 'lms_lecture_pause_history',
@@ -18,7 +19,16 @@ class ClassroomFModel extends WB_Model
         'booklist' => 'vw_product_salebook',
         'on_lecture' => 'vw_product_on_lecture',
         'device' => 'lms_member_device',
-        'bookmark' => 'lms_my_lecture_bookmark'
+        'bookmark' => 'lms_my_lecture_bookmark',
+        'code' => 'lms_sys_code',
+        'order' => 'lms_order',
+        'order_product_refund' => 'lms_order_product_refund',
+        'order_unpaid_info' => 'lms_order_unpaid_info',
+        'order_unpaid_hist' => 'lms_order_unpaid_hist',
+        'order_sub_product' => 'lms_order_sub_product',
+        'order_product_activity_log' => 'lms_order_product_activity_log',
+        'product_r_sublecture' => 'lms_product_r_sublecture',
+        'my_lecture' => 'lms_my_lecture'
     ];
 
     public function __construct()
@@ -122,6 +132,9 @@ class ClassroomFModel extends WB_Model
         }
 
         if($isoff == true){
+            if($isCount == false) {
+                $query = "SELECT * ";
+            }
             $query .= " FROM {$this->_table['myofflecture']} ";
         } else {
             $query .= " FROM {$this->_table['mylecture']} ";
@@ -139,7 +152,7 @@ class ClassroomFModel extends WB_Model
     /**
      * 패키지 강좌 리스트
      */
-    public function getPackage($cond = [], $order = [], $isCount = false)
+    public function getPackage($cond = [], $order = [], $isCount = false, $isoff = false)
     {
         if($isCount == true){
             $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums  ";
@@ -148,7 +161,15 @@ class ClassroomFModel extends WB_Model
             ";
         }
 
-        $query .= " FROM {$this->_table['mylecture_pkg']} ";
+        if($isoff == true){
+            if($isCount == false) {
+                $query = "SELECT * ";
+            }
+            $query .= " FROM {$this->_table['myofflecture_pkg']} ";
+        } else {
+            $query .= " FROM {$this->_table['mylecture_pkg']} ";
+        }
+
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
@@ -156,6 +177,270 @@ class ClassroomFModel extends WB_Model
         $result = $this->_conn->query($query);
 
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+
+    /**
+     * 학원강좌 분납 정보 가져오기
+     * @param $prod_code
+     * @param $mem_idx
+     * @param null $unpaid_idx
+     * @param null $limit
+     * @return mixed
+     */
+    public function getUnPaidInfo($prod_code, $mem_idx, $unpaid_idx = null, $limit = null)
+    {
+        $column = 'OUI.UnPaidIdx, OUI.MemIdx, OUI.ProdCode, OUI.OrgOrderPrice, OUI.OrgPayPrice, OUI.DiscPrice
+            , OUI.DiscRate, OUI.DiscType, OUI.DiscReason
+            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidUnitNum, OUH.UnPaidMemo
+	        , O.OrderNo, O.SiteCode, O.CompleteDatm, OP.PayStatusCcd, OP.RealPayPrice 
+	        , IFNULL(OPR.RefundPrice, 0) AS RefundPrice
+	        , (OUH.UnPaidPrice + IFNULL(OPR.RefundPrice, 0)) AS RealUnPaidPrice ';
+
+        $from = "
+            FROM " . $this->_table['order_unpaid_info'] . " as OUI
+                INNER JOIN " . $this->_table['order_unpaid_hist'] . " AS OUH ON OUI.UnPaidIdx = OUH.UnPaidIdx
+                INNER JOIN " . $this->_table['order'] . " AS O ON OUH.OrderIdx = O.OrderIdx
+                INNER JOIN " . $this->_table['order_product'] . " AS OP ON O.OrderIdx = OP.OrderIdx                   
+                LEFT JOIN " . $this->_table['order_product_refund'] . " AS OPR ON O.OrderIdx = OPR.OrderIdx AND OP.OrderProdIdx = OPR.OrderProdIdx
+            WHERE OUI.ProdCode = ?
+                AND OUI.MemIdx = ?
+                AND OP.PayStatusCcd IN ('676001','676006')
+	    ";
+
+        $arr_condition = [
+            'EQ' => [
+                'OUI.UnPaidIdx' => $unpaid_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        $order_by = ['OUH.UpHistIdx' => 'DESC'];
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, 0)->getMakeLimitOffset();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$prod_code, $mem_idx]);
+
+        return $limit == 1 ? $query->row_array() : $query->result_array();
+
+    }
+
+
+    /**
+     * 학원강좌 선택형 패키지 강좌 선택 목록
+     * @param $prodcode
+     * @param $orderidx
+     * @param $orderprodidx
+     * @return mixed
+     */
+    public function getOffPackageSubLectgure($arr_condition)
+    {
+        $column = 'PS.ProdCode, PS.IsEssential
+            , VP.ProdCode as ProdCodeSub, VP.ProdName as ProdNameSub, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName
+            , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate 
+            , IFNULL(datediff(VP.StudyEndDate, VP.StudyStartDate) + 1, 0) AS StudyPeriod
+            , VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
+        ';
+        $from = '
+            FROM ' . $this->_table['product_r_sublecture'] . ' AS PS
+                INNER JOIN vw_product_off_lecture AS VP ON PS.ProdCodeSub = VP.ProdCode
+            WHERE PS.IsStatus = "Y"             
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . ' ORDER BY VP.OrderNumCourse, VP.OrderNumSubject ASC, VP.ProfIdx ASC');
+
+        return $query->result_array();
+    }
+
+
+    public function storeOffLectureSub($MemIdx, $OrderIdx, $OrderProdIdx, $ProdCode, $ProdCodeSub)
+    {
+        $today = date("Y-m-d", time());
+
+        $this->_conn->trans_begin();
+        try {
+            
+            if(empty($ProdCode) == true || empty($OrderIdx) == true || empty($OrderProdIdx) == true || empty($ProdCodeSub) == true ){
+                throw new \Exception('정보가 올바르지 않습니다.');
+            }
+
+            // 강의 신청정보 읽어오기
+            $pkginfo = $this->getPackage([
+                'EQ' => [
+                    'MemIdx' => $MemIdx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx
+                ]
+            ], [], false, true);
+            if (count($pkginfo) != 1) {
+                throw new \Exception('강좌신청정보가 없습니다.');
+            }
+            $UnPaidIdx = $pkginfo[0]['UnPaidIdx'];
+
+            if (empty($UnPaidIdx) === false) {
+                // 미수금주문일 경우 연관된 주문정보 조회
+                $arr_order_prod = $this->_conn->getJoinListResult($this->_table['order_unpaid_hist'] . ' AS OUH'
+                    ,'INNER'
+                    ,$this->_table['order_product'] . ' as OP'
+                    ,'OUH.OrderIdx = OP.OrderIdx'
+                    ,'OP.OrderIdx, OP.OrderProdIdx'
+                    , [
+                        'EQ' => [
+                            'OUH.UnPaidIdx' => $UnPaidIdx,
+                            'OP.ProdCode' => $ProdCode,
+                            'OP.MemIdx' => $MemIdx
+                        ]
+                    ]);
+
+            } else {
+                // 미수금번호가 없으면 일반 신청
+                $arr_order_prod[0] = [
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx
+                ];
+            }
+
+            // 선택한 강좌 정보 읽어오기
+            // 현재 선택가능한 서브 강좌 읽어오기
+            $arr_sel_sub_lec = $this->getOffPackageSubLectgure([
+                'EQ' => [
+                    'PS.ProdCode' => $ProdCode,
+                ],
+                'LTE' => [
+                    'ProfChoiceStartDate' => $today
+                ],
+                'GTE' => [
+                    'ProfChoiceEndDate' => $today
+                ],
+                'IN' => [
+                    'ProdCodeSub' => $ProdCodeSub
+                ]
+            ]);
+            if (empty($arr_sel_sub_lec) == true) {
+                throw new \Exception('선택가능한 강좌가 없습니다.');
+            }
+
+            // 현재 선택가능한 서브 강좌 읽어오기
+            $arr_sub_lec = $this->getOffPackageSubLectgure([
+                'EQ' => [
+                    'PS.ProdCode' => $ProdCode,
+                ],
+                'LTE' => [
+                    'ProfChoiceStartDate' => $today
+                ],
+                'GTE' => [
+                    'ProfChoiceEndDate' => $today
+                ]
+            ]);
+            if (empty($arr_sub_lec) == true) {
+                throw new \Exception('선택가능한 강좌가 없습니다.');
+            }
+            $arr_prodcodesub = array_pluck($arr_sub_lec, 'ProdCodeSub');
+
+            // 주문 번호별로 강사 배정
+            foreach($arr_order_prod as $order_row) {
+                $order_idx = $order_row['OrderIdx'];
+                $orderprod_idx = $order_row['OrderProdIdx'];
+
+                // 주문상품서브 데이터 삭제
+                $is_del_sub_product = $this->_conn
+                    ->where('OrderProdIdx', $orderprod_idx)
+                    ->where_in('ProdCodeSub', array_values($arr_prodcodesub))
+                    ->delete($this->_table['order_sub_product']);
+                if ($is_del_sub_product === false) {
+                    throw new \Exception('강의 배정에 실패했습니다.[001]');
+                }
+
+                // 나의 강좌수정정보 데이터 삭제
+                $is_del_my_lecture = $this->_conn
+                    ->where('OrderIdx', $order_idx)
+                    ->where('OrderProdIdx', $orderprod_idx)
+                    ->where('ProdCode', $ProdCode)
+                    ->where_in('ProdCodeSub', array_values($arr_prodcodesub))
+                    ->delete($this->_table['my_lecture']);
+                if ($is_del_my_lecture === false) {
+                    throw new \Exception('강의 배정에 실패했습니다.[002]');
+                }
+
+                // 선택한강좌 추가
+                foreach ($arr_sel_sub_lec as $insert_prod_code_sub) {
+                    // 주문상품서브 등록
+                    $is_add_sub_product = $this->_conn->set([
+                        'OrderProdIdx' => $orderprod_idx,
+                        'ProdCodeSub' => $insert_prod_code_sub['ProdCodeSub'],
+                        'RealPayPrice' => 0
+                    ])->insert($this->_table['order_sub_product']);
+
+                    if ($is_add_sub_product === false) {
+                        throw new \Exception('강의 배정에 실패했습니다.[003]');
+                    }
+
+                    // 내강의실정보
+                    $data = [
+                        'OrderIdx' => $order_idx,
+                        'OrderProdIdx' => $orderprod_idx,
+                        'ProdCode' => $ProdCode,
+                        'ProdCodeSub' => $insert_prod_code_sub['ProdCodeSub'],
+                        'LecStartDate' => $insert_prod_code_sub['StudyStartDate'],
+                        'LecEndDate' => $insert_prod_code_sub['StudyEndDate'],
+                        'RealLecEndDate' => $insert_prod_code_sub['StudyEndDate'],
+                        'LecExpireTime' => 0,
+                        'RealLecExpireTime' => 0,
+                        'LecExpireDay' => $insert_prod_code_sub['StudyPeriod'],
+                        'RealLecExpireDay' => $insert_prod_code_sub['StudyPeriod']
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['my_lecture']) === false) {
+                        throw new \Exception('강의 배정에 실패했습니다.[004]');
+                    }
+                }
+            }
+
+            // 활동로그 저장
+            $is_first_act = 'Y';
+            $act_type = 'ProfAssign';
+            $arr_condition = [
+                'EQ' => [
+                    'ActType' => $act_type,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx
+                ]
+            ];
+            $log_cnt = $this->_conn->getFindResult($this->_table['order_product_activity_log'], true, $arr_condition);
+            if ($log_cnt > 0) {
+                $is_first_act = 'N';
+            }
+
+            $data = [
+                'ActType' => $act_type,
+                'OrderIdx' => $OrderIdx,
+                'OrderProdIdx' => $OrderProdIdx,
+                'ProdCodeSub' => null,
+                'ActContent' => implode(',', $ProdCodeSub),
+                'IsFirstAct' => $is_first_act,
+                'RegMemIdx' => $MemIdx,
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            $is_add = $this->_conn->set($data)->insert($this->_table['order_product_activity_log']);
+            if ($is_add !== true) {
+                throw new \Exception('강의 배정에 실패했습니다.[005]');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
 

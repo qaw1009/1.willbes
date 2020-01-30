@@ -39,7 +39,11 @@
                         ezpdf._debug = 0;
                         ezpdf.SetPDF(d.ret_data.pdfUrl, false);
                         ezpdf.SetEventURL(eventURL);
-                        ezpdf.SetSecData(2);
+                        if(d.ret_data.is_control === true) {
+                            ezpdf.SetSecData(2); {{-- 인쇄 가능 --}}
+                        } else {
+                            ezpdf.SetSecData(3); {{-- 인쇄 불가능 --}}
+                        }
                         ezpdf.Launch(false);
                         setTimeout(function () {
                             self.close();

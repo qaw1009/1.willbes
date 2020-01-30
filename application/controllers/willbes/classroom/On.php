@@ -1596,12 +1596,14 @@ class On extends \app\controllers\FrontController
             ]
         ]);
 
+        $is_control = true;
         if($curriculum['wControlCount'] <= $count){
-            return $this->json_error('인쇄횟수를 초과하였습니다.');
+            $is_control = false;    //보기 가능. 인쇄 불가능.
         }
 
         return $this->json_result(true,'다운로드가 가능합니다.', null, [
-            'pdfUrl' => 'https:'.rawurlencode(front_url($filepath))
+            'pdfUrl' => 'https:'.rawurlencode(front_url($filepath)),
+            'is_control' => $is_control
         ]);
     }
 

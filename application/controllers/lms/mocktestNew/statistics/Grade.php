@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/mocktestNew/BaseMocktest.php';
 
 class Grade extends BaseMocktest
 {
-    protected $temp_models = array('mocktestNew/regGrade');
+    protected $temp_models = array('mocktestNew/mockCommon', 'mocktestNew/regGrade');
     protected $helpers = array();
 
     public function __construct()
@@ -110,5 +110,25 @@ class Grade extends BaseMocktest
         $this->load->view('mocktestNew/statistics/grade/detail', [
             'product_info' => $product_info
         ]);
+    }
+
+
+    /**
+     * 조정점수반영
+     */
+    public function scoreMakeAjax()
+    {
+        $rules = [
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $formData = $this->_reqP(null, false);
+        $prod_code = element('prod_code', $formData);
+        $result = $this->regGradeModel->scoreMake($prod_code, 'web');
+        $this->json_result($result, '저장되었습니다.', $result);
     }
 }

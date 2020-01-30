@@ -186,7 +186,9 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href="javascript:;" onclick="fnPostscript('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</a>
+                                                    @if($subrow['IsOpenStudyComment'] == 'Y')
+                                                        <a href="javascript:;" onclick="fnPostscript('{{$subrow['SiteCode']}}', '{{$subrow['CateCode']}}', '{{$subrow['ProdCodeSub']}}', '{{$subrow['SubjectIdx']}}', '{{$subrow['subProdName']}}', '{{$subrow['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

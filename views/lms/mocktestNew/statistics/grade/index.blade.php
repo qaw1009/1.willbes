@@ -59,6 +59,10 @@
         </div>
     </form>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        <input type="hidden" id="prod_code" name="prod_code" value="">
+    </form>
     <div class="mt-20">* 응시자가 성적을 제출하면 자동으로 성적처리됩니다.(조정점수 자동산출)</div>
     <div class="mt-5">* 수동으로 '조정점수반영' 클릭 시 현재 시점으로 조정점수가 재산출됩니다.</div>
     <div class="x_panel mt-10">
@@ -98,6 +102,7 @@
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
+        var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
             $search_form.find('#search_cateD1').chained('#search_site_code');
@@ -180,13 +185,14 @@
                     _msg = '조정점수를 반영 하시겠습니까?';
                     _url = '{{ site_url('/mocktestNew/statistics/grade/scoreMakeAjax') }}';
                 }
+                $("#prod_code").val($(this).data('prod-code'));
 
                 if(!confirm(_msg)) return;
-                ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxLoadingSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         alert(ret.ret_msg);
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, null, 'alert', $regi_form);
             });
         });
     </script>

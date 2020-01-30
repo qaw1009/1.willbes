@@ -123,7 +123,9 @@
                 <li><a href="#tab01" @if(!($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')) class="on" @endif>강좌정보</a></li>
                 <li><a href="#tab02">교재정보</a></li>
                 <li><a href="#tab03" @if(($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')) class="on" @endif>강의목차</a></li>
+                @if($data['IsOpenStudyComment'] === 'Y')
                 <li><a href="#tab04" id="btn_study_board">수강후기</a></li>
+                @endif
             </ul>
             <div class="tabBox">
                 <div id="tab01">
@@ -182,12 +184,13 @@
                         @endforeach
                     </ul>
                 </div>
-
-                <div id="tab04" class="lec-reply">
-                    해당 강좌 총 수강후기 [<strong>0</strong>건]
-                    <p class="tx-red">※ 수강후기 등록은 PC버전에서만 가능합니다.</p>
-                    <div class="tab04-content"></div>
-                </div>
+                @if($data['IsOpenStudyComment'] === 'Y')
+                    <div id="tab04" class="lec-reply">
+                        해당 강좌 총 수강후기 [<strong>0</strong>건]
+                        <p class="tx-red">※ 수강후기 등록은 PC버전에서만 가능합니다.</p>
+                        <div class="tab04-content"></div>
+                    </div>
+                @endif
             </div>
         </div>
         @if($pattern == 'only')

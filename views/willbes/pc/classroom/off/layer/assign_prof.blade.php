@@ -102,7 +102,7 @@
                         @foreach($prod_data as $row)
                             <tr>
                                 <td class="row_{{ $key }}_course_name">{{ $row['CourseName'] }}</td>
-                                <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}</td>
+                                <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span style="display:none;">{{ $row['CourseIdx'] }}</span></td>
                                 <td><input type="radio" name="prod_code_sub_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}"
                                        class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}"
                                         {{ in_array($row['ProdCodeSub'], $pkginfo['OrderSubProdCodes']) === true ? 'checked="checked"' : '' }}
@@ -127,11 +127,6 @@
 <script>
     $(document).ready(function() {
         var $_assign_form = $('#_prof_assign_form');
-        bindTab('#selTab');
-        setRowspan('row_ess_course_name');
-        setRowspan('row_ess_subject_name');
-        setRowspan('row_choice_course_name');
-        setRowspan('row_choice_subject_name');
 
         $_assign_form.submit(function() {
             var _url = '{{ front_url('/classroom/off/AssignProfStore') }}';
@@ -162,6 +157,12 @@
                 }, true, 'POST', 'json');
 
         });
+
+        bindTab('#selTab');
+        setRowspan('row_ess_course_name');
+        setRowspan('row_ess_subject_name');
+        setRowspan('row_choice_course_name');
+        setRowspan('row_choice_subject_name');
 
     });
 

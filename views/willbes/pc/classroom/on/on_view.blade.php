@@ -172,7 +172,11 @@
                                     @endif
                                 </td>
                                 @if($lec['wControlCountUse'] > 0)
-                                    <td class="w-free mypage">@if($row['wControlCount'] != 0){{$row['downcount']}} / {{$row['wControlCount']}}@endif</td>
+                                    <td class="w-free mypage">
+                                        @if($row['wControlCount'] != 0)
+                                            {{$row['wControlCount']}}회 출력중 <br/> {{$row['downcount']}}회 사용 @if($row['wControlCount'] == $row['downcount'])<br/>(출력종료)@endif
+                                        @endif
+                                    </td>
                                 @endif
                                 <td class="w-free mypage">
                                     @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')

@@ -84,7 +84,10 @@
                 </div>
                 <div class="Mypage-PASSZONE-Btn">
                     <ul>
-                        <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기</a></li>
+                        <li class="subBtn blue NSK">
+                        @if($lec['IsOpenStudyComment'] == 'Y')
+                            <a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기</a></li>
+                        @endif
                         @if($lec['IsQnaBoard'] == 'Y')
                             <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
                         @endif
@@ -169,7 +172,11 @@
                                     @endif
                                 </td>
                                 @if($lec['wControlCountUse'] > 0)
-                                    <td class="w-free mypage">@if($row['wControlCount'] != 0){{$row['downcount']}} / {{$row['wControlCount']}}@endif</td>
+                                    <td class="w-free mypage">
+                                        @if($row['wControlCount'] != 0)
+                                            {{$row['wControlCount']}}회 출력중 <br/> {{$row['downcount']}}회 사용 @if($row['wControlCount'] == $row['downcount'])<br/>(출력종료)@endif
+                                        @endif
+                                    </td>
                                 @endif
                                 <td class="w-free mypage">
                                     @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')

@@ -2,7 +2,7 @@
     <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile{{ $ele_id }}'); closeWin('Profile{{ $ele_id }}')">
         <img src="{{ img_url('prof/close.png') }}">
     </a>
-    <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> 교수님 프로필</div>
+    <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}} 프로필</div>
     <div class="Layer-Cont">
         <div class="Layer-SubTit NG">· 약력</div>
         <div class="Layer-Txt tx-gray">

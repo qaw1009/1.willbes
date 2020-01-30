@@ -118,7 +118,7 @@
                 <li><a href="#tab03">강의목차</a></li>
                 <li><a href="#tab04">수강후기</a></li>
             </ul>
-            <div class="tabBox">
+            <div class="tabBox tabBox2">
                 <div id="tab01"> 
                     <h4 class="NGEB">강좌소개</h4>
                     - 2019대비 신광은 형사소송법 기본이론<br>

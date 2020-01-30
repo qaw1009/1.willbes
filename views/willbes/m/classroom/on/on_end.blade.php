@@ -195,7 +195,9 @@
                                             </dl>
                                             <div class="w-start tx-gray">
                                                 <ul class="two">
+                                                    {{--}}
                                                     <li class="btn_white"><a href="javascript:;">후기등록</a></li>
+                                                    {{--}}
                                                 </ul>
                                             </div>
                                             <div class="w-line">-</div>

@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년 1월 설명회 신청하기></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년 2월 설명회 신청하기></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">

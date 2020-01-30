@@ -109,7 +109,9 @@
                                                 @else
                                                     <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
-                                                <a href="javascript:;" onclick="fnPostscript('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a>
+                                                @if($row['IsOpenStudyComment'] == 'Y')
+                                                    <a href="javascript:;" onclick="fnPostscript('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @empty

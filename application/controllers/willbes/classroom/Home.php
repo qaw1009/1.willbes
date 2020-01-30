@@ -90,10 +90,20 @@ class Home extends \app\controllers\FrontController
                 'StudyEndDate' => $today // 종료일 >= 오늘
             ],
             'IN' => [
-                'LearnPatternCcd' => ['615006','615007'] // 학원종합, 학원단과
+                'LearnPatternCcd' => ['615006'] // 학원종합, 학원단과
             ]
         ];
         $data['off_cnt'] = $this->classroomFModel->getLecture($cond_arr, null,true, true);
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx
+            ],
+            'GTE' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ]
+        ];
+        $data['off_cnt'] += $this->classroomFModel->getPackage($cond_arr, null,true, true);
 
         // 포인트
         $member_point = $this->pointFModel->getMemberPoint();

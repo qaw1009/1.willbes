@@ -88,7 +88,7 @@ class OrderListModel extends BaseOrderModel
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
-            , O.AdminEtcReason, O.CompleteDatm, O.OrderDatm
+            , O.AdminEtcReason, O.CompleteDatm, O.OrderDatm, OOI.CertNo
             , OP.RealPayPrice, OP.IsUseCoupon, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate
             , OP.UpdDatm                       
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       

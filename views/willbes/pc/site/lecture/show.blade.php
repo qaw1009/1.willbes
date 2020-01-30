@@ -12,14 +12,14 @@
         <div class="willbes-Prof-Detail NG tx-black">
             <div class="prof-profile p_re">
                 <div class="Name">
-                    <strong>{{ $data['ProfNickName'] }}</strong><br/>교수님
+                    <strong>{{ $data['ProfNickName'] }}</strong><br/>{{$data['AppellationCcdName']}}님
                 </div>
                 <div class="ProfImg">
                     <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">
                 </div>
                 <div class="prof-home subBtn NSK">
                     <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">
-                        <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈
+                        <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">{{$data['AppellationCcdName']}} 홈
                     </a>
                 </div>
             </div>
@@ -217,8 +217,10 @@
                     <li><a href="#none" onclick="movePos('#BookInfo');">교재정보 ▼</a></li>
                     <li class="row-line">|</li>
                     <li><a href="#none" onclick="movePos('#Leclist');">강의목차 ▼</a></li>
-                    <li class="row-line">|</li>
-                    <li><a href="#none" onclick="movePos('#Reply');">수강후기 ▼</a></li>
+                    @if($data['IsOpenStudyComment'] === 'Y')
+                        <li class="row-line">|</li>
+                        <li><a href="#none" onclick="movePos('#Reply');">수강후기 ▼</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -378,14 +380,15 @@
             <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
         </div>
         <!-- TopBtn-->
+        @if($data['IsOpenStudyComment'] === 'Y')
+            <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+            @include('willbes.pc.site.lecture.iframe_reply_partial')
+            <!-- willbes-Leclist -->
 
-        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
-        @include('willbes.pc.site.lecture.iframe_reply_partial')
-        <!-- willbes-Leclist -->
-
-        <div class="TopBtn">
-            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-        </div>
+            <div class="TopBtn">
+                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+            </div>
+        @endif
         <!-- TopBtn-->
     </div>
     @if(empty($pattern_banner_section) === false)

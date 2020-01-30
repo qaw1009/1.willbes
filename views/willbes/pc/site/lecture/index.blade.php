@@ -224,7 +224,7 @@
                                 <div class="Obj">
                                     {!! str_first_pos_after($prof_name, '::') !!}
                                 </div>
-                                <div class="Name">{{ str_first_pos_before($prof_name, '::') }} 교수님</div>
+                                <div class="Name">{{ str_first_pos_before($prof_name, '::') }}님</div>
                             </li>
                             @if(isset($data['professor_study_comments'][$subject_idx][$prof_idx]) === true && $data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
                                 <li class="Reply tx-blue">

@@ -240,7 +240,10 @@ class BaseProductFModel extends WB_Model
             $add_column = ', ' . implode(', ', $arr_make_column);
         }
 
-        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName' . $add_column;
+        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName
+                        , P.IsOpenStudyComment, SC1.CcdName As AppellationCcdName
+                        , concat(P.ProfNickName,\' \',CcdName) as ProfNickNameAppellation
+                        ' . $add_column;
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $this->_table['professor'] . ' as P
@@ -253,12 +256,14 @@ class BaseProductFModel extends WB_Model
                     on PSC.CateCode = SC.CateCode
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx
+                left join ' . $this->_table['code'] . ' as SC1
+                    on P.AppellationCcd = SC1.Ccd and SC1.IsUse = "Y" and SC1.IsStatus = "Y"
             where P.SiteCode = ? and P.IsUse = "Y" and P.IsStatus = "Y"
                 and WP.wIsUse = "Y" and WP.wIsStatus = "Y"
                 and PSC.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsStatus = "Y"
                 and SC.IsUse = "Y" and SC.IsStatus = "Y"
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"	        
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"
         ';
 
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.SubjectIdx' => $subject_idx]]);

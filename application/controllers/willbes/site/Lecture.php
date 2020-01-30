@@ -139,10 +139,10 @@ class Lecture extends \app\controllers\FrontController
 
             // 교수정보 추출
             // 상품조회 결과에서 교수정보 추출 (교수명::슬로건)
-            $selected_prod_professor_names = array_data_pluck($list, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
+            $selected_prod_professor_names = array_data_pluck($list, ['ProfNickNameAppellation', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
 
             // 과목별 교수맵핑 결과에서 교수정보 추출 (교수명::슬로건, 사이트 > 카테고리 > 과목별 교수 정렬값 사용)
-            $selected_professor_names = array_data_pluck($arr_professor, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
+            $selected_professor_names = array_data_pluck($arr_professor, ['ProfNickNameAppellation', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
 
             // 교수정보 병합 (과목별 교수맵핑 교수정보 기준으로 상품조회 결과에만 존재하는 교수정보 추가)
             foreach ($selected_prod_professor_names as $ord_subject_idx => $ord_prof_rows) {

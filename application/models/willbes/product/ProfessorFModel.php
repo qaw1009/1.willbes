@@ -8,7 +8,8 @@ class ProfessorFModel extends WB_Model
         'professor_banner' => 'lms_professor_banner',
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
-        'site_group' => 'lms_site_group'
+        'site_group' => 'lms_site_group',
+        'code' => 'lms_sys_code',
     ];
 
     // 교수 게시판관리 식별자
@@ -49,12 +50,15 @@ class ProfessorFModel extends WB_Model
                 $add_column = ',' . implode(',', $arr_make_column);
             }
 
-            $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent 
+            $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent
+                , Pf.AppellationCcd ,Pf.IsOpenStudyComment 
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard' . $add_column;
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard
+                , (Select Sc.CcdName From '. $this->_table['code'].' as Sc Where Sc.Ccd = Pf.AppellationCcd And Sc.IsStatus=\'Y\' And Sc.IsUse=\'Y\') As AppellationCcdName
+                ' . $add_column;
         }
 
         $arr_condition = array_merge_recursive($arr_condition, [

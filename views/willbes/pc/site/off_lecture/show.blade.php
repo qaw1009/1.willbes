@@ -11,14 +11,14 @@
             <div class="willbes-Prof-Detail NG tx-black">
                 <div class="prof-profile p_re">
                     <div class="Name">
-                        <strong>{{ $data['ProfNickName'] }}</strong><br/>교수님
+                        <strong>{{ $data['ProfNickName'] }}</strong><br/>{{$data['AppellationCcdName']}}
                     </div>
                     <div class="ProfImg">
                         <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">
                     </div>
                     <div class="prof-home subBtn NSK">
                         <a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">
-                            <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈
+                            <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">{{$data['AppellationCcdName']}}홈
                         </a>
                     </div>
                 </div>

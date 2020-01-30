@@ -58,7 +58,19 @@
             box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
         }
         .headTit {font-size:40px; margin-bottom:50px; line-height:1.2}
-        .headTit span {color:#8799e5; text-decoration:underline}
+        .headTit p {font-size:46px;}
+        .headTit span {color:#b98a41; text-decoration:underline}
+        .headTit p span {animation:txtcolor 1s infinite;-webkit-animation:txtcolor 1s infinite;}
+        @@keyframes txtcolor{
+        from{color:#5bb28f}
+        50%{color:#8cd0d9}
+        to{color:#5bb28f}
+        }
+        @@-webkit-keyframes txtcolor{
+        from{color:#5bb28f}
+        50%{color:#8cd0d9}
+        to{color:#5bb28f}
+        }
         .bottomTxt {font-size:14px; margin-top:50px}
 
         .wb_01 {background:#ededed}
@@ -72,8 +84,8 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
-            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1406_sky01.jpg" alt="12월 기본이론 종합반" ></a>
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1406_sky02.jpg" alt="튜터링관리반" ></a>
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1406_sky01.jpg" alt="12월 기본이론 종합반" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1406_sky02.jpg" alt="튜터링관리반" ></a>
         </div>           
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -106,13 +118,13 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1406_top.jpg" alt="기본이론 집중완성" usemap="#Map1406A" border="0" />
             <map name="Map1406A" id="Map1406A">
-                <area shape="rect" coords="367,1307,755,1402" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
+                <area shape="rect" coords="330,1238,791,1344" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>        
         </div>
 
         <div class="evtCtnsBox wb_top_01">
             <div class="headTit NSK-Black">
-                <span>기본서 선착순 등록 무료 증정</span> [조기 마감 주의!]<br>
+                <p><span>기본서 선착순 등록 무료 증정</span> [조기 마감 주의!]</p>
                 기본이 잡혀야 합격을 잡을 수 있습니다!<br>
                 <span>총 210,000원 상당</span>
             </div>

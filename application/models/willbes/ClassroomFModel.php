@@ -265,6 +265,11 @@ class ClassroomFModel extends WB_Model
 
         $this->_conn->trans_begin();
         try {
+            
+            if(empty($ProdCode) == true || empty($OrderIdx) == true || empty($OrderProdIdx) == true || empty($ProdCodeSub) == true ){
+                throw new \Exception('정보가 올바르지 않습니다.');
+            }
+
             // 강의 신청정보 읽어오기
             $pkginfo = $this->getPackage([
                 'EQ' => [

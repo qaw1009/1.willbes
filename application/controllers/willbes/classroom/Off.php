@@ -314,7 +314,8 @@ class Off extends \app\controllers\FrontController
 
 
     /**
-     *
+     * 선택한 강좌 적용
+     * @return CI_Output
      */
     public function AssignProfStore()
     {

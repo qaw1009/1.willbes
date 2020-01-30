@@ -8,7 +8,7 @@
     <div class="Depth">
         @include('willbes.pc.layouts.partial.site_route_path')
         <span class="depth"><span class="depth-Arrow">></span><strong>{{ rawurldecode($arr_input['subject_name']) }}</strong></span>
-        <span class="depth"><span class="depth-Arrow">></span><strong>{{ $data['ProfNickName'] }} {{$data['AppellationCcdName']}}님</strong></span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>{{ $data['ProfNickName'] }} {{$data['AppellationCcdName']}}</strong></span>
     </div>
     <!-- left nav -->
     <div class="Lnb NG">
@@ -27,7 +27,7 @@
                 <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['ProfNickName'] }}">
             </div>
             <div class="prof-profile p_re">
-                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['ProfNickName'] }}</strong><span class="NGR">{{$data['AppellationCcdName']}}님</span></div>
+                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['ProfNickName'] }}</strong><span class="NGR">{{$data['AppellationCcdName']}}</span></div>
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'); openWin('Profile');">
@@ -139,7 +139,7 @@
                 <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'); closeWin('Profile')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}}님 프로필</div>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}} 프로필</div>
                 <div class="Layer-Cont">
                     <div class="Layer-SubTit NG">· 약력</div>
                     <div class="Layer-Txt tx-gray">
@@ -158,7 +158,7 @@
                 <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'); closeWin('Curriculum')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}}님 커리큘럼</div>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}} 커리큘럼</div>
                 <div class="Layer-Cont">
                     {!! $data['ProfCurriculum'] !!}
                 </div>
@@ -173,14 +173,14 @@
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
-                    <li><a href="#none" id="hover_home" onclick="goUrl('tab', 'home');">{{$data['AppellationCcdName']}}님 홈</a></li>
+                    <li><a href="#none" id="hover_home" onclick="goUrl('tab', 'home');">{{$data['AppellationCcdName']}} 홈</a></li>
                     <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
                     <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>
                     @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>@endif
                     @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif
                     @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goUrl('tab', 'material');">학습자료실</a></li>@endif
                     @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
-                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goUrl('tab', 'tcc');">{{$data['AppellationCcdName']}}님 TCC</a></li>@endif
+                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goUrl('tab', 'tcc');">{{$data['AppellationCcdName']}} TCC</a></li>@endif
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">

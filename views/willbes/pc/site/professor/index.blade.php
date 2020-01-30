@@ -144,7 +144,7 @@
                         <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                         <div class="Name">
                             <strong>{{ $row['ProfNickName'] }}</strong><br/>
-                            {{ $row['AppellationCcdName'] }}님
+                            {{ $row['AppellationCcdName'] }}
                             @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
                         </div>
                         <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">

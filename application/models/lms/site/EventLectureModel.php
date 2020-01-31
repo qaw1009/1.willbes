@@ -558,7 +558,8 @@ class EventLectureModel extends WB_Model
             // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
             if ($this->getMemberForRegisterCount($el_idx) <= 0) {
                 if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
-                    if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
+                    //if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
+                    if ($this->_modifyEventRegister($el_idx, $input) === false) {
                         throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
                     }
                 }
@@ -686,9 +687,10 @@ class EventLectureModel extends WB_Model
      * 이벤트 접수관리(정원제한) 데이터 조회
      * @param $el_idx
      * @param $prod_list
+     * @param $rtn_col
      * @return bool
      */
-    public function listEventForRegister($el_idx, $prod_list = false)
+    public function listEventForRegister($el_idx, $prod_list = false, $rtn_col = '')
     {
         $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus, IsUse';
         $from = "
@@ -712,6 +714,16 @@ class EventLectureModel extends WB_Model
                 }
                 $result[$key]['arr_event_product'] = $arr_event_product;
             }
+        }
+
+        //특정 컬럼만 리턴
+        if(empty($rtn_col) === false) {
+            //데이터 배열 가공
+            $arr_rtn_col = [];
+            foreach($result as $row){
+                $arr_rtn_col = array_merge($arr_rtn_col, [$row[$rtn_col]]);
+            }
+            $result = $arr_rtn_col;
         }
 
         return $result;
@@ -1573,6 +1585,7 @@ class EventLectureModel extends WB_Model
      * 카테고리 수정
      * @param $el_idx
      * @param $event_category_data
+     * @param $post_site_code
      * @return bool|string
      */
     private function _modifyEventCategory($el_idx, $event_category_data, $post_site_code)
@@ -2069,4 +2082,178 @@ class EventLectureModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 이벤트 접수 관리 수정
+     * @param $el_idx
+     * @param $input
+     * @return bool
+     */
+    private function _modifyEventRegister($el_idx, $input)
+    {
+        $limit_type = element('limit_type', $input);
+
+        try {
+            if ($limit_type == 'S') {
+                // 단일 리스트: 기존로직
+                $up_register_input['IsStatus'] = 'N';
+                $up_register_input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                $up_register_input['UpdDatm'] = date('Y-m-d H:i:s');
+
+                $this->_conn->set($up_register_input)->where(['ElIdx' => $el_idx, 'IsStatus' => 'Y']);
+
+                if ($this->_conn->update($this->_table['event_register']) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+
+                $reg_set_data = [
+                    'ElIdx' => $el_idx,
+                    'PersonLimitType' => element('person_limit_type', $input),
+                    'PersonLimit' => element('person_limit', $input),
+                    'Name' => element('register_name', $input),
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
+                ];
+
+                if ($this->_conn->set($reg_set_data)->insert($this->_table['event_register']) === false) {
+                    throw new \Exception('fail');
+                }
+            } else if ($limit_type == 'M') {
+                // 다중 리스트: 비교 수정
+                $arr_event_register_er_idx = element('event_register_er_idx', $input);
+                $arr_event_register_name = element('event_register_name', $input);
+                $arr_event_register_parson_limit_type = element('event_register_parson_limit_type', $input);
+                $arr_event_register_parson_limit = element('event_register_parson_limit', $input);
+                $arr_expire_status = element('expire_status', $input);
+                $arr_register_is_use = element('register_is_use', $input);
+
+                if (empty(element('el_idx', $input)) === false && empty($arr_event_register_er_idx) === false) {
+
+                    $before_data = $this->listEventForRegister(element('el_idx', $input), null, 'ErIdx');
+
+                    // 비교 삭제
+                    $del_data = array_values(array_diff($before_data, $arr_event_register_er_idx));
+                    if(empty($del_data) === false && count($del_data) > 0) {
+                        if($this->removeEventForRegister($del_data) !== true) {
+                            throw new \Exception('프로모션 신청리스트 삭제 업데이트를 실패하였습니다.');
+                        }
+                    }
+                    // 비교 등록
+                    $insert_data = array_values(array_diff($arr_event_register_er_idx, $before_data));
+                    if(empty($insert_data) === false) {
+                        foreach ($insert_data as $i_key => $i_val) {
+                            $arr_key = array_search($i_val, $arr_event_register_er_idx) ;
+                            $add_param = [
+                                'ElIdx' => $input['el_idx'],
+                                'PersonLimitType' => $arr_event_register_parson_limit_type[$arr_key],
+                                'PersonLimit' => $arr_event_register_parson_limit[$arr_key],
+                                'Name' => $arr_event_register_name[$arr_key],
+                                'RegisterExpireStatus' => $arr_expire_status[$arr_key],
+                                'IsUse' => $arr_register_is_use[$arr_key],
+                                'IsStatus' => 'Y',
+                                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                                'RegIp' => $this->input->ip_address()
+                            ];
+                            if($this->addEventForRegister($add_param) !== true) {
+                                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                            }
+                        }
+                    }
+
+                    // 비교 수정
+                    $update_data = array_values(array_intersect($before_data, $arr_event_register_er_idx));
+                    if(empty($update_data) === false) {
+                        foreach ($update_data as $i_key => $i_val) {
+                            $arr_key = array_search($i_val, $arr_event_register_er_idx) ;
+                            $modify_param = [
+                                'PersonLimitType' => $arr_event_register_parson_limit_type[$arr_key],
+                                'PersonLimit' => $arr_event_register_parson_limit[$arr_key],
+                                'Name' => $arr_event_register_name[$arr_key],
+                                'RegisterExpireStatus' => $arr_expire_status[$arr_key],
+                                'IsUse' => $arr_register_is_use[$arr_key]
+                            ];
+                            if($this->modifyEventForRegister($i_val, $modify_param) !== true) {
+                                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                            }
+                        }
+                    }
+
+                }
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 신청리스트 삭제 업데이트
+     * @param array $arr_er_idx
+     * @return mixed
+     */
+
+    public function removeEventForRegister($arr_er_idx)
+    {
+        try {
+            if (empty($arr_er_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if(is_array($arr_er_idx) === false) {
+                $arr_er_idx[0] = $arr_er_idx;   //단건 처리
+            }
+
+            $is_update = $this->_conn->set(['IsStatus' => 'N'])
+                ->where_in('ErIdx', $arr_er_idx)
+                ->update($this->_table['event_register']);
+
+            if ($is_update !== true) {
+                throw new \Exception('프로모션 신청리스트 삭제 업데이트를 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 신청 리스트 등록
+     * @param array $input
+     * @return mixed
+     */
+    public function addEventForRegister($input)
+    {
+        try {
+            if (empty($input) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if ($this->_conn->set($input)->insert($this->_table['event_register']) === false) {
+                throw new \Exception('프로모션 신청리스트 등록을 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 신청 리스트 수정
+     * @param string $er_idx
+     * @param array $input
+     * @return mixed
+     */
+    public function modifyEventForRegister($er_idx, $input)
+    {
+        try {
+            if (empty($er_idx) === true || empty($input) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if ($this->_conn->set($input)->where('ErIdx', $er_idx)->update($this->_table['event_register']) === false) {
+                throw new \Exception('프로모션 신청리스트 수정을 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
 }

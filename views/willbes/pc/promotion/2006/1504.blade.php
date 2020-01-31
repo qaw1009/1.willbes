@@ -112,10 +112,10 @@
 		<div class="evtCtnsBox evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/190802_value05.png" alt="수강신청" usemap="#Map190802" border="0" />
 			<map name="Map190802" id="Map190802">
-				<area shape="rect" coords="5,1176,223,1228" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160343" alt="1차감평패스" />
-				<area shape="rect" coords="253,1176,476,1228" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160345" alt="2차감평패스" />
-				<area shape="rect" coords="504,1177,724,1227" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160348" alt="동차감평패스" />
-				<area shape="rect" coords="755,1178,972,1227" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160352" alt="동차감평패스 프리미엄" />
+				<area shape="rect" coords="5,1176,223,1228" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/161383" target="_blank" alt="1차감평패스" />
+				<area shape="rect" coords="253,1176,476,1228" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/161386" target="_blank" alt="2차감평패스" />
+				<area shape="rect" coords="504,1177,724,1227" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/161388" target="_blank" alt="동차감평패스" />
+				<area shape="rect" coords="755,1178,972,1227" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/161389" target="_blank" alt="동차감평패스 프리미엄" />
 			</map>
 		</div>
         {{--

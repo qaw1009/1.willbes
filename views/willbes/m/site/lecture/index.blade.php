@@ -154,16 +154,15 @@
                                                     </dl>
                                                     @if($pattern == 'free' && $row['FreeLecTypeCcd'] == '652002')
                                                         <div class="freeLecPass">
-                                                            <p>보강동영상 비밀번호 입력</p>
-                                                            <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                            <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">확인</a>
+                                                            @if(empty($row['FreeLecPasswd']))
+                                                                <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
+                                                                <a href="javascript:;" class="view" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">보강동영상 보기</a>
+                                                            @else
+                                                                <p>보강동영상 비밀번호 입력</p>
+                                                                <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
+                                                                <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">확인</a>
+                                                            @endif
                                                         </div>
-                                                        {{--
-                                                        <div class="w-buy mt15">
-                                                            <ul class="two">
-                                                            </ul>
-                                                        </div>
-                                                        --}}
                                                     @else
                                                         <ul>
                                                             @if(empty($row['ProdPriceData']) === false)
@@ -270,15 +269,15 @@
             if ($free_lec_passwd.length > 0) {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-                if ($free_lec_passwd.val() === '') {
+                if ($free_lec_passwd.data('chk') !== "p" && $free_lec_passwd.val() === '') {
                     alert('보강동영상 비밀번호를 입력해 주세요.');
                     $free_lec_passwd.focus();
                     return;
                 }
-
                 var url = frontUrl('/lecture/checkFreeLecPasswd/prod-code/' + prod_code);
                 var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
-                    'free_lec_passwd': $free_lec_passwd.val()
+                    'free_lec_passwd': $free_lec_passwd.val(),
+                    'free_lec_check' : $free_lec_passwd.data('chk')
                 });
                 sendAjax(url, data, function (ret) {
                     if (ret.ret_cd) {

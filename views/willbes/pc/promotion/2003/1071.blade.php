@@ -48,7 +48,7 @@
         .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
-        .wb_cts01s {background:#e4e4e4;}
+        .wb_cts01s {background:#8000FF;}
         .wb_cts02 {background:#ffd84f;}
       
 

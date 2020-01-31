@@ -29,7 +29,7 @@
                     <li><a href="#tab02">기초부터 차근차근, 체계적인 이론학습</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/main/visual_tit01_01.jpg" alt="점수의 기반을 형성하는 이론정립">                   
+                    <img src="https://static.willbes.net/public/images/promotion/main/3028_visual_tit01_01.jpg" alt="점수의 기반을 형성하는 이론정립">                   
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
@@ -43,7 +43,7 @@
                     </ul>
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/main/visual_tit01_02.jpg" alt="고득점 문제풀이 스킬 확립">                  
+                    <img src="https://static.willbes.net/public/images/promotion/main/3028_visual_tit01_02.jpg" alt="고득점 문제풀이 스킬 확립">                  
                     <ul class="PBcts">
                         @for($i=5; $i<=8; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)

@@ -172,10 +172,10 @@ class OffProfAssign extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '대분류', '중분류', '캠퍼스', '종합반명'
+        $headers = ['주문번호', '수강증번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '대분류', '중분류', '캠퍼스', '종합반명'
             , '결제루트', '결제수단', '결제금액', '환불금액', '결제완료일', '환불완료일', '결제상태', '미수금여부', '강사배정여부'];
 
-        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, LgCateName, MdCateName, CampusCcdName, OnlyProdName
+        $column = 'OrderNo, CertNo, SiteName, MemName, MemId, MemPhone, LgCateName, MdCateName, CampusCcdName, OnlyProdName
             , PayRouteCcdName, PayMethodCcdName, RealPayPrice, RefundPrice, CompleteDatm, RefundDatm, PayStatusCcdName, IsUnPaid, IsProfAssign';
 
         $list = [];

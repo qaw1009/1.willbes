@@ -138,7 +138,7 @@ class StudentModel extends WB_Model
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName
                 ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
                 ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData
-                ,P.ProdName, P.ProdCode
+                ,P.ProdName, P.ProdCode, IFNULL(OI.CertNo, '') AS CertNo
                 
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -155,8 +155,11 @@ class StudentModel extends WB_Model
                             left outer join lms_sys_code Ob on O.PayMethodCcd = Ob.Ccd and Ob.IsStatus='Y'
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
-                        join lms_member_otherinfo as MI ON MI.MemIdx = M.MemIdx
-                    WHERE OP.PayStatusCcd in ('676001', '676007')                    
+                        join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx       
+                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
+                        left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx                 
+                    WHERE OP.PayStatusCcd in ('676001', '676007')             
+                    AND (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)       
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -186,7 +189,8 @@ class StudentModel extends WB_Model
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode
             ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
             ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData, OP.DiscReason
-            ,(SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
+            ,(SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo    
+            ,IFNULL(OI.CertNo, '') AS CertNo
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -202,7 +206,10 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo as MI ON MI.MemIdx = M.MemIdx
-                    WHERE OP.PayStatusCcd in ('676001', '676007')                    
+                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
+                        left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
+                    WHERE OP.PayStatusCcd in ('676001', '676007')             
+                    AND (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)       
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -236,6 +243,7 @@ class StudentModel extends WB_Model
                 (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
                 IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
                 P1.ProdName, P1.ProdCode, P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub
+                ,IFNULL(OI.CertNo, '') AS CertNo
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -257,7 +265,10 @@ class StudentModel extends WB_Model
                             AND ML.OrderProdIdx = OP.OrderProdIdx 
                             AND ML.ProdCode = OP.ProdCode
                         join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode
-                    WHERE OP.PayStatusCcd in ('676001', '676007')    
+                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
+                        left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
+                    WHERE OP.PayStatusCcd in ('676001', '676007') 
+                    AND (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -289,6 +300,7 @@ class StudentModel extends WB_Model
             IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
             CONCAT(P1.ProdName, ' [',P1.ProdCode,']') AS ProdName , P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub,
             OP.DiscReason, (SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
+            ,IFNULL(OI.CertNo, '') AS CertNo
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -306,8 +318,11 @@ class StudentModel extends WB_Model
                         join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
                         join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
                         join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx AND ML.ProdCode = OP.ProdCode
-                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode                        
+                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode     
+                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx     
+                        left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx              
                     WHERE OP.PayStatusCcd in ('676001', '676007')
+                    AND (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

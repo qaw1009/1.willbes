@@ -28,6 +28,7 @@
                     <th>강좌명(번호)</th>
                     <th>선택강좌</th>
                     <th>주문번호</th>
+                    <th>수강증번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
                     <th>결제금액</th>
@@ -79,6 +80,7 @@
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호
+                    {'data' : 'CertNo'},
                     {'data' : 'PayRouteCcd_Name'},// 결제루트
                     {'data' : 'PayMethodCcd_Name'}, // 결제수단
                     {'data' : 'Price', 'render' : function(data, type, row, meta) {

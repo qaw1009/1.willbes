@@ -34,9 +34,18 @@ class BaseStats extends \app\controllers\BaseController
         $arr_code['arr_site_code'] = [];
         $def_site_code = element('0', get_auth_site_codes());
 
-        // 1차 카테고리 조회
+        // 카테고리 조회
         if (in_array('cate_code', $this->_search_column) === true) {
-            $arr_code['arr_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);
+            if ($this->_prod_type == 'on_lecture') {
+                // 온라인강좌일 경우 중분류까지 조회
+                $category_data = $this->categoryModel->getCategoryArray();
+                foreach ($category_data as $row) {
+                    $arr_key = ($row['CateDepth'] == 1) ? 'lg' : 'md';
+                    $arr_code['arr_' . $arr_key . '_category'][] = $row;
+                }
+            } else {
+                $arr_code['arr_lg_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);
+            }
         }
         // 캠퍼스
         if (in_array('campus_ccd', $this->_search_column) === true) {
@@ -124,7 +133,8 @@ class BaseStats extends \app\controllers\BaseController
             'EQ' => [
                 'SU.SiteCode' => $this->_reqP('search_site_code'),
                 'SU.ProdCode' => $this->_reqP('prod_code'),
-                'SC.GroupCateCode' => $this->_reqP('search_cate_code'),
+                'SC.GroupCateCode' => $this->_reqP('search_lg_cate_code'),
+                'SC.CateCode' => $this->_reqP('search_md_cate_code'),
                 'PL.SchoolYear' => $this->_reqP('search_school_year'),
                 'PL.LecTypeCcd' => $this->_reqP('search_lec_type_ccd'),
                 'PL.CourseIdx' => $this->_reqP('search_course_idx'),

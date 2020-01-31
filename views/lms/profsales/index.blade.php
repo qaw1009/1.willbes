@@ -28,12 +28,20 @@
                             </select>
                         @endif
                         @if(in_array('cate_code', $search_column) === true)
-                            <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                            <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
                                 <option value="">대분류</option>
-                                @foreach($arr_category as $row)
+                                @foreach($arr_lg_category as $row)
                                     <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
+                            @if(empty($arr_md_category) === false)
+                                <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                                    <option value="">중분류</option>
+                                    @foreach($arr_md_category as $row)
+                                        <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                         @endif
                         @if(in_array('pack_type_ccd', $search_column) === true)
                             <select class="form-control mr-10" id="search_pack_type_ccd" name="search_pack_type_ccd">
@@ -191,7 +199,8 @@
             }
 
             // 카테고리, 캠퍼스, 과정, 과목, 교수 자동 변경
-            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");

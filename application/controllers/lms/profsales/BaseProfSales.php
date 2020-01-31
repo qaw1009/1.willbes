@@ -42,9 +42,18 @@ class BaseProfSales extends \app\controllers\BaseController
         $arr_code['arr_site_code'] = get_auth_on_off_site_codes($this->_is_off_site, true);
         $def_site_code = key($arr_code['arr_site_code']);
 
-        // 1차 카테고리 조회
+        // 카테고리 조회
         if (in_array('cate_code', $this->_search_column) === true) {
-            $arr_code['arr_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);
+            if ($this->_is_off_site == 'N') {
+                // 온라인강좌일 경우 중분류까지 조회
+                $category_data = $this->categoryModel->getCategoryArray();
+                foreach ($category_data as $row) {
+                    $arr_key = ($row['CateDepth'] == 1) ? 'lg' : 'md';
+                    $arr_code['arr_' . $arr_key . '_category'][] = $row;
+                }
+            } else {
+                $arr_code['arr_lg_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);
+            }
         }
         // 캠퍼스
         if (in_array('campus_ccd', $this->_search_column) === true) {
@@ -201,10 +210,11 @@ class BaseProfSales extends \app\controllers\BaseController
                     'TA.CampusCcd' => $this->_reqP('search_campus_ccd'),
                     'TA.CourseIdx' => $this->_reqP('search_course_idx'),
                     'TA.SubjectIdx' => $this->_reqP('search_subject_idx'),
-                    'TA.PackTypeCcd' => $this->_reqP('search_pack_type_ccd')
+                    'TA.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
+                    'PC.CateCode' => $this->_reqP('search_md_cate_code')
                 ],
                 'LKR' => [
-                    'PC.CateCode' => $this->_reqP('search_cate_code')
+                    'PC.CateCode' => $this->_reqP('search_lg_cate_code')
                 ],
                 'IN' => [
                     'TA.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
@@ -226,10 +236,11 @@ class BaseProfSales extends \app\controllers\BaseController
                     'OP.ProdCode' => $this->_reqP('prod_code'),
                     'PL.CourseIdx' => $this->_reqP('search_course_idx'),
                     'PL.SubjectIdx' => $this->_reqP('search_subject_idx'),
-                    'PL.PackTypeCcd' => $this->_reqP('search_pack_type_ccd')
+                    'PL.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
+                    'PC.CateCode' => $this->_reqP('search_md_cate_code')
                 ],
                 'LKR' => [
-                    'PC.CateCode' => $this->_reqP('search_cate_code')
+                    'PC.CateCode' => $this->_reqP('search_lg_cate_code')
                 ],
                 'IN' => [
                     'O.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가

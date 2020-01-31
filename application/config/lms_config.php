@@ -7,14 +7,14 @@ $config['upload_prefix_dir'] = 'willbes';
 $config['lms'] = array(
     'site_name' => 'LMS',
     'site_title' => '학습 콘텐츠 통합관리 시스템 (LMS)',
-    'head_title' => '미래를 준비는 사람들! : willbes.net',
+    'head_title' => '미래를 준비하는 사람들! : willbes.net',
     'home_url' => '/home/main',
 );
 
 $config['tzone'] = array(
     'site_name' => 'T-zone',
     'site_title' => 'T-zone',
-    'head_title' => '미래를 준비는 사람들! : willbes.net',
+    'head_title' => '미래를 준비하는 사람들! : willbes.net',
     'home_url' => '/home/main',
 );
 

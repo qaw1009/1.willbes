@@ -35,7 +35,15 @@
                     흉내 낼 수는 있지만 <strong class="NSK-Black"><span class="tx-color">같을 수 없습니다.</span></strong><br />
                     <strong class="NSK-Black">합격을 위한 이유있는 선택!</strong> 시험을 가장 잘 아는 <strong class="NSK-Black"><span class="tx-color">한림법학원</span></strong>의 합격 최적화 강의!
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/main/3096_visual01.gif" alt="로드맵">
+                <img src="https://static.willbes.net/public/images/promotion/main/3096_visual01.gif" alt="로드맵" usemap="#Map3096" border="0">
+                <map name="Map3096" id="Map3096">
+                    <area shape="rect" coords="77,384,233,476" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1128" alt="기초입문" />
+                    <area shape="rect" coords="138,242,296,334" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1129" alt="기본강의" />
+                    <area shape="rect" coords="347,114,502,206" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1130" alt="집중심화" />
+                    <area shape="rect" coords="596,112,754,206" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1131" alt="핵심심화" />
+                    <area shape="rect" coords="816,244,973,338" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1132" alt="실전모강" />
+                    <area shape="rect" coords="877,384,1033,475" href="https://gosi.willbes.net/lecture/index/cate/3096/pattern/only?search_order=course&amp;course_idx=1113" alt="테마특강" />
+                </map>
             </div>
         </div>
 

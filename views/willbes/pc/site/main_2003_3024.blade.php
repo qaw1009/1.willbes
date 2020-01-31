@@ -32,7 +32,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <img src="{{ img_url('gpgosi/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">
+                <img src="https://static.willbes.net/public/images/promotion/main/3024_visual_tit01.jpg" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">
                 <ul class="PBcts">
                     @for($i=1; $i<=4; $i++)
                         @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
@@ -49,7 +49,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <img src="{{ img_url('gpgosi/visual/visual_tit02.jpg') }}" alt="독보적인 강의력! 군무원 강의에 최적화된 윌비스 군무원 명품 교수진">
+                <img src="https://static.willbes.net/public/images/promotion/main/3024_visual_tit02.jpg" alt="독보적인 강의력! 군무원 강의에 최적화된 윌비스 군무원 명품 교수진">
                 <ul class="PBctsB">
                     @for($i=1; $i<=8; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)

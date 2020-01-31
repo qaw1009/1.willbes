@@ -36,8 +36,8 @@ class BaseStats extends \app\controllers\BaseController
 
         // 카테고리 조회
         if (in_array('cate_code', $this->_search_column) === true) {
-            if ($this->_prod_type == 'on_lecture') {
-                // 온라인강좌일 경우 중분류까지 조회
+            if ($this->_prod_type == 'on_lecture' || $this->_prod_type == 'book') {
+                // 온라인강좌, 교재일 경우 중분류까지 조회
                 $category_data = $this->categoryModel->getCategoryArray();
                 foreach ($category_data as $row) {
                     $arr_key = ($row['CateDepth'] == 1) ? 'lg' : 'md';

@@ -322,9 +322,9 @@ class BaseStudent extends \app\controllers\BaseController
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
         } else if($this->LearnPattern == 'offpkg'){
-            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '결제루트', '결제수단', '결제금액',
+            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '수강증번호', '결제루트', '결제수단', '결제금액',
                 '결제자', '결제일', '휴대폰', '이메일', '할인사유', '주문메모'];
-            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail, DiscReason, OrderMemo';
 
         } else {

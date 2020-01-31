@@ -193,7 +193,8 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a class="blue cs-pointer btn-view" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a><br/>' + row.SiteName + (row.IsEscrow === 'Y' ? '(e)' : '');
+                        return '<a class="blue cs-pointer btn-view" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a><br/>' + row.SiteName + (row.IsEscrow === 'Y' ? '(e)' : '') +
+                            (row.CertNo !== null ? '<br/>(수강증 : ' + row.CertNo + ')' : '');
                     }},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;

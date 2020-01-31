@@ -128,12 +128,13 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>선택</th>
+                    <th><input type="checkbox" id="all_check" /> 선택</th>
                     <th>No.</th>
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
                     <th>선택강좌</th>
                     <th>주문번호</th>
+                    <th>수강증번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
                     <th>결제금액</th>
@@ -172,7 +173,7 @@
                 },
                 columns: [
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
+                            return '<input type="checkbox" name="selectMember" class="selectMember" value="' + data + '" data-mem-idx="' + data + '">';
                         }}, // 체크박스
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -185,6 +186,7 @@
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호
+                    {'data' : 'CertNo'},// 결제루트
                     {'data' : 'PayRouteCcd_Name'},// 결제루트
                     {'data' : 'PayMethodCcd_Name'}, // 결제수단
                     {'data' : 'Price', 'render' : function(data, type, row, meta) {
@@ -214,6 +216,10 @@
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/student/offpkg/') }}' + getQueryString());
+            });
+
+            $("#all_check").on('change', function(event) {
+                $(".selectMember").prop('checked', $("#all_check").prop("checked"));
             });
         });
     </script>

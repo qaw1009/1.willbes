@@ -171,10 +171,10 @@ class OffVisitPackage extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제수단', '결제완료일', '접수신청일', '총 실결제금액', '총 환불금액', '총 남은금액'
+        $headers = ['주문번호', '수강증번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제수단', '결제완료일', '접수신청일', '총 실결제금액', '총 환불금액', '총 남은금액'
             , '상품구분', '캠퍼스', '종합반유형', '상품명', '결제금액', '환불금액', '결제상태', '환불완료일', '환불완료자', '환불사유', '미수금여부'];
 
-        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayMethodCcdName, CompleteDatm, OrderDatm, tRealPayPrice, tRefundPrice
+        $column = 'OrderNo, CertNo, SiteName, MemName, MemId, MemPhone, PayMethodCcdName, CompleteDatm, OrderDatm, tRealPayPrice, tRefundPrice
             , (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice, ProdTypeCcdName, CampusCcdName, PackTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName
             , RefundDatm, RefundAdminName, RefundReason, IsUnPaid';
 

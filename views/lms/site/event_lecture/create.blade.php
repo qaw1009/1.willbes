@@ -190,6 +190,7 @@
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
                                     <div class="form-group form-inline">
                                         <div class="col-md-11">
+                                            <input type="hidden" name="er_idx" value="{{$list_event_register['S'][0]['er_idx']}}">
                                             <select class="form-control" id="person_limit_type" name="person_limit_type">
                                                 <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
                                                 <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
@@ -246,6 +247,7 @@
                                                 @foreach($list_event_register['M'] as $row)
                                                     <tr>
                                                         <td>
+                                                            <input type="hidden" name="event_register_er_idx[]" value="{{$row['ErIdx']}}">
                                                             {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
                                                             <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
                                                             <select class="form-control" name="event_register_parson_limit_type[]" id="event_register_parson_limit_type_{{$i}}" style="min-width: 70px;">
@@ -648,14 +650,18 @@
                 if (temp_person_limit_type == 'N') { temp_person_limit = ''; }
                 var add_lists;
                 add_lists = '<tr id="temp-lecture-'+temp_idx+'">';
-                add_lists += '<td><input type="hidden" name="event_register_parson_limit_type[]" value="'+temp_person_limit_type+'">'+temp_person_limit_type_text+'</td>';
+                add_lists += '<td>';
+                add_lists += '  <input type="hidden" name="event_register_er_idx[]" value="0">';
+                add_lists += '  <input type="hidden" name="event_register_parson_limit_type[]" value="'+temp_person_limit_type+'">'+temp_person_limit_type_text;
+                add_lists += '</td>';
                 add_lists += '<td><input type="text" name="event_register_parson_limit[]" class="form-control" readonly="readonly" value="'+temp_person_limit+'"></td>';
-                add_lists += '<td></td>';
                 add_lists += '<td><input type="text" name="event_register_name[]" class="form-control no-border" readonly="readonly" value="'+temp_lecture_name+'"></td>';
+                add_lists += '<td><input type="hidden" name="expire_status[]" value="Y"></td>';
+                add_lists += '<td><input type="hidden" name="register_is_use[]" value="Y"></td>';
                 add_lists += '<td></td>';
                 add_lists += '<td></td>';
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
-                add_lists += '<tr>';
+                add_lists += '</tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
                 temp_idx = temp_idx + 1;
 

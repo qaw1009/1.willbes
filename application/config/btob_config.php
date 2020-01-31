@@ -7,6 +7,6 @@ $config['upload_prefix_dir'] = APP_NAME;
 $config['btob'] = array(
     'site_name' => 'BtoB',
     'site_title' => '윌비스 제휴사 통합관리 시스템',
-    'head_title' => '미래를 준비는 사람들! : willbes.net',
+    'head_title' => '미래를 준비하는 사람들! : willbes.net',
     'home_url' => '/home/main',
 );

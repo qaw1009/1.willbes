@@ -163,7 +163,6 @@ Class LectureFree extends CommonLecture
         $data_book = [];
         $data_sublecture = [];
 
-
         if(empty($params[0]) === false) {
             $method='PUT';
             $prodcode = $params[0];
@@ -174,9 +173,7 @@ Class LectureFree extends CommonLecture
             $data_memo = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_sms');
-
             $data_book = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
-
             $data_sublecture = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
@@ -207,18 +204,7 @@ Class LectureFree extends CommonLecture
         ]);
     }
 
-    /**
-     * 마스터강의 첨부파일 다운로드
-     * @param array $fileinfo
-     */
-    /*
-    public function download($fileinfo=[])
-    {
-        public_download($fileinfo[0],$fileinfo[1]);
-    }
-    */
-
-    /**
+     /**
      * 처리 프로세스
      */
     public function store()
@@ -226,7 +212,6 @@ Class LectureFree extends CommonLecture
         $method = 'add';
 
         $rules = [
-
             ['field'=>'ProdName', 'label' => '무료단강좌명', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'CourseIdx', 'label' => '과정', 'rules' => 'trim|required'],
@@ -237,9 +222,7 @@ Class LectureFree extends CommonLecture
             ['field'=>'StudyPeriod','label'=>'수강기간', 'rules'=>'trim|required'],
         ];
 
-
         if(empty($this->_reqP('ProdCode',false))===true) {
-
             $rules = array_merge($rules,[
                 ['field'=>'cate_code','label'=>'카테고리', 'rules'=>'trim|required'],
                 ['field'=>'ProdTypeCcd','label'=>'상품타입', 'rules'=>'trim|required'],
@@ -247,7 +230,6 @@ Class LectureFree extends CommonLecture
                 ['field'=>'site_code','label'=>'운영사이트', 'rules'=>'trim|required'],
                 ['field'=>'wLecIdx','label'=>'마스터강좌', 'rules'=>'trim|required'],
             ]);
-
         } else {
             $rules = array_merge($rules,[
                 ['field'=>'ProdCode','label'=>'상품코드', 'rules'=>'trim|required'],

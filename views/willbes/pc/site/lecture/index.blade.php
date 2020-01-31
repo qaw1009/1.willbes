@@ -288,13 +288,20 @@
                                     </td>
                                     <td class="w-notice p_re">
                                         @if($pattern == 'free' && $row['FreeLecTypeCcd'] == '652002')
-                                            <div class="w-sp100">
-                                                보강동영상 비밀번호 입력
-                                                <div>
-                                                    <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');"><span>확인</span></button>
+                                            @if(empty($row['FreeLecPasswd']))
+                                                <div class="w-sp">
+                                                    <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
+                                                    <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">보강동영상 보기</a>
                                                 </div>
-                                            </div>
+                                            @else
+                                                <div class="w-sp100">
+                                                    보강동영상 비밀번호 입력
+                                                    <div>
+                                                        <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20" data-chk>
+                                                        <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');"><span>확인</span></button>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @else
                                             @if(empty($row['LectureSampleData']) === false)
                                                 <div class="w-sp"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>

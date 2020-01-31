@@ -287,10 +287,14 @@ class Lecture extends \app\controllers\FrontController
     {
         $prod_code = element('prod-code', $params);
         $free_lec_passwd = trim($this->_reqP('free_lec_passwd'));
+        $free_lec_check = trim($this->_reqP('free_lec_check'));
         
         // 필수 파라미터 체크
-        if (empty($prod_code) === true || empty($free_lec_passwd) === true) {
-            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        if (empty($prod_code) === true) {
+            return $this->json_error('필수 입력값 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+        if ($free_lec_check !=="p" && empty($free_lec_passwd) === true) {
+            return $this->json_error('비밀번호가 입력되지 않았습니다.', _HTTP_BAD_REQUEST);
         }
 
         // 상품 조회

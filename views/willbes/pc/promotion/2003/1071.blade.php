@@ -147,9 +147,11 @@
             </div><!--tabContaier//-->
         </div>
 
+        {{--               
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_01.jpg" alt="수강후기"  > 
-        </div>    
+        </div>
+        --}}    
 
         <div class="evtCtnsBox wb_cts01s">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_02.jpg" alt="커리큘럼"  > 

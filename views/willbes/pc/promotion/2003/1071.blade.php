@@ -36,7 +36,7 @@
 
         .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_bg.jpg) no-repeat center top;position:relative;}
 
-        .wb_cts01{background:#451c65;}
+        
         /* 탭 */
         .tabContaier{padding-top:20px; padding-bottom:120px; position:absolute;left:515px;top:730px; z-index:10}
         .tabContaier ul {text-align:center; margin:0 auto}
@@ -48,9 +48,11 @@
         .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
-        .wb_cts01s {background:#e4e4e4;}
-        .wb_cts02 {background:#ffd84f;}
-      
+        .wb_cts01_1 {background:#9E97FF url(https://static.willbes.net/public/images/promotion/2020/01/1071_01_bg.jpg) no-repeat center top;}
+
+        .wb_cts01_2 {background:#E4E4E4;}
+
+        .wb_cts02 {background:#ffd84f;}      
 
         .wb_cts03 {background:#ffd84f; padding-bottom:100px}
         .wb_cts03 ul {width:960px; margin:0 auto}
@@ -145,14 +147,14 @@
                 <div class="tabContentsEvt" id="ytb02">                 
                 </div>        
             </div><!--tabContaier//-->
-        </div>
+        </div>       
 
-        <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_01.jpg" alt="수강후기"  > 
+        <div class="evtCtnsBox wb_cts01_1">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_1.jpg" alt="이유있는 선택"  > 
         </div>    
 
-        <div class="evtCtnsBox wb_cts01s">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_02.jpg" alt="커리큘럼"  > 
+        <div class="evtCtnsBox wb_cts01_2">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_2.jpg" alt="커리큘럼"  > 
         </div>    
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">

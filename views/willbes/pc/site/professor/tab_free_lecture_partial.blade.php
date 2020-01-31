@@ -36,7 +36,7 @@
                     <div class="Obj">
                         {!! $data['ProfSlogan'] !!}
                     </div>
-                    <div class="Name">{{ $data['ProfNickName'] }} 교수님</div>
+                    <div class="Name">{{ $data['ProfNickName'] }} {{ $data['AppellationCcdName'] }}</div>
                 </li>
                 @if(empty($tab_data['study_comment']) === false)
                     <li class="Reply tx-blue">

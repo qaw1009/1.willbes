@@ -11864,16 +11864,16 @@ table.acadlecInfoPackageTable tr.Top td {
 .searchZero h3 { font-size: 20px; color:#000; margin:30px 0}
 .searchZero p {color:#666}
 
-.searchList {line-height: 1.5; letter-spacing: normal;}
-.searchListTap {width:200px; float:left}
-.searchListTap li {padding:0; margin:0; list-style: none;}
-.searchListTap li a {display:block; padding:15px 0 15px 20px; color:#333; background:#f6f6f6; font-size:16px; font-weight:bold; border:1px solid #e4e4e4; border-bottom:0}
+.searchList {line-height: 1.5; letter-spacing:normal;}
+.searchListTap {margin-bottom:20px; border-bottom:2px solid #000; padding-bottom:10px}
+.searchListTap li {display:inline; float:left}
+.searchListTap li a { display:block; padding:0 15px; color:#666; font-size:16px; font-weight:bold; border-right:1px solid #e4e4e4}
 .searchListTap li a.on,
-.searchListTap li a:hover {color:#000; background:#fff; border-right:1px solid #fff}
+.searchListTap li a:hover {color:#000; background:#fff; border-bottom:1px solid #fff;}
 .searchListTap li a span {color:#0d74ae}
-.searchListTap li:last-child a {border-bottom:1px solid #e4e4e4} 
+.searchListTap:after {content:""; display:block; clear:both}
 
-.searchView {float:left; width: 740px;}
+.searchView {clear: both;}
 .searchView h4 {padding:0 20px; font-size:16px; color:#000}
 .searchView ul {margin:0 20px; margin-bottom:20px; border-bottom:1px solid #ccc}
 .searchView li {border-bottom:1px solid #f6f6f6; padding:15px;}

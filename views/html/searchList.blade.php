@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div class="Content p_re">
+    <div class="widthAuto p_re">
         {{-- 검색 결과 없을 경우--}}
         <div class="searchZero">
             <span><img src="{{ img_url('common/icon_search_big.png')}}"> </span>
@@ -316,9 +316,7 @@
             </div>
         </div>   
     </div>
-    <div class="Quick-Bnr ml20">
-        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
-    </div>
+
 </div>
 <!-- End Container -->
 @stop

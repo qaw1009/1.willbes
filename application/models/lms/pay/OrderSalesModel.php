@@ -12,13 +12,14 @@ class OrderSalesModel extends BaseOrderModel
      * @param string $search_type [조회구분 (전체: all, 실매출: real_pay)]
      * @param $is_count
      * @param array $arr_condition
-     * @param null $limit
-     * @param null $offset
+     * @param null|int $limit
+     * @param null|int $offset
      * @param array $order_by
      * @param array $arr_add_join [추가조회 구분값]
+     * @param null|string $stats_type [매출현황구분]
      * @return mixed
      */
-    public function listSalesOrder($start_date, $end_date, $search_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
+    public function listSalesOrder($start_date, $end_date, $search_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [], $stats_type = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -31,6 +32,7 @@ class OrderSalesModel extends BaseOrderModel
                     , BO.PayStatusCcd, BO.SalePatternCcd
                     , BO.RealPayPrice, BO.CardPayPrice, BO.CompleteDatm, BO.RefundPrice, BO.CardRefundPrice, BO.RefundDatm
                     , if(BO.RefundPrice is null, "결제완료", "환불완료") as PayStatusName
+                    , OOI.CertNo
                     , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PC.CateCode 
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                     , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
@@ -54,7 +56,9 @@ class OrderSalesModel extends BaseOrderModel
                 left join ' . $this->_table['category'] . ' as SC
                     on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                              
                 left join ' . $this->_table['member'] . ' as M
-                    on BO.MemIdx = M.MemIdx            
+                    on BO.MemIdx = M.MemIdx
+                left join ' . $this->_table['order_other_info'] . ' as OOI
+                    on BO.OrderIdx = OOI.OrderIdx                                
         ';
         $from .= $this->_getListSalesQuery('from', $arr_add_join);
 
@@ -93,7 +97,12 @@ class OrderSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName';
+            $excel_column = 'OrderNo';
+            // 학원강좌일 경우 수강증번호 추가
+            if (starts_with($stats_type, 'off') === true) {
+                $excel_column .= ', CertNo';
+            }
+            $excel_column .= ', MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName';
             $excel_column .= $this->_getListSalesQuery('excel_column', $arr_add_join);
             $excel_column .= ', concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName
                 , CampusCcdName, LearnPatternCcdName, ProdName, RealPayPrice, PgFee

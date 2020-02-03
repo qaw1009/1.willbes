@@ -240,7 +240,7 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th>선택</th>
+                    <th width="60">선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                     <th>No</th>
                     <th>주문번호</th>
                     <th>회원정보</th>
@@ -308,7 +308,8 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/order/show') }}/' +row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                        return '<a href="{{ site_url('/pay/order/show') }}/' +row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>' +
+                            (row.CertNo !== null ? '<br/>(수강증 : ' + row.CertNo + ')' : '');
                     }},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
@@ -341,6 +342,11 @@
                     $('#sum_refund_price').html('0');
                     $('#sum_total_price').html('0');
                 }
+            });
+
+            // 전체선택/해제
+            $list_table.on('ifChanged', '#_is_all', function() {
+                iCheckAll($list_table.find('input[name="order_idx"]'), $(this));
             });
 
             // 엑셀다운로드 버튼 클릭

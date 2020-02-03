@@ -328,7 +328,8 @@ class BaseStats extends \app\controllers\BaseController
             'ORG2' => [
                 'EQ' => [
                     'BO.OrderIdx' => $this->_reqP('search_prod_value'),
-                    'BO.OrderNo' => $this->_reqP('search_prod_value')
+                    'BO.OrderNo' => $this->_reqP('search_prod_value'),
+                    'OOI.CertNo' => $this->_reqP('search_prod_value')
                 ]
             ],
         ];
@@ -378,13 +379,20 @@ class BaseStats extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '캠퍼스', '학습형태', '상품명'
-            , '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $headers[0] = '주문번호';
+        // 학원강좌일 경우 수강증번호 추가
+        if (starts_with($this->_stats_type, 'off') === true) {
+            $headers[1] = '수강증번호';
+        }
+        $headers = array_merge($headers, [
+            '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '캠퍼스', '학습형태', '상품명',
+            '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'
+        ]);
         $numerics = ['RealPayPrice', 'RefundPrice', 'PgFeePrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
         $order_by = $this->_getOrderListOrderBy(is_array($prod_code));
-        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $order_by);
+        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $order_by, [], $this->_stats_type);
         $last_query = $this->orderSalesModel->getLastQuery();
         $file_name = $this->_stats_name . '_매출상세_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 

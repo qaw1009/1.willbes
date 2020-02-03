@@ -298,6 +298,7 @@ class MockExamModel extends WB_Model
             FROM
                 {$this->_table['mockProduct']} AS PM
                 JOIN {$this->_table['mockRegister']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                JOIN {$this->_table['orderProduct']} AS OP ON MR.ProdCode = OP.ProdCode AND MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
                 JOIN {$this->_table['mockProductExam']} AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
         ";
@@ -431,6 +432,7 @@ class MockExamModel extends WB_Model
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
             JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
+            JOIN {$this->_table['orderProduct']} AS OP ON MR.ProdCode = OP.ProdCode AND MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
 

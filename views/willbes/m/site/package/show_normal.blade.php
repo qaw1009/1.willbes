@@ -120,7 +120,7 @@
                                                 </li>
                                             @endforeach
                                         @else
-                                            ※ 별도 구매 가능한 교재가 없습니다.
+                                            {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
                                         @endif
                                     </ul>
                                 </div>

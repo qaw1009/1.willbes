@@ -129,7 +129,7 @@
                                                         @endforeach
                                                     @else
                                                         <li>
-                                                            ※ 별도 구매 가능한 교재가 없습니다.
+                                                            {{ empty($row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $row['ProdBookMemo'] }}
                                                         </li>
                                                     @endif
                                                 </ul>

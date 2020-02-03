@@ -245,23 +245,23 @@
                     <li>
                         <div>
                         <strong>79</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="160366" onClick=""/> <label for="y_pkg1">8개월 패스</label>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="161557" onClick=""/> <label for="y_pkg1">8개월 패스</label>
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>105</strong>만원<br>
-                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">95만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="161569" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
+                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="161560" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="161559" onClick=""/> <label for="y_pkg4_4">95만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>119</strong>만원<br>
-                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="161169" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161170" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="161172" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="161568" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
+                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161566" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
+                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="161565" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
                         </div>
                     </li>
                 </ul>
@@ -369,12 +369,8 @@
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">2배수</span> 수강 할 수 있습니다.</li>
-                            <li>2배수 수강 후에는 수강이 불가합니다. </li>
-                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)<br>
-                                <br>
-                                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>
-                            </li>
-
+                            <li>2배수 수강 후에는 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
+                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                         </ol>
                     </dd>
 
@@ -389,6 +385,7 @@
                             <li>신광은경찰PASS 강좌 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br />
                                 <strong>PC+Mobile 신광은경찰PASS 수강 시</strong> : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP 신광은경찰PASS는 제공하지 않습니다.)</li>
                             <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.(무한PASS존 등록기기정보 확인)</li>
+                            <li>일부 강좌 자료 출력 제한 적용 됩니다.(2단계 동형모의고사 ,3단계 파이널 모의고사 강좌등)</li>
                         </ol>
                     </dd>
 
@@ -638,6 +635,7 @@
                             <li>패스 수강기간 내에 모의고사를 1회 이상 응시하여야 합니다.(온/오프 무관하며, 추후 응시내역 파일 첨부 제출해 주셔야 합니다.)</li>
                             <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                             <li>환급은 순경일반공채,경행,전의경경채,101경비단만 적용됩니다 (기타 직렬및경력채용은 환급대상에 포함되지 않습니다)</li>
+                            <li>환급금 수령 후 패스 잔여 수강기간에 관계없이 수강 종료됩니다.</li>
                         </ol>
                     </dd>
 
@@ -653,6 +651,7 @@
                                 <strong>PC+Mobile 신광은경찰PASS 수강 시</strong> : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP 신광은경찰PASS는 제공하지 않습니다.)
                             </li>
                             <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.(무한PASS존 등록기기정보 확인)</li>
+                            <li>일부 강좌 자료 출력 제한 적용 됩니다.(2단계 동형모의고사 ,3단계 파이널 모의고사 강좌등)</li>
                         </ol>
                     </dd>
 

@@ -53,7 +53,7 @@ class MockResult extends \app\controllers\FrontController
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    (SELECT RegDatm FROM lms.lms_mock_answerpaper WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    (SELECT 
-                        SUM(IF(MA.IsWrong = \'Y\', Scoring, \'0\')) AS Res 
+                        IFNULL(SUM(IF(MA.IsWrong = \'Y\', Scoring, \'0\')),0) AS Res
                    FROM
                         lms_mock_paper AS MP
                         JOIN lms_mock_questions AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = \'Y\'

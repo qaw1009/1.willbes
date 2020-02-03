@@ -1729,4 +1729,38 @@ class BoardModel extends WB_Model
 
         return $query;
     }
+
+    /**
+     * Best 정렬순서 update
+     * @param array $params
+     * @return array|bool
+     */
+    public function boardBestOrderNum($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+            foreach ($params as $board_idx => $best_order_num) {
+                if(empty($board_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
+
+                $data = [
+                    'BestOrderNum' => $best_order_num,
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+                $this->_conn->set($data)->where('BoardIdx', $board_idx);
+
+                if ($this->_conn->update($this->_table) === false) {
+                    throw new \Exception('게시판 정보 수정에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
 }

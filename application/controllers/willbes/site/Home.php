@@ -451,8 +451,8 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [], $bm_idx = 45)
     {
-        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['IsBest' => 'Desc', 'BoardIdx' => 'Desc'];
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.BestOrderNum, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest' => 'Desc', 'BestOrderNum' => 'Desc', 'BoardIdx' => 'Desc'];
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $bm_idx

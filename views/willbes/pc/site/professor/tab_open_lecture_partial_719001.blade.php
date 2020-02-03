@@ -171,10 +171,12 @@
                                     <strong class="open-info-modal">교재상세정보</strong>
                                 </a>
                             </div>
-                            <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
+                            <!--<div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>//-->
                         @else
                             <div class="w-sub">
-                                <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                <span class="w-subtit none">
+                                    {{ empty($row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $row['ProdBookMemo'] }}
+                                </span>
                             </div>
                         @endif
                     </td>

@@ -367,7 +367,9 @@
                                         </div>
                                     @else
                                         <div>
-                                            <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                            <span class="w-subtit none">
+                                                {{ empty($row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $row['ProdBookMemo'] }}
+                                            </span>
                                         </div>
                                     @endif
                                 </div>

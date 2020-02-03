@@ -100,10 +100,10 @@
                                 </div>
                             </li>
                         @endforeach
+                            <li class="tx-red NGR">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</li>
                     @else
-                        <li>※ 별도 구매 가능한 교재가 없습니다.</li>
+                        <li>{{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}</li>
                     @endif
-                    <li class="tx-red NGR">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</li>
                 </ul>
             </div>
 
@@ -116,7 +116,6 @@
             </div>
             </form>
         @endif
-
 
         <div class="lec-info-tab NGR">
             <ul class="tabWrap">

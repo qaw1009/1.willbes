@@ -90,10 +90,12 @@
     </style>
     
     <div class="p_re evtContent NGR" id="evtContainer">
+        {{--
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
             <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지" ></a>
-        </div>      
+        </div>   
+        --}}
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -167,7 +169,6 @@
                		 </ul>
             	</div><!--PeMenu//-->
             </div><!--menuWarp//-->
-  			<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c5_1.jpg" alt="윌비스와 함께 자랑스러운 대한민국의 공무원이 되어주세요!"/><br>
   			<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c6.jpg" alt="소방공무원의 꿈을 이루어줄 따라만 가도 완성되는 커리큘럼"/>
         </div><!--wb_cts02//-->
           
@@ -186,8 +187,7 @@
                     <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.              
                     </label>
                     <a href="#tab1">이용안내확인하기 ↓</a>
-                </div>
-                <div> ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.</div>
+                </div>               
                 <div class="check04">
                     {{--<a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
                     <a href="#none" onclick="goPassLecture()">

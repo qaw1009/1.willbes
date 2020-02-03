@@ -378,11 +378,10 @@ if (!function_exists('logger')) {
      */
     function logger($msg, $vars = null, $log_level = 'debug', $log_path = '')
     {
-        //$msg .= is_array($vars) === true && empty($vars) === false ? ' ' . json_encode($vars, JSON_UNESCAPED_UNICODE) : '';
         $msg .= empty($vars) === false ? ' : ' . var_export($vars, true) : '';
 
         if (empty($log_path) === true) {
-            log_message($log_level, $msg);
+            log_message($log_level, $msg . ' --> ' . current_url());
         } else {
             $_CI =& get_instance();
             $_CI->load->helper('file');

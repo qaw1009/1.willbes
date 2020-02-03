@@ -108,7 +108,9 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="w-sub overflow">※ 별도 구매 가능한 교재가 없습니다.</div>
+                                    <div class="w-sub overflow">
+                                        {{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}
+                                    </div>
                                 @endif
                             </div>
                         </div>

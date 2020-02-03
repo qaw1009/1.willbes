@@ -97,7 +97,7 @@ class ProductFModel extends WB_Model
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear
                             , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
-                            , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData, AppellationCcdName
+                            , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData, ProdBookMemo, AppellationCcdName
                             , ProfNickNameAppellation';
                     break;
 

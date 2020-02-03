@@ -117,7 +117,7 @@
 
         <div class="skybanner">
             <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/159627" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1527_sky01.jpg" alt="스카이베너" ></a>
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1522" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1527_sky02.jpg" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&course_idx=1075&subject_idx=1005" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1527_sky02.jpg" alt="스카이베너" ></a>
         </div>
         
         <div class="evtCtnsBox evt_police">
@@ -172,11 +172,17 @@
                                         <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
                                     </ul>
                                 </p>
+                                {{--
                                 <p class="check_contact">
                                     <strong><span class="star">▶</span>참여 캠퍼스</strong><br><br>
                                     @foreach($arr_base['register_list'] as $row)
                                         <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
                                     @endforeach
+                                </p>
+                                --}}
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>신청 동영상</strong><br><br>
+                                    <input type="radio" name="" id="bb1" value="" /> <label for="bb1">2020년 1차대비 신광은 형사소송법 최신개정법령특강(2월)</label>
                                 </p>
                             </div>
                             <div class="info">
@@ -199,12 +205,17 @@
                         </p>
                         <div class="btn NGEB">
                             <a onclick="javascript:fn_submit();">
-                                신광은 형소법 무료특강 신청하기 >
+                                2020년 1차대비 신광은 형소법특강 동영상강의 신청하기 >
                             </a>
                         </div>
                     </div>
                 </div>
             </form>
+            <div class="mt30 mb100 tx16">
+                * 신청완료시 내강의실에 자동등록 됩니다.<br>
+                <br>
+                * 온라인강의 유효기간은 30일 입니다
+            </div>
         </div>    
     </div>
     <!-- End evtContainer -->

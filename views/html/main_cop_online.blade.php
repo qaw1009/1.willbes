@@ -3,6 +3,13 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container cop NSK c_both">
+    <div class="Section widthAuto">
+        <div class="onSearch NGR">
+            <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+            <label for="onsearch"><button title="검색">검색</button></label>
+        </div>
+    </div>
+
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -52,38 +59,7 @@
                 </li>
             </ul>
         </h3>
-    </div>
-
-    <!--
-    <div id="newTopDday" class="newTopDday">
-        <div class="widthAuto">
-            <div id="ddaytime">
-                <ul>
-                    <li class="txt toptxt">
-                        <div class="small">3차 추가채용</div>
-                        <div class="big"><span class="cop-color">최종</span> 합격예측서비스</div>
-                    </li>
-                    <li><img id="dd1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="dd2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>일</strong></li>
-                    <li><img id="hh1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="hh2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>시간</strong></li>
-                    <li><img id="mm1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="mm2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>분</strong></li>
-                    <li><img id="ss1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="ss2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>초</strong></li>
-                    <li class="txt lasttxt">
-                        <div class="big"><span class="cop-color">3월 29일(금) 발표</span></div>
-                        <div class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank">최종합격예측 참여 &gt;</a></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    -->
+    </div>    
 
     <div class="Section MainVisual">
         <div class="widthAuto">

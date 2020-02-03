@@ -182,7 +182,9 @@
                                 --}}
                                 <p class="check_contact">
                                     <strong><span class="star">▶</span>신청 동영상</strong><br><br>
-                                    <input type="radio" name="" id="bb1" value="" /> <label for="bb1">2020년 1차대비 신광은 형사소송법 최신개정법령특강(2월)</label>
+                                    @foreach($arr_base['register_list'] as $row)
+                                        <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
+                                    @endforeach
                                 </p>
                             </div>
                             <div class="info">
@@ -229,7 +231,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
             if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
-                alert('참여캠퍼스를 선택해 주세요.'); return;
+                alert('신청동영상을 선택해 주세요.'); return;
             }
             
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {

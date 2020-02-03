@@ -235,7 +235,7 @@
                                 <input type="radio" id="pay_method_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_cash'] }}" title="현금" disabled="disabled"/> <label class="input-label">현금</label>
                                 <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
                                 <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label">카드+현금</label>
-                                <input type="radio" id="pay_method_zero" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_zero'] }}" title="0원결제" disabled="disabled"/> <label class="input-label mr-50">0원결제</label>
+                                <input type="radio" id="pay_method_zero" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_zero'] }}" title="0원결제" @if($_is_order === true && $data['order']['tRealPayPrice'] < 1) checked="checked" @else disabled="disabled" @endif/> <label class="input-label mr-50">0원결제</label>
                                 [카드선택]
                                 <select class="form-control input-sm ml-5" name="card_ccd" disabled="disabled" title="카드선택">
                                     <option value="">카드선택</option>

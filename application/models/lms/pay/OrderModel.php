@@ -1553,7 +1553,7 @@ class OrderModel extends BaseOrderModel
                             ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
                             ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
                             ->update($this->_table['order_product']);
-                        if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                        if ($is_update === false) {
                             throw new \Exception('주문상품 정보 수정에 실패했습니다.');
                         }
 

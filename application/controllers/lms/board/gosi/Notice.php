@@ -116,14 +116,14 @@ class Notice extends BaseBoard
         
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, LB.BestOrderNum
         ';
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BestOrderNum' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
@@ -415,6 +415,24 @@ class Notice extends BaseBoard
                 'site_category' => element('cate_code', $input)
             ]
         ];
-        return$input_data;
+        return $input_data;
+    }
+
+    /**
+     * BEST 정렬순서 적용
+     */
+    public function storeBestOrderNum()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardBestOrderNum(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 }

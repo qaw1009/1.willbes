@@ -93,6 +93,7 @@
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
                     <th>카테고리</th>
+                    <th>최상위 정렬</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -137,9 +138,8 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-copy mr-10"></i> HOT/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
-
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
-
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
@@ -179,6 +179,11 @@
                                 }
                                 return str;
                             }
+                        }},
+                    {'data' : 'BestOrderNum', 'render' : function(data, type, row, meta){
+                            var tmp_return = '';
+                            if(row.IsBest == '1') tmp_return = '<input type="text" name="best_order_num" value="' + data + '" class="best-order-num" data-best-order-num-idx="' + row.BoardIdx + '" data-origin-best-order-num = "' + data + '" style="width: 60px;" maxlength="4">';
+                            return tmp_return;
                         }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
@@ -289,6 +294,38 @@
             // hot 숨기기
             $search_form.on('ifChanged', '.hot-display', function() {
                 $datatable.draw();
+            });
+
+            // 정렬순서 변경
+            $('.btn-reorder').on('click', function() {
+                if (!confirm('변경된 순서를 적용하시겠습니까?')) return;
+
+                var $best_order_num = $list_table.find('input[name="best_order_num"]');
+                var $params = {};
+                $best_order_num.each(function(idx) {
+                    // 정렬순서 값이 변하는 경우에만 파라미터 설정
+                    if ($(this).val() != $(this).data('origin-best-order-num')) {
+                        $params[$(this).data('best-order-num-idx')] = $(this).val();
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
+                var _url = '{{ site_url("/board/{$boardName}/storeBestOrderNum/?") }}' + '{!! $boardDefaultQueryString !!}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

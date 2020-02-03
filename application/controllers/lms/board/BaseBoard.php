@@ -374,4 +374,14 @@ class BaseBoard extends \app\controllers\BaseController
         }
         return $tmp_images . $content;
     }
+
+    /**
+     * 게시판 Best 정렬순서 수정
+     * @param array $params
+     * @return array|bool
+     */
+    protected function _boardBestOrderNum($params = [])
+    {
+        return $this->boardModel->boardBestOrderNum($params);
+    }
 }

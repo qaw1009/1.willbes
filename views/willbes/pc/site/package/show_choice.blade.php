@@ -287,7 +287,9 @@
                                                     @endforeach
                                                 @else
                                                     <div class="w-sub">
-                                                        <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                                        <span class="w-subtit none">
+                                                            {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                        </span>
                                                     </div>
                                                 @endif
                                               </td>
@@ -424,7 +426,9 @@
                                                     @endforeach
                                                 @else
                                                     <div class="w-sub">
-                                                        <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                                        <span class="w-subtit none">
+                                                            {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                        </span>
                                                     </div>
                                                 @endif
                                             </td>

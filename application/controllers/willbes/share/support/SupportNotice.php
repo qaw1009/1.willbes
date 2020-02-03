@@ -68,12 +68,12 @@ class SupportNotice extends BaseSupport
             $arr_condition['ORG2']['RAW'] = ['(b.CampusCcd = "' => $s_campus . '" OR b.CampusCcd = 605999)'];
         }
 
-        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
+        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.BestOrderNum,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc', 'BestOrderNum'=>'Desc', 'BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

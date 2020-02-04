@@ -182,11 +182,8 @@
                                     <dt class="w-tit">{{$sub_row['ProfNickName']}}<span class="row-line">|</span>{{ $sub_row['ProdName'] }}</dt>
                                 </dl>
                                 <dl class="w-info">
-                                    <dt class="mr20">
-                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                            <strong class="open-info-modal">강좌상세정보</strong>
-                                        </a>
-                                    </dt>
+                                    <dt>학원실강의 : {{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
+                                    <dt><span class="row-line">|</span></dt>
                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>정상가 :
@@ -201,6 +198,12 @@
                                     <dt class="NSK ml15">
                                         <span class="nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span>
                                         <span class="nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span>
+                                    </dt>
+                                    <br>
+                                    <dt class="mr20">
+                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
+                                            <strong class="open-info-modal">강좌상세정보</strong>
+                                        </a>
                                     </dt>
                                 </dl>
                             </td>

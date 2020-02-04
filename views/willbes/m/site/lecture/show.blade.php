@@ -26,13 +26,21 @@
                             </div>
                             <div class="w-info tx-gray">
                                 <dl>
+                                    <dt class="h27"><strong>학원실강의</strong>{{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</dt><br/>
                                     <dt class="h27"><strong>강의수</strong>{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false) / {{$data['wScheduleCount']}}강@endif</dt><br/>
                                     <dt class="h27"><strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriod'] }}일</span>
                                         <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                                         <span class="NSK nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
-                                    </dt>
+                                    </dt><br>
+                                    @if(empty($data['wAttachFileReal']) === false)
+                                    <dt class="h27"><strong>강의계획서</strong><a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$data['wAttachFile'])).'&filename_ori='.urlencode($data['wAttachFileReal'])}}" >{{$data['wAttachFileReal']}}</a></dt><br/>
+                                    @endif
+                                    @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                        @if(empty($data['SaleStartDatm']) === false && empty($data['SaleEndDatm'] === false))
+                                            <dt class="h27"><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt><br/>
+                                        @endif
+                                    @endif
                                     @if($pattern == 'only')
-                                        <br>
                                         <dt class="h27">
                                             @if( empty($data['LectureSampleData']) === false)
                                             <strong>맛보기</strong>

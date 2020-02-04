@@ -8,6 +8,7 @@
     <div class="LecDetailBox">
         <h5>강좌상세정보</h5>
         <dl class="w-info tx-gray">
+            <dt><strong>학원실강의</strong> {{ empty($data['lecture']['StudyStartDate']) ? '' : substr($data['lecture']['StudyStartDate'],0,4).'년 '. substr($data['lecture']['StudyStartDate'],5,2).'월' }}</dt>
             <dt>
                 강의수 <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if($data['lecture']['wLectureProgressCcd'] != '105002' && empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif
                 </span><span class="row-line ml10">|</span>

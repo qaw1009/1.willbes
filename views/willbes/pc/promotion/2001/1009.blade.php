@@ -208,7 +208,7 @@
         </div>
 
         <div class="evtCtnsBox evt_top01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_01.jpg"  alt="PASS"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1009_top_01.jpg"  alt="PASS"/>
         </div>
 
         <div class="evtCtnsBox evt01">

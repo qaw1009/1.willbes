@@ -1,7 +1,6 @@
 <a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}')">
     <img src="{{ img_url('sub/close.png') }}">
 </a>
-
 <div class="Layer-Tit tx-dark-black NG">
     {{ $data['lecture']['ProdName'] }}
 </div>
@@ -14,6 +13,8 @@
         <div id="ch1" class="tabLink">
             <div class="classInfo">
                 <dl class="w-info NG">
+                    <dt>학원실강의 : {{ empty($data['lecture']['StudyStartDate']) ? '' : substr($data['lecture']['StudyStartDate'],0,4).'년 '. substr($data['lecture']['StudyStartDate'],5,2).'월' }}</dt>
+                    <dt><span class="row-line">|</span></dt>
                     <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if($data['lecture']['wLectureProgressCcd'] != '105002' && empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif</span></dt>
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-blue">{{ $data['lecture']['StudyPeriod'] }}일</span></dt>

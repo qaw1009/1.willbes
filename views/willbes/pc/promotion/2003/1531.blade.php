@@ -45,6 +45,8 @@
         .check {color:#000; font-size:15px;font-weight:bold;position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:325px;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .check a.infotxt:hover {background:#3F797A;}   
       
         .wb_03 {background:#fff;}          
     

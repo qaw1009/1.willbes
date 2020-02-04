@@ -167,8 +167,8 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                @if($stats_type == 'packagePeriod')
-                    {{-- 기간제패키지 --}}
+                @if($stats_type == 'packagePeriod' || starts_with($stats_type, 'off') === true)
+                    {{-- 기간제패키지, 학원강좌 --}}
                     <th width="60">선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                 @endif
                     <th>No</th>
@@ -262,8 +262,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                @if($stats_type == 'packagePeriod')
-                    {{-- 기간제패키지 --}}
+                @if($stats_type == 'packagePeriod' || starts_with($stats_type, 'off') === true)
+                    {{-- 기간제패키지, 학원강좌 --}}
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 선택강좌 상세매출 엑셀다운로드', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-checked-excel' },
                 @endif
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
@@ -276,8 +276,8 @@
                     }
                 },
                 columns: [
-                @if($stats_type == 'packagePeriod')
-                    {{-- 기간제패키지 --}}
+                @if($stats_type == 'packagePeriod' || starts_with($stats_type, 'off') === true)
+                    {{-- 기간제패키지, 학원강좌 --}}
                     {'data' : 'ProdCode', 'render' : function(data, type, row, meta) {
                         return '<input type="checkbox" name="prod_code" class="flat" value="' + data + '"/>';
                     }},

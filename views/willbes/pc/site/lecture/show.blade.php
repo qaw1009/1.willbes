@@ -27,13 +27,27 @@
                 <div class="w-list">{{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>
                 <dl class="w-info tx-dark-gray">
-                    <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
-                    <dt><span class="row-line">|</span></dt>
-                    <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
-                    <dt class="NSK ml15">
-                        <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
-                        <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
-                    </dt>
+                    <div>학원실강의 : {{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</div>
+                    <dl>
+                        <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
+                        <dt><span class="row-line">|</span></dt>
+                        <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
+                        <dt class="NSK ml15">
+                            <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
+                            <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
+                        </dt>
+                    </dl>
+
+                    @if(empty($data['wAttachFileReal']) === false)
+                        <div>강의계획서 :
+                            <a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$data['wAttachFile'])).'&filename_ori='.urlencode($data['wAttachFileReal'])}}" >{{$data['wAttachFileReal']}}</a>
+                        </div>
+                    @endif
+                    @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                        @if(empty($data['SaleStartDatm']) === false && empty($data['SaleEndDatm'] === false))
+                            <div>수강가능기간 : {{date('Y.m.d',strtotime($data['SaleStartDatm']))}} ~ {{date('Y.m.d', strtotime($data['SaleEndDatm']))}}</div>
+                        @endif
+                    @endif
                 </dl>
                 <div class="view-wrap">
                     <div class="w-notice p_re">
@@ -107,19 +121,6 @@
                                     @endforeach
                                 @endif
                             </td>
-                            {{-- 상품가격 노출 수정 (2019.04.17)
-                            <td class="w-notice p_re tx-right">
-                                @if(empty($data['ProdPriceData']) === false)
-                                    @foreach($data['ProdPriceData'] as $price_idx => $price_row)
-                                        <div class="priceWrap p_re">
-                                            <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif></span>
-                                            <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
-                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </td>--}}
                         </tr>
                         </tbody>
                     </table>

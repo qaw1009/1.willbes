@@ -66,6 +66,7 @@
                 <div class="willbes-Lec-Tit NG tx-black">
                     주문상품정보
                     <ul>
+                        <li class="subBtn blue NSK"><a href="#none" onclick="openWin('studyRoom')">자매독서실 할인적용 ></a></li>
                         <li class="subBtn NSK"><a href="#none">포인트 현황 ></a></li>
                         <li class="subBtn NSK"><a href="#none">쿠폰 현황 ></a></li>
                     </ul>
@@ -90,8 +91,7 @@
                             <td class="w-list tx-left pl20">
                                 <dl>
                                     <dt class="tit">
-                                        <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                                                                
+                                        <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)                                                                                
                                     </dt>
                                     <dt>
                                         <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
@@ -101,11 +101,12 @@
                                             <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                                         </span>                                       
-                                    </dt> 
+                                    </dt>
+                                    <dt class="tx-red">자매독서실 할인 (↓5%)</dt> 
                                     <dt class="w-coupon">
                                         <span class="tBox NGR t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
                                         최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a>
-                                    </dt>                                  
+                                    </dt>
                                 </dl>                                
                             </td>
                             <td> </td>
@@ -137,9 +138,7 @@
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                                         </span>
                                     </dt>
-                                    <dt class="w-coupon">
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
+                                    <dt class="tx-red">자매독서실 할인 (↓5%)</dt> 
                                 </dl>
                             </td>
                             <td> </td>
@@ -783,6 +782,37 @@
             </div>
         </div>
         <!-- willbes-Layer-CartBox : Coupon -->
+
+        <div id="studyRoom"class="willbes-Layer-Black">
+            <div class="willbes-Layer-CartBox willbes-Layer-CartBox2">
+                <a class="closeBtn" href="#none" onclick="closeWin('studyRoom')">
+                    <img src="{{ img_url('cart/close_cart.png') }}">
+                </a>
+                <div class="Layer-Tit NG bg-blue">자매독서실 할인적용</div>
+                <div class="studyRoomCts">
+                    <ul class="studyRoominfo">
+                        <li>자매 독서실을 이용하실 경우 5% 할인이 적용됩니다.</li>
+                        <li>과목별 수강료 5만원 미만은 할인 불가능합니다.</li>
+                        <li>중복 할인 불가능합니다.</li>
+                        <li>학원 데스크에 방문하여 수강증 발급 전 자매 독서실 증빙 자료를 제출 하여야 하며, 증빙 불총족 시 전체환불 후 수강료 정상가로 재접수해야 하는점 유의해 주시기 바랍니다.</li>
+                    </ul>
+                    <div>
+                        <select id="sRoom" name="studyRoom" title="자매독서실" class="selePhone">
+                            <option value="">자매독서실 선택</option>
+                            <option value="">자매독서실 A</option>
+                            <option value="">자매독서실 B</option>
+                            <option value="">자매독서실 C</option>
+                            <option value="">자매독서실 D</option>
+                        </select>
+                    </div>
+                    <ul class="btnSet">
+                        <li class="subBtn blue NSK"><a href="#none">할인적용</a></li>
+                        <li class="subBtn NSK"><a href="#none">할인적용 취소</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- willbes-Layer-CartBox : studyRoom -->
 
         <div id="MyAddress"class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">

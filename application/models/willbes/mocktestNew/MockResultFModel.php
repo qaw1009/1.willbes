@@ -40,7 +40,7 @@ class MockResultFModel extends WB_Model
                 C1.CateName, C1.IsUse AS IsUseCate, IsDisplay,
                 (SELECT SiteGroupName FROM {$this->_table['site_group']} WHERE SiteGroupCode = (SELECT SiteGroupCode FROM {$this->_table['site']} WHERE SiteCode = PD.SiteCode)) AS SiteName,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
-                (SELECT SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS Res 
+                (SELECT IFNULL(SUM(IF(MA.IsWrong = 'Y', Scoring, '0')),'0') AS Res
                     FROM {$this->_table['mock_paper']} AS MP
                     JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y'
                     JOIN {$this->_table['mock_answerpaper']} AS MA ON MQ.MqIdx = MA.MqIdx 

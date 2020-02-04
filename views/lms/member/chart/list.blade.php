@@ -132,12 +132,13 @@
                     return false;
                 }
 
-                /*
-                if(((endDateCompare.getTime() - startDateCompare.getTime()) / 1000 / 60 / 60 / 24) > 365){
-                    alert("검색은 1년 단위로 가능합니다.");
-                    return false;
+                if($(":input:radio[name=search_type]:checked").val() != 'Y'){
+                    if(((endDateCompare.getTime() - startDateCompare.getTime()) / 1000 / 60 / 60 / 24) > 366){
+                        alert("월별/주별 검색은 1년 단위로 가능합니다.");
+                        return false;
+                    }
                 }
-                */
+
 
                 return true;
             });

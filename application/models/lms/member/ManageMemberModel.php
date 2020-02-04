@@ -655,4 +655,39 @@ class ManageMemberModel extends WB_Model
 
         return true;
     }
+
+
+    public function chartData($arr_condition = [], $isJoin = true, $search_type = 'Y')
+    {
+        if($isJoin == true){
+            $col ="m.JoinDate";
+        } else {
+            $col = "l.OutDatm";
+        }
+
+        if($search_type == 'Y'){
+            $column = "DATE_FORMAT(".$col.", '%Y년') AS date
+            , COUNT(*) AS count ";
+        } elseif($search_type == 'M') {
+            $column = "DATE_FORMAT(".$col.", '%Y년 %m월') AS date
+            , COUNT(*) AS count ";
+        } elseif($search_type == 'W') {
+            $column = "concat(DATE_FORMAT(".$col.", '%Y년 %m월 '), WEEK(".$col.",0) - WEEK(DATE_FORMAT(".$col.", '%Y-%m-01'), 0) +1, '주' ) AS date
+            , COUNT(*) AS count ";
+        } else {
+            $column = "DATE_FORMAT(".$col.", '%Y년') AS date
+            , COUNT(*) AS count ";
+        }
+
+        $from = " FROM {$this->_table['member']} AS m
+        JOIN {$this->_table['info']} AS info ON m.MemIdx = info.MemIdx
+        LEFT JOIN {$this->_table['outLog']} AS l ON m.MemIdx = l.MemIdx ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where . " GROUP BY date ORDER BY date DESC");
+
+        return $rows->result_array();
+    }
 }

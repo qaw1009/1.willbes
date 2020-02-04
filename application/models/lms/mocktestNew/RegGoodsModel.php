@@ -185,8 +185,9 @@ class RegGoodsModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = 'order by MPE.OrderNum';
-        return $this->_conn->query('select '.$column .$from .$where . $order_by)->result_array();
+        $group_by = ' group by EB.MpIdx';
+        $order_by = ' order by MPE.OrderNum';
+        return $this->_conn->query('select '.$column .$from .$where . $group_by . $order_by)->result_array();
     }
 
     /**
@@ -263,6 +264,8 @@ class RegGoodsModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $this->_prod_code = element('prod_code', $form_data);
+
             if ($this->_modifyProduct($form_data) === false) {
                 throw new \Exception('상품 수정에 실패했습니다.');
             }

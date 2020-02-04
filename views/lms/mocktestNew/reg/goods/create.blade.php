@@ -19,6 +19,7 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" id='ProdCode' name="prod_code" value="{{$prod_code}}">
+        <input type="hidden" name="AcceptStatusCcd" value="675002" title="접수중">
         <input type="hidden" name="Info" value="">
 
         <div class="x_panel">
@@ -61,7 +62,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="mock_part">직렬 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                    <div class="col-md-2">
                         <div class="checkbox mock-part">
                             @foreach($arr_base['cateD2'] as $row)
                                 <span class="mock-part-{{$row['ParentCateCode']}}">
@@ -71,11 +72,14 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">• 사용자단에 노출될 항목 체크</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="TakeFormsCcd">응시형태 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                    <div class="col-md-2">
                         <div class="checkbox">
                             @foreach($arr_base['apply_type'] as $key => $val)
                                 <input type="checkbox" class="flat" id="take_forms_{{$key}}" name="TakeFormsCcd[]" value="{{$key}}" data-take-forms="{{$key}}" title="응시형태" @if($method == 'PUT' && in_array($key, $data['arr_take_forms_ccd'])) checked @endif>
@@ -83,11 +87,14 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">• 사용자단에 노출될 항목 체크</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="TakeAreas1CCds">OFF(학원) 응시지역1 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area1'] as $key => $val)
                                 <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas1CCds[]" value="{{$key}}" title="응시지역1" @if($method == 'PUT' && in_array($key, $data['arr_take_areas1_ccds'])) checked @endif>
@@ -95,17 +102,23 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">• 사용자단에 노출될 항목 체크</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="TakeAreas2CCds">OFF(학원) 응시지역2 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                    <div class="col-md-2">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area2'] as $key => $val)
                                 <input type="checkbox" class="flat" id="take_areas2_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
                                 <label for="take_areas2_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">• 사용자단에 노출될 항목 체크</p>
                     </div>
                 </div>
 
@@ -213,11 +226,6 @@
                                 <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                             @endforeach
                         </select> 분
-                        <select name="AcceptStatusCcd" class="form-control ml-20">
-                            @foreach($arr_base['acceptStatus'] as $key => $val)
-                                <option value="{{$key}}" @if(($method == 'POST' && $loop->index == 2) || ($method == 'PUT' && $key == $data['AcceptStatusCcd'])) selected @endif>{{$val}}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
 
@@ -744,7 +752,8 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktestNew/reg/goods/') }}' + getQueryString());
+                        location.reload();
+                        /*location.replace('{{ site_url('/mocktestNew/reg/goods/') }}' + getQueryString());*/
                     }
                 }, showValidateError, null, false, 'alert');
             });

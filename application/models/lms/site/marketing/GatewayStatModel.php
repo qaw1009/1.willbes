@@ -170,7 +170,7 @@ class GatewayStatModel extends WB_Model
                             lms_gateway_access_log gal
                         where GwIdx is not null
                         group by GwIdx,SiteCode
-                    ) as click_tbl on default_tbl.GwIdx = click_tbl.GwIdx and click_tbl.SiteCode = default_tbl.SiteCode
+                    ) as click_tbl on default_tbl.GwIdx = click_tbl.GwIdx #and click_tbl.SiteCode = default_tbl.SiteCode
             
                 left outer join
                 (
@@ -180,7 +180,7 @@ class GatewayStatModel extends WB_Model
                             join lms_member m on mo.MemIdx = m.MemIdx
                         where m.IsStatus != \'N\' and m.JoinDate > \'2019-07-01\' and mo.GwIdx is not null
                         group by mo.GwIdx, m.SiteCode
-                    ) as mem_tbl on default_tbl.GwIdx = mem_tbl.GwIdx and mem_tbl.SiteCode = default_tbl.SiteCode
+                    ) as mem_tbl on default_tbl.GwIdx = mem_tbl.GwIdx #and mem_tbl.SiteCode = default_tbl.SiteCode
                     
                 left outer join
                 (
@@ -189,7 +189,7 @@ class GatewayStatModel extends WB_Model
                             lms_cart c 
                         where c.IsStatus=\'Y\' and c.IsDirectPay=\'N\' AND c.ConnOrderIdx IS NULL AND c.ExpireDatm >=  NOW() and c.GwIdx is not null
                         group by c.GwIdx, c.SiteCode
-                    ) as cart_tbl on default_tbl.GwIdx = cart_tbl.GwIdx and default_tbl.SiteCode = cart_tbl.SiteCode
+                    ) as cart_tbl on default_tbl.GwIdx = cart_tbl.GwIdx #and default_tbl.SiteCode = cart_tbl.SiteCode
                 
                 left outer join
                 (
@@ -204,7 +204,7 @@ class GatewayStatModel extends WB_Model
                             and o.CompleteDatm > \'2019-07-01\'
                             and o.GwIdx is not null
                         group by o.GwIdx,o.SiteCode
-                    ) as order_tbl on default_tbl.GwIdx = order_tbl.GwIdx and default_tbl.SiteCode = order_tbl.SiteCode
+                    ) as order_tbl on default_tbl.GwIdx = order_tbl.GwIdx #and default_tbl.SiteCode = order_tbl.SiteCode
 
                 where gc.IsStatus=\'Y\' and gw.IsStatus=\'Y\' ';
 

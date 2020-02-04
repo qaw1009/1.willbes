@@ -121,9 +121,10 @@
                                                                 {{ $sub_row['ProdName'] }}
                                                             </div>
                                                             <dl class="w-info tx-gray">
+                                                                <dt class="mb5"><strong>학원실강의</strong>{{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
                                                                 <dt>
-                                                                    강의수 <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span><span class="row-line ml10">|</span>
-                                                                    정상가 @if(empty($sub_row['ProdPriceData']) === false)
+                                                                    <strong>강의수</strong> <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span><span class="row-line ml10">|</span>
+                                                                    <strong>정상가</strong> @if(empty($sub_row['ProdPriceData']) === false)
                                                                         @foreach($sub_row['ProdPriceData'] as $price_row)
                                                                             @if($loop -> index === 1)
                                                                                 <span class="tx-blue">{{number_format($price_row['SalePrice'],0)}}원</span>
@@ -238,9 +239,10 @@
                                                             {{ $sub_row['ProdName'] }}
                                                         </div>
                                                         <dl class="w-info tx-gray">
+                                                            <dt class="mb5"><strong>학원실강의</strong>{{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
                                                             <dt>
-                                                                강의수 <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span><span class="row-line ml10">|</span>
-                                                                정상가 @if(empty($sub_row['ProdPriceData']) === false)
+                                                                <strong>강의수</strong> <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span><span class="row-line ml10">|</span>
+                                                                <strong>정상가</strong> @if(empty($sub_row['ProdPriceData']) === false)
                                                                     @foreach($sub_row['ProdPriceData'] as $price_row)
                                                                         @if($loop -> index === 1)
                                                                             <span class="tx-blue">{{number_format($price_row['SalePrice'],0)}}원</span>

@@ -76,10 +76,11 @@
                                                 {{ $row['ProdName'] }}
                                             </div>
                                             <dl class="w-info tx-gray">
+                                                <dt class="mb5"><strong>학원실강의</strong>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
                                                 <dt>
-                                                    강의수 <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif
+                                                    <strong>강의수</strong> <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif
                                                     </span><span class="row-line ml10">|</span>
-                                                    수강기간 <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span>
+                                                    <strong>수강기간</strong> <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span>
                                                     <span class="NSK ml10 nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}
                                                     </span> <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                                 </dt>

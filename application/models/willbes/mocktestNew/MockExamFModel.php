@@ -90,6 +90,7 @@ class MockExamFModel extends WB_Model
                 GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
                 GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName)) AS subject_names
                 FROM {$this->_table['mock_register']} AS mr
+                JOIN {$this->_table['order_product']} AS OP ON MR.ProdCode = OP.ProdCode AND MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
                 JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx

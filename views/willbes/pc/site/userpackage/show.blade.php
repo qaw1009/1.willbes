@@ -131,17 +131,20 @@
                                 <td class="w-data tx-left pl25">
                                     <div class="w-tit prod-title-{{ $row['ProdCode'] }}" data-inof="lec">{{ $row['ProdName'] }}</div>
                                     <dl class="w-info">
-                                        <dt class="mr20">
-                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                <strong class="open-info-modal">강좌상세정보</strong>
-                                            </a>
-                                        </dt>
+                                        <dt>학원실강의 : {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
+                                        <dt><span class="row-line">|</span></dt>
                                         <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
                                         <dt class="NSK ml15">
                                             <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                             <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
+                                        </dt>
+                                        <br>
+                                        <dt class="mr20">
+                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
+                                                <strong class="open-info-modal">강좌상세정보</strong>
+                                            </a>
                                         </dt>
                                     </dl>
                                 </td>

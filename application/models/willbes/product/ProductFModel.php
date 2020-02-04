@@ -84,7 +84,7 @@ class ProductFModel extends WB_Model
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
                             , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
                             , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum, IsOpenStudyComment, AppellationCcdName 
-                            , ProfNickNameAppellation';
+                            , ProfNickNameAppellation, wAttachFileReal, wAttachFile, wAttachPath';
                         
                         // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                         if ($learn_pattern == 'on_free_lecture') {

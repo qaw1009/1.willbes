@@ -5501,6 +5501,14 @@ span.calendar_btn {
     margin-left: -380px;
     border: 1px solid #2f2f2f;
 }
+.willbes-Layer-CartBox2 {
+    width: 500px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -250px;
+    border: 1px solid #2f2f2f;
+}
+
 .willbes-Layer-CartBox .closeBtn {
     position: absolute;
     top: 9px;
@@ -11882,5 +11890,14 @@ table.acadlecInfoPackageTable tr.Top td {
 .searchView li div {color:#666; margin-top:5px}
 .searchView li:last-child {border:0}
 .searchList:after {content:""; display:block; clear:both}
+
+
+/************************************************** 자매독서실 할인 ***************************************************/
+.studyRoomCts {margin:35px; line-height: 1.5; color:#666;}
+.studyRoomCts .studyRoominfo li {margin-left:15px; list-style-type: disc; margin-bottom:5px}
+.studyRoomCts div {border-top:1px dashed #e4e4e4; margin-top:20px; padding-top:20px}
+.studyRoomCts select {padding:5px; width: 100%;}
+.studyRoomCts .btnSet {margin-top:20px; float:right}
+.studyRoomCts .btnSet li {display:inline; float:left; margin-right:5px}
 
 

@@ -21,7 +21,7 @@ class Chart extends \app\controllers\BaseController
         (empty($this->_req("search_start_date")) == true) ? $search_start_date = Date('Y-01-01') : $search_start_date = $this->_req("search_start_date");
         (empty($this->_req("search_end_date")) == true) ? $search_end_date = Date('Y-m-d') : $search_end_date = $this->_req("search_end_date");
 
-        (empty($this->_req("search_type")) == true) ? $search_type = 'Y' : $search_type = $this->_req("search_type"); ;
+        (empty($this->_req("search_type")) == true) ? $search_type = 'M' : $search_type = $this->_req("search_type"); ;
 
         switch($search_type){
             case 'Y':
@@ -94,7 +94,7 @@ class Chart extends \app\controllers\BaseController
         (empty($this->_req("search_start_date")) == true) ? $search_start_date = Date('Y-01-01') : $search_start_date = $this->_req("search_start_date");
         (empty($this->_req("search_end_date")) == true) ? $search_end_date = Date('Y-m-d') : $search_end_date = $this->_req("search_end_date");
 
-        (empty($this->_req("search_type")) == true) ? $search_type = 'Y' : $search_type = $this->_req("search_type"); ;
+        (empty($this->_req("search_type")) == true) ? $search_type = 'M' : $search_type = $this->_req("search_type"); ;
 
         switch($search_type){
             case 'Y':

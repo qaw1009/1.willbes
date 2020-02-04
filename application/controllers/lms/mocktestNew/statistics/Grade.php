@@ -99,19 +99,122 @@ class Grade extends BaseMocktest
         }
 
         //기본정보 가공
+        $applyType_on = $this->mockCommonModel->_ccd['applyType_on'];
+        $applyType_off = $this->mockCommonModel->_ccd['applyType_off'];
         $arr_mock_kind_code = $this->codeModel->getCcd($this->mockCommonModel->_groupCcd['sysCode_kind']);
         $arr_mock_part = explode(',', $product_info['MockPart']);
         foreach ($arr_mock_part as $key => $val) {
             $product_info['MockPartName'][] = $arr_mock_kind_code[$val];
         }
+        $takeFormsCcds = explode(',', $product_info['TakeFormsCcd']);
+        $product_info['TakePart_on'] = (in_array($applyType_on, $takeFormsCcds)) ? 'Y' : 'N';
+        $product_info['TakePart_off'] = (in_array($applyType_off, $takeFormsCcds)) ? 'Y' : 'N';
 
+        //직렬별 과목점수
+        $list_register_subject = $data_total_avg = [];
+        $arr_result = $this->regGradeModel->registerForSubjectDetail($params[0]);
+        if (empty($arr_result['data']) === false) {
+            $list_register_subject = $arr_result['data'];
+            $data_total_avg = $arr_result['total_avg'];
+        }
 
+        $arr_total_avg = [];    //원점수기준 전체평균
+        foreach ($data_total_avg as $key => $row) {
+            $arr_total_avg[$row['TakeMockPart']]['전체평균'] = $row['AvgAvgOrgPoint'];
+            $arr_total_avg[$row['TakeMockPart']]['최고점'] = $row['AvgMaxOrgPoint'];
+            $arr_total_avg[$row['TakeMockPart']]['상위10%'] = $row['AvgTop10AvgOrgPoint'];
+            $arr_total_avg[$row['TakeMockPart']]['상위30%'] = $row['AvgTop30AvgOrgPoint'];
+            $arr_total_avg[$row['TakeMockPart']]['표준편차'] = $row['AvgStandardDeviation'];
+            $arr_total_avg[$row['TakeMockPart']]['응시인원'] = $row['AvgMemCount'];
+        }
+
+        $arr_take_mock_part = $arr_subject_e = $arr_subject_s = [];
+        foreach ($list_register_subject as $key => $row) {
+            $arr_take_mock_part[$row['TakeMockPart']] = $row['TakeMockPartName'];
+        }
+
+        foreach ($list_register_subject as $key => $row) {
+            if ($row['MockType'] == 'E') {
+                $arr_subject_e[$row['MpIdx']]['subject_name'] = $row['SubjectName'];
+            } else {
+                $arr_subject_s[$row['MpIdx']]['subject_name'] = $row['SubjectName'];
+            }
+        }
+
+        $data_default_e = $data_default_s = $data_e = $data_s = [];
+        foreach ($list_register_subject as $key => $val) {
+            if ($val['MockType'] == 'E') {
+                $data_e['전체평균'][$val['TakeMockPart']][$val['MpIdx']] = $val['AvgOrgPoint'];
+                $data_e['최고점'][$val['TakeMockPart']][$val['MpIdx']] = $val['MaxOrgPoint'];
+                $data_e['상위10%'][$val['TakeMockPart']][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
+                $data_e['상위30%'][$val['TakeMockPart']][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
+                $data_default_e['표준편차'][$val['TakeMockPart']][$val['MpIdx']] = $val['StandardDeviation'];
+                $data_default_e['응시인원'][$val['TakeMockPart']][$val['MpIdx']] = $val['MemCount'];
+            }
+
+            if ($val['MockType'] == 'S') {
+                $data_s['전체평균'][$val['TakeMockPart']][$val['MpIdx']]['org'] = $val['AvgOrgPoint'];
+                $data_s['전체평균'][$val['TakeMockPart']][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
+                $data_s['최고점'][$val['TakeMockPart']][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];
+                $data_s['최고점'][$val['TakeMockPart']][$val['MpIdx']]['adjust'] = $val['MaxAdjustPoint'];
+                $data_s['상위10%'][$val['TakeMockPart']][$val['MpIdx']]['org'] = $val['Top10AvgOrgPoint'];
+                $data_s['상위10%'][$val['TakeMockPart']][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
+                $data_s['상위30%'][$val['TakeMockPart']][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];
+                $data_s['상위30%'][$val['TakeMockPart']][$val['MpIdx']]['adjust'] = $val['Top30AvgAdjustPoint'];
+                $data_default_s['표준편차'][$val['TakeMockPart']][$val['MpIdx']] = $val['StandardDeviation'];
+                $data_default_s['응시인원'][$val['TakeMockPart']][$val['MpIdx']] = $val['MemCount'];
+            }
+        }
 
         $this->load->view('mocktestNew/statistics/grade/detail', [
-            'product_info' => $product_info
+            'product_info' => $product_info,
+            'list_register_subject' => $list_register_subject,
+            'arr_take_mock_part' => $arr_take_mock_part,
+            'arr_subject_e' => $arr_subject_e,
+            'arr_subject_s' => $arr_subject_s,
+            'data_e' => $data_e,
+            'data_s' => $data_s,
+            'data_default_e' => $data_default_e,
+            'data_default_s' => $data_default_s,
+            'arr_total_avg' => $arr_total_avg
         ]);
     }
 
+    public function scoreMultiAjax()
+    {
+        $rules = [
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $formData = $this->_reqP(null, false);
+        $prod_code = element('prod_code', $formData);
+        $result = $this->regGradeModel->scoreMulti($prod_code);
+        $this->json_result($result, '처리완료되었습니다.', $result);
+    }
+
+    /**
+     * 답안 재검
+     */
+    public function reGradingAjax()
+    {
+        $rules = [
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $formData = $this->_reqP(null, false);
+        $prod_code = element('prod_code', $formData);
+        $result = $this->regGradeModel->reGrading($prod_code);
+        /*$this->json_result($result['ret_cd'], $result['ret_msg']);*/
+        $this->json_result($result, $result['ret_msg'], $result);
+    }
 
     /**
      * 조정점수반영

@@ -156,6 +156,7 @@
                     </ul>
                 </div>
             </div>
+
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="willbes-Txt NGR c_both mt20">
                     <div class="willbes-Txt-Tit NG">· 수강시작일 설정 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
@@ -204,7 +205,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 
@@ -226,7 +227,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 

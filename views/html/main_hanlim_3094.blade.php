@@ -130,9 +130,24 @@
         </div>
     </div>
 
+    {{--
     <div class="Section barBnr">
         <div class="widthAuto">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_1120x200.jpg" alt="배너명"></a>
+        </div>
+    </div>
+    --}}
+
+    <div class="Section lecBanner mt50">
+        <div class="widthAuto">
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115095837.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115102038.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200123131907.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128152955.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128153052.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200131165936.jpg" alt="배너명"></a></li>                
+            </ul>
         </div>
     </div>
 

@@ -159,6 +159,21 @@
 		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
         }
 
+        .lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center fixed; padding:100px 0 90px;}
+        .lecBanner li {display: inline; float:left; width:25%; text-align: center; margin-bottom:20px}
+        .lecBanner li a {display:block; width:260px; margin:0 auto;
+            transition: opacity .4s ease-in-out;
+        }
+        .lecBanner li a img {width: 100%;}
+        .lecBanner li a:hover {
+            -webkit-box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+            -moz-box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+            box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+        }
+        .lecBanner ul:hover a:not(:hover){    
+            opacity: 0.4; 
+        }
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -180,7 +195,7 @@
         <div class="evtCtnsBox wb_cts04">
             <p>플립(마우스 롤오버 반응)</p>
             <a href="#none" target="_blank">
-                <img src="https://police.willbes.net/public/uploads/willbes/banner/2019/1129/banner_20200115095259.jpg" title="평생0원PASS">    
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/banner_20200204092701.jpg" title="평생0원PASS">    
             </a>
         </div>
 
@@ -201,6 +216,19 @@
             <span class="sp01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_01.png">                    
             </span>
+        </div>
+
+        <div class="Section lecBanner mt50">
+            <div class="widthAuto">
+                <ul>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115095837.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115102038.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200123131907.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128152955.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128153052.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200131165936.jpg" alt="배너명"></a></li>                
+                </ul>
+            </div>
         </div>
 
     </div>

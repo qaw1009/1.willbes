@@ -62,25 +62,25 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <table id="list_ajax_table" class="table table-bordered">
+            <table id="list_ajax_table" class="table table-bordered" style="table-layout: fixed;">
                 <thead class="bg-odd">
                 <tr>
-                    <th rowspan="2" class="valign-middle">No</th>
+                    <th rowspan="2" class="valign-middle" style="width: 30px;">No</th>
                     <th rowspan="2" class="valign-middle">교수명</th>
                     <th rowspan="2" class="valign-middle" style="width: 100px;">상품구분</th>
                     <th rowspan="2" class="valign-middle" style="width: 160px;">상품명</th>
-                    <th rowspan="2" class="valign-middle">캠퍼스</th>
+                    <th rowspan="2" class="valign-middle" style="width: 60px;">캠퍼스</th>
                     <th rowspan="2" class="valign-middle" style="width: 160px;">단과반명</th>
-                    <th rowspan="2" class="valign-middle" style="width: 80px;">개강일</th>
-                    <th rowspan="2" class="valign-middle" style="width: 80px;">종강일</th>
-                    <th rowspan="2" class="valign-middle">인원</th>
+                    <th rowspan="2" class="valign-middle" style="width: 70px;">개강일</th>
+                    <th rowspan="2" class="valign-middle" style="width: 70px;">종강일</th>
+                    <th rowspan="2" class="valign-middle" style="width: 40px;">인원</th>
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
+                    <th rowspan="2" class="valign-middle" style="width: 70px;">결제수수료(E)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D-E)</th>
                     <th rowspan="2" class="valign-middle">정산금액(H)<br/>F*정산율</th>
                     <th colspan="2">세액공제</th>
-                    <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
+                    <th rowspan="2" class="valign-middle blue" style="width: 70px;">지급액<br/>H-(I+J)</th>
                     <th rowspan="2" class="valign-middle" style="width: 70px;">상세정보</th>
                 </tr>
                 <tr>

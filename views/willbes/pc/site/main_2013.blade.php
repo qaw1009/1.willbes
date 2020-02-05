@@ -103,7 +103,7 @@
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
                                                 <span>
-                                                서울 동작구 관악구 신림로 23길 16 일성트루엘 4층
+                                                서울 관악구 신림로 23길 16 일성트루엘 4층
                                             </span>
                                             </div>
                                             <div class="tel">

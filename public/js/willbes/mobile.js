@@ -49,6 +49,22 @@ $(function() {
     });
 });
 
+
+// 내강의실 학원강의 Script
+$(function() {
+    $('.w-lecList div a').click(function() {
+        var $off_pkg_list = $('.w-lecList ul');
+        if ($off_pkg_list.is(':hidden')) {
+            $off_pkg_list.show().css('visibility','visible');
+            $(this).text('▲');
+        } else {
+            $off_pkg_list.hide().css('visibility','hidden');
+            $(this).text('▼');
+        }
+    });
+});
+
+
 // 내강의실 온라인강좌 버튼 Script
 $(function() {
     $('.willbes-Open-Table .MoreBtn a').click(function() {
@@ -222,3 +238,4 @@ function link_go() {
         scrollTop: $("#goTop").offset().top
     }, 200);
 }
+

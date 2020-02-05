@@ -1375,7 +1375,6 @@ body.memBody #Footer {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;
     line-height: 16px;
-    margin-bottom:10px;
 }
 
 .lecTable .w-info span {
@@ -1388,7 +1387,7 @@ body.memBody #Footer {
     margin: 0 5px;
 }
 .lecTable .w-info.acad {
-    line-height: 30px;
+    line-height: 2;
 }
 .lecTable .w-file {
     font-size: 14px;
@@ -1532,7 +1531,18 @@ body.memBody #Footer {
     width: 20px;
     height: 20px;
 }
-
+.lecTable .w-lecList {
+    line-height: 1.8;
+    background: #f6f6f6;
+    color:#666;
+    padding:10px;
+    position: relative;
+}
+.lecTable .w-lecList div a { position: absolute; top:10px; right:5px; width: 20px; height: 20px; text-align: center;}
+.lecTable .w-lecList ul {display:none;}
+.lecTable .w-lecList li {
+    margin-left:15px; list-style: disc;
+}
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;

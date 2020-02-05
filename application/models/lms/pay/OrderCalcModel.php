@@ -787,6 +787,7 @@ class OrderCalcModel extends BaseOrderModel
 						on SPS.ProdCode = SP.ProdCode and SPS.SaleTypeCcd = "613001" and SPS.IsStatus = "Y" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"
 				where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
 					and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+					and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['normal'] . '", "' . $this->_adminpack_lecture_type_ccd['choice'] . '")
 					and SPD.ProfIdx = ?
 					and `SPL`.`'. $study_date_type .'` between ? and ?       
             ) as TA

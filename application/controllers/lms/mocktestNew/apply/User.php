@@ -26,6 +26,7 @@ class User extends BaseMocktest
 
         $arr_base['search_PayStatusCcd'] = $this->_reqG('search_PayStatusCcd');
         $arr_base['search_IsTake'] = $this->_reqG('search_IsTake');
+        $arr_base['search_takeArea'] = $this->_reqG('search_takeArea');
         $arr_base['search_fi'] = $this->_reqG('search_fi', true);
 
         $paymentStatus = $this->mockCommonModel->_groupCcd['paymentStatus'];

@@ -180,8 +180,9 @@
                 alert("이미 신청 하신 모의고사입니다.");return;
             @endif
 
+            //학원 + 마감인원 값이 있는 경우에만 체크
             if ($('input:radio[name="TakeForm"]:checked').val() == '690002') {
-                @if($all_pay_check >= $mock_data['ClosingPerson'])
+                @if(empty($mock_data['ClosingPerson']) === false && $all_pay_check >= $mock_data['ClosingPerson'])
                     alert("접수 마감된 모의고사입니다.");
                     return;
                 @endif

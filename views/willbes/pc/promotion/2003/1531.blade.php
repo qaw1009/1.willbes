@@ -34,11 +34,12 @@
 
         .wb_top {background:#49e49e url(https://static.willbes.net/public/images/promotion/2020/02/1531_top_bg.jpg) no-repeat center top;}
    
-        .wb_01 {background:#fff;position:relative;}
-        .wb_01_gif .lec1{position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:687px;}
-        .wb_01_gif .lec2{position:absolute;left:50%;top:50%;margin-left:-123px;margin-top:687px;}
-        .wb_01_gif .lec3{position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:871px;}
-        .wb_01_gif .lec4{position:absolute;left:50%;top:50%;margin-left:-123px;margin-top:871px;}
+        .wb_01 {background:#fff;}
+        .wb_01s {background:#fff url(https://static.willbes.net/public/images/promotion/2020/02/1531_01s_bg.jpg) no-repeat center top;position:relative;}
+        .wb_01_gif .lec1{position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:-120px;}
+        .wb_01_gif .lec2{position:absolute;left:50%;top:50%;margin-left:-122px;margin-top:-120px;}
+        .wb_01_gif .lec3{position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:64.5px;}
+        .wb_01_gif .lec4{position:absolute;left:50%;top:50%;margin-left:-122px;margin-top:64.5px;}
     
         
         .wb_02 {background:#efefef;position:relative;}
@@ -86,14 +87,18 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01.jpg" alt="문제풀이 교수진"/> 
-            <div class="evtCtnsBox wb_01_gif">
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_1.gif" class="lec1" alt="문제풀이 교수진"/> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_2.gif" class="lec2" alt="문제풀이 교수진"/> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_3.gif" class="lec3" alt="문제풀이 교수진"/> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_4.gif" class="lec4" alt="문제풀이 교수진"/>    
-            </div> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01.jpg" alt="문제풀이 교수진"/>           
         </div>
+
+        <div class="evtCtnsBox wb_01s">
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01s.jpg" alt="문제풀이 영상"/> 
+            <div class="evtCtnsBox wb_01_gif">
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_1.gif" class="lec1" alt="기미진 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_2.gif" class="lec2" alt="한덕현 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_3.gif" class="lec3" alt="조민주 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_4.gif" class="lec4" alt="김덕관 영상"/>    
+            </div> 
+        </div>        
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_02.jpg" alt="문제풀이 교수진" usemap="#map1531a" border="0" />

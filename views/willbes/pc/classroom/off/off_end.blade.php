@@ -102,19 +102,6 @@
                     </div>
                 </div>
                 <div id="Mypagetab2">
-                    {{--}}
-                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                        <div class="willbes-Lec-Search GM f_right">
-                            <div class="inputBox p_re">
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                                <button type="submit" onclick="" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    {{--}}
-
                     <div class="willbes-Lec-Table NG d_block c_both">
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>

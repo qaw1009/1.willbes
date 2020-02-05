@@ -65,15 +65,15 @@
             <table id="list_ajax_table" class="table table-bordered" style="table-layout: fixed;">
                 <thead class="bg-odd">
                 <tr>
-                    <th rowspan="2" class="valign-middle" style="width: 30px;">No</th>
+                    <th rowspan="2" class="valign-middle" style="width: 20px;">No</th>
                     <th rowspan="2" class="valign-middle">교수명</th>
                     <th rowspan="2" class="valign-middle" style="width: 100px;">상품구분</th>
                     <th rowspan="2" class="valign-middle" style="width: 160px;">상품명</th>
-                    <th rowspan="2" class="valign-middle" style="width: 60px;">캠퍼스</th>
+                    <th rowspan="2" class="valign-middle" style="width: 50px;">캠퍼스</th>
                     <th rowspan="2" class="valign-middle" style="width: 160px;">단과반명</th>
                     <th rowspan="2" class="valign-middle" style="width: 70px;">개강일</th>
                     <th rowspan="2" class="valign-middle" style="width: 70px;">종강일</th>
-                    <th rowspan="2" class="valign-middle" style="width: 40px;">인원</th>
+                    <th rowspan="2" class="valign-middle" style="width: 30px;">인원</th>
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle" style="width: 70px;">결제수수료(E)<br/>*안분율 적용</th>

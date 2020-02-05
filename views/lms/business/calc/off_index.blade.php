@@ -62,7 +62,7 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <table id="list_ajax_table" class="table table-bordered">
+            <table id="list_ajax_table" class="table table-bordered" style="table-layout: fixed">
                 <thead class="bg-odd">
                 <tr>
                     <th rowspan="2" class="valign-middle">No</th>

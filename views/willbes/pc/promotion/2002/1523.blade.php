@@ -40,7 +40,11 @@
             -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
             box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.31);
         }
-
+        .evt_03 {
+            padding:100px 0; background:#1f1812; 
+        }
+        .evt_03 h3 {color:#fff; font-size:40px; margin-bottom:40px}
+        .evt_03 span{color:#f9dc74}
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
         .newTopDday ul {width:1120px; margin:0 auto}
@@ -85,6 +89,11 @@
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1523_top.jpg" title="경찰학 장정훈 무료특강">
             <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1523_top_img.png" alt="꼭 들어보세요"></span>
+        </div>
+
+        <div class="evtCtnsBox evt_03 NSK-Black">
+            <h3><span>해양경찰학 만점</span>을 위해 시작합니다!</h3>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/IwdpAnq_CoU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt_01">

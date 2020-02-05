@@ -190,7 +190,7 @@
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
                                     <div class="form-group form-inline">
                                         <div class="col-md-11">
-                                            <input type="hidden" name="er_idx" value="{{$list_event_register['S'][0]['er_idx']}}">
+                                            <input type="hidden" name="er_idx" value="@if(empty($list_event_register['S']) === false){{$list_event_register['S'][0]['er_idx']}}@endif">
                                             <select class="form-control" id="person_limit_type" name="person_limit_type">
                                                 <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
                                                 <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>

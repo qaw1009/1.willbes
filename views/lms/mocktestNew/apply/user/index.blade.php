@@ -26,7 +26,7 @@
                         <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
                             <option value="">응시지역</option>
                             @foreach($arr_base['applyArea'] as $k => $v)
-                                <option value="{{$k}}">{{$v}}</option>
+                                <option value="{{$k}}" @if($arr_base['search_takeArea'] == $k) selected="selected" @endif>{{$v}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_IsTake" name="search_IsTake">

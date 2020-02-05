@@ -115,13 +115,13 @@
                             return (data === null) ? '없음' : data;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['paid']}}&search_fi='+row.ProdCode+'" target="_new"><u class="blue">'+ row.pay_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['paid']}}&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.pay_count +'</u></a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['refund']}}&search_fi='+row.ProdCode+'" target="_new"><u class="blue">'+ row.refund_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['refund']}}&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.refund_count +'</u></a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_fi='+row.ProdCode+'&search_IsTake=Y" target="_new"><u class="blue">'+ row.take_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'&search_IsTake=Y" target="_new"><u class="blue">'+ row.take_count +'</u></a>';
                         }},
                 ]
             });

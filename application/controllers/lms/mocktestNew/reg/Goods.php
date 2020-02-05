@@ -263,7 +263,7 @@ class Goods extends BaseMocktest
         if (empty($this->_reqP('TakeFormsCcd[]')) === false && in_array($this->mockCommonModel->_ccd['applyType_off'], $this->_reqP('TakeFormsCcd[]')) === true) {
             $rules = array_merge($rules, [
                 ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|required|is_natural_no_zero'],
-                ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|required|is_natural_no_zero'],
+                /*['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|required|is_natural_no_zero'],*/
             ]);
         }
         if ($this->validate($rules) === false) return;

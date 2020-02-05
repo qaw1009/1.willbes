@@ -108,11 +108,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="TakeAreas2CCds">OFF(학원) 응시지역2 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="TakeAreas2Ccds">OFF(학원) 응시지역2 <span class="required">*</span></label>
                     <div class="col-md-2">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area2'] as $key => $val)
-                                <input type="checkbox" class="flat" id="take_areas2_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
+                                <input type="checkbox" class="flat" id="take_areas2_{{$key}}" name="TakeAreas2Ccds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
                                 <label for="take_areas2_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>

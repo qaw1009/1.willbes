@@ -103,7 +103,8 @@
                 '{{ csrf_token_name() }}' : $regi_form_comment.find('input[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'PUT'
             };
-            sendAjax('{{ front_url($default_path.'/commentDel/') }}' + comment_idx, data, function(ret) {
+            {{-- sendAjax('{{ front_url($default_path.'/commentDel/') }}' + comment_idx, data, function(ret) { --}}
+            sendAjax('{{ front_url($default_path.'/commentDisuse/') }}' + comment_idx, data, function(ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
                     // location.reload();

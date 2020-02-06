@@ -33,13 +33,13 @@
                         </select>
 
                         <div class="checkbox ml-30">
-                            <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                            <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">공지 숨기기</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
+                    <label class="control-label col-md-1" for="search_value">제목/내용/닉네임</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
@@ -75,7 +75,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>복사</th>
+                    {{-- <th>복사</th> --}}
                     <th>NO</th>
                     <th>사이트</th>
                     <th>카테고리</th>
@@ -84,7 +84,7 @@
                     <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>HOT</th>
+                    <th>공지</th>
                     <th>사용</th>
                     <th>조회수</th>
                     <th>댓글수</th>
@@ -119,9 +119,9 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> HOT/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
+                    { text: '<i class="fa fa-copy mr-10"></i> 공지/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
 
-                    { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
+                    // { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
 
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/professor/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
@@ -135,13 +135,15 @@
                     }
                 },
                 columns: [
+                    {{--
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<input type="radio" class="flat" name="copy" value="' +row.BoardIdx+ '">';
                         }},
+                    --}}
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             if (row.IsBest == '1') {
-                                return 'BEST';
+                                return '공지';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }
@@ -194,7 +196,10 @@
                     {'data' : 'ReadCnt'},
                     {'data' : 'CommentCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            var rtn_str = '';
+                            console.log('row.RegType', row.RegType);
+                            if(row.RegType == '1') rtn_str = '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            return rtn_str;
                         }},
                 ],
             });
@@ -211,7 +216,7 @@
 
             // Best 적용
             $('.btn-is-best').on('click', function() {
-                if (!confirm('HOT/사용 상태를 적용하시겠습니까?')) {
+                if (!confirm('공지/사용 상태를 적용하시겠습니까?')) {
                     return;
                 }
 

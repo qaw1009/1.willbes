@@ -23,7 +23,7 @@ class ProfessorModel extends WB_Model
     ];
     private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3];     // 배너타입별 이미지 갯수
     private $_ccd = ['LearnPattern' => '615', 'ProdType' => '636'];
-    public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88', 'tcc' => '101'];
+    public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88', 'tcc' => '101', 'anonymous' => '111'];
 
     public function __construct()
     {
@@ -53,6 +53,7 @@ class ProfessorModel extends WB_Model
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['assignment'] . '") as IsAssignmentBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard
+                    , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '") as IsAnonymousBoard
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -460,6 +461,7 @@ class ProfessorModel extends WB_Model
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['assignment'] . '") as IsAssignmentBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '") as IsAnonymousBoard
                 , WP.wProfName, WP.wProfId, WP.wProfProfile, WP.wBookContent, WP.wIsUse 
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx and wIsStatus = "Y") as RegAdminName
                 , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName

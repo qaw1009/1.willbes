@@ -87,118 +87,84 @@
         {{-- 검색 결과 있을 경우--}}
         <div class="searchList">
             <ul class="searchListTap NG">
-                <li><a href="#tab01" class="on">전체 [<span>20</span>]</a></li>
+                <li><a href="#tab01" class="on">단강좌 [<span>20</span>]</a></li>
                 <li><a href="#tab02">무료강좌 [<span>6</span>]</a></li>
                 <li><a href="#tab03">추천패키지 [<span>5</span>]</a></li>
                 <li><a href="#tab04">선택패키지 [<span>5</span>]</a></li>
-                <li><a href="#tab05">기타 [<span>4</span>]</a></li>
             </ul>
             <div class="searchView">
                 <div id="tab01">
                     <div>
-                        <h4 class="NG">무료강좌</h4>
+                        <h4 class="NG">단강좌</h4>
                         <ul>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>                                
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl>
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 50,000원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                         </ul>
                     </div>
-
-                    <div>
-                        <h4 class="NG">추천패키지</h4>
-                        <ul>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="NG">선택패키지</h4>
-                        <ul>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="NG">기타</h4>
-                        <ul>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
 
                 <div id="tab02">
@@ -207,27 +173,69 @@
                         <ul>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
                             </li>
                         </ul>
                     </div>
@@ -238,24 +246,54 @@
                         <h4 class="NG">추천패키지</h4>
                         <ul>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                         </ul>
                     </div>
@@ -266,52 +304,57 @@
                         <h4 class="NG">선택패키지</h4>
                         <ul>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                             <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
                             </li>
                         </ul>
                     </div>
-                </div>
-
-                <div id="tab05">
-                    <div>
-                        <h4 class="NG">기타</h4>
-                        <ul>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                            <li>
-                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
-                                <div>형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · 수강료: 70,000원</div> 
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>   

@@ -176,6 +176,11 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
+            case "anonymous" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
+                ";
+                break;
         }
 
         if (empty($site_code) === false) {
@@ -674,6 +679,12 @@ class BoardModel extends WB_Model
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                ";
+                break;
+            case "anonymous" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                 ";
                 break;
         }

@@ -271,6 +271,50 @@ class RegGradeModel extends WB_Model
     }
 
     /**
+     * 정답제출
+     * @param array $formData
+     * @return array|bool
+     */
+    public function answerSave($formData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ProdCode = element('prod_code', $formData);
+            $MrIdx = element('mr_idx', $formData);
+            $MemIdx = element('mem_idx', $formData);
+
+            //삭제후 입력
+            $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+            if($this->_conn->delete($this->_table['mock_answerpaper'], $where) === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $insert_column = "
+                MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
+            ";
+            $select_column = "
+                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(LOCATE(Answer , RightAnswer), 'Y', 'N') AS IsWrong, MA.RegDatm
+            ";
+            $query = "
+                INSERT INTO {$this->_table['mock_answerpaper']} ({$insert_column})
+                SELECT {$select_column}
+                FROM {$this->_table['mock_answertemp']} AS MA
+                JOIN {$this->_table['mock_questions']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+                WHERE MemIdx = ".$MemIdx." AND ProdCode = ".$ProdCode." AND MrIdx = ".$MrIdx." ORDER BY MpIdx
+            ";
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('정답 제출에 실패했습니다.');
+            };
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 조정점수반영
      * @param $prod_code
      * @param $mode

@@ -43,7 +43,7 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-5" id="sc_subject" name="sc_subject">
+                        <select class="form-control mr-5" id="search_subject" name="search_subject">
                             <option value="">과목</option>
                             @foreach($arr_base['subject'] as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
@@ -57,10 +57,25 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group form-inline">
+                    <label class="col-md-1 control-label">상품검색</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-md-1 control-label">회원검색</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_member_fi" name="search_member_fi" value=""> 아이디, 이름 검색 가능
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-center">
+            <div class="col-md-1 text-right">
+                <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
+            </div>
+            <div class="col-xs-9 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
@@ -106,6 +121,7 @@
         $(document).ready(function() {
             $search_form.find('#search_cateD1').chained('#search_site_code');
             $search_form.find('#search_cateD2').chained('#search_cateD1');
+            $search_form.find('#search_subject').chained('#search_site_code');
 
             // DataTables
             $datatable = $list_table.DataTable({
@@ -122,15 +138,15 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="">' + row.MemName + '(' + row.MemId + ')</span>';
+                            return '<a class="blue" href="{{ site_url('/member/manage/detail/') }}'+row.MemIdx+'" target="_blank">' + row.MemName + '<br>(' + row.MemId + ')</a>';
                         }},
                     {'data' : 'Phone', 'class': 'text-center'},
                     {'data' : 'TakeNumber', 'class': 'text-center'},
-                    {'data' : 'TakeFormType', 'class': 'text-center'},
+                    {'data' : 'TakeFormName', 'class': 'text-center'},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '[' + row.ProdCode + '] ' + row.ProdName;
                         }},
                     {'data' : 'CateName', 'class': 'text-center'},
                     {'data' : 'TakeMockPartName', 'class': 'text-center'},
@@ -139,9 +155,22 @@
                     {'data' : 'AdjustSum', 'class': 'text-center'},
                     {'data' : 'ExamRegDatm', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.AdjustSum > 0 ? '<span class="blue underline-link act-view"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MrIdx+ '" />확인</span>':'';
+                            /*return row.AdjustSum > 0 ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="'+row.ProdCode+'" data-mr-idx="'+row.MrIdx+'">확인</a>' : '';*/
+                            return (row.tempCnt > 0 || row.answerCnt > 0) ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="' + row.ProdCode + '" data-mr-idx="' + row.MrIdx + '">확인</a>' : '';
                         }},
                 ]
+            });
+
+            $list_table.on('click', '.act-view', function() {
+                location.href='{{ site_url('/mocktestNew/statistics/memberPrivate/memberGrades/') }}'+$(this).data('prod-code')+'/'+$(this).data('mr-idx')+dtParamsToQueryString($datatable);
+            });
+
+            // 엑셀다운로드
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/mocktestNew/statistics/memberPrivate/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

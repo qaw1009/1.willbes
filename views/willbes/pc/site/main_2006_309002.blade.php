@@ -32,15 +32,13 @@
                     29년을 이어온 대표전문학원, <strong class="NSK-Black"><span class="tx-color">윌비스 한림법학원</span></strong>이 함께 합니다!!
                 </div>
                 <ul>
-                    @for($i=1; $i<=20; $i++)
-                        @if(isset($data['arr_main_banner']['메인_리스트'.$i]) === true)
+                    @if(empty($data['arr_main_banner']['메인_리스트']) === false)
+                        @foreach($data['arr_main_banner']['메인_리스트'] as $key => $val)
                             <li>
-                                <div class="bSlider">
-                                    {!! banner_html($data['arr_main_banner']['메인_리스트'.$i], 'slider') !!}
-                                </div>
+                                {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
                             </li>
-                        @endif
-                    @endfor
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

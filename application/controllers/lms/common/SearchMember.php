@@ -44,6 +44,9 @@ class SearchMember extends \app\controllers\BaseController
         // 검색어가 있는 경우에만 조회
         if (empty($this->_reqP('search_value')) === false) {
             $arr_condition = [
+                'EQ' => [
+                    'M.IsStatus' => 'Y'
+                ],
                 'ORG' => [
                     'LKB' => [
                         'M.MemName' => $this->_reqP('search_value'),

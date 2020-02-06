@@ -436,6 +436,47 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     }
 
     /**
+     * 게시글 미사용 처리
+     * @param $idx
+     * @param $reply_status_ccd_complete
+     * @return array|bool
+     */
+    public function boardDisuse($idx, $reply_status_ccd_complete = '')
+    {
+        $this->_conn->trans_begin();
+        try {
+            $board_idx = $idx;
+            $result = $this->findBoard($board_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsUse' => 'N',
+                'UpdMemIdx'=> $this->session->userdata('mem_idx'),
+                'UpdMemId'=> $this->session->userdata('mem_id'),
+                'UpdMemName'=> $this->session->userdata('mem_name'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardIdx', $board_idx)
+                ->where('IsStatus', 'Y');
+            if (empty($reply_status_ccd_complete) === false) {
+                $is_update = $is_update->where_not_in('ReplyStatusCcd', $reply_status_ccd_complete);
+            }
+            $is_update = $is_update->update($this->_table['lms_board']);
+
+            if ($is_update === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 조건에 따른 카운트 값 리턴
      * @param $arr_condition
      * @return mixed

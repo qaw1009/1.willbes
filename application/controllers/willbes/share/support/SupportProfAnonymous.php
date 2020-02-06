@@ -23,7 +23,7 @@ class SupportProfAnonymous extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 인덱스
+     * 익명 자유게시판 인덱스
      * @param array $params
      */
     public function index($params = [])
@@ -84,7 +84,8 @@ class SupportProfAnonymous extends BaseSupport
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword,
-                    'b.Content' => $s_keyword
+                    'b.Content' => $s_keyword,
+                    'b.RegNickName' => $s_keyword
                 ]
             ]
         ];
@@ -164,7 +165,7 @@ class SupportProfAnonymous extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 등록/수정 폼
+     * 익명 자유게시판 등록/수정 폼
      */
     public function create()
     {
@@ -346,7 +347,7 @@ class SupportProfAnonymous extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 등록/수정
+     * 익명 자유게시판 등록/수정
      */
     public function store()
     {
@@ -389,7 +390,7 @@ class SupportProfAnonymous extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 삭제
+     * 익명 자유게시판 삭제
      */
     public function delete()
     {
@@ -475,6 +476,40 @@ class SupportProfAnonymous extends BaseSupport
         if ($method == 'modify') {
             unset($input_data['board']['SiteCode']);
         }
-        return$input_data;
+        return $input_data;
     }
+
+    /**
+     * 익명 자유게시판 미사용 처리
+     */
+    public function disuse()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $s_is_display = element('s_is_display',$arr_input);
+        $s_is_my_contents = element('s_is_my_contents',$arr_input);
+        $view_type = element('view_type',$arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 's_keyword='.urlencode($s_keyword);
+        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
+        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
+        $get_params .= '&page='.$page;
+
+        $result = $this->supportBoardTwoWayFModel->boardDisuse($board_idx);
+
+        if (empty($result['ret_status']) === false) {
+            show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
+        }
+
+        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+    }    
 }

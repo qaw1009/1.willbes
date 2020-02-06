@@ -150,12 +150,13 @@ class Anonymous extends BaseBoard
                 'LB.ProfIdx' => $prof_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
-                'LB.IsUse' => $this->_reqP('search_is_use'),
+                'LB.IsUse' => $this->_reqP('search_is_use')
             ],
             'ORG' => [
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
+                    'LB.RegNickName' => $this->_reqP('search_value')
                 ]
             ]
         ];
@@ -183,7 +184,7 @@ class Anonymous extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.RegNickName, MEM.MemId, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.RegNickName, MEM.MemId, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
         ';

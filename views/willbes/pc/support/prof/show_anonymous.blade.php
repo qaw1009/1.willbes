@@ -9,9 +9,9 @@
             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                 <colgroup>
                     <col style="width: 150px;">
-                    <col style="width: 70px;">
-                    <col style="width: 620px;">
-                    <col style="width: 160px;">
+                    <col width="*">
+                    <col style="width: 150px;">
+                    <col style="width: 130px;">
                 </colgroup>
                 <thead>
                 <tr><th colspan="4" class="w-list tx-left pl20"><strong>{{$data['Title']}}</strong></th></tr>
@@ -21,7 +21,7 @@
                         <span class="row-line">|</span>
                     </td>
                     <td class="w-lec"><span class="row-line">|</span></td>
-                    <td class="w-date">{{$data['RegDatm']}}</td>
+                    <td class="subTit tx-left pl20">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                     <td class="subTit tx-left pl20">조회수 {{$data['TotalReadCnt']}}</td>
                 </tr>
                 </thead>
@@ -52,7 +52,12 @@
 
             <div class="search-Btn mt20 mb20 h36 p_re">
                 @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx'))
+                    {{--
                     <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">
+                        <a href="#none" class="tx-purple-gray">삭제</a>
+                    </div>
+                    --}}
+                    <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_disuse">
                         <a href="#none" class="tx-purple-gray">삭제</a>
                     </div>
                     <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center" id="btn_modify">
@@ -83,9 +88,17 @@
             });
 
             //삭제
+            {{--
             $('#btn_del').click(function() {
                 if (!confirm('삭제하시겠습니까?')) { return; }
                 location.href = '{!! front_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
+            });
+            --}}
+
+            //미사용
+            $('#btn_disuse').click(function() {
+                if (!confirm('삭제하시겠습니까?')) { return; }
+                location.href = '{!! front_url($default_path.'/disuse?'.$get_params.'&board_idx='.$board_idx) !!}';
             });
         });
     </script>

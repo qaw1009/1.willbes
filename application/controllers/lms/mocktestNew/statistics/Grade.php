@@ -49,10 +49,7 @@ class Grade extends BaseMocktest
             'ORG' => [
                 'LKB' => [
                     'PD.ProdName' => $this->_reqP('search_fi', true),
-                    'A.wAdminName' => $this->_reqP('search_fi', true),
-                    'PD.SaleStartDatm' => $this->_reqP('search_fi', true),
-                    'PD.SaleEndDatm' => $this->_reqP('search_fi', true),
-                    'PS.RealSalePrice' => $this->_reqP('search_fi', true),
+                    'PD.ProdCode' => $this->_reqP('search_fi', true)
                 ]
             ],
         ];
@@ -213,6 +210,25 @@ class Grade extends BaseMocktest
         $prod_code = element('prod_code', $formData);
         $result = $this->regGradeModel->reGrading($prod_code);
         /*$this->json_result($result['ret_cd'], $result['ret_msg']);*/
+        $this->json_result($result, $result['ret_msg'], $result);
+    }
+
+    /**
+     * 정답제출
+     */
+    public function answerSaveAjax()
+    {
+        $rules = [
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required'],
+            ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required'],
+            ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->regGradeModel->answerSave($this->_reqP(null, false));
         $this->json_result($result, $result['ret_msg'], $result);
     }
 

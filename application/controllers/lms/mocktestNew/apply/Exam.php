@@ -38,17 +38,17 @@ class Exam extends BaseMocktest
     {
         $arr_condition = [
             'EQ' => [
-                'p.SiteCode' => $this->input->post('search_site_code'),
-                'pm.MockYear' => $this->input->post('search_year'),
-                'pm.MockRotationNo' => $this->input->post('search_round'),
-                'mr.TakeArea' => $this->input->post('search_TakeArea'),
+                'p.SiteCode' => $this->_reqP('search_site_code'),
+                'pm.MockYear' => $this->_reqP('search_year'),
+                'pm.MockRotationNo' => $this->_reqP('search_round'),
+                'mr.TakeArea' => $this->_reqP('search_takeArea'),
             ],
             'BET' => [
             ],
             'ORG' => [
                 'LKB' => [
-                    'p.ProdName' => $this->input->post('search_fi', true),
-                    'p.ProdCode' => $this->input->post('search_fi', true),
+                    'p.ProdName' => $this->_reqP('search_fi', true),
+                    'p.ProdCode' => $this->_reqP('search_fi', true),
                 ]
             ],
         ];
@@ -70,17 +70,17 @@ class Exam extends BaseMocktest
         $arr_condition = [
             'EQ' => [
                 'p.IsStatus' => 'Y',
-                'p.SiteCode' => $this->input->post('search_site_code'),
-                'pm.MockYear' => $this->input->post('search_year'),
-                'pm.MockRotationNo' => $this->input->post('search_round'),
-                'mr.TakeArea' => $this->input->post('search_TakeArea'),
+                'p.SiteCode' => $this->_reqP('search_site_code'),
+                'pm.MockYear' => $this->_reqP('search_year'),
+                'pm.MockRotationNo' => $this->_reqP('search_round'),
+                'mr.TakeArea' => $this->_reqP('search_takeArea'),
             ],
             'BET' => [
             ],
             'ORG' => [
                 'LKB' => [
-                    'p.ProdName' => $this->input->post('search_fi', true),
-                    'p.ProdCode' => $this->input->post('search_fi', true),
+                    'p.ProdName' => $this->_reqP('search_fi', true),
+                    'p.ProdCode' => $this->_reqP('search_fi', true),
                 ]
             ],
         ];

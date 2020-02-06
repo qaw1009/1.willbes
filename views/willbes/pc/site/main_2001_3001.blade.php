@@ -80,7 +80,7 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_khj.jpg" title="김현정">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50129', 'OT');">▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50748', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/professor/show/cate/3001/prof-idx/50748/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>

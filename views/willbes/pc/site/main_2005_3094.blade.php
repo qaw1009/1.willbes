@@ -23,9 +23,28 @@
                 </div>
             </div>
         </div>
+        {{--
         <div class="Section barBnr">
             <div class="widthAuto">
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
+        --}}
+        <div class="Section lecBanner mt50">
+            <div class="widthAuto">
+                <div class="copyTit NSK-Thin mb50">
+                    꿈을 향한 소중한 첫 걸음부터, <strong class="NSK-Black"><span class="tx-color">합격의 순간</span></strong>까지!<br />
+                    29년을 이어온 대표전문학원, <strong class="NSK-Black"><span class="tx-color">윌비스 한림법학원</span></strong>이 함께 합니다!!
+                </div>
+                <ul>
+                    @if(empty($data['arr_main_banner']['메인_리스트']) === false)
+                        @foreach($data['arr_main_banner']['메인_리스트'] as $key => $val)
+                            <li>
+                                {!! banner_html([0 => $val], 'slider') !!}
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
             </div>
         </div>
 

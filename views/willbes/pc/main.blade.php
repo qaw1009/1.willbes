@@ -140,6 +140,7 @@
                             </div>
                         </a>
                     </li>
+                    {{--
                     <li>
                         <a href="http://willbesedu.or.kr" target="_blank">
                             <div class="wTit">
@@ -150,7 +151,8 @@
                                 <strong>윌비스 고시학원 출석학점은행</strong>
                             </div>
                         </a>
-                    </li>                        
+                    </li>     
+                    --}}                   
                 </ul>
             </div>
         </div>

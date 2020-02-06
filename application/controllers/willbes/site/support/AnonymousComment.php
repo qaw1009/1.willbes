@@ -99,4 +99,27 @@ class AnonymousComment extends \app\controllers\FrontController
         }
         $this->json_result($result, '삭제되었습니다.', $result);
     }
+
+    /**
+     * 댓글 미사용 처리
+     * @param array $params
+     */
+    public function commentDisuse($params = [])
+    {
+        $comment_idx = $params[0];
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($comment_idx) === true) {
+            $result = false;
+        } else {
+            $result = $this->baseSupportFModel->disuseComment($comment_idx);
+        }
+        $this->json_result($result, '삭제되었습니다.', $result);
+    }
 }

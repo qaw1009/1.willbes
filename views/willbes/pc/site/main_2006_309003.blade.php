@@ -35,7 +35,7 @@
                     @if(empty($data['arr_main_banner']['메인_리스트']) === false)
                         @foreach($data['arr_main_banner']['메인_리스트'] as $key => $val)
                             <li>
-                                {!! banner_html($data['arr_main_banner']['메인_리스트'], 'slider') !!}
+                                {!! banner_html([0 => $val], 'slider') !!}
                             </li>
                         @endforeach
                     @endif

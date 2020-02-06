@@ -377,7 +377,7 @@
 
 /*고등고시, 자격증 배너*/
 .lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center fixed; padding:90px 0;}
-.lecBanner .copyTit {color:#fff !important}
+.lecBanner .copyTit {color:#fff !important; text-shadow: 5px 5px 5px 1px rgba(0,0,0,0.3);}
 .lecBanner li {display: inline; float:left; width:25%; text-align: center; margin-bottom:20px}
 .lecBanner li a {display:block; width:260px; margin:0 auto;
     transition: opacity .4s ease-in-out;

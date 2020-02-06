@@ -377,11 +377,13 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
 
             // 파일 수정
-            $reg_type = 0;              //0:일반유저등록, 1:관리자등록
-            $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
-            $is_attach = $this->modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
-            if ($is_attach !== true) {
-                throw new \Exception(empty($is_attach['ret_msg']) === true ? '파일 등록에 실패했습니다.' : $is_attach['ret_msg']);
+            if(empty($_FILES) === false) {
+                $reg_type = 0;              //0:일반유저등록, 1:관리자등록
+                $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
+                $is_attach = $this->modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
+                if ($is_attach !== true) {
+                    throw new \Exception(empty($is_attach['ret_msg']) === true ? '파일 등록에 실패했습니다.' : $is_attach['ret_msg']);
+                }
             }
 
             $this->_conn->trans_commit();

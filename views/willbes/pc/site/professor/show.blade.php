@@ -181,6 +181,7 @@
                     @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goUrl('tab', 'material');">학습자료실</a></li>@endif
                     @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
                     @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goUrl('tab', 'tcc');">{{$data['AppellationCcdName']}} TCC</a></li>@endif
+                    @if($data['IsAnonymousBoard'] == 'Y')<li><a href="#none" id="hover_anonymous" onclick="goUrl('tab', 'anonymous');">자유게시판</a></li>@endif
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">

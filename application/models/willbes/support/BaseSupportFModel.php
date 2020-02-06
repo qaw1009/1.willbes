@@ -319,6 +319,37 @@ class BaseSupportFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 댓글 미사용 처리
+     * @param $comment_idx
+     * @return array|bool
+     */
+    public function disuseComment($comment_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->_findCommentData($comment_idx, 'BoardCmtIdx');
+            if (empty($result)) {
+                throw new \Exception('조회된 댓글이 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsUse' => 'N',
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardCmtIdx', $comment_idx)->where('IsStatus', 'Y')->update($this->_table['lms_board_r_comment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
     private function _findCommentData($idx, $column = '*')
     {
         $from = "

@@ -28,7 +28,8 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a><br> 
+                        <span>[영어]</span>                   
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">안성호</a>

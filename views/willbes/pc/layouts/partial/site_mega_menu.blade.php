@@ -28,9 +28,8 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a><br> 
-                        <span>[영어]</span>                   
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a><br>                 
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}" class="ml40">이아림</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">안성호</a>
                     </li>
@@ -232,6 +231,20 @@
             </div>
 
             <div class="prof-drop-Box">
+                <h5>7급 PSAT</h5>
+                <ul>
+                    <li>
+                        <span>[언어논리]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">이나우</a>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">한승아</a>
+                    </li>
+                    <li>
+                        <span>[자료해석]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">석치수</a>
+                        <span>[상황판단]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">박준범</a>
+                    </li>
+                </ul>
                 <h5>기술직</h5>
                 <ul>
                     <li>

@@ -146,6 +146,7 @@
                             <input type="checkbox" id="use_board4" name="use_board[]" class="flat" value="{{ $arr_bm_idx['tpass'] }}" @if($data['IsTpassBoard'] == 'Y') checked="checked" @endif/> <label for="use_board4" class="input-label">T-pass자료실</label>
                             <input type="checkbox" id="use_board5" name="use_board[]" class="flat" value="{{ $arr_bm_idx['assignment'] }}" @if($data['IsAssignmentBoard'] == 'Y') checked="checked" @endif/> <label for="use_board5" class="input-label">참삭게시판</label>
                             <input type="checkbox" id="use_board6" name="use_board[]" class="flat" value="{{ $arr_bm_idx['tcc'] }}" @if($data['IsTccBoard'] == 'Y') checked="checked" @endif/> <label for="use_board6" class="input-label">TCC게시판</label>
+                            <input type="checkbox" id="use_board7" name="use_board[]" class="flat" value="{{ $arr_bm_idx['anonymous'] }}" @if($data['IsAnonymousBoard'] == 'Y') checked="checked" @endif/> <label for="use_board7" class="input-label">자유게시판</label>
                         </div>
                     </div>
                     <div class="col-md-4">

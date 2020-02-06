@@ -14,7 +14,7 @@ class ProfessorFModel extends WB_Model
 
     // 교수 게시판관리 식별자
     private $_bm_idx = [
-        'notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'tcc' => '101'
+        'notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'tcc' => '101', 'anonymous' => '111'
     ];
 
     public function __construct()
@@ -57,6 +57,7 @@ class ProfessorFModel extends WB_Model
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '") as IsAnonymousBoard
                 , (Select Sc.CcdName From '. $this->_table['code'].' as Sc Where Sc.Ccd = Pf.AppellationCcd And Sc.IsStatus=\'Y\' And Sc.IsUse=\'Y\') As AppellationCcdName
                 ' . $add_column;
         }

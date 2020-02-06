@@ -270,6 +270,7 @@ class BaseSupportFModel extends WB_Model
             $inputData = [
                 'BoardIdx' => $requestData['board_idx'],
                 'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'RegNickName' => empty($requestData['reg_nick_name']) === false ? $requestData['reg_nick_name'] : null,
                 'RegType' => '0',
                 'Comment' => $requestData['comment'],
                 'RegIp' => $this->input->ip_address()

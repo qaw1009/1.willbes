@@ -11889,6 +11889,9 @@ table.acadlecInfoPackageTable tr.Top td {
 .searchView li a:hover {color:#000}
 .searchView li div {color:#666; margin-top:5px}
 .searchView li:last-child {border:0}
+.searchView dl {margin-top:5px}
+.searchView dt {margin-right:5px}
+.searchView dt span {vertical-align: top;}
 .searchList:after {content:""; display:block; clear:both}
 
 

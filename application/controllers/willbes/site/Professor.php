@@ -165,7 +165,7 @@ class Professor extends \app\controllers\FrontController
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input,$data['OnLecViewCcd']);
 
         // 게시판 사용 유무에 탭 버튼 개수 설정
-        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard']);
+        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard'], $data['IsAnonymousBoard']);
         $tabUseCount = 3;
         foreach ($temp_UseBoardJson as $key => $val) {
             if ($val == 'Y') {
@@ -174,7 +174,6 @@ class Professor extends \app\controllers\FrontController
         }
         $data['tabUseCount'] = $tabUseCount;
 
-
         //선택한 직렬값이 없을경우
         if(empty(element('series', $arr_input)) == true) {
             $arr_input['series'] = empty(element('selected_series', $tab_data)) == true ? '' :  $tab_data['selected_series'];
@@ -182,7 +181,7 @@ class Professor extends \app\controllers\FrontController
 
         // 게시판식별자 초기화
         unset($arr_input['board_idx']);
-        
+
         $this->load->view('site/professor/show', [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
@@ -679,6 +678,32 @@ class Professor extends \app\controllers\FrontController
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=prof';
 
+        $data = [
+            'frame_path' => $frame_path,
+            'frame_params' => $frame_params
+        ];
+        return $data;
+    }
+
+    /**
+     * 익명 자유게시판 탭
+     * @param int $prof_idx [교수식별자]
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param array $arr_input
+     * @return array
+     */
+    private function _tab_anonymous($prof_idx, $wprof_idx, $arr_input)
+    {
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+
+        // iframe list, show 분기 처리
+        if (empty(element('board_idx', $arr_input)) === false) {
+            $frame_path = '/prof/anonymous/show';
+            $frame_params .= '&view_type=prof'.'&board_idx='.element('board_idx', $arr_input);
+        } else {
+            $frame_path = '/prof/anonymous/index';
+        }
+        $frame_params .= '&view_type=prof';
         $data = [
             'frame_path' => $frame_path,
             'frame_params' => $frame_params

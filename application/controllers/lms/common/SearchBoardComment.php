@@ -35,7 +35,7 @@ class SearchBoardComment extends \app\controllers\BaseController
         ];
 
         $column = '
-            a.BoardCmtIdx, a.BoardIdx, a.RegType, a.Comment, a.IsUse, a.IsStatus, a.RegDatm, a.RegMemIdx, a.RegAdminIdx, a.RegIp, a.UpdDatm, a.UpdMemIdx, a.UpdAdminIdx, a.UpdAdminDatm,
+            a.BoardCmtIdx, a.BoardIdx, a.RegType, a.Comment, a.IsUse, a.IsStatus, a.RegDatm, a.RegNickName, a.RegMemIdx, a.RegAdminIdx, a.RegIp, a.UpdDatm, a.UpdMemIdx, a.UpdAdminIdx, a.UpdAdminDatm,
             b.MemId, b.MemName, c.wAdminName AS RegAdminName, d.wAdminName AS UpdAdminName
         ';
 
@@ -44,6 +44,14 @@ class SearchBoardComment extends \app\controllers\BaseController
 
         if ($count > 0) {
             $list = $this->boardModel->listAllBoardForComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.BoardCmtIdx' => 'DESC'], $column);
+        }
+
+        //XSS 방지
+        if(empty($list) === false) {
+            foreach ($list as $key => $val) {
+                if(empty($val['Comment']) === false) $list[$key]['Comment'] = htmlspecialchars($val['Comment']);
+                if(empty($val['RegNickName']) === false) $list[$key]['RegNickName'] = htmlspecialchars($val['RegNickName']);
+            }
         }
 
         return $this->response([

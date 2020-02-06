@@ -137,7 +137,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/161586" target="_blank">
+                        <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/02/1534_01_02_b.jpg"  alt="형법 김원욱" />
                         </a>
                     </li>

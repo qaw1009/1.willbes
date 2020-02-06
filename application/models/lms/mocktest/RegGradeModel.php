@@ -510,7 +510,7 @@ class RegGradeModel extends WB_Model
                    (SELECT COUNT(*) FROM {$this->_table['mockRegisterR']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode) AS KCNT,
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-                   C1.CateName, C1.IsUse AS IsUseCate, IsDisplay, GradeOpenDatm
+                   C1.CateName, C1.IsUse AS IsUseCate, IsDisplay, MP.GradeOpenDatm
         ";
         $from = "
             FROM 

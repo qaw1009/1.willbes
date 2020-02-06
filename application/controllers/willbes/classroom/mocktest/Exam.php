@@ -226,7 +226,7 @@ class Exam extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'prod_code', 'label' => '상품토드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
             ['field' => 'log_idx', 'label' => '로그식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'mp_idx', 'label' => '과목식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'mq_idx', 'label' => '항목식별자', 'rules' => 'trim|required|integer'],
@@ -249,7 +249,7 @@ class Exam extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'prod_code', 'label' => '상품토드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
             ['field' => 'log_idx', 'label' => '로그식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'mp_idx', 'label' => '과목식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'remain_sec', 'label' => '남은시간', 'rules' => 'trim|required|integer']

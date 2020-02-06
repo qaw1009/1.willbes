@@ -49,6 +49,12 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group form-inline">
+                    <label class="col-md-1 control-label">상품검색</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 모의고사명, 코드 검색 가능
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

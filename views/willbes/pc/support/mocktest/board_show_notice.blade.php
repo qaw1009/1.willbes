@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="Container" class="subContainer widthAuto c_both">
-        @if ($default_path == 'mocktestNew')
+        @if ($default_path == 'mockTestNew')
             @include('willbes.pc.layouts.partial.site_menu')
         @else
             @include('willbes.pc.layouts.partial.site_tab_menu')
@@ -12,7 +12,7 @@
         </div>
 
         <div class="Content p_re">
-            @if ($default_path == 'mocktestNew')
+            @if ($default_path == 'mockTestNew')
                 <div class="willbes-Mocktest INFOZONE c_both">
                     <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                         · 모의고사
@@ -26,7 +26,7 @@
                 <div class="LeclistTable">
                     <div class="willbes-Mock-Subject NG">
                         · 이의제기
-                        <div class="subBtn mock black f_right"><a href="{{front_url('/'.$default_path . ($default_path == 'mocktestNew' ? '/board/cate/' . $__cfg['CateCode'] : ''))}}">전체 모의고사 목록</a></div>
+                        <div class="subBtn mock black f_right"><a href="{{front_url('/'.$default_path . ($default_path == 'mockTestNew' ? '/board/cate/' . $__cfg['CateCode'] : ''))}}">전체 모의고사 목록</a></div>
                     </div>
                     <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
@@ -99,7 +99,7 @@
 
             </div>
         </div>
-        @if ($default_path == 'mocktestNew')
+        @if ($default_path == 'mockTestNew')
             {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
         @else
             {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}

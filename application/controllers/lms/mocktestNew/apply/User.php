@@ -8,6 +8,7 @@ class User extends BaseMocktest
     protected $temp_models = array('mocktestNew/applyUser');
     protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+    private $_paymentStatus_use = ['676001','676006'];
 
     public function __construct()
     {
@@ -38,7 +39,11 @@ class User extends BaseMocktest
         $applyAreaTmp1 = array_map(function($v) { return '[지역1] '. $v; }, $codes[$applyArea1]);
         $applyAreaTmp2 = array_map(function($v) { return '[지역2] '. $v; }, $codes[$applyArea2]);
 
-        $arr_base['paymentStatus'] = $codes[$paymentStatus];
+        foreach ($this->_paymentStatus_use as $key => $val) {
+            if (empty($codes[$paymentStatus][$val]) === false) {
+                $arr_base['paymentStatus'][$val] = $codes[$paymentStatus][$val];
+            }
+        }
         $arr_base['applyType'] = $codes[$applyType];
         $arr_base['applyArea'] = $applyAreaTmp1 + $applyAreaTmp2;
 

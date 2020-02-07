@@ -132,14 +132,14 @@
                 alert("로그인 후 이용하실 수 있습니다.");
             @else
                 if(order_prod == '0') {
-                    url = '{{front_url('/mocktestNew/apply_modal/')}}' + 'prod-code/' + prod_code;
+                    url = '{{front_url('/mockTestNew/apply_modal/')}}' + 'prod-code/' + prod_code;
                     var ele_id = 'mock_apply';
                     var data = { 'ele_id' : ele_id };
                     sendAjax(url, data, function(ret) {
                         $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                     }, showAlertError, false, 'GET', 'html');
                 } else {
-                    url = '{{front_url('/mocktestNew/apply_order/')}}' + order_prod;
+                    url = '{{front_url('/mockTestNew/apply_order/')}}' + order_prod;
                     window.open(url, '_blank', 'width=755, height=845, scrollbars=yes, resizable=no');
                 }
             @endif

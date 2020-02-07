@@ -1,4 +1,4 @@
-<div class="Section Section4_hl mb50">
+    <div class="Section Section4_hl mb50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
             <div class="noticeTabs campus c_both">

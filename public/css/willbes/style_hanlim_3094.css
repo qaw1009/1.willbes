@@ -329,54 +329,7 @@
     background: url("../../img/willbes/cop_acad/icon_rq09.png") no-repeat 3px center;
 }
 
-/*캠퍼스 메인 오시는 길*/
-.Section4_hl {
-    width: 1120px !important;
-    margin: 0 auto !important;
-}
-.Section4_hl .noticeTabs {
-    width: 100% !important;
-}
-.Section4_hl .map_img {
-    position: relative;
-    float: left !important;
-    width: 698px;
-    height: 328px;
-    overflow: hidden;
-}
-.Section4_hl .map_img img {
-    position: absolute;
-    left:50%;
-    margin-left:-349px;
-}
 
-.Section4_hl .campus_info {
-    position: relative;
-    float: right !important;
-    width: 320px;
-    height: 328px;
-}
-.Section4_hl .campus_info dl dt {
-    border-top: 1px solid #e3e3e3;
-    padding: 25px 0;
-}
-.Section4_hl .campus_info dl dt:first-child {
-    border-top: none;
-    padding: 0 0 25px;
-}
-.Section4_hl .campus_info .btn a {
-    display: inline-block; 
-    font-size: 17px; 
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    padding: 0;
-    width: 168px;
-    margin-right: 5px;
-    color: #000;
-    text-align: center;
-    border: 1px solid #000;    
-}
 /* Guide Container */
 /*수험가이드*/
 .tabShow.tab_gosi_Guide {

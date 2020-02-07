@@ -28,7 +28,7 @@ class MockTestNew extends SupportMockTest
      */
     public function info()
     {
-        $this->load->view('site/MockTestNew/info',[
+        $this->load->view('site/mocktestNew/info',[
             'page_type' => 'info'
         ]);
     }

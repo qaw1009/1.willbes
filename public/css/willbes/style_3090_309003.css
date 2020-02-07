@@ -3,13 +3,13 @@
 .value .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .value .topBanner p img {width:100%}
 
-.value .menu-List .Tit {color: #b85712;}
-.Menu .menu-List li.value > a {
-    color: #b85712;
+.value .menu-List .Tit {color: #d39e02;}
+.value .Menu .menu-List li.job > a {
+    color: #d39e02;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.value > a .arrow-Btn {
+.value .Menu .menu-List li.job > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -19,7 +19,7 @@
 
 /*********************************************     Main Container     *********************************************/
 .value .Depth .depth:last-child strong {
-    color: #b85712;
+    color: #d39e02;
 }
 
 /* Main Container : MainVisual */
@@ -113,7 +113,7 @@
 .value .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .value .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .value .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #d39e02 !important;
 }
 
 /**/
@@ -153,7 +153,7 @@
 .value .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .value .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .value .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #d39e02 !important;
 }
 
 /**/
@@ -180,7 +180,7 @@
     padding:0 20px 0 0;
 }
 .value .smallTit strong {
-    color:#b85712;
+    color:#d39e02;
 }
 
 .value .will-listTit {
@@ -223,7 +223,7 @@
     letter-spacing: 0;
 }
 .value .tabBox.noticeBox .List-Table li a span {
-    background: #b85712;
+    background: #d39e02;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -236,7 +236,7 @@
 
 /* Main Container */
 .value .tx-color {
-    color: #b85712;
+    color: #d39e02;
 }
 .value .Section1 {
     background: #f8f8f8;
@@ -253,7 +253,7 @@
 	color:#000;
 } 
 .value .copyTit span {
-    color:#b85712;
+    color:#d39e02;
 	vertical-align: baseline;
 }
 .value .List-Table li a img,
@@ -263,7 +263,7 @@
 .value .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .value .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .value .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712;
+    background: #d39e02;
 }
 .value .Section .SpecialBox li {
     display: inline; float: left;

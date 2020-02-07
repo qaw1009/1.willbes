@@ -3,13 +3,13 @@
 .nomu .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .nomu .topBanner p img {width:100%}
 
-.nomu .menu-List .Tit {color: #b85712;}
-.Menu .menu-List li.nomu > a {
-    color: #b85712;
+.nomu .menu-List .Tit {color: #109bb8;}
+.nomu .Menu .menu-List li.nomu > a {
+    color: #109bb8;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.nomu > a .arrow-Btn {
+.nomu .Menu .menu-List li.nomu > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -17,12 +17,12 @@
     margin: 15px 5px 0;
 }
 
-.Menu .menu-List li.job > a {
-    color: #b85712;
+.nomu .Menu .menu-List li.job > a {
+    color: #109bb8;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.job > a .arrow-Btn {
+.nomu .Menu .menu-List li.job > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -32,7 +32,7 @@
 
 /*********************************************     Main Container     *********************************************/
 .nomu .Depth .depth:last-child strong {
-    color: #b85712;
+    color: #109bb8;
 }
 
 /* Main Container : MainVisual */
@@ -126,7 +126,7 @@
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #109bb8 !important;
 }
 
 /**/
@@ -166,7 +166,7 @@
 .nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #109bb8 !important;
 }
 
 /**/
@@ -193,7 +193,7 @@
     padding:0 20px 0 0;
 }
 .nomu .smallTit strong {
-    color:#b85712;
+    color:#109bb8;
 }
 
 .nomu .will-listTit {
@@ -236,7 +236,7 @@
     letter-spacing: 0;
 }
 .nomu .tabBox.noticeBox .List-Table li a span {
-    background: #b85712;
+    background: #109bb8;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -249,7 +249,7 @@
 
 /* Main Container */
 .nomu .tx-color {
-    color: #b85712;
+    color: #109bb8;
 }
 .nomu .Section1 {
     background: #f8f8f8;
@@ -266,7 +266,7 @@
 	color:#000;
 } 
 .nomu .copyTit span {
-    color:#b85712;
+    color:#109bb8;
 	vertical-align: baseline;
 }
 .nomu .List-Table li a img,
@@ -276,7 +276,7 @@
 .nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712;
+    background: #109bb8;
 }
 .nomu .Section .SpecialBox li {
     display: inline; float: left;

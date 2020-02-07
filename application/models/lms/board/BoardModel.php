@@ -1373,6 +1373,39 @@ class BoardModel extends WB_Model
         return true;
     }
 
+    public function boardDeleteForComment($params = [], $is_status)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $str_cmt_idx = implode(',', array_keys($params));
+            $arr_cmt_idx = explode(',', $str_cmt_idx);
+
+            $input = [
+                //'IsStatus' => $is_status,
+                'IsStatus' => 'N',
+                'UpdAdminDatm' => date('Y-m-d H:i:s'),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            $this->_conn->set($input)->where_in('BoardCmtIdx',$arr_cmt_idx);
+            if($this->_conn->update($this->_table_r_comment)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+
     /**
      * 사이트별 1:1문의 게시판 미답변 현황 [메인페이지]
      */

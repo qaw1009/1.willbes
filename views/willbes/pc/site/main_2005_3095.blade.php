@@ -92,6 +92,9 @@
             </div>
         </div>
 
+        {{--학원 오시는 길--}}
+        @include('willbes.pc.site.main_partial.map_2010')
+
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">
                 {{-- cscenter --}}

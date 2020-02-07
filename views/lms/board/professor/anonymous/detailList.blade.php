@@ -1,6 +1,8 @@
 @extends('lcms.layouts.master')
-
 @section('content')
+<style>
+    .ano-disuse-tr {background-color: gainsboro !important;}
+</style>
     <h5>- {{$arr_prof_info['ProfNickName']}} 교수 익명자유 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -84,11 +86,12 @@
                     <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>공지</th>
-                    <th>사용</th>
+                    {{-- <th>공지</th> --}}
+                    {{-- <th>사용</th> --}}
                     <th>조회수</th>
                     <th>댓글수</th>
                     <th>수정</th>
+                    <th>삭제<br>(관리자)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -119,11 +122,9 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> 공지/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
-
+                    // { text: '<i class="fa fa-copy mr-10"></i> 공지/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
                     // { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
-
-                    { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-10"></i> 공지 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/professor/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
@@ -132,6 +133,11 @@
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                createdRow: function (row, data, index) {
+                    if(data.IsUse != undefined && data.IsUse == 'N') {
+                        $(row).addClass('ano-disuse-tr');
                     }
                 },
                 columns: [
@@ -164,9 +170,7 @@
                                 return str;
                             }
                         }},
-
                     {'data' : 'SubjectName'},
-
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
@@ -183,23 +187,23 @@
                             return rtn_str;
                         }},
                     {'data' : 'RegDatm'},
-                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                            //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
-                            var chk = '';
-                            if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
-                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+ ' data-origin-is-best = ' + ((data == '1') ? ' "1"' : "0") + '>';
-                        }},
-
-                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
-                        }},
+                    // {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
+                    //         var chk = '';
+                    //         if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
+                    //         return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+ ' data-origin-is-best = ' + ((data == '1') ? ' "1"' : "0") + '>';
+                    //     }},
+                    // {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                    //         return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                    //     }},
                     {'data' : 'ReadCnt'},
                     {'data' : 'CommentCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             var rtn_str = '';
-                            console.log('row.RegType', row.RegType);
                             if(row.RegType == '1') rtn_str = '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                             return rtn_str;
+                        }},
+                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BoardIdx + '"><u><p class="red">삭제</p></u></a>';
                         }},
                 ],
             });
@@ -214,6 +218,24 @@
                 location.href='{{ site_url("/board/professor/{$boardName}/readDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
+            $list_table.on('click', '.btn-delete', function() {
+                var _url = '{{ site_url("/board/professor/{$boardName}/deleteDetail") }}/' + $(this).data('idx') + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE'
+                };
+                if (!confirm('해당 게시물을 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw(false);
+                    }
+                }, showError, false, 'POST');
+            });
+
+            {{--
             // Best 적용
             $('.btn-is-best').on('click', function() {
                 if (!confirm('공지/사용 상태를 적용하시겠습니까?')) {
@@ -255,7 +277,9 @@
                     }
                 }, showError, false, 'POST');
             });
+            --}}
 
+            {{--
             // 복사
             $('.btn-copy').on('click', function() {
                 var _url = '{{ site_url("/board/professor/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
@@ -279,6 +303,7 @@
                     }
                 }, showError, false, 'POST');
             });
+            --}}
 
             // hot 숨기기
             $search_form.on('ifChanged', '.hot-display', function() {

@@ -11904,3 +11904,69 @@ table.acadlecInfoPackageTable tr.Top td {
 .studyRoomCts .btnSet li {display:inline; float:left; margin-right:5px}
 
 
+/*****************************************고등고시, 자격증 배너***********************************************/
+.studyRoomCts {margin:35px; line-height: 1.5; color:#666;}
+.lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center; padding:90px 0;}
+.lecBanner .copyTit {color:#fff !important; text-shadow: 5px 5px 5px 1px rgba(0,0,0,0.3);}
+.lecBanner li {display: inline; float:left; width:25%; text-align: center; margin-bottom:20px}
+.lecBanner li a {display:block; width:260px; margin:0 auto;
+    transition: opacity .4s ease-in-out;
+}
+.lecBanner li a img {width: 100%;}
+.lecBanner li a:hover {
+    -webkit-box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+    box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.5);
+}
+.lecBanner ul:hover a:not(:hover){    
+    opacity: 0.4; 
+}
+
+/*****************************************고등고시, 자격증 학원 오시는 길***********************************************/
+.Section4_hl {
+    width: 1120px !important;
+    margin: 0 auto !important;
+}
+.Section4_hl .noticeTabs {
+    width: 100% !important;
+}
+.Section4_hl .map_img {
+    position: relative;
+    float: left !important;
+    width: 698px;
+    height: 328px;
+    overflow: hidden;
+}
+.Section4_hl .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.Section4_hl .campus_info {
+    position: relative;
+    float: right !important;
+    width: 320px;
+    height: 328px;
+}
+.Section4_hl .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.Section4_hl .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
+}
+.Section4_hl .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #000;
+    text-align: center;
+    border: 1px solid #000;    
+}

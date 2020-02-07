@@ -68,7 +68,7 @@
                 <li>
                     <a href="#none">교재구매</a>
                 </li>
-                <li class="patent">
+                <li class="job">
                     <a href="#none" target="_self">
                         학원 방문 결제 
                         <span class="arrow-Btn">></span>

@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:150px;right:15px;z-index:1;}
+        .skybanner {position:fixed;top:250px;right:15px;z-index:1;}
         .skybanner a {display:block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/10/1428_top_bg.jpg) no-repeat center top; position:relative}
@@ -70,8 +70,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        <div class="skybanner" >
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=253631" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1428_sky1.png" alt="장사원" ></a>
+        <div class="skybanner" >            
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=250199&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1428_sky2.png" alt="최우영" ></a>
         </div>         
 

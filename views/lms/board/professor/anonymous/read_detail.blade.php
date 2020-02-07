@@ -77,6 +77,8 @@
                         <p class="form-control-static">
                             @if($data['RegType'] == 0)
                                 {{ $data['RegNickName'] }} ({{ $data['MemId'] }})
+                            @else
+                                {{ $data['wAdminName'] }}
                             @endif
                         </p>
                     </div>

@@ -418,7 +418,6 @@
     height: 328px;
 }
 .campus_info dl dt {
-    /*border-top: 1px solid #e3e3e3;*/
     padding: 25px 0;
 }
 .campus_info dl dt:first-child {
@@ -477,6 +476,7 @@
     text-align: center;
     border: 1px solid #0c5dc0;
 }
+
 /*캠퍼스 메인 오시는 길*/
 .PA .map_img {
     position: relative;

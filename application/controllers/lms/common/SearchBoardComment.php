@@ -29,7 +29,8 @@ class SearchBoardComment extends \app\controllers\BaseController
             'ORG' => [
                 'LKB' => [
                     'b.MemName' => element('search_comment_value', $search_data),
-                    'b.MemId' => element('search_comment_value', $search_data)
+                    'b.MemId' => element('search_comment_value', $search_data),
+                    'a.Comment' => element('search_comment_value', $search_data)
                 ]
             ]
         ];
@@ -76,4 +77,21 @@ class SearchBoardComment extends \app\controllers\BaseController
         $result = $this->boardModel->boardIsUseForComment(json_decode($this->_reqP('params'), true), $this->_reqP('is_use'));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
+
+    public function delete()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+            ['field' => 'is_status', 'label' => '상태값', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->boardDeleteForComment(json_decode($this->_reqP('params'), true), $this->_reqP('is_status'));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
 }

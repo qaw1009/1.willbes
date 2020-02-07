@@ -13,30 +13,39 @@
                         <input type="text" class="form-control" id="search_comment_value" name="search_comment_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">• 이름, 아이디 검색 기능</p>
+                        <p class="form-control-static">• 이름, 아이디, 내용 검색 기능</p>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary btn-search-comment" style="height:25px;">검 색</button>
                     </div>
                 </div>
             </form>
         </div>
+        {{--
         <div class="row mt-10">
             <div class="col-xs-12 text-right">
                 <button type="button" class="btn btn-primary btn-search-comment"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default mr-20 btn-reset-comment">검색초기화</button>
             </div>
         </div>
+        --}}
         <div class="row">
             <table id="list_ajax_comment_table" class="table table-striped table-bordered" data-excel-name="Another table">
+                <colgroup>
+                    <col width="10%">
+                    <col width="*">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="10%">
+                </colgroup>
                 <thead>
-                <tr>
-                    <th>선택</th>
-                    <th>No</th>
-                    <th>댓글</th>
-                    <th>사용여부</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
-                    <th>관리자</th>
-                    <th>상태수정일</th>
-                </tr>
+                    <tr>
+                        <th>No</th>
+                        <th>댓글</th>
+                        <th>등록자(아이디)</th>
+                        <th>작성일</th>
+                        <th>삭제</th>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
@@ -53,8 +62,8 @@
         $datatable_comment = $list_comment_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-pencil mr-10"></i> 사용', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-use-y' },
-                { text: '<i class="fa fa-pencil mr-10"></i> 미사용', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-use-n' },
+                // { text: '<i class="fa fa-pencil mr-10"></i> 사용', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-use-y' },
+                // { text: '<i class="fa fa-pencil mr-10"></i> 미사용', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-use-n' },
             ],
             ajax: {
                 'url' : '{{ site_url("/common/searchBoardComment/listAjax/".$board_idx) }}',
@@ -65,28 +74,21 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" class="flat" data-cmt-idx="' + row.BoardCmtIdx + '">';
-                    }},
-                {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
                         return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+row.Comment+"</textarea>";
+                        return row.Comment;
                     }},
-                {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},
-                //{'data' : 'MemName'},
                 {'data' : 'RegNickName', 'render' : function(data, type, row, meta) {
                         var rtn_str = '';
                         if(data != undefined) rtn_str = data + ' (' + row.MemId + ')';
                         return rtn_str;
                     }},
-
                 {'data' : 'RegDatm'},
-                {'data' : 'UpdAdminName'},
-                {'data' : 'UpdAdminDatm'}
+                {'data' : 'BoardCmtIdx', 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BoardCmtIdx + '"><u><p class="red">삭제</p></u></a>';
+                    }},
             ]
         });
 
@@ -96,11 +98,41 @@
         });
 
         // 검색초기화
+        {{--
         $('.btn-reset-comment').click(function () {
             $search_comment_form[0].reset();
             $datatable_comment.draw();
         });
+        --}}
 
+        $list_comment_table.on('click', '.btn-delete', function() {
+            var $params = {};
+            var _url = '{{ site_url("/common/searchBoardComment/delete/".$board_idx) }}';
+            var is_status = 'N';
+
+            $params[$(this).data('idx')] = 'on';
+
+            // if (Object.keys($params).length <= '0') {
+            //     alert('삭제할 게시글을 선택해주세요.');
+            //     return false;
+            // }
+
+            var data = {
+                '{{ csrf_token_name() }}' : $search_comment_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'params' : JSON.stringify($params),
+                'is_status' : is_status
+            };
+
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_comment.draw();
+                }
+            }, showError, false, 'POST');
+        });
+
+        {{--
         $('.btn-use-y, .btn-use-n').on('click', function() {
             var $params = {};
             var _url = '{{ site_url("/common/searchBoardComment/update/".$board_idx) }}';
@@ -129,5 +161,6 @@
                 }
             }, showError, false, 'POST');
         });
+        --}}
     });
 </script>

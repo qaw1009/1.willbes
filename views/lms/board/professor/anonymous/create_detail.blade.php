@@ -9,6 +9,8 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
+        <input type="hidden" name="is_best" value="@if(empty($data['IsBest']) === false){{$data['IsBest']}}@else{{'1'}}@endif"/>
+
         <div class="x_panel">
             <div class="x_title">
                 <h2>{{$arr_prof_info['ProfNickName']}} 익명자유게시판 정보</h2>
@@ -47,14 +49,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_best">HOT</label>
-                    <div class="col-md-4 form-inline">
-                        <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
-                        </div>
-                    </div>
-                    <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 ml-12-dot item form-inline">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-10 form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>

@@ -43,7 +43,7 @@
         <div class="Section NSK mt90">
             <div class="widthAuto">
                 {{-- board include --}}
-                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
+                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_309006')
             </div>
         </div>
 

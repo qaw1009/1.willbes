@@ -636,7 +636,7 @@ class MockTest extends \app\controllers\FrontController
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
+        show_alert('삭제되었습니다.', front_url('/mockTest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     /**

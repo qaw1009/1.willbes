@@ -123,7 +123,7 @@ class SupportMockTest extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForMockTest(true, $arr_condition);
-        $paging = $this->pagination($this->_default_path.'/listQna/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/'.$this->_default_path.'/listQna/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForMockTest(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -394,7 +394,7 @@ class SupportMockTest extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url($this->_default_path.'/listQna/cate/'.$this->_cate_code.'?'.$get_params));
+        show_alert('삭제되었습니다.', front_url('/'.$this->_default_path.'/listQna/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     /**
@@ -444,7 +444,7 @@ class SupportMockTest extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
-        $paging = $this->pagination($this->_default_path.'/listNotice/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/'.$this->_default_path.'/listNotice/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,$paging['limit'],$paging['offset'],$order_by);

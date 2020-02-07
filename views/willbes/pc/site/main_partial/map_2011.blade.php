@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1881</span>
+                                            <span class="tx-color">1544-4774</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -55,10 +55,17 @@
                                                 (역삼동 645-12)
                                             </span>
                                         </div>
-                                        <div class="tel">
-                                            <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-3383</span>
-                                        </div>
+                                        @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '309002' || $__cfg['CateCode'] == '309003'))
+                                            <div class="tel">
+                                                <span class="a-tit">연락처</span>
+                                                <span class="tx-color">1544-1881</span>
+                                            </div>
+                                        @elseif(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '309004'))
+                                            <div class="tel">
+                                                <span class="a-tit">연락처</span>
+                                                <span class="tx-color">1544-3383</span>
+                                            </div>
+                                        @endif                                        
                                     </div>
                                 </dt>
                             </dl>

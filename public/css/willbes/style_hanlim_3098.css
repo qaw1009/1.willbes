@@ -4,12 +4,12 @@
 .hanlim3098 .topBanner p img {width:100%}
 
 .hanlim3098 .menu-List .Tit {color: #20755e;}
-.Menu .menu-List li.hanlim3098 > a {
+.hanlim3098 .Menu .menu-List li.gosi > a {
     color: #20755e;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.hanlim3098 > a .arrow-Btn {
+.hanlim3098 .Menu .menu-List li.gosi > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;

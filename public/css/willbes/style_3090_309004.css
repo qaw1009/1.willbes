@@ -3,13 +3,13 @@
 .patent .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .patent .topBanner p img {width:100%}
 
-.patent .menu-List .Tit {color: #b85712;}
-.Menu .menu-List li.patent > a {
-    color: #b85712;
+.patent .menu-List .Tit {color: #034c03;}
+.patent .Menu .menu-List li.job > a {
+    color: #034c03;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.patent > a .arrow-Btn {
+.patent .Menu .menu-List li.job > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -19,7 +19,7 @@
 
 /*********************************************     Main Container     *********************************************/
 .patent .Depth .depth:last-child strong {
-    color: #b85712;
+    color: #034c03;
 }
 
 /* Main Container : MainVisual */
@@ -113,7 +113,7 @@
 .patent .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .patent .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .patent .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #034c03 !important;
 }
 
 /**/
@@ -153,7 +153,7 @@
 .patent .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .patent .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .patent .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+    background: #034c03 !important;
 }
 
 /**/
@@ -180,7 +180,7 @@
     padding:0 20px 0 0;
 }
 .patent .smallTit strong {
-    color:#b85712;
+    color:#034c03;
 }
 
 .patent .will-listTit {
@@ -223,7 +223,7 @@
     letter-spacing: 0;
 }
 .patent .tabBox.noticeBox .List-Table li a span {
-    background: #b85712;
+    background: #034c03;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -236,7 +236,7 @@
 
 /* Main Container */
 .patent .tx-color {
-    color: #b85712;
+    color: #034c03;
 }
 .patent .Section1 {
     background: #f8f8f8;
@@ -253,7 +253,7 @@
 	color:#000;
 } 
 .patent .copyTit span {
-    color:#b85712;
+    color:#034c03;
 	vertical-align: baseline;
 }
 .patent .List-Table li a img,
@@ -263,7 +263,7 @@
 .patent .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .patent .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .patent .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712;
+    background: #034c03;
 }
 .patent .Section .SpecialBox li {
     display: inline; float: left;

@@ -126,32 +126,21 @@
                     {'data' : 'RealPayPrice', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return addComma(data);
                         }},
-                    {'data' : 'PayStatusCcd', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            /*return (typeof paymentStatus[data] !== 'undefined') ? paymentStatus[data] : '';*/
-                            return '';
-                        }},
+                    {'data' : 'PayStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'PayMethodCcd_Name'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
-                    /*
-                    {'data' : 'TakeForm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyType[data] !== 'undefined') ? applyType[data] : '';
-                    }},
-                    */
                     {'data' : 'TakeForm_Name', 'class': 'text-center'},
                     {'data' : 'TakeNumber', 'class': 'text-center'},
                     {'data' : 'CateName', 'class': 'text-center'},
                     {'data' : 'TakeMockPart_Name', 'class': 'text-center'},
                     {'data' : 'SubjectNameList', 'class': 'text-center'},
                     {'data' : 'TakeArea_Name', 'class': 'text-center'},
-                    /*{'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
-                    }},*/
                     {'data' : 'IsTake', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '응시' : '미응시';
+                            return (data === 'Y') ? '응시' : (row.answerTempCnt > 0) ? '임시저장' : '미응시';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return  '<a href="javascript:;" class="blue cs-pointer btn-print" data-idx="'+row.MrIdx+'">[출력]</a>';

@@ -6,6 +6,7 @@ class ApplyUserModel extends WB_Model
     private $_table = [
         'mock_register' => 'lms_Mock_Register',
         'mock_register_r_paper' => 'lms_Mock_Register_R_Paper',
+        'mock_answertemp' => 'lms_mock_answertemp',
         'product_mock' => 'lms_Product_Mock',
         'product' => 'lms_Product',
         'product_r_category' => 'lms_Product_R_Category',
@@ -70,6 +71,11 @@ class ApplyUserModel extends WB_Model
                         JOIN {$this->_table['product_subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
                         WHERE MR.MrIdx = MAS.MrIdx
                     ) AS SubjectNameList
+                    ,IFNULL((
+                        SELECT COUNT(*) AS tempCnt
+                        FROM {$this->_table['mock_answertemp']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx
+                        GROUP BY ProdCode
+                    ),0) AS answerTempCnt
                 ";
             }
         }

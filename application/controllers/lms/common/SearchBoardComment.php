@@ -30,6 +30,7 @@ class SearchBoardComment extends \app\controllers\BaseController
                 'LKB' => [
                     'b.MemName' => element('search_comment_value', $search_data),
                     'b.MemId' => element('search_comment_value', $search_data),
+                    'a.RegNickName' => element('search_comment_value', $search_data),
                     'a.Comment' => element('search_comment_value', $search_data)
                 ]
             ]

@@ -1,3 +1,6 @@
+<style>
+    .ano-comment-disuse-tr {background-color: gainsboro !important;}
+</style>
 <div class="x_panel">
     <div class="x_title">
         <h5>댓글현황</h5>
@@ -8,11 +11,11 @@
             <form class="form-horizontal" id="search_comment_form" name="search_comment_form" method="POST">
                 {!! csrf_field() !!}
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="search_comment_value">통합검색</label>
+                    <label class="control-label col-md-2" for="search_comment_value" style="width: 100px;">통합검색</label>
                     <div class="col-md-2">
                         <input type="text" class="form-control" id="search_comment_value" name="search_comment_value">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="width: 220px;">
                         <p class="form-control-static">• 이름, 아이디, 내용 검색 기능</p>
                     </div>
                     <div class="col-md-1">
@@ -70,6 +73,11 @@
                 'type' : 'POST',
                 'data' : function(data) {
                     return $.extend(arrToJson($search_comment_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                }
+            },
+            createdRow: function (row, data, index) {
+                if(data.IsUse != undefined && data.IsUse == 'N') {
+                    $(row).addClass('ano-comment-disuse-tr');
                 }
             },
             columns: [

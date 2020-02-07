@@ -136,9 +136,7 @@
                     }
                 },
                 createdRow: function (row, data, index) {
-                    console.log('data.IsUse', data.IsUse);
                     if(data.IsUse != undefined && data.IsUse == 'N') {
-                        // $(row).addClass("label-warning");
                         $(row).addClass('ano-disuse-tr');
                     }
                 },

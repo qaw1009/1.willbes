@@ -1,7 +1,7 @@
 <ul class="tabMock three">
-    <li><a class="@if($page_type=='info') on @endif" href="{{front_url('/mocktestNew/info/cate/'.$__cfg['CateCode'])}}">모의고사안내</a></li>
-    <li><a class="@if($page_type=='apply') on @endif" href="{{front_url('/mocktestNew/apply/cate/'.$__cfg['CateCode'])}}">모의고사접수</a></li>
-    <li><a class="@if($page_type=='board' || $page_type=='board_etc') on @endif" href="{{front_url('/mocktestNew/board/cate/'.$__cfg['CateCode'])}}">이의제기/정오표</a></li>
+    <li><a class="@if($page_type=='info') on @endif" href="{{front_url('/mockTestNew/info/cate/'.$__cfg['CateCode'])}}">모의고사안내</a></li>
+    <li><a class="@if($page_type=='apply') on @endif" href="{{front_url('/mockTestNew/apply/cate/'.$__cfg['CateCode'])}}">모의고사접수</a></li>
+    <li><a class="@if($page_type=='board' || $page_type=='board_etc') on @endif" href="{{front_url('/mockTestNew/board/cate/'.$__cfg['CateCode'])}}">이의제기/정오표</a></li>
 </ul>
 @if($page_type != 'board_etc')
     <div class="willbes-Cart-Txt NG mt30 p_re">

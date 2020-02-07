@@ -51,7 +51,7 @@ class SupportMockTest extends BaseSupport
         $list = [];
         $count = $this->mockInfoFModel->listMockTestForBoard(true, $arr_condition);
 
-        if ($this->_default_path == 'mocktestNew') {
+        if ($this->_default_path == 'mockTestNew') {
             $paging = $this->pagination('/'.$this->_default_path.'/board/cate/'.$this->_cate_code.'?'.$get_page_params, $count, $this->_paging_limit, $this->_paging_count, true);
         } else {
             $paging = $this->pagination('/'.$this->_default_path.'?'.$get_page_params, $count, $this->_paging_limit, $this->_paging_count, true);

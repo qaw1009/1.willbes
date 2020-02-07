@@ -13,7 +13,7 @@ class MockTestNew extends SupportMockTest
 
     protected $_bm_idx_qna = '95';        //이의제기
     protected $_bm_idx_notice = '96';     //정오표
-    protected $_default_path = 'mocktestNew';
+    protected $_default_path = 'mockTestNew';
     protected $_include_path = 'site.mocktestNew';
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -28,7 +28,7 @@ class MockTestNew extends SupportMockTest
      */
     public function info()
     {
-        $this->load->view('site/mocktestNew/info',[
+        $this->load->view('site/MockTestNew/info',[
             'page_type' => 'info'
         ]);
     }
@@ -74,7 +74,7 @@ class MockTestNew extends SupportMockTest
 
         $list = [];
         $count = $this->mockInfoFModel->listMockTest(true, $arr_condition);
-        $paging = $this->pagination('/mocktestNew/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTestNew/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTest(false, $arr_condition, null, $paging['limit'], $paging['offset'], $order_by);
         }

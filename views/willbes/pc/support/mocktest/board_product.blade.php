@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="Container" class="subContainer widthAuto c_both">
-        @if ($default_path == 'mocktestNew')
+        @if ($default_path == 'mockTestNew')
             @include('willbes.pc.layouts.partial.site_menu')
         @else
             @include('willbes.pc.layouts.partial.site_tab_menu')
@@ -12,7 +12,7 @@
         </div>
 
         <div class="Content p_re">
-            @if ($default_path == 'mocktestNew')
+            @if ($default_path == 'mockTestNew')
                 <div class="willbes-Mocktest INFOZONE c_both">
                     <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                         · 모의고사
@@ -107,7 +107,7 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
         </div>
-        @if ($default_path == 'mocktestNew')
+        @if ($default_path == 'mockTestNew')
             {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
         @else
             {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}

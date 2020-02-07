@@ -67,11 +67,7 @@ class Goods extends BaseMocktest
             'ORG' => [
                 'LKB' => [
                     'PD.ProdCode' => $this->_reqP('search_fi'),
-                    'PD.ProdName' => $this->_reqP('search_fi'),
-                    'A.wAdminName' => $this->_reqP('search_fi'),
-                    'PD.SaleStartDatm' => $this->_reqP('search_fi'),
-                    'PD.SaleEndDatm' => $this->_reqP('search_fi'),
-                    'PS.RealSalePrice' => $this->_reqP('search_fi'),
+                    'PD.ProdName' => $this->_reqP('search_fi')
                 ]
             ],
             'RAW' => [ $search_date1 => $search_date2 ],

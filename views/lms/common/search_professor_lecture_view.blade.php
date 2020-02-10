@@ -91,7 +91,7 @@
                         </td>
                         <td>
                             @if(empty($row['wUnitAttachFile']) === false)
-                                <a href='{{ site_url('/product/on/profLecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode(preg_replace("/\s+/", "", $row['wUnitAttachFileReal'])) }}' target="_blank">{{$row['wUnitAttachFileReal']}}</a>
+                                <a href='{{ site_url('/product/on/profLecture/download/').rawurlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.rawurlencode($row['wUnitAttachFileReal'])}}' target="_blank">{{$row['wUnitAttachFileReal']}}</a>
                             @endif
                         </td>
                         <td>{{ $row['wRuntime']  }} 분<BR>{{ $row['wBookPage']  }} P</td>

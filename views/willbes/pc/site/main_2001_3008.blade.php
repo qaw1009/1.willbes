@@ -34,6 +34,7 @@
             </div>
         </div>
 
+        {{--
         <div class="Section mt8">
             <div class="widthAuto bnrSec02">
                 <ul>
@@ -50,6 +51,7 @@
                 </a>
             </div>
         </div>
+        --}}
         
         <div class="Section mt8">
             <div class="widthAuto">

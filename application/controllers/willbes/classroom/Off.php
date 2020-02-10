@@ -222,6 +222,17 @@ class Off extends \app\controllers\FrontController
 
         ];
         $pkglist = $this->classroomFModel->getPackage($cond_arr, $orderby, false, true);
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ], $orderby, false, true);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
 
         return $this->load->view('/classroom/off/off_end', [
             'sitegroup_arr' => $sitegroup_arr,

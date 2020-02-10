@@ -100,6 +100,7 @@
                                     <ul>
                                         @if(empty($row['subleclist']) == true)
                                             <li>강의가 없습니다.</li>
+                                        @else
                                             @foreach($row['subleclist'] as $subrow)
                                                 <li>{{$subrow['subProdName']}}</li>
                                             @endforeach

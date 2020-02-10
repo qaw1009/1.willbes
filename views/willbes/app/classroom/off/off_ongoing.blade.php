@@ -98,9 +98,13 @@
                                     <div class="w-lecList">
                                         <div class="NG">강좌구성보기 <a href="javacript:;">▼</a></div>
                                         <ul>
-                                            @foreach($row['subleclist'] as $subrow)
-                                                <li>{{$subrow['subProdName']}}</li>
-                                            @endforeach
+                                            @if(empty($row['subleclist']) == true)
+                                                <li>강의가 없습니다.</li>
+                                            @else
+                                                @foreach($row['subleclist'] as $subrow)
+                                                    <li>{{$subrow['subProdName']}}</li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                 @endif

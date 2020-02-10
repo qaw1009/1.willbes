@@ -91,7 +91,7 @@
                                     <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt>
                                 </dl>
                                 <div class="w-lecList">
-                                    <div class="NG">강좌구성보기 <a href="javacript:;">▼</a></div>
+                                    <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
                                     <ul>
                                         @if(empty($row['subleclist']) == true)
                                             <li>강의가 없습니다.</li>

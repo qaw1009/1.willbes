@@ -55,7 +55,9 @@
         .wb02 ul:hover a:not(:hover){    
             opacity: 0.4; 
         }
-
+        #tab01 li:last-child {
+            width:934px; overflow:hidden;
+        }
         .wb01 .tabs:after,
         .wb02 ul:after { content:""; display:block; clear:both}
 

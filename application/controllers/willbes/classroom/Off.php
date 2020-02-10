@@ -213,13 +213,13 @@ class Off extends \app\controllers\FrontController
             'LT' => [
                 'StudyEndDate' => $today // 종료일 >= 오늘
             ],
-            'GTE' => [
+/*            'GTE' => [
                 'StudyEndDate' => element('search_start_date', $input_arr)
             ],
             'LTE' => [
                 'StudyEndDate' => element('search_end_date', $input_arr)
             ]
-
+*/
         ];
         $pkglist = $this->classroomFModel->getPackage($cond_arr, $orderby, false, true);
         foreach($pkglist as $idx => $row){

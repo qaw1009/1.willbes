@@ -840,6 +840,32 @@ function setRowspan(classname) {
 }
 
 /**
+ * 전체검색
+ */
+$('.unifiedSearch, .areaSearch').on('keyup', function() {
+    if (window.event.keyCode === 13) {
+        goFullSearch($(this).data('form'));
+    }
+});
+$('.btn_unifiedSearch, .btn_areaSearch').on('click', function() {
+    goFullSearch($(this).data('form'));
+});
+
+function goFullSearch($form){
+    if($form === '') {return;}
+    $search_form = "#"+$form;
+    $search_text = $($search_form).find('input[name="searchfull_text"]');
+    if($search_text.val() === '') {
+        alert("검색어를 입력해 주세요."); return;
+    }
+    if($search_text.val().length < 2) {
+        alert("검색어를 두글자 이상 입력해 주세요."); return;
+    }
+    $($search_form).prop('action', frontUrl('/search/result'+($("input[name=cate]", $($search_form)).length > 0 ? '/cate/'+$("input[name=cate]", $($search_form)).val() : '')));
+    $($search_form).submit();
+}
+
+/**
  * Layer popup
  * Modal Close 버튼이 있는 경우 id를 btn_modal_close로 지정해야 Modal 창이 닫힘
  * 사용 예
@@ -1080,4 +1106,3 @@ function setRowspan(classname) {
     };
 
 }));
-

@@ -178,6 +178,12 @@
                         </table>
                     </div>
                 @endforeach
+
+                {{-- 선택과목이 없는 경우 --}}
+                @if(empty($sub_prod_data['choice']) === true)
+                    <div id="tab_choice" class="tab-pane">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

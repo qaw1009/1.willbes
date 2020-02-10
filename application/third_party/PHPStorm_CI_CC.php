@@ -257,6 +257,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BtobCertFModel $btobCertFModel                                     Btob Cert Apply Model Class
  * @property SmsFModel $smsFModel                                               SmsF Model Class
  * @property LandingFModel $landingFModel                                       Landing Model Class
+ * @property SearchFModel $searchFModel                                       Search Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  ***************** BtoB **********************************************************************************

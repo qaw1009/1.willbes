@@ -11854,13 +11854,13 @@ table.acadlecInfoPackageTable tr.Top td {
 
 /***********************************************  온라인 강의 검색  ************************************************************/
 
-.onSearch {width:350px; margin-top:20px; float:right; padding:10px;}
+.onSearch {width:350px; float:right; padding:10px; text-align: center;}
 .onSearch input[type="search"] {border:0; border-bottom:1px solid #000; width:90%; height:28px; color:#ccc; font-size:14px}
 .onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
 .onSearch button { width:28px; height:28px; font-size: 0; text-indent: -9999px; 
     background:url("../../img/willbes/common/icon_search.png") no-repeat center center; background-size:18px;
 }
-.onSearchBig {float:none; width:600px; margin:40px auto;}
+.onSearchBig {float:none; width:600px; margin:0 auto 50px}
 .onSearchBig input[type="search"] {height:40px; width:400px; font-size:18px; color:#000}
 .onSearchBig button {width:30px; height:40px; right:0; left:410px; background-size:30px; border:0}
 .onSearchBig span {height:40px; line-height: 40px; font-size:14px; margin-left:20px}

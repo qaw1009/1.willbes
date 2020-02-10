@@ -78,8 +78,6 @@
             </div>
 
             <div id="leclist2" class="tabContent">
-                <div class="tx-center mt20">수강신청한 강좌가 없습니다.</div>
-
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                     <tbody>
                     @forelse( $pkglist as $row )

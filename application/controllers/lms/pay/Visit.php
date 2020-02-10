@@ -99,6 +99,9 @@ class Visit extends BaseOrder
                 'O.SiteCode' => $arr_site_code,     // 학원 사이트 권한 추가
                 'ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd))' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
                 'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']))    // 방문결제용 결제상태 코드만 조회
+            ],
+            'NOT' => [
+                'ifnull(PL.PackTypeCcd, "")' => $this->orderListModel->_adminpack_lecture_type_ccd['choice_prof']   // 선택형(강사배정) 학원종합반 제외
             ]
         ];
 

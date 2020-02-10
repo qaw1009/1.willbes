@@ -857,14 +857,14 @@ class OrderListModel extends BaseOrderModel
         } elseif ($site_code == '2010' || $site_code == '2011' || $site_code == '2013') {
             // 고등고시, 자격증, 경찰간부 학원
             // 주문상품 조회
-            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-            $data = $this->listAllOrder('O.OrderNo, OOI.CertNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
+            $data = $this->getPrintCertBaseOrderData($order_idx);
             if (empty($data) === true) {
                 return '데이터 조회에 실패했습니다.';
             }
 
             // 주문상품명 추출 및 가공
-            $page_cnt = 4;  // 한 페이지당 출력되는 상품수
+            $page_cnt = 2;  // 한 페이지당 출력되는 상품수
+            $line_cnt = 4;  // 한 상품명당 출력되는 라인수
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_idx = 0;   // 페이지 인덱스
             $arr_line = [];
@@ -874,17 +874,23 @@ class OrderListModel extends BaseOrderModel
                     $arr_idx++;
                 }
 
-                if (mb_strlen($row['ProdName']) > $cut_str) {
-                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($row['ProdName'], 0, $cut_str)), 'Bold' => 'true'];
-                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($row['ProdName'], $cut_str)), 'Bold' => 'false'];
-                } else {
-                    $arr_line[$arr_idx][] = ['Name' => trim($row['ProdName']), 'Bold' => 'true'];
-                    $arr_line[$arr_idx][] = ['Name' => '', 'Bold' => 'false'];
+                // 출력상품명 설정
+                $_prod_name = $row['ProdName'];   // 학원강좌가 아닐 경우
+                if ($row['IsPackage'] == 'Y') {
+                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
+                } elseif ($row['IsPackage'] == 'N') {
+                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'] . '_' . $row['ProdName'] . '_';
+                    $_prod_name .= $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                }
+
+                for($i = 0; $i < $line_cnt; $i++) {
+                    $is_bold = $i == 0 ? 'true' : 'false';
+                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($_prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
                 }
             }
 
             $add_data['OrderProdNameData'] = $arr_line;
-            $add_data['LineCnt'] = $page_cnt * 2;
+            $add_data['LineCnt'] = $page_cnt * $line_cnt;
             $add_data['StartLine'] = 7;
 
             // 주문정보 추출
@@ -901,7 +907,51 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * 학원수강증 단과별 출력 데이터 조회
+     * 학원수강증 출력용 주문 데이터 조회 (고등고시/자격증/경찰간부 전용)
+     * @param int $order_idx [주문식별자]
+     * @return mixed
+     */
+    public function getPrintCertBaseOrderData($order_idx)
+    {
+        $column = 'O.OrderNo, OOI.CertNo, M.MemId, M.MemName, P.ProdName
+            , (case PL.LearnPatternCcd 
+                when "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "N"
+                when "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "Y"
+                else "E"
+              end) as IsPackage	            
+            , right(PL.SchoolYear, 2) as SchoolYear
+            , fn_category_connect_by_type(left(PC.CateCode, 4), "name") as LgCateName
+            , (select CourseName from ' . $this->_table['course'] . ' where CourseIdx = PL.CourseIdx and IsStatus = "Y") as CourseName
+            , (select SubjectName from ' . $this->_table['subject'] . ' where SubjectIdx = PL.SubjectIdx and IsStatus = "Y") as SubjectName
+            , substring_index(fn_product_professor_name(P.ProdCode), ",", 1) as ProfName
+            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
+
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx	
+                left join ' . $this->_table['order_other_info'] . ' as OOI
+                    on O.OrderIdx = OOI.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on OP.ProdCode = PL.ProdCode
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"		
+                left join ' . $this->_table['member'] . ' as M
+                    on O.MemIdx = M.MemIdx
+            where O.OrderIdx = ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"        
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 학원수강증 종합반 서브단과별 출력 데이터 조회 (고등고시/자격증/경찰간부 전용)
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
      * @param int $prod_code_sub [상품코드서브]
@@ -917,28 +967,22 @@ class OrderListModel extends BaseOrderModel
         if ($site_code == '2010' || $site_code == '2011' || $site_code == '2013') {
             // 고등고시, 자격증, 경찰간부 학원
             // 주문상품 조회
-            $column = 'O.OrderNo, OOI.CertNo, M.MemName, P.ProdName, fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData';
-            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-            $data = $this->listAllOrder($column, $arr_condition, null, null, [], [], false);
+            $data = $this->getPrintCertSubLectureBaseOrderData($order_idx, $order_prod_idx, $prod_code_sub);
             if (empty($data) === true) {
                 return '데이터 조회에 실패했습니다.';
             }
             $data = element('0', $data);
 
-            if (empty($data['OrderSubProdData']) === true) {
-                return '서브강좌 데이터가 없습니다.';
-            }
-
-            // 주문상품명 추출 및 가공
-            $arr_prod_sub_name = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdName', 'ProdCode');
-            $prod_name = element($prod_code_sub, $arr_prod_sub_name) . ' (' . $data['ProdName'] . ')';
+            // 출력상품명 설정
+            $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['CourseName'] . '_' . $data['SubjectName'] . '_' . $data['ProdName'] . '(종합반)_';
+            $_prod_name .= $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
 
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_line = [];
 
-            for($i = 0; $i < ceil(mb_strlen($prod_name) / $cut_str); $i++) {
+            for($i = 0; $i < ceil(mb_strlen($_prod_name) / $cut_str); $i++) {
                 $is_bold = $i == 0 ? 'true' : 'false';
-                $arr_line[0][] = ['Name' => trim(mb_substr($prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+                $arr_line[0][] = ['Name' => trim(mb_substr($_prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
             }
 
             $data['OrderProdNameData'] = $arr_line;
@@ -950,6 +994,51 @@ class OrderListModel extends BaseOrderModel
         }
 
         return $data;
+    }
+
+    /**
+     * 학원수강증 종합반 서브단과별 주문 데이터 조회
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code_sub [상품코드서브]
+     * @return mixed
+     */
+    public function getPrintCertSubLectureBaseOrderData($order_idx, $order_prod_idx, $prod_code_sub)
+    {
+        $column = 'O.OrderNo, OOI.CertNo, M.MemId, M.MemName, P.ProdName
+            , right(PL.SchoolYear, 2) as SchoolYear
+            , fn_category_connect_by_type(left(PC.CateCode, 4), "name") as LgCateName
+            , (select CourseName from ' . $this->_table['course'] . ' where CourseIdx = PL.CourseIdx and IsStatus = "Y") as CourseName
+            , (select SubjectName from ' . $this->_table['subject'] . ' where SubjectIdx = PL.SubjectIdx and IsStatus = "Y") as SubjectName
+            , substring_index(fn_product_professor_name(P.ProdCode), ",", 1) as ProfName
+            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
+
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
+                inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                    on OP.OrderProdIdx = OSP.OrderProdIdx
+                left join ' . $this->_table['order_other_info'] . ' as OOI
+                    on O.OrderIdx = OOI.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OSP.ProdCodeSub = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on OSP.ProdCodeSub = PL.ProdCode
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on OSP.ProdCodeSub = PC.ProdCode and PC.IsStatus = "Y"		
+                left join ' . $this->_table['member'] . ' as M
+                    on O.MemIdx = M.MemIdx		
+            where O.OrderIdx = ?
+                and OP.OrderProdIdx = ?
+                and OSP.ProdCodeSub = ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"        
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $prod_code_sub]);
+
+        return $query->result_array();
     }
 
     /**

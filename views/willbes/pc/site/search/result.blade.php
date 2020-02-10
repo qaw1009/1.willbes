@@ -62,7 +62,7 @@
                                                     <dt> · 수강료 :
                                                         @if(empty($row['ProdPriceData']) === false)
                                                             @foreach(json_decode($row['ProdPriceData'],true) as $price_idx => $price_row)
-                                                                @if($price_row['SaleTypeCcd'] === '613001').
+                                                                @if($price_row['SaleTypeCcd'] === '613001')
                                                                     [{{ $price_row['SaleTypeCcdName'] }}] {{ number_format($price_row['RealSalePrice'], 0) }}원
                                                                 @endif
                                                             @endforeach
@@ -114,7 +114,7 @@
                                                     <dt> · 수강료 :
                                                         @if(empty($row['ProdPriceData']) === false)
                                                             @foreach(json_decode($row['ProdPriceData'],true) as $price_idx => $price_row)
-                                                                @if($price_row['SaleTypeCcd'] === '613001').
+                                                                @if($price_row['SaleTypeCcd'] === '613001')
                                                                 [{{ $price_row['SaleTypeCcdName'] }}] {{ number_format($price_row['RealSalePrice'], 0) }}원
                                                                 @endif
                                                             @endforeach
@@ -144,7 +144,7 @@
                                                     <dt> · 수강료 :
                                                         @if(empty($row['ProdPriceData']) === false)
                                                             @foreach(json_decode($row['ProdPriceData'],true) as $price_idx => $price_row)
-                                                                @if($price_row['SaleTypeCcd'] === '613001').
+                                                                @if($price_row['SaleTypeCcd'] === '613001')
                                                                 [{{ $price_row['SaleTypeCcdName'] }}] {{ number_format($price_row['RealSalePrice'], 0) }}원
                                                                 @endif
                                                             @endforeach

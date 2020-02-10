@@ -53,7 +53,7 @@ $(function() {
 // 내강의실 학원강의 Script
 $(function() {
     $('.w-lecList div a').click(function() {
-        var $off_pkg_list = $('.w-lecList ul');
+        var $off_pkg_list = $(this).parent().parent().find('ul'); //$('.w-lecList ul');
         if ($off_pkg_list.is(':hidden')) {
             $off_pkg_list.show().css('visibility','visible');
             $(this).text('▲');

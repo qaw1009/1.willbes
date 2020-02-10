@@ -91,7 +91,8 @@
                         </td>
                         <td>
                             @if(empty($row['wUnitAttachFile']) === false)
-                                <a href="{{site_url('/product/on/profLecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a>
+                                <a href='{{ site_url('/product/on/profLecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}' target="_blank">{{$row['wUnitAttachFileReal']}}</a>
+                                <!--<a href="{{site_url('/product/on/profLecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a>//-->1
                             @endif
                         </td>
                         <td>{{ $row['wRuntime']  }} 분<BR>{{ $row['wBookPage']  }} P</td>

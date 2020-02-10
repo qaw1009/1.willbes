@@ -659,7 +659,8 @@ class On extends \app\controllers\FrontController
                         'ProdCodeSub' => $prodcodesub,
                         'wLecIdx' => $lec['wLecIdx'],
                         'wUnitIdx' => $row['wUnitIdx'],
-                        'IsStatus' => 'Y'
+                        'IsStatus' => 'Y',
+                        'DownloadType' => ( APP_DEVICE == 'pc' ? 'P' : NULL )
                     ]
                 ]);
             } else {

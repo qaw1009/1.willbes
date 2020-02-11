@@ -146,7 +146,7 @@
                     <div class="willbes-Lec-buyBtn GM">
                         @if($data['IsSalesAble'] == 'Y')
                         <ul>
-                            @if($data['StudyApplyCcd'] != '654002')
+                            @if($data['StudyApplyCcd'] != '654002' && empty($data['DiscIdx']))
                                 <li class="btnAuto130 h36">
                                     <button type="submit" name="btn_off_visit_pay" data-direct-pay="N" class="mem-Btn bg-white bd-dark-blue">
                                         <span class="tx-light-blue">방문결제</span>

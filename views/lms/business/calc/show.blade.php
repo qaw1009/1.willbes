@@ -325,7 +325,7 @@
                     {'data' : 'PayStatusName', 'render' : function(data, type, row, meta) {
                         return row.RefundPrice > 0 ? '<span class="red no-line-height">' + data + '</span>' : data;
                     }},
-                    {'data' : 'LgCateName'},
+                    {'data' : 'CateName'},
                     {'data' : 'LearnPatternCcdName', 'render' : function(data, type, row, meta) {
                         if (typeof data !== 'undefined') {
                             return (row.SalePatternCcd.slice(-1) !== '1' ? row.SalePatternCcdName : data) + (row.PackTypeCcdName !== null ? '<br/>(' + row.PackTypeCcdName + ')' : '');

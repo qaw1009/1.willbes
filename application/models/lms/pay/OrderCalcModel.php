@@ -42,7 +42,7 @@ class OrderCalcModel extends BaseOrderModel
                 // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드
                 $in_column .= ', O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.CompleteDatm, OPR.RefundDatm as OriRefundDatm
                     , OP.OrderProdIdx, OP.ProdCode, OP.SalePatternCcd
-                    , P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd, left(PC.CateCode, 4) as LgCateCode
+                    , P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd, left(PC.CateCode, 4) as LgCateCode, PC.CateCode
                     , OSP.ProdCodeSub, SP.ProdName as ProdNameSub                               
                     , ifnull(SPL.CourseIdx, PL.CourseIdx) as CourseIdx';
 
@@ -51,7 +51,7 @@ class OrderCalcModel extends BaseOrderModel
                     , if(U.RefundPrice > 0, "환불완료", "결제완료") as PayStatusName
                     , M.MemId, M.MemName
                     , PCO.CourseName, PSU.SubjectName, WPF.wProfName
-                    , SC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CSP.CcdName as SalePatternCcdName
+                    , SC.CateName as LgCateName, SCM.CateName as CateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CSP.CcdName as SalePatternCcdName
                     , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
             } else {
                 // 교수/과목별 합계 or 전체합계
@@ -186,6 +186,8 @@ class OrderCalcModel extends BaseOrderModel
                         on U.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"
                     left join ' . $this->_table['category'] . ' as SC
                         on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SCM
+                        on U.CateCode = SCM.CateCode and SCM.IsStatus = "Y"                        
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -212,7 +214,7 @@ class OrderCalcModel extends BaseOrderModel
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
-                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
+                , PgFee, PgFeePrice, PayStatusName, CateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
                 , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
@@ -259,7 +261,7 @@ class OrderCalcModel extends BaseOrderModel
                 // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드
                 $in_column .= ', O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.CompleteDatm, OPR.RefundDatm as OriRefundDatm
                     , OP.OrderProdIdx, OP.ProdCode, OP.SalePatternCcd
-                    , P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd, left(PC.CateCode, 4) as LgCateCode                    
+                    , P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd, left(PC.CateCode, 4) as LgCateCode, PC.CateCode                    
                     , OSP.ProdCodeSub, SP.ProdName as ProdNameSub                   
                     , SPL.CourseIdx, SPS.SalePrice, SPD.ProdDivisionRate as DivisionRate';
 
@@ -268,7 +270,7 @@ class OrderCalcModel extends BaseOrderModel
                     , if(U.RefundPrice > 0, "환불완료", "결제완료") as PayStatusName
                     , M.MemId, M.MemName
                     , PCO.CourseName, PSU.SubjectName, WPF.wProfName
-                    , SC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CSP.CcdName as SalePatternCcdName
+                    , SC.CateName as LgCateName, SCM.CateName as CateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CSP.CcdName as SalePatternCcdName
                     , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
             } else {
                 // 교수/과목별 합계 or 전체합계
@@ -406,6 +408,8 @@ class OrderCalcModel extends BaseOrderModel
                         on U.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"
                     left join ' . $this->_table['category'] . ' as SC
                         on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SCM
+                        on U.CateCode = SCM.CateCode and SCM.IsStatus = "Y"                        
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -432,7 +436,7 @@ class OrderCalcModel extends BaseOrderModel
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
-                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
+                , PgFee, PgFeePrice, PayStatusName, CateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
                 , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
@@ -469,7 +473,7 @@ class OrderCalcModel extends BaseOrderModel
 				, if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.CardRefundPrice, 0) as CardRefundPrice
-				, left(PC.CateCode, 4) as LgCateCode
+				, left(PC.CateCode, 4) as LgCateCode, PC.CateCode
 				, OPP.ProfIdx, OPP.SubjectIdx
 				, (select count(0) from ' . $this->_table['order_product_prof_subject'] . ' where OrderProdIdx = OP.OrderProdIdx) as ProfSubjectCnt
 				, (select concat(ContribRate, ":", CalcRate) 
@@ -494,7 +498,7 @@ class OrderCalcModel extends BaseOrderModel
                     , if(U.RefundPrice > 0, "환불완료", "결제완료") as PayStatusName
                     , M.MemId, M.MemName
                     , PSU.SubjectName, WPF.wProfName
-                    , SC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
+                    , SC.CateName as LgCateName, SCM.CateName as CateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
                     , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
             } else {
                 // 교수/과목별 합계 or 전체합계
@@ -630,6 +634,8 @@ class OrderCalcModel extends BaseOrderModel
                         on U.MemIdx = M.MemIdx
                     left join ' . $this->_table['category'] . ' as SC
                         on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SCM
+                        on U.CateCode = SCM.CateCode and SCM.IsStatus = "Y"                        
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -654,7 +660,7 @@ class OrderCalcModel extends BaseOrderModel
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
-                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , PgFee, PgFeePrice, PayStatusName, CateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , StudyPeriodMonth, SubjectName, wProfName, ProdContribPerc, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , DivisionMonthPrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
@@ -702,14 +708,14 @@ class OrderCalcModel extends BaseOrderModel
 				, O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd
 				, OP.OrderProdIdx, OP.SalePatternCcd, OP.PayStatusCcd
 				, O.CompleteDatm, OPR.RefundDatm
-				, left(PC.CateCode, 4) as LgCateCode
+				, left(PC.CateCode, 4) as LgCateCode, PC.CateCode
 				, json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
 
             if ($is_count === false || $is_count === 'excel') {
                 $column = 'U.*
 	                , WPF.wProfName
                     , M.MemId, M.MemName
-                    , PCO.CourseName, PSU.SubjectName, SC.CateName as LgCateName
+                    , PCO.CourseName, PSU.SubjectName, SC.CateName as LgCateName, SCM.CateName as CateName
                     , CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CPS.CcdName as PayStatusCcdName
                     , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
             } else {
@@ -852,6 +858,8 @@ class OrderCalcModel extends BaseOrderModel
                         on U.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"	
                     left join ' . $this->_table['category'] . ' as SC
                         on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SCM
+                        on U.CateCode = SCM.CateCode and SCM.IsStatus = "Y"                        
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -879,7 +887,7 @@ class OrderCalcModel extends BaseOrderModel
         // 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
-                , PgFee, PgFeePrice, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , PgFee, PgFeePrice, PayStatusCcdName, CateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice, DivisionRemainPrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
@@ -928,14 +936,14 @@ class OrderCalcModel extends BaseOrderModel
                 // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드
                 $in_column .= ', O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.CompleteDatm, OPR.RefundDatm as OriRefundDatm
 				    , OP.OrderProdIdx, OP.ProdCode, OP.SalePatternCcd
-				    , P.ProdName, left(PC.CateCode, 4) as LgCateCode';
+				    , P.ProdName, left(PC.CateCode, 4) as LgCateCode, PC.CateCode';
 
                 $column = 'U.*
                     , if(U.RefundPrice > 0, U.OriRefundDatm, null) as RefundDatm
                     , if(U.RefundPrice > 0, "환불완료", "결제완료") as PayStatusName
                     , M.MemId, M.MemName
                     , PSU.SubjectName, WPF.wProfName
-                    , SC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName';
+                    , SC.CateName as LgCateName, SCM.CateName as CateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName';
             } else {
                 $column = 'sum(U.RealPayPrice) as tRealPayPrice, sum(U.RefundPrice) as tRefundPrice, sum(U.PgFeePrice) as tPgFeePrice                
                     , sum(U.DivisionPayPrice) as tDivisionPayPrice, sum(U.DivisionRefundPrice) as tDivisionRefundPrice, sum(U.DivisionPgFeePrice) as tDivisionPgFeePrice
@@ -1049,6 +1057,8 @@ class OrderCalcModel extends BaseOrderModel
                         on U.MemIdx = M.MemIdx
                     left join ' . $this->_table['category'] . ' as SC
                         on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SCM
+                        on U.CateCode = SCM.CateCode and SCM.IsStatus = "Y"                        
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -1069,7 +1079,7 @@ class OrderCalcModel extends BaseOrderModel
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
-                , PgFee, PgFeePrice, PayStatusName, LgCateName, ProdCode, ProdName, SubjectName, wProfName
+                , PgFee, PgFeePrice, PayStatusName, CateName, ProdCode, ProdName, SubjectName, wProfName
                 , ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }

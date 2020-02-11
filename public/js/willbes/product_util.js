@@ -171,7 +171,7 @@ function showBuyLayer($type, $chk_obj, $target_id) {
     if($chk_obj.is(':checked')) {
         //var top = $chk_obj.offset().top;
         //var left = $chk_obj.offset().left - 52;
-        var top = $chk_obj.offset().top - 180;
+        var top = $chk_obj.offset().top - 222;  // 180
         if (top_bn_height !== null && typeof top_bn_height !== 'undefined') {
             // top banner height 적용
             top = top - top_bn_height;

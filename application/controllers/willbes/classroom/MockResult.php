@@ -146,7 +146,8 @@ class MockResult extends \app\controllers\FrontController
             $dataOrg['grade'] = $dataOrg['ORG'];
             $dataOrg['avg'] = $Point;
             $dataOrg['rank'] = $OrgRank;
-            $dataOrg['tpct'] = round(100 - (( $arrOrgRank[0] / $dataOrg['COUNT']) * 100 - (100 / $dataOrg['COUNT'])),2);
+            /*$dataOrg['tpct'] = round(100 - (( $arrOrgRank[0] / $dataOrg['COUNT']) * 100 - (100 / $dataOrg['COUNT'])),2);*/
+            $dataOrg['tpct'] = round(($arrOrgRank[0] / $dataOrg['COUNT']) * 100, 2);
             $dataOrg['tavg'] = $dataOrg['tavg'];
             $dataOrg['tsum'] = $dataOrg['tsum'];
         }
@@ -160,7 +161,8 @@ class MockResult extends \app\controllers\FrontController
         $dataAdjust['rankS'] = $arrADRank[0];
         $dataAdjust['tavg'] = $dataAdjust['tavg'];
         $dataAdjust['tsum'] = $dataAdjust['tsum'];
-        $dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);
+        /*$dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);*/
+        $dataAdjust['tpct'] = round(($arrADRank[0] / $dataAdjust['COUNT']) * 100, 2);
         $dataAdjust['admax'] = $dataAdjust['ADMAX'];
 
         //응시자 평균점수 분포표용

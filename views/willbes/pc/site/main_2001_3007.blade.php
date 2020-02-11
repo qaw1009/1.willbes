@@ -15,14 +15,12 @@
                     </a>
                 </div>
                 --}}
-                <div class="sliderNum">
-                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderNum') !!}
                     {{--
                     <div><a href="https://police.willbes.net/pass/promotion/index/cate/3016/code/1466" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_200117.jpg" alt="해양경찰 합격 패키지"/></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1357" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190826.jpg" alt="해양경찰 공채 PASS"></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1043" target="_blank"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a></div>
                     --}}
-                </div>
                 <ul>
                     <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner']), null, null, null, 'none') !!}</li>
                     <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner']), null, null, null, 'none') !!}</li>

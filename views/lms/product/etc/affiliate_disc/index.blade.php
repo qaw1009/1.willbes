@@ -4,8 +4,8 @@
     <h5>- 제휴 할인율을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

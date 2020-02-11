@@ -19,10 +19,15 @@ class AffiliateDisc extends \app\controllers\BaseController
      */
     public function index()
     {
+        // 학원사이트 코드 조회
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
+
         // 사용하는 코드값 조회
         $codes = $this->codeModel->getCcdInArray(array_values($this->_group_ccd));
 
         $this->load->view('product/etc/affiliate_disc/index', [
+            'def_site_code' => element('0', array_keys($arr_site_code)),
+            'arr_site_code' => $arr_site_code,
             'arr_aff_type_ccd' => $codes[$this->_group_ccd['AffType']],
             'arr_apply_type_ccd' => $codes[$this->_group_ccd['ApplyType']]
         ]);
@@ -63,7 +68,7 @@ class AffiliateDisc extends \app\controllers\BaseController
                 'ADC.IsUse' => $this->_reqP('search_is_use')
             ],
             'IN' => [
-                'ADC.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
+                'ADC.SiteCode' => get_auth_on_off_site_codes('Y')  // 학원사이트 권한 추가
             ],
             'LKB' => [
                 'ADC.ApplyTypeCcds' => $this->_reqP('search_apply_type_ccd')
@@ -87,6 +92,9 @@ class AffiliateDisc extends \app\controllers\BaseController
         $idx = null;
         $data = null;
 
+        // 학원사이트 코드 조회
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
@@ -106,6 +114,7 @@ class AffiliateDisc extends \app\controllers\BaseController
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
+            'arr_site_code' => $arr_site_code,
             'arr_aff_type_ccd' => $codes[$this->_group_ccd['AffType']],
             'arr_apply_type_ccd' => $codes[$this->_group_ccd['ApplyType']]
         ]);

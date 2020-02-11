@@ -7,7 +7,7 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="Section mt30">
-            <div class="widthAuto bnrSec01 nSlider pick"> 
+            <div class="widthAuto bnrSec01 nSlider pick">
                 {{--
                 <div>
                     <a href="{{ site_url('/promotion/index/cate/3007/code/1043') }}">
@@ -16,22 +16,34 @@
                 </div>
                 --}}
                 <div class="sliderNum">
+                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                    {{--
                     <div><a href="https://police.willbes.net/pass/promotion/index/cate/3016/code/1466" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_200117.jpg" alt="해양경찰 합격 패키지"/></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1357" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190826.jpg" alt="해양경찰 공채 PASS"></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1043" target="_blank"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a></div>
+                    --}}
                 </div>
-                <ul>                    
+                <ul>
+                    <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner']), null, null, null, 'none') !!}</li>
+                    <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner']), null, null, null, 'none') !!}</li>
+                    {{--
                     <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/157702"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" title="오태진 한국사 기본이론"></a></li>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/157700"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li> 
-                </ul> 
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3007/pattern/only/prod-code/157700"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li>
+                    --}}
+                </ul>
             </div>
         </div>
 
         <div class="Section mt30">
             <div class="widthAuto bnrSec02">
+                {!! banner_html(element('메인_띠배너1', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_띠배너2', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_띠배너3', $data['arr_main_banner'])) !!}
+                {{--
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" title="신광은 형사소송법"></a></div>
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" title="공득인 해양경찰학개론"></a></div>
                 <div><a href="https://police.willbes.net/professor/show/cate/3007/prof-idx/50759/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0"><img src="https://static.willbes.net/public/images/promotion/main/bnr_1120_03.jpg" title="송광호 해양경찰학개론"></a></div>
+                --}}
             </div>
         </div>
 

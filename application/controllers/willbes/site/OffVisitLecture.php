@@ -22,7 +22,7 @@ class OffVisitLecture extends OffLecture
 
         // 단과 강좌할인율 적용
         if (empty($result) === false) {
-            $result = $this->cartFModel->getAddLectureDiscToCartData($result);
+            $result = $this->cartFModel->getAddProductDiscToCartData($result);
         }
 
         return $this->response([

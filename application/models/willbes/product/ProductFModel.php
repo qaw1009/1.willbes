@@ -23,6 +23,7 @@ class ProductFModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_lecture_disc' => 'lms_product_lecture_disc',
         'product_lecture_disc_info' => 'lms_product_lecture_disc_info',
+        'product_affiliate_disc_info' => 'lms_product_affiliate_disc_info',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
@@ -544,8 +545,8 @@ class ProductFModel extends WB_Model
      * @param array $order
      * @return mixed
      */
-    public function findProductSubjectSeries($add_condition = [], $order = []) {
-
+    public function findProductSubjectSeries($add_condition = [], $order = [])
+    {
         //$column = 'distinct B.ChildCcd,C.CcdName';
         $column =' B.ChildCcd,C.CcdName,GROUP_CONCAT(distinct B.SubjectIdx) as subject_arr';
         $from = '
@@ -653,7 +654,80 @@ class ProductFModel extends WB_Model
                 $result[$prod_code] = [
                     'DiscIdx' => $row['DiscIdx'],
                     'DiscRate' => $row['DiscRate'],
+                    'DiscType' => 'R',
+                    'DiscRateUnit' => '%',
                     'DiscTitle' => $row['DiscTitle']
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * 제휴구분별 할인율 조회
+     * @param string $aff_type [제휴구분 (독서실 : readingroom)
+     * @param int $site_code [사이트코드]
+     * @param string $apply_type [적용구분 (단강좌 : on_lecture, 단과반 : off_lecture, 교재 : book, 모의고사 : mock_exam)]
+     * @return array|int
+     */
+    public function findAffiliateDiscInfo($aff_type, $site_code, $apply_type = null)
+    {
+        $arr_aff_type_ccd = ['readingroom' => '725001'];    // 제휴구분공통코드
+        $arr_apply_type_ccd = ['on_lecture' => '726001', 'off_lecture' => '726002', 'book' => '726003', 'mock_exam' => '726004'];   // 적용구분공통코드
+        $apply_type_ccd = element($apply_type, $arr_apply_type_ccd);
+
+        $column = 'AffIdx, AffName, ApplyTypeCcds, DiscRate, DiscType, if(DiscType = "R", "%", "원") as DiscRateUnit';
+        $arr_condition = [
+            'EQ' => [
+                'AffTypeCcd' => element($aff_type, $arr_aff_type_ccd, '999999'), 'SiteCode' => get_var($site_code, '9999'),
+                'IsUse' => 'Y', 'IsStatus' => 'Y'
+            ],
+            'LKB' => [
+                'ApplyTypeCcds' => $apply_type_ccd
+            ]
+        ];
+        $order_by = ['AffIdx' => 'desc'];
+
+        return $this->_conn->getListResult($this->_table['product_affiliate_disc_info'], $column, $arr_condition, null, null, $order_by);
+    }
+
+    /**
+     * 제휴업체별 상품할인율 정보 리턴
+     * @param int $aff_idx [제휴식별자]
+     * @param int $site_code [사이트코드]
+     * @return array|null
+     */
+    public function getAffiliateDiscRate($aff_idx, $site_code)
+    {
+        $result = null;
+        // 적용구분공통코드 (장바구니 상품구분 값과 맵핑 (CartProdType))
+        $arr_apply_type_ccd = ['on_lecture' => '726001', 'off_lecture' => '726002', 'book' => '726003', 'mock_exam' => '726004'];
+
+        $column = 'AffIdx, AffName, ApplyTypeCcds, DiscRate, DiscType, if(DiscType = "R", "%", "원") as DiscRateUnit';
+        $arr_condition = [
+            'EQ' => [
+                'AffIdx' => get_var($aff_idx, '0'), 'SiteCode' => get_var($site_code, '9999'),
+                'IsUse' => 'Y', 'IsStatus' => 'Y'
+            ]
+        ];
+
+        $data = $this->_conn->getFindResult($this->_table['product_affiliate_disc_info'], $column, $arr_condition);
+        if (empty($data) === true) {
+            return null;
+        }
+
+        // 적용구분별 할인정보 설정
+        foreach (explode(',', $data['ApplyTypeCcds']) as $idx => $apply_type_ccd) {
+            $apply_type = array_search($apply_type_ccd, $arr_apply_type_ccd);
+
+            if (empty($apply_type) === false) {
+                $result[$apply_type] = [
+                    'DiscIdx' => $data['AffIdx'],
+                    'DiscRate' => $data['DiscRate'],
+                    'DiscType' => $data['DiscType'],
+                    'DiscRateUnit' => $data['DiscRateUnit'],
+                    'DiscTitle' => $data['AffName'] . ' 할인'
                 ];
             }
         }

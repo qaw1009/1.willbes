@@ -27,18 +27,20 @@ class Order extends \app\controllers\FrontController
         $cart_type = $this->_req('tab');    // 장바구니 구분
         $pay_type = get_var($this->_req('pay_type'), 'pg');    // 결제루트 구분
         $is_visit_pay = $pay_type == 'visit' ? 'Y' : 'N';     // 방문결제 여부
+        $sess_aff_idx = $this->orderFModel->getSessAffIdx();  // 제휴할인식별자
 
         // 장바구니 조회
         $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, $is_visit_pay);
 
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
-        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, [], 0, '', $is_visit_pay);
+        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, [], 0, '', $sess_aff_idx);
         if (is_array($results) === false) {
-            show_alert($results, 'back');
+            show_alert($results, front_url('/cart/index'), false);
         }
 
-        // 장바구니식별자 추출
-        $arr_cart_idx = array_pluck($results['list'], 'CartIdx');
+        // 장바구니 데이터 추출
+        $arr_cart_idx = array_pluck($results['list'], 'CartIdx');   // 장바구니 식별자
+        $arr_cart_prod_type = array_pluck($results['list'], 'CartProdType');    // 장바구니 상품타입
 
         // 온라인강좌일 경우 자동지급 사은품 조회
         $results['freebie'] = [];
@@ -46,6 +48,13 @@ class Order extends \app\controllers\FrontController
             $results['freebie'] = $this->cartFModel->getProductFreebieByCartIdx($arr_cart_idx, $sess_mem_idx, $this->_site_code);
         }
 
+        // 제휴할인정보 조회
+        $results['affiliate'] = [];
+        if ($results['is_except_sale_pattern'] === false && in_array($cart_type, $arr_cart_prod_type) === true) {
+            // 단강좌, 단과반, 교재, 모의고사 상품이 있을 경우만 조회 (재수강, 수강연장 제외)
+            $results['affiliate'] = $this->productFModel->findAffiliateDiscInfo('readingroom', $this->_site_code, $cart_type);
+        }
+        
         // 지역번호, 휴대폰번호, 결제수단 공통코드 조회
         $codes = $this->codeModel->getCcdInArray(array_values($this->_group_ccd));
 
@@ -144,6 +153,12 @@ class Order extends \app\controllers\FrontController
             return $this->json_error('잘못된 접근입니다.');
         }
 
+        // 제휴할인 식별자 세션 체크
+        $sess_aff_idx = $this->cartFModel->checkSessAffIdx(element('aff_idx', $arr_input));
+        if ($sess_aff_idx === false) {
+            return $this->json_error('잘못된 접근입니다.[2]');
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
@@ -161,8 +176,8 @@ class Order extends \app\controllers\FrontController
         // 사용자 쿠폰 식별자
         $arr_coupon_detail_idx = json_decode(element('coupon_detail_idx', $arr_input, []), true);
         
-        $results = $this->orderFModel->getMakeCartReData(
-            'check_use_point', element('cart_type', $arr_input), $cart_rows, $arr_coupon_detail_idx, element('use_point', $arr_input)
+        $results = $this->orderFModel->getMakeCartReData('check_use_point', element('cart_type', $arr_input), $cart_rows, $arr_coupon_detail_idx
+            , element('use_point', $arr_input), '', $sess_aff_idx
         );
 
         if (is_array($results) === false) {
@@ -170,6 +185,37 @@ class Order extends \app\controllers\FrontController
         }
 
         return $this->json_result(true, '', [], ['is_check' => true]);
+    }
+
+    /**
+     * 제휴할인 적용/취소
+     * @param array $params [적용취소구분 (type/apply : 적용, type/cancel : 취소)
+     * @return mixed
+     */
+    public function choiceAffiliateDiscRate($params = [])
+    {
+        $type = element('type', $params, 'apply');
+
+        if ($type == 'apply') {
+            $rules = [
+                ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+                ['field' => 'aff_idx', 'label' => '제휴할인식별자', 'rules' => 'trim|required|integer']
+            ];
+
+            if ($this->validate($rules) === false) {
+                return null;
+            }
+            
+            // 제휴할인 식별자 세션 생성
+            $this->orderFModel->makeSessAffIdx($this->_reqP('aff_idx'));
+            $succ_msg = '적용되었습니다.';
+        } else {
+            // 제휴할인 식별자 세션 초기화
+            $this->orderFModel->makeSessAffIdx('0');
+            $succ_msg = '취소되었습니다.';
+        }
+
+        return $this->json_result(true, $succ_msg);
     }
 
     /**

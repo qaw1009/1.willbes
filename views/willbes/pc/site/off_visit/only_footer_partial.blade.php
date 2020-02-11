@@ -153,7 +153,7 @@
                     html += '   <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
                     {{-- 단과할인율 표기 --}}
                     if (typeof item.IsLecDisc !== 'undefined' && item.IsLecDisc === 'Y') {
-                        html += '<div class="tx-red tx12 c_both">' + item.LecDiscTitle + ' (↓' + item.LecDiscRate + '%)</div>\n';
+                        html += '<div class="tx-red tx12 c_both">' + item.LecDiscTitle + ' (↓' + item.LecDiscRate + item.LecDiscRateUnit + ')</div>\n';
                     }
                     html += '</div>\n';
                     seq += 1;

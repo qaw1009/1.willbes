@@ -10,6 +10,7 @@
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="cart_type" value="{{ $results['cart_type'] }}"/>
+                <input type="hidden" name="aff_idx" value="{{ $results['aff_idx'] }}"/>
                 <div class="willbes-Cartlist c_both">
                     <div class="stepCart NG">
                         <ul class="tabs-Step">
@@ -33,6 +34,9 @@
                         <div class="willbes-Lec-Tit NG tx-black">
                             주문상품정보
                             <ul>
+                                @if(empty($results['affiliate']) === false)
+                                    <li class="subBtn blue NSK"><a href="#none" onclick="openWin('AffDiscReadingRoom');">자매독서실 할인적용 ></a></li>
+                                @endif
                                 <li class="subBtn NSK"><a href="{{ app_url('/classroom/point/index', 'www') }}" target="_blank">포인트 현황 ></a></li>
                                 <li class="subBtn NSK"><a href="{{ app_url('/classroom/coupon/index', 'www') }}" target="_blank">쿠폰 현황 ></a></li>
                             </ul>
@@ -102,14 +106,14 @@
                                                     <span class="d_none wrap-coupon">
                                                         <span class="coupon-name"></span>
                                                         (<span class="tx-blue"><span class="coupon-disc-price">0</span>원 할인</span>)
-                                                        <a href="#none" class="btn-coupon-apply-delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
+                                                        <a href="#none" class="btn-coupon-apply-delete mt5" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
                                                     </span>
                                                 </dt>
                                             @endif
                                             @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
-                                                {{-- 단과할인율 표기 --}}
-                                                <dt class="mt5">
-                                                   <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] }}%)</span>
+                                                {{-- 단과/제휴 할인율 표기 --}}
+                                                <dt class="lec_disc_info mt5">
+                                                   <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] . $row['LecDiscRateUnit'] }})</span>
                                                 </dt>
                                             @endif
                                         </dl>
@@ -208,7 +212,7 @@
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
                             <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 {{--사용 가능하며,
                             주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--}} 사용 가능합니다.
-                            @if($cart_type == 'book')
+                            @if($results['cart_type'] == 'book')
                                 {{-- 교재상품 구매일 경우 배송료 안내문구 노출 --}}
                                 ({{ number_format(config_app('DeliveryFreePrice')) }}원 이상 교재 구매 시 무료 배송)
                             @endif
@@ -433,8 +437,8 @@
                                     <div class="chkBox">
                                         위 유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                         <span class="chkBox-Agree item">
-                                        <input type="checkbox" id="agree1" name="agree1" value="Y" title="유의사항 안내" required="required"/>
-                                    </span>
+                                            <input type="checkbox" id="agree1" name="agree1" value="Y" title="유의사항 안내" required="required"/>
+                                        </span>
                                     </div>
                                 </td>
                             </tr>
@@ -454,8 +458,8 @@
                                     <div class="chkBox">
                                         위 개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                         <span class="chkBox-Agree item">
-                                        <input type="checkbox" id="agree2" name="agree2" value="Y" title="개인정보 활용안내" required="required"/>
-                                    </span>
+                                            <input type="checkbox" id="agree2" name="agree2" value="Y" title="개인정보 활용안내" required="required"/>
+                                        </span>
                                     </div>
                                 </td>
                             </tr>
@@ -482,7 +486,6 @@
                                         ※ 전체 윌비스 환불 정책과 관련한 상세 사항은 이용약관의 ‘제 4장 서비스 환불’ 항목에서 확인해 주세요.<br/>
                                         <br/>
                                         <a href="javascript:;" onclick="popupOpen('{{app_url('/company/agreement', 'www')}}', 'agreement', '1000', '600', null, null, 'yes');" class="tx-blue">[윌비스 이용약관 보기]</a>
-
                                     </div>
                                     <div class="chkBox">
                                         위 환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
@@ -527,9 +530,12 @@
             <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
             <div id="MockExam" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
+            <div id="AffDiscReadingRoom" class="willbes-Layer-Black">
+                @include('willbes.pc.site.order.aff_disc_readingroom_list')
+            </div>
+            <!-- willbes-Layer-CartBox : 자매독서실 할인 -->
         </div>
         {!! banner('결제_우측퀵', 'Quick-Bnr ml20 mt85', $__cfg['SiteCode'], '0') !!}
-
     </div>
     <!-- End Container -->
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
@@ -645,7 +651,8 @@
                     '_method' : 'POST',
                     'cart_type' : '{{ $results['cart_type'] }}',
                     'use_point' : use_point,
-                    'coupon_detail_idx' : JSON.stringify(coupon_detail_idx)
+                    'coupon_detail_idx' : JSON.stringify(coupon_detail_idx),
+                    'aff_idx' : '{{ $results['aff_idx'] }}'
                 };
                 sendAjax(url, data, function (ret) {
                     if (ret.ret_cd) {

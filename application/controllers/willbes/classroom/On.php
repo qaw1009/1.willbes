@@ -208,6 +208,7 @@ class On extends \app\controllers\FrontController
         // 검색
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
+        $tab = (empty($this->_req("tab")) == true) ? '' : $this->_req("tab");
 
         // 셀렉트박스 수해오기
         $cond_arr = [
@@ -371,7 +372,8 @@ class On extends \app\controllers\FrontController
             'lecList' => $leclist,
             'pkgList' => $pkglist,
             'freeList' => $freelist,
-            'adminList' => $adminlist
+            'adminList' => $adminlist,
+            'tab' => $tab
         ]);
     }
 

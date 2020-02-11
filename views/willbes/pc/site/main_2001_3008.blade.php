@@ -57,9 +57,9 @@
         
         <div class="Section mt8">
             <div class="widthAuto">
-                {!! banner_html(element('메인_띠배너1', $data['arr_main_banner'])) !!}
-                {!! banner_html(element('메인_띠배너2', $data['arr_main_banner'])) !!}
-                {!! banner_html(element('메인_띠배너3', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_띠배너1', $data['arr_main_banner']), null, null, null, 'div', 'mb10') !!}
+                {!! banner_html(element('메인_띠배너2', $data['arr_main_banner']), null, null, null, 'div', 'mb10') !!}
+                {!! banner_html(element('메인_띠배너3', $data['arr_main_banner']), null, null, null, 'div', 'mb10') !!}
                 {{--
                 <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/152968') }}">
                     <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_03.jpg" title="해양경찰특채 면접 전공 특강">

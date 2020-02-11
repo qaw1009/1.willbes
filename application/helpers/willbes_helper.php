@@ -30,9 +30,10 @@ if (!function_exists('banner_html')) {
      * @param string $a_class
      * @param bool $is_desc
      * @param string $view_html
+     * @param string $view_html_class
      * @return string
      */
-    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false, $view_html = '')
+    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false, $view_html = '', $view_html_class = '')
     {
         $html = '';
         $rolling_start = '';
@@ -112,11 +113,11 @@ if (!function_exists('banner_html')) {
                 if($view_html == 'none') {
                     $html .= $a_start . $banner_img . $a_end;
                 } else {
-                    $html .= '<' . $view_html . '>' . $a_start . $banner_img . $a_end . '</' . $view_html . '>';
+                    $html .= '<' . $view_html . ' class="' . (empty($view_html_class) === false ? $view_html_class : '' ) . '" >' . $a_start . $banner_img . $a_end . '</' . $view_html . '>';
                 }
             } else {
                 // div 기본
-                $html .= '<div>' . $a_start . $banner_img . $a_end . '</div>';
+                $html .= '<div class="' . (empty($view_html_class) === false ? $view_html_class : '' ) . '">' . $a_start . $banner_img . $a_end . '</div>';
             }
             if ($is_desc === true) {
                 $html .= '<p>' . $row['BannerName'] . '</p>' . $row['Desc'];

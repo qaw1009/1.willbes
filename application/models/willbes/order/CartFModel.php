@@ -701,7 +701,7 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
-     * 장바구니 데이터에 단과 강좌할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외)
+     * 장바구니 데이터에 단과 강좌할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외) => 사용안함, 추후삭제
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @return mixed
      */
@@ -725,8 +725,67 @@ class CartFModel extends BaseOrderFModel
                         $cart_rows[$idx]['IsLecDisc'] = 'Y';
                         $cart_rows[$idx]['LecDiscTitle'] = $disc_row['DiscTitle'];
                         $cart_rows[$idx]['LecDiscRate'] = $disc_row['DiscRate'];
+                        $cart_rows[$idx]['LecDiscRateUnit'] = '%';
                         $cart_rows[$idx]['Remark'] = $disc_row['DiscTitle'] . '(' . $disc_row['DiscRate'] . '%)';
                         $cart_rows[$idx]['RealSalePrice'] = intval($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));
+                    }
+                }
+            }
+        }
+
+        return $cart_rows;
+    }
+
+    /**
+     * 장바구니 데이터에 단과/제휴 할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외)
+     * @param array $cart_rows [유효한 장바구니 데이터]
+     * @param null|int $aff_idx [제휴할인식별자]
+     * @return mixed
+     */
+    public function getAddProductDiscToCartData($cart_rows, $aff_idx = null)
+    {
+        $site_code = array_get($cart_rows, '0.SiteCode');
+        $arr_prod_code = array_pluck($cart_rows, 'ProdCode');
+        $aff_min_real_sale_price = 50000;   // 제휴할인 최소판매금액
+        $disc_data = null;
+
+        if (empty($site_code) === true || empty($arr_prod_code) === true || (empty($aff_idx) === true && count($arr_prod_code) < 2)) {
+            return $cart_rows;
+        }
+
+        if (empty($aff_idx) === false) {
+            // 제휴할인 (상품구분 기준)
+            $chk_key = 'CartProdType';
+            $disc_data = $this->productFModel->getAffiliateDiscRate($aff_idx, $site_code);
+        } else {
+            // 과정별 단과할인 (상품코드 기준)
+            $chk_key = 'ProdCode';
+            $disc_data = $this->productFModel->getLetureDiscRate($arr_prod_code, $site_code);
+        }
+
+        if (empty($disc_data) === false) {
+            foreach ($cart_rows as $idx => $row) {
+                if ($row['SalePatternCcd'] == $this->_sale_pattern_ccd['normal'] && array_key_exists($row[$chk_key], $disc_data) === true) {
+                    // 제휴할인일 경우 상품별 판매금액이 50000원 이상일 경우만 할인 적용
+                    if ($chk_key == 'ProdCode' || ($chk_key == 'CartProdType' && $row['RealSalePrice'] >= $aff_min_real_sale_price)) {
+                        // 상품별 맵핑된 할인정보
+                        $disc_row = element($row[$chk_key], $disc_data);
+
+                        if (empty($disc_row) === false && $disc_row['DiscRate'] > 0) {
+                            if ($disc_row['DiscType'] == 'R' || ($disc_row['DiscType'] == 'P' && $row['RealSalePrice'] > $disc_row['DiscRate'])) {
+                                $cart_rows[$idx]['IsLecDisc'] = 'Y';
+                                $cart_rows[$idx]['LecDiscTitle'] = $disc_row['DiscTitle'];
+                                $cart_rows[$idx]['LecDiscRate'] = $disc_row['DiscRate'];
+                                $cart_rows[$idx]['LecDiscRateUnit'] = $disc_row['DiscRateUnit'];
+                                $cart_rows[$idx]['Remark'] = $disc_row['DiscTitle'] . '(' . $disc_row['DiscRate'] . $disc_row['DiscRateUnit'] . ')';
+
+                                if ($disc_row['DiscType'] == 'R') {
+                                    $cart_rows[$idx]['RealSalePrice'] = intval($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));
+                                } else {
+                                    $cart_rows[$idx]['RealSalePrice'] = $row['RealSalePrice'] - $disc_row['DiscRate'];
+                                }
+                            }
+                        }
                     }
                 }
             }

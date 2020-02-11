@@ -241,7 +241,7 @@
         $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
                 $content = $($active[0].hash);
                 $links.not($active).each(function () {
                     $(this.hash).hide();

@@ -341,9 +341,9 @@
                         <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌 ({{count($adminList['lec'])}})</a></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2',this);">패키지</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2',this);">패키지 ({{count($adminList['pkg'])}})</a></dt>
                                 </dl>
                             </div>
                             <div id="admintab1" class="willbes-Lec-Table pt20 NG admintab">

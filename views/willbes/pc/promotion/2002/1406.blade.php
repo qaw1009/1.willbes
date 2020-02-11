@@ -78,6 +78,17 @@
         .wb_03 {background:#f3f3f3}
         .wb_04 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1406_04_bg.jpg) no-repeat center top}
         .wb_05 {background:#40c8f4;}
+        .wb_05 {background:#fff;}
+        .tabs {width:1120px; margin:0 auto}
+        .tabs li {display:inline; float:left; width:50%}
+        .tabs li .on {display:none}
+        .tabs li .off {display:block}
+        .tabs li a.active .on,
+        .tabs li a:hover .on {display:block}
+        .tabs li a.active .off,
+        .tabs li a:hover .off {display:none}
+        .tabs:after {content:""; display:block; clear:both}
+
 
     </style>
 
@@ -120,6 +131,31 @@
             <map name="Map1406A" id="Map1406A">
                 <area shape="rect" coords="330,1238,791,1344" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>        
+        </div>
+
+        <div class="evtCtnsBox wb_06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_01.jpg" alt="한국사 강의 안내"/>
+            <ul class="tabs">
+                <li>
+                    <a href="#tab01">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_tab01_off.jpg" class="off" alt="원유철 한국사"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_tab01_on.jpg" class="on" alt="원유철 한국사"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab02" class="active"> 
+                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_tab02_off.jpg" class="off" alt="오태진 한국사"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_tab02_on.jpg" class="on" alt="오태진 한국사"/>
+                    </a>
+                </li>
+            </ul>
+            <div id="tab01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_02.jpg" alt="원유철 한국사"/>
+            </div>   
+            <div id="tab02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1406_06_03.jpg" alt="오태진 한국사"/>
+            </div>
+                      
         </div>
 
         <div class="evtCtnsBox wb_top_01">
@@ -201,10 +237,33 @@
             });
         });
 
+        /*탭(이미지버전)*/
+        $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $content = $($active[0].hash);
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                });
+            });
+        });
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
+        });        
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

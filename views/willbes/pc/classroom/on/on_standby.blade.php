@@ -74,6 +74,7 @@
                     <ul class="tabWrap tabDepthPass">
                         <li><a href="#Mypagetab1" class="on">단강좌 ({{count($lecList)}})</a></li>
                         <li><a href="#Mypagetab2">패키지강좌 ({{count($pkgList)}})</a></li>
+                        <li><a href="#Mypagetab3">관리자부여강좌 ({{count($adminList['lec'])+count($adminList['pkg'])}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
@@ -209,6 +210,145 @@
                             @endforelse
 
                         </div>
+                        <div id="Mypagetab3" class="tabLink">
+                            <div class="PassCurriBox CurrLineiBox">
+                                <dl class="w-info tx-gray">
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌 ({{count($adminList['lec'])}})</a></dt>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2',this);">패키지 ({{count($adminList['pkg'])}})</a></dt>
+                                </dl>
+                            </div>
+                            <div id="admintab1" class="willbes-Lec-Table pt20 NG admintab">
+                                <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                                    <colgroup>
+                                        <col style="width: 820px;">
+                                        <col style="width: 120px;">
+                                    </colgroup>
+                                    <tbody>
+                                    @forelse( $adminList['lec'] as $row )
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$row['wProfName']}}교수님
+                                                        <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @elseif($row['IsLecStart'] == 'Y')
+                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                @else
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="admintab2" class="willbes-Lec-Table pt20 NG admintab" style="display:none !important;">
+                                @forelse( $adminList['pkg'] as $row )
+                                    <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                        <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                            <colgroup>
+                                                <col style="width: 820px;">
+                                                <col style="width: 120px;">
+                                            </colgroup>
+                                            <tbody>
+                                            <tr class="bg-light-blue">
+                                                <td class="w-data tx-left pl10">
+                                                    <div class="w-tit">
+                                                        {{$row['ProdName']}}
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
+                                                        <dt class="MoreBtn"><a href="javascript:;">강좌 열기 ▼</a></dt>
+                                                    </dl>
+                                                </td>
+                                                <td class="w-answer">
+                                                    @if($row['IsLecStart'] == 'Y')
+                                                        <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                        <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                    @else
+                                                        <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                            <colgroup>
+                                                <col style="width: 120px;">
+                                                <col style="width: 820px;">
+                                            </colgroup>
+                                            <tbody>
+                                            @foreach( $row['subleclist'] as $subrow )
+                                                <tr>
+                                                    <td class="w-percent">진도율<br/>
+                                                        <span class="tx-blue">{{$subrow['StudyRate']}}%</span>
+                                                    </td>
+                                                    <td class="w-data tx-left pl10">
+                                                        <dl class="w-info">
+                                                            <dt>
+                                                                {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                                {{$subrow['wProfName']}}교수님
+                                                                <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                            </dt>
+                                                        </dl><br/>
+                                                        <div class="w-tit">
+                                                            <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                        </div>
+                                                        <dl class="w-info tx-gray">
+                                                            <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
+                                                            <dt><span class="row-line">|</span></dt>
+                                                            <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{$subrow['LecStartDate']}}~{{$subrow['RealLecEndDate']}})</dt>
+                                                            <dt><span class="row-line">|</span></dt>
+                                                            <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                        </dl>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @empty
+                                    <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                        <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                            <colgroup>
+                                                <col style="width: 820px;">
+                                                <col style="width: 120px;">
+                                            </colgroup>
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="2" class="tx-center">수강중인 패키지강좌가 없습니다.</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -287,6 +427,14 @@
                 function(ret, status){
                     alert(ret.ret_msg);
                 }, true, 'POST', 'html');
+        }
+
+        function fnAdminTab(obj, o)
+        {
+            $('.admintab').hide();
+            $('#'+obj).show();
+            $(o).parent().parent().find('dt>a').removeClass('strong').removeClass('tx-blue');
+            $(o).addClass('strong').addClass('tx-blue');
         }
     </script>
 @stop

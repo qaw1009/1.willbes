@@ -169,7 +169,10 @@
         </div>
     </div>
     <div class="widthAuto">
-        <div class="Content p_re">
+        <div class="Quick-Bnr mt100">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/bn_160x180.jpg" alt="학원실강 복습동영상"></a>
+        </div>
+        <div class="Content p_re">            
             <div class="Mypage_PASS_Index c_both">
                 <div class="ActIndex ActIndex1 mt70">
                     <div class="willbes-listTable widthAuto940 f_inherit">

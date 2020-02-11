@@ -21,10 +21,10 @@ class OrderFModel extends BaseOrderFModel
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
      * @param string $zipcode [배송지 주소 우편번호 (추가 배송료 계산용)]
-     * @param string $is_visit_pay [방문결제여부]
+     * @param string $aff_idx [제휴할인식별자]
      * @return array|bool|string
      */
-    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0, $zipcode = '', $is_visit_pay = 'N')
+    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0, $zipcode = '', $aff_idx = '')
     {
         if (empty($cart_rows) === true) {
             return '장바구니 데이터가 없습니다.';
@@ -44,12 +44,13 @@ class OrderFModel extends BaseOrderFModel
         $delivery_add_price = 0;
         $is_delivery_info = false;
         $is_package = false;
+        $is_except_sale_pattern = false;
         $arr_user_coupon_idx = [];
         $use_point = get_var($use_point, 0);
 
-        // 단과 강좌할인율 조회 (온라인강좌, 학원강좌일 경우만)
-        if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture') {
-            $cart_rows = $this->cartFModel->getAddLectureDiscToCartData($cart_rows);
+        // 단과/제휴 할인율 조회 (온라인강좌, 학원강좌, 제휴할인식별자가 있을 경우만)
+        if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture' || empty($aff_idx) === false) {
+            $cart_rows = $this->cartFModel->getAddProductDiscToCartData($cart_rows, $aff_idx);
         }
 
         foreach ($cart_rows as $idx => $row) {
@@ -99,11 +100,17 @@ class OrderFModel extends BaseOrderFModel
             if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
                 $is_package = true;
             }
+            
+            // 예외 판매형태 포함 여부 (재수강, 수강연장)
+            if ($is_except_sale_pattern === false && $row['SalePatternCcd'] != $this->_sale_pattern_ccd['normal']) {
+                $is_except_sale_pattern = true;
+            }
 
-            // 단과 강좌할인율이 적용된 경우 포인트 적립, 쿠폰 사용 불가
+            // 단과/제휴 할인율이 적용된 경우 포인트 적립, 포인트/쿠폰 사용 불가
             if (isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y') {
                 $row['IsCoupon'] = 'N';
                 $row['IsPoint'] = 'N';
+                $row['IsUsePoint'] = 'N';
             }
 
             // 변수 초기화
@@ -236,8 +243,10 @@ class OrderFModel extends BaseOrderFModel
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
+        $results['is_except_sale_pattern'] = $is_except_sale_pattern;   // 예외 판매형태 포함 여부
         $results['is_available_use_point'] = $total_use_point_target_price > 0;  // 포인트 사용 가능여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : '');   // 대표 주문상품명
+        $results['aff_idx'] = $aff_idx;     // 제휴할인식별자
         $results['cart_type'] = $cart_type;
 
         return $results;
@@ -466,6 +475,12 @@ class OrderFModel extends BaseOrderFModel
             $is_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
             $pay_status_ccd = $is_vbank === true ? $this->_pay_status_ccd['vbank_wait'] : $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료/입금대기)
             $is_escrow = element('is_escrow', $post_data, 'N'); // 에스크로 결제 여부
+
+            // 제휴할인 식별자 세션 체크
+            $sess_aff_idx = $this->checkSessAffIdx(element('aff_idx', $post_data));
+            if ($sess_aff_idx === false) {
+                throw new \Exception('잘못된 접근입니다.[2]', _HTTP_BAD_REQUEST);
+            }
             
             // 장바구니 조회
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
@@ -476,8 +491,8 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 장바구니 데이터 가공
-            $cart_results = $this->getMakeCartReData(
-                'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint'], element('zipcode', $post_data, '')
+            $cart_results = $this->getMakeCartReData('pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx
+                , $post_row['UsePoint'], element('zipcode', $post_data, ''), $sess_aff_idx
             );
 
             if (is_array($cart_results) === false) {
@@ -609,10 +624,11 @@ class OrderFModel extends BaseOrderFModel
             $this->_conn->trans_rollback();
             return error_result($e);
         } finally {
-            // 장바구니 식별자, 주문번호, 중복 접근방지 주문번호 세션 삭제
+            // 장바구니식별자, 주문번호, 중복 접근방지 주문번호, 제휴할인식별자 세션 삭제
             $this->destroySessCartIdx();
             $this->destroySessOrderNo();
             $this->destroySessProcOrderNo();
+            $this->destroySessAffIdx();
         }
 
         return ['ret_cd' => true, 'ret_data' => $order_no];
@@ -1453,7 +1469,7 @@ class OrderFModel extends BaseOrderFModel
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $site_code, null, $arr_cart_idx, null, $is_direct_pay, $is_visit_pay);
 
             // 장바구니 데이터 가공
-            $cart_results = $this->getMakeCartReData('pay', $cart_type, $cart_rows, [], 0, '', $is_visit_pay);
+            $cart_results = $this->getMakeCartReData('pay', $cart_type, $cart_rows, [], 0, '');
 
             if (is_array($cart_results) === false) {
                 throw new \Exception($cart_results);

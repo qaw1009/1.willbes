@@ -92,6 +92,12 @@ class Payment extends \app\controllers\FrontController
             return $this->json_error('잘못된 접근입니다.');
         }
 
+        // 제휴할인 식별자 세션 체크
+        $sess_aff_idx = $this->cartFModel->checkSessAffIdx(element('aff_idx', $arr_input));
+        if ($sess_aff_idx === false) {
+            return $this->json_error('잘못된 접근입니다.[2]');
+        }
+
         // 장바구니 조회
         $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
 
@@ -101,8 +107,8 @@ class Payment extends \app\controllers\FrontController
         }
 
         // 장바구니 데이터 가공 (전체결제금액 리턴)
-        $results = $this->orderFModel->getMakeCartReData(
-            'pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, []), element('use_point', $arr_input, 0), element('zipcode', $arr_input, '')
+        $results = $this->orderFModel->getMakeCartReData('pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, [])
+            , element('use_point', $arr_input, 0), element('zipcode', $arr_input, ''), $sess_aff_idx
         );
 
         if (is_array($results) === false) {

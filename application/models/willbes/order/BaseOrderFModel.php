@@ -92,6 +92,9 @@ class BaseOrderFModel extends WB_Model
     // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';
 
+    // 제휴할인 식별자 세션명
+    public $_sess_aff_idx_name = 'usable_aff_idx';
+
     // 학원 방문결제 장바구니 세션 아이디 세션명
     public $_sess_cart_sess_id = 'make_sessionid';
 
@@ -198,6 +201,57 @@ class BaseOrderFModel extends WB_Model
     public function destroySessCartIdx()
     {
         $this->session->unset_userdata($this->_sess_cart_idx_name);
+    }
+
+    /**
+     * 제휴할인 식별자 세션 리턴
+     * @return mixed
+     */
+    public function getSessAffIdx()
+    {
+        return $this->session->userdata($this->_sess_aff_idx_name);
+    }
+
+    /**
+     * 제휴할인 식별자 세션 체크 및 리턴
+     * @param int $aff_idx
+     * @return bool|mixed
+     */
+    public function checkSessAffIdx($aff_idx)
+    {
+        $sess_aff_idx = $this->getSessAffIdx();
+
+        if (empty($sess_aff_idx) === false) {
+            // 세션값이 존재하지만 전달 파라미터 값과 다를 경우
+            if ($sess_aff_idx != $aff_idx) {
+                return false;
+            }
+        } else {
+            // 세션값이 없는데 전달 파라미터 값이 존재하는 경우
+            if (empty($aff_idx) === false) {
+                return false;
+            }
+        }
+
+        return $sess_aff_idx;
+    }
+
+    /**
+     * 제휴할인 식별자 세션 생성
+     * @param int $aff_idx
+     */
+    public function makeSessAffIdx($aff_idx)
+    {
+        $this->destroySessAffIdx();
+        $this->session->set_userdata($this->_sess_aff_idx_name, $aff_idx);
+    }
+
+    /**
+     * 제휴할인 식별자 세션 삭제
+     */
+    public function destroySessAffIdx()
+    {
+        $this->session->unset_userdata($this->_sess_aff_idx_name);
     }
 
     /**

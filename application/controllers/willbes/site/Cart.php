@@ -209,6 +209,9 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 식별자 세션 생성
         $this->cartFModel->makeSessCartIdx($arr_cart_idx);
 
+        // 제휴할인 식별자 세션 삭제
+        $this->cartFModel->destroySessAffIdx();
+
         return $this->json_result(true, '', [], ['ret_url' => $return_url]);
     }
 
@@ -253,7 +256,11 @@ class Cart extends \app\controllers\FrontController
                 }
             }
 
+            // 장바구니 식별자 세션 생성
             $this->cartFModel->makeSessCartIdx($arr_cart_idx);
+
+            // 제휴할인 식별자 세션 삭제
+            $this->cartFModel->destroySessAffIdx();
         }
 
         if ($is_ajax === true) {

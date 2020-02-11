@@ -10,6 +10,7 @@ class RegGoodsModel extends WB_Model
         'mock_r_category' => 'lms_Mock_R_Category',
         'mock_r_subject' => 'lms_mock_r_subject',
         'mock_register' => 'lms_mock_register',
+        'mock_grades' => 'lms_mock_grades',
 
         'product_mock_r_paper' => 'lms_Product_Mock_R_Paper',
         'product' => 'lms_Product',
@@ -58,7 +59,9 @@ class RegGoodsModel extends WB_Model
             $column = "
                 MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
                 C1.CateName, C1.IsUse AS IsUseCate
-                ,SC1.CcdName As AcceptStatusCcd_Name,
+                ,SC1.CcdName As AcceptStatusCcd_Name
+                ,CONCAT(MP.TakeStartDatm,' ~ ',MP.TakeEndDatm) AS TakeSETime
+                ,CONCAT(MP.TakeTime,' 분') AS TakeMinute,
             ";
             $column .= "
                 (
@@ -96,7 +99,8 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order']} o4 on op4.OrderIdx = o4.OrderIdx 
                         join {$this->_table['sys_code']} sc4 on mr4.TakeForm = sc4.Ccd
                     WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op4.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
-                ) AS OfflineRegCnt
+                ) AS OfflineRegCnt,
+                (SELECT COUNT(*) FROM {$this->_table['mock_grades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT
             ";
         }
 

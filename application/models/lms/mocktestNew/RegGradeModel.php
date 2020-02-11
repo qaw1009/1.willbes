@@ -19,12 +19,15 @@ class RegGradeModel extends WB_Model
         'product_subject' => 'lms_product_subject',
         'product_cate' => 'lms_product_r_category',
         'product_sale' => 'lms_product_sale',
+        'order_product' => 'lms_order_product',
         'vw_product_mocktest' => 'vw_product_mocktest',
+        'lms_member' => 'lms_member',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
         'sys_category' => 'lms_sys_category',
         'admin' => 'wbs_sys_admin',
     ];
+    private $_take_form_ccd = '690002'; //오프라인
 
     public function __construct()
     {
@@ -475,6 +478,228 @@ class RegGradeModel extends WB_Model
             'data' => $data,
             'total_avg' => $total_avg
         ];
+    }
+
+    /**
+     * 모의고사 문항상세
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function questionAnswerList($is_count = false, $arr_condition = [], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                MB.MemId, MB.MemName,
+                TakeNumber, 
+                PS.SubjectName,
+                QuestionNO, 
+                Answer,
+                IsWrong,
+                MP.MpIdx, MP.MockType, MA.MqIdx
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC', 'MA.MpIdx' => 'ASC', 'MQ.QuestionNo' => 'ASC'])->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['mock_product']} AS PM
+            JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+            JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+            JOIN {$this->_table['mock_register_r_paper']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
+            JOIN {$this->_table['product_subject']} AS PS ON PS.SubjectIdx = RP.SubjectIdx
+            JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx
+            JOIN {$this->_table['mock_answerpaper']} AS MA ON MR.MrIdx = MA.MrIdx AND MQ.MqIdx = MA.MqIdx AND MR.ProdCode = MA.Prodcode
+            JOIN {$this->_table['lms_member']} AS MB ON MR.MemIdx = MB.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 엑셀데이터 저장
+     * @param $prod_code
+     * @param $params
+     * @return array|bool
+     */
+    public function gradeExcelDataUpload($prod_code, $params)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $question_data = $this->_findQuestions($prod_code);
+            if (empty($question_data) === true) {
+                throw new \Exception('등록된 답안이 없습니다. 답안등록 후 저장해 주세요.');
+            }
+
+            $group_params = array_chunk($params, 50);
+            foreach ($group_params as $g_key => $g_val) {
+                //회원아이디 추출
+                $arr_take_num = [];
+                foreach ($g_val as $arr_data) {
+                    $arr_take_num[$arr_data['A']] = $arr_data['A'];
+                }
+
+                $reg_data = $this->_findRegister($prod_code, $arr_take_num);
+                $log_data = [];
+                foreach ($reg_data as $log_row) {
+                    $log_data[] = [
+                        'LogType' => 'S',
+                        'RegIp' => '999999',
+                        'RemainSec' => '999999',
+                        'MrIdx' => $log_row['mr_idx']
+                    ];
+                }
+
+                $add_data = [];
+                if (empty($log_data) === false) {
+                    // 등록된 응시자 데이터삭제
+                    $arr_mr_idx = array_pluck($log_data, 'MrIdx');
+                    $is_del_my_answerpaper = $this->_conn->where('ProdCode', $prod_code)
+                        ->where('TakeForm', $this->_take_form_ccd)
+                        ->where_in('MrIdx', array_values($arr_mr_idx))
+                        ->delete($this->_table['mock_answerpaper']);
+                    if ($is_del_my_answerpaper === false) {
+                        throw new \Exception('등록된 응시자 성적 삭제 실패했습니다.');
+                    }
+
+                    $this->_conn->insert_batch($this->_table['mock_log'], $log_data);
+                    $first_log_idx = $this->_conn->insert_id();
+
+                    $arr_log_idx = [];
+                    foreach ($log_data as $log_key => $log_val) {
+                        $arr_log_idx[$log_val['MrIdx']] = $first_log_idx;
+                        $first_log_idx++;
+                    }
+
+                    foreach ($g_val as $arr_data) {
+                        if (empty($reg_data[$arr_data['A']]['mem_idx']) === false) {
+                            $i = 1;
+                            $arr_answer = explode('/', $arr_data['C']);
+                            foreach ($arr_answer as $key => $answer) {
+                                if (empty($answer) === false) {
+                                    if (empty($question_data[$arr_data['B']][$i]) === false) {
+                                        if ($question_data[$arr_data['B']][$i]['RightAnswer'] == $answer) {
+                                            $is_wrong = 'Y';
+                                        } else {
+                                            $is_wrong = 'N';
+                                        }
+
+                                        $add_data[] = [
+                                            'MemIdx' => $reg_data[$arr_data['A']]['mem_idx'],
+                                            'MrIdx' => $reg_data[$arr_data['A']]['mr_idx'],
+                                            'ProdCode' => $prod_code,
+                                            'MpIdx' => $arr_data['B'],
+                                            'MqIdx' => $question_data[$arr_data['B']][$i]['MqIdx'],
+                                            'LogIdx' => $arr_log_idx[$reg_data[$arr_data['A']]['mr_idx']],
+                                            'Answer' => $answer,
+                                            'IsWrong' => $is_wrong,
+                                            'TakeForm' => $this->_take_form_ccd,
+                                            'RegDatm' => date('Y-m-d H:i:s')
+                                        ];
+                                    }
+                                }
+                                $i++;
+                            }
+                        }
+                    }
+                    if($add_data) $this->_conn->insert_batch($this->_table['mock_answerpaper'], $add_data);
+                    if ($this->_conn->trans_status() === false) {
+                        throw new Exception('저장 실패입니다(1)');
+                    }
+                }
+            }
+
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('저장 실패입니다(2)');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 응시번호기준 접수식별자, 회원식별자 조회
+     * @param $prod_code
+     * @param $arr_take_num
+     * @return array
+     */
+    private function _findRegister($prod_code, $arr_take_num)
+    {
+        $column = 'MR.TakeNumber, MR.MrIdx, MR.MemIdx';
+        $arr_condition = [
+            'EQ' => [
+                'MR.ProdCode' => $prod_code,
+                'MR.IsStatus' => 'Y',
+                'MR.TakeForm' => $this->_take_form_ccd
+            ],
+            'IN' => [
+                'MR.TakeNumber' => $arr_take_num
+            ]
+        ];
+        $where = $this->_conn->makewhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['mock_register']} AS MR
+            INNER JOIN {$this->_table['order_product']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
+        ";
+
+        //echo '<pre>'.'select ' . $column . $from . $where . '</pre>';
+        $result = $this->_conn->query('select ' . $column . $from . $where)->result_array();
+        $data = [];
+        foreach ($result as $row) {
+            $data[$row['TakeNumber']]['mr_idx'] = $row['MrIdx'];
+            $data[$row['TakeNumber']]['mem_idx'] = $row['MemIdx'];
+        }
+
+        return $data;
+    }
+
+    /**
+     * 문항(답안) 조회
+     * @param string $prod_code
+     * @return array
+     */
+    private function _findQuestions($prod_code = '')
+    {
+        $column = 'MQ.MpIdx, MQ.MqIdx, MQ.QuestionNo, RightAnswer';
+        $arr_condition = [
+            'EQ' => [
+                'PMRP.ProdCode' => $prod_code,
+                'PMRP.IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makewhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['product_mock_r_paper']} AS PMRP
+            JOIN {$this->_table['mock_questions']} AS MQ ON PMRP.MpIdx = MQ.MpIdx AND MQ.IsStatus = 'Y'
+        ";
+        $order_by = " ORDER BY MQ.MpIdx, MQ.QuestionNO";
+
+        //echo '<pre>'.'select ' . $column . $from . $where . $order_by.'</pre>';
+        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+        $data = [];
+        foreach ($result as $row) {
+            $data[$row['MpIdx']][$row['QuestionNo']]['MqIdx'] = $row['MqIdx'];
+            $data[$row['MpIdx']][$row['QuestionNo']]['RightAnswer'] = $row['RightAnswer'];
+        }
+
+        return $data;
     }
 
     /**

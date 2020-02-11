@@ -20,14 +20,16 @@
                     <li>                        
                         <div class="sliderNum">
                             {{--<div><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524.jpg" title="해양경찰 특채PASS"></a></div>--}}
-                            <div><a href="{{ site_url('/promotion/index/cate/3008/code/1020') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524_01.jpg" title="KCG 핵심요약"></a></div>
+                            {{--<div><a href="{{ site_url('/promotion/index/cate/3008/code/1020') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524_01.jpg" title="KCG 핵심요약"></a></div>--}}
+                            {!! banner_html(element('메인_배너1', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                         </div>
                     </li>
                     <li>
                         <div class="sliderNum">
                             {{--<div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1237" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190514.jpg" alt="10일 완성 패키지"></a></div>--}}
                             {{--<div><a href="{{ site_url('/promotion/index/cate/3001/code/1035') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" title="KCG 핵심요약"></a></div>--}}
-                            <div><a href="{{ site_url('/promotion/index/cate/3008/code/1409') }}"><img src="https://static.willbes.net/public/images/promotion/2019/09/1409_banner.jpg" title="KCG 마무리특강"></a></div>
+                            {{-- <div><a href="{{ site_url('/promotion/index/cate/3008/code/1409') }}"><img src="https://static.willbes.net/public/images/promotion/2019/09/1409_banner.jpg" title="KCG 마무리특강"></a></div> --}}
+                            {!! banner_html(element('메인_배너2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                         </div>
                     </li>
                 </ul>
@@ -55,9 +57,14 @@
         
         <div class="Section mt8">
             <div class="widthAuto">
+                {!! banner_html(element('메인_띠배너1', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_띠배너2', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_띠배너3', $data['arr_main_banner'])) !!}
+                {{--
                 <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/152968') }}">
                     <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_03.jpg" title="해양경찰특채 면접 전공 특강">
                 </a>
+                --}}
             </div>
         </div>
         

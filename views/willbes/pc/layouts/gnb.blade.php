@@ -34,8 +34,7 @@
                         @if($menu_row['MenuType'] == 'GN')
                             @php $active_class = empty($__cfg['CateCode']) === false && strpos($menu_row['MenuUrl'], $__cfg['CateCode']) > -1 ? 'strong' : ''; @endphp
                             <li class="dropdown">
-                                {{--<a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>--}}
-                                <a href="#none" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>
+                                <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>
                                 @if(isset($menu_row['Children']) === true)
                                     <div class="left-drop-Box">
                                         <ul>
@@ -126,7 +125,7 @@
             @if(is_numeric($menu_group_id) === true && $menu_group_id != $__cfg['GNBMenu']['ActiveGroupMenuIdx'])
                 {{-- 일반메뉴이면서 접근 사이트와 다른 그룹메뉴만 노출 --}}
                 <div class="gnb-List-Tit">
-                    {{--<a href="{{ $menu_group_row['MenuUrl'] }}" target="_{{ $menu_group_row['UrlTarget'] }}">--}}
+                    {{-- <a href="{{ $menu_group_row['MenuUrl'] }}" target="_{{ $menu_group_row['UrlTarget'] }}"> --}}
                     <a href="#none">
                         <div class="willbes-icon_sm">
                             <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '_sm.gif') }}">

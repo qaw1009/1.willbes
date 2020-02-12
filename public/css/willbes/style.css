@@ -6158,18 +6158,22 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .prof-brief-btn {
     position: absolute;
-    top: 14px;
+    top: 29px;
     right: 0;
     float: right;
 }
 .willbes-Prof-Profile .prof-brief-btn li {
     float: left;
     background: #0d74ae;
-    width: 60px;
+    /*width: 60px;*/
+    padding:0 10px;
     height: 30px;
     text-align: center;
-    margin-left: 2px;
+    margin-left: 1px;
     line-height: 30px;
+}
+.willbes-Prof-Profile .prof-brief-btn li.cafe {
+    background: #fc989a;
 }
 .willbes-Prof-Profile .prof-brief-btn li:hover {
     background: #333;
@@ -6205,12 +6209,13 @@ ul li.profList .willbes-Layer-ProfileBox {
     letter-spacing: 0;
 }
 .willbes-Prof-Profile .prof-profile .Name {
-    font-size: 28px;
+    font-size: 26px;
     top: 0px;
     left: 0;
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
     width: 100%;
+    letter-spacing: -1px;
 }
 .willbes-Prof-Profile .prof-profile .Obj {
     font-size: 16px;
@@ -6222,14 +6227,14 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 .willbes-Prof-Profile .prof-profile .Name span {
     vertical-align: baseline;
-    font-size: 19px;
+    font-size: 18px;
 }
 .willbes-Prof-Profile .prof-profile .Name .Sbj {
-    font-size: 28px;
-    margin-right: 10px;
+    font-size: 26px;
+    margin-right: 5px;
 }
 .willbes-Prof-Profile .prof-profile .Name strong {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 .willbes-Prof-Profile .prof-banner01 {

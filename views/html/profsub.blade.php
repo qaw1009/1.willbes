@@ -133,21 +133,27 @@
                 <img src="{{ img_url('prof/viewSample01.png') }}" alt="교수명">
             </div>
             <div class="prof-profile p_re">
-                <div class="Name"><span class="Sbj tx-blue">국어</span><strong>정채영</strong><span class="NGR">교수님</span></div>
+                <div class="Name"><span class="Sbj tx-blue">감정평가 및 보상법규</span><strong>정채영</strong><span class="NGR">교수</span></div>
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'),openWin('Profile')">
-                            <div class="NSK">프로필</div>
+                            <div>프로필</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none">
-                            <div class="NSK">맛보기</div>
+                            <div>맛보기</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="openWin('LayerCurriculum'),openWin('Curriculum')">
-                            <div class="NSK">커리큘럼</div>
+                            <div>커리큘럼</div>
+                        </a>
+                    </li>
+                    {{--카페 링크 있을 경우만 노출--}}
+                    <li class="cafe">
+                        <a href="#none" >
+                            <div>교수카페</div>
                         </a>
                     </li>
                 </ul>

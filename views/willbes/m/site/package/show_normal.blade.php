@@ -96,8 +96,8 @@
                                                 <strong>맛보기</strong>
                                                 @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
                                                     @if($loop->index == 1) {{--처음 1개만 노출--}}
-                                                        @if(empty($sample_row['wHD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="tBox black NSK">HIGH</a>@endif
-                                                        @if(empty($sample_row['wSD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="tBox gray NSK">LOW</a>@endif
+                                                        @if(empty($sample_row['wHD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$sub_row['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="tBox black NSK">HIGH</a>@endif
+                                                        @if(empty($sample_row['wSD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$sub_row['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="tBox gray NSK">LOW</a>@endif
                                                     @endif
                                                 @endforeach
                                             @endif
@@ -159,6 +159,7 @@
     </div>
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 

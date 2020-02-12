@@ -20,14 +20,14 @@
 
         /************************************************************/
 
-        .wb_top {background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center;}
-        .wb_cts01 {background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat;}
-        .wb_cts02 {background:#7d7d7d; padding:100px 0}
+        .wb_top {background:#575787 url(https://static.willbes.net/public/images/promotion/2020/02/1536_top_bg.jpg) no-repeat center;}
+        .wb_cts01 {background:#fff;}
+        .wb_cts02 {background:#435165; padding-bottom:100px;}
         .wb_cts03 {background:#fff; padding-bottom:100px;}
         .wb_cts03 ul{width:100%; margin:0 auto; max-width:980px}
         .wb_cts03 div {width:932px; margin:0 auto; background:#fff; border:24px solid #f4f4f4; padding:20px 0}
         .wb_cts03 table {width:95%; margin:0 auto}
-        .wb_cts03 td {font-size:135%; padding:10px 15px; border-bottom:1px solid #EBEBEB; color:#666; letter-spacing:-2; }
+        .wb_cts03 td {font-size:18px; padding:10px 15px; border-bottom:1px solid #EBEBEB; color:#666;font-weight:bold;line-height:35px;}
         .wb_cts03 div a {display:block; background:#000; color:#fff; padding:5px 10px; font-size:90%}
         .wb_cts03 div tr:hover td {color:#000}
         .wb_cts03 div a:hover {background:#c83438; color:#fff}
@@ -66,37 +66,33 @@
         .content_guide_box dd p{ margin-bottom:3px;}
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
-        .skybanner {
-            position:fixed;
-            bottom:20px;
-            right:10px;
-            width:170px;
-            z-index:1;
-        }
+        .skybanner {position:fixed;top:250px;right:10px;width:170px;z-index:1;}       
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div><a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
-            <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
+            <div><a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_sky01.png" alt="현직경찰 인증하기"></a></div>
+            <div style="margin-top:15px;"><a href="#go"><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_sky02.png" alt="프리패스 구매하기"></a></div>
         </div>
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1536_top.jpg" alt="경찰승진 패스" />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1536_01.jpg" alt="경찰승진시험 변경" />
         </div>
 
         <div class="evtCtnsBox wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02.jpg" alt="경찰승진 지금 시작할때" />
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_1.jpg" alt="1" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_2.jpg" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_3.jpg" alt="3" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_4.jpg" alt="4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02_01.png" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02_02.png" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02_03.png" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02_04.png" alt="4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1536_02_05.png" alt="5" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png"></a></p>
@@ -104,55 +100,55 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03 NSK" id="go">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p4_1.png"  alt="계급별"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1536_03_01.jpg"  alt="계급별"/>
             <div>
                 <table cellspacing="0" cellpadding="0">
                     <col />
                     <col width="15%"/>
                     <tr>
-                        <td class="tx-left">【경장,경사,경위 승진대비】 2021 신광은 형소법 &amp; 김원욱 형법 PASS</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161785') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161785') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">【경장,경사,경위 승진대비】 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 송광호 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161786') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 송광호 실무종합</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161786') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">【경장,경사,경위 승진대비】 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 박상규 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161795') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 박상규 실무종합</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161795') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">【경장,경사,경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 오현웅 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161796') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2020 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 오현웅 실무종합</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161796') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                 </table>
             </div>
 
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p4_3.png"  alt="교수별" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1536_03_02.jpg"  alt="교수별" />
 
             <div>
                 <table cellspacing="0" cellpadding="0">
                     <col />
                     <col width="15%"/>
                     <tr>
-                        <td class="tx-left">2021 승진대비 형소법 12개월 동영상 PASS > 신광은 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161776') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【2021 승진대비 형소법 12개월 동영상 PASS】&nbsp;&nbsp;&nbsp;&nbsp; 신광은 교수</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161776') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">2021 승진대비 형법 12개월 동영상 PASS > 김원욱 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161778') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【2021 승진대비 형법 12개월 동영상 PASS】&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 김원욱 교수</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161778') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">2021 승진대비 실무종합 12개월 동영상 PASS > 송광호 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161782') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 송광호 교수</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161782') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">2021 승진대비 실무종합 12개월 동영상 PASS > 박상규 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161780') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 박상규 교수</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161780') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">2021 승진대비 실무종합 12개월 동영상 PASS > 오현웅 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161784') }}" target="_blink">수강신청</a></td>
+                        <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 오현웅 교수</td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161784') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                 </table>
             </div>
@@ -176,11 +172,10 @@
                         <h3>상품구성</h3>
                     </dt>
                     <dd>
-                        <p>1. 본 상품은 2020년 승진시험대비 윌비스 신광은 경찰교수님, 동영상 전 강좌를 무제한 수강할 수 있는 상품입니다.</p>
+                        <p>1. 본 상품은 2021년 승진시험대비로 계급별 , 교수님별 강좌로 제공합니다.</p>
                         <p>2. 수강기간은 상품에 표시된 기간에 따라 구매일로부터 365일 제공되며 결제가 완료되는 즉시 수강 가능합니다.</p>
                         <p>3. 일부강좌는 경찰채용(일반공채)강좌와 동일한 강좌로 구성될 수있습니다.</p>
-                        <p>4. 경찰승진 주관식 행정법 강좌는 4월 중 강의 제공 예정입니다.</p>
-                        <p>5. 경찰승진 실무강좌는 7월 중 진도별 문제풀이강좌 제공예정입니다.</p>
+                        <p>4. 실무종합 강의일정은 2020년 5월 또는 6월 따로 공지됩니다.</p>                        
                     </dd>
                     <dt>
                         <h3>수강관련</h3>

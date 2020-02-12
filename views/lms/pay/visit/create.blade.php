@@ -112,9 +112,15 @@
                                             </td>
                                             <td>
                                                 <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
+                                                <div class="mt-5">
+                                                    <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                                </div>
                                             </td>
                                             <td>
                                                 <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
+                                                <div class="mt-5">
+                                                    <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                                </div>
                                             </td>
                                             <td>
                                                 <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealPayPrice'] }}" readonly="readonly">
@@ -194,9 +200,15 @@
                                                 </td>
                                                 <td>
                                                     <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
+                                                    <div class="mt-5">
+                                                        <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
+                                                    <div class="mt-5">
+                                                        <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealSalePrice'] }}" readonly="readonly">
@@ -496,9 +508,15 @@
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">\n' +
+                            '        <div class="mt-5">\n' +
+                            '           <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용\n' +
+                            '        </div>\n' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">\n' +
+                            '        <div class="mt-5">\n' +
+                            '           <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용\n' +
+                            '        </div>\n' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
@@ -515,6 +533,7 @@
 
                 $(this).html('');    // 기 선택 상품 초기화
                 $tbody.append(html);
+                init_iCheck();  // 체크박스 플러그인 활성화
                 getLectureDiscRate();   // 강좌할인율 조회
                 setTotalPrice();   // 결제금액 재계산
             });
@@ -747,6 +766,21 @@
                 $regi_form.find('[name="disc_rate[]"]').eq(index).val(disc_price);
                 $regi_form.find('[name="disc_type[]"]').eq(index).val('P');
                 $regi_form.find('[name="disc_rate[]"]').eq(index).trigger('change');
+            });
+
+            // 카드/현금 전액적용 체크박스 클릭
+            $regi_form.on('ifChanged', 'input[name="is_all_card_pay_price"], input[name="is_all_cash_pay_price"]', function() {
+                var input_name = $(this).prop('name');
+                var index = $regi_form.find('[name="' + input_name + '"]').index(this);
+                var input_target = $regi_form.find('[name="' + $(this).val() + '_pay_price' + '[]"]').eq(index);
+                var input_price = '0';
+
+                if ($(this).prop('checked') === true) {
+                    input_price = parseInt($regi_form.find('[name="real_pay_price[]"]').eq(index).val(), 10);
+                }
+
+                input_target.val(input_price);
+                input_target.trigger('change');
             });
 
             // 방문수강접수 목록

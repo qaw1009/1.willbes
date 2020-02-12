@@ -6369,7 +6369,13 @@ ul li.profList .willbes-Layer-ProfileBox {
     overflow-x: auto;
 }
 .willbes-Layer-CurriBox .Layer-Cont img {
-    max-width: 838px;
+    max-width: 100%;
+    /*max-width: 838px;*/
+}
+.willbes-Layer-CurriBox .Layer-Cont {
+    background: #f4f4f4;
+    height: 480px;
+    overflow-y: scroll;
 }
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */

@@ -259,7 +259,7 @@
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">정채영</span> 교수님 커리큘럼</div>
                 <div class="Layer-Cont">
-                    커리큘럼 이미지 노출
+                    <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3510.JPG"/>
                 </div>
             </div>
             <div id="LayerCurriculum" class="willbes-Layer-Black"></div>

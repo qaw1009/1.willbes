@@ -227,8 +227,8 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         {{-- 결제완료 일반형 종합반일 경우만 수강증 출력 버튼 노출 (미수금 주문일 경우 1번째 주문건만 노출) --}}
                         if (row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}' && row.PackTypeCcd === '{{ $chk_pack_type_ccd['normal'] }}' && (row.IsUnPaid === 'N' || (row.IsUnPaid === 'Y' && row.UnPaidUnitNum === '1'))) {
-                            return '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' +
-                                (row.IsPrintCert === 'Y' ? ' <a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '');
+                            return '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">수강증출력</button>' +
+                                (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '');
                         } else {
                             return '';
                         }

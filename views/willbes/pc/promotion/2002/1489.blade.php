@@ -71,7 +71,7 @@
         }
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1489_01_bg.jpg) no-repeat center}
         .wb_02 {background:#222830}
-        .wb_03 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1489_03_bg.jpg) no-repeat center; position:relative; height:1950px} 
+        .wb_03 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1489_03_bg.jpg) no-repeat center top; position:relative; height:1950px} 
         .wb_03 .benefitBox {position:absolute; top:1548px; left:0; width:100%; z-index:1}
         .wb_03 .benefitBox .bx-wrapper{max-width:100% !important;}
         .wb_03 .benefitBox li {display:inline; float:left; height: 320px;}

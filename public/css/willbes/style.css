@@ -11929,7 +11929,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center; padding:90px 0;}
 .lecBanner .copyTit {color:#fff !important; text-shadow: 5px 5px 5px 1px rgba(0,0,0,0.3);}
 .lecBanner li {display: inline; float:left; width:25%; text-align: center; margin-bottom:20px}
-.lecBanner li a {display:block; width:260px; margin:0 auto;
+.lecBanner li a {display:block; width:260px; margin:0 auto; height: 325px;
     transition: opacity .4s ease-in-out;
 }
 .lecBanner li a img {width: 100%;}

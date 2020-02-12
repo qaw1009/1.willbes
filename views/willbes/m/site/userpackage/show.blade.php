@@ -180,6 +180,7 @@
     </div>
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var $buy_layer = $('.willbes-Lec-buyBtn-sm');

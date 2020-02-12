@@ -166,9 +166,9 @@
                                     <td>{{ $row['ProfChoiceStartDate'] }}<br/>~{{ $row['ProfChoiceEndDate'] }}</td>
                                     <td>
                                         @if($row['IsAssign'] == 'Y')
-                                            <a class="blue cs-pointer btn-sub-print" data-site-code="{{ $data['SiteCode'] }}" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">[출력]</a>
+                                            <button type="button" class="btn btn-xs btn-success mr-0 btn-sub-print" data-site-code="{{ $data['SiteCode'] }}" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">수강증출력</button>
                                             @if($row['IsPrintCert'] == 'Y')
-                                                <a class="red cs-pointer btn-sub-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">(Y)</a>
+                                                <br/><a class="red cs-pointer btn-sub-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">(Y)</a>
                                             @endif
                                         @endif
                                     </td>

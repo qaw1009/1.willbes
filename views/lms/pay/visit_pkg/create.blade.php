@@ -158,9 +158,24 @@
                         <div class="form-group bg-odd bold">
                             <label class="control-label col-md-1 pl-20">결제금액</label>
                             <div class="col-md-9 form-inline">
-                                [카드] <input type="number" name="card_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 카드결제금액" value="0">
-                                + [현금] <input type="number" name="cash_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 현금결제금액" value="0">
-                                = <input type="number" name="real_pay_price" class="form-control input-sm ml-10" title="최종 실결제금액" value="0" readonly="readonly"> 원
+                                <div class="inline-block valign-top mt-5">[카드]</div>
+                                <div class="inline-block">
+                                    <input type="number" name="card_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 카드결제금액" value="0">
+                                    <div class="mt-5 ml-10">
+                                        <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                    </div>
+                                </div>
+                                <div class="inline-block valign-top mt-5">+ [현금]</div>
+                                <div class="inline-block">
+                                    <input type="number" name="cash_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 현금결제금액" value="0">
+                                    <div class="mt-5 ml-10">
+                                        <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                    </div>
+                                </div>
+                                <div class="inline-block valign-top">
+                                    = <input type="number" name="real_pay_price" class="form-control input-sm ml-10" title="최종 실결제금액" value="0" readonly="readonly"> 원
+                                    <br/>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group pt-5 pb-5">
@@ -578,6 +593,23 @@
                 } else {
                     unpaid_form.addClass('hide');
                 }
+            });
+
+            // 카드/현금 전액적용 체크박스 클릭
+            $regi_form.on('ifChanged', 'input[name="is_all_card_pay_price"], input[name="is_all_cash_pay_price"]', function() {
+                var input_target = $regi_form.find('[name="' + $(this).val() + '_pay_price' + '"]');
+                var input_price = '0';
+
+                if ($(this).prop('checked') === true) {
+                    if ($regi_form.find('[name="is_unpaid"]').prop('checked') === true) {
+                        input_price = parseInt($regi_form.find('#calc_unpaid_price').text().replace(/,/g, ''), 10);
+                    } else {
+                        input_price = parseInt($regi_form.find('[name="org_pay_price"]').val(), 10);
+                    }
+                }
+
+                input_target.val(input_price);
+                input_target.trigger('change');
             });
 
             // [종합반] 방문수강접수 목록

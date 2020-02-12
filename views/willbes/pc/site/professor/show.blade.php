@@ -44,6 +44,14 @@
                             <div class="NGR">커리큘럼</div>
                         </a>
                     </li>
+                    @if(empty($data['ProfReferData']['cafe_url']) === false)
+                        {{-- 카페링크 있을 경우만 노출 --}}
+                        <li class="cafe">
+                            <a href="{{$data['ProfReferData']['cafe_url']}}" target="_blank">
+                                <div>{{$data['AppellationCcdName']}}카페</div>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
                 <div class="Obj NGR">
                     {!! $data['ProfSlogan'] !!}

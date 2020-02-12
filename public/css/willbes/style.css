@@ -694,7 +694,7 @@ table.auTable tr td {
 #Gnb {
     position: fixed;
     background: #fff;
-    height: 100%;
+    height:100%;
     border-right: 1px solid #aeaeae;
     color: #383838;
     letter-spacing: -1px;
@@ -741,7 +741,7 @@ table.auTable tr td {
 }
 
 #Gnb h4 ul li {
-    line-height: 26px;
+    line-height: 26px;    
 }
 #Gnb h4 ul li.active a {
     font-weight: 600;
@@ -772,6 +772,7 @@ table.auTable tr td {
     display: inline-block;
     margin: 0;
 }
+#Gnb .gnb-List {background: #fff !important;}
 #Gnb .gnb-List .gnb-List-Tit {
     height: 40px;
     line-height: 40px;
@@ -779,7 +780,7 @@ table.auTable tr td {
 #Gnb .gnb-List li a {
     display: block;
     width: 100%;
-    height: 40px;
+    height: 40px;    
 }
 #Gnb .willbes-icon_sm {
     float: left;
@@ -880,13 +881,19 @@ table.auTable tr td {
     display: block !important;
 }
 .Gnb-md .gnb-List .gnb-List-Depth dl dt {
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
+    /*border-bottom: 1px solid #ececec;*/
+}
+.Gnb-md .gnb-List .gnb-List-Depth dl dt:last-child {
     border-bottom: 1px solid #ececec;
 }
 .Gnb-md .gnb-List .gnb-List-Depth dl dt a {
     display: block;
     padding-left: 20px;
+}
+.Gnb-md .gnb-List .gnb-List-Depth dl dt a:hover {
+    background: #f9f9f9;
 }
 .Gnb-md .gnb-List .gnb-List-Depth dl dt.GA a {
     color: #2784d2;

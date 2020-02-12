@@ -48,7 +48,7 @@
                     <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled, false, $arr_site_code) !!}
                     </div>
                 </div>
                 <div class="form-group">

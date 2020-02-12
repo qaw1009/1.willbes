@@ -45,6 +45,7 @@ $(function() {
 });
 
 // GNB 아코디언 메뉴 Script
+/*
 $(function() {
     $('div.gnb-List-Tit').hover(function() {
         $(this).siblings('hover').removeClass('hover');
@@ -57,7 +58,33 @@ $(function() {
             $(this).next().slideDown('normal');
             $(this).addClass('hover');
 
-        }    
+        }
+    });
+});
+*/
+
+// GNB 사이트 메뉴 클릭 이벤트로 변경
+$(function() {
+    $('div.gnb-List-Tit').click(function() {
+        $(this).siblings('hover').removeClass('hover');
+
+        if ($(this).next().is(':visible')) {
+            $(this).removeClass('hover');
+            $('div.gnb-List-Depth').slideUp('normal');
+        } else {
+            $('div.gnb-List-Depth').slideUp('normal');
+            $(this).next().slideDown('normal');
+            $(this).addClass('hover');
+        }
+    });
+});
+
+// GNB 영역 마우스 벗어날 경우 메뉴 접기
+$(function() {
+    $('#Gnb').mouseleave(function() {
+        $('div.gnb-List-Tit').siblings('hover').removeClass('hover');
+        $('div.gnb-List-Tit').removeClass('hover');
+        $('div.gnb-List-Depth').slideUp('normal');
     });
 });
 

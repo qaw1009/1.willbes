@@ -6374,7 +6374,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Layer-CurriBox .Layer-Cont {
     height: 480px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */

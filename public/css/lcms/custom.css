@@ -1050,6 +1050,9 @@ select.input-sm {
 .valign-middle {
     vertical-align: middle !important;
 }
+.valign-top {
+    vertical-align: top !important;
+}
 
 /* cursor */
 .cs-pointer {

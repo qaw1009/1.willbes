@@ -172,6 +172,11 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                createdRow: function(row, data, dataIndex) {
+                    if (data.PayStatusCcd === '{{ $_pay_status_ccd['receipt_wait'] }}') {
+                        $(row).addClass('bg-info');
+                    }
+                },
                 rowsGroup: ['.rowspan'],
                 rowGroup: {
                     startRender: null,
@@ -227,8 +232,8 @@
                     }},
                     {'data' : 'ProdTypeCcd', 'render' : function(data, type, row, meta) {
                         if (data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}') {
-                            return '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>'
-                                + (row.IsPrintCert === 'Y' ? ' <a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '')
+                            return '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">수강증출력</button>'
+                                + (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '')
                         } else {
                             return '';
                         }

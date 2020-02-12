@@ -78,7 +78,6 @@
         .wb_03 {background:#f3f3f3}
         .wb_04 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1406_04_bg.jpg) no-repeat center top}
         .wb_05 {background:#40c8f4;}
-        .wb_05 {background:#fff;}
         .tabs {width:1120px; margin:0 auto}
         .tabs li {display:inline; float:left; width:50%}
         .tabs li .on {display:none}

@@ -167,18 +167,18 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit02.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit03.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit04.jpg" alt=""/></li>
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit05.jpg" alt=""/></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit06.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit07.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit08.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit09.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit01.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit02.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit03.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit04.jpg" alt=""/></li>
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit05.jpg" alt=""/></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit06.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit07.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit08.jpg" alt=""/></li> 
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit09.jpg" alt=""/></li> 
                 </ul>
             </div> 
         </div>

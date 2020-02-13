@@ -868,6 +868,7 @@ class OrderListModel extends BaseOrderModel
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_idx = 0;   // 페이지 인덱스
             $arr_line = [];
+            $is_print_prod_name = $site_code == '2010' ? false : true;    // 상품명 출력여부
 
             foreach ($data as $idx => $row) {
                 if ($idx > 0 && $idx % $page_cnt == 0) {
@@ -879,8 +880,12 @@ class OrderListModel extends BaseOrderModel
                 if ($row['IsPackage'] == 'Y') {
                     $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
                 } elseif ($row['IsPackage'] == 'N') {
-                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'] . '_' . $row['ProdName'] . '_';
-                    $_prod_name .= $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'];
+                    // 상품명 출력
+                    if ($is_print_prod_name === true) {
+                        $_prod_name .= '_' . $row['ProdName'];
+                    }
+                    $_prod_name .= '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
                 }
 
                 for($i = 0; $i < $line_cnt; $i++) {

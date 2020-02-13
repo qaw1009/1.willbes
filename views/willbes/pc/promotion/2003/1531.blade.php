@@ -61,8 +61,8 @@
             <div>
                 <ul>
                     <li>
-                        <span>실력향상PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">{{$arr_promotion_params['turn']}}기</span>
+                        실력향상PASS 2기<br />
+                        <span class="NGEB">2.18(화) 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -76,7 +76,7 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }}</span>
+                        남았습니다
                     </li>
                 </ul>
             </div>
@@ -132,11 +132,12 @@
             location.href = url;
         }
 
-       /*디데이카운트다운*/
-       $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            @if(empty($arr_promotion_params['edate']) === false)
+                dDayCountDown('{{$arr_promotion_params['edate']}}');
+            @endif
         });
-        
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

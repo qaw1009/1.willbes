@@ -113,13 +113,13 @@
                                             <td>
                                                 <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
                                                 <div class="mt-5">
-                                                    <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                                    <label><input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용</label>
                                                 </div>
                                             </td>
                                             <td>
                                                 <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
                                                 <div class="mt-5">
-                                                    <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                                    <label><input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용</label>
                                                 </div>
                                             </td>
                                             <td>
@@ -201,13 +201,13 @@
                                                 <td>
                                                     <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
                                                     <div class="mt-5">
-                                                        <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                                        <label><input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용</label>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
                                                     <div class="mt-5">
-                                                        <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                                        <label><input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용</label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -509,13 +509,13 @@
                             '    <td>\n' +
                             '        <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">\n' +
                             '        <div class="mt-5">\n' +
-                            '           <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용\n' +
+                            '           <label><input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용</label>\n' +
                             '        </div>\n' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">\n' +
                             '        <div class="mt-5">\n' +
-                            '           <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용\n' +
+                            '           <label><input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용</label>\n' +
                             '        </div>\n' +
                             '    </td>\n' +
                             '    <td>\n' +

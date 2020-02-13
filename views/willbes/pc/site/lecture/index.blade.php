@@ -56,7 +56,7 @@
                         <tr>
                             <th class="tx-gray">과목선택</th>
                             <td colspan="9">
-                                <ul class="curriSelect">
+                                <ul class="curriSelect curriSelect2">
                                     <li><a href="#none" onclick="goUrl('subject_idx', '');" class="@if(empty(element('subject_idx', $arr_input)) === true) on @endif">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
                                         <li><a href="#none" onclick="goUrl('subject_idx', '{{ $row['SubjectIdx'] }}');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>

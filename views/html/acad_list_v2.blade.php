@@ -70,23 +70,28 @@
                                 <ul class="curriSelect">
                                     <li><a class="on" href="#none">노량진</a></li>
                                     <li><a href="#none">신림</a></li>
+                                    <li><a href="#none">부산</a></li>
                                     <li><a href="#none">인천</a></li>
                                     <li><a href="#none">대구</a></li>
                                     <li><a href="#none">광주</a></li>
                                     <li><a href="#none">제주</a></li>
+                                    <li><a href="#none">경기광주(기숙형)</a></li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <th class="tx-gray">과정선택</th>
                             <td colspan="9">
-                                <ul class="curriSelect">
+                                <ul class="curriSelect curriSelect2">
                                     <li><a class="on" href="#none">전체</a></li>
                                     <li><a href="#none">이론과정</a></li>
                                     <li><a href="#none">심화과정</a></li>
                                     <li><a href="#none">문제풀이</a></li>
                                     <li><a href="#none">특강</a></li>
                                     <li><a href="#none">면접</a></li>
+                                    <li><a href="#none">문풀1단계 핵심요약/진도별</a></li>
+                                    <li><a href="#none">문풀2단계 동형모의고사</a></li>
+                                    <li><a href="#none">문풀3단계 파이널모의고사</a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -102,7 +107,9 @@
                                     <li><a href="#none">행정학</a></li>
                                     <li><a href="#none">교육학</a></li>
                                     <li><a href="#none">사회</a></li>
-                                    <li><a href="#none">수학</a></li>
+                                    <li><a href="#none">통합생활관리반</a></li>
+                                    <li><a href="#none">불금모의고사</a></li>
+                                    <li><a href="#none">기본튜터링 관리반</a></li>
                                 </ul>
                             </td>
                         </tr>

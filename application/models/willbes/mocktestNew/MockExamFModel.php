@@ -20,6 +20,7 @@ class MockExamFModel extends WB_Model
         'product_sale' => 'lms_product_sale',
         'category' => 'lms_sys_category',
         'mock_log' => 'lms_mock_log',
+        'lms_member' => 'lms_member'
     ];
 
     public function __construct()
@@ -75,7 +76,7 @@ class MockExamFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $column = "
-            MP.*, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
+            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
             IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
@@ -85,12 +86,12 @@ class MockExamFModel extends WB_Model
         $from = "
             FROM (
                 SELECT 
-                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
+                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
                 GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
                 GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName)) AS subject_names
                 FROM {$this->_table['mock_register']} AS mr
-                JOIN {$this->_table['order_product']} AS OP ON MR.ProdCode = OP.ProdCode AND MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
+                JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
                 JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
@@ -102,8 +103,9 @@ class MockExamFModel extends WB_Model
             JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+            JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
             LEFT JOIN (
-                SELECT ProdCode, LogIdx FROM {$this->_table['mock_answertemp']} AS MR {$where} LIMIT 1
+                SELECT ProdCode, LogIdx FROM {$this->_table['mock_answertemp']} AS mr {$where} ORDER BY LogIdx DESC LIMIT 1
             ) AS Temp ON MP.ProdCode = Temp.ProdCode
         ";
 

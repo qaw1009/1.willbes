@@ -77,29 +77,29 @@
             <div class="x_content">
                 <div class="form-group">
                     <div class="col-md-5 form-inline">
-                        <b><font color="#871B47">[사이트 + 분류 + 검색어]</font></b>
-                        <font color="#703593"><div id="cate_div"></div></font>
+                        <b><font color="#000000">[사이트 + 분류 + 검색어]</font></b>
+                        <font color="#000000"><div id="cate_div"></div></font>
                         <br>
                     </div>
                     <div class="col-md-4 form-inline">
-                        <b><font color="#871B47">[사이트 + 검색어]</font></b>
-                        <font color="#703593"><div id="site_div"></div></font>
+                        <b><font color="#000000">[사이트 + 검색어]</font></b>
+                        <font color="#000000"><div id="site_div"></div></font>
                         <br>
                     </div>
                     <div class="col-md-3 form-inline">
-                        <b><font color="#871B47">[검색어]</font></b>
-                        <font color="#703593"><div id="word_div"></div></font>
+                        <b><font color="#000000">[검색어]</font></b>
+                        <font color="#000000"><div id="word_div"></div></font>
                         <br>
                     </div>
                 </div>
                 <br>
                 <div class="form-group">
                     <div class="col-md-6 form-inline">
-                        <b><font color="#871B47">[OS Platform]</font></b>
+                        <b><font color="#000000">[OS Platform]</font></b>
                         <div id="os_div" ></div>
                     </div>
                     <div class="col-md-6 form-inline">
-                        <b><font color="#871B47">[검색어 Cloud]</font></b>
+                        <b><font color="#000000">[Word Cloud]</font></b>
                         <div id="my_favorite_latin_words" style="width: 100%; height: 270px; border: 1px solid #ccc;"></div>
                     </div>
                 </div>

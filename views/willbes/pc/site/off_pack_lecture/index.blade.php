@@ -99,8 +99,14 @@
                         <span>검색</span>
                     </button>
                 </div>
-                
-                <div class="InfoBtnOff"><a href="/pass/offinfo/boardInfo/index">강의시간표 안내 <span>▶</span></a></div>
+
+                <div class="InfoBtnOff">
+                    @if(($__cfg['SiteCode'] == '2010' || $__cfg['SiteCode'] == '2011') && empty(element('cate_code', $arr_input)) === false)
+                        <a href="{{ front_url('/offinfo/boardInfo/index/80?s_cate_code='.element('cate_code', $arr_input).'&s_cate_code_disabled=Y') }}">강의시간표 안내 <span>▶</span></a>
+                    @else
+                        <a href="{{ front_url('/offinfo/boardInfo/index') }}">강의시간표 안내 <span>▶</span></a>
+                    @endif
+                </div>
                 <div class="InfoBtn mr10"><a href="#none" onclick="openWin('requestInfo')">학원수강 안내 <span>▶</span></a></div>
 
                 <div id="requestInfo" class="willbes-Layer-requestInfo">

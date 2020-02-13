@@ -20,6 +20,9 @@ Class Lecture extends CommonLecture
 
     public function index()
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['607','611','618','635']);
 
@@ -41,6 +44,8 @@ Class Lecture extends CommonLecture
             'Multiple_ccd' => $codes['611'],
             'Sales_ccd' => $codes['618'],
             'PointApply_ccd' => $codes['635'],
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
         ]);
     }
 
@@ -160,6 +165,9 @@ Class Lecture extends CommonLecture
      */
     public function create($params=[])
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618','696','635']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
@@ -235,6 +243,8 @@ Class Lecture extends CommonLecture
             ,'data_autocoupon'=>$data_autocoupon
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
+            ,'def_site_code' => $def_site_code
+            ,'arr_site_code' => $arr_site_code
         ]);
     }
 

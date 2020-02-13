@@ -21,6 +21,9 @@ Class PackageUser extends CommonLecture
 
    public function index()
    {
+       $arr_site_code = get_auth_on_off_site_codes('N', true);
+       $def_site_code = key($arr_site_code);
+
        //공통코드      - 판매여부
        $codes = $this->codeModel->getCcdInArray(['618']);
 
@@ -35,6 +38,8 @@ Class PackageUser extends CommonLecture
            'arr_lg_category' => element('LG', $arr_category, []),
            'arr_md_category' => element('MD', $arr_category, []),
            'Sales_ccd' => $codes['618'],
+           'def_site_code' => $def_site_code,
+           'arr_site_code' => $arr_site_code
        ]);
    }
 
@@ -97,6 +102,9 @@ Class PackageUser extends CommonLecture
      */
     public function create($params=[])
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['611','612','618','635']); // 수강배수,수강배수적용구분,판매상태
@@ -149,6 +157,8 @@ Class PackageUser extends CommonLecture
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
             ,'data_packsaleinfo'=>$data_packsaleinfo
+           	,'def_site_code' => $def_site_code
+            ,'arr_site_code' => $arr_site_code
         ]);
     }
 

@@ -4,14 +4,14 @@
     <h5>- 온라인 기간제패키지 상품 정보를 관리하는 메뉴입니다.(기간제패키지 : 운영자가 구성한 강좌를 할인 적용하여 프리패스 형태로 제공)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)

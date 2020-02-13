@@ -20,6 +20,9 @@ Class LectureFree extends CommonLecture
 
     public function index()
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['652','618']);
 
@@ -39,6 +42,8 @@ Class LectureFree extends CommonLecture
             'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
             'FreeLecType_ccd' => $codes['652'],
             'Sales_ccd' => $codes['618'],
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
         ]);
     }
 
@@ -146,6 +151,9 @@ Class LectureFree extends CommonLecture
      */
     public function create($params=[])
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['609','610','613','616','617','618','652']);
@@ -201,6 +209,8 @@ Class LectureFree extends CommonLecture
             ,'data_sms'=>$data_sms
             ,'data_book'=>$data_book
             ,'data_sublecture'=>$data_sublecture
+            ,'def_site_code' => $def_site_code
+            ,'arr_site_code' => $arr_site_code
         ]);
     }
 

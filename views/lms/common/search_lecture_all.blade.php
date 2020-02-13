@@ -61,7 +61,48 @@
             @endif
         </ul>
     </div>
-    <div class="form-group bdt-line mt-10 pt-10 pb-5">
+    <div class="form-group bdt-line mt-10 pt-10 pb-10">
+        <label class="control-label col-md-1 pt-5 pl-20" for="">기본정보
+        </label>
+        <div class="col-md-9 form-inline">
+            @if(empty($arr_campus) === false)
+                <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                    <option value="">캠퍼스</option>
+                    @foreach($arr_campus as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
+            @if(empty($arr_category) === false)
+                <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                    <option value="">대분류</option>
+                    @foreach($arr_category as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
+            @if(empty($arr_course) === false)
+                <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                    <option value="">과정</option>
+                    @foreach($arr_course as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
+            @if(empty($arr_subject) === false)
+                <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                    <option value="">과목</option>
+                    @foreach($arr_subject as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
+        </div>
+        <div class="col-md-2 text-right pr-5">
+            <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
+        </div>
+    </div>
+    <div class="form-group pt-10 pb-5">
         <label class="control-label col-md-1 pt-5 pl-20" for="search_value">강좌검색
         </label>
         <div class="col-md-4">
@@ -70,20 +111,14 @@
         <div class="col-md-4">
             <p class="form-control-static">명칭, 코드 검색 가능</p>
         </div>
-        <div class="col-md-3 text-right pr-5">
-            <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
-        </div>
     </div>
-    @if(in_array($LearnPatternCcd, ['615001', '615006']) === true)
+    @if($is_package === false)
         {{-- 단강좌/단과반만 노출 --}}
-        <div class="form-group pt-10 pb-5">
-            <label class="control-label col-md-1 pt-5 pl-20" for="search_value">교수검색
+        <div class="form-group pt-10 pb-10">
+            <label class="control-label col-md-1 pt-5 pl-20" for="search_prof_value">교수/과정
             </label>
             <div class="col-md-4">
                 <input type="text" class="form-control input-sm" id="search_prof_value" name="search_prof_value">
-            </div>
-            <div class="col-md-4">
-                <p class="form-control-static"></p>
             </div>
         </div>
     @endif

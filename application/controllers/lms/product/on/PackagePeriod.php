@@ -21,6 +21,9 @@ Class PackagePeriod extends CommonLecture
 
    public function index()
    {
+       $arr_site_code = get_auth_on_off_site_codes('N', true);
+       $def_site_code = key($arr_site_code);
+
        //공통코드
        $codes = $this->codeModel->getCcdInArray(['618','648']);
 
@@ -36,6 +39,8 @@ Class PackagePeriod extends CommonLecture
            'arr_md_category' => element('MD', $arr_category, []),
            'Sales_ccd' => $codes['618'],
            'Packtype_ccd' => $codes['648'],
+           'def_site_code' => $def_site_code,
+           'arr_site_code' => $arr_site_code
        ]);
    }
 
@@ -98,6 +103,9 @@ Class PackagePeriod extends CommonLecture
      */
     public function create($params=[])
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651','635']);
@@ -161,6 +169,8 @@ Class PackagePeriod extends CommonLecture
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
             ,'data_btob' => empty($data_btob) ? null : $data_btob[0]
+            ,'def_site_code' => $def_site_code
+            ,'arr_site_code' => $arr_site_code
         ]);
     }
 

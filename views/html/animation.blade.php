@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master')
 
-@section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
+@section('content')    
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
@@ -158,6 +157,16 @@
         @@keyframes sp01{
 		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
         }
+        .wb_cts07 span.sp02 {left:100px; animation: sp02 1.5s linear infinite;}
+        @@keyframes sp02{
+        0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
+        30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}
+        40%{-webkit-transform:scale3d(0.75,1.25,1);transform:scale3d(0.75,1.25,1)}
+        50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}
+        65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}
+        75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}
+        100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
+        }
 
         .lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center fixed; padding:100px 0 90px;}
         .lecBanner li {display: inline; float:left; width:25%; text-align: center; margin-bottom:20px}
@@ -172,6 +181,14 @@
         }
         .lecBanner ul:hover a:not(:hover){    
             opacity: 0.4; 
+        }
+
+        .wb_cts08 {font-size:30px; font-weight:bold; color:#000;
+            text-shadow: 3px 0 0 #f9fb54, -3px 0 0 #9bfb54;
+        }
+        .wb_cts08 p {
+            box-shadow: 10px 10px 5px #f9fb54, -10px -10px 5px #9bfb54;
+            border:1px solid #ccc; padding:20px;
         }
 
     </style>
@@ -216,6 +233,9 @@
             <span class="sp01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_01.png">                    
             </span>
+            <span class="sp02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/1512_top_01.png">                    
+            </span>
         </div>
 
         <div class="Section lecBanner mt50">
@@ -229,6 +249,10 @@
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200131165936.jpg" alt="배너명"></a></li>                
                 </ul>
             </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts08 NGEB">
+            <p>다중 그림자 <span class="NSK-Black">shadow</span></p>
         </div>
 
     </div>

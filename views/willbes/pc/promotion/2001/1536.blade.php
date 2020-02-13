@@ -115,11 +115,11 @@
                     </tr>
                     <tr>
                         <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 박상규 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161795') }}" target="_blink">수강신청   ></a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161796') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2020 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 오현웅 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161796') }}" target="_blink">수강신청   ></a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161795') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                 </table>
             </div>
@@ -185,7 +185,7 @@
                         <p>2. 구매하신 경찰승진PASS 상품명 옆의 [강좌 선택하기] 버튼을 클릭, 원하시는 강좌를 선택 등록 후  수강하실 수 있습니다.</p>
                         <p>3. 경찰승진PASS 이용 중에는 일시정지 기능을 이용할 수 없습니다.</p>
                         <p>4. 경찰승진PASS 강좌 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.</p>
-                        <p class="guide_txt_01"><strong>PC+Mobile 경찰승진PASS 수강 시</strong> : PC 2대 또는 PC 1대 + 모바일 1대 (PMP 경찰승진PASS는 제공하지 않습니다.)</p>
+                        <p class="guide_txt_01"><strong>PC+Mobile 경찰승진PASS 수강 시</strong> : PC 2대 또는 PC 1대 + 모바일 1대 또는 모바일2대 (PMP 경찰승진PASS는 제공하지 않습니다.)</p>
                         <p>5. PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.</p>
                     </dd>
 

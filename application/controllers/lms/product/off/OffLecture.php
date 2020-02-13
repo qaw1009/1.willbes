@@ -20,9 +20,8 @@ Class OffLecture extends CommonLecture
 
     public function index()
     {
-        /* 학원사이트 탭 만 노출하기 위한 함수*/
-        $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
-        $def_site_code = key($arr_code['arr_site_code']);
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
+        $def_site_code = key($arr_site_code);
 
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['653','654','675']);
@@ -48,7 +47,7 @@ Class OffLecture extends CommonLecture
             'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
             'def_site_code' => $def_site_code,
-            'arr_site_code' => $arr_code['arr_site_code']
+            'arr_site_code' => $arr_site_code
         ]);
     }
 
@@ -144,6 +143,9 @@ Class OffLecture extends CommonLecture
      */
     public function create($params=[])
     {
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
+        $def_site_code = key($arr_site_code);
+
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['610','653','654','613','675']);
@@ -214,6 +216,8 @@ Class OffLecture extends CommonLecture
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
             ,'data_lecturedate' =>$data_lecturedate
+            ,'def_site_code' => $def_site_code
+            ,'arr_site_code' => $arr_site_code
         ]);
     }
 

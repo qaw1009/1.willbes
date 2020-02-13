@@ -162,14 +162,14 @@
                                 <div class="inline-block">
                                     <input type="number" name="card_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 카드결제금액" value="0">
                                     <div class="mt-5 ml-10">
-                                        <input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용
+                                        <label><input type="checkbox" name="is_all_card_pay_price" class="flat" value="card"/> 전액적용</label>
                                     </div>
                                 </div>
                                 <div class="inline-block valign-top mt-5">+ [현금]</div>
                                 <div class="inline-block">
                                     <input type="number" name="cash_pay_price" class="form-control input-sm ml-10 mr-10 set-sum-price" title="최종 현금결제금액" value="0">
                                     <div class="mt-5 ml-10">
-                                        <input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용
+                                        <label><input type="checkbox" name="is_all_cash_pay_price" class="flat" value="cash"/> 전액적용</label>
                                     </div>
                                 </div>
                                 <div class="inline-block valign-top">

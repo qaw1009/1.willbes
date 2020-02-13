@@ -61,8 +61,8 @@
             <div>
                 <ul>
                     <li>
-                        실력향상PASS 1기<br />
-                        <span class="NGEB">2.12(수) 마감!</span>
+                        실력향상PASS 2기<br />
+                        <span class="NGEB">2.18(화) 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

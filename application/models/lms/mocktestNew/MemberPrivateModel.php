@@ -190,13 +190,13 @@ class MemberPrivateModel extends WB_Model
         $from = "
             FROM (
                 SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, A.MockType, A.SubjectName
-                ,ROUND(AVG(A.OrgPoint), 2) AS AvgOrgPoint		#원점수평균
-                ,ROUND(AVG(A.AdjustPoint),2) AS AvgAdjustPoint	#조정점수평균
-                ,ROUND(MAX(A.OrgPoint),2) AS MaxOrgPoint		#원점수최고점
-                ,ROUND(MAX(A.AdjustPoint),2) AS MaxAdjustPoint	#조정점수최고점
-                ,A.StandardDeviation					        #표준편차
-                ,COUNT(A.MpIdx) AS MemCount				        #응시인원
-                ,Max(A.Rank) AS TotalRank				        #총석차
+                ,ROUND(AVG(A.OrgPoint), 2) AS AvgOrgPoint       #원점수평균
+                ,ROUND(AVG(A.AdjustPoint),2) AS AvgAdjustPoint  #조정점수평균
+                ,ROUND(MAX(A.OrgPoint),2) AS MaxOrgPoint        #원점수최고점
+                ,ROUND(MAX(A.AdjustPoint),2) AS MaxAdjustPoint  #조정점수최고점
+                ,A.StandardDeviation                            #표준편차
+                ,COUNT(A.MpIdx) AS MemCount                     #응시인원
+                ,Max(A.Rank) AS TotalRank                       #총석차
                 ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
                     SELECT 
@@ -213,7 +213,7 @@ class MemberPrivateModel extends WB_Model
         ";
 
         $total_avg_query = "
-            ROUND(AVG(D.MyOrgPoint),2) AS AvgMyOrgPoint              #회원점수평균
+            ROUND(AVG(D.MyOrgPoint),2) AS AvgMyOrgPoint                 #회원점수평균
             ,ROUND(AVG(D.AvgOrgPoint),2) AS AvgAvgOrgPoint              #원점수평균
             ,ROUND(AVG(D.AvgAdjustPoint),2) AS AvgAvgAdjustPoint        #조정점수평균
             ,ROUND(AVG(D.MaxOrgPoint),2) AS AvgMaxOrgPoint              #원점수최고점

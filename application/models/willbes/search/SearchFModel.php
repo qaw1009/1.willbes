@@ -22,6 +22,7 @@ class SearchFModel extends ProductFModel
     public function findSearchProduct($learn_pattern, $column, $arr_condition, $order_by, &$result_data, &$exec_query)
     {
         $result_data = $this->listSalesProduct($learn_pattern, $column, $arr_condition, null,null, $order_by, '');
+        //$this->_conn->save_queries = TRUE;
         $exec_query = $this->_conn->last_query();
     }
 

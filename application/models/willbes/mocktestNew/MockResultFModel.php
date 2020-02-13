@@ -7,17 +7,19 @@ class MockResultFModel extends WB_Model
         'product' => 'lms_Product',
         'mock_register' => 'lms_mock_register',
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'mock_answerpaper' => 'lms_mock_answerpaper',
         'mock_paper' => 'lms_mock_paper_new',
         'mock_questions' => 'lms_mock_questions',
+        'mock_grades' => 'lms_mock_grades',
         'mock_grades_log' => 'lms_mock_grades_log',
-
         'product_mock' => 'lms_product_mock',
         'product_subject' => 'lms_product_subject',
         'product_r_category' => 'lms_product_r_category',
         'product_sale' => 'lms_product_sale',
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
+        'lms_member' => 'lms_member',
         'site' => 'lms_site',
         'site_group' => 'lms_site_group',
         'category' => 'lms_sys_category',
@@ -109,5 +111,208 @@ class MockResultFModel extends WB_Model
         $order_by = " ORDER BY SubjectIdx";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
+    }
+
+    /**
+     * 종합성적조회
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeInfo($prod_code, $mr_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'MG.ProdCode' => $prod_code,
+                'MG.MrIdx' => $mr_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+            MB.MemName
+            ,IFNULL(SUM(OrgPoint),0) AS SumOrgPoint                 #나의 원점수총점
+            ,IFNULL(SUM(AdjustPoint),0) AS SumAdjustPoint           #나의 조정점수총점
+            ,IFNULL(ROUND(AVG(OrgPoint),2),0) AS AvgOrgPoint        #나의 원점수평균
+            ,IFNULL(ROUND(AVG(AdjustPoint),2),0) AS AvgAdjustPoint  #나의 조정점수평균
+            ,IFNULL(ORank.OrgRankNum,0) AS OrgRankNum               #원점수내석차
+            ,IFNULL(ARank.AdjustRankNum,0) AS AdjustRankNum         #원점수내석차
+            ,(SELECT ROUND(AVG(OrgPoint),2) AS TotalAvgOrgPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code}) AS TotalAvgOrgPoint          #전체 원점수평균
+            ,(SELECT ROUND(AVG(AdjustPoint),2) AS TotalAvgAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code}) AS TotalAvgAdjustPoint #전체 조정점수평균
+            ,(SELECT MAX(A.sumAPoint) AS MaxPoint FROM (SELECT SUM(AdjustPoint) AS sumAPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A) AS MaxPoint  #최고점수
+            ,(SELECT ROUND(AVG(a.sumP),2) FROM (SELECT SUM(AdjustPoint) AS sumP FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS a) AS MrTotalAvgAdjustPoint  #전체 MrIdx기준 조정점수평균
+            ,(SELECT COUNT(TC.MrIdx) AS TotalCount FROM (SELECT MrIdx FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS TC) AS TotalCount    #전체석차
+        ";
+
+        $from = "
+            FROM {$this->_table['mock_grades']} AS MG
+            INNER JOIN {$this->_table['mock_register']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y'
+            INNER JOIN {$this->_table['order_product']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
+            INNER JOIN {$this->_table['lms_member']} AS MB ON MR.MemIdx = MB.MemIdx
+            INNER JOIN
+            (
+                SELECT R.MrIdx, RANK() OVER (PARTITION BY R.ProdCode ORDER BY R.avgOrgPoint DESC) AS OrgRankNum
+                FROM (
+                    SELECT ProdCode, MrIdx, AVG(OrgPoint) AS avgOrgPoint
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = {$prod_code}
+                    GROUP BY MrIdx
+                ) AS R
+            ) AS ORank ON MG.MrIdx = ORank.MrIdx
+            INNER JOIN
+            (
+                SELECT R.MrIdx, RANK() OVER (PARTITION BY R.ProdCode ORDER BY R.avgAdjustPoint DESC) AS AdjustRankNum
+                FROM (
+                    SELECT ProdCode, MrIdx, AVG(AdjustPoint) AS avgAdjustPoint
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = {$prod_code}
+                    GROUP BY MrIdx
+                ) AS R
+            ) AS ARank ON MG.MrIdx = ARank.MrIdx
+        ";
+
+        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    public function selectivity($prod_code)
+    {
+        $query_string = "
+            (SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint <= 4) AS cnt_5
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 5 AND 9) AS cnt_10
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 10 AND 14) AS cnt_15
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 15 AND 19) AS cnt_20
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 20 AND 24) AS cnt_25
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 25 AND 29) AS cnt_30
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 30 AND 34) AS cnt_35
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 35 AND 39) AS cnt_40
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 40 AND 44) AS cnt_45
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 45 AND 49) AS cnt_50
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 50 AND 54) AS cnt_55
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 55 AND 59) AS cnt_60
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 60 AND 64) AS cnt_65
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 65 AND 69) AS cnt_70
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 70 AND 74) AS cnt_75
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 75 AND 79) AS cnt_80
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 80 AND 84) AS cnt_85
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 85 AND 89) AS cnt_90
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
+        ";
+
+        return $this->_conn->query('select ' . $query_string)->row_array();
+    }
+
+    /**
+     * 회원과목별상세
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function registerForSubjectDetail($prod_code, $mr_idx)
+    {
+        $column = "
+            M.*            
+            ,IFNULL((SELECT OrgPoint FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}'),0) AS MyOrgPoint
+            ,IFNULL(ROUND((SELECT AdjustPoint FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}'),2),0) AS MyAdjustPoint
+            ,IFNULL((SELECT RANK FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}'),0) AS MyRank
+            ,ROUND(((IFNULL((SELECT RANK FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}'),0) / M.TotalRank) * 100),2) tpct    #백분위
+            
+            ,(
+                SELECT T.Top10AvgOrgPoint
+                FROM (
+                    SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, ROUND(AVG(A.OrgPoint),2) AS Top10AvgOrgPoint
+                    FROM (
+                        SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.OrgPoint
+                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.OrgPoint DESC) AS PaperPercRank
+                        FROM {$this->_table['mock_register']} AS a
+                        INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = '{$prod_code}'
+                    ) AS A
+                    WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100)
+                    GROUP BY A.TakeMockPart, A.MpIdx
+                ) AS T 
+                WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
+            ) AS Top10AvgOrgPoint
+            
+            ,(
+                SELECT T.Top30AvgOrgPoint
+                FROM (
+                    SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, ROUND(AVG(A.OrgPoint),2) AS Top30AvgOrgPoint
+                    FROM (
+                        SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.OrgPoint
+                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.OrgPoint DESC) AS PaperPercRank
+                        FROM {$this->_table['mock_register']} AS a
+                        INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = '{$prod_code}'
+                    ) AS A
+                    WHERE A.PaperPercRank BETWEEN 0 AND (30 / 100)
+                    GROUP BY A.TakeMockPart, A.MpIdx
+                ) AS T 
+                WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
+            ) AS Top30AvgOrgPoint
+            
+            ,(
+                SELECT T.Top10AvgAdjustPoint
+                FROM (
+                    SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, ROUND(AVG(A.AdjustPoint),2) AS Top10AvgAdjustPoint
+                    FROM (
+                        SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                        FROM {$this->_table['mock_register']} AS a
+                        INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = '{$prod_code}'
+                    ) AS A
+                    WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100)
+                    GROUP BY A.TakeMockPart, A.MpIdx
+                ) AS T 
+                WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
+            ) AS Top10AvgAdjustPoint
+            
+            ,(
+                SELECT T.Top30AvgAdjustPoint
+                FROM (
+                    SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, ROUND(AVG(A.AdjustPoint),2) AS Top30AvgAdjustPoint
+                    FROM (
+                        SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                        FROM {$this->_table['mock_register']} AS a
+                        INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = '{$prod_code}'
+                    ) AS A
+                    WHERE A.PaperPercRank BETWEEN 0 AND (30 / 100)
+                    GROUP BY A.TakeMockPart, A.MpIdx
+                ) AS T 
+                WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
+            ) AS Top30AvgAdjustPoint
+        ";
+
+        $from = "
+            FROM (
+                SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, A.MockType, A.SubjectName
+                ,ROUND(AVG(A.OrgPoint), 2) AS AvgOrgPoint       #원점수평균
+                ,ROUND(AVG(A.AdjustPoint),2) AS AvgAdjustPoint  #조정점수평균
+                ,ROUND(MAX(A.OrgPoint),2) AS MaxOrgPoint        #원점수최고점
+                ,ROUND(MAX(A.AdjustPoint),2) AS MaxAdjustPoint  #조정점수최고점
+                ,A.StandardDeviation                            #표준편차
+                ,COUNT(A.MpIdx) AS MemCount                     #응시인원
+                ,Max(A.Rank) AS TotalRank                       #총석차
+                ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
+                FROM (
+                    SELECT 
+                    a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
+                    FROM {$this->_table['mock_register']} AS a
+                    INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                    INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
+                    INNER JOIN {$this->_table['product_subject']} AS d ON c.SubjectIdx = d.SubjectIdx
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx
+                    WHERE a.ProdCode = '{$prod_code}' AND c.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
+                ) AS A
+                GROUP BY A.MpIdx
+            ) AS M
+        ";
+
+        return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 }

@@ -99,8 +99,9 @@ class Exam extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $this->session->userdata('mem_idx'),
-                'MR.ProdCode' => $prod_code
+                'mr.ProdCode' => $prod_code,
+                'mr.MrIdx' => $mr_idx,
+                'mr.MemIdx' => $this->session->userdata('mem_idx')
             ]
         ];
 
@@ -290,6 +291,7 @@ class Exam extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'mr.ProdCode' => $prod_code,
+                'mr.MrIdx' => $mr_idx,
                 'mr.MemIdx' => $this->session->userdata('mem_idx')
             ]
         ];

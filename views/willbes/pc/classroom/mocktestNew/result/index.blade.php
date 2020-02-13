@@ -172,13 +172,13 @@
         var win = '';
         //시험제출유무
         var submissionYN = 'Y';
-        function popwin(prod_code, mode, mridx, tcnt) {
+        function popwin(prod_code, mode, mr_idx, tcnt) {
             var _url = '';
             if (tcnt == 0) { submissionYN = 'N'; } else { submissionYN = 'Y'; }
             if (mode == 1) {
-                _url = '{{ front_url('/classroom/mocktest/result/winStatTotal?prod_code=') }}' + prod_code + '&mridx=' + mridx;
+                _url = '{{ front_url('/classroom/mocktest/result/winStatTotal?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx;
             } else {
-                _url = '{{ front_url('/classroom/mocktest/result/winAnswerNote?prod_code=') }}' + prod_code + '&mridx=' + mridx + '&submission=' + submissionYN;
+                _url = '{{ front_url('/classroom/mocktest/result/winAnswerNote?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx + '&submission=' + submissionYN;
             }
             if (win == '') {
                 win = window.open(_url, 'mockPopupStat', 'width=1024, height=845, scrollbars=yes, resizable=yes');

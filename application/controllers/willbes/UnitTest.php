@@ -15,6 +15,12 @@ class UnitTest extends \app\controllers\FrontController
 
     public function index()
     {
-        var_dump('unit test controller method');
+        var_dump('unit test controller method')
+    }
+
+    public function test()
+    {
+        $cnt = count($arr);
+        var_dump($cnt);
     }
 }

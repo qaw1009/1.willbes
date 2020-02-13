@@ -2346,8 +2346,11 @@ table.auTable tr td {
 }
 .curriWrap ul.curriSelect li {
     float: left;
-    width: 11.5%;    
+    width: 15.5%;    
     margin: 0.5%;
+}
+.curriWrap ul.curriSelect2 li {
+    width: 18.5%;
 }
 .curriTableLayer tr {
     line-height: inherit;

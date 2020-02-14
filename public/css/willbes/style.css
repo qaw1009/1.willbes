@@ -3989,6 +3989,7 @@ table.classTable tr td.w-data {
 }
 
 
+
 /* subContainer : Content : 내강의실 > 학원강좌 > 수강신청강좌 : lecList */
 .willbes-Layer-lecList {
     display: none;
@@ -5447,7 +5448,9 @@ span.calendar_btn {
 .willbes-Cart-Txt .txtTable tr td {
     line-height: 24px;
 }
-
+.willbes-Cart-Txt .title {
+    padding: 20px 0 0 40px;
+}
 /* subContainer : Cart : 결제하기 */
 .LeclistTable .buyTable tr td {
     font-size: 11px;
@@ -10193,6 +10196,11 @@ table.acadlecInfoPackageTable tr.Top td {
     color: #fff;
     border-color: #333;
     background: #333;
+}
+.w-info .acadBox.n7 {
+    color: #fff;
+    border-color: #f78484;
+    background: #f78484;
 }
 
 .w-thumb a.thumb_num {

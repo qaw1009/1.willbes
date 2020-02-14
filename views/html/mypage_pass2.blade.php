@@ -486,12 +486,12 @@
         <!-- willbes-Leclist -->
     </div>
 
-    
-</div>
-
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
-    </div>
+    </div>    
+</div>
+
+    
 </div>
 <!-- End Container -->
 @stop

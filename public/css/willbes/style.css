@@ -11893,16 +11893,16 @@ table.acadlecInfoPackageTable tr.Top td {
 .onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
 .onSearch button {width:28px; height:28px; font-size: 0; text-indent: -9999px; 
     background:url("../../img/willbes/common/icon_search.png") no-repeat center bottom; background-size:18px;
-    float:right;
+    vertical-align: top;
 }
 .onSearch:after {content: ""; display: block; clear: both;}
 
-.onSearchBig {float:none; width:600px; margin:0 auto 50px}
-.onSearchBig input[type="search"] {height:40px; width:400px; font-size:18px; color:#000}
-.onSearchBig button {width:30px; height:40px; right:0; left:410px; background-size:30px; border:0}
+.onSearchBig {float:none; width:600px; margin:0 auto 50px;}
+.onSearchBig input[type="search"] {height:40px; width:400px; font-size:18px; color:#000;}
+.onSearchBig button {width:30px; height:40px; background-size:30px; border:0; }
 .onSearchBig span {height:40px; line-height: 40px; font-size:14px; margin-left:20px}
 .onSearchBig span input {width:18px; height:18px; margin-right:5px}
-.onSearchBig div {text-align: center; margin-top:30px; font-size:16px; color:#666}
+.onSearchBig div {text-align:center; margin-top:30px; font-size:16px; color:#666}
 .onSearchBig div strong {color:#0d74ae}
 
 .searchZero {text-align:center; line-height: 1.5; padding:50px 0}

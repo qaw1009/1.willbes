@@ -89,7 +89,8 @@
                         <div class="wTxt">
                             <span><a href="https://job.willbes.net/home/index/cate/309002" target="_blank">[노무]</a></span>
                             <span><a href="https://job.willbes.net/home/index/cate/309003" target="_blank">[감평]</a></span>
-                            <span><a href="https://job.willbes.net/home/index/cate/309004" target="_blank">[변리]</a></span>                                
+                            <span><a href="https://job.willbes.net/home/index/cate/309004" target="_blank">[변리]</a></span>   
+                            <span><a href="https://job.willbes.net/home/index/cate/309006" target="_blank">[세무]</a></span>                             
                             <span><a href="https://job.willbes.net/home/index/cate/309005" target="_blank">[관세]</a></span>
                             <span><a href="https://job.willbes.net/home/index/cate/309001" target="_blank">[스포츠]</a></span><br/>
                             <strong>윌비스 한림법학원</strong>

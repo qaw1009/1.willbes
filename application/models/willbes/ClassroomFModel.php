@@ -246,7 +246,9 @@ class ClassroomFModel extends WB_Model
         $from = '
             FROM ' . $this->_table['product_r_sublecture'] . ' AS PS
                 INNER JOIN vw_product_off_lecture AS VP ON PS.ProdCodeSub = VP.ProdCode
-            WHERE PS.IsStatus = "Y"             
+            WHERE PS.IsStatus = "Y"
+            AND VP.ProfChoiceStartDate IS NOT NULL
+            AND VP.ProfChoiceEndDate IS NOT NULL
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

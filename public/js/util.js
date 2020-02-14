@@ -842,7 +842,7 @@ function setRowspan(classname) {
 /**
  * 전체검색
  */
-$('.unifiedSearch, .areaSearch').on('keyup', function() {
+$('.unifiedSearch, .areaSearch').on('keypress', function() {
     if (window.event.keyCode === 13) {
         goFullSearch($(this).data('form'));
     }

@@ -8,19 +8,20 @@
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
+        
         <div class="Section widthAuto">
             <div class="onSearch onSearchBig NG">
                 <form id="areaSearch_form" name="areaSearch_form" method="GET">
                     <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}">
                     <input type="text" name="" class="d_none">
                     <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
-                    <label for="onsearch"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>
+                    <label for="areaSearch_text"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>
                     <!--<span>
                        <input type="checkbox" id="research" name="" value="" />
                        <label for="research">결과 내 재검색</label>
                    </span>-->
                 </form>
-                <div><strong>{{element('searchfull_text',$arr_search_input)}}</strong>에 대한 강좌 검색결과 <strong>{{$total_count}}</strong>건</div>
+                <div class="c_both"><strong>{{element('searchfull_text',$arr_search_input)}}</strong>에 대한 강좌 검색결과 <strong>{{$total_count}}</strong>건</div>
             </div>
         </div>
 

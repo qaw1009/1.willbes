@@ -65,10 +65,12 @@
         <div class="onSearch onSearchBig NG">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
             <label for="onsearch"><button title="검색">검색</button></label>
+            {{--
             <span>
                 <input type="checkbox" id="research" name="" value="" />
                 <label for="research">결과 내 재검색</label>
             </span>
+            --}}
             <div><strong>신광은</strong>에 대한 강좌 검색결과 <strong>30</strong>건</div>
         </div>
     </div>

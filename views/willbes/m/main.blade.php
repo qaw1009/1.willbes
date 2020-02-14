@@ -42,7 +42,7 @@
                 <li>
                     <div>
                         <a href="{{ front_app_url('/home/index', 'job') }}">
-                            <p class="subTit">노무/감평/변리/관세/스포츠</p>
+                            <p class="subTit">노무/감평/변리/세무/관세/스포츠</p>
                             <p class="siteTit">
                                 <img src="{{ img_url('m/intro/icon_job.png') }}" alt="자격증">
                                  자격증

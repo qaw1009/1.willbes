@@ -1186,6 +1186,11 @@ select[disabled] {
 .line-through {
   text-decoration: line-through !important;
 }
+.tx-shadow {
+  /*-webkit-box-shadow: 0 -5px 20px 0 rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 -5px 20px 0 rgba(0,0,0,0.5);*/
+  box-shadow:inset 0 -7px 0 rgba(0,0,0,0.1);
+}
 .of-hidden {
   overflow-x: hidden;
   overflow-y: auto;

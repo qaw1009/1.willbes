@@ -111,6 +111,9 @@ class MockResult extends \app\controllers\FrontController
 
         $prodcode = element('prodcode',$arr_input);
         $mridx = element('mridx',$arr_input);
+        if (empty($prodcode) === true || empty($mridx) === true) {
+            show_alert('잘못된 접근입니다.', 'close');
+        }
 
         $arr_condition = [
             'EQ' => [
@@ -227,6 +230,9 @@ class MockResult extends \app\controllers\FrontController
 
         $prodcode = element('prodcode',$arr_input);
         $mridx = element('mridx',$arr_input);
+        if (empty($prodcode) === true || empty($mridx) === true) {
+            show_alert('잘못된 접근입니다.', 'close');
+        }
 
         $arr_condition = [
             'EQ' => [
@@ -294,6 +300,9 @@ class MockResult extends \app\controllers\FrontController
         $MalIdx = element('MalIdx',$arr_input);
         $mridx = element('mridx',$arr_input);
         $submission = element('submission',$arr_input);
+        if (empty($prodcode) === true || empty($mridx) === true) {
+            show_alert('잘못된 접근입니다.', 'close');
+        }
 
         //시험제출 유무 Y면 제출
         if(empty($submission)) $submission = 'Y';

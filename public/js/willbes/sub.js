@@ -90,6 +90,24 @@ $(function() {
     });
 });
 
+// 선접수 수강신청 안내사항 버튼 Script
+$(function() {
+    $('.willbes-Cart-Txt .title a').click(function() {
+        var $lec_info_table = $(this).parents('.willbes-Cart-Txt').find('table.txtTable');
+        var $lec_info_table_tr = $(this).parents('.willbes-Cart-Txt').find('table.txtTable tr');
+
+        if ($lec_info_table.is(':hidden')) {
+            $lec_info_table.show().css('display','block');
+            $(this).text('선접수 수강신청 안내사항 ▲');
+            $lec_info.addClass('active');
+        } else {
+            $lec_info_table.hide().css('display','none');
+            $(this).text('선접수 수강신청 안내사항 ▼');
+            $lec_info.removeClass('active');
+        }
+    });
+});
+
 // 즐찾과목/교수전체보기 버튼 Script
 $(function() {
     $('.CurriBox .MoreBtn a').click(function() {

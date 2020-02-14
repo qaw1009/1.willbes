@@ -21,6 +21,9 @@
 
         /************************************************************/     
 
+        .skybanner {position:fixed;top:250px;right:15px;z-index:1;}
+        .skybanner a {display:block; margin-bottom:10px}
+
         .wb_top {background:#e4bb8d url(https://static.willbes.net/public/images/promotion/2020/02/1541_top.jpg) no-repeat center top; position:relative}
         .wb_cts01 {background:#FFF;}
         .wb_cts02 {background:#FFF;padding-bottom:150px}
@@ -66,6 +69,10 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="skybanner" >            
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=250199" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1428_sky2.png" alt="최우영" ></a>
+        </div>   
 
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1541_top.gif" alt="윌비스 기술직" />            

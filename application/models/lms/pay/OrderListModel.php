@@ -868,7 +868,8 @@ class OrderListModel extends BaseOrderModel
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_idx = 0;   // 페이지 인덱스
             $arr_line = [];
-            $is_print_prod_name = $site_code == '2010' ? false : true;    // 상품명 출력여부
+            //$is_print_prod_name = $site_code == '2010' ? false : true;    // 상품명 출력여부
+            $is_print_prod_name = true;     // 고등고시 원복요청 (추후 미사용시 삭제 요망)
 
             foreach ($data as $idx => $row) {
                 if ($idx > 0 && $idx % $page_cnt == 0) {

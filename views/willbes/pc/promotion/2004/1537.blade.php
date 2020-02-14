@@ -79,8 +79,8 @@
 
    <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky1.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=영어&tab=open_lecture" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky2.png" title="한덕혁 제니스 영어" /></a></li>	
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=257644&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky1.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=257646&s_campus=605001" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky2.png" title="한덕혁 제니스 영어" /></a></li>	
       </ul>
     </div>
 

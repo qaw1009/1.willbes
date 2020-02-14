@@ -352,7 +352,16 @@
 .cus .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
 }
-
+.cus .willbesNumber ul {
+    padding:0 50px;
+}
+.cus .willbesNumber ul li {   
+    margin:0;
+    vertical-align: top;
+    display: inline;
+    float:left;
+    width:50%;    
+}
 
 /* Guide Container */
 /*수험가이드*/

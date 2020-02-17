@@ -44,7 +44,7 @@ class Order extends \app\controllers\FrontController
 
         // 온라인강좌일 경우 자동지급 사은품 조회
         $results['freebie'] = [];
-        if ($cart_type == 'on_lecture' && empty($arr_cart_idx) === false) {
+        if ($results['is_except_sale_pattern'] === false && $cart_type == 'on_lecture' && empty($arr_cart_idx) === false) {
             $results['freebie'] = $this->cartFModel->getProductFreebieByCartIdx($arr_cart_idx, $sess_mem_idx, $this->_site_code);
         }
 

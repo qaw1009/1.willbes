@@ -455,5 +455,32 @@ class BeforeLectureModel extends WB_Model
         return $input_data;
     }
 
+    /**
+     * 선수강좌 사용 변경
+     * @param array $params
+     * @return array|bool
+     */
+    public function _modifyLectureByColumn($params=[])
+    {
+        $this->_conn->trans_begin();
 
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $BlIdx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BlIdx', $BlIdx);
+                if ($this->_conn->update($this->_table['before']) === false) {
+                    throw new \Exception('선수강좌 정보 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
 }

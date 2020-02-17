@@ -1,10 +1,10 @@
     <div class="Section Section4_hl mb50">
         <div class="widthAuto">
-            <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
+            <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>
             <div class="noticeTabs campus c_both">
                 <ul class="tabWrap noticeWrap_campus">
                     <li><a href="#campus1" class="on">신림(본원)</a><span class="row-line">|</span></li>
-                    <li><a href="#campus2" class="">강남(분원)</a></li>
+                    <li><a href="#campus2" class="">강남(분원)-변호사시험/법원행시</a></li>
                 </ul>
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
@@ -41,12 +41,12 @@
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
                             <img src="https://static.willbes.net/public/images/promotion/main/2010_map02.jpg" alt="강남(분원)">
-                            <span>강남(분원)</span>
+                            <span>강남(분원)-변호사시험/법원행시</span>
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">강남(분원)</span> 학원 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">강남(분원)-변호사시험/법원행시</span> 학원 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>

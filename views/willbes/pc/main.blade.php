@@ -96,6 +96,18 @@
                             <strong>윌비스 한림법학원</strong>
                         </div>
                     </li>
+                    <li class="second">
+                        <div class="wTit">
+                            <img src="{{ img_url('main/icon_willbes5.png') }}"> 기타자격증
+                        </div>
+                        <div class="wTxt">
+                            <span><a href="https://job.willbes.net/home/index/cate/310101" target="_blank">[소프트웨어자산관리사]</a></span>
+                            <span><a href="https://job.willbes.net/home/index/cate/308902" target="_blank">[전기(산업)]</a></span><br/>
+                            <span><a href="https://job.willbes.net/home/index/cate/308901" target="_blank">[소방(산업)]</a></span>   
+                            <span><a href="https://job.willbes.net/home/index/cate/309101" target="_blank">[한국사능력]</a></span>                             
+                            <span><a href="https://job.willbes.net/home/index/cate/310102" target="_blank">[경제교육]</a></span>
+                        </div>
+                    </li>
                     <li>
                         <a href="http://www.namucpa.com" target="_blank">
                             <div class="wTit">
@@ -106,8 +118,10 @@
                                 <strong>윌비스 나무경영 아카데미</strong>
                             </div>
                         </a>
-                    </li>
-                    <li>
+                    </li>                                      
+                </ul>
+                <ul>                            
+                    <li class="fisrt">
                         <a href="https://work.willbes.net/home/index/cate/3102" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
@@ -116,9 +130,7 @@
                                 공기업
                             </div>
                         </a>
-                    </li>                    
-                </ul>
-                <ul>                            
+                    </li>  
                     <li>
                         <a href="http://lang.willbes.net/?sub_category=110" target="_blank">
                             <div class="wTit">

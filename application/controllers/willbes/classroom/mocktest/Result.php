@@ -116,6 +116,7 @@ class Result extends \app\controllers\FrontController
         $subject_data = $this->_setSubjectData($subject_result);
 
         $this->load->view('/classroom/mocktestNew/result/stat_total', [
+            'page_type' => 'total',
             'productInfo' => $productInfo,
             'gradeInfo' => $gradeInfo,
             'selectivityInfo' => $selectivityInfo,
@@ -132,11 +133,39 @@ class Result extends \app\controllers\FrontController
             show_alert('잘못된 접근입니다.', 'close');
         }
 
-        
+        $arr_condition = [
+            'EQ' => [
+                'mr.ProdCode' => $prod_code,
+                'mr.MrIdx' => $mr_idx,
+                'mr.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+
+        //기본정보
+        $productInfo = $this->mockExamFModel->registerInfo($arr_condition);
+        if (empty($productInfo) === true) {
+            show_alert('조회된 기본정보가 없습니다.', 'close');
+        }
+
+        //과목별,문항별 분석데이터
+        $data = $this->mockResultFModel->gradeSubjectDetail($prod_code, $mr_idx);
+        $subject_detail_data = $this->_setGradeSubjectDetailData($data);
+
+        //과목별, 문제영역별 데이터
+        $data = $this->mockResultFModel->gradeSubjectAreaData($prod_code, $mr_idx);
+        $arr_area_data = $this->_setGradeSubjectAreaData($data);
+
+        $this->load->view('/classroom/mocktestNew/result/stat_subject', [
+            'page_type' => 'subject',
+            'productInfo' => $productInfo,
+            'subject_detail_data' => $subject_detail_data,
+            'subject_data' => $arr_area_data['arr_subject_data'],
+            'area_data' => $arr_area_data['arr_area_data']
+        ]);
     }
 
     /**
-     * 데이터 가공
+     * 과목별 점수 데이터 가공
      * @param $subject_result
      * @return array
      */
@@ -187,6 +216,47 @@ class Result extends \app\controllers\FrontController
             'data_default_s' => $data_default_s,
             'data_e' => $data_e,
             'data_s' => $data_s
+        ];
+    }
+
+    /**
+     * 과목별,문항별 데이터 가공
+     * @param $data
+     * @return array
+     */
+    private function _setGradeSubjectDetailData($data)
+    {
+        $arr_data = [];
+        foreach ($data as $key => $row) {
+            $arr_data[$row['SubjectName']]['right_answer'][] = $row['RightAnswer'];
+            $arr_data[$row['SubjectName']]['answer'][] = $row['Answer'];
+            $arr_data[$row['SubjectName']]['is_wrong'][] = $row['IsWrong'];
+            $arr_data[$row['SubjectName']]['QAVR'][] = $row['QAVR'];
+            $arr_data[$row['SubjectName']]['difficulty'][] = $row['Difficulty'];
+        }
+
+        return $arr_data;
+    }
+
+    /**
+     * 과목별, 문제영역별 데이터 가공
+     * @param $data
+     * @return array
+     */
+    private function _setGradeSubjectAreaData($data)
+    {
+        $arr_subject_data = $arr_area_data = [];
+        foreach ($data as $key => $row) {
+            $arr_subject_data[$row['MpIdx']] = $row['SubjectName'];
+            $arr_area_data[$row['MpIdx']][$row['MalIdx']]['area_name'] = $row['AreaName'];
+            $arr_area_data[$row['MpIdx']][$row['MalIdx']]['cnt'] = $row['sumMyYcnt'].' / '.$row['TotalCnt'];
+            $arr_area_data[$row['MpIdx']][$row['MalIdx']]['avg'] = $row['avgMq'];
+            $arr_area_data[$row['MpIdx']][$row['MalIdx']]['question_no'] = $row['gQuestionNo'];
+            $arr_area_data[$row['MpIdx']][$row['MalIdx']]['n_question_no'] = (empty($row['nQuestionNo']) === true ? '없음' : $row['nQuestionNo']);
+        }
+        return [
+            'arr_subject_data' => $arr_subject_data,
+            'arr_area_data' => $arr_area_data
         ];
     }
 }

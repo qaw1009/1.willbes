@@ -7,12 +7,16 @@ class MockResultFModel extends WB_Model
         'product' => 'lms_Product',
         'mock_register' => 'lms_mock_register',
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'mock_area_list' => 'lms_mock_area_list',
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'mock_answerpaper' => 'lms_mock_answerpaper',
         'mock_paper' => 'lms_mock_paper_new',
+        'mock_paper_r_category' => 'lms_mock_paper_r_category',
         'mock_questions' => 'lms_mock_questions',
         'mock_grades' => 'lms_mock_grades',
         'mock_grades_log' => 'lms_mock_grades_log',
+        'mock_r_category' => 'lms_mock_r_category',
+        'mock_r_subject' => 'lms_mock_r_subject',
         'product_mock' => 'lms_product_mock',
         'product_subject' => 'lms_product_subject',
         'product_r_category' => 'lms_product_r_category',
@@ -314,5 +318,134 @@ class MockResultFModel extends WB_Model
         ";
 
         return $this->_conn->query('select ' . $column . $from)->result_array();
+    }
+
+    /**
+     * 과목별,문항별 분석
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeSubjectDetail($prod_code, $mr_idx)
+    {
+        $column = "
+            P.*, MA.Answer, MA.IsWrong
+            ,(
+                SELECT ROUND(((ycnt / (ycnt + ncnt)) * 100), 2) AS QAVR
+                FROM (
+                    SELECT MP.MpIdx,MQ.MqIdx
+                    ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt
+                    ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt
+                    FROM {$this->_table['mock_paper']} AS MP
+                    JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx 
+                    AND PM.ProdCode = '{$prod_code}'
+                    AND PM.IsStatus = 'Y'
+                    GROUP BY MQ.MqIdx
+                ) AS A
+                WHERE A.MpIdx = MA.MpIdx AND A.MqIdx = MA.MqIdx
+            ) AS QAVR
+        ";
+
+        $from = "
+            FROM (
+                SELECT 
+                PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중','하')))AS Difficulty
+                FROM
+                (
+                    SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum
+                    FROM {$this->_table['product_mock']} AS PM
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                    INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                    WHERE PM.ProdCode = '{$prod_code}'
+                    GROUP BY MP.MpIdx
+                ) AS A
+                INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+            ) AS P
+            LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
+        ";
+        $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
+
+        //echo '<pre>'.'select ' . $column . $from . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
+    }
+
+    /**
+     * 과목별, 항목영역별 데이타 조회
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeSubjectAreaData($prod_code, $mr_idx)
+    {
+        $column = "
+            S.SubjectName, S.MockType, S.MpIdx, S.MalIdx
+            ,SUM(S.myYcnt) AS sumMyYcnt                 #맞은개수
+            ,SUM(S.myNcnt) AS sumMyYcnt                 #틀린개수
+            ,SUM(S.myYcnt) + SUM(S.myNcnt) AS TotalCnt  #전체문항수
+            ,ROUND(AVG(S.avgMq),2) AS avgMq             #전체문항의평균
+            ,GROUP_CONCAT(QuestionNo) AS gQuestionNo    #관련문항
+            ,MAL.AreaName                               #영역명
+            ,GROUP_CONCAT(nQuestionNo) AS nQuestionNo   #오답문항
+        ";
+
+        $from = "
+            FROM (
+                SELECT 
+                P.SubjectName, P.MockType, P.MpIdx, P.MqIdx, P.MalIdx, P.QuestionNo
+                ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'Y') AS myYcnt
+                ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = p.MqIdx AND IsWrong = 'N') AS myNcnt
+                ,(SELECT QuestionNo FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'N') AS nQuestionNo
+                ,AV.avgMq
+                FROM (
+                    SELECT 
+                    A.ProdCode, PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
+                    FROM
+                    (
+                        SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum
+                        FROM {$this->_table['product_mock']} AS PM
+                        INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                        INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                        INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                        INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                        INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                        WHERE PM.ProdCode = '{$prod_code}'
+                        GROUP BY MP.MpIdx
+                    ) AS A
+                    INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+                ) AS P
+                LEFT JOIN (
+                    SELECT a.MqIdx, ROUND((b.yCount / a.TotalCount) * 100,2) AS avgMq
+                    FROM (
+                        SELECT a.MqIdx, COUNT(*) AS TotalCount
+                        FROM {$this->_table['mock_answerpaper']} AS a
+                        WHERE ProdCode = '{$prod_code}'
+                        GROUP BY a.MqIdx
+                    ) AS a
+                    INNER JOIN (
+                        SELECT a.MqIdx, COUNT(*) AS yCount
+                        FROM {$this->_table['mock_answerpaper']} AS a
+                        INNER JOIN {$this->_table['mock_questions']} AS b ON a.MqIdx = b.MqIdx
+                        WHERE ProdCode = '{$prod_code}' AND a.IsWrong = 'Y'
+                        GROUP BY a.MqIdx
+                    ) AS b ON a.MqIdx = b.MqIdx
+                ) AS AV ON P.MqIdx = AV.MqIdx
+                ORDER BY P.MockType, P.MpIdx, P.OrderNum, P.QuestionNo    
+            ) AS S
+            LEFT JOIN {$this->_table['mock_area_list']} AS MAL ON S.MalIdx = MAL.MalIdx AND MAL.IsStatus = 'Y'
+        ";
+        $group_by = " GROUP BY S.MalIdx";
+        $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
+
+        //echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
     }
 }

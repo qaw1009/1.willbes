@@ -134,7 +134,6 @@ class BeforeLectureModel extends WB_Model
             $blidx = $this->_conn->insert_id();
             /*----------------          선수강좌기본정보        ---------------*/
 
-
             /*----------------          선수강좌할인율        ---------------*/
             if($this->_setSale($input,$blidx) !== true) {
                 throw new \Exception('선수강좌 할인율 등록에 실패했습니다.');
@@ -142,13 +141,12 @@ class BeforeLectureModel extends WB_Model
             //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          선수강좌할인율        ---------------*/
 
-
             /*----------------          연계강좌 등록        ---------------*/
-            if($this->_setProduct($input,$blidx) !== true) {
-                throw new \Exception('연계 강좌 등록에 실패했습니다.');
+            $set_product_result = $this->_setProduct($input,$blidx);
+            if($set_product_result !== true) {
+                throw new \Exception($set_product_result);
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
-            /*----------------          선수강좌할인율        ---------------*/
+            /*----------------          연계강좌  등록      ---------------*/
 
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
@@ -187,7 +185,6 @@ class BeforeLectureModel extends WB_Model
             }
             /*----------------          선수강좌기본정보        ---------------*/
 
-
             /*----------------          선수강좌할인율        ---------------*/
             if($this->_setSale($input,$blidx) !== true) {
                 throw new \Exception('선수강좌 할인율 등록에 실패했습니다.');
@@ -195,10 +192,10 @@ class BeforeLectureModel extends WB_Model
             //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          선수강좌할인율        ---------------*/
 
-
             /*----------------          연계강좌 등록        ---------------*/
-            if($this->_setProduct($input,$blidx) !== true) {
-                throw new \Exception('연계 강좌 등록에 실패했습니다.');
+            $set_product_result = $this->_setProduct($input,$blidx);
+            if($set_product_result !== true) {
+                throw new \Exception($set_product_result);
             }
             //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          선수강좌할인율        ---------------*/
@@ -345,7 +342,6 @@ class BeforeLectureModel extends WB_Model
                     }
                 }
             }
-
             /*  대상강좌 저장 */
 
         } catch (\Exception $e) {

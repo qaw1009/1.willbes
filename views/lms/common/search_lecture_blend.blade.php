@@ -8,9 +8,7 @@
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" id="site_code" value="{{ $site_code }}"/>
-        <!--input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd }}"/> //-->
         <input type="hidden" name="locationid" id="locationid" value="{{$locationid}}"/>
-
         @endsection
 
         @section('layer_content')
@@ -19,26 +17,26 @@
                 <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
             </div>
 
-            <div class="form-group no-padding">
+            <div class="form-group no-padding hide">
                 <ul class="nav nav-tabs nav-justified mb-10">
                     <li {{$LearnPatternCcd == '615001' || $LearnPatternCcd == '615005' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('615001');"><strong>온라인</strong></a></li>
                     <li {{$LearnPatternCcd == '615006' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('615006');"><strong>학원</strong></a></li>
                 </ul>
             </div>
-
-
             @if(empty($wLecIdx) === true)
                 <div class="form-group pt-10 pb-5">
                     <label class="control-label col-md-2 pt-5" for="search_value">@if($LearnPatternCcd === '615006')단과반@else강좌@endif검색
                     </label>
 
-                    <div class="col-md-2 radio">
+                    <div class="col-md-2 radio ">
                         @if($LearnPatternCcd === '615006')
                             <input type="hidden" name="LearnPatternCcd" value="615006">
                         @else
+                            <input type="hidden" name="LearnPatternCcd" value="615001">
+                            <!--
                             <input type="radio" name="LearnPatternCcd" value="615001" class="flat" @if($LearnPatternCcd === '' || $LearnPatternCcd === '615001') checked="checked" @endif> 단강좌
-                            &nbsp;
-                            <input type="radio" name="LearnPatternCcd" value="615005" class="flat" @if($LearnPatternCcd === '615005') checked="checked" @endif> 무료강좌
+
+                            <input type="radio" name="LearnPatternCcd" value="615005" class="flat" @if($LearnPatternCcd === '615005') checked="checked" @endif> 무료강좌//-->
                         @endif
                     </div>
                     <div class="col-md-4">
@@ -175,7 +173,6 @@
                             {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                                 }},//판매여부
-
                         @elseif($LearnPatternCcd === "615005")
                             {'data' : 'FreeLecTypeCcd_Name'},//강좌유형
                             {'data' : 'SubjectName'},//과목명
@@ -190,7 +187,6 @@
                             {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                                 }},//판매여부
-
                         @elseif($LearnPatternCcd === "615006")
                             {'data' : 'CampusCcd_Name'},//캠퍼스
                             {'data' : 'StudyPatternCcd_Name'},
@@ -202,7 +198,7 @@
                             {'data' : 'SubjectName'},//과목명
                             {'data' : 'wProfName_String'},
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
+                                    return '['+row.ProdCode+ '] ' + row.ProdName + '';
                                 }},//단강좌명
 
                             {'data' : null, 'render' : function(data, type, row, meta) {
@@ -222,7 +218,6 @@
                                     return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' :data);
                                 }},
                         @endif
-
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                                     return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                                 }},//사용여부

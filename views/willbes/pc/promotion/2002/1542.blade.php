@@ -41,7 +41,7 @@
         .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2020/02/1542_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts02 {background:#fff}
-        .wb_cts03 {background:#abaeb1}
+        .wb_cts03 {background:#ABB1B9}
         .wb_cts04 {background:#696d73}
 		.wb_cts05 {background:#fff}
         .wb_cts06 {background:#f8f9fa}

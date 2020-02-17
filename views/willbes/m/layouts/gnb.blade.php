@@ -5,7 +5,7 @@
         @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
             <h2 class="NGEB">
                 <img src="{{ img_url('m/main/icon_' . $__cfg['SiteGroupId'] . '.png') }}" class="clogo" alt=""/>
-                {{str_replace_array(['윌비스', '온라인', '학원', ' '], '', $__cfg['HeadTitle'])}}
+                {{str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle'])}}
             </h2>
             {{-- 모바일 사이트 메뉴 --}}
             @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)

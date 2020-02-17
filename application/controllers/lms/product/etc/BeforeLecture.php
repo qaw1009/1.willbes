@@ -91,7 +91,6 @@ Class BeforeLecture extends \app\controllers\BaseController
             $data_sale_ess =$this->beforeLectureModel->_findBeforeLectureSaleForModify($blidx,'E');
             $data_sale_cho =$this->beforeLectureModel->_findBeforeLectureSaleForModify($blidx,'C');
             $data_product =$this->beforeLectureModel->_findBeforeLectureProductForModify($blidx);
-
         }
 
         $this->load->view('product/etc/beforelecture/create',[
@@ -119,7 +118,6 @@ Class BeforeLecture extends \app\controllers\BaseController
             ['field'=>'ValidPeriodEndDate', 'label' => '유효기간', 'rules' => 'trim|required'],
         ];
 
-
         if(empty($this->_reqP('BlIdx',false))===true) {
 
             $rules = array_merge($rules,[
@@ -143,5 +141,19 @@ Class BeforeLecture extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-
+    /**
+     * 강좌 사용 수정
+     */
+    public function redata()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '상태값', 'rules' => 'trim|required']
+        ];
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $result = $this->beforeLectureModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
 }

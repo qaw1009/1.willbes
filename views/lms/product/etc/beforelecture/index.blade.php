@@ -1,14 +1,14 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 임용 선수강좌 정보를 관리하는 메뉴입니다.</h5>
+    <h5>- 선수강좌 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
         <div class="x_panel">
             <div class="x_content">
-
                 <div class="form-group">
+                    {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control" id="search_lectype_ccd" name="search_lectype_ccd">
@@ -67,7 +67,6 @@
                     <th>중복여부</th>
                     <th>유효기간</th>
                     <th>사용여부</th>
-                    <th>신청현황</th>
                     <th>등록자</th>
                     <th>등록일</th>
                 </tr>
@@ -89,7 +88,8 @@
 
                 buttons: [
 
-                    { text: '<i class="fa fa-pencil mr-5"></i> 선수강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 선수강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/etc/beforeLecture/create') }}';
                         }
                     }
@@ -126,17 +126,49 @@
                         }},//
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.BlIdx +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
-
-                    {'data' : 'applyCnt', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" onclick="javascript:alert(\'주문결제 이후 개발\')">'+data+'</a>';
-                        }},//사용여부
-
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'}//등록일
                 ]
 
+            });
+
+            // 신규, 추천, 사용 상태 변경
+            $('.btn-new-best-modify').on('click', function() {
+                if (!confirm('상태를 적용하시겠습니까?')) {
+                    return;
+                }
+                var $is_use = $list_table.find('input[name="is_use"]');
+                var $params = {};
+                var origin_val, this_use_val;
+
+                $is_use.each(function(idx) {
+                    this_use_val =  $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_use_val;
+                    origin_val = $is_use.eq(idx).data('origin-is-use');
+                    if (this_val !== origin_val) {
+                        $params[$(this).data('idx')] = { 'IsUse' : this_use_val };
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/product/etc/beforeLecture/redata') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
             // 데이터 수정 폼

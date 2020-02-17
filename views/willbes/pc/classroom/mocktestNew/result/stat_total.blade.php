@@ -13,16 +13,7 @@
             <div class="pop-subTit">{{ $productInfo['ProdName'] }}</div>
         </div>
         <div class="popupContainer">
-            <ul class="tabSty {{ (($productInfo['PaperType'] == 'P') ? 'tabSty50' : '') }}">
-                <li class="active"><a href="javascript:void(0);">전체 성적 분석</a></li>
-                <li><a href="{{ site_url('/classroom/mocktest/result/winStatSubject?prod_code='.$productInfo['ProdCode'].'&mr_idx='.$productInfo['MrIdx']) }}">과목별 문항분석</a></li>
-                @if($productInfo['PaperType'] == 'I')
-                    <li><a href="{{ site_url('/classroom/mocktest/result/winAnswerNote?prod_code='.$productInfo['ProdCode'].'&mr_idx='.$productInfo['MrIdx']) }}">오답노트</a></li>
-                @endif
-            </ul>
-            <div class="btnAgR mgT1 mgB1 mb30">
-                <a id='printBtn' class="btnlineGray" href="javascript:window.print()">출력</a>
-            </div>
+            @include('willbes.pc.classroom.mocktestNew.result.stat_tab_menu_partial')
             <div class="cartBx mgB4">
                 <table cellspacing="0" cellpadding="0" class="whtInfoTb">
                     <colgroup>

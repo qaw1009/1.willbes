@@ -10,6 +10,7 @@ class ProductFModel extends WB_Model
         'userpack_lecture' => 'vw_product_userpack_lecture',
         'periodpack_lecture' => 'vw_product_periodpack_lecture',
         'off_lecture' => 'vw_product_off_lecture',
+        'off_lecture_before' => 'vw_product_off_lecture',
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
         'mock_exam' => 'vw_product_mocktest',
@@ -93,8 +94,9 @@ class ProductFModel extends WB_Model
                         }
                     break;
                 
-                // 학원 단과
+                // 학원 단과, 학원 단과 선수강
                 case 'off_lecture' :
+                case 'off_lecture_before' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear
                             , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
@@ -272,18 +274,20 @@ class ProductFModel extends WB_Model
                     'EQ' => [$as . 'LecSaleType' => 'N', $as . 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부
                 ]);
                 break;
-            // 학원 단과
+            // 학원 단과, 학원 단과 선수강
             case 'off_lecture' :
+            case 'off_lecture_before' :
+                $lec_sale_type = $learn_pattern == 'off_lecture_before' ? 'B' : 'N';   // 강의판매구분 (일반/선수강)
                 $arr_condition = array_merge_recursive($arr_condition, [
-                    'EQ' => [$as . 'LecSaleType' => 'N', $as . 'wIsUse' => 'Y', $as . 'IsLecOpen' => 'Y'],   // 일반강의, 마스터강의 사용여부, 강의개설여부
-                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
+                    'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y', $as . 'IsLecOpen' => 'Y'],   // 강의판매구분, 마스터강의 사용여부, 강의개설여부
+                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중
                 ]);
                 break;
             // 학원 종합반
             case 'off_pack_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => [$as . 'LecSaleType' => 'N', $as . 'IsLecOpen' => 'Y'],   // 일반강의, 강의개설여부
-                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
+                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중
                 ]);
                 break;
             // 교재

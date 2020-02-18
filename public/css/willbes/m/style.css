@@ -2512,6 +2512,10 @@ body.memBody #Footer {
     line-height: 1.5;
     padding:20px 0 0;
 }
+.lec-info .lec-info-pkg img {
+    width: 100%; display: block; margin:20px 0;
+    max-width: 880px;
+}
 .lec-choice-pkg {border:1px solid #898989}
 .lec-choice-pkg .lecTable tr td {
     padding: 20px;

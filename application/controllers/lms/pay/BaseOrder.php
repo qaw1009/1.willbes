@@ -57,6 +57,11 @@ class BaseOrder extends \app\controllers\BaseController
             $pg_config_file = 'pg_' . $order_data['PgDriver'];
             $this->load->config($pg_config_file, true, true);
             $order_data['ReceiptUrl'] = str_replace('{{$tid$}}', $order_data['PgTid'], config_get($pg_config_file . '.receipt_url'));
+
+            // 결제승인 신용카드명 조회
+            if ($order_data['PayMethodCcd'] == $this->orderListModel->_pay_method_ccd['card']) {
+                $order_data['PgPayDetailCodeName'] = $this->orderListModel->getPgPayDetailCodeName($order_data['OrderNo'], $order_data['PgCcd'], $order_data['PayMethodCcd']);
+            }
         }
 
         // 회원정보

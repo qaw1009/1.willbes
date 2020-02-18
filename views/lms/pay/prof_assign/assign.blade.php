@@ -132,7 +132,7 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs bar_tabs mb-10" role="tablist">
                 <li role="presentation" class="active"><a href="#tab_ess" role="tab" data-toggle="tab">필수과목</a></li>
-                <li role="presentation"><a href="#tab_choice" role="tab" data-toggle="tab">선택과목</a></li>
+                <li role="presentation"><a href="#tab_choice" role="tab" data-toggle="tab">선택과목 (과정별 {{ $data['PackSelCount'] }}과목 선택가능)</a></li>
             </ul>
             <div class="tab-content">
                 @foreach($sub_prod_data as $key => $prod_data)
@@ -238,11 +238,11 @@
                 }
             });
 
-            {{-- 강사미배정일 경우만 과정/과목별 단과반이 1개일 경우 선택 처리 --}}
+            {{-- 강사미배정일 경우만 필수과목 과정/과목별 단과반이 1개일 경우 선택 처리 --}}
             @if($is_prof_assign === false)
                 function setOnlyLectureChecked() {
-                    $_assign_form.find('.prod-code-sub').each(function () {
-                        if ($_assign_form.find('input[name="' + $(this).prop('name') + '"]').length === 1) {
+                    $_assign_form.find('#tab_ess').find('.prod-code-sub').each(function () {
+                        if ($_assign_form.find('#tab_ess').find('input[name="' + $(this).prop('name') + '"]').length === 1) {
                             $(this).iCheck('check');
                         }
                     });

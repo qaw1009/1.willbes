@@ -18,6 +18,7 @@ class BaseOrderModel extends WB_Model
         'order_product_refund' => 'lms_order_product_refund',
         'order_unpaid_info' => 'lms_order_unpaid_info',
         'order_unpaid_hist' => 'lms_order_unpaid_hist',
+        'order_payment' => 'lms_order_payment',
         'order_product_activity_log' => 'lms_order_product_activity_log',
         'order_memo' => 'lms_order_memo',
         'product' => 'lms_product',

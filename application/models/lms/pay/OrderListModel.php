@@ -45,7 +45,8 @@ class OrderListModel extends BaseOrderModel
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm 
-                    , P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd, P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
+                    , P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd, PL.PackSelCount
+                    , P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName';
 
@@ -772,6 +773,75 @@ class OrderListModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $order_idx, $order_prod_idx, $prod_code]);
 
         return $query->result_array();
+    }
+
+    /**
+     * 학원종합반 과정별 선택과목 선택개수 체크 (강사배정 전용)
+     * @param int $prod_code [학원종합반 상품코드]
+     * @param array $arr_prod_code_sub [선택서브강좌코드]
+     * @return bool|string
+     */
+    public function checkOffPackChoiceSubLectureCntForAssign($prod_code, $arr_prod_code_sub)
+    {
+        if (empty($prod_code) === true || empty($arr_prod_code_sub) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        // 선택과목 선택개수 조회
+        $pack_data = $this->_conn->getFindResult($this->_table['product_lecture'], 'PackSelCount', ['EQ' => ['ProdCode' => get_var($prod_code, '0')]]);
+        $pack_sel_cnt = array_get($pack_data, 'PackSelCount');
+        if (empty($pack_sel_cnt) === true) {
+            return '선택과목 선택개수 조회에 실패했습니다.';
+        }
+
+        // 과정별 선택과목 선택개수 체크
+        $column = 'SPL.CourseIdx, count(0)';
+        $from = '
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $this->_table['product_lecture'] . ' as SPL
+                    on PS.ProdCodeSub = SPL.ProdCode
+            where PS.ProdCode = ?
+                and PS.ProdCodeSub in ?
+                and PS.IsStatus = "Y"
+                and PS.IsEssential = "N"
+            group by SPL.CourseIdx
+            having count(0) > ?
+        ';
+
+        $data = $this->_conn->query('select ' . $column . $from, [$prod_code, $arr_prod_code_sub, $pack_sel_cnt])->result_array();
+
+        return empty($data) === true ? true : '선택과목은 과정별 ' . $pack_sel_cnt . '과목 이하로만 선택 가능합니다.';
+    }
+
+    /**
+     * Pg사 결제상세코드명 리턴 (카드사명/은행명)
+     * @param string $order_no [주문번호]
+     * @param string $pg_ccd [PG사공통코드]
+     * @param string $pay_method_ccd [결제방법공통코드]
+     * @return mixed
+     */
+    public function getPgPayDetailCodeName($order_no, $pg_ccd, $pay_method_ccd)
+    {
+        $ccd_key = $pay_method_ccd == $this->_pay_method_ccd['card'] ? 'Card' : 'Bank';
+        $arr_condition = [
+            'EQ' => ['PA.OrderNo' => get_var($order_no, '0')],
+            'IN' => ['PA.PayType' => ['PA', 'MP'], 'PA.ResultCode' => ['0000', '00']],
+            'LKL' => ['PayMethod' => $ccd_key]
+        ];
+
+        $column = 'PA.OrderNo
+            , (select ifnull(CcdName, "") 
+                from ' . $this->_table['code'] . ' 
+                where GroupCcd = "' . $this->_group_ccd[$ccd_key] . '" 
+                    and json_value(CcdEtc, "$.' . $pg_ccd . '") = PA.PayDetailCode
+                    and CcdEtc is not null
+                    and IsStatus = "Y"
+                order by OrderNum asc limit 1               
+              ) as PayDetailCodeName';
+
+        $data = $this->_conn->getFindResult($this->_table['order_payment'] . ' as PA', $column, $arr_condition);
+
+        return array_get($data, 'PayDetailCodeName', '');
     }
 
     /**

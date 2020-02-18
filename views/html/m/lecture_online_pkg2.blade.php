@@ -116,7 +116,8 @@
 
         <div class="lec-info NGR">
             <h4 class="NGEB">패키지정보</h4>
-            <div class="lec-info-pkg">                    
+            <div class="lec-info-pkg">  
+                <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3515.JPG" border="0">                  
                 <strong>패키지유의사항 (필독)</strong><br>
                 *** 동영상 배수 제한 시범운영 콘텐츠입니다. ***
                 최근 교육콘텐츠(동영상강의, 교재, 학습자료 등)에 대한 공유, 복제, 배포, 판매 등 

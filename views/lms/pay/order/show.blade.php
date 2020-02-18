@@ -84,6 +84,11 @@
                                     ({{ $data['order']['VisitPayCardCcdName'] }})
                                 @endif
 
+                                {{-- PG사 결제카드명 노출 --}}
+                                @if(empty($data['order']['PgPayDetailCodeName']) === false)
+                                    ({{ $data['order']['PgPayDetailCodeName'] }})
+                                @endif
+
                                 @if(isset($data['order']['ReceiptUrl']) === true)
                                     <button name="btn_receipt_print" class="btn btn-xs btn-success ml-20 mb-0">매출전표</button>
                                 @endif

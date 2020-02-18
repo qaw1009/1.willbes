@@ -294,6 +294,15 @@ class OffProfAssign extends BaseOrder
             return null;
         }
 
+        // 선택과목 선택개수 체크
+        $prod_code = $this->_reqP('prod_code');
+        $arr_prod_code_sub = array_values(array_unique(explode(',', $this->_reqP('prod_code_sub'))));
+        $is_check = $this->orderListModel->checkOffPackChoiceSubLectureCntForAssign($prod_code, $arr_prod_code_sub);
+
+        if ($is_check !== true) {
+            return $this->json_error($is_check, _HTTP_BAD_REQUEST);
+        }
+        
         $result = $this->orderModel->replaceOrderSubProduct('off_pack_lecture', $this->_reqP(null, false));
 
         return $this->json_result($result, '강사배정이 적용되었습니다.', $result);

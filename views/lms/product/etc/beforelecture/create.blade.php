@@ -85,7 +85,7 @@
                             &nbsp;&nbsp;
                             <input type="radio" name="ConditionType" id="ConditionType1" required="required" value="AND" class="flat" @if($method == 'POST' || $data['ConditionType']=='AND')checked="checked"@endif> AND
                             &nbsp;
-                            <input type="radio" name="ConditionType" id="ConditionType2" required="required" value="AND" class="flat" @if($data['ConditionType']=='OR')checked="checked"@endif> OR
+                            <input type="radio" name="ConditionType" id="ConditionType2" required="required" value="OR" class="flat" @if($data['ConditionType']=='OR')checked="checked"@endif> OR
 
                             &nbsp; <b><span class="red">• 선접수 대상자가 수강해야 할 강좌를 선택합니다.</span></b>
                         </p>

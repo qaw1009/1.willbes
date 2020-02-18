@@ -125,6 +125,9 @@ class Result extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 과목별 문항분석
+     */
     public function winStatSubject()
     {
         $prod_code = $this->_reqG("prod_code");
@@ -162,6 +165,131 @@ class Result extends \app\controllers\FrontController
             'subject_data' => $arr_area_data['arr_subject_data'],
             'area_data' => $arr_area_data['arr_area_data']
         ]);
+    }
+
+    /**
+     * 오답노트
+     */
+    public function winAnswerNote()
+    {
+        $prod_code = $this->_reqG("prod_code");
+        $mr_idx = $this->_reqG("mr_idx");
+        if (empty($prod_code) === true || empty($mr_idx) === true) {
+            show_alert('잘못된 접근입니다.', 'close');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'mr.ProdCode' => $prod_code,
+                'mr.MrIdx' => $mr_idx,
+                'mr.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+
+        //기본정보
+        $productInfo = $this->mockExamFModel->registerInfo($arr_condition);
+        if (empty($productInfo) === true) {
+            show_alert('조회된 기본정보가 없습니다.', 'close');
+        }
+
+        $arr_base['subject_data'] = $this->_setSubjectForSelectBoxData($productInfo['subject_names']);
+        $arr_base['area_data'] = $this->mockResultFModel->areaList($arr_base['subject_data']);
+
+        $this->load->view('/classroom/mocktestNew/result/wrong_answer_note', [
+            'page_type' => 'answer',
+            'productInfo' => $productInfo,
+            'arr_base' => $arr_base,
+        ]);
+    }
+
+    /**
+     * 오답노트 리스트
+     */
+    public function areaListHtml()
+    {
+        $arr_input = $this->_reqP(null);
+        $prod_code = element('prod_code',$arr_input);
+        $mr_idx = element('mr_idx',$arr_input);
+        $mp_idx = element('mp_idx',$arr_input);
+        $is_wrong_type = element('is_wrong_type',$arr_input);
+        $question_view_type = element('question_view_type',$arr_input, '');
+        $mal_idx = element('mal_idx',$arr_input);
+        $wrong_note_type = element('wrong_note_type',$arr_input);
+
+        if (empty($prod_code) === true || empty($mr_idx) === true || empty($mp_idx) === true) {
+            show_error('잘못된 접근입니다.');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'MP.MpIdx' => $mp_idx,
+                'AP.IsWrong' => $is_wrong_type,
+            ],
+            'IN' => [
+                'MQ.MalIdx' => $mal_idx
+            ]
+        ];
+
+        $answer_note_list = $this->mockResultFModel->answerForNoteList($prod_code, $mr_idx, $arr_condition, $wrong_note_type);
+        $this->load->view('/classroom/mocktestNew/result/area_list_html', [
+            'question_view_type' => $question_view_type,
+            'answer_note_list' => $answer_note_list
+        ]);
+    }
+
+    /**
+     * 오답노트 저장
+     */
+    public function addNoteAjax()
+    {
+        $rules = [
+            ['field' => 'regi_prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_mr_idx', 'label' => '모의고사접수식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_mp_idx', 'label' => '과목식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_mq_idx', 'label' => '문항식별자', 'rules' => 'trim|required|integer']
+        ];
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->mockResultFModel->addNote($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result);
+    }
+
+    public function deleteNoteAjax()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'memo_id', 'label' => '메모식별자', 'rules' => 'trim|required|integer']
+        ];
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->mockResultFModel->deleteNote($this->_reqP(null, false));
+        $this->json_result($result, '삭제되었습니다.', $result);
+    }
+
+    /**
+     * 과목데이터 추출
+     * @param $subject_data
+     * @return array
+     */
+    private function _setSubjectForSelectBoxData($subject_data)
+    {
+        $temp_subject_depth1 = explode(',', $subject_data);
+        $temp_subject_depth2 = [];
+        foreach ($temp_subject_depth1 as $key => $val) {
+            $temp_subject_depth2[] = explode('|', $val);
+        }
+
+        $arr_subject = [];
+        foreach ($temp_subject_depth2 as $rows) {
+            $arr_temps = explode('@',$rows[1]);
+            $arr_subject[$arr_temps[0]] = $arr_temps[1];
+        }
+
+        return $arr_subject;
     }
 
     /**

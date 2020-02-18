@@ -25,9 +25,20 @@
         
         .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
         .evt_top span {position:absolute; left:50%; z-index:100}
-        .evt_top span.imgA {margin-left:-529px; top:1107px}
-        .evt_top span.imgB {margin-left:321px; top:1291px}
+        .evt_top span.imgA {margin-left:-529px; top:1107px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        .evt_top span.imgB {margin-left:321px; top:1291px; -webkit-animation:swing2 1s linear infinite;animation:swing2 1s linear infinite}
         .evt_top span.imgC {margin-left:-296px; top:309px}
+        @@keyframes swing{
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }
+        @@keyframes swing2{
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }
+
 
         .evt_top01 {background:#4f7bf6}
 

@@ -5,18 +5,26 @@ class MemberPrivateModel extends WB_Model
 {
     private $_table = [
         'product_mock' => 'lms_product_mock',
-        'Product' => 'lms_Product',
+        'product' => 'lms_product',
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'product_r_category' => 'lms_product_r_category',
+        'mock_questions' => 'lms_mock_questions',
         'sys_category' => 'lms_sys_category',
         'product_sale' => 'lms_product_sale',
         'mock_register' => 'lms_mock_register',
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'mock_paper_r_category' => 'lms_mock_paper_r_category',
         'mock_paper' => 'lms_mock_paper_new',
+        'mock_r_category' => 'lms_mock_r_category',
+        'mock_r_subject' => 'lms_mock_r_subject',
+        'mock_area_list' => 'lms_mock_area_list',
         'product_subject' => 'lms_product_subject',
         'mock_grades' => 'lms_mock_grades',
         'mock_answertemp' => 'lms_mock_answertemp',
         'mock_answerpaper' => 'lms_mock_answerpaper',
+        'order_product' => 'lms_order_product',
+        'category' => 'lms_sys_category',
+        'mock_log' => 'lms_mock_log',
         'lms_member' => 'lms_member'
     ];
 
@@ -93,7 +101,7 @@ class MemberPrivateModel extends WB_Model
                 GROUP BY MR.MrIdx
             ) AS M
             INNER JOIN {$this->_table['product_mock']} AS PM ON M.ProdCode = PM.ProdCode
-            INNER JOIN {$this->_table['Product']} AS PD ON PM.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            INNER JOIN {$this->_table['product']} AS PD ON PM.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
             INNER JOIN {$this->_table['product_r_category']} AS PC ON PM.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             INNER JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             INNER JOIN {$this->_table['lms_member']} AS MB ON M.MemIdx = MB.MemIdx
@@ -288,6 +296,275 @@ class MemberPrivateModel extends WB_Model
         return $return_data;
     }
 
+
+    /**
+     * 모의고사 응시 정보
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function registerInfo($arr_condition = [])
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
+            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names,
+            PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
+            C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
+            IFNULL((SELECT RemainSec FROM {$this->_table['mock_log']} WHERE MrIdx = A.MrIdx ORDER BY RemainSec LIMIT 1), (MP.TakeTime*60)) AS RemainSec
+        ";
+
+        $from = "
+            FROM (
+                SELECT 
+                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
+                mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
+                GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
+                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName)) AS subject_names
+                FROM {$this->_table['mock_register']} AS mr
+                JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
+                JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
+                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
+                JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
+                {$where}
+                GROUP BY mr.ProdCode
+            ) AS A
+            INNER JOIN {$this->_table['product_mock']} AS MP ON MP.ProdCode = A.ProdCode
+            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+            JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+            JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
+            LEFT JOIN (
+                SELECT ProdCode, LogIdx FROM {$this->_table['mock_answertemp']} AS mr {$where} ORDER BY LogIdx DESC LIMIT 1
+            ) AS Temp ON MP.ProdCode = Temp.ProdCode
+        ";
+
+        $order_by = " ORDER BY A.ProdCode DESC";
+        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
+        return $this->_conn->query('select STRAIGHT_JOIN' . $column . $from . $order_by)->row_array();
+    }
+
+    /**
+     * 종합성적조회
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeInfo($prod_code, $mr_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'MG.ProdCode' => $prod_code,
+                'MG.MrIdx' => $mr_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+            MB.MemName
+            ,IFNULL(SUM(OrgPoint),0) AS SumOrgPoint                 #나의 원점수총점
+            ,IFNULL(SUM(AdjustPoint),0) AS SumAdjustPoint           #나의 조정점수총점
+            ,IFNULL(ROUND(AVG(OrgPoint),2),0) AS AvgOrgPoint        #나의 원점수평균
+            ,IFNULL(ROUND(AVG(AdjustPoint),2),0) AS AvgAdjustPoint  #나의 조정점수평균
+            ,IFNULL(ORank.OrgRankNum,0) AS OrgRankNum               #원점수내석차
+            ,IFNULL(ARank.AdjustRankNum,0) AS AdjustRankNum         #원점수내석차
+            ,(SELECT ROUND(AVG(OrgPoint),2) AS TotalAvgOrgPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code}) AS TotalAvgOrgPoint          #전체 원점수평균
+            ,(SELECT ROUND(AVG(AdjustPoint),2) AS TotalAvgAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code}) AS TotalAvgAdjustPoint #전체 조정점수평균
+            ,(SELECT MAX(A.sumAPoint) AS MaxPoint FROM (SELECT SUM(AdjustPoint) AS sumAPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A) AS MaxPoint  #최고점수
+            ,(SELECT ROUND(AVG(a.sumP),2) FROM (SELECT SUM(AdjustPoint) AS sumP FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS a) AS MrTotalAvgAdjustPoint  #전체 MrIdx기준 조정점수평균
+            ,(SELECT COUNT(TC.MrIdx) AS TotalCount FROM (SELECT MrIdx FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS TC) AS TotalCount    #전체석차
+        ";
+
+        $from = "
+            FROM {$this->_table['mock_grades']} AS MG
+            INNER JOIN {$this->_table['mock_register']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y'
+            INNER JOIN {$this->_table['order_product']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
+            INNER JOIN {$this->_table['lms_member']} AS MB ON MR.MemIdx = MB.MemIdx
+            INNER JOIN
+            (
+                SELECT R.MrIdx, RANK() OVER (PARTITION BY R.ProdCode ORDER BY R.avgOrgPoint DESC) AS OrgRankNum
+                FROM (
+                    SELECT ProdCode, MrIdx, AVG(OrgPoint) AS avgOrgPoint
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = {$prod_code}
+                    GROUP BY MrIdx
+                ) AS R
+            ) AS ORank ON MG.MrIdx = ORank.MrIdx
+            INNER JOIN
+            (
+                SELECT R.MrIdx, RANK() OVER (PARTITION BY R.ProdCode ORDER BY R.avgAdjustPoint DESC) AS AdjustRankNum
+                FROM (
+                    SELECT ProdCode, MrIdx, AVG(AdjustPoint) AS avgAdjustPoint
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = {$prod_code}
+                    GROUP BY MrIdx
+                ) AS R
+            ) AS ARank ON MG.MrIdx = ARank.MrIdx
+        ";
+
+        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    public function selectivity($prod_code)
+    {
+        $query_string = "
+            (SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint <= 4) AS cnt_5
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 5 AND 9) AS cnt_10
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 10 AND 14) AS cnt_15
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 15 AND 19) AS cnt_20
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 20 AND 24) AS cnt_25
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 25 AND 29) AS cnt_30
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 30 AND 34) AS cnt_35
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 35 AND 39) AS cnt_40
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 40 AND 44) AS cnt_45
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 45 AND 49) AS cnt_50
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 50 AND 54) AS cnt_55
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 55 AND 59) AS cnt_60
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 60 AND 64) AS cnt_65
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 65 AND 69) AS cnt_70
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 70 AND 74) AS cnt_75
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 75 AND 79) AS cnt_80
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 80 AND 84) AS cnt_85
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 85 AND 89) AS cnt_90
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
+        ";
+        return $this->_conn->query('select ' . $query_string)->row_array();
+    }
+
+    /**
+     * 과목별,문항별 분석
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeSubjectDetail($prod_code, $mr_idx)
+    {
+        $column = "
+            P.*, MA.Answer, MA.IsWrong
+            ,(
+                SELECT ROUND(((ycnt / (ycnt + ncnt)) * 100), 2) AS QAVR
+                FROM (
+                    SELECT MP.MpIdx,MQ.MqIdx
+                    ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt
+                    ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt
+                    FROM {$this->_table['mock_paper']} AS MP
+                    JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx 
+                    AND PM.ProdCode = '{$prod_code}'
+                    AND PM.IsStatus = 'Y'
+                    GROUP BY MQ.MqIdx
+                ) AS A
+                WHERE A.MpIdx = MA.MpIdx AND A.MqIdx = MA.MqIdx
+            ) AS QAVR
+        ";
+
+        $from = "
+            FROM (
+                SELECT 
+                PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중','하')))AS Difficulty
+                FROM
+                (
+                    SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum
+                    FROM {$this->_table['product_mock']} AS PM
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                    INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                    WHERE PM.ProdCode = '{$prod_code}'
+                    GROUP BY MP.MpIdx
+                ) AS A
+                INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+            ) AS P
+            LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
+        ";
+        $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
+
+        //echo '<pre>'.'select ' . $column . $from . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
+    }
+
+    /**
+     * 과목별, 항목영역별 데이타 조회
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function gradeSubjectAreaData($prod_code, $mr_idx)
+    {
+        $column = "
+            S.SubjectName, S.MockType, S.MpIdx, S.MalIdx
+            ,SUM(S.myYcnt) AS sumMyYcnt                 #맞은개수
+            ,SUM(S.myNcnt) AS sumMyYcnt                 #틀린개수
+            ,SUM(S.myYcnt) + SUM(S.myNcnt) AS TotalCnt  #전체문항수
+            ,ROUND(AVG(S.avgMq),2) AS avgMq             #전체문항의평균
+            ,GROUP_CONCAT(QuestionNo) AS gQuestionNo    #관련문항
+            ,MAL.AreaName                               #영역명
+            ,GROUP_CONCAT(nQuestionNo) AS nQuestionNo   #오답문항
+        ";
+
+        $from = "
+            FROM (
+                SELECT 
+                P.SubjectName, P.MockType, P.MpIdx, P.MqIdx, P.MalIdx, P.QuestionNo
+                ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'Y') AS myYcnt
+                ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = p.MqIdx AND IsWrong = 'N') AS myNcnt
+                ,(SELECT QuestionNo FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'N') AS nQuestionNo
+                ,AV.avgMq
+                FROM (
+                    SELECT 
+                    A.ProdCode, PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
+                    FROM
+                    (
+                        SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum
+                        FROM {$this->_table['product_mock']} AS PM
+                        INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                        INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                        INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                        INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                        INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                        WHERE PM.ProdCode = '{$prod_code}'
+                        GROUP BY MP.MpIdx
+                    ) AS A
+                    INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+                ) AS P
+                LEFT JOIN (
+                    SELECT a.MqIdx, ROUND((b.yCount / a.TotalCount) * 100,2) AS avgMq
+                    FROM (
+                        SELECT a.MqIdx, COUNT(*) AS TotalCount
+                        FROM {$this->_table['mock_answerpaper']} AS a
+                        WHERE ProdCode = '{$prod_code}'
+                        GROUP BY a.MqIdx
+                    ) AS a
+                    INNER JOIN (
+                        SELECT a.MqIdx, COUNT(*) AS yCount
+                        FROM {$this->_table['mock_answerpaper']} AS a
+                        INNER JOIN {$this->_table['mock_questions']} AS b ON a.MqIdx = b.MqIdx
+                        WHERE ProdCode = '{$prod_code}' AND a.IsWrong = 'Y'
+                        GROUP BY a.MqIdx
+                    ) AS b ON a.MqIdx = b.MqIdx
+                ) AS AV ON P.MqIdx = AV.MqIdx
+                ORDER BY P.MockType, P.MpIdx, P.OrderNum, P.QuestionNo    
+            ) AS S
+            LEFT JOIN {$this->_table['mock_area_list']} AS MAL ON S.MalIdx = MAL.MalIdx AND MAL.IsStatus = 'Y'
+        ";
+        $group_by = " GROUP BY S.MalIdx";
+        $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
+
+        //echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
+    }
+
     /**
      * 리스트 카운트용 쿼리
      * @param $where
@@ -303,7 +580,7 @@ class MemberPrivateModel extends WB_Model
                 FROM (
                     SELECT MR.MemIdx
                     FROM {$this->_table['product_mock']} AS MP
-                    JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+                    JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
                     JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
                     JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                     JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
@@ -371,7 +648,7 @@ class MemberPrivateModel extends WB_Model
                     ,MR.IsTake
                     ,MR.RegDatm AS ExamRegDatm                      #시험종료
                 FROM {$this->_table['product_mock']} AS MP
-                JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+                JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
                 JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
                 JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'

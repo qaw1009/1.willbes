@@ -3741,7 +3741,10 @@ table.classTable tr td {
 table.classTable tr td.w-data {
     line-height: 20px;
 }
-
+table.classTable tr td img {
+    width: 100%; max-width: 760px;
+    display: block;
+}
 /* subContainer : Content : 교재정보 */
 .willbes-Layer-Box .bookInfo {
     border-top: 1px solid #959595;

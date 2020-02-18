@@ -789,9 +789,14 @@ class OrderListModel extends BaseOrderModel
 
         // 선택과목 선택개수 조회
         $pack_data = $this->_conn->getFindResult($this->_table['product_lecture'], 'PackSelCount', ['EQ' => ['ProdCode' => get_var($prod_code, '0')]]);
-        $pack_sel_cnt = array_get($pack_data, 'PackSelCount');
-        if (empty($pack_sel_cnt) === true) {
+        if (empty($pack_data) === true) {
             return '선택과목 선택개수 조회에 실패했습니다.';
+        }
+
+        // 선택과목 선택개수가 설정 안된 경우
+        $pack_sel_cnt = (int) element('PackSelCount', $pack_data, 0);
+        if ($pack_sel_cnt < 1) {
+            return true;
         }
 
         // 과정별 선택과목 선택개수 체크

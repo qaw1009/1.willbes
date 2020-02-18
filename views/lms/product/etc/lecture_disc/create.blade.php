@@ -75,7 +75,7 @@
                             @for($i=0; $i<4; $i++)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="is_chk_apply[]" class="flat" value="Y" {{ empty($data['DiscInfo'][$i]) === false && $data['DiscInfo'][$i]['IsApply'] == 'Y' ? 'checked="checked"' : '' }} title="적용여부"/>
+                                        <input type="checkbox" name="is_chk_apply[]" class="flat" value="Y" {!! empty($data['DiscInfo'][$i]) === false && $data['DiscInfo'][$i]['IsApply'] == 'Y' ? 'checked="checked"' : '' !!} title="적용여부"/>
                                         <input type="hidden" name="is_apply[]" value="{{ empty($data['DiscInfo'][$i]) === false ? $data['DiscInfo'][$i]['IsApply'] : '' }}"/>
                                     </td>
                                     <td>

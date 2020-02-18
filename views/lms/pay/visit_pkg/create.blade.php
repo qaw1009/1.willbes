@@ -180,7 +180,7 @@
                         </div>
                         <div class="form-group pt-5 pb-5">
                             <div class="col-md-12 form-inline">
-                                <input type="checkbox" id="is_unpaid" name="is_unpaid" class="flat" value="Y" {{ $is_unpaid === true ? 'checked="checked"' : '' }} title="미수금액납부여부"/> <label for="is_unpaid" class="input-label">미수금액 납부 여부</label>
+                                <input type="checkbox" id="is_unpaid" name="is_unpaid" class="flat" value="Y" {!! $is_unpaid === true ? 'checked="checked"' : '' !!} title="미수금액납부여부"/> <label for="is_unpaid" class="input-label">미수금액 납부 여부</label>
                             </div>
                         </div>
                         <div id="unpaid_form" class="form-group hide">

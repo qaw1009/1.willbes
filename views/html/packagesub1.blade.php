@@ -154,6 +154,7 @@
                                     <span class="tx-red">(필독)</span>
                                 </td>
                                 <td class="w-data tx-left pl25">
+                                    <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3515.JPG">
                                     LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지유의사항(필독)’ 항목에입력된정보가<br/>
                                     자동출력됩니다. (온라인상품기준)
                                 </td>

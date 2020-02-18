@@ -65,60 +65,63 @@
                 <div class="htit2Wp mt60">
                     <h3 class="htit2 NG"><span class="tx-deep-blue">과목별, 문항별</span> 영역 및 학습요소</h3>
                 </div>
-                <ul class="tabWrap tabDepthPass mb10">
+                <ul class="tabWrap tabDepthPass mb10 subject-title-tab">
                     @foreach($subject_data as $key => $val)
                         <li style="width: 20%;"><a href="#Mypagetab{{ $key }}" class="@if($loop->first === true) on @endif">{{ $val }}</a></li>
                     @endforeach
                 </ul>
                 <div class="tabBox">
                     @foreach($area_data as $key => $row)
-                    <div id="Mypagetab{{ $key }}" class="tabLink">
-                        <table cellspacing="0" cellpadding="0" class="sheetTb2 mgB4">
-                            <colgroup>
-                                <col style="width: 170px;"/>
-                                <col style="width: 65px;"/>
-                                <col style="width: 95px;"/>
-                                <col style="width: 240px;">
-                                <col width="*">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th class="sh1">구분</th>
-                                <th class="sh2">개수</th>
-                                <th class="sh3">평균</th>
-                                <th class="sh4">관련문항</th>
-                                <th class="sh5">오답문항</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($row as $s_key => $val)
-                                <tr class="tabBox" id="areaTab{{ $key }}">
-                                    <td>{{ $val['area_name'] }}</td>
-                                    <td>{{ $val['cnt'] }}</td>
-                                    <td>{{ $val['avg'] }}</td>
-                                    <td>
-                                        @php
-                                        $arr_question_no = explode(',',$val['question_no']);
-                                        sort($arr_question_no);
-                                        foreach ($arr_question_no as $q_no_key => $q_no_val) {
-                                            echo '('.$q_no_val.') ';
-                                        }
-                                        @endphp
-                                    </td>
-                                    <td class="aMis">
-                                        @php
-                                            $arr_n_question_no = explode(',',$val['n_question_no']);
-                                            sort($arr_n_question_no);
-                                            foreach ($arr_n_question_no as $q_n_no_key => $q_n_no_val) {
-                                                echo '('.$q_n_no_val.') ';
-                                            }
-                                        @endphp
-                                    </td>
+                        @if (empty($subject_data[$key]) === false)
+                        <div class="htit2Wp mt10 subject-title" style="display: none;"><h2 class="htit3 mt10 NG">{{ $subject_data[$key] }}</h2></div>
+                        @endif
+                        <div id="Mypagetab{{ $key }}" class="tabLink subject-content">
+                            <table cellspacing="0" cellpadding="0" class="sheetTb2 mgB4">
+                                <colgroup>
+                                    <col style="width: 170px;"/>
+                                    <col style="width: 65px;"/>
+                                    <col style="width: 95px;"/>
+                                    <col style="width: 240px;">
+                                    <col width="*">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th class="sh1">구분</th>
+                                    <th class="sh2">개수</th>
+                                    <th class="sh3">평균</th>
+                                    <th class="sh4">관련문항</th>
+                                    <th class="sh5">오답문항</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                @foreach($row as $s_key => $val)
+                                    <tr class="tabBox" id="areaTab{{ $key }}">
+                                        <td>{{ $val['area_name'] }}</td>
+                                        <td>{{ $val['cnt'] }}</td>
+                                        <td>{{ $val['avg'] }}</td>
+                                        <td>
+                                            @php
+                                            $arr_question_no = explode(',',$val['question_no']);
+                                            sort($arr_question_no);
+                                            foreach ($arr_question_no as $q_no_key => $q_no_val) {
+                                                echo '('.$q_no_val.') ';
+                                            }
+                                            @endphp
+                                        </td>
+                                        <td class="aMis">
+                                            @php
+                                                $arr_n_question_no = explode(',',$val['n_question_no']);
+                                                sort($arr_n_question_no);
+                                                foreach ($arr_n_question_no as $q_n_no_key => $q_n_no_val) {
+                                                    echo '('.$q_n_no_val.') ';
+                                                }
+                                            @endphp
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endforeach
                 </div>
                 <!-- 학습요소 -->
@@ -126,6 +129,19 @@
     </div>
     <script type="text/javascript">
         //출력시 문항영역 UI display block 처리
-
+        function printPage() {
+            window.onbeforeprint = function(){
+                $(".subject-title-tab").hide();
+                $(".subject-title").show();
+                $(".subject-content").show();
+            };
+            window.onafterprint = function(){
+                $(".subject-title-tab").show();
+                $(".subject-title").hide();
+                $(".subject-content").hide();
+                $(".subject-content").first().show();
+            };
+            window.print();
+        }
     </script>
 @stop

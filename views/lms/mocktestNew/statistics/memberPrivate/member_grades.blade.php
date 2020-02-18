@@ -14,7 +14,7 @@
                     <div class="pull-right text-right form-inline mb-5">
                         <button class="btn btn-sm btn-primary" id="btn_score" data-act-type="{{ ((empty($privateExamInfo['tempCnt']) === true) ? 'N' : 'Y') }}">채점하기</button>
                         <button class="btn btn-sm btn-primary" id="btn_score_make">조정점수반영</button>
-                        <button class="btn btn-sm btn-primary act-move" id="btn_detail" data-idx="{{ $arr_base['prod_code'] }}" data-mem="{{ $arr_base['mr_idx'] }}">상세성적확인</button>
+                        <button class="btn btn-sm btn-primary act-move" id="btn_detail" data-prod-code="{{ $arr_base['prod_code'] }}" data-mr-idx="{{ $arr_base['mr_idx'] }}">상세성적확인</button>
                     </div>
                 </div>
                 <div class="form-group form-inline">
@@ -174,6 +174,16 @@
                         location.reload();
                     }
                 }, showValidateError, null, 'alert', $regi_form);
+            });
+
+            $('#btn_detail').on('click', function() {
+                var uri_param;
+                var prod_code = $(this).data('prod-code');
+                var mr_idx = $(this).data('mr-idx');
+                uri_param = '?prod_code=' + prod_code + '&mr_idx=' + mr_idx;
+                var _url = '{{ site_url('/mocktestNew/statistics/memberPrivate/winStatTotal') }}' + uri_param;
+                win = window.open(_url, 'mockPopupL', 'width=1215, height=900, scrollbars=yes, resizable=yes');
+                win.focus();
             });
         });
     </script>

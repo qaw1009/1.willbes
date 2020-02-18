@@ -7,9 +7,11 @@ class MockResultFModel extends WB_Model
         'product' => 'lms_Product',
         'mock_register' => 'lms_mock_register',
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'mock_area' => 'lms_mock_area',
         'mock_area_list' => 'lms_mock_area_list',
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'mock_answerpaper' => 'lms_mock_answerpaper',
+        'mock_wronganswernote' => 'lms_mock_wronganswernote',
         'mock_paper' => 'lms_mock_paper_new',
         'mock_paper_r_category' => 'lms_mock_paper_r_category',
         'mock_questions' => 'lms_mock_questions',
@@ -183,26 +185,26 @@ class MockResultFModel extends WB_Model
     public function selectivity($prod_code)
     {
         $query_string = "
-            (SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint <= 4) AS cnt_5
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 5 AND 9) AS cnt_10
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 10 AND 14) AS cnt_15
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 15 AND 19) AS cnt_20
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 20 AND 24) AS cnt_25
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 25 AND 29) AS cnt_30
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 30 AND 34) AS cnt_35
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 35 AND 39) AS cnt_40
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 40 AND 44) AS cnt_45
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 45 AND 49) AS cnt_50
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 50 AND 54) AS cnt_55
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 55 AND 59) AS cnt_60
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 60 AND 64) AS cnt_65
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 65 AND 69) AS cnt_70
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 70 AND 74) AS cnt_75
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 75 AND 79) AS cnt_80
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 80 AND 84) AS cnt_85
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 85 AND 89) AS cnt_90
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM lms_mock_grades WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
+            (SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint <= 4) AS cnt_5
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 5 AND 9) AS cnt_10
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 10 AND 14) AS cnt_15
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 15 AND 19) AS cnt_20
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 20 AND 24) AS cnt_25
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 25 AND 29) AS cnt_30
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 30 AND 34) AS cnt_35
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 35 AND 39) AS cnt_40
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 40 AND 44) AS cnt_45
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 45 AND 49) AS cnt_50
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 50 AND 54) AS cnt_55
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 55 AND 59) AS cnt_60
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 60 AND 64) AS cnt_65
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 65 AND 69) AS cnt_70
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 70 AND 74) AS cnt_75
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 75 AND 79) AS cnt_80
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 80 AND 84) AS cnt_85
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 85 AND 89) AS cnt_90
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
+            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
         ";
 
         return $this->_conn->query('select ' . $query_string)->row_array();
@@ -447,5 +449,185 @@ class MockResultFModel extends WB_Model
 
         //echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
+    }
+
+    /**
+     * 과목별 문제영역 조회
+     * @param $arr_subject_data
+     * @return mixed
+     */
+    public function areaList($arr_subject_data)
+    {
+        $arr_condition = [
+            'IN' => [
+                'MP.MpIdx' => array_keys($arr_subject_data)
+            ],
+            'EQ' => [
+                'MP.IsUse' => 'Y',
+                'MP.IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = " GROUP BY MQ.MalIdx";
+        $order_by = " ORDER BY M.MpIdx, M.MalIdx";
+        $column = "M.MpIdx, M.MalIdx, M.AreaName";
+        $from = "
+            FROM (
+                SELECT MP.MpIdx, MQ.MalIdx, MAL.AreaName
+                FROM {$this->_table['mock_paper']} AS MP
+                INNER JOIN {$this->_table['mock_questions']} AS MQ ON MP.MpIdx = MQ.MpIdx AND MQ.IsStatus = 'Y'
+                INNER JOIN {$this->_table['mock_area']} AS MA ON MP.MaIdx = MA.MaIdx AND MA.IsUse = 'Y' AND MA.IsStatus = 'Y'
+                INNER JOIN {$this->_table['mock_area_list']} AS MAL ON MQ.MalIdx = MAL.MalIdx AND MAL.IsStatus = 'Y'
+                {$where} {$group_by}                
+            ) AS M
+        ";
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
+    }
+
+    /**
+     * 오답노트 리스트
+     * @param string $prod_code
+     * @param string $mr_idx
+     * @param array $arr_condition
+     * @param string $wrong_note_type
+     * @return mixed
+     */
+    public function answerForNoteList($prod_code = '', $mr_idx = '', $arr_condition = [], $wrong_note_type = '')
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+            AP.MrIdx, MP.MpIdx, MQ.MqIdx, MQ.QuestionNO,
+            MP.RealQuestionFile AS filetotal,
+            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS FrontRealQuestionFile,
+            MQ.RealQuestionFile,
+            MQ.RealExplanFile,
+            MQ.FilePath AS QFilePath,
+            MQ.MalIdx, AP.IsWrong, WN.MqIdx AS myMq, MwaIdx, Memo
+        ";
+
+        $from = "
+            FROM {$this->_table['mock_paper']} AS MP
+            INNER JOIN {$this->_table['mock_area']} AS MA ON MP.MaIdx = MA.MaIdx AND MA.IsUse = 'Y' AND MA.IsStatus = 'Y'
+            INNER JOIN {$this->_table['mock_questions']} AS MQ  ON MP.MpIdx = MQ.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+            INNER JOIN {$this->_table['mock_area_list']} AS MAL ON MQ.MalIdx = MAL.MalIdx AND MAL.IsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['mock_answerpaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = {$prod_code} AND AP.MrIdx = {$mr_idx} AND AP.MemIdx = {$this->session->userdata('mem_idx')}
+            LEFT OUTER JOIN {$this->_table['mock_register_r_paper']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
+        ";
+
+        if ($wrong_note_type == 'Y') {
+            $from .= "INNER JOIN {$this->_table['mock_wronganswernote']} AS WN ON AP.MqIdx = WN.MqIdx AND WN.ProdCode = {$prod_code} AND WN.MrIdx = {$mr_idx} AND WN.MemIdx = {$this->session->userdata('mem_idx')}";
+        } else {
+            $from .= "LEFT OUTER JOIN {$this->_table['mock_wronganswernote']} AS WN ON AP.MqIdx = WN.MqIdx AND WN.ProdCode = {$prod_code} AND WN.MrIdx = {$mr_idx} AND WN.MemIdx = {$this->session->userdata('mem_idx')}";
+        }
+
+        $order_by = " ORDER BY MQ.QuestionNO";
+        //echo '<pre>'.'select ' . $column . $from . $where . $order_by.'</pre>';
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 오답노트 저장
+     * @param $form_data
+     * @return array|bool
+     */
+    public function addNote($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $prod_code = element('regi_prod_code', $form_data);
+            $mr_idx = element('regi_mr_idx', $form_data);
+            $mem_idx = $this->session->userdata('mem_idx');
+            $mp_idx = element('regi_mp_idx', $form_data);
+            $mq_idx = element('regi_mq_idx', $form_data);
+            $memo = element('regi_memo', $form_data);
+
+            $arr_condition = [
+                'EQ' => [
+                    'ProdCode' => $prod_code,
+                    'MrIdx' => $mr_idx,
+                    'MemIdx' => $mem_idx,
+                    'MpIdx' => $mp_idx,
+                    'MqIdx' => $mq_idx
+                ]
+            ];
+            $result = $this->_findAnswerNote($arr_condition);
+            if (empty($result) === true) {
+                $input_data = [
+                    'ProdCode' => $prod_code,
+                    'MrIdx' => $mr_idx,
+                    'MemIdx' => $mem_idx,
+                    'MpIdx' => $mp_idx,
+                    'MqIdx' => $mq_idx,
+                    'Memo' => $memo
+                ];
+                if ($this->_conn->set($input_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mock_wronganswernote']) === false) {
+                    throw new \Exception('오답노트 저장에 실패했습니다.');
+                }
+            } else {
+                // 데이터 수정
+                $input_data = ['Memo' => $memo];
+                $where = ['ProdCode' => $prod_code, 'MrIdx' => $mr_idx, 'MemIdx' => $this->session->userdata('mem_idx'), 'MpIdx' => $mp_idx, 'MqIdx' => $mq_idx];
+                $this->_conn->set($input_data)->set('RegDatm', 'NOW()', false)->where($where);
+                if ($this->_conn->update($this->_table['mock_wronganswernote']) === false) {
+                    throw new \Exception('오답노트 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 오답노트 삭제
+     * @param $form_data
+     * @return array|bool
+     */
+    public function deleteNote($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $where = [
+                'MwaIdx' => element('memo_id', $form_data),
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ];
+
+            $arr_condition = ['EQ' => $where];
+            $result = $this->_findAnswerNote($arr_condition);
+            if (empty($result) === true) {
+                throw new \Exception('삭제할 문항이 없습니다.');
+            }
+
+            if($this->_conn->delete($this->_table['mock_wronganswernote'], $where) === false){
+                throw new \Exception('오답노트삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 메모조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    private function _findAnswerNote($arr_condition)
+    {
+        $column = "MwaIdx";
+        $from = " FROM {$this->_table['mock_wronganswernote']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        //return "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 }

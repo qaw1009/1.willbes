@@ -330,5 +330,9 @@
                 chart.draw(view, options);
             });
         }
+
+        function printPage() {
+            $.print('#widthFrame');
+        }
     </script>
 @stop

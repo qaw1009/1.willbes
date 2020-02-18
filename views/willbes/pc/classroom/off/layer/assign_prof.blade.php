@@ -98,15 +98,16 @@
                             <th>강사선택기간</th>
                         </tr>
                         </thead>
-                        </tbody>
+                        <tbody>
                         @foreach($prod_data as $row)
                             <tr>
                                 <td class="row_{{ $key }}_course_name">{{ $row['CourseName'] }}</td>
                                 <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span style="display:none;">{{ $row['CourseIdx'] }}</span></td>
-                                <td><input type="radio" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}"
-                                       class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}"
+                                <td><input type="checkbox" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}"
+                                       class="flat prod-code-sub essSubGroup-{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" value="{{ $row['ProdCodeSub'] }}"
                                         {{ in_array($row['ProdCodeSub'], $pkginfo['OrderSubProdCodes']) === true ? 'checked="checked"' : '' }}
-                                        {{ $row['IsChoice'] == 'Y' ? '' : 'Disabled' }} /></td>
+                                        {{ $row['IsChoice'] == 'Y' ? '' : 'Disabled' }}
+                                           onclick="checkOnly('.essSubGroup-{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}', this.value);" /></td>
                                 <td>{{ $row['wProfName'] }}</td>
                                 <td>{{ $row['ProdNameSub'] }}</td>
                                 <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>
@@ -129,6 +130,37 @@
         var $_assign_form = $('#_prof_assign_form');
 
         $_assign_form.submit(function() {
+@if(empty($sublec['ess']) == false) {{-- 필수과목 --}}
+    @foreach($sublec['ess'] as $row)
+        @if($row['IsChoice'] == 'Y') {{-- 선택가능일때 과목별로 1개씩 선택 --}}
+
+            if($('input[name^=prod_code_sub_ess_{{$row['CourseIdx']}}_{{$row['SubjectIdx']}}]:checked').length != 1){
+                alert("필수과목 {{$row['CourseName']}} 과정의 {{$row['SubjectName']}} 과목을 선택해주십시요.");
+                return;
+            }
+        @endif
+    @endforeach
+@endif
+@if(empty($sublec['choice']) == false) {{-- 선택과목 --}}
+    @foreach($sublec['choice'] as $row)
+        @if($row['IsChoice'] == 'Y') {{-- 선택가능 --}}
+            @if($pkginfo['PackSelCount'] > 0) {{-- 선택과목 갯수가 있을때 코스별로 갯수 선택 --}}
+
+            if($('input[name^=prod_code_sub_choice_{{$row['CourseIdx']}}]:checked').length != {{$pkginfo['PackSelCount']}}){
+                alert("선택과목 {{$row['CourseName']}} 과정을 {{$pkginfo['PackSelCount']}}개 선택해주십시요.");
+                return;
+            }
+            @else {{-- 선택과목 갯수가 없을때 과목별로 1개씩 선택 --}}
+
+            if($('input[name^=prod_code_sub_choice_{{$row['CourseIdx']}}_{{$row['SubjectIdx']}}]:checked').length != 1){
+                alert("선택과목 {{$row['CourseName']}} 과정의 {{$row['SubjectName']}} 과목을 선택해주십시요.");
+                return;
+            }
+            @endif
+        @endif
+    @endforeach
+@endif
+
             var _url = '{{ front_url('/classroom/off/AssignProfStore') }}';
             var prod_code_sub = '';
 
@@ -169,37 +201,23 @@
 
     function bindTab(obj){
         $(obj).each(function () {
-            // For each set of tabs, we want to keep track of
-            // which tab is active and it's associated content
             var $active, $content, $links = $(this).find('a');
-
-            // If the location.hash matches one of the links, use that as the active tab.
-            // If no match is found, use the first link as the initial active tab.
             $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
-            //$active.addClass('on');
-
             $content = $($active[0].hash);
-
-            // Hide the remaining content
             $links.not($active).each(function () {
                 $(this.hash).hide().css('display', 'none');
             });
 
-            // Bind the click event handler
             $(this).on('click', 'a', function (e) {
-                // Make the old tab inactive.
                 $active.removeClass('on');
                 $content.hide().css('display', 'none');
 
-                // Update the variables with the new link and content
                 $active = $(this);
                 $content = $(this.hash);
 
-                // Make the tab active.
                 $active.addClass('on');
                 $content.show().css('display', 'block');
 
-                // Prevent the anchor's default click action
                 e.preventDefault();
             });
         });

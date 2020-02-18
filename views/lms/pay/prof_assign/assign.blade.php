@@ -157,7 +157,7 @@
                                 <tr>
                                     <td class="row_{{ $key }}_course_name">{{ $row['CourseName'] }}</td>
                                     <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span class="hide">{{ $row['CourseIdx'] }}</span></td>
-                                    <td><input type="radio" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {!! $row['IsAssign'] == 'Y' ? 'checked="checked"' : '' !!}/></td>
+                                    <td><input type="checkbox" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {!! $row['IsAssign'] == 'Y' ? 'checked="checked"' : '' !!}/></td>
                                     <td>{{ $row['wProfName'] }}</td>
                                     <td>{{ $row['ProdNameSub'] }}</td>
                                     <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>

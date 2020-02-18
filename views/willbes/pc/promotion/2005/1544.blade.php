@@ -77,7 +77,10 @@
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1544" border="0" />
+            <map name="Map1544" id="Map1544">
+                <area shape="rect" coords="264,796,861,967" href="#evt_04" />
+            </map>
 		</div>
 
         <div class="evtCtnsBox evt_02">
@@ -88,7 +91,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_03.jpg" alt="경제학 예비순환" />
         </div>
 
-        <div class="evtCtnsBox evt_04">
+        <div class="evtCtnsBox evt_04" id="evt_04">
             <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}">
                 <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_04.jpg" alt="특별 이벤트" />
             </a>

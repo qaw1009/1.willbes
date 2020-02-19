@@ -390,38 +390,69 @@
                 <li class="dropdown">
                     <a href="#none">수강신청</a>
                     <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>9급</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3019/pattern/only">단강좌</a>
+                                    <strong>직렬</strong>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614001">일반행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614002">교육행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614003">출입국관리직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614004">선거행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614005">사회복지직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614006">9급견습직</a>                                  
                                 </li>
                                 <li>
+                                    <strong>패키지</strong>
                                     <a href="/package/index/cate/3019/pack/648001">추천패키지</a>
-                                </li>
-                                <li>
                                     <a href="/userPackage/show/cate/3019/prod-code/154935/lidx/3">DIY패키지</a>
+                                    <a href="/promotion/index/cate/3019/code/1281">T-PASS</a> 
+                                </li>                                
+                                <li>
+                                    <strong>과목</strong>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1107">국어</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1108">영어</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1109">한국사</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1111">행정법</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1112">행정학</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1127">국제법</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1133">사회</a>
                                 </li>
                                 <li>
-                                    <a href="/promotion/index/cate/3019/code/1281">T-PASS</a>   
+                                    <strong>과정</strong>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1055">기본과정</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1097">심화과정</a>   
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1098">기출문제</a>   
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1056">단원별문제</a>   
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1100">모의고사</a>   
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1057">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>7급</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3020/pattern/only">단강좌</a>
+                                    <strong>직렬</strong>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614001">일반행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614002">교육행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614003">출입국관리직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614004">선거행정직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614005">사회복지직</a>
+                                    <a href="/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614006">9급견습직</a>                                  
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3020/pack/648001">추천패키지</a>
+                                    <strong>패키지</strong>
+                                    <a href="/package/index/cate/3019/pack/648001">추천패키지</a>
+                                    <a href="/userPackage/show/cate/3019/prod-code/154935/lidx/3">DIY패키지</a>
+                                    <a href="/promotion/index/cate/3019/code/1281">T-PASS</a> 
                                 </li>
                                 <li>
                                     <a href="/package/index/cate/3020/pack/648002">선택패키지</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>세무직</h5>
                             <ul>
                                 <li>
@@ -435,7 +466,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>법원직</h5>
                             <ul>
                                 <li>
@@ -449,7 +480,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>소방직</h5>
                             <ul>
                                 <li>
@@ -463,7 +494,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>기술직</h5>
                             <ul>
                                 <li>
@@ -474,7 +505,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>군무원</h5>
                             <ul>
                                 <li>
@@ -488,7 +519,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>부사관</h5>
                             <ul>
                                 <li>

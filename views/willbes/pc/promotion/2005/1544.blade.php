@@ -94,7 +94,7 @@
         <div class="evtCtnsBox evt_04" id="evt_04">
         @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
             <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
-        @elseif($__cfg['CateCode'] === false && $__cfg['CateCode'] == '3095')
+        @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
             <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
         @else
             <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">

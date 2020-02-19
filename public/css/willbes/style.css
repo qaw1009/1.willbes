@@ -11673,9 +11673,12 @@ table.acadlecInfoPackageTable tr.Top td {
     border-bottom:1px solid #e4e4e4;
     padding:10px 0;
 }
+.list-drop-Box-1120 .lec-drop-Box-gosi:hover {
+    background: #f4f4f4; 
+}
 .list-drop-Box-1120 .lec-drop-Box-gosi h5 {
     float: left; width: 80px; line-height: 1.5;
-    background: #f4f4f4; margin-right:10px; height: auto;
+    margin-right:10px; height: auto;
 }
 .list-drop-Box-1120 .lec-drop-Box-gosi h5:before {
     top: 10px;

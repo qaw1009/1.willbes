@@ -15,12 +15,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{$start_date}}">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{$end_date}}">
                         </div>
                     </div>
                 </div>
@@ -63,9 +63,6 @@
         var $search_form = $('#search_form');
 
         $(document).ready(function() {
-            // 기간 조회 디폴트 셋팅
-            setDefaultDatepicker(-1, 'years', 'search_start_date', 'search_end_date');
-
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $('#list_ajax_table').DataTable({
                 serverSide: true,

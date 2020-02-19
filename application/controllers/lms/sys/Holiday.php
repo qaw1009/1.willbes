@@ -13,7 +13,10 @@ class Holiday extends \app\controllers\BaseController
 
     public function index()
     {
-        $this->load->view('sys/holiday/list');
+        $this->load->view('sys/holiday/list',[
+            'start_date' => date('Y-m-d'),
+            'end_date' => date('Y-12-31')
+        ]);
     }
 
     public function calendar()

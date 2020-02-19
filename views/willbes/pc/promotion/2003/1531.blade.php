@@ -20,16 +20,18 @@
 
         /************************************************************/
 
-        /*타이머*/
+         /*타이머*/
         .newTopDday * {font-size:24px}
-        .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
-        .newTopDday ul {width:1120px; margin:0 auto;}
-        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-size:28px; height:60px; line-height:60px; padding-top:10px !important; font-weight:bold; color:#000}
-        .newTopDday ul li strong {line-height:60px}
+        .newTopDday {background:#f5f5f5; width:100%; padding:10px 0 35px}
+        .newTopDday ul {width:1210px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
+        .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%; font-size:16px; color:#666; line-height:1.3; }
-        .newTopDday ul li:first-child span { font-size:28px; color:#000; }
-        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
+        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%;}
+        .newTopDday ul li:first-child span {font-size:16px; color:#666;margin-top:4px;}
+        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%;line-height:60px;}
+        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
+        .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .wb_top {background:#49e49e url(https://static.willbes.net/public/images/promotion/2020/02/1531_top_bg.jpg) no-repeat center top;}
@@ -57,12 +59,12 @@
     <div class="p_re evtContent NGR" id="evtContainer">       
 
         <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday NG">        
-            <div>
+        <div id="newTopDday" class="newTopDday">
+            <div id="ddaytime">
                 <ul>
                     <li>
-                        실력향상PASS 2기<br />
-                        <span class="NGEB">2.18(화) 마감!</span>
+                        <span>윌비스신광은경찰 PASS{{$arr_promotion_params['turn']}}기</span><br />
+                        <span style="line-height:40px;font-size:25px;color:#000;font-wieght:bold;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -76,7 +78,7 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        남았습니다
+                        <span>남았습니다.</span>
                     </li>
                 </ul>
             </div>

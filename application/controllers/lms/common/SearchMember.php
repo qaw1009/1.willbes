@@ -75,6 +75,7 @@ class SearchMember extends \app\controllers\BaseController
 
     /**
      * 텍스트 파일의 아이디 목록으로 회원 조회
+     * @return mixed
      */
     public function inFile()
     {
@@ -93,10 +94,17 @@ class SearchMember extends \app\controllers\BaseController
 
         // 회원 아이디 배열
         $arr_mem_id = preg_split('/\n|\r\n?/', trim($file_content));
+        if (is_array($arr_mem_id) === false || empty($arr_mem_id) === true) {
+            return $this->json_error('업로드 파일 오류입니다.[2]', _HTTP_BAD_REQUEST);
+        }
 
         // 회원 검색
-        $list = $this->searchMemberModel->listSearchMember('M.MemIdx, M.MemId, M.MemName', ['IN' => ['M.MemId' => $arr_mem_id]]);
+        $arr_condition = [
+            'IN' => ['M.MemId' => $arr_mem_id],
+            'EQ' => ['M.IsStatus' => 'Y']
+        ];
+        $list = $this->searchMemberModel->listSearchMember('M.MemIdx, M.MemId, M.MemName', $arr_condition);
 
-        $this->json_result(true, '', null, $list);
+        return $this->json_result(true, '', null, $list);
     }
 }

@@ -237,6 +237,22 @@ function iCheckAll(target_selector, click_selector) {
 }
 
 /**
+ * iCheck checkbox 단일 선택
+ * @param group_selector
+ * @param checked_value
+ */
+function iCheckOnly(group_selector, checked_value) {
+    var $selector = $(group_selector);
+    var $checked_selector = $selector.filter('[value="' + checked_value + '"]');
+
+    if ($checked_selector.is(':checked') === true) {
+        $selector.prop('checked', false).iCheck('update');
+        $checked_selector.prop('checked', true).iCheck('update');
+        console.log('1');
+    }
+}
+
+/**
  * to query string from datatable ajax params
  * @param $datatable
  * @returns {string}

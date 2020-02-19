@@ -31,9 +31,7 @@ class Result extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
-                //'MP.IsStatus' => 'Y',
                 'MR.MemIdx'   => $this->session->userdata('mem_idx'),
-                'OP.PayStatusCcd' => '676001',
                 'MR.IsStatus' => 'Y'
             ],
             'ORG' => [

@@ -34,6 +34,7 @@ class Exam extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'MR.MemIdx'   => $this->session->userdata('mem_idx'),
+                'MR.TakeForm' => '690001',
                 'MR.IsTake' => $s_is_take
             ],
             'ORG' => [

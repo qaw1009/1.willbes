@@ -92,7 +92,13 @@
         </div>
 
         <div class="evtCtnsBox evt_04" id="evt_04">
+        @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
+        @elseif($__cfg['CateCode'] === false && $__cfg['CateCode'] == '3095')
+            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
+        @else
             <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
+        @endif
                 <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_04.jpg" alt="특별 이벤트" />
             </a>
         </div>     

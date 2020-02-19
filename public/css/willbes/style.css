@@ -11659,12 +11659,36 @@ table.acadlecInfoPackageTable tr.Top td {
 .list-drop-Box-1120 li a {
     display: inline-block; float: left; margin-right:10px;
 }
+.list-drop-Box-1120 li a:hover {color:#2784d2; text-decoration: underline;}
 .list-drop-Box-1120 li:last-child {margin-bottom:20px !important;}
 .list-drop-Box-1120 li:after,
 .list-drop-Box-1120:after { content:""; display: block; clear:both}
 
 .list-drop-Box-1120 .lec-drop-Box {
-    width:12.5%; float: left;
+    width:12.5%; float: left; 
+}
+
+/*공무원 수강신청*/
+.list-drop-Box-1120 .lec-drop-Box-gosi {
+    border-bottom:1px solid #e4e4e4;
+    padding:10px 0;
+}
+.list-drop-Box-1120 .lec-drop-Box-gosi h5 {
+    float: left; width: 80px; line-height: 1.5;
+    background: #f4f4f4; margin-right:10px; height: auto;
+}
+.list-drop-Box-1120 .lec-drop-Box-gosi h5:before {
+    top: 10px;
+}
+.list-drop-Box-1120 .lec-drop-Box-gosi ul {
+    float:left !important; width:calc(100% - 90px);
+}
+.list-drop-Box-1120 .lec-drop-Box-gosi li {margin-bottom:10px}
+.list-drop-Box-1120 .lec-drop-Box-gosi li:last-child {margin:0 !important;}
+.list-drop-Box-1120 .lec-drop-Box-gosi li strong {font-weight: bold; float: left; display: inline; width: 80px;}
+.list-drop-Box-1120 .lec-drop-Box-gosi li:after,
+.list-drop-Box-1120 .lec-drop-Box-gosi:after {
+    content: ""; display: block; clear:both;
 }
 
 /*단과수강 신청 교재정보*/

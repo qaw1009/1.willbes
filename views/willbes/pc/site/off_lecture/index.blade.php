@@ -22,7 +22,7 @@
                         <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if(element('cate_code', $arr_input) == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
                     @endforeach
                 </ul>
-                <div class="CurriBox">
+                <div class="CurriBox @if($learn_pattern === 'off_lecture_before'){{'d_none'}}@endif">
                     <table cellspacing="0" cellpadding="0" class="curriTable">
                         <colgroup>
                             <col width="*">

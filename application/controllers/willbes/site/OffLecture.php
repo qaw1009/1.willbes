@@ -12,11 +12,14 @@ class OffLecture extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
-    protected $_learn_pattern = 'off_lecture';     // 학습형태 (학원단과)
+    protected $_learn_pattern = 'off_lecture';     // 학습형태 (학원단과 - 일반강좌)
 
     public function __construct()
     {
         parent::__construct();
+        if (element('pattern', $this->uri->ruri_to_assoc()) == 'before') {
+            $this->_learn_pattern = 'off_lecture_before';       // 학습형태 (학원단과 - 선수강좌)
+        }
     }
 
     /**
@@ -98,6 +101,13 @@ class OffLecture extends \app\controllers\FrontController
             $order_by = ['OrderNum'=>'Desc','ProdCode'=>'Desc'];
         }
 
+        $lec_type = ($this->_learn_pattern === 'off_lecture_before' ? 'S' : null);  // 선수강좌유형 기본셋팅 : 수강생전용 TODO 추후 일반형 과 같이 사용될 가능성 존재로 컨트롤러에서 조건생성
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => [
+                'LecType'=>$lec_type
+            ]
+        ]);
+
         // 상품조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, $order_by);
 
@@ -175,10 +185,27 @@ class OffLecture extends \app\controllers\FrontController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
+        $arr_condition = [
+            'EQ' => [
+                'IsUse' => 'Y',
+                'wIsUse' => 'Y',
+            ]
+        ];
+
+        $lec_sale_type = $this->_learn_pattern == 'off_lecture_before' ? 'B' : 'N';   // 강의판매구분 (일반/선수강좌)
+        $is_before_lecture_able = $this->_learn_pattern == 'off_lecture_before' ? 'Y' : null; //선수강좌신청가능여부
+
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => [
+                'LecSaleType' => $lec_sale_type,
+                'IsBeforeLectureAble' => $is_before_lecture_able
+            ]
+        ]);
+
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', $arr_condition);
         if (empty($data) === true) {
-            show_alert('데이터 조회에 실패했습니다.', 'back');
+            show_alert('강좌 조회에 실패했습니다.', 'back');
         }
 
         // 판매가격 정보 확인

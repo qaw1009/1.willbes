@@ -34,6 +34,9 @@
                         <span class="tx-blue mr10">{{ $data['StudyPatternCcdName'] }}</span>
                         <span class="acadBox n{{ substr($data['StudyApplyCcd'], -1) }}">{{ $data['StudyApplyCcdName'] }}</span>
                         <span class="acadBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span>
+                        @if($learn_pattern === 'off_lecture_before' && $data['IsBeforeLectureAble'] === 'Y')
+                            <span class="acadBox n7">선접수</span>
+                        @endif
                     </div>
                     <div class="view-wrap">
                         <div class="all-view subBtn NSK"><a href="{{ front_url('/offLecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">개설강좌 전체보기 ></a></div>

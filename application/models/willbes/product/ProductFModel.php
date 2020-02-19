@@ -101,7 +101,7 @@ class ProductFModel extends WB_Model
                             , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
                             , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData, ProdBookMemo, AppellationCcdName
-                            , ProfNickNameAppellation, DiscIdx';
+                            , ProfNickNameAppellation, DiscIdx, BlIdx, LecType, ConditionType, ValidPeriodStartDate, ValidPeriodEndDate, IsDup, IsBeforeLectureAble';
                     break;
 
                 // 학원 종합반
@@ -278,8 +278,11 @@ class ProductFModel extends WB_Model
             case 'off_lecture' :
             case 'off_lecture_before' :
                 $lec_sale_type = $learn_pattern == 'off_lecture_before' ? 'B' : 'N';   // 강의판매구분 (일반/선수강좌)
+                $is_before_lecture_able = $learn_pattern == 'off_lecture_before' ? 'Y' : null; //선수강좌신청가능여부
+
                 $arr_condition = array_merge_recursive($arr_condition, [
-                    'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y', $as . 'IsLecOpen' => 'Y'],   // 강의판매구분, 마스터강의 사용여부, 강의개설여부
+                    'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y'
+                                , $as . 'IsLecOpen' => 'Y', $as . 'IsBeforeLectureAble' => $is_before_lecture_able],   // 강의판매구분, 마스터강의 사용여부, 강의개설여부, 선수강좌신청가능여부
                     'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중
                 ]);
                 break;

@@ -490,30 +490,22 @@
                                 </li>
                                 <li>
                                     <strong>과목</strong>
-                                    <a href="{{front_url('pass.willbes.net/home/index/cate/3103')}}">PSAT</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1114')}}">헌법</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1115')}}">경제학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1128')}}">국제정치학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1162')}}">중국어</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1178')}}">프랑스어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1133')}}">사회</a>
                                 </li>
                                 <li>
                                     <strong>과정</strong>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
@@ -601,28 +593,41 @@
                                 </li>
                                 <li>
                                     <strong>과목</strong>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1171')}}">재배학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1172')}}">식물작물</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1243')}}">토양학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1220')}}">작물생리학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1222')}}">생물학</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1230')}}">농촌지도론</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1232')}}">유기농업기능사</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1130')}}">공중보건</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1129')}}">보건행정</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1229')}}">자동차구조론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1171')}}">재배학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1172')}}">식물작물</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1243')}}">토양학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1220')}}">작물생리학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1222')}}">생물학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1230')}}">농촌지도론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1232')}}">유기농업기능사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1130')}}">공중보건</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1129')}}">보건행정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1229')}}">자동차구조론</a><br>
+                                    <strong>&nbsp;</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1168')}}">전기기기</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1173')}}">전기이론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1193')}}">전자공학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1194')}}">무선공학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1195')}}">통신이론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1210')}}">전기자기학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1198')}}">회로이론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1196')}}">전자회로</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1214')}}">응용역학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1215')}}">토목설계</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1216')}}">기계일반</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1217')}}">기계설계</a>
                                 </li>
                                 <li>
                                     <strong>과정</strong>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
-                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>

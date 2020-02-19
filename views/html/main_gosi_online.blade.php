@@ -390,105 +390,275 @@
                 <li class="dropdown">
                     <a href="#none">수강신청</a>
                     <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>9급</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3019/pattern/only">단강좌</a>
+                                    <strong>직렬</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614001')}}">일반행정직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614002')}}">교육행정직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614003')}}">출입국관리직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614004')}}">선거행정직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614005')}}">사회복지직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614006')}}">9급견습직</a>                                  
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3019/pack/648001">추천패키지</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3019/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/userPackage/show/cate/3019/prod-code/154935/lidx/3')}}">DIY패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3019/code/1281')}}">T-PASS</a> 
+                                </li>                                
+                                <li>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1133')}}">사회</a>
                                 </li>
                                 <li>
-                                    <a href="/userPackage/show/cate/3019/prod-code/154935/lidx/3">DIY패키지</a>
-                                </li>
-                                <li>
-                                    <a href="/promotion/index/cate/3019/code/1281">T-PASS</a>   
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>7급</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3020/pattern/only">단강좌</a>
+                                    <strong>직렬</strong>
+                                    <a href="{{front_url('/home/index/cate/3103')}}">PSAT</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614001')}}">일반행정직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614010')}}">세무직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614011')}}">검찰사무직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614004')}}">선거행정직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614003')}}">출입국관리직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614013')}}">외무영사직</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614014')}}">감사직</a>                                  
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3020/pack/648001">추천패키지</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3020/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/userPackage/show/cate/3020/prod-code/154961/lidx/3')}}">DIY패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3020/code/1519')}}">7급 PASS</a> 
+                                    <a href="{{front_url('/promotion/index/cate/3020/code/1520')}}">외무영사 PASS</a> 
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3020/pack/648002">선택패키지</a>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('pass.willbes.net/home/index/cate/3103')}}">PSAT</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1114')}}">헌법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1115')}}">경제학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1128')}}">국제정치학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1162')}}">중국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1178')}}">프랑스어</a>
+                                </li>
+                                <li>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>세무직</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3022/pattern/only">단강좌</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3022/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/userPackage/show/cate/3022/prod-code/154935/lidx/3')}}">DIY패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3022/code/1281')}}">T-PASS</a> 
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3022/pack/648001">추천패키지</a>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('pass.willbes.net/home/index/cate/3103')}}">PSAT</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1114')}}">헌법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1115')}}">경제학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1128')}}">국제정치학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1162')}}">중국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1178')}}">프랑스어</a>
                                 </li>
                                 <li>
-                                    <a href="/promotion/index/cate/3019/code/1281">T-PASS</a>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>법원직</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3035/pattern/only">단강좌</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3035/pack/648001')}}">순환별패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3035/code/1480')}}">법원직 PASS</a>
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3035/pack/648001">추천패키지</a>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1114')}}">헌법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1118')}}">민법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1119')}}">민사소송법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1116')}}">형법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=1117')}}">형사소송법</a>
                                 </li>
                                 <li>
-                                    <a href="/promotion/index/cate/3035/code/1385">순환별패키지</a>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/promotion/index/cate/3035/code/1485')}}">예비순환</a>
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D')}}">1순환(기본)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D')}}">2순환(심화)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D')}}">3순환(핵심)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D')}}">4순환(진도별모고)</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D')}}">5순환(실전모고)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>소방직</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3023/pattern/only">단강좌</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3023/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3023/code/1081')}}">T-PASS</a>
+                                    <a href="{{front_url('/promotion/index/cate/3023/code/1060')}}">소방 PASS</a>
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3023/pack/648001">추천패키지</a>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1113')}}">소방학개론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1138')}}">소방관계법규</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1133')}}">사회</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
                                 </li>
                                 <li>
-                                    <a href="/promotion/index/cate/3023/code/1060">소방PASS</a>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>기술직</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3028/pattern/only">단강좌</a>
+                                    <strong>직렬</strong>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1071#tab3')}}">방송통신직</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1071#tab3')}}">통신직</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1071#tab3')}}">전기직</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1068#tab1')}}">9급농업직</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1068#tab2')}}">7급농업직</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1068#tab3')}}">농촌지도사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1129&series_ccd=614025')}}">보건직</a> 
+                                    <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614014')}}">토목직</a>                                  
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3028/pack/648001">추천패키지</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3028/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1071')}}">전기직 패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1071')}}">통신직 패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1068')}}">농업직 패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3028/code/1068')}}">농촌지도사 패키지</a>
+                                </li>
+                                <li>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1171')}}">재배학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1172')}}">식물작물</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1243')}}">토양학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1220')}}">작물생리학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1222')}}">생물학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1230')}}">농촌지도론</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1232')}}">유기농업기능사</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1130')}}">공중보건</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1129')}}">보건행정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=1229')}}">자동차구조론</a>
+                                </li>
+                                <li>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3023/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+                        <div class="lec-drop-Box-gosi">
                             <h5>군무원</h5>
                             <ul>
                                 <li>
-                                    <a href="/lecture/index/cate/3024/pattern/only">단강좌</a>
+                                    <strong>패키지</strong>
+                                    <a href="{{front_url('/package/index/cate/3024/pack/648001')}}">추천패키지</a>
+                                    <a href="{{front_url('/userPackage/show/cate/3024/prod-code/155023/lidx/3')}}">DIY패키지</a>
+                                    <a href="{{front_url('/promotion/index/cate/3024/code/1521')}}">군무원 PASS</a>
                                 </li>
                                 <li>
-                                    <a href="/package/index/cate/3024/pack/648001">추천패키지</a>
+                                    <strong>과목</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1196')}}">전자회로</a>
+                                    <a href="{{front_url('http://lang.willbes.net/home/index/cate/3093')}}">G-TELP</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1237')}}">한국사능력시험</a>
                                 </li>
                                 <li>
-                                    <a href="/userPackage/show/cate/3024/prod-code/155023/lidx/3">DIY패키지</a>
+                                    <strong>과정</strong>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1055')}}">기본과정</a>
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1097')}}">심화과정</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1098')}}">기출문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1056')}}">단원별문제</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1100')}}">모의고사</a>   
+                                    <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=&course_idx=1057')}}">특강(새벽/테마)</a>   
                                 </li>
                             </ul>
                         </div>
-                        <div class="lec-drop-Box">
+
+                        {{--
+                        <div class="lec-drop-Box-gosi">
                             <h5>부사관</h5>
                             <ul>
                                 <li>
@@ -496,6 +666,7 @@
                                 </li>
                             </ul>
                         </div>
+                        --}}
                     </div>
                 </li>
                 <li>

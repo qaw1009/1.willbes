@@ -289,8 +289,8 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <select class="form-control" name="PaperType" required="required">
-                            <option value="P">통파일(PDF)</option>
-                            <option value="I">문항별이미지</option>
+                            <option value="P" @if($method==='POST' || $data['PaperType'] == 'P') selected @endif>통파일(PDF)</option>
+                            <option value="I" @if($method==='PUT' && $data['PaperType'] == 'I') selected @endif>문항별이미지</option>
                         </select>
                         <span class="ml-20">• 통파일(PDF) 선택 시 '오답노트'를 제공하지 않음</span>
                     </div>

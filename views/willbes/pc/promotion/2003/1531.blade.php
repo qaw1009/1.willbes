@@ -63,7 +63,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>실전마스터PASS{{$arr_promotion_params['turn']}}기</span><br />
+                        <span>실전마스터 PASS {{$arr_promotion_params['turn']}}기</span><br />
                         <span style="line-height:40px;font-size:25px;color:#000;font-wieght:bold;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

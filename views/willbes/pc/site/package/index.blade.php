@@ -147,15 +147,15 @@
                 <div class="willbes-Lec-Table d_block">
                     <table cellspacing="0" cellpadding="0" class="lecTable">
                         <colgroup>
-                            <col style="width: 95px;">
-                            <col style="width: 665px;">
+                            <col style="width: 140px;">
+                            <col>
                             <col style="width: 180px;">
                         </colgroup>
                         <tbody>
 
                         @foreach($data['list'] as $row)
                         <tr>
-                            <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
+                            <td class="w-list bg-light-white pl10 pr10">{{$row['CourseName']}}</td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
                                     <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>

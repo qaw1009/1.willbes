@@ -209,13 +209,13 @@
             <div class="willbes-Lec-Table d_block">
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width: 95px;">
-                        <col style="width: 665px;">
+                        <col style="width: 140px;">
+                        <col>
                         <col style="width: 180px;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <td class="w-list bg-light-white">이론</td>
+                            <td class="w-list bg-light-white pl10 pr10">문풀1단계핵심요약/진도별</td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
                                     <a href="{{ site_url('/home/html/packagesub2') }}">2017 9급 공무원 이론 선택형 종합 패키지 - 30일완성</a>

@@ -223,7 +223,7 @@ class Register extends BaseMocktest
     public function sampleDownload()
     {
         $this->load->helper('download');
-        $file_path = STORAGEPATH . 'resources/sample/sample_qa.xlsx';
+        $file_path = STORAGEPATH . 'resources/sample/sample_qa_v2.xlsx';
         force_download($file_path, null);
     }
 

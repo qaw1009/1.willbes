@@ -311,7 +311,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg"  alt=""/>
             <div>
-                응시청 그래프 영역
+                응시청 그래프 영역 > 개발 영역
             </div>
         </div>
         

@@ -41,7 +41,7 @@
 <form id="regi_visit_form" name="regi_visit_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <input type="hidden" name="learn_pattern" value="off_lecture"/>  {{-- 학습형태 --}}
+    <input type="hidden" name="learn_pattern" value="{{empty($learn_pattern) ? 'off_lecture' : $learn_pattern }}"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value="off_lecture"/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value="Y"/>    {{-- 바로결제 여부 --}}
     <input type="hidden" name="prod_code[]" value=""/>  {{-- 상품코드 --}}

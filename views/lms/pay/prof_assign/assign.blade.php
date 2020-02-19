@@ -222,6 +222,11 @@
                 return confirm('적용 하시겠습니까?');
             }
 
+            // 과목 선택 체크박스 클릭
+            $_assign_form.on('ifChecked', '.prod-code-sub', function() {
+                iCheckOnly($_assign_form.find('input[name="' + $(this).prop('name') + '"]'), $(this).val());
+            });
+
             // 수강증 출력 버튼 클릭
             $_assign_form.on('click', '.btn-sub-print', function() {
                 var url = '{{ site_url('/common/printCert/') }}?prod_type=off_sub_lecture&order_idx=' + $(this).data('order-idx')

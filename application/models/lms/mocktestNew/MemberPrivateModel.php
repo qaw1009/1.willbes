@@ -53,7 +53,7 @@ class MemberPrivateModel extends WB_Model
         $where_2 = $where_2->getMakeWhere(true);
 
         if ($is_count === true) {
-            $query_string = $this->_set_query_string_count($where_1);
+            $query_string = $this->_set_query_string_count($where_1, $where_2);
         } else {
             $query_string = $this->_set_query_string_row($is_count, $where_1, $where_2, $limit, $offset, $order_by);
         }
@@ -570,7 +570,7 @@ class MemberPrivateModel extends WB_Model
      * @param $where
      * @return string
      */
-    private function _set_query_string_count($where)
+    private function _set_query_string_count($where_1, $where_2)
     {
         $column = "COUNT(M.MemIdx) AS numrows";
         $from = "
@@ -578,7 +578,7 @@ class MemberPrivateModel extends WB_Model
                 SELECT 
                 A.MemIdx
                 FROM (
-                    SELECT MR.MemIdx
+                    SELECT MR.MemIdx, MR.OrderProdIdx
                     FROM {$this->_table['product_mock']} AS MP
                     JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
                     JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
@@ -588,10 +588,12 @@ class MemberPrivateModel extends WB_Model
                     JOIN {$this->_table['mock_register_r_paper']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
                     JOIN {$this->_table['mock_paper']} AS MO ON RP.MpIdx = MO.MpIdx
                     JOIN {$this->_table['product_subject']} AS S ON RP.SubjectIdx = S.SubjectIdx
-                    {$where}
+                    JOIN {$this->_table['lms_member']} AS searchMem ON MR.MemIdx = searchMem.MemIdx
+                    {$where_1} {$where_2}
                     GROUP BY MR.MrIdx
                 ) AS A
                 JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
+                JOIN {$this->_table['order_product']} AS OP ON A.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = 676001
             ) AS M
         ";
         return 'select ' . $column . $from;
@@ -639,7 +641,7 @@ class MemberPrivateModel extends WB_Model
             FROM (
                 SELECT 
                     MR.MemIdx
-                    ,MP.ProdCode ,PD.ProdName, MR.MrIdx
+                    ,MP.ProdCode ,PD.ProdName, MR.MrIdx, MR.OrderProdIdx
                     ,MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea   #응시번호,응시직렬,응시형태,응시지역
                     ,MP.MockYear, MP.MockRotationNo                 #연도, 회차
                     ,C1.CateName                                    #카테고리명
@@ -662,6 +664,7 @@ class MemberPrivateModel extends WB_Model
                 {$order_by_offset_limit}
             ) AS A
             JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
+            JOIN {$this->_table['order_product']} AS OP ON A.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = 676001
         ";
 
         return 'select ' . $column . $from;

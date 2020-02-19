@@ -388,7 +388,7 @@ class MockInfoFModel extends WB_Model
                 JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
                 {$where_main}
-                GROUP BY mr.ProdCode
+                GROUP BY mr.ProdCode, mr.MrIdx
             ) AS A
             INNER JOIN {$this->_table['order_product']} AS op on A.OrderProdIdx = op.OrderProdIdx AND op.MemIdx = '{$this->session->userdata('mem_idx')}'
             INNER JOIN {$this->_table['order']} AS o on op.OrderIdx = o.OrderIdx

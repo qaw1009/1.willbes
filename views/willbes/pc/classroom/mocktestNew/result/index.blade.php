@@ -110,12 +110,10 @@
                                             <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
-                                            @if($row['PaperType'] == 'P')
-                                                <span class="tx-black">미제공</span>
+                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y' && $row['PaperType'] == 'I')
+                                                <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}')">[오답노트]</a>
                                             @else
-                                                @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
-                                                    <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}')">[오답노트]</a>
-                                                @endif
+                                                <span class="tx-black">미제공</span>
                                             @endif
                                         </td>
                                         <td>@if($row['MrIsStatus'] == 'Y') <a href="javascript:findSubjectFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>

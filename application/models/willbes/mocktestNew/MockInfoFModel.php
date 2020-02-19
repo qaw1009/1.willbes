@@ -186,21 +186,25 @@ class MockInfoFModel extends WB_Model
                 'pm.IsUse' => 'Y'
             ]
         ];
-
-        $column = 'b.MpIdx, b.MockType, mp.PapaerName, sj.SubjectIdx, sj.SubjectName';
-        $from ="
-            from {$this->_table['mock_product']} as pm
-            inner join {$this->_table['product_mock_r_paper']} as b on pm.ProdCode = b.ProdCode and b.IsStatus='Y'
-            inner join {$this->_table['mock_paper']} as mp on b.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
-            inner join {$this->_table['mock_paper_r_category']} as mprc ON mp.MpIdx = mprc.MpIdx AND mprc.IsStatus = 'Y'
-            inner join {$this->_table['mock_r_category']} as mrc ON mprc.MrcIdx = mrc.MrcIdx AND mrc.IsStatus='Y'
-            inner join {$this->_table['mock_r_subject']} as mrs on mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
-            inner join {$this->_table['product_subject']} as SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-        ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        return $this->_conn->query('select ' . $column . $from. $where)->result_array();
+        $column = 'M.MpIdx, M.MockType, M.PapaerName, sj.SubjectIdx, sj.SubjectName';
+        $from ="
+            FROM (
+                SELECT b.MpIdx, b.MockType, mp.PapaerName, mprc.MrcIdx
+                FROM vw_product_mocktest AS pm
+                INNER JOIN lms_product_mock_r_paper AS b ON pm.ProdCode = b.ProdCode AND b.IsStatus='Y'
+                INNER JOIN lms_mock_paper_new AS mp ON b.MpIdx = mp.MpIdx AND mp.IsStatus='Y' AND mp.IsUse='Y'
+                INNER JOIN lms_mock_paper_r_category AS mprc ON mp.MpIdx = mprc.MpIdx AND mprc.IsStatus = 'Y'
+                {$where} GROUP BY mp.MpIdx
+            ) AS M
+            INNER JOIN lms_mock_r_category AS mrc ON M.MrcIdx = mrc.MrcIdx AND mrc.IsStatus='Y'
+            INNER JOIN lms_mock_r_subject AS mrs ON mrc.MrsIdx = mrs.MrsIdx AND mrs.IsStatus='Y'
+            INNER JOIN lms_product_subject AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+        ";
+
+        return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 
     /**

@@ -55,7 +55,6 @@
 
     $(document).ready(function() {
 
-        {{--목록 페이지--}}
         if ($is_off_show === false) {
             {{--방문결제 버튼 클릭--}}
             $regi_off_form.on('click', '.btn-off-visit-pay', function () {
@@ -167,7 +166,6 @@
 
     {{--상세페이지 이동--}}
     function goShowOff(prod_code, cate_code) {
-        {{--location.href = '{{ front_url('/offLecture/show') }}/cate/' + cate_code + '/prod-code/' + prod_code;--}}
-        location.href = frontPassUrl('/offLecture/show/cate/' + cate_code + '/prod-code/' + prod_code);
+        location.href = frontPassUrl('/offLecture/show/cate/' + cate_code + '/prod-code/' + prod_code +'{{$learn_pattern === 'off_lecture_before' ? '/pattern/before' : ''}}');
     }
 </script>

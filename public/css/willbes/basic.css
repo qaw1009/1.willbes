@@ -901,7 +901,9 @@ select[disabled] {
   padding-bottom: 130px !important;
 }
 .pd_all_none {padding:0 !important}
-
+.pd20 {
+  padding: 20px !important;
+}
 
 .tx11 {
   font-size: 11px;

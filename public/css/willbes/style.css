@@ -11894,6 +11894,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .table-Guided.borderZero,
 .table-Guided.borderZero th,
 .table-Guided.borderZero td {border:0}
+.table-Guided2 td {text-align: left; vertical-align: top;}
 .w-Guide ul.st01 {margin-bottom:20px}
 .w-Guide ul.st01 li {margin-bottom:10px; list-style-type:disc; margin-left:15px;}
 .w-Guide ul.st01 li:last-child {margin-bottom:0}

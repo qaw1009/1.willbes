@@ -91,7 +91,7 @@ class RegGradeModel extends WB_Model
 
         $column = "
             MP.*, CONCAT(A.wAdminName,'\<br\>(', MP.RegDatm,')') AS wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, 
-            PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,'~',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
+            PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,' ~ ',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
             (SELECT COUNT(MemIdx) FROM {$this->_table['mock_register']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = {$this->mockCommonModel->_ccd['applyType_on']}) AS OnlineCnt,
             (SELECT COUNT(MemIdx) FROM {$this->_table['mock_register']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = {$this->mockCommonModel->_ccd['applyType_off']}) AS OfflineCnt,
             (SELECT COUNT(*) FROM {$this->_table['mock_grades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT,  
@@ -494,22 +494,19 @@ class RegGradeModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                MB.MemId, MB.MemName,
-                TakeNumber, 
-                PS.SubjectName,
-                QuestionNO, 
-                Answer,
-                IsWrong,
-                MP.MpIdx, MP.MockType, MA.MqIdx
-            ';
-
-            $order_by_offset_limit = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC', 'MA.MpIdx' => 'ASC', 'MQ.QuestionNo' => 'ASC'])->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            if ($is_count == 'excel') {
+                $column = "CONCAT(PD.ProdName,' [',PM.ProdCode,']'), MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, MP.MpIdx, QuestionNO, Answer, IsWrong";
+                $order_by_offset_limit = '';
+            } else {
+                $column = 'MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, QuestionNO, Answer, IsWrong, MP.MpIdx, MP.MockType, MA.MqIdx';
+                $order_by_offset_limit = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC', 'MA.MpIdx' => 'ASC', 'MQ.QuestionNo' => 'ASC'])->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
         }
 
         $from = "
             FROM {$this->_table['mock_product']} AS PM
+            JOIN {$this->_table['product']} AS PD ON PM.ProdCode = PD.ProdCode
             JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
             JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '{$this->_take_form_ccd}'
             JOIN {$this->_table['mock_register_r_paper']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
@@ -550,14 +547,28 @@ class RegGradeModel extends WB_Model
                 }
 
                 $reg_data = $this->_findRegister($prod_code, $arr_take_num);
+                $register_update_data = [];
                 $log_data = [];
                 foreach ($reg_data as $log_row) {
+                    $register_update_data[] = [
+                        'MrIdx' => $log_row['mr_idx'],
+                        'IsTake' => 'Y',
+                        'RegDatm' => date('Y-m-d H:i:s')
+                    ];
+
                     $log_data[] = [
                         'LogType' => 'S',
                         'RegIp' => '999999',
                         'RemainSec' => '999999',
                         'MrIdx' => $log_row['mr_idx']
                     ];
+                }
+
+                //접수데이터 응시상태로 업데이트
+                if($register_update_data) {
+                    if ($this->_conn->update_batch($this->_table['mock_register'], $register_update_data, 'MrIdx') === false) {
+                        throw new \Exception('접수데이터 업데이트 실패했습니다.');
+                    }
                 }
 
                 $add_data = [];

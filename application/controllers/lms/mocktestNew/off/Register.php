@@ -218,6 +218,32 @@ class Register extends BaseMocktest
     }
 
     /**
+     * 엑셀변환
+     */
+    public function excel()
+    {
+        $headers = ['모의고사명 [코드]', '회원아이디', '회원명', '응시번호', '과목명', '과목코드', '문항번호', '답변', '정답여부'];
+        $arr_condition = [
+            'EQ' => [
+                'MR.IsStatus' => 'Y',
+                'MR.ProdCode' => $this->_reqP('prod_code')
+            ]
+        ];
+        $list = $this->regGradeModel->questionAnswerList('excel', $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+
+        // export excel
+        $file_name = 'OFF응시자성적_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $download_query = $this->regGradeModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    /**
      * 샘플엑셀파일 다운로드
      */
     public function sampleDownload()

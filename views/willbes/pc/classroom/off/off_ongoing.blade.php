@@ -63,8 +63,8 @@
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>
                                 <col>
-                                <col style="width: 160px;">
-                                <col style="width: 150px;">
+                                <col style="width: 140px;">
+                                <col style="width: 120px;">
                             </colgroup>
                             <tbody>
                             @forelse( $list as $row )
@@ -82,7 +82,8 @@
                                         </dl>
                                         <div class="w-tit">{{$row['subProdName']}}</div>
                                     </td>
-                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
+                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
                                     <td class="w-schedule">
                                         {{$row['WeekArrayName']}}<br/>
                                         {{$row['Amount']}}회차
@@ -124,7 +125,7 @@
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>
                                 <col>
-                                <col style="width: 160px;">
+                                <col style="width: 140px;">
                                 <col style="width: 120px;">
                             </colgroup>
                             <tbody>
@@ -133,7 +134,8 @@
                                     <td class="w-data tx-left pl10">
                                         <div class="w-tit">{{$row['ProdName']}}</div>
                                     </td>
-                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
+                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
                                     @if($row['PackTypeCcd'] == '648003')
                                         <td class="w-answer p_re">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>

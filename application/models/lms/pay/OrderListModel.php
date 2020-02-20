@@ -819,6 +819,39 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 연결주문상품 데이터 리턴 (방문결제용)
+     * @param int $order_idx [주문식별자]
+     * @param null|int $prod_code [상품코드]
+     * @param null|int $pay_status [결제상태]
+     * @param bool $is_target_order_idx [연결주문식별자 설정여부]
+     * @return mixed
+     */
+    public function getTargetOrderProductData($order_idx, $prod_code = null, $pay_status = null, $is_target_order_idx = false)
+    {
+        $arr_condition = ['EQ' => ['O.OrderIdx' => get_var($order_idx, 0), 'OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => element($pay_status, $this->_pay_status_ccd)]];
+        $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
+            , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+            , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
+            , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
+        $limit = empty($prod_code) === false ? 1 : null;
+        $offset = empty($prod_code) === false ? 0 : null;
+
+        // 주문상품 조회
+        $data = $this->findOrderProduct($arr_condition, $column, $limit, $offset, []);
+        if (empty($data) === false) {
+            foreach ($data as $idx => $row) {
+                $data[$idx]['ProdType'] = $this->getLearnPattern($row['ProdTypeCcd'], $row['LearnPatternCcd']);
+
+                if ($is_target_order_idx === true) {
+                    $data[$idx]['TargetOrderIdx'] = $order_idx;
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
      * Pg사 결제상세코드명 리턴 (카드사명/은행명)
      * @param string $order_no [주문번호]
      * @param string $pg_ccd [PG사공통코드]
@@ -1055,8 +1088,14 @@ class OrderListModel extends BaseOrderModel
             $data = element('0', $data);
 
             // 출력상품명 설정
-            $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['CourseName'] . '_' . $data['SubjectName'] . '_' . $data['ProdName'] . '(종합반)_';
-            $_prod_name .= $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
+            if ($site_code == '2010') {
+                // 고등고시 (대비년도-상품명(종합반)-과목명-교수명-수강형태)
+                $_prod_name = $data['SchoolYear'] . '_' . $data['ProdName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
+            } else {
+                // 자격증, 경찰간부 (대비년도-카테고리-과정명-과목명-상품명(종합반)-교수명-수강형태)
+                $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['CourseName'] . '_' . $data['SubjectName'] . '_' . $data['ProdName'] . '(종합반)_';
+                $_prod_name .= $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
+            }
 
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_line = [];

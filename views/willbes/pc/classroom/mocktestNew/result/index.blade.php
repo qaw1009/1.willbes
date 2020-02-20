@@ -108,7 +108,7 @@
                                                 <span class="tx-black">미제공</span>
                                             @endif
                                         </td>
-                                        <td>@if($row['TakeForm'] == 'MR.TakeForm' && $row['MrIsStatus'] == 'Y') <a href="javascript:findSubjectFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
+                                        <td>@if($row['TakeForm'] == '690001' && $row['MrIsStatus'] == 'Y') <a href="javascript:findSubjectFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
                                     </tr>
                                     @php $paging['rownum']-- @endphp
                                 @endforeach

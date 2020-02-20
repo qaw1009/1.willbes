@@ -511,7 +511,7 @@ class RegGradeModel extends WB_Model
         $from = "
             FROM {$this->_table['mock_product']} AS PM
             JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
-            JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '690001'
+            JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '{$this->_take_form_ccd}'
             JOIN {$this->_table['mock_register_r_paper']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
             JOIN {$this->_table['product_subject']} AS PS ON PS.SubjectIdx = RP.SubjectIdx
             JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx

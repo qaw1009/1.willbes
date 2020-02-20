@@ -1496,6 +1496,7 @@ class OrderModel extends BaseOrderModel
             $mem_idx = element('mem_idx', $input);
             $order_idx = element('order_idx', $input);
             $arr_order_prod_idx = element('order_prod_idx', $input);
+            $total_order_price = 0;
             $total_real_pay_price = 0;
             $total_card_pay_price = 0;
             $total_cash_pay_price = 0;
@@ -1534,12 +1535,15 @@ class OrderModel extends BaseOrderModel
                 foreach ($order_prod_data as $row) {
                     if ($row['OrderProdIdx'] == $order_prod_idx) {
                         // 할인금액
+                        $order_price = array_get($input, 'order_price.' . $idx, 0);
                         $real_pay_price = array_get($input, 'real_pay_price.' . $idx, 0);
                         $card_pay_price = array_get($input, 'card_pay_price.' . $idx, 0);
                         $cash_pay_price = array_get($input, 'cash_pay_price.' . $idx, 0);
-                        $disc_price = $row['OrderPrice'] - $real_pay_price;
+                        $remark = get_var(array_get($input, 'remark.' . $idx), null);
+                        $disc_price = $order_price - $real_pay_price;
 
                         $data = [
+                            'OrderPrice' => $order_price,
                             'RealPayPrice' => $real_pay_price,
                             'CardPayPrice' => $card_pay_price,
                             'CashPayPrice' => $cash_pay_price,
@@ -1548,6 +1552,11 @@ class OrderModel extends BaseOrderModel
                             'DiscType' => array_get($input, 'disc_type.' . $idx, 'R'),
                             'DiscReason' => get_var(array_get($input, 'disc_reason.' . $idx), null)
                         ];
+
+                        // 단과할인율이 변경됐을 경우만 업데이트
+                        if ($remark != $row['Remark']) {
+                            $data['Remark'] = $remark;
+                        }
 
                         $is_update = $this->_conn->set($data)
                             ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
@@ -1566,6 +1575,7 @@ class OrderModel extends BaseOrderModel
                         }
 
                         // 전체주문 관련 금액 합산
+                        $total_order_price += $order_price;
                         $total_real_pay_price += $real_pay_price;
                         $total_card_pay_price += $card_pay_price;
                         $total_cash_pay_price += $cash_pay_price;
@@ -1590,6 +1600,8 @@ class OrderModel extends BaseOrderModel
             // 주문 수정
             $data = [
                 'PayMethodCcd' => element('pay_method_ccd', $input),
+                'OrderPrice' => $total_order_price,
+                'OrderProdPrice' => $total_order_price,
                 'RealPayPrice' => $total_real_pay_price,
                 'CardPayPrice' => $total_card_pay_price,
                 'CashPayPrice' => $total_cash_pay_price,

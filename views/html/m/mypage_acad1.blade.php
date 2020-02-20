@@ -64,8 +64,8 @@
                                 <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">마감</span></dt>
                             </dl>
                             <div class="w-tit">
-                                <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                            </div>
+                                <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>                                
+                            </div>                            
                             <dl class="w-info acad tx-gray">
                                 <dt>수강기간 : 2018-00-00~2018-00-00</dt>
                                 <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>

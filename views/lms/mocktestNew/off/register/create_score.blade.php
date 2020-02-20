@@ -118,7 +118,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀변환', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-excel' }
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-excel' }
                 ],
                 ajax: {
                     'url' : '{{ site_url('/mocktestNew/off/register/memberPrivateDetailListAjax') }}',

@@ -547,14 +547,28 @@ class RegGradeModel extends WB_Model
                 }
 
                 $reg_data = $this->_findRegister($prod_code, $arr_take_num);
+                $register_update_data = [];
                 $log_data = [];
                 foreach ($reg_data as $log_row) {
+                    $register_update_data[] = [
+                        'MrIdx' => $log_row['mr_idx'],
+                        'IsTake' => 'Y',
+                        'RegDatm' => date('Y-m-d H:i:s')
+                    ];
+
                     $log_data[] = [
                         'LogType' => 'S',
                         'RegIp' => '999999',
                         'RemainSec' => '999999',
                         'MrIdx' => $log_row['mr_idx']
                     ];
+                }
+
+                //접수데이터 응시상태로 업데이트
+                if($register_update_data) {
+                    if ($this->_conn->update_batch($this->_table['mock_register'], $register_update_data, 'MrIdx') === false) {
+                        throw new \Exception('접수데이터 업데이트 실패했습니다.');
+                    }
                 }
 
                 $add_data = [];

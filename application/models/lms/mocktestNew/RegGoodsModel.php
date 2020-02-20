@@ -11,6 +11,7 @@ class RegGoodsModel extends WB_Model
         'mock_r_subject' => 'lms_mock_r_subject',
         'mock_register' => 'lms_mock_register',
         'mock_grades' => 'lms_mock_grades',
+        'mock_answerpaper' => 'lms_mock_answerpaper',
 
         'product_mock_r_paper' => 'lms_Product_Mock_R_Paper',
         'product' => 'lms_Product',
@@ -80,7 +81,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order_product']} op2 on mr2.OrderProdIdx = op2.OrderProdIdx
                         join {$this->_table['order']} o2 on op2.OrderIdx = o2.OrderIdx 
                         join {$this->_table['sys_code']} sc2 on mr2.TakeForm = sc2.Ccd
-                    WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op2.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
+                    WHERE mr2.IsStatus = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op2.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OfflineCnt,
                 (
                     SELECT COUNT(mr3.MemIdx) 
@@ -100,7 +101,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['sys_code']} sc4 on mr4.TakeForm = sc4.Ccd
                     WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op4.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OfflineRegCnt,
-                (SELECT COUNT(*) FROM {$this->_table['mock_grades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT
+                (SELECT COUNT(*) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = PD.ProdCode) AS GradeCNT
             ";
         }
 

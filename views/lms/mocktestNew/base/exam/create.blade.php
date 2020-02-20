@@ -322,8 +322,10 @@
                                     <input type="hidden" name="callQuestionFile[]" value="">
                                     <input type="hidden" name="callRealQuestionFile[]" value="">
                                     @if(!empty($row['QuestionFile']))
-                                        <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
+                                        <div class="file-wrap">
+                                            <a href="{{ site_url("/mocktestNew/base/exam/download") }}?path={{ urlencode($row['FilePath'].$row['RealQuestionFile'])}}&fname={{ urlencode($row['QuestionFile']) }}" target="_blank">
+                                                <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
+                                            </a>
                                         </div>
                                     @endif
                                 </td>
@@ -332,8 +334,10 @@
                                     <input type="hidden" name="callExplanFile[]" value="">
                                     <input type="hidden" name="callRealExplanFile[]" value="">
                                     @if(!empty($row['ExplanFile']))
-                                        <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
+                                        <div class="file-wrap">
+                                            <a href="{{ site_url("/mocktestNew/base/exam/download") }}?path={{ urlencode($row['FilePath'].$row['RealExplanFile'])}}&fname={{ urlencode($row['ExplanFile']) }}" target="_blank">
+                                                <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
+                                            </a>
                                         </div>
                                     @endif
                                 </td>
@@ -601,6 +605,11 @@
                     'url': '{{ site_url('/mocktestNew/base/exam/callIndex') }}',
                     'width': 1100
                 });
+            });
+
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/mocktestNew/base/exam/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                window.open(_url, '_blank');
             });
         });
     </script>

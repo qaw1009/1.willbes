@@ -45,8 +45,8 @@
                             <td>{{$product_info['MockYear']}}</td>
                             <td>{{$product_info['MockRotationNo']}}</td>
                             <td>{{$product_info['ProdName']}}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$product_info['SETIME'] }}</td>
+                            <td>{{$product_info['TakeStr'] }}</td>
                             <td>{{$product_info['TakePart_on']}}</td>
                             <td>{{$product_info['TakePart_off']}}</td>
                             {{--<td>{{$product_info['USERCNT']}}</td>--}}

@@ -77,14 +77,18 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th width="370">상품명</th>
+                                    <th width="370">상품명
+                                        @if($data['order']['IsLecDisc'] == 'Y')
+                                            <button type="button" name="btn_lecture_disc_rate_init" class="btn btn-success mb-0">할인취소</button>
+                                        @endif
+                                    </th>
                                     <th>주문금액</th>
-                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
-                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
-                                    <th>카드</th>
-                                    <th>현금</th>
+                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용]</th>
+                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용]</th>
+                                    <th>카드 [ <input type="checkbox" name="is_all_all_card_pay_price" class="flat" value="card"> 전체적용]</th>
+                                    <th>현금 [ <input type="checkbox" name="is_all_all_cash_pay_price" class="flat" value="cash"> 전체적용]</th>
                                     <th>결제금액</th>
-                                    <th>10원단위올림</th>
+                                    <th>단위올림</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -93,12 +97,15 @@
                                             <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                             <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
                                                 <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
-                                                @if(empty($order_prod_row['Remark']) === false)
-                                                    <div class="red">{{ $order_prod_row['Remark'] }}</div>
-                                                @endif
+                                                <input type="hidden" name="remark[]" value="{{ $order_prod_row['Remark'] }}"/>
+                                                <div class="lec_disc_info red">{{ $order_prod_row['Remark'] }}</div>
                                             </td>
                                             <td>
                                                 <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['OrderPrice'] }}" readonly="readonly">
+                                                <input type="hidden" name="sale_price[]" value="{{ $order_prod_row['RealSalePrice'] }}">
+                                                <div class="mt-5">
+                                                    [정상가] {{ number_format($order_prod_row['SalePrice']) }}
+                                                </div>
                                             </td>
                                             <td class="form-inline">
                                                 <select class="form-control input-sm set-pay-price" name="disc_type[]">
@@ -157,14 +164,14 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th width="370">상품명</th>
+                                    <th width="370">상품명 <button type="button" name="btn_lecture_disc_rate_init" class="btn btn-success mb-0 hide">할인취소</button></th>
                                     <th>주문금액</th>
-                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
-                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
-                                    <th>카드</th>
-                                    <th>현금</th>
+                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용]</th>
+                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용]</th>
+                                    <th>카드 [ <input type="checkbox" name="is_all_all_card_pay_price" class="flat" value="card"> 전체적용]</th>
+                                    <th>현금 [ <input type="checkbox" name="is_all_all_cash_pay_price" class="flat" value="cash"> 전체적용]</th>
                                     <th>결제금액</th>
-                                    <th>10원단위올림</th>
+                                    <th>단위올림</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
@@ -187,6 +194,9 @@
                                                 <td>
                                                     <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['RealSalePrice'] }}" readonly="readonly">
                                                     <input type="hidden" name="sale_price[]" value="{{ $order_prod_row['RealSalePrice'] }}">
+                                                    <div class="mt-5">
+                                                        [정상가] {{ number_format($order_prod_row['SalePrice']) }}
+                                                    </div>
                                                 </td>
                                                 <td class="form-inline">
                                                     <select class="form-control input-sm set-pay-price" name="disc_type[]">
@@ -495,6 +505,9 @@
                             '    <td>\n' +
                             '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
                             '       <input type="hidden" name="sale_price[]" value="' + data.realSalePrice + '">\n' +
+                            '       <div class="mt-5">\n' +
+                            '           [정상가] ' + addComma(data.salePrice) + '\n' +
+                            '       </div>\n' +
                             '    </td>\n' +
                             '    <td class="form-inline">\n' +
                             '        <select class="form-control input-sm set-pay-price" name="disc_type[]">\n' +
@@ -563,14 +576,7 @@
                 var $params = {};
 
                 // 기설정된 할인정보 초기화
-                $tbody.find('input[name="remark[]"]').each(function(idx) {
-                    if ($(this).val().length > 0) {
-                        $tbody.find('.lec_disc_info').eq(idx).html('');
-                        $tbody.find('[name="remark[]"]').eq(idx).val('');
-                        $tbody.find('[name="order_price[]"]').eq(idx).val($tbody.find('[name="sale_price[]"]').eq(idx).val());
-                        $tbody.find('[name="disc_rate[]"]').eq(idx).trigger('change');
-                    }
-                });
+                initLectureDiscRate();
 
                 // 선택된 상품코드 저장
                 $tbody.find('input[name="prod_code[]"]').each(function(idx) {
@@ -604,11 +610,37 @@
                                 $prod_tr.find('[name="order_price[]"]').val(order_price);
                                 $prod_tr.find('[name="disc_rate[]"]').trigger('change');
                             });
+
+                            // 할인취소 버튼 노출
+                            $regi_form.find('button[name="btn_lecture_disc_rate_init"]').removeClass('hide');
                         }
                     }
                 }, showValidateError, false, 'POST');
             };
         @endif
+
+            // 강좌할인율 초기화
+            var initLectureDiscRate = function() {
+                var $tbody = $('#list_pay_info_table tbody');
+
+                // 기설정된 할인정보 초기화
+                $tbody.find('input[name="remark[]"]').each(function(idx) {
+                    if ($(this).val().length > 0) {
+                        $tbody.find('.lec_disc_info').eq(idx).html('');
+                        $tbody.find('[name="remark[]"]').eq(idx).val('');
+                        $tbody.find('[name="order_price[]"]').eq(idx).val($tbody.find('[name="sale_price[]"]').eq(idx).val());
+                        $tbody.find('[name="disc_rate[]"]').eq(idx).trigger('change');
+                    }
+                });
+            };
+
+            // 강좌할인율 할인취소 버튼 클릭
+            $regi_form.on('click', 'button[name="btn_lecture_disc_rate_init"]', function() {
+                if (confirm('정말로 할인취소를 하시겠습니까?')) {
+                    initLectureDiscRate();
+                    $(this).addClass('hide');
+                }
+            });
 
             // 독서실, 사물함 좌석배정 버튼 클릭
             $regi_form.on('click', 'button[name="btn_set_seat"]', function() {
@@ -739,7 +771,7 @@
                 }
             };
 
-            // 10원단위올림 계산 및 결제금액 설정
+            // 단위올림 계산 및 결제금액 설정
             $regi_form.on('click', 'button[name="btn_surplus_calc"]', function() {
                 var index = $regi_form.find('button[name="' + $(this).prop('name') + '"]').index(this);
                 var order_price = parseInt($regi_form.find('[name="order_price[]"]').eq(index).val(), 10);
@@ -781,6 +813,17 @@
 
                 input_target.val(input_price);
                 input_target.trigger('change');
+            });
+
+            // 카드/현금 전액적용 전체적용 체크박스 클릭
+            $regi_form.on('ifChanged', 'input[name="is_all_all_card_pay_price"], input[name="is_all_all_cash_pay_price"]', function() {
+                var input_target = $regi_form.find('[name="is_all_' + $(this).val() + '_pay_price"]');
+
+                if ($(this).prop('checked') === true) {
+                    input_target.iCheck('check');
+                } else {
+                    input_target.iCheck('uncheck');
+                }
             });
 
             // 방문수강접수 목록

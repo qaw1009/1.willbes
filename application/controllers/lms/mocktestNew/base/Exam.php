@@ -6,7 +6,7 @@ require APPPATH . 'controllers/lms/mocktestNew/BaseMocktest.php';
 class Exam extends BaseMocktest
 {
     protected $temp_models = array('common/searchProfessor', 'mocktestNew/regExam');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     public function __construct()
     {
@@ -327,5 +327,16 @@ class Exam extends BaseMocktest
             'arr_base' => $arr_base,
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
         ]);
+    }
+
+    /**
+     * 파일 다운로드
+     */
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
     }
 }

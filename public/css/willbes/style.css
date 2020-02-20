@@ -9094,7 +9094,7 @@ table.acadTable tr td {
 .seatNumber .seatNumberInfo {text-align: right; margin-top:-50px}
 .seatNumber .seatNumberInfo div {display: inline-block; padding:10px}
 .seatNumber ul {margin:20px 0 20px}
-.seatNumber li {display:inline; float:left; width:10%; margin-bottom:8px}
+.seatNumber li {display:inline; float:left; margin-bottom:8px}
 .seatNumber .seatNumberInfo div,
 .seatNumber li div {margin:0 5px; text-align: center; letter-spacing: normal; line-height: 1.5; border:1px solid #e4e4e4; padding-top:10px; padding-bottom:10px}
 .seatNumber li div span {display: block;}

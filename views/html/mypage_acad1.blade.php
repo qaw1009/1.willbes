@@ -291,18 +291,48 @@
                             </tr>
                             <tr>
                                 <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
-                                    <dl class="w-info">
-                                        <dt>
-                                            기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                            한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                                        </dt>
-                                    </dl>     
-                                    <ul class="seatsection">
-                                        <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
-                                        <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                        <li>[좌석번호] <span class="tx-red">미선택</span></li>
-                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                    </ul>
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span>066</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -427,65 +457,72 @@
                                 </div>    
 
                                 <ul>
-                                    <li>
-                                        <div class="sNumberA">001<span>선택가능</span></div>
+                                    <li style="width: calc(100%/10);">
+                                        <div class="sNumberA" onclick="#none">001<span>선택가능</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">002<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberC">003<span>회원명</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberA">004<span>선택가능</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberA">005<span>선택가능</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">006<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">007<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">008<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">009<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/10);">
                                         <div class="sNumberB">010<span>선택완료</span></div>
                                     </li>
 
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberA">011<span>선택가능</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">012<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">013<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberA">014<span>선택가능</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">015<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">016<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">017<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">018<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
                                         <div class="sNumberB">019<span>선택완료</span></div>
                                     </li>
-                                    <li>
+                                    <li style="width: calc(100%/5);">
+                                        <div class="sNumberB">020<span>선택완료</span></div>
+                                    </li>
+
+                                    <li style="width: calc(100%/2);">
+                                        <div class="sNumberB">019<span>선택완료</span></div>
+                                    </li>
+                                    <li style="width: calc(100%/2);">
                                         <div class="sNumberB">020<span>선택완료</span></div>
                                     </li>
                                 </ul>                      

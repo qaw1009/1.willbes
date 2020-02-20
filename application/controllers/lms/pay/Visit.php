@@ -217,13 +217,24 @@ class Visit extends BaseOrder
 
             // 주문상품 정보
             $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx], 'NOT' => ['OP.SalePatternCcd' => $this->orderListModel->_sale_pattern_ccd['auto']]];
-            $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition);
+            $column = 'O.OrderNo, O.SiteCode, O.MemIdx, O.RealPayPrice as tRealPayPrice
+                , OP.OrderProdIdx, OP.ProdCode, OP.OrderPrice, OP.RealPayPrice, OP.Remark, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
+                , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+                , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
+                , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
+            $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column);
             if (empty($data['order_prod']) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 
             // 주문정보
             $data['order'] = element('0', $data['order_prod'], []);
+
+            // 단과할인율 적용 주문여부
+            $data['order']['IsLecDisc'] = 'N';
+            if (empty(array_filter(array_pluck($data['order_prod'], 'Remark'))) === false) {
+                $data['order']['IsLecDisc'] = 'Y';
+            }
 
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($data['order']['MemIdx']);
@@ -233,16 +244,10 @@ class Visit extends BaseOrder
 
             // 연결 주문상품 정보 조회
             if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
-                $arr_condition = ['EQ' => ['O.OrderIdx' => $target_order_idx, 'OP.ProdCode' => $target_prod_code, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
-                $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName';
-                $column .= ', CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
-                $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
+                $data['order_prod'] = $this->orderListModel->getTargetOrderProductData($target_order_idx, $target_prod_code, 'paid', true);
                 if (empty($data['order_prod']) === true) {
-                    show_error('데이터 조회에 실패했습니다.');
+                    show_alert('데이터 조회에 실패했습니다.', 'back');
                 }
-
-                $data['order_prod'][0]['ProdType'] = $this->orderListModel->getLearnPattern($data['order_prod'][0]['ProdTypeCcd'], $data['order_prod'][0]['LearnPatternCcd']);
-                $data['order_prod'][0]['TargetOrderIdx'] = $target_order_idx;
 
                 // 회원정보
                 $data['mem'] = $this->manageMemberModel->getMember($data['order_prod'][0]['MemIdx']);

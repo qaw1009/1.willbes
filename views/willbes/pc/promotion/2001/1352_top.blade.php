@@ -128,9 +128,9 @@
 
     /*서비스이용현황 */
     $(document).ready(function() {
-        @if(date('YmdHi') >= '201909061500')
-            {{--alert('2019년 2차 합격예측 풀서비스는 종료 되었습니다.');--}}
-            {{--location.href = '{{ site_url('/') }}';--}}
+        @if(date('YmdHi') >= '201909061500' && ENVIRONMENT == 'production')
+            alert('2019년 2차 합격예측 풀서비스는 종료 되었습니다.');
+            location.href = '{{ site_url('/') }}';
         @endif
 
         // 상단 합격안정권 예측 데이터 조회

@@ -452,8 +452,8 @@
                             </div>
                             <div class="seatNumber">
                                 <div class="seatNumberInfo">
-                                    <div class="sNumberA">선택가능</div>   
-                                    <div class="sNumberB">선택완료</div>
+                                    <div class="sNumberA"><span>선택가능</span></div>   
+                                    <div class="sNumberB"><span>선택완료</span></div>
                                 </div>    
 
                                 <ul>

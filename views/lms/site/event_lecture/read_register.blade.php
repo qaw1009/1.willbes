@@ -75,10 +75,41 @@
     </div>
 </div>
 
+<div class="x_panel mt-20">
+    <label class="control-label">이벤트 추가 신청자 목록</label>
+    <div class="x_content">
+        <table id="list_ajax_apply_table" class="table table-striped table-bordered">
+            <colgroup>
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>회원ID</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>당첨여부</th>
+                    <th>신청일시</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <script type="text/javascript">
     var $datatable_register;
     var $search_register_form = $('#search_register_form');
     var $list_regitster_table = $('#list_ajax_register_table');
+
+    var $datatable_apply;
+    var $list_apply_table = $('#list_ajax_apply_table');
 
     $(document).ready(function() {
         $datatable_register = $list_regitster_table.DataTable({
@@ -174,5 +205,34 @@
             var _url = '{{ site_url("/site/eventLecture/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
             window.open(_url, '_blank');
         });
+
+        // *** 이벤트 추가 신청 리스트 ***
+        $datatable_apply = $list_apply_table.DataTable({
+            serverSide: true,
+            buttons: [
+                // { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
+                // { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
+                // { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
+                // { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
+            ],
+            ajax: {
+                'url' : '{{ site_url('/site/eventLecture/listApplyAjax/'.$el_idx) }}',
+                'type' : 'POST',
+                'data' : function(data) {
+                    return $.extend(arrToJson($search_register_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                }
+            },
+            columns: [
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                    return $datatable_apply.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                }},
+                {'data' : 'MemId'},
+                {'data' : 'MemName'},
+                {'data' : 'MemPhone'},
+                {'data' : 'IsWin'},
+                {'data' : 'RegDatm'}
+            ]
+        });
+
     });
 </script>

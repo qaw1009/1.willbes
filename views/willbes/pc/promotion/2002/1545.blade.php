@@ -148,13 +148,15 @@
                 <input type="hidden" name="target_params[]" value="register_data1[]"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="target_param_names[]" value="희망지원청"/> {{-- 체크 항목 전송 --}}
 
+                <input type="hidden" name="register_chk[]" id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+
                 <div id="apply">                    
                     <div class="form_area">
                         <h4 class="NGEB">신광은경찰팀 봉투 모의고사 이벤트</h4>
                         <div class="privacy">
                             <div class="contacts">
-                                <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
-                                <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
+                                <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly /></p>
+                                <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11" readonly/></p>
                                 <p class="check_contact">
                                     <strong><span class="star">▶</span>2020년 1차  희망지원청</strong><br>
                                     <ul class="area">
@@ -208,105 +210,120 @@
                 </div>
             </form>           
         </div>
+        <form id="add_apply_form" name="add_apply_form">
+            <div class="evtCtnsBox evt02" id="evt">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+                @foreach($arr_base['add_apply_data'] as $row)
+    {{--                    <input type="radio" name="add_apply_chk[]" id="add_apply_{{ $row['EaaIdx'] }}" value="{{$row['EaaIdx']}}" /> <label for="register_chk_{{ $row['EaaIdx'] }}">{{ $row['Name'] }}</label>--}}
+    {{--                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyStartDatm']))--}}
+                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                        <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                        @break;
+                    @endif
+                @endforeach
 
-        <div class="evtCtnsBox evt02" id="evt">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02.jpg" title="봉투모의고사 선착순 증정">
-            <div>
-                <table cellspacing="0" cellpadding="0">
-                    <colgroup>
-                        <col width="20%">
-                        <col width="20%">
-                        <col width="20%">
-                        <col width="20%">
-                        <col width="20%">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>2/24</td>
-                            <td>2/25</td>
-                            <td>2/26</td>
-                            <td>2/27</td>
-                            <td>2/28</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('201912170000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01.png" alt="형사소송법">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('201912180000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02.png" alt="경찰학개론">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('201912190000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03.png" alt="형법">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('201912200000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04.png" alt="영어">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05.png" alt="한국사">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2/29</td>
-                            <td>3/1</td>
-                            <td>3/2</td>
-                            <td>3/3</td>
-                            <td>3/4</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01_20.png" alt="형사소송법">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02_20.png" alt="경찰학개론">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03_20.png" alt="형법">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04_20.png" alt="영어">
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05_20.png" alt="한국사">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-            <ul>
-                <li><a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank">매일 50명, 총500명 이벤트신청 확인하기 ></a></li>
-                <li><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank">총500명 한정판매 실물 봉투모의고사 빠른 유료구매 ></a></li>
-            </ul>       
-        </div> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02.jpg" title="봉투모의고사 선착순 증정">
+                <div>
+                    <table cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>2/24</td>
+                                <td>2/25</td>
+                                <td>2/26</td>
+                                <td>2/27</td>
+                                <td>2/28</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01.png" alt="형사소송법">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02.png" alt="경찰학개론">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03.png" alt="형법">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04.png" alt="영어">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05.png" alt="한국사">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2/29</td>
+                                <td>3/1</td>
+                                <td>3/2</td>
+                                <td>3/3</td>
+                                <td>3/4</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01_20.png" alt="형사소송법">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02_20.png" alt="경찰학개론">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03_20.png" alt="형법">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04_20.png" alt="영어">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05_20.png" alt="한국사">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul>
+                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank">매일 50명, 총500명 이벤트신청 확인하기 ></a></li>
+                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank">총500명 한정판매 실물 봉투모의고사 빠른 유료구매 ></a></li>
+                </ul>
+            </div>
+        </form>
         
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg"  alt=""/>
@@ -368,6 +385,95 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+
+        function fn_promotion_etc_submit() {
+            var $add_apply_form = $('#add_apply_form');
+            var _url = '{!! front_url('/event/promotionEtcStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if (!confirm('장바구니에 담으시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.href = '{!! front_url('/cart/index?tab=book') !!}';
+                    // location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        function fn_add_apply_submit() {
+            var $add_apply_form = $('#add_apply_form');
+            var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+                alert('이벤트 기간이 아닙니다.'); return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
+                ['신청 되었습니다.','당첨을 축하합니다. <3.5 안내문자> <공지예정입니다>'],
+                ['처리 되었습니다.','장바구니에 담겼습니다.']
+            ];
+
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
+
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_data1[]"]:checked').length == 0) {
+                alert('희망지원청을 선택 해주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_data1[]"]:checked').length > 1) {
+                alert('희망지원청은 1개까지만 선택 가능합니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'

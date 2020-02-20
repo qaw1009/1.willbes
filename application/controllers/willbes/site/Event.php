@@ -306,7 +306,7 @@ class Event extends \app\controllers\FrontController
         }
 
         $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false), $this->_site_code, $register_type);
-        $this->json_result($result, '신청되었습니다.', $result);
+        $this->json_result($result, '신청 되었습니다.', $result);
     }
 
     /**
@@ -706,5 +706,38 @@ class Event extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.','back');
     }
 
+    /**
+     * 추가 이벤트 신청 처리
+     */
+    public function addApplyStore()
+    {
+        $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
+        $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'add_apply_chk[]', 'label' => '추가신청 식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->addEventApplyMember($this->_reqP(null, false), $this->_site_code, $register_type);
+        $this->json_result($result, '신청되었습니다.', $result);
+    }
+
+    /**
+     * 프로모션 기타 처리
+     */
+    public function promotionEtcStore()
+    {
+        $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->eventFModel->procPromotionEtc($this->_reqP(null, false), $this->_site_code);
+        $this->json_result($result, '처리 되었습니다.', $result);
+    }
 
 }

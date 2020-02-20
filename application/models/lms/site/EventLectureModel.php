@@ -23,7 +23,9 @@ class EventLectureModel extends WB_Model
         'product_subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'event_register_r_product' => 'lms_event_register_r_product',
-        'product' => 'lms_product'
+        'product' => 'lms_product',
+        'event_add_apply' => 'lms_event_add_apply',
+        'event_add_apply_member' => 'lms_event_add_apply_member'
     ];
 
     public $_groupCcd = [
@@ -2254,6 +2256,44 @@ class EventLectureModel extends WB_Model
             return $e->getMessage();
         }
         return true;
+    }
+
+    /**
+     * 이벤트 추가신청 회원 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                A.MemIdx, A.IsWin, A.RegDatm,
+                C.MemId, C.MemName, fn_dec(C.PhoneEnc) as MemPhone,
+                O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_add_apply_member']} AS A
+            INNER JOIN {$this->_table['event_add_apply']} AS B ON A.EaaIdx = B.EaaIdx
+            LEFT JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
+            LEFT JOIN {$this->_table['member_otherinfo']} AS O ON C.MemIdx = O.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
 }

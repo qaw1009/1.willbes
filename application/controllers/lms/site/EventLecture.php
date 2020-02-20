@@ -1133,6 +1133,35 @@ class EventLecture extends \app\controllers\BaseController
             ]
         ];
 
-        return$input_data;
+        return $input_data;
+    }
+
+    /**
+     * 이벤트 추가신청 회원 리스트
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listApplyAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            //$arr_condition = $this->_getRegisterListConditions($el_idx);
+            $arr_condition = [];
+
+            //todo
+            $count = $this->eventLectureModel->listAllEventApply(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EamIdx' => 'desc']);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
     }
 }

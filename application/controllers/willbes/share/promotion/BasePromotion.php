@@ -171,6 +171,9 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['dday_data'] = $this->DDayFModel->getDDays($arr_dday_condition);
         }
 
+        // 이벤트 추가신청정보 조회
+        $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
+
         //모바일체크
         $this->load->library('user_agent');
         $ismobile = $this->agent->is_mobile();

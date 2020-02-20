@@ -34,7 +34,9 @@ class EventFModel extends WB_Model
         'wbs_cms_lecture' => 'wbs_cms_lecture',
         'event_r_point' => 'lms_event_r_point',
         'point_save' => 'lms_point_save',
-        'event_register_r_product' => 'lms_event_register_r_product'
+        'event_register_r_product' => 'lms_event_register_r_product',
+        'event_add_apply' => 'lms_event_add_apply',
+        'event_add_apply_member' => 'lms_event_add_apply_member'
     ];
 
     //등록파일 rule 설정
@@ -105,7 +107,7 @@ class EventFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
-        $this->load->loadModels(['crm/smsF', 'pointF', 'order/orderF']);
+        $this->load->loadModels(['crm/smsF', 'pointF', 'order/orderF', 'order/cartF']);
     }
 
     public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
@@ -172,7 +174,7 @@ class EventFModel extends WB_Model
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
-            P.SubjectName, R.wProfName, A.CommentPointType, A.CommentPointAmount, A.CommentPointValidDays
+            P.SubjectName, R.wProfName, A.CommentPointType, A.CommentPointAmount, A.CommentPointValidDays, A.PromotionParams
             ';
 
         $from = "
@@ -221,6 +223,28 @@ class EventFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->result_array();
+    }
+
+    /**
+     * 이벤트 추가신청 정보 리스트
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listEventForApply($arr_condition=[])
+    {
+        $column = 'A.*, IFNULL(B.MemCount, \'0\') AS MemCount';
+        $from = "
+            FROM {$this->_table['event_add_apply']} AS A
+            LEFT JOIN (
+                SELECT EaaIdx, COUNT(EaaIdx) AS MemCount
+                FROM {$this->_table['event_add_apply_member']}
+                GROUP BY EaaIdx
+            ) AS B ON A.EaaIdx = B.EaaIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
         return $query->result_array();
     }
 
@@ -1107,6 +1131,24 @@ class EventFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 이벤트 추가신청 저장
+     * @param $inputData
+     * @return array|bool
+     */
+    private function _addEventApplyMember($inputData)
+    {
+        try {
+            if ($this->_conn->set($inputData)->insert($this->_table['event_add_apply_member']) === false) {
+                throw new \Exception('이벤트 추가신청 등록을 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
     private function _findCommentData($idx, $column = '*')
     {
         $from = "
@@ -1252,4 +1294,311 @@ class EventFModel extends WB_Model
         return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$er_idx])->result_array();
     }
 
+    /**
+     * 이벤트 추가신청정보 데이터 조회
+     * @param $el_idx
+     * @return mixed
+     */
+    public function listEventPromotionForAddApply($el_idx)
+    {
+        $column = " * ";
+        $from = "
+            FROM {$this->_table['event_add_apply']}
+        ";
+        $where = ' WHERE ElIdx = ? and IsUse = "Y"';
+        $order_by_offset_limit = ' ORDER BY EaaIdx ASC';
+
+        // 쿼리 실행
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
+    /**
+     * 추가 이벤트 신청자 등록
+     * @param array $inputData
+     * @param $site_code
+     * @param $register_type
+     * @return array|bool
+     */
+    public function addEventApplyMember($inputData = [], $site_code, $register_type)
+    {
+        $this->_conn->trans_begin();
+        try {
+            // *** 이벤트 조회 ***
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => element('event_idx', $inputData),
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition, $register_type);
+            if (empty($event_data) === true) {
+                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            }
+
+            // *** 이벤트 추가신청 정보 조회 ***
+            $arr_condition = [
+                'EQ' => ['A.IsStatus' => 'Y'],
+                'IN' => ['A.EaaIdx' => $inputData['add_apply_chk']]
+            ];
+
+            $result_apply = $this->listEventForApply($arr_condition);
+            if (empty($result_apply) === true) {
+                throw new \Exception('조회된 이벤트 추가신청 정보가 없습니다.');
+            }
+
+            $apply_info = [];
+            foreach ($result_apply as $key => $row) {
+                $apply_info[$row['EaaIdx']] = $result_apply[$key];
+            }
+
+            // *** 신청수 체크 ***
+            $arr_condition = [
+                'IN' => ['EaaIdx' => $inputData['add_apply_chk']]
+            ];
+            $result_apply_member_info = $this->getApplyMemberCount($arr_condition);
+            $arr_apply_member = array_pluck($result_apply_member_info, 'MemCount', 'EaaIdx');
+
+            foreach ($apply_info as $key => $row) {
+                if ($row['RegisterExpireStatus'] == 'N') {
+                    throw new \Exception('접수 만료된 상태입니다.');
+                }
+                if ((empty($arr_apply_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_apply_member[$key]) {
+                    throw new \Exception('마감되었습니다.');
+                }
+
+                if(empty($this->session->userdata('mem_idx')) === true) {
+                    throw new \Exception('로그인이 필요한 서비스입니다.');
+                } else {
+                    $arr_condition = [
+                        'EQ' => [
+                            'A.EaaIdx' => $key,
+                            'A.MemIdx' => $this->session->userdata('mem_idx')
+                        ]
+                    ];
+
+                    $input_register_data = [
+                        'EaaIdx' => $key,
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'IsWin' => 'Y'
+                    ];
+                }
+
+                //여러 추가신청중 하나의 추가신청만 가능할시
+                if(empty($inputData['apply_chk_el_idx']) === false) {
+                    unset($arr_condition['EQ']['A.EaaIdx']); //기존 ErIdx 조회 조건 제거
+                    $arr_condition['EQ']['B.ElIdx'] = $inputData['apply_chk_el_idx'];
+                }
+
+                $register_member_info = $this->getApplyMember($arr_condition);
+                if (count($register_member_info) > 0) {
+                    throw new \Exception('이미 신청하셨습니다.');
+                }
+
+                // 지급할 강의상품이 있을 경우
+                // TODO: 1545프로모션. 수동으로 교재 보낸다고함. 추후 상품 자동지급 필요시 개발
+//                if(empty($row['EaaIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
+//                    //중복신청여부 로그인 아이디 기준으로 체크
+//                    $result_apply_member = $this->getApplyMember(['EQ' => [ 'A.EaaIdx' => $row['EaaIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
+//                    if(count($result_apply_member) == 0) {
+//                        if(empty($row['ProdCode']) === false) {
+//                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $row['ProdCode']) !== true) {
+//                                throw new \Exception('제공 상품이 처리되지 않았습니다.');
+//                            }
+//                        }
+//                    }
+//                }
+
+                if ($this->_addEventApplyMember($input_register_data) !== true) {
+                    throw new \Exception('추가 이벤트 신청 등록을 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 이벤트 추가 신청자 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getApplyMember($arr_condition=[])
+    {
+        $column = 'A.*';
+        $from = " 
+            FROM {$this->_table['event_add_apply_member']} AS A
+            LEFT OUTER JOIN {$this->_table['event_add_apply']} AS B ON A.EaaIdx = B.EaaIdx AND B.IsStatus = 'Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->result_array();
+    }
+
+    /**
+     * 이벤트 특강별 회원 수
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getApplyMemberCount($arr_condition = [])
+    {
+        $column = 'EaaIdx, COUNT(EaaIdx) AS MemCount';
+        $from = " FROM {$this->_table['event_add_apply_member']}";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = ' GROUP BY EaaIdx ';
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $group_by);
+        return $query->result_array();
+    }
+
+    /**
+     * 프로모션 기타 로직 처리
+     * @param array $inputData
+     * @param String $p_site_code
+     * @return array|bool
+     */
+    public function procPromotionEtc($inputData = [], $p_site_code = null)
+    {
+        $this->_conn->trans_begin();
+        try {
+            // *** 이벤트 조회 ***
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => element('event_idx', $inputData),
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition, 'promotion');
+            if (empty($event_data) === true) {
+                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            }
+
+            // 프로모션 추가 파라미터 배열처리
+            $arr_promotion_params = [];
+            if (empty($event_data['PromotionParams']) === false) {
+                $temp_params = explode('&', $event_data['PromotionParams']);
+                if (empty($temp_params) === false) {
+                    foreach ($temp_params as $key => $val) {
+                        $arr_temp_params = explode('=', $val);
+                        if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
+                            $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                        }
+                    }
+                }
+            }
+
+            /**** 상품 장바구니 담기 제한 ***
+             * ex:) 1545 프로모션
+             * PromotionParams: cart_limit(장바구니 담기 제한치),  cart_limit_count(장바구니 담기 현재값), cart_prod_code(상품 코드)
+             */
+            if(empty($arr_promotion_params['cart_limit']) === false && empty($arr_promotion_params['cart_prod_code']) === false) {
+
+                // 이벤트 접수 체크
+                //TODO
+                $arr_condition = [
+                    'EQ'=>[
+                        'A.MemIdx' => $this->session->userdata('mem_idx'),
+                        'B.ElIdx' => element('event_idx', $inputData),
+                        'B.IsStatus' => 'Y'
+                    ],
+                ];
+                $reg_member_result = $this->getRegisterMember($arr_condition);
+                if(empty($reg_member_result) === true) {
+                    throw new \Exception('이벤트 신청후 이용 가능합니다.');
+                }
+
+                $cart_limit = $arr_promotion_params['cart_limit'];
+                $cart_limit_count = $arr_promotion_params['cart_limit_count'];
+                $cart_prod_code = $arr_promotion_params['cart_prod_code'];
+
+                if($cart_limit > $cart_limit_count) {
+                    $result = $this->eventFModel->_modifyEventPromotionParams(element('event_idx', $inputData), 'cart_limit_count', $cart_limit_count+1);
+                    if($result !== true) {
+                        throw new \Exception('장바구니 처리 도중 오류가 발생하였습니다.');
+                    }
+                    //TODO: 상품 learn_pattern 조회
+                    //$cart_type = 'book';
+                    $learn_pattern = 'book';
+                    $prod_code[0] = $cart_prod_code.':613001:'.$cart_prod_code;
+                    $add_data = [
+                        'site_code' => $p_site_code,
+                        'prod_code' => $prod_code,
+                        'is_direct_pay' => 'N',
+                        'is_visit_pay' => 'N'
+                    ];
+                    $result = $this->cartFModel->addCart($learn_pattern, $add_data);
+                    if(empty($result) === true || $result['ret_cd'] !== true){
+                        throw new \Exception('장바구니 처리 도중 오류가 발생하였습니다.');
+                    }
+                    //redirect(front_url('/cart/index?tab=' . $cart_type));
+
+                } else {
+                    throw new \Exception('마감 되었습니다.');
+                }
+            }
+
+            //TODO 그외 다른 프로모션 귀속 로직
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 이벤트 프로모션 파라미터 수정
+     * @param $event_idx
+     * @param $param_key
+     * @param $param_value
+     * @throws Exception
+     * @return array|bool|string
+     */
+    private function _modifyEventPromotionParams($event_idx, $param_key, $param_value)
+    {
+        try {
+            if(empty($event_idx) === true || empty($param_key) == true || empty($param_value) == true) {
+                throw new \Exception('필수값이 누락 되었습니다.');
+            }
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => $event_idx,
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition, 'promotion');
+
+            if(empty($event_data) === false && empty($event_data['PromotionParams']) === false) {
+
+                // 업데이트할 컬럼 문자열 만들기
+                $p_temp = $event_data['PromotionParams'];
+                $start_str = strpos($p_temp, $param_key);
+                $end_str = strpos($p_temp, '&', $start_str) === false ? mb_strlen($p_temp, 'utf-8') : strpos($p_temp, '&', $start_str);
+                $update_value = mb_substr($p_temp, 0, $start_str +  mb_strlen($param_key, 'utf-8') + 1) . $param_value . mb_substr($p_temp, $end_str, mb_strlen($p_temp, 'utf-8'));
+
+                $this->_conn->set('PromotionParams', $update_value)->where('ElIdx', $event_idx);
+                if ($this->_conn->update($this->_table['event_lecture']) === false) {
+                    throw new \Exception('오류가 발생 하였습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
 }

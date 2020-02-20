@@ -9092,10 +9092,9 @@ table.acadTable tr td {
 }
 .seatNumber {margin-top:20px}
 .seatNumber .seatNumberInfo {text-align: right; margin-top:-50px}
-.seatNumber .seatNumberInfo div {display: inline-block; padding:10px}
+.seatNumber .seatNumberInfo div {display:inline-block; padding:10px;border:1px solid #e4e4e4; margin-right:8px}
 .seatNumber ul {margin:20px 0 20px}
-.seatNumber li {display:inline; float:left; margin-bottom:8px}
-.seatNumber .seatNumberInfo div,
+.seatNumber li {display:inline; float:left; margin-bottom:8px;}
 .seatNumber li button {display:inline-block; width:calc(100% - 8px); text-align: center; letter-spacing: normal; line-height: 1.5; 
     border:1px solid #e4e4e4; padding-top:10px; padding-bottom:10px; background:#fff; color:#333}
 .seatNumber li button span {display:block;}

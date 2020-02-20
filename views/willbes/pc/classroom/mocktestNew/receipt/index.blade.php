@@ -32,7 +32,7 @@
                     <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <select id="route" name="s_take_form" title="route" class="seleRoute mr10 h30 f_left" onchange="goUrl('s_take_form',this.value)">
-                            <option value="" @if(element('s_take_form', $arr_input) == '') selected="selected" @endif>과정</option>
+                            <option value="" @if(element('s_take_form', $arr_input) == '') selected="selected" @endif>응시형태</option>
                             @foreach($arr_base['apply_type'] as $k => $v)
                                 <option value="{{$k}}" @if(element('s_take_form', $arr_input) == $k) selected="selected" @endif>{{$v}}</option>
                             @endforeach

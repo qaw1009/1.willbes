@@ -28,11 +28,11 @@
         }
        
         .evt00 {background:#404040}        
-        .evtTop{background:#f4d59e}
-        .evt01 {background:#cd9967; padding-bottom:100px}          
+        .evtTop{background:#273d7e}
+        .evt01 {background:#fff; padding-bottom:100px}          
         
         .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px;}
-        .form_area h4{height:50px;line-height:50px;font-size:30px;}
+        .form_area h4{height:60px;line-height:60px;font-size:30px; background:#14519d; color:#fff;}
         .form_area h5{font-size:16px;margin-bottom:10px;font-weight:bold; color:#6585ab;}
         .form_area strong {display:inline-block; width:120px; color:#b2213f}
         .form_area .star {color:#363636; margin-right:5px;font-size:7px; vertical-align:middle}
@@ -56,34 +56,36 @@
         .detail{line-height:20px;}
         .accept{text-align: center;padding: 20px 0 50px 0;font-size: 17px;font-weight: bold;}        
 
-        .btn a {font-size:30px; display:block; border-radius:50px; background:#333; color:#fff; padding:20px 0}
-        .btn a:hover {background:#b2213f;}   
+        .btn a {font-size:30px; display:block; border-radius:50px; background:#14519d; color:#fff; padding:20px 0}
+        .btn a:hover {background:#333;}   
 
-        .evt02 {background:#99cc67; padding:100px 0}
+        .evt02 {background:#393a3e;}
         .evt02 > div {width:700px; margin:0 auto}
-        .evt02 > div table {table-layout: auto;}
+        .evt02 > div table {table-layout: auto; border-top:1px solid #757578; }
         .evt02 > div table th,
-        .evt02 > div table td {padding:10px 5px; border-bottom:1px solid #252525; border-right:1px solid #6f95ff; text-align: center; font-weight: 600; font-size:20px}
+        .evt02 > div table td {padding:10px 5px; border-bottom:1px solid #757578; border-right:1px solid #757578; text-align: center; font-weight: 600; font-size:20px}
         .evt02 > div table th {background: #252525; color:#fff;} 
         .evt02 > div table td {font-size:18px; color:#fff;}
         .evt02 > div table td div {position:relative}
         .evt02 > div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
         .evt02 > div table tbody th {background: #f9f9f9; color:#555;} 
+        .evt02 > div table tbody th:last-child,
+        .evt02 > div table tbody td:last-child {border-right:0;}
         .evt02 ul { width:1000px; margin:50px auto 0}
         .evt02 li {display:inline; width:50%; float:left}
-        .evt02 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
+        /*.evt02 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
         .evt02 li:last-child a {background:#4ae59f; color:#000}
-        .evt02 li a:hover {background:#102665; color:#fff}
+        .evt02 li a:hover {background:#102665; color:#fff}*/
         .evt02 ul:after {content:""; display:block; clear:both}
 
-        .evt03 {padding:100px 0; background:#ffcbff} 
+        .evt03 {background:#393a3e; padding-bottom:100px} 
         .evt03 div {background:#fff; width:1120px; height:400px; margin:0 auto}
 
-        .evt04 {padding:100px 0; background:#ffcccc} 
-        .evt04 .slide_con {position:relative; width:900px; margin:0 auto}
-        .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-        .evt04 .slide_con p.leftBtn {left:-80px}
-        .evt04 .slide_con p.rightBtn {right:-80px}
+        .evt04 {padding-bottom:100px; background:#393a3e} 
+        .evt04 .slide_con {position:relative; width:854px; margin:0 auto}
+        .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:50px; height:50px; z-index:10}
+        .evt04 .slide_con p.leftBtn {left:-25px}
+        .evt04 .slide_con p.rightBtn {right:-25px}
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:1120px; margin:0 auto}
@@ -247,32 +249,32 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03.png" alt="형법">
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04.png" alt="영어">
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05.png" alt="한국사">
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -286,32 +288,32 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01_20.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02_20.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03_20.png" alt="형법">
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04_20.png" alt="영어">
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05_20.png" alt="한국사">
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -319,8 +321,8 @@
                     </table>
                 </div>
                 <ul>
-                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank">매일 50명, 총500명 이벤트신청 확인하기 ></a></li>
-                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank">총500명 한정판매 실물 봉투모의고사 빠른 유료구매 ></a></li>
+                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn01.png"  alt="이벤트신청"/></a></li>
+                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>
                 </ul>
             </div>
         </form>

@@ -494,22 +494,19 @@ class RegGradeModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                MB.MemId, MB.MemName,
-                TakeNumber, 
-                PS.SubjectName,
-                QuestionNO, 
-                Answer,
-                IsWrong,
-                MP.MpIdx, MP.MockType, MA.MqIdx
-            ';
-
-            $order_by_offset_limit = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC', 'MA.MpIdx' => 'ASC', 'MQ.QuestionNo' => 'ASC'])->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            if ($is_count == 'excel') {
+                $column = "CONCAT(PD.ProdName,' [',PM.ProdCode,']'), MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, MP.MpIdx, QuestionNO, Answer, IsWrong";
+                $order_by_offset_limit = '';
+            } else {
+                $column = 'MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, QuestionNO, Answer, IsWrong, MP.MpIdx, MP.MockType, MA.MqIdx';
+                $order_by_offset_limit = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC', 'MA.MpIdx' => 'ASC', 'MQ.QuestionNo' => 'ASC'])->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
         }
 
         $from = "
             FROM {$this->_table['mock_product']} AS PM
+            JOIN {$this->_table['product']} AS PD ON PM.ProdCode = PD.ProdCode
             JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
             JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '{$this->_take_form_ccd}'
             JOIN {$this->_table['mock_register_r_paper']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx

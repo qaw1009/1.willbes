@@ -700,6 +700,11 @@
                 var disc_rate = parseInt($regi_form.find('[name="disc_rate[]"]').eq(index).val(), 10) || 0;
                 var real_pay_price = 0;
 
+                if (disc_rate < 0) {
+                    alert('할인율은 0 이상의 숫자여야만 합니다.');
+                    return;
+                }
+
                 // 할인율 적용
                 if (disc_type === 'R') {
                     real_pay_price = order_price * ((100 - disc_rate) / 100);

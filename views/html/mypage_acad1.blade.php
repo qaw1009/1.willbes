@@ -457,73 +457,73 @@
                                 </div>    
 
                                 <ul>
-                                    <li style="width: calc(100%/10);">
-                                        <div class="sNumberA" onclick="#none">001<span>선택가능</span></div>
+                                    <li style="width:calc(100%/10);">
+                                        <button type="button" class="sNumberA">001<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">002<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">002<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberC">003<span>회원명</span></div>
+                                        <button type="button" class="sNumberC">003<span>회원명</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberA">004<span>선택가능</span></div>
+                                        <button type="button" class="sNumberA">004<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberA">005<span>선택가능</span></div>
+                                        <button type="button" class="sNumberA">005<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">006<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">006<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">007<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">007<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">008<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">008<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">009<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">009<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <div class="sNumberB">010<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">010<span>선택완료</span></button>
                                     </li>
 
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberA">011<span>선택가능</span></div>
+                                        <button type="button" class="sNumberA">011<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">012<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">012<span>선택완료</span></button>
+                                    </li>
+                                    <li style="width:calc(100%/5);">
+                                        <button type="button" class="sNumberB">013<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">013<span>선택완료</span></div>
+                                        <button type="button" class="sNumberA">014<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberA">014<span>선택가능</span></div>
+                                        <button type="button" class="sNumberB">015<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">015<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">016<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">016<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">017<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">017<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">018<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">018<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">019<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">019<span>선택완료</span></div>
-                                    </li>
-                                    <li style="width: calc(100%/5);">
-                                        <div class="sNumberB">020<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">020<span>선택완료</span></button>
                                     </li>
 
                                     <li style="width: calc(100%/2);">
-                                        <div class="sNumberB">019<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">019<span>선택완료</span></button>
                                     </li>
                                     <li style="width: calc(100%/2);">
-                                        <div class="sNumberB">020<span>선택완료</span></div>
+                                        <button type="button" class="sNumberB">020<span>선택완료</span></button>
                                     </li>
                                 </ul>                      
  

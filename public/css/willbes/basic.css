@@ -1118,7 +1118,7 @@ select[disabled] {
   border-top: 1px solid #edeeef;
 }
 .bdt-light-gray {
-  border-top: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2 !important;
 }
 .bdt-dark-gray {
   border-top: 1px solid #c9c9c9;
@@ -1134,7 +1134,7 @@ select[disabled] {
   border-bottom: 2px solid #000;
 }
 .bdb-light-gray {
-  border-bottom: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca !important;
 }
 .bdb-gray {
   border-bottom: 1px solid #959595;

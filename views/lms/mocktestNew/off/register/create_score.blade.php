@@ -117,6 +117,9 @@
             // DataTables
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-excel' }
+                ],
                 ajax: {
                     'url' : '{{ site_url('/mocktestNew/off/register/memberPrivateDetailListAjax') }}',
                     'type' : 'POST',
@@ -147,6 +150,12 @@
             //샘플파일 다운로드
             $('button[name="btn_file_download"]').on('click', function() {
                 location.replace('{{ site_url('/mocktestNew/off/register/sampleDownload') }}');
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                formCreateSubmit('{{ site_url('mocktestNew/off/register/excel') }}', $search_form.serializeArray(), 'POST');
             });
         });
 

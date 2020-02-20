@@ -96,27 +96,19 @@
                                         <td class="w-average">
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
-                                        @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
-                                            @if($row['TCNT']!=null)
-                                                <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}')">[성적확인]</a></td>
-                                            @else
-                                                @if($row['TakeFormsCcd'] == '690002')
-                                                    <td>집계중</td>
-                                                @else
-                                                    <td>미제출</td>
-                                                @endif
-                                            @endif
+                                        @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y')
+                                            <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}')">[성적확인]</a></td>
                                         @else
                                             <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
-                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y' && $row['PaperType'] == 'I')
+                                            @if($row['PaperType'] == 'I')
                                                 <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}')">[오답노트]</a>
                                             @else
                                                 <span class="tx-black">미제공</span>
                                             @endif
                                         </td>
-                                        <td>@if($row['MrIsStatus'] == 'Y') <a href="javascript:findSubjectFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
+                                        <td>@if($row['TakeForm'] == 'MR.TakeForm' && $row['MrIsStatus'] == 'Y') <a href="javascript:findSubjectFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
                                     </tr>
                                     @php $paging['rownum']-- @endphp
                                 @endforeach

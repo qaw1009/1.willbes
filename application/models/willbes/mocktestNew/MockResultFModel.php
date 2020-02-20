@@ -43,7 +43,7 @@ class MockResultFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-                MR.MemIdx, MP.*, MR.IsTake AS MrIsStatus, MR.MrIdx,
+                MR.MemIdx, MP.*, MR.IsTake AS MrIsStatus, MR.MrIdx, MR.TakeForm,
                 PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                 C1.CateName, C1.IsUse AS IsUseCate, IsDisplay,
                 (SELECT SiteGroupName FROM {$this->_table['site_group']} WHERE SiteGroupCode = (SELECT SiteGroupCode FROM {$this->_table['site']} WHERE SiteCode = PD.SiteCode)) AS SiteName,
@@ -56,8 +56,7 @@ class MockResultFModel extends WB_Model
                     WHERE MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
                 (SELECT COUNT(*) FROM {$this->_table['mock_register_r_paper']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode) AS KCNT,
-                (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate,
-                (SELECT MemId FROM {$this->_table['mock_grades_log']} WHERE ProdCode = MR.ProdCode LIMIT 1) AS gRegister
+                (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

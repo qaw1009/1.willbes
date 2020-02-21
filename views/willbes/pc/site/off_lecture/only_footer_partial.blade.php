@@ -65,7 +65,6 @@
                     alert('선택된 상품이 없습니다.');
                     return;
                 }
-
                 {{--상품 체크--}}
                 if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form,'off') === false) {
                     return;
@@ -167,6 +166,6 @@
 
     {{--상세페이지 이동--}}
     function goShowOff(prod_code, cate_code) {
-        location.href = frontPassUrl('/offLecture/show/cate/' + cate_code + '/prod-code/' + prod_code +'{{!empty($learn_pattern) ? '/pattern/before' : ''}}');
+        location.href = frontPassUrl('/offLecture/show/cate/' + cate_code + '/prod-code/' + prod_code +'{{empty($learn_pattern) ? '' : ($learn_pattern === 'off_lecture_before' ? '/pattern/before' : '')}}');
     }
 </script>

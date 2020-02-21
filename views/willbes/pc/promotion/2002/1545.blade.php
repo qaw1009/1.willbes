@@ -73,9 +73,6 @@
         .evt02 div table tbody td:last-child {border-right:0;}
         .evt02 ul { width:1000px; margin:50px auto 0}
         .evt02 li {display:inline; width:50%; float:left}
-        /*.evt02 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
-        .evt02 li:last-child a {background:#4ae59f; color:#000}
-        .evt02 li a:hover {background:#102665; color:#fff}*/
         .evt02 ul:after {content:""; display:block; clear:both}
 
         .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
@@ -105,13 +102,29 @@
         .evt03 .tabs li:nth-child(14) {top:500px; left:312px} /*전남*/ 
         .evt03 .tabs li:nth-child(15) {top:332px; left:418px} /*경북*/ 
         .evt03 .tabs li:nth-child(16) {top:463px; left:365px} /*경남*/ 
-        .evt03 .tabs li:nth-child(17) {top:576px; left:287px} /*제주*/ 
+        .evt03 .tabs li:nth-child(17) {top:520px; left:455px} /*제주*/ 
+        .evt03 h5 {position:absolute; top:620px; color:#fff; text-align:center; width:100%; font-size:24px}
+        .txtinfo01 {position:absolute; top:1080px; color:#fff; text-align:center; width:100%;}
         .areaData {border-bottom:1px solid #67686b; width:313px; position:absolute; top:331px; left:572px}
         .areaData li {border-top:1px solid #67686b; padding:10px; color:#fff; font-size:16px; text-align:left;}
         .areaData li span {display:inline-block; width:120px}
         .areaData li:first-child {font-size:18px}
         .areaData li:first-child strong {display:inline-block; color:#393a3e; background:#ffff00; padding:5px 10px; border-radius:20px}
-        .graph {position:absolute; top:650px; left:50%; margin-left:-500px; height:400px; border:1px solid #ccc; color:#fff; width:1000px; z-index:10;}
+        .graph {position:absolute; top:650px; left:50%; margin-left:-500px; height:400px; color:#fff; width:1000px; z-index:10;}
+        .graph table {border-bottom:1px solid #7f7f81; margin:20px 0; color:#959597;}
+        .graph tfoot th {height:40px; border-top:1px solid #7f7f81; position:relative;}
+        .graph tbody th,
+        .graph tbody td {position:relative; height:300px; border-top:1px solid #7f7f81; vertical-align:bottom; color:#fff;
+            background: repeating-linear-gradient(
+            0deg,
+            #7f7f81,
+            #393a3e 1px,/*연한색*/
+            #393a3e 30px /*진한색*/
+            );
+        }        
+        .graph tbody th ul {position:absolute; top:13px; left:45px}
+        .graph tbody th li {text-align:center; height:30px; line-height:30px;}
+        .graph tbody td div {/*position:absolute; bottom:0; left:50%; margin-left:-10px;*/ width:20px; margin:0 auto; background:#176dd7;}
 
         .evt04 {padding-bottom:150px; background:#393a3e} 
         .evt04 .slide_con {position:relative; width:854px; margin:0 auto}
@@ -382,6 +395,8 @@
                     <li><a href="#area16"><span class="off">○ 경남</span><span class="on">● 경남</span></a></li>
                     <li><a href="#area17"><span class="off">○ 제주</span><span class="on">● 제주</span></a></li>                
                 </ul>                                           
+                <h5 class="NGEB">- 2020년 1차 응시 희망청 집계 -</h5>
+                <p class="txtinfo01">* 윌비스경찰학원 자체조사 참여인원 5,353명, 중복 포함</p>
 
                 <div id="area01" class="areaCts">
                     <ul class="areaData">
@@ -390,8 +405,108 @@
                         <li><span>- 응시희망</span> <strong>1,678명</strong></li>
                         <li><span>- 예상경쟁률</span> <strong>31.0%</strong></li>
                     </ul>
-                    <div class="graph">서울 그래프 영역</div>
-                </div>
+                    <div class="graph">                        
+                        <table cellspacing="0" cellpadding="0">
+                            <colgroup>
+                                <col style="width:12%">
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <ul>
+                                            <li>1,800</li>
+                                            <li>1,600</li>
+                                            <li>1,400</li>
+                                            <li>1,200</li>
+                                            <li>1,000</li>
+                                            <li>800</li>
+                                            <li>600</li>
+                                            <li>400</li>
+                                            <li>200</li>
+                                            <li>0</li>
+                                        </ul>
+                                    </th>
+                                    <td><div style="height:50%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:40.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:32.5%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.8%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                    <td><div style="height:5.2%"> </div></td>
+                                    <td><div style="height:65.2%"> </div></td>
+                                    <td><div style="height:15.2%"> </div></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>지역</th>
+                                    <th>서울</th>
+                                    <th>부산</th>
+                                    <th>대구</th>
+                                    <th>인천</th>
+                                    <th>광주</th>
+                                    <th>대전</th>
+                                    <th>울산</th>
+                                    <th>경기남부</th>
+                                    <th>경기북부</th>
+                                    <th>강원</th>
+                                    <th>충북</th>
+                                    <th>충남</th>
+                                    <th>전북</th>
+                                    <th>전남</th>
+                                    <th>경북</th>
+                                    <th>경남</th>
+                                    <th>제주</th>
+                                </tr>
+                                <tr>
+                                    <th>응시희망청 인원</th>
+                                    <th>1,678</th>
+                                    <th>218</th>
+                                    <th>167</th>
+                                    <th>267</th>
+                                    <th>150</th>
+                                    <th>132</th>
+                                    <th>125</th>
+                                    <th>869</th>
+                                    <th>522</th>
+                                    <th>131</th>
+                                    <th>115</th>
+                                    <th>249</th>
+                                    <th>109</th>
+                                    <th>109</th>
+                                    <th>238</th>
+                                    <th>208</th>
+                                    <th>123</th>
+                                </tr>
+                            <tfoot>
+                        </table>                        
+                    </div>
+                </div>               
 
                 <div id="area02" class="areaCts">
                     <ul class="areaData">
@@ -400,7 +515,9 @@
                         <li><span>- 응시희망</span> <strong>1,008명</strong></li>
                         <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
                     </ul>
-                    <div class="graph">부산 그래프 영역</div>
+                    <div class="graph">
+                        부산 그래프 영역
+                    </div>
                 </div>
 
                 <div id="area03" class="areaCts">

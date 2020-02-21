@@ -123,7 +123,7 @@
         }                
         .graph tbody th ul {position:absolute; top:13px; left:45px}
         .graph tbody th li {text-align:center; height:30px; line-height:30px;}
-        .graph tbody td div {/*position:absolute; bottom:0; left:50%; margin-left:-10px;*/ width:20px; margin:0 auto; background:#176dd7;
+        .graph tbody td div {/*position:absolute; bottom:0; left:50%; margin-left:-10px;*/ width:14px; margin:0 auto; background:#176dd7;
             -webkit-animation: shadow-pop-tr 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 	        animation: shadow-pop-tr 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
         }

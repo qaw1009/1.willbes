@@ -109,7 +109,6 @@ class MockInfoFModel extends WB_Model
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
@@ -135,7 +134,6 @@ class MockInfoFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['b.OrderNum' => 'ASC'])->getMakeOrderBy();
-
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 
@@ -203,7 +201,6 @@ class MockInfoFModel extends WB_Model
             INNER JOIN lms_mock_r_subject AS mrs ON mrc.MrsIdx = mrs.MrsIdx AND mrs.IsStatus='Y'
             INNER JOIN lms_product_subject AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
         ";
-
         return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 
@@ -229,7 +226,6 @@ class MockInfoFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['b.OrderNum' => 'ASC'])->getMakeOrderBy();
-
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 
@@ -277,7 +273,6 @@ class MockInfoFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

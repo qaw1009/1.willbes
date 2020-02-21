@@ -84,7 +84,6 @@ class Register extends BaseMocktest
             } else {
                 $arr_condition['RAW'] = array_merge($arr_condition['RAW'], ['0 = ' => '(SELECT COUNT(*) FROM lms_mock_grades WHERE ProdCode = PD.ProdCode)']);
             }
-
         }
 
         //응시형태(오프라인) + 접수진행중, 접수마감 조건

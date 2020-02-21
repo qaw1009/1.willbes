@@ -693,7 +693,7 @@
                     </li>
                     <li>
                         <strong>과목</strong>
-                        <a href="{{front_url('pass.willbes.net/home/index/cate/3103')}}">PSAT</a>
+                        <a href="{{front_url('/home/index/cate/3103')}}">PSAT</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>

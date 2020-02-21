@@ -296,7 +296,6 @@ class MemberPrivateModel extends WB_Model
         return $return_data;
     }
 
-
     /**
      * 모의고사 응시 정보
      * @param array $arr_condition
@@ -340,9 +339,7 @@ class MemberPrivateModel extends WB_Model
                 SELECT ProdCode, LogIdx FROM {$this->_table['mock_answertemp']} AS mr {$where} ORDER BY LogIdx DESC LIMIT 1
             ) AS Temp ON MP.ProdCode = Temp.ProdCode
         ";
-
         $order_by = " ORDER BY A.ProdCode DESC";
-        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select STRAIGHT_JOIN' . $column . $from . $order_by)->row_array();
     }
 
@@ -404,8 +401,6 @@ class MemberPrivateModel extends WB_Model
                 ) AS R
             ) AS ARank ON MG.MrIdx = ARank.MrIdx
         ";
-
-        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
@@ -487,8 +482,6 @@ class MemberPrivateModel extends WB_Model
             LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
         ";
         $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
-
-        //echo '<pre>'.'select ' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
@@ -560,8 +553,6 @@ class MemberPrivateModel extends WB_Model
         ";
         $group_by = " GROUP BY S.MalIdx";
         $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
-
-        //echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
     }
 
@@ -666,7 +657,6 @@ class MemberPrivateModel extends WB_Model
             JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
             JOIN {$this->_table['order_product']} AS OP ON A.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = 676001
         ";
-
         return 'select ' . $column . $from;
     }
 }

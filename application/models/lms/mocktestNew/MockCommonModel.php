@@ -215,8 +215,7 @@ class MockCommonModel extends WB_Model
                         $it['real'][] = $prefix . md5(uniqid(mt_rand())) . $ext;
                         $i++;
                     }
-                }
-                else {
+                } else {
                     $tmp = explode('.', $it['name']);
                     $ext = isset($tmp[1]) ? '.' . $tmp[1] : '';
                     $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
@@ -224,7 +223,6 @@ class MockCommonModel extends WB_Model
                 }
             }
         }
-
         return $names;
     }
 }

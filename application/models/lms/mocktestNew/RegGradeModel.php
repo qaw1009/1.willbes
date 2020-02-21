@@ -118,36 +118,9 @@ class RegGradeModel extends WB_Model
                 LIMIT 1
             ) AS MGL ON MP.ProdCode = MGL.ProdCode
         ";
-
-        /*echo '<pre>'.'select ' . $column . $from . $where.'</pre>';*/
         $query = $this->_conn->query('select ' . $column . $from . $where);
         return $query->row_array();
     }
-
-    /**
-     * 시험지데이터 조회
-     * @param string $prod_code
-     * @param string $column
-     * @return mixed
-     */
-    /*public function findProductMockPaper($prod_code = '', $column = '')
-    {
-        $arr_condition = [
-            'EQ' => [
-                'PM.ProdCode' => $prod_code,
-                'MP.IsStatus' => 'Y'
-            ]
-        ];
-        $where = $this->_conn->makewhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        $from = "
-            FROM {$this->_table['mock_product']}  AS PM
-            JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.Prodcode = MP.ProdCode
-        ";
-        $order_by = " GROUP BY MpIdx ORDER BY MockType, OrderNum ";
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
-    }*/
 
     /**
      * 복수정답처리
@@ -667,8 +640,6 @@ class RegGradeModel extends WB_Model
             FROM {$this->_table['mock_register']} AS MR
             INNER JOIN {$this->_table['order_product']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
         ";
-
-        //echo '<pre>'.'select ' . $column . $from . $where . '</pre>';
         $result = $this->_conn->query('select ' . $column . $from . $where)->result_array();
         $data = [];
         foreach ($result as $row) {
@@ -701,8 +672,6 @@ class RegGradeModel extends WB_Model
             JOIN {$this->_table['mock_questions']} AS MQ ON PMRP.MpIdx = MQ.MpIdx AND MQ.IsStatus = 'Y'
         ";
         $order_by = " ORDER BY MQ.MpIdx, MQ.QuestionNO";
-
-        //echo '<pre>'.'select ' . $column . $from . $where . $order_by.'</pre>';
         $result = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
         $data = [];
         foreach ($result as $row) {
@@ -840,7 +809,6 @@ class RegGradeModel extends WB_Model
         ";
         $group_by = ' GROUP BY MA.MrIdx, MA.MpIdx';
         $order_by = ' ORDER BY M.MpIdx, SumOrgPoint DESC';
-        /*echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';*/
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
     }
 

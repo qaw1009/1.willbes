@@ -110,7 +110,6 @@ class MockExamFModel extends WB_Model
         ";
 
         $order_by = " ORDER BY A.ProdCode DESC";
-        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select STRAIGHT_JOIN' . $column . $from . $order_by)->row_array();
     }
 
@@ -135,7 +134,6 @@ class MockExamFModel extends WB_Model
         $order_by = " GROUP BY MP.MpIdx ORDER BY MP.MpIdx";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
     }
@@ -165,7 +163,6 @@ class MockExamFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $questionData = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
 
         $arr_temp = [];
@@ -208,7 +205,6 @@ class MockExamFModel extends WB_Model
         $column = "RemainSec";
         $from = " FROM {$this->_table['mock_log']}";
         $order_by = " ORDER BY RemainSec";
-        //echo "<pre>".'select '. $column . $from . $where . $order_by."</pre>";
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->row_array();
     }
 
@@ -234,7 +230,6 @@ class MockExamFModel extends WB_Model
         $arr_condition = array_replace_recursive($arr_condition, $add_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        /*echo '<pre>'.'select ' . $column . $from . $where.'</pre>';*/
         $query = $this->_conn->query('select ' . $column . $from . $where);
         if ($return_type == 'row') {
             return $query->row_array();

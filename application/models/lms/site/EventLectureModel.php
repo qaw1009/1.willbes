@@ -753,7 +753,10 @@ class EventLectureModel extends WB_Model
             ';
 
             if ($is_count == 'excel') {
-                $column = 'A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName, D.registerCnt, O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode';
+                $column = '
+                    A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName, D.registerCnt, O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
+                    CASE C.Sex WHEN "M" THEN "남" WHEN "F" THEN "여" END AS MemSex
+                ';
             }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

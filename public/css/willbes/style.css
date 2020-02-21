@@ -2446,6 +2446,9 @@ table.auTable tr td {
 }
 
 /* subContainer : Content : Lec */
+.willbes-Lec-Wrap {position: relative;}
+.willbes-Lec-Quick-Bnr {position:absolute; top:90px; left:50%; margin-left:490px; z-index: 1;}
+.willbes-Lec-Quick-Bnr a.fixed {position:fixed; top:0; left:50%; margin-left:400px; z-index:1}
 .willbes-Lec {
     margin-bottom: 45px;
 }

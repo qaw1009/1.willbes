@@ -190,6 +190,45 @@
             box-shadow: 10px 10px 5px #f9fb54, -10px -10px 5px #9bfb54;
             border:1px solid #ccc; padding:20px;
         }
+        .wb_cts09 {font-size:200px; font-weight:bold; color:#fff; background:#f4f4f4;padding:100px; margin-top:30px;
+            -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @@-webkit-keyframes text-pop-up-top {
+            0% {
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: none;
+            }
+            100% {
+                -webkit-transform: translateY(-50px);
+                        transform: translateY(-50px);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+            }
+        }
+        @@keyframes text-pop-up-top {
+            0% {
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: none;
+            }
+            100% {
+                -webkit-transform: translateY(-50px);
+                        transform: translateY(-50px);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+
 
     </style>
 
@@ -253,6 +292,10 @@
 
         <div class="evtCtnsBox wb_cts08 NGEB">
             <p>다중 그림자 <span class="NSK-Black">shadow</span></p>
+        </div>
+
+        <div class="evtCtnsBox wb_cts09 NGEB">
+            willbes<br>윌비스
         </div>
 
     </div>

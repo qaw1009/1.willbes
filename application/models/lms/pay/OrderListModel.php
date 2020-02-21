@@ -971,13 +971,17 @@ class OrderListModel extends BaseOrderModel
             }
 
             // 주문상품명 추출 및 가공
-            $page_cnt = 2;  // 한 페이지당 출력되는 상품수
-            $line_cnt = 4;  // 한 상품명당 출력되는 라인수
+            if ($site_code == '2010') {
+                $page_cnt = 4;  // 한 페이지당 출력되는 상품수
+                $line_cnt = 2;  // 한 상품명당 출력되는 라인수
+            } else {
+                $page_cnt = 2;
+                $line_cnt = 4;
+            }
+
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_idx = 0;   // 페이지 인덱스
             $arr_line = [];
-            //$is_print_prod_name = $site_code == '2010' ? false : true;    // 상품명 출력여부
-            $is_print_prod_name = true;     // 고등고시 원복요청 (추후 미사용시 삭제 요망)
 
             foreach ($data as $idx => $row) {
                 if ($idx > 0 && $idx % $page_cnt == 0) {
@@ -986,15 +990,26 @@ class OrderListModel extends BaseOrderModel
 
                 // 출력상품명 설정
                 $_prod_name = $row['ProdName'];   // 학원강좌가 아닐 경우
-                if ($row['IsPackage'] == 'Y') {
-                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
-                } elseif ($row['IsPackage'] == 'N') {
-                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'];
-                    // 상품명 출력
-                    if ($is_print_prod_name === true) {
-                        $_prod_name .= '_' . $row['ProdName'];
+
+                if ($site_code == '2010') {
+                    // 고등고시
+                    if ($row['IsPackage'] == 'Y') {
+                        // 대비년도-상품명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
+                    } elseif ($row['IsPackage'] == 'N') {
+                        // 대비년도-상품명-과목명-교수명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['ProdName'] . '_' . $row['SubjectName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
                     }
-                    $_prod_name .= '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                } else {
+                    // 자격증, 경찰간부
+                    if ($row['IsPackage'] == 'Y') {
+                        // 대비년도-카테고리-상품명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
+                    } elseif ($row['IsPackage'] == 'N') {
+                        // 대비년도-카테고리-과정명-과목명-상품명-교수명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'];
+                        $_prod_name .= '_' . $row['ProdName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                    }
                 }
 
                 for($i = 0; $i < $line_cnt; $i++) {

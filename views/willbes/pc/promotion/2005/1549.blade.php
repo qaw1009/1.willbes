@@ -22,23 +22,10 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_top_bg.jpg) no-repeat center top;}	
-        .evt_top span {position:absolute; top:790px; width:217px; z-index:10; left:50%;}
-        .evt_top span.img01 {margin-left:-390px; animation: sp01 1.5s linear infinite;}
-        @@keyframes sp01{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-        .evt_top span.img02 {margin-left:-105px; animation: sp02 1.5s linear infinite;} 
-        @@keyframes sp02{
-		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
-        }
-        .evt_top span.img03 {margin-left:167px; animation: sp03 1.5s linear infinite;}
-        @@keyframes sp03{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_01_bg.jpg) no-repeat center top;}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_02_bg.jpg) no-repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_03_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1549_top_bg.jpg) no-repeat center top;}	
+		.evt_01 {background:#fff}
+        .evt_02 {background:#eee}
+        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1549_03_bg.jpg) no-repeat center top;}
         .evt_04 {}
         .evt_05 {}
         .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
@@ -70,38 +57,34 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top.jpg" alt="황종휴 경제학" />
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img1.png" alt="혜택1" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img2.png" alt="혜택2" /></span>
-            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img3.png" alt="혜택3" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_top.jpg" alt="경제학 예비순환" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1544" border="0" />
-            <map name="Map1544" id="Map1544">
-                <area shape="rect" coords="264,796,861,967" href="#evt_04" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1549a" border="0" />
+            <map name="Map1549a" id="Map1549a">
+                @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @else
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @endif
             </map>
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_02.jpg" alt="3단계 기본기 완성" />
-		</div>
-
-        <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_03.jpg" alt="경제학 예비순환" />
-        </div>
-
-        <div class="evtCtnsBox evt_04" id="evt_04">
-        @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
-        @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
-        @else
-            <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
-        @endif
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_04.jpg" alt="특별 이벤트" />
-            </a>
-        </div>     
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_02.jpg" alt="강의특징" usemap="#Map1549b" border="0" />
+            <map name="Map1549b" id="Map1549b">
+            @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162176') }}" target="_blank" alt="강의신청하기" />
+            @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162177') }}" target="_blank" alt="강의신청하기" />
+            @else
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162176') }}" target="_blank" alt="강의신청하기" />
+            @endif
+            </map>
+		</div>    
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">

@@ -194,7 +194,6 @@
             -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
-
         @@-webkit-keyframes text-pop-up-top {
             0% {
                 -webkit-transform: translateY(0);
@@ -227,6 +226,102 @@
                 text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
             }
         }
+
+        .wb_cts10 {font-size:200px; font-weight:bold; color:#fff; padding:100px;
+            -webkit-animation: bg-pan-left 8s both;
+            animation: bg-pan-left 8s both;
+            background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") ;
+        }
+        @@-webkit-keyframes bg-pan-left {
+            0% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+        @@keyframes bg-pan-left {
+            0% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .wb_cts11 {font-size:200px; font-weight:bold; color:#fff; padding:100px;
+            -webkit-animation: color-change-5x 8s linear infinite alternate both;
+	        animation: color-change-5x 8s linear infinite alternate both;
+        }
+        @@-webkit-keyframes color-change-5x {
+            0% {
+            background: #19dcea;
+            }
+            25% {
+            background: #b22cff;
+            }
+            50% {
+            background: #ea2222;
+            }
+            75% {
+            background: #f5be10;
+            }
+            100% {
+            background: #3bd80d;
+            }
+        }
+        @@keyframes color-change-5x {
+            0% {
+            background: #19dcea;
+            }
+            25% {
+            background: #b22cff;
+            }
+            50% {
+            background: #ea2222;
+            }
+            75% {
+            background: #f5be10;
+            }
+            100% {
+            background: #3bd80d;
+            }
+        }
+        .wb_cts12 {font-size:200px; font-weight:bold; color:#fff; height:400px; overflow:hidden}
+        .wb_cts12 div {-webkit-animation: kenburns-top 5s ease-out both;
+	        animation: kenburns-top 5s ease-out both;
+            background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") center bottom, ;
+            padding:100px 0;
+        }
+        @@-webkit-keyframes kenburns-top {
+        0% {
+            -webkit-transform: scale(1) translateY(0);
+                    transform: scale(1) translateY(0);
+            -webkit-transform-origin: 50% 16%;
+                    transform-origin: 50% 16%;
+        }
+        100% {
+            -webkit-transform: scale(1.25) translateY(-15px);
+                    transform: scale(1.25) translateY(-15px);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+        }
+        }
+        @@keyframes kenburns-top {
+        0% {
+            -webkit-transform: scale(1) translateY(0);
+                    transform: scale(1) translateY(0);
+            -webkit-transform-origin: 50% 16%;
+                    transform-origin: 50% 16%;
+        }
+        100% {
+            -webkit-transform: scale(1.25) translateY(-15px);
+                    transform: scale(1.25) translateY(-15px);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+        }
+        }
+
 
 
 
@@ -296,6 +391,20 @@
 
         <div class="evtCtnsBox wb_cts09 NGEB">
             willbes<br>윌비스
+        </div>
+
+        <div class="evtCtnsBox wb_cts10 NGEB">
+            배경
+        </div>
+
+        <div class="evtCtnsBox wb_cts11 NGEB">
+            배경 컬러
+        </div>
+
+        <div class="evtCtnsBox wb_cts12 NGEB">
+            <div>
+            배경2
+            </div>
         </div>
 
     </div>

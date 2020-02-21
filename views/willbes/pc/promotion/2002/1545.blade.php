@@ -10,7 +10,7 @@
         }        
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -28,14 +28,14 @@
         }
        
         .evt00 {background:#404040}        
-        .evtTop{background:#f4d59e}
-        .evt01 {background:#cd9967; padding-bottom:100px}          
+        .evtTop{background:#273d7e}
+        .evt01 {background:#fff; padding-bottom:150px}          
         
         .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px;}
-        .form_area h4{height:50px;line-height:50px;font-size:30px;}
-        .form_area h5{font-size:16px;margin-bottom:10px;font-weight:bold; color:#6585ab;}
-        .form_area strong {display:inline-block; width:120px; color:#b2213f}
-        .form_area .star {color:#363636; margin-right:5px;font-size:7px; vertical-align:middle}
+        .form_area h4{height:60px;line-height:60px;font-size:30px; background:#14519d; color:#fff;}
+        .form_area h5{font-size:16px;margin-bottom:10px;font-weight:bold; color:#14519d;}
+        .form_area strong {display:inline-block; width:120px; color:#14519d}
+        .form_area .star {color:#14519d; margin-right:5px;font-size:7px; vertical-align:middle}
         .privacy {text-align:left; border:20px solid #e9e9e9; margin-top:30px; padding:40px; font-size:16px;}
         .privacy p {margin-bottom:15px}
 
@@ -56,34 +56,68 @@
         .detail{line-height:20px;}
         .accept{text-align: center;padding: 20px 0 50px 0;font-size: 17px;font-weight: bold;}        
 
-        .btn a {font-size:30px; display:block; border-radius:50px; background:#333; color:#fff; padding:20px 0}
-        .btn a:hover {background:#b2213f;}   
+        .btn a {font-size:30px; display:block; border-radius:50px; background:#14519d; color:#fff; padding:20px 0}
+        .btn a:hover {background:#333;}   
 
-        .evt02 {background:#99cc67; padding:100px 0}
+        .evt02 {background:#393a3e;}
         .evt02 > div {width:700px; margin:0 auto}
-        .evt02 > div table {table-layout: auto;}
-        .evt02 > div table th,
-        .evt02 > div table td {padding:10px 5px; border-bottom:1px solid #252525; border-right:1px solid #6f95ff; text-align: center; font-weight: 600; font-size:20px}
-        .evt02 > div table th {background: #252525; color:#fff;} 
-        .evt02 > div table td {font-size:18px; color:#fff;}
-        .evt02 > div table td div {position:relative}
-        .evt02 > div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
-        .evt02 > div table tbody th {background: #f9f9f9; color:#555;} 
+        .evt02 div table {table-layout: auto; border-top:1px solid #757578;}
+        .evt02 div table th,
+        .evt02 div table td {padding:10px 5px; border-bottom:1px solid #757578; border-right:1px solid #757578; text-align: center; font-weight: 600; font-size:20px}
+        .evt02 div table th {background: #252525; color:#fff;} 
+        .evt02 div table td {font-size:18px; color:#fff;}
+        .evt02 div table td div {position:relative}
+        .evt02 div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
+        .evt02 div table tbody th {background: #f9f9f9; color:#555;} 
+        .evt02 div table tbody th:last-child,
+        .evt02 div table tbody td:last-child {border-right:0;}
         .evt02 ul { width:1000px; margin:50px auto 0}
         .evt02 li {display:inline; width:50%; float:left}
-        .evt02 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
+        /*.evt02 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
         .evt02 li:last-child a {background:#4ae59f; color:#000}
-        .evt02 li a:hover {background:#102665; color:#fff}
+        .evt02 li a:hover {background:#102665; color:#fff}*/
         .evt02 ul:after {content:""; display:block; clear:both}
 
-        .evt03 {padding:100px 0; background:#ffcbff} 
-        .evt03 div {background:#fff; width:1120px; height:400px; margin:0 auto}
+        .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
+            padding-bottom:100px; height:1200px} 
+        .evt03 .mapSec {width:1120px; height:400px; margin:0 auto; position:relative}
+        .evt03 .tabs li {position:absolute; z-index:10; text-align:left}
+        .evt03 .tabs li a {display:block; padding:3px 5px; font-weight:bold}
+        .evt03 .tabs li a:hover,
+        .evt03 .tabs li a.active {background:#ffff00;}
+        .evt03 .tabs li span.on {display:none}
+        .evt03 .tabs li span.off {display:block}
+        .evt03 .tabs li a.active span.on {display:block}
+        .evt03 .tabs li a.active span.off {display:none}
+        .evt03 .tabs li:nth-child(1) {top:210px; left:322px} /*서울*/ 
+        .evt03 .tabs li:nth-child(2) {top:460px; left:430px} /*부산*/ 
+        .evt03 .tabs li:nth-child(3) {top:389px; left:417px} /*대구*/ 
+        .evt03 .tabs li:nth-child(4) {top:196px; left:260px} /*인천*/
+        .evt03 .tabs li:nth-child(5) {top:460px; left:280px} /*광주*/ 
+        .evt03 .tabs li:nth-child(6) {top:325px; left:324px} /*대전*/ 
+        .evt03 .tabs li:nth-child(7) {top:416px; left:474px} /*울산*/ 
+        .evt03 .tabs li:nth-child(8) {top:185px; left:397px} /*강원*/ 
+        .evt03 .tabs li:nth-child(9) {top:248px; left:309px} /*경기남부*/ 
+        .evt03 .tabs li:nth-child(10) {top:178px; left:313px} /*경기북부*/ 
+        .evt03 .tabs li:nth-child(11) {top:278px; left:365px} /*충북*/ 
+        .evt03 .tabs li:nth-child(12) {top:309px; left:270px} /*충남*/ 
+        .evt03 .tabs li:nth-child(13) {top:389px; left:313px} /*전북*/  
+        .evt03 .tabs li:nth-child(14) {top:500px; left:312px} /*전남*/ 
+        .evt03 .tabs li:nth-child(15) {top:332px; left:418px} /*경북*/ 
+        .evt03 .tabs li:nth-child(16) {top:463px; left:365px} /*경남*/ 
+        .evt03 .tabs li:nth-child(17) {top:576px; left:287px} /*제주*/ 
+        .areaData {border-bottom:1px solid #67686b; width:313px; position:absolute; top:331px; left:572px}
+        .areaData li {border-top:1px solid #67686b; padding:10px; color:#fff; font-size:16px; text-align:left;}
+        .areaData li span {display:inline-block; width:120px}
+        .areaData li:first-child {font-size:18px}
+        .areaData li:first-child strong {display:inline-block; color:#393a3e; background:#ffff00; padding:5px 10px; border-radius:20px}
+        .graph {position:absolute; top:650px; left:50%; margin-left:-500px; height:400px; border:1px solid #ccc; color:#fff; width:1000px; z-index:10;}
 
-        .evt04 {padding:100px 0; background:#ffcccc} 
-        .evt04 .slide_con {position:relative; width:900px; margin:0 auto}
-        .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-        .evt04 .slide_con p.leftBtn {left:-80px}
-        .evt04 .slide_con p.rightBtn {right:-80px}
+        .evt04 {padding-bottom:150px; background:#393a3e} 
+        .evt04 .slide_con {position:relative; width:854px; margin:0 auto}
+        .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:50px; height:50px; z-index:10}
+        .evt04 .slide_con p.leftBtn {left:-25px}
+        .evt04 .slide_con p.rightBtn {right:-25px}
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:1120px; margin:0 auto}
@@ -96,12 +130,13 @@
         #slidesImg3:after {content::""; display:block; clear:both}
 
         /*유의사항*/
-        .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
+        .wb_ctsInfo {background:#fff; padding:150px 0}  
         .wb_ctsInfo div {
-            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
-            font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+            width:900px; margin:0 auto; color:#333; font-size:14px; line-height:1.5;
+            border:1px solid #909090; padding:50px;
+            font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; text-align:left;
         }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#f97f7a} 
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#b48023} 
         .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
             text-decoration:underline}  
         .wb_ctsInfo div dd {margin-bottom:30px}
@@ -210,8 +245,9 @@
                 </div>
             </form>           
         </div>
-        <form id="add_apply_form" name="add_apply_form">
-            <div class="evtCtnsBox evt02" id="evt">
+        
+        <form id="add_apply_form" name="add_apply_form"> 
+            <div class="evtCtnsBox evt02" id="evt">           
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
@@ -247,32 +283,32 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03.png" alt="형법">
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04.png" alt="영어">
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05.png" alt="한국사">
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -286,32 +322,32 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01_20.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02_20.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03_20.png" alt="형법">
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04_20.png" alt="영어">
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05_20.png" alt="한국사">
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -319,19 +355,66 @@
                     </table>
                 </div>
                 <ul>
-                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank">매일 50명, 총500명 이벤트신청 확인하기 ></a></li>
-                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank">총500명 한정판매 실물 봉투모의고사 빠른 유료구매 ></a></li>
-                </ul>
+                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn01.png"  alt="이벤트신청"/></a></li>
+                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>
+                </ul>            
             </div>
         </form>
         
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg"  alt=""/>
-            <div>
-                응시청 그래프 영역 > 개발 영역
+            <div class="mapSec">
+                <ul class="tabs">
+                    <li><a href="#area01" class="active"><span class="off">○ 서울</span><span class="on">● 서울</span></a></li>
+                    <li><a href="#area02"><span class="off">○ 부산</span><span class="on">● 부산</span></a></li>
+                    <li><a href="#area03"><span class="off">○ 대구</span><span class="on">● 대구</span></a></li>
+                    <li><a href="#area04"><span class="off">○ 인천</span><span class="on">● 인천</span></a></li>
+                    <li><a href="#area05"><span class="off">○ 광주</span><span class="on">● 광주</span></a></li>
+                    <li><a href="#area06"><span class="off">○ 대전</span><span class="on">● 대전</span></a></li>           
+                    <li><a href="#area07"><span class="off">○ 울산</span><span class="on">● 울산</span></a></li>
+                    <li><a href="#area08"><span class="off">○ 경기남부</span><span class="on">● 경기남부</span></a></li>
+                    <li><a href="#area09"><span class="off">○ 경기북부</span><span class="on">● 경기북부</span></a></li>
+                    <li><a href="#area10"><span class="off">○ 강원</span><span class="on">● 강원</span></a></li>
+                    <li><a href="#area11"><span class="off">○ 충북</span><span class="on">● 충북</span></a></li>
+                    <li><a href="#area12"><span class="off">○ 충남</span><span class="on">● 충남</span></a></li>
+                    <li><a href="#area13"><span class="off">○ 전북</span><span class="on">● 전북</span></a></li>
+                    <li><a href="#area14"><span class="off">○ 전남</span><span class="on">● 전남</span></a></li>
+                    <li><a href="#area15"><span class="off">○ 경북</span><span class="on">● 경북</span></a></li>
+                    <li><a href="#area16"><span class="off">○ 경남</span><span class="on">● 경남</span></a></li>
+                    <li><a href="#area17"><span class="off">○ 제주</span><span class="on">● 제주</span></a></li>                
+                </ul>                                           
+
+                <div id="area01" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>서울청</strong></li>
+                        <li><span>- 채용인원</span> <strong>00명</strong></li>
+                        <li><span>- 응시희망</span> <strong>1,678명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>31.0%</strong></li>
+                    </ul>
+                    <div class="graph">서울 그래프 영역</div>
+                </div>
+
+                <div id="area02" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>부산청</strong></li>
+                        <li><span>- 채용인원</span> <strong>00명</strong></li>
+                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                    </ul>
+                    <div class="graph">부산 그래프 영역</div>
+                </div>
+
+                <div id="area03" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>대구청</strong></li>
+                        <li><span>- 채용인원</span> <strong>00명</strong></li>
+                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                    </ul>
+                    <div class="graph">대구 그래프 영역</div>
+                </div>
             </div>
         </div>
-        
+
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04.jpg"  alt=""/>
             <div class="slide_con">
@@ -343,12 +426,12 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_05.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_06.jpg" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2019/09//1009_01_arrowR.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_btn_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_btn_arrowR.png"></a></p>
             </div>
         </div>
-
-        <div class="wb_ctsInfo NGR" id="ctsInfo">
+            
+        <div class="wb_ctsInfo">
             <div>
                 <h3 class="NGEB">유의사항</h3>
                 <dd>
@@ -358,9 +441,10 @@
                 </dd>                
                 <dd>
                     <dt>봉투모의고사 이벤트 신청안내</dt>
-                    <dl>신청기간 : 2020년 2월 24일~3월 4일까지 ,매일 20시부터 선착순 50명 및 유료구매진행<br>
-                        매일 20시 총 10일 – 선착순 50명 / 총 500명<br>
-                        유료 봉투모의고사 – 이벤트참여회원만 가능 총 500부 / 마감시 종료
+                    <dl>신청기간<br>
+                        - 2020년 2월 24일~3월 4일까지 ,매일 20시부터 선착순 50명 및 유료구매진행<br>
+                        - 매일 20시 총 10일 – 선착순 50명 / 총 500명<br>
+                        - 유료 봉투모의고사 – 이벤트참여회원만 가능 총 500부 / 마감시 종료
                     </dl>
                     <dl>신청방법<br>
                         - 로그인 이후 이벤트 페이지에서 신청가능합니다(희망응시청 필수 체크)<br>
@@ -379,7 +463,7 @@
                     <dl>유료구매이벤트 : 12,000원(배송비 포함)</dl>  
                 </dd>
             </div>
-        </div>        
+        </div>    
 
 	</div>
     <!-- End Container -->
@@ -473,6 +557,31 @@
                 }
             }, showValidateError, null, false, 'alert');
         }
+
+         /*tab*/
+         $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                //$active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                });
+            });
+        });
 
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({

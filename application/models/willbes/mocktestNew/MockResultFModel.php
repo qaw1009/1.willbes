@@ -77,8 +77,6 @@ class MockResultFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
-        //echo "<pre>".'select ' . $column . $from . $where . $order_by_offset_limit."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -176,8 +174,6 @@ class MockResultFModel extends WB_Model
                 ) AS R
             ) AS ARank ON MG.MrIdx = ARank.MrIdx
         ";
-
-        #echo '<pre>'.'select STRAIGHT_JOIN' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
@@ -205,7 +201,6 @@ class MockResultFModel extends WB_Model
             ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
             ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
         ";
-
         return $this->_conn->query('select ' . $query_string)->row_array();
     }
 
@@ -317,7 +312,6 @@ class MockResultFModel extends WB_Model
                 GROUP BY A.MpIdx
             ) AS M
         ";
-
         return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 
@@ -372,8 +366,6 @@ class MockResultFModel extends WB_Model
             LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
         ";
         $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
-
-        //echo '<pre>'.'select ' . $column . $from . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
@@ -445,8 +437,6 @@ class MockResultFModel extends WB_Model
         ";
         $group_by = " GROUP BY S.MalIdx";
         $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
-
-        //echo '<pre>'.'select ' . $column . $from . $group_by . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
     }
 
@@ -523,7 +513,6 @@ class MockResultFModel extends WB_Model
         }
 
         $order_by = " ORDER BY MQ.QuestionNO";
-        //echo '<pre>'.'select ' . $column . $from . $where . $order_by.'</pre>';
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 

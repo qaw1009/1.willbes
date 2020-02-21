@@ -167,11 +167,11 @@
                         </a>
                     </li>
                 </ul>
-                <div id="tab01s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1053_tab1_con.jpg" usemap="#Map1053tab1" border="0" />
-                    <map name="Map1053tab1" id="Map1053tab1">
-                        <area shape="rect" coords="268,1184,946,1294" href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" />
-                    </map>     
+                <div id="tab01s" class="white"> 
+                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1053_tab1_con.jpg" usemap="#Map1053abc" border="0">
+                    <map name="Map1053abc" id="Map1053abc">
+                        <area shape="rect" coords="280,806,927,892" href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" />
+                    </map>                  
                     <div class="evtCtnsBox wb_cts09">
                         <div class="wb_tipBox">
                      

@@ -636,7 +636,7 @@
                 </div>
 
                 <div class="graph">     
-                    <h5 class="NGEB">- 2020년 1차 응시 희망청 집계 -</h5>
+                    <h5 class="NGEB">- 2020년 1차 경찰채용 예상 지원청 - </h5>
                     <table cellspacing="0" cellpadding="0">
                         <colgroup>
                             <col style="width:12%">
@@ -736,7 +736,7 @@
                             </tr>
                         <tfoot>
                     </table> 
-                    <p class="txtinfo01">* 윌비스경찰학원 자체조사 참여인원 5,353명, 중복 포함</p>                       
+                    <p class="txtinfo01">* 자사 수강생 응시희망청 조사 기반, 최근 5회차 평균 응시인원 반영</p>                       
                 </div>
             </div>
         </div>

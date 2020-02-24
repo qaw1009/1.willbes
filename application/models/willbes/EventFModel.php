@@ -1301,12 +1301,19 @@ class EventFModel extends WB_Model
      */
     public function listEventPromotionForAddApply($el_idx)
     {
-        $column = " * ";
+        $column = "A.*, IFNULL(B.MemberCnt, 0) AS MemberCnt";
         $from = "
-            FROM {$this->_table['event_add_apply']}
+            FROM {$this->_table['event_add_apply']} AS A
+            LEFT OUTER JOIN	(
+                SELECT EaaIdx, COUNT(*) AS MemberCnt
+                FROM {$this->_table['event_add_apply_member']}
+                WHERE IsStatus = 'Y'
+                AND IsWin = 'Y'
+                GROUP BY EaaIdx
+            ) AS B ON A.EaaIdx = B.EaaIdx            
         ";
-        $where = ' WHERE ElIdx = ? and IsUse = "Y"';
-        $order_by_offset_limit = ' ORDER BY EaaIdx ASC';
+        $where = ' WHERE A.ElIdx = ? and A.IsUse = "Y"';
+        $order_by_offset_limit = ' ORDER BY A.ApplyEndDatm, A.EaaIdx ASC';
 
         // 쿼리 실행
         return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
@@ -1349,6 +1356,19 @@ class EventFModel extends WB_Model
                 throw new \Exception('조회된 이벤트 추가신청 정보가 없습니다.');
             }
 
+            // 이벤트 접수 체크
+            $arr_condition = [
+                'EQ'=>[
+                    'A.MemIdx' => $this->session->userdata('mem_idx'),
+                    'B.ElIdx' => element('event_idx', $inputData),
+                    'B.IsStatus' => 'Y'
+                ],
+            ];
+            $reg_member_result = $this->getRegisterMember($arr_condition);
+            if(empty($reg_member_result) === true) {
+                throw new \Exception('이벤트 신청후 이용 가능합니다.');
+            }
+
             $apply_info = [];
             foreach ($result_apply as $key => $row) {
                 $apply_info[$row['EaaIdx']] = $result_apply[$key];
@@ -1362,12 +1382,6 @@ class EventFModel extends WB_Model
             $arr_apply_member = array_pluck($result_apply_member_info, 'MemCount', 'EaaIdx');
 
             foreach ($apply_info as $key => $row) {
-                if ($row['RegisterExpireStatus'] == 'N') {
-                    throw new \Exception('접수 만료된 상태입니다.');
-                }
-                if ((empty($arr_apply_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_apply_member[$key]) {
-                    throw new \Exception('마감되었습니다.');
-                }
 
                 if(empty($this->session->userdata('mem_idx')) === true) {
                     throw new \Exception('로그인이 필요한 서비스입니다.');
@@ -1386,15 +1400,22 @@ class EventFModel extends WB_Model
                     ];
                 }
 
+                $register_member_info = $this->getApplyMember($arr_condition);
+                if (count($register_member_info) > 0) {
+                    throw new \Exception('이미 신청하셨습니다.');
+                }
+
+                if ($row['RegisterExpireStatus'] == 'N') {
+                    throw new \Exception('접수 만료된 상태입니다.');
+                }
+                if ((empty($arr_apply_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_apply_member[$key]) {
+                    throw new \Exception('마감되었습니다.');
+                }
+
                 //여러 추가신청중 하나의 추가신청만 가능할시
                 if(empty($inputData['apply_chk_el_idx']) === false) {
                     unset($arr_condition['EQ']['A.EaaIdx']); //기존 ErIdx 조회 조건 제거
                     $arr_condition['EQ']['B.ElIdx'] = $inputData['apply_chk_el_idx'];
-                }
-
-                $register_member_info = $this->getApplyMember($arr_condition);
-                if (count($register_member_info) > 0) {
-                    throw new \Exception('이미 신청하셨습니다.');
                 }
 
                 // 지급할 강의상품이 있을 경우
@@ -1505,7 +1526,6 @@ class EventFModel extends WB_Model
             if(empty($arr_promotion_params['cart_limit']) === false && empty($arr_promotion_params['cart_prod_code']) === false) {
 
                 // 이벤트 접수 체크
-                //TODO
                 $arr_condition = [
                     'EQ'=>[
                         'A.MemIdx' => $this->session->userdata('mem_idx'),

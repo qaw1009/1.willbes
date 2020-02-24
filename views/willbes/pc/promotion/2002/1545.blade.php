@@ -320,6 +320,52 @@
                             <col width="20%">
                         </colgroup>
                         <tbody>
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @php $col_cnt = 5; @endphp
+                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
+                                @if($i==0 || $i%$col_cnt == 0)
+                                    @php $tr_i = $i; @endphp
+                                    <tr>
+                                @endif
+                                    <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
+                                @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
+                                    @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
+                                        @php $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt); @endphp
+                                        @if($remain_cnt != 0)
+                                            @for($r=0; $r < $remain_cnt; $r++)
+                                                <td></td>
+                                            @endfor
+                                        @endif
+                                    @endif
+                                    </tr>
+                                    @php $temp_j = 0; @endphp
+                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
+                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
+                                            <tr>
+                                        @endif
+                                            <td>
+                                                <div>
+                                                    @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
+                                                        <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span>
+                                                    @endif
+                                                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="">
+                                                </div>
+                                            </td>
+                                        @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
+                                            @if(empty($remain_cnt) === false && $remain_cnt != 0)
+                                                @for($r=0; $r < $remain_cnt; $r++)
+                                                    <td></td>
+                                                @endfor
+                                            @endif
+                                            </tr>
+                                        @endif
+                                        @php $temp_j++; @endphp
+                                    @endfor
+                                @endif
+
+                            @endfor
+                        @endif
+                        {{--
                             <tr>
                                 <td>2/24</td>
                                 <td>2/25</td>
@@ -398,6 +444,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            --}}
                         </tbody>
                     </table>
                 </div>
@@ -666,7 +713,8 @@
             var arr_apply_msg = [
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
                 ['신청 되었습니다.','당첨을 축하합니다. <3.5 안내문자> <공지예정입니다>'],
-                ['처리 되었습니다.','장바구니에 담겼습니다.']
+                ['처리 되었습니다.','장바구니에 담겼습니다.'],
+                ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
             ];
 
             for (var i = 0; i < arr_apply_msg.length; i++) {

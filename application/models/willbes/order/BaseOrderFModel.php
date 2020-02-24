@@ -173,8 +173,8 @@ class BaseOrderFModel extends WB_Model
      */
     public function getProductViewName($learn_pattern, $lec_sale_type = null)
     {
-        // 온라인단강좌/학원단과반 선수강좌일 경우
-        if (in_array($learn_pattern, ['on_lecture', 'off_lecture']) === true && $lec_sale_type == 'B') {
+        // 학원단과반 선수강좌일 경우
+        if (in_array($learn_pattern, ['off_lecture']) === true && $lec_sale_type == 'B') {
             $learn_pattern .= '_before';
         }
 

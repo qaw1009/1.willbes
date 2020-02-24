@@ -722,7 +722,7 @@ class Event extends \app\controllers\FrontController
         }
 
         $result = $this->eventFModel->addEventApplyMember($this->_reqP(null, false), $this->_site_code, $register_type);
-        $this->json_result($result, '신청되었습니다.', $result);
+        $this->json_result($result, '신청 되었습니다.', $result);
     }
 
     /**

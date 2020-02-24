@@ -146,9 +146,9 @@ class BaseOrderFModel extends WB_Model
 
     /**
      * 상품타입과 학습형태 공통코드를 조합하여 학습형태 (뷰 테이블) 리턴
-     * @param $prod_type
-     * @param $learn_pattern_ccd
-     * @return false|int|string
+     * @param string $prod_type [상품타입]
+     * @param string $learn_pattern_ccd [학습형태공통코드]
+     * @return string
      */
     public function getLearnPattern($prod_type, $learn_pattern_ccd)
     {
@@ -160,6 +160,22 @@ class BaseOrderFModel extends WB_Model
             } else {
                 $learn_pattern = $prod_type;
             }
+        }
+
+        return $learn_pattern;
+    }
+
+    /**
+     * 학습형태별 뷰 테이블명 리턴 (선수강좌여부 체크)
+     * @param string $learn_pattern [학습형태]
+     * @param string $lec_sale_type [강의판매구분 (N : 일반, B : 선수강좌)]
+     * @return string
+     */
+    public function getProductViewName($learn_pattern, $lec_sale_type = null)
+    {
+        // 온라인단강좌/학원단과반 선수강좌일 경우
+        if (in_array($learn_pattern, ['on_lecture', 'off_lecture']) === true && $lec_sale_type == 'B') {
+            $learn_pattern .= '_before';
         }
 
         return $learn_pattern;

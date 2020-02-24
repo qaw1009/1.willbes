@@ -578,6 +578,7 @@ class RegGoodsModel extends WB_Model
                 'PaperType' => element('PaperType', $form_data),
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
+                'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
                 'RegIp' => $this->input->ip_address(),
                 'RegDatm' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -676,6 +677,7 @@ class RegGoodsModel extends WB_Model
                 'PaperType' => element('PaperType', $form_data),
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
+                'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
                 'UpdDatm' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];

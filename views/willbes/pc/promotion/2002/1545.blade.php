@@ -485,27 +485,153 @@
                 <div id="area01" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>서울청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
+                        <li><span>- 채용인원</span> <strong>773명</strong></li>
                         <li><span>- 응시희망</span> <strong>1,678명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>31.0%</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.2%</strong></li>
                     </ul>                    
                 </div>                              
 
                 <div id="area02" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>부산청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                        <li><span>- 채용인원</span> <strong>154명</strong></li>
+                        <li><span>- 응시희망</span> <strong>218명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.4%</strong></li>
                     </ul>
                 </div>
 
                 <div id="area03" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>대구청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                        <li><span>- 채용인원</span> <strong>103명</strong></li>
+                        <li><span>- 응시희망</span> <strong>167명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.6%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area04" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>인천청</strong></li>
+                        <li><span>- 채용인원</span> <strong>243명</strong></li>
+                        <li><span>- 응시희망</span> <strong>267명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.1%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area05" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>광주청</strong></li>
+                        <li><span>- 채용인원</span> <strong>64명</strong></li>
+                        <li><span>- 응시희망</span> <strong>150명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.3%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area06" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>대전청</strong></li>
+                        <li><span>- 채용인원</span> <strong>52명</strong></li>
+                        <li><span>- 응시희망</span> <strong>132명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.5%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area07" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>울산청</strong></li>
+                        <li><span>- 채용인원</span> <strong>36명</strong></li>
+                        <li><span>- 응시희망</span> <strong>125명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>3.5%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area08" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경기남부청</strong></li>
+                        <li><span>- 채용인원</span> <strong>354명</strong></li>
+                        <li><span>- 응시희망</span> <strong>869명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.5%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area09" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경기북부청</strong></li>
+                        <li><span>- 채용인원</span> <strong>231명</strong></li>
+                        <li><span>- 응시희망</span> <strong>522명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.3%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area10" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
+                        <li><span>- 채용인원</span> <strong>159명</strong></li>
+                        <li><span>- 응시희망</span> <strong>131명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>0.8%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area11" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>충북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>39명</strong></li>
+                        <li><span>- 응시희망</span> <strong>115명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.9%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area12" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>충남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>137명</strong></li>
+                        <li><span>- 응시희망</span> <strong>249명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.8%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area13" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>전북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>42명</strong></li>
+                        <li><span>- 응시희망</span> <strong>109명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>2.6%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area14" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>전남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>42명</strong></li>
+                        <li><span>- 응시희망</span> <strong>160명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>3.8%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area15" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>79명</strong></li>
+                        <li><span>- 응시희망</span> <strong>100명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.3%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area16" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>79명</strong></li>
+                        <li><span>- 응시희망</span> <strong>100명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>1.3%</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area17" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>제주청</strong></li>
+                        <li><span>- 채용인원</span> <strong>25명</strong></li>
+                        <li><span>- 응시희망</span> <strong>123명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>4.9%</strong></li>
                     </ul>
                 </div>
 

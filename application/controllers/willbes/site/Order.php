@@ -275,7 +275,7 @@ class Order extends \app\controllers\FrontController
         if ($is_direct_pay == 'Y') {
             $input = $this->_reqP(null, false);
             $rules = array_merge($rules, [
-                ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required|in_list[off_lecture,off_pack_lecture]'],
+                ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required|in_list[off_lecture,off_lecture_before,off_pack_lecture]'],
                 ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[off_lecture]'],
                 ['field' => 'prod_code[]', 'label' => '상품선택', 'rules' => 'trim|required'],
                 ['field' => 'prod_code_sub[]', 'label' => '과목선택', 'rules' => 'callback_validateRequiredIf[learn_pattern,off_pack_lecture]']
@@ -292,7 +292,7 @@ class Order extends \app\controllers\FrontController
 
         $result = $this->orderFModel->procVisitOrder($this->_site_code, $input);
 
-        $succ_msg = '접수가 완료되었습니다.' . PHP_EOL . '*학원으로 방문해주시기 바랍니다. (문의: ' . config_app('CsTel', '') . ')';
+        $succ_msg = '접수가 완료되었습니다.' . PHP_EOL . '* 학원으로 방문해 주시기 바랍니다.';
         $return_url = app_url('/classroom/order/index', 'www');
 
         return $this->json_result($result, $succ_msg, $result, ['ret_url' => $return_url]);

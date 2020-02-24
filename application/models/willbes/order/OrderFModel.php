@@ -573,8 +573,9 @@ class OrderFModel extends BaseOrderFModel
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 // 상품 판매여부 체크
                 $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
+                $vw_name = $this->getProductViewName($learn_pattern, $cart_row['LecSaleType']);
 
-                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N');
+                $is_prod_check = $this->cartFModel->checkProduct($vw_name, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N');
                 if ($is_prod_check !== true) {
                     throw new \Exception($is_prod_check);
                 }
@@ -1518,8 +1519,9 @@ class OrderFModel extends BaseOrderFModel
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 // 상품 판매여부 체크
                 $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
+                $vw_name = $this->getProductViewName($learn_pattern, $cart_row['LecSaleType']);
 
-                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], $is_visit_pay);
+                $is_prod_check = $this->cartFModel->checkProduct($vw_name, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], $is_visit_pay);
                 if ($is_prod_check !== true) {
                     throw new \Exception($is_prod_check);
                 }

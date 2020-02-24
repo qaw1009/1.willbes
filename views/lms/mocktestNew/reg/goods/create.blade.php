@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="mock_part">직렬 <span class="required">*</span></label>
-                    <div class="col-md-2">
+                    <div class="col-md-8">
                         <div class="checkbox mock-part">
                             @foreach($arr_base['cateD2'] as $row)
                                 <span class="mock-part-{{$row['ParentCateCode']}}">
@@ -364,6 +364,14 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="text-right mb-10">
+                            노출개수 :
+                            <select class="form-control" id="subject_s_view_count" name="subject_s_view_count">
+                                <option value="1" @if($method==='PUT' && $data['SubjectSViewCount'] == '1') selected @endif>1</option>
+                                <option value="2" @if($method==='POST' || $data['SubjectSViewCount'] == '2') selected @endif>2</option>
+                                <option value="3" @if($method==='PUT' && $data['SubjectSViewCount'] == '3') selected @endif>3</option>
+                                <option value="4" @if($method==='PUT' && $data['SubjectSViewCount'] == '4') selected @endif>4</option>
+                                <option value="5" @if($method==='PUT' && $data['SubjectSViewCount'] == '5') selected @endif>5</option>
+                            </select>
                             <button type="button" class="btn btn-sm btn-success act-su-sort">정렬변경</button>
                         </div>
                         <div id="sSubject-wrap" class="subject-wrap form-table form-table-sm" style="overflow-x: auto; overflow-y: hidden;">

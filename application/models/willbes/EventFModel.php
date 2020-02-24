@@ -36,7 +36,10 @@ class EventFModel extends WB_Model
         'point_save' => 'lms_point_save',
         'event_register_r_product' => 'lms_event_register_r_product',
         'event_add_apply' => 'lms_event_add_apply',
-        'event_add_apply_member' => 'lms_event_add_apply_member'
+        'event_add_apply_member' => 'lms_event_add_apply_member',
+        'cart' => 'lms_cart',
+        'order' => 'lms_order',
+        'order_product' => 'lms_order_product'
     ];
 
     //등록파일 rule 설정
@@ -1001,6 +1004,7 @@ class EventFModel extends WB_Model
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param $cate_code
      * @return mixed
      */
     public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [], $cate_code = null)
@@ -1542,6 +1546,18 @@ class EventFModel extends WB_Model
                 $cart_limit_count = $arr_promotion_params['cart_limit_count'];
                 $cart_prod_code = $arr_promotion_params['cart_prod_code'];
 
+                // 장바구니 이미 담겼는지 체크
+                $cart_event_member_count = $this->getCartForEventMemberCount($cart_prod_code, $this->session->userdata('mem_idx'), ['RAW' => ['A.ConnOrderIdx IS' => ' NULL']]);
+                if($cart_event_member_count > 0) {
+                    throw new \Exception('이미 장바구니에 담긴 상품입니다.');
+                }
+
+                // 상품 구매여부 체크
+                $order_event_member_count = $this->getOrderForEventMemberCount($cart_prod_code, $this->session->userdata('mem_idx'));
+                if($order_event_member_count > 0) {
+                    throw new \Exception('이미 구매한 상품입니다.');
+                }
+
                 if($cart_limit > $cart_limit_count) {
                     $result = $this->eventFModel->_modifyEventPromotionParams(element('event_idx', $inputData), 'cart_limit_count', $cart_limit_count+1);
                     if($result !== true) {
@@ -1620,5 +1636,71 @@ class EventFModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 이벤트상품 회원 장바구니 카운트
+     * @param $prod_code
+     * @param $mem_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getCartForEventMemberCount($prod_code, $mem_idx, $arr_condition = [])
+    {
+        if(empty($prod_code) === true || empty($mem_idx) === true) {
+            return false;
+        }
+
+        $column = 'COUNT(*) AS numrows';
+        $from = "
+            FROM {$this->_table['cart']} AS A
+        ";
+
+        $default_arr_condition = [
+            'EQ' => [
+                'A.ProdCode' => $prod_code,
+                'A.MemIdx' => $mem_idx,
+                'A.IsStatus' => 'Y'
+            ]
+        ];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
+        return $query->row(0)->numrows;
+    }
+
+    /**
+     * 이벤트상품 회원 주문 카운트
+     * @param $prod_code
+     * @param $mem_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getOrderForEventMemberCount($prod_code, $mem_idx, $arr_condition = [])
+    {
+        if(empty($prod_code) === true || empty($mem_idx) === true) {
+            return false;
+        }
+
+        $column = 'COUNT(*) AS numrows';
+        $from = "
+            FROM {$this->_table['order_product']} AS A
+            INNER JOIN {$this->_table['order']} AS B ON A.OrderIdx = B.OrderIdx            
+        ";
+
+        $default_arr_condition = [
+            'EQ' => [
+                'A.ProdCode' => $prod_code,
+                'B.MemIdx' => $mem_idx
+            ]
+        ];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
+        return $query->row(0)->numrows;
     }
 }

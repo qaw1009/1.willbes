@@ -1422,6 +1422,14 @@ class EventFModel extends WB_Model
                     $arr_condition['EQ']['B.ElIdx'] = $inputData['apply_chk_el_idx'];
                 }
 
+                // 상품 구매여부 체크
+                if(empty($row['ProdCode']) === false){
+                    $order_event_member_count = $this->getOrderForEventMemberCount($row['ProdCode'], $this->session->userdata('mem_idx'));
+                    if($order_event_member_count > 0) {
+                        throw new \Exception('이미 구매한 상품입니다.');
+                    }
+                }
+
                 // 지급할 강의상품이 있을 경우
                 // TODO: 1545프로모션. 수동으로 교재 보낸다고함. 추후 상품 자동지급 필요시 개발
 //                if(empty($row['EaaIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {

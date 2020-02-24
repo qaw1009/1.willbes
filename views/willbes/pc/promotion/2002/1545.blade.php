@@ -330,7 +330,10 @@
                                     <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
                                 @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
                                     @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
-                                        @php $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt); @endphp
+                                        @php
+                                            $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
+                                            if($remain_cnt == $col_cnt) $remain_cnt = 0;
+                                        @endphp
                                         @if($remain_cnt != 0)
                                             @for($r=0; $r < $remain_cnt; $r++)
                                                 <td></td>

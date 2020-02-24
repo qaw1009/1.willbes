@@ -53,7 +53,7 @@ class CartFModel extends BaseOrderFModel
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                         
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", PL.IsLecStart) as IsLecStart                                          
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod                               
-                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName                  
+                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, PL.LecSaleType
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.RealSalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
@@ -667,8 +667,49 @@ class CartFModel extends BaseOrderFModel
                 }
             }
         }
+        
+        // 선수강좌일 경우 주문가능여부 체크
+        if (ends_with($learn_pattern, '_before') === true) {
+            $check_result = $this->checkBeforeLecture($prod_code);
+            if ($check_result !== true) {
+                return $check_result;
+            }
+        }
 
         return $is_data_return === true ? $data : true;
+    }
+
+    /**
+     * 선수강좌 주문가능여부 체크
+     * @param int $prod_code [상품코드]
+     * @return bool|string [true : 주문가능, string : 주문불가]
+     */
+    public function checkBeforeLecture($prod_code)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 비로그인 상태
+        if (empty($sess_mem_idx) === true) {
+            return '로그인 정보가 없습니다.';
+        }
+
+        // 선수강좌 주문가능여부 체크
+        $query = $this->_conn->query('select fn_product_before_lecture_orderable_check(?, ?, "chkonly") as IsOrderable', [get_var($prod_code, '0'), $sess_mem_idx]);
+        $is_orderable = $query->row(0)->IsOrderable;
+
+        if ($is_orderable != 'Y') {
+            if ($is_orderable == 'E') {
+                return '선접수 상품이 아닙니다.';
+            } elseif ($is_orderable == 'D') {
+                return '이미 신청하셨습니다.';
+            } elseif ($is_orderable == 'N') {
+                return '선접수 신청 대상자가 아닙니다.';
+            } else {
+                return '선접수 주문 가능여부 체크 중 오류가 발생하였습니다.';
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -698,42 +739,6 @@ class CartFModel extends BaseOrderFModel
         $query = $this->_conn->query('select ' . $column . $from, [$arr_cart_idx, $mem_idx, $site_code]);
 
         return $query->result_array();
-    }
-
-    /**
-     * 장바구니 데이터에 단과 강좌할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외) => 사용안함, 추후삭제
-     * @param array $cart_rows [유효한 장바구니 데이터]
-     * @return mixed
-     */
-    public function getAddLectureDiscToCartData($cart_rows)
-    {
-        $site_code = array_get($cart_rows, '0.SiteCode');
-        $arr_prod_code = array_pluck($cart_rows, 'ProdCode');
-
-        if (empty($site_code) === true || empty($arr_prod_code) === true || count($arr_prod_code) < 2) {
-            return $cart_rows;
-        }
-
-        // 강좌할인율 조회
-        $disc_data = $this->productFModel->getLetureDiscRate($arr_prod_code, $site_code);
-        if (empty($disc_data) === false) {
-            foreach ($cart_rows as $idx => $row) {
-                if ($row['SalePatternCcd'] == $this->_sale_pattern_ccd['normal'] && array_key_exists($row['ProdCode'], $disc_data) === true) {
-                    $disc_row = $disc_data[$row['ProdCode']];
-
-                    if ($disc_row['DiscRate'] > 0) {
-                        $cart_rows[$idx]['IsLecDisc'] = 'Y';
-                        $cart_rows[$idx]['LecDiscTitle'] = $disc_row['DiscTitle'];
-                        $cart_rows[$idx]['LecDiscRate'] = $disc_row['DiscRate'];
-                        $cart_rows[$idx]['LecDiscRateUnit'] = '%';
-                        $cart_rows[$idx]['Remark'] = $disc_row['DiscTitle'] . '(' . $disc_row['DiscRate'] . '%)';
-                        $cart_rows[$idx]['RealSalePrice'] = intval($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));
-                    }
-                }
-            }
-        }
-
-        return $cart_rows;
     }
 
     /**

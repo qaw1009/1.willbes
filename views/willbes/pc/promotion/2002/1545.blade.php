@@ -330,31 +330,31 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
@@ -369,31 +369,31 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>

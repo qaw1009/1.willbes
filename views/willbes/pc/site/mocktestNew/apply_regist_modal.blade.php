@@ -31,12 +31,11 @@
                         <th class="w-tit">응시형태</th>
                         <td class="w-list">
                             <ul>
-                            @foreach($mock_data['arrTakeFormsCcd'] as $key => $val)
                                 <li>
-                                    <input type="radio" name="TakeForm" class="goods_chk" title="{{$val}}" value="{{$key}}" @if($loop->first) checked="checked" @endif>
-                                    <label>{{$val}}</label>
+                                @foreach($mock_data['arrTakeFormsCcd'] as $key => $val)
+                                    <input type="radio" id="take_form_{{$key}}" name="TakeForm" class="goods_chk" title="{{$val}}" value="{{$key}}" @if($loop->first) checked="checked" @endif><label class="mr10" for="take_form_{{$key}}">{{$val}}</label>
+                                @endforeach
                                 </li>
-                            @endforeach
                             </ul>
                         </td>
                         <th class="w-tit">응시분야</th>
@@ -86,7 +85,16 @@
                         <th class="w-tit">응시선택과목</th>
                         <td class="w-list" colspan="3">
                             @if(empty($subject_sub) == false)
-                                <select id="mock_paper_subject_2" name="subject_sub[]" title="응시선택과목1" class="sele1" required="required">
+                                @for ($i=1; $i<=$mock_data['SubjectSViewCount']; $i++)
+                                    <select id="mock_paper_subject_s_{{ $i }}" name="subject_sub[]" title="응시선택과목{{ $i }}" class="sele1 mock_paper_subject_s" required="required">
+                                        <option value="">선택과목{{ $i }}</option>
+                                        @foreach($subject_sub as $row)
+                                            <option value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
+                                        @endforeach
+                                    </select>
+                                @endfor
+
+                                {{--<select id="mock_paper_subject_2" name="subject_sub[]" title="응시선택과목1" class="sele1" required="required">
                                     <option value="">선택과목1</option>
                                     @foreach($subject_sub as $row)
                                         <option value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
@@ -97,7 +105,7 @@
                                     @foreach($subject_sub as $row)
                                         <option value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
                                     @endforeach
-                                </select>
+                                </select>--}}
                             @else
                                 선택과목 없음
                             @endif
@@ -161,6 +169,9 @@
 <script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
     var $regi_mock_form = $('#_regi_mock_form');
+    var temp = [];
+    var arr_subject_sub = $('select[name="subject_sub[]"]');
+
     $(document).ready(function() {
         var take_forms_val = $('input:radio[name="TakeForm"]:checked').val();
         addTakeArea(take_forms_val);
@@ -200,22 +211,12 @@
                 }
             }
 
-            if ( $("#mock_paper_subject_2").length > 0 ) {
-                if($("#mock_paper_subject_2").val() == '') {
-                    alert('선택과목1을 선택해 주십시오.');return;
-                }
+            if (subjectValidate() == false) {
+                return;
             }
 
-            if ( $("#mock_paper_subject_3").length > 0 ) {
-                if($("#mock_paper_subject_3").val() == '') {
-                    alert('선택과목2를 선택해 주십시오.');return;
-                }
-            }
-
-            if ( $("#mock_paper_subject_2").length > 0 && $("#mock_paper_subject_3").length > 0  ) {
-                if($("#mock_paper_subject_2").val() == $("#mock_paper_subject_3").val()) {
-                    alert('\'선택과목1\' 과 \'선택과목2\'가 같습니다. 다른 과목으로 선택해 주십시오.');return;
-                }
+            if (subjectDupl() == false) {
+                return;
             }
 
             if ( $('input:radio[name=AddPoint]').is(':checked') == false ) {
@@ -226,6 +227,39 @@
             var $is_redirect = $(this).data('is-redirect');
             cartNDirectPay($regi_mock_form, $is_direct_pay, $is_redirect);
         });
+
+        function subjectValidate()
+        {
+            var result = true;
+            $(arr_subject_sub).each(function(index) {
+                index = index + 1;
+                if ( $("#mock_paper_subject_s_"+index).length > 0 ) {
+                    if($("#mock_paper_subject_s_"+index).val() == '') {
+                        alert('선택과목'+index+'을 선택해 주십시오.'); result = false; return false;
+                    }
+                }
+            });
+            return result;
+        }
+
+        function subjectDupl() {
+            var result = true;
+            $(arr_subject_sub).each(function(index) {
+                temp[index] = $(this).val();
+            });
+            $(temp).each(function (index) {
+                var x = 0;
+                $(arr_subject_sub).each(function() {
+                    if (temp[index] == $(this).val()) {
+                        x++;
+                    }
+                });
+                if (x > 1) {
+                    alert('중복된 과목은 선택할 수 없습니다. 다른 과목으로 선택해 주십시오.'); result = false; return false;
+                }
+            });
+            return result;
+        }
 
         function addTakeArea(code)
         {

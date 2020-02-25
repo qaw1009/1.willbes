@@ -222,7 +222,7 @@ class ProductFModel extends WB_Model
         $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['ProdCode' => $prod_code]]);
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
-        return element('0', $data, []);
+        return array_get($data, '0', []);
     }
 
     /**
@@ -245,7 +245,7 @@ class ProductFModel extends WB_Model
 
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
-        return element('0', $data, []);
+        return array_get($data, '0', []);
     }
 
     /**

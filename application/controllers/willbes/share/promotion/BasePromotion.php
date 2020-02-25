@@ -171,6 +171,11 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['dday_data'] = $this->DDayFModel->getDDays($arr_dday_condition);
         }
 
+        // 신청 통계
+        if(empty($arr_promotion_params['stats_data']) === false && $arr_promotion_params['stats_data'] == 'Y') {
+            $arr_base['stats_data'] = $this->eventFModel->getStatsEventMemberForEtcValue($data['ElIdx']);
+        }
+
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
 

@@ -457,7 +457,40 @@
                 </ul>            
             </div>
         </form>
-        
+        @php
+            // *** 그래프 데이터 ***
+            $graph_data =  [
+                '서울' => ['응시' => '16780', '채용' => '804'],
+                '부산' => ['응시' => '2180', '채용' => '157'],
+                '대구' => ['응시' => '1670', '채용' => '106'],
+                '인천' => ['응시' => '2670', '채용' => '246'],
+                '광주' => ['응시' => '1500', '채용' => '67'],
+                '대전' => ['응시' => '1320', '채용' => '55'],
+                '울산' => ['응시' => '1250', '채용' => '40'],
+                '경기남부' => ['응시' => '8690', '채용' => '380'],
+                '경기북부' => ['응시' => '5220', '채용' => '245'],
+                '강원' => ['응시' => '1310', '채용' => '162'],
+                '충북' => ['응시' => '1150', '채용' => '43'],
+                '충남' => ['응시' => '2490', '채용' => '147'],
+                '전북' => ['응시' => '1090', '채용' => '45'],
+                '전남' => ['응시' => '1600', '채용' => '45'],
+                '경북' => ['응시' => '1000', '채용' => '82'],
+                '경남' => ['응시' => '2380', '채용' => '75'],
+                '제주' => ['응시' => '1230', '채용' => '28']
+            ];
+
+            // 응시 데이터 더하기
+            if(empty($arr_base['stats_data']) === false) {
+                foreach ($arr_base['stats_data'] as $i_key => $i_val) {
+                    foreach ($graph_data as $j_key => $j_val) {
+                        if($j_key == str_replace('청', '', $i_val['Name'])) {
+                            $graph_data[$j_key]['응시'] += $i_val['Count'];
+                        }
+                    }
+                }
+            }
+
+        @endphp
         <div class="evtCtnsBox evt03">
             <div class="mapSec">
                 <ul class="tabs">
@@ -479,159 +512,157 @@
                     <li><a href="#area16"><span class="off">○ 경남</span><span class="on">● 경남</span></a></li>
                     <li><a href="#area17"><span class="off">○ 제주</span><span class="on">● 제주</span></a></li>                
                 </ul>                                 
-                
-                
 
                 <div id="area01" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>서울청</strong></li>
-                        <li><span>- 채용인원</span> <strong>773명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,678명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.2%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['서울']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['서울']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['서울']['응시'] / $graph_data['서울']['채용'])}} : 1</strong></li>
                     </ul>                    
                 </div>                              
 
                 <div id="area02" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>부산청</strong></li>
-                        <li><span>- 채용인원</span> <strong>154명</strong></li>
-                        <li><span>- 응시희망</span> <strong>218명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.4%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['부산']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['부산']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['부산']['응시'] / $graph_data['부산']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area03" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>대구청</strong></li>
-                        <li><span>- 채용인원</span> <strong>103명</strong></li>
-                        <li><span>- 응시희망</span> <strong>167명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.6%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['대구']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['대구']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['대구']['응시'] / $graph_data['대구']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area04" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>인천청</strong></li>
-                        <li><span>- 채용인원</span> <strong>243명</strong></li>
-                        <li><span>- 응시희망</span> <strong>267명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.1%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['인천']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['인천']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['인천']['응시'] / $graph_data['인천']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area05" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>광주청</strong></li>
-                        <li><span>- 채용인원</span> <strong>64명</strong></li>
-                        <li><span>- 응시희망</span> <strong>150명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.3%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['광주']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['광주']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['광주']['응시'] / $graph_data['광주']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area06" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>대전청</strong></li>
-                        <li><span>- 채용인원</span> <strong>52명</strong></li>
-                        <li><span>- 응시희망</span> <strong>132명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.5%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['대전']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['대전']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['대전']['응시'] / $graph_data['대전']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area07" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>울산청</strong></li>
-                        <li><span>- 채용인원</span> <strong>36명</strong></li>
-                        <li><span>- 응시희망</span> <strong>125명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>3.5%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['울산']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['울산']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['울산']['응시'] / $graph_data['울산']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area08" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기남부청</strong></li>
-                        <li><span>- 채용인원</span> <strong>354명</strong></li>
-                        <li><span>- 응시희망</span> <strong>869명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.5%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기남부']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기남부']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경기남부']['응시'] / $graph_data['경기남부']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area09" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기북부청</strong></li>
-                        <li><span>- 채용인원</span> <strong>231명</strong></li>
-                        <li><span>- 응시희망</span> <strong>522명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.3%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기북부']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기북부']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경기북부']['응시'] / $graph_data['경기북부']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area10" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
-                        <li><span>- 채용인원</span> <strong>159명</strong></li>
-                        <li><span>- 응시희망</span> <strong>131명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>0.8%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['강원']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['강원']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['강원']['응시'] / $graph_data['강원']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area11" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>충북청</strong></li>
-                        <li><span>- 채용인원</span> <strong>39명</strong></li>
-                        <li><span>- 응시희망</span> <strong>115명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.9%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['충북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['충북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['충북']['응시'] / $graph_data['충북']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area12" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>충남청</strong></li>
-                        <li><span>- 채용인원</span> <strong>137명</strong></li>
-                        <li><span>- 응시희망</span> <strong>249명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.8%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['충남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['충남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['충남']['응시'] / $graph_data['충남']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area13" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>전북청</strong></li>
-                        <li><span>- 채용인원</span> <strong>42명</strong></li>
-                        <li><span>- 응시희망</span> <strong>109명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>2.6%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['전북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['전북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['전북']['응시'] / $graph_data['전북']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area14" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>전남청</strong></li>
-                        <li><span>- 채용인원</span> <strong>42명</strong></li>
-                        <li><span>- 응시희망</span> <strong>160명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>3.8%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['전남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['전남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['전남']['응시'] / $graph_data['전남']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area15" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경북청</strong></li>
-                        <li><span>- 채용인원</span> <strong>79명</strong></li>
-                        <li><span>- 응시희망</span> <strong>100명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.3%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경북']['응시'] / $graph_data['경북']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area16" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경남청</strong></li>
-                        <li><span>- 채용인원</span> <strong>79명</strong></li>
-                        <li><span>- 응시희망</span> <strong>100명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>1.3%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경남']['응시'] / $graph_data['경남']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area17" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>제주청</strong></li>
-                        <li><span>- 채용인원</span> <strong>25명</strong></li>
-                        <li><span>- 응시희망</span> <strong>123명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>4.9%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['제주']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['제주']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['제주']['응시'] / $graph_data['제주']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
@@ -662,35 +693,35 @@
                             <tr>
                                 <th>
                                     <ul>
-                                        <li>1,800</li>
-                                        <li>1,600</li>
-                                        <li>1,400</li>
-                                        <li>1,200</li>
-                                        <li>1,000</li>
-                                        <li>800</li>
-                                        <li>600</li>
-                                        <li>400</li>
-                                        <li>200</li>
+                                        <li>1,8000</li>
+                                        <li>1,6000</li>
+                                        <li>1,4000</li>
+                                        <li>1,2000</li>
+                                        <li>1,0000</li>
+                                        <li>8000</li>
+                                        <li>6000</li>
+                                        <li>4000</li>
+                                        <li>2000</li>
                                         <li>0</li>
                                     </ul>
                                 </th>
-                                <td><div style="height:50%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:40.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:32.5%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.8%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:5.2%"> </div></td>
-                                <td><div style="height:65.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
+                                <td><div style="height:{{$graph_data['서울']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['부산']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['대구']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['인천']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['광주']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['대전']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['울산']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경기남부']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경기북부']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['강원']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['충북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['충남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['전북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['전남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['제주']['응시']/20000*100}}%"> </div></td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -716,23 +747,23 @@
                             </tr>
                             <tr>
                                 <th>응시희망청 인원</th>
-                                <th>1,678</th>
-                                <th>218</th>
-                                <th>167</th>
-                                <th>267</th>
-                                <th>150</th>
-                                <th>132</th>
-                                <th>125</th>
-                                <th>869</th>
-                                <th>522</th>
-                                <th>131</th>
-                                <th>115</th>
-                                <th>249</th>
-                                <th>109</th>
-                                <th>109</th>
-                                <th>238</th>
-                                <th>208</th>
-                                <th>123</th>
+                                <th>{{number_format($graph_data['서울']['응시'])}}</th>
+                                <th>{{number_format($graph_data['부산']['응시'])}}</th>
+                                <th>{{number_format($graph_data['대구']['응시'])}}</th>
+                                <th>{{number_format($graph_data['인천']['응시'])}}</th>
+                                <th>{{number_format($graph_data['광주']['응시'])}}</th>
+                                <th>{{number_format($graph_data['대전']['응시'])}}</th>
+                                <th>{{number_format($graph_data['울산']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경기남부']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경기북부']['응시'])}}</th>
+                                <th>{{number_format($graph_data['강원']['응시'])}}</th>
+                                <th>{{number_format($graph_data['충북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['충남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['전북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['전남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['제주']['응시'])}}</th>
                             </tr>
                         <tfoot>
                     </table> 

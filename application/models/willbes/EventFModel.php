@@ -1711,4 +1711,41 @@ class EventFModel extends WB_Model
         $query = $this->_conn->query('SELECT ' . $column . $from . $where);
         return $query->row(0)->numrows;
     }
+
+    /**
+     * 프로모션 신청 기타정보 통계 데이터 조회
+     * @param $el_idx
+     * @return mixed
+     */
+    public function getStatsEventMemberForEtcValue($el_idx)
+    {
+        if(empty($el_idx) === true) {
+            return false;
+        }
+
+        $column = "ST.result AS Name, COUNT(*) AS Count";
+        $from = "
+            FROM (
+                SELECT
+                   SUBSTRING_INDEX (SUBSTRING_INDEX(em.EtcValue, ',', numbers.n), ',', -1) AS result
+                FROM 
+                   (SELECT 1 n UNION ALL SELECT 2  
+                    UNION  ALL  SELECT  3  UNION  ALL SELECT 4 
+                    UNION  ALL  SELECT  5  UNION  ALL  SELECT  6
+                    UNION  ALL  SELECT  7  UNION  ALL  SELECT  8 
+                    UNION  ALL  SELECT  9 UNION  ALL  SELECT  10) numbers INNER JOIN (
+                        SELECT A.*
+                        FROM {$this->_table['event_member']} A
+                        LEFT OUTER JOIN {$this->_table['event_register']} B ON A.ErIdx = B.ErIdx
+                        LEFT OUTER JOIN {$this->_table['event_lecture']} C ON B.ElIdx = C.ElIdx
+                        WHERE C.ElIdx = ?
+                    ) AS em ON CHAR_LENGTH ( em.EtcValue ) - CHAR_LENGTH ( REPLACE ( em.EtcValue, ',', '' ))>= numbers.n-1
+                WHERE SUBSTRING_INDEX (SUBSTRING_INDEX(em.EtcValue,',',numbers.n),',',-1) != ''
+            ) ST
+        ";
+        $order_by_offset_limit = " GROUP BY ST.result ORDER BY COUNT(*) DESC";
+
+        return $this->_conn->query('SELECT ' . $column . $from . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
 }

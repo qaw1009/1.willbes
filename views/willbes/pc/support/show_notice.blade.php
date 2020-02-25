@@ -46,7 +46,7 @@
                                     </thead>
                                     <tbody>                                    
                                     <tr>
-                                        <td class="w-txt tx-left" colspan="3">
+                                        <td id="board_content" class="w-txt tx-left" colspan="3">
                                             {!! $data['Content'] !!}
                                         </td>
                                     </tr>
@@ -111,4 +111,26 @@
         {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+
+    <script>
+        // 이미지 팝업
+        $(document).ready(function() {
+            $('#board_content').find('img').attr('onclick', 'javascript:img_popup(this);');
+        });
+
+        function img_popup(image){
+            var obj = document.createElement('img');
+            obj.src=image.src;
+            var intWidth = obj.width+50; // 실제 이미지크기
+            var intHeight = obj.height;
+            var etc = 'width='+intWidth+',height='+intHeight+',scrollbars=yes,resizable=no';
+            var imageWin = window.open('', '',etc);
+            imageWin.focus();
+            imageWin.document.open();
+            imageWin.document.write('<html><body style="margin:0">');
+            imageWin.document.write('<a href=javascript:window.close()><img src="' + obj.src + '" border=0></a>');
+            imageWin.document.write('</body></html>');
+            imageWin.document.close();
+        }
+    </script>
 @stop

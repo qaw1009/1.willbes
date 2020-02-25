@@ -28,6 +28,8 @@
 
 .evt03{background:#2e2044;position:relative;}
 
+.evt03s{background:#a0415a;position:relative;}
+
 .evt04{background:#f0f0f0;}
 
 .YouTube {width:920px; margin:0 auto; text-align:center;position:absolute;left:50%;margin-left:-460px;bottom:-65px;}
@@ -74,16 +76,26 @@
 .YouTube2 .text05{left:770px;}
 .YouTube2:after {content:""; display:block; clear:both}
 
+.YouTube4 {width:920px; margin:0 auto; text-align:center;position:absolute;left:50%;margin-left:-460px;bottom:180px;}
+.YouTube4 li {display:inline;width:20%;padding-bottom:165px;}
+.YouTube4 li span {margin-top:20px; font-size:14px !important; font-weight:500 !important; color:#fff; letter-spacing:-1px;}
+.YouTube4 .text{position:absolute;left:50%;top:125px;line-height:20px;}
+.YouTube4 .text01{left:225px;}
+.YouTube4:after {content:""; display:block; clear:both}
+
 </style>
 
 
     <div class="evtContent NGR" id="evtContainer">     
 
+
+        {{--
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=255632" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_sky.png" alt="소방영어 특강">
             </a>
         </div>
+        --}}
             
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_top.jpg" alt="0원 무료특강">   
@@ -256,6 +268,22 @@
                     </a>    
                 </li>              
             </ul>          
+        </div>
+
+        <div class="evtCtnsBox evt03s">
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_03s.jpg" alt="이아림 소방영어 특강">
+            <ul class="YouTube4">
+                <li>
+                    <a href="#none;" target="_blank">
+                        <span>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_04_01.jpg" alt="">
+                        </span>
+                        <span class="text text01">『수의 일치 막판이론 / 강조문제 정리, 도치 막판이론 / 강조문제 정리,<br>
+                                                  품사구별 막판이론 및 활용문제 정리,  병렬구조 막판정리, 분사&태 막판정리』 정리 편
+                        </span>
+                    </a>    
+                </li>               
+            </ul>                      
         </div>
 
         <div class="evtCtnsBox evt04">

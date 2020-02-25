@@ -176,11 +176,13 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_sky.png" alt="pass구매하기">
                 </a>
             </li>
+            {{--
             <li style="padding-top:10px;">
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky2.png" alt="구매하기">
                 </a>
             </li>
+            --}}
         </ul> 
 
         <!-- 타이머 -->
@@ -263,21 +265,19 @@
                         <div>
                             <strong>105</strong>만원<br>
                             <input type="radio" id="y_pkg4_1" name="y_pkg" value="161569" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="161560" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="161559" onClick=""/> <label for="y_pkg4_4">95만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="161560" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>                           
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>119</strong>만원<br>
                             <input type="radio" id="y_pkg3_1" name="y_pkg" value="161568" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161566" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="161565" onClick=""/> <label for="y_pkg3_4">109만원 (10만원 즉시할인)</label><br>
+                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161566" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>                            
                         </div>
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200128.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1009_05_02_200128.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />

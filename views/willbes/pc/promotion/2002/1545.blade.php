@@ -828,6 +828,12 @@
     <script type="text/javascript">
 
         function fn_promotion_etc_submit() {
+
+            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
+                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+                return;
+            @endif
+
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/promotionEtcStore') !!}';
 
@@ -846,6 +852,12 @@
         }
 
         function fn_add_apply_submit() {
+
+            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
+                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+                return;
+            @endif
+
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/addApplyStore') !!}';
 

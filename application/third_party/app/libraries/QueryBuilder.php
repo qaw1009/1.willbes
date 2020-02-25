@@ -200,9 +200,10 @@ trait QueryBuilder
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param null|bool $escape
      * @return \CI_DB_query_builder
      */
-    public function makeQuery($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function makeQuery($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [], $escape = null)
     {
         $query = $this->makeWhere($conditions);
         $query = $query->from($table);
@@ -221,7 +222,7 @@ trait QueryBuilder
             $query = $query->offset($offset);
         }
 
-        return $query->select($column);
+        return $query->select($column, $escape);
     }
 
     /**
@@ -326,11 +327,12 @@ trait QueryBuilder
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param null|bool $escape
      * @return array|int
      */
-    public function getListResult($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function getListResult($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [], $escape = null)
     {
-        $query = $this->makeQuery($table, $column, $conditions, $limit, $offset, $order_by);
+        $query = $this->makeQuery($table, $column, $conditions, $limit, $offset, $order_by, $escape);
 
         return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->result_array();
     }
@@ -360,11 +362,12 @@ trait QueryBuilder
      * @param string $table 테이블명
      * @param string|boolean [$column 값이 true 인 경우 count 쿼리 실행]
      * @param array $conditions [query builder의 makeWhere 메소드에서 사용하는 배열]
+     * @param null|bool $escape
      * @return array
      */
-    public function getFindResult($table, $column = '*', $conditions = [])
+    public function getFindResult($table, $column = '*', $conditions = [], $escape = null)
     {
-        $query = $this->makeQuery($table, $column, $conditions, null, null, []);
+        $query = $this->makeQuery($table, $column, $conditions, null, null, [], $escape);
 
         return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->row_array();
     }

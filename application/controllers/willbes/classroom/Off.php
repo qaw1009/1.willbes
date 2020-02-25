@@ -348,4 +348,14 @@ class Off extends \app\controllers\FrontController
     }
 
 
+    /**
+     * 강의실좌석배정
+     * @return object|string
+     */
+    public function AssignSeat()
+    {
+        return $this->load->view('/classroom/off/layer/assign_seat',[
+
+        ]);
+    }
 }

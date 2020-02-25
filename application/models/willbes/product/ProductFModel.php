@@ -76,7 +76,9 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, RegDatm';
+
+            $column = ($learn_pattern === 'off_lecture_before' ? ' straight_join ' : null);
+            $column .= 'ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
@@ -153,10 +155,12 @@ class ProductFModel extends WB_Model
             }
         }
 
+        $escape = ($learn_pattern === 'off_lecture_before' ? false : null);
+
         if($order_by == 'random') {
             $this->_conn->order_by('id', 'RANDOM');
         }
-        return $this->_conn->getListResult($this->_table[$learn_pattern], $column . $add_column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table[$learn_pattern], $column . $add_column, $arr_condition, $limit, $offset, $order_by, $escape);
     }
 
     /**

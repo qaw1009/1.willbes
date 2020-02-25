@@ -81,6 +81,13 @@
                                             </dt>
                                         </dl>
                                         <div class="w-tit">{{$row['subProdName']}}</div>
+                                        {{-- TODO : 좌석배정 개발 --}}
+                                        {{--<ul class="seatsection">
+                                            <li><a href="javascript:;" onclick="AssignSeat('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')">좌석선택 ></a></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>--}}
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
@@ -129,7 +136,7 @@
                                 <col style="width: 120px;">
                             </colgroup>
                             <tbody>
-                            @forelse( $pkglist as $row )
+                            @forelse( $pkglist as $key => $row )
                                 <tr>
                                     <td class="w-data tx-left pl10">
                                         <div class="w-tit">{{$row['ProdName']}}</div>
@@ -139,6 +146,8 @@
                                     @if($row['PackTypeCcd'] == '648003')
                                         <td class="w-answer p_re">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
+                                            {{-- TODO : 좌석배정 개발 --}}
+                                            {{--<a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>--}}
                                         </td>
                                     @else
                                         <td class="w-answer p_re">
@@ -164,6 +173,30 @@
                                         </td>
                                     @endif
                                 </tr>
+
+                                {{-- TODO : 좌석배정 개발 --}}
+                                {{--<tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
+                                    <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                        @if (empty($row['subleclist']) === false)
+                                            @foreach($row['subleclist'] as $sub_key => $sub_row)
+                                                <div class="mb10">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
+                                                        </dt>
+                                                    </dl>
+                                                    <ul class="seatsection">
+                                                        <li><a href="javascript:;" onclick="AssignSeat('{{$sub_row['OrderIdx']}}','{{$sub_row['OrderProdIdx']}}')">좌석선택 ></a></li>
+                                                        <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                                        <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>--}}
                             @empty
                                 <tr>
                                     <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
@@ -175,6 +208,8 @@
                 </div>
             </div>
             <div id="profChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
+            </div>
+            <div id="seatChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
 
             <!-- willbes-Leclist -->
@@ -200,6 +235,11 @@
 
                 }
             });
+
+            //좌석선택
+            $('.onoffSeatBox').on('click', function () {
+                $('#seat_box_'+$(this).data('seat-box-id')).toggle();
+            });
         });
 
         function AssignProf(o,op)
@@ -221,6 +261,24 @@
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
 
+        }
+
+        function AssignSeat(o,op)
+        {
+            $("#seatChoice").html('');
+            $('#orderidx').val(o);
+            $('#orderprodidx').val(op);
+            url = "{{ site_url("/classroom/off/AssignSeat/") }}";
+            data = $('#postForm').serialize();
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#seatChoice").html(d).end();
+                    openWin('seatChoice')
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
         }
     </script>
 @stop

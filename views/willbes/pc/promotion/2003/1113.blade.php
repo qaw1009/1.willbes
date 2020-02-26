@@ -37,6 +37,7 @@
             font-size:15px;
             letter-spacing:-1px
         }
+        
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
             background:url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
@@ -158,10 +159,9 @@
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1550') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정</a></li>        
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">
@@ -195,10 +195,10 @@
                 <h3>군무원 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
-                        2019년도 군무원 5,600명 확대 채용 예정 !<br />
+                        2020년도 군무원 5,200명 역대급 확대 채용!<br />
                         오로지 군무원 합격에 최적화된 전담 교수진 &amp; 교재 !<br />
-                        업계 최대 직렬 보유 ! 총 15개 직렬 수험준비 가능 !<br />
-                        → 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 전산, 군사정보, 기술정보, 건축, 환경
+                        업계 최대 직렬 보유! 총 11개 직렬 수험준비 가능!<br />
+                        → 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 용접
                     </p>
                     <ul class="tabArmy">
                         <li><a href="#tab1">행정직</a></li>
@@ -741,9 +741,9 @@
                 <h3>소방직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
-                        2019년도 소방공무원 5,200명 확대 채용 예정 ! <br />
-                        소방시험의 어떤 난이도라도 꿰뚫을 수 있는 윌비스 소방 단독반 교수진 라인업 !<br />
-                        2019 소방공무원 절대 합격 공식 !
+                        2020년도 소방공무원 약 5,000명 역대급 확대 채용! <br />
+                        소방직 시험 어떤 난이도라도 꿰뚫을 수 있는 윌비스 불꽃소방 교수진 라인업!<br />
+                        2020 소방공무원 절대 합격 공식!
                     </p>
                     <table>
                         <col width="20%" />
@@ -821,7 +821,7 @@
                         직렬별 전문가로 구성된 기술직 TOP 교수진 !<br />
                         기술직에 최적화된 빠른 합격 노하우 전수 &amp; 초보부터 전공자까지 모두 이해 가능한 명 강의 !<br />
                         총 7개 직렬 수험준비 가능 !<br />
-                        → 전기, 전자, 통신, 토목, 기계, 보건, 전산
+                        → 전기, 전자, 통신, 토목, 기계, 보건
                     </p>
                     <table>
                         <col width="20%" />
@@ -895,9 +895,9 @@
                 <h3>일반행정직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
-                        2019년도 공무원 3만 3,000명 확대 채용 예정 ! <br />
-                        수험기간은 최대한 짧게, 짧은 만큼 보다 효율적인 학습으로 !<br />
-                        2019년, 공무원 합격의 꿈을 현실로 !
+                        공무원 3만 3,815명 확대 채용! <br />
+                        수험기간은 짧게, 짧은 만큼 보다 효율적인 학습으로!<br />
+                        2020년 공무원 합격의 꿈을 현실로!
                     </p>
                     <table>
                         <col width="20%" />
@@ -1094,8 +1094,9 @@
                                 @endforeach
                                 {{--{{$file_data['F']['file_real_name']}}--}}
                             @endif
-                            <li>③ 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
-                            <li>※ ①~③번 제출서류의 경우 교육시작일로부터 7일 이내 서류제출</li>
+                            
+                            <li>② 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
+                            <li>※ ①~②번 제출서류를 교육시작일로부터 7일 이내 제출하여야 함</li>
                             <li>교육과정 이수,  교육훈련과정 수료 후 14일 이내에 수료증 또는 교육수료 확인서 제출</li>
                             <li>※ 교육훈련과정 교육수료확인서</li>
                             <li>&nbsp;&nbsp;&nbsp;&nbsp;<span>발급시기</span> : 윌비스 PASS 상품은 수강일로부터 180일(6개월) 이후</li>

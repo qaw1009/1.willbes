@@ -208,14 +208,14 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            [정상수강시간] <input type="number" name="WorkBaseStudyPeriod" id="WorkBaseStudyPeriod" value="{{$data['WorkBaseStudyPeriod'] }}" required="required" class="form-control" title="정상수강시간" style="width:50px;"> 일
+                            [정상수강기간] <input type="number" name="WorkBaseStudyPeriod" id="WorkBaseStudyPeriod" value="{{$data['WorkBaseStudyPeriod'] }}" required="required" class="form-control" title="정상수강시간" style="width:50px;"> 일
                             <select name="WorkMultipleApply" id="WorkMultipleApply"  class="form-control" title="직장인 수강배수">
                                 @foreach($multiplelimit_ccd as $key => $val)
                                     <option value="{{$key}}" @if($data['WorkMultipleApply'] == $key) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>
                             &nbsp;&nbsp;&nbsp;
-                            [배수적용수간기간] <input type="text" name="WorkStudyPeriod" id="WorkStudyPeriod" value="@if($data['LecTypeCcd'] == '607003'){{$data['StudyPeriod']}}@endif" required="required" class="form-control" title="배수적용수간기간" style="width:50px;" readonly> 일
+                            [배수적용수강기간] <input type="text" name="WorkStudyPeriod" id="WorkStudyPeriod" value="@if($data['LecTypeCcd'] == '607003'){{$data['StudyPeriod']}}@endif" required="required" class="form-control" title="배수적용수간기간" style="width:50px;" readonly> 일
                             &nbsp;&nbsp;&nbsp;
                             [개강일] <input type="text" name="WorkStudyStartDate" id="WorkStudyStartDate" value='@if($data['LecTypeCcd'] == '607003'){{$data['StudyStartDate']}}@endif' class="form-control datepicker" title="개강일" style="width:100px;" readonly>&nbsp;&nbsp;&nbsp;
                         </div>

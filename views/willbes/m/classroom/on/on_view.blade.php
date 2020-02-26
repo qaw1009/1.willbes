@@ -37,7 +37,7 @@
                         </div>
                         <div class="w-info tx-gray bdt-bright-gray">
                             <dl>
-                                <dt><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }}</dt><br/>
+                                <dt><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</dt><br/>
                                 <dt><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span><!-- (1강/20강) --><span class="row-line">|</span>
                                     <strong>잔여기간 :</strong> <span class="tx-blue">
                                         @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
@@ -106,7 +106,9 @@
                                                 <dt>잔여시간 : <span class="tx-blue">{{$row['remaintime']}}</span></dt>
                                             </dl>
                                             <ul class="w-free NGEB">
-                                                @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+                                                @if($lec['canWeekView'] == false)
+                                                    <li class="btn_black_line"><a>직장인반</a></li>
+                                                @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                                     <li class="btn_black_line"><a>수강불가</a></li>
                                                 @else
                                                     @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
@@ -172,7 +174,8 @@
             </a>
         </div>
         <!-- Topbtn -->
-        @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+        @if($lec['canWeekView'] == false)
+        @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
         @else
             @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
             <div id="Fixbtn" class="Fixbtn three">

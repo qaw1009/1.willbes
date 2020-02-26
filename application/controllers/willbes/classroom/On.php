@@ -630,6 +630,12 @@ class On extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
+        $lec['canWeekView'] = true;
+        if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고
+            $lec['canWeekView'] = $this->_isHolidayView($lec);
+        }
+
         if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
                 'EQ' => [
@@ -1656,5 +1662,56 @@ class On extends \app\controllers\FrontController
     }
 
 
+    /**
+     * 전달받은 강좌의 수강 가능한 시간인지 확인한다.
+     * @param $lec
+     * @return bool
+     */
+    private function _isHolidayView($lec)
+    {
+        $weekday = intval(date('w'));
+        $hour = intval(date('H'));
+
+        $holiday_stime = intval($lec['WorkHoliDayStartTime']);
+        $holiday_etime = intval($lec['WorkHoliDayEndTime']);
+        $day_stime = intval($lec['WorkWeekDayStartTime']);
+        $day_etime = intval($lec['WorkWeekDayEndTime']);
+
+        if(in_array($weekday, [6,7]) == true){ // 토, 일
+            if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
+                if($hour >= $holiday_stime && $hour <= $holiday_etime){
+                    return true;
+                }
+            } else { // 역방향 시간 18시 ~ 새벽 1시
+                if($hour >= $holiday_stime || $hour <= $holiday_etime){
+                    return true;
+                }
+            }
+
+        } elseif($this->classroomFModel->getHoliday() == 1){ // 휴일로 등록된날짜
+            if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
+                if($hour >= $holiday_stime && $hour <= $holiday_etime){
+                    return true;
+                }
+            } else { // 역방향 시간 18시 ~ 새벽 1시
+                if($hour >= $holiday_stime || $hour <= $holiday_etime){
+                    return true;
+                }
+            }
+
+        } else { // 그렇지 않으면 평일
+            if($day_stime < $day_etime){ // 일반적인 시간 1시 ~ 8시
+                if($hour >= $day_stime && $hour <= $day_etime){
+                    return true;
+                }
+            } else { // 역으로 된 시간 18시 ~ 새벽 4
+                if($hour >= $day_stime || $hour <= $day_etime){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 }

@@ -1185,4 +1185,17 @@ class ClassroomFModel extends WB_Model
         return ($iscount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+
+    /**
+     * 오늘이 휴일로 등록되어있는지 갯수를 돌려줌
+     * @return mixed
+     */
+    public function getHoliday()
+    {
+        $query = "SELECT COUNT(*) AS rownums FROM lms_holiday WHERE IsUse = 'Y' AND hDate = CURDATE()";
+        $result = $this->_conn->query($query);
+
+        return $result->row(0)->rownums;
+    }
+
 }

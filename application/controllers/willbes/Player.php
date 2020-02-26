@@ -86,6 +86,13 @@ class Player extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
+        if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고
+            if($this->_isHolidayView($lec) == false) {
+                show_alert('직장인반은 수강이 불가능한 시간입니다.', 'close');
+            }
+        }
+
         // 종합반이면 종합반으로 부터 일시중지 등 정보 얻어오기
         if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
@@ -1143,6 +1150,13 @@ class Player extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
+        if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고
+            if($this->_isHolidayView($lec) == false) { //
+                return $this->StarplayerResult(true,'직장인반은 수강이 불가능한 시간입니다.');
+            }
+        }
+
         // 종합반이면 종합반으로 부터 일시중지 등 정보 얻어오기
         if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
@@ -1617,6 +1631,13 @@ class Player extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
+        if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고
+            if($this->_isHolidayView($lec) == false) { //
+                return $this->json_error('직장인반은 수강이 불가능한 시간입니다.');
+            }
+        }
+
         // 종합반이면 종합반으로 부터 일시중지 등 정보 얻어오기
         if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
@@ -1889,6 +1910,12 @@ class Player extends \app\controllers\FrontController
             $params .= $key.'='.$value.'&';
         }
 
+        // 모바일 시간 오류로 데이터 검증 추가
+        if(is_numeric($latest_playtime) == false){ $latest_playtime = 0; }
+        if($latest_playtime < 0){ $latest_playtime = 0; }
+        // 모바일 시간 오류로 데이터 검증 추가
+        if(is_numeric($latest_ratio_playtime) == false){ $latest_ratio_playtime = 0; }
+        if($latest_ratio_playtime < 0){ $latest_ratio_playtime = 0; }
 
         switch($event){
             case 'begin_app':
@@ -2010,6 +2037,14 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
+
+        // 모바일 시간 오류로 데이터 검증 추가
+        if(is_numeric($playback_duration) == false){ $playback_duration = 0; }
+        if($playback_duration < 0){ $playback_duration = 0; }
+        // 모바일 시간 오류로 데이터 검증 추가
+        if(is_numeric($actual_playback_duration) == false){ $actual_playback_duration = 0; }
+        if($actual_playback_duration < 0){ $actual_playback_duration = 0; }
+
         //logger($params);
         switch($event){
             case 'downloaded':
@@ -2022,7 +2057,7 @@ class Player extends \app\controllers\FrontController
                 // 다운로드강의 재생 시작할때
 
                 // 재생가능한 강좌인지 체크
-                $lec = $this->checkOrderProduct($content_id,  true);
+                $lec = $this->checkOrderProduct($content_id,true);
 
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
@@ -2178,6 +2213,13 @@ class Player extends \app\controllers\FrontController
         }
 
         $lec = $lec[0];
+
+        // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
+        if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고
+            if($this->_isHolidayView($lec) == false) { //
+                return $this->StarplayerResult(true,'직장인반은 수강이 불가능한 시간입니다.', '', $isApp);
+            }
+        }
 
         // 종합반이면 종합반으로 부터 일시중지 등 정보 얻어오기
         if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
@@ -2537,5 +2579,57 @@ class Player extends \app\controllers\FrontController
         } while($i > 0);
 
         return $protocol.$str;
+    }
+
+    /**
+     * 전달받은 강좌의 수강 가능한 시간인지 확인한다.
+     * @param $lec
+     * @return bool
+     */
+    private function _isHolidayView($lec)
+    {
+        $weekday = intval(date('w'));
+        $hour = intval(date('H'));
+
+        $holiday_stime = intval($lec['WorkHoliDayStartTime']);
+        $holiday_etime = intval($lec['WorkHoliDayEndTime']);
+        $day_stime = intval($lec['WorkWeekDayStartTime']);
+        $day_etime = intval($lec['WorkWeekDayEndTime']);
+
+        if(in_array($weekday, [6,7]) == true){ // 토, 일
+            if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
+                if($hour >= $holiday_stime && $hour <= $holiday_etime){
+                    return true;
+                }
+            } else { // 역방향 시간 18시 ~ 새벽 1시
+                if($hour >= $holiday_stime || $hour <= $holiday_etime){
+                    return true;
+                }
+            }
+
+        } elseif($this->classroomFModel->getHoliday() == 1){ // 휴일로 등록된날짜
+            if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
+                if($hour >= $holiday_stime && $hour <= $holiday_etime){
+                    return true;
+                }
+            } else { // 역방향 시간 18시 ~ 새벽 1시
+                if($hour >= $holiday_stime || $hour <= $holiday_etime){
+                    return true;
+                }
+            }
+
+        } else { // 그렇지 않으면 평일
+            if($day_stime < $day_etime){ // 일반적인 시간 1시 ~ 8시
+                if($hour >= $day_stime && $hour <= $day_etime){
+                    return true;
+                }
+            } else { // 역으로 된 시간 18시 ~ 새벽 4
+                if($hour >= $day_stime || $hour <= $day_etime){
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

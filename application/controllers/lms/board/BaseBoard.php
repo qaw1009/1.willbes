@@ -361,7 +361,7 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $cnt
      * @return string
      */
-    protected function _getBoardForContent($content, $file_path, $file_name, $cnt = 7)
+    protected function _getBoardForContent($content, $file_path, $file_name, $cnt = 10)
     {
         $arr_file_path = explode(',', $file_path);
         $arr_file_name = explode(',', $file_name);

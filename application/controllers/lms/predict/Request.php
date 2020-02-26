@@ -103,7 +103,7 @@ class Request extends \app\controllers\BaseController
         //설문목록 추출 : 2019-08-12 조규호
         list($surveyList, $count) = $this->predictModel->surveyList(null, '', '');
 
-
+        $prod_data = [];
         if(empty($PredictIdx) === false){
             $method = "PUT";
             $data = $this->predictModel->getProduct($PredictIdx);

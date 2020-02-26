@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="ln_solid mt-5"></div>
-                @if($_is_order === true)
+                @if($is_order === true)
                     {{-- 주문수정 --}}
                     <div class="row">
                         <div class="col-md-6">
@@ -182,9 +182,9 @@
                                             <tr id="prod_{{ $order_prod_row['ProdCode'] }}">
                                                 <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                                 <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
-                                                    <div class="red inline-block">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</div>
                                                     <input type="hidden" name="prod_code[]" value="{{ $order_prod_row['ProdCode'] }}:{{ $order_prod_row['ProdType'] }}:{{ $order_prod_row['LearnPatternCcd'] }}"/>
                                                     @if($order_prod_row['ProdType'] == 'reading_room' || $order_prod_row['ProdType'] == 'locker')
+                                                        <div class="red inline-block">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</div>
                                                         <br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="{{ $order_prod_row['ProdType'] }}" data-prod-code="{{ $order_prod_row['ProdCode'] }}" data-target-order-idx="{{ $order_prod_row['TargetOrderIdx'] }}"> {{ $order_prod_row['ProdTypeCcdName'] }} 배정</button>
                                                     @endif
                                                     <input type="hidden" name="target_order_idx[]" value="{{ $order_prod_row['TargetOrderIdx'] }}"/>
@@ -253,11 +253,11 @@
                         <div class="form-group bdt-line bg-odd">
                             <label class="control-label col-md-1 pt-5 pl-20">결제수단</label>
                             <div class="col-md-9 form-inline">
-                                <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card'] }}" title="카드" disabled="disabled"/> <label class="input-label">카드</label>
-                                <input type="radio" id="pay_method_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_cash'] }}" title="현금" disabled="disabled"/> <label class="input-label">현금</label>
-                                <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
-                                <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label">카드+현금</label>
-                                <input type="radio" id="pay_method_zero" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_zero'] }}" title="0원결제" @if($_is_order === true && $data['order']['tRealPayPrice'] < 1) checked="checked" @else disabled="disabled" @endif/> <label class="input-label mr-50">0원결제</label>
+                                <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['visit_card'] }}" title="카드" disabled="disabled"/> <label class="input-label">카드</label>
+                                <input type="radio" id="pay_method_cash" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['visit_cash'] }}" title="현금" disabled="disabled"/> <label class="input-label">현금</label>
+                                <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
+                                <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label">카드+현금</label>
+                                <input type="radio" id="pay_method_zero" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['visit_zero'] }}" title="0원결제" @if($is_order === true && $data['order']['tRealPayPrice'] < 1) checked="checked" @else disabled="disabled" @endif/> <label class="input-label mr-50">0원결제</label>
                                 [카드선택]
                                 <select class="form-control input-sm ml-5" name="card_ccd" disabled="disabled" title="카드선택">
                                     <option value="">카드선택</option>
@@ -277,11 +277,12 @@
                         </div>
                         <div class="text-center mt-20">
                             <button type="submit" name="btn_visit_order" class="btn btn-success">수강등록하기</button>
+                            <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                         </div>
                     </div>
                 </div>
             </form>
-            @if($_is_order === true)
+            @if($is_order === true)
                 <div class="ln_solid mt-5"></div>
                 <div class="row">
                     {{-- 주문 메모 --}}
@@ -320,10 +321,6 @@
                     </table>
                 </div>
             </div>
-            <div class="ln_solid"></div>
-            <div class="text-center">
-                <button class="btn btn-primary" type="button" id="btn_list">목록</button>
-            </div>
         </div>
     </div>
     <script src="/public/js/lms/search_member.js"></script>
@@ -353,7 +350,7 @@
                 var is_pay_check = true;
 
                 {{-- 주문등록 상품 체크 --}}
-                @if($_is_order === false)
+                @if($is_order === false)
                     if ($regi_form.find('[name="prod_code[]"]').length < 1) {
                         alert('상품을 선택해 주세요.');
                         return false;
@@ -439,7 +436,7 @@
             };
 
         {{-- 주문등록 --}}
-        @if($_is_order === false)
+        @if($is_order === false)
             // 회원선택 결과 이벤트
             $regi_form.on('change', 'input[name="mem_idx"]', function() {
                 // 회원정보 셋팅
@@ -617,6 +614,13 @@
                     }
                 }, showValidateError, false, 'POST');
             };
+
+            // 재주문일 경우 강좌할인율 조회
+            @if($target_type == 'reorder')
+                $(function() {
+                    getLectureDiscRate();
+                });
+            @endif
         @endif
 
             // 강좌할인율 초기화
@@ -877,7 +881,7 @@
                         return addComma(data);
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
+                        return data + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
                     {'data' : 'RegAdminName'}
                 ]

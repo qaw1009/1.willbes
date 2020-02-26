@@ -22,23 +22,10 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_top_bg.jpg) no-repeat center top;}	
-        .evt_top span {position:absolute; top:790px; width:217px; z-index:10; left:50%;}
-        .evt_top span.img01 {margin-left:-390px; animation: sp01 1.5s linear infinite;}
-        @@keyframes sp01{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-        .evt_top span.img02 {margin-left:-105px; animation: sp02 1.5s linear infinite;} 
-        @@keyframes sp02{
-		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
-        }
-        .evt_top span.img03 {margin-left:167px; animation: sp03 1.5s linear infinite;}
-        @@keyframes sp03{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_01_bg.jpg) no-repeat center top;}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_02_bg.jpg) no-repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_03_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1549_top_bg.jpg) no-repeat center top;}	
+		.evt_01 {background:#fff}
+        .evt_02 {background:#eee}
+        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1549_03_bg.jpg) no-repeat center top;}
         .evt_04 {}
         .evt_05 {}
         .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
@@ -70,38 +57,34 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top.jpg" alt="황종휴 경제학" />
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img1.png" alt="혜택1" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img2.png" alt="혜택2" /></span>
-            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img3.png" alt="혜택3" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_top.jpg" alt="경제학 예비순환" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1544" border="0" />
-            <map name="Map1544" id="Map1544">
-                <area shape="rect" coords="264,796,861,967" href="#evt_04" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1549a" border="0" />
+            <map name="Map1549a" id="Map1549a">
+                @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @else
+                    <area shape="rect" coords="349,474,774,559" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50769/?subject_idx=1480&subject_name=경제학&board_idx=257787&tab=notice') }}" target="_blank" alt="커리큘럼" />
+                @endif
             </map>
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_02.jpg" alt="3단계 기본기 완성" />
-		</div>
-
-        <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_03.jpg" alt="경제학 예비순환" />
-        </div>
-
-        <div class="evtCtnsBox evt_04" id="evt_04">
-        @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
-        @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
-        @else
-            <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
-        @endif
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_04.jpg" alt="특별 이벤트" />
-            </a>
-        </div>     
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1549_02.jpg" alt="강의특징" usemap="#Map1549b" border="0" />
+            <map name="Map1549b" id="Map1549b">
+            @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162176') }}" target="_blank" alt="강의신청하기" />
+            @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162177') }}" target="_blank" alt="강의신청하기" />
+            @else
+                <area shape="rect" coords="246,1945,876,2054" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/162176') }}" target="_blank" alt="강의신청하기" />
+            @endif
+            </map>
+		</div>    
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
@@ -109,13 +92,14 @@
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
 					<li>
-                        2019년 진행된 경제학 예비순환(미시+거시/19년 4월진행) 강의신청시 <br>
-                        - 수강료 30%할인된 금액인 445,900원으로 자동 결제됩니다.<br>
-                        - 무료로 제공되는 교재는 강의신청시 무료로 주문 가능합니다.<br>
-                        - 2019년 최종합격자자 전하는 합격이야기(합격수기 모음집)는 2월 25일 일괄 발송예정입니다.<br>
-                        - 경제학 10% 동영상 할인쿠폰은 경제학, 재정학, 국제경제학 강의 신청시 이용하실 수 있으며 강의신청시 자동발급됩니다.(쿠폰 유효기간 2020년 7월 31일까지)
+                        <span class="tx-sky-blue">2020년 3월 30일부터 진행되는 경제학 예비순환 강의 선접수 이벤트</span>입니다. <br>
+                        - 2019년 최종합격자자 전하는 합격이야기(합격수기 모음집)는 3월 4일 일괄 발송예정입니다.<br>
+                        [재경직렬을 준비하는 분들은 배송요청사항란에 재경직렬 준비로 적어주시면 재경직렬 합격수기 모음집이 발송됩니다.]<br>
+                        - 경제학 15% 동영상 할인쿠폰은 경제학, 재정학, 국제경제학 강의 신청시 이용하실 수 있으며 강의신청시 자동발급됩니다.(쿠폰 유효기간 2020년 7월 31일까지)<br>
+                        - 경제학을 위한 기초수학 동영상은 신청시 수강하실 수 있게 무료등록됩니다.
                     </li>
-                    <li>이벤트 기간은 ~ 2020년 2월 23일(일) 24:00까지 입니다.</li>
+                    <li>수강시작일은 강의신청시 60일범위내에서 지정하실 수 있습니다.</li>
+                    <li>이벤트 기간은 ~ 2020년 3월 1일(일) 24:00까지 입니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
@@ -128,8 +112,7 @@
 				<ul>
 					<li>강의는 선택과 집중의 다이제스트 경제학(신/구판모두가능)으로 진행하시며 무료제공 되는 교재도 주문하셔야 합니다.</li>
                     <li>교재는 경제학 예비순환 강의신청 후 『내 강의실 바로가기』 → 강의보기를 클릭하셔도 주문하실 수 있습니다.</li>
-                    <li>무료로 제공되는 ~보충+판서 교재(제본)는 주문을 해주셔야 되며, 해당 교재 주문시 별도로 업로드 된 수업자료를 다운받으시거나 출력하실 필요가 없습니다.<br>
-                        (업로드된 자료와 100%동일)</li>
+                    <li>무료로 제공되는 다이제스트경제학 실전문제해설집(이전판소지자용)+경제학 주요 그래프 MAP자료는 실강 개강일에 무료로 주문하실 수 있게 등록될 예정입니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>환불관련</strong></div>
 				<ul>

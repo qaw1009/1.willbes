@@ -357,7 +357,7 @@ class MockResultFModel extends WB_Model
                     INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
                     INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
                     INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-                    WHERE PM.ProdCode = '{$prod_code}'
+                    WHERE PM.ProdCode = '{$prod_code}' AND Mp.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                     GROUP BY MP.MpIdx
                 ) AS A
                 INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
@@ -409,7 +409,7 @@ class MockResultFModel extends WB_Model
                         INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
                         INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
                         INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-                        WHERE PM.ProdCode = '{$prod_code}'
+                        WHERE PM.ProdCode = '{$prod_code}' AND Mp.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                         GROUP BY MP.MpIdx
                     ) AS A
                     INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'

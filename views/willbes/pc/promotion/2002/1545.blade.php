@@ -72,11 +72,11 @@
         .evt02 div table tbody th:last-child,
         .evt02 div table tbody td:last-child {border-right:0;}
         .evt02 ul { width:1000px; margin:50px auto 0}
-        .evt02 li {display:inline; width:50%; float:left}
+        .evt02 li {display:inline;margin-left:25px;}
         .evt02 ul:after {content:""; display:block; clear:both}
 
         .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
-            padding-bottom:100px; height:1200px} 
+            padding-bottom:100px; height:1200px;opacity:0.05;}
         .evt03 .mapSec {width:1120px; height:400px; margin:0 auto; position:relative}
         .evt03 .tabs li {position:absolute; z-index:10; text-align:left}
         .evt03 .tabs li a {display:block; padding:3px 5px; font-weight:bold}
@@ -159,6 +159,9 @@
 
         .graph h5 {color:#fff; text-align:center; font-size:24px}
         .graph .txtinfo01 {color:#fff; text-align:center;}
+
+        .first_confirm{background:#FFFF01;width:400px;height:100px;line-height:45px;margin:0 auto;border-radius:50px;position:absolute;left:50%;margin-left:-200px;bottom:2420px;}
+        .first_confirm span{font-size:25px;font-weight:bold;}
 
         .evt04 {padding-bottom:150px; background:#393a3e} 
         .evt04 .slide_con {position:relative; width:854px; margin:0 auto}
@@ -320,6 +323,55 @@
                             <col width="20%">
                         </colgroup>
                         <tbody>
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @php $col_cnt = 5; @endphp
+                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
+                                @if($i==0 || $i%$col_cnt == 0)
+                                    @php $tr_i = $i; @endphp
+                                    <tr>
+                                @endif
+                                    <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
+                                @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
+                                    @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
+                                        @php
+                                            $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
+                                            if($remain_cnt == $col_cnt) $remain_cnt = 0;
+                                        @endphp
+                                        @if($remain_cnt != 0)
+                                            @for($r=0; $r < $remain_cnt; $r++)
+                                                <td></td>
+                                            @endfor
+                                        @endif
+                                    @endif
+                                    </tr>
+                                    @php $temp_j = 0; @endphp
+                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
+                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
+                                            <tr>
+                                        @endif
+                                            <td>
+                                                <div>
+                                                    @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
+                                                        <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span>
+                                                    @endif
+                                                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="">
+                                                </div>
+                                            </td>
+                                        @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
+                                            @if(empty($remain_cnt) === false && $remain_cnt != 0)
+                                                @for($r=0; $r < $remain_cnt; $r++)
+                                                    <td></td>
+                                                @endfor
+                                            @endif
+                                            </tr>
+                                        @endif
+                                        @php $temp_j++; @endphp
+                                    @endfor
+                                @endif
+
+                            @endfor
+                        @endif
+                        {{--
                             <tr>
                                 <td>2/24</td>
                                 <td>2/25</td>
@@ -330,31 +382,31 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
@@ -369,35 +421,36 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/20/1545_02_img02.png" alt="마감"></span> @endif
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
                                         <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
+                            --}}
                         </tbody>
                     </table>
                 </div>
@@ -407,8 +460,42 @@
                 </ul>            
             </div>
         </form>
-        
-        <div class="evtCtnsBox evt03">
+        @php
+            // *** 그래프 데이터 ***
+            $graph_data =  [
+                '서울' => ['응시' => '16780', '채용' => '804'],
+                '부산' => ['응시' => '2180', '채용' => '157'],
+                '대구' => ['응시' => '1670', '채용' => '106'],
+                '인천' => ['응시' => '2670', '채용' => '246'],
+                '광주' => ['응시' => '1500', '채용' => '67'],
+                '대전' => ['응시' => '1320', '채용' => '55'],
+                '울산' => ['응시' => '1250', '채용' => '40'],
+                '경기남부' => ['응시' => '8690', '채용' => '380'],
+                '경기북부' => ['응시' => '5220', '채용' => '245'],
+                '강원' => ['응시' => '1310', '채용' => '162'],
+                '충북' => ['응시' => '1150', '채용' => '43'],
+                '충남' => ['응시' => '2490', '채용' => '147'],
+                '전북' => ['응시' => '1090', '채용' => '45'],
+                '전남' => ['응시' => '1600', '채용' => '45'],
+                '경북' => ['응시' => '1000', '채용' => '82'],
+                '경남' => ['응시' => '2380', '채용' => '75'],
+                '제주' => ['응시' => '1230', '채용' => '28']
+            ];
+
+            // 응시 데이터 더하기
+            if(empty($arr_base['stats_data']) === false) {
+                foreach ($arr_base['stats_data'] as $i_key => $i_val) {
+                    foreach ($graph_data as $j_key => $j_val) {
+                        if($j_key == str_replace('청', '', $i_val['Name'])) {
+                            $graph_data[$j_key]['응시'] += $i_val['Count'];
+                        }
+                    }
+                }
+            }
+
+        @endphp
+        <div class="evtCtnsBox evt03 stats-div">
+
             <div class="mapSec">
                 <ul class="tabs">
                     <li><a href="#area01" class="active"><span class="off">○ 서울</span><span class="on">● 서울</span></a></li>
@@ -429,38 +516,162 @@
                     <li><a href="#area16"><span class="off">○ 경남</span><span class="on">● 경남</span></a></li>
                     <li><a href="#area17"><span class="off">○ 제주</span><span class="on">● 제주</span></a></li>                
                 </ul>                                 
-                
-                
 
                 <div id="area01" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>서울청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,678명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>31.0%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['서울']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['서울']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['서울']['응시'] / $graph_data['서울']['채용'])}} : 1</strong></li>
                     </ul>                    
                 </div>                              
 
                 <div id="area02" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>부산청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['부산']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['부산']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['부산']['응시'] / $graph_data['부산']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div id="area03" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>대구청</strong></li>
-                        <li><span>- 채용인원</span> <strong>00명</strong></li>
-                        <li><span>- 응시희망</span> <strong>1,008명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>21.0%</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['대구']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['대구']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['대구']['응시'] / $graph_data['대구']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area04" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>인천청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['인천']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['인천']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['인천']['응시'] / $graph_data['인천']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area05" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>광주청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['광주']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['광주']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['광주']['응시'] / $graph_data['광주']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area06" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>대전청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['대전']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['대전']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['대전']['응시'] / $graph_data['대전']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area07" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>울산청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['울산']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['울산']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['울산']['응시'] / $graph_data['울산']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area08" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경기남부청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기남부']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기남부']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경기남부']['응시'] / $graph_data['경기남부']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area09" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경기북부청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기북부']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기북부']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경기북부']['응시'] / $graph_data['경기북부']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area10" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['강원']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['강원']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['강원']['응시'] / $graph_data['강원']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area11" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>충북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['충북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['충북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['충북']['응시'] / $graph_data['충북']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area12" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>충남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['충남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['충남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['충남']['응시'] / $graph_data['충남']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area13" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>전북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['전북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['전북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['전북']['응시'] / $graph_data['전북']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area14" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>전남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['전남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['전남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['전남']['응시'] / $graph_data['전남']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area15" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경북청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경북']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경북']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경북']['응시'] / $graph_data['경북']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area16" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>경남청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경남']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경남']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경남']['응시'] / $graph_data['경남']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area17" class="areaCts">
+                    <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>제주청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['제주']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['제주']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['제주']['응시'] / $graph_data['제주']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 
                 <div class="graph">     
-                    <h5 class="NGEB">- 2020년 1차 응시 희망청 집계 -</h5>
+                    <h5 class="NGEB">- 2020년 1차 경찰채용 예상 지원청 - </h5>
                     <table cellspacing="0" cellpadding="0">
                         <colgroup>
                             <col style="width:12%">
@@ -486,35 +697,35 @@
                             <tr>
                                 <th>
                                     <ul>
-                                        <li>1,800</li>
-                                        <li>1,600</li>
-                                        <li>1,400</li>
-                                        <li>1,200</li>
-                                        <li>1,000</li>
-                                        <li>800</li>
-                                        <li>600</li>
-                                        <li>400</li>
-                                        <li>200</li>
+                                        <li>18,000</li>
+                                        <li>16,000</li>
+                                        <li>14,000</li>
+                                        <li>12,000</li>
+                                        <li>10,000</li>
+                                        <li>8000</li>
+                                        <li>6000</li>
+                                        <li>4000</li>
+                                        <li>2000</li>
                                         <li>0</li>
                                     </ul>
                                 </th>
-                                <td><div style="height:50%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:40.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:32.5%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.8%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
-                                <td><div style="height:5.2%"> </div></td>
-                                <td><div style="height:65.2%"> </div></td>
-                                <td><div style="height:15.2%"> </div></td>
+                                <td><div style="height:{{$graph_data['서울']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['부산']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['대구']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['인천']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['광주']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['대전']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['울산']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경기남부']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경기북부']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['강원']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['충북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['충남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['전북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['전남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경북']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['경남']['응시']/20000*100}}%"> </div></td>
+                                <td><div style="height:{{$graph_data['제주']['응시']/20000*100}}%"> </div></td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -540,30 +751,41 @@
                             </tr>
                             <tr>
                                 <th>응시희망청 인원</th>
-                                <th>1,678</th>
-                                <th>218</th>
-                                <th>167</th>
-                                <th>267</th>
-                                <th>150</th>
-                                <th>132</th>
-                                <th>125</th>
-                                <th>869</th>
-                                <th>522</th>
-                                <th>131</th>
-                                <th>115</th>
-                                <th>249</th>
-                                <th>109</th>
-                                <th>109</th>
-                                <th>238</th>
-                                <th>208</th>
-                                <th>123</th>
+                                <th>{{number_format($graph_data['서울']['응시'])}}</th>
+                                <th>{{number_format($graph_data['부산']['응시'])}}</th>
+                                <th>{{number_format($graph_data['대구']['응시'])}}</th>
+                                <th>{{number_format($graph_data['인천']['응시'])}}</th>
+                                <th>{{number_format($graph_data['광주']['응시'])}}</th>
+                                <th>{{number_format($graph_data['대전']['응시'])}}</th>
+                                <th>{{number_format($graph_data['울산']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경기남부']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경기북부']['응시'])}}</th>
+                                <th>{{number_format($graph_data['강원']['응시'])}}</th>
+                                <th>{{number_format($graph_data['충북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['충남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['전북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['전남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경북']['응시'])}}</th>
+                                <th>{{number_format($graph_data['경남']['응시'])}}</th>
+                                <th>{{number_format($graph_data['제주']['응시'])}}</th>
                             </tr>
                         <tfoot>
                     </table> 
-                    <p class="txtinfo01">* 윌비스경찰학원 자체조사 참여인원 5,353명, 중복 포함</p>                       
+                    <p class="txtinfo01">* 자사 수강생 응시희망청 조사 기반, 최근 5회차 평균 응시인원 반영</p>                       
                 </div>
             </div>
         </div>
+
+        <div class="evtCtnsBox stats-confirm">
+            <a href="javascript:fn_check_reg_member();">
+                <div class="first_confirm">
+                    <span>                      
+                        2020년 1차<br>
+                        예상지원청 확인하기 >                        
+                    </span>
+                </div>
+            </a>    
+        </div>    
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04.jpg"  alt=""/>
@@ -620,7 +842,14 @@
 
     <script type="text/javascript">
 
+        {{-- 유료 --}}
         function fn_promotion_etc_submit() {
+
+            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
+                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+                return;
+            @endif
+
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/promotionEtcStore') !!}';
 
@@ -638,7 +867,14 @@
             }, null, false, 'alert');
         }
 
+        {{-- 무료 당첨 --}}
         function fn_add_apply_submit() {
+
+            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
+                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+                return;
+            @endif
+
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/addApplyStore') !!}';
 
@@ -659,14 +895,28 @@
             }, null, false, 'alert');
         }
 
+        {{-- 통계그래프 보기 체크 --}}
+        function fn_check_reg_member() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var $add_apply_form = $('#add_apply_form');
+            var _check_url = '{!! front_url('/promotion/checkEventRegisterMember/') !!}?el_idx={{$data['ElIdx']}}';
+            ajaxSubmit($add_apply_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    $('.stats-div').css('opacity',1);
+                    $('.stats-confirm').hide();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
         // 이벤트 추가 신청 메세지
         function getApplyMsg(ret_msg) {
             {{-- 해당 프로모션 종속 결과 메세지 --}}
             var apply_msg = '';
             var arr_apply_msg = [
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
-                ['신청 되었습니다.','당첨을 축하합니다. <3.5 안내문자> <공지예정입니다>'],
-                ['처리 되었습니다.','장바구니에 담겼습니다.']
+                ['신청 되었습니다.','당첨을 축하합니다. 추후 안내 문자 발송 예정입니다.'],
+                ['처리 되었습니다.','장바구니에 담겼습니다.'],
+                ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
             ];
 
             for (var i = 0; i < arr_apply_msg.length; i++) {

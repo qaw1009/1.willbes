@@ -173,7 +173,7 @@
                     }
                 },
                 createdRow: function(row, data, dataIndex) {
-                    if (data.PayStatusCcd === '{{ $_pay_status_ccd['receipt_wait'] }}') {
+                    if (data.PayStatusCcd === '{{ $chk_pay_status_ccd['receipt_wait'] }}') {
                         $(row).addClass('bg-info');
                     }
                 },
@@ -224,16 +224,18 @@
                         return addComma(data);
                     }},
                     {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                        return row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return (row.PayStatusCcd === '{{ $_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
-                            + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
+                        return (row.PayStatusCcd === '{{ $chk_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
+                            + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
-                    {'data' : 'ProdTypeCcd', 'render' : function(data, type, row, meta) {
-                        if (data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}') {
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        if (row.ProdTypeCcd === '{{ $chk_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}') {
                             return '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">수강증출력</button>'
-                                + (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '')
+                                + (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '');
+                        } else if (row.LearnPatternCcd === '{{ $chk_learn_pattern_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}') {
+                            return '<button type="button" class="btn btn-xs btn-danger mr-0 btn-reorder" data-order-idx="' + row.OrderIdx + '">재주문</button>';
                         } else {
                             return '';
                         }
@@ -264,6 +266,11 @@
                     var html = getPrintCertLog('PrintCert', $(this).data('order-idx'), $(this).data('order-prod-idx'), '');
                     $(this).data('content', html);
                 }
+            });
+
+            // 재주문 버튼 클릭
+            $list_table.on('click', '.btn-reorder', function() {
+                location.href = '{{ site_url('/pay/visit/create') }}?type=reorder&target_order_idx=' + $(this).data('order-idx') + '&' + dtParamsToQueryString($datatable).substr(1);
             });
 
             // 엑셀다운로드 버튼 클릭

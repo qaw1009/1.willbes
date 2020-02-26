@@ -448,7 +448,7 @@ class OrderListModel extends BaseOrderModel
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
                 , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm
-                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd
+                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd, PL.PackTypeCcd
                 , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
         }
 
@@ -822,13 +822,14 @@ class OrderListModel extends BaseOrderModel
      * 연결주문상품 데이터 리턴 (방문결제용)
      * @param int $order_idx [주문식별자]
      * @param null|int $prod_code [상품코드]
-     * @param null|int $pay_status [결제상태]
      * @param bool $is_target_order_idx [연결주문식별자 설정여부]
+     * @param array $arr_add_condition [추가조회조건]
      * @return mixed
      */
-    public function getTargetOrderProductData($order_idx, $prod_code = null, $pay_status = null, $is_target_order_idx = false)
+    public function getTargetOrderProductData($order_idx, $prod_code = null, $is_target_order_idx = false, $arr_add_condition = [])
     {
-        $arr_condition = ['EQ' => ['O.OrderIdx' => get_var($order_idx, 0), 'OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => element($pay_status, $this->_pay_status_ccd)]];
+        $arr_condition = ['EQ' => ['O.OrderIdx' => get_var($order_idx, 0), 'OP.ProdCode' => $prod_code]];
+        $arr_condition = array_merge_recursive($arr_condition, $arr_add_condition);
         $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
             , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
             , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
@@ -841,10 +842,7 @@ class OrderListModel extends BaseOrderModel
         if (empty($data) === false) {
             foreach ($data as $idx => $row) {
                 $data[$idx]['ProdType'] = $this->getLearnPattern($row['ProdTypeCcd'], $row['LearnPatternCcd']);
-
-                if ($is_target_order_idx === true) {
-                    $data[$idx]['TargetOrderIdx'] = $order_idx;
-                }
+                $data[$idx]['TargetOrderIdx'] = $is_target_order_idx === true ? $order_idx : null;
             }
         }
 

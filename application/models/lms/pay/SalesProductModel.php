@@ -147,7 +147,7 @@ class SalesProductModel extends BaseOrderModel
         $arr_condition = ['EQ' => ['ProdCode' => $prod_code]];
         $data = $this->listSalesProduct($learn_pattern, $column, $arr_condition, null, null, [], $is_sales_check);
 
-        return element('0', $data, []);
+        return array_get($data, '0', []);
     }
 
     /**

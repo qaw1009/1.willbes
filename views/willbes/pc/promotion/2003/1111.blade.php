@@ -57,7 +57,7 @@
         .rLnb_sectionFixed {position:fixed; top:20px}
 
         .LAeventZ01 {
-            background:url(https://static.willbes.net/public/images/promotion/leave_army/la_00_top_bg.jpg) no-repeat center top;
+            background:#323335 url(https://static.willbes.net/public/images/promotion/2020/02/1111_top_bg.jpg) no-repeat center top;
             margin-top:10px;
             position:relative
         }
@@ -107,20 +107,16 @@
 
     <div class="p_re evtContent" id="evtContainer">
 
-        <div class="evtCtnsBox LAeventZ01">
-            <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_top_txt.png" alt="전역(예정)간부인증센터">
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_top.jpg" alt="2년연속공식지정 국방부.보훈처 전문교육기관"/>
+        <div class="evtCtnsBox LAeventZ01">           
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1111_top.jpg" alt="전역 인증센터"/>
         </div>
         <div class="evtCtnsBox LAeventZ02">
-            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map180123" border="0"/>
-            <map name="Map180123" id="Map180123">
-                <area shape="rect" coords="67,835,197,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" alt="학원실강 서울 노량진"/>
-                <area shape="rect" coords="215,835,346,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" alt="학원실강 인천 부평"/>
-                <area shape="rect" coords="365,835,494,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" alt="학원실강 부산 서면"/>
-                <area shape="rect" coords="776,835,905,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1112') }}" alt="온라인 교육과정"/>
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1111_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map1111a" border="0">
+            <map name="Map1111a" id="Map1111a">
+                <area shape="rect" coords="388,668,517,698" href="https://pass.willbes.net/promotion/index/cate/3019/code/1550" target="_blank" />
+                <area shape="rect" coords="387,872,515,901" href="https://pass.willbes.net/promotion/index/cate/3019/code/1116" target="_blank" />
+                <area shape="rect" coords="776,859,903,886" href="https://pass.willbes.net/promotion/index/cate/3019/code/1113" target="_blank" />
+            </map>        
         </div>
 
     </div>

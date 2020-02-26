@@ -76,7 +76,7 @@
         .evt02 ul:after {content:""; display:block; clear:both}
 
         .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
-            padding-bottom:100px; height:1200px;opacity:0.3;} 
+            padding-bottom:100px; height:1200px;opacity:0.05;}
         .evt03 .mapSec {width:1120px; height:400px; margin:0 auto; position:relative}
         .evt03 .tabs li {position:absolute; z-index:10; text-align:left}
         .evt03 .tabs li a {display:block; padding:3px 5px; font-weight:bold}
@@ -494,7 +494,7 @@
             }
 
         @endphp
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03 stats-div">
 
             <div class="mapSec">
                 <ul class="tabs">
@@ -776,8 +776,8 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox">        
-            <a href="#none;">
+        <div class="evtCtnsBox stats-confirm">
+            <a href="javascript:fn_check_reg_member();">
                 <div class="first_confirm">
                     <span>                      
                         2020년 1차<br>
@@ -842,6 +842,7 @@
 
     <script type="text/javascript">
 
+        {{-- 유료 --}}
         function fn_promotion_etc_submit() {
 
             @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
@@ -866,6 +867,7 @@
             }, null, false, 'alert');
         }
 
+        {{-- 무료 당첨 --}}
         function fn_add_apply_submit() {
 
             @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
@@ -891,6 +893,19 @@
             }, function(ret, status, error_view) {
                 alert( getApplyMsg(ret.ret_msg || '') );
             }, null, false, 'alert');
+        }
+
+        {{-- 통계그래프 보기 체크 --}}
+        function fn_check_reg_member() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var $add_apply_form = $('#add_apply_form');
+            var _check_url = '{!! front_url('/promotion/checkEventRegisterMember/') !!}?el_idx={{$data['ElIdx']}}';
+            ajaxSubmit($add_apply_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    $('.stats-div').css('opacity',1);
+                    $('.stats-confirm').hide();
+                }
+            }, showValidateError, null, false, 'alert');
         }
 
         // 이벤트 추가 신청 메세지

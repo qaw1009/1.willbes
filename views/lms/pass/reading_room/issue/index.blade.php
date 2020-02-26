@@ -216,10 +216,11 @@
                 });
             });
 
+            // 좌석연장
             $list_table.on('click', '.btn-seat', function() {
-                var param = '&target_order_idx=' + $(this).data('order-idx');
+                var param = 'type=extend&target_order_idx=' + $(this).data('order-idx');
                 param += '&target_prod_code=' + $(this).data('prod-code');
-                location.href='{{ site_url('/pay/visit/create') }}/?' + param;
+                location.href='{{ site_url('/pay/visit/create') }}?' + param;
             });
 
             // 엑셀다운로드 이벤트

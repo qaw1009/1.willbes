@@ -274,7 +274,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_03s.jpg" alt="이아림 소방영어 특강">
             <ul class="YouTube4">
                 <li>
-                    <a href="#none;" target="_blank">
+                    <a href="https://youtu.be/Eup_UVCnypc" target="_blank">
                         <span>
                             <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_04_01.jpg" alt="">
                         </span>

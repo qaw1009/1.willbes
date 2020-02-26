@@ -2,7 +2,6 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
@@ -11,6 +10,7 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
@@ -23,7 +23,7 @@
         /************************************************************/
 
         .rLnb {
-            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
+            position:fixed; width:280px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -42,10 +42,10 @@
         }
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
-            background:url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+            background:url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 93% center;        }
         .rLnb .typeA a:hover {
             font-weight: 600;
-            background:#ebebeb url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+            background:#ebebeb url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 93% center;
         }
         .rLnb .typeA li:last-child a {border:0}
         .rLnb .typeB li {
@@ -56,14 +56,10 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
         .rLnb_sectionFixed {position:fixed; top:20px}
 
-        .LAeventZ01 {
-            background:#323335 url(https://static.willbes.net/public/images/promotion/2020/02/1111_top_bg.jpg) no-repeat center top;
-            margin-top:10px;
-            position:relative
-        }
+        .LAeventZ01 {width:100%; text-align:center; background:#0c0b05 url(https://static.willbes.net/public/images/promotion/2020/02/1550_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:10px; position:relative}
 
         /*플립 애니메이션*/
-        .LAeventZ01 .main_img {position:absolute; width:601px; top:534px; left:50%; margin-left:-300px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
+        .LAeventZ01 .main_img {position:absolute; width:1120px; top:150px; left:50%; margin-left:-560px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
             from {
                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
@@ -92,7 +88,7 @@
                 transform: perspective(400px);
             }
         }
-
+ㄹ
         .flipInX {
             -webkit-backface-visibility: visible !important;
             backface-visibility: visible !important;
@@ -100,23 +96,29 @@
             animation-name: flipInX;
         }
 
-        .LAeventZ02 {background:#ececec;}
+        .LAeventZ02 {width:100%; text-align:center; background:#ececec; position:relative}
     </style>
 
 
 
     <div class="p_re evtContent" id="evtContainer">
-
-        <div class="evtCtnsBox LAeventZ01">           
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1111_top.jpg" alt="전역 인증센터"/>
+        <div class="rLnb">
+            <ul class="typeA">
+                <li class="NSK-Black">서비스 바로가기</li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1550') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정 </a></li>              
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
+            </ul>
         </div>
-        <div class="evtCtnsBox LAeventZ02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1111_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map1111a" border="0">
-            <map name="Map1111a" id="Map1111a">
-                <area shape="rect" coords="388,668,517,698" href="https://pass.willbes.net/promotion/index/cate/3019/code/1550" target="_blank" />
-                <area shape="rect" coords="387,872,515,901" href="https://pass.willbes.net/promotion/index/cate/3019/code/1116" target="_blank" />
-                <area shape="rect" coords="776,859,903,886" href="https://pass.willbes.net/promotion/index/cate/3019/code/1113" target="_blank" />
-            </map>        
+
+
+        <div class="LAeventZ01">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1550_top.jpg" alt="공무원 단독반"/>
+        </div>
+
+        <div class="LAeventZ02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1550_01.jpg" alt="공무원 단독반"/>
         </div>
 
     </div>

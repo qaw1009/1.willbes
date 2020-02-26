@@ -158,11 +158,10 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1111', 'pass') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1116', 'pass') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1115', 'pass') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1117', 'pass') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" class="menu5" target="_blank">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1550') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정</a></li>        
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">
@@ -201,9 +200,9 @@
                     <h3>경찰직 | 윌비스 PASS</h3>
                     <div class="fpLecinfo">
                         <p>
-                            2019년 경찰합격을 위한 후회 없는 선택 !<br />
-                            전국 캠퍼스 실강 4,000명이 동시 수강하는 경찰합격을 위한 필수 과정 !<br />
-                            많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀 !
+                            2020년도 경찰공무원 5,825명 확대 채용!<br />
+                            2019 경찰학원 부문 브랜드 고객충성도 1위! 신광은 경찰팀.<br />
+                            전국캠퍼스 실강 4,000명이 동시 수강하는 압도적인 커리큘럼!
                         </p>
                         <table>
                             <col width="20%" />
@@ -317,8 +316,8 @@
                                     @endforeach
                                     {{--{{$file_data['F']['file_real_name']}}--}}
                                 @endif
-                                <li>③ 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
-                                <li>※ ①~③번 제출서류의 경우 교육시작일로부터 7일 이내 서류제출</li>
+                                <li>② 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
+                                <li>※ ①~②번 제출서류를 교육시작일로부터 7일 이내 제출하여야 함</li>
                                 <li>교육과정 이수,  교육훈련과정 수료 후 14일 이내에 수료증 또는 교육수료 확인서 제출</li>
                                 <li>※ 교육훈련과정 교육수료확인서</li>
                                 <li>&nbsp;&nbsp;&nbsp;&nbsp;<span>발급시기</span> : 윌비스 PASS 상품은 수강일로부터 180일(6개월) 이후</li>

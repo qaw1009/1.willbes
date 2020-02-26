@@ -26,7 +26,7 @@
                         <div class="w-tit">{{$lec['subProdName']}}</div>
                         <dl class="w-info tx-dark-gray">
                             <dt class="NSK ml10">
-                                <span class="nBox n1">{{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }}</span>
+                                <span class="nBox n1">{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</span>
                                 <span class="nBox n{{ substr($lec['wLectureProgressCcd'], -1)+1 }}">{{$lec['wLectureProgressCcdName']}}</span>
                             </dt>
                         </dl>
@@ -180,7 +180,9 @@
                                     </td>
                                 @endif
                                 <td class="w-free mypage">
-                                    @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+                                    @if($lec['canWeekView'] == false)
+                                        <div class="tBox NSK t1 black"><a>직장인반</a></div>
+                                    @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                         <div class="tBox NSK t1 black"><a>수강불가</a></div>
                                     @else
                                         @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')

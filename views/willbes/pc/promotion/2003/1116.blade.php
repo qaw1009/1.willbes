@@ -23,7 +23,7 @@
         /************************************************************/
 
         .rLnb {
-            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
+            position:fixed; width:280px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -56,7 +56,7 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
         .rLnb_sectionFixed {position:fixed; top:20px}
 
-        .LAeventZ01 {width:100%; text-align:center; background:#111 url(https://static.willbes.net/public/images/promotion/leave_army/la_seoul_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:10px; position:relative}
+        .LAeventZ01 {width:100%; text-align:center; background:#0b1018 url(https://static.willbes.net/public/images/promotion/2020/02/1116_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:10px; position:relative}
 
         /*플립 애니메이션*/
         .LAeventZ01 .main_img {position:absolute; width:1120px; top:150px; left:50%; margin-left:-560px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -106,23 +106,19 @@
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1550') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
             </ul>
         </div>
 
 
-        <div class="LAeventZ01">
-            <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_seoul_top_txt.png" alt="">
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_seoul_top.jpg" alt=""/>
+        <div class="LAeventZ01">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1116_top.jpg" alt="공무원 공채.경채"/>
         </div>
 
         <div class="LAeventZ02">
-            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_seoul_01.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1116_01.jpg" alt="공무원 공채.경채"/>
         </div>
 
     </div>

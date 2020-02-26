@@ -11,6 +11,7 @@
                 <li>과목별 수강료 5만원 미만은 할인 불가능합니다.</li>
                 <li>중복 할인 불가능합니다.</li>
                 <li>학원 데스크에 방문하여 수강증 발급 전 자매 독서실 증빙 자료를 제출 하여야 하며, 증빙 불총족 시 전체환불 후 수강료 정상가로 재접수해야 하는점 유의해 주시기 바랍니다.</li>
+                <li class="tx-red">답안지특강, 어학 등 정액수강료인 강의는 독서실 할인 불가능합니다.</li>
             </ul>
             <form id="_aff_disc_readingroom_form" name="_aff_disc_readingroom_form" method="POST" onsubmit="return false;" novalidate>
                 <div>

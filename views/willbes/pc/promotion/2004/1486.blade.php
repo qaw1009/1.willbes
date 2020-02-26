@@ -30,8 +30,6 @@
 
 .evt03s{background:#a0415a;position:relative;}
 
-.evt04{background:#f0f0f0;}
-
 .YouTube {width:920px; margin:0 auto; text-align:center;position:absolute;left:50%;margin-left:-460px;bottom:-65px;}
 .YouTube li {display:inline; float:left; width:25%;padding-bottom:130px;}
 .YouTube li span {margin-top:20px; font-size:15px !important; font-weight:500 !important; color:#fff; letter-spacing:-1px;}
@@ -284,14 +282,7 @@
                     </a>    
                 </li>               
             </ul>                      
-        </div>
-
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_04.jpg" alt="신청하기" usemap="#Map1486z" border="0">
-            <map name="Map1486z" id="Map1486z">
-                <area shape="rect" coords="336,785,576,833" href="https://pass.willbes.net/pass/support/notice/show?board_idx=255632" target="_blank" />
-            </map>
-        </div>                         
+        </div>                     
               
     </div>
     <!-- End Container --> 

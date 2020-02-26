@@ -41,8 +41,9 @@ class Visit extends BaseOrder
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
-            '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
-            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
+            'chk_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
+            'chk_learn_pattern_ccd' => $this->orderListModel->_learn_pattern_ccd,
+            'chk_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
 
@@ -201,6 +202,7 @@ class Visit extends BaseOrder
     {
         $order_idx = element('0', $params);
         $is_order = empty($order_idx) === false ? true : false;
+        $target_type = $this->_req('type');
         $target_order_idx = $this->_req('target_order_idx');
         $target_prod_code = $this->_req('target_prod_code');
         $method = 'POST';
@@ -243,10 +245,28 @@ class Visit extends BaseOrder
             $arr_regi_site_code = $arr_site_code;
 
             // 연결 주문상품 정보 조회
-            if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
-                $data['order_prod'] = $this->orderListModel->getTargetOrderProductData($target_order_idx, $target_prod_code, 'paid', true);
+            if (empty($target_type) === false && empty($target_order_idx) === false) {
+                if ($target_type == 'extend') {
+                    // 독서실/사물함 연장 (extend)
+                    $is_target_order_idx = true;
+                    $err_msg = '독서실/사물함 상품만 연장신청이 가능합니다.';
+                    $arr_add_condition = [
+                        'EQ' => ['OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']],
+                        'IN' => ['P.ProdTypeCcd' => [$this->orderListModel->_prod_type_ccd['reading_room'], $this->orderListModel->_prod_type_ccd['locker']]]
+                    ];
+                } else {
+                    // 재주문 (reorder)
+                    $is_target_order_idx = false;
+                    $err_msg = '학원단과 상품만 재주문 가능합니다.';
+                    $arr_add_condition = [
+                        'EQ' => ['P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['off_lecture'], 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_lecture']]
+                    ];
+                }
+
+                // 주문상품 정보
+                $data['order_prod'] = $this->orderListModel->getTargetOrderProductData($target_order_idx, $target_prod_code, $is_target_order_idx, $arr_add_condition);
                 if (empty($data['order_prod']) === true) {
-                    show_alert('데이터 조회에 실패했습니다.', 'back');
+                    show_alert($err_msg, 'back');
                 }
 
                 // 회원정보
@@ -269,9 +289,10 @@ class Visit extends BaseOrder
             'regi_site_code' => $regi_site_code,
             'arr_regi_site_code' => $arr_regi_site_code,
             'arr_card_ccd' => $arr_card_ccd,
-            '_is_order' => $is_order,
-            '_pay_method_ccd' => $this->orderListModel->_pay_method_ccd,
-            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
+            'chk_pay_method_ccd' => $this->orderListModel->_pay_method_ccd,
+            'chk_pay_status_ccd' => $this->orderListModel->_pay_status_ccd,
+            'target_type' => $target_type,
+            'is_order' => $is_order
         ]);
     }
 

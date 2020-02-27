@@ -167,7 +167,8 @@
                     {'data' : 'AdjustSum', 'class': 'text-center'},
                     {'data' : 'ExamRegDatm', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.AdjustSum > 0 ? '<span class="blue underline-link act-view"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MrIdx+ '" />확인</span>':'';
+                            /*return row.AdjustSum > 0 ? '<span class="blue underline-link act-view"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MrIdx+ '" />확인</span>':'';*/
+                            return (row.tempCnt > 0 || row.answerCnt > 0) ? '<span class="blue underline-link act-view"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MrIdx+ '" />확인</span>':'';
                         }},
                 ]
             });

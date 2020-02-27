@@ -139,10 +139,13 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $sumRank = $this->regGradeModel->subjectAllAvg($prodcode, $mridx);
         $arrSumRank = explode("/",$sumRank);
 
+        //조정점수
+        $dataAdjust = $this->regGradeModel->gradeCall($prodcode, 'adjust', $mridx);
+
         $MpIdxSet = $listArr['MpIdxSet'];
         $list = $listArr['rdata'];
         $CNT = $listArr['CNT'];
-        $per = round(100 - ((($arrSumRank[0]) / $CNT) * 100 - (100 / $CNT)), 2);
+        $per = (empty($sumRank) === false) ? round(100 - ((($arrSumRank[0]) / $CNT) * 100 - (100 / $CNT)), 2) : '0';
 
         $this->load->view('mocktest/statistics/private/stat_subject', [
             'privateExamInfo' => $privateExamInfo,
@@ -151,7 +154,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'prodcode' => $prodcode,
             'mridx' => $mridx,
             'sumRank' => $sumRank,
-            'per' => $per
+            'per' => $per,
+            'dataAdjust' => $dataAdjust
         ]);
     }
 
@@ -329,4 +333,22 @@ class StatisticsPrivate extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 정답제출
+     */
+    public function answerSaveAjax()
+    {
+        $rules = [
+            ['field' => 'ProdCode', 'label' => '상품코드', 'rules' => 'trim|required'],
+            ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required'],
+            ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->regGradeModel->answerSave($this->_reqP(null, false));
+        $this->json_result($result, $result['ret_msg'], $result);
+    }
 }

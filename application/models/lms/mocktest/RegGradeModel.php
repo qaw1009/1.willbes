@@ -151,6 +151,8 @@ class RegGradeModel extends WB_Model
             MR.TakeMockPart,
             MR.TakeArea,
             ROUND((SUM(AdjustPoint)/(SELECT COUNT(*) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx)),2) AS AdjustSum,
+            (SELECT COUNT(*) AS tempCnt FROM {$this->_table['mockAnswerTemp']} WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS tempCnt,
+            (SELECT COUNT(*) AS answerCnt FROM {$this->_table['mockAnswerPaper']} WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS answerCnt,
             MR.RegDatm AS ExamRegDatm
         ";
         $from = "
@@ -481,6 +483,7 @@ class RegGradeModel extends WB_Model
                    fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
                    (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
                    (SELECT MemId FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemId,
+                   MR.TakeForm,
                    fn_ccd_name(MR.TakeForm) AS TakeFormType,
                    fn_ccd_name(MR.TakeArea) AS TakeAreaName,
                    (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
@@ -511,6 +514,7 @@ class RegGradeModel extends WB_Model
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate, IsDisplay, MP.GradeOpenDatm
+                   ,(SELECT COUNT(*) AS tempCnt FROM {$this->_table['mockAnswerTemp']} WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS tempCnt
         ";
         $from = "
             FROM 
@@ -1339,7 +1343,7 @@ class RegGradeModel extends WB_Model
             $subjectName = $arrSubjectName[$mpidx];
             $arrPRank = explode('/', $val['pRank']);
 
-            $prank = $arrPRank[0];
+            $prank = (empty($arrPRank[0]) === false) ? $arrPRank[0] : '0';
 
             $rdata[$ProdCode][$MockType][$mpidx]['MockType'] = $MockType;
             $rdata[$ProdCode][$MockType][$mpidx]['MpIdx'] = $val['MpIdx'];
@@ -1916,4 +1920,85 @@ class RegGradeModel extends WB_Model
 
     }
 
+    /**
+     * 정답제출
+     * @param array $formData
+     * @return array|bool
+     */
+    public function answerSave($formData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ProdCode = element('ProdCode', $formData);
+            $MrIdx = element('mr_idx', $formData);
+            $MemIdx = element('mem_idx', $formData);
+
+            //삭제후 입력
+            $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+            if($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $insert_column = "
+                MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
+            ";
+            $select_column = "
+                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(LOCATE(Answer , RightAnswer), 'Y', 'N') AS IsWrong, MA.RegDatm
+            ";
+            $query = "
+                INSERT INTO {$this->_table['mockAnswerPaper']} ({$insert_column})
+                SELECT {$select_column}
+                FROM {$this->_table['mockAnswerTemp']} AS MA
+                JOIN {$this->_table['mockExamQuestion']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+                WHERE MemIdx = ".$MemIdx." AND ProdCode = ".$ProdCode." AND MrIdx = ".$MrIdx." ORDER BY MpIdx
+            ";
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('정답 제출에 실패했습니다.');
+            };
+
+            //접수데이터 응시상태로 업데이트
+            $temp_reg_date = $this->_findRegDateForAnswerTemp($ProdCode, $MrIdx);
+            $register_update_data[] = [
+                'MrIdx' => $MrIdx,
+                'IsTake' => 'Y',
+                'RegDatm' => $temp_reg_date['RegDatm']
+            ];
+            if($register_update_data) {
+                if ($this->_conn->update_batch($this->_table['mockRegister'], $register_update_data, 'MrIdx') === false) {
+                    throw new \Exception('접수데이터 업데이트 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 임시테이블 저장일시 조회
+     * @param $prod_code
+     * @param $mr_idx
+     * @return array
+     */
+    private function _findRegDateForAnswerTemp($prod_code, $mr_idx)
+    {
+        $column = 'RegDatm';
+        $arr_condition = [
+            'EQ' => [
+                'ProdCode' => $prod_code,
+                'MrIdx' => $mr_idx
+            ]
+        ];
+        $where = $this->_conn->makewhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['mockAnswerTemp']}
+        ";
+        $order_by = ' ORDER BY RegDatm DESC LIMIT 1';
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->row_array();
+    }
 }

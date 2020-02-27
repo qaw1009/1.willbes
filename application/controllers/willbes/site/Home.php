@@ -355,6 +355,18 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * N잡 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2014Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        return $data;
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array

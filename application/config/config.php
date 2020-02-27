@@ -59,6 +59,7 @@ $config['app_name_mapping'] = [
     'gosi' => 'willbes',
     'spo' => 'willbes',
     'work' => 'willbes',
+    'njob' => 'willbes',
 ];
 
 /*
@@ -76,6 +77,7 @@ $config['app_front_site_except'] = [
     'gosi' => ['route_add_path' => '/site'],
     'spo' => ['route_add_path' => '/site'],
     'work' => ['route_add_path' => '/site'],
+    'njob' => ['route_add_path' => '/site'],
 ];
 
 /*

@@ -78,6 +78,10 @@ $config['spo'] = array(
 $config['work'] = array(
 );
 
+// njob
+$config['njob'] = array(
+);
+
 
 // 모의고사
 $config['mock'] = array(

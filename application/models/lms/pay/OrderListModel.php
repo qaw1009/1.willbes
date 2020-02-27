@@ -995,8 +995,8 @@ class OrderListModel extends BaseOrderModel
                         // 대비년도-상품명-수강형태
                         $_prod_name = $row['SchoolYear'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
                     } elseif ($row['IsPackage'] == 'N') {
-                        // 대비년도-상품명-과목명-교수명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['ProdName'] . '_' . $row['SubjectName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                        // 대비년도-과정명-과목명-교수명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
                     }
                 } else {
                     // 자격증, 경찰간부
@@ -1102,8 +1102,8 @@ class OrderListModel extends BaseOrderModel
 
             // 출력상품명 설정
             if ($site_code == '2010') {
-                // 고등고시 (대비년도-상품명(종합반)-과목명-교수명-수강형태)
-                $_prod_name = $data['SchoolYear'] . '_' . $data['ProdName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
+                // 고등고시 (대비년도-과정명(종합반)-과목명-교수명-수강형태)
+                $_prod_name = $data['SchoolYear'] . '_' . $data['CourseName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
             } else {
                 // 자격증, 경찰간부 (대비년도-카테고리-과정명-과목명-상품명(종합반)-교수명-수강형태)
                 $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['CourseName'] . '_' . $data['SubjectName'] . '_' . $data['ProdName'] . '(종합반)_';

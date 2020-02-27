@@ -7,7 +7,14 @@
             <div>
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
                 <div class="pull-right text-right form-inline mb-5">
-                    <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $mridx }}">상세성적확인</button>
+                    @if($privateExamInfo['TakeForm'] == '690001')
+                        <button class="btn btn-sm btn-primary" id="btn_score" data-act-type="{{ ((empty($privateExamInfo['tempCnt']) === true) ? 'N' : 'Y') }}">채점하기</button>
+                    @endif
+                    @if (empty($dataAdjust) === false)
+                        <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $mridx }}">상세성적확인</button>
+                    @else
+                        <button class="btn btn-sm btn-primary" onclick="javascript:alert('조정점수 반영 후 확인해 주세요.');">상세성적확인</button>
+                    @endif
                 </div>
             </div>
             @if(empty($privateExamInfo) === false)
@@ -190,7 +197,9 @@
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
-        <input type="hidden" id="ProdCode" name="ProdCode" value="">
+        <input type="hidden" id="ProdCode" name="ProdCode" value="{{ $prodcode }}">
+        <input type="hidden" id="mr_idx" name="mr_idx" value="{{ $mridx }}">
+        <input type="hidden" id="mem_idx" name="mem_idx" value="{{ $privateExamInfo['MemIdx'] }}">
     </form>
     <style>
         .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }
@@ -225,19 +234,31 @@
 
             // 모달창 오픈
             $('.act-move').on('click', function() {
-
                 var uri_param;
                 var prodcode = $(this).data('idx');
                 var mridx = $(this).data('mem');
-
                 uri_param = 'prodcode=' + prodcode + '&mridx=' + mridx;
-
                 var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param;
                 win = window.open(_url, 'mockPopupL', 'width=1100, height=845, scrollbars=yes, resizable=yes');
                 win.focus();
-
             });
 
+            //정답제출
+            $('#btn_score').on('click', function() {
+                var _url = '{{ site_url('/mocktest/statisticsPrivate/answerSaveAjax') }}';
+                if($(this).data('act-type') == 'N') {
+                    alert('임시저장 데이터가 없습니다.');
+                    return;
+                }
+
+                if(!confirm('채점하시겟습니까?')) return;
+                ajaxLoadingSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert('채점이 완료 되었습니다. 조정점수반영을 해야 정상 산출됩니다.');
+                        location.reload();
+                    }
+                }, showValidateError, null, 'alert', $regi_form);
+            });
         });
 
         // 목록 이동

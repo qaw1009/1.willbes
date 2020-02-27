@@ -73,8 +73,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1554_03.jpg" alt="" usemap="#Map1554a" border="0" />
             <map name="Map1554a" id="Map1554a">
                 <area shape="rect" coords="735,348,1016,456" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/162404" target="_blank" />
-                <area shape="rect" coords="734,576,1012,688" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/162407" target="_blank" />
-                <area shape="rect" coords="735,814,1018,931" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/162408" target="_blank" />
+                <area shape="rect" coords="734,576,1012,688" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/162408" target="_blank" />
+                <area shape="rect" coords="735,814,1018,931" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/162407" target="_blank" />
             </map>
 		</div>    
 

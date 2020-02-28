@@ -4,9 +4,6 @@
     <!-- Gnb -->
     @include('html.m.layouts.gnb')
 
-    <!-- topnav -->
-    @include('html.m.layouts.topnav')
-
         <!-- content -->
         @yield('content')
 

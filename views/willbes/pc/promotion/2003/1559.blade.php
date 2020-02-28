@@ -44,17 +44,16 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_02.jpg"  alt="한국사 전문가 오태진" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/02/1559_top.jpg"  alt="한국사 전문가 오태진" />
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_03.jpg"  alt="한국사 전문가 오태진" />
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_03_01.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_03_02.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_03_03.jpg" alt="" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_03_04.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1559_img01.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1559_img02.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1559_img03.jpg" alt="" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/02/1559_img04.jpg" alt="" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_left.png" alt="left" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/02/1401_right.png" alt="right" /></a></p>

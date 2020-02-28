@@ -97,6 +97,7 @@
                     </tr>
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
+                            <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                             <dl class="w-info">
                                 <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>

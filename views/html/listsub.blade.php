@@ -80,8 +80,10 @@
                 </div>
                 <div class="prof-home subBtn NSK"><a href="#none"><img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
             </div>
-            <div class="lec-profile p_re">
-                <div class="w-list">문제풀이 / 국어</div>
+            <div class="lec-profile p_re">                
+                <div class="w-list">
+                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>문제풀이 / 국어
+                </div>
                 <div class="w-tit tx-blue">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137 작품을 알려주마!(4-6월)</div>
                 <div class="w-info tx-dark-gray"> 
                     <div>학원실강의 : 2020년 1월</div>

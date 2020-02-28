@@ -228,7 +228,7 @@
                                 - 소득공제 대상 상품(교재)와 비대상 상품 (강의)을 함께 주문하실 수 없습니다. <br>
                                 (소득공제를 위한 가맹점 분리로 인해 2회 결제 진행)<br>
                                 - 반드시 <span class="tx-red">강의와 교재를 각각 결제</span>해주시기 바랍니다. (강좌상품 선구매 후 교재 구매 가능)
-                            </li>
+                            </li>                            
                             <li>
                                 <strong>아이콘 안내</strong><br>
                                 - 강좌리스트에 보여지고 있는 아이콘에 대한 설명입니다. 참고하시어 수강신청해 주세요.
@@ -238,12 +238,16 @@
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
                             <colgroup>
-                                <col style="width: 130px;">
+                                <col style="width: 150px;">
                                 <col style="width: auto;">
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td><span class="nBox n4">완강</span></td>
+                                    <th><div class="OTclass"><span>직장인/재학생반</span></div></th>
+                                    <td class="tx-left">직장인(재학생) 대상으로 정해진 시간에만 수강가능한 강좌</td>
+                                </tr>    
+                                <tr>
+                                    <th><span class="nBox n4">완강</span></th>
                                     <td class="tx-left">모든 강의 제작 및 업데이트가 완료된 강좌</td>
                                 </tr>
                                 <tr>
@@ -257,7 +261,7 @@
                                 <tr>
                                     <th><span class="nBox n1">2배수</span></th>
                                     <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
-                                </tr>
+                                </tr>                                
                                 <tr>
                                     <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
                                     <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>    
@@ -307,7 +311,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- willbes-Lec-Profdata -->
+            <!-- willbes-Lec-Profdata -->            
 
             <div class="willbes-Lec-Line">-</div>
             <!-- willbes-Lec-Line -->
@@ -325,7 +329,8 @@
                         <tr>
                             <td class="w-list">문제풀이</td>
                             <td class="w-name">사전조사서특강<br/><span class="tx-blue">정채영</span></td>
-                            <td class="w-data tx-left pl20">
+                            <td class="w-data tx-left pl20 p_re">
+                                <div class="OTclass"><span>직장인/재학생반</span> <a href="#none" onclick="openWin('OTclassInfo')">?</a></div>
                                 <div class="w-tit">
                                     <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                 </div>
@@ -347,6 +352,30 @@
                                     </dt>
                                 </dl>
                                 <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+
+                                {{--직장인/재학생 반 안내 팝업--}}
+                                <div id="OTclassInfo" class="willbes-Layer-requestInfo willbes-Layer-requestInfo2">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('OTclassInfo')">
+                                        <img src="{{ img_url('prof/close.png') }}">
+                                    </a>
+                                    <div class="Layer-Tit NG tx-dark-black">직장인/재학생반  <span class="tx-blue">수강 안내</span></div>
+                                    <div class="Layer-Cont">
+                                        <div class="Layer-SubTit tx-gray">
+                                            <ul>
+                                                <li>
+                                                    <strong>예) 40일 강좌 수강시</strong><br>
+                                                    - 수강 시간 : 평일 19~03시만 수강 / 주말, 공휴일 24시간 수강 가능<br>
+                                                    - 수강 기간 : 원래 수강 기간 X 1.4배(40일 X 1.4 = 56일)<br>
+                                                    - 수강 중지 : 3회. 3회의 합은 56일까지<br>
+                                                    - 수강 연장 : 3회. 1일 연장 수강료는 원래 수강 기간 40일 기준(강의 종료일까지만 연장 가능)<br>
+                                                    - 수강 환불 : 환불일수는 원래 수강 기간 40일 기준(수강 중지시 환불 불가)<br>
+                                                    <br>
+                                                    <span class="tx-red">※ 주말반은 일반강의로 변경이 안됩니다.</span>
+                                                </li>                        
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
@@ -440,6 +469,8 @@
                 <!-- lecInfoTable -->
             </div>
             <!-- willbes-Lec-Table -->
+
+            
 
             <div class="willbes-Lec-Table">               
                 <table cellspacing="0" cellpadding="0" class="lecTable">

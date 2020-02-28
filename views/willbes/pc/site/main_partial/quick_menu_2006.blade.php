@@ -33,7 +33,7 @@
 </ul>
 --}}
 <div>
-    <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free') }}">
+    <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?search_order=course&course_idx=1220') }}">
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky01.jpg">
     </a>
 </div>
@@ -48,7 +48,7 @@
     </a>
 </div>
 <div class="mt5">
-    <a href="{{ site_url('/pass/support/qna/index?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
+    <a href="{{ site_url('/support/gosiNotice/index/cate/' . $__cfg['CateCode'] . '?s_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky04.jpg" alt="학원 공지사항">
     </a>
 </div>

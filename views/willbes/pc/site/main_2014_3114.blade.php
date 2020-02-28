@@ -1,4 +1,4 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.pc.layouts.master_no_topnav')
 
 @section('content')
     <!-- Container -->
@@ -27,7 +27,7 @@
 
     <div id="Container" class="Container cus NGR c_both">
         <!-- site nav -->
-        @include('willbes.pc.layouts.partial.site_menu')
+{{--        @include('willbes.pc.layouts.partial.site_menu')--}}
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/main/3114_top.jpg" title="1억뷰 N잡">

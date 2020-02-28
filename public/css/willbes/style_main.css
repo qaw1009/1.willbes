@@ -51,12 +51,7 @@
     height: 100%;
     padding: 25px 0 0 35px;
 }
-.njobBn {
-    border-bottom: 20px solid #1f2a35; width:100%; margin-top:-100px; margin-bottom: 50px;}
-}
-.njobBn a {
-    display: block; width: 1120px; margin:0 auto; text-align: right; background: #009ef5; height: 101px;
-}
+
 .sTxt {font-size:10px !important; color:#999}
 
 
@@ -380,5 +375,11 @@
     top: 8px;
     padding-top: 0;
 }
+
+.njobBn {
+    border-bottom: 20px solid #1f2a35; width:100%; bottom:0; position: fixed;}
+}
+.njobBn div {width:1120px; margin:0 auto; background: #ffda38; height: 101px;}
+.njobBn div a {float:right;}
 
 

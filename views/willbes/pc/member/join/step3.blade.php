@@ -85,9 +85,20 @@
             });
         });
     </script>
+
     <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
     <script type="text/javascript">
         kakaoPixel('6331763949938786102').pageView();
         kakaoPixel('6331763949938786102').completeRegistration();
+    </script>
+
+    {{-- 김상구실장님 요청 20202028 --}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69505110-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-69505110-4');
     </script>
 @stop

@@ -1,5 +1,5 @@
 
-@extends('html.m.layouts.master_no_topnav')
+@extends('willbes.m.layouts.master_no_topnav')
 <style type="text/css">
     .subContainer {
         min-height: auto !important;

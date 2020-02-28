@@ -26,6 +26,7 @@
                                 <a href="http://www.cnsu.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_21.jpg" alt="충남도립대"></a>
                             </li>
                             <li>
+                                <a href="http://www.bu.ac.kr/main_index.jsp" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_22.jpg" alt="백석대확교"></a>    
                                 <a href="http://zipzoongso.cafe24.com/wp/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_20.jpg" alt="집중소"></a>
                             </li>
                         </ul>

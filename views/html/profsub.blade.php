@@ -847,7 +847,8 @@
                                                             <tr>
                                                                 <td class="w-list">문제풀이</td>
                                                                 <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
-                                                                <td class="w-data tx-left pl25">
+                                                                <td class="w-data tx-left pl25 p_re">
+                                                                    <div class="OTclass"><span>직장인/재학생반</span> <a href="#none" onclick="openWin('OTclassInfo')">?</a></div>
                                                                     <div class="w-tit">
                                                                         <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                                                     </div>
@@ -872,6 +873,30 @@
                                                                         </dt>
                                                                     </dl>
                                                                     <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+
+                                                                    {{--직장인/재학생 반 안내 팝업--}}
+                                                                    <div id="OTclassInfo" class="willbes-Layer-requestInfo willbes-Layer-requestInfo2">
+                                                                        <a class="closeBtn" href="#none" onclick="closeWin('OTclassInfo')">
+                                                                            <img src="{{ img_url('prof/close.png') }}">
+                                                                        </a>
+                                                                        <div class="Layer-Tit NG tx-dark-black">직장인/재학생반  <span class="tx-blue">수강 안내</span></div>
+                                                                        <div class="Layer-Cont">
+                                                                            <div class="Layer-SubTit tx-gray">
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <strong>예) 40일 강좌 수강시</strong><br>
+                                                                                        - 수강 시간 : 평일 19~03시만 수강 / 주말, 공휴일 24시간 수강 가능<br>
+                                                                                        - 수강 기간 : 원래 수강 기간 X 1.4배수(40일 X 1.4 = 56일)<br>
+                                                                                        - 수강 중지 : 3회. 3회의 합은 56일까지<br>
+                                                                                        - 수강 연장 : 3회. 1일 연장 수강료는 원래 수강 기간 40일 기준(강의 종료일까지만 연장 가능)<br>
+                                                                                        - 수강 환불 : 환불일수는 원래 수강 기간 40일 기준(수강 중지시 환불 불가)<br>
+                                                                                        <br>
+                                                                                        <span class="tx-red">※ 주말반은 일반강의로 변경이 안됩니다.</span>
+                                                                                    </li>                        
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>

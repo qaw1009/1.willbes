@@ -25,6 +25,7 @@
                                 <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                             </div>
                             <div class="w-data tx-left pl15">
+                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info pt-zero">
                                     <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                                 </dl>

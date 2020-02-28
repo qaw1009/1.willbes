@@ -78,6 +78,7 @@
                     <tbody>
                         <tr>
                             <td class="w-data tx-left pb-zero">
+                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
                                 </dl>
@@ -314,6 +315,7 @@
                     <tbody>
                         <tr>
                             <td class="w-data tx-left pb-zero">
+                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
                                 </dl>
@@ -442,6 +444,7 @@
                     <tbody>
                         <tr>
                             <td class="w-data tx-left pb-zero">
+                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
                                 </dl>

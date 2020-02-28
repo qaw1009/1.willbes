@@ -704,7 +704,7 @@ class TmModel extends WB_Model
                             #,fn_dec(m.PhoneEnc) as Phone
                             ,concat(m.Phone1,\'****\',m.Phone3) as Phone
                             ,mo.SmsRcvStatus
-                            ,ps.SalePrice, ps.SaleRate, ps.RealSalePrice
+                            ,ifnull(ps.SalePrice,0) as SalePrice, ifnull(ps.SaleRate,0) as SaleRate, ifnull(ps.RealSalePrice,0) as RealSalePrice
                             ,tc1.* ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -721,7 +721,7 @@ class TmModel extends WB_Model
                 join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
                 join lms_member m on op.MemIdx = m.MemIdx
                 join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
-                join lms_product_sale ps on op.ProdCode = ps.ProdCode and ps.SaleTypeCcd=\'613001\' and ps.IsStatus=\'Y\'
+                left join lms_product_sale ps on op.ProdCode = ps.ProdCode and ps.SaleTypeCcd=\'613001\' and ps.IsStatus=\'Y\'
                 
                 left join vw_tm_consult tc1 
                 on tc1.TcIdx = 
@@ -756,11 +756,11 @@ class TmModel extends WB_Model
     {
 
         $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
-                        ,sc2.CcdName as LearnPatternCcd_Name, ProdName, RealSalePrice, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+                        ,sc2.CcdName as LearnPatternCcd_Name, ProdName, ifnull(ps.RealSalePrice,0) RealSalePrice, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
-                        ,sc2.CcdName as LearnPatternCcd_Name, p.ProdName, ps.RealSalePrice, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+                        ,sc2.CcdName as LearnPatternCcd_Name, p.ProdName, ifnull(ps.RealSalePrice,0) RealSalePrice, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $from = '
             from
@@ -773,7 +773,7 @@ class TmModel extends WB_Model
                 join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
                 join lms_member m on op.MemIdx = m.MemIdx
                 join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
-                join lms_product_sale ps on op.ProdCode = ps.ProdCode and ps.SaleTypeCcd=\'613001\' and ps.IsStatus=\'Y\'
+                left join lms_product_sale ps on op.ProdCode = ps.ProdCode and ps.SaleTypeCcd=\'613001\' and ps.IsStatus=\'Y\'
                 
                 left join vw_tm_consult tc1 
                 on tc1.TcIdx = 

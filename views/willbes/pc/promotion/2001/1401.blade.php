@@ -66,11 +66,6 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_04.png"  alt="동영상" /><br>
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/o3dfkujwIvg" frameborder="0" allowfullscreen></iframe>
-        </div>
-
         <div class="evtCtnsBox wb_cts05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1401_05.jpg"  alt="한국사 고득점 완성" /><br>
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1401_05_01.jpg"  alt="강의신청" usemap="#Map1401" border="0" />

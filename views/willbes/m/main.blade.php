@@ -83,6 +83,17 @@
                         </a>
                     </div>
                 </li>
+                <li>
+                    <div>
+                        <a href="{{ front_app_url('/home/index', 'njob') }}">
+                            <p class="subTit">e커머스</p>
+                            <p class="siteTit">
+                                <img src="{{ img_url('m/intro/icon_njob.gif') }}" alt="N잡">
+                                 N잡
+                            </p>
+                        </a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

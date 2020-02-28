@@ -160,7 +160,7 @@
         .graph h5 {color:#fff; text-align:center; font-size:24px}
         .graph .txtinfo01 {color:#fff; text-align:center;}
 
-        .stats-confirm {background:rgba(0,0,0,.8); width:100%; height:100%; position:absolute; top:0; z-index:100}
+        .stats-confirm {background:rgba(0,0,0,.8); width:1120px; height:100%; position:absolute; top:0;left:50%;margin-left:-560px;z-index:100}
         .stats-confirm div {margin-top:32%}
 
         .evt04 {padding-bottom:150px; background:#393a3e} 

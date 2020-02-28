@@ -156,6 +156,10 @@
         </div>
     </div>
 
+    <div class="njobBn">
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200228.png" alt="N job"></a>
+    </div>
+
     <div class="Section">
         <div class="widthAuto">
             <div class="bar-banner">
@@ -244,6 +248,8 @@
             </div>
         </div>
     </div>
+
+    
 
 <!--
     <div class="Section Act3 mb90">

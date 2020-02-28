@@ -8,7 +8,7 @@
         @yield('content')
 
     <!-- footer -->
-    @include('html.m.layouts.footer')
+{{--    @include('html.m.layouts.footer')--}}
 
     <!-- scripts -->
     @include('html.m.layouts.footer_script')

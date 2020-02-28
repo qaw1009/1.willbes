@@ -8,7 +8,7 @@
         @yield('content')
 
     <!-- footer -->
-    @include('willbes.pc.layouts.footer')
+{{--    @include('willbes.pc.layouts.footer')--}}
 
     <!-- scripts -->
     @include('willbes.pc.layouts.footer_script')

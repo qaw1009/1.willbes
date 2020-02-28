@@ -104,8 +104,10 @@
                     </div>
                     <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                 </div>
-                <div class="lec-profile p_re">
-                    <div class="w-tit">2018 정채영 국어 [현대] 문학종결자 문학집중강의 (5-6월 문학집중)</div>
+                <div class="lec-profile p_re">                    
+                    <div class="w-tit">
+                        <div class="OTclass mr10"><span>직장인/재학생반</span></div> 2018 정채영 국어 [현대] 문학종결자 문학집중강의 (5-6월 문학집중)
+                    </div>
                     <dl class="w-info tx-dark-gray">
                         <dt class="NSK ml10">
                             <span class="nBox n1">2배수</span>

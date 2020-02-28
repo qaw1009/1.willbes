@@ -24,7 +24,7 @@
             position:fixed; 
             top:200px; 
             right:0;
-            z-index:1;            
+            z-index:200;            
         }
        
         .evt00 {background:#404040}        
@@ -76,7 +76,7 @@
         .evt02 ul:after {content:""; display:block; clear:both}
 
         .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
-            padding-bottom:100px; height:1200px;opacity:0.05;}
+            padding-bottom:100px; height:1200px; position:relative}
         .evt03 .mapSec {width:1120px; height:400px; margin:0 auto; position:relative}
         .evt03 .tabs li {position:absolute; z-index:10; text-align:left}
         .evt03 .tabs li a {display:block; padding:3px 5px; font-weight:bold}
@@ -160,8 +160,8 @@
         .graph h5 {color:#fff; text-align:center; font-size:24px}
         .graph .txtinfo01 {color:#fff; text-align:center;}
 
-        .first_confirm{background:#FFFF01;width:400px;height:100px;line-height:45px;margin:0 auto;border-radius:50px;position:absolute;left:50%;margin-left:-200px;bottom:2420px;}
-        .first_confirm span{font-size:25px;font-weight:bold;}
+        .stats-confirm {background:rgba(0,0,0,.8); width:1120px; height:100%; position:absolute; top:0;left:50%;margin-left:-560px;z-index:100}
+        .stats-confirm div {margin-top:32%}
 
         .evt04 {padding-bottom:150px; background:#393a3e} 
         .evt04 .slide_con {position:relative; width:854px; margin:0 auto}
@@ -494,8 +494,7 @@
             }
 
         @endphp
-        <div class="evtCtnsBox evt03 stats-div">
-
+        <div class="evtCtnsBox evt03">
             <div class="mapSec">
                 <ul class="tabs">
                     <li><a href="#area01" class="active"><span class="off">○ 서울</span><span class="on">● 서울</span></a></li>
@@ -774,18 +773,17 @@
                     <p class="txtinfo01">* 자사 수강생 응시희망청 조사 기반, 최근 5회차 평균 응시인원 반영</p>                       
                 </div>
             </div>
+
+            <div class="evtCtnsBox stats-confirm">
+                <a href="javascript:fn_check_reg_member();">
+                    <div class="first_confirm">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_03_btn.png">
+                    </div>
+                </a>    
+            </div>   
         </div>
 
-        <div class="evtCtnsBox stats-confirm">
-            <a href="javascript:fn_check_reg_member();">
-                <div class="first_confirm">
-                    <span>                      
-                        2020년 1차<br>
-                        예상지원청 확인하기 >                        
-                    </span>
-                </div>
-            </a>    
-        </div>    
+         
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04.jpg"  alt=""/>
@@ -902,7 +900,7 @@
             var _check_url = '{!! front_url('/promotion/checkEventRegisterMember/') !!}?el_idx={{$data['ElIdx']}}';
             ajaxSubmit($add_apply_form, _check_url, function (ret) {
                 if (ret.ret_cd) {
-                    $('.stats-div').css('opacity',1);
+                    /*$('.stats-div').css('opacity',.1);*/
                     $('.stats-confirm').hide();
                 }
             }, showValidateError, null, false, 'alert');

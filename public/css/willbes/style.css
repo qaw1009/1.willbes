@@ -2750,8 +2750,9 @@ table.auTable tr td {
 }
 .w-info dt.strong a,
 .w-info dt strong {
-    background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 10px;
+    background:url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 50%;
     height: 30px;
+    line-height: 30px;
     padding-left: 18px;
     display: inline-block;
 }
@@ -2802,6 +2803,15 @@ table.lecTable15 tr td.w-img img {
 }
 table.lecTable tr td.w-data {
     line-height: 1.8;
+}
+.OTclass {display: inline-block; position: relative;}
+.OTclass span {
+    background:#000; color:#fff; padding:0 10px; height:24px; line-height: 24px; font-size:12px; border-radius:0 20px 20px; display: inline-block;
+}
+.OTclass a {border:1px solid #ccc; color:#000; height:24px; line-height: 24px; width:24px; text-align: center; display: inline-block; 
+    border-radius:20px; vertical-align: bottom;}
+.OTclass a:hover {
+    background:#ccc;
 }
 table.lecTable tr td.w-img img {
     width: 60px;
@@ -3049,7 +3059,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .w-sp100 button {
     background: #0e79af;
     width: 50px;
-    padding: 5px;
+    padding:0 5px;
+    height: 26px;
+    line-height: 26px;
     margin: 0;
     vertical-align: middle;
 }
@@ -3486,7 +3498,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .lec-profile .w-info {
     float: left;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     line-height: 1.8;
 }
 .lec-profile .w-info dl:after {content:""; display:block; clear: both;}
@@ -3899,6 +3911,13 @@ table.classTable tr td img {
     height: auto;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 50px;
+}
+
+/* subContainer : Content : 강의 > 직장인/재학생반 안내 : requestInfo2 */
+.willbes-Layer-requestInfo2 {
+    top: 60px;
+    left: 0;
+    width: 600px;
 }
 .willbes-Layer-requestInfo .closeBtn {
     position: absolute;
@@ -8849,7 +8868,7 @@ table.PassZoneTable .w-data {
     color: #707070;
 }
 .editTableList .listTable tr td .MoreBtn a .arrow-Btn {
-    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 6px;
+    background:url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 6px;
     width: 9px;
     /*height: 8px;*/
     margin-left: 7px;
@@ -8983,13 +9002,13 @@ table.PassZoneTable .w-data {
 .willbes-Lec-Table tr td a span.bBox {
     margin: 5px 0
 }
-.willbes-Lec-Table .packTable  .MoreBtn {
+.willbes-Lec-Table .packTable .MoreBtn {
     position: relative; 
-    top: 0;
+    top: -6px;
     right: 0;
     left: 0;
     bottom: 0;
-    line-height: 31px;
+    /*line-height: 31px;*/
     margin-left: 25px;
     color: #000;
 }

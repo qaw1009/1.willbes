@@ -167,6 +167,7 @@
                                                     <span class="NSK ml15 nBox n2">진행중</span>
                                                 </dt>
                                             </dl><br/>
+                                            <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
@@ -339,13 +340,13 @@
                                 <tbody>
                                     <tr>
                                         <th class="w-tit bg-light-white strong">강의정보</th>
-                                        <td class="w-data tx-left pl15">
+                                        <td class="w-data tx-left pl15">                                            
                                             <dl class="w-info strong">
                                                 <dt>
                                                     영어<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
                                                     한덕현교수님
                                                 </dt>
-                                            </dl><br>
+                                            </dl><br>                                            
                                             <div class="w-tit strong">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <dl class="w-info tx-gray">
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>

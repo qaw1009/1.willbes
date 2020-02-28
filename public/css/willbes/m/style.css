@@ -1936,6 +1936,11 @@ body.memBody #Footer {
 .willbes-Open-List {
     display: none;
 }
+.OTclass {display:inline-block; margin-bottom:5px}
+.OTclass span {
+    background:#000; color:#fff; padding:0 15px 0 10px; height:24px; line-height: 24px; font-size:12px; border-radius:0 20px 20px 0; display:block;
+}
+
 
 /* 동영상 상담실 */
 .filetype {

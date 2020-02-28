@@ -13,7 +13,8 @@
         background:#fff;
     }
     .evtContent span {vertical-align:auto}
-    .evtCtnsBox {width:100%; text-align:center; min-width:720px;}
+    .evtCtnsBox {width:100%; text-align:center; max-width:720px; margin:0 auto}
+    .evtCtnsBox img {width:100%;}
 </style>
 
 @section('content')

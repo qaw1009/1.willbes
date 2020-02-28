@@ -170,11 +170,9 @@
             </div>
         </div>
     </div>
-    {{--
-    <div class="njobBn">
-        <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200228.png" alt="N job"></a>
-    </div>
-    --}}
+    
+    
+    
         <div class="Section">
             <div class="widthAuto">
                 <div class="bar-banner">
@@ -249,6 +247,7 @@
                 </dl>
             </div>
         </div>
+        
         <div class="Section Act5 mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 직영학원</div>
@@ -322,6 +321,7 @@
                 </dl>
             </div>
         </div>
+
         <div class="Section Act6 mb50">
             <div class="widthAuto">
                 <div class="CScenterBox">
@@ -355,6 +355,12 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <div class="njobBn">
+            <div>
+                <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200228.png" alt="N job"></a>
             </div>
         </div>
     </div>

@@ -111,7 +111,7 @@ class ProductFModel extends WB_Model
                             , CampusCcd, CampusCcdName, FixNumber, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, LecSaleType, ProdPriceData
                             , SchoolStartYear,SchoolStartMonth,PackSelCount,
-                            , fn_product_content(ProdCode, "633002") as Content';
+                            , fn_product_content(ProdCode, "633002") as Content, PackTypeCcd';
                     break;
 
                 //추천-선택 패키지

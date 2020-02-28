@@ -31,9 +31,11 @@ class OffPackage extends \app\controllers\FrontController
         if($class_type === 'offpackage') {
             $_study_apply_ccds = ['654001','654002', '654003']; //온라인 접수, 방문+온라인 : TODO 방문접수 까지 추가 (2019.04.05 - 최진영 차장 요청)
             $_view_page = 'site/off_pack_lecture/index';
+            $_pack_type_ccds = ['648001','648002']; //일반형, 선택형
         } else {    //OffVisitPackage
             $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
             $_view_page = 'site/off_visit/package_index';
+            $_pack_type_ccds = null;
         }
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -78,7 +80,10 @@ class OffPackage extends \app\controllers\FrontController
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
             ],
-            'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
+            'IN' => [
+                'StudyApplyCcd' => $_study_apply_ccds, // 접수방식
+                'PackTypeCcd' => $_pack_type_ccds, // 종합반유형
+            ]
         ];
 
         if (element('search_order', $arr_input) == 'course') {

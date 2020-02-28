@@ -43,14 +43,6 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox wb_top"  id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_top.jpg"  alt="적중" />
-        </div>
-
-        <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_01.jpg"  alt="대각국사 오태진" />
-        </div>
-
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_02.jpg"  alt="한국사 전문가 오태진" />
         </div>
@@ -94,17 +86,6 @@
                 <area shape="rect" coords="853,1057,996,1097" href="#none" onClick="{alert('준비중입니다.')}" />
             </map>
         </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1401_06.jpg"  alt="전문가 오태진" usemap="#Map1401b" border="0" />
-            <map name="Map1401b" id="Map1401b">
-                <area shape="rect" coords="251,1017,533,1079" href="{{ site_url('/professor/show/cate/3001/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture') }}" onfocus='this.blur()'  alt="온라인강의 신청" target="_blank">
-                <area shape="rect" coords="588,1013,877,1082" href="{{ site_url('/pass/professor/show/prof-idx/50132/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture') }}" onfocus='this.blur()'  alt="학원강의 신청" target="_blank">
-            </map>
-        </div>
-        --}}
-
     </div>
     <!-- End Container -->
 

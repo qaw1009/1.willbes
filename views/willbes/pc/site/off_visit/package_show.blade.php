@@ -86,9 +86,11 @@
                         <span class="price-total tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
                     </div>
                     <div class="willbes-Lec-buyBtn">
+                        @if($data["PackTypeCcd"] === '648003')
                         <div class="careful">
                             <span class="detail">※ 해당 종합반은 단일 결제만 가능합니다. (다른 상품과 함께 결제 불가능)</span>
                         </div>
+                        @endif
                         <ul>
                             <li class="btnAuto180 h36">
                                 @if($data['PackTypeCcd'] === '648003')

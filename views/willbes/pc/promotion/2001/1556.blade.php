@@ -23,10 +23,10 @@
 
         .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
         
-        .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
+        .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/03/1556_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
         .evt_top span {position:absolute; left:50%; z-index:100}
-        .evt_top span.imgA {margin-left:-529px; top:1107px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
-        .evt_top span.imgB {margin-left:321px; top:1291px; -webkit-animation:swing2 1s linear infinite;animation:swing2 1s linear infinite}
+        .evt_top span.imgA {margin-left:-529px; top:1207px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        .evt_top span.imgB {margin-left:321px; top:1350px; -webkit-animation:swing2 1s linear infinite;animation:swing2 1s linear infinite}
         .evt_top span.imgC {margin-left:-296px; top:309px}
         @@keyframes swing{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
@@ -42,39 +42,39 @@
 
         .evt_top01 {background:#4f7bf6}
 
-        .wb_top {background:#242b35; padding-bottom:150px}
-        .wb_top .passLecBuy {position:relative; width:1120px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:1320px; width:954px; left:50%; margin-left:-477px; z-index:10}
-        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; }
-        .wb_top .passLecBuy li:nth-child(1) {width:312px}
-        .wb_top .passLecBuy li:nth-child(2) {width:312px}
-        .wb_top .passLecBuy li:nth-child(3) {width:328px}
-        .wb_top .passLecBuy li div {font-size:14px; font-weight:bold; background:#000; color:#fff; text-align:left; padding:15px; border-radius:0 10px 10px 10px; margin:0 10px}
-        .wb_top .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
-        .wb_top .passLecBuy li:last-child p {font-size:16px}
-        .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
-        .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}        
-        .wb_top input[type="radio"] {height:18px; width:18px; vertical-align:middle}
-        .wb_top input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
-        .wb_top input:checked + label {border-bottom:1px dashed #fff} /*컬러변경*/
-        .wb_top .passLecBuy span {position:absolute; top:1070px; left:222px; z-index:10; font-size:16px; color:#000}
-        .wb_top .passLecBuy span label {border-bottom:0}
-        .wb_top .passLecBuy span input:checked + label {border-bottom:0}
+        .evt05 {background:#242b35; padding-bottom:150px}
+        .evt05 .passLecBuy {position:relative; width:1120px; margin:0 auto}
+        .evt05 .passLecBuy ul {position:absolute; top:1250px; width:954px; left:50%; margin-left:-477px; z-index:10}
+        .evt05 .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; }
+        .evt05 .passLecBuy li:nth-child(1) {width:312px}
+        .evt05 .passLecBuy li:nth-child(2) {width:312px}
+        .evt05 .passLecBuy li:nth-child(3) {width:328px}
+        .evt05 .passLecBuy li div {font-size:14px; font-weight:bold; background:#000; color:#fff; text-align:left; padding:15px; border-radius:0 10px 10px 10px; margin:0 10px}
+        .evt05 .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
+        .evt05 .passLecBuy li:last-child p {font-size:16px}
+        .evt05 strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
+        .evt05 .passLecBuy ul:after {content:""; display:block; clear:both}        
+        .evt05 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
+        .evt05 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
+        .evt05 input:checked + label {border-bottom:1px dashed #fff} /*컬러변경*/
+        .evt05 .passLecBuy span {position:absolute; top:1070px; left:222px; z-index:10; font-size:16px; color:#000}
+        .evt05 .passLecBuy span label {border-bottom:0}
+        .evt05 .passLecBuy span input:checked + label {border-bottom:0}
 
-        .wb_top .check {width:980px; margin:0 auto; background:#898989; padding:20px; font-size:16px; color:#fff; text-align:left; letter-spacing:-1px}
-        .wb_top .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
-        .wb_top .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
+        .evt05 .check {width:980px; margin:0 auto; background:#898989; padding:20px; font-size:16px; color:#fff; text-align:left; letter-spacing:-1px}
+        .evt05 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
+        .evt05 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
 
-        .wb_top .passLecbtn {width:980px; margin:0 auto; padding:40px 20px 80px; background:#898989}
-        .wb_top .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
-        .wb_top .passLecbtn li {display:inline; float:left; width:100%; color:#000; height:80px; line-height:80px}
-        .wb_top .passLecbtn li a {background:#000; color:#fff; display:block; font-size:26px;}
-        .wb_top .passLecbtn li a:hover {background:#0d3692}
-        .wb_top .passLecbtn span {margin-left:50px}
-        .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}
+        .evt05 .passLecbtn {width:980px; margin:0 auto; padding:40px 20px 80px; background:#898989}
+        .evt05 .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
+        .evt05 .passLecbtn li {display:inline; float:left; width:100%; color:#000; height:80px; line-height:80px}
+        .evt05 .passLecbtn li a {background:#000; color:#fff; display:block; font-size:26px;}
+        .evt05 .passLecbtn li a:hover {background:#0d3692}
+        .evt05 .passLecbtn span {margin-left:50px}
+        .evt05 .passLecbtn ul:after {content:""; display:block; clear:both}
 
         .wb_cts01 {background:#fff;}
-        .wb_cts02 {background:#252424 url(http://file3.willbes.net/new_cop/2018/02/EV180201_p3_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/03/1556_07_bg.jpg) no-repeat center top;}
         .wb_cts03 {background:#eee;}
         .wb_cts04 {background:#f3f3f3;}
         .wb_cts05 {background:#eee;}
@@ -102,8 +102,8 @@
 
 
         /* 이용안내 */
-        .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0}
-        .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
+        .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:100px 0}
+        .content_guide_wrap .guide_tit{width:960px;margin:0 auto; font-size:30px; margin-bottom:40px}
         .content_guide_wrap .tabs {width:960px; margin:0 auto;}
         .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
@@ -170,20 +170,15 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        {{--
         <ul class="skybanner">
             <li>
                 <a href="#event">
                     <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_sky.png" alt="pass구매하기">
                 </a>
             </li>
-            {{--
-            <li style="padding-top:10px;">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky2.png" alt="구매하기">
-                </a>
-            </li>
-            --}}
         </ul> 
+        --}}
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -213,71 +208,64 @@
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top.jpg"  alt="PASS"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_top.jpg"  alt="PASS"/>
             <iframe width="853" height="480" src="https://www.youtube.com/embed/8hB3UhcoihY?rel=0" frameborder="0" allowfullscreen class="mt30"></iframe>
             <span class="imgA"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img1.png"  alt="PASS"/></span>
             <span class="imgB"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img2.png"  alt="PASS"/></span>
-            <span class="imgC"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img3.gif"  alt="PASS"/></span>
-        </div>
-
-        <div class="evtCtnsBox evt_top01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1009_top_01.jpg"  alt="PASS"/>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01.jpg"  alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01.jpg"  alt=""/>
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt02.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt03.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt04.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt05.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_txt06.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt02.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt03.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt04.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt05.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_txt06.png" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2019/09/1009_01_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2019/09//1009_01_arrowR.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_01_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03//1556_01_arrowR.png"></a></p>
             </div>
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_03.jpg"  alt="" usemap="#Map190911" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_02.jpg"  alt="" usemap="#Map190911" border="0"/>
             <map name="Map190911" id="Map190911">
                 <area shape="rect" coords="416,284,706,338" href="https://police.willbes.net/promotion/index/cate/3001/code/1022" target="_blank" alt="적중내역보기" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01_190603.gif"  alt="열공지원" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_04.gif"  alt="열공지원" />
             <iframe width="853" height="480" src="https://www.youtube.com/embed/4947Jur0ZP4?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <div class="evtCtnsBox wb_top" id="pass">
+        <div class="evtCtnsBox evt05" id="pass">
             <div class="passLecBuy">
                 <ul>
                     <li>
                         <div>
-                        <strong>79</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="161557" onClick=""/> <label for="y_pkg1">8개월 패스</label>
+                        <strong>69</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="162531" onClick=""/> <label for="y_pkg1">6개월 패스</label>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <strong>105</strong>만원<br>
-                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="161569" onClick=""/> <label for="y_pkg4_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="161560" onClick=""/> <label for="y_pkg4_2">21만원 상당 기본서 set (원유철史)</label><br>                           
+                            <strong>89</strong>만원<br>
+                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="162534" onClick=""/> <label for="y_pkg4_1">12개월 패스</label>                           
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>119</strong>만원<br>
-                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="161568" onClick=""/> <label for="y_pkg3_1">21만원 상당 기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="161566" onClick=""/> <label for="y_pkg3_2">21만원 상당 기본서 set (원유철史)</label><br>                            
+                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="162537" onClick=""/> <label for="y_pkg3_1">20개월 패스</label>                           
                         </div>
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1009_05_02_200128.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_05.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -285,10 +273,7 @@
                     </map>
                 </div>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>
-                    <map name="Map1009B" id="Map1009B">
-                        <area shape="rect" coords="604,597,736,647" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_05_01.jpg"  alt="추가특전"/>
                 </div>
             </div>
 
@@ -326,46 +311,41 @@
         <!-- wb_top//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04.jpg"  alt="신광은경찰팀 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_06.jpg"  alt="신광은경찰팀 교수진" />
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_01.jpg" alt="1" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_02.jpg" alt="2" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_03.jpg" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_06_01.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_06_02.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_06_03.jpg" alt="3" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/zeropass//1009_p_prev.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/zeropass//1009_p_next.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_p_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/03/1556_p_next.png"></a></p>
             </div>
         </div>
 
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_05.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_07.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_06.jpg"  alt="맞춤커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_08.jpg"  alt="맞춤커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_07.jpg"  alt="밀착관리 단계별 합격 프로그램" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_09.jpg"  alt="밀착관리 단계별 합격 프로그램" />
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_01.jpg"  alt="왕초보영어탑재" /><br />
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_02.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
-            <map name="Map190117B" id="Map190117B">
-                <area shape="rect" coords="510,583,632,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
-            </map>
-            <br />
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_03.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_09_01.jpg"  alt="왕초보영어탑재" /><br />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1556_09_03.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
         </div>
 
         <div class="content_guide_wrap" id="tab">
-            <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
+            <p class="guide_tit NSK-Thin">윌비스 <strong class="NSK-Black">신광은 경찰 PASS</strong> 이용안내</p>
             <ul class="tabs">
-                <li><a href="#tab1">8개월 PASS</a></li>
-                <li><a href="#tab2">14개월 PASS</a></li>
+                <li><a href="#tab1">6개월 PASS</a></li>
+                <li><a href="#tab2">12개월 PASS</a></li>
                 <li><a href="#tab3">20개월 0원 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
@@ -374,7 +354,7 @@
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>8개월 상품구성</h3>
+                        <h3>6개월 상품구성</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -454,55 +434,13 @@
             <div class="content_guide_box" id="tab2">
                 <dl>
                     <dt>
-                        <h3>14개월 상품구성</h3>
+                        <h3>12개월 상품구성</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
-                        </ol>
-                    </dd>
-
-                    <dt>
-                        <h3>14개월 PASS 이벤트</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>
-                            구성 및 환불<br>
-                            - 14개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
-                            - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
-                            - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            - 결제 후 교재 순차배송 진행.<br>
-                            - 사은품 교재 변경 불가<br>
-                            <br>
-                            *패스 강좌 환불시  아래와 같이 환불처리 진행됨<br>
-                             ① 결제일로부터 10일 이내 환불경우:<br>
-                             - 교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
-                             - 교재 사용일 경우 교재비 정가 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
-                             - 교재 반환시 왕복배송비는 회원부담.<br>
-                             - 미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
-                             ② 결제일로부터 10일 이후 패스는 정가기준으로 기간 차감 후 환불진행, 교재는 반품(환불)불가<br>
-                             <br>
-                            [교재비 차감시 가격]<br>
-                            - 신광은 형사소송법 (신정9판): 47,000원,     - 2019 장정훈 경찰학개론: 36,000원,     - 김원욱 형법 2.1 (기본서+부록): 49,000원<br>
-                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     - 2020 오태진 대각국사: 40,000원<br>
-                            - 2020 원유철의 역사일지[전근대]: 23,000원,     - 2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            <br>
-                            (*환불시 공통사항)<br>
-                            - 강의와 별도로 교재만 환불은 불가함<br>
-                            - 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
-                            - 고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
-                            - 할인상품의 경우 할인 전 정가 기준으로 차감됩니다.<br>
-                            <br>
-                            </li>
-                            <li>교재 발송<br>
-                            ① 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
-                            ② 사은품 교재 변경 발송 불가<br>
-                            ③ 교재 발송 후 교재 배송지 수정, 변경은 불가합니다.<br>
-                            ④ 배송지 오기재로 인한 재발송은 불가합니다.<br>                               
-                            </li>
                         </ol>
                     </dd>
 
@@ -585,48 +523,6 @@
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                             <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dt>
-                        <h3>이벤트</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>
-                            구성 및 환불<br>
-                            - 0원 패스 구매시 기본서 교재 5권 무료제공 (배송비 무료)<br>
-                            - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
-                            - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            - 결제 후 교재 순차배송 진행.<br>
-                            - 사은품 교재 변경 불가<br>
-                            <br>
-                            * 패스 강좌 환불시  아래와 같이 환불처리 진행됨<br>
-                            ① 결제일로부터 7일 이내 환불경우:<br>
-                            - 교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
-                            - 교재 사용일 경우 교재비 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
-                            - 교재 반환시 왕복배송비는 회원부담.<br>
-                            - 미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
-                            ② 결제일로부터 7일 이후 패스는 정가기준으로 기간 차감 후 환불진행, 교재는 반품(환불)불가<br>
-                            <br>
-                            [교재비 차감시 가격]<br>
-                            - 신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
-                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
-                            - 2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            <br>
-                            (*환불시 공통사항)<br>
-                            - 강의와 별도로 교재만 환불은 불가함<br>
-                            - 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
-                            - 고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
-                            - 할인상품의 경우 할인 전 정가 기준으로 차감됩니다.<br>
-                            </li>
-                            <li>
-                            교재 발송<br>
-                            ① 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
-                            ② 사은품 교재 변경 발송 불가<br>
-                            ③ 교재 발송 후 교재 배송지 수정, 변경은 불가합니다.<br>
-                            ④ 배송지 오기재로 인한 재발송은 불가합니다.<br>
-                            </li>
                         </ol>
                     </dd>
 
@@ -775,7 +671,6 @@
                     <dd>
                         <ol>
                             <li>환승 인증완료 시, 쿠폰 즉시 발급 (내강의실 쿠폰함)</li>
-                            <li>8개월 PASS 20% 할인쿠폰 발급</li>
                             <li>쿠폰 사용기간: 발급일로부터 3일, 일반/경행 PASS 구매시에 사용가능</li>                            
                         </ol>
                     </dd>

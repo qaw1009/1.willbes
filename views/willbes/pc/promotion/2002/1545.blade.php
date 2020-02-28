@@ -76,7 +76,7 @@
         .evt02 ul:after {content:""; display:block; clear:both}
 
         .evt03 {background:#393a3e url(https://static.willbes.net/public/images/promotion/2020/02/1545_03.jpg) no-repeat center top; 
-            padding-bottom:100px; height:1200px;opacity:0.05;}
+            padding-bottom:100px; height:1200px;}
         .evt03 .mapSec {width:1120px; height:400px; margin:0 auto; position:relative}
         .evt03 .tabs li {position:absolute; z-index:10; text-align:left}
         .evt03 .tabs li a {display:block; padding:3px 5px; font-weight:bold}

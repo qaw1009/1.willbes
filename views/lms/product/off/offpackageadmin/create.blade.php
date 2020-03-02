@@ -59,6 +59,7 @@
                             @foreach($packtype_ccd as $key => $val)
                                 <input type="radio" name="PackTypeCcd" id="PackTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PackTypeCcd']==$key)  checked="checked"@endif title='종합반유형'> {{$val}}&nbsp;&nbsp;
                             @endforeach
+                                &nbsp;• 선택형(강사배정)은 온라인 접수가 불가능합니다.
                         </div>
                     </div>
                 </div>
@@ -812,7 +813,6 @@
     <script src="/public/js/editor_util.js"></script>
 
     <script type="text/javascript">
-
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
@@ -856,7 +856,6 @@
                 })
             });
 
-
             //과정, 과목 변경
             $("#CourseIdx").chained("#site_code");
             $("#CampusCcd").chained("#site_code");
@@ -870,10 +869,25 @@
             });
 
             @if($data['PackCateCcd'] == '649001')
-            $("#CourseIdx").attr("disabled", false);
+                $("#CourseIdx").attr("disabled", false);
             @else
-            $("#CourseIdx").attr("disabled", true);
+                $("#CourseIdx").attr("disabled", true);
             @endif
+
+            $regi_form.on('ifChecked', 'input[name="PackTypeCcd"]', function () {
+                studyTypeCheck($(this).val());
+            });
+
+            var studyTypeCheck = function(val) {
+                if(val === '648003') {
+                    $(":radio[name='StudyApplyCcd'][value='654001']").iCheck('check');
+                    $(":radio[name='StudyApplyCcd'][value!='654001']").iCheck('disable')
+                } else {
+                    $(":radio[name='StudyApplyCcd']").iCheck('enable')
+                }
+            };
+
+            studyTypeCheck( $('input[name="PackTypeCcd"]:checked').val() );
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){

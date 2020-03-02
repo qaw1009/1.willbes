@@ -2751,8 +2751,8 @@ table.auTable tr td {
 .w-info dt.strong a,
 .w-info dt strong {
     background:url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 50%;
-    height: 30px;
-    line-height: 30px;
+    /*height: 30px;
+    line-height: 30px;*/
     padding-left: 18px;
     display: inline-block;
 }

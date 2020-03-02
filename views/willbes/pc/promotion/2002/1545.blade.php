@@ -93,9 +93,9 @@
         .evt03 .tabs li:nth-child(5) {top:460px; left:280px} /*광주*/ 
         .evt03 .tabs li:nth-child(6) {top:325px; left:324px} /*대전*/ 
         .evt03 .tabs li:nth-child(7) {top:416px; left:474px} /*울산*/ 
-        .evt03 .tabs li:nth-child(8) {top:185px; left:397px} /*강원*/ 
-        .evt03 .tabs li:nth-child(9) {top:248px; left:309px} /*경기남부*/ 
-        .evt03 .tabs li:nth-child(10) {top:178px; left:313px} /*경기북부*/ 
+        .evt03 .tabs li:nth-child(10) {top:178px; left:313px} /*강원*/  
+        .evt03 .tabs li:nth-child(8) {top:185px; left:397px} /*경기남부*/
+        .evt03 .tabs li:nth-child(9) {top:248px; left:309px} /*경기북부*/
         .evt03 .tabs li:nth-child(11) {top:278px; left:365px} /*충북*/ 
         .evt03 .tabs li:nth-child(12) {top:309px; left:270px} /*충남*/ 
         .evt03 .tabs li:nth-child(13) {top:389px; left:313px} /*전북*/  
@@ -504,9 +504,9 @@
                     <li><a href="#area05"><span class="off">○ 광주</span><span class="on">● 광주</span></a></li>
                     <li><a href="#area06"><span class="off">○ 대전</span><span class="on">● 대전</span></a></li>           
                     <li><a href="#area07"><span class="off">○ 울산</span><span class="on">● 울산</span></a></li>
+                    <li><a href="#area10"><span class="off">○ 강원</span><span class="on">● 강원</span></a></li>
                     <li><a href="#area08"><span class="off">○ 경기남부</span><span class="on">● 경기남부</span></a></li>
                     <li><a href="#area09"><span class="off">○ 경기북부</span><span class="on">● 경기북부</span></a></li>
-                    <li><a href="#area10"><span class="off">○ 강원</span><span class="on">● 강원</span></a></li>
                     <li><a href="#area11"><span class="off">○ 충북</span><span class="on">● 충북</span></a></li>
                     <li><a href="#area12"><span class="off">○ 충남</span><span class="on">● 충남</span></a></li>
                     <li><a href="#area13"><span class="off">○ 전북</span><span class="on">● 전북</span></a></li>
@@ -579,7 +579,7 @@
                     </ul>
                 </div>
 
-                <div id="area08" class="areaCts">
+                <div id="area10" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기남부청</strong></li>
                         <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기남부']['채용'])}}명</strong></li>
@@ -588,7 +588,7 @@
                     </ul>
                 </div>
 
-                <div id="area09" class="areaCts">
+                <div id="area08" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기북부청</strong></li>
                         <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기북부']['채용'])}}명</strong></li>
@@ -597,7 +597,7 @@
                     </ul>
                 </div>
 
-                <div id="area10" class="areaCts">
+                <div id="area09" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
                         <li><span>- 채용인원</span> <strong>{{number_format($graph_data['강원']['채용'])}}명</strong></li>

@@ -69,12 +69,10 @@
         .cert05{background:#fff;}
 
     </style>
-	<div class="evtContent NGR">	
-        {{--
+	<div class="evtContent NGR">	        
 		<div class="skybanner">
-			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_skybanner.png" alt="스포츠지도사 베너">
-        </div>
-        --}}
+			<a href="https://job.willbes.net/support/notice/show/cate/309001?board_idx=260791" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1350_skybanner.png" alt="스포츠지도사 베너"></a>
+        </div>        
         		
 		<div class="evtCtnsBox cert_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1350_top.jpg" alt="윌비스 2020 스포츠지도사" usemap="#Map" border="0" />

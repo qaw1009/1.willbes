@@ -581,6 +581,15 @@
 
                 <div id="area10" class="areaCts">
                     <ul class="areaData">
+                        <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
+                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['강원']['채용'])}}명</strong></li>
+                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['강원']['응시'])}}명</strong></li>
+                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['강원']['응시'] / $graph_data['강원']['채용'])}} : 1</strong></li>
+                    </ul>
+                </div>
+
+                <div id="area08" class="areaCts">
+                    <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기남부청</strong></li>
                         <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기남부']['채용'])}}명</strong></li>
                         <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기남부']['응시'])}}명</strong></li>
@@ -588,21 +597,12 @@
                     </ul>
                 </div>
 
-                <div id="area08" class="areaCts">
+                <div id="area09" class="areaCts">
                     <ul class="areaData">
                         <li><span>예상 경쟁률</span> <strong>경기북부청</strong></li>
                         <li><span>- 채용인원</span> <strong>{{number_format($graph_data['경기북부']['채용'])}}명</strong></li>
                         <li><span>- 응시희망</span> <strong>{{number_format($graph_data['경기북부']['응시'])}}명</strong></li>
                         <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['경기북부']['응시'] / $graph_data['경기북부']['채용'])}} : 1</strong></li>
-                    </ul>
-                </div>
-
-                <div id="area09" class="areaCts">
-                    <ul class="areaData">
-                        <li><span>예상 경쟁률</span> <strong>강원청</strong></li>
-                        <li><span>- 채용인원</span> <strong>{{number_format($graph_data['강원']['채용'])}}명</strong></li>
-                        <li><span>- 응시희망</span> <strong>{{number_format($graph_data['강원']['응시'])}}명</strong></li>
-                        <li><span>- 예상경쟁률</span> <strong>{{round($graph_data['강원']['응시'] / $graph_data['강원']['채용'])}} : 1</strong></li>
                     </ul>
                 </div>
 

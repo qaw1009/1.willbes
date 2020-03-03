@@ -1,17 +1,18 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 관리자가 수기로 종합반 수강접수를 진행하는 메뉴입니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</h5>
+    <h5>- 관리자가 종합반 수강접수를 진행하는 메뉴입니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</h5>
     <div class="x_panel">
         <div class="x_content">
             {!! form_errors() !!}
             <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
-                {!! method_field('POST') !!}
+                {!! method_field($method) !!}
+                <input type="hidden" name="order_idx" value="{{ $idx }}"/>
                 <input type="hidden" name="unpaid_idx" value="{{ $unpaid_idx or '' }}"/>
                 <input type="hidden" name="mem_idx" value="{{ $data['mem']['MemIdx'] or '' }}" data-result-data=""/>
                 <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
-                @if($is_unpaid === false)
+                @if(isset($data['mem']) === false)
                     <div class="row">
                         <label class="control-label col-md-1" for="search_mem_id">· 회원검색</label>
                         <div class="col-md-8 form-inline">
@@ -45,7 +46,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if($is_unpaid === true)
+                                    @if(isset($data['mem']) === true)
                                         <td>{{ $data['mem']['MemIdx'] }} ({{ $data['mem']['SiteName'] }})</td>
                                         <td>{{ $data['mem']['JoinDate'] }}</td>
                                         <td>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</td>
@@ -71,7 +72,7 @@
                         <h4><strong>상품결제정보</strong></h4>
                     </div>
                     <div class="col-md-6 text-right form-inline item">
-                        @if($is_unpaid === true)
+                        @if(empty($data['prod']['SiteCode']) === false)
                             <input type="hidden" name="site_code" value="{{ $data['prod']['SiteCode'] }}"/>
                         @else
                             {!! html_site_select('', 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_site_code) !!}
@@ -94,22 +95,28 @@
                             </thead>
                             <tbody>
                             <tr>
-                            @if($is_unpaid === true)
+                            @if(empty($data['prod']) === false)
                                 <td>{{ $data['prod']['CampusCcdName'] }}</td>
                                 <td><div class="blue inline-block">[{{ $data['prod']['LearnPatternCcdName'] }}]</div> {{ $data['prod']['ProdName'] }}
                                     <input type="hidden" name="prod_code" value="{{ $data['prod']['ProdCode'] }}:{{ $data['prod']['ProdTypeCcd'] }}:{{ $data['prod']['LearnPatternCcd'] }}"/>
+                                    <input type="hidden" name="order_prod_idx" value="{{ $data['prod']['OrderProdIdx'] or '' }}"/>
                                 </td>
                                 <td>
                                     <input type="number" name="order_price" class="form-control input-sm" title="주문금액" value="{{ $data['prod']['OrgOrderPrice'] }}" readonly="readonly">
                                 </td>
                                 <td class="form-inline">
-                                    <select class="form-control input-sm set-pay-price" name="disc_type" readonly="readonly">
-                                        <option value="{{ $data['prod']['DiscType'] }}">{{ $data['prod']['DiscType'] == 'R' ? '%' : '원' }}</option>
+                                    <select class="form-control input-sm set-pay-price" name="disc_type" @if($method == 'POST') readonly="readonly" @endif>
+                                        @if($method == 'PUT')
+                                            <option value="R">%</option>
+                                            <option value="P">원</option>
+                                        @else
+                                            <option value="{{ $data['prod']['DiscType'] }}">{{ $data['prod']['DiscType'] == 'R' ? '%' : '원' }}</option>
+                                        @endif
                                     </select>
-                                    <input type="number" name="disc_rate" class="form-control input-sm set-pay-price" title="할인율" value="{{ $data['prod']['DiscRate'] }}" style="width: 160px;" readonly="readonly">
+                                    <input type="number" name="disc_rate" class="form-control input-sm set-pay-price" title="할인율" value="{{ $data['prod']['DiscRate'] or '0' }}" style="width: 160px;" @if($method == 'POST') readonly="readonly" @endif>
                                 </td>
                                 <td>
-                                    <input type="text" name="disc_reason" class="form-control input-sm" title="할인사유" value="{{ $data['prod']['DiscReason'] }}" readonly="readonly">
+                                    <input type="text" name="disc_reason" class="form-control input-sm" title="할인사유" value="{{ $data['prod']['DiscReason'] or '' }}" @if($method == 'POST') readonly="readonly" @endif>
                                 </td>
                                 <td>
                                     <input type="number" name="org_pay_price" class="form-control input-sm" title="총주문금액" value="{{ $data['prod']['OrgPayPrice'] }}" readonly="readonly">
@@ -127,8 +134,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="fa-ul mb-0">
-                            <li><i class="fa-li fa fa-check-square-o"></i>관리자가 수기로 등록한 종합반 수강접수 내역만 확인 가능합니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</li>
-                            <li><i class="fa-li fa fa-check-square-o"></i>프론트에서 접수대기로 신청한 종합반 수강접수 내역은 ‘[일반]수강접수’ 메뉴에서 확인 가능합니다.</li>
+                            <li><i class="fa-li fa fa-check-square-o"></i>‘일반형’, ’선택형(강사배정)’ 종합반만 관리자가 수기로 수강접수 가능하며, 프론트에서 접수대기로 신청한 ‘선택형(강사배정)’ 종합반의 경우도 수강접수 가능합니다.</li>
+                            <li><i class="fa-li fa fa-check-square-o"></i>프론트에서 접수대기로 신청한 ‘일반형’, ’선택형’ 종합반은 [일반]수강접수 메뉴에서만 확인 및 수강접수 가능합니다.</li>
                         </ul>
                     </div>
                 </div>
@@ -178,6 +185,14 @@
                                 </div>
                             </div>
                         </div>
+                        @if($method == 'POST')
+                            <div class="form-group">
+                                <label class="control-label col-md-1 pl-20">메모</label>
+                                <div class="col-md-7">
+                                    <textarea id="order_memo" name="order_memo" class="form-control" rows="2" title="메모"></textarea>
+                                </div>
+                            </div>
+                        @endif
                         <div class="form-group pt-5 pb-5">
                             <div class="col-md-12 form-inline">
                                 <input type="checkbox" id="is_unpaid" name="is_unpaid" class="flat" value="Y" {!! $is_unpaid === true ? 'checked="checked"' : '' !!} title="미수금액납부여부"/> <label for="is_unpaid" class="input-label">미수금액 납부 여부</label>
@@ -194,11 +209,11 @@
                                         {{ number_format($data['prod']['tRefundPrice']) }}원(총기환불금액)) =
                                         <strong class="red"><span id="calc_unpaid_price">{{ number_format($data['prod']['tRealUnPaidPrice']) }}</span>원</strong>
                                     @else
-                                        <span id="calc_org_pay_price">0</span>원(총주문금액) -
+                                        <span id="calc_org_pay_price">{{ empty($data['prod']) === false ? number_format($data['prod']['OrgPayPrice']) : 0 }}</span>원(총주문금액) -
                                         (<span id="calc_real_pay_price">0</span>원(결제금액) +
                                         0원(총기결제금액) -
                                         0원(총기환불금액)) =
-                                        <strong class="red"><span id="calc_unpaid_price">0</span>원</strong>
+                                        <strong class="red"><span id="calc_unpaid_price">{{ empty($data['prod']) === false ? number_format($data['prod']['OrgPayPrice']) : 0 }}</span>원</strong>
                                     @endif
                                 </div>
                             </div>
@@ -248,10 +263,18 @@
                         </div>
                         <div class="text-center mt-20">
                             <button type="submit" name="btn_visit_order" class="btn btn-success">수강등록하기</button>
+                            <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                         </div>
                     </div>
                 </div>
             </form>
+            @if($method == 'PUT')
+                <div class="ln_solid mt-5"></div>
+                <div class="row">
+                    {{-- 주문 메모 --}}
+                    @include('lms.pay.order.order_memo_partial')
+                </div>
+            @endif
             <div class="ln_solid mt-15"></div>
             <div class="row">
                 <div class="col-md-6">
@@ -283,10 +306,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="ln_solid"></div>
-            <div class="text-center">
-                <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             </div>
         </div>
     </div>
@@ -425,7 +444,7 @@
                         '            <option value="R">%</option>\n' +
                         '            <option value="P">원</option>\n' +
                         '        </select>\n' +
-                        '        <input type="number" name="disc_rate" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 120px;">\n' +
+                        '        <input type="number" name="disc_rate" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">\n' +
                         '    </td>\n' +
                         '    <td>\n' +
                         '        <input type="text" name="disc_reason" class="form-control input-sm" title="할인사유" value="">\n' +
@@ -499,6 +518,11 @@
                 var disc_type = $regi_form.find('[name="disc_type"]').val();
                 var disc_rate = parseInt($regi_form.find('[name="disc_rate"]').val(), 10) || 0;
                 var real_pay_price = 0;
+
+                if (disc_rate < 0) {
+                    alert('할인율은 0 이상의 숫자여야만 합니다.');
+                    return;
+                }
 
                 // 할인율 적용
                 if (disc_type === 'R') {

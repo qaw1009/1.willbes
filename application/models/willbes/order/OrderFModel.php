@@ -738,7 +738,8 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품서브 파라미터 체크 (사용자패키지, 운영자패키지, 종합반일 경우만 체크)
             if (in_array($learn_pattern_ccd, [$this->_learn_pattern_ccd['userpack_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']]) === true) {
-                if (empty($arr_prod_code_sub) === true) {
+                // 선택형(강사배정) 종합반일 경우 상품코드서브 정보 없음 
+                if ($pack_type_ccd != $this->_adminpack_lecture_type_ccd['choice_prof'] && empty($arr_prod_code_sub) === true) {
                     throw new \Exception('주문상품서브 정보가 없습니다.');
                 }
             }
@@ -1237,6 +1238,19 @@ class OrderFModel extends BaseOrderFModel
                 }
             } elseif ($learn_pattern == 'userpack_lecture' || $learn_pattern == 'off_pack_lecture') {
                 // 사용자패키지, 학원 종합반 (단강좌, 학원 단과 속성 정보를 등록함)
+                $pack_type_ccd = element('PackTypeCcd', $input, '');    // 패키지유형공통코드
+
+                if ($learn_pattern == 'off_pack_lecture' && $pack_type_ccd == $this->_adminpack_lecture_type_ccd['choice_prof']) {
+                    // 선택형(강사배정) 종합반일 경우 상품코드서브 정보가 없음
+                    if (empty($arr_prod_code_sub) === true) {
+                        return true;
+                    }
+                } else {
+                    if (empty($arr_prod_code_sub) === true) {
+                        throw new \Exception('서브강좌 상품코드가 없습니다.');
+                    }
+                }                
+                
                 // 단강좌, 학원단과 정보 조회
                 $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
                 if (empty($prod_rows) === true) {

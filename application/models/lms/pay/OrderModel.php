@@ -1462,6 +1462,22 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('좌석 배정에 실패했습니다.');
                 }
             }
+            
+            // 주문메모 등록
+            $order_memo = element('order_memo', $input);
+            if (empty($order_memo) === false) {
+                // 주문메모 모델 로드
+                $this->load->loadModels(['_lms/pay/orderMemo']);
+
+                $is_add_memo = $this->orderMemoModel->_addOrderMemo([
+                    'order_idx' => $order_idx,
+                    'memo_type_ccd' => $this->_order_memo_type_ccd['normal'],
+                    'order_memo' => $order_memo
+                ]);
+                if ($is_add_memo !== true) {
+                    throw new \Exception($is_add_memo);
+                }
+            }
 
             $this->_conn->trans_commit();
 
@@ -1792,7 +1808,7 @@ class OrderModel extends BaseOrderModel
                     'DiscRate' => $prod_row['DiscRate'],
                     'DiscType' => $prod_row['DiscType'],
                     'DiscReason' => $prod_row['DiscReason'],
-                    'UnPaidMemo' => element('unpaid_memo', $input),
+                    'UnPaidMemo' => element('unpaid_memo', $input, null),
                     'RealPayPrice' => $prod_row['RealPayPrice']
                 ];
 
@@ -1819,8 +1835,8 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            // 실결제금액이 0원이면 자동지급 안함 (0원결제(방문))
-            if ($prod_row['RealPayPrice'] < 1) {
+            // 실결제금액이 0원이거나 2회차 이상의 미수금 주문이라면 자동지급 안함 (0원결제(방문))
+            if ($prod_row['RealPayPrice'] < 1 || empty($unpaid_idx) === false) {
                 $is_auto_add = false;
             }
 
@@ -1895,10 +1911,180 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception($is_add_other_info);
             }
 
+            // 주문메모 등록
+            $order_memo = element('order_memo', $input);
+            if (empty($order_memo) === false) {
+                // 주문메모 모델 로드
+                $this->load->loadModels(['_lms/pay/orderMemo']);
+
+                $is_add_memo = $this->orderMemoModel->_addOrderMemo([
+                    'order_idx' => $order_idx,
+                    'memo_type_ccd' => $this->_order_memo_type_ccd['normal'],
+                    'order_memo' => $order_memo
+                ]);
+                if ($is_add_memo !== true) {
+                    throw new \Exception($is_add_memo);
+                }
+            }
+
             $this->_conn->trans_commit();
 
             // 주문상품 자동문자 발송 (리턴결과 처리안함)
             $this->sendOrderProductAutoSms([$prod_code], $mem_idx);
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 방문결제 종합반 결제완료 처리 (주문 데이터 수정)
+     * @param array $input
+     * @return array|bool
+     */
+    public function procVisitPackageOrderComplete($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 방문결제 종합반 수정
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $mem_idx = element('mem_idx', $input);
+            $order_idx = element('order_idx', $input);
+            $order_prod_idx = element('order_prod_idx', $input);
+            $order_price = element('order_price', $input, 0);
+            $real_pay_price = element('real_pay_price', $input, 0);
+            $card_pay_price = element('card_pay_price', $input, 0);
+            $cash_pay_price = element('cash_pay_price', $input, 0);
+            $disc_rate = element('disc_rate', $input, 0);
+            $disc_type = element('disc_type', $input, 'R');
+            $disc_reason = element('disc_reason', $input, null);
+            $disc_price = $order_price - $real_pay_price;
+            $is_unpaid = element('is_unpaid', $input, 'N'); // 미수금액납부여부
+            $unpaid_data = []; // 주문미수금정보 등록 데이터
+
+            if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문상품 조회
+            $arr_condition = [
+                'EQ' => ['O.OrderIdx' => $order_idx, 'O.MemIdx' => $mem_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['receipt_wait']],
+                'IN' => ['OP.OrderProdIdx' => [$order_prod_idx]]
+            ];
+            $order_prod_data = $this->orderListModel->findOrderProduct($arr_condition);
+
+            if (empty($order_prod_data) === true) {
+                throw new \Exception('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            if (count($order_prod_data) > 1) {
+                throw new \Exception('종합반은 단일 상품만 수강접수 가능합니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문상품 데이터 추출
+            $order_prod_data = element('0', $order_prod_data);
+
+            // 종합반유형 체크 (선택형(강사배정)만 주문 가능)
+            if ($order_prod_data['LearnPatternCcd'] != $this->_learn_pattern_ccd['off_pack_lecture'] || $order_prod_data['PackTypeCcd'] != $this->_adminpack_lecture_type_ccd['choice_prof']) {
+                throw new \Exception('종합반 선택형(강사배정) 상품만 수강접수 가능합니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 정원마감 체크
+            $check_closing = $this->salesProductModel->getClosingProductName($order_prod_data['ProdCode']);
+            if ($check_closing !== true) {
+                $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
+                throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
+            }
+
+            // 미수금 납부일 경우
+            if ($is_unpaid == 'Y') {
+                $org_pay_price = element('org_pay_price', $input, 0);   // [원]결제금액
+
+                // 주문미수금정보 등록 데이터
+                $unpaid_data = [
+                    'OrgOrderPrice' => $order_price,
+                    'OrgPayPrice' => $org_pay_price,
+                    'DiscPrice' => $order_price - $org_pay_price,
+                    'DiscRate' => $disc_rate,
+                    'DiscType' => $disc_type,
+                    'DiscReason' => $disc_reason,
+                    'UnPaidMemo' => element('unpaid_memo', $input, null),
+                    'RealPayPrice' => $real_pay_price
+                ];
+
+                // 주문상품 데이터 가공
+                $order_price = $real_pay_price;
+                $disc_price = 0;
+                $disc_rate = 0;
+                $disc_type = 'R';
+                $disc_reason = null;
+            }
+
+            // 주문상품 수정
+            $data = [
+                'OrderPrice' => $order_price,
+                'RealPayPrice' => $real_pay_price,
+                'CardPayPrice' => $card_pay_price,
+                'CashPayPrice' => $cash_pay_price,
+                'DiscPrice' => $disc_price,
+                'DiscRate' => $disc_rate,
+                'DiscType' => $disc_type,
+                'DiscReason' => $disc_reason,
+                'PayStatusCcd' => $this->_pay_status_ccd['paid'],
+                'UpdAdminIdx' => $sess_admin_idx
+            ];
+
+            $is_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
+                ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
+                ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
+                ->update($this->_table['order_product']);
+            if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                throw new \Exception('주문상품 정보 수정에 실패했습니다.');
+            }
+
+            // 자동지급 쿠폰 데이터 등록 (0원결제(방문)일 경우 지급 안함)
+            if ($real_pay_price > 0) {
+                $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $order_prod_data['ProdCode'], $mem_idx);
+                if ($is_add_auto_coupon !== true) {
+                    throw new \Exception($is_add_auto_coupon);
+                }
+            }
+
+            // 주문 수정
+            $data = [
+                'PayMethodCcd' => element('pay_method_ccd', $input),
+                'OrderPrice' => $order_price,
+                'OrderProdPrice' => $order_price,
+                'RealPayPrice' => $real_pay_price,
+                'CardPayPrice' => $card_pay_price,
+                'CashPayPrice' => $cash_pay_price,
+                'DiscPrice' => $disc_price,
+                'VisitPayCardCcd' => element('card_ccd', $input)
+            ];
+
+            $is_update = $this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $mem_idx)
+                ->where('PayRouteCcd', $this->_pay_route_ccd['visit'])->where('CompleteDatm is ', 'null', false)
+                ->update($this->_table['order']);
+            if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                throw new \Exception('주문 정보 수정에 실패했습니다.');
+            }
+
+            // 주문미수금정보 등록
+            if ($is_unpaid == 'Y') {
+                $is_order_unpaid_info = $this->addOrderUnPaidInfo($order_prod_data['ProdCode'], $mem_idx, null, $order_idx, $unpaid_data);
+                if ($is_order_unpaid_info !== true) {
+                    throw new \Exception($is_order_unpaid_info);
+                }
+            }
+
+            $this->_conn->trans_commit();
+
+            // 주문상품 자동문자 발송 (리턴결과 처리안함)
+            $this->sendOrderProductAutoSms([$order_prod_data['ProdCode']], $mem_idx);
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -1973,7 +2159,7 @@ class OrderModel extends BaseOrderModel
                 'OrderIdx' => $order_idx,
                 'UnPaidPrice' => $unpaid_price,
                 'UnPaidUnitNum' => $unpaid_unit_num,
-                'UnPaidMemo' => element('UnPaidMemo', $input)
+                'UnPaidMemo' => element('UnPaidMemo', $input, null)
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order_unpaid_hist']) === false) {

@@ -494,6 +494,8 @@
             }
 
         @endphp
+        
+        {{--
         <div class="evtCtnsBox evt03">
             <div class="mapSec">
                 <ul class="tabs">
@@ -782,6 +784,7 @@
                 </a>    
             </div>   
         </div>
+        --}}
 
          
 

@@ -32,11 +32,11 @@
         .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
         .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
        
-        .wb_cts01{background:#0f44a0;}
-        .white{background:#fff;}
+        .wb_cts01{}
+
 
         /*탭(이미지)*/
-        .tabs{width:100%; text-align:center;}
+        .tabs{width:100%; text-align:center; background:#0f44a0;}
         .tabs ul {width:1180px;margin:0 auto;}		
         .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}
@@ -87,24 +87,62 @@
         .tabCts div a {
             display:block; height:24px; line-height:24px; background:#0c5dc0; color:#fff; text-align:center;
         }
-        
+        #tab01s a {width:1120px; margin:50px auto 0; display:block; font-size:34px; color:#fff; padding:20px 0; border-radius:50px;
+            -webkit-animation: color-change-5x 8s linear infinite alternate both;
+            animation: color-change-5x 8s linear infinite alternate both;
+        }
+        @@-webkit-keyframes color-change-5x {
+            0% {
+            background: #19dcea;
+            }
+            25% {
+            background: #b22cff;
+            }
+            50% {
+            background: #ea2222;
+            }
+            75% {
+            background: #f5be10;
+            }
+            100% {
+            background: #3bd80d;
+            }
+        }
+        @@keyframes color-change-5x {
+            0% {
+            background: #19dcea;
+            }
+            25% {
+            background: #b22cff;
+            }
+            50% {
+            background: #ea2222;
+            }
+            75% {
+            background: #f5be10;
+            }
+            100% {
+            background: #3bd80d;
+            }
+        }
         .wb_cts03 {background:#FFF;}
         .menuWarp {position:relative; width:1210px; height:490px; margin:0 auto; }
         .PeMenu {position:absolute; width:1210px; height:328px; top:0px; left:0px;}
         .PeMenu li { display:inline; float:left}
         .PeMenu li a img.off {display:block} 	
         .PeMenu li a img.on {display:none} 	
+        
         #tab04s2{background:#f7f7f7}
 
           /* tip */
-        .wb_cts09 {background:#fff; text-align:left; padding:25px 0 100px 0;}
-        .wb_tipBox {border:1px solid #333;padding:100px; width:1120px; margin:0 auto; }
+        .wb_cts09 {background:#e9e9e9; text-align:left; padding:100px 0;}
+        .wb_tipBox {border:1px solid #333; padding:100px; width:1120px; margin:0 auto; }
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
-        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
+        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin-bottom:10px; color:#111}	
         .wb_tipBox ol li {margin:25px 0 10px; line-height:1.5; list-style:decimal; margin-left:15px;font-size:14px;}
         .wb_tipBox ul {margin-top:20px}
         .wb_tipBox ul li {margin-bottom:5px}
-        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
+        .wb_tipBox table {width:100%; border-spacing:0px; background:#fff; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
         .wb_tipBox th,
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
@@ -167,149 +205,148 @@
                         </a>
                     </li>
                 </ul>
-                <div id="tab01s" class="white"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1053_tab1_con.jpg" usemap="#Map1053abc" border="0">
-                    <map name="Map1053abc" id="Map1053abc">
-                        <area shape="rect" coords="280,806,927,892" href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" />
-                    </map>                  
-                    <div class="evtCtnsBox wb_cts09">
-                        <div class="wb_tipBox">
-                     
-                        <div id="txt1">
-                            <p>유의사항</p>
-                            <ol>
-                                <li><strong>[생활]</strong><br />
-                                - <b>1개월 미만 등록은 불가하고 입실일과 무관하게 이용기간은 말일까지입니다.</b><br />
-                                &nbsp;(ex: 10월 10일 입실 -> 11월 10일까지 1개월 이용 X, 10월 10일 입실 -> 11월 30일까지 이용 O)<br />
-                                - 점호 및 출결 관리는 일요일과 공휴일은 진행되지 않으며 조교 근무 일정에 따라 진행이 안 되는 날이 있을 수 있습니다.<br />
-                                - 내부 벌점 규정에 의한 생활 통제가 존재하며 점호 불참,소음,입실생간 불화,범죄 행위 등 벌점이 누적된 경우 강제 퇴실 조치가 있습니다.<br />
-                                - <span class="wb_tip_orange">매주 일요일과 식당 휴일에는 식사 이용이 불가능합니다.</span><br />
-                                </li>
-                                <li><strong>[실강 PASS]</strong><br />
-                                - <b>아침 특강, 영어집중반, 면접반 등 일부 과정은 포함되지 않습니다.</b><br />
-                                - 무료 제공되는 특강 및 모의고사의 경우 별도의 신청이 필요합니다.(비용은 발생하지 않습니다)<br />                            
-                                </li>
-                                <li><strong>[인강 PASS]</strong><br />
-                                - 불가피한 사정에 의해 진행되지 않은 강좌의 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.<br />
-                                - 아이디 공유, 타인 양도 등 부정사용 적발 시 환불없이 회원 자격이 박탈되며, 불법 행위 시안에 따라 민형사상 조치가 있을 수 있습니다.<br />
-                                - 온/오프라인 동시 진행되는 이벤트성 특강의 경우 인강에 미지급되거나 이벤트가 종료된 후 제공될 수 있습니다.<br />
-                                </li>
-                                <li><strong>[끝장 PASS]</strong><br />
-                                - 수강기간 연장 신청<br />
-                                2020년 12월 수강기간이 종료되기 전 불합격 인증 시 21년 1차까지 학원 강의 수강기간 연장이 가능하며,
-                                21년 1차 불합격 인증 시 21년 2차까지 학원 수강기간이 연장됩니다. <br />
-                                <span class="wb_tip_orange">* 합격자 발표 후 1주일 이내에 신청하셔야 합니다.<br />
-                                * 무료 수강 기간 연장 시 기숙사(숙소+식사)는 포함되지 않으며 기숙사 연장 희망 시 별도의 이용 비용이 발생합니다.</span><br />
-                                - 불합격 성적표 인증 시 모든 과목이 0점이거나 개인사정으로 불응시한 경우 수강기간 연장이 불가합니다.<br />
-                                - 환급 신청 시 아래 조건을 충족해야 하며 기숙사(숙소+식사) 이용금액, 제세공과금 22%, 지급된 포인트 금액 차감 후 환급됩니다.<br />
-                                * 환급조건<br />
-                                ① 2020년 2차 시험 최종합격 인증(응시표)<br />
-                                ② 신광은 경찰팀 모든 전국모의고사 응시<br />
-                                ③ 필기 합격 시 합격수기 제출<br />
-                                - 등록생 전원에게 수강 기간 동안 인강패스가 지급되며, 수강기간 종료 후 연장신청한 수강생에게는 복습동영상이 제공됩니다.<br />
-                                - 중도 환불 시 수강기간만큼 차감 후, 무료혜택만큼 제하고 환불되며, 정규 수강기간 종료 후에는 환불이 불가합니다.<br />
-                                (차감액이 결제 금액을 초과할 경우 환불이 불가합니다.)
-                                </li>
-                                <li><strong>[환불 규정]</strong><br />
-                                - 혜택 이용 여부에 따른 환불<br />
-                                &nbsp;통합생활관리반은 숙박,식사,실강,인강 등이 통합된 패키지 상품으로 등록 시점에 담당자와 협의를 거친 경우를 제외하고<br />
-                                &nbsp;혜택 이용 여부에 따른 <b>부분적인 금액 공제는 불가</b>합니다.<br />
-                                &nbsp;<span class="wb_tip_orange">(ex: 총 6개월 과정을 등록하였는데 2개월은 식당을 이용하지 않았으니 해당 부분 환불해주세요. X)</span><br />
-                                &nbsp;<span class="wb_tip_orange">(ex: 인강PASS를 이용하지 않으니 인강 비용만큼 금액 공제해 주세요. X)</span><br /><br />
-                                - 이용 기간에 따른 환불(교육청 환불 기준 준수)                           
-                                </li>                                
-                            </ol>
-                        </div> 
-                        <table>
-                            <col />
-                            <col />
-                            <col />
-                            <tr>
-                                <th>수강료징수기간</th>
-                                <th>반환 사유발생일</th>
-                                <th>반환금액</th>
-                            </tr>
-                            <tr>
-                                <td rowspan="4">교습 기간이 1개월 이내인 경우</td>
-                                <td>교습 시작 전</td>
-                                <td>이미 납부한 교습비등의 전액</td>
-                            </tr>
-                            <tr>
-                                <td>총 교습시간의 1/3경과 전</td>
-                                <td>이미 납부한 교습비등의 2/3에 해당하는 금액</td>
-                            </tr>
-                            <tr>
-                                <td>총 교습시간의 1/2경과 전</td>
-                                <td>이미 납부한 교습비등의 1/2에 해당하는 금액</td>
-                            </tr>
-                            <tr>
-                                <td>총 교습시간의 1/2경과 후</td>
-                                <td>반환하지 않음</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">교습 기간이 1개월 초과인 경우</td>
-                                <td>교습 시작 전</td>
-                                <td>이미 납부한 수강료 전액</td>
-                            </tr>
-                            <tr>
-                                <td>교습 시작 후</td>
-                                <td>반환사유가 발생한 해당 월의 반환 대상 교습비등<br />
-                                    (교습기간이 1개월 이내인 경우의 기준에 따라 산출한 금액을 말한다)과 나머지<br/>
-                                    월의 교습비등의 전액을 합산한 금액
-                                </td>
-                            </tr>
-                        </table>                      
-                        
-                        </div>
-                    </div>             
-                </div>                                        
-                <div id="tab02s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
-                    <map name="Map1053tab2" id="Map1053tab2">
-                        <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
-                        <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
-                    </map>             
-                </div>
-                <div id="tab03s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab3_con.jpg" />            
-                </div>
-                <div id="tab04s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab4_con.jpg" /> 
-                    <div id="tab04s2">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
-                        <div class="evttab">
-                            <ul>
-                                <li><a href="#tab01" class="active">기본과정</a></li>
-                                <li><a href="#tab02">심화과정</a></li>
-                                <li><a href="#tab03">3개월 필합 풀패키지</a></li>
-                            </ul>
-                        </div>
-                        <div id="tab01" class="tabCts">
-                            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
-                            <map name="Map1126A" id="Map1126A">
-                                <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
-                                <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                                <area shape="rect" coords="803,2450,884,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
-                            </map>
-                        </div>
-                        <div id="tab02" class="tabCts">
-                            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
-                            <map name="Map1126B" id="Map1126B">
-                                <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                                <area shape="rect" coords="803,2208,884,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
-                            </map>
-                        </div>
-                        <div id="tab03" class="tabCts">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03.jpg" alt="필합 풀패키지">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03s.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
-                            <map name="Map1126C" id="Map1126C">
-                                <area shape="rect" coords="232,425,323,456" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                                <area shape="rect" coords="794,421,893,459" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
-                            </map>                           
-                        </div>
-                    </div>    
-                </div>
             </div>
+            <div id="tab01s" class="pb100"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab1_con.jpg">                
+                <div><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
+            </div>                                        
+            <div id="tab02s" class="pb100">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
+                <map name="Map1053tab2" id="Map1053tab2">
+                    <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
+                    <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
+                </map>             
+            </div>
+            <div id="tab03s" class="pb100">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
+            </div>
+            <div id="tab04s">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab4_con.jpg" /> 
+                <div id="tab04s2">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
+                    <div class="evttab">
+                        <ul>
+                            <li><a href="#tab01" class="active">기본과정</a></li>
+                            <li><a href="#tab02">심화과정</a></li>
+                            <li><a href="#tab03">3개월 필합 풀패키지</a></li>
+                        </ul>
+                    </div>
+                    <div id="tab01" class="tabCts">
+                        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
+                        <map name="Map1126A" id="Map1126A">
+                            <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
+                            <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                            <area shape="rect" coords="803,2450,884,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                        </map>
+                    </div>
+                    <div id="tab02" class="tabCts">
+                        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
+                        <map name="Map1126B" id="Map1126B">
+                            <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                            <area shape="rect" coords="803,2208,884,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                        </map>
+                    </div>
+                    <div id="tab03" class="tabCts">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03.jpg" alt="필합 풀패키지">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03s.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
+                        <map name="Map1126C" id="Map1126C">
+                            <area shape="rect" coords="232,425,323,456" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                            <area shape="rect" coords="794,421,893,459" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                        </map>                           
+                    </div>
+                </div>    
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts09">
+            <div class="wb_tipBox">                     
+                <div id="txt1">
+                    <p>유의사항</p>
+                    <ol>
+                        <li><strong>[생활]</strong><br />
+                        - <b>1개월 미만 등록은 불가하고 입실일과 무관하게 이용기간은 말일까지입니다.</b><br />
+                        &nbsp;(ex: 10월 10일 입실 -> 11월 10일까지 1개월 이용 X, 10월 10일 입실 -> 11월 30일까지 이용 O)<br />
+                        - 점호 및 출결 관리는 일요일과 공휴일은 진행되지 않으며 조교 근무 일정에 따라 진행이 안 되는 날이 있을 수 있습니다.<br />
+                        - 내부 벌점 규정에 의한 생활 통제가 존재하며 점호 불참,소음,입실생간 불화,범죄 행위 등 벌점이 누적된 경우 강제 퇴실 조치가 있습니다.<br />
+                        - <span class="wb_tip_orange">매주 일요일과 식당 휴일에는 식사 이용이 불가능합니다.</span><br />
+                        </li>
+                        <li><strong>[실강 PASS]</strong><br />
+                        - <b>아침 특강, 영어집중반, 면접반 등 일부 과정은 포함되지 않습니다.</b><br />
+                        - 무료 제공되는 특강 및 모의고사의 경우 별도의 신청이 필요합니다.(비용은 발생하지 않습니다)<br />                            
+                        </li>
+                        <li><strong>[인강 PASS]</strong><br />
+                        - 불가피한 사정에 의해 진행되지 않은 강좌의 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.<br />
+                        - 아이디 공유, 타인 양도 등 부정사용 적발 시 환불없이 회원 자격이 박탈되며, 불법 행위 시안에 따라 민형사상 조치가 있을 수 있습니다.<br />
+                        - 온/오프라인 동시 진행되는 이벤트성 특강의 경우 인강에 미지급되거나 이벤트가 종료된 후 제공될 수 있습니다.<br />
+                        </li>
+                        <li><strong>[끝장 PASS]</strong><br />
+                        - 수강기간 연장 신청<br />
+                        2020년 12월 수강기간이 종료되기 전 불합격 인증 시 21년 1차까지 학원 강의 수강기간 연장이 가능하며,
+                        21년 1차 불합격 인증 시 21년 2차까지 학원 수강기간이 연장됩니다. <br />
+                        <span class="wb_tip_orange">* 합격자 발표 후 1주일 이내에 신청하셔야 합니다.<br />
+                        * 무료 수강 기간 연장 시 기숙사(숙소+식사)는 포함되지 않으며 기숙사 연장 희망 시 별도의 이용 비용이 발생합니다.</span><br />
+                        - 불합격 성적표 인증 시 모든 과목이 0점이거나 개인사정으로 불응시한 경우 수강기간 연장이 불가합니다.<br />
+                        - 환급 신청 시 아래 조건을 충족해야 하며 기숙사(숙소+식사) 이용금액, 제세공과금 22%, 지급된 포인트 금액 차감 후 환급됩니다.<br />
+                        * 환급조건<br />
+                        ① 2020년 2차 시험 최종합격 인증(응시표)<br />
+                        ② 신광은 경찰팀 모든 전국모의고사 응시<br />
+                        ③ 필기 합격 시 합격수기 제출<br />
+                        - 등록생 전원에게 수강 기간 동안 인강패스가 지급되며, 수강기간 종료 후 연장신청한 수강생에게는 복습동영상이 제공됩니다.<br />
+                        - 중도 환불 시 수강기간만큼 차감 후, 무료혜택만큼 제하고 환불되며, 정규 수강기간 종료 후에는 환불이 불가합니다.<br />
+                        (차감액이 결제 금액을 초과할 경우 환불이 불가합니다.)
+                        </li>
+                        <li><strong>[환불 규정]</strong><br />
+                        - 혜택 이용 여부에 따른 환불<br />
+                        &nbsp;통합생활관리반은 숙박,식사,실강,인강 등이 통합된 패키지 상품으로 등록 시점에 담당자와 협의를 거친 경우를 제외하고<br />
+                        &nbsp;혜택 이용 여부에 따른 <b>부분적인 금액 공제는 불가</b>합니다.<br />
+                        &nbsp;<span class="wb_tip_orange">(ex: 총 6개월 과정을 등록하였는데 2개월은 식당을 이용하지 않았으니 해당 부분 환불해주세요. X)</span><br />
+                        &nbsp;<span class="wb_tip_orange">(ex: 인강PASS를 이용하지 않으니 인강 비용만큼 금액 공제해 주세요. X)</span><br /><br />
+                        - 이용 기간에 따른 환불(교육청 환불 기준 준수)                           
+                        </li>                                
+                    </ol>
+                </div> 
+                <table>
+                    <col />
+                    <col />
+                    <col />
+                    <tr>
+                        <th>수강료징수기간</th>
+                        <th>반환 사유발생일</th>
+                        <th>반환금액</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">교습 기간이 1개월 이내인 경우</td>
+                        <td>교습 시작 전</td>
+                        <td>이미 납부한 교습비등의 전액</td>
+                    </tr>
+                    <tr>
+                        <td>총 교습시간의 1/3경과 전</td>
+                        <td>이미 납부한 교습비등의 2/3에 해당하는 금액</td>
+                    </tr>
+                    <tr>
+                        <td>총 교습시간의 1/2경과 전</td>
+                        <td>이미 납부한 교습비등의 1/2에 해당하는 금액</td>
+                    </tr>
+                    <tr>
+                        <td>총 교습시간의 1/2경과 후</td>
+                        <td>반환하지 않음</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">교습 기간이 1개월 초과인 경우</td>
+                        <td>교습 시작 전</td>
+                        <td>이미 납부한 수강료 전액</td>
+                    </tr>
+                    <tr>
+                        <td>교습 시작 후</td>
+                        <td>반환사유가 발생한 해당 월의 반환 대상 교습비등<br />
+                            (교습기간이 1개월 이내인 경우의 기준에 따라 산출한 금액을 말한다)과 나머지<br/>
+                            월의 교습비등의 전액을 합산한 금액
+                        </td>
+                    </tr>
+                </table>                      
+                
+                </div>
+            </div>  
         </div>   
     </div>
     <!-- End Container -->

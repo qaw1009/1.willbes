@@ -229,7 +229,7 @@
             <div class="evtCtnsBox evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tc01_04.jpg" usemap="#Map1555A" title="사전예약 이벤트" border="0">
                 <map name="Map1555A" id="Map1555A">
-                    <area shape="rect" coords="267,1725,605,1785" href="#" alt="이미지 다운로드" />
+                    <area shape="rect" coords="267,1725,605,1785" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="이미지 다운로드" />
                 </map>
             </div>
 
@@ -310,5 +310,5 @@
             });
         });
     </script>
-
+    @include('willbes.pc.promotion.roulette_script')
 @stop

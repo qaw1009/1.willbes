@@ -121,7 +121,7 @@
 
         {{--방문결제 이동 버튼 클릭--}}
         $('#buy_off_visit_continue_layer').on('click', '.answerBox_block', function() {
-            location.href = frontPassUrl('/offvisitlecture');
+            location.href = frontPassUrl('/offVisitLecture');
         });
 
         {{-- 방문결제 장바구니 담기 --}}
@@ -135,7 +135,7 @@
                     if(act_type==='layer') {
                         showContinueLayer('off', 'chk_products', _this, 'buy_off_visit_continue_layer');
                     } else {
-                        location.href = frontPassUrl('/offvisitlecture');
+                        location.href = frontPassUrl('/offVisitLecture');
                     }
                 }
             }, function(ret){

@@ -99,7 +99,33 @@
                         alert('상품을 선택해 주세요.');
                         return;
                     }
-                    eachProductCart(prod_code, $(this), 'href');
+                    {{--상품 체크--}}
+                    if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form,'off') === false) {
+                        return;
+                    }
+                    if (confirm('방문접수를 신청하시겠습니까?')) {
+                        $regi_visit_form.find('input[name="prod_code[]"]').val(prod_code);
+                        $regi_visit_form.find('input[name="is_direct_pay"]').val('Y');
+                        $regi_visit_form.find('input[name="is_visit_pay"]').val('');
+                        var url = frontPassUrl('/order/visit/direct');
+                        ajaxSubmit($regi_visit_form, url, function (ret) {
+                            if (ret.ret_cd) {
+                                alert(ret.ret_msg);
+                                subCheck();
+                                location.href = ret.ret_data.ret_url;
+                            }
+                        }, showValidateError, null, false, 'alert');
+                    }
+
+                    function subCheck() {
+                        {{--선택한 교재 확인 후 장바구니로 보내기--}}
+                        var book_check_cnt = $("input:checkbox[class='chk_books']:checked").length;
+                        if (book_check_cnt > 0) {
+                            $("input:checkbox[class='chk_products']").prop('checked', false);
+                            addCartNDirectPay($regi_off_form, 'N', 'N', '{{front_url('')}}');
+                        }
+                        return true;
+                    }
 
                 {{--장바구니, 바로결제 버튼 클릭--}}
                 } else {

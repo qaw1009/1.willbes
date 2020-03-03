@@ -234,7 +234,7 @@
         }
         @@-webkit-keyframes bg-pan-left {
             0% {
-                background-position: 100% 50%;
+                background-position: 100% 10%;
             }
             100% {
                 background-position: 0% 0%;
@@ -242,7 +242,7 @@
         }
         @@keyframes bg-pan-left {
             0% {
-                background-position: 100% 50%;
+                background-position: 100% 100%;
             }
             100% {
                 background-position: 0% 0%;

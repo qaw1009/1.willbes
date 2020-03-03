@@ -1314,6 +1314,9 @@ table.auTable tr td {
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
+.List-Table.w50 li {
+    display: inline; float: left; width: 50%;
+}
 .List-Table li a {
     display: inline-block;
     width: 425px;
@@ -1323,6 +1326,11 @@ table.auTable tr td {
 }
 .List-Table li span.date {
     float: right;
+}
+.List-Table:after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 /* Main Container : Tit */
@@ -6630,6 +6638,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* sliderWillbesBnr : 좌우 버튼(교수 상세 > 교수홈) */
 .sliderWillbesBnr {
+    clear: both;
     width: 940x;
     height: auto;
 }

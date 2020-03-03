@@ -54,7 +54,7 @@ class BaseOrderFModel extends WB_Model
     public $_on_pack_lecture_pattern_ccd = ['615002', '615003', '615004'];
 
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
-    public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002'];
+    public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002', 'choice_prof' => '648003'];
 
     // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
     public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];

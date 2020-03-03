@@ -18,7 +18,7 @@ class OffVisitPackage extends BaseOrder
 
         $this->_target_site_code = get_auth_on_off_site_codes('Y', true);
         $this->_target_pack_type_ccd = array_filter_keys($this->orderListModel->_adminpack_lecture_type_ccd, ['normal', 'choice_prof']);
-        $this->_target_pay_status_ccd = array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund']);
+        $this->_target_pay_status_ccd = array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']);
     }
 
     /**
@@ -108,17 +108,17 @@ class OffVisitPackage extends BaseOrder
                 'O.SiteCode' => $arr_site_code,     // 학원 사이트 권한 추가
                 'PL.CampusCcd' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
                 'PL.PackTypeCcd' => array_values($this->_target_pack_type_ccd),    // 일반/선택형(강사배정) 유형만 조회
-                'OP.PayStatusCcd' => array_values($this->_target_pay_status_ccd)    // 결제완료/환불완료만 조회
+                'OP.PayStatusCcd' => array_values($this->_target_pay_status_ccd)    // 접수대기/결제완료/환불완료만 조회
             ],
             'RAW' => [
-                'O.RegAdminIdx is' => ' not null',   // 관리자 등록건만 조회
-                'O.OrderIdx >' => '5000000'     // 속도 개선 (이전 관리자 등록 방문결제 종합반 주문건 없음)
+                // 일반형일 경우 관리자 등록건만 조회, 선택형(강사배정)일 경우는 전체 주문건 조회
+                '(PL.PackTypeCcd =' => ' "' . $this->_target_pack_type_ccd['choice_prof'] . '" or (PL.PackTypeCcd = "' . $this->_target_pack_type_ccd['normal'] . '" and O.RegAdminIdx is not null))'
             ],
             'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
                     'M.MemId' => $this->_reqP('search_member_value'),
-                    'M.Phone3' => $this->_reqP('search_member_value'),
+                    'M.Phone3' => $this->_reqP('search_member_value')
                 ]
             ],
             'ORG2' => [
@@ -197,10 +197,14 @@ class OffVisitPackage extends BaseOrder
      */
     public function create($params = [])
     {
-        $unpaid_idx = element('0', $params);
-        $prod_code = element('1', $params);
-        $mem_idx = element('2', $params);
-        $is_unpaid = empty($unpaid_idx) === false ? true : false;
+        $order_idx = element('0', $params);
+        $unpaid_idx = element('1', $params);
+        $prod_code = element('2', $params);
+        $mem_idx = element('3', $params);
+        $is_unpaid = empty($unpaid_idx) === false ? true : false;   // 미수금여부
+        $is_order = $is_unpaid === false && empty($order_idx) === false ? true : false;     // 프런트 방문결제 주문여부 (접수대기상태)
+        $order_idx = $is_order === true ? $order_idx : null;    // 접수대기 주문건만 주문식별자 설정
+        $method = 'POST';
         $data = null;
 
         if ($is_unpaid === true) {
@@ -218,12 +222,32 @@ class OffVisitPackage extends BaseOrder
 
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($mem_idx);
+        } elseif ($is_order === true) {
+            // 방문결제 데이터 조회
+            $method = 'PUT';
+
+            // 주문상품 정보
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_pack_lecture']]];
+            $column = 'O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode, OP.OrderPrice as OrgOrderPrice, OP.RealPayPrice as OrgPayPrice
+                , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
+            $data['prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column);
+            if (empty($data['prod']) === true) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+
+            // 상품정보
+            $data['prod'] = element('0', $data['prod']);
+
+            // 회원정보
+            $data['mem'] = $this->manageMemberModel->getMember($data['prod']['MemIdx']);
         }
 
         // 카드사 공통코드 조회
         $arr_card_ccd = $this->codeModel->getCcd($this->_group_ccd['Card']);
 
         $this->load->view('pay/visit_pkg/create', [
+            'method' => $method,
+            'idx' => $order_idx,
             'unpaid_idx' => $unpaid_idx,
             'is_unpaid' => $is_unpaid,
             'data' => $data,
@@ -242,8 +266,8 @@ class OffVisitPackage extends BaseOrder
      */
     public function store()
     {
+        $method = '';
         $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required'],
             ['field' => 'order_price', 'label' => '주문금액', 'rules' => 'trim|required'],
@@ -266,11 +290,24 @@ class OffVisitPackage extends BaseOrder
             $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|matches[org_pay_price]'];
         }
 
+        if (empty($this->_reqP('order_idx')) === true) {
+            $rules = array_merge($rules, [
+                ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]']
+            ]);
+        } else {
+            $method = 'Complete';
+            $rules = array_merge($rules, [
+                ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+                ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+                ['field' => 'order_prod_idx', 'label' => '주문상품식별자', 'rules' => 'trim|required|integer']
+            ]);
+        }
+
         if ($this->validate($rules) === false) {
             return null;
         }
 
-        $result = $this->orderModel->procVisitPackageOrder($this->_reqP(null, false));
+        $result = $this->orderModel->{'procVisitPackageOrder' . $method}($this->_reqP(null, false));
 
         return $this->json_result($result, '수강 등록 되었습니다.', $result);
     }

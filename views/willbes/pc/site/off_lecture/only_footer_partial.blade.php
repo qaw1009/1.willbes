@@ -1,25 +1,18 @@
-{{-- 삭제예정  : 추후 확인 후 제거
-<div id="buy_off_layer" class="willbes-Lec-buyBtn-sm NG">
-    <div>
-        <button type="button" name="btn_off_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
-            <span>장바구니</span>
-        </button>
-    </div>
-    <div>
-        <button type="submit" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-            <span>바로결제</span>
-        </button>
-    </div>
-    <div id="offPocketBox" class="pocketBox" style="display: none;">
-        해당 상품이 장바구니에 담겼습니다.<br/>
-        장바구니로 이동하시겠습니까?
+{{--방문결제 레이어--}}
+<div id="buy_off_visit_continue_layer" class="willbes-Lec-buyBtn-sm NG common_buy_layer">
+    <div class="pocketBox" style="display:block">
+        <a class="closeBtn" href="#none">
+            <img src="{{ img_url('cart/close.png') }}">
+        </a>
+        해당 상품이 학원방문결제 접수에 <BR>담겼습니다.<br/>
+        학원방문결제접수로 이동하시겠습니까?
         <ul class="NSK mt20">
             <li class="aBox answerBox_block"><a href="#none">예</a></li>
             <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+            <li class="aBox closeBox_block"><a href="#none">닫기</a></li>
         </ul>
     </div>
 </div>
---}}
 
 {{--계속구매 레이어--}}
 <div id="buy_off_continue_layer" class="willbes-Lec-buyBtn-sm NG common_buy_layer">
@@ -43,7 +36,8 @@
     {!! method_field('POST') !!}
     <input type="hidden" name="learn_pattern" value="{{empty($learn_pattern) ? 'off_lecture' : $learn_pattern }}"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value="off_lecture"/>   {{-- 장바구니 탭 아이디 --}}
-    <input type="hidden" name="is_direct_pay" value="Y"/>    {{-- 바로결제 여부 --}}
+    <input type="hidden" name="is_direct_pay" value="N"/>    {{-- 바로결제 여부 --}}
+    <input type="hidden" name="is_visit_pay" value="Y"/>    {{-- 방문결제 여부 --}}
     <input type="hidden" name="prod_code[]" value=""/>  {{-- 상품코드 --}}
 </form>
 <script src="/public/js/willbes/product_util.js"></script>
@@ -58,28 +52,14 @@
         if ($is_off_show === false) {
             {{--방문결제 버튼 클릭--}}
             $regi_off_form.on('click', '.btn-off-visit-pay', function () {
-
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-                var prod_code = $(this).data('prod-code');
-                if (prod_code === '') {
-                    alert('선택된 상품이 없습니다.');
-                    return;
-                }
-                {{--상품 체크--}}
-                if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form,'off') === false) {
-                    return;
-                }
 
-                if (confirm('방문접수를 신청하시겠습니까?')) {
-                    $regi_visit_form.find('input[name="prod_code[]"]').val(prod_code);
-                    var url = frontPassUrl('/order/visit/direct');
-                    ajaxSubmit($regi_visit_form, url, function (ret) {
-                        if (ret.ret_cd) {
-                            alert(ret.ret_msg);
-                            location.replace(ret.ret_data.ret_url);
-                        }
-                    }, showValidateError, null, false, 'alert');
+                var prod_code=$(this).data('prod-code');
+                if (prod_code === undefined) {
+                    alert('상품을 선택해 주세요.');
+                    return;
                 }
+                eachProductCart(prod_code, $(this), 'layer');
             });
 
             {{--장바구니, 바로결제 버튼 클릭--}}
@@ -113,36 +93,13 @@
 
                 {{--방문결제 버튼 클릭--}}
                 if ($(this).attr('name') === 'btn_off_visit_pay') {
+
                     var prod_code = $("input:checkbox[class='chk_products']:checked").val();
                     if (prod_code === undefined) {
                         alert('상품을 선택해 주세요.');
                         return;
                     }
-                    {{--상품 체크--}}
-                    if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form,'off') === false) {
-                        return;
-                    }
-                    if (confirm('방문접수를 신청하시겠습니까?')) {
-                        $regi_visit_form.find('input[name="prod_code[]"]').val(prod_code);
-                        var url = frontPassUrl('/order/visit/direct');
-                        ajaxSubmit($regi_visit_form, url, function (ret) {
-                            if (ret.ret_cd) {
-                                alert(ret.ret_msg);
-                                subCheck();
-                                location.href = ret.ret_data.ret_url;
-                            }
-                        }, showValidateError, null, false, 'alert');
-                    }
-
-                    function subCheck() {
-                        {{--선택한 교재 확인 후 장바구니로 보내기--}}
-                        var book_check_cnt = $("input:checkbox[class='chk_books']:checked").length;
-                        if (book_check_cnt > 0) {
-                            $("input:checkbox[class='chk_products']").prop('checked', false);
-                            addCartNDirectPay($regi_off_form, 'N', 'N', '{{front_url('')}}');
-                        }
-                        return true;
-                    }
+                    eachProductCart(prod_code, $(this), 'href');
 
                 {{--장바구니, 바로결제 버튼 클릭--}}
                 } else {
@@ -150,7 +107,6 @@
                     cartNDirectPay($regi_off_form, $is_direct_pay, 'Y');
                 }
             });
-
         }
 
         {{--장바구니 이동 버튼 클릭--}}
@@ -162,6 +118,30 @@
         $('.common_buy_layer').on('click', '.closeBtn, .waitBox_block, .closeBox_block', function() {
             $('.common_buy_layer').removeClass('active');
         });
+
+        {{--방문결제 이동 버튼 클릭--}}
+        $('#buy_off_visit_continue_layer').on('click', '.answerBox_block', function() {
+            location.href = frontPassUrl('/offVisitLecture');
+        });
+
+        {{-- 방문결제 장바구니 담기 --}}
+        function eachProductCart(val,_this, act_type) {
+            var url = frontUrl('/cart/store');
+            var data = $.extend(arrToJson($regi_visit_form.find('input[type="hidden"]').serializeArray()), {
+                'prod_code[]' : val
+            });
+            sendAjax(url, data, function(ret) {
+                if(ret.ret_cd) {
+                    if(act_type==='layer') {
+                        showContinueLayer('off', 'chk_products', _this, 'buy_off_visit_continue_layer');
+                    } else {
+                        location.href = frontPassUrl('/offVisitLecture');
+                    }
+                }
+            }, function(ret){
+                alert(ret.ret_msg);
+            }, false, 'POST');
+        }
     });
 
     {{--상세페이지 이동--}}

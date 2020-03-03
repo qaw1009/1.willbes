@@ -249,8 +249,8 @@
                     <div class="col-md-6">
                         <h4><strong>상품결제처리</strong></h4>
                     </div>
-                    <div class="col-md-12 bold">
-                        <div class="form-group bdt-line bg-odd">
+                    <div class="col-md-12">
+                        <div class="form-group bdt-line bg-odd bold">
                             <label class="control-label col-md-1 pt-5 pl-20">결제수단</label>
                             <div class="col-md-9 form-inline">
                                 <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $chk_pay_method_ccd['visit_card'] }}" title="카드" disabled="disabled"/> <label class="input-label">카드</label>
@@ -267,7 +267,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group bg-odd">
+                        <div class="form-group bg-odd bold">
                             <label class="control-label col-md-1 pt-5 pl-20">결제금액</label>
                             <div class="col-md-9 form-inline">
                                 [카드] <input type="number" name="total_card_pay_price" class="form-control input-sm ml-10 mr-10" title="총 카드결제금액" value="0" readonly="readonly">
@@ -275,6 +275,22 @@
                                 = <input type="number" name="sum_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="0" readonly="readonly"> 원
                             </div>
                         </div>
+                        <div class="form-group bold">
+                            <label class="control-label col-md-1 pt-5 pl-20">카드+현금계산</label>
+                            <div class="col-md-9 form-inline">
+                                [카드] <input type="number" name="calc_card_pay_price" class="form-control input-sm ml-10 mr-10" title="총 카드결제금액" value="0">
+                                + [현금] <input type="number" name="calc_cash_pay_price" class="form-control input-sm ml-10 mr-10" title="총 현금결제금액" value="0" readonly="readonly">
+                                <button type="button" name="btn_card_cash_calc" class="btn btn-sm btn-success">계산</button>
+                            </div>
+                        </div>
+                        @if($is_order === false)
+                            <div class="form-group">
+                                <label class="control-label col-md-1 pl-20">메모</label>
+                                <div class="col-md-7">
+                                    <textarea id="order_memo" name="order_memo" class="form-control" rows="2" title="메모"></textarea>
+                                </div>
+                            </div>
+                        @endif
                         <div class="text-center mt-20">
                             <button type="submit" name="btn_visit_order" class="btn btn-success">수강등록하기</button>
                             <button class="btn btn-primary" type="button" id="btn_list">목록</button>
@@ -615,10 +631,17 @@
                 }, showValidateError, false, 'POST');
             };
 
-            // 재주문일 경우 강좌할인율 조회
-            @if($target_type == 'reorder')
+            @if(empty($target_type) === false)
                 $(function() {
-                    getLectureDiscRate();
+                    // 재주문일 경우 강좌할인율 조회
+                    @if($target_type == 'reorder')
+                        getLectureDiscRate();
+                    @endif
+
+                    // 재주문, 독서실/사물함 연장일 경우 총 실결제금액 셋팅
+                    if ($regi_form.find('[name="total_real_pay_price"]').val() < 1) {
+                        setTotalPrice();
+                    }
                 });
             @endif
         @endif
@@ -833,6 +856,68 @@
                 } else {
                     input_target.iCheck('uncheck');
                 }
+            });
+
+            // 카드+현금계산 버튼 클릭
+            $regi_form.on('click', 'button[name="btn_card_cash_calc"]', function() {
+                var prod_cnt = $regi_form.find('[name="real_pay_price[]"]').length;
+                var total_real_pay_price = parseInt($regi_form.find('[name="total_real_pay_price"]').val(), 10);
+                var calc_card_pay_price = parseInt($regi_form.find('[name="calc_card_pay_price"]').val(), 10);
+                var calc_cash_pay_price = total_real_pay_price - calc_card_pay_price;
+                var max_card_pay_price = total_real_pay_price - 1000;   // 최대 입력가능 카드결제금액
+                var calc_card_rate = (calc_card_pay_price / total_real_pay_price).toFixed(2);   // 카드금액 비율 (소숫점 2자리)
+                var sum_card_pay_price = 0, sum_cash_pay_price = 0;     // 상품별 계산된 카드, 현금 결제금액 합계
+
+                if (prod_cnt < 1) {
+                    alert('상품을 선택해 주세요.');
+                    return;
+                }
+
+                if (calc_card_pay_price < 1000) {
+                    alert('카드결제금액을 1,000원 이상 입력해 주세요.');
+                    return;
+                }
+
+                if (calc_card_pay_price > max_card_pay_price) {
+                    alert('카드결제금액은 최대 ' + addComma(max_card_pay_price) + '원까지 입력 가능합니다.');
+                    return;
+                }
+
+                // 상품별 카드, 현금 결제금액 계산
+                $regi_form.find('[name="card_pay_price[]"]').each(function(index) {
+                    var input_real_pay_price = parseInt($regi_form.find('[name="real_pay_price[]"]').eq(index).val(), 10);
+                    var input_card_pay_price, input_cash_pay_price;
+
+                    // 카드결제금액 계산
+                    if (prod_cnt === (index + 1)) {
+                        input_card_pay_price = calc_card_pay_price - sum_card_pay_price;    // 마지막 카드결제금액 (전체카드결제금액 - 이전카드결제금액 합계)
+                    } else {
+                        input_card_pay_price = Math.floor(input_real_pay_price * calc_card_rate);   // 실결제금액 * 카드금액 비율
+                        input_card_pay_price = input_card_pay_price + (100 - (input_card_pay_price % 100)); // 10원 단위올림
+                    }
+
+                    // 현금결제금액 (실결제금액 - 카드결제금액)
+                    input_cash_pay_price = input_real_pay_price - input_card_pay_price;
+
+                    // 카드, 현금 결제금액 합계
+                    sum_card_pay_price += input_card_pay_price;
+                    sum_cash_pay_price += input_cash_pay_price;
+
+                    // 상품별 카드, 현금 결제금액 셋팅
+                    $regi_form.find('[name="card_pay_price[]"]').eq(index).val(input_card_pay_price);
+                    $regi_form.find('[name="cash_pay_price[]"]').eq(index).val(input_cash_pay_price);
+                });
+
+                // 카드+현금 결제금액 계산 검증
+                if (calc_card_pay_price !== sum_card_pay_price || calc_cash_pay_price !== sum_cash_pay_price) {
+                    alert('입력한 카드+현금 결제금액과 합산된 카드+현금 결제금액이 일치하지 않습니다.');
+                    return;
+                }
+
+                // 카드+현금계산 > 현금금액 셋팅
+                $regi_form.find('[name="calc_cash_pay_price"]').val(calc_cash_pay_price);
+
+                setTotalPrice();   // 결제금액 재계산
             });
 
             // 방문수강접수 목록

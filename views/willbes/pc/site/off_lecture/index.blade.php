@@ -370,7 +370,7 @@
                                                 @endphp
 
                                                 @if($row['IsSalesAble'] == 'Y')
-                                                    @if($row['StudyApplyCcd'] != '654002' && empty($row['DiscIdx']))
+                                                    @if($row['StudyApplyCcd'] != '654002')
                                                         <li class="btnVisit"><a class="btn-off-visit-pay" href="#none" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
                                                     @endif
                                                     @if($row['StudyApplyCcd'] != '654001')

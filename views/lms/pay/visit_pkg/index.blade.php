@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 관리자가 수기로 종합반 수강접수를 진행하는 메뉴입니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</h5>
+    <h5>- 관리자가 종합반 수강접수를 진행하는 메뉴입니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
@@ -102,8 +102,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="fa-ul mb-0">
-                        <li><i class="fa-li fa fa-check-square-o"></i>관리자가 수기로 등록한 종합반 수강접수 내역만 확인 가능합니다. (종합반 유형이 ‘일반형’,’선택형(강사배정)’)인 경우만 해당)</li>
-                        <li><i class="fa-li fa fa-check-square-o"></i>프론트에서 접수대기로 신청한 종합반 수강접수 내역은 ‘[일반]수강접수’ 메뉴에서 확인 가능합니다.</li>
+                        <li><i class="fa-li fa fa-check-square-o"></i>‘일반형’, ’선택형(강사배정)’ 종합반만 관리자가 수기로 수강접수 가능하며, 프론트에서 접수대기로 신청한 ‘선택형(강사배정)’ 종합반의 경우도 수강접수 가능합니다.</li>
+                        <li><i class="fa-li fa fa-check-square-o"></i>프론트에서 접수대기로 신청한 ‘일반형’, ’선택형’ 종합반은 [일반]수강접수 메뉴에서만 확인 및 수강접수 가능합니다.</li>
                     </ul>
                 </div>
             </div>
@@ -169,6 +169,11 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
                 },
+                createdRow: function(row, data, dataIndex) {
+                    if (data.PayStatusCcd === '{{ $chk_pay_status_ccd['receipt_wait'] }}') {
+                        $(row).addClass('bg-info');
+                    }
+                },
                 rowsGroup: ['.rowspan'],
                 rowGroup: {
                     startRender: null,
@@ -218,11 +223,11 @@
                         return row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data
+                        return (row.PayStatusCcd === '{{ $chk_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
                             + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
                     {'data' : 'IsUnPaid', 'render' : function(data, type, row, meta) {
-                        return data === 'Y' ? '<a class="red cs-pointer btn-unpaid-order" data-unpaid-idx="' + row.UnPaidIdx + '" data-prod-code="' + row.ProdCode + '" data-mem-idx="' + row.MemIdx + '"><u>Y</u></a>' : 'N';
+                        return data === 'Y' ? '<a class="red cs-pointer btn-unpaid-order" data-order-idx="' + row.OrderIdx + '" data-unpaid-idx="' + row.UnPaidIdx + '" data-prod-code="' + row.ProdCode + '" data-mem-idx="' + row.MemIdx + '"><u>Y</u></a>' : 'N';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         {{-- 결제완료 일반형 종합반일 경우만 수강증 출력 버튼 노출 (미수금 주문일 경우 1번째 주문건만 노출) --}}
@@ -241,9 +246,14 @@
                 location.href = '{{ site_url('/pay/offVisitPackage/create') }}' + dtParamsToQueryString($datatable);
             });
 
+            // 접수대기 버튼 클릭
+            $list_table.on('click', '.btn-visit-order', function() {
+                location.href = '{{ site_url('/pay/offVisitPackage/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
             // 미수금여부 클릭
             $list_table.on('click', '.btn-unpaid-order', function() {
-                location.href = '{{ site_url('/pay/offVisitPackage/create/') }}' + $(this).data('unpaid-idx') + '/' + $(this).data('prod-code') + '/' + $(this).data('mem-idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/offVisitPackage/create/') }}' + $(this).data('order-idx') + '/' + $(this).data('unpaid-idx') + '/' + $(this).data('prod-code') + '/' + $(this).data('mem-idx') + dtParamsToQueryString($datatable);
             });
 
             // 수강증 출력 버튼 클릭

@@ -278,7 +278,8 @@ class Order extends \app\controllers\FrontController
                 ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required|in_list[off_lecture,off_lecture_before,off_pack_lecture]'],
                 ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[off_lecture]'],
                 ['field' => 'prod_code[]', 'label' => '상품선택', 'rules' => 'trim|required'],
-                ['field' => 'prod_code_sub[]', 'label' => '과목선택', 'rules' => 'callback_validateRequiredIf[learn_pattern,off_pack_lecture]']
+                // 선택형(강사배정) 종합반일 경우 상품코드서브 정보가 없음
+                //['field' => 'prod_code_sub[]', 'label' => '과목선택', 'rules' => 'callback_validateRequiredIf[learn_pattern,off_pack_lecture]']
             ]);
         } else {
             $rules = array_merge($rules, [

@@ -17,7 +17,7 @@
         poster="/public/img/willbes/willbes_video_test.jpg"
         data-setup="{}"
     >
-        <source src="http://edge.v.iask.com.sinastorage.com/126385755.mp4" type="video/mp4" />
+        <source src="http://sample4.hd.willbes.gscdn.com/prof_sample/ske/01_ske_01_19050601_hsb_epmoon_tk_1.mp4" type="video/mp4" />
     </video>
 </body>
 

@@ -168,22 +168,32 @@ class Home extends \app\controllers\FrontController
         switch($site){
             case '1':
                 $url = 'http://pregosi.willbes.net';
+                $param = '';
                 break;
 
             case '2':
                 $url = 'http://prevalue.willbes.net';
+                $param = '';
                 break;
 
             case '3':
                 $url = 'http://prevalue.willbes.net';
+                $param = '';
                 break;
 
             case '4':
                 $url = 'http://precop.willbes.net';
+                $param = '';
+                break;
+
+            case '5':
+                $url = 'http://prevalue.willbes.net';
+                $param = 'nomu20200303';
                 break;
 
             default:
                 $url = 'http://pregosi.willbes.net';
+                $param = '';
                 break;
 
         }
@@ -201,7 +211,8 @@ class Home extends \app\controllers\FrontController
 
         return $this->load->view('classroom/gotohanlim', [
             'enc_data' => $enc_data,
-            'url' => $url
+            'url' => $url,
+            'param' => $param
         ]);
     }
 

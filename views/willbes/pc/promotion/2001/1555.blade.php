@@ -275,7 +275,7 @@
         });
 
         function doEvent() {
-            var url = "{{front_url('/predict/index/100001')}}";
+            var url = "{{front_url('/predict/index/100004')}}";
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
 

@@ -85,13 +85,14 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_top.gif" usemap="#Map1467" title="기미진T-PASS" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_top.gif" usemap="#Map1467" title="기미진T-PASS" border="0" />
             <map name="Map1467" id="Map1467">
-                <area shape="rect" coords="52,798,1071,888" href="#lec_go" alt="수강신청">
+                <area shape="rect" coords="767,813,981,911" href="#lec_go" alt="수강신청">
             </map>
         </div>
 
         <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_QandA.jpg" title="기미진국어를 수식하는말 모음" />
 		    <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_01.jpg" usemap="#Map_pass_go" title="현직근무자가 추천하는 기특한 국어" border="0" />
 			<map name="Map_pass_go">
 			  <area shape="rect" coords="773,866,1045,914" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4&board_idx=225216&tab=notice" target="_blank" alt="합격수기">
@@ -107,10 +108,11 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="lec_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_04.jpg" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_04.gif" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
 			<map name="Map_1074_lec2">
-                <area shape="rect" coords="485,771,705,825" href="javascript:go_PassLecture('158434');" alt="아침특강 제외">
-                <area shape="rect" coords="746,773,976,823" href="javascript:go_PassLecture('158433');" alt="아침특강 포함">
+            <map name="Map_1074_lec2">
+                <area shape="rect" coords="802,692,988,780" href="javascript:go_PassLecture('162541');">                
+            </map>
             </map>
             <div class="check">
                 <label>
@@ -123,7 +125,7 @@
         <!--wb_cts05//-->
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_05.jpg" alt="이용안내 및 유의사항 " />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_05.jpg" alt="이용안내 및 유의사항 " />
         </div>
         <!--wb_cts06//-->
 

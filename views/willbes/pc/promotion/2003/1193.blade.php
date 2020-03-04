@@ -30,7 +30,7 @@
         }
         .skybanner a {display:block; margin-bottom:5px}
 
-		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1193_top2_bg.jpg) no-repeat center top;}
+		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1193_top2_bg.jpg) no-repeat center top;}
 
 		.evt01 {background:#fff; position:relative}
 		.evt01 span {position:absolute; left:50%; margin-left:-442px; top:765px; width:300px; z-index:10}
@@ -99,7 +99,7 @@
 			</div>
 		</div>
 		<!-- 타이머 //-->
-
+		{{--
 		<div class="skybanner">
 			<a href="#evt01_A">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
@@ -111,20 +111,17 @@
 				<img src="https://static.willbes.net/public/images/promotion/2019/11/1193_sky2.png" />
 			</a>
 		</div>
-			
+		--}}			
 		<div class="evtCtnsBox evtTop">
-			<img src="https://static.willbes.net/public/images/promotion/2019/10/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
 			<map name="Map_1193A" id="Map_1193A">					
-				<area shape="rect" coords="434,177,515,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
-                <area shape="rect" coords="584,343,700,381" href="#event" alt="자세히보기"/>
-                <area shape="rect" coords="270,1039,857,1174" href="#chkInfo" onclick="go_PassLecture('158055');">
-			</map>		 
+				<area shape="rect" coords="463,177,544,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
+				<area shape="rect" coords="767,851,976,956" href="#chkInfo" onclick="go_PassLecture('158055');">
+			</map>	 
 		</div>		
 
 		<div class="evtCtnsBox evt01" id="evt01">
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1_t.gif" title="티패스 수강생 전용 특별 혜택 제공" /><br>
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/1193_01_1.jpg" id="evt01_A"/><br>
-			<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_mv1.gif" alt="" /></span>
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_QandA.jpg" title="" />
 		</div>
 
 		<div class="evtCtnsBox evt01_1">
@@ -156,6 +153,7 @@
 				<div class="tabContents" id="tab3">
 					<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_02_c3.jpg" alt="윌비스 영어 70점 이상 강력 추천! " />
 				</div>
+				<div class="mt20">*본 T-PASS에서는 기출+단원별+동형모의고사 및 FINAL특강만을 제공합니다.</div>
 			</div>
 		</div>
 
@@ -164,9 +162,9 @@
 		</div>
 
 		<div class="evtCtnsBox evt04" id="event">
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_04.jpg" usemap="#Map1193B" title="한덕현T-PASS" border="0" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_04.gif" usemap="#Map1193B" title="한덕현T-PASS" border="0" />
 			<map name="Map1193B" id="Map1193B">
-				<area shape="rect" coords="509,753,964,870" href="#chkInfo" onclick="go_PassLecture('158055');" title="69만원 수강신청">
+				<area shape="rect" coords="801,785,988,876" href="#chkInfo" onclick="go_PassLecture('162539');" title="69만원 수강신청">
 			</map>
 		</div>
 
@@ -176,7 +174,7 @@
 		</div>
 
 		<div class="evtCtnsBox evt05" id="tip">
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_tip.jpg" title="이용약관" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_tip.jpg" title="이용약관" />
 		</div>
 	</div>
 	<!-- End Container -->

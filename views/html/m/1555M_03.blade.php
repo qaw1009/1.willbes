@@ -44,7 +44,7 @@
         </div>
 
         <h4 class="markingTit1">결과보기</h4>
-        <div class="mt10 mr10 tx-right">* 채점 횟수:  <span class="tx-blue">1회 참여</span> / 총 3회 </div>
+        <div class="mt10 mr10 tx-right">* 채점 횟수:  <span class="tx-blue">1회 참여</span> / 총 2회 </div>
         <form name="frm"  id="frm" action="" method="post">
             <div>
                 <table cellspacing="0" cellpadding="0" class="table_type table_type2">

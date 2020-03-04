@@ -28,7 +28,7 @@
         <div id="Container" class="Container NG c_both">
             <div class="predictWrap">
                 <div class="willbes-Tit">
-                    합격예측 풀서비스 <span class="NGEB"></span>
+                    합격예측 풀서비스 <span class="NGEB">사전예약</span>
                 </div>
                 <div class="marktxt2">빠르고 간편한 모바일 전용 채점 서비스 입니다.</div>
                 <div class="tg-note">
@@ -48,7 +48,7 @@
                                 채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
                             </li>
                             <li>
-                                기본정보는 사전예약 기간에만(~8/30) 수정이 가능하며, 본 서비스 오픈 후에는(8/31~) 수정이 불가합니다.
+                                기본정보는 사전예약 기간에만(~4/3) 수정이 가능하며, 본 서비스 오픈 후에는(4/4~) 수정이 불가합니다.
                             </li>
                             <li>
                                 자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.

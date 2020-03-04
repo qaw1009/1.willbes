@@ -21,13 +21,15 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/07/1337_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/03/1337_top_bg.jpg) no-repeat center top; position:relative}
 
         .wb_cts00 {background:#fff; padding-bottom:100px}
         .wb_cts00 iframe {width:870px; height:480px;}
         .wb_cts00 li:last-child {
             margin-top:10px;
         }
+
+        .wb_cts01_1 {background:#fff}
         .wb_cts01 {background:#f6f6f6; position:relative}
         .wb_cts01 span {position:absolute; left:50%; margin-left:-88px; bottom:223px}
         .wb_cts02 {background:#f49168;position:relative;}
@@ -96,10 +98,10 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_top.jpg" alt="한세훈 행정법" usemap="#Map1337a" border="0" />
-                <map name="Map1337a" id="Map1337a">
-                    <area shape="rect" coords="136,1051,987,1143" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
-                </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_top.gif" alt="한세훈 행정법" usemap="#Map1337a" border="0" />
+            <map name="Map1337a" id="Map1337a">
+                <area shape="rect" coords="136,1051,987,1143" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
+            </map>
 
             <div class="check">
                 <label>
@@ -107,21 +109,23 @@
                     페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.   
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
-            </div>   
-  
-            
+            </div> 
         </div><!--WB_top//-->
 
-        <div class="evtCtnsBox wb_cts01" >
+        <div class="evtCtnsBox wb_cts01_1"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_QandA.jpg" alt="행정법 기본기"/>
+        </div>
+
+        <div class="evtCtnsBox wb_cts01" >            
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_01.jpg" alt="행정법 기본기"/>
             <span><img src="https://static.willbes.net/public/images/promotion/2019/07/1337_01_01.gif" alt="한세훈"/></span>
         </div><!--WB_01//-->
 
         <div class="evtCtnsBox wb_cts02" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_02.jpg" alt="수강신청" usemap="#Map1337b" border="0"/>
-                <map name="Map1337b" id="Map1337b">
-                    <area shape="rect" coords="689,703,946,795"  href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
-                </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_02.jpg" alt="수강신청" usemap="#Map1337b" border="0"/>
+            <map name="Map1337b" id="Map1337b">
+                <area shape="rect" coords="689,703,946,795"  href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
+            </map>
 
             <div class="check2">
                 <label>
@@ -133,31 +137,20 @@
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_03.jpg" alt="이용안내 및 유의사항"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_03.jpg" alt="이용안내 및 유의사항"/>
         </div><!--wb_cts03//-->
-        {{--
-        <div class="evtCtnsBox wb_cts00" >
-            <ul>            
-                <li>
-                    <iframe src="https://www.youtube.com/embed/iku-4RrvuDE?rel=0" frameborder="0" allowfullscreen></iframe>
-                </li>
-            </ul>
-        </div><!--WB_cts00//-->     
-        --}}
-
     </div>
     <!-- End Container -->
 
     <script language="javascript">
          function go_PassLecture(no){
-
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
             var lUrl;
             if(no == 1){
-                lUrl = "https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155735";
+                lUrl = "https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/162545";
             }
             location.href = lUrl;
             }

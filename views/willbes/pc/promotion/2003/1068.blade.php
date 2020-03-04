@@ -467,8 +467,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 생물학개론 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146881">수강신청</a></td>
+					<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
 				  </tr>
 				  </table>
 				  <p>● 토양학</p>
@@ -580,8 +580,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 생물학개론 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146881">수강신청</a></td>
+					<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
 				  </tr>
 				  </table>
 				  <p>● 농촌지도론</p>
@@ -654,8 +654,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 생물학개론 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146881">수강신청</a></td>
+					<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
 				  </tr>
 				</table>
             </div>

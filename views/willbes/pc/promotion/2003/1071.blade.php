@@ -218,8 +218,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -261,14 +261,14 @@
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 무선공학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146718" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/158348" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 무선공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147119" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162037" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -313,8 +313,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -439,8 +439,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2018 최우영 전기자기학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162313" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -504,8 +504,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전기이론 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146952" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162035" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -541,8 +541,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전기기기 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146951" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162031" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -581,8 +581,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전기기기 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146951" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162031" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -606,8 +606,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2018 최우영 전기자기학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162313" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -684,8 +684,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -766,8 +766,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -846,8 +846,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2018 최우영 전기자기학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162313" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>

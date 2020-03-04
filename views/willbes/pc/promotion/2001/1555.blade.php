@@ -310,5 +310,4 @@
             });
         });
     </script>
-    @include('willbes.pc.promotion.roulette_script')
 @stop

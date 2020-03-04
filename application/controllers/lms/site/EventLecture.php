@@ -1148,10 +1148,8 @@ class EventLecture extends \app\controllers\BaseController
         $el_idx = $params[0];
 
         if (empty($el_idx) === false) {
-            //$arr_condition = $this->_getRegisterListConditions($el_idx);
-            $arr_condition = [];
+            $arr_condition = ['EQ' => ['B.ElIdx' => $el_idx]];
 
-            //todo
             $count = $this->eventLectureModel->listAllEventApply(true, $arr_condition);
             if ($count > 0) {
                 $list = $this->eventLectureModel->listAllEventApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EamIdx' => 'desc']);

@@ -23,11 +23,11 @@
             <div class="willbes-Tit">
                 합격예측 풀서비스 <span class="NGEB"></span>
             </div>
-            {{--30일 시험일전까지 사전예약 이벤트 노출--}}
+            {{--3일 시험일전까지 사전예약 이벤트 노출--}}
             @if ($step1 == 'on')
                 <div class="predictMain">
                     <div class="mainImg">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1332M_01.jpg" title="2019년 경찰 2차 합격예측 풀서비스 사전예약">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1555M_01.jpg" title="2020년 경찰 1차 합격예측 풀서비스 사전예약">
                     </div>
                     <div class="mainBtn">
                         <a href="#none" onclick="javascript:event_step_1();" class="btn2">
@@ -42,11 +42,11 @@
                 </div>
             @endif
 
-            {{--31일 00:00시부터 채점입력 노출--}}
+            {{--4일 00:00시부터 채점입력 노출--}}
             @if ($step2 == 'on')
                 <div class="predictMain">
                     <div class="mainImg">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1332M_02.jpg" title="2019년 경찰 2차 합격예측 풀서비스 사전예약">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1555M_02.jpg" title="2020년 경찰 1차 합격예측 풀서비스 사전예약">
                     </div>
                     <div class="mainBtn">
                         @if(sess_data('is_login') != true)

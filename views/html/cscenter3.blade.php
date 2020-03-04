@@ -90,10 +90,10 @@
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
                                 <col style="width: 65px;">
-                                <col style="width: 90px;">
+                                <col style="width: 130px;">
                                 <col style="width: 100px;">
-                                <col style="width: 395px;">
-                                <col style="width: 90px;">
+                                <col>
+                                <col style="width: 70px;">
                                 <col style="width: 110px;">
                                 <col style="width: 90px;">
                             </colgroup>
@@ -138,7 +138,7 @@
                                 </tr>
                                 <tr>
                                     <td class="w-no">9</td>
-                                    <td class="w-process">&nbsp;</td>
+                                    <td class="w-process"><div class="pBox p5">고등고시(학원)</div></td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">

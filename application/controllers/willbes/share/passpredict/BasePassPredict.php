@@ -15,15 +15,17 @@ class BasePassPredict extends \app\controllers\FrontController
 
     public function index($params = [])
     {
+        $return_type = (APP_DEVICE == 'pc') ? 'close' : 'back';
         if ($this->isLogin() !== true) {
-            show_alert('로그인 후 이용해 주세요.', 'back');
+            show_alert('로그인 후 이용해 주세요.', $return_type);
         }
 
         if (empty($params) === true) {
-            show_alert('잘못된 접근 입니다.', 'back');
+            show_alert('잘못된 접근 입니다.', $return_type);
         }
 
         $idx = $params[0];
+        $isStore = false;
         $memidx = $this->session->userdata('mem_idx');
 
         $res = $this->surveyModel->predictResist($idx, $memidx);
@@ -53,13 +55,13 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['PrIdx'] = '';
         }
 
-        $column = 'PredictIdx, MockPart';
+        $column = 'PredictIdx, MockPart, ServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
         $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
         if (empty($arr_base['predict_data']) === true) {
-            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'back');
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', $return_type);
         }
 
         $serial = $this->surveyModel->getSerial(0);
@@ -233,7 +235,6 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         if ($this->validate($rules) === false) return;
-
         $result = $this->surveyModel->store();
 
         /**
@@ -274,7 +275,7 @@ class BasePassPredict extends \app\controllers\FrontController
     }
 
     /**
-     * 기본정보 수정
+     * 사전예약 기본정보 수정
      */
     public function update()
     {
@@ -288,17 +289,23 @@ class BasePassPredict extends \app\controllers\FrontController
 
         if ($this->validate($rules) === false) return;
 
-        $now_time = date('Ymd');
-        if ($now_time >= '20190831') {
-            $result = 'no';
-        } else {
+        $idx = $this->input->post('PredictIdx');
+        $column = 'PredictIdx, MockPart';
+        $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
+        $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
+        $now_time = date('YmdHi');
+        if ($now_time >= $predict_data['PreServiceSDatm'] && $now_time <= $predict_data['PreServiceEDatm']) {
             $result = $this->surveyModel->update();
+        } else {
+            $result = 'no';
         }
 
         if ($result == 'no') {
             $_err_data = [
                 'ret_cd' => false,
-                'ret_msg' => '수정할 수 없습니다',
+                'ret_msg' => '수정 기간이 종료되어 수정할 수 없습니다.',
                 'ret_status' => _HTTP_ERROR
             ];
             return $this->json_result(false, '', $_err_data);

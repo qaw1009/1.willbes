@@ -29,7 +29,7 @@
 
         .evt02 {background:#ddd;}
 
-        .evt03 {background:#f1f1f1;}
+        .evt03 {background:#fff;}
 
         .evt04 {background:#fff;}
 
@@ -68,26 +68,20 @@
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .skybanner {position:fixed;top:200px;right:0;z-index:1;}
-        .skybanner2 {position:fixed;top:410px;right:0;z-index:1;}    
+        .skybanner {position:fixed;top:200px;right:0;z-index:1;} 
+        .skybanner a {display:block; margin-bottom:5px}
 
         .clicks{display:none;margin:0 auto;}
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer"> 
-
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
-            <a href="#to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_skybanner.png" alt="스카이베너" >
-            </a>
-        </div>     
-        
-        <div class="skybanner2">
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_skybanner2.png" alt="스카이베너2" >
             </a>
-        </div>      
+        </div>       
+     
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -119,49 +113,41 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_top.jpg" title="문제풀이 풀패키지">                    
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_top.jpg" title="문제풀이 풀패키지">                    
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_1.jpg" title="커리큘럼">           
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_01.jpg" title="커리큘럼">           
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_2.jpg" usemap="#Map1455_02" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_02.jpg" usemap="#Map1455_02" border="0" />
             <map name="Map1455_02" id="Map1455_02">
-                <area shape="rect" coords="343,850,777,915" class="confirm" />
-                <area shape="rect" coords="237,970,541,1066" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank" />
-                <area shape="rect" coords="569,969,880,1065" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-            </map>        
+                <area shape="rect" coords="343,850,777,915" href="#none" class="confirm" />
+                <area shape="rect" coords="406,971,710,1067" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank" alt="온라인 수강신청" />
+            </map>          
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks"><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2s.jpg" alt="2단계 동형모의고사" usemap="#Map1455c" border="0"><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_02_01.jpg" alt="2단계 동형모의고사" usemap="#Map1455c" border="0"><br>
             <map name="Map1455c" id="Map1455c">
-                <area shape="rect" coords="242,1027,541,1120" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" />
-                <area shape="rect" coords="580,1027,880,1120" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="412,1026,711,1119" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" alt="온라인 신청하기" />
+            </map> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_02_02.jpg" usemap="#Map1455D" title="3단계" border="0">
+            <map name="Map1455D" id="Map1455D">
+                <area shape="rect" coords="239,773,541,871" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&amp;course_idx=1009" target="_blank" alt="온라인" />
+                <area shape="rect" coords="577,771,883,874" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1045" target="_blank" alt="학원" />
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1455_2ss.jpg" title="3단계">
         </div>
 
         <div class="evtCtnsBox evt03" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_3_1.jpg" usemap="#Map1455a" title="1+2+3단계 종합반" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_03.jpg" usemap="#Map1455a" title="단계별 단과반" border="0">
             <map name="Map1455a" id="Map1455a">
-                <area shape="rect" coords="514,845,722,901" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="725,843,930,899" href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank" />
-                <area shape="rect" coords="369,1483,753,1542" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-            </map> 
-        </div>
-
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_4_1.jpg" usemap="#Map1455b" border="0">
-            <map name="Map1455b" id="Map1455b">
-                <area shape="rect" coords="791,575,892,693" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="927,574,1027,694" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1007" target="_blank" />
-                <area shape="rect" coords="896,857,1026,892" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="898,1048,1022,1081" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
-                <area shape="rect" coords="897,1237,1026,1272" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="894,1628,1028,1661" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="899,1818,1024,1852" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
-            </map>                      
+                <area shape="rect" coords="859,562,997,607" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&amp;course_idx=1007" target="_blank" alt="문풀1단계" />
+                <area shape="rect" coords="860,750,998,790" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&amp;course_idx=1008" target="_blank" alt="문풀2단계" />
+              <area shape="rect" coords="861,936,996,977" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&amp;course_idx=1009" target="_blank" alt="문풀3단계" />
+              <area shape="rect" coords="892,1599,1029,1693" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1007" target="_blank" alt="문풀1단계 종합반" />
+              <area shape="rect" coords="891,1836,1030,1876" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank" alt="문풀2단계 종합반" />
+              <area shape="rect" coords="891,2022,1029,2063" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1045" target="_blank" alt="문풀3단계종합반" />
+            </map>  
         </div>
 
         <div class="evtCtnsBox evt05" id="apply">			
@@ -172,11 +158,9 @@
                     <li><a href="#none" alt="광주(참수리)" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">학원문의</a></li>
                     <li><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605005&course_idx=1043" target="_blank" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">신청하기</a></li>
                     <li><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605006&course_idx=" target="_blank" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">신청하기</a></li>
-                    <li><a href="https://blog.naver.com/als9946" target="_blank" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
-                   
+                    <li><a href="https://blog.naver.com/als9946" target="_blank" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>                   
                     <li><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605004&course_idx=" target="_blank" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605003&course_idx=&search_text=UHJvZE5hbWU666y47KCc7ZKA7J20" target="_blank" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">신청하기</a></li>
-                   
+                    <li><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605003&course_idx=&search_text=UHJvZE5hbWU666y47KCc7ZKA7J20" target="_blank" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">신청하기</a></li>                   
                     <li><a href="https://police.willbes.net/pass/campus/show/code/605009" target="_blank" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">신청하기</a></li>
                 </ul>
                 <span class="area01">노량진</span>
@@ -191,30 +175,23 @@
 		</div>
 
         <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_6.jpg" title="학원 실강 이용안내">           
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1455_04.jpg" title="학원 실강 이용안내">           
         </div>
 	</div>
     <!-- End Container -->
 
 <script type="text/javascript">    
+    /*디데이카운트다운*/
+    $(document).ready(function() {
+        dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
+    });         
 
- /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
-        });         
-
-        $(document).ready(function(){
-            $(".confirm").click(function(){
-                $(".clicks").toggle();
-            });
-
-});
-        
- 
+    $(document).ready(function(){
+        $(".confirm").click(function(){
+            $(".clicks").toggle();
+        });
+    });   
 </script>
-
- {{-- 프로모션용 스크립트 include --}}
+    {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
-
-
 @stop

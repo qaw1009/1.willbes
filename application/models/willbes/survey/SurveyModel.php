@@ -81,17 +81,31 @@ class SurveyModel extends WB_Model
     {
         try {
             $this->_conn->trans_begin();
+            $isStore = false;
             $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
 
             if(empty($names)) {
                 $names['RealConfirmFile']['name'] = null;
                 $names['RealConfirmFile']['real'] = null;
             }
-
             $PredictIdx = $this->input->post('PredictIdx');
 
-            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
+            $column = 'PredictIdx, MockPart, PreServiceIsUse';
+            $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+            $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+            $arr_condition = ['EQ' => ['PredictIdx' => $PredictIdx,'IsUse' => 'Y']];
+            $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
+            if (empty($predict_data) === true) {
+                throw new \Exception('조회된 합격예측 코드가 없습니다.');
+            }
 
+            $now_time = date('YmdHi');
+            if ($predict_data['PreServiceIsUse'] == 'Y' && $now_time >= $predict_data['PreServiceSDatm'] && $now_time <= $predict_data['PreServiceEDatm']) { $isStore = true; }
+            if ($isStore === false) {
+                throw new \Exception('사전예약 신청기간이 아닙니다.');
+            }
+
+            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
             if(empty($regist_check) === false) {
                 throw new \Exception('이미 신청하셨습니다.');
             }

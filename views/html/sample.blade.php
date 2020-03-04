@@ -77,9 +77,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_3091_309103') }}" target="_blank">공인자격증 공인한자2급</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_willpass') }}" target="_blank">취업 공기업</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li>                
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li>             
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기</a></li>
@@ -88,9 +86,15 @@
                 <li class="w50"><a href="{{ site_url('/home/html/memconvert2') }}" target="_blank">통합회원전환-고등고시,자격증 포함</a></li>
                 <li><a href="{{ site_url('/home/html/memconvert3') }}" target="_blank">통합회원전환-아이디 중복 회원 최초 로그인 시</a></li>
                 <li><a href="{{ site_url('/home/html/memcombine2') }}" target="_blank">통합회원전환-아이디+비밀번호 중복 회원 최초 로그인 시</a></li>
-                <li class="c_both"></li>
+            </ul>
+        </div>        
+    </li>
+    <li>
+        <div>
+            <ul>
                 <li><a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진소개 > 교수진 </a></li>
                 <li><a href="{{ site_url('/home/html/prof_acad') }}" target="_blank">교수진소개 > 교수진 학원 </a></li>
+                <li><a href="{{ site_url('/home/html/prof_gosi') }}" target="_blank">교수진소개 > 교수진 - 공무원 </a></li>
                 <li><a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진소개 > 교수진 상세</a></li>
                 <li><a href="{{ site_url('/home/html/profsub_jangsawon') }}" target="_blank">교수진소개 > 교수진 상세 page - 장사원 교수</a></li>
                 <li><a href="{{ site_url('/home/html/profsub_gosi') }}" target="_blank">교수진소개 > 교수진 상세 page - 자유게시판</a></li>
@@ -122,16 +126,20 @@
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700 <span>*</span></a></li>               
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_incheon') }}" target="_blank">전역간부대상 인천교육과정</a></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_seoul') }}" target="_blank">전역간부대상 노량진교육과정</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_busan') }}" target="_blank">전역간부대상 서면교육과정</a></li>                
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_busan') }}" target="_blank">전역간부대상 서면교육과정</a></li>  
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/event_zaksim_190702') }}" target="_blank">작심독서실 인증 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
             </ul>
         </div>
     </li>
+    {{--
     <li>
         <div>       
-            <ul>
-            <li><a href="{{ site_url('/home/html/event_zaksim_190702') }}" target="_blank">작심독서실 인증 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>
-                <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
+            <ul>            
+                <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>                
                 <li><p>경찰 온라인 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈<span>*</span></a></li>  
                 <li><a href="{{ site_url('/home/html/event_onMouPop_2019') }}" target="_blank">2019 온라인 교육 콘텐츠 제공 MOU 체결 팝업 size 850x700 <span>*</span></a></li>  
@@ -238,6 +246,7 @@
             </ul>
         </div>
     </li>
+    
     <li>
         <div>
             <ul>
@@ -338,6 +347,7 @@
             </ul>
         </div>
     </li>
+    --}}
     <li>
         <div>
             <ul>
@@ -394,7 +404,13 @@
                 <li><a href="{{ site_url('/home/html/guide_3100_02') }}" target="_blank"> 시험정보 > 경찰간부 > 시험방법</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_03') }}" target="_blank"> 시험정보 > 경찰간부 > 가산점</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_04') }}" target="_blank"> 시험정보 > 경찰간부 > 최종합격관리</a></li>
-                <li class="c_both"></li> 
+                <li class="c_both"></li>                 
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div>
+            <ul>
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자</a></li>
@@ -420,6 +436,25 @@
                 <li><a href="{{ site_url('/home/html/acad_info1_1') }}" target="_blank">학원안내 > 학원강의정보</a></li>
                 <li><a href="{{ site_url('/home/html/acad_info2') }}" target="_blank">학원안내 > 모의고사성적공지</a></li>
                 <li><a href="{{ site_url('/home/html/acad_info3') }}" target="_blank">학원안내 > 학원갤러리</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter3') }}" target="_blank">고객센터 > 1:1상담</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter4') }}" target="_blank">고객센터 > 사이트 이용가이드</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter5') }}" target="_blank">고객센터 > 모바일 이용가이드</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter6_1') }}" target="_blank">고객센터 > PC 원격지원</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치</a></li>
+                <li><a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/profRecruit') }}" target="_blank">강사모집</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/error') }}" target="_blank">error 페이지</a></li>
+                <li><a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup</a></li>
+                <li><a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기</a></li>
+                <li><a href="{{ site_url('/home/html/test_popup3') }}" target="_blank">*** 전국모의고사 결제완료 popup</a></li>
+                <li><a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video</a></li>
+                <li><a href="{{ site_url('/home/html/test_onair') }}" target="_blank">*** test onair</a></li>
             </ul>
         </div>
     </li>
@@ -462,25 +497,7 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}" target="_blank">내강의실 > 회원정보 > 개인정보관리</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경</a></li>
-                <li class="c_both"></li> 
-                <li><a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter3') }}" target="_blank">고객센터 > 1:1상담</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter4') }}" target="_blank">고객센터 > 사이트 이용가이드</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter5') }}" target="_blank">고객센터 > 모바일 이용가이드</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter6_1') }}" target="_blank">고객센터 > PC 원격지원</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치</a></li>
-                <li><a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/profRecruit') }}" target="_blank">강사모집</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/error') }}" target="_blank">error 페이지</a></li>
-                <li><a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup</a></li>
-                <li><a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기</a></li>
-                <li><a href="{{ site_url('/home/html/test_popup3') }}" target="_blank">*** 전국모의고사 결제완료 popup</a></li>
-                <li><a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video</a></li>
-                <li><a href="{{ site_url('/home/html/test_onair') }}" target="_blank">*** test onair</a></li>
+                <li class="c_both"></li>                 
             </ul>
         </div>
     </li>

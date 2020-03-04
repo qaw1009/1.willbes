@@ -32,40 +32,39 @@
 
         .evtTop {background:#404040}
         .evtTop span {font-size:200px; font-weight:bold; color:#fff; padding:100px;
-            -webkit-animation: color-change-5x 8s linear infinite alternate both;
-	        animation: color-change-5x 8s linear infinite alternate both;}
-        @@-webkit-keyframes color-change-5x {
+            -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+        @@-webkit-keyframes text-pop-up-top {
             0% {
-            background: #19dcea;
-            }
-            25% {
-            background: #b22cff;
-            }
-            50% {
-            background: #ea2222;
-            }
-            75% {
-            background: #f5be10;
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: none;
             }
             100% {
-            background: #3bd80d;
+                -webkit-transform: translateY(-50px);
+                        transform: translateY(-50px);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
             }
         }
-        @@keyframes color-change-5x {
+        @@keyframes text-pop-up-top {
             0% {
-            background: #19dcea;
-            }
-            25% {
-            background: #b22cff;
-            }
-            50% {
-            background: #ea2222;
-            }
-            75% {
-            background: #f5be10;
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: none;
             }
             100% {
-            background: #3bd80d;
+                -webkit-transform: translateY(-50px);
+                        transform: translateY(-50px);
+                -webkit-transform-origin: 50% 50%;
+                        transform-origin: 50% 50%;
+                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
             }
         }
         .evt01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2020/03/1561_top_bg.jpg) no-repeat center top; }   

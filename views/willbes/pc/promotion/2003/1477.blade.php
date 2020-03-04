@@ -59,7 +59,7 @@
         </div>    
 
         <div class="evtCtnsBox wb_cts03" id="apply"> 
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1477_03.jpg" alt="수강신청" usemap="#Map1477b" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1477_03.jpg" alt="수강신청" usemap="#Map1477b" border="0">
             <map name="Map1477b" id="Map1477b">
                 <area shape="rect" coords="680,748,943,822" href="https://pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/158484" target="_blank" alt="고선미 세법 T-PASS" />
             </map>           
@@ -67,9 +67,4 @@
                  
     </div>
     <!-- End Container -->
-
-    <script type="text/javascript">
-       
-    </script>
-
 @stop

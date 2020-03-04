@@ -137,7 +137,7 @@
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_03.jpg" alt="이용안내 및 유의사항"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_03.jpg" alt="이용안내 및 유의사항"/>
         </div><!--wb_cts03//-->
     </div>
     <!-- End Container -->

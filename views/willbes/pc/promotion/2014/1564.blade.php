@@ -18,7 +18,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; height:400px}
 
         /************************************************************/
 
@@ -26,6 +26,7 @@
             position:fixed;
             top:250px;
             right:0;
+            display:none;
             z-index:1;
         }
 
@@ -139,30 +140,27 @@
         </div>
 
         <div class="evtCtnsBox evt01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_top.jpg" alt="슈퍼pass" />
+            
         </div>
 
         <div class="evtCtnsBox evt02" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_01.jpg" alt="슈퍼pass"  />
+            
         </div>      
 
         <div class="evtCtnsBox evt03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_02.jpg" alt="슈퍼pass"  />
+            
         </div>
 
-        <div class="evtCtnsBox evt04" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_03.jpg" alt="슈퍼pass" usemap="#Map1561a" border="0" />
-            <map name="Map1561a" id="Map1561a">
-                <area shape="rect" coords="370,1243,749,1357" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" />
-            </map>               
+        <div class="evtCtnsBox evt04">
+                        
         </div>
 		
 		<div class="evtCtnsBox evt05" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_04.jpg" alt="슈퍼pass"  />
+            
         </div>
 
         <div class="evtCtnsBox evt06" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_05.jpg" alt="슈퍼pass"  />
+            
         </div>
     </div>
     <!-- End Container -->

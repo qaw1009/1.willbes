@@ -38,7 +38,7 @@ from{color:#d63e4d}
 to{color:#d63e4d}
 }
 
-.top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/07/1330_top_bg.jpg) no-repeat center top;}
+.top_bg {background:url(https://static.willbes.net/public/images/promotion/2020/03/1330_top_bg.jpg) no-repeat center top;}
 .top_bg .check{
     position:absolute; width:1000px; left:50%; top:1200px; margin-left:-500px; z-index:1;font-size:14px;text-align:center;line-height:1.5;
     letter-spacing:-1px;
@@ -49,7 +49,8 @@ to{color:#d63e4d}
 .evtCtnsBox .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7;border-radius:20px; margin-left:20px}
 .evtCtnsBox .check a:hover {color: #fff;background: #000;}
 
-.evt01 {background:#eef1f8}
+.evt01_1 {background:#fff}
+.evt01 {background:#eef1f8; padding-bottom:100px}
 .evt01 div {width:1120px; margin:0 auto; position:relative;}
 .evt01 div span {position:absolute; z-index:5}
 .evt01 div .img01 {width:441px; top:25px; left:306px;}
@@ -92,7 +93,7 @@ to{color:#d63e4d}
         </div>
 
         <div class="evtCtnsBox top_bg">  
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_top.jpg" alt="조민주 한국사" usemap="#Map1330a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1330_top.gif" alt="조민주 한국사" usemap="#Map1330a" border="0">
             <map name="Map1330a" id="Map1330a">
                 <area shape="rect" coords="140,1061,975,1134" href="javascript:go_PassLecture(1);" alt="수강신청"/>
             </map>
@@ -105,7 +106,11 @@ to{color:#d63e4d}
             </div>   
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01_1"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1330_QandA.jpg" alt="한국사 정복">
+        </div>
+
+        <div class="evtCtnsBox evt01">            
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_01.jpg" alt="한국사 정복">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_02.jpg" alt="모니터">
@@ -113,8 +118,7 @@ to{color:#d63e4d}
                 <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2019/07/1330_02_2.gif" alt="강의2"></span>
                 <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2019/07/1330_02_3.gif" alt="강의3"></span>
             </div>
-            <iframe width="853" height="480" src="https://www.youtube.com/embed/aj_BQRFRe4M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_03.jpg" alt="커리큘럼"> 
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/aj_BQRFRe4M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
         </div>
 
         <div class="evtCtnsBox evt04">
@@ -147,7 +151,7 @@ to{color:#d63e4d}
             }
             var lUrl;
             if(no == 1){
-                lUrl = "https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155496";
+                lUrl = "https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/162544";
             }
             location.href = lUrl;
         }

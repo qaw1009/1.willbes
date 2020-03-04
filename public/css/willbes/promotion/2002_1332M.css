@@ -9,7 +9,7 @@
 .predictWrap input[type="text"] {height: 2rem;}
 .predictWrap .willbes-Tit {background: #2e3c52; color:#fff; border:0}
 .predictWrap .willbes-Tit span {color:#f6cc20}
-.predictWrap .predictMain { background:#19191a url(https://static.willbes.net/public/images/promotion/2019/07/1332M_bg.jpg) no-repeat center top; background-size:720px;  text-align: center; padding-bottom:50px}
+.predictWrap .predictMain { background:#19191a url(https://static.willbes.net/public/images/promotion/2020/03/1555M_bg.jpg) no-repeat center top; background-size:720px;  text-align: center; padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn a { 
     display:block; width: 80%; max-width: 700px; margin:0 auto; padding:1em 0;
@@ -70,8 +70,6 @@
 .marking2 li {width:50%; position: relative;}
 
 .marking3 li {width:33.33333%; position: relative;}
-
-
 
 .markSbtn1 {width:100%; margin:1.5em auto; text-align:center;}
 .markSbtn1 a {display:inline-block; padding:0.5em 1em; background:#1087ef; color:#fff; font-weight:bold; border-radius:5px; border:1px solid #1087ef; margin:0 5px}

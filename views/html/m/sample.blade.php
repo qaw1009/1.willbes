@@ -90,6 +90,8 @@
             <a href="{{ site_url('/home/html/m/1332M_01') }}" target="_blank">└ 기본정보입력</a>
             <a href="{{ site_url('/home/html/m/1332M_02') }}" target="_blank">└ 채점하기</a>
             <a href="{{ site_url('/home/html/m/1332M_03') }}" target="_blank">└ 성적확인</a>
+            <br><br> 
+            <a href="{{ site_url('/home/html/m/1555M') }}" target="_blank">2020년 경찰1차 합격예측 풀서비스</a>
         </div>
     </li>
 </ul>

@@ -304,7 +304,7 @@
                             </div>
 
                             <div class="willbes-listTable widthAuto940 mt30">
-                                <div class="will-Tit NG">교재구매 </div>
+                                <div class="will-Tit NGR">교재구매 </div>
                                 <div class="willbes-Lec-Table NG">        
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
                                         <colgroup>

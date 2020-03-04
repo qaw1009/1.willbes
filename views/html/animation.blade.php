@@ -321,10 +321,6 @@
                     transform-origin: top;
         }
         }
-
-
-
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

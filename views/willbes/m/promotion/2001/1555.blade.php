@@ -37,7 +37,7 @@
                     <div class="sort">
                         <div><span>일반<br>공채</span></div>
                         <div><span>101<br>경비단</span></div>
-                        <div><span>경행<br>경채</span></div>
+                        <div><span>전의경<br>경채</span></div>
                     </div>
                 </div>
             @endif

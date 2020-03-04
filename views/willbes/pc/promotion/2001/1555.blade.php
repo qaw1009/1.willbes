@@ -156,9 +156,12 @@
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
+
             <div class="d-day NSK">
                 2020년 경찰1차 러닝메이트 최종합격 프로젝트
-                <p class="NSK-Black">필기시험까지 <span>D-44</span></p>
+                @if(empty($arr_base['dday_data'][0]['DDay']) === false)
+                    <p class="NSK-Black">필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                @endif
                 <!--
                 <p>체력시험까지 <span>D-00</span></p>
                 <p>면접시험까지 <span>D-00</span></p>
@@ -310,5 +313,4 @@
             });
         });
     </script>
-    @include('willbes.pc.promotion.roulette_script')
 @stop

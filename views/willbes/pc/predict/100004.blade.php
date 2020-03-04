@@ -203,7 +203,7 @@
                 return ;
             }
 
-            if($("#TakeMockPart").val() != '800'){
+            if($("#TakeMockPart").val() != '300'){
                 if($("input[name='Ssubject[]']:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;
@@ -224,8 +224,8 @@
                     alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
-            } else if($("#TakeMockPart").val() == '800') {
-                if(takenum<50001||takenum>59999) {
+            } else if($("#TakeMockPart").val() == '300') {
+                if(takenum<30001||takenum>39999) {
                     alert('올바른 응시번호가 아닙니다.');
                     return;
                 }

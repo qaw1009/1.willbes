@@ -99,7 +99,7 @@
 			</div>
 		</div>
 		<!-- 타이머 //-->
-
+		{{--
 		<div class="skybanner">
 			<a href="#evt01_A">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
@@ -111,7 +111,7 @@
 				<img src="https://static.willbes.net/public/images/promotion/2019/11/1193_sky2.png" />
 			</a>
 		</div>
-			
+		--}}			
 		<div class="evtCtnsBox evtTop">
 			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
 			<map name="Map_1193A" id="Map_1193A">					

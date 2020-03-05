@@ -3,6 +3,18 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both mb20">
+    <div class="onlecgosi">
+        <div>동영상 수강신청 ▼</div>
+        <div>
+            <a href="#none">5급행정</a>
+            <a href="#none">국립외교원</a>
+            <a href="#none">PSAT</a>
+            <a href="#none">5급헌법</a>
+            <a href="#none">법원행시</a>
+            <a href="#none">변호사시험</a>
+        </div>
+    </div>
+
     <div class="MainSlider swiper-container swiper-container-page c_both">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="{{ img_url('m/sample/slider1.jpg') }}"></div>
@@ -12,6 +24,17 @@
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="gosibtns">
+        <ul>
+            <li><a href="#none">내강의실</a></li>
+            <li><a href="#none">신규동영상안내</a></li>
+            <li><a href="#none">무료특강(보강)</a></li>
+            <li><a href="#none">강의시간표</a></li>
+            <li><a href="#none">강의계획서</a></li>
+            <li><a href="#none">강의실배정표</a></li>
+        </ul>
     </div>
 
     <div class="buttonTabs noticeTabs c_both">

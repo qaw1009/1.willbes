@@ -70,7 +70,7 @@ class Events extends \app\controllers\BaseController
             return $this->_message('0001'); //인증 성공
 
         } catch (\Exception $e) {
-            $this->_message($e->getCode());
+            $this->_message((string) $e->getCode());
         }
 
     }

@@ -38,6 +38,11 @@
                         <td class="w-list">{{ $row['CourseName'] }}</td>
                         <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                         <td class="w-data tx-left pl25">
+                            @if($row['LecTypeCcd'] === '607003')
+                                <div class="OTclass">
+                                    <span>직장인/재학생반</span> <a href="#none"  class="lec_type_info">?</a>
+                                </div>
+                            @endif
                             <div class="w-tit">
                                 <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                             </div>

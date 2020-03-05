@@ -3922,6 +3922,13 @@ table.classTable tr td img {
 
 /* subContainer : Content : 강의 > 직장인/재학생반 안내 : requestInfo2 */
 .willbes-Layer-requestInfo2 {
+    display: none;
+    background: #fff;
+    position: absolute;
+    z-index: 110;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 50px;
     top: 60px;
     left: 0;
     width: 600px;

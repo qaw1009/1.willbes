@@ -176,7 +176,7 @@
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
-        }  
+        }          
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">

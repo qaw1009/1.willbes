@@ -184,6 +184,10 @@
                                     <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
                                 </tr>
                                 <tr>
+                                    <th><div class="OTclass"><span>직장인/재학생반</span></div></th>
+                                    <td class="tx-left">직장인(재학생) 대상으로 정해진 시간에만 수강가능한 강좌</td>
+                                </tr>
+                                <tr>
                                     <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
                                     <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>
                                 </tr>
@@ -265,6 +269,11 @@
                                     <td class="w-list">{{ $row['CourseName'] }}</td>
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
+                                        @if($row['LecTypeCcd'] === '607003')
+                                            <div class="OTclass">
+                                                <span>직장인/재학생반</span> <a href="#none"  class="lec_type_info">?</a>
+                                            </div>
+                                        @endif
                                         <div class="w-tit">
                                             <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
@@ -419,7 +428,6 @@
             </div>
             <!-- willbes-Lec-buyBtn -->
         </form>
-
         <div id="InfoForm" class="willbes-Layer-Box"></div>
         <!-- willbes-Layer-Box -->
 

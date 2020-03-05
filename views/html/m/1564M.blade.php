@@ -10,15 +10,15 @@
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
-        .tabs li a {display:block; text-align:center; font-size:14px; line-height:1.5; padding:20px 0; color:#999; font-weight:bold; letter-spacing:-1px;}
+        .tabs li a {display:block; text-align:center; font-size:14px; line-height:1.5; padding:15px 0; color:#999; font-weight:bold; letter-spacing:-1px;}
         .tabs li a:hover,
         .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:1rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center;}
-        .evt01 .dday strong {font-size:1.25rem;}
-        .evt01 .dday img {display:inline-block; margin:0 20px; width:30px;
+        .evt01 .dday {font-size:0.9rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center;}
+        .evt01 .dday strong {font-size:1.20rem;}
+        .evt01 .dday img {display:inline-block; margin:0 10px; width:30px;
             -webkit-animation: vibrate-1 1s linear infinite both;
 	        animation: vibrate-1 1s linear infinite both;
         }
@@ -79,20 +79,20 @@
         
         
         .evt02 {background:#f6f6f6; padding-top:100px}       
-        .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
-        .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1);}
+        .evt02 .evt02Txt01 {font-size:1.1rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
+        .evt02 .evt02Txt01 span {font-size:1.3rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1);}
 
         .evt03 {background:#fff; padding-top:100px}
 
         .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#3a99f0; font-size:18px}
+        .evt04 h4 {color:#3a99f0; font-size:1.1rem}
         .evt04 .columns {padding:20px;
             column-count: 1;
             column-gap:20px;
         }
         .evt04 .columns div {            
-            text-align:justify; font-size:14px; line-height:1.4;
+            text-align:justify; font-size:0.875rem; line-height:1.4;
             display:inline-block; 
             padding:20px; border:1px solid #eee; border-radius:10px;
             margin-bottom:20px; color:#666; background:#fff;

@@ -27,11 +27,11 @@
         <div class="gosibtns">
             <ul>
                 <li><a href="{{ front_app_url('/classroom/on/list/ongoing', 'www') }}">내강의실</a></li>
-                <li><a href="{{ front_device_url('/support/notice/show/cate/3094?board_idx=261349', 'pc') }}">신규동영상안내</a></li>
+                <li><a href="{{ site_url('/support/notice/show/cate/3094?board_idx=261349') }}">신규동영상안내</a></li>
                 <li><a href="{{ front_url('/lecture/index/pattern/free') }}">무료특강(보강)</a></li>
-                <li><a href="{{ front_device_url('/pass/offinfo/boardInfo/index/80', 'pc') }}">강의시간표</a></li>
-                <li><a href="{{ front_device_url('/pass/offinfo/boardInfo/index/109', 'pc') }}">강의계획서</a></li>
-                <li><a href="{{ front_device_url('/pass/offinfo/boardInfo/index/82', 'pc') }}">강의실배정표</a></li>
+                <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/80') }}">강의시간표</a></li>
+                <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/109') }}">강의계획서</a></li>
+                <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/82') }}">강의실배정표</a></li>
             </ul>
         </div>
 

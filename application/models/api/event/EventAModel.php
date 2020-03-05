@@ -20,31 +20,38 @@ class EventAModel extends WB_Model
     /**
      * 상품주문 식별자 조회
      * @param int|array $prod_code [상품코드]
-     * @param int|array $order_prod_idx [주문상품 식별자]
+     * @param int|array $cert_code [이벤트 수강인증코드]
      * @param array $arr_condition [추가조회 조건]
      * @return mixed
      */
-    public function findOrderByOrderProdIdx($prod_code, $order_prod_idx, $arr_condition = [])
+    public function findOrderByCertCode($prod_code, $cert_code, $arr_condition = [])
     {
+        // 수강인증코드 분리
+        if(empty($cert_code) === false) {
+            $order_prod_idx = substr($cert_code, 0, mb_strlen($cert_code, 'utf-8') - 3);
+            $mem_idx = substr($cert_code, -3, 3).'%';
+        }
+
         $column = '
             OP.*,
             ML.LecStartDate,
             ML.RealLecEndDate
         ';
-        $from = '
-            FROM ' . $this->_table['order'] . ' O
-            LEFT OUTER JOIN ' . $this->_table['order_product'] . ' OP ON O.OrderIdx = OP.OrderIdx
-            LEFT OUTER JOIN ' . $this->_table['my_lecture'] . ' ML ON ML.OrderProdIdx = OP.OrderProdIdx
-            WHERE OP.OrderProdIdx IN ?
+        $from = "
+            FROM {$this->_table['order']} O
+            LEFT OUTER JOIN {$this->_table['order_product']} OP ON O.OrderIdx = OP.OrderIdx
+            LEFT OUTER JOIN {$this->_table['my_lecture']} ML ON ML.OrderProdIdx = OP.OrderProdIdx
+            WHERE OP.OrderProdIdx = ?
             AND OP.ProdCode IN ?
-        ';
+            AND OP.MemIdx LIKE ?
+        ";
 
         $where = '';
         if (empty($arr_condition) === false) {
             $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         }
 
-        $query = $this->_conn->query('SELECT ' . $column . $from . $where, [(array) $order_prod_idx, (array) $prod_code]);
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where, [$order_prod_idx, (array) $prod_code, $mem_idx]);
 
         return $query->row_array();
     }

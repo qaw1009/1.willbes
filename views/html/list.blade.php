@@ -354,7 +354,7 @@
                                 <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
 
                                 {{--직장인/재학생 반 안내 팝업--}}
-                                <div id="OTclassInfo" class="willbes-Layer-requestInfo willbes-Layer-requestInfo2">
+                                <div id="OTclassInfo" class="willbes-Layer-requestInfo2">
                                     <a class="closeBtn" href="#none" onclick="closeWin('OTclassInfo')">
                                         <img src="{{ img_url('prof/close.png') }}">
                                     </a>

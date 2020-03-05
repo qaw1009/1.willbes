@@ -77,6 +77,9 @@
                         @forelse( $lecList as $row )
                             <tr>
                                 <td class="w-data tx-left pb-zero">
+                                    @if($row['LecTypeCcd'] == '607003')
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    @endif
                                     <dl class="w-info">
                                         <dt>
                                             {{$row['SubjectName']}}<span class="row-line">|</span>
@@ -177,6 +180,9 @@
                                 @foreach( $row['subleclist'] as $subrow )
                                     <tr>
                                         <td class="w-data tx-left pb-zero">
+                                            @if($subrow['LecTypeCcd'] == '607003')
+                                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                            @endif
                                             <dl class="w-info">
                                                 <dt>
                                                     {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님
@@ -221,6 +227,9 @@
                         @forelse( $freeList as $row )
                             <tr>
                                 <td class="w-data tx-left pb-zero">
+                                    @if($row['LecTypeCcd'] == '607003')
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    @endif
                                     <dl class="w-info">
                                         <dt>
                                             {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
@@ -263,6 +272,9 @@
                         @forelse( $adminList['lec'] as $row )
                             <tr>
                                 <td class="w-data tx-left pb-zero">
+                                    @if($row['LecTypeCcd'] == '607003')
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    @endif
                                     <dl class="w-info">
                                         <dt>
                                             {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
@@ -315,6 +327,9 @@
                                 @foreach( $row['subleclist'] as $subrow )
                                     <tr>
                                         <td class="w-data tx-left pb-zero">
+                                            @if($subrow['LecTypeCcd'] == '607003')
+                                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                            @endif
                                             <dl class="w-info">
                                                 <dt>
                                                     {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님

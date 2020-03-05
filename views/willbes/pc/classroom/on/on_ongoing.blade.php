@@ -159,6 +159,9 @@
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                     </dt>
                                                 </dl><br/>
+                                                @if($row['LecTypeCcd'] == '607003')
+                                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                @endif
                                                 <div class="w-tit">
                                                     <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                 </div>
@@ -263,6 +266,9 @@
                                                             <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
                                                         </dt>
                                                     </dl><br/>
+                                                    @if($subrow['LecTypeCcd'] == '607003')
+                                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                    @endif
                                                     <div class="w-tit">
                                                         <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
                                                     </div>
@@ -317,6 +323,9 @@
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                     </dt>
                                                 </dl><br/>
+                                                @if($row['LecTypeCcd'] == '607003')
+                                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                @endif
                                                 <div class="w-tit">
                                                     <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                                 </div>
@@ -366,6 +375,9 @@
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                     </dt>
                                                 </dl><br/>
+                                                @if($row['LecTypeCcd'] == '607003')
+                                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                @endif
                                                 <div class="w-tit">
                                                     <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
                                                 </div>
@@ -429,6 +441,9 @@
                                                             <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
                                                         </dt>
                                                     </dl><br/>
+                                                    @if($subrow['LecTypeCcd'] == '607003')
+                                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                    @endif
                                                     <div class="w-tit">
                                                         <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
                                                     </div>

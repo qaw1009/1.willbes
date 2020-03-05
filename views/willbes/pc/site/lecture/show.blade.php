@@ -24,7 +24,11 @@
                 </div>
             </div>
             <div class="lec-profile p_re">
-                <div class="w-list">{{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
+                <div class="w-list">
+                    @if($data['LecTypeCcd'] === '607003')
+                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                    @endif
+                    {{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>
                 <dl class="w-info tx-dark-gray">
                     <div>학원실강의 : {{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</div>

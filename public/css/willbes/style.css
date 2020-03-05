@@ -3922,30 +3922,41 @@ table.classTable tr td img {
 
 /* subContainer : Content : 강의 > 직장인/재학생반 안내 : requestInfo2 */
 .willbes-Layer-requestInfo2 {
+    display: none;
+    background: #fff;
+    position: absolute;
+    z-index: 110;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 50px;
     top: 60px;
     left: 0;
     width: 600px;
 }
-.willbes-Layer-requestInfo .closeBtn {
+.willbes-Layer-requestInfo .closeBtn,
+.willbes-Layer-requestInfo2 .closeBtn  {
     position: absolute;
     top: -1px;
     right: -1px;
 }
-.willbes-Layer-requestInfo .Layer-Tit {
+.willbes-Layer-requestInfo .Layer-Tit,
+.willbes-Layer-requestInfo2 .Layer-Tit {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0;
-    padding: 20px 0 25px;
+    padding: 20px 0;
     border-bottom: 2px solid #000;
 }
 .willbes-Layer-requestInfo .Layer-Tit span {
     vertical-align: baseline;
 }
-.willbes-Layer-requestInfo .Layer-SubTit {
+.willbes-Layer-requestInfo .Layer-SubTit,
+.willbes-Layer-requestInfo2 .Layer-SubTit {
     font-size: 12px;
     padding: 20px 0;
 } 
-.willbes-Layer-requestInfo .Layer-SubTit li {
+.willbes-Layer-requestInfo .Layer-SubTit li,
+.willbes-Layer-requestInfo2 .Layer-SubTit li {
     list-style: disc;
     line-height: 1.4;
     margin-bottom:10px;

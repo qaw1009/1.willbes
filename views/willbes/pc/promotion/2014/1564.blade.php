@@ -16,9 +16,10 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
 
@@ -28,222 +29,287 @@
             right:0;
             display:none;
             z-index:1;
+        }       
+
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top} 
+
+        .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}        
+        .tabs {width:1120px; margin:0 auto;}
+        .tabs li {display:inline; float:left; width:25%}
+        .tabs li a {display:block; text-align:center; font-size:16px; height:80px; line-height:80px; color:#999; font-weight:bold}
+        .tabs li a:hover,
+        .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
+        .tabs:after {content:""; display:block; clear:both}             
+
+        .evt01 {background:#fff; padding:100px 0}         
+        .evt01 .dday {font-size:30px; position:absolute; top:430px; left:50%; width:940px; margin-left:-470px; text-align:center;}
+        .evt01 .dday strong {font-size:40px}
+        .evt01 .dday img {display:inline-block; margin:0 20px;
+            -webkit-animation: vibrate-1 1s linear infinite both;
+	        animation: vibrate-1 1s linear infinite both;
+        }
+        @@-webkit-keyframes vibrate-1 {
+            0% {
+                -webkit-transform: translate(0);
+                        transform: translate(0);
+            }
+            20% {
+                -webkit-transform: translate(-2px, 2px);
+                        transform: translate(-2px, 2px);
+            }
+            40% {
+                -webkit-transform: translate(-2px, -2px);
+                        transform: translate(-2px, -2px);
+            }
+            60% {
+                -webkit-transform: translate(2px, 2px);
+                        transform: translate(2px, 2px);
+            }
+            80% {
+                -webkit-transform: translate(2px, -2px);
+                        transform: translate(2px, -2px);
+            }
+            100% {
+                -webkit-transform: translate(0);
+                        transform: translate(0);
+            }
+        }
+        @@keyframes vibrate-1 {
+            0% {
+                -webkit-transform: translate(0);
+                        transform: translate(0);
+            }
+            20% {
+                -webkit-transform: translate(-2px, 2px);
+                        transform: translate(-2px, 2px);
+            }
+            40% {
+                -webkit-transform: translate(-2px, -2px);
+                        transform: translate(-2px, -2px);
+            }
+            60% {
+                -webkit-transform: translate(2px, 2px);
+                        transform: translate(2px, 2px);
+            }
+            80% {
+                -webkit-transform: translate(2px, -2px);
+                        transform: translate(2px, -2px);
+            }
+            100% {
+                -webkit-transform: translate(0);
+                        transform: translate(0);
+            }
         }
 
-        .evtTop {background:#404040; height:600px}
-        .evtTop span {font-size:200px; font-weight:bold; color:#fff; display:block; padding-top:250px;
-            -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        .evt01 .dday span {color:#3a99f0; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
+        .evt01 .btnbuy {width:940px; margin:50px auto 0}
+        .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}  
+        .evt01 .btnbuy a:hover {background:#3a99f0; 
+            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
-        @@-webkit-keyframes text-pop-up-top {
+        @@-webkit-keyframes shadow-drop-2-center {
             0% {
-                -webkit-transform: translateY(0);
-                        transform: translateY(0);
-                -webkit-transform-origin: 50% 50%;
-                        transform-origin: 50% 50%;
-                text-shadow: none;
+                -webkit-transform: translateZ(0);
+                        transform: translateZ(0);
+                -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
             }
             100% {
-                -webkit-transform: translateY(-50px);
-                        transform: translateY(-50px);
-                -webkit-transform-origin: 50% 50%;
-                        transform-origin: 50% 50%;
-                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+                -webkit-transform: translateZ(50px);
+                        transform: translateZ(50px);
+                -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
             }
         }
-        @@keyframes text-pop-up-top {
+        @@keyframes shadow-drop-2-center {
             0% {
-                -webkit-transform: translateY(0);
-                        transform: translateY(0);
-                -webkit-transform-origin: 50% 50%;
-                        transform-origin: 50% 50%;
-                text-shadow: none;
+                -webkit-transform: translateZ(0);
+                        transform: translateZ(0);
+                -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
             }
             100% {
-                -webkit-transform: translateY(-50px);
-                        transform: translateY(-50px);
-                -webkit-transform-origin: 50% 50%;
-                        transform-origin: 50% 50%;
-                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+                -webkit-transform: translateZ(50px);
+                        transform: translateZ(50px);
+                -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
             }
         }
-        .evt01 {background:#d6e7fb; padding:150px 0}   
-        .evt01 .dday {font-size:50px}
-        .evt01 .btnbuy {margin-top:50px}
-        .evt01 .btnbuy a {border-radius:50px; display:block; width:40%; margin:0 auto; font-size:40px; background:#000; color:#fff; padding:20px 0}
         
-        .evt02 {background:#e4e4e4; padding:150px 0}
-        iframe {width:854px; height:480px; margin:0 auto}
-        .evt02 div {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px;}
-        .evt02 div span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(235,204,60,1); color:#000}
+        .evt02 {background:#f6f6f6; padding-top:100px}       
+        .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
+        .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
 
-        .evt03 {background:#696d73; padding:150px 0}
+        .evt03 {background:#fff; padding-top:100px}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
-        .evt04 {background:#f9f9f9; padding:150px 0}
-        .evt04 .columns {width:1120px; margin:0 auto; 
-            column-width:200px;
-            column-count: 4;
+        .evt04 {background:#ececec; padding:100px 0}
+        .evt04 img {border-bottom:1px solid #e4e4e4;}
+        .evt04 h4 {color:#3a99f0; font-size:18px}
+        .evt04 .columns {width:940px; margin:50px auto 0;  
+            column-count: 2;
             column-gap:20px;
         }
         .evt04 .columns div {            
             text-align:justify; font-size:14px; line-height:1.4;
             display:inline-block; 
-            padding:20px; border:1px solid #e4e4e4; border-radius:10px;
-            margin-bottom:20px; color:#666;
+            padding:20px; border:1px solid #eee; border-radius:10px;
+            margin-bottom:20px; color:#666; background:#fff;
         }
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 ul {width:1120px; margin:0 auto;}
-        .evt04 li {display:inline; float:left; width:50%}
-        .evt04 li a {display:block; font-size:20px; color:#fff; padding:30px 0; text-align:center; background:blue; line-height:1.5}
-        .evt04 li span {display:block; font-size:24px}
-        .evt04 li:last-child a{background:green; margin-left:10px}
-        .evt04 ul:after {content:""; display:block; clear:both}
 
-        .evtMenu {background:#fff;}        
-        .tabs {width:1120px; margin:0 auto; height:80px;}
-        .tabs li {display:inline; float:left; width:25%}
-        .tabs li a {display:block; text-align:center; font-size:16px; height:80px; line-height:80px; color:#999; font-weight:bold}
-        .tabs li a:hover,
-        .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
-        .tabs:after {content:""; display:block; clear:both}
+        .evt05 {background:#3a99f0; padding-bottom:100px}
+        .evt05 ul {width:940px; margin:0 auto;}
+        .evt05 li {display:inline; float:left; width:50%}
+        .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
+        .evt05 li a:hover {background:#fff; color:#000;
+            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+        .evt05 li span {display:block; font-size:28px}
+        .evt05 li:last-child a{margin-left:10px}
+        .evt05 ul:after {content:""; display:block; clear:both}        
+        
+        .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}  
+
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
-        }       
-
+        }          
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky01.png" alt="스카이베너" ></a>
-        </div>              
+        </div>                  
 
-		<div class="evtCtnsBox evtTop NSK-Black">
-            <span>김정환 대표</span>           
-        </div>
-        
-        <div class="evtCtnsBox evtMenu">
-            <ul class="tabs">
-                <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
-                <li><a href="#tab02">인플루언서</a></li>
-                <li><a href="#tab03">e커머스 강좌소개</a></li>
-                <li><a href="#tab04">BEST 수강후기</a></li>
-            </ul>
-        </div>
+		<div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
+            <div class="evtMenu">
+                <ul class="tabs">
+                    <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
+                    <li><a href="#tab02">인플루언서</a></li>
+                    <li><a href="#tab03">e커머스 강좌소개</a></li>
+                    <li><a href="#tab04">BEST 수강후기</a></li>
+                </ul>
+            </div>  
+        </div>       
 
-        <div class="evtCtnsBox evt01" id="tab01">
-            <div class="dday NSK-Thin">신청마감 <span class="NSK-Black">09 day 09:23:25</span></div>
-            <div class="btnbuy"><a href="#none">사전예약 신청하기 ></a></div>
-        </div>
-
-        <div class="evtCtnsBox evt02" id="tab02">
-            <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div>
-                안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
-                유튜브에 저의 창업 성장기를 많은 분들께<br>
-                공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
-            </div>
-        </div>      
-
-        <div class="evtCtnsBox evt03" id="tab03">
-            <div class="NSK-Thin">
-                이 강의에서는 제가 앞서 경험한 사업적 기술을 토대로 <br>
-                그간 공개한 적 없던 여러 시행착오들과 <br>
-                어려움 극복 과정을 통해 과거 저처럼 돈을 벌고 싶은데 <br>
-                방법을 몰라 막막해할 누군가에게 새로운 기회를 제공하고 싶습니다. <br>
-                <br>
-                맨땅에 헤딩만 하기보다, 우여곡절만 겪기보다, <br>
-                제대로 시작도 못하고 포기하기보다, <br>
-                적어도 돈을 벌 수 있는 발판을 마련하는 데 <br>
-                보탬이 되기를 바라는 마음으로<br>
-                <br>
-                팔리는 상세 페이지 만드는 법부터 유튜브로 <br>
-                수익 창출하는 비법은 물론, 장사의 본질을 이해하는 것과 <br>
-                사업 기초를 다지는 기술까지 안내해 드리겠습니다!<br>
+        <div id="tab01">
+            <div class="evtCtnsBox evt01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
+                <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span>9일 12:00:12</span> 남았습니다.</strong></div>
+                <div class="btnbuy NSK-Black"><a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">사전예약 신청하기 ></a></div>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt04" id="tab04">
-            <div class="columns">
-                <div>
-                    <p>김철호</p>
-                    1주 전 방송보고 설레는 마음으로 플레이 오토 대표번호로 상담 전화드렸는데 방송에 나온 분과 달리, 
-                    어떤 여자 분이 너무 퉁명스럽게 할려면 하고 말려면 말라 하는식으로 전화 받으셔서 실망하고 끊었습니다. 
-                    플레이오토도 고객응대 신경쓰셔야 겠습니다.
+        <div id="tab02">
+            <div class="evtCtnsBox evt02">
+                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="evt02Txt01">
+                    안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
+                    유튜브에 저의 창업 성장기를 많은 분들께<br>
+                    공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
                 </div>
-                <div>
-                    <p>kwang woong Park</p>
-                    이런 프로그램은 처음 봤네요 어쩐지 그많은 정보들을 한사람이 작업해서 올린다는게 
-                    쉽지않을거라고 생각했는데 좋은정보 감사합니다. 그런데 그럼 올리는 상품들은 모두 위탁상품 들인건가요?
-                </div>
-                <div>
-                    <p>박한마</p>
-                    위탁으로 올리는건데 제가 놓친것같아 질문드리자면, 주문이 들어왔을때 업체관리는 어떻게하나요? 
-                    또 저는 마진율을 보고 선정하는데 마진율이 명시돼있지않으면 업체랑 직접 연락하는데..
-                    고런 부분은 어떻게 하는지 알고싶어요ㅠㅠ
-                </div>
-                <div>
-                    <p>홍길동</p>
-                    위탁판매하려면 영상처럼 도매꾹같은곳에 있는 물건을 링크만 가져오면 되나요? 따로 도매업체와 컨택이 없어도 되는건가요?
-                </div>
-                <div>
-                    <p>BTS</p>
-                    궁금한게있는데요..생초보자의 경우 위탁 거래처를 확보하지 못한채 프로그램을 사용하고
-                     실제 판매가 이뤄지면, 세금계산서 발행방식은 어떻게 처리하는건가요? 그냥 막 긁어와서 판매해도 되는건지 진짜 몰라서 문의드립니다
-                </div>
-                <div>
-                    <p>kwang woong Park</p>
-                    이런 프로그램은 처음 봤네요 어쩐지 그많은 정보들을 한사람이 작업해서 올린다는게 
-                    쉽지않을거라고 생각했는데 좋은정보 감사합니다. 그런데 그럼 올리는 상품들은 모두 위탁상품 들인건가요?
-                </div>
-                <div>
-                    <p>박한마</p>
-                    위탁으로 올리는건데 제가 놓친것같아 질문드리자면, 주문이 들어왔을때 업체관리는 어떻게하나요? 
-                    또 저는 마진율을 보고 선정하는데 마진율이 명시돼있지않으면 업체랑 직접 연락하는데..
-                    고런 부분은 어떻게 하는지 알고싶어요ㅠㅠ
-                </div>
-                <div>
-                    <p>BTS</p>
-                    궁금한게있는데요..생초보자의 경우 위탁 거래처를 확보하지 못한채 프로그램을 사용하고
-                     실제 판매가 이뤄지면, 세금계산서 발행방식은 어떻게 처리하는건가요? 그냥 막 긁어와서 판매해도 되는건지 진짜 몰라서 문의드립니다
-                </div>
-                <div>
-                    <p>kwang woong Park</p>
-                    이런 프로그램은 처음 봤네요 어쩐지 그많은 정보들을 한사람이 작업해서 올린다는게 
-                    쉽지않을거라고 생각했는데 좋은정보 감사합니다. 그런데 그럼 올리는 상품들은 모두 위탁상품 들인건가요?
-                </div>
-                <div>
-                    <p>박한마</p>
-                    당신을 위해 기도합니다 
-                    이제 깨어날 때입니다 
-                    주안에서 평안하길♡^----^♡
-                    [뜻하신 그곳에 나 있기 원합니다. 연약한 내 영혼 통하여 일하소서...]
-                </div>
-                <div>
-                    <p>BTS</p>
-                    저번 영상 보면서도 느낀거지만..혹시 기사님 고용하셨나요...?
-                </div>
-                <div>
-                    <p>kwang woong Park</p>
-                    대박!!!    좋은 정보 정말 감사드립니다.~~매번 많이 배우고 있어요.^^
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
+            </div>   
+        </div>  
+
+        <div id="tab03">
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" ><br>
+                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="e커머스 강좌소개" ><br>
+            </div>
+        </div>
+
+        <div id="tab04">
+            <div class="evtCtnsBox evt04">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_01.png" alt="BEST 수강후기" >
+                <div class="columns">
+                    <div>
+                        <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>
+                        <p>보라도리(shin****)</p>
+                        가장 좋았던 것은 역시나 실행하는 모습이란 어떤 것인지 몸소 보여준 창업 다마고치님의 밀도 높은 강의 내용과
+                        실제로 경험했기에 전달 가능한 알고 실행하면 엄청난 이익금이 창출되는 팁들의 대방출 이었습니다.<br>
+                        각종 영상자료로 이해하기 쉽게 알차게 강의를 구성한 점이 특히 좋았습니다. 강의자료 준비에 공을 들인 것이
+                        확실히 느꼈습니다.<br>
+                        이번 강의를 통해 ‘나도 해볼 수 있겠다’는 생각이 불끈불끈 들었습니다. 그렇게 때문에 훌륭한 강의 추천할만한 강의
+                        였습니다. 엄지척 
+                    </div>  
+                    <div>
+                        <h4>알차고 뜻깊은 4시간</h4>
+                        <p>캣치사운드(catc****)</p>
+                        먼저 결론부터 말씀드리자면 저는 강의 4시간동안 알차고 뜻깊은 시간있었습니다. 
+                        거기에 반성과 후회 그리고 다짐의 시간이기도 했습니다.<br>
+                        왜 이걸 몰랐지? 난 3년동안 스마트스토어를 운영하면서 무엇을 한거지?
+                        대박을 꿈꾸면서 나 아무것도 하지도 하려고 하지않았구나?<br>
+                        난 정말 바보처럼 스마트스토어를 모르면서 운영했었구나... 강의를 듣는 매순간 순간 반성과 다짐을 했습니다.
+                        만약 창업다마고치님의 강의를 모르고 지나갔거나 20만원이 아까워 강의신청을 하지 않았더라면
+                        전 아직까지 매출없는 스마트스토어를 운영하면서 전전긍긍했을겁니다. 아니 어쩌면 포기했을수도 있습니다.
+                        창업 다마고치님의 강의를 통해 다시한번 더 천천히 다시 시작하는 마음으로 그동안 놓치고 지나간 일들을
+                        찾아 포기하지 않고 창업 다마고치님의 말씀을 믿고 실천해 나가도록 하겠습니다. 
+                    </div> 
+                    <div>
+                        <h4>닉네임 바꾸세요! 창업다마고치 X !! 창업다아라찌 O!</h4>
+                        <p>라비앙로즈(euni****)</p>
+                        강의 듣기 전에 다른분들 후기에 왜 강의에 대한 자세한 이야기가 없을까... 궁금하기도 했구요~
+                        강의 듣고 나니 그 이유를 알 것 같네요~<br>
+                        왜? 나만 알고 싶은 강의니까!<br>
+                        죄송하지만 저도 강의 내용은 발설하지 못합니다. 약오르신 분들은 꼭 다음번 강의 신청하시길 바래요.
+                        (이젠 더 바빠지셔서 다음 강의를 진행할 수 있을지는 확답할 수 없다고 하셨지만요 --;;;)<br>
+                        확실한 건 다마고치님 강의 내용을 듣고 실행한다면 20만원 아닌 200만원 이상의 가치가 있을거라는거! 
+                    </div>  
+                    <div>
+                        <h4>다마고치님 강의 아쉬움을 느꼈던 이유</h4>
+                        <p>해피(sam5****)</p>
+                        좀더 일찍 강의를 들었더라면 시간을 허비하지 않았을텐데 하는 아쉬움을 느꼈습니다.<br>
+                        강의를 들으면서 내가 뭘 모르는지도 몰랐던 부분을 알게된 것과
+                        수많은 다른 강의를 들으면서 그냥 머릿속에 떠다니기만해 답답해 하던 것들
+                        ‘그렇게 하세요’, ‘그래서 어쩌라고’하며 속상해 울상지었던 것들에 대해
+                        어느 강의에서도 들어보지 못알만큼 현실적이고 실천가능한 방법으로 알려주시는
+                        강의 내용에 놀라면서도 감사했습니다.<br>
+                        감의비는 20만원 이었지만 이것을 100배 1,000배로 만들 수 있겠다는 생각이 들었습니다! 
+                    </div> 
+                    <div>
+                        <h4>이 강의가 20만원이나해?</h4>
+                        <p>SCV 출동 준비완료(suga****)</p>
+                        요즘은 온라인 쇼핑몰 관련 강의도 많고 들어간 비용에 비해 내용이 부실한 경우가 많아
+                        처음 강의를 듣기전에는 도대체 어떤 강의이기에 20만원씩이나해? 이런 생각을 했습니다.
+                        강의를 다 듣고 나서는 이건 20만원에 해주셔서 감사해야 하는 강의라는 걸 깨달았습니다. ^^<br>
+                        그렇게 생각하게 된데에는 정말 많은 이유가 있지만 유튜브에서도 나오지 않았고 책에도 적지 못한
+                        진짜배기 정보들이 알이 꽉 찬 무 처럼 단단하게 채워져 있었다는 겁니다. <br>
+                        정말 있는 그대로 1년 동안의 경험담을 진지하면서도 유머러스하게 강의해주셔서 감동! 이었습니다.<br>
+                        그외에도 좋았던 점들이 정말 많았어요.<br>
+                        유튜브에서만 나온 내용으로만 해도 월수익 500 가능했던 시절은 끝이났다 라는 말씀에 전적으로 동의합니다.
+                        누구나 쉽게 얻을 수 있는 정보가 되어 많은 사람들이 똑같이 하고 있기에 다른 무언가가 더 필요하다고
+                        생각했습니다.<br>
+                        솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
+                        일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
+                    </div>           
                 </div>                
             </div>
-            <ul>
-                <li>
-                    <a href="#none">
-                    <span class="NSK-Black">지금, 사전예약 </span>
-                    신청하고 1억 만들기 도전! → 
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
-                    <span class="NSK-Black">이미 신청했다면,</span>
-                    위탁/사입상품 추천 받기! → 
-                    </a>
-                </li>
-            </ul>
-        </div>	
+            <div class="evtCtnsBox evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
+                <ul>
+                    <li>
+                        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">
+                        <span class="NSK-Black">지금, 사전예약 </span>
+                        신청하고 1억 만들기 도전! → 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                        <span class="NSK-Black">이미 신청했다면,</span>
+                        위탁/사입상품 추천 받기! → 
+                        </a>
+                    </li>
+                </ul>
+            </div>	
+        </div>
     </div>
     <!-- End Container -->
 
@@ -274,7 +340,6 @@
                 }
             });
         });
-
         
           /*디데이카운트다운*/
           $(document).ready(function() {

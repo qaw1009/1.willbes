@@ -543,7 +543,7 @@ class BasePromotion extends \app\controllers\FrontController
      */
     private function _predictData($predict_idx)
     {
-        $column = 'PredictIdx, MockPart';
+        $column = 'PredictIdx, MockPart, PreServiceIsUse, ServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx,'IsUse' => 'Y']];

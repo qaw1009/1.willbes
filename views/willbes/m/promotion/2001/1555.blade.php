@@ -6,11 +6,11 @@
         $step1 = 'off'; $step2 = 'off';
 
         if (empty($arr_base['predict_data']) === false) {
-            if ($arr_base['predict_data']['PreServiceSDatm'] <= $now && $arr_base['predict_data']['PreServiceEDatm'] >= $now) {
+            if ($arr_base['predict_data']['PreServiceIsUse'] == 'Y' && $arr_base['predict_data']['PreServiceSDatm'] <= $now && $arr_base['predict_data']['PreServiceEDatm'] >= $now) {
                 $step1 = 'on';
             }
 
-            if ($arr_base['predict_data']['ServiceSDatm'] <= $now && $arr_base['predict_data']['ServiceEDatm'] >= $now) {
+            if ($arr_base['predict_data']['ServiceIsUse'] == 'Y' && $arr_base['predict_data']['ServiceSDatm'] <= $now && $arr_base['predict_data']['ServiceEDatm'] >= $now) {
                 $step2 = 'on';
             }
         }

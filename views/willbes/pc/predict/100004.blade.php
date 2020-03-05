@@ -68,7 +68,7 @@
                             </select>
                             <input type="hidden" id="TakeArea" name="TakeArea" @if($mode == 'MOD') value="{{ $data['TakeArea'] }}" @endif/>
                             <span id="area1">
-                                <select title="지역구분" onChange="selArea(this.value)">
+                                <select title="지역구분" class="take_area" onChange="selArea(this.value)">
                                     <option value="">지역구분</option>
                                     @if($mode == 'NEW')
                                         @foreach($area as $val)
@@ -86,7 +86,7 @@
                                 </select>
                             </span>
                             <span id="area2" style="display:none;">
-                                <select title="지역구분" onChange="selArea(this.value,'')">
+                                <select title="지역구분" class="take_area" onChange="selArea(this.value,'')">
                                     <option value="">지역구분</option>
                                     <option value="712001" @if(empty($data['TakeArea']) === false && $data['TakeArea'] == 712001) selected @endif>서울</option>
                                 </select>
@@ -252,6 +252,11 @@
         }
 
         function selSerial(num,num2){
+            if (mode == 'NEW' && $("#TakeMockPart").val() != num) {
+                $(".take_area").val('');
+                $("#TakeArea").val('');
+            }
+
             $("#TakeMockPart").val(num);
             if(num != ''){
                 $('#GroupCcd').val(num);

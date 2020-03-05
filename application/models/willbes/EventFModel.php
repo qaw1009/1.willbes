@@ -1508,9 +1508,9 @@ class EventFModel extends WB_Model
                     'A.ElIdx' => element('event_idx', $inputData),
                     'A.IsStatus' => 'Y'
                 ],
-                'GTE' => [
-                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
-                ]
+//                'GTE' => [
+//                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+//                ]
             ];
             $event_data = $this->findEvent($arr_condition, 'promotion');
             if (empty($event_data) === true) {

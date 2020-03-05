@@ -112,6 +112,9 @@
                                 <tr>
                                     <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                     <td class="w-data tx-left">
+                                        @if($row['LecTypeCcd'] == '607003')
+                                            <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        @endif
                                         <dl class="w-info">
                                             <dt>
                                                 {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
@@ -162,6 +165,9 @@
                                 <tr>
                                     <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                     <td class="w-data tx-left pl2p">
+                                        @if($row['LecTypeCcd'] == '607003')
+                                            <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        @endif
                                         <dl class="w-info">
                                             <dt>
                                                 {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
@@ -212,6 +218,9 @@
                                 <tr>
                                     <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                     <td class="w-data tx-left">
+                                        @if($row['LecTypeCcd'] == '607003')
+                                            <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        @endif
                                         <dl class="w-info">
                                             <dt>
                                                 {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님

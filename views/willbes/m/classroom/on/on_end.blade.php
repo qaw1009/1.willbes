@@ -29,7 +29,7 @@
                     <div class="willbes-Txt NGR c_both mt20">
                         <div class="willbes-Txt-Tit NG">· 수강종료강좌 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
                         - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br>
-                        - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br>
+                        - 재수강시, 정상가에서 20% 할인된 가격으로 수강할 수 있습니다.<br>
                         - 폐강된 강좌는 재수강신청이 제공되지 않습니다.<br>
                         - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.
                     </div>
@@ -91,6 +91,9 @@
                         @forelse( $lecList as $row )
                             <tr>
                                 <td class="w-data tx-left pb-zero">
+                                    @if($row['LecTypeCcd'] == '607003')
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    @endif
                                     <dl class="w-info">
                                         <dt>
                                             {{$row['SubjectName']}}<span class="row-line">|</span>
@@ -181,6 +184,9 @@
                                 @foreach( $row['subleclist'] as $subrow )
                                     <tr>
                                         <td class="w-data tx-left pb-zero">
+                                            @if($subrow['LecTypeCcd'] == '607003')
+                                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                            @endif
                                             <dl class="w-info">
                                                 <dt>
                                                     {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님

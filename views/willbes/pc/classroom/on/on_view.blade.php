@@ -23,7 +23,12 @@
                         <div class="prof-home subBtn NSK"><a target="_blank" href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
-                        <div class="w-tit">{{$lec['subProdName']}}</div>
+                        <div class="w-tit">
+                            @if($lec['LecTypeCcd'] == '607003')
+                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                            @endif
+                            {{$lec['subProdName']}}
+                        </div>
                         <dl class="w-info tx-dark-gray">
                             <dt class="NSK ml10">
                                 <span class="nBox n1">{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</span>

@@ -19,7 +19,7 @@
                                 <div class="Tit">수강종료강좌</div>
                                 <div class="Txt">
                                     - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br/>
-                                    - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br/>
+                                    - 재수강시, 정상가에서 20% 할인된 가격으로 수강할 수 있습니다.<br/>
                                     - 폐강된 강좌는 재수강신청이 제공되지 않습니다.<br/>
                                     - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.<br>
                                 </div>
@@ -92,6 +92,9 @@
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                     </dt>
                                                 </dl><br/>
+                                                @if($row['LecTypeCcd'] == '607003')
+                                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                @endif
                                                 <div class="w-tit">
                                                     {{$row['subProdName']}}
                                                 </div>
@@ -176,6 +179,9 @@
                                                             <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
                                                         </dt>
                                                     </dl><br/>
+                                                    @if($subrow['LecTypeCcd'] == '607003')
+                                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                    @endif
                                                     <div class="w-tit">
                                                         {{$subrow['subProdName']}}
                                                     </div>

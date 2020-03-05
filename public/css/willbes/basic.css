@@ -363,7 +363,7 @@ strong {
 	vertical-align: baseline; 
 }
 .sel_disabled,
-select[disabled] {
+select[disabled] { 
   background: #eee; 
 }
 
@@ -386,7 +386,7 @@ select[disabled] {
 	font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
 }
 .NGR {
-	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; 
 }
 
 /* Basic Code */

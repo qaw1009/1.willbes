@@ -218,15 +218,15 @@
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
                                 <col style="width: 65px;">
-                                <col style="width: 575px;">
-                                <col style="width: 150px;">
-                                <col style="width: 150px;">
+                                <col>
+                                <col style="width: 120px;">
+                                <col style="width: 120px;">
                             </colgroup>
                             <thead>
                                 <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th></tr>
                                 <tr>
                                     <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
-                                    <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
+                                    <td class="w-lec tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사 [개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사 [개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사<span class="row-line">|</span></td>
                                     <td class="w-date">2018-00-00<span class="row-line">|</span></td>
                                     <td class="w-click"><strong>조회수</strong> 123</td>
                                 </tr>

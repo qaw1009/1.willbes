@@ -4228,8 +4228,9 @@ form .LeclistTable .evtTable tr td a.w-del {
 .LecViewTable .listTable tr th,
 .LecViewTable .listTable tr td {
     text-align: center;
-    line-height: 40px;
+    line-height: 1.5;
     letter-spacing: 0;
+    padding:15px 0;
 }
 .LecViewTable .listTable thead tr th,
 .LecViewTable .listTable thead tr td {
@@ -4244,7 +4245,6 @@ form .LeclistTable .evtTable tr td a.w-del {
     background: #e4e4e4;
     width: 1px;
     height: 11px;
-    margin: 14px 0;
 }
 .LecViewTable .listTable thead tr td dl dt {
     float: left;

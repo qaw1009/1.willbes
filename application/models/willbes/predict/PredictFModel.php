@@ -24,7 +24,7 @@ class PredictFModel extends WB_Model
                         ,(SELECT COUNT(*) FROM (
                             SELECT PrIdx
                             FROM lms_predict_grades_origin
-                            WHERE PredictIdx = 100003
+                            WHERE PredictIdx = '.$predict_idx.'
                             GROUP BY PrIdx) AS a
                         ) AS ScoreCnt -- 채점자
                         ,(SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = pp.SpIdx ) AS SurveyCnt -- 설문

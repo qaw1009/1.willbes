@@ -6,12 +6,12 @@
     <div class="onlecgosi">
         <div>동영상 수강신청 ▼</div>
         <div>
-            <a href="#none">5급행정</a>
-            <a href="#none">국립외교원</a>
-            <a href="#none">PSAT</a>
-            <a href="#none">5급헌법</a>
-            <a href="#none">법원행시</a>
-            <a href="#none">변호사시험</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3094">5급행정</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3095">국립외교원</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3096">PSAT</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3097">5급헌법</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3098">법원행시</a>
+            <a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3099">변호사시험</a>
         </div>
     </div>
 
@@ -28,12 +28,12 @@
 
     <div class="gosibtns">
         <ul>
-            <li><a href="#none">내강의실</a></li>
-            <li><a href="#none">신규동영상안내</a></li>
-            <li><a href="#none">무료특강(보강)</a></li>
-            <li><a href="#none">강의시간표</a></li>
-            <li><a href="#none">강의계획서</a></li>
-            <li><a href="#none">강의실배정표</a></li>
+            <li><a href="https://www.willbes.net/m/classroom/on/list/ongoing">내강의실</a></li>
+            <li><a href="https://gosi.willbes.net/support/notice/show/cate/3094?board_idx=261349">신규동영상안내</a></li>
+            <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/free">무료특강(보강)</a></li>
+            <li><a href="https://gosi.willbes.net/pass/offinfo/boardInfo/index/80">강의시간표</a></li>
+            <li><a href="https://gosi.willbes.net/pass/offinfo/boardInfo/index/109">강의계획서</a></li>
+            <li><a href="https://gosi.willbes.net/pass/offinfo/boardInfo/index/82">강의실배정표</a></li>
         </ul>
     </div>
 

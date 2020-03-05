@@ -89,7 +89,7 @@
                                 </select>
                                 <input type="hidden" id="TakeArea" name="TakeArea" @if($mode == 'MOD') value="{{ $data['TakeArea'] }}" @endif/>
                                 <span id="area1">
-                                    <select title="지역구분" onChange="selArea(this.value)">
+                                    <select title="지역구분" class="take_area" onChange="selArea(this.value)">
                                         <option value="">지역구분</option>
                                         @if($mode == 'NEW')
                                             @foreach($area as $val)
@@ -106,8 +106,8 @@
                                         @endif
                                     </select>
                                 </span>
-                                <span id="area2" style="display:none;"  onChange="selArea(this.value,'')">
-                                    <select title="지역구분">
+                                <span id="area2" style="display:none;">
+                                    <select title="지역구분" class="take_area" onChange="selArea(this.value,'')">
                                         <option value="">지역구분</option>
                                         <option value="712001" @if(empty($data['TakeArea']) === false && $data['TakeArea'] == 712001) selected @endif>서울</option>
                                     </select>
@@ -320,7 +320,7 @@
             //
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    alert(ret.ret_msg + '\n계속해서 성적을 입력해 주세요.');
+                    alert(ret.ret_msg);
                     location.reload();
                     /*location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();*/
                 }
@@ -328,6 +328,11 @@
         }
 
         function selSerial(num, num2){
+            if (mode == 'NEW' && $("#TakeMockPart").val() != num) {
+                $(".take_area").val('');
+                $("#TakeArea").val('');
+            }
+
             $("#TakeMockPart").val(num);
             if(num != ''){
                 $('#GroupCcd').val(num);

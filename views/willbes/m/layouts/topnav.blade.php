@@ -13,9 +13,17 @@
                     <span class="hidden">장바구니</span>
                 </button>
             @endif
-            <button type="button" class="mypage" onclick="document.location='{{front_app_url('/classroom/pass/index','www')}}';">
-                <span class="hidden">내강의실</span>
-            </button>
+
+            @if(in_array($__cfg['SiteCode'], ['2005', '2006']) === true)
+                {{-- 고등고시/자격증 --}}
+                <button type="button" class="mypage" onclick="document.location='{{front_app_url('/classroom/on/list/ongoing', 'www')}}';">
+                    <span class="hidden">내강의실</span>
+                </button>
+            @else
+                <button type="button" class="mypage" onclick="document.location='{{front_app_url('/classroom/pass/index','www')}}';">
+                    <span class="hidden">내강의실</span>
+                </button>
+            @endif
         </div>
         <div class="Login-List p_re">
             @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))

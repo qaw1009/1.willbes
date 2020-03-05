@@ -25,10 +25,10 @@ class Events extends \app\controllers\BaseController
         parent::__construct();
 
         // 접근 아이피 체크
-        $is_allow = $this->_checkAllowIp();
-        if ($is_allow !== true) {
-            exit($is_allow);
-        }
+//        $is_allow = $this->_checkAllowIp();
+//        if ($is_allow !== true) {
+//            exit($is_allow);
+//        }
         $this->load->library('format');
     }
 

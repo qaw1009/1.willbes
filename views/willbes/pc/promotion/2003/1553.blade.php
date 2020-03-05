@@ -21,6 +21,17 @@
         /************************************************************/
 
         .evt_top {background:#1a1318 url(https://static.willbes.net/public/images/promotion/2020/03/1553_top_bg.jpg) no-repeat center top;}	
+        .evt_top_fixed {position:fixed;top:416px;}
+        .evt_top_bar {width: 100%;display: block;z-index: 100;background-color: rgba(0, 0, 0, 0.3);}
+        .evt_top_bar ul{width: 100%;max-width: 980px;margin: 0 auto;}
+        .evt_top_bar ul li{display:inline;float:left;border-right:1px solid #fff;width:325px;}
+        .evt_top_bar ul li:first-child{border-left:1px solid #fff;}
+        .evt_top_bar ul li a{display: block;text-align:center;padding: 12px 28px 18px;font-size: 24px;font-weight: bold;line-height: 120%;letter-spacing: -1px;
+                             color: #ff967d;border-left: 1px solid #111;}
+        .evt_top_bar ul li a span{letter-spacing: 0px;color: #fff;} 
+        .evt_top_bar ul li a span.first{display:inline-block;font-size:15px;width:150px;background:red;border-radius:15px;font-weight:100;} 
+        .evt_top_bar ul li a span.second{font-size:20px;font-weight:700;} 
+        .evt_top_bar ul li a span.third{font-size:13px;font-weight:100;}   
 
         .evt_01 {background:#001751 url(https://static.willbes.net/public/images/promotion/2020/03/1553_01_bg.jpg) no-repeat center top;}
 
@@ -47,12 +58,32 @@
     <div class="p_re evtContent NSK" id="evtContainer">      
 
         <div class="evtCtnsBox evt_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_top.jpg" alt="2020 국가직 파이널" usemap="#Map1553a" border="0" />
-            <map name="Map1553a" id="Map1553a">
-                <area shape="rect" coords="28,156,372,298" href="#final_01" />
-                <area shape="rect" coords="416,158,780,298" href="#final_02" />
-                <area shape="rect" coords="820,159,1165,299" href="#final_03" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_top.jpg" alt="2020 국가직 파이널" />
+            <div class="evt_top_bar evt_top_fixed">
+                <ul>
+                    <li>
+                        <a href="#final_01">
+                            <span class="first">THE FINAL 01.</span><br>
+                            <span class="second">실전동형모의고사</span><br>
+                            <span class="third">자세히 보기 >></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#final_02">
+                            <span class="first">THE FINAL 02.</span><br>
+                            <span class="second">국어 | 영어 | 한국사 특강</span><br>
+                            <span class="third">자세히 보기 >></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#final_03">
+                            <span class="first">THE FINAL 03.</span><br>
+                            <span class="second">한덕현 영어 적중 LIVE</span><br>
+                            <span class="third">자세히 보기 >></span>
+                        </a>
+                    </li>
+			    </ul>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt_01" >

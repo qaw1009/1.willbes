@@ -263,6 +263,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchFModel $searchFModel                                       Search Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
+ * @property EventAModel $eventAModel                                           API Event Model Class
  ***************** BtoB **********************************************************************************
  * @property BtobLoginModel $btobLoginModel                                     Btob Login Model Class
  * @property BtobAdminModel $btobAdminModel                                     Btob Admin Model Class

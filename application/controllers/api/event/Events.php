@@ -32,6 +32,12 @@ class Events extends \app\controllers\BaseController
         $this->load->library('format');
     }
 
+    public function __destruct()
+    {
+        $query_log = new \LogQueryHook();
+        $query_log->logQueries();
+    }
+
     /**
      * 도매꾹 쇼핑몰 <-> 엔잡 상품주문 주문여부 검증
      * @example https://api.local.willbes.net/event/events/certDomeggookNjob?code=1813850
@@ -40,7 +46,7 @@ class Events extends \app\controllers\BaseController
     public function certDomeggookNjob()
     {
         try {
-            $order_prod_idx = $this->_req('code');
+            $cert_code = $this->_req('code');
 
             // 이벤트 상품코드
             if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
@@ -49,7 +55,7 @@ class Events extends \app\controllers\BaseController
                 $arr_prod_code = ['162745', '162746', '162747', '162748', '162787'];  // 스테이지, 실서버
             }
 
-            if (empty($order_prod_idx) === true) {
+            if (empty($cert_code) === true) {
                 throw new \Exception(null, '1001');
             }
 
@@ -57,7 +63,7 @@ class Events extends \app\controllers\BaseController
                 'EQ' => ['OP.PayStatusCcd' => '676001']     //결제 완료
             ];
 
-            $data = $this->eventAModel->findOrderByOrderProdIdx($arr_prod_code, $order_prod_idx, $arr_condition);
+            $data = $this->eventAModel->findOrderByCertCode($arr_prod_code, $cert_code, $arr_condition);
             if(empty($data) === false) {
                 $now = date('Y-m-d');
                 if($data['LecStartDate'] > $now || $data['RealLecEndDate'] < $now) {

@@ -191,10 +191,11 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th class="tx-blue tx-left" colspan="2">* 선택정보</th>
+                    <th class="tx-blue tx-left">* 선택정보</th>
+                    <th class="tx-right"><a href="#none" class="confirm">보기 ▼</a> </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="display:none" class="clicks">
                 <tr>
                     <td class="combine-Tit">이메일</td>
                     <td>

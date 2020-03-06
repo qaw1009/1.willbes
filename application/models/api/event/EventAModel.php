@@ -27,13 +27,13 @@ class EventAModel extends WB_Model
     public function findOrderByCertCode($prod_code, $cert_code, $arr_condition = [])
     {
         // 수강인증코드 분리
-        if(empty($cert_code) === false) {
-            $order_prod_idx = substr($cert_code, 0, mb_strlen($cert_code, 'utf-8') - 3);
-            $mem_idx = substr($cert_code, -3, 3).'%';
+        if(empty($cert_code) === true) {
+            return false;
         }
+        $order_prod_idx = substr($cert_code, 0, mb_strlen($cert_code, 'utf-8') - 3);
+        $mem_idx = '%'.substr($cert_code, -3, 3);
 
         $column = '
-            OP.*,
             ML.LecStartDate,
             ML.RealLecEndDate
         ';

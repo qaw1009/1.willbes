@@ -268,7 +268,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
                         <span class="NSK-Black">이미 신청했다면,</span>
                         위탁/사입상품 추천 받기! → 
                         </a>

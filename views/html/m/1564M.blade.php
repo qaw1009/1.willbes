@@ -196,10 +196,10 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
         <div class="evtMenu">
             <ul class="tabs">
-                <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
-                <li><a href="#tab02">인플루언서</a></li>
-                <li><a href="#tab03">e커머스 강좌소개</a></li>
-                <li><a href="#tab04">BEST 수강후기</a></li>
+                <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
+                <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
+                <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
             </ul>
         </div>  
     </div>       
@@ -336,31 +336,40 @@
 <!-- End Container -->
 
 <script type="text/javascript">  
-        /*스크롤고정*/
-        $(function() {
-            var nav = $('.evtMenu');
-            var navTop = nav.offset().top+100;
-            var navHeight = nav.height()+10;
-            var showFlag = false;
-            nav.css('top', -navHeight+'px');
-            $(window).scroll(function () {
-                var winTop = $(this).scrollTop();
-                if (winTop >= navTop) {
-                    if (showFlag == false) {
-                        showFlag = true;
-                        nav
-                            .addClass('fixed')
-                            .stop().animate({'top' : '0px'}, 100);
-                    }
-                } else if (winTop <= navTop) {
-                    if (showFlag) {
-                        showFlag = false;
-                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                            nav.removeClass('fixed');
-                        });
-                    }
+    /*스크롤고정*/
+    $(function() {
+        var nav = $('.evtMenu');
+        var navTop = nav.offset().top+100;
+        var navHeight = nav.height()+10;
+        var showFlag = false;
+        nav.css('top', -navHeight+'px');
+        $(window).scroll(function () {
+            var winTop = $(this).scrollTop();
+            if (winTop >= navTop) {
+                if (showFlag == false) {
+                    showFlag = true;
+                    nav
+                        .addClass('fixed')
+                        .stop().animate({'top' : '0px'}, 100);
                 }
-            });
+            } else if (winTop <= navTop) {
+                if (showFlag) {
+                    showFlag = false;
+                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
+                        nav.removeClass('fixed');
+                    });
+                }
+            }
         });
-    </script>
+    });
+
+    $(window).on('scroll', function() {
+        $('.top-tab').each(function() {
+            if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
+                $('.top-tab').removeClass('active')
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
 @stop

@@ -50,7 +50,7 @@ class Events extends \app\controllers\BaseController
 
             // 이벤트 상품코드
             if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
-                $arr_prod_code = ['158360', '158975'];  //로컬, 데브
+                $arr_prod_code = ['158360', '158975', '158751'];  //로컬, 데브
             } else {
                 $arr_prod_code = ['162745', '162746', '162747', '162748', '162787'];  // 스테이지, 실서버
             }

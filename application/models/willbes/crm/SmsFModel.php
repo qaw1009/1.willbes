@@ -49,6 +49,11 @@ class SmsFModel extends WB_Model
         '3' => '638004'
     ];
 
+    // 상품발송 문자 내용 치환 정보
+    private $_product_send_sms_msg_replace = [
+        '{{이벤트수강인증코드}}' => 'EventCertCode'
+    ];
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -395,6 +400,26 @@ class SmsFModel extends WB_Model
             return false;
         }
         return true;
-    }    
+    }
 
+    /**
+     * 상품발송 문자 내용 치환
+     * @param $inputData
+     * @return string
+     */
+    public function getProductSendSmsMsg($inputData)
+    {
+        $result_msg = '';
+        if (empty($inputData) === false) {
+            $result_msg = $inputData['SendSmsMsg'];
+            if(strpos($result_msg, '{{') !== false) {
+                foreach($this->_product_send_sms_msg_replace as $key => $val) {
+                    if(strpos($result_msg, $key) !== false && empty($inputData[$val]) === false) {
+                        $result_msg = str_replace($key, $inputData[$val], $result_msg);
+                    }
+                }
+            }
+        }
+        return $result_msg;
+    }
 }

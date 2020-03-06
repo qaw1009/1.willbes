@@ -2261,8 +2261,9 @@ class OrderFModel extends BaseOrderFModel
                 if (empty($sms_data) === false) {
                     foreach ($sms_data as $sms_row) {
                         if (empty($sms_row['SendSmsTel']) === false && empty($sms_row['SendSmsMsg']) === false) {
+                            $send_sms_msg = $this->smsFModel->getProductSendSmsMsg($sms_row);
                             //$this->sendsms->send($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel']);
-                            $this->smsFModel->addKakaoMsg($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel'], null, 'KFT');
+                            $this->smsFModel->addKakaoMsg($sess_mem_phone, str_replace(PHP_EOL, ' ', $send_sms_msg), $sms_row['SendSmsTel'], null, 'KFT');
                         }
                     }
                 }

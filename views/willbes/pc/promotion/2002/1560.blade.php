@@ -198,7 +198,7 @@
                     </table>        
                 </div>                                  
             </div>    
-            <div class="evtCtnsBox wb_05_table"style="height:350px;">           
+            <div class="evtCtnsBox wb_05_table"style="height:350px;" id="to_go">           
                 <div class="lecture_box">              
                     <p class="season">NEW</p>
                     <h3 class="title">2020년 합격대비 심화과정 종합반 - 일반경찰</h3>

@@ -1,3 +1,10 @@
+// 회원가입 선택정보
+$(function() {
+    $(".confirm").click(function(){
+        $(".clicks").toggle();
+    });
+});
+
 // 교수 페이지 nth-child(4n)
 $(function() {
     $('ul li.profList:nth-child(4n)').addClass('nth');

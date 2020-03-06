@@ -427,6 +427,7 @@ table.combineTable tr th,
 table.combineTable tr td {
     font-size: 12px;
     padding: 15px 0;
+    line-height: 1.5;
 }
 table.combineTable thead th {
     font-weight: 600;
@@ -495,6 +496,9 @@ table.combineTable ul.chkBox-Sex li input[type=radio] {
     padding: 0;
     margin: 0;
     cursor: pointer;
+}
+table.combineTable td input[type=radio] {
+    vertical-align: text-top;
 }
 table.combineTable dl dt {
     float: left;

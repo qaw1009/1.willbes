@@ -210,9 +210,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">    
+        {{--
         <div class="skybanner">
             <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_sky01.jpg" alt="스카이베너" ></a>
-        </div>       
+        </div>
+        --}}       
      
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">

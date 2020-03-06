@@ -144,7 +144,7 @@
         .evt03 {background:#fff; padding-top:100px}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
-        .evt04 {background:#ececec; padding:100px 0}
+        .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4;}
         .evt04 h4 {color:#383368; font-size:18px}
         .evt04 .columns {width:940px; margin:50px auto 0;  
@@ -268,10 +268,10 @@
                     </div>            
                 </div>                
             </div>
-            
+
             {{-- 상품바로결제 정보 --}}
             <div id="pass" style="display:none">
-                <input type="checkbox" name="y_pkg" value="162745" checked/>
+                <input type="checkbox" name="y_pkg" value="162747" checked/>
                 <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
             </div>
 

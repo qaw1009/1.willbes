@@ -344,7 +344,7 @@ class OrderListFModel extends BaseOrderFModel
      */
     public function getOrderProductAutoSmsMsg($order_no, $mem_idx, $idx_name = 'OrderNo')
     {
-        $column = 'PSM.SendTel as SendSmsTel, PSM.Memo as SendSmsMsg';
+        $column = 'PSM.SendTel as SendSmsTel, PSM.Memo as SendSmsMsg, CONCAT(OP.OrderProdIdx, RIGHT(OP.MemIdx, 3)) AS EventCertCode';
         $from = '
             from ' . $this->_table['order_product'] . ' as OP
                 inner join ' . $this->_table['order'] . ' as O

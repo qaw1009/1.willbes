@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     --}}
     function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
     {
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
         var $regi_form = $('#' + ele_id);
         var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드

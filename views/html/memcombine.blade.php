@@ -172,13 +172,14 @@
                     <td class="combine-Tit">관심정보</td>
                     <td>
                         <div class="p_re">
-                            <input name="" type="radio" value="" id="a02" /> <label for="a02">신광은경찰</label>
-                            <input name="" type="radio" value="" id="a03" class="ml10"/> <label for="a03">공무원</label>
-                            <input name="" type="radio" value="" id="a04" class="ml10"/> <label for="a04">고등고시</label>
-                            <input name="" type="radio" value="" id="a05" class="ml10"/> <label for="a05">자격증</label>
-                            <input name="" type="radio" value="" id="a06" class="ml10"/> <label for="a06">경찰간부(간부후보생)</label>
-                            <input name="" type="radio" value="" id="a07" class="ml10"/> <label for="a07">취업</label>
-                            <input name="" type="radio" value="" id="a08" class="ml10"/> <label for="a08">어학</label>
+                            <label for="a02" class="mr10"><input name="" type="radio" value="" id="a02"/> 신광은경찰</label>
+                            <label for="a03" class="mr10"><input name="" type="radio" value="" id="a03"/> 공무원</label>
+                            <label for="a04" class="mr10"><input name="" type="radio" value="" id="a04"/> 고등고시</label>
+                            <label for="a05" class="mr10"><input name="" type="radio" value="" id="a05"/> 자격증</label>
+                            <label for="a06" class="mr10"><input name="" type="radio" value="" id="a06"/> 경찰간부(간부후보생)</label>
+                            <label for="a07" class="mr10"><input name="" type="radio" value="" id="a07"/> 취업</label>
+                            <label for="a08" class="mr10"><input name="" type="radio" value="" id="a08"/> 어학</label><br>
+                            <label for="a09" class="mr10"><input name="" type="radio" value="" id="a09"/> 창업</label>
                         </div>
                     </td>
                 </tr>

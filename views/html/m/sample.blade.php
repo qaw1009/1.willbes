@@ -92,6 +92,11 @@
             <a href="{{ site_url('/home/html/m/1555M_01') }}" target="_blank">└ 기본정보입력</a>
             <a href="{{ site_url('/home/html/m/1555M_02') }}" target="_blank">└ 채점하기</a>
             <a href="{{ site_url('/home/html/m/1555M_03') }}" target="_blank">└ 성적확인</a>
+            <br><br> 
+            <a href="{{ site_url('/home/html/m/1564M') }}" target="_blank">엔잡 김정환</a>
+            <a href="{{ site_url('/home/html/m/1565M') }}" target="_blank">엔잡 황채영</a>
+            <a href="{{ site_url('/home/html/m/1566M') }}" target="_blank">엔잡 김경은</a>
+            <a href="{{ site_url('/home/html/m/1567M') }}" target="_blank">엔잡 정문진</a>
         </div>
     </li>
 </ul>

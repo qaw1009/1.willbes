@@ -476,7 +476,7 @@
                     dDayCountDownText(end_date, ele_id);
                 }, 1000);
             } else {
-                $('#'+obj_id).hide();
+                $('#'+ele_id).hide();
             }
         }
 

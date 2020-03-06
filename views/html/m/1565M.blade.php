@@ -1,11 +1,11 @@
-@extends('willbes.m.layouts.master')
+@extends('html.m.layouts.master')
 
 @section('content')
 <!-- Container -->
 <style type="text/css">
         .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}    
         .evtCtnsBox > img {width:100%; max-width:1120px;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top} 
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1565_top_bg.jpg) repeat-x left top} 
 
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
@@ -16,9 +16,9 @@
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:1rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center;}
-        .evt01 .dday strong {font-size:1.25rem;}
-        .evt01 .dday img {display:inline-block; margin:0 20px; width:30px;
+        .evt01 .dday {font-size:0.9rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center;}
+        .evt01 .dday strong {font-size:1.20rem;}
+        .evt01 .dday img {display:inline-block; margin:0 10px; width:30px;
             -webkit-animation: vibrate-1 1s linear infinite both;
 	        animation: vibrate-1 1s linear infinite both;
         }
@@ -75,24 +75,24 @@
             }
         }
 
-        .evt01 .dday span {color:#3a99f0; box-shadow:inset 0 -10px 0 rgba(0,0,0,0.1);}
+        .evt01 .dday span {color:#ff0066; box-shadow:inset 0 -10px 0 rgba(0,0,0,0.1);}
         
         
         .evt02 {background:#f6f6f6; padding-top:100px}       
-        .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
-        .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1);}
+        .evt02 .evt02Txt01 {font-size:1.1rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
+        .evt02 .evt02Txt01 span {font-size:1.3rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1); color:#000}
 
         .evt03 {background:#fff; padding-top:100px}
 
         .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#3a99f0; font-size:18px}
+        .evt04 h4 {color:#ff0066; font-size:1.1rem}
         .evt04 .columns {padding:20px;
             column-count: 1;
             column-gap:20px;
         }
         .evt04 .columns div {            
-            text-align:justify; font-size:14px; line-height:1.4;
+            text-align:justify; font-size:0.875rem; line-height:1.4;
             display:inline-block; 
             padding:20px; border:1px solid #eee; border-radius:10px;
             margin-bottom:20px; color:#666; background:#fff;
@@ -100,7 +100,7 @@
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
 
-        .evt05 {background:#3a99f0; padding-bottom:50px}
+        .evt05 {background:#ff0066; padding-bottom:50px}
         .evt05 li {display:inline; float:left; width:50%}
         .evt05 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
         .evt05 li a:hover {background:#fff; color:#000; 
@@ -123,7 +123,7 @@
         .btnbuy {width:100%; position:fixed; bottom:5px;}
         .btnbuy a {display:block; width:95%; max-width:940px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
         .btnbuy a span {font-size:1.2rem;} 
-        .btnbuy a:hover {background:#3a99f0; 
+        .btnbuy a:hover {background:#ff0066; 
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
@@ -190,28 +190,24 @@
             .evt05 {padding-bottom:100px}
         }       
     </style>
-<div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162748" checked/>
-    <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-</div>
 
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_top.jpg" alt="창업 다마고치" >    
         <div class="evtMenu">
             <ul class="tabs">
-                <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
-                <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
-                <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
+                <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
+                <li><a href="#tab02">인플루언서</a></li>
+                <li><a href="#tab03">e커머스 강좌소개</a></li>
+                <li><a href="#tab04">BEST 수강후기</a></li>
             </ul>
         </div>  
     </div>       
 
     <div id="tab01">
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
-            <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_01.jpg" alt="사전예약 이벤트" >
+            <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_img01.png" alt="시계" ><strong class="NSK-Black"><span>9일 12:00:12</span> 남았습니다.</strong></div>
         </div>
     </div>
 
@@ -223,17 +219,18 @@
                 </div>
             </div>
             <div class="evt02Txt01">
-                안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
-                유튜브에 저의 창업 성장기를 많은 분들께<br>
-                공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
+                안녕하세요. <br>
+                올해 대학을 졸업했고, 
+                대학 졸업 전 취업보단 창업을 선택해, <br>
+                무재고로 쇼핑몰 사업을 하고 있는 <span class="NSK-Black">황채영</span>입니다. 
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_02.jpg" alt="인플루언서" >
         </div>   
     </div>  
 
     <div id="tab03">
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_01.jpg" alt="e커머스 강좌소개" >
 
             <div class="video-container-box">
                 <div class="video-container">
@@ -241,15 +238,15 @@
                 </div>
             </div>
 
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_02.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_03.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_04.jpg" alt="e커머스 강좌소개" ><br>
         </div>
     </div>
 
     <div id="tab04">
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_01.png" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_04_01.png" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
                     <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>
@@ -314,11 +311,10 @@
             </div>                
         </div>
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_04_02.jpg" alt="BEST 수강후기" >
             <ul>
                 <li>
-{{--                    <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">--}}
-                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
+                    <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">
                     <span class="NSK-Black">지금, 사전예약 </span>
                     신청하고 1억 만들기 도전! → 
                     </a>
@@ -334,19 +330,13 @@
     </div>
 
     <div class="btnbuy NSK-Black">        
-{{--        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');"><span class="NSK">미리 신청하면 24%할인!</span><br>
+        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>
         사전예약 신청하기 ></a>
     </div>
 </div>
 <!-- End Container -->
 
-    <script type="text/javascript">
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDownText('{{$arr_promotion_params['edate']}}');
-        });
-
+<script type="text/javascript">  
         /*스크롤고정*/
         $(function() {
             var nav = $('.evtMenu');
@@ -373,112 +363,5 @@
                 }
             });
         });
-
-        $(window).on('scroll', function() {
-            $('.top-tab').each(function() {
-                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
-                    $('.top-tab').removeClass('active')
-                    $(this).addClass('active');
-                }
-            });
-        });
-
-        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
-        {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-
-            var $regi_form = $('#' + ele_id);
-            var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
-            var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
-            var params;
-
-            if ($is_chk.length > 0) {
-                if ($is_chk.is(':checked') === false) {
-                    alert('이용안내에 동의하셔야 합니다.');
-                    return;
-                }
-            }
-
-            if ($prod_code.length < 1) {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            {{-- 장바구니 저장 기본 파라미터 --}}
-                params = [
-                { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
-                { 'name' : '_method', 'value' : 'POST' },
-                { 'name' : 'cart_type', 'value' : cart_type },
-                { 'name' : 'learn_pattern', 'value' : learn_pattern },
-                { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
-            ];
-
-            {{-- 선택된 상품코드 파라미터 --}}
-            $prod_code.each(function() {
-                params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
-            });
-
-            {{-- 장바구니 저장 URL로 전송 --}}
-            formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
-        }
-
-        // 날짜차이 계산
-        var dDayDateDiff = {
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        };
-
-        {{--
-         * 프로모션용 디데이카운터 텍스트
-         * @@param end_date [마감일 (YYYY-MM-DD)]
-        --}}
-        function dDayCountDownText(end_date, ele_id) {
-            if(!ele_id) ele_id = 'ddayCountText';
-            var arr_end_date = end_date.split('-');
-            var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
-            var now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-            var date_left = String( dDayDateDiff.inDays(now, event_day) );
-            var hour_left = String( timeGap.getHours() );
-            var minute_left = String( timeGap.getMinutes() );
-            var second_left = String(  timeGap.getSeconds() );
-
-            if(date_left.length == 1) date_left = '0' + date_left;
-            if(hour_left.length == 1) hour_left = '0' + hour_left;
-            if(minute_left.length == 1) minute_left = '0' + minute_left;
-            if(second_left.length == 1) second_left = '0' + second_left;
-
-            if ((event_day.getTime() - now.getTime()) > 0) {
-                $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
-
-                setTimeout(function() {
-                    dDayCountDownText(end_date, ele_id);
-                }, 1000);
-            } else {
-                $('#'+ele_id).hide();
-            }
-        }
-
     </script>
 @stop

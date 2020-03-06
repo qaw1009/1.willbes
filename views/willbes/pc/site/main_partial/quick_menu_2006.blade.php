@@ -61,6 +61,13 @@
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky04.jpg" alt="학원 공지사항">
     </a>
 </div>
+@if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '309004'))
+<div class="mt5">
+    <a href="{{ site_url('/support/notice/show/cate/' . $__cfg['CateCode'] . '?board_idx=262928') }}">
+        <img src="https://static.willbes.net/public/images/promotion/main/2005_sky_200306.jpg" alt="불법공유">
+    </a>
+</div>
+@endif
 <ul>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/109?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">강의 계획서</a></li>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/80?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">강의 시간표</a></li>

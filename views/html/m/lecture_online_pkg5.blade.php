@@ -21,6 +21,7 @@
     
         <div class="willbes-Txt NGR c_both">
             <div class="willbes-Txt-Tit NG">· 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
+            <img src="http://file1.willbes.net//data/upload/popup/POPUPVALUE0005.GIF">
             - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
             - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다<br/>
             - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다<br/>

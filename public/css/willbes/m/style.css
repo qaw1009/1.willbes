@@ -1176,6 +1176,7 @@ body.memBody #Footer {
     padding: 0 20px 20px; 
     border-bottom: 1px solid #ccc;
 }
+.willbes-Txt img {max-width:100%; display: block; margin-bottom: 20px;}
 .willbes-Txt2 {
     font-size: 16px;
     line-height: 20px;

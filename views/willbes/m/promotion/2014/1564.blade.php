@@ -1,4 +1,4 @@
-@extends('html.m.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -190,16 +190,20 @@
             .evt05 {padding-bottom:100px}
         }       
     </style>
+<div id="pass" style="display: none">
+    <input type="checkbox" name="y_pkg" value="162748" checked/>
+    <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
+</div>
 
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
         <div class="evtMenu">
             <ul class="tabs">
-                <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
-                <li><a href="#tab02">인플루언서</a></li>
-                <li><a href="#tab03">e커머스 강좌소개</a></li>
-                <li><a href="#tab04">BEST 수강후기</a></li>
+                <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
+                <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
+                <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
             </ul>
         </div>  
     </div>       
@@ -313,7 +317,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
             <ul>
                 <li>
-                    <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">
+{{--                    <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">--}}
+                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
                     <span class="NSK-Black">지금, 사전예약 </span>
                     신청하고 1억 만들기 도전! → 
                     </a>
@@ -329,13 +334,14 @@
     </div>
 
     <div class="btnbuy NSK-Black">        
-        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>
+{{--        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
+        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');"><span class="NSK">미리 신청하면 24%할인!</span><br>
         사전예약 신청하기 ></a>
     </div>
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">  
+    <script type="text/javascript">
         /*스크롤고정*/
         $(function() {
             var nav = $('.evtMenu');
@@ -362,5 +368,54 @@
                 }
             });
         });
+
+        $(window).on('scroll', function() {
+            $('.top-tab').each(function() {
+                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
+                    $('.top-tab').removeClass('active')
+                    $(this).addClass('active');
+                }
+            });
+        });
+
+        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
+        {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            var $regi_form = $('#' + ele_id);
+            var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
+            var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
+            var params;
+
+            if ($is_chk.length > 0) {
+                if ($is_chk.is(':checked') === false) {
+                    alert('이용안내에 동의하셔야 합니다.');
+                    return;
+                }
+            }
+
+            if ($prod_code.length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            {{-- 장바구니 저장 기본 파라미터 --}}
+                params = [
+                { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
+                { 'name' : '_method', 'value' : 'POST' },
+                { 'name' : 'cart_type', 'value' : cart_type },
+                { 'name' : 'learn_pattern', 'value' : learn_pattern },
+                { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
+            ];
+
+            {{-- 선택된 상품코드 파라미터 --}}
+            $prod_code.each(function() {
+                params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
+            });
+
+            {{-- 장바구니 저장 URL로 전송 --}}
+            formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
+        }
+
     </script>
 @stop

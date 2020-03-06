@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
      * @@param end_date [마감일 (YYYY-MM-DD)]
     --}}
     function dDayCountDownText(end_date, ele_id) {
-        if(!obj_id) ele_id = 'ddayCountText';
+        if(!ele_id) ele_id = 'ddayCountText';
         var arr_end_date = end_date.split('-');
         var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
         var now = new Date();
@@ -154,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 dDayCountDownText(end_date, ele_id);
             }, 1000);
         } else {
-            $('#'+obj_id).hide();
+            $('#'+ele_id).hide();
         }
     }
 </script>

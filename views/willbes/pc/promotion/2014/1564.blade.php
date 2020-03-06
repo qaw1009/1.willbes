@@ -139,7 +139,7 @@
         
         .evt02 {background:#f6f6f6; padding-top:100px}       
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
-        .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
+        .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
         .evt03 {background:#fff; padding-top:100px}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
@@ -188,10 +188,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" class="active">사전예약 이벤트</a></li>
-                    <li><a href="#tab02">인플루언서</a></li>
-                    <li><a href="#tab03">e커머스 강좌소개</a></li>
-                    <li><a href="#tab04">BEST 수강후기</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
+                    <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
+                    <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                    <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>  
         </div>       
@@ -199,8 +199,9 @@
         <div id="tab01">
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
-                <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span>9일 12:00:12</span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">사전예약 신청하기 ></a></div>
+                <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+{{--                <div class="btnbuy NSK-Black"><a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">사전예약 신청하기 ></a></div>--}}
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">사전예약 신청하기 ></a></div>
             </div>
         </div>
 
@@ -292,11 +293,18 @@
                     </div>           
                 </div>                
             </div>
+            {{-- 상품바로결제 정보 --}}
+            <div id="pass" style="display: none">
+                <input type="checkbox" name="y_pkg" value="162748" checked/>
+                <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
+            </div>
+
             <div class="evtCtnsBox evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
                 <ul>
                     <li>
-                        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">
+                        {{-- <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"> --}}
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
                         <span class="NSK-Black">지금, 사전예약 </span>
                         신청하고 1억 만들기 도전! → 
                         </a>
@@ -340,10 +348,19 @@
                 }
             });
         });
-        
-          /*디데이카운트다운*/
-          $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+
+        $(window).on('scroll', function() {
+            $('.top-tab').each(function() {
+                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
+                    $('.top-tab').removeClass('active')
+                    $(this).addClass('active');
+                }
+            });
+        });
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDownText('{{$arr_promotion_params['edate']}}');
         });
     </script>
 

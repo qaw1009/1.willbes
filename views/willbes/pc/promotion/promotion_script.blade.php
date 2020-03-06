@@ -126,4 +126,35 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         var date_left = dDayDateDiff.inDays(now, event_day);
         return date_left;
     }
+
+    {{--
+     * 프로모션용 디데이카운터 텍스트
+     * @@param end_date [마감일 (YYYY-MM-DD)]
+    --}}
+    function dDayCountDownText(end_date, ele_id) {
+        if(!ele_id) ele_id = 'ddayCountText';
+        var arr_end_date = end_date.split('-');
+        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
+        var now = new Date();
+        var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
+        var date_left = String( dDayDateDiff.inDays(now, event_day) );
+        var hour_left = String( timeGap.getHours() );
+        var minute_left = String( timeGap.getMinutes() );
+        var second_left = String(  timeGap.getSeconds() );
+
+        if(date_left.length == 1) date_left = '0' + date_left;
+        if(hour_left.length == 1) hour_left = '0' + hour_left;
+        if(minute_left.length == 1) minute_left = '0' + minute_left;
+        if(second_left.length == 1) second_left = '0' + second_left;
+
+        if ((event_day.getTime() - now.getTime()) > 0) {
+            $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
+
+            setTimeout(function() {
+                dDayCountDownText(end_date, ele_id);
+            }, 1000);
+        } else {
+            $('#'+obj_id).hide();
+        }
+    }
 </script>

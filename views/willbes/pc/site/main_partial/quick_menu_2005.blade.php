@@ -13,7 +13,7 @@
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky02.jpg" alt="학원 1:1상담">
     </a>
 </div>
-@if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099'))
+@if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3099'))
 <div class="mt5">
     <a href="{{ site_url('/support/notice/show/cate/' . $__cfg['CateCode'] . '?board_idx=262920') }}">
         <img src="https://static.willbes.net/public/images/promotion/main/2005_sky_200306.jpg" alt="불법공유">

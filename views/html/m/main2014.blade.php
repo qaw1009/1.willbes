@@ -24,8 +24,7 @@
     .evtFooter {}
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
-    .btnbuy {position:fixed; width:700px; bottom:10px; left:50%; margin-left:-350px; z-index:100; text-align:center; }
-    
+    .btnbuy {position:fixed; width:calc(100% - 20px); bottom:10px; left:50%; margin-left:calc(-50% + 10px); z-index:100; text-align:center; }    
     .btnbuy a {display:block; font-size:1rem; background:#000; color:#fff; background:#000; border-radius:50px; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
     .btnbuy span {color:#3a99f0;}
     .btnbuy p {font-size:1.2rem;}

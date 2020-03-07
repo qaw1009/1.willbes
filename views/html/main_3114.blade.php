@@ -52,6 +52,7 @@
     </div>
 
     <div class="skybanner">
+        <span><img src="https://static.willbes.net/public/images/promotion/main/3114_sky00.png" alt="시계" ></span>
         <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">
         <map name="Map3114" id="Map3114">
             <area shape="rect" coords="18,372,88,481" href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />

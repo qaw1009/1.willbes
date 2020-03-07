@@ -29,7 +29,7 @@
 
     .btnbuy {width:100%; position:fixed; bottom:0; z-index:100; text-align:center; background:#000; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
     .btnbuy span {color:#3a99f0; font-size:1rem}
-    .btnbuy a {display:inline-block; font-size:1.1rem; background:#000; color:#fff; background:#3a99f0; padding:3px 10px; margin:0 10px}
+    .btnbuy a {display:inline-block; font-size:1.1rem; background:#000; color:#fff; background:#3a99f0; padding:3px 20px; margin:0 10px; border-radius:10px;}
     .btnbuy a:hover {background:#fff; color:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

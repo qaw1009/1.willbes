@@ -1,0 +1,225 @@
+/* top bar banner */
+.njob .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.njob .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.njob .topBanner p img {width:100%}
+
+/*********************************************     Main Container : cert     *********************************************/
+
+.skybanner {
+    position:fixed;
+    bottom:20px;
+    right:10px;
+    z-index:1;
+}
+.evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+.evtTop {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_top_bg.jpg) no-repeat center top;}
+.evt01 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_01_bg.jpg) no-repeat center top;}
+.evt02 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_02_bg.jpg) no-repeat center top;}
+.evt03 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_03_bg.jpg) no-repeat center top;}
+.evt04 {background:#8e959b}
+.evt05 {background:#7c8389}
+.evt06 {background:#8e959b}
+.evt07 {background:#7c8389}
+.evt08 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_08_bg.jpg) no-repeat center top;}
+.evtFooter {background:#252525}
+
+
+/* Main Container : MainVisual */
+.njob .VisualsubBox {
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;
+}
+.njob .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index:90;
+  }
+.njob .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index:90;
+}
+.njob .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
+.njob .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.njob .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.njob .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.njob .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1e6c9a !important;
+    z-index: 10;
+}
+
+.njob .Section2 {
+    background: #f7f7f7;
+}
+
+/**/
+.njob .Section .bnrSec02 li {
+    display: inline;
+    float: left;
+    margin-right: 8px;    
+}
+.njob .Section .bnrSec02 li:last-child {
+    margin:0
+}
+.njob .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/* Main Container : Prof */
+.njob .ProfBox .PBtab li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.njob .ProfBox .PBtab li a {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color:#b9b9b9;
+    height: 54px;
+    line-height: 54px;
+    border:1px solid #b9b9b9;
+    border-bottom:1px solid #5756a2;
+}
+.njob .ProfBox .PBtab li a.active {
+    color:#5756a2;
+    border:1px solid #5756a2;
+    border-bottom:1px solid #fff;
+    font-weight: 600;
+}
+.njob .ProfBox .PBtab:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.njob .tipPopup {position: absolute; left:50%; top:20px; z-index: 1; display:none}
+
+.njob .Section2 {background:#F5F5F5}
+
+.njob .Section3 {background:#242b35}
+.njob .Section3 .curriBox {position:absolute; left:50%; top:500px; margin-left:100px; z-index:10;}
+.njob .Section3 .curriBox h4 {color:#b7b7b7; font-size:18px; font-weight: bold; margin-bottom:20px}
+.njob .Section3 .curriBox ul {float:left}
+.njob .Section3 .curriBox ul li a {display:block; height: 100px; line-height: 100px; text-align:center; margin-bottom:3px; font-size:16px; color:#242b35; background:#63686f;
+    border-radius:10px 0 0 10px; width: 98px; font-weight: bold;
+}
+.njob .Section3 .curriBox ul li a:hover,
+.njob .Section3 .curriBox ul li a.active {background: #fff}
+.njob .Section3 .curriBox .curri {background:#fff; padding:20px; float:left; font-size:14px; width:300px; height: 203px; line-height: 1.4}
+.njob .Section3 .curriBox .curri li {list-style-type: disc; margin-left:15px; margin-bottom:10px}
+.njob .Section3 .curriBox .curri li:last-child {margin-bottom:0}
+.njob .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}
+.njob .Section3 span.prof {position:absolute; left:28px; top:253px; border:2px solid #000; z-index:10;}
+.njob .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
+.njob .Section3 span.txt02_309001 {position:absolute; left:50%; top:325px; margin-left:390px; z-index:10;}
+
+/* Main Container : Notice : noticeTabs */
+.njob .tabWrap.noticeWrap {
+    height: 16px;
+    border: none;
+}
+.njob .tabWrap.noticeWrap li {
+    float: left;
+    width: auto;
+    height: 16px;
+    margin-right: 10px;
+}
+.njob .tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 17px;
+    color: #c5c5c5;
+    text-align: center;
+    letter-spacing: 0;
+    border:none !important;
+    border-right:1px solid #999 !important;
+    padding-right: 10px;
+}
+.njob .tabWrap.noticeWrap li a.on {
+    height: 19px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #643fb5;
+    border:none !important;
+    border-right:1px solid #999 !important;
+}
+.njob .tabWrap.noticeWrap li:last-child a.on,
+.njob .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
+}
+.njob .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.njob .tabBox.noticeBox .List-Table {
+    width: 520px;
+}
+.njob .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.njob .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.njob .tabBox.noticeBox .List-Table li a span {
+    background: #643fb5;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+/* Main Container : cscenterBox : willbesNumber */
+.njob .willbesNumber {
+    background: #f6f6f6;
+    width: 720px;
+    padding: 30px 0 0 50px;
+    letter-spacing: normal;    
+}
+.njob .willbesNumber ul {
+    padding:0 50px;
+}
+.njob .willbesNumber ul li {   
+    margin:0;
+    vertical-align: top;
+    display: inline;
+    float:left;
+    width:50%;    
+}
+.njob .willbesNumber ul:after {
+    content:""; display:block; clear:both;
+}
+
+/* Main Container */
+.njob .tx-color {
+    color: #643fb5;
+}

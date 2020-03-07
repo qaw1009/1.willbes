@@ -5,7 +5,7 @@
 <style type="text/css">
         .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}    
         .evtCtnsBox > img {width:100%; max-width:1120px;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1567_top_bg.jpg) repeat-x left top} 
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
 
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
@@ -75,7 +75,7 @@
             }
         }
 
-        .evt01 .dday span {color:#6664ff; box-shadow:inset 0 -10px 0 rgba(0,0,0,0.1);}        
+        .evt01 .dday span {color:#00c73c; box-shadow:inset 0 -10px 0 rgba(0,0,0,0.1);}        
         
         .evt02 {background:#f6f6f6; padding-top:100px}       
         .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
@@ -98,7 +98,8 @@
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
 
-        .evt05 {background:#6664ff; padding-bottom:50px}
+        .evt05 {background:#00c73c; padding-bottom:50px}
+        .evt05 li {display:inline; float:left; width:50%}
         .evt05 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
         .evt05 li a:hover {background:#fff; color:#000; 
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -120,7 +121,7 @@
         .btnbuy {width:100%; position:fixed; bottom:5px;}
         .btnbuy a {display:block; width:95%; max-width:940px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
         .btnbuy a span {font-size:1.2rem;} 
-        .btnbuy a:hover {background:#6664ff; 
+        .btnbuy a:hover {background:#00c73c; 
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
@@ -187,13 +188,14 @@
         }       
     </style>
 <div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162746" checked/>
+    <input type="checkbox" name="y_pkg" value="162745" checked/>
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_top.jpg" alt="창업 다마고치" >    
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >    
         <div class="evtMenu">
             <ul class="tabs">
                 <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
@@ -206,8 +208,8 @@
 
     <div id="tab01">
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_01.jpg" alt="사전예약 이벤트" >
-            <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_01.jpg" alt="사전예약 이벤트" >
+            <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
         </div>
     </div>
 
@@ -219,59 +221,68 @@
                 </div>
             </div>
             <div class="evt02Txt01">
-                안녕하세요. 잘 나가는<br>
-                <span class="NSK-Black">유통선배 정문진</span>입니다. 
+                안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>
+                유튜브 채널 "단아샘TV"를 운영중인<br>
+                <span class="NSK-Black">단아샘 김경은</span>입니다. 
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_02_01.jpg" alt="인플루언서" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_02_02.jpg" alt="인플루언서" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
         </div>   
     </div>  
 
     <div id="tab03">
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_03_01.jpg" alt="e커머스 강좌소개" ><br>               
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_03_02.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_03_03.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03.jpg" alt="e커머스 강좌소개" >               
         </div>
     </div>
 
     <div id="tab04">
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_04_01.png" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_01.png" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
-                    <h4>수강생 이*경님</h4>
+                    <h4>수강생 조*정 님</h4>
                     <p></p>
-                    2주차 부터는 본격적으로 스토어운영 관련 키워드 분석과 시즌 상품 키워드에 대해 실천 팁을
-                    아낌없이 공개해주시는 강사님! 강사님 수업이 참 매력적이에요. 조용조용 할 얘기 다 하면서 웃자고 건넨 농담에 
-                    그다지 웃기지 않는 반응에 대처하는 강사님이 귀여워요.
+                    강사님 경험을 토대로 말씀해주셔서 와 닿아서 정말 좋았던 것 같아요. 또한 경쟁이 될 수 있을 수 있음에도 불구하고
+                    현재 하시는 부분까지 공개 하시면서 알려 주시더라구요! 더불어 어제까지만 해도 막막해서 어떻게 해야 고민이 많았는데
+                    덕분에 용기도 얻고 감사합니다!
                 </div>  
                 <div>
-                    <h4>수강생 김*용님</h4>
+                    <h4>수강생 김*미 님</h4>
                     <p></p>
-                    지난주 수업이 끝나고 이번 주는 혼자서 열심히 상품 등록하고 있어요.매일 꾸준히 상품에 대해 공부하면서
-                    상품 등록을 반복해야 해요. 상품 등록은 익숙하게 잘 할 수 있어요. 샵플링을 통해 등록된 상품의 주문도 들어와서
-                    발주 및 운송장 처리도 해봤어요. 아직은 주문이 많지 않아 서서히 하고 있어요.
-                    앞으로 주문이 많아 질 날을 기대하면서, 좋은 상품을 찾아봅니다.
-                    찾고 찾아 상품등록도 해보는 중입니다.
+                    여태까지 들었던 강의 중 제일 좋았던 강의였습니다. 
+                    스마트스토어가 무엇인지, 듣는 사람들이 뭘 원하는지, 정확히 알고 강의 하셨습니다. 더 많은 것들을 알려주시려 하다 보니 
+                    시간이 좀 초과는 되었지만, 하나라도 더 알려주시려 하시다 얘기가 길어지다 보니 시간이 빨리 가는 느낌이었습니다. 
+                    강의에 대한 열정과 위트까지 겸비한 최고의 강사였습니다. 이분 강의를 더 많이 듣고 싶네요.
                 </div> 
                 <div>
-                    <h4>수강생 신*한님</h4>
+                    <h4>수강생 한*희 님</h4>
                     <p></p>
-                    생각했던 것 보다 더, 기대했던 것보다 훨씬 더 내용이 알차고 좋았어요.
-                    정문진 대표님이 실제 경험에서 우러난 강의여서 더욱더 좋았답니다.
-                    다음기회에 한 번 더 들어보고 싶어요. 정문진 대표님의 동영상 강의도 찾아서 들어보려고 합니다.
-                    수고해주신 강사님게 감사한 마음을 전합니다.
-                </div>        
+                    스마트스토어에 뛰어들 의지를 강하게 주는 강의여서 굉장히 유익하고 
+                    도움이 많이 되었습니다.~! 나도 할 수 있겠다라는 생각이 드네요. 
+                    (사입 과정 설명 부분 매우 유익했어요)
+                </div>            
             </div>                
         </div>
+        {{-- 상품바로결제 정보 --}}
+        <div id="pass" style="display: none">
+            <input type="checkbox" name="y_pkg" value="162745" checked/>
+            <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
+        </div>
+
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_04_02.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_02.jpg" alt="BEST 수강후기" >
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
                     <span class="NSK-Black">지금, 사전예약 </span>
                     신청하고 1억 만들기 도전! → 
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
+                    <span class="NSK-Black">이미 신청했다면,</span>
+                    위탁/사입상품 추천 받기! → 
                     </a>
                 </li>
             </ul>

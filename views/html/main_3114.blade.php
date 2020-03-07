@@ -4,7 +4,7 @@
 <!-- Container -->
 <link href="/public/css/willbes/style_2014_3114.css?ver={{time()}}" rel="stylesheet">
 
-<div id="Container" class="Container willpass NGR c_both">
+<div id="Container" class="Container njob NGR c_both">
     <!-- site nav -->
     @include('willbes.pc.layouts.partial.site_menu')
 
@@ -54,10 +54,10 @@
     <div class="skybanner">
         <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">
         <map name="Map3114" id="Map3114">
-            <area shape="rect" coords="18,372,88,481" href="/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />
-            <area shape="rect" coords="93,371,162,483" href="/promotion/index/cate/3114/code/1566" target="_blank" alt="김경은" />
-            <area shape="rect" coords="21,488,88,600" href="/promotion/index/cate/3114/code/1567" target="_blank" alt="정문진" />
-            <area shape="rect" coords="95,489,163,601" href="/promotion/index/cate/3114/code/1565" target="_blank" alt="황채영" />
+            <area shape="rect" coords="18,372,88,481" href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />
+            <area shape="rect" coords="93,371,162,483" href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank" alt="김경은" />
+            <area shape="rect" coords="21,488,88,600" href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank" alt="정문진" />
+            <area shape="rect" coords="95,489,163,601" href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank" alt="황채영" />
         </map>
     </div>
 
@@ -84,19 +84,19 @@
     </div>
         
     <div class="evtCtnsBox evt04" id="evt04">
-        <a href="/promotion/index/cate/3114/code/1564" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_04.jpg" alt="김정환"></a>
+        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_04.jpg" alt="김정환"></a>
     </div>
 
     <div class="evtCtnsBox evt05" id="evt05">
-        <a href="/promotion/index/cate/3114/code/1566" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_05.jpg" alt="김경은"></a>
+        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_05.jpg" alt="김경은"></a>
     </div>
 
     <div class="evtCtnsBox evt06" id="evt06">
-        <a href="/promotion/index/cate/3114/code/1565" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_06.jpg" alt="황채영"></a>
+        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_06.jpg" alt="황채영"></a>
     </div>
 
     <div class="evtCtnsBox evt07" id="evt07">
-        <a href="/promotion/index/cate/3114/code/1567" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_07.jpg" alt="정문진"></a>
+        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_07.jpg" alt="정문진"></a>
     </div>
 
     <div class="evtCtnsBox evt08">

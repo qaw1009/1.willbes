@@ -16,7 +16,7 @@
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:1rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center;}
+        .evt01 .dday {font-size:1rem; position:absolute; top:40%; left:50%; width:100%; margin-left:-50%; text-align:center;}
         .evt01 .dday strong {font-size:1.25rem;}
         .evt01 .dday img {display:inline-block; margin:0 20px; width:30px;
             -webkit-animation: vibrate-1 1s linear infinite both;
@@ -161,7 +161,7 @@
         /* 태블릿 세로 */
         @@media only all and (min-width: 768px) {
             .tabs li a {font-size:16px; padding:25px 0;}
-            .evt01 .dday {font-size:1.2rem; top:42%;}
+            .evt01 .dday {font-size:1.2rem;}
             .evt01 .dday strong {font-size:1.75rem;}
             .evt01 .dday img {width:40px;}
             .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}           

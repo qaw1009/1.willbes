@@ -25,7 +25,7 @@
     .swiper-slide {background:#8e959b}
     .swiper-slide2 {background:#7c8389}
     .swiper-button-next,
-    .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:50px !important; height:50px !important; margin:0 10px}
+    .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px}
  </style>   
 
     <div id="Container" class="Container NGR c_both">

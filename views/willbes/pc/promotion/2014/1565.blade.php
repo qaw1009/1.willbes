@@ -205,7 +205,7 @@
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/v8vHoj2Cpt8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 올해 대학을 졸업했고,<br>
                     대학 졸업 전 취업보다는 창업을 선택해,<br>

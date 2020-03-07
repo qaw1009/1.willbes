@@ -207,7 +207,7 @@
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
                     유튜브에 저의 창업 성장기를 많은 분들께<br>
@@ -220,7 +220,7 @@
         <div id="tab03">
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" ><br>
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_yVIa13RFW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="e커머스 강좌소개" ><br>

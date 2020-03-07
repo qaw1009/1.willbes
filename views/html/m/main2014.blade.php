@@ -49,10 +49,10 @@
         <div class="evtCtnsBox evt04">
             <div class="MainBnrSlider swiper-container swiper-container-arrow">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_04.jpg" title=""></a></div>
-                    <div class="swiper-slide swiper-slide2"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_05.jpg" title=""></a></div>
-                    <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_06.jpg" title=""></a></div>
-                    <div class="swiper-slide swiper-slide2"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_07.jpg" title=""></a></div>
+                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_04.jpg" title=""></a></div>
+                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_05.jpg" title=""></a></div>
+                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_06.jpg" title=""></a></div>
+                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_07.jpg" title=""></a></div>
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
@@ -66,8 +66,7 @@
 
         <div class="evtCtnsBox evtFooter">
             <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_footer.jpg" title="">
-        </div> 
-       
+        </div>        
     </div>
 <!-- End Container -->
 

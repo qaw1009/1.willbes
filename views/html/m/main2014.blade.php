@@ -23,11 +23,12 @@
     .evt05 {}
     .evtFooter {}
     .swiper-button-next,
-    .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px}
-
-    .btnbuy {position:fixed; width:720px; bottom:0; left:50%; margin-left:-360px; z-index:100; text-align:center; background:#000; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
-    .btnbuy span {color:#3a99f0; font-size:1rem}
-    .btnbuy a {display:inline-block; font-size:1.2rem; background:#000; color:#fff;}
+    .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
+    .btnbuy {position:fixed; width:700px; bottom:10px; left:50%; margin-left:-350px; z-index:100; text-align:center; }
+    
+    .btnbuy a {display:block; font-size:1rem; background:#000; color:#fff; background:#000; border-radius:50px; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
+    .btnbuy span {color:#3a99f0;}
+    .btnbuy p {font-size:1.2rem;}
     .btnbuy a:hover {background:#fff; color:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -109,7 +110,10 @@
         </div>
         
         <div class="btnbuy NSK">
-            미리 신청하면 특별 <span>할인과 혜택!</span><br><a href="#evt04" class="NSK-Black">사전예약 수강신청 ></a>
+            <a href="#evt04" class="NSK">
+                미리 신청하면 특별 <span>할인과 혜택!</span>
+                <p class="NSK-Black">사전예약 수강신청 ></p>
+            </a>
         </div>
     </div>
 <!-- End Container -->

@@ -85,7 +85,7 @@
         .evt03 {background:#fff; padding-top:100px}
 
         .evt04 {background:#ececec; padding:100px 0 50px}
-        .evt04 img {border-bottom:1px solid #e4e4e4;}
+        .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
         .evt04 h4 {color:#383368; font-size:18px}
         .evt04 .columns {padding:20px;
             column-count: 1;
@@ -222,9 +222,9 @@
                 </div>
             </div>
             <div class="evt02Txt01">
-                안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
-                유튜브에 저의 창업 성장기를 많은 분들께<br>
-                공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
+                안녕하세요. 올해 대학을 졸업했고,<br>
+                대학 졸업 전 취업보다는 창업을 선택해,<br>
+                무재고로 쇼핑몰 사업을 하고 있는 <span class="NSK-Black">황채영</span>입니다. 
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_02.jpg" alt="인플루언서" >
         </div>   

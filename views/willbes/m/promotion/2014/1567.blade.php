@@ -84,7 +84,7 @@
         .evt03 {background:#fff; padding-top:100px}
 
         .evt04 {background:#ececec; padding:100px 0 50px}
-        .evt04 img {border-bottom:1px solid #e4e4e4;}
+        .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
         .evt04 h4 {color:#383368; font-size:18px}
         .evt04 .columns {padding:20px;
             column-gap:20px;

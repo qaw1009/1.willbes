@@ -6,7 +6,7 @@
 <!-- Container -->
 <style type="text/css">     
     .evtCtnsBox {width:100%; text-align:center; margin:0 auto;}
-    .evtCtnsBox img {width:100%; max-width:940px}
+    .evtCtnsBox img {width:100%; max-width:720px}
 
     .skybanner {
         position:fixed;
@@ -15,21 +15,19 @@
         z-index:1;
     }
 
-    .evtTop {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_top_bg.jpg) no-repeat center top; background-size: auto;}
-    .evt01 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_01_bg.jpg) no-repeat center top;}
-    .evt02 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_02_bg.jpg) no-repeat center top;}
-    .evt03 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_03_bg.jpg) no-repeat center top;}
-    .evt04 {background:#8e959b}
-    .evt05 {background:url(https://static.willbes.net/public/images/promotion/main/3114_standby_08_bg.jpg) no-repeat center top;}
-    .evtFooter {background:#252525}
-    .swiper-slide {background:#8e959b}
-    .swiper-slide2 {background:#7c8389}
+    .evtTop {}
+    .evt01 {}
+    .evt02 {}
+    .evt03 {}
+    .evt04 {max-width:720px; margin:0 auto}
+    .evt05 {}
+    .evtFooter {}
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px}
 
-    .btnbuy {width:100%; position:fixed; bottom:0; z-index:100; text-align:center; background:#000; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
+    .btnbuy {position:fixed; width:720px; bottom:0; left:50%; margin-left:-360px; z-index:100; text-align:center; background:#000; color:#fff; line-height:1.4; padding:20px 0; font-size:1rem;}
     .btnbuy span {color:#3a99f0; font-size:1rem}
-    .btnbuy a {display:inline-block; font-size:1.1rem; background:#000; color:#fff; background:#3a99f0; padding:3px 20px; margin:0 10px; border-radius:10px;}
+    .btnbuy a {display:inline-block; font-size:1.2rem; background:#000; color:#fff;}
     .btnbuy a:hover {background:#fff; color:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -67,28 +65,34 @@
     <div id="Container" class="Container NGR c_both">
         <!-- site nav -->
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_top_m.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_01.jpg" title="">
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_01m.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_02.jpg" title="">
         </div>    
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_02m.jpg" title="">
-        </div>    
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03.jpg" usemap="#Map3114M" title="" border="0">
+            <map name="Map3114M" id="Map3114M">
+                <area shape="rect" coords="156,715,347,895" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank" />
+                <area shape="rect" coords="363,717,571,895" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank"/>
+                <area shape="rect" coords="155,899,348,1074" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank"/>
+                <area shape="rect" coords="362,902,572,1074" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank" />
+            </map>
+            </div>    
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_03m.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_04.jpg" title="">
         </div>    
 
         <div class="evtCtnsBox evt04" id="evt04">
             <div class="MainBnrSlider swiper-container swiper-container-arrow">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_04m.jpg" title=""></a></div>
-                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_05m.jpg" title=""></a></div>
-                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_06m.jpg" title=""></a></div>
-                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_standby_07m.jpg" title=""></a></div>
+                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_06.jpg" title=""></a></div>
+                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_07.jpg" title=""></a></div>
+                    <div class="swiper-slide"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_08.jpg" title=""></a></div>
+                    <div class="swiper-slide swiper-slide2"><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_09.jpg" title=""></a></div>
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
@@ -101,11 +105,11 @@
         </div>    
 
         <div class="evtCtnsBox evtFooter">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_footer_m.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_footer.jpg" title="">
         </div>
         
         <div class="btnbuy NSK">
-            미리 신청하면 <span>특별</span> 할인과 혜택! <a href="#evt04" class="NSK-Black">사전예약 수강신청</a>
+            미리 신청하면 특별 <span>할인과 혜택!</span><br><a href="#evt04" class="NSK-Black">사전예약 수강신청 ></a>
         </div>
     </div>
 <!-- End Container -->

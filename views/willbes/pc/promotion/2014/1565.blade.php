@@ -219,7 +219,6 @@
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_01.jpg" alt="e커머스 강좌소개" ><br>               
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_02.jpg" alt="e커머스 강좌소개" ><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_03.jpg" alt="e커머스 강좌소개" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_04.jpg" alt="e커머스 강좌소개" ><br>
             </div>
         </div>

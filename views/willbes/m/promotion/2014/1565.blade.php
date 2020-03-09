@@ -16,9 +16,9 @@
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:1rem; position:absolute; top:40%; left:50%; width:100%; margin-left:-50%; text-align:center;}
-        .evt01 .dday strong {font-size:1.25rem;}
-        .evt01 .dday img {display:inline-block; margin:0 20px; width:30px;
+        .evt01 .dday {font-size:0.875rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center; letter-spacing: -1px;}
+        .evt01 .dday strong {font-size:0.9rem;}
+        .evt01 .dday img {display:inline-block; margin:0 10px; width:20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
 	        animation: vibrate-1 1s linear infinite both;
         }

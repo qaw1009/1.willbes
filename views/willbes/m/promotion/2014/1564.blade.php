@@ -16,9 +16,9 @@
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:1rem; position:absolute; top:40%; left:50%; width:100%; margin-left:-50%; text-align:center;}
-        .evt01 .dday strong {font-size:1.25rem;}
-        .evt01 .dday img {display:inline-block; margin:0 20px; width:30px;
+        .evt01 .dday {font-size:0.875rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center; letter-spacing: -1px;}
+        .evt01 .dday strong {font-size:0.9rem;}
+        .evt01 .dday img {display:inline-block; margin:0 10px; width:20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
 	        animation: vibrate-1 1s linear infinite both;
         }
@@ -95,10 +95,11 @@
             text-align:justify; font-size:14px; line-height:1.4;
             display:inline-block; 
             padding:20px; border:1px solid #eee; border-radius:10px;
-            margin-bottom:20px; color:#666; background:#fff;
+            margin-bottom:20px; color:#888; background:#fff;
         }
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+        .evt04 .columns div strong {font-size:bold; color:#333}
 
         .evt05 {background:#3a99f0; padding-bottom:50px}
         .evt05 li {display:inline; float:left; width:50%}
@@ -254,8 +255,8 @@
                 <div>
                     <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>
                     <p>보라도리(shin****)</p>
-                    가장 좋았던 것은 역시나 실행하는 모습이란 어떤 것인지 몸소 보여준 창업 다마고치님의 밀도 높은 강의 내용과
-                    실제로 경험했기에 전달 가능한 알고 실행하면 엄청난 이익금이 창출되는 팁들의 대방출 이었습니다.<br>
+                    <strong>가장 좋았던 것은 역시나 실행하는 모습이란 어떤 것인지 몸소 보여준 창업 다마고치님의 밀도 높은 강의 내용과
+                    실제로 경험했기에 전달 가능한 알고 실행하면 엄청난 이익금이 창출되는 팁들의 대방출 이었습니다.</strong><br>
                     각종 영상자료로 이해하기 쉽게 알차게 강의를 구성한 점이 특히 좋았습니다. 강의자료 준비에 공을 들인 것이
                     확실히 느꼈습니다.<br>
                     이번 강의를 통해 ‘나도 해볼 수 있겠다’는 생각이 불끈불끈 들었습니다. 그렇게 때문에 훌륭한 강의 추천할만한 강의
@@ -269,8 +270,8 @@
                     왜 이걸 몰랐지? 난 3년동안 스마트스토어를 운영하면서 무엇을 한거지?
                     대박을 꿈꾸면서 나 아무것도 하지도 하려고 하지않았구나?<br>
                     난 정말 바보처럼 스마트스토어를 모르면서 운영했었구나... 강의를 듣는 매순간 순간 반성과 다짐을 했습니다.
-                    만약 창업다마고치님의 강의를 모르고 지나갔거나 20만원이 아까워 강의신청을 하지 않았더라면
-                    전 아직까지 매출없는 스마트스토어를 운영하면서 전전긍긍했을겁니다. 아니 어쩌면 포기했을수도 있습니다.
+                    <strong>만약 창업다마고치님의 강의를 모르고 지나갔거나 20만원이 아까워 강의신청을 하지 않았더라면
+                    전 아직까지 매출없는 스마트스토어를 운영하면서 전전긍긍했을겁니다. 아니 어쩌면 포기했을수도 있습니다.</strong>
                     창업 다마고치님의 강의를 통해 다시한번 더 천천히 다시 시작하는 마음으로 그동안 놓치고 지나간 일들을
                     찾아 포기하지 않고 창업 다마고치님의 말씀을 믿고 실천해 나가도록 하겠습니다. 
                 </div> 
@@ -282,17 +283,17 @@
                     왜? 나만 알고 싶은 강의니까!<br>
                     죄송하지만 저도 강의 내용은 발설하지 못합니다. 약오르신 분들은 꼭 다음번 강의 신청하시길 바래요.
                     (이젠 더 바빠지셔서 다음 강의를 진행할 수 있을지는 확답할 수 없다고 하셨지만요 --;;;)<br>
-                    확실한 건 다마고치님 강의 내용을 듣고 실행한다면 20만원 아닌 200만원 이상의 가치가 있을거라는거! 
+                    <strong>확실한 건 다마고치님 강의 내용을 듣고 실행한다면 20만원 아닌 200만원 이상의 가치가 있을거라는거! </strong>
                 </div>  
                 <div>
                     <h4>다마고치님 강의 아쉬움을 느꼈던 이유</h4>
-                    <p>해피(sam5****)</p>
+                    <p>해피U(sam5****)</p>
                     좀더 일찍 강의를 들었더라면 시간을 허비하지 않았을텐데 하는 아쉬움을 느꼈습니다.<br>
                     강의를 들으면서 내가 뭘 모르는지도 몰랐던 부분을 알게된 것과
                     수많은 다른 강의를 들으면서 그냥 머릿속에 떠다니기만해 답답해 하던 것들
                     ‘그렇게 하세요’, ‘그래서 어쩌라고’하며 속상해 울상지었던 것들에 대해
-                    어느 강의에서도 들어보지 못알만큼 현실적이고 실천가능한 방법으로 알려주시는
-                    강의 내용에 놀라면서도 감사했습니다.<br>
+                    <strong>어느 강의에서도 들어보지 못알만큼 현실적이고 실천가능한 방법으로 알려주시는
+                    강의 내용에 놀라면서도 감사했습니다.</strong><br>
                     감의비는 20만원 이었지만 이것을 100배 1,000배로 만들 수 있겠다는 생각이 들었습니다! 
                 </div> 
                 <div>
@@ -300,7 +301,7 @@
                     <p>SCV 출동 준비완료(suga****)</p>
                     요즘은 온라인 쇼핑몰 관련 강의도 많고 들어간 비용에 비해 내용이 부실한 경우가 많아
                     처음 강의를 듣기전에는 도대체 어떤 강의이기에 20만원씩이나해? 이런 생각을 했습니다.
-                    강의를 다 듣고 나서는 이건 20만원에 해주셔서 감사해야 하는 강의라는 걸 깨달았습니다. ^^<br>
+                    <strong>강의를 다 듣고 나서는 이건 20만원에 해주셔서 감사해야 하는 강의라는 걸 깨달았습니다. ^^</strong><br>
                     그렇게 생각하게 된데에는 정말 많은 이유가 있지만 유튜브에서도 나오지 않았고 책에도 적지 못한
                     진짜배기 정보들이 알이 꽉 찬 무 처럼 단단하게 채워져 있었다는 겁니다. <br>
                     정말 있는 그대로 1년 동안의 경험담을 진지하면서도 유머러스하게 강의해주셔서 감동! 이었습니다.<br>

@@ -194,7 +194,8 @@ class SiteModel extends WB_Model
     {
         $column = '
             S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
-                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.CommPcScript, S.CommMobileScript, S.CommAppScript
+                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.MobileFooterInfo
+                , S.CommPcScript, S.CommMobileScript, S.CommAppScript
                 , S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
@@ -263,6 +264,7 @@ class SiteModel extends WB_Model
                 'HeaderInfo' => base64_encode(element('header_info', $input)),
                 'FrontCss' => element('front_css', $input),
                 'FooterInfo' => element('footer_info', $input),
+                'MobileFooterInfo' => element('mobile_footer_info', $input),
                 'CommPcScript' => base64_encode(element('comm_pc_script', $input)),
                 'CommMobileScript' => base64_encode(element('comm_mobile_script', $input)),
                 'CommAppScript' => base64_encode(element('comm_app_script', $input)),
@@ -354,6 +356,7 @@ class SiteModel extends WB_Model
                 'HeaderInfo' => base64_encode(element('header_info', $input)),
                 'FrontCss' => element('front_css', $input),
                 'FooterInfo' => element('footer_info', $input),
+                'MobileFooterInfo' => element('mobile_footer_info', $input),
                 'CommPcScript' => base64_encode(element('comm_pc_script', $input)),
                 'CommMobileScript' => base64_encode(element('comm_mobile_script', $input)),
                 'CommAppScript' => base64_encode(element('comm_app_script', $input)),

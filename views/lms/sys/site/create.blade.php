@@ -237,7 +237,7 @@
                         <input type="text" id="head_title" name="head_title" class="form-control" title="사이트 Title" value="{{ $data['HeadTitle'] }}">
                     </div>
                     <div class="col-md-4">
-                        <p class="form-control-static">ex) 공무원은 willbesgosi.net</p>
+                        <p class="form-control-static"></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -280,6 +280,13 @@
                     </label>
                     <div class="col-md-9">
                         <textarea id="footer_info" name="footer_info" class="form-control" rows="9" title="푸터영역" placeholder="">{!! $data['FooterInfo'] !!}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="mobile_footer_info">모바일 푸터영역 (HTML)
+                    </label>
+                    <div class="col-md-9">
+                        <textarea id="mobile_footer_info" name="mobile_footer_info" class="form-control" rows="9" title="모바일 푸터영역" placeholder="">{!! $data['MobileFooterInfo'] !!}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

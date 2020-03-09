@@ -8,6 +8,7 @@
     <title>{{ $__cfg['HeadTitle'] }}</title>
     <meta name="keywords" content="{{ $__cfg['MetaKeyword'] }}">
     <meta name="description" content="{{ $__cfg['MetaDesc'] }}">
+    {!! (empty($__cfg['HeaderInfo']) === true) ? ''  : base64_decode($__cfg['HeaderInfo']) !!}
     <!-- CSS -->
     <!-- Slider -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">

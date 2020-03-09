@@ -272,6 +272,8 @@
                 </ul>
             </div>	
         </div>
+
+        @include('willbes.pc.promotion.2014.promotionInfo')
     </div>
     <!-- End Container -->
 

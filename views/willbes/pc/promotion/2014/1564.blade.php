@@ -170,7 +170,7 @@
         }
         .evt05 li span {display:block; font-size:28px}
         .evt05 li:last-child a{margin-left:10px}
-        .evt05 ul:after {content:""; display:block; clear:both}        
+        .evt05 ul:after {content:""; display:block; clear:both} 
         
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}  
 
@@ -318,6 +318,8 @@
                 </ul>
             </div>	
         </div>
+
+        @include('willbes.pc.promotion.2014.promotionInfo')
     </div>
     <!-- End Container -->
 

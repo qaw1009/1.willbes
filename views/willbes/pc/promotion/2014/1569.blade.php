@@ -1,11 +1,12 @@
-@extends('willbes.pc.layouts.master_no_topnav')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
-    <!-- Container -->
+    <!-- Container -->  
     <link href="/public/css/willbes/style_2014_3114.css?ver={{time()}}" rel="stylesheet">
 
     <div id="Container" class="Container njob NGR c_both">
         <!-- site nav -->
+        @include('willbes.pc.layouts.partial.site_menu')        
 
         <div class="skybanner">
             <span><img src="https://static.willbes.net/public/images/promotion/main/3114_sky00.png" alt="시계" ></span>

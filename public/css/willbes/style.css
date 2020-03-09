@@ -40,8 +40,6 @@
 @import url("style_willpass.css"); /*취업*/
 
 
-
-
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
@@ -3951,7 +3949,8 @@ table.classTable tr td img {
     padding: 20px 0;
     border-bottom: 2px solid #000;
 }
-.willbes-Layer-requestInfo .Layer-Tit span {
+.willbes-Layer-requestInfo .Layer-Tit span,
+.willbes-Layer-requestInfo2 .Layer-Tit span {
     vertical-align: baseline;
 }
 .willbes-Layer-requestInfo .Layer-SubTit,

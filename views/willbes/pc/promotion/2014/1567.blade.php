@@ -148,7 +148,6 @@
         .evt04 img {border-bottom:1px solid #e4e4e4;}
         .evt04 h4 {color:#383368; font-size:18px}
         .evt04 .columns {width:940px; margin:50px auto 0;  
-            column-count: 2;
             column-gap:20px;
         }
         .evt04 .columns div {            
@@ -205,7 +204,7 @@
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/JhujfOGVPks" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 잘 나가는<br>
                     <span class="NSK-Black">유통선배 정문진</span>입니다. 
@@ -272,6 +271,8 @@
                 </ul>
             </div>	
         </div>
+
+        @include('willbes.pc.promotion.2014.promotionInfo')
     </div>
     <!-- End Container -->
 

@@ -198,7 +198,7 @@
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" target="_blank">사전예약 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">사전예약 신청하기 ></a></div>
             </div>
         </div>
 
@@ -263,7 +263,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_04_02.jpg" alt="BEST 수강후기" >
                 <ul>
                     <li>
-                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" target="_blank">
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
                         <span class="NSK-Black">지금, 사전예약 </span>
                         신청하고 1억 만들기 도전! → 
                         </a>

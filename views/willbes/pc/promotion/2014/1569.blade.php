@@ -8,12 +8,13 @@
         <!-- site nav -->
 
         <div class="skybanner">
+            <span><img src="https://static.willbes.net/public/images/promotion/main/3114_sky00.png" alt="시계" ></span>
             <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">
             <map name="Map3114" id="Map3114">
-                <area shape="rect" coords="18,372,88,481" href="/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />
-                <area shape="rect" coords="93,371,162,483" href="/promotion/index/cate/3114/code/1566" target="_blank" alt="김경은" />
-                <area shape="rect" coords="21,488,88,600" href="/promotion/index/cate/3114/code/1567" target="_blank" alt="정문진" />
-                <area shape="rect" coords="95,489,163,601" href="/promotion/index/cate/3114/code/1565" target="_blank" alt="황채영" />
+                <area shape="rect" coords="18,313,88,422" href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />
+                <area shape="rect" coords="93,312,162,424" href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank" alt="김경은" />
+                <area shape="rect" coords="20,428,87,540" href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank" alt="정문진" />
+                <area shape="rect" coords="93,427,161,539" href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank" alt="황채영" />
             </map>
         </div>
 

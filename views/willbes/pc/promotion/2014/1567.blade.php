@@ -148,7 +148,6 @@
         .evt04 img {border-bottom:1px solid #e4e4e4;}
         .evt04 h4 {color:#383368; font-size:18px}
         .evt04 .columns {width:940px; margin:50px auto 0;  
-            column-count: 2;
             column-gap:20px;
         }
         .evt04 .columns div {            

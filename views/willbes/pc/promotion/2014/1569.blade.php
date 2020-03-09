@@ -60,10 +60,6 @@
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_08.jpg" alt="사전 예약시 파격혜택 제공">
         </div>
-
-        <div class="evtCtnsBox evtFooter">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_footer.jpg" alt="윌비스">
-        </div>
     </div>
     <!-- End Container -->
 @stop

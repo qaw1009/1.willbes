@@ -193,6 +193,14 @@
                                 </div>
                             </div>
                         @endif
+                        @if($is_unpaid === false)
+                            <div class="form-group">
+                                <label class="control-label col-md-1 pl-20">종합반수강번호</label>
+                                <div class="col-md-7">
+                                    <input type="text" name="pack_cert_no" class="form-control input-sm" title="종합반수강번호" value="" style="width: 140px;"/>
+                                </div>
+                            </div>
+                        @endif
                         <div class="form-group pt-5 pb-5">
                             <div class="col-md-12 form-inline">
                                 <input type="checkbox" id="is_unpaid" name="is_unpaid" class="flat" value="Y" {!! $is_unpaid === true ? 'checked="checked"' : '' !!} title="미수금액납부여부"/> <label for="is_unpaid" class="input-label">미수금액 납부 여부</label>

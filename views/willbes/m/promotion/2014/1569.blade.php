@@ -97,11 +97,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </div>    
-
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_08m.jpg" title="">
-        </div>    
+        </div>
 
         <div class="evtCtnsBox evtFooter">
             <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_footer.jpg" title="">

@@ -41,7 +41,7 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminReasonCcd, O.AdminEtcReason, O.RegAdminIdx, if(O.RegAdminIdx is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
-                    , O.CompleteDatm, O.OrderDatm, OOI.CertNo
+                    , O.CompleteDatm, O.OrderDatm, OOI.CertNo, OOI.PackCertNo
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm 
@@ -89,7 +89,7 @@ class OrderListModel extends BaseOrderModel
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
-            , O.AdminEtcReason, O.CompleteDatm, O.OrderDatm, OOI.CertNo
+            , O.AdminEtcReason, O.CompleteDatm, O.OrderDatm, OOI.CertNo, OOI.PackCertNo
             , OP.RealPayPrice, OP.IsUseCoupon, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate
             , OP.UpdDatm                       
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
@@ -228,6 +228,15 @@ class OrderListModel extends BaseOrderModel
                         on PL.SubjectIdx = PS.SubjectIdx and PS.IsStatus = "Y"';
                 $column .= ', PL.SubjectIdx, PS.SubjectName';
                 $excel_column .= ', PS.SubjectName';
+            }
+
+            // 과정 정보 추가
+            if (in_array('course', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['course'] . ' as PCO
+                        on PL.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"';
+                $column .= ', PL.CourseIdx, PCO.CourseName';
+                $excel_column .= ', PCO.CourseName';
             }
 
             // 교수 정보 추가
@@ -671,20 +680,35 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * 최초 주문미수금 수강증번호 조회
+     * 연결된 전체 주문미수금 주문식별자 조회
+     * @param $order_idx
+     * @return array
+     */
+    public function getOrderIdxRelatedOrderUnPaidHist($order_idx)
+    {
+        $column = 'B.OrderIdx';
+        $arr_condition = ['EQ' => ['A.OrderIdx' => get_var($order_idx, 0)]];
+
+        $data = $this->_conn->getJoinListResult($this->_table['order_unpaid_hist'] . ' as A', 'inner', $this->_table['order_unpaid_hist'] . ' as B'
+            , 'A.UnPaidIdx = B.UnPaidIdx'
+            , $column, $arr_condition);
+
+        return array_pluck($data, 'OrderIdx');
+    }
+
+    /**
+     * 최초 주문미수금 추가정보(수강증번호, 종합반수강번호) 조회
      * @param $unpaid_idx
      * @return mixed
      */
-    public function getCertNoFirstOrderUnPaidInfo($unpaid_idx)
+    public function getOtherInfoFirstOrderUnPaidInfo($unpaid_idx)
     {
-        $column = 'ifnull(OOI.CertNo, "") as CertNo';
+        $column = 'ifnull(OOI.CertNo, "") as CertNo, PackCertNo';
         $arr_condition = ['EQ' => ['OUH.UnPaidIdx' => get_var($unpaid_idx, 0), 'OUH.UnPaidUnitNum' => '1']];
 
-        $data = $this->_conn->getJoinFindResult($this->_table['order_unpaid_hist'] . ' as OUH', 'left', $this->_table['order_other_info'] . ' as OOI'
+        return $this->_conn->getJoinFindResult($this->_table['order_unpaid_hist'] . ' as OUH', 'left', $this->_table['order_other_info'] . ' as OOI'
             , 'OUH.OrderIdx = OOI.OrderIdx'
             , $column, $arr_condition);
-
-        return element('CertNo', $data);
     }
 
     /**
@@ -816,6 +840,49 @@ class OrderListModel extends BaseOrderModel
         $data = $this->_conn->query('select ' . $column . $from, [$prod_code, $arr_prod_code_sub, $pack_sel_cnt])->result_array();
 
         return empty($data) === true ? true : '선택과목은 과정별 ' . $pack_sel_cnt . '과목 이하로만 선택 가능합니다.';
+    }
+
+    /**
+     * 학원종합반 서브강좌 강사배정 로그 (강사배정 전용)
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @return mixed
+     */
+    public function getOffPackSubLectureAssignLog($order_idx, $order_prod_idx)
+    {
+        $vw_off_lecture = 'vw_product_off_lecture';     // 학원단과 뷰 테이블
+        $column = 'LAP.ActLogIdx, LAP.RegAdminIdx, LAP.RegMemIdx, LAP.RegDatm
+            , ifnull(M.MemName, A.wAdminName) as RegName
+            , (select CONCAT("[", GROUP_CONCAT(JSON_OBJECT(
+                        "ProdCode", ProdCode,
+                        "ProdName", ProdName,
+                        "CourseName", CourseName,
+                        "SubjectName", SubjectName,
+                        "wProfName", wProfName
+                    )), "]") 
+                from ' . $vw_off_lecture . '
+                where FIND_IN_SET(ProdCode, LAP.ActContent) > 0
+                    and SiteCode = O.SiteCode
+              ) as SubLectureData        
+        ';
+        $from = '
+            from ' . $this->_table['order_product_activity_log'] . ' as LAP
+                inner join ' . $this->_table['order'] . ' as O
+                    on LAP.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['member'] . ' as M
+                    on LAP.RegMemIdx = M.MemIdx and LAP.RegMemIdx is not null
+                left join ' . $this->_table['admin'] . ' as A
+                    on LAP.RegAdminIdx = A.wAdminIdx and LAP.RegAdminIdx is not null                    
+            where LAP.ActType = "ProfAssign"
+                and LAP.OrderIdx = ?
+                and LAP.OrderProdIdx = ?
+            order by LAP.ActLogIdx desc        
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx]);
+
+        return $query->result_array();
     }
 
     /**

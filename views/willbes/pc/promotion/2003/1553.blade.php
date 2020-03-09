@@ -20,18 +20,19 @@
 
         /************************************************************/
 
-        .evt_top {background:#1a1318 url(https://static.willbes.net/public/images/promotion/2020/03/1553_top_bg.jpg) no-repeat center top;}	
-        .evt_top_fixed {position:fixed;top:416px;}
-        .evt_top_bar {width: 100%;display: block;z-index: 100;background-color: rgba(0, 0, 0, 0.3);}
-        .evt_top_bar ul{width: 100%;max-width: 980px;margin: 0 auto;}
-        .evt_top_bar ul li{display:inline;float:left;border-right:1px solid #fff;width:325px;}
-        .evt_top_bar ul li:first-child{border-left:1px solid #fff;}
-        .evt_top_bar ul li a{display: block;text-align:center;padding: 12px 28px 18px;font-size: 24px;font-weight: bold;line-height: 120%;letter-spacing: -1px;
-                             color: #ff967d;border-left: 1px solid #111;}
-        .evt_top_bar ul li a span{letter-spacing: 0px;color: #fff;} 
-        .evt_top_bar ul li a span.first{display:inline-block;font-size:15px;width:150px;background:red;border-radius:15px;font-weight:100;} 
-        .evt_top_bar ul li a span.second{font-size:20px;font-weight:700;} 
-        .evt_top_bar ul li a span.third{font-size:13px;font-weight:100;}   
+        .evt_top01 {background:#1a1318 url(https://static.willbes.net/public/images/promotion/2020/03/1553_top01_bg.jpg) no-repeat center top;}        
+        .evt_top02 {background:#1a1318 url(https://static.willbes.net/public/images/promotion/2020/03/1553_top02_bg.jpg) no-repeat center top;}
+        .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}        
+        .tabs {width:1120px; margin:0 auto;}
+        .tabs li {display:inline; float:left; width:33.33%}
+        .tabs li a {display:block; text-align:center; font-size:16px; height:80px; line-height:80px; color:#999; font-weight:bold}
+        .tabs li a:hover,
+        .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
+        .tabs:after {content:""; display:block; clear:both}                       
+        .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
+            background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
+        }                
+        .evt_top03 {background:#1a1318 url(https://static.willbes.net/public/images/promotion/2020/03/1553_top03_bg.jpg) no-repeat center top;}    
 
         .evt_01 {background:#001751 url(https://static.willbes.net/public/images/promotion/2020/03/1553_01_bg.jpg) no-repeat center top;}
 
@@ -57,40 +58,29 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">      
 
-        <div class="evtCtnsBox evt_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_top.jpg" alt="2020 국가직 파이널" />
-            <div class="evt_top_bar evt_top_fixed">
-                <ul>
-                    <li>
-                        <a href="#final_01">
-                            <span class="first">THE FINAL 01.</span><br>
-                            <span class="second">실전동형모의고사</span><br>
-                            <span class="third">자세히 보기 >></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#final_02">
-                            <span class="first">THE FINAL 02.</span><br>
-                            <span class="second">국어 | 영어 | 한국사 특강</span><br>
-                            <span class="third">자세히 보기 >></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#final_03">
-                            <span class="first">THE FINAL 03.</span><br>
-                            <span class="second">한덕현 영어 적중 LIVE</span><br>
-                            <span class="third">자세히 보기 >></span>
-                        </a>
-                    </li>
-			    </ul>
-            </div>
-        </div>
+        <div class="evtCtnsBox evt_top01" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_top01.jpg" alt="선택이 아닌 필수" />
+        </div>    
+        <div class="evtCtnsBox evt_top02" >         
+            <div class="evtMenu">
+                <ul class="tabs">
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab active">실전 동형 모의고사</a></li>
+                    <li><a href="#tab02" data-tab="tab02" class="top-tab">국어|영어|한국사 특강</a></li>
+                    <li><a href="#tab03" data-tab="tab03" class="top-tab">한덕현 영어 적중 LIVE</a></li>                   
+                </ul>
+            </div>         
+        </div> 
+        <div class="evtCtnsBox evt_top03" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_top03.jpg" alt="합격의 주인공은 바로 여러분" />
+        </div> 
+    
+       
 
         <div class="evtCtnsBox evt_01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_01.jpg" alt="마지막 전략" />
         </div>
 
-        <div class="evtCtnsBox evt_02" id="final_01" >
+        <div class="evtCtnsBox evt_02" id="tab01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_02.jpg" alt="실전동형모의고사" />
         </div>
 
@@ -101,7 +91,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox evt_04" id="final_02" >
+        <div class="evtCtnsBox evt_04" id="tab02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_04.jpg" alt="국.영.사 특강" />
             <div class="evt_04_hover">
                 <div class="evt_04_list">
@@ -139,7 +129,7 @@
             </map> 
         </div>
 
-        <div class="evtCtnsBox evt_06" id="final_03" >
+        <div class="evtCtnsBox evt_06" id="tab03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1553_06.jpg" alt="한덕현 영어 커밍쑨" />
         </div>
 
@@ -150,4 +140,41 @@
     </div>
     <!-- End Container -->
 
+    <script type="text/javascript">
+        /*스크롤고정*/
+        $(function() {
+            var nav = $('.evtMenu');
+            var navTop = nav.offset().top+100;
+            var navHeight = nav.height()+10;
+            var showFlag = false;
+            nav.css('top', -navHeight+'px');
+            $(window).scroll(function () {
+                var winTop = $(this).scrollTop();
+                if (winTop >= navTop) {
+                    if (showFlag == false) {
+                        showFlag = true;
+                        nav
+                            .addClass('fixed')
+                            .stop().animate({'top' : '0px'}, 100);
+                    }
+                } else if (winTop <= navTop) {
+                    if (showFlag) {
+                        showFlag = false;
+                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
+                            nav.removeClass('fixed');
+                        });
+                    }
+                }
+            });
+        });
+
+        $(window).on('scroll', function() {
+            $('.top-tab').each(function() {
+                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
+                    $('.top-tab').removeClass('active')
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
 @stop

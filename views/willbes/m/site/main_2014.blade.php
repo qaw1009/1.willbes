@@ -24,7 +24,7 @@
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
 
-    .btnbuy {position:fixed; width:100%; bottom:10px; left:0; z-index:100; text-align:center; }    
+    .btnbuy {position:fixed; width:100%; bottom:10px; left:0; z-index:1; text-align:center; }    
     .btnbuy a {display:block; font-size:1rem; color:#fff; background:#000; border-radius:50px; line-height:1.4; padding:20px 0; max-width:720px; margin:0 auto; font-size:1rem;}
     .btnbuy span {color:#3a99f0;}
     .btnbuy p {font-size:1.2rem;}

@@ -113,8 +113,6 @@
                 <p class="NSK-Black">사전예약 수강신청 ></p>
             </a>
         </div>
-
-        @include('willbes.m.promotion.2014.promotionInfo')
     </div>
 <!-- End Container -->
 

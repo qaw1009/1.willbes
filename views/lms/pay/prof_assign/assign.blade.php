@@ -130,10 +130,19 @@
             <p class="pl-5"><i class="fa fa-check-square-o"></i> 강사배정</p>
         </div>
         <div class="col-md-12">
-            <ul class="nav nav-tabs bar_tabs mb-10" role="tablist">
-                <li role="presentation" class="active"><a href="#tab_ess" role="tab" data-toggle="tab">필수과목</a></li>
-                <li role="presentation"><a href="#tab_choice" role="tab" data-toggle="tab">선택과목 (과정별 {{ $data['PackSelCount'] }}과목 선택가능)</a></li>
-            </ul>
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="nav nav-tabs bar_tabs mb-10" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_ess" role="tab" data-toggle="tab">필수과목</a></li>
+                        <li role="presentation"><a href="#tab_choice" role="tab" data-toggle="tab">선택과목 (과정별 {{ $data['PackSelCount'] }}과목 선택가능)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 text-right pt-20">
+                    <button type="button" name="_btn_prof_assign_log" class="btn btn-sm btn-success mr-0">강사변경내역</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
             <div class="tab-content">
                 @foreach($sub_prod_data as $key => $prod_data)
                     <div id="tab_{{ $key }}" class="tab-pane {{ $key == 'ess' ? 'active' : '' }}">
@@ -225,6 +234,21 @@
             // 과목 선택 체크박스 클릭
             $_assign_form.on('ifChecked', '.prod-code-sub', function() {
                 iCheckOnly($_assign_form.find('input[name="' + $(this).prop('name') + '"]'), $(this).val());
+            });
+
+            // 강사변경내역 버튼 클릭
+            $_assign_form.on('click', 'button[name="_btn_prof_assign_log"]', function() {
+                $('button[name="_btn_prof_assign_log"]').setLayer({
+                    'url' : '{{ site_url('/pay/offProfAssign/assignLog/') }}',
+                    'width' : 900,
+                    'height' : 600,
+                    'modal_id' : 'profAssignLog',
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : $_assign_form.find('input[name="order_idx"]').val(), 'required' : true },
+                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : $_assign_form.find('input[name="order_prod_idx"]').val(), 'required' : true }
+                    ]
+                });
             });
 
             // 수강증 출력 버튼 클릭

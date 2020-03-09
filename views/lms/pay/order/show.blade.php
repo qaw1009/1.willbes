@@ -102,7 +102,7 @@
                         </tr>
                         @if(in_array($_order_type, ['offvisitpackage']) === true)
                             {{-- 종합반수강접수에서만 종합반수강번호 노출 --}}
-                            {{--<tr>
+                            <tr>
                                 <th class="bg-odd">종합반수강번호</th>
                                 <td class="bg-white-only" colspan="5">
                                     <form class="form-horizontal form-label-left" id="pack_cert_no_form" name="pack_cert_no_form" method="POST" onsubmit="return false;" novalidate>
@@ -115,7 +115,7 @@
                                         </div>
                                     </form>
                                 </td>
-                            </tr>--}}
+                            </tr>
                         @endif
                         </tbody>
                     </table>

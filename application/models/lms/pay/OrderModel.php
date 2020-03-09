@@ -1896,15 +1896,15 @@ class OrderModel extends BaseOrderModel
 
             // 주문추가정보(학원수강증번호) 등록
             if ($is_unpaid == 'Y' && empty($unpaid_idx) === false) {
-                // 최초 미수금주문 수강증번호 조회
-                $cert_no = $this->orderListModel->getCertNoFirstOrderUnPaidInfo($unpaid_idx);
-                if (empty($cert_no) === true) {
-                    throw new \Exception('수강증번호 조회에 실패했습니다.');
+                // 최초 미수금주문 수강증번호, 종합반수강번호 조회
+                $other_info = $this->orderListModel->getOtherInfoFirstOrderUnPaidInfo($unpaid_idx);
+                if (empty($other_info) === true) {
+                    throw new \Exception('주문추가정보 조회에 실패했습니다.');
                 }
 
-                $is_add_other_info = $this->addOrderOtherInfo($order_idx, false, ['CertNo' => $cert_no]);
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, false, ['CertNo' => $other_info['CertNo'], 'PackCertNo' => $other_info['PackCertNo']]);
             } else {
-                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true);
+                $is_add_other_info = $this->addOrderOtherInfo($order_idx, true, ['PackCertNo' => element('pack_cert_no', $input, null)]);
             }
 
             if ($is_add_other_info !== true) {
@@ -1962,6 +1962,7 @@ class OrderModel extends BaseOrderModel
             $disc_type = element('disc_type', $input, 'R');
             $disc_reason = element('disc_reason', $input, null);
             $disc_price = $order_price - $real_pay_price;
+            $pack_cert_no = element('pack_cert_no', $input, null);  // 종합반수강번호
             $is_unpaid = element('is_unpaid', $input, 'N'); // 미수금액납부여부
             $unpaid_data = []; // 주문미수금정보 등록 데이터
 
@@ -2081,6 +2082,14 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
+            // 주문추가정보 종합반수강번호 등록
+            if (empty($pack_cert_no) === false) {
+                $is_pack_cert_no = $this->_replacePackCertNoInOrderOtherInfo($order_idx, $pack_cert_no, true);
+                if ($is_pack_cert_no !== true) {
+                    throw new \Exception($is_pack_cert_no);
+                }
+            }
+
             $this->_conn->trans_commit();
 
             // 주문상품 자동문자 발송 (리턴결과 처리안함)
@@ -2185,21 +2194,98 @@ class OrderModel extends BaseOrderModel
             $def_cert_no = '400000';    // 디폴트 수강증번호
 
             if ($is_add_cert_no === true) {
-                $query = /** @lang text */ 'insert into ' . $this->_table['order_other_info'] . ' (OrderIdx, CertNo)
-                    select ?, ifnull(max(cast(CertNo as int)) + 1, ?) from ' . $this->_table['order_other_info'] . ' where CertNo != "" limit 1';
-                $is_add_other_info = $this->_conn->query($query, [
-                    $order_idx, $def_cert_no
+                $query = /** @lang text */ 'insert into ' . $this->_table['order_other_info'] . ' (OrderIdx, CertNo, PackCertNo)
+                    select ?, ifnull(max(cast(CertNo as int)) + 1, ?), ? from ' . $this->_table['order_other_info'] . ' where CertNo != "" limit 1';
+                $is_add_other_info = $this->_conn->query($query, [$order_idx, $def_cert_no
+                    , element('PackCertNo', $input, null)
                 ]);
             } else {
                 $data = [
                     'OrderIdx' => $order_idx,
-                    'CertNo' => element('CertNo', $input, '')
+                    'CertNo' => element('CertNo', $input, ''),
+                    'PackCertNo' => element('PackCertNo', $input, null)
                 ];
                 $is_add_other_info = $this->_conn->set($data)->insert($this->_table['order_other_info']);
             }
 
             if ($is_add_other_info === false) {
                 throw new \Exception('주문추가정보 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 종합반수강번호 등록/수정
+     * @param int $order_idx [주문식별자]
+     * @param string $pack_cert_no [종합반수강번호]
+     * @param bool $is_only [단독여부 (미수금주문 조회가 불필요할 경우 : true)]
+     * @return array|bool
+     */
+    public function replacePackCertNoInOrderOtherInfo($order_idx, $pack_cert_no, $is_only = false)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $is_replace = $this->_replacePackCertNoInOrderOtherInfo($order_idx, $pack_cert_no, $is_only);
+            if ($is_replace !== true) {
+                throw new \Exception($is_replace);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 종합반수강번호 등록/수정
+     * @param int $order_idx [주문식별자]
+     * @param string $pack_cert_no [종합반수강번호]
+     * @param bool $is_only [단독여부 (미수금주문 조회가 불필요할 경우 : true)]
+     * @return bool|string
+     */
+    public function _replacePackCertNoInOrderOtherInfo($order_idx, $pack_cert_no, $is_only = false)
+    {
+        try {
+            if (empty($order_idx) === true || empty($pack_cert_no) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if ($is_only === true) {
+                // 전달받은 주문식별자만 수정
+                $arr_order_idx = [$order_idx];
+            } else {
+                // 주문식별자 기준으로 관련된 미수금 주문식별자 조회, 연관 미수금 주문 모두 수정
+                $arr_order_idx = $this->orderListModel->getOrderIdxRelatedOrderUnPaidHist($order_idx);
+
+                // 미수금 주문이 아닌 경우 전달받은 주문식별자만 수정
+                if (empty($arr_order_idx) === true) {
+                    $arr_order_idx = [$order_idx];
+                }
+            }
+
+            foreach ($arr_order_idx as $o_idx) {
+                // 주문추가정보 조회
+                $data = $this->_conn->getFindResult($this->_table['order_other_info'], 'OrderIdx', ['EQ' => ['OrderIdx' => $o_idx]]);
+
+                if (empty($data) === true) {
+                    // 데이터 등록
+                    $is_replace = $this->addOrderOtherInfo($o_idx, false, ['PackCertNo' => $pack_cert_no]);
+                } else {
+                    // 데이터 수정
+                    $is_replace = $this->_conn->set('PackCertNo', $pack_cert_no)->where('OrderIdx', $o_idx)->update($this->_table['order_other_info']);
+                }
+
+                if ($is_replace === false) {
+                    throw new \Exception('종합반수강번호 수정에 실패했습니다.');
+                }
             }
         } catch (\Exception $e) {
             return $e->getMessage();

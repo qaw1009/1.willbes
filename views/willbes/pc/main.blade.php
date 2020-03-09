@@ -360,7 +360,7 @@
 
         <div class="njobBn">
             <div>
-                <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200309.png.png" alt="N job"></a>
+                <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200309.png" alt="N job"></a>
             </div>
         </div>
     </div>

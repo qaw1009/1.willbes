@@ -64,6 +64,12 @@ class BaseOrder extends \app\controllers\BaseController
             }
         }
 
+        // N잡 수강인증코드
+        if ($order_data['SiteCode'] == '2014') {
+            // 주문상품식별자 + 회원식별자 뒷3자리
+            $order_data['CertAuthCode'] = $order_data['OrderProdIdx'] . '' . substr($order_data['MemIdx'], -3);
+        }
+
         // 회원정보
         $mem_data = $this->manageMemberModel->getMember($order_data['MemIdx']);
 

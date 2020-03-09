@@ -164,41 +164,21 @@ class Home extends \app\controllers\FrontController
     public function gotoHanlim()
     {
         $site = $this->_req('site');
+        $param = $this->_req('param');
 
         switch($site){
-            case '1':
-                $url = 'http://pregosi.willbes.net';
-                $param = '';
-                break;
-
             case '2':
-                $url = 'http://prevalue.willbes.net';
-                $param = '';
-                break;
-
             case '3':
                 $url = 'http://prevalue.willbes.net';
-                $param = '';
                 break;
 
             case '4':
                 $url = 'http://precop.willbes.net';
-                $param = '';
                 break;
 
-            case '5':
-                $url = 'http://prevalue.willbes.net';
-                $param = 'nomu20200303';
-                break;
-
-            case '6':
-                $url = 'http://prevalue.willbes.net';
-                $param = 'nomu20200309';
-                break;
-
+            case '1':
             default:
                 $url = 'http://pregosi.willbes.net';
-                $param = '';
                 break;
 
         }

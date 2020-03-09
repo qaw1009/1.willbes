@@ -120,7 +120,7 @@
                     <th rowspan="2" class="rowspan valign-middle">회원정보</th>
                     <th rowspan="2" class="rowspan valign-middle">결제수단</th>
                     <th rowspan="2" class="rowspan valign-middle">결제완료일<br/>(접수신청일)</th>
-                    <th colspan="9">상품구분별정보</th>
+                    <th colspan="10">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>
@@ -129,6 +129,7 @@
                     <th>상품명</th>
                     <th>결제금액</th>
                     <th>환불금액</th>
+                    <th>환불처리</th>
                     <th>결제상태</th>
                     <th>미수금여부</th>
                     <th>수강증출력</th>
@@ -185,7 +186,7 @@
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
                             + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
-                        return $('<tr class="bg-odd"><td colspan="6"></td><td colspan="9">' + t_html + '</td></tr>');
+                        return $('<tr class="bg-odd"><td colspan="6"></td><td colspan="10">' + t_html + '</td></tr>');
                     },
                     dataSrc : 'OrderIdx'
                 },
@@ -221,6 +222,9 @@
                     }},
                     {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
                         return row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                    }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}' ? '<button class="btn btn-xs btn-success mr-0 btn-refund" data-order-idx="' + row.OrderIdx + '">환불처리</button>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
                         return (row.PayStatusCcd === '{{ $chk_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
@@ -269,6 +273,12 @@
                     var html = getPrintCertLog('PrintCert', $(this).data('order-idx'), $(this).data('order-prod-idx'), '');
                     $(this).data('content', html);
                 }
+            });
+
+            // 환불처리 버튼 클릭
+            $list_table.on('click', '.btn-refund', function() {
+                var url = '{{ site_url('/pay/refundProc/show/') }}' + $(this).data('order-idx');
+                window.open(url, '_blank');
             });
 
             // 엑셀다운로드 버튼 클릭

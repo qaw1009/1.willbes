@@ -338,4 +338,26 @@ class OffVisitPackage extends BaseOrder
 
         return $this->json_result(true, '', [], ['unpaid_idx' => $unpaid_idx]);
     }
+
+    /**
+     * 종합반수강번호 수정
+     * @return mixed
+     */
+    public function modifyPackCertNo()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'order_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_cert_no', 'label' => '종합반수강번호', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        // 종합반수강번호 수정
+        $result = $this->orderModel->replacePackCertNoInOrderOtherInfo($this->_reqP('order_idx'), $this->_reqP('pack_cert_no'));
+
+        return $this->json_result($result, '수정 되었습니다.', $result);
+    }
 }

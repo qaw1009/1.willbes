@@ -6,7 +6,6 @@
 
     <div id="Container" class="Container njob NGR c_both">
         <!-- site nav -->
-        @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">

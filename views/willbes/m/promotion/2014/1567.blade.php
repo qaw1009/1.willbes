@@ -215,7 +215,7 @@
         <div class="evtCtnsBox evt02">
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/JhujfOGVPks" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/QZUkyd8EluI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="evt02Txt01">

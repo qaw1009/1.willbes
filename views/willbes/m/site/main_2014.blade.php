@@ -15,7 +15,8 @@
 
     .evtTop {}
     .evt01 {}
-    .evt02 {}
+    .evt02 li{ display:inline; float:left; width:50%}
+    .evt02 ul:after {content:""; display:block; clear:both}
     .evt03 {}
     .evt04 {max-width:720px; margin:0 auto}
     .evt05 {}
@@ -23,7 +24,7 @@
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
 
-    .btnbuy {position:fixed; width:100%; bottom:10px; left:0; z-index:100; text-align:center; }    
+    .btnbuy {position:fixed; width:100%; bottom:10px; left:0; z-index:1; text-align:center; }    
     .btnbuy a {display:block; font-size:1rem; color:#fff; background:#000; border-radius:50px; line-height:1.4; padding:20px 0; max-width:720px; margin:0 auto; font-size:1rem;}
     .btnbuy span {color:#3a99f0;}
     .btnbuy p {font-size:1.2rem;}
@@ -72,14 +73,15 @@
         </div>    
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03.jpg" usemap="#Map3114M" title="" border="0">
-            <map name="Map3114M" id="Map3114M">
-                <area shape="rect" coords="156,715,347,895" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank" />
-                <area shape="rect" coords="363,717,571,895" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank"/>
-                <area shape="rect" coords="155,899,348,1074" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank"/>
-                <area shape="rect" coords="362,902,572,1074" href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank" />
-            </map>
-            </div>    
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_01.jpg">
+            <ul>
+                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_02.jpg" alt="김정환"></a></li>
+                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_03.jpg" alt="김경은"></a></li>
+                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_04.jpg" alt="황채영"></a></li>
+                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567"><img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_05.jpg" alt="정문진"></a></li>
+            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_03_06.jpg">
+        </div>    
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_04.jpg" title="">

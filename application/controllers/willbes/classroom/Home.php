@@ -191,6 +191,11 @@ class Home extends \app\controllers\FrontController
                 $param = 'nomu20200303';
                 break;
 
+            case '6':
+                $url = 'http://prevalue.willbes.net';
+                $param = 'nomu20200309';
+                break;
+
             default:
                 $url = 'http://pregosi.willbes.net';
                 $param = '';

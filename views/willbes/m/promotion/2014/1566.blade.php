@@ -173,7 +173,7 @@
 
         /* 태블릿 가로, PC */
         @@media only all and (min-width: 1024px) {
-            .evt01 .dday {font-size:2.0rem;}
+            .evt01 .dday {font-size:2.0rem; top:42%;}
             .evt01 .dday strong {font-size:2.5rem;}
             .evt01 .dday img {width:68px;}
             .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}            

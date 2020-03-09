@@ -280,7 +280,7 @@
 
     <div class="btnbuy NSK-Black">        
         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
-            <span class="NSK">미리 신청하면 24%할인!</span><br>
+            <span class="NSK">미리 신청하면 21%할인!</span><br>
             사전예약 신청하기 >
         </a>
     </div>

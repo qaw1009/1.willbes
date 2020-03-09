@@ -13,7 +13,7 @@
         사업자등록번호 : 119-85-23089<br/>
         통신판매업신고 : 제2008-서울관악-0180호 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1198523089" target="_blank">[정보확인]</a><br/>
         신고기관명 : 서울특별시 관악구 ㅣ 원격평생교육시설 신고 제56호<br/>
-        Copyright © (주)윌비스. All Right Reserved. 
+        Copyright © (주)윌비스. All Rights Reserved.
     </address>
     @else
         {!! $__cfg['MobileFooterInfo'] !!}

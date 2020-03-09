@@ -5,7 +5,7 @@
 <style type="text/css">
         .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}    
         .evtCtnsBox > img {width:100%; max-width:1120px;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
+        .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
 
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
@@ -16,7 +16,7 @@
         .tabs:after {content:""; display:block; clear:both}             
 
         .evt01 {background:#fff; padding:100px 0}         
-        .evt01 .dday {font-size:0.875rem; position:absolute; top:45%; left:50%; width:100%; margin-left:-50%; text-align:center; letter-spacing: -1px;}
+        .evt01 .dday {font-size:0.875rem; position:absolute; top:50%; left:50%; width:100%; margin-left:-50%; text-align:center; letter-spacing: -1px;}
         .evt01 .dday strong {font-size:0.9rem;}
         .evt01 .dday img {display:inline-block; margin:0 10px; width:20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
@@ -173,7 +173,7 @@
 
         /* 태블릿 가로, PC */
         @@media only all and (min-width: 1024px) {
-            .evt01 .dday {font-size:2.0rem; top:42%;}
+            .evt01 .dday {font-size:2.0rem; top:50%;}
             .evt01 .dday strong {font-size:2.5rem;}
             .evt01 .dday img {width:68px;}
             .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}            

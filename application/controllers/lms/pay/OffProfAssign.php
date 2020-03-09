@@ -307,4 +307,46 @@ class OffProfAssign extends BaseOrder
 
         return $this->json_result($result, '강사배정이 적용되었습니다.', $result);
     }
+
+    /**
+     * 종합반강사배정 변경내역
+     * @return mixed
+     */
+    public function assignLog()
+    {
+        $order_idx = $this->_reqG('order_idx');
+        $order_prod_idx = $this->_reqG('order_prod_idx');
+        $result = [];
+
+        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 강사배정로그 조회
+        $data = $this->orderListModel->getOffPackSubLectureAssignLog($order_idx, $order_prod_idx);
+        
+        // 데이터 가공
+        if (empty($data) === false) {
+            foreach ($data as $idx => $row) {
+                $sub_lec_data = json_decode($row['SubLectureData'], true);
+
+                foreach ($sub_lec_data as $sub_row) {
+                    $result[] = [
+                        'ActLogIdx' => $row['ActLogIdx'],
+                        'ProdCode' => $sub_row['ProdCode'],
+                        'ProdName' => $sub_row['ProdName'],
+                        'CourseName' => $sub_row['CourseName'],
+                        'SubjectName' => $sub_row['SubjectName'],
+                        'wProfName' => $sub_row['wProfName'],
+                        'RegName' => $row['RegName'],
+                        'RegDatm' => $row['RegDatm']
+                    ];
+                }
+            }
+        }
+
+        return $this->load->view('pay/prof_assign/assign_log', [
+            'data' => $result
+        ]);
+    }
 }

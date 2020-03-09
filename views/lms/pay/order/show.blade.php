@@ -54,6 +54,7 @@
                             <td class="bg-white-only" style="width: 400px;"><a class="blue">{{ $data['order']['OrderNo'] }}</a>
                                 {{ $data['order']['SiteName'] }}
                                 {{ empty($data['order']['CertNo']) === false ? '(수강증 : ' . $data['order']['CertNo'] . ')' : '' }}
+                                {{ empty($data['order']['CertAuthCode']) === false ? '(수강인증코드 : ' . $data['order']['CertAuthCode'] . ')' : '' }}
                                 {{ $data['order']['IsEscrow'] == 'Y' ? '(e)' : '' }}
                             </td>
                             <th class="bg-odd">결제루트</th>
@@ -99,6 +100,23 @@
                                 @endif
                             </td>
                         </tr>
+                        @if(in_array($_order_type, ['offvisitpackage']) === true)
+                            {{-- 종합반수강접수에서만 종합반수강번호 노출 --}}
+                            <tr>
+                                <th class="bg-odd">종합반수강번호</th>
+                                <td class="bg-white-only" colspan="5">
+                                    <form class="form-horizontal form-label-left" id="pack_cert_no_form" name="pack_cert_no_form" method="POST" onsubmit="return false;" novalidate>
+                                        {!! csrf_field() !!}
+                                        {!! method_field('POST') !!}
+                                        <input type="hidden" name="order_idx" value="{{ $idx }}"/>
+                                        <div class="form-inline item">
+                                            <input type="text" name="pack_cert_no" class="form-control input-sm" title="종합반수강번호" required="required" value="{{ $data['order']['PackCertNo'] }}" style="width: 140px;"/>
+                                            <button name="btn_pack_cert_no" class="btn btn-xs btn-primary ml-5 mb-0">수정</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
@@ -522,6 +540,7 @@
     </div>
     <script type="text/javascript">
         var $refund_proc_form = $('#refund_proc_form');
+        var $pack_cert_no_form = $('#pack_cert_no_form');
 
         $(document).ready(function() {
             // 계좌취소 버튼 클릭
@@ -547,6 +566,21 @@
             $('button[name="btn_receipt_print"]').on('click', function() {
                 popupOpen('{!! $data['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
             });
+
+        {{-- 종합반수강접수에서만 사용 --}}
+        @if(in_array($_order_type, ['offvisitpackage']) === true)
+            // 종합반수강번호 수정 버튼 클릭
+            $pack_cert_no_form.submit(function() {
+                var _url = '{{ site_url('/pay/offVisitPackage/modifyPackCertNo') }}';
+
+                ajaxSubmit($pack_cert_no_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+        @endif
 
         {{-- 환불 컨트롤러에서만 사용 --}}
         @if($_is_refund === true)

@@ -89,9 +89,6 @@
                         <td>
                             <div class="inputBox p_re">
                                 <input type="text" id="MemId" name="MemId" class="iptId" placeholder="4~20자리 영문 소문자, 숫자만 입력 가능" maxlength="20" title="아이디" />
-                                <!-- <button type="submit" onclick="" class="mem-Btn combine-Btn ml5 bg-dark-blue bd-dark-blue">
-                                    <span>중복확인</span>
-                                </button> -->
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
@@ -123,7 +120,6 @@
                                 @endforeach
                                 <input type="hidden" name="int_temp" />
                             </div>
-                        <!-- <input name="INterestCode" type="checkbox" value="" id="a03" class="ml10"/> <label for="a03">경찰</label> -->
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
                     </tr>
@@ -136,10 +132,11 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th class="tx-blue tx-left" colspan="2">* 선택정보</th>
+                        <th class="tx-blue tx-left">* 선택정보</th>
+                        <th class="tx-right"><a href="#none" class="confirm">보기 ▼</a> </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="display:none" class="clicks">
                     <tr>
                         <td class="combine-Tit">이메일</td>
                         <td>

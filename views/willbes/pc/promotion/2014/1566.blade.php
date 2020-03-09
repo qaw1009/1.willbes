@@ -162,7 +162,6 @@
 
         .evt05 {background:#00c73c; padding-bottom:100px}
         .evt05 ul {width:940px; margin:0 auto;}
-        .evt05 li {display:inline; float:left; width:50%}
         .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
         .evt05 li a:hover {background:#fff; color:#000;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -207,11 +206,11 @@
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/SqJMAs2mic8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>
-                    유튜브 채널 "단아샘TV"를 운영중인<br>
-                    <span class="NSK-Black">단아샘 김경은</span>입니다. 
+                    유튜브 채널 "단아쌤TV"를 운영중인<br>
+                    <span class="NSK-Black">단아쌤 김경은</span>입니다. 
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
@@ -267,15 +266,11 @@
                         신청하고 1억 만들기 도전! → 
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
-                        <span class="NSK-Black">이미 신청했다면,</span>
-                        위탁/사입상품 추천 받기! → 
-                        </a>
-                    </li>
                 </ul>
             </div>	
         </div>
+
+        @include('willbes.pc.promotion.2014.promotionInfo')
     </div>
     <!-- End Container -->
 

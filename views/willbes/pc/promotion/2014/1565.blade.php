@@ -205,7 +205,7 @@
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pRQcUkiDs30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/v8vHoj2Cpt8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 올해 대학을 졸업했고,<br>
                     대학 졸업 전 취업보다는 창업을 선택해,<br>
@@ -229,39 +229,39 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_04_01.png" alt="BEST 수강후기" >
                 <div class="columns">
                     <div>
-                        <h4>신0화 대표님</h4>
+                        <h4>신*화 대표님</h4>
                         <p></p>
                         스터디끝나고 고민하시는 분들에게 완전 강추합니다. 정문진 강사님과는 다르게 또 다른 스타일로 알차게 커리큘럼이 짜여있어서 좋았습니다. 
                     </div>  
                     <div>
-                        <h4>김0훈 대표님</h4>
+                        <h4>김*훈 대표님</h4>
                         <p></p>
                         쇼핑몰을 처음 시작하면서 여러 실수도 많고 어려움도 많았습니다. 황채영 선생님을 만나 제가 몰랐던 부분들을
                         많이 채워갔습니다. 쇼핑몰 기본부터 판매전략, 상품관리, 운영관리, 그리고 문제해결까지.<br>
                         소핑몰 운영에 관련하 새로운 관점과 노하우를 많이 얻어가는 기회였습니다. 선생님께 다시한번 감사의 말씀을 전합니다.
                     </div> 
                     <div>
-                        <h4>박0현 대표님</h4>
+                        <h4>박*현 대표님</h4>
                         <p></p>
                         수업시간에 알기쉽게 설명해 주시고 질의에 대해서도 잘 답변해주셔서 감사했습니다. 그리고 수업시간 외에 개인적으로
                         질문했을 때에도 친절하게 답변해주셔서 감동이었답니다! 2020년 첫 수업 같이해서 좋았어요^^ <br>
                         서로 번창해서 다시 만나요 ^^!
                     </div>  
                     <div>
-                        <h4>이0원 대표님</h4>
+                        <h4>이*원 대표님</h4>
                         <p></p>
                         강사님의 친절한 강의에 모르는 부분을 많이 알 수 있는 교육이였습니다. 초보셀러인 저에게는 많은 도움이 되었습니다.<br>
                         감사합니다.
                     </div> 
                     <div>
-                        <h4>조0희 대표님</h4>
+                        <h4>조*희 대표님</h4>
                         <p></p>
                         샵플링을 처음 활용해봐서 시작할 때는 많이 힘들었는데 강사님께서 귀에 쏙쏙 들어오게 알려주셔서 잘 배웠습니다. 
                         강사님의 도움으로 많이 성장했습니다. 프로그램 활용하기에는 아직 미흡한 점이 많지만 알려주신 내용을 토대로
                         열심히 해보겠습니다 :)
                     </div>
                     <div>
-                        <h4>김0아 대표님</h4>
+                        <h4>김*아 대표님</h4>
                         <p></p>
                         정적으로 가르쳐 주셔서 한 달간 감사했습니다. 많이 배운 것 같은데 여전히 많이 어렵습니다 선생님^^ <br>
                         어린 나이에 그 자리에 왜 계신지 알 것 같은 시간이였습니다.
@@ -287,6 +287,8 @@
                 </ul>
             </div>	
         </div>
+
+        @include('willbes.pc.promotion.2014.promotionInfo')
     </div>
     <!-- End Container -->
 

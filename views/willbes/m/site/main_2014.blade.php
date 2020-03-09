@@ -114,7 +114,8 @@
     </div>
 <!-- End Container -->
 
-<script>
+{{--
+<script>    
     $(window).on('scroll', function() {
         if($(window).scrollTop() >= $('#evt04').offset().top) {
             $('.btnbuy').hide();
@@ -123,5 +124,5 @@
         }
     });
 </script>
-
+--}}
 @stop

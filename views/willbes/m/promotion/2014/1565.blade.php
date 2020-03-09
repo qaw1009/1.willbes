@@ -309,6 +309,8 @@
             사전예약 신청하기 >
         </a>
     </div>
+
+    @include('willbes.m.promotion.2014.promotionInfo')
 </div>
 <!-- End Container -->
 

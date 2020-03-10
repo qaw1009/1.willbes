@@ -217,7 +217,7 @@
                             &nbsp;&nbsp;&nbsp;
                             [배수적용수강기간] <input type="text" name="WorkStudyPeriod" id="WorkStudyPeriod" value="@if($data['LecTypeCcd'] == '607003'){{$data['StudyPeriod']}}@endif" required="required" class="form-control" title="배수적용수간기간" style="width:50px;" readonly> 일
                             &nbsp;&nbsp;&nbsp;
-                            [개강일] <input type="text" name="WorkStudyStartDate" id="WorkStudyStartDate" value='@if($data['LecTypeCcd'] == '607003'){{$data['StudyStartDate']}}@endif' class="form-control datepicker" title="개강일" style="width:100px;" readonly>&nbsp;&nbsp;&nbsp;
+                            [개강일] <input type="text" name="WorkStudyStartDate" id="WorkStudyStartDate" value='@if($data['LecTypeCcd'] == '607003'){{$data['StudyStartDate']}}@endif' required="required" class="form-control datepicker" title="개강일" style="width:100px;" readonly >&nbsp;&nbsp;&nbsp;
                         </div>
                         <BR><BR>
                         <div class="item inline-block">

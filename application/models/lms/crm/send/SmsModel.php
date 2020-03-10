@@ -148,7 +148,7 @@ class SmsModel extends WB_Model
         } else {
             $column = '
                 SEND.SmsSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_PhoneEnc) AS Receive_PhoneEnc, SEND.Receive_Name, SEND.SmsRcvStatus, TM.Phone3 ,MEM.MemId, MEM.MemName, 
-                CSM.SendDatm, DATE_FORMAT(CSM.SendDatm, \'%Y%m\') AS SendYyyyMm
+                CSM.SendDatm, DATE_FORMAT(CSM.SendDatm, \'%Y%m\') AS SendYyyyMm, SEND.ReplaceContent
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -618,7 +618,7 @@ class SmsModel extends WB_Model
     // 회원테이블 임시테이블 조인
     private function _listTempTableData($send_idx)
     {
-        $column = "{$send_idx} as SendIdx, TMP.tempData AS Receive_PhoneEnc, TMP.tempData2 AS Receive_Name, IFNULL(MEM.MemIdx, '0') AS MemIdx, IFNULL(MO.SmsRcvStatus, 'N') AS SmsRcvStatus ";
+        $column = "{$send_idx} as SendIdx, TMP.tempData AS Receive_PhoneEnc, TMP.tempData2 AS Receive_Name, IFNULL(MEM.MemIdx, '0') AS MemIdx, IFNULL(MO.SmsRcvStatus, 'N') AS SmsRcvStatus, TMP.tempData3 AS ReplaceContent ";
 
         $from = "
             FROM {$this->_table_temp} AS TMP
@@ -868,7 +868,7 @@ class SmsModel extends WB_Model
                     throw new \Exception('등록에 실패했습니다.');
                 }
 
-                $result = $this->insertTempTable($this->_table_temp, $set_send_data_phone, $set_send_data_name);
+                $result = $this->insertTempTable($this->_table_temp, $set_send_data_phone, $set_send_data_name, $set_send_data_msg);
                 if ($result === false) {
                     throw new \Exception('등록에 실패했습니다.');
                 }

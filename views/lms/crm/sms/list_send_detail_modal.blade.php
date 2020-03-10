@@ -56,6 +56,7 @@
                                 <th>수신휴대폰</th>
                                 <th>수신 메세지종류</th>
                                 <th>메세지결과</th>
+                                <th>변환 메세지</th>
                                 <th>수신동의</th>
                             </tr>
                             </thead>
@@ -114,6 +115,9 @@
                                     rtn_str = row.log_data.RSLT_INFO;
                                 }
                                 return rtn_str;
+                            }},
+                            {'data' : 'ReplaceContent', 'render' : function(data, type, row, meta) {
+                                return data;
                             }},
                             {'data' : 'SmsRcvStatus'}
                         ]

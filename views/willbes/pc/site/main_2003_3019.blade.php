@@ -7,8 +7,8 @@
         @include('willbes.pc.layouts.partial.site_menu')
         <div class="Section">
             <div class="widthAuto lastTime">
-                <span id="counter">{{ $data['Interval_time'] }}</span>
-                <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.gif" alt="단 1명의 꿈이라도">
+                {{--<span id="counter">{{ $data['Interval_time'] }}</span>--}}
+                <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_200310.gif" alt="선택이 아닌 필수">
             </div>
         </div>
 
@@ -38,8 +38,8 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1509" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/main/1509_graph_main.gif" alt="진도별 문제풀이 비약적인 상승">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1553" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/main/09_graph_main.gif" alt="파이널 수강생 성적향상 효과 증명">
                 </a>
             </div>
         </div>

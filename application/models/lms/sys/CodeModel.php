@@ -96,6 +96,28 @@ class CodeModel extends WB_Model
     }
 
     /**
+     * 매핑된 공통코드 조회
+     * 하나의 컬럼에 한개 이상의 공통코드를 조회할 경우 (기준코드 CcdValue <=> 기존코드 Ccd 매핑)
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listCodeForMapping($arr_condition = [])
+    {
+        $column = 'A.Ccd, A.CcdName, A.CcdValue, B.Ccd AS MappingCcd, B.CcdName AS MappingCcdName';
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['A.OrderNum'=>'Asc'])->getMakeOrderBy();
+
+        $from = "
+            FROM (
+                SELECT Ccd, CcdName, CcdValue, OrderNum
+                FROM {$this->_table} {$where}
+            ) AS A
+            LEFT JOIN $this->_table AS B ON A.CcdValue = B.Ccd
+        ";
+        return $this->_conn->query('select ' .$column .$from .$order_by)->result_array();
+    }
+
+    /**
      * 그룹유형코드 정보 및 세부코드 노출순서 추출 (하위코드 등록을 윈한 정보 조회)
      * @param $group_ccd
      * @return array

@@ -86,6 +86,7 @@ class WB_Model extends CI_Model
                   tempIdx INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                   tempData VARCHAR(520) NOT NULL,
                   tempData2 VARCHAR(20) NULL,
+                  tempData3 TEXT NULL,
                   PRIMARY KEY (tempIdx)
             )";
 
@@ -107,16 +108,18 @@ class WB_Model extends CI_Model
      * @param string $temp_table_name
      * @param array $input_data     필수 값
      * @param array $input_data2    참조 값
+     * @param array $input_data3    참조 값
      * @return bool
      */
-    public function insertTempTable($temp_table_name = '_lms_temp_table', $input_data = [], $input_data2 = [])
+    public function insertTempTable($temp_table_name = '_lms_temp_table', $input_data = [], $input_data2 = [], $input_data3 = [])
     {
         $result = [];
 
         if (empty($input_data) === false) {
             foreach ($input_data as $key => $val) {
                 $tempData2 = (empty($input_data2[$key]) === false) ? $input_data2[$key] : '';
-                $sql = /** @lang text */ "INSERT INTO {$temp_table_name} (tempData, tempData2) SELECT fn_enc('{$val}'), '{$tempData2}'";
+                $tempData3 = (empty($input_data3[$key]) === false) ? $input_data3[$key] : '';
+                $sql = /** @lang text */ "INSERT INTO {$temp_table_name} (tempData, tempData2, tempData3) SELECT fn_enc('{$val}'), '{$tempData2}', '{$tempData3}'";
 
                 $result[$key] = $this->_conn->query($sql);
             }

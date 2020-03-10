@@ -93,7 +93,16 @@
                                                             @if(empty($row['ExtenDay']) === false)
                                                                 <span class="tx-light-blue">연장 신청한 강좌의 기본 수강기간이 종료된 후 바로 수강 시작</span>
                                                             @else
-                                                                <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                                {{-- 단강좌이면서 개강일이 금일보다 클 경우 개강일 표기 --}}
+                                                                @if($row['CartProdType'] == 'on_lecture')
+                                                                    @if(empty($row['StudyStartDate']) === false && $row['StudyStartDate'] > date('Y-m-d'))
+                                                                        <span class="tx-light-blue">{{ kw_date('n월 j일', $row['StudyStartDate']) }}부터 수강 가능합니다.</span>
+                                                                    @else
+                                                                        <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                                @endif
                                                             @endif
                                                         @endif
                                                     </span>

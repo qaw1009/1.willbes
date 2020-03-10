@@ -1,6 +1,10 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+<style>
+    .min-width120{min-width: 120px !important;}
+</style>
+
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -42,15 +46,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
+                    <label class="control-label col-md-1 min-width120" for="search_value">제목/내용/번호</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">내용 가능</p>
-                    </div>
                     <label class="control-label col-md-1" for="search_start_date">등록일</label>
-                    <div class="col-md-5 form-inline">
+                    <div class="col-md-6 form-inline">
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>

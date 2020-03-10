@@ -22,10 +22,10 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/180312_01_bg.jpg) no-repeat center top;}	
+		.evt_top {background:#9d003b url(https://static.willbes.net/public/images/promotion/2020/03/1507_top_bg.jpg) no-repeat center top;}	
 		.evt_01 {background:#fff;}
 
-        .evt_02 {background:#fed201;}
+        .evt_02 {background:#fed200;}
         .evt_03 {width:1120px; margin:0 auto; padding:100px 0}
         .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
         background:rgba(255,255,255,0.8); margin-bottom:30px}
@@ -40,7 +40,7 @@
 		.evtCtnsBox table tbody th {background: #9697a1; color:#fff;} 
         .evtCtnsBox table tbody td:last-child {color:#e83e3e; font-weight:bold}
 		.evtCtnsBox .buyLec {margin-top:30px}
-		.evtCtnsBox .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
+		.evtCtnsBox .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#9d003b; color:#fff; padding:20px 0; border-radius:50px}
 		.evtCtnsBox .buyLec a:hover {background:#e83e3e; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
 
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
@@ -55,18 +55,15 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/180312_01.png" alt="감평2차 기본강의" usemap="#Map190905A" border="0" />
-            <map name="Map190905A" id="Map190905A">
-                <area shape="rect" coords="788,874,975,1022" href="#buyLec" alt="바로신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1507_top.jpg" alt="감평 2차 기본강의" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/180312_02.png" alt="기본강의 특징" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1507_01.jpg" alt="이론 스텝" />
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/180312_03.png" alt="수강특전" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1507_02.jpg" alt="수강 특전" />
 		</div>
 
         <div class="evtCtnsBox evt_03">
@@ -192,14 +189,13 @@
 				<h4 class="NGEB">상품 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-					<li>본 상품은 2019년 3월 ~ 6월까지 진행되는 감정평가사 2차 감정평가실무, 감정평가이론, 감평 행정법 및 보상법규 기본강의가 제공됩니다.</li>
-                    <li>이벤트 기간 내 본 상품 결제 시, 수강료 10~30% 할인+30일 내 수강 자유시작 혜택이 적용됩니다.</li>
+					<li>본 상품은 2020년 3월 ~ 6월까지 진행되는 감정평가사 2차 감정평가실무, 감정평가이론, 감평 행정법 및 보상법규 기본강의가 제공됩니다.</li>
+                    <li>이벤트 기간 내 본 상품 결제 시, 수강료 10~30% 할인 혜택이 적용됩니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
 					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
                     <li>본 상품은 2배수 수강제한이 되어있습니다.</li>
-                    <li>본 상품의 수강시작일은 30일 범위 내에서 지정하실 수 있습니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>교재관련</strong></div>
 				<ul>
@@ -218,14 +214,14 @@
 					<li>아이디 공유 및 불법공유 행위 적발 시 회원자격 박탈 및 고발 조치가 진행될 수 있습니다.</li>
 					<li>본 상품은 PC 식별코드인 MAC ADDRESS 수집에 동의하셔야 구매 및 수강이 가능합니다.</li>
 					<li>[MAC ADDRESS 안내]<br>
-						본 상품은 MAC 주소 정보 수집에 동의 후 구매할 수 있습니다.<br>
+                        본 상품은 MAC 주소 정보 수집에 동의 후 구매할 수 있습니다.<br>
 						윌비스는 정당하게 수강하시는 분들의 권리를 보호하기 위하여 MAC주소를 수집하고 있습니다. <br>
 						MAC 주소(Media Access Control Address)는 PC마다 존재하는 고유 식별 번호입니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>상담 및 문의</strong></div>
 				<ul>
 					<li>[상담시간] 평일 오전 10시 ~ 오후 5시</li>
-					<li>[상담전화] 1544-5006</li>
+					<li>상담전화] 1544-5006</li>
 					<li>[상담내용] 강의 및 패키지 상품 안내</li>
 				</ul>
 			</div>

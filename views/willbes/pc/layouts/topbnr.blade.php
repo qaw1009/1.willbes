@@ -44,8 +44,8 @@
 @if($__cfg['CateCode'] == '3019')
     {{-- 공무원 9급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
-        <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3019.gif') }}" alt="9급"></a>
+        <div class="topBanner" style="background:#FFE1C5">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/top_1120_200310.gif" alt="9급"></a>
         </div>
     </div>
 @endif

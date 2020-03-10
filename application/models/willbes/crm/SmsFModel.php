@@ -217,6 +217,7 @@ class SmsFModel extends WB_Model
                     'MemIdx' => (empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : '0' ),
                     'Receive_PhoneEnc' => ( empty($val) === false ? $this->getEncString($val) : '' ),
                     'Receive_Name' => (empty($this->session->userdata('mem_name')) === false ? $this->session->userdata('mem_name') : '비회원' ),
+                    'ReplaceContent' => (empty($set_send_data_msg[$key]) === false ? $set_send_data_msg[$key] : ''),
                     'SmsRcvStatus' => 'N'
                 ];
                 array_push($arr_member_data, $member_data);

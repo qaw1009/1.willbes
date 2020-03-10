@@ -74,9 +74,20 @@ class Sms extends \app\controllers\BaseController
             'ORG' => [
                 'LKB' => [
                     'SMS.Content' => $this->_reqP('search_value')
-                ]
+                ],
+                'RAW' => []
             ]
         ];
+
+        //치환 내용 검색
+        if(empty($this->_reqP('search_value')) === false) {
+            $arr_condition['ORG']['RAW'] = array_merge_recursive($arr_condition['ORG']['RAW'], ['SMS.SendIdx IN  ' => "(SELECT SendIdx FROM lms_crm_send_r_receive_sms WHERE ReplaceContent LIKE '%{$this->_reqP('search_value')}%')"]);
+        }
+
+        // 전화번호 검색
+        if(empty($this->_reqP('search_value')) === false && (int) $this->_reqP('search_value') != 0) {
+            $arr_condition['ORG']['RAW'] = array_merge_recursive($arr_condition['ORG']['RAW'], ['SMS.SendIdx IN ' => "(SELECT SendIdx FROM lms_crm_send_r_receive_sms WHERE fn_dec(Receive_PhoneEnc) LIKE REPLACE('%{$this->_reqP('search_value')}%', '-', ''))"]);
+        }
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [

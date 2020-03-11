@@ -513,7 +513,7 @@
             <!-- willbes-Layer-Box -->
         </div>
 
-        <div class="Aside widthAuto290 NG ml20 mt30">
+        <div class="Aside widthAuto290 NG ml20 mt30" id="AsideBasket">
             <div class="Tit tx-light-black">장바구니</div>
             <div class="Lec-Pocket-Grid">
                 <div class="LecPocketlist">

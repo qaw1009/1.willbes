@@ -425,7 +425,7 @@ class SupportAnonymous extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     /**
@@ -513,7 +513,7 @@ class SupportAnonymous extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     //허용 카테고리 체크

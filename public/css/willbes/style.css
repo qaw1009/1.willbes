@@ -2282,6 +2282,7 @@ table.auTable tr td {
     font-weight: 600;
     color: #fff;
 }
+.curriWrap .CurriBox ul.btnthree li {width: 33.333333%;} 
 
 .curriWrap table.curriTable {
     width: 100%;

@@ -45,9 +45,33 @@
                     </label>
                     <div class="col-md-4 form-inline item">
                         <div class="item inline-block">
-                            <input type="text" name="ValidPeriodStartDate" id="ValidPeriodStartDate" value="@if($method==='PUT'){{$data['ValidPeriodStartDate']}}@endif" class="form-control datepicker" title="유효기간" style="width:100px;" readonly required="required">
+                            <input type="text" name="ValidPeriodStartDate" id="ValidPeriodStartDate" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['ValidPeriodStartDate']))}}@endif" class="form-control datepicker" title="유효기간" style="width:80px;" readonly required="required">
+                            <select name="ValidPeriodStartDate_H" id="ValidPeriodStartDate_H" class="form-control" title="시작 시간">
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if(date("H",strtotime($data['ValidPeriodStartDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select>
+                            <select name="ValidPeriodStartDate_M" id="ValidPeriodStartDate_M" class="form-control" title="시작 분">
+                                @for($i=0;$i<=59;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if(date("i",strtotime($data['ValidPeriodStartDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select>
                             &nbsp;~&nbsp;
-                            <input type="text" name="ValidPeriodEndDate" id="ValidPeriodEndDate" value="@if($method==='PUT'){{$data['ValidPeriodEndDate']}}@endif"  class="form-control datepicker" title="유효기간" style="width:100px;" readonly required="required">
+                            <input type="text" name="ValidPeriodEndDate" id="ValidPeriodEndDate" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['ValidPeriodEndDate']))}}@endif"  class="form-control datepicker" title="유효기간" style="width:80px;" readonly required="required">
+                            <select name="ValidPeriodEndDate_H" id="ValidPeriodEndDate_H" class="form-control" title="종료 시간">
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if(date("H",strtotime($data['ValidPeriodEndDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select>
+                            <select name="ValidPeriodEndDate_M" id="ValidPeriodEndDate_M" class="form-control" title="종료 분">
+                                @for($i=0;$i<=59;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if(date("i",strtotime($data['ValidPeriodEndDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -113,7 +113,11 @@
                                                 @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
                                                 @elseif($row['IsLecStart'] == 'Y')
-                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                        <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @else
+                                                        <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @endif
                                                     <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
@@ -152,7 +156,11 @@
                                             </td>
                                             <td class="w-answer">
                                                 @if($row['IsLecStart'] == 'Y')
-                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                        <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @else
+                                                        <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @endif
                                                     <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
@@ -259,7 +267,11 @@
                                                 @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
                                                 @elseif($row['IsLecStart'] == 'Y')
-                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                        <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @else
+                                                        <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    @endif
                                                     <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
@@ -297,7 +309,11 @@
                                                 </td>
                                                 <td class="w-answer">
                                                     @if($row['IsLecStart'] == 'Y')
-                                                        <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                        @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                            <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                        @else
+                                                            <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                        @endif
                                                         <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                     @else
                                                         <span class="bBox blueBox NSK">시작일변경 불가</span>

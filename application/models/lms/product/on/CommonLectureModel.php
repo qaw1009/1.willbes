@@ -278,7 +278,7 @@ class CommonLectureModel extends WB_Model
 
             $order_by = $this->_conn->makeOrderBy(['S.SubGroupName'=>'asc','S.OrderNum'=>'asc', 'S.PsIdx'=>'asc'])->getMakeOrderBy();
             $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
-            //echo 'select ' .$column .$from .$where .$order_by;
+
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
 
         } else {
@@ -297,7 +297,6 @@ class CommonLectureModel extends WB_Model
             }
 
         }
-        //var_dump($result);
         return $result;
     }
 
@@ -998,7 +997,7 @@ class CommonLectureModel extends WB_Model
 
             //상품복사
             $insert_column = 'ProdCode, SiteCode, ProdName, ProdNameShort, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
-                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDeliveryInfo, Keyword, RegAdminIdx, RegIp';
+                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDeliveryInfo, Keyword, IsAllianceDisc, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);

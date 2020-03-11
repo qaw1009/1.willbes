@@ -220,6 +220,10 @@ class OffVisitPackage extends BaseOrder
             $data['prod']['tRefundPrice'] = array_sum(array_pluck($data['list'], 'RefundPrice'));   // 총기환불금액
             $data['prod']['tRealUnPaidPrice'] = $data['prod']['OrgPayPrice'] - ($data['prod']['tRealPayPrice'] - $data['prod']['tRefundPrice']);    // 최종미납금액
 
+            // 상품 부가정보
+            $data['prod']['ProdAddInfo'] = $data['prod']['CateName'];
+            empty($data['prod']['StudyPatternCcdName']) === false && $data['prod']['ProdAddInfo'] .= ' | ' . $data['prod']['StudyPatternCcdName'];
+
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($mem_idx);
         } elseif ($is_order === true) {
@@ -229,7 +233,9 @@ class OffVisitPackage extends BaseOrder
             // 주문상품 정보
             $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_pack_lecture']]];
             $column = 'O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode, OP.OrderPrice as OrgOrderPrice, OP.RealPayPrice as OrgPayPrice
-                , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
+                , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+                , substring_index(fn_category_connect_by_type(PC.CateCode, "name"), ">", -1) as CateName
+                , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
             $data['prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column);
             if (empty($data['prod']) === true) {
                 show_error('데이터 조회에 실패했습니다.');
@@ -237,6 +243,10 @@ class OffVisitPackage extends BaseOrder
 
             // 상품정보
             $data['prod'] = element('0', $data['prod']);
+
+            // 상품 부가정보
+            $data['prod']['ProdAddInfo'] = $data['prod']['CateName'];
+            empty($data['prod']['StudyPatternCcdName']) === false && $data['prod']['ProdAddInfo'] .= ' | ' . $data['prod']['StudyPatternCcdName'];
 
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($data['prod']['MemIdx']);

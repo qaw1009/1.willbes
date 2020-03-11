@@ -354,6 +354,8 @@
                         data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.SalePrice + '" data-real-sale-price="' + row.RealSalePrice + '"';
                         data += ' data-prod-type-ccd-name="' + row.ProdTypeCcd_Name + '" data-learn-pattern-ccd-name="' + row.LearnPatternCcd_Name + '"';
                         data += ' data-campus-ccd-name="' + (row.CampusCcd_Name != null ? row.CampusCcd_Name : '') + '"';
+                        data += ' data-cate-name="' + row.CateName + '"';
+                        data += ' data-study-pattern-ccd-name="' + (row.StudyPatternCcd_Name != null ? row.StudyPatternCcd_Name : '') + '"';
 
                         html += '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
                         html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';

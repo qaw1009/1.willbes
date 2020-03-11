@@ -222,6 +222,7 @@ class Visit extends BaseOrder
             $column = 'O.OrderNo, O.SiteCode, O.MemIdx, O.RealPayPrice as tRealPayPrice
                 , OP.OrderProdIdx, OP.ProdCode, OP.OrderPrice, OP.RealPayPrice, OP.Remark, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
                 , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+                , concat(substring_index(fn_category_connect_by_type(PC.CateCode, "name"), ">", -1), if(PL.StudyPatternCcd is not null, concat(" | ", fn_ccd_name(PL.StudyPatternCcd)), "")) as ProdAddInfo                
                 , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
                 , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
             $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column);

@@ -22,7 +22,7 @@
             <h2>모의고사정보등록</h2>
         </div>
         <div class="x_content">
-            <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" id='ProdCode' name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">

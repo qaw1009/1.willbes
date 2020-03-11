@@ -180,7 +180,7 @@
 			</div>
             --}}
             <div class="buyLec">
-                <a href="job.willbes.net/userPackage/show/cate/309003/prod-code/162741" target="_blank">수강신청 ></a>
+                <a href="https://job.willbes.net/userPackage/show/cate/309003/prod-code/162741" target="_blank">수강신청 ></a>
             </div>
         </div>
 

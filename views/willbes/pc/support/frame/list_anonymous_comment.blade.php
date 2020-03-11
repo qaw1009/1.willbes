@@ -55,7 +55,8 @@
                     <td class="w-no">{{ $row['RegNickName'] }}</td>
                     <td class="w-date">{{$row['RegDatm']}}</td>
                     <td class="w-list tx-left pl20" colspan="2">
-                        {{nl2br($row['Comment'])}}
+                    {{-- {{nl2br($row['Comment'])}} --}}
+                        {{$row['Comment']}}
                         @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                             <a class="w-del btn-comment-del" data-comment-idx="{{$row['BoardCmtIdx']}}" href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a>
                         @endif

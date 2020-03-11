@@ -466,7 +466,7 @@ $('*[id*=QuickMenuB]:visible').ready(function() {
     }
 });
 
-/*방문결제 장바구니*/
+/*방문결제 장바구니
 $(function() {
     var nav = $('#AsideBasket');
     var navTop = nav.offset().top+100;
@@ -492,7 +492,7 @@ $(function() {
         }
     });
 });
-
+*/
 
 // image flipped
 $(document).ready(function(){

@@ -48,7 +48,8 @@ class OrderListModel extends BaseOrderModel
                     , P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd, PL.PackSelCount
                     , P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-                    , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName';
+                    , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName
+                    , CST.CcdName as StudyPatternCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
                 $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice'; // straight_join 삭제
@@ -96,6 +97,7 @@ class OrderListModel extends BaseOrderModel
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
             , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName
+            , CST.CcdName as StudyPatternCcdName
             , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
@@ -164,7 +166,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CLP
                     on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"
                 left join ' . $this->_table['code'] . ' as CPA
-                    on PL.PackTypeCcd = CPA.Ccd and CPA.IsStatus = "Y" and CPA.GroupCcd = "' . $this->_group_ccd['PackType'] . '"                    
+                    on PL.PackTypeCcd = CPA.Ccd and CPA.IsStatus = "Y" and CPA.GroupCcd = "' . $this->_group_ccd['PackType'] . '"
+                left join ' . $this->_table['code'] . ' as CST
+                    on PL.StudyPatternCcd = CST.Ccd and CST.IsStatus = "Y" and CST.GroupCcd = "' . $this->_group_ccd['StudyPattern'] . '"                                        
             ';
         }
 
@@ -457,7 +461,7 @@ class OrderListModel extends BaseOrderModel
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
                 , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm
-                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd, PL.PackTypeCcd
+                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd, PL.PackTypeCcd, PC.CateCode
                 , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
         }
 
@@ -469,6 +473,8 @@ class OrderListModel extends BaseOrderModel
                     on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"                    
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['code'] . ' as CLP
@@ -640,7 +646,9 @@ class OrderListModel extends BaseOrderModel
             , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidUnitNum, OUH.UnPaidMemo
 	        , O.OrderNo, O.SiteCode, O.CompleteDatm, OP.PayStatusCcd, OP.RealPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
 	        , (OUH.UnPaidPrice + ifnull(OPR.RefundPrice, 0)) as RealUnPaidPrice
-	        , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.CampusCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
+	        , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.CampusCcd, PC.CateCode, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+	        , substring_index(fn_category_connect_by_type(PC.CateCode, "name"), ">", -1) as CateName
+	        , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
 
         $from = '
             from ' . $this->_table['order_unpaid_info'] . ' as OUI
@@ -653,7 +661,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product'] . ' as P
                     on OUI.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
-                    on OUI.ProdCode = PL.ProdCode                    
+                    on OUI.ProdCode = PL.ProdCode  
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on OUI.ProdCode = PC.ProdCode and PC.IsStatus = "Y"                                      
                 left join ' . $this->_table['order_product_refund'] . ' as OPR		
                     on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                 left join ' . $this->_table['code'] . ' as CLP
@@ -899,6 +909,8 @@ class OrderListModel extends BaseOrderModel
         $arr_condition = array_merge_recursive($arr_condition, $arr_add_condition);
         $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
             , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName
+            , substring_index(fn_category_connect_by_type(PC.CateCode, "name"), ">", -1) as CateName
+            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
             , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
             , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice';
         $limit = empty($prod_code) === false ? 1 : null;
@@ -910,6 +922,10 @@ class OrderListModel extends BaseOrderModel
             foreach ($data as $idx => $row) {
                 $data[$idx]['ProdType'] = $this->getLearnPattern($row['ProdTypeCcd'], $row['LearnPatternCcd']);
                 $data[$idx]['TargetOrderIdx'] = $is_target_order_idx === true ? $order_idx : null;
+
+                // 상품 부가정보
+                $data[$idx]['ProdAddInfo'] = $row['CateName'];
+                empty($row['StudyPatternCcdName']) === false && $data[$idx]['ProdAddInfo'] .= ' | ' . $row['StudyPatternCcdName'];
             }
         }
 
@@ -1071,9 +1087,8 @@ class OrderListModel extends BaseOrderModel
                         // 대비년도-카테고리-상품명-수강형태
                         $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
                     } elseif ($row['IsPackage'] == 'N') {
-                        // 대비년도-카테고리-과정명-상품명-교수명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['CourseName'];
-                        $_prod_name .= '_' . $row['ProdName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
+                        // 대비년도-카테고리-상품명-수강형태
+                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
                     }
                 }
 
@@ -1172,9 +1187,8 @@ class OrderListModel extends BaseOrderModel
                 // 고등고시 (대비년도-과정명(종합반)-과목명-교수명-수강형태)
                 $_prod_name = $data['SchoolYear'] . '_' . $data['CourseName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
             } else {
-                // 자격증, 경찰간부 (대비년도-카테고리-과정명-상품명(종합반)-교수명-수강형태)
-                $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['CourseName'] . '_' . $data['ProdName'] . '(종합반)_';
-                $_prod_name .= $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
+                // 자격증, 경찰간부 (대비년도-카테고리-상품명(종합반)-수강형태)
+                $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['ProdName'] . '(종합반)_' . '_' . $data['StudyPatternCcdName'];
             }
 
             $cut_str = 14;  // 라인당 출력되는 상품명 길이

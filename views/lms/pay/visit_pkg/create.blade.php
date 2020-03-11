@@ -97,7 +97,9 @@
                             <tr>
                             @if(empty($data['prod']) === false)
                                 <td>{{ $data['prod']['CampusCcdName'] }}</td>
-                                <td><div class="blue inline-block">[{{ $data['prod']['LearnPatternCcdName'] }}]</div> {{ $data['prod']['ProdName'] }}
+                                <td>{{ $data['prod']['ProdAddInfo'] }}
+                                    <div class="blue inline-block">[{{ $data['prod']['LearnPatternCcdName'] }}]</div>
+                                    {{ $data['prod']['ProdName'] }}
                                     <input type="hidden" name="prod_code" value="{{ $data['prod']['ProdCode'] }}:{{ $data['prod']['ProdTypeCcd'] }}:{{ $data['prod']['LearnPatternCcd'] }}"/>
                                     <input type="hidden" name="order_prod_idx" value="{{ $data['prod']['OrderProdIdx'] or '' }}"/>
                                 </td>
@@ -441,11 +443,13 @@
 
                     html += '<tr>\n' +
                         '    <td>' + data.campusCcdName + '</td>\n' +
-                        '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
-                        '    ' + '<input type="hidden" name="prod_code" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
+                        '    <td>' + (typeof(data.cateName) !== 'undefined' ? data.cateName : '') +
+                        '    ' + (typeof(data.studyPatternCcdName) !== 'undefined' && data.studyPatternCcdName !== '' ? ' | ' + data.studyPatternCcdName : '') +
+                        '    ' + '<div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
+                        '    ' + '<input type="hidden" name="prod_code" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>\n' +
                         '    </td>\n' +
                         '    <td>\n' +
-                        '       <input type="number" name="order_price" class="form-control input-sm" title="주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
+                        '        <input type="number" name="order_price" class="form-control input-sm" title="주문금액" value="' + data.realSalePrice + '" readonly="readonly">\n' +
                         '    </td>\n' +
                         '    <td class="form-inline">\n' +
                         '        <select class="form-control input-sm set-pay-price" name="disc_type">\n' +

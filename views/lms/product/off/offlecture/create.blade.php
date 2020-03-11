@@ -834,7 +834,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsLecOpen" class="flat" value="Y" required="required" title="개설여부" @if($method == 'POST' || $data['IsLecOpen'] == 'Y')checked="checked"@endif/> 개설
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsLecOpen" class="flat" value="N" required="required" title="개설여부" @if($data['IsLecOpen'] == 'N')checked="checked"@endif/> 폐강
                         </div>
                     </div>
@@ -849,6 +849,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsAllianceDisc">독서실제휴할인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsAllianceDisc" class="flat" value="Y" required="required" title="독서실제휴할인" @if($method == 'POST' || $data['IsAllianceDisc']=='Y')checked="checked"@endif/> 적용
+                            &nbsp; <input type="radio" name="IsAllianceDisc" class="flat" value="N" @if($data['IsAllianceDisc']=='N')checked="checked"@endif/> 미적용
+                        </div>
+                    </div>
                     <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >

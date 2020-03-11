@@ -39,7 +39,7 @@ class BeforeLectureModel extends WB_Model
                             ,ess.prodname_ess
                             ,cho.prodname_cho
                             ,\'0\' as applyCnt
-                            ,IF( (curdate() BETWEEN ValidPeriodStartDate AND ValidPeriodEndDate) = 0, \'만료\', \'\') as dateStatus
+                            ,IF( (NOW() BETWEEN ValidPeriodStartDate AND ValidPeriodEndDate) = 0, \'만료\', \'\') as dateStatus
                             ,Z.wAdminName
                             
             ';
@@ -438,11 +438,14 @@ class BeforeLectureModel extends WB_Model
      */
     public function inputCommon($input=[])
     {
+
+        $ValidPeriodStartDate = element('ValidPeriodStartDate',$input).' '.element('ValidPeriodStartDate_H',$input).':'.element('ValidPeriodStartDate_M',$input).':00';
+        $ValidPeriodEndDate = element('ValidPeriodEndDate',$input).' '.element('ValidPeriodEndDate_H',$input).':'.element('ValidPeriodEndDate_M',$input).':59';
         //상품관리 테이블 입력
         $input_data = [
             'LecType'=>element('LecType',$input)
-            ,'ValidPeriodStartDate'=>element('ValidPeriodStartDate',$input)
-            ,'ValidPeriodEndDate'=>element('ValidPeriodEndDate',$input)
+            ,'ValidPeriodStartDate'=>$ValidPeriodStartDate
+            ,'ValidPeriodEndDate'=>$ValidPeriodEndDate
             ,'ConditionType'=>element('ConditionType',$input,'AND')
             ,'IsDup'=>element('IsDup',$input,'N')
             ,'IsUse'=>element('IsUse',$input,'N')

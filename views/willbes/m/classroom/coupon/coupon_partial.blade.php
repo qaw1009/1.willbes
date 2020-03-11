@@ -75,9 +75,9 @@
                         @endif
                         <li><strong>과정</strong> {{ $row['SiteGroupName'] }}</li>
                         @if($stab == 'available')
-                            <li><strong>발급일</strong> {{ substr($row['IssueDatm'], 0, 10) }}</li>
+                            <li><strong>발급일</strong> {{ substr($row['IssueDatm'], 0, 16) }}</li>
                         @else
-                            <li><strong>사용/소멸일</strong> @if($row['ValidStatusName'] == '만료') {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ substr($row['UseDatm'], 0, 10) }} @endif</li>
+                            <li><strong>사용/소멸일</strong> @if($row['ValidStatusName'] == '만료') {{ substr($row['ExpireDatm'], 0, 16) }} @else {{ substr($row['UseDatm'], 0, 16) }} @endif</li>
                         @endif
                     </ul>
                 @endforeach

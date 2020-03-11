@@ -400,6 +400,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
                 ,'IsUse'=>element('IsUse',$input)
                 ,'Keyword'=>element('Keyword',$input)
+                ,'IsAllianceDisc'=>element('IsAllianceDisc',$input,'N')
             ];
 
             $input_lecture = [

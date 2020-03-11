@@ -89,7 +89,7 @@ class LectureRoomModel extends WB_Model
                     'LrUnitCode', L.LrUnitCode,
                     'UnitName', L.UnitName,
                     'TotalSeat', IFNULL(L.UseQty,0),
-                    'UseSeatCnt', L.UseSeatCnt,
+                    'UseSeatCnt', L.SumUseSeatCnt,
                     'RemainSeatCnt', L.RemainSeatCnt,
                     'SeatChoiceStartDate', L.SeatChoiceStartDate,
                     'SeatChoiceEndDate', L.SeatChoiceEndDate,
@@ -97,12 +97,14 @@ class LectureRoomModel extends WB_Model
                 ) ORDER BY L.LrUnitCode DESC), ']') AS UnitData
                 FROM (
                     SELECT
-                    A.* ,IFNULL(A.UseQty - A.UseSeatCnt,0) AS RemainSeatCnt
+                    A.* ,IFNULL(A.UseSeatCnt + A.UseMemberSeatCnt,0) AS SumUseSeatCnt, IFNULL(A.UseQty - (A.UseSeatCnt + A.UseMemberSeatCnt),0) AS RemainSeatCnt
                     FROM (
                         SELECT LR.LrCode, LR.SiteCode, LR.CampusCcd, LR.LectureRoomName, LR.IsUse, LR.RegAdminName, LR.RegDatm
                         , LU.LrUnitCode, LU.UnitName, LU.UseQty, LU.SeatChoiceStartDate, LU.SeatChoiceEndDate, LU.IsSmsUse
+                        ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_r_unit_r_seat']} AS RS 
+                            WHERE RS.LrUnitCode = LU.LrUnitCode AND RS.IsStatus = 'Y' AND RS.SeatStatusCcd IN (727002, 727003)) AS UseSeatCnt
                         ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_seat_register']} AS SR 
-                            WHERE SR.LrCode = LU.LrCode AND SR.LrUnitCode = LU.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (638001,638002,638003)) AS UseSeatCnt
+                            WHERE SR.LrCode = LU.LrCode AND SR.LrUnitCode = LU.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (728001,728002)) AS UseMemberSeatCnt
                         FROM (
                             SELECT a.LrCode, a.SiteCode, a.CampusCcd, a.LectureRoomName, a.IsUse, b.wAdminName AS RegAdminName, a.RegDatm
                             FROM {$this->_table['lectureroom']} as a
@@ -231,8 +233,10 @@ class LectureRoomModel extends WB_Model
         } else {
             $column = "
                 LU.LrUnitCode, LU.UnitName, LU.SeatChoiceStartDate, LU.SeatChoiceEndDate, LU.UseQty, LU.IsUse, LU.IsSmsUse, A.wAdminName AS RegAdminName, LU.RegDatm
+                ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_r_unit_r_seat']} AS RS 
+                    WHERE RS.LrUnitCode = LU.LrUnitCode AND RS.IsStatus = 'Y' AND RS.SeatStatusCcd IN (727002, 727003)) AS UseSeatCnt
                 ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_seat_register']} AS SR 
-                            WHERE SR.LrCode = LU.LrCode AND SR.LrUnitCode = LU.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (638001,638002,638003)) AS UseSeatCnt
+                    WHERE SR.LrCode = LU.LrCode AND SR.LrUnitCode = LU.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (728001,728002)) AS UseMemberSeatCnt
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy(['LU.RegDatm' => 'DESC'])->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -273,8 +277,10 @@ class LectureRoomModel extends WB_Model
         ,lu.LrUnitCode, lu.LrCode, lu.UnitName, lu.UseQty, lu.TransverseNum, lu.StartNo, lu.EndNo
         ,lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lu.SeatMapFileRoute, lu.SeatMapFileName, lu.Desc, lu.IsSmsUse, lu.SmsContent, lu.SendTel, lu.IsUse, lu.RegDatm, lu.UpdDatm
         ,admin.wAdminName AS RegAdminName, admin2.wAdminName AS UpdAdminName
+        ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_r_unit_r_seat']} AS RS 
+            WHERE RS.LrUnitCode = LU.LrUnitCode AND RS.IsStatus = 'Y' AND RS.SeatStatusCcd IN (727002, 727003)) AS UseSeatCnt
         ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_seat_register']} AS SR
-        WHERE SR.LrCode = lu.LrCode AND SR.LrUnitCode = lu.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (638001,638002,638003)) AS UseSeatCnt
+            WHERE SR.LrCode = lu.LrCode AND SR.LrUnitCode = lu.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (728001,728002)) AS UseMemberSeatCnt
         ";
         $from = "
             FROM {$this->_table['lectureroom']} AS lr
@@ -370,7 +376,7 @@ class LectureRoomModel extends WB_Model
                 SELECT rs.LrUnitCode, rs.LrrursIdx, rs.SeatNo, rs.SeatStatusCcd, sr.MemIdx, mem.MemName, sc.CcdName AS SeatStatusName
                 FROM {$this->_table['lectureroom_r_unit_r_seat']} AS rs
                 INNER JOIN {$this->_table['sys_code']} AS sc ON rs.SeatStatusCcd = sc.Ccd
-                LEFT JOIN {$this->_table['lectureroom_seat_register']} AS sr ON rs.LrrursIdx = sr.NowLrrursIdx AND sr.IsStatus = 'Y' AND sr.SeatStatusCcd IN (638001,638002,638003)
+                LEFT JOIN {$this->_table['lectureroom_seat_register']} AS sr ON rs.LrrursIdx = sr.NowLrrursIdx AND sr.IsStatus = 'Y' AND sr.SeatStatusCcd IN (728001,728002)
                 LEFT JOIN {$this->_table['order_product']} AS op ON sr.OrderProdIdx = op.OrderProdIdx AND op.PayStatusCcd = '676001'
                 LEFT JOIN {$this->_table['member']} AS mem ON sr.MemIdx = mem.MemIdx
                 WHERE rs.LrUnitCode = '{$lr_unit_code}' AND rs.IsStatus = 'Y'

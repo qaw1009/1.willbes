@@ -162,7 +162,9 @@
                                     <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                 @endif
                                     <td>{{ $order_prod_row['ProdCode'] }}</td>
-                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                    <td>{{ $order_prod_row['ProdAddInfo'] }}
+                                        <div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div>
+                                        {{ $order_prod_row['ProdName'] }}
                                         @if(empty($order_prod_row['OrderSubProdList']) === false)
                                             <button name="btn_sub_product" class="btn btn-xs btn-success ml-5 mb-0" data-toggle="popover" data-html="true" data-content="{!! $order_prod_row['OrderSubProdList'] !!}">선택강좌</button>
                                         @endif
@@ -237,7 +239,10 @@
                                         <td>{{ $order_prod_row['ProdTypeCcdName'] }}
                                             {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
                                         </td>
-                                        <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                        <td>{{ $order_prod_row['ProdAddInfo'] }}
+                                            <div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div>
+                                            {{ $order_prod_row['ProdName'] }}
+                                        </td>
                                         <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                         <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                         <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
@@ -348,7 +353,10 @@
                                     @if($order_prod_row['PayStatusCcd'] == $_pay_status_ccd['refund'])
                                         <tr>
                                             <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
-                                            <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                            <td>{{ $order_prod_row['ProdAddInfo'] }}
+                                                <div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div>
+                                                {{ $order_prod_row['ProdName'] }}
+                                            </td>
                                             <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                             <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                             <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
@@ -405,7 +413,9 @@
                                     <td>{{ $refund_prod_row['RefundDatm'] }}</td>
                                     <td>
                                         @foreach($refund_prod_row['ProdName'] as $sub_idx => $refund_prod_name)
-                                            <div class="blue inline-block">[{{ $refund_prod_row['LearnPatternCcdName'][$sub_idx] or $refund_prod_row['ProdTypeCcdName'][$sub_idx] }}]</div> {{ $refund_prod_name }}
+                                            {{ $refund_prod_row['ProdAddInfo'][$sub_idx] }}
+                                            <div class="blue inline-block">[{{ $refund_prod_row['LearnPatternCcdName'][$sub_idx] or $refund_prod_row['ProdTypeCcdName'][$sub_idx] }}]</div>
+                                            {{ $refund_prod_name }}
                                             ({{ number_format($refund_prod_row['RefundPrice'][$sub_idx]) }}원)<br/>
                                         @endforeach
                                     </td>

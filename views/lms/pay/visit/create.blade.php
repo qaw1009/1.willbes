@@ -95,7 +95,9 @@
                                     @foreach($data['order_prod'] as $order_prod_row)
                                         <tr>
                                             <td>{{ $order_prod_row['CampusCcdName'] }}</td>
-                                            <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                            <td>{{ $order_prod_row['ProdAddInfo'] }}
+                                                <div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div>
+                                                {{ $order_prod_row['ProdName'] }}
                                                 <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
                                                 <input type="hidden" name="remark[]" value="{{ $order_prod_row['Remark'] }}"/>
                                                 <div class="lec_disc_info red">{{ $order_prod_row['Remark'] }}</div>
@@ -181,7 +183,9 @@
                                         @foreach($data['order_prod'] as $order_prod_row)
                                             <tr id="prod_{{ $order_prod_row['ProdCode'] }}">
                                                 <td>{{ $order_prod_row['CampusCcdName'] }}</td>
-                                                <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                                <td>{{ $order_prod_row['ProdAddInfo'] }}
+                                                    <div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div>
+                                                    {{ $order_prod_row['ProdName'] }}
                                                     <input type="hidden" name="prod_code[]" value="{{ $order_prod_row['ProdCode'] }}:{{ $order_prod_row['ProdType'] }}:{{ $order_prod_row['LearnPatternCcd'] }}"/>
                                                     @if($order_prod_row['ProdType'] == 'reading_room' || $order_prod_row['ProdType'] == 'locker')
                                                         <div class="red inline-block">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</div>
@@ -507,7 +511,9 @@
                     if ($selected_prod_code.hasOwnProperty(code) === false) {
                         html += '<tr id="prod_' + code + '">\n' +
                             '    <td>' + data.campusCcdName + '</td>\n' +
-                            '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
+                            '    <td>' + (typeof(data.cateName) !== 'undefined' ? data.cateName : '') +
+                            '    ' + (typeof(data.studyPatternCcdName) !== 'undefined' && data.studyPatternCcdName !== '' ? ' | ' + data.studyPatternCcdName : '') +
+                            '    ' + '<div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
                             '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
                             '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">' + data.prodTypeCcdName + '배정</button>' : '') +
                             '    ' + (data.prodType === 'mock_exam' ? '<br/><button type="button" name="btn_set_mock_exam" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">신청정보입력</button>' : '') +

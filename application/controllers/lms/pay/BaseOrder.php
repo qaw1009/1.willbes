@@ -28,7 +28,7 @@ class BaseOrder extends \app\controllers\BaseController
     protected function show($params = [])
     {
         // add join array
-        $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct', 'visit_card'];
+        $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct', 'visit_card', 'category'];
         if (in_array($this->_order_type, ['order', 'visit']) === true) {
             $_show_add_join[] = 'campus_all';
         } elseif (in_array($this->_order_type, ['offvisitpackage', 'offprofassign']) === true) {
@@ -82,7 +82,18 @@ class BaseOrder extends \app\controllers\BaseController
         $admin_pay_data = [];
         $delivery_addr = [];
 
+        // 상품 부가정보 대상 상품타입공통코드 (온라인/학원강좌만)
+        $arr_lec_prod_type_ccd = array_filter_keys($this->orderListModel->_prod_type_ccd, ['on_lecture', 'off_lecture']);
+
         foreach ($data as $idx => $row) {
+            // 상품 부가정보 컬럼 추가 (온라인/학원강좌만)
+            $data[$idx]['ProdAddInfo'] = '';
+
+            if (in_array($row['ProdTypeCcd'], $arr_lec_prod_type_ccd) === true) {
+                $data[$idx]['ProdAddInfo'] = $row['CateName'];    // 카테고리명
+                empty($row['StudyPatternCcdName']) === false && $data[$idx]['ProdAddInfo'] .= ' | ' . $row['StudyPatternCcdName'];  // 수강형태(학원)
+            }
+
             if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
                 // 환불내역 데이터 가공 (환불 관련 메뉴에서만 사용)
                 if ($this->_is_refund === true) {
@@ -92,6 +103,7 @@ class BaseOrder extends \app\controllers\BaseController
                     $refund_data[$row['RefundReqIdx']]['RefundPrice'][] = $row['RefundPrice'];
                     $refund_data[$row['RefundReqIdx']]['CardRefundPrice'][] = $row['CardRefundPrice'];
                     $refund_data[$row['RefundReqIdx']]['CashRefundPrice'][] = $row['CashRefundPrice'];
+                    $refund_data[$row['RefundReqIdx']]['ProdAddInfo'][] = $data[$idx]['ProdAddInfo'];
 
                     $refund_data[$row['RefundReqIdx']] = array_merge($refund_data[$row['RefundReqIdx']], [
                         'RefundDatm' => $row['RefundDatm'], 'PayStatusCcdName' => $row['PayStatusCcdName'], 'IsApproval' => $row['IsApproval'], 'RefundType' => $row['RefundType'],

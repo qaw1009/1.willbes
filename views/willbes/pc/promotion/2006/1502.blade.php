@@ -40,8 +40,8 @@
 		.evt_01 table td {padding:15px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center; font-size:14px}
 		.evt_01 table th {background: #2e3044; color:#fff; font-weight: bold;}
 		.evt_01 table tbody th {background: #9697a1; color:#fff;} 
-		.evt_01 .buyLec {margin-top:30px}
-		.evt_01 .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
+		.evt_01 .buyLec {width:980px; margin:50px auto 0}
+		.evt_01 .buyLec a {display:block; text-align:cetner; font-size:30px; font-weight:600; background:#57c274; color:#fff; padding:20px 0; border-radius:50px}
 		.evt_01 .buyLec a:hover {background:#e83e3e; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
 
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
@@ -73,7 +73,8 @@
                 <li><a href="#tab06">민사소송</a></li>
 			</ul>
 			<div id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_1.png" alt="노동법" usemap="#MaplecA" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_01.jpg" alt="노동법" usemap="#MaplecA" border="0" />
+                {{--
                 <map name="MaplecA" id="MaplecA">
                     <area shape="rect" coords="806,353,906,382" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160341" alt="방강수"/>
                     <area shape="rect" coords="807,393,906,421" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160342" />
@@ -100,9 +101,11 @@
                     <area shape="rect" coords="806,2277,905,2306" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160399" />
                     <area shape="rect" coords="807,2317,905,2346" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160406" />
                 </map>
+                --}}
 			</div>
 			<div id="tab02">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_2.png" alt="행정쟁송" usemap="#Map2" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_02.jpg" alt="행정쟁송" usemap="#Map2" border="0" />
+                {{--
                 <map name="Map2" id="Map2">
                     <area shape="rect" coords="805,353,905,382" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160413" alt="조현"/>
                     <area shape="rect" coords="805,394,905,421" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160414" />
@@ -135,9 +138,12 @@
                     <area shape="rect" coords="805,2865,905,2894" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160449" />
                     <area shape="rect" coords="806,2905,905,2933" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160450" />
                 </map>
+                {{--
+
 			</div>
 			<div id="tab03">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_3.png" alt="인사관리" usemap="#Map3" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_03.jpg" alt="인사관리" usemap="#Map3" border="0" />
+                {{--
                 <map name="Map3" id="Map3">
                     <area shape="rect" coords="805,353,904,382" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160407" alt="김유미"/>
                     <area shape="rect" coords="806,393,905,423" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160408" />
@@ -158,9 +164,11 @@
                     <area shape="rect" coords="806,1690,905,1718" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160455" />
                     <area shape="rect" coords="805,1730,905,1759" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160456" />
                 </map>
+                --}}
 			</div>
 			<div id="tab04">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_4.png" alt="경영조직" usemap="#Map4" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_04.jpg" alt="경영조직" usemap="#Map4" border="0" />
+                {{--
                 <map name="Map4" id="Map4">
                     <area shape="rect" coords="806,353,905,382" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160464" alt="김유미"/>
                     <area shape="rect" coords="805,393,904,422" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160465" />
@@ -181,9 +189,11 @@
                     <area shape="rect" coords="805,1689,905,1717" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160482" />
                     <area shape="rect" coords="806,1730,904,1757" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160483" />
                 </map>
+                --}}
 			</div>
 			<div id="tab05">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_5.png" alt="노동경제" usemap="#Map5" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_05.jpg" alt="노동경제" usemap="#Map5" border="0" />
+                {{--
                 <map name="Map5" id="Map5">
                     <area shape="rect" coords="805,353,905,382" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160370" alt="강두성"/>
                     <area shape="rect" coords="805,393,905,422" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160371" />
@@ -192,9 +202,11 @@
                     <area shape="rect" coords="805,514,905,542" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160380" />
                     <area shape="rect" coords="805,553,904,581" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160382" />
                 </map>
+                --}}
             </div>
             <div id="tab06">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu03_6.png" alt="민사소송" usemap="#Map6" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1502_03_06.jpg" alt="민사소송" usemap="#Map6" border="0" />
+                {{--
                 <map name="Map6" id="Map6">
                     <area shape="rect" coords="806,355,905,383" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160383" alt="김춘환"/>
                     <area shape="rect" coords="805,394,905,423" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160388" />
@@ -209,7 +221,11 @@
                     <area shape="rect" coords="805,1102,905,1131" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160404 " />
                     <area shape="rect" coords="806,1142,905,1170" href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160405 " />
                 </map>
+                --}}
 			</div>
+            <div class="buyLec">
+                <a href="https://job.willbes.net/Package/index/cate/309002/pack/648001">공인노무사 2차 T-PASS 수강신청 ></a>
+            </div>
 		</div>
 
 		<div class="evtCtnsBox evtInfo NGR">

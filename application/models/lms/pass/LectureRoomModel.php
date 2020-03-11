@@ -572,7 +572,9 @@ class LectureRoomModel extends WB_Model
                 $input_data[] = [
                     'LrUnitCode' => $lr_unit_code,
                     'SeatNo' => $no,
-                    'SeatStatusCcd' => $this->_arr_seat_status_ccd['N']
+                    'SeatStatusCcd' => $this->_arr_seat_status_ccd['N'],
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
                 ];
                 $no++;
             }

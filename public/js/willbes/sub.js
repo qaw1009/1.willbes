@@ -466,9 +466,9 @@ $('*[id*=QuickMenuB]:visible').ready(function() {
     }
 });
 
-/*장바구니*/
+/*방문결제 장바구니*/
 $(function() {
-    var nav = $('.Aside');
+    var nav = $('#AsideBasket');
     var navTop = nav.offset().top+100;
     var navHeight = nav.height()+10;
     var showFlag = false;
@@ -492,6 +492,7 @@ $(function() {
         }
     });
 });
+
 
 // image flipped
 $(document).ready(function(){

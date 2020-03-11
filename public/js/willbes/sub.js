@@ -491,8 +491,8 @@ $(function() {
             }
         }
     });
-});
-*/
+});*/
+
 
 // image flipped
 $(document).ready(function(){

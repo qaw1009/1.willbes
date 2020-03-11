@@ -52,7 +52,7 @@
                             <td class="w-file tx-left pl20" colspan="4">
                                 @foreach($data['AttachData'] as $row)
                                     @if($row['FileType'] == 0)
-                                        <a href="{{front_url($default_path.'/download/cate/'.$__cfg['CateCode'].'?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                        <a href="{{front_url($default_path.'/download/cate/'.$__cfg['CateCode'].'?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}">
                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                     @endif
                                 @endforeach

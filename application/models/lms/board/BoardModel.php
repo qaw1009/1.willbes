@@ -685,6 +685,8 @@ class BoardModel extends WB_Model
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_predict} AS PP ON LB.PredictIdx = PP.PredictIdx AND PP.IsUse ='Y'                    
                 ";
                 break;
         }

@@ -36,12 +36,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="seat_choice_start_date" name="seat_choice_start_date" value="" autocomplete="off">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="seat_choice_end_date" name="seat_choice_end_date" value="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드, 강의실 검색 가능</p>
+                        <p class="form-control-static">강의실 명칭, 코드 검색 가능</p>
                     </div>
                 </div>
             </div>
@@ -65,21 +65,25 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <table id="list_ajax_table" class="table table-striped table-bordered">
-                <thead>
+            <table id="list_ajax_table" class="table table-bordered table-striped">
+                <thead class="bg-white-gray">
                 <tr>
-                    <th>No</th>
-                    <th>운영사이트</th>
-                    <th>캠퍼스</th>
-                    <th>강의실코드</th>
-                    <th>강의실명</th>
-                    <th>좌석현황<br>(사용중/총좌석수)</th>
-                    <th>잔여석</th>
-                    <th>좌석선택기간</th>
-                    <th>자동문자 사용여부</th>
-                    <th>사용여부</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
+                    <th rowspan="2" class="text-center valign-middle">No</th>
+                    <th rowspan="2" class="text-center valign-middle">운영사이트</th>
+                    <th rowspan="2" class="text-center valign-middle">캠퍼스</th>
+                    <th rowspan="2" class="text-center valign-middle">강의실코드</th>
+                    <th rowspan="2" class="text-center valign-middle">강의실명</th>
+                    <th colspan="5" class="text-center valign-middle">강의실정보</th>
+                    <th rowspan="2" class="text-center valign-middle">사용여부</th>
+                    <th rowspan="2" class="text-center valign-middle">등록자</th>
+                    <th rowspan="2" class="text-center valign-middle">등록일</th>
+                </tr>
+                <tr>
+                    <th class="valign-middle">좌석정보명</th>
+                    <th class="valign-middle">좌석선택기간</th>
+                    <th class="valign-middle">사용중/총좌석</th>
+                    <th class="valign-middle">잔여석</th>
+                    <th class="valign-middle">자동문자 사용여부</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -98,7 +102,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 강의실좌석등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-5"></i> 마스터강의실등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/pass/lectureRoom/regist/create') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
@@ -116,19 +120,61 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
-                    {'data' : 'ProdCode'},
+                    {'data' : 'LrCode'},
                     {'data' : 'LectureRoomName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.LrIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.LrCode + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'LakeLayer'},
-                    {'data' : 'sub_RealSalePrice'},
-                    {'data' : 'main_RealSalePrice'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify-seat-modal" data-idx="'+row.LrIdx+'" data-prod-code="'+row.ProdCode+'"><u>'+row.countY+'/'+row.UseQty+'</u></a>';
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5 btn-unit-modify bg-danger" style="border-bottom: 1px solid #ff9797; cursor:pointer;" data-lr-code="'+row.LrCode+'" data-lr-unit-code="'+key.LrUnitCode+'">' + key.UnitName + '[' + key.LrUnitCode + ']' + '</div>';
+                                }
+                            });
+                            return str;
                         }},
-                    {'data' : 'countN'},
-                    {'data' : 'IsSmsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">' + key.SeatChoiceStartDate + ' ~ ' + key.SeatChoiceEndDate + '</div>';
+                                }
+                            });
+                            return str;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5 btn-unit-seat-view bg-danger" style="border-bottom: 1px solid #ff9797; cursor:pointer;" data-lr-code="'+row.LrCode+'" data-lr-unit-code="'+key.LrUnitCode+'">' + key.UseSeatCnt + '/' + key.TotalSeat + '</div>';
+                                }
+                            });
+                            return str;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">' + key.RemainSeatCnt + '</div>';
+                                }
+                            });
+                            return str;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">';
+                                    str += (key.IsSmsUse == 'Y') ? '사용' : '미사용';
+                                    str +=  '</div>';
+                                }
+                            });
+                            return str;
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -136,6 +182,25 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]
+            });
+
+            // 데이터 수정 폼
+            $list_table.on('click', '.btn-modify', function() {
+                location.href='{{ site_url('/pass/lectureRoom/regist/create/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            $list_table.on('click', '.btn-unit-modify', function() {
+                $('.btn-unit-modify').setLayer({
+                    "url" : "{{ site_url('/pass/lectureRoom/regist/createUnitModal/') }}" + $(this).data('lr-code') + '/' + $(this).data('lr-unit-code'),
+                    "width" : "1200",
+                });
+            });
+
+            $list_table.on('click', '.btn-unit-seat-view', function() {
+                $('.btn-unit-seat-view').setLayer({
+                    "url" : "{{ site_url('/pass/lectureRoom/regist/infoSeatModal/') }}" + $(this).data('lr-code') + '/' + $(this).data('lr-unit-code'),
+                    "width" : "1200",
+                });
             });
         });
     </script>

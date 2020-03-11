@@ -864,9 +864,11 @@ class On extends \app\controllers\FrontController
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
 
+        /*
         if($lec['ChgStartNum'] >= 3) {
-            //return $this->json_error('시작일 변경횟수를 초과했습니다.');
+            return $this->json_error('시작일 변경횟수를 초과했습니다.');
         }
+        */
 
         $log = $this->classroomFModel->getStartDateLog([
             'EQ' => [
@@ -877,6 +879,19 @@ class On extends \app\controllers\FrontController
                 'OrderProdIdx' => $lec['OrderProdIdx']
             ]
         ]);
+
+        if(empty($lec['StudyStartDate']) == false){
+            $lec['setStartDate'] = (substr($lec['OrderDate'], 0, 10) > $lec['StudyStartDate']) ? substr($lec['OrderDate'], 0, 10) : $lec['StudyStartDate'];
+
+        } else {
+            $lec['setStartDate'] = substr($lec['OrderDate'],0, 10);
+        }
+
+        $lec['setEndDate'] = date("Y-m-d", strtotime(substr($lec['setStartDate'], 0, 10).'+30day'));
+
+        if($lec['setStartDate'] < $today){
+            $lec['setStartDate'] = $today;
+        }
 
         return $this->load->view('/classroom/on/layer/change_start_date', [
             'lec' => $lec,
@@ -976,9 +991,21 @@ class On extends \app\controllers\FrontController
             return $this->json_error('수강연장 강의는 시작일 변경이 불가능합니다.');
         }
 
+        if(empty($lec['StudyStartDate']) == false){
+            $lec['setStartDate'] = (substr($lec['OrderDate'], 0, 10) > $lec['StudyStartDate']) ? substr($lec['OrderDate'], 0, 10) : $lec['StudyStartDate'];
 
-        if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
-            return $this->json_error('시작일은 주문일로부터 30일 이내만 변경 가능합니다.');
+        } else {
+            $lec['setStartDate'] = substr($lec['OrderDate'],0, 10);
+        }
+
+        $lec['setEndDate'] = date("Y-m-d", strtotime(substr($lec['setStartDate'], 0, 10).'+30day'));
+
+        if($start_date > $lec['setEndDate']){
+            return $this->json_error('시작일은 주문일(개강일)로부터 30일 이내만 변경 가능합니다.');
+        }
+
+        if($start_date < $lec['setStartDate']){
+            return $this->json_error('시작일은 개강일 이후로만 변경이 가능합니다.');
         }
 
         if($this->classroomFModel->setStartDate([
@@ -989,6 +1016,7 @@ class On extends \app\controllers\FrontController
                 'OrderProdIdx' => $lec['OrderProdIdx']
             ], $start_date) === true){
             return $this->json_result(true);
+            
         } else {
             return $this->json_error('강의 시작일 변경중에 오류가 발생했습니다.');
         }
@@ -1713,5 +1741,6 @@ class On extends \app\controllers\FrontController
 
         return false;
     }
+
 
 }

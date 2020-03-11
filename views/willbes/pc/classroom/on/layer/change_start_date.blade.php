@@ -51,7 +51,7 @@
                                     <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
                                     <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
                                     <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
-                                    <input type="text" id="startdate" name="startdate" class="iptDate" maxlength="10" value="" data-maxdate="{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}" data-study-period="{{ $lec['RealLecExpireDay'] }}" readonly="readonly">&nbsp; ~&nbsp;
+                                    <input type="text" id="startdate" name="startdate" class="iptDate" maxlength="10" value="" data-maxdate="{{ $lec['setEndDate'] }}" data-study-period="{{ $lec['RealLecExpireDay'] }}" readonly="readonly">&nbsp; ~&nbsp;
                                     <input type="text" id="enddate" class="iptDate" maxlength="10" readonly="readonly">
                                     시작일 입력시, 종료일이 자동 변경됩니다
                                 </form>
@@ -114,8 +114,8 @@
 <script>
     $(document).ready(function() {
         $('#startdate').datepicker({
-            startDate: "{{ date("Y-m-d", time()) }}",
-            endDate: "{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}",
+            startDate: "{{ $lec['setStartDate'] }}",
+            endDate: "{{ $lec['setEndDate'] }}",
             format : "yyyy-mm-dd",
             language : "kr",
             todayHighlight: true,
@@ -125,17 +125,17 @@
         $('#startdate').on('change', function(){
             var $cdate = $(this).val();
 
-            if($cdate > '{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}'){
+            if($cdate > '{{ $lec['setEndDate'] }}'){
                 $(this).val('');
                 $('#enddate').val('');
-                alert("수강시작일은 주문일로부터 30일 이내만 변경 가능합니다.");
+                alert("수강시작일은 주문일(개강일)로부터 30일 이내만 변경 가능합니다.");
                 return;
             }
 
-            if($cdate < '{{ date("Y-m-d", time()) }}'){
+            if($cdate < '{{ $lec['setStartDate'] }}' || $cdate < '{{ date('Y-m-d') }}'){
                 $(this).val('');
                 $('#enddate').val('');
-                alert("시작일은 오늘 이전 날짜는 불가능합니다.");
+                alert("시작일은 {{ date('d월 m일', strtotime($lec['setStartDate'])) }} 이전 날짜는 불가능합니다.");
                 return;
             }
 

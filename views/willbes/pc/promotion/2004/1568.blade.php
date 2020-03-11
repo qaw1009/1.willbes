@@ -42,13 +42,19 @@
         </div>
 
         <div class="evtCtnsBox evt_03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1568_03.jpg" alt="파이널 정리 특강" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1568_03.jpg" alt="파이널 정리 특강" usemap="#Map1568a" border="0" />
+            <map name="Map1568a" id="Map1568a">
+                <area shape="rect" coords="53,912,343,1026" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1253" target="_blank" />
+                <area shape="rect" coords="418,912,701,1025" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1254&prof_idx=50500" target="_blank" />
+                <area shape="rect" coords="772,915,1060,1029" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1255&prof_idx=50648" target="_blank" />
+            </map>
         </div>
 
+        {{--    
         <div class="evtCtnsBox evt_04" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1568_04.jpg" alt="수강신청" />
-            
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1568_04.jpg" alt="수강신청" />            
         </div>
+        --}}
 
         <div class="evtCtnsBox evt_05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1568_05.jpg" alt="합격을 합신" />

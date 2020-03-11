@@ -64,14 +64,14 @@
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
                                 <col style="width: 70px;">
-                                <col style="width: 120px;">
-                                <col style="width: 120px;">
-                                <col style="width: 90px;">
-                                <col style="width: 90px;">
-                                <col style="width: 120px;">
+                                <col style="width: 130px;">
                                 <col style="width: 160px;">
-                                <col style="width: 80px;">
                                 <col style="width: 90px;">
+                                <col style="width: 90px;">
+                                <col style="width: 120px;">
+                                <col style="width: 120px;">
+                                <col style="width: 80px;">
+                                <col style="width: 100px;">
                             </colgroup>
                             <thead>
                                 <tr>
@@ -147,14 +147,14 @@
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
                                 <col style="width: 70px;">
-                                <col style="width: 120px;">
+                                <col style="width: 130px;">
                                 <col style="width: 100px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
                                 <col style="width: 150px;">
                                 <col style="width: 140px;">
                                 <col style="width: 70px;">
-                                <col style="width: 110px;">
+                                <col style="width: 100px;">
                             </colgroup>
                             <thead>
                             <tr>

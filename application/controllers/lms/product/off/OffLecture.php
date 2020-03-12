@@ -154,6 +154,10 @@ Class OffLecture extends CommonLecture
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
+        //마스터강의실정보
+        $lecture_room_info['master'] = $this->lectureRoomModel->listLectureRoom();
+        //회차정보
+        $lecture_room_info['unit'] = $this->lectureRoomModel->listLectureRoomUnit();
 
         $prodcode = null;
         $data = null;
@@ -169,6 +173,7 @@ Class OffLecture extends CommonLecture
         $data_autofreebie = [];
         $data_sublecture = [];
         $data_lecturedate = [];
+        $data_product_lecture_room = null;    //강의실좌석 상품데이타
 
         if(empty($params[0]) === false) {
             $method='PUT';
@@ -188,6 +193,8 @@ Class OffLecture extends CommonLecture
             $data_autocoupon = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_sublecture = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
             $data_lecturedate = $this->offLectureModel->findLectureDateListForModify($prodcode);
+
+            $data_product_lecture_room = $this->lectureRoomModel->findProductLectureRoom($prodcode);
         }
 
         $this->load->view('product/off/offlecture/create',[
@@ -202,6 +209,7 @@ Class OffLecture extends CommonLecture
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
             ,'campusList' =>$campusList     //캠퍼스목록
+            ,'lecture_room_info' => $lecture_room_info  //마스터 강의실 정보 및 상세
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
@@ -216,6 +224,7 @@ Class OffLecture extends CommonLecture
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
             ,'data_lecturedate' =>$data_lecturedate
+            ,'data_product_lecture_room' => $data_product_lecture_room
             ,'def_site_code' => $def_site_code
             ,'arr_site_code' => $arr_site_code
         ]);

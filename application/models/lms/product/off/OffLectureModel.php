@@ -214,6 +214,16 @@ class OffLectureModel extends CommonLectureModel
             }
             /*----------------          Json 데이터 등록        ---------------*/
 
+            /*----------------          강의실 좌석 상품 등록        ---------------*/
+            $lr_code = element('lr_code', $input);
+            $lr_unit_code = element('lr_unit_code', $input);
+            if (empty($lr_code) === false && empty($lr_unit_code) === false) {
+                if ($this->lectureRoomModel->_addProductLectureRoom($prodcode, $lr_code, $lr_unit_code) !== true) {
+                    throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
+                }
+            }
+            /*----------------          강의실 좌석 상품 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -338,6 +348,16 @@ class OffLectureModel extends CommonLectureModel
                 throw new \Exception('JSON 데이터 등록에 실패했습니다.');
             }
             /*----------------          Json 데이터 등록        ---------------*/
+
+            /*----------------          강의실 좌석 상품 등록        ---------------*/
+            $lr_code = element('lr_code', $input);
+            $lr_unit_code = element('lr_unit_code', $input);
+            if (empty($lr_code) === false && empty($lr_unit_code) === false) {
+                if ($this->lectureRoomModel->_addProductLectureRoom($prodcode, $lr_code, $lr_unit_code) !== true) {
+                    throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
+                }
+            }
+            /*----------------          강의실 좌석 상품 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

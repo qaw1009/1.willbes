@@ -12,7 +12,8 @@ Class CommonLecture extends \app\controllers\BaseController
                                     ,'sys/btob'
                                     ,'product/off/offLecture'
                                     ,'product/off/offPackageAdmin'
-                                    ,'product/on/commonLecture');
+                                    ,'product/on/commonLecture'
+                                    ,'pass/lectureRoom');
 
     protected $helpers = array('download');
 

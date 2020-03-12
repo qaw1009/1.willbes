@@ -22,8 +22,8 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/190821_nomu01_bg.jpg) no-repeat center top;}	
-		.evt_01 {background:#0b0d1a;}
+		.evt_top {background:#15334e url(https://static.willbes.net/public/images/promotion/2020/03/1501_top_bg.jpg) no-repeat center top;}	
+		.evt_01 {background:#5a7be6;}
 		.evt_02 {background:#fff; padding-bottom:50px}
 		.tabs {border-bottom:1px solid #2e3044; width:980px; margin:0 auto 30px}
 		.tabs li {display:inline; float:left; width:20%;}
@@ -34,6 +34,9 @@
 		.tabs li a.active {background:#2e3044}
 		.tabs li:last-child a {margin:0}
 		.tabs:after {content:""; display:block; clear:both}
+
+		.evt_02s {background:#163450}
+
 
 		.evt_03 {background:#1a1b2d; padding-bottom:100px}
 		.evt_03 div,
@@ -70,15 +73,15 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu01.png" alt="2020 노무패스" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_top.jpg" alt="2020/2021 노무패스" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu02.png" alt="커리큘럼" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_01.jpg" alt="커리큘럼" />
 		</div>
 
 		<div class="evtCtnsBox evt_02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu03.png" alt="1차 강의" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02.jpg" alt="1차 강의" />
 			<ul class="tabs NG">
 				<li><a href="#tab01">민법</a></li>
 				<li><a href="#tab02">노동법</a></li>
@@ -87,21 +90,22 @@
 				<li><a href="#tab05">경영학개론</a></li>
 			</ul>
 			<div id="tab01">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_01_1.png" alt="민법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_01.jpg" alt="민법" />
 			</div>
 			<div id="tab02">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_01_2.png" alt="노동법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_02.jpg" alt="노동법" />
 			</div>
 			<div id="tab03">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_01_3.png" alt="사회보험법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_03.jpg" alt="사회보험법" />
 			</div>
 			<div id="tab04">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_01_4.png" alt="경제학원론" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_04.jpg" alt="경제학원론" />
 			</div>
 			<div id="tab05">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_01_5.png" alt="경영학개론" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_05.jpg" alt="경영학개론" />
 			</div>
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu04.png" alt="2차 강의" />
+			
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03.jpg" alt="2차 강의" />
 			<ul class="tabs tabs6ea NG">
 				<li><a href="#tab06">노동법</a></li>
 				<li><a href="#tab07">행정쟁송법</a></li>
@@ -111,25 +115,38 @@
 				<li><a href="#tab11">노동경제학</a></li>
 			</ul>
 			<div id="tab06">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_1.png" alt="노동법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_01.jpg" alt="노동법" />
 			</div>
 			<div id="tab07">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_2.png" alt="행정쟁송법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_02.jpg" alt="행정쟁송법" />
 			</div>
 			<div id="tab08">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_3.png" alt="인사노무관리" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_03.jpg" alt="인사노무관리" />
 			</div>
 			<div id="tab09">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_4.png" alt="경영조직론" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_04.jpg" alt="경영조직론" />
 			</div>
 			<div id="tab10">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_5.png" alt="민사소송법" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_05.jpg" alt="민사소송법" />
 			</div>
 			<div id="tab11">
-				<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_p_02_6.png" alt="노동경제학" />
+				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03_06.jpg" alt="노동경제학" />
 			</div>
 		</div>
 
+		<div class="evtCtnsBox evt_02s">
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_04.jpg" alt="신청하기" usemap="#Map1501abc" border="0" />
+			<map name="Map1501abc" id="Map1501abc">
+				<area shape="rect" coords="877,538,1051,711" href="" target="_blank" />
+				<area shape="rect" coords="878,741,1051,913" href="" target="_blank" />
+				<area shape="rect" coords="878,943,1051,1116" href="" target="_blank" />
+				<area shape="rect" coords="878,1145,1051,1317" href="" target="_blank" />
+				<area shape="rect" coords="877,1346,1051,1520" href="" target="_blank" />
+				<area shape="rect" coords="877,1549,1050,1721" href="" target="_blank" />
+			</map>
+		</div>
+
+		{{--
 		<div class="evtCtnsBox evt_03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_01.jpg" alt="한림 노무패스"/>
 			<!--div class="NG"><a href="#">한림 노무패스 신청하기 ></a></div-->
@@ -154,8 +171,8 @@
 					<a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/160989">동차 노무패스 프리미엄 [경제] ></a>
 				</li>
 			</ul>
-
 		</div>
+		--}}
 
 		{{--
 		<div class="evtCtnsBox evt_04 NGR">

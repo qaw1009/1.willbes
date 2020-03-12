@@ -42,7 +42,7 @@
         to{color:#000}
         }
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/1489_top_bg.jpg) no-repeat center; height:1186px}
+        .wb_top {background:#030c19 url(https://static.willbes.net/public/images/promotion/2020/03/1489_top_bg.jpg) no-repeat center; height:1415px}
         .wb_top span {position:absolute; left:50%; z-index:1;
             -webkit-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
             -moz-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
@@ -83,6 +83,9 @@
             box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
         }
 
+        .wb_04 {background:#373c44}
+
+        /*
         .wb_04 {
             background:url(https://static.willbes.net/public/images/promotion/2019/12/1489_04_bg.jpg) no-repeat center top; position:relative;
             height:843px;
@@ -102,6 +105,7 @@
             -moz-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
             box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
         }
+        */
 
         .wb_05 {background:#fff} 
         .wb_06 {background:#7f5fce}
@@ -121,6 +125,7 @@
         <div class="skybanner"> 
             <a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_sky.jpg"  alt=""  /></a>
             <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_sky02.jpg"  alt=""  /></a>
+            <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=591&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1489_sky03.jpg"  alt=""  /></a>
         </div>
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -156,11 +161,11 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1489_02.jpg"  alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_02.jpg"  alt=""  />
         </div>
 
         <div class="evtCtnsBox wb_03" id="golec">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03.jpg"  alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_03.jpg"  alt=""  />
             <div class="benefitBox">
                 <ul class="slidesbenefit">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit01.jpg" alt=""/></li>
@@ -184,7 +189,12 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <div class="wb_04Top"><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_04_top.bg.png"  alt=""  /></div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_04.jpg"  alt=""  />
+        </div>
+
+        {{--
+        <div class="evtCtnsBox wb_04">            
+           
             <div class="box-book">
                 <ul class="slidesBook">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_04_b1.png" alt=""/></li>
@@ -206,22 +216,24 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_04_b8.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_04_b9.png" alt=""/></li>
                 </ul>
-            </div> 
+            </div>
+            
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_05 c_both">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1489_05.jpg"  alt=""  />
         </div>
 
         <div class="evtCtnsBox wb_06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1489_06.jpg"  alt="" usemap="#Map1471" border="0"  />
-            <map name="Map1471" id="Map1471">
-                <area shape="rect" coords="227,805,884,903" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" target="_blank" alt="신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_06.jpg"  alt="" usemap="#Map1489abc" border="0" />
+            <map name="Map1489abc" id="Map1489abc">
+                <area shape="rect" coords="278,949,850,1057" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" />
+            </map>  
         </div>
 
         <div class="evtCtnsBox wb_07">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1489_07.jpg"  alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_07.jpg"  alt=""  />
         </div>
     </div>
     <!-- End Container -->

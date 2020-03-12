@@ -7,11 +7,9 @@
     @else
         @include('willbes.pc.layouts.partial.site_tab_menu')
     @endif
-    {{--
-    <div class="Depth">
+    <div class="Depth pb-none">
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
-    --}}
     <div class="Content p_re">
         <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
             · 익명 자유게시판

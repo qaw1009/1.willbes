@@ -75,6 +75,7 @@ Class OffLecture extends CommonLecture
                 'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.CampusCcd' => $this->_reqP('search_campus_code'),
+                'B.LecSaleType' => $this->_reqP('search_lec_sale_type'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),

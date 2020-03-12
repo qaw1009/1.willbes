@@ -676,4 +676,35 @@
     </div>
 </div>
 <!-- End Container -->
+<script>
+    /*방문결제 장바구니*/
+    $(document).ready(function(){
+        var nav = $('#AsideBasket');
+        var navTop = nav.offset().top+100;
+        var navHeight = nav.height()+10;
+        var showFlag = false;
+        nav.css('top', -navHeight+'px');
+        $(window).scroll(function () {
+            var winTop = $(this).scrollTop();
+            if (winTop >= navTop) {
+                if (showFlag == false) {
+                    showFlag = true;
+                    nav
+                        .addClass('AsideFixed')
+                        .stop().animate({'top' : '0px'}, 100);
+                }
+            } else if (winTop <= navTop) {
+                if (showFlag) {
+                    showFlag = false;
+                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
+                        nav.removeClass('AsideFixed');
+                    });
+                }
+            }
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                $("#AsideBasket").stop().animate({top: $(document).height()-2020}, 500);
+            }
+        });
+    });
+</script>
 @stop

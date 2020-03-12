@@ -5511,6 +5511,7 @@ span.calendar_btn {
     font-weight: 600;
     font-size:14px;
 }
+.willbes-Cart-Txt .title span {vertical-align: bottom;}
 /* subContainer : Cart : 결제하기 */
 .LeclistTable .buyTable tr td {
     font-size: 11px;

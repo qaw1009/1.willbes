@@ -10,7 +10,7 @@ class LectureRoomModel extends WB_Model
         'lectureroom_r_unit' => 'lms_lectureroom_r_unit',
         'lectureroom_r_unit_r_seat' => 'lms_lectureroom_r_unit_r_seat',
         'lectureroom_seat_register' => 'lms_lectureroom_seat_register',
-        'product_lectureroom' => 'lms_product_lectureroom',
+        'product_r_lectureroom' => 'lms_product_r_lectureroom',
         'lectureroom_log' => 'lms_lectureroom_log',
         'order_product' => 'lms_order_product',
         'member' => 'lms_member',
@@ -559,7 +559,7 @@ class LectureRoomModel extends WB_Model
 
         $column = "ProdCode, LrCode, LrUnitCode";
         $from = "
-            FROM {$this->_table['product_lectureroom']}
+            FROM {$this->_table['product_r_lectureroom']}
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
@@ -579,7 +579,7 @@ class LectureRoomModel extends WB_Model
             $reg_ip = $this->input->ip_address();
 
             $duplicate_query = /** @lang text */ "
-                INSERT INTO {$this->_table['product_lectureroom']} (ProdCode, LrCode, LrUnitCode, RegDatm, RegAdminIdx, RegIp)
+                INSERT INTO {$this->_table['product_r_lectureroom']} (ProdCode, LrCode, LrUnitCode, RegDatm, RegAdminIdx, RegIp)
                 VALUES ('{$prod_code}', '{$lr_code}', '{$lr_unit_code}', '{$now}', '{$admin_idx}', '{$reg_ip}')
                 ON DUPLICATE KEY UPDATE
                 ProdCode = '{$prod_code}', LrCode = '{$lr_code}', LrUnitCode = '{$lr_unit_code}', UpdDatm = '{$now}', UpdAdminIdx = '{$admin_idx}'

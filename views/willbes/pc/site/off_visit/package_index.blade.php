@@ -25,9 +25,10 @@
                     @endforeach
                 </ul>
                 <div class="CurriBox">
-                    <ul class="btn tx-gray">
+                    <ul class="btn btnthree tx-gray">
                         <li><a class="on" href="{{front_url('/OffVisitPackage')}}">종합반</a></li>
                         <li><a href="{{front_url('/OffVisitLecture')}}">단과반</a></li>
+                        <li><a href="{{front_url('/OffVisitLecture/index/pattern/before')}}">선접수</a></li>
                     </ul>
                     <table cellspacing="0" cellpadding="0" class="curriTable">
                         <colgroup>

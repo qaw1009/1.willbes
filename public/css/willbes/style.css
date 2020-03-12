@@ -2183,7 +2183,6 @@ table.auTable tr td {
 .Content {
     float: left;
     width: 940px;
-    min-height: 1000px;
 }
 .subBtn a {
     display: block;

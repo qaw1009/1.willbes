@@ -2570,10 +2570,10 @@ table.auTable tr td {
 /* subContainer : Content : Lec-buyBtn */
 .willbes-Lec-buyBtn {
     width: 100%;
-    /*position: absolute;
+    position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 10;*/
+    z-index: 10;
 }
 .willbes-Lec-buyBtn .btnAgree {
     float: left;

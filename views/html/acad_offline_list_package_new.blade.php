@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <div class="Content widthAuto810 p_re mt30">
+        <div class="Content widthAuto810 p_re minh1000 mt30">
             <div class="willbes-Lec-Search p_re mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">

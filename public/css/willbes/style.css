@@ -2183,6 +2183,7 @@ table.auTable tr td {
 .Content {
     float: left;
     width: 940px;
+    min-height: 1000px;
 }
 .subBtn a {
     display: block;
@@ -2282,6 +2283,7 @@ table.auTable tr td {
     font-weight: 600;
     color: #fff;
 }
+.curriWrap .CurriBox ul.btnthree li {width: 33.333333%;} 
 
 .curriWrap table.curriTable {
     width: 100%;
@@ -6972,6 +6974,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 .smBox {
     background: #4b9e2b;
 }
+.bfBox {
+    background: #f78484;
+}
 
 .campus_605001 {
     background: #703eb4;
@@ -10399,10 +10404,21 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* subContainer : Content : Aside */
-.Aside {
+.Aside {    
     float: left;
-    height: 1015px;
+    /*min-height: 1000px;*/
+    padding-bottom:30px;
     border: 1px solid #c9c9c9;
+    background: #fff;;
+}
+.AsideFixed {
+    position: fixed;
+    width: 290px !important;
+    left:50%;
+    top:0;
+    margin-top:0 !important;
+    margin-left:270px !important;
+    z-index: 100;
 }
 .Aside .Tit {
     background: #ececec;

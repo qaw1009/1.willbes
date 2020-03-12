@@ -29,6 +29,7 @@ class BaseOrderFModel extends WB_Model
         'mock_register_r_paper' => 'lms_mock_register_r_paper',
         'my_lecture' => 'lms_my_lecture',
         'cert_apply' => 'lms_cert_apply',
+        'category' => 'lms_sys_category',
         'code' => 'lms_sys_code'
     ];
 

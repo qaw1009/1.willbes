@@ -44,6 +44,7 @@ class OrderFModel extends BaseOrderFModel
         $delivery_add_price = 0;
         $is_delivery_info = false;
         $is_package = false;
+        $is_aff_disc = false;
         $is_except_sale_pattern = false;
         $arr_user_coupon_idx = [];
         $use_point = get_var($use_point, 0);
@@ -100,6 +101,11 @@ class OrderFModel extends BaseOrderFModel
             if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
                 $is_package = true;
             }
+
+            // 제휴할인 상품 포함 여부
+            if ($is_aff_disc === false && $row['IsAllianceDisc'] == 'Y') {
+                $is_aff_disc = true;
+            }
             
             // 예외 판매형태 포함 여부 (재수강, 수강연장)
             if ($is_except_sale_pattern === false && $row['SalePatternCcd'] != $this->_sale_pattern_ccd['normal']) {
@@ -112,6 +118,11 @@ class OrderFModel extends BaseOrderFModel
                 $row['IsPoint'] = 'N';
                 $row['IsUsePoint'] = 'N';
             }
+
+            // 상품 부가정보 컬럼 추가
+            $row['ProdAddInfo'] = '';
+            empty($row['CateName']) === false && $row['ProdAddInfo'] .= $row['CateName'] . ' | ';
+            empty($row['StudyPatternCcdName']) === false && $row['ProdAddInfo'] .= $row['StudyPatternCcdName'] . ' | ';
 
             // 변수 초기화
             $prod_qty = $make_type == 'pay' ? 1 : $row['ProdQty'];      // 상품수량
@@ -243,6 +254,7 @@ class OrderFModel extends BaseOrderFModel
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
+        $results['is_aff_disc'] = $is_aff_disc;   // 제휴할인 상품 포함 여부
         $results['is_except_sale_pattern'] = $is_except_sale_pattern;   // 예외 판매형태 포함 여부
         $results['is_available_use_point'] = $total_use_point_target_price > 0;  // 포인트 사용 가능여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : '');   // 대표 주문상품명

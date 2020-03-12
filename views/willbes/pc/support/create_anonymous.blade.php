@@ -7,11 +7,9 @@
     @else
         @include('willbes.pc.layouts.partial.site_tab_menu')
     @endif
-    {{--
-    <div class="Depth">
+    <div class="Depth pb-none">
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
-    --}}
     <div class="Content p_re">
         <form id="url_form" name="url_form" method="GET">
             @foreach($arr_input as $key => $val)

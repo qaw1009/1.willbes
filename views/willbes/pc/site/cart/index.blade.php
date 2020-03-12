@@ -53,11 +53,12 @@
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
                                                 <td class="w-list tx-left p_re pl20">
                                                     <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
+                                                    {{ $row['ProdAddInfo'] }}
                                                     @if($row['CartProdType'] == 'on_pack_lecture')
-                                                        <a href="#none" class="btn-package-info d_inblock" data-cart-idx="{{ $row['CartIdx'] }}">{{ $row['ProdName'] }}</a>
+                                                        <a href="#none" class="btn-package-info d_inblock" data-cart-idx="{{ $row['CartIdx'] }}"><strong>{{ $row['ProdName'] }}</strong></a>
                                                         <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm"></div>
                                                     @else
-                                                        {{ $row['ProdName'] }}
+                                                        <strong>{{ $row['ProdName'] }}</strong>
                                                     @endif
                                                 </td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
@@ -183,7 +184,7 @@
                                         @foreach($results['list']['book'] as $idx => $row)
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                                <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdName'] }}</td>
+                                                <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong></td>
                                                 <td>{{ $row['ProdQty'] }}</td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">

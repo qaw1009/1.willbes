@@ -50,6 +50,11 @@ class Cart extends \app\controllers\FrontController
             $row['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$row['CartProdType']];
             $row['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$row['CartProdType']];
 
+            // 상품 부가정보 컬럼 추가
+            $row['ProdAddInfo'] = '';
+            empty($row['CateName']) === false && $row['ProdAddInfo'] .= $row['CateName'] . ' | ';
+            empty($row['StudyPatternCcdName']) === false && $row['ProdAddInfo'] .= $row['StudyPatternCcdName'] . ' | ';
+
             // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재, off_lecture : 학원강좌)
             $results['list'][$row['CartType']][] = $row;
         }

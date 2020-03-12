@@ -116,6 +116,12 @@
                             <option value="Y">입력</option>
                             <option value="N">미입력</option>
                         </select>
+                        &nbsp;
+                        <select class="form-control" id="search_lec_sale_type" name="search_lec_sale_type">
+                            <option value="">선수강좌구분</option>
+                            <option value="N">일반강좌</option>
+                            <option value="B">선수강좌</option>
+                        </select>
                     </div>
                 </div>
 

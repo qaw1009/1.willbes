@@ -147,7 +147,7 @@
 
         {{--방문결제 이동 버튼 클릭--}}
         $('#buy_off_visit_continue_layer').on('click', '.answerBox_block', function() {
-            location.href = frontPassUrl('/offVisitLecture');
+            location.href = frontPassUrl('/offVisitLecture/index/pattern/before');
         });
 
         {{-- 방문결제 장바구니 담기 --}}

@@ -27,7 +27,8 @@ class CommonLectureModel extends WB_Model
         'copylog' => 'lms_product_copy_log',
         'subproduct' =>'lms_Product_R_Product',          //구매교재,자동지급강좌,자동지급사은품 공통저장
         'product_json' => 'lms_product_json_data',
-        'product_btob' => 'lms_product_r_btob'
+        'product_btob' => 'lms_product_r_btob',
+        'product_r_lectureroom' => 'lms_product_r_lectureroom'
     ];
 
     public function __construct()
@@ -1189,7 +1190,6 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('수강긴간 날짜 정보 복사에 실패했습니다.');
             };
 
-
             // json 데이터 복사
             $insert_column = 'ProdCode, ProdPriceData, ProdBookData, LectureSampleData';
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
@@ -1197,6 +1197,17 @@ class CommonLectureModel extends WB_Model
             $query = 'insert into '.$this->_table['product_json'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['product_json'].' where ProdCode='.$prodcode;
             if($this->_conn->query($query) === false) {
                 throw new \Exception('JSON 데이터 복사에 실패했습니다.');
+            };
+
+            // 강의실 좌석 상품 등록
+            $insert_column = 'ProdCode, LrCode, LrUnitCode, IsUse, IsStatus, RegAdminIdx, RegIp';
+            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+            $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
+            $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
+
+            $query = 'insert into '.$this->_table['product_r_lectureroom'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['product_r_lectureroom'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('강의실 좌석 상품 정보 복사에 실패했습니다.');
             };
 
             //복사 로그 저장

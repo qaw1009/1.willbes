@@ -510,6 +510,26 @@
                     </div>
                 </div>
 
+                {{-- TODO : 차후 기능 오픈 --}}
+                {{--<div class="form-group">
+                    <label class="control-label col-md-2" for="lr_code">강의실좌석정보선택
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <select name="lr_code" id="lr_code"  class="form-control" title="마스터강의실명">
+                            <option value="">마스터강의실명</option>
+                            @foreach($lecture_room_info['master'] as $row)
+                                <option value="{{$row['LrCode']}}" class="{{$row['SiteCode']}}" @if($data_product_lecture_room['LrCode'] == $row['LrCode']) selected="selected"@endif>{{$row['LectureRoomName']}}</option>
+                            @endforeach
+                        </select>
+                        <select name="lr_unit_code" id="lr_unit_code"  class="form-control" title="좌석정보">
+                            <option value="">좌석정보</option>
+                            @foreach($lecture_room_info['unit'] as $row)
+                                <option value="{{$row['LrUnitCode']}}" class="{{$row['LrCode']}}" @if($data_product_lecture_room['LrUnitCode'] === $row['LrUnitCode']) selected="selected"@endif>{{$row['UnitName']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>--}}
+
                 <div class="form-group">
                     <label class="control-label col-md-2">수강대상
                     </label>
@@ -987,6 +1007,8 @@
             $("#CourseIdx").chained("#site_code");
             $("#SubjectIdx").chained("#site_code");
             $("#CampusCcd").chained("#site_code");
+            $("#lr_code").chained("#site_code");
+            $("#lr_unit_code").chained("#lr_code");
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){

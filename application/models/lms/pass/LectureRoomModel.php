@@ -10,6 +10,7 @@ class LectureRoomModel extends WB_Model
         'lectureroom_r_unit' => 'lms_lectureroom_r_unit',
         'lectureroom_r_unit_r_seat' => 'lms_lectureroom_r_unit_r_seat',
         'lectureroom_seat_register' => 'lms_lectureroom_seat_register',
+        'product_lectureroom' => 'lms_product_lectureroom',
         'lectureroom_log' => 'lms_lectureroom_log',
         'order_product' => 'lms_order_product',
         'member' => 'lms_member',
@@ -501,6 +502,94 @@ class LectureRoomModel extends WB_Model
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 강의실 데이타 리스트
+     * @return mixed
+     */
+    public function listLectureRoom()
+    {
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y', 'IsUse' => 'Y']];
+        $column = 'LrCode, SiteCode, CampusCcd, LectureRoomName';
+        $from = "
+            FROM {$this->_table['lectureroom']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['LrCode' => 'DESC'])->getMakeOrderBy();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 강의실회차조회
+     * @return mixed
+     */
+    public function listLectureRoomUnit()
+    {
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y', 'IsUse' => 'Y']];
+        $column = 'LrUnitCode, LrCode, UnitName';
+        $from = "
+            FROM {$this->_table['lectureroom_r_unit']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['LrCode' => 'DESC', 'LrUnitCode' => 'DESC'])->getMakeOrderBy();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * @param $prod_code
+     * @return mixed
+     */
+    public function findProductLectureRoom($prod_code)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'ProdCode' => $prod_code,
+                'IsUse' => 'Y',
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "ProdCode, LrCode, LrUnitCode";
+        $from = "
+            FROM {$this->_table['product_lectureroom']}
+        ";
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 강의실좌석 상품 등록/수정 (단과반 등록시 호출)
+     * @param null $prod_code
+     * @param null $lr_code
+     * @param null $lr_unit_code
+     * @return array|bool
+     */
+    public function _addProductLectureRoom($prod_code = null, $lr_code = null, $lr_unit_code = null)
+    {
+        try {
+            $now =  date('Y-m-d H:i:s');
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            $duplicate_query = /** @lang text */ "
+                INSERT INTO {$this->_table['product_lectureroom']} (ProdCode, LrCode, LrUnitCode, RegDatm, RegAdminIdx, RegIp)
+                VALUES ('{$prod_code}', '{$lr_code}', '{$lr_unit_code}', '{$now}', '{$admin_idx}', '{$reg_ip}')
+                ON DUPLICATE KEY UPDATE
+                ProdCode = '{$prod_code}', LrCode = '{$lr_code}', LrUnitCode = '{$lr_unit_code}', UpdDatm = '{$now}', UpdAdminIdx = '{$admin_idx}'
+            ";
+
+            if ($this->_conn->query($duplicate_query) === false) {
+                throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
             return error_result($e);
         }
         return true;

@@ -148,7 +148,7 @@
                                     <dl class="w-info">
                                         <dt>
                                             기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                            한덕현 교수님
+                                            한덕현 교수님 <span class="oBox bfBox ml10 NSK">선접수</span>
                                         </dt>                                        
                                     </dl>
                                     <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>

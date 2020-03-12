@@ -64,14 +64,14 @@
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
                                 <col style="width: 70px;">
-                                <col style="width: 140px;">
-                                <col style="width: 100px;">
+                                <col style="width: 130px;">
+                                <col style="width: 160px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
                                 <col style="width: 120px;">
-                                <col style="width: 160px;">
+                                <col style="width: 120px;">
                                 <col style="width: 80px;">
-                                <col style="width: 90px;">
+                                <col style="width: 100px;">
                             </colgroup>
                             <thead>
                                 <tr>
@@ -98,7 +98,7 @@
                                         <td class="w-l-price">{{ number_format($row['DiscAllowPrice']) }}원 이상</td>
                                         <td class="w-period">{{ substr($row['IssueDatm'], 0, 16) }}<br/> ~ {{ substr($row['ExpireDatm'], 0, 16) }}</td>
                                         <td class="w-d-day">{{ $row['RemainDay'] }}일</td>
-                                        <td class="w-date">{{ substr($row['IssueDatm'], 0, 10) }}</td>
+                                        <td class="w-date">{{ substr($row['IssueDatm'], 0, 16) }}</td>
                                     </tr>
                                 @endforeach
                             @else
@@ -147,14 +147,14 @@
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
                                 <col style="width: 70px;">
-                                <col style="width: 140px;">
+                                <col style="width: 130px;">
                                 <col style="width: 100px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
                                 <col style="width: 150px;">
                                 <col style="width: 140px;">
                                 <col style="width: 70px;">
-                                <col style="width: 90px;">
+                                <col style="width: 100px;">
                             </colgroup>
                             <thead>
                             <tr>
@@ -181,7 +181,7 @@
                                         <td class="w-l-price">{{ $row['ProdName'] }}</td>
                                         <td class="w-period">{{ $row['OrderNo'] }}</td>
                                         <td class="w-d-day">{{ $row['ValidStatusName'] }}</td>
-                                        <td class="w-date">@if($row['ValidStatusName'] == '만료') {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ substr($row['UseDatm'], 0, 10) }} @endif</td>
+                                        <td class="w-date">@if($row['ValidStatusName'] == '만료') {{ substr($row['ExpireDatm'], 0, 16) }} @else {{ substr($row['UseDatm'], 0, 16) }} @endif</td>
                                     </tr>
                                 @endforeach
                             @else

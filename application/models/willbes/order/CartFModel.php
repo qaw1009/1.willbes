@@ -43,7 +43,7 @@ class CartFModel extends BaseOrderFModel
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.PostData
                 , CA.TargetOrderIdx, CA.TargetProdCode, CA.TargetProdCodeSub 
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
-                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
+                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice, P.IsAllianceDisc
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '", "N", P.IsPoint) as IsPoint
                 , if((PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['retake'] . '") or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint                
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsFreebiesTrans) as IsFreebiesTrans
@@ -53,7 +53,8 @@ class CartFModel extends BaseOrderFModel
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                         
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", PL.IsLecStart) as IsLecStart                                          
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod                               
-                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, PL.LecSaleType
+                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
+                , PL.LecSaleType, SC.CateName
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
@@ -96,7 +97,9 @@ class CartFModel extends BaseOrderFModel
                 left join ' . $this->_table['product_book'] . ' as PB
                     on CA.ProdCode = PB.ProdCode
                 left join ' . $this->_table['bms_book'] . ' as WB
-                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"                    
+                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"  
+                left join ' . $this->_table['category'] . ' as SC
+                    on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                      
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
                 and P.IsStatus = "Y"                                                                  
@@ -771,8 +774,8 @@ class CartFModel extends BaseOrderFModel
         if (empty($disc_data) === false) {
             foreach ($cart_rows as $idx => $row) {
                 if ($row['SalePatternCcd'] == $this->_sale_pattern_ccd['normal'] && array_key_exists($row[$chk_key], $disc_data) === true) {
-                    // 제휴할인일 경우 상품별 판매금액이 50000원 이상일 경우만 할인 적용
-                    if ($chk_key == 'ProdCode' || ($chk_key == 'CartProdType' && $row['RealSalePrice'] >= $aff_min_real_sale_price)) {
+                    // 제휴할인일 경우 독서실제휴할인 상품설정이 적용일 경우만 적용 (판매금액이 50000원 이상 할인적용 정책 삭제 (추후 삭제 예정))
+                    if ($chk_key == 'ProdCode' || ($chk_key == 'CartProdType' && $row['IsAllianceDisc'] == 'Y' && $row['RealSalePrice'] >= $aff_min_real_sale_price)) {
                         // 상품별 맵핑된 할인정보
                         $disc_row = element($row[$chk_key], $disc_data);
 

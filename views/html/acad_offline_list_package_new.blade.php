@@ -29,9 +29,10 @@
                 <li><a href="#none">부평경찰</a></li>
             </ul>
             <div class="CurriBox">
-                <ul class="btn tx-gray">
+                <ul class="btn btnthree tx-gray">
                     <li><a class="on" href="#none">종합반</a></li>
                     <li><a href="#none">단과반</a></li>
+                    <li><a href="#none">선접수</a></li>
                 </ul>
                 <table cellspacing="0" cellpadding="0" class="curriTable">
                     <colgroup>
@@ -78,7 +79,60 @@
             </div>
         </div>
         <!-- curriWrap -->
-        <div class="Content widthAuto810 p_re">
+
+        <div class="willbes-Mypage-TESTZONE c_both mt30">
+            <div class="willbes-Cart-Txt willbes-Mypage-Txt NGR p_re pb20">
+                <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">선접수 수강신청 안내사항 ▼</a></p>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-black pb-zero" style="display:none">
+                    <tbody>
+                        <tr>
+                            <td>
+                            <strong>1. 선접수 수강신청 대상</strong><br>
+                            * GS-1순환 김기홍 행정쟁송법 실강·실영상 수강생<br>
+                            * GS-1순환 김유미 인사노무관리 실강·실영상 수강생<br>
+                            * GS-1순환 김유미 경영조직 실강/실영상 실강·실영상 수강생<br>
+                            <br>
+                            <strong>2. 수강신청 기간 : 홈페이지 및 선접수 수강신청 대상자 추후 문자공지 예정</strong><br>
+                            <span class="tx-red">* 상기 기간 이후 수강신청은 방문접수로만 가능합니다.</span><br>
+                            <br>
+                            <strong>3. 수강신청 강의 : GS-2순환 김기홍 행정쟁송법, 김유미 인사노무관리/경영조직</strong><br>
+                            <br>
+                            <strong>4. 선접수 과목 등록하면서 일반접수 과목 함께 등록하는 경우</strong><br>
+                            * 예시1. 김유미T 강의 선접수 대상자 but 김기홍T 강의 일반접수 대상자인 경우<br>
+                            ▶ 선접수 기간에 김유미T 강의 + 김기홍T <span class="tx-shadow">실영상반</span> 접수 가능<br>
+                            ▶ 선접수 기간에 김기홍T 실강 강의가 마감 안된 경우 <br>
+                                일반접수 기간에 김기홍T 실영상반 → 실강반 변경 가능<br>
+                            * 예시2. 김기홍T 강의 선접수 대상자 but 김유미T 강의 일반접수 대상자인 경우<br>
+                            ▶선접수 기간에 <span class="tx-shadow">김기홍T 강의만 접수 가능</span> + <span class="tx-shadow">일반접수 기간</span>에 <span class="tx-shadow">김유미T 강의 접수 가능</span><br>
+                            * 예시3. 김유미 or 김기홍 선접수 대상자가 선접수 기간에 그외 일반접수 과목(ex: 김정일T 행정쟁송) 같이 접수 가능<br>
+                            <br>
+                            <strong>5. 종합반의 경우 종합반 수강신청 기간에 실강/실영상 마감제한 없이 수강신청 가능</strong><br>
+                            (종합반 수강신청 기간 종합반 카페 및 문자 공지 예정)<br>
+                            * 종합반의 경우는 GS-2순환 강의 4과목을 선택하셔야 수강신청이 완료됩니다.<br>
+                            <strong>6. 기타 선접수 관련 사항</strong><br>
+                            * 교차 선접수 가능<br>
+                            예시) 김유미T GS1 평일 인사관리 수강 → 김유미T GS2 주말 인사관리 신청 가능<br>
+                            * 선접수 대상자 내에서도 실강 경쟁有 (단, 선접수 기간 동안 실영상반은 마감 없이 신청 가능) <br>
+                            <br>
+                            <strong>7. 수강신청 방법 : 방문신청 가능, 온라인신청 가능(모바일 신청 불가)</strong><br>
+                            * 온라인 수강신청 방법 : <span class="tx-red">홈페이지 로그인(필수)</span> → 우측 상단 학원수강신청 > "선접수 수강신청" 메뉴 클릭<br>
+                            * 종합반 원서에 작성된 성함/연락처와 동일한 성함/연락처 정보로 홈페이지 회원 가입 및 로그인을 하셔야 합니다.<br>
+                            * 3/9(월) 11시부터 "선접수 수강신청" 메뉴가 노출됩니다.<br>
+                            <br>
+                            <strong>8. 수강신청 완료 여부 및 신청 과목 확인 방법</strong><br>
+                            (통합 홈페이지 수강신청 내역 확인 방법_기존 방법 예시입니다.)<br>
+                            홈페이지 로그인 → 내 강의실 → 학원강좌 → 수강신청강좌 에서 확인<br>
+                            <span class="tx-shadow">* 별도의 수강증을 발급받지 않으셔도 학원 수강정보에서 신청이 확인되시면 수강신청이 확정된 것으로 수강증은 추후 강의실 입장 전까지
+                            데스크에서 발급받으시기 바랍니다. <br>
+                            * 수강증 발급 순서가 아닌 온라인or방문접수 수강신청 순으로 실강/실영상반 수강신청이 확정됩니다.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+
+        <div class="Content widthAuto810 p_re mt30">
             <div class="willbes-Lec-Search p_re mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">
@@ -173,7 +227,8 @@
                                 <td class="w-list">문제<br/>풀이</td>
                                 <td class="w-data tx-left">
                                     <div class="w-tit w-acad-tit">
-                                        <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}"><강제합격반> [서울시대비] 행정법,행정학(5~6월)</a><span class="oBox smBox ml10 NSK">신림</span>
+                                        <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}"><강제합격반> [서울시대비] 행정법,행정학(5~6월)</a>
+                                        <span class="oBox smBox ml10 NSK">신림</span><span class="oBox bfBox ml10 NSK">선접수</span>
                                     </div>
                                     <dl class="w-info acad">
                                         <dt>
@@ -456,9 +511,9 @@
                 </div>
             </div>
             <!-- willbes-Layer-Box -->
-
         </div>
-        <div class="Aside widthAuto290 NG ml20">
+
+        <div class="Aside widthAuto290 NG ml20 mt30" id="AsideBasket">
             <div class="Tit tx-light-black">장바구니</div>
             <div class="Lec-Pocket-Grid">
                 <div class="LecPocketlist">
@@ -621,4 +676,35 @@
     </div>
 </div>
 <!-- End Container -->
+<script>
+    /*방문결제 장바구니*/
+    $(document).ready(function(){
+        var nav = $('#AsideBasket');
+        var navTop = nav.offset().top+100;
+        var navHeight = nav.height()+10;
+        var showFlag = false;
+        nav.css('top', -navHeight+'px');
+        $(window).scroll(function () {
+            var winTop = $(this).scrollTop();
+            if (winTop >= navTop) {
+                if (showFlag == false) {
+                    showFlag = true;
+                    nav
+                        .addClass('AsideFixed')
+                        .stop().animate({'top' : '0px'}, 100);
+                }
+            } else if (winTop <= navTop) {
+                if (showFlag) {
+                    showFlag = false;
+                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
+                        nav.removeClass('AsideFixed');
+                    });
+                }
+            }
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                $("#AsideBasket").stop().animate({top: $(document).height()-2020}, 500);
+            }
+        });
+    });
+</script>
 @stop

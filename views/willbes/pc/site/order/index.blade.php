@@ -63,7 +63,8 @@
                                         <dl>
                                             <dt class="tit">
                                                 <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
-                                                {{ $row['ProdName'] }}
+                                                {{ $row['ProdAddInfo'] }}
+                                                <strong>{{ $row['ProdName'] }}</strong>
                                                 <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealPayPrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
                                                 <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-cart-idx="{{ $row['CartIdx'] }}" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                                 @if($row['CartProdType'] == 'mock_exam')

@@ -466,7 +466,6 @@ $('*[id*=QuickMenuB]:visible').ready(function() {
     }
 });
 
-
 // image flipped
 $(document).ready(function(){
     $(".Flipped ul li a").mouseenter(function(){

@@ -80,7 +80,7 @@
         </div>
         <!-- curriWrap -->
 
-        <div class="willbes-Mypage-TESTZONE c_both mt30">
+        <div class="willbes-Mypage-TESTZONE c_both mb25">
             <div class="willbes-Cart-Txt willbes-Mypage-Txt NGR p_re pb20">
                 <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">선접수 수강신청 안내사항 ▼</a></p>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black pb-zero" style="display:none">
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <div class="Content widthAuto810 p_re minh1000 mt30">
+        <div class="Content widthAuto810 p_re minh1000">
             <div class="willbes-Lec-Search p_re mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">
@@ -513,7 +513,7 @@
             <!-- willbes-Layer-Box -->
         </div>
 
-        <div class="Aside widthAuto290 NG ml20 mt30" id="AsideBasket">
+        <div class="Aside widthAuto290 NG ml20" id="AsideBasket">
             <div class="Tit tx-light-black">장바구니</div>
             <div class="Lec-Pocket-Grid">
                 <div class="LecPocketlist">
@@ -676,35 +676,5 @@
     </div>
 </div>
 <!-- End Container -->
-<script>
-    /*방문결제 장바구니*/
-    $(document).ready(function(){
-        var nav = $('#AsideBasket');
-        var navTop = nav.offset().top+100;
-        var navHeight = nav.height()+10;
-        var showFlag = false;
-        nav.css('top', -navHeight+'px');
-        $(window).scroll(function () {
-            var winTop = $(this).scrollTop();
-            if (winTop >= navTop) {
-                if (showFlag == false) {
-                    showFlag = true;
-                    nav
-                        .addClass('AsideFixed')
-                        .stop().animate({'top' : '0px'}, 100);
-                }
-            } else if (winTop <= navTop) {
-                if (showFlag) {
-                    showFlag = false;
-                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                        nav.removeClass('AsideFixed');
-                    });
-                }
-            }
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                $("#AsideBasket").stop().animate({top: $(document).height()-2020}, 500);
-            }
-        });
-    });
-</script>
+
 @stop

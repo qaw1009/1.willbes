@@ -601,6 +601,9 @@ select[disabled] {
 .hauto {
   height: auto !important;
 }
+.minh1000 {
+  min-height: 1000px !important;
+}
 
 .mg-auto {margin:0 auto !important}
 .mg-zero,

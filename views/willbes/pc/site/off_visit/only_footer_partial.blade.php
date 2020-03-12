@@ -1,7 +1,7 @@
 <form id="regi_visit_form" name="regi_visit_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <div class="Aside widthAuto290 NG ml20">
+    <div class="Aside widthAuto290 NG ml20 mt30">
         <div class="Tit tx-light-black">장바구니</div>
         <div class="Lec-Pocket-Grid">
             <div id="basket_list"></div>

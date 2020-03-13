@@ -137,7 +137,7 @@
                 @if($learn_pattern === 'off_lecture_before')
                 <div class="willbes-Mypage-TESTZONE c_both mb25">
                     <div class="willbes-Cart-Txt willbes-Mypage-Txt NGR p_re pb20">
-                        <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">선접수 수강신청 안내사항 ▼</a></p>
+                        <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">GS-2순환 선접수 안내사항 ▼</a></p>
                         <table class="txtTable tx-black pb-zero" style="display: none;" cellspacing="0" cellpadding="0">
                             <tbody>
                             <tr>

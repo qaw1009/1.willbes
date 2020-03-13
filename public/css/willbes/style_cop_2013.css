@@ -216,3 +216,13 @@
 .cop2013 .campus_info .btn a img {
     vertical-align: middle;
 }
+
+/* Main Container : QuickMenu : Cop */
+.cop2013 .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}

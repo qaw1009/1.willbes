@@ -46,18 +46,16 @@
             .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
             .check a.infotxt:hover {background:#d9312b}   
         .wb_03 {background:#fff;}  
-        
-        .skybanner {
-            position:fixed;
-            bottom:0;
-            left:50%;
-            margin-left:-1000px;
-            z-index:10;
-        }
+
+        .skybanner {position:fixed; top:250px;right:10px; z-index:1;}
 
     </style>
     
     <div class="p_re evtContent NGR" id="evtContainer">
+        <div class="skybanner">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1480_sky.png" alt="">        
+        </div>   
+
         <div class="evtCtnsBox wb_00">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_00.gif" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
         </div>

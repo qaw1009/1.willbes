@@ -104,7 +104,7 @@
 			<div id="tab05">
 				<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_02_05.jpg" alt="경영학개론" />
 			</div>
-			
+
 			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_03.jpg" alt="2차 강의" />
 			<ul class="tabs tabs6ea NG">
 				<li><a href="#tab06">노동법</a></li>
@@ -137,12 +137,12 @@
 		<div class="evtCtnsBox evt_02s">
 			<img src="https://static.willbes.net/public/images/promotion/2020/03/1501_04.jpg" alt="신청하기" usemap="#Map1501abc" border="0" />
 			<map name="Map1501abc" id="Map1501abc">
-				<area shape="rect" coords="877,538,1051,711" href="" target="_blank" />
-				<area shape="rect" coords="878,741,1051,913" href="" target="_blank" />
-				<area shape="rect" coords="878,943,1051,1116" href="" target="_blank" />
-				<area shape="rect" coords="878,1145,1051,1317" href="" target="_blank" />
-				<area shape="rect" coords="877,1346,1051,1520" href="" target="_blank" />
-				<area shape="rect" coords="877,1549,1050,1721" href="" target="_blank" />
+				<area shape="rect" coords="877,538,1051,711" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163121" target="_blank" />
+				<area shape="rect" coords="878,741,1051,913" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163122" target="_blank" />
+				<area shape="rect" coords="878,943,1051,1116" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163123" target="_blank" />
+				<area shape="rect" coords="878,1145,1051,1317" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163124" target="_blank" />
+				<area shape="rect" coords="877,1346,1051,1520" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163125" target="_blank" />
+				<area shape="rect" coords="877,1549,1050,1721" href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/163126" target="_blank" />
 			</map>
 		</div>
 

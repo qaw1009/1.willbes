@@ -69,9 +69,12 @@
             .PeMenu li:hover img.off {display:none} 	
             .PeMenu li:hover img.on {display:block}
         
-        .wb_cts03 {background:#f3f5f7}	
-        .wb_cts03 ul {position:absolute; left:50%; top:375px; margin-left:350px; z-index:2}
-        .wb_cts03 li:nth-child(2) {margin-top:95px}    
+        .wb_cts03 {background:#f3f5f7;position:relative;}	
+        .wb_cts03 ul {position:absolute; left:50%;top:475px;}
+        .wb_cts03 li:nth-child(1) {margin-left:-500px;margin-top:85px;}
+        .wb_cts03 li:nth-child(2) {margin-left:-500px;margin-top:85px;}
+        .wb_cts03 li:nth-child(3) {margin-left:350px;margin-top:-145px;}   
+        .wb_cts03 li:nth-child(4) {margin-left:350px;margin-top:85px;}  
         .wb_cts03 li input {height:30px; width:30px;}
         .wb_cts03 li label {display:none}
         .wb_cts03 .btn {padding-left:300px;}       
@@ -176,8 +179,10 @@
             <ul>                
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/><label for="y_pkg">공채 12개월</label></li>
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/><label for="y_pkg">특채 12개월</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="161023" onClick=""/><label for="y_pkg">공채 3개월</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="163094" onClick=""/><label for="y_pkg">특채 3개월</label></li>                
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1060_07.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" usemap="#Map1060A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1060_07.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" usemap="#Map1060A" border="0" />
             <map name="Map1060A" id="Map1060A">
                 <area shape="rect" coords="645,974,755,1018" href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank" alt="소방체력풀패키지 상세보기" id="event2"/>
             </map>

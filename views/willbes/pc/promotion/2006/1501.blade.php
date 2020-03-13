@@ -593,7 +593,8 @@
 			</form>
 		</div>
 		--}}
-
+		
+		{{--
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">상품 이용안내</h4>
@@ -647,6 +648,7 @@
 				</ul>
 			</div>
 		</div>
+		--}}
 	</div>
     <!-- End Container -->
 

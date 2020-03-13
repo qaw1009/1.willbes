@@ -47,13 +47,13 @@
             .check a.infotxt:hover {background:#d9312b}   
         .wb_03 {background:#fff;}  
 
-        .skybanner {position:fixed; top:250px;right:10px; z-index:1;}
+        .skybanner {position:fixed; top:250px;right:0; z-index:1;}
 
     </style>
     
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1480_sky.png" alt="">        
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1480_04.png" alt="스카이베너">        
         </div>   
 
         <div class="evtCtnsBox wb_00">

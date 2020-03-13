@@ -131,11 +131,12 @@
             @if($learn_pattern === 'off_lecture_before')
                 <div class="willbes-Mypage-TESTZONE c_both mt30">
                     <div class="willbes-Cart-Txt willbes-Mypage-Txt NGR p_re pb20">
-                        <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">GS-2순환 선접수 안내사항 ▼</a></p>
+                        <p class="title"><span class="tx-red mr10">[필독!]</span><a href="#none">선접수 수강신청 안내사항 ▼</a></p>
                         <table cellspacing="0" cellpadding="0" class="txtTable tx-black pb-zero" style="display:none">
                             <tbody>
                             <tr>
                                 <td>
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[GS-2순환 선접수 안내사항]</span></h4>
                                     <strong>1. 선접수 수강신청 대상</strong><br>
                                     1) GS-1순환 김기홍 행정쟁송법 실강·실영상 수강생<br>
                                     2) GS-1순환 김유미 인사노무관리/경영조직 실강·실영상 수강생<br>

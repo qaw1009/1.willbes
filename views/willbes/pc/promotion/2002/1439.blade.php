@@ -26,13 +26,18 @@
         .evt_01{background:#3d4550;}
         .evt_02{background:url("https://static.willbes.net/public/images/promotion/2019/10/1439_02_bg.jpg")}
         .evt_03{background:#fff; padding-bottom:150px}
+
         .evt_04{background:#f7f7f7;}
         .evt_04 div {width:1000px; margin:0 auto 20px}
-        .evt_04 table {border-left:1px solid #ccc; background:#fff}
+        .evt_04 table {border-top:2px solid #ccc;border-left:2px solid #ccc; background:#fff}
         .evt_04 th,
-        .evt_04 td {font-size:14px; padding:10px; border-bottom:1px solid #ccc; border-right:1px solid #ccc; line-height:1.5}
-        .evt_04 thead th {background:#333; color:#fff; font-weight:bold}
+        .evt_04 td {font-size:14px; padding:10px; border-bottom:2px solid #ccc; border-right:2px solid #ccc; line-height:1.5} 
         .evt_04 tbody th {background:#e4e4e4;}
+        .evt_04 table .day{background:#333;color:#fff;font-weight:bold;}  
+        .evt_04 table .time{font-weight:bold;}     
+        .evt_04 table .deep{font-weight:bold;font-size:15px;}     
+        .evt_04 table .gray{background:#D9D9D9;}        
+
         .evt_05{background:#e0e2e1;}
         .evt_06{background:#fff;}
         .evt_07{background:url("https://static.willbes.net/public/images/promotion/2019/10/1439_07_bg.jpg") center top  no-repeat}
@@ -88,103 +93,95 @@
 
         <div class="evtCtnsBox evt_04">      
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1439_04.jpg" title="운영시간표" />
-            <div>
-                <table cellspacing="0" cellpadding="0">
-                    <col span="9" />
-                    <thead>
-                    <tr>
-                        <th>구    분 </th>
-                        <th>월 </th>
-                        <th colspan="2">화 </th>
-                        <th>수 </th>
-                        <th>목 </th>
-                        <th>금 </th>
-                        <th>토 </th>
-                        <th>일 </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th>07:30~08:20 </th>
-                        <td colspan="7">자율학습시간 (50분) ※ 자율참여 </td>
-                        <td rowspan="17">자율학습</td>
+            <div>             
+                <table width="1000" border="1">
+                    <tr class="day">
+                        <td>구분</td>
+                        <td>월</td>
+                        <td>화</td>
+                        <td>수</td>
+                        <td>목</td>
+                        <td>금</td>
+                        <td>토</td>
+                        <td>일</td>
                     </tr>
                     <tr>
-                        <th>08:20~08:30 </th>
-                        <td colspan="7">아 침 정 비 시 간 (10분) </td>
+                        <td class="time"><p>0교시<br />
+                        07:30 ~ 08:20</p></td>
+                        <td colspan="6"><p>자율공부시간 (50분)     ※ 0교시 참여는 자율입니다</p></td>
+                        <td rowspan="12"><span class="deep">자 율 출 결</span><br />
+                                         <span class="deep">자 율 학 습</span><br />
+                    <br />
+                    <br />
+                    자율적인 분위기에선<br />
+                    본인 시간 확보가 어려워<br />
+                    <u><span class="deep">스스로 들어온 곳</span></u>입니다.<br />
+                    <br />
+                    <br />
+                    <span class="deep">학습 분위기</span><br />
+                    <span class="deep">조성을 위해</span><br />
+                    <br />
+                    <span class="deep">정해진 수업시간,</span><br />
+                    <span class="deep">기본 규칙은</span><br />
+                    <br />
+                    <span class="deep">반드시</span><br />
+                    <span class="deep">지켜주셔야 합니다.</span><br /></td>
                     </tr>
                     <tr>
-                        <th rowspan="2">08:30~09:50 </th>
-                        <td colspan="6" rowspan="2">집중학습 (80분) </td>
-                        <td rowspan="5">08:30~10:20<br />
-                        집중학습<br />
-                        (110분)<br />
-                        모의고사X<br /></td>
-                    </tr>
-                    <tr> </tr>
-                    <tr>
-                        <th>09:50~10:00 </th>
-                        <td colspan="6">모의고사 문제 및 OMR 배부 </td>
+                        <td class="time gray"><p>08:20 ~ 08:30</p></td>
+                        <td colspan="6" class="gray"><p>아　침　정　비　시　간　(10분)</p></td>
                     </tr>
                     <tr>
-                        <th rowspan="2">모의고사<br />
-                        10:00~10:20 </th>
-                        <td colspan="2" rowspan="2">형사소송법 </td>
-                        <td rowspan="2">한국사<br />
-                        (행정법) </td>
-                        <td rowspan="2">형법 </td>
-                        <td rowspan="2">영어<br />
-                        (수사) </td>
-                        <td rowspan="2">경찰학개론 </td>
-                    </tr>
-                    <tr> </tr>
-                    <tr>
-                        <th>10:20~10:50 </th>
-                        <td colspan="7">OMR수거 및 학습정비 </td>
+                        <td class="time"><p>1교시<br />
+                        08:30 ~ 09:50</p></td>
+                        <td colspan="5"><p><span class="deep">집중공부시간</span> (80분)    <span class="deep">입·퇴실통제<span></p></td>
+                        <td rowspan="2"><p>08:30 ~ 10:20<br />
+                        <span class="deep">집중공부시간</span> (110분)</p></td>
                     </tr>
                     <tr>
-                        <th>10:50~12:30 </th>
-                        <td colspan="7">집중학습 (100분) </td>
+                        <td class="time "><p>모의고사<br />
+                        10:00 ~ 10:20</p></td>
+                        <td colspan="5"><p>모의고사 (20분) 1과목 20문항　　　※ OMR 제출  필수<br />
+                        ※목요일은 영어 모의고사 (10:00~10:30,  30분간 진행)</p></td>
                     </tr>
                     <tr>
-                        <th>12:30~14:00 </th>
-                        <td colspan="7">점 심 시 간 (90분) </td>
+                        <td class="time gray"><p>10:20 ~ 10:50</p></td>
+                        <td colspan="6" class="gray"><p>OMR 수거 및 학습 정비 (30분)  /  목 10:30 ~ 10:50 (20분)</p></td>
                     </tr>
                     <tr>
-                        <th>14:00~15:40 </th>
-                        <td colspan="7">집중학습 (100분) </td>
+                        <td class="time"><p>2교시<br />
+                        10:50 ~ 12:30</p></td>
+                        <td colspan="6"><p><span class="deep">집중공부시간</span> (100분)    <span class="deep">입·퇴실통제</span></p></td>
                     </tr>
                     <tr>
-                        <th>15:40~16:00 </th>
-                        <td colspan="7">20분 휴식 </td>
+                        <td class="time gray"><p>12:30 ~ 14:00</p></td>
+                        <td colspan="6" class="gray"><p>점　심　시　간　(90분)</p></td>
                     </tr>
                     <tr>
-                        <th>16:00~17:40 </th>
-                        <td colspan="6">집중학습 (100분) </td>
-                        <td rowspan="5">16:0016:00~18:00<br />
-                        집중학습<br />
-                        (120분)<br />
-                        이후<br />
-                        자율학습<br />
-                        ~18:00 </td>
+                        <td class="time"><p>3교시<br />
+                        14:00 ~ 15:40</p></td>
+                        <td colspan="6"><p><span class="deep">집중공부시간</span> (100분)    <span class="deep">입·퇴실통제</span></p></td>
                     </tr>
                     <tr>
-                        <th>17:40~19:00 </th>
-                        <td colspan="6">저 녁 시 간 (80분) </td>
+                        <td class="time"><p>4교시<br />
+                        16:00 ~17:40</p></td>
+                        <td colspan="6"><p><span class="deep">집중공부시간</span> (100분)    <span class="deep">입·퇴실통제</span></p></td>
                     </tr>
                     <tr>
-                        <th>19:00~20:40 </th>
-                        <td colspan="6">집중학습 (100분) </td>
+                        <td class="time gray"><p>17:40 ~ 19:00</p></td>
+                        <td colspan="5" class="gray"><p>저　녁　시　간　(80분)</p></td>
+                        <td rowspan="3"><p><span class="deep">자 율 학 습</span></p></td>
                     </tr>
                     <tr>
-                        <th>20:40~21:00 </th>
-                        <td colspan="6">20분 휴식 </td>
+                        <td class="time"><p>5교시<br />
+                        19:00 ~ 20:10</p></td>
+                        <td colspan="5"><p><span class="deep">집중공부시간</span> (70분)    <span class="deep">입·퇴실통제</span></p></td>
                     </tr>
                     <tr>
-                        <th>21:00~22:30 </th>
-                        <td colspan="6">집중학습 (90분) </td>
+                        <td class="time"><p>6교시<br />
+                        20:30 ~ 22:00</p></td>
+                        <td colspan="5"><p><span class="deep">집중공부시간</span> (90분)    <span class="deep">입·퇴실통제</span></p></td>
                     </tr>
-                    </tbody>
                     </table>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1439_04_01.jpg" title="상담관리 카드 작성" />            

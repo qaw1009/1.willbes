@@ -344,9 +344,10 @@ class OffVisitPackage extends BaseOrder
 
         if (empty($data) === false) {
             $unpaid_idx = $data['UnPaidIdx'];
+            $order_idx = $data['OrderIdx'];
         }
 
-        return $this->json_result(true, '', [], ['unpaid_idx' => $unpaid_idx]);
+        return $this->json_result(true, '', [], ['unpaid_idx' => $unpaid_idx, 'order_idx' => $order_idx]);
     }
 
     /**

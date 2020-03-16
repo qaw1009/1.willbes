@@ -199,7 +199,7 @@
             <ul class="tabs">
                 <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
                 <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                 <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
             </ul>
         </div>  
@@ -226,12 +226,15 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
-        </div>   
+        </div>
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >  
+        </div>  
     </div>  
 
     <div id="tab03">
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03.jpg" alt="e커머스 강좌소개" >               
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02.jpg" alt="커리큘럼" >              
         </div>
     </div>
 
@@ -285,7 +288,7 @@
     <div class="btnbuy NSK-Black">        
         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
             <span class="NSK">미리 신청하면 24%할인!</span><br>
-            사전예약 신청하기 >
+            [온라인강의] 사전예약 신청하기 >
         </a>
     </div>
 

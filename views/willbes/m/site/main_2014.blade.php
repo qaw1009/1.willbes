@@ -108,7 +108,7 @@
         <div class="btnbuy NSK">
             <a href="#evt04" class="NSK">
                 미리 신청하면 특별 <span>할인과 혜택!</span>
-                <p class="NSK-Black">사전예약 수강신청 ></p>
+                <p class="NSK-Black">가격인상 전 사전예약하기 ></p>
             </a>
         </div>
     </div>

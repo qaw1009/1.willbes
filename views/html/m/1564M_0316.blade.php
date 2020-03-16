@@ -200,12 +200,12 @@
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
-<div id="Container" class="Container NGR c_both">            
+<div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top_01.jpg" alt="창업 다마고치" >       
     </div>  
     <div class="evtCtnsBox evtTop01">
-        <h4 class="NGEB">김정환 대표</h4>
+        <h4 class="NSK-Black">김정환 대표</h4>
         <ul>
             <li>1억뷰  N잡  창업  대표 강사</li>
             <li>유튜브 창업 다마고치 영상 6개월 누적  조회수 100만뷰 기록</li>

@@ -7,7 +7,7 @@
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
-        }        
+        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -17,27 +17,18 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
-        /************************************************************/     
+        /************************************************************/
 
-        .evtTop {background:#2f6cdd url("https://static.willbes.net/public/images/promotion/2020/03/1577_top_bg.jpg") no-repeat center top}          
-        
-        .evt01,.evt02,.evt03 {background:#fff;}      
-       
-        .evt03 {padding-bottom:150px}
-        .evt03 ul { width:1000px; margin:0 auto}
-        .evt03 li {display:inline; float:left; width:33.33333%; text-align:center}
-        .evt03 li .off {display:block}
-        .evt03 li .on {display:none}
-        .evt03 li:hover .off {display:none}
-        .evt03 li:hover .on {display:block}
-        .evt03 ul:after {content:""; display:block; clear:both}
-
-        .evt04 {background:#2d363f;}	
+        .wb_top {background:#81a53e url(https://static.willbes.net/public/images/promotion/2020/03/1578_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_cts01 {background:#FFF;}
+        .wb_cts02 {background:#FFF;padding-bottom:150px}
+        .wb_cts03 {background:#42475b;}
+        .wb_cts04 {background:#fff;}  
 
         /* tip */
-        .wb_cts09 {background:#fff; text-align:left; padding:100px 0}
+        .wb_cts09 {background:#fff; text-align:left; padding-bottom:100px;}
         .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
@@ -48,66 +39,98 @@
         .wb_tipBox th,
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
-        .wb_tip_orange {font-size:12px; color:#c03011;}
+        .wb_tip_orange {font-size:12px; color:#c03011;}  
+        
+        .tabContaier {width:980px; margin:0 auto;}
+        .tabContaier ul {margin-bottom:10px}
+        .tabContaier li {display:inline-block; float:left; width:50%}
+        .tabContaier ul:after {content:""; display:block; clear:both}
+        .tabContaier a {display:block; text-align:center; height:80px; line-height:80px; background:#aaa;
+            margin-right:10px; font-size:24px; color:#fff;
+        }
+        .tabContaier li:last-child a {margin:0}
+        .tabContaier a:hover,
+        .tabContaier a.active {background:#b42e39}
+        .tabContents {width:980px; margin:0 auto}
+        .tabContents a {display:block; height:80px; line-height:80px; font-size:24px; font-weight:bold; text-align:center; color:#fff; background:#5903a6;}
 
         /*TAB_tip*/
         .tab02 {margin-bottom:20px}
         .tab02 li {display:inline; float:left; width:33.33333%;}
         .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
         .tab02 li a:hover,
-        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
+        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff}
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
+
+        .evt_04 {background:#fff;}
+	
+		  /* TAB */
+		.tab {width:920px; margin:0 auto; left:50%;}		
+		.tab li {display:inline; float:left;}
+		/*.tab li:last-child {border:0}*/
+		.tab a img.off {display:block}
+		.tab a img.on {display:none}
+		.tab a.active img.off {display:none}
+		.tab a.active img.on {display:block}
+		.tab:after {content:""; display:block; clear:both}
+	
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">           
 
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_top.gif" title="불꽃소방"/>
-        </div>
-      
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_01.jpg" usemap="#Map1539a" title="1500제 문풀" border="0" />
-            <map name="Map1539a" id="Map1539a">
-                <area shape="rect" coords="99,409,549,547" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" />
-                <area shape="rect" coords="570,408,1020,547" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" />
-            </map>      
+    <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="evtCtnsBox wb_top" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_top.gif" alt="윌비스 군무원" />            
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_02.jpg" title="3월 시간표" />       
-        </div>      
+        <div class="evtCtnsBox wb_cts01" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_01.jpg" alt="과목별 고득점 커리큘럼"/>
+        </div>
 
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_03.jpg" usemap="#Map1539b" title="교수진" border="0">
-            <!--map name="Map1539b" id="Map1539b">
-                <area shape="rect" coords="186,684,268,703" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/161628" target="_blank" />
-                <area shape="rect" coords="359,676,441,695" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/161624" target="_blank" />
-                <area shape="rect" coords="532,676,614,695" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/161627" target="_blank" />
-                <area shape="rect" coords="706,675,789,695" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/161625" target="_blank" />
-                <area shape="rect" coords="880,677,962,697" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/161626" target="_blank" />
-            </map-->       
-            <ul>
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_a1.jpg" title="복습 동영상 제공" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_a1_over.jpg" title="복습 동영상 제공" class="on"/>
+        <div class="evtCtnsBox wb_cts02" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_02.jpg" alt="학습부터 생활까지 꽉찬 관리 시스템">
+            <div class="tabContaier">  
+                <ul class="NGEB">
+                    <li><a href="#tab01" class="active">과목별 교수님의 학습 CARE</a></li>
+                    <li><a href="#tab02">전담 매니저의 생활 CARE</a></li>
+                </ul>
+            </div>
+            <div id="tab01" class="tabContents">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_02_1.jpg" alt="9급"/>
+            </div>
+            <div id="tab02" class="tabContents">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_02_2.jpg" alt="7급"/>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts03" id="careful" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_03.jpg" alt="이런 분들이 수강하시면 좋아요."/>
+        </div>
+
+        <div class="evtCtnsBox wb_cts05">			 
+		    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t.png" title="7급종합반수강신청">
+            <ul class="tab">
+                <li><a href="#tab1" class="active">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t1.png" class="off" alt="2개월">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t1_on.png" class="on"></a>
                 </li>
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1410_a2.jpg" title="사물함 무료 제공" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1410_a2_over.jpg" title="사물함 무료 제공" class="on"/>
-                </li>
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_a3.jpg" title="체력학원 연계 할인" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_a3_over.jpg" title="체력학원 연계 할인" class="on"/>
+                <li><a href="#tab2">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t2.png" class="off" alt="6개월">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t2_on.png" class="on"></a>
                 </li>
             </ul>
-        </div>
 
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_04.gif" title="특강"  />
-        </div>
-
-        <!--유의사항-->
+            <div id="tab1">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t1_c.jpg" title="2개월외무영사직">
+            </div>
+            <div id="tab2" style="display: none;">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t2_c.jpg" title="6개월외무영사직">
+            </div>
+            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&course_idx=" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_btn.png" title="수강신청하기">
+            </a>
+	    </div>
+         <!--유의사항-->
         <div class="evtCtnsBox wb_cts09">
             <div class="wb_tipBox">
             <ul class="tab02">
@@ -234,10 +257,49 @@
             </div>
         </div>
         <!--wb_tip//-->
+
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
+        $(document).ready(function(){
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });
+
+        $(document).ready(function(){
+            $('.tab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        ); 
+
         $(document).ready(function(){
             $('.tab02').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -261,6 +323,7 @@
                 $content.show();
             
                 e.preventDefault()})})}
-        ); 
-    </script>  
+        );   
+    </script>
+
 @stop

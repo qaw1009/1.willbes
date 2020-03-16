@@ -103,16 +103,17 @@ class RestClient
      * @param $uri
      * @param array $params
      * @param null $format
+     * @param $uri_add_server
      * @return mixed
      */
-    public function get($uri, $params = array(), $format = NULL)
+    public function get($uri, $params = array(), $format = NULL, $uri_add_server = true)
     {
         if ($params)
         {
             $uri .= '?'.(is_array($params) ? http_build_query($params) : $params);
         }
 
-        return $this->_call('get', $uri, NULL, $format);
+        return $this->_call('get', $uri, NULL, $format, $uri_add_server);
     }
 
     /**
@@ -157,11 +158,12 @@ class RestClient
      * @param $uri
      * @param array $params
      * @param null $format
+     * @param $uri_add_server
      * @return mixed
      */
-    public function post($uri, $params = array(), $format = NULL)
+    public function post($uri, $params = array(), $format = NULL, $uri_add_server = true)
     {
-        return $this->_call('post', $uri, $params, $format);
+        return $this->_call('post', $uri, $params, $format, $uri_add_server);
     }
 
     /**
@@ -243,11 +245,17 @@ class RestClient
      * @param $uri
      * @param array $params
      * @param null $format
+     * @param $uri_add_server
      * @return mixed
      */
-    protected function _call($method, $uri, $params = array(), $format = NULL)
+    protected function _call($method, $uri, $params = array(), $format = NULL, $uri_add_server = true)
     {
-        $url = $this->rest_server.$uri;
+        if($uri_add_server === true){
+            $url = $this->rest_server.$uri;
+        } else {
+            $url = $uri;
+        }
+
         is_null($format) === true && $format = $this->format;
 
         $this->format($format);

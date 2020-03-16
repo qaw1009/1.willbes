@@ -216,7 +216,7 @@
             .evt02 .evt02Txt01 {font-size:1.75rem;}
             .evt02 .evt02Txt01 span {font-size:2rem; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
 			.evt02_01 {background-size:contain;}
-			.evt02_01 div {width:1120px; margin:0 auto; padding-left:80px}					
+			.evt02_01 div {width:1120px; margin:0 auto; padding:100px 0; padding-left:80px}					
             .video-container-box {width:980px; margin:0 auto; padding:0}
 			.evt03_txt {width:940px; margin:0 auto; padding-left:80px; font-size:16px}
 			.evt03_txt02 div {width:940px; margin:auto}

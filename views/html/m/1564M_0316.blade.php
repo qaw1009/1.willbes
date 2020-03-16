@@ -105,8 +105,11 @@
 		.evt03_01 {padding:3rem 2.5rem; line-height:1.4; text-align:left;}
 		.evt03_01 h3 {color:#38336b; font-size:1.2rem}
 		.evt03_01 p {font-size:1rem}
-		.evt03_01 dl {margin:30px 0}
-		.evt03_01 dt {font-size:16px; font-weight:bold; color:#f80700; margin-top:20px}
+		.evt03_01 .curriculum {margin:30px 0}
+		.evt03_01 dl {margin-top:30px;}
+		.evt03_01 dl:first-child {margin:0}
+		.evt03_01 dt {font-size:16px; font-weight:bold; color:#f80700; margin-top:30px}
+		.evt03_01 dt:first-child {margin:0}
 		.evt03_01_txt {margin-bottom:50px}
 		
         .evt04 {background:#ececec; padding:100px 0 50px}
@@ -195,7 +198,8 @@
             .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}           
             .evt02 .evt02Txt01 {font-size:1.5rem;}
             .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}
-			.evt02_01 div { margin:auto}s
+			.evt02_01 div { margin:auto}
+			.evt03_01 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
             .video-container-box {width:768px; margin:0 auto; padding:0}
             .evt04 .columns {column-count: 2;}
             .evt05 {padding-bottom:70px}
@@ -220,7 +224,7 @@
 			.evt03_txt02 .reason02 {background-size:443px;}
 			.evt03_txt02 .reason03 {background-size:295px;}
 			.evt03_01 {width:940px; margin:auto}
-			.evt03_01_txt {margin-bottom:100px}
+			.evt03_01_txt {margin-bottom:100px}			
             .evt04 .columns {width:980px; margin:0 auto}
             .evt05 ul {width:940px; margin:0 auto;}
             .evt05 li a {font-size:24px;}
@@ -401,65 +405,85 @@
 			지금 바로 시작할 수 있는 커리큘럼
             </h3>
             <p>우리가 배울 수 있는 과정은?</p>
-            <dl>
-                <dt>INTRO</dt> 
-                <dd>1강 월 수익 100만원,  스마트스토어가 가장 현실적인 이유?</dd>
-                <dd>2강 ‘지금 바로 시작하는 스마트스토어’ 강의를 제대로 활용하는 방법</dd>
+            <div class="curriculum">
+            	<dl>
+                    <dt>INTRO</dt> 
+                    <dd>1강 월 수익 100만원,  스마트스토어가 가장 현실적인 이유?</dd>
+                    <dd>2강 ‘지금 바로 시작하는 스마트스토어’ 강의를 제대로 활용하는 방법</dd>
+                </dl>
                 
-                <dt>Chapter 1.스마트스토어 개설하기</dt>
-                <dd>3강 나만의 쇼핑몰 만들자! 스마트스토어 개설하기</dd>
-                <dd>4강 스마트스토어를 운영을 위해 꼭 필요한 것들</dd>
+                <dl>
+                    <dt>Chapter 1.스마트스토어 개설하기</dt>
+                    <dd>3강 나만의 쇼핑몰 만들자! 스마트스토어 개설하기</dd>
+                    <dd>4강 스마트스토어를 운영을 위해 꼭 필요한 것들</dd>
+                </dl>
                 
-                <dt>Chapter 2. 위탁판매로 재고 없이 소자본 창업하기</dt>
-                <dd>5강 재고 부담이 없는 판매 방식! 위탁판매란 무엇일까?</dd>
-                <dd>6강 스마트스토어에 위탁판매 상품 등록하기</dd>
-                <dd>7강 잘 팔리는 상품명 만드는 방법</dd>
-                <dd>8강 상품을 업로드할 때 주의해야 할 것들</dd> 
-                <dd>9강 네이버 검색광고로 유입량 늘리는 방법</dd>
-                <dd>10강 감동의 첫 주문! 위탁상품 고객께 발송하기</dd>
-                <dd>11강 친절하고 냉정하게! 고객응대와 멘탈관리</dd>
-                <dd>12강 고객이 어떻게 찾아왔을까? 유입경로 분석하기</dd>
+                <dl>
+                    <dt>Chapter 2. 위탁판매로 재고 없이 소자본 창업하기</dt>
+                    <dd>5강 재고 부담이 없는 판매 방식! 위탁판매란 무엇일까?</dd>
+                    <dd>6강 스마트스토어에 위탁판매 상품 등록하기</dd>
+                    <dd>7강 잘 팔리는 상품명 만드는 방법</dd>
+                    <dd>8강 상품을 업로드할 때 주의해야 할 것들</dd> 
+                    <dd>9강 네이버 검색광고로 유입량 늘리는 방법</dd>
+                    <dd>10강 감동의 첫 주문! 위탁상품 고객께 발송하기</dd>
+                    <dd>11강 친절하고 냉정하게! 고객응대와 멘탈관리</dd>
+                    <dd>12강 고객이 어떻게 찾아왔을까? 유입경로 분석하기</dd>
+                </dl>
                 
-                <dt>Chapter 3. 도매상품 사입 판매로 매출 만들기</dt>
-                <dd>13강 소싱 (사입)판매란 무엇인가? 위탁판매와 차이점</dd>
-                <dd>14강 무엇을 팔아야 할까? 사업아이템 정하기</dd>
-                <dd>15강 경쟁력 있는 상품을 찾는 방법</dd>
-                <dd>16강 이제는 실전이다! 도매로 상품 사입하기</dd>
-                <dd>17강 치열한 경쟁을 이겨내는 만능 열쇠? 나만의 브랜드 만들기!</dd>
-                <dd>18강 설득의 심리학! 상세페이지 만들기</dd>
-                <dd>19강 고객의 평가를 결정하는 제품포장과 발송</dd>
-                <dd>20강 단골 만들기! 구매평과 재구매를 만드는 방법</dd>
+                <dl>
+                    <dt>Chapter 3. 도매상품 사입 판매로 매출 만들기</dt>
+                    <dd>13강 소싱 (사입)판매란 무엇인가? 위탁판매와 차이점</dd>
+                    <dd>14강 무엇을 팔아야 할까? 사업아이템 정하기</dd>
+                    <dd>15강 경쟁력 있는 상품을 찾는 방법</dd>
+                    <dd>16강 이제는 실전이다! 도매로 상품 사입하기</dd>
+                    <dd>17강 치열한 경쟁을 이겨내는 만능 열쇠? 나만의 브랜드 만들기!</dd>
+                    <dd>18강 설득의 심리학! 상세페이지 만들기</dd>
+                    <dd>19강 고객의 평가를 결정하는 제품포장과 발송</dd>
+                    <dd>20강 단골 만들기! 구매평과 재구매를 만드는 방법</dd>
+                </dl>
                 
-                <dt>Chapter 4. 중국 소싱으로 마진 극대화</dt>
-                <dd>21강 1688에서 원하는 상품을 찾아 내는 방법</dd>
-                <dd>22강 생각보다 쉬운 개인 무역! 중국에서 직접 수입하기</dd>
-                <dd>23강 수입 통관절차 및 제품 받아보기</dd>
+				<dl>
+                    <dt>Chapter 4. 중국 소싱으로 마진 극대화</dt>
+                    <dd>21강 1688에서 원하는 상품을 찾아 내는 방법</dd>
+                    <dd>22강 생각보다 쉬운 개인 무역! 중국에서 직접 수입하기</dd>
+                    <dd>23강 수입 통관절차 및 제품 받아보기</dd>
+				</dl>
                 
-                <dt>Chapter5. 나도 글로벌 셀러, 해외구매대행 사업</dt>
-                <dd>24강 부업으로도 최고! 해외구매대행 사업</dd>
-                <dd>25강 타오바오 상품을 내 스마트스토어에서 판매하기</dd>
-                <dd>26강 배송대행지를 이용한 상품 발송</dd>
+                <dl>
+                    <dt>Chapter5. 나도 글로벌 셀러, 해외구매대행 사업</dt>
+                    <dd>24강 부업으로도 최고! 해외구매대행 사업</dd>
+                    <dd>25강 타오바오 상품을 내 스마트스토어에서 판매하기</dd>
+                    <dd>26강 배송대행지를 이용한 상품 발송</dd>
+                </dl>
                 
-                <dt>Chapter 6. 매출을 확대를 위한 오픈마켓 진출</dt>
-                <dd>27강 판매채널 확장하기! 오픈마켓 비교 분석</dd>
-                <dd>28강 1688 수입상품, 도매 사이트에서 동시에 판매하는 방법 </dd>
-                <dd>29강  오픈마켓 상품 업로드, 솔루션으로 해결하기</dd>
+                <dl>
+                    <dt>Chapter 6. 매출을 확대를 위한 오픈마켓 진출</dt>
+                    <dd>27강 판매채널 확장하기! 오픈마켓 비교 분석</dd>
+                    <dd>28강 1688 수입상품, 도매 사이트에서 동시에 판매하는 방법 </dd>
+                    <dd>29강  오픈마켓 상품 업로드, 솔루션으로 해결하기</dd>
+                </dl>
                 
-                <dt>Chapter 7. 외부 유입으로 고객을 모아보자</dt>
-                <dd>30강 네이버 블로그로 외부유입에 대한 감을 잡자</dd>
-                <dd>31강 스마트스토어 유입을 위한 블로그 상위노출 방법</dd>
-                <dd>32강 잠들어있는 내 SNS 계정, 마케팅 창구로 활용하기</dd>
-                <dd>33강 대세는 유튜브! 유튜브 컨텐츠로 마케팅하기</dd>
-                <dd>34강 이제는 미디어 커머스! 유튜브로 매출을 끌어올리는 비결</dd>
+                <dl>
+                    <dt>Chapter 7. 외부 유입으로 고객을 모아보자</dt>
+                    <dd>30강 네이버 블로그로 외부유입에 대한 감을 잡자</dd>
+                    <dd>31강 스마트스토어 유입을 위한 블로그 상위노출 방법</dd>
+                    <dd>32강 잠들어있는 내 SNS 계정, 마케팅 창구로 활용하기</dd>
+                    <dd>33강 대세는 유튜브! 유튜브 컨텐츠로 마케팅하기</dd>
+                    <dd>34강 이제는 미디어 커머스! 유튜브로 매출을 끌어올리는 비결</dd>
+                </dl>
                 
-                <dt>Chapter 8. 아웃소싱으로 사업규모 키우기 </dt>
-                <dd>35강 3자물류(3PL)로 택배포장에서 벗어나자</dd>
-                <dd>36강 이제는 세금과의 싸움, 초보 창업자의 세금처리에 대해</dd>
-                <dd>37강 디지털 노마드가 되어 볼까요?</dd>
+                <dl>
+                    <dt>Chapter 8. 아웃소싱으로 사업규모 키우기 </dt>
+                    <dd>35강 3자물류(3PL)로 택배포장에서 벗어나자</dd>
+                    <dd>36강 이제는 세금과의 싸움, 초보 창업자의 세금처리에 대해</dd>
+                    <dd>37강 디지털 노마드가 되어 볼까요?</dd>
+                </dl>
                  
-                <dt>OUTRO</dt>
-                <dd>38강 여러분의 경제적 자유를 응원합니다.
-            </dl>
+                <dl>
+                    <dt>OUTRO</dt>
+                    <dd>38강 여러분의 경제적 자유를 응원합니다.
+                </dl>
+            </div>
             
             <div class="evt03_01_txt">*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</div>
 
@@ -554,7 +578,7 @@
 
     <div class="btnbuy NSK-Black">        
         <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>
-        사전예약 신청하기 ></a>
+        [온라인강의] 사전예약 신청하기 ></a>
     </div>
 </div>
 <!-- End Container -->

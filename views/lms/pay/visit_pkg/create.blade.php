@@ -489,6 +489,7 @@
             // 미수금주문여부 체크
             var checkUnPaidOrder = function(prod_code) {
                 var unpaid_idx = null;
+                var order_idx = null;
                 var mem_idx = $regi_form.find('input[name="mem_idx"]').val();
 
                 if (prod_code.length < 1 || mem_idx.length < 1) {
@@ -505,12 +506,13 @@
                 sendAjax('{{ site_url('/pay/offVisitPackage/checkUnPaidOrder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         unpaid_idx = ret.ret_data.unpaid_idx;
+                        order_idx = ret.ret_data.order_idx;
                     }
                 }, showValidateError, false, 'POST');
 
                 if (unpaid_idx !== null && unpaid_idx !== '') {
                     alert('미수금 주문내역이 존재합니다.');
-                    location.replace('{{ site_url('/pay/offVisitPackage/create') }}/' + unpaid_idx + '/' + prod_code + '/' + mem_idx + getQueryString());
+                    location.replace('{{ site_url('/pay/offVisitPackage/create') }}/' + order_idx + '/' + unpaid_idx + '/' + prod_code + '/' + mem_idx + getQueryString());
                 }
 
                 return true;

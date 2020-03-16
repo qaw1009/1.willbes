@@ -24,12 +24,18 @@
         .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
         .skybanner ul li {padding-bottom:10px;}
 
-        .wb_cts01 {background:#50268A url("https://static.willbes.net/public/images/promotion/2020/02/1537_top.jpg")center top  no-repeat}
+        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2020/03/1576_top_bg.jpg")center top  no-repeat}
 
         .wb_cts02{background:#e8e7e5}
         .wb_cts04 {background:#e5f6fd}
         .wb_cts03 {padding-bottom:100px}
-        .wb_cts05 {background:#fff}
+        .wb_cts05 {background:#fff; padding-bottom:100px}
+        .wb_cts05 ul {width:920px; margin:30px auto}
+        .wb_cts05 li { display:inline; float:left; width:50%}
+        .wb_cts05 li a {display:block; color:#fff; font-size:20px; background:#000; border-radius:20px; padding:20px 0; margin-right:20px}        
+        .wb_cts05 li:last-child a {margin-right:0}
+        .wb_cts05 li a:hover { background:#6f2ebc; color:#ffdd96}
+        .wb_cts05 ul:after {content:""; display:block; clear:both}
 
         .wb_cts06 {background:#3e3e3e}   
 
@@ -52,54 +58,32 @@
         .tab02 li {display:inline; float:left; width:33.33333%;}
         .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
         .tab02 li a:hover,
-        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff}
+        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
-
-        /*TAB*/
-        .tabWrapEvt{width:980px; margin:0 auto}
-        .tabWrapEvt li {display:inline; float:left; width:490px; margin-left:0px;}
-        .tabWrapEvt li a {display:block; text-align:center}
-        .tabWrapEvt li a img.off {display:block}
-        .tabWrapEvt li a img.on {display:none}
-        .tabWrapEvt li a:hover img.off {display:none}
-        .tabWrapEvt li a:hover img.on {display:block}
-        .tabWrapEvt li a.active img.off {display:none}
-        .tabWrapEvt li a.active img.on {display:block}
-        .tabWrapEvt li a:hover,
-        .tabWrapEvt li a.active {}
-        .tabWrapEvt li:last-child a {margin-right:0}
-        .tabWrapEvt:after {content:""; display:block; clear:both}
-        .tabcts {background:none; width:980px; margin:0px auto 0; text-align:center;}
-        .tabcts iframe {width:980px; margin:0px auto 0; height:450px; border:#000 solid 0px;}
         
   </style>
 
    <div class="p_re evtContent NGR" id="evtContainer">
 
    <div class="skybanner">
-      <ul>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=257644&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky1.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=257646&s_campus=605001" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky2.png" title="한덕혁 제니스 영어" /></a></li>	
-      </ul>
+        <ul>          
+          <li><a href="#none" onclick="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="#none" onclick="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
+        </ul>
     </div>
 
     <div class="evtCtnsBox wb_cts01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/02/1537_top.gif" title="윌비스 9급" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1576_top.gif" title="윌비스 9급" />
     </div>
-
-    <!--wb_cts01//   
-    <div class="evtCtnsBox wb_cts02">
-        <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_01.jpg" title="이론 리마인드" />
-    </div>--> 
 
     <!--wb_cts02//-->  
     <div class="evtCtnsBox wb_cts03">   
-        <img src="https://static.willbes.net/public/images/promotion/2020/02/1537_01.gif" title="커리큘럼" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1576_01.gif" title="커리큘럼" />
     </div>
     <!--wb_cts03//-->    
     <div class="evtCtnsBox wb_cts03s">   
-        <img src="https://static.willbes.net/public/images/promotion/2020/02/1537_01s.jpg" title="시간표" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1576_02.jpg" title="시간표" />
     </div>
     <!--wb_cts03s//-->    
     <div class="evtCtnsBox wb_cts04">
@@ -107,11 +91,11 @@
     </div>
     <!--wb_cts04//--> 
     <div class="evtCtnsBox wb_cts05">
-        <img src="https://static.willbes.net/public/images/promotion/2020/02/1537_05.jpg" usemap="#Map1433ab" title="수강신청" border="0" />
-        <map name="Map1433ab" id="Map1433ab">
-            <area shape="rect" coords="100,655,556,736" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&course_idx=" target="_blank" />
-            <area shape="rect" coords="559,656,1017,737" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&course_idx=&campus_ccd=605001" target="_blank" />
-        </map>       
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1576_04.jpg" usemap="#Map1433ab" title="수강신청" />
+        <ul class="NGEB">
+            <li><a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&course_idx=" target="_blank">일반행정직 최종점검 실전 CLASS 수강하기 > </a></li>
+            <li><a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&course_idx=" target="_blank">세무직 최종점검 실전 CLASS 수강하기 > </a></li>
+        </ul>     
     </div>
     <!--wb_cts05//-->   
     <div class="evtCtnsBox wb_cts06">
@@ -253,31 +237,6 @@
 
 <script type="text/javascript">
         $(document).ready(function(){
-            $('.tabWrapEvt').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-            
-                $content = $($active[0].hash);
-            
-                $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );   
-
-        $(document).ready(function(){
             $('.tab02').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -301,41 +260,6 @@
             
                 e.preventDefault()})})}
         ); 
-
-		$(document).ready(function(){
-            $('.wb_cts07 ul').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );      
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);}
-		);
-
-        function go_popup() {  
-            $('#popup').bPopup();
-        };  
-
     </script>
 
 @stop

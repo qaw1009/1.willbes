@@ -190,7 +190,7 @@
 
         /* 태블릿 세로 */
         @@media only all and (min-width: 768px) {
-			.evtTop01 {position:absolute; top:30%; left:8%; background:0;}			
+			.evtTop01 {position:absolute; top:35%; left:8%; background:0;}			
             .tabs li a {font-size:16px; padding:25px 0;}
             .evt01 .dday {font-size:1.2rem; top:42%;}
             .evt01 .dday strong {font-size:1.75rem;}
@@ -208,7 +208,7 @@
 
         /* 태블릿 가로, PC */
         @@media only all and (min-width: 1024px) {
-			.evtTop01 {top:40%; left:50%; margin-left:-460px}			
+			.evtTop01 {top:45%; left:50%; margin-left:-460px}			
             .evt01 .dday {font-size:2.0rem;}
             .evt01 .dday strong {font-size:2.5rem;}
             .evt01 .dday img {width:68px;}

@@ -19,6 +19,7 @@
     </div>
     <div class="x_panel mt-10">
         <div class="x_content">
+            • 3/16(월) 기준으로 ‘환불완료’ 수강생이 추가되었습니다. 실수강생은 결제상태가 ‘결제완료’인 정보만 해당됩니다.
             <table id="list_table_layer" class="table table-bordered">
                 <thead>
                 <tr>
@@ -33,7 +34,9 @@
                     <th>결제수단</th>
                     <th>결제금액</th>
                     <th>결제자</th>
+                    <th>결제상태</th>
                     <th>결제일</th>
+                    <th>환불일</th>
                     <th>휴대폰정보</th>
                     <th>E-mail정보</th>
                     <th>자동로그인</th>
@@ -65,6 +68,11 @@
                         return $.extend(arrToJson($search_form_layer.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                createdRow: function(row, data, index){
+                    if(data.PayStatusCcd == '676006'){
+                        $(row).css('background-color','pink');
+                    }
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable_layer.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -90,8 +98,11 @@
                     {'data' : 'AdminName', 'render' : function(data, type, row, meta) {
                             return (data == '') ? row.MemName : data;
                         }},//결제자
-
+                    {'data' : 'PayStatusName', 'render' : function(data, type, row, meta){
+                            return ((row.PayStatusCcd == '676006') ? '<a class=red>' : '<a class=blue>')+data + '</a>';
+                        }}, // 결제상태
                     {'data' : 'PayDate'}, // 결제일
+                    {'data' : 'RefundDatm'}, // 환불일
                     {'data' : 'Phone'},// 휴대폰
                     {'data' : 'Mail'},//이메일
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {

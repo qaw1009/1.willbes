@@ -148,6 +148,7 @@
 
         <div class="x_panel mt-10">
             <div class="x_content">
+                • 수강생현황은 결제상태가 ‘결제완료’인 건수만 카운트됩니다. (환불완료 제외)
                 <table id="list_ajax_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>

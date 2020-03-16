@@ -170,7 +170,9 @@ class Lecture extends \app\controllers\BaseController
         public_download($filename, $filename_ori);
     }
 
-
+    /**
+     * 마스터강의 처리 (add/modify)
+     */
     public function copy()
     {
         $rules = [
@@ -187,6 +189,22 @@ class Lecture extends \app\controllers\BaseController
         $result = $this->lectureModel->lectureCopy($wlecidx);
 
         $this->json_result($result,'복사 되었습니다.',$result);
+    }
+
+    /**
+     * 마스터강의 목록내 사용여부 처리
+     */
+    public function redata()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '상태값', 'rules' => 'trim|required']
+        ];
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $result = $this->lectureModel->modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
 

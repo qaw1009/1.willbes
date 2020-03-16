@@ -10,7 +10,7 @@
 
         <div class="skybanner">
             <span><img src="https://static.willbes.net/public/images/promotion/main/3114_sky00.png" alt="시계" ></span>
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114_sky01_0316.png" alt="사전예약 신청하기" usemap="#Map3114" border="0">
             <map name="Map3114" id="Map3114">
                 <area shape="rect" coords="18,313,88,422" href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" alt="김정환" />
                 <area shape="rect" coords="93,312,162,424" href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank" alt="김경은" />
@@ -24,12 +24,12 @@
         </div>
           
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_01.jpg" alt="사전수강신청" usemap="#Map3114B" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/main/3114_standby_01_0316.jpg" alt="사전수강신청" usemap="#Map3114B" border="0">
             <map name="Map3114B" id="Map3114B">
-                <area shape="rect" coords="178,948,365,1120" href="#evt04" alt="김정환" />
-                <area shape="rect" coords="370,948,556,1120" href="#evt05" alt="김경은" />
-                <area shape="rect" coords="565,948,750,1120" href="#evt06" alt="황채영" />
-                <area shape="rect" coords="754,948,944,1120" href="#evt07" alt="정문진" />
+                <area shape="rect" coords="175,1178,362,1350" href="#evt04" alt="김정환" />
+                <area shape="rect" coords="371,1176,557,1348" href="#evt05" alt="김경은" />
+                <area shape="rect" coords="562,1176,747,1348" href="#evt06" alt="황채영" />
+                <area shape="rect" coords="757,1176,947,1348" href="#evt07" alt="정문진" />
             </map>
         </div>
           

@@ -481,6 +481,37 @@ class LectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 강좌 사용 변경
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyLectureByColumn($params=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $lec_idx => $columns) {
+                $this->_conn->set($columns)->set('wUpdAdminIdx', $this->session->userdata('admin_idx'));
+                $this->_conn->set('wUpdDatm', 'NOW()', false);
+                $this->_conn->where('wLecIdx',$lec_idx);
+                if ($this->_conn->update($this->_table) === false) {
+                    throw new \Exception('마스터강의 정보 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 
 
 

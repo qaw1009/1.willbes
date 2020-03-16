@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('2002', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)
@@ -148,6 +148,7 @@
 
         <div class="x_panel mt-10">
             <div class="x_content">
+                • 수강생현황은 결제상태가 ‘결제완료’인 건수만 카운트됩니다. (환불완료 제외)
                 <table id="list_ajax_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>

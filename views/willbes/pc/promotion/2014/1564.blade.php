@@ -191,7 +191,7 @@
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                    <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                    <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>  
@@ -215,16 +215,18 @@
                     공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
-            </div>   
-        </div>  
-
-        <div id="tab03">
+            </div>
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" ><br>
                 <iframe src="https://www.youtube.com/embed/_yVIa13RFW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="e커머스 강좌소개" ><br>
+            </div>   
+        </div>  
+
+        <div id="tab03">
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="커리큘럼 강좌소개" ><br>
             </div>
         </div>
 

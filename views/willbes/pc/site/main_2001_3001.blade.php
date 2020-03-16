@@ -31,7 +31,7 @@
                 <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190820_02.jpg" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
                 <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
-                    <iframe src="https://www.youtube.com/embed/1t-y10ZK6ig?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
+                    <iframe src="https://www.youtube.com/embed/ZfgKjhwXlk8" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
                 </div>
                 <ul class="ProfCopBox mt100 mb170">

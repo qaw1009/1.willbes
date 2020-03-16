@@ -141,7 +141,7 @@
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff; padding-top:100px}
+        .evt03 {background:#fff;}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
         .evt04 {background:#ececec; padding:100px 0}
@@ -190,7 +190,7 @@
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                    <li><a href="#tab03" data-tab="tab03" class="top-tab">e커머스 강좌소개</a></li>
+                    <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>  
@@ -214,12 +214,15 @@
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
-            </div>   
+            </div> 
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >               
+            </div>  
         </div>  
 
         <div id="tab03">
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03.jpg" alt="e커머스 강좌소개" >               
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02.jpg" alt="커리큘럼" >               
             </div>
         </div>
 

@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseStudent extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','student/student');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course'
+        ,'product/base/subject','product/base/professor','student/student');
     protected $helpers = array();
     protected $LearnPattern = null;
     protected $ProdTypeCcd = null;
@@ -42,8 +43,10 @@ class BaseStudent extends \app\controllers\BaseController
     {
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['607','611','618','653','654','675']);
-        $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
+        // $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
+        $arr_code['arr_site_code'] = get_auth_on_off_site_codes('Y', true, false);
         $def_site_code = key($arr_code['arr_site_code']);
+
         // 캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
 
@@ -131,7 +134,7 @@ class BaseStudent extends \app\controllers\BaseController
                     ]
                 ],
             ]);
-            //} elseif($this->_reqP('search_type') === 'lec') {
+
         } else {
             $arr_condition = array_merge($arr_condition,[
                 'ORG1' => [
@@ -142,7 +145,6 @@ class BaseStudent extends \app\controllers\BaseController
                 ],
             ]);
         }
-
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -184,7 +186,6 @@ class BaseStudent extends \app\controllers\BaseController
             'data' => $list
         ]);
     }
-
 
 
     /**
@@ -238,6 +239,7 @@ class BaseStudent extends \app\controllers\BaseController
             $arr_condition = [
                 'IN' => [
                     'OP.ProdCode' => $ProdCode, // 강좌코드
+                    'OP.PayStatusCcd' => ['676001', '676007']
                 ],
                 'EQ' => [
                     'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -257,6 +259,9 @@ class BaseStudent extends \app\controllers\BaseController
                     'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                     'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                     'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ],
+                'IN' => [
+                    'OP.PayStatusCcd' => ['676001', '676007']
                 ]
             ];
         }
@@ -265,7 +270,6 @@ class BaseStudent extends \app\controllers\BaseController
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
-
 
         // 강좌 수강중인 회원 읽어오기
         $list = [];
@@ -321,11 +325,12 @@ class BaseStudent extends \app\controllers\BaseController
                 '결제자', '결제일', '휴대폰', '이메일'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+
         } else if($this->LearnPattern == 'offpkg'){
-            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '수강증번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '휴대폰', '이메일', '할인사유', '주문메모'];
-            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail, DiscReason, OrderMemo';
+            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '주문상태', '수강증번호', '결제루트', '결제수단', '결제금액',
+                '결제자', '결제일', '환불태일', '휴대폰', '이메일', '할인사유', '주문메모'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayStatusName, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo';
 
         } else {
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
@@ -340,18 +345,51 @@ class BaseStudent extends \app\controllers\BaseController
             $column = 'ProdCode, ProdName,'.$column;
 
             $file_name = '수강생현황_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
-            $arr_condition = [
-                'IN' => [
-                    'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                ],
-                'EQ' => [
-                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
-                ]
-            ];
+            if($this->LearnPattern == 'offpkg'){
+                $arr_condition = [
+                    'IN' => [
+                        'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                    ],
+                    'EQ' => [
+                        'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                        'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                        'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                        'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                        'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                    ]
+                ];
+            } else {
+                if($this->LearnPattern == 'offpkg') {
+                    $arr_condition = [
+                        'IN' => [
+                            'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                            'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        ],
+                        'EQ' => [
+                            'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                            'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                            'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                            'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                            'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                        ]
+                    ];
+                } else {
+                    $arr_condition = [
+                        'IN' => [
+                            'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                            'OP.PayStatusCcd' => ['676001', '676007']
+                        ],
+                        'EQ' => [
+                            'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                            'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                            'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                            'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                            'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                        ]
+                    ];
+                }
+            }
 
         } else {
             $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);
@@ -365,6 +403,9 @@ class BaseStudent extends \app\controllers\BaseController
                     'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                     'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                     'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ],
+                'IN' => [
+                    'OP.PayStatusCcd' => ['676001', '676007']
                 ]
             ];
         }

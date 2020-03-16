@@ -29,7 +29,7 @@ class OffLectureModel extends CommonLectureModel
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                             ,Ac.CcdName as ProdTypeCcd_Name
                             ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                            ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum,B.ProfChoiceStartDate,B.ProfChoiceEndDate
+                            ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum,B.ProfChoiceStartDate,B.ProfChoiceEndDate,B.LecSaleType
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as StudyPatternCcd_Name
                             ,Be.CcdName as StudyApplyCcd_Name

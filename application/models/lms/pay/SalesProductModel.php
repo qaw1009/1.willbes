@@ -61,11 +61,11 @@ class SalesProductModel extends BaseOrderModel
                 ]);
                 break;
 
-            // 학원 단과
+            // 학원 단과 (일반/선수강좌 구분없이 조회)
             case 'off_lecture' :
-                $column .= ', CateCode, IsCart, IsFreebiesTrans, IsDeliveryInfo, ProdPriceData';
+                $column .= ', LecSaleType, CateCode, IsCart, IsFreebiesTrans, IsDeliveryInfo, ProdPriceData';
                 $arr_default_condition = array_merge_recursive($arr_default_condition, [
-                    'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y', 'AcceptStatusCcd' => $this->_available_sale_status_ccd['accept']]   // 일반강의, 마스터강의 사용여부, 강의개설여부, 접수상태
+                    'EQ' => ['wIsUse' => 'Y', 'IsLecOpen' => 'Y', 'AcceptStatusCcd' => $this->_available_sale_status_ccd['accept']]   // 마스터강의 사용여부, 강의개설여부, 접수상태
                 ]);
                 break;
 

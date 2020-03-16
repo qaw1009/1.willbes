@@ -149,6 +149,7 @@
                         <th>캠퍼스</th>
                         <th>수강형태</th>
                         <th>수강신청<BR>구분</th>
+                        <th>선수강좌<BR>구분</th>
                         <th>개강<BR>년/월</th>
                         <th>과정</th>
                         <th>과목</th>
@@ -255,6 +256,9 @@
                     {'data' : 'CampusCcd_Name'},//캠퍼스
                     {'data' : 'StudyPatternCcd_Name'},
                     {'data' : 'StudyApplyCcd_Name'},
+                    {'data' : 'LecSaleType', 'render' : function(data, type, row, meta) {
+                        return data === 'B' ? '선수강좌' : '일반강좌';
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.SchoolStartYear+'/'+row.SchoolStartMonth;
                     }},

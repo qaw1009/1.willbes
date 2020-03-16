@@ -29,6 +29,9 @@ class Freelecture extends BaseStudent
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                 'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                 'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+            ],
+            'IN' => [
+                'OP.PayStatusCcd' => ['676001', '676007']
             ]
         ];
         // 날짜 검색

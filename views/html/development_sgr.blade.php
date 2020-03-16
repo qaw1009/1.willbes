@@ -15,12 +15,12 @@
         }
     </style>
     {!! csrf_field() !!}
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="sgr-live-view" style="min-height: 800px;">
-            <img id="sgr_live_thumb" src="" style="display:none; width:1200px; height: 800px; cursor: pointer;">
+    <div class="NSK" id="evtContainer">
+        <div class="sgr-live-view" style="min-height: 600px; text-align: center; margin-top: 100px;">
+            <img id="sgr_live_thumb" src="" style="display:none; width:854px; height:480px; cursor: pointer; margin-left: 10px;">
             {{--        <iframe src="https://willbes.sgrsoft.com/w/lecture_player/15" frameborder="0" allowfullscreen style="display:block; width:99vw; height: 98vh"></iframe>--}}
 {{--            <iframe src="https://willbes.sgrsoft.com/w/lecture_player/15" frameborder="0" allowfullscreen style="display:block; width:1200px; height: 800px;"></iframe>--}}
-            <iframe id="sgr_live_frame" src="" frameborder="0" allowfullscreen style="display:none; width:1200px; height: 800px;"></iframe>
+            <iframe id="sgr_live_frame" src="" frameborder="0" allowfullscreen style="display:none; width:854px; height:480px;"></iframe>
         </div>
     </div>
 

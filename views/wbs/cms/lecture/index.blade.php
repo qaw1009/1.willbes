@@ -69,7 +69,7 @@
                     <th width="50">예정강의수</th>
                     <th>진행상태 </th>
                     <th>제작월 </th>
-                    <th width="30">사용여부 </th>
+                    <th>사용 </th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>복사</th>
@@ -91,6 +91,7 @@
                 serverSide: true,
                 
                 buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-use-modify'},
                     { text: '<i class="fa fa-copy mr-5"></i> 마스터강의복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'},
                     { text: '<i class="fa fa-pencil mr-5"></i> 마스터강의등록', className: 'btn-sm btn-primary border-radius-reset mr-15',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('/cms/lecture/create') }}';
@@ -126,7 +127,7 @@
                     {'data' : 'wProgressCcd_Name'},
                     {'data' : 'wMakeYM'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.wLecIdx +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
                     {'data' : 'wRegAdminName'},
                     {'data' : 'wRegDatm'},
@@ -156,7 +157,6 @@
                 }
 
                 if(confirm("해당 마스터강의를 복사하시겠습니까?")) {
-
                     var data = {
                         '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                         '_method': 'PUT',
@@ -169,10 +169,46 @@
                             $datatable.draw();
                         }
                     }, showError, false, 'POST');
+                }
+            });
 
+            // 사용 상태 변경
+            $('.btn-use-modify').on('click', function() {
+                if (!confirm('상태를 적용하시겠습니까?')) {
+                    return;
+                }
+                var $is_use = $list_table.find('input[name="is_use"]');
+                var $params = {};
+                var origin_val, this_val, this_use_val;
+
+                $is_use.each(function(idx) {
+                    this_use_val =  $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_use_val;
+                    origin_val = $is_use.eq(idx).data('origin-is-use');
+                    if (this_val !== origin_val) {
+                        $params[$(this).data('idx')] = {'wIsUse' : this_use_val };
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
                 }
 
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/cms/lecture/redata') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
+
         });
     </script>
 @stop

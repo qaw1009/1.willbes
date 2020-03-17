@@ -329,6 +329,7 @@ class OffVisitPackage extends BaseOrder
     public function checkUnPaidOrder()
     {
         $unpaid_idx = null;
+        $order_idx = null;
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],

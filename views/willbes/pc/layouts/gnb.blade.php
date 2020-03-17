@@ -36,14 +36,44 @@
                             <li class="dropdown">
                                 <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>
                                 @if(isset($menu_row['Children']) === true)
-                                    <div class="left-drop-Box">
-                                        <ul>
-                                            @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                                                <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                        {{--<div class="sliderViewWrap"></div>--}}
-                                    </div>
+                                <div class="left-drop-Box">
+                                    <ul>
+                                        @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
+                                            <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                    {{--<div class="sliderViewWrap"></div>--}}
+                                </div>
+                                @endif
+                                @if($__cfg['SiteGroupCode'] === '1008')
+                                <!--n잡--> 
+                                <dl class="sns-Btn">                                    
+                                    <dt>
+                                        <a href="https://www.youtube.com/channel/UC2jUfowhznI9aNF7iA5vnIA" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                                        </a>
+                                    </dt> 
+                                    <dt>
+                                        <a href="https://www.instagram.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">
+                                        </a>
+                                    </dt>  
+                                    <dt>
+                                        <a href="https://www.facebook.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
+                                        </a>
+                                    </dt>                               
+                                    <dt>
+                                        <a href="https://tv.naver.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
+                                        </a>
+                                    </dt>                                   
+                                    <dt>
+                                        <a href="https://cafe.naver.com/willbes" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_cafe.png') }}" title="네이버카페">
+                                        </a>
+                                    </dt>                        
+                                </dl>
                                 @endif
                             </li>
                         @elseif($menu_row['MenuType'] == 'GA')
@@ -106,8 +136,36 @@
                                         <a href=" https://www.instagram.com/willbes_gong/" target="_blank">
                                             <img src="https://static.willbes.net/public/images/promotion/2019/10/icon_instagram.png" title="인스타그램">
                                         </a>
+                                    </dt>                            
+                                    @endif
+
+                                    @if($__cfg['SiteGroupCode'] === '1008')
+                                    <!--n잡--> 
+                                    <dt>
+                                        <a href="https://www.youtube.com/channel/UC2jUfowhznI9aNF7iA5vnIA" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                                        </a>
+                                    </dt> 
+                                    <dt>
+                                        <a href="https://www.instagram.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">
+                                        </a>
+                                    </dt>  
+                                    <dt>
+                                        <a href="https://www.facebook.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
+                                        </a>
+                                    </dt>                               
+                                    <dt>
+                                        <a href="https://tv.naver.com/willbesnjob" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
+                                        </a>
                                     </dt>                                   
-                                    
+                                    <dt>
+                                        <a href="https://cafe.naver.com/willbes" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_cafe.png') }}" title="네이버카페">
+                                        </a>
+                                    </dt>                         
                                     @endif
                                 </dl>
                             </li>

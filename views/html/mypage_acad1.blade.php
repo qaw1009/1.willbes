@@ -259,7 +259,7 @@
                                     ~ 2018.11.20</td>
                                 <td class="w-answer p_re">
                                     <a href="#none" onclick="openWin('profChoice')"><span class="bBox blueBox">강사선택하기</span></a>
-                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                    <button href="#none" style="background:#fff"><span class="bBox blackBox">좌석선택하기</span></button>
                                 </td>
                             </tr>
                             <tr>
@@ -286,7 +286,7 @@
                                     ~ 2018.11.20</td>
                                 <td class="w-answer p_re">
                                     <a href="#none"><span class="bBox blueBox">강사선택하기</span></a>
-                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                    <button href="#none" style="background:#fff"><span class="bBox blackBox">좌석선택하기</span></button>
                                 </td>
                             </tr>
                             <tr>

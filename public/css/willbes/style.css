@@ -764,7 +764,7 @@ table.auTable tr td {
     text-align: left;
     padding-left:20px;
 }
-
+#Gnb .topView h4 ul li.dropdown .sns-Btn {margin-lefT:-20px; margin-bottom:0}
 #Gnb .sns-Btn {
     text-align: center;
     margin-top: 5px;

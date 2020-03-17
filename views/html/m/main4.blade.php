@@ -22,8 +22,6 @@
         </ul>
     </div>
 
-    <div class="line">-</div>
-
     <div class="buttonTabs noticeTabs c_both">
         <ul class="tabWrap buttonWrap noticeWrap three">
             <li><a href="#notice1" class="on">공지사항</a></li>

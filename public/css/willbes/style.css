@@ -9138,6 +9138,8 @@ table.acadTable tr td {
 }
 .seatsection a {display: block; background: #000; color:#fff; border-radius:20px; padding:0 12px}
 .seatsection a:hover {background: #0d74ae;}
+.seatsection button {display: block; background: #000; color:#fff; border-radius:20px; padding:0 12px}
+.seatsection button:hover {background: #0d74ae;}
 .seatsection span {color:#0d74ae}
 .seatsection:after {
     content: ""; display: block; clear: both;

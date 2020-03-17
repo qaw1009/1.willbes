@@ -89,18 +89,18 @@
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_james.jpg" title="james kim">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_lee.jpg" title="캡틴리">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50657', 'OT');">▶</a></li>
-                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50758/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51014/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4
 " target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_ksh.jpg" title="김수현">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_lee2.jpg" title="캡틴리">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50485', 'OT');">▶</a></li>
-                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50745/?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51013/?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0
 " target="_blank">교수소개</a></li>
                         </ul>
                     </li>

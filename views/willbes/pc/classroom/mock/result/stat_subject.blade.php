@@ -28,44 +28,66 @@
         <table cellspacing="0" cellpadding="0" class="sheetTb mgB4">
             <colgroup>
                 <col style="width: 90px;"/>
-                @foreach($dataSubject[$key] as $key2 => $row2)
+                @if(empty($dataSubject[$key]) === true)
                     <col width="*">
-                @endforeach
+                @else
+                    @foreach($dataSubject[$key] as $key2 => $row2)
+                        <col width="*">
+                    @endforeach
+                @endif
             </colgroup>
             <thead>
             <tr>
                 <th>구분</th>
-                @foreach($dataSubject[$key]['RightAnswer'] as $key2 => $row2)
-                    <th>{{ $key2 + 1 }}</th>
-                @endforeach
+                @if(empty($dataSubject[$key]['RightAnswer']) === true)
+                    <th></th>
+                @else
+                    @foreach($dataSubject[$key]['RightAnswer'] as $key2 => $row2)
+                        <th>{{ $key2 + 1 }}</th>
+                    @endforeach
+                @endif
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>정답</td>
-                @foreach($dataSubject[$key]['RightAnswer'] as $key2 => $row2)
-                    <td>{{ $row2 }}</td>
-                @endforeach
-
+                @if(empty($dataSubject[$key]['RightAnswer']) === true)
+                    <td></td>
+                @else
+                    @foreach($dataSubject[$key]['RightAnswer'] as $key2 => $row2)
+                        <td>{{ $row2 }}</td>
+                    @endforeach
+                @endif
             </tr>
             <tr>
                 <td>마킹</td>
-                @foreach($dataSubject[$key]['Answer'] as $key2 => $row2)
-                    <td><span class="@if($dataSubject[$key]['IsWrong'][$key2] == 'N') mis @endif">{{ $row2 }}</span></td>
-                @endforeach
-
+                @if(empty($dataSubject[$key]['Answer']) === true)
+                    <td></td>
+                @else
+                    @foreach($dataSubject[$key]['Answer'] as $key2 => $row2)
+                        <td><span class="@if($dataSubject[$key]['IsWrong'][$key2] == 'N') mis @endif">{{ $row2 }}</span></td>
+                    @endforeach
+                @endif
             </tr>
             <tr>
                 <td>정답률</td>
-                @foreach($dataSubject[$key]['QAVR'] as $key2 => $row2)
-                    <td>{{ $row2 }}%</td>
-                @endforeach
+                @if(empty($dataSubject[$key]['QAVR']) === true)
+                    <td></td>
+                @else
+                    @foreach($dataSubject[$key]['QAVR'] as $key2 => $row2)
+                        <td>{{ $row2 }}%</td>
+                    @endforeach
+                @endif
             </tr>
             <tr>
                 <td>난이도</td>
-                @foreach($dataSubject[$key]['Difficulty'] as $key2 => $row2)
-                    <td>{{ $row2 }}</td>
-                @endforeach
+                @if(empty($dataSubject[$key]['Difficulty']) === true)
+                    <td></td>
+                @else
+                    @foreach($dataSubject[$key]['Difficulty'] as $key2 => $row2)
+                        <td>{{ $row2 }}</td>
+                    @endforeach
+                @endif
             </tr>
             </tbody>
         </table>
@@ -73,36 +95,36 @@
 
         <!-- 학습요소 -->
         @foreach($dataSubjectV2 as $key => $row)
-        <div class="htit2Wp mt60">
-            <h3 class="htit2 NG"><span class="tx-deep-blue">{{ $row['MP'] }}</span> 영역 및 학습요소</h3>
-        </div>
-        <table cellspacing="0" cellpadding="0" class="sheetTb2 mgB4">
-            <colgroup>
-                <col style="width: 170px;"/>
-                <col style="width: 65px;"/>
-                <col style="width: 95px;"/>
-                <col style="width: 240px;">
-                <col width="*">
-            </colgroup>
-            <thead>
-            <tr>
-                <th class="sh1">구분</th>
-                <th class="sh2">개수</th>
-                <th class="sh3">평균</th>
-                <th class="sh4">관련문항</th>
-                <th class="sh5">오답문항</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{ $row['areaName'] }}</td>
-                <td>@if(empty($row['OCNT'])===false) {{ COUNT($row['OCNT']) }} / {{ COUNT($row['QuestionNO']) }} @else 0 / {{ COUNT($row['QuestionNO']) }}@endif</td>
-                <td>{{ $row['AVR'] }}</td>
-                <td>@if(empty($row['QuestionNO'])===false) @foreach($row['QuestionNO'] as $key => $row2) ({{ $row2 }}) @endforeach @endif</td>
-                <td class="aMis">@if(empty($row['XCNT'])===false) @foreach($row['XCNT'] as $key => $row2) ({{ $row2 }}) @endforeach @endif</td>
-            </tr>
-            </tbody>
-        </table>
+            <div class="htit2Wp mt60">
+                <h3 class="htit2 NG"><span class="tx-deep-blue">{{ $row['MP'] }}</span> 영역 및 학습요소</h3>
+            </div>
+            <table cellspacing="0" cellpadding="0" class="sheetTb2 mgB4">
+                <colgroup>
+                    <col style="width: 170px;"/>
+                    <col style="width: 65px;"/>
+                    <col style="width: 95px;"/>
+                    <col style="width: 240px;">
+                    <col width="*">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="sh1">구분</th>
+                    <th class="sh2">개수</th>
+                    <th class="sh3">평균</th>
+                    <th class="sh4">관련문항</th>
+                    <th class="sh5">오답문항</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ $row['areaName'] }}</td>
+                    <td>@if(empty($row['OCNT'])===false) {{ COUNT($row['OCNT']) }} / {{ COUNT($row['QuestionNO']) }} @else 0 / {{ COUNT($row['QuestionNO']) }}@endif</td>
+                    <td>{{ $row['AVR'] }}</td>
+                    <td>@if(empty($row['QuestionNO'])===false) @foreach($row['QuestionNO'] as $key => $row2) ({{ $row2 }}) @endforeach @endif</td>
+                    <td class="aMis">@if(empty($row['XCNT'])===false) @foreach($row['XCNT'] as $key => $row2) ({{ $row2 }}) @endforeach @endif</td>
+                </tr>
+                </tbody>
+            </table>
         @endforeach
 
         <!-- End 학습요소 -->

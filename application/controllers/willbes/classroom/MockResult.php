@@ -129,6 +129,7 @@ class MockResult extends \app\controllers\FrontController
         $dataAdjust = $this->mockExamModel->gradeCall($prodcode, 'adjust', $mridx);
         $dataDetail = $this->mockExamModel->gradeDetailCall($prodcode, $mridx);
 
+        $dataDetailV = null;
         foreach($dataDetail as $key => $val){
             $mpidx = $val['MpIdx'];
 
@@ -155,22 +156,24 @@ class MockResult extends \app\controllers\FrontController
             $dataOrg['tsum'] = $dataOrg['tsum'];
         }
 
-        $ADRank = $dataAdjust['ADRank'];
-        $arrADRank = explode('/',$ADRank);
+        if ($dataAdjust) {
+            $ADRank = $dataAdjust['ADRank'];
+            $arrADRank = explode('/', $ADRank);
 
-        $dataAdjust['grade'] = round($dataAdjust['AD'],2);
-        $dataAdjust['avg'] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
-        $dataAdjust['rank'] =  $ADRank;
-        $dataAdjust['rankS'] = $arrADRank[0];
-        $dataAdjust['tavg'] = $dataAdjust['tavg'];
-        $dataAdjust['tsum'] = $dataAdjust['tsum'];
-        /*$dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);*/
-        $dataAdjust['tpct'] = round(($arrADRank[0] / $dataAdjust['COUNT']) * 100, 2);
-        $dataAdjust['admax'] = $dataAdjust['ADMAX'];
-
+            $dataAdjust['grade'] = round($dataAdjust['AD'], 2);
+            $dataAdjust['avg'] = (empty($dataAdjust['AD']) === true || empty($dataAdjust['KCNT']) === true) ? '0' : round($dataAdjust['AD'] / $dataAdjust['KCNT'], 2);
+            $dataAdjust['rank'] = $ADRank;
+            $dataAdjust['rankS'] = $arrADRank[0];
+            $dataAdjust['tavg'] = $dataAdjust['tavg'];
+            $dataAdjust['tsum'] = $dataAdjust['tsum'];
+            /*$dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);*/
+            $dataAdjust['tpct'] = (empty($arrADRank[0]) === true || empty($dataAdjust['COUNT']) === true) ? '0' : round(($arrADRank[0] / $dataAdjust['COUNT']) * 100, 2);
+            $dataAdjust['admax'] = $dataAdjust['ADMAX'];
+        }
         //응시자 평균점수 분포표용
         $dataGraph = $this->mockExamModel->adjustPointData($prodcode);
 
+        $dataSet = null;
         foreach ($dataGraph as $key => $val){
             $dataSet[] = $val['AVG'];
         }
@@ -249,6 +252,7 @@ class MockResult extends \app\controllers\FrontController
         $dataSubject2 = $this->mockExamModel->gradeSubjectDetailCall($prodcode, $mridx, 2);
 
         // 문항별분석
+        $dataSubjectV = [];
         foreach($dataSubject as $key => $val){
             $mpidx = $val['MpIdx'];
             $dataSubjectV[$mpidx]['RightAnswer'][] = $val['RightAnswer'];
@@ -258,11 +262,13 @@ class MockResult extends \app\controllers\FrontController
             $dataSubjectV[$mpidx]['Difficulty'][] = $val['Difficulty'];
         }
 
+        $pList = null;
         foreach ($subject_list as $key => $val){
             $pList[$val['MpIdx']] = $val['SubjectName'];
         }
 
         // 영역 및 학습요소
+        $dataSubjectV2 = [];
         foreach($dataSubject2 as $key => $val){
             $mpidx = $val['MpIdx'];
             $malidx = $val['MpIdx'].$val['MalIdx'];

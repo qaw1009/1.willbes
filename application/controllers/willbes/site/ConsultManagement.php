@@ -116,8 +116,17 @@ class ConsultManagement extends \app\controllers\FrontController
 
         //공통코드 조회
         $codes = $this->codeModel->getCcdInArray($this->consultFModel->_ccds);
+        $serial_ccd = null;
+        if(config_app('SiteGroupCode') == '1002') {
+            $serial_ccd = $codes['614'];    //공무원 온라인, 공무원 학원
+        } else if($this->_site_code == '2013') {
+            $serial_ccd = $codes['729'];    //경찰간부 학원
+        } else {
+            $serial_ccd = $codes['666'];    //경찰 학원
+        }
+
         $arr_base['mail_domain_ccd'] = $codes['661'];
-        $arr_base['serial_ccd'] = (config_app('SiteGroupCode') == '1002') ? $codes['614'] : $codes['666'];
+        $arr_base['serial_ccd'] = $serial_ccd;
         $arr_base['candidate_area_ccd'] = $codes['631'];
         $arr_base['exam_period_ccd'] = $codes['667'];
         $arr_base['study_ccd'] = $codes['668'];
@@ -125,7 +134,7 @@ class ConsultManagement extends \app\controllers\FrontController
         $arr_base['data'] = $data;
         $arr_base['depth'] = 2;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
-        $arr_base['memo'] = $this->_default_memo();
+        $arr_base['memo'] =  $this->_site_code == '2013'? '' : $this->_default_memo();
 
         $arr_base['site_code'] = $this->_site_code;
         $arr_base['campus'] = [];

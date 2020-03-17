@@ -158,7 +158,6 @@
 
             $list_table.on('click', '.btn-schedule-member-read', function() {
                 var uri_param = $(this).data('csm-idx');
-                console.log(uri_param);
 
                 $('.btn-schedule-member-read').setLayer({
                     'url' : '{{ site_url('/pass/consult/schedule/detailMemberModal/') }}' + uri_param,

@@ -35,6 +35,8 @@
             </ul>
         </div>
 
+        <div class="line">-</div>
+
         <div class="buttonTabs noticeTabs c_both">
             {{-- board include --}}
             @include('willbes.m.site.main_partial.board_off')

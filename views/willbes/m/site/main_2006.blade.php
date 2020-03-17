@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/80') }}" target="_blank">강의시간표</a></li>
                 <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/109') }}" target="_blank">강의계획서</a></li>
-                <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/82') }}" target="_blank">강의실배정표</a></li>
+                <li><a href="{{ site_url('/m/lecture/index/pattern/free') }}" target="_blank">학원보강</a></li>
             </ul>
         </div>
 

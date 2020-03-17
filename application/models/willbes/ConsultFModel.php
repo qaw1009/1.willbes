@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ConsultFModel extends WB_Model
 {
-    public $_ccds = ['661','666','614','631','667', '668'];   //이메일,응시직렬,응시지역,수험기간,수강여부
+    public $_ccds = ['661','666','614','631','667', '668', '729'];   //이메일,응시직렬,응시지역,수험기간,수강여부
 
     private $_table = [
         'consult_schedule' => 'lms_consult_schedule',

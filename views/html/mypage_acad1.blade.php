@@ -153,7 +153,7 @@
                                     </dl>
                                     <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                     <ul class="seatsection">
-                                        <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                        <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
                                         <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                         <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
@@ -176,7 +176,7 @@
                                     </dl>
                                     <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                     <ul class="seatsection">
-                                        <li><a href="#">좌석선택 ></a></li>
+                                        <li><button href="#">좌석선택 ></button></li>
                                         <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                         <li>[좌석번호] <span>086</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
@@ -271,7 +271,7 @@
                                         </dt>
                                     </dl>     
                                     <ul class="seatsection">
-                                        <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                        <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
                                         <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                         <li>[좌석번호] <span>086</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
@@ -299,7 +299,7 @@
                                             </dt>
                                         </dl>     
                                         <ul class="seatsection">
-                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
                                             <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                             <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
@@ -313,7 +313,7 @@
                                             </dt>
                                         </dl>     
                                         <ul class="seatsection">
-                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
                                             <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                             <li>[좌석번호] <span>066</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
@@ -327,7 +327,7 @@
                                             </dt>
                                         </dl>     
                                         <ul class="seatsection">
-                                            <li><a href="#" onclick="openWin('seatChoice')">좌석선택 ></a></li>
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
                                             <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                             <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>

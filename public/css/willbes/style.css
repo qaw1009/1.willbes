@@ -764,7 +764,7 @@ table.auTable tr td {
     text-align: left;
     padding-left:20px;
 }
-
+#Gnb .topView h4 ul li.dropdown .sns-Btn {margin-lefT:-20px; margin-bottom:0}
 #Gnb .sns-Btn {
     text-align: center;
     margin-top: 5px;
@@ -9138,6 +9138,8 @@ table.acadTable tr td {
 }
 .seatsection a {display: block; background: #000; color:#fff; border-radius:20px; padding:0 12px}
 .seatsection a:hover {background: #0d74ae;}
+.seatsection button {display: block; background: #000; color:#fff; border-radius:20px; padding:0 12px}
+.seatsection button:hover {background: #0d74ae;}
 .seatsection span {color:#0d74ae}
 .seatsection:after {
     content: ""; display: block; clear: both;

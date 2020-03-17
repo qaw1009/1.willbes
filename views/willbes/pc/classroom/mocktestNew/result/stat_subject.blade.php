@@ -108,7 +108,7 @@
                                             }
                                             @endphp
                                         </td>
-                                        <td class="aMis">
+                                        <td class="{{ ($val['n_question_no'] == '없음') ? '' : 'aMis' }}">
                                             @php
                                                 $arr_n_question_no = explode(',',$val['n_question_no']);
                                                 sort($arr_n_question_no);

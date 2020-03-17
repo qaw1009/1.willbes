@@ -309,7 +309,7 @@
                         {{-- <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"> --}}
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">
                         <span class="NSK-Black">지금, 사전예약 </span>
-                        신청하고 1억 만들기 도전! → 
+                        신청하고 100만원 만들기 도전! → 
                         </a>
                     </li>
                     <li>

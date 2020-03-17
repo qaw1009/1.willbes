@@ -31,7 +31,6 @@
         .wb_cts03 {padding-bottom:100px}
         .wb_cts05 {background:#fff; padding-bottom:100px}
         .wb_cts05 ul {width:920px; margin:30px auto}
-        .wb_cts05 li { display:inline; float:left; width:50%}
         .wb_cts05 li a {display:block; color:#fff; font-size:20px; background:#000; border-radius:20px; padding:20px 0; margin-right:20px}        
         .wb_cts05 li:last-child a {margin-right:0}
         .wb_cts05 li a:hover { background:#6f2ebc; color:#ffdd96}
@@ -68,8 +67,8 @@
 
    <div class="skybanner">
         <ul>          
-          <li><a href="#none" onclick="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="#none" onclick="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=265066&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=265070&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
         </ul>
     </div>
 
@@ -94,7 +93,6 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1576_04.jpg" usemap="#Map1433ab" title="수강신청" />
         <ul class="NGEB">
             <li><a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&course_idx=" target="_blank">일반행정직 최종점검 실전 CLASS 수강하기 > </a></li>
-            <li><a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&course_idx=" target="_blank">세무직 최종점검 실전 CLASS 수강하기 > </a></li>
         </ul>     
     </div>
     <!--wb_cts05//-->   

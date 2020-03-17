@@ -109,7 +109,7 @@
                 <area shape="rect" coords="416,450,698,524" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/162737" target="_blank" />
                 <area shape="rect" coords="727,450,1008,523" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/160209" target="_blank" />
                 <area shape="rect" coords="106,751,388,823" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/161659" target="_blank" />
-                <area shape="rect" coords="416,749,699,825" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&subject_idx=1327&prof_idx=50430" target="_blank"/>
+                <area shape="rect" coords="416,749,699,825" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&subject_idx=&prof_idx=50430" target="_blank"/>
                 <area shape="rect" coords="727,750,1007,823" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/162993" target="_blank"/>
             </map>
         </div>

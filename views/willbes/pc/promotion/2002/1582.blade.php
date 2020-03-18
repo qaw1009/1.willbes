@@ -242,6 +242,11 @@
                 <input type="hidden" name="target_param_names[]" value="응시직렬"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
 
+                {{-- 시험응시번호 중복체크 --}}
+                <input type="hidden" name="register_chk_other_col" value="EtcValue"/>
+                <input type="hidden" name="register_chk_other_val" value=""/>
+                <input type="hidden" name="register_chk_other_msg" value="이미 이벤트 신청된 응시번호입니다."/>
+
                 <input type="hidden" name="register_chk[]" id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 
                 <div id="apply">                    
@@ -775,8 +780,8 @@
         {{-- 유료 --}}
         function fn_promotion_etc_submit() {
 
-            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
-                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
+                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 
@@ -800,8 +805,8 @@
         {{-- 무료 당첨 --}}
         function fn_add_apply_submit() {
 
-            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
-                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
+                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 
@@ -916,10 +921,12 @@
                     alert('응시번호가 잘못 되었습니다.');
                     $register_data3.focus();
                     return;
+                } else {
+                    $regi_form_register.find('input[name="register_chk_other_val"]').val(',' + exam_num);
                 }
             }
 
-            if (!confirm('신청하시겠습니까?')) { return true; }
+            if (!confirm('신청하시겠습니까?')) { return; }
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

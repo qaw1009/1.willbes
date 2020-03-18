@@ -346,7 +346,6 @@ class EventFModel extends WB_Model
 
                 //본인 신청이 아닌 다른사람 신청내역 중복 조회 (ex: 시험응시번호 중복여부)
                 if(empty($inputData['register_chk_other_col']) === false && empty($inputData['register_chk_other_val']) === false && empty($inputData['register_chk_other_msg']) === false) {
-                    //TODO
                     $arr_other_condition = [
                         'EQ' => [
                             'A.ErIdx' => $key

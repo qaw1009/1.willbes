@@ -383,10 +383,10 @@
                         return false;
                     }
                 } else {
-                    if (parseInt($regi_form.find('[name="org_pay_price"]').val(), 10) <= parseInt($regi_form.find('[name="real_pay_price"]').val(), 10)) {
+                    /*if (parseInt($regi_form.find('[name="org_pay_price"]').val(), 10) <= parseInt($regi_form.find('[name="real_pay_price"]').val(), 10)) {
                         alert('총 카드+현금결제금액은 총 주문금액보다 작아야 합니다.');
                         return false;
-                    }
+                    }*/
                 }
 
                 return confirm('해당 상품을 수강 등록하시겠습니까?');

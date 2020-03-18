@@ -295,7 +295,8 @@ class OffVisitPackage extends BaseOrder
         }
 
         if ($this->_reqP('is_unpaid') == 'Y') {
-            $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|less_than[' . $this->_reqP('org_pay_price') . ']'];
+            //$rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|less_than[' . $this->_reqP('org_pay_price') . ']'];
+            $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer'];
         } else {
             $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|matches[org_pay_price]'];
         }

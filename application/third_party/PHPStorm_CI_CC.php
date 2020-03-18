@@ -202,6 +202,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AffiliateDiscModel $affiliateDiscModel                        Affiliate Discount Model Class
  * @property HolidayModel $holidayModel                                    Holiday Model Class
  * @property LectureRoomModel $lectureRoomModel                            LectureRoom Model Class
+ * @property BaseStatsModel $baseStatsModel                            BaseStats Model Class
+ * @property StatsMemberModel $statsMemberModel                            StatsMember  Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

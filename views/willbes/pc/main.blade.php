@@ -153,19 +153,17 @@
                             </div>
                         </a>
                     </li>
-                    {{--
                     <li>
-                        <a href="http://willbesedu.or.kr" target="_blank">
+                        <a href="https://njob.willbes.net/home/index/cate/3114" target="_blank">
                             <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes10.png') }}"> 출석 학점은행
+                                <img src="{{ img_url('gnb/icon_njob_sm.gif') }}"> N잡
                             </div>
                             <div class="wTxt">
-                                학점은행 평가인정 교육기관<br/>
-                                <strong>윌비스 고시학원 출석학점은행</strong>
+                                가장 HOT한 이커머스 창업교육<br/>
+                                <strong>e커머스</strong>
                             </div>
                         </a>
-                    </li>     
-                    --}}                   
+                    </li>                   
                 </ul>                
             </div>
         </div>

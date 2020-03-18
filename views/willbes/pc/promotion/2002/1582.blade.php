@@ -47,6 +47,8 @@
         .form_area input[type=radio]{padding-left:15px; width:18px; height:18px}
         .form_area .check_contact .check{font-weight:normal;}
         .form_area .check_contact strong {font-weight:bold; width:100%}   
+        .form_area #look {width:100px;height:30px;}  
+        .form_area #userId {vertical-align:bottom;}   
         .area li {display:inline !important; float:left; width:16.66666%; line-height:1.5; margin-bottom:5px} 
         .area:after {content:""; display:block; clear:both}    
         input:checked + label {color:#1087ef;}
@@ -268,6 +270,17 @@
                                     </ul>
                                 </p>
                             </div>
+                            <div class="formfield">
+                                <select id="look" name="look">     
+                                    <option value="">응시직렬</option>                         
+                                    <option value="일반남자">일반남자</option>
+                                    <option value="일반여자">일반여자</option>
+                                    <option value="전의경경채">전의경경채</option>
+                                    <option value="101단">101단</option>
+                                    <option value="경력채용">경력채용</option>
+                                </select>
+                                <input type="text" id="userId" name="userId" maxlength="20" placeholder="응시번호 입력">
+                            </div>
                             <div class="mt30 mb30 tx14">
                                 * 이름 및 연락처 수정은 로그인 후 회원정보 수정을 통해 가능합니다.
                             </div>
@@ -374,13 +387,13 @@
 
                             @endfor
                         @endif
-                        {{--
+                     
                             <tr>
-                                <td>2/24</td>
-                                <td>2/25</td>
-                                <td>2/26</td>
-                                <td>2/27</td>
-                                <td>2/28</td>
+                                <td>3/20</td>
+                                <td>3/21</td>
+                                <td>3/22</td>
+                                <td>3/23</td>
+                                <td>3/24</td>
                             </tr>
                             <tr>
                                 <td>
@@ -415,10 +428,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>2/29</td>
-                                <td>3/1</td>
-                                <td>3/2</td>
-                                <td>3/3</td>
+                                <td>3/25</td>
+                                <td>3/26</td>
+                                <td>3/27</td>
+                                <td>3/28</td>
                                 <td>3/29</td>
                             </tr>
                             <tr>
@@ -453,7 +466,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            --}}
+                            
                         </tbody>
                     </table>
                 </div>

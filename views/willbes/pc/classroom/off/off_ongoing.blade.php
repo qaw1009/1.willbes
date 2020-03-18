@@ -67,7 +67,7 @@
                                 <col style="width: 120px;">
                             </colgroup>
                             <tbody>
-                            @forelse( $list as $row )
+                            @forelse( $list as $key => $row )
                                 <tr>
                                     <td class="w-data tx-left pl10">
                                         <dl class="w-info">
@@ -82,12 +82,24 @@
                                         </dl>
                                         <div class="w-tit">{{$row['subProdName']}}</div>
                                         {{-- TODO : 좌석배정 개발 --}}
-                                        {{--<ul class="seatsection">
-                                            <li><a href="javascript:;" onclick="AssignSeat('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')">좌석선택 ></a></li>
-                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
-                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>--}}
+                                        @if (empty($listLectureRoom[$row['ProdCode']]) === false)
+                                            <input type="hidden" id="order_idx_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
+                                            <input type="hidden" id="order_prod_idx_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderProdIdx'] }}">
+                                            <input type="hidden" id="lr_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrCode'] }}">
+                                            <input type="hidden" id="lr_unit_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrUnitCode'] }}">
+                                            <input type="hidden" id="prod_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeMaster'] }}">
+                                            <input type="hidden" id="prod_code_sub_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeSub'] }}">
+                                            <ul class="seatsection">
+                                                <li>
+                                                    <button id="btn_assign_seat_N_{{ $key }}" onclick="AssignSeat('N','{{ $key }}','{{
+                                                                        (($listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] <= date('Y-m-d')
+                                                                        && date('Y-m-d') <= $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
+                                                </li>
+                                                <li>[강의실명] <span>{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }}</span></li>
+                                                <li>[좌석번호] <span class="tx-red">{{ ((empty($listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) === true) ? '미선택' : $listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) }}</span></li>
+                                                <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}</li>
+                                            </ul>
+                                        @endif
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
@@ -147,11 +159,16 @@
                                         <td class="w-answer p_re">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
                                             {{-- TODO : 좌석배정 개발 --}}
-                                            {{--<a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>--}}
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                            <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
+                                            @endif
                                         </td>
                                     @else
                                         <td class="w-answer p_re">
                                             <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
+                                            @endif
                                             <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
                                                     <img src="{{ img_url('prof/close.png') }}">
@@ -175,28 +192,48 @@
                                 </tr>
 
                                 {{-- TODO : 좌석배정 개발 --}}
-                                {{--<tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
+                                <tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
                                     <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
                                         @if (empty($row['subleclist']) === false)
                                             @foreach($row['subleclist'] as $sub_key => $sub_row)
-                                                <div class="mb10">
-                                                    <dl class="w-info">
-                                                        <dt>
-                                                            {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
-                                                            {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
-                                                        </dt>
-                                                    </dl>
-                                                    <ul class="seatsection">
-                                                        <li><a href="javascript:;" onclick="AssignSeat('{{$sub_row['OrderIdx']}}','{{$sub_row['OrderProdIdx']}}')">좌석선택 ></a></li>
-                                                        <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                                        <li>[좌석번호] <span class="tx-red">미선택</span></li>
-                                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                                    </ul>
-                                                </div>
+                                                @if (empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]) === false)
+                                                    <input type="hidden" id="order_idx_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
+                                                    <input type="hidden" id="order_prod_idx_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
+                                                    <input type="hidden" id="lr_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
+                                                    <input type="hidden" id="lr_unit_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
+                                                    <input type="hidden" id="prod_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
+                                                    <input type="hidden" id="prod_code_sub_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
+                                                    <div class="mb10">
+                                                        <dl class="w-info">
+                                                            <dt>
+                                                                {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
+                                                                {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
+                                                            </dt>
+                                                        </dl>
+                                                        <ul class="seatsection">
+                                                            <li>
+                                                                <button id="btn_assign_seat_Y_{{ $sub_key }}" onclick="AssignSeat('Y','{{ $sub_key }}','{{
+                                                                        (($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] <= date('Y-m-d')
+                                                                        && date('Y-m-d') <= $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
+                                                            </li>
+                                                            <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }}</span></li>
+                                                            <li>[좌석번호]
+                                                                <span class="tx-red">
+                                                                    {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['NowLrrursIdx']) === true) ?
+                                                                    "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
+                                                                </span>
+                                                            </li>
+                                                            <li>[좌석선택기간]
+                                                                {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] }}
+                                                                ~ {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate'] }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     </td>
-                                </tr>--}}
+                                </tr>
                             @empty
                                 <tr>
                                     <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
@@ -220,8 +257,16 @@
     <form name="postForm" id="postForm" >
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+        <input type="hidden" name="choice_box_no" id="choice_box_no" value="" />
         <input type="hidden" name="orderidx" id="orderidx" value="" />
         <input type="hidden" name="orderprodidx" id="orderprodidx" value="" />
+
+        <input type="hidden" name="pkg_yn" id="pkg_yn" value="" />
+        <input type="hidden" name="prod_code" id="prod_code" value="" />
+        <input type="hidden" name="prod_code_sub" id="prod_code_sub" value="" />
+        <input type="hidden" name="lr_code" id="lr_code" value="" />
+        <input type="hidden" name="lr_unit_code" id="lr_unit_code" value="" />
+
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -263,13 +308,26 @@
 
         }
 
-        function AssignSeat(o,op)
+        function AssignSeat(pkg_yn, no, flag)
         {
+            if (flag != 'Y') {
+                alert('좌석 선택 기간이 아닙니다.');
+                $("#btn_assign_seat_"+pkg_yn+'_'+no).prop("disabled",true);
+                return;
+            }
             $("#seatChoice").html('');
-            $('#orderidx').val(o);
-            $('#orderprodidx').val(op);
-            url = "{{ site_url("/classroom/off/AssignSeat/") }}";
-            data = $('#postForm').serialize();
+            $('#pkg_yn').val(pkg_yn);
+
+            $('#choice_box_no').val(no);
+            $('#orderidx').val($("#order_idx_"+no).val());
+            $('#orderprodidx').val($("#order_prod_idx_"+no).val());
+            $('#lr_code').val($("#lr_code_"+no).val());
+            $('#lr_unit_code').val($("#lr_unit_code_"+no).val());
+            $('#prod_code').val($("#prod_code_"+no).val());
+            $('#prod_code_sub').val($("#prod_code_sub_"+no).val());
+
+            var url = "{{ site_url("/classroom/off/AssignSeat/") }}";
+            var data = $('#postForm').serialize();
             sendAjax(url,
                 data,
                 function(d){
@@ -278,7 +336,7 @@
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
-                }, false, 'GET', 'html');
+                }, false, 'POST', 'html');
         }
     </script>
 @stop

@@ -28,7 +28,17 @@ class ClassroomFModel extends WB_Model
         'order_sub_product' => 'lms_order_sub_product',
         'order_product_activity_log' => 'lms_order_product_activity_log',
         'product_r_sublecture' => 'lms_product_r_sublecture',
-        'my_lecture' => 'lms_my_lecture'
+        'my_lecture' => 'lms_my_lecture',
+        'product_r_lectureroom' => 'lms_product_r_lectureroom',
+        'lectureroom' => 'lms_lectureroom',
+        'lectureroom_r_unit' => 'lms_lectureroom_r_unit',
+        'lectureroom_seat_register' => 'lms_lectureroom_seat_register',
+        'lectureroom_r_unit_r_seat' => 'lms_lectureroom_r_unit_r_seat',
+        'product' => 'lms_product',
+        'product_lecture' => 'lms_product_lecture',
+        'member' => 'lms_member',
+        'member_otherinfo' => 'lms_member_otherinfo',
+        'sys_code' => 'lms_sys_code'
     ];
 
     public function __construct()
@@ -1198,4 +1208,151 @@ class ClassroomFModel extends WB_Model
         return $result->row(0)->rownums;
     }
 
+
+    /**
+     * 강의실 좌석 정보조회
+     * @param null $mem_idx
+     * @param null $order_idx
+     * @param array $arr_order_prod_idx
+     * @param null $prod_code_master
+     * @param array $arr_prod_code_sub
+     * @return mixed
+     */
+    public function getLectureRoom($mem_idx = null, $order_idx = null, $arr_order_prod_idx = [], $prod_code_master = null, $arr_prod_code_sub = [])
+    {
+        $column = "
+            ml.ProdCode AS ProdCodeMaster, prlr.ProdCode AS ProdCodeSub, o.OrderIdx, op.OrderProdIdx,
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.NowLrrursIdx, lrurs.SeatNo AS MemSeatNo
+        ";
+        $from = "
+            FROM {$this->_table['order']} AS o
+            INNER JOIN {$this->_table['order_product']} AS op ON o.OrderIdx = op.OrderIdx
+            INNER JOIN {$this->_table['my_lecture']} AS ml ON o.OrderIdx = ml.OrderIdx AND op.OrderProdIdx = ml.OrderProdIdx AND op.ProdCode = ml.ProdCode
+            INNER JOIN {$this->_table['product_r_sublecture']} AS prs ON ml.ProdCode = prs.ProdCode AND ml.ProdCodeSub = prs.ProdCodeSub AND prs.IsStatus = 'Y'
+            INNER JOIN {$this->_table['product_r_lectureroom']} AS prlr ON prs.ProdCodeSub = prlr.ProdCode
+            INNER JOIN {$this->_table['lectureroom_r_unit']} AS lu ON prlr.LrCode = lu.LrCode AND prlr.LrUnitCode = lu.LrUnitCode AND lu.IsStatus = 'Y' AND lu.IsUse = 'Y'
+            INNER JOIN {$this->_table['lectureroom']} AS lr ON lu.LrCode = lr.LrCode AND lr.IsStatus = 'Y' AND lr.IsUse = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_seat_register']} AS lrsr ON
+                o.OrderIdx = lrsr.OrderIdx AND
+                op.OrderProdIdx = lrsr.OrderProdIdx AND
+                prlr.ProdCode = lrsr.ProdCodeSub AND
+                lrsr.MemIdx = op.MemIdx AND
+                lrsr.LrCode = lr.LrCode AND
+                lrsr.LrUnitCode = lu.LrUnitCode AND
+                lrsr.SeatStatusCcd IN ('728001', '728002') AND 
+                lrsr.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.NowLrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+        ";
+        $arr_condition = [
+            'EQ' => [
+                'o.OrderIdx' => $order_idx,
+                'op.ProdCode' => $prod_code_master,
+                'op.MemIdx' => $mem_idx,
+                'prlr.IsStatus' => 'Y',
+                'prlr.IsUse' => 'Y'
+            ],
+            'IN' => [
+                'op.OrderProdIdx' => $arr_order_prod_idx,
+                'prlr.ProdCode' => $arr_prod_code_sub,
+                'op.PayStatusCcd' => ['676001','676007']
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $orderby = " ORDER BY prlr.ProdCode ASC";
+        return $this->_conn->query('SELECT straight_join '. $column. $from. $where. $orderby)->result_array();
+    }
+
+    /**
+     * 강의실좌석 배정 > 좌석/상품 정보
+     * @param array $form_data
+     * @return mixed
+     */
+    public function getLectureRoomForProduct($form_data = [])
+    {
+        $arr_condition = [
+            'EQ' => [
+                'o.OrderIdx' => element('orderidx', $form_data),
+                'op.OrderProdIdx' => element('orderprodidx', $form_data),
+                'ml.ProdCode' => element('prod_code', $form_data),
+                'ml.ProdCodeSub' => element('prod_code_sub', $form_data),
+                'o.MemIdx' => $this->session->userdata('mem_idx'),
+                'plSub.LearnPatternCcd' => '615006'    //단과
+            ],
+            'IN' => [
+                'op.PayStatusCcd' => ['676001','676007']    //결제완료, 신청완료
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+            o.OrderNo, o.OrderIdx, op.OrderProdIdx,
+            op.ProdCode,
+            mem.MemId, mem.MemName, memInfo.Tel1, fn_dec(memInfo.Tel2Enc) AS Tel2, memInfo.Tel3,
+            p.ProdName, pSub.ProdName AS ProdNameSub, op.RealPayPrice, o.CompleteDatm, sc.CcdName AS PayStatusName,
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.NowLrrursIdx, lrurs.SeatNo AS MemSeatNo,
+            lu.SeatMapFileRoute, lu.SeatMapFileName
+        ";
+        $from = "
+            FROM {$this->_table['order']} AS o
+            INNER JOIN {$this->_table['order_product']} AS op ON o.OrderIdx = op.OrderIdx
+            INNER JOIN {$this->_table['product']} AS p ON op.ProdCode = p.ProdCode AND p.ProdTypeCcd = '636002'
+            INNER JOIN {$this->_table['product_lecture']} AS pl ON p.ProdCode = pl.ProdCode
+            INNER JOIN {$this->_table['member']} AS mem ON o.MemIdx = mem.MemIdx
+            INNER JOIN {$this->_table['member_otherinfo']} AS memInfo ON mem.MemIdx = memInfo.MemIdx
+            INNER JOIN {$this->_table['sys_code']} AS sc ON op.PayStatusCcd = sc.Ccd
+            INNER JOIN {$this->_table['my_lecture']} AS ml ON o.OrderIdx = ml.OrderIdx AND op.OrderProdIdx = ml.OrderProdIdx AND op.ProdCode = ml.ProdCode
+            INNER JOIN {$this->_table['product']} AS pSub ON ml.ProdCodeSub = pSub.ProdCode
+            INNER JOIN {$this->_table['product_lecture']} AS plSub ON pSub.ProdCode = plSub.ProdCode
+            INNER JOIN {$this->_table['product_r_sublecture']} AS prs ON ml.ProdCode = prs.ProdCode AND ml.ProdCodeSub = prs.ProdCodeSub AND prs.IsStatus = 'Y'
+            INNER JOIN {$this->_table['product_r_lectureroom']} AS prlr ON prs.ProdCodeSub = prlr.ProdCode
+            INNER JOIN {$this->_table['lectureroom_r_unit']} AS lu ON prlr.LrCode = lu.LrCode AND prlr.LrUnitCode = lu.LrUnitCode AND lu.IsStatus = 'Y' AND lu.IsUse = 'Y'
+            INNER JOIN {$this->_table['lectureroom']} AS lr ON lu.LrCode = lr.LrCode AND lr.IsStatus = 'Y' AND lr.IsUse = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_seat_register']} AS lrsr ON
+                o.OrderIdx = lrsr.OrderIdx AND
+                op.OrderProdIdx = lrsr.OrderProdIdx AND
+                prlr.ProdCode = lrsr.ProdCodeSub AND
+                lrsr.MemIdx = op.MemIdx AND
+                lrsr.LrCode = lr.LrCode AND
+                lrsr.LrUnitCode = lu.LrUnitCode AND
+                lrsr.SeatStatusCcd IN ('728001', '728002') AND 
+                lrsr.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.NowLrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+        ";
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
+    }
+
+    public function getLectureRoomSeat($form_data = [])
+    {
+        $arr_condition = [
+            'EQ' => [
+                'prl.ProdCode' => element('prod_code_sub', $form_data),
+                'prl.LrCode' => element('lr_code', $form_data),
+                'prl.LrUnitCode' => element('lr_unit_code', $form_data),
+                'prl.IsStatus' => 'Y',
+                'prl.IsUse' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "lrurs.LrrursIdx, lrurs.SeatNo, lrurs.SeatStatusCcd, sc.CcdName AS SeatStatusName, lrsr.NowLrrursIdx, lrsr.MemIdx, mem.MemName";
+        $from = "
+            FROM {$this->_table['product_r_lectureroom']} AS prl
+            INNER JOIN {$this->_table['lectureroom']} AS lr ON prl.LrCode = lr.LrCode AND lr.IsStatus = 'Y' AND lr.IsUse = 'Y'
+            INNER JOIN {$this->_table['lectureroom_r_unit']} AS lu ON lr.LrCode = lu.LrCode AND prl.LrUnitCode = lu.LrUnitCode AND lu.IsStatus = 'Y' AND lu.IsUse = 'Y'
+            INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lu.LrUnitCode = lrurs.LrUnitCode AND lrurs.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_code']} AS sc ON lrurs.SeatStatusCcd = sc.Ccd
+            LEFT JOIN {$this->_table['lectureroom_seat_register']} AS lrsr ON
+                            lrsr.ProdCodeSub = prl.ProdCode AND
+                            lrsr.LrCode = lr.LrCode AND
+                            lrsr.LrUnitCode = lu.LrCode AND
+                            lrsr.NowLrrursIdx = lrurs.LrrursIdx AND
+                            lrsr.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['order_product']} AS op ON lrsr.OrderProdIdx = op.OrderProdIdx AND op.PayStatusCcd = '676001'
+            LEFT JOIN {$this->_table['member']} AS mem ON lrsr.MemIdx = mem.MemIdx
+        ";
+        $order_by = $this->_conn->makeOrderBy(['lrurs.LrrursIdx' =>'ASC'])->getMakeOrderBy();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+    }
 }

@@ -2118,9 +2118,9 @@ class OrderModel extends BaseOrderModel
             $real_pay_price = element('RealPayPrice', $input, 0);
 
             // 기등록 주문미수금 정보 조회
-            $row = $this->orderListModel->findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx, 1);
+            $unpaid_hist = $this->orderListModel->findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx);
 
-            if (empty($row) === true) {
+            if (empty($unpaid_hist) === true) {
                 // 주문미수금식별자 체크
                 if (empty($unpaid_idx) === false) {
                     throw new \Exception('주문미수금 이력이 없습니다.');
@@ -2152,9 +2152,17 @@ class OrderModel extends BaseOrderModel
                 $unpaid_price = $org_pay_price - $real_pay_price;
                 $unpaid_unit_num = 1;
             } else {
-                $unpaid_idx = $row['UnPaidIdx'];
-                $unpaid_price = $row['RealUnPaidPrice'] - $real_pay_price;
-                $unpaid_unit_num = $row['UnPaidUnitNum'] + 1;
+                // 최종 주문미수금 데이터
+                $unpaid_data = element('0', $unpaid_hist);
+                $unpaid_idx = $unpaid_data['UnPaidIdx'];
+                $unpaid_unit_num = $unpaid_data['UnPaidUnitNum'] + 1;
+
+                // 최종미수금액 계산
+                //$unpaid_price = $unpaid_data['RealUnPaidPrice'] - $real_pay_price;
+                $org_pay_price = $unpaid_data['OrgPayPrice'];   // [원]결제금액
+                $t_real_pay_price = array_sum(array_pluck($unpaid_hist, 'RealPayPrice'));  // 총기결제금액
+                $t_refund_price = array_sum(array_pluck($unpaid_hist, 'RefundPrice'));  // 총기환불금액
+                $unpaid_price = $org_pay_price - ($t_real_pay_price - $t_refund_price) - $real_pay_price;
             }
 
             // 미수금액 체크

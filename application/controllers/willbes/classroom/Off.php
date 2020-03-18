@@ -99,6 +99,9 @@ class Off extends \app\controllers\FrontController
 
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
+        //강의실좌석정보[단과]
+        $listLectureRoom = $this->_getLectureRoom($leclist, 'List');
+
         // 학원 종합반 목록 읽어오기
         $cond_arr = [
             'EQ' => [
@@ -118,9 +121,11 @@ class Off extends \app\controllers\FrontController
                     'ProdCode' => $row['ProdCode']
                 ]
             ], $orderby, false, true);
-
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
+
+        //강의실좌석정보[종합반]
+        $pkgLectureRoom = $this->_getLectureRoom($pkglist, 'Pkg');
 
         return $this->load->view('/classroom/off/off_ongoing', [
             'sitegroup_arr' => $sitegroup_arr,
@@ -129,7 +134,9 @@ class Off extends \app\controllers\FrontController
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
             'list' => $leclist,
-            'pkglist' => $pkglist
+            'pkglist' => $pkglist,
+            'listLectureRoom' => $listLectureRoom,
+            'pkgLectureRoom' => $pkgLectureRoom
         ]);
     }
 
@@ -354,8 +361,125 @@ class Off extends \app\controllers\FrontController
      */
     public function AssignSeat()
     {
-        return $this->load->view('/classroom/off/layer/assign_seat',[
+        $rules = [
+            ['field' => 'orderidx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'orderprodidx', 'label' => '주문상품식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'pkg_yn', 'label' => '상품타입', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code_sub', 'label' => '상품코드서브', 'rules' => 'trim|required|integer'],
+            ['field' => 'lr_code', 'label' => '강의실코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+        ];
 
+        if ($this->validate($rules) === false) {
+            return $this->json_error("정보가 올바르지 않습니다.");
+        }
+
+        $form_data = $this->_reqP(null);
+        $lec_data = $this->classroomFModel->getLectureRoomForProduct($form_data);
+        if (empty($lec_data) === true) {
+            return $this->json_error('조회된 강의실 정보가 없습니다.', _HTTP_NOT_FOUND);
+        }
+
+        $seat_data = $this->classroomFModel->getLectureRoomSeat($form_data);
+        if (empty($seat_data) === true) {
+            return $this->json_error('조회된 강의실 좌석 정보가 없습니다.', _HTTP_NOT_FOUND);
+        }
+
+        return $this->load->view('/classroom/off/layer/assign_seat',[
+            'form_data' => $form_data,
+            'lec_data' => $lec_data,
+            'seat_data' => $seat_data
         ]);
+    }
+
+    public function AssignSeatStore()
+    {
+        $result = true;
+        return $this->json_result($result, '좌석배정이 적용되었습니다.', $result);
+    }
+
+    /**
+     * 강의실좌석정보조회
+     * @param array $data
+     * @param string $mode
+     * @return mixed
+     */
+    private function _getLectureRoom($data = [], $mode = 'List')
+    {
+        return $this->{'_get'.$mode.'LectureRoom'}($data);
+    }
+
+    /**
+     * 강의실좌석정보조회 : 단과반
+     * @param array $data
+     * @return array
+     */
+    private function _getListLectureRoom($data = [])
+    {
+        $MemIdx = $this->session->userdata('mem_idx');
+        $_temp_arr_data = [];
+        foreach ($data as $idx => $row) {
+            $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
+            $_temp_arr_data[$idx]['order_prod_idx'][] = $row['OrderProdIdx'];
+            $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];
+            $_temp_arr_data[$idx]['prod_code_sub'][] = $row['ProdCodeSub'];
+        }
+
+        $list = [];
+        foreach($_temp_arr_data as $idx => $row){
+            $result =  $this->classroomFModel->getLectureRoom(
+                $MemIdx,
+                $row['order_idx'],
+                $row['order_prod_idx'],
+                $row['prod_code_master'],
+                $row['prod_code_sub']
+            );
+            if (empty($result[0]['ProdCodeMaster']) === false) {
+                $list[$result[0]['ProdCodeMaster']] = $result[0];
+            }
+        }
+        return $list;
+    }
+
+    /**
+     * 강의실좌석정보조회 : 종합반
+     * @param array $data
+     * @return array
+     */
+    private function _getPkgLectureRoom($data = [])
+    {
+        $MemIdx = $this->session->userdata('mem_idx');
+        $_temp_arr_data = [];
+        foreach ($data as $idx => $row) {
+            foreach ($row['subleclist'] as $sb_idx => $sb_row) {
+                $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
+                $_temp_arr_data[$idx]['order_prod_idx'][] = $sb_row['OrderProdIdx'];
+                $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];
+                $_temp_arr_data[$idx]['prod_code_sub'][] = $sb_row['ProdCodeSub'];
+            }
+        }
+
+        $list = [];
+        $temp_result = [];
+        foreach($_temp_arr_data as $idx => $row){
+            $result =  $this->classroomFModel->getLectureRoom(
+                $MemIdx,
+                $row['order_idx'],
+                $row['order_prod_idx'],
+                $row['prod_code_master'],
+                $row['prod_code_sub']
+            );
+            if (empty($result[0]['ProdCodeMaster']) === false) {
+                $temp_result[$result[0]['ProdCodeMaster']] = $result;
+            }
+        }
+
+        foreach ($temp_result as $key => $row) {
+            foreach ($row as $sKey => $sVal) {
+                $list[$key][$sVal['ProdCodeSub']] = $sVal;
+            }
+        }
+        return $list;
     }
 }

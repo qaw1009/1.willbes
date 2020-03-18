@@ -295,7 +295,8 @@ class OffVisitPackage extends BaseOrder
         }
 
         if ($this->_reqP('is_unpaid') == 'Y') {
-            $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|less_than[' . $this->_reqP('org_pay_price') . ']'];
+            //$rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|less_than[' . $this->_reqP('org_pay_price') . ']'];
+            $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer'];
         } else {
             $rules[] = ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|matches[org_pay_price]'];
         }
@@ -329,6 +330,7 @@ class OffVisitPackage extends BaseOrder
     public function checkUnPaidOrder()
     {
         $unpaid_idx = null;
+        $order_idx = null;
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],

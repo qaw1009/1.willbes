@@ -222,6 +222,18 @@ class Issue extends \app\controllers\BaseController
             ]
         ];
 
+        if (empty($this->_reqP('is_refund')) === false) {
+            if ($this->_reqP('is_refund') == 'Y') {
+                $arr_condition = array_merge($arr_condition, [
+                    'RAW' => ['d.RefundIdx IS' => ' NOT NULL']
+                ]);
+            } else {
+                $arr_condition = array_merge($arr_condition, [
+                    'RAW' => ['d.RefundIdx IS' => ' NULL']
+                ]);
+            }
+        }
+
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             switch ($this->_reqP('search_date_type')) {
                 case "P" :  //결제완료일

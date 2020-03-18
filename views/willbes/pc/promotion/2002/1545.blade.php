@@ -28,7 +28,7 @@
         }
        
         .evt00 {background:#404040}        
-        .evtTop{background:#273d7e}
+        .evtTop {background:#273d7e url(https://static.willbes.net/public/images/promotion/2020/03/1545_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#fff; padding-bottom:150px}          
         
         .form_area{width:980px;background:#fff;margin:0 auto;padding:0 65px;}
@@ -204,6 +204,7 @@
             position: absolute;
             top: 8px;
             width: 4px;
+            display:none;
         }
         .wb_ctsInfo p {margin-top:40px;font-size:18px;}
         .wb_ctsInfo p span  {border:2px solid #fff; padding:10px 20px}
@@ -221,11 +222,11 @@
         </div>
         
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_top.jpg" title="손꼽아 기다리던 합격봉투">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_top.jpg" title="손꼽아 기다리던 합격봉투">
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_01.jpg" title="완벽분석,개정법령">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_01.jpg" title="완벽분석,개정법령">
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -314,7 +315,7 @@
                     @endif
                 @endforeach
 
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02.jpg" title="봉투모의고사 선착순 증정">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02.jpg" title="봉투모의고사 선착순 증정">
                 <div>
                     <table cellspacing="0" cellpadding="0">
                         <colgroup>
@@ -354,9 +355,9 @@
                                             <td>
                                                 <div>
                                                     @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
-                                                        <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span>
+                                                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span>
                                                     @endif
-                                                    <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="">
+                                                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="">
                                                 </div>
                                             </td>
                                         @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
@@ -384,32 +385,32 @@
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
+                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
+                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
+                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -418,37 +419,37 @@
                                 <td>3/1</td>
                                 <td>3/2</td>
                                 <td>3/3</td>
-                                <td>3/4</td>
+                                <td>3/29</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형사소송법">
+                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형사소송법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="경찰학개론">
+                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="경찰학개론">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="형법">
+                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형법">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="영어">
+                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="영어">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_img01.png" alt="한국사">
+                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
+                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="한국사">
                                     </div>
                                 </td>
                             </tr>
@@ -457,8 +458,8 @@
                     </table>
                 </div>
                 <ul>
-                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn01.png"  alt="이벤트신청"/></a></li>
-                    <li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>
+                    <li><a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_btn01.png"  alt="이벤트신청"/></a></li>
+                    {{--<li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>--}}
                 </ul>            
             </div>
         </form>
@@ -809,34 +810,22 @@
         <div class="wb_ctsInfo">
             <div>
                 <h3 class="NGEB">유의사항</h3>
-                <dd>
-                    <dt>봉투모의고사 구성안내</dt>
-                    <dl>봉투 모의고사 구성은 한국사,영어,형법,형소법,경찰학개론 과목별 3회분 전범위모의고사 및 별도해설/OMR카드 포장하여 증정됩니다.</dl>
-                    <dl>이벤트 상품은 비매품으로 절대 판매할수 없습니다.</dl>                 
+                <dd>                   
+                    <dl> - 봉투모의고사 구성안내봉투 모의고사 구성은 한국사,영어,형법,형소법,경찰학개론 과목별 3회분 전범위모의고사 및 별도해설/OMR카드 포장하여 증정됩니다.</dl>
+                    <dl> - 이벤트 상품은 비매품으로 절대 판매할수 없습니다.</dl>                 
                 </dd>                
                 <dd>
-                    <dt>봉투모의고사 이벤트 신청안내</dt>
-                    <dl>신청기간<br>
-                        - 2020년 3월 1일~3월 10일까지 ,매일 20시부터 선착순 50명 및 유료구매진행<br>
-                        - 매일 20시 총 10일 – 선착순 50명 / 총 500명<br>
-                        - 유료 봉투모의고사 – 이벤트참여회원만 가능 총 500부 / 마감시 종료
-                    </dl>
-                    <dl>신청방법<br>
-                        - 로그인 이후 이벤트 페이지에서 신청가능합니다(희망응시청 필수 체크)<br>
-                        - 한ID 당 1회 신청가능(50명 이벤트 중복당첨불가) <br>
-                        - 무료배포 이벤트 당첨회원도 유료구매 가능합니다.<br>
-                        - 무료배포 당첨자는 추후 합격예측서비스 필수 참여 (미참여시 발송불가) <br>
-                        - 3월 11일(수) 일괄문자 안내공지 진행합니다.(무료 당첨자에 한함)<br>
-                        - 유로결제회원은 신청시 자동으로 장바구니지급되며 미결제시  3월13일(금)  9시이후 장바구니에서 삭제됩니다.
-                    </dl>
-                </dd>
-                <dd>
-                    <dt>이벤트 봉투모의고사 </dt>
-                    <dl>무료이벤트  진행 : 매일 20시 선착순 50권 , 총 500부 </dl>
-                    <dl>유료판매진행 : 총 500부 (마감시 판매종료)</dl>
-                    <dl>무료이벤트 : 추후 배송비 2,500원 결제</dl>
-                    <dl>유료구매이벤트 : 12,000원(배송비 포함)</dl>  
-                </dd>
+                    <dt>봉투모의고사 이벤트 신청안내신청기간</dt>
+                    <dl>
+                        - 2020년 3월 20일~3월 29일까지 ,매일 20시부터 선착순 40명<br>
+                        - 매일 20시 총 10일 – 선착순 40명 / 총 400명<br>
+                        - 로그인 이후 이벤트 페이지에서 신청가능합니다(희망응시청 및 응시번호 필수 체크)<br>
+                        - 한ID 당 1회 신청가능(40명 이벤트 중복당첨불가)<br>
+                        - 3월 31일(화) 일괄문자 안내공지 진행합니다.(무료 당첨자에 한함)<br>
+                        - 이벤트 봉투모의고사 무료이벤트 진행 : 매일 20시 선착순 40권 , 총 400부<br>
+                        - 무료이벤트 : 추후 배송비 2,500원
+                    </dl>                   
+                </dd>               
             </div>
         </div>    
 

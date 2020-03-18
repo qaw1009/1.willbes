@@ -18,8 +18,10 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="is_refund" name="is_refund">
                             <option value="">예치금반환</option>
+                            <option value="Y">반환</option>
+                            <option value="N">미반환</option>
                         </select>
 
                         <select class="form-control" id="search_seat_status" name="search_seat_status">

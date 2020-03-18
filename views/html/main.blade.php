@@ -150,7 +150,18 @@
                                 <strong>윌비스 고시학원 출석학점은행</strong>
                             </div>
                         </a>
-                    </li>                        
+                    </li>  
+                    <li>
+                        <a href="https://njob.willbes.net/home/index/cate/3114" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('gnb/icon_njob_sm.gif') }}"> N잡
+                            </div>
+                            <div class="wTxt">
+                                가장 HOT한 이커머스 창업교육<br/>
+                                <strong>e커머스</strong>
+                            </div>
+                        </a>
+                    </li>                      
                 </ul>
             </div>
         </div>

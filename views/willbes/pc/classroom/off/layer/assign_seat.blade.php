@@ -17,39 +17,41 @@
                 <tbody>
                 <tr>
                     <th>주문번호 </th>
-                    <td>20200000</td>
+                    <td>{{ $lec_data['OrderNo'] }}</td>
                     <th>회원정보</th>
-                    <td>회원명(아이디) | 010-0000-0000 </td>
+                    <td>{{ $lec_data['MemName'] }}({{ $lec_data['MemId'] }}) | {{ $lec_data['Tel1'] }}-{{ $lec_data['Tel2'] }}-{{ $lec_data['Tel3'] }} </td>
                 </tr>
                 <tr>
                     <th>결제금액 </th>
-                    <td>100,000원</td>
+                    <td>{{ number_format($lec_data['RealPayPrice']) }}원</td>
                     <th>결제일</th>
-                    <td>2020-00-00 00:00</td>
+                    <td>{{ $lec_data['CompleteDatm'] }}</td>
                 </tr>
                 <tr>
                     <th>상품명</th>
-                    <td>2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</td>
+                    <td>{{ $lec_data['ProdName'] }}</td>
                     <th>결제상태</th>
-                    <td>결제완료</td>
+                    <td>{{ $lec_data['PayStatusName'] }}</td>
                 </tr>
 
                 {{--//종합반일 경우만 노출--}}
+                @if(element('pkg_yn',$form_data) === 'Y')
                 <tr>
                     <th>단과반정보</th>
                     <td colspan="3">
-                        단과반명이 출력됩니다.
+                        {{ $lec_data['ProdNameSub'] }}
                     </td>
                 </tr>
+                @endif
                 {{--종합반일 경우만 노출//--}}
 
                 <tr>
                     <th>좌석정보</th>
                     <td colspan="3">
                         <ul class="seatsection bg-none">
-                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                            <li>[좌석번호] <span>086</span> <span class="tx-red">미선택</span></li>
-                            <li>[좌석선택기간] <span>2020-00-00 ~ 2020-00-00</span></li>
+                            <li>[강의실명] <span>{{ $lec_data['LectureRoomName'] }}</span></li>
+                            <li>[좌석번호] {!! ((empty($lec_data['NowLrrursIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}</li>
+                            <li>[좌석선택기간] <span>{{ $lec_data['SeatChoiceStartDate'] }} ~ {{ $lec_data['SeatChoiceEndDate'] }}</span></li>
                         </ul>
                     </td>
                 </tr>
@@ -57,91 +59,79 @@
             </table>
         </div>
 
-        <div class="PASSZONE-Lec-Section mt25">
-            <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="#" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
-            <div class="strong mt25 tx-gray h22">
-                · 좌석선택하기 : 좌석 변경은 좌석선택기간 안에만 가능하오니, 좌석배치도를 확인하신 후 신중히 선택해 주시기 바랍니다.
-            </div>
-            <div class="seatNumber">
-                <div class="seatNumberInfo">
-                    <div class="sNumberA"><span>선택가능</span></div>
-                    <div class="sNumberB"><span>선택완료</span></div>
+        <form class="form-horizontal" id="_seat_assign_form" name="_seat_assign_form" method="POST" onsubmit="return false;" novalidate>
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="order_idx" value="{{ element('orderidx', $form_data) }}" title="주문식별자">
+            <input type="hidden" name="order_prod_idx" value="{{ element('orderprodidx', $form_data) }}" title="주문상품식별자">
+            <input type="hidden" name="prod_code" value="{{ element('prod_code', $form_data) }}" title="상품코드">
+            <input type="hidden" name="prod_code_sub" value="{{ element('prod_code_sub', $form_data) }}" title="서브상품코드">
+            <input type="hidden" name="lr_code" value="{{ element('lr_code', $form_data) }}" title="강의실코드">
+            <input type="hidden" name="lr_unit_code" value="{{ element('lr_unit_code', $form_data) }}" title="강의실회차코드">
+            <input type="hidden" id="lr_rurs_idx" name="lr_rurs_idx" value="" title="강의실회차좌석식별자">
+
+            <div class="PASSZONE-Lec-Section mt25">
+                <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="#" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
+                <div class="strong mt25 tx-gray h22">
+                    · 좌석선택하기 : 좌석 변경은 좌석선택기간 안에만 가능하오니, 좌석배치도를 확인하신 후 신중히 선택해 주시기 바랍니다.
                 </div>
-
-                <ul>
-                    <li style="width:calc(100%/10);">
-                        <button type="button" class="sNumberA">001<span>선택가능</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">002<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberC">003<span>회원명</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberA">004<span>선택가능</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberA">005<span>선택가능</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">006<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">007<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">008<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">009<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/10);">
-                        <button type="button" class="sNumberB">010<span>선택완료</span></button>
-                    </li>
-
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberA">011<span>선택가능</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">012<span>선택완료</span></button>
-                    </li>
-                    <li style="width:calc(100%/5);">
-                        <button type="button" class="sNumberB">013<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberA">014<span>선택가능</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">015<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">016<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">017<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">018<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">019<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/5);">
-                        <button type="button" class="sNumberB">020<span>선택완료</span></button>
-                    </li>
-
-                    <li style="width: calc(100%/2);">
-                        <button type="button" class="sNumberB">019<span>선택완료</span></button>
-                    </li>
-                    <li style="width: calc(100%/2);">
-                        <button type="button" class="sNumberB">020<span>선택완료</span></button>
-                    </li>
-                </ul>
-
-                <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox widthAutoFull">적용</a></div>
+                <div class="seatNumber">
+                    <div class="seatNumberInfo">
+                        <div class="sNumberA"><span>선택가능</span></div>
+                        <div class="sNumberB"><span>선택완료</span></div>
+                    </div>
+                    <ul class="n_mem_seat">
+                        @foreach($seat_data as $row)
+                            @php
+                                $btn_type = '';
+                                switch ($row['SeatStatusCcd']) {
+                                    case "727001" : $btn_type = 'sNumberA'; $btn_txt = '선택가능';break;
+                                    case "727002" : $btn_type = 'sNumberB'; $btn_txt = '선택완료';break;
+                                    case "727003" : $btn_type = 'sNumberC'; $btn_txt = '선택불가';break;
+                                    default : $btn_type = 'btn-default'; $btn_txt = '';
+                                }
+                            @endphp
+                            <li>
+                                <button type="button" id="_seat_{{$row['SeatNo']}}" class="{{$btn_type}} btn_choice_seat"
+                                        data-lr-rurs-idx="{{$row['LrrursIdx']}}"
+                                        data-seat-type="{{$row['SeatStatusCcd']}}"
+                                        data-seat-num="{{$row['SeatNo']}}"
+                                        data-member-idx="{{$row['MemIdx']}}" {{ ($row['SeatStatusCcd'] != '727001') ? 'disabled' : '' }}>
+                                    {{$row['SeatNo']}}
+                                    {!! (empty($row['MemName']) === false) ? "<span>{$row['MemName']}</span>" : "<span>{$btn_txt}</span>" !!}</button>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox widthAutoFull">적용</button></div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <!-- PASSZONE-List -->
 </div>
+
+<script type="text/javascript">
+    var $_seat_assign_form = $('#_seat_assign_form');
+    var set_table_row = '{{ $lec_data['TransverseNum'] }}';
+    $('.n_mem_seat li').css('width', 'calc(100% / '+set_table_row+')');
+
+    $_seat_assign_form.on('click', '.btn_choice_seat', function() {
+        $("#lr_rurs_idx").val($(this).data("lr-rurs-idx"));
+    });
+
+    $_seat_assign_form.submit(function() {
+        if ($("#lr_rurs_idx").val() == '') {
+            alert('좌석을 선택해 주세요.');
+            return;
+        }
+
+        var _url = '{{ front_url('/classroom/off/AssignSeatStore') }}';
+        if (!confirm('해당 좌석을 선택하시겠습니까?')) { return true; }
+        ajaxSubmit($_seat_assign_form, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                AssignSeat('{{ element('pkg_yn', $form_data) }}','{{ element('choice_box_no', $form_data) }}', 'N');
+            }
+        }, showValidateError, null, false, 'alert');
+    });
+</script>

@@ -511,8 +511,9 @@
                 }, showValidateError, false, 'POST');
 
                 if (unpaid_idx !== null && unpaid_idx !== '') {
-                    alert('미수금 주문내역이 존재합니다.');
-                    location.replace('{{ site_url('/pay/offVisitPackage/create') }}/' + order_idx + '/' + unpaid_idx + '/' + prod_code + '/' + mem_idx + getQueryString());
+                    if (confirm('미수금 주문내역이 존재합니다.\n미수금 주문등록 페이지로 이동하시겠습니까?')) {
+                        location.replace('{{ site_url('/pay/offVisitPackage/create') }}/' + order_idx + '/' + unpaid_idx + '/' + prod_code + '/' + mem_idx + getQueryString());
+                    }
                 }
 
                 return true;

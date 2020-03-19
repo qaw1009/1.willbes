@@ -2117,15 +2117,7 @@ class OrderModel extends BaseOrderModel
             // 실결제금액
             $real_pay_price = element('RealPayPrice', $input, 0);
 
-            // 기등록 주문미수금 정보 조회
-            $unpaid_hist = $this->orderListModel->findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx);
-
-            if (empty($unpaid_hist) === true) {
-                // 주문미수금식별자 체크
-                if (empty($unpaid_idx) === false) {
-                    throw new \Exception('주문미수금 이력이 없습니다.');
-                }
-
+            if (empty($unpaid_idx) === true) {
                 // 주문미수금 정보 등록
                 $sess_admin_idx = $this->session->userdata('admin_idx');
                 $reg_ip = $this->input->ip_address();
@@ -2152,6 +2144,12 @@ class OrderModel extends BaseOrderModel
                 $unpaid_price = $org_pay_price - $real_pay_price;
                 $unpaid_unit_num = 1;
             } else {
+                // 기등록 주문미수금 정보 조회
+                $unpaid_hist = $this->orderListModel->findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx);
+                if (empty($unpaid_hist) === true) {
+                    throw new \Exception('주문미수금 이력이 없습니다.');
+                }
+
                 // 최종 주문미수금 데이터
                 $unpaid_data = element('0', $unpaid_hist);
                 $unpaid_idx = $unpaid_data['UnPaidIdx'];

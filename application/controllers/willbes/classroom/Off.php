@@ -268,7 +268,7 @@ class Off extends \app\controllers\FrontController
         }
 
         $today = date("Y-m-d", time());
-        $sub_prod_data = null;
+        $sub_prod_data = [];
         $UnPaidInfo = [];
         $unpaid_data = [];
 
@@ -322,11 +322,19 @@ class Off extends \app\controllers\FrontController
             $sub_prod_data[$arr_key][] = $row;
         }
 
+        $notassign = false;
+        if(empty($UnPaidInfo) == false){
+            if($UnPaidInfo[0]['PayStatusCcd'] == '676006'){
+                $notassign = true;
+            }
+        }
+
         return $this->load->view('/classroom/off/layer/assign_prof',[
             'pkginfo' => $pkginfo,
             'unpaidinfo' => $UnPaidInfo,
             'unpaid_data' => $unpaid_data,
-            'sublec' => $sub_prod_data
+            'sublec' => $sub_prod_data,
+            'notassign' => $notassign
             ]);
     }
 

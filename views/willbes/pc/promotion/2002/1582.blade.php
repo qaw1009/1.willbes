@@ -236,7 +236,16 @@
                 <input type="hidden" name="register_type" value="promotion"/>
                 <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
                 <input type="hidden" name="target_params[]" value="register_data1[]"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_params[]" value="register_data2[]"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_params[]" value="register_data3[]"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="target_param_names[]" value="희망지원청"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="응시직렬"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
+
+                {{-- 시험응시번호 중복체크 --}}
+                <input type="hidden" name="register_chk_other_col" value="EtcValue"/>
+                <input type="hidden" name="register_chk_other_val" value=""/>
+                <input type="hidden" name="register_chk_other_msg" value="이미 이벤트 신청된 응시번호입니다."/>
 
                 <input type="hidden" name="register_chk[]" id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 
@@ -271,7 +280,7 @@
                                 </p>
                             </div>
                             <div class="formfield">
-                                <select id="look" name="look">     
+                                <select id="look" name="register_data2[]">
                                     <option value="">응시직렬</option>                         
                                     <option value="일반남자">일반남자</option>
                                     <option value="일반여자">일반여자</option>
@@ -279,7 +288,7 @@
                                     <option value="101단">101단</option>
                                     <option value="경력채용">경력채용</option>
                                 </select>
-                                <input type="text" id="userId" name="userId" maxlength="20" placeholder="응시번호 입력">
+                                <input type="text" id="userId" name="register_data3[]" maxlength="5" placeholder="응시번호 입력">
                             </div>
                             <div class="mt30 mb30 tx14">
                                 * 이름 및 연락처 수정은 로그인 후 회원정보 수정을 통해 가능합니다.
@@ -387,86 +396,7 @@
 
                             @endfor
                         @endif
-                     
-                            <tr>
-                                <td>3/20</td>
-                                <td>3/21</td>
-                                <td>3/22</td>
-                                <td>3/23</td>
-                                <td>3/24</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002240000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형사소송법">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002250000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="경찰학개론">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002260000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형법">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002270000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="영어">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002280000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="한국사">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3/25</td>
-                                <td>3/26</td>
-                                <td>3/27</td>
-                                <td>3/28</td>
-                                <td>3/29</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202002290000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형사소송법">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202003010000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="경찰학개론">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202003020000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="형법">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202003030000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="영어">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        @if(time() >= strtotime('202003040000')) <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img02.png" alt="마감"></span> @endif
-                                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1545_02_img01.png" alt="한국사">
-                                    </div>
-                                </td>
-                            </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -850,8 +780,8 @@
         {{-- 유료 --}}
         function fn_promotion_etc_submit() {
 
-            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
-                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
+                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 
@@ -875,8 +805,8 @@
         {{-- 무료 당첨 --}}
         function fn_add_apply_submit() {
 
-            @if(date('YmdHi') < '202003012000' && ENVIRONMENT == 'production')
-                alert('3월1일 20:00 부터 이벤트 참여 가능합니다');
+            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
+                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 
@@ -954,7 +884,49 @@
                 return;
             }
 
-            if (!confirm('신청하시겠습니까?')) { return true; }
+            var $register_data2 = $regi_form_register.find('select[name="register_data2[]"]');
+            if ($register_data2.val() == '') {
+                alert('응시직렬을 선택해주세요.');
+                $register_data2.focus();
+                return;
+            }
+
+            var $register_data3 = $regi_form_register.find('input[name="register_data3[]"]');
+            var exam_num = $register_data3.val();
+            if (exam_num == '') {
+                alert('응시번호를 입력해주세요.');
+                $register_data3.focus();
+                return;
+            } else {
+                var exam_num_check = true;
+                switch ($register_data2.val()){
+                    case '일반남자' :
+                        if(exam_num < 10001 || exam_num > 19999) exam_num_check = false;
+                        break;
+                    case '일반여자' :
+                        if(exam_num < 20001 || exam_num > 29999) exam_num_check = false;
+                        break;
+                    case '전의경경채' :
+                        if(exam_num < 30001 || exam_num > 39999) exam_num_check = false;
+                        break;
+                    case '101단' :
+                        if(exam_num < 40001 || exam_num > 49999) exam_num_check = false;
+                        break;
+                    case '경력채용' :
+                        if(exam_num < 60001 || exam_num > 99999) exam_num_check = false;
+                        break;
+                }
+
+                if(exam_num_check === false) {
+                    alert('응시번호가 잘못 되었습니다.');
+                    $register_data3.focus();
+                    return;
+                } else {
+                    $regi_form_register.find('input[name="register_chk_other_val"]').val(',' + exam_num);
+                }
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return; }
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

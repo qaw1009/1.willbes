@@ -206,7 +206,7 @@ class OffProfAssign extends BaseOrder
         $unpaid_idx = null;
         $is_prof_assign = false;
 
-        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
         }
 

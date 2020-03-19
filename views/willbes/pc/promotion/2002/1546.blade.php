@@ -28,7 +28,7 @@
             z-index:1;            
         }
 
-        .wb_top {background:#111416 url(https://static.willbes.net/public/images/promotion/2020/02/1546_top_bg.jpg) no-repeat center;}
+        .wb_top {background:#111416 url(https://static.willbes.net/public/images/promotion/2020/03/1546_top_bg.jpg) no-repeat center;}
 
         .wb_01 {background:#40afdb;}	
         .wb_02 {background:#aeaeae;}
@@ -107,7 +107,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2020/02/1546_sky.png" alt="스카이베너" ></a>
+            <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2020/03/1546_sky.png" alt="스카이베너" ></a>
         </div>        
 
         <!-- 타이머 -->
@@ -136,7 +136,7 @@
         </div>       
 
         <div class="evtCtnsBox wb_top" id="main">
-			<img src="https://static.willbes.net/public/images/promotion/2020/02/1546_top.jpg"  alt="메인" usemap="#link"/>
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1546_top.jpg"  alt="메인" usemap="#link"/>
 		</div>
 
         <div class="evtCtnsBox wb_01" >
@@ -148,7 +148,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_03" >
-			<img src="https://static.willbes.net/public/images/promotion/2020/02/1546_03.jpg"  alt="3가지" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/03/1546_03.jpg"  alt="3가지" />
 		</div>
        
 		<div class="evtCtnsBox wb_04" id="table">			
@@ -178,10 +178,10 @@
 		</div>        
 
 		<div class="evtCtnsBox wb_05" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1546_05.jpg"  alt="전국모의고사 이벤트" usemap="#Map1530ab" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1546_05.jpg"  alt="전국모의고사 이벤트" usemap="#Map1530ab" border="0">
             <map name="Map1530ab" id="Map1530ab">
-                <area shape="rect" coords="444,938,677,1005" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
-                <area shape="rect" coords="374,1332,747,1392" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
+                <area shape="rect" coords="444,927,677,994" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
+                <area shape="rect" coords="374,1318,747,1378" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
             </map>               
 		</div>
 
@@ -191,7 +191,7 @@
         @endif 
 
         <div class="evtCtnsBox wb_06" id="evt">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1546_06.jpg"  alt="전국모의고사 신청하기" usemap="#Map1530b" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1546_06.jpg"  alt="전국모의고사 신청하기" usemap="#Map1530b" border="0" />
             <map name="Map1530b" id="Map1530b">
                 <area shape="rect" coords="315,464,806,580" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" />
             </map>          

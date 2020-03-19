@@ -180,8 +180,8 @@
 		<div class="evtCtnsBox wb_05" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1546_05.jpg"  alt="전국모의고사 이벤트" usemap="#Map1530ab" border="0">
             <map name="Map1530ab" id="Map1530ab">
-                <area shape="rect" coords="444,938,677,1005" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
-                <area shape="rect" coords="374,1332,747,1392" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
+                <area shape="rect" coords="444,927,677,994" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
+                <area shape="rect" coords="374,1318,747,1378" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
             </map>               
 		</div>
 

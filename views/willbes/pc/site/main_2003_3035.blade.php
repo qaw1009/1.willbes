@@ -25,12 +25,12 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">5순환 – 2020 합격을 위한 마지막 실전연습</a></li>
+                    <li><a href="#tab01">1순환 – 큰 틀에서 흐름을 파악하라</a></li>
                     <li><a href="#tab02">예비순환 - 1년차 합격을 위한 동행의 첫걸음</a></li>
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">
-                         다시는 틀리지 않도록 <span class="tx-color">정확히 암기하라!</span>
+                        강의와 복습에 시간을 투자하여 <span class="tx-color">과목별 기본 원칙을 수립하라</span>
                     </div>                     
                     <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)

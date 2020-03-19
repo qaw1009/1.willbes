@@ -119,7 +119,14 @@
                     </table>
                 </div>
             @endforeach
-            <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox">적용</button></div>
+            @if($notassign == true)
+                {{--
+                <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="button" onclick="alert('환불된 강좌입니다.');" class="bBox grayBox">적용</button></div>
+                --}}
+            @else
+                <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox">적용</button></div>
+            @endif
+            <br/>
         </div>
     </div>
     <!-- PASSZONE-List -->

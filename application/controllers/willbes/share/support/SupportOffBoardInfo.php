@@ -138,9 +138,11 @@ class SupportOffBoardInfo extends BaseSupport
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $on_off_link_cate_code = element('on_off_link_cate_code', $arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $page = element('page',$arr_input);
 
-        $get_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword.'&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
         $get_params .= '&page='.$page;
 
         if (empty($board_idx)) {

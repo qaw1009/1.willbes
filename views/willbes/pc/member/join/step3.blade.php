@@ -91,8 +91,7 @@
         kakaoPixel('6331763949938786102').pageView();
         kakaoPixel('6331763949938786102').completeRegistration();
     </script>
-
-    {{-- 김상구실장님 요청 20202028 --}}
+    {{-- 김상구본뿌장님(김성미실장) 요청 20202028 --}}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69505110-4"></script>
     <script>
@@ -100,5 +99,11 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-69505110-4');
+    </script>
+    {{-- 김상구본뿌장님(김성미실장) 요청 2020319 --}}
+    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+        var _nasa={};
+        _nasa["cnv"] = wcs.cnv("2","10");
     </script>
 @stop

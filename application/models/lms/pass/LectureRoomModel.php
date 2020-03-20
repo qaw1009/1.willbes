@@ -374,12 +374,23 @@ class LectureRoomModel extends WB_Model
                 WHERE LrUnitCode = '{$lr_unit_code}'
             ) AS a
             INNER JOIN (
-                SELECT rs.LrUnitCode, rs.LrrursIdx, rs.SeatNo, rs.SeatStatusCcd, sr.MemIdx, mem.MemName, sc.CcdName AS SeatStatusName
+                SELECT rs.LrUnitCode, rs.LrrursIdx, rs.SeatNo, rs.SeatStatusCcd, lrsr.MemIdx, lrsr.MemName, sc.CcdName AS SeatStatusName
                 FROM {$this->_table['lectureroom_r_unit_r_seat']} AS rs
                 INNER JOIN {$this->_table['sys_code']} AS sc ON rs.SeatStatusCcd = sc.Ccd
-                LEFT JOIN {$this->_table['lectureroom_seat_register']} AS sr ON rs.LrrursIdx = sr.NowLrrursIdx AND sr.IsStatus = 'Y' AND sr.SeatStatusCcd IN (728001,728002)
-                LEFT JOIN {$this->_table['order_product']} AS op ON sr.OrderProdIdx = op.OrderProdIdx AND op.PayStatusCcd = '676001'
-                LEFT JOIN {$this->_table['member']} AS mem ON sr.MemIdx = mem.MemIdx
+                
+                LEFT JOIN (
+                    SELECT a.NowLrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
+                    FROM (
+                        SELECT NowLrrursIdx, MemIdx, OrderProdIdx
+                        FROM {$this->_table['lectureroom_seat_register']}
+                        WHERE LrUnitCode = '{$lr_unit_code}'
+                        AND SeatStatusCcd IN ('728001','728002')
+                        AND IsStatus = 'Y'
+                        GROUP BY NowLrrursIdx
+                    ) AS a
+                    INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001'
+                    INNER JOIN {$this->_table['member']} AS c ON a.MemIdx = c.MemIdx
+                ) AS lrsr ON rs.LrrursIdx = lrsr.NowLrrursIdx
                 WHERE rs.LrUnitCode = '{$lr_unit_code}' AND rs.IsStatus = 'Y'
             ) AS b ON a.LrUnitCode = b.LrUnitCode
             ORDER BY b.LrrursIdx ASC
@@ -416,7 +427,8 @@ class LectureRoomModel extends WB_Model
                 $update_data[] = [
                     'LrrursIdx' => $v,
                     'SeatStatusCcd' => element('seat_status',$form_data),
-                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    'UpdDatm' => date('Y-m-d H:i:s')
                 ];
             }
 

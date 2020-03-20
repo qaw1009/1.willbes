@@ -243,8 +243,10 @@
                 <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
 
                 {{-- 시험응시번호 중복체크 --}}
-                <input type="hidden" name="register_chk_other_col" value="EtcValue"/>
-                <input type="hidden" name="register_chk_other_val" value=""/>
+                <input type="hidden" name="register_chk_other_col[]" value="EtcValue"/>
+                <input type="hidden" name="register_chk_other_col[]" value="EtcValue2"/>
+                <input type="hidden" name="register_chk_other_val[]" value=""/>
+                <input type="hidden" name="register_chk_other_val[]" value=""/>
                 <input type="hidden" name="register_chk_other_msg" value="이미 이벤트 신청된 응시번호입니다."/>
 
                 <input type="hidden" name="register_chk[]" id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
@@ -925,7 +927,8 @@
                     $register_data3.focus();
                     return;
                 } else {
-                    $regi_form_register.find('input[name="register_chk_other_val"]').val(',' + exam_num);
+                    $regi_form_register.find('input[name="register_chk_other_val[]"]').eq(0).val($regi_form_register.find('input[name="register_data1[]"]:checked').val() + ',');
+                    $regi_form_register.find('input[name="register_chk_other_val[]"]').eq(1).val(',' + exam_num);
                 }
             }
 

@@ -259,8 +259,17 @@ class EventFModel extends WB_Model
     public function getRegisterMember($arr_condition=[])
     {
         $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc, A.FileFullPath, A.FileRealName';
-        $from = " 
+        /*
+        $from = "
             FROM {$this->_table['event_member']} AS A
+            LEFT OUTER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
+        ";
+        */
+        $from = " 
+            FROM (
+                SELECT SUB.*, SUB.EtcValue AS 'EtcValue2', SUB.EtcValue AS 'EtcValue3', SUB.EtcValue AS 'EtcValue4', SUB.EtcValue AS 'EtcValue5'
+                FROM {$this->_table['event_member']} AS SUB
+            ) AS A
             LEFT OUTER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
         ";
         $where = $this->_conn->makeWhere($arr_condition);
@@ -346,13 +355,18 @@ class EventFModel extends WB_Model
 
                 //본인 신청이 아닌 다른사람 신청내역 중복 조회 (ex: 시험응시번호 중복여부)
                 if(empty($inputData['register_chk_other_col']) === false && empty($inputData['register_chk_other_val']) === false && empty($inputData['register_chk_other_msg']) === false) {
+                    $lkb = array();
+                    $i = 0;
+                    foreach($inputData['register_chk_other_col'] as $col_key) {
+                        $lkb = array_merge_recursive($lkb, [$inputData['register_chk_other_col'][$i] => $inputData['register_chk_other_val'][$i]]);
+                        $i++;
+                    }
+
                     $arr_other_condition = [
                         'EQ' => [
                             'A.ErIdx' => $key
                         ],
-                        'LKB' => [
-                            $inputData['register_chk_other_col'] => $inputData['register_chk_other_val']
-                        ]
+                        'LKB' => $lkb
                     ];
                     if (count($this->getRegisterMember($arr_other_condition)) > 0) {
                         throw new \Exception($inputData['register_chk_other_msg']);

@@ -127,4 +127,15 @@ class Home extends \app\controllers\FrontController
 
         $this->load->view($view_file, [], false);
     }
+
+    /**
+     * 개발 테스트 페이지
+     */
+    public function dev_test()
+    {
+        $view_file = explode('/', uri_string(), 3)[2];
+        $view_file = 'dev_test/' . $view_file;
+
+        $this->load->view($view_file, [], false);
+    }
 }

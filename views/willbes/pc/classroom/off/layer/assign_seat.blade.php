@@ -50,7 +50,7 @@
                     <td colspan="3">
                         <ul class="seatsection bg-none">
                             <li>[강의실명] <span>{{ $lec_data['LectureRoomName'] }}</span></li>
-                            <li>[좌석번호] {!! ((empty($lec_data['NowLrrursIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}</li>
+                            <li>[좌석번호] {!! ((empty($lec_data['LrsrIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}</li>
                             <li>[좌석선택기간] <span>{{ $lec_data['SeatChoiceStartDate'] }} ~ {{ $lec_data['SeatChoiceEndDate'] }}</span></li>
                         </ul>
                     </td>
@@ -61,14 +61,22 @@
 
         <form class="form-horizontal" id="_seat_assign_form" name="_seat_assign_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
-            {!! method_field('POST') !!}
+            {{--{!! method_field('POST') !!}--}}
+            {!! method_field((empty($lec_data['LrsrIdx']) === true) ? 'POST' : 'PUT') !!}
+
+            <input type="hidden" name="pkg_yn" value="{{ element('pkg_yn',$form_data) }}" title="상품구분">
             <input type="hidden" name="order_idx" value="{{ element('orderidx', $form_data) }}" title="주문식별자">
             <input type="hidden" name="order_prod_idx" value="{{ element('orderprodidx', $form_data) }}" title="주문상품식별자">
             <input type="hidden" name="prod_code" value="{{ element('prod_code', $form_data) }}" title="상품코드">
             <input type="hidden" name="prod_code_sub" value="{{ element('prod_code_sub', $form_data) }}" title="서브상품코드">
+            <input type="hidden" name="arr_prod_code_sub" value="{{ (empty($lec_data['OrderSubProdCodes']) === true) ? '' : implode(',', $lec_data['OrderSubProdCodes']) }}" title="종합반서브상품코드">
             <input type="hidden" name="lr_code" value="{{ element('lr_code', $form_data) }}" title="강의실코드">
             <input type="hidden" name="lr_unit_code" value="{{ element('lr_unit_code', $form_data) }}" title="강의실회차코드">
+            <input type="hidden" name="old_lrsr_idx" value="{{ $lec_data['LrsrIdx'] }}" title="단일 강의실회차회원좌석식별자">
+            <input type="hidden" name="old_arr_lrsr_idx" value="{{ (empty($lec_data['LrsrIdxData']) === true) ? '' : $lec_data['LrsrIdxData'] }}" title="다중 강의실회차회원좌석식별자">
+            <input type="hidden" id="_old_seat_no" value="{{ $lec_data['MemSeatNo'] }}" title="기존강의실회차회원좌석번호">
             <input type="hidden" id="lr_rurs_idx" name="lr_rurs_idx" value="" title="강의실회차좌석식별자">
+            <input type="hidden" id="seat_num" name="seat_num" value="" title="강의실회차좌석번호">
 
             <div class="PASSZONE-Lec-Section mt25">
                 <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="#" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
@@ -98,7 +106,7 @@
                                         data-seat-num="{{$row['SeatNo']}}"
                                         data-member-idx="{{$row['MemIdx']}}" {{ ($row['SeatStatusCcd'] != '727001') ? 'disabled' : '' }}>
                                     {{$row['SeatNo']}}
-                                    {!! (empty($row['MemName']) === false) ? "<span>{$row['MemName']}</span>" : "<span>{$btn_txt}</span>" !!}</button>
+                                    {!! ($row['SeatStatusCcd'] == '727002' && empty($row['MemName']) === false) ? "<span>{$row['MemName']}</span>" : "<span>{$btn_txt}</span>" !!}</button>
                             </li>
                         @endforeach
                     </ul>
@@ -117,6 +125,7 @@
 
     $_seat_assign_form.on('click', '.btn_choice_seat', function() {
         $("#lr_rurs_idx").val($(this).data("lr-rurs-idx"));
+        $("#seat_num").val($(this).data("seat-num"));
     });
 
     $_seat_assign_form.submit(function() {
@@ -126,11 +135,17 @@
         }
 
         var _url = '{{ front_url('/classroom/off/AssignSeatStore') }}';
-        if (!confirm('해당 좌석을 선택하시겠습니까?')) { return true; }
+        var _msg = '';
+        if ($("#_old_seat_no").val() == '') {
+            _msg = $("#seat_num").val()+'번 좌석으로 선택하시겠습니까?';
+        } else {
+            _msg = $("#_old_seat_no").val() + ' -> ' + $("#seat_num").val()+'번 좌석으로 이동하시겠습니까?';
+        }
+        if (!confirm(_msg)) { return true; }
         ajaxSubmit($_seat_assign_form, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
-                AssignSeat('{{ element('pkg_yn', $form_data) }}','{{ element('choice_box_no', $form_data) }}', 'N');
+                AssignSeat('{{ element('pkg_yn', $form_data) }}','{{ element('choice_box_no', $form_data) }}', 'Y');
             }
         }, showValidateError, null, false, 'alert');
     });

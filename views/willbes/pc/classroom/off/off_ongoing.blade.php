@@ -83,12 +83,12 @@
                                         <div class="w-tit">{{$row['subProdName']}}</div>
                                         {{-- TODO : 좌석배정 개발 --}}
                                         @if (empty($listLectureRoom[$row['ProdCode']]) === false)
-                                            <input type="hidden" id="order_idx_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
-                                            <input type="hidden" id="order_prod_idx_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderProdIdx'] }}">
-                                            <input type="hidden" id="lr_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrCode'] }}">
-                                            <input type="hidden" id="lr_unit_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrUnitCode'] }}">
-                                            <input type="hidden" id="prod_code_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeMaster'] }}">
-                                            <input type="hidden" id="prod_code_sub_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeSub'] }}">
+                                            <input type="hidden" id="order_idx_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
+                                            <input type="hidden" id="order_prod_idx_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderProdIdx'] }}">
+                                            <input type="hidden" id="lr_code_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrCode'] }}">
+                                            <input type="hidden" id="lr_unit_code_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrUnitCode'] }}">
+                                            <input type="hidden" id="prod_code_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeMaster'] }}">
+                                            <input type="hidden" id="prod_code_sub_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeSub'] }}">
                                             <ul class="seatsection">
                                                 <li>
                                                     <button id="btn_assign_seat_N_{{ $key }}" onclick="AssignSeat('N','{{ $key }}','{{
@@ -96,7 +96,13 @@
                                                                         && date('Y-m-d') <= $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
                                                 </li>
                                                 <li>[강의실명] <span>{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }}</span></li>
-                                                <li>[좌석번호] <span class="tx-red">{{ ((empty($listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) === true) ? '미선택' : $listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) }}</span></li>
+                                                <li>
+                                                    [좌석번호]
+                                                    <span class="tx-red">
+                                                        {!! ((empty($listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) === true) ?
+                                                        "<span class='tx-red'>미선택</span>" : "<span>{$listLectureRoom[$row['ProdCode']]['MemSeatNo']}</span>") !!}
+                                                    </span>
+                                                </li>
                                                 <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}</li>
                                             </ul>
                                         @endif
@@ -197,12 +203,12 @@
                                         @if (empty($row['subleclist']) === false)
                                             @foreach($row['subleclist'] as $sub_key => $sub_row)
                                                 @if (empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]) === false)
-                                                    <input type="hidden" id="order_idx_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
-                                                    <input type="hidden" id="order_prod_idx_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
-                                                    <input type="hidden" id="lr_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
-                                                    <input type="hidden" id="lr_unit_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
-                                                    <input type="hidden" id="prod_code_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
-                                                    <input type="hidden" id="prod_code_sub_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
+                                                    <input type="hidden" id="order_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
+                                                    <input type="hidden" id="order_prod_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
+                                                    <input type="hidden" id="lr_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
+                                                    <input type="hidden" id="lr_unit_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
+                                                    <input type="hidden" id="prod_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
+                                                    <input type="hidden" id="prod_code_sub_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
                                                     <div class="mb10">
                                                         <dl class="w-info">
                                                             <dt>
@@ -319,12 +325,12 @@
             $('#pkg_yn').val(pkg_yn);
 
             $('#choice_box_no').val(no);
-            $('#orderidx').val($("#order_idx_"+no).val());
-            $('#orderprodidx').val($("#order_prod_idx_"+no).val());
-            $('#lr_code').val($("#lr_code_"+no).val());
-            $('#lr_unit_code').val($("#lr_unit_code_"+no).val());
-            $('#prod_code').val($("#prod_code_"+no).val());
-            $('#prod_code_sub').val($("#prod_code_sub_"+no).val());
+            $('#orderidx').val($("#order_idx_"+pkg_yn+'_'+no).val());
+            $('#orderprodidx').val($("#order_prod_idx_"+pkg_yn+'_'+no).val());
+            $('#lr_code').val($("#lr_code_"+pkg_yn+'_'+no).val());
+            $('#lr_unit_code').val($("#lr_unit_code_"+pkg_yn+'_'+no).val());
+            $('#prod_code').val($("#prod_code_"+pkg_yn+'_'+no).val());
+            $('#prod_code_sub').val($("#prod_code_sub_"+pkg_yn+'_'+no).val());
 
             var url = "{{ site_url("/classroom/off/AssignSeat/") }}";
             var data = $('#postForm').serialize();

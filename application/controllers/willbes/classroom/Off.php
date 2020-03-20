@@ -364,7 +364,7 @@ class Off extends \app\controllers\FrontController
 
 
     /**
-     * 강의실좌석배정
+     * 강의실좌석배정 폼
      * @return object|string
      */
     public function AssignSeat()
@@ -389,6 +389,12 @@ class Off extends \app\controllers\FrontController
             return $this->json_error('조회된 강의실 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
+        //서브상품 추출
+        $lec_data['OrderSubProdCodes'] = [];
+        if (empty($lec_data['OrderSubProdData']) === false) {
+            $lec_data['OrderSubProdCodes'] = array_pluck(json_decode($lec_data['OrderSubProdData'], true), 'ProdCode');
+        }
+
         $seat_data = $this->classroomFModel->getLectureRoomSeat($form_data);
         if (empty($seat_data) === true) {
             return $this->json_error('조회된 강의실 좌석 정보가 없습니다.', _HTTP_NOT_FOUND);
@@ -401,9 +407,39 @@ class Off extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 강의실좌석배정
+     * @return CI_Output
+     */
     public function AssignSeatStore()
     {
-        $result = true;
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
+            ['field' => 'pkg_yn', 'label' => '상품타입', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'order_prod_idx', 'label' => '주문상품식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code_sub', 'label' => '상품코드서브', 'rules' => 'trim|required|integer'],
+            ['field' => 'arr_prod_code_sub', 'label' => '종합반서브상품코드', 'rules' => 'callback_validateRequiredIf[pkg_yn,Y]'],
+            ['field' => 'lr_code', 'label' => '강의실코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'lr_rurs_idx', 'label' => '강의실회차좌석식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'seat_num', 'label' => '강의실회차좌석번호', 'rules' => 'trim|required|integer']
+        ];
+
+        $_mode = 'add';
+        if (empty($this->_reqP('old_lrsr_idx')) === false) {
+            $_mode = 'modify';
+            $rules = array_merge($rules, [
+                ['field' => 'old_arr_lrsr_idx', 'label' => '다중 강의실회차회원좌석식별자', 'rules' => 'trim|required']
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return $this->json_error("정보가 올바르지 않습니다.");
+        }
+
+        $result = $this->classroomFModel->{$_mode.'LectureRoomSeatRegister'}($this->_reqP(null));
         return $this->json_result($result, '좌석배정이 적용되었습니다.', $result);
     }
 

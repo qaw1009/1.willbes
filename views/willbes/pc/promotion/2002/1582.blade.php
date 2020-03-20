@@ -260,6 +260,7 @@
                                     <strong><span class="star">▶</span>2020년 1차  희망지원청</strong><br>
                                     <ul class="area">
                                         <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
@@ -273,8 +274,7 @@
                                         <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
-                                        <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
-                                        <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>                                        
                                         <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
                                     </ul>
                                 </p>
@@ -744,6 +744,9 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_04.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_05.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_06.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_07.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_08.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_04_09.jpg" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_btn_arrowL.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_btn_arrowR.png"></a></p>

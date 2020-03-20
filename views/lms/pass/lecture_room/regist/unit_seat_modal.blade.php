@@ -43,12 +43,12 @@
             <label class="control-label col-md-1-1">사용/총좌석
             </label>
             <div class="col-md-5">
-                <p class="form-control-static">{{$data['UseSeatCnt'] + $data['UseMemberSeatCnt']}} / {{ $data['UseQty'] }}</p>
+                <p class="form-control-static">{{$data['UseSeatCnt']}} / {{ $data['UseQty'] }}</p>
             </div>
             <label class="control-label col-md-1-1">잔여석
             </label>
             <div class="col-md-4">
-                <p class="form-control-static">{{$data['UseQty'] - ($data['UseSeatCnt'] + $data['UseMemberSeatCnt'])}}</p>
+                <p class="form-control-static">{{$data['UseQty'] - ($data['UseSeatCnt'])}}</p>
             </div>
         </div>
         <div class="form-group form-group-sm">

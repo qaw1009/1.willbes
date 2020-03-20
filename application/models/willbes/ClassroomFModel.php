@@ -1425,7 +1425,7 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if (empty($chk_lecture_room_unit) !== true) {
+            if ($chk_lecture_room_unit !== true) {
                 throw new \Exception($chk_lecture_room_unit);
             }
 
@@ -1512,7 +1512,6 @@ class ClassroomFModel extends WB_Model
 
             $arr_condition_sub = [
                 'EQ' => [
-                    'LrCode' => $lr_code,
                     'LrUnitCode' => $lr_unit_code,
                     'IsStatus' => 'Y',
                 ],
@@ -1527,18 +1526,14 @@ class ClassroomFModel extends WB_Model
             $where_sub = $this->_conn->makeWhere($arr_condition_sub);
             $where_sub = $where_sub->getMakeWhere(false);
 
-            $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, mem.useSeatCnt';
+            $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, IFNULL(lrrurs.useSeatCnt,0) AS useSeatCnt';
             $from = "
                 FROM {$this->_table['lectureroom_r_unit']} AS lrru
                 LEFT JOIN (
-                    SELECT lrsr.LrCode, lrsr.LrUnitCode, COUNT(lrsr.NowLrrursIdx) AS useSeatCnt
-                    FROM (
-                        SELECT LrCode, LrUnitCode, NowLrrursIdx
-                        FROM {$this->_table['lectureroom_seat_register']}
-                        {$where_sub} GROUP BY NowLrrursIdx
-                    ) AS lrsr
-                    INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.NowLrrursIdx = lrrurs.LrrursIdx AND lrrurs.SeatStatusCcd = '727002' AND lrrurs.IsStatus = 'Y'
-                ) AS mem ON lrru.LrCode = mem.LrCode AND lrru.LrUnitCode = mem.LrUnitCode
+                    SELECT LrUnitCode, COUNT(*) AS useSeatCnt
+                    FROM {$this->_table['lectureroom_r_unit_r_seat']}
+                    {$where_sub}
+                ) AS lrrurs ON lrrurs.LrUnitCode = lrru.LrUnitCode
             ";
             $result = $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
 
@@ -1846,7 +1841,8 @@ class ClassroomFModel extends WB_Model
                     'LrsrIdx' => $lrsr_idx,
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
                     'MemIdx' => $this->session->userdata('mem_idx'),
-                    'BeforeSeatNo' => element('seat_num', $form_data)
+                    'BeforeSeatNo' => element('old_seat_no', $form_data),
+                    'AfterSeatNo' => element('seat_num', $form_data)
                 ];
 
                 if($this->_conn->set($log_data)->insert($this->_table['lectureroom_log']) === false) {

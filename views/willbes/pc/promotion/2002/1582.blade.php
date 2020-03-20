@@ -243,8 +243,10 @@
                 <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
 
                 {{-- 시험응시번호 중복체크 --}}
-                <input type="hidden" name="register_chk_other_col" value="EtcValue"/>
-                <input type="hidden" name="register_chk_other_val" value=""/>
+                <input type="hidden" name="register_chk_other_col[]" value="EtcValue"/>
+                <input type="hidden" name="register_chk_other_col[]" value="EtcValue2"/>
+                <input type="hidden" name="register_chk_other_val[]" value=""/>
+                <input type="hidden" name="register_chk_other_val[]" value=""/>
                 <input type="hidden" name="register_chk_other_msg" value="이미 이벤트 신청된 응시번호입니다."/>
 
                 <input type="hidden" name="register_chk[]" id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
@@ -257,7 +259,7 @@
                                 <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly /></p>
                                 <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11" readonly/></p>
                                 <p class="check_contact">
-                                    <strong><span class="star">▶</span>2020년 1차  희망지원청</strong><br>
+                                    <strong><span class="star">▶</span>20년 1차 응시지원청</strong><br>
                                     <ul class="area">
                                         <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
                                         <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
@@ -925,7 +927,8 @@
                     $register_data3.focus();
                     return;
                 } else {
-                    $regi_form_register.find('input[name="register_chk_other_val"]').val(',' + exam_num);
+                    $regi_form_register.find('input[name="register_chk_other_val[]"]').eq(0).val($regi_form_register.find('input[name="register_data1[]"]:checked').val() + ',');
+                    $regi_form_register.find('input[name="register_chk_other_val[]"]').eq(1).val(',' + exam_num);
                 }
             }
 

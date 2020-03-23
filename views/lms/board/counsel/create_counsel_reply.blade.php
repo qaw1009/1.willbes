@@ -128,8 +128,9 @@
                 <div class="form-group">
                     <label class="col-md-1-1 mt-15 text-right" for="attach_img_1">첨부</label>
                     <div class="col-md-9 form-inline">
+                        <a id="btn_attach_toggle" href="#none">첨부펼침 <span id="attach_toggle_img" class="fa fa-chevron-up"></span></a>
                         @for($i = 0; $i < $attach_file_cnt; $i++)
-                            <div class="title">
+                            <div class="title attach-file-div @if($i!==0) hide @endif">
                                 <!--div class="filetype">
                                     <input type="text" class="form-control file-text" disabled="">
                                     <button class="btn btn-primary mb-0" type="button">파일 선택</button>
@@ -208,6 +209,30 @@
                     }
                 }, showError, false, 'POST');
             });
+
+            $('#btn_attach_toggle').click(function() {
+                var $attach_toggle_img = $('#attach_toggle_img');
+                if($attach_toggle_img.hasClass('fa-chevron-up') === true) {
+                    $attach_toggle_img.removeClass('fa-chevron-up');
+                    $attach_toggle_img.addClass('fa-chevron-down');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('hide');
+                            $(this).addClass('show');
+                        }
+                    });
+                } else {
+                    $attach_toggle_img.removeClass('fa-chevron-down');
+                    $attach_toggle_img.addClass('fa-chevron-up');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('show');
+                            $(this).addClass('hide');
+                        }
+                    });
+                }
+            });
+            
         });
     </script>
 @stop

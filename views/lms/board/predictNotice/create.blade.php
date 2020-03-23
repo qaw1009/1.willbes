@@ -88,8 +88,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="attach_img_1">첨부</label>
                     <div class="col-md-10 form-inline">
+                        <a id="btn_attach_toggle" href="#none">첨부펼침 <span id="attach_toggle_img" class="fa fa-chevron-up"></span></a>
                         @for($i = 0; $i < $attach_file_cnt; $i++)
-                            <div class="title">
+                            <div class="title attach-file-div @if($i!==0) hide @endif">
                                 <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
                                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
@@ -206,6 +207,30 @@
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
+
+            $('#btn_attach_toggle').click(function() {
+                var $attach_toggle_img = $('#attach_toggle_img');
+                if($attach_toggle_img.hasClass('fa-chevron-up') === true) {
+                    $attach_toggle_img.removeClass('fa-chevron-up');
+                    $attach_toggle_img.addClass('fa-chevron-down');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('hide');
+                            $(this).addClass('show');
+                        }
+                    });
+                } else {
+                    $attach_toggle_img.removeClass('fa-chevron-down');
+                    $attach_toggle_img.addClass('fa-chevron-up');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('show');
+                            $(this).addClass('hide');
+                        }
+                    });
+                }
+            });
+
         });
 
         function addValidate() {

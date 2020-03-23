@@ -100,8 +100,9 @@
                         <br><button type="button" class="btn btn-dark btn-sm btn-add-file">첨부필드추가</button>
                     </label>
                     <div class="col-md-10 form-inline file-box">
+                        <a id="btn_attach_toggle" href="#none">첨부펼침 <span id="attach_toggle_img" class="fa fa-chevron-up"></span></a>
                         @for($i = 0; $i < $attach_file_cnt; $i++)
-                            <div class="title file-input-box">
+                            <div class="title attach-file-div file-input-box @if($i!==0) hide @endif">
                                 <!--div class="filetype">
                                     <input type="text" class="form-control file-text" disabled="">
                                     <button class="btn btn-primary mb-0" type="button">파일 선택</button>
@@ -265,6 +266,30 @@
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
+
+            $('#btn_attach_toggle').click(function() {
+                var $attach_toggle_img = $('#attach_toggle_img');
+                if($attach_toggle_img.hasClass('fa-chevron-up') === true) {
+                    $attach_toggle_img.removeClass('fa-chevron-up');
+                    $attach_toggle_img.addClass('fa-chevron-down');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('hide');
+                            $(this).addClass('show');
+                        }
+                    });
+                } else {
+                    $attach_toggle_img.removeClass('fa-chevron-down');
+                    $attach_toggle_img.addClass('fa-chevron-up');
+                    $('.attach-file-div').each(function(i) {
+                        if(i !== 0){
+                            $(this).removeClass('show');
+                            $(this).addClass('hide');
+                        }
+                    });
+                }
+            });
+
         });
 
     </script>

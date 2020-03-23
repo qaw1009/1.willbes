@@ -856,6 +856,29 @@ class Manage extends \app\controllers\BaseController
 
         $lec = $lec[0];
 
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
+            $pkg = $this->manageLectureModel->getPackage(false,[
+                'EQ' => [
+                    'MemIdx' => $memidx,
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
+
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
+        }
+
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
             $wUnitIdxs = [];

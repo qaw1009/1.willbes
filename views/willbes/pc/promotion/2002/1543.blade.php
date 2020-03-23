@@ -69,8 +69,8 @@
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/02/1543_top.jpg" usemap="#Map1543a" title="무료특강" border="0">
         <map name="Map1543a" id="Map1543a">
-            <area shape="rect" coords="4,780,416,916" href="#to_go" />
-        </map>
+            <area shape="rect" coords="851,1083,994,1136" href="https://police.willbes.net/book/index/cate/3001?cate_code=3001&subject_idx=1003" target="_blank" />
+        </map>         
     </div>
 
     <div class="evtCtnsBox evt01">
@@ -97,7 +97,7 @@
 
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1543_03.jpg" usemap="#Map1177B" title="최신기출 및 최신판례신청하기" border="0">
             <div class="form_area">
-                <h4>3월 8일(일) 김원욱 형법  최신기출&최신판례 무료특강 학원실강 참여</h4>
+                <h4>3.29(일) 김원욱 형법  최신기출&최신판례 무료특강 학원실강 참여</h4>
                 <div class="privacy">
                     <div class="contacts">
                         <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/></p>

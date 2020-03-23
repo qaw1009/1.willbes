@@ -69,8 +69,9 @@
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/02/1543_top.jpg" usemap="#Map1543a" title="무료특강" border="0">
         <map name="Map1543a" id="Map1543a">
-            <area shape="rect" coords="851,1083,994,1136" href="https://police.willbes.net/book/index/cate/3001?cate_code=3001&subject_idx=1003" target="_blank" />
-        </map>         
+            <area shape="rect" coords="4,780,416,916" href="#to_go" />
+            <area shape="rect" coords="852,1085,992,1131" href="https://police.willbes.net/book/index/cate/3001?cate_code=3001&subject_idx=1003" target="_blank" />
+        </map>
     </div>
 
     <div class="evtCtnsBox evt01">

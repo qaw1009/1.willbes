@@ -73,7 +73,7 @@
                     <th rowspan="2" class="text-center valign-middle">캠퍼스</th>
                     <th rowspan="2" class="text-center valign-middle">강의실코드</th>
                     <th rowspan="2" class="text-center valign-middle">강의실명</th>
-                    <th colspan="5" class="text-center valign-middle">강의실정보</th>
+                    <th colspan="6" class="text-center valign-middle">강의실정보</th>
                     <th rowspan="2" class="text-center valign-middle">사용여부</th>
                     <th rowspan="2" class="text-center valign-middle">등록자</th>
                     <th rowspan="2" class="text-center valign-middle">등록일</th>
@@ -84,6 +84,7 @@
                     <th class="valign-middle">사용중/총좌석</th>
                     <th class="valign-middle">잔여석</th>
                     <th class="valign-middle">자동문자 사용여부</th>
+                    <th class="valign-middle">회차별 사용여부</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -171,6 +172,18 @@
                                 if (key.LrUnitCode != null) {
                                     str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">';
                                     str += (key.IsSmsUse == 'Y') ? '사용' : '미사용';
+                                    str +=  '</div>';
+                                }
+                            });
+                            return str;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var arr_unit_data = jQuery.parseJSON(row.UnitData);
+                            var str = '';
+                            $.each(arr_unit_data, function(i, key) {
+                                if (key.LrUnitCode != null) {
+                                    str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">';
+                                    str += (key.unitIsUse == 'Y') ? '사용' : '미사용';
                                     str +=  '</div>';
                                 }
                             });

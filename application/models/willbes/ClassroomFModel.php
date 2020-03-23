@@ -1425,8 +1425,8 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if (empty($chk_lecture_room_unit) !== true) {
-                throw new \Exception($chk_lecture_room_unit);
+            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+                throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
             switch (element('pkg_yn',$form_data)) {
@@ -1447,6 +1447,10 @@ class ClassroomFModel extends WB_Model
             //강의실회차좌석정보 상태 업데이트
             if ($this->_modifyLectureRoomUnitSeatForAdd(element('lr_rurs_idx', $form_data)) !== true) {
                 throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+            }
+
+            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+                throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -1471,8 +1475,8 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if ($chk_lecture_room_unit !== true) {
-                throw new \Exception($chk_lecture_room_unit);
+            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+                throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
             $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_rurs_idx', $form_data));
@@ -1482,6 +1486,10 @@ class ClassroomFModel extends WB_Model
 
             if ($this->_modifyLectureRoomSeatForMove($form_data, $old_register_data) !== true) {
                 throw new \Exception('좌석이동에 실패했습니다.');
+            }
+
+            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+                throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -1496,7 +1504,7 @@ class ClassroomFModel extends WB_Model
      * 좌석선택기간 체크, 좌석수 체크
      * @param $lr_code
      * @param $lr_unit_code
-     * @return bool|string
+     * @return array|string
      */
     private function _getLectureRoomUnitForValidate($lr_code, $lr_unit_code)
     {
@@ -1512,7 +1520,6 @@ class ClassroomFModel extends WB_Model
 
             $arr_condition_sub = [
                 'EQ' => [
-                    'LrCode' => $lr_code,
                     'LrUnitCode' => $lr_unit_code,
                     'IsStatus' => 'Y',
                 ],
@@ -1527,21 +1534,16 @@ class ClassroomFModel extends WB_Model
             $where_sub = $this->_conn->makeWhere($arr_condition_sub);
             $where_sub = $where_sub->getMakeWhere(false);
 
-            $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, mem.useSeatCnt';
+            $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, IFNULL(lrrurs.useSeatCnt,0) AS useSeatCnt';
             $from = "
                 FROM {$this->_table['lectureroom_r_unit']} AS lrru
                 LEFT JOIN (
-                    SELECT lrsr.LrCode, lrsr.LrUnitCode, COUNT(lrsr.NowLrrursIdx) AS useSeatCnt
-                    FROM (
-                        SELECT LrCode, LrUnitCode, NowLrrursIdx
-                        FROM {$this->_table['lectureroom_seat_register']}
-                        {$where_sub} GROUP BY NowLrrursIdx
-                    ) AS lrsr
-                    INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.NowLrrursIdx = lrrurs.LrrursIdx AND lrrurs.SeatStatusCcd = '727002' AND lrrurs.IsStatus = 'Y'
-                ) AS mem ON lrru.LrCode = mem.LrCode AND lrru.LrUnitCode = mem.LrUnitCode
+                    SELECT LrUnitCode, COUNT(*) AS useSeatCnt
+                    FROM {$this->_table['lectureroom_r_unit_r_seat']}
+                    {$where_sub}
+                ) AS lrrurs ON lrrurs.LrUnitCode = lrru.LrUnitCode
             ";
             $result = $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
-
             if (empty($result) === true) {
                 throw new \Exception('조회된 강의실 정보가 없습니다.');
             }
@@ -1556,9 +1558,15 @@ class ClassroomFModel extends WB_Model
             }
 
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return [
+                'ret_cd' => false,
+                'ret_msg' => $e->getMessage()
+            ];
         }
-        return true;
+        return [
+            'ret_cd' => true,
+            'data' => $result
+        ];
     }
 
     /**
@@ -1811,6 +1819,7 @@ class ClassroomFModel extends WB_Model
             }
             $_arr_prod_code_sub = array_flip(explode(',',$arr_prod_code_sub));
 
+            //좌석배정
             $input_data = [];
             foreach ($old_register_data as $key => $row) {
                 if (isset($_arr_prod_code_sub[$key]) === true) {
@@ -1831,7 +1840,8 @@ class ClassroomFModel extends WB_Model
                     ];
                 }
             }
-            
+
+            //로그저장
             foreach ($input_data as $key => $data) {
                 if($this->_conn->set($data)->insert($this->_table['lectureroom_seat_register']) === false) {
                     throw new \Exception('fail');
@@ -1846,7 +1856,8 @@ class ClassroomFModel extends WB_Model
                     'LrsrIdx' => $lrsr_idx,
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
                     'MemIdx' => $this->session->userdata('mem_idx'),
-                    'BeforeSeatNo' => element('seat_num', $form_data)
+                    'BeforeSeatNo' => element('old_seat_no', $form_data),
+                    'AfterSeatNo' => element('seat_num', $form_data)
                 ];
 
                 if($this->_conn->set($log_data)->insert($this->_table['lectureroom_log']) === false) {
@@ -1856,6 +1867,34 @@ class ClassroomFModel extends WB_Model
         } catch (\Exception $e) {
             return error_result($e);
         }
+        return true;
+    }
+
+    /**
+     * 친구톡,문자 발송
+     * @param $unit_data
+     * @return bool
+     */
+    private function _sendKakao($unit_data)
+    {
+        try {
+            //문자발송
+            if($unit_data['data']['IsSmsUse'] == 'Y' && empty($unit_data['data']['SendTel']) === false ) { // 문자발송
+                $this->load->loadModels(['crm/smsF']);
+                if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone')
+                        , $unit_data['data']['SmsContent']
+                        , $unit_data['data']['SendTel']
+                        , null
+                        , 'KFT'
+                        , null
+                        , null) === false) {
+                    throw new \Exception('sms fail');
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
         return true;
     }
 }

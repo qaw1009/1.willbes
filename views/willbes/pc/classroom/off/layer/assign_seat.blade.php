@@ -74,7 +74,7 @@
             <input type="hidden" name="lr_unit_code" value="{{ element('lr_unit_code', $form_data) }}" title="강의실회차코드">
             <input type="hidden" name="old_lrsr_idx" value="{{ $lec_data['LrsrIdx'] }}" title="단일 강의실회차회원좌석식별자">
             <input type="hidden" name="old_arr_lrsr_idx" value="{{ (empty($lec_data['LrsrIdxData']) === true) ? '' : $lec_data['LrsrIdxData'] }}" title="다중 강의실회차회원좌석식별자">
-            <input type="hidden" id="_old_seat_no" value="{{ $lec_data['MemSeatNo'] }}" title="기존강의실회차회원좌석번호">
+            <input type="hidden" id="old_seat_no" name="old_seat_no" value="{{ $lec_data['MemSeatNo'] }}" title="기존강의실회차회원좌석번호">
             <input type="hidden" id="lr_rurs_idx" name="lr_rurs_idx" value="" title="강의실회차좌석식별자">
             <input type="hidden" id="seat_num" name="seat_num" value="" title="강의실회차좌석번호">
 
@@ -136,10 +136,10 @@
 
         var _url = '{{ front_url('/classroom/off/AssignSeatStore') }}';
         var _msg = '';
-        if ($("#_old_seat_no").val() == '') {
+        if ($("#old_seat_no").val() == '') {
             _msg = $("#seat_num").val()+'번 좌석으로 선택하시겠습니까?';
         } else {
-            _msg = $("#_old_seat_no").val() + ' -> ' + $("#seat_num").val()+'번 좌석으로 이동하시겠습니까?';
+            _msg = $("#old_seat_no").val() + ' -> ' + $("#seat_num").val()+'번 좌석으로 이동하시겠습니까?';
         }
         if (!confirm(_msg)) { return true; }
         ajaxSubmit($_seat_assign_form, _url, function(ret) {

@@ -116,88 +116,41 @@
                 <area shape="rect" coords="576,923,790,988" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" />
                 <area shape="rect" coords="800,922,1016,988" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank" />
             </map>
-        </div>  
-
+        </div>        
+                
         <div class="evtCtnsBox wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1584_05.jpg" alt="소문내기 이벤트" usemap="#Map1584b" border="0" />
             <map name="Map1584b" id="Map1584b">
                 <area shape="rect" coords="385,739,689,790" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="리마인드 2단계 이미지 다운받기" />
             </map>
-        </div> 
+        </div>
 
-          {{--홍보url--}}
+        {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif            
+        @endif 
 
     </div>
     <!-- End Container -->
 
-    <script language="javascript">
-        $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg1").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:8000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:900,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1
-            });
-
-            $("#imgBannerLeft1").click(function (){
-                slidesImg2.goToPrevSlide();
-            });
-
-            $("#imgBannerRight1").click(function (){
-                slidesImg2.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg2").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:8000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:900,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
-            });
-
-            $("#imgBannerLeft2").click(function (){
-                slidesImg2.goToPrevSlide();
-            });
-
-            $("#imgBannerRight2").click(function (){
-                slidesImg2.goToNextSlide();
-            });
-        });
-
+    <script type="text/javascript">
+           
         /*탭(텍스터버전)*/
-    $(document).ready(function(){
-        $(".tabContents").hide();
-        $(".tabContents:first").show();
-        $(".tabContaier ul li a").click(function(){
-        var activeTab = $(this).attr("href");
-        $(".tabContaier ul li a").removeClass("active");
-        $(this).addClass("active");
-        $(".tabContents").hide();
-        $(activeTab).fadeIn();
-        return false;
-        });
-    });
-
+        $(document).ready(function(){
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });   
+    
     </script>
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
+
 @stop

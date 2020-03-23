@@ -9,7 +9,7 @@
                 @else
                     @foreach($data['off_notice'] as $row)
                         <li>
-                            <a href="{{front_url('/support/gosiNotice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/gosiNotice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
                                 {{-- <span>EVENT</span> --}}
                                 {{$row['Title']}}
                             </a>
@@ -33,7 +33,7 @@
                 @else
                     @foreach($data['notice'] as $row)
                         <li>
-                            <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
                                 {{-- <span>EVENT</span> --}}
                                 {{$row['Title']}}
                             </a>
@@ -57,7 +57,7 @@
                 @else
                     @foreach($data['exam_news'] as $row)
                         <li>
-                            <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
                                 {{-- <span>EVENT</span> --}}
                                 {{$row['Title']}}
                             </a>

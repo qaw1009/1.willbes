@@ -24,9 +24,8 @@
                     <div class="nTit">학원 고객센터</div>
                     <div class="nNumber tx-color">@if(empty($cate_code) === false && $cate_code == '309004') 1544-3383 {{-- 변리사 --}} @else 1544-4774 @endif</div>
                     <div class="nTxt">
-                        [운영시간]<br/>
-                        평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                        공휴일/일요일휴무<br/>
+                        [전화/방문상담 운영시간]<br/>
+                        평일/주말 : 08시 ~ 18시 
                     </div>
                 </li>
             </ul>

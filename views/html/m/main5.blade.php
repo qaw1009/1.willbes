@@ -5,7 +5,7 @@
 <div id="Container" class="Container NG c_both mb20">
     <div class="gosibtns bdb-none mt0 pb10">
         <ul>
-            <li><a href="https://www.willbes.net/m/classroom/pass/index">내강의실</a></li>
+            <li><a href="https://www.willbes.net/m/classroom/on/list/ongoing">내강의실</a></li>
             <li><a href="https://police.willbes.net/m/lecture/index/pattern/free">무료특강(보강)</a></li>
             <li><a href="https://police.willbes.net/m/support/notice/show?board_idx=259726">신규강의안내</a></li>
         </ul>

@@ -530,12 +530,23 @@ body.memBody #Footer {
     margin-right:5px;
 }
 .introBox3 {text-align: center;}
-.introBox3 h4 { padding:12px 0; font-size:14px; background: #f6f6f6;}
-.introBox3 ul {padding-left:10px; margin-top: 10px;}
-.introBox3 li {display: inline; float:left}
-.introBox3 li a { display: inline-block; padding:10px 20px; border-radius: 4px; border:1px solid #e4e4e4; margin:0 8px 8px 0}
-.introBox3 ul:after {content:""; display:block; clear:both}
+.introBox3 .menuGroup {border-radius:10px; margin:10px 10px 20px 10px; box-shadow: 0 0 10px 1px rgba(0,0,0,0.2); padding:0 15px 10px; }
+.introBox3 .menuGroup:nth-child(1) {background:#478bde}
+.introBox3 div:nth-child(2) {background:#4aa38d}
+.introBox3 div:nth-child(3) {background:#9fa4cc}
+.introBox3 div:nth-child(4) {background:#e3ae3c}
+.introBox3 div:nth-child(5) {background:#4b5463}
+.introBox3 div:nth-child(6) {background:#695645}
+.introBox3 div:nth-child(7) {background:#863532}
+.introBox3 div:nth-child(8) {background:#e1624f}
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
+.introBox3 h4 {padding:12px 0; font-size:18px; color:#fff; text-align: left;}
+.introBox3 h4 img {width:26px; vertical-align: middle;}
+.introBox3 li {display: inline; float:left; width: 50%;}
+.introBox3 li a {display:block; padding:10px 0; border:1px solid #b3b3b3; margin:0 8px 8px 0; font-size:14px; color:#000; background: #fff;}
+.introBox3 li a:hover {background: #1a1a1a; color:#fff}
+.introBox3 div ul:after {content:""; display:block; clear:both}
+
 
 
 
@@ -1059,6 +1070,12 @@ body.memBody #Footer {
     width: 30%;
     color: #959595;
     text-align: right;
+}
+
+/* 배너영역 */
+.bannerSec01 {margin:20px 0}
+.bannerSec01 img {
+    width: 100%;
 }
 
 /* appPlayer */

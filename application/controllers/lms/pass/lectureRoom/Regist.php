@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site','sys/code','pass/lectureRoom');
+    protected $models = array('sys/site','sys/code','pass/lectureRoomRegist');
     protected $helpers = array('download');
     protected $_groupCcd = [
         'SmsSendCallBackNum' => '706'   //SMS 발송번호
@@ -65,9 +65,9 @@ class Regist extends \app\controllers\BaseController
         }
 
         $list = [];
-        $count = $this->lectureRoomModel->mainList(true, $arr_condition_1, $arr_condition_2);
+        $count = $this->lectureRoomRegistModel->mainList(true, $arr_condition_1, $arr_condition_2);
         if ($count > 0) {
-            $list = $this->lectureRoomModel->mainList(false, $arr_condition_1, $arr_condition_2, $this->_reqP('length'), $this->_reqP('start'));
+            $list = $this->lectureRoomRegistModel->mainList(false, $arr_condition_1, $arr_condition_2, $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -94,7 +94,7 @@ class Regist extends \app\controllers\BaseController
                     'IsStatus' => 'Y'
                 ]
             ];
-            $data = $this->lectureRoomModel->findLectureRoom($arr_condition);
+            $data = $this->lectureRoomRegistModel->findLectureRoom($arr_condition);
             if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
@@ -129,7 +129,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lectureRoomModel->{$method . 'LectureRoom'}($this->_reqP(null, false), $idx);
+        $result = $this->lectureRoomRegistModel->{$method . 'LectureRoom'}($this->_reqP(null, false), $idx);
         $this->json_result($result['ret_cd'], '저장 되었습니다.', $result, $result);
     }
 
@@ -154,9 +154,9 @@ class Regist extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->lectureRoomModel->unitList(true, $arr_condition);
+        $count = $this->lectureRoomRegistModel->unitList(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->lectureRoomModel->unitList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            $list = $this->lectureRoomRegistModel->unitList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -186,7 +186,7 @@ class Regist extends \app\controllers\BaseController
         if (empty($params[1]) === false) {
             $method = 'PUT';
             $lr_unit_code = $params[1];
-            $data = $this->lectureRoomModel->findLectureRoomUnit($lr_code, $lr_unit_code);
+            $data = $this->lectureRoomRegistModel->findLectureRoomUnit($lr_code, $lr_unit_code);
         }
 
         $this->load->view("pass/lecture_room/regist/unit_modal", [
@@ -229,7 +229,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lectureRoomModel->{$method . 'LectureRoomUnit'}($this->_reqP(null, false));
+        $result = $this->lectureRoomRegistModel->{$method . 'LectureRoomUnit'}($this->_reqP(null, false));
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -246,19 +246,19 @@ class Regist extends \app\controllers\BaseController
         $lr_code = $params[0];
         $lr_unit_code = $params[1];
 
-        $arr_seat_unit_ccd = $this->codeModel->getCcd($this->lectureRoomModel->_seat_unit_ccd);
-        $arr_seat_member_ccd = $this->codeModel->getCcd($this->lectureRoomModel->_seat_member_ccd);
+        $arr_seat_unit_ccd = $this->codeModel->getCcd($this->lectureRoomRegistModel->_seat_unit_ccd);
+        $arr_seat_member_ccd = $this->codeModel->getCcd($this->lectureRoomRegistModel->_seat_member_ccd);
         $arr_seat_all_ccd = $arr_seat_unit_ccd;
         foreach ($arr_seat_member_ccd as $key => $val) {
             $arr_seat_all_ccd[$key] = $val;
         }
 
-        $data = $this->lectureRoomModel->findLectureRoomUnit($lr_code, $lr_unit_code);
+        $data = $this->lectureRoomRegistModel->findLectureRoomUnit($lr_code, $lr_unit_code);
         if (empty($data) === true) {
             show_error('조회된 좌석 정보가 없습니다.');
         }
 
-        $seat_data = $this->lectureRoomModel->listLectureRoomUnitForRegister($lr_unit_code);
+        $seat_data = $this->lectureRoomRegistModel->listLectureRoomUnitForRegister($lr_unit_code);
         $this->load->view("pass/lecture_room/regist/unit_seat_modal", [
             'method' => $method,
             'lr_code' => $lr_code,
@@ -287,7 +287,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lectureRoomModel->modifyLectureRoomUnitSeat($this->_reqP(null, false));
+        $result = $this->lectureRoomRegistModel->modifyLectureRoomUnitSeat($this->_reqP(null, false));
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -316,9 +316,9 @@ class Regist extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->lectureRoomModel->listLectureRoomLog(true, $arr_condition);
+        $count = $this->lectureRoomRegistModel->listLectureRoomLog(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->lectureRoomModel->listLectureRoomLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            $list = $this->lectureRoomRegistModel->listLectureRoomLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -347,7 +347,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lectureRoomModel->removeFile($this->_reqP('lr_code'), $this->_reqP('lr_unit_code'));
+        $result = $this->lectureRoomRegistModel->removeFile($this->_reqP('lr_code'), $this->_reqP('lr_unit_code'));
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 }

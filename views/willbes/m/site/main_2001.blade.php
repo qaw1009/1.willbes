@@ -3,7 +3,13 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both mb20">
-        <div class="MainTxtBnr">적중! 적중! 또 다시 적중! <strong>신광은경찰팀</strong>은 곧, <strong>합격</strong>입니다.</div>
+        <div class="gosibtns bdb-none mt0 pb10">
+            <ul>
+                <li><a href="{{ app_url('/m/classroom/pass/index', 'www') }}">내강의실</a></li>
+                <li><a href="{{ front_url('/lecture/index/pattern/free') }}">무료특강(보강)</a></li>
+                <li><a href="{{ front_url('/support/notice/show?board_idx=259726') }}">신규강의안내</a></li>
+            </ul>
+        </div>
         {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
         <div class="MainFixBnr c_both">
             <ul>
@@ -13,6 +19,8 @@
         </div>
         {!! banner('M_메인_03', 'MainBnrSlider', $__cfg['SiteCode'], '0') !!}
         <div class="line">-</div>
+        {!! banner('M_메인서브1', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
+
         {{--
         <div class="lineTabs lecProfTabs c_both">
             <div class="MainCampusTabs">
@@ -92,6 +100,9 @@
         <div class="buttonTabs noticeTabs c_both">
             {{-- board include --}}
             @include('willbes.m.site.main_partial.board')
+        </div>
+        <div class="bannerSec01">
+            {!! banner('M_메인서브2', null, $__cfg['SiteCode'], '0') !!}
         </div>
         <div class="appPlayer c_both">
             {{-- app player include --}}

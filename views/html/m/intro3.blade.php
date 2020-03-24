@@ -4,89 +4,51 @@
 <!-- Container -->
 <div id="Container" class="Container NGR c_both"> 
     <div class="introBox3 NSK"> 
-        <div>
-            <h4><img src="{{ img_url('m/intro/icon_cop.png') }}" alt="신광은경찰"> 신광은 경찰</h4>
-            <ul>
-                <li><a href="#none">일반경찰</a></li>
-                <li><a href="#none">경행경채</a></li>
-                <li><a href="#none">경찰승진</a></li>
-                <li><a href="#none">해양경찰</a></li>
-                <li><a href="#none">해양경찰특채</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4><img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="공무원"> 공무원</h4>
-            <ul>
-                <li><a href="#none">무료인강</a></li>
-                <li><a href="#none">9급</a></li>
-                <li><a href="#none">7급 PSAT</a></li>
-                <li><a href="#none">7급</a></li>
-                <li><a href="#none">세무직</a></li>
-                <li><a href="#none">법원직</a></li>
-                <li><a href="#none">소방직</a></li>
-                <li><a href="#none">기술직</a></li>
-                <li><a href="#none">군무원</a></li>
-                <li><a href="#none">부사관</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4><img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="고등고시"> 고등고시</h4>
-            <ul>
-                <li><a href="#none">5급행정</a></li>
-                <li><a href="#none">국립외교원</a></li>
-                <li><a href="#none">PSAT</a></li>
-                <li><a href="#none">5급헌법</a></li>
-                <li><a href="#none">법원행시</a></li>
-                <li><a href="#none">변호사시험</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4><img src="{{ img_url('m/intro/icon_job.png') }}" alt="자격증"> 자격증</h4>
-            <ul>
-                <li><a href="#none">공인노무사</a></li>
-                <li><a href="#none">감정평가사</a></li>
-                <li><a href="#none">변리사</a></li>
-                <li><a href="#none">세무사</a></li>
-                <li><a href="#none">관세사</a></li>
-                <li><a href="#none">스포츠지도사</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4><img src="{{ img_url('m/intro/icon_job.png') }}" alt="기타 자격증"> 기타 자격증</h4>
-            <ul>
-                <li><a href="#none">소프트웨어자산관리사</a></li>
-                <li><a href="#none">전기(산업)기사</a></li>
-                <li><a href="#none">소방(산업)기사</a></li>
-                <li><a href="#none">한국사능력시험</a></li>
-                <li><a href="#none">경제교육지도사</a></li>
-                <li><a href="#none">진로직업체험지도사</a></li>
-            </ul>
-        </div>
-        <div class="w50">
-            <h4><img src="{{ img_url('m/intro/icon_spo.png') }}" alt="경찰간부"> 경찰간부</h4>
-            <ul>
-                <li><a href="#none">경찰간부온라인</a></li>
-            </ul>
-        </div>
-        <div class="w50">
-            <h4><img src="{{ img_url('m/intro/icon_willpass.png') }}" alt="취업"> 취업</h4>
-            <ul>
-                <li><a href="#none">공기업</a></li>
-            </ul>
-        </div>
-        <div class="w50">
-            <h4><img src="{{ img_url('m/intro/icon_lang.png') }}" alt="어학"> 어학</h4>
-            <ul>
-                <li><a href="#none">G-TELP</a></li>
-            </ul>
-        </div>
-        <div class="w50">
-            <h4><img src="{{ img_url('m/intro/icon_njob.gif') }}" alt="N잡"> N잡</h4>
-            <ul>
-                <li><a href="#none">e커머스</a></li>
-            </ul>
+        <div class="menuGroup">
+            <div>
+                <h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4>
+                <ul class="bigType">
+                    <li><a href="https://police.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3001" target="_blank">신광은경찰</a></li>
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3094" target="_blank">5급행정</a></li>
+                    <li><a href="https://pass.willbes.net/m/lecture/index/pattern/only?search_order=regist&cate_code=3019" target="_blank">공무원</a></li>
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3095" target="_blank">국립외교원</a></li>
+                    <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309002" target="_blank">공인노무사</a></li>
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3096" target="_blank">PSAT</a></li>
+                    <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309003" target="_blank">감정평가사</a></li>
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3097" target="_blank">5급헌법</a></li>
+                    <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309004" target="_blank">변리사</a></li>
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3098" target="_blank">법원행시</a></li>
+                    <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309006" target="_blank">세무사</a></li>                    
+                    <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3099" target="_blank">변호사시험</a></li>
+                    <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309005" target="_blank">관세사</a></li>
+                    <li><a href="https://spo.willbes.net/m/lecture/index/pattern/only" target="_blank">경찰간부(간부후보생)</a></li>
+                    <li><a href="https://lang.willbes.net/m/lecture/index/pattern/only" target="_blank">어학</a></li>
+                    <li><a href="https://work.willbes.net/m/lecture/index/pattern/only" target="_blank">취업</a></li>
+                    <li><a href="https://njob.willbes.net/m/home/index" target="_blank">N잡 e-커머스 <span>●</span></a></li>
+                </ul>
+                <div class="etc">
+                    <a href="#none">기타자격증 <span>+</span></a>
+                    <ul class="smallType">
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309001" target="_blank">스포츠지도사</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=310101" target="_blank">소프트웨어자산관리사</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=308902" target="_blank">전기(산업)기사</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=308901" target="_blank">소방(산업)기사</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309101" target="_blank">한국사능력시험</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=310102" target="_blank">경제교육지도사</a></li>
+                        <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=310103" target="_blank">진로직업체험지도사</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- End Container -->
+
+<script type="text/javascript">
+$(function() {
+    $(".etc > a").click(function(){
+        $(".smallType").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
+    })
+});
+</script>
 @stop

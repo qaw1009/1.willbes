@@ -529,13 +529,36 @@ body.memBody #Footer {
     vertical-align: middle;
     margin-right:5px;
 }
-.introBox3 {text-align: center;}
-.introBox3 h4 { padding:12px 0; font-size:14px; background: #f6f6f6;}
-.introBox3 ul {padding-left:10px; margin-top: 10px;}
-.introBox3 li {display: inline; float:left}
-.introBox3 li a { display: inline-block; padding:10px 20px; border-radius: 4px; border:1px solid #e4e4e4; margin:0 8px 8px 0}
-.introBox3 ul:after {content:""; display:block; clear:both}
+.introBox3 {background-color: #181818; padding:20px;}
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
+.introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}
+.introBox3 h4 img {width:24px; vertical-align: middle; margin-right:5px; }
+.introBox3 .bigType li {display: inline; float:left; width:50%;}
+.introBox3 .bigType li a {display:block; padding:10px; border:1px solid #808080; margin:0 8px 8px 0; font-size:14px; color:#fff;}
+.introBox3 .bigType li a:active,
+.introBox3 .bigType li a:hover {background: #ffff00; border:1px solid #ffff00; color:#000}
+.introBox3 .bigType li a span {font-size: 8px; vertical-align: text-top; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+        @keyframes upDown{
+        from{color:#fff}
+        50%{color:#ff0000}
+        to{color:#fff}
+        }
+        @-webkit-keyframes upDown{
+        from{color:#fff}
+        50%{color:#ff0000}
+        to{color:#fff}
+        }
+.introBox3 .bigType li:nth-of-type(even) a {margin-right:0;}
+.introBox3 .bigType li:last-child {width:100%}
+.introBox3 .bigType li:last-child a {margin-right:0}
+.introBox3 .bigType:after {content:""; display:block; clear:both}
+.introBox3 .etc > a {display:block; padding:10px; border:1px solid #808080; font-size:14px; color:#fff; margin-bottom:10px}
+.introBox3 .etc > a:hover {background: #ffff00; border:1px solid #ffff00; color:#000}
+.introBox3 .etc > a span {display: inline-block; float:right; width: 12px; height: 12px; line-height: 12px; border-radius: 6px; background-color: #fff; color:#000; text-align: center;}
+.introBox3 .etc .smallType {display: none;}
+.introBox3 .etc li{display: inline; float:left; width:50%;}
+.introBox3 .etc li a {color:#fff; border-bottom: 1px solid #fff; margin-left:10px; margin-bottom:10px; padding-bottom:3px; display: inline-block;}
+.introBox3 .etc ul:after {content:""; display:block; clear:both}
 
 
 
@@ -1059,6 +1082,12 @@ body.memBody #Footer {
     width: 30%;
     color: #959595;
     text-align: right;
+}
+
+/* 배너영역 */
+.bannerSec01 {margin:20px 0}
+.bannerSec01 img {
+    width: 100%;
 }
 
 /* appPlayer */

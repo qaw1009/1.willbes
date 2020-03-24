@@ -128,6 +128,7 @@
                 serverSide: true,
                 scrollX : true,
                 scrollY : 410,
+                scrollCollapse : true,
                 responsive : false,
                 dom: 'T<"clear">rtip',
                 paging : false,

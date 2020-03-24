@@ -1223,7 +1223,7 @@ class ClassroomFModel extends WB_Model
     {
         $column = "
             ml.ProdCode AS ProdCodeMaster, prlr.ProdCode AS ProdCodeSub, o.OrderIdx, op.OrderProdIdx,
-            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.NowLrrursIdx, lrurs.SeatNo AS MemSeatNo
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo
         ";
         $from = "
             FROM {$this->_table['order']} AS o
@@ -1242,7 +1242,7 @@ class ClassroomFModel extends WB_Model
                 lrsr.LrUnitCode = lu.LrUnitCode AND
                 lrsr.SeatStatusCcd IN ('728001', '728002') AND 
                 lrsr.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.NowLrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
         ";
         $arr_condition = [
             'EQ' => [
@@ -1291,7 +1291,7 @@ class ClassroomFModel extends WB_Model
             op.ProdCode,
             mem.MemId, mem.MemName, memInfo.Tel1, fn_dec(memInfo.Tel2Enc) AS Tel2, memInfo.Tel3,
             p.ProdName, pSub.ProdName AS ProdNameSub, op.RealPayPrice, o.CompleteDatm, sc.CcdName AS PayStatusName,
-            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrsrIdx, lrsr.NowLrrursIdx, lrurs.SeatNo AS MemSeatNo,
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrsrIdx, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo,
             lu.SeatMapFileRoute, lu.SeatMapFileName,
             fn_order_sub_product_data(op.OrderProdIdx) AS OrderSubProdData,
             ( SELECT GROUP_CONCAT(LrsrIdx) AS LrsrIdxData FROM {$this->_table['lectureroom_seat_register']} AS a
@@ -1323,7 +1323,7 @@ class ClassroomFModel extends WB_Model
                 lrsr.LrUnitCode = lu.LrUnitCode AND
                 lrsr.SeatStatusCcd IN ('728001', '728002') AND 
                 lrsr.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.NowLrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
@@ -1360,7 +1360,7 @@ class ClassroomFModel extends WB_Model
         $where_sub = $this->_conn->makeWhere($arr_condition_sub);
         $where_sub = $where_sub->getMakeWhere(false);
 
-        $column = "lrurs.LrrursIdx, lrurs.SeatNo, lrurs.SeatStatusCcd, sc.CcdName AS SeatStatusName, lrsr.NowLrrursIdx, lrsr.MemIdx, lrsr.MemName";
+        $column = "lrurs.LrrursIdx, lrurs.SeatNo, lrurs.SeatStatusCcd, sc.CcdName AS SeatStatusName, lrsr.MemLrrursIdx, lrsr.MemIdx, lrsr.MemName";
         $from = "
             FROM {$this->_table['product_r_lectureroom']} AS prl
             INNER JOIN {$this->_table['lectureroom']} AS lr ON prl.LrCode = lr.LrCode AND lr.IsStatus = 'Y' AND lr.IsUse = 'Y'
@@ -1368,46 +1368,38 @@ class ClassroomFModel extends WB_Model
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lu.LrUnitCode = lrurs.LrUnitCode AND lrurs.IsStatus = 'Y'
             INNER JOIN {$this->_table['sys_code']} AS sc ON lrurs.SeatStatusCcd = sc.Ccd
             LEFT JOIN (
-                SELECT a.NowLrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
+                SELECT a.LrrursIdx as MemLrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
                 FROM (
-                    SELECT NowLrrursIdx, MemIdx, OrderProdIdx
+                    SELECT LrrursIdx, MemIdx, OrderProdIdx
                     FROM {$this->_table['lectureroom_seat_register']}
-                    {$where_sub} GROUP BY NowLrrursIdx
+                    {$where_sub} GROUP BY LrrursIdx
                 ) AS a
                 INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001'
                 INNER JOIN {$this->_table['member']} AS c ON a.MemIdx = c.MemIdx
-            ) AS lrsr ON lrurs.LrrursIdx = lrsr.NowLrrursIdx
+            ) AS lrsr ON lrurs.LrrursIdx = lrsr.MemLrrursIdx
         ";
         $order_by = $this->_conn->makeOrderBy(['lrurs.LrrursIdx' =>'ASC'])->getMakeOrderBy();
+        /*echo '<pre>'.'SELECT ' . $column . $from . $where . $order_by.'</pre>';
+        exit;*/
         return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
      * 회원좌석정보 데이터 조회
      * @param $arr_condition
-     * @return array
+     * @return mixed
      */
     public function getLectureRoomSeatRegister($arr_condition)
     {
-        $column = 'lrsr.LrsrIdx, lrsr.NowLrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub';
+        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub';
         $from = "
             FROM {$this->_table['lectureroom_seat_register']} AS lrsr
-            INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.NowLrrursIdx = lrrurs.LrrursIdx
+            INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['lrsr.LrsrIdx' =>'ASC'])->getMakeOrderBy();
-        $result = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
-
-        $data = [];
-        if (empty($result) === false) {
-            foreach ($result as $key => $row) {
-                $data[$row['ProdCodeSub']]['LrsrIdx'] = $row['LrsrIdx'];
-                $data[$row['ProdCodeSub']]['NowLrrursIdx'] = $row['NowLrrursIdx'];
-                $data[$row['ProdCodeSub']]['SeatNo'] = $row['SeatNo'];
-            }
-        }
-        return $data;
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
@@ -1425,8 +1417,8 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if ($chk_lecture_room_unit !== true) {
-                throw new \Exception($chk_lecture_room_unit);
+            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+                throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
             switch (element('pkg_yn',$form_data)) {
@@ -1445,8 +1437,12 @@ class ClassroomFModel extends WB_Model
             }
 
             //강의실회차좌석정보 상태 업데이트
-            if ($this->_modifyLectureRoomUnitSeatForAdd(element('lr_rurs_idx', $form_data)) !== true) {
+            if ($this->_modifyLectureRoomUnitSeatForAdd(element('lr_rurs_idx', $form_data), '727002', 'add') !== true) {
                 throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+            }
+
+            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+                throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -1471,8 +1467,8 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if ($chk_lecture_room_unit !== true) {
-                throw new \Exception($chk_lecture_room_unit);
+            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+                throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
             $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_rurs_idx', $form_data));
@@ -1482,6 +1478,10 @@ class ClassroomFModel extends WB_Model
 
             if ($this->_modifyLectureRoomSeatForMove($form_data, $old_register_data) !== true) {
                 throw new \Exception('좌석이동에 실패했습니다.');
+            }
+
+            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+                throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -1496,7 +1496,7 @@ class ClassroomFModel extends WB_Model
      * 좌석선택기간 체크, 좌석수 체크
      * @param $lr_code
      * @param $lr_unit_code
-     * @return bool|string
+     * @return array|string
      */
     private function _getLectureRoomUnitForValidate($lr_code, $lr_unit_code)
     {
@@ -1536,7 +1536,6 @@ class ClassroomFModel extends WB_Model
                 ) AS lrrurs ON lrrurs.LrUnitCode = lrru.LrUnitCode
             ";
             $result = $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
-
             if (empty($result) === true) {
                 throw new \Exception('조회된 강의실 정보가 없습니다.');
             }
@@ -1551,9 +1550,35 @@ class ClassroomFModel extends WB_Model
             }
 
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return [
+                'ret_cd' => false,
+                'ret_msg' => $e->getMessage()
+            ];
         }
-        return true;
+        return [
+            'ret_cd' => true,
+            'data' => $result
+        ];
+    }
+
+    /**
+     * 사용중인 좌석 조회
+     * @param $lr_rurs_idx
+     * @return array
+     */
+    private function _findLectureRoomSeatRegister($lr_rurs_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'lrsr.LrrursIdx' => $lr_rurs_idx,
+                'lrsr.IsStatus' => 'Y',
+                'lrrurs.IsStatus' => 'Y'
+            ],
+            'IN' => [
+                'lrsr.SeatStatusCcd' => ['728001','728002']
+            ]
+        ];
+        return $this->getLectureRoomSeatRegister($arr_condition);
     }
 
     /**
@@ -1576,26 +1601,6 @@ class ClassroomFModel extends WB_Model
     }
 
     /**
-     * 사용중인 좌석 조회
-     * @param $lr_rurs_idx
-     * @return array
-     */
-    private function _findLectureRoomSeatRegister($lr_rurs_idx)
-    {
-        $arr_condition = [
-            'EQ' => [
-                'lrsr.NowLrrursIdx' => $lr_rurs_idx,
-                'lrsr.IsStatus' => 'Y',
-                'lrrurs.IsStatus' => 'Y'
-            ],
-            'IN' => [
-                'lrsr.SeatStatusCcd' => ['728001','728002']
-            ]
-        ];
-        return $this->getLectureRoomSeatRegister($arr_condition);
-    }
-
-    /**
      * 단과반 강의실 좌석 배정
      * @param array $form_data
      * @return array|bool
@@ -1611,7 +1616,7 @@ class ClassroomFModel extends WB_Model
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'OrderIdx' => element('order_idx', $form_data),
                 'OrderProdIdx' => element('order_prod_idx', $form_data),
-                'NowLrrursIdx' => element('lr_rurs_idx', $form_data),
+                'LrrursIdx' => element('lr_rurs_idx', $form_data),
                 'SeatStatusCcd' => '728001',
                 'IsStatus' => 'Y',
                 'RegMemDatm' => date('Y-m-d H:i:s'),
@@ -1668,7 +1673,7 @@ class ClassroomFModel extends WB_Model
                     'MemIdx' => $this->session->userdata('mem_idx'),
                     'OrderIdx' => element('order_idx', $form_data),
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
-                    'NowLrrursIdx' => element('lr_rurs_idx', $form_data),
+                    'LrrursIdx' => element('lr_rurs_idx', $form_data),
                     'SeatStatusCcd' => '728001',
                     'IsStatus' => 'Y',
                     'RegMemDatm' => date('Y-m-d H:i:s'),
@@ -1706,17 +1711,28 @@ class ClassroomFModel extends WB_Model
     /**
      * 강의실 좌석 상태 수정 (신규등록)
      * @param $lr_rurs_idx
+     * @param $status_ccd
+     * @param $mode
      * @return array|bool
      */
-    private function _modifyLectureRoomUnitSeatForAdd($lr_rurs_idx)
+    private function _modifyLectureRoomUnitSeatForAdd($lr_rurs_idx, $status_ccd, $mode)
     {
         try {
             $input_data = [
-                'SeatStatusCcd' => '727002',
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'RegMemDatm' => date('Y-m-d H:i:s')
+                'SeatStatusCcd' => $status_ccd
             ];
-            $this->_conn->set($input_data)->where('LrrursIdx', $lr_rurs_idx)->where('SeatStatusCcd','727001');
+            if ($mode == 'add') {
+                $input_data = array_merge($input_data, [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'RegMemDatm' => date('Y-m-d H:i:s')
+                ]);
+            } else {
+                $input_data = array_merge($input_data, [
+                    'MemIdx' => '',
+                    'RegMemDatm' => ''
+                ]);
+            }
+            $this->_conn->set($input_data)->where('LrrursIdx', $lr_rurs_idx);
             if($this->_conn->update($this->_table['lectureroom_r_unit_r_seat'])=== false) {
                 throw new \Exception('강의실회차 좌석상태 수정에 실패했습니다.');
             }
@@ -1737,6 +1753,31 @@ class ClassroomFModel extends WB_Model
     private function _modifyLectureRoomSeatForMove($form_data = [], $old_register_data = [])
     {
         try {
+            //기존 좌석식별자 취득
+            $old_lrrurs_idx = $old_register_data[0]['LrrursIdx'];
+
+            //좌석정보 수정 (미사용)
+            if ($this->_modifyLectureRoomUnitSeatForAdd($old_lrrurs_idx, '727001', 'del') !== true) {
+                throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+            }
+
+            //좌석정보 수정 (사용)
+            if ($this->_modifyLectureRoomUnitSeatForAdd(element('lr_rurs_idx', $form_data), '727002', 'add') !== true) {
+                throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+            }
+
+            //등록
+            if ($this->_modifyLectureRoomSeatRegister($form_data) !== true) {
+                throw new \Exception('강의실 좌석 이동에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+    /*private function _modifyLectureRoomSeatForMove($form_data = [], $old_register_data = [])
+    {
+        try {
             //기존 회원 좌석 상태 수정 (퇴실)
             $mod_data = [];
             $now_lrrurs_idx = [];
@@ -1748,7 +1789,7 @@ class ClassroomFModel extends WB_Model
                     'UpdMemDatm' => date("Y-m-d H:i:s")
                 );
 
-                $now_lrrurs_idx[$row['NowLrrursIdx']] = $row['NowLrrursIdx'];
+                $now_lrrurs_idx[$row['LrrursIdx']] = $row['LrrursIdx'];
             }
             if($mod_data) $this->_conn->update_batch($this->_table['lectureroom_seat_register'], $mod_data, 'LrsrIdx');
             if ($this->_conn->trans_status() === false) {
@@ -1779,79 +1820,94 @@ class ClassroomFModel extends WB_Model
             return error_result($e);
         }
         return true;
-    }
+    }*/
 
     /**
      * 좌석이동 / 로그저장
      * @param array $form_data
-     * @param $old_register_data
      * @return array|bool
      */
-    private function _modifyLectureRoomSeatRegister($form_data = [], $old_register_data)
+    private function _modifyLectureRoomSeatRegister($form_data = [])
     {
         try {
             switch (element('pkg_yn',$form_data)) {
                 case 'N' :
-                    $arr_prod_code_sub = element('prod_code_sub', $form_data);
+                    $arr_lrsr_idx = element('old_lrsr_idx', $form_data);
                     break;
                 case "Y" :
-                    $arr_prod_code_sub = element('arr_prod_code_sub', $form_data);
+                    $arr_lrsr_idx = element('old_arr_lrsr_idx', $form_data);
                     break;
                 default :
                     throw new \Exception('정보가 올바르지 않습니다.');
             }
 
-            if (empty($arr_prod_code_sub) === true) {
+            if (empty($arr_lrsr_idx) === true) {
                 throw new \Exception('fail');
             }
-            $_arr_prod_code_sub = array_flip(explode(',',$arr_prod_code_sub));
+            $_arr_lrsr_idx = explode(',',$arr_lrsr_idx);
 
-            $input_data = [];
-            foreach ($old_register_data as $key => $row) {
-                if (isset($_arr_prod_code_sub[$key]) === true) {
-                    $input_data[] = [
-                        'ProdCode' => element('prod_code', $form_data),
-                        'ProdCodeSub' => $key,
-                        'LrCode' => element('lr_code', $form_data),
-                        'LrUnitCode' => element('lr_unit_code', $form_data),
-                        'MemIdx' => $this->session->userdata('mem_idx'),
-                        'OrderIdx' => element('order_idx', $form_data),
-                        'OrderProdIdx' => element('order_prod_idx', $form_data),
-                        'NowLrrursIdx' => element('lr_rurs_idx', $form_data),
-                        'OldLrrursIdx' => $row['NowLrrursIdx'],
-                        'SeatStatusCcd' => '728002',
-                        'IsStatus' => 'Y',
-                        'RegMemDatm' => date('Y-m-d H:i:s'),
-                        'RegMemIp' => $this->input->ip_address(),
-                    ];
-                }
+            $mod_data = [
+                'LrCode' => element('lr_code', $form_data),
+                'LrUnitCode' => element('lr_unit_code', $form_data),
+                'LrrursIdx' => element('lr_rurs_idx', $form_data),
+                'UpdMemIdx' => $this->session->userdata('mem_idx'),
+                'UpdMemDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($mod_data)->where_in('LrsrIdx', $_arr_lrsr_idx);
+            if($this->_conn->update($this->_table['lectureroom_seat_register'])=== false) {
+                throw new \Exception('강의실회차 좌석 수정에 실패했습니다.');
             }
-            
-            foreach ($input_data as $key => $data) {
-                if($this->_conn->set($data)->insert($this->_table['lectureroom_seat_register']) === false) {
-                    throw new \Exception('fail');
-                }
 
-                $lrsr_idx = $this->_conn->insert_id();
-                $log_data = [
+            $log_data = [];
+            foreach ($_arr_lrsr_idx as $key => $val) {
+                $log_data[] = [
                     'LrCode' => element('lr_code', $form_data),
                     'LrUnitCode' => element('lr_unit_code', $form_data),
                     'SeatStatusCcd' => '728002',
                     'LrrursIdx' => element('lr_rurs_idx', $form_data),
-                    'LrsrIdx' => $lrsr_idx,
+                    'LrsrIdx' => $val,
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
                     'MemIdx' => $this->session->userdata('mem_idx'),
                     'BeforeSeatNo' => element('old_seat_no', $form_data),
                     'AfterSeatNo' => element('seat_num', $form_data)
                 ];
+            }
+            if($log_data) $this->_conn->insert_batch($this->_table['lectureroom_log'], $log_data);
 
-                if($this->_conn->set($log_data)->insert($this->_table['lectureroom_log']) === false) {
-                    throw new \Exception('log fail');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('로그저장에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 친구톡,문자 발송
+     * @param $unit_data
+     * @return bool
+     */
+    private function _sendKakao($unit_data)
+    {
+        try {
+            //문자발송
+            if($unit_data['data']['IsSmsUse'] == 'Y' && empty($unit_data['data']['SendTel']) === false ) { // 문자발송
+                $this->load->loadModels(['crm/smsF']);
+                if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone')
+                        , $unit_data['data']['SmsContent']
+                        , $unit_data['data']['SendTel']
+                        , null
+                        , 'KFT'
+                        , null
+                        , null) === false) {
+                    throw new \Exception('sms fail');
                 }
             }
         } catch (\Exception $e) {
             return error_result($e);
         }
+
         return true;
     }
 }

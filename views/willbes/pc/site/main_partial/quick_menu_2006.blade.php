@@ -39,13 +39,11 @@
         <img src="https://static.willbes.net/public/images/promotion/main/309002_sky01.png">
     </a>
 </div>
-{{--
 <div>
     <a href="javascript:popupOpen('{{front_app_url('/classroom/home/gotoHanlim?site=2&param=nomu20200309', 'www')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');">
         <img src="https://static.willbes.net/public/images/promotion/main/309002_sky02.png">
     </a>
 </div>
---}}
     @endif
 @endif
 <div>

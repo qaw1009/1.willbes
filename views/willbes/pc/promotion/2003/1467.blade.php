@@ -87,8 +87,9 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_top.gif" usemap="#Map1467" title="기미진T-PASS" border="0" />
             <map name="Map1467" id="Map1467">
-                <area shape="rect" coords="767,813,981,911" href="#lec_go" alt="수강신청">
-            </map>
+                <area shape="rect" coords="302,864,472,920" href="#lec_go" alt="수강신청"/>
+                <area shape="rect" coords="754,864,924,920" href="#lec_go" alt="수강신청" />
+            </map>             
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -104,16 +105,15 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_03.jpg" title="기특한국어커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/1ㄹ2/1467_03.jpg" title="기특한국어커리큘럼" />
         </div>
 
         <div class="evtCtnsBox evt04" id="lec_go">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1467_04.gif" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
-			<map name="Map_1074_lec2">
-            <map name="Map_1074_lec2">
-                <area shape="rect" coords="802,692,988,780" href="javascript:go_PassLecture('162541');">                
-            </map>
-            </map>
+            <map name="Map_1074_lec2" id="Map_1074_lec2">
+                <area shape="rect" coords="807,642,966,688" href="javascript:go_PassLecture('163552');">
+                <area shape="rect" coords="808,764,966,810" href="javascript:go_PassLecture('162541');">
+            </map>                        
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />

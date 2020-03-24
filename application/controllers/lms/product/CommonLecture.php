@@ -13,7 +13,7 @@ Class CommonLecture extends \app\controllers\BaseController
                                     ,'product/off/offLecture'
                                     ,'product/off/offPackageAdmin'
                                     ,'product/on/commonLecture'
-                                    ,'pass/lectureRoom');
+                                    ,'pass/lectureRoomRegist');
 
     protected $helpers = array('download');
 

@@ -156,9 +156,9 @@ Class OffLecture extends CommonLecture
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
         //마스터강의실정보
-        $lecture_room_info['master'] = $this->lectureRoomModel->listLectureRoom();
+        $lecture_room_info['master'] = $this->lectureRoomRegistModel->listLectureRoom();
         //회차정보
-        $lecture_room_info['unit'] = $this->lectureRoomModel->listLectureRoomUnit();
+        $lecture_room_info['unit'] = $this->lectureRoomRegistModel->listLectureRoomUnit();
 
         $prodcode = null;
         $data = null;
@@ -195,7 +195,7 @@ Class OffLecture extends CommonLecture
             $data_sublecture = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
             $data_lecturedate = $this->offLectureModel->findLectureDateListForModify($prodcode);
 
-            $data_product_lecture_room = $this->lectureRoomModel->findProductLectureRoom($prodcode);
+            $data_product_lecture_room = $this->lectureRoomRegistModel->findProductLectureRoom($prodcode);
         }
 
         $this->load->view('product/off/offlecture/create',[

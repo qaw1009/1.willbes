@@ -1,7 +1,7 @@
 <!-- aside -->
 <div id="aside">
     <ul class="NG">
-        <h1><a href="{{front_url('/home/index')}}"><img src="{{img_url('m/main/logo.png')}}" alt="logo"/></a></h1>
+        <h1><a href="{{app_url('/m/home/index', 'www')}}"><img src="{{img_url('m/main/logo.png')}}" alt="logo"/></a></h1>
         @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
             <h2 class="NGEB">
                 <img src="{{ img_url('m/main/icon_' . $__cfg['SiteGroupId'] . '.png') }}" class="clogo" alt=""/>

@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once  APPPATH . 'models/lms/pass/BaseReadingRoomModel.php';
-
-class LectureRoomModel extends WB_Model
+class LectureRoomRegistModel extends WB_Model
 {
     protected $_table = [
         'lectureroom' => 'lms_lectureroom',
@@ -376,18 +374,18 @@ class LectureRoomModel extends WB_Model
                 INNER JOIN {$this->_table['sys_code']} AS sc ON rs.SeatStatusCcd = sc.Ccd
                 
                 LEFT JOIN (
-                    SELECT a.NowLrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
+                    SELECT a.LrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
                     FROM (
-                        SELECT NowLrrursIdx, MemIdx, OrderProdIdx
+                        SELECT LrrursIdx, MemIdx, OrderProdIdx
                         FROM {$this->_table['lectureroom_seat_register']}
                         WHERE LrUnitCode = '{$lr_unit_code}'
                         AND SeatStatusCcd IN ('728001','728002')
                         AND IsStatus = 'Y'
-                        GROUP BY NowLrrursIdx
+                        GROUP BY LrrursIdx
                     ) AS a
                     INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001'
                     INNER JOIN {$this->_table['member']} AS c ON a.MemIdx = c.MemIdx
-                ) AS lrsr ON rs.LrrursIdx = lrsr.NowLrrursIdx
+                ) AS lrsr ON rs.LrrursIdx = lrsr.LrrursIdx
                 WHERE rs.LrUnitCode = '{$lr_unit_code}' AND rs.IsStatus = 'Y'
             ) AS b ON a.LrUnitCode = b.LrUnitCode
             ORDER BY b.LrrursIdx ASC

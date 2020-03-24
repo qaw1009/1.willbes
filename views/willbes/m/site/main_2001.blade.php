@@ -5,7 +5,7 @@
     <div id="Container" class="Container NG c_both mb20">
         <div class="gosibtns bdb-none mt0 pb10">
             <ul>
-                <li><a href="{{ app_url('/m/classroom/pass/index', 'www') }}">내강의실</a></li>
+                <li><a href="{{ app_url('/m/classroom/on/list/ongoing', 'www') }}">내강의실</a></li>
                 <li><a href="{{ front_url('/lecture/index/pattern/free') }}">무료특강(보강)</a></li>
                 <li><a href="{{ front_url('/support/notice/show?board_idx=259726') }}">신규강의안내</a></li>
             </ul>

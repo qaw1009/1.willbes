@@ -17,6 +17,7 @@
         <div>
             <a href="{{ site_url('/home/html/m/loading') }}" target="_blank">로딩화면</a>
             <a href="{{ site_url('/home/html/m/intro2') }}" target="_blank">인트로</a>
+            <a href="{{ site_url('/home/html/m/intro3') }}" target="_blank">인트로-2020</a>
             <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
             <a href="{{ site_url('/home/html/m/main2') }}" target="_blank">메인-고등고시</a>

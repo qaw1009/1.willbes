@@ -99,7 +99,7 @@
                                                 <li>
                                                     [좌석번호]
                                                     <span class="tx-red">
-                                                        {!! ((empty($listLectureRoom[$row['ProdCode']]['NowLrrursIdx']) === true) ?
+                                                        {!! ((empty($listLectureRoom[$row['ProdCode']]['LrrursIdx']) === true) ?
                                                         "<span class='tx-red'>미선택</span>" : "<span>{$listLectureRoom[$row['ProdCode']]['MemSeatNo']}</span>") !!}
                                                     </span>
                                                 </li>
@@ -225,7 +225,7 @@
                                                             <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }}</span></li>
                                                             <li>[좌석번호]
                                                                 <span class="tx-red">
-                                                                    {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['NowLrrursIdx']) === true) ?
+                                                                    {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?
                                                                     "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
                                                                 </span>
                                                             </li>

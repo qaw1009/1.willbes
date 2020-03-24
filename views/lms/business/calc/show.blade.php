@@ -282,6 +282,7 @@
                 serverSide: true,
                 scrollX : true,
                 scrollY : 600,
+                scrollCollapse : true,
                 responsive : false,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }

@@ -100,7 +100,7 @@ class Off extends \app\controllers\FrontController
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
         //강의실좌석정보[단과]
-        $listLectureRoom = $this->_getLectureRoom($leclist, 'List');
+        $listLectureRoom = null;
 
         // 학원 종합반 목록 읽어오기
         $cond_arr = [
@@ -125,7 +125,7 @@ class Off extends \app\controllers\FrontController
         }
 
         //강의실좌석정보[종합반]
-        $pkgLectureRoom = $this->_getLectureRoom($pkglist, 'Pkg');
+        $pkgLectureRoom = null;
 
         return $this->load->view('/classroom/off/off_ongoing', [
             'sitegroup_arr' => $sitegroup_arr,

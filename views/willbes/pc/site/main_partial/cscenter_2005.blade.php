@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <div class="nTit">학원 고객센터</div>
-                    <div class="nNumber tx-color">1544-1881 ▶ 3</div>
+                    <div class="nNumber tx-color">1544-1881 <span>▶</span> 3</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
                         평일/주말: 08시~ 18시<br/>

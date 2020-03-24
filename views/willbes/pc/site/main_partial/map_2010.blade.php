@@ -104,7 +104,7 @@
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1881</span>
+                                            <span class="tx-color">1544-1881 ▶ 3</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1881</span>
+                                            <span class="tx-color">1544-1881 ▶ 3</span>
                                         </div>
                                     </div>
                                 </dt>

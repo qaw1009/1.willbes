@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once  APPPATH . 'models/lms/pass/BaseReadingRoomModel.php';
-
 class LectureRoomRegistModel extends WB_Model
 {
     protected $_table = [

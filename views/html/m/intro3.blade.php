@@ -27,7 +27,7 @@
                     <li><a href="https://njob.willbes.net/m/home/index" target="_blank">N잡 e-커머스 <span>●</span></a></li>
                 </ul>
                 <div class="etc">
-                    <a href="#none">기타자격증 <span>+</span></a>
+                    <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>
                     <ul class="smallType">
                         <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309001" target="_blank">스포츠지도사</a></li>
                         <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=310101" target="_blank">소프트웨어자산관리사</a></li>
@@ -48,6 +48,15 @@
 $(function() {
     $(".etc > a").click(function(){
         $(".smallType").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
+        if($(this).hasClass('btnMainToggle')) {
+            var $toggle_span = $(this).find('span');
+            switch ($toggle_span.html()) {
+                case '+' : $toggle_span.html('-');
+                    break;
+                case '-' : $toggle_span.html('+');
+                    break;
+            }
+        }
     })
 });
 </script>

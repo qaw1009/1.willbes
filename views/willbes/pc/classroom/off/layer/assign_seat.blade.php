@@ -69,7 +69,7 @@
             <input type="hidden" name="order_prod_idx" value="{{ element('orderprodidx', $form_data) }}" title="주문상품식별자">
             <input type="hidden" name="prod_code" value="{{ element('prod_code', $form_data) }}" title="상품코드">
             <input type="hidden" name="prod_code_sub" value="{{ element('prod_code_sub', $form_data) }}" title="서브상품코드">
-            <input type="hidden" name="arr_prod_code_sub" value="{{ (empty($lec_data['OrderSubProdCodes']) === true) ? '' : implode(',', $lec_data['OrderSubProdCodes']) }}" title="종합반서브상품코드">
+            <input type="hidden" name="arr_prod_code_sub" value="{{ (empty($lec_data['OrderSubProdCodes']) === true) ? '' : $lec_data['OrderSubProdCodes'] }}" title="종합반서브상품코드">
             <input type="hidden" name="lr_code" value="{{ element('lr_code', $form_data) }}" title="강의실코드">
             <input type="hidden" name="lr_unit_code" value="{{ element('lr_unit_code', $form_data) }}" title="강의실회차코드">
             <input type="hidden" name="old_lrsr_idx" value="{{ $lec_data['LrsrIdx'] }}" title="단일 강의실회차회원좌석식별자">

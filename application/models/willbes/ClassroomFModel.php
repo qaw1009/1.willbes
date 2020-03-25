@@ -1293,7 +1293,19 @@ class ClassroomFModel extends WB_Model
             p.ProdName, pSub.ProdName AS ProdNameSub, op.RealPayPrice, o.CompleteDatm, sc.CcdName AS PayStatusName,
             prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrsrIdx, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo,
             lu.SeatMapFileRoute, lu.SeatMapFileName,
-            fn_order_sub_product_data(op.OrderProdIdx) AS OrderSubProdData,
+            ( 
+            SELECT GROUP_CONCAT(b.ProdCode) AS ProdCodeSub
+            FROM (
+                SELECT c.ProdCodeSub
+                FROM {$this->_table['product']} AS a
+                #INNER JOIN {$this->_table['product_r_sublecture']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
+                INNER JOIN {$this->_table['my_lecture']} AS c ON a.ProdCode = c.ProdCode AND c.OrderIdx = '".element('orderidx', $form_data)."' AND c.OrderProdIdx = '".element('orderprodidx', $form_data)."'
+                WHERE a.ProdCode = '".element('prod_code', $form_data)."'
+            ) AS a
+            INNER JOIN {$this->_table['product_r_lectureroom']} AS b ON a.ProdCodeSub = b.ProdCode
+                AND b.LrCode = '".element('lr_code', $form_data)."' AND b.LrUnitCode = '".element('lr_unit_code', $form_data)."'
+                AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+            ) AS OrderSubProdCodes,            
             ( SELECT GROUP_CONCAT(LrsrIdx) AS LrsrIdxData FROM {$this->_table['lectureroom_seat_register']} AS a
                 WHERE o.OrderIdx = a.OrderIdx AND op.OrderProdIdx = a.OrderProdIdx AND a.MemIdx = op.MemIdx 
                 AND a.LrCode = lr.LrCode AND a.LrUnitCode = lu.LrUnitCode AND a.SeatStatusCcd IN ('728001', '728002') AND a.IsStatus = 'Y'
@@ -1618,6 +1630,7 @@ class ClassroomFModel extends WB_Model
                 'OrderProdIdx' => element('order_prod_idx', $form_data),
                 'LrrursIdx' => element('lr_rurs_idx', $form_data),
                 'SeatStatusCcd' => '728001',
+                'OrderNum' => 1,
                 'IsStatus' => 'Y',
                 'RegMemDatm' => date('Y-m-d H:i:s'),
                 'RegMemIp' => $this->input->ip_address(),
@@ -1664,6 +1677,7 @@ class ClassroomFModel extends WB_Model
             $_arr_prod_code_sub = explode(',',$arr_prod_code_sub);
 
             $input_data = [];
+            $order_num = 1;
             foreach ($_arr_prod_code_sub as $key => $val) {
                 $input_data[] = [
                     'ProdCode' => element('prod_code', $form_data),
@@ -1675,10 +1689,12 @@ class ClassroomFModel extends WB_Model
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
                     'LrrursIdx' => element('lr_rurs_idx', $form_data),
                     'SeatStatusCcd' => '728001',
+                    'OrderNum' => $order_num,
                     'IsStatus' => 'Y',
                     'RegMemDatm' => date('Y-m-d H:i:s'),
                     'RegMemIp' => $this->input->ip_address(),
                 ];
+                $order_num++;
             }
 
             foreach ($input_data as $key => $data) {

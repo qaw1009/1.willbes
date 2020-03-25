@@ -95,7 +95,7 @@
                                                                         (($listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] <= date('Y-m-d')
                                                                         && date('Y-m-d') <= $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
                                                 </li>
-                                                <li>[강의실명] <span>{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }}</span></li>
+                                                <li>[강의실명] <span>{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }} | {{ $listLectureRoom[$row['ProdCode']]['UnitName'] }}</span></li>
                                                 <li>
                                                     [좌석번호]
                                                     <span class="tx-red">
@@ -222,7 +222,7 @@
                                                                         (($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] <= date('Y-m-d')
                                                                         && date('Y-m-d') <= $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
                                                             </li>
-                                                            <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }}</span></li>
+                                                            <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }} | {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['UnitName'] }}</span></li>
                                                             <li>[좌석번호]
                                                                 <span class="tx-red">
                                                                     {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?

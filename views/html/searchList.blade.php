@@ -3,6 +3,7 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
+    {{--
     <div class="Section widthAuto">
         <div class="onSearch NGR">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
@@ -60,8 +61,8 @@
             </ul>
         </h3>
     </div> 
-
-    <div class="Section widthAuto">
+    --}}
+    <div class="Section widthAuto mt50">
         <div class="onSearch onSearchBig NG">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
             <label for="onsearch"><button title="검색">검색</button></label>
@@ -89,7 +90,7 @@
         {{-- 검색 결과 있을 경우--}}
         <div class="searchList">
             <ul class="searchListTap NG">
-                <li><a href="#tab01" class="on">단강좌 [<span>20</span>]</a></li>
+                <li><a href="#tab01" class="on">단과강좌 [<span>20</span>]</a></li>
                 <li><a href="#tab02">무료강좌 [<span>6</span>]</a></li>
                 <li><a href="#tab03">추천패키지 [<span>5</span>]</a></li>
                 <li><a href="#tab04">선택패키지 [<span>5</span>]</a></li>
@@ -97,7 +98,7 @@
             <div class="searchView">
                 <div id="tab01">
                     <div>
-                        <h4 class="NG">단강좌</h4>
+                        <h4 class="NG">단과강좌</h4>
                         <ul>
                             <li>
                                 <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>                                

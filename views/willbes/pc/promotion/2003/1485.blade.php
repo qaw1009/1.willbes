@@ -68,7 +68,7 @@
         <div class="evtCtnsBox Wb_06">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1485_06.jpg" alt="교수별 수강신청" usemap="#Map1485b" border="0"  >
             <map name="Map1485b" id="Map1485b">
-                <area shape="rect" coords="782,139,963,194" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/147124" target="_blank" />
+                <area shape="rect" coords="782,139,963,194" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/152001" target="_blank" />
                 <area shape="rect" coords="783,381,961,434" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/159031" target="_blank" />
                 <area shape="rect" coords="783,621,961,674" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/159035" target="_blank" />
                 <area shape="rect" coords="782,861,964,915" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/159036" target="_blank" />

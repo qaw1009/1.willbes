@@ -72,7 +72,7 @@
                     <th rowspan="2" class="valign-middle">강사명</th>
                     <th rowspan="2" class="valign-middle">대분류</th>
                     <th rowspan="2" class="valign-middle">캠퍼스</th>
-                    <th rowspan="2" class="valign-middle">단과반명</th>
+                    <th rowspan="2" class="valign-middle" style="max-width: 160px;">단과반명</th>
                     <th rowspan="2" class="valign-middle">개강일</th>
                     <th rowspan="2" class="valign-middle">종강일</th>
                     <th rowspan="2" class="valign-middle">횟수</th>

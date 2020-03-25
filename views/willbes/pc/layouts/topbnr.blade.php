@@ -101,7 +101,9 @@
     {{-- 공무원 법원직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3035.gif') }}" alt="법원직"></a>
+            <a href="#none">
+                <img src="https://static.willbes.net/public//images/willbes/gosi/banner/M_TopBan200325.gif" alt="필기 합격자">
+            </a>
         </div>
     </div>
 @endif

@@ -32,6 +32,7 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}" class="ml40">이아림</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">안성호</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51011/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이섬가</a>
                     </li>
                     <li>
                         <span>[한국사]</span>

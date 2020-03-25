@@ -12057,7 +12057,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .searchListTap:after {content:""; display:block; clear:both}
 
 .searchView {clear: both;}
-.searchView h4 {padding:0 20px; font-size:16px; color:#000}
+.searchView h4 {font-size:16px; color:#000}
 .searchView ul {margin:0 20px; margin-bottom:20px; border-bottom:1px solid #ccc}
 .searchView li {border-bottom:1px solid #f6f6f6; padding:15px;}
 .searchView li a {font-size:16px; color:#0000cc; text-decoration: underline;}

@@ -127,7 +127,6 @@
             // 날짜검색 디폴트 셋팅
             if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
-                $search_form.find('input[name="search_start_date"]').val('2020-01-01');
             }
 
             // 교수, 캠퍼스 자동 변경

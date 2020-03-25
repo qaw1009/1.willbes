@@ -52,11 +52,11 @@
                     <th width="30">NO</th>
                     <th class="rowspan" width="220">계약명</th>
                     <th width="220">광고명</th>
-                    <th width="100">광고형태</th>
+                    <th width="110">광고형태</th>
                     <!--th width="110">접속사이트</th//-->
                     <th width="70">이동URL</th>
                     <th width="70">집행금액</th>
-                    <th width="70">클릭수</th>
+                    <th width="70">접속수</th>
                     <th width="70">회원가입수</th>
                     <th width="70">장바구니수</th>
                     <th width="70">결제건수</th>

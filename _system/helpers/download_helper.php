@@ -134,7 +134,7 @@ if ( ! function_exists('force_download'))
 
 		// Generate the server headers
 		header('Content-Type: '.$mime);
-		header('Content-Disposition: attachment; filename="'.rawurlencode($filename).'"; filename*="UTF-8\'\''.rawurlencode($filename).'"');
+		header('Content-Disposition: attachment; filename="'.$filename.'"');
 		header('Expires: 0');
 		header('Content-Transfer-Encoding: binary');
 		header('Content-Length: '.$filesize);

@@ -276,7 +276,7 @@ class LectureRoomRegistModel extends WB_Model
         ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_r_unit_r_seat']} AS RS 
             WHERE RS.LrUnitCode = LU.LrUnitCode AND RS.IsStatus = 'Y' AND RS.SeatStatusCcd IN (727002, 727003)) AS UseSeatCnt
         ,(SELECT COUNT(*) AS cnt FROM {$this->_table['lectureroom_seat_register']} AS SR
-            WHERE SR.LrCode = lu.LrCode AND SR.LrUnitCode = lu.LrUnitCode AND SR.IsStatus = 'Y' AND SR.SeatStatusCcd IN (728001,728002)) AS UseMemberSeatCnt
+            WHERE SR.LrCode = lu.LrCode AND SR.LrUnitCode = lu.LrUnitCode AND SR.IsStatus = 'Y' AND SR.OrderNum = '1' AND SR.SeatStatusCcd IN (728001,728002)) AS UseMemberSeatCnt
         ";
         $from = "
             FROM {$this->_table['lectureroom']} AS lr

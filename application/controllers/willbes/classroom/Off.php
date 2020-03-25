@@ -389,12 +389,6 @@ class Off extends \app\controllers\FrontController
             return $this->json_error('조회된 강의실 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
-        //서브상품 추출
-        $lec_data['OrderSubProdCodes'] = [];
-        if (empty($lec_data['OrderSubProdData']) === false) {
-            $lec_data['OrderSubProdCodes'] = array_pluck(json_decode($lec_data['OrderSubProdData'], true), 'ProdCode');
-        }
-
         $seat_data = $this->classroomFModel->getLectureRoomSeat($form_data);
         if (empty($seat_data) === true) {
             return $this->json_error('조회된 강의실 좌석 정보가 없습니다.', _HTTP_NOT_FOUND);

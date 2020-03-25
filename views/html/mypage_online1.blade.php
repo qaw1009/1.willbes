@@ -148,7 +148,7 @@
                 <ul class="tabWrap tabDepthPass">
                     <li><a href="#Mypagetab1" class="on">단강좌 (3)</a></li>
                     <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
-                    <li><a href="#Mypagetab3">PASS강좌</a></li>
+                    <li><a href="#Mypagetab3">PASS강좌 (2)</a></li>
                     <li><a href="#Mypagetab4">관리자부여강좌 (2)</a></li>
                 </ul>
                 <div class="tabBox">
@@ -326,8 +326,6 @@
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
@@ -344,8 +342,6 @@
                                                 <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>

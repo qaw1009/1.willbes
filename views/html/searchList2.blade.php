@@ -1,0 +1,309 @@
+@extends('willbes.pc.layouts.master')
+
+@section('content')
+<!-- Container -->
+<div id="Container" class="subContainer widthAuto c_both">
+    <div class="Section widthAuto mt50">
+        <div class="onSearch onSearchBig NG">
+            <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+            <label for="onsearch"><button title="검색">검색</button></label>
+            {{--
+            <span>
+                <input type="checkbox" id="research" name="" value="" />
+                <label for="research">결과 내 재검색</label>
+            </span>
+            --}}
+            <div><strong>신광은</strong>에 대한 강좌 검색결과 <strong>30</strong>건</div>
+        </div>
+    </div>
+
+    <div class="widthAuto p_re">
+        {{-- 검색 결과 없을 경우--}}
+        <div class="searchZero">
+            <span><img src="{{ img_url('common/icon_search_big.png')}}"> </span>
+            <h3 class="NG">검색 결과가 없습니다.</h3>
+            <p>검색어를 바르게 입력하셨는지 확인해주세요.<br>
+            검색어의 띄어쓰기를 다르게 해보세요.<br>
+            검색어를 줄이거나 다른 단어로 다시 검색해 보세요.
+            </p>
+        </div>
+
+        {{-- 검색 결과 있을 경우--}}
+        <div class="searchList">
+            <ul class="searchListTap NG">
+                <li><a href="#tab01" class="on">단과강좌 [<span>20</span>]</a></li>
+                <li><a href="#tab02">무료강좌 [<span>6</span>]</a></li>
+                <li><a href="#tab03">추천패키지 [<span>5</span>]</a></li>
+                <li><a href="#tab04">선택패키지 [<span>5</span>]</a></li>
+            </ul>
+            <div class="searchView">
+                <div id="tab01">
+                    <div>
+                        <h4 class="NG">단과강좌</h4>
+                        <ul>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>                                
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl>
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 50,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="tab02">
+                    <div>
+                        <h4 class="NG">무료강좌</h4>
+                        <ul>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">2019년 1차대비 신광은 형사소송법 동형 전범위모의고사</a>
+                                <dl class="w-info">
+                                    <dt>예비순환(기본강의) · 형사소송법 · 신광은 · 강의수 : 1강 · 수강기간 : 7일 · </dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 0원</dt>
+                                </dl> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="tab03">
+                    <div>
+                        <h4 class="NG">추천패키지</h4>
+                        <ul>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="tab04">
+                    <div>
+                        <h4 class="NG">선택패키지</h4>
+                        <ul>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                            <li>
+                                <a href="#none" class="NG">제이슨코치 소방체력 종합 풀패키지(12개월) </a>
+                                <dl class="w-info">
+                                    <dt>개강일 : 2019년 7월 · 수강기간 : 100일 ·</dt>
+                                    <dt class="NSK">
+                                        <span class="nBox n1">무제한</span>
+                                    </dt>
+                                    <dt> · 수강료 : [PC+모바일] 70,000원</dt>
+                                </dl> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+</div>
+<!-- End Container -->
+@stop

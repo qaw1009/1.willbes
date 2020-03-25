@@ -9,6 +9,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">검색</label>
                     <div class="col-md-4 form-inline">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -30,22 +31,30 @@
                     <div class="col-md-4 form-inline">
                         <select class="form-control" id="search_pay_status" name="search_pay_status">
                             <option value="">결제상태</option>
-                            {{-- TODO
-                            @foreach($arr_search_data['pay_status'] as $key => $val)
+                            @foreach($arr_pay_status_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">통합검색</label>
+                    <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_value" name="search_value">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                    </div>
+                    <div class="col-md-8">
+                        <p class="form-control-static">회원명, 아이디, 휴대폰번호 검색 가능</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
                     </div>
                     <div class="col-md-5">
-                        <p class="form-control-static">회원명, 아이디, 연락처, 주문번호, 상품명(코드) 검색 가능</p>
+                        <p class="form-control-static">주문번호, 상품명(코드) 검색 가능</p>
                     </div>
                 </div>
 
@@ -53,8 +62,8 @@
                     <label class="control-label col-md-1">기간검색</label>
                     <div class="col-md-10 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="{{-- TODO --}}">결제완료일</option>
-                            <option value="{{-- TODO --}}">환불완료일</option>
+                            <option value="paid">결제완료일</option>
+                            <option value="refund">환불완료일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -116,7 +125,6 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
@@ -134,28 +142,42 @@
                     }
                 },
                 columns: [
-                    {{-- TODO --}}
-                    {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
+                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" name="selectMember" class="target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                            {{--
-                            var _url = '{{ site_url('/pay/order/show/') }}' + row.NowOrderIdx + '/';
-                            return '<a href="'+ _url +'" target="_blank" class="btn-show-order"><u>'+data+'</u></span>';
-                            --}}
-                            return '';
-                        }},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<p style="color: #bdbdbd">[변경]</p>';
+                            return row.OrderNo + '<Br>' + row.SiteName;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.MemName + '<Br>' + '('+row.MemId+')';
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.Tel1 + '-' + row.Tel2 + '-' + row.Tel3;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '['+row.LearnPatternCcdName+'] ' + row.ProdName;
+                        }},
+                    {'data' : 'PayStatusCcdName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var ret = row.RealPayPrice;
+                            ret += (row.tRefundPrice > 0) ? ' (' + row.tRefundPrice + ')' : '';
+                            return ret;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var ret = row.CompleteDatm;
+                            ret += (row.RefundDatm > 0) ? ' (' + row.RefundDatm + ')' : '';
+                            return ret;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a class="blue cs-pointer btn-member-seat-modify" ' +
+                                'data-learn-pattern="' + row.LearnPatternCcd + '"' +
+                                'data-order-idx="' + row.OrderIdx + '"' +
+                                'data-lr-code="' + row.LrCode + '"' +
+                                'data-lr-unit-code="' + row.LrUnitCode+ '"' +
+                                '>[변경]</a>';
                         }},
                 ]
             });
@@ -163,6 +185,18 @@
             // 전체 체크박스 이벤트
             $("#all_check").on('change', function(event) {
                 $("input[name=selectMember]").prop('checked', $("#all_check").prop("checked"));
+            });
+
+            $list_table.on('click', '.btn-member-seat-modify', function() {
+                var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + '?order_idx=' + $(this).data('order-idx');
+                if ($(this).data("learn-pattern") == '615007') {
+                    location.href = "{{ site_url('/pass/lectureRoom/issue/showMemberSeat/') }}" + param;
+                } else {
+                    $('.btn-member-seat-modify').setLayer({
+                        "url": "{{ site_url('/pass/lectureRoom/issue/modifyMemberSeatModal/') }}" + param,
+                        "width": "1200",
+                    });
+                }
             });
         });
     </script>

@@ -1618,6 +1618,7 @@ class ClassroomFModel extends WB_Model
                 'OrderProdIdx' => element('order_prod_idx', $form_data),
                 'LrrursIdx' => element('lr_rurs_idx', $form_data),
                 'SeatStatusCcd' => '728001',
+                'OrderNum' => 1,
                 'IsStatus' => 'Y',
                 'RegMemDatm' => date('Y-m-d H:i:s'),
                 'RegMemIp' => $this->input->ip_address(),
@@ -1664,6 +1665,7 @@ class ClassroomFModel extends WB_Model
             $_arr_prod_code_sub = explode(',',$arr_prod_code_sub);
 
             $input_data = [];
+            $order_num = 1;
             foreach ($_arr_prod_code_sub as $key => $val) {
                 $input_data[] = [
                     'ProdCode' => element('prod_code', $form_data),
@@ -1675,10 +1677,12 @@ class ClassroomFModel extends WB_Model
                     'OrderProdIdx' => element('order_prod_idx', $form_data),
                     'LrrursIdx' => element('lr_rurs_idx', $form_data),
                     'SeatStatusCcd' => '728001',
+                    'OrderNum' => $order_num,
                     'IsStatus' => 'Y',
                     'RegMemDatm' => date('Y-m-d H:i:s'),
                     'RegMemIp' => $this->input->ip_address(),
                 ];
+                $order_num++;
             }
 
             foreach ($input_data as $key => $data) {

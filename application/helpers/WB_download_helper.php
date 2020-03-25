@@ -81,7 +81,7 @@ if (!function_exists('rename_download')) {
                 $filename = implode('.', $x);
             } else if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'] && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT']))) {
                 // Edge 특정버전, 안드로이드 파이어폭스 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
-                $add_disposition = 'filename*=utf-8\'\''. rawurlencode($filename) .';';
+                $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
             }
         }
 
@@ -98,8 +98,7 @@ if (!function_exists('rename_download')) {
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-//        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; ' . $add_disposition);
-        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'";');
+        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"' . $add_disposition);
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: '.$filesize);

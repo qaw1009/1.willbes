@@ -73,17 +73,10 @@ if (!function_exists('rename_download')) {
          *
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
-        print_r($_SERVER['HTTP_USER_AGENT']); exit; //디버그
-        $add_disposition = '';
-        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
+        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT']))
         {
-            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
-                $x[count($x) - 1] = strtoupper($extension);
-                $filename = implode('.', $x);
-            } else if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'] && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT']))) {
-                // Edge 특정버전, 안드로이드 파이어폭스 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
-                $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
-            }
+            $x[count($x) - 1] = strtoupper($extension);
+            $filename = implode('.', $x);
         }
 
         if (($fp = @fopen($filepath, 'rb')) === false) {
@@ -97,9 +90,7 @@ if (!function_exists('rename_download')) {
 
         // Generate the server headers
         header('Content-Type: '.$mime);
-//        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
-//        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"' . $add_disposition);
+        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: '.$filesize);

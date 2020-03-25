@@ -148,6 +148,8 @@
                 <ul class="tabWrap tabDepthPass">
                     <li><a href="#Mypagetab1" class="on">단강좌 (3)</a></li>
                     <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
+                    <li><a href="#Mypagetab3">PASS강좌 (2)</a></li>
+                    <li><a href="#Mypagetab4">관리자부여강좌 (2)</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Mypagetab1" class="tabLink">
@@ -209,7 +211,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                                        <td colspan="2" class="tx-center">강좌 정보가 없습니다.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -288,7 +290,69 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                                        <td colspan="2" class="tx-center">강좌 정보가 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="Paging">
+                                <ul>
+                                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">10</a></li>
+                                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Mypagetab3" class="tabLink">
+                        <div class="willbes-Lec-Table pt20 NG d_block">
+                            <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                                <colgroup>
+                                    <col style="width: 820px;">
+                                    <col style="width: 120px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-data tx-left pl10">
+                                            <div class="w-tit">
+                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-answer">
+                                            <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                            <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-data tx-left pl10">
+                                            <div class="w-tit">
+                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-answer">
+                                            <a href="#none"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="tx-center">강좌 정보가 없습니다.</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -3,65 +3,6 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
-    {{--
-    <div class="Section widthAuto">
-        <div class="onSearch NGR">
-            <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
-            <label for="onsearch"><button title="검색">검색</button></label>
-        </div>
-    </div>
-
-    <div class="Menu widthAuto NSK c_both">
-        <h3>
-            <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">일반경찰</li>
-            </ul>
-            <ul class="menu-List">
-                <li>
-                    <a href="#none">교수진소개</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">PASS</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li class="Tit">PASS</li>
-                            <li><a href="#none">0원 PASS</a></li>
-                            <li><a href="#none">6개월 PASS</a></li>
-                            <li><a href="#none">12개월 PASS</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">패키지</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                        <li class="Tit">패키지</li>
-                            <li><a href="#none">추천 패키지</a></li>
-                            <li><a href="#none">선택 패키지</a></li>
-                            <li><a href="#none">DIY 패키지</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#none">단강좌</a>
-                </li>
-                <li>
-                    <a href="#none">무료강좌</a>
-                </li>
-                <li>
-                    <a href="#none">수험정보</a>
-                </li>
-                <li>
-                    <a href="#none">이벤트</a>
-                </li>
-                <li class="police">
-                    <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
-                </li>
-            </ul>
-        </h3>
-    </div> 
-    --}}
     <div class="Section widthAuto mt50">
         <div class="onSearch onSearchBig NG">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />

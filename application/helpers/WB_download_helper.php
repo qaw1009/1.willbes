@@ -73,10 +73,17 @@ if (!function_exists('rename_download')) {
          *
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
-        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT']))
+        print_r($_SERVER['HTTP_USER_AGENT']); exit; //디버그
+        $add_disposition = '';
+//        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT']))
+        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
-            $x[count($x) - 1] = strtoupper($extension);
-            $filename = implode('.', $x);
+            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
+                $x[count($x) - 1] = strtoupper($extension);
+                $filename = implode('.', $x);
+            } else if(preg_match('/IOS*/', $_SERVER['HTTP_USER_AGENT'])) {
+                $add_disposition = 'filename*=utf-8\'\''. rawurlencode($filename) .';';
+            }
         }
 
         if (($fp = @fopen($filepath, 'rb')) === false) {
@@ -91,8 +98,8 @@ if (!function_exists('rename_download')) {
         // Generate the server headers
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
-        //header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; filename*=utf-8\'\'"'. rawurlencode($filename) .'";');
+//        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
+        header('Content-Disposition: attachment; filename="'. iconv('UTF-8','EUC-KR',$filename) .'"; ' . $add_disposition);
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: '.$filesize);

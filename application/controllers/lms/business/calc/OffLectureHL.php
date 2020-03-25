@@ -1,0 +1,542 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class OffLectureHL extends \app\controllers\BaseController
+{
+    protected $models = array('pay/hanlimCalc', 'product/base/professor', 'sys/site', 'sys/category', 'sys/code', 'sys/excelDownLog');
+    protected $helpers = array();
+    protected $_group_ccd = [];
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->_group_ccd = $this->hanlimCalcModel->_group_ccd;
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 인덱스
+     */
+    public function index()
+    {
+        // 사이트탭 조회
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
+
+        // 경찰, 공무원학원 사이트코드 제외
+        $arr_site_code = array_filter($arr_site_code, function($key) {
+            return !in_array($key, ['2002', '2004']);
+        }, ARRAY_FILTER_USE_KEY);
+
+        // 디폴트 사이트코드
+        $def_site_code = key($arr_site_code);
+        
+        // 교수 조회
+        $arr_professor = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
+
+        // 캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        $this->load->view('business/calc/hanlim_index', [
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code,
+            'arr_professor' => $arr_professor,
+            'arr_campus' => $arr_campus
+        ]);
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 조회
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $search_site_code = $this->_reqP('search_site_code');
+        $search_date_type = $this->_reqP('search_date_type');
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
+        $count = 0;
+        $list = [];
+
+        if (empty($search_site_code) === false && empty($search_date_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
+            $arr_condition = $this->_getListConditions();
+            $order_by = $this->_getListOrderBy();
+            $list = $this->hanlimCalcModel->listCalcHist($search_date_type, $search_start_date, $search_end_date, $search_site_code, false, $arr_condition, null, null, $order_by);
+            $count = count($list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 조회조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        return [
+            'EQ' => [
+                'TA.ProfIdx' => $this->_reqP('search_prof_idx'),
+                'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
+            ],
+            'ORG' => [
+                'EQ' => [
+                    'TA.ProdCode' => $this->_reqP('search_prod_value')
+                ],
+                'LKB' => [
+                    'P.ProdName' => $this->_reqP('search_prod_value')
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 정렬기준 리턴
+     * @param bool $is_excel
+     * @return array
+     */
+    private function _getListOrderBy($is_excel = false)
+    {
+        $sd_prefix = $is_excel === false ? 'PL.' : '';
+        $ta_prefix = $is_excel === false ? 'TA.' : '';
+
+        return [$sd_prefix . 'StudyStartDate' => 'desc', $ta_prefix . 'ProfIdx' => 'asc', $ta_prefix . 'ProdCode' => 'asc'];
+    }
+
+    /**
+     * 학원 강사료정산 엑셀다운로드
+     */
+    public function excel()
+    {
+        $search_site_code = $this->_reqP('search_site_code');
+        $search_date_type = $this->_reqP('search_date_type');
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
+
+        if (empty($search_site_code) === true || empty($search_date_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 정산 데이터 조회
+        $arr_condition = $this->_getListConditions();
+        $order_by = $this->_getListOrderBy(true);
+        $results = $this->hanlimCalcModel->listCalcHist($search_date_type, $search_start_date, $search_end_date, $search_site_code, 'excel', $arr_condition, null, null, $order_by);
+
+        // 엑셀 설정
+        $last_query = $this->hanlimCalcModel->getLastQuery();
+        $file_name = '한림전용_학원강사료정산_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $headers = ['정산일자', '강사명', '대분류', '캠퍼스', '상품코드', '단과반명', '개강일', '종강일', '횟수', '단과반수강인원', '종합반수강인원', '총수강인원'
+            , '수수료공제전수강총액', '수수료공제후수강총액', '추가공제액', '강사료정산대상금액', '단과반강사료비율', '종합반강사료비율', '강사료', '원천세', '기타추가공제액', '강사료지급액'];
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        if ($this->excel->exportExcel($file_name, $results, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 상세보기
+     * @param array $params [전달파라미터 (교수식별자/상품코드/강사료정산이력식별자)
+     */
+    public function show($params = [])
+    {
+        $prof_idx = element('0', $params);
+        $prod_code = element('1', $params);
+        $pch_idx = element('2', $params);
+
+        if (empty($prof_idx) === true || empty($prod_code) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 정산 이력 조회
+        $data = $this->hanlimCalcModel->findCalcHist($prof_idx, $prod_code, $pch_idx);
+
+        // 정산이력 여부
+        $is_calc_hist = empty($data['PchIdx']) === false ? true : false;
+
+        // 공제내역 조회
+        if ($is_calc_hist === true) {
+            $deduct_data = $this->hanlimCalcModel->getCalcDeduct($data['PchIdx']);
+            $data['DeductData'] = element('N', $deduct_data);
+            $data['EtcDeductData'] = element('E', $deduct_data);
+        }
+
+        // 정산대상 주문조회
+        $order_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code);
+
+        // 정산대상 주문 합계금액 조회
+        $sum_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, true);
+
+        // 정산대상 기준 결제일시 (최종 결제일시)
+        $base_datm = array_get($order_data, '0.CompleteDatm');
+
+        $this->load->view('business/calc/hanlim_show', [
+            'data' => $data,
+            'order_data' => $order_data,
+            'sum_data' => $sum_data,
+            'prof_idx' => $prof_idx,
+            'prod_code' => $prod_code,
+            'pch_idx' => $pch_idx,
+            'base_datm' => $base_datm,
+            'is_calc_hist' => $is_calc_hist
+        ]);
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 주문목록 엑셀다운로드
+     */
+    public function orderListExcel()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        // 필수 파라미터
+        $prof_idx = $this->_reqP('prof_idx');
+        $prod_code = $this->_reqP('prod_code');
+        $base_datm = $this->_reqP('base_datm');
+
+        if (empty($prof_idx) === true || empty($prod_code) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        if (empty($base_datm) === true) {
+            show_alert('정산대상이 없습니다.', 'back');
+        }
+
+        // 정산대상 주문조회
+        $results = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, false, true, $base_datm);
+
+        // 엑셀 설정
+        $last_query = $this->hanlimCalcModel->getLastQuery();
+        $file_name = '한림전용_학원강사료정산_주문목록_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $headers = ['주문번호', '결제일', '회원명', '회원아이디', '연락처', '신용카드', '현금', '실시간계좌이체', '무통장입금', '결제루트', '결제수수료율', '결제수수료'
+            , '환불금액', '환불완료일', '합계', '상품구분', '종합반구분', '종합반명', '비고', '추가할인', '세트할인'];
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        if ($this->excel->exportExcel($file_name, $results, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 이력 저장
+     */
+    public function store()
+    {
+        $rules = [
+            ['field' => 'prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'base_datm', 'label' => '기준일시', 'rules' => 'trim|required'],
+            ['field' => 'pay_cnt', 'label' => '결제건수', 'rules' => 'trim|required|integer'],
+            ['field' => 'refund_cnt', 'label' => '환불건수', 'rules' => 'trim|required|integer'],
+            ['field' => 'mem_cnt', 'label' => '수강생수', 'rules' => 'trim|required|integer'],
+            ['field' => 'lec_mem_cnt', 'label' => '단과반수강생수', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_mem_cnt', 'label' => '종합반수강생수', 'rules' => 'trim|required|integer'],
+            ['field' => 'pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'refund_price', 'label' => '환불금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'pre_price', 'label' => '수수료공제전수강총액', 'rules' => 'trim|required|integer|greater_than[0]'],
+            ['field' => 'pg_fee_price', 'label' => '수수료', 'rules' => 'trim|required|integer'],
+            ['field' => 'remain_price', 'label' => '수수료공제후수강총액', 'rules' => 'trim|required|integer'],
+            ['field' => 'lec_remain_price', 'label' => '단과반수수료공제후금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_remain_price', 'label' => '종합반수수료공제후금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'lec_deduct_price', 'label' => '단과반추가공제액', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_deduct_price', 'label' => '종합반추가공제액', 'rules' => 'trim|required|integer'],
+            ['field' => 'lec_target_price', 'label' => '단과반강사료산정대상금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_target_price', 'label' => '종합반강사료산정대상금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'lec_calc_rate', 'label' => '단과반강사료비율', 'rules' => 'trim|required'],
+            ['field' => 'pack_calc_rate', 'label' => '종합반강사료비율', 'rules' => 'trim|required'],
+            ['field' => 'lec_calc_price', 'label' => '단과반정산기준계산금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'pack_calc_price', 'label' => '종합반정산기준계산금액', 'rules' => 'trim|required|integer'],
+            ['field' => 'tax_rate', 'label' => '원천세율', 'rules' => 'trim|required|numeric'],
+            ['field' => 'tax_price', 'label' => '원천세', 'rules' => 'trim|required'],
+            ['field' => 'etc_deduct_price', 'label' => '기타추가공제액', 'rules' => 'trim|required|integer'],
+            ['field' => 'final_calc_price', 'label' => '강사료지급액', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->hanlimCalcModel->addCalcHist($this->_reqP(null, false));
+
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 한림전용 학원 강사료정산 산출 데이터 엑셀다운로드
+     */
+    public function calcExcel()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        // 필수 파라미터
+        $prof_idx = $this->_reqP('prof_idx');
+        $prod_code = $this->_reqP('prod_code');
+        $pch_idx = $this->_reqP('pch_idx');
+
+        if (empty($prof_idx) === true || empty($prod_code) === true || empty($pch_idx) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 정산 이력 조회
+        $data = $this->hanlimCalcModel->findCalcHist($prof_idx, $prod_code, $pch_idx);
+        if (empty($data) === true) {
+            show_alert('강사료정산 이력 데이터가 없습니다.', 'back');
+        }
+        $last_query = $this->hanlimCalcModel->getLastQuery();   // 엑셀다운로드 로그 데이터
+
+        // 정산대상 주문조회
+        $order_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, false, false, $data['BaseDatm']);
+        if (empty($order_data) === true) {
+            show_alert('강사료정산 주문 데이터가 없습니다.', 'back');
+        }
+
+        // 공제내역 조회
+        $deduct_data = $this->hanlimCalcModel->getCalcDeduct($data['PchIdx']);
+        $data['DeductData'] = element('N', $deduct_data, []);
+        $data['EtcDeductData'] = element('E', $deduct_data, []);
+
+        // export excel
+        $file_name = '한림전용_학원강사료정산_강사료산출_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        try {
+            $price_format = '#,##0';
+            $gray_color = 'EFEFEF';
+            $red_color = 'FF0000';
+            $order_cnt = count($order_data);
+            $deduct_cnt = count($data['DeductData']);
+            $etc_deduct_cnt = count($data['EtcDeductData']);
+            $arr_calc_type = ['R' => '비율(%)', 'T' => '시급(원)', 'P' => '월정액(원)'];
+
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $spreadsheet->getDefaultStyle()->getFont()->setName('Arial');
+            $spreadsheet->getDefaultStyle()->getFont()->setSize(10);
+
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setTitle('강사료');
+            $sheet->getDefaultColumnDimension()->setWidth('15');
+            $sheet->getColumnDimension('A')->setWidth('20');
+            $sheet->getColumnDimension('B')->setWidth('10');    // No
+            $sheet->getColumnDimension('C')->setWidth('25');    // 주문번호
+            $sheet->getColumnDimension('M')->setWidth('20');    // 환불완료일
+            $sheet->getColumnDimension('P')->setWidth('30');    // 종합반명
+            $sheet->getColumnDimension('Q')->setWidth('30');    // 비고
+            $sheet->getColumnDimension('S')->setWidth('30');    // 세트할인
+            
+            // style
+            $style_bg_gray = ['fill' => ['fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, 'startColor' => ['rgb' => $gray_color]]];
+            $style_red = ['font' => ['color' => ['rgb' => $red_color]]];
+            $style_bold = ['font' => ['bold' => true]];
+            $style_left = ['alignment' => ['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT]];
+            $style_middle = ['alignment' => ['vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER]];
+            $style_border = ['borders' => ['allBorders' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN]]];
+
+            // 강사명 ~ 수강생수
+            $sheet->setCellValue('A1', '강사명')->setCellValue('B1', $data['wProfName'])->mergeCells('B1:S1');
+            $sheet->setCellValue('A2', '기간')->setCellValue('B2', $data['StudyStartDate'] . ' ~ ' . $data['StudyEndDate'])->mergeCells('B2:S2');
+            $sheet->setCellValue('A3', '횟수')->setCellValue('B3', $data['Amount'])->mergeCells('B3:S3');
+            $sheet->setCellValue('A4', '강의')->setCellValue('B4', $data['ProdName'])->mergeCells('B4:S4');
+            $cell_value = number_format($data['MemCnt']) . '명 = 단과반 (' . number_format($data['LecMemCnt']) . '명) + 종합반 (' . number_format($data['PackMemCnt']) . '명)';
+            $sheet->setCellValue('A5', '수강생수')->setCellValue('B5', $cell_value)->mergeCells('B5:S5');
+            $sheet->getStyle('B1:S5')->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+
+            // 수강내역
+            $last_row_num = $sheet->getHighestRow() + 1;
+            $merge_cell = 'A' . $last_row_num . ':A' . ($last_row_num + $order_cnt + 1);
+            $sheet->setCellValue('A6', '수강내역')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_middle);
+            $sheet->setCellValue('B6', 'No')->mergeCells('B6:B7')->getStyle('B6:B7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('C6', '주문번호')->mergeCells('C6:C7')->getStyle('C6:C7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('D6', '결제일')->mergeCells('D6:D7')->getStyle('D6:D7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('E6', '회원명')->mergeCells('E6:E7')->getStyle('E6:E7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('F6', '연락처')->mergeCells('F6:F7')->getStyle('F6:F7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('G6', '결제금액(수강료)')->mergeCells('G6:N6')->getStyle('G6:N6')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('G7', '신용카드')->getStyle('G7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('H7', '현금')->getStyle('H7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('I7', '실시간계좌이체')->getStyle('I7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('J7', '무통장입금')->getStyle('J7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('K7', '결제수수료')->getStyle('K7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('L7', '환불금액')->getStyle('L7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('M7', '환불완료일')->getStyle('M7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('N7', '합계')->getStyle('N7')->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('O6', '상품구분')->mergeCells('O6:O7')->getStyle('O6:O7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('P6', '종합반명')->mergeCells('P6:P7')->getStyle('P6:P7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('Q6', '비고')->mergeCells('Q6:Q7')->getStyle('Q6:Q7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('R6', '추가할인')->mergeCells('R6:R7')->getStyle('R6:R7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+            $sheet->setCellValue('S6', '세트할인')->mergeCells('S6:S7')->getStyle('S6:S7')->applyFromArray($style_bg_gray)->applyFromArray($style_middle);
+
+            $last_row_num = $last_row_num + 2;
+            $order_num = $order_cnt;
+            foreach ($order_data as $idx => $row) {
+                $sheet->setCellValue('B' . $last_row_num, $order_num);
+                $sheet->setCellValue('C' . $last_row_num, $row['OrderNo']);
+                $sheet->setCellValue('D' . $last_row_num, substr($row['CompleteDatm'], 0, 10));
+                $sheet->setCellValue('E' . $last_row_num, $row['MemName']);
+                $sheet->setCellValue('F' . $last_row_num, $row['MemPhone']);
+                $sheet->setCellValue('G' . $last_row_num, $row['PreCardPrice'])->getStyle('G' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('H' . $last_row_num, $row['PreCashPrice'])->getStyle('H' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('I' . $last_row_num, $row['PreBankPrice'])->getStyle('I' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('J' . $last_row_num, $row['PreVBankPrice'])->getStyle('J' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('K' . $last_row_num, $row['DivisionPgFeePrice'])->getStyle('K' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('L' . $last_row_num, '-' . $row['DivisionRefundPrice'])->getStyle('L' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('M' . $last_row_num, substr($row['RefundDatm'], 0, 16));
+                $sheet->setCellValue('N' . $last_row_num, $row['RemainPrice'])->getStyle('N' . $last_row_num)->getNumberFormat()->setFormatCode($price_format);
+                $sheet->setCellValue('O' . $last_row_num, str_replace('[학원]', '', $row['LearnPatternCcdName']));
+                $sheet->setCellValue('P' . $last_row_num, $row['ProdName']);
+                $sheet->setCellValue('Q' . $last_row_num, $row['OrderMemo']);
+                $sheet->setCellValue('R' . $last_row_num, $row['DiscRateUnit']);
+                $sheet->setCellValue('S' . $last_row_num, $row['Remark']);
+
+                if (empty($row['RefundDatm']) === false) {
+                    $sheet->getStyle('B' . $last_row_num . ':S' . $last_row_num)->applyFromArray($style_red);
+                }
+
+                $order_num--;
+                $last_row_num = $last_row_num + 1;
+            }
+
+            // 수수료공제전금액
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $cell_value = number_format($data['PrePrice']) . '원';
+            $sheet->setCellValue('A' . $last_row_num, '수수료공제전금액')->setCellValue('B' . $last_row_num, $cell_value);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+
+            // 총합계금액
+            $last_row_num = $last_row_num + 1;
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $cell_value = number_format($data['RemainPrice']) . '원 = 단과반 (' . number_format($data['LecRemainPrice']) . '원) + 종합반 (' . number_format($data['PackRemainPrice']) . '원)';
+            $sheet->setCellValue('A' . $last_row_num, '총합계금액')->setCellValue('B' . $last_row_num, $cell_value);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+
+            // 추가공제액
+            $last_row_num = $last_row_num + 1;
+            if (empty($data['DeductData']) === false) {
+                $merge_cell = 'A' . $last_row_num . ':A' . ($last_row_num + $deduct_cnt - 1);
+                $sheet->setCellValue('A' . $last_row_num, '추가공제액')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_middle);
+
+                foreach ($data['DeductData'] as $row) {
+                    $merge_cell = 'B' . $last_row_num . ':F' . $last_row_num;
+                    $sheet->setCellValue('B' . $last_row_num, $row['DeductName'])->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+                    $sheet->setCellValue('G' . $last_row_num, $row['DeductPrice'])->getStyle('G' . $last_row_num)->applyFromArray($style_bg_gray)->getNumberFormat()->setFormatCode($price_format);
+                    $sheet->setCellValue('H' . $last_row_num, ($row['DeductLecType'] == 'L' ? '단과반 공제' : '종합반 공제'))->getStyle('H' . $last_row_num)->applyFromArray($style_bg_gray);
+                    $last_row_num = $last_row_num + 1;
+                }
+            } else {
+                $sheet->setCellValue('A' . $last_row_num, '추가공제액');
+                $merge_cell = 'B' . $last_row_num . ':F' . $last_row_num;
+                $sheet->setCellValue('B' . $last_row_num, '')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+                $sheet->setCellValue('G' . $last_row_num, '')->getStyle('G' . $last_row_num)->applyFromArray($style_bg_gray);
+                $sheet->setCellValue('H' . $last_row_num, '')->getStyle('H' . $last_row_num)->applyFromArray($style_bg_gray);
+                $last_row_num = $last_row_num + 1;
+            }
+
+            // 대상금액
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $cell_value = number_format($data['TargetPrice']) . '원';
+            $sheet->setCellValue('A' . $last_row_num, '대상금액')->setCellValue('B' . $last_row_num, $cell_value);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+
+            // 정산기준
+            $last_row_num = $last_row_num + 1;
+            $merge_cell = 'A' . $last_row_num . ':A' . ($last_row_num + 1);
+            $sheet->setCellValue('A' . $last_row_num, '정산기준')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_middle);
+            $merge_cell = 'B' . $last_row_num . ':C' . $last_row_num;
+            $cell_value = '단과반 : ' . $arr_calc_type[$data['LecCalcType']];
+            $sheet->setCellValue('B' . $last_row_num, $cell_value)->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('D' . $last_row_num, $data['LecCalcRate'])->getStyle('D' . $last_row_num)->applyFromArray($style_bg_gray)->getNumberFormat()->setFormatCode($price_format);
+            $last_row_num = $last_row_num + 1;
+            $merge_cell = 'B' . $last_row_num . ':C' . $last_row_num;
+            $cell_value = '종합반 : ' . $arr_calc_type[$data['PackCalcType']];
+            $sheet->setCellValue('B' . $last_row_num, $cell_value)->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('D' . $last_row_num, $data['PackCalcRate'])->getStyle('D' . $last_row_num)->applyFromArray($style_bg_gray)->getNumberFormat()->setFormatCode($price_format);
+
+            // 정산기준 계산금액
+            $last_row_num = $last_row_num + 1;
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $cell_value = number_format($data['CalcPrice']) . '원 = 단과반 (' . number_format($data['LecCalcPrice']) . '원) + 종합반 (' . number_format($data['PackCalcPrice']) . '원)';
+            $sheet->setCellValue('A' . $last_row_num, '정산기준 계산금액')->setCellValue('B' . $last_row_num, $cell_value);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+            
+            // 원천세
+            $last_row_num = $last_row_num + 1;
+            $sheet->setCellValue('A' . $last_row_num, '원천세');
+            $sheet->setCellValue('B' . $last_row_num, $data['TaxRate'] . '%')->getStyle('B' . $last_row_num)->applyFromArray($style_bg_gray);
+            $sheet->setCellValue('C' . $last_row_num, $data['TaxPrice'])->getStyle('C' . $last_row_num)->applyFromArray($style_bg_gray)->getNumberFormat()->setFormatCode($price_format);
+
+            // 기타추가공제액
+            $last_row_num = $last_row_num + 1;
+
+            if (empty($data['EtcDeductData']) === false) {
+                $merge_cell = 'A' . $last_row_num . ':A' . ($last_row_num + $etc_deduct_cnt - 1);
+                $sheet->setCellValue('A' . $last_row_num, '기타추가공제액')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_middle);
+
+                foreach ($data['EtcDeductData'] as $row) {
+                    $merge_cell = 'B' . $last_row_num . ':F' . $last_row_num;
+                    $sheet->setCellValue('B' . $last_row_num, $row['DeductName'])->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+                    $sheet->setCellValue('G' . $last_row_num, $row['DeductPrice'])->getStyle('G' . $last_row_num)->applyFromArray($style_bg_gray)->getNumberFormat()->setFormatCode($price_format);
+                    $sheet->setCellValue('H' . $last_row_num, '')->getStyle('H' . $last_row_num)->applyFromArray($style_bg_gray);
+                    $last_row_num = $last_row_num + 1;
+                }
+            } else {
+                $sheet->setCellValue('A' . $last_row_num, '기타추가공제액');
+                $merge_cell = 'B' . $last_row_num . ':F' . $last_row_num;
+                $sheet->setCellValue('B' . $last_row_num, '')->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray);
+                $sheet->setCellValue('G' . $last_row_num, '')->getStyle('G' . $last_row_num)->applyFromArray($style_bg_gray);
+                $sheet->setCellValue('H' . $last_row_num, '')->getStyle('H' . $last_row_num)->applyFromArray($style_bg_gray);
+                $last_row_num = $last_row_num + 1;
+            }
+
+            // 강사료지급액
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $cell_value = number_format($data['FinalCalcPrice']) . '원';
+            $sheet->setCellValue('A' . $last_row_num, '강사료지급액')->setCellValue('B' . $last_row_num, $cell_value);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left);
+
+            // 최근정산일자
+            $last_row_num = $last_row_num + 1;
+            $merge_cell = 'B' . $last_row_num . ':S' . $last_row_num;
+            $sheet->setCellValue('A' . $last_row_num, '최근정산일자')->setCellValue('B' . $last_row_num, $data['RegDatm']);
+            $sheet->mergeCells($merge_cell)->getStyle($merge_cell)->applyFromArray($style_bg_gray)->applyFromArray($style_left)->applyFromArray($style_red)->applyFromArray($style_bold);
+
+            // border
+            $sheet->getStyle('A1:S' . $sheet->getHighestRow())->applyFromArray($style_border);
+
+            // download log
+            $this->load->library('approval');
+            if($this->approval->SysDownLog($last_query, $file_name, $order_cnt) !== true) {
+                show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+            }
+
+            ob_end_clean();
+            header('Content-type: application/vnd.ms-excel'); // xls
+            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR', $file_name).'.xls"');
+            header('Expires: 0');
+            header('Content-Transfer-Encoding: binary');
+            header('Cache-Control: private, no-transform, no-store, must-revalidate');
+
+            $writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+            $writer->save('php://output');
+        } catch (\Exception $e) {
+            logger($e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage() . ' => ' . $file_name, null, 'error');
+            show_alert('강사료정산내역 엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+    }
+}

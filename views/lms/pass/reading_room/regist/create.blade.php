@@ -28,9 +28,9 @@
                         {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}--}}
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), false, $offLineSite_list) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-4 ml-12-dot item form-inline">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" @if($method == 'PUT')disabled="disabled"@endif>
+                    <label class="control-label col-md-1-1 d-line" for="campus_ccd"><span class="required">*</span>캠퍼스</label>
+                    <div class="col-md-4 ml-12-dot item form-inline item">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스" @if($method == 'PUT')disabled="disabled"@endif>
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>

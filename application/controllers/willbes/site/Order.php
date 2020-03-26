@@ -50,8 +50,8 @@ class Order extends \app\controllers\FrontController
 
         // 제휴할인정보 조회
         $results['affiliate'] = [];
-        if ($results['is_aff_disc'] === true && $results['is_except_sale_pattern'] === false && in_array($cart_type, $arr_cart_prod_type) === true) {
-            // 단강좌, 단과반, 교재, 모의고사 상품이 있을 경우만 조회 (독서실제휴할인 설정상품이 1개 이상, 재수강, 수강연장 제외)
+        if ($results['is_aff_disc'] === true && $results['is_except_sale_pattern'] === false && in_array($cart_type, $arr_cart_prod_type) === true && count($arr_cart_idx) == 1) {
+            // 단강좌, 단과반, 교재, 모의고사 상품이 1개만 있을 경우 조회 (독서실제휴할인 설정상품이 1개 이상, 재수강, 수강연장 제외)
             $results['affiliate'] = $this->productFModel->findAffiliateDiscInfo('readingroom', $this->_site_code, $cart_type);
         }
         

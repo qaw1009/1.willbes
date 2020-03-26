@@ -106,6 +106,9 @@
     <script src="/public/vendor/validator/validator.js"></script>
     <!-- show loading indicator -->
     <script src="/public/vendor/loading-indicator/js/jquery.showLoading.js"></script>
+    <!-- charjs -->
+    <script src="/public/vendor/chartjs/Chart.js"></script>
+    <script src="/public/vendor/chartjs/Chart_utils.js"></script>
     <!-- config -->
     <script src="/public/js/lcms/init.js"></script>
     <script type="text/javascript">

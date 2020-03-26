@@ -573,7 +573,7 @@ class ProductFModel extends WB_Model
         $where = $this->_conn->makeWhere($add_condition)->getMakeWhere(true);
         $order_by = $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $query = $this->_conn->query('select '. $column . $from . $where . $group_by. $order_by)->result_array();
-        //echo $this->_conn->last_query();
+
         return $query;
     }
 
@@ -593,6 +593,24 @@ class ProductFModel extends WB_Model
         return $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'inner', $this->_table['product'] . ' as P'
             , 'PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd'
             , $column, $arr_condition);
+    }
+
+    /**
+     * 상품 가격 리턴
+     * @param int $prod_code [상품코드]
+     * @param string $price_type [가격구분 (R : 판매가, S : 정상가)
+     * @param string $sale_type_ccd [판매구분공통코드 (기본값 : PC+모바일)
+     * @return mixed
+     */
+    public function getProductSaleTypePrice($prod_code, $price_type, $sale_type_ccd = '613001')
+    {
+        $arr_price_type = ['S' => 'SalePrice', 'R' => 'RealSalePrice'];
+        $price_column = array_get($arr_price_type, $price_type, 'RealSalePrice');
+
+        $query = 'select fn_product_saletype_price(?, ?, ?) as Price';
+        $data = $this->_conn->query($query, [$prod_code, $sale_type_ccd, $price_column])->row_array();
+
+        return array_get($data, 'Price');
     }
 
     /**

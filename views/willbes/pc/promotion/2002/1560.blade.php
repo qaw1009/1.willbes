@@ -176,18 +176,18 @@
             <div id="tab01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1560_04.jpg" usemap="#Map1560a" title="4월 심화이론 일반경찰" border="0">
                 <map name="Map1560a" id="Map1560a">
-                    <area shape="rect" coords="666,389,855,480" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1041" target="_blank" alt="일반경찰" />
-                    <area shape="rect" coords="237,903,455,971" href="#to_go" />
-                    <area shape="rect" coords="663,901,881,972" href="#to_go2" />
+                    <area shape="rect" coords="666,389,855,480" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="일반경찰" />
+                    <area shape="rect" coords="237,903,455,971" href="#ctsInfo" />
+                    <area shape="rect" coords="663,901,881,972" href="#ctsInfo" />
                 </map>
             </div>
             <div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1560_04_1.jpg" usemap="#Map1560aa" title="4월 심화이론 경행경채" border="0">
                 <map name="Map1560aa" id="Map1560aa">
                     <area shape="rect" coords="420,421,535,483" href="https://police.willbes.net/package/index/cate/3002/pack/648001" target="_blank" alt="경행경채 3법" />
-                    <area shape="rect" coords="800,421,915,481" href="#none" target="_blank" />
-                    <area shape="rect" coords="237,903,455,971" href="#to_go" />
-                    <area shape="rect" coords="663,902,881,973" href="#to_go2" />
+                    <area shape="rect" coords="800,421,915,481" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
+                    <area shape="rect" coords="237,903,455,971" href="#ctsInfo" />
+                    <area shape="rect" coords="663,902,881,973" href="#ctsInfo" />
                 </map>
             </div>
         </div>
@@ -255,7 +255,7 @@
                     </table>        
                 </div>                                  
             </div>    
-            <div class="evtCtnsBox wb_05_table" id="to_go">           
+            <div class="evtCtnsBox wb_05_table">           
                 <div class="lecture_box">              
                     <p class="season">NEW</p>
                     <h3 class="title">2020년 합격대비 심화이론 종합반 - 일반경찰</h3>
@@ -276,18 +276,18 @@
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
                                 <td>4/13(월)</td>                        
-                                <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162436" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
                                 <td>4/13(월) </td>                        
-                                <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162435" target="_blank">수강신청</a></td>
                             </tr>                                                   
                         </tbody>
                     </table>        
                 </div>                                  
             </div>   
-            <div class="evtCtnsBox wb_05_table"  id="to_go2">           
+            <div class="evtCtnsBox wb_05_table">           
                 <div class="lecture_box">              
                     <p class="season">NEW</p>
                     <h3 class="title">2020년 합격대비 심화이론 종합반 - 경행경채</h3>

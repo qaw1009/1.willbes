@@ -78,8 +78,8 @@
         <div class="x_content">
             <div class="form-group">
                 <p>
-                    <div class="col-md-12 form-inline" id="member_count">
-                        <canvas id="member_count_stats" style="width:100%; height:400px; border:1px solid #ccc;"></canvas>
+                    <div class="col-md-12 form-inline chart-container" id="member_count" style="position: relative; width: 100%; height: 400px; border: 1px solid #ccc; align-content: center">
+                       <canvas id="member_count_stats"></canvas>
                     </div>
                 </p>
             </div>
@@ -87,14 +87,20 @@
         <div class="x_content">
             <div class="form-group">
                 <p>
-                    <div class="col-md-4 form-inline" id="member_age" >
-                        <canvas id="member_age_stats" style="width: 100%; height: 300px; border: 1px solid #ccc;"></canvas>
+                    <div class="col-md-4 form-inline">
+                        <div  id="member_age" style="width: 100%; height: 300px; border: 1px solid #ccc;">
+                            <canvas id="member_age_stats"></canvas>
+                        </div>
                     </div>
-                    <div class="col-md-4 form-inline" id="member_sex">
-                        <canvas id="member_sex_stats" style="width: 100%; height: 300px; border: 1px solid #ccc;"></canvas>
+                    <div class="col-md-4 form-inline">
+                        <div id="member_sex" style="width: 100%; height: 300px; border: 1px solid #ccc;">
+                            <canvas id="member_sex_stats"></canvas>
+                        </div>
                     </div>
-                    <div class="col-md-4 form-inline" id="member_interest">
-                        <canvas id="member_interest_stats" style="width: 100%; height: 300px; border: 1px solid #ccc;"></canvas>
+                    <div class="col-md-4 form-inline">
+                        <div  id="member_interest" style="width: 100%; height: 300px; border: 1px solid #ccc;">
+                            <canvas id="member_interest_stats"></canvas>
+                        </div>
                     </div>
                 </p>
             </div>
@@ -102,8 +108,8 @@
         <div class="x_content">
             <div class="form-group">
                 <p>
-                    <div class="col-md-12 form-inline" id="member_login">
-                        <canvas id="member_login_stats" style="width: 100%; height: 400px; border: 1px solid #ccc;"></canvas>
+                    <div class="col-md-12 form-inline" id="member_login"  style="width: 100%; height: 400px; border: 1px solid #ccc;">
+                        <canvas id="member_login_stats"></canvas>
                     </div>
                 </p>
             </div>
@@ -273,7 +279,7 @@
                     }]
                 },
                 options: {
-                    responsive: true,
+                    maintainAspectRatio: false,
                     title: {
                         display: true,
                         text: '회원현황'
@@ -299,6 +305,9 @@
                             scaleLabel: {
                                 display: true,
                                 labelString: '수'
+                            },
+                            ticks: {
+                                beginAtZero: true
                             }
                         }]
                     }
@@ -308,9 +317,14 @@
 
             {{--######################################################  연령대    ####################################################--}}
             $member_age = getStats('member/Age');
-            $join_age=Object.values($member_age[0]);
+            $join_age = Object.keys($member_age[0]).map(function(i) {
+                return $member_age[0][i];
+            });
             $join_age.splice(0,1);
-            $out_age=Object.values($member_age[1]);
+
+            $out_age = Object.keys($member_age[1]).map(function(i) {
+                return $member_age[1][i];
+            });
             $out_age.splice(0,1);
             var config_age = {
                 labels: ['10대', '20대', '30대', '40대', '50대', '60대', '기타'],
@@ -334,9 +348,13 @@
 
             {{--######################################################  성별   ####################################################--}}
             $member_sex = getStats('member/Sex');
-            $join_sex=Object.values($member_sex[0]);
+            $join_sex = Object.keys($member_sex[0]).map(function(i) {
+                return $member_sex[0][i];
+            });
             $join_sex.splice(0,1);
-            $out_sex=Object.values($member_sex[1]);
+            $out_sex = Object.keys($member_sex[1]).map(function(i) {
+                return $member_sex[1][i];
+            });
             $out_sex.splice(0,1);
             var config_sex = {
                 labels: ['남자', '여자', '성별없음'],
@@ -359,11 +377,14 @@
             {{--######################################################  관심분야    ####################################################--}}
             $member_interest = getStats('member/Interest');
             var $interest_name = [], $interest_count = [], $interest_color = [];
+            var $util_color = Object.keys(chartColors).map(function(i) {
+                return chartColors[i];
+            });
             $i=0;
             for (key in $member_interest) {
                 $interest_name.push($member_interest[key]['interest_name']);
                 $interest_count.push($member_interest[key]['count']);
-                $interest_color.push(color(Object.values(chartColors)[$i]).alpha(0.5).rgbString());
+                $interest_color.push(color($util_color[$i]).alpha(0.5).rgbString());
                 $i++
             }
 
@@ -377,7 +398,7 @@
                         labels: $interest_name
                     },
                     options: {
-                        responsive: true,
+                        maintainAspectRatio: false,
                         legend: {
                             position: 'right',
                         },
@@ -419,7 +440,7 @@
                         }]
                     },
                     options: {
-                        responsive: true,
+                        maintainAspectRatio: false,
                         title: {
                             display: true,
                             text: '로그인 현황'
@@ -474,7 +495,7 @@
                         mode: 'index',
                         intersect: false
                     },
-                    responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         xAxes: [{
                             stacked: true,
@@ -492,7 +513,7 @@
                 type: 'bar',
                 data: config_sex,
                 options: {
-                    responsive: true,
+                    maintainAspectRatio: false,
                     legend: {
                         position: 'top',
                     },
@@ -510,9 +531,8 @@
 
         function canvas_clear(str_div_id) {
             var $divId = $("#"+str_div_id);
-            var $canvas_style = $divId.find("canvas").attr("style");
             $divId.empty();
-            $divId.append("<canvas id='"+str_div_id+"_stats' style='"+$canvas_style+"'></canvas>");
+            $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
         }
 
         $search_form.on('click', '.btn', function() {

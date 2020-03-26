@@ -15,10 +15,11 @@
         </div>
 
         <div class="lineTabs lecListTabs c_both">
-            <ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
+            <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
                 <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a></li>
-                <li><a href="#leclist3">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
+                <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist3">PASS강좌 <span>{{count($passList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist4">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
             </ul>
             <div class="tabBox lineBox lecListBox">
                 <div class="tabContent">
@@ -130,6 +131,7 @@
                                                 <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                             </dl>
                                             <div class="w-start tx-gray">
+                                                <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
                                                 <ul class="two">
                                                     @if($row['IsLecStart'] == 'Y')
                                                         <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">시작일변경</a></li>
@@ -191,7 +193,45 @@
                             </table>
                         @endforelse
                     </div>
-                    <div id="leclist3" class="tabContent" style="display: none;">
+                    <div id="leclist3" class="tabContent">
+                        <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                            <tbody>
+                            @forelse( $passList as $row )
+                                <tr>
+                                    <td class="w-data tx-left pb-zero">
+                                        <div class="w-tit">
+                                            {{$row['ProdName']}}
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                        </dl>
+                                        <div class="w-start tx-gray">
+                                            <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
+                                            <ul class="two">
+                                                @if($row['IsLecStart'] == 'Y')
+                                                    <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">시작일변경</a></li>
+                                                    @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                        <li class="btn_blue"><a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');">수강시작</a></li>
+                                                    @else
+                                                        <li class="btn_blue"><a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">수강시작</a></li>
+                                                    @endif
+                                                @else
+                                                    <li class="btn_black_line"><a>시작일변경 불가</a></li>
+                                                @endif
+                                            </ul>
+                                        </div>
+                                        <div class="w-line">-</div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td class="tx-center">수강대기중인 강좌가 없습니다.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="leclist4" class="tabContent" style="display: none;">
                         <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
                             <div class="willbes-Txt-Tit NG">· 관리자부여강좌 수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
                             - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>

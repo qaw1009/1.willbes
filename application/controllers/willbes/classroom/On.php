@@ -16,6 +16,7 @@ class On extends \app\controllers\FrontController
     protected $_LearnPatternCcd_dan = ['615001','615002'];
     protected $_LearnPatternCcd_free = ['615005'];
     protected $_LearnPatternCcd_pkg = ['615003'];
+    protected $_LearnPatternCcd_pass = ['615004'];
 
     public function __construct()
     {
@@ -107,6 +108,20 @@ class On extends \app\controllers\FrontController
             ];
         }
 
+        // 학습형태 : 기간제
+        // 결제방식 : 모두
+        $passlist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass
+            ]
+        ]), $orderby);
+
+        // 학습방법 : 단과,  사용자패키
+        // 결제방식 : 온라인, 방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
@@ -121,13 +136,16 @@ class On extends \app\controllers\FrontController
             ]
         ]));
 
+        // 학습방법 : 운영자패키지
+        // 결제방식 : 온라인, 방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'EQ' => [
                 'SiteGroupCode' => $this->_req('sitegroup_ccd'),
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자
             ],
             'IN' => [
-                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd, // 온, 방
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pkg
             ]
         ]), $orderby);
         foreach($pkglist as $idx => $row){
@@ -143,7 +161,7 @@ class On extends \app\controllers\FrontController
         }
 
         // 학습형태 : 단과반
-        // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
+        // 결제방식 : 0월결제, 무료결제, 제휴사 결제
         $adminlistLec = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
@@ -158,8 +176,9 @@ class On extends \app\controllers\FrontController
             ]
         ]), $orderby);
 
-        // 학습형태 : 관리자패키지
-        // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
+
+        // 학습형태 : 운영자패키지
+        // 결제방식 : 0월결제, 무료결제, 제휴사 결제
         $adminlistPkg = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'EQ' => [
                 'SiteGroupCode' => $this->_req('sitegroup_ccd'),
@@ -194,7 +213,8 @@ class On extends \app\controllers\FrontController
             'input_arr' => $input_arr,
             'lecList' => $leclist,
             'pkgList' => $pkglist,
-            'adminList' => $adminlist
+            'adminList' => $adminlist,
+            'passList' => $passlist
         ]);
     }
 

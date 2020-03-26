@@ -852,6 +852,9 @@ select[disabled] {
 .pl60 {
   padding-left: 60px !important;
 }
+.pl100 {
+  padding-left: 100px !important;
+}
 .pl115 {
   padding-left: 115px !important;
 }

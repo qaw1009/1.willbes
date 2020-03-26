@@ -74,7 +74,8 @@
                     <ul class="tabWrap tabDepthPass">
                         <li><a href="#Mypagetab1" class="on">단강좌 ({{count($lecList)}})</a></li>
                         <li><a href="#Mypagetab2">패키지강좌 ({{count($pkgList)}})</a></li>
-                        <li><a href="#Mypagetab3">관리자부여강좌 ({{count($adminList['lec'])+count($adminList['pkg'])}})</a></li>
+                        <li><a href="#Mypagetab3">PASS강좌 ({{count($passList)}})</a></li>
+                        <li><a href="#Mypagetab4">관리자부여강좌 ({{count($adminList['lec'])+count($adminList['pkg'])}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
@@ -225,6 +226,48 @@
 
                         </div>
                         <div id="Mypagetab3" class="tabLink">
+                            <div class="willbes-Lec-Table pt20 NG d_block">
+                                <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                                    <colgroup>
+                                        <col style="width: 820px;">
+                                        <col style="width: 120px;">
+                                    </colgroup>
+                                    <tbody>
+                                    @forelse( $passList as $row )
+                                    <tr>
+                                        <td class="w-data tx-left pl10">
+                                            <div class="w-tit">
+                                                {{$row['ProdName']}}
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-answer">
+                                            @if($row['IsLecStart'] == 'Y')
+                                                @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
+                                                    <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                @else
+                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                @endif
+                                                <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                            @else
+                                                <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강대기중인 강좌가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
                                     <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌 ({{count($adminList['lec'])}})</a></dt>

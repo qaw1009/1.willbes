@@ -70,56 +70,58 @@
     </form>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>차트보기</strong></a></li>
-        <li role="presentation"><a role="tab" href="#data_view"><strong>데이터보기</strong></a></li>
+        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>Chart</strong></a></li>
+        <li role="presentation"><a role="tab" href="#data_view"><strong>Data</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">
         <div class="x_content">
             <div class="form-group">
-                <p>
-                    <div class="col-md-12 form-inline chart-container" id="member_count" style="position: relative; width: 100%; height: 400px; border: 1px solid #ccc; align-content: center">
+                <div class="col-md-12 form-inline">
+                    <div  id="member_count" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
                        <canvas id="member_count_stats"></canvas>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
+
         <div class="x_content">
+            <p></p>
             <div class="form-group">
-                <p>
-                    <div class="col-md-4 form-inline">
-                        <div  id="member_age" style="width: 100%; height: 300px; border: 1px solid #ccc;">
-                            <canvas id="member_age_stats"></canvas>
-                        </div>
+                <div class="col-md-4 form-inline">
+                    <div  id="member_age" style="width: 100%; height: 320px; border: 1px solid #ccc;">
+                        <canvas id="member_age_stats"></canvas>
                     </div>
-                    <div class="col-md-4 form-inline">
-                        <div id="member_sex" style="width: 100%; height: 300px; border: 1px solid #ccc;">
-                            <canvas id="member_sex_stats"></canvas>
-                        </div>
+                </div>
+                <div class="col-md-4 form-inline">
+                    <div id="member_sex" style="width: 100%; height: 320px; border: 1px solid #ccc;">
+                        <canvas id="member_sex_stats"></canvas>
                     </div>
-                    <div class="col-md-4 form-inline">
-                        <div  id="member_interest" style="width: 100%; height: 300px; border: 1px solid #ccc;">
-                            <canvas id="member_interest_stats"></canvas>
-                        </div>
+                </div>
+                <div class="col-md-4 form-inline">
+                    <div  id="member_interest" style="width: 100%; height: 320px; border: 1px solid #ccc;">
+                        <canvas id="member_interest_stats"></canvas>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
+
         <div class="x_content">
+            <p></p>
             <div class="form-group">
-                <p>
-                    <div class="col-md-12 form-inline" id="member_login"  style="width: 100%; height: 400px; border: 1px solid #ccc;">
+                <div class="col-md-12 form-inline">
+                    <div id="member_login"  style="width: 100%; height: 430px; border: 1px solid #ccc;">
                         <canvas id="member_login_stats"></canvas>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
     </div>
 
     <BR><BR>
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li role="presentation" ><a role="tab" href="#chart_view"><strong>차트보기</strong></a></li>
-        <li class="active" role="presentation"><a aria-expanded="true"  role="tab" href="#data_view" name="data_view"><strong>데이터보기</strong></a></li>
+        <li role="presentation" ><a role="tab" href="#chart_view"><strong>Chart</strong></a></li>
+        <li class="active" role="presentation"><a aria-expanded="true"  role="tab" href="#data_view" name="data_view"><strong>Data</strong></a></li>
     </ul>
     <div class="x_panel form-horizontal" id="data_view_area">
         <div class="x_content ">

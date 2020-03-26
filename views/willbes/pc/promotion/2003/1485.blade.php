@@ -20,7 +20,7 @@
 
         /************************************************************/
         
-        .Wb_top{background:#1e3d39 url(https://static.willbes.net/public/images/promotion/2019/12/1485_top_bg.jpg) no-repeat center top;}
+        .Wb_top{background:#404044 url(https://static.willbes.net/public/images/promotion/2020/03/1485_top_bg.jpg) no-repeat center top;}
 
         .Wb_01 {background:#38c293;}
 
@@ -39,7 +39,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox Wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1485_top.jpg" alt="2021 김동진법원팀 예비순환"  > 
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1485_top.jpg" alt="2021 김동진법원팀 예비순환"  > 
         </div>
 
         <div class="evtCtnsBox Wb_01">

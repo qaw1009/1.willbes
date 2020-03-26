@@ -262,24 +262,24 @@
                 </div>     
                 <div> 
                     <table border="0" cellspacing="0" cellpadding="0">
-                        <col width="20%" />
                         <col width="" />
+                        <col width="20%" />                        
                         <col width="15%" />
                         <thead>
                             <tr>
-                                <th colspan="2">강의명</th>
+                                <th>강의명</th>
                                 <th>개강일</th>                        
-                                <th colspan="2">학원</th>
+                                <th>학원</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="2">2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
+                                <td>2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
                                 <td>4/13(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
-                                <td colspan="2">2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
+                                <td>2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
                                 <td>4/13(월) </td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>                                                   
@@ -294,24 +294,24 @@
                 </div>     
                 <div> 
                     <table border="0" cellspacing="0" cellpadding="0">
-                        <col width="20%" />
                         <col width="" />
+                        <col width="20%" />                        
                         <col width="15%" />
                         <thead>
                             <tr>
-                                <th colspan="2">강의명</th>
+                                <th>강의명</th>
                                 <th>개강일</th>                        
-                                <th colspan="2">학원</th>
+                                <th>학원</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="2">2020 경찰시험대비 심화과정 종합반 (수사, 행정법 동영상으로 제공)</td>
+                                <td>2020 경찰시험대비 심화과정 종합반 (수사, 행정법 동영상으로 제공)</td>
                                 <td>4/13(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>  
                             <tr>
-                                <td colspan="2">2020 경찰시험대비 심화이론 경행 3법 종합반 </td>
+                                <td>2020 경찰시험대비 심화이론 경행 3법 종합반 </td>
                                 <td>4/13(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>                                                      

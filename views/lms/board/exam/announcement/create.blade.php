@@ -244,7 +244,7 @@
                 if($attach_toggle_img.hasClass('fa-chevron-up') === true) {
                     $attach_toggle_img.removeClass('fa-chevron-up');
                     $attach_toggle_img.addClass('fa-chevron-down');
-                    $('.attach-file-div').each(function(i) {news
+                    $('.attach-file-div').each(function(i) {
                         if(i !== 0){
                             $(this).removeClass('hide');
                             $(this).addClass('show');

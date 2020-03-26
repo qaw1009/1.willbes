@@ -1,7 +1,7 @@
 <style>
 .Section1 {background:#040405 url(https://static.willbes.net/public/images/promotion/main/3035_banner_top_bg.jpg) no-repeat center;margin-top:30px;}
-.law .Section .tipGo li a.prepare {background:#DC4F31;border-bottom:none;}
-.law .Section .tipGo li a.prepare:hover {background:#DC4F31;border-bottom:none;}
+.law .Section .tipGo li a.prepare {background:#949494;border-bottom:4px solid #868686;}
+.law .Section .tipGo li a.prepare:hover {background:#949494;border-bottom:4px solid #868686;}
 </style>
 @extends('willbes.pc.layouts.master')
 

@@ -12055,6 +12055,9 @@ table.acadlecInfoPackageTable tr.Top td {
 .searchListTap li a:hover {color:#000; background:#fff; border-bottom:1px solid #fff;}
 .searchListTap li a span {color:#0d74ae}
 .searchListTap:after {content:""; display:block; clear:both}
+.searchList .lecInfoTable td {width:1120px;}
+.searchList .lecInfoTable .priceWrap {float:right !important}
+.searchList .lecInfoTable td .w-sub:after {content:""; display: block; clear:both}
 
 .searchView {clear: both;}
 .searchView h4 {font-size:16px; color:#000}

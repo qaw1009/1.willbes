@@ -39,7 +39,7 @@ class AdminAuthHook
         '/service/coupon/issue/listAjax',
         '/service/point/allStatus/listAjax',
         '/cms/lecture/player',
-        '/crm/tm/TmAssign/consultListAjax'
+        '/crm/tm/TmAssign/consultListAjax',
     ];
 
     public function __construct()

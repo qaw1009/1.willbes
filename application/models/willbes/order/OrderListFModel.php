@@ -312,9 +312,10 @@ class OrderListFModel extends BaseOrderFModel
     /**
      * 회원이 구매한 내강의실 정보 조회 by ProdCodeSub (단강좌코드)
      * @param string|array $arr_prod_code_sub [상품코드서브 (단강좌코드)]
+     * @param array $add_condition [추가조회조건]
      * @return mixed
      */
-    public function getMemberMyLectureByProdCodeSub($arr_prod_code_sub)
+    public function getMemberMyLectureByProdCodeSub($arr_prod_code_sub, $add_condition = [])
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
         $column = 'ML.MlIdx';
@@ -329,8 +330,14 @@ class OrderListFModel extends BaseOrderFModel
                 and ML.ProdCodeSub in ?            
         ';
 
+        // 추가조회조건
+        $where = '';
+        if (empty($add_condition) === false) {
+            $where = $this->_conn->makeWhere($add_condition)->getMakeWhere(true);
+        }
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$sess_mem_idx, (array) $arr_prod_code_sub]);
+        $query = $this->_conn->query('select ' . $column . $from . $where, [$sess_mem_idx, (array) $arr_prod_code_sub]);
 
         return $query->result_array();
     }

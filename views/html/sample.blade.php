@@ -133,6 +133,7 @@
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
+                <li><a href="{{ site_url('/home/html/searchList2') }}" target="_blank">검색 결과 화면 2</a></li>
             </ul>
         </div>
     </li>

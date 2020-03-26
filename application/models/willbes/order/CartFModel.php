@@ -221,8 +221,20 @@ class CartFModel extends BaseOrderFModel
             return '이미 동일한 수강생 교재를 구매하셨습니다.';
         }
 
-        // 4. 회원이 구매한 결제완료된 내강의실 정보 조회
-        $my_lecture_rows = $this->orderListFModel->getMemberMyLectureByProdCodeSub($arr_target_prod_code);
+        // 4. 수강생교재 판매금액 조회
+        $real_sale_price = $this->productFModel->getProductSaleTypePrice($prod_book_code, 'R');
+        if (is_null($real_sale_price) === true) {
+            return '수강생 교재 판매금액 조회에 실패했습니다.';
+        }
+
+        // 5. 회원이 구매한 결제완료된 내강의실 정보 조회
+        $add_condition = [];
+        if ($real_sale_price < 1) {
+            // 수강생교재 판매금액이 0원일 경우 0원결제 결제루트 제외
+            $add_condition = ['NOT' => ['O.PayRouteCcd' => $this->_pay_route_ccd['zero']]];
+        }
+
+        $my_lecture_rows = $this->orderListFModel->getMemberMyLectureByProdCodeSub($arr_target_prod_code, $add_condition);
         if (empty($my_lecture_rows) === false) {
             return true;
         }

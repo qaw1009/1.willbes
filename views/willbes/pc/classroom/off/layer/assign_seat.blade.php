@@ -50,7 +50,10 @@
                     <td colspan="3">
                         <ul class="seatsection bg-none">
                             <li>[강의실명] <span>{{ $lec_data['LectureRoomName'] }}</span></li>
-                            <li>[좌석번호] {!! ((empty($lec_data['LrsrIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}</li>
+                            <li>[좌석번호]
+                                {!! ((empty($lec_data['LrsrIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}
+                                {!! ((empty($lec_data['LrsrIdx']) === false) && $lec_data['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
+                            </li>
                             <li>[좌석선택기간] <span>{{ $lec_data['SeatChoiceStartDate'] }} ~ {{ $lec_data['SeatChoiceEndDate'] }}</span></li>
                         </ul>
                     </td>
@@ -110,7 +113,7 @@
                             </li>
                         @endforeach
                     </ul>
-                    <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox widthAutoFull">적용</button></div>
+                    <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox widthAutoFull ">적용</button></div>
                 </div>
             </div>
         </form>
@@ -129,6 +132,11 @@
     });
 
     $_seat_assign_form.submit(function() {
+        var member_seat_type = '{{ ((empty($lec_data['LrsrIdx']) === false) && $lec_data['MemSeatStatusCcd'] == '728003' ? 'N' : 'Y') }}';
+        if (member_seat_type == 'N123123') {
+            alert('해당 강의실에서 퇴실된 상태입니다. 좌석을 선택할 수 없습니다.');
+            return;
+        }
         if ($("#lr_rurs_idx").val() == '') {
             alert('좌석을 선택해 주세요.');
             return;

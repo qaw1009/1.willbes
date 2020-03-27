@@ -96,11 +96,11 @@
                                                                         && date('Y-m-d') <= $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
                                                 </li>
                                                 <li>[강의실명] <span>{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }} | {{ $listLectureRoom[$row['ProdCode']]['UnitName'] }}</span></li>
-                                                <li>
-                                                    [좌석번호]
+                                                <li>[좌석번호]
                                                     <span class="tx-red">
                                                         {!! ((empty($listLectureRoom[$row['ProdCode']]['LrrursIdx']) === true) ?
                                                         "<span class='tx-red'>미선택</span>" : "<span>{$listLectureRoom[$row['ProdCode']]['MemSeatNo']}</span>") !!}
+                                                        {!! ($listLectureRoom[$row['ProdCode']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
                                                     </span>
                                                 </li>
                                                 <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}</li>
@@ -227,6 +227,7 @@
                                                                 <span class="tx-red">
                                                                     {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?
                                                                     "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
+                                                                    {!! ($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
                                                                 </span>
                                                             </li>
                                                             <li>[좌석선택기간]

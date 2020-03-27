@@ -1,10 +1,5 @@
 /*********************************************     Main Container : Cop_sea_special   *********************************************/
 /* Main Container : Cop_sea_special */
-
-.bSlider .bx-wrapper .bx-pager {float: right;width: auto;top:0;bottom: 8px;text-align: right;}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a{background:#ccc !important}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active{background:#9177d4 !important}
-
 .seaSp .tx-color {
     color: #9177d4;
 }

@@ -1,8 +1,3 @@
-<style>
-.Section1 {background:#040405 url(https://static.willbes.net/public/images/promotion/main/3035_banner_top_bg.jpg) no-repeat center;margin-top:30px;}
-.law .Section .tipGo li a.prepare {background:#949494;border-bottom:4px solid #868686;}
-.law .Section .tipGo li a.prepare:hover {background:#949494;border-bottom:4px solid #868686;}
-</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')
@@ -11,7 +6,7 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section Section1">
+        <div class="Section1">
             <div class="widthAuto">
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3035_banner_top.jpg" alt="동행,새로운 시작이자 출발"></a>
             </div>

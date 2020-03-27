@@ -101,16 +101,18 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" id="all_check"/></th>
-                        <th>NO</th>
-                        <th>주문번호</th>
-                        <th>회원명</th>
-                        <th>연락처</th>
-                        <th>상품명</th>
-                        <th>결제상태</th>
-                        <th>결제금액 (환불금액)</th>
-                        <th>결제완료일 (환불완료일)</th>
-                        <th>좌석변경</th>
+                        <th class="valign-middle"><input type="checkbox" id="all_check"/></th>
+                        <th class="valign-middle">NO</th>
+                        <th class="valign-middle">주문번호</th>
+                        <th class="valign-middle">회원명</th>
+                        <th class="valign-middle">연락처</th>
+                        <th class="valign-middle">상품명</th>
+                        <th class="valign-middle">강의실명</th>
+                        <th class="valign-middle">좌석정보명</th>
+                        <th class="valign-middle">결제상태</th>
+                        <th class="valign-middle">결제금액 (환불금액)</th>
+                        <th class="valign-middle">결제완료일 (환불완료일)</th>
+                        <th class="valign-middle">좌석변경</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -141,44 +143,52 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                rowsGroup: [
+                    'group:name'
+                ],
                 columns: [
-                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" name="selectMember" class="target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return row.OrderNo + '<Br>' + row.SiteName;
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return row.MemName + '<Br>' + '('+row.MemId+')';
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return row.Tel1 + '-' + row.Tel2 + '-' + row.Tel3;
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '['+row.LearnPatternCcdName+'] ' + row.ProdName;
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                            return '<span class="blue">['+row.LearnPatternCcdName+']</span> ' + row.ProdName;
                         }},
-                    {'data' : 'PayStatusCcdName'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'data' : 'LectureRoomName'},
+                    {'data' : 'UnitName'},
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                            return row.PayStatusCcdName;
+                        }},
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             var ret = row.RealPayPrice;
                             ret += (row.tRefundPrice > 0) ? ' (' + row.tRefundPrice + ')' : '';
                             return ret;
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             var ret = row.CompleteDatm;
                             ret += (row.RefundDatm > 0) ? ' (' + row.RefundDatm + ')' : '';
                             return ret;
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a class="blue cs-pointer btn-member-seat-modify" ' +
                                 'data-learn-pattern="' + row.LearnPatternCcd + '"' +
                                 'data-order-idx="' + row.OrderIdx + '"' +
+                                'data-prod-code-sub="' + row.ProdCodeSub + '"' +
                                 'data-lr-code="' + row.LrCode + '"' +
                                 'data-lr-unit-code="' + row.LrUnitCode+ '"' +
                                 '>[변경]</a>';
-                        }},
+                        }}
                 ]
             });
 
@@ -188,7 +198,7 @@
             });
 
             $list_table.on('click', '.btn-member-seat-modify', function() {
-                var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + '?order_idx=' + $(this).data('order-idx');
+                var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + '?order_idx=' + $(this).data('order-idx') + '&prod_code_sub=' + $(this).data('prod-code-sub');
                 if ($(this).data("learn-pattern") == '615007') {
                     location.href = "{{ site_url('/pass/lectureRoom/issue/showMemberSeat/') }}" + param;
                 } else {

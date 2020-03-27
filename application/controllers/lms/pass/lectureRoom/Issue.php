@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Issue extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'pass/lectureRoomIssue');
+    protected $models = array('sys/site', 'sys/code', 'pass/lectureRoomRegist', 'pass/lectureRoomIssue');
     protected $helpers = array();
 
     public function __construct()
@@ -81,25 +81,58 @@ class Issue extends \app\controllers\BaseController
 
     public function modifyMemberSeatModal($params = [])
     {
-        if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true) {
+        if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true || empty($this->_reqG('prod_code_sub')) === true) {
             show_error('잘못된 접근 입니다.');
         }
 
+        $method = 'POST';
         $lr_code = $params[0];
         $lr_unit_code = $params[1];
         $order_idx = $this->_reqG('order_idx');
+        $prod_code_sub = $this->_reqG('prod_code_sub');
 
-        $data = $this->lectureRoomIssueModel->findLectureRoomMemberInfo($lr_code, $lr_unit_code, $order_idx);
+        $arr_seat_unit_ccd = $this->codeModel->getCcd($this->lectureRoomRegistModel->_seat_unit_ccd);
+        $arr_seat_member_ccd = $this->codeModel->getCcd($this->lectureRoomRegistModel->_seat_member_ccd);
+        $arr_seat_all_ccd = $arr_seat_unit_ccd;
+        foreach ($arr_seat_member_ccd as $key => $val) {
+            $arr_seat_all_ccd[$key] = $val;
+        }
+
+        $data = $this->lectureRoomIssueModel->findLectureRoomMemberInfo($lr_code, $lr_unit_code, $order_idx, $prod_code_sub);
         if (empty($data) === true) {
             show_error('조회된 회원 좌석 정보가 없습니다.');
         }
 
-        print_r($data);
+        //강의실 회차별 좌석회원 등록정보
+        $seat_data = $this->lectureRoomRegistModel->listLectureRoomUnitForRegister($lr_unit_code);
 
         $this->load->view("pass/lecture_room/issue/modify_member_seat_modal", [
+            'method' => $method,
+            'arr_seat_unit_ccd' => $arr_seat_unit_ccd,
+            'arr_seat_all_ccd' => $arr_seat_all_ccd,
             'lr_code' => $lr_code,
             'lr_unit_code' => $lr_unit_code,
-            'data' => $data
+            'order_idx' => $order_idx,
+            'prod_code_sub' => $prod_code_sub,
+            'data' => $data,
+            'seat_data' => $seat_data
         ]);
+    }
+
+    public function storeSeat()
+    {
+        $rules = [
+            ['field' => 'lr_code', 'label' => '강의실코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'order_idx', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'old_seat_no', 'label' => '기존좌석번호', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->lectureRoomIssueModel->modifyLectureRoomUnitSeat($this->_reqP(null, false));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 }

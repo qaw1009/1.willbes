@@ -6,7 +6,11 @@
         .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}    
         .evtCtnsBox > img {width:100%; max-width:1120px;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top} 
-
+        .evtTop span {position:absolute; left:50%; margin-left:30%; top:40%; animation: sp01 1.5s linear infinite;}
+        .evtTop span img { width:70px}
+        @@keyframes sp01{
+		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
@@ -83,6 +87,12 @@
         .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1);}
 
         .evt03 {background:#fff; padding-top:100px}
+        .evt03 ul {width:80%; max-width:900px; margin:0 auto}
+        .evt03 ul li {display:inline; float:left; width:50%}
+        .evt03 ul li a {display:block; text-align:center; height:30px; line-height:30px; font-size:14px; background:#353267; color:#fff; margin:0 3%;
+        border-radius:30px}
+        .evt03 ul li a:hover {background:#000}
+        .evt03 ul:after {content:""; display:block; clear:both} 
 
         .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
@@ -163,6 +173,8 @@
 
         /* 태블릿 세로 */
         @@media only all and (min-width: 768px) {
+            .evtTop span {left:50%; margin-left:30%; top:44%;}
+            .evtTop span img { width:108px}
             .tabs li a {font-size:16px; padding:25px 0;}
             .evt01 .dday {font-size:1.2rem;}
             .evt01 .dday strong {font-size:1.75rem;}
@@ -170,6 +182,7 @@
             .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}           
             .evt02 .evt02Txt01 {font-size:1.5rem;}
             .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}
+            .evt03 ul li a {height:40px; line-height:40px; font-size:18px; margin:0 10px;}
             .video-container-box {width:768px; margin:0 auto; padding:0}
             .evt04 .columns {column-count: 2;}
             .evt05 {padding-bottom:70px}
@@ -178,12 +191,14 @@
 
         /* 태블릿 가로, PC */
         @@media only all and (min-width: 1024px) {
+            .evtTop span {left:50%; margin-left:23%; top:50%;}            
             .evt01 .dday {font-size:2.0rem; top:42%;}
             .evt01 .dday strong {font-size:2.5rem;}
             .evt01 .dday img {width:68px;}
             .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}            
             .evt02 .evt02Txt01 {font-size:1.75rem;}
             .evt02 .evt02Txt01 span {font-size:2rem; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
+            .evt03 ul li a {height:60px; line-height:60px; font-size:24px; margin:0 20px;}
             .video-container-box {width:980px; margin:0 auto; padding:0}
             .evt04 .columns {width:980px; margin:0 auto}
             .evt05 ul {width:940px; margin:0 auto;}
@@ -198,7 +213,8 @@
 
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >
+        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>    
         <div class="evtMenu">
             <ul class="tabs">
                 <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
@@ -244,7 +260,12 @@
 
     <div id="tab03">
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="커리큘럼" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼" >
+            <ul>
+                <li><a href="#none">1강 맛보기 수강 ></a></li>
+                <li><a href="#none">2강 맛보기 수강 ></a></li>
+            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼" >
         </div>
     </div>
 

@@ -1223,7 +1223,8 @@ class ClassroomFModel extends WB_Model
     {
         $column = "
             ml.ProdCode AS ProdCodeMaster, prlr.ProdCode AS ProdCodeSub, o.OrderIdx, op.OrderProdIdx,
-            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo, lrsr.SeatStatusCcd as MemSeatStatusCcd,
+            fn_ccd_name(lrsr.SeatStatusCcd) as MemSeatStatusCcdName
         ";
         $from = "
             FROM {$this->_table['order']} AS o
@@ -1240,9 +1241,8 @@ class ClassroomFModel extends WB_Model
                 lrsr.MemIdx = op.MemIdx AND
                 lrsr.LrCode = lr.LrCode AND
                 lrsr.LrUnitCode = lu.LrUnitCode AND
-                lrsr.SeatStatusCcd IN ('728001', '728002') AND 
                 lrsr.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.IsStatus = 'Y'
         ";
         $arr_condition = [
             'EQ' => [
@@ -1291,8 +1291,8 @@ class ClassroomFModel extends WB_Model
             op.ProdCode,
             mem.MemId, mem.MemName, memInfo.Tel1, fn_dec(memInfo.Tel2Enc) AS Tel2, memInfo.Tel3,
             p.ProdName, pSub.ProdName AS ProdNameSub, op.RealPayPrice, o.CompleteDatm, sc.CcdName AS PayStatusName,
-            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lrsr.LrsrIdx, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo,
-            lu.SeatMapFileRoute, lu.SeatMapFileName,
+            prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lu.SeatMapFileRoute, lu.SeatMapFileName,
+            lrsr.LrsrIdx, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo, lrsr.SeatStatusCcd as MemSeatStatusCcd,
             ( 
             SELECT GROUP_CONCAT(b.ProdCode) AS ProdCodeSub
             FROM (
@@ -1308,7 +1308,7 @@ class ClassroomFModel extends WB_Model
             ) AS OrderSubProdCodes,            
             ( SELECT GROUP_CONCAT(LrsrIdx) AS LrsrIdxData FROM {$this->_table['lectureroom_seat_register']} AS a
                 WHERE o.OrderIdx = a.OrderIdx AND op.OrderProdIdx = a.OrderProdIdx AND a.MemIdx = op.MemIdx 
-                AND a.LrCode = lr.LrCode AND a.LrUnitCode = lu.LrUnitCode AND a.SeatStatusCcd IN ('728001', '728002') AND a.IsStatus = 'Y'
+                AND a.LrCode = lr.LrCode AND a.LrUnitCode = lu.LrUnitCode AND a.IsStatus = 'Y'
             ) AS LrsrIdxData
         ";
         $from = "
@@ -1333,9 +1333,8 @@ class ClassroomFModel extends WB_Model
                 lrsr.MemIdx = op.MemIdx AND
                 lrsr.LrCode = lr.LrCode AND
                 lrsr.LrUnitCode = lu.LrUnitCode AND
-                lrsr.SeatStatusCcd IN ('728001', '728002') AND 
                 lrsr.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.SeatStatusCcd = '727002' AND lrurs.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrurs ON lrsr.LrrursIdx = lrurs.LrrursIdx AND lrurs.IsStatus = 'Y'
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
@@ -1403,7 +1402,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getLectureRoomSeatRegister($arr_condition)
     {
-        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub';
+        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub, lrsr.SeatStatusCcd as MemSeatStatusCcd';
         $from = "
             FROM {$this->_table['lectureroom_seat_register']} AS lrsr
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
@@ -1473,6 +1472,20 @@ class ClassroomFModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            //퇴실,환불 좌석 상태 체크
+            $register_data = $this->_findLectureRoomSeatRegisterForOrder($form_data);
+            if (empty($register_data) === true) {
+                throw new \Exception('기존 좌석 조회에 실패했습니다.');
+            } else {
+                if ($register_data[0]['MemSeatStatusCcd'] === '728003') {
+                    throw new \Exception('퇴실된 좌석은 변경할 수 없습니다.');
+                }
+
+                if ($register_data[0]['MemSeatStatusCcd'] === '728004') {
+                    throw new \Exception('환불된 좌석은 변경할 수 없습니다.');
+                }
+            }
+
             $old_register_data = $this->_findLectureRoomSeatRegisterForOld(element('old_arr_lrsr_idx', $form_data));
             if (empty($old_register_data) === true) {
                 throw new \Exception('기존 좌석 조회에 실패했습니다.');
@@ -1588,6 +1601,24 @@ class ClassroomFModel extends WB_Model
             ],
             'IN' => [
                 'lrsr.SeatStatusCcd' => ['728001','728002']
+            ]
+        ];
+        return $this->getLectureRoomSeatRegister($arr_condition);
+    }
+
+    /**
+     * 주문번호 기준 등록된 회원 좌석 조회
+     * @param array $form_data
+     * @return mixed
+     */
+    private function _findLectureRoomSeatRegisterForOrder($form_data = [])
+    {
+        $arr_condition = [
+            'EQ' => [
+                'lrsr.OrderIdx' => element('order_idx', $form_data),
+                'lrsr.ProdCode' => element('prod_code', $form_data),
+                'lrsr.LrCode' => element('lr_code', $form_data),
+                'lrsr.LrUnitCode' => element('lr_unit_code', $form_data)
             ]
         ];
         return $this->getLectureRoomSeatRegister($arr_condition);

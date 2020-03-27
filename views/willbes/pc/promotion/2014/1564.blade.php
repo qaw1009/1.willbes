@@ -32,6 +32,17 @@
         }       
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top} 
+        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+        @@keyframes upDown{
+        from{top:500px}
+        50%{top:520px}
+        to{top:500px}
+        }
+        @@-webkit-keyframes upDown{
+            from{top:500px}
+        50%{top:520px}
+        to{top:500px}
+        }
 
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:1120px; margin:0 auto;}
@@ -142,6 +153,12 @@
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
         .evt03 {background:#fff; padding-top:100px}
+        .evt03 ul {width:900px; margin:0 auto}
+        .evt03 ul li {display:inline; float:left; width:50%}
+        .evt03 ul li a {display:block; text-align:center; height:60px; line-height:60px; font-size:24px; background:#353267; color:#fff; margin:0 20px;
+        border-radius:30px}
+        .evt03 ul li a:hover {background:#000}
+        .evt03 ul:after {content:""; display:block; clear:both} 
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
         .evt04 {background:#ececec; padding:100px 0}
@@ -186,7 +203,8 @@
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" >    
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" > 
+            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>   
             <div class="evtMenu">
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
@@ -194,14 +212,14 @@
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
-            </div>  
+            </div>
+
         </div>       
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-{{--                <div class="btnbuy NSK-Black"><a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">사전예약 신청하기 ></a></div>--}}
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">[온라인강의] 사전예약 신청하기 ></a></div>
             </div>
         </div>
@@ -226,7 +244,12 @@
 
         <div id="tab03">
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04.jpg" alt="커리큘럼 강좌소개" ><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼 강좌소개" >
+                <ul>
+                    <li><a href="#none">1강 맛보기 수강 ></a></li>
+                    <li><a href="#none">2강 맛보기 수강 ></a></li>
+                </ul>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼 강좌소개" >
             </div>
         </div>
 

@@ -263,12 +263,16 @@
     <div id="tab03">
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼" >
-            {{--
             <ul>
-                <li><a href="#none">1강 맛보기 수강 ></a></li>
-                <li><a href="#none">2강 맛보기 수강 ></a></li>
+                @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                        <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['samplewUnitIdx']}}','WD');">{{ $row['OtherData2'] }}</a></li>
+                    @endforeach
+                @else
+                    <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
+                    <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                @endif
             </ul>
-            --}}
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼" >
         </div>
     </div>

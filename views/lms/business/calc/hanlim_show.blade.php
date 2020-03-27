@@ -146,7 +146,7 @@
                                 <td>{{ $row['PayRouteCcdName'] }}</td>
                                 <td>{{ $row['PgFee'] }}</td>
                                 <td>{{ number_format($row['DivisionPgFeePrice']) }}</td>
-                                <td>{{ empty($row['RefundDatm']) === false ? '-' . number_format($row['DivisionRefundPrice']) : '' }}</td>
+                                <td>{{ empty($row['RefundDatm']) === false ? number_format($row['DivisionRefundPrice'] * -1) : '' }}</td>
                                 <td>{{ empty($row['RefundDatm']) === false ? substr($row['RefundDatm'], 0, 16) : '' }}</td>
                                 <td>{{ number_format($row['RemainPrice']) }}</td>
                                 <td>{{ str_replace('[학원]', '', $row['LearnPackTypeName']) }}</td>

@@ -262,7 +262,6 @@
                     'url' : '{{ site_url('/profsales/' . $sales_type . '/orderListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        console.log(data);
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },

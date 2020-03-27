@@ -1,4 +1,9 @@
 /*********************************************     Main Container : law     *********************************************/
+
+.law .Section1 {background:#040405 url(https://static.willbes.net/public/images/promotion/main/3035_banner_top_bg.jpg) no-repeat center;margin-top:30px;}
+.law .Section .tipGo li a.prepare {background:#949494;border-bottom:4px solid #868686;}
+.law .Section .tipGo li a.prepare:hover {background:#949494;border-bottom:4px solid #868686;}
+
 .law .Section2 {
     background:url("../../img/willbes/gosi_law/visual/visual_top_bg.jpg") repeat-x left 95px;
 }

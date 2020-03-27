@@ -79,7 +79,7 @@ class HanlimCalcModel extends BaseOrderModel
                     on TA.ProfIdx = PCH.ProfIdx and TA.ProdCode = PCH.ProdCode and PCH.IsStatus = "Y"                                      
         ';
 
-        if ($is_count === false || $is_count == 'excel') {
+        if ($is_count === false || $is_count === 'excel') {
             $query .= '
                 left join ' . $this->_table['professor'] . ' as PF
                     on TA.ProfIdx = PF.ProfIdx and PF.IsStatus = "Y"
@@ -101,12 +101,12 @@ class HanlimCalcModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 최종 쿼리
-        if ($is_count == 'excel') {
+        if ($is_count === 'excel') {
             $out_column = 'CalcDate, wProfName, CateName, CampusCcdName, ProdCode, ProdName, StudyStartDate, StudyEndDate, Amount, LecRealCnt, PackRealCnt, (LecRealCnt + PackRealCnt) as RealCnt
                 , PrePrice, RemainPrice, DeductPrice, TargetPrice, concat(LecCalcRate, LecCalcRateUnit) as LecCalcRate, concat(PackCalcRate, PackCalcRateUnit) as PackCalcRate
                 , CalcPrice, TaxPrice, EtcDeductPrice, FinalCalcPrice';
             $query = 'select ' . $out_column . ' from (' . $query . ') as U ' . $order_by_offset_limit;
-        } elseif ($is_count == 'sum') {
+        } elseif ($is_count === 'sum') {
             $out_column = 'sum(PayPrice) as tPayPrice, sum(RefundPrice) as tRefundPrice, sum(PrePrice) as tPrePrice, sum(PgFeePrice) as tPgFeePrice
                 , sum(RemainPrice) as tRemainPrice, sum(DeductPrice) as tDeductPrice, sum(TargetPrice) as tTargetPrice, sum(CalcPrice) as tCalcPrice
                 , sum(TaxPrice) as tTaxPrice, sum(EtcDeductPrice) as tEtcDeductPrice, sum(FinalCalcPrice) as tFinalCalcPrice
@@ -121,7 +121,7 @@ class HanlimCalcModel extends BaseOrderModel
 
         if ($is_count === true) {
             return $result->row(0)->numrows;
-        } elseif ($is_count == 'sum') {
+        } elseif ($is_count === 'sum') {
             return $result->row_array();
         } else {
             return $result->result_array();

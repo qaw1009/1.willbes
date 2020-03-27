@@ -184,8 +184,8 @@
             <div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1560_04_1.jpg" usemap="#Map1560aa" title="4월 심화이론 경행경채" border="0">
                 <map name="Map1560aa" id="Map1560aa">
-                    <area shape="rect" coords="420,421,535,483" href="https://police.willbes.net/package/index/cate/3002/pack/648001" target="_blank" alt="경행경채 3법" />
-                    <area shape="rect" coords="800,421,915,481" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
+                    <area shape="rect" coords="420,421,535,483" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank" alt="경행경채 3법" />
+                    <area shape="rect" coords="800,421,915,481" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank" />
                     <area shape="rect" coords="237,903,455,971" href="#ctsInfo" />
                     <area shape="rect" coords="663,902,881,973" href="#ctsInfo" />
                 </map>

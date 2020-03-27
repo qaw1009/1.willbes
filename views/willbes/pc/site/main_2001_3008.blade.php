@@ -1,18 +1,3 @@
-<style>
-.bSlider .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    top:0;
-    bottom: 8px;
-    text-align: right;
-}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a{
-    background:#ccc !important
-}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active{
-    background:#9177d4 !important
-}
-</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')

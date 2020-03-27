@@ -14,6 +14,9 @@ class BaseStatsModel extends WB_Model
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'order_refund' => 'lms_order_product_refund',
+
+        'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
     ];
 
     public function __construct()

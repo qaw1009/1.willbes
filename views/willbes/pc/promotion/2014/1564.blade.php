@@ -204,7 +204,9 @@
 
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" > 
+            {{--
             <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>   
+            --}}
             <div class="evtMenu">
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
@@ -245,10 +247,12 @@
         <div id="tab03">
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼 강좌소개" >
+                {{--
                 <ul>
                     <li><a href="#none">1강 맛보기 수강 ></a></li>
                     <li><a href="#none">2강 맛보기 수강 ></a></li>
                 </ul>
+                --}}
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼 강좌소개" >
             </div>
         </div>

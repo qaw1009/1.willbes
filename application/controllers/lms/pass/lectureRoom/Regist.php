@@ -301,6 +301,7 @@ class Regist extends \app\controllers\BaseController
             'EQ' => [
                 'lg.LrCode' => $this->_reqP('lr_code'),
                 'lg.LrUnitCode' => $this->_reqP('lr_unit_code'),
+                'lg.OrderProdIdx' => $this->_reqP('order_prod_idx'),
                 'lg.SeatStatusCcd' => $this->_reqP('seat_status_ccd'),
                 'lg.BeforeSeatNo' => $this->_reqP('before_seat_no'),
                 'lg.AfterSeatNo' => $this->_reqP('after_seat_no')

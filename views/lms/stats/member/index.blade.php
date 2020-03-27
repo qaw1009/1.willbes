@@ -289,6 +289,13 @@
                     tooltips: {
                         mode: 'index',
                         intersect: false,
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                            }
+                        }
                     },
                     hover: {
                         mode: 'nearest',
@@ -309,7 +316,11 @@
                                 labelString: '수'
                             },
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                callback:
+                                    function(value) {
+                                        return  value.toLocaleString();
+                                    }
                             }
                         }]
                     }
@@ -344,7 +355,7 @@
                     borderWidth: 1,
                     stack: 'Stack 0',
                     data: $out_age
-                }]
+                }],
             };
             {{--######################################################  연령대    ####################################################--}}
 
@@ -408,11 +419,20 @@
                             display: true,
                             text: '관심분야'
                         },
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var tooltipLabel = data.labels[tooltipItem.index];
+                                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                                }
+                            }
+                        },
                         scale: {
                             ticks: {
                                 beginAtZero: true
                             },
-                            reverse: false
+                            reverse: false,
                         },
                         animation: {
                             animateRotate: false,
@@ -450,6 +470,13 @@
                         tooltips: {
                             mode: 'index',
                             intersect: false,
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                                }
+                            }
                         },
                         hover: {
                             mode: 'nearest',
@@ -468,6 +495,13 @@
                                 scaleLabel: {
                                     display: true,
                                     labelString: '수'
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback:
+                                        function(value) {
+                                            return  value.toLocaleString();
+                                        }
                                 }
                             }]
                         }
@@ -635,7 +669,7 @@
                             return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
                         }},
                     {'data' : 'not', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>>' : data;
+                            return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
                         }},
                 ]
             });

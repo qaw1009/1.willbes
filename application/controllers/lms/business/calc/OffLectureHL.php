@@ -5,14 +5,16 @@ class OffLectureHL extends \app\controllers\BaseController
 {
     protected $models = array('pay/hanlimCalc', 'product/base/professor', 'sys/site', 'sys/category', 'sys/code', 'sys/excelDownLog');
     protected $helpers = array();
-    protected $_group_ccd = [];
-    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+    private $_group_ccd = array();
+    private $_target_site_code = array();       // 학원사이트코드
+    private $_memory_limit_size = '512M';       // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
         parent::__construct();
 
         $this->_group_ccd = $this->hanlimCalcModel->_group_ccd;
+        $this->_target_site_code = get_auth_on_off_site_codes('Y', true);
     }
 
     /**
@@ -20,11 +22,8 @@ class OffLectureHL extends \app\controllers\BaseController
      */
     public function index()
     {
-        // 사이트탭 조회
-        $arr_site_code = get_auth_on_off_site_codes('Y', true);
-
         // 경찰, 공무원학원 사이트코드 제외
-        $arr_site_code = array_filter($arr_site_code, function($key) {
+        $arr_site_code = array_filter($this->_target_site_code, function($key) {
             return !in_array($key, ['2002', '2004']);
         }, ARRAY_FILTER_USE_KEY);
 
@@ -55,11 +54,11 @@ class OffLectureHL extends \app\controllers\BaseController
         $search_date_type = $this->_reqP('search_date_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
+        $arr_condition = $this->_getListConditions($search_site_code);
         $count = 0;
         $list = [];
 
-        if (empty($search_site_code) === false && empty($search_date_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
-            $arr_condition = $this->_getListConditions();
+        if (empty($search_site_code) === false && empty($search_date_type) === false && empty($search_start_date) === false && empty($search_end_date) === false && empty($arr_condition) === false) {
             $order_by = $this->_getListOrderBy();
             $list = $this->hanlimCalcModel->listCalcHist($search_date_type, $search_start_date, $search_end_date, $search_site_code, false, $arr_condition, null, null, $order_by);
             $count = count($list);
@@ -74,11 +73,23 @@ class OffLectureHL extends \app\controllers\BaseController
 
     /**
      * 한림전용 학원 강사료정산 조회조건 리턴
+     * @param int $site_code [사이트코드]
      * @return array
      */
-    private function _getListConditions()
+    private function _getListConditions($site_code)
     {
+        $arr_site_code = array_keys($this->_target_site_code);
+        $arr_site_campus_ccd = empty($site_code) === false ? get_auth_campus_ccds($site_code) : [];
+
+        if (empty($site_code) === true || empty($arr_site_code) === true || empty($arr_site_campus_ccd) === true) {
+            return [];
+        }
+
         return [
+            'IN' => [
+                'P.SiteCode' => $arr_site_code,             // 학원 사이트 권한 추가
+                'PL.CampusCcd' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
+            ],
             'EQ' => [
                 'TA.ProfIdx' => $this->_reqP('search_prof_idx'),
                 'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
@@ -116,13 +127,13 @@ class OffLectureHL extends \app\controllers\BaseController
         $search_date_type = $this->_reqP('search_date_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
+        $arr_condition = $this->_getListConditions($search_site_code);
 
-        if (empty($search_site_code) === true || empty($search_date_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty($search_site_code) === true || empty($search_date_type) === true || empty($search_start_date) === true || empty($search_end_date) === true || empty($arr_condition) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 정산 데이터 조회
-        $arr_condition = $this->_getListConditions();
         $order_by = $this->_getListOrderBy(true);
         $results = $this->hanlimCalcModel->listCalcHist($search_date_type, $search_start_date, $search_end_date, $search_site_code, 'excel', $arr_condition, null, null, $order_by);
 
@@ -216,9 +227,20 @@ class OffLectureHL extends \app\controllers\BaseController
 
         // 정산대상 주문조회
         $results = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, false, true, $base_datm);
+        $last_query = $this->hanlimCalcModel->getLastQuery();
+
+        // 정산대상 합계조회
+        $sum_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, true, false, $base_datm);
+
+        // 정산대상 합계추가
+        $results[] = [
+            'OrderNo' => '합계', 'CompleteDatm' => '', 'MemName' => '', 'MemId' => '', 'MemPhone' => '', 'PreCardPrice' => $sum_data['tPreCardPrice'], 'PreCashPrice' => $sum_data['tPreCashPrice'],
+            'PreBankPrice' => $sum_data['tPreBankPrice'], 'PreVBankPrice' => $sum_data['tPreVBankPrice'], 'PayRouteCcdName' => '', 'PgFee' => '', 'DivisionPgFeePrice' => $sum_data['tPgFeePrice'],
+            'DivisionRefundPrice' => '', 'RefundDatm' => '', 'RemainPrice' => $sum_data['tRemainPrice'], 'LearnPatternCcdName' => '', 'PackTypeCcdName' => '', 'ProdName' => '',
+            'OrderMemo' => '', 'DiscRateUnit' => '', 'Remark' => ''
+        ];
 
         // 엑셀 설정
-        $last_query = $this->hanlimCalcModel->getLastQuery();
         $file_name = '한림전용_학원강사료정산_주문목록_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
         $headers = ['주문번호', '결제일', '회원명', '회원아이디', '연락처', '신용카드', '현금', '실시간계좌이체', '무통장입금', '결제루트', '결제수수료율', '결제수수료'
             , '환불금액', '환불완료일', '합계', '상품구분', '종합반구분', '종합반명', '비고', '추가할인', '세트할인'];

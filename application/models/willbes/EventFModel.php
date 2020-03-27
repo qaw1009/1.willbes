@@ -1072,7 +1072,7 @@ class EventFModel extends WB_Model
         $column = '
         A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
         A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
-        G.SubjectName, H.ProfNickName, sample.wUnitIdx AS samplewUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal, wLecUnit.wHD
+        G.SubjectName, H.ProfNickName, sample.wUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal, wLecUnit.wHD
         ';
         $from = "
             FROM {$this->_table['event_promotion_otherinfo']} AS A
@@ -1084,7 +1084,7 @@ class EventFModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['professor_reference']} AS PR ON A.ProfIdx = PR.ProfIdx AND PR.ReferType = 'lec_detail_img' AND PR.IsStatus = 'Y'
         ";
         $where = ' where A.PromotionCode = ? and A.IsStatus = "Y"';
-        $order_by_offset_limit = ' group by sample.wUnitIdx order by A.OrderNum asc';
+        $order_by_offset_limit = ' order by A.OrderNum asc';
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();

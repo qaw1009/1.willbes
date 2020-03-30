@@ -117,7 +117,8 @@
                 <area shape="rect" coords="800,922,1016,988" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank" />
             </map>
         </div>        
-                
+
+        {{--        
         <div class="evtCtnsBox wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1584_05.jpg" alt="소문내기 이벤트" usemap="#Map1584b" border="0" />
             <map name="Map1584b" id="Map1584b">
@@ -129,6 +130,8 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
+
+        --}}
 
     </div>
     <!-- End Container -->

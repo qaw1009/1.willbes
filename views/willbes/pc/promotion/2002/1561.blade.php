@@ -109,7 +109,7 @@
         </div>
 
         <div class="skybanner2" >
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1542_sky02.png" alt="통합생활관리반" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky02.png" alt="통합생활관리반" ></a>
         </div>               
 
 		<div class="evtCtnsBox wb_cts00">
@@ -129,9 +129,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_03.jpg" alt="슈퍼pass" usemap="#Map1561a" border="0" />
-            <map name="Map1561a" id="Map1561a">
-                <area shape="rect" coords="370,1243,749,1357" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1561_03.jpg" alt="슈퍼pass" usemap="#Map1561abc" border="0" />
+            <map name="Map1561abc" id="Map1561abc">
+                <area shape="rect" coords="164,1225,539,1340" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" />
+                <area shape="rect" coords="578,1223,949,1342" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3011&campus_ccd=605001&course_idx=1085" target="_blank" />
             </map>               
         </div>
 		

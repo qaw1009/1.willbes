@@ -152,14 +152,17 @@
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff; padding-top:100px;}
-        .evt03 .evt03Txt01 {font-size:20px; line-height:1.4; margin-top:40px; letter-spacing:-1px; color:#333; padding-left:140px;}
-        .evt03 ul {width:900px; margin:0 auto}
-        .evt03 ul li {display:inline; float:left; width:50%}
-        .evt03 ul li a {display:block; text-align:center; height:60px; line-height:60px; font-size:24px; background:#353267; color:#fff; margin:0 20px;
-        border-radius:30px}
-        .evt03 ul li a:hover {background:#000}
+        .evt03 {background:#fff; padding-top:100px;}        
+        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
+        .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
+        .evt03 ul li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}        
+        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
+        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt03 ul li a:hover {background:#000; color:#fff}
         .evt03 ul:after {content:""; display:block; clear:both} 
+        .evt03 .evt03Txt01 {font-size:16px; line-height:1.4; margin-top:20px; letter-spacing:-1px; color:#333; padding-left:140px;}
+        .evt03 ul {width:900px; margin:0 auto}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
         .evt04 {background:#ececec; padding:100px 0}
@@ -194,7 +197,7 @@
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}  
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
-            background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
+            background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }          
     </style>
 
@@ -214,7 +217,6 @@
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>
-
         </div>       
 
         <div id="tab01">
@@ -246,7 +248,7 @@
         <div id="tab03">
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼 강좌소개" >
-
+                {{--
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @php $i = 1; @endphp
@@ -258,14 +260,29 @@
                         <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
                         <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
                     @endif
-                </ul> 
+                </ul>
+                --}}
+                
+                <ul> 
+                    <li>
+                        <p>1강 맛보기 수강 ▼</p>  
+                        <a href="#none" class="btnst01">WIDE ></a>
+                        <a href="#none" class="btnst02">HIGH ></a>
+                        <a href="#none" class="btnst03">LOW ></a>
+                    </li>
+                    <li>
+                        <p>2강 맛보기 수강 ▼</p>  
+                        <a href="#none" class="btnst01">WIDE ></a>
+                        <a href="#none" class="btnst02">HIGH ></a>
+                        <a href="#none" class="btnst03">LOW ></a>
+                    </li>  
+                </ul>
 
                 <div class="evt03Txt01">
-                    * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                    스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                    팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
                 </div>
-
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼 강좌소개" >
             </div>
         </div>

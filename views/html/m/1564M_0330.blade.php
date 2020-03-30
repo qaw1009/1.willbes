@@ -83,16 +83,28 @@
         
         
         .evt02 {background:#f6f6f6; padding-top:100px}       
-        .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
+        .evt02 .evt02Txt01 {font-size:1.10rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
         .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1);}
 
         .evt03 {background:#fff; padding-top:100px}
+        
         .evt03 ul {width:80%; max-width:900px; margin:0 auto}
+        /*
         .evt03 ul li {display:inline; float:left; width:50%}
         .evt03 ul li a {display:block; text-align:center; height:30px; line-height:30px; font-size:14px; background:#353267; color:#fff; margin:0 3%;
         border-radius:30px}
         .evt03 ul li a:hover {background:#000}
+        .evt03 ul:after {content:""; display:block; clear:both}*/        
+
+        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 0.5%; border-radius:10px; background:#353267; color:#fff}
+        .evt03 ul li p {font-size:16px; margin-bottom:15px; font-weight:600}
+        .evt03 ul li a {display:block; padding:8px 0; width:90px; text-align:center; font-size:14px; margin:0 auto 5px; border-radius:4px;}        
+        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
+        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt03 ul li a:hover {background:#000; color:#fff}
         .evt03 ul:after {content:""; display:block; clear:both} 
+        .evt03 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}       
 
         .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
@@ -182,7 +194,9 @@
             .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}           
             .evt02 .evt02Txt01 {font-size:1.5rem;}
             .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}
-            .evt03 ul li a {height:40px; line-height:40px; font-size:18px; margin:0 10px;}
+            .evt03 ul li {padding:20px 0;}
+            .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
+            .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;} 
             .video-container-box {width:768px; margin:0 auto; padding:0}
             .evt04 .columns {column-count: 2;}
             .evt05 {padding-bottom:70px}
@@ -198,8 +212,8 @@
             .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}            
             .evt02 .evt02Txt01 {font-size:1.75rem;}
             .evt02 .evt02Txt01 span {font-size:2rem; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
-            .evt03 ul li a {height:60px; line-height:60px; font-size:24px; margin:0 20px;}
             .video-container-box {width:980px; margin:0 auto; padding:0}
+            .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;} 
             .evt04 .columns {width:980px; margin:0 auto}
             .evt05 ul {width:940px; margin:0 auto;}
             .evt05 li a {font-size:24px;}
@@ -261,11 +275,12 @@
     <div id="tab03">
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼" >
+            {{--
             <ul>
                 @if(empty($arr_base['promotion_otherinfo_data']) === false)
                     @php $i = 1; @endphp
                     @foreach($arr_base['promotion_otherinfo_data'] as $row)
-{{--                        <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">{{$i}}강 맛보기 수강 ></a></li>--}}
+                        <!--li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">{{$i}}강 맛보기 수강 ></a></li-->
                         <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>{{$i}}강 맛보기 수강 ></a></li>
                         @php $i += 1; @endphp
                     @endforeach
@@ -274,6 +289,23 @@
                     <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
                 @endif
             </ul>
+            --}}
+
+            <ul> 
+                <li>
+                    <p>1강 맛보기 수강 ▼</p>  
+                    <a href="#none" class="btnst01">WIDE ></a>
+                    <a href="#none" class="btnst02">HIGH ></a>
+                    <a href="#none" class="btnst03">LOW ></a>
+                </li>
+                <li>
+                    <p>2강 맛보기 수강 ▼</p>  
+                    <a href="#none" class="btnst01">WIDE ></a>
+                    <a href="#none" class="btnst02">HIGH ></a>
+                    <a href="#none" class="btnst03">LOW ></a>
+                </li>  
+            </ul>
+
             <div class="evt03Txt01">
                 * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
                 * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>

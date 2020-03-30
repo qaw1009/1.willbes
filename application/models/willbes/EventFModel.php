@@ -1069,7 +1069,7 @@ class EventFModel extends WB_Model
      */
     public function listEventPromotionForOther($promotion_code)
     {
-        /*$column = '
+        $column = '
         A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
         A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
         G.SubjectName, H.ProfNickName, sample.wUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal, wLecUnit.wHD
@@ -1085,37 +1085,9 @@ class EventFModel extends WB_Model
         ";
         $where = ' where A.PromotionCode = ? and A.IsStatus = "Y"';
         $order_by_offset_limit = ' order by A.OrderNum asc';
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
-        */
 
-        $column = "
-            A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
-            A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
-            B.SubjectName, C.ProfNickName, A.samplewUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal, wLecUnit.wHD
-        ";
-        $where = 'where A.PromotionCode = ? and A.IsStatus = "Y"';
-        $from = "
-            FROM (
-            SELECT A.*
-                FROM (
-                    SELECT
-                    a.EpoIdx, a.PromotionCode, a.ProfIdx, a.SubjectIdx, a.OtherData1, a.OtherData2, a.OtherData3,
-                    a.FileFullPath, a.FileRealName, a.OrderNum, a.IsStatus, a.RegDatm, a.RegAdminIdx, a.UpdDatm, a.UpdAdminIdx,
-                    sample.wUnitIdx AS samplewUnitIdx
-                    FROM {$this->_table['event_promotion_otherinfo']} AS a
-                    LEFT JOIN {$this->_table['product_lecture_sample']} AS sample ON a.OtherData1 = sample.ProdCode AND sample.IsStatus='Y'
-                    {$where} 
-                    ORDER BY sample.OrderNum ASC, a.EpoIdx ASC
-                ) AS A
-                GROUP BY A.EpoIdx
-            ) AS A
-            LEFT OUTER JOIN {$this->_table['product_subject']} AS B ON A.SubjectIdx = B.SubjectIdx
-            LEFT OUTER JOIN {$this->_table['professor']} AS C ON A.ProfIdx = C.ProfIdx
-            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture_unit']} AS wLecUnit ON A.samplewUnitIdx = wLecUnit.wUnitIdx AND wLecUnit.wIsStatus='Y'
-            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture']} AS MasterLecture ON wLecUnit.wLecIdx = MasterLecture.wLecIdx
-            LEFT OUTER JOIN {$this->_table['professor_reference']} AS PR ON A.ProfIdx = PR.ProfIdx AND PR.ReferType = 'lec_detail_img' AND PR.IsStatus = 'Y'
-        ";
-        return $this->_conn->query('select ' . $column . $from, [$promotion_code])->result_array();
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
     }
 
     /**

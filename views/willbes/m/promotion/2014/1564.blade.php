@@ -263,16 +263,19 @@
     <div id="tab03">
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼" >
-            {{--<ul>
+            <ul>
                 @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @php $i = 1; @endphp
                     @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                        <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['samplewUnitIdx']}}','WD');">{{ $row['OtherData2'] }}</a></li>
+{{--                        <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">{{$i}}강 맛보기 수강 ></a></li>--}}
+                        <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>{{$i}}강 맛보기 수강 ></a></li>
+                        @php $i += 1; @endphp
                     @endforeach
                 @else
                     <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
                     <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
                 @endif
-            </ul>--}}
+            </ul>
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼" >
         </div>
     </div>
@@ -372,7 +375,7 @@
     @include('willbes.m.promotion.2014.promotionInfo')
 </div>
 <!-- End Container -->
-
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         /*디데이카운트다운*/
         $(document).ready(function() {

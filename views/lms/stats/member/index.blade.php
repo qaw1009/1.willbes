@@ -346,14 +346,12 @@
                     backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
                     borderColor: window.chartColors.red,
                     borderWidth: 1,
-                    stack: 'Stack 0',
                     data: $join_age
                 }, {
                     label: '탈퇴',
                     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
                     borderColor: window.chartColors.blue,
                     borderWidth: 1,
-                    stack: 'Stack 0',
                     data: $out_age
                 }],
             };
@@ -523,21 +521,35 @@
                 type: 'bar',
                 data: config_age,
                 options: {
+                    maintainAspectRatio: false,
+                    legend: {
+                        position: 'top',
+                    },
                     title: {
                         display: true,
                         text: '연령대'
                     },
                     tooltips: {
                         mode: 'index',
-                        intersect: false
+                        intersect: false,
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                            }
+                        }
                     },
-                    maintainAspectRatio: false,
                     scales: {
-                        xAxes: [{
-                            stacked: true,
-                        }],
                         yAxes: [{
-                            stacked: true
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                callback:
+                                    function(value) {
+                                        return  value.toLocaleString();
+                                    }
+                            }
                         }]
                     }
                 }
@@ -556,6 +568,29 @@
                     title: {
                         display: true,
                         text: '성별'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                            }
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                callback:
+                                    function(value) {
+                                        return  value.toLocaleString();
+                                    }
+                            }
+                        }]
                     }
                 }
             });

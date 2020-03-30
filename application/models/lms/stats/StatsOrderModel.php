@@ -6,6 +6,11 @@ require_once APPPATH . 'models/lms/stats/BaseStatsModel.php';
 class StatsOrderModel extends BaseStatsModel
 {
 
+    /**
+     * 기간별 매출현황
+     * @param array $arr_input
+     * @return mixed
+     */
     public function getOrderCount($arr_input=[])
     {
         $get_condition = $this->_setCondition($arr_input);
@@ -32,9 +37,9 @@ class StatsOrderModel extends BaseStatsModel
 
         $column = ' temp_date.base_date
                         ,ifnull(temp_pay.order_count,0) as order_count
-                        ,ifnull(temp_refund.refund_count,0) as refund_count
+                        ,(ifnull(temp_refund.refund_count,0)*-1) as refund_count
                         ,ifnull(temp_pay.order_pay,0) as order_pay
-                        ,ifnull(temp_refund.refund_pay,0) as refund_pay
+                        ,(ifnull(temp_refund.refund_pay,0)*-1) as refund_pay
                         ,(ifnull(temp_pay.order_count,0) - ifnull(temp_refund.refund_count,0)) as real_count
                         ,(ifnull(temp_pay.order_pay,0) - ifnull(temp_refund.refund_pay,0)) as real_pay';
 
@@ -84,6 +89,187 @@ class StatsOrderModel extends BaseStatsModel
 
         return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
     }
+
+
+    /**
+     * 성별 통계
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getOrderSex($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $pay_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['O.CompleteDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676001", "676006"]],
+            ]
+        );
+        $refund_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['OPR.RefundDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676006"]],
+            ]
+        );
+
+        $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
+        $refund_where = $this->_conn->makeWhere($refund_condition)->getMakeWhere(true);
+
+        $column = ' * ';
+
+        $from = '
+                    from
+                        (
+                            select
+                                    \'결제\' as order_status, 
+                                    ifnull(sum(if(m.Sex =\'M\', 1, 0)),0) as \'m\',
+                                    ifnull(sum(if(m.Sex =\'M\', OP.RealPayPrice, 0)),0) as \'m_pay\',
+                                    ifnull(sum(if(m.Sex =\'F\', 1, 0)),0) as \'f\',
+                                    ifnull(sum(if(m.Sex =\'F\', OP.RealPayPrice, 0)),0) as \'f_pay\',
+                                    ifnull(sum(if( (m.Sex != \'M\' and m.Sex != \'F\'), 1, 0)),0) as \'not\',
+                                    ifnull(sum(if( (m.Sex != \'M\' and m.Sex != \'F\'), OP.RealPayPrice, 0)),0) as \'not_pay\'
+                            from '. $this->_table['order'] .' as O
+                                join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
+                                left join '. $this->_table['order_refund'] .' as OPR on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                                join '. $this->_table['member'] .' m on O.MemIdx = m.MemIdx
+                            where 
+                                1=1
+                                '. $pay_where .'
+                            
+                            union all
+                                    
+                            select
+                                    \'환불\' as order_status, 
+                                    (ifnull(sum(if(m.Sex =\'M\', 1, 0)),0)*-1) as \'m\',
+                                    (ifnull(sum(if(m.Sex =\'M\', OPR.RefundPrice, 0)),0)*-1) as \'m_pay\',
+                                    (ifnull(sum(if(m.Sex =\'F\', 1, 0)),0)*-1) as \'f\',
+                                    (ifnull(sum(if(m.Sex =\'F\', OPR.RefundPrice, 0)),0)*-1) as \'f_pay\',
+                                    (ifnull(sum(if( (m.Sex != \'M\' and m.Sex != \'F\'), 1, 0)),0)*-1) as \'not\',
+                                    (ifnull(sum(if( (m.Sex != \'M\' and m.Sex != \'F\'), OPR.RefundPrice, 0)),0)*-1) as \'not_pay\'
+                            from  '. $this->_table['order_refund'] .' as OPR
+                                inner join '. $this->_table['order'] .' as O on OPR.OrderIdx = O.OrderIdx
+                                inner join  '. $this->_table['order_product'] .' as OP on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                                join '. $this->_table['member'] .'  m on O.MemIdx = m.MemIdx
+                            where 
+                                1=1
+                                '. $refund_where .'
+                        ) tmp
+        ';
+
+        $order_by = '';
+
+        return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
+    }
+
+
+    /**
+     * 사이트별 통계
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getOrderSite($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $pay_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['O.CompleteDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676001", "676006"]],
+            ]
+        );
+        $refund_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['OPR.RefundDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676006"]],
+            ]
+        );
+
+        $base_condition['IN']['S.SiteCode'] = get_auth_site_codes();    //; 기준사이트
+
+        $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
+        $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
+        $refund_where = $this->_conn->makeWhere($refund_condition)->getMakeWhere(true);
+
+        $column = ' 
+                        S.SiteCode,S.SiteName
+                        ,Ifnull(temp_order.order_count,0) as order_count
+                        ,Ifnull(temp_order.order_pay,0) as order_pay
+                        ,(Ifnull(temp_refund.refund_count,0)*-1) as refund_count
+                        ,(Ifnull(temp_refund.refund_pay,0)*-1) as refund_pay
+                        ,(ifnull(temp_order.order_count,0) - ifnull(temp_refund.refund_count,0)) as real_count
+                        ,(ifnull(temp_order.order_pay,0) - ifnull(temp_refund.refund_pay,0)) as real_pay
+                        ';
+
+        $from = '   from
+                            '. $this->_table['site'] .' S
+                            join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
+                            left join 
+                            (
+                                select
+                                     O.SiteCode,Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay
+                                from '. $this->_table['order'] .' as O
+                                    join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
+                                    left join '. $this->_table['order_refund'] .' as OPR on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                                where 
+                                    1=1
+                                    '. $pay_where .'
+                                group by O.SiteCode
+                            ) temp_order on S.Sitecode = temp_order.SiteCode
+                            left join 
+                            (
+                                select
+                                     O.SiteCode,Count(*) as refund_count, Sum(OPR.RefundPrice) as refund_pay
+                                from 
+                                    '. $this->_table['order_refund'] .' as OPR
+                                    join '. $this->_table['order'] .' as O on OPR.OrderIdx = O.OrderIdx
+                                    join '. $this->_table['order_product'] .' as OP on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                                where 
+                                    1=1
+                                    '. $refund_where .'
+                                group by O.SiteCode
+                            ) temp_refund on S.Sitecode = temp_refund.SiteCode
+                        where 1=1
+                         '. $base_where .'
+        ';
+
+        $order_by = ' order by SG.SiteGroupCode, S.SiteCode ';
+
+        return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
+    }
+
+
+    /**
+     * 결제채널 : PC, Mobile
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getOrderChannel($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $pay_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['O.CompleteDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676001", "676006"]],
+            ]
+        );
+
+
+        $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
+
+        $column = 'O.PayChannelCcd, SC.CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
+
+        $from = '   from '. $this->_table['order'] .' as O
+                            join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
+                            left join '. $this->_table['order_refund'] .' as OPR on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                            join '. $this->_table['code'] .' SC on O.PayChannelCcd = SC.Ccd
+                        where 1=1
+                         '. $pay_where .'
+                        group by O.PayChannelCcd
+        ';
+
+        $order_by = ' order by SC.OrderNum';
+
+        return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
+    }
+
+
 
     function _setCondition($arr_input=[])
     {

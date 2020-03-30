@@ -251,7 +251,7 @@
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @php $i = 1; @endphp
                         @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                            <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">{{$i}}강 맛보기 수강 ></a></li>
+                            <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강 맛보기 수강 ></a></li>
                             @php $i += 1; @endphp
                         @endforeach
                     @else

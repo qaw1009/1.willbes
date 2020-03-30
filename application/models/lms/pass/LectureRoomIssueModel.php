@@ -42,7 +42,7 @@ class LectureRoomIssueModel extends WB_Model
             $column = '
             lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.ProdCodeSub, lrrurs.SeatNo
             ,o.OrderNo, lrsr.OrderIdx, lrsr.OrderProdIdx, p.ProdName, lr.LectureRoomName, lrru.UnitName, pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
-            ,site.SiteName, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            ,site.SiteName, mb.MemIdx, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
             ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             ,fn_ccd_name(op.PayStatusCcd) AS PayStatusCcdName
             ,fn_ccd_name(pl.LearnPatternCcd) AS LearnPatternCcdName
@@ -95,6 +95,51 @@ class LectureRoomIssueModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function excel($arr_condition = [], $column)
+    {
+        $from = "
+            FROM {$this->_table['lectureroom_seat_register']} AS lrsr
+            INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
+            INNER JOIN {$this->_table['lectureroom']} AS lr ON lrsr.LrCode = lr.LrCode
+            INNER JOIN {$this->_table['lectureroom_r_unit']} AS lrru ON lr.LrCode = lrru.LrCode AND lrrurs.LrUnitCode = lrru.LrUnitCode
+            INNER JOIN {$this->_table['order']} AS o ON lrsr.OrderIdx = o.OrderIdx
+            INNER JOIN {$this->_table['order_product']} AS op ON o.OrderIdx = op.OrderIdx AND lrsr.OrderProdIdx = op.OrderProdIdx
+            INNER JOIN {$this->_table['product']} AS p ON lrsr.ProdCode = p.ProdCode
+            INNER JOIN {$this->_table['product_lecture']} AS pl ON op.ProdCode = pl.ProdCode
+            INNER JOIN {$this->_table['site']} AS site ON o.SiteCode = site.SiteCode
+            INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
+            INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
+            LEFT JOIN {$this->_table['order_product_refund']} AS opr ON o.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
+        ";
+
+        $arr_condition['IN']['lr.SiteCode'] = get_auth_site_codes(false, true);
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('lr.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('lr.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('lr.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('lr.CampusCcd', "''", false);
+        $where_campus->or_where('lr.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
+        // 쿼리 실행
+        $where = $where_temp . $where_campus;
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
     }
 
     /**
@@ -297,13 +342,13 @@ class LectureRoomIssueModel extends WB_Model
 
                 //퇴실처리
                 $result = $this->_modifyLectureRoomUnitSeatForRefund($data);
-                if ($result['ret_cd'] !== true) {
-                    throw new \Exception($result['ret_msg']);
+                if ($result !== true) {
+                    throw new \Exception($result);
                 }
             }
 
         } catch (\Exception $e) {
-            return error_result($e);
+            return $e->getMessage();
         }
         return true;
     }
@@ -546,7 +591,7 @@ class LectureRoomIssueModel extends WB_Model
     /**
      * 환불 / 로그저장
      * @param array $seat_register_data
-     * @return array
+     * @return bool|string
      */
     private function _modifyLectureRoomUnitSeatForRefund($seat_register_data = [])
     {
@@ -584,13 +629,8 @@ class LectureRoomIssueModel extends WB_Model
                 throw new Exception('로그저장에 실패했습니다.');
             }
         } catch (\Exception $e) {
-            return [
-                'ret_cd' => false,
-                'ret_msg' => $e->getMessage()
-            ];
+            return $e->getMessage();
         }
-        return [
-            'ret_cd' => true
-        ];
+        return true;
     }
 }

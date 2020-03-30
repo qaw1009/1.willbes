@@ -101,7 +101,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th class="valign-middle"><input type="checkbox" id="all_check"/></th>
+                        <th class="valign-middle"><input type="checkbox" class="flat" id="all_check"/></th>
                         <th class="valign-middle">NO</th>
                         <th class="valign-middle">주문번호</th>
                         <th class="valign-middle">회원명</th>
@@ -148,7 +148,7 @@
                 ],
                 columns: [
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="selectMember" class="target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
+                            return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + row.MemIdx + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -172,12 +172,12 @@
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             var ret = row.RealPayPrice;
-                            ret += (row.tRefundPrice > 0) ? ' (' + row.tRefundPrice + ')' : '';
+                            ret += (row.tRefundPrice > 0) ? '<br>(' + row.tRefundPrice + ')' : '';
                             return ret;
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             var ret = row.CompleteDatm;
-                            ret += (row.RefundDatm > 0) ? ' (' + row.RefundDatm + ')' : '';
+                            ret += (row.tRefundPrice > 0) ? '<br>(' + row.RefundDatm + ')' : '';
                             return ret;
                         }},
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
@@ -193,8 +193,16 @@
             });
 
             // 전체 체크박스 이벤트
-            $("#all_check").on('change', function(event) {
-                $("input[name=selectMember]").prop('checked', $("#all_check").prop("checked"));
+            $list_table.on('ifChanged', '#all_check', function() {
+                iCheckAll($list_table.find('input[name="selectMember"]'), $(this));
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/pass/lectureRoom/issue/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             $list_table.on('click', '.btn-member-seat-modify', function() {

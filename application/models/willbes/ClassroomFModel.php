@@ -1396,6 +1396,27 @@ class ClassroomFModel extends WB_Model
     }
 
     /**
+     * 맵정보조회
+     * @param $lr_unit_code
+     * @return mixed
+     */
+    public function getLectureRoomSeatForMap($lr_unit_code)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LrUnitCode' => $lr_unit_code
+            ]
+        ];
+        $column = 'SeatMapFileRoute, SeatMapFileName';
+        $from = "
+            FROM {$this->_table['lectureroom_r_unit']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
      * 회원좌석정보 데이터 조회
      * @param $arr_condition
      * @return mixed

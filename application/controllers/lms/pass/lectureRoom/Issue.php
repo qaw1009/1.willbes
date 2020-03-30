@@ -79,6 +79,54 @@ class Issue extends \app\controllers\BaseController
         ]);
     }
 
+    public function showMemberSeat($params = [])
+    {
+        if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true || empty($this->_reqG('prod_code_sub')) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $lr_code = $params[0];
+        $lr_unit_code = $params[1];
+        $order_idx = $this->_reqG('order_idx');
+        $prod_code_sub = $this->_reqG('prod_code_sub');
+
+        $data = $this->lectureRoomIssueModel->findLectureRoomMemberInfo($lr_code, $lr_unit_code, $order_idx, $prod_code_sub);
+        if (empty($data) === true) {
+            show_error('조회된 회원 좌석 정보가 없습니다.');
+        }
+
+        /*$sub_data = $this->lectureRoomIssueModel->findLectureRoomMemberSeatForProdCodeSub($data['OrderIdx'], $data['ProdCodeSubAll']);
+        if (empty($sub_data) === true) {
+            show_error('서브상품별 회원 좌석 정보가 없습니다.');
+        }*/
+
+        $this->load->view("pass/lecture_room/issue/show_member_seat", [
+            'data' => $data,
+            /*'sub_data' => $sub_data*/
+        ]);
+    }
+
+    public function listAjaxMemberProductSubData()
+    {
+        $order_idx = $this->_reqP('order_idx');
+        $prod_code_sub_all = $this->_reqP('prod_code_sub_all');
+        $list = [];
+        $count = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(true, $order_idx, $prod_code_sub_all);
+        if ($count > 0) {
+            $list = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(false, $order_idx, $prod_code_sub_all, $this->_reqP('length'), $this->_reqP('start'));
+        }
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+
+        ]);
+    }
+
+    /**
+     * 좌석상태 모달창
+     * @param array $params
+     */
     public function modifyMemberSeatModal($params = [])
     {
         if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true || empty($this->_reqG('prod_code_sub')) === true) {

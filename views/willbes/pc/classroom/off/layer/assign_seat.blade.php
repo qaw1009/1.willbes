@@ -82,7 +82,7 @@
             <input type="hidden" id="seat_num" name="seat_num" value="" title="강의실회차좌석번호">
 
             <div class="PASSZONE-Lec-Section mt25">
-                <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="#" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
+                <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="javascript:show_map('{{ $lec_data['LrUnitCode'] }}');" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
                 <div class="strong mt25 tx-gray h22">
                     · 좌석선택하기 : 좌석 변경은 좌석선택기간 안에만 가능하오니, 좌석배치도를 확인하신 후 신중히 선택해 주시기 바랍니다.
                 </div>
@@ -157,4 +157,8 @@
             }
         }, showValidateError, null, false, 'alert');
     });
+
+    function show_map(lr_unit_code) {
+        popupOpen('{{front_url('/classroom/off/showSeatMap/')}}' + lr_unit_code, 'seatMap', 1100, 800, null, null, 'no', 'no');
+    }
 </script>

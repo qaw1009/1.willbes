@@ -10,7 +10,7 @@ class OrderModel extends BaseOrderModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['_lms/pay/salesProduct', '_lms/pay/orderList', '_lms/sys/site', '_lms/crm/send/sms']);
+        $this->load->loadModels(['_lms/pay/salesProduct', '_lms/pay/orderList', '_lms/sys/site', '_lms/crm/send/sms', '_lms/pass/lectureRoomIssue']);
     }
 
     /**
@@ -273,6 +273,12 @@ class OrderModel extends BaseOrderModel
                     if ($is_seat_cancel !== true) {
                         throw new \Exception($is_seat_cancel);
                     }
+                }
+
+                //강의실좌석 취소
+                $is_lectureroom_seat_cancel = $this->lectureRoomIssueModel->refundLectureRoom($order_idx,$row['ProdCode']);
+                if ($is_lectureroom_seat_cancel !== true) {
+                    throw new \Exception($is_lectureroom_seat_cancel);
                 }
 
                 // 환불상품 데이터 저장

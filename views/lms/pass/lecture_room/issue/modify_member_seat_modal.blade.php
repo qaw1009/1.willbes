@@ -61,14 +61,18 @@
             </label>
             <div class="col-md-5">
                 <p class="form-control-static mb-20"><span class="blue">[강의실명]</span> {{$data['LectureRoomName']}} | {{$data['UnitName']}} <span class="blue">[좌석번호]</span> {{$data['SeatNo']}}<br>
-                    <span class="blue">[좌석선택기간]</span> {{$data['SeatChoiceStartDate']}} ~ {{$data['SeatChoiceEndDate']}}</p>
+                    <span class="blue">[좌석상태]</span> {{ $data['MemSeatStatusCcdName'] }} <span class="blue">[좌석선택기간]</span> {{$data['SeatChoiceStartDate']}} ~ {{$data['SeatChoiceEndDate']}}</p>
             </div>
             <label class="control-label col-md-1-1">단과반정보
             </label>
             <div class="col-md-4">
-                <p class="form-control-static">
-                    {{$data['ProdNameSub']}}
-                </p>
+                @php
+                    $prod_sub_name = [];
+                    if (empty($data['ProdNameSub']) === false) { $prod_sub_name = explode(',', $data['ProdNameSub']); }
+                    foreach ($prod_sub_name as $key => $val) {
+                        echo "<p class='form-control-static'>{$val}</p>";
+                    }
+                @endphp
             </div>
         </div>
 
@@ -94,7 +98,7 @@
                         @foreach($seat_data as $row)
                             @php
                                 $btn_type = '';
-                                if ($row['LrrursIdx'] == $data['LrrursIdx']) {
+                                /*if ($row['LrrursIdx'] == $data['LrrursIdx']) {
                                     switch ($data['MemSeatStatusCcd']) {
                                         case "728003" : $btn_type = 'bg-orange'; break;
                                         case "728004" : $btn_type = 'bg-dark'; break;
@@ -107,6 +111,12 @@
                                         case "727003" : $btn_type = 'btn-danger'; break;
                                         default : $btn_type = 'btn-default';
                                     }
+                                }*/
+                                switch ($row['SeatStatusCcd']) {
+                                    case "727001" : $btn_type = 'btn-default'; break;
+                                    case "727002" : $btn_type = 'btn-primary'; break;
+                                    case "727003" : $btn_type = 'btn-danger'; break;
+                                    default : $btn_type = 'btn-default';
                                 }
                             @endphp
                             <li>

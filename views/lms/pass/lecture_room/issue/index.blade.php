@@ -13,17 +13,21 @@
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                                <option value="{{ $row['CampusCcd'] }}_{{ $row['SiteCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_lectureroom_idx" name="search_lectureroom_idx">
-                            <option value="">강의실명</option>
-                            {{-- TODO
-                            @foreach($arr_search_data['lectureroom'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
+                        <select class="form-control" id="search_lr_code" name="search_lr_code">
+                            <option value="">마스터강의실명</option>
+                            @foreach($lecture_room_info['master'] as $row)
+                                <option value="{{$row['LrCode']}}" class="{{ $row['CampusCcd'] }}_{{ $row['SiteCode'] }}">{{$row['LectureRoomName']}}</option>
                             @endforeach
-                            --}}
+                        </select>
+                        <select class="form-control" id="search_lr_unit_code" name="search_lr_unit_code">
+                            <option value="">좌석정보</option>
+                            @foreach($lecture_room_info['unit'] as $row)
+                                <option value="{{$row['LrUnitCode']}}" class="{{$row['LrCode']}}">{{$row['UnitName']}}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -109,6 +113,7 @@
                         <th class="valign-middle">상품명</th>
                         <th class="valign-middle">강의실명</th>
                         <th class="valign-middle">좌석정보명</th>
+                        <th class="valign-middle">좌석번호</th>
                         <th class="valign-middle">결제상태</th>
                         <th class="valign-middle">결제금액 (환불금액)</th>
                         <th class="valign-middle">결제완료일 (환불완료일)</th>
@@ -127,7 +132,14 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            // 날짜검색 디폴트 셋팅
+            if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
+                setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+            }
+
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_lr_code"]').chained("#search_campus_ccd");
+            $search_form.find('select[name="search_lr_unit_code"]').chained("#search_lr_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -160,13 +172,14 @@
                             return row.MemName + '<Br>' + '('+row.MemId+')';
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            return row.Tel1 + '-' + row.Tel2 + '-' + row.Tel3;
+                            return (row.Tel1 == null) ? '없음' : row.Tel1 + '-' + row.Tel2 + '-' + row.Tel3;
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue">['+row.LearnPatternCcdName+']</span> ' + row.ProdName;
+                            return '<span class="blue">['+row.ProdCode+']'+'['+row.LearnPatternCcdName+']</span> ' + row.ProdName;
                         }},
                     {'data' : 'LectureRoomName'},
                     {'data' : 'UnitName'},
+                    {'data' : 'SeatNo'},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return row.PayStatusCcdName;
                         }},
@@ -206,7 +219,8 @@
             });
 
             $list_table.on('click', '.btn-member-seat-modify', function() {
-                var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + '?order_idx=' + $(this).data('order-idx') + '&prod_code_sub=' + $(this).data('prod-code-sub');
+                /*var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + '?order_idx=' + $(this).data('order-idx') + '&prod_code_sub=' + $(this).data('prod-code-sub') + dtParamsToQueryString($datatable);*/
+                var param = $(this).data('lr-code') + '/' + $(this).data('lr-unit-code') + dtParamsToQueryString($datatable) + '&order_idx=' + $(this).data('order-idx') + '&prod_code_sub=' + $(this).data('prod-code-sub');
                 if ($(this).data("learn-pattern") == '615007') {
                     location.href = "{{ site_url('/pass/lectureRoom/issue/showMemberSeat/') }}" + param;
                 } else {

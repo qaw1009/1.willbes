@@ -84,13 +84,15 @@
                             @php
                                 $btn_type = '';
                                 switch ($key) {
-                                    case "727001" : $btn_type = 'btn-default'; break;
-                                    case "727002" : $btn_type = 'btn-primary'; break;
-                                    case "727003" : $btn_type = 'btn-danger'; break;
+                                    case "727001" : $btn_type = 'bg-info'; break;
+                                    case "727002" : $btn_type = 'bg-blue'; break;
+                                    case "727003" : $btn_type = 'bg-gray-custom'; break;
                                 }
                             @endphp
                             <li><span class="color-box {{$btn_type}}">-</span> {{$val}}</li>
                         @endforeach
+                        <li><span class="color-box bg-orange">-</span> 해당회원</li>
+                        <li><span class="color-box bg-red">-</span> 퇴실</li>
                     </ul>
                 </div>
                 @if (empty($seat_data) === false)
@@ -98,29 +100,23 @@
                         @foreach($seat_data as $row)
                             @php
                                 $btn_type = '';
-                                /*if ($row['LrrursIdx'] == $data['LrrursIdx']) {
+                                if ($row['MemIdx'] == $data['MemIdx'] && $row['LrrursIdx'] == $data['LrrursIdx']) {
                                     switch ($data['MemSeatStatusCcd']) {
-                                        case "728003" : $btn_type = 'bg-orange'; break;
+                                        case "728003" : $btn_type = 'bg-red'; break;
                                         case "728004" : $btn_type = 'bg-dark'; break;
                                         default : $btn_type = 'bg-orange';
                                     }
                                 } else {
                                     switch ($row['SeatStatusCcd']) {
-                                        case "727001" : $btn_type = 'btn-default'; break;
-                                        case "727002" : $btn_type = 'btn-primary'; break;
-                                        case "727003" : $btn_type = 'btn-danger'; break;
-                                        default : $btn_type = 'btn-default';
+                                        case "727001" : $btn_type = 'bg-info'; break;
+                                        case "727002" : $btn_type = 'bg-blue'; break;
+                                        case "727003" : $btn_type = 'bg-gray-custom'; break;
+                                        default : $btn_type = 'bg-info';
                                     }
-                                }*/
-                                switch ($row['SeatStatusCcd']) {
-                                    case "727001" : $btn_type = 'btn-default'; break;
-                                    case "727002" : $btn_type = 'btn-primary'; break;
-                                    case "727003" : $btn_type = 'btn-danger'; break;
-                                    default : $btn_type = 'btn-default';
                                 }
                             @endphp
                             <li>
-                                <button type="button" id="_seat_{{$row['SeatNo']}}" class="btn {{$btn_type}} btn_choice_seat btn"
+                                <button type="button" id="_seat_{{$row['SeatNo']}}" class="btn {{$btn_type}} btn_choice_seat" style="border: 1px solid #989898 !important;"
                                         data-lr-rurs-idx="{{$row['LrrursIdx']}}"
                                         data-seat-type="{{$row['SeatStatusCcd']}}"
                                         data-seat-num="{{$row['SeatNo']}}"

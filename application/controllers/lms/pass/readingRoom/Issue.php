@@ -38,14 +38,18 @@ class Issue extends \app\controllers\BaseController
 
         //독서실명(정보 LrIdx)
         $arr_condition = [
-            'IsStatus' => 'Y'
+            'EQ' => [
+                'IsStatus' => 'Y',
+                'MangType' => $mang_type
+            ]
         ];
-        $reading_info = $this->readingRoomModel->listReadingRoomInfo($arr_condition, 'LrIdx, Name AS ReadingRoomName');
-        $arr_search_data['readingroom'] = array_pluck($reading_info, 'ReadingRoomName', 'LrIdx');
+
+        $arr_search_data['readingroom'] = $this->readingRoomModel->listReadingRoomInfo($arr_condition, 'LrIdx, Name AS ReadingRoomName, CampusCcd');
 
         $this->load->view("pass/reading_room/issue/index", [
             'offLineSite_list' => $offLineSite_list,
             'offLineSite_def_code' => $offLineSite_def_code,
+            'mang_type' => $mang_type,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
             'arr_search_data' => $arr_search_data,
@@ -278,12 +282,16 @@ class Issue extends \app\controllers\BaseController
     public function excel()
     {
         $mang_type = $this->_req('mang_type');
+        $_POST['search_readingroom_idx'] = null;    //사물함 조건 제거
         $arr_condition = $this->_getListConditions();
 
         $list = [];
         $count = $this->readingRoomModel->listSeatDetail($mang_type, true, $arr_condition);
-
-        $headers = ['사물함코드', '사물함명', '좌석번호', '회원명', '아이디', '연락처', '주문번호', '결제완료일', '캠퍼스', '결제금액', '결제상태', '예치금', '대여시작일', '대여종료일', '좌성상태', '등록자', '등록일', ];
+        $mang_name = ($mang_type == 'R' ? '독서실' : '사물함');
+        $prod_code_name = ($mang_type == 'R' ? '독서실코드' : '사물함코드');
+        $reading_room_name = ($mang_type == 'R' ? '독서실명' : '사물함명');
+        $now_m_idx_name = ($mang_type == 'R' ? '좌석번호' : '사물함번호');
+        $headers = [$prod_code_name, $reading_room_name, $now_m_idx_name, '회원명', '아이디', '연락처', '주문번호', '결제완료일', '캠퍼스', '결제금액', '결제상태', '예치금', '대여시작일', '대여종료일', '좌석상태', '등록자', '등록일' ];
         $excel_column = 'op.ProdCode, b.ReadingRoomName, b.NowMIdx, m.MemName, m.MemId, fn_dec(m.PhoneEnc) AS MemPhone,
                         o.OrderNo, o.OrderDatm, fn_ccd_name(b.CampusCcd) AS CampusName, op.OrderPrice, fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
                         IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName,
@@ -294,7 +302,7 @@ class Issue extends \app\controllers\BaseController
             $list = $this->readingRoomModel->listSeatDetail($mang_type, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by, $excel_column);
         }
         $last_query = $this->readingRoomModel->getLastQuery();
-        $this->_makeExcel('사물함 신청현황', $list, $headers, true, $last_query);
+        $this->_makeExcel($mang_name . ' 신청현황', $list, $headers, true, $last_query);
     }
 
     /**

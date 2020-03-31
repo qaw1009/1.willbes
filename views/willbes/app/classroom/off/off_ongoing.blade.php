@@ -87,7 +87,7 @@
                                     {{$row['ProdName']}}
                                 </div>
                                 <dl class="w-info acad tx-gray">
-                                    <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt>
+                                    {{-- <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt> --}}
                                     @if($row['PackTypeCcd'] == '648003')
                                         <dt class="tx-red">※ 강사 선택하기는 PC버전에서만 가능합니다.</dt>
                                     @endif

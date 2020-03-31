@@ -11,8 +11,8 @@
             <div class="willbes-Leclist c_both">
                 <div class="c_both mb30">
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" class="on">단과반 ({{count($list)}})</a></li>
-                        <li><a href="#Mypagetab2">종합반 ({{count($pkglist)}})</a></li>
+                        <li><a href="#Mypagetab1" id="tab1" class="on">단과반 ({{count($list)}})</a></li>
+                        <li><a href="#Mypagetab2" id="tab2">종합반 ({{count($pkglist)}})</a></li>
                     </ul>
                 </div>
                 <div id="Mypagetab1">
@@ -24,14 +24,14 @@
                                     <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
                                 @endforeach
                             </select>
-                        <!--
+                        {{--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                             <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                                 </select>
--->
+                                --}}
                             <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                                 <option selected="selected" value="">과목</option>
                                 @foreach($subject_arr as $row )
@@ -150,7 +150,7 @@
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>
                                 <col>
-                                <col style="width: 140px;">
+                                {{-- <col style="width: 140px;"> --}}
                                 <col style="width: 120px;">
                             </colgroup>
                             <tbody>
@@ -159,8 +159,8 @@
                                     <td class="w-data tx-left pl10">
                                         <div class="w-tit">{{$row['ProdName']}}</div>
                                     </td>
-                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
-                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
+                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
                                     @if($row['PackTypeCcd'] == '648003')
                                         <td class="w-answer p_re">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
@@ -292,6 +292,12 @@
             $('.onoffSeatBox').on('click', function () {
                 $('#seat_box_'+$(this).data('seat-box-id')).toggle();
             });
+
+            @if($tab != '')
+            $('a[id^=tab]').removeClass('on');
+            $('#tab{{$tab}}').addClass('on');
+            $('#tab{{$tab}}').get(0).click();
+            @endif
         });
 
         function AssignProf(o,op)

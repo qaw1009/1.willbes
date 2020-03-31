@@ -44,7 +44,7 @@ class Issue extends \app\controllers\BaseController
             ]
         ];
 
-        $arr_search_data['readingroom'] = $this->readingRoomModel->listReadingRoomInfo($arr_condition, 'LrIdx, Name AS ReadingRoomName, CampusCcd');
+        $arr_search_data['readingroom'] = $this->readingRoomModel->listReadingRoomInfo($arr_condition, 'LrIdx, Name AS ReadingRoomName, CampusCcd, SiteCode');
 
         $this->load->view("pass/reading_room/issue/index", [
             'offLineSite_list' => $offLineSite_list,
@@ -282,7 +282,6 @@ class Issue extends \app\controllers\BaseController
     public function excel()
     {
         $mang_type = $this->_req('mang_type');
-        $_POST['search_readingroom_idx'] = null;    //사물함 조건 제거
         $arr_condition = $this->_getListConditions();
 
         $list = [];

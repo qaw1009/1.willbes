@@ -1020,6 +1020,8 @@ select[disabled] {
 .tx-red {
   color: #ed1c24 !important;
 }
+.tx-orange {color:#f2370a !important;
+}
 .tx-pink {
   color: #f14078 !important;
 }

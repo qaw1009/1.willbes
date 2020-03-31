@@ -79,6 +79,109 @@ class Issue extends \app\controllers\BaseController
         ]);
     }
 
+    public function excel()
+    {
+        $headers = ['주문번호', '회원명', '연락처', '상품명', '강의실명', '좌석정보명', '좌석번호', '결제상태', '결제금액', '환불금액', '결제완료일', '환불완료일'];
+        $file_name = '좌석신청현황_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        $arr_condition = [
+            'EQ' => [
+                'lrsr.OrderNum' => 1,   //1의 값만 노출
+                'lr.SiteCode' => $this->_reqP('search_site_code'),
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'mb.MemName' => $this->_reqP('search_member_value'),
+                    'mb.MemId' => $this->_reqP('search_member_value'),
+                    'mb.Phone3' => $this->_reqP('search_member_value'),
+                ]
+            ],
+            'ORG2' => [
+                'EQ' => [
+                    'o.OrderIdx' => $this->_reqP('search_prod_value'),
+                    'o.OrderNo' => $this->_reqP('search_prod_value'),
+                    'p.ProdCode' => $this->_reqP('search_prod_value')
+                ],
+                'LKB' => [
+                    'p.ProdName' => $this->_reqP('search_prod_value')
+                ]
+            ]
+        ];
+
+        // 날짜 검색
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        switch ($this->_reqP('search_date_type')) {
+            case 'paid' :
+                $arr_condition['BDT'] = ['o.CompleteDatm' => [$search_start_date, $search_end_date]];
+                break;
+            case 'refund' :
+                $arr_condition['BDT'] = ['opr.RefundDatm' => [$search_start_date, $search_end_date]];
+                break;
+        }
+
+        $column = "
+            o.OrderNo, mb.MemName, concat(mbo.Tel1, '-', fn_dec(mbo.Tel2Enc), '-', mbo.Tel3) AS MemTel, p.ProdName, lr.LectureRoomName, lrru.UnitName, , lrrurs.SeatNo
+            ,fn_ccd_name(op.PayStatusCcd), o.RealPayPrice, fn_order_refund_price(o.OrderIdx, 0, 'refund') AS tRefundPrice, o.CompleteDatm, opr.RefundDatm
+        ";
+
+        $list = $this->lectureRoomIssueModel->excel($arr_condition, $column);
+
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->lectureRoomIssueModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    public function showMemberSeat($params = [])
+    {
+        if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true || empty($this->_reqG('prod_code_sub')) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $lr_code = $params[0];
+        $lr_unit_code = $params[1];
+        $order_idx = $this->_reqG('order_idx');
+        $prod_code_sub = $this->_reqG('prod_code_sub');
+
+        $data = $this->lectureRoomIssueModel->findLectureRoomMemberInfo($lr_code, $lr_unit_code, $order_idx, $prod_code_sub);
+        if (empty($data) === true) {
+            show_error('조회된 회원 좌석 정보가 없습니다.');
+        }
+        $this->load->view("pass/lecture_room/issue/show_member_seat", [
+            'data' => $data,
+            /*'sub_data' => $sub_data*/
+        ]);
+    }
+
+    public function listAjaxMemberProductSubData()
+    {
+        $order_idx = $this->_reqP('order_idx');
+        $prod_code_sub_all = $this->_reqP('prod_code_sub_all');
+        $list = [];
+        $count = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(true, $order_idx, $prod_code_sub_all);
+        if ($count > 0) {
+            $list = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(false, $order_idx, $prod_code_sub_all, $this->_reqP('length'), $this->_reqP('start'));
+        }
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+
+        ]);
+    }
+
+    /**
+     * 좌석상태 모달창
+     * @param array $params
+     */
     public function modifyMemberSeatModal($params = [])
     {
         if (empty($params[0]) === true || empty($params[1]) === true || empty($this->_reqG('order_idx')) === true || empty($this->_reqG('prod_code_sub')) === true) {

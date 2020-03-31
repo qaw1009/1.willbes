@@ -236,7 +236,7 @@ class StatsOrderModel extends BaseStatsModel
 
 
     /**
-     * 결제채널 : PC, Mobile
+     * 결제루트 : PC, Mobile
      * @param array $arr_input
      * @return mixed
      */
@@ -249,7 +249,6 @@ class StatsOrderModel extends BaseStatsModel
                 'IN' => ['OP.PayStatusCcd' => ["676001", "676006"]],
             ]
         );
-
 
         $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
 
@@ -269,6 +268,38 @@ class StatsOrderModel extends BaseStatsModel
         return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
     }
 
+    /**
+     * 결제수단
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getOrderMethod($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $pay_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['O.CompleteDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'IN' => ['OP.PayStatusCcd' => ["676001", "676006"]],
+            ]
+        );
+
+        $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
+
+        $column = 'O.PayMethodCcd, SC.CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
+
+        $from = '   from '. $this->_table['order'] .' as O
+                            join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
+                            left join '. $this->_table['order_refund'] .' as OPR on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                            join '. $this->_table['code'] .' SC on O.PayMethodCcd = SC.Ccd
+                        where 1=1
+                         '. $pay_where .'
+                        group by O.PayMethodCcd
+        ';
+
+        $order_by = ' order by SC.OrderNum';
+
+        return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
+    }
 
 
     function _setCondition($arr_input=[])

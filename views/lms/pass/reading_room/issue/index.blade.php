@@ -38,14 +38,14 @@
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_search_data['campus'] as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                                <option value="{{ $row['CampusCcd'] }}" data-chained="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
 
                         <select class="form-control" id="search_readingroom_idx" name="search_readingroom_idx">
                             <option value="">{{$mang_title}}명</option>
                             @foreach($arr_search_data['readingroom'] as $key => $val)
-                                <option value="{{ $val['LrIdx'] }}" class="{{ $val['CampusCcd'] }}">{{ $val['ReadingRoomName'] }}</option>
+                                <option value="{{ $val['LrIdx'] }}" data-chained="{{$val['SiteCode']}}+{{$val['CampusCcd']}}">{{ $val['ReadingRoomName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -135,14 +135,15 @@
         </div>
     </div>
 
+    <script src="/public/vendor/jquery/chained/jquery.chained2.min.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_readingroom_idx"]').chained("#search_campus_ccd");
+            $search_form.find('select[name="search_campus_ccd"]').chained2("#search_site_code");
+            $search_form.find('select[name="search_readingroom_idx"]').chained2("#search_site_code, #search_campus_ccd");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -228,20 +229,7 @@
 
             // 엑셀다운로드 이벤트
             $('.btn-excel').on('click', function(event) {
-
-                var search_readingroom_idx_val = $search_form.find('select[name="search_readingroom_idx"]').val();
-                var search_readingroom_idx_text = $search_form.find('select[name="search_readingroom_idx"] option:checked').text();
-                /*
-                if(!search_readingroom_idx_val){
-                    alert('검색조건에서 사물함명을 선택해 주세요');
-                    return false;
-                }
-                */
-                event.preventDefault();
-                //if (confirm(search_readingroom_idx_text + ' 사물함 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type='.$mang_type) }}', $search_form.serializeArray(), 'POST');
-                //}
-
+                formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type='.$mang_type) }}', $search_form.serializeArray(), 'POST');
             });
         });
     </script>

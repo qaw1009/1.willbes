@@ -45,7 +45,7 @@
                         <select class="form-control" id="search_readingroom_idx" name="search_readingroom_idx">
                             <option value="">{{$mang_title}}명</option>
                             @foreach($arr_search_data['readingroom'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
+                                <option value="{{ $val['LrIdx'] }}" class="{{ $val['CampusCcd'] }}">{{ $val['ReadingRoomName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -142,6 +142,7 @@
 
         $(document).ready(function() {
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_readingroom_idx"]').chained("#search_campus_ccd");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -230,14 +231,16 @@
 
                 var search_readingroom_idx_val = $search_form.find('select[name="search_readingroom_idx"]').val();
                 var search_readingroom_idx_text = $search_form.find('select[name="search_readingroom_idx"] option:checked').text();
+                /*
                 if(!search_readingroom_idx_val){
                     alert('검색조건에서 사물함명을 선택해 주세요');
                     return false;
                 }
+                */
                 event.preventDefault();
-                if (confirm(search_readingroom_idx_text + ' 사물함 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type=L') }}', $search_form.serializeArray(), 'POST');
-                }
+                //if (confirm(search_readingroom_idx_text + ' 사물함 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type='.$mang_type) }}', $search_form.serializeArray(), 'POST');
+                //}
 
             });
         });

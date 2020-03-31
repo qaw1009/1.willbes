@@ -215,7 +215,8 @@ class Player extends \app\controllers\FrontController
         switch($quility){
             case 'WD':
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 break;
 
             case 'HD':
@@ -230,7 +231,8 @@ class Player extends \app\controllers\FrontController
 
             default:
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 $quility = 'WD';
                 break;
         }
@@ -238,7 +240,8 @@ class Player extends \app\controllers\FrontController
         // 동영상 경로가 없을때 다른 경로로 재생
         if(empty($filename) === true){
             $filename = $data['wWD'];
-            $ratio = 21;
+            //$ratio = 21;
+            $ratio = $data['wRatio'];
             $quility = 'WD';
         }
         if(empty($filename) === true){
@@ -347,7 +350,8 @@ class Player extends \app\controllers\FrontController
         switch($quility){
             case 'WD':
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 break;
 
             case 'HD':
@@ -362,7 +366,8 @@ class Player extends \app\controllers\FrontController
 
             default:
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 $quility = 'WD';
                 break;
         }
@@ -370,7 +375,8 @@ class Player extends \app\controllers\FrontController
         // 동영상 경로가 없을때 다른 경로로 재생
         if(empty($filename) === true){
             $filename = $data['wWD'];
-            $ratio = 21;
+            //$ratio = 21;
+            $ratio = $data['wRatio'];
             $quility = 'WD';
         }
         if(empty($filename) === true){
@@ -408,7 +414,6 @@ class Player extends \app\controllers\FrontController
                 'title' => $data['wUnitName'],
                 'quility' => $quility,
                 'startPosition' => 0,
-                'ratio' => 21,
                 'isIntro' => false,
                 'ratio' => $ratio,
                 'startPosition' => 0,
@@ -452,7 +457,8 @@ class Player extends \app\controllers\FrontController
         switch($quility){
             case 'WD':
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 break;
 
             case 'HD':
@@ -467,7 +473,8 @@ class Player extends \app\controllers\FrontController
 
             default:
                 $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
+                //$ratio = 21; // 초 와이드는 고정
+                $ratio = $data['wRatio'];
                 $quility = 'WD';
                 break;
         }
@@ -475,7 +482,8 @@ class Player extends \app\controllers\FrontController
         // 동영상 경로가 없을때 다른 경로로 재생
         if(empty($filename) === true){
             $filename = $data['wWD'];
-            $ratio = 21;
+            //$ratio = 21;
+            $ratio = $data['wRatio'];
             $quility = 'WD';
         }
         if(empty($filename) === true){
@@ -513,7 +521,6 @@ class Player extends \app\controllers\FrontController
                 'title' => $data['wUnitName'],
                 'quility' => $quility,
                 'startPosition' => 0,
-                'ratio' => 21,
                 'isIntro' => false,
                 'ratio' => $ratio,
                 'startPosition' => 0,

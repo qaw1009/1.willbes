@@ -48,6 +48,7 @@ class Off extends \app\controllers\FrontController
         // 검색
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
+        $tab = (empty($this->_req("tab")) == true) ? '' : $this->_req("tab");
 
         // 셀렉트박스 수해오기
         $cond_arr = [
@@ -136,7 +137,8 @@ class Off extends \app\controllers\FrontController
             'list' => $leclist,
             'pkglist' => $pkglist,
             'listLectureRoom' => $listLectureRoom,
-            'pkgLectureRoom' => $pkgLectureRoom
+            'pkgLectureRoom' => $pkgLectureRoom,
+            'tab' => $tab
         ]);
     }
 
@@ -309,6 +311,12 @@ class Off extends \app\controllers\FrontController
         $sub_prod_rows = $this->classroomFModel->getOffPackageSubLectgure([
             'EQ' => [
                 'PS.ProdCode' => $pkginfo['ProdCode']
+            ],
+            'LTE' => [
+                'VP.ProfChoiceStartDate' => $today
+            ],
+            'GTE' => [
+                'VP.ProfChoiceEndDate' => $today
             ]
         ]);
 

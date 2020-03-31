@@ -15,14 +15,18 @@ class Issue extends \app\controllers\BaseController
     {
         $arr_site_code = get_auth_on_off_site_codes('Y', true);
         $def_site_code = key($arr_site_code);
-        $def_site_code = 2004;
         $arr_campus = $this->siteModel->getSiteCampusArray('');
+        //마스터강의실정보
+        $lecture_room_info['master'] = $this->lectureRoomRegistModel->listLectureRoom();
+        //회차정보
+        $lecture_room_info['unit'] = $this->lectureRoomRegistModel->listLectureRoomUnit();
         $arr_pay_status_ccd = $this->codeModel->getCcd('676');
 
         $this->load->view("pass/lecture_room/issue/index", [
             'arr_site_code' => $arr_site_code,
             'def_site_code' => $def_site_code,
             'arr_campus' => $arr_campus,
+            'lecture_room_info' => $lecture_room_info,
             'arr_pay_status_ccd' => $arr_pay_status_ccd
         ]);
     }
@@ -33,6 +37,9 @@ class Issue extends \app\controllers\BaseController
             'EQ' => [
                 'lrsr.OrderNum' => 1,   //1의 값만 노출
                 'lr.SiteCode' => $this->_reqP('search_site_code'),
+                'lr.CampusCcd' => explode('_', $this->_reqP('search_campus_ccd'))[0],
+                'lr.LrCode' => $this->_reqP('search_lr_code'),
+                'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
             ],
             'ORG1' => [
                 'LKB' => [
@@ -88,6 +95,9 @@ class Issue extends \app\controllers\BaseController
             'EQ' => [
                 'lrsr.OrderNum' => 1,   //1의 값만 노출
                 'lr.SiteCode' => $this->_reqP('search_site_code'),
+                'lr.CampusCcd' => explode('_', $this->_reqP('search_campus_ccd'))[0],
+                'lr.LrCode' => $this->_reqP('search_lr_code'),
+                'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
             ],
             'ORG1' => [
                 'LKB' => [
@@ -121,7 +131,7 @@ class Issue extends \app\controllers\BaseController
         }
 
         $column = "
-            o.OrderNo, mb.MemName, concat(mbo.Tel1, '-', fn_dec(mbo.Tel2Enc), '-', mbo.Tel3) AS MemTel, p.ProdName, lr.LectureRoomName, lrru.UnitName, , lrrurs.SeatNo
+            o.OrderNo, mb.MemName, concat(mbo.Tel1, '-', fn_dec(mbo.Tel2Enc), '-', mbo.Tel3) AS MemTel, p.ProdName, lr.LectureRoomName, lrru.UnitName, lrrurs.SeatNo
             ,fn_ccd_name(op.PayStatusCcd), o.RealPayPrice, fn_order_refund_price(o.OrderIdx, 0, 'refund') AS tRefundPrice, o.CompleteDatm, opr.RefundDatm
         ";
 
@@ -165,16 +175,9 @@ class Issue extends \app\controllers\BaseController
     {
         $order_idx = $this->_reqP('order_idx');
         $prod_code_sub_all = $this->_reqP('prod_code_sub_all');
-        $list = [];
-        $count = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(true, $order_idx, $prod_code_sub_all);
-        if ($count > 0) {
-            $list = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub(false, $order_idx, $prod_code_sub_all, $this->_reqP('length'), $this->_reqP('start'));
-        }
+        $data = $this->lectureRoomIssueModel->listLectureRoomMemberSeatForProdCodeSub($order_idx, $prod_code_sub_all);
         return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list,
-
+            'data' => $data,
         ]);
     }
 

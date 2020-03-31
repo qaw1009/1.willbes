@@ -10,6 +10,7 @@ class LectureRoomRegistModel extends WB_Model
         'lectureroom_seat_register' => 'lms_lectureroom_seat_register',
         'product_r_lectureroom' => 'lms_product_r_lectureroom',
         'lectureroom_log' => 'lms_lectureroom_log',
+        'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'member' => 'lms_member',
         'admin' => 'wbs_sys_admin',
@@ -457,7 +458,7 @@ class LectureRoomRegistModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-                lg.LogIdx, lg.LrCode, lg.LrUnitCode, lg.SeatStatusCcd, lg.LrrursIdx, lg.LrsrIdx, lg.OrderProdIdx, lg.MemIdx, lg.BeforeSeatNo, lg.AfterSeatNo, lg.Desc, lg.RegDatm
+                lg.LogIdx, lg.LrCode, lg.LrUnitCode, lg.SeatStatusCcd, o.OrderNo, lg.LrrursIdx, lg.LrsrIdx, lg.OrderProdIdx, lg.MemIdx, lg.BeforeSeatNo, lg.AfterSeatNo, lg.Desc, lg.RegDatm
                 ,sc.CcdName AS SeatStatusName
                 ,mem.MemId, mem.MemName
                 ,ad.wAdminName AS RegAdminName
@@ -470,6 +471,8 @@ class LectureRoomRegistModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $from = "
             FROM {$this->_table['lectureroom_log']} AS lg
+            INNER JOIN {$this->_table['order_product']} AS op ON lg.OrderProdIdx = op.OrderProdIdx
+            INNER JOIN {$this->_table['order']} AS o ON op.OrderIdx = o.OrderIdx
             INNER JOIN {$this->_table['sys_code']} AS sc ON lg.SeatStatusCcd = sc.Ccd
             LEFT JOIN {$this->_table['admin']} AS ad ON lg.RegAdminIdx = ad.wAdminIdx
             LEFT JOIN {$this->_table['member']} AS mem ON lg.MemIdx = mem.MemIdx

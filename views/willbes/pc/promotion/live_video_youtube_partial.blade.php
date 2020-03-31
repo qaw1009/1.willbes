@@ -64,7 +64,9 @@
     @endphp
 
     @if ($live_type == 'standby')
-        {{--방송 전--}}
+        {{--방송 전 4월 13일까지 보여지는 이미지--}}
+        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_live.jpg" title="방송전">
+        {{--방송 전 4월 13일이후 보여지는 이미지--}}
         <img src="https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg" title="방송전">
     @elseif ($live_type == 'on' && $live_video_type == 'on')
         <div class="movieplayer">

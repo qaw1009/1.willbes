@@ -57,7 +57,14 @@
                                     {{$row['subProdName']}}
                                 </div>
                                 <dl class="w-info acad tx-gray">
-                                    <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt>
+                                    @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                        <dt>
+                                            (수강증번호 : {{$row['CertNo']}})<span class="row-line">|</span>
+                                        </dt>
+                                    @endif
+                                    <dt>
+                                        수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}<span class="row-line">|</span>
+                                    </dt>
                                     <dt>요일/회차 : {{$row['WeekArrayName']}} {{$row['Amount']}}회차<span class="row-line">|</span>
                                         @if($row['StudyStartDate'] > date('Y-m-d', time()))
                                             {{str_replace('-', '.', $row['StudyStartDate'])}}<br/>
@@ -87,9 +94,14 @@
                                 <div class="w-tit">
                                     {{$row['ProdName']}}
                                 </div>
-                                {{-- <dl class="w-info acad tx-gray">
-                                    <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt>
-                                </dl> --}}
+                                <dl class="w-info acad tx-gray">
+                                    @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                        <dt>
+                                            (수강증번호 : {{$row['CertNo']}})
+                                        </dt>
+                                    @endif
+                                    {{-- <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt> --}}
+                                </dl>
                                 <div class="w-lecList">
                                     <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
                                     <ul>

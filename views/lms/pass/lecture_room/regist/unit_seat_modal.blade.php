@@ -308,7 +308,7 @@
                             // 리스트 번호
                             return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'OrderProdIdx'},
+                    {'data' : 'OrderNo'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.MemName == null) ? '' : row.MemName + '(' + row.MemId + ')';
                         }},

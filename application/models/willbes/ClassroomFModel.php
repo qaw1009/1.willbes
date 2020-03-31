@@ -1418,12 +1418,12 @@ class ClassroomFModel extends WB_Model
 
     /**
      * 회원좌석정보 데이터 조회
+     * @param string $column
      * @param $arr_condition
      * @return mixed
      */
-    public function getLectureRoomSeatRegister($arr_condition)
+    public function getLectureRoomSeatRegister($column = '*', $arr_condition)
     {
-        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub, lrsr.SeatStatusCcd as MemSeatStatusCcd';
         $from = "
             FROM {$this->_table['lectureroom_seat_register']} AS lrsr
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
@@ -1443,7 +1443,7 @@ class ClassroomFModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_rurs_idx', $form_data));
+            $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_code', $form_data), element('lr_unit_code', $form_data), element('lr_rurs_idx', $form_data));
             if (empty($chk_register_data) === false) {
                 throw new \Exception('이미 등록된 좌석입니다. 다른 좌석을 선택해 주세요.');
             }
@@ -1517,7 +1517,7 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
-            $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_rurs_idx', $form_data));
+            $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_code', $form_data), element('lr_unit_code', $form_data), element('lr_rurs_idx', $form_data));
             if (empty($chk_register_data) === false) {
                 throw new \Exception('이미 등록된 좌석입니다. 다른 좌석을 선택해 주세요.');
             }
@@ -1609,22 +1609,30 @@ class ClassroomFModel extends WB_Model
 
     /**
      * 사용중인 좌석 조회
+     * @param $lr_code
+     * @param $lr_unit_code
      * @param $lr_rurs_idx
-     * @return array
+     * @return mixed
      */
-    private function _findLectureRoomSeatRegister($lr_rurs_idx)
+    private function _findLectureRoomSeatRegister($lr_code, $lr_unit_code, $lr_rurs_idx)
     {
         $arr_condition = [
             'EQ' => [
+                'lrsr.LrCode' => $lr_code,
+                'lrsr.LrUnitCode' => $lr_unit_code,
                 'lrsr.LrrursIdx' => $lr_rurs_idx,
-                'lrsr.IsStatus' => 'Y',
-                'lrrurs.IsStatus' => 'Y'
             ],
-            'IN' => [
-                'lrsr.SeatStatusCcd' => ['728001','728002']
+            'ORG' => [
+                'IN' => [
+                    'lrrurs.SeatStatusCcd' => ['727002', '727003'], //좌석상태 : 사용중, 고장
+                    'lrsr.SeatStatusCcd' => ['728001', '728002']    //회원좌석상태 : 신규,자리이동
+                ]
+            ],
+            'NOTIN' => [
+                'lrsr.SeatStatusCcd' => ['728003', '728004']        //회원좌석상태 : 퇴실,환불
             ]
         ];
-        return $this->getLectureRoomSeatRegister($arr_condition);
+        return $this->getLectureRoomSeatRegister('lrsr.LrsrIdx', $arr_condition);
     }
 
     /**
@@ -1642,7 +1650,8 @@ class ClassroomFModel extends WB_Model
                 'lrsr.LrUnitCode' => element('lr_unit_code', $form_data)
             ]
         ];
-        return $this->getLectureRoomSeatRegister($arr_condition);
+        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub, lrsr.SeatStatusCcd as MemSeatStatusCcd';
+        return $this->getLectureRoomSeatRegister($column, $arr_condition);
     }
 
     /**
@@ -1661,7 +1670,8 @@ class ClassroomFModel extends WB_Model
             ],
             'IN' => ['lrsr.LrsrIdx' => explode(',',$old_arr_lrsr_idx)]
         ];
-        return $this->getLectureRoomSeatRegister($arr_condition);
+        $column = 'lrsr.LrsrIdx, lrsr.LrrursIdx, lrrurs.SeatNo, lrsr.ProdCodeSub, lrsr.SeatStatusCcd as MemSeatStatusCcd';
+        return $this->getLectureRoomSeatRegister($column, $arr_condition);
     }
 
     /**
@@ -1843,52 +1853,6 @@ class ClassroomFModel extends WB_Model
         }
         return true;
     }
-    /*private function _modifyLectureRoomSeatForMove($form_data = [], $old_register_data = [])
-    {
-        try {
-            //기존 회원 좌석 상태 수정 (퇴실)
-            $mod_data = [];
-            $now_lrrurs_idx = [];
-            foreach ($old_register_data as $key => $row) {
-                $mod_data[] = array(
-                    'LrsrIdx' => $row['LrsrIdx'],
-                    'SeatStatusCcd' => '728003',
-                    'IsStatus' => 'N',
-                    'UpdMemDatm' => date("Y-m-d H:i:s")
-                );
-
-                $now_lrrurs_idx[$row['LrrursIdx']] = $row['LrrursIdx'];
-            }
-            if($mod_data) $this->_conn->update_batch($this->_table['lectureroom_seat_register'], $mod_data, 'LrsrIdx');
-            if ($this->_conn->trans_status() === false) {
-                throw new Exception('기존좌석 퇴실 처리에 실패했습니다.');
-            }
-
-            //기존 좌석 상태 수정 (미사용)
-            $mod_data = [
-                'SeatStatusCcd' => '727001',
-                'UpdMemIdx' => $this->session->userdata('mem_idx'),
-                'UpdMemDatm' => date('Y-m-d H:i:s')
-            ];
-            $this->_conn->set($mod_data)->where_in('LrrursIdx', array_values($now_lrrurs_idx))->where('SeatStatusCcd','727002');
-            if($this->_conn->update($this->_table['lectureroom_r_unit_r_seat'])=== false) {
-                throw new \Exception('강의실회차 좌석상태 수정에 실패했습니다.');
-            }
-
-            //등록
-            if ($this->_modifyLectureRoomSeatRegister($form_data, $old_register_data) !== true) {
-                throw new \Exception('강의실 좌석 이동에 실패했습니다.');
-            }
-
-            //강의실회차좌석정보 상태 업데이트
-            if ($this->_modifyLectureRoomUnitSeatForAdd(element('lr_rurs_idx', $form_data)) !== true) {
-                throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return error_result($e);
-        }
-        return true;
-    }*/
 
     /**
      * 좌석이동 / 로그저장

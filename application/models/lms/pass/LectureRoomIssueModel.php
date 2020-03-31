@@ -41,7 +41,7 @@ class LectureRoomIssueModel extends WB_Model
         } else {
             $column = '
             lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.ProdCodeSub, lrrurs.SeatNo
-            ,o.OrderNo, lrsr.OrderIdx, lrsr.OrderProdIdx, p.ProdName, lr.LectureRoomName, lrru.UnitName, pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
+            ,o.OrderNo, lrsr.OrderIdx, lrsr.OrderProdIdx, p.ProdCode, p.ProdName, lr.LectureRoomName, lrru.UnitName, pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
             ,site.SiteName, mb.MemIdx, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
             ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             ,fn_ccd_name(op.PayStatusCcd) AS PayStatusCcdName
@@ -169,7 +169,7 @@ class LectureRoomIssueModel extends WB_Model
             , pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
             , lr.LectureRoomName, lrru.UnitName, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.TransverseNum
             , lrrurs.LrrursIdx, lrrurs.SeatNo, lrrurs.SeatStatusCcd, lrrurs.IsStatus AS SeatIsStatus, lrsr.SeatStatusCcd AS MemSeatStatusCcd, fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
-            , site.SiteName, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            , site.SiteName, lrsr.MemIdx, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
             , fn_ccd_name(lr.CampusCcd) AS CampusName
             , fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             , fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
@@ -179,14 +179,14 @@ class LectureRoomIssueModel extends WB_Model
                 FROM {$this->_table['lectureroom_seat_register']} AS a
                 INNER JOIN {$this->_table['product_r_sublecture']} AS b ON a.ProdCode = b.ProdCode AND a.ProdCodeSub = b.ProdCodeSub AND b.IsStatus = 'Y'
                 INNER JOIN {$this->_table['product']} AS c ON b.ProdCodeSub = c.ProdCode
-                WHERE a.ProdCode = lrsr.ProdCode AND a.LrUnitCode = lrsr.LrUnitCode
+                WHERE a.ProdCode = lrsr.ProdCode AND a.LrUnitCode = lrsr.LrUnitCode AND a.OrderIdx = lrsr.OrderIdx
             ) AS ProdNameSub
             ,(
                 SELECT GROUP_CONCAT(c.ProdCode)
                 FROM {$this->_table['lectureroom_seat_register']} AS a
                 INNER JOIN {$this->_table['product_r_sublecture']} AS b ON a.ProdCode = b.ProdCode AND a.ProdCodeSub = b.ProdCodeSub AND b.IsStatus = 'Y'
                 INNER JOIN {$this->_table['product']} AS c ON b.ProdCodeSub = c.ProdCode
-                WHERE a.ProdCode = lrsr.ProdCode AND a.LrUnitCode = lrsr.LrUnitCode
+                WHERE a.ProdCode = lrsr.ProdCode AND a.LrUnitCode = lrsr.LrUnitCode AND a.OrderIdx = lrsr.OrderIdx
             ) AS ProdCodeSubAll
         ";
 
@@ -195,7 +195,7 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['order_product']} AS op ON o.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['product']} AS p ON op.ProdCode = p.ProdCode
             INNER JOIN {$this->_table['product_lecture']} AS pl ON op.ProdCode = pl.ProdCode
-            INNER JOIN {$this->_table['lectureroom_seat_register']} AS lrsr ON op.ProdCode = lrsr.ProdCode
+            INNER JOIN {$this->_table['lectureroom_seat_register']} AS lrsr ON op.ProdCode = lrsr.ProdCode AND o.OrderIdx = lrsr.OrderIdx
             INNER JOIN {$this->_table['lectureroom']} AS lr ON lrsr.LrCode = lr.LrCode
             INNER JOIN {$this->_table['lectureroom_r_unit']} AS lrru ON lrsr.LrCode = lrru.LrCode AND lrsr.LrUnitCode = lrru.LrUnitCode
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
@@ -209,29 +209,20 @@ class LectureRoomIssueModel extends WB_Model
 
     /**
      * 서브상품관련 좌석정보
-     * @param bool $is_count
      * @param $order_idx
      * @param $prod_code_sub
-     * @param null $limit
-     * @param null $offset
      * @return mixed
      */
-    public function listLectureRoomMemberSeatForProdCodeSub($is_count = false, $order_idx, $prod_code_sub, $limit = null, $offset = null)
+    public function listLectureRoomMemberSeatForProdCodeSub($order_idx, $prod_code_sub)
     {
-        if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $offset_limit = '';
-        } else {
-            $column = '
-                p.ProdName, lr.LectureRoomName, lrru.UnitName, p.ProdCode, lrsr.OrderIdx, lrsr.LrCode, lrsr.LrUnitCode
-                ,lrrurs.SeatStatusCcd, lrsr.SeatStatusCcd AS MemSeatStatusCcd, lrsr.LrrursIdx, lrrurs.SeatNo
-                ,lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate
-                ,mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
-                ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
-                ,fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
-            ';
-            $offset_limit = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
+        $column = '
+            p.ProdName, lr.LectureRoomName, lrru.UnitName, p.ProdCode, lrsr.OrderIdx, lrsr.LrCode, lrsr.LrUnitCode
+            ,lrrurs.SeatStatusCcd, lrsr.SeatStatusCcd AS MemSeatStatusCcd, lrsr.LrrursIdx, lrrurs.SeatNo
+            ,lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate
+            ,mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
+            ,fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
+        ';
         $arr_condition = [
             'EQ' => [
                 'lrsr.OrderIdx' => $order_idx
@@ -252,8 +243,7 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
             INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
         ";
-        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
     }
 
     /**
@@ -291,6 +281,15 @@ class LectureRoomIssueModel extends WB_Model
                         'lrsr.LrCode' => element('lr_code', $form_data),
                         'lrsr.LrUnitCode' => element('lr_unit_code', $form_data),
                         'lrsr.LrrursIdx' => element('lr_rurs_idx', $form_data),
+                    ],
+                    'ORG' => [
+                        'IN' => [
+                            'lrrurs.SeatStatusCcd' => ['727002', '727003'], //좌석상태 : 사용중, 고장
+                            'lrsr.SeatStatusCcd' => ['728001', '728002']    //회원좌석상태 : 신규,자리이동
+                        ]
+                    ],
+                    'NOTIN' => [
+                        'lrsr.SeatStatusCcd' => ['728003', '728004']        //회원좌석상태 : 퇴실,환불
                     ]
                 ];
                 $chk_seat_data = $this->_findSeatRegister($column, $arr_condition);
@@ -318,14 +317,14 @@ class LectureRoomIssueModel extends WB_Model
      * @param $prod_code
      * @return array|bool
      */
-    public function refundLectureRoom($order_idx, $prod_code)
+    public function refundLectureRoom($order_idx = null, $prod_code = null)
     {
         try {
             $column = 'lrsr.OrderProdIdx, lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.MemIdx, SeatNo';
             $arr_condition = [
-                'EQ' => [
-                    'lrsr.OrderIdx' => $order_idx,
-                    'lrsr.ProdCode' => $prod_code,
+                'RAW' => [
+                    'lrsr.OrderIdx = ' => (empty($order_idx) === true) ? '\'\'' : $order_idx,
+                    'lrsr.ProdCode = ' => (empty($prod_code) === true) ? '\'\'' : $prod_code
                 ],
                 'NOT' => [
                     'lrsr.SeatStatusCcd' => '728004'
@@ -335,9 +334,16 @@ class LectureRoomIssueModel extends WB_Model
 
             //환불
             if (empty($data) === false) {
+                $update_target_seat_data = [];
+                foreach ($data as $row) {
+                    $update_target_seat_data[$row['LrrursIdx']]['MemIdx'] = $row['MemIdx'];
+                }
+
                 //좌석정보 수정 (미사용)
-                if ($this->_modifyLectureRoomUnitSeatForAdd($data[0]['LrrursIdx'], $data[0]['MemIdx'], '727001', 'del') !== true) {
-                    throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+                foreach ($update_target_seat_data as $key => $row) {
+                    if ($this->_modifyLectureRoomUnitSeatForAdd($key, $row['MemIdx'], '727001', 'del') !== true) {
+                        throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
+                    }
                 }
 
                 //퇴실처리
@@ -498,7 +504,7 @@ class LectureRoomIssueModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdAdminDatm' => date('Y-m-d H:i:s')
             ];
-            $this->_conn->set($mod_data)->where_in('LrsrIdx', implode(',',$_arr_lrsr_idx));
+            $this->_conn->set($mod_data)->where_in('LrsrIdx', $_arr_lrsr_idx);
             if($this->_conn->update($this->_table['lectureroom_seat_register'])=== false) {
                 throw new \Exception('강의실회차 좌석 수정에 실패했습니다.');
             }
@@ -551,7 +557,7 @@ class LectureRoomIssueModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdAdminDatm' => date('Y-m-d H:i:s')
             ];
-            $this->_conn->set($mod_data)->where_in('LrsrIdx', implode(',',$_arr_lrsr_idx));
+            $this->_conn->set($mod_data)->where_in('LrsrIdx', $_arr_lrsr_idx);
             if($this->_conn->update($this->_table['lectureroom_seat_register'])=== false) {
                 throw new \Exception('강의실회차 좌석 수정에 실패했습니다.');
             }
@@ -602,7 +608,7 @@ class LectureRoomIssueModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdAdminDatm' => date('Y-m-d H:i:s')
             ];
-            $this->_conn->set($mod_data)->where_in('LrsrIdx', implode(',',$_arr_lrsr_idx));
+            $this->_conn->set($mod_data)->where_in('LrsrIdx', $_arr_lrsr_idx);
             if($this->_conn->update($this->_table['lectureroom_seat_register'])=== false) {
                 throw new \Exception('강의실회차 좌석 수정에 실패했습니다.');
             }

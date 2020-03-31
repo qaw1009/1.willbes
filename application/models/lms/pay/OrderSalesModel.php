@@ -415,6 +415,118 @@ class OrderSalesModel extends BaseOrderModel
     }
 
     /**
+     * 데일리 매출목록 조회
+     * @param string $start_date [조회시작일자]
+     * @param string $end_date [조회종료일자]
+     * @param int $site_code [사이트코드]
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @param string $excel_column [엑셀다운로드컬럼]
+     * @return mixed
+     */
+    public function listDailySalesOrder($start_date, $end_date, $site_code, $is_count = false, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $excel_column = '')
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+        } else {
+            if ($is_count === 'sum') {
+                $column = 'sum(ifnull(U.RealPayPrice, 0)) as tRealPayPrice, sum(ifnull(U.RefundPrice, 0)) as tRefundPrice, sum(U.RemainPrice) as tRemainPrice
+                    , sum(ifnull(U.CardPayPrice, 0)) as tCardPayPrice, sum(ifnull(U.CashPayPrice, 0)) as tCashPayPrice
+                    , sum(ifnull(U.BankPayPrice, 0)) as tBankPayPrice, sum(ifnull(U.VBankPayPrice, 0)) as tVBankPayPrice';
+            } else {
+                $column = 'U.*
+                    , SC.CateName, SGC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CCA.CcdName as CampusCcdName, CLPT.CcdName as LearnProdTypeCcdName';
+            }
+        }
+
+        $query = /** @lang text */ '
+            select ' . $column . '
+            from (
+                select BO.OrderIdx, BO.OrderNo, BO.SiteCode, BO.MemIdx, BO.OrderProdIdx, BO.ProdCode, BO.PayRouteCcd, BO.PayMethodCcd
+                    , BO.PayStatusCcd, BO.SalePatternCcd
+                    , BO.CompleteDatm, BO.RefundDatm, ifnull(BO.RefundDatm, BO.CompleteDatm) as ProcDatm
+                    , BO.RealPayPrice, BO.RefundPrice
+                    , (ifnull(BO.RealPayPrice, 0) - ifnull(BO.RefundPrice, 0)) as RemainPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['card'] . '", "' . $this->_pay_method_ccd['visit_card'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '", "' . $this->_pay_method_ccd['admin_pay'] . '", ""), BO.CardPayPrice, null) as CardPayPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['willbes_bank'] . '", "' . $this->_pay_method_ccd['visit_cash'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '"), BO.CashPayPrice, null) as CashPayPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['direct_bank'] . '"), BO.CardPayPrice, null) as BankPayPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['vbank'] . '"), BO.CardPayPrice, null) as VBankPayPrice	
+                    , OOI.CertNo
+                    , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
+                    , ifnull(PL.LearnPatternCcd, P.ProdTypeCcd) as LearnProdTypeCcd
+                    , ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd)) as CampusCcd
+                    , PC.CateCode, left(PC.CateCode, 4) as LgCateCode
+                    , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
+                from (
+                    ' . $this->_getBaseOrder($start_date, $end_date, 'all') . '
+                ) as BO
+                    inner join ' . $this->_table['product'] . ' as P
+                        on BO.ProdCode = P.ProdCode
+                    left join ' . $this->_table['product_lecture'] . ' as PL
+                        on BO.ProdCode = PL.ProdCode
+                    left join ' . $this->_table['readingroom'] . ' as RRM
+                        on BO.ProdCode = RRM.ProdCode
+                    left join ' . $this->_table['readingroom'] . ' as RRS
+                        on BO.ProdCode = RRS.SubProdCode		
+                    left join ' . $this->_table['product_r_category'] . ' as PC
+                        on BO.ProdCode = PC.ProdCode and PC.IsStatus = "Y"                                             
+                    left join ' . $this->_table['member'] . ' as M
+                        on BO.MemIdx = M.MemIdx
+                    left join ' . $this->_table['order_other_info'] . ' as OOI
+                        on BO.OrderIdx = OOI.OrderIdx                                              
+                where BO.SalePatternCcd in ("' . $this->_sale_pattern_ccd['normal'] . '", "' . $this->_sale_pattern_ccd['extend'] . '", "' . $this->_sale_pattern_ccd['retake'] . '") 
+                    and BO.SiteCode = ' . $this->_conn->escape($site_code) . '
+            ) as U                                 
+        ';
+
+        if ($is_count === false || $is_count === 'excel') {
+            $query .= '
+                left join ' . $this->_table['category'] . ' as SC
+                    on U.CateCode = SC.CateCode and SC.IsStatus = "Y"
+                left join ' . $this->_table['category'] . ' as SGC
+                    on U.LgCateCode = SGC.CateCode and SGC.IsStatus = "Y"		
+                left join ' . $this->_table['code'] . ' as CPR
+                    on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y" and CPR.GroupCcd = "' . $this->_group_ccd['PayRoute'] . '"		
+                left join ' . $this->_table['code'] . ' as CCA	
+                    on U.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y"	and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"
+                left join ' . $this->_table['code'] . ' as CLPT	
+                    on U.LearnProdTypeCcd = CLPT.Ccd and CLPT.IsStatus = "Y" and CLPT.GroupCcd in ("' . $this->_group_ccd['ProdType'] . '", "' . $this->_group_ccd['LearnPattern'] . '")                
+            ';
+        }
+
+        // where 조건
+        if (empty($arr_condition) === false) {
+            $query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        }
+
+        // 정렬 조건
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        // 최종 쿼리
+        if ($is_count === 'excel') {
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED ' . $order_by_offset_limit;
+        } elseif ($is_count === false) {
+            $query .= $order_by_offset_limit;
+        }
+
+        // 쿼리 실행
+        $result = $this->_conn->query($query);
+
+        if ($is_count === true) {
+            return $result->row(0)->numrows;
+        } elseif ($is_count === 'sum') {
+            return $result->row_array();
+        } else {
+            return $result->result_array();
+        }
+    }
+
+    /**
      * 기준 주문조회
      * @param string $start_date [조회시작일자]
      * @param string $end_date [조회종료일자]
@@ -428,21 +540,31 @@ class OrderSalesModel extends BaseOrderModel
             $where .= ' and OP.RealPayPrice > 0';
         }
 
+        if (strlen($start_date) == 10) {
+            $start_date = $start_date . ' 00:00:00';
+        }
+
+        if (strlen($end_date) == 10) {
+            $end_date = $end_date . ' 23:59:59';
+        }
+
         $query = /** @lang text */ '
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , OP.RealPayPrice
                 , OP.CardPayPrice
+                , OP.CashPayPrice
                 , O.CompleteDatm
-                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.RefundPrice) as RefundPrice
-                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.CardRefundPrice) as CardRefundPrice
-                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.RefundDatm) as RefundDatm	
+                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date) . ', null, OPR.RefundPrice) as RefundPrice
+                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date) . ', null, OPR.CardRefundPrice) as CardRefundPrice
+                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date) . ', null, OPR.CashRefundPrice) as CashRefundPrice
+                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date) . ', null, OPR.RefundDatm) as RefundDatm	
             from ' . $this->_table['order'] . ' as O
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on O.OrderIdx = OP.OrderIdx
                 left join ' . $this->_table['order_product_refund'] . ' as OPR        
                     on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
-            where O.CompleteDatm between ' . $this->_conn->escape($start_date . ' 00:00:00') . ' and ' . $this->_conn->escape($end_date . ' 23:59:59') . '
+            where O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")               
                 and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")
             ' . $where . '                
@@ -451,18 +573,20 @@ class OrderSalesModel extends BaseOrderModel
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , null as RealPayPrice
                 , null as CardPayPrice
+                , null as CashPayPrice
                 , O.CompleteDatm
                 , OPR.RefundPrice
                 , OPR.CardRefundPrice
+                , OPR.CashRefundPrice
                 , OPR.RefundDatm
             from ' . $this->_table['order_product_refund'] . ' as OPR
                 inner join ' . $this->_table['order'] . ' as O
                     on OPR.OrderIdx = O.OrderIdx
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
-            where OPR.RefundDatm between ' . $this->_conn->escape($start_date . ' 00:00:00') . ' and ' . $this->_conn->escape($end_date . ' 23:59:59') . '
+            where OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
-                and O.CompleteDatm < ' . $this->_conn->escape($start_date . ' 00:00:00') . '
+                and O.CompleteDatm < ' . $this->_conn->escape($start_date) . '
                 and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '") 
             ' . $where
         ;

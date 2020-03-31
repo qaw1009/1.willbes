@@ -45,16 +45,16 @@
                             @endforeach
                         </select>
                         &nbsp;
-                        <select class="form-control mr-10" id="search_pay_route" name="search_pay_route">
-                            <option value=""> [ 결제루트 ]</option>
-                            @foreach($code_pay_route as $key => $val)
+                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">
+                            <option value=""> [ 결제수단 ]</option>
+                            @foreach($code_pay_method as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
                         &nbsp;
-                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">
-                            <option value=""> [ 결제수단 ]</option>
-                            @foreach($code_pay_method as $key => $val)
+                        <select class="form-control mr-10" id="search_pay_route" name="search_pay_route">
+                            <option value=""> [ 결제루트 ]</option>
+                            @foreach($code_pay_route as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
@@ -107,20 +107,18 @@
                         <canvas id="order_sex_stats"></canvas>
                     </div>
                 </div>
-
+                <div class="col-md-4 form-inline">
+                    <div id="order_method" style="width: 100%; height: 320px; border: 1px solid #ccc;">
+                        <canvas id="order_method_stats"></canvas>
+                    </div>
+                </div>
                 <div class="col-md-4 form-inline">
                     <div id="order_channel" style="width: 100%; height: 320px; border: 1px solid #ccc;">
                         <canvas id="order_channel_stats"></canvas>
                     </div>
                 </div>
-                <div class="col-md-4 form-inline">
-                    <div id="" style="width: 100%; height: 320px; border: 1px solid #ccc;">
-                        <canvas id=""></canvas>
-                    </div>
-                </div>
             </div>
         </div>
-
 
         <div class="x_content">
             <p></p>
@@ -134,7 +132,6 @@
         </div>
 
     </div>
-
     <BR><BR>
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
         <li role="presentation" ><a role="tab" href="#chart_view"><strong>차트보기</strong></a></li>
@@ -143,16 +140,20 @@
     <div class="x_panel form-horizontal" id="data_view_area">
         <div class="x_content ">
             <div class="form-group">
-                <p>
-                <div class="col-md-6 form-inline">
-                    <strong>[회원현황]</strong>
+                <p></p>
+                <div class="col-md-12 form-inline">
+                    <strong>[주문현황]</strong>
                     <div class="x_content">
-                        <table id="list_member_table" class="table table-striped table-bordered">
+                        <table id="list_order_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="100">날짜</th>
-                                <th width="80">가입수</th>
-                                <th width="80">탈퇴수</th>
+                                <th width="150">날짜</th>
+                                <th width="">결제건수</th>
+                                <th width="">결제금액</th>
+                                <th width="">환불건수</th>
+                                <th width="">환불금액</th>
+                                <th width="">매출건수</th>
+                                <th width="">매출금액</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -160,57 +161,28 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6 form-inline">
-                    <strong>[로그인현황]</strong>
-                    <div class="x_content">
-                        <table id="list_login_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th width="100">날짜</th>
-                                <th width="80">로그인수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </p>
             </div>
 
             <div class="form-group">
-                <p>
-                <div class="col-md-6 form-inline">
-                    <strong>[연령대]</strong>
-                    <div class="x_content">
-                        <table id="list_age_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th width="50">구분</th>
-                                <th width="80">10대</th>
-                                <th width="80">20대</th>
-                                <th width="80">30대</th>
-                                <th width="80">40대</th>
-                                <th width="80">50대</th>
-                                <th width="80">60대</th>
-                                <th width="80">기타</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-6 form-inline">
-                    <strong>[성별]</strong>
+                <p></p>
+                <div class="col-md-5 form-inline">
+                    <strong>[성별 주문현황]</strong>
                     <div class="x_content">
                         <table id="list_sex_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="50" style="text-align: center;">구분</th>
-                                <th width="100">남자</th>
-                                <th width="100">여자</th>
-                                <th width="100">성별없음</th>
+                                <th width="50" style="text-align: center;"  rowspan="2">구분</th>
+                                <th colspan="2" style="text-align: center;">남자</th>
+                                <th colspan="2" style="text-align: center;">여자</th>
+                                <th colspan="2" style="text-align: center;">성별없음</th>
+                            </tr>
+                            <tr>
+                                <td width="60" style="text-align: center;">건수</td>
+                                <td style="text-align: center;">금액</td>
+                                <td width="60" style="text-align: center;">건수</td>
+                                <td style="text-align: center;">금액</td>
+                                <td width="60" style="text-align: center;">건수</td>
+                                <td style="text-align: center;">금액</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -218,19 +190,55 @@
                         </table>
                     </div>
                 </div>
-                </p>
+                <div class="col-md-4 form-inline">
+                    <strong>[결제수단]</strong>
+                    <div class="x_content">
+                        <table id="list_method_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr >
+                                <th width="" style="text-align: center;">구분</th>
+                                <th width="50" style="text-align: center;">주문건수</th>
+                                <th width="" style="text-align: center;">주문금액</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                    <strong>[결제루트]</strong>
+                    <div class="x_content">
+                        <table id="list_channel_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="" style="text-align: center;">구분</th>
+                                <th width="50" style="text-align: center;">주문건수</th>
+                                <th width="" style="text-align: center;">주문금액</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <p>
-                <div class="col-md-6 form-inline">
-                    <strong>[관심분야]</strong>
+                <p></p>
+                <div class="col-md-12 form-inline">
+                    <strong>[사이트별 주문현황]</strong>
                     <div class="x_content">
-                        <table id="list_interest_table" class="table table-striped table-bordered">
+                        <table id="list_site_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="150">관심항목</th>
-                                <th width="100">선택수</th>
+                                <th width="150">날짜</th>
+                                <th width="">결제건수</th>
+                                <th width="">결제금액</th>
+                                <th width="">환불건수</th>
+                                <th width="">환불금액</th>
+                                <th width="">매출건수</th>
+                                <th width="">매출금액</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -238,14 +246,10 @@
                         </table>
                     </div>
                 </div>
-                </p>
+
             </div>
         </div>
     </div>
-
-    <style>
-
-    </style>
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');
@@ -264,7 +268,7 @@
             }
 
              {{--각 항목의 데이터 결과 변수--}}
-            var $order_info=[], $order_sex=[], $order_site=[], $order_channel=[];
+            var $order_info=[], $order_sex=[], $order_site=[], $order_channel=[], $order_method=[];
 
             function chartExe() {
 
@@ -483,8 +487,8 @@
 
                 {{--######################################################  결제채널    ####################################################--}}
                 $order_channel = getStats('order/Channel');
-                var $channel_name = [], $channel_order = [], $channel_color = [];
-                var $util_color = Object.keys(chartColors).map(function(i) {
+                $channel_name = [], $channel_order = [], $channel_color = [];
+                $util_color = Object.keys(chartColors).map(function(i) {
                     return chartColors[i];
                 });
                 $i=0;
@@ -536,6 +540,60 @@
                 };
                 {{--######################################################  결제채널    ####################################################--}}
 
+                {{--######################################################  결제수단   ####################################################--}}
+                $order_method = getStats('order/Method');
+                $method_name = [], $method_order = [], $method_color = [];
+                $util_color = Object.keys(chartColors).map(function(i) {
+                    return chartColors[i];
+                });
+                $i=0;
+                for (key in $order_method) {
+                    $method_name.push($order_method[key]['CcdName']);
+                    $method_order.push($order_method[key]['order_count']);
+                    $method_color.push(color($util_color[$i]).alpha(0.5).rgbString());
+                    $i++
+                }
+
+                var config_method = {
+                    data: {
+                        datasets: [{
+                            data:$method_order,
+                            backgroundColor: $method_color,
+                            label: '결제수단별'
+                        }],
+                        labels: $method_name
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '결제수단별 결제건수'
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var tooltipLabel = data.labels[tooltipItem.index];
+                                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString()+'건';
+                                }
+                            }
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            reverse: false,
+                        },
+                        animation: {
+                            animateRotate: false,
+                            animateScale: true
+                        }
+                    }
+                };
+                {{--######################################################  결제채널    ####################################################--}}
 
                 canvas_clear('order_pay');
                 var ctx_order_pay = document.getElementById('order_pay_stats').getContext('2d');
@@ -588,6 +646,10 @@
                 canvas_clear('order_channel');
                 var ctx_channel = document.getElementById('order_channel_stats').getContext('2d');
                 window.myPolarArea = Chart.PolarArea(ctx_channel, config_channel);
+
+                canvas_clear('order_method');
+                var ctx_method = document.getElementById('order_method_stats').getContext('2d');
+                window.myPolarArea = Chart.PolarArea(ctx_method, config_method);
 
                 canvas_clear('order_site');
                 var ctx_site = document.getElementById('order_site_stats').getContext('2d');
@@ -643,79 +705,38 @@
 
             chartExe();
 
-            return;
-
-            var $datatable_member, $datatable_login, $datatable_age, $datatable_sex, $datatable_interest;
+            var $datatable_order, $datatable_site, $datatable_sex, $datatable_channel, $datatable_method;
 
             function datatableExe() {
-                $datatable_member = $("#list_member_table").DataTable({
+                $datatable_order = $("#list_order_table").DataTable({
                     order: [[0, 'asc']],
                     ordering: true,
                     serverSide: false,
                     ajax: false,
                     searching: false,
-                    data: $member_count,
+                    data: $order_info,
                     columns: [
                         {'data': 'base_date', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '<font color="black">' + data+ '</font>';
                             }},
-                        {'data': 'join_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : data;
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
                             }},
-                        {'data': 'out_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'blue\'>' + addComma(data) + '</font>' : data;
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                            }},
+                        {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
                             }}
-                    ]
-                });
-
-                $datatable_login = $("#list_login_table").DataTable({
-                    order: [[0, 'asc']],
-                    ordering: true,
-                    serverSide: false,
-                    ajax: false,
-                    searching: false,
-                    data: $member_login,
-                    columns: [
-                        {'data': 'base_date', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data + '</font>';
-                            }},
-                        {'data': 'login_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>' : data;
-                            }}
-                    ]
-                });
-
-                $datatable_age = $("#list_age_table").DataTable({
-                    serverSide: false,
-                    paging: false,
-                    ajax: false,
-                    searching: false,
-                    data: $member_age,
-                    columns: [
-                        {'data': 'mem_status', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data + '</font>';
-                            }},
-                        {'data' : '10s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : '20s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : '30s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : '40s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : '50s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : '60s', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
-                        {'data' : 'etc', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
-                            }},
                     ]
                 });
 
@@ -724,37 +745,106 @@
                     paging: false,
                     ajax: false,
                     searching: false,
-                    data: $member_sex,
+                    info : '',
+                    data: $order_sex,
                     columns: [
-                        {'data': 'mem_status', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data + '</font>';
+                        {'data': 'order_status', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + data+ '';
                             }},
-                        {'data' : 'm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
+                        {'data': 'm', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
                             }},
-                        {'data' : 'f', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
+                        {'data': 'm_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
                             }},
-                        {'data' : 'not', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>>' : data;
+                        {'data': 'f', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                        {'data': 'f_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                        {'data': 'not', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                        {'data': 'not_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }}
+                    ]
+                });
+
+                $datatable_channel = $("#list_channel_table").DataTable({
+                    serverSide: false,
+                    paging: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: $order_channel,
+                    columns: [
+                        {'data': 'CcdName', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + data+ '';
+                            }},
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
                             }},
                     ]
                 });
 
-                $datatable_interest = $("#list_interest_table").DataTable({
-                    order: [[0, 'asc']],
+                $datatable_method = $("#list_method_table").DataTable({
+                    order: [[1, 'desc']],
                     ordering: true,
                     serverSide: false,
                     paging: false,
                     ajax: false,
                     searching: false,
-                    data: $member_interest,
+                    info : '',
+                    data: $order_method,
                     columns: [
-                        {'data': 'interest_name', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data + '</font>';
+                        {'data': 'CcdName', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + data+ '';
                             }},
-                        {'data': 'count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'black\'>' + addComma(data) + '</font>' : data;
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '' + addComma(data) + '';
+                            }},
+                    ]
+                });
+
+                $datatable_site = $("#list_site_table").DataTable({
+                    /*
+                    order: [[0, 'asc']],
+                    ordering: true,*/
+                    paging: false,
+                    serverSide: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: $order_site,
+                    columns: [
+                        {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color="black">' + data+ '</font>';
+                            }},
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                            }},
+                        {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                            }},
+                        {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
                             }}
                     ]
                 });
@@ -766,11 +856,11 @@
             }
 
             function datatableReset() {
-                $datatable_member.destroy();
-                $datatable_login.destroy();
-                $datatable_age.destroy();
+                $datatable_order.destroy();
                 $datatable_sex.destroy();
-                $datatable_interest.destroy();
+                $datatable_channel.destroy();
+                $datatable_method.destroy();
+                $datatable_site.destroy();
                 datatableExe();
             }
 

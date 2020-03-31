@@ -81,6 +81,13 @@
                                             </dt>
                                         </dl>
                                         <div class="w-tit">{{$row['subProdName']}}</div>
+                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                            <dl class="w-info">
+                                                <dt>
+                                                    (수강증번호 : {{$row['CertNo']}})
+                                                </dt>
+                                            </dl>
+                                        @endif
                                         {{-- TODO : 좌석배정 개발 --}}
                                         @if (empty($listLectureRoom[$row['ProdCode']]) === false)
                                             <input type="hidden" id="order_idx_N_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
@@ -158,6 +165,13 @@
                                 <tr>
                                     <td class="w-data tx-left pl10">
                                         <div class="w-tit">{{$row['ProdName']}}</div>
+                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                            <dl class="w-info">
+                                                <dt>
+                                                    (수강증번호 : {{$row['CertNo']}})
+                                                </dt>
+                                            </dl>
+                                        @endif
                                     </td>
                                     {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}

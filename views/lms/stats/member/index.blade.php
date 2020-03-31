@@ -126,109 +126,102 @@
     <div class="x_panel form-horizontal" id="data_view_area">
         <div class="x_content ">
             <div class="form-group">
-                <p>
-                    <div class="col-md-6 form-inline">
-                        <strong>[회원현황]</strong>
-                        <div class="x_content">
-                            <table id="list_member_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="100">날짜</th>
-                                    <th width="80">가입수</th>
-                                    <th width="80">탈퇴수</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                <p></p>
+                <div class="col-md-6 form-inline">
+                    <strong>[회원현황]</strong>
+                    <div class="x_content">
+                        <table id="list_member_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="100">날짜</th>
+                                <th width="80">가입수</th>
+                                <th width="80">탈퇴수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-6 form-inline">
-                        <strong>[로그인현황]</strong>
-                        <div class="x_content">
-                            <table id="list_login_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="100">날짜</th>
-                                    <th width="80">로그인수</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="col-md-6 form-inline">
+                    <strong>[로그인현황]</strong>
+                    <div class="x_content">
+                        <table id="list_login_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="100">날짜</th>
+                                <th width="80">로그인수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </p>
+                </div>
             </div>
 
             <div class="form-group">
-                <p>
-                    <div class="col-md-6 form-inline">
-                        <strong>[연령대]</strong>
-                        <div class="x_content">
-                            <table id="list_age_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="50">구분</th>
-                                    <th width="80">10대</th>
-                                    <th width="80">20대</th>
-                                    <th width="80">30대</th>
-                                    <th width="80">40대</th>
-                                    <th width="80">50대</th>
-                                    <th width="80">60대</th>
-                                    <th width="80">기타</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                <p></p>
+                <div class="col-md-6 form-inline">
+                    <strong>[연령대]</strong>
+                    <div class="x_content">
+                        <table id="list_age_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="50">구분</th>
+                                <th width="80">10대</th>
+                                <th width="80">20대</th>
+                                <th width="80">30대</th>
+                                <th width="80">40대</th>
+                                <th width="80">50대</th>
+                                <th width="80">60대</th>
+                                <th width="80">기타</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-6 form-inline">
-                        <strong>[성별]</strong>
-                        <div class="x_content">
-                            <table id="list_sex_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="50" style="text-align: center;">구분</th>
-                                    <th width="100">남자</th>
-                                    <th width="100">여자</th>
-                                    <th width="100">성별없음</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="col-md-6 form-inline">
+                    <strong>[성별]</strong>
+                    <div class="x_content">
+                        <table id="list_sex_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="50" style="text-align: center;">구분</th>
+                                <th width="100">남자</th>
+                                <th width="100">여자</th>
+                                <th width="100">성별없음</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </p>
+                </div>
             </div>
 
             <div class="form-group">
-                <p>
-                    <div class="col-md-6 form-inline">
-                        <strong>[관심분야]</strong>
-                        <div class="x_content">
-                            <table id="list_interest_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="150">관심항목</th>
-                                    <th width="100">선택수</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                <p></p>
+                <div class="col-md-6 form-inline">
+                    <strong>[관심분야]</strong>
+                    <div class="x_content">
+                        <table id="list_interest_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="150">관심항목</th>
+                                <th width="100">선택수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
     </div>
-
-    <style>
-
-    </style>
     <script type="text/javascript">
     $(document).ready(function(){
         var $search_form = $('#search_form');
@@ -658,6 +651,7 @@
                 paging: false,
                 ajax: false,
                 searching: false,
+                info : '',
                 data: $member_age,
                 columns: [
                     {'data': 'mem_status', 'class': 'text-center', 'render': function (data, type, row, meta) {
@@ -692,6 +686,7 @@
                 paging: false,
                 ajax: false,
                 searching: false,
+                info : '',
                 data: $member_sex,
                 columns: [
                     {'data': 'mem_status', 'class': 'text-center', 'render': function (data, type, row, meta) {
@@ -716,6 +711,7 @@
                 paging: false,
                 ajax: false,
                 searching: false,
+                info : '',
                 data: $member_interest,
                 columns: [
                     {'data': 'interest_name', 'class': 'text-center', 'render': function (data, type, row, meta) {

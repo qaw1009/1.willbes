@@ -106,7 +106,7 @@
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>
                                 <col>
-                                <col style="width: 160px;">
+                                {{-- <col style="width: 160px;"> --}}
                                 <col style="width: 120px;">
                             </colgroup>
                             <tbody>
@@ -115,7 +115,7 @@
                                     <td class="w-data tx-left pl10">
                                         <div class="w-tit">{{$row['ProdName']}}</div>
                                     </td>
-                                    <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
+                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
                                     <td class="w-answer p_re">
                                         <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
                                         <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">

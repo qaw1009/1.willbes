@@ -87,9 +87,9 @@
                                 <div class="w-tit">
                                     {{$row['ProdName']}}
                                 </div>
-                                <dl class="w-info acad tx-gray">
+                                {{-- <dl class="w-info acad tx-gray">
                                     <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt>
-                                </dl>
+                                </dl> --}}
                                 <div class="w-lecList">
                                     <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
                                     <ul>

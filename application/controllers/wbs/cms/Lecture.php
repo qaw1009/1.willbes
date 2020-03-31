@@ -308,7 +308,7 @@ class Lecture extends \app\controllers\BaseController
             switch($quility){
                 case 'WD':
                     $filename = $unitdata['wWD'];
-                    $ratio = 21;
+                    //$ratio = 21;
                     break;
 
                 case 'HD':

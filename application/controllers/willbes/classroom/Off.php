@@ -438,6 +438,22 @@ class Off extends \app\controllers\FrontController
     }
 
     /**
+     * 좌석배치도 팝업창
+     * @param array $param
+     * @return CI_Output|object|string
+     */
+    public function showSeatMap($param = [])
+    {
+        if (empty($param) === true) {
+            return $this->json_error('잘못된 접근 입니다.', _HTTP_NOT_FOUND);
+        }
+        $seat_map_info = $this->classroomFModel->getLectureRoomSeatForMap($param[0]);
+        return $this->load->view('/classroom/off/layer/seat_map_popup',[
+            'seat_map_info' => $seat_map_info
+        ]);
+    }
+
+    /**
      * 강의실좌석정보조회
      * @param array $data
      * @param string $mode

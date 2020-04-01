@@ -80,6 +80,7 @@ if (!function_exists('rename_download')) {
             if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
                 $x[count($x) - 1] = strtoupper($extension);
                 $filename = implode('.', $x);
+                $file_name_encode = 'test001';
             } else if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'])
                 && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT'])
                 && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT'])
@@ -90,10 +91,12 @@ if (!function_exists('rename_download')) {
                 2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
                  */
                 $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
+                $file_name_encode = 'test002';
             }
 
             if(preg_match('/StarPlayer*/', $_SERVER['HTTP_USER_AGENT'])) {
                 $file_name_encode = rawurlencode($filename);  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
+                $file_name_encode = 'test003';
             }
         }
 
@@ -110,8 +113,8 @@ if (!function_exists('rename_download')) {
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-//        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
-        header('Content-Disposition: attachment; filename="'.$filename.'"');
+        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
+//        header('Content-Disposition: attachment; filename="'.$filename.'"');
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: '.$filesize);

@@ -74,7 +74,7 @@ if (!function_exists('rename_download')) {
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
         $add_disposition = '';
-        $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);
+        $file_name_encode = null;
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
             if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
@@ -97,6 +97,8 @@ if (!function_exists('rename_download')) {
 
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
             $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
+        } else {
+            $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);
         }
 
         if (($fp = @fopen($filepath, 'rb')) === false) {

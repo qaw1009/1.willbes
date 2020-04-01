@@ -92,7 +92,7 @@ if (!function_exists('rename_download')) {
                 $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
             }
 
-            if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === true) {
+            if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
                 $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
             }
         }

@@ -41,7 +41,10 @@
         .evt03, .evt03ss, .evt04{background:#fff}
         
         .evt05 {background:#fff; position:relative}
-        .evt05 span {font-size:60px; position:absolute; top:35px; left:50%; margin-left:110px; color:#ce2721 }
+        .evt05 span {font-size:60px; position:absolute; top:35px; left:50%; margin-left:110px; color:#ce2721; animation: sp01 1.5s linear infinite;}
+        @@keyframes sp01{
+		from{transform:scale(1.1)}50%{transform:scale(0.9)}to{transform:scale(1.1)}
+        }
         .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}
 
 

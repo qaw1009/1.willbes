@@ -73,6 +73,7 @@ if (!function_exists('rename_download')) {
          *
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
+        print_r($_SERVER['HTTP_USER_AGENT']); exit; //디버그
         $add_disposition = '';
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {

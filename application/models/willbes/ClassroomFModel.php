@@ -1449,7 +1449,7 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+            if ($chk_lecture_room_unit !== true) {
                 throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
@@ -1513,7 +1513,7 @@ class ClassroomFModel extends WB_Model
             }
 
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
-            if ($chk_lecture_room_unit['ret_cd'] !== true) {
+            if ($chk_lecture_room_unit !== true) {
                 throw new \Exception($chk_lecture_room_unit['ret_msg']);
             }
 
@@ -1542,7 +1542,7 @@ class ClassroomFModel extends WB_Model
      * 좌석선택기간 체크, 좌석수 체크
      * @param $lr_code
      * @param $lr_unit_code
-     * @return array|string
+     * @return bool|string
      */
     private function _getLectureRoomUnitForValidate($lr_code, $lr_unit_code)
     {
@@ -1562,7 +1562,7 @@ class ClassroomFModel extends WB_Model
                     'IsStatus' => 'Y',
                 ],
                 'IN' => [
-                    'SeatStatusCcd' => ['728001', '728002']
+                    'SeatStatusCcd' => ['727002', '727003']
                 ]
             ];
 
@@ -1596,15 +1596,9 @@ class ClassroomFModel extends WB_Model
             }
 
         } catch (\Exception $e) {
-            return [
-                'ret_cd' => false,
-                'ret_msg' => $e->getMessage()
-            ];
+            return $e->getMessage();
         }
-        return [
-            'ret_cd' => true,
-            'data' => $result
-        ];
+        return true;
     }
 
     /**

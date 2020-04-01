@@ -8,13 +8,15 @@
     .character .crtTab li input {vertical-align:middle}
     .character .crtTab:after {content:""; display:block; clear:both}
     .character .characterImg {margin-bottom:20px}
-    .character .characterImg li {display:inline; float:left; width:7.6923%; text-align:center; height:80px; line-height:80px; margin:5px 0; cursor:pointer; position:relative}
+    .character .characterImg li {display:inline; float:left; width:7.6923%; text-align:center; height:80px; line-height:80px; margin:5px auto; cursor:pointer; position:relative}
+    .character .characterImg li img {width:73px; margin:0 auto}
     .character .characterImg li img.on {display:none}
     .character .characterImg li img.off {display:block}
     .character .characterImg li:hover img.on {display:block; position:absolute; width:154px; top:50%; left:50%; border:2px solid #1087ef; background:#fff; box-shadow:2px 2px 4px rgba(0,0,0,.5); z-index:10}
     .character .characterImg li:hover,
     .character .characterImg li.active {background:#cde7f5}
     .character .characterImg:after {content:""; display:block; clear:both}
+    .character .characterImg2 li { width:12.5%; text-align:center;}
 
     .replyEvaluate .reply_inbox {
         position:relative; border:1px solid #ababab; padding:20px 0;
@@ -65,13 +67,51 @@
             <input type="hidden" name="{{$key}}" value="{{$val}}"/>
         @endforeach
         <div class="character">
+            @if((config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002') && $arr_input['bottom_cafe_type'] != 'N')
+            {{-- 경찰 사이트일 경우만 적용 --}}
             <ul class="characterImg">
-                @for ($i=1; $i<=26; $i++)
+                @for ($i=1; $i<=26; $i++)                    
                     <li class="sel_icon" id="character_{{$i}}">
                         <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
                         <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
-                    </li>
+                    </li>                    
                 @endfor
+            </ul>
+             @endif
+            {{--한덕현 프로모션 1588일 경우만 적용--}}
+            <ul class="characterImg characterImg2">                   
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character01_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character01.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character02_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character02.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character03_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character03.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character04_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character04.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character05_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character05.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character06_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character06.png" alt="" class="on"/>
+                </li> 
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character07_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character07.png" alt="" class="on"/>
+                </li>
+                <li class="sel_icon">
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character08_1.png" alt="" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character08.png" alt="" class="on"/>
+                </li>            
             </ul>
         </div>
 

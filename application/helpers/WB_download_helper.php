@@ -91,7 +91,7 @@ if (!function_exists('rename_download')) {
             @ob_clean();
         }
 
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false) {
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false  || strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') !== false)  {
             $file_name_encode = $filename;  // 안드로이드 app
         } else {
             $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);

@@ -38,6 +38,8 @@
         .evt02 .slide_con p.leftBtn {left:-80px}
         .evt02 .slide_con p.rightBtn {right:-80px}
 
+        .evt_soon {padding:50px 0;}
+
         .evt03, .evt03ss, .evt04{background:#fff}
         
         .evt05 {background:#fff; position:relative}
@@ -111,6 +113,10 @@
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_right.png"></a></p>
             </div>        
+        </div>
+
+        <div class="evtCtnsBox evt_soon">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_soon.jpg" title="커밍쑨">        
         </div>
 
         {{--            

@@ -118,7 +118,7 @@ if (!function_exists('rename_download')) {
 //        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
 //        header('Content-Disposition: attachment; filename="'.$filename.'"');
 //        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'dalvik') !== false) {
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false) {
 //            echo 'test001';
             header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
         } else {

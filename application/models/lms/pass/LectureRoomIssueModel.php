@@ -49,7 +49,7 @@ class LectureRoomIssueModel extends WB_Model
             ,fn_order_refund_price(o.OrderIdx, 0, "refund") AS tRefundPrice, opr.RefundDatm
             ';
 
-            $order_by_offset_limit = $this->_conn->makeOrderBy(['o.OrderIdx' => 'DESC'])->getMakeOrderBy();
+            $order_by_offset_limit = $this->_conn->makeOrderBy(['o.OrderIdx' => 'DESC', 'lrsr.LrrursIdx' => 'ASC'])->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 

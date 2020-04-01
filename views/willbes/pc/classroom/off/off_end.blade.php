@@ -11,11 +11,64 @@
             <div class="willbes-Leclist c_both">
                 <div class="c_both mb30">
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" class="on">단과반 ({{count($list)}})</a></li>
-                        <li><a href="#Mypagetab2">종합반 ({{count($pkglist)}})</a></li>
+                        <li><a href="#Mypagetab1" class="on">종합반 ({{count($pkglist)}})</a></li>
+                        <li><a href="#Mypagetab2">단과반 ({{count($list)}})</a></li>
                     </ul>
                 </div>
                 <div id="Mypagetab1">
+                    <div class="willbes-Lec-Table NG d_block c_both">
+                        <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
+                            <colgroup>
+                                <col>
+                                {{-- <col style="width: 160px;"> --}}
+                                <col style="width: 120px;">
+                            </colgroup>
+                            <tbody>
+                            @forelse( $pkglist as $row )
+                                <tr>
+                                    <td class="w-data tx-left pl10">
+                                        <div class="w-tit">{{$row['ProdName']}}</div>
+                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                            <dl class="w-info">
+                                                <dt>
+                                                    (수강증번호 : {{$row['CertNo']}})
+                                                </dt>
+                                            </dl>
+                                        @endif
+                                    </td>
+                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
+                                    <td class="w-answer p_re">
+                                        <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                        <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
+                                            <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
+                                                <img src="{{ img_url('prof/close.png') }}">
+                                            </a>
+                                            <div class="Layer-Cont">
+                                                <div class="Layer-SubTit tx-gray">
+                                                    <ul>
+                                                        @if(empty($row['subleclist']) == true)
+                                                            <li>강의가 없습니다.</li>
+                                                        @else
+                                                            @foreach($row['subleclist'] as $subrow)
+                                                                <li>{{$subrow['subProdName']}}</li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="Mypagetab2">
                     <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
                         <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                         <span class="w-data">
@@ -98,59 +151,6 @@
                                             진행중
                                         @endif
                                     </td> --}}
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div id="Mypagetab2">
-                    <div class="willbes-Lec-Table NG d_block c_both">
-                        <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
-                            <colgroup>
-                                <col>
-                                {{-- <col style="width: 160px;"> --}}
-                                <col style="width: 120px;">
-                            </colgroup>
-                            <tbody>
-                            @forelse( $pkglist as $row )
-                                <tr>
-                                    <td class="w-data tx-left pl10">
-                                        <div class="w-tit">{{$row['ProdName']}}</div>
-                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
-                                            <dl class="w-info">
-                                                <dt>
-                                                    (수강증번호 : {{$row['CertNo']}})
-                                                </dt>
-                                            </dl>
-                                        @endif
-                                    </td>
-                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
-                                    <td class="w-answer p_re">
-                                        <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
-                                        <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
-                                            <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
-                                                <img src="{{ img_url('prof/close.png') }}">
-                                            </a>
-                                            <div class="Layer-Cont">
-                                                <div class="Layer-SubTit tx-gray">
-                                                    <ul>
-                                                        @if(empty($row['subleclist']) == true)
-                                                            <li>강의가 없습니다.</li>
-                                                        @else
-                                                            @foreach($row['subleclist'] as $subrow)
-                                                                <li>{{$subrow['subProdName']}}</li>
-                                                            @endforeach
-                                                        @endif
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>

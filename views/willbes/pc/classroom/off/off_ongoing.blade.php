@@ -11,11 +11,136 @@
             <div class="willbes-Leclist c_both">
                 <div class="c_both mb30">
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" id="tab1" class="on">단과반 ({{count($list)}})</a></li>
-                        <li><a href="#Mypagetab2" id="tab2">종합반 ({{count($pkglist)}})</a></li>
+                        <li><a href="#Mypagetab1" id="tab1" class="on">종합반 ({{count($pkglist)}})</a></li>
+                        <li><a href="#Mypagetab2" id="tab2">단과반 ({{count($list)}})</a></li>
                     </ul>
                 </div>
                 <div id="Mypagetab1">
+                    {{--
+                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <div class="willbes-Lec-Search GM f_right">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    --}}
+
+                    <div class="willbes-Lec-Table NG d_block c_both">
+                        <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
+                            <colgroup>
+                                <col>
+                                {{-- <col style="width: 140px;"> --}}
+                                <col style="width: 120px;">
+                            </colgroup>
+                            <tbody>
+                            @forelse( $pkglist as $key => $row )
+                                <tr>
+                                    <td class="w-data tx-left pl10">
+                                        <div class="w-tit">{{$row['ProdName']}}</div>
+                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                            <dl class="w-info">
+                                                <dt>
+                                                    (수강증번호 : {{$row['CertNo']}})
+                                                </dt>
+                                            </dl>
+                                        @endif
+                                    </td>
+                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
+                                    @if($row['PackTypeCcd'] == '648003')
+                                        <td class="w-answer p_re">
+                                            <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
+                                            {{-- TODO : 좌석배정 개발 --}}
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
+                                            @endif
+                                        </td>
+                                    @else
+                                        <td class="w-answer p_re">
+                                            <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
+                                            @endif
+                                            <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
+                                                <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
+                                                    <img src="{{ img_url('prof/close.png') }}">
+                                                </a>
+                                                <div class="Layer-Cont">
+                                                    <div class="Layer-SubTit tx-gray">
+                                                        <ul>
+                                                            @if(empty($row['subleclist']) == true)
+                                                                <li>강의가 없습니다.</li>
+                                                            @else
+                                                                @foreach($row['subleclist'] as $subrow)
+                                                                    <li>{{$subrow['subProdName']}}</li>
+                                                                @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    @endif
+                                </tr>
+
+                                {{-- TODO : 좌석배정 개발 --}}
+                                <tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
+                                    <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                        @if (empty($row['subleclist']) === false)
+                                            @foreach($row['subleclist'] as $sub_key => $sub_row)
+                                                @if (empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]) === false)
+                                                    <input type="hidden" id="order_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
+                                                    <input type="hidden" id="order_prod_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
+                                                    <input type="hidden" id="lr_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
+                                                    <input type="hidden" id="lr_unit_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
+                                                    <input type="hidden" id="prod_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
+                                                    <input type="hidden" id="prod_code_sub_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
+                                                    <div class="mb10">
+                                                        <dl class="w-info">
+                                                            <dt>
+                                                                {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
+                                                                {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
+                                                            </dt>
+                                                        </dl>
+                                                        <ul class="seatsection">
+                                                            <li>
+                                                                <button id="btn_assign_seat_Y_{{ $sub_key }}" onclick="AssignSeat('Y','{{ $sub_key }}','{{
+                                                                        (($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] <= date('Y-m-d')
+                                                                        && date('Y-m-d') <= $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
+                                                            </li>
+                                                            <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }} | {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['UnitName'] }}</span></li>
+                                                            <li>[좌석번호]
+                                                                <span class="tx-red">
+                                                                    {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?
+                                                                    "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
+                                                                    {!! ($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
+                                                                </span>
+                                                            </li>
+                                                            <li>[좌석선택기간]
+                                                                {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] }}
+                                                                ~ {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate'] }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="Mypagetab2">
                     <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/ongoing/', 'www')}}" onsubmit="">
                         <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                             <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
@@ -128,132 +253,6 @@
                                             진행중
                                         @endif
                                     </td> --}}
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="Mypagetab2">
-                    {{--
-                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                        <div class="willbes-Lec-Search GM f_right">
-                            <div class="inputBox p_re">
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                                <button type="submit" onclick="" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    --}}
-
-                    <div class="willbes-Lec-Table NG d_block c_both">
-                        <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
-                            <colgroup>
-                                <col>
-                                {{-- <col style="width: 140px;"> --}}
-                                <col style="width: 120px;">
-                            </colgroup>
-                            <tbody>
-                            @forelse( $pkglist as $key => $row )
-                                <tr>
-                                    <td class="w-data tx-left pl10">
-                                        <div class="w-tit">{{$row['ProdName']}}</div>
-                                        @if(in_array($row['SiteCode'], ['2010','2011','2013']))
-                                            <dl class="w-info">
-                                                <dt>
-                                                    (수강증번호 : {{$row['CertNo']}})
-                                                </dt>
-                                            </dl>
-                                        @endif
-                                    </td>
-                                    {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
-                                        ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
-                                    @if($row['PackTypeCcd'] == '648003')
-                                        <td class="w-answer p_re">
-                                            <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
-                                            {{-- TODO : 좌석배정 개발 --}}
-                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
-                                            <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
-                                            @endif
-                                        </td>
-                                    @else
-                                        <td class="w-answer p_re">
-                                            <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
-                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
-                                                <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
-                                            @endif
-                                            <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
-                                                <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
-                                                    <img src="{{ img_url('prof/close.png') }}">
-                                                </a>
-                                                <div class="Layer-Cont">
-                                                    <div class="Layer-SubTit tx-gray">
-                                                        <ul>
-                                                            @if(empty($row['subleclist']) == true)
-                                                                <li>강의가 없습니다.</li>
-                                                            @else
-                                                                @foreach($row['subleclist'] as $subrow)
-                                                                    <li>{{$subrow['subProdName']}}</li>
-                                                                @endforeach
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    @endif
-                                </tr>
-
-                                {{-- TODO : 좌석배정 개발 --}}
-                                <tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
-                                    <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
-                                        @if (empty($row['subleclist']) === false)
-                                            @foreach($row['subleclist'] as $sub_key => $sub_row)
-                                                @if (empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]) === false)
-                                                    <input type="hidden" id="order_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
-                                                    <input type="hidden" id="order_prod_idx_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
-                                                    <input type="hidden" id="lr_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
-                                                    <input type="hidden" id="lr_unit_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
-                                                    <input type="hidden" id="prod_code_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
-                                                    <input type="hidden" id="prod_code_sub_Y_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
-                                                    <div class="mb10">
-                                                        <dl class="w-info">
-                                                            <dt>
-                                                                {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
-                                                                {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
-                                                            </dt>
-                                                        </dl>
-                                                        <ul class="seatsection">
-                                                            <li>
-                                                                <button id="btn_assign_seat_Y_{{ $sub_key }}" onclick="AssignSeat('Y','{{ $sub_key }}','{{
-                                                                        (($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] <= date('Y-m-d')
-                                                                        && date('Y-m-d') <= $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></button>
-                                                            </li>
-                                                            <li>[강의실명] <span>{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }} | {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['UnitName'] }}</span></li>
-                                                            <li>[좌석번호]
-                                                                <span class="tx-red">
-                                                                    {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?
-                                                                    "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
-                                                                    {!! ($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
-                                                                </span>
-                                                            </li>
-                                                            <li>[좌석선택기간]
-                                                                {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] }}
-                                                                ~ {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate'] }}
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>

@@ -45,7 +45,8 @@ class SearchMember extends \app\controllers\BaseController
         if (empty($this->_reqP('search_value')) === false) {
             $arr_condition = [
                 'EQ' => [
-                    'M.IsStatus' => 'Y'
+                    'M.IsStatus' => 'Y',
+                    'M.IsChange' => 'Y'
                 ],
                 'ORG' => [
                     'LKB' => [
@@ -101,7 +102,7 @@ class SearchMember extends \app\controllers\BaseController
         // 회원 검색
         $arr_condition = [
             'IN' => ['M.MemId' => $arr_mem_id],
-            'EQ' => ['M.IsStatus' => 'Y']
+            'EQ' => ['M.IsStatus' => 'Y', 'M.IsChange' => 'Y']
         ];
         $list = $this->searchMemberModel->listSearchMember('M.MemIdx, M.MemId, M.MemName', $arr_condition);
 

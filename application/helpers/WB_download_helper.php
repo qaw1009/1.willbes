@@ -73,7 +73,6 @@ if (!function_exists('rename_download')) {
          *
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
-        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
         $add_disposition = '';
         $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
@@ -85,7 +84,7 @@ if (!function_exists('rename_download')) {
                 && !strpos($_SERVER['HTTP_USER_AGENT'], 'iPad')
                 && !strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch')
                 && !strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh')
-                && !strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer')) {
+                && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
                 /**
                 1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
                 2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
@@ -93,7 +92,7 @@ if (!function_exists('rename_download')) {
                 $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
             }
 
-            if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer')) {
+            if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === true) {
                 $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
             }
         }

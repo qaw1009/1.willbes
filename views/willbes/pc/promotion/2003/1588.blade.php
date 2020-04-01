@@ -60,10 +60,10 @@
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_sky.png" usemap="#Map1588_sky" title="반반한 모의고사" border="0">
             <map name="Map1588_sky" id="Map1588_sky">
-                <area shape="rect" coords="8,116,154,189" href="#none" />
-                <area shape="rect" coords="8,202,154,272" href="#none" />
-                <area shape="rect" coords="8,276,154,350" href="#none" />
-                <area shape="rect" coords="8,357,154,434" href="#none" />
+                <area shape="rect" coords="8,116,154,189" href="#youtube_watch" />
+                <area shape="rect" coords="8,202,154,272" href="#detail" />
+                <area shape="rect" coords="8,276,154,350" href="javascript:alert('준비중입니다.')" />
+                <area shape="rect" coords="8,357,154,434" href="javascript:alert('준비중입니다.')" />
             </map>
         </div>              
 
@@ -93,7 +93,7 @@
             <map name="Map1588a" id="Map1588a">
                 <area shape="rect" coords="359,844,751,907" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?view=0&sort=dd&shelf_id=7" target="_blank" />
             </map>
-            <iframe src="https://www.youtube.com/embed/qvIFtFYt20M" frameborder="0" allowfullscreen=""></iframe>    
+            <iframe src="https://www.youtube.com/embed/qvIFtFYt20M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>    
         </div>
 
         <div class="evtCtnsBox evt01ss">
@@ -101,7 +101,7 @@
         </div>
         
         <div class="evtCtnsBox evt02" id="pairing">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02.jpg" title="편성표">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_april.jpg" /></li>

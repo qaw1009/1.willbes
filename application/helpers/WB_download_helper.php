@@ -83,17 +83,6 @@ if (!function_exists('rename_download')) {
             }
         }
 
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
-            /**
-            1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
-            2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
-             */
-            $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
-        }
 
 //        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
 //            $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
@@ -110,6 +99,18 @@ if (!function_exists('rename_download')) {
             @ob_clean();
         }
 
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') === false
+            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false
+            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch') === false
+            && strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') === false
+            && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
+            /**
+            1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
+            2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
+             */
+            $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
+        }
+
         // Generate the server headers
 //        header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
@@ -118,13 +119,13 @@ if (!function_exists('rename_download')) {
 //        header('Content-Disposition: attachment; filename="'.$filename.'"');
 //        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
-            echo 'test001';
-//            header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
+//            echo 'test001';
+            header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
         } else {
-            echo 'test002';
-//            header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) . '"' . $add_disposition);
+//            echo 'test002';
+            header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) . '"' . $add_disposition);
         }
-        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
+//        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
 
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');

@@ -76,19 +76,20 @@ if (!function_exists('rename_download')) {
         $add_disposition = '';
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
-            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])
-                && !preg_match('/StarPlayer*/', $_SERVER['HTTP_USER_AGENT'])) {
-                    $x[count($x) - 1] = strtoupper($extension);
-                    $filename = implode('.', $x);
-            } else if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'])
-                    && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT'])
-                    && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT'])
-                    && !preg_match('/Macintosh*/', $_SERVER['HTTP_USER_AGENT'])) {
-                        /**
-                        1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
-                        2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
-                        */
-                        $add_disposition = ';filename*=utf-8\'\''. rawurlencode($filename) .';';
+            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
+                $x[count($x) - 1] = strtoupper($extension);
+                $filename = implode('.', $x);
+            }
+
+            if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'])
+                && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT'])
+                && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT'])
+                && !preg_match('/Macintosh*/', $_SERVER['HTTP_USER_AGENT'])) {
+                    /**
+                    1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
+                    2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
+                    */
+                    $add_disposition = ';filename*=utf-8\'\''. rawurlencode($filename) .';';
             }
         }
 

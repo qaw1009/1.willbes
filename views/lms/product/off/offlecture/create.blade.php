@@ -510,8 +510,7 @@
                     </div>
                 </div>
 
-                {{-- TODO : 차후 기능 오픈 --}}
-                {{--<div class="form-group">
+                <div class="form-group">
                     <label class="control-label col-md-2" for="lr_code">강의실좌석정보선택
                     </label>
                     <div class="col-md-10 form-inline item" >
@@ -528,7 +527,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>--}}
+                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2">수강대상

@@ -106,7 +106,6 @@ if (!function_exists('rename_download')) {
             @ob_clean();
         }
 
-        die($file_name_encode);
         // Generate the server headers
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');

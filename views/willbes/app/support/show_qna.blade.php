@@ -33,7 +33,7 @@
                     @if($row['FileType'] == 0)
                         <tr class="flie">
                             <td class="w-file NGR">
-                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                             </td>
                         </tr>

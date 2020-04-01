@@ -276,10 +276,10 @@ class OrderModel extends BaseOrderModel
                 }
 
                 //강의실좌석 취소
-                /*$is_lectureroom_seat_cancel = $this->lectureRoomIssueModel->refundLectureRoom($order_idx,$row['ProdCode']);
+                $is_lectureroom_seat_cancel = $this->lectureRoomIssueModel->refundLectureRoom($order_idx,$row['ProdCode']);
                 if ($is_lectureroom_seat_cancel !== true) {
                     throw new \Exception($is_lectureroom_seat_cancel);
-                }*/
+                }
 
                 // 환불상품 데이터 저장
                 $data = [

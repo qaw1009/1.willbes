@@ -60,8 +60,9 @@
             <label class="control-label col-md-1-1">좌석정보
             </label>
             <div class="col-md-5">
-                <p class="form-control-static mb-20"><span class="blue">[강의실명]</span> {{$data['LectureRoomName']}} | {{$data['UnitName']}} <span class="blue">[좌석번호]</span> {{$data['SeatNo']}}<br>
-                    <span class="blue">[좌석상태]</span> {{ $data['MemSeatStatusCcdName'] }} <span class="blue">[좌석선택기간]</span> {{$data['SeatChoiceStartDate']}} ~ {{$data['SeatChoiceEndDate']}}</p>
+                <div class="form-inline ml-10"><span class="blue">[강의실명]</span> {{$data['LectureRoomName']}} | {{$data['UnitName']}} <span class="blue">[좌석번호]</span> {{$data['SeatNo']}}</div>
+                <div class="form-inline ml-10"><span class="blue">[좌석상태]</span> {{ $data['MemSeatStatusCcdName'] }}</div>
+                <div class="form-inline ml-10"><span class="blue">[좌석선택기간]</span> {{$data['SeatChoiceStartDate']}} ~ {{$data['SeatChoiceEndDate']}}</div>
             </div>
             <label class="control-label col-md-1-1">단과반정보
             </label>

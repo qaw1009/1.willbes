@@ -117,13 +117,7 @@
             <map name="Map1588b" id="Map1588b">
                 <area shape="rect" coords="370,974,751,1034" href="#to_go" />
             </map>             
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0">
-            <map name="Map1588c" id="Map1588c">
-                <area shape="rect" coords="188,852,358,937" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" />
-                <area shape="rect" coords="390,853,543,938" href="http://cafe.daum.net/9glade" target="_blank" />
-                <area shape="rect" coords="586,850,747,940" href="https://cafe.naver.com/gugrade" target="_blank" />
-                <area shape="rect" coords="782,849,948,943" href="https://cafe.naver.com/willbes" target="_blank" />
-            </map>  
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" title="반반한 소문내기">           
         </div>
 
         {{--홍보url--}}

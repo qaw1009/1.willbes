@@ -115,7 +115,8 @@
                         <th class="valign-middle">좌석정보명</th>
                         <th class="valign-middle">좌석번호</th>
                         <th class="valign-middle">결제상태</th>
-                        <th class="valign-middle">결제금액 (환불금액)</th>
+                        <th class="valign-middle">결제금액</th>
+                        <th class="valign-middle">환불금액</th>
                         <th class="valign-middle">결제완료일 (환불완료일)</th>
                         <th class="valign-middle">좌석변경</th>
                     </tr>
@@ -184,8 +185,10 @@
                             return row.PayStatusCcdName;
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            var ret = row.RealPayPrice;
-                            ret += (row.tRefundPrice > 0) ? '<br>(' + row.tRefundPrice + ')' : '';
+                            return row.RealPayPrice;
+                        }},
+                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                            var ret = (row.tRefundPrice > 0) ? row.tRefundPrice : '';
                             return ret;
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {

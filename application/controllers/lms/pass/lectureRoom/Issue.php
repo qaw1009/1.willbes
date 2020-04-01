@@ -40,6 +40,7 @@ class Issue extends \app\controllers\BaseController
                 'lr.CampusCcd' => explode('_', $this->_reqP('search_campus_ccd'))[0],
                 'lr.LrCode' => $this->_reqP('search_lr_code'),
                 'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
+                'op.PayStatusCcd' => $this->_reqP('search_pay_status')
             ],
             'ORG1' => [
                 'LKB' => [
@@ -98,6 +99,7 @@ class Issue extends \app\controllers\BaseController
                 'lr.CampusCcd' => explode('_', $this->_reqP('search_campus_ccd'))[0],
                 'lr.LrCode' => $this->_reqP('search_lr_code'),
                 'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
+                'op.PayStatusCcd' => $this->_reqP('search_pay_status')
             ],
             'ORG1' => [
                 'LKB' => [

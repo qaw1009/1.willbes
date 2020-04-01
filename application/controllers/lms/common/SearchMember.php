@@ -45,7 +45,8 @@ class SearchMember extends \app\controllers\BaseController
         if (empty($this->_reqP('search_value')) === false) {
             $arr_condition = [
                 'EQ' => [
-                    'M.IsStatus' => 'Y'
+                    'M.IsStatus' => 'Y',
+                    'M.IsChange' => 'Y'
                 ],
                 'ORG' => [
                     'LKB' => [

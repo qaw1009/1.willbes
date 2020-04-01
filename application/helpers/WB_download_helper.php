@@ -80,10 +80,10 @@ if (!function_exists('rename_download')) {
             if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
                 $x[count($x) - 1] = strtoupper($extension);
                 $filename = implode('.', $x);
-            } else if(!strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone')
-                && !strpos($_SERVER['HTTP_USER_AGENT'], 'iPad')
-                && !strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch')
-                && !strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh')
+            } else if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') === false
+                && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false
+                && strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch') === false
+                && strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') === false
                 && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
                 /**
                 1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.

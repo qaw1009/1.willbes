@@ -114,8 +114,8 @@ if (!function_exists('rename_download')) {
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
-//        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
+//        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
+        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
 //        header('Content-Disposition: attachment; filename="'.$filename.'"');
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');

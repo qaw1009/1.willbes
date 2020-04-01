@@ -110,7 +110,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg" title="방송전">
     @else
         {{--방송종료 00:00 부터 노출--}}
-        <img src="https://static.willbes.net/public/images/promotion/live/liveAfter.jpg" title="방송종료" />
+        <img src="https://static.willbes.net/public/images/promotion/live/live2.jpg" title="방송종료" />
     @endif
 </div>
 

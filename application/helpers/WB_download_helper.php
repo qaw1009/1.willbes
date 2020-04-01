@@ -111,17 +111,20 @@ if (!function_exists('rename_download')) {
         }
 
         // Generate the server headers
-        header('Content-Type: '.$mime);
+//        header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
 //        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
 //        header('Content-Disposition: attachment; filename="'.$filename.'"');
 //        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
-            header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
+            echo 'test001';
+//            header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
         } else {
+            echo 'test002';
 //            header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) . '"' . $add_disposition);
         }
+        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
 
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');

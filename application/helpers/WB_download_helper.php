@@ -110,7 +110,6 @@ if (!function_exists('rename_download')) {
             $add_disposition = '; filename*=utf-8\'\''. rawurlencode($filename) .';';
         }
 
-        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
         // Generate the server headers
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');

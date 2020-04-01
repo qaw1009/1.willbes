@@ -74,7 +74,6 @@ if (!function_exists('rename_download')) {
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
         $add_disposition = '';
-//        $file_name_encode = null;
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
             if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
@@ -82,13 +81,6 @@ if (!function_exists('rename_download')) {
                 $filename = implode('.', $x);
             }
         }
-
-
-//        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
-//            $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
-//        } else {
-//            $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);
-//        }
 
         if (($fp = @fopen($filepath, 'rb')) === false) {
             return;
@@ -99,11 +91,18 @@ if (!function_exists('rename_download')) {
             @ob_clean();
         }
 
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') === false
-            && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false) {
+            $file_name_encode = $filename;  // 안드로이드 app
+        } else {
+            $file_name_encode = iconv('UTF-8', 'EUC-KR', $filename);
+        }
+
+        if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'])
+            && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT'])
+            && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT'])
+            && !preg_match('/Macintosh*/', $_SERVER['HTTP_USER_AGENT'])
+            && !preg_match('/StarPlayer*/', $_SERVER['HTTP_USER_AGENT'])
+            && !preg_match('/Dalvik*/', $_SERVER['HTTP_USER_AGENT'])) {
             /**
             1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
             2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
@@ -115,19 +114,7 @@ if (!function_exists('rename_download')) {
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-//        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
-//        header('Content-Disposition: attachment; filename="'.$filename.'"');
-//        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false) {
-//            echo 'test001';
-            header('Content-Disposition: attachment; filename="'.$filename.'"');  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
-        } else {
-//            echo 'test002';
-            header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) . '"' . $add_disposition);
-        }
-//        header('Content-Disposition: attachment; filename="'.$_SERVER['HTTP_USER_AGENT'].'"');
-//        var_dump($_SERVER['HTTP_USER_AGENT']); exit;
-
+        header('Content-Disposition: attachment; filename="'. $file_name_encode .'"' . $add_disposition);
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: '.$filesize);

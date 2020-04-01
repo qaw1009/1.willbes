@@ -112,7 +112,7 @@ if (!function_exists('rename_download')) {
         }
 
         // Generate the server headers
-//        header('Content-Type: '.$mime);
+        header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
 //        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);

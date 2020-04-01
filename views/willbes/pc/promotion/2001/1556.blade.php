@@ -259,8 +259,8 @@
                     </li>
                     <li>
                         <div>
-                            <strong>119</strong>만원<br>
-                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="162537" onClick=""/> <label for="y_pkg3_1">20개월 패스</label>                           
+                            <strong>115</strong>만원<br>
+                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="163814" onClick=""/> <label for="y_pkg3_1">18개월 패스</label>                           
                         </div>
                     </li>
                 </ul>
@@ -345,7 +345,7 @@
             <ul class="tabs">
                 <li><a href="#tab1">6개월 PASS</a></li>
                 <li><a href="#tab2">12개월 PASS</a></li>
-                <li><a href="#tab3">20개월 0원 PASS</a></li>
+                <li><a href="#tab3">18개월 0원 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
@@ -491,11 +491,11 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <h3>20개월 상품설명</h3>
+                        <h3>18개월 상품설명</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>20개월 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
+                            <li>18개월 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>

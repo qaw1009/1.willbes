@@ -76,9 +76,10 @@ if (!function_exists('rename_download')) {
         $add_disposition = '';
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
-            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
-                $x[count($x) - 1] = strtoupper($extension);
-                $filename = implode('.', $x);
+            if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])
+                && !preg_match('/StarPlayer*/', $_SERVER['HTTP_USER_AGENT'])) {
+                    $x[count($x) - 1] = strtoupper($extension);
+                    $filename = implode('.', $x);
             } else if(!preg_match('/iPhone*/', $_SERVER['HTTP_USER_AGENT'])
                     && !preg_match('/iPad*/', $_SERVER['HTTP_USER_AGENT'])
                     && !preg_match('/iPod Touch*/', $_SERVER['HTTP_USER_AGENT'])

@@ -78,7 +78,6 @@ if (!function_exists('rename_download')) {
         if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']))
         {
             if (preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
-                echo 'test001';
                 $x[count($x) - 1] = strtoupper($extension);
                 $filename = implode('.', $x);
             } else if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') === false
@@ -86,7 +85,6 @@ if (!function_exists('rename_download')) {
                 && strpos($_SERVER['HTTP_USER_AGENT'], 'iPod Touch') === false
                 && strpos($_SERVER['HTTP_USER_AGENT'], 'Macintosh') === false
                 && strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') === false) {
-                echo 'test002';
                 /**
                 1. Edge 특정버전, Android 파이어폭스, Android app, IOS 사파리, IOS 크롬 등에서 한글파일명이 깨지는것을 방지하기 위한 로직. 이것 때문에 그외 다른 환경에서 문제가 될시 삭제 필요.
                 2. IOS 사파리에서 UA가 Macintosh로 나와서 Mac과 구분 불가능. Macintosh 조건으로 IOS 사파리는 개선되지만 Mac 크롬, Mac 파이어폭스는 여전히 한글 깨짐. 추후 다른 방법이 있다면 개선 필요.
@@ -95,12 +93,10 @@ if (!function_exists('rename_download')) {
             }
 
             if(strpos($_SERVER['HTTP_USER_AGENT'], 'StarPlayer') !== false) {
-                echo 'test003';
                 $file_name_encode = $filename;  //모바일앱에서는 iconv도, filename*= 이것도 붙이지 말아야함
             }
         }
 
-        die;
         if (($fp = @fopen($filepath, 'rb')) === false) {
             return;
         }
@@ -110,11 +106,13 @@ if (!function_exists('rename_download')) {
             @ob_clean();
         }
 
+        die($file_name_encode);
         // Generate the server headers
         header('Content-Type: '.$mime);
 //        header('Content-Disposition: attachment; filename="'.iconv('UTF-8','EUC-KR', $filename).'"');
 //        header('Content-Disposition: attachment; filename="'. iconv('UTF-8', 'EUC-KR', $filename) .'"; filename*=utf-8\'\''. rawurlencode($filename) .';');
-        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
+//        header('Content-Disposition: attachment; filename="'. $file_name_encode . '"' . $add_disposition);
+        header('Content-Disposition: attachment; filename="'.$file_name_encode.'"');
 //        header('Content-Disposition: attachment; filename="'.$filename.'"');
         header('Expires: 0');
         header('Content-Transfer-Encoding: binary');

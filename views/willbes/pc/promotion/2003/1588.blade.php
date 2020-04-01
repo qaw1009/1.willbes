@@ -47,13 +47,12 @@
         }
         .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}
 
-
-         /* tip */
-        .wb_cts09 {background:#e9e9e9; text-align:left; padding:100px 0;}
-        .wb_tipBox {border:1px solid #333; padding:100px; width:1000px; margin:0 auto; background:#fff }
-        .wb_tipBox p {font-size:24px !important; font-weight:bold; letter-spacing:-3px; margin-bottom:20px; color:#111}	
-        .wb_tipBox ul li {margin:10px 0 10px 15px; line-height:1.5; list-style:decimal; font-size:14px;}        
-       
+        /*유의사항*/
+        .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
+        .wb_ctsInfo div {width:980px; margin:0 auto; color:#fff;line-height:1.5;
+                        font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#FFE810;}         
+        .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; font-size:15px;}        
         </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -162,9 +161,9 @@
             @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
         @endif  
 
-        <div class="evtCtnsBox wb_cts09 mt100">
-            <div class="wb_tipBox">             
-                <p>유의사항</p>
+        <div class="wb_ctsInfo">
+            <div>
+                <h3 class="NGEB">유의사항</h3>
                 <ul>
                     <li>                    
                         더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br /> 방송 시간에 맞추어 접속 후 수강하시면 됩니다.<br /> 
@@ -190,29 +189,29 @@
                     </li>       
                     <li>                   
                         본 방송은 PC 및 모바일로 시청 가능합니다.<br />
-                        &nbsp;&nbsp;- PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br />
-                        &nbsp;&nbsp;- 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.
+                        - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br />
+                        - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.
                     </li>       
                     <li>                    
                         열공 출첵 이벤트 관련<br />
-                        &nbsp;&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 총 20회 진행됩니다. (공휴일 제외)<br />
-                        &nbsp;&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (4/27(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br />
-                        &nbsp;&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br />
-                        &nbsp;&nbsp;- 이벤트 경품은 5월 12일 (화)까지 [내강의실]에서 확인하실 수 있습니다.
+                        - 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 총 20회 진행됩니다. (공휴일 제외)<br />
+                        - 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (4/27(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지<br>&nbsp;&nbsp;않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br />
+                        - 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br />
+                        - 이벤트 경품은 5월 12일 (화)까지 [내강의실]에서 확인하실 수 있습니다.
                     </li> 
                     <li>                    
                         소문내기 이벤트 관련<br />
                         &nbsp;&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 진행됩니다.<br />
                         &nbsp;&nbsp;- 지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.<br />
                         &nbsp;&nbsp;- 이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.<br />
-                        &nbsp;&nbsp;- 본 이벤트는 선착순이나 게시글 작성 수가 아닌 추첨으로 당첨자 선정이 이루어지오나, 다양한 커뮤니티에 다양한 내용으로 정성스럽게 작성시 당첨확률이 높아질 수 있습니다.<br />
+                        &nbsp;&nbsp;- 본 이벤트는 선착순이나 게시글 작성 수가 아닌 추첨으로 당첨자 선정이 이루어지오나, 다양한 커뮤니티에 다양한 내용으로 정성스럽게 작성시<br>&nbsp;&nbsp; 당첨확률이 높아질 수 있습니다.<br />
                         &nbsp;&nbsp;- 이벤트 당첨자 발표는 5월 12일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br />
                         &nbsp;&nbsp;&nbsp; (경품 지급일의 경우, 당첨자 발표 공지사항에서 안내드릴 예정입니다.)
-                    </li>                                 
-                </ul>  
-            </div>  
+                    </li>                            
+                </ul>
+            </div>
         </div>
-         
+                
 	</div>
     <!-- End Container -->
 

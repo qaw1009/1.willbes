@@ -39,7 +39,7 @@
         .slidesLec li span {width:50px; display:inline-block}
         .slidesLec:after {content:""; display:block; clear:both}
         .wb_01 {background:#212121}
-        .wb_02 {background:#2f8ccf; padding-bottom:150px}
+        .wb_02 {background:#EA84AC; padding-bottom:150px}
             .check {margin-top:20px; color:#fff; font-size:14px}
             .check label {cursor:pointer}
             .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -208,8 +208,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01.jpg" alt="예비순환과 함께라면 단 1년 만에 합격!"/><Br>
+        <div class="evtCtnsBox wb_01" >           
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_01.gif" alt="혁신적인 커리큘럼"/><Br>
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_02.jpg" alt="김동진 법원팀 교수진" usemap="#Map1480A" border="0"/>
             <map name="Map1480A" id="Map1480A">
@@ -220,7 +219,7 @@
         <div class="evtCtnsBox wb_02" id="buyLec">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.jpg" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
-                <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('162567');"  alt="수강신청" />
+                <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('163827');"  alt="수강신청" />
             </map>  
             <div class="check" id="chkInfo">   
                 <label>

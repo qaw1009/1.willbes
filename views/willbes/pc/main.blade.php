@@ -1,8 +1,8 @@
 @extends('willbes.pc.layouts.master')
-
+<link href="/public/css/willbes/style_main.css?ver={{time()}}" rel="stylesheet">
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container main NGR c_both">
+    <div id="Container" class="Container main NSK c_both">
         <div class="Section MainVisual mt30 mb50">
             <div class="widthAuto">
                 <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visualTop.jpg') }}" title="통합회원 가입, 한번이면 OK"></a>
@@ -10,8 +10,8 @@
         </div>
         <div class="Section Act1 mb50">
             <div class="widthAuto">
-            <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-            <div class="ProcessBox">
+                <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
+                <div class="ProcessBox">
                 <ul>
                     <li class="fisrt">
                         <div class="wTit">
@@ -167,8 +167,7 @@
                 </ul>                
             </div>
         </div>
-    </div>
-    
+    </div>   
     
     
         <div class="Section">
@@ -251,63 +250,44 @@
                 <div class="will-Tit">윌비스 직영학원</div>
                 <dl class="ListBox">
                     <dt class="acadList">
-                        <table cellspacing="0" cellpadding="0" class="MainacadTable">
-                            <colgroup>
-                                <col style="width: 125px;"/>
-                                <col style="width: 675px;"/>
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="Tit">공무원</th>
-                                <td>
-                                    <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a>
-                                    <a href="http://willbesedu.co.kr" target="_blank">인천</a>
-                                    <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">대구</a>
-                                    <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">부산</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="Tit">경찰</th>
-                                <td>
-                                    <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
-                                    <a href="https://blog.naver.com/als9946" target="_blank">전북</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="Tit">경찰간부</th>
-                                <td>
-                                    <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="Tit">교원임용</th>
-                                <td>
-                                    <a href="http://ssam.willbes.net" target="_blank">노량진</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="Tit">고등고시</th>
-                                <td>
-                                    <a href="http://www.hanlimgosi.co.kr" target="_blank">신림(한림법학원)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="Tit">전문자격</th>
-                                <td>
-                                    <a href="http://value.willbes.net" target="_blank">감평/노무 - 신림(한림법학원)</a>
-                                    <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a>
-                                    <a href="http://patent.willbes.net" target="_blank">변리사-강남</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
+                        <ul>
+                            <li>
+                                <strong>공무원</strong>
+                                <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a><span>|</span>
+                                <a href="http://willbesedu.co.kr" target="_blank">인천</a><span>|</span>
+                                <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">대구</a><span>|</span>
+                                <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">부산</a>
+                            </li>
+                            <li>
+                                <strong>경찰</strong>
+                                <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a><span>|</span>
+                                <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a><span>|</span>
+                                <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a><span>|</span>
+                                <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a><span>|</span>
+                                <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a><span>|</span>
+                                <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a><span>|</span>
+                                <a href="https://blog.naver.com/als9946" target="_blank">전북</a>
+                                <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
+                            </li>
+                            <li>
+                                <strong>경찰간부</strong>
+                                <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
+                            </li>
+                            <li>
+                                <strong>교원임용</strong>
+                                <a href="http://ssam.willbes.net" target="_blank">노량진</a>
+                            </li>
+                            <li>
+                                <strong>고등고시</strong>
+                                <a href="http://www.hanlimgosi.co.kr" target="_blank">신림(한림법학원)</a>
+                            </li>
+                            <li>
+                                <strong>전문자격</strong>
+                                <a href="http://value.willbes.net" target="_blank">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                                <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
+                                <a href="http://patent.willbes.net" target="_blank">변리사-강남</a>
+                            </li>
+                        </ul>
                     </dt>
                     <dt class="imgBox">
                         <ul>

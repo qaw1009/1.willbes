@@ -1,5 +1,5 @@
 /* CSS : import */
-@import url("style_main.css");
+@import url("style_main_v2.css");
 @import url("style_cop.css"); /*일반경찰*/
 @import url("style_cop_adm.css"); /*경행경채*/
 @import url("style_cop_pro.css"); /*경찰승진*/
@@ -1329,6 +1329,7 @@ table.auTable tr td {
 .List-Table li span.date {
     float: right;
 }
+.List-Table li:after,
 .List-Table:after {
     content: "";
     display: block;

@@ -279,13 +279,13 @@
                             </li>
                             <li>
                                 <strong>고등고시</strong>
-                                <a href="http://www.hanlimgosi.co.kr" target="_blank">신림(한림법학원)</a>
+                                <a href="{{ app_url('/home/index/cate/3094', 'gosi') }}">신림(한림법학원)</a>
                             </li>
                             <li>
                                 <strong>전문자격</strong>
-                                <a href="http://value.willbes.net" target="_blank">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                                <a href="{{ app_url('home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
                                 <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                                <a href="http://patent.willbes.net" target="_blank">변리사-강남</a>
+                                <a href="{{ app_url('home/index/cate/309004', 'job') }}">변리사-강남</a>
                             </li>
                         </ul>
                     </dt>
@@ -293,7 +293,6 @@
                         <ul>
                             <li><a href="http://www.willstory.co.kr" target="_blank"><img src="{{ img_url('main/familysite_willstory.jpg') }}"></a></li>
                             <li><a href="http://www.willbeslife.net" target="_blank"><img src="{{ img_url('main/familysite_life.jpg') }}"></a></li>
-                            {{--<li><a href="http://www.willbes.co.kr" target="_blank"><img src="{{ img_url('main/familysite_edu.jpg') }}"></a></li>--}}
                         </ul>
                     </dt>
                 </dl>

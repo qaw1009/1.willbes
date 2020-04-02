@@ -372,40 +372,39 @@
                 <ul>
                     <li>
                         <strong>공무원</strong>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">노량진</a><span>|</span>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">인천</a><span>|</span>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">대구</a><span>|</span>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">부산</a>
+                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a><span>|</span>
+                        <a href="http://willbesedu.co.kr" target="_blank">인천</a><span>|</span>
+                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">대구</a><span>|</span>
+                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">부산</a>
                     </li>
                     <li>
                         <strong>경찰</strong>
-                        <a href="#{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605002', 'police') }}" target="_blank">신림</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605007', 'police') }}" target="_blank">전북</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>
+                        <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a><span>|</span>
+                        <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a><span>|</span>
+                        <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a><span>|</span>
+                        <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a><span>|</span>
+                        <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a><span>|</span>
+                        <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a><span>|</span>
+                        <a href="https://blog.naver.com/als9946" target="_blank">전북</a>
+                        <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
                     </li>
                     <li>
                         <strong>경찰간부</strong>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">노량진</a>
+                        <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
                     </li>
                     <li>
                         <strong>교원임용</strong>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">노량진</a>
+                        <a href="http://ssam.willbes.net" target="_blank">노량진</a>
                     </li>
                     <li>
                         <strong>고등고시</strong>
-                        <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">노량진</a>
+                        <a href="{{ app_url('/home/index/cate/3094', 'gosi') }}">신림(한림법학원)</a>
                     </li>
                     <li>
                         <strong>전문자격</strong>
-                        <a href="#{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">감평/노무 - 신림(힌림법학원)</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605002', 'police') }}" target="_blank">세무/회계 - 종로(나무아카데미)</a><span>|</span>
-                        <a href="#{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">변리사 - 강남</a>
+                        <a href="{{ app_url('home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                        <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
+                        <a href="{{ app_url('home/index/cate/309004', 'job') }}">변리사-강남</a>
                     </li>
                 </ul>                
             </div>

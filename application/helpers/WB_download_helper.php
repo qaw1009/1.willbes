@@ -125,11 +125,6 @@ if (!function_exists('rename_download')) {
         header('Content-Length: '.$filesize);
         header('Cache-Control: private, no-transform, no-store, must-revalidate');
 
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'Dalvik') !== false) {
-//            header_remove();
-            print_r($_SERVER['HTTP_USER_AGENT']); die;
-        }
-
         // Flush 1MB chunks of data
         while (!feof($fp) && ($data = fread($fp, 1048576)) !== false) {
             echo $data;

@@ -40,7 +40,7 @@
                             @forelse( $pkglist as $key => $row )
                                 <tr>
                                     <td class="w-data tx-left pl10">
-                                        <div class="w-tit">{{$row['ProdName']}} {{$row['ProdCode']}}</div>
+                                        <div class="w-tit">{{$row['ProdName']}}</div>
                                         @if(in_array($row['SiteCode'], ['2010','2011','2013']))
                                             <dl class="w-info">
                                                 <dt>

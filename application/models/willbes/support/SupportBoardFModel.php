@@ -204,6 +204,10 @@ class SupportBoardFModel extends BaseSupportFModel
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+        $arr_condition_sub = ['EQ' => ['ProfIdx' => $prof_idx]];
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+
         $from = "
             FROM {$this->_table['board_2']}
             INNER JOIN (
@@ -217,8 +221,7 @@ class SupportBoardFModel extends BaseSupportFModel
                 FROM {$this->_table['lms_professor']}
                 WHERE wProfIdx = (
                     SELECT wProfIdx
-                    FROM {$this->_table['lms_professor']}
-                    WHERE ProfIdx = '{$prof_idx}'
+                    FROM {$this->_table['lms_professor']} {$where_sub}
                 )
             ) AS p ON b.ProfIdx = p.ProfIdx
         ";
@@ -325,11 +328,10 @@ class SupportBoardFModel extends BaseSupportFModel
 
     public function findBoardForProf($site_code, $prof_idx, $board_idx, $arr_condition=[], $column='*', $limit = null, $offset = null, $order_by = [])
     {
-        $arr_condition = array_merge_recursive($arr_condition,[
-            'EQ' => [
-                'b.BoardIdx' => $board_idx,
-            ]
-        ]);
+        $arr_condition = array_merge_recursive($arr_condition,['EQ' => ['b.BoardIdx' => $board_idx,]]);
+        $arr_condition_sub = ['EQ' => ['ProfIdx' => $prof_idx]];
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
 
         $from = "
             FROM {$this->_table['board_find']}
@@ -344,8 +346,7 @@ class SupportBoardFModel extends BaseSupportFModel
                 FROM {$this->_table['lms_professor']}
                 WHERE wProfIdx = (
                     SELECT wProfIdx
-                    FROM {$this->_table['lms_professor']}
-                    WHERE ProfIdx = '{$prof_idx}'
+                    FROM {$this->_table['lms_professor']} {$where_sub}
                 )
             ) AS p ON b.ProfIdx = p.ProfIdx
             

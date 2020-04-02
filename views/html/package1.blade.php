@@ -249,7 +249,11 @@
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>패키지상세정보</strong></dt>
+                                    <dt class="mr20">
+                                        <a href="#none" onclick="openWin('InfoForm')">
+                                            <strong>패키지상세정보</strong>
+                                        </a>
+                                    </dt>
                                     <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">30일</span></dt>
@@ -273,7 +277,11 @@
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>패키지상세정보</strong></dt>
+                                    <dt class="mr20">
+                                        <a href="#none" onclick="openWin('InfoForm')">
+                                            <strong>패키지상세정보</strong>
+                                        </a>
+                                    </dt>
                                     <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">15일</span></dt>
@@ -295,7 +303,11 @@
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>패키지상세정보</strong></dt>
+                                    <dt class="mr20">
+                                        <a href="#none" onclick="openWin('InfoForm')">
+                                            <strong>패키지상세정보</strong>
+                                        </a>
+                                    </dt>
                                     <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">15일</span></dt>

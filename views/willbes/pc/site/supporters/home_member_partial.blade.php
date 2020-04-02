@@ -8,7 +8,7 @@
 </div>
 
 <h5>
-    신광은 경찰팀을 함께 만들어가는 광은 서포터즈 <span class="tx-red">{{ $data['SupportersNumber'] }}기</span>
+    윌비스신광은경찰을 함께 만들어갈 <span class="tx-red">2020 신의한수 서포터즈 {{ $data['SupportersNumber'] }}기</span>
     <div class="f_right mb10 mr10">
         <div class="subBtn blue NSK f_right"><a href="javascript:myclass_create('{{ $data['SupportersIdx'] }}');">나의소개 쓰기</a></div>
     </div>

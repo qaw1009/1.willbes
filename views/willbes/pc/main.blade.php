@@ -1,6 +1,6 @@
 @extends('willbes.pc.layouts.master')
-<link href="/public/css/willbes/style_main.css?ver={{time()}}" rel="stylesheet">
 @section('content')
+<link href="/public/css/willbes/style_main.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container main NSK c_both">
         <div class="Section MainVisual mt30 mb50">

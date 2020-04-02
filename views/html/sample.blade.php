@@ -26,7 +26,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/animation') }}" target="_blank">css 에니메이션</a></li>  
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/m/sample') }}" target="_blank">모바일 html 퍼블리싱 페이지</a></li>
-                <li><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a></li>
+                <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인-2019</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_v2') }}" target="_blank">통합메인-2020</a></li>
+                <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_pro_online') }}" target="_blank">경찰승진 온라인 메인</a></li>

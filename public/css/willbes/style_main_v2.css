@@ -1,0 +1,348 @@
+/*********************************************     Main Container : Main     *********************************************/
+
+/*ver2*/
+.main .tx-color {
+    color: #009ef5;
+}
+
+.mainV2 .gateSearch {width:920px !important; height:100px; margin:50px auto 0;}
+.mainV2 .gateSearch input[type=search] {border:2px solid #0396cf; width:740px; height:44px; line-height: 44px; color:#ccc; font-size:14px; float: left; padding-left:10px}
+.mainV2 .gateSearch input:focus {border:2px solid #0396cf !important; color:#333}
+.mainV2 .gateSearch button {width:180px; height:50px; font-size:0; text-indent: -9999px; float: left;
+    background:#0396cf url("../../img/willbes/main/gate_seargh.png") no-repeat center center; 
+    vertical-align:top; display: inline-block; position: absolute; z-index: 1;
+}
+.mainV2 .gateSearch:after {content: ""; display: block; clear: both;}
+
+.mainV2 .Area1 {background: #f0f4fa; padding:30px 0;}
+.mainV2 .Area1 h2 {font-size: 30px; text-align:center; font-weight:900;
+    -webkit-animation: bounce-left 0.8s alternate both;
+	        animation: bounce-left 0.8s alternate both;
+}
+ @-webkit-keyframes bounce-left {
+    0% {
+      -webkit-transform: translateX(-48px);
+              transform: translateX(-48px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+      -webkit-transform: translateX(-26px);
+              transform: translateX(-26px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    65% {
+      -webkit-transform: translateX(-13px);
+              transform: translateX(-13px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    82% {
+      -webkit-transform: translateX(-6.5px);
+              transform: translateX(-6.5px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    93% {
+      -webkit-transform: translateX(-4px);
+              transform: translateX(-4px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87%,
+    98% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    100% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+      opacity: 1;
+    }
+ }
+ @keyframes bounce-left {
+    0% {
+      -webkit-transform: translateX(-48px);
+              transform: translateX(-48px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+      -webkit-transform: translateX(-26px);
+              transform: translateX(-26px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    65% {
+      -webkit-transform: translateX(-13px);
+              transform: translateX(-13px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    82% {
+      -webkit-transform: translateX(-6.5px);
+              transform: translateX(-6.5px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    93% {
+      -webkit-transform: translateX(-4px);
+              transform: translateX(-4px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87%,
+    98% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    100% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+      opacity: 1;
+    }
+ }
+  
+  
+.mainV2 .Area1 h2 span {vertical-align: top; color:#0396cf}
+.mainV2 .Area1 .addList { width:920px; margin: 30px auto 0}
+.mainV2 .Area1 .addList li {display: inline; float:left; width: 20%; font-size: 14px;}
+.mainV2 .Area1 .addList a {display:block; text-align: center; background: #fff; border:1px solid #333; height: 44px; line-height: 44px; position: relative; margin-bottom: 10px;
+margin-right:10px}
+.mainV2 .Area1 .addList a span {display:none; position:absolute; top:10px; right:10px; font-size: 12px; width:20px; height: 20px; line-height: 20px; text-align: center; cursor: pointer;}
+.mainV2 .Area1 .addList a:hover span {display: block; background: #fff; color:#333; border-radius: 10px;}
+.mainV2 .Area1 .addList li:last-child a {background: #e6e6e6; font-weight: bold;}
+.mainV2 .Area1 .addList li:last-child a:hover,
+.mainV2 .Area1 .addList a:hover {background: #333; color:#fff}
+.mainV2 .Area1 .addList:after {content: ""; display: block; clear:both}
+
+.gate-add-popup .willbes-Layer-CartBox {height:auto;}
+.gate-add-popup .Layer-Tit {background: #333; text-align: center; color:#fff; height: 50px !important; line-height: 50px !important; font-weight: 900;}
+.gate-add-popup .gate-add-cts {overflow-y:scroll !important; padding:30px; height: 400px;}
+.gate-add-popup .gate-add-cts h5 {font-size:16px; font-weight: 900; margin-bottom: 10px;}
+.gate-add-popup .gate-add-cts ul {margin-bottom:20px}
+.gate-add-popup .gate-add-cts li {display: inline; float:left; width: 25%;}
+.gate-add-popup .gate-add-cts li a {display: block; border:1px solid #d0d0d0; text-align: center; height: 32px; line-height: 32px; margin-bottom:5px; margin-right:5px}
+.gate-add-popup .gate-add-cts li a:hover,
+.gate-add-popup .gate-add-cts li a.active {color:#fff; background:#0396cf; border:1px solid #0396cf;}
+.gate-add-popup .gate-add-cts ul:after {content: ""; display: block; clear:both} 
+.gate-add-popup .addBtn {width: 180px; margin:30px auto}
+.gate-add-popup .addBtn a {display: block; color:#fff; background:#0396cf; text-align: center; height: 40px; line-height: 40px; font-size: 18px; font-weight: 900;}
+
+.mainV2 .bar-banner {overflow: hidden; width: 1120px; height: 110px;}
+
+.mainV2 .bar-banner .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.mainV2 .bar-banner .bx-wrapper .bx-pager {
+    bottom: inherit;
+    top: 8px;
+    padding-top: 0;
+}
+.mainV2 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.mainV2 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.mainV2 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a.active,
+.mainV2 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ffda38;
+    width: 30px;
+}
+.mainV2 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #acacac;
+}
+
+.mainV2 .Area2 .ProcessBox ul { position: relative;}
+.mainV2 .Area2 .ProcessBox li {display: inline; float: left; width:20%;}
+.mainV2 .Area2 .ProcesGroup {padding:20px 30px; margin-bottom: 15px; margin-right: 10px; min-height:320px; color: #383838; border: 1px solid #eaeaea; transition: opacity .4s ease-in-out;}
+.mainV2 .Area2 .ProcessBox li:nth-child(5) .ProcesGroup {margin-right:0}
+.mainV2 .Area2 .ProcesGroup:hover {border: 1px solid #000; background: #f4f4f4;
+    -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
+}
+.mainV2 .Area2 .ProcessBox li.half {height: 155px !important;}
+.mainV2 .Area2 .ProcessBox li.half .ProcesGroup {min-height:100%;}
+.mainV2 .Area2 .ProcessBox ul:hover li:not(:hover) {    
+    opacity: 0.5; 
+}
+.mainV2 .Area2 .ProcesGroup .wTit {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    text-align: center;    
+}
+.mainV2 .Area2 .ProcesGroup .wTit img {margin-right: 5px;}
+.mainV2 .Area2 .ProcesGroup .wTxt {font-size: 12px;}
+.mainV2 .Area2 .ProcesGroup a {display: block; border:1px solid #d7d7d7; border-bottom:0; height: 30px; line-height: 30px; padding:0 15px; background: #fff;}
+.mainV2 .Area2 .ProcesGroup a span {font-size: 10px; color:#f10b0b; vertical-align: top; margin-top: -5px; float: right; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+@keyframes upDown{
+    from{color:#fff}
+    50%{color:#f10b0b}
+    to{color:#fff}
+    }
+@-webkit-keyframes upDown{
+    from{color:#fff}
+    50%{color:#f10b0b}
+    to{color:#fff}
+}
+.mainV2 .Area2 .ProcesGroup a:hover {background: #333; color:#fff; border:1px solid #333;}
+.mainV2 .Area2 .ProcesGroup a:last-child {border-bottom:1px solid #d7d7d7;}
+.mainV2 .Area2 .ProcesGroup a:last-child:hover {border-bottom:1px solid #333;}
+.mainV2 .Area2 .ProcessBox li:last-child { position: absolute; bottom:15px; right:0; width: 224px; height: 320px; z-index: 1;}
+.mainV2 .Area2 .ProcessBox ul:after {content: ""; display: block; clear:both}
+
+/* Main Container : Act2 */
+.mainV2 .Area3 .sliderDayList {
+    background: #f2f5f9;
+}
+.mainV2 .Area3 span {
+    display: inline-block;
+}
+.mainV2 .Area3 li {
+    border-bottom:1px solid #b9bbbe;  
+    padding:0 30px;
+}
+.mainV2 .Area3 li:last-child {border-bottom:0}
+.mainV2 .Area3 .dDayBox {
+    display: inline;
+    float: left;    
+    width: 25%;
+    overflow: hidden;   
+    padding:20px 0;  
+    color: #009ef5;     
+}
+.mainV2 .Area3 .dDayBox a {
+    display: block;
+    border-right: 1px solid #e2e2e2;    
+    padding: 20px 0 20px 30px;
+    cursor: default;  
+    }
+.mainV2 .Area3 .dDayBox:nth-child(1),
+.mainV2 .Area3 .dDayBox:nth-child(2),
+.mainV2 .Area3 .dDayBox:nth-child(3),
+.mainV2 .Area3 .dDayBox:nth-child(4) {border-top:0}
+.mainV2 .Area3 .dDayBox:nth-child(4n+4) a {
+    border-right: none;
+}
+.mainV2 .Area3 .dTit {
+    font-size: 14px;
+    color: #464646;
+    line-height: 20px;
+    text-align: left;
+}
+.mainV2 .Area3 .dTit .w-date {
+    font-size: 12px;
+}
+.mainV2 .Area3 .dDay {
+    font-size: 27px;
+    font-weight: 600;
+    padding: 0 15px 0 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.mainV2 .Area3 .line {
+    background: #e2e2e2;
+    text-indent: -9999px;
+}
+.mainV2 .Area3 .sliderDayList li:after {content: ""; display: block; clear:both}
+
+
+
+.mainV2 .Area4 .NowWillbes {
+    float: left;
+    width: 550px;
+}
+.mainV2 .Area4 .NowWillbes .will-Tit {position: relative;}
+.mainV2 .Area4 .NowWillbes .will-Tit a {display: inline-block; float: right; border:1px solid #000; text-align: center;
+    height: 23px; width: 23px; line-height:23px ;}
+.mainV2 .Area4 .NowWillbes li {
+    line-height: 30px; font-size: 13px; list-style: disc inside;
+}
+.mainV2 .Area4 .NowWillbes li a {
+    width: 100%;
+}
+.mainV2 .Area4 .NowWillbes span {
+    display: inline-block;
+}
+.mainV2 .Area4 .NowWillbes .w-tit {
+    width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.mainV2 .Area4 .NowWillbes .w-new {font-size: 10px; padding:3px 5px; background: #009ef5; color:#fff; display: inline; border-radius: 4px; margin-left:5px}
+.mainV2 .Area4 .NowWillbes .w-date {
+    width: 90px;
+    text-align: center;
+    float: right;
+    color:#999;
+}
+.mainV2 .Area4 .WhyWillbes {
+    float: right;
+    width: 556px;
+}
+.mainV2 .Area4 .WhyWillbes div div:first-child {margin-bottom:10px}
+.mainV2 .Area4 .NowWillbes li:after,
+.mainV2 .Area4 dl:after {content: ""; display: block; clear: both;}
+
+
+.mainV2 .Area5 .acadList li {display:inline; float:left; width: 40%; font-size: 14px;; margin-bottom:10px}
+.mainV2 .Area5 .acadList li:nth-of-type(even) {width:60%;}
+.mainV2 .Area5 .acadList li strong { width: 120px; display: inline-block; text-align: center; font-weight: bold; border:1px solid #009ef5; 
+    height: 30px; line-height: 30px; margin-right:15px}
+.mainV2 .Area5 .acadList li a {display: inline-block;}
+.mainV2 .Area5 .acadList li span {padding:0 10px; color:#ccc}
+.mainV2 .Area5 .acadList ul:after {content: ""; display: block; clear: both;}
+
+.mainV2 .Area5 .imgBox {
+    margin-top:20px;
+}
+.mainV2 .Area5 .imgBox li {
+    display: inline;float: left;width: 50%;
+}
+.mainV2 .Area5 .imgBox li a { display: block; text-align: center; border:1px solid #ccc}
+.mainV2 .Area5 .imgBox li:last-child a {border-left:0}
+.mainV2 .Area5 .imgBox ul:after {content: ""; display: block; clear: both;}
+
+
+.mainV2 .Area6 .will-Tit {margin-bottom: 0;}
+.mainV2 .Area6 .CScenterBox {
+    background: #fbfbfb;
+    padding: 30px 0 30px 110px;
+    border:1px solid #e3e3e3; border-top:0;    
+}
+.mainV2 .Area6 .CScenterBox li {display: inline; float: left; font-size: 18px; line-height:32px;}
+.mainV2 .Area6 .CScenterBox li span {vertical-align: top; color:#ff0000} 
+.mainV2 .Area6 .CScenterBox li:last-child span {color:#009ef5}
+.mainV2 .Area6 .CScenterBox li strong {font-size: 32px; vertical-align: bottom; font-family: Verdana, Geneva, Tahoma, sans-serif; margin-right:30px; color:#009ef5}
+.mainV2 .Area6 .CScenterBox ul:after {content: ""; display: block; clear: both;}

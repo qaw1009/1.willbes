@@ -34,7 +34,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_top.jpg" alt="기본이론 종합반" usemap="#Map1592a" border="0" />
             <map name="Map1592a" id="Map1592a">
-                <area shape="rect" coords="258,701,862,818" href="#apply" />
+                <area shape="rect" coords="258,701,862,818" href="#apply" onfocus='this.blur()' />
             </map>
         </div>     
 
@@ -57,8 +57,8 @@
         <div class="evtCtnsBox wb_05" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_05.jpg" alt="혜택은 특별" usemap="#Map1592b" border="0"/>
             <map name="Map1592b" id="Map1592b">
-                <area shape="rect" coords="117,831,532,1029" href="https://police.willbes.net/pass/offPackage/show/prod-code/162555" target="_blank" />
-                <area shape="rect" coords="597,829,997,1028" href="https://police.willbes.net/pass/offPackage/show/prod-code/162554" target="_blank" />
+                <area shape="rect" coords="117,831,532,1029" href="https://police.willbes.net/pass/offPackage/show/prod-code/162555" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="597,829,997,1028" href="https://police.willbes.net/pass/offPackage/show/prod-code/162554" target="_blank" onfocus='this.blur()' />
             </map>
         </div>
       
@@ -67,7 +67,7 @@
 
 
     <script type="text/javascript"> 
-       
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

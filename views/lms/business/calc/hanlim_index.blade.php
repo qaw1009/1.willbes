@@ -20,6 +20,12 @@
                     <label class="control-label col-md-1">교수검색</label>
                     <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                            <option value="">대분류</option>
+                            @foreach($arr_lg_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
                             <option value="">교수선택</option>
                             @foreach($arr_professor as $row)
@@ -146,7 +152,8 @@
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
             }
 
-            // 교수, 캠퍼스 자동 변경
+            // 카테고리, 교수, 캠퍼스 자동 변경
+            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 

@@ -32,6 +32,9 @@ class OffLectureHL extends \app\controllers\BaseController
 
         // 상품 구분
         $prod_type = get_var($this->_reqG('prod_type'), 'OL');
+
+        // 1차 카테고리 조회
+        $arr_lg_category = $this->categoryModel->getCategoryArray('', '', '', 1);
         
         // 교수 조회
         $arr_professor = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
@@ -43,6 +46,7 @@ class OffLectureHL extends \app\controllers\BaseController
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
             'prod_type' => $prod_type,
+            'arr_lg_category' => $arr_lg_category,
             'arr_professor' => $arr_professor,
             'arr_campus' => $arr_campus
         ]);
@@ -98,6 +102,9 @@ class OffLectureHL extends \app\controllers\BaseController
             'EQ' => [
                 'TA.ProfIdx' => $this->_reqP('search_prof_idx'),
                 'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
+            ],
+            'LKR' => [
+                'PC.CateCode' => $this->_req('search_lg_cate_code')
             ],
             'ORG' => [
                 'EQ' => [

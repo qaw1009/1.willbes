@@ -87,6 +87,7 @@ class Issue extends \app\controllers\BaseController
         $arr_date_colum = ['I' => 'IssueDatm', 'U' => 'UseDatm', 'R' => 'RetireDatm'];
         $arr_condition = [
             'EQ' => [
+                'SiteCode' => $this->_reqP('search_site_code'),
                 'MemIdx' => $this->_reqP('search_member_idx'),
                 'CouponIdx' => $this->_reqP('search_coupon_idx'),
                 'IssueTypeCcd' => $this->_reqP('search_issue_type'),

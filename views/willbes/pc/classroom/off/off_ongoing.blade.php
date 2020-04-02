@@ -54,7 +54,6 @@
                                     @if($row['PackTypeCcd'] == '648003')
                                         <td class="w-answer p_re">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')"><span class="bBox blueBox">강사선택하기</span></a>
-                                            {{-- TODO : 좌석배정 개발 --}}
                                             @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
                                                 <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
                                             @endif
@@ -87,7 +86,6 @@
                                     @endif
                                 </tr>
 
-                                {{-- TODO : 좌석배정 개발 --}}
                                 <tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
                                     <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
                                         @if (empty($row['subleclist']) === false)
@@ -212,7 +210,7 @@
                                                 </dt>
                                             </dl>
                                         @endif
-                                        {{-- TODO : 좌석배정 개발 --}}
+
                                         @if (empty($listLectureRoom[$row['ProdCode']]) === false)
                                             <input type="hidden" id="order_idx_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
                                             <input type="hidden" id="order_prod_idx_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderProdIdx'] }}">

@@ -467,7 +467,7 @@
                                         <button type="button" class="sNumberC">003<span>회원명</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
-                                        <button type="button" class="sNumberA">004<span>선택가능</span></button>
+                                        <button type="button" class="active">004<span>선택가능</span></button>
                                     </li>
                                     <li style="width: calc(100%/10);">
                                         <button type="button" class="sNumberA">005<span>선택가능</span></button>

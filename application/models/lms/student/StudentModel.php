@@ -51,8 +51,10 @@ class StudentModel extends WB_Model
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
                             join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
                                                         AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCodeSub
+                            left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx                                                        
                         WHERE
                             OP.PayStatusCcd IN ('676001', '676007')
+                            AND ( ouh.OrderIdx is null OR ouh.UnPaidUnitNum = 1)
                             AND rs.ProdCodeSub = A.ProdCode
                             AND rs.ProdCodeSub <> rs.ProdCode
                             AND ML.ProdCodeSub = A.ProdCode

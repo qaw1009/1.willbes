@@ -9153,11 +9153,17 @@ table.acadTable tr td {
 .seatNumber li button {display:inline-block; width:calc(100% - 8px); text-align: center; letter-spacing: normal; line-height: 1.5; 
     border:1px solid #e4e4e4; padding-top:10px; padding-bottom:10px; background:#fff; color:#333}
 .seatNumber li button span {display:block;}
+.seatNumber li button:hover {border:1px solid #1a8ccb}
 .seatNumber .sNumberA span {color:#ef0f0f}
 .seatNumber .sNumberB {background:#e4e4e4;}
 .seatNumber .sNumberB span {color:#333;}
-.seatNumber .sNumberC {background:#333; color:#fff;}
+.seatNumber .sNumberC {background:#1a8ccb; color:#fff;}
 .seatNumber .sNumberC span {color:#fff;}
+.seatNumber .sNumberC:hover,
+.seatNumber .sNumberB:hover {border:1px solid #e4e4e4;}
+.seatNumber li button.active {border:1px solid #1a8ccb; color:#1a8ccb}
+.seatNumber li button.active span {color:#1a8ccb}
+
 .seatNumber ul:after {
     content: ""; display: block; clear: both;
 }

@@ -283,9 +283,9 @@
                             </li>
                             <li>
                                 <strong>전문자격</strong>
-                                <a href="{{ app_url('home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                                <a href="{{ app_url('/home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
                                 <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                                <a href="{{ app_url('home/index/cate/309004', 'job') }}">변리사-강남</a>
+                                <a href="{{ app_url('/home/index/cate/309004', 'job') }}">변리사-강남</a>
                             </li>
                         </ul>
                     </dt>

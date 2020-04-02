@@ -78,7 +78,7 @@ class CouponIssueModel extends WB_Model
                         when CD.ValidStatus = "R" then "회수"
                         when CD.ValidStatus = "C" then "취소"
                         when now() > CD.ExpireDatm then "만료"                        
-                        else CD.ValidStatus			
+                        else ifnull(CD.ValidStatus, "")			
                   end) as ValidStatusName
                 , if(CD.IssueUserType = "M", M.MemId, AI.wAdminId) as IssueUserId
                 , if(CD.IssueUserType = "M", M.MemName, AI.wAdminName) as IssueUserName

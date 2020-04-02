@@ -153,6 +153,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+        $arr_condition_sub = ['EQ' => ['ProfIdx' => $prof_idx]];
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+
         $from = "
             FROM {$this->_table['twoway_board_2']}
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
@@ -168,8 +172,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 FROM {$this->_table['lms_professor']}
                 WHERE wProfIdx = (
                     SELECT wProfIdx
-                    FROM {$this->_table['lms_professor']}
-                    WHERE ProfIdx = '{$prof_idx}'
+                    FROM {$this->_table['lms_professor']} {$where_sub}
                 )
             ) AS p ON b.ProfIdx = p.ProfIdx
         ";

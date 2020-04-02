@@ -6,20 +6,10 @@
         {!! csrf_field() !!}
         <input type="hidden" name="prof_idx" value="{{ $prof_idx }}"/>
         <input type="hidden" name="prod_code" value="{{ $prod_code }}"/>
+        <input type="hidden" name="prod_type" value="{{ $prod_type }}"/>
         <input type="hidden" name="pch_idx" value="{{ $pch_idx }}"/>
         <input type="hidden" name="base_datm" value="{{ $base_datm }}"/>
-        <input type="hidden" name="pay_cnt" value="{{ $sum_data['tPayCnt'] }}"/>
-        <input type="hidden" name="refund_cnt" value="{{ $sum_data['tRefundCnt'] }}"/>
         <input type="hidden" name="mem_cnt" value="{{ $sum_data['tMemCnt'] }}"/>
-        <input type="hidden" name="lec_mem_cnt" value="{{ $sum_data['tLecMemCnt'] }}"/>
-        <input type="hidden" name="pack_mem_cnt" value="{{ $sum_data['tPackMemCnt'] }}"/>
-        <input type="hidden" name="pay_price" value="{{ $sum_data['tPayPrice'] }}"/>
-        <input type="hidden" name="refund_price" value="{{ $sum_data['tRefundPrice'] }}"/>
-        <input type="hidden" name="pre_price" value="{{ $sum_data['tPrePrice'] }}"/>
-        <input type="hidden" name="pg_fee_price" value="{{ $sum_data['tPgFeePrice'] }}"/>
-        <input type="hidden" name="remain_price" value="{{ $sum_data['tRemainPrice'] }}"/>
-        <input type="hidden" name="lec_remain_price" value="{{ $sum_data['tLecRemainPrice'] }}"/>
-        <input type="hidden" name="pack_remain_price" value="{{ $sum_data['tPackRemainPrice'] }}"/>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-bordered mb-0">
@@ -33,13 +23,19 @@
                         <th rowspan="2" class="valign-middle">개강일</th>
                         <th rowspan="2" class="valign-middle">종강일</th>
                         <th rowspan="2" class="valign-middle">횟수</th>
-                        <th colspan="3">수강인원</th>
+                        @if($prod_type == 'CP')
+                            <th rowspan="2" class="valign-middle">수강인원</th>
+                        @else
+                            <th colspan="3">수강인원</th>
+                        @endif
                         <th colspan="9">정산금액(원)</th>
                     </tr>
                     <tr>
-                        <th class="valign-middle">단과반</th>
-                        <th class="valign-middle">종합반</th>
-                        <th class="valign-middle">합계</th>
+                        @if($prod_type == 'OL')
+                            <th class="valign-middle">단과반</th>
+                            <th class="valign-middle">종합반</th>
+                            <th class="valign-middle">합계</th>
+                        @endif
                         <th class="valign-middle">수수료공제전<br/>수강총액</th>
                         <th class="valign-middle">수수료공제후<br/>수강총액</th>
                         <th class="valign-middle">추가<br/>공제액</th>
@@ -61,18 +57,21 @@
                         <td>{{ $data['StudyStartDate'] }}</td>
                         <td>{{ $data['StudyEndDate'] }}</td>
                         <td>{{ $data['Amount'] }}</td>
-                        <td>{{ number_format($data['LecRealCnt']) }}</td>
-                        <td>{{ number_format($data['PackRealCnt']) }}</td>
+                        @if($prod_type == 'OL')
+                            <td>{{ number_format($data['LecRealCnt']) }}</td>
+                            <td>{{ number_format($data['PackRealCnt']) }}</td>
+                        @endif
                         <td>{{ number_format($data['LecRealCnt'] + $data['PackRealCnt']) }}</td>
-                        <td>{{ number_format($data['PrePrice']) }}</td>
-                        <td>{{ number_format($data['RemainPrice']) }}</td>
-                        <td>{{ number_format($data['DeductPrice']) }}</td>
-                        <td>{{ number_format($data['TargetPrice']) }}</td>
-                        <td>{{ number_format($data['LecCalcRate']) . $data['LecCalcRateUnit'] }}{{ empty($data['PackCalcRate']) === false ? ', ' . number_format($data['PackCalcRate']) . $data['PackCalcRateUnit'] : '' }}</td>
-                        <td>{{ number_format($data['CalcPrice']) }}</td>
-                        <td>{{ number_format($data['TaxPrice']) }}</td>
-                        <td>{{ number_format($data['EtcDeductPrice']) }}</td>
-                        <td class="blue bold">{{ number_format($data['FinalCalcPrice']) }}</td>
+                        <td>{{ is_null($data['PrePrice']) === true ? '' : number_format($data['PrePrice']) }}</td>
+                        <td>{{ is_null($data['RemainPrice']) === true ? '' : number_format($data['RemainPrice']) }}</td>
+                        <td>{{ is_null($data['DeductPrice']) === true ? '' : number_format($data['DeductPrice']) }}</td>
+                        <td>{{ is_null($data['TargetPrice']) === true ? '' : number_format($data['TargetPrice']) }}</td>
+                        <td>{{ $prod_type == 'CP' || is_null($data['LecCalcRate']) === true ? '' : number_format($data['LecCalcRate']) . $data['LecCalcRateUnit'] . ',' }}
+                            {{ is_null($data['PackCalcRate']) === true ? '' : number_format($data['PackCalcRate']) . $data['PackCalcRateUnit'] }}</td>
+                        <td>{{ is_null($data['CalcPrice']) === true ? '' : number_format($data['CalcPrice']) }}</td>
+                        <td>{{ is_null($data['TaxPrice']) === true ? '' : number_format($data['TaxPrice']) }}</td>
+                        <td>{{ is_null($data['EtcDeductPrice']) === true ? '' : number_format($data['EtcDeductPrice']) }}</td>
+                        <td class="blue bold">{{ is_null($data['FinalCalcPrice']) === true ? '' : number_format($data['FinalCalcPrice']) }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -100,11 +99,17 @@
                         <th rowspan="2" class="valign-middle">환불금액</th>
                         <th rowspan="2" class="valign-middle" style="min-width: 70px;">환불완료일</th>
                         <th rowspan="2" class="valign-middle">합계</th>
-                        <th rowspan="2" class="valign-middle" style="max-width: 70px;">상품구분</th>
+                        @if($prod_type == 'CP')
+                            <th rowspan="2" class="valign-middle">종합반<br/>수강번호</th>
+                        @else
+                            <th rowspan="2" class="valign-middle" style="max-width: 70px;">상품구분</th>
+                        @endif
                         <th rowspan="2" class="valign-middle" style="min-width: 160px;">종합반명</th>
                         <th rowspan="2" class="valign-middle">비고</th>
                         <th rowspan="2" class="valign-middle">추가할인</th>
-                        <th rowspan="2" class="valign-middle" style="min-width: 160px;">세트할인</th>
+                        @if($prod_type == 'OL')
+                            <th rowspan="2" class="valign-middle" style="min-width: 160px;">세트할인</th>
+                        @endif
                     </tr>
                     <tr>
                         <th class="valign-middle">신용카드</th>
@@ -114,21 +119,23 @@
                     </tr>
                     <tr class="bg-info">
                         <th colspan="5" class="text-center">합계</th>
-                        <th>{{ number_format($sum_data['tPreCardPrice']) }}</th>
-                        <th>{{ number_format($sum_data['tPreCashPrice']) }}</th>
-                        <th>{{ number_format($sum_data['tPreBankPrice']) }}</th>
-                        <th>{{ number_format($sum_data['tPreVBankPrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tPreCardPrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tPreCashPrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tPreBankPrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tPreVBankPrice']) }}</th>
                         <th></th>
                         <th></th>
-                        <th>{{ number_format($sum_data['tPgFeePrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tPgFeePrice']) }}</th>
                         <th></th>
                         <th></th>
-                        <th>{{ number_format($sum_data['tRemainPrice']) }}</th>
+                        <th>{{ $prod_type == 'CP' ? '' : number_format($sum_data['tRemainPrice']) }}</th>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th></th>
+                        @if($prod_type == 'OL')
+                            <th></th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody class="bdt-line">
@@ -139,21 +146,27 @@
                                 <td>{{ substr($row['CompleteDatm'], 0, 16) }}</td>
                                 <td>{{ $row['MemName'] }}({{ $row['MemId'] }})</td>
                                 <td>{{ $row['MemPhone'] }}</td>
-                                <td>{{ number_format($row['PreCardPrice']) }}</td>
-                                <td>{{ number_format($row['PreCashPrice']) }}</td>
-                                <td>{{ number_format($row['PreBankPrice']) }}</td>
-                                <td>{{ number_format($row['PreVBankPrice']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['PreCardPrice']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['PreCashPrice']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['PreBankPrice']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['PreVBankPrice']) }}</td>
                                 <td>{{ $row['PayRouteCcdName'] }}</td>
                                 <td>{{ $row['PgFee'] }}</td>
-                                <td>{{ number_format($row['DivisionPgFeePrice']) }}</td>
-                                <td>{{ empty($row['RefundDatm']) === false ? number_format($row['DivisionRefundPrice'] * -1) : '' }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['DivisionPgFeePrice']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : (empty($row['RefundDatm']) === false ? number_format($row['DivisionRefundPrice'] * -1) : '') }}</td>
                                 <td>{{ empty($row['RefundDatm']) === false ? substr($row['RefundDatm'], 0, 16) : '' }}</td>
-                                <td>{{ number_format($row['RemainPrice']) }}</td>
-                                <td>{{ str_replace('[학원]', '', $row['LearnPackTypeName']) }}</td>
+                                <td>{{ $prod_type == 'CP' ? '' : number_format($row['RemainPrice']) }}</td>
+                                @if($prod_type == 'CP')
+                                    <td>{{ $row['PackCertNo'] }}</td>
+                                @else
+                                    <td>{{ str_replace('[학원]', '', $row['LearnPackTypeName']) }}</td>
+                                @endif
                                 <td>{{ empty($row['ProdName']) === false ? '[' . $row['ProdCode'] . '] ' . $row['ProdName'] : '' }}</td>
                                 <td>{{ mb_substr($row['OrderMemo'], 0, 10) }}</td>
                                 <td>{{ $row['DiscRateUnit'] }}</td>
-                                <td>{{ $row['Remark'] }}</td>
+                                @if($prod_type == 'OL')
+                                    <td>{{ $row['Remark'] }}</td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -172,26 +185,40 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1">수수료공제전수강총액</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"><strong>{{ number_format($sum_data['tPrePrice']) }}원</strong>
-                            @if($is_calc_hist === true)
-                                | <span class="blue">참고금액 : {{ number_format($data['PrePrice']) }}원</span>
-                                | <span class="blue">차액 : {{ number_format($data['PrePrice'] - $sum_data['tPrePrice']) }}원</span>
-                            @endif
-                        </p>
+                    <div class="col-md-9 form-inline item">
+                        @if($prod_type == 'CP')
+                            <input type="text" name="pre_price" class="form-control set-add-comma" title="수수료공제전수강총액" required="required" value="{{ empty($data['PrePrice']) === true ? '' : number_format($data['PrePrice']) }}"> 원
+                        @else
+                            <p class="form-control-static">
+                                <input type="hidden" name="pre_price" value="{{ $sum_data['tPrePrice'] }}"/>
+                                <strong>{{ number_format($sum_data['tPrePrice']) }}원</strong>
+                                @if($is_calc_hist === true)
+                                    | <span class="blue">참고금액 : {{ number_format($data['PrePrice']) }}원</span>
+                                    | <span class="blue">차액 : {{ number_format($data['PrePrice'] - $sum_data['tPrePrice']) }}원</span>
+                                @endif
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">수수료공제후수강총액<br/>(총합계금액)</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"><strong>{{ number_format($sum_data['tRemainPrice']) }}원</strong>
-                            = <span>단과반 ({{ number_format($sum_data['tLecRemainPrice']) }}원) + 종합반 ({{ number_format($sum_data['tPackRemainPrice']) }}원)</span>
-                            @if($is_calc_hist === true)
-                                | <span class="blue">참고금액 : 단과반 ({{ number_format($data['LecRemainPrice']) }}원) + 종합반 ({{ number_format($data['PackRemainPrice']) }}원)</span>
-                                | <span class="blue">차액 : {{ number_format($data['RemainPrice'] - $sum_data['tRemainPrice']) }}원</span>
-                            @endif
-                        </p>
-                        <div>
+                    <div class="col-md-9 form-inline item">
+                        @if($prod_type == 'CP')
+                            <input type="hidden" name="lec_remain_price" value="0"/>
+                            <input type="text" name="pack_remain_price" class="form-control set-add-comma" title="수수료공제후수강총액" required="required" value="{{ empty($data['PackRemainPrice']) === true ? '' : number_format($data['PackRemainPrice']) }}"> 원
+                        @else
+                            <p class="form-control-static">
+                                <input type="hidden" name="lec_remain_price" value="{{ $sum_data['tLecRemainPrice'] }}"/>
+                                <input type="hidden" name="pack_remain_price" value="{{ $sum_data['tPackRemainPrice'] }}"/>
+                                <strong>{{ number_format($sum_data['tRemainPrice']) }}원</strong>
+                                = <span>단과반 ({{ number_format($sum_data['tLecRemainPrice']) }}원) + 종합반 ({{ number_format($sum_data['tPackRemainPrice']) }}원)</span>
+                                @if($is_calc_hist === true)
+                                    | <span class="blue">참고금액 : 단과반 ({{ number_format($data['LecRemainPrice']) }}원) + 종합반 ({{ number_format($data['PackRemainPrice']) }}원)</span>
+                                    | <span class="blue">차액 : {{ number_format($data['RemainPrice'] - $sum_data['tRemainPrice']) }}원</span>
+                                @endif
+                            </p>
+                        @endif
+                        <div class="mt-5">
                             <span class="required">*</span> 산출기준 = 수수료공제전수강총액 - 결제수단별 수수료
                         </div>
                     </div>
@@ -202,15 +229,19 @@
                         <div class="form-inline">
                             <div class="pull-left mr-10">
                                 <button type="button" name="btn_deduct_add" data-deduct-type="n" class="btn btn-sm btn-default bg-dark no-margin">+추가</button>
-                                <input type="hidden" name="lec_deduct_price" title="단과반추가공제액" required="required" value=""/>
-                                <input type="hidden" name="pack_deduct_price" title="종합반추가공제액" required="required" value=""/>
+                                <input type="hidden" name="lec_deduct_price" title="단과반추가공제액" required="required" value="0"/>
+                                <input type="hidden" name="pack_deduct_price" title="종합반추가공제액" required="required" value="0"/>
                             </div>
                             <div id="layer_deduct_n" class="pull-left">
                                 <div class="mb-5{{ $is_calc_hist === true && empty($data['DeductData']) === false ? ' hide' : '' }}">
-                                    <select class="form-control set-calc-price" name="deduct_n_lec_type[]" title="추가공제강좌구분">
-                                        <option value="L">단과반</option>
-                                        <option value="P">종합반</option>
-                                    </select>
+                                    @if($prod_type == 'CP')
+                                        <input type="hidden" name="deduct_n_lec_type[]" title="추가공제강좌구분" value="P"/>
+                                    @else
+                                        <select class="form-control set-calc-price" name="deduct_n_lec_type[]" title="추가공제강좌구분">
+                                            <option value="L">단과반</option>
+                                            <option value="P">종합반</option>
+                                        </select>
+                                    @endif
                                     <select class="form-control set-calc-price" name="deduct_n_type[]" title="추가공제구분">
                                         <option value="-">-</option>
                                         <option value="+">+</option>
@@ -221,10 +252,14 @@
                                 @if($is_calc_hist === true)
                                     @foreach($data['DeductData'] as $row)
                                         <div class="mb-5">
-                                            <select class="form-control set-calc-price" name="deduct_n_lec_type[]" title="추가공제강좌구분">
-                                                <option value="L"{{ $row['DeductLecType'] == 'L' ? ' selected="selected"' : '' }}>단과반</option>
-                                                <option value="P"{{ $row['DeductLecType'] == 'P' ? ' selected="selected"' : '' }}>종합반</option>
-                                            </select>
+                                            @if($prod_type == 'CP')
+                                                <input type="hidden" name="deduct_n_lec_type[]" title="추가공제강좌구분" value="P"/>
+                                            @else
+                                                <select class="form-control set-calc-price" name="deduct_n_lec_type[]" title="추가공제강좌구분">
+                                                    <option value="L"{{ $row['DeductLecType'] == 'L' ? ' selected="selected"' : '' }}>단과반</option>
+                                                    <option value="P"{{ $row['DeductLecType'] == 'P' ? ' selected="selected"' : '' }}>종합반</option>
+                                                </select>
+                                            @endif
                                             <select class="form-control set-calc-price" name="deduct_n_type[]" title="추가공제구분">
                                                 <option value="-"{{ $row['DeductPrice'] < 0 ? ' selected="selected"' : '' }}>-</option>
                                                 <option value="+"{{ $row['DeductPrice'] >= 0 ? ' selected="selected"' : '' }}>+</option>
@@ -243,10 +278,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">강사료산정대상금액</label>
                     <div class="col-md-5 form-inline item">
-                        <input type="text" id="target_price" name="target_price" class="form-control set-add-comma" title="강사료산정대상금액" required="required" value="" readonly="readonly"> 원
+                        <input type="text" name="target_price" class="form-control set-add-comma" title="강사료산정대상금액" required="required" value="" readonly="readonly"> 원
                         <input type="hidden" name="lec_target_price" title="단과반강사료산정대상금액" required="required" value=""/>
                         <input type="hidden" name="pack_target_price" title="종합반강사료산정대상금액" required="required" value=""/>
-                        <p class="form-control-static">
+                        <p class="form-control-static{{ $prod_type == 'CP' ? ' hide' : '' }}">
                             = 단과반 (<span id="layer_lec_target_price">0</span>원)
                             + 종합반 (<span id="layer_pack_target_price">0</span>원)
                         </p>
@@ -261,32 +296,37 @@
                     <label class="control-label col-md-1-1">강사료비율</label>
                     <div class="col-md-9 form-inline">
                         <div class="item">
-                            [단과반]
-                            <select class="form-control ml-5" id="lec_calc_type" name="lec_calc_type" title="단과반강사료비율구분" required="required">
-                                <option value="R"{{ $data['LecCalcType'] == 'R' ? ' selected="selected"' : '' }}>비율(%)</option>
-                                <option value="T"{{ $data['LecCalcType'] == 'T' ? ' selected="selected"' : '' }}>시급(원)</option>
-                                <option value="P"{{ $data['LecCalcType'] == 'P' ? ' selected="selected"' : '' }}>월정액(원)</option>
-                            </select>
-                            <input type="text" id="lec_calc_rate" name="lec_calc_rate" class="form-control set-add-comma" title="단과반강사료비율" required="required" value="{{ $data['LecCalcRate'] }}">
+                            @if($prod_type == 'CP')
+                                <input type="hidden" name="lec_calc_type" title="단과반강사료비율구분" required="required" value="R"/>
+                                <input type="hidden" name="lec_calc_rate" title="단과반강사료비율" required="required" value="0"/>
+                            @else
+                                <span class="pr-5">[단과반]</span>
+                                <select class="form-control" name="lec_calc_type" title="단과반강사료비율구분" required="required">
+                                    <option value="R"{{ $data['LecCalcType'] == 'R' ? ' selected="selected"' : '' }}>비율(%)</option>
+                                    <option value="T"{{ $data['LecCalcType'] == 'T' ? ' selected="selected"' : '' }}>시급(원)</option>
+                                    <option value="P"{{ $data['LecCalcType'] == 'P' ? ' selected="selected"' : '' }}>월정액(원)</option>
+                                </select>
+                                <input type="text" name="lec_calc_rate" class="form-control set-add-comma" title="단과반강사료비율" required="required" value="{{ $data['LecCalcRate'] }}">
+                            @endif
                         </div>
-                        <div class="mt-5 item">
-                            [종합반]
-                            <select class="form-control ml-5" id="pack_calc_type" name="pack_calc_type" title="종합반강사료비율구분">
+                        <div class="item{{ $prod_type == 'CP' ? '' : ' mt-5' }}">
+                            <span class="{{ $prod_type == 'CP' ? 'hide' : 'pr-5' }}">[종합반]</span>
+                            <select class="form-control" name="pack_calc_type" title="종합반강사료비율구분">
                                 <option value="R"{{ $data['PackCalcType'] == 'R' ? ' selected="selected"' : '' }}>비율(%)</option>
                                 <option value="T"{{ $data['PackCalcType'] == 'T' ? ' selected="selected"' : '' }}>시급(원)</option>
                                 <option value="P"{{ $data['PackCalcType'] == 'P' ? ' selected="selected"' : '' }}>월정액(원)</option>
                             </select>
-                            <input type="text" id="pack_calc_rate" name="pack_calc_rate" class="form-control set-add-comma" title="종합반강사료비율" required="required" value="{{ $data['PackCalcRate'] }}">
+                            <input type="text" name="pack_calc_rate" class="form-control set-add-comma" title="종합반강사료비율" required="required" value="{{ $data['PackCalcRate'] }}">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">정산기준계산금액<br/>(강사료)</label>
                     <div class="col-md-5 form-inline item">
-                        <input type="text" id="calc_price" name="calc_price" class="form-control set-add-comma" title="정산기준계산금액(강사료)" required="required" value="" readonly="readonly"> 원
+                        <input type="text" name="calc_price" class="form-control set-add-comma" title="정산기준계산금액(강사료)" required="required" value="" readonly="readonly"> 원
                         <input type="hidden" name="lec_calc_price" title="단과반정산기준계산금액(강사료)" required="required" value=""/>
                         <input type="hidden" name="pack_calc_price" title="종합반정산기준계산금액(강사료)" required="required" value=""/>
-                        <p class="form-control-static">
+                        <p class="form-control-static{{ $prod_type == 'CP' ? ' hide' : '' }}">
                             = 단과반 (<span id="layer_lec_calc_price">0</span>원)
                             + 종합반 (<span id="layer_pack_calc_price">0</span>원)
                         </p>
@@ -300,8 +340,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">원천세</label>
                     <div class="col-md-5 form-inline item">
-                        <input type="number" id="tax_rate" name="tax_rate" class="form-control" title="원천세율" required="required" value="{{ empty($data['TaxRate']) === false ? $data['TaxRate'] : '3.3' }}" style="width: 80px;"> %
-                        <input type="text" id="tax_price" name="tax_price" class="form-control set-add-comma ml-20" title="원천세" required="required" value="" readonly="readonly"> 원
+                        <input type="number" name="tax_rate" class="form-control" title="원천세율" required="required" value="{{ empty($data['TaxRate']) === false ? $data['TaxRate'] : '3.3' }}" style="width: 80px;"> %
+                        <input type="text" name="tax_price" class="form-control set-add-comma ml-20" title="원천세" required="required" value="" readonly="readonly"> 원
                     </div>
                     <div class="col-md-4">
                         <p class="form-control-static">
@@ -347,7 +387,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">강사료지급액</label>
                     <div class="col-md-5 form-inline item">
-                        <input type="text" id="final_calc_price" name="final_calc_price" class="form-control set-add-comma" title="정산기준계산금액" required="required" value="" readonly="readonly"> 원
+                        <input type="text" name="final_calc_price" class="form-control set-add-comma" title="정산기준계산금액" required="required" value="" readonly="readonly"> 원
                         <button type="button" name="btn_calc" class="btn btn-sm btn-primary ml-10">강사료산출하기</button>
                     </div>
                     <div class="col-md-4">
@@ -423,9 +463,16 @@
                     return false;
                 }
 
-                if (parseInt($regi_form.find('[name="pre_price"]').val(), 10) < 1) {
+                if (parseInt(onlyNumber($regi_form.find('[name="pre_price"]').val()), 10) < 1) {
                     alert('수수료공제전 수강총액은 0원보다 커야만 합니다.');
                     return false;
+                }
+
+                if ($regi_form.find('[name="prod_type"]').val() === 'CP') {
+                    if (parseInt(onlyNumber($regi_form.find('[name="pre_price"]').val()), 10) < parseInt(onlyNumber($regi_form.find('[name="pack_remain_price"]').val()), 10)) {
+                        alert('수수료공제전 수강총액은 수수료공제후 수강총액보다 커야만 합니다.');
+                        return false;
+                    }
                 }
 
                 // 추가공제액 항목명 체크
@@ -618,12 +665,8 @@
             });
 
             var goList = function() {
-                location.replace('{{ site_url('/business/calc/offLectureHL/index') }}' + getQueryString());
+                location.replace('{{ site_url('/business/calc/offLectureHL/index?prod_type=') }}' + $regi_form.find('[name="prod_type"]').val() + '&' + getQueryString().substr(1));
             };
         });
-
-        function onlyNumber(str) {
-            return str.replace(/[^-0-9]/g, '');
-        }
     </script>
 @stop

@@ -132,6 +132,7 @@
     });
 
     $_seat_assign_form.submit(function() {
+        var parent_seat_id = '{{ element('orderidx', $form_data) }}' + '_' + '{{ element('lr_unit_code', $form_data) }}';
         var member_seat_type = '{{ ((empty($lec_data['LrsrIdx']) === false) && $lec_data['MemSeatStatusCcd'] == '728003' ? 'N' : 'Y') }}';
         if (member_seat_type == 'N123123') {
             alert('해당 강의실에서 퇴실된 상태입니다. 좌석을 선택할 수 없습니다.');
@@ -153,7 +154,9 @@
         ajaxSubmit($_seat_assign_form, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
-                AssignSeat('{{ element('pkg_yn', $form_data) }}','{{ element('choice_box_no', $form_data) }}', 'Y');
+                $("#seat_id_"+parent_seat_id+" > span").text($("#seat_num").val());
+                $("#seat_id_"+parent_seat_id+" > span").removeClass('tx-red');
+                AssignSeat('{{ element('pkg_yn', $form_data) }}','{{ element('choice_box_p_no', $form_data) }}','{{ element('choice_box_no', $form_data) }}', 'Y');
             }
         }, showValidateError, null, false, 'alert');
     });

@@ -51,17 +51,16 @@
         </div>
                
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_04.jpg" alt="혜택은 특별"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_04.jpg" alt="광주캠퍼스 문의"/>
         </div>
 
         <div class="evtCtnsBox wb_05" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_05.jpg" alt="혜택은 특별" usemap="#Map1592b" border="0"/>
-            <map name="Map1592b" id="Map1592b">
-                <area shape="rect" coords="117,831,532,1029" href="https://police.willbes.net/pass/offPackage/show/prod-code/162555" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="597,829,997,1028" href="https://police.willbes.net/pass/offPackage/show/prod-code/162554" target="_blank" onfocus='this.blur()' />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1592_05.jpg" alt="수강신청하기" usemap="#Map1592abc" border="0"/>
+            <map name="Map1592abc" id="Map1592abc">
+                <area shape="rect" coords="284,804,837,1013" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605006&course_idx=1040" target="_blank" onfocus='this.blur()' /> />
+            </map>           
         </div>
-      
+
     </div>
     <!-- End Container -->
 

@@ -47,15 +47,16 @@
         @@keyframes sp01{
 		from{transform:scale(1.1)}50%{transform:scale(0.9)}to{transform:scale(1.1)}
         }
-        .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}
-
-        /*유의사항*/
-        .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
-        .wb_ctsInfo div {width:980px; margin:0 auto; color:#fff;line-height:1.5;
-                        font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#FFE810;}         
-        .wb_ctsInfo ul li .big {font-size:16px;}
-        .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; font-size:13px;}        
+        .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}               
+	
+	    /*유의사항*/
+		.wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
+        .wb_ctsInfo div {width:980px; margin:0 auto; color:#fff; width:900px; display:block; border:1px solid #aaa; padding:80px; line-height:1.5; font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; }
+        .wb_ctsInfo div h3 {font-size:28px !important; letter-spacing:-1px; margin-bottom:30px; color:#fff;}        
+        .wb_ctsInfo ul li .big {font-size:15px; font-weight:bold;}
+        .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; color:#eee; font-size:13px;}        
+		.txt_point {color:#ff9472; font-size:12px;}
+        	
         </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -182,50 +183,53 @@
 
         <div class="wb_ctsInfo">
             <div>
-                <h3 class="NGEB">유의사항</h3>
+                <h3 class="NGEB">- 유의사항 - </h3>
                 <ul>
-                    <li>                    
-                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br /> 방송 시간에 맞추어 접속 후 수강하시면 됩니다.</span><br /> 
-                        (*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)<br />
-                    </li> 
+				<li>                    
+                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 접속 후 수강하시면 됩니다.</span><br> 
+						<span class="txt_point">(*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</span>
+					</li>
                     <li>                    
                         <span class="big">윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</span>
                     </li>       
                     <li>                    
-                        <span class="big">더켠의 반반한 모의고사 과정 진행 안내</span><br />
-                        - 매주 월~금 오후 9~10시 : 더켠의 반반한 모의고사+해설 정규 방송<br />
-                        - 매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 진행<br />
-                        &nbsp;&nbsp;매월 홀수 주 토~일 : 무료 온라인 모의고사 응시 기간<br />
-                        &nbsp;&nbsp;매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br />
-                        &nbsp;&nbsp;(*무료 온라인 모의고사의 경우, 2주에 1회 진행)
-                    </li>       
+                        <span class="big">더켠의 반반한 모의고사 과정 진행 안내</span><br>
+						&nbsp;- 매주 월~금 오후 9~10시 : 더켠의 반반한 모의고사+해설 정규 방송<br>    
+						&nbsp;- 매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 진행<br>
+						&nbsp;- 매월 홀수 주 토~일 : 무료 온라인 모의고사 응시 기간<br>
+						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
+						<span class="txt_point"> (*무료 온라인 모의고사의 경우, 2주에 1회 진행)</span><br>    
+					</li>    
                     <li>                    
-                        <span class="big">본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다. 단, 정규방송과의 형평성을 고려하여 방송 후 일주일 뒤 동영상 서비스가 제공됩니다.</span>
-                    </li>       
+                        <span class="big">본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다. 단, 정규방송과의 형평성을 고려하여 방송 후   일주일 뒤 동영상 <br> 
+						&nbsp;서비스가 제공됩니다.</span><br>
+					</li>
                     <li>                    
-                        <span class="big">강의 자료는 방송 당일 오후 15시부터 오후 21시까지 다운로드 가능하오니, 인쇄하신 후 수업에 참여해주시기 바랍니다.</span><br />
-                        (*해설지는 수업 종료 시간에 맞추어 업로드됩니다.)
-                    </li>       
+                        <span class="big">강의 자료는 방송 당일 오후 15시부터 오후 21시까지 다운로드 가능하오니, 인쇄하신 후 수업에 참여해주시기 바랍니다.</span><br>
+						<span class="txt_point">(*해설지는 수업 종료 시간에 맞추어 업로드됩니다.)</span><br>
+					</li>     
                     <li>                   
-                        <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br />
-                        - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br />
-                        - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.
-                    </li>       
+                        <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br>
+						&nbsp;- PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
+						&nbsp;- 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.<br>
+					</li>   
                     <li>                    
-                        <span class="big">열공 출첵 이벤트 관련</span><br />
-                        - 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 총 20회 진행됩니다. (공휴일 제외)<br />
-                        - 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (4/27(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지<br>&nbsp;&nbsp;않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br />
-                        - 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br />
-                        - 이벤트 경품은 5월 12일 (화)까지 [내강의실]에서 확인하실 수 있습니다.
-                    </li> 
+                        <span class="big">열공 출첵 이벤트 관련</span><br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 총 20회 진행됩니다. (공휴일 제외)<br>
+						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (4/27(월))의 경우 <br>
+						&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
+						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
+						&nbsp;- 이벤트 경품은 5월 12일 (화)까지 [내강의실]에서 확인하실 수 있습니다.<br>
+					</li>
                     <li>                    
-                        <span class="big">소문내기 이벤트 관련</span><br />
-                        &nbsp;&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 5월 8일 (금)까지 진행됩니다.<br />
-                        &nbsp;&nbsp;- 지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.<br />
-                        &nbsp;&nbsp;- 이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.<br />
-                        &nbsp;&nbsp;- 본 이벤트는 선착순이나 게시글 작성 수가 아닌 추첨으로 당첨자 선정이 이루어지오나, 다양한 커뮤니티에 다양한 내용으로 정성스럽게 작성시<br>&nbsp;&nbsp; 당첨확률이 높아질 수 있습니다.<br />
-                        &nbsp;&nbsp;- 이벤트 당첨자 발표는 5월 12일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br />
-                        &nbsp;&nbsp;&nbsp; (경품 지급일의 경우, 당첨자 발표 공지사항에서 안내드릴 예정입니다.)
+                        <span class="big">소문내기 이벤트 관련</span><br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 5월 8일 (금)까지 진행됩니다.<br>
+						&nbsp;- 지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.<br>
+						&nbsp;- 이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.<br>
+						&nbsp;- 본 이벤트는 선착순이나 게시글 작성 수가 아닌 추첨으로 당첨자 선정이 이루어지오나, 다양한 커뮤니티에 다양한 <br>
+						&nbsp; &nbsp;내용으로  정성스럽게 작성시 당첨확률이 높아질 수 있습니다.<br>
+						&nbsp;- 이벤트 당첨자 발표는 5월 12일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
+						<span class="txt_point">(*경품 지급일의 경우, 당첨자 발표 공지사항에서 안내드릴 예정입니다.)</span><br>
                     </li>                            
                 </ul>
             </div>

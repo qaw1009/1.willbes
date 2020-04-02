@@ -25,7 +25,7 @@ class BaseSupport extends \app\controllers\FrontController
         $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 
-        show_alert('등록된 파일을 찾지 못했습니다.','close','');
+//        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 
     /**

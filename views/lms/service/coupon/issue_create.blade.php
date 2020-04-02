@@ -229,6 +229,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
@@ -263,7 +264,7 @@
                         return (data !== null) ? data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')' : '';
                     }},
                     {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
-                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + '<br/>(' + (row.ExpireDatm !== null ? row.ExpireDatm.substr(0, 16) : '') + ')';
+                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + (row.ExpireDatm !== null ? '<br/>(' + row.ExpireDatm.substr(0, 16) + ')' : '');
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? ((data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>') : '';
@@ -280,6 +281,14 @@
             // 전체선택/해제
             $list_table.on('ifChanged', '#_is_all', function() {
                 iCheckAll($list_table.find('input[name="cd_idx"]'), $(this));
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/service/coupon/issue/excel/' . ($data['PinType'] != 'N' ? 'pins' : '')) }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             // 쿠폰발급회수 버튼 클릭

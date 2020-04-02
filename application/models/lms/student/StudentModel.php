@@ -41,8 +41,11 @@ class StudentModel extends WB_Model
                     ,E.ProfIdx_String, E.wProfName_String
                     ,Z.wAdminName
                     ,(
-                        SELECT COUNT(*) FROM lms_order_product as OP WHERE
+                        SELECT COUNT(*) FROM lms_order_product as OP
+                            left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx 
+                        WHERE
                         OP.PayStatusCcd IN ('676001', '676007') 
+                        AND ( ouh.OrderIdx is null OR ouh.UnPaidUnitNum = 1)
                         AND OP.ProdCode = A.ProdCode 
                     ) as Count
                     ,(

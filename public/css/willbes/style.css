@@ -9154,10 +9154,11 @@ table.acadTable tr td {
     border:1px solid #e4e4e4; padding-top:10px; padding-bottom:10px; background:#fff; color:#333}
 .seatNumber li button span {display:block;}
 .seatNumber .sNumberA span {color:#ef0f0f}
-.seatNumber .sNumberB {background:#1a8ccb; color:#fff; border:1px solid #1a8ccb}
-.seatNumber .sNumberC {background:#333; color:#fff;}
+.seatNumber .sNumberB {background:#e4e4e4;}
+.seatNumber .sNumberB span {color:#333;}
+.seatNumber .sNumberC {background:#1a8ccb; color:#fff;}
 .seatNumber .sNumberC span {color:#fff;}
-.seatNumber li button:hover {border:1px solid #1a8ccb;}
+.seatNumber li button:hover {border:1px solid #1a8ccb}
 .seatNumber ul:after {
     content: ""; display: block; clear: both;
 }

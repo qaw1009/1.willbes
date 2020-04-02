@@ -64,7 +64,7 @@
                                     <tr>
                                         <td class="w-list">문제풀이</td>
                                         <td class="w-name">사전조사서특강<br/><span class="tx-blue">정채영</span></td>
-                                        <td class="w-data tx-left pl20 p_re">
+                                        <td class="w-data tx-left pl20">
                                             <div class="OTclass"><span>직장인/재학생반</span> <a href="#none" onclick="openWin('OTclassInfo')">?</a> 일반경찰</div>
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
@@ -638,7 +638,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="w-list bg-light-white">이론</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/packagesub1') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
@@ -669,7 +669,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">이론</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <dl class="w-info">
@@ -698,11 +698,15 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">문제풀이</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
-                                                <dt class="mr20"><strong>패키지상세정보</strong></dt>
+                                                <dt class="mr20">
+                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                        <strong>패키지상세정보</strong>
+                                                    </a>
+                                                </dt>
                                                 <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">15일</span></dt>
@@ -721,7 +725,61 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">문제풀이</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
+                                            <div class="OTclass">일반경찰</div>
+                                            <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
+                                            <dl class="w-info">
+                                                <dt class="mr20">
+                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                        <strong>패키지상세정보</strong>
+                                                    </a>
+                                                </dt>
+                                                <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강기간 : <span class="tx-blue">15일</span></dt>
+                                                <dt class="NSK ml15">
+                                                    <span class="nBox n1">2배수</span>
+                                                    <span class="nBox n4">완강</span>
+                                                </dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-notice">
+                                            <div class="priceWrap">
+                                                <span class="price tx-blue">72,000원</span>
+                                                <span class="discount">(↓60%)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-list bg-light-white">문제풀이</td>
+                                        <td class="w-data tx-left pl25 p_re">
+                                            <div class="OTclass">일반경찰</div>
+                                            <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
+                                            <dl class="w-info">
+                                                <dt class="mr20">
+                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                        <strong>패키지상세정보</strong>
+                                                    </a>
+                                                </dt>
+                                                <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강기간 : <span class="tx-blue">15일</span></dt>
+                                                <dt class="NSK ml15">
+                                                    <span class="nBox n1">2배수</span>
+                                                    <span class="nBox n4">완강</span>
+                                                </dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-notice">
+                                            <div class="priceWrap">
+                                                <span class="price tx-blue">72,000원</span>
+                                                <span class="discount">(↓60%)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-list bg-light-white">문제풀이</td>
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
@@ -772,7 +830,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="w-list bg-light-white">이론</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/packagesub1') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
@@ -803,7 +861,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">이론</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <dl class="w-info">
@@ -832,11 +890,15 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">문제풀이</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
-                                                <dt class="mr20"><strong>패키지상세정보</strong></dt>
+                                                <dt class="mr20">
+                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                        <strong>패키지상세정보</strong>
+                                                    </a>
+                                                </dt>
                                                 <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">15일</span></dt>
@@ -855,7 +917,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-list bg-light-white">문제풀이</td>
-                                        <td class="w-data tx-left pl25">
+                                        <td class="w-data tx-left pl25 p_re">
                                             <div class="OTclass">일반경찰</div>
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
@@ -1079,7 +1141,7 @@
                     </a>
                     <div class="Layer-Tit tx-dark-black NG">
                         2018 최진우 독한국사 이론강의 (7-8월)[이론/끝장전/주간스포트라이트] 독구다 패키지
-                    </div>
+                    </div>                   
                     <div class="lecDetailWrap">
                         <div class="classInfo">
                             <dl class="w-info NG">
@@ -1128,7 +1190,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
                 <!-- willbes-Layer-Box -->
             </div>

@@ -37,10 +37,9 @@ class Issue extends \app\controllers\BaseController
      */
     public function listAjax($params = [])
     {
-        $arr_condition = $this->_getListConditions();
-
         $list_type = element(0, $params);
 
+        $arr_condition = $this->_getListConditions();
         $list = [];
         $count = $this->couponIssueModel->listAllCouponDetail(true, $arr_condition, null, null, [], $list_type);
 
@@ -57,15 +56,17 @@ class Issue extends \app\controllers\BaseController
 
     /**
      * 전체쿠폰발급/사용현황 목록 엑셀 다운로드
+     * @param array $params
      */
-    public function excel()
+    public function excel($params = [])
     {
-        $headers = ['쿠폰핀번호', '회원명 (아이디)', '휴대폰번호', '쿠폰정보', '발급구분', '발급일 (발급자)', '유효여부 (만료일)', '사용여부 (사용일)', '사용상품 (주문번호)', '발급회수일 (회수자)'];
+        $list_type = element(0, $params);
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->couponIssueModel->listAllCouponDetail('excel', $arr_condition, null, null, ['CdIdx' => 'desc']);
+        $list = $this->couponIssueModel->listAllCouponDetail('excel', $arr_condition, null, null, ['CdIdx' => 'desc'], $list_type);
         $last_query = $this->couponIssueModel->getLastQuery();
         $file_name = '쿠폰발급리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $headers = ['쿠폰핀번호', '회원명 (아이디)', '휴대폰번호', '쿠폰정보', '발급구분', '발급일 (발급자)', '유효여부 (만료일)', '사용여부 (사용일)', '사용상품 (주문번호)', '발급회수일 (회수자)'];
 
         // download log
         $this->load->library('approval');

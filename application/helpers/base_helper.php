@@ -649,6 +649,18 @@ if (!function_exists('str_replace_array')) {
     }
 }
 
+if (!function_exists('strip_comma')) {
+    /**
+     * 문자열에서 콤마(,) 제거
+     * @param string $str [치환대상 문자열]
+     * @return string
+     */
+    function strip_comma($str)
+    {
+        return str_replace(',', '', $str);
+    }
+}
+
 if (!function_exists('value')) {
     /**
      * 인자값이 Closure 일 경우 Closure 결과값이 리턴

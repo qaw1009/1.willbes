@@ -8,6 +8,15 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
+                    <label class="control-label col-md-1">상품구분</label>
+                    <div class="col-md-11 form-inline">
+                        <div class="radio">
+                            <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="OL" @if($prod_type == 'OL') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단과반/종합반(일반형,선택형)</label>
+                            <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="CP" @if($prod_type == 'CP') checked="checked" @endif/> <label for="prod_type_2" class="input-label">종합반(선택형강사배정)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1">교수검색</label>
                     <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
@@ -76,14 +85,20 @@
                     <th rowspan="2" class="valign-middle">개강일</th>
                     <th rowspan="2" class="valign-middle">종강일</th>
                     <th rowspan="2" class="valign-middle">횟수</th>
-                    <th colspan="3">수강인원</th>
+                    @if($prod_type == 'CP')
+                        <th rowspan="2" class="valign-middle">수강인원</th>
+                    @else
+                        <th colspan="3">수강인원</th>
+                    @endif
                     <th colspan="9">정산금액(원)</th>
                     <th rowspan="2" class="valign-middle">상세정보</th>
                 </tr>
                 <tr>
-                    <th class="valign-middle">단과반</th>
-                    <th class="valign-middle">종합반</th>
-                    <th class="valign-middle">합계</th>
+                    @if($prod_type == 'OL')
+                        <th class="valign-middle">단과반</th>
+                        <th class="valign-middle">종합반</th>
+                        <th class="valign-middle">합계</th>
+                    @endif
                     <th class="valign-middle">수수료공제전<br/>수강총액</th>
                     <th class="valign-middle">수수료공제후<br/>수강총액</th>
                     <th class="valign-middle">추가<br/>공제액</th>
@@ -100,8 +115,10 @@
                 <tfoot>
                 <tr class="bg-odd">
                     <th colspan="9" class="text-center">합계</th>
-                    <th id="t_lec_real_cnt" class="sumTh"></th>
-                    <th id="t_pack_real_cnt" class="sumTh"></th>
+                    @if($prod_type == 'OL')
+                        <th id="t_lec_real_cnt" class="sumTh"></th>
+                        <th id="t_pack_real_cnt" class="sumTh"></th>
+                    @endif
                     <th id="t_real_cnt" class="sumTh"></th>
                     <th id="t_pre_price" class="sumTh"></th>
                     <th id="t_remain_price" class="sumTh"></th>
@@ -161,12 +178,14 @@
                     {'data' : 'StudyStartDate'},
                     {'data' : 'StudyEndDate'},
                     {'data' : 'Amount'},
+                @if($prod_type == 'OL')
                     {'data' : 'LecRealCnt', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
                     {'data' : 'PackRealCnt', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
+                @endif
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return addComma(parseInt(data.LecRealCnt, 10) + parseInt(data.PackRealCnt, 10));
                     }},
@@ -183,8 +202,8 @@
                         return data == null ? '' : addComma(data);
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return (data.LecCalcRate == null ? '' : addComma(data.LecCalcRate) + data.LecCalcRateUnit)
-                            + (data.PackCalcRate == null ? '' : ', ' + addComma(data.PackCalcRate) + data.PackCalcRateUnit);
+                        return (data.LecCalcRate == null || $search_form.find('#prod_type_2:checked').length > 0 ? '' : addComma(data.LecCalcRate) + data.LecCalcRateUnit + ', ')
+                            + (data.PackCalcRate == null ? '' : addComma(data.PackCalcRate) + data.PackCalcRateUnit);
                     }},
                     {'data' : 'CalcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
@@ -199,7 +218,7 @@
                         return '<a class="blue bold">' + (data == null ? '' : addComma(data)) + '</a>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-prod-code="' + row.ProdCode + '" data-pch-idx="' + row.PchIdx + '">상세보기</button>';
+                        return '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-prod-code="' + row.ProdCode + '" data-prod-type="' + row.ProdType + '" data-pch-idx="' + row.PchIdx + '">상세보기</button>';
                     }}
                 ]
             });
@@ -223,8 +242,11 @@
                         t_final_calc_price += parseInt(row.FinalCalcPrice) || 0;
                     });
 
-                    $('#t_lec_real_cnt').text(addComma(t_lec_real_cnt));
-                    $('#t_pack_real_cnt').text(addComma(t_pack_real_cnt));
+                    @if($prod_type == 'OL')
+                        $('#t_lec_real_cnt').text(addComma(t_lec_real_cnt));
+                        $('#t_pack_real_cnt').text(addComma(t_pack_real_cnt));
+                    @endif
+
                     $('#t_real_cnt').text(addComma(t_lec_real_cnt + t_pack_real_cnt));
                     $('#t_pre_price').text(addComma(t_pre_price));
                     $('#t_remain_price').text(addComma(t_remain_price));
@@ -249,10 +271,15 @@
 
             // 상세보기 버튼 클릭
             $list_table.on('click', '.btn-view', function() {
-                var show_uri = '/' + $(this).data('prof-idx') + '/' + $(this).data('prod-code');
+                var show_uri = '/' + $(this).data('prof-idx') + '/' + $(this).data('prod-code') + '/' + $(this).data('prod-type');
                 show_uri += $(this).data('pch-idx') == null ? '' : '/' + $(this).data('pch-idx');
 
                 location.href = '{{ site_url('/business/calc/offLectureHL/show') }}' + show_uri + dtParamsToQueryString($datatable);
+            });
+
+            // 상품구분 라디오 버튼 클릭
+            $search_form.on('ifClicked', 'input[name="prod_type"]', function() {
+                location.replace('{{ site_url('/business/calc/offLectureHL/index') }}?prod_type=' + $(this).val());
             });
         });
     </script>

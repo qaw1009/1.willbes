@@ -447,6 +447,15 @@ function decimalFormat(num, decimal) {
 }
 
 /**
+ * 숫자만 리턴 (- 부호 포함)
+ * @param str
+ * @returns {string}
+ */
+function onlyNumber(str) {
+    return str.replace(/[^-0-9]/g, '');
+}
+
+/**
  * 메일 도메인 셋팅
  * @param select
  * @param target

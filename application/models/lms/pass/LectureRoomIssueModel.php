@@ -16,7 +16,6 @@ class LectureRoomIssueModel extends WB_Model
         'product_r_sublecture' => 'lms_product_r_sublecture',
         'site' => 'lms_site',
         'member' => 'lms_member',
-        'member_otherinfo' => 'lms_member_otherinfo',
         'order_product_refund' => 'lms_order_product_refund'
     ];
 
@@ -42,7 +41,7 @@ class LectureRoomIssueModel extends WB_Model
             $column = '
             lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.ProdCodeSub, lrrurs.SeatNo
             ,o.OrderNo, lrsr.OrderIdx, lrsr.OrderProdIdx, p.ProdCode, p.ProdName, lr.LectureRoomName, lrru.UnitName, pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
-            ,site.SiteName, mb.MemIdx, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            ,site.SiteName, mb.MemIdx, mb.MemId, mb.MemName, mb.Phone1 AS Tel1, fn_dec(mb.Phone2Enc) AS Tel2, mb.Phone3 AS Tel3
             ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             ,fn_ccd_name(op.PayStatusCcd) AS PayStatusCcdName
             ,fn_ccd_name(pl.LearnPatternCcd) AS LearnPatternCcdName
@@ -64,7 +63,6 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['product_lecture']} AS pl ON op.ProdCode = pl.ProdCode
             INNER JOIN {$this->_table['site']} AS site ON o.SiteCode = site.SiteCode
             INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
-            INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
             LEFT JOIN {$this->_table['order_product_refund']} AS opr ON o.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
         ";
 
@@ -110,7 +108,6 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['product_lecture']} AS pl ON op.ProdCode = pl.ProdCode
             INNER JOIN {$this->_table['site']} AS site ON o.SiteCode = site.SiteCode
             INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
-            INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
             LEFT JOIN {$this->_table['order_product_refund']} AS opr ON o.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
         ";
 
@@ -169,7 +166,7 @@ class LectureRoomIssueModel extends WB_Model
             , pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
             , lr.LectureRoomName, lrru.UnitName, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.TransverseNum
             , lrrurs.LrrursIdx, lrrurs.SeatNo, lrrurs.SeatStatusCcd, lrrurs.IsStatus AS SeatIsStatus, lrsr.SeatStatusCcd AS MemSeatStatusCcd, fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
-            , site.SiteName, lrsr.MemIdx, mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            , site.SiteName, lrsr.MemIdx, mb.MemId, mb.MemName, mb.Phone1 AS Tel1, fn_dec(mb.Phone2Enc) AS Tel2, mb.Phone3 AS Tel3
             , fn_ccd_name(lr.CampusCcd) AS CampusName
             , fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             , fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
@@ -200,7 +197,6 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['lectureroom_r_unit']} AS lrru ON lrsr.LrCode = lrru.LrCode AND lrsr.LrUnitCode = lrru.LrUnitCode
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
             INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
-            INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
             INNER JOIN {$this->_table['site']} AS site ON o.SiteCode = site.SiteCode
         ";
 
@@ -219,7 +215,7 @@ class LectureRoomIssueModel extends WB_Model
             p.ProdName, lr.LectureRoomName, lrru.UnitName, p.ProdCode, lrsr.OrderIdx, lrsr.LrCode, lrsr.LrUnitCode
             ,lrrurs.SeatStatusCcd, lrsr.SeatStatusCcd AS MemSeatStatusCcd, lrsr.LrrursIdx, lrrurs.SeatNo
             ,lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate
-            ,mb.MemId, mb.MemName, mbo.Tel1, fn_dec(mbo.Tel2Enc) AS Tel2, mbo.Tel3
+            ,mb.MemId, mb.MemName, mb.Phone1 AS Tel1, fn_dec(mb.Phone2Enc) AS Tel2, mb.Phone3 AS Tel3
             ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
             ,fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
         ';
@@ -241,7 +237,6 @@ class LectureRoomIssueModel extends WB_Model
             INNER JOIN {$this->_table['lectureroom_r_unit']} AS lrru ON lr.LrCode = lrru.LrCode AND lrsr.LrUnitCode = lrru.LrUnitCode
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
             INNER JOIN {$this->_table['member']} AS mb ON lrsr.MemIdx = mb.MemIdx
-            INNER JOIN {$this->_table['member_otherinfo']} AS mbo ON mb.MemIdx = mbo.MemIdx
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
     }
@@ -263,7 +258,7 @@ class LectureRoomIssueModel extends WB_Model
                     'lrsr.LrUnitCode' => element('lr_unit_code', $form_data)
                 ]
             ];
-            $seat_register_data = $this->_findSeatRegister($column, $arr_condition);
+            $seat_register_data = $this->findSeatRegister($column, $arr_condition);
             if (empty($seat_register_data) === true) {
                 throw new \Exception('조회된 강의실 좌석정보가 없습니다.');
             }
@@ -292,7 +287,7 @@ class LectureRoomIssueModel extends WB_Model
                         'lrsr.SeatStatusCcd' => ['728003', '728004']        //회원좌석상태 : 퇴실,환불
                     ]
                 ];
-                $chk_seat_data = $this->_findSeatRegister($column, $arr_condition);
+                $chk_seat_data = $this->findSeatRegister($column, $arr_condition);
                 if (empty($chk_seat_data) === false) {
                     throw new \Exception('사용중인 좌석입니다.');
                 }
@@ -330,7 +325,7 @@ class LectureRoomIssueModel extends WB_Model
                     'lrsr.SeatStatusCcd' => '728004'
                 ]
             ];
-            $data = $this->_findSeatRegister($column, $arr_condition);
+            $data = $this->findSeatRegister($column, $arr_condition);
 
             //환불
             if (empty($data) === false) {
@@ -365,7 +360,7 @@ class LectureRoomIssueModel extends WB_Model
      * @param array $arr_condition
      * @return mixed
      */
-    private function _findSeatRegister($column = '*', $arr_condition = [])
+    public function findSeatRegister($column = '*', $arr_condition = [])
     {
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

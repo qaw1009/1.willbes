@@ -133,7 +133,7 @@ class Issue extends \app\controllers\BaseController
         }
 
         $column = "
-            o.OrderNo, mb.MemName, concat(mbo.Tel1, '-', fn_dec(mbo.Tel2Enc), '-', mbo.Tel3) AS MemTel, p.ProdName, lr.LectureRoomName, lrru.UnitName, lrrurs.SeatNo
+            o.OrderNo, mb.MemName, concat(mb.Phone1, '-', fn_dec(mb.Phone2Enc), '-', mb.Phone3) AS MemTel, p.ProdName, lr.LectureRoomName, lrru.UnitName, lrrurs.SeatNo
             ,fn_ccd_name(op.PayStatusCcd), o.RealPayPrice, fn_order_refund_price(o.OrderIdx, 0, 'refund') AS tRefundPrice, o.CompleteDatm, opr.RefundDatm
         ";
 

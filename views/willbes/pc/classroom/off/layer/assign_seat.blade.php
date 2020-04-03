@@ -49,7 +49,7 @@
                     <th>좌석정보</th>
                     <td colspan="3">
                         <ul class="seatsection bg-none">
-                            <li>[강의실명] <span>{{ $lec_data['LectureRoomName'] }}</span></li>
+                            <li>[강의실명] <span>{{ $lec_data['LectureRoomName'] }} | {{ $lec_data['UnitName'] }}</span></li>
                             <li>[좌석번호]
                                 {!! ((empty($lec_data['LrsrIdx']) === true) ? "<span class='tx-red'>미선택</span>" : "<span>{$lec_data['MemSeatNo']}</span>")  !!}
                                 {!! ((empty($lec_data['LrsrIdx']) === false) && $lec_data['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
@@ -95,11 +95,15 @@
                         @foreach($seat_data as $row)
                             @php
                                 $btn_type = '';
-                                switch ($row['SeatStatusCcd']) {
-                                    case "727001" : $btn_type = 'sNumberA'; $btn_txt = '선택가능';break;
-                                    case "727002" : $btn_type = 'sNumberB'; $btn_txt = '선택완료';break;
-                                    case "727003" : $btn_type = 'sNumberC'; $btn_txt = '선택불가';break;
-                                    default : $btn_type = 'btn-default'; $btn_txt = '';
+                                if (empty($lec_data['MemIdx']) === false && $row['MemIdx'] == $lec_data['MemIdx'] && $row['LrrursIdx'] == $lec_data['LrrursIdx']) {
+                                    $btn_type = 'sNumberC';
+                                } else {
+                                    switch ($row['SeatStatusCcd']) {
+                                        case "727001" : $btn_type = 'sNumberA'; $btn_txt = '선택가능';break;
+                                        case "727002" : $btn_type = 'sNumberB'; $btn_txt = '선택완료';break;
+                                        case "727003" : $btn_type = 'sNumberB'; $btn_txt = '선택불가';break;
+                                        default : $btn_type = 'btn-default'; $btn_txt = '';
+                                    }
                                 }
                             @endphp
                             <li>
@@ -109,7 +113,18 @@
                                         data-seat-num="{{$row['SeatNo']}}"
                                         data-member-idx="{{$row['MemIdx']}}" {{ ($row['SeatStatusCcd'] != '727001') ? 'disabled' : '' }}>
                                     {{$row['SeatNo']}}
-                                    {!! ($row['SeatStatusCcd'] == '727002' && empty($row['MemName']) === false) ? "<span>{$row['MemName']}</span>" : "<span>{$btn_txt}</span>" !!}</button>
+
+                                    @if ($row['SeatStatusCcd'] == '727002')
+                                        @if ($lec_data['LrrursIdx'] == $row['LrrursIdx'])
+                                            <span style="font-weight: bold;">{{ $row['MemName'] }}</span>
+                                        @else
+                                            <span>선택완료</span>
+                                        @endif
+                                    @else
+                                        <span>{{ $btn_txt }}</span>
+                                    @endif
+                                </button>
+                                    {{--{!! ($row['SeatStatusCcd'] == '727002' && empty($row['MemName']) === false) ? "<span>{$row['MemName']}</span>" : "<span>{$btn_txt}</span>" !!}</button>--}}
                             </li>
                         @endforeach
                     </ul>
@@ -127,6 +142,15 @@
     $('.n_mem_seat li').css('width', 'calc(100% / '+set_table_row+')');
 
     $_seat_assign_form.on('click', '.btn_choice_seat', function() {
+        if ($(".btn_choice_seat").hasClass('active') === true) {
+            $(".btn_choice_seat").removeClass('active');
+        }
+        if ($(this).hasClass('active') === true) {
+            $(".btn_choice_seat").removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+
         $("#lr_rurs_idx").val($(this).data("lr-rurs-idx"));
         $("#seat_num").val($(this).data("seat-num"));
     });

@@ -167,7 +167,11 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            return row.OrderNo + '<Br>' + row.SiteName;
+                            if (data == null) {
+                                return '';
+                            } else {
+                                return '<a href="{{ site_url('/pay/order/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + row.OrderNo + '<Br>' + row.SiteName + '</u></a>';
+                            }
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return row.MemName + '<Br>' + '('+row.MemId+')';

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site','sys/code','pass/lectureRoomRegist');
+    protected $models = array('sys/site','sys/code','pass/lectureRoomRegist','pass/lectureRoomIssue');
     protected $helpers = array('download');
     protected $_groupCcd = [
         'SmsSendCallBackNum' => '706'   //SMS 발송번호
@@ -288,7 +288,13 @@ class Regist extends \app\controllers\BaseController
         }
 
         $result = $this->lectureRoomRegistModel->modifyLectureRoomUnitSeat($this->_reqP(null, false));
-        $this->json_result($result, '저장 되었습니다.', $result);
+        $return_error = [];
+        if ($result !== true) {
+            $return_error['ret_cd'] = false;
+            $return_error['ret_msg'] = $result['ret_msg'];
+            $return_error['ret_status'] = 200;
+        }
+        $this->json_result($result, '저장 되었습니다.', $return_error);
     }
 
     /**
@@ -303,10 +309,12 @@ class Regist extends \app\controllers\BaseController
                 'lg.LrUnitCode' => $this->_reqP('lr_unit_code'),
                 'lg.OrderProdIdx' => $this->_reqP('order_prod_idx'),
                 'lg.SeatStatusCcd' => $this->_reqP('seat_status_ccd'),
-                'lg.BeforeSeatNo' => $this->_reqP('before_seat_no'),
-                'lg.AfterSeatNo' => $this->_reqP('after_seat_no')
             ],
             'ORG' => [
+                'EQ' => [
+                    'lg.BeforeSeatNo' => $this->_reqP('search_seat_no'),
+                    'lg.AfterSeatNo' => $this->_reqP('search_seat_no')
+                ],
                 'LKB' => [
                     'mem.MemName' => $this->_reqP('search_value'),
                     'mem.MemId' => $this->_reqP('search_value'),

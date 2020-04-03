@@ -1289,7 +1289,7 @@ class ClassroomFModel extends WB_Model
         $column = "
             o.OrderNo, o.OrderIdx, op.OrderProdIdx,
             op.ProdCode,
-            mem.MemId, mem.MemName, memInfo.Tel1, fn_dec(memInfo.Tel2Enc) AS Tel2, memInfo.Tel3,
+            mem.MemIdx, mem.MemId, mem.MemName, memInfo.Tel1, fn_dec(memInfo.Tel2Enc) AS Tel2, memInfo.Tel3,
             p.ProdName, pSub.ProdName AS ProdNameSub, op.RealPayPrice, o.CompleteDatm, sc.CcdName AS PayStatusName,
             prlr.LrCode, prlr.LrUnitCode, lr.LectureRoomName, lu.UnitName, lu.TransverseNum, lu.SeatChoiceStartDate, lu.SeatChoiceEndDate, lu.SeatMapFileRoute, lu.SeatMapFileName,
             lrsr.LrsrIdx, lrsr.LrrursIdx, lrurs.SeatNo AS MemSeatNo, lrsr.SeatStatusCcd as MemSeatStatusCcd,
@@ -1448,9 +1448,10 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception('이미 등록된 좌석입니다. 다른 좌석을 선택해 주세요.');
             }
 
-            $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
+            $lecture_room_unit_data = $this->_getLectureRoomUnit(element('lr_code', $form_data), element('lr_unit_code', $form_data));
+            $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate($lecture_room_unit_data);
             if ($chk_lecture_room_unit !== true) {
-                throw new \Exception($chk_lecture_room_unit['ret_msg']);
+                throw new \Exception($chk_lecture_room_unit);
             }
 
             switch (element('pkg_yn',$form_data)) {
@@ -1473,7 +1474,7 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception('강의실 좌석 상태 수정에 실패했습니다.');
             }
 
-            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+            if ($this->_sendKakao($lecture_room_unit_data) !== true) {
                 throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
@@ -1512,9 +1513,10 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception('기존 좌석 조회에 실패했습니다.');
             }
 
-            $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate(element('lr_code', $form_data), element('lr_unit_code', $form_data));
+            $lecture_room_unit_data = $this->_getLectureRoomUnit(element('lr_code', $form_data), element('lr_unit_code', $form_data));
+            $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate($lecture_room_unit_data);
             if ($chk_lecture_room_unit !== true) {
-                throw new \Exception($chk_lecture_room_unit['ret_msg']);
+                throw new \Exception($chk_lecture_room_unit);
             }
 
             $chk_register_data = $this->_findLectureRoomSeatRegister(element('lr_code', $form_data), element('lr_unit_code', $form_data), element('lr_rurs_idx', $form_data));
@@ -1526,7 +1528,7 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception('좌석이동에 실패했습니다.');
             }
 
-            if ($this->_sendKakao($chk_lecture_room_unit) !== true) {
+            if ($this->_sendKakao($lecture_room_unit_data) !== true) {
                 throw new \Exception('SMS 발송에 실패했습니다.');
             }
             $this->_conn->trans_commit();
@@ -1539,41 +1541,39 @@ class ClassroomFModel extends WB_Model
 
     /**
      * 강의실 회차 정보 유효성 검사
-     * 좌석선택기간 체크, 좌석수 체크
      * @param $lr_code
      * @param $lr_unit_code
-     * @return bool|string
+     * @return mixed
      */
-    private function _getLectureRoomUnitForValidate($lr_code, $lr_unit_code)
+    private function _getLectureRoomUnit($lr_code, $lr_unit_code)
     {
-        try {
-            $arr_condition = [
-                'EQ' => [
-                    'lrru.LrCode' => $lr_code,
-                    'lrru.LrUnitCode' => $lr_unit_code,
-                    'lrru.IsStatus' => 'Y',
-                    'lrru.IsUse' => 'Y',
-                ]
-            ];
+        $arr_condition = [
+            'EQ' => [
+                'lrru.LrCode' => $lr_code,
+                'lrru.LrUnitCode' => $lr_unit_code,
+                'lrru.IsStatus' => 'Y',
+                'lrru.IsUse' => 'Y',
+            ]
+        ];
 
-            $arr_condition_sub = [
-                'EQ' => [
-                    'LrUnitCode' => $lr_unit_code,
-                    'IsStatus' => 'Y',
-                ],
-                'IN' => [
-                    'SeatStatusCcd' => ['727002', '727003']
-                ]
-            ];
+        $arr_condition_sub = [
+            'EQ' => [
+                'LrUnitCode' => $lr_unit_code,
+                'IsStatus' => 'Y',
+            ],
+            'IN' => [
+                'SeatStatusCcd' => ['727002', '727003']
+            ]
+        ];
 
-            $where = $this->_conn->makeWhere($arr_condition);
-            $where = $where->getMakeWhere(false);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
 
-            $where_sub = $this->_conn->makeWhere($arr_condition_sub);
-            $where_sub = $where_sub->getMakeWhere(false);
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
 
-            $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, IFNULL(lrrurs.useSeatCnt,0) AS useSeatCnt';
-            $from = "
+        $column = 'lrru.UseQty, lrru.SeatChoiceStartDate, lrru.SeatChoiceEndDate, lrru.IsSmsUse, lrru.SmsContent, lrru.SendTel, IFNULL(lrrurs.useSeatCnt,0) AS useSeatCnt';
+        $from = "
                 FROM {$this->_table['lectureroom_r_unit']} AS lrru
                 LEFT JOIN (
                     SELECT LrUnitCode, COUNT(*) AS useSeatCnt
@@ -1581,17 +1581,27 @@ class ClassroomFModel extends WB_Model
                     {$where_sub}
                 ) AS lrrurs ON lrrurs.LrUnitCode = lrru.LrUnitCode
             ";
-            $result = $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
-            if (empty($result) === true) {
+        return $this->_conn->query('SELECT ' . $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
+     * 좌석선택기간 체크, 좌석수 체크
+     * @param $data
+     * @return bool|string
+     */
+    private function _getLectureRoomUnitForValidate($data)
+    {
+        try {
+            if (empty($data) === true) {
                 throw new \Exception('조회된 강의실 정보가 없습니다.');
             }
 
             $now = date('Y-m-d');
-            if ($result['SeatChoiceStartDate'] > $now || $result['SeatChoiceEndDate'] < $now) {
+            if ($data['SeatChoiceStartDate'] > $now || $data['SeatChoiceEndDate'] < $now) {
                 throw new \Exception('좌석 선택 기간이 아닙니다.');
             }
 
-            if ($result['UseQty'] <= $result['useSeatCnt']) {
+            if ($data['UseQty'] <= $data['useSeatCnt']) {
                 throw new \Exception('정원 초과 입니다.');
             }
 
@@ -1918,11 +1928,11 @@ class ClassroomFModel extends WB_Model
     {
         try {
             //문자발송
-            if($unit_data['data']['IsSmsUse'] == 'Y' && empty($unit_data['data']['SendTel']) === false ) { // 문자발송
+            if($unit_data['IsSmsUse'] == 'Y' && empty($unit_data['SendTel']) === false ) { // 문자발송
                 $this->load->loadModels(['crm/smsF']);
                 if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone')
-                        , $unit_data['data']['SmsContent']
-                        , $unit_data['data']['SendTel']
+                        , $unit_data['SmsContent']
+                        , $unit_data['SendTel']
                         , null
                         , 'KFT'
                         , null

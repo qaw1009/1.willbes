@@ -183,13 +183,9 @@
                     </select>
                 </div>
 
-                <label class="control-label col-md-1" for="before_seat_no_modal">변경전 좌석</label>
+                <label class="control-label col-md-1" for="search_seat_no">좌석번호</label>
                 <div class="col-md-1 form-inline">
-                    <input type="text" class="form-control" id="before_seat_no_modal" name="before_seat_no" style="width: 50px;">
-                </div>
-                <label class="control-label col-md-1" for="search_value">변경후 좌석</label>
-                <div class="col-md-2 form-inline">
-                    <input type="text" class="form-control" id="after_seat_no" name="after_seat_no" style="width: 50px;">
+                    <input type="text" class="form-control" id="search_seat_no" name="search_seat_no" style="width: 50px;">
                 </div>
             </div>
             <div class="form-group">
@@ -272,10 +268,13 @@
             //등록
             $modal_regi_form.submit(function() {
                 var _url = '{{ site_url('/pass/lectureRoom/regist/storeSeat') }}';
+                var _replace_url = "{{ site_url('/pass/lectureRoom/regist/infoSeatModal/'.$lr_code.'/'.$lr_unit_code) }}";
                 ajaxSubmit($modal_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        var _replace_url = "{{ site_url('/pass/lectureRoom/regist/infoSeatModal/'.$lr_code.'/'.$lr_unit_code) }}";
+                        replaceModal(_replace_url,'');
+                    } else {
+                        alert(ret.ret_msg);
                         replaceModal(_replace_url,'');
                     }
                 }, showValidateError, addValidate, false, 'alert');
@@ -308,7 +307,13 @@
                             // 리스트 번호
                             return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'OrderNo'},
+                    {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
+                            if (data == null) {
+                                return '';
+                            } else {
+                                return '<a href="{{ site_url('/pay/order/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                            }
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.MemName == null) ? '' : row.MemName + '(' + row.MemId + ')';
                         }},

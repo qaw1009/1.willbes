@@ -83,8 +83,8 @@
                     <th class="valign-middle">좌석선택기간</th>
                     <th class="valign-middle">사용중/총좌석</th>
                     <th class="valign-middle">잔여석</th>
-                    <th class="valign-middle">자동문자 사용여부</th>
                     <th class="valign-middle">회차별 사용여부</th>
+                    <th class="valign-middle">자동문자 사용여부</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -171,7 +171,7 @@
                             $.each(arr_unit_data, function(i, key) {
                                 if (key.LrUnitCode != null) {
                                     str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">';
-                                    str += (key.IsSmsUse == 'Y') ? '사용' : '미사용';
+                                    str += (key.unitIsUse == 'Y') ? '사용' : '미사용';
                                     str +=  '</div>';
                                 }
                             });
@@ -183,7 +183,7 @@
                             $.each(arr_unit_data, function(i, key) {
                                 if (key.LrUnitCode != null) {
                                     str += '<div class="mb-5" style="border-bottom: 1px solid #ff9797;">';
-                                    str += (key.unitIsUse == 'Y') ? '사용' : '미사용';
+                                    str += (key.IsSmsUse == 'Y') ? '사용' : '미사용';
                                     str +=  '</div>';
                                 }
                             });

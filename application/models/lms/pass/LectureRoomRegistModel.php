@@ -405,6 +405,13 @@ class LectureRoomRegistModel extends WB_Model
         try {
             $arr_lr_rurs_idx = explode(',', element('lr_rurs_idx',$form_data));
             $arr_choice_serial_num = explode(',', element('choice_serial_num',$form_data));
+
+            $arr_condition = ['IN' => ['lrsr.LrrursIdx' => $arr_lr_rurs_idx]];
+            $register_data = $this->lectureRoomIssueModel->findSeatRegister('LrsrIdx', $arr_condition);
+            if (empty($register_data) === false) {
+                throw new Exception('회원이 선택한 좌석은 수정할 수 없습니다.');
+            }
+
             $log_data = [];
             $update_data = [];
             foreach ($arr_lr_rurs_idx as $k => $v) {
@@ -458,7 +465,7 @@ class LectureRoomRegistModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-                lg.LogIdx, lg.LrCode, lg.LrUnitCode, lg.SeatStatusCcd, o.OrderNo, lg.LrrursIdx, lg.LrsrIdx, lg.OrderProdIdx, lg.MemIdx, lg.BeforeSeatNo, lg.AfterSeatNo, lg.Desc, lg.RegDatm
+                lg.LogIdx, lg.LrCode, lg.LrUnitCode, lg.SeatStatusCcd, o.OrderNo, o.OrderIdx, lg.LrrursIdx, lg.LrsrIdx, lg.OrderProdIdx, lg.MemIdx, lg.BeforeSeatNo, lg.AfterSeatNo, lg.Desc, lg.RegDatm
                 ,sc.CcdName AS SeatStatusName
                 ,mem.MemId, mem.MemName
                 ,ad.wAdminName AS RegAdminName
@@ -471,9 +478,9 @@ class LectureRoomRegistModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $from = "
             FROM {$this->_table['lectureroom_log']} AS lg
-            INNER JOIN {$this->_table['order_product']} AS op ON lg.OrderProdIdx = op.OrderProdIdx
-            INNER JOIN {$this->_table['order']} AS o ON op.OrderIdx = o.OrderIdx
-            INNER JOIN {$this->_table['sys_code']} AS sc ON lg.SeatStatusCcd = sc.Ccd
+            LEFT JOIN {$this->_table['order_product']} AS op ON lg.OrderProdIdx = op.OrderProdIdx
+            LEFT JOIN {$this->_table['order']} AS o ON op.OrderIdx = o.OrderIdx
+            LEFT JOIN {$this->_table['sys_code']} AS sc ON lg.SeatStatusCcd = sc.Ccd
             LEFT JOIN {$this->_table['admin']} AS ad ON lg.RegAdminIdx = ad.wAdminIdx
             LEFT JOIN {$this->_table['member']} AS mem ON lg.MemIdx = mem.MemIdx
         ";

@@ -67,52 +67,29 @@
             <input type="hidden" name="{{$key}}" value="{{$val}}"/>
         @endforeach
         <div class="character">
-            @if((config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002') && $arr_input['bottom_cafe_type'] != 'N')
-            {{-- 경찰 사이트일 경우만 적용 --}}
-            <ul class="characterImg">
-                @for ($i=1; $i<=26; $i++)                    
-                    <li class="sel_icon" id="character_{{$i}}">
-                        <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
-                        <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
-                    </li>                    
-                @endfor
-            </ul>
-             @endif
-            {{--한덕현 프로모션 1588일 경우만 적용--}}
-            <ul class="characterImg characterImg2">                   
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character01_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character01.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character02_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character02.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character03_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character03.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character04_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character04.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character05_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character05.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character06_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character06.png" alt="" class="on"/>
-                </li> 
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character07_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character07.png" alt="" class="on"/>
-                </li>
-                <li class="sel_icon">
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character08_1.png" alt="" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/common/1588_character08.png" alt="" class="on"/>
-                </li>            
-            </ul>
+            @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
+                {{-- 경찰 사이트일 경우만 적용 --}}
+                <ul class="characterImg">
+                    @for ($i=1; $i<=26; $i++)
+                        <li class="sel_icon" id="character_{{$i}}">
+                            <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
+                            <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
+                        </li>
+                    @endfor
+                </ul>
+            @endif
+
+            @if(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
+                {{-- 공무원 (한덕현 교수) --}}
+                <ul class="characterImg characterImg2">
+                    @for ($i=1; $i<=8; $i++)
+                        <li class="sel_icon" id="character_{{$i}}">
+                            <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
+                            <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
+                        </li>
+                    @endfor
+                </ul>
+            @endif
         </div>
 
         <div class="reply_inbox">
@@ -128,7 +105,11 @@
         <ul>
             @foreach($list as $row)
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
+                    @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
+                        <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
+                    @elseif(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
+                        <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
+                    @endif
                     <div>
                         <p>{!! hpSubString($row['MemName'],0,2,'*') !!} <span>{{$row['RegDatm']}}</span></p>
                         {!!nl2br($row['Content'])!!}

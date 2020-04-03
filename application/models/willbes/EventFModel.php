@@ -1334,7 +1334,7 @@ class EventFModel extends WB_Model
      */
     public function listEventPromotionForAddApply($el_idx)
     {
-        $column = "A.*, IFNULL(B.MemberCnt, 0) AS MemberCnt";
+        $column = "A.*, IFNULL(B.MemberCnt, 0) AS MemberCnt, IFNULL(B.MemberCnt, 0) AS MemberCnt, IFNULL(C.MemberLoginCnt, 0) AS MemberLoginCnt";
         $from = "
             FROM {$this->_table['event_add_apply']} AS A
             LEFT OUTER JOIN	(
@@ -1343,13 +1343,21 @@ class EventFModel extends WB_Model
                 WHERE IsStatus = 'Y'
                 AND IsWin = 'Y'
                 GROUP BY EaaIdx
-            ) AS B ON A.EaaIdx = B.EaaIdx            
+            ) AS B ON A.EaaIdx = B.EaaIdx
+            LEFT OUTER JOIN (
+                SELECT EaaIdx, COUNT(*) AS MemberLoginCnt
+                FROM {$this->_table['event_add_apply_member']}
+                WHERE IsStatus = 'Y'
+                AND IsWin = 'Y'
+                AND MemIdx = ?
+                GROUP BY EaaIdx
+            ) AS C ON A.EaaIdx = C.EaaIdx    
         ";
         $where = ' WHERE A.ElIdx = ? and A.IsUse = "Y"';
         $order_by_offset_limit = ' ORDER BY A.ApplyEndDatm, A.EaaIdx ASC';
 
         // 쿼리 실행
-        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx'), $el_idx])->result_array();
     }
 
     /**
@@ -1389,17 +1397,19 @@ class EventFModel extends WB_Model
                 throw new \Exception('조회된 이벤트 추가신청 정보가 없습니다.');
             }
 
-            // 이벤트 접수 체크
-            $arr_condition = [
-                'EQ'=>[
-                    'A.MemIdx' => $this->session->userdata('mem_idx'),
-                    'B.ElIdx' => element('event_idx', $inputData),
-                    'B.IsStatus' => 'Y'
-                ],
-            ];
-            $reg_member_result = $this->getRegisterMember($arr_condition);
-            if(empty($reg_member_result) === true) {
-                throw new \Exception('이벤트 신청후 이용 가능합니다.');
+            if(empty($inputData['event_register_chk']) === true || $inputData['event_register_chk'] != 'N') {
+                // 이벤트 접수 체크
+                $arr_condition = [
+                    'EQ'=>[
+                        'A.MemIdx' => $this->session->userdata('mem_idx'),
+                        'B.ElIdx' => element('event_idx', $inputData),
+                        'B.IsStatus' => 'Y'
+                    ],
+                ];
+                $reg_member_result = $this->getRegisterMember($arr_condition);
+                if(empty($reg_member_result) === true) {
+                    throw new \Exception('이벤트 신청후 이용 가능합니다.');
+                }
             }
 
             $apply_info = [];
@@ -1426,6 +1436,12 @@ class EventFModel extends WB_Model
                         ]
                     ];
 
+                    //여러 추가신청중 하나의 추가신청만 가능할시
+                    if(empty($inputData['apply_chk_el_idx']) === false) {
+                        unset($arr_condition['EQ']['A.EaaIdx']); //기존 EaaIdx 조회 조건 제거
+                        $arr_condition['EQ']['B.ElIdx'] = $inputData['apply_chk_el_idx'];
+                    }
+
                     $input_register_data = [
                         'EaaIdx' => $key,
                         'MemIdx' => $this->session->userdata('mem_idx'),
@@ -1445,12 +1461,6 @@ class EventFModel extends WB_Model
                     throw new \Exception('마감되었습니다.');
                 }
 
-                //여러 추가신청중 하나의 추가신청만 가능할시
-                if(empty($inputData['apply_chk_el_idx']) === false) {
-                    unset($arr_condition['EQ']['A.EaaIdx']); //기존 ErIdx 조회 조건 제거
-                    $arr_condition['EQ']['B.ElIdx'] = $inputData['apply_chk_el_idx'];
-                }
-
                 // 상품 구매여부 체크
                 if(empty($row['ProdCode']) === false){
                     $order_event_member_count = $this->getOrderForEventMemberCount($row['ProdCode'], $this->session->userdata('mem_idx'));
@@ -1461,17 +1471,19 @@ class EventFModel extends WB_Model
 
                 // 지급할 강의상품이 있을 경우
                 // TODO: 1545프로모션. 수동으로 교재 보낸다고함. 추후 상품 자동지급 필요시 개발
-//                if(empty($row['EaaIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
-//                    //중복신청여부 로그인 아이디 기준으로 체크
-//                    $result_apply_member = $this->getApplyMember(['EQ' => [ 'A.EaaIdx' => $row['EaaIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
-//                    if(count($result_apply_member) == 0) {
-//                        if(empty($row['ProdCode']) === false) {
-//                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $row['ProdCode']) !== true) {
-//                                throw new \Exception('제공 상품이 처리되지 않았습니다.');
-//                            }
-//                        }
-//                    }
-//                }
+                /*
+                if(empty($row['EaaIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
+                    //중복신청여부 로그인 아이디 기준으로 체크
+                    $result_apply_member = $this->getApplyMember(['EQ' => [ 'A.EaaIdx' => $row['EaaIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
+                    if(count($result_apply_member) == 0) {
+                        if(empty($row['ProdCode']) === false) {
+                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $row['ProdCode']) !== true) {
+                                throw new \Exception('제공 상품이 처리되지 않았습니다.');
+                            }
+                        }
+                    }
+                }
+                */
 
                 if ($this->_addEventApplyMember($input_register_data) !== true) {
                     throw new \Exception('추가 이벤트 신청 등록을 실패했습니다.');
@@ -1489,11 +1501,16 @@ class EventFModel extends WB_Model
     /**
      * 이벤트 추가 신청자 조회
      * @param array $arr_condition
+     * @param bool $is_count
      * @return mixed
      */
-    public function getApplyMember($arr_condition=[])
+    public function getApplyMember($arr_condition = [], $is_count = false)
     {
-        $column = 'A.*';
+        if($is_count === true) {
+            $column = 'COUNT(*) AS numrows';
+        } else {
+            $column = 'A.*';
+        }
         $from = " 
             FROM {$this->_table['event_add_apply_member']} AS A
             LEFT OUTER JOIN {$this->_table['event_add_apply']} AS B ON A.EaaIdx = B.EaaIdx AND B.IsStatus = 'Y'
@@ -1502,7 +1519,8 @@ class EventFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $query = $this->_conn->query('select ' . $column . $from . $where);
-        return $query->result_array();
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

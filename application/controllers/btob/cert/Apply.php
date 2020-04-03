@@ -162,7 +162,7 @@ class Apply extends \app\controllers\BaseController
         ini_set('memory_limit', $this->_memory_limit_size);
 
         $headers = ['인증회차', '회원명', '회원아이디', '회원가입일', '회원휴대폰번호', '생년월일', '성별', '지역', '지점', '신청일', '수험직렬', '상품명', '진행상태'
-            , '승인완료자', '승인완료일', '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일', '이용일수', '평균수강률'];
+            , '승인완료자', '승인완료일', '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일', '수강시작일', '수강종료일', '이용일수', '평균수강률'];
         $file_name = '인증신청목록_' . $this->_sess_btob_idx . '_' . date('Y-m-d');
 
         $arr_condition = $this->_getListConditions();

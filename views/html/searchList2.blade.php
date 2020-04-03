@@ -667,7 +667,8 @@
                                                 </a>
                                                 <div class="Layer-Tit tx-dark-black NG">
                                                     2018 최진우 독한국사 이론강의 (7-8월)[이론/끝장전/주간스포트라이트] 독구다 패키지
-                                                </div>                   
+                                                </div>  
+                                                <div class="willbes-Lec-Line">-</div>                 
                                                 <div class="lecDetailWrap">
                                                     <div class="classInfo">
                                                         <dl class="w-info NG">
@@ -919,7 +920,8 @@
                                                 </a>
                                                 <div class="Layer-Tit tx-dark-black NG">
                                                     2018 최진우 독한국사 이론강의 (7-8월)[이론/끝장전/주간스포트라이트] 독구다 패키지
-                                                </div>                   
+                                                </div> 
+                                                <div class="willbes-Lec-Line">-</div>                  
                                                 <div class="lecDetailWrap">
                                                     <div class="classInfo">
                                                         <dl class="w-info NG">

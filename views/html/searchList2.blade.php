@@ -986,7 +986,7 @@
                                             <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
-                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                    <a href="#none">
                                                         <strong>패키지상세정보</strong>
                                                     </a>
                                                 </dt>
@@ -1015,7 +1015,7 @@
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
-                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                    <a href="#none">
                                                         <strong>패키지상세정보</strong>
                                                     </a>
                                                 </dt>
@@ -1042,7 +1042,7 @@
                                             <div class="w-tit">2017 (하반기 지방직 대비) 페트라 출제포인트 패키지</div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
-                                                    <a href="#none" onclick="openWin('InfoFormPkg')">
+                                                    <a href="#none">
                                                         <strong>패키지상세정보</strong>
                                                     </a>
                                                 </dt>

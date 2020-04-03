@@ -63,10 +63,12 @@
             </ul>
         </h3>
     </div>
+
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
     </div>
+
     <div class="Content p_re">        
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
@@ -468,9 +470,7 @@
                 </table>
                 <!-- lecInfoTable -->
             </div>
-            <!-- willbes-Lec-Table -->
-
-            
+            <!-- willbes-Lec-Table -->           
 
             <div class="willbes-Lec-Table">               
                 <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -852,6 +852,7 @@
         </div>
         <!-- willbes-Lec-buyBtn -->
 
+        {{--상세정보팝업--}}
         <div id="InfoForm" class="willbes-Layer-Box">
             <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
                 <img src="{{ img_url('sub/close.png') }}">
@@ -1028,8 +1029,9 @@
             </div>
         </div>
         <!-- willbes-Layer-Box -->
-
     </div>
+    <!--//Content-->
+
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>

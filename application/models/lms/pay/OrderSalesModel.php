@@ -433,9 +433,9 @@ class OrderSalesModel extends BaseOrderModel
             $column = 'count(*) AS numrows';
         } else {
             if ($is_count === 'sum') {
-                $column = 'sum(ifnull(U.RealPayPrice, 0)) as tRealPayPrice, sum(ifnull(U.RefundPrice, 0)) as tRefundPrice, sum(U.RemainPrice) as tRemainPrice
-                    , sum(ifnull(U.CardPayPrice, 0)) as tCardPayPrice, sum(ifnull(U.CashPayPrice, 0)) as tCashPayPrice
-                    , sum(ifnull(U.BankPayPrice, 0)) as tBankPayPrice, sum(ifnull(U.VBankPayPrice, 0)) as tVBankPayPrice';
+                $column = 'sum(ifnull(U.TrcPrice, 0)) as tTrcPrice
+                    , sum(ifnull(U.CardTrcPrice, 0)) as tCardTrcPrice, sum(ifnull(U.CashTrcPrice, 0)) as tCashTrcPrice
+                    , sum(ifnull(U.BankTrcPrice, 0)) as tBankTrcPrice, sum(ifnull(U.VBankTrcPrice, 0)) as tVBankTrcPrice';
             } else {
                 $column = 'U.*
                     , SC.CateName, SGC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CCA.CcdName as CampusCcdName, CLPT.CcdName as LearnProdTypeCcdName';
@@ -445,15 +445,12 @@ class OrderSalesModel extends BaseOrderModel
         $query = /** @lang text */ '
             select ' . $column . '
             from (
-                select BO.OrderIdx, BO.OrderNo, BO.SiteCode, BO.MemIdx, BO.OrderProdIdx, BO.ProdCode, BO.PayRouteCcd, BO.PayMethodCcd
-                    , BO.PayStatusCcd, BO.SalePatternCcd
-                    , BO.CompleteDatm, BO.RefundDatm, ifnull(BO.RefundDatm, BO.CompleteDatm) as ProcDatm
-                    , BO.RealPayPrice, BO.RefundPrice
-                    , (ifnull(BO.RealPayPrice, 0) - ifnull(BO.RefundPrice, 0)) as RemainPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['card'] . '", "' . $this->_pay_method_ccd['visit_card'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '", "' . $this->_pay_method_ccd['admin_pay'] . '", ""), BO.CardPayPrice, null) as CardPayPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['willbes_bank'] . '", "' . $this->_pay_method_ccd['visit_cash'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '"), BO.CashPayPrice, null) as CashPayPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['direct_bank'] . '"), BO.CardPayPrice, null) as BankPayPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['vbank'] . '"), BO.CardPayPrice, null) as VBankPayPrice	
+                select BO.OrderIdx, BO.OrderNo, BO.SiteCode, BO.MemIdx, BO.OrderProdIdx, BO.ProdCode, BO.PayRouteCcd, BO.PayMethodCcd, BO.SalePatternCcd
+                    , BO.TrcDatm, BO.TrcStatusCode, BO.TrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['card'] . '", "' . $this->_pay_method_ccd['visit_card'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '", "' . $this->_pay_method_ccd['admin_pay'] . '", ""), BO.CardTrcPrice, null) as CardTrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['willbes_bank'] . '", "' . $this->_pay_method_ccd['visit_cash'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '"), BO.CashTrcPrice, null) as CashTrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['direct_bank'] . '"), BO.CardTrcPrice, null) as BankTrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['vbank'] . '"), BO.CardTrcPrice, null) as VBankTrcPrice	
                     , OOI.CertNo
                     , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
                     , ifnull(PL.LearnPatternCcd, P.ProdTypeCcd) as LearnProdTypeCcd
@@ -461,7 +458,7 @@ class OrderSalesModel extends BaseOrderModel
                     , PC.CateCode, left(PC.CateCode, 4) as LgCateCode
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                 from (
-                    ' . $this->_getBaseOrder($start_date, $end_date, 'all') . '
+                    ' . $this->_getTrcBaseOrder($start_date, $end_date) . '
                 ) as BO
                     inner join ' . $this->_table['product'] . ' as P
                         on BO.ProdCode = P.ProdCode
@@ -590,6 +587,57 @@ class OrderSalesModel extends BaseOrderModel
                 and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '") 
             ' . $where
         ;
+
+        return $query;
+    }
+
+    /**
+     * 거래별 기준 주문조회 (결제/환불이력 분리)
+     * @param string $start_date [조회시작일자]
+     * @param string $end_date [조회종료일자]
+     * @return string
+     */
+    private function _getTrcBaseOrder($start_date, $end_date)
+    {
+        if (strlen($start_date) == 10) {
+            $start_date = $start_date . ' 00:00:00';
+        }
+
+        if (strlen($end_date) == 10) {
+            $end_date = $end_date . ' 23:59:59';
+        }
+
+        $query = /** @lang text */ '
+            select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
+                , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.SalePatternCcd
+                , OP.RealPayPrice as TrcPrice
+                , OP.CardPayPrice as CardTrcPrice
+                , OP.CashPayPrice as CashTrcPrice
+                , O.CompleteDatm as TrcDatm
+                , "C" as TrcStatusCode
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
+            where O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
+                and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")              
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '") 
+            union all    
+            select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
+                , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.SalePatternCcd
+                , (OPR.RefundPrice * -1) as TrcPrice
+                , (OPR.CardRefundPrice * -1) as CardTrcPrice
+                , (OPR.CashRefundPrice * -1) as CashTrcPrice
+                , OPR.RefundDatm as TrcDatm
+                , "R" as TrcStatusCode
+            from ' . $this->_table['order_product_refund'] . ' as OPR
+                inner join ' . $this->_table['order'] . ' as O
+                    on OPR.OrderIdx = O.OrderIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+            where OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")        
+        ';
 
         return $query;
     }

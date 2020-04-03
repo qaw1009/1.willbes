@@ -131,11 +131,11 @@ class AdminPay extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '결제금액', '환불완료일', '환불완료자'
-            , '수강시작일', '수강기간', '부여사유유형', '기타사유'];
+        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '결제금액'
+            , '환불금액', '환불완료일', '환불완료자', '수강시작일', '수강기간', '부여사유유형', '기타사유'];
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdTypeCcdName, ProdName
             , if(json_value(MyLecData, "$[0].wUnitIdxs") != "", fn_str_count(concat(json_value(MyLecData, "$[0].wUnitIdxs"), ","), ","), "") as wUnitCnt
-            , PayStatusCcdName, RealPayPrice, RefundDatm, RefundAdminName
+            , PayStatusCcdName, RealPayPrice, RefundPrice, RefundDatm, RefundAdminName
             , json_value(MyLecData, "$[0].LecStartDate") as LecStartDate, json_value(MyLecData, "$[0].LecExpireDay") as LecExpireDay, AdminReasonCcdName, AdminEtcReason';
 
         $arr_condition = $this->_getListConditions();

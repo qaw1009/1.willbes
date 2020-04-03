@@ -9,7 +9,8 @@ class BtobCertModel extends WB_Model
         'btob_admin' => 'lms_btob_admin',
         'btob_code' => 'lms_btob_code',
         'product' => 'lms_product',
-        'member' => 'lms_member'
+        'member' => 'lms_member',
+        'mylecture' => 'lms_my_lecture'
     ];    
 
     public function __construct()
@@ -34,15 +35,25 @@ class BtobCertModel extends WB_Model
         } else {
             $column = 'CA.ApplyIdx, CA.BtobIdx, CA.MemIdx, CA.ApplySeq, CA.SiteCode, CA.ProdCode, CA.OrderIdx, CA.LecStartDate, CA.LecEndDate
                 , CA.ApprovalDatm, CA.ApprovalExpireDatm, CA.RegDatm
-                , M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone, M.BirthDay, M.Sex, if(M.Sex = "M", "남", "여") as SexKr, P.ProdName
+                , M.MemId, M.MemName, M.JoinDate, fn_dec(M.PhoneEnc) as MemPhone, M.BirthDay, M.Sex, if(M.Sex = "M", "남", "여") as SexKr, P.ProdName
                 , AC.CcdName as AreaCcdName, BC.CcdName as BranchCcdName, TKC.CcdName as TakeKindCcdName
                 , AAP.AdminName as ApprovalAdminName
                 , if(CA.ApprovalStatus = "Y" and CA.ApprovalExpireDatm < NOW(), "E", CA.ApprovalStatus) as ApprovalStatus
                 , if(CA.ApprovalStatus = "R", CA.StatusUpdDatm, null) as ApprovalRejectDatm
                 , if(CA.ApprovalStatus = "R", SUA.AdminName, null) as ApprovalRejectAdminName
                 , if(CA.ApprovalStatus = "C", CA.StatusUpdDatm, null) as ApprovalCancelDatm	
-                , if(CA.ApprovalStatus = "C", SUA.AdminName, null) as ApprovalCancelAdminName                
+                , if(CA.ApprovalStatus = "C", SUA.AdminName, null) as ApprovalCancelAdminName
             ';
+
+            if ($is_count === 'excel') {
+                $column .= ', (SELECT m1.RealLecExpireDay FROM ' . $this->_table['mylecture'] . ' AS m1 
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub = CA.ProdCode) AS Period
+                , (SELECT SUM(m1.StudyRate) FROM ' . $this->_table['mylecture'] . ' AS m1 
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub <> m1.ProdCode) AS Percent
+                , (SELECT COUNT(*) FROM ' . $this->_table['mylecture'] . ' AS m1 
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub <> m1.ProdCode) AS count
+            ';
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -71,8 +82,9 @@ class BtobCertModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         if ($is_count === 'excel') {
-            $excel_column = 'ApplySeq, MemName, MemId, MemPhone, BirthDay, SexKr, AreaCcdName, BranchCcdName, RegDatm, TakeKindCcdName, ProdName, ApprovalStatus
-                , ApprovalAdminName, ApprovalDatm, ApprovalRejectAdminName, ApprovalRejectDatm, ApprovalCancelAdminName, ApprovalCancelDatm, ApprovalExpireDatm';
+            $excel_column = 'ApplySeq, MemName, MemId, JoinDate, MemPhone, BirthDay, SexKr, AreaCcdName, BranchCcdName, RegDatm, TakeKindCcdName, ProdName, ApprovalStatus
+                , ApprovalAdminName, ApprovalDatm, ApprovalRejectAdminName, ApprovalRejectDatm, ApprovalCancelAdminName, ApprovalCancelDatm, ApprovalExpireDatm
+                , Period, ROUND(Percent/count) AS avg_percent';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
             $query = 'select ' . $column . $from . $where . $order_by_offset_limit;

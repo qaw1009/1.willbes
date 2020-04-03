@@ -92,24 +92,22 @@
                     <th rowspan="2" class="valign-middle">회원명</th>
                     <th rowspan="2" class="valign-middle">연락처</th>
                     <th rowspan="2" class="valign-middle">결제루트</th>
-                    <th colspan="6">결제금액</th>
+                    <th colspan="5">결제금액</th>
                 </tr>
                 <tr>
                     <th class="valign-middle">신용카드</th>
                     <th class="valign-middle">현금</th>
                     <th class="valign-middle">실시간<br/>계좌이체</th>
                     <th class="valign-middle">무통장입금</th>
-                    <th class="valign-middle">환불금액</th>
                     <th class="valign-middle">합계</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="12" class="text-center">합계</th>
-                    <th id="t_card_pay_price" class="sumTh"></th>
-                    <th id="t_cash_pay_price" class="sumTh"></th>
-                    <th id="t_bank_pay_price" class="sumTh"></th>
-                    <th id="t_vbank_pay_price" class="sumTh"></th>
-                    <th id="t_refund_price" class="sumTh"></th>
-                    <th id="t_remain_price" class="sumTh"></th>
+                    <th id="t_card_trc_price" class="sumTh"></th>
+                    <th id="t_cash_trc_price" class="sumTh"></th>
+                    <th id="t_bank_trc_price" class="sumTh"></th>
+                    <th id="t_vbank_trc_price" class="sumTh"></th>
+                    <th id="t_trc_price" class="sumTh"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -125,7 +123,6 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
-                //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
             }
 
@@ -146,7 +143,7 @@
                     }
                 },
                 createdRow: function(row, data, dataIndex) {
-                    if (data.RefundPrice !== null) {
+                    if (data.TrcStatusCode === 'R') {
                         $(row).addClass('red');
                     }
                 },
@@ -156,13 +153,13 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" class="' + (row.RefundPrice !== null ? 'red' : 'blue') + '" target="_blank"><u>' + data + '</u></a>';
+                        return '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" class="' + (row.TrcStatusCode === 'R' ? 'red' : 'blue') + '" target="_blank"><u>' + data + '</u></a>';
                     }},
                     {'data' : 'CertNo'},
-                    {'data' : 'ProcDatm', 'render' : function(data, type, row, meta) {
+                    {'data' : 'TrcDatm', 'render' : function(data, type, row, meta) {
                         return data.substr(0, 10);
                     }},
-                    {'data' : 'ProcDatm', 'render' : function(data, type, row, meta) {
+                    {'data' : 'TrcDatm', 'render' : function(data, type, row, meta) {
                         return data.substr(11);
                     }},
                     {'data' : 'LearnProdTypeCcdName'},
@@ -176,22 +173,19 @@
                     }},
                     {'data' : 'MemPhone'},
                     {'data' : 'PayRouteCcdName'},
-                    {'data' : 'CardPayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'CardTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
-                    {'data' : 'CashPayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'CashTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
-                    {'data' : 'BankPayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'BankTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
-                    {'data' : 'VBankPayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'VBankTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
-                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return data == null ? '' : addComma(data * -1);
-                    }},
-                    {'data' : 'RemainPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'TrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }}
                 ]
@@ -200,12 +194,11 @@
             // 조회된 기간의 합계금액 표시 (datatable load event)
             $datatable.on('xhr.dt', function(e, settings, json) {
                 if (json.sum_data !== null) {
-                    $('#t_card_pay_price').html(addComma(json.sum_data.tCardPayPrice));
-                    $('#t_cash_pay_price').html(addComma(json.sum_data.tCashPayPrice));
-                    $('#t_bank_pay_price').html(addComma(json.sum_data.tBankPayPrice));
-                    $('#t_vbank_pay_price').html(addComma(json.sum_data.tVBankPayPrice));
-                    $('#t_refund_price').html(addComma(json.sum_data.tRefundPrice * -1));
-                    $('#t_remain_price').html(addComma(json.sum_data.tRemainPrice));
+                    $('#t_card_trc_price').html(addComma(json.sum_data.tCardTrcPrice));
+                    $('#t_cash_trc_price').html(addComma(json.sum_data.tCashTrcPrice));
+                    $('#t_bank_trc_price').html(addComma(json.sum_data.tBankTrcPrice));
+                    $('#t_vbank_trc_price').html(addComma(json.sum_data.tVBankTrcPrice));
+                    $('#t_trc_price').html(addComma(json.sum_data.tTrcPrice));
                 } else {
                     $('#list_ajax_table thead tr th.sumTh').text('');
                 }

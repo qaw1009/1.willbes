@@ -3333,6 +3333,50 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     top: 0;
     right: 10px;
 }
+
+/*패키지상세보기 팝업*/
+.willbes-Layer-Box-pkg {
+    display: none;
+    background: #fff;
+    position: absolute;
+    z-index: 11;
+    width: 980px;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px;
+    top:100%;
+}
+.willbes-Layer-Box-pkg .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-Box-pkg .Layer-Tit {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.willbes-Layer-Box-pkg-sm {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    z-index: 11;
+    width: 580px;
+    height: 230px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 30px;
+}
+.willbes-Layer-Box-pkg-sm .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
 .tabWrap.tabDepth1 {
     height: 60px;
     border-bottom: 1px solid #4f4f4f;

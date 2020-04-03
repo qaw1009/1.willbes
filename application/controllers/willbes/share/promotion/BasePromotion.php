@@ -178,6 +178,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
+        $arr_base['add_apply_member_login_count'] = sess_data('is_login') !== true ? '0' : $this->eventFModel->getApplyMember(['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]], true);
 
         //모바일체크
         $this->load->library('user_agent');

@@ -57,7 +57,7 @@
         .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; color:#eee; font-size:13px;}        
 		.txt_point {color:#ff9472; font-size:12px;}
         	
-        </style>
+    </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
@@ -120,32 +120,36 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_soon.jpg" title="커밍쑨">        
         </div>
 
-        {{--            
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0">
-            <map name="Map1588b" id="Map1588b">
-                <area shape="rect" coords="370,974,751,1034" href="#to_go" />
-            </map>             
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" title="반반한 소문내기">           
-        </div>
-        --}}
-
-          
-        {{--홍보url--}}
-        {{--  
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
+        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+            {{-- 출석체크 --}}
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0">
+                <map name="Map1588b" id="Map1588b">
+                    <area shape="rect" coords="370,974,751,1034" href="#to_go" />
+                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" title="반반한 소문내기">
+            </div>
         @endif
-        --}}
 
-        {{--    
-        <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.jpg" usemap="#Map1588d" title="지금 바로 구매하기" border="0">
-            <map name="Map1588d" id="Map1588d">
-                <area shape="rect" coords="378,332,741,382" href="#none;" />
-            </map> 
-        </div>
-        --}}
+        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+            {{--홍보url--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial')
+            @endif
+        @endif
+
+        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+            {{-- TODO --}}
+            {{-- 다시보기 구매 --}}
+            {{--
+            <div class="evtCtnsBox evt03ss">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.jpg" usemap="#Map1588d" title="지금 바로 구매하기" border="0">
+                <map name="Map1588d" id="Map1588d">
+                    <area shape="rect" coords="378,332,741,382" href="#none;" />
+                </map>
+            </div>
+            --}}
+        @endif
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_04.jpg" usemap="#Map1588e" title="라이브 티비" border="0">
@@ -163,29 +167,57 @@
             </div>                 
         </div>
 
-        {{--
-        <div class="evtCtnsBox evt05" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_05.jpg" title="출석 횟수">
-            <span class="NSK-Black">3</span>    
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
-                {{--<img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">--}}
-            </a>   
-        </div> 
-        --}}
+        {{-- 출석체크 추가신청 form --}}
+        <form id="add_apply_form" name="add_apply_form">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            {{-- <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/> --}}
+            <input type="hidden" name="event_register_chk" value="N"/>
+            @foreach($arr_base['add_apply_data'] as $row)
+                @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                    <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                    @break;
+                @endif
+            @endforeach
+        </form>
 
-        {{--댓글--}}
-        {{--
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
-        @endif  
-        --}}
+        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+            {{-- 출석체크 --}}
+            <div class="evtCtnsBox evt05" id="to_go">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_05.jpg" title="출석 횟수">
+                <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
+                {{-- TODO --}}
+                @foreach($arr_base['add_apply_data'] as $row)
+                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                        @if($row['MemberLoginCnt'] == '0')
+                        <a href="javascript:fn_add_apply_submit();">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
+                        </a>
+                        @else
+                        <a href="javascript:alert('이미 출석체크 하셨습니다.');">
+                            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">
+                        </a>
+                        @endif
+                        @break;
+                    @endif
+                @endforeach
+            </div>
+        @endif
+
+        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+            {{-- 이모티콘 댓글 --}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
+            @endif
+        @endif
 
         <div class="wb_ctsInfo">
             <div>
                 <h3 class="NGEB">- 유의사항 - </h3>
                 <ul>
-				<li>                    
+				    <li>
                         <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 접속 후 수강하시면 됩니다.</span><br> 
 						<span class="txt_point">(*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</span>
 					</li>
@@ -279,6 +311,54 @@
                 slidesImg4.goToNextSlide();
             });
         });
+
+        {{-- 출석 체크 --}}
+        function fn_add_apply_submit() {
+
+            @if(date('YmdHi') < '202004132100' && ENVIRONMENT == 'production')
+                alert('4월13일 21:00 부터 이벤트 참여 가능합니다.');
+                return;
+            @endif
+
+            var $add_apply_form = $('#add_apply_form');
+            var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+                alert('이벤트 기간이 아닙니다.'); return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                // ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
+                // ['신청 되었습니다.','당첨을 축하합니다. 추후 안내 문자 발송 예정입니다.'],
+                // ['처리 되었습니다.','장바구니에 담겼습니다.'],
+                // ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
+            ];
+
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
     </script>
 
 @stop

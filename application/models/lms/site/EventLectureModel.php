@@ -2279,7 +2279,7 @@ class EventLectureModel extends WB_Model
             $column = '
                 A.MemIdx, A.IsWin, A.RegDatm,
                 C.MemId, C.MemName, fn_dec(C.PhoneEnc) as MemPhone,
-                O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode
+                O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode, B.Name
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

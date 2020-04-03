@@ -93,7 +93,8 @@
                     <th>회원ID</th>
                     <th>이름</th>
                     <th>전화번호</th>
-                    <th>당첨여부</th>
+                    {{-- <th>당첨여부</th> --}}
+                    <th>신청정보</th>
                     <th>신청일시</th>
                 </tr>
             </thead>
@@ -229,7 +230,8 @@
                 {'data' : 'MemId'},
                 {'data' : 'MemName'},
                 {'data' : 'MemPhone'},
-                {'data' : 'IsWin'},
+                //{'data' : 'IsWin'},
+                {'data' : 'Name'},
                 {'data' : 'RegDatm'}
             ]
         });

@@ -227,12 +227,7 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009B" id="event">
-                    <map name="Map1009B" id="Map1009B">
-                        <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
-                        <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
-                        <area shape="rect" coords="566,492,742,535" href="javascript:goDesc('tab4')" alt="환승이벤트 참여방법" />
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
@@ -382,7 +377,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
+                            <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.( <a href="javascript:go_popup()">수강가능 교수진 확인하기 ></a> )</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">2배수</span> 수강 할 수 있습니다.</li>
                             <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
@@ -731,7 +726,7 @@
                     ticker: true,
                     mode: 'vertical',
                     tickerHover: true,
-                    speed:70000*bx_num01
+                    speed:50000*bx_num01
                 });
             });
         });

@@ -47,7 +47,7 @@ class BtobCertModel extends WB_Model
 
             if ($is_count === 'excel') {
                 $column .= ', (SELECT m1.RealLecExpireDay FROM ' . $this->_table['mylecture'] . ' AS m1 
-                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode LIMIT 1) AS Period
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub = CA.ProdCode) AS Period
                 , (SELECT SUM(m1.StudyRate) FROM ' . $this->_table['mylecture'] . ' AS m1 
                     WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode) AS Percent
                 , (SELECT COUNT(*) FROM ' . $this->_table['mylecture'] . ' AS m1 

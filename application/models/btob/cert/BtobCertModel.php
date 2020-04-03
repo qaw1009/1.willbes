@@ -49,9 +49,9 @@ class BtobCertModel extends WB_Model
                 $column .= ', (SELECT m1.RealLecExpireDay FROM ' . $this->_table['mylecture'] . ' AS m1 
                     WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub = CA.ProdCode) AS Period
                 , (SELECT SUM(m1.StudyRate) FROM ' . $this->_table['mylecture'] . ' AS m1 
-                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode) AS Percent
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub <> m1.ProdCode) AS Percent
                 , (SELECT COUNT(*) FROM ' . $this->_table['mylecture'] . ' AS m1 
-                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode) AS count
+                    WHERE m1.OrderIdx = CA.OrderIdx AND m1.ProdCode = CA.ProdCode AND m1.ProdCodeSub <> m1.ProdCode) AS count
             ';
             }
 
@@ -84,7 +84,7 @@ class BtobCertModel extends WB_Model
         if ($is_count === 'excel') {
             $excel_column = 'ApplySeq, MemName, MemId, JoinDate, MemPhone, BirthDay, SexKr, AreaCcdName, BranchCcdName, RegDatm, TakeKindCcdName, ProdName, ApprovalStatus
                 , ApprovalAdminName, ApprovalDatm, ApprovalRejectAdminName, ApprovalRejectDatm, ApprovalCancelAdminName, ApprovalCancelDatm, ApprovalExpireDatm
-                , Period, ROUND((Percent/count), -1) AS avg_percent';
+                , Period, ROUND(Percent/count) AS avg_percent';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
             $query = 'select ' . $column . $from . $where . $order_by_offset_limit;

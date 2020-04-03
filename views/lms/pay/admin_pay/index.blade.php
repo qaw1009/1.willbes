@@ -104,19 +104,20 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="rowspan">선택</th>
-                    <th class="">No</th>
-                    <th class="rowspan">주문번호</th>
-                    <th class="rowspan">회원정보</th>
-                    <th class="rowspan">결제완료일</th>
-                    <th class="">상품구분</th>
-                    <th class="">상품명</th>
-                    <th class="">회차수</th>
-                    <th class="rowspan">결제상태</th>
-                    <th class="">결제금액</th>
-                    <th class="">수강시작일 (수강기간)</th>
-                    <th class="">부여사유유형</th>
-                    <th class="">상세부여사유</th>
+                    <th class="rowspan valign-middle">선택</th>
+                    <th class="valign-middle">No</th>
+                    <th class="rowspan valign-middle">주문번호</th>
+                    <th class="rowspan valign-middle">회원정보</th>
+                    <th class="rowspan valign-middle">결제완료일</th>
+                    <th class="valign-middle">상품구분</th>
+                    <th class="valign-middle">상품명</th>
+                    <th class="valign-middle">회차수</th>
+                    <th class="rowspan valign-middle">결제상태</th>
+                    <th class="valign-middle">결제금액</th>
+                    <th class="valign-middle">환불금액</th>
+                    <th class="valign-middle">수강시작일 (수강기간)</th>
+                    <th class="valign-middle">부여사유유형</th>
+                    <th class="valign-middle">상세부여사유</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -181,6 +182,9 @@
                     }},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
+                    }},
+                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
+                        return row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'LecStartDate', 'render' : function(data, type, row, meta) {
                         return data != null ? data + '<br/>(' + row.LecExpireDay + '일)' : '';

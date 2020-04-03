@@ -15,6 +15,7 @@
                         <li><a href="#Mypagetab2" id="tab2">단과반 ({{count($list)}})</a></li>
                     </ul>
                 </div>
+                <div id="_top"></div>
                 <div id="Mypagetab1">
                     {{--
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
@@ -338,6 +339,9 @@
                 $("#btn_assign_seat_"+pkg_yn+'_'+no).prop("disabled",true);
                 return;
             }
+            var offset = $("#_top").offset();
+            $('html, body').animate({scrollTop : offset.top}, 400);
+
             $("#seatChoice").html('');
             $('#pkg_yn').val(pkg_yn);
 

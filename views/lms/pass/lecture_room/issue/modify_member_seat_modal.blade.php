@@ -93,7 +93,6 @@
                             <li><span class="color-box {{$btn_type}}">-</span> {{$val}}</li>
                         @endforeach
                         <li><span class="color-box bg-orange">-</span> 해당회원</li>
-                        <li><span class="color-box bg-red">-</span> 퇴실</li>
                     </ul>
                 </div>
                 @if (empty($seat_data) === false)
@@ -109,10 +108,10 @@
                                     }
                                 } else {
                                     switch ($row['SeatStatusCcd']) {
-                                        case "727001" : $btn_type = 'bg-info'; break;
+                                        case "727001" : $btn_type = ''; break;
                                         case "727002" : $btn_type = 'bg-blue'; break;
                                         case "727003" : $btn_type = 'bg-gray-custom'; break;
-                                        default : $btn_type = 'bg-info';
+                                        default : $btn_type = '';
                                     }
                                 }
                             @endphp
@@ -128,9 +127,7 @@
                                         <p>{{ $row['MemName'] }}</p>
                                     @else
                                         <p>
-                                            @if ($row['LrrursIdx'] == $data['LrrursIdx'] && $data['MemSeatStatusCcd'] == '728003')
-                                                {{ $data['MemName'] }} (퇴실)
-                                            @elseif ($row['LrrursIdx'] == $data['LrrursIdx'] && $data['SeatStatusCcd'] == '728004')
+                                            @if ($row['LrrursIdx'] == $data['LrrursIdx'] && $data['SeatStatusCcd'] == '728004')
                                                 {{ $data['MemName'] }} (환불)
                                             @else
                                                 {{ $row['SeatStatusName'] }}
@@ -146,12 +143,15 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label class="control-label col-md-1-1">탈퇴처리
+            <label class="control-label col-md-1-1">퇴실처리
                 <input type="checkbox" class="flat" value="Y" id="is_seat_out" name="is_seat_out">
             </label>
             <div class="col-md-7 item">
                 <div class="form-inline">[설명] <input type="text" id="desc" name="desc" class="form-control" required="required" title="설명" style="width: 80%;">
                 </div>
+            </div>
+            <div class="col-md-12 mt-10">
+                <b>- 해당 회원 퇴실처리 시 좌석 재선택 불가능합니다. 신중하게 퇴실처리해 주세요.</b>
             </div>
         </div>
         <div class="form-group form-group-sm text-center mb-30">
@@ -180,13 +180,9 @@
                     </select>
                 </div>
 
-                <label class="control-label col-md-1" for="before_seat_no_modal">변경전 좌석</label>
+                <label class="control-label col-md-1" for="search_seat_no">좌석번호</label>
                 <div class="col-md-1 form-inline">
-                    <input type="text" class="form-control" id="before_seat_no_modal" name="before_seat_no" style="width: 50px;">
-                </div>
-                <label class="control-label col-md-1" for="search_value">변경후 좌석</label>
-                <div class="col-md-2 form-inline">
-                    <input type="text" class="form-control" id="after_seat_no" name="after_seat_no" style="width: 50px;">
+                    <input type="text" class="form-control" id="search_seat_no" name="search_seat_no" style="width: 50px;">
                 </div>
                 <div class="col-md-3 text-right">
                     <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
@@ -243,7 +239,13 @@
                             // 리스트 번호
                             return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'OrderProdIdx'},
+                    {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
+                            if (data == null) {
+                                return '';
+                            } else {
+                                return '<a href="{{ site_url('/pay/order/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                            }
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.MemName == null) ? '' : row.MemName + '(' + row.MemId + ')';
                         }},
@@ -265,7 +267,15 @@
 
             // 좌석선택
             $modal_regi_form.on('click', '.btn_choice_seat', function() {
-                /*$(this).toggleClass('btn-success');*/
+                if ($(".btn_choice_seat").hasClass('bg-green') === true) {
+                    $(".btn_choice_seat").removeClass('bg-green');
+                }
+                if ($(this).hasClass('bg-green') === true) {
+                    $(".btn_choice_seat").removeClass('bg-green');
+                } else {
+                    $(this).addClass('bg-green');
+                }
+
                 if ($('#lr_rurs_idx').val() == $(this).data('lr-rurs-idx')) {
                     $('#lr_rurs_idx').val('');
                     $('#choice_serial_num').val('');

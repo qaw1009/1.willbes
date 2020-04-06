@@ -7,9 +7,10 @@
     .evtCtnsBox img {width:100%; max-width:720px}
 
     .skybanner {
-        position:fixed;
-        bottom:20px;
-        right:10px;
+        position: absolute;
+        top:200px;
+        left:50%;
+        margin-left:-100px;
         z-index:1;
     }
 
@@ -63,6 +64,13 @@
  </style>   
 
     <div id="Container" class="Container NGR c_both">
+        <div class="skybanner" id="layerPop">
+            <img src="https://static.willbes.net/public/images/promotion/m/2014_popup.png" usemap="#Map2014" title="" border="0">
+            <map name="Map2014" id="Map2014">
+                <area shape="rect" coords="16,19,186,154" href="https://youtu.be/sBGMUCaAq6k" target="_blank" alt="유튜브" />
+                <area shape="rect" coords="172,159,200,184" href="#" onclick="closeWin('layerPop')" alt="닫기" />
+            </map>
+        </div>
         <!-- site nav -->
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/main/3114m_standby_01.jpg" title="">

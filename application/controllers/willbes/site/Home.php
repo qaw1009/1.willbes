@@ -363,6 +363,13 @@ class Home extends \app\controllers\FrontController
     private function _getSite2014Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
+        if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+            $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
+        }
+
         return $data;
     }
 

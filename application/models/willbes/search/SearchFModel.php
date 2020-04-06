@@ -16,14 +16,13 @@ class SearchFModel extends ProductFModel
      * @param $column
      * @param $arr_condition
      * @param $order_by
-     * @param $result_data
-     * @param $exec_query
+     * @param null $limit
+     * @return array|int
      */
-    public function findSearchProduct($learn_pattern, $column, $arr_condition, $order_by, &$result_data, &$exec_query)
+    public function findSearchProduct($learn_pattern, $column, $arr_condition, $order_by, $limit=null)
     {
-        $result_data = $this->listSalesProduct($learn_pattern, $column, $arr_condition, null,null, $order_by, '');
-        //$this->_conn->save_queries = TRUE;
-        $exec_query = $this->_conn->last_query();
+        $result_data = $this->listSalesProduct($learn_pattern, $column, $arr_condition, $limit,null, $order_by, '');
+        return $result_data;
     }
 
     /**
@@ -42,6 +41,7 @@ class SearchFModel extends ProductFModel
                 'UserAgent' => substr($this->agent->agent_string(),0,199),
                 'UserIp' => $this->input->ip_address(),
                 'SessId' => $this->session->userdata('make_sessionid'),
+                'SiteType' => APP_DEVICE,
         ]);
 
         try {

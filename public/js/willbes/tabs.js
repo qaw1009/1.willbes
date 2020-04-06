@@ -1,5 +1,9 @@
 $(function() {
-    $('ul.tabWrap').each(function () {
+    openTab('ul.tabWrap');
+});
+
+function openTab(selector) {
+    $(selector).each(function () {
         // For each set of tabs, we want to keep track of
         // which tab is active and it's associated content
         var $active, $content, $links = $(this).find('a');
@@ -34,7 +38,7 @@ $(function() {
             e.preventDefault();
         });
     });
-});
+}
 
 function openLink(tabId) {
     $('ul.tabWrap').find('#' + tabId).click();
@@ -142,7 +146,6 @@ $(function() {
     });
 });
 
-/* 검색 결과 탭*/
 $(function() {
     $('ul.searchListTap').each(function () {
         var $active, $content, $links = $(this).find('a');

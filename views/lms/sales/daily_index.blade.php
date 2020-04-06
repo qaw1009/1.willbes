@@ -92,11 +92,12 @@
                     <th rowspan="2" class="valign-middle">회원명</th>
                     <th rowspan="2" class="valign-middle">연락처</th>
                     <th rowspan="2" class="valign-middle">결제루트</th>
-                    <th colspan="5">결제금액</th>
+                    <th colspan="6">결제금액</th>
                 </tr>
                 <tr>
                     <th class="valign-middle">신용카드</th>
                     <th class="valign-middle">현금</th>
+                    <th class="valign-middle">윌비스<br/>계좌이체</th>
                     <th class="valign-middle">실시간<br/>계좌이체</th>
                     <th class="valign-middle">무통장입금</th>
                     <th class="valign-middle">합계</th>
@@ -105,6 +106,7 @@
                     <th colspan="12" class="text-center">합계</th>
                     <th id="t_card_trc_price" class="sumTh"></th>
                     <th id="t_cash_trc_price" class="sumTh"></th>
+                    <th id="t_wbank_trc_price" class="sumTh"></th>
                     <th id="t_bank_trc_price" class="sumTh"></th>
                     <th id="t_vbank_trc_price" class="sumTh"></th>
                     <th id="t_trc_price" class="sumTh"></th>
@@ -179,6 +181,9 @@
                     {'data' : 'CashTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
+                    {'data' : 'WBankTrcPrice', 'render' : function(data, type, row, meta) {
+                        return data == null ? '' : addComma(data);
+                    }},
                     {'data' : 'BankTrcPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '' : addComma(data);
                     }},
@@ -196,6 +201,7 @@
                 if (json.sum_data !== null) {
                     $('#t_card_trc_price').html(addComma(json.sum_data.tCardTrcPrice));
                     $('#t_cash_trc_price').html(addComma(json.sum_data.tCashTrcPrice));
+                    $('#t_wbank_trc_price').html(addComma(json.sum_data.tWBankTrcPrice));
                     $('#t_bank_trc_price').html(addComma(json.sum_data.tBankTrcPrice));
                     $('#t_vbank_trc_price').html(addComma(json.sum_data.tVBankTrcPrice));
                     $('#t_trc_price').html(addComma(json.sum_data.tTrcPrice));

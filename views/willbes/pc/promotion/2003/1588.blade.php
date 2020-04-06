@@ -120,51 +120,45 @@
             </div>        
         </div>           
 
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{-- 출석체크 --}}
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0" id="evt1" >
-                <map name="Map1588b" id="Map1588b">
-                    <area shape="rect" coords="370,974,751,1034" href="#to_go" />
-                </map>
-            </div>
-            <div class="evtCtnsBox evt03c">   
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
-                <map name="Map1588c" id="Map1588c">
-                    <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
-                    <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
-                    <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
-                    <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
-                </map>
+        {{-- 출석체크 --}}
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0" id="evt1" >
+            <map name="Map1588b" id="Map1588b">
+                <area shape="rect" coords="370,974,751,1034" href="#to_go" />
+            </map>
+        </div>
+        <div class="evtCtnsBox evt03c">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
+            <map name="Map1588c" id="Map1588c">
+                <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
+            </map>
 
-                @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-                {{--홍보url--}}
-                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                    @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
-                    @endif
-                @endif
-            </div>    
-            <div class="evtCtnsBox evt03ss">              
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0" id="evt3">
-                <map name="Map1588ss" id="Map1588ss">
-                    <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
-                    <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
-                </map>
-            </div>
-        @endif        
+            {{--홍보url--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
+            @endif
+        </div>
+        <div class="evtCtnsBox evt03ss">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0" id="evt3">
+            <map name="Map1588ss" id="Map1588ss">
+                <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
+            </map>
+        </div>
 
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{-- TODO --}}
-            {{-- 다시보기 구매 --}}
-            {{--
-            <div class="evtCtnsBox evt03ss">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.jpg" usemap="#Map1588d" title="지금 바로 구매하기" border="0">
-                <map name="Map1588d" id="Map1588d">
-                    <area shape="rect" coords="378,332,741,382" href="#none;" />
-                </map>
-            </div>
-            --}}
-        @endif
+        {{-- TODO --}}
+        {{-- 다시보기 구매 --}}
+        {{--
+        <div class="evtCtnsBox evt03ss">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.jpg" usemap="#Map1588d" title="지금 바로 구매하기" border="0">
+            <map name="Map1588d" id="Map1588d">
+                <area shape="rect" coords="378,332,741,382" href="#none;" />
+            </map>
+        </div>
+        --}}
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_04.jpg" usemap="#Map1588e" title="라이브 티비" border="0">
@@ -198,34 +192,30 @@
             @endforeach
         </form>
 
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{-- 출석체크 --}}
-            <div class="evtCtnsBox evt05" id="to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_05.jpg" title="출석 횟수">
-                <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
-                {{-- TODO --}}
-                @foreach($arr_base['add_apply_data'] as $row)
-                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
-                        @if($row['MemberLoginCnt'] == '0')
-                        <a href="javascript:fn_add_apply_submit();">
-                            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
-                        </a>
-                        @else
-                        <a href="javascript:alert('이미 출석체크 하셨습니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">
-                        </a>
-                        @endif
-                        @break;
+        {{-- 출석체크 --}}
+        <div class="evtCtnsBox evt05" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_05.jpg" title="출석 횟수">
+            <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
+            {{-- TODO --}}
+            @foreach($arr_base['add_apply_data'] as $row)
+                @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                    @if($row['MemberLoginCnt'] == '0')
+                    <a href="javascript:fn_add_apply_submit();">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
+                    </a>
+                    @else
+                    <a href="javascript:alert('이미 출석체크 하셨습니다.');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">
+                    </a>
                     @endif
-                @endforeach
-            </div>
-        @endif
+                    @break;
+                @endif
+            @endforeach
+        </div>
 
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{-- 이모티콘 댓글 --}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
-            @endif
+        {{-- 이모티콘 댓글 --}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
         @endif
 
         <div class="wb_ctsInfo">

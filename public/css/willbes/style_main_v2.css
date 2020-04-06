@@ -4,9 +4,11 @@
 .main .tx-color {
     color: #009ef5;
 }
-
-.mainV2 .gateSearch {width:920px !important; height:100px; margin:50px auto 0;}
-.mainV2 .gateSearch input[type=search] {border:2px solid #0396cf; width:740px; height:44px; line-height: 44px; color:#ccc; font-size:14px; float: left; padding-left:10px}
+.mainV2 .will-Tit {
+    font-size: 18px !important;
+}
+.mainV2 .gateSearch {width:820px !important; height:100px; margin:50px auto 0;}
+.mainV2 .gateSearch input[type=search] {border:2px solid #0396cf; width:620px; height:44px; line-height: 44px; color:#ccc; font-size:14px; float: left; padding-left:10px}
 .mainV2 .gateSearch input:focus {border:2px solid #0396cf !important; color:#333}
 .mainV2 .gateSearch button {width:180px; height:50px; font-size:0; text-indent: -9999px; float: left;
     background:#0396cf url("../../img/willbes/main/gate_seargh.png") no-repeat center center; 
@@ -14,129 +16,16 @@
 }
 .mainV2 .gateSearch:after {content: ""; display: block; clear: both;}
 
-.mainV2 .Area1 {background: #f0f4fa; padding:30px 0;}
-.mainV2 .Area1 h2 {font-size: 30px; text-align:center; font-weight:900;
-    -webkit-animation: bounce-left 0.8s alternate both;
-	        animation: bounce-left 0.8s alternate both;
-}
- @-webkit-keyframes bounce-left {
-    0% {
-      -webkit-transform: translateX(-48px);
-              transform: translateX(-48px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-      opacity: 1;
-    }
-    24% {
-      opacity: 1;
-    }
-    40% {
-      -webkit-transform: translateX(-26px);
-              transform: translateX(-26px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    65% {
-      -webkit-transform: translateX(-13px);
-              transform: translateX(-13px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    82% {
-      -webkit-transform: translateX(-6.5px);
-              transform: translateX(-6.5px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    93% {
-      -webkit-transform: translateX(-4px);
-              transform: translateX(-4px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    25%,
-    55%,
-    75%,
-    87%,
-    98% {
-      -webkit-transform: translateX(0px);
-              transform: translateX(0px);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-    }
-    100% {
-      -webkit-transform: translateX(0px);
-              transform: translateX(0px);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-      opacity: 1;
-    }
- }
- @keyframes bounce-left {
-    0% {
-      -webkit-transform: translateX(-48px);
-              transform: translateX(-48px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-      opacity: 1;
-    }
-    24% {
-      opacity: 1;
-    }
-    40% {
-      -webkit-transform: translateX(-26px);
-              transform: translateX(-26px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    65% {
-      -webkit-transform: translateX(-13px);
-              transform: translateX(-13px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    82% {
-      -webkit-transform: translateX(-6.5px);
-              transform: translateX(-6.5px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    93% {
-      -webkit-transform: translateX(-4px);
-              transform: translateX(-4px);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-    }
-    25%,
-    55%,
-    75%,
-    87%,
-    98% {
-      -webkit-transform: translateX(0px);
-              transform: translateX(0px);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-    }
-    100% {
-      -webkit-transform: translateX(0px);
-              transform: translateX(0px);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-      opacity: 1;
-    }
- }
-  
-  
-.mainV2 .Area1 h2 span {vertical-align: top; color:#0396cf}
-.mainV2 .Area1 .addList { width:920px; margin: 30px auto 0}
-.mainV2 .Area1 .addList li {display: inline; float:left; width: 20%; font-size: 14px;}
-.mainV2 .Area1 .addList a {display:block; text-align: center; background: #fff; border:1px solid #333; height: 44px; line-height: 44px; position: relative; margin-bottom: 10px;
-margin-right:10px}
-.mainV2 .Area1 .addList a span {display:none; position:absolute; top:10px; right:10px; font-size: 12px; width:20px; height: 20px; line-height: 20px; text-align: center; cursor: pointer;}
+.mainV2 .Area1 .addList { width:980px; margin: 0 auto; text-align:center;}
+.mainV2 .Area1 .addList li {display: inline; float: left; font-size: 14px;}
+.mainV2 .Area1 .addList a {display:block; width: 124px; text-align: center; background: #fff; border:1px solid #0396cf; height: 36px; line-height: 36px; 
+    position: relative; margin-bottom: 10px; margin-right:5px; border-radius: 10px;}
+.mainV2 .Area1 .addList a span {display:none; position:absolute; top:8px; right:5px; font-size:12px; width:20px; height: 20px; line-height: 20px; text-align: center; cursor: pointer;}
+.mainV2 .Area1 .addList a.blank {background: #f9f9f9; border:1px #ccc dashed;}
 .mainV2 .Area1 .addList a:hover span {display: block; background: #fff; color:#333; border-radius: 10px;}
-.mainV2 .Area1 .addList li:last-child a {background: #e6e6e6; font-weight: bold;}
-.mainV2 .Area1 .addList li:last-child a:hover,
-.mainV2 .Area1 .addList a:hover {background: #333; color:#fff}
+.mainV2 .Area1 .addList li:first-child a {background: #e6e6e6; font-weight: bold; width: 36px;; height: 36px; line-height: 36px; border-radius: 18px; font-size: 20px; background: #0396cf; color:#fff}
+.mainV2 .Area1 .addList li:first-child a:hover,
+.mainV2 .Area1 .addList a:hover {background: #000; color:#fff; border-color:#000}
 .mainV2 .Area1 .addList:after {content: ""; display: block; clear:both}
 
 .gate-add-popup .willbes-Layer-CartBox {height:auto;}
@@ -152,8 +41,8 @@ margin-right:10px}
 .gate-add-popup .addBtn {width: 180px; margin:30px auto}
 .gate-add-popup .addBtn a {display: block; color:#fff; background:#0396cf; text-align: center; height: 40px; line-height: 40px; font-size: 18px; font-weight: 900;}
 
-.mainV2 .bar-banner {overflow: hidden; width: 1120px; height: 110px;}
 
+.mainV2 .bar-banner {overflow: hidden; width: 900px; margin:0 auto}
 .mainV2 .bar-banner .bx-wrapper .bx-pager {
     float: right;
     width: auto;
@@ -182,45 +71,13 @@ margin-right:10px}
     background: #acacac;
 }
 
-.mainV2 .Area2 .ProcessBox ul { position: relative;}
-.mainV2 .Area2 .ProcessBox li {display: inline; float: left; width:20%;}
-.mainV2 .Area2 .ProcesGroup {padding:20px 30px; margin-bottom: 15px; margin-right: 10px; min-height:320px; color: #383838; border: 1px solid #eaeaea; transition: opacity .4s ease-in-out;}
-.mainV2 .Area2 .ProcessBox li:nth-child(5) .ProcesGroup {margin-right:0}
-.mainV2 .Area2 .ProcesGroup:hover {border: 1px solid #000; background: #f4f4f4;
-    -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
-    -moz-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
-    box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
-}
-.mainV2 .Area2 .ProcessBox li.half {height: 155px !important;}
-.mainV2 .Area2 .ProcessBox li.half .ProcesGroup {min-height:100%;}
-.mainV2 .Area2 .ProcessBox ul:hover li:not(:hover) {    
-    opacity: 0.5; 
-}
-.mainV2 .Area2 .ProcesGroup .wTit {
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 10px;
-    text-align: center;    
-}
-.mainV2 .Area2 .ProcesGroup .wTit img {margin-right: 5px;}
-.mainV2 .Area2 .ProcesGroup .wTxt {font-size: 12px;}
-.mainV2 .Area2 .ProcesGroup a {display: block; border:1px solid #d7d7d7; border-bottom:0; height: 30px; line-height: 30px; padding:0 15px; background: #fff;}
-.mainV2 .Area2 .ProcesGroup a span {font-size: 10px; color:#f10b0b; vertical-align: top; margin-top: -5px; float: right; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-@keyframes upDown{
-    from{color:#fff}
-    50%{color:#f10b0b}
-    to{color:#fff}
-    }
-@-webkit-keyframes upDown{
-    from{color:#fff}
-    50%{color:#f10b0b}
-    to{color:#fff}
-}
-.mainV2 .Area2 .ProcesGroup a:hover {background: #333; color:#fff; border:1px solid #333;}
-.mainV2 .Area2 .ProcesGroup a:last-child {border-bottom:1px solid #d7d7d7;}
-.mainV2 .Area2 .ProcesGroup a:last-child:hover {border-bottom:1px solid #333;}
-.mainV2 .Area2 .ProcessBox li:last-child { position: absolute; bottom:15px; right:0; width: 224px; height: 320px; z-index: 1;}
-.mainV2 .Area2 .ProcessBox ul:after {content: ""; display: block; clear:both}
+.mainV2 .Area2 tr {border-bottom:1px solid #cecece}
+.mainV2 .Area2 th { background: #f2f2f2; font-size: 18px; padding:24px 0; text-align: center; font-weight: bold;}
+.mainV2 .Area2 td {padding:0 10px}
+.mainV2 .Area2 td a {display: inline-block; font-size:16px; margin-right:40px; color:#747474}
+.mainV2 .Area2 td a:hover {color:#000;}
+.mainV2 .Area2 td a:last-child {margin-right:0}
+.mainV2 .Area2 td a img {vertical-align: top;}
 
 /* Main Container : Act2 */
 .mainV2 .Area3 .sliderDayList {
@@ -338,7 +195,7 @@ margin-right:10px}
 .mainV2 .Area6 .will-Tit {margin-bottom: 0;}
 .mainV2 .Area6 .CScenterBox {
     background: #fbfbfb;
-    padding: 30px 0 30px 110px;
+    padding: 30px 0 30px 90px;
     border:1px solid #e3e3e3; border-top:0;    
 }
 .mainV2 .Area6 .CScenterBox li {display: inline; float: left; font-size: 18px; line-height:32px;}

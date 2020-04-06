@@ -9,16 +9,15 @@
     </div>
 
     <div class="Section Area1 widthAuto">
-        <h2 class="NSK-Black">윌비스 <span>나의 관심분야</span></h2> 
         <ul class="addList">
+            <li><a href="#none" onclick="openWin('addArea')" class="add">+</a></li>
             <li><a href="#none">일반경찰<span>X</span></a></li>
             <li><a href="#none">9급공무원<span>X</span></a></li>
             <li><a href="#none">기술직<span>X</span></a></li>
             <li><a href="#none">법원직<span>X</span></a></li>
             <li><a href="#none">경찰간부<span>X</span></a></li>
-            <li><a href="#none">교원임용<span>X</span></a></li>
-            <li><a href="#none">군무원<span>X</span></a></li>
-            <li><a href="#none" onclick="openWin('addArea')" class="add">+ 추가</a></li>
+            <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>
+            <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>            
         </ul>
         {{--추가팝업--}}
         <div id="addArea" class="willbes-Layer-Black gate-add-popup">
@@ -79,12 +78,12 @@
         {{--//추가팝업--}}
     </div>
 
-    <div class="Section mt50">
+    <div class="Section mt40">
         <div class="widthAuto">
             <div class="bar-banner">
                 <div class="slider">
-                    <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
-                    <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
+                    <div><a href="none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/main_900x90_01.jpg"></a></div>
+                    <div><a href="none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/main_900x90_02.jpg"></a></div>
                 </div>
             </div>
         </div>
@@ -92,157 +91,99 @@
 
     <div class="Section Area2 mt50">
         <div class="widthAuto">
-            <div class="will-Tit">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-            <div class="ProcessBox">
-                <ul>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">9급 공무원</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">7급 공무원</a> 
-                                <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">7급PSAT</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3022" target="_blank">세무직</a>                                                               
-                                <a href="https://pass.willbes.net/home/index/cate/3025" target="_blank">법원직</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">소방직</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">기술직</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">군무원</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://police.willbes.net/home/index/cate/3001" target="_blank">일반경찰</a>
-                                <a href="https://police.willbes.net/home/index/cate/3002" target="_blank">경행경채</a>
-                                <a href="https://police.willbes.net/home/index/cate/3005" target="_blank">경찰승진</a>
-                                <a href="https://police.willbes.net/home/index/cate/3007" target="_blank">해양경찰</a>
-                                <a href="https://police.willbes.net/home/index/cate/3008" target="_blank">해양경찰특채</a> 
-                                <a href="https://police.willbes.net/home/index/cate/3100" target="_blank">경찰간부(간부후보생)</a> 
-                            </div> 
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes3.png') }}"> 교원임용
-                            </div>
-                            <div class="wTxt">
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">교육학</a>
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">유아.초등</a>
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">중등</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://gosi.willbes.net/home/index/cate/3094" target="_blank">5급행정(입법고시)</a>
-                                <a href="https://gosi.willbes.net/home/index/cate/3095" target="_blank">국립외교원</a>
-                                <a href="https://pass.willbes.net/home/index/cate/3096" target="_blank">PSAT</a>
-                                <a href="https://gosi.willbes.net/home/index/cate/3097" target="_blank">5급헌법</a>
-                                <a href="https://gosi.willbes.net/home/index/cate/3098" target="_blank">법원행시</a> 
-                                <a href="https://gosi.willbes.net/home/index/cate/3099" target="_blank">변호사</a>                         
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://job.willbes.net/home/index/cate/309002" target="_blank">공인노무사</a>
-                                <a href="https://job.willbes.net/home/index/cate/309003" target="_blank">감정평가사</a>
-                                <a href="https://job.willbes.net/home/index/cate/309004" target="_blank">변리사</a>  
-                                <a href="https://job.willbes.net/home/index/cate/309006" target="_blank">세무사</a>                             
-                                <a href="https://job.willbes.net/home/index/cate/309005" target="_blank">관세사</a>                                
-                                <a href="https://job.willbes.net/home/index/cate/309001" target="_blank">스포츠지도사</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 기타자격증
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://job.willbes.net/home/index/cate/308901" target="_blank">소방(산업)기사</a>
-                                <a href="https://job.willbes.net/home/index/cate/308902" target="_blank">전기(산업)기사</a>
-                                <a href="https://job.willbes.net/home/index/cate/310101" target="_blank">소프트웨어자산관리사</a>  
-                                <a href="https://job.willbes.net/home/index/cate/310102" target="_blank">경제교육지도사</a>                             
-                                <a href="https://job.willbes.net/home/index/cate/310103" target="_blank">진로직업체험지도사</a>                                
-                                <a href="https://job.willbes.net/home/index/cate/309101" target="_blank">한국사능력시험</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 나무경영 아카데미
-                            </div>
-                            <div class="wTxt">
-                                <a href="http://www.namucpa.com" target="_blank">회계사</a>
-                                <a href="http://www.namucpa.com" target="_blank">세무사</a>
-                                <a href="http://www.namucpa.com" target="_blank">관세사</a>  
-                            </div>
-                        </div>
-                    </li>
-                    <li class="half">
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://work.willbes.net/home/index/cate/3102" target="_blank">공기업</a>
-                            </div>
-                        </div>
-                    </li>                 
-                    <li class="half">
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes11.png') }}"> N잡
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">e-커머스 <span>NEW</span></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="half">
-                        
-                    </li> 
-                    <li class="half mt10">
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">G-TELP</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="half mt10">
-                        <div class="ProcesGroup">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes10.png') }}"> 학점은행
-                            </div>
-                            <div class="wTxt">
-                                <a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">학점은행</a>
-                            </div>
-                        </div>
-                    </li> 
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gate_bn_224x320.jpg" alt="배너명"></a>
-                    </li>                                                    
-                </ul>
+            <div class="will-Tit mb-zero">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
+            <div class="NSK">
+                <table>
+                    <col width="18%">
+                    <col width="">
+                    <col width="15%">
+                    <col width="">
+                    <col width="15%">
+                    <col width="">
+                    <tr>
+                        <th scope="row">공무원</th>
+                        <td colspan="5">
+                            <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">9급 공무원</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">7급 공무원</a> 
+                            <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">7급PSAT</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3022" target="_blank">세무직</a>                                                               
+                            <a href="https://pass.willbes.net/home/index/cate/3025" target="_blank">법원직</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">소방직</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">기술직</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">군무원 </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">경찰</th>
+                        <td colspan="5">
+                            <a href="https://police.willbes.net/home/index/cate/3001" target="_blank">일반경찰</a>
+                            <a href="https://police.willbes.net/home/index/cate/3002" target="_blank">경행경채</a>
+                            <a href="https://police.willbes.net/home/index/cate/3005" target="_blank">경찰승진</a>
+                            <a href="https://police.willbes.net/home/index/cate/3007" target="_blank">해양경찰</a>
+                            <a href="https://police.willbes.net/home/index/cate/3008" target="_blank">해양경찰특채</a> 
+                            <a href="https://police.willbes.net/home/index/cate/3100" target="_blank">경찰간부(간부후보생)</a> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">임용</th>
+                        <td colspan="3">
+                            <a href="http://ssam.willbes.net/main/index.html" target="_blank">교육학</a>
+                            <a href="http://ssam.willbes.net/main/index.html" target="_blank">유아.초등</a>
+                            <a href="http://ssam.willbes.net/main/index.html" target="_blank">중등</a>
+                        </td>
+                        <th>어학</th>
+                        <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">G-TELP</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">고등고시</th>
+                        <td colspan="5">
+                            <a href="https://gosi.willbes.net/home/index/cate/3094" target="_blank">5급행정(입법고시)</a>
+                            <a href="https://gosi.willbes.net/home/index/cate/3095" target="_blank">국립외교원</a>
+                            <a href="https://pass.willbes.net/home/index/cate/3096" target="_blank">PSAT</a>
+                            <a href="https://gosi.willbes.net/home/index/cate/3097" target="_blank">5급헌법</a>
+                            <a href="https://gosi.willbes.net/home/index/cate/3098" target="_blank">법원행시</a> 
+                            <a href="https://gosi.willbes.net/home/index/cate/3099" target="_blank">변호사</a>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">전문자격증</th>
+                        <td colspan="5">
+                            <a href="https://job.willbes.net/home/index/cate/309002" target="_blank">공인노무사</a>
+                            <a href="https://job.willbes.net/home/index/cate/309003" target="_blank">감정평가사</a>
+                            <a href="https://job.willbes.net/home/index/cate/309004" target="_blank">변리사</a>  
+                            <a href="https://job.willbes.net/home/index/cate/309006" target="_blank">세무사</a>                             
+                            <a href="https://job.willbes.net/home/index/cate/309005" target="_blank">관세사</a>                                
+                            <a href="https://job.willbes.net/home/index/cate/309001" target="_blank">스포츠지도사</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">기타자격증</th>
+                        <td colspan="5">
+                            <a href="https://job.willbes.net/home/index/cate/308901" target="_blank">소방(산업)기사</a>
+                            <a href="https://job.willbes.net/home/index/cate/308902" target="_blank">전기(산업)기사</a>
+                            <a href="https://job.willbes.net/home/index/cate/310101" target="_blank">소프트웨어자산관리사</a>  
+                            <a href="https://job.willbes.net/home/index/cate/310102" target="_blank">경제교육지도사</a>                             
+                            <a href="https://job.willbes.net/home/index/cate/310103" target="_blank">진로직업체험지도사</a>                                
+                            <a href="https://job.willbes.net/home/index/cate/309101" target="_blank">한국사능력시험</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">나무경영아카데미</th>
+                        <td colspan="5">
+                            <a href="http://www.namucpa.com" target="_blank">회계사</a>
+                            <a href="http://www.namucpa.com" target="_blank">세무사</a>
+                            <a href="http://www.namucpa.com" target="_blank">관세사</a> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">N잡</th>
+                        <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/common/icon_new.png"></a></td>
+                        <th>취업</th>
+                        <td><a href="https://work.willbes.net/home/index/cate/3102" target="_blank">공기업</a></td>
+                        <th>학점은행</th>
+                        <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">학점은행</a></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>    

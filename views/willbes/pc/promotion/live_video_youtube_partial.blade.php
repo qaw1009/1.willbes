@@ -2,7 +2,7 @@
     /*라이브영상*/
     #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center top;}
     .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
-    .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}
+    .embed-container {overflow:hidden; width:100%; min-height:551px; margin:0 auto}
     
     /*크롬*/
     @@media screen and (-webkit-min-device-pixel-ratio:0) {

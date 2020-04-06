@@ -29,131 +29,152 @@
             right:0;
             display:none;
             z-index:1;
-        }       
+        }
 
-        .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
+        .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top}
+        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+        @@keyframes upDown{
+             from{top:600px}
+             50%{top:620px}
+             to{top:600px}
+         }
+        @@-webkit-keyframes upDown{
+             from{top:600px}
+             50%{top:620px}
+             to{top:600px}
+         }
 
-        .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}        
+        .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
         .tabs {width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
         .tabs li a {display:block; text-align:center; font-size:16px; height:80px; line-height:80px; color:#999; font-weight:bold}
         .tabs li a:hover,
         .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
-        .tabs:after {content:""; display:block; clear:both}             
+        .tabs:after {content:""; display:block; clear:both}
 
-        .evt01 {background:#fff; padding:100px 0}         
+        .evt01 {background:#fff; padding:100px 0}
         .evt01 .dday {font-size:30px; position:absolute; top:430px; left:50%; width:940px; margin-left:-470px; text-align:center;}
         .evt01 .dday strong {font-size:40px}
         .evt01 .dday img {display:inline-block; margin:0 20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
-	        animation: vibrate-1 1s linear infinite both;
+            animation: vibrate-1 1s linear infinite both;
         }
         @@-webkit-keyframes vibrate-1 {
-            0% {
-                -webkit-transform: translate(0);
-                        transform: translate(0);
-            }
-            20% {
-                -webkit-transform: translate(-2px, 2px);
-                        transform: translate(-2px, 2px);
-            }
-            40% {
-                -webkit-transform: translate(-2px, -2px);
-                        transform: translate(-2px, -2px);
-            }
-            60% {
-                -webkit-transform: translate(2px, 2px);
-                        transform: translate(2px, 2px);
-            }
-            80% {
-                -webkit-transform: translate(2px, -2px);
-                        transform: translate(2px, -2px);
-            }
-            100% {
-                -webkit-transform: translate(0);
-                        transform: translate(0);
-            }
-        }
+             0% {
+                 -webkit-transform: translate(0);
+                 transform: translate(0);
+             }
+             20% {
+                 -webkit-transform: translate(-2px, 2px);
+                 transform: translate(-2px, 2px);
+             }
+             40% {
+                 -webkit-transform: translate(-2px, -2px);
+                 transform: translate(-2px, -2px);
+             }
+             60% {
+                 -webkit-transform: translate(2px, 2px);
+                 transform: translate(2px, 2px);
+             }
+             80% {
+                 -webkit-transform: translate(2px, -2px);
+                 transform: translate(2px, -2px);
+             }
+             100% {
+                 -webkit-transform: translate(0);
+                 transform: translate(0);
+             }
+         }
         @@keyframes vibrate-1 {
-            0% {
-                -webkit-transform: translate(0);
-                        transform: translate(0);
-            }
-            20% {
-                -webkit-transform: translate(-2px, 2px);
-                        transform: translate(-2px, 2px);
-            }
-            40% {
-                -webkit-transform: translate(-2px, -2px);
-                        transform: translate(-2px, -2px);
-            }
-            60% {
-                -webkit-transform: translate(2px, 2px);
-                        transform: translate(2px, 2px);
-            }
-            80% {
-                -webkit-transform: translate(2px, -2px);
-                        transform: translate(2px, -2px);
-            }
-            100% {
-                -webkit-transform: translate(0);
-                        transform: translate(0);
-            }
-        }
+             0% {
+                 -webkit-transform: translate(0);
+                 transform: translate(0);
+             }
+             20% {
+                 -webkit-transform: translate(-2px, 2px);
+                 transform: translate(-2px, 2px);
+             }
+             40% {
+                 -webkit-transform: translate(-2px, -2px);
+                 transform: translate(-2px, -2px);
+             }
+             60% {
+                 -webkit-transform: translate(2px, 2px);
+                 transform: translate(2px, 2px);
+             }
+             80% {
+                 -webkit-transform: translate(2px, -2px);
+                 transform: translate(2px, -2px);
+             }
+             100% {
+                 -webkit-transform: translate(0);
+                 transform: translate(0);
+             }
+         }
 
         .evt01 .dday span {color:#00c73c; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
         .evt01 .btnbuy {width:940px; margin:50px auto 0}
-        .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}  
-        .evt01 .btnbuy a:hover {background:#00c73c; 
+        .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
+        .evt01 .btnbuy a:hover {background:#00c73c;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
         @@-webkit-keyframes shadow-drop-2-center {
-            0% {
-                -webkit-transform: translateZ(0);
-                        transform: translateZ(0);
-                -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            }
-            100% {
-                -webkit-transform: translateZ(50px);
-                        transform: translateZ(50px);
-                -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-            }
-        }
+             0% {
+                 -webkit-transform: translateZ(0);
+                 transform: translateZ(0);
+                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+             }
+             100% {
+                 -webkit-transform: translateZ(50px);
+                 transform: translateZ(50px);
+                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+             }
+         }
         @@keyframes shadow-drop-2-center {
-            0% {
-                -webkit-transform: translateZ(0);
-                        transform: translateZ(0);
-                -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            }
-            100% {
-                -webkit-transform: translateZ(50px);
-                        transform: translateZ(50px);
-                -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-            }
-        }
-        
-        .evt02 {background:#f6f6f6; padding-top:100px}       
+             0% {
+                 -webkit-transform: translateZ(0);
+                 transform: translateZ(0);
+                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+             }
+             100% {
+                 -webkit-transform: translateZ(50px);
+                 transform: translateZ(50px);
+                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+             }
+         }
+
+        .evt02 {background:#f6f6f6; padding-top:100px}
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
         .evt03 {background:#fff;}
+        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
+        .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
+        .evt03 ul li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
+        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
+        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt03 ul li a:hover {background:#000; color:#fff}
+        .evt03 ul:after {content:""; display:block; clear:both}
+        .evt03 .evt03Txt01 {font-size:16px; line-height:1.4; margin-top:20px; letter-spacing:-1px; color:#333; padding-left:140px;}
+        .evt03 ul {width:900px; margin:0 auto}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
         .evt04 {background:#ececec; padding:100px 0}
         .evt04 img {border-bottom:1px solid #e4e4e4;}
         .evt04 h4 {color:#00c73c; font-size:18px}
-        .evt04 .columns {width:940px; margin:50px auto 0;  
+        .evt04 .columns {width:940px; margin:50px auto 0;
             column-count: 1;
             column-gap:20px;
         }
-        .evt04 .columns div {            
+        .evt04 .columns div {
             text-align:justify; font-size:14px; line-height:1.4;
-            display:inline-block; 
+            display:inline-block;
             padding:20px; border:1px solid #eee; border-radius:10px;
             margin-bottom:20px; color:#666; background:#fff;
         }
@@ -165,17 +186,17 @@
         .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
         .evt05 li a:hover {background:#fff; color:#000;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
         .evt05 li span {display:block; font-size:28px}
         .evt05 li:last-child a{margin-left:10px}
-        .evt05 ul:after {content:""; display:block; clear:both}        
-        
-        .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}  
+        .evt05 ul:after {content:""; display:block; clear:both}
+
+        .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
-        }          
+        }
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -222,7 +243,40 @@
 
         <div id="tab03">
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02.jpg" alt="커리큘럼" >               
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_01.jpg" alt="커리큘럼 안내" >
+                <ul>
+                    @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                        @php $i = 1; @endphp
+                        @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                            <li>
+                                <p>{{$i}}강 맛보기 수강 ▼</p>
+                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
+                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
+                            </li>
+                            @php $i += 1; @endphp
+                        @endforeach
+                    @else
+                        <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
+                        <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                    @endif
+                </ul>
+                {{--
+                <ul>
+                    <li>
+                        <p>1강 맛보기 수강 ▼</p>
+                        <a href="#none" class="btnst01">WIDE ></a>
+                        <a href="#none" class="btnst02">HIGH ></a>
+                        <a href="#none" class="btnst03">LOW ></a>
+                    </li>
+                    <li>
+                        <p>2강 맛보기 수강 ▼</p>
+                        <a href="#none" class="btnst01">WIDE ></a>
+                        <a href="#none" class="btnst02">HIGH ></a>
+                        <a href="#none" class="btnst03">LOW ></a>
+                    </li>
+                </ul>
+                --}}
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_02.jpg" alt="커리큘럼 안내" >
             </div>
         </div>
 

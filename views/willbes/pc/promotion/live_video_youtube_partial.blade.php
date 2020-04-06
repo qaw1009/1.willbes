@@ -8,7 +8,7 @@
     @@media screen and (-webkit-min-device-pixel-ratio:0) {
     #movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center center;}
     .embedWrap {position:relative; width:980px; height:551px; background:url(https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg) no-repeat center center;}
-    .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
+    .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; max-height:551px; margin:0 auto}
     .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
     .mobileCh li {display:inline; float:left; width:490px;}
     .mobileCh li a {display:block;}

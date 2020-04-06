@@ -6,6 +6,11 @@
         .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}    
         .evtCtnsBox > img {width:100%; max-width:1120px;}
         .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
+        .evtTop span {position:absolute; left:50%; margin-left:30%; top:30%; animation: sp01 1.5s linear infinite;}
+        .evtTop span img { width:70px}
+        @@keyframes sp01{
+            from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
 
         .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:100%; max-width:1120px; margin:0 auto;}
@@ -81,7 +86,16 @@
         .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff; padding-top:100px}
+        .evt03 {background:#fff;}
+        .evt03 ul {width:80%; max-width:900px; margin:0 auto}
+        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 0.5%; border-radius:10px; background:#353267; color:#fff; line-height:1.5}
+        .evt03 ul li p {font-size:16px; margin-bottom:15px; font-weight:600}
+        .evt03 ul li a {display:block; padding:8px 0; width:90px; text-align:center; font-size:14px; margin:0 auto 5px; border-radius:4px;}
+        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
+        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt03 ul li a:hover {background:#000; color:#fff}
+        .evt03 ul:after {content:""; display:block; clear:both}
 
         .evt04 {background:#ececec; padding:100px 0 50px}
         .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
@@ -159,32 +173,40 @@
 
         /* 태블릿 세로 */
         @@media only all and (min-width: 768px) {
+            .evtTop span {left:50%; margin-left:30%; top:35%;}
+            .evtTop span img { width:108px}
             .tabs li a {font-size:16px; padding:25px 0;}
             .evt01 .dday {font-size:1.2rem;}
             .evt01 .dday strong {font-size:1.75rem;}
             .evt01 .dday img {width:40px;}
             .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}           
             .evt02 .evt02Txt01 {font-size:1.5rem;}
-            .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}
+            .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}            
             .video-container-box {width:768px; margin:0 auto; padding:0}
+            .evt03 ul li {padding:20px 0; font-size:16px;}
+            .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
+            .evt03 ul li br {display:none}
+            .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;}
             .evt05 {padding-bottom:70px}
             .btnbuy br {display:none}
         }
 
         /* 태블릿 가로, PC */
         @@media only all and (min-width: 1024px) {
-            .evt01 .dday {font-size:2.0rem; top:50%;}
+            .evtTop span {left:50%; margin-left:23%; top:35%;}
+            .evt01 .dday {font-size:2.0rem; top:40%;}
             .evt01 .dday strong {font-size:2.5rem;}
             .evt01 .dday img {width:68px;}
             .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}            
             .evt02 .evt02Txt01 {font-size:1.75rem;}
             .evt02 .evt02Txt01 span {font-size:2rem; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
             .video-container-box {width:980px; margin:0 auto; padding:0}
+            .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;}
             .evt04 .columns {width:980px; margin:0 auto}
             .evt05 ul {width:940px; margin:0 auto;}
             .evt05 li a {font-size:24px;}
             .evt05 {padding-bottom:100px}
-        }       
+        }        
     </style>
 <div id="pass" style="display: none">
     <input type="checkbox" name="y_pkg" value="162745" checked/>
@@ -194,6 +216,7 @@
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
+        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span> 
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >    
         <div class="evtMenu">
             <ul class="tabs">
@@ -228,13 +251,32 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
         </div>
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >  
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >
         </div>  
     </div>  
 
     <div id="tab03">
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02.jpg" alt="커리큘럼" >              
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_01.jpg" alt="커리큘럼" >  
+            <ul>
+                @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @php $i = 1; @endphp
+                    @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                        {{-- <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>{{$i}}강 맛보기 수강 ></a></li> --}}
+                        <li>
+                            <p>{{$i}}강 맛보기 수강 ▼</p>
+                            {{--<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btnst01">WIDE ></a>--}}
+                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
+                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
+                        </li>
+                        @php $i += 1; @endphp
+                    @endforeach
+                @else
+                    <li>1강 맛보기<br>수강 준비중 ></li>
+                    <li>2강 맛보기<br>수강 준비중 ></li>
+                @endif
+            </ul>   
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_02.jpg" alt="커리큘럼" >          
         </div>
     </div>
 

@@ -233,7 +233,7 @@
                         </div>
                         <div class="chkBox-Save">
                             <div class="tx-gray">
-                                <strong>추후 접속 시 윌비스 통합 네비게이션 영역을</strong>
+                                <strong>추후 접속 시 통합 네비게이션 영역을</strong>
                             </div>
                             <span>
                                 <input type="radio" id="fold_gnb" name="gnb_size" value="sm" class="iptSave"{!! $_gnb_size == 'sm' ? ' checked="checked"' : '' !!}>

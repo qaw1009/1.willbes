@@ -127,7 +127,18 @@
                 <map name="Map1588b" id="Map1588b">
                     <area shape="rect" coords="370,974,751,1034" href="#to_go" />
                 </map>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" title="반반한 소문내기">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0">
+                <map name="Map1588c" id="Map1588c">
+                    <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
+                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0">
+                <map name="Map1588ss" id="Map1588ss">
+                    <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
+                </map>
             </div>
         @endif
 

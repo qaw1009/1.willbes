@@ -216,6 +216,7 @@
 <div id="Container" class="Container NG c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
+        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>
         <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >    
         <div class="evtMenu">
             <ul class="tabs">

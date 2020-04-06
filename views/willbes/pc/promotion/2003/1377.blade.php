@@ -60,7 +60,7 @@
             <map name="Map1377open" id="Map1377open">
                 <area shape="rect" coords="669,329,833,373" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161946" target="_blank" />
                 <area shape="rect" coords="668,446,832,495" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161947" target="_blank" />
-                <area shape="rect" coords="666,567,835,614" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161949" target="_blank" />
+                <area shape="rect" coords="666,567,835,614" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163564" target="_blank" />
                 <area shape="rect" coords="839,328,1001,376" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
                 <area shape="rect" coords="835,447,1003,493" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
                 <area shape="rect" coords="841,568,1001,613" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />

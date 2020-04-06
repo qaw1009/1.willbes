@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <!-- Container -->  
+    <!-- Container -->
     <link href="/public/css/willbes/style_2014_3114.css?ver={{time()}}" rel="stylesheet">
 
     <div id="Container" class="Container njob NGR c_both">
@@ -62,4 +62,6 @@
         </div>
     </div>
     <!-- End Container -->
+
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

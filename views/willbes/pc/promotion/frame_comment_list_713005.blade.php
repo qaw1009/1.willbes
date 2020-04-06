@@ -99,10 +99,6 @@
                             <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" /></div>                            
                         </li>
                     @endfor
-                    <li class="sel_icon">
-                        <div class="off" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character01_1.png" alt="" /></div>                        
-                        <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character01.png" alt="" /></div>                            
-                    </li>
                 </ul>
             @endif
         </div>

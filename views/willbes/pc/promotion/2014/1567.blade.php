@@ -186,7 +186,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_top.jpg" alt="창업 다마고치" >    
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab active">사전예약 이벤트</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>

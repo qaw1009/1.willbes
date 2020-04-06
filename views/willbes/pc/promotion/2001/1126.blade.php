@@ -105,9 +105,9 @@
         <div id="tab01" class="tabCts">
             <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
             <map name="Map1126A" id="Map1126A">
-                <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
+                <area shape="rect" coords="354,585,438,614" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1406" />
                 <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                <area shape="rect" coords="803,2450,884,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                <area shape="rect" coords="803,2450,884,2476" href="javascript:alert('Coming Soon')" />
             </map>
         </div>
         <div id="tab02" class="tabCts">

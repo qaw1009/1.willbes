@@ -157,7 +157,7 @@
             <div class=" tabContents" id="tab4">
                 <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_5.jpg"  alt="" usemap="#Map190214_c2" border="0"/>
                 <map name="Map190214_c2" >
-                    <area shape="rect" coords="235,483,484,580" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1325"  target="_blank"  alt="슈퍼패스"/>
+                    <area shape="rect" coords="235,483,484,580" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1542"  target="_blank"  alt="슈퍼패스"/>
                     <area shape="rect" coords="740,486,978,573" href="https://police.willbes.net/pass/consultManagement/index" target="_blank"  alt="1:1 심층상담" />
                 </map>                    
             </div>                
@@ -186,7 +186,7 @@
                         </a>
                     </li>
                     <li> 
-                        <a href="javascript:alert('곧 공개됩니다.');">
+                        <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1455">
                         <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" alt=""  />
                         </a>
                     </li>

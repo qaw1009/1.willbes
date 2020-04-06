@@ -29,7 +29,8 @@
         .slice_area {margin-top:-5px;}
         .evt01 {background:#f3f3f3}
         .evt01s {padding-top:80px; background:#f3f3f3}
-        .evt01s iframe{width:853px; height:480px; margin:50px auto 0}
+        .evt01s_youtube {background:#f3f3f3}
+        .evt01s_youtube iframe{width:853px; height:480px; margin:50px auto 0;}
         .evt01ss {padding-top:100px; background:#f3f3f3}
 
         .evt02 {background:#e7e7e7;padding-bottom:120px;}    
@@ -65,9 +66,9 @@
             <map name="Map1588_sky" id="Map1588_sky">
                 <area shape="rect" coords="8,116,154,189" href="#youtube_watch" />
                 <area shape="rect" coords="8,202,154,272" href="#detail" />
-                <area shape="rect" coords="8,276,154,350" href="javascript:alert('준비중입니다.')"/>
-                <area shape="rect" coords="8,357,154,434" href="javascript:alert('준비중입니다.')"/>
-                <area shape="rect" coords="5,436,155,535" href="javascript:alert('준비중입니다.')"/>
+                <area shape="rect" coords="8,276,154,350" href="#evt1"/>
+                <area shape="rect" coords="8,357,154,434" href="#evt2"/>
+                <area shape="rect" coords="5,436,155,535" href="#evt3"/>
             </map>
         </div>              
 
@@ -97,7 +98,10 @@
             <map name="Map1588a" id="Map1588a">
                 <area shape="rect" coords="359,844,751,907" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?view=0&sort=dd&shelf_id=7" target="_blank" />
             </map>
-            <iframe src="https://www.youtube.com/embed/qvIFtFYt20M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>    
+        </div>     
+
+        <div class="evtCtnsBox evt01s_youtube">  
+            <iframe src="https://www.youtube.com/embed/qvIFtFYt20M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
         </div>
 
         <div class="evtCtnsBox evt01ss">
@@ -114,29 +118,40 @@
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_right.png"></a></p>
             </div>        
-        </div>
-
-        <div class="evtCtnsBox evt_soon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_soon.jpg" title="커밍쑨">        
-        </div>
+        </div>           
 
         @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
             {{-- 출석체크 --}}
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0" id="evt1" >
                 <map name="Map1588b" id="Map1588b">
                     <area shape="rect" coords="370,974,751,1034" href="#to_go" />
                 </map>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" title="반반한 소문내기">
             </div>
-        @endif
+            <div class="evtCtnsBox evt03c">   
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
+                <map name="Map1588c" id="Map1588c">
+                    <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
+                </map>
 
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
-            @endif
-        @endif
+                @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+                {{--홍보url--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
+                    @endif
+                @endif
+            </div>    
+            <div class="evtCtnsBox evt03ss">              
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0" id="evt3">
+                <map name="Map1588ss" id="Map1588ss">
+                    <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
+                </map>
+            </div>
+        @endif        
 
         @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
             {{-- TODO --}}
@@ -154,9 +169,9 @@
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_04.jpg" usemap="#Map1588e" title="라이브 티비" border="0">
             <map name="Map1588e" id="Map1588e">
-                <area shape="rect" coords="123,27,396,126" href="#pairing" />
-                <area shape="rect" coords="436,24,711,126" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" />
+                <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
+                <area shape="rect" coords="436,24,711,126" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" onfocus='this.blur()' />
+                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" onfocus='this.blur()' />
             </map>      
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')

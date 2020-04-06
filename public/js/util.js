@@ -886,7 +886,7 @@ function goFullSearch($form){
     if($search_text.val().length < 2) {
         alert("검색어를 두글자 이상 입력해 주세요."); return;
     }
-    $($search_form).prop('action', frontUrl('/search/result'+($("input[name=cate]", $($search_form)).length > 0 ? '/cate/'+$("input[name=cate]", $($search_form)).val() : '')));
+    $($search_form).prop('action', frontUrl('/search/result/'));
     $($search_form).submit();
 }
 

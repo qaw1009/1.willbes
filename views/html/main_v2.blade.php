@@ -11,11 +11,11 @@
     <div class="Section Area1 widthAuto">
         <ul class="addList">
             <li><a href="#none" onclick="openWin('addArea')" class="add">+</a></li>
-            <li><a href="#none">일반경찰<span>X</span></a></li>
-            <li><a href="#none">9급공무원<span>X</span></a></li>
-            <li><a href="#none">기술직<span>X</span></a></li>
-            <li><a href="#none">법원직<span>X</span></a></li>
-            <li><a href="#none">경찰간부<span>X</span></a></li>
+            <li><a href="#none">일반경찰</a></li>
+            <li><a href="#none">9급공무원</a></li>
+            <li><a href="#none">기술직</a></li>
+            <li><a href="#none">법원직</a></li>
+            <li><a href="#none">경찰간부</a></li>
             <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>
             <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>            
         </ul>

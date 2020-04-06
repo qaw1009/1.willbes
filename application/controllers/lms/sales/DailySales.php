@@ -165,7 +165,7 @@ class DailySales extends \app\controllers\BaseController
         $search_start_date = $search_start_date . ' ' . $search_start_hour . ':00:00';
         $search_end_date = $search_end_date . ' ' . $search_end_hour . ':59:59';
         $excel_column = 'OrderNo, CertNo, left(TrcDatm, 10) as TrcDate, right(TrcDatm, 8) as TrcTime, LearnProdTypeCcdName, LgCateName, CampusCcdName, ProdCode, ProdName
-            , MemName, MemId, MemPhone, PayRouteCcdName, CardTrcPrice, CashTrcPrice, BankTrcPrice, VBankTrcPrice, TrcPrice';
+            , MemName, MemId, MemPhone, PayRouteCcdName, CardTrcPrice, CashTrcPrice, WBankTrcPrice, BankTrcPrice, VBankTrcPrice, TrcPrice';
         $order_by = $this->_getListOrderBy(true);
         $results = $this->orderSalesModel->listDailySalesOrder($search_start_date, $search_end_date, $search_site_code, 'excel', $arr_condition, null, null, $order_by, $excel_column);
         $last_query = $this->orderSalesModel->getLastQuery();
@@ -177,14 +177,14 @@ class DailySales extends \app\controllers\BaseController
         $results[] = [
             'OrderNo' => '합계', 'CertNo' => '', 'TrcDate' => '', 'TrcTime' => '', 'LearnProdTypeCcdName' => '', 'LgCateName' => '', 'CampusCcdName' => '', 'ProdCode' => '', 'ProdName' => '',
             'MemName' => '', 'MemId' => '', 'MemPhone' => '', 'PayRouteCcdName' => '', 'CardTrcPrice' => $sum_data['tCardTrcPrice'], 'CashTrcPrice' => $sum_data['tCashTrcPrice'],
-            'BankTrcPrice' => $sum_data['tBankTrcPrice'], 'VBankTrcPrice' => $sum_data['tVBankTrcPrice'], 'TrcPrice' => $sum_data['tTrcPrice']
+            'WBankTrcPrice' => $sum_data['tWBankTrcPrice'], 'BankTrcPrice' => $sum_data['tBankTrcPrice'], 'VBankTrcPrice' => $sum_data['tVBankTrcPrice'], 'TrcPrice' => $sum_data['tTrcPrice']
         ];
 
         // 엑셀 설정
         $file_name = '학원매출일계표_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
         $headers = ['주문번호', '수강번호', '발생일자', '발생시간', '상품구분', '대분류', '캠퍼스', '상품코드', '상품명', '회원명', '회원아이디', '연락처', '결제루트'
-            , '신용카드', '현금', '실시간계좌이체', '무통장입금', '합계'];
-        $numerics = ['CardTrcPrice', 'CashTrcPrice', 'BankTrcPrice', 'VBankTrcPrice', 'TrcPrice'];    // 숫자형 변환 대상 컬럼
+            , '신용카드', '현금', '윌비스계좌이체', '실시간계좌이체', '무통장입금', '합계'];
+        $numerics = ['CardTrcPrice', 'CashTrcPrice', 'WBankTrcPrice', 'BankTrcPrice', 'VBankTrcPrice', 'TrcPrice'];    // 숫자형 변환 대상 컬럼
 
         // download log
         $this->load->library('approval');

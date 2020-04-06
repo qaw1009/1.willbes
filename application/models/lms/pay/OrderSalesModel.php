@@ -433,9 +433,8 @@ class OrderSalesModel extends BaseOrderModel
             $column = 'count(*) AS numrows';
         } else {
             if ($is_count === 'sum') {
-                $column = 'sum(ifnull(U.TrcPrice, 0)) as tTrcPrice
-                    , sum(ifnull(U.CardTrcPrice, 0)) as tCardTrcPrice, sum(ifnull(U.CashTrcPrice, 0)) as tCashTrcPrice
-                    , sum(ifnull(U.BankTrcPrice, 0)) as tBankTrcPrice, sum(ifnull(U.VBankTrcPrice, 0)) as tVBankTrcPrice';
+                $column = 'sum(ifnull(U.TrcPrice, 0)) as tTrcPrice, sum(ifnull(U.CardTrcPrice, 0)) as tCardTrcPrice, sum(ifnull(U.CashTrcPrice, 0)) as tCashTrcPrice
+                    , sum(ifnull(U.WBankTrcPrice, 0)) as tWBankTrcPrice, sum(ifnull(U.BankTrcPrice, 0)) as tBankTrcPrice, sum(ifnull(U.VBankTrcPrice, 0)) as tVBankTrcPrice';
             } else {
                 $column = 'U.*
                     , SC.CateName, SGC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CCA.CcdName as CampusCcdName, CLPT.CcdName as LearnProdTypeCcdName';
@@ -448,9 +447,10 @@ class OrderSalesModel extends BaseOrderModel
                 select BO.OrderIdx, BO.OrderNo, BO.SiteCode, BO.MemIdx, BO.OrderProdIdx, BO.ProdCode, BO.PayRouteCcd, BO.PayMethodCcd, BO.SalePatternCcd
                     , BO.TrcDatm, BO.TrcStatusCode, BO.TrcPrice
                     , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['card'] . '", "' . $this->_pay_method_ccd['visit_card'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '", "' . $this->_pay_method_ccd['admin_pay'] . '", ""), BO.CardTrcPrice, null) as CardTrcPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['willbes_bank'] . '", "' . $this->_pay_method_ccd['visit_cash'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '"), BO.CashTrcPrice, null) as CashTrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['visit_cash'] . '", "' . $this->_pay_method_ccd['visit_card_cash'] . '"), BO.CashTrcPrice, null) as CashTrcPrice
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['willbes_bank'] . '"), BO.CashTrcPrice, null) as WBankTrcPrice              
                     , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['direct_bank'] . '"), BO.CardTrcPrice, null) as BankTrcPrice
-                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['vbank'] . '"), BO.CardTrcPrice, null) as VBankTrcPrice	
+                    , if(BO.PayMethodCcd in ("' . $this->_pay_method_ccd['vbank'] . '"), BO.CardTrcPrice, null) as VBankTrcPrice
                     , OOI.CertNo
                     , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
                     , ifnull(PL.LearnPatternCcd, P.ProdTypeCcd) as LearnProdTypeCcd

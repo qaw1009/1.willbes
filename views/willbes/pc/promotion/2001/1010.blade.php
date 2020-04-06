@@ -186,7 +186,7 @@
                     </table>
                     <ul class="mt30">
                         <li><a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1075') }}" target="_blank">일반/101단 기출해설 수강하기</a></li>
-                        <li><a href="{{ site_url('/lecture/index/cate/3002/pattern/free?course_idx=1075') }}" target="_blank">경행경체 기출해설 수강하기</a></li>
+                        <li><a href="{{ site_url('/lecture/index/cate/3002/pattern/free?course_idx=1075') }}" target="_blank">경행경채 기출해설 수강하기</a></li>
                     </ul>
                 </div>
 

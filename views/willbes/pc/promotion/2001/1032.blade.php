@@ -373,7 +373,7 @@
             <map name="Map" id="Map">
                 <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="신광은경찰PASS"/>
                 <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
-                <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/promotion/index/cate/3006/code/1008') }}" target="_blank" alt="경찰승진PASS"/>
+                <area shape="rect" coords="678,968,779,1014" href="https://police.willbes.net/home/index/cate/3006" target="_blank" alt="경찰승진PASS"/>
                 <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>
             </map>
         </div><!--wb_05//-->

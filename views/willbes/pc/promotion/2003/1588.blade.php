@@ -134,20 +134,21 @@
                     <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
                 </map>
+
+                @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
+                {{--홍보url--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
+                    @endif
+                @endif
+                
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0">
                 <map name="Map1588ss" id="Map1588ss">
                     <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
                 </map>
             </div>
-        @endif
-
-        @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
-            @endif
-        @endif
+        @endif        
 
         @if(ENVIRONMENT != 'production' || date('YmdHi') >= '202004130000')
             {{-- TODO --}}

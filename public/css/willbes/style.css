@@ -1342,7 +1342,7 @@ table.auTable tr td {
     color: #363636;
     border-bottom: 1px solid #000;
     line-height: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
 }
 .Section .will-Tit span {
     vertical-align: baseline;

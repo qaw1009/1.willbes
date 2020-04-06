@@ -19,13 +19,12 @@
 .mainV2 .Area1 .addList { width:980px; margin: 0 auto; text-align:center;}
 .mainV2 .Area1 .addList li {display: inline; float: left; font-size: 14px;}
 .mainV2 .Area1 .addList a {display:block; width: 124px; text-align: center; background: #fff; border:1px solid #0396cf; height: 36px; line-height: 36px; 
-    position: relative; margin-bottom: 10px; margin-right:5px; border-radius: 10px;}
-.mainV2 .Area1 .addList a span {display:none; position:absolute; top:8px; right:5px; font-size:12px; width:20px; height: 20px; line-height: 20px; text-align: center; cursor: pointer;}
+    margin-bottom: 10px; margin-right:10px; border-radius: 10px;}
 .mainV2 .Area1 .addList a.blank {background: #f9f9f9; border:1px #ccc dashed;}
-.mainV2 .Area1 .addList a:hover span {display: block; background: #fff; color:#333; border-radius: 10px;}
 .mainV2 .Area1 .addList li:first-child a {background: #e6e6e6; font-weight: bold; width: 36px;; height: 36px; line-height: 36px; border-radius: 18px; font-size: 20px; background: #0396cf; color:#fff}
 .mainV2 .Area1 .addList li:first-child a:hover,
 .mainV2 .Area1 .addList a:hover {background: #000; color:#fff; border-color:#000}
+.mainV2 .Area1 .addList li:last-child a {margin-right:0}
 .mainV2 .Area1 .addList:after {content: ""; display: block; clear:both}
 
 .gate-add-popup .willbes-Layer-CartBox {height:auto;}

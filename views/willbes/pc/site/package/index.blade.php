@@ -144,66 +144,62 @@
                 <div class="willbes-Lec-Line">-</div>
                 <!-- willbes-Lec-Line -->
 
-                <div class="willbes-Lec-Table d_block">
-                    <table cellspacing="0" cellpadding="0" class="lecTable">
-                        <colgroup>
-                            <col style="width: 140px;">
-                            <col>
-                            <col style="width: 180px;">
-                        </colgroup>
-                        <tbody>
-
-                        @foreach($data['list'] as $row)
-                        <tr>
-                            <td class="w-list bg-light-white pl10 pr10">{{$row['CourseName']}}</td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">
-                                    <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
-                                </div>
-                                <dl class="w-info">
-                                    <dt class="mr20">
-                                        <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package')">
-                                            <strong class="open-info-modal">패키지상세정보</strong>
-                                        </a>
-                                    </dt>
-                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-notice">
-                            @if(empty($row['ProdPriceData'] ) === false)
-                                @foreach($row['ProdPriceData'] as $price_row)
-                                    @if($loop -> index === 1)
-                                    <div class="priceWrap">
-                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
-                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                    </div>
+                @foreach($data['list'] as $row)
+                    <div class="willbes-Lec-Table d_block">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
+                            <colgroup>
+                                <col style="width: 140px;">
+                                <col>
+                                <col style="width: 180px;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class="w-list bg-light-white pl10 pr10">{{$row['CourseName']}}</td>
+                                    <td class="w-data tx-left pl25">
+                                        <div class="w-tit">
+                                            <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                        </div>
+                                        <dl class="w-info">
+                                            <dt class="mr20">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package')">
+                                                    <strong class="open-info-modal">패키지상세정보</strong>
+                                                </a>
+                                            </dt>
+                                            <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                            <dt class="NSK ml15">
+                                                <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
+                                            </dt>
+                                        </dl>
+                                    </td>
+                                    <td class="w-notice">
+                                    @if(empty($row['ProdPriceData'] ) === false)
+                                        @foreach($row['ProdPriceData'] as $price_row)
+                                            @if($loop -> index === 1)
+                                            <div class="priceWrap">
+                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                            </div>
+                                            @endif
+                                        @endforeach
                                     @endif
-                                @endforeach
-                            @endif
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <!-- lecTable -->
-                </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- lecTable -->
+                    </div>
+                @endforeach
+
                 <!-- willbes-Lec-Table -->
+                <div id="InfoForm" class="willbes-Layer-Box"></div>
 
                 <div class="TopBtn">
                     <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                 </div>
                 <!-- TopBtn-->
             </div>
-            <!-- willbes-Lec -->
-
-            <div id="InfoForm" class="willbes-Layer-Box d2"></div>
-
-            <!-- willbes-Layer-Box -->
         </div>
         {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 

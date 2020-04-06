@@ -87,7 +87,7 @@ class ProductFModel extends WB_Model
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
                             , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
                             , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum, IsOpenStudyComment, AppellationCcdName 
-                            , ProfNickNameAppellation, wAttachFileReal, wAttachFile, wAttachPath, LecTypeCcd';
+                            , ProfNickNameAppellation, wAttachFileReal, wAttachFile, wAttachPath, LecTypeCcd, SiteUrl, SiteName, ProdCateName';
                         
                         // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                         if ($learn_pattern == 'on_free_lecture') {
@@ -117,7 +117,9 @@ class ProductFModel extends WB_Model
                 //추천-선택 패키지
                 case 'adminpack_lecture' :
                         $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
-                            , CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
+                            , CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData
+                            , SiteUrl, SiteName, ProdCateName
+                            ';
                     break;
 
                 //사용자패키지

@@ -32,6 +32,17 @@
         }       
 
         .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top} 
+        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+        @@keyframes upDown{
+        from{top:600px}
+        50%{top:620px}
+        to{top:600px}
+        }
+        @@-webkit-keyframes upDown{
+        from{top:600px}
+        50%{top:620px}
+        to{top:600px}
+        }
 
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}        
         .tabs {width:1120px; margin:0 auto;}
@@ -142,6 +153,16 @@
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
         .evt03 {background:#fff;}
+        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
+        .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
+        .evt03 ul li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}        
+        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
+        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt03 ul li a:hover {background:#000; color:#fff}
+        .evt03 ul:after {content:""; display:block; clear:both} 
+        .evt03 .evt03Txt01 {font-size:16px; line-height:1.4; margin-top:20px; letter-spacing:-1px; color:#333; padding-left:140px;}
+        .evt03 ul {width:900px; margin:0 auto}
         .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
 
         .evt04 {background:#ececec; padding:100px 0}
@@ -185,6 +206,7 @@
 
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
+            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>  
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >     
             <div class="evtMenu">
                 <ul class="tabs">

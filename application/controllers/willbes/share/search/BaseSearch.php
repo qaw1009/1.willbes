@@ -27,9 +27,6 @@ class BaseSearch extends \app\controllers\FrontController
      */
     public function result($params=[])
     {
-
-        $config['allow_any_cors_domain'] = TRUE;
-
         $arr_search_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $common_condition = [
             'EQ' => [
@@ -45,6 +42,8 @@ class BaseSearch extends \app\controllers\FrontController
         ];
 
         $order_by = empty(element('searchfull_order',$arr_search_input)) ? ['ProdCode'=>'DESC'] : [element('searchfull_order',$arr_search_input)=>'DESC'];
+        $order_by_pack = ['ProdCode'=>'DESC'];
+
         $data = [];
         $total_cnt = 0;
         $limit = ($this->_site_code === '2000' ? '200' : null);
@@ -57,10 +56,10 @@ class BaseSearch extends \app\controllers\FrontController
             $data_free_lecture = $this->searchFModel->findSearchProduct('on_free_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
 
             //추천패키지
-            $data_adminpack_lecture_648001= $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648001']]), $order_by,$limit);
+            $data_adminpack_lecture_648001= $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648001']]), $order_by_pack,$limit);
 
             //선택패키지
-            $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by,$limit);
+            $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by_pack,$limit);
 
             /*
              *로그 저장

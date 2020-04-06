@@ -51,8 +51,8 @@
         <div class="evtCtnsBox wb_cts04" id="table">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_04.png"  alt="구매하기" usemap="#link2" />
             <map name="link2" >
-                <area shape="rect" coords="118,675,264,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131276') }}" onfocus='this.blur()' alt="김현정" target="_blink"/>
-                <area shape="rect" coords="417,675,562,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131733') }}" onfocus='this.blur()' alt="김준기" target="_blink"/>
+                <area shape="rect" coords="118,675,264,711" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156308" onfocus='this.blur()' alt="김현정" target="_blink"/>
+                <area shape="rect" coords="417,675,562,711" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156304" onfocus='this.blur()' alt="김준기" target="_blink"/>
                 <area shape="rect" coords="716,675,862,711" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149405') }}" onfocus='this.blur()' alt="패키지 " target="_blink"/>
             </map>
         </div>

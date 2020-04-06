@@ -31,6 +31,7 @@
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
+
     @@-webkit-keyframes shadow-drop-2-center {
         0% {
             -webkit-transform: translateZ(0);

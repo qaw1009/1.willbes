@@ -10,7 +10,6 @@
     .character .crtTab:after {content:""; display:block; clear:both}*/
     .character .characterImg {margin-bottom:20px}
     .character .characterImg li {display:block; float:left; width:7.6923%; text-align:center; height:80px; line-height:80px; margin:5px auto; cursor:pointer; position:relative}
-    .character .characterImg li input {position:absolute; top:0; left:0}
     .character .characterImg li img {width:73px; margin:0 auto;}
     .character .characterImg li img.on {display:none}
     .character .characterImg li img.off {display:block}
@@ -20,13 +19,12 @@
     .character .characterImg:after {content:""; display:block; clear:both}
 
     .character .characterImg2 {margin-bottom:20px}
-    .character .characterImg2 li {position:relative; display:block; float:left; width:12.5%; padding:10px 0; text-align:center; margin:5px auto; cursor:pointer; }
-    .character .characterImg2li input {position:absolute; top:0; left:0}
-    .character .characterImg2 li img {width:73px; margin:0 auto;}
-    .character .characterImg2 li img.on {display:none}
-    .character .characterImg2 li img.off {display:block}
-    .character .characterImg2 li:hover img.on {display:block; position:absolute; width:154px; top:50%; left:50%; border:2px solid #1087ef; background:#fff; box-shadow:2px 2px 4px rgba(0,0,0,.5); z-index:10}
-    .character .characterImg2 li:hover,
+    .character .characterImg2 li {position:relative; display:block; float:left; width:12.5%; text-align:center; margin:5px auto; }
+    .character .characterImg2 li .off {padding:10px 0; cursor:pointer; }
+    .character .characterImg2 li .on {display:none}
+    .character .characterImg2 li .on img {width:154px;}
+    .character .characterImg2 li:hover .on {display:block; position:absolute; width:154px; height:154px; top:50%; left:50%; border:2px solid #1087ef; background:#fff; box-shadow:2px 2px 4px rgba(0,0,0,.5); z-index:10}
+    .character .characterImg2 li div:hover,
     .character .characterImg2 li.active {background:#cde7f5}
     .character .characterImg2:after {content:""; display:block; clear:both}
 
@@ -97,10 +95,14 @@
                 <ul class="characterImg2">
                     @for ($i=1; $i<=8; $i++)
                         <li class="sel_icon" id="character_{{$i}}">
-                            <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
-                            <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
+                            <div class="off" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" /></div>                        
+                            <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" /></div>                            
                         </li>
                     @endfor
+                    <li class="sel_icon">
+                        <div class="off" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character01_1.png" alt="" /></div>                        
+                        <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character01.png" alt="" /></div>                            
+                    </li>
                 </ul>
             @endif
         </div>

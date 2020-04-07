@@ -5,6 +5,7 @@
     <div id="Container" class="Container cop_acad NGR c_both">
         @include('willbes.pc.layouts.partial.site_menu')
 
+        {{--
         <div class="Section Bnr mt40">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
@@ -14,6 +15,7 @@
                 </div>
             </div>
         </div>
+        --}}
 
         <div class="Section MainVisual MainVisual_acad mb20 mt20">
             <div class="widthAuto">

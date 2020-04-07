@@ -1277,9 +1277,9 @@ class OrderListModel extends BaseOrderModel
         $data = element('0', $data);
 
         // 독서실 사용 시작일/종료일 조회
-        $arr_condition = ['EQ' => ['RM.NowOrderIdx' => $order_idx, 'R.ProdCode' => $data['ProdCode']]];
-        $add_data = $this->_conn->getJoinFindResult($this->_table['readingroom_mst'] . ' as RM', 'inner', $this->_table['readingroom'] . ' as R'
-            , 'RM.LrIdx = R.LrIdx', 'RM.UseStartDate, RM.UseEndDate', $arr_condition
+        $arr_condition = ['EQ' => ['RD.NowOrderIdx' => $order_idx, 'R.ProdCode' => $data['ProdCode']]];
+        $add_data = $this->_conn->getJoinFindResult($this->_table['readingroom_usedetail'] . ' as RD', 'inner', $this->_table['readingroom'] . ' as R'
+            , 'RD.LrIdx = R.LrIdx', 'min(RD.UseStartDate) as UseStartDate, max(RD.UseEndDate) as UseEndDate', $arr_condition
         );
         if (empty($add_data) === true) {
             return '독서실 사용기간 조회에 실패했습니다.';

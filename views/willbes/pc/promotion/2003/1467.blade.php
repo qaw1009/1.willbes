@@ -105,7 +105,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/1ㄹ2/1467_03.jpg" title="기특한국어커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_03.jpg" title="기특한국어커리큘럼" />
         </div>
 
         <div class="evtCtnsBox evt04" id="lec_go">

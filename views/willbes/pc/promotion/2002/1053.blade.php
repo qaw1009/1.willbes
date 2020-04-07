@@ -236,14 +236,14 @@
                         <map name="Map1126A" id="Map1126A">
                             <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
                             <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                            <area shape="rect" coords="803,2450,884,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                            <area shape="rect" coords="803,2450,884,2476" href="javascript:alert('Coming Soon')" />
                         </map>
                     </div>
                     <div id="tab02" class="tabCts">
                         <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
                         <map name="Map1126B" id="Map1126B">
                             <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                            <area shape="rect" coords="803,2208,884,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                            <area shape="rect" coords="803,2208,884,2240" href="javascript:alert('Coming Soon')" />
                         </map>
                     </div>
                     <div id="tab03" class="tabCts">
@@ -251,7 +251,7 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03s.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
                         <map name="Map1126C" id="Map1126C">
                             <area shape="rect" coords="232,425,323,456" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                            <area shape="rect" coords="794,421,893,459" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+                            <area shape="rect" coords="794,421,893,459" href="javascript:alert('Coming Soon')" />
                         </map>                           
                     </div>
                 </div>    

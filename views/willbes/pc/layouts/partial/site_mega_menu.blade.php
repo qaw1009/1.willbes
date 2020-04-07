@@ -217,6 +217,7 @@
                     <li>
                         <span>[한국사]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50305/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50027/?subject_idx=1109&subject_name=한국사')}}">오태진</a>
                     </li>
                     <li>
                         <span>[소방학개론]</span>

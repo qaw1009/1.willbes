@@ -100,7 +100,7 @@
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1337_top.gif" alt="한세훈 행정법" usemap="#Map1337a" border="0" />
             <map name="Map1337a" id="Map1337a">
-                <area shape="rect" coords="136,1051,987,1143" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
+                <area shape="rect" coords="136,1051,987,1143" href="javascript:go_PassLecture(1);" alt="수강신청 이용약관동의"/>
             </map>
 
             <div class="check">

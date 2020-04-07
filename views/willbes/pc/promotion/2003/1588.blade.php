@@ -196,7 +196,7 @@
         <div class="evtCtnsBox evt05" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_05.jpg" title="출석 횟수">
             <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
-            {{-- TODO --}}
+            @php $apply_check = false; @endphp
             @foreach($arr_base['add_apply_data'] as $row)
                 @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
                     @if($row['MemberLoginCnt'] == '0')
@@ -208,7 +208,13 @@
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">
                     </a>
                     @endif
+                    @php $apply_check = true; @endphp
                     @break;
+                @endif
+                @if($apply_check === false)
+                    <a href="javascript:alert('출석체크 기간이 아닙니다.');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
+                    </a>
                 @endif
             @endforeach
         </div>

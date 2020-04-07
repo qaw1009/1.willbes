@@ -1353,7 +1353,7 @@ class EventFModel extends WB_Model
                 GROUP BY EaaIdx
             ) AS C ON A.EaaIdx = C.EaaIdx    
         ";
-        $where = ' WHERE A.ElIdx = ? and A.IsUse = "Y"';
+        $where = ' WHERE A.ElIdx = ? and A.IsUse = "Y" and A.IsStatus = "Y"';
         $order_by_offset_limit = ' ORDER BY A.ApplyEndDatm, A.EaaIdx ASC';
 
         // 쿼리 실행

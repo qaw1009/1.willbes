@@ -157,17 +157,29 @@ class BaseStats extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
-        $headers = ['인증회차', '회원명', '회원아이디', '회원휴대폰번호', '생년월일', '성별', '지역', '지점', '신청일', '수험직렬', '상품명', '진행상태'
-            , '승인완료자', '승인완료일', '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일'];
+        $btob_role_type = get_auth_role_type();     // BtoB 관리자 역할구분
         $file_name = '진행상태별_회원현황_' . $this->_sess_btob_idx . '_' . date('Y-m-d');
+
+        $headers = ['인증회차', '회원명', '회원아이디', '회원휴대폰번호', '생년월일', '성별', '지역', '지점', '신청일', '수험직렬', '상품명', '진행상태'
+            , '승인완료자', '승인완료일', '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일', '수강시작일', '수강종료일', '이용일수', '평균수강율'];
+
+        // BtoB 시스템관리자만 회원가입일 추가
+        if ($btob_role_type == 'S') {
+            $headers[] = '회원가입일';
+        }
 
         $arr_condition = $this->_getApplyConditions();
         $list = $this->btobCertModel->listCertApply('excel', $arr_condition, null, null, $this->_getApplyOrderBy());
 
         // 진행상태코드값 수정
         $arr_approval_status = ['N' => '미승인', 'R' => '승인반려', 'Y' => '승인완료', 'C' => '승인취소', 'E' => '승인만료'];
-        $list = array_map(function($row) use ($arr_approval_status) {
+        $list = array_map(function($row) use ($arr_approval_status, $btob_role_type) {
             $row['ApprovalStatus'] = $arr_approval_status[$row['ApprovalStatus']];
+
+            if ($btob_role_type != 'S') {
+                unset($row['JoinDate']);
+            }
+
             return $row;
         }, $list);
 

@@ -68,7 +68,7 @@
         <div class="evtCtnsBox top_bg">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_top.jpg" alt="오태진 한국사" usemap="#Map1296a" border="0">
             <map name="Map1296a" id="Map1296a">
-            <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청"/>
+            <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" alt="수강신청"/>
             </map>     
             <div class="check">
                 <label>

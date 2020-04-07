@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+
 <style type="text/css">
 /*********************************************     Main Container : cert     *********************************************/
 
@@ -9,63 +10,6 @@
     bottom:20px;
     right:10px;
     z-index:1;
-}
-.skybanner span {position: absolute; left:50%; top:-60px; margin-left:-45px; z-index: 2;}
-.skybanner span img {width:90px;
-    -webkit-animation: vibrate-1 1s linear infinite both;
-    animation: vibrate-1 1s linear infinite both;
-}
-@@-webkit-keyframes vibrate-1 {
-    0% {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
-    20% {
-        -webkit-transform: translate(-2px, 2px);
-                transform: translate(-2px, 2px);
-    }
-    40% {
-        -webkit-transform: translate(-2px, -2px);
-                transform: translate(-2px, -2px);
-    }
-    60% {
-        -webkit-transform: translate(2px, 2px);
-                transform: translate(2px, 2px);
-    }
-    80% {
-        -webkit-transform: translate(2px, -2px);
-                transform: translate(2px, -2px);
-    }
-    100% {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
-}
-@@keyframes vibrate-1 {
-    0% {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
-    20% {
-        -webkit-transform: translate(-2px, 2px);
-                transform: translate(-2px, 2px);
-    }
-    40% {
-        -webkit-transform: translate(-2px, -2px);
-                transform: translate(-2px, -2px);
-    }
-    60% {
-        -webkit-transform: translate(2px, 2px);
-                transform: translate(2px, 2px);
-    }
-    80% {
-        -webkit-transform: translate(2px, -2px);
-                transform: translate(2px, -2px);
-    }
-    100% {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
 }
 
 
@@ -244,6 +188,8 @@
     color: #643fb5;
 }
 </style>
+
+
 
 <div id="Container" class="Container njob2 NGR c_both">
     <!-- site nav -->

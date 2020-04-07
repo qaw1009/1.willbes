@@ -114,6 +114,15 @@
 
     <div class="replyList">
         <ul>
+            @foreach($arr_base['notice_data'] as $row)
+                <li>
+                    <div>
+                        <p>{{$row['Title']}}<span></span></p>
+                        {!!nl2br($row['Content'])!!}
+                    </div>
+                </li>
+            @endforeach
+
             @foreach($list as $row)
                 <li>
                     @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')

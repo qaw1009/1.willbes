@@ -235,8 +235,9 @@
                             + (row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        if (row.ProdTypeCcd === '{{ $chk_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}') {
-                            return '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">수강증출력</button>'
+                        if ((row.ProdTypeCcd === '{{ $chk_prod_type_ccd['off_lecture'] }}' || row.ProdTypeCcd === '{{ $chk_prod_type_ccd['reading_room'] }}') && row.PayStatusCcd === '{{ $chk_pay_status_ccd['paid'] }}') {
+                            var prod_type = row.ProdTypeCcd === '{{ $chk_prod_type_ccd['reading_room'] }}' ? 'reading_room' : 'off_lecture';
+                            return '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-prod-type="' + prod_type + '" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">수강증출력</button>'
                                 + (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">(Y)</a>' : '');
                         } else if (row.LearnPatternCcd === '{{ $chk_learn_pattern_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $chk_pay_status_ccd['refund'] }}') {
                             return '<button type="button" class="btn btn-xs btn-danger mr-0 btn-reorder" data-order-idx="' + row.OrderIdx + '">재주문</button>';
@@ -259,7 +260,7 @@
 
             // 수강증 출력 버튼 클릭
             $list_table.on('click', '.btn-print', function() {
-                var url = '{{ site_url('/common/printCert/') }}?prod_type=off_lecture&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&site_code=' + $(this).data('site-code');
+                var url = '{{ site_url('/common/printCert/') }}?prod_type=' + $(this).data('prod-type') + '&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&site_code=' + $(this).data('site-code');
                 popupOpen(url, '_cert_print', 620, 350);
             });
 

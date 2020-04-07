@@ -54,6 +54,21 @@ class PrintCert extends \app\controllers\BaseController
                     break;
                 }
                 break;
+            case 'reading_room' :
+                $order_idx = $this->_reqG('order_idx');
+                $order_prod_idx = $this->_reqG('order_prod_idx');
+                $site_code = $this->_reqG('site_code');
+
+                // 데이터 조회
+                $data = $this->orderListModel->getPrintCertReadingRoomData($order_idx, $order_prod_idx, $site_code);
+
+                // 수강증 출력 로그 저장
+                $log_save = $this->orderListModel->addActivityLog('PrintCert', $order_idx, $order_prod_idx);
+                if($log_save !== true) {
+                    show_alert($log_save,'close');
+                    break;
+                }
+                break;
             case 'mock_exam' :
                 $mr_idx = $this->_reqG('mr_idx');
 

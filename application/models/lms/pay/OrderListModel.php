@@ -1256,6 +1256,51 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 독서실 수강증 출력 데이터 조회
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $site_code [사이트코드]
+     * @return mixed|string
+     */
+    public function getPrintCertReadingRoomData($order_idx, $order_prod_idx, $site_code)
+    {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($site_code) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        // 주문상품 조회
+        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+        $data = $this->listAllOrder('O.OrderNo, M.MemName, OP.ProdCode, P.ProdName', $arr_condition, null, null, []);
+        if (empty($data) === true) {
+            return '데이터 조회에 실패했습니다.';
+        }
+        $data = element('0', $data);
+
+        // 독서실 사용 시작일/종료일 조회
+        $arr_condition = ['EQ' => ['RM.NowOrderIdx' => $order_idx, 'R.ProdCode' => $data['ProdCode']]];
+        $add_data = $this->_conn->getJoinFindResult($this->_table['readingroom_mst'] . ' as RM', 'inner', $this->_table['readingroom'] . ' as R'
+            , 'RM.LrIdx = R.LrIdx', 'RM.UseStartDate, RM.UseEndDate', $arr_condition
+        );
+        if (empty($add_data) === true) {
+            return '독서실 사용기간 조회에 실패했습니다.';
+        }
+
+        // 출력상품명 설정
+        $cut_str = 14;  // 라인당 출력되는 상품명 길이
+        $arr_line = [];
+
+        for($i = 0; $i < ceil(mb_strlen($data['ProdName']) / $cut_str); $i++) {
+            $is_bold = $i == 0 ? 'true' : 'false';
+            $arr_line[] = ['Name' => trim(mb_substr($data['ProdName'], $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+        }
+
+        $data['OrderProdNameData'] = $arr_line;
+        $data['StartLine'] = 7;
+
+        return array_merge($data, $add_data);
+    }
+
+    /**
      * 주문환불요청 날짜별 건수 조회
      * @param string $req_start_date [조회시작일자]
      * @param string $req_end_date [조회종료일자]

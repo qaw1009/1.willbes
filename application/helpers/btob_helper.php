@@ -14,3 +14,15 @@ if (!function_exists('get_auth_branch_ccd')) {
         return $sess_auth_branch_ccd == 'A' ? true : $sess_auth_branch_ccd;
     }
 }
+
+if (!function_exists('get_auth_role_type')) {
+    /**
+     * 제휴사 관리자 역할구분 리턴
+     * @return mixed
+     */
+    function get_auth_role_type()
+    {
+        $_CI =& get_instance();
+        return array_get($_CI->session->userdata('btob.admin_auth_data'), 'Role.RoleType');
+    }
+}

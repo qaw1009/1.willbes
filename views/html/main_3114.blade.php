@@ -333,7 +333,7 @@
         </div>
     </div>
 
-    <div class="Section mt70 NSK">
+    <div class="Section mt70 mb70 NSK">
         <div class="widthAuto">  
             <div class="willbesNews">
                 <div class="will-listTit NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 공지사항 <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></div>

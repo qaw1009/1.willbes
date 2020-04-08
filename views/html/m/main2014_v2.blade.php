@@ -15,38 +15,28 @@
         z-index:1;
     }
 
-    .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px; text-align:left}
-    .evtTop {}
-    .evt01 {}
-    .evt02 {padding:40px 60px; text-align:left}
-    .evt02 .bestLec > li {
-        display: inline;
-        float: left;
-        width:calc(50%-50px);
-        margin-right:50px;
-    }
-    .evt02 .bestLec > li:nth-of-type(even) {margin-right:0}
-    .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5}
-    .evt02 .bestLec li ul li {margin-bottom:10px}
+    .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
+    .evtCtnsBox .will-listTi > img {width:50px}
+    .evt02 {padding:40px 60px;}  
+    .evt02 .bestLec {width:100%; margin:0 auto}
+    .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
+    .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5; }
+    .evt02 .bestLec li ul li {margin-bottom:10px; }
     .evt02 .bestLec li ul li:first-child {font-size:14px}
     .evt02 .bestLec li ul li span {vertical-align: bottom;}
-    .evt02 .bestLec li ul li:last-child a {display:block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
-    .evt02 .bestLec:after {
-        content:'';
-        display: block;
-        clear:both;
-    }
+    .evt02 .bestLec li ul li:last-child a {display:inline-block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
+    
 
     .evt03 {padding:40px 60px 0 60px; text-align:left; background:#f7f7f7}
+    .evt03 .hotLec {margin-left:-20px}
     .evt03 .hotLec li {
         display: inline;
         float: left;
-        width:calc(50%-20px);
-        margin-right:20px;
+        width:50%;        
         margin-bottom:20px;
-    }    
-    .evt03 .hotLec li a {display:block;}
-    .evt03 .hotLec li:nth-of-type(even) {margin-right:0}
+    }   
+    .evt03 .hotLec li a {display:block; margin-left:20px;}
+    .evt03 .hotLec li img {width:100%; max-width:288px}
     .evt03 .hotLec:after {
         content:'';
         display: block;
@@ -56,15 +46,15 @@
     .evt04 {margin:0 auto}
 
     .evt05 {padding:40px 60px 0 60px; text-align:left}
+    .evt05 .tipLec {margin-left:-20px}
     .evt05 .tipLec li {
         display: inline;
         float: left;
-        width:calc(50%-20px);
-        margin-right:20px;
+        width:50%;        
         margin-bottom:20px;
     }    
-    .evt05 .tipLec li a {display:block;}
-    .evt05 .tipLec li:nth-of-type(even) {margin-right:0}
+    .evt05 .tipLec li a {display:block; margin-left:20px;}
+    .evt05 .tipLec li img {width:100%; max-width:288px}
     .evt05 .tipLec:after {
         content:'';
         display: block;
@@ -86,7 +76,7 @@
     }
     .evt06 .List-Table li a {
         display: inline-block;
-        width: 80%;
+        width: 70%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -106,25 +96,50 @@
 
     .evt07 {padding:40px 60px 0 60px;}
     .evt07 ul {background:#f5f5f5}
-    .evt07 li { display:inline; float:left; width:25%; padding:20px 0}
+    .evt07 li { display:inline; float:left; width:25%; padding:20px 0; line-height:1.5}
+    .evt07 div {margin-top:5px}
     .evt07 ul:after {
         content:'';
         display: block;
         clear:both;
     }
     .evt08 {margin:40px auto 60px}
+    .evt08 img {width:50px}
     .evt08 a {display: inline-block; margin:0 5px}
 
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
 
-    .btnbuy {position:fixed; width:100%; bottom:0; left:0; z-index:100;}
+    .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
     .btnbuy div {text-align:left; height:80px; line-height:80px; padding:0 10px; max-width:720px; margin:0 auto;
-        background:#fff url(https://static.willbes.net/public/images/promotion/m/icon_notice.png) no-repeat right center;
-        border-top:1px solid #ccc; border-bottom:1px solid #ccc; font-size:14px; }
+        background:url(https://static.willbes.net/public/images/promotion/m/icon_notice.png) no-repeat right center;
+        font-size:14px; }
     .btnbuy a {display:inline-block; margin:0 5px}
     .btnbuy span {color:#ccc; margin:0 5px}
     .btnbuy a:hover {background:#fff; color:#3a99f0;}
+
+    /* 폰 가로, 태블릿 세로*/
+    @@media only all and (min-width: 408px)  {  
+          
+    }
+
+    /* 태블릿 세로 */
+    @@media only all and (min-width: 768px) {   
+        .evtCtnsBox .will-listTi > img {width:64px}       
+        .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}
+        .evt02 .bestLec > li {
+        display: inline ; float:left; width:50% ; 
+        }
+        .evt02 .bestLec:after {content:""; display:block; clear:both}    
+        .evt07 br {display:none}
+        .evt08 img {width:78px}         
+    }
+
+    /* 태블릿 가로, PC */
+    @@media only all and (min-width: 1024px) { 
+
+
+    } 
  </style>   
 
     <div id="Container" class="Container NGR c_both">
@@ -253,25 +268,25 @@
                 <li>
                     <a href="{{ front_url('/support/faq/index') }}">
                         <img src="{{ img_url('cop/icon_cecenter1.png') }}">
-                        <div class="nTxt">자주하는 질문</div>
+                        <div class="nTxt">자주하는<br>질문</div>
                     </a>
                 </li>
                 <li>
                     <a href="{{ front_url('/support/mobile/index') }}">
                         <img src="{{ img_url('cop/icon_cecenter2.png') }}">
-                        <div class="nTxt">모바일 서비스</div>
+                        <div class="nTxt">모바일<br>서비스</div>
                     </a>
                 </li>
                 <li>
                     <a href="{{ front_url('/support/qna/index') }}">
                         <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                        <div class="nTxt">동영상 상담실</div>
+                        <div class="nTxt">동영상<br>상담실</div>
                     </a>
                 </li>
                 <li>
                     <a href="{{ front_url('/support/remote/index') }}">
                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                        <div class="nTxt">1:1 고객지원</div>
+                        <div class="nTxt">1:1<br>고객지원</div>
                     </a>
                 </li>
             </ul>

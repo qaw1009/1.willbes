@@ -103,6 +103,9 @@
         display: block;
         clear:both;
     }
+    .evt07 .tel {font-size:18px; margin-top:34px; line-height:1.5; }
+    .evt07 .tel br {display:block}
+
     .evt08 {margin:20px auto 30px}
     .evt08 img {width:40px}
     .evt08 a {display: inline-block; margin:0 5px}
@@ -117,6 +120,11 @@
     .btnbuy a {display:inline-block; margin:0 3px}
     .btnbuy span {color:#ccc; margin:0 3px}
     .btnbuy a:hover {background:#fff; color:#3a99f0;}
+
+    /* Main Container */
+    .tx-color {
+        color: #3997f0;
+    }
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {  
@@ -141,7 +149,8 @@
         .evt08 img {width:78px} 
         .btnbuy div {height:60px; line-height:60px;}  
         .btnbuy a {margin:0 5px}
-        .btnbuy span {margin:0 5px}      
+        .btnbuy span {margin:0 5px}   
+        .evt07 .tel br {display:none}   
     }
 
     /* 태블릿 가로, PC */
@@ -299,6 +308,10 @@
                     </a>
                 </li>
             </ul>
+            <div class="tel">
+                <div>수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006</span></div>
+                <div>운영시간 평일 <br><span class="NSK-Black tx-color ml10">09시~18시 (점심시간 12시~1시)  주말/공휴일 휴무</span></div>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt08">

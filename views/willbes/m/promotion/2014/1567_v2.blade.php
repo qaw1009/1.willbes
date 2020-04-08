@@ -26,14 +26,14 @@
     .evt02 .price {padding:30px; letter-spacing:-1px}
     .evt02 .price li {margin-bottom:10px; font-size:1.5rem; }
     .evt02 .price li:nth-child(1) {font-size:1.9rem;}
-    .evt02 .price li:nth-child(1) span {color:#3a99f0}
+    .evt02 .price li:nth-child(1) span {color:#6664ff}
     .evt02 .price li:nth-child(2) {margin-bottom:30px;}
-    .evt02 .price li:nth-child(2) div {border-radius:10px; background:#3a99f0; color:#fff}
+    .evt02 .price li:nth-child(2) div {border-radius:10px; background:#6664ff; color:#fff}
     .evt02 .price li:nth-child(3) {margin-bottom:30px;}
     .evt02 .price li:nth-child(3) dl {position:relative; text-align:left; line-height:1; margin:0 auto;}
-    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#3a99f0} 
+    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#6664ff} 
     .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
-    .evt02 .price li:nth-child(3) dd span {color:#3a99f0}
+    .evt02 .price li:nth-child(3) dd span {color:#6664ff}
     .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
     .evt02 .price li:nth-child(4) {font-size:1.4rem; }
     .evt02 .price li:nth-child(4) i {color:#a3a3a3}
@@ -46,17 +46,18 @@
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
 
     .evt03 {background:#fff; padding-top:50px}
-    .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem; margin-bottom:30px; padding:0 20px} 
+    .evt03 .evt03Txt01 {color:#6664ff; font-size:1rem; margin-bottom:30px; padding:0 20px}  
 
     .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
+    .evt04 .evt04Txt01 strong {font-size:1.1rem}
 
     .evt05 {text-align:left; padding:0 20px}
-    .evt05 h5 {color:#383368; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+    .evt05 h5 {color:#6664ff; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
     .evt05 .evt05Txt01 { font-size:1.6rem;}
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#f80700; margin-top:30px}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#6664ff; margin-top:30px}
     .evt05 dt:first-child {margin:0}
     .evt05 ul {margin:10px auto}
     .evt05 ul li {display:inline; float:left; padding:15px; border:1px solid #e4e4e4; }
@@ -83,8 +84,7 @@
     .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
     .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt07 {background:#3a99f0; padding:20px}
-    .evt07 li {display:inline; float:left; width:50%}
+    .evt07 {background:#6664ff; padding:20px}
     .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -106,7 +106,7 @@
     .btnbuy {width:100%; position:fixed; bottom:5px;}
     .btnbuy a {display:block; width:95%; max-width:940px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#3a99f0;
+    .btnbuy a:hover {background:#6664ff;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
@@ -117,7 +117,6 @@
     .evtFooter div,
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
     .evtFooter li {margin-left:20px; list-style-type: decimal;}
-
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
@@ -135,26 +134,27 @@
     }
 </style>
 <div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162748" checked/>
+    <input type="checkbox" name="y_pkg" value="162746" checked/>
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top.jpg" alt="창업 다마고치" ></div>             
+        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_top.jpg" alt="창업 다마고치" ></div>             
         <div class="evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top_txt.jpg" alt="창업 다마고치" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_top_txt.jpg" alt="창업 다마고치" >
         </div>
         <ul>
-            <li>1억뷰  N잡  창업  대표 강사</li>
-            <li>유튜브 창업 다마고치 영상 6개월 누적  조회수 100만뷰 기록 </li>
-            <li>‘지금 바로 돈 버는 기술’ 저자</li>
-            <li>홍익대학교 게임그래픽학과 졸업</li>
-            <li>네이버  대표 카페 ‘킵고잉’  공동 운영</li>
-            <li>온/오프라인 강의를 통해 많은  신규 창업자를 위한 강의 진행</li>
-            <li>3개의 네이버 스마트스토어  및  오픈마켓 (지마켓, 옥션, 11번가) 운영  중</li>
+            <li>도매꾹 평생교육원 대표강사</li>
+            <li>문구/사무용품 스마트스토어 BEST TOP 10</li>
+            <li>무재고 배송대행 파워셀러</li>
+            <li>온라인 쇼핑몰 통합 솔루션 샵플링 전문강의</li>
+            <li>온라인 쇼핑몰 통합 솔루션 샵플링 마스터과정</li>
+            <li>도매매 무재고 배송대행 전문셀러 스터디그룹</li>
+            <li>도매매 무재고 배송대행 전문셀러 입문세미나</li>
+            <li>1인 쇼핑몰 창업자 스마트워킹 노하우 강의</li>
         </ul>
-        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>       
+        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>
         <div class="evtMenu">
             <ul class="tabs">
                 <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
@@ -163,12 +163,11 @@
                 <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
             </ul>
         </div>  
-    </div>  
-    
+    </div>       
 
     <div id="tab01" class="evtCtnsBox">
         <div class="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_01.jpg" alt="창업 다마고치" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_01.jpg" alt="" >
         </div>
         <div class="evt02">
             <ul class="price NSK-Black">
@@ -183,18 +182,19 @@
                         </dd>
                     </dl>
                 </li>
-                <li><i>195,000원</i> <span>10%할인</span> 175,500원</li>
-                <li>월 <span>3만원</span>대</li>
+                <li><i>289,000원</i> <span>10%할인</span> 260,100원</li>
+                <li>월 <span>4만원</span>대</li>
                 <li>
-                    수강기간 : 5개월<br>
+                    수강기간 : 6개월<br>
                     수강대상 : 온라인 쇼핑몰 창업 입문부터 가능
                 </li>
             </ul>
             <div class="evt02-txt">
                 <div>* 런칭기념 혜택 안내</div>
                 <ul>
-                    <li>사전예약 10%할인, 월3만원대 수강료</li>
-                    <li>특별기획전을 통해 전문MD의 경쟁력있는 위탁/사입 상품 소싱, 추천</li>
+                    <li>사전예약 10%할인, 월4만원대 수강료</li>
+                    <li>쇼핑몰 통합관리 솔루션 '샵플링' 1개월 포함<br>
+                        (스탠다드 버전 27만원 상당)</li>
                 </ul>
             </div>
         </div>
@@ -204,130 +204,157 @@
         <div class="evtCtnsBox evt03">
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/QZUkyd8EluI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="evt03Txt01">
-                안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
-                유튜브에 저의 창업 성장기를 많은 분들께<br>
-                공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
-            </div>            
-        </div> 
-
+                안녕하세요. 잘 나가는<br>
+                <span class="NSK-Black">유통선배 정문진</span>입니다. 
+            </div>
+        </div>  
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_02.jpg" alt="인플루언서" >
-            <div class="evt04Txt01">
-                평범한 직장인이었던 제가 사업가 친구가 알려주는 코칭을
-                그대로 따르기만 했는데도 다마고치가 자라듯이 빠르게 성장
-                할 수 있었고 그 과정에서 저만의 방법을 찾기 위한 
-                수많은 시도를 거듭했습니다.<br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_02.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                저는 2017년부터 <br>
+                도매꾹/도매매와 온라인 창업에 대한 내용을 교육 중이며 <br>
+                지금까지 약 2,500명의 온라인 창업 교육생을 배출했습니다.<br>
                 <br>
-                앞서 그 길을 간 누군가가 자신의 경험을 공유해주고 
-                바른 방향을 제시한다면 그리고 거기에 자신의 열망과 
-                노력이 더해진다면, 창업을 통해 소득이 급격히 늘어나는 일이 
-                결코 허황된 일이 아니라는 것을 저는 체험했습니다.<br>
-                <br>
-                저는 그동안 유튜브 채널과 저의 책을 통해 매출 0원부터 
-                9천만원에 이르기까지 저의 성장기를 가감없이 보여드렸고
-                이제는 강의를 통해서 제가 갔던 길을 누구나 쉽게 따라
-                오실 수 있도록 도와드리려 합니다.
+                이 중 70%의 수강생들이 실제 온라인 창업을 했고<br>
+                많은 분들이 매출을 내고 있습니다.
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_03.jpg" alt="인플루언서" >
-            <div class="evt04Txt01">
-                이 강의에서는 제가 앞서 경험한 사업적 기술을 토대로 
-                그간 공개한 적 없던 여러 시행착오들과 
-                어려움 극복 과정을 통해 과거 저처럼 돈을 벌고 싶은데 
-                방법을 몰라 막막해할 누군가에게 새로운 기회를 제공하고 
-                싶습니다. <br>
+
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_03.jpg" alt=" " >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_04.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                월 초마다 진행하는 입문 세미나 강의 시간, <br>
+                창업을 꿈꾸는 분들한테 제가 꼭 전하는 말이 있습니다.<br>
                 <br>
-                맨땅에 헤딩만 하기보다, 우여곡절만 겪기보다, 
-                제대로 시작도 못하고 포기하기보다, 
-                적어도 돈을 벌 수 있는 발판을 마련하는 데 
-                보탬이 되기를 바라는 마음으로<br>
+                “처음으로 돌아가서 온라인쇼핑몰 어떻게 시작할래? <br>
+                라고 묻는다면, 저는 주저 없이 <br>
                 <br>
-                팔리는 상세 페이지 만드는 법부터 유튜브로 
-                수익 창출하는 비법은 물론, 장사의 본질을 이해하는 것과 
-                사업 기초를 다지는 기술까지 안내해 드리겠습니다!
+                <strong>"시작은 무재고 배송대행 창업으로 시작할래"</strong><br>
+                라고 이야기할 것입니다
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_04.jpg" alt="인플루언서" >
-            <div class="video-container-box">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/_yVIa13RFW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_05.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                저의 첫 사업,<br>
+                지인을 통해 문구류를 온라인에 판매한 게 그 시작이었습니다.<br>
+                <br>
+                올려놓은 250개의 상품 중 한 달 내 일어난 판매. <br>
+                거의 ‘0’에 가까웠습니다.<br>
+                <br>
+                당시, 저에겐 모든 것이 난관이고 벽이었죠.<br>
+                <br>
+                상품 판매도 어렵지만,<br>
+                등록, 상세페이지 디자인, 고객클레임 상담 등<br>
+                사소한 문제들에 어려움을 겪고 많이 힘들었습니다.
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_05.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_06.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_07.jpg" alt="e커머스 강좌소개" ><br>
-            <div class="evt04Txt01">
-                첫째, 상품발굴<br>
-                경쟁력 있는 상품을 선별하여 제공해드립니다!<br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_06.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                그리고 자본의 문제..<br>
+                상품을 홍보하기 위해 광고비도 많이 사용했고,<br>
+                투자에 대한 부담이 많았습니다.<br>
+                자본 문제는 곧 생존과 연결되어 있었기 때문이죠.<br>
                 <br>
-                어쩌면 제품을 ‘파는 것’ 보다  
-                판매할 제품을 ‘사는 것’이 더 중요하다고 할 수 있습니다. 
-                가격과 품질 경쟁력을 갖추면 판매는 어렵지 않습니다. 
-                이것이 ‘상품 소싱’의 중요성입니다.<br>
+                당시, 수 많은 창업 강의를 들었고 <br>
+                많은 사람들을 만나 고민을 나누기도 했습니다.<br>
                 <br>
-                판매할 제품을 직접 구매하여 판매하는 ‘사입‘ 방식, 
-                그리고 재고없이 공급처에서 직접 발송까지 책임지는 
-                ‘위탁판매’ 까지! 방법만 알려드리는 것이 아니라, 
-                국내 1위 온라인 B2B 플랫폼과의 제휴를 통해
-                강의 수강생들에게 좋은 품질에 가격 경쟁력도 갖춘 
-                제품과 공급처를 제공해드립니다.<br>
-                강의를 보면서 스마트스토어를 개설하고 강의와 함께
-                상품도 제공하여 빠르게 매출도 발생시킬 수 있도록 
-                지원하겠습니다.
+                그리고 어렵게 찾게 된 돌파구,<br>
+                <br>
+                큰 자본을 투자하지 않고 ‘소자본’으로 <br>
+                상품을 미리 사입하지 않고 큰 리스크 없이 시작할 수 있는<br>
+                <strong>“무재고 배송대행” 사업이었습니다.</strong>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_08.jpg" alt="e커머스 강좌소개" ><br>
-            <div class="evt04Txt01">
-                둘째, 외부유입<br>
-                다른 강의에서 흔하게 알려주는 SEO가이드를 따르고 
-                검색 최적화를 해서 노출을 늘리는 방법은 더 이상 통하지
-                않습니다.<br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_07.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                기존에는 선구매 후 판매를 해서 리스크가 컸다면,<br>
+                ‘무재고 배송대행’은 <br>
+                선 판매 후 데이터에 근거해서 상품을 매입할 수 있습니다.<br>
                 <br>
-                예전에는 이를 등한시하는 판매자가 많았기 때문에 , 
-                그것만으로도 경쟁력 있었지만 
-                이제는 힘듭니다.  <br>
+                저 역시, 무재고 배송대행 사업으로, <br>
+                쇼핑몰 비수기까지 무사히 넘길 수 있었죠<br>
                 <br>
-                매뉴얼에 나와있는 내용은 누구나 알고 있는 방법이고 
-                당연히 해야 하는 것이기 때문이죠.<br>
-                그래서 외부 유입을 만드는 게 중요한데요. <br>
-                특히 많은 사람들이 인터넷상에서 시간을 보내는 
-                유튜브, SNS, 네이버 등에서 고객을 끌어와야 합니다. 
-                강의에서 그 방법에 대해서도 자세히 알려드립니다.
+                그리고 덕분에,<br>
+                <strong>‘네이버 스마트스토어 문구/사무용품 top10’에도 들고,<br>
+                월 2억 원의 매출을 올리기도 했습니다.</strong><br>
+                <br>
+                또한, 무재고 배송대행 사업을 통해 <br>
+                상품 판매 데이터를 가지고<br>
+                ‘상품보는 눈’을 기르고 시작한다면,<br>
+                <br>
+                나에게 맞는 상품들을 추가 판매해<br>
+                훨씬 안정적으로 쇼핑몰을 키워나갈 수 있지 않을까<br>
+                생각합니다.
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_09.jpg" alt="e커머스 강좌소개" ><br>
-            <div class="evt04Txt01">
-                셋째, 설득력 높은 상세페이지<br>
-                열심히 등록한 내 상품이 팔리지 않는 이유?<br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_08.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                함께 하시는 분들이 기본을 충실히 다질 수 있도록 , <br>
+                그리고 다양한 각도에서 확인 할 수 있도록 <br>
+                강의를 통해 도와드리겠습니다.<br>
                 <br>
-                사진만 고퀄리티로 찍는다고 상품이 잘 팔릴까요?<br>
-                만약, 같은 상품이라도 사진 한 장만 등록 되어 있는 
-                상세페이지와 실제 판매자가 사용하는 모습과 리뷰가 담긴
-                영상이 있는 상세페이지가 있다면, 
-                어떤 것을 선택하시겠어요?<br>
+                기본을 바탕으로, <br>
+                당연히 매출을 올릴 수도 있겠죠.<br>
                 <br>
-                이를 해결하기 위해, <br>
-                상품의 상세페이지 만드는 과정에 대한 정보도 자세하게
-                알려드립니다.
+                창업 교육 이후 <br>
+                창업자의 70%가 사업자를 내고, 이 분들은 판매 데이터를<br>
+                활용해, 본인에게 맞는 상품을 판매하고 있습니다.<br>
+                <br>
+                수강생분들은 20대에서 50대까지 연령대가 다양하며<br>
+                <br>
+                <strong>학생, 주부, 직장인, 은퇴자 등 각자의 위치에서 <br>
+                투잡 혹은 N잡으로 온라인 창업을 통한 <br>
+                매출을 내고 있습니다.</strong>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_10.jpg" alt="e커머스 강좌소개" ><br>
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_09.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                노력하고 시간을 투입한 만큼 결과를 얻는 게 <br>
+                배송대행 전문셀러입니다. <br>
+                <br>
+                초기에 포기하지 말고 <br>
+                꾸준히 노력한다면 좋은 결과를 얻을 수 있습니다.<br>
+                이 강의는 온라인 창업 입문자를 대상으로 <br>
+                기초부터 배우는 강의로 <br>
+                기초부터 탄탄하게 배우길 원하는 <br>
+                모든 초보 창업 준비생들에게 추천합니다. 
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_10.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                또한, <br>
+                데이터를 분석할 수 있는 기본도구는 물론, <br>
+                상세한 DB 조사방법, 쇼핑마스터, <br>
+                현재 가장 인기있는 셀러들의 핫 트랜드 키워드까지 <br>
+                세밀한 정보까지 모두 제공해 드립니다!<br>
+                <br>
+                이 강의에서는 광고 개념을 이해하고 <br>
+                로그 분석을 할 수 있는 방법과 <br>
+                소비자가 찾고 이용하는 키워드도 분석해 봅니다.<br>
+                <br>
+                그러면 잘 팔리는 상품군이 무엇인지<br>
+                보다 자세히 파악할 수 있죠.
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_11.jpg" alt=" " >
+            <div class="evt04Txt01 mb100">
+                두 가지를 모두 잡기 위한 도구 ‘샵플링’을 활용하면!<br>
+                보다 간편하게 대량의 상품을 <br>
+                위탁상품 소싱부터 등록/주문 수집 / 발주 등의 상품 관리가<br>
+                한 번에 가능합니다
+            </div>
+        </div> 
     </div>  
 
     <div id="tab03">
         <div class="evtCtnsBox evt05">
             <h5 class="NSK-Black">
-                가장 현실적인<Br>
-                월 100만원 만들고<Br>
-                지금 바로 시작할 수 있는<Br>
-                커리큘럼
+                ‘10년차 쇼핑몰 업계<br>
+                전문 강사 단아쌤이<br>
+                알려주는 전문 커리큘럼
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
             <div class="curriculum">
             	<dl>
-                    <dt>INTRO</dt> 
-                    <dd>1강 월 수익 100만원,  스마트스토어가 가장 현실적인 이유?</dd>
-                    <dd>2강 ‘지금 바로 시작하는 스마트스토어’ 강의를 제대로 활용하는 방법</dd>
+                    <dt>Chapter1. 쇼핑몰 창업 준비 사항</dt> 
+                    <dd>- 사업자신고 (온오프라인) 사업자등록증 발급방법</dd>
+                    <dd>- 구매안전서비스 이용 확인증 발급방법</dd>
                     <dd>
                         <ul>
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
@@ -343,173 +370,115 @@
                                     @php $i += 1; @endphp
                                 @endforeach
                             @else
-                                <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
-                                <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                                <li>1강 맛보기<br>수강 준비중 ></li>
+                                <li>2강 맛보기<br>수강 준비중 ></li>
                             @endif
                         </ul>
-                        <div class="evt05Txt02">
-                            * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                            * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                            * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
-                        </div>
                     </dd>
+                    <dd>- 통신판매업 신고 방법 </dd>
+                    <dd>- 오픈마켓 입점 방법</dd>
+                    <dd>- 샵플링 가입 및 안내</dd>
                 </dl>
                 
                 <dl>
-                    <dt>Chapter 1.스마트스토어 개설하기</dt>
-                    <dd>3강 나만의 쇼핑몰 만들자! 스마트스토어 개설하기</dd>
-                    <dd>4강 스마트스토어를 운영을 위해 꼭 필요한 것들</dd>
+                    <dt>Chapter2. 쇼핑몰 운영을 위한 유용한 정보</dt>
+                    <dd>- 필수 프로그램 이용방법<Br>
+                        주문,클레임 알림 이용방법<Br>
+                        캡처도구 이용방법</dd>
+                    <dd>- 유용한 정보<Br>
+                        무료팩스 이용방법<Br>
+                        무료스캐너 이용방법<Br>
+                        PC에서 문자 수발신 프로그램 이용방법<Br>
+                        네이버 비즈넘버를 활용 한 가상 번호 받는 방법</dd>                        
                 </dl>
                 
                 <dl>
-                    <dt>Chapter 2. 위탁판매로 재고 없이 소자본 창업하기</dt>
-                    <dd>5강 재고 부담이 없는 판매 방식! 위탁판매란 무엇일까?</dd>
-                    <dd>6강 스마트스토어에 위탁판매 상품 등록하기</dd>
-                    <dd>7강 잘 팔리는 상품명 만드는 방법</dd>
-                    <dd>8강 상품을 업로드할 때 주의해야 할 것들</dd> 
-                    <dd>9강 네이버 검색광고로 유입량 늘리는 방법</dd>
-                    <dd>10강 감동의 첫 주문! 위탁상품 고객께 발송하기</dd>
-                    <dd>11강 친절하고 냉정하게! 고객응대와 멘탈관리</dd>
-                    <dd>12강 고객이 어떻게 찾아왔을까? 유입경로 분석하기</dd>
+                    <dt>Chapter3. 쇼핑몰 운영을 위한 통합 솔루션 기본 설정법</dt>
+                    <dd>- 도매매 API 연동하기</dd>
+                    <dd>- 쇼핑몰 연동 하기(오픈마켓)</dd>
+                    <dd>- 쇼핑몰 기본 정보 설정 방법</dd>
+                    <dd>- G마켓 (상품등록 1.0, 상품등록 2.0)</dd>
+                    <dd>- 옥션 (상품등록 1.0, 상품등록 2.0)</dd>
+                    <dd>- 11번가 (일반상품 / 단일상품)</dd>
+                    <dd>- 인터파크</dd>
+                    <dd>- 스마트 스토어</dd>
                 </dl>
                 
                 <dl>
-                    <dt>Chapter 3. 도매상품 사입 판매로 매출 만들기</dt>
-                    <dd>13강 소싱 (사입)판매란 무엇인가? 위탁판매와 차이점</dd>
-                    <dd>14강 무엇을 팔아야 할까? 사업아이템 정하기</dd>
-                    <dd>15강 경쟁력 있는 상품을 찾는 방법</dd>
-                    <dd>16강 이제는 실전이다! 도매로 상품 사입하기</dd>
-                    <dd>17강 치열한 경쟁을 이겨내는 만능 열쇠? 나만의 브랜드 만들기!</dd>
-                    <dd>18강 설득의 심리학! 상세페이지 만들기</dd>
-                    <dd>19강 고객의 평가를 결정하는 제품포장과 발송</dd>
-                    <dd>20강 단골 만들기! 구매평과 재구매를 만드는 방법</dd>
+                    <dt>Chapter4. 좋은 상품 소싱하는 방법과 우수 공급사 찾기</dt>
+                    <dd>- 시즌상품 키워드 선정방법 (ESM 시즌키워드)</dd>
+                    <dd>- 상품판매 주기 확인방법 (네이버 데이터랩)</dd>
+                    <dd>- 도매매 사이트 내 우수 상품 및 공급사 찾는 방법</dd>
                 </dl>
                 
 				<dl>
-                    <dt>Chapter 4. 중국 소싱으로 마진 극대화</dt>
-                    <dd>21강 1688에서 원하는 상품을 찾아 내는 방법</dd>
-                    <dd>22강 생각보다 쉬운 개인 무역! 중국에서 직접 수입하기</dd>
-                    <dd>23강 수입 통관절차 및 제품 받아보기</dd>
+                    <dt>Chapter5. 대량으로 쇼핑몰 상품 등록 및 발주하기</dt>
+                    <dd>- 샵플링을 통한 배송비 설정하기</dd>
+                    <dd>- 샵플링을 통한 상품 대량 등록 방법</dd>
+                    <dd>- 도매매 현금성 e-money 충전방법</dd>
+                    <dd>- 도매매 주문 발주 방법</dd>
 				</dl>
                 
                 <dl>
-                    <dt>Chapter5. 나도 글로벌 셀러, 해외구매대행 사업</dt>
-                    <dd>24강 부업으로도 최고! 해외구매대행 사업</dd>
-                    <dd>25강 타오바오 상품을 내 스마트스토어에서 판매하기</dd>
-                    <dd>26강 배송대행지를 이용한 상품 발송</dd>
+                    <dt>Chapter6. 고객 클레임 처리하는 방법</dt>
+                    <dd>- 가격변동 및 품절상태 대응 방법</dd>
+                    <dd>- 주문관리 절차</dd>
+                    <dd>- 고객 cs처리절차</dd>
                 </dl>
                 
                 <dl>
-                    <dt>Chapter 6. 매출을 확대를 위한 오픈마켓 진출</dt>
-                    <dd>27강 판매채널 확장하기! 오픈마켓 비교 분석</dd>
-                    <dd>28강 1688 수입상품, 도매 사이트에서 동시에 판매하는 방법 </dd>
-                    <dd>29강  오픈마켓 상품 업로드, 솔루션으로 해결하기</dd>
+                    <dt>Chapter7. 상품 노출을 위한 해시태그 사용법 및 기타 운영 팁</dt>
+                    <dd>- 스마트스토어 찜&톡톡 방법</dd>
+                    <dd>- 11번가 인증키 설정 방법</dd>
+                    <dd>- 전체상품 공지사항</dd>
+                    <dd>- ebay 이미지 호스팅</dd>
                 </dl>
                 
                 <dl>
-                    <dt>Chapter 7. 외부 유입으로 고객을 모아보자</dt>
-                    <dd>30강 네이버 블로그로 외부유입에 대한 감을 잡자</dd>
-                    <dd>31강 스마트스토어 유입을 위한 블로그 상위노출 방법</dd>
-                    <dd>32강 잠들어있는 내 SNS 계정, 마케팅 창구로 활용하기</dd>
-                    <dd>33강 대세는 유튜브! 유튜브 컨텐츠로 마케팅하기</dd>
-                    <dd>34강 이제는 미디어 커머스! 유튜브로 매출을 끌어올리는 비결</dd>
-                </dl>
-                
-                <dl>
-                    <dt>Chapter 8. 아웃소싱으로 사업규모 키우기 </dt>
-                    <dd>35강 3자물류(3PL)로 택배포장에서 벗어나자</dd>
-                    <dd>36강 이제는 세금과의 싸움, 초보 창업자의 세금처리에 대해</dd>
-                    <dd>37강 디지털 노마드가 되어 볼까요?</dd>
-                </dl>
-                 
-                <dl>
-                    <dt>OUTRO</dt>
-                    <dd>38강 여러분의 경제적 자유를 응원합니다.</dd>
+                    <dd>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</dd>
                 </dl>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_12.jpg" alt="" >
         </div>
     </div>
 
     <div id="tab04">
         <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_11.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_13.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
-                    <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>
-                    <p>보라도리(shin****)</p>
-                    <strong>가장 좋았던 것은 역시나 실행하는 모습이란 어떤 것인지 몸소 보여준 창업 다마고치님의 밀도 높은 강의 내용과
-                    실제로 경험했기에 전달 가능한 알고 실행하면 엄청난 이익금이 창출되는 팁들의 대방출 이었습니다.</strong><br>
-                    각종 영상자료로 이해하기 쉽게 알차게 강의를 구성한 점이 특히 좋았습니다. 강의자료 준비에 공을 들인 것이
-                    확실히 느꼈습니다.<br>
-                    이번 강의를 통해 ‘나도 해볼 수 있겠다’는 생각이 불끈불끈 들었습니다. 그렇게 때문에 훌륭한 강의 추천할만한 강의
-                    였습니다. 엄지척 
+                    <h4>수강생 이*경님</h4>
+                    <p></p>
+                    2주차 부터는 본격적으로 스토어운영 관련 키워드 분석과 시즌 상품 키워드에 대해 실천 팁을
+                    아낌없이 공개해주시는 강사님! 강사님 수업이 참 매력적이에요. 조용조용 할 얘기 다 하면서 웃자고 건넨 농담에 
+                    그다지 웃기지 않는 반응에 대처하는 강사님이 귀여워요.
                 </div>  
                 <div>
-                    <h4>알차고 뜻깊은 4시간</h4>
-                    <p>캣치사운드(catc****)</p>
-                    먼저 결론부터 말씀드리자면 저는 강의 4시간동안 알차고 뜻깊은 시간있었습니다. 
-                    거기에 반성과 후회 그리고 다짐의 시간이기도 했습니다.<br>
-                    왜 이걸 몰랐지? 난 3년동안 스마트스토어를 운영하면서 무엇을 한거지?
-                    대박을 꿈꾸면서 나 아무것도 하지도 하려고 하지않았구나?<br>
-                    난 정말 바보처럼 스마트스토어를 모르면서 운영했었구나... 강의를 듣는 매순간 순간 반성과 다짐을 했습니다.
-                    <strong>만약 창업다마고치님의 강의를 모르고 지나갔거나 20만원이 아까워 강의신청을 하지 않았더라면
-                    전 아직까지 매출없는 스마트스토어를 운영하면서 전전긍긍했을겁니다. 아니 어쩌면 포기했을수도 있습니다.</strong>
-                    창업 다마고치님의 강의를 통해 다시한번 더 천천히 다시 시작하는 마음으로 그동안 놓치고 지나간 일들을
-                    찾아 포기하지 않고 창업 다마고치님의 말씀을 믿고 실천해 나가도록 하겠습니다. 
+                    <h4>수강생 김*용님</h4>
+                    <p></p>
+                    지난주 수업이 끝나고 이번 주는 혼자서 열심히 상품 등록하고 있어요.매일 꾸준히 상품에 대해 공부하면서
+                    상품 등록을 반복해야 해요. 상품 등록은 익숙하게 잘 할 수 있어요. 샵플링을 통해 등록된 상품의 주문도 들어와서
+                    발주 및 운송장 처리도 해봤어요. 아직은 주문이 많지 않아 서서히 하고 있어요.
+                    앞으로 주문이 많아 질 날을 기대하면서, 좋은 상품을 찾아봅니다.
+                    찾고 찾아 상품등록도 해보는 중입니다.
                 </div> 
                 <div>
-                    <h4>닉네임 바꾸세요! 창업다마고치 X !! 창업다아라찌 O!</h4>
-                    <p>라비앙로즈(euni****)</p>
-                    강의 듣기 전에 다른분들 후기에 왜 강의에 대한 자세한 이야기가 없을까... 궁금하기도 했구요~
-                    강의 듣고 나니 그 이유를 알 것 같네요~<br>
-                    왜? 나만 알고 싶은 강의니까!<br>
-                    죄송하지만 저도 강의 내용은 발설하지 못합니다. 약오르신 분들은 꼭 다음번 강의 신청하시길 바래요.
-                    (이젠 더 바빠지셔서 다음 강의를 진행할 수 있을지는 확답할 수 없다고 하셨지만요 --;;;)<br>
-                    <strong>확실한 건 다마고치님 강의 내용을 듣고 실행한다면 20만원 아닌 200만원 이상의 가치가 있을거라는거! </strong>
-                </div>  
-                <div>
-                    <h4>다마고치님 강의 아쉬움을 느꼈던 이유</h4>
-                    <p>해피U(sam5****)</p>
-                    좀더 일찍 강의를 들었더라면 시간을 허비하지 않았을텐데 하는 아쉬움을 느꼈습니다.<br>
-                    강의를 들으면서 내가 뭘 모르는지도 몰랐던 부분을 알게된 것과
-                    수많은 다른 강의를 들으면서 그냥 머릿속에 떠다니기만해 답답해 하던 것들
-                    ‘그렇게 하세요’, ‘그래서 어쩌라고’하며 속상해 울상지었던 것들에 대해
-                    <strong>어느 강의에서도 들어보지 못알만큼 현실적이고 실천가능한 방법으로 알려주시는
-                    강의 내용에 놀라면서도 감사했습니다.</strong><br>
-                    감의비는 20만원 이었지만 이것을 100배 1,000배로 만들 수 있겠다는 생각이 들었습니다! 
-                </div> 
-                <div>
-                    <h4>이 강의가 20만원이나해?</h4>
-                    <p>SCV 출동 준비완료(suga****)</p>
-                    요즘은 온라인 쇼핑몰 관련 강의도 많고 들어간 비용에 비해 내용이 부실한 경우가 많아
-                    처음 강의를 듣기전에는 도대체 어떤 강의이기에 20만원씩이나해? 이런 생각을 했습니다.
-                    <strong>강의를 다 듣고 나서는 이건 20만원에 해주셔서 감사해야 하는 강의라는 걸 깨달았습니다. ^^</strong><br>
-                    그렇게 생각하게 된데에는 정말 많은 이유가 있지만 유튜브에서도 나오지 않았고 책에도 적지 못한
-                    진짜배기 정보들이 알이 꽉 찬 무 처럼 단단하게 채워져 있었다는 겁니다. <br>
-                    정말 있는 그대로 1년 동안의 경험담을 진지하면서도 유머러스하게 강의해주셔서 감동! 이었습니다.<br>
-                    그외에도 좋았던 점들이 정말 많았어요.<br>
-                    유튜브에서만 나온 내용으로만 해도 월수익 500 가능했던 시절은 끝이났다 라는 말씀에 전적으로 동의합니다.
-                    누구나 쉽게 얻을 수 있는 정보가 되어 많은 사람들이 똑같이 하고 있기에 다른 무언가가 더 필요하다고
-                    생각했습니다.<br>
-                    솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
-                    일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
-                </div>           
+                    <h4>수강생 신*한님</h4>
+                    <p></p>
+                    생각했던 것 보다 더, 기대했던 것보다 훨씬 더 내용이 알차고 좋았어요.
+                    정문진 대표님이 실제 경험에서 우러난 강의여서 더욱더 좋았답니다.
+                    다음기회에 한 번 더 들어보고 싶어요. 정문진 대표님의 동영상 강의도 찾아서 들어보려고 합니다.
+                    수고해주신 강사님게 감사한 마음을 전합니다.
+                </div>        
             </div>                
         </div>
         <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_12.png" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_04_02.jpg" alt="BEST 수강후기" >
             <ul>
                 <li>
-                {{--<a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">--}}
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
                     <span class="NSK-Black">지금, 수강신청하고 </span>
-                    100만원 만들기 도전! → 
-                    </a>
-                </li>
-                <li>
-                    <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank">
-                    <span class="NSK-Black">이미 신청했다면,</span>
-                    위탁/사입상품 추천 받기! → 
+                    제2의 월급통장 만들기 도전! → 
                     </a>
                 </li>
             </ul>
@@ -524,13 +493,12 @@
 
         <p># 수강안내</p>
         <ul>
-
             <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
             <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
             <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>
             <li>동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
+            스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+            팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
         </ul>
 
         <p># 환불안내</p>
@@ -542,7 +510,8 @@
             * 기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)<br>
             * 수강시작일로부터 7일 이내 위약금 없음<br>
             * 수강시작일로부터 7일 이후 위약금 적용 (정상가의 10% 공제) </li>
-            <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.</li>
+            <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.<br>
+            (샵플링 프로그램 1개월 정가 275,000원 기준 환불시 기사용분 차감)</li>
             <li>환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
             <li>총강의수 전체 기수강 시에는 전액환불이 불가합니다.</li>
         </ul>
@@ -552,6 +521,7 @@
             <li>제공되는 사은혜택과 동영상은 구분하여 별도구매 불가합니다.</li>
             <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다. </li>
             <li>수강혜택 사은품으로 발급된 인증코드 및 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
+            <li>지급된 샵플링 프로그램 이용을 위해서는 사업자등록번호가 필요합니다. (2020년 4월 9일 이전 별도 공지)</li>
             <li>수강상품 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
         </ul>
 
@@ -559,12 +529,10 @@
     </div>
 
     <div class="btnbuy NSK-Black">        
-{{--        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-        [온라인강의] 신청하기 ></a>
-    </div>
-
-    
+            [온라인강의] 신청하기 >
+        </a>
+    </div>   
 </div>
 <!-- End Container -->
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>

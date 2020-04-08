@@ -83,9 +83,8 @@
     .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
     .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt07 {background:#3a99f0; padding:20px}
-    .evt07 li {display:inline; float:left; width:50%}
-    .evt07 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 {background:#1fca00; padding:20px}
+    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -138,7 +137,7 @@
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
-<div id="Container" class="Container NG c_both">            
+<div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
         <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_top.jpg" alt="창업 다마고치" ></div>             
         <div class="evtTop02">
@@ -389,12 +388,6 @@
         </div>	
     </div>
 
-    <div class="btnbuy NSK-Black">        
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-            [온라인강의] 신청하기 >
-        </a>
-    </div>
-
     <div class="evtCtnsBox evtFooter">
         <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
@@ -435,6 +428,14 @@
 
         <div>※ 이용문의 : 고객만족센터 1544-5006</div>
     </div>
+
+    <div class="btnbuy NSK-Black">        
+        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+            [온라인강의] 신청하기 >
+        </a>
+    </div>
+
+    
 </div>
 <!-- End Container -->
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>

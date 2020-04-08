@@ -55,7 +55,7 @@ class Home extends \app\controllers\FrontController
 
         //엔잡 메인 오픈 이전 하드코딩 분기처리. TODO: 오픈 이후 제거
         if(empty($this->_site_code) === false && $this->_site_code == '2014') {
-            if(ENVIRONMENT === 'production' && date('YmdHi') < '202004090000') {
+            if(ENVIRONMENT === 'production' && date('YmdHi') < '202004091000') {
                 $_view_path .= '_prev';
             }
         }

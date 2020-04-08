@@ -522,7 +522,7 @@
         [온라인강의] 신청하기 ></a>
     </div>
 
-    <div class="evtFooter">
+    <div class="evtCtnsBox evtFooter">
         <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
         <p># 런칭기념  이벤트 안내</p>

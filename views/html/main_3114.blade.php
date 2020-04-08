@@ -156,36 +156,22 @@
 .njob2 .List-Table li:last-child {
     border-bottom: 1px solid #000;
 }
-.njob2 .willbesCenter {float:right; background:#ccc url(https://static.willbes.net/public/images/promotion/main/3114_info.jpg) no-repeat center top; width:600px; height:297px;} 
-.njob2 .willbesCenter ul {width:230px; margin:120px auto; margin-left:60px; }
-.njob2 .willbesCenter ul li {display: inline; float:left; width:50%; padding:0; margin:0; margin-bottom:20px}
+.njob2 .willbesCenter {float:right; width:600px; height:297px; border:10px solid #f0f0f0; background:#fff; padding:40px 50px; text-align:left} 
+.njob2 .willbesCenter h5 {font-size:24px; margin-bottom:30px; color:#000}
+.njob2 .willbesCenter span { vertical-align: bottom;}
+.njob2 .willbesCenter ul {width:100%; margin-top:34px}
+.njob2 .willbesCenter ul li {display: inline; float:left; width:25%; padding:0; margin:0;}
+.njob2 .willbesCenter ul li a {display:block; border-right:1px solid #e4e4e4; text-align:center}
+.njob2 .willbesCenter ul li:last-child a {border-right:0; }
 .njob2 .willbesCenter ul:after,
 .njob2 .widthAuto:after {content:""; display:block; clear:both}
+.njob2 .willbesCenter .tel {font-size:18px; margin-top:34px; line-height:1.5}
 
-/* Main Container : cscenterBox : willbesNumber */
-.njob2 .willbesNumber {
-    background: #f6f6f6;
-    width: 720px;
-    padding: 30px 0 0 50px;
-    letter-spacing: normal;    
-}
-.njob2 .willbesNumber ul {
-    padding:0 50px;
-}
-.njob2 .willbesNumber ul li {   
-    margin:0;
-    vertical-align: top;
-    display: inline;
-    float:left;
-    width:50%;    
-}
-.njob2 .willbesNumber ul:after {
-    content:""; display:block; clear:both;
-}
+
 
 /* Main Container */
 .njob2 .tx-color {
-    color: #643fb5;
+    color: #3997f0;
 }
 </style>
 
@@ -362,6 +348,7 @@
             <!--willbesNews //-->
 
             <div class="willbesCenter f_right">
+                <h5 class="NSK-Black">서비스 <span class="tx-color">이용안내</span> <span class="tx13 NSK ml20 tx-black">궁금하신 사항에 대해 자세히 알려드립니다.</span></h5>
                 <ul>
                     <li>
                         <a href="{{ front_url('/support/faq/index') }}">
@@ -388,17 +375,13 @@
                         </a>
                     </li>
                 </ul>
+                <div class="tel">
+                    수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006</span><br>
+                    운영시간 평일 <span class="NSK-Black tx-color ml10">09시~18시 (점심시간 12시~1시)  주말/공휴일 휴무</span>
+                </div>
             </div>            
         </div>
     </div>
-
-    <div class="Section NSK mt70">
-        <div class="widthAuto">
-
-        </div>
-    </div>
-
-
 </div>
 <!-- End Container -->
 

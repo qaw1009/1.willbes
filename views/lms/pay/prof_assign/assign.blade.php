@@ -27,6 +27,8 @@
                     <thead>
                     <tr class="bg-odd">
                         <th>회원정보</th>
+                        <th>수강증</th>
+                        <th>종합반수강번호</th>
                         <th>카테고리</th>
                         <th>캠퍼스</th>
                         <th>종합반명</th>
@@ -35,6 +37,8 @@
                     <tbody>
                         <tr>
                             <td>{{ $data['MemName'] }}({{ $data['MemId'] }})<br/>{{ $data['MemPhone'] }}</td>
+                            <td>{{ $data['CertNo'] }}</td>
+                            <td>{{ $data['PackCertNo'] }}</td>
                             <td>{{ $data['LgCateName'] }}{{ empty($data['MdCateName']) === false ? '>' . $data['MdCateName'] : '' }}</td>
                             <td>{{ $data['CampusCcdName'] }}</td>
                             <td>[{{ $data['ProdCode'] }}] {{ $data['ProdName'] }}</td>
@@ -93,6 +97,8 @@
                         <tr class="bg-odd">
                             <th class="valign-middle">주문번호</th>
                             <th class="valign-middle">회원정보</th>
+                            <th class="valign-middle">수강증</th>
+                            <th class="valign-middle">종합반<br/>수강번호</th>
                             <th class="valign-middle">카테고리</th>
                             <th class="valign-middle">캠퍼스</th>
                             <th class="valign-middle">종합반명</th>
@@ -108,6 +114,8 @@
                         <tr>
                             <td><a href="{{ site_url('/pay/offProfAssign/show/' . $data['OrderIdx']) }}" class="blue" target="_blank"><u>{{ $data['OrderNo'] }}</u></a><br/>{{ $data['SiteName'] }}</td>
                             <td>{{ $data['MemName'] }}({{ $data['MemId'] }})<br/>{{ $data['MemPhone'] }}</td>
+                            <td>{{ $data['CertNo'] }}</td>
+                            <td>{{ $data['PackCertNo'] }}</td>
                             <td>{{ $data['LgCateName'] }}{{ empty($data['MdCateName']) === false ? '>' . $data['MdCateName'] : '' }}</td>
                             <td>{{ $data['CampusCcdName'] }}</td>
                             <td>[{{ $data['ProdCode'] }}] {{ $data['ProdName'] }}</td>

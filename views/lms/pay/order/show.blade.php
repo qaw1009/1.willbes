@@ -386,8 +386,8 @@
                 @endif
             @endif
 
-            {{-- 환불 관련 메뉴일 경우만 환불내역 노출 --}}
-            @if($_is_refund === true && $_is_refund_data === true)
+            {{-- 환불 관련 메뉴일 경우만 환불내역 노출 ==> 전체주문내역 노출 --}}
+            @if($_is_refund_data === true && empty($data['refund_prod']) === false)
                 <div class="ln_solid mt-5"></div>
                 <div class="row">
                     <div class="col-md-6">
@@ -592,8 +592,8 @@
             });
         @endif
 
-        {{-- 환불 컨트롤러에서만 사용 --}}
-        @if($_is_refund === true)
+        {{-- 환불 컨트롤러에서만 사용 ==> 전체주문내역 사용 --}}
+        @if($_is_refund_data === true && empty($data['refund_prod']) === false)
             // 환불사유 버튼 클릭
             $('.btn-refund-req-modify').on('click', function() {
                 $('.btn-refund-req-modify').setLayer({

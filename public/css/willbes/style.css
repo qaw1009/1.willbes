@@ -38,13 +38,13 @@
 @import url("style_hanlim_3098.css"); /*고등고시 법원행시*/
 @import url("style_hanlim_3099.css"); /*고등고시 변호사시험*/
 @import url("style_willpass.css"); /*취업*/
-@import url("style_2014_3114.css"); /*엔잡*/
+
 
 
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
-    padding: 65px 0;    
+    padding: 65px 0; 
 }
 .mem-Tit img { vertical-align: bottom}
 .mem-Tit span {
@@ -54,7 +54,7 @@
     letter-spacing: -2px;
     display: inline-block;
     padding-left: 11px;
-    padding-bottom:3px;
+    padding-bottom:3px; 
 }
 .mem-Acad-Tit {
     padding: 40px 0 50px;

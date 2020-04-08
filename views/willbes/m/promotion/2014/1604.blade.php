@@ -226,7 +226,7 @@
         <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span> 
         <div class="evtMenu">
             <ul class="tabs">
-                <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
+                <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
                 <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                 <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                 <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
@@ -321,8 +321,8 @@
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                    <span class="NSK-Black">지금, 사전예약 </span>
-                    신청하고 1억 만들기 도전! → 
+                    <span class="NSK-Black">지금, 수강신청하고 </span>
+                    제2의 월급통장 만들기 도전! → 
                     </a>
                 </li>
             </ul>
@@ -338,9 +338,8 @@
     <div class="evtFooter">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
-            <p># 사전예약 이벤트 안내</p>
-            <div>사전예약신청 강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.<br>
-            (현재 진행중인 2020년 3월 9일 사전 예약신청 강좌의 경우 4월 9일부터 수강 시작)</div>
+            <p># 런칭기념  이벤트 안내</p>
+            <div>강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.( 4월 9일부터 수강 시작)</div>
 
             <p># 수강안내</p>
             <ul>

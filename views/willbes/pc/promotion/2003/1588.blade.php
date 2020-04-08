@@ -62,14 +62,15 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_sky.png" usemap="#Map1588_sky" title="반반한 모의고사" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_sky.png" usemap="#Map1588_sky" title="반반한 모의고사" border="0">
             <map name="Map1588_sky" id="Map1588_sky">
-                <area shape="rect" coords="8,116,154,189" href="#youtube_watch" />
-                <area shape="rect" coords="8,202,154,272" href="#detail" />
-                <area shape="rect" coords="8,276,154,350" href="#evt1"/>
-                <area shape="rect" coords="8,357,154,434" href="#evt2"/>
-                <area shape="rect" coords="5,436,155,535" href="#evt3"/>
-            </map>
+                <area shape="rect" coords="8,118,153,194" href="#youtube_watch" />
+                <area shape="rect" coords="7,199,151,275" href="#detail" />
+                <area shape="rect" coords="7,281,150,353" href="#evt1" />
+                <area shape="rect" coords="8,358,149,433" href="#evt2" />
+                <area shape="rect" coords="7,439,150,513" href="#evt3" />
+                <area shape="rect" coords="4,522,152,593" href="#evt3" />
+            </map>           
         </div>              
 
         <div class="evtCtnsBox evttop" >     
@@ -101,7 +102,7 @@
         </div>     
 
         <div class="evtCtnsBox evt01s_youtube">  
-            <iframe src="https://www.youtube.com/embed/qvIFtFYt20M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
+            <iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
         </div>
 
         <div class="evtCtnsBox evt01ss">
@@ -142,10 +143,11 @@
             @endif
         </div>
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0" id="evt3">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_03ss.gif" usemap="#Map1588ss" title="다시보기 서비스" border="0" id="evt3">
             <map name="Map1588ss" id="Map1588ss">
                 <area shape="rect" coords="178,560,504,643" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163828" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="617,559,951,645" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="769,921,915,1054" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank" onfocus='this.blur()' />
             </map>
         </div>
 

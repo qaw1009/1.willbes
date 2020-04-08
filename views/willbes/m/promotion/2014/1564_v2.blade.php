@@ -7,7 +7,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtTop {position:relative}
     .evtTop01 {background:#bebcbd;}
-    .evtTop > ul {padding:20px}
+    .evtTop > ul {padding:20px 40px}
     .evtTop > ul li { list-style:disc; margin-left:15px; margin-bottom:5px; text-align:left;}
     .evtTop span {position:absolute; right:5%; top:35%; animation: sp01 1.5s linear infinite;}
     .evtTop span img {width:80px}
@@ -31,8 +31,8 @@
     .evt02 .price li:nth-child(2) div {border-radius:10px; background:#3a99f0; color:#fff}
     .evt02 .price li:nth-child(3) {margin-bottom:30px;}
     .evt02 .price li:nth-child(3) dl {position:relative; text-align:left; line-height:1; margin:0 auto;}
-    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:30%; color:#3a99f0} 
-    .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px}
+    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#3a99f0} 
+    .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
     .evt02 .price li:nth-child(3) dd span {color:#3a99f0}
     .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
     .evt02 .price li:nth-child(4) i {color:#a3a3a3}
@@ -45,45 +45,53 @@
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
 
     .evt03 {background:#fff; padding-top:50px}
-    .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem}
-/*
-    .evt03 ul {width:80%; max-width:900px; margin:0 auto}
-    .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 0.5%; border-radius:10px; background:#353267; color:#fff}
-    .evt03 ul li p {font-size:16px; margin-bottom:15px; font-weight:600}
-    .evt03 ul li a {display:block; padding:8px 0; width:90px; text-align:center; font-size:14px; margin:0 auto 5px; border-radius:4px;}
-    .evt03 ul li a.btnst01 {border:1px solid #ccc;}
-    .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-    .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-    .evt03 ul li a:hover {background:#000; color:#fff}
-    .evt03 ul:after {content:""; display:block; clear:both}
-    .evt03 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
-*/
-    .evt04 {background:#ececec; padding:100px 0 50px}
-    .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
-    .evt04 h4 {color:#3a99f0; font-size:18px}
-    .evt04 .columns {padding:20px;
+    .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem; margin-bottom:30px; padding:0 20px}   
+
+
+    .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
+
+    .evt05 {text-align:left; padding:0 20px}
+    .evt05 h5 {color:#383368; font-size:2.45rem; line-height:1; margin-bottom:20px}
+    .evt05 .evt05Txt01 { font-size:1.6rem;}
+    .evt05 .curriculum {margin:30px 0}
+    .evt05 dl {margin-top:30px;}
+    .evt05 dl:first-child {margin:0}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#f80700; margin-top:30px}
+    .evt05 dt:first-child {margin:0}
+    .evt05 ul {margin:10px auto}
+    .evt05 ul li {display:inline; float:left; padding:15px; border:1px solid #e4e4e4; }
+    .evt05 ul li p {margin-bottom:10px;}
+    .evt05 ul li a {display:inline-block; padding:0 8px; text-align:center;  margin:0 auto 5px; border-radius:4px;}
+    .evt05 ul li a.btnst01 {border:1px solid #ccc;}
+    .evt05 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+    .evt05 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+    .evt05 ul li a:hover {background:#000; color:#fff}
+    .evt05 ul:after {content:""; display:block; clear:both}
+    .evt05 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
+    
+    .evt06 .columns {padding:20px;
         column-count: 1;
         column-gap:20px;
     }
-    .evt04 .columns div {
+    .evt06 .columns div {
         text-align:justify; font-size:14px; line-height:1.4;
         display:inline-block;
         padding:20px; border:1px solid #eee; border-radius:10px;
         margin-bottom:20px; color:#888; background:#fff;
     }
-    .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
-    .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-    .evt04 .columns div strong {font-size:bold; color:#333}
+    .evt06 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
+    .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+    .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt05 {background:#3a99f0; padding-bottom:50px}
-    .evt05 li {display:inline; float:left; width:50%}
-    .evt05 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
-    .evt05 li a:hover {background:#fff; color:#000;
+    .evt07 {background:#3a99f0; padding:20px}
+    .evt07 li {display:inline; float:left; width:50%}
+    .evt07 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
-    .evt05 li span {display:block; font-size:1.25rem}
-    .evt05 ul:after {content:""; display:block; clear:both}
+    .evt07 li span {display:block; font-size:1.25rem}
+    .evt07 ul:after {content:""; display:block; clear:both}
 
     .video-container-box {padding:20px}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
@@ -103,12 +111,12 @@
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 
-    .evtFooter {max-width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666}
+    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
-    .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
+    .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
     .evtFooter div,
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; }
+    .evtFooter li {margin-left:20px; list-style-type: decimal;}
 
 
     /* 폰 가로, 태블릿 세로*/
@@ -118,7 +126,7 @@
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
-
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
     }
 
     /* 태블릿 가로, PC */
@@ -131,7 +139,7 @@
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
-<div id="Container" class="Container NG c_both">            
+<div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
         <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top.jpg" alt="창업 다마고치" ></div>             
         <div class="evtTop02">
@@ -203,54 +211,228 @@
                 안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
                 유튜브에 저의 창업 성장기를 많은 분들께<br>
                 공유하고 있는 <span class="NSK-Black">창업다마고치 김정환</span>입니다. 
+            </div>            
+        </div> 
+
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_02.jpg" alt="인플루언서" >
+            <div class="evt04Txt01">
+                평범한 직장인이었던 제가 사업가 친구가 알려주는 코칭을
+                그대로 따르기만 했는데도 다마고치가 자라듯이 빠르게 성장
+                할 수 있었고 그 과정에서 저만의 방법을 찾기 위한 
+                수많은 시도를 거듭했습니다.<br>
+                <br>
+                앞서 그 길을 간 누군가가 자신의 경험을 공유해주고 
+                바른 방향을 제시한다면 그리고 거기에 자신의 열망과 
+                노력이 더해진다면, 창업을 통해 소득이 급격히 늘어나는 일이 
+                결코 허황된 일이 아니라는 것을 저는 체험했습니다.<br>
+                <br>
+                저는 그동안 유튜브 채널과 저의 책을 통해 매출 0원부터 
+                9천만원에 이르기까지 저의 성장기를 가감없이 보여드렸고
+                이제는 강의를 통해서 제가 갔던 길을 누구나 쉽게 따라
+                오실 수 있도록 도와드리려 합니다.
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
-        </div>   
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_03.jpg" alt="인플루언서" >
+            <div class="evt04Txt01">
+                이 강의에서는 제가 앞서 경험한 사업적 기술을 토대로 
+                그간 공개한 적 없던 여러 시행착오들과 
+                어려움 극복 과정을 통해 과거 저처럼 돈을 벌고 싶은데 
+                방법을 몰라 막막해할 누군가에게 새로운 기회를 제공하고 
+                싶습니다. <br>
+                <br>
+                맨땅에 헤딩만 하기보다, 우여곡절만 겪기보다, 
+                제대로 시작도 못하고 포기하기보다, 
+                적어도 돈을 벌 수 있는 발판을 마련하는 데 
+                보탬이 되기를 바라는 마음으로<br>
+                <br>
+                팔리는 상세 페이지 만드는 법부터 유튜브로 
+                수익 창출하는 비법은 물론, 장사의 본질을 이해하는 것과 
+                사업 기초를 다지는 기술까지 안내해 드리겠습니다!
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_04.jpg" alt="인플루언서" >
             <div class="video-container-box">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/_yVIa13RFW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_05.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_06.jpg" alt="e커머스 강좌소개" ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_07.jpg" alt="e커머스 강좌소개" ><br>
+            <div class="evt04Txt01">
+                첫째, 상품발굴<br>
+                경쟁력 있는 상품을 선별하여 제공해드립니다!<br>
+                <br>
+                어쩌면 제품을 ‘파는 것’ 보다  
+                판매할 제품을 ‘사는 것’이 더 중요하다고 할 수 있습니다. 
+                가격과 품질 경쟁력을 갖추면 판매는 어렵지 않습니다. 
+                이것이 ‘상품 소싱’의 중요성입니다.<br>
+                <br>
+                판매할 제품을 직접 구매하여 판매하는 ‘사입‘ 방식, 
+                그리고 재고없이 공급처에서 직접 발송까지 책임지는 
+                ‘위탁판매’ 까지! 방법만 알려드리는 것이 아니라, 
+                국내 1위 온라인 B2B 플랫폼과의 제휴를 통해
+                강의 수강생들에게 좋은 품질에 가격 경쟁력도 갖춘 
+                제품과 공급처를 제공해드립니다.<br>
+                강의를 보면서 스마트스토어를 개설하고 강의와 함께
+                상품도 제공하여 빠르게 매출도 발생시킬 수 있도록 
+                지원하겠습니다.
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_08.jpg" alt="e커머스 강좌소개" ><br>
+            <div class="evt04Txt01">
+                둘째, 외부유입<br>
+                다른 강의에서 흔하게 알려주는 SEO가이드를 따르고 
+                검색 최적화를 해서 노출을 늘리는 방법은 더 이상 통하지
+                않습니다.<br>
+                <br>
+                예전에는 이를 등한시하는 판매자가 많았기 때문에 , 
+                그것만으로도 경쟁력 있었지만 
+                이제는 힘듭니다.  <br>
+                <br>
+                매뉴얼에 나와있는 내용은 누구나 알고 있는 방법이고 
+                당연히 해야 하는 것이기 때문이죠.<br>
+                그래서 외부 유입을 만드는 게 중요한데요. <br>
+                특히 많은 사람들이 인터넷상에서 시간을 보내는 
+                유튜브, SNS, 네이버 등에서 고객을 끌어와야 합니다. 
+                강의에서 그 방법에 대해서도 자세히 알려드립니다.
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_09.jpg" alt="e커머스 강좌소개" ><br>
+            <div class="evt04Txt01">
+                셋째, 설득력 높은 상세페이지<br>
+                열심히 등록한 내 상품이 팔리지 않는 이유?<br>
+                <br>
+                사진만 고퀄리티로 찍는다고 상품이 잘 팔릴까요?<br>
+                만약, 같은 상품이라도 사진 한 장만 등록 되어 있는 
+                상세페이지와 실제 판매자가 사용하는 모습과 리뷰가 담긴
+                영상이 있는 상세페이지가 있다면, 
+                어떤 것을 선택하시겠어요?<br>
+                <br>
+                이를 해결하기 위해, <br>
+                상품의 상세페이지 만드는 과정에 대한 정보도 자세하게
+                알려드립니다.
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_10.jpg" alt="e커머스 강좌소개" ><br>
         </div>
     </div>  
 
     <div id="tab03">
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼" >
-            <ul>
-                @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                    @php $i = 1; @endphp
-                    @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                        {{-- <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>{{$i}}강 맛보기 수강 ></a></li> --}}
-                        <li>
-                            <p>{{$i}}강 맛보기 수강 ▼</p>
-                            {{--<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btnst01">WIDE ></a>--}}
-                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
-                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
-                        </li>
-                        @php $i += 1; @endphp
-                    @endforeach
-                @else
-                    <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
-                    <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
-                @endif
-            </ul>
-            <div class="evt03Txt01">
-                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+        <div class="evtCtnsBox evt05">
+            <h5 class="NSK-Black">
+                가장 현실적인<Br>
+                월 100만원 만들고<Br>
+                지금 바로 시작할 수 있는<Br>
+                커리큘럼
+            </h5>
+            <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+            <div class="curriculum">
+            	<dl>
+                    <dt>INTRO</dt> 
+                    <dd>1강 월 수익 100만원,  스마트스토어가 가장 현실적인 이유?</dd>
+                    <dd>2강 ‘지금 바로 시작하는 스마트스토어’ 강의를 제대로 활용하는 방법</dd>
+                    <dd>
+                        <ul>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    {{-- <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>{{$i}}강 맛보기 수강 ></a></li> --}}
+                                    <li>
+                                        <p>{{$i}}강 맛보기 수강 ▼</p>
+                                        {{--<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btnst01">WIDE ></a>--}}
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
+                                    </li>
+                                    @php $i += 1; @endphp
+                                @endforeach
+                            @else
+                                <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
+                                <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                            @endif
+                        </ul>
+                        <div class="evt05Txt02">
+                            * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                            * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                            * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+                        </div>
+                    </dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 1.스마트스토어 개설하기</dt>
+                    <dd>3강 나만의 쇼핑몰 만들자! 스마트스토어 개설하기</dd>
+                    <dd>4강 스마트스토어를 운영을 위해 꼭 필요한 것들</dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 2. 위탁판매로 재고 없이 소자본 창업하기</dt>
+                    <dd>5강 재고 부담이 없는 판매 방식! 위탁판매란 무엇일까?</dd>
+                    <dd>6강 스마트스토어에 위탁판매 상품 등록하기</dd>
+                    <dd>7강 잘 팔리는 상품명 만드는 방법</dd>
+                    <dd>8강 상품을 업로드할 때 주의해야 할 것들</dd> 
+                    <dd>9강 네이버 검색광고로 유입량 늘리는 방법</dd>
+                    <dd>10강 감동의 첫 주문! 위탁상품 고객께 발송하기</dd>
+                    <dd>11강 친절하고 냉정하게! 고객응대와 멘탈관리</dd>
+                    <dd>12강 고객이 어떻게 찾아왔을까? 유입경로 분석하기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 3. 도매상품 사입 판매로 매출 만들기</dt>
+                    <dd>13강 소싱 (사입)판매란 무엇인가? 위탁판매와 차이점</dd>
+                    <dd>14강 무엇을 팔아야 할까? 사업아이템 정하기</dd>
+                    <dd>15강 경쟁력 있는 상품을 찾는 방법</dd>
+                    <dd>16강 이제는 실전이다! 도매로 상품 사입하기</dd>
+                    <dd>17강 치열한 경쟁을 이겨내는 만능 열쇠? 나만의 브랜드 만들기!</dd>
+                    <dd>18강 설득의 심리학! 상세페이지 만들기</dd>
+                    <dd>19강 고객의 평가를 결정하는 제품포장과 발송</dd>
+                    <dd>20강 단골 만들기! 구매평과 재구매를 만드는 방법</dd>
+                </dl>
+                
+				<dl>
+                    <dt>Chapter 4. 중국 소싱으로 마진 극대화</dt>
+                    <dd>21강 1688에서 원하는 상품을 찾아 내는 방법</dd>
+                    <dd>22강 생각보다 쉬운 개인 무역! 중국에서 직접 수입하기</dd>
+                    <dd>23강 수입 통관절차 및 제품 받아보기</dd>
+				</dl>
+                
+                <dl>
+                    <dt>Chapter5. 나도 글로벌 셀러, 해외구매대행 사업</dt>
+                    <dd>24강 부업으로도 최고! 해외구매대행 사업</dd>
+                    <dd>25강 타오바오 상품을 내 스마트스토어에서 판매하기</dd>
+                    <dd>26강 배송대행지를 이용한 상품 발송</dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 6. 매출을 확대를 위한 오픈마켓 진출</dt>
+                    <dd>27강 판매채널 확장하기! 오픈마켓 비교 분석</dd>
+                    <dd>28강 1688 수입상품, 도매 사이트에서 동시에 판매하는 방법 </dd>
+                    <dd>29강  오픈마켓 상품 업로드, 솔루션으로 해결하기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 7. 외부 유입으로 고객을 모아보자</dt>
+                    <dd>30강 네이버 블로그로 외부유입에 대한 감을 잡자</dd>
+                    <dd>31강 스마트스토어 유입을 위한 블로그 상위노출 방법</dd>
+                    <dd>32강 잠들어있는 내 SNS 계정, 마케팅 창구로 활용하기</dd>
+                    <dd>33강 대세는 유튜브! 유튜브 컨텐츠로 마케팅하기</dd>
+                    <dd>34강 이제는 미디어 커머스! 유튜브로 매출을 끌어올리는 비결</dd>
+                </dl>
+                
+                <dl>
+                    <dt>Chapter 8. 아웃소싱으로 사업규모 키우기 </dt>
+                    <dd>35강 3자물류(3PL)로 택배포장에서 벗어나자</dd>
+                    <dd>36강 이제는 세금과의 싸움, 초보 창업자의 세금처리에 대해</dd>
+                    <dd>37강 디지털 노마드가 되어 볼까요?</dd>
+                </dl>
+                 
+                <dl>
+                    <dt>OUTRO</dt>
+                    <dd>38강 여러분의 경제적 자유를 응원합니다.
+                </dl>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼" >
         </div>
     </div>
 
     <div id="tab04">
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_01.png" alt="BEST 수강후기" >
+        <div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_11.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
                     <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>
@@ -314,18 +496,18 @@
                 </div>           
             </div>                
         </div>
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
+        <div class="evtCtnsBox evt07">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_12.png" >
             <ul>
                 <li>
                 {{--<a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">--}}
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                    <span class="NSK-Black">지금, 사전예약 </span>
-                    신청하고 1억 만들기 도전! → 
+                    <span class="NSK-Black">지금, 수강신청하고 </span>
+                    100만원 만들기 도전! → 
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
+                    <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank">
                     <span class="NSK-Black">이미 신청했다면,</span>
                     위탁/사입상품 추천 받기! → 
                     </a>
@@ -336,8 +518,8 @@
 
     <div class="btnbuy NSK-Black">        
 {{--        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');"><span class="NSK">미리 신청하면 24%할인!</span><br>
-        [온라인강의] 사전예약 신청하기 ></a>
+        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+        [온라인강의] 신청하기 ></a>
     </div>
 
     <div class="evtFooter">

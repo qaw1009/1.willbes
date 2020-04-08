@@ -168,12 +168,12 @@
                 <li><div>4월 한달 전강좌 10% 할인</div></li>
                 <li>   
                     <dl>
-                        <dt>9일</dt>                 
+                        <dt id="ddayCountDayText"></dt>
                         <dd>
                             신청마감까지<br>
                             <span id="ddayCountText"></span> 남았습니다.
                         </dd>
-                    </di>
+                    </dl>
                 </li>
                 <li><i>195,000원</i> <span>10%할인</span> 175,500원</li>
                 <li>월 <span>3만원</span>대</li>
@@ -513,7 +513,8 @@
             if(second_left.length == 1) second_left = '0' + second_left;
 
             if ((event_day.getTime() - now.getTime()) > 0) {
-                $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
+                $('#'+ele_id).html(hour_left + ':' + minute_left + ':' + second_left);
+                $('#ddayCountDayText').html(date_left + '일 ');
 
                 setTimeout(function() {
                     dDayCountDownText(end_date, ele_id);

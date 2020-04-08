@@ -29,7 +29,7 @@
         .time table td {line-height:1.2}        
         .time table td img {width:65%}
         .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
-        .time span {color:#000; font-size:28px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time span {color:#000; font-size:28px;}
         .time table td:last-child,
         .time table td:last-child span {font-size:40px}
 

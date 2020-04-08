@@ -82,6 +82,9 @@ class BaseOrder extends \app\controllers\BaseController
         $admin_pay_data = [];
         $delivery_addr = [];
 
+        // 환불요청내역 노출여부
+        $is_show_refund_req = in_array($this->_order_type, ['cart', 'delivery', 'free', 'vbank']) === false;
+
         // 상품 부가정보 대상 상품타입공통코드 (온라인/학원강좌만)
         $arr_lec_prod_type_ccd = array_filter_keys($this->orderListModel->_prod_type_ccd, ['on_lecture', 'off_lecture']);
 
@@ -95,8 +98,9 @@ class BaseOrder extends \app\controllers\BaseController
             }
 
             if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
-                // 환불내역 데이터 가공 (환불 관련 메뉴에서만 사용)
-                if ($this->_is_refund === true) {
+                // 환불내역 데이터 가공 (환불 관련 메뉴에서만 사용) ==> 전체주문내역 노출
+                //if ($this->_is_refund === true) {
+                if ($is_show_refund_req === true) {
                     $refund_data[$row['RefundReqIdx']]['ProdTypeCcdName'][] = $row['ProdTypeCcdName'];
                     $refund_data[$row['RefundReqIdx']]['LearnPatternCcdName'][] = $row['LearnPatternCcdName'];
                     $refund_data[$row['RefundReqIdx']]['ProdName'][] = $row['ProdName'];

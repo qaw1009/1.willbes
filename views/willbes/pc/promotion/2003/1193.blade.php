@@ -113,11 +113,11 @@
 		</div>
 		--}}			
 		<div class="evtCtnsBox evtTop">
-			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
-			<map name="Map_1193A" id="Map_1193A">					
-				<area shape="rect" coords="463,177,544,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
-				<area shape="rect" coords="767,851,976,956" href="#chkInfo" onclick="go_PassLecture('158055');">
-			</map>	 
+			<img src="https://static.willbes.net/public/images/promotion/2020/04/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
+			<map name="Map_1193A" id="Map_1193A">
+				<area shape="rect" coords="300,901,471,957" href="#event" />
+				<area shape="rect" coords="754,900,924,957" href="#event" />
+			</map>	
 		</div>		
 
 		<div class="evtCtnsBox evt01" id="evt01">
@@ -162,10 +162,11 @@
 		</div>
 
 		<div class="evtCtnsBox evt04" id="event">
-			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_04.gif" usemap="#Map1193B" title="한덕현T-PASS" border="0" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/04/1193_04.jpg" usemap="#Map1193B" border="0" />
 			<map name="Map1193B" id="Map1193B">
-				<area shape="rect" coords="801,785,988,876" href="#chkInfo" onclick="go_PassLecture('162539');" title="69만원 수강신청">
-			</map>
+				<area shape="rect" coords="807,722,966,767" href="#chkInfo" onclick="go_PassLecture('162539');" title="19만원 수강신청">
+				<area shape="rect" coords="806,841,966,888" href="#chkInfo" onclick="go_PassLecture('163940');" title="29만원 수강신청">
+			</map>			
 		</div>
 
 		<div class="check" id="chkInfo">
@@ -174,7 +175,7 @@
 		</div>
 
 		<div class="evtCtnsBox evt05" id="tip">
-			<img src="https://static.willbes.net/public/images/promotion/2020/03/1193_tip.jpg" title="이용약관" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/04/1193_tip.jpg" title="이용약관" />
 		</div>
 	</div>
 	<!-- End Container -->

@@ -231,7 +231,7 @@
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 사전예약 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
             </div>
         </div>
 
@@ -282,7 +282,7 @@
                     팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
                 </div>
 
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼 강좌소개" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1601_03_04.jpg" alt="커리큘럼 강좌소개" >
             </div>
         </div>
 
@@ -370,7 +370,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
+                        <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank">
                         <span class="NSK-Black">이미 신청했다면,</span>
                         위탁/사입상품 추천 받기! → 
                         </a>

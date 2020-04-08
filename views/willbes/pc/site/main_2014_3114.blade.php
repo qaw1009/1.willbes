@@ -3,6 +3,11 @@
 @section('content')
     <style type="text/css">
         /*********************************************     Main Container : cert     *********************************************/
+        /* top bar banner */
+        .njob .topBanner {display:block; background:url(https://static.willbes.net/public/images/promotion/main/3114_top_bn_bg.jpg) no-repeat center top;  width:100%; text-align:center}
+        .njob .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+        .njob .topBanner p img {width:100%}
+
         .skybanner {
             position:fixed;
             bottom:20px;

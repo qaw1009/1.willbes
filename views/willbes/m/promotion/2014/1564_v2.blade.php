@@ -52,7 +52,7 @@
     .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
 
     .evt05 {text-align:left; padding:0 20px}
-    .evt05 h5 {color:#383368; font-size:2.45rem; line-height:1; margin-bottom:20px}
+    .evt05 h5 {color:#383368; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
     .evt05 .evt05Txt01 { font-size:1.6rem;}
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}

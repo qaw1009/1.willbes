@@ -198,7 +198,7 @@
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
         }
 
-        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666}
+        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
@@ -216,7 +216,7 @@
             <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
@@ -226,9 +226,9 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_01.jpg" alt="사전예약 이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1603_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 사전예약 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
             </div>
         </div>
 
@@ -267,7 +267,7 @@
                         <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
                     @endif
                 </ul>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_03_04_02.jpg" alt="e커머스 강좌소개" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1603_03_04_02.jpg" alt="e커머스 강좌소개" >
             </div>
         </div>
 
@@ -327,8 +327,8 @@
                 <ul>
                     <li>
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                        <span class="NSK-Black">지금, 사전예약 </span>
-                        신청하고 100만원 만들기 도전! → 
+                        <span class="NSK-Black">지금, 수강신청하고 </span>
+                        재고없이 월1천만원 도전! → 
                         </a>
                     </li>
                 </ul>
@@ -338,9 +338,8 @@
         <div class="evtFooter">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
-            <p># 사전예약 이벤트 안내</p>
-            <div>사전예약신청 강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.<br>
-            (현재 진행중인 2020년 3월 9일 사전 예약신청 강좌의 경우 4월 9일부터 수강 시작)</div>
+            <p># 런칭기념  이벤트 안내</p>
+            <div>강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.( 4월 9일부터 수강 시작)</div>
 
             <p># 수강안내</p>
             <ul>

@@ -127,7 +127,7 @@
     {{-- 엔잡 --}}
     <div id="topBannerLayer" class="njob">
         <div class="topBanner">
-            <a href="none"><img src="https://static.willbes.net/public/images/promotion/main/3114_top_bn.jpg" alt="10월 대개강"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_top_bn.jpg" alt="10월 대개강"></a>
         </div>
     </div>
 @endif

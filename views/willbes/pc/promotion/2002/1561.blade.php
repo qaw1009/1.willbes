@@ -30,8 +30,8 @@
         }
         .skybanner2{
             position:fixed;
-            top:270px;
-            left:190px;
+            top:590px;
+            right:0;
             z-index:1;
         }
 
@@ -109,7 +109,7 @@
         </div>
 
         <div class="skybanner2" >
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky02.png" alt="통합생활관리반" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/04/1561_sky03.png" alt="통합생활관리반" ></a>
         </div>               
 
 		<div class="evtCtnsBox wb_cts00">

@@ -81,7 +81,8 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_willpass') }}" target="_blank">취업 공기업</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/main_3114') }}" target="_blank">창업</a></li>             
+                <li class="w50"><a href="{{ site_url('/home/html/main_3114_v1') }}" target="_blank">N잡</a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/main_3114') }}" target="_blank">N잡 리뉴얼</a></li>             
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기</a></li>

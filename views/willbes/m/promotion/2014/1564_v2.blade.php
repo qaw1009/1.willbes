@@ -46,8 +46,7 @@
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
 
     .evt03 {background:#fff; padding-top:50px}
-    .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem; margin-bottom:30px; padding:0 20px}   
-
+    .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem; margin-bottom:30px; padding:0 20px} 
 
     .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
 
@@ -425,7 +424,7 @@
                  
                 <dl>
                     <dt>OUTRO</dt>
-                    <dd>38강 여러분의 경제적 자유를 응원합니다.
+                    <dd>38강 여러분의 경제적 자유를 응원합니다.</dd>
                 </dl>
             </div>
         </div>

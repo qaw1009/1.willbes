@@ -6,7 +6,7 @@ var html = '', link_url = '#none';
     html += '   <div class="swiper-wrapper">';
     @foreach($data as $idx => $row)
         @if(empty($row['LinkUrl']) === false)
-            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']), 'www') }}';
+            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'], 'www') }}';
         @endif
         html += '   <div class="swiper-slide"><a href="' + link_url + '" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/></a></div>';
     @endforeach
@@ -27,7 +27,8 @@ var html = '', link_url = '#none';
         html += '<div id="APPLYPASS" class="willbes-Layer-Black"></div>';
     @else
         @if(empty($data[0]['LinkUrl']) === false)
-            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']), 'www') }}';
+            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'] ,'www') }}';
+
         @endif
         html = '<a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
     @endif

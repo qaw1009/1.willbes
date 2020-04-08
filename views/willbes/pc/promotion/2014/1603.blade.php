@@ -378,6 +378,10 @@
 
             <div>※ 이용문의 : 고객만족센터 1544-5006</div>
         </div>
+
+        <div class="evtCtnsBox reply">
+            {{--수강후기--}}
+        </div>
     </div>
     <!-- End Container -->
 

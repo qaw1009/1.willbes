@@ -24,8 +24,8 @@
 
     .evt02 {border:1px solid #ccc; border-radius:10px; margin:20px;}
     .evt02 .price {padding:30px; letter-spacing:-1px}
-    .evt02 .price li {margin-bottom:10px; font-size:1.6rem; }
-    .evt02 .price li:nth-child(1) {font-size:2rem;}
+    .evt02 .price li {margin-bottom:10px; font-size:1.5rem; }
+    .evt02 .price li:nth-child(1) {font-size:1.9rem;}
     .evt02 .price li:nth-child(1) span {color:#3a99f0}
     .evt02 .price li:nth-child(2) {margin-bottom:30px;}
     .evt02 .price li:nth-child(2) div {border-radius:10px; background:#3a99f0; color:#fff}
@@ -35,11 +35,12 @@
     .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
     .evt02 .price li:nth-child(3) dd span {color:#3a99f0}
     .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
+    .evt02 .price li:nth-child(4) {font-size:1.4rem; }
     .evt02 .price li:nth-child(4) i {color:#a3a3a3}
     .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
     .evt02 .price li:nth-child(5) {color:#ff0000; font-size:2.4rem}
     .evt02 .price li:nth-child(5) span {font-size:3.4rem}
-    .evt02 .price li:nth-child(6) {text-align:left; color:#414141; font-size:1.2rem}
+    .evt02 .price li:nth-child(6) {text-align:left; color:#414141; font-size:1.1rem}
     .evt02 .evt02-txt {background:#363636; color:#fff; border-radius:0 0 10px 10px; text-align:left; padding:20px; }
     .evt02 .evt02-txt div {font-size:1.5rem}
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}

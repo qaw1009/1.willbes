@@ -17,7 +17,7 @@
 
     .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
     .evtCtnsBox .will-listTi > img {width:50px}
-    .evt02 {padding:40px 60px;}  
+    .evt02 {padding:20px 30px;}  
     .evt02 .bestLec {width:100%; margin:0 auto}
     .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
     .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5; }
@@ -27,7 +27,7 @@
     .evt02 .bestLec li ul li:last-child a {display:inline-block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
     
 
-    .evt03 {padding:40px 60px 0 60px; text-align:left; background:#f7f7f7}
+    .evt03 {padding:20px 30px 0 30px; text-align:left; background:#f7f7f7}
     .evt03 .hotLec {margin-left:-20px}
     .evt03 .hotLec li {
         display: inline;
@@ -45,7 +45,7 @@
 
     .evt04 {margin:0 auto}
 
-    .evt05 {padding:40px 60px 0 60px; text-align:left}
+    .evt05 {padding:20px 30px 0 30px; text-align:left}
     .evt05 .tipLec {margin-left:-20px}
     .evt05 .tipLec li {
         display: inline;
@@ -60,7 +60,7 @@
         display: block;
         clear:both;
     }
-    .evt06 {padding:40px 60px 0 60px; text-align:left}
+    .evt06 {padding:20px 30px 0 30px; text-align:left}
     .evt06 .List-Table {
         width: 100%;
         border-top:1px solid #000;
@@ -94,7 +94,7 @@
         border-bottom: 1px solid #000;
     }
 
-    .evt07 {padding:40px 60px 0 60px;}
+    .evt07 {padding:20px 30px 0 30px;}
     .evt07 ul {background:#f5f5f5}
     .evt07 li { display:inline; float:left; width:25%; padding:20px 0; line-height:1.5}
     .evt07 div {margin-top:5px}
@@ -103,19 +103,19 @@
         display: block;
         clear:both;
     }
-    .evt08 {margin:40px auto 60px}
-    .evt08 img {width:50px}
+    .evt08 {margin:20px auto 30px}
+    .evt08 img {width:40px}
     .evt08 a {display: inline-block; margin:0 5px}
 
     .swiper-button-next,
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
 
     .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
-    .btnbuy div {text-align:left; height:80px; line-height:80px; padding:0 10px; max-width:720px; margin:0 auto;
-        background:url(https://static.willbes.net/public/images/promotion/m/icon_notice.png) no-repeat right center;
+    .btnbuy div {text-align:left; height:50px; line-height:50px; padding:0 10px; max-width:720px; margin:0 auto;
+        background:url(https://static.willbes.net/public/images/promotion/m/icon_notice.png) no-repeat right center; background-size:30px;
         font-size:14px; }
-    .btnbuy a {display:inline-block; margin:0 5px}
-    .btnbuy span {color:#ccc; margin:0 5px}
+    .btnbuy a {display:inline-block; margin:0 3px}
+    .btnbuy span {color:#ccc; margin:0 3px}
     .btnbuy a:hover {background:#fff; color:#3a99f0;}
 
     /* 폰 가로, 태블릿 세로*/
@@ -124,7 +124,13 @@
     }
 
     /* 태블릿 세로 */
-    @@media only all and (min-width: 768px) {   
+    @@media only all and (min-width: 768px) { 
+        .evt02 {padding:40px 60px;} 
+        .evt03,
+        .evt05,
+        .evt06,
+        .evt07 {padding:40px 60px 0 40px;}
+        .evt08 {margin:40px auto 60px}  
         .evtCtnsBox .will-listTi > img {width:64px}       
         .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}
         .evt02 .bestLec > li {
@@ -132,7 +138,10 @@
         }
         .evt02 .bestLec:after {content:""; display:block; clear:both}    
         .evt07 br {display:none}
-        .evt08 img {width:78px}         
+        .evt08 img {width:78px} 
+        .btnbuy div {height:60px; line-height:60px;}  
+        .btnbuy a {margin:0 5px}
+        .btnbuy span {margin:0 5px}      
     }
 
     /* 태블릿 가로, PC */

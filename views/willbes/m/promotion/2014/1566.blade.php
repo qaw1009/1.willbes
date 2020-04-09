@@ -3,123 +3,94 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
-    .evtCtnsBox {width:100%; text-align:center; position:relative; font-size:0.867rem}
-    .evtCtnsBox > img {width:100%; max-width:1120px;}
-    .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top}
-    .evtTop span {position:absolute; left:50%; margin-left:30%; top:30%; animation: sp01 1.5s linear infinite;}
-    .evtTop span img { width:70px}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtTop {position:relative}
+    .evtTop01 {background:#bebcbd;}
+    .evtTop > ul {padding:20px 40px}
+    .evtTop > ul li { list-style:disc; margin-left:15px; margin-bottom:5px; text-align:left;}
+    .evtTop span {position:absolute; right:5%; top:35%; animation: sp01 1.5s linear infinite;}
+    .evtTop span img {width:80px}
     @@keyframes sp01{
          from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
      }
-
-    .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0}
-    .tabs {width:100%; max-width:1120px; margin:0 auto;}
+    .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
+    .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%}
     .tabs li a {display:block; text-align:center; font-size:14px; line-height:1.5; padding:15px 0; color:#999; font-weight:bold; letter-spacing:-1px;}
     .tabs li a:hover,
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
-    .evt01 {background:#fff; padding:100px 0}
-    .evt01 .dday {font-size:0.875rem; position:absolute; top:50%; left:50%; width:100%; margin-left:-50%; text-align:center; letter-spacing: -1px;}
-    .evt01 .dday strong {font-size:0.9rem;}
-    .evt01 .dday img {display:inline-block; margin:0 10px; width:20px;
-        -webkit-animation: vibrate-1 1s linear infinite both;
-        animation: vibrate-1 1s linear infinite both;
-    }
-    @@-webkit-keyframes vibrate-1 {
-         0% {
-             -webkit-transform: translate(0);
-             transform: translate(0);
-         }
-         20% {
-             -webkit-transform: translate(-2px, 2px);
-             transform: translate(-2px, 2px);
-         }
-         40% {
-             -webkit-transform: translate(-2px, -2px);
-             transform: translate(-2px, -2px);
-         }
-         60% {
-             -webkit-transform: translate(2px, 2px);
-             transform: translate(2px, 2px);
-         }
-         80% {
-             -webkit-transform: translate(2px, -2px);
-             transform: translate(2px, -2px);
-         }
-         100% {
-             -webkit-transform: translate(0);
-             transform: translate(0);
-         }
-     }
-    @@keyframes vibrate-1 {
-         0% {
-             -webkit-transform: translate(0);
-             transform: translate(0);
-         }
-         20% {
-             -webkit-transform: translate(-2px, 2px);
-             transform: translate(-2px, 2px);
-         }
-         40% {
-             -webkit-transform: translate(-2px, -2px);
-             transform: translate(-2px, -2px);
-         }
-         60% {
-             -webkit-transform: translate(2px, 2px);
-             transform: translate(2px, 2px);
-         }
-         80% {
-             -webkit-transform: translate(2px, -2px);
-             transform: translate(2px, -2px);
-         }
-         100% {
-             -webkit-transform: translate(0);
-             transform: translate(0);
-         }
-     }
+    .evt02 {border:1px solid #ccc; border-radius:10px; margin:20px;}
+    .evt02 .price {padding:30px; letter-spacing:-1px}
+    .evt02 .price li {margin-bottom:10px; font-size:1.5rem; }
+    .evt02 .price li:nth-child(1) {font-size:1.9rem;}
+    .evt02 .price li:nth-child(1) span {color:#00c73c}
+    .evt02 .price li:nth-child(2) {margin-bottom:30px;}
+    .evt02 .price li:nth-child(2) div {border-radius:10px; background:#00c73c; color:#fff}
+    .evt02 .price li:nth-child(3) {margin-bottom:30px;}
+    .evt02 .price li:nth-child(3) dl {position:relative; text-align:left; line-height:1; margin:0 auto;}
+    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#00c73c} 
+    .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
+    .evt02 .price li:nth-child(3) dd span {color:#00c73c}
+    .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
+    .evt02 .price li:nth-child(4) {font-size:1.4rem; }
+    .evt02 .price li:nth-child(4) i {color:#a3a3a3}
+    .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
+    .evt02 .price li:nth-child(5) {color:#ff0000; font-size:2.4rem}
+    .evt02 .price li:nth-child(5) span {font-size:3.4rem}
+    .evt02 .price li:nth-child(6) {text-align:left; color:#414141; font-size:1.1rem}
+    .evt02 .evt02-txt {background:#363636; color:#fff; border-radius:0 0 10px 10px; text-align:left; padding:20px; }
+    .evt02 .evt02-txt div {font-size:1.5rem}
+    .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
 
-    .evt01 .dday span {color:#00c73c; box-shadow:inset 0 -10px 0 rgba(0,0,0,0.1);}
+    .evt03 {background:#fff; padding-top:50px}
+    .evt03 .evt03Txt01 {color:#00c73c; font-size:1rem; margin-bottom:30px; padding:0 20px}  
 
-    .evt02 {background:#f6f6f6; padding-top:100px}
-    .evt02 .evt02Txt01 {font-size:1.25rem; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
-    .evt02 .evt02Txt01 span {font-size:1.5rem; box-shadow:inset 0 -20px 0 rgba(0,0,0,.1); color:#000}
+    .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
 
-    .evt03 {background:#fff;}
-    .evt03 ul {width:80%; max-width:900px; margin:0 auto}
-    .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 0.5%; border-radius:10px; background:#353267; color:#fff; line-height:1.5}
-    .evt03 ul li p {font-size:16px; margin-bottom:15px; font-weight:600}
-    .evt03 ul li a {display:block; padding:8px 0; width:90px; text-align:center; font-size:14px; margin:0 auto 5px; border-radius:4px;}
-    .evt03 ul li a.btnst01 {border:1px solid #ccc;}
-    .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-    .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-    .evt03 ul li a:hover {background:#000; color:#fff}
-    .evt03 ul:after {content:""; display:block; clear:both}
-
-    .evt04 {background:#ececec; padding:100px 0 50px}
-    .evt04 img {border-bottom:1px solid #e4e4e4; max-width:940px;}
-    .evt04 h4 {color:#383368; font-size:18px}
-    .evt04 .columns {padding:20px;
+    .evt05 {text-align:left; padding:0 20px}
+    .evt05 h5 {color:#00c73c; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+    .evt05 .evt05Txt01 { font-size:1.6rem;}
+    .evt05 .curriculum {margin:30px 0}
+    .evt05 dl {margin-top:30px;}
+    .evt05 dl:first-child {margin:0}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#1fca00; margin-top:30px}
+    .evt05 dt:first-child {margin:0}
+    .evt05 ul {margin:10px auto}
+    .evt05 ul li {display:inline; float:left; padding:15px; border:1px solid #e4e4e4; }
+    .evt05 ul li p {margin-bottom:10px;}
+    .evt05 ul li a {display:inline-block; padding:0 8px; text-align:center;  margin:0 auto 5px; border-radius:4px;}
+    .evt05 ul li a.btnst01 {border:1px solid #ccc;}
+    .evt05 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+    .evt05 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+    .evt05 ul li a:hover {background:#000; color:#fff}
+    .evt05 ul:after {content:""; display:block; clear:both}
+    .evt05 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
+    
+    .evt06 .columns {padding:20px;
+        column-count: 1;
         column-gap:20px;
     }
-    .evt04 .columns div {
+    .evt06 .columns div {
         text-align:justify; font-size:14px; line-height:1.4;
         display:inline-block;
         padding:20px; border:1px solid #eee; border-radius:10px;
-        margin-bottom:20px; color:#666; background:#fff;
+        margin-bottom:20px; color:#888; background:#fff;
     }
-    .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
-    .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+    .evt06 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
+    .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+    .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt05 {background:#00c73c; padding-bottom:50px}
-    .evt05 li a {display:block; font-size:0.8rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
-    .evt05 li a:hover {background:#fff; color:#000;
+    .evt07 {background:#1fca00; padding:20px}
+    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
-    .evt05 li span {display:block; font-size:1.25rem}
-    .evt05 ul:after {content:""; display:block; clear:both}
+    .evt07 li span {display:block; font-size:1.25rem}
+    .evt07 ul:after {content:""; display:block; clear:both}
 
     .video-container-box {padding:20px}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
@@ -128,7 +99,7 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
-        background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
+        background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2);left:0; z-index:10
     }
 
     .btnbuy {width:100%; position:fixed; bottom:5px;}
@@ -139,40 +110,13 @@
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 
-    .evtFooter {max-width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666}
+    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
-    .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
+    .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
     .evtFooter div,
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; }
-    @@-webkit-keyframes shadow-drop-2-center {
-         0% {
-             -webkit-transform: translateZ(0);
-             transform: translateZ(0);
-             -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-         }
-         100% {
-             -webkit-transform: translateZ(50px);
-             transform: translateZ(50px);
-             -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-         }
-     }
-    @@keyframes shadow-drop-2-center {
-         0% {
-             -webkit-transform: translateZ(0);
-             transform: translateZ(0);
-             -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-         }
-         100% {
-             -webkit-transform: translateZ(50px);
-             transform: translateZ(50px);
-             -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-         }
-     }
+    .evtFooter li {margin-left:20px; list-style-type: decimal;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
 
@@ -180,39 +124,12 @@
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
-        .evtTop span {left:50%; margin-left:30%; top:35%;}
-        .evtTop span img { width:108px}
-        .tabs li a {font-size:16px; padding:25px 0;}
-        .evt01 .dday {font-size:1.2rem;}
-        .evt01 .dday strong {font-size:1.75rem;}
-        .evt01 .dday img {width:40px;}
-        .evt01 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}
-        .evt02 .evt02Txt01 {font-size:1.5rem;}
-        .evt02 .evt02Txt01 span {font-size:1.75rem; box-shadow:inset 0 -25px 0 rgba(0,0,0,.1);}
-        .video-container-box {width:768px; margin:0 auto; padding:0}
-        .evt03 ul li {padding:20px 0; font-size:16px;}
-        .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
-        .evt03 ul li br {display:none}
-        .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;}
-        .evt05 {padding-bottom:70px}
-        .btnbuy br {display:none}
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
     }
 
     /* 태블릿 가로, PC */
     @@media only all and (min-width: 1024px) {
-        .evtTop span {left:50%; margin-left:23%; top:35%;}
-        .evt01 .dday {font-size:2.0rem; top:40%;}
-        .evt01 .dday strong {font-size:2.5rem;}
-        .evt01 .dday img {width:68px;}
-        .evt01 .dday span {box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
-        .evt02 .evt02Txt01 {font-size:1.75rem;}
-        .evt02 .evt02Txt01 span {font-size:2rem; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1);}
-        .video-container-box {width:980px; margin:0 auto; padding:0}
-        .evt03 ul li a {display:inline-block; padding:10px 0; font-size:16px;}
-        .evt04 .columns {width:980px; margin:0 auto}
-        .evt05 ul {width:940px; margin:0 auto;}
-        .evt05 li a {font-size:24px;}
-        .evt05 {padding-bottom:100px}
+
     }
 </style>
 <div id="pass" style="display: none">
@@ -220,14 +137,32 @@
     <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
 </div>
 
-<div id="Container" class="Container NG c_both">            
+<div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
-        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >    
+        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_top.jpg" alt="창업 다마고치" ></div>             
+        <div class="evtTop02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_top_txt.jpg" alt="창업 다마고치" >
+        </div>
+        <ul>
+            <li>윌비스 N잡 대표강사</li>
+            <li>네이버파트너스퀘어 공식강사</li>
+            <li>언니의리뷰, 리뷰채널 운영</li>
+            <li>디자인 에이전시 대표</li>
+            <li>쇼핑몰 상세페이지 디자인 가이드북 저자<br>
+                (2016,2018 베스트셀러)</li>
+            <li>아이보스, 퇴사학교,인천디자인센터,여성발전센터 강사</li>
+            <li>서울창조경제혁신센터 이커머스강사</li>
+            <li>cafe24 쇼핑몰솔루션 강사</li>
+            <li>eBay (g마켓, 옥션) 교육센터 전문강사</li>
+            <li>서울시 청년창업프로젝트 강사</li>
+            <li>카이스트 해외취업 웹디자인양성과정 전임강사</li>
+            <li>카이스트 대학생 프리젠테이션 향상과정 전임강사</li>
+            <li>정보화특강 위촉강사</li>
+        </ul>
+        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>  
         <div class="evtMenu">
             <ul class="tabs">
-                <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
+                <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
                 <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                 <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                 <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
@@ -235,59 +170,180 @@
         </div>  
     </div>       
 
-    <div id="tab01">
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_01.jpg" alt="사전예약 이벤트" >
-            <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+    <div id="tab01" class="evtCtnsBox">
+        <div class="evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_01.jpg" alt="창업 다마고치" >
+        </div>
+        <div class="evt02">
+            <ul class="price NSK-Black">
+                <li>1억뷰 <span>N잡</span>강의 런칭기념</li>
+                <li><div>4월 한달 전강좌 10% 할인</div></li>
+                <li>   
+                    <dl>
+                        <dt id="ddayCountDayText"></dt>
+                        <dd>
+                            신청마감까지<br>
+                            <span id="ddayCountText"></span> 남았습니다.
+                        </dd>
+                    </dl>
+                </li>
+                <li><i>195,000원</i> <span>10%할인</span> 175,500원</li>
+                <li>월 <span>3만원</span>대</li>
+                <li>
+                    수강기간 : 5개월<br>
+                    수강대상 : 온라인 쇼핑몰 창업 입문부터 가능
+                </li>
+            </ul>
         </div>
     </div>
 
     <div id="tab02">
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt03">
             <div class="video-container-box">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/SqJMAs2mic8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="evt02Txt01">
+            <div class="evt03Txt01">
                 안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>
                 유튜브 채널 "단아쌤TV"를 운영중인<br>
                 <span class="NSK-Black">단아쌤 김경은</span>입니다. 
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
         </div>
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >  
-        </div>  
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_02.jpg" alt="인플루언서" >
+            <div class="evt04Txt01">
+                제가 쇼핑몰을 하면서 가장 중요하게 생각한
+                두 가지가 있습니다.<Br>
+                <Br>
+                ‘매출을 1,000만원 이상 올려보겠다는 것’과<Br>
+                ‘고객들의 전화를 받지 않는 쇼핑몰을 운영하겠다’는 것인데요.
+                <Br>
+                이를 해결하면 ‘누구나 쇼핑몰 운영을 할 수 있겠다’ 싶었죠.<Br>
+                <Br>
+                이번 강의를 통해 <Br>
+                좋은 상품을 선정하는 법부터 나에게 맞는 채널 찾기, <Br>
+                입점과 상품 촬영 및 배송 등 제가 직접 몸으로 부딪히며 익힌 <Br>
+                ‘쇼핑몰 운영을 위한 모든 것’을 알려 드릴께요.
+            </div>
+        </div>            
     </div>  
 
     <div id="tab03">
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_01.jpg" alt="커리큘럼" >
-            <ul>
-                @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                    @php $i = 1; @endphp
-                    @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                        <li>
-                            <p>{{$i}}강 맛보기 수강 ▼</p>
-                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
-                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
-                        </li>
-                        @php $i += 1; @endphp
-                    @endforeach
-                @else
-                    <li>1강 맛보기<br>수강 준비중 ></li>
-                    <li>2강 맛보기<br>수강 준비중 ></li>
-                @endif
-            </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_02.jpg" alt="커리큘럼" >
+        <div class="evtCtnsBox evt05">
+            <h5 class="NSK-Black">
+                ‘10년차 쇼핑몰 업계<br>
+                전문 강사 단아쌤이<br>
+                알려주는 전문 커리큘럼
+            </h5>
+            <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+            <div class="curriculum">
+            	<dl>
+                    <dt>1. 쇼핑몰 창업준비 (사업자 등록 및 세금 준비 등)</dt> 
+                    <dd>A. 쇼핑몰 창업준비물(사업자등록증,구매안전확인증-통신판매업신고증,사업자계좌,인감증명서등)</dd>
+                    <dd>B. 집에서 사업자등록증 발급하는 방법</dd>
+                    <dd>
+                        <ul>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    <li>
+                                        <p>{{$i}}강 맛보기 수강 ▼</p>
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
+                                    </li>
+                                    @php $i += 1; @endphp
+                                @endforeach
+                            @else
+                                <li>1강 맛보기<br>수강 준비중 ></li>
+                                <li>2강 맛보기<br>수강 준비중 ></li>
+                            @endif
+                        </ul>
+                    </dd>
+                    <dd>C. 통신판매업신고증 받는 방법 (구매안전확인증이 필요해요!)</dd>
+                    <dd>D. 세금준비를 위한 3개의 통장 활용방법</dd>
+                    <dd>E. 선배 창업자의 창업전 알았더라면 좋았을 꿀팁</dd>
+                </dl>
+                
+                <dl>
+                    <dt>2. 상품소싱을 위한 도매쇼핑몰 가입하기</dt>
+                    <dd>A. 위탁도매와 사입, 구매대행의 차이점 알아보기</dd>
+                    <dd>B. 도매매, 도매꾹의 차이점 알아보기</dd>
+                    <dd>C. 중국 구매대행 상품운영방법 알아보기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>3. 상품등록을 위한 준비 (마켓별 수수료와 특징 알아보기)</dt>
+                    <dd>A. 마켓별 수수료와 특징알아보기</dd>
+                    <dd>B. 상품등록을 위한 준비파일 작성하기</dd>
+                    <dd>C. 상품가격책정하기</dd>
+                    <dd>D. 가산점 받는 상세페이지 준비하기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>4. 스마트스토어에서 판매하기 (스마트스토어 특징과 입점 / 상품 등록 및 꿀팁)</dt>
+                    <dd>A. 스마트스토어의 특징과 입점방법</dd>
+                    <dd>B. 가장 효율적으로 관리하는 상품관리법</dd>
+                    <dd>C. 상품 등록따라하기</dd>
+                    <dd>D. 등록후에 꼭해야하는 비즈니스 툴</dd>
+                    <dd>E. 선배 창업자의 창업전 알았더라면 좋았을 꿀팁</dd>
+                </dl>
+                
+				<dl>
+                    <dt>5. Ebay-G마켓, 옥션에서 판매하기(사이트별 특징과 입점 방법/상품등록 및 광고방법)</dt>
+                    <dd>A. 한개의 사이트에서 운영하는 G마켓, 옥션, g9의 특징과 입점방법</dd>
+                    <dd>B. 상품등록을 위한 준비파일 작성하기</dd>
+                    <dd>C. 상세페이지 사용을 위한 이베이 이미지 호스팅 이용하기</dd>
+                    <dd>D. 상품등록하기</dd>
+                    <dd>E. 입찰, CPC광고방법알아보기</dd>
+				</dl>
+                
+                <dl>
+                    <dt>6.  11번가에서 판매하기(특징과 입점 방법 / 상품 등록 및 광고방법)</dt>
+                    <dd>A. SKT할인과 해외에서 유명한 11번가의 특징과 입점방법</dd>
+                    <dd>B. 상품등록을 위한 준비파일 작성하기</dd>
+                    <dd>C. 상품등록하기</dd>
+                    <dd>D. 입찰, CPC광고방법알아보기</dd>
+                    <dd>E. 쇼킹딜 제안하기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>7. 요즘대세 쿠팡에서 판매하기 (쿠팡 입점 및 상품 등록 등)</dt>
+                    <dd>A. 남녀노소 가장 많이 쓰는 쇼핑앱 쿠팡에 입점하기</dd>
+                    <dd>B. 상품등록을 위한 준비파일 작성하기</dd>
+                    <dd>C. 상품등록하기</dd>
+                    <dd>D. 쿠팡파트너스와 로켓배송, 쿠팡 스토어기능 알아보기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>8. 카페24로 나만의 쇼핑몰 만들기 (가입 및 쇼핑몰 만들기 / 상품 등록 및 마켓통합관리)</dt>
+                    <dd>A. 카페24 가입하고, 쇼핑몰만들기</dd>
+                    <dd>B. 무료 디자인을 활용한 반응형 쇼핑몰 제작하기</dd>
+                    <dd>C. 상품등록하기</dd>
+                    <dd>D. PG(결제)연결과 네이버 페이, 지식쇼핑 입점하기</dd>
+                    <dd>E. 마켓통합관리를 통한 여러 쇼핑몰에 상품 등록하기</dd>
+                </dl>
+                
+                <dl>
+                    <dt>9. 판매촉진을 위해 알아야하는 판매자상식 6가지(지적재산권 및 KC인증 등 판매자 상식 알기) </dt>
+                    <dd>A. 브랜드-상표등록은 앞으로 쇼핑몰에서 가장중요한 핵심</dd>
+                    <dd>B. 상세페이지 기획방법을 통한 잘 팔리는 상세페이지의 포인트</dd>
+                    <dd>C. 배송, 고객관리, 진상고객 처리 꿀팁전수</dd>
+                    <dd>D. 지적재산권이 뭔가요?</dd>
+                    <dd>E. 전안법? KC인증이 뭔가요?</dd>
+                    <dd>F. 세금관리! 잘 안하면 잘될때 망할 수 있어요</dd>
+                </dl>
+                 
+                <dl>
+                    <dd>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</dd>
+                </dl>
+            </div>
         </div>
     </div>
 
     <div id="tab04">
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_01.png" alt="BEST 수강후기" >
+        <div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_04.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
                     <h4>수강생 조*정 님</h4>
@@ -319,68 +375,67 @@
             <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
         </div>
 
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_02.jpg" alt="BEST 수강후기" >
+        <div class="evtCtnsBox evt07">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_05.png" alt="BEST 수강후기" >
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                    <span class="NSK-Black">지금, 사전예약 </span>
-                    신청하고 1억 만들기 도전! → 
+                    <span class="NSK-Black">지금, 수강신청하고 </span>
+                    1인 온라인창업 도전! → 
                     </a>
                 </li>
             </ul>
         </div>	
     </div>
 
+    <div class="evtCtnsBox evtFooter">
+        <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
+
+        <p># 런칭기념  이벤트 안내</p>
+        <div>강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.( 4월 9일부터 수강 시작)</div>
+
+        <p># 수강안내</p>
+        <ul>
+            <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
+            <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
+            <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>
+            <li>동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+            스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+            팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
+        </ul>
+
+        <p># 환불안내</p>
+        <ul>
+            <li>이용안내 및 환불 특약으로 안내된 별도 환불 기준이 있는 경우 우선 적용합니다.</li>
+            <li>강의재생시간에 관계없이 강의를 재생한 경우, 학습 자료 및 모바일 다운로드 이용한 경우 수강한 것으로 간주합니다.(맛보기 강의 제외)</li>
+            <li>강좌비*에서 기수강 강의수에 대한 금액* 및 위약금*(강의 정상가의 10%)을 차감 후 부분 환불이 진행됩니다.</li>
+            * 강좌비: 결제금액에서 서비스프로그램 등 추가 혜택에 해당하는 금액을 차감한 순수강좌비<br>
+            * 기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)<br>
+            * 수강시작일로부터 7일 이내 위약금 없음<br>
+            * 수강시작일로부터 7일 이후 위약금 적용 (정상가의 10% 공제) </li>
+            <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.</li>
+            <li> 환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
+            <li>총강의수 전체 기수강 시에는 전액환불이 불가합니다.</li>
+        </ul>
+
+        <p># 기타유의사항</p>
+        <ul>
+            <li>제공되는 사은혜택과 동영상은 구분하여 별도구매 불가합니다.</li>
+            <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다. </li>
+            <li>수강혜택 사은품으로 발급된 인증코드 및 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
+            <li>수강상품 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
+        </ul>
+
+        <div>※ 이용문의 : 고객만족센터 1544-5006</div>
+    </div>
+
     <div class="btnbuy NSK-Black">        
         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-            <span class="NSK">미리 신청하면 24%할인!</span><br>
-            [온라인강의] 사전예약 신청하기 >
+            [온라인강의] 신청하기 >
         </a>
     </div>
 
-    <div class="evtFooter">
-            <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
-
-            <p># 사전예약 이벤트 안내</p>
-            <div>사전예약신청 강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.<br>
-            (현재 진행중인 2020년 3월 9일 사전 예약신청 강좌의 경우 4월 9일부터 수강 시작)</div>
-
-            <p># 수강안내</p>
-            <ul>
-                <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
-                <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
-                <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>
-                <li>동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
-            </ul>
-
-            <p># 환불안내</p>
-            <ul>
-                <li>이용안내 및 환불 특약으로 안내된 별도 환불 기준이 있는 경우 우선 적용합니다.</li>
-                <li>강의재생시간에 관계없이 강의를 재생한 경우, 학습 자료 및 모바일 다운로드 이용한 경우 수강한 것으로 간주합니다.(맛보기 강의 제외)</li>
-                <li>강좌비*에서 기수강 강의수에 대한 금액* 및 위약금*(강의 정상가의 10%)을 차감 후 부분 환불이 진행됩니다.<br>
-                * 강좌비: 결제금액에서 서비스프로그램 등 추가 혜택에 해당하는 금액을 차감한 순수강좌비<br>
-                * 기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)<br>
-                * 수강시작일로부터 7일 이내 위약금 없음<br>
-                * 수강시작일로부터 7일 이후 위약금 적용 (정상가의 10% 공제) </li>
-                <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.<br>
-                (샵플링 프로그램 1개월 정가 275,000원 기준 환불시 기사용분 차감)</li>
-                <li>환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
-                <li>총강의수 전체 기수강 시에는 전액환불이 불가합니다.</li>
-            </ul>
-
-            <p># 기타유의사항</p>
-            <ul>
-                <li>제공되는 사은혜택과 동영상은 구분하여 별도구매 불가합니다.</li>
-                <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다. </li>
-                <li>수강혜택 사은품으로 발급된 인증코드 및 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
-                <li>수강상품 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
-            </ul>
-
-            <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-        </div>
+    
 </div>
 <!-- End Container -->
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
@@ -513,7 +568,8 @@
             if(second_left.length == 1) second_left = '0' + second_left;
 
             if ((event_day.getTime() - now.getTime()) > 0) {
-                $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
+                $('#'+ele_id).html(hour_left + ':' + minute_left + ':' + second_left);
+                $('#ddayCountDayText').html(date_left + '일 ');
 
                 setTimeout(function() {
                     dDayCountDownText(end_date, ele_id);

@@ -198,7 +198,7 @@
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10
         }
 
-        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
+        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;  background:#fff !important}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
@@ -217,7 +217,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >     
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
@@ -227,9 +227,9 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1602_01.jpg" alt="사전예약 이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 사전예약 신청하기 ></a></div>
             </div>
         </div>
 
@@ -284,7 +284,7 @@
                     </li>
                 </ul>
                 --}}
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1602_03_02_02.jpg" alt="커리큘럼 안내" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_02.jpg" alt="커리큘럼 안내" >
             </div>
         </div>
 
@@ -327,8 +327,8 @@
                 <ul>
                     <li>
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                        <span class="NSK-Black">지금, 수강신청하고 </span>
-                        1인 온라인창업 도전! → 
+                        <span class="NSK-Black">지금, 사전예약 </span>
+                        신청하고 100만원 만들기 도전! → 
                         </a>
                     </li>
                 </ul>
@@ -338,8 +338,9 @@
         <div class="evtFooter">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
-            <p># 런칭기념  이벤트 안내</p>
-            <div>강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.( 4월 9일부터 수강 시작)</div>
+            <p># 사전예약 이벤트 안내</p>
+            <div>사전예약신청 강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.<br>
+            (현재 진행중인 2020년 3월 9일 사전 예약신청 강좌의 경우 4월 9일부터 수강 시작)</div>
 
             <p># 수강안내</p>
             <ul>
@@ -355,13 +356,14 @@
             <ul>
                 <li>이용안내 및 환불 특약으로 안내된 별도 환불 기준이 있는 경우 우선 적용합니다.</li>
                 <li>강의재생시간에 관계없이 강의를 재생한 경우, 학습 자료 및 모바일 다운로드 이용한 경우 수강한 것으로 간주합니다.(맛보기 강의 제외)</li>
-                <li>강좌비*에서 기수강 강의수에 대한 금액* 및 위약금*(강의 정상가의 10%)을 차감 후 부분 환불이 진행됩니다.</li>
+                <li>강좌비*에서 기수강 강의수에 대한 금액* 및 위약금*(강의 정상가의 10%)을 차감 후 부분 환불이 진행됩니다.<br>
                 * 강좌비: 결제금액에서 서비스프로그램 등 추가 혜택에 해당하는 금액을 차감한 순수강좌비<br>
                 * 기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)<br>
                 * 수강시작일로부터 7일 이내 위약금 없음<br>
                 * 수강시작일로부터 7일 이후 위약금 적용 (정상가의 10% 공제) </li>
-                <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.</li>
-                <li> 환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
+                <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.<br>
+                (샵플링 프로그램 1개월 정가 275,000원 기준 환불시 기사용분 차감)</li>
+                <li>환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
                 <li>총강의수 전체 기수강 시에는 전액환불이 불가합니다.</li>
             </ul>
 
@@ -374,10 +376,6 @@
             </ul>
 
             <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-        </div>
-
-        <div class="evtCtnsBox reply">
-            {{--수강후기--}}
         </div>
     </div>
     <!-- End Container -->

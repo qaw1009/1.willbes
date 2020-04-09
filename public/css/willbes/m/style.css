@@ -113,7 +113,8 @@ body {
     width: 95%;
 }
 .width100p {
-    width: 100%;
+    width: 100% !important;
+    margin: 0 auto;
 }
 
 .mt1p {
@@ -427,7 +428,7 @@ body.memBody #Footer {
 }
 
 /*********************************************     INTRO PAGE     *********************************************/
-
+.Container {max-width:720px; margin:0 auto}
 .Container .Tit {
     font-size: 18px;
     padding:20px 0;

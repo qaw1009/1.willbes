@@ -369,6 +369,7 @@ class LectureRoomIssueModel extends WB_Model
         $from = "
             FROM {$this->_table['lectureroom_seat_register']} AS lrsr
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
+            INNER JOIN {$this->_table['product_lecture']} AS pl ON lrsr.ProdCodeSub = pl.ProdCode
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
     }
@@ -386,12 +387,11 @@ class LectureRoomIssueModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            $column = 'lrsr.LrsrIdx, lrsr.MemIdx, lrsr.OrderIdx, lrsr.OrderProdIdx, lrsr.ProdCode, lrsr.ProdCodeSub, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.SeatStatusCcd, lrrurs.SeatNo';
-            $arr_condition = [
-                'IN' => [
-                    'lrsr.LrsrIdx' => $params
-                ]
-            ];
+            $column = '
+                lrsr.LrsrIdx, lrsr.MemIdx, lrsr.OrderIdx, lrsr.OrderProdIdx, lrsr.ProdCode
+                , lrsr.ProdCodeSub, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.SeatStatusCcd, lrrurs.SeatNo, pl.StudyStartDate, pl.StudyEndDate
+            ';
+            $arr_condition = ['IN' => ['lrsr.LrsrIdx' => $params]];
             $arr_lrrurs_idx = [];
             $data = $this->findSeatRegister($column, $arr_condition);
             if (empty($data) === true) {
@@ -402,6 +402,9 @@ class LectureRoomIssueModel extends WB_Model
                 $arr_lrrurs_idx[] = $row['LrrursIdx'];
                 if ($row['SeatStatusCcd'] == '728003' || $row['SeatStatusCcd'] == '728004' || $row['SeatStatusCcd'] == '728005') {
                     throw new \Exception('퇴실,환불,종강 처리된 좌석은 수정할 수 없습니다.');
+                }
+                if ($row['StudyEndDate'] >= date('Y-m-d')) {
+                    throw new \Exception('종강일이 지난 좌석이 아닙니다.');
                 }
             }
 

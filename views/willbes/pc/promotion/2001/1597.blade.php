@@ -215,12 +215,12 @@
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
                                 <td>4/13(월)</td>                        
-                                <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163704" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/163844" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
                                 <td>4/13(월) </td>                        
-                                <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163704" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/163839" target="_blank">수강신청</a></td>
                             </tr>                                                   
                         </tbody>
                     </table>        

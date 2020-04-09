@@ -513,7 +513,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="lr_code">강의실좌석정보선택
                     </label>
-                    <div class="col-md-10 form-inline item" >
+                    <div class="col-md-10 form-inline" >
                         <select name="lr_code" id="lr_code"  class="form-control" title="마스터강의실명">
                             <option value="">마스터강의실명</option>
                             @foreach($lecture_room_info['master'] as $row)
@@ -526,6 +526,10 @@
                                 <option value="{{$row['LrUnitCode']}}" class="{{$row['LrCode']}}" @if($data_product_lecture_room['LrUnitCode'] === $row['LrUnitCode']) selected="selected"@endif>{{$row['UnitName']}}</option>
                             @endforeach
                         </select>
+                        <div class="radio ml-20">
+                            <input type="radio" name="lr_is_use" class="flat" id="lr_is_use_y" value="Y" title="사용여부" @if($data_product_lecture_room['IsUse']=='Y')checked="checked"@endif/> <label for="lr_is_use_y" class="input-label">사용</label>
+                            <input type="radio" name="lr_is_use" class="flat" id="lr_is_use_n" value="N" @if($method == 'POST' || $data_product_lecture_room['IsUse']=='N')checked="checked"@endif/> <label for="lr_is_use_n" class="input-label">미사용</label>
+                        </div>
                     </div>
                 </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container NGR c_both">
+    <div id="Container" class="NG c_both"> 
         <div class="introBox3 NSK">
             <div class="menuGroup">
                 <div>

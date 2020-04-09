@@ -158,7 +158,7 @@
     $_seat_assign_form.submit(function() {
         var parent_seat_id = '{{ element('orderidx', $form_data) }}' + '_' + '{{ element('lr_unit_code', $form_data) }}';
         var member_seat_type = '{{ ((empty($lec_data['LrsrIdx']) === false) && $lec_data['MemSeatStatusCcd'] == '728003' ? 'N' : 'Y') }}';
-        if (member_seat_type == 'N123123') {
+        if (member_seat_type == 'N') {
             alert('해당 강의실에서 퇴실된 상태입니다. 좌석을 선택할 수 없습니다.');
             return;
         }

@@ -567,14 +567,13 @@ class LectureRoomRegistModel extends WB_Model
         $arr_condition = [
             'EQ' => [
                 'ProdCode' => $prod_code,
-                'IsUse' => 'Y',
                 'IsStatus' => 'Y'
             ]
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $column = "ProdCode, LrCode, LrUnitCode";
+        $column = "ProdCode, LrCode, LrUnitCode, IsUse";
         $from = "
             FROM {$this->_table['product_r_lectureroom']}
         ";
@@ -586,9 +585,10 @@ class LectureRoomRegistModel extends WB_Model
      * @param null $prod_code
      * @param null $lr_code
      * @param null $lr_unit_code
+     * @param string $lr_is_use
      * @return array|bool
      */
-    public function _addProductLectureRoom($prod_code = null, $lr_code = null, $lr_unit_code = null)
+    public function addProductLectureRoom($prod_code = null, $lr_code = null, $lr_unit_code = null, $lr_is_use = 'N')
     {
         try {
             $now =  date('Y-m-d H:i:s');
@@ -596,10 +596,10 @@ class LectureRoomRegistModel extends WB_Model
             $reg_ip = $this->input->ip_address();
 
             $duplicate_query = /** @lang text */ "
-                INSERT INTO {$this->_table['product_r_lectureroom']} (ProdCode, LrCode, LrUnitCode, RegDatm, RegAdminIdx, RegIp)
-                VALUES ('{$prod_code}', '{$lr_code}', '{$lr_unit_code}', '{$now}', '{$admin_idx}', '{$reg_ip}')
+                INSERT INTO {$this->_table['product_r_lectureroom']} (ProdCode, LrCode, LrUnitCode, IsUse, RegDatm, RegAdminIdx, RegIp)
+                VALUES ('{$prod_code}', '{$lr_code}', '{$lr_unit_code}', '{$lr_is_use}', '{$now}', '{$admin_idx}', '{$reg_ip}')
                 ON DUPLICATE KEY UPDATE
-                ProdCode = '{$prod_code}', LrCode = '{$lr_code}', LrUnitCode = '{$lr_unit_code}', UpdDatm = '{$now}', UpdAdminIdx = '{$admin_idx}'
+                ProdCode = '{$prod_code}', LrCode = '{$lr_code}', LrUnitCode = '{$lr_unit_code}', IsUse = '{$lr_is_use}', UpdDatm = '{$now}', UpdAdminIdx = '{$admin_idx}'
             ";
 
             if ($this->_conn->query($duplicate_query) === false) {

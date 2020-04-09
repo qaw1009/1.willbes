@@ -217,8 +217,9 @@ class OffLectureModel extends CommonLectureModel
             /*----------------          강의실 좌석 상품 등록        ---------------*/
             $lr_code = element('lr_code', $input);
             $lr_unit_code = element('lr_unit_code', $input);
-            if (empty($lr_code) === false && empty($lr_unit_code) === false) {
-                if ($this->lectureRoomRegistModel->_addProductLectureRoom($prodcode, $lr_code, $lr_unit_code) !== true) {
+            $lr_is_use = element('lr_is_use', $input, 'N');
+            if (isset($_POST['lr_unit_code']) === true) {
+                if ($this->lectureRoomRegistModel->addProductLectureRoom($prodcode, $lr_code, $lr_unit_code, $lr_is_use) !== true) {
                     throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
                 }
             }
@@ -352,8 +353,9 @@ class OffLectureModel extends CommonLectureModel
             /*----------------          강의실 좌석 상품 등록        ---------------*/
             $lr_code = element('lr_code', $input);
             $lr_unit_code = element('lr_unit_code', $input);
-            if (empty($lr_code) === false && empty($lr_unit_code) === false) {
-                if ($this->lectureRoomRegistModel->_addProductLectureRoom($prodcode, $lr_code, $lr_unit_code) !== true) {
+            $lr_is_use = element('lr_is_use', $input, 'N');
+            if (isset($_POST['lr_unit_code']) === true) {
+                if ($this->lectureRoomRegistModel->addProductLectureRoom($prodcode, $lr_code, $lr_unit_code, $lr_is_use) !== true) {
                     throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
                 }
             }

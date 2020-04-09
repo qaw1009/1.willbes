@@ -436,7 +436,7 @@ class ProfSalesModel extends BaseOrderModel
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on OP.ProdCode = TA.ProdCode
                 inner join ' . $this->_table['order'] . ' as O
-                    on OP.OrderIdx = O.OrderIdx
+                    on OP.OrderIdx = O.OrderIdx                   
                 left join ' . $this->_table['order_product_refund'] . ' as OPR
                     on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                 left join ' . $this->_table['product_r_category'] . ' as PC

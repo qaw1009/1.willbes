@@ -39,10 +39,12 @@ class LectureRoomIssueModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.ProdCodeSub, lrrurs.SeatNo
+            lrsr.LrsrIdx, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.ProdCodeSub, lrrurs.SeatNo, lrsr.SeatStatusCcd AS MemSeatStatusCcd
             ,o.OrderNo, lrsr.OrderIdx, lrsr.OrderProdIdx, p.ProdCode, p.ProdName, lr.LectureRoomName, lrru.UnitName, pl.LearnPatternCcd, o.RealPayPrice, o.CompleteDatm
+            ,pl.StudyStartDate, pl.StudyEndDate
             ,site.SiteName, mb.MemIdx, mb.MemId, mb.MemName, mb.Phone1 AS Tel1, fn_dec(mb.Phone2Enc) AS Tel2, mb.Phone3 AS Tel3
             ,fn_ccd_name(lrrurs.SeatStatusCcd) AS SeatStatusCcdName
+            ,fn_ccd_name(lrsr.SeatStatusCcd) AS MemSeatStatusCcdName
             ,fn_ccd_name(op.PayStatusCcd) AS PayStatusCcdName
             ,fn_ccd_name(pl.LearnPatternCcd) AS LearnPatternCcdName
             ,fn_order_refund_price(o.OrderIdx, 0, "refund") AS tRefundPrice, opr.RefundDatm
@@ -367,8 +369,91 @@ class LectureRoomIssueModel extends WB_Model
         $from = "
             FROM {$this->_table['lectureroom_seat_register']} AS lrsr
             INNER JOIN {$this->_table['lectureroom_r_unit_r_seat']} AS lrrurs ON lrsr.LrrursIdx = lrrurs.LrrursIdx
+            INNER JOIN {$this->_table['product_lecture']} AS pl ON lrsr.ProdCodeSub = pl.ProdCode
         ";
         return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
+    }
+
+    /**
+     * 회원좌석 만료처리
+     * @param array $params
+     * @return array|bool
+     */
+    public function deleteMemberSeatStatus($params = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $column = '
+                lrsr.LrsrIdx, lrsr.MemIdx, lrsr.OrderIdx, lrsr.OrderProdIdx, lrsr.ProdCode
+                , lrsr.ProdCodeSub, lrsr.LrCode, lrsr.LrUnitCode, lrsr.LrrursIdx, lrsr.SeatStatusCcd, lrrurs.SeatNo, pl.StudyStartDate, pl.StudyEndDate
+            ';
+            $arr_condition = ['IN' => ['lrsr.LrsrIdx' => $params]];
+            $arr_lrrurs_idx = [];
+            $data = $this->findSeatRegister($column, $arr_condition);
+            if (empty($data) === true) {
+                throw new \Exception('조회된 강의실 좌석정보가 없습니다.');
+            }
+
+            foreach ($data as $row) {
+                $arr_lrrurs_idx[] = $row['LrrursIdx'];
+                if ($row['SeatStatusCcd'] == '728003' || $row['SeatStatusCcd'] == '728004' || $row['SeatStatusCcd'] == '728005') {
+                    throw new \Exception('퇴실,환불,종강 처리된 좌석은 수정할 수 없습니다.');
+                }
+                if ($row['StudyEndDate'] >= date('Y-m-d')) {
+                    throw new \Exception('종강일이 지난 좌석이 아닙니다.');
+                }
+            }
+
+            $mod_register_data = [
+                'SeatStatusCcd' => '728005',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdAdminDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($mod_register_data)->where_in('LrsrIdx',$params);
+            if($this->_conn->update($this->_table['lectureroom_seat_register'])=== false) {
+                throw new \Exception('회원좌석 정보 수정에 실패했습니다.');
+            }
+
+            $mod_seat_data = [
+                'SeatStatusCcd' => '727001',
+                'MemIdx' => '',
+                'RegMemDatm' => '',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($mod_seat_data)->where_in('LrrursIdx',$arr_lrrurs_idx);
+            if($this->_conn->update($this->_table['lectureroom_r_unit_r_seat'])=== false) {
+                throw new \Exception('좌석 정보 수정에 실패했습니다.');
+            }
+
+            $log_data = [];
+            foreach ($data as $row) {
+                $log_data[] = [
+                    'LrCode' => $row['LrCode'],
+                    'LrUnitCode' => $row['LrUnitCode'],
+                    'SeatStatusCcd' => '728005',
+                    'LrrursIdx' => $row['LrrursIdx'],
+                    'LrsrIdx' => $row['LrsrIdx'],
+                    'OrderProdIdx' => $row['OrderProdIdx'],
+                    'MemIdx' => $row['MemIdx'],
+                    'BeforeSeatNo' => $row['SeatNo'],
+                    'Desc' => '종강처리',
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address(),
+                ];
+            }
+            if($log_data) $this->_conn->insert_batch($this->_table['lectureroom_log'], $log_data);
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

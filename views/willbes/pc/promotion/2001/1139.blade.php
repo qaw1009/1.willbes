@@ -41,7 +41,7 @@
                 <area shape="rect" coords="10,81,118,145" href="#go_01" />
                 <area shape="rect" coords="11,154,118,218" href="#go_02" />
                 <area shape="rect" coords="10,224,118,289" href="#go_03" />
-              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/1556" target="_blank" alt="신광은경찰패스" />
+              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="신광은경찰패스" />
             </map>
         </div>
 

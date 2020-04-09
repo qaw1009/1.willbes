@@ -104,7 +104,7 @@
         .evt08 a {display: inline-block; margin:0 5px}
 
         .swiper-button-next,
-        .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; }
+        .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px; background-size:50% }
 
         .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
         .btnbuy div {text-align:left; height:50px; line-height:50px; padding:0 10px; max-width:720px; margin:0 auto;

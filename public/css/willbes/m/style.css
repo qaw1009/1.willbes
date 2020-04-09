@@ -688,7 +688,7 @@ body.memBody #Footer {
 }
 .MainBnrSlider .swiper-button-next,
 .MainBnrSlider .swiper-container-rtl .swiper-button-prev {
-    background: url("../../../img/willbes/m/main/btn_next_blue.png") no-repeat center center;
+    background: url("../../../img/willbes/m/main/btn_next_blue.png") no-repeat center center 50%;
     right: 0;
 }
 .MainBnrSlider .swiper-button-prev,

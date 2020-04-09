@@ -112,7 +112,7 @@
                 <thead>
                     <tr>
                         <th rowspan="2" class="valign-middle"><input type="checkbox" class="flat" id="all_check"/></th>
-                        <th rowspan="2" class="valign-middle">만료</th>
+                        <th rowspan="2" class="valign-middle">종강</th>
                         <th rowspan="2" class="valign-middle">NO</th>
                         <th rowspan="2" class="valign-middle">주문번호</th>
                         <th rowspan="2" class="valign-middle">회원명</th>

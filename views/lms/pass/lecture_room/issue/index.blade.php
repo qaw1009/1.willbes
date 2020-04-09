@@ -29,6 +29,11 @@
                                 <option value="{{$row['LrUnitCode']}}" class="{{$row['LrCode']}}">{{$row['UnitName']}}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
+                            <option value="">상품종류</option>
+                            <option value="615006">단과반 [학원]</option>
+                            <option value="615007">종합반 [학원]</option>
+                        </select>
                     </div>
 
                     <label class="control-label col-md-1" for="search_value">결제정보</label>
@@ -68,6 +73,7 @@
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="paid">결제완료일</option>
                             <option value="refund">환불완료일</option>
+                            <option value="studyenddate">종강일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -105,20 +111,27 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th class="valign-middle"><input type="checkbox" class="flat" id="all_check"/></th>
-                        <th class="valign-middle">NO</th>
-                        <th class="valign-middle">주문번호</th>
-                        <th class="valign-middle">회원명</th>
-                        <th class="valign-middle">연락처</th>
-                        <th class="valign-middle">상품명</th>
-                        <th class="valign-middle">강의실명</th>
-                        <th class="valign-middle">좌석정보명</th>
-                        <th class="valign-middle">좌석번호</th>
-                        <th class="valign-middle">결제상태</th>
-                        <th class="valign-middle">결제금액</th>
-                        <th class="valign-middle">환불금액</th>
-                        <th class="valign-middle">결제완료일 (환불완료일)</th>
-                        <th class="valign-middle">좌석변경</th>
+                        <th rowspan="2" class="valign-middle"><input type="checkbox" class="flat" id="all_check"/></th>
+                        <th rowspan="2" class="valign-middle">만료</th>
+                        <th rowspan="2" class="valign-middle">NO</th>
+                        <th rowspan="2" class="valign-middle">주문번호</th>
+                        <th rowspan="2" class="valign-middle">회원명</th>
+                        <th rowspan="2" class="valign-middle">연락처</th>
+                        <th rowspan="2" class="valign-middle">상품종류</th>
+                        <th rowspan="2" class="valign-middle">상품명</th>
+                        <th rowspan="2" class="valign-middle">강의실명</th>
+                        <th rowspan="2" class="valign-middle">좌석정보명</th>
+                        <th rowspan="2" class="valign-middle">좌석번호</th>
+                        <th colspan="2" class="valign-middle">단과반</th>
+                        <th rowspan="2" class="valign-middle">결제상태</th>
+                        <th rowspan="2" class="valign-middle">결제금액</th>
+                        <th rowspan="2" class="valign-middle">환불금액</th>
+                        <th rowspan="2" class="valign-middle">결제완료일 (환불완료일)</th>
+                        <th rowspan="2" class="valign-middle">좌석변경</th>
+                    </tr>
+                    <tr>
+                        <th class="valign-middle">좌석상태</th>
+                        <th class="valign-middle">개강~종강일</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -147,7 +160,8 @@
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
-                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' }
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 단과상품좌석 종강처리', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-member-seat-delete' }
                 ],
                 ajax: {
                     'url' : '{{ site_url('/pass/lectureRoom/issue/listAjax') }}',
@@ -162,6 +176,9 @@
                 columns: [
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + row.MemIdx + '">';
+                        }},
+                    {'data' : 'LrsrIdx', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" name="lrsr_idx" class="flat" data-lrsr-idx="' + data + '" data-learn-pattern-ccd="'+row.LearnPatternCcd+'">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -180,27 +197,46 @@
                             return (row.Tel1 == null) ? '없음' : row.Tel1 + '-' + row.Tel2 + '-' + row.Tel3;
                         }},
                     {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue">['+row.ProdCode+']'+'['+row.LearnPatternCcdName+']</span> ' + row.ProdName;
+                            return row.LearnPatternCcdName;
                         }},
-                    {'data' : 'LectureRoomName'},
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
+                            return '<a class="blue">['+row.ProdCode+']</a> ' + row.ProdName;
+                        }},
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
+                            return row.LectureRoomName;
+                        }},
                     {'data' : 'UnitName'},
                     {'data' : 'SeatNo'},
-                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if (row.LearnPatternCcd == '615006') {
+                                return row.MemSeatStatusCcdName;
+                            } else {
+                                return '';
+                            }
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if (row.LearnPatternCcd == '615006') {
+                                return row.StudyStartDate + ' ~ ' + row.StudyEndDate;
+                            } else {
+                                return '';
+                            }
+                        }},
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
                             return row.PayStatusCcdName;
                         }},
-                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
                             return row.RealPayPrice;
                         }},
-                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
                             var ret = (row.tRefundPrice > 0) ? row.tRefundPrice : '';
                             return ret;
                         }},
-                    {'name':'group', 'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'name':'group', 'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
                             var ret = row.CompleteDatm;
                             ret += (row.tRefundPrice > 0) ? '<br>(' + row.RefundDatm + ')' : '';
                             return ret;
                         }},
-                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                    {'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
                             return '<a class="blue cs-pointer btn-member-seat-modify" ' +
                                 'data-learn-pattern="' + row.LearnPatternCcd + '"' +
                                 'data-order-idx="' + row.OrderIdx + '"' +
@@ -222,6 +258,41 @@
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/pass/lectureRoom/issue/excel') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
+
+            //종강처리
+            $('.btn-member-seat-delete').on('click', function(event) {
+                var $params = [];
+                var learn_pattern_ccd = [];
+                var _url = "{{ site_url('/pass/lectureRoom/issue/deleteMemberSeat') }}";
+
+                $('input[name="lrsr_idx"]:checked').each(function() {
+                    $params.push($(this).data('lrsr-idx'));
+                    learn_pattern_ccd.push($(this).data("learn-pattern-ccd"));
+                });
+                if (Object.keys($params).length <= '0') {
+                    alert('종강처리할 상품을 선택해 주세요.');
+                    return false;
+                }
+                if ($.inArray(615007, learn_pattern_ccd) != -1) {
+                    alert('종합반 상품은 선택할 수 없습니다.');
+                    return;
+                }
+
+                if (confirm('선택된 단과 상품의 좌석에 대해서 만료처리 하시겠습니까?')) {
+                    var data = {
+                        '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method' : 'PUT',
+                        'params' : JSON.stringify($params)
+                    };
+
+                    sendAjax(_url, data, function(ret) {
+                        if (ret.ret_cd) {
+                            notifyAlert('success', '알림', ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showAlertError, false, 'POST');
                 }
             });
 

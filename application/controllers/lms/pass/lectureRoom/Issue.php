@@ -40,7 +40,8 @@ class Issue extends \app\controllers\BaseController
                 'lr.CampusCcd' => explode('_', $this->_reqP('search_campus_ccd'))[0],
                 'lr.LrCode' => $this->_reqP('search_lr_code'),
                 'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
-                'op.PayStatusCcd' => $this->_reqP('search_pay_status')
+                'op.PayStatusCcd' => $this->_reqP('search_pay_status'),
+                'pl.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd')
             ],
             'ORG1' => [
                 'LKB' => [
@@ -70,6 +71,9 @@ class Issue extends \app\controllers\BaseController
                 break;
             case 'refund' :
                 $arr_condition['BDT'] = ['opr.RefundDatm' => [$search_start_date, $search_end_date]];
+                break;
+            case 'studyenddate' :
+                $arr_condition['BDT'] = ['pl.StudyEndDate' => [$search_start_date, $search_end_date]];
                 break;
         }
 
@@ -242,5 +246,20 @@ class Issue extends \app\controllers\BaseController
 
         $result = $this->lectureRoomIssueModel->modifyLectureRoomUnitSeat($this->_reqP(null, false));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function deleteMemberSeat()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $params = json_decode($this->_req('params'), true);
+        $result = $this->lectureRoomIssueModel->deleteMemberSeatStatus($params);
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 }

@@ -391,7 +391,7 @@ class HanlimCalcModel extends BaseOrderModel
                     , TRUNCATE(TA.RefundPrice * TA.ProdDivisionRate, 0) as DivisionRefundPrice		
                     , TRUNCATE(TA.CardRefundPrice * TA.ProdDivisionRate, 0) as DivisionCardRefundPrice
                     , TRUNCATE(TA.CashRefundPrice * TA.ProdDivisionRate, 0) as DivisionCashRefundPrice
-                    , TRUNCATE(if(TA.RefundPrice > 0, 0, if(TA.PgFee < 1, (TA.CardPayPrice * TA.ProdDivisionRate) * TA.PgFee, TA.PgFee)), 0) as DivisionPgFeePrice
+                    , TRUNCATE(if(TA.RealPayPrice > TA.RefundPrice, if(TA.PgFee < 1, (TA.CardPayPrice - TA.CardRefundPrice) * TA.PgFee, TA.PgFee) * TA.ProdDivisionRate, 0), 0) as DivisionPgFeePrice
                 from (
         ';
 

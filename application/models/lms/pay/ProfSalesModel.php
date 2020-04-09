@@ -380,8 +380,8 @@ class ProfSalesModel extends BaseOrderModel
 
         if ($sales_type == 'offLecture') {
             $raw_query = /** @lang text */ '
-                select PD.ProfIdx, P.ProdCode, P.ProdCode as ProdCodeSub, P.ProdName, P.SiteCode
-                    , PL.LearnPatternCcd, PL.CampusCcd, PL.CourseIdx, PL.SubjectIdx
+                select PD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
+                    , PL.CampusCcd, PL.CourseIdx, PL.SubjectIdx
                     , json_object("StudyStartDate", PL.StudyStartDate, "StudyEndDate", PL.StudyEndDate) as StudyPeriod
                 from ' . $this->_table['product'] . ' as P
                     inner join ' . $this->_table['product_lecture'] . ' as PL
@@ -395,14 +395,9 @@ class ProfSalesModel extends BaseOrderModel
             $raw_query .= $this->_conn->makeWhereIn('PD.ProfIdx', $prof_idx)->getMakeWhere(true);
         } else {
             // 서브강좌의 교수식별자 중복 제거 (미사용 서브강좌 과정/과목식별자 제거)
-            $on_query = '';
-            if (empty($prof_idx) === false) {
-                $on_query = $this->_conn->makeWhere(['IN' => ['PD.ProfIdx' => $prof_idx]])->getMakeWhere(true);
-            }
-
             $raw_query = /** @lang text */ '
-                select distinct SPD.ProfIdx, P.ProdCode, PRS.ProdCodeSub, P.ProdName, P.SiteCode
-                    , PL.LearnPatternCcd, PL.CampusCcd, 0 as CourseIdx, 0 as SubjectIdx
+                select distinct SPD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
+                    , PL.CampusCcd, 0 as CourseIdx, 0 as SubjectIdx
                     , (select json_object("StudyStartDate", min(B.StudyStartDate), "StudyEndDate", max(B.StudyEndDate)) 
                         from ' . $this->_table['product_r_sublecture'] . ' as A
                             inner join ' . $this->_table['product_lecture'] . ' as B
@@ -415,7 +410,7 @@ class ProfSalesModel extends BaseOrderModel
                     inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
                         on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
                     left join ' . $this->_table['product_division'] . ' as PD
-                        on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y"' . $on_query . '
+                        on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y"
                     inner join ' . $this->_table['product'] . ' as SP
                         on SP.ProdCode = PRS.ProdCodeSub
                     inner join ' . $this->_table['product_lecture'] . ' as SPL
@@ -430,7 +425,7 @@ class ProfSalesModel extends BaseOrderModel
         }
 
         $query = /** @lang text */ '
-            select TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.ProdCodeSub, TA.SiteCode, TA.LearnPatternCcd, TA.CampusCcd, TA.CourseIdx, TA.SubjectIdx
+            select TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.SiteCode, TA.CampusCcd, TA.CourseIdx, TA.SubjectIdx
                 , json_value(TA.StudyPeriod, "$.StudyStartDate") as StudyStartDate, json_value(TA.StudyPeriod, "$.StudyEndDate") as StudyEndDate
                 , O.OrderIdx, O.OrderNo, O.MemIdx, OP.OrderProdIdx, O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , OP.RealPayPrice, O.CompleteDatm, OPR.RefundPrice, OPR.RefundDatm
@@ -441,16 +436,13 @@ class ProfSalesModel extends BaseOrderModel
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on OP.ProdCode = TA.ProdCode
                 inner join ' . $this->_table['order'] . ' as O
-                    on OP.OrderIdx = O.OrderIdx
-                left join ' . $this->_table['order_sub_product'] . ' as OSP
-                    on OSP.OrderProdIdx = OP.OrderProdIdx and OSP.ProdCodeSub = TA.ProdCodeSub                    
+                    on OP.OrderIdx = O.OrderIdx                   
                 left join ' . $this->_table['order_product_refund'] . ' as OPR
                     on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                 left join ' . $this->_table['product_r_category'] . ' as PC
                     on PC.ProdCode = TA.ProdCode and PC.IsStatus = "Y"				
             where OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                 and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['free'] . '")
-                and (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" or (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and OSP.ProdCodeSub is not null))
         ';
 
         return $query;

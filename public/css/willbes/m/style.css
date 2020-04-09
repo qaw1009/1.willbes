@@ -530,6 +530,7 @@ body.memBody #Footer {
     margin-right:5px;
 }
 .introBox3 {background-color: #181818; padding:20px;}
+.introBox3 .menuGroup {width:100%; max-width: 720px; margin:0 auto}
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
 .introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}
 .introBox3 h4 img {width:24px; vertical-align: middle; margin-right:5px; }

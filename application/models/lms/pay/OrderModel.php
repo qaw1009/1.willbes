@@ -2405,6 +2405,11 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception($is_add_log);
             }
 
+            $result = $this->lectureRoomIssueModel->storeProfForSeat($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub);
+            if ($result !== true) {
+                throw new \Exception($result);
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

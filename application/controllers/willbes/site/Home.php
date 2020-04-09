@@ -53,13 +53,6 @@ class Home extends \app\controllers\FrontController
         // get data
         $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
 
-        //엔잡 메인 오픈 이전 하드코딩 분기처리. TODO: 오픈 이후 제거
-        if(empty($this->_site_code) === false && $this->_site_code == '2014') {
-            if(ENVIRONMENT === 'production' && date('YmdHi') < '202004091000') {
-                $_view_path .= '_prev';
-            }
-        }
-
         $this->load->view('site/main_'. $_view_path, [
             'data' => $data,
             'cate_code' => $cate_code,

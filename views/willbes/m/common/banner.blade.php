@@ -6,7 +6,7 @@ var html = '', link_url = '#none';
     html += '   <div class="swiper-wrapper">';
     @foreach($data as $idx => $row)
         @if(empty($row['LinkUrl']) === false)
-            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'], 'www') }}';
+            link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $row['LinkUrlType'], 'www') }}';
         @endif
         html += '   <div class="swiper-slide"><a href="' + link_url + '" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/></a></div>';
     @endforeach

@@ -31,7 +31,7 @@
                     {{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>
                 <dl class="w-info tx-dark-gray">
-                    <div>학원실강의 : {{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</div>
+                    <div>강의촬영(실강) : {{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</div>
                     <dl>
                         <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
                         <dt><span class="row-line">|</span></dt>

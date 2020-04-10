@@ -76,7 +76,7 @@
                                                 {{ $row['ProdName'] }}
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt class="mb5"><strong>학원실강의</strong>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
+                                                <dt class="mb5"><strong>강의촬영(실강)</strong>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
                                                 <dt>
                                                     <strong>강의수</strong> <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif
                                                     </span><span class="row-line ml10">|</span>

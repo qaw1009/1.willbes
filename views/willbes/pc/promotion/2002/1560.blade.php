@@ -218,37 +218,37 @@
                             <tr>
                                 <td>형소법 신광은</td>
                                 <td>2020 2차대비 신광은 형소법 심화이론</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1057" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>영어 하승민</td>
                                 <td>2020 2차대비 하승민 영어 심화이론</td>
-                                <td>4/13(월)</td>                       
+                                <td>4/20(월)</td>                       
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 오태진</td>
                                 <td>2020 2차대비 오태진 한국사 심화이론</td>
-                                <td>4/16(목)</td>                      
+                                <td>4/23(목)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 원유철</td>
                                 <td>2020 2차대비 원유철 한국사 심화이론</td>
-                                <td>4/16(목)</td>                      
+                                <td>4/23(목)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>형법 김원욱</td>
                                 <td>2020 2차대비 김원욱 형법 심화이론</td>
-                                <td>4/29(수)</td>                        
+                                <td>5/6(수)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>경찰학 장정훈</td>
                                 <td>2020 2차대비 장정훈 경찰학 심화이론</td>
-                                <td>5/18월(목)</td>                      
+                                <td>5/25(월)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1058" target="_blank">수강신청</a></td>
                             </tr>                 
                         </tbody>
@@ -275,12 +275,12 @@
                         <tbody>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162436" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
-                                <td>4/13(월) </td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162435" target="_blank">수강신청</a></td>
                             </tr>                                                   
                         </tbody>
@@ -307,12 +307,12 @@
                         <tbody>
                             <tr>
                                 <td>2020 경찰시험대비 심화과정 종합반 (수사, 행정법 동영상으로 제공)</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>  
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 경행 3법 종합반 </td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>                                                      
                         </tbody>
@@ -326,7 +326,7 @@
                 <h3 class="NGEB">유의사항</h3>
                 <dd>
                     <dt>사전접수 이벤트 ></dt>
-                    <dl>4.1(수) 18시까지 접수 시 42%할인</dl>                   
+                    <dl>4.20(월)18시까지 접수 시 42%할인</dl>                   
                 </dd>
                 <dd>
                     <dt>경행3법 종합반 이벤트 ></dt>

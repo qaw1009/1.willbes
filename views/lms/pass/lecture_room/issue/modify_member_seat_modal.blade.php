@@ -87,7 +87,7 @@
                                 switch ($key) {
                                     case "727001" : $btn_type = 'bg-info'; break;
                                     case "727002" : $btn_type = 'bg-blue'; break;
-                                    case "727003" : $btn_type = 'bg-gray-custom'; break;
+                                    case "727003" : $btn_type = 'bg-red'; break;
                                 }
                             @endphp
                             <li><span class="color-box {{$btn_type}}">-</span> {{$val}}</li>
@@ -110,7 +110,7 @@
                                     switch ($row['SeatStatusCcd']) {
                                         case "727001" : $btn_type = ''; break;
                                         case "727002" : $btn_type = 'bg-blue'; break;
-                                        case "727003" : $btn_type = 'bg-gray-custom'; break;
+                                        case "727003" : $btn_type = 'bg-red'; break;
                                         default : $btn_type = '';
                                     }
                                 }

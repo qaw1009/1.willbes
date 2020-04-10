@@ -97,7 +97,9 @@
                                         <td class="w-data tx-left">
                                             <div class="w-tit mb10">
                                                 @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
-                                                    {{$row['wUnitNum']}}회
+                                                    @if($lec['IsOpenwUnitNum'] == 'Y')
+                                                        {{$row['wUnitNum']}}회
+                                                    @endif
                                                 @endif
                                                 {{$row['wUnitLectureNum']}}강
                                                 {{$row['wUnitName']}}

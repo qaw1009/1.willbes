@@ -162,6 +162,9 @@ class Professor extends \app\controllers\FrontController
         // 선택된 탭에 맞는 정보 조회
         $is_tab_select = isset($arr_input['tab']);
         $arr_input['tab'] = element('tab', $arr_input, 'home');
+        if (!method_exists($this,'_tab_' . $arr_input['tab'])) {
+            show_alert('잘못된 접근입니다.', 'back');
+        }
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input,$data['OnLecViewCcd']);
 
         // 게시판 사용 유무에 탭 버튼 개수 설정

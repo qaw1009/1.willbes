@@ -85,7 +85,14 @@
                             <tbody>
                             @forelse($curriculum as $row)
                                 <tr>
-                                    <td class="w-no"><input type="checkbox" id="bmidx" name="bmidx[]" class="goods_chk" value="{{$row['bmIdx']}}">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
+                                    <td class="w-no"><input type="checkbox" id="bmidx" name="bmidx[]" class="goods_chk" value="{{$row['bmIdx']}}">
+                                        @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
+                                            @if($lec['IsOpenwUnitNum'] == 'Y')
+                                                {{$row['wUnitNum']}}회
+                                            @endif
+                                        @endif
+                                        {{$row['wUnitLectureNum']}}강
+                                    </td>
                                     <td class="w-lec tx-left">{{$row['wUnitName']}}</td>
                                     <td class="w-lec-time">{{$row['wRuntime']}}분</td>
                                     <td class="w-free mypage">

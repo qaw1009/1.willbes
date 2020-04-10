@@ -146,7 +146,9 @@
                                 <td class="w-no">
                                     {{-- 경찰 온/오프 회차 표기 안함 --}}
                                     @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
-                                        {{$row['wUnitNum']}}회
+                                        @if($lec['IsOpenwUnitNum'] == 'Y')
+                                            {{$row['wUnitNum']}}회
+                                        @endif
                                     @endif
                                     {{$row['wUnitLectureNum']}}강</td>
                                 <td class="w-lec tx-left">

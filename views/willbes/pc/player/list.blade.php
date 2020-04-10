@@ -30,7 +30,9 @@
                             <li>
                                 <div class="tt1">
                                     @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
-                                        {{$row['wUnitNum']}}회
+                                        @if($lec['IsOpenwUnitNum'] == 'Y')
+                                            {{$row['wUnitNum']}}회
+                                        @endif
                                     @endif
                                     {{$row['wUnitLectureNum']}}강</div>
                                 <div class="tt2 tx-left">

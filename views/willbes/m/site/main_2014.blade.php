@@ -308,7 +308,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/support/mobile/index') }}">
+                    <a href="{{ front_url('/support/notice/show/cate/?board_idx=268490') }}">
                         <img src="{{ img_url('cop/icon_cecenter2.png') }}">
                         <div class="nTxt">모바일<br>서비스</div>
                     </a>
@@ -320,7 +320,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/support/remote/index') }}">
+                    <a href="{{ front_url('/support/qna/index') }}">
                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
                         <div class="nTxt">1:1<br>고객지원</div>
                     </a>

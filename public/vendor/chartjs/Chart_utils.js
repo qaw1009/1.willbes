@@ -2,16 +2,21 @@
 
 window.chartColors = {
 	red: 'rgb(255, 99, 132)',
+	red2: 'rgb(207, 165, 160)',
 	green: 'rgb(75, 192, 192)',
-	orange: 'rgb(255, 159, 64)',
-	blue: 'rgb(54, 162, 235)',
-	yellow: 'rgb(255, 205, 86)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)',
-	yellow2: 'rgb(247, 203, 123)',
-	orange2: 'rgb(235, 127, 54)',
 	green2: 'rgb(20, 120, 120)',
+	green3: 'rgb(99, 255, 120)',
+	orange: 'rgb(255, 159, 64)',
+	orange2: 'rgb(235, 127, 54)',
+	blue: 'rgb(54, 162, 235)',
 	blue2: 'rgb(0, 171, 219)',
+	blue3: 'rgb(160, 191, 207)',
+	blue4: 'rgb(255, 99, 132)',
+	yellow: 'rgb(255, 205, 86)',
+	yellow2: 'rgb(247, 203, 123)',
+	purple: 'rgb(153, 102, 255)',
+	purple2: 'rgb(207, 160, 197)',
+	grey: 'rgb(201, 203, 207)',
 	grey2: 'rgb(160, 175, 207)',
 };
 
@@ -40,7 +45,11 @@ window.chartColors = {
 		'#166a8f',
 		'#00a950',
 		'#58595b',
-		'#8549ba'
+		'#8549ba',
+		'#ab6d93',
+		'#cfa5a0',
+
+
 	];
 
 	var Samples = global.Samples || (global.Samples = {});

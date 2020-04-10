@@ -19,12 +19,20 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{date('Y-m-d', strtotime(date('Y-m-d') . ' -30 days'))}}" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{date('Y-m-d', strtotime(date('Y-m-d') . ' -1 months'))}}" autocomplete="off">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{date('Y-m-d')}}" autocomplete="off">
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-days">당일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="3-months">3개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="6-months">6개월</button>
                         </div>
                         &nbsp;&nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y-%m-%d" checked="checked"/> 일
@@ -171,7 +179,7 @@
                         <table id="list_sex_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="50" style="text-align: center;"  rowspan="2">구분</th>
+                                <th width="50" style="text-align: center;"  rowspan="2" class="valign-middle">구분</th>
                                 <th colspan="2" style="text-align: center;">남자</th>
                                 <th colspan="2" style="text-align: center;">여자</th>
                                 <th colspan="2" style="text-align: center;">성별없음</th>
@@ -195,7 +203,7 @@
                     <div class="x_content">
                         <table id="list_method_table" class="table table-striped table-bordered">
                             <thead>
-                            <tr >
+                            <tr>
                                 <th width="" style="text-align: center;">구분</th>
                                 <th width="50" style="text-align: center;">주문건수</th>
                                 <th width="" style="text-align: center;">주문금액</th>
@@ -246,7 +254,6 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -261,7 +268,7 @@
                 data = $.extend($search_form.serializeArray(), {});
 
                 var $result = '';
-                sendAjax('{{ site_url('/stats/statsOrder/') }}'+$type, data, function (ret) {
+                sendAjax('{{ site_url('/stats/statsOrder/getData/') }}'+$type, data, function (ret) {
                     $result = ret.data;
                 }, showError, false, 'POST');
                 return $result;
@@ -276,7 +283,7 @@
                 var color = Chart.helpers.color;
 
                 {{--######################################################  주문현황   ####################################################--}}
-                $order_info = getStats('order/Count');
+                $order_info = getStats('Order/Count');
                 $base_date = [], $order_count=[] ,$refund_count=[], $order_pay=[], $refund_pay=[] , $real_count=[] , $real_pay=[];
                 for (key in $order_info) {
                     $base_date.push($order_info[key]['base_date']);
@@ -430,7 +437,7 @@
                 {{--######################################################  주문현황   ####################################################--}}
 
                 {{--######################################################  성별   ####################################################--}}
-                $order_sex = getStats('order/Sex');
+                $order_sex = getStats('Order/Sex');
                 $pay_sex=[], $refund_sex=[];
                 $pay_sex.push($order_sex[0]['m_pay'],$order_sex[0]['f_pay'],$order_sex[0]['not_pay']);
                 $refund_sex.push($order_sex[1]['m_pay'],$order_sex[1]['f_pay'],$order_sex[1]['not_pay']);
@@ -453,7 +460,7 @@
                 {{--######################################################  성별    ####################################################--}}
 
                 {{--######################################################  사이트별   ####################################################--}}
-                $order_site = getStats('order/Site');
+                $order_site = getStats('Order/Site');
                 $base_site = [], $site_order_pay=[], $site_refund_pay=[], $site_real_pay=[];
                 for (key in $order_site) {
                     $base_site.push($order_site[key]['SiteName']);
@@ -486,7 +493,7 @@
                 {{--######################################################  사이트별   ####################################################--}}
 
                 {{--######################################################  결제채널    ####################################################--}}
-                $order_channel = getStats('order/Channel');
+                $order_channel = getStats('Order/Channel');
                 $channel_name = [], $channel_order = [], $channel_color = [];
                 $util_color = Object.keys(chartColors).map(function(i) {
                     return chartColors[i];
@@ -541,7 +548,7 @@
                 {{--######################################################  결제채널    ####################################################--}}
 
                 {{--######################################################  결제수단   ####################################################--}}
-                $order_method = getStats('order/Method');
+                $order_method = getStats('Order/Method');
                 $method_name = [], $method_order = [], $method_color = [];
                 $util_color = Object.keys(chartColors).map(function(i) {
                     return chartColors[i];
@@ -698,13 +705,6 @@
                 $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
             }
 
-            $search_form.on('click', '.btn', function() {
-                chartExe();
-                datatableReset();
-            });
-
-            chartExe();
-
             var $datatable_order, $datatable_site, $datatable_sex, $datatable_channel, $datatable_method;
 
             function datatableExe() {
@@ -720,27 +720,28 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                                return (data == 0)  ? '0' : ((data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font><b>') ;
                             }},
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                                return  (data == 0)  ? '0' : ((data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font><b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font><b>') ;
                             }}
                     ]
                 });
 
                 $datatable_sex = $("#list_sex_table").DataTable({
+                    dom: 'T<"clear">rtip',
                     serverSide: false,
                     paging: false,
                     ajax: false,
@@ -752,27 +753,28 @@
                                 return '' + data+ '';
                             }},
                         {'data': 'm', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }},
                         {'data': 'm_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }},
                         {'data': 'f', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }},
                         {'data': 'f_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }},
                         {'data': 'not', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }},
                         {'data': 'not_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '' + addComma(data) + '';
+                                return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }}
                     ]
                 });
 
                 $datatable_channel = $("#list_channel_table").DataTable({
+                    dom: 'T<"clear">rtip',
                     serverSide: false,
                     paging: false,
                     ajax: false,
@@ -793,6 +795,7 @@
                 });
 
                 $datatable_method = $("#list_method_table").DataTable({
+                    dom: 'T<"clear">rtip',
                     order: [[1, 'desc']],
                     ordering: true,
                     serverSide: false,
@@ -818,6 +821,7 @@
                     /*
                     order: [[0, 'asc']],
                     ordering: true,*/
+                    dom: 'T<"clear">rtip',
                     paging: false,
                     serverSide: false,
                     ajax: false,
@@ -829,22 +833,22 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                                return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                                return (data == 0) ? '0' : (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font></b>' ;
                             }},
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : '<font color=\'blue\'>' + addComma(data) + '</font>' ;
+                                return (data == 0) ? '0' : (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '</b><font color=\'blue\'>' + addComma(data) + '</font></b>' ;
                             }}
                     ]
                 });
@@ -864,6 +868,12 @@
                 datatableExe();
             }
 
+            $search_form.on('click', '.btn-search', function() {
+                chartExe();
+                datatableReset();
+            });
+
+            chartExe();
             datatableExe();
         });
     </script>

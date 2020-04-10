@@ -22,12 +22,16 @@ class Issue extends \app\controllers\BaseController
         $lecture_room_info['unit'] = $this->lectureRoomRegistModel->listLectureRoomUnit();
         $arr_pay_status_ccd = $this->codeModel->getCcd('676');
 
+        //회원좌석상태코드
+        $arr_seat_member_ccd = $this->codeModel->getCcd($this->lectureRoomRegistModel->_seat_member_ccd);
+
         $this->load->view("pass/lecture_room/issue/index", [
             'arr_site_code' => $arr_site_code,
             'def_site_code' => $def_site_code,
             'arr_campus' => $arr_campus,
             'lecture_room_info' => $lecture_room_info,
-            'arr_pay_status_ccd' => $arr_pay_status_ccd
+            'arr_pay_status_ccd' => $arr_pay_status_ccd,
+            'arr_seat_member_ccd' => $arr_seat_member_ccd
         ]);
     }
 
@@ -41,7 +45,8 @@ class Issue extends \app\controllers\BaseController
                 'lr.LrCode' => $this->_reqP('search_lr_code'),
                 'lrru.LrUnitcode' => $this->_reqP('search_lr_unit_code'),
                 'op.PayStatusCcd' => $this->_reqP('search_pay_status'),
-                'pl.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd')
+                'pl.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
+                'lrsr.SeatStatusCcd' => $this->_reqP('search_seat_member_status')
             ],
             'ORG1' => [
                 'LKB' => [

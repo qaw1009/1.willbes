@@ -283,7 +283,7 @@ if (!function_exists('html_def_site_tabs')) {
 
             $counter = 0;
             $return_html = '<p>';
-            !empty($is_all) ? $return_html .= '<input type="checkbox" class="flat ' . $class . '"  name="site_code_all_check" id="site_code_all_check" data-name="'. $ele_name .'" '. ((empty($checked) == false) ? ' checked="checked"' : '') .'> <b><span class="red">[전체]</span><b>&nbsp;&nbsp;&nbsp;' : '';
+            !empty($is_all) ? $return_html .= '<input type="checkbox" class="flat ' . $class . '"  name="site_code_all_check" id="site_code_all_check" data-name="'. $ele_name .'" '. ((empty($checked) == false) ? ' checked="checked"' : '') .'> <b><span class="red">[전체]</span></b>&nbsp;&nbsp;&nbsp;' : '';
             foreach ($site_codes as $key => $val) {
                 $return_html .= '<input type="checkbox" class="flat ' . $class . '" id="' . $ele_id . '_'.$key.'" name="' . $ele_name . '[]" title="' . $title . '"';
                 empty($required) === false && $return_html .= ' required="' . $required . '"';

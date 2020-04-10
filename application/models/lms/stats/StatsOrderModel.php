@@ -182,6 +182,7 @@ class StatsOrderModel extends BaseStatsModel
         );
 
         $base_condition['IN']['S.SiteCode'] = get_auth_site_codes();    //; 기준사이트
+        $base_condition['EQ'] = ['S.IsStatus' => 'Y','S.IsUse' => 'Y'];
 
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
@@ -301,13 +302,12 @@ class StatsOrderModel extends BaseStatsModel
         return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
     }
 
-
-    function _setCondition($arr_input=[])
+    private function _setCondition($arr_input=[])
     {
         $set_condition = [];
-        $set_condition['search_end_date'] = element('search_end_date', $arr_input, date("Y-m-d"));
-        $set_condition['search_start_date'] =  element('search_start_date', $arr_input, date('Y-m-d', strtotime($set_condition['search_end_date'] . ' -14 days')));
-        $set_condition['search_date_type'] = element('search_date_type', $arr_input, '%Y-%m-%d');
+        $set_condition['search_end_date'] = empty(element('search_end_date', $arr_input)) ? date("Y-m-d") : $arr_input['search_end_date'];
+        $set_condition['search_start_date'] =  empty(element('search_start_date', $arr_input)) ? date('Y-m-d', strtotime($set_condition['search_end_date'] . ' -1 months')) : $arr_input['search_start_date'];
+        $set_condition['search_date_type'] = empty(element('search_date_type', $arr_input)) ? '%Y-%m-%d' : $arr_input['search_date_type'];
 
         $set_condition['comm_condition'] = [
             'EQ' => [

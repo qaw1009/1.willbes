@@ -22,6 +22,8 @@
 
         /************************************************************/
 
+        .sky {position:fixed;top:250px;right:0;z-index:1;}
+
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1559_top_bg.jpg) no-repeat top;}
         .wb_cts03 {background:#fff; padding-bottom:100px}
         .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1401_04_bg.png) no-repeat top;padding-bottom:140px;}
@@ -41,6 +43,15 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
+        <ul class="sky">
+            <li>
+                <a href="https://pass.willbes.net/book/index/cate/3019?cate_code=3019&subject_idx=1109&prof_idx=50027" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1559_sky.png" alt="오태진 한국사 100점 노트 구매하기">
+                </a>
+            </li>          
+        </ul>
+
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1559_top.jpg"  alt="한국사 전문가 오태진" />
         </div>

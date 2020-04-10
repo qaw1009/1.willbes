@@ -2268,21 +2268,32 @@ class EventLectureModel extends WB_Model
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param bool $excel_yn
      * @return mixed
      */
-    public function listAllEventApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllEventApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $excel_yn = false)
     {
         if ($is_count === true) {
             $column = 'COUNT(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                A.MemIdx, A.IsWin, A.RegDatm,
-                C.MemId, C.MemName, fn_dec(C.PhoneEnc) as MemPhone,
-                O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode, B.Name
-            ';
+            if($excel_yn === false) {
+                $column = '
+                    A.MemIdx, A.IsWin, A.RegDatm,
+                    C.MemId, C.MemName, fn_dec(C.PhoneEnc) as MemPhone,
+                    O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode, B.Name
+                ';
+            } else {
+                $column = '
+                    C.MemId, C.MemName, fn_dec(C.PhoneEnc) as MemPhone,
+                    B.Name, A.RegDatm
+                ';
+            }
+
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            if($excel_yn === false) {
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
         }
 
         $from = "

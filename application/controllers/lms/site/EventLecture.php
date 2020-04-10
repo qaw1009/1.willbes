@@ -897,6 +897,31 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 추가신청자 현황 엑셀다운로드
+     * @param array $params
+     */
+    public function addApplyMemberExcel($params = [])
+    {
+        $file_name = '이벤트_추가_신청현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $headers = ['회원ID', '이름', '전화번호', '신청정보', '신청일시'];
+
+        $el_idx = $params[0];
+
+        $arr_condition = ['EQ' => ['B.ElIdx' => $el_idx]];
+        $list = $this->eventLectureModel->listAllEventApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EamIdx' => 'desc'], true);
+
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    /**
      * 댓글 현황 엑셀다운로드
      * @param array $params
      */

@@ -8,7 +8,7 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">검색</label>
-                    <div class="col-md-4 form-inline">
+                    <div class="col-md-10 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
@@ -34,10 +34,6 @@
                             <option value="615006">단과반 [학원]</option>
                             <option value="615007">종합반 [학원]</option>
                         </select>
-                    </div>
-
-                    <label class="control-label col-md-1" for="search_value">결제정보</label>
-                    <div class="col-md-4 form-inline">
                         <select class="form-control" id="search_pay_status" name="search_pay_status">
                             <option value="">결제상태</option>
                             @foreach($arr_pay_status_ccd as $key => $val)

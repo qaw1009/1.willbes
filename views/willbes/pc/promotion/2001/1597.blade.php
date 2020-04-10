@@ -157,37 +157,37 @@
                             <tr>
                                 <td>형소법 신광은</td>
                                 <td>2020 2차대비 신광은 형소법 심화이론</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163704" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>영어 하승민</td>
                                 <td>2020 2차대비 하승민 영어 심화이론</td>
-                                <td>4/13(월)</td>                       
+                                <td>4/20(월)</td>                       
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163708" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 오태진</td>
                                 <td>2020 2차대비 오태진 한국사 심화이론</td>
-                                <td>4/16(목)</td>                      
+                                <td>4/23(목)</td>                      
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163710" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 원유철</td>
                                 <td>2020 2차대비 원유철 한국사 심화이론</td>
-                                <td>4/16(목)</td>                      
+                                <td>4/23(목)</td>                      
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163712" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>형법 김원욱</td>
                                 <td>2020 2차대비 김원욱 형법 심화이론</td>
-                                <td>4/29(수)</td>                        
+                                <td>5/6(수)</td>                        
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163714" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>경찰학 장정훈</td>
                                 <td>2020 2차대비 장정훈 경찰학 심화이론</td>
-                                <td>5/18월(목)</td>                      
+                                <td>5/25(월)</td>                      
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163719" target="_blank">수강신청</a></td>
                             </tr>                 
                         </tbody>
@@ -214,12 +214,12 @@
                         <tbody>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 오태진)</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/163844" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>2020 경찰시험대비 심화이론 종합반( 史 원유철)</td>
-                                <td>4/13(월) </td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/163839" target="_blank">수강신청</a></td>
                             </tr>                                                   
                         </tbody>
@@ -246,7 +246,7 @@
                         <tbody>
                             <tr>
                                 <td>2020 경찰시험대비 심화과정 종합반</td>
-                                <td>4/13(월)</td>                        
+                                <td>4/20(월)</td>                        
                                 <td><a href="https://police.willbes.net/package/index/cate/3002/pack/648001" target="_blank">수강신청</a></td>
                             </tr>                                                                     
                         </tbody>

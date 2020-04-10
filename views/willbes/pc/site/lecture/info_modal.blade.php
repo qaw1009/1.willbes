@@ -16,7 +16,7 @@
         <div id="ch1" class="tabLink">
             <div class="classInfo">
                 <dl class="w-info NG">
-                    <dt>학원실강의 : {{ empty($data['lecture']['StudyStartDate']) ? '' : substr($data['lecture']['StudyStartDate'],0,4).'년 '. substr($data['lecture']['StudyStartDate'],5,2).'월' }}</dt>
+                    <dt>강의촬영(실강) : {{ empty($data['lecture']['StudyStartDate']) ? '' : substr($data['lecture']['StudyStartDate'],0,4).'년 '. substr($data['lecture']['StudyStartDate'],5,2).'월' }}</dt>
                     <dt><span class="row-line">|</span></dt>
                     <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if($data['lecture']['wLectureProgressCcd'] != '105002' && empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif</span></dt>
                     <dt><span class="row-line">|</span></dt>

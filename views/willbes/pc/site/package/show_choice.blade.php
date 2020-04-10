@@ -218,7 +218,7 @@
                                                     <dt class="w-tit">{{$sub_row['ProfNickName']}}<span class="row-line">|</span>{{ $sub_row['ProdName'] }}</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt>학원실강의 : {{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
+                                                    <dt>강의촬영(실강) : {{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
@@ -360,7 +360,7 @@
                                                     <dt class="w-tit">{{$sub_row['ProfNickName']}}<span class="row-line">|</span>{{ $sub_row['ProdName'] }}</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt>학원실강의 : {{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
+                                                    <dt>강의촬영(실강) : {{ empty($sub_row['StudyStartDate']) ? '' : substr($sub_row['StudyStartDate'],0,4).'년 '. substr($sub_row['StudyStartDate'],5,2).'월' }}</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>

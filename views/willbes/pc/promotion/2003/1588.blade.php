@@ -166,7 +166,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_04.jpg" usemap="#Map1588e" title="라이브 티비" border="0">
             <map name="Map1588e" id="Map1588e">
                 <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
-                <area shape="rect" coords="436,24,711,126" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" onfocus='this.blur()' />
+                <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus='this.blur()' />
                 <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" onfocus='this.blur()' />
             </map>      
             <div class="liveWrap" >

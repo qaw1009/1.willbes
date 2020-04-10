@@ -19,12 +19,20 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{date('Y-m-d', strtotime(date('Y-m-d') . ' -30 days'))}}" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{date('Y-m-d', strtotime(date('Y-m-d') . ' -1 months'))}}" autocomplete="off">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{date('Y-m-d')}}" autocomplete="off">
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-days">당일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="3-months">3개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="6-months">6개월</button>
                         </div>
                         &nbsp;&nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y-%m-%d" checked="checked"/> 일
@@ -233,7 +241,7 @@
             data = $.extend($search_form.serializeArray(), {});
 
             var $result = '';
-            sendAjax('{{ site_url('/stats/statsMember/') }}'+$type, data, function (ret) {
+            sendAjax('{{ site_url('/stats/statsMember/getData/') }}'+$type, data, function (ret) {
                 $result = ret.data;
             }, showError, false, 'POST');
             return $result;
@@ -248,7 +256,7 @@
             var color = Chart.helpers.color;
 
             {{--######################################################  가입/탈퇴수    ####################################################--}}
-            $member_count = getStats('member/Count');
+            $member_count = getStats('Member/Count');
             var $base_date = [], $join_count = []; $out_count = [];
             for (key in $member_count) {
                 $base_date.push($member_count[key]['base_date']);
@@ -322,7 +330,7 @@
             {{--######################################################  가입/탈퇴    ####################################################--}}
 
             {{--######################################################  연령대    ####################################################--}}
-            $member_age = getStats('member/Age');
+            $member_age = getStats('Member/Age');
             $join_age = Object.keys($member_age[0]).map(function(i) {
                 return $member_age[0][i];
             });
@@ -351,7 +359,7 @@
             {{--######################################################  연령대    ####################################################--}}
 
             {{--######################################################  성별   ####################################################--}}
-            $member_sex = getStats('member/Sex');
+            $member_sex = getStats('Member/Sex');
             $join_sex = Object.keys($member_sex[0]).map(function(i) {
                 return $member_sex[0][i];
             });
@@ -379,7 +387,7 @@
             {{--######################################################  성별    ####################################################--}}
 
             {{--######################################################  관심분야    ####################################################--}}
-            $member_interest = getStats('member/Interest');
+            $member_interest = getStats('Member/Interest');
             var $interest_name = [], $interest_count = [], $interest_color = [];
             var $util_color = Object.keys(chartColors).map(function(i) {
                 return chartColors[i];
@@ -434,7 +442,7 @@
             {{--######################################################  관심분야    ####################################################--}}
 
             {{--######################################################  로그인수    ####################################################--}}
-            $member_login = getStats('member/Login');
+            $member_login = getStats('Member/Login');
             var $base_date_login = [], $login_count = [];
             for (key in $member_login) {
                 $base_date_login.push($member_login[key]['base_date']);
@@ -599,17 +607,12 @@
             $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
         }
 
-        $search_form.on('click', '.btn', function() {
-            chartExe();
-            datatableReset();
-        });
-
-        chartExe();
 
         var $datatable_member, $datatable_login, $datatable_age, $datatable_sex, $datatable_interest;
 
         function datatableExe() {
             $datatable_member = $("#list_member_table").DataTable({
+                dom: 'T<"clear">rtip',
                 order: [[0, 'asc']],
                 ordering: true,
                 serverSide: false,
@@ -621,15 +624,16 @@
                             return '<font color="black">' + data+ '</font>';
                     }},
                     {'data': 'join_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                            return (data > 0) ? '<font color=\'red\'>' + addComma(data) + '</font>' : data;
+                            return (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : data;
                     }},
                     {'data': 'out_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                            return (data > 0) ? '<font color=\'blue\'>' + addComma(data) + '</font>' : data;
+                            return (data > 0) ? '<b><font color=\'blue\'>' + addComma(data) + '</font></b>' : data;
                     }}
                 ]
             });
 
             $datatable_login = $("#list_login_table").DataTable({
+                dom: 'T<"clear">rtip',
                 order: [[0, 'asc']],
                 ordering: true,
                 serverSide: false,
@@ -641,12 +645,13 @@
                             return '<font color="black">' + data + '</font>';
                     }},
                     {'data': 'login_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                            return (data > 0) ? '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>' : data;
+                            return (data > 0) ? '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>' : data;
                     }}
                 ]
             });
 
             $datatable_age = $("#list_age_table").DataTable({
+                dom: 'T<"clear">rtip',
                 serverSide: false,
                 paging: false,
                 ajax: false,
@@ -682,6 +687,7 @@
             });
 
             $datatable_sex = $("#list_sex_table").DataTable({
+                dom: 'T<"clear">rtip',
                 serverSide: false,
                 paging: false,
                 ajax: false,
@@ -705,6 +711,7 @@
             });
 
             $datatable_interest = $("#list_interest_table").DataTable({
+                dom: 'T<"clear">rtip',
                 order: [[0, 'asc']],
                 ordering: true,
                 serverSide: false,
@@ -738,6 +745,12 @@
             datatableExe();
         }
 
+        $search_form.on('click', '.btn-search', function() {
+            chartExe();
+            datatableReset();
+        });
+
+        chartExe();
         datatableExe();
     });
     </script>

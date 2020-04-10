@@ -320,7 +320,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/support/qna/index') }}">
+                    <a href="{{ front_url('/support/qna/create') }}">
                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
                         <div class="nTxt">1:1<br>고객지원</div>
                     </a>

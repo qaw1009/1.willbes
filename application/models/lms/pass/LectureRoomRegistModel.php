@@ -362,7 +362,7 @@ class LectureRoomRegistModel extends WB_Model
      */
     public function listLectureRoomUnitForRegister($lr_unit_code)
     {
-        $column = "b.LrUnitCode, b.LrrursIdx, b.SeatNo, b.SeatStatusCcd, b.MemIdx, b.MemName, b.SeatStatusName";
+        $column = "b.LrUnitCode, b.LrrursIdx, b.SeatNo, b.SeatStatusCcd, b.OrderIdx, b.ProdCodeSub, b.MemIdx, b.MemName, b.SeatStatusName";
         $from = "
             FROM (
                 SELECT LrUnitCode
@@ -370,21 +370,20 @@ class LectureRoomRegistModel extends WB_Model
                 WHERE LrUnitCode = '{$lr_unit_code}'
             ) AS a
             INNER JOIN (
-                SELECT rs.LrUnitCode, rs.LrrursIdx, rs.SeatNo, rs.SeatStatusCcd, lrsr.MemIdx, lrsr.MemName, sc.CcdName AS SeatStatusName
+                SELECT rs.LrUnitCode, rs.LrrursIdx, rs.SeatNo, rs.SeatStatusCcd, lrsr.MemIdx, lrsr.MemName, lrsr.OrderIdx, lrsr.ProdCodeSub, sc.CcdName AS SeatStatusName
                 FROM {$this->_table['lectureroom_r_unit_r_seat']} AS rs
-                INNER JOIN {$this->_table['sys_code']} AS sc ON rs.SeatStatusCcd = sc.Ccd
-                
+                INNER JOIN {$this->_table['sys_code']} AS sc ON rs.SeatStatusCcd = sc.Ccd                
                 LEFT JOIN (
-                    SELECT a.LrrursIdx, a.MemIdx, a.OrderProdIdx, c.MemName
+                    SELECT a.LrrursIdx, a.MemIdx, a.OrderIdx, a.OrderProdIdx, a.ProdCodeSub, c.MemName
                     FROM (
-                        SELECT LrrursIdx, MemIdx, OrderProdIdx
+                        SELECT LrrursIdx, MemIdx, OrderIdx, OrderProdIdx, ProdCodeSub
                         FROM {$this->_table['lectureroom_seat_register']}
                         WHERE LrUnitCode = '{$lr_unit_code}'
                         AND SeatStatusCcd IN ('728001','728002')
                         AND IsStatus = 'Y'
-                        GROUP BY LrrursIdx
+                        AND OrderNum = '1'
                     ) AS a
-                    INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001'
+                    INNER JOIN {$this->_table['order_product']} AS b ON a.OrderIdx = b.OrderIdx AND a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001'
                     INNER JOIN {$this->_table['member']} AS c ON a.MemIdx = c.MemIdx
                 ) AS lrsr ON rs.LrrursIdx = lrsr.LrrursIdx
                 WHERE rs.LrUnitCode = '{$lr_unit_code}' AND rs.IsStatus = 'Y'

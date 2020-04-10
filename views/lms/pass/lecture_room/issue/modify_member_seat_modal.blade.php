@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    좌석정보
+    좌석정보(이동/퇴실)
 @stop
 
 @section('layer_header')
@@ -115,7 +115,7 @@
                                     }
                                 }
                             @endphp
-                            <li>
+                            <li class="mb-10">
                                 <button type="button" id="_seat_{{$row['SeatNo']}}" class="btn {{$btn_type}} btn_choice_seat" style="border: 1px solid #989898 !important;"
                                         data-lr-rurs-idx="{{$row['LrrursIdx']}}"
                                         data-seat-type="{{$row['SeatStatusCcd']}}"
@@ -135,6 +135,11 @@
                                         </p>
                                     @endif
                                 </button>
+                                @if (empty($row['MemName']) === false)
+                                    <span class="cs-pointer btn_view_seat" data-order-idx="{{ $row['OrderIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">[보기]</span>
+                                @else
+                                    <span>&nbsp;</span>
+                                @endif
                             </li>
                         @endforeach
                     </ul>
@@ -263,6 +268,12 @@
             $search_form_modal.on('click', '#_btn_reset_modal', function() {
                 $search_form_modal[0].reset();
                 $datatable_modal.draw();
+            });
+
+            $modal_regi_form.on('click', '.btn_view_seat', function() {
+                var param = '?order_idx=' + $(this).data("order-idx") + '&prod_code_sub=' + $(this).data("prod-code-sub");
+                var _replace_url = "{{ site_url('/pass/lectureRoom/issue/modifyMemberSeatModal/'.$lr_code.'/'.$lr_unit_code) }}" + param;
+                replaceModal(_replace_url,'');
             });
 
             // 좌석선택

@@ -40,6 +40,12 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_seat_member_status" name="search_seat_member_status">
+                            <option value="">좌석상태</option>
+                            @foreach($arr_seat_member_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 

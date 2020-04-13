@@ -12,7 +12,7 @@ class StatsSearch extends BaseStats
 
     public function index()
     {
-        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $arr_site_code = get_auth_on_off_site_codes('N', true, true);
         $def_site_code = key($arr_site_code);
         $this->load->view('stats/search/index',[
             'def_site_code' => $def_site_code,

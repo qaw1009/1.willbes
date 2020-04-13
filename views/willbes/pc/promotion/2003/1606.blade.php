@@ -157,10 +157,10 @@
                 <area shape="rect" coords="385,27,541,110" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="576,25,741,109" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="777,24,937,109" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
-            </map>            
+            </map>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
+                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
             @endif
         </div>
 

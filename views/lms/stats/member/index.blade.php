@@ -730,7 +730,7 @@
                 ]
             });
 
-            $('#site_code_all_check').on('ifChanged', function() {
+            $search_form.on('ifChanged','input[name="site_code_all_check"]', function () {
                 var $_name = $('input[name="'+$(this).data("name")+'[]"]');
                 iCheckAll($_name, $(this));
             });

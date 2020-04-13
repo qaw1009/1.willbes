@@ -134,7 +134,7 @@
         <div class="evtCtnsBox wb_cts07">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1552_07.jpg"  alt="강의신청" usemap="#Map1552a" border="0" />
             <map name="Map1552a" id="Map1552a">
-                <area shape="rect" coords="859,449,995,488" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156112" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="859,449,995,488" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157701" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="858,529,996,566" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157701" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="858,608,995,646" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/161898" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="859,712,995,749" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156706" target="_blank" onfocus='this.blur()' />

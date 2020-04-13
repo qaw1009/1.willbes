@@ -249,7 +249,7 @@
                                 <th >검색어</th>
                                 <th width="120">플랫폼</th>
                                 <th width="90">검색결과</th>
-                                <th width="230">결과정보 </th>
+                                <th width="400">결과정보 </th>
                                 <th width="90">사용자IP</th>
                                 <th width="120">일자</th>
                             </tr>
@@ -700,7 +700,7 @@
                     ]
                 });
 
-                $('#site_code_all_check').on('ifChanged', function() {
+                $search_form.on('ifChanged','input[name="site_code_all_check"]', function () {
                     var $_name = $('input[name="'+$(this).data("name")+'[]"]');
                     iCheckAll($_name, $(this));
                 });

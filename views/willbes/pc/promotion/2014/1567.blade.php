@@ -207,7 +207,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1567_sky.png" alt="스카이베너" usemap="#Map1567_sky" border="0" >
-            <map name="Map15674_sky" id="Map1567_sky">
+            <map name="Map15677_sky" id="Map1567_sky">
                 <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');" alt="강의신청" />                
             </map>
         </div>                  

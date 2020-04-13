@@ -575,7 +575,7 @@
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
-                                return "<img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' width='100%'>";
+                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
@@ -600,17 +600,12 @@
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
-                                return "<img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' width='100%'>";
+                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
                             }},
                     ]
-                });
-
-                $('#site_code_all_check').on('ifChanged', function() {
-                    var $_name = $('input[name="'+$(this).data("name")+'[]"]');
-                    iCheckAll($_name, $(this));
                 });
 
                 $datatable_list = $('#list_ajax_table').DataTable({
@@ -619,8 +614,7 @@
                         'url' : '{{ site_url('/stats/statsBanner/listAjax') }}',
                         'type' : 'POST',
                         'data' : function(data) {
-                            return $search_form.formSerialize()+'&start='+data.start+'&length='+data.length;
-                            //return $search_form;
+                            return $search_form.formSerialize()+'&start='+data.start+'&length='+data.length
                         }
                     },
                     columns: [
@@ -636,6 +630,11 @@
                         {'data' : 'RegIp'},
                         {'data' : 'RegDatm'}
                     ]
+                });
+
+                $search_form.on('ifChanged','input[name="site_code_all_check"]', function () {
+                    var $_name = $('input[name="'+$(this).data("name")+'[]"]');
+                    iCheckAll($_name, $(this));
                 });
             }
 

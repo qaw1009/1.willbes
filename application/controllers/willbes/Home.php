@@ -37,7 +37,7 @@ class Home extends \app\controllers\FrontController
             $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
             $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
             $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
-            $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 6, 0, $order_by);
+            $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 5, 0, $order_by);
         }
 
         return $this->load->view('main', [

@@ -2,7 +2,7 @@
 
 @section('content')
     <style>
-        .favor-cate-on {background: #0396cf;}
+        .favor-cate-on {background: #0396cf;color: #fff !important;}
     </style>
 
     <!-- Container -->

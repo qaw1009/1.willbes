@@ -29,7 +29,7 @@
 
 .gate-add-popup .willbes-Layer-CartBox {height:auto;}
 .gate-add-popup .Layer-Tit {background: #333; text-align: center; color:#fff; height: 50px !important; line-height: 50px !important; font-weight: 900;}
-.gate-add-popup .gate-add-cts {overflow-y:scroll !important; padding:30px; height: 400px;}
+.gate-add-popup .gate-add-cts {overflow-y:scroll !important; padding:30px; height: 430px;}
 .gate-add-popup .gate-add-cts h5 {font-size:16px; font-weight: 900; margin-bottom: 10px;}
 .gate-add-popup .gate-add-cts ul {margin-bottom:20px}
 .gate-add-popup .gate-add-cts li {display: inline; float:left; width: 25%;}

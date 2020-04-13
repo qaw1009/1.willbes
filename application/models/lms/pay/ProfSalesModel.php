@@ -393,35 +393,51 @@ class ProfSalesModel extends BaseOrderModel
                     and `PL`.`'. $arr_search_date[2] .'` between ' . $this->_conn->escape($arr_search_date[0]) . ' and ' . $this->_conn->escape($arr_search_date[1]) . '            
             ';
             $raw_query .= $this->_conn->makeWhereIn('PD.ProfIdx', $prof_idx)->getMakeWhere(true);
+
+            // 주문상품 조인조건 (상품코드)
+            $on_query = 'OP.ProdCode = TA.ProdCode';
         } else {
-            // 서브강좌의 교수식별자 중복 제거 (미사용 서브강좌 과정/과목식별자 제거)
+            // 중복되는 주문상품식별자 제거 (동일한 교수의 서브강좌가 다수일 경우 중복 발생)
             $raw_query = /** @lang text */ '
-                select distinct SPD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
-                    , PL.CampusCcd, 0 as CourseIdx, 0 as SubjectIdx
-                    , (select json_object("StudyStartDate", min(B.StudyStartDate), "StudyEndDate", max(B.StudyEndDate)) 
-                        from ' . $this->_table['product_r_sublecture'] . ' as A
-                            inner join ' . $this->_table['product_lecture'] . ' as B
-                                on A.ProdCodeSub = B.ProdCode
-                        where A.ProdCode = P.ProdCode
-                            and A.IsStatus = "Y") as StudyPeriod
-                from ' . $this->_table['product'] . ' as P
-                    inner join ' . $this->_table['product_lecture'] . ' as PL
-                        on PL.ProdCode = P.ProdCode
-                    inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
-                        on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
-                    left join ' . $this->_table['product_division'] . ' as PD
-                        on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y"
-                    inner join ' . $this->_table['product'] . ' as SP
-                        on SP.ProdCode = PRS.ProdCodeSub
-                    inner join ' . $this->_table['product_lecture'] . ' as SPL
-                        on SPL.ProdCode = SP.ProdCode
-                    inner join ' . $this->_table['product_division'] . ' as SPD
-                        on SPD.ProdCode = SP.ProdCode and SPD.ProdCodeSub = SP.ProdCode and SPD.IsStatus = "Y"
-                where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
-                    and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
-                    and `SPL`.`'. $arr_search_date[2] .'` between ' . $this->_conn->escape($arr_search_date[0]) . ' and ' . $this->_conn->escape($arr_search_date[1]) . '             
+                select distinct TP.ProfIdx, TP.ProdCode, TP.ProdName, TP.SiteCode
+                    , TP.CampusCcd, TP.CourseIdx, TP.SubjectIdx, TP.StudyPeriod
+                    , OP.OrderProdIdx
+                from (            
+                    select SPD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
+                        , PL.CampusCcd, 0 as CourseIdx, 0 as SubjectIdx
+                        , (select json_object("StudyStartDate", min(B.StudyStartDate), "StudyEndDate", max(B.StudyEndDate))
+                            from ' . $this->_table['product_r_sublecture'] . ' as A
+                                inner join ' . $this->_table['product_lecture'] . ' as B
+                                    on A.ProdCodeSub = B.ProdCode
+                            where A.ProdCode = P.ProdCode
+                                and A.IsStatus = "Y") as StudyPeriod
+                        , PRS.ProdCodeSub
+                    from ' . $this->_table['product'] . ' as P
+                        inner join ' . $this->_table['product_lecture'] . ' as PL
+                            on PL.ProdCode = P.ProdCode
+                        inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
+                            on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
+                        inner join ' . $this->_table['product_lecture'] . ' as SPL
+                            on SPL.ProdCode = PRS.ProdCodeSub
+                        inner join ' . $this->_table['product_division'] . ' as SPD
+                            on SPD.ProdCode = PRS.ProdCodeSub and SPD.ProdCodeSub = PRS.ProdCodeSub and SPD.IsStatus = "Y"                    
+                    where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+                        and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+                        and `SPL`.`'. $arr_search_date[2] .'` between ' . $this->_conn->escape($arr_search_date[0]) . ' and ' . $this->_conn->escape($arr_search_date[1]) . '
+                    ' . $this->_conn->makeWhere(['IN' => ['SPD.ProfIdx' => $prof_idx]])->getMakeWhere(true) . '                                      
+                ) as TP
+                    inner join ' . $this->_table['order_product'] . ' as OP
+                        on OP.ProdCode = TP.ProdCode
+                    inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                        on OSP.OrderProdIdx = OP.OrderProdIdx and OSP.ProdCodeSub = TP.ProdCodeSub
+                    left join ' . $this->_table['order_unpaid_hist'] . ' as OUH
+                        on OP.OrderIdx = OUH.OrderIdx                        
+                where OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '") 
+                    and (OUH.UnPaidIdx is null or OUH.UnPaidUnitNum = 1)                                      
             ';
-            $raw_query .= $this->_conn->makeWhere(['IN' => ['SPD.ProfIdx' => $prof_idx]])->getMakeWhere(true);
+
+            // 주문상품 조인조건 (주문상품식별자)
+            $on_query = 'OP.OrderProdIdx = TA.OrderProdIdx';
         }
 
         $query = /** @lang text */ '
@@ -434,7 +450,7 @@ class ProfSalesModel extends BaseOrderModel
                 ' . $raw_query . '
             ) as TA	
                 inner join ' . $this->_table['order_product'] . ' as OP
-                    on OP.ProdCode = TA.ProdCode
+                    on ' . $on_query . '
                 inner join ' . $this->_table['order'] . ' as O
                     on OP.OrderIdx = O.OrderIdx                   
                 left join ' . $this->_table['order_product_refund'] . ' as OPR

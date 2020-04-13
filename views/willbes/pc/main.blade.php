@@ -338,7 +338,7 @@
                             <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a><span>|</span>
                             <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a><span>|</span>
                             <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a><span>|</span>
-                            <a href="https://blog.naver.com/als9946" target="_blank">전북</a>
+                            <a href="https://blog.naver.com/als9946" target="_blank">전북</a><span>|</span>
                             <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
                         </li>
                         <li>
@@ -405,7 +405,7 @@
             });
 
             initFavorCateView();{{-- 관심분야 화면 초기 셋팅 --}}
-            initFavorCatePop(); {{-- 관심분야 팝ㅇ버 팝업 초기 셋팅 --}}
+            initFavorCatePop(); {{-- 관심분야 팝업 팝업 초기 셋팅 --}}
         });
 
         function initFavorCateView() {

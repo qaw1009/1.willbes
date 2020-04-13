@@ -33,7 +33,7 @@
     .evt02 .price li:nth-child(3) dl {position:relative; line-height:1; margin:0 auto;}
     .evt02 .price li:nth-child(3) dd {font-size:1.2rem; margin-top:5px;}
     .evt02 .price li:nth-child(3) dd span {font-size:3rem; color:#3a99f0}
-    .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
+    .evt02 .price li:nth-child(3) dd span:last-child {font-size:1.2rem;}
     .evt02 .price li:nth-child(4) {font-size:1.6rem; }
     .evt02 .price li:nth-child(4) i {color:#a3a3a3; text-decoration: line-through;}
     .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
@@ -43,6 +43,7 @@
     .evt02 .evt02-txt {background:#363636; color:#fff; border-radius:0 0 10px 10px; text-align:left; padding:20px; }
     .evt02 .evt02-txt div {font-size:1.5rem}
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
+    .evt02 .evt02-txt a {color:#f7be10}
 
     .evt03 {background:#fff; padding-top:50px}
     .evt03 .evt03Txt01 {color:#3a99f0; font-size:1rem; margin-bottom:30px; padding:0 20px} 
@@ -103,7 +104,7 @@
     }
 
     .btnbuy {width:100%; position:fixed; bottom:5px;}
-    .btnbuy a {display:block; width:95%; max-width:940px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
+    .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
     .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -125,8 +126,8 @@
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
-        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
         .evt02 .price br {display:none}
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}        
     }
 
     /* 태블릿 가로, PC */
@@ -178,7 +179,7 @@
                     <dl>
                         <dd>
                             신청마감까지<br>
-                            <span id="ddayCountDayText">20일</span><span id="ddayCountText">12:15:02</span><br>남았습니다.
+                            <span id="ddayCountDayText"></span><br><span id="ddayCountText"></span> 남았습니다.
                         </dd>
                     </dl>
                 </li>
@@ -193,7 +194,9 @@
                 <div>* 런칭기념 혜택 안내</div>
                 <ul>
                     <li>사전예약 10%할인, 월3만원대 수강료</li>
-                    <li>특별기획전을 통해 전문MD의 경쟁력있는 위탁/사입 상품 소싱, 추천</li>
+                    <li>특별기획전을 통해 전문MD의 경쟁력있는 위탁/사입 상품 소싱, 추천<br>
+                        <a href="https://njob.willbes.net/m/support/notice/show/cate/?board_idx=268597" target="_blank">☞ 기획전 이용안내 </a>
+                    </li>                    
                 </ul>
             </div>
         </div>
@@ -555,17 +558,17 @@
         </ul>
 
         <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-    </div>
-
-    <div class="btnbuy NSK-Black">        
-{{--        <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-        [온라인강의] 신청하기 ></a>
-    </div>
-
-    
+    </div>  
 </div>
 <!-- End Container -->
+
+<div class="btnbuy NSK-Black">        
+{{--<a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
+    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+    [온라인강의] 신청하기 ></a>
+</div> 
+
+
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         /*디데이카운트다운*/

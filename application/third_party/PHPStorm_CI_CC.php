@@ -207,7 +207,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property StatsMemberModel $statsMemberModel                            StatsMember  Model Class
  * @property StatsOrderModel $statsOrderModel                            StatsOrder  Model Class
  * @property StatsBannerModel $statsBannerModel                            StatsBanner  Model Class
- * @property StatsSearchModel $statsSearchModel                            StatsBanner  Model Class
+ * @property StatsSearchModel $statsSearchModel                            StatsSearch  Model Class
+ * @property StatsGatewayModel $statsGatewayModel                            StatsGateway  Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

@@ -79,23 +79,34 @@
             <map name="zero" id="zero">
                 <area shape="rect" coords="847,243,931,271" href="http://busan.willbes.net/event/movie/event.html?event_cd=On_171205_c&topMenuType=O#main" onfocus='this.blur()'  alt="0원입문특강" target="_blink">
             </map>
-            <div class="slide_con mb80">
+            <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_01.jpg" alt="1" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_02.jpg" alt="2" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_03.jpg" alt="3" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_04.jpg" alt="4" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_05.jpg" alt="5" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_06.jpg" alt="6" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_07.jpg" alt="7" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_08.jpg" alt="8" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_next.png"></a></p>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_05.png"  alt="" />    
+            <div class="slide_con mb80">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_01.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_02.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_03.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_04.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_05.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_06.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll2_07.jpg" alt="" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_next.png"></a></p>
+            </div>
             <iframe width="854" height="480" src="https://www.youtube.com/embed/4O6euEN5YrQ?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
-
 
         <div class="evtCtnsBox wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_03.png" usemap="#bu">
@@ -183,6 +194,32 @@
             });
 
             $("#imgBannerRight3").click(function (){
+                slidesImg3.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slidesImg3 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:850,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg3.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
                 slidesImg3.goToNextSlide();
             });
         });

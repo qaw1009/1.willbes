@@ -371,7 +371,7 @@
     </div> 
     
     <div class="njobBn">
-        <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_200317.png" alt="N job"></a>
+        <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_full.gif" alt="N job"></a>
     </div>
 </div>
 <!-- End Container -->

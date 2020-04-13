@@ -204,5 +204,5 @@
 .mainV2 .Area6 .CScenterBox ul:after {content: ""; display: block; clear: both;}
 
 .njobBn {
-    width:100%; bottom:0; position: fixed; text-align: center; z-index: 100;
+    width:100%; bottom:0; position: fixed; left:50%; margin-left:-1000px; text-align: center; z-index: 100;
 }

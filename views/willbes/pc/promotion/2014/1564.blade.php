@@ -25,9 +25,8 @@
 
         .skybanner {
             position:fixed;
-            top:250px;
-            right:0;
-            display:none;
+            top:200px;
+            right:10px;
             z-index:1;
         }
 
@@ -210,7 +209,12 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky01.png" alt="스카이베너" ></a>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564_sky.png" alt="스카이베너" usemap="#Map1564_sky" border="0" >
+            <map name="Map1564_sky" id="Map1564_sky">
+                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');" alt="강의신청" />
+                <area shape="rect" coords="9,464,112,588" href="http://njob.domeggook.com/mh/njob_guide" target="_blank" alt="도매꾹" />
+                <area shape="rect" coords="11,602,113,655" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="이용안내" />
+            </map>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
@@ -224,7 +228,6 @@
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>
-
         </div>       
 
         <div id="tab01">

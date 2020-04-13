@@ -835,6 +835,7 @@ class RegGoodsModel extends WB_Model
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
                 'PaperType'       => $this->input->post('PaperType'),
                 //'IsUse'          => $this->input->post('IsUse'),
+                'IsOldData'       => 'Y',
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),

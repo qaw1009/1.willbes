@@ -25,9 +25,8 @@
 
         .skybanner {
             position:fixed;
-            top:250px;
-            right:0;
-            display:none;
+            top:200px;
+            right:10px;
             z-index:1;
         }
 
@@ -208,7 +207,10 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky01.png" alt="스카이베너" ></a>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565_sky.png" alt="스카이베너" usemap="#Map1565_sky" border="0" >
+            <map name="Map1565_sky" id="Map1565_sky">
+                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');" alt="강의신청" />                
+            </map>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">

@@ -428,7 +428,7 @@ body.memBody #Footer {
 }
 
 /*********************************************     INTRO PAGE     *********************************************/
-.Container {max-width:720px; margin:0 auto}
+.Container {max-width:720px;margin:0 auto}
 .Container .Tit {
     font-size: 18px;
     padding:20px 0;

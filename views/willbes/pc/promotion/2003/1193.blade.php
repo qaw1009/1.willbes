@@ -164,8 +164,8 @@
 		<div class="evtCtnsBox evt04" id="event">
 			<img src="https://static.willbes.net/public/images/promotion/2020/04/1193_04.jpg" usemap="#Map1193B" border="0" />
 			<map name="Map1193B" id="Map1193B">
-				<area shape="rect" coords="807,722,966,767" href="#chkInfo" onclick="go_PassLecture('162539');" title="19만원 수강신청">
-				<area shape="rect" coords="806,841,966,888" href="#chkInfo" onclick="go_PassLecture('163940');" title="29만원 수강신청">
+				<area shape="rect" coords="807,722,966,767" href="#chkInfo" onclick="go_PassLecture('163940');" title="19만원 수강신청">
+				<area shape="rect" coords="806,841,966,888" href="#chkInfo" onclick="go_PassLecture('162539');" title="29만원 수강신청"> 
 			</map>			
 		</div>
 

@@ -227,7 +227,10 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1604_01.jpg" alt="사전예약 이벤트" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1604_01.jpg" alt="사전예약 이벤트" usemap="#Map1567A" border="0" >
+            <map name="Map1567A" id="Map1567A">
+                <area shape="rect" coords="193,781,375,814" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268601" target="_blank" alt="이용안내" />
+            </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
             </div>

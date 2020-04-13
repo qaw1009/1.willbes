@@ -29,14 +29,13 @@
     .evt02 .price li:nth-child(1) span {color:#3a99f0}
     .evt02 .price li:nth-child(2) {margin-bottom:30px;}
     .evt02 .price li:nth-child(2) div {border-radius:10px; background:#3a99f0; color:#fff}
-    .evt02 .price li:nth-child(3) {margin-bottom:30px;}
-    .evt02 .price li:nth-child(3) dl {position:relative; text-align:left; line-height:1; margin:0 auto;}
-    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#3a99f0} 
-    .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
-    .evt02 .price li:nth-child(3) dd span {color:#3a99f0}
+    .evt02 .price li:nth-child(3) {margin-bottom:30px; text-align:center}
+    .evt02 .price li:nth-child(3) dl {position:relative; line-height:1; margin:0 auto;}
+    .evt02 .price li:nth-child(3) dd {font-size:1.2rem; margin-top:5px;}
+    .evt02 .price li:nth-child(3) dd span {font-size:3rem; color:#3a99f0}
     .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
-    .evt02 .price li:nth-child(4) {font-size:1.4rem; }
-    .evt02 .price li:nth-child(4) i {color:#a3a3a3}
+    .evt02 .price li:nth-child(4) {font-size:1.6rem; }
+    .evt02 .price li:nth-child(4) i {color:#a3a3a3; text-decoration: line-through;}
     .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
     .evt02 .price li:nth-child(5) {color:#ff0000; font-size:2.4rem}
     .evt02 .price li:nth-child(5) span {font-size:3.4rem}
@@ -127,6 +126,7 @@
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
         .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
+        .evt02 .price br {display:none}
     }
 
     /* 태블릿 가로, PC */
@@ -176,14 +176,13 @@
                 <li><div>4월 한달 전강좌 10% 할인</div></li>
                 <li>   
                     <dl>
-                        <dt id="ddayCountDayText"></dt>
                         <dd>
                             신청마감까지<br>
-                            <span id="ddayCountText"></span> 남았습니다.
+                            <span id="ddayCountDayText">20일</span><span id="ddayCountText">12:15:02</span><br>남았습니다.
                         </dd>
                     </dl>
                 </li>
-                <li><i>195,000원</i> <span>10%할인</span> 175,500원</li>
+                <li><i>195,000원</i><br> <span>10%할인</span><br> 175,500원</li>
                 <li>월 <span>3만원</span>대</li>
                 <li>
                     수강기간 : 5개월<br>

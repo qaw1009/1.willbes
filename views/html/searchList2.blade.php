@@ -899,6 +899,18 @@
                     <!-- willbes-Lec -->
                 </div>
 
+                <div class="searchTxt">
+                    <div class="mb10 tx-origin-red">통합사이트 검색결과는 200개까지만 노출됩니다. 더 자세한 검색을 원하시면 아래 과정별 사이트에서 검색해주세요.</div>
+                    <a href="#none">신광은경찰</a>
+                    <a href="#none">공무원</a>
+                    <a href="#none">고등고시</a>
+                    <a href="#none">자격증</a>
+                    <a href="#none">경찰간부</a>
+                    <a href="#none">취업</a>
+                    <a href="#none">어학</a>
+                    <a href="#none">N잡</a>
+                </div>
+
                 <div class="TopBtn">
                     <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                 </div>

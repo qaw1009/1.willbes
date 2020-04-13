@@ -97,13 +97,13 @@
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y')
-                                            <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}')">[성적확인]</a></td>
+                                            <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}', '{{ $row['IsOldData'] }}')">[성적확인]</a></td>
                                         @else
                                             <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if($row['PaperType'] == 'I')
-                                                <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}')">[오답노트]</a>
+                                                <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}', '{{ $row['IsOldData'] }}')">[오답노트]</a>
                                             @else
                                                 <span class="tx-black">미제공</span>
                                             @endif
@@ -162,13 +162,21 @@
         var win = '';
         //시험제출유무
         var submissionYN = 'Y';
-        function popwin(prod_code, mode, mr_idx, tcnt) {
+        function popwin(prod_code, mode, mr_idx, tcnt, is_old_data) {
             var _url = '';
             if (tcnt == 0) { submissionYN = 'N'; } else { submissionYN = 'Y'; }
             if (mode == 1) {
-                _url = '{{ front_url('/classroom/mocktest/result/winStatTotal?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx;
+                if (is_old_data == 'Y') {
+                    _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prod_code + '&mridx=' + mr_idx;
+                } else {
+                    _url = '{{ front_url('/classroom/mocktest/result/winStatTotal?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx;
+                }
             } else {
-                _url = '{{ front_url('/classroom/mocktest/result/winAnswerNote?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx + '&submission=' + submissionYN;
+                if (is_old_data == 'Y') {
+                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prod_code + '&mridx=' + mr_idx + '&submission=' + submissionYN;
+                } else {
+                    _url = '{{ front_url('/classroom/mocktest/result/winAnswerNote?prod_code=') }}' + prod_code + '&mr_idx=' + mr_idx + '&submission=' + submissionYN;
+                }
             }
             if (win == '') {
                 win = window.open(_url, 'mockPopupStat', 'width=1024, height=845, scrollbars=yes, resizable=yes');

@@ -16,7 +16,6 @@
             <div class="swiper-slide"><a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0910/banner_20191028180337.jpg"></a></div>
             <div class="swiper-slide"><a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0510/banner_20190510170355.jpg"></a></div>
             <div class="swiper-slide"><a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0304/banner_20200304162845.jpg"></a></div>
-            <div class="swiper-slide"><a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0228/banner_20200318091233.jpg"></a></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -25,8 +24,9 @@
     <div class="MainSlider swiper-container swiper-container-page c_both mt20">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2002_734_120_20032301.jpg" alt="샘플"></a></div>
-            <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2002_734_120_20032302.jpg" alt="샘플"></a></div>
-            <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2002_734_120_20032303.jpg" alt="샘플"></a></div>
+            
+            {{--<div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2002_734_120_20032302.jpg" alt="샘플"></a></div>
+            <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2002_734_120_20032303.jpg" alt="샘플"></a></div>--}}
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>

@@ -29,14 +29,13 @@
     .evt02 .price li:nth-child(1) span {color:#00c73c}
     .evt02 .price li:nth-child(2) {margin-bottom:30px;}
     .evt02 .price li:nth-child(2) div {border-radius:10px; background:#00c73c; color:#fff}
-    .evt02 .price li:nth-child(3) {margin-bottom:30px;}
-    .evt02 .price li:nth-child(3) dl {position:relative; text-align:left; line-height:1; margin:0 auto;}
-    .evt02 .price li:nth-child(3) dt {font-size:3rem; float:left; text-align:right; width:40%; color:#00c73c} 
-    .evt02 .price li:nth-child(3) dd {float:left; font-size:1.2rem; margin-top:5px; margin-left:10px}
-    .evt02 .price li:nth-child(3) dd span {color:#00c73c}
-    .evt02 .price li:nth-child(3) dl:after {content:""; display:block; clear:both}
-    .evt02 .price li:nth-child(4) {font-size:1.4rem; }
-    .evt02 .price li:nth-child(4) i {color:#a3a3a3}
+    .evt02 .price li:nth-child(3) {margin-bottom:30px; text-align:center}
+    .evt02 .price li:nth-child(3) dl {position:relative; line-height:1; margin:0 auto;}
+    .evt02 .price li:nth-child(3) dd {font-size:1.2rem; margin-top:5px;}
+    .evt02 .price li:nth-child(3) dd span {font-size:3rem; color:#00c73c}
+    .evt02 .price li:nth-child(3) dd span:last-child {font-size:1.2rem;}
+    .evt02 .price li:nth-child(4) {font-size:1.4rem;}
+    .evt02 .price li:nth-child(4) i {color:#a3a3a3; text-decoration: line-through;}
     .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
     .evt02 .price li:nth-child(5) {color:#ff0000; font-size:2.4rem}
     .evt02 .price li:nth-child(5) span {font-size:3.4rem}
@@ -44,6 +43,7 @@
     .evt02 .evt02-txt {background:#363636; color:#fff; border-radius:0 0 10px 10px; text-align:left; padding:20px; }
     .evt02 .evt02-txt div {font-size:1.5rem}
     .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
+    .evt02 .evt02-txt a {color:#f7be10}
 
     .evt03 {background:#fff; padding-top:50px}
     .evt03 .evt03Txt01 {color:#00c73c; font-size:1rem; margin-bottom:30px; padding:0 20px}  
@@ -124,6 +124,7 @@
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
+        .evt02 .price br {display:none}
         .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
     }
 
@@ -180,14 +181,13 @@
                 <li><div>4월 한달 전강좌 10% 할인</div></li>
                 <li>   
                     <dl>
-                        <dt id="ddayCountDayText"></dt>
                         <dd>
                             신청마감까지<br>
-                            <span id="ddayCountText"></span> 남았습니다.
+                            <span id="ddayCountDayText"></span><br><span id="ddayCountText"></span> 남았습니다.
                         </dd>
                     </dl>
                 </li>
-                <li><i>195,000원</i> <span>10%할인</span> 175,500원</li>
+                <li><i>195,000원</i><br> <span>10%할인</span><br> 175,500원</li>
                 <li>월 <span>3만원</span>대</li>
                 <li>
                     수강기간 : 5개월<br>
@@ -427,17 +427,16 @@
         </ul>
 
         <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-    </div>
-
-    <div class="btnbuy NSK-Black">        
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-            [온라인강의] 신청하기 >
-        </a>
-    </div>
-
-    
+    </div>    
 </div>
 <!-- End Container -->
+<div class="btnbuy NSK-Black">        
+    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+        [온라인강의] 신청하기 >
+    </a>
+</div>
+
+
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         /*디데이카운트다운*/

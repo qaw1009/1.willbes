@@ -7,7 +7,7 @@
 
         <div class="Section Section0">
             <div class="widthAuto">
-                <a href="https://www.youtube.com/watch?v=sBGMUCaAq6k&feature=youtu.be" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
+                <a href="javascript:popup()" ><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
             </div>
         </div>
 
@@ -195,4 +195,23 @@
     </div>
     <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
+<script>
+    function popup(){
+            var url = "https://www.youtube.com/embed/sBGMUCaAq6k";
+            var name = "Njob";
+
+            var _width = '650';
+            var _height = '380';
+            
+            // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+            var _left = Math.ceil(( screen.width - _width )/2);
+            var _top = Math.ceil(( screen.height - _height )/2); 
+        
+            window.open(url, name, 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+        }
+</script>
+
+
+
 @stop

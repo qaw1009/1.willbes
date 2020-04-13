@@ -17,6 +17,8 @@
 }	
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
+
+.sky {position:fixed;top:250px;right:0;z-index:1;}
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1392_top_bg.jpg) no-repeat center top;position:relative;}
 .top_bg .check{position:absolute;width: 1000px;left:62%;top:900px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;
               letter-spacing:-1px;}
@@ -65,6 +67,15 @@
 
 
     <div class="evtContent NGR" id="evtContainer">  
+
+        <ul class="sky">
+            <li>
+                <a href="https://pass.willbes.net/book/index/cate/3019?cate_code=3019&subject_idx=1109&prof_idx=50027" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1559_sky.png" alt="오태진 한국사 100점 노트 구매하기">
+                </a>
+            </li>     
+        </ul>
+
         <div class="evtCtnsBox top_bg">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_top.jpg" alt="오태진 한국사" usemap="#Map1296a" border="0">
             <map name="Map1296a" id="Map1296a">

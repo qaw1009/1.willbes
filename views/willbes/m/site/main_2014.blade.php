@@ -108,12 +108,12 @@
             background-size:50% }
 
         .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
-        .btnbuy div {text-align:left; height:50px; line-height:50px; padding:0 10px; max-width:720px; margin:0 auto;
-            background:url(https://static.willbes.net/public/images/promotion/m/icon_notice.png) no-repeat right center; background-size:30px;
-            font-size:14px; }
+        .btnbuy div {text-align:left; height:50px; line-height:50px; padding:0 10px; max-width:720px; margin:0 auto; font-size:14px; position:relative}
         .btnbuy a {display:inline-block; margin:0 3px}
         .btnbuy span {color:#ccc; margin:0 3px}
         .btnbuy a:hover {background:#fff; color:#3a99f0;}
+        .btnbuy a.btnNotice { position:absolute; top:10px; right:0; width:30px}
+        .btnbuy a.btnNotice img {width:100%}
 
         /* 폰 가로, 태블릿 세로*/
         @@media only all and (min-width: 408px)  {
@@ -137,7 +137,7 @@
             .evt07 br {display:none}
             .evt08 img {width:78px}
             .btnbuy div {height:60px; line-height:60px;}
-            .btnbuy a {margin:0 5px}
+            .btnbuy a {margin:0 5px;}            
             .btnbuy span {margin:0 5px}
         }
 
@@ -343,6 +343,7 @@
                 <a href="{{ front_url('/promotion/index/cate/3114/code/1566') }}" >김경은</a><span>|</span>
                 <a href="{{ front_url('/promotion/index/cate/3114/code/1565') }}" >황채영</a><span>|</span>
                 <a href="{{ front_url('/promotion/index/cate/3114/code/1567') }}" >정문진</a>
+                <a href="{{ front_url('/support/notice/index/cate/') }}" class="btnNotice" ><img src="https://static.willbes.net/public/images/promotion/m/icon_notice.png"></a>
             </div>
         </div>
     </div>

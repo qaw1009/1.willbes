@@ -7,7 +7,7 @@ class Free extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/category', 'product/base/subject', 'product/base/professor', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('category', 'subject', 'professor');
+    private $_list_add_join = array('category', 'subject', 'professor_repr');
 
     public function __construct()
     {
@@ -77,12 +77,10 @@ class Free extends BaseOrder
                 'O.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
                 'PL.SubjectIdx' => $this->_reqP('search_subject_idx'),
+                'PD.ProfIdx' => $this->_reqP('search_prof_idx')
             ],
             'LKR' => [
                 'PC.CateCode' => $this->_reqP('search_cate_code')
-            ],
-            'LKB' => [
-                'PPC.ProfIdx_String' => $this->_reqP('search_prof_idx')
             ],
             'IN' => [
                 'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
@@ -130,7 +128,7 @@ class Free extends BaseOrder
     {
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '직종', '과목', '교수', '무료강좌명', '신청상태', '취소일', '신청일'];
 
-        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, LgCateName, SubjectName, wProfName_String, OnlyProdName, PayStatusCcdName
+        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, LgCateName, SubjectName, wProfName, OnlyProdName, PayStatusCcdName
             , UpdDatm, OrderDatm';
 
         $arr_condition = $this->_getListConditions();

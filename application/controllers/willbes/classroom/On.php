@@ -530,7 +530,8 @@ class On extends \app\controllers\FrontController
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자
-                'IsRebuy' => '0' // 재수강이 아닌강의
+                'IsRebuy' => '0', // 재수강이 아닌강의
+                'SalePatternCcd' => '694001'
             ]
         ];
 
@@ -544,7 +545,8 @@ class On extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'IsRebuy' => '0' // 재수강이 아닌강의
+                'IsRebuy' => '0', // 재수강이 아닌강의
+                'SalePatternCcd' => '694001'
             ],
             'LT' => [
                 'RealLecEndDate' => $today, // 종료일 < 오늘

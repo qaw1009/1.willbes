@@ -104,7 +104,8 @@
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
                                             @endif
 
-                                            @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                            {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
+                                            @if($row['SalePatternCcd'] == '694003')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['IsPause'] == 'N')
                                                 <li class="btn_white"><a>일시정지불가</a></li>

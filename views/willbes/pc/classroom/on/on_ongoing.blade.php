@@ -182,7 +182,8 @@
                                                     <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @endif
 
-                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
+                                                @if($row['SalePatternCcd'] == '694003')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['IsPause'] == 'N')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>

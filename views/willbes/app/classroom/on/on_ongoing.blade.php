@@ -93,7 +93,8 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
-                                            @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                            {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
+                                            @if($row['SalePatternCcd'] == '694003')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['IsPause'] == 'N')
                                                 <li class="btn_white"><a>일시정지불가</a></li>

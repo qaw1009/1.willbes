@@ -71,7 +71,7 @@
         <ul class="sky">
             <li>
                 <a href="https://pass.willbes.net/book/index/cate/3019?cate_code=3019&subject_idx=1109&prof_idx=50027" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1559_sky.png" alt="오태진 한국사 100점 노트 구매하기">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1392_sky.png" alt="오태진 한국사 100점 노트 구매하기">
                 </a>
             </li>     
         </ul>
@@ -124,6 +124,8 @@
                 <dd>
                     <dt>교재안내</dt>
                     <dl>교재는 별도로 제공되지 않으며, 각 강좌별 교재는 강좌 소개 및 홈페이지 상단의 [교재구매] 메뉴에서 별도로 구매 가능합니다.</dl>
+                    <dl>신간 출시 기념 T-PASS 구매자 선착순 10명 100점노트 무료 증정 이벤트의 경우, 선착순 조기마감될 수 있으며,<br> T-PASS 결제 완료 시 담당자 확인 후 회원정보에 기재된 주소로 배송됩니다.<br>
+                        (단, 환불이나 결제 취소 시 교재는 구매자 부담으로 반송처리해주셔야 합니다.)</dl>
                 </dd>
                 <dd>
                     <dt>기기제한</dt>

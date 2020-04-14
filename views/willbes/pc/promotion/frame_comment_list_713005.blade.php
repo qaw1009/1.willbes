@@ -118,7 +118,7 @@
                 <li>
                     <div>
                         <p>{{$row['Title']}}<span></span></p>
-                        {!!nl2br($row['Content'])!!}
+                        {!!$row['Content']!!}
                     </div>
                 </li>
             @endforeach

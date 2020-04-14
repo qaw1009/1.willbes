@@ -26,7 +26,7 @@
         .evt00 {background:#0a0a0a}
         .evt_top {background:#4d79f6;} 
        
-        .evt01 {padding-bottom:100px}
+        .evt01 {padding-bottom:100px; background:#fff !important}
         .evt01 .slide_con {position:relative; width:900px; margin:0 auto}
         .evt01 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
         .evt01 .slide_con p.leftBtn {left:-80px}

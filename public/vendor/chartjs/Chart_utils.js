@@ -11,7 +11,6 @@ window.chartColors = {
 	blue: 'rgb(54, 162, 235)',
 	blue2: 'rgb(0, 171, 219)',
 	blue3: 'rgb(160, 191, 207)',
-	blue4: 'rgb(255, 99, 132)',
 	yellow: 'rgb(255, 205, 86)',
 	yellow2: 'rgb(247, 203, 123)',
 	purple: 'rgb(153, 102, 255)',

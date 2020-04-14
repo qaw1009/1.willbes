@@ -256,6 +256,20 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', PPC.wProfName_String';
             }
 
+            // 교수 정보 추가 (뷰 사용안함)
+            if (in_array('professor_repr', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['product_division'] . ' as PD
+                        on OP.ProdCode = PD.ProdCode and PD.IsStatus = "Y" and PD.IsReprProf = "Y"
+                    left join ' . $this->_table['professor'] . ' as PF
+                        on PD.ProfIdx = PF.ProfIdx and PF.IsStatus = "Y"
+                    left join ' . $this->_table['pms_professor'] . ' as WPF
+                        on PF.wProfIdx = WPF.wProfIdx and WPF.wIsStatus = "Y"
+                ';
+                $column .= ', PD.ProfIdx, WPF.wProfName';
+                $excel_column .= ', WPF.wProfName';
+            }
+
             // 배송지 추가
             if (in_array('delivery_address', $arr_add_join) === true) {
                 $from .= '

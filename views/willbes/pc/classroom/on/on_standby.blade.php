@@ -111,7 +111,8 @@
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
+                                                @if($row['SalePatternCcd'] == '694003')
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
                                                 @elseif($row['IsLecStart'] == 'Y')
                                                     @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
@@ -156,7 +157,9 @@
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                @if($row['IsLecStart'] == 'Y')
+                                                @if($row['SalePatternCcd'] == '694003')
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @elseif($row['IsLecStart'] == 'Y')
                                                     @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
                                                         <a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');"><span class="bBox blueBox NSK">수강시작</span></a>
                                                     @else

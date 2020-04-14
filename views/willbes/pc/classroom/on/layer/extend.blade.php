@@ -50,7 +50,8 @@
                                     {!! csrf_field() !!}
                                     {!! method_field('POST') !!}
                                     <input type="hidden" name="sale_pattern" value="extend" />
-                                    @if(empty($lec['TargetOrderIdx']) == true)
+                                    {{-- @if(empty($lec['TargetOrderIdx']) == true) --}}
+                                    @if($lec['SalePatternCcd'] == '694001' || $lec['SalePatternCcd'] == '694002')
                                         <input type="hidden" name="target_order_idx" value="{{$lec['OrderIdx']}}" />
                                         <input type="hidden" name="target_prod_code" value="{{$lec['ProdCode']}}" />
                                         <input type="hidden" name="target_prod_code_sub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />

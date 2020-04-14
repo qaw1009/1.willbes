@@ -135,12 +135,9 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-schedule-member-read" data-csm-idx="'+data.CsmIdx+'"><u>'+data.MemName+'<Br>'+data.MemId+'</u></a>';
                         }},
-
                     {'data' : 'Phone'},
                     {'data' : 'BirthDay'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.StartHour + ':' + data.StartMin + ' ~ ' + data.EndHour + ':' + data.EndMin;
-                        }},
+                    {'data' : 'TimeValue'},
                     {'data' : 'SerialName'},
                     {'data' : 'ExamPeriodName'},
                     {'data' : 'StudyName'},

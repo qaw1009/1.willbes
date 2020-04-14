@@ -294,11 +294,7 @@ class ConsultModel extends WB_Model
             $column = '
                 C.CsIdx, C.SiteCode, J.SiteName
                 ,fn_ccd_name(C.CampusCcd) as CampusName
-                ,C.ConsultDate ,B.ConsultTargetType ,C.StartTime, C.EndTime
-                ,DATE_FORMAT(C.StartTime,\'%H\') AS StartHour
-                ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
-                ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
-                ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
+                ,C.ConsultDate ,B.ConsultTargetType ,C.StartTime, C.EndTime, B.TimeValue
                 ,A.CsmIdx, A.MemIdx, D.MemId, D.MemName ,D.BirthDay ,fn_dec(A.PhoneEnc) AS Phone ,fn_dec(A.MailEnc) AS Mail
                 ,E.CateName
                 ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
@@ -413,26 +409,14 @@ class ConsultModel extends WB_Model
     public function findConsultScheduleDetailForMember($arr_condition)
     {
         $column = '
-            C.CsIdx, C.SiteCode, J.SiteName
-            ,fn_ccd_name(C.CampusCcd) as CampusName
-            ,C.ConsultDate
-            ,B.ConsultTargetType
-            ,C.StartTime, C.EndTime
-            ,DATE_FORMAT(C.StartTime,\'%H\') AS StartHour
-            ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
-            ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
-            ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
-            ,D.MemId, D.MemName ,D.BirthDay
+            A.SubjectName, A.Memo, A.IsConsult, A.ConsultMemo, B.ConsultTargetType, B.TimeValue
+            ,C.CsIdx, C.SiteCode, J.SiteName, C.ConsultDate, C.StartTime, C.EndTime, D.MemId, D.MemName ,D.BirthDay
             ,fn_dec(A.PhoneEnc) AS Phone
             ,fn_dec(A.MailEnc) AS Mail
+            ,fn_ccd_name(C.CampusCcd) as CampusName
             ,E.CateName AS CandidatePositionName
-
             ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName
             ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
-            ,A.SubjectName
-            ,A.Memo
-            ,A.IsConsult
-            ,A.ConsultMemo
         ';
 
         $from = "

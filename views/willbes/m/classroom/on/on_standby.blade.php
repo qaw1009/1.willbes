@@ -92,7 +92,8 @@
                                         <div class="w-start tx-gray">
                                             <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
                                             <ul class="two">
-                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
+                                                @if($row['SalePatternCcd'] == '694003')
                                                     <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                 @elseif($row['IsLecStart'] == 'Y')
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');">시작일변경</a></li>
@@ -133,7 +134,9 @@
                                             <div class="w-start tx-gray">
                                                 <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
                                                 <ul class="two">
-                                                    @if($row['IsLecStart'] == 'Y')
+                                                    @if($row['SalePatternCcd'] == '694003')
+                                                        <li class="btn_black_line"><a>시작일변경 불가</a></li>
+                                                    @elseif($row['IsLecStart'] == 'Y')
                                                         <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">시작일변경</a></li>
                                                         @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))
                                                             <li class="btn_blue"><a href="javascript:;" onclick="alert('개강일({{ date('m월d일', strtotime($row['StudyStartDate'])) }}) 이후부터 수강시작이 가능합니다.');">수강시작</a></li>

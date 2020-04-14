@@ -22,7 +22,7 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1588_top_bg.jpg) no-repeat center top; }
+        .evttop {background:#020015 url(https://static.willbes.net/public/images/promotion/2020/04/1588_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
 
@@ -74,7 +74,11 @@
         </div>              
 
         <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_top.jpg" title="더켠의 반반한 밤">        
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top.jpg" usemap="#Map1588_top" title="더켠의 반반한 밤" border="0">
+            <map name="Map1588_top" id="Map1588_top">
+                <area shape="rect" coords="601,21,802,90" href="javascript:alert('준비중입니다.')" onfocus='this.blur()' />
+                <area shape="rect" coords="812,21,1013,90" href="javascript:alert('준비중입니다.')" onfocus='this.blur()' />
+            </map>     
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -231,7 +235,7 @@
                 <h3 class="NGEB">- 유의사항 - </h3>
                 <ul>
 				    <li>
-                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 접속 후 수강하시면 됩니다.</span><br> 
+                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 본 페이지에 접속 후 수강하시면 됩니다.</span><br> 
 						<span class="txt_point">(*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</span>
 					</li>
                     <li>                    
@@ -250,8 +254,9 @@
                         서비스가 제공됩니다.</span>
 					</li>
                     <li>                    
-                        <span class="big">강의 자료는 방송 당일 오후 15시부터 오후 21시까지 다운로드 가능하오니,<br> 인쇄하신 후 수업에 참여해주시기 바랍니다.</span><br>
-						<span class="txt_point">(*해설지는 수업 종료 시간에 맞추어 업로드됩니다.)</span><br>
+                        <span class="big">강의 자료 제공 일정 안내</span><br>
+                        &nbsp;- 방송 당일 오후 15시~오후 22시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+						&nbsp;- 방송 당일 오후 22시~자정 : 문제+해설+스터디 자료<br>
 					</li>     
                     <li>                   
                         <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br>
@@ -275,6 +280,12 @@
 						&nbsp; &nbsp;내용으로  정성스럽게 작성시 당첨확률이 높아질 수 있습니다.<br>
 						&nbsp;- 이벤트 당첨자 발표는 5월 12일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 						<span class="txt_point">(*경품 지급일의 경우, 당첨자 발표 공지사항에서 안내드릴 예정입니다.)</span><br>
+                    </li>          
+                    <li>                    
+                        <span class="big">돌발퀴즈 이벤트 관련</span><br>
+						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
+						&nbsp;- 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
+						&nbsp;- 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.				
                     </li>                            
                 </ul>
             </div>

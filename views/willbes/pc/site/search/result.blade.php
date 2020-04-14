@@ -85,10 +85,10 @@
                                                                 {{$row['ProdCateName']}}
                                                             </div>
                                                             <div class="w-tit">
-                                                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'only');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'only', '{{app_to_env_url($row['SiteUrl'])}}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                             </div>
                                                             <dl class="w-info">
-                                                                <dt>학원실강의 :  {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
+                                                                <dt>강의촬영(실강) :  {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
                                                                 <dt><span class="row-line">|</span></dt>
                                                                 <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                                                 <dt><span class="row-line">|</span></dt>
@@ -229,10 +229,10 @@
                                                                 {{$row['ProdCateName']}}
                                                             </div>
                                                             <div class="w-tit">
-                                                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                                <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                             </div>
                                                             <dl class="w-info">
-                                                                <dt>학원실강의 :  {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
+                                                                <dt>강의촬영(실강) :  {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
                                                                 <dt><span class="row-line">|</span></dt>
                                                                 <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                                                 <dt><span class="row-line">|</span></dt>
@@ -254,14 +254,14 @@
                                                                 @if(empty($row['FreeLecPasswd']))
                                                                     <div class="w-sp">
                                                                         <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
-                                                                        <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free');">보강동영상 보기</a>
+                                                                        <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');">보강동영상 보기</a>
                                                                     </div>
                                                                 @else
                                                                     <div class="w-sp100">
                                                                         보강동영상 비밀번호 입력
                                                                         <div>
                                                                             <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20" data-chk>
-                                                                            <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free');"><span>확인</span></button>
+                                                                            <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');"><span>확인</span></button>
                                                                         </div>
                                                                     </div>
                                                                 @endif
@@ -501,6 +501,19 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($__cfg['SiteCode'] === '2000' && count($data['on_lecture']) === 200)
+                                <div class="searchTxt">
+                                    <div class="mb10 tx-origin-red">통합사이트 검색결과는 200개까지만 노출됩니다. 더 자세한 검색을 원하시면 아래 과정별 사이트에서 검색해주세요.</div>
+                                    <a href="//{{app_to_env_url('police.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">신광은경찰</a>
+                                    <a href="//{{app_to_env_url('pass.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">공무원</a>
+                                    <a href="//{{app_to_env_url('gosi.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">고등고시</a>
+                                    <a href="//{{app_to_env_url('job.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">자격증</a>
+                                    <a href="//{{app_to_env_url('spo.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">경찰간부</a>
+                                    <a href="//{{app_to_env_url('work.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">취업</a>
+                                    <a href="//{{app_to_env_url('lang.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">어학</a>
+                                    <a href="//{{app_to_env_url('njob.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">N잡</a>
+                                </div>
+                            @endif
                             <div class="TopBtn">
                                 <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                             </div>
@@ -540,7 +553,7 @@
             })
         });
 
-        function goShow(prod_code, cate_code, pattern) {
+        function goShow(prod_code, cate_code, pattern, site_url) {
             var $free_lec_passwd = $regi_form.find('input[id="free_lec_passwd_' + prod_code + '"]');
             if ($free_lec_passwd.length > 0) {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
@@ -550,7 +563,6 @@
                     $free_lec_passwd.focus();
                     return;
                 }
-                //var url = '{{$__cfg['SiteCode'] === '2000' ? '//'.$row['SiteUrl'].'/lecture/checkFreeLecPasswd/prod-code/' : front_url('/lecture/checkFreeLecPasswd/prod-code/') }}'+ prod_code;
                 var url = '{{$__cfg['SiteCode'] === '2000' ? '/search/checkFreeLecPasswd/prod-code/' : front_url('/lecture/checkFreeLecPasswd/prod-code/') }}'+ prod_code;
                 var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
                     'free_lec_passwd': $free_lec_passwd.val(),
@@ -558,13 +570,21 @@
                 });
                 sendAjax(url, data, function (ret) {
                     if (ret.ret_cd) {
-                        $url = '{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/lecture/show/cate/' : front_url('/lecture/show/cate/') }}';
+                        @if($__cfg['SiteCode'] === '2000')
+                            $url = "//"+site_url+"/lecture/show/cate/";
+                        @else
+                            $url = "{{front_url('/lecture/show/cate/')}}";
+                        @endif
                         goUrl = $url + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
                         window.open(goUrl, '_blank')
                     }
                 }, showAlertError, false, 'POST');
             } else {
-                $url = '{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/lecture/show/cate/' : front_url('/lecture/show/cate/') }}';
+                @if($__cfg['SiteCode'] === '2000')
+                    $url = "//"+site_url+"/lecture/show/cate/";
+                @else
+                    $url = "{{front_url('/lecture/show/cate/')}}";
+                @endif
                 goUrl = $url + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
                 window.open(goUrl, '_blank')
             }

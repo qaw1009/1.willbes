@@ -501,6 +501,19 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($__cfg['SiteCode'] === '2000' && count($data['on_lecture']) === 200)
+                                <div class="searchTxt">
+                                    <div class="mb10 tx-origin-red">통합사이트 검색결과는 200개까지만 노출됩니다. 더 자세한 검색을 원하시면 아래 과정별 사이트에서 검색해주세요.</div>
+                                    <a href="//{{app_to_env_url('police.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">신광은경찰</a>
+                                    <a href="//{{app_to_env_url('pass.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">공무원</a>
+                                    <a href="//{{app_to_env_url('gosi.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">고등고시</a>
+                                    <a href="//{{app_to_env_url('job.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">자격증</a>
+                                    <a href="//{{app_to_env_url('spo.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">경찰간부</a>
+                                    <a href="//{{app_to_env_url('work.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">취업</a>
+                                    <a href="//{{app_to_env_url('lang.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">어학</a>
+                                    <a href="//{{app_to_env_url('njob.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">N잡</a>
+                                </div>
+                            @endif
                             <div class="TopBtn">
                                 <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                             </div>

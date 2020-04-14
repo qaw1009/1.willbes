@@ -113,8 +113,8 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th rowspan="2" class="valign-middle"><input type="checkbox" class="flat" id="all_check"/></th>
-                        <th rowspan="2" class="valign-middle">종강</th>
+                        <th rowspan="2" class="valign-middle">발송<input type="checkbox" class="flat" id="all_check"/></th>
+                        <th rowspan="2" class="valign-middle">종강<input type="checkbox" class="flat" id="all_check_2"/></th>
                         <th rowspan="2" class="valign-middle">NO</th>
                         <th rowspan="2" class="valign-middle">주문번호</th>
                         <th rowspan="2" class="valign-middle">회원명</th>
@@ -253,6 +253,9 @@
             // 전체 체크박스 이벤트
             $list_table.on('ifChanged', '#all_check', function() {
                 iCheckAll($list_table.find('input[name="selectMember"]'), $(this));
+            });
+            $list_table.on('ifChanged', '#all_check_2', function() {
+                iCheckAll($list_table.find('input[name="lrsr_idx"]'), $(this));
             });
 
             // 엑셀다운로드 버튼 클릭

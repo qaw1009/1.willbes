@@ -167,7 +167,7 @@
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'LgCateName'},
                     {'data' : 'SubjectName'},
-                    {'data' : 'wProfName'},
+                    {'data' : 'wProfName_String'},
                     {'data' : 'ProdName'},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['cancel'] }}' ? '<br/>(' + row.UpdDatm + ')' : '');

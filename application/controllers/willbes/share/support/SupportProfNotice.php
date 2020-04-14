@@ -63,7 +63,7 @@ class SupportProfNotice extends BaseSupport
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm,
                        IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name
                        ';
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $order_by = ['m.IsBest'=>'Desc','m.BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

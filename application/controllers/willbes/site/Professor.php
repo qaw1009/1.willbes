@@ -214,11 +214,11 @@ class Professor extends \app\controllers\FrontController
 
         // 공지사항 조회
         $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '63']]);
-        $data['notice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
-        
+        $data['notice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title, b.IsBest', 2, 0, ['m.IsBest'=>'Desc','m.BoardIdx'=>'Desc']);
+
         // 학습자료실 조회
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '69']]);
-        $data['material'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
+        $data['material'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title, b.IsBest', 2, 0, ['m.IsBest'=>'Desc','m.BoardIdx'=>'Desc']);
         
         // 신규강좌 조회
         $data['new_product'] = $this->_getProfBestNewProductData($prof_idx, $prod_type, 'New', 2, ['ProdCode' => 'desc'], $arr_input);

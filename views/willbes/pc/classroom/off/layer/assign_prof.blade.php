@@ -189,7 +189,8 @@
                 data,
                 function(d){
                     alert(d.ret_msg);
-                    AssignProf('{{$pkginfo['OrderIdx']}}','{{$pkginfo['OrderProdIdx']}}');
+                    /*AssignProf('{{$pkginfo['OrderIdx']}}','{{$pkginfo['OrderProdIdx']}}');*/
+                    location.reload();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

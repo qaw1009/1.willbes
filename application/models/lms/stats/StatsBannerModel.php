@@ -19,11 +19,7 @@ class StatsBannerModel extends BaseStatsModel
 
         $base_condition['BDT'] = ['a.base_date' => [$get_condition['search_start_date'], $get_condition['search_end_date']]];
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -86,11 +82,7 @@ class StatsBannerModel extends BaseStatsModel
         $get_condition = $this->_setCondition($arr_input);
 
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -139,11 +131,7 @@ class StatsBannerModel extends BaseStatsModel
         $get_condition = $this->_setCondition($arr_input);
 
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -176,11 +164,7 @@ class StatsBannerModel extends BaseStatsModel
         $get_condition = $this->_setCondition($arr_input);
 
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -219,11 +203,7 @@ class StatsBannerModel extends BaseStatsModel
         $get_condition = $this->_setCondition($arr_input);
 
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -263,11 +243,7 @@ class StatsBannerModel extends BaseStatsModel
         $get_condition = $this->_setCondition($arr_input);
 
         $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
-                'BDT' => [
-                    'bal.RegDatm' => [
-                        $get_condition['search_start_date'] , $get_condition['search_end_date']
-                    ]
-                ]
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
             ]
         );
 
@@ -324,9 +300,7 @@ class StatsBannerModel extends BaseStatsModel
 
         if(!empty(element('search_except_will_ip',$arr_input))) {
             $set_condition['comm_condition']  = array_merge_recursive($set_condition['comm_condition'] ,[
-                    'RAW' => [
-                        'bal.RegIp NOT IN ' => ' (Select Ip From '.$this->_table['willbes_ip'].')'
-                    ]
+                    'RAW' => ['bal.RegIp NOT IN ' => ' (Select Ip From '.$this->_table['willbes_ip'].')']
                 ]
             );
         }

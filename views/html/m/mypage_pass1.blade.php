@@ -70,14 +70,15 @@
         </div>
     </div>
     <div class="lineTabs lecListTabs c_both bdt-m-gray">
-        <ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
-            <li><a href="#leclist1" class="on">즐겨찾기강좌 <span>3</span></a><span class="row-line">|</span></li>
-            <li><a href="#leclist2">수강중강좌 <span>6</span></a><span class="row-line">|</span></li>
-            <li><a href="#leclist3">숨긴강좌 <span>4</span></a></li>
+        <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
+            <li><a href="#leclist1" class="on">수강중 <span>3</span></a><span class="row-line">|</span></li>
+            <li><a href="#leclist2">즐겨찾기 <span>6</span></a><span class="row-line">|</span></li>
+            <li><a href="#leclist3">수강완료 <span>2</span></a><span class="row-line">|</span></li>
+            <li><a href="#leclist4">숨긴강좌 <span>4</span></a></li>
         </ul>
         <div class="tabBox lineBox lecListBox">
-            <div id="leclist1" class="tabContent">
-                <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+            <div id="leclist1" class="tabContent pt20">
+                {{--<div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>--}}
                 <div class="btnBox mb20">
                     <div class="InfoBtn btn_white"><a href="#none">삭제</a></div>
                 </div>
@@ -89,7 +90,7 @@
                     <tbody>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left pl2p">
+                            <td class="w-data tx-left">
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml5 nBox n2">진행중</span></dt>
                                 </dl>
@@ -106,7 +107,7 @@
                         </tr>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left pl2p">
+                            <td class="w-data tx-left">
                                 <dl class="w-info">
                                     <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml5 nBox n1">2배수</span></dt>
                                 </dl>
@@ -123,7 +124,7 @@
                         </tr>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left pl2p">
+                            <td class="w-data tx-left">
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml5 nBox n4">완강</span></dt>
                                 </dl>
@@ -155,8 +156,8 @@
                     </ul>
                 </div>
             </div>
-            <div id="leclist2" class="tabContent" style="display: none;">
-                <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+            <div id="leclist2" class="tabContent pt20" style="display: none;">
+                {{--<div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>--}}
                 <div class="btnBox mb20">
                     <div class="InfoBtn btn_white bdr-none"><a href="#none" style="padding: 0;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
                     <div class="InfoBtn btn_white"><a href="#none">숨기기</a></div>
@@ -235,8 +236,67 @@
                     </ul>
                 </div>
             </div>
-            <div id="leclist3" class="tabContent" style="display: none;">
-                <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+            <div id="leclist3" class="tabContent pt20" style="display: none;">
+                {{--<div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>--}}
+                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                    <colgroup>
+                        <col style="width: 13%;">
+                        <col style="width: 87%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                            <td class="w-data tx-left">
+                                <dl class="w-info">
+                                    <dt>영어<span class="row-line">|</span>OOO교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                </dl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                            <td class="w-data tx-left">
+                                <dl class="w-info">
+                                    <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n3">예정</span></dt>
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
+                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                </dl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a></li>
+                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="leclist4" class="tabContent pt20" style="display: none;">
+                {{--<div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>--}}
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                     <colgroup>
                         <col style="width: 13%;">

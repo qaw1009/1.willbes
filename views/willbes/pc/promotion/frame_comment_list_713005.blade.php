@@ -52,6 +52,24 @@
         width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
     }
 
+
+    .replyEvaluate .replyList {
+        text-align:left; color:#666;
+    }
+    .replyEvaluate .replyList li {
+        position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;
+    }
+    .replyEvaluate .replyList li img {
+        position:absolute; top:15px; left:15px; width:80px;
+    }
+    .replyEvaluate .replyList li div {margin-left:110px; line-height:1.5}
+    .replyEvaluate .replyList li p {margin-bottom:10px; color:#999;}
+    .replyEvaluate .replyList li p span {margin-left:20px}
+    .replyEvaluate .replyList li .btnDel {
+        position:absolute; top:15px; right:5px;
+        border:1px solid #dcdcdc; padding:5px 8px;
+    }
+
     .replyNoticeWrap .btnRt {
         margin-top:20px;
         text-align: right;
@@ -71,22 +89,46 @@
         background: #fff;
         color:#000;
     }
+    .replyNotice {
+        margin-top: 20px;
+        border:1px solid #000;
+    }
+    .replyNotice .ry_info {
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        color:#555;
+    }
+    .replyNotice .ry_info .notice {
+        display: inline-block;
+        color:#fff;
+        background: #ff0033;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        font-size: 11px;
+        padding:0 5px;
+        border-radius: 4px;
+        margin-right:10px;
+    }
+    .replyNotice .ry_info .rnBtns {
+        float:right;
+    }
+    .replySection .rnEditBtn {
+        color:#666;
+    }
+    .replySection .rnDelBtn {
+        color:#ff0033;
+    }
 
-    .replyEvaluate .replyList {
-        text-align:left; color:#666;
+    .replyNotice .ry_info .date {
+        margin-right:10px;
     }
-    .replyEvaluate .replyList li {
-        position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;
+    .replyNotice .ry_cont {
+        padding: 10px;
+        background: #fafafa;
     }
-    .replyEvaluate .replyList li img {
-        position:absolute; top:15px; left:15px; width:80px;
-    }
-    .replyEvaluate .replyList li div {margin-left:110px; line-height:1.5}
-    .replyEvaluate .replyList li p {margin-bottom:10px; color:#999;}
-    .replyEvaluate .replyList li p span {margin-left:20px}
-    .replyEvaluate .replyList li .btnDel {
-        position:absolute; top:15px; right:5px;
-        border:1px solid #dcdcdc; padding:5px 8px;
+    .replyNotice .ry_cont a {
+        color:#3366ff;
     }
 </style>
 
@@ -133,7 +175,6 @@
         </div>
     </form>
 
-    <!--댓글공지-관리자만 등록,수정,삭제 가능
 
     <div class="replyNoticeWrap">
         <div class="btnRt ">
@@ -164,20 +205,10 @@
         </ul>
         @endforeach
     </div>
-    
-    replyNoticeWrap//-->
 
+    
     <div class="replyList">
         <ul>
-            @foreach($arr_base['notice_data'] as $row)
-                <li>
-                    <div>
-                        <p>{{$row['Title']}}<span></span></p>
-                        {!!$row['Content']!!}
-                    </div>
-                </li>
-            @endforeach
-
             @foreach($list as $row)
                 <li>
                     @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
@@ -255,5 +286,10 @@
         }
         return true;
     }
+
+    function reload() {
+        location.reload();
+    }
+
 </script>
 @stop

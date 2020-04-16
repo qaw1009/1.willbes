@@ -51,6 +51,27 @@
         position: absolute; bottom:0; right:0;
         width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
     }
+
+    .replyNoticeWrap .btnRt {
+        margin-top:20px;
+        text-align: right;
+    }
+
+    .replyNoticeWrap .btnRt a {
+        display: inline-block;
+        background: #000;
+        color:#fff;
+        padding:0 20px;
+        height: 30px;
+        line-height: 30px;
+        border:1px solid #000;
+        margin-left:5px;
+    }
+    .replyNoticeWrap .btnRt a:hover {
+        background: #fff;
+        color:#000;
+    }
+
     .replyEvaluate .replyList {
         text-align:left; color:#666;
     }
@@ -111,6 +132,40 @@
             <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
         </div>
     </form>
+
+    <!--댓글공지-관리자만 등록,수정,삭제 가능
+
+    <div class="replyNoticeWrap">
+        <div class="btnRt ">
+            <a href='#none' onclick="reload();">새로고침</a>
+        </div>
+
+        @foreach($arr_base['notice_data'] as $row)
+        <ul class="replyNotice">
+            <li>
+                <div class="ry_info">
+                    <span class="notice">공지</span> {{--<span class="date">{{ $row['RegDate'] }}</span> --}}<strong>{{ $row['Title'] }}</strong>
+                </div>
+                @if(empty($row['AttachData']) === false && $row['AttachData'] != 'N')
+                <div class="ry_info">
+                    @php $arr_attach_data = json_decode($row['AttachData'],true); @endphp
+                    @foreach($arr_attach_data as $f_row)
+                        <a href="{{front_url('/promotion/downloadNotice?file_idx=').$f_row['FileIdx'].'&board_idx='.$row['BoardIdx'] }}" target="_blank">
+                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$f_row['RealName']}}</a>
+                    @endforeach
+                </div>
+                @endif
+                <div class="ry_cont">
+                    <div>{!! $row['Content'] !!}
+                    {{--<a href="javascript:modify_notice('VIEW',2)" class="rnView">[상세보기]</a>--}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+        @endforeach
+    </div>
+    
+    replyNoticeWrap//-->
 
     <div class="replyList">
         <ul>

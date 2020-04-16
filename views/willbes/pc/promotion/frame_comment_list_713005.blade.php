@@ -133,8 +133,6 @@
         </div>
     </form>
 
-    <!--댓글공지-관리자만 등록,수정,삭제 가능
-
     <div class="replyNoticeWrap">
         <div class="btnRt ">
             <a href='#none' onclick="reload();">새로고침</a>
@@ -165,19 +163,8 @@
         @endforeach
     </div>
     
-    replyNoticeWrap//-->
-
     <div class="replyList">
         <ul>
-            @foreach($arr_base['notice_data'] as $row)
-                <li>
-                    <div>
-                        <p>{{$row['Title']}}<span></span></p>
-                        {!!$row['Content']!!}
-                    </div>
-                </li>
-            @endforeach
-
             @foreach($list as $row)
                 <li>
                     @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
@@ -255,5 +242,10 @@
         }
         return true;
     }
+
+    function reload() {
+        location.reload();
+    }
+
 </script>
 @stop

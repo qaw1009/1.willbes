@@ -18,7 +18,7 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.sky {position:fixed;top:250px;right:0;z-index:1;}
+.sky {position:fixed;top:250px;right:10px;z-index:1;}
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1392_top_bg.jpg) no-repeat center top;position:relative;}
 .top_bg span {position:absolute; top:68px; left:50%; margin-left:-99px; z-index:10}
 .top_bg .check{position:absolute;width: 1000px;left:62%;top:900px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;

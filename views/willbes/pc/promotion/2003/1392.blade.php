@@ -20,6 +20,7 @@
 
 .sky {position:fixed;top:250px;right:0;z-index:1;}
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1392_top_bg.jpg) no-repeat center top;position:relative;}
+.top_bg span {position:absolute; top:68px; left:50%; margin-left:-99px; z-index:10}
 .top_bg .check{position:absolute;width: 1000px;left:62%;top:900px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;
               letter-spacing:-1px;}
 .top_bg .check label{color:#fff;font-size:16px;}
@@ -79,8 +80,9 @@
         <div class="evtCtnsBox top_bg">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_top.jpg" alt="오태진 한국사" usemap="#Map1296a" border="0">
             <map name="Map1296a" id="Map1296a">
-            <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" alt="수강신청"/>
-            </map>     
+                <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" alt="수강신청"/>
+            </map>  
+            <span><img src="https://static.willbes.net/public/images/promotion/2019/09/1392_event.gif"></span>    
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
@@ -99,7 +101,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_04.jpg" alt="실전 모의고사"> 
         </div>
         <div class="evtCtnsBox sec05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_05.jpg" alt="수강신청" usemap="#Map1296b" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_05.gif" alt="수강신청" usemap="#Map1296b" border="0">
             <map name="Map1296b" id="Map1296b">
                 <area shape="rect" coords="536,619,726,717" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
             </map> 

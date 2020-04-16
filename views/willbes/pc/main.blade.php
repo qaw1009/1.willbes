@@ -264,7 +264,7 @@
 
         @if(isset($data['dday']) === true)
             <div class="Section Area3 mt50" style="list-style: none;">
-                <li class="widthAuto">
+                <div class="widthAuto">
                     <div class="will-Tit mb-zero">시험일정</div>
                     <ul class="sliderDayList">
                         <li>
@@ -282,7 +282,7 @@
                             @endforeach
                         </li>
                     </ul>
-                </li>
+                </div>
             </div>
         @endif
 

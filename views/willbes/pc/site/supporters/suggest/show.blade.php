@@ -19,7 +19,7 @@
                 <td class="tx-left">
                     @foreach($data['AttachData'] as $row)
                         @if($row['FileType'] == 0)
-                            <a href="{{front_url('/supporters/suggest/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                            <a href="{{front_url('/supporters/suggest/download?file_idx=').$row['FileIdx'].'&attach_type=0&board_idx='.$board_idx }}" target="_blank">
                                 <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                         @endif
                     @endforeach

@@ -191,7 +191,7 @@ class Assignment extends BaseSupport
     {
         $file_idx = $this->_reqG('file_idx');
         $board_idx = $this->_reqG('board_idx');
-        $attach_type = $this->_reqG('attach_type');
+        $attach_type = (empty($this->_reqG('attach_type')) === true) ? '0' : $this->_reqG('attach_type');
         $this->downloadFModel->saveLog($board_idx, $attach_type);
 
         $file_data = $this->downloadFModel->getFileData($board_idx, $file_idx, 'board_assignment');

@@ -23,7 +23,7 @@
 
         <div class="Section Area1 widthAuto">
             <ul id="favor_cate_view" class="addList">
-                <li><a href="javascript:openWin('addArea');" class="add">+</a></li>
+                <li><a href="javascript:initFavorCatePop();" class="add">+</a></li>
                 {{--
                 <li><a href="#none" onclick="openWin('addArea')" class="add">+</a></li>
                 <li><a href="#none">일반경찰</a></li>
@@ -399,7 +399,7 @@
             $('.favor-cate-each').click(function() {
 
                 if($(this).hasClass('favor-cate-on')) {
-                    $(this).removeClass('favor-cate-on');
+                    // $(this).removeClass('favor-cate-on');
                 } else {
                     if($favor_cate_pop.find('.favor-cate-on').length >= favor_cate_cnt) {
                         alert('관심분야는 ' + favor_cate_cnt + '개까지 선택 가능합니다.'); return;
@@ -409,7 +409,6 @@
             });
 
             initFavorCateView();{{-- 관심분야 화면 초기 셋팅 --}}
-            initFavorCatePop(); {{-- 관심분야 팝업 팝업 초기 셋팅 --}}
         });
 
         function initFavorCateView() {
@@ -423,7 +422,11 @@
             for(var i = 0; i <= arr_favor_cate.length; i++) {
                 $favor_cate_pop.find('.favor-cate-each').each(function() {
                     if(arr_favor_cate[i] == $(this).data('key')) {
-                        cate_html += '<li><a href="' + $(this).data('url') + '">' + $(this).html() + '</a></li>';
+                        cate_html += '<li>';
+                        cate_html += '  <a href="' + $(this).data('url') + '">' + $(this).html() + '</a>';
+                        cate_html += '  <span onclick="removeFavorCateView(this);" data-key="' + $(this).data('key') + '">x</span>';
+                        cate_html += '</li>';
+                        cate_html += '';
                         cate_html_cnt += 1;
                     }
                 });
@@ -431,7 +434,7 @@
 
             {{-- 남은 갯수 그리기 --}}
             for(cate_html_cnt; cate_html_cnt < favor_cate_cnt; cate_html_cnt++) {
-                cate_html += '<li><a href="javascript:openWin(\'addArea\');" class="blank">+</a></li>';
+                cate_html += '<li><a href="javascript:initFavorCatePop();" class="blank">+</a></li>';
             }
             $('#favor_cate_view').children().first().nextAll().remove();
             $('#favor_cate_view').children().first().after(cate_html);
@@ -461,6 +464,7 @@
                     });
                 }
             }
+            openWin('addArea');
         }
 
         {{-- 카테고리 즐겨찾기 저장 --}}
@@ -481,6 +485,21 @@
             $.cookie('favor_cate', arr_favor_cate, { expires: 365 });
             initFavorCateView();
             closeWin('addArea');
+        }
+
+        {{-- 화면 개별삭제 --}}
+        function removeFavorCateView(ele) {
+            var favor_cate_key = $(ele).data('key');
+            if(typeof favor_cate_key != 'undefined') {
+                var arr_favor_cate = getCookieStrToArr($.cookie('favor_cate'));
+                for(var i = 0; i <= arr_favor_cate.length; i++) {
+                    if(arr_favor_cate[i] == favor_cate_key) {
+                        arr_favor_cate.splice(i, 1);
+                    }
+                }
+                $.cookie('favor_cate', arr_favor_cate, { expires: 365 });
+                initFavorCateView();
+            }
         }
 
         function getCookieStrToArr(str) {

@@ -18,8 +18,9 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.sky {position:fixed;top:250px;right:0;z-index:1;}
+.sky {position:fixed;top:250px;right:10px;z-index:1;}
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1392_top_bg.jpg) no-repeat center top;position:relative;}
+.top_bg span {position:absolute; top:68px; left:50%; margin-left:-99px; z-index:10}
 .top_bg .check{position:absolute;width: 1000px;left:62%;top:900px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;
               letter-spacing:-1px;}
 .top_bg .check label{color:#fff;font-size:16px;}
@@ -71,7 +72,7 @@
         <ul class="sky">
             <li>
                 <a href="https://pass.willbes.net/book/index/cate/3019?cate_code=3019&subject_idx=1109&prof_idx=50027" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1559_sky.png" alt="오태진 한국사 100점 노트 구매하기">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1392_sky.png" alt="오태진 한국사 100점 노트 구매하기">
                 </a>
             </li>     
         </ul>
@@ -79,8 +80,9 @@
         <div class="evtCtnsBox top_bg">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_top.jpg" alt="오태진 한국사" usemap="#Map1296a" border="0">
             <map name="Map1296a" id="Map1296a">
-            <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" alt="수강신청"/>
-            </map>     
+                <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" alt="수강신청"/>
+            </map>  
+            <span><img src="https://static.willbes.net/public/images/promotion/2019/09/1392_event.gif"></span>    
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
@@ -99,7 +101,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_04.jpg" alt="실전 모의고사"> 
         </div>
         <div class="evtCtnsBox sec05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_05.jpg" alt="수강신청" usemap="#Map1296b" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_05.gif" alt="수강신청" usemap="#Map1296b" border="0">
             <map name="Map1296b" id="Map1296b">
                 <area shape="rect" coords="536,619,726,717" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
             </map> 
@@ -124,6 +126,8 @@
                 <dd>
                     <dt>교재안내</dt>
                     <dl>교재는 별도로 제공되지 않으며, 각 강좌별 교재는 강좌 소개 및 홈페이지 상단의 [교재구매] 메뉴에서 별도로 구매 가능합니다.</dl>
+                    <dl>신간 출시 기념 T-PASS 구매자 선착순 10명 100점노트 무료 증정 이벤트의 경우, 선착순 조기마감될 수 있으며,<br> T-PASS 결제 완료 시 담당자 확인 후 회원정보에 기재된 주소로 배송됩니다.<br>
+                        (단, 환불이나 결제 취소 시 교재는 구매자 부담으로 반송처리해주셔야 합니다.)</dl>
                 </dd>
                 <dd>
                     <dt>기기제한</dt>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseStats extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'stats/statsMember', 'stats/statsOrder', 'stats/statsBanner', 'stats/statsSearch');
+    protected $models = array('sys/site', 'sys/code', 'stats/statsMember', 'stats/statsOrder', 'stats/statsBanner', 'stats/statsSearch', 'stats/statsGateway');
     protected $helpers = array();
 
     public function __construct()

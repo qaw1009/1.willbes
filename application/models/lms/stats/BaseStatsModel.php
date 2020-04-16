@@ -32,6 +32,11 @@ class BaseStatsModel extends WB_Model
         'banner' => 'lms_banner',
         'banner_log' => 'lms_banner_access_log',
 
+        /*광고*/
+        'gateway_cont' => 'lms_gateway_contract',
+        'gateway' => 'lms_gateway',
+        'gateway_log' => 'lms_gateway_access_log',
+
     ];
 
     public function __construct()

@@ -4,7 +4,6 @@
     <style>
         .favor-cate-on {background: #0396cf;color: #fff !important;}
     </style>
-    {{-- 반영 테스트 --}}
 
     <!-- Container -->
     <div id="Container" class="Container mainV2 NG c_both">

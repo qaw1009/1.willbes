@@ -25,9 +25,9 @@
 .mainV2 .Area1 .addList li:first-child a:hover,
 .mainV2 .Area1 .addList a:hover {background: #000; color:#fff; border-color:#000}
 .mainV2 .Area1 .addList li:last-child a {margin-right:0}
-.mainV2 .Area1 .addList li a span {display:none; position: absolute; width:24px; height: 24px; line-height: 24px; text-align: center; top:6px; right:14px; 
+.mainV2 .Area1 .addList li span {display:none; position: absolute; width:24px; height: 24px; line-height: 24px; text-align: center; top:6px; right:14px; 
     border-radius: 13px; color:#000; background: #fff; z-index: 5;}
-.mainV2 .Area1 .addList li a:hover span {display:block;}
+.mainV2 .Area1 .addList li:hover span {display:block; color:#fff; background: #0396cf;}
 .mainV2 .Area1 .addList:after {content: ""; display: block; clear:both}
 
 .gate-add-popup .willbes-Layer-CartBox {height:auto;}

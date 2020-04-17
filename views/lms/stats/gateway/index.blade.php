@@ -41,6 +41,7 @@
                         &nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y" /> 년
                         &nbsp;
+                        * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,14 +50,14 @@
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;" value=""> [계약명, 광고명]
                     </div>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="control-label col-md-1" for="search_type">조건검색</label>
                     <div class="col-md-11 form-inline">
                         <div class="checkbox">
                             <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역임으로 정확도를 요하지는 않음]
                         </div>
                     </div>
-                </div>
+                </div-->
             </div>
         </div>
         <div class="row">
@@ -105,17 +106,25 @@
         <div class="x_content">
             <div class="form-group">
                 <p></p>
-                <div class="col-md-5 form-inline">
-                    <strong>[기간별 클릭현황]</strong>
+                <div class="col-md-12 form-inline">
+                    <strong>[기간별 광고현황]</strong>
                     <div class="x_content">
                         <table id="list_count_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
                             <tr>
-                                <th width="120" style="text-align: center;" >날짜</th>
-                                <th style="text-align: center;">로그인-클릭</th>
-                                <th style="text-align: center;">비로그인-클릭</th>
-                                <th style="text-align: center;">총합</th>
+                                <th width="120" style="text-align: center;" rowspan="2" class="valign-middle">날짜</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">접속수</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">회원가입수</th>
+                                <th colspan="2" style="text-align: center;">결제</th>
+                                <th colspan="2" style="text-align: center;">환불</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">접속대비<BR>회원가입률</th>
+                            </tr>
+                            <tr>
+                                <th width="100" style="text-align: center;">건수</th>
+                                <th style="text-align: center;">금액</th>
+                                <th width="100" style="text-align: center;">건수</th>
+                                <th style="text-align: center;">금액</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -123,84 +132,46 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4 form-inline">
-                    <strong>[사이트별 클릭현황]</strong>
-                    <div class="x_content">
-                        <table id="list_site_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th style="text-align: center;">사이트</th>
-                                <th style="text-align: center;">클릭수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-3 form-inline">
-                    <strong>[플랫폼별 클릭현황]</strong>
-                    <div class="x_content">
-                        <table id="list_platform_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th style="text-align: center;">플랫폼</th>
-                                <th style="text-align: center;">클릭건수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
+
             </div>
 
             <div class="form-group">
                 <p></p>
-                <div class="col-md-7 form-inline">
-                    <strong>[사이트별 클릭순위]</strong>
+                <div class="col-md-12 form-inline">
+                    <strong>[사이트별 광고현황]</strong>
                     <div class="x_content">
-                        <table id="list_site_rank_table" class="table table-striped table-bordered">
+                        <table id="list_site_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>순위</th>
-                                <th width="120">사이트</th>
-                                <th>배너명</th>
-                                <th width="80">배너정보</th>
-                                <th width="80">클릭수</th>
+                            <tr>
+                                <th width="120" style="text-align: center;" rowspan="2" class="valign-middle">사이트</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">접속수</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">회원가입수</th>
+                                <th colspan="2" style="text-align: center;">결제</th>
+                                <th colspan="2" style="text-align: center;">환불</th>
+                                <th width="120"  rowspan="2" class="valign-middle" style="text-align: center;">접속대비<BR>회원가입률</th>
+                            </tr>
+                            <tr>
+                                <th width="100" style="text-align: center;">건수</th>
+                                <th style="text-align: center;">금액</th>
+                                <th width="100" style="text-align: center;">건수</th>
+                                <th style="text-align: center;">금액</th>
                             </tr>
                             </thead>
                             <tbody>
                             </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-5 form-inline">
-                    <strong>[전체 클릭순위]</strong>
-                    <div class="x_content">
-                        <table id="list_rank_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>순위</th>
-                                <th>배너명</th>
-                                <th width="80">배너정보</th>
-                                <th width="80">클릭수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
+                            <tfoot>
+                            <!--tr>
+                                <th style="text-align: center;">총합</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr//-->
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -208,16 +179,15 @@
 
             <div class="form-group">
                 <div class="col-md-12 form-inline">
-                    <strong>[배너 클릭이력]</strong>
+                    <strong>[광고 접속이력]</strong>
                     <div class="x_content">
                         <table id="list_ajax_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
                                 <th width="30">NO</th>
                                 <th width="120">사이트</th>
-                                <th width="150">분류</th>
-                                <th >배너명</th>
-                                <!--th width="120">배너정보</th-->
+                                <th>광고정보</th>
+                                <th width="180">광고형태</th>
                                 <th width="120">플랫폼</th>
                                 <th width="90">사용자IP</th>
                                 <th width="120">일자</th>
@@ -229,11 +199,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <script src="/public/vendor/jqcloud/jqcloud-1.0.4.js"></script>
-    <link rel="stylesheet" type="text/css" href="/public/vendor/jqcloud/jqcloud.css" />
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');
@@ -261,12 +228,13 @@
 
                 {{--######################################################  검색현황   ####################################################--}}
                 $gateway_info = getStats('Gateway/Count');
-                $base_date = [], $gateway_count=[] ,$member_count=[], $order_count=[];
+                $base_date = [], $gateway_count=[] ,$member_count=[], $order_count=[], $refund_count=[];
                 for (key in $gateway_info) {
                     $base_date.push($gateway_info[key]['base_date']);
                     $gateway_count.push($gateway_info[key]['gateway_count']);
                     $member_count.push($gateway_info[key]['member_count']);
                     $order_count.push($gateway_info[key]['order_count']);
+                    $refund_count.push($gateway_info[key]['refund_count']);
                 }
                 var config_count = {
                     type: 'line',
@@ -290,6 +258,12 @@
                             backgroundColor: window.chartColors.purple2,
                             borderColor: window.chartColors.purple2,
                             data: $order_count,
+                        }, {
+                            label: '환불건수',
+                            fill: false,
+                            backgroundColor: window.chartColors.blue3,
+                            borderColor: window.chartColors.blue3,
+                            data: $refund_count,
                         }]
                     },
                     options: {
@@ -341,7 +315,6 @@
 
                 {{--######################################################  사이트별   ####################################################--}}
                 $gateway_site = getStats('Gateway/Site');
-                console.log($gateway_site);
                 $base_site=[], $site_gateway_count=[] ,$site_member_count=[],$site_order_count=[],$site_refund_count=[];
                 for (key in $gateway_site) {
                     $base_site.push($gateway_site[key]['SiteName']);
@@ -381,8 +354,6 @@
 
                 };
                 {{--######################################################  사이트별   ####################################################--}}
-
-
 
                 canvas_clear('gateway_count');
                 var ctx_count = document.getElementById('gateway_count_stats').getContext('2d');
@@ -427,8 +398,6 @@
                         }
                     }
                 });
-
-
             }
 
             function canvas_clear(str_div_id) {
@@ -437,8 +406,7 @@
                 $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
             }
 
-
-            var $datatable_count_info, $datatable_site, $datatable_platform, $datatable_site_rank, $datatable_rank, $datatable_list;
+            var $datatable_count_info, $datatable_site, $datatable_list;
 
             function datatableExe() {
                 $datatable_count_info = $("#list_count_table").DataTable({
@@ -448,19 +416,31 @@
                     serverSide: false,
                     ajax: false,
                     searching: false,
-                    data: null,
+                    data: $gateway_info,
                     columns: [
                         {'data': 'base_date', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '<font color="black">' + data+ '</font>';
                             }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                        {'data': 'gateway_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                        {'data': 'not_click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                        {'data': 'member_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                            }},
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                            }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                            }},
+                        {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                            }},
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma( parseInt(row.click_count) + parseInt(row.not_click_count)) + '</b>';
+                                return (parseInt(row.gateway_count) > 0 ?'<b>' + (parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
                             }},
                     ]
                 });
@@ -472,102 +452,31 @@
                     ajax: false,
                     searching: false,
                     info : '',
-                    data: null,
+                    data: $gateway_site,
                     columns: [
                         {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '<font color="black">' + data+ '</font>';
                             }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                        {'data': 'gateway_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                    ],footerCallback: function( tfoot, data, start, end, display ) {
-                        var api = this.api();
-                        $(api.column(1).footer()).html(
-                            addComma(
-                                api.column(1).data().reduce(function ( a, b ) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
-                    }
-                });
-
-                $datatable_platform = $("#list_platform_table").DataTable({
-                    dom: 'Pfrtip',
-                    paging : false,
-                    serverSide: false,
-                    ajax: false,
-                    searching: false,
-                    info : '',
-                    data: null,
-                    columns: [
-                        {'data': 'user_platform', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data+ '</font>';
+                        {'data': 'member_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                        {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                    ],footerCallback: function( tfoot, data, start, end, display ) {
-                        var api = this.api();
-                        $(api.column(1).footer()).html(
-                            addComma(
-                                api.column(1).data().reduce(function ( a, b ) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
-                    }
-                });
-
-                $datatable_site_rank = $("#list_site_rank_table").DataTable({
-                    dom: 'Pfrtip',
-                    paging : false,
-                    serverSide: false,
-                    ajax: false,
-                    searching: false,
-                    info : '',
-                    data: getStats('Banner/SiteRank'),
-                    columns: [
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(meta.row + 1)+'</font></b>';
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                        {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
+                        {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
-                        {'data': 'BannerName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
-                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
-                            }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
-                            }},
-                    ]
-                });
-
-                $datatable_rank = $("#list_rank_table").DataTable({
-                    dom: 'Pfrtip',
-                    paging : false,
-                    serverSide: false,
-                    ajax: false,
-                    searching: false,
-                    info : '',
-                    data: getStats('Banner/Rank'),
-                    columns: [
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(meta.row + 1)+'</font></b>';
-                            }},
-                        {'data': 'BannerName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
-                            }},
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
-                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
-                            }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
+                                return (parseInt(row.gateway_count) > 0 ? '<b>' +(parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
                             }},
                     ]
                 });
@@ -575,7 +484,7 @@
                 $datatable_list = $('#list_ajax_table').DataTable({
                     serverSide: true,
                     ajax: {
-                        'url' : '{{ site_url('/stats/statsBanner/listAjax') }}',
+                        'url' : '{{ site_url('/stats/statsGateway/listAjax') }}',
                         'type' : 'POST',
                         'data' : function(data) {
                             return $search_form.formSerialize()+'&start='+data.start+'&length='+data.length
@@ -586,10 +495,10 @@
                                 return $datatable_list.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }},
                         {'data' : 'SiteName'},
-                        {'data' : 'CateName'},
                         {'data' : null, 'render' : function(data, type, row, meta) {
-                                return "<b>"+row.BannerName + "</b>";
+                                return "<b>["+row.ContName + "] "+ row.GwName +"</b>";
                             }},
+                        {'data' : 'CcdName'},
                         {'data' : 'UserPlatform'},
                         {'data' : 'RegIp'},
                         {'data' : 'RegDatm'}
@@ -605,9 +514,6 @@
             function datatableReset() {
                 $datatable_count_info.destroy();
                 $datatable_site.destroy();
-                $datatable_platform.destroy();
-                $datatable_site_rank.destroy();
-                $datatable_rank.destroy();
                 $datatable_list.destroy();
                 datatableExe();
             }

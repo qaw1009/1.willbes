@@ -41,6 +41,7 @@
                         &nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y" /> 년
                         &nbsp;
+                        * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
                 <div class="form-group">
@@ -142,8 +143,8 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
+                                <th style="text-align: center;">총합</th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>
@@ -163,8 +164,8 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
+                                <th style="text-align: center;">총합</th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>
@@ -222,7 +223,6 @@
                                 <th width="120">사이트</th>
                                 <th width="150">분류</th>
                                 <th >배너명</th>
-                                <!--th width="120">배너정보</th-->
                                 <th width="120">플랫폼</th>
                                 <th width="90">사용자IP</th>
                                 <th width="120">일자</th>
@@ -234,11 +234,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <script src="/public/vendor/jqcloud/jqcloud-1.0.4.js"></script>
-    <link rel="stylesheet" type="text/css" href="/public/vendor/jqcloud/jqcloud.css" />
+
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');

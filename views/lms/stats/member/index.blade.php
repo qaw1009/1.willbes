@@ -41,6 +41,7 @@
                         &nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y" /> 년
                         &nbsp;
+                        * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
                 <div class="form-group">

@@ -68,8 +68,8 @@
     </form>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>Chart</strong></a></li>
-        <li role="presentation"><a role="tab" href="#data_view"><strong>Data</strong></a></li>
+        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>차트보기</strong></a></li>
+        <li role="presentation"><a role="tab" href="#data_view"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">
@@ -246,7 +246,6 @@
                             <tr>
                                 <th width="30">NO</th>
                                 <th width="120">사이트</th>
-                                <!--th width="150">분류</th//-->
                                 <th >검색어</th>
                                 <th width="120">플랫폼</th>
                                 <th width="90">검색결과</th>
@@ -522,22 +521,22 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'login_search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
+                                return '<b>' + addComma(data) + '</b>';
                             }},
                         {'data': 'login_search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#eb7f36\'>' + addComma(data) + '</font>';
+                                return '' + addComma(data) + '';
                             }},
                         {'data': 'not_search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
+                                return '<b>' + addComma(data) + '</b>';
                             }},
                         {'data': 'not_search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#4bc0c0\'>' + addComma(data) + '</font>';
+                                return '' + addComma(data) + '';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b><font color=\'#537bc4\'>' + addComma( parseInt(row.login_search_count) + parseInt(row.not_search_count)) + '</font></b>';
+                                return '<b>' + addComma( parseInt(row.login_search_count) + parseInt(row.not_search_count)) + '</b>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#537bc4\'>' + addComma( parseInt(row.login_search_result_sum) + parseInt(row.not_search_result_sum)) + '</font>';
+                                return '' + addComma( parseInt(row.login_search_result_sum) + parseInt(row.not_search_result_sum)) + '';
                             }}
                     ]
                 });
@@ -554,10 +553,10 @@
                                 return  '<font color="black">'  + data+ '</font>';
                             }},
                         {'data': 'search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b><font color=\'#537bc4\'>' + addComma(data) + '</font></b>';
+                                return '<b>' + addComma(data) + '</b>';
                             }},
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#537bc4\'>' + addComma(data) + '</font>';
+                                return '' + addComma(data) + '';
                             }},
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
@@ -594,10 +593,10 @@
                                 return  '<font color="black">'  + data+ '</font>';
                             }},
                         {'data': 'search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b><font color=\'#537bc4\'>' + addComma(data) + '</font></b>';
+                                return '<b>' + addComma(data) + '</b>';
                             }},
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color=\'#537bc4\'>' + addComma(data) + '</font>';
+                                return '' + addComma(data) + '';
                             }},
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {

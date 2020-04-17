@@ -68,8 +68,8 @@
     </form>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>Chart</strong></a></li>
-        <li role="presentation"><a role="tab" href="#data_view"><strong>Data</strong></a></li>
+        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>차트보기</strong></a></li>
+        <li role="presentation"><a role="tab" href="#data_view"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">

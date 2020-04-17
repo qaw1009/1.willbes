@@ -165,9 +165,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td>총합</td>
-                                    <td></td>
-                                    <td></td>
+                                    <th>총합</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -188,9 +188,9 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td>총합</td>
-                                <td></td>
-                                <td></td>
+                                <th>총합</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>

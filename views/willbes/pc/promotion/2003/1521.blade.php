@@ -37,7 +37,7 @@
 .skybanner{position:fixed;top:250px;right:10px;z-index:1;}
 
 .wb_top{background:#e8e9e9 url("https://static.willbes.net/public/images/promotion/2020/01/1521_top_bg.jpg") no-repeat center top;position:relative;}
-.wb_top_txt{position:absolute;top:165px;}
+.wb_top span {position:absolute;top:50px; left:0; text-align:center; width:100%}
 
 .wb_cts01{background:#fff;}
 
@@ -124,14 +124,11 @@
 
     <div class="evtCtnsBox wb_top">
         <img src="https://static.willbes.net/public/images/promotion/2020/01/1521_top.jpg" usemap="#Map1521a"  title="군무원 0원 패스" border="0" />
+        <span><img src="https://static.willbes.net/public/images/promotion/2020/01/1521_top_txt.gif"  title="탑 이미지 문구" />  </span>
         <map name="Map1521a" id="Map1521a">
             <area shape="rect" coords="312,908,810,1009" href="#banner" />
         </map>        
-    </div>  
-
-    <div class="evtCtnsBox wb_top_txt">
-        <img src="https://static.willbes.net/public/images/promotion/2020/01/1521_top_txt.gif"  title="탑 이미지 문구" />      
-    </div>      
+    </div>    
 
     <div class="evtCtnsBox wb_cts01">
         <img src="https://static.willbes.net/public/images/promotion/2020/01/1521_01.gif"  title="기회를 잡아야" />

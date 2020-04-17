@@ -81,14 +81,14 @@
             </form>
         </div>
         <div class="lineTabs lecListTabs c_both bdt-m-gray">
-            <ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
-                <li><a href="#leclist1" class="on">수강중강좌 <span>{{count($leclist_ing)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist2">즐겨찾기강좌 <span>{{count($leclist_like)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist3">숨긴강좌 <span>{{count($leclist_nodisp)}}</span></a></li>
+            <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
+                <li><a href="#leclist1" class="on">수강중 <span>{{count($leclist_ing)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist2">즐겨찾기 <span>{{count($leclist_like)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist3">수강완료 <span>{{count($leclist_end)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist4">숨김 <span>{{count($leclist_nodisp)}}</span></a></li>
             </ul>
             <div class="tabBox lineBox lecListBox">
-                <div id="leclist1" class="tabContent">
-                    <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+                <div id="leclist1" class="tabContent pt20">
                     <div class="btnBox mb20">
                         @if(empty($leclist_ing) == false)
                             <div class="InfoBtn btn_white bdr-none"><a href="javascript:;" onclick="fnLike('all',null);" style="padding: 0;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
@@ -141,8 +141,7 @@
                         </table>
                     </form>
                 </div>
-                <div id="leclist2" class="tabContent" style="display: none;">
-                    <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+                <div id="leclist2" class="tabContent pt20" style="display: none;">
                     <div class="btnBox mb20">
                         @if(empty($leclist_like) == false)
                             <div class="InfoBtn btn_white"><a href="javascript:;" onclick="fnUnLike('all', null);">즐겨찾기취소</a></div>
@@ -194,8 +193,46 @@
                         </table>
                     </form>
                 </div>
-                <div id="leclist3" class="tabContent" style="display: none;">
-                    <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
+                <div id="leclist3" class="tabContent pt20" style="display: none;">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                        <colgroup>
+                            <col style="width: 13%;">
+                            <col style="width: 87%;">
+                        </colgroup>
+                        <tbody>
+                        @forelse( $leclist_end as $row )
+                            <tr>
+                                <td class="w-chk"></td>
+                                <td class="w-data tx-left pl2p">
+                                    @if($row['LecTypeCcd'] == '607003')
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    @endif
+                                    <dl class="w-info">
+                                        <dt>
+                                            {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
+                                            <span class="NSK ml5 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                        </dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="{{ front_url('/classroom/pass/view/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
+                                        <dt>진도율 : <span class="tx-blue">{{$row['StudyRate']}}%</span><span class="row-line">|</span></dt>
+                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="2" class="tx-center">수강종료강좌 정보가 없습니다.</td>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
+                <div id="leclist4" class="tabContent pt20" style="display: none;">
                     <div class="btnBox mb20">
                         @if(empty($leclist_ing) == false)
                             <div class="InfoBtn btn_white"><a href="javascript:;" onclick="fnUnHide('all', null);">숨김해제</a></div>

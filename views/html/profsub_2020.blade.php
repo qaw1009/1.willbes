@@ -534,7 +534,7 @@
                                 </ul>
                             </div>
 
-                            <div class="willbes-listTable willbes-reply mt30">
+                            <div class="willbes-listTable willbes-reply2 mt30">
                                 <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'),openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                                 <ul class="List-Table w50 tx-gray">
                                     <li><a href="#none"><img src="{{ img_url('sub/star4.gif') }}" alt="별점">설명도 잘 해주시고 좋은 강의에요</a></li>
@@ -1476,8 +1476,7 @@
                                         <div id="offlist1" class="tabContent">
                                             <div class="ListTabs">
                                                 <ul>
-                                                    <li><a class="on" href="#none">전체</a><span class="row-line">|</span></li>
-                                                    <li><a href="#none">노량진</a><span class="row-line">|</span></li>
+                                                    <li><a class="on" href="#none">노량진</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">부산</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">대구</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">인천</a><span class="row-line">|</span></li>
@@ -1716,7 +1715,6 @@
                                         <div id="offlist2" class="tabContent">
                                             <div class="ListTabs">
                                                 <ul>
-                                                    <li><a href="#none">전체</a><span class="row-line">|</span></li>
                                                     <li><a class="on" href="#none">노량진</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">부산</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">대구</a><span class="row-line">|</span></li>

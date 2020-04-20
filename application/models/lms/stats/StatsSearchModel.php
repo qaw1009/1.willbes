@@ -284,10 +284,10 @@ class StatsSearchModel extends BaseStatsModel
         $order_by = ['sl.SlIdx' => 'DESC'];
 
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = ' straight_join count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'sl.*,s.SiteGroupCode,s.SiteName,sc.CateName';
+            $column = ' straight_join sl.*,s.SiteGroupCode,s.SiteName,sc.CateName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset(element('length',$arr_input), element('start',$arr_input))->getMakeLimitOffset();
         }

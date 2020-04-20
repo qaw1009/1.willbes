@@ -379,7 +379,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_05.png" alt="BEST 수강후기" >
             <ul>
                 <li>
-                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
+                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">
                     <span class="NSK-Black">지금, 수강신청하고 </span>
                     1인 온라인창업 도전! → 
                     </a>
@@ -431,7 +431,7 @@
 </div>
 <!-- End Container -->
 <div class="btnbuy NSK-Black">        
-    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
+    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">
         [온라인강의] 신청하기 >
     </a>
 </div>

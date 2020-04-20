@@ -503,7 +503,7 @@
             <ul>
                 <li>
                 {{--<a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank">--}}
-                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
+                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">
                     <span class="NSK-Black">지금, 수강신청하고 </span>
                     100만원 만들기 도전! → 
                     </a>
@@ -564,7 +564,7 @@
 
 <div class="btnbuy NSK-Black">        
 {{--<a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"><span class="NSK">미리 신청하면 24%할인!</span><br>--}}
-    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
+    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">
     [온라인강의] 신청하기 ></a>
 </div> 
 

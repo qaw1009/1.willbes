@@ -209,7 +209,7 @@
         <div class="skybanner" >
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1565_sky.png" alt="스카이베너" usemap="#Map1565_sky" border="0" >
             <map name="Map1565_sky" id="Map1565_sky">
-                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');" alt="강의신청" />                
+                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');" alt="강의신청" />
             </map>
         </div>                  
 
@@ -233,7 +233,7 @@
                     <area shape="rect" coords="193,781,375,814" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268601" target="_blank" alt="이용안내" />
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">[온라인강의] 신청하기 ></a></div>
             </div>
         </div>
 
@@ -331,7 +331,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_04_02.jpg" alt="BEST 수강후기" >
                 <ul>
                     <li>
-                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y/')}}');">
                         <span class="NSK-Black">지금, 수강신청하고 </span>
                         재고없이 월1천만원 도전! → 
                         </a>

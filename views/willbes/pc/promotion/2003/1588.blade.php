@@ -76,7 +76,7 @@
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top.jpg" usemap="#Map1588_top" title="더켠의 반반한 밤" border="0">
             <map name="Map1588_top" id="Map1588_top">
-                <area shape="rect" coords="601,21,802,90" href="javascript:alert('준비중입니다.')" onfocus='this.blur()' />
+                <area shape="rect" coords="601,21,802,90" href="https://pass.willbes.net/pass/mockTest/apply/cate/" onfocus='this.blur()' target="_blank" />
                 <area shape="rect" coords="812,21,1013,90" href="javascript:alert('준비중입니다.')" onfocus='this.blur()' />
             </map>     
         </div>

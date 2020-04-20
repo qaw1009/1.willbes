@@ -179,7 +179,7 @@
         }
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 .columns div strong {font-size:bold; color:#333}
+        .evt04 .columns div strong {font-size:bold; color:#333}        
 
         .evt05 {background:#3a99f0; padding-bottom:100px}
         .evt05 ul {width:940px; margin:0 auto;}
@@ -205,6 +205,8 @@
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal; }
+
+        .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -355,9 +357,21 @@
                         생각했습니다.<br>
                         솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
                         일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
-                    </div>           
-                </div>                
+                    </div>
+                </div> 
+                
+                <div class="evtReply">
+                    @if(empty($data['ProdCode']) === false)
+                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                        @include('willbes.pc.site.lecture.iframe_reply_partial')
+                        <div class="TopBtn">
+                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                        </div>
+                    @endif
+                </div>
             </div>
+
+           
 
             {{-- 상품바로결제 정보 --}}
             <div id="pass" style="display: none">
@@ -424,10 +438,6 @@
             </ul>
 
             <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-        </div>
-
-        <div class="evtCtnsBox reply">
-            {{--수강후기--}}
         </div>
     </div>
     <!-- End Container -->

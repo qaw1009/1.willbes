@@ -300,6 +300,7 @@ class StatsMemberModel extends BaseStatsModel
                         left Join
                         (
                             SELECT 
+                                straight_join 
                                '. $login_date .' as result_date
                                 ,COUNT(*) AS login_count  
                             FROM '. $this->_table['member_login'] .' AS l  

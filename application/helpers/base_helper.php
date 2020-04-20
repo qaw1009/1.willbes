@@ -89,6 +89,19 @@ if (!function_exists('csrf_token_name')) {
     }
 }
 
+if (!function_exists('datetime_verify')) {
+    /**
+     * datetime 날짜포맷 유효여부 체크
+     * @param string $datetime [datetime 문자열]
+     * @param string $format [확인 날짜포맷]
+     * @return bool
+     */
+    function datetime_verify($datetime, $format = 'Y-m-d H:i:s')
+    {
+        $dt = DateTime::createFromFormat($format, $datetime);
+        return $dt !== false && $dt->format($format) == $datetime;
+    }
+}
 
 if (!function_exists('dd')) {
     /**

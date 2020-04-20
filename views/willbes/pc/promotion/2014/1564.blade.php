@@ -179,7 +179,7 @@
         }
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 .columns div strong {font-size:bold; color:#333}
+        .evt04 .columns div strong {font-size:bold; color:#333}        
 
         .evt05 {background:#3a99f0; padding-bottom:100px}
         .evt05 ul {width:940px; margin:0 auto;}
@@ -205,13 +205,15 @@
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal; }
+
+        .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1564_sky.png" alt="스카이베너" usemap="#Map1564_sky" border="0" >
             <map name="Map1564_sky" id="Map1564_sky">
-                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');" alt="강의신청" />
+                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');" alt="강의신청" />
                 <area shape="rect" coords="9,464,112,588" href="http://njob.domeggook.com/mh/njob_guide" target="_blank" alt="도매꾹" />
                 <area shape="rect" coords="11,602,113,655" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="이용안내" />
             </map>
@@ -237,7 +239,7 @@
                     <area shape="rect" coords="198,795,379,827" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="이용안" />
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">[온라인강의] 신청하기 ></a></div>
             </div>
         </div>
 
@@ -356,17 +358,20 @@
                         솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
                         일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
                     </div>
+                </div> 
+                
+                <div class="evtReply">
+                    @if(empty($data['ProdCode']) === false)
+                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                        @include('willbes.pc.site.lecture.iframe_reply_partial')
+                        <div class="TopBtn">
+                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                        </div>
+                    @endif
                 </div>
-
-                @if(empty($data['ProdCode']) === false)
-                    <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
-                    @include('willbes.pc.site.lecture.iframe_reply_partial')
-                    <div class="TopBtn">
-                        <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-                    </div>
-                @endif
-
             </div>
+
+           
 
             {{-- 상품바로결제 정보 --}}
             <div id="pass" style="display: none">
@@ -379,7 +384,7 @@
                 <ul>
                     <li>
                         {{-- <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"> --}}
-                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
                         <span class="NSK-Black">지금, 수강신청하고 </span>
                         100만원 만들기 도전! → 
                         </a>
@@ -433,10 +438,6 @@
             </ul>
 
             <div>※ 이용문의 : 고객만족센터 1544-5006</div>
-        </div>
-
-        <div class="evtCtnsBox reply">
-            {{--수강후기--}}
         </div>
     </div>
     <!-- End Container -->

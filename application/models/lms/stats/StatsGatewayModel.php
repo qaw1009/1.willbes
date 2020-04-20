@@ -288,7 +288,7 @@ class StatsGatewayModel extends BaseStatsModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'gal.*,g.GwName, g.GwTypeCcd, gc.ContName, s.SiteName, sc.CcdName';
+            $column = 'straight_join gal.*,g.GwName, g.GwTypeCcd, gc.ContName, s.SiteName, sc.CcdName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset(element('length',$arr_input), element('start',$arr_input))->getMakeLimitOffset();
         }

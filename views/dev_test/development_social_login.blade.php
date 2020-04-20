@@ -38,7 +38,7 @@
             {
                 clientId: "KfwZkPOqgdTMK5oPqpet",
                 //callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
-                callbackUrl: "https://www.dev.willbes.net/home/dev_test/development_social_login_result",
+                callbackUrl: "https://www.willbes.net/home/dev_test/development_social_login_result",
                 isPopup: false,
                 loginButton: {color: "green", type: 3, height: 60}
             }

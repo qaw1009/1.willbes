@@ -78,7 +78,10 @@ class RefundProc extends BaseOrder
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
                 'ORR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
-            'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
+            'IN' => [
+                'O.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
+                //'OP.PayStatusCcd' => [$this->orderListModel->_pay_status_ccd['paid']]
+            ],
             'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
@@ -111,7 +114,7 @@ class RefundProc extends BaseOrder
 
         // 결제완료된 주문상품이 1건이라도 있는 경우 노출
         $raw_query = /** @lang text */ 'select 1 from ' . $this->orderListModel->_table['order_product'] . ' 
-            where OrderIdx = O.OrderIdx and PayStatusCcd = "' . $this->orderListModel->_pay_status_ccd['paid'] . '"';
+            where OrderIdx = O.OrderIdx and MemIdx = O.MemIdx and PayStatusCcd = "' . $this->orderListModel->_pay_status_ccd['paid'] . '"';
         $arr_condition['RAW']['EXISTS ('] = $raw_query . ')';
 
         // 날짜 검색

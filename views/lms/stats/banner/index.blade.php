@@ -568,11 +568,10 @@
                         {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
                             }},
-                        {'data': 'BannerName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
                                 return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
@@ -593,11 +592,10 @@
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(meta.row + 1)+'</font></b>';
                             }},
-                        {'data': 'BannerName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                //return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-img="'+ row.BannerImgName + '">확인</a>';
                                 return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {

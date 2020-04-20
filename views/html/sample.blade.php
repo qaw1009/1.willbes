@@ -97,10 +97,12 @@
     <li>
         <div>
             <ul>
-                <li><a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진소개 > 교수진 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진소개 > 교수진 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/prof_2020') }}" target="_blank">교수진소개 > 교수진 2020</a></li>
                 <li><a href="{{ site_url('/home/html/prof_acad') }}" target="_blank">교수진소개 > 교수진 학원 </a></li>
                 <li><a href="{{ site_url('/home/html/prof_gosi') }}" target="_blank">교수진소개 > 교수진 - 공무원 </a></li>
-                <li><a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진소개 > 교수진 상세</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진소개 > 교수진 상세</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/profsub_2020') }}" target="_blank">교수진소개 > 교수진 상세 2020</a></li>
                 <li><a href="{{ site_url('/home/html/profsub_jangsawon') }}" target="_blank">교수진소개 > 교수진 상세 page - 장사원 교수</a></li>
                 <li><a href="{{ site_url('/home/html/profsub_gosi') }}" target="_blank">교수진소개 > 교수진 상세 page - 자유게시판</a></li>
                 <li class="c_both"></li>

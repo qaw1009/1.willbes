@@ -2760,6 +2760,7 @@ table.auTable tr td {
 .w-info dt .nBox.n4 {
     background: #333
 }
+.w-info a strong.detail,
 .w-info dt.strong a,
 .w-info dt strong {
     background:url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 50%;
@@ -2768,6 +2769,7 @@ table.auTable tr td {
     padding-left: 18px;
     display: inline-block;
 }
+
 .w-info span {
     vertical-align: baseline;
 }
@@ -2914,9 +2916,21 @@ table.lecTable tr td .lecBuyBtns li {
     text-align: center;
     border:1px solid #1a8ccc;
 }
+table.lecTable tr td .lecBuyBtns2 li {
+    position: relative;
+    display:inline-block;
+    width: 60px;
+    margin:0 5px 5px 0;
+    font-size: 11px;
+    padding:3px 0;
+    color: #1a8ccc;
+    text-align: center;
+    border:1px solid #1a8ccc;    
+}
 table.lecTable tr td .lecBuyBtns li a {
     display: block;
 }
+
 table.lecTable tr td .lecBuyBtns li.btnCart {
     border:1px solid #707070;
     color:#fff;
@@ -2948,6 +2962,10 @@ table.lecTable tr td .lecBuyBtns .pocketBox {
     border: 1px solid #2f2f2f;
     padding: 30px 25px;
     z-index: 10;
+}
+table.lecTable tr td .lecBuyBtns2 .pocketBox {
+    top: 30px;
+    left: 0;
 }
 table.lecTable tr td .lecBuyBtns .pocketBox .closeBtn {
     position: absolute;
@@ -6098,6 +6116,7 @@ table.finTable .row-line {
     width: 100%;
     padding-bottom:20px;
 }
+.willbes-NoticeWrap .lecTable td {border-bottom: 1px solid #c9c9c9;}
 .willbes-NoticeWrap:after {
     content: '';
     display: block;
@@ -6144,20 +6163,27 @@ table.finTable .row-line {
     border-bottom: 1px solid #e2e2e2;
     height: 39px;
 }
-
+.willbes-listTable .List-Table.w50 li {
+    display:inline; float:left; width:50%;
+}
+.willbes-listTable .List-Table.w50 li:nth-of-type(odd) {
+    width: 47%; margin-right:3%;
+}
+.willbes-listTable .List-Table:after {content: ""; display: block; clear:both}
 /* subContainer : Prof : newLec */
 .willbes-newLec .List-Table li a {
     width: 390px;
 }
 
 /* subContainer : Prof : newLec */
+.willbes-reply {width: 100%;}
 .willbes-reply .List-Table li img {
-    float: left;
-    margin: 13px 0;
+    /*float: left;*/
+    margin: 13px 20px 13px 0;
 }
 .willbes-reply .List-Table li a {
-    float: right;
-    width: 360px;
+    /*float: right;
+    width: 360px;*/
 }
 
 /* subContainer : Prof : willbes-Prof-Subject */
@@ -6270,6 +6296,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 940px;
     height: 461px;
 }
+.willbes-Prof-Profile .layerPopProf {position: absolute; bottom:0; width:188px; height:206px; overflow: hidden; z-index: 10;}
 .willbes-Prof-Profile .prof-brief-btn {
     position: absolute;
     top: 29px;
@@ -6392,10 +6419,10 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 .willbes-Prof-Profile .prof-banner02 {
-    clear: both;
-    overflow: hidden;
+    clear: both;    
     width: 940px;
     height: 90px;
+    overflow: hidden;
 }
 
 .willbes-Prof-Profile .sliderBest {
@@ -6404,7 +6431,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     left: 0;
     width: 576px;
     height: 90px;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 /* subContainer : Prof : willbes-Layer-ProfileBox */
@@ -6876,6 +6903,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     text-indent: -9999;
 }
 
+.profEditer .profEd-Tit {text-align: right; font-size:14px; color:#000; border-bottom:2px solid #000; padding-bottom:10px}
+.profEditer .profEd-cts {line-height: 1.5; padding-top:20px}
+.profEditer .profEd-cts img {max-width: 940px;}
 
 /* subContainer : Prof : tabDepthAcad */
 .tabWrap.tabDepthAcad {
@@ -6959,10 +6989,12 @@ ul li.profList .willbes-Layer-ProfileBox {
 .ListTabs ul li {   
     display: inline-block;
     margin: 0 7px;
-    line-height: 18px;
+    line-height: 18px;    
 }
 .ListTabs ul li a.on {
-    font-weight: 600;
+    font-weight: 900;
+    color:#0a458b;    
+    border-bottom: 1px solid #0a458b;
 }
 .ListTabs ul li .row-line {
     background: #ddd;

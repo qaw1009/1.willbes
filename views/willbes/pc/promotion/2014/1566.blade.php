@@ -209,7 +209,7 @@
         <div class="skybanner" >
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566_sky.png" alt="스카이베너" usemap="#Map1566_sky" border="0" >
             <map name="Map1566_sky" id="Map1566_sky">
-                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');" alt="강의신청" />                
+                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');" alt="강의신청" />                
             </map>
         </div>                  
 
@@ -231,7 +231,7 @@
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/04/1602_01.jpg" alt="사전예약 이벤트" >
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">[온라인강의] 신청하기 ></a></div>
             </div>
         </div>
 
@@ -328,7 +328,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_02.jpg" alt="BEST 수강후기" >
                 <ul>
                     <li>
-                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'?order=Y')}}');">
                         <span class="NSK-Black">지금, 수강신청하고 </span>
                         1인 온라인창업 도전! → 
                         </a>

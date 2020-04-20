@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -179,6 +179,17 @@ class BasePromotion extends \app\controllers\FrontController
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
         $arr_base['add_apply_member_login_count'] = sess_data('is_login') !== true ? '0' : $this->eventFModel->getApplyMember(['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]], true);
+
+        // 상품 수강후기
+        if(empty($arr_promotion_params['reply_prod_code']) === false) {
+            $reply_prod_data = $this->lectureFModel->findProductByProdCode('on_lecture', $arr_promotion_params['reply_prod_code'], '', ['EQ' => ['IsUse' => 'Y']]);
+            if (empty($reply_prod_data) === false) {
+                $data['ProdCode'] = $reply_prod_data['ProdCode'];
+                $data['ProdName'] = $reply_prod_data['ProdName'];
+                $data['SubjectIdx'] = $reply_prod_data['SubjectIdx'];
+                $data['ProfIdx'] = $reply_prod_data['ProfIdx'];
+            }
+        }
 
         //모바일체크
         $this->load->library('user_agent');

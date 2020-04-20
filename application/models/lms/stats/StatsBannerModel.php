@@ -282,6 +282,9 @@ class StatsBannerModel extends BaseStatsModel
         $set_condition['search_start_date'] =  empty(element('search_start_date', $arr_input)) ? date('Y-m-d', strtotime($set_condition['search_end_date'] . ' -1 14 days')) : $arr_input['search_start_date'];
         $set_condition['search_date_type'] = empty(element('search_date_type', $arr_input)) ? '%Y-%m-%d' : $arr_input['search_date_type'];
 
+        $date_diff = $this->_setDateDiffCheck($arr_input);
+        $date_diff !== null ? $set_condition['search_date_type'] = $date_diff : null;
+
         if (empty(element('search_site_code', $arr_input))) {
             $set_condition['comm_condition']['IN']['b.SiteCode'] = ['100'];    //get_auth_site_codes(); 검색 설정된 사이트 코드가 존재하지 않을시 임의의 코드로 세팅
         } else {

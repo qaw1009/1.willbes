@@ -43,4 +43,15 @@ class BaseStatsModel extends WB_Model
     {
         parent::__construct('lms');
     }
+
+    public function _setDateDiffCheck($arr_input)
+    {
+        if(diff_days($arr_input['search_end_date'],$arr_input['search_start_date']) > 730) { //2년이 넘어갈경우 년단위로 변환
+            return '%Y';
+        }else if(diff_days($arr_input['search_end_date'],$arr_input['search_start_date']) > 93) { //3달이 넘어갈경우 월단위로 변환
+            return '%Y-%m';
+        } else {
+            return null;
+        }
+    }
 }

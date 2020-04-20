@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- Data Analysis [주문]</h5>
+    <h5>- Data Laboratory[주문]</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -41,6 +41,7 @@
                         &nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y" /> 년
                         &nbsp;
+                        * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,8 +85,8 @@
     </form>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>Chart</strong></a></li>
-        <li role="presentation"><a role="tab" href="#data_view"><strong>Data</strong></a></li>
+        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>차트보기</strong></a></li>
+        <li role="presentation"><a role="tab" href="#data_view"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">
@@ -240,7 +241,7 @@
                         <table id="list_site_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="150">날짜</th>
+                                <th width="150">사이트</th>
                                 <th width="">결제건수</th>
                                 <th width="">결제금액</th>
                                 <th width="">환불건수</th>

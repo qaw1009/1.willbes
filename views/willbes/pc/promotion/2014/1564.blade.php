@@ -359,16 +359,16 @@
                         일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
                     </div>
                 </div> 
-                
-                <div class="evtReply">
-                    @if(empty($data['ProdCode']) === false)
+
+                @if(empty($data['ProdCode']) === false)
+                    <div class="evtReply">
                         <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
                         @include('willbes.pc.site.lecture.iframe_reply_partial')
                         <div class="TopBtn">
                             <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
 
            

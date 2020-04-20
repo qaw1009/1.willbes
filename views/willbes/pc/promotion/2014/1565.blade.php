@@ -203,6 +203,8 @@
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal; }
+
+        .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -318,7 +320,17 @@
                         정적으로 가르쳐 주셔서 한 달간 감사했습니다. 많이 배운 것 같은데 여전히 많이 어렵습니다 선생님^^ <br>
                         어린 나이에 그 자리에 왜 계신지 알 것 같은 시간이였습니다.
                     </div>            
-                </div>                
+                </div>
+
+                @if(empty($data['ProdCode']) === false)
+                    <div class="evtReply">
+                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                        @include('willbes.pc.site.lecture.iframe_reply_partial')
+                        <div class="TopBtn">
+                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                        </div>
+                    </div>
+                @endif
             </div>
 
             {{-- 상품바로결제 정보 --}}

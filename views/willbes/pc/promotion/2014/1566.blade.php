@@ -203,6 +203,8 @@
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal; }
+
+        .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -316,7 +318,16 @@
                         도움이 많이 되었습니다.~! 나도 할 수 있겠다라는 생각이 드네요. 
                         (사입 과정 설명 부분 매우 유익했어요)
                     </div>            
-                </div>                
+                </div>
+                @if(empty($data['ProdCode']) === false)
+                    <div class="evtReply">
+                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                        @include('willbes.pc.site.lecture.iframe_reply_partial')
+                        <div class="TopBtn">
+                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                        </div>
+                    </div>
+                @endif
             </div>
             {{-- 상품바로결제 정보 --}}
             <div id="pass" style="display: none">

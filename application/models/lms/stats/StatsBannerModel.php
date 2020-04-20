@@ -139,7 +139,7 @@ class StatsBannerModel extends BaseStatsModel
 
         $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);
 
-        $column = '
+        $column = ' Straight_join
                         if(left(bal.UserPlatform,7)=\'Unknown\',\'기타\', if(left(bal.UserPlatform,7)=\'\',\'검색엔진\', left(bal.UserPlatform,7))) AS user_platform
                         ,COUNT(*) AS click_count
                        ';
@@ -182,7 +182,6 @@ class StatsBannerModel extends BaseStatsModel
                             '. $this->_table['banner_log'] .' bal 
                             join '. $this->_table['banner'] .' b on bal.BIdx = b.BIdx
                             join '. $this->_table['site'] .' S on b.SiteCode = S.SiteCode
-                            join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
                         where 1=1
                          '. $base_where .'
                          '. $sub_where .'
@@ -221,7 +220,6 @@ class StatsBannerModel extends BaseStatsModel
                             '. $this->_table['banner_log'] .' bal 
                             join '. $this->_table['banner'] .' b on bal.BIdx = b.BIdx
                             join '. $this->_table['site'] .' S on b.SiteCode = S.SiteCode
-                            join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
                         where 1=1
                          '. $base_where .'
                          '. $sub_where .'

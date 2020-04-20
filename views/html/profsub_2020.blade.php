@@ -534,7 +534,7 @@
                                 </ul>
                             </div>
 
-                            <div class="willbes-listTable willbes-reply mt30">
+                            <div class="willbes-listTable willbes-reply2 mt30">
                                 <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'),openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                                 <ul class="List-Table w50 tx-gray">
                                     <li><a href="#none"><img src="{{ img_url('sub/star4.gif') }}" alt="별점">설명도 잘 해주시고 좋은 강의에요</a></li>

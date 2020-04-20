@@ -6185,6 +6185,12 @@ table.finTable .row-line {
     float: right;
     width: 360px;
 }
+.willbes-reply2 .List-Table li img {
+    margin-right:20px
+}
+.willbes-reply2 .List-Table li a {
+
+}
 
 /* subContainer : Prof : willbes-Prof-Subject */
 .willbes-Prof-Subject {

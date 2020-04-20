@@ -15,6 +15,26 @@ $(function() {
     $('ul.sbjProf li:nth-child(5n+1)').addClass('nth');
 });
 
+// 교수홈 알림글 보기Script
+$(function() {
+    $('.profEd-Tit a').click(function() {
+        var $lec_info_table = $(this).parents('.profEditer').find('.profEd-cts');
+        var $lec_info_table_tr = $(this).parents('.profEditer').find('.profEd-cts');
+
+        if( $lec_info_table_tr.is(':visible')) {
+            $lec_info_table_tr.attr('style', 'display: none; !important');
+            $lec_info_table.addClass('off');
+            $(this).text('보기 ▼');
+            $.cookie('moreInfo', 'off', { expires: 7 });
+        } else {
+            $lec_info_table_tr.attr('style', 'display: block; !important');
+            $lec_info_table.removeClass('off');
+            $(this).text('닫기 ▲');
+            $.cookie('moreInfo', 'on', { expires: 7 });
+        }
+    });
+});
+
 // 교재정보 전체보기 버튼 Script
 $(function() {
     $('.willbes-Lec-Subject .MoreBtn a').click(function() {

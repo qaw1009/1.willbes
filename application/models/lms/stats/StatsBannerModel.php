@@ -40,7 +40,7 @@ class StatsBannerModel extends BaseStatsModel
                         
                         left Join
                         (
-                            select '. $sub_date .' as result_date
+                            select straight_join '. $sub_date .' as result_date
                                 ,COUNT(*) AS click_count
                             from 
                                 '. $this->_table['banner_log'] .' bal 
@@ -54,7 +54,7 @@ class StatsBannerModel extends BaseStatsModel
                         
                         left join
                         (
-                             select '. $sub_date .' as result_date
+                             select straight_join '. $sub_date .' as result_date
                                 ,COUNT(*) AS not_click_count
                             from 
                                 '. $this->_table['banner_log'] .' bal 
@@ -102,7 +102,9 @@ class StatsBannerModel extends BaseStatsModel
                             join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
                             left join 
                             (
-                                select b.SiteCode
+                                select 
+                                    straight_join
+                                    b.SiteCode
                                     ,COUNT(*) AS click_count
                                 from 
                                     '. $this->_table['banner_log'] .' bal 
@@ -174,7 +176,7 @@ class StatsBannerModel extends BaseStatsModel
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);
 
-        $column = ' b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName,COUNT(*) AS click_count';
+        $column = ' straight_join b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName,COUNT(*) AS click_count';
 
         $from = '   from
                             '. $this->_table['banner_log'] .' bal 
@@ -213,7 +215,7 @@ class StatsBannerModel extends BaseStatsModel
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);
 
-        $column = ' b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, COUNT(*) AS click_count';
+        $column = ' straight_join b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, COUNT(*) AS click_count';
 
         $from = '   from
                             '. $this->_table['banner_log'] .' bal 
@@ -252,10 +254,10 @@ class StatsBannerModel extends BaseStatsModel
         $order_by = ['bal.BaIdx' => 'DESC'];
 
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = ' straight_join count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = ' bal.*,b.BannerName,b.BannerFullPath,b.BannerImgName, s.SiteName, sc.CateName';
+            $column = ' straight_join bal.*,b.BannerName,b.BannerFullPath,b.BannerImgName, s.SiteName, sc.CateName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset(element('length',$arr_input), element('start',$arr_input))->getMakeLimitOffset();
         }

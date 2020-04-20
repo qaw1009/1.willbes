@@ -269,11 +269,19 @@ class StatsMemberModel extends BaseStatsModel
 
         $base_condition['BDT'] = ['a.base_date' => [$get_condition['search_start_date'], $get_condition['search_end_date']]];
 
+        /*
         $login_condition = array_merge_recursive($get_condition['comm_condition'],[
                 'BDT' => ['l.LoginDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
                 'EQ' => ['l.IsLogin' => 'Y'],
             ]
         );
+        */
+
+        /*속도 저하로 인해 위의 조건 제거 : 로그인 정보는 기간에만 조건 적용*/
+        $login_condition = [
+                'BDT' => ['l.LoginDatm' => [$get_condition['search_start_date'], $get_condition['search_end_date']]],
+                'EQ' => ['l.IsLogin' => 'Y'],
+        ];
 
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $login_where = $this->_conn->makeWhere($login_condition)->getMakeWhere(true);
@@ -292,17 +300,26 @@ class StatsMemberModel extends BaseStatsModel
                         left Join
                         (
                             SELECT 
+                                straight_join
                                '. $login_date .' as result_date
                                 ,COUNT(*) AS login_count  
-                            FROM '. $this->_table['member'] .' AS m
-                                    JOIN '. $this->_table['member_other'] .' AS mo ON m.MemIdx = mo.MemIdx
-                                    JOIN '. $this->_table['member_login'] .' AS l ON m.MemIdx = l.MemIdx 
+                            FROM '. $this->_table['member_login'] .' AS l  
                             WHERE 1=1
                                 '. $login_where .'
                             GROUP BY result_date
                         ) temp_login on temp_date.base_date = temp_login.result_date
                    ';
-
+                    /*
+                        SELECT
+                               '. $login_date .' as result_date
+                                ,COUNT(*) AS login_count
+                            FROM '. $this->_table['member'] .' AS m
+                                    JOIN '. $this->_table['member_other'] .' AS mo ON m.MemIdx = mo.MemIdx
+                                    JOIN '. $this->_table['member_login'] .' AS l ON m.MemIdx = l.MemIdx
+                            WHERE 1=1
+                                '. $login_where .'
+                            GROUP BY result_date
+                    */
         $order_by = ' order by base_date asc';
 
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();

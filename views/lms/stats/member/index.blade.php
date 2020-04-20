@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 form-inline">
-                    <strong>[로그인현황]</strong>
+                    <strong>[로그인현황 - 다량의 데이터로 인해 검색기간만 조건적용]</strong>
                     <div class="x_content">
                         <table id="list_login_table" class="table table-striped table-bordered">
                             <thead>
@@ -192,7 +192,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6 form-inline">
+                <div class="col-md-3 form-inline">
                     <strong>[성별]</strong>
                     <div class="x_content">
                         <table id="list_sex_table" class="table table-striped table-bordered">
@@ -209,11 +209,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <p></p>
-                <div class="col-md-6 form-inline">
+                <div class="col-md-3 form-inline">
                     <strong>[관심분야]</strong>
                     <div class="x_content">
                         <table id="list_interest_table" class="table table-striped table-bordered">
@@ -229,6 +225,25 @@
                     </div>
                 </div>
             </div>
+
+            <!--<div class="form-group">
+                <p></p>
+                <div class="col-md-3 form-inline">
+                    <strong>[관심분야]</strong>
+                    <div class="x_content">
+                        <table id="list_interest_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th width="150">관심항목</th>
+                                <th width="100">선택수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>//-->
         </div>
     </div>
     <script type="text/javascript">
@@ -465,7 +480,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '로그인 현황'
+                            text: '로그인 현황 - 다량의 데이터로 인해 검색기간만 조건적용'
                         },
                         tooltips: {
                             mode: 'index',
@@ -755,4 +770,5 @@
         datatableExe();
     });
     </script>
+
 @stop

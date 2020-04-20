@@ -104,7 +104,7 @@
 .mainV2 .Area3 .dDayBox a {
     display: block;
     border-right: 1px solid #e2e2e2;    
-    padding: 20px 0 20px 30px;
+    padding: 20px 0 20px 20px;
     cursor: default;  
     }
 .mainV2 .Area3 .dDayBox:nth-child(1),
@@ -126,13 +126,16 @@
 .mainV2 .Area3 .dDay {
     font-size: 27px;
     font-weight: 600;
-    padding: 0 15px 0 25px;
+    padding: 0 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    float: right;
 }
 .mainV2 .Area3 .line {
     background: #e2e2e2;
     text-indent: -9999px;
 }
+.mainV2 .Area3 .dDayBox:after,
 .mainV2 .Area3 .sliderDayList li:after {content: ""; display: block; clear:both}
 
 

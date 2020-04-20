@@ -6176,14 +6176,14 @@ table.finTable .row-line {
 }
 
 /* subContainer : Prof : newLec */
-.willbes-reply {width: 100%;}
+
 .willbes-reply .List-Table li img {
-    /*float: left;*/
-    margin: 13px 20px 13px 0;
+    float: left;
+    margin: 13px 0;
 }
 .willbes-reply .List-Table li a {
-    /*float: right;
-    width: 360px;*/
+    float: right;
+    width: 360px;
 }
 
 /* subContainer : Prof : willbes-Prof-Subject */

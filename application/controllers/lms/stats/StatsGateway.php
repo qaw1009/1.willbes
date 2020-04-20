@@ -21,10 +21,10 @@ class StatsGateway extends BaseStats
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $count = $this->statsBannerModel->getBannerHistotyList(true, $arr_input);
+        $count = $this->statsGatewayModel->getGatewayHistoryList(true, $arr_input);
 
         if($count > 0) {
-            $list = $this->statsBannerModel->getBannerHistotyList(false, $arr_input);
+            $list = $this->statsGatewayModel->getGatewayHistoryList(false, $arr_input);
         }
 
         return $this->response([

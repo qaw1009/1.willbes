@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- Data Analysis [배너]</h5>
+    <h5>- Data Laboratory[배너]</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -41,6 +41,7 @@
                         &nbsp;
                         <input type="radio" class="form-control flat" name="search_date_type" value="%Y" /> 년
                         &nbsp;
+                        * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
                 <div class="form-group">
@@ -67,8 +68,8 @@
     </form>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>Chart</strong></a></li>
-        <li role="presentation"><a role="tab" href="#data_view"><strong>Data</strong></a></li>
+        <li class="active" role="presentation" ><a role="tab" href="#chart_view" name="chart_view"><strong>차트보기</strong></a></li>
+        <li role="presentation"><a role="tab" href="#data_view"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">
@@ -142,8 +143,8 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
+                                <th style="text-align: center;">총합</th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>
@@ -163,8 +164,8 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td style="text-align: center;">총합</td>
-                                <td></td>
+                                <th style="text-align: center;">총합</th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>
@@ -222,7 +223,6 @@
                                 <th width="120">사이트</th>
                                 <th width="150">분류</th>
                                 <th >배너명</th>
-                                <!--th width="120">배너정보</th-->
                                 <th width="120">플랫폼</th>
                                 <th width="90">사용자IP</th>
                                 <th width="120">일자</th>
@@ -234,11 +234,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <script src="/public/vendor/jqcloud/jqcloud-1.0.4.js"></script>
-    <link rel="stylesheet" type="text/css" href="/public/vendor/jqcloud/jqcloud.css" />
+
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');

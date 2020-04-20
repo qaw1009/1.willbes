@@ -355,8 +355,17 @@
                         생각했습니다.<br>
                         솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
                         일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
-                    </div>           
-                </div>                
+                    </div>
+                </div>
+
+                @if(empty($data['ProdCode']) === false)
+                    <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                    @include('willbes.pc.site.lecture.iframe_reply_partial')
+                    <div class="TopBtn">
+                        <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                    </div>
+                @endif
+
             </div>
 
             {{-- 상품바로결제 정보 --}}

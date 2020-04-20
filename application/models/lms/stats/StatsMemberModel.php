@@ -316,6 +316,9 @@ class StatsMemberModel extends BaseStatsModel
         $set_condition['search_start_date'] =  empty(element('search_start_date', $arr_input)) ? date('Y-m-d', strtotime($set_condition['search_end_date'] . ' -1 months')) : $arr_input['search_start_date'];
         $set_condition['search_date_type'] = empty(element('search_date_type', $arr_input)) ? '%Y-%m-%d' : $arr_input['search_date_type'];
 
+        $date_diff = $this->_setDateDiffCheck($arr_input);
+        $date_diff !== null ? $set_condition['search_date_type'] = $date_diff : null;
+
         $set_condition['comm_condition'] = [
             'EQ' => [
                 'm.Sex' => element('search_sex', $arr_input),

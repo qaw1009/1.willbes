@@ -1476,8 +1476,7 @@
                                         <div id="offlist1" class="tabContent">
                                             <div class="ListTabs">
                                                 <ul>
-                                                    <li><a class="on" href="#none">전체</a><span class="row-line">|</span></li>
-                                                    <li><a href="#none">노량진</a><span class="row-line">|</span></li>
+                                                    <li><a class="on" href="#none">노량진</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">부산</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">대구</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">인천</a><span class="row-line">|</span></li>
@@ -1716,7 +1715,6 @@
                                         <div id="offlist2" class="tabContent">
                                             <div class="ListTabs">
                                                 <ul>
-                                                    <li><a href="#none">전체</a><span class="row-line">|</span></li>
                                                     <li><a class="on" href="#none">노량진</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">부산</a><span class="row-line">|</span></li>
                                                     <li><a href="#none">대구</a><span class="row-line">|</span></li>

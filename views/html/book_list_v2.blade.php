@@ -249,6 +249,7 @@
                 </table>
                 <!-- lecTable -->
             </div>
+
             <!-- willbes-Lec-Table -->
             <div class="willbes-Lec-Table">        
                 <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -379,10 +380,6 @@
                 <!-- lecTable -->
             </div>
             <!-- willbes-Lec-Table -->
-
-
-
-
         </div>
         <!-- willbes-Lec -->
 

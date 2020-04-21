@@ -531,17 +531,21 @@
                                     <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을...</a></li>                                    
                                     <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a></li>                                    
                                     <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을...</a></li>
+                                    <li class="tx-center widthAutoFull">무료강좌가 업습니다.</li>
                                 </ul>
                             </div>
 
                             <div class="willbes-listTable willbes-reply2 widthAuto940 mt30">
                                 <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'),openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
-                                <ul class="List-Table w50 tx-gray">
+                                
+                                <ul class="List-Table w50 tx-gray">                                                                   
                                     <li><a href="#none"><img src="{{ img_url('sub/star4.gif') }}" alt="별점">설명도 잘 해주시고 좋은 강의에요</a></li>
                                     <li><a href="#none"><img src="{{ img_url('sub/star5.gif') }}" alt="별점">짱 좋아요!</a></li>
                                     <li><a href="#none"><img src="{{ img_url('sub/star2.gif') }}" alt="별점">설명도 잘 해주시고 좋은 강의에요</a></li>                                    
                                     <li><a href="#none"><img src="{{ img_url('sub/star3.gif') }}" alt="별점">짱 좋아요!</a></li>
+                                    <li class="tx-center widthAutoFull">수강 후기가 업습니다.</li>
                                 </ul>
+                                
                             </div>
 
                             <!-- willbes-Layer-ReplyBox -->

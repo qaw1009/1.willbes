@@ -99,7 +99,7 @@ class PointStatModel extends WB_Model
         $column = 'U.BaseYm, U.SaveReason, sum(U.SumSavePoint) as SumSavePoint, sum(U.SumUsePoint) as SumUsePoint';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        // 적립포인트 공통쿼리
+        // 적립포인트 공통쿼리 (결제포인트, 회원가입 적립포인트만 조회 => 전체 적립포인트 조회)
         $save_from = /** @lang text */ '
             select PS.PointIdx, PS.SiteCode, PS.SavePoint, left(PS.SaveDatm, 7) as SaveYm
                 , (select case PS.EtcReason
@@ -126,7 +126,7 @@ class PointStatModel extends WB_Model
                     on OP.ProdCode = P.ProdCode
             where PS.SaveDatm between ? and ?
                 and PS.SaveDatm >= "' . $base_intg_datm . '"
-                and PS.ReasonCcd in ("680001", "680006")
+                #and PS.ReasonCcd in ("680001", "680006")
                 and PS.PointType = "book"            
         ';
 

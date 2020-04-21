@@ -35,6 +35,10 @@ class SupportProfMaterial extends BaseSupport
         $get_params .= '&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         $list = [];
         $arr_condition = [
             'EQ' => [
@@ -93,8 +97,8 @@ class SupportProfMaterial extends BaseSupport
         $get_params .= '&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
-        if (empty($board_idx)) {
-            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        if ($this->_validationData([$prof_idx, $board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $arr_condition = [

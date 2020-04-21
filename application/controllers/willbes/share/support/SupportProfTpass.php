@@ -41,6 +41,10 @@ class SupportProfTpass extends BaseSupport
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_page_params .= '&view_type='.$view_type;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         $arr_condition_pkg = [
             'IN' => [
                 'LearnPatternCcd' => ['615003','615004']    //운영자,기간제 패키지
@@ -133,8 +137,8 @@ class SupportProfTpass extends BaseSupport
         $get_params .= '&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
-        if (empty($board_idx)) {
-            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        if ($this->_validationData([$prof_idx, $board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $arr_condition_pkg = [

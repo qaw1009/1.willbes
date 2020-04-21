@@ -31,6 +31,7 @@ class ProdStatus extends \app\controllers\BaseController
         $search_end_date = $this->_reqP('search_end_date');
         $count = 0;
         $list = [];
+        $sum_data = null;
 
         // 상품코드, 조회기간이 있을 경우만 조회
         if (empty($search_prod_code) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
@@ -38,13 +39,18 @@ class ProdStatus extends \app\controllers\BaseController
             $arr_condition = $this->_getListConditions();
 
             $list = $this->pointStatModel->listStatSaveUsePointByProdCode($arr_prod_code, $search_start_date, $search_end_date, $arr_condition);
-            $count = count($list);
+
+            if (empty($list) === false) {
+                $count = count($list);
+                $sum_data = $this->_getTotalSum($list);
+            }
         }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+            'sum_data' => $sum_data
         ]);
     }
 
@@ -93,5 +99,20 @@ class ProdStatus extends \app\controllers\BaseController
         ];
 
         return $arr_condition;
+    }
+
+    /**
+     * 상품별현황 결과값 합계
+     * @param $data
+     * @return mixed
+     */
+    private function _getTotalSum($data)
+    {
+        $sum_data['tSumSavePoint'] = array_sum(array_pluck($data, 'SumSavePoint'));
+        $sum_data['tSumSaveCnt'] = array_sum(array_pluck($data, 'SumSaveCnt'));
+        $sum_data['tSumUsePoint'] = array_sum(array_pluck($data, 'SumUsePoint'));
+        $sum_data['tSumUseCnt'] = array_sum(array_pluck($data, 'SumUseCnt'));
+
+        return $sum_data;
     }
 }

@@ -37,6 +37,10 @@ class SupportProfTcc extends  BaseSupport
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_page_params .= '&view_type='.$view_type;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx

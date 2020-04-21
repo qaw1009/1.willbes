@@ -140,7 +140,7 @@ class StatsBannerModel extends BaseStatsModel
         $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);
 
         $column = ' Straight_join
-                        if(left(bal.UserPlatform,7)=\'Unknown\',\'기타\', if(left(bal.UserPlatform,7)=\'\',\'검색엔진\', left(bal.UserPlatform,7))) AS user_platform
+                        if(left(bal.UserPlatform,7)=\'Unknown\',\'검색엔진/크롤러\', if(left(bal.UserPlatform,7)=\'\',\'기타\', left(bal.UserPlatform,7))) AS user_platform
                         ,COUNT(*) AS click_count
                        ';
 

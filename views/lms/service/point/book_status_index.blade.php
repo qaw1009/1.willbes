@@ -74,6 +74,7 @@
                     <th colspan="2">회원가입</th>
                     <th colspan="2">교재</th>
                     <th colspan="2">강의</th>
+                    <th colspan="2">기타</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>적립합계</th>
@@ -82,6 +83,19 @@
                     <th>사용합계</th>
                     <th>적립합계</th>
                     <th>사용합계</th>
+                    <th>적립합계</th>
+                    <th>사용합계</th>
+                </tr>
+                <tr class="bg-info">
+                    <th colspan="2" class="text-center">합계</th>
+                    <th id="t_join_save_point" class="sumTh"></th>
+                    <th id="t_join_use_point" class="sumTh"></th>
+                    <th id="t_book_save_point" class="sumTh"></th>
+                    <th id="t_book_use_point" class="sumTh"></th>
+                    <th id="t_lecture_save_point" class="sumTh"></th>
+                    <th id="t_lecture_use_point" class="sumTh"></th>
+                    <th id="t_etc_save_point" class="sumTh"></th>
+                    <th id="t_etc_use_point" class="sumTh"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -145,8 +159,30 @@
                     }},
                     {'data' : 'LectureUsePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
+                    }},
+                    {'data' : 'EtcSavePoint', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'EtcUsePoint', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
                     }}
                 ]
+            });
+
+            // 조회된 기간의 합계금액 표시 (datatable load event)
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                if (json.sum_data !== null) {
+                    $('#t_join_save_point').html(addComma(json.sum_data.tJoinSavePoint));
+                    $('#t_join_use_point').html(addComma(json.sum_data.tJoinUsePoint));
+                    $('#t_book_save_point').html(addComma(json.sum_data.tBookSavePoint));
+                    $('#t_book_use_point').html(addComma(json.sum_data.tBookUsePoint));
+                    $('#t_lecture_save_point').html(addComma(json.sum_data.tLectureSavePoint));
+                    $('#t_lecture_use_point').html(addComma(json.sum_data.tLectureUsePoint));
+                    $('#t_etc_save_point').html(addComma(json.sum_data.tEtcSavePoint));
+                    $('#t_etc_use_point').html(addComma(json.sum_data.tEtcUsePoint));
+                } else {
+                    $('#list_ajax_table thead tr th.sumTh').text('');
+                }
             });
 
             // 엑셀다운로드 버튼 클릭

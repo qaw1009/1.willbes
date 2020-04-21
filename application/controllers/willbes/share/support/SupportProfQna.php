@@ -50,6 +50,10 @@ class SupportProfQna extends BaseSupport
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
 
@@ -167,6 +171,10 @@ class SupportProfQna extends BaseSupport
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
         unset($arr_base['site_list'][config_item('app_intg_site_code')]);
@@ -272,8 +280,8 @@ class SupportProfQna extends BaseSupport
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
 
-        if (empty($board_idx)) {
-            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        if ($this->_validationData([$prof_idx, $board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $arr_condition = [
@@ -437,8 +445,11 @@ class SupportProfQna extends BaseSupport
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
 
-        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, '');
+        if ($this->_validationData([$board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
 
+        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, '');
         if (empty($result['ret_status']) === false) {
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
@@ -448,6 +459,7 @@ class SupportProfQna extends BaseSupport
 
     /**
      * 저장 데이터 셋팅
+     * @param $site_code
      * @param $input
      * @param $method
      * @return array

@@ -37,6 +37,10 @@ class SupportProfNotice extends BaseSupport
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_page_params .= '&view_type='.$view_type;
 
+        if ($this->_validationData([$prof_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
         //카테고리목록
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
@@ -106,8 +110,8 @@ class SupportProfNotice extends BaseSupport
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
-        if (empty($board_idx)) {
-            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        if ($this->_validationData([$prof_idx, $board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
         #-------------------------------- 게시글 조회

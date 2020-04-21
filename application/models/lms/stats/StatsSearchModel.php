@@ -139,8 +139,8 @@ class StatsSearchModel extends BaseStatsModel
         $search_where = $this->_conn->makeWhere($search_condition)->getMakeWhere(true);
 
         $column = '
-                        if(left(sl.UserPlatform,7)=\'Unknown\',\'기타\', if(left(sl.UserPlatform,7)=\'\',\'검색엔진\', left(sl.UserPlatform,7))) AS user_platform
-                        #if(sl.UserPlatform =\'Unknown Platform\',\'기타\', if(sl.UserPlatform =\'\',\'검색엔진\', sl.UserPlatform)) AS user_platform
+                        if(left(sl.UserPlatform,7)=\'Unknown\',\'검색엔진/크롤러\', if(left(sl.UserPlatform,7)=\'\',\'기타\', left(sl.UserPlatform,7))) AS user_platform
+                        #if(sl.UserPlatform =\'Unknown Platform\',\'검색엔진/크롤러\', if(sl.UserPlatform =\'\',\'기타\', sl.UserPlatform)) AS user_platform
                         ,COUNT(*) AS search_count
                         ,sum(ResultCount) as search_result_sum
                        ';

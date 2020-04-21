@@ -48,4 +48,23 @@ class BaseSupport extends \app\controllers\FrontController
         }
         return $tmp_images . $content;
     }
+
+    /**
+     * 게시판 필수데이터 체크
+     * @param array $arr_chk_data
+     * @return array|bool
+     */
+    protected function _validationData($arr_chk_data = [])
+    {
+        try {
+            foreach ($arr_chk_data as $key => $val) {
+                if (empty($val) === true) {
+                    throw new \Exception('false');
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
 }

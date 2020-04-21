@@ -37,10 +37,10 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label col-md-1-1 mt-5">
+    <label class="control-label col-md-1 mt-5">
         라이브송출관리
     </label>
-    <div class="col-md-10">
+    <div class="col-md-11">
         <div class="col-md-10 mb-10">
             <div class="radio">
                 <input type="radio" id="promotion_live_type_y" name="promotion_live_type" class="flat" value="Y" required="required" title="사용여부" @if($data['PromotionLiveType']=='Y')checked="checked"@endif/> <label for="promotion_live_type_y" class="input-label">사용</label>
@@ -128,13 +128,13 @@
                         <th>제목</th>
                         <th>자동실행</th>
                         <th>비율</th>
-                        <th>송출일자</th>
+                        <th style="min-width: 120px;">송출일자</th>
                         <th>시작시간</th>
                         <th>종료시간</th>
                         <th>송출경로</th>
                         <th>첨부파일</th>
-                        <th>첨부파일 다운로드 가능 시작일시</th>
-                        <th>첨부파일 다운로드 가능 종료일시</th>
+                        <th style="min-width: 100px;">첨부파일 다운로드 가능 시작일시</th>
+                        <th style="min-width: 100px;">첨부파일 다운로드 가능 종료일시</th>
                         <th>사용유무</th>
                         <th>삭제</th>
                     </tr>

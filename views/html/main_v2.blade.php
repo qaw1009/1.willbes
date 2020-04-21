@@ -243,7 +243,7 @@
                     <div class="dDayBox">
                         <a href="#none">
                             <span class="dTit">
-                                2019 서울시
+                                2019 감정평가사 2차
                                 <div class="w-date">2019-00-00</div>
                             </span>
                             <span class="dDay tx-color">D-20</span>

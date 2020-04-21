@@ -29,6 +29,7 @@ class BookStatus extends \app\controllers\BaseController
         $arr_input = $this->_getSearchDateParam();
         $count = 0;
         $list = [];
+        $sum_data = null;
 
         // 조회날짜 파라미터가 모두 있을 경우만 조회
         if ($arr_input !== false) {
@@ -43,13 +44,15 @@ class BookStatus extends \app\controllers\BaseController
             if (empty($list) === false) {
                 $list = $this->_getListResults($list);
                 $count = count($list);
+                $sum_data = $this->_getTotalSum($list);
             }
         }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+            'sum_data' => $sum_data
         ]);
     }
 
@@ -66,7 +69,7 @@ class BookStatus extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['기간(년월)', '회원가입적립액', '회원가입사용액', '교재적립액', '교재사용액', '강의적립액', '강의사용액'];
+        $headers = ['기간(년월)', '회원가입적립액', '회원가입사용액', '교재적립액', '교재사용액', '강의적립액', '강의사용액', '기타적립액', '기타사용액'];
         $arr_condition = $this->_getListConditions();
         $list = $this->pointStatModel->listStatBookSaveUsePoint($arr_input['search_save_start_date'], $arr_input['search_save_end_date']
             , $arr_input['search_use_save_start_date'], $arr_input['search_use_save_end_date']
@@ -150,7 +153,7 @@ class BookStatus extends \app\controllers\BaseController
                     'JoinSavePoint' => '0', 'JoinUsePoint' => '0',
                     'BookSavePoint' => '0', 'BookUsePoint' => '0',
                     'LectureSavePoint' => '0', 'LectureUsePoint' => '0',
-                    //'EtcSavePoint' => '0', 'EtcUsePoint' => '0'
+                    'EtcSavePoint' => '0', 'EtcUsePoint' => '0'
                 ];
             }
 
@@ -162,5 +165,24 @@ class BookStatus extends \app\controllers\BaseController
         }
 
         return $results;
+    }
+
+    /**
+     * 교재포인트현황 결과값 합계
+     * @param $data
+     * @return mixed
+     */
+    private function _getTotalSum($data)
+    {
+        $sum_data['tJoinSavePoint'] = array_sum(array_pluck($data, 'JoinSavePoint'));
+        $sum_data['tJoinUsePoint'] = array_sum(array_pluck($data, 'JoinUsePoint'));
+        $sum_data['tBookSavePoint'] = array_sum(array_pluck($data, 'BookSavePoint'));
+        $sum_data['tBookUsePoint'] = array_sum(array_pluck($data, 'BookUsePoint'));
+        $sum_data['tLectureSavePoint'] = array_sum(array_pluck($data, 'LectureSavePoint'));
+        $sum_data['tLectureUsePoint'] = array_sum(array_pluck($data, 'LectureUsePoint'));
+        $sum_data['tEtcSavePoint'] = array_sum(array_pluck($data, 'EtcSavePoint'));
+        $sum_data['tEtcUsePoint'] = array_sum(array_pluck($data, 'EtcUsePoint'));
+
+        return $sum_data;
     }
 }

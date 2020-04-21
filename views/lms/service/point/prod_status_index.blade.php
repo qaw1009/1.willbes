@@ -63,6 +63,13 @@
                     <th>사용합계</th>
                     <th>사용건수</th>
                 </tr>
+                <tr class="bg-info">
+                    <th colspan="4" class="text-center">합계</th>
+                    <th id="t_sum_save_point" class="sumTh"></th>
+                    <th id="t_sum_save_cnt" class="sumTh"></th>
+                    <th id="t_sum_use_point" class="sumTh"></th>
+                    <th id="t_sum_use_cnt" class="sumTh"></th>
+                </tr>
                 </thead>
                 <tbody>
                 </tbody>
@@ -115,6 +122,18 @@
                         return addComma(data);
                     }}
                 ]
+            });
+
+            // 조회된 기간의 합계금액 표시 (datatable load event)
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                if (json.sum_data !== null) {
+                    $('#t_sum_save_point').html(addComma(json.sum_data.tSumSavePoint));
+                    $('#t_sum_save_cnt').html(addComma(json.sum_data.tSumSaveCnt));
+                    $('#t_sum_use_point').html(addComma(json.sum_data.tSumUsePoint));
+                    $('#t_sum_use_cnt').html(addComma(json.sum_data.tSumUseCnt));
+                } else {
+                    $('#list_ajax_table thead tr th.sumTh').text('');
+                }
             });
 
             // 엑셀다운로드 버튼 클릭

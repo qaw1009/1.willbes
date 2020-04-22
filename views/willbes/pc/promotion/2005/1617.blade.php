@@ -24,9 +24,9 @@
 
     .wb_top {background:#2C3C51 url(https://static.willbes.net/public/images/promotion/2020/04/1617_top_bg.jpg) no-repeat center top;}
 
-    .menuWarp {position:relative; width:1210px; height:1138px; margin:0 auto;position:relative;}
-    .PeMenu {width:1210px;position:absolute;bottom:0px; left:0px;}
-    .PeMenu li {display:inline; float:left; margin-right:10px}
+    .menuWarp {position:relative; width:1120px; height:1138px; margin:0 auto;position:relative;}
+    .PeMenu {width:1120px;position:absolute;bottom:0px; left:0px;}
+    .PeMenu li {display:inline; float:left; margin-right:8.8px}
     .PeMenu li:last-child {margin:0}
     .PeMenu li a{display:block; text-align:center}
     .PeMenu li img:hover {

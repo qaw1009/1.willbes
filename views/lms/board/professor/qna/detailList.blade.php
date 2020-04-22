@@ -233,7 +233,13 @@
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                            if(row.IsStatus == 'N'){
+                                return '삭제';
+                            } else if(data == 'Y') {
+                                return '사용';
+                            } else {
+                                return '<p class="red">미사용</p>';
+                            }
                         }},
 
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {

@@ -190,7 +190,7 @@ class ProfessorModel extends WB_Model
                     FROM (
                         SELECT ProfIdx
                         FROM ' . $this->_table['board'] . '
-                        WHERE BmIdx = "' . $bm_idx . '" AND ReplyStatusCcd = "' . $reply_status_ccd . '"
+                        WHERE BmIdx = "' . $bm_idx . '" AND ReplyStatusCcd = "' . $reply_status_ccd . '" AND IsStatus = \'Y\' AND IsUse = \'Y\'
                     ) AS tempC
                     GROUP BY tempC.ProfIdx
                 ) AS C ON P.ProfIdx = C.ProfIdx

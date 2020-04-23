@@ -1,8 +1,8 @@
 <div class="ListTabs">
     <ul>
-        <li><a href="#none" onclick="goUrl('course_idx', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a><span class="row-line">|</span></li>
+        <li><a href="#none" onclick="goOpenLectureUrl('course_idx', '', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a><span class="row-line">|</span></li>
         @foreach($tab_data['on_course'] as $idx => $row)
-            <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a><span class="row-line">|</span></li>
+            <li><a href="#none" onclick="goOpenLectureUrl('course_idx', '{{ $row['CourseIdx'] }}', '');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a><span class="row-line">|</span></li>
         @endforeach
     </ul>
 </div>
@@ -10,7 +10,7 @@
 <div class="willbes-Lec-Search p_re mt30">
     <div class="inputBox p_re">
         <div class="selectBox">
-            <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+            <select id="search_order" name="search_order" class="" onchange="goOpenLectureUrl('search_order', this.value, '');">
                 <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
                 <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
             </select>
@@ -19,9 +19,9 @@
         <div class="selectBox">
             <select id="search_keyword" name="search_keyword" title="직접입력" class="">
                 <option value="ProdName" @if($arr_search_text[0] == 'ProdName') selected="selected" @endif>강좌명</option>
-                <!--<option value="SubjectName" @if($arr_search_text[0] == 'SubjectName') selected="selected" @endif>과목명</option>
+                {{--<option value="SubjectName" @if($arr_search_text[0] == 'SubjectName') selected="selected" @endif>과목명</option>
                 <option value="ProfNickName" @if($arr_search_text[0] == 'ProfNickName') selected="selected" @endif>교수명</option>
-                <option value="CourseName" @if($arr_search_text[0] == 'CourseName') selected="selected" @endif>과정명</option>//-->
+                <option value="CourseName" @if($arr_search_text[0] == 'CourseName') selected="selected" @endif>과정명</option>--}}
             </select>
         </div>
         <input type="text" id="search_value" name="search_value" maxlength="30" value="{{ element('1', $arr_search_text) }}">

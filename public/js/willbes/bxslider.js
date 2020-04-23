@@ -119,6 +119,7 @@ $(function() {
         pause: 3000,
         pager: false,
         autoHover: true,
+        infiniteLoop: false,
         onSliderLoad: function(){
             $(".cSliderH").css("visibility", "visible").animate({opacity:1}); 
         }  

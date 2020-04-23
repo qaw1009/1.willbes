@@ -297,6 +297,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="prof_content">내용
+                    </label>
+                    <div class="col-md-9 item">
+                        <textarea id="prof_content" name="prof_content" class="form-control" rows="7" title="내용" placeholder="">{{ $data['ProfContent'] }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2">교수프로필
                     </label>
                     <div class="col-md-9">
@@ -428,6 +435,38 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2">교수영역 이벤트 배너2<br/>(188X206, jpg, png)
+                    </label>
+                    <div class="col-md-9">
+                        <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row">
+                                <div class="control-label col-md-2">배너 이미지{{$i}}
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="file" id="bnr_img_04_{{$i}}" name="bnr_img_04_{{$i}}" class="form-control" title="이벤트 배너 이미지2 - {{$i}}"/>
+                                </div>
+                                <div class="col-md-5 pl-0">
+                                    @if(empty($data['Bnr']['04'][$i]['BnrImgName']) === false)
+                                        <p class="form-control-static"><a href="{{ $data['Bnr']['04'][$i]['BnrImgPath'] . $data['Bnr']['04'][$i]['BnrImgName'] }}" rel="popup-image">{{ $data['Bnr']['04'][$i]['BnrImgName'] }}</a> <a href="#none" class="img-delete" data-img-type="bnr_img_04_{{$i}}"><i class="fa fa-times red"></i></a></p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="control-label col-md-2">링크 주소{{$i}}
+                                </div>
+                                <div class="col-md-10 mt-5">
+                                    <select class="form-control col-md-1 mr-5 mb-10" id="link_type_04_{{$i}}" name="link_type_04_{{$i}}" title="이벤트 배너 링크방식2 - {{$i}}">
+                                        <option value="self" @if(array_get($data['Bnr'], '04.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
+                                        <option value="blank" @if(array_get($data['Bnr'], '04.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                    </select>
+                                    <input type="text" id="link_url_04_{{$i}}" name="link_url_04_{{$i}}" value="{{ $data['Bnr']['04'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="이벤트 배너 링크 주소2 - {{$i}}">
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2">교수홈 띠 배너<br/>(940X91, jpg, png)
                     </label>
                     <div class="col-md-9">
@@ -527,12 +566,19 @@
             $editor_curriculum.inputForm = 'prof_curriculum';
             $editor_curriculum.run();
 
+            var $editor_content = new cheditor();
+            $editor_content.config.editorHeight = '170px';
+            $editor_content.config.editorWidth = '100%';
+            $editor_content.inputForm = 'prof_content';
+            $editor_content.run();
+
             // ajax submit
             $regi_form.submit(function() {
                 var _url = '{{ site_url('/product/base/professor/store') }}';
 
                 // editor
                 getEditorBodyContent($editor_curriculum);
+                getEditorBodyContent($editor_content);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

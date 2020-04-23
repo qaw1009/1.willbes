@@ -25,7 +25,7 @@
 
     @if($__cfg['IsPassSite'] === false)
     <div class="willbes-listTable widthAuto940 mt30">
-        <div class="will-Tit NG">교재구매 <a class="f_right" href="{{site_url('/book/index/cate/'.$def_cate_code)}}"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
+        <div class="will-Tit NG">교재구매 <a class="f_right" href="{{site_url('/book/index/cate/'.$def_cate_code.'?cate_code='.$def_cate_code.'&subject_idx='.element('subject_idx', $arr_input).'&prof_idx='.$prof_idx)}}"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <div class="willbes-Lec-Table bdb-none">
             <form id="regi_book_form" name="regi_book_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}

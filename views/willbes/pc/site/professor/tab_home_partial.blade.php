@@ -106,6 +106,12 @@
                                 </div>
                             </td>
                         @endforeach
+
+                        {{-- 교재건수가 홀수일 경우 빈 td 추가 --}}
+                        @if(count($tab_data['book']) % 2 == 1)
+                            <td></td>
+                            <td></td>
+                        @endif
                         </tr>
                     @endif
                     </tbody>

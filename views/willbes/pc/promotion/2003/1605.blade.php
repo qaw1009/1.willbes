@@ -21,14 +21,20 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
 
         /************************************************************/
+        .sky{position:fixed;top:250px;right:10px;z-index:1;}
         .wb_top {background:#f767a4 url(https://static.willbes.net/public/images/promotion/2020/04/1605_top_bg.jpg) no-repeat top;}   
         .wb_youtube {position:relative;}
-        .wb_youtube iframe {width:880px; height:495px;position:absolute;left:50%;margin-left:-440px;bottom:172px;}  
-
+        .wb_youtube iframe {width:880px; height:495px;position:absolute;left:50%;margin-left:-440px;bottom:172px;}
 
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
+        <div class="sky">
+            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/164242" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1605_sky.png" alt="스카이베너">       
+            </a>
+        </div> 
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1605_top.jpg"  alt="이섬가 영어" />            

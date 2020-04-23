@@ -50,8 +50,8 @@ class ProfessorFModel extends WB_Model
                 $add_column = ',' . implode(',', $arr_make_column);
             }
 
-            $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent
-                , Pf.AppellationCcd ,Pf.IsOpenStudyComment 
+            $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.ProfContent
+                , PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent, Pf.AppellationCcd, Pf.IsOpenStudyComment 
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard

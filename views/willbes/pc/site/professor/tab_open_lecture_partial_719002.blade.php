@@ -2,9 +2,9 @@
     <div class="curriWrap c_both">
         <ul class="curriTabs c_both">
             @if(empty($tab_data['setting_series']) != true)
-                <li><a href="#none" onclick="goUrl('series', 'all');" class="@if(element('series', $arr_input) == 'all') on @endif">전체</a></li>
+                <li><a href="#none" onclick="goOpenLectureUrl('series', 'all', '');" class="@if(element('series', $arr_input) == 'all') on @endif">전체</a></li>
                 @foreach($tab_data['setting_series'] as $idx => $row)
-                    <li><a href="#none" onclick="goUrl('series', '{{ $row['ChildCcd'] }}');" class="@if(element('series', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['CcdName'] }}</a></li>
+                    <li><a href="#none" onclick="goOpenLectureUrl('series', '{{ $row['ChildCcd'] }}', '');" class="@if(element('series', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['CcdName'] }}</a></li>
                 @endforeach
             @endif
         </ul>

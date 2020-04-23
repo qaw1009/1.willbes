@@ -18,13 +18,12 @@
         {{-- 온라인사이트만 노출 --}}
         <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-            <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
-                <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
+            <div class="willbes-listTable willbes-newLec widthAuto460">
+                <div class="will-Tit NG">BEST 강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_best_reply.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     @foreach($arr_base['product'] as $idx => $row)
                         <li>
-                            <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
-                            <!--span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span//-->
+                            <a href="{{ front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
                         </li>
                     @endforeach
                 </ul>

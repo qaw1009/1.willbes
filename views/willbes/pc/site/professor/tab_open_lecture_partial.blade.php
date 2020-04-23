@@ -1,10 +1,15 @@
 <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 개설강좌</div>
 <div class="acadBoxWrap">
     <ul class="tabWrap tabDepthAcad">
+    @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트일 경우만 노출 --}}
         <li><a href="#acad1" class="on">온라인강좌</a></li>
+    @endif
         <li><a href="#acad2">학원강좌</a></li>
     </ul>
     <div class="AcadtabBox">
+    @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트일 경우만 노출 --}}
         <div id="acad1" class="tabContent">
             <div class="tabGrid">
                 <ul class="tabWrap acadline three">
@@ -157,6 +162,7 @@
             </div>
         </div>
         <!-- 온라인강좌 -->
+    @endif
 
         <div id="acad2" class="tabContent">
             <div class="tabGrid">
@@ -173,6 +179,17 @@
                         <input type="hidden" name="learn_pattern" value="off_lecture"/>  {{-- 학습형태 --}}
                         <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                         <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+
+                        <div class="ListTabs">
+                            <ul>
+                                @foreach($tab_data['off_campus'] as $key => $val)
+                                    <li>
+                                        <a href="#none" onclick="goOpenLectureUrl('campus_ccd', '{{ $key }}', 'off_only_lecture');" class="@if(element('campus_ccd', $arr_input) == $key) on @endif">{{ $val }}</a>
+                                        <span class="row-line">|</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
 
                         <div class="willbes-Lec NG c_both mt20">
                             <div class="willbes-Lec-Subject tx-dark-black">단과<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
@@ -311,6 +328,17 @@
                     @include('willbes.pc.site.off_lecture.only_footer_partial')
                 </div>
                 <div id="off_pack_normal" class="tabContent">
+                    <div class="ListTabs">
+                        <ul>
+                            @foreach($tab_data['off_campus'] as $key => $val)
+                                <li>
+                                    <a href="#none" onclick="goOpenLectureUrl('campus_ccd', '{{ $key }}', 'off_pack_normal');" class="@if(element('campus_ccd', $arr_input) == $key) on @endif">{{ $val }}</a>
+                                    <span class="row-line">|</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                     <div class="willbes-Lec NG c_both mt20">
                         <div class="willbes-Lec-Subject tx-dark-black">종합반</div>
                         <!-- willbes-Lec-Subject -->
@@ -385,11 +413,26 @@
                 goSearch();
             }
         });
+
         $('#btn_search').on('click', function() {
             goSearch();
         });
+
         var goSearch = function() {
-            goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
+            goOpenLectureUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value), '');
         };
     });
+
+    // 개설강좌 하위 조회 조건 클릭 (학원강좌만)
+    function goOpenLectureUrl(key, val, stab) {
+        var form = $('#url_form');
+
+        // 선택된 탭 필드 추가
+        form.find('input[name="stab"]').remove();
+        if (stab.length > 0) {
+            form.append('<input type="hidden" name="stab" value="' + stab + '"/>');
+        }
+
+        goUrl(key, val);
+    }
 </script>

@@ -135,7 +135,7 @@
                                             <ul class="w-sp">
                                                 <li><a href="#none" onclick="openWin('best_lec_sample_{{ $row['ProdCode'] }}'); return false;">맛보기</a></li>
                                             </ul>
-                                            <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
+                                            <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: -25px;">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('best_lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                 @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                     <dl class="NGR">

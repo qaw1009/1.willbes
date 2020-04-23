@@ -588,6 +588,22 @@ function queryStringToJson(qs) {
 }
 
 /**
+ * preserved_name을 제외하고 form input 제거
+ * @param selector
+ * @param preserved_name
+ */
+function removeFormInput(selector, preserved_name) {
+    var form = $(selector);
+    var arr_preserved_name = preserved_name.split(',');
+
+    $.each(form.find('input'), function(index, item) {
+        if (arr_preserved_name.indexOf($(this).prop('name')) < 0) {
+            $(this).remove();
+        }
+    });
+}
+
+/**
  * replace modal (modal 내용 변경)
  * @param url
  * @param data

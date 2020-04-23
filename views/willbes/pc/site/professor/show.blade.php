@@ -15,7 +15,7 @@
         <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
-    <div class="Content p_re ml20">
+    <div class="Content p_re ml20 NG">
         <form id="url_form" name="url_form" method="GET">
             @foreach($arr_input as $key => $val)
                 <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
@@ -23,6 +23,16 @@
         </form>
         <!-- willbes-Prof-Profile -->
         <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
+            @if(isset($data['ProfBnrData']['04']) === true && empty($data['ProfBnrData']['04']) === false)
+                {{-- 교수영역 이벤트 배너2 --}}
+                <div class="bSlider layerPopProf">
+                    <div class="slider">
+                        @foreach($data['ProfBnrData']['04'] as $bnr_num => $bnr_row)
+                            <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
             <div class="ProfImg p_re">
                 <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['ProfNickName'] }}">
             </div>
@@ -64,6 +74,7 @@
                         @endif
                     </li>
                     @if(isset($data['ProfBnrData']['01']) === true && empty($data['ProfBnrData']['01']) === false)
+                        {{-- 교수영역 이벤트 배너 --}}
                         <li class="bSlider">
                             <div class="slider">
                                 @foreach($data['ProfBnrData']['01'] as $bnr_num => $bnr_row)
@@ -124,7 +135,7 @@
                                             <ul class="w-sp">
                                                 <li><a href="#none" onclick="openWin('best_lec_sample_{{ $row['ProdCode'] }}'); return false;">맛보기</a></li>
                                             </ul>
-                                            <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
+                                            <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: -25px; left: 128px;">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('best_lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                 @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                     <dl class="NGR">
@@ -181,15 +192,15 @@
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
-                    <li><a href="#none" id="hover_home" onclick="goUrl('tab', 'home');">{{$data['AppellationCcdName']}} 홈</a></li>
-                    <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
-                    <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>
-                    @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>@endif
-                    @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif
-                    @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goUrl('tab', 'material');">학습자료실</a></li>@endif
-                    @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
-                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goUrl('tab', 'tcc');">{{$data['AppellationCcdName']}} TCC</a></li>@endif
-                    @if($data['IsAnonymousBoard'] == 'Y')<li><a href="#none" id="hover_anonymous" onclick="goUrl('tab', 'anonymous');">자유게시판</a></li>@endif
+                    <li><a href="#none" id="hover_home" onclick="goTabUrl('tab', 'home');">{{$data['AppellationCcdName']}} 홈</a></li>
+                    <li><a href="#none" id="hover_open_lecture" onclick="goTabUrl('tab', 'open_lecture');">개설강좌</a></li>
+                    <li><a href="#none" id="hover_free_lecture" onclick="goTabUrl('tab', 'free_lecture');">무료강좌</a></li>
+                    @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goTabUrl('tab', 'notice');">공지사항</a></li>@endif
+                    @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goTabUrl('tab', 'qna');">학습Q&A</a></li>@endif
+                    @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goTabUrl('tab', 'material');">학습자료실</a></li>@endif
+                    @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goTabUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
+                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goTabUrl('tab', 'tcc');">{{$data['AppellationCcdName']}} TCC</a></li>@endif
+                    @if($data['IsAnonymousBoard'] == 'Y')<li><a href="#none" id="hover_anonymous" onclick="goTabUrl('tab', 'anonymous');">자유게시판</a></li>@endif
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">
@@ -221,14 +232,16 @@
                 $('.acadBoxWrap #acad1 .tabWrap.acadline li:eq(0) a').addClass('on');
                 $('.acadBoxWrap #acad2 .tabWrap.acadline li:eq(0) a').addClass('on');
 
-                @if($__cfg['IsPassSite'] === true)
-                    {{-- 학원사이트일 경우 학원강좌 탭 디폴트 --}}
-                    $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(1) a').trigger('click');
+                // 하위 탭 active 처리
+                @if(empty($arr_input['stab']) === false)
+                    var lec_tab = '{{ starts_with($arr_input['stab'], 'on_') === true ? 'acad1' : 'acad2' }}';
+                    $('.acadBoxWrap .tabWrap.tabDepthAcad li').find('a[href="#' + lec_tab + '"]').trigger('click');
+                    $('.acadBoxWrap #' + lec_tab + ' .tabWrap.acadline li').find('a[href="#{{$arr_input['stab']}}"]').trigger('click');
                 @endif
             @endif
         });
 
-        //수강후기 레이어팝업
+        // 수강후기 레이어팝업
         $('.btn-study').click(function () {
             var ele_id = 'WrapReply';
             var data = {
@@ -244,5 +257,11 @@
             }, showAlertError, false, 'GET', 'html');
         });
     });
+
+    // 메인 탭 클릭
+    function goTabUrl(key, val) {
+        removeFormInput('#url_form', 'cate_code,subject_idx,subject_name,tab');
+        goUrl(key, val);
+    }
 </script>
 @stop

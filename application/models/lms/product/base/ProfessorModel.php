@@ -21,7 +21,7 @@ class ProfessorModel extends WB_Model
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url', 'yt_url'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img']
     ];
-    private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3];     // 배너타입별 이미지 갯수
+    private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3, '04' => 3];     // 배너타입별 이미지 갯수
     private $_ccd = ['LearnPattern' => '615', 'ProdType' => '636'];
     public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88', 'tcc' => '101', 'anonymous' => '111'];
 
@@ -453,7 +453,7 @@ class ProfessorModel extends WB_Model
     public function findProfessorForModify($prof_idx)
     {
         $column = '
-            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.ProfContent, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , P.AppellationCcd ,P.IsOpenStudyComment
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
@@ -498,6 +498,7 @@ class ProfessorModel extends WB_Model
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
+                'ProfContent' => element('prof_content', $input),
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
@@ -579,6 +580,7 @@ class ProfessorModel extends WB_Model
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
+                'ProfContent' => element('prof_content', $input),
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),

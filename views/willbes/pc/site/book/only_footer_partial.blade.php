@@ -14,7 +14,7 @@
 </div>
 
 <!-- willbes-Lec-buyBtn-sm -->
-<script src="/public/js/willbes/product_util.js"></script>
+<script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_book_form');
     var $buy_continue_layer = $('#buy_continue_layer');
@@ -28,9 +28,10 @@
             $regi_form.find('input:checkbox[name="prod_code[]"]:input[data-prod-code="'+$prod_code+'"]').prop('checked', true);
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
+            var $dt_type = $(this).data('layer-dt-type') || '';   // 장바구니 레이어 상세구분 값
             var $result = cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
             if ($is_redirect === 'N' && $result === true) {
-                showContinueLayer('book', '', $(this), 'buy_continue_layer');
+                showContinueLayer('book', $dt_type, $(this), 'buy_continue_layer');
             }
         });
 
@@ -47,7 +48,7 @@
         // 교재로 진행중인 강의 버튼 클릭
         $regi_form.on('click', '.bookLecBtn > a', function() {
             var prod_code = $(this).data('prod-code');
-            var cate_code = '{{ element('cate_code', $arr_input, '') }}';
+            var cate_code = '{{ element('cate_code', $arr_input, element('CateCode', $__cfg, '')) }}';
             var ele_id = 'bookLec_' + prod_code;
             var lec_selector = $('#' + ele_id).find('.LeclistTable ul');
 

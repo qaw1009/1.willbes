@@ -316,9 +316,9 @@
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
                                         <colgroup>
                                             <col style="width:150px;">
-                                            <col>
+                                            <col style="width:320px;">
                                             <col style="width:150px;">
-                                            <col>
+                                            <col style="width:320px;">
                                         </colgroup>
                                         <tbody>
                                             <tr>
@@ -418,6 +418,7 @@
                                                     </div>                                
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
                                                 <td class="w-list">
                                                     <div class="bookImg">

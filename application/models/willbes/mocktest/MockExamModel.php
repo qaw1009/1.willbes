@@ -322,7 +322,8 @@ class MockExamModel extends WB_Model
 
         $column = "
             (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
-            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS fileQ,
+            #IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS fileQ,
+            MP.RealQuestionFile AS fileQ,
             MP.RealExplanFile AS fileA,
             MP.FilePath AS PFilePath,
             MP.MpIdx  

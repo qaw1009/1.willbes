@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .sky_bottom{position: fixed; bottom:0; text-align:center; width:100%;background: rgba(0,0,0,0.5);z-index:100;}
+        .sky_bottom{position: fixed; bottom:0; text-align:center; width:100%;background: rgba(0,0,0,0.75);z-index:100;}
 
 		.evtTop {background:#191b20 url(https://static.willbes.net/public/images/promotion/2020/04/1614_graph_bg.jpg) no-repeat center top;}
 

@@ -1,78 +1,74 @@
+<?php
+    //session_start();
+    /************************
+     *     Naver
+     ************************/
+    $naverClientID = "KfwZkPOqgdTMK5oPqpet";        //TODO config
+    $naverCallbackUrl = urlencode("https://www.willbes.net/home/dev_test/development_social_login_naver_result");
+    $naverState = "RAMDOM_STATE";
+    $naverLoginUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=".$naverClientID."&redirect_uri=".$naverCallbackUrl."&state=".$naverState;
+
+    /************************
+     *     Kakao
+     ************************/
+
+    $kakaoClientID = 'ff88e7137e85ee0a4ad3a7f7a0a58ba0';      //TODO config
+    $kakaoClientSecret = '';                                  //TODO config
+    $kakaoCallbackUrl = 'https://www.willbes.net/home/dev_test/development_social_login_kakao_result';
+    $kakaoState = md5(microtime() . mt_rand()); // 보안용 값
+    $_SESSION['kakao_state'] = $kakaoState;
+    $kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize?client_id=".$kakaoClientID."&redirect_uri=".urlencode($kakaoCallbackUrl)."&response_type=code&state=".$kakaoState;
+
+    /************************
+     *     Facebook
+     ************************/
+    //require_once __DIR__ . '/facebookSdk/autoload.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
+    $fb = new Facebook\Facebook([
+        'app_id' => '156556302428278',                        //TODO config
+        'app_secret' => '0582775004ae76efc995ef54c68246da',   //TODO config
+        'default_graph_version' => 'v3.2',
+    ]);
+    $facebookHelper = $fb->getRedirectLoginHelper();
+    $facebookPermissions = ['email']; // Optional permissions
+    $facebookCallbackUrl = htmlspecialchars('https://www.willbes.net/home/dev_test/development_social_login_facebook_result');
+    $facebookLoginUrl = $facebookHelper->getLoginUrl($facebookCallbackUrl, $facebookPermissions);
+
+    /************************
+     *     Google
+     ************************/
+    //require_once '/var/www/html/vendor/autoload.php';
+    $googleClientID = '382144842087-atgkk0fpvob01qnciall4i684kc09tcn.apps.googleusercontent.com';   //TODO config
+    $googleClientSecret = 'wQ5B5uSX3TawyiHPyFreLzn2';                                               //TODO config
+    $googleRedirectUri = 'https://www.willbes.net/home/dev_test/development_social_login_google_result';
+
+    $googleClient = new Google_Client();
+    $googleClient->setClientId($googleClientID);
+    $googleClient->setClientSecret($googleClientSecret);
+    $googleClient->setRedirectUri($googleRedirectUri);
+    $googleClient->addScope("email");
+    $googleClient->addScope("profile");
+    $googeLoginUrl = $googleClient->createAuthUrl();
+?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
-{{--    <script src="/public/vendor/bootstrap/v.3.3.7/js/bootstrap.min.js"></script>--}}
+    <head>
+    </head>
+    <body>
+        <style type="text/css">
+            .g-signin2 {text-align: center !important;}
+        </style>
 
-    {{-- 네이버 --}}
-    <script src="/public/vendor/socialLogin/naver/naveridlogin_js_sdk_2.0.0.js"></script>
-
-    {{-- 카카오 --}}
-
-    {{-- 페이스북 --}}
-
-    {{-- 구글 --}}
-
-</head>
-<body>
-    <style type="text/css">
-        {{--
-        --}}
-    </style>
-
-    <div class="jumbotron">
-        <h1>SAMPLE PAGE</h1>
-        <p class="lead">네이버 아이디로 로그인 Javascript 샘플 페이지.<br> 간단한 적용 예제를 포함합니다.</p>
-        <!-- (1) 버튼 event 처리를 위하여 id를 지정 id=loginButton -->
-        <p></p>
-            <div id="naverIdLogin">
-                <a id="naverIdLogin_loginButton" href="http://static.nid.naver.com/oauth/sample/javascript_sample.html#">
-                    <img src="" height="60">
-                </a>
-            </div>
-        <p></p>
-    </div>
-
-    <script>
-        var naverLogin = new naver.LoginWithNaverId(
-            {
-                clientId: "KfwZkPOqgdTMK5oPqpet",
-                //callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
-                callbackUrl: "https://www.willbes.net/home/dev_test/development_social_login_result",
-                isPopup: false,
-                loginButton: {color: "green", type: 3, height: 60}
-            }
-        );
-        /* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-        naverLogin.init();
-
-        /* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
-        $("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
-
-        /* (5) 현재 로그인 상태를 확인 */
-        window.addEventListener('load', function () {
-            naverLogin.getLoginStatus(function (status) {
-                if (status) {
-                    /* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-                    setLoginStatus();
-                }
-            });
-        });
-
-        /* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-        function setLoginStatus() {
-            var profileImage = naverLogin.user.getProfileImage();
-            var nickName = naverLogin.user.getNickName();
-            $("#naverIdLogin_loginButton").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
-            $("#gnbLogin").html("Logout");
-            $("#gnbLogin").attr("href", "#");
-            /* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
-            $("#gnbLogin").click(function () {
-                naverLogin.logout();
-                location.reload();
-            });
-        }
-    </script>
-</body>
-
+        <div style="text-align: center;">
+            <h1>Willbes Social Login</h1>
+            <a href="<?=$naverLoginUrl?>"><img src="/public/img/willbes/naver_login.png" width="222"></a>
+            <br/>
+            <a href="<?=$kakaoLoginUrl?>"><img src="/public/img/willbes/kakao_login.png" width="222"></a>
+            <br/>
+            <a href="<?=$facebookLoginUrl?>"><img src="/public/img/willbes/facebook_login.png" width="222"></a>
+            <br/>
+            <a href="<?=$googeLoginUrl?>"><img src="/public/img/willbes/google_login.png" width="222"></a>
+        </div>
+    </body>
 </html>

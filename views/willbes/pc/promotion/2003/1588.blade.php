@@ -22,6 +22,8 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
+        .evttop_banner {background:#FDEADB;}
+
         .evttop {background:#020015 url(https://static.willbes.net/public/images/promotion/2020/04/1588_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
@@ -71,14 +73,20 @@
                 <area shape="rect" coords="7,439,150,513" href="#evt3" />
                 <area shape="rect" coords="4,522,152,593" href="#evt3" />
             </map>           
-        </div>              
+        </div>
 
+        {{--         
+        <div class="evtCtnsBox evttop_banner" >     
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
+            <map name="Map1588banner" id="Map1588banner">
+                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTest/apply/cate/" onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
+            </map>             
+        </div> 
+        --}}              
+        
         <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top.jpg" usemap="#Map1588_top" title="더켠의 반반한 밤" border="0">
-            <map name="Map1588_top" id="Map1588_top">
-                <area shape="rect" coords="601,21,802,90" href="https://pass.willbes.net/pass/mockTest/apply/cate/" onfocus='this.blur()' target="_blank" />
-                <area shape="rect" coords="812,21,1013,90" href="javascript:alert('준비중입니다.')" onfocus='this.blur()' />
-            </map>     
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top.jpg"  title="더켠의 반반한 밤">            
         </div>
 
         <div class="evtCtnsBox evt01">

@@ -159,7 +159,12 @@
                     @else
                         <td class="w-modify-day"></td>
                         <td class="w-user"></td>
-                        <td><button type="button" class="btn btn-primary btn-search" onclick="fnCancel({{$row['LphIdx']}});">취소</button></td>
+                        <td>
+                            @if($row['PauseEndDate'] < date("Y-m-d", time()))
+                            @else
+                                <button type="button" class="btn btn-primary btn-search" onclick="fnCancel({{$row['LphIdx']}});">취소</button>
+                            @endif
+                        </td>
                     @endif
 
                 </tr>

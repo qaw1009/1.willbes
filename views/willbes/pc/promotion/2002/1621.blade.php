@@ -19,7 +19,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .evttop {background:#2e3135 url(https://static.willbes.net/public/images/promotion/2020/04/1621_top_bg.jpg) repeat-x center top;}
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/04/1621_top_bg.jpg) repeat-x center top;}
         .evt01 {background:#ececec}
         .evt02 {background:#fff}
         .evt03 {background:#55509c; padding-bottom:150px}

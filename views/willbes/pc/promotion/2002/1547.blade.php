@@ -64,7 +64,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1547_top.jpg" alt="장정훈 경찰학 무료 숫자특강" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1547_top.jpg" alt="장정훈 경찰학 무료 숫자특강" />
         </div>
 
         <div class="evtCtnsBox wb_01" >
@@ -89,14 +89,14 @@
                 <p class="rightBtn"><a id="imgBannerRight2"><img src="https://static.willbes.net/public/images/promotion/2020/02/1547_next.png" alt="다음" /></a></p>
             </div>
 
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1547_03.jpg"  alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1547_03.jpg"  alt="" />
 
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="form_area">
-                    <h4>3월 14일(토) 장정훈 경찰학 무료 숫자특강 </h4>
+                    <h4>5월 9일(토) 장정훈 경찰학 무료 숫자특강</h4>
                     <div class="privacy">
                         <div class="contacts">
                             <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/></p>

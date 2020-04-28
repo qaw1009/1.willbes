@@ -28,7 +28,7 @@
         .evt03 tr.st01 {background:#e3e4e5}
         .evt03 tr:hover {background:#e8e6fd;}
         .evt03 th,
-        .evt03 td {padding:15px 20px; font-size:16px; font-weight:bold; text-align:left; border-right:1px solid #000;}
+        .evt03 td {padding:15px 20px; font-size:16px; font-weight:bold; text-align:left; border-right:1px solid #000;text-align:center;}
         .evt03 thead th {background:#e2e2e2 !important;; color:#000; border-right:1px solid #000; font-weight:bold; text-align:center}        
         .evt03 th:last-child{border:0;}
         .evt03 td:nth-child(1) {text-align:center;}
@@ -68,13 +68,12 @@
                     <col width="" />
                     <col width="24%" />
                     <col width="12%" />
-                    <col width="12%" />
+                    <col width="" />
                     <thead>
                         <tr>
                             <th colspan="2">강의명</th>
                             <th>개강일</th>                        
-                            <th>학원</th>
-                            <th>동영상</th>
+                            <th>학원</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -82,49 +81,42 @@
                             <td>형법 김원욱</td>
                             <td>형법 마무리 특강</td>
                             <td>5.4(월)~5(화) 14:00</td>
-                            <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
+                            <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001" target="_blank">수강신청</a></td>                  
                         </tr>
                         <tr>
                             <td>한국사 오태진</td>
                             <td>한국사 마무리 특강</td>
                             <td>5.6(수) 14:00</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>
                         <tr>
                             <td>영어 하승민</td>
                             <td>영어 마무리 특강</td>
                             <td>5.8(금) 14:00</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>
                         <tr>
                             <td>한국사 원유철</td>
                             <td>한국사 마무리 특강</td>
                             <td>5.11(월) 14:00</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>
                         <tr>
                             <td>형소법 신광은</td>
                             <td>형소법 마무리 특강</td>
                             <td>5.12(화)~13(수) 14:00</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>
                         <tr>
                             <td>경찰학 장정훈</td>
                             <td>경찰학 마무리 특강</td>
                             <td>5.14(목)~15(금) 14:00</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1058&campus_ccd=605001" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>    
                         <tr>
                             <td>학원 종합반</td>
                             <td colspan="2">2020 1차대비 마무리 특강 종합반</td>
                             <td><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1046" target="_blank">수강신청</a></td>
-                            <td><a href="#none">준비중</a></td>
                         </tr>              
                     </tbody>
                 </table>

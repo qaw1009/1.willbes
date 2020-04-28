@@ -154,7 +154,7 @@
 				<div class="tabContents" id="tab3">
 					<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_02_c3.jpg" alt="윌비스 영어 70점 이상 강력 추천! " />
 				</div>
-				<div class="mt20">*본 T-PASS에서는 기출+단원별+동형모의고사 및 FINAL특강만을 제공합니다.</div>
+				{{--<div class="mt20">*본 T-PASS에서는 기출+단원별+동형모의고사 및 FINAL특강만을 제공합니다.</div>--}}
 			</div>
 		</div>
 

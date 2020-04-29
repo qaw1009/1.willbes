@@ -91,6 +91,44 @@
                 <li class="w50"><a href="{{ site_url('/home/html/memconvert2') }}" target="_blank">통합회원전환-고등고시,자격증 포함</a></li>
                 <li><a href="{{ site_url('/home/html/memconvert3') }}" target="_blank">통합회원전환-아이디 중복 회원 최초 로그인 시</a></li>
                 <li><a href="{{ site_url('/home/html/memcombine2') }}" target="_blank">통합회원전환-아이디+비밀번호 중복 회원 최초 로그인 시</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_pass_index_oldMypage') }}" target="_blank">내강의실 > 이전 사이트 내강의실 팝업</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_edit1') }}" target="_blank">내강의실 > 온라인강좌 > 첨삭강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online3') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 북마크</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 북마크상세</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online8') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 팝업</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_event') }}" target="_blank">내강의실 > 특강&이벤트 신청현황</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_test1') }}" target="_blank">내강의실 > 모의고사관리 > 접수현황</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_test2') }}" target="_blank">내강의실 > 모의고사관리 > 온라인모의고사 응시</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_test3') }}" target="_blank">내강의실 > 모의고사관리 > 성적결과</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_payment1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_payment2_1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(신용카드)</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_payment2_2') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(입금대기)</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_payment3') }}" target="_blank">내강의실 > 결제관리 > 포인트관리</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_payment4') }}" target="_blank">내강의실 > 결제관리 > 쿠폰/수강권관리</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_support2') }}" target="_blank">내강의실 > 학습지원관리 > 알림관리</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_support3') }}" target="_blank">내강의실 > 학습지원관리 > 상담내역</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}" target="_blank">내강의실 > 회원정보 > 개인정보관리</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경</a></li>
+                <li class="c_both"></li>
             </ul>
         </div>        
     </li>
@@ -143,7 +181,7 @@
             </ul>
         </div>
     </li>
-    {{--
+    
     <li>
         <div>       
             <ul>            
@@ -355,7 +393,7 @@
             </ul>
         </div>
     </li>
-    --}}
+    
     <li>
         <div>
             <ul>
@@ -469,43 +507,7 @@
     <li>
         <div>  
             <ul>          
-                <li><a href="{{ site_url('/home/html/mypage_pass_index_oldMypage') }}" target="_blank">내강의실 > 이전 사이트 내강의실 팝업</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_edit1') }}" target="_blank">내강의실 > 온라인강좌 > 첨삭강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online3') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 북마크</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 북마크상세</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online8') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 팝업</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_event') }}" target="_blank">내강의실 > 특강&이벤트 신청현황</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_test1') }}" target="_blank">내강의실 > 모의고사관리 > 접수현황</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_test2') }}" target="_blank">내강의실 > 모의고사관리 > 온라인모의고사 응시</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_test3') }}" target="_blank">내강의실 > 모의고사관리 > 성적결과</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_payment1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_payment2_1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(신용카드)</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_payment2_2') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(입금대기)</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_payment3') }}" target="_blank">내강의실 > 결제관리 > 포인트관리</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_payment4') }}" target="_blank">내강의실 > 결제관리 > 쿠폰/수강권관리</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_support2') }}" target="_blank">내강의실 > 학습지원관리 > 알림관리</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_support3') }}" target="_blank">내강의실 > 학습지원관리 > 상담내역</a></li>
-                <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}" target="_blank">내강의실 > 회원정보 > 개인정보관리</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경</a></li>
-                <li class="c_both"></li>                 
+                                 
             </ul>
         </div>
     </li>

@@ -19,9 +19,10 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
-        
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/04/1624_top_bg.jpg) no-repeat center top;}              
+        .skyBanner {position:fixed; top:280px;right:0;z-index:10;}
+
+        .evt00 {background:#404040}        
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/04/1624_top_bg.jpg) no-repeat center top;}             
 
         .evt01 {background:#4e4e4e}   
         .evt01 > div {position:relative; width:1120px; margin:0 auto}
@@ -49,6 +50,14 @@
     </style>
 
 <div class="p_re evtContent NGR" id="evtContainer">
+    <div class="skyBanner">
+        <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2020/04/1624_sky.jpg"></a>
+    </div>
+
+    <div class="evtCtnsBox evt00">
+        <img src="https://static.willbes.net/public/images/promotion/2020/04/1624_00.jpg"> 
+    </div>
+    
     <div class="evtCtnsBox evtTop">
         <div class="evtInmg">    
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1624_top.jpg" title="3단계 파이널 실전모의고사">    
@@ -81,7 +90,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/04/1624_04.jpg">
     </div>    
     
-    <div class="evtCtnsBox evt04">
+    <div class="evtCtnsBox evt04" id="lecbuy">
     <img src="https://static.willbes.net/public/images/promotion/2020/04/1624_05.jpg">
         <ul>
             <li>

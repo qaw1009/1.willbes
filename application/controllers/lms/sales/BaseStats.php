@@ -196,7 +196,7 @@ class BaseStats extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = array_merge(['대분류', '상품코드', '상품명'], $headers, ['매출현황']);
+        $headers = array_merge(['대분류', '상품코드', '상품명'], $headers, ['매출현황', '매출건수']);
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy(true));

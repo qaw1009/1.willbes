@@ -150,6 +150,29 @@
                         </div>
                     </div>
                 </div>
+                @if($stats_type == 'offLecture')
+                    {{-- 학원단과반 개강일/종강일 검색 추가 --}}
+                    <div class="form-group">
+                        <label class="control-label col-md-1">검색일</label>
+                        <div class="col-md-5 form-inline">
+                            <select class="form-control mr-10" id="search_study_date_type" name="search_study_date_type">
+                                <option value="StudyStartDate">개강일</option>
+                                <option value="StudyEndDate">종강일</option>
+                            </select>
+                            <div class="input-group mb-0 mr-20">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control datepicker" id="search_study_start_date" name="search_study_start_date" value="" autocomplete="off">
+                                <div class="input-group-addon no-border no-bgcolor">~</div>
+                                <div class="input-group-addon no-border-right">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control datepicker" id="search_study_end_date" name="search_study_end_date" value="" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="row">

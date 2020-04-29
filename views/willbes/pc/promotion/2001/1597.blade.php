@@ -187,7 +187,7 @@
                             <tr>
                                 <td>경찰학 장정훈</td>
                                 <td>2020 2차대비 장정훈 경찰학 심화이론</td>
-                                <td>5/25(월)</td>                      
+                                <td>5/23(토)</td>                      
                                 <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163719" target="_blank">수강신청</a></td>
                             </tr>                 
                         </tbody>

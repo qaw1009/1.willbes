@@ -173,8 +173,9 @@
         </div>
         <div class="evt02">
             <ul class="price NSK-Black">
-                <li>1억뷰 <span>N잡</span>강의 런칭기념</li>
-                <li><div>4월 한달 전강좌 10% 할인</div></li>
+                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1625_title.jpg" alt="" ></a></li>
+                <li></li>
                 <li>   
                     <dl>
                         <dd>
@@ -183,17 +184,17 @@
                         </dd>
                     </dl>
                 </li>
-                <li><i>195,000원</i><br> <span>10%할인</span><br> 175,500원</li>
-                <li>월 <span>3만원</span>대</li>
+                <li>289,000원</li>
+                <li>월 <span>4만원</span>대</li>
                 <li>
                     수강기간 : 5개월<br>
                     수강대상 : 온라인 쇼핑몰 창업 입문부터 가능
                 </li>
             </ul>
             <div class="evt02-txt">
-                <div>* 런칭기념 혜택 안내</div>
+                <div> *  이벤트 기간  :  5월1일(금)~5.31(일) 당첨자 발표 : 6.5(금) 공지사항 참조 </div>
                 <ul>
-                    <li>사전예약 10%할인, 월3만원대 수강료</li>
+                    <li>생생한 리뷰를 남겨주시면  추첨을 통해 맛~있는 간식을 드립니다!</li>
                     <li>특별기획전을 통해 전문MD의 경쟁력있는 위탁/사입 상품 소싱, 추천<br>
                         <a href="https://njob.willbes.net/m/support/notice/show/cate/?board_idx=268597" target="_blank">☞ 기획전 이용안내 </a>
                     </li>                    

@@ -41,7 +41,7 @@
                                 <li>가장 현실적인 월 100만원 만들기, <br>
                                     지금 바로 시작하는 스마트스토어!</li>
                                 <li>다마고치 김정환 대표<br>
-                                    <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
+                                    <strong class="NSK-Black">온라인강의</strong></li>
                                 <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">신청하기</a></li>
                             </ul>
                         </div>
@@ -54,7 +54,7 @@
                                 <li>혼자서도 할 수 있는 <br>
                                     1인 온라인 창업</li>
                                 <li>단아쌤 김경은 대표<br>
-                                    <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
+                                    <strong class="NSK-Black">온라인강의</strong></li>
                                 <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank">신청하기</a></li>
                             </ul>
                         </div>
@@ -67,7 +67,7 @@
                                 <li>재고없이 오픈마켓으로<br>
                                     월 1천만원 수익 만들기</li>
                                 <li>황채영 대표<br>
-                                    <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
+                                    <strong class="NSK-Black">온라인강의</strong></li>
                                 <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank">신청하기</a></li>
                             </ul>
                         </div>
@@ -80,7 +80,7 @@
                                 <li>진짜 고수에게 배우는 스마트스토어로, <br>
                                     제2의 월급통장 만들기!</li>
                                 <li>정문진 대표<br>
-                                    <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
+                                    <strong class="NSK-Black">온라인강의</strong></li>
                                 <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">신청하기</a></li>
                             </ul>
                         </div>

@@ -130,7 +130,8 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">        
-        <ul class="skyBanner">            
+        <ul class="skyBanner"> 
+            <li><a href="#none" onClick='alert("COMING SOON!! ")'><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브"></a></li>           
             <li><a href="#none" onClick='alert("COMING SOON!! ")'><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
         </ul>   
 

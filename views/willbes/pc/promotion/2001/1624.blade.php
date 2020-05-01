@@ -99,27 +99,27 @@
             </li>
             <li>
                 2020년 1차대비 신광은 형사소송법 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164403" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164467" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 김원욱 형법 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164411" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164473" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 장정훈 경찰학개론 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164407" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164471" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 하승민 영어 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164420" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164481" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 오태진 한국사 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164418" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164479" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 원유철 한국사 파이널 실전모의고사
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164416" target="_blank">수강신청</a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164477" target="_blank">수강신청</a>
             </li>
             <li>
                 2020년 1차대비 3단계 파이널 종합반

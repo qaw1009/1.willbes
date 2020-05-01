@@ -238,7 +238,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn03.jpg" title=""></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn03.gif" title=""></a>
         </div>
 
         <div class="evtCtnsBox evt03">

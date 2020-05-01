@@ -91,7 +91,7 @@
 
         <div class="Section2 mt70">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3114_fullx600.jpg" alt="전강좌 10% 할인">
+                <img src="https://static.willbes.net/public/images/promotion/main/3114_fullx600.gif" alt="전강좌 10% 할인">
             </div>
         </div>
 

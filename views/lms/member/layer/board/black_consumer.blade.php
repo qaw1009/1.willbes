@@ -92,6 +92,11 @@
         });
 
         $regi_form.submit(function() {
+            if($regi_form.find('#regi_content').val().length > 1000) {
+                alert('1000자까지 입력 가능합니다.');
+                return;
+            }
+
             var _url = '{{ site_url('/member/manage/storeBlackConsumer/') }}';
 
             ajaxSubmit($regi_form, _url, function(ret) {

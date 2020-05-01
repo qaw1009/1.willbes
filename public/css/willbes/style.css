@@ -2853,19 +2853,20 @@ table.lecTable tr td .priceWrap li {
 table.lecTable tr td .priceWrap .chkBox {
     display: inline-block;
     line-height: 8px;
-    float:left;
+    float:left;    
 }
 table.lecTable tr td .priceWrap .chkBox input[type=checkbox] {
     width: 14px;
     height: 14px;
     cursor: pointer;    
+    vertical-align: middle;
 }
 table.lecTable tr td .priceWrap .select {
     display: inline-block;
     width: 80px;
     font-size: 11px;
-    color: #464646;
-    text-align: right;
+    color: #464646;    
+    text-align: right;    
 }
 table.lecTable tr td .priceWrap .bookselect {
     /*position: absolute;
@@ -12242,3 +12243,16 @@ table.acadlecInfoPackageTable tr.Top td {
     text-align: center;
     border: 1px solid #000;    
 }
+
+/*프로모션 강의 DP*/
+.proLecList {width: 1120px; margin:0 auto;}
+.proLecList .willbes-Lec-Table {background: #fff; text-align: left; border-bottom:1px solid #000;}
+.proLecList table {width: 100%}
+.proLecList .lecTable {border-top:1px solid #000;}
+.proLecList .lecTable td {padding:0;}
+.proLecList .lecTable .priceWrap {margin: 0;}
+.proLecList .lecTable .lecBuyBtns {padding:0 20px 0 0; margin:0; float: right;}
+.proLecList .lecTable .lecBuyBtns li {display: inline-block; width: 80px;}
+.proLecList .lecTable dl dt {float: left;}
+.proLecList .lecInfoTable {display: block; width: 1120px !important}
+.proLecList .lecInfoTable span.select {width: 80px; text-align: right; display: inline-block;}

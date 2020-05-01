@@ -24,7 +24,7 @@
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'spo') }}" target="_blank">경찰간부(간부후보생)</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'lang') }}" target="_blank">어학</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'work') }}" target="_blank">취업</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡 e-커머스 <span>●</span></a></li>
+                        <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡 e-커머스</a></li>
                     </ul>
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>

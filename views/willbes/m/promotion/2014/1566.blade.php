@@ -180,7 +180,6 @@
                 <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1625_title.jpg" alt="" ></a></li>
                 <li></li>
-                <li></li>
                 <li>   
                     <dl>
                         <dd>

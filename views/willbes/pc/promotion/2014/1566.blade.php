@@ -213,7 +213,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
-            <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
+            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
             {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566_sky.png" alt="스카이베너" usemap="#Map1566_sky" border="0" >
             <map name="Map1566_sky" id="Map1566_sky">

@@ -21,7 +21,6 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-
         .skybanner {
             position:fixed;
             bottom:20px;

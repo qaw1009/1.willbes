@@ -39,12 +39,11 @@
         display: none;
         position: relative;
         width: auto;
-        background-color: #fff;
     }
     .b-close {
         position: absolute;
         right: 10px;
-        top: 10px;
+        top: 50px;
         padding: 5px;
         display: inline-block;
         cursor: pointer;

@@ -185,7 +185,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-group">
                     <label class="control-label col-md-2">신규/추천
                     </label>
@@ -248,7 +247,6 @@
                                     </select>&nbsp;
                                     <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인" style="width:70px;">
                                     [판매가] <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가" style="width:100px;"> 원
-                                    </tr>
                                 @endif
                             @endforeach
 
@@ -879,6 +877,7 @@
             });
 
             var studyTypeCheck = function(val) {
+                return; // 2020.05.04 최진영 차장님 요청으로 인한 제어 해제
                 if(val === '648003') {
                     $(":radio[name='StudyApplyCcd'][value='654001']").iCheck('check');
                     $(":radio[name='StudyApplyCcd'][value!='654001']").iCheck('disable')

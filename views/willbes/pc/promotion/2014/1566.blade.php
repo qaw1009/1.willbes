@@ -228,7 +228,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >     
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">신규런칭 이벤트</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab">이벤트</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>

@@ -203,7 +203,7 @@ class ProfSalesModel extends BaseOrderModel
                 }
             } else {
                 $column = 'RR.OrderIdx, RR.OrderNo, RR.SiteCode, RR.MemIdx, RR.OrderProdIdx, RR.ProdCode, RR.PayChannelCcd, RR.PayRouteCcd, RR.PayMethodCcd, RR.PayStatusCcd
-                    , RR.RealPayPrice, RR.CompleteDatm, RR.RefundPrice';
+                    , RR.RealPayPrice, RR.CompleteDatm, RR.RefundPrice, RR.RefundReason';
 
                 // 환불일시, 결제상태
                 if ($on_off_type == 'on') {
@@ -250,7 +250,7 @@ class ProfSalesModel extends BaseOrderModel
         // 쿼리 실행
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName 
-                , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
+                , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName, RefundReason';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
             $query = 'select ' . $column . $from . $where . $order_by_offset_limit;
@@ -324,7 +324,7 @@ class ProfSalesModel extends BaseOrderModel
         $query = /** @lang text */ '   
             select ' . $distinct . ' if(O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . ', OP.RealPayPrice, null) as RealPayPrice	
                 , if(OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . ', OPR.RefundPrice, null) as RefundPrice
-                , O.CompleteDatm, OPR.RefundDatm
+                , O.CompleteDatm, OPR.RefundDatm, ORR.RefundReason
                 , O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, OP.OrderProdIdx, OP.ProdCode, P.ProdName
                 , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , left(PC.CateCode, 4) as LgCateCode 
@@ -349,6 +349,8 @@ class ProfSalesModel extends BaseOrderModel
 					on BO.OrderIdx = OP.OrderIdx and BO.OrderProdIdx = OP.OrderProdIdx
 				left join ' . $this->_table['order_product_refund'] . ' as OPR
 					on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                left join ' . $this->_table['order_refund_request'] . ' as ORR		
+                    on OPR.RefundReqIdx = ORR.RefundReqIdx
 				inner join ' . $this->_table['product'] . ' as P
 					on OP.ProdCode = P.ProdCode
 				inner join ' . $this->_table['product_lecture'] . ' as PL
@@ -444,7 +446,7 @@ class ProfSalesModel extends BaseOrderModel
             select TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.SiteCode, TA.CampusCcd, TA.CourseIdx, TA.SubjectIdx
                 , json_value(TA.StudyPeriod, "$.StudyStartDate") as StudyStartDate, json_value(TA.StudyPeriod, "$.StudyEndDate") as StudyEndDate
                 , O.OrderIdx, O.OrderNo, O.MemIdx, OP.OrderProdIdx, O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
-                , OP.RealPayPrice, O.CompleteDatm, OPR.RefundPrice, OPR.RefundDatm
+                , OP.RealPayPrice, O.CompleteDatm, OPR.RefundPrice, OPR.RefundDatm, ORR.RefundReason
                 , left(PC.CateCode, 4) as LgCateCode
             from (
                 ' . $raw_query . '
@@ -455,6 +457,8 @@ class ProfSalesModel extends BaseOrderModel
                     on OP.OrderIdx = O.OrderIdx                   
                 left join ' . $this->_table['order_product_refund'] . ' as OPR
                     on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                left join ' . $this->_table['order_refund_request'] . ' as ORR		
+                    on OPR.RefundReqIdx = ORR.RefundReqIdx                    
                 left join ' . $this->_table['product_r_category'] . ' as PC
                     on PC.ProdCode = TA.ProdCode and PC.IsStatus = "Y"				
             where OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")

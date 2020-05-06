@@ -155,7 +155,7 @@
             @endif
         </div>
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_03ss.gif" usemap="#Map1588ss" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1588_03ss.gif" usemap="#Map1588ss" id="evt3" title="다시보기 서비스" border="0">
             <map name="Map1588ss" id="Map1588ss">
                 <area shape="rect" coords="184,565,498,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/164554" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="622,564,946,641" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" onfocus='this.blur()' />

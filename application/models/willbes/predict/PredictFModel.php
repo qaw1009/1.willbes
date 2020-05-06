@@ -601,4 +601,20 @@ class PredictFModel extends WB_Model
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
+
+    /**
+     * 접수데이터 조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    public function findPredictRegister2($arr_condition, $column = 'PrIdx')
+    {
+        $from = "
+            FROM lms_predict_register
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
 }

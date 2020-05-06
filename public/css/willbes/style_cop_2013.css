@@ -226,3 +226,5 @@
     height: auto;    
     z-index: 100;
 }
+.cop2013 .QuickSlider {width:160px; height: 100px; overflow:hidden;}
+.cop2013 .QuickDdayBox {width:160px !important;}

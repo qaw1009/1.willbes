@@ -280,13 +280,13 @@
 
         function doEvent() {
             var url = "{{front_url('/predict/index/100004')}}";
-            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+            window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
 
         function doEvent2() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
             var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
-            window.open(url,'event2', 'scrollbars=no,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
+            window.open(url,'event2', 'scrollbars=yes,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
         }
 
         /*tab*/

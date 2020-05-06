@@ -123,11 +123,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_april.jpg" /></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_april.jpg" /></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_may.jpg" /></li>
                 </ul>
+                {{--
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_right.png"></a></p>
+                --}}
             </div>        
         </div>           
 

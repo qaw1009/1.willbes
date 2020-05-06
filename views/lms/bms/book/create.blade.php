@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">과목/교수정보 <span class="required">*</span>
+                    <label class="control-label col-md-2">과목/교수정보 {{--<span class="required">*</span>--}}
                     </label>
                     <div class="col-md-9 form-inline">
                         <button type="button" id="btn_prof_subject_search" class="btn btn-sm btn-primary">과목/교수검색</button>
@@ -314,10 +314,10 @@
             });
 
             function addValidate() {
-                if($regi_form.find('input[name="prof_subject_idx[]"]').length < 1) {
+                /*if($regi_form.find('input[name="prof_subject_idx[]"]').length < 1) {
                     alert('과목/교수 정보 필드는 필수입니다.');
                     return false;
-                }
+                }*/
                 if ($regi_form.find('input[name="sale_price"]').val() < 0) {
                     alert('판매가를 0원 이상으로 입력해 주세요.');
                     $regi_form.find('input[name="dc_amt"]').focus();

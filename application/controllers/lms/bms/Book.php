@@ -139,8 +139,8 @@ class Book extends \app\controllers\BaseController
     {
         $rules = [
             /*['field' => 'school_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
-            ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],*/
-            ['field' => 'prof_subject_idx[]', 'label' => '과목/교수 정보', 'rules' => 'trim|required'],
+            ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_subject_idx[]', 'label' => '과목/교수 정보', 'rules' => 'trim|required'],*/
             ['field' => 'book_name', 'label' => '교재명', 'rules' => 'trim|required'],
             ['field' => 'disp_type_ccd', 'label' => '노출위치', 'rules' => 'trim|required'],
             ['field' => 'is_free', 'label' => '무료여부', 'rules' => 'trim|required|in_list[Y,N]'],

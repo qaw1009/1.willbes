@@ -524,6 +524,7 @@ class OrderListModel extends BaseOrderModel
             $column = 'OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.OrderProdSubIdx, OSP.ProdCodeSub, P.ProdName as ProdNameSub
                 , OSP.RealPayPrice, OSP.RealPayPrice as CardPayPrice, 0 as CashPayPrice
                 , OSP.RealPayPrice - fn_order_refund_deduct_price(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.ProdCodeSub, OP.SaleTypeCcd, null) as CalcCardRefundPrice
+                , fn_product_saletype_price(OSP.ProdCodeSub, OP.SaleTypeCcd, "RealSalePrice") as RealSalePrice
                 , 0 as CalcCashRefundPrice';
         }
 

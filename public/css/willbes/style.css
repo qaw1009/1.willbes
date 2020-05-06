@@ -1807,11 +1807,7 @@ table.auTable tr td {
     background: #fff;
     margin-bottom: 8px;
 }
-.QuickSlider {
-    overflow: hidden;
-    width: 160px;
-    height: 100px;
-}
+
 .QuickSlider .QuickDdayBox {
     position: relative; 
     height: 100px;

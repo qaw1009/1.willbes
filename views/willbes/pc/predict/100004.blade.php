@@ -4,7 +4,7 @@
     <!-- Container -->
     <style type="text/css">
         span {vertical-align:auto}
-        .willbes-Layer-PassBox {/*height:700px; verflow-y:scroll;*/}
+        .willbes-Layer-PassBox {/*height:700px; */overflow-y:scroll;}
         .eventPop {width:600px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
         .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;}
         .eventPop h3 span {vertical-align:top}

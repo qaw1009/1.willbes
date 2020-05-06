@@ -1,22 +1,14 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
+<!-- Container -->
 <style type="text/css">
     .subContainer {
         min-height: auto !important;
         margin-bottom:0 !important;
     }        
-    .evtContent {
-        width:100% !important;
-        min-width:1120px !important;
-        margin-top:20px !important;
-        padding:0 !important;
-        background:#fff;
-        font-size:14px;
-    }
 
-    .evtCtnsBox {line-height: 1.5}
+    .evtCtnsBox {width:100%; background:#fff; line-height: 1.5; font-size:14px}
 
     /************************************************************/
 
@@ -56,7 +48,7 @@
 
 
     .sectin1_box {
-        padding:180px 0 100px; height:500px; width:100%; text-align:center;
+        padding:180px 0 100px; width:100%; text-align:center;
         -webkit-animation: color-change-5x 8s linear infinite alternate both;
 	        animation: color-change-5x 8s linear infinite alternate both;
     }
@@ -82,10 +74,10 @@
             background: #0c74ae;
             }
         }
-    .sectin1_box div {font-size:150px; font-weight:bold; color:#fff; 
+    .sectin1_box div {font-size:100px; font-weight:bold; color:#fff; 
             -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;}
-    .sectin1_box div span {font-size:70px; display:block}
+    .sectin1_box div span {font-size:50px; display:block; margin-bottom:10px}
     @@-webkit-keyframes text-pop-up-top {
         0% {
             -webkit-transform: translateY(0);
@@ -122,8 +114,9 @@
     .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll}
     .txtinfo li {margin-left:20px; list-style-type: decimal;}
 
-    .sub_warp {width:980px; margin:0 auto; padding:60px 0; }
-    .sub_warp h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
+    .sub_warp {padding:60px 0; }
+    .sub_warp h2 {clear:both; font-size:20px; font-weight:bold; padding-left:25px; margin-bottom:10px; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center;
+    background-size:20px}
     .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
     .sub_warp h2 span {color:#C03}	
     .sub_warp h2 select {padding:5px}
@@ -163,8 +156,7 @@
     .omrWarp:after {content:""; display:block; clear:both}
 </style>
 
-
-    <!-- Container -->
+<div id="Container" class="Container c_both">            
     <div class="evtContent NSK">
         <div class="sectin1_box NSK-Black">
             <div><span>2020년 1차 고등고시 시험</span>
@@ -204,7 +196,7 @@
                             <tr>
                                 <th>이메일 </th>
                                 <td class="tx-left">
-                                    <input type="email" name="" id="" style="width:250px"> ※ 분석 자료 전달에 사용되므로 정확히 기입해 주세요.
+                                    <input type="email" name="" id="" style="width:250px"><br>※ 분석 자료 전달에 사용되므로 정확히 기입해 주세요.
                                 </td>
                             </tr>
                             <tr>
@@ -615,5 +607,8 @@
             </div> 
         </div>
     </div>
-    <!-- End Container -->
+
+</div>
+<!-- End Container -->
+</div>
 @stop

@@ -1813,6 +1813,8 @@ table.auTable tr td {
     height: 100px;
     border: 1px solid #dbdbdb;
     text-align: center;
+    width: 100%;    
+    overflow: hidden;
 }
 .QuickDdayBox .q_tit {
     font-size: 15px;

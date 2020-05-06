@@ -196,4 +196,7 @@
     width: 160px;
     height: auto;    
     z-index: 100;
+    overflow: hidden;
 }
+.cop2008 .QuickSlider {width:160px; height: 100px; overflow:hidden;}
+.cop2008 .QuickDdayBox {width:160px !important;}

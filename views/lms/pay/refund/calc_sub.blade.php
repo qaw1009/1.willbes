@@ -31,7 +31,7 @@
                 <tbody>
                     @foreach($data as $row)
                         <tr class="order_prod_sub_idx" data-idx="{{ $row['OrderProdSubIdx'] }}">
-                            <td>{{ $row['ProdNameSub'] }}</td>
+                            <td>{{ $row['ProdNameSub'] }} - <span class="blue">{{ number_format($row['RealSalePrice']) }}원</span></td>
                             <td class="rowspan">{{ number_format($order_prod_data['RealPayPrice']) }}</td>
                             <td>
                                 <input id="sub_card_refund_price_{{ $row['OrderProdSubIdx'] }}" name="sub_card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $row['CalcCardRefundPrice'] }}" @if($row['CardPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>

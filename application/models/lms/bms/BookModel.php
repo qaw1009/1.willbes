@@ -270,8 +270,8 @@ class BookModel extends WB_Model
             $data = [
                 'ProdCode' => $row['ProdCode'],
                 'wBookIdx' => element('wbook_idx', $input),
-                'SchoolYear' => element('school_year', $input),
-                'CourseIdx' => element('course_idx', $input),
+                'SchoolYear' => element('school_year', $input, ''),
+                'CourseIdx' => element('course_idx', $input, ''),
                 'DispTypeCcd' => element('disp_type_ccd', $input),
                 'IsFree' => element('is_free', $input)
             ];
@@ -309,10 +309,12 @@ class BookModel extends WB_Model
                 throw new \Exception($is_book_category);
             }
 
-            // 과목/교수 정보 등록
-            $is_book_prof_subject = $this->_replaceBookProfessorSubject($row['ProdCode'], element('prof_subject_idx', $input));
-            if ($is_book_prof_subject !== true) {
-                throw new \Exception($is_book_prof_subject);
+            // 과목/교수 정보 등록 => 윌스토리 교재등록으로 인해 옵션설정으로 변경
+            if (empty(element('prof_subject_idx', $input)) === false) {
+                $is_book_prof_subject = $this->_replaceBookProfessorSubject($row['ProdCode'], element('prof_subject_idx', $input));
+                if ($is_book_prof_subject !== true) {
+                    throw new \Exception($is_book_prof_subject);
+                }
             }
 
             $this->_conn->trans_commit();
@@ -362,8 +364,8 @@ class BookModel extends WB_Model
 
             // 상품도서 수정
             $data = [
-                'SchoolYear' => element('school_year', $input),
-                'CourseIdx' => element('course_idx', $input),
+                'SchoolYear' => element('school_year', $input, ''),
+                'CourseIdx' => element('course_idx', $input, ''),
                 'DispTypeCcd' => element('disp_type_ccd', $input),
                 'IsFree' => element('is_free', $input)
             ];

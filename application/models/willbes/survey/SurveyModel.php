@@ -105,6 +105,19 @@ class SurveyModel extends WB_Model
                 throw new \Exception('사전예약 신청기간이 아닙니다.');
             }
 
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx' => $PredictIdx,
+                    'TakeNumber' => $this->input->post('TakeNumber'),
+                    'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            }
+
             $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
             if(empty($regist_check) === false) {
                 throw new \Exception('이미 신청하셨습니다.');
@@ -272,6 +285,20 @@ class SurveyModel extends WB_Model
             $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
             $PredictIdx = $this->input->post('PredictIdx');
             $PrIdx = $this->input->post('PrIdx');
+
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx' => $PredictIdx,
+                    'TakeNumber' => $this->input->post('TakeNumber'),
+                    'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            }
+
             // 데이터 저장
             $data = array(
                 'PredictIdx' => $PredictIdx,

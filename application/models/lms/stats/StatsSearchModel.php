@@ -181,12 +181,10 @@ class StatsSearchModel extends BaseStatsModel
         ';
         $group_by = ' group by text ';
         $order_by = ' order by  count(*) Desc ';
-        $limit = ' limit 100 ';
+        $limit = ' limit 200 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
     }
-
-
 
     /**
      * 사이트별 검색어
@@ -208,7 +206,7 @@ class StatsSearchModel extends BaseStatsModel
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $search_where = $this->_conn->makeWhere($search_condition)->getMakeWhere(true);
 
-        $column = 's.SiteName, sl.SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
+        $column = 's.SiteName, REPLACE(sl.SearchWord, \' \', \'&nbsp;\') as SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
 
         $from = '   from
                             '. $this->_table['search_log'] .' sl
@@ -246,7 +244,85 @@ class StatsSearchModel extends BaseStatsModel
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $search_where = $this->_conn->makeWhere($search_condition)->getMakeWhere(true);
 
-        $column = 'sl.SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
+        $column = 'REPLACE(sl.SearchWord, \' \', \'&nbsp;\') as SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
+
+        $from = '   from
+                            '. $this->_table['search_log'] .' sl
+                            join '. $this->_table['site'] .' S on S.SiteCode = sl.SiteCode
+                            join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
+                        where 1=1
+                         '. $base_where .'
+                         '. $search_where .'
+        ';
+
+        $group_by = ' group by sl.SearchWord ';
+        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $limit = ' limit 20 ';
+
+        return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
+    }
+
+    /**
+     * 사이트별 검색어 - 검색결과 없는 검색어
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getSearchSiteWordNoResult($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $search_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['sl.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
+                ,'EQ' => ['sl.ResultCount' => '0']
+            ]
+        );
+
+        $base_condition['IN']['S.SiteCode'] = get_auth_site_codes(false,true);    //; 기준사이트
+        $base_condition['EQ'] = ['S.IsStatus' => 'Y','S.IsUse' => 'Y','S.IsCampus' => 'N'];
+
+        $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
+        $search_where = $this->_conn->makeWhere($search_condition)->getMakeWhere(true);
+
+        $column = 's.SiteName, REPLACE(sl.SearchWord, \' \', \'&nbsp;\') as SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
+
+        $from = '   from
+                            '. $this->_table['search_log'] .' sl
+                            join '. $this->_table['site'] .' S on S.SiteCode = sl.SiteCode
+                            join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
+                        where 1=1
+                         '. $base_where .'
+                         '. $search_where .'
+        ';
+
+        $group_by = ' group by s.SiteName,sl.SearchWord ';
+        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $limit = ' limit 20 ';
+
+        return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
+    }
+
+    /**
+     * 검색어 - 검색결과 없는 검색어
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getSearchWordNoResult($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $search_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['sl.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
+                ,'EQ' => ['sl.ResultCount' => '0']
+            ]
+        );
+
+        $base_condition['IN']['S.SiteCode'] = get_auth_site_codes(false,true);    //; 기준사이트
+        $base_condition['EQ'] = ['S.IsStatus' => 'Y','S.IsUse' => 'Y','S.IsCampus' => 'N'];
+
+        $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
+        $search_where = $this->_conn->makeWhere($search_condition)->getMakeWhere(true);
+
+        $column = 'REPLACE(sl.SearchWord, \' \', \'&nbsp;\') as SearchWord, count(*) as search_count, sum(sl.ResultCount) as search_result_sum';
 
         $from = '   from
                             '. $this->_table['search_log'] .' sl

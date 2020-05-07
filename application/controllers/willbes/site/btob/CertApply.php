@@ -37,7 +37,7 @@ class CertApply extends \app\controllers\FrontController
 
         // 제휴사 정보 조회
         $data = $this->btobCertFModel->findBtobByBtobId($btob_id);
-        if (empty($btob_id) === true) {
+        if (empty($data) === true) {
             show_alert('제휴사 정보가 없습니다.', 'close');
         }
 

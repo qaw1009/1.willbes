@@ -71,7 +71,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skybanner" >            
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=265065&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1579_sky.png" alt="최우영" ></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=272615&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1579_sky.png" alt="최우영" ></a>
         </div>   
 
         <div class="evtCtnsBox wb_top" >            

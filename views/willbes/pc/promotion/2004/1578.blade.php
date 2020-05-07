@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#81a53e url(https://static.willbes.net/public/images/promotion/2020/03/1578_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:#d2e6e2 url(https://static.willbes.net/public/images/promotion/2020/05/1578_top_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 {background:#FFF;}
         .wb_cts02 {background:#FFF;padding-bottom:150px}
         .wb_cts03 {background:#42475b;}
@@ -80,11 +80,11 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_top.gif" alt="윌비스 군무원" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1578_top.gif" alt="윌비스 군무원" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_01.jpg" alt="과목별 고득점 커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1578_01.jpg" alt="과목별 고득점 커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox wb_cts02" >            
@@ -103,10 +103,18 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="careful" >            
+        <div class="evtCtnsBox wb_cts03">            
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_03.jpg" alt="이런 분들이 수강하시면 좋아요."/>
         </div>
 
+        <div class="evtCtnsBox wb_apply">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1578_04.jpg" alt="수강신청" usemap="#Map1578a" border="0"/>
+            <map name="Map1578a" id="Map1578a">
+                <area shape="rect" coords="267,572,850,654" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&course_idx=" target="_blank" onfocus='this.blur()' />
+            </map>
+        </div>
+
+        {{--
         <div class="evtCtnsBox wb_cts05">			 
 		    <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_t.png" title="7급종합반수강신청">
             <ul class="tab">
@@ -130,6 +138,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1578_lec_btn.png" title="수강신청하기">
             </a>
 	    </div>
+        --}}
          <!--유의사항-->
         <div class="evtCtnsBox wb_cts09">
             <div class="wb_tipBox">

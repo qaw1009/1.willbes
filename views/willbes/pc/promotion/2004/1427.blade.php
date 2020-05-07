@@ -21,8 +21,8 @@
 
         /************************************************************/     
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1427_top_bg.jpg) no-repeat center top;}       
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1427_01_bg.jpg) no-repeat center top;}            
+        .evtTop {background:#009743 url(https://static.willbes.net/public/images/promotion/2020/05/1427_top_bg.jpg) no-repeat center top;}       
+        .evt01 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/05/1427_01_bg.jpg) no-repeat center top;}            
         .evt02 {background:#f4f1f3;}
         .evt03 {background:#fff; padding-bottom:150px}   
             .tabs {width:980px; z-index:10; margin:0 auto}
@@ -35,7 +35,7 @@
                 .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
                 .tabs div a:hover {background:#c6b269;}
             .tabs:after {content:""; display:block; clear:both}
-        .evt04 {background:#36374d;}
+        .evt04 {background:#696969;}
 
         .skybanner{position: fixed; bottom:20px; right:10px; z-index: 1;}	
         .skybanner li {margin-bottom:5px; text-align:center}
@@ -49,16 +49,16 @@
 		</ul>  
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_top.jpg"  title="외무영사직 이상구 교수님의 패권반" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1427_top.jpg"  title="문제풀이 패권반" />
         </div>
       
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_01.jpg" title="윌비스 패권반 11월 9일 개강"  /> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1427_01.jpg" title="윌비스 패권반 5월 23일 개강"  /> 
             	       
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_02.jpg" title="완벽한 문제풀이 커리큘럼"  />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1427_02.jpg" title="완벽한 문제풀이 커리큘럼"  />            
         </div>
 
         <div class="evtCtnsBox evt03">
@@ -80,16 +80,16 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_03_3.jpg" alt="완전 정복" />
                 </div>
                 <div id="tab04">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_03_4.jpg" alt="타임테이블" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1427_03_4.jpg" alt="타임테이블" />
                 </div>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt04" id="go_lec">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_04.jpg" usemap="#Map1427" title="수강신청" border="0"  />
-            <map name="Map1427" id="Map1427">
-                <area shape="rect" coords="126,722,985,771" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1273&amp;course_idx=1062&amp;prof_idx=50394" target="_blank" alt="외무영사직 수강신청" />
-            </map>
+        <div class="evtCtnsBox evt04">
+			<img src="https://static.willbes.net/public/images/promotion/2020/05/1427_04.jpg" usemap="#Map1427" border="0"  title="수강신청" />
+			<map name="#Map1427" id="#Map1427">
+				<area shape="rect" coords="88,720,1042,812" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&campus_ccd=605001&search_text=UHJvZE5hbWU67Yyo6raM" target="_blank" alt="수강신청" onfocus='this.blur()' />
+			</map>            
         </div>       
 
     </div>

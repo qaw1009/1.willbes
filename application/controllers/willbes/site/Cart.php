@@ -435,4 +435,70 @@ class Cart extends \app\controllers\FrontController
 
         $this->json_result($result, '삭제 되었습니다.', $result);        
     }
+
+    /**
+     * 장바구니 저장 연결 (단일상품코드만 가능)
+     * @param array $params
+     * @return object|string
+     */
+    public function relay($params = [])
+    {
+        $prod_code = $this->_req('prod_code');
+        $is_direct_pay = get_var($this->_req('is_direct_pay'), 'Y');
+        $referer = $this->input->server('HTTP_REFERER');
+
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용하여 주십시오.', 'back');
+        }
+        if (empty($prod_code) === true || is_numeric($prod_code) === false) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+        if (empty($referer) === true || strpos($referer, config_item('base_domain')) === false) {
+            show_alert('잘못된 접근입니다.', 'back');   // 외부부정접근방지
+        }
+
+        $data = element('0', $this->productFModel->findRawProductByProdCode($prod_code));
+        if (empty($data) === true) {
+            show_alert('상품정보 조회에 실패했습니다.', 'back');
+        }
+
+        $learn_pattern = $this->cartFModel->getLearnPattern($data['ProdTypeCcd'], $data['LearnPatternCcd']);    // 학습형태
+        $cart_type = $this->_getCartType($data['ProdTypeCcd']);     // 장바구니 구분
+        if (empty($learn_pattern) === true || empty($cart_type) === true) {
+            show_alert('허용되지 않은 상품입니다.', 'back');
+        }
+
+        return $this->load->view('site/cart/relay_form', [
+            'cart_type' => $cart_type,
+            'learn_pattern' => $learn_pattern,
+            'is_direct_pay' => $is_direct_pay,
+            'prod_code' => $prod_code,
+            'ret_url' => front_url('/cart/store')
+        ]);
+    }
+
+    /**
+     * 장바구니 구분값 리턴
+     * @param int|string $prod_type [상품타입(공통코드)]
+     * @return string
+     */
+    private function _getCartType($prod_type)
+    {
+        $available_cart_type = ['636001' => 'on_lecture', '636002' => 'off_lecture', '636003' => 'book', '636010' => 'mock_exam'];
+        $cart_type = '';
+
+        if (is_numeric($prod_type) === true) {
+            $cart_type = element($prod_type, $available_cart_type);
+        } else {
+            if (starts_with($prod_type, 'on_') === true) {
+                $cart_type = 'on_lecture';
+            } elseif (starts_with($prod_type, 'off_') === true) {
+                $cart_type = 'off_lecture';
+            } elseif (array_search($prod_type, $available_cart_type) !== false) {
+                $cart_type = $prod_type;
+            }
+        }
+
+        return $cart_type;
+    }
 }

@@ -514,25 +514,25 @@
                             <tr>
                                 <th>헌법</th>
                                 <td class="mypoint">
-                                    <input value="" type="number" name="" id=""> 점 (합격/불합격 여부 : <span class="tx-blue">합격</span>)
+                                    <input value="" type="number" name="" id=""> 점 (합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)
                                 </td>
                             </tr>
                             <tr>
                                 <th>언어논리</th>
                                 <td class="mypoint">
-                                    <input value="" type="number" name="" id=""> 점 (합격/불합격 여부 : <span class="tx-red">불합격</span>)
+                                    <input value="" type="number" name="" id="">
                                 </td>
                             </tr>
                             <tr>
                                 <th>자료해석</th>
                                 <td class="mypoint">
-                                    <input value="" type="number" name="" id=""> 점 (합격/불합격 여부 : <span class="tx-blue">합격</span>)
+                                    <input value="" type="number" name="" id="">
                                 </td>
                             </tr>
                             <tr>
                                 <th>상황판단</th>
                                 <td class="mypoint">
-                                    <input value="" type="number" name="" id=""> 점 (합격/불합격 여부 : <span class="tx-blue">합격</span>)
+                                    <input value="" type="number" name="" id="">
                                 </td>
                             </tr>
                             <tr>

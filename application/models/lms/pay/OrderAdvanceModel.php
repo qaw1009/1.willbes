@@ -244,7 +244,7 @@ class OrderAdvanceModel extends BaseOrderModel
 				, ifnull(PD.ProdDivisionRate, SPD.ProdDivisionRate) as OriProdDivisionRate
 				, ifnull(PD.ProdCalcRate, SPD.ProdCalcRate) as OriProdCalcRate
 				, SPS.SalePrice
-				, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", (
+				, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['choice'] . '", "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '"), (
 					select sum(B.SalePrice)
 					from ' . $this->_table['order_sub_product'] . ' as A 
 						inner join ' . $this->_table['product_sale'] . ' as B
@@ -302,11 +302,11 @@ class OrderAdvanceModel extends BaseOrderModel
 				left join ' . $this->_table['product_division'] . ' as SPD
 					on SPD.ProdCode = ML.ProdCodeSub and SPD.ProdCodeSub = ML.ProdCodeSub and SPD.IsStatus = "Y"
 						and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" 
-						and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"	    # 종합반선택형
+						and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['choice'] . '", "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '")	    # 종합반선택형
 				left join ' . $this->_table['product_sale'] . ' as SPS		
 					on ML.ProdCodeSub = SPS.ProdCode and SPS.SaleTypeCcd = "613001" and SPS.IsStatus = "Y"
 						and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" 
-						and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"     # 종합반선택형 정상가 조회 (안분율 계산)			
+						and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['choice'] . '", "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '")     # 종합반선택형 정상가 조회 (안분율 계산)			
 			where ML.LecEndDate >= ?
 			    and O.CompleteDatm <= ?
 				and OP.RealPayPrice > 0
@@ -337,7 +337,7 @@ class OrderAdvanceModel extends BaseOrderModel
                                 when RR.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['off_lecture'] . '", "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '") 
                                         and (RR.PackTypeCcd is null or RR.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '") 
                                     then RR.OriProdDivisionRate
-                                when RR.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and RR.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '" 
+                                when RR.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and RR.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['choice'] . '", "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '") 
                                     then (RR.SalePrice * RR.OriProdDivisionRate) / RR.TotalSalePrice
                                 else 0
                               end), 0) as ProdDivisionRate

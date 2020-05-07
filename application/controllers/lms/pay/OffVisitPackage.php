@@ -96,7 +96,7 @@ class OffVisitPackage extends BaseOrder
         $arr_condition = [
             'EQ' => [
                 'O.SiteCode' => $site_code,
-                'O.PayRouteCcd' => $this->orderListModel->_pay_route_ccd['visit'],  // 학원방문결제
+                //'O.PayRouteCcd' => $this->orderListModel->_pay_route_ccd['visit'],  // 학원방문결제
                 'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['off_lecture'],    // 학원강좌
                 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_pack_lecture'],  // 종합반
                 'PL.CampusCcd' => $this->_reqP('search_campus_ccd'),

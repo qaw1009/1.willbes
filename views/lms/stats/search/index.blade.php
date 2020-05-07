@@ -238,6 +238,45 @@
             </div>
 
             <div class="form-group">
+                <p></p>
+                <div class="col-md-7 form-inline">
+                    <strong><font color="red">[사이트별 검색어 순위 - 검색결과 없음]</font></strong>
+                    <div class="x_content">
+                        <table id="list_site_search_word_no_result_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>사이트</th>
+                                <th>검색어</th>
+                                <th>검색건수</th>
+                                <th>검색결과수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-5 form-inline">
+                    <strong><font color="red">[전체 검색어 순위 - 검색결과 없음]</font></strong>
+                    <div class="x_content">
+                        <table id="list_search_word_no_result_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>검색어</th>
+                                <th>검색건수</th>
+                                <th>검색결과수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-md-12 form-inline">
                     <strong>[검색 이력]</strong>
                     <div class="x_content">
@@ -673,6 +712,62 @@
                     ]
                 });
 
+                $datatable_site_word_no_result = $("#list_site_search_word_no_result_table").DataTable({
+                    dom: 'T<"clear">rtip',
+                    order: [[0, 'asc']],
+                    ordering: true,
+                    serverSide: false,
+                    paging: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: getStats('Search/SiteWordNoResult'),
+                    columns: [
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '')+(meta.row + 1)+'</font></b>';
+                            }},
+                        {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '')+ data + '</font></b>';
+                            }},
+                        {'data': 'SearchWord', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '')+ data + '</font></b>';
+                            }},
+                        {'data': 'search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
+                            }},
+                        {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
+                            }},
+                    ]
+                });
+
+                $datatable_word_no_result = $("#list_search_word_no_result_table").DataTable({
+                    dom: 'T<"clear">rtip',
+                    order: [[0, 'asc']],
+                    ordering: true,
+                    serverSide: false,
+                    paging: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: getStats('Search/WordNoResult'),
+                    columns: [
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '')+(meta.row + 1)+'</font></b>';
+                            }},
+                        {'data': 'SearchWord', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '')+ data + '</font></b>';
+                            }},
+                        {'data': 'search_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
+                            }},
+                        {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
+                            }},
+                    ]
+                });
+
+
                 $datatable_list = $('#list_ajax_table').DataTable({
                     serverSide: true,
                     ajax: {
@@ -712,6 +807,8 @@
                 $datatable_platform.destroy();
                 $datatable_site_word.destroy();
                 $datatable_word.destroy();
+                $datatable_site_word_no_result.destroy();
+                $datatable_word_no_result.destroy();
                 $datatable_list.destroy();
                 datatableExe();
             }

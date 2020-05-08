@@ -851,7 +851,7 @@ body.memBody #Footer {
 /* Tabs : lineTab 공통 */
 .lineTabs {
     float: left;
-    width: 100%;
+    width: 100% !important;
     padding: 20px;
 }
 
@@ -866,7 +866,7 @@ body.memBody #Footer {
     width: 33.33333333%;
 }
 .lineWrap.four li {
-    width: 25%;
+    width: 25% !important;
 }
 .lineWrap.five li {
     width: 20%;
@@ -918,35 +918,37 @@ body.memBody #Footer {
 
 /* Tabs : lineTab : rowlineWrap 공통 */
 .rowlineWrap {
-    height: 45px;
+    height: 60px;
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
 .rowlineWrap li {
     position: relative;
     float: left;
-    height: 45px;
-    box-sizing: border-box;
+    height: 60px;
+    box-sizing: border-box;       
 }
 .rowlineWrap li a {
     display: block;
-    width: 100%;
-    height: 45px;
-    line-height: 44px;
+    min-height: 40px;
+    width: 100% !important;   
+    padding:10px 0;
+    line-height: 40px;
     font-size: 14px;
     font-weight: 600;
     color: #000;
     text-align: center;
     letter-spacing: -1px;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;   
 }
+.rowlineWrap li a.twoRow {height:62px; padding-top:15px; line-height:1}
 .rowlineWrap li a img {
     vertical-align: top;
     margin-top: 11px;
     height: 25%;
 }
 .rowlineWrap li a span {
-    vertical-align: baseline;
+    vertical-align: middle;
 } 
 .rowlineWrap li a.on {
     position: relative;

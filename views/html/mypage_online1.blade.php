@@ -149,7 +149,7 @@
                     <li><a href="#Mypagetab1" class="on">단강좌 (3)</a></li>
                     <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
                     <li><a href="#Mypagetab3">PASS강좌 (2)</a></li>
-                    <li><a href="#Mypagetab4">관리자부여강좌 (2)</a></li>
+                    <li><a href="#Mypagetab4">관리자부여강좌 (복습동영상) (2)<br></a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Mypagetab1" class="tabLink">

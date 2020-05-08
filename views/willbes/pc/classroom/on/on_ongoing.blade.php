@@ -57,9 +57,9 @@
                         <tbody>
                         <tr @if(get_cookie('moreInfo') == 'off') style="display: none; !important" @endif>
                             <td>
-                                <div class="Tit">무료강좌</div>
+                                <div class="Tit">무료특강</div>
                                 <div class="Txt">
-                                    - 무료강좌는 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                                    - 무료특강는 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
                                 </div>
                             </td>
                         </tr>
@@ -131,9 +131,9 @@
                 </form>
                 <div class="DetailWrap c_both">
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" id="tab1" onclick="fnSetMoreTable();openTxt('info1')" class="on">단강좌 ({{count($lecList)}})</a></li>
+                        <li><a href="#Mypagetab1" id="tab1" onclick="fnSetMoreTable();openTxt('info1')" class="on">단과강좌 ({{count($lecList)}})</a></li>
                         <li><a href="#Mypagetab2" id="tab2" onclick="fnSetMoreTable();openTxt('info2')">패키지강좌 ({{count($pkgList)}})</a></li>
-                        <li><a href="#Mypagetab3" id="tab3" onclick="fnSetMoreTable();openTxt('info3')">무료강좌 ({{count($freeList)}})</a></li>
+                        <li><a href="#Mypagetab3" id="tab3" onclick="fnSetMoreTable();openTxt('info3')">무료특강 ({{count($freeList)}})</a></li>
                         <li><a href="#Mypagetab4" id="tab4" onclick="fnSetMoreTable();openTxt('info4')">관리자부여강좌 (복습동영상) ({{count($adminList['lec'])+count($adminList['pkg'])}})</a></li>
                     </ul>
                     <div class="tabBox">
@@ -351,7 +351,7 @@
                         <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌 ({{count($adminList['lec'])}})</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단과강좌 ({{count($adminList['lec'])}})</a></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt><a href="javascript:;" onclick="fnAdminTab('admintab2',this);">패키지 ({{count($adminList['pkg'])}})</a></dt>
                                 </dl>

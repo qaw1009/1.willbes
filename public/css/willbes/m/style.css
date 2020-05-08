@@ -941,7 +941,8 @@ body.memBody #Footer {
     letter-spacing: -1px;
     border-bottom: 1px solid #e4e4e4;   
 }
-.rowlineWrap li a.twoRow {height:62px; padding-top:15px; line-height:1}
+.rowlineWrap li .twoRow {position:absolute; top:-5px; left:50%; margin-left:-40px; text-align: center; font-size:12px; width: 80px;
+    background:#1a8ccc; color:#fff; height: 20px; line-height: 20px; border-radius: 10px;}
 .rowlineWrap li a img {
     vertical-align: top;
     margin-top: 11px;

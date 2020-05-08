@@ -110,6 +110,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];
@@ -218,6 +219,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];
@@ -303,14 +305,25 @@ class SurveyModel extends WB_Model
             $arr_condition = [
                 'EQ' => [
                     'PredictIdx' => $PredictIdx,
-                    'TakeNumber' => $this->input->post('TakeNumber'),
-                    'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'PrIdx' => $PrIdx,
                     'IsStatus' => 'Y'
                 ]
             ];
-            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
-            if(empty($register_data) === false) {
-                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            $register_data = $this->predictFModel->findPredictRegister2($arr_condition, 'PrIdx, TakeNumber');
+            if ($register_data['TakeNumber'] != $this->input->post('TakeNumber')) {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx' => $PredictIdx,
+                        'TakeNumber' => $this->input->post('TakeNumber'),
+                        'TakeMockPart' => $this->input->post('TakeMockPart'),
+                        'TakeArea' => $this->input->post('TakeArea'),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+                if (empty($register_data) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
             }
 
             // 데이터 저장
@@ -413,14 +426,25 @@ class SurveyModel extends WB_Model
             $arr_condition = [
                 'EQ' => [
                     'PredictIdx' => $PredictIdx,
-                    'TakeNumber' => $this->input->post('TakeNumber'),
-                    'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'PrIdx' => $PrIdx,
                     'IsStatus' => 'Y'
                 ]
             ];
-            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
-            if(empty($register_data) === false) {
-                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            $register_data = $this->predictFModel->findPredictRegister2($arr_condition, 'PrIdx, TakeNumber');
+            if ($register_data['TakeNumber'] != $this->input->post('TakeNumber')) {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx' => $PredictIdx,
+                        'TakeNumber' => $this->input->post('TakeNumber'),
+                        'TakeMockPart' => $this->input->post('TakeMockPart'),
+                        'TakeArea' => $this->input->post('TakeArea'),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+                if (empty($register_data) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
             }
 
             // 데이터 저장

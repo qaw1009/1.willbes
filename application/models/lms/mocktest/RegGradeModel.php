@@ -45,8 +45,9 @@ class RegGradeModel extends WB_Model
         'mockGroup' => 'lms_mock_group',
 
         'siteGroup' => 'lms_site_group',
-        'member' => 'lms_member'
-
+        'member' => 'lms_member',
+        'order' => 'lms_order',
+        'order_product' => 'lms_order_product'
     ];
 
 
@@ -2000,5 +2001,86 @@ class RegGradeModel extends WB_Model
         ";
         $order_by = ' ORDER BY RegDatm DESC LIMIT 1';
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->row_array();
+    }
+
+    /**
+     * 환불된 상품의 성적 데이터 -> 정상 상품으로 성적 데이터 이관
+     * @param $form_data
+     * @return array|bool
+     */
+    public function MemberTransferData($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $mem_id = element('mem_id', $form_data);
+            $prod_code = element('prod_code', $form_data);
+            $refund_take_num = element('refund_take_num', $form_data);
+            $refund_order_no = element('refund_order_no', $form_data);
+            $take_num = element('take_num', $form_data);
+            $order_no = element('order_no', $form_data);
+
+            $where = "WHERE m.MemId = '{$mem_id}' AND a.ProdCode = '{$prod_code}' ";
+            $refund_where = $where . "AND d.OrderNo = '{$refund_order_no}' AND a.TakeNumber = '{$refund_take_num}' AND b.PayStatusCcd = '676006'";
+            $target_where = $where . "AND d.OrderNo = '{$order_no}' AND a.TakeNumber = '{$take_num}' AND b.PayStatusCcd = '676001'";
+
+            $from = "
+                a.MrIdx, a.ProdCode, a.MemIdx, a.TakeNumber, b.OrderProdIdx, b.PayStatusCcd, c.CcdName
+                FROM {$this->_table['mockRegister']} AS a
+                INNER JOIN {$this->_table['member']} AS m ON a.MemIdx = m.MemIdx
+                INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx
+                INNER JOIN {$this->_table['order']} AS d ON b.OrderIdx = d.OrderIdx
+                INNER JOIN {$this->_table['sysCode']} AS c ON b.PayStatusCcd = c.Ccd
+            ";
+            $refund_data = $this->_conn->query('select ' . $from . $refund_where . ' limit 1')->row_array();
+            $target_data = $this->_conn->query('select ' . $from . $target_where . ' limit 1')->row_array();
+
+            if (empty($refund_data) === true || empty($target_data) === true) {
+                throw new \Exception('조회된 데이터가 없습니다.');
+            }
+
+            if ($refund_data['ProdCode'] != $target_data['ProdCode']) {
+                throw new \Exception('동일한 상품이 아닙니다.');
+            }
+
+            //기존성적조회
+            $refund_info['grades'] = $this->_conn->query("SELECT * FROM {$this->_table['mockGrades']} AS a WHERE a.MrIdx = '{$refund_data['MrIdx']}'")->result_array();
+            $refund_info['answerPaper'] = $this->_conn->query("SELECT * FROM {$this->_table['mockAnswerPaper']} AS a WHERE a.MrIdx = '{$refund_data['MrIdx']}'")->result_array();
+            $refund_info['answerTemp'] = $this->_conn->query("SELECT * FROM {$this->_table['mockAnswerTemp']} AS a WHERE a.MrIdx = '{$refund_data['MrIdx']}'")->result_array();
+            $refund_info['answerNote'] = $this->_conn->query("SELECT * FROM {$this->_table['answerNote']} AS a WHERE a.MrIdx = '{$refund_data['MrIdx']}'")->result_array();
+
+            if (empty($refund_info['grades']) === true || empty($refund_info['answerPaper']) === true) {
+                throw new \Exception('조회된 성적 데이터가 없습니다.');
+            }
+
+            if (empty($refund_data['MrIdx']) === true || empty($target_data['MrIdx']) === true) {
+                throw new \Exception('필수데이터가 없습니다.');
+            }
+
+            //이관
+            $data = ['MrIdx' => $target_data['MrIdx']];
+            $where = array('MrIdx' => $refund_data['MrIdx']);
+
+            if ($this->_conn->update($this->_table['mockGrades'], $data, $where) === false) {
+                throw new \Exception('수정에 실패했습니다.(1)');
+            }
+            if ($this->_conn->update($this->_table['mockAnswerPaper'], $data, $where) === false) {
+                throw new \Exception('수정에 실패했습니다.(2)');
+            }
+            if (empty($refund_info['answerTemp']) === false) {
+                if ($this->_conn->update($this->_table['mockAnswerTemp'], $data, $where) === false) {
+                    throw new \Exception('수정에 실패했습니다.(3)');
+                }
+            }
+            if (empty($refund_info['answerNote']) === false) {
+                if ($this->_conn->update($this->_table['answerNote'], $data, $where) === false) {
+                    throw new \Exception('수정에 실패했습니다.(4)');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

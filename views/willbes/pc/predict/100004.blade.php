@@ -212,13 +212,11 @@
 
             var takenum = $('#TakeNumber').val();
             takenum = parseInt(takenum);
-
             var take_mock_position = $("#TakeArea").val() + $("#TakeMockPart").val();
             if (takeNumChk(take_mock_position, takenum) != true) {
                 alert('올바른 응시번호가 아닙니다.');
                 return;
             }
-
 
             /*if($("#TakeMockPart").val() == '100') {
                 if(takenum<10001||takenum>19999) {

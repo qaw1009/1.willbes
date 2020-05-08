@@ -257,7 +257,7 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        function takeNumChk(num,num2){
+        function selSerial(num,num2){
             if (mode == 'NEW' && $("#TakeMockPart").val() != num) {
                 $(".take_area").val('');
                 $("#TakeArea").val('');
@@ -336,7 +336,7 @@
             }
         }
 
-        function setItem(take_mock_position, takenum) {
+        function takeNumChk(take_mock_position, takenum) {
             takenum = (isNaN(takenum)) ? 0 : takenum;
             var arrItem = {
                 '712001100' : {'start' : '10001', 'end' : '16975'},

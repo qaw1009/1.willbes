@@ -14,12 +14,12 @@
             </div>
         </div>
 
-        <div class="lineTabs lecListTabs c_both">
+        <div class="lineTabs lecListTabs c_both mb50">
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
                 <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist3">PASS강좌 <span>{{count($passList)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist4" class="p_re">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span><div>복습동영상</div></a></li>
+                <li><a href="#leclist4" class="p_re">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span><div class="twoRow">복습동영상</div></a></li>
             </ul>
             <div class="tabBox lineBox lecListBox">
                 <div class="tabContent">

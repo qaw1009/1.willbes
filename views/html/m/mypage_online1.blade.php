@@ -17,9 +17,9 @@
     <div class="lineTabs lecListTabs c_both">
         <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
             <li><a href="#leclist1" class="on">단강좌 <span>3</span></a><span class="row-line">|</span></li>
-            <li><a href="#leclist2">패키지강좌 <span>6</span></a></li>
-            <li><a href="#leclist3">PASS강좌 <span>6</span></a></li>
-            <li><a href="#leclist4">관리자부여강좌 <span>6</span></a></li>
+            <li><a href="#leclist2">패키지강좌 <span>6</span></a><span class="row-line">|</span></li>
+            <li><a href="#leclist3">PASS강좌 <span>6</span></a><span class="row-line">|</span></li>
+            <li><a href="#leclist4" class="twoRow">관리자부여 <span>6</span><br>(복습동영상)</a></li>
         </ul>
         <div class="tabBox lineBox lecListBox">
             <div id="leclist1" class="tabContent">

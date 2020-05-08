@@ -206,7 +206,7 @@
                     <li><a href="#Mypagetab1" onclick="openTxt('info1')" class="on">단강좌 (3)</a></li>
                     <li><a href="#Mypagetab2" onclick="openTxt('info2')">패키지강좌 (2)</a></li>
                     <li><a href="#Mypagetab3" onclick="openTxt('info3')">무료강좌 (3)</a></li>
-                    <li><a href="#Mypagetab4" onclick="openTxt('info4')">관리자부여강좌 (4)</a></li>
+                    <li><a href="#Mypagetab4" onclick="openTxt('info4')">관리자부여강좌 (복습동영상) (4)</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Mypagetab1" class="tabLink">

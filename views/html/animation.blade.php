@@ -290,7 +290,7 @@
         .wb_cts12 {font-size:200px; font-weight:bold; color:#fff; height:400px; overflow:hidden}
         .wb_cts12 div {-webkit-animation: kenburns-top 5s ease-out both;
 	        animation: kenburns-top 5s ease-out both;
-            background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") center bottom, ;
+            background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") center top, ;
             padding:100px 0;
         }
         @@-webkit-keyframes kenburns-top {

@@ -24,8 +24,8 @@
         .skybanner {position:fixed; top:150px; right:10px; z-index:1;}
         .skybanner ul li {padding-bottom:10px;}
 
-        .evt_top {position:relative; overflow:hidden;  background:url("https://static.willbes.net/public/images/promotion/2020/03/1575_top_bg.jpg") center top  no-repeat}
-        .evt_tops{background:#2b2324 url("https://static.willbes.net/public/images/promotion/2020/02/1538_tops_bg.jpg") center top  no-repeat}
+        .evt_top {position:relative; overflow:hidden;  background:#f0eada url("https://static.willbes.net/public/images/promotion/2020/05/1575_top_bg.jpg") center top  no-repeat}
+        .evt_tops{background:#f8f8f8;}
         .evt_01 {background:#f7f7f7}
         .evt_02 {background:#e7e7e7;}
         .evt_03 {background:#f8f8f8}
@@ -72,23 +72,23 @@
   
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1427" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1537_sky3.png"  title="이상구 패권반" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=265066&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=265070&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
+          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1427" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1537_sky3.png"  title="이상구 패권반" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271605" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271606&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
       </ul>
     </div>
  
 
     <div class="evtCtnsBox evt_top">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1575_top.gif" title="윌비스 7급" />        
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_top.gif" title="윌비스 7급" />        
     </div>
 
     <div class="evtCtnsBox evt_tops">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1575_top_01.jpg" title="합격을 위한 길" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_top_01.jpg" title="합격을 위한 길" />
     </div>
         
     <div class="evtCtnsBox evt_01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/02/1538_01.jpg" title="과목별 고득점 커리큘럼" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1538_01.jpg" title="과목별 고득점 커리큘럼" />
     </div>
   
     <div class="evtCtnsBox evt_02">
@@ -96,9 +96,17 @@
     </div>
 
     <div class="evtCtnsBox evt_03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/03/1575_03.jpg" title="시간표" />
-    </div>    
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_03.jpg" title="시간표" />
+    </div>  
 
+    <div class="evtCtnsBox evt_apply">
+      <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_04.jpg" usemap="#Map1575a" title="시간표" border="0" />
+      <map name="Map1575a" id="Map1575a">
+        <area shape="rect" coords="268,569,848,653" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044" target="_blank" onfocus='this.blur()'  />
+      </map>
+    </div>   
+
+    {{--    
     <div class="evtCtnsBox wb_cts05s">			 
         <img src="http://file3.willbes.net/new_gosi/2019/03/1538_lec_t.png" title="7급종합반수강신청">
         <ul class="tab">
@@ -122,6 +130,7 @@
             <img src="http://file3.willbes.net/new_gosi/2019/03/1538_lec_btn.png" title="수강신청하기">
         </a>
 	</div>
+  --}}
 
     <div class="evtCtnsBox evt_05">
         <img src="https://static.willbes.net/public/images/promotion/2020/02/1538_04.jpg" title="수강혜택" />

@@ -21,7 +21,7 @@
 
         /************************************************************/     
 
-        .evtTop {background:#2f6cdd url("https://static.willbes.net/public/images/promotion/2020/03/1577_top_bg.jpg") no-repeat center top}          
+        .evtTop {background:#eee7e0 url("https://static.willbes.net/public/images/promotion/2020/05/1577_top_bg.jpg") no-repeat center top}          
         
         .evt01,.evt02,.evt03 {background:#fff;}      
        
@@ -63,19 +63,19 @@
     <div class="p_re evtContent NGR" id="evtContainer">           
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_top.gif" title="불꽃소방"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1577_top.gif" title="불꽃소방"/>
         </div>
       
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_01.jpg" usemap="#Map1539a" title="1500제 문풀" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1577_01.jpg" usemap="#Map1539a" border="0" />
             <map name="Map1539a" id="Map1539a">
-                <area shape="rect" coords="99,409,549,547" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" />
-                <area shape="rect" coords="570,408,1020,547" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" />
-            </map>      
+                <area shape="rect" coords="363,406,516,491" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" onfocus='this.blur()'  />
+                <area shape="rect" coords="836,405,985,488" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank" onfocus='this.blur()'  />
+            </map>         
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_02.jpg" title="3월 시간표" />       
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1577_02.jpg" title="5월 시간표" />       
         </div>      
 
         <div class="evtCtnsBox evt03">
@@ -104,7 +104,7 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1577_04.gif" title="특강"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1577_04.gif" title="특강"  />
         </div>
 
         <!--유의사항-->

@@ -250,6 +250,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
+            $data['dday'] = $this->_dday();
         }
 
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);

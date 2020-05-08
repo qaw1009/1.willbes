@@ -176,7 +176,7 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <th>직렬/ 응시번호</th>
+                                <th>직렬 / 응시번호</th>
                                 <td class="tx-left">
                                     <select name="">
                                         <option value="">응시직렬</option>
@@ -500,7 +500,7 @@
                             <li><input type="radio" id="one"><label for="one">1회</label></li>
                             <li><input type="radio" id="two"><label for="two">2회</label></li>
                             <li><input type="radio" id="three"><label for="three">3회</label></li>
-                            <li><input type="radio" id="four"><label for="four">4회</label></li>
+                            <li><input type="radio" id="four"><label for="four">4회 이상</label></li>
                         </ul>
 
                         <h3 class="mt30">본인 점수 입력</h3>

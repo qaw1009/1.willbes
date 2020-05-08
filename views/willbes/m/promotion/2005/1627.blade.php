@@ -593,7 +593,7 @@
                             </tr>
                         </table>
 
-                        <h3 class="mt30">본인 예상하는 실제 PAST 커트라인</h3>
+                        <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
                         <div class="mypoint">평균 <input value="" type="number" name="" id=""> 점 </div>
                     </div>
 

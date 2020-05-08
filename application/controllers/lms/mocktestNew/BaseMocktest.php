@@ -28,6 +28,16 @@ class BaseMocktest extends \app\controllers\BaseController
     }
 
     /**
+     * 직렬(운영코드) 전체 로딩 - SELECT MENU
+     * @param bool $isUseChk
+     * @return mixed
+     */
+    protected function getMockKindAll($isUseChk = true)
+    {
+        return $this->mockCommonModel->getMockKindAll($isUseChk);
+    }
+
+    /**
      * 카테고리에 매핑된 직렬 로딩 - SELECT MENU
      * @param bool $isUseChk
      * @return mixed

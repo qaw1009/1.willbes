@@ -58,6 +58,33 @@ class MockCommonModel extends WB_Model
     }
 
     /**
+     * 직렬(운영코드) 전체 로딩 - SELECT MENU
+     * @param bool $isUseChk
+     * @return mixed
+     */
+    public function getMockKindAll($isUseChk = true)
+    {
+        $sysCode_kind = $this->config->item('sysCode_kind', 'mock');
+        $arr_condition = [
+            'EQ' => [
+                'GroupCcd' => $sysCode_kind,
+                'IsStatus' => 'Y'
+            ]
+        ];
+
+        if (empty($isUseChk) === true) {
+            $arr_condition['EQ']['IsUse'] = 'Y';
+        }
+
+        $column = 'Ccd, CcdName';
+        $from = " FROM {$this->_table['sys_code']}";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->result_array();
+    }
+
+    /**
      * 카테고리에 매핑된 직렬 로딩 - SELECT MENU
      * @param bool $isUseChk
      * @return mixed

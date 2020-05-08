@@ -71,7 +71,7 @@ class Code extends BaseMocktest
         $arr_site_code = $this->getSiteCode();
         $def_site_code = key($arr_site_code);
         $arr_base['cateD1'] = $this->getCategoryArray();
-        $arr_base['cateD2'] = $this->getMockKind(false);
+        $arr_base['cateD2'] = $this->getMockKindAll(false);
 
         if ($this->_reqG('act') == 'edit') { // 수정
             $method = 'PUT';

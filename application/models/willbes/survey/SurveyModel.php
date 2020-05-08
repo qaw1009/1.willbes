@@ -110,6 +110,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];
@@ -218,6 +219,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];
@@ -305,6 +307,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];
@@ -415,6 +418,7 @@ class SurveyModel extends WB_Model
                     'PredictIdx' => $PredictIdx,
                     'TakeNumber' => $this->input->post('TakeNumber'),
                     'TakeMockPart' => $this->input->post('TakeMockPart'),
+                    'TakeArea' => $this->input->post('TakeArea'),
                     'IsStatus' => 'Y'
                 ]
             ];

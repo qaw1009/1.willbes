@@ -37,7 +37,7 @@
                         <select class="form-control" style="width: 283px;" id="kind_cateD2" name="cateD2">
                             <option value="">직렬 선택</option>
                             @foreach($arr_base['cateD2'] as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['Ccd'] }}">{{ $row['CcdName'] }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -113,7 +113,7 @@
                             });
                         });
                         $regi_form.find('#kind_cateD1').chained('#kind_site');
-                        $regi_form.find('#kind_cateD2').chained('#kind_cateD1');
+                        /*$regi_form.find('#kind_cateD2').chained('#kind_cateD1');*/
                         @endif
                     })();
                 });

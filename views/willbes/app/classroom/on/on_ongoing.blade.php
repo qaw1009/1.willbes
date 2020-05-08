@@ -16,9 +16,9 @@
 
         <div class="lineTabs lecListTabs c_both">
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
-                <li><a href="#leclist1" class="on" onclick="fnSetMoreTable();" >단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist1" class="on" onclick="fnSetMoreTable();" >단과강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2" onclick="fnSetMoreTable();">패키지강좌 <span>{{count($pkgList)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist3" onclick="fnSetMoreTable();">무료강좌 <span>{{count($freeList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist3" onclick="fnSetMoreTable();">무료특강 <span>{{count($freeList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist4" onclick="fnSetMoreTable();">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
             </ul>
             <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/on/list/ongoing/')}}" onsubmit="">
@@ -57,7 +57,7 @@
             <div class="tabBox lineBox lecListBox">
                 <div id="leclist1" class="tabContent">
                     <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
-                        <div class="willbes-Txt-Tit NG">· 단강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
+                        <div class="willbes-Txt-Tit NG">· 단과강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
                         - 일시정지(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
                         - 1회 일시정지 기간은 수강 잔여일을 초과할 수 없으며, <span class="tx-red">일시 정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
                         - 일시정지된 강좌는 일시정지강좌에서 확인할 수 있습니다.<br/>
@@ -219,8 +219,8 @@
                 </div>
                 <div id="leclist3" class="tabContent" style="display: none;">
                     <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
-                        <div class="willbes-Txt-Tit NG">· 무료강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
-                        - 무료강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
+                        <div class="willbes-Txt-Tit NG">· 무료특강수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
+                        - 무료특강 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                     </div>
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                         <tbody>
@@ -263,7 +263,7 @@
                     </div>
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
                         <select id="admintab" name="admintab" title="lecture" class="seleLec width49p">
-                            <option value="admintab1" selected="selected">단강좌</option>
+                            <option value="admintab1" selected="selected">단과강좌</option>
                             <option value="admintab2">패키지</option>
                         </select>
                     </div>

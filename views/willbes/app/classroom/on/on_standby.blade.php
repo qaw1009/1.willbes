@@ -16,10 +16,10 @@
 
         <div class="lineTabs lecListTabs c_both">
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
-                <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist1" class="on">단과강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist3">PASS강좌 <span>{{count($passList)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist4">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
+                <li><a href="#leclist4" class="twoRow">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span><br>(복습동영상)</a></li>
             </ul>
             <div class="tabBox lineBox lecListBox">
                 <div class="tabContent">
@@ -238,7 +238,7 @@
                         </div>
                         <div class="willbes-Lec-Selected NG c_both tx-gray">
                             <select id="admintab" name="admintab" title="lecture" class="seleLec width49p">
-                                <option value="admintab1" selected="selected">단강좌</option>
+                                <option value="admintab1" selected="selected">단과강좌</option>
                                 <option value="admintab2">패키지</option>
                             </select>
                         </div>

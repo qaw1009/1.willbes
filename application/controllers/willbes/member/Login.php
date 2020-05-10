@@ -162,7 +162,8 @@ class Login extends BaseMember
                         'rtnUrl' => rawurlencode($rtnUrl)
                     ]);
                 } else {
-                    show_alert('로그인 되었습니다.', $rtnUrl, false);
+                    redirect($rtnUrl);
+                    // show_alert('로그인 되었습니다.', $rtnUrl, false);
                 }
 
             } else {

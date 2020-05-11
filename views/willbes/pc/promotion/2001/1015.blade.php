@@ -27,7 +27,7 @@
         .wb_evt01 {background:#fff}
         .wb_evt02 {background:#62282b url(https://static.willbes.net/public/images/promotion/2020/04/1015_02_bg.jpg) no-repeat center}
         .wb_evt03 {background:#fff}
-        .wb_evt04 {background:#f4f4f4}
+        .wb_evt04 {background:#f4f4f4; padding-bottom:150px}
         
     </style>
 

@@ -151,14 +151,7 @@
                 <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
             </map>
-        --}} 
-
-        {{-- 
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
-            @endif
-        --}}
+        --}}      
 
         </div>
         <div class="evtCtnsBox evt03ss">

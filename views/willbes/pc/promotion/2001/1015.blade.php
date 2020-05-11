@@ -53,6 +53,23 @@
         </div>
 
         <div class="evtCtnsBox wb_evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04_title.jpg" title="기본이론 강좌"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial')
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04.jpg" usemap="#Map1015b" title="기본이론 강좌" border="0" />
+                <map name="Map1015b" id="Map1015b">
+                    <area shape="rect" coords="820,370,914,401" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/161922" target="_blank" alt="신광은 형소법" title="신광은 형소법" onfocus='this.blur()'/>
+                    <area shape="rect" coords="820,409,914,441" href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/153345" target="_blank" alt="신광은 수사" title="신광은 수사" onfocus='this.blur()'/>
+                    <area shape="rect" coords="817,539,915,570" href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/161927" target="_blank" alt="장정훈 경찰학개론" title="장정훈 경찰학개론" onfocus='this.blur()'/>
+                    <area shape="rect" coords="815,578,917,611" href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/151726" target="_blank" alt="장정훈 행정법" title="장정훈 행정" onfocus='this.blur()'/>
+                    <area shape="rect" coords="817,729,916,761" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/161928" target="_blank" alt="김원욱 형법" title="김원욱 형법" onfocus='this.blur()'/>
+                    <area shape="rect" coords="817,899,917,932" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/161920" target="_blank" alt="하승민영어" title="하승민영어" onfocus='this.blur()'/>
+                    <area shape="rect" coords="818,1069,916,1102" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163723" target="_blank" alt="원유철 한국사" title="원유철 한국사" onfocus='this.blur()'/>
+                    <area shape="rect" coords="819,1238,917,1273" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163721" target="_blank" alt="오태진 한국사" title="오태진 한국사" onfocus='this.blur()'/>
+                </map>
+            @endif
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04.jpg" usemap="#Map1015b" title="기본이론 강좌" border="0" />
             <map name="Map1015b" id="Map1015b">
                 <area shape="rect" coords="820,370,914,401" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/161922" target="_blank" alt="신광은 형소법" title="신광은 형소법" onfocus='this.blur()'/>
@@ -64,6 +81,7 @@
                 <area shape="rect" coords="818,1069,916,1102" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163723" target="_blank" alt="원유철 한국사" title="원유철 한국사" onfocus='this.blur()'/>
                 <area shape="rect" coords="819,1238,917,1273" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/163721" target="_blank" alt="오태진 한국사" title="오태진 한국사" onfocus='this.blur()'/>
             </map>
+            --}}
         </div>       
 
     </div>

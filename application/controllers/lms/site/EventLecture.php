@@ -95,6 +95,7 @@ class EventLecture extends \app\controllers\BaseController
         $list_event_register = null;
         $file_data = null;
         $file_data_promotion = null;
+        $list_event_display_product = null;
 
         //관리옵션
         $optoins_keys = [];
@@ -120,6 +121,9 @@ class EventLecture extends \app\controllers\BaseController
 
         //포인트적립타입
         $arr_pointapply_ccd = $this->codeModel->getCcd('635');
+
+        //캠퍼스'N'상태 사이트 코드 조회
+        $onLineSite_list = $this->siteModel->getOnLineSiteArray();
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -173,6 +177,10 @@ class EventLecture extends \app\controllers\BaseController
 
             // 프로모션 부가 정보 조회
             $data['promotion_live_video_data'] = $this->eventLectureModel->listEventPromotionForLiveVideo($data['PromotionCode']);
+
+            // 강좌신청 조회
+            $list_event_display_product = $this->eventLectureModel->listEventForDisplayProduct($el_idx);
+
         }
 
         $this->load->view("site/event_lecture/create", [
@@ -194,8 +202,10 @@ class EventLecture extends \app\controllers\BaseController
             'file_data' => $file_data,
             'file_data_promotion' => $file_data_promotion,
             'list_event_register' => $list_event_register,
+            'list_event_display_product' => $list_event_display_product,
             'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true,
-            'promotion_attach_file_cnt' => (empty($file_data_promotion) === true) ? 3 : count($file_data_promotion)
+            'promotion_attach_file_cnt' => (empty($file_data_promotion) === true) ? 3 : count($file_data_promotion),
+            'onLineSite_list' => $onLineSite_list,
         ]);
     }
 
@@ -1187,4 +1197,23 @@ class EventLecture extends \app\controllers\BaseController
             'data' => $list,
         ]);
     }
+
+    /**
+     * DP 강좌신청 삭제
+     */
+    public function delDisplayProduct()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'edp_idx', 'label' => '강좌신청 식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->delDisplayProduct($this->_reqP('edp_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
 }

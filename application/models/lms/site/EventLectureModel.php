@@ -341,6 +341,13 @@ class EventLectureModel extends WB_Model
                 }
             }
 
+            // 이벤트 DP상품 저장
+            if(empty($input['edp_idx']) === false) {
+                if ($this->_addEventDisplayProduct($el_idx, $input) === false) {
+                    throw new \Exception('이벤트 DP상품 등록에 실패했습니다.');
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -2321,7 +2328,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 이벤트 신청강좌 리스트 조회
+     * 이벤트 DP 강좌신청 리스트 조회
      * @param $el_idx
      * @return bool
      */

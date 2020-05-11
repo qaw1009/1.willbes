@@ -42,11 +42,13 @@
                                         <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                         <span class="nBox n2">{{ $row['wLectureProgressCcdName'] }}</span>
                                     </dt>
-                                    @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                        <dt class="Tit NG ml10 mr10">맛보기{{ $sample_idx + 1 }}</dt>
-                                        @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
-                                        @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
-                                    @endforeach
+                                    @if(empty($row['LectureSampleData']) === false)
+                                        @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
+                                            <dt class="Tit NG ml10 mr10">맛보기{{ $sample_idx + 1 }}</dt>
+                                            @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                            @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
+                                        @endforeach
+                                    @endif
                                 </dl>
                             </td>
                             <td>

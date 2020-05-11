@@ -178,7 +178,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
-        $arr_base['add_apply_member_login_count'] = sess_data('is_login') !== true ? '0' : $this->eventFModel->getApplyMember(['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]], true);
+        $arr_base['add_apply_member_login_count'] = sess_data('is_login') !== true ? '0' : $this->eventFModel->getApplyMember(['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.MemIdx' => $this->session->userdata('mem_idx')]], true);
 
         // 상품 수강후기
         if(empty($arr_promotion_params['reply_prod_code']) === false) {
@@ -189,6 +189,18 @@ class BasePromotion extends \app\controllers\FrontController
                 $data['SubjectIdx'] = $reply_prod_data['SubjectIdx'];
                 $data['ProfIdx'] = $reply_prod_data['ProfIdx'];
             }
+        }
+
+        // DP상품 조회
+        if(empty($data['data_option_ccd']) === false && isset($data['data_option_ccd']['660005']) === true) {
+            $display_product_data = $this->eventFModel->listEventDisplayProduct($data['ElIdx']);
+            foreach ($display_product_data as $idx => $row) {
+                $display_product_data[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $display_product_data[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                $display_product_data[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                $display_product_data[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+            }
+            $arr_base['display_product_data'] = $display_product_data;
         }
 
         //모바일체크

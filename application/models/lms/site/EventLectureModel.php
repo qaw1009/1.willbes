@@ -25,7 +25,8 @@ class EventLectureModel extends WB_Model
         'event_register_r_product' => 'lms_event_register_r_product',
         'product' => 'lms_product',
         'event_add_apply' => 'lms_event_add_apply',
-        'event_add_apply_member' => 'lms_event_add_apply_member'
+        'event_add_apply_member' => 'lms_event_add_apply_member',
+        'event_display_product' => 'lms_event_display_product'
     ];
 
     public $_groupCcd = [
@@ -434,7 +435,7 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $el_idx = element('el_idx', $input);
             $ordering = element('Ordering', $input);
-            $evnet_category_data = element('cate_code', $input);
+            $event_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
             $request_type = element('request_type', $input);    //신청유형
             $promotion_live_type = element('promotion_live_type', $input, 'N');    //라이브송출관리타입
@@ -541,7 +542,7 @@ class EventLectureModel extends WB_Model
             }
 
             // 카테고리수정
-            $is_category = $this->_modifyEventCategory($el_idx, $evnet_category_data, element('site_code', $input));
+            $is_category = $this->_modifyEventCategory($el_idx, $event_category_data, element('site_code', $input));
             if ($is_category !== true) {
                 throw new \Exception($is_category);
             }
@@ -578,6 +579,13 @@ class EventLectureModel extends WB_Model
             if ($promotion_live_type == 'Y') {
                 if ($this->_addPromotionLiveVideo(element('promotion_code', $input), $input) === false) {
                     throw new \Exception('프로모션 라이브송출데이터 등록에 실패했습니다.');
+                }
+            }
+
+            // 이벤트 DP상품 저장
+            if(empty($input['edp_idx']) === false) {
+                if ($this->_addEventDisplayProduct($el_idx, $input) === false) {
+                    throw new \Exception('이벤트 DP상품 등록에 실패했습니다.');
                 }
             }
             
@@ -2303,11 +2311,93 @@ class EventLectureModel extends WB_Model
             LEFT JOIN {$this->_table['member_otherinfo']} AS O ON C.MemIdx = O.MemIdx
         ";
 
+        $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['A.IsStatus' => 'Y']);
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
         $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 이벤트 신청강좌 리스트 조회
+     * @param $el_idx
+     * @return bool
+     */
+    public function listEventForDisplayProduct($el_idx)
+    {
+        $column = 'DP.EdpIdx, DP.ElIdx, DP.ProdCode, DP.IsDispCart, DP.IsDispDirectPay, DP.OrderNum, DP.IsStatus, P.ProdName';
+        $from = "
+            FROM {$this->_table['event_display_product']} AS DP
+            LEFT OUTER JOIN {$this->_table['product']} AS P ON DP.ProdCode = P.ProdCode AND P.IsStatus = 'Y'
+        ";
+        $where = ' WHERE DP.ElIdx = ? AND DP.IsStatus = "Y"';
+        $order_by_offset_limit = ' ORDER BY DP.EdpIdx ASC';
+
+        $result = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+        return $result;
+    }
+
+    /**
+     * 이벤트 DP 강좌신청 삭제
+     * @param $edp_idx
+     * @return array|bool
+     */
+    public function delDisplayProduct($edp_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('EdpIdx', $edp_idx);
+            if ($this->_conn->update($this->_table['event_display_product']) === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 이벤트 DP상품 저장/수정
+     * @param $el_idx
+     * @param array $input
+     * @return array|bool
+     */
+    private function _addEventDisplayProduct($el_idx, $input = [])
+    {
+        try {
+            if(empty($input['edp_idx']) === false) {
+                foreach ($input['edp_idx'] as $key => $val) {
+                    $inputData['EdpIdx'] = $input['edp_idx'][$key];
+                    $inputData['ElIdx'] = $el_idx;
+                    $inputData['ProdCode'] = $input['event_display_product_prod_code'][$key];
+                    $inputData['IsDispCart'] = $input['event_display_product_is_disp_cart'][$key];
+                    $inputData['IsDispDirectPay'] = $input['event_display_product_is_disp_direct_pay'][$key];
+                    $inputData['OrderNum'] = $input['event_display_product_order_num'][$key];
+
+                    // edp_idx 값으로 insert, update 구분
+                    if (empty($val) === true) {
+                        $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->insert($this->_table['event_display_product']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    } else {
+                        $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->where('EdpIdx', $val)->update($this->_table['event_display_product']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 
 }

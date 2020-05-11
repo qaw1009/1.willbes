@@ -19,6 +19,7 @@
                     </li>
                 @endforeach
             @endif
+            <li class="tx-right" onclick="location.href='{{front_url('/support/gosiNotice/index')}}';">+ 더보기</li>
         </ul>
     </div>
     <div id="notice2" class="tabContent" style="display: none;">
@@ -36,6 +37,7 @@
                     </li>
                 @endforeach
             @endif
+            <li class="tx-right" onclick="location.href='{{front_url('/support/notice/index')}}';">+ 더보기</li>
         </ul>
     </div>
     <div id="notice3" class="tabContent" style="display: none;">
@@ -52,6 +54,7 @@
                         <span class="date">{{$row['RegDatm']}}</span>
                     </li>
                 @endforeach
+                <li class="tx-right" onclick="location.href='{{front_url('/support/examNews/index')}}';">+ 더보기</li>
             @endif
         </ul>
     </div>

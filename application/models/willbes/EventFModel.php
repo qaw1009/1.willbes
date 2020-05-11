@@ -39,7 +39,9 @@ class EventFModel extends WB_Model
         'event_add_apply_member' => 'lms_event_add_apply_member',
         'cart' => 'lms_cart',
         'order' => 'lms_order',
-        'order_product' => 'lms_order_product'
+        'order_product' => 'lms_order_product',
+        'event_display_product' => 'lms_event_display_product',
+        'product_on_lecture' => 'vw_product_on_lecture'
     ];
 
     //등록파일 rule 설정
@@ -1793,6 +1795,29 @@ class EventFModel extends WB_Model
         $order_by_offset_limit = " GROUP BY ST.result ORDER BY COUNT(*) DESC";
 
         return $this->_conn->query('SELECT ' . $column . $from . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
+    /**
+     * 이벤트 DP상품 데이터 조회
+     * @param $el_idx
+     * @return mixed
+     */
+    public function listEventDisplayProduct($el_idx)
+    {
+        $column = "A.*, B.*";
+        $from = "
+            FROM {$this->_table['event_display_product']} AS A
+            LEFT OUTER JOIN	{$this->_table['product_on_lecture']} AS B ON A.ProdCode = B.ProdCode 
+                AND B.IsSaleEnd = 'N' AND B.IsUse = 'Y' AND B.SaleStatusCcd = '618001' AND B.LecSaleType = 'N' AND wIsUse = 'Y'
+                AND NOW() BETWEEN B.SaleStartDatm AND B.SaleEndDatm
+        ";
+        $where = ' 
+            WHERE A.ElIdx = ? AND A.IsStatus = "Y"
+        ';
+        $order_by_offset_limit = ' ORDER BY A.OrderNum ASC, A.EdpIdx ASC';
+
+        // 쿼리 실행
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
     }
 
 }

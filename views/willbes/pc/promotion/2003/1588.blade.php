@@ -64,14 +64,13 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_sky.png" usemap="#Map1588_sky" title="반반한 모의고사" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1588_sky.png" usemap="#Map1588_sky" title="반반한 모의고사" border="0">
             <map name="Map1588_sky" id="Map1588_sky">
-                <area shape="rect" coords="8,118,153,194" href="#youtube_watch" />
-                <area shape="rect" coords="7,199,151,275" href="#detail" />
-                <area shape="rect" coords="7,281,150,353" href="#evt1" />
-                <area shape="rect" coords="8,358,149,433" href="javascript:alert('Coming Soon')" />
-                <area shape="rect" coords="7,439,150,513" href="#evt3" />
-                <area shape="rect" coords="4,522,152,593" href="#evt3" />
+                <area shape="rect" coords="6,116,152,194" href="#youtube_watch" />
+                <area shape="rect" coords="4,199,150,272" href="#detail" />
+                <area shape="rect" coords="4,279,149,355" href="#evt1" />
+                <area shape="rect" coords="-1,359,149,437" href="#evt3" />
+                <area shape="rect" coords="1,443,147,523" href="#evt3" />
             </map>           
         </div>
 
@@ -271,7 +270,7 @@
 					</li>
                     <li>                    
                         <span class="big">강의 자료 제공 일정 안내</span><br>
-                        &nbsp;- 방송 당일 오후 15시~오후 22시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+                        &nbsp;- 방송 당일 오후 12시~오후 22시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
 						&nbsp;- 방송 당일 오후 22시~자정 : 문제+해설+스터디 자료<br>
 					</li>     
                     <li>                   
@@ -281,22 +280,12 @@
 					</li>   
                     <li>                    
                         <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 4월 13일 (월)부터 5월 8일 (금)까지 총 20회 진행됩니다. (공휴일 제외)<br>
-						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (4/27(월))의 경우 <br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 5월 11일(월)부터 6월 5일(금)까지 총 20회 진행됩니다. (공휴일 제외)<br>
+						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (5/11(월), 5/25(월))의 경우<br>
 						&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 이벤트 경품은 5월 12일 (화)까지 [내강의실]에서 확인하실 수 있습니다.<br>
+						&nbsp;- 당첨자 안내 공지는 6월 9일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 					</li>
-                    <li>                    
-                        <span class="big">소문내기 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 5월 8일 (금)까지 진행됩니다.<br>
-						&nbsp;- 지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.<br>
-						&nbsp;- 이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.<br>
-						&nbsp;- 본 이벤트는 선착순이나 게시글 작성 수가 아닌 추첨으로 당첨자 선정이 이루어지오나, 다양한 커뮤니티에 다양한 <br>
-						&nbsp; &nbsp;내용으로  정성스럽게 작성시 당첨확률이 높아질 수 있습니다.<br>
-						&nbsp;- 이벤트 당첨자 발표는 5월 12일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
-						<span class="txt_point">(*경품 지급일의 경우, 당첨자 발표 공지사항에서 안내드릴 예정입니다.)</span><br>
-                    </li>          
                     <li>                    
                         <span class="big">돌발퀴즈 이벤트 관련</span><br>
 						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>

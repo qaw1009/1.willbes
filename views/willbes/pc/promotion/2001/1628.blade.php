@@ -10,8 +10,7 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -56,18 +55,6 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">      
-
-        <!--
-        <div class="evtCtnsBox evt_counter">
-            <div class="counter">
-                <div class="left_area NGEB">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
-                    경찰합격 풀케어 서비스 이용현황<span>1,770,232</span>건
-                </div>
-            </div>
-        </div>
-        -->   
-
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">               
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1362_top.jpg" title="적중은 신광은 경찰팀!">

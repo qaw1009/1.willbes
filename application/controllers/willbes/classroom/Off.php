@@ -269,7 +269,7 @@ class Off extends \app\controllers\FrontController
             return $this->json_error("정보가 올바르지 않습니다.");
         }
 
-        $today = date("Y-m-d", time());
+        $today = date("Y-m-d H:i:s", time());
         $sub_prod_data = [];
         $UnPaidInfo = [];
         $unpaid_data = [];

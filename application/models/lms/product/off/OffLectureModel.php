@@ -400,6 +400,23 @@ class OffLectureModel extends CommonLectureModel
             }
             $SaleEndDatm = $SaleEndDat.' '.$SaleEndTime.':59:59';
 
+
+            $ProfChoiceStartYMD = element('ProfChoiceStartDate',$input,null);
+            $ProfChoiceStartDate_H = element('ProfChoiceStartDate_H',$input);
+            if(!empty($ProfChoiceStartYMD)) {
+                $ProfChoiceStartDate = $ProfChoiceStartYMD.' '.$ProfChoiceStartDate_H.':00:00';
+            } else {
+                $ProfChoiceStartDate = null;
+            }
+
+            $ProfChoiceEndYMD = element('ProfChoiceEndDate',$input,null);
+            $ProfChoiceEndDate_H = element('ProfChoiceEndDate_H',$input);
+            if(!empty($ProfChoiceEndYMD)) {
+                $ProfChoiceEndDate = $ProfChoiceEndYMD.' '.$ProfChoiceEndDate_H.':59:59';
+            } else {
+                $ProfChoiceEndDate = null;
+            }
+
             //상품관리 테이블 입력
             $input_product = [
                 'ProdName'=>element('ProdName',$input)
@@ -459,8 +476,8 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
                 ,'AcceptStatusCcd'=>element('AcceptStatusCcd',$input,null)
                 ,'OrderNum' =>element('OrderNum',$input,'0')
-                ,'ProfChoiceStartDate' => empty(element('ProfChoiceStartDate',$input,null)) ? NULL : element('ProfChoiceStartDate',$input)
-                ,'ProfChoiceEndDate' => empty(element('ProfChoiceEndDate',$input,null)) ? NULL : element('ProfChoiceEndDate',$input)
+                ,'ProfChoiceStartDate' => $ProfChoiceStartDate
+                ,'ProfChoiceEndDate' => $ProfChoiceEndDate
             ];
    }
 

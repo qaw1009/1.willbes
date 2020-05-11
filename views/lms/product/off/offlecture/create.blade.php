@@ -497,13 +497,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsCoupon">강사배정기간
+                    <label class="control-label col-md-2" for="ProfChoiceStartDate">강사배정기간
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="item inline-block">
-                            <input type="text" name="ProfChoiceStartDate" id="ProfChoiceStartDate" value="@if($method==='PUT'){{$data['ProfChoiceStartDate']}}@endif" class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            <input type="text" name="ProfChoiceStartDate" id="ProfChoiceStartDate" value="@if($method==='PUT' && !empty($data['ProfChoiceStartDate'])){{date("Y-m-d",strtotime($data['ProfChoiceStartDate']))}}@endif" class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            <select name="ProfChoiceStartDate_H" id="ProfChoiceStartDate_H" class="form-control" title="">
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if($method==='PUT' && !empty($data['ProfChoiceStartDate']) && date("H",strtotime($data['ProfChoiceStartDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select> 시
                             ~
-                            <input type="text" name="ProfChoiceEndDate" id="ProfChoiceEndDate" value="@if($method==='PUT'){{$data['ProfChoiceEndDate']}}@endif"  class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            <input type="text" name="ProfChoiceEndDate" id="ProfChoiceEndDate" value="@if($method==='PUT' && !empty($data['ProfChoiceEndDate'])){{date("Y-m-d",strtotime($data['ProfChoiceEndDate']))}}@endif"  class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            <select name="ProfChoiceEndDate_H" id="ProfChoiceEndDate_H" class="form-control" title="">
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}" @if($method==='PUT' && !empty($data['ProfChoiceEndDate']) && date("H",strtotime($data['ProfChoiceEndDate'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                @endfor
+                            </select> 시
                             &nbsp;
                             • 선택형(강사배정) 종합반의 하위 강좌로 세팅시 필수 입력
                         </div>

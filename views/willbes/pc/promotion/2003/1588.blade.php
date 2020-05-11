@@ -69,19 +69,21 @@
                 <area shape="rect" coords="8,118,153,194" href="#youtube_watch" />
                 <area shape="rect" coords="7,199,151,275" href="#detail" />
                 <area shape="rect" coords="7,281,150,353" href="#evt1" />
-                <area shape="rect" coords="8,358,149,433" href="#evt2" />
+                <area shape="rect" coords="8,358,149,433" href="#none;" />
                 <area shape="rect" coords="7,439,150,513" href="#evt3" />
                 <area shape="rect" coords="4,522,152,593" href="#evt3" />
             </map>           
         </div>
 
+        {{--
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
                 <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTest/apply/cate/" onfocus='this.blur()' target="_blank" />
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
             </map>             
-        </div>                
+        </div>
+        --}}                 
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top.jpg"  title="더켠의 반반한 밤">            
@@ -140,6 +142,8 @@
                 <area shape="rect" coords="370,974,751,1034" href="#to_go" />
             </map>
         </div>
+
+        {{--
         <div class="evtCtnsBox evt03c">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
             <map name="Map1588c" id="Map1588c">
@@ -153,6 +157,8 @@
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
             @endif
+        --}}
+
         </div>
         <div class="evtCtnsBox evt03ss">
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1588_03ss.gif" usemap="#Map1588ss" id="evt3" title="다시보기 서비스" border="0">

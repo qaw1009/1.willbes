@@ -23,7 +23,7 @@
 
         .evt01 {background:#363636}
 
-        .evt02 {background:#1b1c1c; padding:100px 0}
+        .evt02 {background:#161717 url(https://static.willbes.net/public/images/promotion/2020/05/1628_02_bg.jpg) no-repeat center top; padding:100px 0}
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}

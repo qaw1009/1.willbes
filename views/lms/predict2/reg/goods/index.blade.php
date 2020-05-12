@@ -109,10 +109,10 @@
                             return '<span class="blue underline-link act-edit" data-predict_idx2="'+row.PredictIdx2+'">[' + row.PredictIdx2 + '] ' + row.Predict2Name + '</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.Research1StartDatm.substr(0,10) + ' ~ ' + row.Research1EndDatm.substr(0,10);
+                            return row.Research1StartDatm.substr(0,16) + ' ~ ' + row.Research1EndDatm.substr(0,16);
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return row.Research2StartDatm.substr(0,10) + ' ~ ' + row.Research2EndDatm.substr(0,10);
+                        return row.Research2StartDatm.substr(0,16) + ' ~ ' + row.Research2EndDatm.substr(0,16);
                     }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

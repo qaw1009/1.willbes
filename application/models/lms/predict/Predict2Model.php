@@ -1041,7 +1041,7 @@ class Predict2Model extends WB_Model
         $column = '*, ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName';
         $from = "
             FROM {$this->_table['predict2_questions']} AS MQ
-            INNER JOIN {$this->_table['predict2_area_list']} AS MAL ON MQ.PalIdx = MAL.PalIdx
+            LEFT JOIN {$this->_table['predict2_area_list']} AS MAL ON MQ.PalIdx = MAL.PalIdx AND MAL.IsStatus = 'Y'
             LEFT OUTER JOIN {$this->_table['admin']} as ADMIN ON MQ.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} as ADMIN2 ON MQ.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
         ";
@@ -1317,7 +1317,7 @@ class Predict2Model extends WB_Model
 
             $data = [
                 'PredictIdx2' => $predictIdx2,
-                'SiteCode' => element('site_code', $form_data),
+                'SiteCode' => element('siteCode', $form_data),
                 'Predict2Name' => element('predict2_name', $form_data),
                 'TakePart' => element('TakePart', $form_data),
                 'MockPart' => implode(',', element('mock_part', $form_data)),

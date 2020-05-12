@@ -28,8 +28,8 @@
         .slide_con {position:relative; width:1120px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-80px; top:46%; width:67px; height:67px;}
-        .slide_con p.rightBtn {right:-80px;top:46%; width:67px; height:67px;}
+        .slide_con p.leftBtn {left:0; top:46%; width:67px; height:67px;}
+        .slide_con p.rightBtn {right:0;top:46%; width:67px; height:67px;}
         .evt03 {background:#fff;}
 
         .snslink {

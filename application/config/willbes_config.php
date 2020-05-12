@@ -111,3 +111,10 @@ $config['predict'] = array(
     'upload_url_predict' => PUBLICURL . 'uploads/' . $config['upload_prefix_dir'] . '/predict/', // 업로드이미지 URL
     'upload_url_predict_lms' => PUBLICURL . 'uploads/lms/predict/'
 );
+
+$config['predict2'] = array(
+    'upload_path_predict2' => $config['upload_prefix_dir'] . '/predict2/', // 통파일 저장경로: ~/mocktest/{idx}/
+    'upload_path_predict2Q' => '/question/',                               // 개별 문제파일 저장경로 {$uploadPath_mock}/question/
+    'upload_path_predict2Backup' => 'bak_' . date("Ymd"),                  // 백업파일 저장경로 {$uploadPath_mock}/bak_{date}/
+    'upload_url_predict2' => PUBLICURL . 'uploads/' . $config['upload_prefix_dir'] . '/predict2/' // 업로드이미지 URL
+);

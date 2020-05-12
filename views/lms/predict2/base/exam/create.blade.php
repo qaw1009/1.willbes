@@ -207,6 +207,7 @@
                                 <option value="{{$n}}" @if($loop->index == '20') selected @endif>{{$n}}개</option>
                             @endforeach
                         </select>
+                        <input type="text" class="form-control" id="temp_score" style="min-width:50px; width:50px;" placeholder="배점" title="배점 전체 적용">
                         <button class="btn btn-sm btn-primary" id="act-addRow">필드추가</button>
                         <button class="btn btn-sm btn-primary" id="act-sort">정렬변경</button>
                         <button class="btn btn-sm btn-success" id="act-call">문항호출</button>
@@ -279,7 +280,7 @@
                                 <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="5"> <label>5</label></div>
                                 <input type="hidden" name="RightAnswer[]">
                             </td>
-                            <td class="text-center"><input type="text" class="form-control" name="Scoring[]" value=""></td>
+                            <td class="text-center"><input type="text" class="form-control scoring" name="Scoring[]" value=""></td>
                             <td class="text-center">
                                 <select class="form-control" name="Difficulty[]" style="padding:0">
                                     <option value="">선택</option>
@@ -521,6 +522,8 @@
                 cList.find('tr').each(function (index) {
                     if(index >= rowLen) $(this).find('[name="QuestionNO[]"]').val(++index);
                 });
+
+                $('.scoring').val($('#temp_score').val());
 
                 init_iCheck();
             });

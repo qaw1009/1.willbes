@@ -18,7 +18,7 @@
             {{-- 카테고리 --}}
             <ul class="curriTabs c_both">
             @foreach($arr_base['category'] as $idx => $row)
-                <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if(element('cate_code', $arr_input) == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
+                <li><a href="#none" onclick="goReUrl('cate_code', '{{ $row['CateCode'] }}', 'series_ccd,subject_idx,prof_idx');" class="@if(element('cate_code', $arr_input) == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
             @endforeach
             </ul>
             <div class="CurriBox">
@@ -42,9 +42,9 @@
                             <td colspan="9">
                                 {{-- 직렬 --}}
                                 <ul class="curriSelect">
-                                    <li><a href="#none" onclick="goUrl('series_ccd', '');" class="@if(empty(element('series_ccd', $arr_input)) === true) on @endif">전체</a></li>
+                                    <li><a href="#none" onclick="goReUrl('series_ccd', '', 'subject_idx,prof_idx');" class="@if(empty(element('series_ccd', $arr_input)) === true) on @endif">전체</a></li>
                                     @foreach($arr_base['series'] as $idx => $row)
-                                        <li><a href="#none" onclick="goUrl('series_ccd', '{{ $row['ChildCcd'] }}');" class="@if(element('series_ccd', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['ChildName'] }}</a></li>
+                                        <li><a href="#none" onclick="goReUrl('series_ccd', '{{ $row['ChildCcd'] }}', 'subject_idx,prof_idx');" class="@if(element('series_ccd', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['ChildName'] }}</a></li>
                                     @endforeach
                                 </ul>
                             </td>
@@ -56,9 +56,9 @@
                             <td colspan="9">
                                 {{-- 과목 --}}
                                 <ul class="curriSelect">
-                                    <li><a href="#none" onclick="goUrl('subject_idx', '');" class="@if(empty(element('subject_idx', $arr_input)) === true) on @endif">전체</a></li>
+                                    <li><a href="#none" onclick="goReUrl('subject_idx', '', 'prof_idx');" class="@if(empty(element('subject_idx', $arr_input)) === true) on @endif">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
-                                        <li><a href="#none" onclick="goUrl('subject_idx', '{{ $row['SubjectIdx'] }}');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>
+                                        <li><a href="#none" onclick="goReUrl('subject_idx', '{{ $row['SubjectIdx'] }}', 'prof_idx');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>
                                     @endforeach
                                 </ul>
                             </td>
@@ -215,11 +215,9 @@
                 @endforeach
             </div>
             <!-- willbes-Lec -->
-
             <div id="InfoForm" class="willbes-Layer-Box"></div>
             <!-- willbes-Layer-Box -->
         </form>
-
         {{-- footer script --}}
         @include('willbes.pc.site.book.only_footer_partial')
     </div>

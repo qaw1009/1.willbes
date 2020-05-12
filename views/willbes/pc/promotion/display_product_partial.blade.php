@@ -18,16 +18,16 @@
                     {{-- 1. 상품 --}}
                     <table cellspacing="0" cellpadding="0" class="lecTable">
                         <colgroup>
-                            <col width="120px;">
+                            <col width="140px;">
                             <col width="120px;">
                             <col width="*">
                             <col width="250px;">
                         </colgroup>
                         <tbody>
                         <tr>
-                            <td rowspan="2" class="w-name">{{$row['CourseName']}}<br/>{{$row['SubjectName']}}<br/><span class="tx-blue">{{$row['ProfNickName']}}</span></td>
+                            <td rowspan="2" class="w-name pl10 pr10">{{$row['CourseName']}}<br/>{{$row['SubjectName']}}<br/><span class="tx-blue">{{$row['ProfNickName']}}</span></td>
                             <td rowspan="2" class="pt20"><img src="{{$row['ProfReferData']['lec_list_img']}}" alt="강사명"></td>
-                            <td rowspan="2" class="w-data tx-left p_re">
+                            <td rowspan="2" class="w-data tx-left p_re pt10 pb10">
                                 <div class="w-tit">
                                     <a href="javascript:goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'only');">{{$row['ProdName']}}</a>
                                 </div>
@@ -121,8 +121,8 @@
                     {{-- 2. 교재 --}}
                     <table cellspacing="0" cellpadding="0" class="lecInfoTable">
                         <colgroup>
-                            <col width="140px">
-                            <col width="730px">
+                            <col width="190px">
+                            <col width="680px">
                             <col width="250px">
                         </colgroup>
                         <tbody>

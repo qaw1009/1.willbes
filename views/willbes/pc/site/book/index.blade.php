@@ -215,11 +215,9 @@
                 @endforeach
             </div>
             <!-- willbes-Lec -->
-
             <div id="InfoForm" class="willbes-Layer-Box"></div>
             <!-- willbes-Layer-Box -->
         </form>
-
         {{-- footer script --}}
         @include('willbes.pc.site.book.only_footer_partial')
     </div>

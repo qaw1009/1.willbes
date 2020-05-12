@@ -375,16 +375,27 @@ function getQueryString() {
 }
 
 /**
- * go url (form get method 이용)
+ * go url (기존 사용함수)
  * @param key
  * @param val
  * @param selector
  */
 function goUrl(key, val, selector) {
+    return goReUrl(key, val, '', selector);
+}
+
+/**
+ * go url (form get method 이용, reset_param (초기화 파라미터) 추가)
+ * @param key
+ * @param val
+ * @param reset_param
+ * @param selector
+ */
+function goReUrl(key, val, reset_param, selector) {
     var $url_form = $(selector || '#url_form');
     var $url_input = $url_form.find('[name="' + key + '"]');
     var $url_hidden = $url_form.find('input[type="hidden"][name="' + key + '"]');
-    var $arr_except = ['page'];
+    var $arr_except = ['page'].concat(reset_param.split(','));
 
     if ($url_input.length > 0) {
         $url_input.val(val);
@@ -398,7 +409,9 @@ function goUrl(key, val, selector) {
 
     // 제외 파라미터 제거
     $.each($arr_except, function(index, item) {
-        $url_form.find('input[type="hidden"][name="' + item + '"]').remove();
+        if (item.length > 0) {
+            $url_form.find('input[type="hidden"][name="' + item + '"]').remove();
+        }
     });
 
     $url_form.prop('action', location.protocol + '//' + location.host + location.pathname);

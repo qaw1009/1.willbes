@@ -19,9 +19,9 @@
 
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="event_site_code">운영사이트<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'event_site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
                     <div class="col-md-4 form-inline ml-12-dot">
@@ -236,7 +236,7 @@
                                                 <th>특강/설명회명</th>
                                                 <th>만료</th>
                                                 <th>사용</th>
-                                                <th>지급상품 <br> {!! html_site_select('', 'site_code', '', '', '운영 사이트', '') !!}</th>
+                                                <th>지급상품 <br> {!! html_site_select('', 'register_product_site_code', '', '', '운영 사이트', '') !!}</th>
                                                 <th>수정</th>
                                                 <th>삭제</th>
                                             </tr>
@@ -281,7 +281,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <button type="button" data-eridx="{{$row['ErIdx']}}" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
+                                                            <button type="button" data-eridx="{{$row['ErIdx']}}" data-poptype="register" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
                                                             <span id="event_register_product_{{$row['ErIdx']}}" class="event_register_product">
                                                             @if(empty($row['arr_event_product']) === false)
                                                                 @foreach($row['arr_event_product'] as $p_key => $p_val)
@@ -406,9 +406,9 @@
                                 <div class="row mt-10">
                                     <label class="control-label col-md-1"></label>
                                     <div class="col-md-11">
-                                    <input class="form-inline red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
-                                    <span class="red">byte</span>
-                                    (55byte 이상일 경우 MMS로 전환됩니다.)
+                                        <input class="form-inline red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
+                                        <span class="red">byte</span>
+                                        (55byte 이상일 경우 MMS로 전환됩니다.)
                                     </div>
                                 </div>
                             </div>
@@ -442,6 +442,78 @@
                                     • 배너를 선택하고 이벤트 등록한 후 해당 섹션의 배너 클릭 시 해당 이벤트의 바로신청 팝업이 자동 노출됩니다.</p>
                             </div>
                         </div>
+
+                        {{-- DP강좌신청 --}}
+                        <span id="temp_event_display_product" class="hide"></span>
+                        <div class="form-group hide" id="limit_{{$optoins_keys[4]}}">
+                            <div class="row">
+
+                                <div class="col-md-11">
+                                    <div class="form-group form-inline">
+                                        <div class="col-md-11">
+{{--                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '') !!}--}}
+                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', 'required', '', false, $onLineSite_list) !!}
+{{--                                            <button type="button" data-edpidx="{{$row['EdpIdx']}}" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>--}}
+                                            <button type="button" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <table class="table table-striped table-bordered" id="table_display_product">
+                                                <thead>
+                                                    <tr>
+                                                        <th>강좌명</th>
+                                                        <th class="hide">장바구니</th>
+                                                        <th class="hide">바로결제</th>
+                                                        <th>DP순서</th>
+                                                        <th>삭제</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @if (empty($list_event_display_product) === false)
+                                                    @php $i=1; @endphp
+                                                    @foreach($list_event_display_product as $row)
+                                                        <tr>
+                                                            <td>
+                                                                <input type="hidden" name="edp_idx[]" value="{{$row['EdpIdx']}}">
+                                                                <input type="hidden" name="event_display_product_prod_code[]" value="{{$row['ProdCode']}}">
+                                                                [{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                                            </td>
+                                                            <td class="hide">
+                                                                <select class="form-control" name="event_display_product_is_disp_cart[]" id="event_display_product_is_disp_cart{{$i}}" style="min-width: 70px;">
+                                                                    <option value="Y" @if($row['IsDispCart'] == 'Y')selected="selected"@endif>사용</option>
+                                                                    <option value="N" @if($row['IsDispCart'] == 'N')selected="selected"@endif>미사용</option>
+                                                                </select>
+                                                            </td>
+                                                            <td class="hide">
+                                                                <select class="form-control" name="event_display_product_is_disp_direct_pay[]" id="event_display_product_is_disp_direct_pay{{$i}}" style="min-width: 70px;">
+                                                                    <option value="Y" @if($row['IsDispDirectPay'] == 'Y')selected="selected"@endif>사용</option>
+                                                                    <option value="N" @if($row['IsDispDirectPay'] == 'N')selected="selected"@endif>미사용</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="event_display_product_order_num[]" id="event_display_product_order_num{{$i}}" value="{{$row['OrderNum']}}">
+                                                            </td>
+                                                            <td>
+                                                                <a href="#none" class="btn-display-product-delete" data-edp-idx="{{$row['EdpIdx']}}">
+                                                                    <i class="fa fa-times fa-lg red"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        @php $i++; @endphp
+                                                    @endforeach
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -830,12 +902,28 @@
 
             // 프로모션 지급상품 검색 버튼 클릭. 레이어 팝업 호출.
             $('.btn_product_search').on('click', function() {
-                // var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_code = $regi_form.find('#site_code').val();    //지급상품 사이트코드
+
+                var pop_type = $(this).data('poptype');
+                var event_product_target_id, event_product_target_field = null;
+                switch (pop_type) {
+                    case 'register' :
+                        event_product_target_id = 'event_register_product_' + $(this).data('eridx');
+                        //event_product_target_field = 'event_register_product_prod_code';
+                        event_product_target_field = 'prod_code';
+                        break;
+                    case 'display' :
+                        event_product_target_id = 'temp_event_display_product';
+                        event_product_target_field = 'event_display_product_prod_code';
+                        break;
+                    default :
+                        alert('오류가 발생하였습니다.');
+                        return;
+                }
+
+                var site_code = $regi_form.find('#'+pop_type+'_product_site_code').val();    //지급상품 사이트코드
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.');
-                    // $regi_form.find('select[name="site_code"]').focus();
-                    $regi_form.find('#site_code').focus();  //지급상품 사이트코드
+                    $regi_form.find('#'+pop_type+'_product_site_code').focus();  //지급상품 사이트코드
                     return;
                 }
                 var p_prod_type;
@@ -850,19 +938,20 @@
                     return;
                 }
 
-                var ret_er_idx = $(this).data('eridx');
                 $('.btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
-                        + '&prod_type=' + p_prod_type + '&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
+                        + '&prod_type=' + p_prod_type + '&return_type=inline&target_id=' + event_product_target_id + '&target_field=' + event_product_target_field
                         + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture,adminpack_lecture,periodpack_lecture&is_event=Y',
                     'width' : 1400
                 });
-                {{--$('.btn_product_search').setLayer({--}}
-                {{--    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code--}}
-                {{--        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'--}}
-                {{--        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',--}}
-                {{--    'width' : 1400--}}
-                {{--});--}}
+                {{--
+                $('.btn_product_search').setLayer({
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
+                        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
+                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                    'width' : 1400
+                });
+                --}}
             });
 
             // 지급상품 삭제 이벤트
@@ -878,6 +967,67 @@
             $regi_form.on('change', '.event_register_product', function() {
                 $(this).children('br').remove();
                 $(this).children('span').before('<br>');
+            });
+
+            // DP 강좌신청 삭제
+            $regi_form.on('click', '.btn-display-product-delete', function() {
+                var _url = '{{ site_url("/site/eventLecture/delDisplayProduct") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'edp_idx' : $(this).data('edp-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
+            // DP 강좌신청 결과 이벤트
+            $regi_form.on('change', '#temp_event_display_product', function() {
+                var code, data, html = '';
+                var dp_prod_num = 0;
+                var $tbody = $('#table_display_product tbody');
+                $(this).find('input[name="event_display_product_prod_code[]"]').each(function() {
+                    code = $(this).val();
+                    data = $(this).data();
+
+                    html += '<tr>';
+                    html += '	<td>';
+                    html += '		<input type="hidden" name="edp_idx[]" value=""> [' + code + '] ' + Base64.decode(data.prodName);
+                    html += '		<input type="hidden" name="event_display_product_prod_code[]" value="' + code + '">';
+                    html += '	</td>';
+                    html += '	<td class="hide">';
+                    html += '		<select class="form-control" name="event_display_product_is_disp_cart[]" id="event_display_product_is_disp_cart' + dp_prod_num + '" style="min-width: 70px;">';
+                    html += '			<option value="Y">사용</option>';
+                    html += '			<option value="N">미사용</option>';
+                    html += '		</select>';
+                    html += '	</td>';
+                    html += '	<td class="hide">';
+                    html += '		<select class="form-control" name="event_display_product_is_disp_direct_pay[]" id="event_display_product_is_disp_direct_pay' + dp_prod_num + '" style="min-width: 70px;">';
+                    html += '			<option value="Y">사용</option>';
+                    html += '			<option value="N">미사용</option>';
+                    html += '		</select>';
+                    html += '	</td>';
+                    html += '	<td>';
+                    html += '		<input type="text" name="event_display_product_order_num[]" id="event_display_product_order_num' + dp_prod_num + '" value="999">';
+                    html += '	</td>';
+                    html += '	<td>';
+                    // html += '		<a href="#none" class="btn-display-product-delete" data-edp-idx="">';
+                    // html += '			<i class="fa fa-times fa-lg red"></i>';
+                    // html += '		</a>';
+                    html += '	</td>';
+                    html += '</tr>';
+
+                });
+
+                $(this).html('');    // 임시 데이터 삭제
+                $tbody.append(html);
             });
 
         });

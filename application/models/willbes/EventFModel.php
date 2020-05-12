@@ -1804,7 +1804,14 @@ class EventFModel extends WB_Model
      */
     public function listEventDisplayProduct($el_idx)
     {
-        $column = "A.*, B.*";
+        $column = "
+            A.EdpIdx, A.ElIdx, A.IsDispCart, A.IsDispDirectPay, A.OrderNum, 
+            B.ProdCode, B.SiteCode, B.CateCode, B.ProdName, B.SaleStatusCcd, B.IsSaleEnd, B.SaleStartDatm, B.SaleEndDatm, B.IsBest, B.IsNew, B.IsCoupon, 
+            B.IsCart, B.IsFreebiesTrans, B.IsDeliveryInfo, B.Keyword, B.IsUse, B.CourseIdx, B.SubjectIdx, B.wLecIdx, B.SchoolYear, B.StudyPeriod, B.MultipleApply, 
+            B.StudyStartDate, B.LecSaleType, B.IsOpenwUnitNum, B.LecTypeCcd, B.ProfIdx, B.wProfIdx, B.wProfName, B.ProfNickName, B.ProfSlogan, B.IsOpenStudyComment, B.CourseName, B.OrderNumCourse, 
+            B.SubjectName, B.wLectureProgressCcd, B.wLectureProgressCcdName, B.wUnitLectureCnt,  B.wScheduleCount, B.wIsUse, B.wAttachFileReal, B.wAttachFile, B.wAttachPath, B.RegDatm, B.SiteGroupCode, B.SiteName, B.SiteUrl, 
+            B.ProdPriceData, B.ProdBookData, B.LectureSampleData, B.ProfReferData, B.ProdBookMemo, B.IsSalesAble, B.AppellationCcdName, B.ProfNickNameAppellation, B.ProdCateName
+        ";
         $from = "
             FROM {$this->_table['event_display_product']} AS A
             LEFT OUTER JOIN	{$this->_table['product_on_lecture']} AS B ON A.ProdCode = B.ProdCode 

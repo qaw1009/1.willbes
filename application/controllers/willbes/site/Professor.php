@@ -257,7 +257,7 @@ class Professor extends \app\controllers\FrontController
                 ]
             ];
 
-            $data['book'] = $this->bookFModel->listSalesProductBook(false, $arr_condition, 4, 0, ['P.ProdCode' => 'desc']);
+            $data['book'] = $this->bookFModel->listSalesProductBook(false, $arr_condition, 4, 0, ['P.IsBest' => 'desc', 'P.ProdCode' => 'desc']);
             $data['book'] = array_map(function ($arr) {
                 $arr['ProdPriceData'] = $arr['ProdPriceData'] != 'N' ? element('0', json_decode($arr['ProdPriceData'], true)) : [];
                 return $arr;

@@ -19,16 +19,11 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
 
         /************************************************************/
-        .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
-        .evt_counter .counter {position:relative; width:1120px; margin:0 auto}
-        .evt_counter .counter .left_area {text-align:center; padding-top:25px; font-size:24px}   
-        .evt_counter .counter .left_area img {margin-right:20px}
-        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px} 
-
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1362_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:#3c5ddd url(https://static.willbes.net/public/images/promotion/2020/05/1628_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#363636}
-        .evt02 {background:#187093; padding:100px 0}
+
+        .evt02 {background:#1b1c1c; padding:100px 0}
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
@@ -55,26 +50,24 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">      
-        <div class="evtCtnsBox evtTop">
-            <div class="evtTopInmg">               
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1362_top.jpg" title="적중은 신광은 경찰팀!">
-            </div>        
+        <div class="evtCtnsBox evtTop">                       
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1628_top.jpg" title="적중은 신광은 경찰팀!">    
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1362_01.jpg" title="2차 시험 역시">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1628_01.jpg" title="신광은 경찰팀 적중">
         </div>
 
         <div class="evtCtnsBox evt02">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide01.jpg" alt="신광은" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide02.jpg" alt="장정훈" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide03.jpg" alt="김원욱" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide04.jpg" alt="하승민" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide05.jpg" alt="오태진" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide06.jpg" alt="원유철" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1362_02_slide07.jpg" alt="김현정" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_01.jpg" alt="신광은" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_02.jpg" alt="장정훈" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_03.jpg" alt="김원욱" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_04.jpg" alt="하승민" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_05.jpg" alt="오태진" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_06.jpg" alt="원유철" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1628_02_07.jpg" alt="김현정" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
@@ -82,7 +75,10 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1362_03.jpg" title="적중문제를 소문내 봄">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1628_03.jpg" usemap="#Map1628a" title="적중문제를 소문내 봄" border="0">
+            <map name="Map1628a" id="Map1628a">
+                <area shape="rect" coords="272,1326,729,1397" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
+            </map>
             <ul class="snslink">
                 <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
                 <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
@@ -105,15 +101,6 @@
     <script src="/public/js/willbes/jquery.counterup.min.js"></script>
     <script src="/public/js/willbes/waypoints.min.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function( $ ) {
-            setTimeout(function() {
-                $('.counter').show();
-                $('.counter span').counterUp({
-                    delay: 11, // the delay time in ms
-                    time: 1000 // the speed time in ms
-                });
-            }, 1000);
-        });
 
         function doEvent() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}

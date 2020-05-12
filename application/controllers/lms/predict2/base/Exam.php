@@ -196,10 +196,10 @@ class Exam extends \app\controllers\BaseController
 
         $rules = [
             ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'PalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],
+            /*['field' => 'PalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],*/
             ['field' => 'QuestionOption[]', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
-            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B]'],
+            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required'],
+            /*['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B]'],*/
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
@@ -216,11 +216,13 @@ class Exam extends \app\controllers\BaseController
             $this->json_error('문항번호가 중복되어 있습니다.');
             return;
         }
+
         if( $this->_reqP('TotalScore') != array_reduce($this->_reqP('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
             $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
             return;
         }
-        foreach ($this->_reqP('QuestionOption') as $k => $v) {
+
+        /*foreach ($this->_reqP('QuestionOption') as $k => $v) {
             if( $v != 'J' && !preg_match('/^[1-9,]+$/', $this->_reqP('RightAnswer')[$k]) ) {
                 $this->json_error('정답을 선택하세요');
                 return;
@@ -245,7 +247,7 @@ class Exam extends \app\controllers\BaseController
                 $this->json_error("정답갯수가 맞지 않습니다.\n\n객관식(단일): 정답 1개\n객관식(복수): 정답 2개 이상\n주관식:입력X");
                 return;
             }
-        }
+        }*/
 
         $result = $this->predict2Model->storeQuestion($this->_reqP(null));
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);

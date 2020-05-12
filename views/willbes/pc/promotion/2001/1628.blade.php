@@ -23,9 +23,9 @@
 
         .evt01 {background:#363636}
 
-        .evt02 {background:#161717 url(https://static.willbes.net/public/images/promotion/2020/05/1628_02_bg.jpg) no-repeat center top; padding:100px 0}
+        .evt02 {background:#161717 url(https://static.willbes.net/public/images/promotion/2020/05/1628_02_bg.jpg) repeat-y center center;}
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:980px; margin:0 auto}	
+        .slide_con {position:relative; width:1120px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-80px; top:46%; width:67px; height:67px;}
@@ -120,11 +120,11 @@
                 auto:true,
                 speed:350,
                 pause:4000,
-                pager:true,
+                pager:false,
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
-                slideWidth:980,
+                slideWidth:1120,
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1

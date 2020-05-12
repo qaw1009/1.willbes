@@ -264,6 +264,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
  * @property SubTitlesFModel $subTitlesFModel                                   SubTitles Model Class
  * @property PredictFModel $predictFModel                                       Predict Model Class
+ * @property Predict2FModel $predict2FModel                                       Predict2 Model Class
  * @property RouletteFModel $rouletteFModel                                         Roulette Model Class
  * @property SupportersFModel $supportersFModel                                 Supporters Model Class
  * @property BtobCertFModel $btobCertFModel                                     Btob Cert Apply Model Class

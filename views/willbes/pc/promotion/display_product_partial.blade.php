@@ -76,7 +76,7 @@
                                             --}}
                                         </li>
                                         <li class="btnBuy">
-                                            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">바로결제</button>
+                                            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue">바로결제</button>
                                             {{--
                                             <a onclick="openWin('pocketBox2')" >바로결제</a>
                                             <div id="pocketBox2" class="pocketBox">

@@ -8,7 +8,7 @@
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" id='predict2_idx' name="predict2_idx" value="{{$PredictIdx2}}">
+        <input type="hidden" id='predict_idx2' name="predict_idx2" value="{{$PredictIdx2}}">
         <input type="hidden" name="Info" value="">
 
         <div class="x_panel">
@@ -33,19 +33,19 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        @if($method == 'PUT' && empty($data['CateCode']) === false)
+                        @if($method == 'PUT' && empty($data['TakePart']) === false)
                             <p class="form-control-static">{{ $data['CateName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                             <span id="selected_category" class="pl-10">{{ $data['CateName'] }}</span>
                         @endif
-                        <input type="hidden" id="cate_code" name="cate_code" value="{{ $data['CateCode'] }}" title="카테고리 선택" required="required"/>
+                        <input type="hidden" id="cate_code" name="cate_code" value="{{ $data['TakePart'] }}" title="카테고리 선택" required="required"/>
                     </div>
                     <label class="control-label col-md-1-1">응시분야 <span class="required">*</span></th>
                     </label>
                     <div class="col-md-4 form-inline">
                         <span class="form-control-static" id="TakePartDisp">{{ $data['CateName'] }}</span>
-                        <input type="hidden" name="TakePart" value="{{$data['CateCode']}}">
+                        <input type="hidden" name="TakePart" value="{{$data['TakePart']}}">
                     </div>
                 </div>
 

@@ -85,8 +85,8 @@ class Goods extends \app\controllers\BaseController
                     'MP.PredictIdx2' => $PredictIdx2,
                 ]
             ]);
-            $data = $this->regGoodsModel->findGoods($arr_condition);
-            $sData = $this->regGoodsModel->listGoodsForSubject($arr_condition);
+            $data = $this->predict2Model->findGoods($arr_condition);
+            $sData = $this->predict2Model->listGoodsForSubject($arr_condition);
             if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
@@ -158,7 +158,7 @@ class Goods extends \app\controllers\BaseController
         } else {
             $method = 'modify';
             $rules = [
-                ['field' => 'prod_code', 'label' => '서비스상품코드', 'rules' => 'trim|required|is_natural_no_zero']
+                ['field' => 'predict_idx2', 'label' => '서비스상품코드', 'rules' => 'trim|required|is_natural_no_zero']
             ];
         }
         if ($this->validate($rules) === false) return;

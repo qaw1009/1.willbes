@@ -2,6 +2,7 @@
     <style>
         .btnCart:hover { background: #707070 !important; }
         .btnBuy:hover { border: 1px solid #0d74ae !important; background: #1a8ccb !important; }
+        .visi-hidden {visibility: hidden !important;}
     </style>
     <form id="dp_prod_form" name="dp_prod_form" method="POST" onsubmit="return false;" novalidate="">
         {!! csrf_field() !!}
@@ -49,45 +50,49 @@
                                             @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                         @endforeach
                                     @endif
+                                    @if($row['IsCart'] == 'N')
+                                        <div class="tx-red c_both">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</div>
+                                    @endif
                                 </dl>
                             </td>
                             <td>
-                                <ul class="lecBuyBtns tx-rgiht">
-                                    <li class="btnCart">
-                                        <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">장바구니</button>
-                                        {{--
-                                        <a onclick="openWin('pocketBox')" >장바구니</a>
-                                        <div id="pocketBox" class="pocketBox">
-                                            <a class="closeBtn" href="#none" onclick="closeWin('pocketBox')">
-                                                <img src="{{ img_url('cart/close.png') }}">
-                                            </a>
-                                            해당 상품이 장바구니에 담겼습니다.<br/>
-                                            장바구니로 이동하시겠습니까?
-                                            <ul class="NSK mt20">
-                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                                                <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
-                                            </ul>
-                                        </div>
-                                        --}}
-                                    </li>
-                                    <li class="btnBuy">
-                                        <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">바로결제</button>
-                                        {{--
-                                        <a onclick="openWin('pocketBox2')" >바로결제</a>
-                                        <div id="pocketBox2" class="pocketBox">
-                                            <a class="closeBtn" href="#none" onclick="closeWin('pocketBox2')">
-                                                <img src="{{ img_url('cart/close.png') }}">
-                                            </a>
-                                            도서구입비 소득공제 시행에 따라 강좌와 교재는 동시 결제가 불가능 합니다.<br>
-                                            선택한 교재는 장바구니에 자동으로 담기며, 강좌 선 결제 후 장바구니에 담긴 교재를 결제하실 수 있습니다.
-                                            <ul class="NSK mt20">
-                                                <li class="aBox waitBox_block"><a href="#none">확인</a></li>
-                                            </ul>
-                                        </div>
-                                        --}}
-                                    </li>
-                                </ul>
+                                    <ul class="lecBuyBtns tx-rgiht @if($row['IsCart'] == 'N') visi-hidden @endif">
+                                        <li class="btnCart">
+                                            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">장바구니</button>
+                                            {{--
+                                            <a onclick="openWin('pocketBox')" >장바구니</a>
+                                            <div id="pocketBox" class="pocketBox">
+                                                <a class="closeBtn" href="#none" onclick="closeWin('pocketBox')">
+                                                    <img src="{{ img_url('cart/close.png') }}">
+                                                </a>
+                                                해당 상품이 장바구니에 담겼습니다.<br/>
+                                                장바구니로 이동하시겠습니까?
+                                                <ul class="NSK mt20">
+                                                    <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                                                    <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                                                    <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
+                                                </ul>
+                                            </div>
+                                            --}}
+                                        </li>
+                                        <li class="btnBuy">
+                                            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">바로결제</button>
+                                            {{--
+                                            <a onclick="openWin('pocketBox2')" >바로결제</a>
+                                            <div id="pocketBox2" class="pocketBox">
+                                                <a class="closeBtn" href="#none" onclick="closeWin('pocketBox2')">
+                                                    <img src="{{ img_url('cart/close.png') }}">
+                                                </a>
+                                                도서구입비 소득공제 시행에 따라 강좌와 교재는 동시 결제가 불가능 합니다.<br>
+                                                선택한 교재는 장바구니에 자동으로 담기며, 강좌 선 결제 후 장바구니에 담긴 교재를 결제하실 수 있습니다.
+                                                <ul class="NSK mt20">
+                                                    <li class="aBox waitBox_block"><a href="#none">확인</a></li>
+                                                </ul>
+                                            </div>
+                                            --}}
+                                        </li>
+                                    </ul>
+
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +101,9 @@
                                     @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                         <ul class="priceWrap">
                                             <li>
-                                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="goods_chk chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
+                                                @if($row['IsCart'] == 'Y')
+                                                    <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="goods_chk chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
+                                                @endif
                                                 <label>
                                                     <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                                     <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
@@ -136,7 +143,9 @@
                                     @if(empty($row['ProdBookData']) === false)
                                         @foreach($row['ProdBookData'] as $book_idx => $book_row)
                                             <li>
-                                                <input type="checkbox" name="prod_code[]" class="goods_chk chk_books" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                @if($row['IsCart'] == 'Y')
+                                                    <input type="checkbox" name="prod_code[]" class="goods_chk chk_books" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                @endif
                                                 <label>
                                                     <span class="select">[{{ $book_row['wSaleCcdName'] }}]</span>
                                                     <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>

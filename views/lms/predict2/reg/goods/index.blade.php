@@ -51,7 +51,7 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead class="bg-white-gray">
                 <tr>
-                    <th class="valign-middle">선택</th>
+                    {{--<th class="valign-middle">선택</th>--}}
                     <th class="valign-middle">NO</th>
                     <th class="valign-middle">카테고리</th>
                     <th class="valign-middle">직렬</th>
@@ -80,7 +80,7 @@
 
             $datatable = $list_table.DataTable({
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 btn-copy' },
+                    /*{ text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 btn-copy' },*/
                     { text: '<i class="fa fa-pencil mr-5"></i> 서비스 등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/predict2/reg/goods/create') }}' + dtParamsToQueryString($datatable);
                         }}
@@ -94,9 +94,9 @@
                     }
                 },
                 columns: [
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    /*{'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<input type="radio" class="flat" name="target" value="' + row.PredictIdx2 + '">';
-                        }},
+                        }},*/
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},

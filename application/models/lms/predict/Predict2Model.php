@@ -436,7 +436,7 @@ class Predict2Model extends WB_Model
     }
 
     /**
-     * 등록된 모의고사 카테고리 로드
+     * 등록된 카테고리 로드
      * @param $idx
      * @return array
      */
@@ -463,7 +463,7 @@ class Predict2Model extends WB_Model
     }
 
     /**
-     * 모의고사카테고리 검색
+     * 카테고리 검색
      * @param string $column
      * @param bool $is_count
      * @param array $conditionAdd
@@ -484,7 +484,7 @@ class Predict2Model extends WB_Model
             $from .= " JOIN {$this->_table['sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'" . (($isUse === true) ? " AND SC.IsUse = 'Y'" : "");
             $from .= " LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx";
 
-        } else { // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
+        } else { // 서비스등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
             $from = " FROM {$this->_table['predict2_r_subject']} AS MS";
             $from .= " JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'" . (($isUse === true) ? " AND SJ.IsUse = 'Y'" : "");
             $from .= " JOIN {$this->_table['predict2_code']} AS MB ON MS.PcIdx = MB.PcIdx AND MB.IsStatus = 'Y'" . (($isUse === true) ? " AND MB.IsUse = 'Y'" : "");
@@ -1216,6 +1216,14 @@ class Predict2Model extends WB_Model
         return ['ret_cd' => true, 'dt' => ['idx' => element('idx', $form_data)]];
     }
 
+    /**
+     * 서비스상품 리스트
+     * @param bool $is_count
+     * @param array $add_condition
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
     public function goodsMainList($is_count = false, $add_condition = [], $limit = null, $offset = null)
     {
         if ($is_count === true) {
@@ -1234,6 +1242,10 @@ class Predict2Model extends WB_Model
                 '' AS OfflineRegCnt,
                 '' AS GradeCNT
             ";
+
+            /**
+             * TODO : 쿼리 미비
+             */
             /*$column .= "
                 (
                     SELECT COUNT(mr1.MemIdx) 
@@ -1290,7 +1302,7 @@ class Predict2Model extends WB_Model
     }
 
     /**
-     * 모의고사 상품 등록
+     * 서비스 상품 등록
      * @param array $form_data
      * @return array|bool
      */
@@ -1336,6 +1348,107 @@ class Predict2Model extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 모의고사 상품 수정
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function modifyGoods($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $predict_idx2 = element('predict_idx2', $form_data);
+
+            $data = [
+                'Predict2Name' => element('predict2_name', $form_data),
+                'MockPart' => implode(',', element('mock_part', $form_data)),
+                'Research1StartDatm' => element('Research1StartDatm_d', $form_data) .' '. element('Research1StartDatm_h', $form_data) .':'. element('Research1StartDatm_m', $form_data) .':00',
+                'Research1EndDatm' => element('Research1EndDatm_d', $form_data) .' '. element('Research1EndDatm_h', $form_data) .':'. element('Research1EndDatm_m', $form_data) .':59',
+                'Research2StartDatm' => element('Research2StartDatm_d', $form_data) .' '. element('Research2StartDatm_h', $form_data) .':'. element('Research2StartDatm_m', $form_data) .':00',
+                'Research2EndDatm' => element('Research2EndDatm_d', $form_data) .' '. element('Research2EndDatm_h', $form_data) .':'. element('Research2EndDatm_m', $form_data) .':59',
+                'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
+                'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
+                'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
+                'IsUse' => element('is_use', $form_data),
+                'UpdDatm' => date("Y-m-d H:i:s"),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+            ];
+
+            $this->_conn->set($data)->where('PredictIdx2', $predict_idx2);
+            if($this->_conn->update($this->_table['product_predict2'])=== false) {
+                throw new \Exception('fail');
+            }
+
+            if ($this->_storeProductPredict2RPaper($form_data, $predict_idx2) === false) {
+                throw new \Exception('서비스 상품 과목 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 서비스 상품 데이터 조회
+     * @param $arr_condition
+     * @return bool
+     */
+    public function findGoods($arr_condition)
+    {
+        $column = '
+            MP.*, SC.CateName, ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName
+        ';
+        $from = "
+            FROM {$this->_table['product_predict2']} AS MP
+            JOIN {$this->_table['sys_category']} AS SC ON MP.TakePart = SC.CateCode AND SC.IsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN ON MP.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN2 ON MP.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
+        ";
+
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => ['MP.IsStatus' => 'Y']
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $data = $this->_conn->query('select '.$column .$from .$where)->row_array();
+
+        if (empty($data) === true) {
+            return false;
+        }
+        $data['arr_mock_part'] = explode(',', $data['MockPart']);
+        return $data;
+    }
+
+    /**
+     * 서비스 상품의 과목 목록 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function listGoodsForSubject($arr_condition)
+    {
+        $column = 'MPE.*, EB.Year, EB.RotationNo, EB.PapaerName, SJ.SubjectName, PMS.wProfName';
+
+        $from = "
+            FROM {$this->_table['product_predict2']} AS MP
+            JOIN {$this->_table['product_predict2_r_paper']} AS MPE ON MP.PredictIdx2 = MPE.PredictIdx2 AND MPE.IsStatus = 'Y'
+            JOIN {$this->_table['predict2_paper']} AS EB ON MPE.PpIdx = EB.PpIdx AND EB.IsStatus = 'Y'
+            JOIN {$this->_table['predict2_paper_r_category']} AS MPRC ON EB.PpIdx = MPRC.PpIdx AND MPRC.IsStatus = 'Y'
+            JOIN {$this->_table['predict2_r_category']} AS MC ON MPRC.PrcIdx = MC.PrcIdx AND MC.IsStatus = 'Y'
+            JOIN {$this->_table['predict2_r_subject']} AS MS ON MC.PrsIdx = MS.PrsIdx AND MS.IsStatus = 'Y'
+            JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+            JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
+            JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = ' group by EB.PpIdx';
+        $order_by = ' order by MPE.OrderNum';
+        return $this->_conn->query('select '.$column .$from .$where . $group_by . $order_by)->result_array();
     }
 
     /**

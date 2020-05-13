@@ -75,7 +75,12 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-xs-7 text-right" style="padding-right: 0;">
+                        <div class="col-xs-2">
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="is_404_except" name="is_404_except" value="Y" style="width: 16px; height: 16px;"/> 404 Page Not Found 제외</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 text-right" style="padding-right: 0;">
                             <button class="btn btn-success" type="button" id="btn_download">Download</button>
                         </div>
                     </form>
@@ -186,8 +191,8 @@
         var _arr_order = ['{{ $sort_idx }}', '{{ $sort_dir }}'];
         $datatable = $('#log_table').dataTable({
             order: [_arr_order],
-            pageLength: 50,
-            lengthMenu: [[20, 50, 100, 1000], [20, 50, 100, 1000]],
+            pageLength: 100,
+            lengthMenu: [[20, 50, 100, 1000, 2000], [20, 50, 100, 1000, 2000]],
             paginationType : 'full_numbers'
         });
 
@@ -202,6 +207,15 @@
             $('html, body').animate({
                 scrollTop: 0
             }, 300);
+        });
+
+        // 404 Page Not Found 제외 체크박스 클릭
+        $search_form.on('change', 'input[name="is_404_except"]', function() {
+            if ($(this).is(':checked') === true) {
+                $datatable.api().columns(3).search('^(?!404 Page Not Found:).*$', true, false).draw();
+            } else {
+                $datatable.api().columns(3).search('').draw();
+            }
         });
 
         // 다운로드 버튼 클릭

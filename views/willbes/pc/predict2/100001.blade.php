@@ -121,7 +121,6 @@
                                 <th>이메일 </th>
                                 <td class="tx-left">
                                     <input type="email" id="register_email" name="register_email" maxlength="30" placeholder="이메일" value="{{sess_data('mem_mail')}}" style="width:250px">
-                                    ※ 분석 자료 전달에 사용되므로 정확히 기입해 주세요.
                                 </td>
                             </tr>
                             <tr>

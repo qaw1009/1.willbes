@@ -163,9 +163,9 @@
             합격예측 인증</div>
         </div>
         <!--sectin1_box//-->
+        @include('willbes.pc.predict2.1627_promotion_partial')
 
-
-        <div class="evtCtnsBox">          
+        {{--<div class="evtCtnsBox">
             <div class="sub_warp">
                 <div class="sub3_1">
                     <h2>기본정보 입력 </h2>                   
@@ -226,7 +226,7 @@
                     </div>
                     <div class="mt10"><input type="checkbox" id="yes"><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
                     
-                    {{--Research 1 (2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 ) ※ 2시간만 제공 - 빠른 채점 제공--}}
+                    Research 1 (2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 ) ※ 2시간만 제공 - 빠른 채점 제공
                     <div class="markingBox mt50">
                         <h3>응시횟수</h3>
                         <ul class="number">
@@ -493,7 +493,7 @@
                         </table>
                     </div>
 
-                    {{--Research 2(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 ) ※ 약 일주일간 제공--}}
+                    Research 2(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 ) ※ 약 일주일간 제공
                     <div class="markingBox mt50">
                         <h3>응시횟수</h3>
                         <ul class="number">
@@ -605,7 +605,7 @@
                 </div>              
 
             </div> 
-        </div>
+        </div>--}}
     </div>
 
 </div>

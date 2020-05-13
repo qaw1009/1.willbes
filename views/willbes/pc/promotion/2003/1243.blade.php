@@ -11,7 +11,6 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,8 +20,8 @@
 
         /************************************************************/
 
-        .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2019/05/1243_bg01.png) no-repeat center top; position:relative; height:1468px;}
-        .ev_winner {width:980px; margin:0 auto; height:515px; padding:80px 0 20px; margin:0 auto; overflow:hidden}
+        .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2020/05/1243_bg01.jpg) no-repeat center top; position:relative; height:1468px;}
+        .ev_winner {width:980px; margin:0 auto; height:515px; padding:100px 0 20px; margin:0 auto; overflow:hidden}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
         .wb_cts02 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
         .wb_cts03 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
@@ -60,7 +59,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1243_01.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-01.png"/></li>					
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1243_1-01.png"/></li>					
                 </ul>
             </div>
         </div><!--WB_top//-->
@@ -168,7 +167,7 @@
                 ticker: true,
                 mode: 'vertical',
                 tickerHover: true,
-                speed:10000*bx_num01
+                speed:50000*bx_num01
             });
         });
 

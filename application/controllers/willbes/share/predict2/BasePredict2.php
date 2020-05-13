@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePredict2 extends \app\controllers\FrontController
 {
-    protected $models = array('predict/predict2F');
+    protected $models = array('memberF', 'predict/predict2F');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -20,12 +20,47 @@ class BasePredict2 extends \app\controllers\FrontController
         $base_data = $this->_predict2Data($idx);
         $mack_part = $this->predict2FModel->getMackPart($idx);
         $subject_list = $this->predict2FModel->getSubjectList($idx);
-        $question_data = $this->predict2FModel->getQuestionForAnswer($idx);
-
-        if (empty($subject_list) === true) {
-            show_alert('등록된 과목이 없습니다.', 'back');
+        if (empty($base_data) === true || empty($subject_list) === true) {
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
+        $research_type = 'Research1';
+        if ($base_data['Research1StartDatm'] <= date('YmdHi') && $base_data['Research1EndDatm'] >= date('YmdHi')) {
+            $research_type = 'Research1';
+        }
+        if ($base_data['Research2StartDatm'] <= date('YmdHi') && $base_data['Research2EndDatm'] >= date('YmdHi')) {
+            $research_type = 'Research2';
+        }
+
+        //기본정보 조회
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx2' => $idx,
+                'IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                'MemIdx' => ($this->isLogin() !== true) ? '\'\'' : $this->session->userdata('mem_idx')
+            ]
+        ];
+        $column = 'PrIdx, PredictIdx2, fn_dec(UserTelEnc) AS UserTelDec, fn_dec(UserMailEnc) AS UserMailDec, TakeMockPart, TakeNumber, TakeCount, TakeLevel, CutPoint';
+        $reg_result = $this->predict2FModel->findPredictForRegister($arr_condition,$column);
+        $reg_data = $reg_result;
+        if (empty($reg_result) === false) {
+            $mode = 'MOD';
+            $arr_t2 = [];
+            $arr_t1 = explode(',', $reg_result['TakeLevel']);
+            foreach ($arr_t1 as $key => $val) {
+                $arr_t2[] = explode('|', $val);
+            }
+            foreach ($arr_t2 as $key => $val) {
+                $reg_data['ArrTakeLevel'][$val[0]] = $val[1];
+            }
+        }
+
+
+        $arr_reg_answerpaper = $this->_getRegDetailForScore($idx, $reg_data['PrIdx'], $this->session->userdata('mem_idx'));
+
+        $question_data = $this->predict2FModel->getQuestionForAnswer($idx, $reg_data['PrIdx']);
         $question_list = [];
         $j = 1;
         $numArr = [];
@@ -51,19 +86,33 @@ class BasePredict2 extends \app\controllers\FrontController
                 $j++;
             }
         }
-        $data = null;
 
-        /*print_r($base_data);*/
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx2' => $idx,
+            ],
+            'RAW' => [
+                'MemIdx' => ($this->isLogin() !== true) ? '\'\'' : $this->session->userdata('mem_idx'),
+                'PrIdx' => (empty($reg_data['PrIdx']) === true) ? '\'\'' : $reg_data['PrIdx']
+            ]
+        ];
+        $orgin_result = $this->predict2FModel->getOrginGradeData($arr_condition);
+        $orgin_data = [];
+        foreach ($orgin_result as $row) {
+            $orgin_data[$row['PpIdx']] = $row['OrgPoint'];
+        }
 
         $view_file = 'willbes/'.APP_DEVICE.'/predict2/'.$idx;
         $this->load->view($view_file, [
             'idx' => $idx,
             'mode' => $mode,
             'base_data' => $base_data,
+            'research_type' => $research_type,
             'mack_part' => $mack_part,
             'subject_list' => $subject_list,
             'question_list' => $question_list,
-            'data' => $data
+            'data' => $reg_data,
+            'orgin_data' => $orgin_data
         ], false);
     }
 
@@ -71,21 +120,24 @@ class BasePredict2 extends \app\controllers\FrontController
     public function storeAjax()
     {
         $method = 'add';
-        $idx = $this->_reqP('idx');
-
-        if (empty($idx) === false) {
+        $idx = $this->_reqP('predict_idx');
+        $prIdx = $this->_reqP('PrIdx');
+        if (empty($prIdx) === false) {
             $method = 'modify';
         }
-
-        $idx = $this->_reqP('PredictIdx');
         $arr_condition = ['EQ' => ['PredictIdx2' => $idx,'IsStatus' => 'Y','IsUse' => 'Y']];
         $data = $this->predict2FModel->findPredictData($arr_condition, 'PredictIdx2');
         if (empty($data) === true) {
             return $this->json_error('잘못된 접근 입니다.');
         }
 
+        if (empty($this->_reqP('research_type')) === true) {
+            return $this->json_error('잘못된 접근 입니다.');
+        }
+        $research_type = $this->_reqP('research_type');
+
         $error_result = [];
-        $result = $this->predict2FModel->{$method . 'Predict2'}($this->_reqP(null, false));
+        $result = $this->predict2FModel->{$method . 'Predict2' . $research_type}($this->_reqP(null, false));
         if ($result !== true) {
             $error_result = [
                 'ret_cd' => false,
@@ -93,7 +145,6 @@ class BasePredict2 extends \app\controllers\FrontController
                 'ret_status' => _HTTP_ERROR
             ];
         }
-        print_r($result);
         $this->json_result($result, '저장되었습니다.', $error_result);
     }
 
@@ -109,5 +160,40 @@ class BasePredict2 extends \app\controllers\FrontController
         $column .= ',DATE_FORMAT(Research2StartDatm, \'%Y%m%d%H%i\') AS Research2StartDatm, DATE_FORMAT(Research2EndDatm, \'%Y%m%d%H%i\') AS Research2EndDatm';
         $arr_condition = ['EQ' => ['PredictIdx2' => $predict_idx2,'IsStatus' => 'Y','IsUse' => 'Y']];
         return $this->predict2FModel->findPredictData($arr_condition, $column);
+    }
+
+    /**
+     * 점수입력 조건 리턴
+     * 과목별 총점, 총 평균점수
+     * @param $idx
+     * @param $prIdx
+     * @param $member_idx
+     * @return mixed
+     */
+    private function _getRegDetailForScore($idx, $prIdx = '', $member_idx = '')
+    {
+        $reSearch1_result = $this->predict2FModel->getRegisterPaperForSumResearch1($idx, $prIdx, $member_idx);
+        $reSearch2_result = $this->predict2FModel->getRegisterPaperForSumResearch2($idx, $prIdx, $member_idx);
+
+        if (empty($reSearch1_result) === true) {
+            $result = $reSearch2_result;
+        } else {
+            $result = $reSearch1_result;
+        }
+        $arr_sum = [];
+        $avg = '';  //전체평균
+        if (empty($result) === false) {
+            $sum = '0';
+            foreach ($result as $key => $val) {
+                $arr_sum[$val['PpIdx']] = $val['Scoring'];
+                $sum += (int)$val['Scoring'];
+            }
+            $avg = $sum / count($result);
+        }
+        return [
+            'type' => '',
+            'arr_sub' => $arr_sum,
+            'avg' => $avg
+        ];
     }
 }

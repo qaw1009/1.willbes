@@ -13,6 +13,10 @@ class Predict2FModel extends WB_Model
         'predict2_r_subject' => 'lms_predict2_r_subject',
         'product_subject' => 'lms_product_subject',
         'predict2_questions' => 'lms_predict2_questions',
+        'predict2_register' => 'lms_predict2_register',
+        'predict2_register_r_paper' => 'lms_predict2_register_r_paper',
+        'predict2_answerpaper' => 'lms_predict2_answerpaper',
+        'predict2_grades_origin' => 'lms_predict2_grades_origin',
     ];
 
     public function __construct()
@@ -94,11 +98,12 @@ class Predict2FModel extends WB_Model
     /**
      * 과목별 문항 조회 및 답안정보
      * @param $idx
+     * @param null $prIdx
      * @return mixed
-     * TODO : 답안관련 테이블 조인 미비
      */
-    public function getQuestionForAnswer($idx)
+    public function getQuestionForAnswer($idx, $prIdx = null)
     {
+        $member_idx = (empty($this->session->userdata('mem_idx')) === true) ? '' : $this->session->userdata('mem_idx');
         $arr_condition = [
             'EQ' => [
                 'PP.PredictIdx2' => $idx,
@@ -108,77 +113,515 @@ class Predict2FModel extends WB_Model
             ]
         ];
         $column = "
-            q.PqIdx, q.PpIdx, q.QuestionNO, q.QuestionOption, q.RightAnswer, q.Scoring, '' AS Answer
+            q.PqIdx, q.PpIdx, q.QuestionNO, q.QuestionOption, q.RightAnswer, q.Scoring, pa.Answer
         ";
 
         $from = "
             FROM {$this->_table['product_predict2']} AS PP
             INNER JOIN {$this->_table['product_predict2_r_paper']} AS PPRP ON PP.PredictIdx2 = PPRP.PredictIdx2
             INNER JOIN {$this->_table['predict2_questions']} AS q ON PPRP.PpIdx = q.PpIdx
+            LEFT JOIN {$this->_table['predict2_answerpaper']} AS pa ON q.PqIdx = pa.PqIdx AND pa.MemIdx = '{$member_idx}' AND PPRP.PredictIdx2 = '{$idx}' AND pa.PrIdx = '{$prIdx}'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = 'ORDER BY q.PpIdx, q.QuestionNO ASC';
-
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 
-    public function addPredict2($form_data)
+    /**
+     * 평균점수조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function getOrginGradeData($arr_condition)
     {
+        $column = 'PrIdx, PredictIdx2, PpIdx, TakeMockPart, OrgPoint';
+        $from = " FROM {$this->_table['predict2_grades_origin']} ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = ' ORDER BY PpIdx ASC';
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 기본정보조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    public function findPredictForRegister($arr_condition, $column = 'PrIdx')
+    {
+        $from = " FROM {$this->_table['predict2_register']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * Research1
+     * @param $form_data
+     * @return bool|string
+     */
+    public function addPredict2Research1($form_data)
+    {
+        $this->_conn->trans_begin();
         try {
-            $subjectData = $this->getSubjectList(element('PredictIdx', $form_data));
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 정보가 있습니다.');
+            }
+
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'TakeNumber' => element('take_num', $form_data),
+                    'TakeMockPart' => element('take_mock_part', $form_data),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            }
+
+            $subjectData = $this->getSubjectList(element('predict_idx', $form_data));
             if (empty($subjectData) === true) {
                 throw new Exception('조회된 과목이 없습니다.');
             }
 
-            $questionData = $this->getQuestionForAnswer(element('PredictIdx', $form_data));
+            $questionData = $this->getQuestionForAnswer(element('predict_idx', $form_data));
             if (empty($questionData) === true) {
                 throw new Exception('조회된 문항이 없습니다.');
             }
 
-            print_r($questionData);
+            $input_answer = element('Answer',$form_data);
+            $set_answer = [];
+            foreach ($input_answer as $key => $val) {
+                if(strlen($val) != 5) {
+                    throw new Exception('정답이 모두 입력되지 않았습니다.');
+                }
+                for($i = 0; $i < strlen($val); $i++) {
+                    $set_answer[] = substr($val, $i, 1);
+                }
+            }
+
             $take_level = '';
             foreach ($subjectData as $row) {
                 if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
                     throw new Exception('과목별 체감난이도를 선택해 주세요.');
                 }
-
-                for($i = 0; $i < count(element('Answer_'.$row['PpIdx'],$form_data)); $i++){
-                    $Answer = element('Answer_'.$row['PpIdx'],$form_data)[$i];
-                    /*if(strlen($Answer) != $row['AnswerNum']) {
-                        throw new Exception('정답이 모두 입력되지 않았습니다.');
-                    }*/
-                }
-
                 $take_level .= $row['PpIdx'].'|'.element('take_level_'.$row['PpIdx'],$form_data).',';
             }
             $take_level = substr($take_level, 0, -1);
 
-            $base_data = [
-                'PredictIdx2' => element('PredictIdx', $form_data),
-                'MemIdx' => $this->session->userdata('mem_idx'),
+            $register_tel = (empty(element('register_tel', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_tel', $form_data));
+            $register_email = (empty(element('register_email', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_email', $form_data));
 
-                'MemEmail' => element('register_email', $form_data),
-                'MemTel' => element('register_tel', $form_data),
+            $ins_reg_data = [
+                'SiteCode' => element('SiteCode', $form_data),
+                'PredictIdx2' => element('predict_idx', $form_data),
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'UserTelEnc' => $register_tel,
+                'UserMailEnc' => $register_email,
                 'TakeMockPart' => element('take_mock_part', $form_data),
                 'TakeNumber' => element('take_num', $form_data),
                 'TakeCount' => element('take_cnt', $form_data),
                 'TakeLevel' => $take_level,
             ];
+            if ($this->_conn->set($ins_reg_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predict2_register']) === false) {
+                throw new \Exception('기본정보 저장에 실패했습니다.');
+            }
+            $nowIdx = $this->_conn->insert_id();
 
+            $ins_reg_paper_data = [];
             foreach ($subjectData as $row) {
-                $answer_data[] = [
-                    'PpIdx' => ''
+                $ins_reg_paper_data[] = [
+                    'PrIdx' => $nowIdx,
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PpIdx' => $row['PpIdx'],
+                    'SubjectIdx' => $row['SubjectIdx']
                 ];
+            }
+            if ($this->_conn->insert_batch($this->_table['predict2_register_r_paper'], $ins_reg_paper_data) === false) {
+                throw new \Exception('과목정보 저장에 실패했습니다.');
+            }
+
+            $ins_answer_data = [];
+            foreach ($questionData as $key => $val) {
+                $ins_answer_data[] = [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PrIdx' => $nowIdx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'PpIdx' => $val['PpIdx'],
+                    'PqIdx' => $val['PqIdx'],
+                    'Answer' => (empty($set_answer[$key]) === true) ? '' : $set_answer[$key],
+                    'RegDatm' => date('Y-m-d H:i:s')
+                ];
+            }
+            if ($this->_conn->insert_batch($this->_table['predict2_answerpaper'], $ins_answer_data) === false) {
+                throw new \Exception('문항 정보 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * Research1
+     * @param $form_data
+     * @return bool|string
+     */
+    public function modifyPredict2Research1($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PrIdx' => element('PrIdx', $form_data),
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition);
+            if(empty($register_data) === true) {
+                throw new \Exception('등록된 기본정보가 없습니다.');
+            }
+
+            $subjectData = $this->getSubjectList(element('predict_idx', $form_data));
+            if (empty($subjectData) === true) {
+                throw new Exception('조회된 과목이 없습니다.');
+            }
+
+            $questionData = $this->getQuestionForAnswer(element('predict_idx', $form_data));
+            if (empty($questionData) === true) {
+                throw new Exception('조회된 문항이 없습니다.');
+            }
+
+            $input_answer = element('Answer',$form_data);
+            $set_answer = [];
+            foreach ($input_answer as $key => $val) {
+                if(strlen($val) != 5) {
+                    throw new Exception('정답이 모두 입력되지 않았습니다.');
+                }
+                for($i = 0; $i < strlen($val); $i++) {
+                    $set_answer[] = substr($val, $i, 1);
+                }
+            }
+
+            $take_level = '';
+            foreach ($subjectData as $row) {
+                if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
+                    throw new Exception('과목별 체감난이도를 선택해 주세요.');
+                }
+                $take_level .= $row['PpIdx'].'|'.element('take_level_'.$row['PpIdx'],$form_data).',';
+            }
+            $take_level = substr($take_level, 0, -1);
+
+            $register_tel = (empty(element('register_tel', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_tel', $form_data));
+            $register_email = (empty(element('register_email', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_email', $form_data));
+
+            //기본정보수정
+            $upd_reg_data = [
+                'UserTelEnc' => $register_tel,
+                'UserMailEnc' => $register_email,
+                'TakeMockPart' => element('take_mock_part', $form_data),
+                'TakeNumber' => element('take_num', $form_data),
+                'TakeCount' => element('take_cnt', $form_data),
+                'TakeLevel' => $take_level,
+            ];
+            $this->_conn->set($upd_reg_data)->set('UpdDatm', 'NOW()', false)->where('PrIdx', element('PrIdx', $form_data));
+            if ($this->_conn->update($this->_table['predict2_register']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+            if($this->_conn->delete($this->_table['predict2_register_r_paper'], ['PrIdx' => element('PrIdx', $form_data)]) === false) {
+                throw new \Exception('기본정보(과목) 삭제에 실패했습니다.');
+            }
+            $ins_reg_paper_data = [];
+            foreach ($subjectData as $row) {
+                $ins_reg_paper_data[] = [
+                    'PrIdx' => element('PrIdx', $form_data),
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PpIdx' => $row['PpIdx'],
+                    'SubjectIdx' => $row['SubjectIdx']
+                ];
+            }
+            if ($this->_conn->insert_batch($this->_table['predict2_register_r_paper'], $ins_reg_paper_data) === false) {
+                throw new \Exception('과목정보 저장에 실패했습니다.');
             }
 
 
+            //답안정보 삭제
+            $result = $this->_examDelete(element('PrIdx', $form_data));
+            if ($result !== true) {
+                throw new \Exception($result);
+            }
 
+            $ins_answer_data = [];
+            foreach ($questionData as $key => $val) {
+                $ins_answer_data[] = [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PrIdx' => element('PrIdx', $form_data),
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'PpIdx' => $val['PpIdx'],
+                    'PqIdx' => $val['PqIdx'],
+                    'Answer' => (empty($set_answer[$key]) === true) ? '' : $set_answer[$key],
+                    'RegDatm' => date('Y-m-d H:i:s')
+                ];
+            }
+            if ($this->_conn->insert_batch($this->_table['predict2_answerpaper'], $ins_answer_data) === false) {
+                throw new \Exception('문항 정보 저장에 실패했습니다.');
+            }
 
+            $this->_conn->trans_commit();
         } catch (Exception $e) {
+            $this->_conn->trans_rollback();
             return $e->getMessage();
         }
+        return true;
+    }
+
+    /**
+     * Research2
+     * @param $form_data
+     * @return bool|string
+     */
+    public function addPredict2Research2($form_data) {
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 정보가 있습니다.');
+            }
+
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'TakeNumber' => element('take_num', $form_data),
+                    'TakeMockPart' => element('take_mock_part', $form_data),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition);
+            if(empty($register_data) === false) {
+                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            }
+
+            $subjectData = $this->getSubjectList(element('predict_idx', $form_data));
+            if (empty($subjectData) === true) {
+                throw new Exception('조회된 과목이 없습니다.');
+            }
+
+            $questionData = $this->getQuestionForAnswer(element('predict_idx', $form_data));
+            if (empty($questionData) === true) {
+                throw new Exception('조회된 문항이 없습니다.');
+            }
+
+            $take_level = '';
+            foreach ($subjectData as $row) {
+                if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
+                    throw new Exception('과목별 체감난이도를 선택해 주세요.');
+                }
+                $take_level .= $row['PpIdx'].'|'.element('take_level_'.$row['PpIdx'],$form_data).',';
+            }
+            $take_level = substr($take_level, 0, -1);
+
+            $register_tel = (empty(element('register_tel', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_tel', $form_data));
+            $register_email = (empty(element('register_email', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_email', $form_data));
+
+            $ins_reg_data = [
+                'SiteCode' => element('SiteCode', $form_data),
+                'PredictIdx2' => element('predict_idx', $form_data),
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'UserTelEnc' => $register_tel,
+                'UserMailEnc' => $register_email,
+                'TakeMockPart' => element('take_mock_part', $form_data),
+                'TakeNumber' => element('take_num', $form_data),
+                'TakeCount' => element('take_cnt', $form_data),
+                'TakeLevel' => $take_level,
+                'CutPoint' => element('cut_point', $form_data)
+            ];
+            if ($this->_conn->set($ins_reg_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predict2_register']) === false) {
+                throw new \Exception('기본정보 저장에 실패했습니다.');
+            }
+            $nowIdx = $this->_conn->insert_id();
+
+            $ins_reg_paper_data = [];
+            foreach ($subjectData as $row) {
+                $ins_reg_paper_data[] = [
+                    'PrIdx' => $nowIdx,
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PpIdx' => $row['PpIdx'],
+                    'SubjectIdx' => $row['SubjectIdx']
+                ];
+            }
+            if ($this->_conn->insert_batch($this->_table['predict2_register_r_paper'], $ins_reg_paper_data) === false) {
+                throw new \Exception('과목정보 저장에 실패했습니다.');
+            }
+
+            $ScoreArr = element('Score', $form_data);
+            $PpIdxArr = element('PpIdx', $form_data);
+            foreach($ScoreArr as $key => $val){
+                $PpIdx = $PpIdxArr[$key];
+
+                $data = [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'PrIdx'  => $nowIdx,
+                    'PredictIdx2'=> element('predict_idx', $form_data),
+                    'PpIdx' => $PpIdx,
+                    'TakeMockPart' => element('take_mock_part', $form_data),
+                    'OrgPoint' => $val
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['predict2_grades_origin']) === false) {
+                    throw new \Exception('저장에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * Research2
+     * @param $form_data
+     * @return bool|string
+     * TODO : 확인해야 함.
+     */
+    public function modifyPredict2Research2($form_data) {
+        try {
+
+
+
+            $this->_conn->trans_commit();
+        } catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * Research1 과목별 총점
+     * @param $idx
+     * @param $prIdx
+     * @param $member_idx
+     * @return mixed
+     */
+    public function getRegisterPaperForSumResearch1($idx, $prIdx, $member_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'pa.PredictIdx2' => $idx,
+
+            ],
+            'RAW' => [
+                'pa.MemIdx' => (empty($member_idx) === true) ? '\'\'' : $member_idx,
+                'pa.PrIdx' => (empty($prIdx) === true) ? '\'\'' : $prIdx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = 'M.PrIdx, M.PredictIdx2, M.MemIdx, M.PpIdx, SUM(M.Scoring) AS Scoring';
+        $from = "
+            FROM (
+                SELECT 
+                pa.MemIdx, pa.PrIdx, pa.PredictIdx2, pa.PpIdx, pa.Answer, pq.RightAnswer, pq.Scoring
+                , IF (pa.Answer = pq.RightAnswer, 'Y','N') AS IsWrong
+                FROM lms_predict2_answerpaper AS pa
+                INNER JOIN lms_predict2_questions AS pq ON pa.PqIdx = pq.PqIdx AND pq.IsStatus = 'Y'
+                {$where}
+            ) AS M
+            WHERE M.IsWrong = 'Y'
+        ";
+        $group_by = ' GROUP BY M.PpIdx';
+        return $this->_conn->query('select ' . $column . $from . $group_by)->result_array();
+    }
+
+    /**
+     * Research2 과목별 총점
+     * @param $idx
+     * @param $prIdx
+     * @param $member_idx
+     * @return mixed
+     */
+    public function getRegisterPaperForSumResearch2($idx, $prIdx, $member_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx2' => $idx,
+                'PrIdx' => $prIdx,
+            ],
+            'RAW' => [
+                'MemIdx' => (empty($member_idx) === true) ? '\'\'' : $member_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = 'PrIdx, PredictIdx2, MemIdx, PpIdx, OrgPoint AS Scoring';
+        $from = " FROM lms_predict2_grades_origin";
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
+    }
+
+    /**
+     * 정답제출삭제
+     * @param $PrIdx
+     * @return array|bool
+     */
+    private function _examDelete($PrIdx)
+    {
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PrIdx' => $PrIdx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition, 'PrIdx, PointDelCnt');
+            if (empty($register_data) === true) {
+                throw new \Exception('조회된 기본정보가 없습니다.');
+            }
+
+            $where = ['PrIdx' => $PrIdx];
+            if($this->_conn->delete($this->_table['predict2_answerpaper'], $where) === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $point_del_cnt = $register_data['PointDelCnt'] + 1;
+            if ($this->_conn->set(['PointDelCnt' => $point_del_cnt, 'PointDelDatm' => date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update($this->_table['predict2_register']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
         return true;
     }
 }

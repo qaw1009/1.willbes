@@ -84,12 +84,12 @@
         <div class="sub_warp">
             <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
-                <input type="hidden" name="PredictIdx" value="{{ $idx }}" />
+                <input type="hidden" name="predict_idx" value="{{ $idx }}" />
+                <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+                <input type="hidden" name="SiteCode" value="{{ $__cfg['SiteCode'] }}" />
                 <input type="hidden" name="mode" value="{{ $mode }}" />
-                {{--@if($mode == 'MOD')
-                    <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
-                @endif
-                <input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />--}}
+                <input type="hidden" name="research_type" id="research_type" value="{{ $research_type }}">
+                {{--<input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />--}}
 
                 <div class="sub3_1">
                     <h2>기본정보 입력 </h2>
@@ -120,13 +120,13 @@
                             <tr>
                                 <th>이메일 </th>
                                 <td class="tx-left">
-                                    <input type="email" id="register_email" name="register_email" maxlength="30" placeholder="이메일" value="{{sess_data('mem_mail')}}" style="width:250px">
+                                    <input type="email" id="register_email" name="register_email" maxlength="30" placeholder="이메일" value="{{ ($mode == 'INS' ? sess_data('mem_mail') : $data['UserMailDec']) }}" style="width:250px">
                                 </td>
                             </tr>
                             <tr>
                                 <th>연락처</th>
                                 <td class="tx-left">
-                                    <input type="tel" id="register_tel" name="register_tel" maxlength="11" placeholder="연락처" value="{{sess_data('mem_phone')}}" style="width:150px">
+                                    <input type="tel" id="register_tel" name="register_tel" maxlength="11" placeholder="연락처" value="{{ ($mode == 'INS' ? sess_data('mem_phone') : $data['UserTelDec']) }}" style="width:150px">
                                 </td>
                             </tr>
                         </tbody>
@@ -148,11 +148,10 @@
                             - 개인정보 수집에 동의하지 않거나, 부정확한 정보를 입력하는 경우, 본 이벤트 관련 서비스 이용이 제한됨을 알려드립니다.</li>
                         </ul>
                     </div>
-                    <div class="mt10"><input type="checkbox" name="is_chk" id="is_chk"><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
+                    <div class="mt10"><input type="checkbox" name="is_chk" id="is_chk" {{ ($mode == 'MOD') ? 'checked="checked"' : '' }}><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
 
                     {{--Research 1 (2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 ) ※ 2시간만 제공 - 빠른 채점 제공--}}
-                    @if ($base_data['Research1StartDatm'] <= date('YmdHi') && $base_data['Research1EndDatm'] >= date('YmdHi'))
-                        <input type="hidden" name="research_type" value="1">
+                    @if ($research_type == 'Research1')
                         <div class="markingBox mt50">
                             <h3>응시횟수</h3>
                             <ul class="number">
@@ -178,7 +177,7 @@
                                                 <td>답안입력 </td>
                                                 @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
                                                     <td>
-                                                        <input class="txt-answer" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="{{ $val['AnswerNum'] }}" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
+                                                        <input class="txt-answer" type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
                                                     </td>
                                                 @endforeach
                                             </tr>
@@ -200,9 +199,15 @@
                                         <th>{{ $val['SubjectName'] }}</th>
                                         <td>
                                             <ul class="number">
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H"><label for="top_{{ $val['PpIdx'] }}">상</label></li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M"><label for="middle_{{ $val['PpIdx'] }}">중</label></li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L"><label for="bottom_{{ $val['PpIdx'] }}">하</label></li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}>
+                                                    <label for="top_{{ $val['PpIdx'] }}">상</label>
+                                                </li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}>
+                                                    <label for="middle_{{ $val['PpIdx'] }}">중</label>
+                                                </li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}>
+                                                    <label for="bottom_{{ $val['PpIdx'] }}">하</label>
+                                                </li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -212,8 +217,7 @@
                     @endif
 
                     {{--Research 2(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 ) ※ 약 일주일간 제공--}}
-                    @if ($base_data['Research2StartDatm'] <= date('YmdHi') && $base_data['Research2EndDatm'] >= date('YmdHi'))
-                        <input type="hidden" name="research_type" value="2">
+                    @if ($research_type == 'Research2')
                         <div class="markingBox mt50">
                             <h3>응시횟수</h3>
                             <ul class="number">
@@ -235,7 +239,9 @@
                                     <tr>
                                         <th>{{ $val['SubjectName'] }}</th>
                                         <td class="mypoint">
-                                            <input value="" type="number" name="" id=""> 점 {{--(합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)--}}
+                                            <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" value="{{ (empty($orgin_data[$val['PpIdx']]) === true ? '' : $orgin_data[$val['PpIdx']]) }}"> 점
+                                            {{--(합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)--}}
+                                            <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                         </td>
                                     </tr>
                                 @endforeach
@@ -260,9 +266,15 @@
                                         <th>{{ $val['SubjectName'] }}</th>
                                         <td>
                                             <ul class="number">
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value=""><label for="top_{{ $val['PpIdx'] }}">상</label></li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value=""><label for="middle_{{ $val['PpIdx'] }}">중</label></li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value=""><label for="bottom_{{ $val['PpIdx'] }}">하</label></li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}>
+                                                    <label for="top_{{ $val['PpIdx'] }}">상</label>
+                                                </li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}>
+                                                    <label for="middle_{{ $val['PpIdx'] }}">중</label>
+                                                </li>
+                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}>
+                                                    <label for="bottom_{{ $val['PpIdx'] }}">하</label>
+                                                </li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -270,7 +282,7 @@
                             </table>
 
                             <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
-                            <div class="mypoint">평균 <input value="" type="number" name="" id=""> 점 </div>
+                            <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="3" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}"> 점 </div>
                         </div>
                     @endif
 
@@ -287,49 +299,80 @@
         function js_submit() {
             var vali_msg = '';
             var chk = /^[1-5]+$/i;
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
-            /*if ($('#take_mock_part').val() == '') {
+            if ($('#take_mock_part').val() == '') {
+                $('#take_mock_part').focus();
                 alert('응시직렬을 선택해 주세요.');
                 return false;
             }
 
             if ($('#take_num').val() == '') {
+                $('#take_num').focus();
                 alert('응시번호를 입력해 주세요.');
                 return false;
             }
 
             if ($('#register_email').val() == '') {
+                $('#register_email').focus();
                 alert('이메일 주소를 입력해 주세요.');
                 return false;
             }
 
             if ($('#register_tel').val() == '') {
+                $('#register_tel').focus();
                 alert('연락처를 입력해 주세요.');
                 return false;
             }
 
             if ($regi_form.find('input[name="is_chk"]').is(':checked') === false) {
+                $regi_form.find('input[name="is_chk"]').focus();
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
 
-             if ($("input:radio[name='take_cnt']").is(':checked') == false) {
-                $('#take_cnt').focus();
+            if ($("input:radio[name='take_cnt']").is(':checked') == false) {
+                $("input:radio[name='take_cnt']").focus();
                 alert('응시횟수를 선택해 주세요.');return;
-             }
+            }
 
-             $('.txt-answer').each(function() {
-                var val = $(this).val();
-                if (val == '') {
-                    vali_msg = '답안을 모두 입력해 주세요.';
+            if ($('#research_type').val() == '1') {
+                $('.txt-answer').each(function () {
+                    var val = $(this).val();
+                    if (val == '') {
+                        vali_msg = '답안을 모두 입력해 주세요.';
+                        return false;
+                    }
+                    if (!chk.test(val)) {
+                        vali_msg = '허용되지 않은 답안입니다.';
+                        return false;
+                    }
+                });
+                if (vali_msg) {
+                    alert(vali_msg);
+                    return;
+                }
+            }
+
+            if ($('#research_type').val() == '2') {
+                $('.txt-answer2').each(function () {
+                    var val = $(this).val();
+                    if (val == '') {
+                        vali_msg = '본인 점수를 모두 입력해 주세요.';
+                        return false;
+                    }
+                });
+                if (vali_msg) {
+                    alert(vali_msg);
+                    return;
+                }
+
+                if ($('#cut_point').val() == '') {
+                    $('#cut_point').focus();
+                    alert('PAST 커트라인 평균점수를 입력해 주세요.');
                     return false;
                 }
-                if (!chk.test(val)) {
-                    vali_msg = '허용되지 않은 답안입니다.';
-                    return false;
-                }
-            });
-            if(vali_msg){ alert(vali_msg); return; }
+            }
 
             var take_level_chk = true;
             $regi_form.find('.take-level').each(function () {
@@ -340,7 +383,7 @@
                     return false;
                 };
             });
-            if (take_level_chk == false) {alert('체감난이도를 선택해 주세요.');return false;}*/
+            if (take_level_chk == false) {alert('체감난이도를 선택해 주세요.');return false;}
 
             if (confirm('정답을 제출하시겠습니까?')) {
                 var _url = '{{ front_url('/predict2/storeAjax') }}';

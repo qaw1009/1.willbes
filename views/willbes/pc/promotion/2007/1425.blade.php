@@ -17,7 +17,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relatifve}
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1425_top_bg.jpg) no-repeat center top;}   
@@ -31,9 +31,11 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        {{--
         <div class="skyBanner">
             <a href="https://lang.willbes.net/periodPackage/show/cate/3093/pack/648001/prod-code/158393" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1425_sky.png" title="바로신청하기"></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">

@@ -29,18 +29,14 @@
     .sectin2_box li:last-child {margin-top:15px}
 </style>
 
-
     <!-- Container -->
     <div class="evtContent NSK">
         <div class="evtCtnsBox sectin1_box NSK-Black">
-            {{--16일 20시 까지 보여지는 이미지--}}
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627_top.jpg" alt="#">
-            <!--16일 20시 이후 보여지는 이미지
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627_top_01.jpg" alt="#">
-            -->
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627_top{{ ('20200516200000' <= date('YmdHis') ? '_01' : '') }}.jpg" alt="#">
         </div>
         <!--sectin1_box//-->
         @include('willbes.pc.predict2.1627_promotion_partial')
+
         <div class="sectin2_box">
             <div class="NSK-Black">이벤트 유의사항</div>
             <ul>

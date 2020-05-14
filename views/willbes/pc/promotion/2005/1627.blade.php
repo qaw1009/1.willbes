@@ -25,7 +25,7 @@
     .sectin2_box {background:#000; color:#fff; padding:100px 0;}
     .sectin2_box div {font-size:20px; width:980px; margin:0 auto 30px}
     .sectin2_box ul {width:980px; margin:0 auto}
-    .sectin2_box li {margin-bottom:5px}
+    .sectin2_box li {margin-bottom:5px; line-height:1.5}
     .sectin2_box li:last-child {margin-top:15px}
 </style>
 

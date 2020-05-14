@@ -1304,6 +1304,33 @@ class Predict2Model extends WB_Model
     }
 
     /**
+     * 등록된 서비스상품리스트
+     * @return mixed
+     */
+    public function getGoodsList($add_condition)
+    {
+        $add_condition = [
+            'EQ' => [
+                'PP.IsStatus' => 'Y'
+            ]
+        ];
+        $condition = [ 'IN' => ['PP.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = array_merge_recursive($condition, $add_condition);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $column = "
+            PP.PredictIdx2, PP.SiteCode, PP.Predict2Name, PP.TakePart, PP.MockPart
+            , PP.Research1StartDatm, PP.Research1EndDatm, PP.Research2StartDatm, PP.Research2EndDatm, PP.GradeOpenIsUse, PP.GradeOpenDatm, PP.SubjectSViewCount
+        ";
+        $from = "
+            FROM {$this->_table['product_predict2']} AS PP
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->result_array();
+    }
+
+    /**
      * 서비스 상품 등록
      * @param array $form_data
      * @return array|bool
@@ -1325,10 +1352,12 @@ class Predict2Model extends WB_Model
                 'MockPart' => implode(',', element('mock_part', $form_data)),
                 'Research1StartDatm' => element('Research1StartDatm_d', $form_data) .' '. element('Research1StartDatm_h', $form_data) .':'. element('Research1StartDatm_m', $form_data) .':00',
                 'Research1EndDatm' => element('Research1EndDatm_d', $form_data) .' '. element('Research1EndDatm_h', $form_data) .':'. element('Research1EndDatm_m', $form_data) .':59',
+                'IsResearch1' => element('is_research1', $form_data),
                 'Research2StartDatm' => element('Research2StartDatm_d', $form_data) .' '. element('Research2StartDatm_h', $form_data) .':'. element('Research2StartDatm_m', $form_data) .':00',
                 'Research2EndDatm' => element('Research2EndDatm_d', $form_data) .' '. element('Research2EndDatm_h', $form_data) .':'. element('Research2EndDatm_m', $form_data) .':59',
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
+                'IsResearch2' => element('is_research2', $form_data),
                 'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
                 'IsUse' => element('is_use', $form_data),
                 'RegIp' => $this->input->ip_address(),
@@ -1368,8 +1397,10 @@ class Predict2Model extends WB_Model
                 'MockPart' => implode(',', element('mock_part', $form_data)),
                 'Research1StartDatm' => element('Research1StartDatm_d', $form_data) .' '. element('Research1StartDatm_h', $form_data) .':'. element('Research1StartDatm_m', $form_data) .':00',
                 'Research1EndDatm' => element('Research1EndDatm_d', $form_data) .' '. element('Research1EndDatm_h', $form_data) .':'. element('Research1EndDatm_m', $form_data) .':59',
+                'IsResearch1' => element('is_research1', $form_data),
                 'Research2StartDatm' => element('Research2StartDatm_d', $form_data) .' '. element('Research2StartDatm_h', $form_data) .':'. element('Research2StartDatm_m', $form_data) .':00',
                 'Research2EndDatm' => element('Research2EndDatm_d', $form_data) .' '. element('Research2EndDatm_h', $form_data) .':'. element('Research2EndDatm_m', $form_data) .':59',
+                'IsResearch2' => element('is_research2', $form_data),
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
                 'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
@@ -1451,6 +1482,35 @@ class Predict2Model extends WB_Model
         $group_by = ' group by EB.PpIdx';
         $order_by = ' order by MPE.OrderNum';
         return $this->_conn->query('select '.$column .$from .$where . $group_by . $order_by)->result_array();
+    }
+
+    public function answerPaperMainList($is_count = false, $add_condition = [], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $arr_order_by = ['PAP.PredictIdx2' => 'DESC'];
+            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $column = "
+                PAP.*, A.wAdminName, SC.CateName,
+            ";
+        }
+
+        $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = array_merge_recursive($condition, $add_condition);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['product_predict2']} AS PP
+            INNER JOIN {$this->_table['sys_category']} AS SC ON PP.TakePart = SC.CateCode
+            LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

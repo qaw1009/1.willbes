@@ -110,7 +110,7 @@
                                         <option value="{{ $val['MockPart'] }}" {{ ($val['MockPart'] == $data['TakeMockPart']) ? 'selected=selected' : '' }}>{{ $val['MockPartName'] }}</option>
                                     @endforeach
                                 </select>
-                                <input type="number" name="take_num" id="take_num" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                                <input type="number" name="take_num" id="take_num" maxlength="8" oninput="maxLengthCheck(this)" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
                             </td>
                         </tr>
                         <tr>
@@ -246,12 +246,12 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td class="mypoint">
-                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)"
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                         @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
                                             (합격/불합격 여부 :
-                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] > 60)
+                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] >= 60)
                                                 <span class="tx-blue">합격</span>)
                                             @else
                                                 <span class="tx-red">불합격</span>)
@@ -309,7 +309,11 @@
                 @endif
 
                 <div class="btns">
-                    <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @if (empty($research_type) === true)
+                        <a href="#none" onclick="javascript:alert('서비스 기간이 아닙니다.');">확인</a>
+                    @else
+                        <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @endif
                 </div>
             </div>
         </form>

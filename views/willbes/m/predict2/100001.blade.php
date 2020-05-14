@@ -110,7 +110,7 @@
                                     <option value="{{ $val['MockPart'] }}" {{ ($val['MockPart'] == $data['TakeMockPart']) ? 'selected=selected' : '' }}>{{ $val['MockPartName'] }}</option>
                                 @endforeach
                             </select>
-                            <input type="number" name="take_num" id="take_num" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                            <input type="number" name="take_num" id="take_num" maxlength="8" oninput="maxLengthCheck(this)" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
                         </td>
                     </tr>
                     <tr>
@@ -166,97 +166,22 @@
                         <h3 class="mt30">본인 정답 입력</h3>
                         <div class="omrWarp">
                             <div class="qMarking">
-                                <h4>헌법<span> | 원점수: 100</span></h4>
-                                <ul>
-                                    <li>
-                                        <div>1~5</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>6~10</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>11~15</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>16~20</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>21~25</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                </ul>
-
-                                <h4>언어논리<span> | 원점수: 100</span></h4>
-                                <ul class="w25">
-                                    <li>
-                                        <div>1~5</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>6~10</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>11~15</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>16~20</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>21~25</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>25~30</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>31~35</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                    <li>
-                                        <div>36~40</div>
-                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
-                                    </li>
-                                </ul>
+                                @php $_id=1; @endphp
+                                @foreach($subject_list as $key => $val)
+                                    <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
+                                    <ul {{ ($val['qCnt'] <= 25) ? '' : 'class=w25' }}>
+                                        @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
+                                            <li>
+                                                <div>{{ $val2 }}</div>
+                                                <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                       oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
+                                            </li>
+                                            @php $_id++; @endphp
+                                        @endforeach
+                                    </ul>
+                                @endforeach
                             </div>
                         </div>
-
-
-                        <div class="omrWarp">
-                            @php $_id=1; @endphp
-                            @foreach($subject_list as $key => $val)
-                                <div class="qMarking">
-                                    <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
-                                    <table class="boardTypeB">
-                                        <tr>
-                                            <th scope="col">번호</th>
-                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                <th scope="col">{{ $val2 }}</th>
-                                            @endforeach
-                                        </tr>
-                                        <tr>
-                                            <td>답안입력 </td>
-                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                <td>
-                                                    <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
-                                                           oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
-                                                </td>
-                                            @php $_id++; @endphp
-                                            @endforeach
-                                        </tr>
-                                    </table>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        
                         <!--omrWarp//-->
 
                         <h3 class="mt30">과목별 체감난이도</h3>
@@ -312,12 +237,12 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td class="mypoint">
-                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)"
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                         @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
                                             (합격/불합격 여부 :
-                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] > 60)
+                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] >= 60)
                                                 <span class="tx-blue">합격</span>)
                                             @else
                                                 <span class="tx-red">불합격</span>)
@@ -375,7 +300,11 @@
                 @endif
 
                 <div class="btns">
-                    <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @if (empty($research_type) === true)
+                        <a href="#none" onclick="javascript:alert('서비스 기간이 아닙니다.');">확인</a>
+                    @else
+                        <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @endif
                 </div>
             </div>
         </form>

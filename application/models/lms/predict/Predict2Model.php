@@ -714,6 +714,7 @@ class Predict2Model extends WB_Model
                 'ExplanFile' => $names['ExplanFile']['name'],
                 'RealExplanFile' => $names['ExplanFile']['real'],
                 'IsUse' => element('IsUse', $form_data),
+                'IsAvg' => element('IsAvg', $form_data),
                 'RegIp' => $this->input->ip_address(),
                 'RegDate' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx')
@@ -794,6 +795,7 @@ class Predict2Model extends WB_Model
                 'RotationNo' => element('RotationNo', $form_data),
                 'FilePath' => $this->upload->_upload_url . $uploadSubPath . "/",
                 'IsUse' => element('IsUse', $form_data),
+                'IsAvg' => element('IsAvg', $form_data),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
@@ -1644,9 +1646,9 @@ class Predict2Model extends WB_Model
             $query = "
                 {$this->_table['predict2_paper']}
                     (SiteCode, PaIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
-                     QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
+                     QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, IsUse, IsAvg, RegIp, RegAdminIdx, RegDate)
                 SELECT SiteCode, PaIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
-                       QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
+                       QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, 'N', IsAvg, ?, ?, ?
                 FROM {$this->_table['predict2_paper']}
                 WHERE PpIdx = ? AND IsStatus = 'Y'";
             $result = $this->_conn->query('insert into' . $query, [$RegIp, $RegAdminIdx, $RegDatm, $idx]);

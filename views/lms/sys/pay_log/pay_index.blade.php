@@ -118,7 +118,7 @@
                     'url' : '{{ site_url('/sys/payLog/listAjax/' . $log_type) }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
                 },
                 createdRow: function(row, data, dataIndex) {
@@ -131,7 +131,9 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
-                    {'data' : 'OrderNo'},
+                    {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
+                        return row.OrderIdx === null ? data : '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>';
+                    }},
                     {'data' : 'PayType', 'render' : function(data, type, row, meta) {
                         return meta.settings.json.codes.PayType[data];
                     }},

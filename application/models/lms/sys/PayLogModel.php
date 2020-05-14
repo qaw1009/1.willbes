@@ -5,7 +5,8 @@ class PayLogModel extends WB_Model
 {
     private $_table = [
         'pay' => 'lms_order_payment',
-        'deposit' => 'lms_order_deposit'
+        'deposit' => 'lms_order_deposit',
+        'order' => 'lms_order'
     ];    
 
     public function __construct()
@@ -29,15 +30,16 @@ class PayLogModel extends WB_Model
 
         if (is_bool($is_count) === true && $is_count === false) {
             $defined_column = [
-                'pay' => 'PayIdx, OrderNo, PayType, PgDriver, PgMid, PgTid, PayMethod, PayDetailCode, ReqPayPrice, ApprovalNo, ApprovalDatm
-                    , ResultCode, ResultMsg, ResultPgTid, ResultPayPrice, ReqReason, RegDatm',
-                'deposit' => 'DepositIdx, OrderNo, MsgSeq, PgDriver, PgMid, PgTid, RealPayPrice, VBankCode, VBankAccountNo, DepositBankName, DepositName, DepositDatm
-                    , ErrorMsg, RegDatm, RegIp'
+                'pay' => 'PL.PayIdx, PL.OrderNo, PL.PayType, PL.PgDriver, PL.PgMid, PL.PgTid, PL.PayMethod, PL.PayDetailCode, PL.ReqPayPrice, PL.ApprovalNo, PL.ApprovalDatm
+                    , PL.ResultCode, PL.ResultMsg, PL.ResultPgTid, PL.ResultPayPrice, PL.ReqReason, PL.RegDatm',
+                'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, PL.PgMid, PL.PgTid, PL.RealPayPrice, PL.VBankCode, PL.VBankAccountNo
+                    , PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp'
             ];
 
-            $column = element($log_type, $defined_column, '*');
+            $column = element($log_type, $defined_column, 'PL.*') . ', O.OrderIdx';
         }
 
-        return $this->_conn->getListResult($this->_table[$log_type], $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getJoinListResult($this->_table[$log_type] . ' as PL', 'left', $this->_table['order'] . ' as O', 'PL.OrderNo = O.OrderNo'
+            , $column, $arr_condition, $limit, $offset, $order_by);
     }
 }

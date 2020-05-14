@@ -9,158 +9,28 @@
     }        
 
     .evtCtnsBox {width:100%; background:#fff; line-height: 1.5; font-size:14px}
+    
 
     /************************************************************/
 
+    .sectin1_box {}
+    .sectin1_box img {width:100%; max-width:720px;}
 
-    input[type=radio],
-    input[type=checkbox] {width:16px; height:16px;}    
-    select,
-    input[type=email],
-    input[type=tel],
-    input[type=number],
-    input[type=text] {padding:2px; margin-right:10px; height:26px; vertical-align: middle}
-    input[type=file]:focus,
-    input[type=text]:focus {border:1px solid #1087ef}
-    label {margin:0 10px 0 5px}
-    input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-
-    .boardTypeB {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid; background:#fff; line-height: 1.5}
-    .boardTypeB caption {display:none}	
-    .boardTypeB thead th, 
-    .boardTypeB tbody th {color:#464646; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; text-align:center; padding:15px 8px}
-    .boardTypeB tbody td {letter-spacing:normal; padding:10px 8px}
-    .boardTypeB thead th {background:#e9e8e8;}
-    .boardTypeB tbody th {background:#f3f3f3;}
-    .boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
-    .boardTypeB tbody tr.bg01 th {background:#e5f2fe}
-    .boardTypeB tbody td input {vertical-align:middle}
-    .boardTypeB tbody td label {margin-right:10px}
-    .boardTypeB tbody td li {display: inline;}
-    .boardTypeB tbody td span {vertical-align: top}
-
-    .btns {text-align:center; margin:30px 0}
-    .btns span,
-    .btns a {display:inline-block; padding:8px 16px; background:#1087ef; color:#fff !important; font-weight:bold; border:1px solid #1087ef}
-    .btns a.btn2 {background:#464646; color:#fff !important; border:1px solid #464646}
-    .btns a:hover {background:#fff; color:#1087ef !important}
-    .btns a.btn2:hover {background:#fff; color:#464646 !important}
-
-
-    .sectin1_box {
-        padding:180px 0 100px; width:100%; text-align:center;
-        -webkit-animation: color-change-5x 8s linear infinite alternate both;
-	        animation: color-change-5x 8s linear infinite alternate both;
-    }
-    @@-webkit-keyframes color-change-5x {
-            0% {
-            background: #0c74ae;
-            }
-            50% {
-            background: #83cff9;
-            }
-            100% {
-            background: #0c74ae;
-            }
-        }
-        @@keyframes color-change-5x {
-            0% {
-            background: #0c74ae;
-            }
-            50% {
-            background: #83cff9;
-            }
-            100% {
-            background: #0c74ae;
-            }
-        }
-    .sectin1_box div {font-size:100px; font-weight:bold; color:#fff; 
-            -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;}
-    .sectin1_box div span {font-size:50px; display:block; margin-bottom:10px}
-    @@-webkit-keyframes text-pop-up-top {
-        0% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-            -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-            text-shadow: none;
-        }
-        100% {
-            -webkit-transform: translateY(-50px);
-                    transform: translateY(-50px);
-            -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
-        }
-    }
-    @@keyframes text-pop-up-top {
-        0% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-            -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-            text-shadow: none;
-        }
-        100% {
-            -webkit-transform: translateY(-50px);
-                    transform: translateY(-50px);
-            -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
-        }
-    }
-
-    .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll}
-    .txtinfo li {margin-left:20px; list-style-type: decimal;}
-
-    .sub_warp {padding:60px 0; }
-    .sub_warp h2 {clear:both; font-size:20px; font-weight:bold; padding-left:25px; margin-bottom:10px; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center;
-    background-size:20px}
-    .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
-    .sub_warp h2 span {color:#C03}	
-    .sub_warp h2 select {padding:5px}
-
-    .markingBox {padding:30px 0; border-top:2px solid #000; border-bottom:2px solid #000}
-    .markingBox h3 {font-size:16px; background:#444; color:#fff; height:40px; line-height:40px; padding:0 20px; margin-bottom:10px; border-radius:15px 15px 0 0}
-    .markingBox .number li {display:inline; float:left; margin-right:30px}
-    .markingBox .number:after {content:""; display:block; clear:both}
-
-    .omrWarp {padding:1em 0}
-    .omrL {float:left; width:77%;}
-    .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
-    .omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}	
-
-    .omrR p {margin-bottom:1em}
-    .omrWarp th,
-    .omrWarp td {text-align:center; padding:4px !important}
-    .omrWarp tr.check {background:#eefafd} 
-
-    .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
-    .omrWarp h4 {margin-bottom:0.5em; color:#000; font-size: 14px}
-    .qMarking {margin-bottom:1em;}
-    .qMarking h4 span {color:#666; vertical-align:bottom}    
-            
-    .selfMarking input[type=text] {width:50%; margin:0 auto; letter-spacing:0}
-    .selfMarking p {margin-top:1em}
-
-    .errata {padding:0 10px}
-    .errata li {display:inline; float:left; width:20%; padding-right:20px}	
-    .errata li:last-child {padding:0}
-    .errata p {background:#333; color:#fff; text-align:center; padding:10px 0; margin-bottom:10px}
-    .errata .boardTypeB tr td:nth-last-child(3) {color:#09F !important}
-    .errata td:first-child {color:#09F !important}
-    .mypoint {text-align:left !important}
-    .mypoint input[type=number] {width:50px; margin:0 !important; text-align:right}
-    .mypoint span {vertical-align: bottom}
-    .omrWarp:after {content:""; display:block; clear:both}
+    .sectin2_box {background:#000; color:#fff; padding:50px 0;}
+    .sectin2_box div {font-size:20px; margin: 0 20px 30px}
+    .sectin2_box ul {margin: 0 20px 30px}
+    .sectin2_box li {margin-bottom:5px; font-size:14px; line-height:1.5}
+    .sectin2_box li:last-child {margin-top:15px}
 </style>
 
 <div id="Container" class="Container c_both">            
     <div class="evtContent NSK">
-        <div class="sectin1_box NSK-Black">
-            <div><span>2020년 1차 고등고시 시험</span>
-            합격예측 인증</div>
+        <div class="sectin1_box">
+            {{--16일 20시 까지 보여지는 이미지--}}
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627m_top.jpg" alt="#">
+            <!--16일 20시 이후 보여지는 이미지
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627m_top_01.jpg" alt="#">
+            -->
         </div>
         <!--sectin1_box//-->
         @include('willbes.pc.predict2.1627_promotion_partial')
@@ -606,6 +476,23 @@
 
             </div> 
         </div>--}}
+
+        <div class="sectin2_box">
+            <div class="NSK-Black">이벤트 유의사항</div>
+            <ul>
+                <li>- 본 이벤트는 5급공채(일반행정·재경), 국립외교원 시험 응시자만 참여 가능합니다.</li>
+                <li>- 설문조사 + 정답 또는 점수까지 입력이 완료된 이용자에 한하여 지급 및 추첨합니다.</li>
+                <li>- 이벤트 2의 경우 중복당첨되지 않습니다.</li>
+                <li>- 개인정보 수집 및 이용에 동의하지 않으신 분은 이벤트 참여가 불가능합니다.</li>
+                <li>- 경품은 모바일 쿠폰(기프티콘) 형태로 발송되며, 발송은 1회로 제한합니다.</li>
+                <li>- 기프티콘은 이벤트 참여시 기재된 전화번호로 발송됩니다.</li>
+                <li>- 휴대폰번호 오류 시 기프티콘은 재발송 되지 않습니다.</li>
+                <li>- 휴대전화 단말기의 MMS 수신상태가 양호하지 않은 경우, 기프티콘 수신이 불가할 수 있습니다.</li>
+                <li>- 이벤트 참여 전 회원정보(휴대폰 번호)를 정확히 수정해주시기 바랍니다. </li>
+                <li>- 기프티콘을 수신한 이후 개인사정에 의해 유효기간이 지나 사용하지 못한 경우 사용하지 않은 혜택에 대해서는 별도로 보상하지 않습니다.</li>
+                <li>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 한림법학원은 책임지지 않습니다.</li>
+            </ul>
+        </div>
     </div>
 
 </div>

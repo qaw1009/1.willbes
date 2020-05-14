@@ -48,7 +48,7 @@
         .markingtitle {font-size:16px; font-weight:bold; padding:10px 0; text-align:center; background:#f4f4f4; border:1px solid #000}
         .markingBox {padding:30px 0; border-top:2px solid #000; border-bottom:2px solid #000}
         .markingBox h3 {font-size:16px; background:#444; color:#fff; height:40px; line-height:40px; padding:0 20px; margin-bottom:10px; border-radius:15px 15px 0 0}
-        .markingBox .number li {display:inline; float:left; margin-right:30px}
+        .markingBox .number li {display:inline; float:left; margin-right:20px}
         .markingBox .number:after {content:""; display:block; clear:both}
 
         .omrWarp {padding:1em 0}

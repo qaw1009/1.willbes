@@ -13,41 +13,6 @@
 
     /************************************************************/
 
-
-    input[type=radio],
-    input[type=checkbox] {width:16px; height:16px;}    
-    select,
-    input[type=email],
-    input[type=tel],
-    input[type=number],
-    input[type=text] {padding:2px; margin-right:10px; height:26px; vertical-align: middle}
-    input[type=file]:focus,
-    input[type=text]:focus {border:1px solid #1087ef}
-    label {margin:0 10px 0 5px}
-    input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-
-    .boardTypeB {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid; background:#fff; line-height: 1.5}
-    .boardTypeB caption {display:none}	
-    .boardTypeB thead th, 
-    .boardTypeB tbody th {color:#464646; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; text-align:center; padding:15px 8px}
-    .boardTypeB tbody td {letter-spacing:normal; padding:10px 8px}
-    .boardTypeB thead th {background:#e9e8e8;}
-    .boardTypeB tbody th {background:#f3f3f3;}
-    .boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
-    .boardTypeB tbody tr.bg01 th {background:#e5f2fe}
-    .boardTypeB tbody td input {vertical-align:middle}
-    .boardTypeB tbody td label {margin-right:10px}
-    .boardTypeB tbody td li {display: inline;}
-    .boardTypeB tbody td span {vertical-align: top}
-
-    .btns {text-align:center; margin:30px 0}
-    .btns span,
-    .btns a {display:inline-block; padding:8px 16px; background:#1087ef; color:#fff !important; font-weight:bold; border:1px solid #1087ef}
-    .btns a.btn2 {background:#464646; color:#fff !important; border:1px solid #464646}
-    .btns a:hover {background:#fff; color:#1087ef !important}
-    .btns a.btn2:hover {background:#fff; color:#464646 !important}
-
-
     .sectin1_box {}
     .sectin1_box img {width:100%; max-width:720px;}
 
@@ -56,50 +21,6 @@
     .sectin2_box ul {margin: 0 20px 30px}
     .sectin2_box li {margin-bottom:5px; font-size:14px}
     .sectin2_box li:last-child {margin-top:15px}
-
-    .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll}
-    .txtinfo li {margin-left:20px; list-style-type: decimal;}
-
-    .sub_warp {padding:60px 0; }
-    .sub_warp h2 {clear:both; font-size:20px; font-weight:bold; padding-left:25px; margin-bottom:10px; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center;
-    background-size:20px}
-    .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
-    .sub_warp h2 span {color:#C03}	
-    .sub_warp h2 select {padding:5px}
-
-    .markingBox {padding:30px 0; border-top:2px solid #000; border-bottom:2px solid #000}
-    .markingBox h3 {font-size:16px; background:#444; color:#fff; height:40px; line-height:40px; padding:0 20px; margin-bottom:10px; border-radius:15px 15px 0 0}
-    .markingBox .number li {display:inline; float:left; margin-right:30px}
-    .markingBox .number:after {content:""; display:block; clear:both}
-
-    .omrWarp {padding:1em 0}
-    .omrL {float:left; width:77%;}
-    .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
-    .omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}	
-
-    .omrR p {margin-bottom:1em}
-    .omrWarp th,
-    .omrWarp td {text-align:center; padding:4px !important}
-    .omrWarp tr.check {background:#eefafd} 
-
-    .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
-    .omrWarp h4 {margin-bottom:0.5em; color:#000; font-size: 14px}
-    .qMarking {margin-bottom:1em;}
-    .qMarking h4 span {color:#666; vertical-align:bottom}    
-            
-    .selfMarking input[type=text] {width:50%; margin:0 auto; letter-spacing:0}
-    .selfMarking p {margin-top:1em}
-
-    .errata {padding:0 10px}
-    .errata li {display:inline; float:left; width:20%; padding-right:20px}	
-    .errata li:last-child {padding:0}
-    .errata p {background:#333; color:#fff; text-align:center; padding:10px 0; margin-bottom:10px}
-    .errata .boardTypeB tr td:nth-last-child(3) {color:#09F !important}
-    .errata td:first-child {color:#09F !important}
-    .mypoint {text-align:left !important}
-    .mypoint input[type=number] {width:50px; margin:0 !important; text-align:right}
-    .mypoint span {vertical-align: bottom}
-    .omrWarp:after {content:""; display:block; clear:both}
 </style>
 
 <div id="Container" class="Container c_both">            

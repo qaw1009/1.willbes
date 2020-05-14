@@ -423,8 +423,8 @@
                 var _url = '{{ front_url('/predict2/storeAjax') }}';
                 ajaxSubmit($regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
-                        /*alert(ret.ret_msg);
-                        location.reload();*/
+                        alert(ret.ret_msg);
+                        location.reload();
                     }
                 }, showValidateError, null, false, 'alert');
             }

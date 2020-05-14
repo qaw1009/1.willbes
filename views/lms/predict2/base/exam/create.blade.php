@@ -128,6 +128,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="TotalScore">평균대상여부<span class="required">*</span></label>
+                    <div class="col-md-2 form-inline item">
+                        <div class="radio">
+                            <input type="radio" id="is_avg_y" name="IsAvg" class="flat" value="Y" required="required" @if($method == 'POST' || ($method == 'PUT' && $data['IsAvg'] == 'Y')) checked="checked" @endif> <label for="is_avg_y" class="input-label">사용</label>
+                            <input type="radio" id="is_avg_n" name="IsAvg" class="flat" value="N" @if($method == 'PUT' && $data['IsAvg'] == 'N') checked="checked" @endif> <label for="is_avg_n" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="form-control-static">• '미사용'인 경우 점수평균에서 제외됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="FrontQuestionFile">응시화면용문제파일</label>
                     <div class="col-md-4">
                         <input type="file" class="form-control" id="FrontQuestionFile" name="FrontQuestionFile" title="응시화면용문제파일">

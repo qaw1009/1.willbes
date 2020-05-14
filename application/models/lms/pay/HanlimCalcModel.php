@@ -40,7 +40,8 @@ class HanlimCalcModel extends BaseOrderModel
             $column = 'TA.ProfIdx, TA.ProdCode, TA.ProdType
                 , P.ProdName, PL.StudyStartDate, PL.StudyEndDate, PL.CampusCcd, PL.Amount, PC.CateCode
                 , PCH.PchIdx, PCH.PchSeq, PCH.BaseDatm, PCH.MemCnt, PCH.LecMemCnt, PCH.PackMemCnt, PCH.PayPrice, PCH.RefundPrice                    	
-                , PCH.PrePrice, PCH.PgFeePrice, PCH.RemainPrice, PCH.LecRemainPrice, PCH.PackRemainPrice, PCH.DeductPrice, PCH.TargetPrice
+                , ifnull(PCH.PrePrice, TA.PrevPrePrice) as PrePrice, ifnull(PCH.RemainPrice, TA.PrevRemainPrice) as RemainPrice
+                , PCH.PgFeePrice, PCH.LecRemainPrice, PCH.PackRemainPrice, PCH.DeductPrice, PCH.TargetPrice
                 , PCH.LecCalcRate, PCH.LecCalcType, PCH.PackCalcRate, PCH.PackCalcType                    
                 , PCH.CalcPrice, PCH.LecCalcPrice, PCH.PackCalcPrice, PCH.TaxRate, PCH.TaxPrice, PCH.EtcDeductPrice, PCH.FinalCalcPrice, PCH.RegDatm
                 , if(TA.ProdType = "OL", (select count(0) 
@@ -197,6 +198,7 @@ class HanlimCalcModel extends BaseOrderModel
 
             $query = /** @lang text */ '
                 select PCH.ProfIdx, PCH.ProdCode, PCH.ProdType
+                    , null as PrevPrePrice, null as PrevRemainPrice
                 from ' . $this->_calc_table['calc_hist'] . ' as PCH
                     inner join ' . $this->_table['product'] . ' as P
                         on PCH.ProdCode = P.ProdCode
@@ -209,40 +211,118 @@ class HanlimCalcModel extends BaseOrderModel
             // 교수식별자/상품코드 지정
             $query = /** @lang text */ '
                 select ' . $this->_conn->escape($search_param1) . ' as ProfIdx, ' . $this->_conn->escape($search_param2) . ' as ProdCode, ' . $this->_conn->escape($prod_type) . ' as ProdType
+                    , null as PrevPrePrice, null as PrevRemainPrice
             ';
         } else {
             // 수강일/종강일 기준
-            $query = /** @lang text */ '
-                select TR.ProfIdx, TR.ProdCode, TR.ProdType
-                from (
-                    select PD.ProfIdx, P.ProdCode, "OL" as ProdType
-                    from ' . $this->_table['product'] . ' as P
-                        inner join ' . $this->_table['product_lecture'] . ' as PL
-                            on PL.ProdCode = P.ProdCode
-                        inner join ' . $this->_table['product_division'] . ' as PD
-                            on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = P.ProdCode and PD.IsStatus = "Y"
-                    where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
-                        and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '"	
-                        and ' . $this->_conn->protect_identifiers('PL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
-                        and P.SiteCode = ' . $this->_conn->escape($site_code) . '
-                    union
-                    select SPD.ProfIdx, PRS.ProdCodeSub as ProdCode, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '", "CP", "OL") as ProdType
-                    from ' . $this->_table['product'] . ' as P
-                        inner join ' . $this->_table['product_lecture'] . ' as PL
-                            on PL.ProdCode = P.ProdCode
-                        inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
-                            on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
-                        inner join ' . $this->_table['product_lecture'] . ' as SPL
-                            on SPL.ProdCode = PRS.ProdCodeSub
-                        inner join ' . $this->_table['product_division'] . ' as SPD
-                            on SPD.ProdCode = PRS.ProdCodeSub and SPD.ProdCodeSub = PRS.ProdCodeSub and SPD.IsStatus = "Y"
-                    where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
-                        and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
-                        and ' . $this->_conn->protect_identifiers('SPL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
-                        and P.SiteCode = ' . $this->_conn->escape($site_code) . '
-                ) as TR  
-                where TR.ProdType = ' . $this->_conn->escape($prod_type) . '                          
-            ';
+            if ($prod_type == 'CP') {
+                // 종합반 선택형강사배정일 경우 (기존쿼리)
+                $query = /** @lang text */ '
+                    select TR.ProfIdx, TR.ProdCode, TR.ProdType
+                        , null as PrevPrePrice, null as PrevRemainPrice
+                    from (
+                        select PD.ProfIdx, P.ProdCode, "OL" as ProdType
+                        from ' . $this->_table['product'] . ' as P
+                            inner join ' . $this->_table['product_lecture'] . ' as PL
+                                on PL.ProdCode = P.ProdCode
+                            inner join ' . $this->_table['product_division'] . ' as PD
+                                on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = P.ProdCode and PD.IsStatus = "Y"
+                        where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+                            and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '"	
+                            and ' . $this->_conn->protect_identifiers('PL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
+                            and P.SiteCode = ' . $this->_conn->escape($site_code) . '
+                        union
+                        select SPD.ProfIdx, PRS.ProdCodeSub as ProdCode, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '", "CP", "OL") as ProdType
+                        from ' . $this->_table['product'] . ' as P
+                            inner join ' . $this->_table['product_lecture'] . ' as PL
+                                on PL.ProdCode = P.ProdCode
+                            inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
+                                on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
+                            inner join ' . $this->_table['product_lecture'] . ' as SPL
+                                on SPL.ProdCode = PRS.ProdCodeSub
+                            inner join ' . $this->_table['product_division'] . ' as SPD
+                                on SPD.ProdCode = PRS.ProdCodeSub and SPD.ProdCodeSub = PRS.ProdCodeSub and SPD.IsStatus = "Y"
+                        where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+                            and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+                            and ' . $this->_conn->protect_identifiers('SPL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
+                            and P.SiteCode = ' . $this->_conn->escape($site_code) . '
+                    ) as TR  
+                    where TR.ProdType = ' . $this->_conn->escape($prod_type) . '                          
+                ';
+            } else {
+                // 단과반/종합반일반형, 선택형일 경우 정산이전 수수료공제전수강총액, 수수료공제후수강총액 조회
+                $query = /** @lang text */ '
+                    select TR.ProfIdx, TR.ProdCodeSub as ProdCode, TR.ProdType
+                        , sum(TRUNCATE(TR.RealPayPrice * TR.ProdDivisionRate, 0) - TRUNCATE(TR.RefundPrice * TR.ProdDivisionRate, 0)) as PrevPrePrice
+                        , sum(TRUNCATE(TR.RealPayPrice * TR.ProdDivisionRate, 0) - TRUNCATE(TR.RefundPrice * TR.ProdDivisionRate, 0) 
+                                - TRUNCATE(if(TR.RealPayPrice > TR.RefundPrice, if(TR.PgFee < 1, (TR.CardPayPrice - TR.CardRefundPrice) * TR.PgFee, TR.PgFee) * TR.ProdDivisionRate, 0), 0)
+                          ) as PrevRemainPrice
+                    from (
+                        select RR.ProfIdx, RR.ProdCode, RR.ProdCodeSub, RR.ProdType
+                            , if(RR.ProdType = "CP", 0, ifnull(RR.ProdDivisionRate,
+                                ifnull(RR.ProdSalePrice /
+                                (select sum(B.SalePrice) 
+                                    from ' . $this->_table['order_sub_product'] . ' as A 
+                                        inner join ' . $this->_table['product_sale'] . ' as B 
+                                            on A.ProdCodeSub = B.ProdCode and B.SaleTypeCcd = "613001" and B.IsStatus = "Y" 
+                                    where A.OrderProdIdx = OP.OrderProdIdx), 0))
+                              ) as ProdDivisionRate
+                            , ifnull(OP.RealPayPrice, 0) as RealPayPrice
+                            , ifnull(OP.CardPayPrice, 0) as CardPayPrice 
+                            , ifnull(OPR.RefundPrice, 0) as RefundPrice
+                            , ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice
+                            , ifnull(json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")), 0) as PgFee
+                        from (
+                            select PD.ProfIdx, P.ProdCode, P.ProdCode as ProdCodeSub, "OL" as ProdType
+                                , ifnull(PD.ProdDivisionRate, 0) as ProdDivisionRate
+                                , null as ProdSalePrice
+                            from ' . $this->_table['product'] . ' as P
+                                inner join ' . $this->_table['product_lecture'] . ' as PL
+                                    on PL.ProdCode = P.ProdCode
+                                inner join ' . $this->_table['product_division'] . ' as PD
+                                    on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = P.ProdCode and PD.IsStatus = "Y"
+                            where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+                                and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '"
+                                and ' . $this->_conn->protect_identifiers('PL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
+                                and P.SiteCode = ' . $this->_conn->escape($site_code) . '
+                            union all
+                            select SPD.ProfIdx, P.ProdCode, PRS.ProdCodeSub, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '", "CP", "OL") as ProdType
+                                , if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", ifnull(PD.ProdDivisionRate, 0), null) as ProdDivisionRate
+                                , if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", null, SPS.SalePrice * SPD.ProdDivisionRate) as ProdSalePrice	    	
+                            from ' . $this->_table['product'] . ' as P
+                                inner join ' . $this->_table['product_lecture'] . ' as PL
+                                    on PL.ProdCode = P.ProdCode
+                                inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
+                                    on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
+                                inner join ' . $this->_table['product_lecture'] . ' as SPL
+                                    on SPL.ProdCode = PRS.ProdCodeSub
+                                inner join ' . $this->_table['product_division'] . ' as SPD
+                                    on SPD.ProdCode = PRS.ProdCodeSub and SPD.ProdCodeSub = PRS.ProdCodeSub and SPD.IsStatus = "Y"
+                                left join ' . $this->_table['product_sale'] . ' as SPS
+                                    on SPS.ProdCode = PRS.ProdCodeSub and SPS.SaleTypeCcd = "613001" and SPS.IsStatus = "Y" and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['choice'] . '", "' . $this->_adminpack_lecture_type_ccd['choice_prof'] . '") 
+                                left join ' . $this->_table['product_division'] . ' as PD
+                                    on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.ProfIdx = SPD.ProfIdx and PD.IsStatus = "Y" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '"
+                            where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+                                and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+                                and PL.PackTypeCcd in ("' . $this->_adminpack_lecture_type_ccd['normal'] . '", "' . $this->_adminpack_lecture_type_ccd['choice'] . '")
+                                and ' . $this->_conn->protect_identifiers('SPL.' . $search_type) . ' between ' . $this->_conn->escape($search_param1) . ' and ' . $this->_conn->escape($search_param2) . '
+                                and P.SiteCode = ' . $this->_conn->escape($site_code) . '
+                        ) as RR 
+                            left join ' . $this->_table['order_product'] . ' as OP
+                                on OP.ProdCode = RR.ProdCode and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                            left join ' . $this->_table['order'] . ' as O
+                                on O.OrderIdx = OP.OrderIdx
+                            left join ' . $this->_table['order_sub_product'] . ' as OSP
+                                on OSP.OrderProdIdx = OP.OrderProdIdx and OSP.ProdCodeSub = RR.ProdCodeSub
+                            left join ' . $this->_table['order_product_refund'] . ' as OPR
+                                on OPR.OrderIdx = OP.OrderIdx and OPR.OrderProdIdx = OP.OrderProdIdx
+                            left join ' . $this->_table['code'] . ' as CPM
+                                on CPM.Ccd = O.PayMethodCcd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"
+                        where RR.ProdType = ' . $this->_conn->escape($prod_type) . '                          
+                    ) as TR	
+                    group by TR.ProfIdx, TR.ProdCodeSub, TR.ProdType             
+                ';
+            }
         }
 
         return $query;

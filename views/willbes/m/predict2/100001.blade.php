@@ -164,6 +164,7 @@
 
                         <h3 class="mt30">본인 정답 입력</h3>
                         <div class="omrWarp">
+                            @php $_id=1; @endphp
                             @foreach($subject_list as $key => $val)
                                 <div class="qMarking">
                                     <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
@@ -178,8 +179,10 @@
                                             <td>답안입력 </td>
                                             @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
                                                 <td>
-                                                    <input class="txt-answer" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
+                                                    <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                           oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
                                                 </td>
+                                            @php $_id++; @endphp
                                             @endforeach
                                         </tr>
                                     </table>
@@ -244,7 +247,14 @@
                                         <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
-                                        {{--(합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)--}}
+                                        @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
+                                            (합격/불합격 여부 :
+                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] > 60)
+                                                <span class="tx-blue">합격</span>)
+                                            @else
+                                                <span class="tx-red">불합격</span>)
+                                            @endif
+                                        @endif
                                         <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                     </td>
                                 </tr>
@@ -305,6 +315,15 @@
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+        $(document).ready(function(){
+            $(".txt-answer").keyup(function() {
+                if (this.value.length == this.maxLength) {
+                    var id = $(this).data("input-id") + 1;
+                    $('#target_'+id).focus();
+                }
+            });
+        });
+
         function js_submit() {
             var vali_msg = '';
             var chk = /^[1-5]+$/i;
@@ -345,7 +364,7 @@
                 alert('응시횟수를 선택해 주세요.');return;
             }
 
-            if ($('#research_type').val() == '1') {
+            if ($('#research_type').val() == 'Research1') {
                 $('.txt-answer').each(function () {
                     var val = $(this).val();
                     if (val == '') {
@@ -363,7 +382,7 @@
                 }
             }
 
-            if ($('#research_type').val() == '2') {
+            if ($('#research_type').val() == 'Research2') {
                 $('.txt-answer2').each(function () {
                     var val = $(this).val();
                     if (val == '') {

@@ -175,14 +175,16 @@ class BasePredict2 extends \app\controllers\FrontController
         }
 
         $arr_sum = [];
-        $avg = '';  //전체평균
+        $arr_avg = [];
+        $avg = '';
         if (empty($result) === false) {
-            $sum = '0';
             foreach ($result as $key => $val) {
                 $arr_sum[$val['PpIdx']] = $val['Scoring'];
-                $sum += (int)$val['Scoring'];
+                if ($val['IsAvg'] != 'N') {
+                    $arr_avg[$val['PpIdx']] = $val['Scoring'];
+                }
             }
-            $avg = round($sum / count($result),1);
+            $avg = array_sum($arr_avg) / count($arr_avg);   //전체평균
         }
         return [
             'subjectSum' => $arr_sum,

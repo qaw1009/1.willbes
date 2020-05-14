@@ -460,6 +460,10 @@ class Predict2FModel extends WB_Model
                 throw new Exception('조회된 문항이 없습니다.');
             }
 
+            if (empty(element('cut_point', $form_data)) === true) {
+                throw new \Exception('PAST 커트라인 점수를 입력해 주세요.');
+            }
+
             $take_level = '';
             foreach ($subjectData as $row) {
                 if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
@@ -482,7 +486,8 @@ class Predict2FModel extends WB_Model
                 'TakeNumber' => element('take_num', $form_data),
                 'TakeCount' => element('take_cnt', $form_data),
                 'TakeLevel' => $take_level,
-                'CutPoint' => element('cut_point', $form_data)
+                'CutPoint' => element('cut_point', $form_data),
+                'IsFinish' => 'Y'
             ];
             if ($this->_conn->set($ins_reg_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predict2_register']) === false) {
                 throw new \Exception('기본정보 저장에 실패했습니다.');
@@ -504,7 +509,10 @@ class Predict2FModel extends WB_Model
 
             $ScoreArr = element('Score', $form_data);
             $PpIdxArr = element('PpIdx', $form_data);
-            foreach($ScoreArr as $key => $val){
+            foreach($ScoreArr as $key => $val) {
+                if (empty($val) === true) {
+                    throw new \Exception('본인 점수를 모두 입력해주세요.');
+                }
                 $PpIdx = $PpIdxArr[$key];
 
                 $data = [
@@ -641,20 +649,24 @@ class Predict2FModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $column = 'M.PrIdx, M.PredictIdx2, M.MemIdx, M.PpIdx, SUM(M.Scoring) AS Scoring';
+        $column = 'po.*, pp.IsAvg';
         $from = "
             FROM (
+                SELECT M.PrIdx, M.PredictIdx2, M.MemIdx, M.PpIdx, SUM(M.Scoring) AS Scoring
+                FROM (
                 SELECT 
                 pa.MemIdx, pa.PrIdx, pa.PredictIdx2, pa.PpIdx, pa.Answer, pq.RightAnswer, pq.Scoring
                 , IF (pa.Answer = pq.RightAnswer, 'Y','N') AS IsWrong
                 FROM lms_predict2_answerpaper AS pa
                 INNER JOIN lms_predict2_questions AS pq ON pa.PqIdx = pq.PqIdx AND pq.IsStatus = 'Y'
                 {$where}
-            ) AS M
-            WHERE M.IsWrong = 'Y'
+                ) AS M
+                WHERE M.IsWrong = 'Y'
+                GROUP BY M.PpIdx
+            ) AS po
+            INNER JOIN lms_predict2_paper AS pp ON po.PpIdx = pp.PpIdx
         ";
-        $group_by = ' GROUP BY M.PpIdx';
-        return $this->_conn->query('select ' . $column . $from . $group_by)->result_array();
+        return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 
     /**
@@ -668,18 +680,21 @@ class Predict2FModel extends WB_Model
     {
         $arr_condition = [
             'EQ' => [
-                'PredictIdx2' => $idx,
-                'PrIdx' => $prIdx,
+                'po.PredictIdx2' => $idx,
+                'po.PrIdx' => $prIdx,
             ],
             'RAW' => [
-                'MemIdx' => (empty($member_idx) === true) ? '\'\'' : $member_idx
+                'po.MemIdx' => (empty($member_idx) === true) ? '\'\'' : $member_idx
             ]
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $column = 'PrIdx, PredictIdx2, MemIdx, PpIdx, OrgPoint AS Scoring';
-        $from = " FROM lms_predict2_grades_origin";
+        $column = 'po.PrIdx, po.PredictIdx2, po.MemIdx, po.PpIdx, po.OrgPoint AS Scoring, pp.IsAvg';
+        $from = "
+            FROM lms_predict2_grades_origin AS po
+            INNER JOIN lms_predict2_paper AS pp ON po.PpIdx = pp.PpIdx
+        ";
         return $this->_conn->query('select ' . $column . $from . $where)->result_array();
     }
 

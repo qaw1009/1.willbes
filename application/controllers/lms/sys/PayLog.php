@@ -37,28 +37,29 @@ class PayLog extends \app\controllers\BaseController
     public function listAjax($params = [])
     {
         $log_type = element('0', $params, 'pay');
-        $order_column = ucfirst($log_type) . 'Idx';
+        $order_column = 'PL.'.ucfirst($log_type) . 'Idx';
 
         $arr_condition = [
-            'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
-            'EQ' => [
-                'PgMid' => $this->_reqP('search_pg_mid')
-            ],
-            'LKB' => [
-                $this->_reqP('search_keyword') => $this->_reqP('search_value')
-            ]
+            'BDT' => ['PL.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
+            'EQ' => ['PL.PgMid' => $this->_reqP('search_pg_mid')]
         ];
+
+        // 검색어
+        $search_value = $this->_reqP('search_value');
+        if (empty($search_value) === false) {
+            $arr_condition['LKB']['PL.' . $this->_reqP('search_keyword')] = $search_value;
+        }
 
         // 연동구분
         $search_pay_type = $this->_reqP('search_pay_type');
         if (empty($search_pay_type) === false) {
             if ($log_type == 'pay') {
-                $arr_condition['EQ']['PayType'] = $search_pay_type;
+                $arr_condition['EQ']['PL.PayType'] = $search_pay_type;
             } elseif ($log_type == 'deposit') {
                 if ($search_pay_type == 'PC') {
-                    $arr_condition['RAW']['MsgSeq not like'] = ' "M2%"';
+                    $arr_condition['RAW']['PL.MsgSeq not like'] = ' "M2%"';
                 } elseif ($search_pay_type == 'MO') {
-                    $arr_condition['RAW']['MsgSeq like'] = ' "M2%"';
+                    $arr_condition['RAW']['PL.MsgSeq like'] = ' "M2%"';
                 }
             }
         }
@@ -67,9 +68,9 @@ class PayLog extends \app\controllers\BaseController
         $search_pay_method = $this->_reqP('search_pay_method');
         if (empty($search_pay_method) === false) {
             if ($search_pay_method == 'DirectBank') {
-                $arr_condition['IN']['PayMethod'] = ['DirectBank', 'BANK'];     // 실시간계좌이체
+                $arr_condition['IN']['PL.PayMethod'] = ['DirectBank', 'BANK'];     // 실시간계좌이체
             } else {
-                $arr_condition['LKL']['PayMethod'] = $search_pay_method;
+                $arr_condition['LKL']['PL.PayMethod'] = $search_pay_method;
             }
         }
         
@@ -78,15 +79,15 @@ class PayLog extends \app\controllers\BaseController
         if (empty($search_is_result) === false) {
             if ($search_is_result == 'Y') {
                 if ($log_type == 'pay') {
-                    $arr_condition['IN']['ResultCode'] = ['0000', '00'];
+                    $arr_condition['IN']['PL.ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
-                    $arr_condition['RAW']['ErrorMsg is'] = ' null';
+                    $arr_condition['RAW']['PL.ErrorMsg is'] = ' null';
                 }
             } else {
                 if ($log_type == 'pay') {
-                    $arr_condition['NOTIN']['ResultCode'] = ['0000', '00'];
+                    $arr_condition['NOTIN']['PL.ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
-                    $arr_condition['RAW']['ErrorMsg is'] = ' not null';
+                    $arr_condition['RAW']['PL.ErrorMsg is'] = ' not null';
                 }
             }
         }

@@ -19,7 +19,7 @@
     .sectin2_box {background:#000; color:#fff; padding:50px 0;}
     .sectin2_box div {font-size:20px; margin: 0 20px 30px}
     .sectin2_box ul {margin: 0 20px 30px}
-    .sectin2_box li {margin-bottom:5px; font-size:14px}
+    .sectin2_box li {margin-bottom:5px; font-size:14px; line-height:1.5}
     .sectin2_box li:last-child {margin-top:15px}
 </style>
 

@@ -9,6 +9,7 @@
     }        
 
     .evtCtnsBox {width:100%; background:#fff; line-height: 1.5; font-size:14px}
+    
 
     /************************************************************/
 
@@ -48,6 +49,8 @@
 
 
     .sectin1_box {}
+    .sectin1_box img {width:100%; max-width:720px;}
+
     .sectin2_box {background:#000; color:#fff; padding:50px 0;}
     .sectin2_box div {font-size:20px; margin: 0 20px 30px}
     .sectin2_box ul {margin: 0 20px 30px}

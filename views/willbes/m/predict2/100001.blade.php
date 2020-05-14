@@ -2,16 +2,6 @@
 
 @section('content')
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
-
-        .evtCtnsBox {width:100%; background:#fff; line-height: 1.5; font-size:14px}
-
-        /************************************************************/
-
-
         input[type=radio],
         input[type=checkbox] {width:16px; height:16px;}
         select,
@@ -45,81 +35,17 @@
         .btns a:hover {background:#fff; color:#1087ef !important}
         .btns a.btn2:hover {background:#fff; color:#464646 !important}
 
-
-        .sectin1_box {
-            padding:180px 0 100px; width:100%; text-align:center;
-            -webkit-animation: color-change-5x 8s linear infinite alternate both;
-            animation: color-change-5x 8s linear infinite alternate both;
-        }
-        @@-webkit-keyframes color-change-5x {
-            0% {
-                background: #0c74ae;
-            }
-            50% {
-                background: #83cff9;
-            }
-            100% {
-                background: #0c74ae;
-            }
-        }
-        @@keyframes color-change-5x {
-            0% {
-                background: #0c74ae;
-            }
-            50% {
-                background: #83cff9;
-            }
-            100% {
-                background: #0c74ae;
-            }
-        }
-        .sectin1_box div {font-size:100px; font-weight:bold; color:#fff;
-            -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;}
-        .sectin1_box div span {font-size:50px; display:block; margin-bottom:10px}
-        @@-webkit-keyframes text-pop-up-top {
-            0% {
-                -webkit-transform: translateY(0);
-                transform: translateY(0);
-                -webkit-transform-origin: 50% 50%;
-                transform-origin: 50% 50%;
-                text-shadow: none;
-            }
-            100% {
-                -webkit-transform: translateY(-50px);
-                transform: translateY(-50px);
-                -webkit-transform-origin: 50% 50%;
-                transform-origin: 50% 50%;
-                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
-            }
-        }
-        @@keyframes text-pop-up-top {
-            0% {
-                -webkit-transform: translateY(0);
-                transform: translateY(0);
-                -webkit-transform-origin: 50% 50%;
-                transform-origin: 50% 50%;
-                text-shadow: none;
-            }
-            100% {
-                -webkit-transform: translateY(-50px);
-                transform: translateY(-50px);
-                -webkit-transform-origin: 50% 50%;
-                transform-origin: 50% 50%;
-                text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
-            }
-        }
-
-        .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll}
+        .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll;}
         .txtinfo li {margin-left:20px; list-style-type: decimal;}
 
-        .sub_warp {padding:60px 0; }
+        .sub_warp {padding:50px 10px; font-size:14px; line-height:1.5}
         .sub_warp h2 {clear:both; font-size:20px; font-weight:bold; padding-left:25px; margin-bottom:10px; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center;
             background-size:20px}
         .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
         .sub_warp h2 span {color:#C03}
         .sub_warp h2 select {padding:5px}
-
+        
+        .markingtitle {font-size:16px; font-weight:bold; padding:10px 0; text-align:center; background:#f4f4f4; border:1px solid #000}
         .markingBox {padding:30px 0; border-top:2px solid #000; border-bottom:2px solid #000}
         .markingBox h3 {font-size:16px; background:#444; color:#fff; height:40px; line-height:40px; padding:0 20px; margin-bottom:10px; border-radius:15px 15px 0 0}
         .markingBox .number li {display:inline; float:left; margin-right:30px}
@@ -155,26 +81,26 @@
         .omrWarp:after {content:""; display:block; clear:both}
     </style>
 
-    <div class="evtCtnsBox">
-        <div class="sub_warp">
+
+        <div class="sub_warp NSK">
             <div class="sub3_1">
                 <h2>기본정보 입력 </h2>
                 <table class="boardTypeB">
                     <colgroup>
-                        <col width="20%">
+                        <col width="100px">
                         <col width="">
                     </colgroup>
                     <tbody>
                     <tr>
-                        <th>직렬 / 응시번호</th>
+                        <th>직렬 / <br>응시번호</th>
                         <td class="tx-left">
                             <select name="">
                                 <option value="">응시직렬</option>
                                 @foreach($mack_part as $val)
                                     <option value="{{ $val['MockPart'] }}">{{ $val['MockPartName'] }}</option>
                                 @endforeach
-                            </select>
-                            <input type="number" name="take_num" id="take_num" style="width:150px">
+                            </select><br>
+                            <input type="number" name="take_num" id="take_num" style="width:150px" class="mt10">
                         </td>
                     </tr>
                     <tr>
@@ -186,7 +112,7 @@
                     <tr>
                         <th>이메일 </th>
                         <td class="tx-left">
-                            <input type="email" name="" id="" style="width:250px"><br>※ 분석 자료 전달에 사용되므로 정확히 기입해 주세요.
+                            <input type="email" name="" id="" style="width:250px">
                         </td>
                     </tr>
                     <tr>
@@ -215,9 +141,8 @@
                     </ul>
                 </div>
                 <div class="mt10"><input type="checkbox" id="yes"><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
-
-                Research 1 (2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 ) ※ 2시간만 제공 - 빠른 채점 제공
-                <div class="markingBox mt50">
+                <div class="markingtitle mt50"> Research 1<br>(2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 )<br>※ 2시간만 제공 - 빠른 채점 제공</div>
+                <div class="markingBox">
                     <h3>응시횟수</h3>
                     <ul class="number">
                         <li><input type="radio" id="one"><label for="one">1회</label></li>
@@ -434,8 +359,8 @@
 
                     <h3 class="mt30">과목별 체감난이도</h3>
                     <table class="boardTypeB">
-                        <col  />
-                        <col width="80%" />
+                        <col width="100px"  />
+                        <col />
                         <tr>
                             <th>과목</th>
                             <th>난이도</th>
@@ -483,8 +408,8 @@
                     </table>
                 </div>
 
-                Research 2(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 ) ※ 약 일주일간 제공
-                <div class="markingBox mt50">
+                <div class="markingtitle mt50">Research 2<br>(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 )<br>※ 약 일주일간 제공</div>
+                <div class="markingBox">
                     <h3>응시횟수</h3>
                     <ul class="number">
                         <li><input type="radio" id="one"><label for="one">1회</label></li>
@@ -495,8 +420,8 @@
 
                     <h3 class="mt30">본인 점수 입력</h3>
                     <table class="boardTypeB">
+                        <col width="80px" />
                         <col  />
-                        <col width="80%" />
                         <tr>
                             <th>과목</th>
                             <th>점수입력</th>
@@ -535,8 +460,8 @@
 
                     <h3 class="mt30">과목별 체감난이도</h3>
                     <table class="boardTypeB">
-                        <col  />
-                        <col width="80%" />
+                        <col width="100px"/>
+                        <col />
                         <tr>
                             <th>과목</th>
                             <th>난이도</th>
@@ -593,7 +518,6 @@
                     <a href="#none">수정 </a>
                 </div>
             </div>
-
         </div>
-    </div>
+
 @stop

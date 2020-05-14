@@ -40,12 +40,13 @@
         .txtinfo {border:1px solid #464646; padding:20px; height:150px; overflow-y:scroll}
         .txtinfo li {margin-left:20px; list-style-type: decimal;}
 
-        .sub_warp {width:980px; margin:0 auto; padding:60px 0; }
+        .sub_warp {width:980px; margin:0 auto; padding:50px 10px; font-size:14px; line-height:1.5}
         .sub_warp h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
         .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
         .sub_warp h2 span {color:#C03}
         .sub_warp h2 select {padding:5px}
 
+        .markingtitle {font-size:16px; font-weight:bold; padding:10px 0; text-align:center; background:#f4f4f4; border:1px solid #000}
         .markingBox {padding:30px 0; border-top:2px solid #000; border-bottom:2px solid #000}
         .markingBox h3 {font-size:16px; background:#444; color:#fff; height:40px; line-height:40px; padding:0 20px; margin-bottom:10px; border-radius:15px 15px 0 0}
         .markingBox .number li {display:inline; float:left; margin-right:30px}
@@ -80,8 +81,8 @@
         .mypoint span {vertical-align: bottom}
         .omrWarp:after {content:""; display:block; clear:both}
     </style>
-    <div class="evtCtnsBox">
-        <div class="sub_warp">
+
+        <div class="sub_warp NSK">
             <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 <input type="hidden" name="predict_idx" value="{{ $idx }}" />
@@ -150,9 +151,10 @@
                     </div>
                     <div class="mt10"><input type="checkbox" name="is_chk" id="is_chk" {{ ($mode == 'MOD') ? 'checked="checked"' : '' }}><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
 
-                    {{--Research 1 (2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 ) ※ 2시간만 제공 - 빠른 채점 제공--}}
+                    
                     @if ($research_type == 'Research1')
-                        <div class="markingBox mt50">
+                        <div class="markingtitle mt50"> Research 1<br>(2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 )<br>※ 2시간만 제공 - 빠른 채점 제공</div>
+                        <div class="markingBox">
                             <h3>응시횟수</h3>
                             <ul class="number">
                                 <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }}><label for="one">1회</label></li>
@@ -216,9 +218,10 @@
                         </div>
                     @endif
 
-                    {{--Research 2(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 ) ※ 약 일주일간 제공--}}
+                    
                     @if ($research_type == 'Research2')
-                        <div class="markingBox mt50">
+                        <div class="markingtitle mt50">Research 2<br>(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 )<br>※ 약 일주일간 제공</div>
+                        <div class="markingBox">
                             <h3>응시횟수</h3>
                             <ul class="number">
                                 <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }}><label for="one">1회</label></li>
@@ -292,7 +295,7 @@
                 </div>
             </form>
         </div>
-    </div>
+
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

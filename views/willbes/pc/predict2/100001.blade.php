@@ -82,220 +82,228 @@
         .omrWarp:after {content:""; display:block; clear:both}
     </style>
 
-        <div class="sub_warp NSK">
-            <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-                {!! csrf_field() !!}
-                <input type="hidden" name="predict_idx" value="{{ $idx }}" />
-                <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
-                <input type="hidden" name="SiteCode" value="{{ $__cfg['SiteCode'] }}" />
-                <input type="hidden" name="mode" value="{{ $mode }}" />
-                <input type="hidden" name="research_type" id="research_type" value="{{ $research_type }}">
-                {{--<input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />--}}
+    <div class="sub_warp NSK">
+        <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+            {!! csrf_field() !!}
+            <input type="hidden" name="predict_idx" value="{{ $idx }}" />
+            <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+            <input type="hidden" name="SiteCode" value="{{ $__cfg['SiteCode'] }}" />
+            <input type="hidden" name="mode" value="{{ $mode }}" />
+            <input type="hidden" name="research_type" id="research_type" value="{{ $research_type }}">
+            <input type="hidden" name="take_mock_part_val" value="{{ $data['TakeMockPart'] }}">
+            {{--<input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />--}}
 
-                <div class="sub3_1">
-                    <h2>기본정보 입력 </h2>
-                    <table class="boardTypeB">
-                        <colgroup>
-                            <col width="20%">
-                            <col width="">
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <th>직렬 / 응시번호</th>
-                                <td class="tx-left">
-                                    <select name="take_mock_part" id="take_mock_part">
-                                        <option value="">응시직렬</option>
-                                        @foreach($mack_part as $val)
-                                            <option value="{{ $val['MockPart'] }}" {{ ($val['MockPart'] == $data['TakeMockPart']) ? 'selected="selected"' : '' }}>{{ $val['MockPartName'] }}</option>
-                                        @endforeach
-                                    </select>
-                                    <input type="number" name="take_num" id="take_num" style="width:150px" value="{{$data['TakeNumber']}}">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>이름</th>
-                                <td class="tx-left">
-                                    {{sess_data('mem_name')}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>이메일 </th>
-                                <td class="tx-left">
-                                    <input type="email" id="register_email" name="register_email" maxlength="30" placeholder="이메일" value="{{ ($mode == 'INS' ? sess_data('mem_mail') : $data['UserMailDec']) }}" style="width:250px">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>연락처</th>
-                                <td class="tx-left">
-                                    <input type="tel" id="register_tel" name="register_tel" maxlength="11" placeholder="연락처" value="{{ ($mode == 'INS' ? sess_data('mem_phone') : $data['UserTelDec']) }}" style="width:150px">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="sub3_1">
+                <h2>기본정보 입력 </h2>
+                <table class="boardTypeB">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>직렬 / 응시번호</th>
+                            <td class="tx-left">
+                                <select name="take_mock_part" id="take_mock_part" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                                    <option value="">응시직렬</option>
+                                    @foreach($mack_part as $val)
+                                        <option value="{{ $val['MockPart'] }}" {{ ($val['MockPart'] == $data['TakeMockPart']) ? 'selected=selected' : '' }}>{{ $val['MockPartName'] }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="number" name="take_num" id="take_num" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td class="tx-left">
+                                {{sess_data('mem_name')}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일 </th>
+                            <td class="tx-left">
+                                <input type="email" id="register_email" name="register_email" maxlength="30" placeholder="이메일" value="{{ ($mode == 'INS' ? sess_data('mem_mail') : $data['UserMailDec']) }}" style="width:250px" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td class="tx-left">
+                                <input type="tel" id="register_tel" name="register_tel" maxlength="11" placeholder="연락처" value="{{ ($mode == 'INS' ? sess_data('mem_phone') : $data['UserTelDec']) }}" style="width:150px" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <h2 class="mt50">개인정보 수집 및 이용에 대한 안내 </h2>
-                    <div class="txtinfo">
-                        <ul>
-                            <li>개인정보 수집 항목(개인정보 보호법 제15조 제2항)<br>
-                            - 성명, 응시번호, 휴대폰 번호, 전자 우편 주소</li>
-                            <li>개인정보 수집 및 이용 목적(개인정보 보호법 제15조 제2항 제1호)<br>
-                            - 성적 이벤트 등의 본인확인<br>
-                            - 고지사항 전달, 본인 의사 확인 등 원활한 의사소통 경로의 확보<br>
-                            - 서비스 이용과 관련된 정보 안내 등 편의제공 목적</li>
-                            <li>개인정보 보유 및 이용기간(개인정보 보호법 제15조 제2항 제3호)<br>
-                            - 수집된 개인정보는 상기 2번의 용도 이외의 목적으로는 사용되지 않습니다.</li>
-                            <li>개인정보 수집동의 거부 및 거부에 따른 이용제한(개인정보 보호법 제15조 제2항 제4호)<br>
-                            - 고객님은 개인정보의 수집 및 이용에 대하여 동의를 거부할 수 있습니다. <br>
-                            - 개인정보 수집에 동의하지 않거나, 부정확한 정보를 입력하는 경우, 본 이벤트 관련 서비스 이용이 제한됨을 알려드립니다.</li>
+                <h2 class="mt50">개인정보 수집 및 이용에 대한 안내 </h2>
+                <div class="txtinfo">
+                    <ul>
+                        <li>개인정보 수집 항목(개인정보 보호법 제15조 제2항)<br>
+                        - 성명, 응시번호, 휴대폰 번호, 전자 우편 주소</li>
+                        <li>개인정보 수집 및 이용 목적(개인정보 보호법 제15조 제2항 제1호)<br>
+                        - 성적 이벤트 등의 본인확인<br>
+                        - 고지사항 전달, 본인 의사 확인 등 원활한 의사소통 경로의 확보<br>
+                        - 서비스 이용과 관련된 정보 안내 등 편의제공 목적</li>
+                        <li>개인정보 보유 및 이용기간(개인정보 보호법 제15조 제2항 제3호)<br>
+                        - 수집된 개인정보는 상기 2번의 용도 이외의 목적으로는 사용되지 않습니다.</li>
+                        <li>개인정보 수집동의 거부 및 거부에 따른 이용제한(개인정보 보호법 제15조 제2항 제4호)<br>
+                        - 고객님은 개인정보의 수집 및 이용에 대하여 동의를 거부할 수 있습니다. <br>
+                        - 개인정보 수집에 동의하지 않거나, 부정확한 정보를 입력하는 경우, 본 이벤트 관련 서비스 이용이 제한됨을 알려드립니다.</li>
+                    </ul>
+                </div>
+                <div class="mt10"><input type="checkbox" name="is_chk" id="is_chk" {{ ($mode == 'MOD') ? 'checked="checked"' : '' }}><label for="is_chk">윌비스에 개인정보제공 동의하기(필수)</label></div>
+
+
+                @if ($research_type == 'Research1')
+                    <div class="markingtitle mt50"> Research 1<br>(2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 )<br>※ 2시간만 제공 - 빠른 채점 제공</div>
+                    <div class="markingBox">
+                        <h3>응시횟수</h3>
+                        <ul class="number">
+                            <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }}><label for="one">1회</label></li>
+                            <li><input type="radio" name="take_cnt" id="two" value="2" {{ ($data['TakeCount'] == '2') ? 'checked="checked"' : '' }}><label for="two">2회</label></li>
+                            <li><input type="radio" name="take_cnt" id="three" value="3" {{ ($data['TakeCount'] == '3') ? 'checked="checked"' : '' }}><label for="three">3회</label></li>
+                            <li><input type="radio" name="take_cnt" id="four" value="4" {{ ($data['TakeCount'] == '4') ? 'checked="checked"' : '' }}><label for="four">4회 이상</label></li>
                         </ul>
-                    </div>
-                    <div class="mt10"><input type="checkbox" name="is_chk" id="is_chk" {{ ($mode == 'MOD') ? 'checked="checked"' : '' }}><label for="yes">윌비스에 개인정보제공 동의하기(필수)</label></div>
 
-                    
-                    @if ($research_type == 'Research1')
-                        <div class="markingtitle mt50"> Research 1<br>(2020.05.16[토] 18: 00 ~ 2020.05.16[토] 20 : 00까지 )<br>※ 2시간만 제공 - 빠른 채점 제공</div>
-                        <div class="markingBox">
-                            <h3>응시횟수</h3>
-                            <ul class="number">
-                                <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }}><label for="one">1회</label></li>
-                                <li><input type="radio" name="take_cnt" id="two" value="2" {{ ($data['TakeCount'] == '2') ? 'checked="checked"' : '' }}><label for="two">2회</label></li>
-                                <li><input type="radio" name="take_cnt" id="three" value="3" {{ ($data['TakeCount'] == '3') ? 'checked="checked"' : '' }}><label for="three">3회</label></li>
-                                <li><input type="radio" name="take_cnt" id="four" value="4" {{ ($data['TakeCount'] == '4') ? 'checked="checked"' : '' }}><label for="four">4회 이상</label></li>
-                            </ul>
-
-                            <h3 class="mt30">본인 정답 입력</h3>
-                            <div class="omrWarp">
-                                @foreach($subject_list as $key => $val)
-                                    <div class="qMarking">
-                                        <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
-                                        <table class="boardTypeB">
-                                            <tr>
-                                                <th scope="col">번호</th>
-                                                @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                    <th scope="col">{{ $val2 }}</th>
-                                                @endforeach
-                                            </tr>
-                                            <tr>
-                                                <td>답안입력 </td>
-                                                @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                    <td>
-                                                        <input class="txt-answer" type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
-                                                    </td>
-                                                @endforeach
-                                            </tr>
-                                        </table>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                            <h3 class="mt30">과목별 체감난이도</h3>
-                            <table class="boardTypeB">
-                                <col  />
-                                <col width="80%" />
-                                <tr>
-                                    <th>과목</th>
-                                    <th>난이도</th>
-                                </tr>
-                                @foreach($subject_list as $key => $val)
-                                    <tr>
-                                        <th>{{ $val['SubjectName'] }}</th>
-                                        <td>
-                                            <ul class="number">
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}>
-                                                    <label for="top_{{ $val['PpIdx'] }}">상</label>
-                                                </li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}>
-                                                    <label for="middle_{{ $val['PpIdx'] }}">중</label>
-                                                </li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}>
-                                                    <label for="bottom_{{ $val['PpIdx'] }}">하</label>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </table>
+                        <h3 class="mt30">본인 정답 입력</h3>
+                        <div class="omrWarp">
+                            @foreach($subject_list as $key => $val)
+                                <div class="qMarking">
+                                    <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
+                                    <table class="boardTypeB">
+                                        <tr>
+                                            <th scope="col">번호</th>
+                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
+                                                <th scope="col">{{ $val2 }}</th>
+                                            @endforeach
+                                        </tr>
+                                        <tr>
+                                            <td>답안입력 </td>
+                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
+                                                <td>
+                                                    <input class="txt-answer" type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+                                </div>
+                            @endforeach
                         </div>
-                    @endif
 
-                    
-                    @if ($research_type == 'Research2')
-                        <div class="markingtitle mt50">Research 2<br>(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 )<br>※ 약 일주일간 제공</div>
-                        <div class="markingBox">
-                            <h3>응시횟수</h3>
-                            <ul class="number">
-                                <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }}><label for="one">1회</label></li>
-                                <li><input type="radio" name="take_cnt" id="two" value="2" {{ ($data['TakeCount'] == '2') ? 'checked="checked"' : '' }}><label for="two">2회</label></li>
-                                <li><input type="radio" name="take_cnt" id="three" value="3" {{ ($data['TakeCount'] == '3') ? 'checked="checked"' : '' }}><label for="three">3회</label></li>
-                                <li><input type="radio" name="take_cnt" id="four" value="4" {{ ($data['TakeCount'] == '4') ? 'checked="checked"' : '' }}><label for="four">4회 이상</label></li>
-                            </ul>
-
-                            <h3 class="mt30">본인 점수 입력</h3>
-                            <table class="boardTypeB">
-                                <col  />
-                                <col width="80%" />
+                        <h3 class="mt30">과목별 체감난이도</h3>
+                        <table class="boardTypeB">
+                            <col  />
+                            <col width="80%" />
+                            <tr>
+                                <th>과목</th>
+                                <th>난이도</th>
+                            </tr>
+                            @foreach($subject_list as $key => $val)
                                 <tr>
-                                    <th>과목</th>
-                                    <th>점수입력</th>
-                                </tr>
-                                @foreach($subject_list as $key => $val)
-                                    <tr>
-                                        <th>{{ $val['SubjectName'] }}</th>
-                                        <td class="mypoint">
-                                            <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" value="{{ (empty($orgin_data[$val['PpIdx']]) === true ? '' : $orgin_data[$val['PpIdx']]) }}"> 점
-                                            {{--(합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)--}}
-                                            <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                <tr>
-                                    <th>▶ 내 점수 평균 </th>
-                                    <td class="mypoint">
-                                        <span class="tx-blue">??</span>점
+                                    <th>{{ $val['SubjectName'] }}</th>
+                                    <td>
+                                        <ul class="number">
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}>
+                                                <label for="top_{{ $val['PpIdx'] }}">상</label>
+                                            </li>
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}>
+                                                <label for="middle_{{ $val['PpIdx'] }}">중</label>
+                                            </li>
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}>
+                                                <label for="bottom_{{ $val['PpIdx'] }}">하</label>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
-                            </table>
-
-                            <h3 class="mt30">과목별 체감난이도</h3>
-                            <table class="boardTypeB">
-                                <col  />
-                                <col width="80%" />
-                                <tr>
-                                    <th>과목</th>
-                                    <th>난이도</th>
-                                </tr>
-                                @foreach($subject_list as $key => $val)
-                                    <tr>
-                                        <th>{{ $val['SubjectName'] }}</th>
-                                        <td>
-                                            <ul class="number">
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}>
-                                                    <label for="top_{{ $val['PpIdx'] }}">상</label>
-                                                </li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}>
-                                                    <label for="middle_{{ $val['PpIdx'] }}">중</label>
-                                                </li>
-                                                <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}" value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}>
-                                                    <label for="bottom_{{ $val['PpIdx'] }}">하</label>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </table>
-
-                            <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
-                            <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="3" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}"> 점 </div>
-                        </div>
-                    @endif
-
-                    <div class="btns">
-                        <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else확인@endif</a>
+                            @endforeach
+                        </table>
                     </div>
-                </div>
-            </form>
-        </div>
+                @endif
 
+
+                @if ($research_type == 'Research2')
+                    <div class="markingtitle mt50">Research 2<br>(2020.05.16[토] 20: 00 이후 ~ 2020.05.22[금] 20 : 00 )<br>※ 약 일주일간 제공</div>
+                    <div class="markingBox">
+                        <h3>응시횟수</h3>
+                        <ul class="number">
+                            <li><input type="radio" name="take_cnt" id="one" value="1" {{ ($data['TakeCount'] == '1') ? 'checked="checked"' : '' }} {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}><label for="one">1회</label></li>
+                            <li><input type="radio" name="take_cnt" id="two" value="2" {{ ($data['TakeCount'] == '2') ? 'checked="checked"' : '' }} {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}><label for="two">2회</label></li>
+                            <li><input type="radio" name="take_cnt" id="three" value="3" {{ ($data['TakeCount'] == '3') ? 'checked="checked"' : '' }} {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}><label for="three">3회</label></li>
+                            <li><input type="radio" name="take_cnt" id="four" value="4" {{ ($data['TakeCount'] == '4') ? 'checked="checked"' : '' }} {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}><label for="four">4회 이상</label></li>
+                        </ul>
+
+                        <h3 class="mt30">본인 점수 입력</h3>
+                        <table class="boardTypeB">
+                            <col  />
+                            <col width="80%" />
+                            <tr>
+                                <th>과목</th>
+                                <th>점수입력</th>
+                            </tr>
+                            @foreach($subject_list as $key => $val)
+                                <tr>
+                                    <th>{{ $val['SubjectName'] }}</th>
+                                    <td class="mypoint">
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)"
+                                               value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
+                                                {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
+                                        {{--(합격/불합격 여부 : <span class="tx-blue">합격</span> <!--<span class="tx-red">불합격</span>-->)--}}
+                                        <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <th>▶ 내 점수 평균 </th>
+                                <td class="mypoint">
+                                    <span class="tx-blue">{{ $arr_reg_answerpaper['avg'] }}</span> 점
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h3 class="mt30">과목별 체감난이도</h3>
+                        <table class="boardTypeB">
+                            <col  />
+                            <col width="80%" />
+                            <tr>
+                                <th>과목</th>
+                                <th>난이도</th>
+                            </tr>
+                            @foreach($subject_list as $key => $val)
+                                <tr>
+                                    <th>{{ $val['SubjectName'] }}</th>
+                                    <td>
+                                        <ul class="number">
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}"
+                                                       value="H" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'H') ? 'checked="checked"' : '' }}
+                                                        {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                                                <label for="top_{{ $val['PpIdx'] }}">상</label>
+                                            </li>
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="middle_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}"
+                                                       value="M" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'M') ? 'checked="checked"' : '' }}
+                                                        {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                                                <label for="middle_{{ $val['PpIdx'] }}">중</label>
+                                            </li>
+                                            <li><input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="bottom_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}"
+                                                       value="L" {{ (empty($data['ArrTakeLevel'][$val['PpIdx']]) === false && $data['ArrTakeLevel'][$val['PpIdx']] == 'L') ? 'checked="checked"' : '' }}
+                                                        {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                                                <label for="bottom_{{ $val['PpIdx'] }}">하</label>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+
+                        <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
+                        <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="4" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}> 점 </div>
+                    </div>
+                @endif
+
+                <div class="btns">
+                    <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

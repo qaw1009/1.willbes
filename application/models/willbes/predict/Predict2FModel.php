@@ -90,7 +90,7 @@ class Predict2FModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = 'ORDER BY PPRP.OrderNum ASC';
+        $order_by = 'ORDER BY PPRP.PpIdx ASC';
 
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
@@ -126,22 +126,6 @@ class Predict2FModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = 'ORDER BY q.PpIdx, q.QuestionNO ASC';
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
-    }
-
-    /**
-     * 평균점수조회
-     * @param $arr_condition
-     * @return mixed
-     */
-    public function getOrginGradeData($arr_condition)
-    {
-        $column = 'PrIdx, PredictIdx2, PpIdx, TakeMockPart, OrgPoint';
-        $from = " FROM {$this->_table['predict2_grades_origin']} ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        $order_by = ' ORDER BY PpIdx ASC';
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 
@@ -296,9 +280,25 @@ class Predict2FModel extends WB_Model
                     'IsStatus' => 'Y'
                 ]
             ];
-            $register_data = $this->findPredictForRegister($arr_condition);
+            $register_data = $this->findPredictForRegister($arr_condition, 'PrIdx, TakeMockPart, TakeNumber');
             if(empty($register_data) === true) {
                 throw new \Exception('등록된 기본정보가 없습니다.');
+            }
+
+            //기존 등록된 직렬,응시번호 값이 달라진 경우 체크
+            if ($register_data['TakeMockPart'] != element('take_mock_part', $form_data) || $register_data['TakeNumber'] != element('take_num', $form_data)) {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx2' => element('predict_idx', $form_data),
+                        'TakeNumber' => element('take_num', $form_data),
+                        'TakeMockPart' => element('take_mock_part', $form_data),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data2 = $this->findPredictForRegister($arr_condition);
+                if (empty($register_data2) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
             }
 
             $subjectData = $this->getSubjectList(element('predict_idx', $form_data));
@@ -507,14 +507,85 @@ class Predict2FModel extends WB_Model
 
     /**
      * Research2
+     * 성적저장, PAST 커트라인 업데이트, IsFinish 업데이트
      * @param $form_data
      * @return bool|string
-     * TODO : 확인해야 함.
      */
     public function modifyPredict2Research2($form_data) {
         try {
+            if (empty(element('cut_point', $form_data)) === true) {
+                throw new \Exception('PAST 커트라인 점수를 입력해 주세요.');
+            }
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx2' => element('predict_idx', $form_data),
+                    'PrIdx' => element('PrIdx', $form_data),
+                    'IsStatus' => 'Y'
+                ],
+                'RAW' => [
+                    'MemIdx' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx'),
+                    'TakeMockPart' => (empty(element('take_mock_part_val', $form_data)) === true) ? '\'\'' : element('take_mock_part_val', $form_data),
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition, 'PrIdx, TakeMockPart, TakeNumber');
+            if(empty($register_data) === true) {
+                throw new \Exception('등록된 기본정보가 없습니다.');
+            }
 
+            //기존 등록된 직렬,응시번호 값이 달라진 경우 체크
+            if ($register_data['TakeMockPart'] != element('take_mock_part', $form_data) || $register_data['TakeNumber'] != element('take_num', $form_data)) {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx2' => element('predict_idx', $form_data),
+                        'TakeNumber' => element('take_num', $form_data),
+                        'TakeMockPart' => element('take_mock_part', $form_data),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data2 = $this->findPredictForRegister($arr_condition);
+                if (empty($register_data2) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
+            }
 
+            $subjectData = $this->getSubjectList(element('predict_idx', $form_data));
+            if (empty($subjectData) === true) {
+                throw new Exception('조회된 과목이 없습니다.');
+            }
+
+            $questionData = $this->getQuestionForAnswer(element('predict_idx', $form_data));
+            if (empty($questionData) === true) {
+                throw new Exception('조회된 문항이 없습니다.');
+            }
+
+            //origin data 저장
+            $ScoreArr = element('Score', $form_data);
+            $PpIdxArr = element('PpIdx', $form_data);
+            foreach($ScoreArr as $key => $val){
+                $PpIdx = $PpIdxArr[$key];
+
+                $data = [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'PrIdx'  => element('PrIdx', $form_data),
+                    'PredictIdx2'=> element('predict_idx', $form_data),
+                    'PpIdx' => $PpIdx,
+                    'TakeMockPart' => element('take_mock_part_val', $form_data),
+                    'OrgPoint' => $val
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['predict2_grades_origin']) === false) {
+                    throw new \Exception('저장에 실패했습니다.');
+                }
+            }
+
+            $upd_reg_data = [
+                'CutPoint' => element('cut_point', $form_data),
+                'IsFinish' => 'Y',
+            ];
+            $this->_conn->set($upd_reg_data)->set('UpdDatm', 'NOW()', false)->where('PrIdx', element('PrIdx', $form_data));
+            if ($this->_conn->update($this->_table['predict2_register']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
 
             $this->_conn->trans_commit();
         } catch (Exception $e) {

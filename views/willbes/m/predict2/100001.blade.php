@@ -68,7 +68,8 @@
         .qMarking ul {border:0; line-height: 1.5; border-right:1px solid #cdcdcd; border-top:1px solid #464646; border-bottom:1px solid #cdcdcd; margin-bottom:20px}            
         .qMarking li {display:inline; float:left; width:20%; text-align:center; border:0; padding-bottom:10px; border-left:#cdcdcd 1px solid;}        
         .qMarking li div {background:#f3f3f3; height:30px; line-height:30px; margin-bottom:10px}
-        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd}
+        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd; letter-spacing:1 ;}
+        .qMarking li input:active,
         .qMarking li input:focus {color:#000}
         .qMarking ul.w25 li {width:25%}
         .qMarking ul:after {content:""; display:block; clear:both}
@@ -79,7 +80,6 @@
         .mypoint {text-align:left !important}
         .mypoint input[type=number] {width:50px; margin:0 !important; text-align:right}
         .mypoint span {vertical-align: bottom}
-
     </style>
 
     <div class="sub_warp NSK">

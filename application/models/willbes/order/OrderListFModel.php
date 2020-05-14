@@ -120,6 +120,7 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
                 , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.SalePatternCcd
                 , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
+                , OPR.RefundDatm             
                 , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, PL.LearnPatternCcd
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
@@ -144,6 +145,8 @@ class OrderListFModel extends BaseOrderFModel
             from ' . $this->_table['order_product'] . ' as OP
                 inner join ' . $this->_table['order'] . ' as O
                     on OP.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['order_product_refund'] . ' as OPR		
+                    on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx                    
                 left join ' . $this->_table['product'] . ' as P
                     on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL

@@ -80,6 +80,9 @@
                                 <a href="{{ $row['DeliverySearchUrl'] }}" class="ml5" target="_blank">배송조회</a>
                             @else
                                 {{ $row['PayStatusCcdName'] }}
+                                @if(empty($row['RefundDatm']) === false)
+                                    ({{ substr($row['RefundDatm'], 0, 10) }})
+                                @endif
                             @endif
                         </span>
                     </li>

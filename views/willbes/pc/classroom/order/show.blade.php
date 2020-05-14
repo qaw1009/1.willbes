@@ -158,6 +158,9 @@
                                         <div class="tBox NSK light-gray"><a href="{{ $row['DeliverySearchUrl'] }}" target="_blank">배송조회</a></div>
                                     @else
                                         {{ $row['PayStatusCcdName'] }}
+                                        @if(empty($row['RefundDatm']) === false)
+                                            <br/>({{ substr($row['RefundDatm'], 0, 10) }})
+                                        @endif
                                     @endif
                                 </td>
                             </tr>

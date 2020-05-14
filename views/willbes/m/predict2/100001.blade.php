@@ -51,7 +51,7 @@
         .markingBox .number li {display:inline; float:left; margin-right:20px}
         .markingBox .number:after {content:""; display:block; clear:both}
 
-        .omrWarp {padding:1em 0}
+        .omrWarp {padding:1em 0;}
         .omrL {float:left; width:77%;}
         .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
         .omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}
@@ -62,23 +62,24 @@
         .omrWarp tr.check {background:#eefafd}
 
         .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
-        .omrWarp h4 {margin-bottom:0.5em; color:#000; font-size: 14px}
-        .qMarking {margin-bottom:1em;}
+        .omrWarp h4 {margin-bottom:10px; color:#000; font-size: 14px}
+        .qMarking {padding-bottom:10px; border:0}
         .qMarking h4 span {color:#666; vertical-align:bottom}
+        .qMarking ul {border:0; line-height: 1.5; border-right:1px solid #cdcdcd; border-top:1px solid #464646; border-bottom:1px solid #cdcdcd; margin-bottom:20px}            
+        .qMarking li {display:inline; float:left; width:20%; text-align:center; border:0; padding-bottom:10px; border-left:#cdcdcd 1px solid;}        
+        .qMarking li div {background:#f3f3f3; height:30px; line-height:30px; margin-bottom:10px}
+        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd}
+        .qMarking li input:focus {color:#000}
+        .qMarking ul.w25 li {width:25%}
+        .qMarking ul:after {content:""; display:block; clear:both}
 
         .selfMarking input[type=text] {width:50%; margin:0 auto; letter-spacing:0}
         .selfMarking p {margin-top:1em}
 
-        .errata {padding:0 10px}
-        .errata li {display:inline; float:left; width:20%; padding-right:20px}
-        .errata li:last-child {padding:0}
-        .errata p {background:#333; color:#fff; text-align:center; padding:10px 0; margin-bottom:10px}
-        .errata .boardTypeB tr td:nth-last-child(3) {color:#09F !important}
-        .errata td:first-child {color:#09F !important}
         .mypoint {text-align:left !important}
         .mypoint input[type=number] {width:50px; margin:0 !important; text-align:right}
         .mypoint span {vertical-align: bottom}
-        .omrWarp:after {content:""; display:block; clear:both}
+
     </style>
 
     <div class="sub_warp NSK">
@@ -164,6 +165,71 @@
 
                         <h3 class="mt30">본인 정답 입력</h3>
                         <div class="omrWarp">
+                            <div class="qMarking">
+                                <h4>헌법<span> | 원점수: 100</span></h4>
+                                <ul>
+                                    <li>
+                                        <div>1~5</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>6~10</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>11~15</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>16~20</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>21~25</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                </ul>
+
+                                <h4>언어논리<span> | 원점수: 100</span></h4>
+                                <ul class="w25">
+                                    <li>
+                                        <div>1~5</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>6~10</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>11~15</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>16~20</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>21~25</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>25~30</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>31~35</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                    <li>
+                                        <div>36~40</div>
+                                        <input value="" type="number" name="" id="" maxlength="5" placeholder="답안입력">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="omrWarp">
                             @php $_id=1; @endphp
                             @foreach($subject_list as $key => $val)
                                 <div class="qMarking">
@@ -189,6 +255,8 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        
                         <!--omrWarp//-->
 
                         <h3 class="mt30">과목별 체감난이도</h3>

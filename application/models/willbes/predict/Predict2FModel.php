@@ -90,9 +90,10 @@ class Predict2FModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = 'ORDER BY PPRP.PpIdx ASC';
+        $group_by = ' GROUP BY PPRP.PpIdx';
+        $order_by = ' ORDER BY PPRP.OrderNum ASC';
 
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by)->result_array();
     }
 
     /**
@@ -186,26 +187,35 @@ class Predict2FModel extends WB_Model
             if (empty($questionData) === true) {
                 throw new Exception('조회된 문항이 없습니다.');
             }
-
-            $input_answer = element('Answer',$form_data);
-            $set_answer = [];
-            foreach ($input_answer as $key => $val) {
-                if(strlen($val) != 5) {
-                    throw new Exception('정답이 모두 입력되지 않았습니다.');
-                }
-                for($i = 0; $i < strlen($val); $i++) {
-                    $set_answer[] = substr($val, $i, 1);
-                }
+            $setQuestionData = [];
+            foreach ($questionData as $key => $row) {
+                $setQuestionData[$row['PpIdx']][] = $row['PqIdx'];
             }
 
+            $setArr_subject_answer = [];
             $take_level = '';
             foreach ($subjectData as $row) {
                 if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
                     throw new Exception('과목별 체감난이도를 선택해 주세요.');
                 }
+                $setArr_subject_answer[$row['PpIdx']] = $row['PpIdx'];
                 $take_level .= $row['PpIdx'].'|'.element('take_level_'.$row['PpIdx'],$form_data).',';
             }
             $take_level = substr($take_level, 0, -1);
+
+            //답안정보셋팅
+            $get_data_answer = [];
+            foreach ($setArr_subject_answer as $key => $ppidx) {
+                $input_answer = element('Answer_'.$ppidx, $form_data);
+                foreach ($input_answer as $key2 => $val) {
+                    if (strlen($val) != 5) {
+                        throw new Exception('정답이 모두 입력되지 않았습니다.');
+                    }
+                    for ($i = 0; $i < strlen($val); $i++) {
+                        $get_data_answer[$ppidx][] = substr($val, $i, 1);
+                    }
+                }
+            }
 
             $register_tel = (empty(element('register_tel', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_tel', $form_data));
             $register_email = (empty(element('register_email', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_email', $form_data));
@@ -240,17 +250,20 @@ class Predict2FModel extends WB_Model
             }
 
             $ins_answer_data = [];
-            foreach ($questionData as $key => $val) {
-                $ins_answer_data[] = [
-                    'PredictIdx2' => element('predict_idx', $form_data),
-                    'PrIdx' => $nowIdx,
-                    'MemIdx' => $this->session->userdata('mem_idx'),
-                    'PpIdx' => $val['PpIdx'],
-                    'PqIdx' => $val['PqIdx'],
-                    'Answer' => (empty($set_answer[$key]) === true) ? '' : $set_answer[$key],
-                    'RegDatm' => date('Y-m-d H:i:s')
-                ];
+            foreach ($setQuestionData as $pk => $row) {
+                foreach ($row as $k => $v) {
+                    $ins_answer_data[] = [
+                        'PredictIdx2' => element('predict_idx', $form_data),
+                        'PrIdx' => $nowIdx,
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'PpIdx' => $pk,
+                        'PqIdx' => $v,
+                        'Answer' => (empty($get_data_answer[$pk]) === true) ? '' : $get_data_answer[$pk][$k],
+                        'RegDatm' => date('Y-m-d H:i:s')
+                    ];
+                }
             }
+
             if ($this->_conn->insert_batch($this->_table['predict2_answerpaper'], $ins_answer_data) === false) {
                 throw new \Exception('문항 정보 저장에 실패했습니다.');
             }
@@ -310,26 +323,35 @@ class Predict2FModel extends WB_Model
             if (empty($questionData) === true) {
                 throw new Exception('조회된 문항이 없습니다.');
             }
-
-            $input_answer = element('Answer',$form_data);
-            $set_answer = [];
-            foreach ($input_answer as $key => $val) {
-                if(strlen($val) != 5) {
-                    throw new Exception('정답이 모두 입력되지 않았습니다.');
-                }
-                for($i = 0; $i < strlen($val); $i++) {
-                    $set_answer[] = substr($val, $i, 1);
-                }
+            $setQuestionData = [];
+            foreach ($questionData as $key => $row) {
+                $setQuestionData[$row['PpIdx']][] = $row['PqIdx'];
             }
 
+            $setArr_subject_answer = [];
             $take_level = '';
             foreach ($subjectData as $row) {
                 if (empty(element('take_level_'.$row['PpIdx'],$form_data)) === true) {
                     throw new Exception('과목별 체감난이도를 선택해 주세요.');
                 }
+                $setArr_subject_answer[$row['PpIdx']] = $row['PpIdx'];
                 $take_level .= $row['PpIdx'].'|'.element('take_level_'.$row['PpIdx'],$form_data).',';
             }
             $take_level = substr($take_level, 0, -1);
+
+            //답안정보셋팅
+            $get_data_answer = [];
+            foreach ($setArr_subject_answer as $key => $ppidx) {
+                $input_answer = element('Answer_'.$ppidx, $form_data);
+                foreach ($input_answer as $key2 => $val) {
+                    if (strlen($val) != 5) {
+                        throw new Exception('정답이 모두 입력되지 않았습니다.');
+                    }
+                    for ($i = 0; $i < strlen($val); $i++) {
+                        $get_data_answer[$ppidx][] = substr($val, $i, 1);
+                    }
+                }
+            }
 
             $register_tel = (empty(element('register_tel', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_tel', $form_data));
             $register_email = (empty(element('register_email', $form_data)) === true) ? '' : $this->memberFModel->getEncString(element('register_email', $form_data));
@@ -371,16 +393,18 @@ class Predict2FModel extends WB_Model
             }
 
             $ins_answer_data = [];
-            foreach ($questionData as $key => $val) {
-                $ins_answer_data[] = [
-                    'PredictIdx2' => element('predict_idx', $form_data),
-                    'PrIdx' => element('PrIdx', $form_data),
-                    'MemIdx' => $this->session->userdata('mem_idx'),
-                    'PpIdx' => $val['PpIdx'],
-                    'PqIdx' => $val['PqIdx'],
-                    'Answer' => (empty($set_answer[$key]) === true) ? '' : $set_answer[$key],
-                    'RegDatm' => date('Y-m-d H:i:s')
-                ];
+            foreach ($setQuestionData as $pk => $row) {
+                foreach ($row as $k => $v) {
+                    $ins_answer_data[] = [
+                        'PredictIdx2' => element('predict_idx', $form_data),
+                        'PrIdx' => element('PrIdx', $form_data),
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'PpIdx' => $pk,
+                        'PqIdx' => $v,
+                        'Answer' => (empty($get_data_answer[$pk]) === true) ? '' : $get_data_answer[$pk][$k],
+                        'RegDatm' => date('Y-m-d H:i:s')
+                    ];
+                }
             }
             if ($this->_conn->insert_batch($this->_table['predict2_answerpaper'], $ins_answer_data) === false) {
                 throw new \Exception('문항 정보 저장에 실패했습니다.');

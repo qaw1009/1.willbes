@@ -180,7 +180,7 @@
                                             <td>답안입력 </td>
                                             @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
                                                 <td>
-                                                    <input class="txt-answer" type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
+                                                    <input class="txt-answer" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
                                                 </td>
                                             @endforeach
                                         </tr>

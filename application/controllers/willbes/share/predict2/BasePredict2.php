@@ -58,7 +58,7 @@ class BasePredict2 extends \app\controllers\FrontController
             }
 
             if ($research_type == 'Research2') {
-                $is_finish = 'Y';
+                $is_finish = $reg_data['IsFinish'];
             }
         }
 
@@ -173,6 +173,7 @@ class BasePredict2 extends \app\controllers\FrontController
         } else {
             $result = $reSearch1_result;
         }
+
         $arr_sum = [];
         $avg = '';  //전체평균
         if (empty($result) === false) {
@@ -181,7 +182,7 @@ class BasePredict2 extends \app\controllers\FrontController
                 $arr_sum[$val['PpIdx']] = $val['Scoring'];
                 $sum += (int)$val['Scoring'];
             }
-            $avg = $sum / count($result);
+            $avg = round($sum / count($result),1);
         }
         return [
             'subjectSum' => $arr_sum,

@@ -35,7 +35,7 @@
                 <ul class="bestLec">
                     <li>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.png" alt="김정한 대표">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.gif" alt="김정한 대표">
                             <ul>
                                 <li><span class="tx-red">NEW</span> · 이커머스</li>
                                 <li>가장 현실적인 월 100만원 만들기, <br>
@@ -48,7 +48,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_02.png" alt="김경은 대표">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_02.gif" alt="김경은 대표">
                             <ul>
                                 <li><span class="tx-red">NEW</span> · 이커머스</li>
                                 <li>혼자서도 할 수 있는 <br>

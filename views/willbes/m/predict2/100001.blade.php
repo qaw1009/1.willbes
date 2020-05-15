@@ -319,8 +319,6 @@
                     $('#target_'+id).focus();
                 }
             });
-
-            loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
         });
 
         function js_submit() {
@@ -431,16 +429,11 @@
 
         function maxLengthCheck(object){
             if($(object).prop('type') == 'number') {
-                object.value = object.value.replace(/[^0-9]/g, "");
+                object.value = object.value.replace(/[^0-9.]/g, "");
             }
             if (object.value.length > object.maxLength) {
                 object.value = object.value.slice(0, object.maxLength);
             }
-        }
-
-        {{-- 초기 로그인 얼럿 --}}
-        function loginAlert() {
-            {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','') !!}
         }
 
         {{-- 한림고시 응시번호 유효성 체크 --}}

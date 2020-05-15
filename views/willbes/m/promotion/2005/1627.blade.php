@@ -52,4 +52,15 @@
 </div>
 <!-- End Container -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
+    });
+
+    {{-- 초기 로그인 얼럿 --}}
+    function loginAlert() {
+        {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','Y') !!}
+    }
+</script>
 @stop

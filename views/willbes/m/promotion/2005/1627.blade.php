@@ -26,7 +26,7 @@
 <div id="Container" class="Container c_both">            
     <div class="evtContent NSK">
         <div class="sectin1_box">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627_top{{ ('20200516200000' < date('YmdHis') ? '_01' : '') }}.jpg" alt="#">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1627m_top{{ ('20200516200000' < date('YmdHis') ? '_01' : '') }}.jpg" alt="#">
         </div>
         <!--sectin1_box//-->
         @include('willbes.pc.predict2.1627_promotion_partial')

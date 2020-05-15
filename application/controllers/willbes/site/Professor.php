@@ -248,13 +248,9 @@ class Professor extends \app\controllers\FrontController
         // 교재 조회 (온라인 사이트만)
         if ($this->_is_pass_site === false) {
             $arr_condition = [
-                'EQ' => [
-                    'P.SiteCode' => $this->_site_code, 'P.CateCode' => $this->_def_cate_code, 'P.IsSalesAble' => 'Y',
-                    'P.ProfIdx' => $prof_idx, 'P.SubjectIdx' => element('subject_idx', $arr_input)
-                ],
-                'IN' => [
-                    'P.DispTypeCcd' => ['619001', '619003'],    // 노출위치 공통코드 (강의+서점DP, 서점DP)
-                ]
+                'EQ' => ['P.SiteCode' => $this->_site_code, 'P.CateCode' => $this->_def_cate_code, 'P.IsSalesAble' => 'Y'],
+                'LKB' => ['P.ProfIdx' => $prof_idx, 'P.SubjectIdx' => element('subject_idx', $arr_input)],
+                'IN' => ['P.DispTypeCcd' => ['619001', '619003']]   // 노출위치 공통코드 (강의+서점DP, 서점DP)
             ];
 
             $data['book'] = $this->bookFModel->listSalesProductBook(false, $arr_condition, 4, 0, ['P.IsBest' => 'desc', 'P.ProdCode' => 'desc']);

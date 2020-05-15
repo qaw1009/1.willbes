@@ -83,7 +83,9 @@
                     <label class="control-label col-md-1-1">Research1 기간 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <input type="text" class="form-control datepicker" style="width:100px;" name="Research1StartDatm_d" value="@if($method == 'PUT'){{ substr($data['Research1StartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
+                        <input type="radio" class="flat" name="is_research1" value="Y" @if($method == 'PUT') @if($data['IsResearch1'] == 'Y') checked @endif @endif />사용
+                        <input type="radio" class="flat" name="is_research1" value="N" @if($method == 'POST' || $data['IsResearch1'] == 'N') checked @endif/>미사용
+                        <input type="text" class="form-control datepicker ml-10" style="width:100px;" name="Research1StartDatm_d" value="@if($method == 'PUT'){{ substr($data['Research1StartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                         <select name="Research1StartDatm_h" class="form-control">
                             <!--option value="">선택</option//-->
                             @foreach(range(0, 23) as $i)
@@ -121,7 +123,9 @@
                     <label class="control-label col-md-1-1">Research2 기간 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <input type="text" class="form-control datepicker" style="width:100px;" name="Research2StartDatm_d" value="@if($method == 'PUT'){{ substr($data['Research2StartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
+                        <input type="radio" class="flat" name="is_research2" value="Y" @if($method == 'PUT') @if($data['IsResearch2'] == 'Y') checked @endif @endif />사용
+                        <input type="radio" class="flat" name="is_research2" value="N" @if($method == 'POST' || $data['IsResearch2'] == 'N') checked @endif/>미사용
+                        <input type="text" class="form-control datepicker ml-10" style="width:100px;" name="Research2StartDatm_d" value="@if($method == 'PUT'){{ substr($data['Research2StartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                         <select name="Research2StartDatm_h" class="form-control">
                             <!--option value="">선택</option//-->
                             @foreach(range(0, 23) as $i)

@@ -237,7 +237,7 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td class="mypoint">
-                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)"
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                         @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
@@ -295,7 +295,7 @@
                         </table>
 
                         <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
-                        <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="4" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}> 점 </div>
+                        <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="4" data-max-num="100" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}> 점 </div>
                     </div>
                 @endif
 
@@ -347,6 +347,12 @@
             if ($('#register_email').val() == '') {
                 $('#register_email').focus();
                 alert('이메일 주소를 입력해 주세요.');
+                return false;
+            }
+
+            if(CheckEmail($('#register_email').val()) === false) {
+                $('#register_email').focus();
+                alert('이메일 형식이 올바르지 않습니다.');
                 return false;
             }
 
@@ -430,6 +436,11 @@
         function maxLengthCheck(object){
             if($(object).prop('type') == 'number') {
                 object.value = object.value.replace(/[^0-9.]/g, "");
+                if($(object).data('max-num') != undefined) {
+                    if( Number(object.value) > Number($(object).data('max-num')) ) {
+                        object.value = object.value.slice(0, -1);
+                    }
+                }
             }
             if (object.value.length > object.maxLength) {
                 object.value = object.value.slice(0, object.maxLength);
@@ -445,6 +456,16 @@
             };
 
             if(take_num === null || take_num.length != 8 || arr_vali[take_mock_part] != take_num.substring(0,3)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        {{-- 이메일 유효성 체크 --}}
+        function CheckEmail(str) {
+            var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            if(!reg_email.test(str)) {
                 return false;
             } else {
                 return true;

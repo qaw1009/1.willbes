@@ -51,7 +51,7 @@
         .markingBox .number li {display:inline; float:left; margin-right:20px}
         .markingBox .number:after {content:""; display:block; clear:both}
 
-        .omrWarp {padding:1em 0}
+        .omrWarp {padding:1em 0;}
         .omrL {float:left; width:77%;}
         .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
         .omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}
@@ -62,23 +62,24 @@
         .omrWarp tr.check {background:#eefafd}
 
         .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
-        .omrWarp h4 {margin-bottom:0.5em; color:#000; font-size: 14px}
-        .qMarking {margin-bottom:1em;}
-        .qMarking h4 span {color:#666; vertical-align:bottom}
+        .qMarking h4 {margin-bottom:10px; color:#000; font-size: 14px; font-weight:bold}
+        .qMarking {padding-bottom:10px; border:0}
+        .qMarking h4 span {color:#666; vertical-align:bottom; font-weight:normal}
+        .qMarking ul {border:0; line-height: 1.5; border-right:1px solid #cdcdcd; border-top:1px solid #464646; border-bottom:1px solid #cdcdcd; margin-bottom:20px}            
+        .qMarking li {display:inline; float:left; width:20%; text-align:center; border:0; padding-bottom:10px; border-left:#cdcdcd 1px solid;}        
+        .qMarking li div {background:#f3f3f3; height:30px; line-height:30px; margin-bottom:10px}
+        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd; letter-spacing:1 ;}
+        .qMarking li input:active,
+        .qMarking li input:focus {color:#000}
+        .qMarking ul.w25 li {width:25%}
+        .qMarking ul:after {content:""; display:block; clear:both}
 
         .selfMarking input[type=text] {width:50%; margin:0 auto; letter-spacing:0}
         .selfMarking p {margin-top:1em}
 
-        .errata {padding:0 10px}
-        .errata li {display:inline; float:left; width:20%; padding-right:20px}
-        .errata li:last-child {padding:0}
-        .errata p {background:#333; color:#fff; text-align:center; padding:10px 0; margin-bottom:10px}
-        .errata .boardTypeB tr td:nth-last-child(3) {color:#09F !important}
-        .errata td:first-child {color:#09F !important}
         .mypoint {text-align:left !important}
         .mypoint input[type=number] {width:50px; margin:0 !important; text-align:right}
         .mypoint span {vertical-align: bottom}
-        .omrWarp:after {content:""; display:block; clear:both}
     </style>
 
     <div class="sub_warp NSK">
@@ -109,7 +110,7 @@
                                     <option value="{{ $val['MockPart'] }}" {{ ($val['MockPart'] == $data['TakeMockPart']) ? 'selected=selected' : '' }}>{{ $val['MockPartName'] }}</option>
                                 @endforeach
                             </select>
-                            <input type="number" name="take_num" id="take_num" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
+                            <input type="number" name="take_num" id="take_num" maxlength="8" oninput="maxLengthCheck(this)" style="width:150px" value="{{$data['TakeNumber']}}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}>
                         </td>
                     </tr>
                     <tr>
@@ -164,30 +165,22 @@
 
                         <h3 class="mt30">본인 정답 입력</h3>
                         <div class="omrWarp">
-                            @php $_id=1; @endphp
-                            @foreach($subject_list as $key => $val)
-                                <div class="qMarking">
+                            <div class="qMarking">
+                                @php $_id=1; @endphp
+                                @foreach($subject_list as $key => $val)
                                     <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
-                                    <table class="boardTypeB">
-                                        <tr>
-                                            <th scope="col">번호</th>
-                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                <th scope="col">{{ $val2 }}</th>
-                                            @endforeach
-                                        </tr>
-                                        <tr>
-                                            <td>답안입력 </td>
-                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                <td>
-                                                    <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
-                                                           oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
-                                                </td>
+                                    <ul {{ ($val['qCnt'] <= 25) ? '' : 'class=w25' }}>
+                                        @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
+                                            <li>
+                                                <div>{{ $val2 }}</div>
+                                                <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                       oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
+                                            </li>
                                             @php $_id++; @endphp
-                                            @endforeach
-                                        </tr>
-                                    </table>
-                                </div>
-                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                @endforeach
+                            </div>
                         </div>
                         <!--omrWarp//-->
 
@@ -244,12 +237,12 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td class="mypoint">
-                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)"
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                         @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
                                             (합격/불합격 여부 :
-                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] > 60)
+                                            @if ($arr_reg_answerpaper['subjectSum'][$val['PpIdx']] >= 60)
                                                 <span class="tx-blue">합격</span>)
                                             @else
                                                 <span class="tx-red">불합격</span>)
@@ -307,7 +300,11 @@
                 @endif
 
                 <div class="btns">
-                    <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @if (empty($research_type) === true)
+                        <a href="#none" onclick="javascript:alert('서비스 기간이 아닙니다.');">확인</a>
+                    @else
+                        <a href="#none" onclick="{{ ($is_finish == 'Y') ? 'javascript:alert("등록완료된 성적입니다.");' : 'javascript:js_submit();' }}">@if($mode == 'MOD')수정@else확인@endif</a>
+                    @endif
                 </div>
             </div>
         </form>

@@ -590,6 +590,12 @@ class Predict2FModel extends WB_Model
                 throw new Exception('조회된 문항이 없습니다.');
             }
 
+            //origin data 삭제
+            $result = $this->_originDelete(element('PrIdx', $form_data));
+            if ($result !== true) {
+                throw new \Exception($result);
+            }
+
             //origin data 저장
             $ScoreArr = element('Score', $form_data);
             $PpIdxArr = element('PpIdx', $form_data);
@@ -720,6 +726,43 @@ class Predict2FModel extends WB_Model
 
             $where = ['PrIdx' => $PrIdx];
             if($this->_conn->delete($this->_table['predict2_answerpaper'], $where) === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $point_del_cnt = $register_data['PointDelCnt'] + 1;
+            if ($this->_conn->set(['PointDelCnt' => $point_del_cnt, 'PointDelDatm' => date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update($this->_table['predict2_register']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 점수삭제
+     * @param $PrIdx
+     * @return array|bool
+     */
+    private function _originDelete($PrIdx)
+    {
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PrIdx' => $PrIdx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $register_data = $this->findPredictForRegister($arr_condition, 'PrIdx, PointDelCnt');
+            if (empty($register_data) === true) {
+                throw new \Exception('조회된 기본정보가 없습니다.');
+            }
+
+            $where = ['PrIdx' => $PrIdx];
+            if($this->_conn->delete($this->_table['predict2_grades_origin'], $where) === false) {
                 throw new \Exception('삭제에 실패했습니다.');
             }
 

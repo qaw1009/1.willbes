@@ -25,13 +25,14 @@ class BasePredict2 extends \app\controllers\FrontController
         }
 
         $is_finish = 'N';
-        $research_type = 'Research1';
-        if ($base_data['Research1StartDatm'] <= date('YmdHi') && $base_data['Research1EndDatm'] >= date('YmdHi')) {
+        $research_type = '';
+        if ($base_data['IsResearch1'] == 'Y' && $base_data['Research1StartDatm'] <= date('YmdHi') && $base_data['Research1EndDatm'] >= date('YmdHi')) {
             $research_type = 'Research1';
         }
-        if ($base_data['Research2StartDatm'] <= date('YmdHi') && $base_data['Research2EndDatm'] >= date('YmdHi')) {
+        if ($base_data['IsResearch2'] == 'Y' && $base_data['Research2StartDatm'] <= date('YmdHi') && $base_data['Research2EndDatm'] >= date('YmdHi')) {
             $research_type = 'Research2';
         }
+        /*if (empty($research_type) === true) {show_alert('잘못된 접근 입니다.', 'back');}*/
 
         //기본정보 조회
         $arr_condition = [
@@ -57,9 +58,7 @@ class BasePredict2 extends \app\controllers\FrontController
                 $reg_data['ArrTakeLevel'][$val[0]] = $val[1];
             }
 
-            if ($research_type == 'Research2') {
-                $is_finish = $reg_data['IsFinish'];
-            }
+            $is_finish = $reg_data['IsFinish'];
         }
 
         //총점, 평균점수조회
@@ -151,6 +150,7 @@ class BasePredict2 extends \app\controllers\FrontController
         $column = 'PredictIdx2, SiteCode, Predict2Name, TakePart, MockPart, GradeOpenIsUse, GradeOpenDatm, SubjectSViewCount';
         $column .= ',DATE_FORMAT(Research1StartDatm, \'%Y%m%d%H%i\') AS Research1StartDatm, DATE_FORMAT(Research1EndDatm, \'%Y%m%d%H%i\') AS Research1EndDatm';
         $column .= ',DATE_FORMAT(Research2StartDatm, \'%Y%m%d%H%i\') AS Research2StartDatm, DATE_FORMAT(Research2EndDatm, \'%Y%m%d%H%i\') AS Research2EndDatm';
+        $column .= ',IsResearch1, IsResearch2';
         $arr_condition = ['EQ' => ['PredictIdx2' => $predict_idx2,'IsStatus' => 'Y','IsUse' => 'Y']];
         return $this->predict2FModel->findPredictData($arr_condition, $column);
     }
@@ -184,7 +184,7 @@ class BasePredict2 extends \app\controllers\FrontController
                     $arr_avg[$val['PpIdx']] = $val['Scoring'];
                 }
             }
-            $avg = array_sum($arr_avg) / count($arr_avg);   //전체평균
+            $avg = (empty($arr_avg) === false) ? round(array_sum($arr_avg) / count($arr_avg),1) : '';   //전체평균
         }
         return [
             'subjectSum' => $arr_sum,

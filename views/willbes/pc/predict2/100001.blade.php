@@ -328,6 +328,8 @@
                     $('#target_'+id).focus();
                 }
             });
+
+            loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
         });
 
         function js_submit() {
@@ -344,6 +346,12 @@
             if ($('#take_num').val() == '') {
                 $('#take_num').focus();
                 alert('응시번호를 입력해 주세요.');
+                return false;
+            }
+
+            if(valiChkTakeNum($('#take_mock_part').val(), $('#take_num').val()) === false) {
+                $('#take_num').focus();
+                alert('응시번호가 올바르지 않습니다.');
                 return false;
             }
 
@@ -431,9 +439,33 @@
         }
 
         function maxLengthCheck(object){
+            if($(object).prop('type') == 'number') {
+                object.value = object.value.replace(/[^0-9]/g, "");
+            }
             if (object.value.length > object.maxLength) {
                 object.value = object.value.slice(0, object.maxLength);
             }
         }
+
+        {{-- 초기 로그인 얼럿 --}}
+        function loginAlert() {
+            {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','') !!}
+        }
+
+        {{-- 한림고시 응시번호 유효성 체크 --}}
+        function valiChkTakeNum(take_mock_part, take_num) {
+            var arr_vali = {
+                '686001' : '100',   {{-- 일반행정 --}}
+                '686035' : '104',   {{-- 재경 --}}
+                '686036' : '040'    {{-- 국립외교원 --}}
+            };
+
+            if(take_num === null || take_num.length != 8 || arr_vali[take_mock_part] != take_num.substring(0,3)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
     </script>
 @stop

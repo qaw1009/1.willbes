@@ -1,51 +1,51 @@
 /*********************************************     Main Container :  *********************************************/
 
-.gp .Depth .depth:last-child strong {
+.gp3024 .Depth .depth:last-child strong {
   color: #ba560e;
 }
 
 /* Main Container : MainVisual */
-.gp .MainVisual {
+.gp3024 .MainVisual {
   position: relative;
   width: 1120px;
   margin:0 auto;
   height: 400px;
 }
-.gp .MainVisual:after {
+.gp3024 .MainVisual:after {
   content: "";
   display: block;
   clear: both;
 }
 
-.gp .VisualBox {
+.gp3024 .VisualBox {
   position: absolute;
   width:725px;  
   height: 400px;
   overflow: hidden;
   z-index: 1;
 }
-.gp .VisualBox img {
+.gp3024 .VisualBox img {
   height: 400px;
 }
 
-.gp .VisualBox .bx-wrapper .bx-controls-auto {
+.gp3024 .VisualBox .bx-wrapper .bx-controls-auto {
   left:20px;
   bottom: 20px;
   width: 50px;
   z-index: 90;
 }
-.gp .VisualBox .bx-wrapper .bx-pager {
+.gp3024 .VisualBox .bx-wrapper .bx-pager {
   width: auto;
   left:60px;
   bottom: 22px;
   text-align: left;
   z-index: 90;
 }
-.gp .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+.gp3024 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
   background: #cecece;
 }
 
-.gp .VisualsubBox {
+.gp3024 .VisualsubBox {
   position: absolute;
   right:0;
   width: 384px;
@@ -56,21 +56,21 @@
 }
 
 
-.gp .VisualsubBox .bSlider:nth-child(2) {
+.gp3024 .VisualsubBox .bSlider:nth-child(2) {
   margin-top:3px;
   width: 364px;
   height: 248px !important;
   overflow: hidden;
 }
 
-.gp .VisualsubBox .bx-wrapper .bx-controls-auto {
+.gp3024 .VisualsubBox .bx-wrapper .bx-controls-auto {
   left:20px;
   bottom: 20px;
   margin: 0;
   width: 50px;
   z-index: 90;
 }
-.gp .VisualsubBox .bx-wrapper .bx-pager {
+.gp3024 .VisualsubBox .bx-wrapper .bx-pager {
   float: right;
   width: auto;
   left:60px;
@@ -78,63 +78,62 @@
   text-align: right;
   z-index: 90;
 }
-.gp .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+.gp3024 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
   background: #cecece;
   width: 8px;
   height: 8px;
   margin: 0 2px;
 }
+.gp3024 .bx-pager.bx-default-pager a:hover, 
+.gp3024 .bx-pager.bx-default-pager a.active,
+.gp3024 .bx-pager.bx-default-pager a:focus {
+  background: #227563 !important;
+}
 
-.gp .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+.gp3024 .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
 
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+.gp3024 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
   float: left;
   width: auto;
   left: 20px;
   bottom: 10px;
   text-align: left;
 }
-.gp .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #cecece;
-}
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-  background: #227563 !important;
-}
+
+
 
 /**/
-.gp .Section.barBnr {
+.gp3024 .Section.barBnr {
   background:url("../../img/willbes/gpgosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
   margin-top:20px;
 }
 
 
-.gp .Section2 {
+.gp3024 .Section2 {
   background: #f3f3f3;
 }
-.gp .Section3 {
+.gp3024 .Section3 {
   background: #f7f7f7;
 }
 
 
 /* Main Container : Prof */
-.gp .PBcts li {
+.gp3024 .PBcts li {
   float: left;
   width: 274px;
   height: 234px;
   overflow: hidden;
   margin-left: 8px;
 }
-.gp .PBcts li:first-child {
+.gp3024 .PBcts li:first-child {
     margin-left: 0;
 }
-.gp .PBcts:after {
+.gp3024 .PBcts:after {
   content: "";
   display: block;
   clear: both;
 }
-.gp .PBctsB li {
+.gp3024 .PBctsB li {
   float: left;
   width: 274px;
   height: 192px;
@@ -142,72 +141,72 @@
   margin-left: 8px;
   margin-bottom: 8px;
 }
-.gp .PBctsB li:nth-child(5),
-.gp .PBctsB li:first-child {
+.gp3024 .PBctsB li:nth-child(5),
+.gp3024 .PBctsB li:first-child {
   margin-left: 0;
 }
-.gp .PBctsB:after {
+.gp3024 .PBctsB:after {
   content: "";
   display: block;
   clear: both;
 }
-.gp .PBcts .bSlider .bx-wrapper .bx-pager {
+.gp3024 .PBcts .bSlider .bx-wrapper .bx-pager {
   float: left;
   width: auto;
   left: 30px;
   bottom: 10px;
   text-align: left;
 }
-.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.gp3024 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gp3024 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gp3024 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
   background: #217562 !important;
 }
 
 /**/
-.gp .smallTit {
+.gp3024 .smallTit {
   border-top:1px solid #000;
   font-size: 22px;
   color:#363636;    
   position: relative;
 }
-.gp .smallTit p {
+.gp3024 .smallTit p {
   position: absolute;
   top:-15px;
   text-align:left;
   width: 100%;
 }
-.gp .smallTit p a {
+.gp3024 .smallTit p a {
   vertical-align:top;
   margin-left: 10px
 }
-.gp .smallTit span {
+.gp3024 .smallTit span {
   font-weight: 600;
   background: #fff;
   padding:0 20px 0 0;
 }
-.gp .smallTit strong {
+.gp3024 .smallTit strong {
   color:#ba560e;
 }
 
-.gp .will-listTit {
+.gp3024 .will-listTit {
   margin-bottom: 15px;
   color:#181818;
 }
 
 
 /* Main Container : Notice : noticeTabs */
-.gp .tabWrap.noticeWrap {
+.gp3024 .tabWrap.noticeWrap {
   height: 16px;
   border: none;
 }
-.gp .tabWrap.noticeWrap li {
+.gp3024 .tabWrap.noticeWrap li {
   float: left;
   width: auto;
   height: 16px;
   margin-right: 10px;
 }
-.gp .tabWrap.noticeWrap li a {
+.gp3024 .tabWrap.noticeWrap li a {
   display: block;
   width: 100%;
   height: 19px;
@@ -220,7 +219,7 @@
   border-right:1px solid #999 !important;
   padding-right: 10px;
 }
-.gp .tabWrap.noticeWrap li a.on {
+.gp3024 .tabWrap.noticeWrap li a.on {
   height: 19px;
   line-height: 19px;
   font-weight: 600;
@@ -228,19 +227,19 @@
   border:none !important;
   border-right:1px solid #999 !important;
 }
-.gp .tabWrap.noticeWrap li:last-child a.on,
-.gp .tabWrap.noticeWrap li:last-child a {
+.gp3024 .tabWrap.noticeWrap li:last-child a.on,
+.gp3024 .tabWrap.noticeWrap li:last-child a {
   border-right:none !important;
 }
-.gp .tabBox.noticeBox a.btn-add {
+.gp3024 .tabBox.noticeBox a.btn-add {
   position: absolute;
   top: -16px;
   right: 0;
 }
-.gp .tabBox.noticeBox .List-Table {
+.gp3024 .tabBox.noticeBox .List-Table {
   width: 520px;
 }
-.gp .tabBox.noticeBox .List-Table li {
+.gp3024 .tabBox.noticeBox .List-Table li {
   position: relative;
   font-size: 13px;
   color: #3a3a3a;
@@ -248,7 +247,7 @@
   line-height: 37px;
   border-bottom: 1px solid #e3e3e3;
 }
-.gp .tabBox.noticeBox .List-Table li a {
+.gp3024 .tabBox.noticeBox .List-Table li a {
   display: inline-block;
   width: 80%;
   text-overflow: ellipsis;
@@ -256,7 +255,7 @@
   overflow: hidden;
   letter-spacing: 0;
 }
-.gp .tabBox.noticeBox .List-Table li a span {
+.gp3024 .tabBox.noticeBox .List-Table li a span {
   background: #217562;
   color:#fff;
   padding: 0 10px;
@@ -266,6 +265,6 @@
 
 
 /* Main Container : Gosi */
-.gp .tx-color {
+.gp3024 .tx-color {
   color: #217562;
 }

@@ -246,7 +246,7 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td class="mypoint">
-                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)"
+                                        <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
                                                value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                 {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                         @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)
@@ -304,7 +304,7 @@
                         </table>
 
                         <h3 class="mt30">본인 예상하는 실제 PSAT 커트라인</h3>
-                        <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="4" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}> 점 </div>
+                        <div class="mypoint">평균 <input type="number" name="cut_point" id="cut_point" maxlength="4" data-max-num="100" oninput="maxLengthCheck(this)" value="{{ $data['CutPoint'] }}" {{ ($is_finish == 'Y') ? 'disabled=disabled' : '' }}> 점 </div>
                     </div>
                 @endif
 
@@ -445,6 +445,11 @@
         function maxLengthCheck(object){
             if($(object).prop('type') == 'number') {
                 object.value = object.value.replace(/[^0-9.]/g, "");
+                if($(object).data('max-num') != undefined) {
+                    if( Number(object.value) > Number($(object).data('max-num')) ) {
+                        object.value = object.value.slice(0, -1);
+                    }
+                }
             }
             if (object.value.length > object.maxLength) {
                 object.value = object.value.slice(0, object.maxLength);

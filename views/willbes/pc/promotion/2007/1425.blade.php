@@ -26,6 +26,7 @@
         .evt02 iframe {position:absolute; top:670px; left:50%; margin-left:-280px;}
         .evt03 {background:#fff}
         .evt04 {background:#eee; padding-bottom:100px}
+        .evt04title {border-bottom:1px solid #ccc; width:1120px; margin:0 auto 50px}
 
         .skyBanner {position:fixed; width:180px; top:200px; right:10px; z-index:5;}
         .skyBanner a {display:block; margin-bottom:5px}
@@ -62,7 +63,7 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="goLec">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1425_04.jpg">
+            <div class="evt04title"><img src="https://static.willbes.net/public/images/promotion/2020/05/1425_04.jpg"></div>
             @include('willbes.pc.promotion.display_product_partial')
         </div>
     </div>

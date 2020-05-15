@@ -252,6 +252,7 @@ class Predict2FModel extends WB_Model
             $ins_answer_data = [];
             foreach ($setQuestionData as $pk => $row) {
                 foreach ($row as $k => $v) {
+                    if ($this->isNumberChk($get_data_answer[$pk][$k])) {throw new \Exception('허용되지 않은 문자입니다.');}
                     $ins_answer_data[] = [
                         'PredictIdx2' => element('predict_idx', $form_data),
                         'PrIdx' => $nowIdx,
@@ -395,6 +396,7 @@ class Predict2FModel extends WB_Model
             $ins_answer_data = [];
             foreach ($setQuestionData as $pk => $row) {
                 foreach ($row as $k => $v) {
+                    if ($this->isNumberChk($get_data_answer[$pk][$k])) {throw new \Exception('허용되지 않은 문자입니다.');}
                     $ins_answer_data[] = [
                         'PredictIdx2' => element('predict_idx', $form_data),
                         'PrIdx' => element('PrIdx', $form_data),
@@ -513,8 +515,9 @@ class Predict2FModel extends WB_Model
                 if (empty($val) === true) {
                     throw new \Exception('본인 점수를 모두 입력해주세요.');
                 }
-                $PpIdx = $PpIdxArr[$key];
+                if ($this->isNumberChk($val)) {throw new \Exception('허용되지 않은 문자입니다.');}
 
+                $PpIdx = $PpIdxArr[$key];
                 $data = [
                     'MemIdx' => $this->session->userdata('mem_idx'),
                     'PrIdx'  => $nowIdx,
@@ -600,8 +603,12 @@ class Predict2FModel extends WB_Model
             $ScoreArr = element('Score', $form_data);
             $PpIdxArr = element('PpIdx', $form_data);
             foreach($ScoreArr as $key => $val){
-                $PpIdx = $PpIdxArr[$key];
+                if (empty($val) === true) {
+                    throw new \Exception('본인 점수를 모두 입력해주세요.');
+                }
+                if ($this->isNumberChk($val)) {throw new \Exception('허용되지 않은 문자입니다.');}
 
+                $PpIdx = $PpIdxArr[$key];
                 $data = [
                     'MemIdx' => $this->session->userdata('mem_idx'),
                     'PrIdx'  => element('PrIdx', $form_data),
@@ -776,5 +783,19 @@ class Predict2FModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 숫자체크
+     * @param $string
+     * @return bool
+     */
+    private function isNumberChk($string)
+    {
+        $return = true;
+        if (!preg_match( '/^[0-9.]+$/', $string)) {
+            $return = false;
+        }
+        return $return;
     }
 }

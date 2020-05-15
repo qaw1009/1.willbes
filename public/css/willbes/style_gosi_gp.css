@@ -1,109 +1,10 @@
 /*********************************************     Main Container :  *********************************************/
-.gp .Section2 {
-  background: #f3f3f3;
-}
-.gp .Section3 {
-  background: #f7f7f7;
-}
 
 .gp .Depth .depth:last-child strong {
   color: #ba560e;
 }
 
 /* Main Container : MainVisual */
-/*
-.gp .MainVisual {
-    position: relative;
-    width: 1120px;
-    margin:0 auto;
-    height: 400px;
-}
-.gp .MainVisual:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.gp .VisualBox {
-    position: absolute;
-    width:1120px;  
-    height: 400px;
-    overflow: hidden;
-    z-index: 1;
-}
-.gp .VisualBox img {
-  height: 400px;
-}
-
-.gp .VisualBox .bx-wrapper .bx-controls-auto {
-  left:20px;
-  bottom: 20px;
-  width: 50px;
-  z-index: 90;
-  }
-.gp .VisualBox .bx-wrapper .bx-pager {
-  width: auto;
-  left:60px;
-  bottom: 22px;
-  text-align: left;
-  z-index: 90;
-}
-.gp .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #ccc !important;
-  width: 8px;
-  height: 8px;
-  margin: 0 2px;
-}
-.gp .VisualsubBox {
-  width: 384px;
-  padding:10px;
-  float:right;
-  background: #ccc;
-}
-.gp .VisualsubBox .bSlider:nth-child(2) {
-  margin-top:3px;
-  width: 364px;
-  height: 248px !important;
-  overflow: hidden;
-}
-.gp .VisualsubBox .bx-wrapper .bx-controls-auto {
-  left:20px;
-  bottom: 20px;
-  margin: 0;
-  width: 50px;
-  z-index: 90;
-}
-.gp .VisualsubBox .bx-wrapper .bx-pager {
-  width: auto;
-  left:60px; 
-  bottom: 20px;
-  text-align: center;
-  z-index: 90;
-}
-.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #000 !important;
-}
-
-.gp .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
-
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
-    float: left;
-    width: auto;
-    left: 20px;
-    bottom: 10px;
-    text-align: left;
-}
-.gp .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-}
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #000 !important;
-}
-*/
 .gp .MainVisual {
   position: relative;
   width: 1120px;
@@ -196,7 +97,7 @@
 .gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-  background: #ba560e !important;
+  background: #227563 !important;
 }
 
 /**/
@@ -204,6 +105,15 @@
   background:url("../../img/willbes/gpgosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
   margin-top:20px;
 }
+
+
+.gp .Section2 {
+  background: #f3f3f3;
+}
+.gp .Section3 {
+  background: #f7f7f7;
+}
+
 
 /* Main Container : Prof */
 .gp .PBcts li {

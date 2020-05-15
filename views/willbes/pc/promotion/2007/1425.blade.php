@@ -58,7 +58,7 @@
         <div class="evtCtnsBox evt03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1425_03.jpg" usemap="#Map1425B" title="교재" border="0">
             <map name="Map1425B" id="Map1425B">
-                <area shape="rect" coords="281,830,805,907" href="http://www.willstory.co.kr/book/book_list.asp?search_text=G-TELP&amp;search_type=0&amp;x=0&amp;y=0" target="_blank" alt="교재구매하기" />
+                <area shape="rect" coords="281,830,805,907" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재구매하기" />
             </map>
         </div>
 

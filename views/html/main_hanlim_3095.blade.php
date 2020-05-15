@@ -124,6 +124,12 @@
         </div>
     </div>
 
+    <div class="Section barBnr">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_1120x20_sample.jpg" alt="배너명"></a>
+        </div>
+    </div>
+
     <div class="Section lecBanner mt50">
         <div class="widthAuto">
             <div class="copyTit NSK-Thin mb50">

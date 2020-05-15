@@ -46,7 +46,10 @@
 }
 
 .gp .VisualsubBox {
+  position: absolute;
+  right:0;
   width: 384px;
+  height: 400px;
   padding:10px;
   float:right;
   background: #ccc;

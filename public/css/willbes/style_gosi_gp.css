@@ -11,6 +11,7 @@
 }
 
 /* Main Container : MainVisual */
+/*
 .gp .MainVisual {
     position: relative;
     width: 1120px;
@@ -101,6 +102,101 @@
 .gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #000 !important;
+}
+*/
+.gp .MainVisual {
+  position: relative;
+  width: 1120px;
+  margin:0 auto;
+  height: 400px;
+}
+.gp .MainVisual:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.gp .VisualBox {
+  position: absolute;
+  width:725px;  
+  height: 400px;
+  overflow: hidden;
+  z-index: 1;
+}
+.gp .VisualBox img {
+  height: 400px;
+}
+
+.gp .VisualBox .bx-wrapper .bx-controls-auto {
+  left:20px;
+  bottom: 20px;
+  width: 50px;
+  z-index: 90;
+}
+.gp .VisualBox .bx-wrapper .bx-pager {
+  width: auto;
+  left:60px;
+  bottom: 22px;
+  text-align: left;
+  z-index: 90;
+}
+.gp .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #cecece;
+}
+
+.gp .VisualsubBox {
+  width: 384px;
+  padding:10px;
+  float:right;
+  background: #ccc;
+}
+
+
+.gp .VisualsubBox .bSlider:nth-child(2) {
+  margin-top:3px;
+  width: 364px;
+  height: 248px !important;
+  overflow: hidden;
+}
+
+.gp .VisualsubBox .bx-wrapper .bx-controls-auto {
+  left:20px;
+  bottom: 20px;
+  margin: 0;
+  width: 50px;
+  z-index: 90;
+}
+.gp .VisualsubBox .bx-wrapper .bx-pager {
+  float: right;
+  width: auto;
+  left:60px;
+  bottom: 20px;
+  text-align: right;
+  z-index: 90;
+}
+.gp .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #cecece;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+}
+
+.gp .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+  float: left;
+  width: auto;
+  left: 20px;
+  bottom: 10px;
+  text-align: left;
+}
+.gp .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #cecece;
+}
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
+  background: #ba560e !important;
 }
 
 /**/

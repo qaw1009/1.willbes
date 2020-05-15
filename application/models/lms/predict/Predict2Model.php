@@ -11,6 +11,7 @@ class Predict2Model extends WB_Model
         'product_subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
+        'lms_member' => 'lms_member',
 
         'predict2_code' => 'lms_predict2_code',
         'predict2_r_subject' => 'lms_predict2_r_subject',
@@ -22,6 +23,10 @@ class Predict2Model extends WB_Model
         'predict2_questions' => 'lms_predict2_questions',
         'product_predict2' => 'lms_product_predict2',
         'product_predict2_r_paper' => 'lms_product_predict2_r_paper',
+        'predict2_register' => 'lms_predict2_register',
+        'predict2_register_r_paper' => 'lms_predict2_register_r_paper',
+        'predict2_grades_origin' => 'lms_predict2_grades_origin',
+        'predict2_answerpaper' => 'lms_predict2_answerpaper',
     ];
 
     private $upload_path;            // 업로드 기본경로
@@ -116,6 +121,20 @@ class Predict2Model extends WB_Model
         $where = $where->getMakeWhere(false);
         $query = $this->_conn->query('select '. $column . $from . $where . $order_by);
         return $query->result_array();
+    }
+
+    /**
+     * 등록된상품기준 과목정보 조회
+     * @return mixed
+     */
+    public function getRegPaper()
+    {
+        $column = 'PRP.PredictIdx2, PRP.PpIdx, PP.PapaerName';
+        $from = "
+            FROM {$this->_table['product_predict2_r_paper']} AS PRP
+            INNER JOIN {$this->_table['predict2_paper']} AS PP ON PRP.PpIdx = PP.PpIdx
+        ";
+        return $this->_conn->query('select '. $column . $from)->result_array();
     }
 
     /**
@@ -1307,7 +1326,7 @@ class Predict2Model extends WB_Model
      * 등록된 서비스상품리스트
      * @return mixed
      */
-    public function getGoodsList($add_condition)
+    public function getGoodsList()
     {
         $add_condition = [
             'EQ' => [
@@ -1484,19 +1503,30 @@ class Predict2Model extends WB_Model
         return $this->_conn->query('select '.$column .$from .$where . $group_by . $order_by)->result_array();
     }
 
-    public function answerPaperMainList($is_count = false, $add_condition = [], $limit = null, $offset = null)
+    /**
+     * 과목별문제 데이터 리스트
+     * @param bool $is_count
+     * @param array $add_condition
+     * @param string $limit
+     * @param string $offset
+     * @return mixed
+     */
+    public function mainOriginList($is_count = false, $add_condition = [], $limit = null, $offset = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $arr_order_by = ['PAP.PredictIdx2' => 'DESC'];
-            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-
-            $column = "
-                PAP.*, A.wAdminName, SC.CateName,
-            ";
+            $column = 'M.*';
+            $arr_order_by = ['R.PrIdx' => 'DESC'];
+            if ($is_count == 'excel') {
+                /*$column = "MockYear, MockRotationNo, CONCAT('[',ProdCode,']', ProdName) ,TakeForm_Name, ClosingPerson, TakeArea_Name,";*/
+                $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            } else {
+                /*$column = "mm.*,";*/
+                $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
         }
 
         $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
@@ -1504,13 +1534,89 @@ class Predict2Model extends WB_Model
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
 
         $from = "
-            FROM {$this->_table['product_predict2']} AS PP
-            INNER JOIN {$this->_table['sys_category']} AS SC ON PP.TakePart = SC.CateCode
-            LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+            FROM (
+                SELECT
+                    R.PrIdx, R.TaKeNumber, R.MemName, R.MemIdx, R.MemId, R.Phone, R.Mail
+                    ,R.TakeMockPart, R.TakeCount, R.CutPoint, R.RegDatm
+                    ,(GROUP_CONCAT(CONCAT('-',R.PapaerName,':',R.OrgPoint))) AS OPOINT
+                    ,(CONCAT(R.TakeLevelPpIdx1Name,':',R.TakeLevel1,',',R.TakeLevelPpIdx2Name,':',R.TakeLevel2,',',R.TakeLevelPpIdx3Name,':',R.TakeLevel3,',',R.TakeLevelPpIdx4Name,':',R.TakeLevel4)) AS TakeLevel
+                FROM (
+                    SELECT
+                        R.PrIdx, R.TaKeNumber, R.MemName, R.MemIdx, R.MemId, R.Phone, R.Mail, R.PapaerName, R.OrgPoint
+                        ,R.TakeMockPart, R.TakeCount, R.CutPoint, R.RegDatm
+                        ,TakeLevelPpIdx1,TakeLevelPpIdx2,TakeLevelPpIdx3,TakeLevelPpIdx4
+                        ,PP1.PapaerName AS TakeLevelPpIdx1Name
+                        ,PP2.PapaerName AS TakeLevelPpIdx2Name
+                        ,PP3.PapaerName AS TakeLevelPpIdx3Name
+                        ,PP4.PapaerName AS TakeLevelPpIdx4Name
+                        ,IF(TakeLevel1 = 'H', '상', IF(TakeLevel1 = 'M', '중', '하')) AS TakeLevel1
+                        ,IF(TakeLevel2 = 'H', '상', IF(TakeLevel1 = 'M', '중', '하')) AS TakeLevel2
+                        ,IF(TakeLevel3 = 'H', '상', IF(TakeLevel1 = 'M', '중', '하')) AS TakeLevel3
+                        ,IF(TakeLevel4 = 'H', '상', IF(TakeLevel1 = 'M', '중', '하')) AS TakeLevel4
+                    FROM (
+                        SELECT 
+                            PR.PrIdx, PP.PpIdx, M.MemName, PR.MemIdx,MemId,fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail,
+                            fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, CutPoint,
+                            IF(TakeCount = 1, '1회', IF(TakeCount = 2, '2회', IF(TakeCount = 3, '3회', '4회이상'))) AS TakeCount,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',1),'|',1) AS TakeLevelPpIdx1,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-3),'|',1) AS TakeLevelPpIdx2,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-2),'|',1) AS TakeLevelPpIdx3,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-1),'|',1) AS TakeLevelPpIdx4,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',1),'|',-1) AS TakeLevel1,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',2),'|',-1) AS TakeLevel2,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',3),'|',-1) AS TakeLevel3,
+                            SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',4),'|',-1) AS TakeLevel4,
+                            PP.PapaerName, PG.OrgPoint, RegDatm
+                        FROM {$this->_table['predict2_register']} AS PR
+                        JOIN {$this->_table['lms_member']} AS M ON PR.MemIdx = M.MemIdx
+                        INNER JOIN {$this->_table['predict2_grades_origin']} AS PG ON PR.PrIdx = PG.PrIdx
+                        INNER JOIN {$this->_table['predict2_paper']} AS PP ON PP.PpIdx = PG.PpIdx
+                        {$where}
+                        ORDER BY PR.PrIdx DESC, PP.PpIdx ASC
+                    ) AS R
+                    INNER JOIN {$this->_table['predict2_paper']} AS PP1 ON PP1.PpIdx = R.TakeLevelPpIdx1
+                    INNER JOIN {$this->_table['predict2_paper']} AS PP2 ON PP2.PpIdx = R.TakeLevelPpIdx2
+                    INNER JOIN {$this->_table['predict2_paper']} AS PP3 ON PP3.PpIdx = R.TakeLevelPpIdx3
+                    INNER JOIN {$this->_table['predict2_paper']} AS PP4 ON PP4.PpIdx = R.TakeLevelPpIdx4
+                    ORDER BY R.PrIdx DESC, R.PpIdx ASC
+                ) AS R
+                GROUP BY R.PrIdx
+                $order_by_offset_limit
+            ) AS M
+        ";
+        /*$query_string = 'SELECT '. (($is_count === true) ? 'COUNT(M.cnt) AS numrows ' : 'M.* ') . 'FROM (SELECT ' . $column . $from . $where . $group_by . $order_by_offset_limit . ') AS M';*/
+        $query_string = 'SELECT '. $column . $from;
+        $query = $this->_conn->query($query_string);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 등록된 답안정보 엑셀변환
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function answerPaperForExcel($arr_condition = [])
+    {
+        $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = array_merge_recursive($condition, $arr_condition);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $column = "
+            PR.MemIdx, M.MemName, M.MemId, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
+            ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, PA.RegDatm
+            ,PP.PapaerName, PQ.QuestionNo, PA.Answer, PQ.RightAnswer, IF(PA.Answer = PQ.RightAnswer,'Y','N') AS IsRightAnswer
+        ";
+        $from = "
+            FROM {$this->_table['predict2_answerpaper']} AS PA
+            INNER JOIN {$this->_table['predict2_register']} AS PR ON PA.PrIdx = PR.PrIdx
+            INNER JOIN {$this->_table['predict2_paper']} AS PP ON PA.PpIdx = PP.PpIdx
+            INNER JOIN {$this->_table['lms_member']} AS M ON PA.MemIdx = M.MemIdx
+            LEFT JOIN lms_predict2_questions AS PQ ON PA.PqIdx = PQ.PqIdx
+            {$where}
+            ORDER BY PA.PapIdx ASC, PP.PpIdx ASC, PQ.QuestionNo
         ";
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+        return $this->_conn->query('select '.$column .$from)->result_array();
     }
 
     /**

@@ -251,7 +251,8 @@
          * 상세 페이지 이동
          */
         function goShow(prod_code, cate_code, pattern) {
-            location.href = '{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
+            //location.href = '{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
+            window.open('{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code);
         }
     </script>
 

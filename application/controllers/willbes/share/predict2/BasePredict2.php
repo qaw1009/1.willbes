@@ -58,9 +58,7 @@ class BasePredict2 extends \app\controllers\FrontController
                 $reg_data['ArrTakeLevel'][$val[0]] = $val[1];
             }
 
-            if ($research_type == 'Research2') {
-                $is_finish = $reg_data['IsFinish'];
-            }
+            $is_finish = $reg_data['IsFinish'];
         }
 
         //총점, 평균점수조회

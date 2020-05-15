@@ -350,6 +350,12 @@
                 return false;
             }
 
+            if(CheckEmail($('#register_email').val()) === false) {
+                $('#register_email').focus();
+                alert('이메일 형식이 올바르지 않습니다.');
+                return false;
+            }
+
             if ($('#register_tel').val() == '') {
                 $('#register_tel').focus();
                 alert('연락처를 입력해 주세요.');
@@ -445,6 +451,16 @@
             };
 
             if(take_num === null || take_num.length != 8 || arr_vali[take_mock_part] != take_num.substring(0,3)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        {{-- 이메일 유효성 체크 --}}
+        function CheckEmail(str) {
+            var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            if(!reg_email.test(str)) {
                 return false;
             } else {
                 return true;

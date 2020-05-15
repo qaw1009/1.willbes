@@ -38,8 +38,8 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1553" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/main/09_graph_main.gif" alt="파이널 수강생 성적향상 효과 증명">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1636" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_graph.gif" alt="파이널 수강생 성적향상 효과 증명">
                 </a>
             </div>
         </div>

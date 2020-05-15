@@ -129,14 +129,12 @@
             </div>
         </div>
     </div>
-
-    {{--
+    
     <div class="Section barBnr">
         <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_1120x200.jpg" alt="배너명"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_1120x20_sample.jpg" alt="배너명"></a>
         </div>
-    </div>
-    --}}
+    </div>    
 
     <div class="Section lecBanner mt50">
         <div class="widthAuto">

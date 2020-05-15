@@ -132,6 +132,7 @@
                                     <dt>@if(empty($row['ProdPriceData']) === false)<span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원@endif</dt>
                                     <dt class="w-notice p_re">
                                         @if(empty($row['LectureSampleData']) === false)
+                                            {{-- 맛보기 창 생성 제거 : 하단 나열 방식으로 변경
                                             <ul class="w-sp">
                                                 <li><a href="#none" onclick="openWin('best_lec_sample_{{ $row['ProdCode'] }}'); return false;">맛보기</a></li>
                                             </ul>
@@ -145,6 +146,15 @@
                                                     </dl>
                                                 @endforeach
                                             </div>
+                                            --}}
+                                            <dl class="NSK">
+                                                @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
+                                                    @if($loop->index > 2) @break @endif
+                                                        <dt class="Tit NG {{$loop->index > 1 ? 'ml10' : ''}} mr5">맛보기{{$loop->index}}</dt>
+                                                        @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                        @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
+                                                @endforeach
+                                            </dl>
                                         @endif
                                     </dt>
                                 </dl>

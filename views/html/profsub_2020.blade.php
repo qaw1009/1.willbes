@@ -193,6 +193,7 @@
                                 <dt><span class="row-line">|</span></dt>
                                 <dt><span class="tx-blue">100,000</span>원</dt>
                                 <dt class="w-notice p_re">
+                                    {{--
                                     <ul class="w-sp">
                                         <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
                                     </ul>
@@ -204,6 +205,15 @@
                                             <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                         </dl>
                                     </div>
+                                    --}}
+                                    <dl class="NSK">
+                                        <dt class="Tit NG mr5">맛보기1</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                        <dt class="Tit NG ml10 mr5">맛보기2</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                    </dl>
                                 </dt>
                             </dl>
                         </div>
@@ -216,6 +226,7 @@
                                 <dt><span class="row-line">|</span></dt>
                                 <dt><span class="tx-blue">180,000</span>원</dt>
                                 <dt class="w-notice p_re">
+                                    {{--
                                     <ul class="w-sp">
                                         <li><a href="#none" onclick="openWin('viewBox2')">맛보기</a></li>
                                     </ul>
@@ -227,6 +238,15 @@
                                             <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                         </dl>
                                     </div>
+                                    --}}
+                                    <dl class="NSK">
+                                        <dt class="Tit NG mr5">맛보기1</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                        <dt class="Tit NG ml10 mr5">맛보기2</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                    </dl>
                                 </dt>
                             </dl>
                         </div>

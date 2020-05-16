@@ -1596,29 +1596,6 @@ class Predict2Model extends WB_Model
      * @param array $arr_condition_sub
      * @return mixed
      */
-    /*public function answerPaperForExcel($arr_condition = [])
-    {
-        $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
-        $condition = array_merge_recursive($condition, $arr_condition);
-        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
-
-        $column = "
-            PR.MemIdx, M.MemName, M.MemId, M.BirthDay, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
-            ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, PA.RegDatm
-            ,PP.PapaerName, PQ.QuestionNo, PA.Answer
-        ";
-        $from = "
-            FROM {$this->_table['predict2_answerpaper']} AS PA
-            INNER JOIN {$this->_table['predict2_register']} AS PR ON PA.PrIdx = PR.PrIdx
-            INNER JOIN {$this->_table['predict2_paper']} AS PP ON PA.PpIdx = PP.PpIdx
-            INNER JOIN {$this->_table['lms_member']} AS M ON PA.MemIdx = M.MemIdx
-            LEFT JOIN lms_predict2_questions AS PQ ON PA.PqIdx = PQ.PqIdx
-            {$where}
-            ORDER BY PA.PapIdx ASC, PP.PpIdx ASC, PQ.QuestionNo
-        ";
-
-        return $this->_conn->query('select '.$column .$from)->result_array();
-    }*/
     public function answerPaperForExcel($arr_condition = [], $arr_condition_sub = [])
     {
         $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
@@ -1651,6 +1628,72 @@ class Predict2Model extends WB_Model
         ";
         return $this->_conn->query('select '.$column .$from. $where)->result_array();
     }
+
+    public function mainRegisterList($is_count = false, $add_condition = [], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = "
+                M.PredictIdx2, M.Predict2Name, M.PrIdx, M.TakeMockPart, M.TaKeNumber, M.MemIdx, M.MemId, M.MemName, M.BirthDay, M.Phone, M.Mail, M.TakeCount, M.PapaerName, M.CutPoint, M.RegDatm
+                ,CONCAT(PP1.PapaerName,':',M.TakeLevel1,',',PP2.PapaerName,':',M.TakeLevel2,',',PP3.PapaerName,':',M.TakeLevel3,',',PP4.PapaerName,':',M.TakeLevel4) AS TakeLevel
+            ";
+            $arr_order_by = ['PR.PrIdx' => 'DESC'];
+            if ($is_count == 'excel') {
+                /*$column = "MockYear, MockRotationNo, CONCAT('[',ProdCode,']', ProdName) ,TakeForm_Name, ClosingPerson, TakeArea_Name,";*/
+                $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            } else {
+                /*$column = "mm.*,";*/
+                $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
+        }
+
+        $condition = [ 'IN' => ['P.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = array_merge_recursive($condition, $add_condition);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $from = "
+            FROM (
+                SELECT
+                PR.PredictIdx2, P.Predict2Name, PR.PrIdx, fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, PR.TaKeNumber, PR.CutPoint, PR.RegDatm
+                ,PR.MemIdx, M.MemId, M.MemName, M.BirthDay, fn_dec(PR.UserTelEnc) AS Phone, fn_dec(PR.UserMailEnc) AS Mail
+                ,IF(PR.TakeCount = 1, '1회', IF(PR.TakeCount = 2, '2회', IF(PR.TakeCount = 3, '3회', '4회이상'))) AS TakeCount
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',1),'|',1) AS TakeLevelPpIdx1
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-3),'|',1) AS TakeLevelPpIdx2
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-2),'|',1) AS TakeLevelPpIdx3
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',-1),'|',1) AS TakeLevelPpIdx4
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',1),'|',-1) AS TakeLevel1
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',2),'|',-1) AS TakeLevel2
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',3),'|',-1) AS TakeLevel3
+                ,SUBSTRING_INDEX(SUBSTRING_INDEX(PR.TakeLevel,',',4),'|',-1) AS TakeLevel4
+            
+                ,(
+                    SELECT GROUP_CONCAT(b.PapaerName) AS PapaerName
+                    FROM lms_predict2_register_r_paper AS a
+                    INNER JOIN lms_predict2_paper AS b ON a.PpIdx = b.PpIdx
+                    WHERE PR.PrIdx = a.PrIdx
+                    GROUP BY a.PrIdx
+                ) AS PapaerName
+            
+                FROM lms_predict2_register AS PR
+                INNER JOIN lms_product_predict2 AS P ON PR.PredictIdx2 = P.PredictIdx2
+                INNER JOIN lms_member AS M ON PR.MemIdx = M.MemIdx
+                {$where}
+                {$order_by_offset_limit}
+            ) AS M
+            INNER JOIN lms_predict2_paper AS PP1 ON PP1.PpIdx = M.TakeLevelPpIdx1
+            INNER JOIN lms_predict2_paper AS PP2 ON PP2.PpIdx = M.TakeLevelPpIdx2
+            INNER JOIN lms_predict2_paper AS PP3 ON PP3.PpIdx = M.TakeLevelPpIdx3
+            INNER JOIN lms_predict2_paper AS PP4 ON PP4.PpIdx = M.TakeLevelPpIdx4
+        ";
+        /*$query_string = 'SELECT '. (($is_count === true) ? 'COUNT(M.cnt) AS numrows ' : 'M.* ') . 'FROM (SELECT ' . $column . $from . $where . $group_by . $order_by_offset_limit . ') AS M';*/
+        $query_string = 'SELECT '. $column . $from;
+        $query = $this->_conn->query($query_string);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
 
     /**
      * 상품 과목 저장/수정

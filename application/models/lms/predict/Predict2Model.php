@@ -1637,7 +1637,12 @@ class Predict2Model extends WB_Model
         } else {
             $column = "
                 M.PredictIdx2, M.Predict2Name, M.PrIdx, M.TakeMockPart, M.TaKeNumber, M.MemIdx, M.MemId, M.MemName, M.BirthDay, M.Phone, M.Mail, M.TakeCount, M.PapaerName, M.CutPoint, M.RegDatm
-                ,CONCAT(PP1.PapaerName,':',M.TakeLevel1,',',PP2.PapaerName,':',M.TakeLevel2,',',PP3.PapaerName,':',M.TakeLevel3,',',PP4.PapaerName,':',M.TakeLevel4) AS TakeLevel
+                ,CONCAT(
+                    PP1.PapaerName,':',IF(M.TakeLevel1 = 'H', '상', IF(M.TakeLevel1 = 'M', '중', '하'))
+                    ,',',PP2.PapaerName,':',IF(M.TakeLevel2 = 'H', '상', IF(M.TakeLevel2 = 'M', '중', '하'))
+                    ,',',PP3.PapaerName,':',IF(M.TakeLevel3 = 'H', '상', IF(M.TakeLevel3 = 'M', '중', '하'))
+                    ,',',PP4.PapaerName,':',IF(M.TakeLevel4 = 'H', '상', IF(M.TakeLevel4 = 'M', '중', '하'))
+                ) AS TakeLevel
             ";
             $arr_order_by = ['PR.PrIdx' => 'DESC'];
             if ($is_count == 'excel') {

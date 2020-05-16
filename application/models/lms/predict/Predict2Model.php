@@ -1593,18 +1593,19 @@ class Predict2Model extends WB_Model
     /**
      * 등록된 답안정보 엑셀변환
      * @param array $arr_condition
+     * @param array $arr_condition_sub
      * @return mixed
      */
-    public function answerPaperForExcel($arr_condition = [])
+    /*public function answerPaperForExcel($arr_condition = [])
     {
         $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         $condition = array_merge_recursive($condition, $arr_condition);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
 
         $column = "
-            PR.MemIdx, M.MemName, M.MemId, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
+            PR.MemIdx, M.MemName, M.MemId, M.BirthDay, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
             ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, PA.RegDatm
-            ,PP.PapaerName, PQ.QuestionNo, PA.Answer, PQ.RightAnswer, IF(PA.Answer = PQ.RightAnswer,'Y','N') AS IsRightAnswer
+            ,PP.PapaerName, PQ.QuestionNo, PA.Answer
         ";
         $from = "
             FROM {$this->_table['predict2_answerpaper']} AS PA
@@ -1617,6 +1618,38 @@ class Predict2Model extends WB_Model
         ";
 
         return $this->_conn->query('select '.$column .$from)->result_array();
+    }*/
+    public function answerPaperForExcel($arr_condition = [], $arr_condition_sub = [])
+    {
+        $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = array_merge_recursive($condition, $arr_condition);
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub)->getMakeWhere(false);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $column = "
+            M.MemId, M.MemName, M.BirthDay, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
+	        ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, PA.RegDatm, PA.PpIdx, PA.PqIdxs, PA.Answers
+        ";
+        $from = "
+            FROM (
+                SELECT
+                    M.MemIdx, M.PredictIdx2, M.PrIdx, M.PpIdx, M.RegDatm
+                    ,GROUP_CONCAT(M.PqIdx ORDER BY M.PqIdx ASC) AS PqIdxs
+                    ,GROUP_CONCAT(M.Answer ORDER BY M.PqIdx ASC) AS Answers
+                FROM (
+                    SELECT
+                    MemIdx, PredictIdx2, PrIdx, PpIdx, RegDatm, PqIdx, Answer
+                    FROM {$this->_table['predict2_answerpaper']}
+                    {$where_sub}
+                    ORDER BY PrIdx, PpIdx, PqIdx ASC
+                ) AS M
+                GROUP BY M.PrIdx, M.PpIdx
+                ORDER BY M.PrIdx ASC
+            ) AS PA
+            INNER JOIN {$this->_table['predict2_register']} AS PR ON PA.PrIdx = PR.PrIdx
+            INNER JOIN {$this->_table['lms_member']} AS M ON PA.MemIdx = M.MemIdx
+        ";
+        return $this->_conn->query('select '.$column .$from. $where)->result_array();
     }
 
     /**

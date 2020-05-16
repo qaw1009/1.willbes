@@ -1536,8 +1536,8 @@ class Predict2Model extends WB_Model
         $from = "
             FROM (
                 SELECT
-                    R.PrIdx, R.TaKeNumber, R.MemName, R.MemIdx, R.MemId, R.Phone, R.Mail
-                    ,R.TakeMockPart, R.TakeCount, R.CutPoint, R.RegDatm
+                    R.PrIdx, R.MemIdx, R.MemName, R.MemId, R.Phone, R.Mail
+                    ,R.TakeMockPart, R.TaKeNumber, R.TakeCount, R.CutPoint, R.RegDatm
                     ,(GROUP_CONCAT(CONCAT('-',R.PapaerName,':',R.OrgPoint))) AS OPOINT
                     ,(CONCAT(R.TakeLevelPpIdx1Name,':',R.TakeLevel1,',',R.TakeLevelPpIdx2Name,':',R.TakeLevel2,',',R.TakeLevelPpIdx3Name,':',R.TakeLevel3,',',R.TakeLevelPpIdx4Name,':',R.TakeLevel4)) AS TakeLevel
                 FROM (

@@ -80,7 +80,7 @@ class AnswerPaper extends \app\controllers\BaseController
         ];
         $results = $this->predict2Model->mainOriginList('excel', $arr_condition);
         $file_name = '채점서비스참여현황_('.date("Y-m-d").')';
-        $headers = ['접수식별자', '이름', '회원식별자', '아이디', '연락처', '이메일', '직렬', '응시번호', '응시횟수', '커트라인평균점수','등록일','과목별점수','과목별난이도'];
+        $headers = ['접수식별자', '회원식별자', '이름', '아이디', '연락처', '이메일', '직렬', '응시번호', '응시횟수', '커트라인평균점수','등록일','과목별점수','과목별난이도'];
 
         $last_query = $this->predict2Model->getLastQuery();
         // download log

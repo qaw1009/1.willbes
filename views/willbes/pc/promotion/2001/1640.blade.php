@@ -12,7 +12,7 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -112,9 +112,9 @@
         <div class="evtCtnsBox LAeventZ02">
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1111_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map1111a" border="0">
             <map name="Map1111a" id="Map1111a">
-                <area shape="rect" coords="388,668,517,698" href="https://pass.willbes.net/promotion/index/cate/3019/code/1550" target="_blank" />
-                <area shape="rect" coords="387,872,515,901" href="https://pass.willbes.net/promotion/index/cate/3019/code/1116" target="_blank" />
-                <area shape="rect" coords="776,859,903,886" href="https://pass.willbes.net/promotion/index/cate/3019/code/1113" target="_blank" />
+                <area shape="rect" coords="388,668,517,698" href="https://police.willbes.net/promotion/index/cate/3001/code/1641" target="_blank" />
+                <area shape="rect" coords="387,872,515,901" href="https://police.willbes.net/promotion/index/cate/3001/code/1642" target="_blank" />
+                <area shape="rect" coords="776,859,903,886" href="https://police.willbes.net/promotion/index/cate/3001/code/1121" target="_blank" />
             </map>        
         </div>
 

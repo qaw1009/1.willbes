@@ -91,6 +91,10 @@
             {!! banner('캠퍼스_메인_우측퀵_01', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
             {!! banner('캠퍼스_메인_우측퀵_02', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
         </div>
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'] . '_campus') --}}
+            @include('willbes.pc.site.main_partial.quick_menu_campus')
+        </div>
     </div>
 
     <script type="text/javascript">

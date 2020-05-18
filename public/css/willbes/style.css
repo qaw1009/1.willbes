@@ -3599,7 +3599,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lec-profile .w-notice {
     float: left;
-    letter-spacing: -1px;
+    letter-spacing: -1px; 
 }
 .lec-profile .w-notice .w-sp {
     margin: 0;

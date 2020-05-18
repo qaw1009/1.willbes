@@ -35,7 +35,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky.png" alt="기미진 국어 개강일정 알아보기"/></a><br>
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1467" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky2.png" alt="기미진 국어 개강일정 알아보기"/></a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky2.png" alt="기미진 국어 개강일정 알아보기"/></a>
         </div>    
         <!--skybanner//-->
         <div class="evtCtnsBox wb_top" >
@@ -58,13 +58,13 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377open" border="0" />
             <map name="Map1377open" id="Map1377open">
-                <area shape="rect" coords="669,329,833,373" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161946" target="_blank" />
-                <area shape="rect" coords="668,446,832,495" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161947" target="_blank" />
-                <area shape="rect" coords="666,567,835,614" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163564" target="_blank" />
+                <area shape="rect" coords="669,329,833,373" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/164529" target="_blank" />
+                <area shape="rect" coords="668,446,832,495" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/162652" target="_blank" />
+                <area shape="rect" coords="666,567,835,614" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/164526" target="_blank" />
                 <area shape="rect" coords="839,328,1001,376" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
                 <area shape="rect" coords="835,447,1003,493" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
                 <area shape="rect" coords="841,568,1001,613" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
-                <area shape="rect" coords="664,719,1003,783" href="https://pass.willbes.net/promotion/index/cate/3019/code/1467" target="_blank" />
+                <area shape="rect" coords="664,719,1003,783" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
             </map>           
         </div>
         <!--wb_cts04//-->

@@ -145,7 +145,7 @@
         <p>5.31(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/164554" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/164554" target="_blank">
                     <span>반반모고</span>
                     <span>5월 방송<br>다시보기</span>
                     <span><strong>2</strong>만원</span>
@@ -153,19 +153,19 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank">
+                <a href="#none">
                     <span>반반모고</span>
                     <span>1년 방송분<br>다시보기</span>
                     <span><strong>15</strong>만원</span>
-                    <span>신청하기</span>
+                    <span>PC결제만 가능</span>
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank">
+                <a href="#none">
                     <span>한덕현 영어</span>
                     <span>새벽모고<br>T-PASS</span>
                     <span><strong>25</strong>만원</span>
-                    <span>신청하기</span>
+                    <span>PC결제만 가능</span>
                 </a>
             </li>
         </ul>
@@ -181,7 +181,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>5/25(월)~29(금) <br>오후 6시</span>
+                    <span>5/18(월)~22(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

@@ -84,14 +84,14 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}    
 
     .evtFooter {margin:0 auto; padding:30px 0; text-align:left; color:#666; line-height:1.4;background:#2a2a2a }
-    .evtFooter h3 {font-size:20px; margin:0 20px 20px; color:#fff; background:#161616; text-align:center; padding:10px 0}
+    .evtFooter h3 {font-size:20px; margin:0 20px 20px; color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
     .evtFooter .infoBox {padding:0 20px}
     .evtFooter p {margin-bottom:10px; color:#ccc; font-size:16px;}
     .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
     .evtFooter ul {margin-bottom:20px; padding:0 10px}
     .evtFooter li {margin-left:20px; list-style-type: decimal; color:#b8b8b8}
-    .evtFooter li span {color:#fff}
+    .evtFooter li span {color:#777}
 
     .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
@@ -210,7 +210,7 @@
     </div>
 
     <div class="evtCtnsBox evtFooter" id="tab04">
-        <h3 class="NSK-Black">[반반한밤 유의사항 꼭! 확인하기]</h3>
+        <h3 class="NSK-Black">반반한밤 유의사항 꼭! 확인하기</h3>
         <div class="infoBox">
             <p><span>●</span> 더켠의 반반한 모의고사 과정 진행 안내</p>
             <ul>

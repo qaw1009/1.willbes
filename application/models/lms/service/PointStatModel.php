@@ -74,7 +74,7 @@ class PointStatModel extends WB_Model
      * @param string $save_end_date [적립종료일]
      * @param string $use_start_date [사용시작일]
      * @param string $use_end_date [사용종료일]
-     * @param array $arr_condition [적립포인트 기준 추가조회조건]
+     * @param array $arr_condition [추가조회조건]
      * @return mixed
      */
     public function listStatBookSaveUsePoint($save_start_date, $save_end_date, $use_start_date, $use_end_date, $arr_condition = [])
@@ -186,21 +186,19 @@ class PointStatModel extends WB_Model
     }
 
     /**
-     * 강좌/교재포인트 적립/사용통계
+     * 강좌/교재포인트 적립/차감 사유별 통계
      * @param string $point_type [포인트타입, lecture : 강좌, book : 교재]
      * @param string $search_start_date [조회시작일자]
      * @param string $search_end_date [조회종료일자]
-     * @param null|int $site_code [사이트코드]
+     * @param array $arr_condition [추가조회조건]
      * @return mixed
      */
-    public function listStatSaveUsePoint($point_type, $search_start_date, $search_end_date, $site_code = null)
+    public function listStatSaveUsePointByReason($point_type, $search_start_date, $search_end_date, $arr_condition = [])
     {
         $search_start_date = $search_start_date . ' 00:00:00';
         $search_end_date = $search_end_date . ' 23:59:59';
 
         $column = 'U.BaseYm, U.ReasonCode, sum(U.SumSavePoint) as SumSavePoint, sum(U.SumUsePoint) as SumUsePoint';
-
-        $arr_condition = ['EQ' => ['PS.SiteCode' => $site_code]];
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $from = '

@@ -181,7 +181,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>5/25(월)~29(금) <br>오후 6시</span>
+                    <span>5/18(월)~22(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

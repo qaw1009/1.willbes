@@ -224,8 +224,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 무선공학</p>
@@ -319,8 +319,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 통신이론/공학</p>
@@ -362,14 +362,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/163748" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 통신이론 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164572" target="_blank">수강신청</a></td>
                     </tr>
                 </table>                
             </div>
@@ -414,14 +414,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/163748" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 통신이론 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164572" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>
@@ -510,8 +510,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전기이론 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152688" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전기이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164569" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기기기</p>
@@ -547,8 +547,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전기기기 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152687" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164570" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -587,8 +587,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전기기기 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152687" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164570" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>
@@ -690,8 +690,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -772,8 +772,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -821,14 +821,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/163748" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                        <td>2020 [지방직] 최우영 통신이론 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164572" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>

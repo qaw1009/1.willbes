@@ -36,7 +36,6 @@ class BookStatus extends \app\controllers\BaseController
             $arr_condition = $this->_getListConditions();
 
             $list = $this->pointStatModel->listStatBookSaveUsePoint($arr_input['search_save_start_date'], $arr_input['search_save_end_date']
-                , $arr_input['search_use_save_start_date'], $arr_input['search_use_save_end_date']
                 , $arr_input['search_use_start_date'], $arr_input['search_use_end_date']
                 , $arr_condition);
 
@@ -72,7 +71,6 @@ class BookStatus extends \app\controllers\BaseController
         $headers = ['기간(년월)', '회원가입적립액', '회원가입사용액', '교재적립액', '교재사용액', '강의적립액', '강의사용액', '기타적립액', '기타사용액'];
         $arr_condition = $this->_getListConditions();
         $list = $this->pointStatModel->listStatBookSaveUsePoint($arr_input['search_save_start_date'], $arr_input['search_save_end_date']
-            , $arr_input['search_use_save_start_date'], $arr_input['search_use_save_end_date']
             , $arr_input['search_use_start_date'], $arr_input['search_use_end_date']
             , $arr_condition);
 
@@ -98,7 +96,7 @@ class BookStatus extends \app\controllers\BaseController
     private function _getSearchDateParam()
     {
         // 조회날짜 파라미터명
-        $arr_param = ['search_save_start_date', 'search_save_end_date', 'search_use_save_start_date', 'search_use_save_end_date', 'search_use_start_date', 'search_use_end_date'];
+        $arr_param = ['search_save_start_date', 'search_save_end_date', 'search_use_start_date', 'search_use_end_date'];
         $arr_input = [];
 
         foreach ($arr_param as $name) {

@@ -25,22 +25,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">사용기준 적립일</label>
-                    <div class="col-md-11 form-inline">
-                        <div class="input-group mb-0 mr-20">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control datepicker" id="search_use_save_start_date" name="search_use_save_start_date" value="" autocomplete="off">
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <div class="input-group-addon no-border-right">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control datepicker" id="search_use_save_end_date" name="search_use_save_end_date" value="" autocomplete="off">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label col-md-1">사용일</label>
                     <div class="col-md-11 form-inline">
                         <div class="input-group mb-0 mr-20">
@@ -116,8 +100,6 @@
                 var search_start_date = $search_form.find('input[name="search_save_start_date"]').val();
                 var search_end_date = $search_form.find('input[name="search_save_end_date"]').val();
 
-                $search_form.find('input[name="search_use_save_start_date"]').val('2019-01-01');
-                $search_form.find('input[name="search_use_save_end_date"]').val(search_end_date);
                 $search_form.find('input[name="search_use_start_date"]').val(search_start_date);
                 $search_form.find('input[name="search_use_end_date"]').val(search_end_date);
             }

@@ -49,6 +49,7 @@
     .evt04 li span {display:block; font-size:14px; font-weight:normal}
     .evt04 li a {display:block; padding:20px 0; margin:0 5px 0 10px; background:#4a35f3; color:#fff; border-radius:5px; }
     .evt04 li:last-child a {background:#fff; color:#2a2a2a; margin:0 10px 0 5px;} 
+    
 
 
     .evt05 {background:#2a2a2a}
@@ -97,12 +98,13 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
+        .evt04 br {display:block}
         .evt06 li img {width:80%}
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
-        .evt02 .price br {display:none}
+        .evt04 br {display:none}
         .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
     }
 
@@ -173,14 +175,14 @@
         <ul>
             <li>
                 <a href="#none">
-                    <span>12시~22시 문제 + 22시~24시 해설</span>
-                    반반모고 자료 다운받기 >
+                    <span>12시~22시 문제 <br>+ 22시~24시 해설</span>
+                    반반모고 자료<br>다운받기 >
                 </a>
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>5/25(월)~29(금) 오후 6시</span>
-                    온라인모의고사 접수하기 >
+                    <span>5/25(월)~29(금) <br>오후 6시</span>
+                    온라인모의고사<br>접수하기 >
                 </a>
             </li>
         </ul>
@@ -204,7 +206,7 @@
             <li><span class="NSK-Black">15</span>회</li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_check.png" alt="" ></a><li>
         </ul>
-        <p>*출석체크 경품에 대한 자세한 사항은 PC버전을 통해 확인해주시기 바랍니다.</p>
+        <p>*출석체크 경품에 대한 자세한 사항은<br> PC버전을 통해 확인해주시기 바랍니다.</p>
     </div>
 
     <div class="evtCtnsBox evtFooter" id="tab04">

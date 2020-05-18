@@ -212,7 +212,7 @@
     <div class="evtCtnsBox evtFooter" id="tab04">
         <h3 class="NSK-Black">반반한밤 유의사항 꼭! 확인하기</h3>
         <div class="infoBox">
-            <p><span>●</span> 더켠의 반반한 모의고사 과정 진행 안내</p>
+            <p class="NSK-Black"><span>●</span> 더켠의 반반한 모의고사 과정 진행 안내</p>
             <ul>
                 <li>매주 월~금 오후 9~10시 : 반반한 모의고사+해설 정규 방송</li>
                 <li>매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 <br>
@@ -222,14 +222,14 @@
                 <span>*무료 온라인 모의고사의 경우, 2주에 1회 진행</span></li>
             </ul>
 
-            <p><span>●</span> 강의 자료 제공 일정 안내</p>
+            <p class="NSK-Black"><span>●</span> 강의 자료 제공 일정 안내</p>
             <ul>
                 <li>방송 당일 오후 12시~오후 22시 : 문제 자료<Br>
                     <span>* 사전에 인쇄 하여 풀어본 후 수업 참여 권장</span></li>
                 <li>방송 당일 오후 22시~자정 : 문제+해설 자료</li>
             </ul>
 
-            <p><span>●</span> 열공 출첵 이벤트 관련</p>
+            <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
                 <li>본 이벤트는 로그인 후 참여 가능하며, 5월 11일(월)부터 6월 5일(금)까지 총 20회 진행됩니다. <span>* 공휴일 제외</span></li>
                 <li>출석 체크 가능 시간은 정규방송 오후 9~10시 사이, 모의고사 해설 LIVE (5/11(월), 

@@ -23,13 +23,11 @@
                 </div>
             </div>
         </div>
-        {{--
         <div class="Section barBnr">
             <div class="widthAuto">
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
-        --}}
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">

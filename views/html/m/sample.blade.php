@@ -100,6 +100,8 @@
             <a href="{{ site_url('/home/html/m/1565M') }}" target="_blank">엔잡 황채영</a>
             <a href="{{ site_url('/home/html/m/1566M') }}" target="_blank">엔잡 김경은</a>
             <a href="{{ site_url('/home/html/m/1567M') }}" target="_blank">엔잡 정문진</a>
+            <br><br> 
+            <a href="{{ site_url('/home/html/m/1588') }}" target="_blank">공무원 한덕현</a>
         </div>
     </li>
 </ul>

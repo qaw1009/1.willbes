@@ -169,6 +169,7 @@
                 </a>
             </li>
         </ul>
+        <div class="tx-red mt20">※PC결제는 PC로 접속시만 결제 가능합니다.</div>
     </div>
 
     <div class="evtCtnsBox evt04" id="tab03">
@@ -180,7 +181,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
+                <a href="https://pass.willbes.net/pass/mockTest/apply/cate?state=&s_type=&s_keyword=%ED%95%9C%EB%8D%95%ED%98%84+%EC%98%81%EC%96%B4" target="_blank">
                     <span>5/18(월)~22(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>

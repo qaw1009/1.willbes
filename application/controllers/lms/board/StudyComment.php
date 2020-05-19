@@ -302,7 +302,7 @@ class StudyComment extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
 
         if (empty($params[0]) === true) {
-            show_error('잘못된 접근 입니다.');
+            show_alert('잘못된 접근 입니다.','back');
         }
 
         $column = '
@@ -316,7 +316,7 @@ class StudyComment extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
-                'LB.IsStatus' => 'Y'
+                /*'LB.IsStatus' => 'Y'*/
             ]
         ]);
         $arr_condition_file = [
@@ -325,8 +325,8 @@ class StudyComment extends BaseBoard
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
-        if (count($data) < 1) {
-            show_error('데이터 조회에 실패했습니다.');
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.','back');
         }
 
         $query_string = base64_decode(element('q',$this->_reqG(null)));
@@ -362,7 +362,7 @@ class StudyComment extends BaseBoard
         $prod_code = $params[0];
 
         if (empty($params[0]) === true) {
-            show_error('잘못된 접근 입니다.');
+            show_alert('잘못된 접근 입니다.','back');
         }
 
         // 강좌데이터 조회
@@ -377,8 +377,8 @@ class StudyComment extends BaseBoard
             vw_product_r_professor_concat.wProfName_String, lms_product_lecture.LearnPatternCcd, fn_ccd_name(lms_product_lecture.LearnPatternCcd) AS LearnPatternCcdName'
         );
 
-        if (count($product_data) < 1) {
-            show_error('데이터 조회에 실패했습니다.');
+        if (empty($product_data) === true) {
+            show_alert('데이터 조회에 실패했습니다.','back');
         }
 
         $this->load->view("board/{$this->board_name}/readLecture",[

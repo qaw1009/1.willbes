@@ -66,7 +66,10 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/lecture_online_pkg_diy') }}" target="_blank">수강신청 > DIY패키지</a>
             <a href="{{ site_url('/home/html/m/lecture_online_pkg5') }}" target="_blank">수강신청 > DIY패키지 > 상세보기</a>
-            <br><br>            
+            <br><br>  
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg6') }}" target="_blank">수강신청 > 기간제 패키지</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg7') }}" target="_blank">수강신청 > 기간제 패키지 > 상세보기</a>
+            <br><br>          
             <a href="{{ site_url('/home/html/m/lecture_online_free1') }}" target="_blank">무료강좌</a>
             <a href="{{ site_url('/home/html/m/lecture_online_free2') }}" target="_blank">무료강좌 > 상세보기</a>
             <a href="{{ site_url('/home/html/m/lecture_online_free3') }}" target="_blank">보강동영상</a>

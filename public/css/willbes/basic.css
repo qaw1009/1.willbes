@@ -678,6 +678,7 @@ select[disabled] {
   margin-top: 150px !important;
 }
 
+.mb0,
 .mb-zero {
   margin-bottom: 0 !important;
 }

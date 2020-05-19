@@ -227,3 +227,17 @@
 .tech .tx-color {
     color: #6faf4e;
 }
+
+.tech .copyTit {
+    font-size: 35px;
+    color: #363636;
+    line-height: 1.2;
+    text-align: center;
+}
+.tech .copyTit strong {
+    vertical-align: baseline;
+	color:#000;
+} 
+.tech .copyTit span {
+	vertical-align: baseline;
+}

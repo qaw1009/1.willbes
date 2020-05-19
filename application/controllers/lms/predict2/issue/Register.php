@@ -30,7 +30,7 @@ class Register extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'PR.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
+                'P.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
                 'PR.SiteCode' => $this->_reqP('search_site_code'),
                 'PR.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
                 'PP.PpIdx' => $this->_reqP('search_paper'),

@@ -10,8 +10,7 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -158,10 +157,10 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1550') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정</a></li>        
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1640') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1641') }}" class="menu2" target="_blank">국방전직교육원 서울 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1642') }}" class="menu3" target="_blank">국가보훈처 서울/인천/대구 교육과정 </a></li>              
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1121') }}" class="menu4" target="_blank">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">

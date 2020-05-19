@@ -43,10 +43,10 @@
         </div>
         
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1639_03.jpg" alt="경제학 gs3순환" usemap="#Map1639A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1639_03_01.jpg" alt="경제학 gs3순환" usemap="#Map1639A" border="0" />
             <map name="Map1639A" id="Map1639A">
-                <area shape="rect" coords="93,1376,546,1451" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/164841" target="_blank" alt="5급행정" />
-                <area shape="rect" coords="571,1373,1026,1455" href="https://gosi.willbes.net/lecture/show/cate/3095/pattern/only/prod-code/164851" target="_blank" alt="국립외교원" />
+                <area shape="rect" coords="176,1345,538,1420" href="https://gosi.willbes.net/lecture/show/cate/3094/pattern/only/prod-code/164841" target="_blank" alt="PC수강신청" />
+                <area shape="rect" coords="584,1347,943,1418" href="https://gosi.willbes.net/m/lecture/show/cate/3094/pattern/only/prod-code/164841" target="_blank" alt="모바일수강신청" />
             </map>
 		</div>
 	</div>

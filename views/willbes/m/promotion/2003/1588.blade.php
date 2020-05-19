@@ -13,7 +13,6 @@
     .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%}
     .tabs li a {display:block; text-align:center; font-size:16px; line-height:1.5; padding:15px 0; color:#999; font-weight:bold; letter-spacing:-1px;}
-    .tabs li a:hover,
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 

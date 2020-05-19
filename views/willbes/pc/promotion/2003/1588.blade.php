@@ -223,12 +223,12 @@
                     @php $apply_check = true; @endphp
                     @break;
                 @endif
-                @if($apply_check === false)
-                    <a href="javascript:alert('출석체크 기간이 아닙니다.');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
-                    </a>
-                @endif
             @endforeach
+            @if($apply_check === false)
+                <a href="javascript:alert('출석체크 기간이 아닙니다.');">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
+                </a>
+            @endif
         </div>
 
         {{-- 이모티콘 댓글 --}}

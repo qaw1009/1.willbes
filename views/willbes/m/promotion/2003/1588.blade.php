@@ -13,7 +13,6 @@
     .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%}
     .tabs li a {display:block; text-align:center; font-size:16px; line-height:1.5; padding:15px 0; color:#999; font-weight:bold; letter-spacing:-1px;}
-    .tabs li a:hover,
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
@@ -21,7 +20,7 @@
 
     .evt02 {}
     .evt03 {padding-bottom:50px}
-    .evt03 p {margin:0 20px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:20px; font-weight:bold;
+    .evt03 p {margin:0 10px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:20px; font-weight:bold;
         animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
         from{color:#fff}
@@ -34,14 +33,15 @@
         to{color:#fff}
         }
 
-    .evt03 ul {margin:0 20px}
+    .evt03 ul {margin:0 10px}
     .evt03 li {display:inline; float:left; width:33.33333%}
-    .evt03 li a {display:block; padding:20px 0; margin:0 5px; border-radius:10px; border:3px solid #c7c9c9; font-size:16px}
+    .evt03 li a {display:block; padding:20px 0; margin-left:5px; border-radius:10px; border:3px solid #c7c9c9; font-size:16px}
     .evt03 li:last-child a{background:#fdf3eb}
     .evt03 li span {display:block; color:#525252}
     .evt03 li span:nth-child(2) {font-size:20px; font-weight:bold; color:#005af8}
     .evt03 li span:nth-child(3) {margin-top:20px; color:#ff1500}
-    .evt03 li span:last-child {background:#000; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px; }
+    .evt03 li span:last-child {background:#000; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:14px; letter-spacing:-1px}
+    .evt03 li span:last-child a {margin:0}
     .evt03 li strong {font-size:22px;font-weight:bold;}
 
     .evt04 {padding:30px 0; background:#2a2a2a}    
@@ -153,7 +153,7 @@
                 </a>
             </li>
             <li>
-                <a href="#none">
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank">
                     <span>반반모고</span>
                     <span>1년 방송분<br>다시보기</span>
                     <span><strong>15</strong>만원</span>
@@ -161,7 +161,7 @@
                 </a>
             </li>
             <li>
-                <a href="#none">
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank">
                     <span>한덕현 영어</span>
                     <span>새벽모고<br>T-PASS</span>
                     <span><strong>25</strong>만원</span>
@@ -169,18 +169,19 @@
                 </a>
             </li>
         </ul>
+        <div class="tx-red mt20">※PC결제는 PC로 접속시만 결제 가능합니다.</div>
     </div>
 
     <div class="evtCtnsBox evt04" id="tab03">
         <ul>
             <li>
-                <a href="#none">
+                <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif">
                     <span>12시~22시 문제 <br>+ 22시~24시 해설</span>
                     반반모고 자료<br>다운받기 >
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
+                <a href="https://pass.willbes.net/pass/mockTest/apply/cate?state=&s_type=&s_keyword=%ED%95%9C%EB%8D%95%ED%98%84+%EC%98%81%EC%96%B4" target="_blank">
                     <span>5/18(월)~22(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
@@ -188,23 +189,61 @@
         </ul>
     </div>
 
+    {{-- 라이브 방송 --}}
     <div class="evtCtnsBox evt05">
-        {{--방송 전 이미지--}}
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/liveIng_1.jpg" alt="" >
-        {{--방송중--}}
-        <div class="video-container-box">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8T84bvoKd28" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+        @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
+            @include('willbes.m.promotion.live_video_youtube_partial')
+        @else
+            {{-- TODO --}}
+            {{-- @include('willbes.m.promotion.live_video_partial') --}}
+        @endif
     </div>
 
+    {{-- 출석체크 추가신청 form --}}
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        {{-- <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/> --}}
+        <input type="hidden" name="event_register_chk" value="N"/>
+        @foreach($arr_base['add_apply_data'] as $row)
+            @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                @break;
+            @endif
+        @endforeach
+    </form>
+
+    {{-- 출석체크 --}}
     <div class="evtCtnsBox evt06">
         <div>매일 출석하면 <span>100%선물!</span></div>
         <ul>
             <li><img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_05_txt.png" alt="" ></li>
-            <li><span class="NSK-Black">15</span>회</li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_check.png" alt="" ></a><li>
+            <li><span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>회</li>
+            <li>
+                @php $apply_check = false; @endphp
+                @foreach($arr_base['add_apply_data'] as $row)
+                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                        @if($row['MemberLoginCnt'] == '0')
+                            <a href="javascript:fn_add_apply_submit();">
+                                <img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_check.png" alt="출석전">
+                            </a>
+                        @else
+                            <a href="javascript:alert('이미 출석체크 하셨습니다.');">
+                                <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" alt="출석후">
+                            </a>
+                        @endif
+                        @php $apply_check = true; @endphp
+                        @break;
+                    @endif
+                @endforeach
+                @if($apply_check === false)
+                    <a href="javascript:alert('출석체크 기간이 아닙니다.');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_check.png" alt="출석전">
+                    </a>
+                @endif
+            <li>
         </ul>
         <p>*출석체크 경품에 대한 자세한 사항은<br> PC버전을 통해 확인해주시기 바랍니다.</p>
     </div>
@@ -277,6 +316,58 @@
             }
         });
     });
+
+    {{-- 출석 체크 --}}
+    function fn_add_apply_submit() {
+        {{--
+        @if(date('YmdHi') < '202004132100' && ENVIRONMENT == 'production')
+        alert('4월13일 21:00 부터 이벤트 참여 가능합니다.');
+        return;
+        @endif
+        --}}
+
+        var $add_apply_form = $('#add_apply_form');
+        var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+        if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+            alert('이벤트 기간이 아닙니다.'); return;
+        }
+
+        if (!confirm('출첵하시겠습니까?')) { return true; }
+        ajaxSubmit($add_apply_form, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert( getApplyMsg(ret.ret_msg) );
+                location.reload();
+            }
+        }, function(ret, status, error_view) {
+            alert( getApplyMsg(ret.ret_msg || '') );
+        }, null, false, 'alert');
+    }
+
+    {{-- 이벤트 추가 신청 메세지 --}}
+    function getApplyMsg(ret_msg) {
+        {{-- 해당 프로모션 종속 결과 메세지 --}}
+        var apply_msg = '';
+        var arr_apply_msg = [
+            ['이미 신청하셨습니다.', '이미 출첵하셨습니다.'],
+            ['신청 되었습니다.', '출첵 완료!']
+            {{--
+            ['처리 되었습니다.','장바구니에 담겼습니다.'],
+            ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
+            --}}
+        ];
+
+        for (var i = 0; i < arr_apply_msg.length; i++) {
+            if(arr_apply_msg[i][0] == ret_msg) {
+                apply_msg = arr_apply_msg[i][1];
+            }
+        }
+        if(apply_msg == '') apply_msg = ret_msg;
+        return apply_msg;
+    }
+
 </script>
 
 @stop

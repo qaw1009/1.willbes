@@ -41,7 +41,7 @@
     .evt03 li span {display:block; color:#525252}
     .evt03 li span:nth-child(2) {font-size:20px; font-weight:bold; color:#005af8}
     .evt03 li span:nth-child(3) {margin-top:20px; color:#ff1500}
-    .evt03 li span:last-child {background:#000; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px; }
+    .evt03 li span:last-child {background:#000; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:14px; letter-spacing:-1px}
     .evt03 li strong {font-size:22px;font-weight:bold;}
 
     .evt04 {padding:30px 0; background:#2a2a2a}    

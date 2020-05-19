@@ -21,7 +21,7 @@
 
     .evt02 {}
     .evt03 {padding-bottom:50px}
-    .evt03 p {margin:0 20px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:20px; font-weight:bold;
+    .evt03 p {margin:0 10px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:20px; font-weight:bold;
         animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
         from{color:#fff}
@@ -34,7 +34,7 @@
         to{color:#fff}
         }
 
-    .evt03 ul {margin:0 20px}
+    .evt03 ul {margin:0 10px}
     .evt03 li {display:inline; float:left; width:33.33333%}
     .evt03 li a {display:block; padding:20px 0; margin:0 5px; border-radius:10px; border:3px solid #c7c9c9; font-size:16px}
     .evt03 li:last-child a{background:#fdf3eb}

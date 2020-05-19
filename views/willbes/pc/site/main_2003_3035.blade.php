@@ -31,12 +31,12 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">1순환 – 큰 틀에서 흐름을 파악하라</a></li>
-                    <li><a href="#tab02">예비순환 - 1년차 합격을 위한 동행의 첫걸음</a></li>
+                    <li><a href="#tab01">2순환 – 이해한 만큼 암기가 줄어든다</a></li>
+                    <li><a href="#tab02">1순환 – 큰 틀에서 흐름을 파악하라</a></li>
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">
-                        강의와 복습에 시간을 투자하여 <span class="tx-color">과목별 기본 원칙을 수립하라</span>
+                        <span class="tx-color">기출된, 그리고 출제될 가능성</span>이 있는 모든 것을 정리하라
                     </div>                     
                     <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)
@@ -52,7 +52,7 @@
                 </div>
                 <div id="tab02">
                     <div class="copyTit NSK-Black mt50">
-                        시행착오를 줄이고 <span class="tx-color">최적화된 컨디션을 찾아라!</span>
+                        강의와 복습에 시간을 투자하여<span class="tx-color"> 과목별 기본 원칙을 수립하라</span> 
                     </div>  
                     <ul class="PBcts mt40">
                         @for($i=5; $i<=8; $i++)

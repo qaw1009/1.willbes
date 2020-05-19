@@ -73,7 +73,7 @@
                 <area shape="rect" coords="625,692,674,710" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="626,826,671,844" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="829,468,878,484" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158678" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="830,559,879,578" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/162052" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="830,559,879,578" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/164513" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="829,650,878,667" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158686" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="828,671,877,688" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158684" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="831,736,878,755" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/163563" target="_blank" onfocus='this.blur()' />

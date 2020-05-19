@@ -33,7 +33,6 @@ class AnswerPaper extends \app\controllers\BaseController
                 'PR.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
                 'PR.SiteCode' => $this->_reqP('search_site_code'),
                 'PR.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'PP.PpIdx' => $this->_reqP('search_paper'),
                 'PR.IsStatus' => 'Y',
             ],
             'ORG' => [
@@ -44,16 +43,23 @@ class AnswerPaper extends \app\controllers\BaseController
                 ]
             ],
         ];
+        $arr_condition_sub = [
+            'EQ' => [
+                'po.PpIdx' => $this->_reqP('search_paper')
+            ]
+        ];
 
-        $list = [];
-        $count = $this->predict2Model->mainOriginList(true, $arr_condition);
+        $data = [];
+        $count = $this->predict2Model->mainOriginList(true, $arr_condition, $arr_condition_sub);
         if ($count > 0) {
-            $list = $this->predict2Model->mainOriginList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            $list = $this->predict2Model->mainOriginList(false, $arr_condition, $arr_condition_sub, $this->_reqP('length'), $this->_reqP('start'));
+            $data = $this->_setOriginList($list);
         }
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list,
+            'data' => $data,
         ]);
     }
 
@@ -67,7 +73,6 @@ class AnswerPaper extends \app\controllers\BaseController
                 'PR.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
                 'PR.SiteCode' => $this->_reqP('search_site_code'),
                 'PR.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'PP.PpIdx' => $this->_reqP('search_paper'),
                 'PR.IsStatus' => 'Y',
             ],
             'ORG' => [
@@ -78,20 +83,26 @@ class AnswerPaper extends \app\controllers\BaseController
                 ]
             ],
         ];
-        $results = $this->predict2Model->mainOriginList('excel', $arr_condition);
+        $arr_condition_sub = [
+            'EQ' => [
+                'po.PpIdx' => $this->_reqP('search_paper')
+            ]
+        ];
+        $results = $this->predict2Model->mainOriginList('excel', $arr_condition, $arr_condition_sub);
+        $data = $this->_setOriginList($results);
         $file_name = '채점서비스참여현황_('.date("Y-m-d").')';
         $headers = ['접수식별자', '회원식별자', '이름', '아이디', '연락처', '이메일', '직렬', '응시번호', '응시횟수', '커트라인평균점수','등록일','과목별점수','과목별난이도'];
 
         $last_query = $this->predict2Model->getLastQuery();
         // download log
         $this->load->library('approval');
-        if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
+        if($this->approval->SysDownLog($last_query, $file_name, count($data)) !== true) {
             show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
         }
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportExcel($file_name, $results, $headers) !== true) {
+        if ($this->excel->exportExcel($file_name, $data, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }
@@ -168,5 +179,59 @@ class AnswerPaper extends \app\controllers\BaseController
         if ($this->excel->exportExcel($file_name, $arr_excel_data, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
+    }
+
+    /**
+     * 채점서비스현황 데이터 가공처리
+     * @param $list
+     * @return array
+     */
+    private function _setOriginList($list)
+    {
+        $data = [];
+        $get_paper = $this->predict2Model->getRegPaper();
+        $data_paper = array_pluck($get_paper, 'PapaerName', 'PpIdx');
+        foreach ($list as $key => $row) {
+            $data[$key]['PrIdx'] = $row['PrIdx'];
+            $data[$key]['MemIdx'] = $row['MemIdx'];
+            $data[$key]['MemName'] = $row['MemName'];
+            $data[$key]['MemId'] = $row['MemId'];
+            $data[$key]['Phone'] = $row['Phone'];
+            $data[$key]['Mail'] = $row['Mail'];
+            $data[$key]['TakeMockPart'] = $row['TakeMockPart'];
+            $data[$key]['TaKeNumber'] = $row['TaKeNumber'];
+            $data[$key]['TakeCount'] = $row['TakeCount'];
+            $data[$key]['CutPoint'] = $row['CutPoint'];
+            $data[$key]['RegDatm'] = $row['RegDatm'];
+
+            //과목데이터가공
+            $arr_ppidx = explode(',', $row['PpIdx']);
+            $arr_orgpoint = explode(',', $row['OrgPoint']);
+            $data[$key]['OPOINT'] = '';
+            foreach ($arr_ppidx as $p_key => $p_val) {
+                $data[$key]['OPOINT'] .= (empty($data_paper[$p_val]) === true ? '' : $data_paper[$p_val].':'.$arr_orgpoint[$p_key].',');
+            }
+            $data[$key]['OPOINT'] = substr($data[$key]['OPOINT'], 0, -1);
+
+            //과목별난이도가공
+            $data[$key]['TakeLevel'] = '';
+            $arr_level = explode(',', $row['TakeLevel']);
+            foreach ($arr_level as $l_key => $l_val) {
+                $arr_val = explode('|', $l_val);
+                if (empty($data_paper[$arr_val[0]]) === false) {
+                    if ($arr_val[1] == 'H') {
+                        $temp_string = '상';
+                    } else if ($arr_val[1] == 'M') {
+                        $temp_string = '중';
+                    } else {
+                        $temp_string = '하';
+                    }
+                    $data[$key]['TakeLevel'] .= $data_paper[$arr_val[0]].':'.$temp_string.',';
+                }
+            }
+            $data[$key]['TakeLevel'] = substr($data[$key]['TakeLevel'], 0, -1);
+        }
+
+        return $data;
     }
 }

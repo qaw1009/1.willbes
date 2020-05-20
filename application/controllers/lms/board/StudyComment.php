@@ -134,6 +134,12 @@ class StudyComment extends BaseBoard
             LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.UpdMemIdx, LB.UpdAdminIdx
+            ,(
+                SELECT CONCAT(b.CateName,\'[\',a.CateCode,\']\') AS CateCode
+                FROM lms_product_r_category AS a
+                INNER JOIN lms_sys_category AS b ON a.CateCode = b.CateCode AND b.IsUse = \'Y\' AND b.IsStatus = \'Y\'
+                WHERE a.ProdCode = LB.ProdCode AND a.IsStatus = \'Y\'
+            ) AS ProdCateName
             ';
 
         $list = [];

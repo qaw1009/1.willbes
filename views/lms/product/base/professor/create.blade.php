@@ -80,7 +80,7 @@
                         <div class="row">
                             <div class="control-label col-md-1">OT
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['ot_url'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
@@ -96,43 +96,34 @@
                         <div class="row">
                             <div class="control-label col-md-1">WBS맛보기
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input type="text" id="wsample_url" name="wsample_url" class="form-control optional bg-info" pattern="url" title="맛보기영상" value="{{ $data['wsample_url'] or '' }}" placeholder="교수 검색 시 맛보기 정보 자동 출력 (수정가능)">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['wsample_url'] or '' }}" data-view-type="WS">보기</button>
                             </div>
                         </div>
-                        <div class="row mt-5">
-                            <div class="control-label col-md-1">맛보기1
+                        {{-- 맛보기 --}}
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row mt-5">
+                                <div class="control-label col-md-1">맛보기{{ $i }}
+                                </div>
+                                <div class="col-md-1-1">
+                                    <select name="sample_url{{ $i }}_opt_code" class="form-control mr-5 chk-opt-code">
+                                        <option value="">과목선택</option>
+                                        @foreach($arr_subject_idx as $key => $val)
+                                            <option value="{{ $key }}"{{ $key == element('sample_url' . $i . '_opt_code', $data) ? ' selected="selected"' : '' }}>{{ $val }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-7 pl-0">
+                                    <input type="text" id="sample_url{{ $i }}" name="sample_url{{ $i }}" class="form-control optional" pattern="url" title="맛보기{{ $i }}" value="{{ $data['sample_url' . $i] or '' }}">
+                                </div>
+                                <div class="col-md-2 pl-0">
+                                    <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url' . $i] or '' }}" data-view-type="S{{ $i }}">보기</button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" id="sample_url1" name="sample_url1" class="form-control optional" pattern="url" title="맛보기1" value="{{ $data['sample_url1'] or '' }}">
-                            </div>
-                            <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url1'] or '' }}" data-view-type="S1">보기</button>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="control-label col-md-1">맛보기2
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" id="sample_url2" name="sample_url2" class="form-control optional" pattern="url" title="맛보기2" value="{{ $data['sample_url2'] or '' }}">
-                            </div>
-                            <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url2'] or '' }}" data-view-type="S2">보기</button>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="control-label col-md-1">맛보기3
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" id="sample_url3" name="sample_url3" class="form-control optional" pattern="url" title="맛보기3" value="{{ $data['sample_url3'] or '' }}">
-                            </div>
-                            <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url3'] or '' }}" data-view-type="S3">보기</button>
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="form-group">
@@ -318,10 +309,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="yt_url">대표영상 (유튜브)
+                    <label class="control-label col-md-2" for="yt_url1">대표영상 (유튜브)
                     </label>
-                    <div class="col-md-5">
-                        <input type="text" id="yt_url" name="yt_url" class="form-control optional" pattern="url" title="대표영상" value="{{ $data['yt_url'] or '' }}">
+                    <div class="col-md-9">
+                        {{-- 유튜브 URL --}}
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row mb-5">
+                                <div class="col-md-1-1">
+                                    <select name="yt_url{{ $i }}_opt_code" class="form-control chk-opt-code">
+                                        <option value="">과목선택</option>
+                                        @foreach($arr_subject_idx as $key => $val)
+                                            <option value="{{ $key }}"{{ $key == element('yt_url' . $i . '_opt_code', $data) ? ' selected="selected"' : '' }}>{{ $val }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6 pl-0">
+                                    <input type="text" id="yt_url{{ $i }}" name="yt_url{{ $i }}" class="form-control optional" pattern="url" title="대표영상{{ $i }}" value="{{ $data['yt_url' . $i] or '' }}">
+                                </div>
+                            </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="form-group">
@@ -631,10 +637,55 @@
                 });
             });
 
+            // 카테고리 + 과목 맵핑 선택 이벤트
+            $regi_form.on('change', '#selected_subject_mapping', function() {
+                var that = $(this);
+                var code, name;
+                var input = $regi_form.find('.chk-opt-code');   // 설정 대상 과목 선택 select box
+                var $set_subject_data = {};  // 설정 대상 과목 데이터
+                var $selected_subject_idx = {}; // 이전 선택된 과목식별자
+
+                // 카테고리정보에서 과목 데이터 추출
+                that.find('span').each(function(idx) {
+                    code = $(this).find('input[name="subject_mapping_code[]"]').val().split('_').slice(-1).pop();
+                    name = $(this).text().split(' > ').slice(-1).pop().trim();
+
+                    $set_subject_data[code] = name;
+                });
+
+                // 옵션코드에서 기선택된 과목식별자 추출
+                input.each(function() {
+                    $selected_subject_idx[$(this).prop('name')] = $(this).find('option:selected').val();
+                });
+
+                // 디폴트값 제외하고 select option 삭제
+                input.find('option').not('[value=""]').remove();
+
+                // select option 추가
+                $.each($set_subject_data, function(k, v) {
+                    input.append($('<option>', { 'value' : k, 'text' : v }));
+                });
+
+                // 기선택된 과목식별자 재설정
+                $.each($selected_subject_idx, function(k, v) {
+                    if ($set_subject_data.hasOwnProperty(v) === true) {
+                        $regi_form.find('select[name="' + k + '"]').val(v);
+                    } else {
+                        $regi_form.find('select[name="' + k + '"]').val('');
+                    }
+                });
+            });
+
             // 카테고리 + 과목 맵핑 삭제
             $regi_form.on('click', '.selected-subject-mapping-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+
+                $regi_form.find('#selected_subject_mapping').trigger('change');
+            });
+
+            $regi_form.on('click', 'button[name="btn_test"]', function() {
+                $('#selected_subject_mapping').trigger('change');
             });
 
             // 샘플동영상 보기 버튼 클릭

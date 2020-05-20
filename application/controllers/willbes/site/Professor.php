@@ -143,6 +143,23 @@ class Professor extends \app\controllers\FrontController
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
+        // 과목별 교수 참조 정보 조회
+        $refer_data = $this->professorFModel->findProfessorReferData($prof_idx, ['sample_url1', 'sample_url2', 'sample_url3', 'yt_url1', 'yt_url2', 'yt_url3'], element('subject_idx', $arr_input), true);
+
+        // 과목별 맛보기 설정, 유튜브 URL 설정
+        $data['ProfReferData']['sample_url_type'] = 'S1';
+        $data['ProfReferData']['sample_url'] = array_get($data['ProfReferData'], 'sample_url1');
+        if (empty($refer_data['sample_url']) === false) {
+            $data['ProfReferData']['sample_url_type'] = 'S' . array_key_first($refer_data['sample_url']);
+            $data['ProfReferData']['sample_url'] = array_value_first($refer_data['sample_url']);
+        }
+
+        // 과목별 유튜브 URL 설정
+        $data['ProfReferData']['yt_url'] = array_get($data['ProfReferData'], 'yt_url1');
+        if (empty($refer_data['yt_url']) === false) {
+            $data['ProfReferData']['yt_url'] = array_value_first($refer_data['yt_url']);
+        }
+
         // 교수 배너 정보
         $data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
 

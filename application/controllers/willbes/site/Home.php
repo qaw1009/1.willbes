@@ -131,7 +131,6 @@ class Home extends \app\controllers\FrontController
                 //특정일 기준 시간차 계산 [3019]
                 $target_time = '2011-01-03 00:00:00';
                 $data['Interval_time'] = number_format(floor((strtotime(date('Y-m-d H:i:s')) - strtotime($target_time)) / 3600));
-
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
             }
         }
@@ -563,9 +562,9 @@ class Home extends \app\controllers\FrontController
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'p.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardTwoWayFModel->listBoardForProfStudy(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

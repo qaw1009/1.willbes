@@ -195,3 +195,17 @@ if (!function_exists('array_key_first')) {
         return null;
     }
 }
+
+if (!function_exists('array_value_first')) {
+    /**
+     * $array 배열의 1번째 키값에 해당하는 value 리턴
+     * @param array $array
+     * @return mixed|null
+     */
+    function array_value_first(array $array)
+    {
+        $key = array_key_first($array);
+
+        return is_null($key) === true ? null : $array[$key];
+    }
+}

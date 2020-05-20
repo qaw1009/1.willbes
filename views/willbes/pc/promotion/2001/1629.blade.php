@@ -9,7 +9,7 @@
         @include('willbes.pc.promotion.2001.1629_top')
 
         <div class="evtCtnsBox">
-            @if(time() < strtotime('202001300000'))
+            {{--@if(time() < strtotime('202001300000'))--}}
             <div class="ddayBefore">
                 <h1 class="NGEB">"이것만은 꼭! 시험 전 / 시험 당일 체크 포인트"</h1>
                 <h2>시험 <span>전</span> 유의사항</h2>
@@ -87,8 +87,10 @@
                 </table>
             </div>
             <!--ddayBefore//-->
+            {{--
             @else
             @endif
+            --}}
             <div class="ddayAfter">
                 <div class="m_section2">
                     <div>

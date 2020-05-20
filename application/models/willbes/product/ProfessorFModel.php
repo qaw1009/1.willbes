@@ -5,6 +5,7 @@ class ProfessorFModel extends WB_Model
 {
     private $_table = [
         'professor' => 'lms_professor',
+        'professor_reference' => 'lms_professor_reference',
         'professor_banner' => 'lms_professor_banner',
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
@@ -104,6 +105,43 @@ class ProfessorFModel extends WB_Model
         $data = $this->listProfessor(false, $arr_condition, null, null, [], $arr_add_column);
 
         return element('0', $data, []);
+    }
+
+    /**
+     * 교수별 참조 데이터 조회
+     * @param int $prof_idx [교수식별자]
+     * @param array $arr_refer_type [참조데이터 타입]
+     * @param null|string $option_code [옵션코드]
+     * @param bool $is_grouping [참조타입별 그룹핑 여부]
+     * @return array
+     */
+    public function findProfessorReferData($prof_idx, $arr_refer_type = [], $option_code = null, $is_grouping = false)
+    {
+        $results = [];
+        $column = 'ReferIdx, ReferType, ReferValue, OptionCode';
+        $arr_condition = [
+            'EQ' => ['Profidx' => get_var($prof_idx, 0), 'OptionCode' => $option_code, 'IsStatus' => 'Y'],
+            'IN' => ['ReferType' => $arr_refer_type]
+        ];
+
+        $data = $this->_conn->getListResult($this->_table['professor_reference'], $column, $arr_condition);
+
+        if ($is_grouping === true) {
+            foreach ($data as $idx => $row) {
+                $pre_fix = substr($row['ReferType'], 0, -1);
+                $post_fix = substr($row['ReferType'], -1);
+
+                if (is_numeric($post_fix) === true) {
+                    $results[$pre_fix][$post_fix] = $row['ReferValue'];
+                } else {
+                    $results[$row['ReferType']][0] = $row['ReferValue'];
+                }
+            }
+        } else {
+            $results = array_pluck($data, 'ReferValue', 'ReferType');
+        }
+
+        return $results;
     }
 
     /**

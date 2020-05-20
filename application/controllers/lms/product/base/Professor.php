@@ -64,7 +64,7 @@ class Professor extends \app\controllers\BaseController
         $method = 'POST';
         $idx = null;
         $data = null;
-
+        $arr_subject_idx = [];
         $codes = $this->codeModel->getCcdInArray(['719','724']);
 
         if (empty($params[0]) === false) {
@@ -85,6 +85,11 @@ class Professor extends \app\controllers\BaseController
             // 카테고리 + 과목 매핑 데이터 조회
             $data['SubjectMapping'] = $this->professorModel->listProfessorSubjectMapping($idx);
 
+            // 카테고리 + 과목 매핑 데이터 => 과목 데이터 추출 (식별자 => 과목명)
+            foreach ($data['SubjectMapping'] as $key => $val) {
+                $arr_subject_idx[str_last_pos_after($key, '_')] = str_last_pos_after($val, ' > ');
+            }
+
             // 강사료 정산 데이터 조회
             $data['CalcRate'] = $this->professorModel->listProfessorCalcRate($idx);
 
@@ -98,9 +103,9 @@ class Professor extends \app\controllers\BaseController
             'data' => $data,
             'arr_bm_idx' => $this->professorModel->_bm_idx,
             'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget(),
+            'arr_subject_idx' => $arr_subject_idx,
             'onlec_view_ccd' => $codes['719'],
             'appellation_ccd' => $codes['724']
-
         ]);
     }
 

@@ -7,7 +7,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <div class="Depth">
         @include('willbes.pc.layouts.partial.site_route_path')
-        <span class="depth"><span class="depth-Arrow">></span><strong>{{ rawurldecode($arr_input['subject_name']) }}</strong></span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>{{ rawurldecode(element('subject_name', $arr_input, '')) }}</strong></span>
         <span class="depth"><span class="depth-Arrow">></span><strong>{{ $data['ProfNickName'] }} {{$data['AppellationCcdName']}}</strong></span>
     </div>
     <!-- left nav -->
@@ -37,7 +37,7 @@
                 <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['ProfNickName'] }}">
             </div>
             <div class="prof-profile p_re">
-                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['ProfNickName'] }}</strong><span class="NGR">{{$data['AppellationCcdName']}}</span></div>
+                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode(element('subject_name', $arr_input, '')) }}</span><strong>{{ $data['ProfNickName'] }}</strong><span class="NGR">{{$data['AppellationCcdName']}}</span></div>
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'); openWin('Profile');">
@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url1']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'S1\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">
+                        <a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'' . $data['ProfReferData']['sample_url_type'] . '\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">
                             <div class="NGR">맛보기</div>
                         </a>
                     </li>

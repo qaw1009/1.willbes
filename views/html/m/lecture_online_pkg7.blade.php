@@ -103,10 +103,8 @@
             </div>
         </div>
         
-        <div class="lec-btns">
+        <div class="lec-btns w100p">
             <ul>
-                <li><a href="#none" class="btn_black_line">강좌목록</a></li>
-                <li><a href="#none" class="btn-purple">장바구니</a></li>
                 <li><a href="#none"  class="btn-purple-line">바로결제</a></li>
             </ul>
         </div>

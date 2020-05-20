@@ -105,7 +105,7 @@
                     </div>
                 </div>
 
-                <div class="lec-btns">
+                <div class="lec-btns w100p">
                     <ul>
                         <li><a href="#none" @if($data['IsSalesAble'] != 'Y')onclick="javascript:alert('구매할 수 없는 상품입니다.');" @else name="btn_direct_pay" @endif data-direct-pay="Y" class="btn-purple-line">바로결제</a></li>
                     </ul>

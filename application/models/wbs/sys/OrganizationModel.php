@@ -28,16 +28,16 @@ class OrganizationModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                ORZ.*,
-                FLOOR(CHAR_LENGTH(ORZ.wOrgCode) / 2) AS Depth,
-                LEFT(ORZ.wOrgCode, CHAR_LENGTH(ORZ.wOrgCode)-2) AS ParentOrgCode
+                ORG.*,
+                FLOOR(CHAR_LENGTH(ORG.wOrgCode) / 2) AS Depth,
+                LEFT(ORG.wOrgCode, CHAR_LENGTH(ORG.wOrgCode)-2) AS ParentOrgCode
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = "
-            FROM {$this->_table['organization']} ORZ
+            FROM {$this->_table['organization']} ORG
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -56,13 +56,13 @@ class OrganizationModel extends WB_Model
     public function getNewOrgCode($parent_org_code)
     {
         $column = "
-            IFNULL(MAX(LPAD((ORZ.wOrgCode+1), CHAR_LENGTH(ORZ.wOrgCode), '0')), CONCAT('{$parent_org_code}', '01')) AS NewOrgCode,
-            IFNULL(MAX(ORZ.wOrderNum)+1, '1') AS NewOrderNum
+            IFNULL(MAX(LPAD((ORG.wOrgCode+1), CHAR_LENGTH(ORG.wOrgCode), '0')), CONCAT('{$parent_org_code}', '01')) AS NewOrgCode,
+            IFNULL(MAX(ORG.wOrderNum)+1, '1') AS NewOrderNum
         ";
         $from = "
-            FROM {$this->_table['organization']} ORZ
+            FROM {$this->_table['organization']} ORG
         ";
-        $arr_condition = ['RAW' => ["CHAR_LENGTH(ORZ.wOrgCode) " => " (CHAR_LENGTH('{$parent_org_code}') + 2)"], 'LKR' => ['ORZ.wOrgCode' => $parent_org_code]];
+        $arr_condition = ['RAW' => ["CHAR_LENGTH(ORG.wOrgCode) " => " (CHAR_LENGTH('{$parent_org_code}') + 2)"], 'LKR' => ['ORG.wOrgCode' => $parent_org_code]];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy()->getMakeOrderBy();

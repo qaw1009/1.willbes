@@ -25,7 +25,7 @@ class Organization extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $data = $this->organizationModel->listOrganization(false, [], null, null, ['ParentOrgCode' => 'ASC', 'ORZ.wOrderNum' => 'ASC']);
+        $data = $this->organizationModel->listOrganization(false, [], null, null, ['ParentOrgCode' => 'ASC', 'ORG.wOrderNum' => 'ASC']);
 
         // *** bootstrap-treeview에 맞는 JSON 생성 ***
         $itemsByReference = array();

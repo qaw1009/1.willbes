@@ -37,9 +37,9 @@
                 <div class="col-sm-7">
                     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
-                        <input type="hidden" id="orz_idx" name="orz_idx" value=""/>
-                        <input type="hidden" id="old_orz_code" name="old_orz_code" value=""/>
-                        <input type="hidden" id="old_orz_name" name="old_orz_name" value=""/>
+                        <input type="hidden" id="org_idx" name="org_idx" value=""/>
+                        <input type="hidden" id="old_org_code" name="old_org_code" value=""/>
+                        <input type="hidden" id="old_org_name" name="old_org_name" value=""/>
 
                         <div class="x_panel">
                             <div class="form-group">
@@ -51,9 +51,9 @@
                             <div class="x_content">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-1-1" for="orz_code">조직코드<span class="required">*</span></label>
+                                    <label class="control-label col-md-1-1" for="org_code">조직코드<span class="required">*</span></label>
                                     <div class="col-md-10 item">
-                                        <input type="text" id="orz_code" name="orz_code" required="required" class="form-control" maxlength="46" title="조직코드" value="" placeholder="">
+                                        <input type="text" id="org_code" name="org_code" required="required" class="form-control" maxlength="46" title="조직코드" value="" placeholder="">
                                         <div class="col-md-10 mt-5">
                                             • 뒤 2자리를 제외한 코드가 상위조직과 동일해야합니다.
                                         </div>
@@ -61,9 +61,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-1-1" for="orz_name">조직명<span class="required">*</span></label>
+                                    <label class="control-label col-md-1-1" for="org_name">조직명<span class="required">*</span></label>
                                     <div class="col-md-10 item">
-                                        <input type="text" id="orz_name" name="orz_name" required="required" class="form-control" maxlength="46" title="조직명" value="" placeholder="">
+                                        <input type="text" id="org_name" name="org_name" required="required" class="form-control" maxlength="46" title="조직명" value="" placeholder="">
                                     </div>
                                 </div>
 
@@ -75,9 +75,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-1-1" for="orz_desc">설명</label>
+                                    <label class="control-label col-md-1-1" for="org_desc">설명</label>
                                     <div class="col-md-10">
-                                        <textarea id="orz_desc" name="orz_desc" class="form-control" rows="7" title="설명" placeholder=""></textarea>
+                                        <textarea id="org_desc" name="org_desc" class="form-control" rows="7" title="설명" placeholder=""></textarea>
                                     </div>
                                 </div>
 
@@ -136,11 +136,11 @@
             // 하위조직 추가폼 버튼 이벤트
             $('#btn_regist').click(function() {
 
-                var orz_idx = $regi_form.find('input[name="orz_idx"]').val();
-                var old_orz_code = $regi_form.find('input[name="old_orz_code"]').val();
-                var old_orz_name = $regi_form.find('input[name="old_orz_name"]').val();
+                var org_idx = $regi_form.find('input[name="org_idx"]').val();
+                var old_org_code = $regi_form.find('input[name="old_org_code"]').val();
+                var old_org_name = $regi_form.find('input[name="old_org_name"]').val();
 
-                if(!orz_idx){
+                if(!org_idx){
                     alert('상위 조직을 선택 해주세요.'); return;
                 }
 
@@ -151,13 +151,13 @@
                 };
 
                 // 등록될 조직코드 조회
-                sendAjax('{{ site_url('/sys/organization/getNewOrzCode/') }}' + old_orz_code, data, function(ret) {
-                    $('.detail_title').html(old_orz_name + ' - 하위 조직 추가');
-                    $regi_form.find('input[name="orz_idx"]').val('');
-                    $regi_form.find('input[name="orz_code"]').val(ret.new_orz_code);
-                    $regi_form.find('input[name="orz_name"]').val('');
+                sendAjax('{{ site_url('/sys/organization/getNewOrgCode/') }}' + old_org_code, data, function(ret) {
+                    $('.detail_title').html(old_org_name + ' - 하위 조직 추가');
+                    $regi_form.find('input[name="org_idx"]').val('');
+                    $regi_form.find('input[name="org_code"]').val(ret.new_org_code);
+                    $regi_form.find('input[name="org_name"]').val('');
                     $regi_form.find('input[name="order_num"]').val(ret.new_order_num);
-                    $regi_form.find('textarea[name="orz_desc"]').val('');
+                    $regi_form.find('textarea[name="org_desc"]').val('');
                     $('#is_use_y').prop("checked", true).iCheck('update');
                     $('#is_use_n').prop("checked", false).iCheck('update');
                 });
@@ -188,15 +188,15 @@
                         data: ret.data,
                         multiSelect: false,
                         onNodeSelected: function(event, node) {
-                            $('.detail_title').html(node.wOrzName + ' 상세정보');
-                            $regi_form.find('input[name="orz_idx"]').val(node.wOrzIdx);
-                            $regi_form.find('input[name="orz_code"]').val(node.wOrzCode);
-                            $regi_form.find('input[name="orz_name"]').val(node.wOrzName);
+                            $('.detail_title').html(node.wOrgName + ' 상세정보');
+                            $regi_form.find('input[name="org_idx"]').val(node.wOrgIdx);
+                            $regi_form.find('input[name="org_code"]').val(node.wOrgCode);
+                            $regi_form.find('input[name="org_name"]').val(node.wOrgName);
                             $regi_form.find('input[name="order_num"]').val(node.wOrderNum);
-                            $regi_form.find('textarea[name="orz_desc"]').val(node.wOrzDesc);
+                            $regi_form.find('textarea[name="org_desc"]').val(node.wOrgDesc);
 
-                            $regi_form.find('input[name="old_orz_code"]').val(node.wOrzCode);
-                            $regi_form.find('input[name="old_orz_name"]').val(node.wOrzName);
+                            $regi_form.find('input[name="old_org_code"]').val(node.wOrgCode);
+                            $regi_form.find('input[name="old_org_name"]').val(node.wOrgName);
 
                             if(node.wIsUse == 'Y') {
                                 $('#is_use_y').prop("checked", true).iCheck('update');

@@ -243,10 +243,15 @@
             @endif
         </div>
 
-        <div id="tab02" class="comingsoon">
+        @if(time() < strtotime('202001301140'))
+            <div id="tab02" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
-        </div>
-
+            </div>
+        @else
+            <div id="tab02">
+                @include('willbes.pc.promotion.2001.1555_cts02')
+            </div>
+        @endif
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
         </div>

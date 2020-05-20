@@ -18,9 +18,10 @@ class ProfessorModel extends WB_Model
         'board' => 'lms_board'
     ];
     private $_refer_type = [
-        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url', 'yt_url'],
+        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url', 'yt_url1', 'yt_url2', 'yt_url3'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img']
     ];
+    private $_refer_opt_code = ['sample_url1_opt_code', 'sample_url2_opt_code', 'sample_url3_opt_code', 'yt_url1_opt_code', 'yt_url2_opt_code', 'yt_url3_opt_code'];
     private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3, '04' => 3];     // 배너타입별 이미지 갯수
     private $_ccd = ['LearnPattern' => '615', 'ProdType' => '636'];
     public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88', 'tcc' => '101', 'anonymous' => '111'];
@@ -284,7 +285,7 @@ class ProfessorModel extends WB_Model
             $_value = 'ReferValue';
         }
 
-        $data = $this->_conn->getListResult($this->_table['professor_reference'], 'ReferIdx, ReferType, ReferValue', [
+        $data = $this->_conn->getListResult($this->_table['professor_reference'], 'ReferIdx, ReferType, ReferValue, OptionCode', [
             'EQ' => ['ProfIdx' => $prof_idx, 'IsStatus' => 'Y'],
         ]);
 
@@ -293,6 +294,13 @@ class ProfessorModel extends WB_Model
 
             $results[$result_key][$row[$_key]] = $row[$_value];
             $key_type == 'idx' && $results{$result_key . '_value'}[$row[$_key]] = $row['ReferValue'];
+
+            // 옵션코드 추가
+            if ($key_type == 'idx') {
+                $results[$result_key . '_option'][$row[$_key]] = $row['OptionCode'];
+            } else {
+                $results[$result_key][$row[$_key] . '_opt_code'] = $row['OptionCode'];
+            }
         }
 
         return $results;
@@ -523,7 +531,8 @@ class ProfessorModel extends WB_Model
 
             // 교수 참조자료 등록
             $refer_input = elements($this->_refer_type['string'], $input);
-            $is_refer = $this->_replaceProfessorRefer($refer_input, [], $prof_idx);
+            $refer_opt_input = elements($this->_refer_opt_code, $input);
+            $is_refer = $this->_replaceProfessorRefer($refer_input, [], $prof_idx, $refer_opt_input);
             if ($is_refer !== true) {
                 throw new \Exception($is_refer);
             }
@@ -604,7 +613,8 @@ class ProfessorModel extends WB_Model
 
             // 교수 참조자료 등록/수정
             $refer_input = elements($this->_refer_type['string'], $input);
-            $is_refer = $this->_replaceProfessorRefer($refer_input, element('string', $refer_data, []), $prof_idx);
+            $refer_opt_input = elements($this->_refer_opt_code, $input);
+            $is_refer = $this->_replaceProfessorRefer($refer_input, element('string', $refer_data, []), $prof_idx, $refer_opt_input);
             if ($is_refer !== true) {
                 throw new \Exception($is_refer);
             }
@@ -657,10 +667,11 @@ class ProfessorModel extends WB_Model
      * 교수 참조자료 데이터 저장
      * @param array $input [폼 참조 데이터 배열]
      * @param array $arr_string_refer [등록된 이미지를 제외한 참조 데이터 배열, ReferIdx => ReferType]
-     * @param $prof_idx
+     * @param int $prof_idx [교수식별자]
+     * @param array $opt_input [옵션코드 폼 데이터 배열]
      * @return bool|string
      */
-    private function _replaceProfessorRefer($input, $arr_string_refer, $prof_idx)
+    private function _replaceProfessorRefer($input, $arr_string_refer, $prof_idx, $opt_input = [])
     {
         try {
             $admin_idx = $this->session->userdata('admin_idx');
@@ -670,6 +681,7 @@ class ProfessorModel extends WB_Model
                 if (in_array($key, $arr_string_refer) === true) {
                     $data = [
                         'ReferValue' => $value,
+                        'OptionCode' => element($key . '_opt_code', $opt_input),
                         'UpdAdminIdx' => $admin_idx
                     ];
 
@@ -685,6 +697,7 @@ class ProfessorModel extends WB_Model
                             'ProfIdx' => $prof_idx,
                             'ReferType' => $key,
                             'ReferValue' => $value,
+                            'OptionCode' => element($key . '_opt_code', $opt_input),
                             'RegAdminIdx' => $admin_idx,
                             'RegIp' => $reg_ip
                         ];

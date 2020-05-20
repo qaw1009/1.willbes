@@ -201,6 +201,72 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     }
 
     /**
+     * 수강후기 (상품의 사이트코드 기준)
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $cate_code
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listBoardForProfStudy($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $def_column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['twoway_board_2']}
+            inner join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+            INNER JOIN lms_product AS p ON b.ProdCode = p.ProdCode AND p.IsStatus = 'Y'
+        ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join lms_product_r_category as prc
+                    ON p.ProdCode = prc.ProdCode AND prc.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on prc.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+            $arr_condition['EQ']['prc.CateCode'] = $cate_code;
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
+
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 사이트 그룹에 속한 게시글 조회
      * @param $site_code
      * @param $board_idx

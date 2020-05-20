@@ -1,8 +1,8 @@
 <ul class="skyBanner">
     <li><a href="#event">합격예측 참여하고, <Br />푸짐한 혜택 받자!</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
-    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank">라이브 토크쇼</a></li>
-    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank">적중이벤트</a></li>
+    <li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">라이브 토크쇼</a></li>
+    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank">적중이벤트</a></li>
     <li><a href="#evtContainer">top</a></li>
 </ul>
 
@@ -26,7 +26,7 @@
 
 <div class="m_sectin1_box">
     <div class="title">
-        <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_tit.png" alt="2018 경찰 3차 시험 합격예측 풀서비스">
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_tit.png" alt="2020 경찰 1차 시험 합격예측 풀서비스">
     </div>
 
     <div class="tmap">
@@ -63,12 +63,12 @@
 
     <div class="talkShow">
         <a href="https://police.willbes.net/promotion/index/cate/3002/code/1362" target="_blank" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_bn4.png" alt="적중 이벤트">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_bn4.png" alt="적중 이벤트">
         </a>
     </div>
 
     <div class="wNotice">
-        <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_text.png" alt="최종 합격 솔루션">
+        <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_text.png" alt="최종 합격 솔루션">
         <div>
             <h3>
                 <a href="javascript:go_popup()">
@@ -106,14 +106,13 @@
             <a href="javascript:tabMove(1);" id="mt1"> 메인</a>
         </li>
         <li>
-            <a href="javascript:tabMove(2);"  id="mt2"> 성적채점 및 확인 </a></li>
-        <li>
-            <a href="javascript:tabMove(3);" id="mt3"> 합격예측 </a>
-            {{--<a href="#none"> 합격예측 </a>--}}
+            <a href="javascript:tabMove(2);" id="mt2"> 성적채점 및 확인</a>
         </li>
         <li>
-            <a href="javascript:tabMove(4);"  id="mt4"> 기출문제및해설 </a>
-            {{--<a href="#none">기출문제해설</a>--}}
+            <a href="javascript:tabMove(3);" id="mt3"> 합격예측</a>
+        </li>
+        <li>
+            <a href="javascript:tabMove(4);" id="mt4"> 기출문제및해설</a>
         </li>
     </ul>
 </div>
@@ -298,20 +297,19 @@
 
     /*시험 난이도 설문조사 */
     function pullOpen(){
-        /*var url = "1210_popup";*/
-        var url = "1344_popup";
+        var url = "1629_popup";
         window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
     }
 
     function tabMove(num) {
         if(num == 1){
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1344') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1629') }}";
         } else if(num == 2) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1352') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1630') }}";
         } else if(num == 3) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1353') }}" ;
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1631') }}" ;
         } else {
             var url = "{{ site_url('/promotion/index/cate/3001/code/1354') }}";
         }

@@ -29,8 +29,8 @@ class OrganizationModel extends WB_Model
         } else {
             $column = '
                 ORZ.*,
-                FLOOR(CHAR_LENGTH(ORZ.wOrzCode) / 2) AS Depth,
-                LEFT(ORZ.wOrzCode, CHAR_LENGTH(ORZ.wOrzCode)-2) AS ParentOrzCode
+                FLOOR(CHAR_LENGTH(ORZ.wOrgCode) / 2) AS Depth,
+                LEFT(ORZ.wOrgCode, CHAR_LENGTH(ORZ.wOrgCode)-2) AS ParentOrgCode
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -50,19 +50,19 @@ class OrganizationModel extends WB_Model
 
     /**
      * 다음 조직 정렬순서값 조회
-     * @param $parent_orz_code
+     * @param $parent_org_code
      * @return int
      */
-    public function getNewOrzCode($parent_orz_code)
+    public function getNewOrgCode($parent_org_code)
     {
         $column = "
-            IFNULL(MAX(LPAD((ORZ.wOrzCode+1), CHAR_LENGTH(ORZ.wOrzCode), '0')), CONCAT('{$parent_orz_code}', '01')) AS NewOrzCode,
+            IFNULL(MAX(LPAD((ORZ.wOrgCode+1), CHAR_LENGTH(ORZ.wOrgCode), '0')), CONCAT('{$parent_org_code}', '01')) AS NewOrgCode,
             IFNULL(MAX(ORZ.wOrderNum)+1, '1') AS NewOrderNum
         ";
         $from = "
             FROM {$this->_table['organization']} ORZ
         ";
-        $arr_condition = ['RAW' => ["CHAR_LENGTH(ORZ.wOrzCode) " => " (CHAR_LENGTH('{$parent_orz_code}') + 2)"], 'LKR' => ['ORZ.wOrzCode' => $parent_orz_code]];
+        $arr_condition = ['RAW' => ["CHAR_LENGTH(ORZ.wOrgCode) " => " (CHAR_LENGTH('{$parent_org_code}') + 2)"], 'LKR' => ['ORZ.wOrgCode' => $parent_org_code]];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy()->getMakeOrderBy();
@@ -83,9 +83,9 @@ class OrganizationModel extends WB_Model
         try {
             $admin_idx = $this->session->userdata('admin_idx');
             $data = [
-                'wOrzCode' => element('orz_code', $input),
-                'wOrzName' => element('orz_name', $input),
-                'wOrzDesc' => element('orz_desc', $input),
+                'wOrgCode' => element('org_code', $input),
+                'wOrgName' => element('org_name', $input),
+                'wOrgDesc' => element('org_desc', $input),
                 'wOrderNum' => element('order_num', $input),
                 'wIsUse' => element('is_use', $input),
                 'wRegAdminIdx' => $admin_idx
@@ -113,19 +113,19 @@ class OrganizationModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            $orz_idx = element('orz_idx', $input);
+            $org_idx = element('org_idx', $input);
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
-                'wOrzCode' => element('orz_code', $input),
-                'wOrzName' => element('orz_name', $input),
-                'wOrzDesc' => element('orz_desc', $input),
+                'wOrgCode' => element('org_code', $input),
+                'wOrgName' => element('org_name', $input),
+                'wOrgDesc' => element('org_desc', $input),
                 'wOrderNum' => element('order_num', $input),
                 'wIsUse' => element('is_use', $input),
                 'wUpdAdminIdx' => $admin_idx
             ];
 
-            $this->_conn->set($data)->where('wOrzIdx', $orz_idx);
+            $this->_conn->set($data)->where('wOrgIdx', $org_idx);
             if ($this->_conn->update($this->_table['organization']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }

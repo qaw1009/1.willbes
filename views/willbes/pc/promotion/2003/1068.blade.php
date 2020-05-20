@@ -574,8 +574,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
-					<td>2019 장사원 생물학개론 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146810">수강신청</a></td>
+					<td>2020 장사원 생물학 이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>생물학개론</td>

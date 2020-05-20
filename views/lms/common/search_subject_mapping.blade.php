@@ -148,6 +148,9 @@
                 $parent_regi_form.find('input[name="subject_mapping_code[]"]').remove();
                 $parent_selected_subject_mapping.html(html);
 
+                // change 이벤트 발생
+                $parent_selected_subject_mapping.trigger('change');
+
                 $("#pop_modal").modal('toggle');
             });
 

@@ -7,11 +7,10 @@
     min-width:1120px !important;
     margin-top:20px !important;
     padding:0 !important;
-    background:#27211d url(https://static.willbes.net/public/images/promotion/2019/08/1344_top_bg.jpg) no-repeat center top;
+    background:#27211d url(https://static.willbes.net/public/images/promotion/2020/05/1629_top_bg.jpg) no-repeat center top;
     font-size:14px;
 }
 .evtContent * {font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
-.evtContent span {vertical-align: middle}
 .evtCtnsBox {width:100%; min-width:1120px; background:#fff; padding:50px 0}
 
 
@@ -122,7 +121,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .ddayBefore {width:980px; margin:0 auto; padding:50px 0}
 .ddayBefore h1 {margin-bottom:2em; text-align: center; font-size:30px}
 .ddayBefore h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
-.ddayBefore h2 span {color:#1087ef !important;}
+.ddayBefore h2 span {color:#1087ef !important; vertical-align: top;}
 .ddayBefore .boardTypeB {margin-bottom:2em}
 .ddayBefore .boardTypeB th,
 .ddayBefore .boardTypeB td {padding:10px; line-height: 1.5}

@@ -201,7 +201,7 @@
                         }},
 
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-read-lecture" data-idx="' + row.ProdCode + '"><u>' + data + '</u></a>';
+                            return '['+row.ProdCateName+']<br>'+'<a href="javascript:void(0);" class="btn-read-lecture" data-idx="' + row.ProdCode + '">'+'<u>' + data + '</u></a>';
                         }},
                     {'data' : 'LecScore', 'render' : function(data, type, row, meta) {
                             return '<ul class="star-rating" id="starRating' + row.BoardIdx + '" data-stars="5" data-current="'+data+'" data-static="true"></ul>';

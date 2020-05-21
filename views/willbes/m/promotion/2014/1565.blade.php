@@ -140,10 +140,6 @@
 
     }
     </style>
-<div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162747" checked/>
-    <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-</div>
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
@@ -558,12 +554,11 @@
             [온라인강의] 신청하기 >
         </a>
     </div>
-    {{--
-    <div class="infoCheck">
-        <input type="checkbox" id="info"><label for="info">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+    <div id="pass" class="infoCheck">
+        <input type="checkbox" name="y_pkg" value="162747" style="display: none;" checked/>
+        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
         <a href="#infoText">이용안내 확인하기 ↓</a>
     </div>
-    --}}
 </div>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
@@ -621,6 +616,7 @@
             if ($is_chk.length > 0) {
                 if ($is_chk.is(':checked') === false) {
                     alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
                     return;
                 }
             }

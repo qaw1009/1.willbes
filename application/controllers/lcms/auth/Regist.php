@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', '_wbs/sys/admin');
+    protected $models = array('_wbs/sys/code', '_wbs/sys/admin', '_wbs/sys/organization');
     protected $helpers = array();
 
     public function __construct()
@@ -65,6 +65,9 @@ class Regist extends \app\controllers\BaseController
         if (empty($data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }
+
+        // 조직 연결 정보 조회
+        $data['org_data'] = $this->organizationModel->listAdminRelationOrganization(false, ['EQ' => ['ARO.wAdminIdx' => $this->session->userdata('admin_idx'), 'ARO.wIsStatus' => 'Y']], null, null, null);
 
         $data['wAdminMailId'] = substr($data['wAdminMail'], 0, strpos($data['wAdminMail'], '@'));
         $data['wAdminMailDomain'] = substr($data['wAdminMail'], strpos($data['wAdminMail'], '@') + 1);

@@ -33,6 +33,8 @@ class AdminAuthHook
         '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
+        '/lcms/common/searchOrganization/index',
+        '/lcms/common/searchOrganization/listAjax',
         //'/lcms/logs/viewer/',     // 관리자관리 > 시스템관리 > 로그뷰어 메뉴 추가
         '/sys/adminSettings/',
         '/pay/order/listAjax',

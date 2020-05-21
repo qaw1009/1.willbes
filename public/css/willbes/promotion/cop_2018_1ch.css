@@ -323,9 +323,9 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .sectionEvt01 {background:#282828; text-align:center; margin-top:100px}
 .sectionEvt01_1 {background:#fff; text-align:center}
 .sectionEvt02 {background:#f4f1ec; text-align:center; position: relative; margin-top:100px}
-.sectionEvt02 a {position: absolute; width: 427px; top:1230px; left:50%; margin-left:-213px; z-index: 1;}
+.sectionEvt02 a {position: absolute; width: 427px; bottom:120px; left:50%; margin-left:-213px; z-index: 1;}
 .sectionEvt03 {background:#fff; text-align:center; position: relative;}
-.sectionEvt03 a {position: absolute; width: 427px; top:1230px; left:50%; margin-left:-213px; z-index: 1;}
+.sectionEvt03 a {position: absolute; width: 427px; bottom:100px; left:50%; margin-left:-213px; z-index: 1;}
 
 /*성적채점 및 확인*/
 
@@ -487,10 +487,11 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeD .lineNo {border-right:none !important}
 .boardTypeD tfoot td {background:#dae9f7; font-weight:bold; color:#000}
 
-.boardTypeD td .graph li {display:inline; float:left; width:25%; font-size:11px; text-align:center}
+.boardTypeD td .graph li {display:inline; float:left; width:25%; font-size:10px; text-align:center}
 .boardTypeD td .graph strong {font-weight:normal !important}
 .boardTypeD td .graph div {height:200px; background:#f4f4f4; width:15px; margin:5px auto; position:relative}
-.boardTypeD td .graph div span {display:block; background:#1087ef; position:absolute; bottom:0; width:100%}
+.boardTypeD td .graph div span {display:block; background:#1087ef; position:absolute; bottom:0; width:100%;}
+.boardTypeD td .graph span {font-size:11px;}
 .boardTypeD td .graph2 div span {background:#2faed8}
 .boardTypeD td .graph3 div span {background:#10efe2}
 .boardTypeD td .graph4 div span {background:#10efad}

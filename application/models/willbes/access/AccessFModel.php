@@ -190,15 +190,15 @@ class AccessFModel extends WB_Model
     {
         $this->load->library('user_agent');
 
-        if ($this->agent->is_browser()) {
-            $agent_type = 'P';
-            $agent_short = $this->agent->browser().' '.$this->agent->version();
-        } elseif ($this->agent->is_robot()) {
+        if ($this->agent->is_robot()) {
             $agent_type = 'R';
             $agent_short = $this->agent->robot();
         } elseif ($this->agent->is_mobile()) {
             $agent_type = 'M';
             $agent_short = $this->agent->mobile();
+        } elseif ($this->agent->is_browser()) {
+            $agent_type = 'P';
+            $agent_short = $this->agent->browser().' '.$this->agent->version();
         } else {
             $agent_type = 'E';
             $agent_short = 'Unidentified User Agent';

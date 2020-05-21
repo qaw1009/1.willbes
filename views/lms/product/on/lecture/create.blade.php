@@ -864,7 +864,7 @@
                                     <td>{{$row['ApplyTypeCcdName']}}</td>
                                     <td>{{$row['AutoCouponIdx']}}</td>
                                     <td style='text-align:left'>{{$row['CouponName']}}</td>
-                                    <td>{{number_format($row['AutoCouponIdx']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
+                                    <td>{{number_format($row['DiscRate']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
                                     <td>{{$row['ValidDay']}}</td>
                                     <td>{{$row['IssueValid']}}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('couponTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
@@ -1031,8 +1031,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 @if($method === 'PUT')
                     <div class="form-group">
                         <label class="control-label col-md-2">등록자
@@ -1059,15 +1057,12 @@
                         </div>
                     </div>
                 @endif
-
                 <div class="ln_solid"></div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
             </form>
-
-
         </div>
     </div>
     <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">

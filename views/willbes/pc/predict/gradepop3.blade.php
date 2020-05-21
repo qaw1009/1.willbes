@@ -30,7 +30,7 @@
                             <tr>
                                 <th>{{$val['CcdName']}}</th>
                                 <td>
-                                    <input type="number" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
+                                    <input type="number" name="Score[]" maxlength="3" data-max-num="100" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                 </td>
                             </tr>
@@ -52,6 +52,15 @@
         var $all_regi_form = $('#all_regi_form');
 
         function maxLengthCheck(object){
+            if($(object).prop('type') == 'number') {
+                object.value = object.value.replace(/[^0-9.]/g, "");
+                if($(object).data('max-num') != undefined) {
+                    if( Number(object.value) > Number($(object).data('max-num')) ) {
+                        object.value = object.value.slice(0, -1);
+                    }
+                }
+            }
+
             if (object.value.length > object.maxLength){
                 object.value = object.value.slice(0, object.maxLength);
             }
@@ -94,7 +103,9 @@
                     }
                 }, showValidateError, null, false, 'alert');
             }*/
-            window.close();
+            if (confirm('채점취소시 입력된 답안은 저장되지 않습니다. \n채점취소 하시겠습니까?')) {
+                window.close();
+            }
         }
     </script>
 

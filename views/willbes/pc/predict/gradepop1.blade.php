@@ -137,7 +137,9 @@
                     }
                 }, showValidateError, null, false, 'alert');
             }*/
-            window.close();
+            if (confirm('채점취소시 입력된 답안은 저장되지 않습니다. \n채점취소 하시겠습니까?')) {
+                window.close();
+            }
         }
 
         //시험제출

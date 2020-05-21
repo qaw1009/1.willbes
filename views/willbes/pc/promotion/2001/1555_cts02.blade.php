@@ -9,7 +9,7 @@
             <map name="Map1555cts0201">
                 <area shape="rect" coords="288,1285,833,1375" href="#none" onClick='alert("COMING SOON!!")' alt="합격예측 풀서비스 참여하기">
                 {{--
-                <area shape="rect" coords="288,1285,833,1375" href="https://police..willbes.net/promotion/index/cate/3001/code/1629" target="_blank" alt="합격예측 풀서비스 참여하기">
+                <area shape="rect" coords="288,1285,833,1375" href="{{ site_url('/promotion/index/cate/3001/code/1629') }}" target="_blank" alt="합격예측 풀서비스 참여하기">
                 --}}
             </map>
         </div>

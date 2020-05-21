@@ -54,13 +54,6 @@
 
     <script>
         var $all_regi_form = $('#all_regi_form');
-
-        function maxLengthCheck(object){
-            if (object.value.length > object.maxLength){
-                object.value = object.value.slice(0, object.maxLength);
-            }
-        }
-
         function lastSave(){
             var vali_msg = '';
             var chk = /^[1-4]+$/i;
@@ -100,7 +93,19 @@
                     }
                 }, showValidateError, null, false, 'alert');
             }*/
-            window.close();
+            if (confirm('채점취소시 입력된 답안은 저장되지 않습니다. \n채점취소 하시겠습니까?')) {
+                window.close();
+            }
+        }
+
+        function maxLengthCheck(object) {
+            if($(object).prop('type') == 'number') {
+                object.value = object.value.replace(/[^0-9.]/g, "");
+            }
+
+            if (object.value.length > object.maxLength) {
+                object.value = object.value.slice(0, object.maxLength);
+            }
         }
     </script>
 

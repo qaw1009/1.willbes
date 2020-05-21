@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class OrganizationModel extends WB_Model
 {
     private $_table = [
-        'organization' => 'wbs_sys_organization'
+        'organization' => 'wbs_sys_organization',
+        'admin_r_organization' => 'wbs_sys_admin_r_organization'
     ];
 
     public function __construct()
@@ -27,19 +28,29 @@ class OrganizationModel extends WB_Model
             $column = 'COUNT(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
+            // TODO: 트리 루트명 가져오기 Depth4까지 고정. 추후 더 좋은 방법 있으면 개선 필요.
+            $column = "
                 ORG.*,
                 FLOOR(CHAR_LENGTH(ORG.wOrgCode) / 2) AS Depth,
-                LEFT(ORG.wOrgCode, CHAR_LENGTH(ORG.wOrgCode)-2) AS ParentOrgCode
-            ';
+                LEFT(ORG.wOrgCode, CHAR_LENGTH(ORG.wOrgCode)-2) AS ParentOrgCode,
+                CONCAT(
+                    IF(DEP4.wOrgCode IS NULL, '', CONCAT(DEP4.wOrgName, ' > ')),
+                    IF(DEP3.wOrgCode IS NULL, '', CONCAT(DEP3.wOrgName, ' > ')),
+                    IF(DEP2.wOrgCode IS NULL, '', CONCAT(DEP2.wOrgName, ' > ')),
+                    IF(DEP1.wOrgCode IS NULL, '', CONCAT(DEP1.wOrgName, ' > ')),
+                    ORG.wOrgName
+                ) AS OrgRouteName                
+            ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-
         $from = "
             FROM {$this->_table['organization']} ORG
+            LEFT OUTER JOIN {$this->_table['organization']} DEP1 ON LEFT(ORG.wOrgCode, CHAR_LENGTH(ORG.wOrgCode)-2) = DEP1.wOrgCode AND DEP1.wIsUse = 'Y' AND DEP1.wIsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['organization']} DEP2 ON LEFT(DEP1.wOrgCode, CHAR_LENGTH(DEP1.wOrgCode)-2) = DEP2.wOrgCode AND DEP2.wIsUse = 'Y' AND DEP2.wIsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['organization']} DEP3 ON LEFT(DEP2.wOrgCode, CHAR_LENGTH(DEP2.wOrgCode)-2) = DEP3.wOrgCode AND DEP3.wIsUse = 'Y' AND DEP3.wIsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['organization']} DEP4 ON LEFT(DEP3.wOrgCode, CHAR_LENGTH(DEP3.wOrgCode)-2) = DEP4.wOrgCode AND DEP4.wIsUse = 'Y' AND DEP4.wIsStatus = 'Y'
         ";
-
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -135,5 +146,96 @@ class OrganizationModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 조직 관리자 연결 등록
+     * @param array $input
+     * @return array|bool
+     */
+    public function addAdminRelationOrganization($input = [])
+    {
+        try {
+            $data = [
+                'wAdminIdx' => element('wAdminIdx', $input),
+                'wOrgCode' => element('wOrgCode', $input),
+                'wIsStatus' => 'Y'
+            ];
+
+            // 조직 관리자 연결 등록
+            if ($this->_conn->set($data)->insert($this->_table['admin_r_organization']) === false) {
+                throw new \Exception('데이터 저장에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 조직 관리자 연결 삭제
+     * @param array $input
+     * @return array|bool
+     */
+    public function removeAdminRelationOrganization($input = [])
+    {
+        try {
+            $where = [];
+            if(empty(element('wArgIdx', $input)) === false) {
+                $where = array_merge($where, ['wArgIdx' => element('wArgIdx', $input)]);
+            }
+            if(empty(element('wAdminIdx', $input)) === false) {
+                $where = array_merge($where, ['wAdminIdx' => element('wAdminIdx', $input)]);
+            }
+            if(empty($where) === true) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            // 조직 관리자 연결 삭제
+            if ($this->_conn->set('wIsStatus', 'N')->where($where)->update($this->_table['admin_r_organization']) === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 조직 관리자 연결 리스트 조회
+     * @param null $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array
+     */
+    public function listAdminRelationOrganization($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                ORG.*,
+                FLOOR(CHAR_LENGTH(ORG.wOrgCode) / 2) AS Depth,
+                LEFT(ORG.wOrgCode, CHAR_LENGTH(ORG.wOrgCode)-2) AS ParentOrgCode
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+        
+            FROM {$this->_table['admin_r_organization']} ARO
+            LEFT OUTER JOIN {$this->_table['organization']} ORG ON ARO.wOrgCode = ORG.wOrgCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

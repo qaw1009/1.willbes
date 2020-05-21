@@ -55,8 +55,7 @@
             - <input type="number" id="admin_phone3" name="admin_phone3" required="required" class="form-control" maxlength="4" title="휴대폰번호3" value="{{ $data['wAdminPhone3'] }}" style="width: 90px">
             <input type="hidden" id="admin_phone" name="admin_phone" required="required" pattern="mobile" title="휴대폰번호" value="{{ $data['wAdminPhone1'] }}-{{ $data['wAdminPhone2'] }}-{{ $data['wAdminPhone3'] }}"/>
         </div>
-        <label class="control-label col-md-2" for="admin_dept_ccd">소속/직급</span>
-        </label>
+        <label class="control-label col-md-2" for="admin_dept_ccd">소속/직급</label>
         <div class="col-md-4 item form-inline">
             <select name="admin_dept_ccd" id="admin_dept_ccd" class="form-control" title="소속">
                 <option value="">선택</option>
@@ -70,6 +69,22 @@
                     <option value="{{ $key }}">{{ $val }}</option>
                 @endforeach
             </select>
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2">조직</label>
+        <div class="col-md-9 item form-control-static">
+            <span id="selected_organization" class="pl-10">
+                @if(isset($data['org_data']) === true)
+                    @foreach($data['org_data'] as $key => $val)
+                        <span class="pr-10">{{ $val['wOrgName'] }}
+                            <a href="#none" data-cate-code="{{ $val['wOrgCode'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
+                            <input type="hidden" name="org_code[]" value="{{ $val['wOrgCode'] }}"/>
+                        </span>
+                    @endforeach
+                @endif
+            </span>
+            <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -128,6 +143,20 @@
                 }
                 return true;
             }
+
+            // 조직 검색
+            $('#btn_search_organization').on('click', function() {
+                $('#btn_search_organization').setLayer({
+                    'modal_id' : 'modal_search_organization',
+                    'url' : '{{ site_url('/lcms/common/searchOrganization/index/') }}',
+                    'width' : 900
+                });
+            });
+
+            // 조직 삭제 이벤트
+            $regi_form.on('click', '.selected-organization-delete', function() {
+                $(this).parent().remove();
+            });
         });
     </script>
 @stop

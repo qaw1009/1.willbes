@@ -90,6 +90,7 @@ class AccessFModel extends WB_Model
             $access_device = strtoupper(substr(APP_DEVICE, 0, 1));
             $site_code = config_app('SiteCode');
             $reg_ip = $this->input->ip_address();
+            $today = date('Ymd');
 
             // 세션아이디가 없을 경우 방문자 정보 저장 안함
             if (empty($sess_sess_id) === true) {
@@ -116,6 +117,7 @@ class AccessFModel extends WB_Model
                 // 방문자 정보 등록
                 $data = [
                     'SessId' => $sess_sess_id,
+                    'VisitDate' => $today,
                     'SiteCode' => $site_code,
                     'MemIdx' => $sess_mem_idx,
                     'AccessTms' => $access_timestamp,
@@ -141,7 +143,7 @@ class AccessFModel extends WB_Model
                 $query = /** @lang text */ 'insert into ' . $this->_table['visitor_sum'] . ' (VisitDate, SiteCode, VisitCnt) values 
                 (?, ?, 1) ON DUPLICATE KEY UPDATE VisitCnt = VisitCnt + 1';
 
-                $is_replace = $this->_conn->query($query, [date('Ymd'), $site_code]);
+                $is_replace = $this->_conn->query($query, [$today, $site_code]);
                 if ($is_replace === false) {
                     throw new \Exception('방문자 합계 저장에 실패했습니다.');
                 }
@@ -190,15 +192,15 @@ class AccessFModel extends WB_Model
     {
         $this->load->library('user_agent');
 
-        if ($this->agent->is_browser()) {
-            $agent_type = 'P';
-            $agent_short = $this->agent->browser().' '.$this->agent->version();
-        } elseif ($this->agent->is_robot()) {
+        if ($this->agent->is_robot()) {
             $agent_type = 'R';
             $agent_short = $this->agent->robot();
         } elseif ($this->agent->is_mobile()) {
             $agent_type = 'M';
             $agent_short = $this->agent->mobile();
+        } elseif ($this->agent->is_browser()) {
+            $agent_type = 'P';
+            $agent_short = $this->agent->browser().' '.$this->agent->version();
         } else {
             $agent_type = 'E';
             $agent_short = 'Unidentified User Agent';

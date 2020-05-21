@@ -107,8 +107,12 @@
 
     });
 
-    function maxLengthCheck(object){
-        if (object.value.length > object.maxLength){
+    function maxLengthCheck(object) {
+        if($(object).prop('type') == 'number') {
+            object.value = object.value.replace(/[^0-9.]/g, "");
+        }
+
+        if (object.value.length > object.maxLength) {
             object.value = object.value.slice(0, object.maxLength);
         }
     }
@@ -155,7 +159,7 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1332') }}');
+                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1555') }}');
                 }
             }, showValidateError, null, false, 'alert');
         }

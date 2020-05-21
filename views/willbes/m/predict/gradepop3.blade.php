@@ -58,7 +58,7 @@
                             <li>
                                 <div>
                                     <label>{{ $val['CcdName'] }}</label>
-                                    <input type="number" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
+                                    <input type="number" name="Score[]" maxlength="3" data-max-num="100" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                     <span>점</span>
                                 </div>
@@ -103,8 +103,17 @@
             @endif--}}
         });
 
-        function maxLengthCheck(object){
-            if (object.value.length > object.maxLength){
+        function maxLengthCheck(object) {
+            if($(object).prop('type') == 'number') {
+                object.value = object.value.replace(/[^0-9.]/g, "");
+                if($(object).data('max-num') != undefined) {
+                    if( Number(object.value) > Number($(object).data('max-num')) ) {
+                        object.value = object.value.slice(0, -1);
+                    }
+                }
+            }
+
+            if (object.value.length > object.maxLength) {
                 object.value = object.value.slice(0, object.maxLength);
             }
         }
@@ -151,7 +160,7 @@
                 ajaxSubmit($all_regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
                         alert(ret.ret_msg);
-                        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1332') }}');
+                        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1555') }}');
                     }
                 }, showValidateError, null, false, 'alert');
             }

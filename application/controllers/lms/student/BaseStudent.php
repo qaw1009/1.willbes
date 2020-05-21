@@ -135,6 +135,17 @@ class BaseStudent extends \app\controllers\BaseController
                 ],
             ]);
 
+        } elseif($this->LearnPattern == 'offlecture') {
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'LKB' => [
+                        'A.ProdCode' => $this->_reqP('search_value'),
+                        'A.ProdName' => $this->_reqP('search_value'),
+                        'E.wProfName_String' => $this->_reqP('search_value')
+                    ]
+                ],
+            ]);
+
         } else {
             $arr_condition = array_merge($arr_condition,[
                 'ORG1' => [

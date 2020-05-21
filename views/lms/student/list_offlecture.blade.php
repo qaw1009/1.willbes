@@ -113,10 +113,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">강좌검색</label>
+                    <label class="control-label col-md-1" for="search_value">강좌/교수검색</label>
                     <div class="col-md-3 form-inline">
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
-                            <option value="lec">단강좌</option>
+                            <option value="lec">강좌(교수명)</option>
                             <option value="wlec">마스터강의</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">

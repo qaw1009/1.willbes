@@ -4153,6 +4153,7 @@ table.classTable tr td img {
 .LeclistTable {
     clear: both;
 }
+.LeclistTable .listTable {background:#fff;}
 .LeclistTable .listTable tr.finish {
     background: #f1f8fe;
 }

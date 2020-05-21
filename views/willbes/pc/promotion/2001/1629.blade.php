@@ -128,7 +128,7 @@
 
                     <div class="sectionEvt03">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_evt03.jpg" alt="적중문제 소내내기 이벤트" />
-                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_evt03_btn.png" alt="적중문제 소내내기 이벤트 참여하기" />
                         </a>
                     </div>

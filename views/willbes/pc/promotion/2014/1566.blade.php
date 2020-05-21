@@ -250,12 +250,11 @@
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
-                {{--
-                <div class="infoCheck">
-                    <input type="checkbox" id="info"><label for="info">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <div id="pass" class="infoCheck">
+                    <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>
+                    <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="#infoText">이용안내 확인하기 ↓</a>
                 </div>
-                --}}
             </div>
         </div>
 
@@ -350,11 +349,6 @@
                         </div>
                     </div>
                 @endif
-            </div>
-            {{-- 상품바로결제 정보 --}}
-            <div id="pass" style="display: none">
-                <input type="checkbox" name="y_pkg" value="162745" checked/>
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
             </div>
 
             <div class="evtCtnsBox evt05">

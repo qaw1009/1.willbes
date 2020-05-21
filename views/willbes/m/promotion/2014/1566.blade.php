@@ -140,12 +140,7 @@
 
     }
 </style>
-<div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162745" checked/>
-    <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-</div>
-
-<div id="Container" class="Container NSK c_both">            
+<div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox evtTop">
         <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_top.jpg" alt="창업 다마고치" ></div>             
         <div class="evtTop02">
@@ -383,11 +378,6 @@
                 </div>            
             </div>                
         </div>
-        {{-- 상품바로결제 정보 --}}
-        <div id="pass" style="display: none">
-            <input type="checkbox" name="y_pkg" value="162745" checked/>
-            <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-        </div>
 
         <div class="evtCtnsBox evt07">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_05.png" alt="BEST 수강후기" >
@@ -452,12 +442,11 @@
             [온라인강의] 신청하기 >
         </a>
     </div>
-    {{--
-    <div class="infoCheck">
-        <input type="checkbox" id="info"><label for="info">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+    <div id="pass" class="infoCheck">
+        <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>
+        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
         <a href="#infoText">이용안내 확인하기 ↓</a>
     </div>
-    --}}
 </div>
 
 
@@ -516,6 +505,7 @@
             if ($is_chk.length > 0) {
                 if ($is_chk.is(':checked') === false) {
                     alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
                     return;
                 }
             }

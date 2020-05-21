@@ -147,6 +147,12 @@
                  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
              }
          }
+        .infoCheck {margin-top:30px; font-size:14px}
+        .infoCheck label {margin-right:30px; cursor: pointer;}
+        .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
+        .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
+        .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
+        .infoCheck a:hover {background:#0099ff;}
 
         .evt02 {background:#f6f6f6; padding-top:100px}
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
@@ -243,6 +249,12 @@
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1565_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
             </div>
+            {{--
+            <div class="infoCheck">
+                <input type="checkbox" id="info"><label for="info">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <a href="#infoText">이용안내 확인하기 ↓</a>
+            </div>
+            --}}
         </div>
 
         <div id="tab02">
@@ -358,7 +370,7 @@
             </div>	
         </div>
 
-        <div class="evtFooter">
+        <div class="evtFooter" id="infoText">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
             <p># 런칭기념  이벤트 안내</p>

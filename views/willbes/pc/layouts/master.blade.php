@@ -21,5 +21,10 @@
 
     <!-- post content -->
     @yield('post_content')
+
+    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+        {{-- 방문자 트래킹 (테스트) --}}
+        <script src="/public/js/willbes/tracking.js?ver={{time()}}"></script>
+    @endif
 </body>
 </html>

@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         if ($is_chk.length > 0) {
             if ($is_chk.is(':checked') === false) {
                 alert('이용안내에 동의하셔야 합니다.');
+                $is_chk.focus();
                 return;
             }
         }

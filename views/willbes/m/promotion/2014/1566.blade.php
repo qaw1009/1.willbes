@@ -99,16 +99,23 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
-        background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2);left:0; z-index:10
+        background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2);left:0; z-index:10;
+        text-align:center;
     }
 
-    .btnbuy {width:100%; position:fixed; bottom:5px;}
-    .btnbuy a {display:block; width:95%; max-width:940px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
+    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
+    .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#00c73c;
+    .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
+    .infoCheck {width:100%; max-width:720px; margin:10px auto; font-size:12px;}
+    .infoCheck label {margin-right:30px; cursor: pointer; }
+    .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
+    .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
+    .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
+    .infoCheck a:hover {background:#0099ff;}
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -133,12 +140,7 @@
 
     }
 </style>
-<div id="pass" style="display: none">
-    <input type="checkbox" name="y_pkg" value="162745" checked/>
-    <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-</div>
-
-<div id="Container" class="Container NSK c_both">            
+<div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox evtTop">
         <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_top.jpg" alt="창업 다마고치" ></div>             
         <div class="evtTop02">
@@ -376,11 +378,6 @@
                 </div>            
             </div>                
         </div>
-        {{-- 상품바로결제 정보 --}}
-        <div id="pass" style="display: none">
-            <input type="checkbox" name="y_pkg" value="162745" checked/>
-            <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
-        </div>
 
         <div class="evtCtnsBox evt07">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_05.png" alt="BEST 수강후기" >
@@ -395,7 +392,7 @@
         </div>	
     </div>
 
-    <div class="evtCtnsBox evtFooter">
+    <div class="evtCtnsBox evtFooter" id="infoText">
         <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
         <p># 런칭기념  이벤트 안내</p>
@@ -438,10 +435,18 @@
     </div>    
 </div>
 <!-- End Container -->
-<div class="btnbuy NSK-Black">        
-    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
-        [온라인강의] 신청하기 >
-    </a>
+
+<div class="btnbuyBox">
+    <div class="btnbuy NSK-Black">        
+        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
+            [온라인강의] 신청하기 >
+        </a>
+    </div>
+    <div id="pass" class="infoCheck">
+        <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>
+        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+        <a href="#infoText">이용안내 확인하기 ↓</a>
+    </div>
 </div>
 
 
@@ -500,6 +505,7 @@
             if ($is_chk.length > 0) {
                 if ($is_chk.is(':checked') === false) {
                     alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
                     return;
                 }
             }

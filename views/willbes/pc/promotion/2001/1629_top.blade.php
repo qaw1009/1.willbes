@@ -311,7 +311,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
             var url = "{{ site_url('/promotion/index/cate/3001/code/1631') }}" ;
         } else {
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1354') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1632') }}";
         }
         location.href = url;
     }

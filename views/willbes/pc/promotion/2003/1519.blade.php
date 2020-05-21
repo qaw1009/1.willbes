@@ -43,8 +43,12 @@
             font-size:15px; color:#ebebeb;
             background:url(https://static.willbes.net/public/images/promotion/2020/01/1519_top_bg.jpg) no-repeat center top;
         }
+        .wb_top .topDday {
+            position:absolute;top:650px; left:50%; margin-left:-115px; border-radius:40px; 
+            color:#FFC000; font-size:25px;font-weight:bold;    
+        }
         .wb_top .topText {
-            position:absolute; width:640px; height:50px; line-height:50px; top:70px; left:50%; margin-left:-320px; border-radius:40px; background:#000;
+            position:absolute; width:640px; height:50px; line-height:50px; top:70px; left:50%; margin-left:-320px;background:#000;
             text-align:center; color:#fff; font-size:24px; z-index:10;            
         }
         .wb_top .dday {
@@ -125,6 +129,10 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1519_top.jpg" alt="윌비스 7급 일반행정직 PASS" />
+
+            <div class="topDday">
+                2020대비 5.31 최종마감
+            </div>
 
             <div class="topText NGEB">
                 2021 국가직 PSAT 도입 전 <span>마지막 기회!</span>

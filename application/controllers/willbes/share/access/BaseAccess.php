@@ -104,8 +104,11 @@ class BaseAccess extends \app\controllers\FrontController
      */
     public function visitor($params = [])
     {
+        $arr_input = $this->_reqG(null);
         $sess_sess_id = $this->session->userdata('make_sessionid');
         $referer = $this->input->server('HTTP_REFERER');
+        $ck_tms_name = 'visitor_tms';
+        $ck_tms_ttl = 600;  // 10분
 
         // 필수 파라미터 체크
         if (empty($sess_sess_id) === true) {
@@ -115,11 +118,20 @@ class BaseAccess extends \app\controllers\FrontController
             return $this->json_error('잘못된 접근입니다.[2]');     // 외부부정접근방지
         }
 
+        // 방문자 접근시간 쿠키 체크 (방문자 접근시간이 ttl값(10분) 이상 경과했을 경우만 정보 저장)
+        $ck_tms_val = get_cookie($ck_tms_name);
+        if (empty($ck_tms_val) === false && (time() - $ck_tms_val) < $ck_tms_ttl) {
+            return $this->json_result(true);
+        }
+
         // 방문자 정보 저장
-        $result = $this->accessFModel->saveVisitor();
+        $result = $this->accessFModel->saveVisitor($arr_input);
         if ($result !== true) {
             return $this->json_error($result);
         }
+
+        // 방문자 접근시간 쿠키 생성
+        set_cookie($ck_tms_name, time(), $ck_tms_ttl);
 
         return $this->json_result(true);
     }

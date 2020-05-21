@@ -251,20 +251,22 @@ class AdminModel extends WB_Model
                 throw new \Exception('운영자 정보 수정에 실패했습니다.');
             }
 
-            // 조직 정보 수정 (삭제/인서트)
-            $this->load->loadModels(['_wbs/sys/organization']);
-            $arr_org_code = element('org_code', $input);
+            if(empty($type) === false && $type == 'my'){
+                // 조직 정보 수정 (삭제/인서트)
+                $this->load->loadModels(['_wbs/sys/organization']);
+                $arr_org_code = element('org_code', $input);
 
-            $org_result = $this->organizationModel->removeAdminRelationOrganization(['wAdminIdx' => $this->session->userdata('admin_idx')]);
-            if($org_result !== true) {
-                throw new \Exception('조직 정보 수정에 실패했습니다.');
-            }
+                $org_result = $this->organizationModel->removeAdminRelationOrganization(['wAdminIdx' => $this->session->userdata('admin_idx')]);
+                if($org_result !== true) {
+                    throw new \Exception('조직 정보 수정에 실패했습니다.');
+                }
 
-            if(empty($arr_org_code) === false){
-                foreach($arr_org_code as $key => $row) {
-                    $org_result = $this->organizationModel->addAdminRelationOrganization(['wOrgCode' => $row, 'wAdminIdx' => $this->session->userdata('admin_idx')]);
-                    if($org_result !== true) {
-                        throw new \Exception('조직 정보 수정에 실패했습니다.');
+                if(empty($arr_org_code) === false){
+                    foreach($arr_org_code as $key => $row) {
+                        $org_result = $this->organizationModel->addAdminRelationOrganization(['wOrgCode' => $row, 'wAdminIdx' => $this->session->userdata('admin_idx')]);
+                        if($org_result !== true) {
+                            throw new \Exception('조직 정보 수정에 실패했습니다.');
+                        }
                     }
                 }
             }

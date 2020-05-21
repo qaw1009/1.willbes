@@ -218,28 +218,6 @@
                 return;
             }
 
-            /*if($("#TakeMockPart").val() == '100') {
-                if(takenum<10001||takenum>19999) {
-                    alert('올바른 응시번호가 아닙니다.');
-                    return;
-                }
-            } else if($("#TakeMockPart").val() == '200') {
-                if(takenum<20001||takenum>29999) {
-                    alert('올바른 응시번호가 아닙니다.');
-                    return;
-                }
-            } else if($("#TakeMockPart").val() == '300') {
-                if(takenum<30001||takenum>39999) {
-                    alert('올바른 응시번호가 아닙니다.');
-                    return;
-                }
-            } else {
-                if(takenum<40001||takenum>49999) {
-                    alert('올바른 응시번호가 아닙니다.');
-                    return;
-                }
-            }*/
-
             var _url = '';
             if(mode == 'NEW'){
                 _url = '{{ site_url('/predict/store') }}';

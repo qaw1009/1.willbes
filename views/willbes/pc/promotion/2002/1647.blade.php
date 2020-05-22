@@ -25,6 +25,27 @@
         .sky{position:fixed;top:250px;right:0;z-index:1;}
         .wb_cts00 {background:#404040}
 
+        /*타이머*/
+        .time {width:100%; text-align:center; background:#ebebeb}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td {line-height:1.2}        
+        .time table td img {width:65%}
+        .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
+        .time span {color:#ffda39; font-size:28px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time table td:last-child,
+        .time table td:last-child span {font-size:40px}
+        @@keyframes upDown{
+        from{color:#000}
+        50%{color:#424ac7}
+        to{color:#000}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#000}
+        50%{color:#424ac7}
+        to{color:#000}
+        } 
+
         .wb_top {background:#191c22 url(https://static.willbes.net/public/images/promotion/2020/05/1647_top_bg.jpg) no-repeat center top; } 
         .wb_cts03 {background:#e2e3e7;}
 
@@ -40,12 +61,36 @@
     <div class="p_re evtContent NGR" id="evtContainer">
 
         <div class="sky" >
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/04/1615_sky01.png" alt="스카이베너" ></a>
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/05/1647_sky.png" alt="스카이베너" ></a>
         </div>     
 
 		<div class="evtCtnsBox wb_cts00">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1283_00.jpg" alt="신광은 경찰팀"/>            
         </div>
+
+        <!-- 타이머 -->
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+           <div>
+               <table>
+                   <tr>                    
+                   <td class="time_txt"><span>사전접수 이벤트<br>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 까지</span></td>
+                   <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td class="time_txt">일 </td>
+                   <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td class="time_txt">:</td>
+                   <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td class="time_txt">:</td>
+                   <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                   <td>남았습니다!</td>
+                   </tr>
+               </table>                
+           </div>
+        </div>
+        <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1647_top.jpg" alt="슈퍼pass" />
@@ -115,8 +160,13 @@
 
     <script type="text/javascript">
 
+     /*디데이카운트다운*/
+     $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
+
 @stop

@@ -2099,6 +2099,7 @@ body.memBody #Footer {
 .willbes-Layer-PassBox {
     float: left;
     width: 90%;
+    height: aotu;
     background: #fff;
     padding: 20px 25px;
     margin: 0 5%;
@@ -2394,6 +2395,7 @@ body.memBody #Footer {
     float: left;
     width: 25%;
 }
+.lec-info-tab .tabWrap.two li {width:50%}
 .lec-info-tab .tabWrap li a {
     display: block;
     text-align: center;
@@ -2502,6 +2504,9 @@ body.memBody #Footer {
     float: left;
     width: 33.33333%
 }
+.lec-btns.w25p ul li {
+    width:25% !important;
+}
 .lec-btns.w50p ul li {
     width:50% !important;
 }
@@ -2525,16 +2530,17 @@ body.memBody #Footer {
 .MessageBtns {
     width: 60%;
     margin:0 auto;
+    text-align: center;
 }
 .MessageBtns a {
-    display:block;
+    display:inline-block;
     text-align: center;
-    display:inline;
     float: left;
     width: 50%;
     height: 30px;
     line-height: 30px;
     font-size:14px;
+    margin:0 auto;
 }
 
 .lec-info .w-data {

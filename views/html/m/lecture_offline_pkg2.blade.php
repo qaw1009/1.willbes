@@ -202,7 +202,7 @@
                     </tbody>
                 </table>
             </div>
-            <h5>· 선택과목(선택과목 중 2개 선택) <a href="#none" class="NGR">교재정보 전체보기</a></h5>
+            <h5>· 선택과목(선택과목 중 2개 선택) </h5>
             <div class="lec-choice-pkg">
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                     <colgroup>
@@ -224,46 +224,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">한덕현 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="w-data-pkg">
                                     <div class="w-info">
@@ -271,46 +242,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">정채영 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -329,46 +271,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">한덕현 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span> 
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="w-data-pkg">
                                     <div class="w-info">
@@ -376,46 +289,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">정채영 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -434,46 +318,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">한덕현 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="w-data-pkg">
                                     <div class="w-info">
@@ -481,46 +336,17 @@
                                             <label>[판매]</label>
                                             <input type="checkbox" id="" name="">
                                         </span>
-                                        <span class="ml10 tx14">정채영 </span>
+                                        <span class="ml10 tx14">조민주 </span>
                                     </div>
                                     <div class="w-tit">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        [20.05] 조민주 한국사 지방직 대비 최종모고
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>
-                                            강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
-                                            정상가 <span class="tx-blue">90,000원</span>
-                                            <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
-                                        </dt>
-                                        <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt><strong>수강형태</strong><span class="tx-blue">실강</span> <span class="NSK nBox n2 ml10">접수중</span></dt>
+                                        <dt><span class="tx-blue">2020.05.19 ~ 2020.06.02 화 (3회차)</span></dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
-                                    <div class="w-book mb-zero">
-                                        <ul>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -530,28 +356,14 @@
         </div>        
 
         <div class="lec-info NGR">
-            <h4 class="NGEB">패키지정보</h4>
+            <h4 class="NGEB">종합반 상세정보</h4>
             <div class="lec-info-pkg">                    
-                <strong>패키지유의사항 (필독)</strong><br>
-                *** 동영상 배수 제한 시범운영 콘텐츠입니다. ***<br>
-                최근 교육콘텐츠(동영상강의, 교재, 학습자료 등)에 대한 공유, 복제, 배포, 판매 등 
-                부정사용으로 인한 피해사례 및 피해신고가 접수되고 있습니다.
-                <br><br>
-                위와 같은 피해를 예방하기 위하여 일부 동영상 강좌에 한하여 ‘진도율 배수 제한’ 시범 적용할 예정입니다.
-                배수 제한은 수험생들의 수강 이력 데이터 통계를 기반으로 하여 수강에 불편이 없는 최소한의 제한을 두게 되었습니다. 
-                이점 많은 양해바랍니다.
-                <br>  <br>  
-                [배수란~]<br>
-                # 배수 제한은 각 강의마다 실제 강의 시간에 해당강좌에 별도 설정된 강의배수 만큼 수강이 가능합니다.<br>
-                # 빠른 배속으로 수강하더라도 실제 강의 시간이 적용됩니다.
-                <br><br>
-                <strong>패키지소개</strong><br>
-                19년 1차 최종합격을 위한 황세웅 교수님의 비법 강의!<br>
+                <strong>종합반 상세정보</strong><br>
+                [20.05 9급 일행] 지방직 대비 최종 모의고사반(국어,영어,한국사) - 3과목 <br>
                 <br>
-                [구성강좌]<br>
-                2019년 경찰 1차시험 황세웅 면접이론 총론 특강<br>
-                2019년 경찰 1차시험 황세웅 면접이론 각론 특강<br>
-                2019년 경찰 1차시험 황세웅 면접 시사특강
+                개강일 : 2020년 5월 18일 (월)<br>
+                <br>
+                강의일정 : 실전 동형 최종모의고사(3주)
             </div>
         </div>
         

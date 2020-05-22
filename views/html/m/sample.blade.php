@@ -2,8 +2,9 @@
     a {text-decoration: none;}
     h1 {font-size:24px; font-weight:bold; height:60px; line-height:60px; border-bottom:4px double #000}
     ul {padding:0; margin:0}
-    ul li {padding:0; margin:0; list-style:none; width:25%; display:inline; float:left}
+    ul li {padding:0; margin:0; list-style:none; width:20%; display:inline; float:left}
     ul li div {border-right:1px solid #ccc; padding:0 15px; font-size:12px}
+    ul li div p {font-size:14px; font-weight:bold}
     ul li div a {display:block; margin-bottom:7px}
     ul:after {content:""; display:block; clear:both}
 </style>
@@ -53,8 +54,9 @@
             <a href="{{ site_url('/home/html/m/mypage_csvideo_read') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Read</a>
         </div>
     </li>
-    <li>
-        <div>  
+    <li>        
+        <div> 
+            <p>온라인</p>
             <a href="{{ site_url('/home/html/m/lecture_online1') }}" target="_blank">수강신청 > 단강좌</a>
             <a href="{{ site_url('/home/html/m/lecture_online2') }}" target="_blank">수강신청 > 단강좌 > 상세보기</a>
             <br><br>
@@ -85,8 +87,15 @@
             <a href="{{ site_url('/home/html/m/payment_07') }}" target="_blank">수강연장 결제하기</a>     
         </div>
     </li>
-    <li>
-        <div>  
+    <li>        
+        <div> 
+            <p>학원</p>             
+            <a href="{{ site_url('/home/html/m/lecture_offline1') }}" target="_blank">수강신청 > 단과반</a>   
+        </div>
+    </li>
+    <li>        
+        <div> 
+            <p>프로모션</p>             
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch') }}" target="_blank">경찰1차 합격예측 풀서비스 사전예약 및 채점서비스</a>
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_02') }}" target="_blank">└ 기본정보입력</a>
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_03') }}" target="_blank">└ 채점하기</a>

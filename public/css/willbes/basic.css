@@ -928,7 +928,10 @@ select[disabled] {
 .pb130 {
   padding-bottom: 130px !important;
 }
+
+.pd-zero,
 .pd_all_none {padding:0 !important}
+
 .pd20 {
   padding: 20px !important;
 }

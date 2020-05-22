@@ -1517,6 +1517,12 @@ body.memBody #Footer {
 .lecTable .w-buy ul.two li {
     width: 50%;
 }
+.lecTable .w-buy ul.three {
+    width: 80%;
+}
+.lecTable .w-buy ul.three li {
+    width: 33.333333%;
+}
 .lecTable .w-buy ul:after {
     content: ""; display:block; clear:both;
 }
@@ -1576,6 +1582,12 @@ body.memBody #Footer {
 .lecTable .w-lecList li {
     margin-left:15px; list-style: disc;
 }
+.lecTable .oneBox {
+    border-bottom:1px solid #e4e4e4;
+    margin-bottom:20px;
+    padding-bottom:10px
+}
+.lecTable .oneBox:last-child {border-bottom:0; margin-bottom:0;padding-bottom:0}
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;
@@ -1678,7 +1690,7 @@ body.memBody #Footer {
 /* 무한 PASS존 */
 /* 무한 PASS존 : Tabs : lecListTabs */
 .lecListTabs {
-    padding: 0;
+    padding: 0 0 50px 0;
 }
 .lecListWrap {
     margin: 20px 20px 0;
@@ -2529,6 +2541,7 @@ body.memBody #Footer {
     border-top:1px solid #edebeb;
     padding:20px 0 0;
 }
+
 .lec-info .w-info {
     font-size:12px;
 }
@@ -3500,6 +3513,18 @@ body.memBody #Footer {
 .newLecList li a:hover {background:#55676b; color:#fff;}
 
 
+/*********************************************     학원     *********************************************/
+
+.onSearch {position: relative; margin-bottom:10px; padding:0 20px }
+.onSearch input[type="search"] {border:0; border-bottom:1px solid #000; height:28px; width:100%; color:#ccc; font-size:14px; padding:0}
+.onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
+.onSearch button {position: absolute; top:0; right:20px; width:28px; height:28px; font-size: 0; text-indent: -9999px; 
+    background:url("../../../img/willbes/m/main/icon_search.png") no-repeat center center; background-size:18px;
+    display: block; z-index: 1;
+}
+
+
+
 /* iPhone 5/SE */
 @media only screen and (min-width: 320px) and (max-width: 374px) {
     .width25p {
@@ -3549,4 +3574,5 @@ body.memBody #Footer {
     .calendarTable .table-condensed tr td {
         font-size: 16px;
     }
+    .Message p br {display:none}
 }

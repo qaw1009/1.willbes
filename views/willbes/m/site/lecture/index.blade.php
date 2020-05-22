@@ -139,7 +139,7 @@
                                             @endif
 
                                             @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
-                                                <div>
+                                                <div class="oneBox">
                                                     @if($row['LecTypeCcd'] === '607003')
                                                         <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                                     @endif

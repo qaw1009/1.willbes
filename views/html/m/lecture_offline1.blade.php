@@ -4,13 +4,15 @@
 
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
+    <div class="onSearch">
+        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+        <label for="onsearch"><button title="검색">검색</button></label>
+    </div>
+
     <div id="Sticky" class="sticky-Title">
         <div class="sticky-Grid sticky-topTit">
-            <div class="willbes-Tit NGEB p_re">
-                <button type="button" class="goback" onclick="history.back(-1); return false;">
-                    <span class="hidden">뒤로가기</span>
-                </button>    
-                수강신청 > 단강좌
+            <div class="willbes-Tit NGEB p_re">  
+                학원수강신청 > 단과반
             </div>
         </div>
     </div>
@@ -26,34 +28,34 @@
             </li>
             <li>
                 <select id=" " name=" " title=" ">
-                    <option selected="selected">전체</option>
-                    <option value="이론">이론</option>
-                    <option value="문제풀이">문제풀이</option>
-                    <option value="유료특강">유료특강</option>
+                    <option selected="selected">캠퍼스전체</option>
+                    <option value="">캠퍼스1</option>
+                    <option value="">캠퍼스2</option>
+                    <option value="">캠퍼스2</option>
                 </select>
             </li>
             <li>
                 <select id=" " name=" " title=" ">
-                    <option selected="selected">직렬선택</option>
-                    <option value="전체">전체</option>
-                    <option value="일반행정직">일반행정직</option>
-                    <option value="교육행정직">교육행정직</option>
+                    <option selected="selected">과정전체</option>
+                    <option value="">과정1</option>
+                    <option value="">과정2</option>
+                    <option value="">과정3</option>
                 </select>
             </li>
             <li>
                 <select id=" " name=" " title=" ">
-                    <option selected="selected">과목선택</option>
-                    <option value="전체">전체</option>
-                    <option value="국어">국어</option>
-                    <option value="영어">영어</option>
+                    <option selected="selected">과목전체</option>
+                    <option value="">과목1</option>
+                    <option value="">과목2</option>
+                    <option value="">과목3</option>
                 </select>
             </li>
             <li>
                 <select id=" " name=" " title=" ">
-                    <option selected="selected">교수선택</option>
-                    <option value="기미진">기미진</option>
-                    <option value="권기태">권기태</option>
-                    <option value="김세령">김세령</option>
+                    <option selected="selected">교수전체</option>
+                    <option value="">교수1</option>
+                    <option value="">교수2</option>
+                    <option value="">교수3</option>
                 </select>
             </li>
             <li class="resetBtn2">
@@ -91,62 +93,55 @@
                 <tbody>
                     <tr class="replyList willbes-Open-Table">
                         <td class="w-data tx-left">
-                            <div class="w-tit">형사소송법</div>
+                            <div class="w-tit">경제학</div>
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <div class="oneBox">
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
-                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
                                 </dl>
                                 <div class="w-tit tx-blue">
-                                    2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                    <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
                                 </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>학원실강의 : 2020년 1월</dt><br>
-                                    <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                <dl class="w-info tx-gray">                                
+                                    <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
                                 </dl>
-                                <ul>
-                                    <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                </ul>
                                 <div class="w-buy">       
-                                    <ul class="two">
+                                    <ul class="three">
+                                        <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
                                         <li><a href="#none" class="btn_gray">장바구니</a></li>
                                         <li><a href="#none" class="btn_blue">바로결제</a></li>
                                     </ul> 
                                 </div>
                             </div>
                             <div class="oneBox">
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
-                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
                                 </dl>
                                 <div class="w-tit tx-blue">
-                                    2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                    <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
                                 </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>학원실강의 : 2020년 1월</dt><br>
-                                    <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                <dl class="w-info tx-gray">                                
+                                    <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
                                 </dl>
-                                <ul>
-                                    <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                </ul>
                                 <div class="w-buy">       
-                                    <ul class="two">
+                                    <ul class="three">
+                                        <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
                                         <li><a href="#none" class="btn_gray">장바구니</a></li>
                                         <li><a href="#none" class="btn_blue">바로결제</a></li>
                                     </ul> 
                                 </div>
                             </div>
-                        </td>
+                        </td>                        
                     </tr>
+                    
                     <tr class="replyList willbes-Open-Table">
                         <td class="w-data tx-left">
                             <div class="w-tit">경찰학개론</div>
@@ -206,6 +201,26 @@
                     </tr>                    
                 </tbody>
             </table>
+
+            <div id="LecBuyMessagePop" class="willbes-Layer-Black">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h250 fix">
+                    <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop')">
+                        <img src="{{ img_url('m/calendar/close.png') }}">
+                    </a>
+                    <div class="Message NG">
+                        <p>해당 상품이<br> 학원방문결제 접수에 담겼습니다.</p>
+                        <p>학원방문결제 접수로<br> 이동하시겠습니까?<p>
+                    </div>
+                    <div class="MessageBtns">
+                        <a href="#none" class="btn_gray">예</a>
+                        <a href="#none" class="btn_white">계속구매</a>
+                    </div>
+                </div>
+                <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
+            </div>
+            <!-- willbes-Layer-PassBox : 쪽지 -->
+
+     
         </div>
         
 

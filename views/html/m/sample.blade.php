@@ -91,6 +91,8 @@
         <div> 
             <p>학원</p>             
             <a href="{{ site_url('/home/html/m/lecture_offline1') }}" target="_blank">수강신청 > 단과반</a>   
+            <a href="{{ site_url('/home/html/m/lecture_offline2') }}" target="_blank">수강신청 > 단과반 > 상세보기</a>  
+            <a href="{{ site_url('/home/html/m/lecture_offline1') }}" target="_blank">수강신청 > 종합반</a>   
         </div>
     </li>
     <li>        

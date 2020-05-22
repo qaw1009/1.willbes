@@ -3,13 +3,15 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
+    <div class="onSearch">
+        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+        <label for="onsearch"><button title="검색">검색</button></label>
+    </div>
+
     <div id="Sticky" class="sticky-Title">
         <div class="sticky-Grid sticky-topTit">
-            <div class="willbes-Tit NGEB p_re">
-                <button type="button" class="goback" onclick="history.back(-1); return false;">
-                    <span class="hidden">뒤로가기</span>
-                </button>    
-                수강신청 > 단강좌
+            <div class="willbes-Tit NGEB p_re">  
+                학원수강신청 > 단과반
             </div>
         </div>
     </div>
@@ -25,23 +27,18 @@
                                 <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                             </div>
                             <div class="w-data tx-left pl15">
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info pt-zero">
-                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
                                 </dl>
                                 <div class="w-tit">
-                                    <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)</a>
+                                    2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)
                                 </div>
                                 <div class="w-info tx-gray">
                                     <dl>
-                                        <dt class="h27"><strong>학원실강의</strong>2020년 1월</dt><br/>
-                                        <dt class="h27"><strong>강의수</strong>32강 / 55강</dt><br/>
-                                        <dt class="h27"><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                        <dt class="h27"><strong>강의계획서</strong>황종휴 원론강의.pdf</dt><br/>
-                                        <dt class="h27"><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt><br/>
-                                        <dt class="h27">
-                                            <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
-                                        </dt>
+                                        <dt class="h22"><strong>개강일~종강일</strong><span class="tx-blue">05/19 ~ 06/08</span></dt><br/>
+                                        <dt class="h22">월화수목금토 (19회차)</dt><br/>
+                                        <dt class="h22"><strong>수강형태</strong><span class="tx-blue">오전영상</span> </dt><br>
+                                        <dt class="h22"><span class="NSK nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>
                                     </dl>
                                 </div>
                             </div>                            
@@ -60,18 +57,7 @@
                         <input type="checkbox" id="" name="">
                     </span>
                     <div class="priceWrap NG">
-                        [PC+모바일] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span><br>
-                        {{--<p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>--}}
-                    </div>
-                </li>
-                <li>
-                    <span class="chk">
-                        <label>[판매]</label>
-                        <input type="checkbox" id="" name="">
-                    </span>
-                    <div class="priceWrap NG">
-                        [PC] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span><br>
-                        {{--<p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>--}}
+                        456,000원 (↓0%) ▶<span class="tx-blue">456,000원</span>                        
                     </div>
                 </li>
             </ul>
@@ -80,6 +66,8 @@
         <div class="lec-info">
             <h4 class="NGEB">교재신청</h4>
             <ul>
+                <li>※ 별도 구매 가능한 교재가 없습니다.</li>
+                {{--교재 있을 경우--}}
                 <li>
                     <span class="chk">
                         <label>[판매]</label>
@@ -100,7 +88,7 @@
                         <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
                     </div>
                 </li>
-                <li class="tx-red NGR">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</li>
+                <li class="tx-red NGR">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</li>                
             </ul>
         </div>
 
@@ -113,32 +101,18 @@
         </div>
 
         <div class="lec-info-tab NGR">
-            <ul class="tabWrap">
+            <ul class="tabWrap two">
                 <li><a href="#tab01" class="on">강좌정보</a></li>
                 <li><a href="#tab02">교재정보</a></li>
-                <li><a href="#tab03">강의목차</a></li>
-                <li><a href="#tab04">수강후기</a></li>
             </ul>
             <div class="tabBox tabBox2">
                 <div id="tab01"> 
                     <h4 class="NGEB">강좌소개</h4>
-                    - 2019대비 신광은 형사소송법 기본이론<br>
-                    - 강의일정: 2019.5.30(목) 학원개강 / 동영상업로드 2019.5.30<br>
-                    - 교재안내: 신광은 형사소송법 (신정9판)<br>
-                    <h4 class="NGEB">강좌특징</h4>
-                    <strong>[수강대상]</strong><br>
-                    1. 형사소송법을 처음 접하는 수험생으로서 형사소송법의 기초를 튼튼히 하고 싶은 수험생<br>
-                    2. 형사소송법의 전반적인 흐름을 이해하고, 체계를 잡고 싶은 수험생<br>
-                    3. 형사소송법을 단기간에 효율적으로 공부하는 방법을 알고 싶은 수험생<br>
-                    <br>
-                    <strong>[강좌기본]</strong><br>
-                    1. 신광은 교수님의 형사실무경험을 바탕으로 한 생동감 넘치는 설명을 통해 형사소송의 전반적인 절차를 파악할 수 있는 강좌입니다.<br>
-                    2. 형사소송의 기초이론, 판례를 학습할 수 있는 강좌입니다.<br>
-                    <br>
-                    <strong>[강좌효과]</strong><br>
-                    1. 처음 공부하는 수험생들에게는 다소 어려울 수 있는 형사소송 절차를 한눈에 파악할 수 있습니다.<br>
-                    2. 낯설고 어려운 법률용어를 쉽게 이해할 수 있습니다.<br>
-                    3. 매일매일 O·X 복습자료를 통해 기본기를 다잡을 수 있습니다.<br>
+                    “수험이론 전반에 대한 핵심요약(단권화) 및 매일 실전모의고사와 문제풀이가 병행되는 최종정리를 위한 강의”<br>
+                    - 중요논점에 대한 요약정리와 핵심이슈의 점검으로 각 과목의 매일 진행되는 신작모의고사로 문제적용능력을 높이고, 
+                      자세한 강평으로 답안지 현출능력을 향상 시킬 수 있는 강의<br>
+                    - 실제 2차 논문형 시험의 난이도를 반영한 엄선된 연습문제풀이를 통하여 응용력을 향상시키고, 중요내용에 대한 암기가 병행되는과정으로 
+                      각 과목에 대한 효과적인 정리에 중점을 둔 강의<br>
                 </div>
 
                 <div id="tab02" class="book-info"> 
@@ -153,90 +127,15 @@
                         <li><span>교재비</span> <strong class="tx-blue">42,300원</strong> (↓10%) <strong>[판매중]</strong></li>
                     </ul>
                 </div>
-
-                <div id="tab03" class="lec-list"> 
-                    <ul>
-                        <li>
-                            1강 <span class="tx-blue">60분</span><br>
-                            4월 21일 : 형사소송법 파이널 실전모의고사 1회
-                            <ul class="NGEB mt10">
-                                <li><a href="#none" class="btn_black_line">WIDE</a></li>
-                                <li><a href="#none" class="btn_blue">HIGH</a></li>
-                                <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            2강 <span class="tx-blue">60분</span><br>
-                            4월 21일 : 형사소송법 파이널 실전모의고사 1회
-                            <ul class="NGEB mt10">
-                                <li><a href="#none" class="btn_black_line">WIDE</a></li>
-                                <li><a href="#none" class="btn_blue">HIGH</a></li>
-                                <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            3강 <span class="tx-blue">60분</span><br>
-                            4월 21일 : 형사소송법 파이널 실전모의고사 1회
-                            <ul class="NGEB mt10">
-                                <li><a href="#none" class="btn_black_line">WIDE</a></li>
-                                <li><a href="#none" class="btn_blue">HIGH</a></li>
-                                <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="tab04" class="lec-reply"> 
-                    해당 강좌 총 수강후기 [<strong>15</strong>건]
-                    <p class="tx-red">※ 수강후기 등록은 PC버전에서만 가능합니다.</p>
-                    <div class="reply">
-                        정리하기 좋습니다.정리하기 좋습니다.정리하기 좋습니다.
-                        정리하기 좋습니다.정리하기 좋습니다.
-                        <p class="mt10">김인* 2019-05-22</p>
-                    </div>
-                    <div class="reply">
-                        정리하기 좋습니다.정리하기 좋습니다.정리하기 좋습니다.
-                        정리하기 좋습니다.정리하기 좋습니다.
-                        <p class="mt10">김인* 2019-05-22</p>
-                    </div>
-                    <div class="reply">
-                        정리하기 좋습니다.정리하기 좋습니다.정리하기 좋습니다.
-                        정리하기 좋습니다.정리하기 좋습니다.
-                        <p class="mt10">김인* 2019-05-22</p>
-                    </div>
-                    <div class="reply">
-                        정리하기 좋습니다.정리하기 좋습니다.정리하기 좋습니다.
-                        정리하기 좋습니다.정리하기 좋습니다.
-                        <p class="mt10">김인* 2019-05-22</p>
-                    </div>
-                    <div class="reply">
-                        정리하기 좋습니다.정리하기 좋습니다.정리하기 좋습니다.
-                        정리하기 좋습니다.정리하기 좋습니다.
-                        <p class="mt10">김인* 2019-05-22</p>
-                    </div>
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a></li>
-                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
         
-        <div class="lec-btns">
+        <div class="lec-btns w25p">
             <ul>
-                <li><a href="#none" onClick='alert("강좌 또는 교재를 선택하세요.")' class="btn_black_line">강좌목록</a></li>
+                <li><a href="#none" onClick='lecture_offline1' class="btn_black_line">강좌목록</a></li>
+                <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn_gray">방문결제</a></li>
                 <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn-purple">장바구니</a></li>
-                <li><a href="#none" onClick='alert("도서구입비 소득공제 ...")' class="btn-purple-line">바로결제</a></li>
+                <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn-purple-line">바로결제</a></li>
             </ul>
         </div>
     </div>
@@ -253,19 +152,32 @@
             <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>
+            {{--체크 안했을 경우--}}
             <div class="Message NG">
-                해당 상품이 장바구니에 담겼습니다.<br>
-                장바구니로 이동하시겠습니까?
+                상품을 선택해주세요.
             </div>
             <div class="MessageBtns">
-                <a href="#none" class="btn_gray">예</a>
-                <a href="#none" class="btn_white">계속구매</a>
+                <a href="#none" class="btn_gray f_none">확인</a>
+            </div>
+            {{--체크 했을 경우--}}
+            <div class="Message NG">
+                방문접수를 신청하겠습니까?
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray">확인</a>
+                <a href="#none" class="btn_white">취소</a>
+            </div>
+            {{--접수 완료 시--}}
+            <div class="Message NG">
+                접수가 완료되었습니다.<br>
+                * 학원으로 방문해주시기 바랍니다.
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray f_none">확인</a>
             </div>
         </div>
         <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
-    </div>
-    <!-- willbes-Layer-PassBox : 쪽지 -->
-
+    </div><!-- 방문결제  -->
 </div>
 <!-- End Container -->
 @stop

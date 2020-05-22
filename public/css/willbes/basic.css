@@ -996,6 +996,8 @@ select[disabled] {
 .f_inherit {
   float: inherit !important;
 }
+.f_none {float:none !important}
+
 .d_block {
   display: block !important;
 }

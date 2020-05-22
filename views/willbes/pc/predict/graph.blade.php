@@ -304,9 +304,9 @@
                         </tr>
                     @endfor
                     <tr>
-                        <td>2020년 1차</td>
+                        <td>2019년 2차</td>
                         <th>구분</th>
-                        <td>2020년 2차</td>
+                        <td>2020년 1차</td>
                     </tr>
                 </table>
             </div>

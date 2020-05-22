@@ -9,7 +9,7 @@
         <div class="evtCtnsBox">
             <div class="s_section2">
                 <div class="s_section2_wrap">
-                    <h2><span>2019 2차 채점</span> 서비스</h2>
+                    <h2><span>2020 1차 채점</span> 서비스</h2>
                     시험 채점 및 응시 전형에 필요한 개인 정보와 전형정보를 입력/관리하는 페이지입니다.
                     <div>
                         <p>채점 시 유의사항</p>

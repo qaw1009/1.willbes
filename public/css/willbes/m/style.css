@@ -1407,7 +1407,7 @@ body.memBody #Footer {
 .lecTable .w-info {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;
-    line-height: 16px;
+    /*line-height: 1.5;*/
 }
 
 .lecTable .w-info span {
@@ -1559,7 +1559,7 @@ body.memBody #Footer {
 .lecTable tr td:last-child {
     padding-right: 20px;
 }
-
+.lecTable tr td.w-data * {line-height: 1.6;}
 .lecTable tr td.w-data a {
     display: block;
 }
@@ -2630,10 +2630,10 @@ body.memBody #Footer {
     left: 0;
     right: 0;
     margin: 0 auto;
-    padding:0 20px;
+    padding:0 15px;
     border-radius: 10px 10px 0 0; 
     background: #f9f9f9;
-    width: calc(100% - 42px);
+    width: calc(100% - 20px);
     font-size:14px;
     color:#666;
     line-height: 1.5;
@@ -2650,7 +2650,7 @@ body.memBody #Footer {
 }
 
 .basketInfo {
-    padding:10px 20px 20px;
+    padding:10px;
     margin-bottom:20px;
     background:#fff;
     border:1px solid #ccc;

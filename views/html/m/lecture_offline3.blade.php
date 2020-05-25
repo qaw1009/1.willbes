@@ -28,20 +28,20 @@
             </li>
             <li>
                 <select id=" " name=" " title=" ">
+                    <option selected="selected">단과반</option>
+                    <option value="">단과반1</option>
+                    <option value="">단과반2</option>
+                    <option value="">단과반3</option>
+                </select>
+            </li>
+            <li>
+                <select id=" " name=" " title=" ">
                     <option selected="selected">캠퍼스전체</option>
                     <option value="">캠퍼스1</option>
                     <option value="">캠퍼스2</option>
                     <option value="">캠퍼스2</option>
                 </select>
-            </li>
-            <li>
-                <select id=" " name=" " title=" ">
-                    <option selected="selected">과정전체</option>
-                    <option value="">과정1</option>
-                    <option value="">과정2</option>
-                    <option value="">과정3</option>
-                </select>
-            </li>
+            </li>            
             <li>
                 <select id=" " name=" " title=" ">
                     <option selected="selected">과목전체</option>
@@ -65,8 +65,8 @@
 
         <div class="willbes-Lec-Selected NG c_both tx-gray pb-zero">
             <select id="process" name="process" title="process" class="seleProcess width30p">
-                <option selected="selected">과정순</option>
-                <option value="과정순">최근등록순</option>
+                <option selected="selected">최근등록순</option>
+                <option value="과정순">과정순</option>
             </select>
         </div>
         <div class="willbes-Lec-Search NG width100p pl20 pr20 pb20 mt10">
@@ -200,7 +200,7 @@
 
             <div class="lec-btns w100p">
                 <ul>
-                    <li><a href="#none" onClick='alert("도서구입비 소득공제 ...")' class="btn-purple-line">바로결제</a></li>
+                    <li><a href="#none" class="btn-purple-line">바로결제</a></li>
                 </ul>
             </div>
 
@@ -239,34 +239,18 @@
             <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>
-            <h4>[20.05] 조민주 한국사 지방직 대비 최종모고</h4>
+            <h4>20_GS3순환 경제학 황종휴</h4>
             <div class="LecDetailBox">
-                <h5>강좌상세정보</h5>
-                <dl class="w-info tx-gray">
-                    <dt>수강기간 <br>
-                    <span class="tx-blue">2020.07.06 ~ 2020.07.24 </span> <span class="tx-blue">월화수목금</span> (15회차)</dt>
+                <h5>강좌정보</h5>
+                <div class="tx-dark-gray">
+                    [20.05] 기특한 국어 지방직 대비 최종모고<br>
+                    [20.05] 기특한 국어 지방직 대비 최종 모고
+                </div>
+                <dl class="w-info tx-gray mt20">
+                    <dt>개강 <span class="tx-blue">2020.07.06 ~ 2020.07.24 (수)</span> (15회차)</dt>
+                    <dt>강의시간 <span class="tx-blue">09:00 ~ 13:00</span></dt>
+                    <dt>교재 <span class="tx-blue">추후공지</span></dt>
                 </dl>
-                <h5>수강대상</h5>
-                <div class="tx-dark-gray">
-                    1. 형소법을 처음 접하는 수험생<br>
-                    2. 형소법의 전반적인 흐름을 이해하고 싶은 수험생<br>
-                    3. 형소법을 단기간에 효율적으로 공부하는 방법을 알고 싶은 수험생<br>
-                </div>
-                <h5>강좌소개</h5>
-                <div class="tx-dark-gray">
-                    1. 매일매일 O·X 강의자료와 함께 복습을 할 수 있는 강좌입니다.<br>
-                    2. 교수님의 형사실무경험을 바탕으로, 실제 사건과 관련한 설명과 함께 형사소송절차를 생동감 있게 이해할 수 있는 강좌입니다.<br>
-                    3. 형소법의 전반적인 흐름을 파악하고 쉽게 접근할 수 있는 강좌입니다.<br>
-                    4. 강의일정 : 7/6(월)~7/24(금),  총 15회 강의<br>
-                    5. 강의시간 : 매주 월~금 [09:00~13:00]<br>
-                    6. 교재 : 신광은 형사소송법(신정 9판)                    
-                </div>
-                <h5>강좌효과</h5>
-                <div class="tx-dark-gray">
-                    1. 어려운 법률용어를 쉽게 이해시켜주는 효과가 있습니다.<br>
-                    2. 매일매일 O·X 강의자료를 통해 복습의 효과를 극대화 하는 효과가 있습니다.<br>
-                    3. 어머! 이건 꼭 들어야 하는 강좌의 효과가 있습니다.
-                </div>
             </div>
         </div>
         <div class="dim" onclick="closeWin('InfoForm')"></div>

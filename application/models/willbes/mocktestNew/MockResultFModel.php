@@ -302,7 +302,7 @@ class MockResultFModel extends WB_Model
                 ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
                     SELECT 
-                    a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
+                    a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, e.OrderNum, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
                     FROM {$this->_table['mock_register']} AS a
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
@@ -311,6 +311,7 @@ class MockResultFModel extends WB_Model
                     WHERE a.ProdCode = '{$prod_code}' AND c.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                 ) AS A
                 GROUP BY A.MpIdx
+                ORDER BY A.OrderNum ASC
             ) AS M
         ";
         return $this->_conn->query('select ' . $column . $from)->result_array();
@@ -347,7 +348,7 @@ class MockResultFModel extends WB_Model
             FROM (
                 SELECT 
                 PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
-                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중','하')))AS Difficulty
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중','하'))) AS Difficulty, A.OrderNum AS pmpOrderNum
                 FROM
                 (
                     SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum
@@ -366,7 +367,7 @@ class MockResultFModel extends WB_Model
             ) AS P
             LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
         ";
-        $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
+        $order_by = " ORDER BY P.pmpOrderNum, P.OrderNum, P.QuestionNO";
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
@@ -392,7 +393,7 @@ class MockResultFModel extends WB_Model
         $from = "
             FROM (
                 SELECT 
-                P.SubjectName, P.MockType, P.MpIdx, P.MqIdx, P.MalIdx, P.QuestionNo
+                P.SubjectName, P.MockType, P.MpIdx, P.MqIdx, P.MalIdx, P.OrderNum, P.QuestionNo
                 ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'Y') AS myYcnt
                 ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = p.MqIdx AND IsWrong = 'N') AS myNcnt
                 ,(SELECT QuestionNo FROM {$this->_table['mock_answerpaper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}' AND MqIdx = P.MqIdx AND IsWrong = 'N') AS nQuestionNo
@@ -432,12 +433,12 @@ class MockResultFModel extends WB_Model
                         GROUP BY a.MqIdx
                     ) AS b ON a.MqIdx = b.MqIdx
                 ) AS AV ON P.MqIdx = AV.MqIdx
-                ORDER BY P.MockType, P.MpIdx, P.OrderNum, P.QuestionNo    
+                ORDER BY P.MockType, P.OrderNum, P.QuestionNo    
             ) AS S
             LEFT JOIN {$this->_table['mock_area_list']} AS MAL ON S.MalIdx = MAL.MalIdx AND MAL.IsStatus = 'Y'
         ";
         $group_by = " GROUP BY S.MalIdx";
-        $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
+        $order_by = " ORDER BY S.MockType, S.OrderNum, S.QuestionNO ASC";
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
     }
 

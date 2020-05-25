@@ -88,8 +88,8 @@ class MockExamFModel extends WB_Model
                 SELECT 
                 mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
-                GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
-                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName)) AS subject_names
+                GROUP_CONCAT(pmp.MpIdx ORDER BY pmp.OrderNum ASC) AS MpIdx,
+                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName) ORDER BY pmp.OrderNum ASC) AS subject_names
                 FROM {$this->_table['mock_register']} AS mr
                 JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
@@ -129,9 +129,10 @@ class MockExamFModel extends WB_Model
         $from = "
             FROM {$this->_table['mock_paper']} AS MP
             JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+            JOIN {$this->_table['product_mock_r_paper']} AS pmp ON MP.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
         ";
 
-        $order_by = " GROUP BY MP.MpIdx ORDER BY MP.MpIdx";
+        $order_by = " GROUP BY MP.MpIdx ORDER BY pmp.OrderNum";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -146,9 +147,12 @@ class MockExamFModel extends WB_Model
      */
     public function listQuestion($prod_code = '', $mp_idx = '')
     {
-        $arr_condition = ['IN' => ['MP.MpIdx' => explode(',', $mp_idx)]];
+        $arr_condition = [
+            'EQ' => ['pmp.ProdCode' => $prod_code],
+            'IN' => ['MP.MpIdx' => explode(',', $mp_idx)]
+        ];
         $column = "
-            MP.MpIdx, MQ.MqIdx, AnswerNum, QuestionNO,
+            MP.MpIdx, MQ.MqIdx, MP.AnswerNum, MQ.QuestionNO,
             MQ.FilePath AS QFilePath, MP.FilePath AS PFilePath, MP.RealQuestionFile AS filetotal,
             IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS FrontRealQuestionFile,
             MQ.RealQuestionFile AS file, MT.Answer
@@ -157,9 +161,10 @@ class MockExamFModel extends WB_Model
         $from = "
             FROM {$this->_table['mock_paper']} AS MP
             JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
-            LEFT OUTER JOIN {$this->_table['mock_answertemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND ProdCode = ".$prod_code."
+            JOIN {$this->_table['product_mock_r_paper']} AS pmp ON MP.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['mock_answertemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND MT.ProdCode = ".$prod_code."
         ";
-        $order_by = " ORDER BY MP.MpIdx, QuestionNO ";
+        $order_by = " ORDER BY pmp.OrderNum, QuestionNO ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

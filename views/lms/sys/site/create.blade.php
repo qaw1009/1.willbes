@@ -106,6 +106,18 @@
                         <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="">GNB메뉴 사용여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 item">
+                        <div class="radio">
+                            <input type="radio" id="is_gnb_y" name="is_gnb_use" class="flat" value="Y" required="required" title="GNB 메뉴 사용여부" @if($method == 'POST' || $data['IsGnbUse']=='Y')checked="checked"@endif/> <label for="is_gnb_y" class="input-label">사용</label>
+                            <input type="radio" id="is_gnb_n" name="is_gnb_use" class="flat" value="N" @if($data['IsGnbUse']=='N')checked="checked"@endif/> <label for="is_gnb_n" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="pg_ccd">PG사 <span class="required">*</span>
                     </label>

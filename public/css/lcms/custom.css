@@ -513,6 +513,12 @@ footer {
 .footer_fixed .sidebar-footer {
     padding-top: 15px;
 }
+.footer_fixed.nav-md footer .pull-left {
+    margin-left: 230px;
+}
+.footer_fixed.nav-sm footer .pull-left {
+    margin-left: 70px;
+}
 
 /* bar_tabs */
 ul.bar_tabs {

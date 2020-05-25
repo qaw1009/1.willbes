@@ -35,7 +35,6 @@ class AdminAuthHook
         '/lcms/auth/regist/update',
         '/lcms/common/searchOrganization/index',
         '/lcms/common/searchOrganization/listAjax',
-        //'/lcms/logs/viewer/',     // 관리자관리 > 시스템관리 > 로그뷰어 메뉴 추가
         '/sys/adminSettings/',
         '/pay/order/listAjax',
         '/service/coupon/issue/listAjax',
@@ -55,7 +54,7 @@ class AdminAuthHook
     public function authenticate()
     {
         // CI 전역변수 초기화
-        $vars = ['__auth' => [], '__settings' => [], '__menu' => []];
+        $vars = ['__auth' => [], '__settings' => [], '__menu' => [], '__gdata' => []];
 
         if (empty(uri_string()) === false && starts_with('/' . uri_string(), $this->excepts) === false) {
             if ($this->_CI->session->userdata('is_admin_login') !== true) {
@@ -142,6 +141,9 @@ class AdminAuthHook
                 // 현재 접속한 사이트 서브 도메인 세션 설정
                 $adminAuthService->setSessionAdminConnSites();
             }
+
+            // 5. 관리자 서비스별 공용 데이터 조회
+            $vars['__gdata'] = $adminAuthService->getGlobalData();
         }
 
         // 5. 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장

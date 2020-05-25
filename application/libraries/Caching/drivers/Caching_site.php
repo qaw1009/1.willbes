@@ -62,7 +62,8 @@ class Caching_site extends CI_Driver
                         and C.GroupCcd = "' . $_group_ccd['Campus'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
                   ), "N") as CampusCcdArr
                 , substring_index(SiteUrl, ".", 1) as SiteGroupId
-                , substring(replace(substring_index(SiteUrl, "/", 2), substring_index(SiteUrl, "/", 1), ""), 2) as SiteId                                                           
+                , substring(replace(substring_index(SiteUrl, "/", 2), substring_index(SiteUrl, "/", 1), ""), 2) as SiteId
+                , S.IsGnbUse                                                           
         ';
         $from = '
             from ' . $_table['site'] . ' as S 

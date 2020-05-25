@@ -37,6 +37,9 @@ class BaseStatsModel extends WB_Model
         'gateway' => 'lms_gateway',
         'gateway_log' => 'lms_gateway_access_log',
 
+        /*방문자*/
+        'visitor' => 'lms_visitor',
+        'visitor_sum' => 'lms_visitor_sum',
     ];
 
     public function __construct()

@@ -190,4 +190,24 @@ class LmsAuthService extends AdminAuthService
             log_message('error', $e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage());
         }
     }
+
+    /**
+     * 관리자 사이트 공용 데이터 조회
+     * @return array
+     */
+    public function getGlobalData()
+    {
+        $chk_timestamp = time() - 3600;     // 1시간 이내 사용자
+        $results = [];
+
+        $query = /** @lang text */ '
+            select count(0) as VisitorCnt, ifnull(sum(if(MemIdx is null, 0, 1)), 0) as MemCnt, ifnull(sum(if(MemIdx is null, 1, 0)), 0) as GuestCnt
+            from lms_visitor
+            where AccessTms > ?
+        ';
+
+        $results['ActiveVisitor'] = $this->_db->query($query, [$chk_timestamp])->row_array();
+
+        return $results;
+    }
 }

@@ -42,6 +42,12 @@ abstract class AdminAuthService
     abstract protected function getAdminRole();
 
     /**
+     * 관리자 사이트 공용 데이터 조회
+     * @return array
+     */
+    abstract protected function getGlobalData();
+
+    /**
      * LCMS 전환 로그인 로그 저장, 접속 사이트 세션 갱신
      * @return void
      */

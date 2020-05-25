@@ -51,6 +51,7 @@
             </ul>
             <div id="tab1">
                 <div class="marking">
+                @php $_id=1; @endphp
                 @foreach($subject_list as $key => $val)
                         <h5>{{ $val['CcdName'] }}</h5>
                         <ul>
@@ -58,9 +59,10 @@
                             <li>
                                 <div>
                                     <label>{{ $val2 }}번</label>
-                                    <input type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
+                                    <input type="number" class="txt-answer" id="target_{{$_id}}" data-input-id="{{$_id}}" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
                                 </div>
                             </li>
+                            @php $_id++; @endphp
                             @endforeach
                         </ul>
                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
@@ -105,6 +107,12 @@
             location.href = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
         }
 
+        $(".txt-answer").keyup(function() {
+            if (this.value.length == this.maxLength) {
+                var id = $(this).data("input-id") + 1;
+                $('#target_'+id).focus();
+            }
+        });
     });
 
     function maxLengthCheck(object) {

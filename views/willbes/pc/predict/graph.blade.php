@@ -714,9 +714,9 @@
 
         if (act === 'M') {
             $('#survey3').parents('.question').css('display', '');
-            if (val === '2') {
+            /*if (val === '2') {    //(특정직렬 선택과목 제외)
                 $('#survey3').parents('.question').css('display', 'none');
-            }
+            }*/
 
             parent.resizeIframe(parent.document.getElementById('frm'));
         }
@@ -768,10 +768,10 @@
             Nwagon.chart(options);
         }
 
-        // 선택 과목 시험 체감 난이도
+        // 선택 과목 시험 체감 난이도  (특정직렬 선택과목 제외)
         if (typeof json['Group4'] !== 'undefined') {
             $('#survey3').html('');
-            if (val !== '2') {
+            /*if (val !== '2') {*/
                 options = {
                     'legend': {
                         names: json['Group4']['Title']
@@ -789,7 +789,7 @@
                     'increment': 10
                 };
                 Nwagon.chart(options);
-            }
+            /*}*/
         }
     }
 

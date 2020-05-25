@@ -227,7 +227,7 @@
 
         function moveMyPredict(){
             {{--alert('안정화 작업중입니다!');--}}
-            parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1353') }}');
+            parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1631') }}');
         }
 
         function examDeleteAjax() {
@@ -338,11 +338,11 @@
             var takenum = '';
             takenum = $('#TakeNumber').val();
             takenum = parseInt(takenum);
+            var take_mock_position = $("#TakeArea").val() + $("#TakeMockPart").val();
             if (takeNumChk(take_mock_position, takenum) != true) {
                 alert('올바른 응시번호가 아닙니다.');
                 return;
             }
-
 
             var _url = '';
             if(mode == 'NEW'){

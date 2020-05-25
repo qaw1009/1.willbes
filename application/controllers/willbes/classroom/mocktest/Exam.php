@@ -317,7 +317,10 @@ class Exam extends \app\controllers\FrontController
             }
         }
 
-        $arr_condition2 = ['IN' => ['MP.MpIdx' => explode(',', $data['productInfo']['MpIdx'])]];
+        $arr_condition2 = [
+            'EQ' => ['pmp.ProdCode' => $prod_code],
+            'IN' => ['MP.MpIdx' => explode(',', $data['productInfo']['MpIdx'])]
+        ];
         $qtCntList = $this->mockExamFModel->questionTempCnt($arr_condition2, $mr_idx);
         if(empty($qtCntList)==true){
             show_alert('문항이 등록되지 않았습니다.', 'close');

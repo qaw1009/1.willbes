@@ -88,7 +88,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1649_03.jpg" title="신청접수">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEBS">* 5월 설명회  신청접수</h3>
+                            <h3 class="NGEBS">* 6월 설명회  신청접수</h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="25%" />
                                 <col  />
@@ -126,7 +126,7 @@
                                                         //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                                     @endphp
                                                     @if(time() >= strtotime($reg_date. '+1 days'))
-                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @else
                                                         <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @endif

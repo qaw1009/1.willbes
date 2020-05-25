@@ -870,7 +870,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         // 8. 과목별 체감난이도
         $spSubjectList = [];
-        $arr_sq_idx = [68, 1, 45];  // 진행설문 비교 제외대상 설문항목식별자 (응시직렬, 전체적인시험난이도, 응시과목선택)
+        $arr_sq_idx = [68, 1, 45, 75];  // 진행설문 비교 제외대상 설문항목식별자 (응시직렬, 전체적인시험난이도, 응시과목선택)
         $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx, false);    // 진행설문결과
         $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1);   // 이전설문결과
 
@@ -925,7 +925,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $surveyList = [];
         if (empty($surveyData) === false) {
             $tmp_serial_answer = '';
-            $arr_serial_answer = [1, 3];   // 일반공채, 101단
+            $arr_serial_answer = [1, 2, 3];   // 일반공채, 101단
             $arr_p_sqidx = [29, 28];    // 한국사, 영어
 
             foreach ($surveyData as $row) {
@@ -934,7 +934,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 if (in_array($row['SerialAnswer'], $arr_serial_answer) === true && $row['GroupNumber'] == '3' && in_array($row['SqIdx'], $arr_p_sqidx) === false) {
                     // 일반공채, 101단일 경우 필수과목에서 한국사, 영어 이외의 과목 제외
                     continue;
-                } elseif ($row['SerialAnswer'] == '2' && $row['GroupNumber'] == '4') {
+                } elseif ($row['SerialAnswer'] == '5' && $row['GroupNumber'] == '4') {
                     // 경행경채일 경우 선택과목 제외
                     continue;
                 }

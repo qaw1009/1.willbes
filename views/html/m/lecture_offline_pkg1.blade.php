@@ -51,16 +51,10 @@
                 <option selected="selected">최근등록순</option>
                 <option value="과정순">과정순</option>
             </select>
-            <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
-                <option selected="selected">강좌명</option>
-                <option value="과목명">과목명</option>
-                <option value="교수명">교수명</option>
-                <option value="과정명">과정명</option>
-            </select>
         </div>
         <div class="willbes-Lec-Search NG width100p pl20 pr20 pb20 mt10">
             <div class="inputBox width100p p_re">
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
+                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="강의명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>
                 </button>

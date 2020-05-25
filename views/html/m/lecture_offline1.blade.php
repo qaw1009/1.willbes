@@ -68,16 +68,10 @@
                 <option selected="selected">과정순</option>
                 <option value="과정순">최근등록순</option>
             </select>
-            <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
-                <option selected="selected">강좌명</option>
-                <option value="과목명">과목명</option>
-                <option value="교수명">교수명</option>
-                <option value="과정명">과정명</option>
-            </select>
         </div>
         <div class="willbes-Lec-Search NG width100p pl20 pr20 pb20 mt10">
             <div class="inputBox width100p p_re">
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
+                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="강의명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>
                 </button>
@@ -128,7 +122,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>    
                                     <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
                                 </dl>
                                 <div class="w-buy">       

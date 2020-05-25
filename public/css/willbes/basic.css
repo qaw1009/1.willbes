@@ -604,6 +604,7 @@ select[disabled] {
 .minh1000 {
   min-height: 1000px !important;
 }
+.lh1_5 {line-height: 1.5 !important;}
 
 .mg-auto {margin:0 auto !important}
 .mg-zero,

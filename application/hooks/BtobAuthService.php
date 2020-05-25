@@ -119,4 +119,13 @@ class BtobAuthService extends AdminAuthService
     {
         // do nothing
     }
+
+    /**
+     * 관리자 사이트 공용 데이터 조회
+     * @return array
+     */
+    public function getGlobalData()
+    {
+        return [];
+    }
 }

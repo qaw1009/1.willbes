@@ -83,13 +83,13 @@
 
             <div class="sky">
                 <ul>
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky01.jpg"  title="" /></a></li>
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky02.jpg"  title="" /></a></li>  
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="" /></a></li>  
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="" /></a></li>  
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky05.jpg"  title="" /></a></li>  
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky06.jpg"  title="" /></a></li>  
-                    <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky07.jpg"  title="" /></a></li>                 
+                    <li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky01.jpg"  title="면접캠프 설명회" /></a></li>
+                    <li><a href="#sky02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky02.jpg"  title="찐 교수님 자세히보기" /></a></li>  
+                    <li><a href="#sky03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="인적성검사" /></a></li>  
+                    <li><a href="#sky04"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="사전조사서 특강" /></a></li>  
+                    <li><a href="#sky05"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky05.jpg"  title="참수리반" /></a></li>  
+                    <li><a href="#sky06"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky06.jpg"  title="무궁화반" /></a></li>  
+                    <li><a href="#sky07"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky07.jpg"  title="스파르타반" /></a></li>                 
                 </ul>
             </div>
 
@@ -111,11 +111,11 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt02">
+            <div class="evtCtnsBox evt02" id="sky01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_02.jpg" title="면점캠프 설명회">
                 <div class="request" id="request">
                     <div class="requestL">
-                        <h3 class="NGEBS">* 6월 설명회  신청접수</h3>
+                        <h3 class="NGEBS">* 면접캠프 설명회  신청접수</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                             <col width="25%" />
                             <col  />
@@ -168,10 +168,8 @@
                                     <ul>
                                         <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></li>
                                         <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT3" value="101단" /> <label for="CT3">101단</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT4" value="경행경채" /> <label for="CT4">경행경채</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT6" value="법학경채" /> <label for="CT6">법학경채</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT3" value="101단" /> <label for="CT3">101단</label></li>                                      
+                                        <li><input type="radio" name="register_data2" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></li>                                    
                                         <li><input type="radio" name="register_data2" id="CT7" value="기타" /> <label for="CT7">기타</label></li>
                                     </ul>
                                 </td>
@@ -217,30 +215,60 @@
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04.jpg" title="면접캠프의 강점"/>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1h.png" alt="" class="on">
+                </div> 
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2h.png" alt="" class="on">
+                </div>  
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3h.png" alt="" class="on">
+                </div>  
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4h.png" alt="" class="on">
+                </div>  
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5h.png" alt="" class="on">
+                </div>  
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6.png" alt="" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6h.png" alt="" class="on">
+                </div>               
             </div>
 
-            <div class="evtCtnsBox evt05">
+            <div class="evtCtnsBox evt05" id="sky02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_05.jpg" usemap="#Map1646_professor" title="면접캠프 찐~교수진" border="0">
                 <map name="Map1646_professor" id="Map1646_professor">
-                    <area shape="rect" coords="155,542,253,571" href="#" />
-                    <area shape="rect" coords="274,542,373,570" href="#" />
-                    <area shape="rect" coords="395,542,493,570" href="#" />
-                    <area shape="rect" coords="627,542,727,570" href="#" />
-                    <area shape="rect" coords="748,542,845,571" href="#" />
-                    <area shape="rect" coords="867,542,967,570" href="#" />
-                    <area shape="rect" coords="185,922,283,951" href="#" />
-                    <area shape="rect" coords="445,922,542,950" href="#" />
-                    <area shape="rect" coords="564,922,664,950" href="#" />
+                    <area shape="rect" coords="155,542,253,571" href="https://police.willbes.net/pass/professor/show/prof-idx/50562/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="274,542,373,570" href="https://police.willbes.net/pass/professor/show/prof-idx/50720/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="395,542,493,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51019/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="627,542,727,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51019/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="748,542,845,571" href="https://police.willbes.net/pass/professor/show/prof-idx/51018/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="867,542,967,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51023/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="185,922,283,951" href="https://police.willbes.net/pass/professor/show/prof-idx/50300/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="445,922,542,950" href="https://police.willbes.net/pass/professor/show/prof-idx/51021/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="564,922,664,950" href="https://police.willbes.net/pass/professor/show/prof-idx/51022/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
                 </map>
             </div>
 
-            <div class="evtCtnsBox evt06">
+            <div class="evtCtnsBox evt06" id="sky03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_06.jpg" usemap="#Map1646a" title="검사신청하기 " border="0"/>
                 <map name="Map1646a" id="Map1646a">
-                    <area shape="rect" coords="749,365,988,432" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
-                    <area shape="rect" coords="749,1037,988,1104" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1070" target="_blank" />
+                    <area shape="rect" coords="750,369,988,434"  href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
                 </map>
             </div>
+
+            <div class="evtCtnsBox evt06s" id="sky04">
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_06s.jpg" usemap="#Map1646ab" border="0" />
+                <map name="Map1646ab" id="Map1646ab">
+                    <area shape="rect" coords="750,369,988,434"  href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
+                </map> 
+            </div>        
 
             <div class="evtCtnsBox evt07Tab">
                 <ul class="tabs NGEB">
@@ -266,8 +294,8 @@
                     </map> 
                 </div>
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c3.jpg" usemap="#Map" title="4월 심화이론 일반경찰" border="0">
-                    <map name="Map" id="Map">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c3.jpg" usemap="#Map1646_tab03" title="4월 심화이론 일반경찰" border="0"> 
+                    <map name="Map1646_tab03" id="Map1646_tab03">
                         <area shape="rect" coords="470,561,647,598" href="javascript:alert('Comimg Soon :-)')" />
                         <area shape="rect" coords="710,666,970,804" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
                     </map>                   

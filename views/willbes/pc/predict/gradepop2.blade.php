@@ -17,6 +17,7 @@
                 </div>
             </div>
             <div class="omrWarp">
+                @php $_id=1; @endphp
                 @foreach($subject_list as $key => $val)
                 <div class="qMarking">
                     <h3>{{ $val['CcdName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h3>
@@ -35,8 +36,9 @@
                             <td>답안입력 </td>
                             @foreach($newQuestion['numset'][$val['PpIdx']] as $key2 => $val2)
                             <td>
-                                <input type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
+                                <input type="number" class="txt-answer" id="target_{{$_id}}" data-input-id="{{$_id}}" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
                             </td>
+                                @php $_id++; @endphp
                             @endforeach
                         </tr>
                     </table>
@@ -54,6 +56,15 @@
 
     <script>
         var $all_regi_form = $('#all_regi_form');
+        $(document).ready(function(){
+            $(".txt-answer").keyup(function() {
+                if (this.value.length == this.maxLength) {
+                    var id = $(this).data("input-id") + 1;
+                    $('#target_'+id).focus();
+                }
+            });
+        });
+
         function lastSave(){
             var vali_msg = '';
             var chk = /^[1-4]+$/i;

@@ -1,6 +1,6 @@
 <footer>
     <div class="pull-left">
-        @if($__auth['Role']['RoleIdx'] == '1030' && empty($__gdata['ActiveVisitor']) === false)
+        @if(SUB_DOMAIN == 'lms' && $__auth['Role']['RoleIdx'] == '1030' && empty($__gdata['ActiveVisitor']) === false)
             <span class="pr-5">[현재접속]</span>
             비회원 : {{ number_format($__gdata['ActiveVisitor']['GuestCnt']) }} <span class="pl-5 pr-5">|</span>
             회원 : {{ number_format($__gdata['ActiveVisitor']['MemCnt']) }} <span class="pl-5 pr-5">|</span>

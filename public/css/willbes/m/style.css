@@ -1585,9 +1585,18 @@ body.memBody #Footer {
 .lecTable .oneBox {
     border-bottom:1px solid #e4e4e4;
     margin-bottom:20px;
-    padding-bottom:10px
+    padding-bottom:10px;
 }
+.lecTable .oneBox * {line-height: 2;}
 .lecTable .oneBox:last-child {border-bottom:0; margin-bottom:0;padding-bottom:0}
+.lecTable a.lecView {
+    background: url("../../../img/willbes/m/main/icon_search_btn2.png") no-repeat right center;
+    display:inline-block !important;
+    padding-right:25px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+}
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;
@@ -1845,7 +1854,9 @@ body.memBody #Footer {
 }
 .willbes-Lec-Search input[type="text"] {
     height: 40px;
+    color:#ccc;    
 }
+.willbes-Lec-Search input[type="text"]:focus { color:#333}
 .willbes-Lec-Search button.search-Btn {
     background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0 0;
     background-size: 100%;
@@ -2687,10 +2698,9 @@ body.memBody #Footer {
     font-size:14px;
 }
 .basketBox .basketPrice ul {
-    background:#948888;
-    color:#1d1d1d;
+    background:#0c74ae;
+    color:#fff;
     padding:20px;
-    border:1px solid #898989;
 }
 .basketBox .basketPrice li {
     margin-bottom:10px;
@@ -2698,18 +2708,24 @@ body.memBody #Footer {
 }
 .basketBox .basketPrice li span {
     float:right;
-    color:#ed1c24;
+    color:#fafe98;
 }
 .basketBox .basketPrice li:last-child span {
-    color:#0d74ae;
+    color:#d0eefe;
 }
 .basketBox .basketPrice li:last-child {
     font-size:16px;
     padding-top:10px;
-    border-top:1px solid #898989;
+    border-top:1px solid #308ec3;
     margin-bottom:0;
 }
 .basketBox .basketPrice li:after {content:""; display:block; clear:both}
+
+.basketBox .infoBox {margin-top:10px}
+.basketBox .infoBox p {padding-bottom:10px; border-bottom:1px solid #e4e4e4; margin-bottom:10px}
+.basketBox .infoBox p input {width: 20px; height: 20px;}
+.basketBox .infoBox ul {display:none}
+.basketBox .infoBox li {margin-left: 15px; list-style: disc; font-size:12px; font-weight: normal;}
 
 .basketListBox {
     margin:10px 20px 0;

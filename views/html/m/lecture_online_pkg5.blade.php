@@ -347,7 +347,7 @@
         
         <div class="lec-btns w100p">
             <ul>
-                <li><a href="#none" onClick='alert("도서구입비 소득공제 ...")' class="btn-purple-line">바로결제</a></li>
+                <li><a href="#none"  onclick="openWin('LecBuyMessagePop')" class="btn-purple-line">바로결제</a></li>
             </ul>
         </div>
     </div>

@@ -367,11 +367,12 @@
             </div>
         </div>
         
-        <div class="lec-btns">
+        <div class="lec-btns w25p">
             <ul>
-                <li><a href="#none" onClick='alert("강좌 또는 교재를 선택하세요.")' class="btn_black_line">강좌목록</a></li>
+                <li><a href="#none" onClick='lecture_offline1' class="btn_black_line">강좌목록</a></li>
+                <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn_gray">방문결제</a></li>
                 <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn-purple">장바구니</a></li>
-                <li><a href="#none" onClick='alert("도서구입비 소득공제 ...")' class="btn-purple-line">바로결제</a></li>
+                <li><a href="#none" onclick="openWin('LecBuyMessagePop')" class="btn-purple-line">바로결제</a></li>
             </ul>
         </div>
     </div>
@@ -395,6 +396,29 @@
             <div class="MessageBtns">
                 <a href="#none" class="btn_gray">예</a>
                 <a href="#none" class="btn_white">계속구매</a>
+            </div>
+            {{--체크 안했을 경우--}}
+            <div class="Message NG">
+                상품을 선택해주세요.
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray f_none">확인</a>
+            </div>
+            {{--체크 했을 경우--}}
+            <div class="Message NG">
+                방문접수를 신청하겠습니까?
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray">확인</a>
+                <a href="#none" class="btn_white">취소</a>
+            </div>
+            {{--접수 완료 시--}}
+            <div class="Message NG">
+                접수가 완료되었습니다.<br>
+                * 학원으로 방문해주시기 바랍니다.
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray f_none">확인</a>
             </div>
         </div>
         <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>

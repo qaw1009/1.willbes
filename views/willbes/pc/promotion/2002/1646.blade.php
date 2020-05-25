@@ -52,6 +52,24 @@
 
         .evt03,.evt04,.evt05 {background:#f0f0f0}
 
+        .evt04 {position:relative;}
+        .evt04 .circle01{position:absolute;left:50%;top:19%;margin-left:-100px;}
+        .evt04 .circle02{position:absolute;left:65%;top:35%;margin-left:-100px;}
+        .evt04 .circle03{position:absolute;left:65%;top:65%;margin-left:-100px;}
+        .evt04 .circle04{position:absolute;left:50%;top:80%;margin-left:-100px;}
+        .evt04 .circle05{position:absolute;left:35%;top:65%;margin-left:-100px;}
+        .evt04 .circle06{position:absolute;left:35%;top:35%;margin-left:-100px;}
+
+        .evt04 div {}
+        .evt04 div a img.on {display:none}
+        .evt04 div a img.off {display:block}
+        .evt04 div a.active img.on,
+        .evt04 div a:hover img.on {display:block}
+        .evt04 div a.active img.off,
+        .evt04 div a:hover img.off {display:none}
+        .evt04 div:after {content:""; display:block; clear:both}
+
+
         .evt07Tab {background:#fff}
         .evt07Tab ul {width:920px; margin:0 auto}
         .evt07Tab li { display:inline; float:left; width:33.3%}
@@ -87,9 +105,9 @@
                     <li><a href="#sky02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky02.jpg"  title="찐 교수님 자세히보기" /></a></li>  
                     <li><a href="#sky03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="인적성검사" /></a></li>  
                     <li><a href="#sky04"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="사전조사서 특강" /></a></li>  
-                    <li><a href="#sky05"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky05.jpg"  title="참수리반" /></a></li>  
-                    <li><a href="#sky06"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky06.jpg"  title="무궁화반" /></a></li>  
-                    <li><a href="#sky07"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky07.jpg"  title="스파르타반" /></a></li>                 
+                    <li><a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky05.jpg"  title="참수리반" /></a></li>  
+                    <li><a href="#tab02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky06.jpg"  title="무궁화반" /></a></li>  
+                    <li><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky07.jpg"  title="스파르타반" /></a></li>                 
                 </ul>
             </div>
 
@@ -215,29 +233,41 @@
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04.jpg" title="면접캠프의 강점"/>
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1h.png" alt="" class="on">
+                <div class="circle01">
+                    <a href="cc01">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1h.png" alt="" class="on">
+                    </a>    
                 </div> 
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2h.png" alt="" class="on">
+                <div class="circle02">
+                    <a href="cc02">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2h.png" alt="" class="on">
+                    </a>    
                 </div>  
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3h.png" alt="" class="on">
+                <div class="circle03">
+                    <a href="cc03">                                 
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3h.png" alt="" class="on">
+                    </a>    
                 </div>  
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4h.png" alt="" class="on">
+                <div class="circle04">
+                    <a href="cc04">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4h.png" alt="" class="on">
+                    </a>
                 </div>  
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5h.png" alt="" class="on">
+                <div class="circle05">
+                    <a href="cc05">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5h.png" alt="" class="on">
+                    </a>   
                 </div>  
-                <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6h.png" alt="" class="on">
+                <div class="circle06">
+                    <a href="cc06">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6.png" alt="" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6h.png" alt="" class="on">
+                    </a>    
                 </div>               
             </div>
 

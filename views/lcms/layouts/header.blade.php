@@ -42,7 +42,7 @@
     <link href="/public/vendor/animate.css/animate.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/public/css/lcms/style.min.css" rel="stylesheet">
-    <link href="/public/css/lcms/custom.css" rel="stylesheet">
+    <link href="/public/css/lcms/custom.css?ver={{time()}}" rel="stylesheet">
     <!-- show loading indicator -->
     <link href="/public/vendor/loading-indicator/css/showLoading.css" rel="stylesheet" type="text/css">
     <!--/ CSS -->

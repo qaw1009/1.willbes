@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- Data Laboratory[방문자]</h5>
+    <h5>- Data Laboratory[접속]</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -54,14 +54,15 @@
     </form>
 
     {{-- 차트보기 --}}
-    <ul class="nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li class="active" role="presentation"><a href="#chart_view" role="tab" data-toggle="tab"><strong>차트보기</strong></a></li>
-        <li role="presentation"><a href="#data_view" role="tab" data-toggle="tab"><strong>데이터보기</strong></a></li>
+    <a name="chart_view"></a>
+    <ul class="nav nav-tabs bar_tabs mt-50" role="tablist">
+        <li class="active" role="presentation"><a href="#chart_view" role="tab"><strong>차트보기</strong></a></li>
+        <li role="presentation"><a href="#data_view" role="tab"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="chart_view_area">
         <div class="x_content">
-            <div class="form-group">
+            <div class="form-group no-border-bottom">
                 <div class="col-md-12">
                     <div id="visitor_count" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
                         <canvas id="visitor_count_stats"></canvas>
@@ -70,9 +71,18 @@
             </div>
         </div>
 
-        <div class="x_content">
-            <p></p>
-            <div class="form-group">
+        <div class="x_content mt-20">
+            <div class="form-group no-border-bottom">
+                <div class="col-md-12">
+                    <div id="visitor_app_count" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
+                        <canvas id="visitor_app_count_stats"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="x_content mt-20">
+            <div class="form-group no-border-bottom">
                 <div class="col-md-7">
                     <div id="visitor_site" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
                         <canvas id="visitor_site_stats"></canvas>
@@ -88,17 +98,17 @@
     </div>
 
     {{-- 데이터보기 --}}
-    <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li role="presentation"><a href="#chart_view" role="tab" data-toggle="tab"><strong>차트보기</strong></a></li>
-        <li class="active" role="presentation"><a href="#data_view" role="tab" data-toggle="tab"><strong>데이터보기</strong></a></li>
+    <a name="data_view"></a>
+    <ul class="tabs-site-code nav nav-tabs bar_tabs mt-50" role="tablist">
+        <li role="presentation"><a href="#chart_view" role="tab"><strong>차트보기</strong></a></li>
+        <li class="active" role="presentation"><a href="#data_view" role="tab"><strong>데이터보기</strong></a></li>
     </ul>
 
     <div class="x_panel form-horizontal" id="data_view_area">
         <div class="x_content">
-            <div class="form-group">
-                <p></p>
-                <div class="col-md-5 form-inline">
-                    <strong>[기간별 방문자현황]</strong>
+            <div class="form-group no-border-bottom">
+                <div class="col-md-3 form-inline pl-0">
+                    <strong>[기간별 회원/비회원 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_count_table" class="table table-striped table-bordered">
                             <thead>
@@ -106,6 +116,21 @@
                                 <th class="text-center">날짜</th>
                                 <th class="text-center">회원</th>
                                 <th class="text-center">비회원</th>
+                                <th class="text-center">합계</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-3 form-inline pl-0">
+                    <strong>[기간별 PC/모바일 접속현황]</strong>
+                    <div class="x_content">
+                        <table id="list_app_count_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-center">날짜</th>
                                 <th class="text-center">PC</th>
                                 <th class="text-center">모바일</th>
                                 <th class="text-center">합계</th>
@@ -116,14 +141,14 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4 form-inline">
-                    <strong>[사이트별 방문자현황]</strong>
+                <div class="col-md-3 form-inline pr-0">
+                    <strong>[사이트별 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_site_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
                                 <th class="text-center">사이트</th>
-                                <th class="text-center">방문자수</th>
+                                <th class="text-center">접속수</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -137,14 +162,14 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-3 form-inline">
-                    <strong>[플랫폼별 방문자현황]</strong>
+                <div class="col-md-3 form-inline pr-0">
+                    <strong>[플랫폼별 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_platform_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
                                 <th class="text-center">플랫폼</th>
-                                <th class="text-center">방문자수</th>
+                                <th class="text-center">접속수</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -166,7 +191,7 @@
         $(document).ready(function() {
             var $search_form = $('#search_form');
             var $data_count = [], $data_site = [], $data_platform = [];   // 각 항목의 데이터 결과 변수
-            var $datatable_count, $datatable_site, $datatable_platform;
+            var $datatable_count, $datatable_app_count, $datatable_site, $datatable_platform;
 
             function getStats($type) {
                 var data = $.extend($search_form.serializeArray(), {});
@@ -196,6 +221,7 @@
                     $mobile_cnt.push(item.MobileCnt);
                 });
 
+                // 회원/비회원 접속 현황
                 var config_count = {
                     type: 'line',
                     data: {
@@ -213,18 +239,6 @@
                             borderColor: window.chartColors.blue,
                             data: $guest_cnt,
                         }, {
-                            label: 'PC',
-                            fill: false,
-                            backgroundColor: window.chartColors.orange,
-                            borderColor: window.chartColors.orange,
-                            data: $pc_cnt,
-                        }, {
-                            label: '모바일',
-                            fill: false,
-                            backgroundColor: window.chartColors.green,
-                            borderColor: window.chartColors.green,
-                            data: $mobile_cnt,
-                        }, {
                             label: '총합',
                             fill: true,
                             backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
@@ -236,7 +250,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '기간별 방문자현황'
+                            text: '기간별 회원/비회원 접속현황'
                         },
                         tooltips: {
                             mode: 'index',
@@ -265,7 +279,79 @@
                                 display: true,
                                 scaleLabel: {
                                     display: true,
-                                    labelString: '방문자수'
+                                    labelString: '접속수'
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback:
+                                        function(value) {
+                                            return  value.toLocaleString();
+                                        }
+                                }
+                            }]
+                        }
+                    }
+                };
+
+                // PC/모바일 사이트 접속 현황
+                var config_app_count = {
+                    type: 'line',
+                    data: {
+                        labels: $base_date,
+                        datasets: [{
+                            label: 'PC',
+                            fill: false,
+                            backgroundColor: window.chartColors.orange,
+                            borderColor: window.chartColors.orange,
+                            data: $pc_cnt,
+                        }, {
+                            label: '모바일',
+                            fill: false,
+                            backgroundColor: window.chartColors.green,
+                            borderColor: window.chartColors.green,
+                            data: $mobile_cnt,
+                        }, {
+                            label: '총합',
+                            fill: true,
+                            backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.grey,
+                            data: $visitor_cnt,
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: '기간별 PC/모바일 접속현황'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                                }
+                            }
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '기간'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '접속수'
                                 },
                                 ticks: {
                                     beginAtZero: true,
@@ -289,7 +375,7 @@
                 var config_site = {
                     labels: $site_name,
                     datasets: [{
-                        label: '방문자수',
+                        label: '접속수',
                         backgroundColor: color(window.chartColors.grey2).alpha(0.5).rgbString(),
                         borderColor: window.chartColors.grey2,
                         borderWidth: 1,
@@ -307,7 +393,7 @@
                 var config_platform = {
                     labels: $platform_name,
                     datasets: [{
-                        label: '방문자수',
+                        label: '접속수',
                         backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
                         borderColor: window.chartColors.grey,
                         borderWidth: 1,
@@ -318,6 +404,10 @@
                 canvas_clear('visitor_count');
                 var ctx_count = document.getElementById('visitor_count_stats').getContext('2d');
                 window.myLine = new Chart(ctx_count, config_count);
+
+                canvas_clear('visitor_app_count');
+                var ctx_app_count = document.getElementById('visitor_app_count_stats').getContext('2d');
+                window.myLine = new Chart(ctx_app_count, config_app_count);
 
                 canvas_clear('visitor_site');
                 var ctx_site = document.getElementById('visitor_site_stats').getContext('2d');
@@ -331,7 +421,7 @@
                         },
                         title: {
                             display: true,
-                            text: '사이트별 방문자현황'
+                            text: '사이트별 접속현황'
                         },
                         tooltips: {
                             mode: 'index',
@@ -371,7 +461,7 @@
                         },
                         title: {
                             display: true,
-                            text: '플랫폼별 방문자현황'
+                            text: '플랫폼별 접속현황'
                         },
                         tooltips: {
                             mode: 'index',
@@ -408,7 +498,7 @@
 
             function datatableExe() {
                 $datatable_count = $("#list_count_table").DataTable({
-                    dom: 'Pfrtip',
+                    dom: 'Pfrtp',
                     order: [[0, 'asc']],
                     ordering: true,
                     serverSide: false,
@@ -424,6 +514,24 @@
                         }},
                         {'data': 'GuestCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return '<strong>' + addComma(data) + '</strong>';
+                        }},
+                        {'data': 'VisitorCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                            return '<strong>' + addComma(data) + '</strong>';
+                        }}
+                    ]
+                });
+
+                $datatable_app_count = $("#list_app_count_table").DataTable({
+                    dom: 'Pfrtp',
+                    order: [[0, 'asc']],
+                    ordering: true,
+                    serverSide: false,
+                    ajax: false,
+                    searching: false,
+                    data: $data_count,
+                    columns: [
+                        {'data': 'BaseDate', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                            return '<span class="black">' + data + '</span>';
                         }},
                         {'data': 'PcCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return '<strong>' + addComma(data) + '</strong>';
@@ -494,6 +602,7 @@
 
             function datatableReset() {
                 $datatable_count.destroy();
+                $datatable_app_count.destroy();
                 $datatable_site.destroy();
                 $datatable_platform.destroy();
                 datatableExe();

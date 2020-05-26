@@ -1559,7 +1559,7 @@ body.memBody #Footer {
 .lecTable tr td:last-child {
     padding-right: 20px;
 }
-.lecTable tr td.w-data * {line-height: 1.6;}
+.lecTable tr td.w-data {line-height: 1.6;}
 .lecTable tr td.w-data a {
     display: block;
 }

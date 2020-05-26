@@ -201,12 +201,13 @@ class LmsAuthService extends AdminAuthService
         $results = [];
 
         $query = /** @lang text */ '
-            select count(0) as VisitorCnt, ifnull(sum(if(MemIdx is null, 0, 1)), 0) as MemCnt, ifnull(sum(if(MemIdx is null, 1, 0)), 0) as GuestCnt
+            select ifnull(sum(if(MemIdx is null, 0, 1)), 0) as MemCnt, ifnull(sum(if(MemIdx is null, 1, 0)), 0) as GuestCnt
+                , (select count(0) from lms_visitor where AccessTms > ?) ActiveCnt
             from lms_visitor
-            where AccessTms > ?
+            where VisitDate = ?
         ';
 
-        $results['ActiveVisitor'] = $this->_db->query($query, [$chk_timestamp])->row_array();
+        $results['ActiveVisitor'] = $this->_db->query($query, [$chk_timestamp, date('Ymd')])->row_array();
 
         return $results;
     }

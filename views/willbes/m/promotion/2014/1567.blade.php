@@ -170,7 +170,7 @@
 
     <div id="tab01" class="evtCtnsBox">
         <div class="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_01.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_01.jpg" alt="" >
         </div>
         <div class="evt02">
             <ul class="price NSK-Black">

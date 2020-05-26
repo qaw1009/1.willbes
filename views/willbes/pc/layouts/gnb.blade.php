@@ -8,17 +8,17 @@
     //$_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
     $_gnb_logo = $_gnb_size == 'md' ? img_url('gnb/logo.gif') : img_url('gnb/logo' . $_gnb_img_size . '.gif');
 
-    //사이트정보 GNB 메뉴 사용여부로 결정
-    $_is_gnb_use = 'Y';
-    if(empty(config_app('IsGnbUse')) === false) {
-        if(config_app('IsGnbUse') === 'Y') {
-            $_is_gnb_use = 'Y';
+    //사이트정보 내비게이션 사용여부로 결정
+    $_is_navi_use = 'Y';
+    if(empty(config_app('IsNaviUse')) === false) {
+        if(config_app('IsNaviUse') === 'Y') {
+            $_is_navi_use = 'Y';
         } else {
-            $_is_gnb_use = 'N';
+            $_is_navi_use = 'N';
         }
     }
 @endphp
-    @if($_is_gnb_use === 'Y')
+    @if($_is_navi_use === 'Y')
         <div id="Gnb" class="NGR Gnb-{{ $_gnb_size }}">
             <div class="toggle-Btn gnb-{{ $_gnb_open }}">
                 <a href="#none">

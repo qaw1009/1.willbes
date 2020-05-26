@@ -108,12 +108,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">GNB메뉴 사용여부 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="">내비게이션 사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" id="is_gnb_y" name="is_gnb_use" class="flat" value="Y" required="required" title="GNB 메뉴 사용여부" @if($method == 'POST' || $data['IsGnbUse']=='Y')checked="checked"@endif/> <label for="is_gnb_y" class="input-label">사용</label>
-                            <input type="radio" id="is_gnb_n" name="is_gnb_use" class="flat" value="N" @if($data['IsGnbUse']=='N')checked="checked"@endif/> <label for="is_gnb_n" class="input-label">미사용</label>
+                            <input type="radio" id="is_navi_y" name="is_navi_use" class="flat" value="Y" required="required" title="내비게이션 사용여부" @if($method == 'POST' || $data['IsNaviUse']=='Y')checked="checked"@endif/> <label for="is_navi_y" class="input-label">사용</label>
+                            <input type="radio" id="is_navi_n" name="is_navi_use" class="flat" value="N" @if($data['IsNaviUse']=='N')checked="checked"@endif/> <label for="is_navi_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>

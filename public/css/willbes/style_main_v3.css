@@ -1,0 +1,204 @@
+/*********************************************     Main Container : Main     *********************************************/
+
+/*ver3*/
+.mainV3 .tx-color {
+    color: #009ef5;
+}
+.mainV3 {background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_bg.jpg") no-repeat center top;}
+.mainV3 .will-Tit {
+    font-size: 18px !important; color:#595959 !important; border-color:#d5d5d5 !important;
+}
+.mainV3 .will-subTit {color:#a09994 !important; float:none !important}
+
+.mainV3 .Area1 {border-bottom:1px solid #ccc; border-top:1px solid #ccc; position: relative;}
+.mainV3 .Area1 .addList {width:1120px; margin: 0 auto; padding:7px 0}
+.mainV3 .Area1 .addList li { position:relative; display: inline; float: left; font-size: 14px; color:#737373; height: 33px; line-height: 33px; border-radius: 30px; padding:0 30px 0 20px; margin-right:10px}
+.mainV3 .Area1 .addList li:hover {color:#0a6db0; background:#f0f0f0;}
+.mainV3 .Area1 .addList li span {display:none; position:absolute; width:24px; height:24px; line-height:24px; text-align:center; top:3px; right:5px; 
+    vertical-align: top; cursor:pointer; font-size:16px; font-weight:bold; z-index:5;}
+.mainV3 .Area1 .addList li:hover span {display:block; color:#ff6565;}
+.mainV3 .Area1 span a.add { position: absolute; top:0; left:50%; margin-left:470px; height: 47px; line-height: 47px;
+    background:url("https://static.willbes.net/public/images/promotion/main/gate_icon01.png") no-repeat left center; padding-left:20px;
+}
+.mainV3 .Area1 .addList:after {content: ""; display: block; clear:both}
+
+.mainV3 .gateSearch {width:700px; margin:0 auto; text-align: center; padding-top:60px}
+.mainV3 .gateSearch div {position: relative; margin-top:24px}
+.mainV3 .gateSearch input[type=search] {border:10px solid #2364fe; width:700px; height:44px; line-height: 44px; color:#ccc; 
+    font-size:16px; float: left; padding-left:20px; border-radius: 50px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+@keyframes upDown{
+from{border-color:#2364fe}
+50%{border-color:#072877}
+to{border-color:#2364fe}
+}
+@-webkit-keyframes upDown{
+from{border-color:#2364fe}
+50%{border-color:#072877}
+to{border-color:#2364fe}
+}
+
+.mainV3 .gateSearch input:focus {border:10px solid #2364fe !important; color:#333}
+.mainV3 .gateSearch button {display:block; position: absolute; width:80px; font-size:0; text-indent: -9999px; top:10px; right:0; height:44px; line-height: 44px;
+    background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_search.png") no-repeat center center; 
+     z-index: 1;}
+.mainV3 .gateSearch:after {content: ""; display: block; clear: both;}
+
+.gate-add-popup .willbes-Layer-CartBox {height:auto;}
+.gate-add-popup .Layer-Tit {background: #333; text-align: center; color:#fff; height: 50px !important; line-height: 50px !important; font-weight: 900;}
+.gate-add-popup .gate-add-cts {overflow-y:scroll !important; padding:30px; height: 430px;}
+.gate-add-popup .gate-add-cts h5 {font-size:16px; font-weight: 900; margin-bottom: 10px;}
+.gate-add-popup .gate-add-cts ul {margin-bottom:20px}
+.gate-add-popup .gate-add-cts li {display: inline; float:left; width: 25%;}
+.gate-add-popup .gate-add-cts li a {display: block; border:1px solid #d0d0d0; text-align: center; height: 32px; line-height: 32px; margin-bottom:5px; margin-right:5px}
+.gate-add-popup .gate-add-cts li a:hover,
+.gate-add-popup .gate-add-cts li a.active {color:#fff; background:#0396cf; border:1px solid #0396cf;}
+.gate-add-popup .gate-add-cts ul:after {content: ""; display: block; clear:both} 
+.gate-add-popup .addBtn {width: 180px; margin:30px auto}
+.gate-add-popup .addBtn a {display: block; color:#fff; background:#0396cf; text-align: center; height: 40px; line-height: 40px; font-size: 18px; font-weight: 900;}
+
+.mainV3 .Area7 { background:#fff; margin-top:70px; padding-top:70px; margin-bottom:70px}
+.mainV3 .bar-banner {width:560px; height:106px; overflow: hidden; float: left;}
+.mainV3 .bar-banner .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.mainV3 .bar-banner .bx-wrapper .bx-pager {
+    bottom: inherit;
+    top: 8px;
+    padding-top: 0;
+}
+.mainV3 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.mainV3 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.mainV3 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a.active,
+.mainV3 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ffda38;
+    width: 30px;
+}
+.mainV3 .bar-banner .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #acacac;
+}
+
+.mainV3 .Area2 .will-Tit {
+    font-size: 18px !important; color:#2364fe !important;
+}
+.mainV3 .Area2 table {background: rgba(0,0,0,.65); display: block;}
+.mainV3 .Area2 table:hover {box-shadow: 10px 10px 20px 1px rgba(0,0,0,.2); }
+.mainV3 .Area2 th {background: rgba(0,0,0,.35); font-size: 14px; padding:20px 0; text-align: center; font-weight: bold; color:#fff; border-bottom:1px solid #403d3c}
+.mainV3 .Area2 td {padding:0 10px; border-bottom:1px solid #5a5855}
+.mainV3 .Area2 td a {display: inline-block; font-size:14px; margin-right:40px; color:#c7c6c6}
+.mainV3 .Area2 td a:hover {color:#fff;}
+.mainV3 .Area2 td a:last-child {margin-right:0}
+.mainV3 .Area2 td a img {vertical-align: top;}
+
+/* Main Container : Act3 */
+.mainV3 .Area3 {background: #eee; padding:70px 0}
+.mainV3 .Area3 .will-Tit {border:0}
+.mainV3 .Area3 span {display: inline-block;}
+.mainV3 .Area3 .sliderDayList {margin-left:-14px}
+.mainV3 .Area3 li {display: inline; float:left; width:calc(25% - 14px); margin-left:14px; margin-bottom:14px; cursor: pointer;}
+.mainV3 .Area3 .dDayBox { 
+    padding:30px;  
+    background: #fff;   
+}
+.mainV3 .Area3 .dTit {
+    font-size: 14px;
+    color: #464646;
+    line-height: 20px;
+    text-align: left;
+}
+.mainV3 .Area3 .dTit .w-date {font-size: 12px;}
+.mainV3 .Area3 .dDay {
+    font-size: 32px;
+    color:#0a6db0;
+    text-align: right;
+    float: right;
+    font-family: "Noto Sans KR Thin", "Noto Sans KR", "sans-serif" !important;
+}
+.mainV3 .Area3 .dDayBox:after,
+.mainV3 .Area3 .sliderDayList:after {content: ""; display: block; clear:both}
+.mainV3 .Area3 li:hover .dDayBox {background: #0a6db0; }
+.mainV3 .Area3 li:hover .dTit {color:#fff}
+.mainV3 .Area3 li:hover .dDay {color:#ffd200}
+
+
+.mainV3 .Area4 .NowWillbes {
+    float: left;
+    width: 540px;
+}
+.mainV3 .Area4 .NowWillbes .will-Tit {position: relative; margin-bottom:5px;}
+.mainV3 .Area4 .NowWillbes .will-Tit a {display: inline-block; float:right; text-align:right; font-size:13px; width: 50px; color:#737373}
+.mainV3 .Area4 .NowWillbes li {
+    line-height:27px; font-size: 13px; list-style:disc inside;
+}
+.mainV3 .Area4 .NowWillbes li a {
+    width: 100%;
+    color:#595959;
+}
+.mainV3 .Area4 .NowWillbes span {
+    display: inline-block;
+}
+.mainV3 .Area4 .NowWillbes .w-tit {
+    width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.mainV3 .Area4 .NowWillbes .w-new {font-size: 10px; padding:3px 5px; background: #009ef5; color:#fff; display: inline; border-radius: 4px; margin-left:5px}
+.mainV3 .Area4 .NowWillbes .w-date {
+    width: 90px;
+    text-align: right;
+    float: right;
+    color:#a3a3a3;
+}
+.mainV3 .Area4 .WhyWillbes {
+    float: right;
+    width: 556px;
+}
+.mainV3 .Area4 .WhyWillbes div {display: inline-block; width:270; height: 180px; overflow: hidden;}
+.mainV3 .Area4 .WhyWillbes div:first-child {margin-right:10px}
+
+.mainV3 .Area4 dl:after {content: ""; display: block; clear: both;}
+
+
+.mainV3 .Area5 .acadList li {display:inline; float:left; width: 40%; font-size: 14px;; margin-bottom:10px}
+.mainV3 .Area5 .acadList li:nth-of-type(even) {width:60%;}
+.mainV3 .Area5 .acadList li strong { width: 120px; display: inline-block; text-align: center; font-weight: bold; background:#9c9c9c; color:#fff;
+    height: 30px; line-height: 30px; margin-right:15px}
+.mainV3 .Area5 .acadList li a {display: inline-block; color:#595959}
+.mainV3 .Area5 .acadList li span {padding:0 10px; color:#ccc}
+.mainV3 .Area5 .acadList ul:after {content: ""; display: block; clear: both;}
+
+.mainV3 .Area5 .imgBox {
+    margin-top:50px;
+}
+.mainV3 .Area5 .imgBox li {
+    display: inline;float: left;width: 50%;
+}
+.mainV3 .Area5 .imgBox li a {display: block; text-align: center; border:1px solid #ccc; padding:10px 0 }
+.mainV3 .Area5 .imgBox li:last-child a {border-left:0}
+.mainV3 .Area5 .imgBox ul:after {content: ""; display: block; clear: both;}
+
+
+.mainV3 .Area6 .will-Tit {margin-bottom: 0; border:0}
+.mainV3 .Area6 .CScenterBox {
+    padding: 50px 0 50px 90px;
+    border:7px solid #e3e3e3;   
+    color:#595959;
+}
+.mainV3 .Area6 .CScenterBox li {display: inline; float: left; font-size: 18px; line-height:32px;}
+.mainV3 .Area6 .CScenterBox li span {vertical-align: top; color:#ff0000} 
+.mainV3 .Area6 .CScenterBox li:last-child span {color:#009ef5}
+.mainV3 .Area6 .CScenterBox li strong {font-size: 40px; vertical-align: bottom; font-family: "Noto Sans KR Thin", "Noto Sans KR", "sans-serif" !important; margin-right:30px; color:#009ef5; letter-spacing: 1;}
+.mainV3 .Area6 .CScenterBox ul:after {content: ""; display: block; clear: both;}
+
+.njobBn {
+    width:100%; bottom:0; position: fixed; left:50%; margin-left:-1000px; text-align: center; z-index: 100;
+}

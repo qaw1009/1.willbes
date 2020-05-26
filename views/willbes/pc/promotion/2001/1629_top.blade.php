@@ -62,7 +62,7 @@
 
 
     <div class="talkShow">
-        <a href="https://police.willbes.net/promotion/index/cate/3002/code/1362" target="_blank" >
+        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank" >
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_bn4.png" alt="적중 이벤트">
         </a>
     </div>

@@ -29,6 +29,7 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인-2019</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_v2') }}" target="_blank">통합메인-2020</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_v3') }}" target="_blank">통합메인-2020-01</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>
@@ -465,6 +466,9 @@
                 <li><a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_2') }}" target="_blank">상담실 > 심층상담예약 > 사전정보입력</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_3') }}" target="_blank">상담실 > 심층상담예약 > 상담예약확인</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_1') }}" target="_blank">상담실 > 1:1 전화상담 > 상담일자</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_2') }}" target="_blank">상담실 > 1:1 전화상담 > 사전정보입력</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_3') }}" target="_blank">상담실 > 1:1 전화상담 > 상담예약확인</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니</a></li>
                 <li><a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제 > 결제하기</a></li>

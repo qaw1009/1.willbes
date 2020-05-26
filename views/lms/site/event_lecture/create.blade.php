@@ -451,9 +451,7 @@
                                 <div class="col-md-11">
                                     <div class="form-group form-inline">
                                         <div class="col-md-11">
-{{--                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '') !!}--}}
-                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', 'required', '', false, $onLineSite_list) !!}
-{{--                                            <button type="button" data-edpidx="{{$row['EdpIdx']}}" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>--}}
+                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '', '', false, $onLineSite_list) !!}
                                             <button type="button" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
                                         </div>
                                     </div>

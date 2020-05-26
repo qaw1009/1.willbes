@@ -466,6 +466,9 @@
                 <li><a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_2') }}" target="_blank">상담실 > 심층상담예약 > 사전정보입력</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_3') }}" target="_blank">상담실 > 심층상담예약 > 상담예약확인</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_1') }}" target="_blank">상담실 > 1:1 전화상담 > 상담일자</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_2') }}" target="_blank">상담실 > 1:1 전화상담 > 사전정보입력</a></li>
+                <li><a href="{{ site_url('/home/html/counsel4_3') }}" target="_blank">상담실 > 1:1 전화상담 > 상담예약확인</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니</a></li>
                 <li><a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제 > 결제하기</a></li>

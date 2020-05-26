@@ -24,7 +24,7 @@ class SiteMenuModel extends WB_Model
      */
     public function listSiteMenu($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'MenuIdx, SiteCode, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, MenuUrl, UrlType, UrlTarget, MenuEtc, GroupOrderNum, OrderNum, IsUse';
+        $column = 'MenuIdx, SiteCode, MenuType, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, MenuUrl, UrlType, UrlTarget, MenuEtc, GroupOrderNum, OrderNum, IsUse';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
         return $this->_conn->getListResult($this->_table['site_menu'], $column, $arr_condition, $limit, $offset, $order_by);

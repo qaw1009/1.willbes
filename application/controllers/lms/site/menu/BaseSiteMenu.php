@@ -217,16 +217,22 @@ class BaseSiteMenu extends \app\controllers\BaseController
         }
 
         // 1depth 메뉴 조회
-        $menu_type = element('0', array_keys($this->_menu_type_code));  // 첫번째 메뉴타입 키값
-        $arr_condition = [
-            'EQ' => ['SiteCode' => $site_code, 'MenuDepth' => 1, 'MenuType' => $menu_type]
-        ];
-        $list = $this->siteMenuModel->listSiteMenu($arr_condition, null, null, ['GroupOrderNum' => 'asc']);
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'MenuDepth' => 1]];
+
+        // 모바일 메뉴일 경우 모든 메뉴구분 조회, 사이트 메뉴일 경우 첫번째 메뉴구분값만 조회
+        if ($this->_front_type == 'mobile') {
+            $arr_condition['IN']['MenuType'] = array_keys($this->_menu_type_all_code['mobile']);
+        } else {
+            $arr_condition['IN']['MenuType'] = (array) element('0', array_keys($this->_menu_type_code));    // 첫번째 메뉴타입 키값
+        }
+
+        $list = $this->siteMenuModel->listSiteMenu($arr_condition, null, null, ['MenuType' => 'asc', 'GroupOrderNum' => 'asc']);
 
         return $this->load->view('site/site_menu/group_reorder', [
             'site_code' => $site_code,
             'front_name' => $this->_front_name,
             'contr_name' => $this->_contr_name,
+            'arr_menu_type' => $this->_menu_type_code,
             'data' => $list
         ]);
     }

@@ -48,7 +48,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_02.jpg" alt="한덕현영어" usemap="#Map1297B" border="0" />
             <map name="Map1297B" id="Map1297B">
-                <area shape="rect" coords="279,610,840,688" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/164313" target="_blank" alt="수강신청하기">
+                <area shape="rect" coords="279,610,840,688" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/165432" target="_blank" alt="수강신청하기">
             </map>
         </div>
         <!--wb_cts02//-->
@@ -56,7 +56,7 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_01.jpg" alt="기미진국어" usemap="#Map1297A" border="0" />
             <map name="Map1297A" id="Map1297A">
-                <area shape="rect" coords="275,607,851,680" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/164303" target="_blank" alt="수강신청">
+                <area shape="rect" coords="275,607,851,680" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/165336" target="_blank" alt="수강신청">
             </map>
         </div>
         <!--wb_cts03//-->  

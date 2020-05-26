@@ -200,7 +200,7 @@ to{border-color:#2364fe}
 .mainV3 .Area6 .CScenterBox li {display: inline; float: left; font-size: 18px; line-height:32px;}
 .mainV3 .Area6 .CScenterBox li span {vertical-align: top; color:#ff0000} 
 .mainV3 .Area6 .CScenterBox li:last-child span {color:#009ef5}
-.mainV3 .Area6 .CScenterBox li strong {font-size: 40px; vertical-align: bottom; font-family: "Noto Sans KR Thin", "Noto Sans KR", "sans-serif" !important; margin-right:30px; color:#009ef5; letter-spacing: 1;}
+.mainV3 .Area6 .CScenterBox li strong {font-size: 40px; vertical-align: bottom; font-family: "Noto Sans KR Thin", "Noto Sans KR", "sans-serif" !important; margin-right:30px; color:#009ef5; letter-spacing:2px;}
 .mainV3 .Area6 .CScenterBox ul:after {content: ""; display: block; clear: both;}
 
 .njobBn {

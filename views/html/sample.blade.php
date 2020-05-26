@@ -29,6 +29,7 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인-2019</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_v2') }}" target="_blank">통합메인-2020</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_v3') }}" target="_blank">통합메인-2020-01</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>

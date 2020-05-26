@@ -17,6 +17,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
+                    <th>메뉴구분</th>
                     <th>그룹메뉴명</th>
                     <th>사용여부</th>
                     <th>정렬번호</th>
@@ -26,6 +27,7 @@
                 @foreach($data as $row)
                     <tr>
                         <td>{{ $loop->index }}</td>
+                        <td>{{ element($row['MenuType'], $arr_menu_type, '') }}</td>
                         <td>{{ $row['MenuName'] }}</td>
                         <td>{!! $row['IsUse'] == 'Y' ? '사용' : '<span class="red">미사용</span>' !!}</td>
                         <td><input type="text" name="group_order_num" class="form-control input-sm" value="{{ $row['GroupOrderNum'] }}" data-origin-group-order-num="{{ $row['GroupOrderNum'] }}" data-group-menu-idx="{{ $row['MenuIdx'] }}" style="width: 80px;"/></td>

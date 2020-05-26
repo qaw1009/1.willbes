@@ -214,7 +214,7 @@ class SiteModel extends WB_Model
             S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.MobileFooterInfo
                 , S.CommPcScript, S.CommMobileScript, S.CommAppScript
-                , S.IsCampus, S.IsUse, S.IsFrontUse, S.IsGnbUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
+                , S.IsCampus, S.IsUse, S.IsFrontUse, S.IsNaviUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
                   ), "") as CampusCcds
@@ -289,7 +289,7 @@ class SiteModel extends WB_Model
                 'OrderNum' => $row['OrderNum'],
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),
-                'IsGnbUse' => element('is_gnb_use', $input),
+                'IsNaviUse' => element('is_navi_use', $input),
                 'IsCampus' => element('is_campus', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -381,7 +381,7 @@ class SiteModel extends WB_Model
                 'CommAppScript' => base64_encode(element('comm_app_script', $input)),
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),
-                'IsGnbUse' => element('is_gnb_use', $input),
+                'IsNaviUse' => element('is_navi_use', $input),
                 'IsCampus' => element('is_campus', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

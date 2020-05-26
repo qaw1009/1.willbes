@@ -200,7 +200,7 @@
 
             <div class="lec-btns w100p">
                 <ul>
-                    <li><a href="#none" class="btn-purple-line">바로결제</a></li>
+                    <li><a href="#none" class="btn-purple-line">방문결제 접수</a></li>
                 </ul>
             </div>
 

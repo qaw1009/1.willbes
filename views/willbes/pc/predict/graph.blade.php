@@ -73,7 +73,7 @@
                                 <td>{{ number_format((int)$val2['PickNum']) }} ({{ number_format((int)$val2['TakeNum']) }})</td>
                             </tr>
                             <tr>
-                                <th>2019 2차 경쟁률</th>
+                                <th>2020 1차 경쟁률</th>
                                 <td>{{ $val2['CompetitionRateNow'] }}</td>
                             </tr>
                             <tr>

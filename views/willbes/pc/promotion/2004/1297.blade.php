@@ -10,14 +10,13 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1160px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1160px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .wb_cts01 {background:#5f4b99 url("https://static.willbes.net/public/images/promotion/2019/07/1297_top_bg.jpg") center top  no-repeat}

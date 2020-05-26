@@ -4,7 +4,9 @@
 .mainV3 .tx-color {
     color: #009ef5;
 }
-.mainV3 {background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_bg.jpg") no-repeat center top;}
+.mainV3 {background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_bg.jpg") no-repeat center top;
+    background-repeat: no-repeat; background-position: center top;
+}
 .mainV3 .will-Tit {
     font-size: 18px !important; color:#595959 !important; border-color:#d5d5d5 !important;
 }

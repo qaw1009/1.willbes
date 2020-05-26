@@ -8,7 +8,9 @@
 .mainV3 .tx-color {
     color: #009ef5;
 }
-.mainV3 {background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_bg.jpg") no-repeat center top;}
+.mainV3 {/*background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_bg.jpg") no-repeat center top;*/
+    background-repeat: no-repeat; background-position: center top;
+}
 .mainV3 .will-Tit {
     font-size: 18px !important; color:#595959 !important; border-color:#d5d5d5 !important;
 }
@@ -553,6 +555,10 @@ to{border-color:#2364fe}
         <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_full.gif" alt="N job"></a>
     </div>
 </div>
-
 <!-- End Container -->
+
+<script type="text/javascript"> 
+    var images = ['gate_v3_bg1.jpg', 'gate_v3_bg2.jpg', 'gate_v3_bg3.jpg']; 
+    $('.mainV3').css({'background-image': 'url(https://static.willbes.net/public/images/promotion/main/' + images[Math.floor(Math.random() * images.length)] + ')'}); 
+</script>
 @stop

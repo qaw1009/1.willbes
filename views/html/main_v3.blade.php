@@ -62,7 +62,7 @@ to{border-color:#2364fe}
 .gate-add-popup .addBtn {width: 180px; margin:30px auto}
 .gate-add-popup .addBtn a {display: block; color:#fff; background:#0396cf; text-align: center; height: 40px; line-height: 40px; font-size: 18px; font-weight: 900;}
 
-.mainV3 .Area7 { background:#fff; margin-top:70px; padding-top:70px; margin-bottom:70px}
+.mainV3 .Area7 { background:#fff; padding:50px 0; margin-top:70px}
 .mainV3 .bar-banner {width:560px; height:106px; overflow: hidden; float: left;}
 .mainV3 .bar-banner .bx-wrapper .bx-pager {
     float: right;

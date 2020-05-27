@@ -192,6 +192,9 @@ class OffLecture extends \app\controllers\FrontController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
+        // input parameter
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
         $arr_condition = [
             'EQ' => [
                 'IsUse' => 'Y',
@@ -236,6 +239,7 @@ class OffLecture extends \app\controllers\FrontController
         $data['ProfReferData'] = json_decode($data['ProfReferData'], true);
 
         $this->load->view('site/off_lecture/show', [
+            'arr_input' => $arr_input,
             'learn_pattern' => $this->_learn_pattern,
             'data' => $data
         ]);

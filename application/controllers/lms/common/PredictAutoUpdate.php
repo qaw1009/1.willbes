@@ -20,7 +20,7 @@ class PredictAutoUpdate extends \app\controllers\BaseController
      */
     public function index($params = [])
     {
-        $predict_idx = (empty($params[0]) === true) ? '100003' : $params[0];
+        $predict_idx = (empty($params[0]) === true) ? '100004' : $params[0];
         return $this->load->view('predict/gradeprocess/data_auto_update_script',[
             'predict_idx' => $predict_idx
         ]);

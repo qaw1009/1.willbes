@@ -123,7 +123,7 @@
                             </ul>
                         </div>
                         <div>
-                            <h5>ㆍ N잡</h5>
+                            <h5>ㆍ N잡/e창업</h5>
                             <ul>
                                 <li><a href="#none" class="favor-cate-each" data-key="2014_3114" data-url={{ front_app_url('/home/index/cate/3114', 'njob') }}>e-커머스</a></li>
                             </ul>

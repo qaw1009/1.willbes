@@ -2124,6 +2124,25 @@ body.memBody #Footer {
 .willbes-Layer-Black .AddlecMore {
     margin: 20px 0;
 }
+
+/*강좌상세보기 팝업*/
+.willbes-Layer-Black .LecDetailBox {
+    border:1px solid #ccc;    
+    line-height: 1.5;    
+    height: 420px; 
+    overflow-y: auto; 
+    padding:20px !important;  
+}
+.willbes-Layer-Black .LecDetailBox h5 {
+    font-size: 14px;
+    margin:10px 0;
+    padding-bottom:3px;
+    border-bottom:1px dotted #ccc;
+}
+.willbes-Layer-Black .LecDetailBox h5:first-child {
+    margin:0 0 10px;
+}
+
 .willbes-Layer-PassBox600 {
     max-width: 600px;
 }
@@ -2606,23 +2625,6 @@ body.memBody #Footer {
 .w-data-pkg {border-top:1px solid #edebeb; padding:20px 0}
 .w-data-pkg:first-child {border-top:0; padding-top:0}
 .w-data-pkg:last-child {padding-bottom:0}
-
-#InfoForm .LecDetailBox {
-    border:1px solid #ccc;    
-    line-height: 1.5;    
-    height: 420px; 
-    overflow-y: auto; 
-    padding:20px !important;  
-}
-#InfoForm .LecDetailBox h5 {
-    font-size: 14px;
-    margin:10px 0;
-    padding-bottom:3px;
-    border-bottom:1px dotted #ccc;
-}
-#InfoForm .LecDetailBox h5:first-child {
-    margin:0 0 10px;
-}
 
 .basketBox {
     position: fixed;

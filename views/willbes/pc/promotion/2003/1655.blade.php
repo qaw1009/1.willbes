@@ -34,16 +34,16 @@
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .wb_top {background:#ececec url(https://static.willbes.net/public/images/promotion/2020/05/1656_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#ececec url(https://static.willbes.net/public/images/promotion/2020/05/1655_top_bg.jpg) no-repeat center top;}
 
-        .wb_03 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/05/1656_03_bg.jpg) no-repeat center top;}        
+        .wb_03 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/05/1655_03_bg.jpg) no-repeat center top;}        
         
         .wb_04 {background:#efefef;position:relative;}
         .check {color:#000; font-size:15px;font-weight:bold;position:absolute;left:50%;top:50%;margin-left:-417px;margin-top:325px;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-        .check a.infotxt:hover {background:#E31289;}             
+        .check a.infotxt:hover {background:#3E7A7A;}             
         
     </style>
     
@@ -54,7 +54,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>소방문제풀이PASS {{$arr_promotion_params['turn']}}기</span><br />
+                        <span>군무원 문제풀이PASS {{$arr_promotion_params['turn']}}기</span><br />
                         <span style="line-height:40px;font-size:25px;color:#000;font-wieght:bold;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -76,37 +76,37 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_top.jpg" alt="소방 파이널 패스 문풀"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_top.jpg" alt="군무원 파이널 패스 문풀"/>            
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_01.jpg" alt="기출문제풀이"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_01.jpg" alt="기출문제풀이"/>           
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_02.jpg" alt="단원별 문제풀이"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_02.jpg" alt="단원별 문제풀이"/>           
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_03.jpg" alt="동형모의고사"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_03.jpg" alt="동형모의고사"/>           
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_04.jpg" alt="수강신청" usemap="#Map1656A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_04.jpg" alt="수강신청" usemap="#Map1656A" border="0"/>
             <map name="Map1656A" id="Map1656A">
-                <area shape="rect" coords="663,605,950,717" href="javascript:go_PassLecture('165420');"  alt="수강신청" />
+                <area shape="rect" coords="663,605,950,717" href="javascript:go_PassLecture('165419');"  alt="수강신청" />
             </map>     
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 윌비스 소방문제풀이PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                        페이지 하단 윌비스 군무원문제풀이PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>                 
         </div>        
 
         <div class="evtCtnsBox wb_05" id="info">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1656_05.jpg" alt="이용안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1655_05.jpg" alt="이용안내" />
         </div>
 
     </div> 
@@ -119,7 +119,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
 

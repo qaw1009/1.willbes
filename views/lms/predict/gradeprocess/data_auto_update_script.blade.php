@@ -58,7 +58,6 @@
     //원점수반영
     function depth_1() {
         var _url = '{{ site_url('/predict/gradeprocessing/scoreMakeStep1Ajax') }}';
-        /*var _url = '{{ site_url('/common/predictAutoUpdate/depth_1') }}';*/
         ajaxSubmit($data_form, _url, function(ret) {
             if(ret.ret_cd) {
                 $("#txt_depth_1").text("실행").trigger("change");
@@ -70,7 +69,6 @@
     //조정점수반영
     function depth_2() {
         var _url = '{{ site_url('/predict/gradeprocessing/scoreMakeStep2Ajax') }}';
-        /*var _url = '{{ site_url('/common/predictAutoUpdate/depth_2') }}';*/
         ajaxSubmit($data_form, _url, function(ret) {
             if(ret.ret_cd) {
                 $("#txt_depth_2").text("실행");
@@ -85,7 +83,6 @@
         var d_write = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 
         var _url = '{{ site_url('/predict/gradeprocessing/scoreMakeStep3Ajax') }}';
-        /*var _url = '{{ site_url('/common/predictAutoUpdate/depth_1') }}';*/
         ajaxSubmit($data_form, _url, function(ret) {
             if(ret.ret_cd) {
                 $("#txt_depth_3").text("실행");

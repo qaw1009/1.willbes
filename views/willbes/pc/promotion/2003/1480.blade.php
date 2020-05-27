@@ -217,7 +217,7 @@
         </div>
 
         <div class="evtCtnsBox wb_02" id="buyLec">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.jpg" alt="수강신청" usemap="#Map1480B" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.gif" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
                 <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('163827');"  alt="수강신청" />
             </map>  

@@ -133,14 +133,15 @@ if (!function_exists('popup')) {
      * @param string $section
      * @param string $site_code
      * @param string $cate_code
+     * @param string $campus_ccd
      * @return string
      */
-    function popup($section, $site_code = '', $cate_code = '')
+    function popup($section, $site_code = '', $cate_code = '', $campus_ccd = '')
     {
         empty($site_code) === true && $site_code = config_app('SiteCode');
         empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = get_var(config_app('CateCode'), config_app('DefCateCode'));
 
-        return '<script src="' . app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section, 'www') . '"></script>';
+        return '<script src="' . app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section . '&campus_ccd=' . $campus_ccd, 'www') . '"></script>';
     }
 }
 

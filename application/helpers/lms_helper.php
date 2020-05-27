@@ -6,9 +6,10 @@ if (!function_exists('get_auth_site_codes')) {
      * 운영자 권한이 있는 사이트 코드 리턴
      * @param bool $is_with_name [코드명을 포함할지 여부, true : key = 사이트 코드, value = 코드명, false : value = 사이트 코드]
      * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
+     * @param bool $is_total_data [전체정보 리턴 여부, true = 사용]
      * @return array [사이트 코드 배열]
      */
-    function get_auth_site_codes($is_with_name = false, $is_intg_site_use = false)
+    function get_auth_site_codes($is_with_name = false, $is_intg_site_use = false, $is_total_data = false)
     {
         $_CI =& get_instance();
         $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
@@ -18,7 +19,17 @@ if (!function_exists('get_auth_site_codes')) {
             unset($sess_auth_site_codes[config_item('app_intg_site_code')]);
         }
 
-        return $is_with_name === false ? array_keys($sess_auth_site_codes) : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
+        $return_data = null;
+        if($is_total_data === true) {
+            $return_data = $sess_auth_site_codes;
+        } else if ($is_with_name === false) {
+            $return_data = array_keys($sess_auth_site_codes);
+        } else {
+            $return_data = array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
+        }
+
+        //return $is_with_name === false ? array_keys($sess_auth_site_codes) : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
+        return $return_data;
     }
 }
 
@@ -125,14 +136,14 @@ if (!function_exists('html_site_select')) {
      * @param string $disabled [select box disabled value]
      * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
      * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
+     * @param bool $is_campus [캠퍼스 data 리턴 여부, true = 사용]
      * @return string [select box HTML]
      */
-    function html_site_select($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $is_intg_site_use = false, $site_codes = [])
+    function html_site_select($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $is_intg_site_use = false, $site_codes = [], $is_campus = false)
     {
         // 운영자 권한이 있는 사이트 코드 목록
-        empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use);
+        empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use, $is_campus);
 
-        //
         $return_html = '<select class="form-control ' . $class . '" id="' . $ele_id . '" name="' . $ele_name . '" title="' . $title . '"';
         empty($required) === false && $return_html .= ' required="' . $required . '"';
         empty($disabled) === false && $return_html .= ' disabled="' . $disabled . '"';
@@ -140,7 +151,11 @@ if (!function_exists('html_site_select')) {
         $return_html .= '<option value="">사이트선택</option>' . PHP_EOL;
 
         foreach ($site_codes as $key => $val) {
-            $return_html .= '<option value="' . $key . '"' . (($key == $site_code) ? ' selected="selected"' : '') . '>' . $val . '</option>' . PHP_EOL;
+            if($is_campus === true) {
+                $return_html .= '<option value="' . $key . '"' . (($key == $site_code) ? ' selected="selected"' : '') . ' data-is-campus="' . $val['IsCampus'] . '">' . $val['SiteName'] . '</option>' . PHP_EOL;
+            } else {
+                $return_html .= '<option value="' . $key . '"' . (($key == $site_code) ? ' selected="selected"' : '') . '>' . $val . '</option>' . PHP_EOL;
+            }
         }
 
         $return_html .= '</select>' . PHP_EOL;

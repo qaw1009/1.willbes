@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-        .skyBanner {position:fixed; bottom:100px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; bottom:50px; right:10px;z-index:10;}
         .skyBanner li{margin-top:15px;}
 
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
@@ -133,6 +133,7 @@
         <ul class="skyBanner"> 
             <li><a href="#none" onClick='alert("COMING SOON!! ")'><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브"></a></li>           
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
+            <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1555_sky03.png" title="면접캠프"></a></li>
         </ul>   
 
 

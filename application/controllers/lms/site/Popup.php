@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Popup extends \app\controllers\BaseController
 {
-    protected $models = array('site/popup', 'sys/code');
+    protected $models = array('site/popup', 'sys/code', 'sys/site');
     protected $helpers = array();
 
     // 노출섹션 그룹공통코드
@@ -81,15 +81,19 @@ class Popup extends \app\controllers\BaseController
             $data['imageMaps'] = $arr_image_map_data;
         }
 
-        //배너노출섹션
+        // 배너노출섹션 조회
         $popup_info = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
+
+        // 캠퍼스 공통코드 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         $this->load->view("site/popup/create", [
             'method' => $method,
             'data' => $data,
             'p_idx' => $p_idx,
             'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
-            'popup_type' => $popup_info[$this->_groupCcd['popup_type']]
+            'popup_type' => $popup_info[$this->_groupCcd['popup_type']],
+            'arr_campus' => $arr_campus
         ]);
     }
 

@@ -19,9 +19,10 @@ class PopupFModel extends WB_Model
      * @param int $disp_code [노출섹션공통코드]
      * @param int $site_code [사이트코드]
      * @param string $cate_code [대분류 카테고리코드]
+     * @param string $campus_ccd [캠퍼스코드]
      * @return array
      */
-    public function findPopups($disp_code, $site_code, $cate_code = '')
+    public function findPopups($disp_code, $site_code, $cate_code = null, $campus_ccd = '')
     {
         if (empty($disp_code) === true || empty($site_code) === true) {
             return [];
@@ -37,6 +38,7 @@ class PopupFModel extends WB_Model
             'EQ' => [
                 'P.SiteCode' => $site_code,
                 'P.DispCcd' => $disp_code,
+                'P.CampusCcd' => $campus_ccd,
                 'P.IsUse' => 'Y',
                 'P.IsStatus' => 'Y',
                 'PC.CateCode' => $cate_code
@@ -48,7 +50,7 @@ class PopupFModel extends WB_Model
 
         $order_by = ['P.OrderNum' => 'asc', 'P.PIdx' => 'desc'];
 
-        if (empty($cate_code) === true) {
+        if (isset($cate_code) === false) {
             $result = $this->_conn->getListResult($this->_table['popup'] . ' as P', $column, $arr_condition, null, null, $order_by);
         } else {
             $result = $this->_conn->getJoinListResult($this->_table['popup'] . ' as P', 'left', $this->_table['popup_category'] . ' as PC'

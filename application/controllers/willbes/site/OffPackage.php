@@ -50,6 +50,9 @@ class OffPackage extends \app\controllers\FrontController
 
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
+        // 기본카테고리
+        $arr_base['category_default'] = $cate_code;
+
         // 캠퍼스 조회
         $arr_base['campus'] = [];
         if (config_app('CampusCcdArr') != 'N') {

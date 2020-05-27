@@ -125,16 +125,19 @@ class Predict2Model extends WB_Model
 
     /**
      * 등록된상품기준 과목정보 조회
+     * @param $arr_condition
      * @return mixed
      */
-    public function getRegPaper()
+    public function getRegPaper($arr_condition = [])
     {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
         $column = 'PRP.PredictIdx2, PRP.PpIdx, PP.PapaerName';
         $from = "
             FROM {$this->_table['product_predict2_r_paper']} AS PRP
             INNER JOIN {$this->_table['predict2_paper']} AS PP ON PRP.PpIdx = PP.PpIdx
         ";
-        return $this->_conn->query('select '. $column . $from)->result_array();
+        return $this->_conn->query('select '. $column . $from . $where . ' ORDER BY PP.PpIdx ASC')->result_array();
     }
 
     /**

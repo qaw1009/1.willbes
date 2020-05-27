@@ -268,13 +268,14 @@ if (!function_exists('front_app_url')) {
      * @param string $uri [URI]
      * @param string $sub_domain [서브도메인]
      * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @param bool $is_except_pass [학원사이트 URI 제외 여부]
      * @return string
      */
-    function front_app_url($uri, $sub_domain, $is_force_pass = false)
+    function front_app_url($uri, $sub_domain, $is_force_pass = false, $is_except_pass = false)
     {
         $uri_prefix = '';
         APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
-        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+        if ($is_except_pass === false && (config_app('IsPassSite') === true || $is_force_pass === true)) {
             $uri_prefix .= '/' . config_item('app_pass_site_prefix');
         }
 

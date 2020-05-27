@@ -294,7 +294,7 @@ class Order extends \app\controllers\FrontController
         $result = $this->orderFModel->procVisitOrder($this->_site_code, $input);
 
         $succ_msg = '접수가 완료되었습니다.' . PHP_EOL . '* 학원으로 방문해 주시기 바랍니다.';
-        $return_url = app_url('/classroom/order/index', 'www');
+        $return_url = front_app_url('/classroom/order/index', 'www', false, true);
 
         return $this->json_result($result, $succ_msg, $result, ['ret_url' => $return_url]);
     }

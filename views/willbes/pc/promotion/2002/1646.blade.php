@@ -68,6 +68,23 @@
         .evt04 div a:hover img.off {display:none}
         .evt04 div:after {content:""; display:block; clear:both}
 
+        /*레이어팝업*/
+        .Pstyle {
+            opacity: 0;
+            display: none;
+            position: relative;
+            width: auto;
+        }
+        .b-close {
+            position: absolute;
+            right: 10px;
+            top: 50px;
+            padding: 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .Pstyle .content {height:auto; width:auto;}        
+
         .evt06s {padding-bottom:100px;} 
 
         .evt07Tab {background:#fff}
@@ -80,7 +97,7 @@
         .evt07 {background:#0336c5}        
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-    </style>
+    </style> 
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <form name="regi_form_register" id="regi_form_register">
@@ -240,37 +257,37 @@
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04.jpg" title="면접캠프의 강점"/>
                 <div class="circle01">
-                    <a href="cc01">
+                    <a href="#none;">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c1h.png" alt="" class="on">
                     </a>    
                 </div> 
                 <div class="circle02">
-                    <a href="cc02">
+                    <a href="#none;">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c2h.png" alt="" class="on">
                     </a>    
                 </div>  
                 <div class="circle03">
-                    <a href="cc03">                                 
+                    <a href="#none;">                                 
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c3h.png" alt="" class="on">
                     </a>    
                 </div>  
                 <div class="circle04">
-                    <a href="cc04">
+                    <a href="#none;">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c4h.png" alt="" class="on">
                     </a>
                 </div>  
                 <div class="circle05">
-                    <a href="cc05">
+                    <a href="#none;">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c5h.png" alt="" class="on">
                     </a>   
                 </div>  
                 <div class="circle06">
-                    <a href="cc06">
+                    <a href="#none;">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6.png" alt="" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_04_c6h.png" alt="" class="on">
                     </a>    
@@ -280,16 +297,108 @@
             <div class="evtCtnsBox evt05" id="sky02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_05.jpg" usemap="#Map1646_professor" title="면접캠프 찐~교수진" border="0">
                 <map name="Map1646_professor" id="Map1646_professor">
-                    <area shape="rect" coords="155,542,253,571" href="https://police.willbes.net/pass/professor/show/prof-idx/50562/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="274,542,373,570" href="https://police.willbes.net/pass/professor/show/prof-idx/50720/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="395,542,493,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51019/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="627,542,727,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51019/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="748,542,845,571" href="https://police.willbes.net/pass/professor/show/prof-idx/51018/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="867,542,967,570" href="https://police.willbes.net/pass/professor/show/prof-idx/51023/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="185,922,283,951" href="https://police.willbes.net/pass/professor/show/prof-idx/50300/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="445,922,542,950" href="https://police.willbes.net/pass/professor/show/prof-idx/51021/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
-                    <area shape="rect" coords="564,922,664,950" href="https://police.willbes.net/pass/professor/show/prof-idx/51022/?cate_code=3010&subject_idx=1064&subject_name=%EB%A9%B4%EC%A0%91" target="_blank" />
+                    <area shape="rect" coords="155,542,253,571" href="javascript:go_popup1()" />
+                    <area shape="rect" coords="274,542,373,570" href="javascript:go_popup2()" />
+                    <area shape="rect" coords="395,542,493,570" href="javascript:go_popup3()" />
+                    <area shape="rect" coords="627,542,727,570" href="javascript:go_popup4()" />
+                    <area shape="rect" coords="748,542,845,571" href="javascript:go_popup5()" />
+                    <area shape="rect" coords="867,542,967,570" href="javascript:go_popup6()" />
+                    <area shape="rect" coords="185,922,283,951" href="javascript:go_popup7()" />
+                    <area shape="rect" coords="445,922,542,950" href="javascript:go_popup8()" />
+                    <area shape="rect" coords="564,922,664,950" href="javascript:go_popup9()" />
                 </map>
+            </div>
+
+             <!--레이어팝업-->
+             <div id="popup1" class="Pstyle">
+                <span class="b-close">X</span>
+                <div class="content1">                  
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c1.jpg" class="off" alt="" />    
+                </div> 
+            </div>    
+            <div id="popup2" class="Pstyle">
+                <span class="b-close">X</span>   
+                <div class="content2">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c2.jpg" class="off" alt="" /> 
+                </div> 
+            </div>
+            <div id="popup3" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content3">            
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c3.jpg" class="off" alt="" />  
+                </div>
+            </div>
+            <div id="popup4" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content4">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c4.jpg" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup5" class="Pstyle">
+                <span class="b-close">X</span>
+                <div class="content5">                  
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c5.jpg" class="off" alt="" />    
+                </div> 
+            </div>    
+            <div id="popup6" class="Pstyle">
+                <span class="b-close">X</span>   
+                <div class="content6">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c6.jpg" class="off" alt="" /> 
+                </div> 
+            </div>
+            <div id="popup7" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content7">            
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c7.jpg" class="off" alt="" />  
+                </div>
+            </div>
+            <div id="popup8" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content8">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c8.jpg" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup9" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content9">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c9.jpg" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup10" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content10">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri01.JPG" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup11" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content11">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri02.JPG" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup12" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content12">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri03.JPG" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup13" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content13">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri04.JPG" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup14" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content14">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri05.JPG" class="off" alt="" />                           
+                </div>
+            </div>
+            <div id="popup15" class="Pstyle">    
+                <span class="b-close">X</span>
+                <div class="content15">         
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri06.JPG" class="off" alt="" />                           
+                </div>
             </div>
 
             <div class="evtCtnsBox evt06" id="sky03">
@@ -315,26 +424,29 @@
             </div>
 
             <div class="evtCtnsBox evt07"> 
-                <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c1.jpg" usemap="#Map1646_tab01" title="4월 심화이론 일반경찰" border="0">
+                <div id="tab01">    
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c1.jpg" usemap="#Map1646_tab01" border="0" />
                     <map name="Map1646_tab01" id="Map1646_tab01">
-                        <area shape="rect" coords="470,562,647,598" href="javascript:alert('Comimg Soon :-)')" />
-                        <area shape="rect" coords="710,668,968,804" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
-                    </map>                    
+                        <area shape="rect" coords="280,561,458,598" href="javascript:go_popup10()" />
+                        <area shape="rect" coords="471,561,647,597" href="javascript:go_popup11()" />
+                        <area shape="rect" coords="661,561,837,598" href="javascript:go_popup12()" />
+                        <area shape="rect" coords="711,666,968,805" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165244" target="_blank" />
+                    </map>                   
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c2.jpg" usemap="#Map1646_tab02" title="4월 심화이론 일반경찰" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c2.jpg" usemap="#Map1646_tab02" border="0" />
                     <map name="Map1646_tab02" id="Map1646_tab02">
-                        <area shape="rect" coords="471,562,647,597" href="javascript:alert('Comimg Soon :-)')" />
-                        <area shape="rect" coords="707,667,968,804" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
-                    </map> 
+                        <area shape="rect" coords="376,562,552,597" href="javascript:go_popup13()" />
+                        <area shape="rect" coords="566,562,743,597" href="javascript:go_popup14()" />
+                        <area shape="rect" coords="712,662,971,804" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165245" target="_blank" />
+                    </map>
                 </div>
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c3.jpg" usemap="#Map1646_tab03" title="4월 심화이론 일반경찰" border="0"> 
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c3.jpg" usemap="#Map1646_tab03" border="0" />
                     <map name="Map1646_tab03" id="Map1646_tab03">
-                        <area shape="rect" coords="470,561,647,598" href="javascript:alert('Comimg Soon :-)')" />
-                        <area shape="rect" coords="710,666,970,804" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
-                    </map>                   
+                        <area shape="rect" coords="471,562,647,598" href="javascript:go_popup15()" />
+                        <area shape="rect" coords="711,665,973,806" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165247" target="_blank" />
+                    </map>         
                 </div>
             </div>
 
@@ -346,6 +458,7 @@
 	</div>
     <!-- End Container -->
 
+    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
 
           /*tab*/
@@ -417,7 +530,57 @@
             $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
         }
 
-       
+         /*레이어팝업*/     
 
-    </script>
-@stop 
+        function go_popup1() {
+            $('#popup1').bPopup();
+        }   
+        function go_popup2() {
+            $('#popup2').bPopup();
+        }
+        function go_popup3() {
+            $('#popup3').bPopup();
+        }
+        function go_popup4() {
+            $('#popup4').bPopup();
+        }
+        function go_popup5() {
+            $('#popup5').bPopup();
+        }        
+        function go_popup6() {
+            $('#popup6').bPopup();
+        }
+        function go_popup7() {
+            $('#popup7').bPopup();
+        }      
+        function go_popup8() {
+            $('#popup8').bPopup();
+        }
+        function go_popup9() {
+            $('#popup9').bPopup();
+        }
+        function go_popup10() {
+            $('#popup10').bPopup();
+        }
+        function go_popup11() {
+            $('#popup11').bPopup();
+        }        
+        function go_popup12() {
+            $('#popup12').bPopup();
+        }
+        function go_popup13() {
+            $('#popup13').bPopup();
+        }
+        function go_popup14() {
+            $('#popup14').bPopup();
+        }
+        function go_popup15() {
+            $('#popup15').bPopup();
+        } 
+
+        </script> 
+
+{{-- 프로모션용 스크립트 include --}}
+@include('willbes.pc.promotion.promotion_script')
+
+@stop   

@@ -50,7 +50,12 @@ class OffLecture extends \app\controllers\FrontController
             $arr_input['cate_code'] = array_get($arr_base['category'], '0.CateCode');
         }
 
-        $cate_code = element('cate_code', $arr_input, $this->_cate_code);
+        //$cate_code = element('cate_code', $arr_input, $this->_cate_code);
+        // 카테고리 셋팅 => 모바일의 경우 select box로 카테고리 전달
+        $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
+
+        $arr_base['category'] = [];
+        $arr_base['category_default'] = $cate_code;
 
         // 캠퍼스 조회
         $arr_base['campus'] = [];
@@ -60,7 +65,9 @@ class OffLecture extends \app\controllers\FrontController
                 return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
             }, explode(',', config_app('CampusCcdArr')));
         }
-        
+
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+
         // 카테고리가 있을 경우에만 조회
         if (empty($cate_code) === false) {
             // 과정 조회

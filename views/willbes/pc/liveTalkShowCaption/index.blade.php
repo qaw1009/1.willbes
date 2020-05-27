@@ -62,235 +62,91 @@
         <div class="viewArea">
             @foreach($arr_input['menu'] as $row)
                 <div class="viewbox" id="tab{{ $row['PstIdx'] }}">
-                    @if(empty($arr_input['data'][$row['Title']]) === false)
-                        @if($row['Title'] == '응시현황')
-                            <ul class="liveTab01 slide01">
-                                @foreach($arr_input['data']['응시현황'] as $arr_content)
-                                    <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="txt0{{ $loop->index }}">{{ $val }}</span>
-                                        @endforeach
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '19년2차 커트라인(일반남)')
-                            <ul class="liveTab03 slide01">
-                                @foreach($arr_input['data']['19년2차 커트라인(일반남)'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '19년2차 커트라인(일반여)')
-                            <ul class="liveTab03 slide01">
-                                @foreach($arr_input['data']['19년2차 커트라인(일반여)'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '19년2차 커트라인(전의경)')
-                            <ul class="liveTab03 slide01">
-                                @foreach($arr_input['data']['19년2차 커트라인(전의경)'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
+                    @php if(empty($arr_input['data'][$row['Title']]) === false) {
+                        switch ($row['Title']) {
+                            case '응시현황':
+                                echo '<ul class="liveTab01 slide01">';
+                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                        $loop = 1;
+                                        echo '<li>';
+                                            foreach($arr_content as $key => $val) {
+                                                echo "<span class='txt0{$loop}'>{$val}</span>";
+                                                $loop++;
+                                            }
+                                        echo '</li>';
+                                    }
+                                echo '</ul>';
+                                break;
+                            case '19년2차 커트라인(일반남)':
+                            case '19년2차 커트라인(일반여)':
+                            case '19년1차 커트라인(전의경)':
+                                echo '<ul class="liveTab03 slide01">';
+                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                        echo "<li>";
+                                        echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
+                                        echo "<span>{$arr_content[2]}</span>";
+                                        echo "<span class='st01'>{$arr_content[3]}</span>";
+                                        echo "<span>{$arr_content[4]}</span>";
+                                        echo "<span class='st01'>{$arr_content[5]}</span>";
+                                        echo "<span>{$arr_content[6]}</span>";
+                                        echo "<span class='st01'>{$arr_content[7]}</span>";
+                                        echo "</li>";
+                                    }
+                                echo '</ul>';
+                                break;
+                            case "실시간 질문1":
+                            case "실시간 질문2":
+                            case "실시간 질문3":
+                            case "실시간 질문4":
+                            case "실시간 질문5":
+                            case "실시간 질문6":
+                            case "실시간채점현황2":
+                            case "동향이슈 형소법":
+                            case "합격풀케어":
+                            case "6월 1일(월) 설명회":
+                            case "면접캠프 설명회":
+                            case "심화기출":
+                            case "인강PASS":
+                                echo '<ul class="liveTab02 slide01">';
+                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                        echo "<li>";
+                                        echo "<span class='st01'>{$arr_content[0]}</span>";
+                                        echo "</li>";
+                                    }
+                                echo '</ul>';
+                                break;
+                            case "실시간채점현황1";
+                                echo '<ul class="liveTab02 slide01">';
+                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                        echo "<li>";
+                                        echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
+                                        echo "<span>{$arr_content[2]}</span><span class='st01'>{$arr_content[3]}</span>";
+                                        echo "<span>{$arr_content[4]}</span><span class='st01'>{$arr_content[5]}</span>";
+                                        echo "<span>{$arr_content[6]}</span><span class='st01'>{$arr_content[7]}</span>";
+                                        echo "<span>{$arr_content[8]}</span><span class='st01'>{$arr_content[9]}</span>";
+                                        echo "<span>{$arr_content[10]}</span><span class='st01'>{$arr_content[11]}</span>";
+                                        echo "</li>";
+                                    }
+                                echo '</ul>';
+                                break;
 
-                        @elseif($row['Title'] == '실시간 질문1')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문1'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간 질문2')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문2'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간 질문3')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문3'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간 질문4')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문4'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간 질문5')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문5'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간 질문6')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간 질문6'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간채점현황1')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['실시간채점현황1'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '실시간채점현황2')
-                            <ul class="liveTab03 slide01">
-                                @foreach($arr_input['data']['실시간채점현황2'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '동향이슈 형소법')
-                            <ul class="liveTab03 slide01">
-                                @foreach($arr_input['data']['동향이슈 형소법'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '동향뉴스 형법')
-                            <ul class="liveTab02 slide01" >
-                                @foreach($arr_input['data']['동향뉴스 형법'] as $arr_content)
-                                    <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '동향뉴스 경찰학')
-                            <ul class="liveTab02 slide01" >
-                                @foreach($arr_input['data']['동향뉴스 경찰학'] as $arr_content)
-                                    <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '동향뉴스 영어')
-                            <ul class="liveTab02 slide01" >
-                                @foreach($arr_input['data']['동향뉴스 영어'] as $arr_content)
-                                    <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '동향뉴스 한국사')
-                            <ul class="liveTab02 slide01" >
-                                @foreach($arr_input['data']['동향뉴스 한국사'] as $arr_content)
-                                    <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                    </li>
-                                @endforeach
-                            </ul>
+                            case "동향이슈 형법":
+                            case "동향이슈 경찰학":
+                            case "동향이슈 영어":
+                            case "동향이슈 한국사":
+                                echo '<ul class="liveTab02 slide01">';
+                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                        echo "<li>";
+                                        echo "<span class='st01'>{$arr_content[0]}</span>{$arr_content[1]}";
+                                        echo "</li>";
+                                    }
+                                echo '</ul>';
+                                break;
 
-                        @elseif($row['Title'] == '합격풀케어')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['합격풀케어'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '6월 1일(월) 설명회')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['6월 1일(월) 설명회'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '면접캠프 설명회')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['면접캠프 설명회'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '심화기출')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['심화기출'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @elseif($row['Title'] == '인강PASS')
-                            <ul class="liveTab03 slide01" >
-                                @foreach($arr_input['data']['인강PASS'] as $arr_content)
-                                    <li>
-                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    @endif
+                            default;
+                            break;
+                        }
+                    }@endphp
                     <div class="bgimg"><img src="{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
                 </div>
             @endforeach

@@ -266,7 +266,7 @@ to{border-color:#2364fe}
                         </ul>
                     </div>
                     <div>
-                        <h5>ㆍ N잡</h5>
+                        <h5>ㆍ N잡/e창업</h5>
                         <ul>
                             <li><a href="#none">e-커머스</a></li>
                         </ul>
@@ -375,7 +375,7 @@ to{border-color:#2364fe}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">N잡</th>
+                        <th scope="row">N잡/e창업</th>
                         <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a></td>
                         <th>취업</th>
                         <td><a href="https://work.willbes.net/home/index/cate/3102" target="_blank">공기업</a></td>

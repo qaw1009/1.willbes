@@ -97,6 +97,8 @@
         </div>
     </div>
 
+    {!! popup('657001', $__cfg['SiteCode'], '0', $campus_code) !!}
+
     <script type="text/javascript">
         $(document).ready(function() {
             @if($is_tab_select === true)

@@ -28,7 +28,7 @@ class Popup extends \app\controllers\BaseController
         }
 
         // 데이터 조회
-        $data = $this->popupFModel->findPopups($arr_input['section'], $arr_input['site_code'], element('cate_code', $arr_input, 0));
+        $data = $this->popupFModel->findPopups($arr_input['section'], $arr_input['site_code'], element('cate_code', $arr_input, null), element('campus_ccd', $arr_input, ''));
         if (empty($data) === true) {
             return '';
         }

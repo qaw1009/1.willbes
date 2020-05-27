@@ -1,12 +1,15 @@
 @extends('lcms.layouts.master')
 @section('content')
+    <style>
+        .pt-12 {padding-top: 12px !important;}
+    </style>
     <h5>- 사이트 섹션별 팝업를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>--}}
-    {!! csrf_field() !!}
-    {!! method_field($method) !!}
-    <input type="hidden" name="p_idx" value="{{ $p_idx }}"/>
+        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>--}}
+        {!! csrf_field() !!}
+        {!! method_field($method) !!}
+        <input type="hidden" name="p_idx" value="{{ $p_idx }}"/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>팝업관리 정보</h2>
@@ -19,7 +22,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true, [], true) !!}
                     </div>
                     <div class="col-md-5">
                         <p class="form-control-static">• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
@@ -58,6 +61,15 @@
                             @endforeach
                         </select>
                     </div>
+                    <label class="control-label col-md-1-1 d-line pt-12" for="campus_ccd">캠퍼스</label>
+                    <div class="col-md-4 form-inline item ml-12-dot">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -87,11 +99,11 @@
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="disp_start_time" name="disp_start_time">
                                     @php
-                                    for($i=0; $i<=23; $i++) {
-                                        $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == substr($data['DispStartDatm'], 11, 2)) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                    }
+                                        for($i=0; $i<=23; $i++) {
+                                            $str = (strlen($i) <= 1) ? '0' : '';
+                                            $selected = ($i == substr($data['DispStartDatm'], 11, 2)) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        }
                                     @endphp
                                 </select>
                             </div>
@@ -167,19 +179,19 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn"-->
-                                <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="팝업 이미지">
-                                <!--/span>
-                            </div-->
+                            <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="팝업 이미지">
+                            <!--/span>
+                        </div-->
                         </div>
                     </div>
                     @if($method == 'PUT')
-                    <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                        <img src="{{$data['PopUpFullPath']}}{{$data['PopUpImgName']}}">
-                    </div>
-                    <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                        <b>{{$data['PopUpImgRealName']}}</b>
-                        {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['PIdx']}}"><i class="fa fa-times red"></i></a>--}}
-                    </div>
+                        <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
+                            <img src="{{$data['PopUpFullPath']}}{{$data['PopUpImgName']}}">
+                        </div>
+                        <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
+                            <b>{{$data['PopUpImgRealName']}}</b>
+                            {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['PIdx']}}"><i class="fa fa-times red"></i></a>--}}
+                        </div>
                     @endif
                 </div>
 
@@ -333,11 +345,27 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
+
+            $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
+
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                var is_campus = $(this).find(':selected').data('is-campus');
+                if(is_campus !== undefined && is_campus == 'Y') {
+                    //학원일 경우 전체 카테고리0으로 고정
+                    var html = '';
+                    html += '<span class="pr-10">전체카테고리';
+                    html += '	<input type="hidden" name="cate_code[]" value="0">';
+                    html += '</span>';
+                    $('#selected_category').html(html);
+                    $('#btn_category_search').hide();
+                } else {
+                    $('#btn_category_search').show();
+                }
             });
 
             // 카테고리 검색
@@ -426,6 +454,7 @@
                 @endif
                     return true;
             }
+
         });
     </script>
 @stop

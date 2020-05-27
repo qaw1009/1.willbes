@@ -696,8 +696,7 @@ class PredictModel extends WB_Model
                             ];
 
                             //print_r($addData2);
-
-                            if ($this->_conn->set($addData2)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesOrigin']) === false) {
+                            if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
                                 throw new \Exception('점수등록에 실패했습니다.');
                             }
                         }
@@ -1756,7 +1755,7 @@ class PredictModel extends WB_Model
                     FROM (
                         SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
                         FROM lms_predict_grades
-                        WHERE PredictIdx = 100003
+                        WHERE PredictIdx = {$PredictIdx}
                         GROUP BY PrIdx
                     ) AS A
                 ) AS B

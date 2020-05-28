@@ -193,7 +193,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where .= $this->addDefWhereOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
-        $set_query .= $from . $where . $offset_limit_sql;
+        $set_query .= $from . $where . $order_by_sql . $offset_limit_sql;
         $set_query .= ') AS m ' . $order_by_sql;
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 

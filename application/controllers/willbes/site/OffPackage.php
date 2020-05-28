@@ -172,7 +172,10 @@ class OffPackage extends \app\controllers\FrontController
             show_alert('판매가격 정보가 없습니다.', 'back');
         }
 
-        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,[]);   //패키지 하위 강좌 목록
+        //정렬
+        $order_by = ['B.IsEssential'=>'DESC', 'B.SubGroupName'=>'ASC'];
+
+        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
 
         foreach ($data_sublist as $idx => $row) {
             $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);

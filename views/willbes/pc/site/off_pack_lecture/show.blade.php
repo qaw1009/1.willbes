@@ -50,6 +50,11 @@
                 $sale_price = $data['ProdPriceData'][0]['SalePrice'];
                 $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
                 $sale_info = $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'];
+            } else {
+                $sale_type_ccd = 0;
+                $sale_price = 0;
+                $real_sale_price = 0;
+                $sale_info =0;
             }
         @endphp
 

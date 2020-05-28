@@ -38,7 +38,7 @@ class PopupFModel extends WB_Model
             'EQ' => [
                 'P.SiteCode' => $site_code,
                 'P.DispCcd' => $disp_code,
-                'P.CampusCcd' => $campus_ccd,
+                //'P.CampusCcd' => $campus_ccd,
                 'P.IsUse' => 'Y',
                 'P.IsStatus' => 'Y',
                 'PC.CateCode' => $cate_code
@@ -47,6 +47,13 @@ class PopupFModel extends WB_Model
                 'NOW() between ' => 'P.DispStartDatm and P.DispEndDatm'
             ]
         ];
+
+        if($campus_ccd === 'blank') {
+            //$arr_condition['RAW'] = array_merge($arr_condition['RAW'], ['P.CampusCcd IS' => ' NULL']);
+            $arr_condition['RAW'] = array_merge($arr_condition['RAW'], ['P.CampusCcd ' => ' ""']);
+        } else {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['P.CampusCcd' => $campus_ccd]);
+        }
 
         $order_by = ['P.OrderNum' => 'asc', 'P.PIdx' => 'desc'];
 

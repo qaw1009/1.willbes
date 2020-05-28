@@ -116,7 +116,7 @@
                                 echo '</ul>';
                                 break;
                             case "실시간채점현황1";
-                                echo '<ul class="liveTab02 slide01">';
+                                echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
                                         echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";

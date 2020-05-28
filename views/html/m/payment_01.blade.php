@@ -40,10 +40,13 @@
                         <td class="MoreBtn tx-center">></td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" class="p_re">
                             {{--학원단과--}}
+                            <div class="readingRoom">
+                                <a href="#none" onclick="openWin('readingRoomPop')">자매독서실 할인적용 ></a>
+                            </div>
                             <ul class="payLecList">
-                                <li><span class="off">단과</span> <a href="#none" class="readingRoom" onclick="openWin('readingRoomPop')">자매독서실 할인적용 ></a></li>
+                                <li><span class="off">단과</span></li>
                                 <li>PSAT<span class="row-line">|</span>실강<span class="row-line">|</span>20_기초입문 자료해석 석치수</li>
                                 <li><strong>정가(할인율)</strong> <span class="tx-blue">456,000원(↓0%)</span></li>
                                 <li><strong>실 결제금액</strong> <span class="tx-blue">456,000원</span><span class="line-through">(0원)</span></li>
@@ -348,7 +351,7 @@
 
             {{--자매독서실 팝업--}}
             <div id="readingRoomPop" class="willbes-Layer-Black">
-                <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 hauto fix">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h400 fix">
                     <a class="closeBtn" href="#none" onclick="closeWin('readingRoomPop')">
                         <img src="{{ img_url('m/calendar/close.png') }}">
                     </a>

@@ -682,9 +682,9 @@ class PredictModel extends WB_Model
                     }
                     $idx = $this->_conn->insert_id();
 
-                    if($TakeMockPart == 300){
-                        for($i=0; $i<5; $i++){
-                            // 데이터 등록
+                    for($i=0; $i<count($arrPoint); $i++){
+                        // 데이터 등록
+                        if ($arrPoint[$i] > 0) {
                             $addData2 = [
                                 'MemIdx' => 1000000,
                                 'PrIdx' => $idx,
@@ -695,29 +695,8 @@ class PredictModel extends WB_Model
                                 'OrgPoint' => $arrPoint[$i],
                             ];
 
-                            //print_r($addData2);
-
-                            if ($this->_conn->set($addData2)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesOrigin']) === false) {
+                            if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
                                 throw new \Exception('점수등록에 실패했습니다.');
-                            }
-                        }
-                    } else {
-                        for($i=0; $i<count($arrPoint); $i++){
-                            // 데이터 등록
-                            if ($arrPoint[$i] > 0) {
-                                $addData2 = [
-                                    'MemIdx' => 1000000,
-                                    'PrIdx' => $idx,
-                                    'PredictIdx' => $PredictIdx,
-                                    'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
-                                    'TakeMockPart' => $TakeMockPart,
-                                    'TakeArea' => $TakeArea,
-                                    'OrgPoint' => $arrPoint[$i],
-                                ];
-
-                                if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
-                                    throw new \Exception('점수등록에 실패했습니다.');
-                                }
                             }
                         }
                     }
@@ -1756,7 +1735,7 @@ class PredictModel extends WB_Model
                     FROM (
                         SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
                         FROM lms_predict_grades
-                        WHERE PredictIdx = 100003
+                        WHERE PredictIdx = {$PredictIdx}
                         GROUP BY PrIdx
                     ) AS A
                 ) AS B

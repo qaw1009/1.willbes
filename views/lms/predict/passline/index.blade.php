@@ -85,7 +85,7 @@
                     <tbody>
                         @foreach($dataSet as $key => $val)
                             @foreach($val as $key2 => $val2)
-                                <tr class="@if($val2['display'] == 'N') display-none @endif">
+                                <tr class="@if(empty($val2['display']) === false && $val2['display'] == 'N') display-none @endif">
                                     <td>
                                         <select name="IsUse[]" class="form-control mr-5">
                                             <option value="Y" @if($val2['IsUse'] == 'Y') selected @endif>사용</option>

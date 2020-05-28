@@ -34,10 +34,10 @@ class PopupModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
-            A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.OrderNum,
-            A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
-            D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
+                A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
+                A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.OrderNum,
+                A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+                D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName, A.CampusCcd, FN_CCD_NAME(A.CampusCcd) AS CampusName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

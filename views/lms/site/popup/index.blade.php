@@ -78,6 +78,7 @@
                     <th>No</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
+                    <th>캠퍼스</th>
                     <th>노출섹션</th>
                     <th>팝업구분</th>
                     <th>팝업명</th>
@@ -133,6 +134,7 @@
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                         return data === null ? '전체카테고리' : data.replace(/,/g, '<br/>');
                     }},
+                    {'data' : 'CampusName'},
                     {'data' : 'DispName'},
                     {'data' : 'PopUpTypeName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {

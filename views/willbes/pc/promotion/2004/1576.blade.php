@@ -24,18 +24,10 @@
         .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
         .skybanner ul li {padding-bottom:10px;}
 
-        .wb_cts01 {background:#cad9f7 url("https://static.willbes.net/public/images/promotion/2020/05/1576_top_bg.jpg")center top  no-repeat}
+        .wb_cts01 {background:#BC3578 url("https://static.willbes.net/public/images/promotion/2020/06/1576_top_bg.jpg")center top  no-repeat}
 
         .wb_cts02{background:#e8e7e5}
         .wb_cts04 {background:#e5f6fd}
-        .wb_cts03 {padding-bottom:100px}
-        .wb_cts05 {background:#fff; padding-bottom:100px}
-        .wb_cts05 ul {width:920px; margin:30px auto}
-        .wb_cts05 li a {display:block; color:#fff; font-size:20px; background:#000; border-radius:20px; padding:20px 0; margin-right:20px}        
-        .wb_cts05 li:last-child a {margin-right:0}
-        .wb_cts05 li a:hover { background:#6f2ebc; color:#ffdd96}
-        .wb_cts05 ul:after {content:""; display:block; clear:both}
-
         .wb_cts06 {background:#3e3e3e}   
 
         /* tip */
@@ -67,18 +59,18 @@
 
    <div class="skybanner">
         <ul>          
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271605" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271606&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271605" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271606&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
         </ul>
     </div>
 
     <div class="evtCtnsBox wb_cts01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1576_top.gif" title="윌비스 9급" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/06/1576_top.jpg" title="윌비스 9급" />
     </div>
 
     <!--wb_cts02//-->  
     <div class="evtCtnsBox wb_cts03">   
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1576_01.gif" title="커리큘럼" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/06/1576_01.gif" title="커리큘럼" />
     </div>
     <!--wb_cts03//-->    
     <div class="evtCtnsBox wb_cts03s">   
@@ -90,10 +82,11 @@
     </div>
     <!--wb_cts04//--> 
     <div class="evtCtnsBox wb_cts05">
-      <img src="https://static.willbes.net/public/images/promotion/2020/05/1576_04.jpg" usemap="#Map1576a" title="수강신청" border="0" />
-      <map name="Map1576a" id="Map1576a">
-        <area shape="rect" coords="262,605,853,689" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&course_idx=" target="_blank" onfocus='this.blur()'/>
-      </map>
+      <img src="https://static.willbes.net/public/images/promotion/2020/06/1576_04.jpg" usemap="#Map1576_apply"  title="수강신청" border="0" />
+      <map name="Map1576_apply" id="Map1576_apply">
+        <area shape="rect" coords="142,799,541,871" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043" target="_blank" />
+        <area shape="rect" coords="575,799,977,870" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046#none" target="_blank" />
+      </map> 
     </div>
     <!--wb_cts05//-->   
     <div class="evtCtnsBox wb_cts06">

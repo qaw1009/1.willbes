@@ -152,9 +152,29 @@
                                                                     ({{$sub_row['Amount']}}회차)
                                                                 </dt>
                                                             </dl>
+                                                            @if(empty($sub_row['Content5']) != true)
+                                                                <h5>수강대상</h5>
+                                                                <div class="tx-dark-gray mt20">
+                                                                    {!! $sub_row['Content5'] !!}
+                                                                </div>
+                                                            @endif
+                                                            <h5>강좌소개</h5>
                                                             <div class="tx-dark-gray mt20">
                                                                 {!! $sub_row['Content'] !!}
                                                             </div>
+                                                            @if(empty($sub_row['Content6']) != true)
+                                                                <h5>강좌효과</h5>
+                                                                <div class="tx-dark-gray mt20">
+                                                                    {!! $sub_row['Content6'] !!}
+                                                                </div>
+                                                            @endif
+                                                            @if(empty($sub_row['Content7']) != true)
+                                                                <h5>수강후기</h5>
+                                                                <div class="tx-dark-gray mt20">
+                                                                    {!! $sub_row['Content7'] !!}
+                                                                </div>
+                                                            @endif
+
                                                         </div>
                                                     </div>
                                                     <div class="dim" onclick="closeWin('InfoFormEss{{$sub_row['SubGroupName']}}_{{$sub_row['ProdCode']}}')"></div>
@@ -236,9 +256,29 @@
                                                                         ({{$sub_row['Amount']}}회차)
                                                                     </dt>
                                                                 </dl>
+                                                                @if(empty($sub_row['Content5']) != true)
+                                                                    <h5>수강대상</h5>
+                                                                    <div class="tx-dark-gray mt20">
+                                                                        {!! $sub_row['Content5'] !!}
+                                                                    </div>
+                                                                @endif
+                                                                <h5>강좌소개</h5>
                                                                 <div class="tx-dark-gray mt20">
                                                                     {!! $sub_row['Content'] !!}
                                                                 </div>
+                                                                @if(empty($sub_row['Content6']) != true)
+                                                                    <h5>강좌효과</h5>
+                                                                    <div class="tx-dark-gray mt20">
+                                                                        {!! $sub_row['Content6'] !!}
+                                                                    </div>
+                                                                @endif
+                                                                @if(empty($sub_row['Content7']) != true)
+                                                                    <h5>수강후기</h5>
+                                                                    <div class="tx-dark-gray mt20">
+                                                                        {!! $sub_row['Content7'] !!}
+                                                                    </div>
+                                                                @endif
+
                                                             </div>
                                                         </div>
                                                         <div class="dim" onclick="closeWin('InfoFormCho{{$sub_row['SubGroupName']}}_{{$sub_row['ProdCode']}}')"></div>

@@ -1893,7 +1893,8 @@ class PredictModel extends WB_Model
                     MA.PredictIdx,
                     MR.TakeMockPart,
                     MR.TakeArea,
-                    SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
+                    #SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
+                    SUM(IF(FIND_IN_SET(MA.Answer, MQ.RightAnswer) > 0, Scoring, '0')) AS OrgPoint
                 ";
 
                 $from = "

@@ -894,7 +894,9 @@ class SurveyModel extends WB_Model
      */
     public function getScore1($pridx, $PredictIdx){
         $column = "
-            pg.PpIdx, pc2.CcdName AS SubjectName, SUM(IF(pg.IsWrong = 'Y', Scoring, '0')) AS OrgPoint, AdjustPoint
+            pg.PpIdx, pc2.CcdName AS SubjectName, AdjustPoint,
+            #SUM(IF(pg.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
+            SUM(IF(FIND_IN_SET(pg.Answer, pq.RightAnswer) > 0, Scoring, '0')) AS OrgPoint
         ";
 
         $from = "
@@ -1680,9 +1682,12 @@ class SurveyModel extends WB_Model
      */
     public function predictQuestionCall($ppIdx, $PredictIdx, $pridx) {
         $column = "
-            pp.PpIdx, pq.PqIdx, AnswerNum, QuestionNO, RightAnswer, RealQuestionFile AS file, pa.Answer, pa.IsWrong,
+            pp.PpIdx, pq.PqIdx, AnswerNum, QuestionNO, RightAnswer, RealQuestionFile AS file, pa.Answer,
+            #pa.IsWrong,
+            IF(FIND_IN_SET(pa.Answer, pq.RightAnswer) > 0, 'Y', 'N') AS IsWrong,
             (SELECT 
-                SUM(IF(pa2.IsWrong = 'Y', Scoring, '0')) 
+                #SUM(IF(pa2.IsWrong = 'Y', Scoring, '0'))
+                SUM(IF(FIND_IN_SET(pa2.Answer, pq.RightAnswer) > 0, Scoring, '0'))
                 FROM 
                     {$this->_table['predictQuestion']} AS pq
                     LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa2 ON pq.PqIdx = pa2.PqIdx AND pa2.MemIdx = ".$this->session->userdata('mem_idx')." AND pa2.PredictIdx = '{$PredictIdx}' AND pa2.PrIdx = '{$pridx}' 
@@ -1763,6 +1768,14 @@ class SurveyModel extends WB_Model
                 $where = $where->getMakeWhere(false);
                 $result = $this->_conn->query('select ' . $column . $from . $where)->row_array();
 
+                $Answer = element('answer'.$key,$formData);
+                $arr_RightAnswer = explode(',', $val['RightAnswer']);
+                if (in_array($Answer, $arr_RightAnswer) === true) {
+                    $IsWrong = 'Y';
+                } else {
+                    $IsWrong = 'N';
+                }
+
                 if (empty($result) === true) {
                     //저장
                     $data = [
@@ -1772,7 +1785,7 @@ class SurveyModel extends WB_Model
                         'PpIdx' => $PpIdx,
                         'PqIdx' => element('PqIdx'.$key,$formData),
                         'Answer' => element('answer'.$key,$formData),
-                        'IsWrong' => ($val['RightAnswer'] == element('answer'.$key,$formData) ? 'Y' : 'N')
+                        'IsWrong' => $IsWrong
                     ];
                     if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictAnswerPaper']) === false) {
                         throw new \Exception('임시데이터 저장에 실패했습니다.');
@@ -1781,7 +1794,7 @@ class SurveyModel extends WB_Model
                     //수정
                     $data = [
                         'Answer' => element('answer'.$key,$formData),
-                        'IsWrong' => ($val['RightAnswer'] == element('answer'.$key,$formData) ? 'Y' : 'N')
+                        'IsWrong' => $IsWrong
                     ];
                     $where = [
                         'MemIdx' => $this->session->userdata('mem_idx'),
@@ -1930,7 +1943,9 @@ class SurveyModel extends WB_Model
             $MemIdx = $this->session->userdata('mem_idx');
 
             $column = "
-                MemIdx, PrIdx, PredictIdx, pp.PpIdx, pq.PqIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, pp.RegDatm
+                MemIdx, PrIdx, PredictIdx, pp.PpIdx, pq.PqIdx, Answer, pp.RegDatm, 
+                #if(Answer = RightAnswer, 'Y', 'N') AS IsWrong
+                IF(FIND_IN_SET(Answer, RightAnswer) > 0, 'Y', 'N') AS IsWrong
             ";
 
             $from = "
@@ -2019,12 +2034,11 @@ class SurveyModel extends WB_Model
             $res = $query->result_array();
 
             foreach($res as $key => $val){
-
                 $PpIdx = $val['PpIdx'];
                 $PqIdx = $val['PqIdx'];
-                $RightAnswer = $val['RightAnswer'];
                 $Answer = substr($strAnswer, $key, 1);
-                if($Answer == $RightAnswer){
+                $arr_RightAnswer = explode(',', $val['RightAnswer']);
+                if (in_array($Answer, $arr_RightAnswer) === true) {
                     $IsWrong = 'Y';
                 } else {
                     $IsWrong = 'N';

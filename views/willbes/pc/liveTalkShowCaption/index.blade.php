@@ -102,11 +102,16 @@
                             case "실시간 질문6":
                             case "실시간채점현황2":
                             case "동향이슈 형소법":
+                            case "동향이슈 형법":
+                            case "동향이슈 경찰학":
+                            case "동향이슈 영어":
+                            case "동향이슈 한국사":
                             case "합격풀케어":
                             case "6월 1일(월) 설명회":
                             case "면접캠프 설명회":
                             case "심화기출":
                             case "인강PASS":
+                            case "2020 예상컷공개":
                                 echo '<ul class="liveTab02 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
@@ -116,7 +121,7 @@
                                 echo '</ul>';
                                 break;
                             case "실시간채점현황1";
-                                echo '<ul class="liveTab02 slide01">';
+                                echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
                                         echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
@@ -129,8 +134,7 @@
                                     }
                                 echo '</ul>';
                                 break;
-
-                            case "동향이슈 형법":
+                            /*case "동향이슈 형법":
                             case "동향이슈 경찰학":
                             case "동향이슈 영어":
                             case "동향이슈 한국사":
@@ -141,8 +145,7 @@
                                         echo "</li>";
                                     }
                                 echo '</ul>';
-                                break;
-
+                                break;*/
                             default;
                             break;
                         }

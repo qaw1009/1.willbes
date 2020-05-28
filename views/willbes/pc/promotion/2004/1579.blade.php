@@ -24,7 +24,7 @@
         .skybanner {position:fixed;top:250px;right:15px;z-index:1;}
         .skybanner a {display:block; margin-bottom:10px}
 
-        .wb_top {background:#dfdede url(https://static.willbes.net/public/images/promotion/2020/05/1579_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:#2D748A url(https://static.willbes.net/public/images/promotion/2020/06/1579_top_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 {background:#FFF;}
         .wb_cts02 {background:#FFF;padding-bottom:150px}
         .wb_cts03 {background:#6a1645;}
@@ -71,11 +71,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skybanner" >            
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=272615&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1579_sky.png" alt="최우영" ></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/06/1579_sky.png" alt="최우영" ></a>
         </div>   
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1579_top.gif" alt="윌비스 기술직" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1579_top.jpg" alt="윌비스 기술직" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -103,13 +103,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1579_04.jpg" alt="수강신청" usemap="#Map1541a" border="0"/>
-            <map name="Map1541a" id="Map1541a">
-                <area shape="rect" coords="97,572,318,654" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/161659" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="331,572,552,653" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/160209" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="566,573,787,654" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67J6l7IKs7JuQ" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="802,573,1022,654" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/164451" target="_blank" onfocus='this.blur()'/>
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1579_04.jpg" alt="수강신청" usemap="#Map1579_apply" border="0" />
+            <map name="Map1579_apply" id="Map1579_apply">
+                <area shape="rect" coords="94,524,536,597" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67Luo7IWJ&subject_idx=&course_idx=" target="_blank" />
+                <area shape="rect" coords="581,524,1025,597" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/165356" target="_blank" />
+            </map>       
         </div>
         
          <!--유의사항-->

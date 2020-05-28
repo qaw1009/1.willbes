@@ -14,21 +14,24 @@
 </form>
 
 <div class="text-left mt-10">
-<b>원점수입력</b> : <span id="txt_depth_1" style="font-size: 15px;">미실행</span><br>
-<b>조정점수반영</b> : <span id="txt_depth_2" style="font-size: 15px;">미실행</span><br>
-<b>시험통계처리</b> : <span id="txt_depth_3" style="font-size: 15px;">미실행</span><br>
-<b>최종결과</b> : <span id="txt_result" style="font-size: 15px;">미실행</span><br>
-<b>스크립트 실행횟수</b> : <span id="txt_cnt" style="font-size: 15px;">미실행</span><br>
+    <p class="mt-10" style="font-size: 15px">
+        * 새로고침할 경우 스크립트로 반영한 데이터는 모두 초기화 됨.
+    </p>
+    <b>원점수입력</b> : <span id="txt_depth_1" style="font-size: 15px;">미실행</span><br>
+    <b>조정점수반영</b> : <span id="txt_depth_2" style="font-size: 15px;">미실행</span><br>
+    <b>시험통계처리</b> : <span id="txt_depth_3" style="font-size: 15px;">미실행</span><br>
+    <b>최종결과</b> : <span id="txt_result" style="font-size: 15px;">미실행</span><br>
+    <b>스크립트 실행횟수</b> : <span id="txt_cnt" style="font-size: 15px;">미실행</span><br>
 </div>
 
-<div style="width: 500px">
-<div class="alignleft mt-10" style="font-size: 15px">
-    * 새로고침할 경우 스크립트로 반영한 데이터는 모두 초기화 됨.
-</div>
-<div class="alignleft mt-10" style="font-size: 15px">
-    <button onclick="startUpdate();">시작</button>
-    <button onclick="stopUpdate();">중단</button>
-</div>
+<div class="text-left mt-20">
+    <div class="mt-10" style="font-size: 15px">
+        실행여부 : <span id="start_type">대기중</span>
+    </div>
+    <div class="mt-10" style="font-size: 15px">
+        <button onclick="startUpdate();">시작</button>
+        <button onclick="stopUpdate();">중단</button>
+    </div>
 </div>
 
 <script>
@@ -39,6 +42,7 @@
         console.log(time);
 
         startUpdate = function() {
+            $("#start_type").addClass('red').text('시작중');
             starting = setInterval(function() {
                 depth_1();
                 if ($("#depth_type_1").val() == 1) {
@@ -52,6 +56,7 @@
     });
 
     stopUpdate = function() {
+        $("#start_type").removeClass('red').text('중지');
         clearInterval(starting);
     };
 

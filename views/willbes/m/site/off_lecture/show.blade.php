@@ -19,7 +19,6 @@
                 <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-
                 <div class="passProfTabs c_both">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
@@ -42,7 +41,7 @@
                                             <dt class="h22"><strong>개강일~종강일</strong><span class="tx-blue">{{ date('m/d', strtotime($data['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($data['StudyEndDate'])) }}</span></dt><br/>
                                             <dt class="h22">{{ $data['WeekArrayName'] }} ({{ $data['Amount'] }}회차)</dt><br/>
                                             <dt class="h22"><strong>수강형태</strong><span class="tx-blue">{{ $data['StudyPatternCcdName'] }}</span> </dt><br>
-                                            <dt class="h22"><span class="NSK nBox n{{ substr($data['StudyApplyCcd'], -1) }}">{{ $data['StudyApplyCcdName'] }}</span>
+                                            <dt class="h22"><span class="NSK nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
                                                 <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt>
                                         </dl>
                                     </div>

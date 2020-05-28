@@ -143,7 +143,7 @@
                                             <dl class="w-info tx-gray">
                                                 <dt>개강일~종강일 : <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)</dt><br>
                                                 <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span>
-                                                    <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                                    <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $row['StudyApplyCcdName'] }}</span>
                                                     <span class="NSK nBox n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span></dt>
                                                 </dt><br>
                                                 @php

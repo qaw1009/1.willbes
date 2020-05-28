@@ -8,7 +8,7 @@
             <div class="logo">
                 <a href="{{front_url('/home/index')}}"><img src="{{img_url('m/main/logo.png')}}" alt="logo"/></a>
             </div>
-            @if($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['IsPassSite'] === false)
+            @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
                 <button type="button" class="basket" onclick="document.location='{{front_url('/cart/index')}}';">
                     <span class="hidden">장바구니</span>
                 </button>

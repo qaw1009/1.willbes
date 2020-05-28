@@ -130,7 +130,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     {
         if ($is_count === true) {
             $def_column = 'count(*) AS numrows';
-            $order_by_offset_limit = '';
+            $order_by_sql = $offset_limit_sql = '';
         } else {
             $def_column = "
                 m.*,
@@ -149,8 +149,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
                 ),'N') AS AttachData
             ";
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            $order_by_sql = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $offset_limit_sql = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $arr_condition_sub = ['EQ' => ['ProfIdx' => $prof_idx]];
@@ -193,8 +193,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where .= $this->addDefWhereOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
-        $set_query .= $from . $where . $order_by_offset_limit;
-        $set_query .= ') AS m ';
+        $set_query .= $from . $where . $order_by_sql . $offset_limit_sql;
+        $set_query .= ') AS m ' . $order_by_sql;
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();

@@ -39,9 +39,9 @@
                                         <dl>
                                             <dt class="h27">
                                                 <strong>수강형태</strong>{{$data['StudyPatternCcdName']}}
-                                                    <span class="NSK ml10 nBox n{{ substr($data['StudyApplyCcd'], -1) }}">{{ $data['StudyApplyCcdName'] }}</span>
-                                                    <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt><br/>
-                                            <dt class="h27"><strong>접수기간</strong><span class="tx-blue">{{ date('Y-m-d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y-m-d', strtotime($data['SaleEndDatm'])) }}</span> </dt>
+                                                    <span class="NSK ml10 nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
+                                                    <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt>
+                                            <dt class="h27"><strong>접수기간</strong><span class="tx-blue">{{ date('Y.m.d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y.m.d', strtotime($data['SaleEndDatm'])) }}</span> </dt>
                                         </dl>
                                     </div>
                                 </div>
@@ -131,16 +131,50 @@
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt><strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                            <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span></dt><br></dt>
-                                                        <dt><span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
+                                                            <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span></dt>
+                                                        <dt><span class="tx-blue">{{str_replace('-', '.', $sub_row['StudyStartDate'])}} ~ {{str_replace('-', '.', $sub_row['StudyEndDate'])}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                         <dt><a href="#none" class="lecView" onclick="openWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">강좌상세정보</a></dt>
                                                     </dl>
                                                 </div>
-                                                @php
-                                                    $id = $sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
-                                                    $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
-                                                @endphp
+                                                <div id="InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}" class="willbes-Layer-Black NG">
+                                                    <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+                                                        <a class="closeBtn" href="#none" onclick="closeWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
+                                                            <img src="{{img_url('m/calendar/close.png') }}">
+                                                        </a>
+                                                        <h4> {{ $sub_row['ProdName'] }} </h4>
+                                                        <div class="LecDetailBox">
+                                                            <h5>강좌상세정보</h5>
+                                                            <dl class="w-info tx-gray">
+                                                                <dt>수강기간 <br>
+                                                                    <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~ {{$sub_row['StudyEndDate']}}</span>
+                                                                    <span class="tx-blue">{{$sub_row['WeekArrayName']}}</span> ({{$sub_row['WeekArrayName']}} 회차)</dt>
+                                                            </dl>
+                                                            @if(empty($sub_row['Content5']) != true)
+                                                                <h5>수강대상</h5>
+                                                                <div class="tx-dark-gray">
+                                                                    {!! $sub_row['Content5'] !!}
+                                                                </div>
+                                                            @endif
+                                                                <h5>강좌소개</h5>
+                                                                <div class="tx-dark-gray">
+                                                                    {!! $sub_row['Content'] !!}
+                                                                </div>
+                                                            @if(empty($sub_row['Content6']) != true)
+                                                                <h5>강좌효과</h5>
+                                                                <div class="tx-dark-gray">
+                                                                    {!! $sub_row['Content6'] !!}
+                                                                </div>
+                                                            @endif
+                                                            @if(empty($sub_row['Content7']) != true)
+                                                                <h5>수강후기</h5>
+                                                                <div class="tx-dark-gray">
+                                                                    {!! $sub_row['Content7'] !!}
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="dim" onclick="closeWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')"></div>
+                                                </div>
                                             {{-- 위에서 닫기 처리
                                                 </td>
                                             </tr>
@@ -208,16 +242,51 @@
                                                         </div>
                                                         <dl class="w-info tx-gray">
                                                             <dt><strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                                <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span></dt><br></dt>
+                                                                <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span>
+                                                            </dt>
                                                             <dt><span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                             <dt><a href="#none" class="lecView" onclick='InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}'>강좌상세정보</a></dt>
                                                         </dl>
                                                     </div>
-                                                    @php
-                                                        $id = 'sel_'.$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
-                                                        $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                        lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
-                                                    @endphp
+                                                    <div id="InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}" class="willbes-Layer-Black NG">
+                                                        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+                                                            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
+                                                                <img src="{{img_url('m/calendar/close.png') }}">
+                                                            </a>
+                                                            <h4> {{ $sub_row['ProdName'] }} </h4>
+                                                            <div class="LecDetailBox">
+                                                                <h5>강좌상세정보</h5>
+                                                                <dl class="w-info tx-gray">
+                                                                    <dt>수강기간 <br>
+                                                                        <span class="tx-blue">{{str_replace('-', '.', $sub_row['StudyStartDate'])}} ~ {{str_replace('-', '.', $sub_row['StudyEndDate'])}}</span>
+                                                                        <span class="tx-blue">{{$sub_row['WeekArrayName']}}</span> ({{$sub_row['WeekArrayName']}} 회차)</dt>
+                                                                </dl>
+                                                                @if(empty($sub_row['Content5']) != true)
+                                                                    <h5>수강대상</h5>
+                                                                    <div class="tx-dark-gray">
+                                                                        {!! $sub_row['Content5'] !!}
+                                                                    </div>
+                                                                @endif
+                                                                <h5>강좌소개</h5>
+                                                                <div class="tx-dark-gray">
+                                                                    {!! $sub_row['Content'] !!}
+                                                                </div>
+                                                                @if(empty($sub_row['Content6']) != true)
+                                                                    <h5>강좌효과</h5>
+                                                                    <div class="tx-dark-gray">
+                                                                        {!! $sub_row['Content6'] !!}
+                                                                    </div>
+                                                                @endif
+                                                                @if(empty($sub_row['Content7']) != true)
+                                                                    <h5>수강후기</h5>
+                                                                    <div class="tx-dark-gray">
+                                                                        {!! $sub_row['Content7'] !!}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="dim" onclick="closeWin('InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')"></div>
+                                                    </div>
                                             {{-- 위에서 닫기 처리
                                                 </td>
                                             </tr>
@@ -259,58 +328,8 @@
                 </div>
             </div>
             <!-- Topbtn -->
-            @include('willbes.m.layouts.topbtn')
-           @php
-                /*
-                하위 강좌정보 레이어 팝업용
-                */
-                function lecture_info_layer($id='', $prod_name='', $date='', $weekname='', $amount='', $content='', $content5='',$content6='',$content7='')
-                {
-                    $show_info = '
-                    <div id="InfoForm_'.$id.'" class="willbes-Layer-Black NG">
-                        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
-                            <a class="closeBtn" href="#none" onclick="closeWin(\'InfoForm_'.$id.'\')">
-                                <img src="'. img_url('m/calendar/close.png') .'">
-                            </a>
-                            <h4> '.$prod_name.'</h4>
-                            <div class="LecDetailBox">
-                                <h5>강좌상세정보</h5>
-                                <dl class="w-info tx-gray">
-                                    <dt>수강기간 <br>
-                                        <span class="tx-blue">'.$date.'</span> <span class="tx-blue">'.$weekname.'</span> ('.$amount.' 회차)</dt>
-                                </dl>';
-                                if(empty($content5) != true) {
-                                    $show_info.= '<h5>수강대상</h5>
-                                                        <div class="tx-dark-gray">
-                                                            '. $content5 .'
-                                                        </div>';
-                                }
+        @include('willbes.m.layouts.topbtn')
 
-                                $show_info.= '<h5>강좌소개</h5>
-                                                    <div class="tx-dark-gray">
-                                                         '. $content .'
-                                                    </div>';
-                               if(empty($content6) != true) {
-                                    $show_info.= '<h5>강좌효과</h5>
-                                                        <div class="tx-dark-gray">
-                                                             '. $content6 .'
-                                                        </div>';
-                                }
-                               if(empty($content7) != true) {
-                                    $show_info.= '<h5>수강후기</h5>
-                                                        <div class="tx-dark-gray">
-                                                             '. $content7 .'
-                                                        </div>';
-                                }
-                            $show_info.= '
-                                    </div>
-                                </div>
-                                <div class="dim" onclick="closeWin(\'InfoForm_'.$id.'\')"></div>
-                            </div>
-                        </form>';
-                    echo $show_info;
-                }
-            @endphp
     </div>
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>

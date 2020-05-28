@@ -107,15 +107,16 @@
             var html = '';
             if(ret.data.length > 0) {
                 $.each(ret.data, function (i, item) {
-                    html += '<li class="basket-row" id="'+ item.CartIdx + '" data-prod-code="' + item.ProdCode + '" data-sub-prod-code="' + item.ProdCodeSub + '">';
-                    html += '   <p><span>' + item.CampusCcdName + '</span> ' + item.ProdName + '</p>\n';
+                    html += '<li class="basket-row" id="'+ item.CartIdx + '" data-prod-code="' + item.ProdCode + '" data-sub-prod-code="' + item.ProdCodeSub + '">\n';
+                    html += '   <p><span>' + item.CampusCcdName + '</span> ' + item.ProdName + '\n';
                     {{-- 단과할인율 표기 --}}
                     if (typeof item.IsLecDisc !== 'undefined' && item.IsLecDisc === 'Y') {
-                        html += item.LecDiscTitle + ' (↓' + item.LecDiscRate + item.LecDiscRateUnit + ')\n';
+                        html += '<div class="tx-red ml40">' + item.LecDiscTitle + ' (↓' + item.LecDiscRate + item.LecDiscRateUnit + ')</div>\n';
                     }
-                    html += '   <strong>' + addComma(item.RealSalePrice) + '원</strong>';
-                    html += '   <a href="#none" onclick="rowDelete(\'' + item.CartIdx + '\')">삭제</a>';
-                    html += '</li>';
+                    html += '   </p>\n';
+                    html += '   <strong>' + addComma(item.RealSalePrice) + '원</strong>\n';
+                    html += '   <a href="#none" onclick="rowDelete(\'' + item.CartIdx + '\')">삭제</a>\n';
+                    html += '</li>\n';
 
                     seq += 1;
                     price_sum += parseInt(item.RealSalePrice);
@@ -230,9 +231,18 @@
             {{-- 단과반일 경우 상품목록과 장바구니 동기화 --}}
             var $_prod_code;
 
+            // 장바구니 체크 (장바구니에 상품코드가 존재하면 선택 처리)
             $.each($_cart_rows, function() {
                 $_prod_code = $(this).data('prod-code');
                 $regi_off_form.find('input[name="prod_code[]"][data-prod-code="' + $_prod_code + '"]').prop('checked', true);
+            });
+
+            // 선택된 상품코드 체크 (선택된 상품코드가 장바구니에 없다면 선택해제 처리)
+            $.each($regi_off_form.find('input[name="prod_code[]"]:checked'), function() {
+                $_prod_code = $(this).data('prod-code');
+                if ($_cart_rows.filter('[data-prod-code="' + $_prod_code + '"]').length < 1) {
+                    $(this).prop('checked', false);
+                }
             });
         @endif
     }

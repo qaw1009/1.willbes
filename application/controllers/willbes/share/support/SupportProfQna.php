@@ -121,7 +121,7 @@ class SupportProfQna extends BaseSupport
         $column .= ', IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName';
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $order_by = ['m.IsBest'=>'Desc','m.BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

@@ -63,7 +63,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line pt-12" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-4 form-inline item ml-12-dot">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>

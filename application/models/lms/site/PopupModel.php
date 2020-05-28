@@ -122,6 +122,19 @@ class PopupModel extends WB_Model
                 , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
                 , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName            
         ';
+        $from = "
+            FROM {$this->_table['popup_r_category']} AS CC
+                INNER JOIN (
+                    SELECT ParentCateCode, CateCode, CateName, IsStatus
+                    FROM {$this->_table['sys_category']} 
+                    UNION ALL
+                    SELECT '', '0', '전체카테고리', 'Y'
+                    FROM DUAL
+                ) AS C ON CC.CateCode = C.CateCode
+                LEFT JOIN {$this->_table['sys_category']} AS PC
+                    ON C.ParentCateCode = PC.CateCode AND PC.IsUse = 'Y' AND PC.IsStatus = 'Y'
+        ";
+        /*
         $from = '
             from ' . $this->_table['popup_r_category'] . ' as CC
                 inner join ' . $this->_table['sys_category'] . ' as C
@@ -129,6 +142,7 @@ class PopupModel extends WB_Model
                 left join ' . $this->_table['sys_category'] . ' as PC
                     on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
         ';
+        */
         $where = ' where CC.PIdx = ? and CC.IsStatus = "Y" and C.IsStatus = "Y"';
         $order_by_offset_limit = ' order by CC.PIdx asc';
 

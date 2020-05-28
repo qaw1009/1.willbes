@@ -230,9 +230,18 @@
             {{-- 단과반일 경우 상품목록과 장바구니 동기화 --}}
             var $_prod_code;
 
+            // 장바구니 체크 (장바구니에 상품코드가 존재하면 선택 처리)
             $.each($_cart_rows, function() {
                 $_prod_code = $(this).data('prod-code');
                 $regi_off_form.find('input[name="prod_code[]"][data-prod-code="' + $_prod_code + '"]').prop('checked', true);
+            });
+
+            // 선택된 상품코드 체크 (선택된 상품코드가 장바구니에 없다면 선택해제 처리)
+            $.each($regi_off_form.find('input[name="prod_code[]"]:checked'), function() {
+                $_prod_code = $(this).data('prod-code');
+                if ($_cart_rows.filter('[data-prod-code="' + $_prod_code + '"]').length < 1) {
+                    $(this).prop('checked', false);
+                }
             });
         @endif
     }

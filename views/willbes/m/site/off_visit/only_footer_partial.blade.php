@@ -107,15 +107,16 @@
             var html = '';
             if(ret.data.length > 0) {
                 $.each(ret.data, function (i, item) {
-                    html += '<li class="basket-row" id="'+ item.CartIdx + '" data-prod-code="' + item.ProdCode + '" data-sub-prod-code="' + item.ProdCodeSub + '">';
-                    html += '   <p><span>' + item.CampusCcdName + '</span> ' + item.ProdName + '</p>\n';
+                    html += '<li class="basket-row" id="'+ item.CartIdx + '" data-prod-code="' + item.ProdCode + '" data-sub-prod-code="' + item.ProdCodeSub + '">\n';
+                    html += '   <p><span>' + item.CampusCcdName + '</span> ' + item.ProdName + '\n';
                     {{-- 단과할인율 표기 --}}
                     if (typeof item.IsLecDisc !== 'undefined' && item.IsLecDisc === 'Y') {
-                        html += item.LecDiscTitle + ' (↓' + item.LecDiscRate + item.LecDiscRateUnit + ')\n';
+                        html += '<div class="tx-red ml40">' + item.LecDiscTitle + ' (↓' + item.LecDiscRate + item.LecDiscRateUnit + ')</div>\n';
                     }
-                    html += '   <strong>' + addComma(item.RealSalePrice) + '원</strong>';
-                    html += '   <a href="#none" onclick="rowDelete(\'' + item.CartIdx + '\')">삭제</a>';
-                    html += '</li>';
+                    html += '   </p>\n';
+                    html += '   <strong>' + addComma(item.RealSalePrice) + '원</strong>\n';
+                    html += '   <a href="#none" onclick="rowDelete(\'' + item.CartIdx + '\')">삭제</a>\n';
+                    html += '</li>\n';
 
                     seq += 1;
                     price_sum += parseInt(item.RealSalePrice);

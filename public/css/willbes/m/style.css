@@ -2164,6 +2164,13 @@ body.memBody #Footer {
     margin-top: -50%;
 }
 
+/*자매독서실 팝업*/
+.readingRoomBox {border:1px solid #ccc; line-height: 1.5; padding:20px !important;}
+.readingRoomBox ul {border-bottom:1px solid #ccc; margin-bottom:10px}
+.readingRoomBox li {list-style-type: disc; margin-left: 15px; margin-bottom: 5px;}
+.readingRoomBox li:last-child {color:#ed1c24; margin-bottom:10px}
+.readingRoomBox select {width: 100% !important;}
+
 /* calendarTable */
 .calendarTable {
     font-family: "Arial", "sans-serif";
@@ -2558,20 +2565,20 @@ body.memBody #Footer {
     padding:30px 0;    
 }
 .MessageBtns {
-    width: 60%;
-    margin:0 auto;
-    text-align: center;
+    width: 100%;
+    margin:10px auto 0;
+    text-align:center;
 }
 .MessageBtns a {
     display:inline-block;
     text-align: center;
-    float: left;
-    width: 50%;
-    height: 30px;
-    line-height: 30px;
+    width: 80px;
+    height:30px;
+    line-height:30px;
     font-size:14px;
-    margin:0 auto;
+    margin:0 4px;
 }
+
 
 .lec-info .w-data {
     border-top:1px solid #edebeb;
@@ -2800,6 +2807,7 @@ body.memBody #Footer {
     padding:20px 0;
     border-bottom:1px solid #c9c9c9;
     line-height: 1.5;
+    position: relative;
 }
 .paymentWrap .payLecList:first-child {
     padding-top:0;
@@ -2811,6 +2819,16 @@ body.memBody #Footer {
 .paymentWrap .payLecList li {
     margin-bottom:10px;
 }
+
+.paymentWrap .payLecList li .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 12px;
+    margin: 0 10px;
+}
+.paymentWrap .payLecList li a.readingRoom {position: absolute; top:-5px; right:0; display: inline-block; 
+    padding:5px 10px; color:#fff; background:#264abf; border-radius: 20px;
+}
 .paymentWrap .payLecList li:nth-child(2){
     color:#1d1d1d;
     font-size:16px;
@@ -2819,6 +2837,10 @@ body.memBody #Footer {
     border:1px solid #666;
     color:#666;
     padding:3px 5px;
+}
+.paymentWrap .payLecList li:first-child span.off {
+    border:1px solid #4616cf;
+    color:#4616cf;
 }
 .paymentWrap .payLecList li strong {
     width: 85px;
@@ -3539,10 +3561,10 @@ body.memBody #Footer {
 
 /*********************************************     학원     *********************************************/
 
-.onSearch {position: relative; margin-bottom:10px; padding:0 20px }
+.onSearch {position: relative; margin-bottom:10px; padding:10px 20px 0; border-top:1px solid #ccc;}
 .onSearch input[type="search"] {border:0; border-bottom:1px solid #000; height:28px; width:100%; color:#ccc; font-size:14px; padding:0}
 .onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
-.onSearch button {position: absolute; top:0; right:20px; width:28px; height:28px; font-size: 0; text-indent: -9999px; 
+.onSearch button {position: absolute; top:10px; right:20px; width:28px; height:28px; font-size: 0; text-indent: -9999px; 
     background:url("../../../img/willbes/m/main/icon_search.png") no-repeat center center; background-size:18px;
     display: block; z-index: 1;
 }

@@ -3,12 +3,19 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
+    <div class="onSearch">
+        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+        <label for="onsearch"><button title="검색">검색</button></label>
+    </div>
+
     <div id="Sticky" class="sticky-Title">
         <div class="sticky-Grid sticky-topTit">
             <div class="willbes-Tit NGEB p_re">
+                {{--
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
                 </button>    
+                --}}
                 결제하기
             </div>
         </div>
@@ -17,9 +24,9 @@
 
     <div class="paymentWrap">
         <ul class="paymentTxt NGR">
-            <li>해당 상품의 강좌시작일 설정은 결제일로부터 30일 범위 내로 설정 가능합니다.</li>
-            <li>해당 상품의 강좌시작일을 설정하지 않은 경우 결제일(무통장입금 결제수단의 경우 가상계좌 신청일)로부터 7일 후 강좌가 자동 시작됩니다.</li>
-            <li>해당 상품의 개강일이 설정한 강좌시작일 이후 인 경우 해당 강좌시작일은 개강일로 자동 셋팅됩니다.</li>
+            <li>강좌시작일 설정은 결제일로부터 30일 범위 내로 설정 가능합니다. (일부 강좌 제외)</li>
+            <li>강좌시작일을 설정하지 않은 경우 결제일(무통장입금 결제수단의 경우 가상계좌 신청일)로부터 7일 후 강좌가 자동 시작됩니다.</li>
+            <li>개강일이 설정한 강좌시작일 이후 인 경우 해당 강좌시작일은 개강일로 자동 셋팅됩니다.</li>
             <li>배송 상품은 당일 오후 2시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토,일,공휴일제외)</li>
         </ul>
 
@@ -34,11 +41,26 @@
                     </tr>
                     <tr>
                         <td colspan="2">
+                            {{--학원단과--}}
+                            <ul class="payLecList">
+                                <li><span class="off">단과</span> <a href="#none" class="readingRoom" onclick="openWin('readingRoomPop')">자매독서실 할인적용 ></a></li>
+                                <li>PSAT<span class="row-line">|</span>실강<span class="row-line">|</span>20_기초입문 자료해석 석치수</li>
+                                <li><strong>정가(할인율)</strong> <span class="tx-blue">456,000원(↓0%)</span></li>
+                                <li><strong>실 결제금액</strong> <span class="tx-blue">456,000원</span><span class="line-through">(0원)</span></li>
+                                <li><span class="tx-red">20_기초입문 (↓10%)</span></li>
+                                <li>
+                                    <a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a>
+                                    단과 10% 할인쿠폰 <span class="tx-blue">(9,000원 할인)</span>
+                                    <a href="#none" class="delete"><img src="{{ img_url('m/main/close.png') }}"></a>
+                                </li>
+                            </ul>
+
+                            {{--온라인 단과--}}
                             <ul class="payLecList">
                                 <li><span>강좌</span></li>
-                                <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
-                                <li><strong>정가(할인율)</strong> <span class="tx-blue">90,000원(↓10%)</span></li>
-                                <li><strong>실 결제금액</strong> <span class="tx-blue">81,000원</span><span class="line-through">(90,000원)</span></li>
+                                <li>20_기초입문 자료해석 석치수</li>
+                                <li><strong>정가(할인율)</strong> <span class="tx-blue">456,000원(↓0%)</span></li>
+                                <li><strong>실 결제금액</strong> <span class="tx-blue">456,000원</span><span class="line-through">(0원)</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
                                 <li class="NGR"><strong>강좌시작일 설정</strong>  
                                     <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" placeholder="시작일">
@@ -50,6 +72,20 @@
                                     <a href="#none" class="delete"><img src="{{ img_url('m/main/close.png') }}"></a>
                                 </li>
                             </ul>
+
+                            {{--학원 종합반--}}
+                            <ul class="payLecList">
+                                <li><span class="off">종합반</span></li>
+                                <li>20_행시종합반(일행/재경)_2차[20/03~21/06]_예비 행정법,경제학제외</li>
+                                <li><strong>정가(할인율)</strong> <span class="tx-blue">1,544,679원(↓0%)</span></li>
+                                <li><strong>실 결제금액</strong> <span class="tx-blue">1,544,679원</span></li>
+                                <li class="NGR"><strong>수강기간</strong> 80일</li>
+                                <li class="NGR"><strong>강좌시작일 설정</strong>  
+                                    <span class="tx-blue">결제완료 후 바로 수강 시작</span>
+                                </li>
+                                <li><a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a></li>
+                            </ul>
+
                             <ul class="payLecList">
                                 <li><span>패키지</span></li>
                                 <li>2019년 경찰 1차시험 황세웅 면접 풀패키지 (1.5배수)</li>
@@ -309,6 +345,37 @@
                     <li><a href="#none" class="btn-purple">결제하기</a></li>
                 </ul>
             </div>
+
+            {{--자매독서실 팝업--}}
+            <div id="readingRoomPop" class="willbes-Layer-Black">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 hauto fix">
+                    <a class="closeBtn" href="#none" onclick="closeWin('readingRoomPop')">
+                        <img src="{{ img_url('m/calendar/close.png') }}">
+                    </a>
+                    <h4>자매독서실 할인적용</h4>
+                    <div class="readingRoomBox">
+                        <ul>
+                            <li>자매 독서실을 이용하실 경우 5% 할인이 적용됩니다.</li>
+                            <li>과목별 수강료 5만원 미만은 할인 불가능합니다.</li>
+                            <li>중복 할인 불가능합니다.</li>
+                            <li>학원 데스크에 방문하여 수강증 발급 전 자매 독서실 증빙 자료를 제출 하여야 하며, 증빙 불총족 시 전체환불 후 수강
+                            료 정상가로 재접수해야 하는점 유의해 주시기 바랍니다.</li>
+                            <li>답안지특강, 어학 등 정액수강료인 강의는 독서실 할인 불가능합니다.</li>
+                        </ul>
+                        <select>
+                            <option value="">자매독서실 선택</option>
+                            <option value="">독서실1</option>
+                            <option value="">독서실2</option>                         
+                        </select>
+                        <div class="MessageBtns">
+                            <a href="#none" class="btn_gray">할인적용</a>
+                            <a href="#none" class="btn_white">취소</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dim" onclick="closeWin('readingRoomPop')"></div>
+            </div>
+
         </div>
     </div>
 

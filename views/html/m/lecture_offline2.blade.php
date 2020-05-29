@@ -131,9 +131,10 @@
         </div>
         
         {{--
+        <div class="lec-btns w25p"> 버튼 4개일때
         <div class="lec-btns"> 버튼 3개일때
-        <div class="lec-btns w50p"> 버튼 3개일때
-        <div class="lec-btns w100p"> 버튼 2개일때
+        <div class="lec-btns w50p"> 버튼 2개일때
+        <div class="lec-btns w100p"> 버튼 1개일때
         --}}
         <div class="lec-btns w25p">
             <ul>

@@ -842,9 +842,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            [문바발송사용여부]
+                            [문자발송사용여부]
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsSms" class="flat" value="Y" required="required" title="문바발송사용여부" @if( $data['IsSms']=='Y')checked="checked"@endif/> 사용
+                            <input type="radio" name="IsSms" class="flat" value="Y" required="required" title="문자발송사용여부" @if( $data['IsSms']=='Y')checked="checked"@endif/> 사용
                             &nbsp;
                             <input type="radio" name="IsSms" class="flat" value="N" @if($method == 'POST' || $data['IsSms']=='N')checked="checked"@endif/> 미사용
                             &nbsp;&nbsp;

@@ -23,7 +23,7 @@
         <div>
             <ul>
                 <li class="w50"><a href="{{ site_url('/home/html/cafe') }}" target="_blank">윌비스 공식 카페</a></li>   
-                <li class="w50"><a href="{{ site_url('/home/html/animation') }}" target="_blank">css 에니메이션</a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/000_animation') }}" target="_blank">css 에니메이션</a></li>  
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/m/sample') }}" target="_blank">모바일 html 퍼블리싱 페이지</a></li>
                 <li class="c_both"></li>

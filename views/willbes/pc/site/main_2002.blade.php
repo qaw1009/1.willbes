@@ -59,56 +59,55 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/163616">형소법 기본이론<span>5.6 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001">형소법 마무리<span>5.12 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164759">형소법 기본이론<span>7.6 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164990">형소법 심화기출<span>6.2 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
                         <div class="caProfBtsn">                            
-                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/163870">경찰학 기본이론<span>5.4 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1058&campus_ccd=605001">경찰학 마무리<span>5.14 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164267">경찰학 기본이론<span>6.2 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164999">경찰학 심화기출<span>6.12 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1055">한국사 기본이론<span>4.20 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001">한국사 마무리<span>5.11 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164262">한국사 기본이론<span>6.15 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165014">한국사 심화기출<span>6.4 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1055">한국사 기본이론<span>4.20 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001">한국사 마무리<span>5.6 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164263">한국사 기본이론<span>6.15 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165012">한국사 심화기출<span>6.4 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/163869">형법 기본이론<span>5.25 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001">형법 마무리<span>5.4 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165007">형법 심화기출<span>6.22 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/163871">영어 기본이론<span>4.30 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001">영어 마무리<span>5.8 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164266">영어 기본이론<span>6.10 개강</span></a></div>
                         </div>
                     </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162127">영어집중관리반</a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165011">영어 심화기출<span>6.2 개강</span></a></div>
                             {{--<div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/161411">합기독 독해특강<span>2.24 개강</span></a></div>--}}
                         </div> 
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">                           
-                            <div><a href="https://police.willbes.net/pass/offPackage/show/prod-code/162127">영어집중관리반</a></div> 
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164853">영어 아침특강<span>6.8 개강</span></a></div>
                             {{--<div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/161584">베이직 하이힐 특강<span>4.6 개강</span></a></div>--}}
                         </div>
                     </li>

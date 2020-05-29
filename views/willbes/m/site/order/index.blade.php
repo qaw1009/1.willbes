@@ -21,6 +21,7 @@
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="cart_type" value="{{ $results['cart_type'] }}"/>
+                <input type="hidden" name="aff_idx" value="{{ $results['aff_idx'] }}"/>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                     <tbody>
                         <tr class="replyList willbes-Open-Table">
@@ -31,6 +32,11 @@
                         </tr>
                         <tr>
                             <td colspan="2">
+                            @if(empty($results['affiliate']) === false)
+                                <div class="readingRoom">
+                                    <a href="#none" onclick="openWin('AffDiscReadingRoom')">자매독서실 할인적용 ></a>
+                                </div>
+                            @endif
                             {{-- 주문상품 --}}
                             @foreach($results['list'] as $idx => $row)
                                 <ul class="payLecList" id="cart_row_{{ $row['CartIdx'] }}">
@@ -86,7 +92,16 @@
                                                     @if(empty($row['ExtenDay']) === false)
                                                         연장 신청한 강좌의 기본 수강기간이 종료된 후 바로 수강 시작
                                                     @else
-                                                        결제완료 후 바로 수강 시작
+                                                        {{-- 단강좌이면서 개강일이 금일보다 클 경우 개강일 표기 --}}
+                                                        @if($row['CartProdType'] == 'on_lecture')
+                                                            @if(empty($row['StudyStartDate']) === false && $row['StudyStartDate'] > date('Y-m-d'))
+                                                                {{ kw_date('n월 j일', $row['StudyStartDate']) }}부터 수강 가능합니다.
+                                                            @else
+                                                                결제완료 후 바로 수강 시작
+                                                            @endif
+                                                        @else
+                                                            결제완료 후 바로 수강 시작
+                                                        @endif
                                                     @endif
                                                 </span>
                                             @endif
@@ -104,10 +119,10 @@
                                             </span>
                                         </li>
                                     @endif
-                                    {{-- 단과할인율 표기 --}}
+                                    {{-- 단과/제휴 할인율 표기 --}}
                                     @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
-                                        <li>
-                                            <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] }}%)</span>
+                                        <li class="lec_disc_info">
+                                            <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] . $row['LecDiscRateUnit'] }})</span>
                                         </li>
                                     @endif
                                 </ul>
@@ -332,6 +347,17 @@
                             </div>
                             <div class="txtBox NGR">
                                 {{-- TODO : 임의 등록 --}}
+                                @if($__cfg['SiteCode'] == '2010' && $results['cart_type'] == 'off_lecture')
+                                    {{-- 고등고시학원 추가 유의사항 (한시적 노출) --}}
+                                    <p class="tx-red mb15">
+                                        <strong>
+                                            [학원실강 필독]<br/>
+                                            ※ 코로나19 바이러스 확산 예방을 위한 학원운영 방침<br/>
+                                            - 실강 수강 중 학원의 불가피한 사정으로 인해 인강 수강으로 전환될 수 있습니다.<br/>
+                                            - 실강 수강 시 마스크 미착용 또는 건강 이상 징후(발열, 기침 등) 시 퇴실 조치 될 수 있습니다.
+                                        </strong>
+                                    </p>
+                                @endif
                                 <strong>신용카드 결제 시</strong><br/>
                                 - 최종 결제승인 이전에 전자결제창을 닫지 마시기 바랍니다.<br/>
                                 - 전자금융거래 기본법에 따라 결제금액이 30만원 이상일 경우 전자상거래법에 의해 발급된 공인인증서를 이용하여<br/>
@@ -429,6 +455,11 @@
 
     {{--쿠폰적용--}}
     <div id="Coupon" class="willbes-Layer-Black"></div>
+
+    {{--자매독서실 할인--}}
+    <div id="AffDiscReadingRoom" class="willbes-Layer-Black">
+        @include('willbes.m.site.order.aff_disc_readingroom_list')
+    </div>
 </div>
 <!-- End Container -->
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
@@ -533,7 +564,8 @@
                 '_method' : 'POST',
                 'cart_type' : '{{ $results['cart_type'] }}',
                 'use_point' : use_point,
-                'coupon_detail_idx' : JSON.stringify(coupon_detail_idx)
+                'coupon_detail_idx' : JSON.stringify(coupon_detail_idx),
+                'aff_idx' : '{{ $results['aff_idx'] }}'
             };
             sendAjax(url, data, function (ret) {
                 if (ret.ret_cd) {

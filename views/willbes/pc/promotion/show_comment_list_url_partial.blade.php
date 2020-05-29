@@ -3,7 +3,14 @@
 <div id="NOTICEPASS" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">
+    var first_height = '';
     function resizeIframe(iframe) {
-        iframe.height = (iframe.contentWindow.document.body.scrollHeight + 15) + "px";
+        if (first_height == '') {
+            iframe.height = (iframe.contentWindow.document.body.scrollHeight + 15) + "px";
+            if (iframe.contentWindow.document.body.scrollHeight <= 100) {
+                iframe.height = '633px';    //강제초기화
+            }
+        }
+        first_height = iframe.height;
     }
 </script>

@@ -48,7 +48,7 @@
 		<div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1663_01.jpg" alt="" />
             <div class="buyLec">
-                <a href="https://job.willbes.net/userPackage/show/cate/309002/prod-code/165510" target="_blank">수강신청 ></a>
+                <a href="https://job.willbes.net/userPackage/show/cate/309005/prod-code/165510" target="_blank">수강신청 ></a>
             </div>
 		</div>
 

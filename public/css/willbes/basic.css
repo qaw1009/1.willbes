@@ -551,7 +551,8 @@ select[disabled] {
   height: 350px !important;
 }
 .h400 {
-  height: 400px !important;
+  height: 400px !important;  
+  overflow-y: scroll;
 }
 .h420 {
   height: 420px !important;
@@ -564,6 +565,7 @@ select[disabled] {
 }
 .h510 {
   height: 510px !important;
+  overflow-y: scroll;
 }
 .h520 {
   height: 520px !important;

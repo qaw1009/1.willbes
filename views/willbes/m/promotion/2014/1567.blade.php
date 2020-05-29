@@ -68,7 +68,7 @@
     .evt05 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
     .evt05 ul li a:hover {background:#000; color:#fff}
     .evt05 ul:after {content:""; display:block; clear:both}
-    .evt05 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
+    .evt05 .evt03Txt01 {font-size:20px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
     
     .evt06 .columns {padding:20px;
         column-count: 1;
@@ -172,6 +172,8 @@
         <div class="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1567M_01.jpg" alt="" >
         </div>
+        {{--시간설정--}}
+        @if(time() < strtotime('202005311159'))
         <div class="evt02">
             <ul class="price NSK-Black">
                 <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
@@ -202,6 +204,11 @@
                 </ul>
             </div>
         </div>
+        @else
+        <div class="evt01 pt80">
+            <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1567M_01_01.jpg" alt="정문진" ></a>
+        </div>
+        @endif
     </div>
 
     <div id="tab02">

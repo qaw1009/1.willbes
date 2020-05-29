@@ -170,6 +170,8 @@
         <div class="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_01.jpg" alt="" >
         </div>
+        {{--시간설정--}}
+        @if(time() < strtotime('202005311159'))
         <div class="evt02">
             <ul class="price NSK-Black">
                 <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
@@ -189,7 +191,7 @@
                     수강기간 : 6개월<br>
                     수강대상 : 온라인 쇼핑몰 창업 입문부터 가능
                 </li>
-            </ul>
+            </ul>            
             <div class="evt02-txt">
                 <div>*  이벤트 기간  :  5월1일(금)~5.31(일) 당첨자 발표 : 6.5(금) 공지사항 참조</div>
                 <ul>
@@ -200,6 +202,11 @@
                 </ul>
             </div>
         </div>
+        @else
+        <div class="evt01 pt80">
+            <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1565M_01_01.jpg" alt="황채영" ></a>
+        </div>
+        @endif
     </div>
 
     <div id="tab02">

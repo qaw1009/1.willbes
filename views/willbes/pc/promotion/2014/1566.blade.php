@@ -156,6 +156,7 @@
         .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
         .infoCheck a:hover {background:#0099ff;}
 
+        .evt02_00 {background:#fff7f5}
         .evt02 {background:#f6f6f6; padding-top:100px}
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
@@ -219,7 +220,10 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
             <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
+            @endif
             {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1566_sky.png" alt="스카이베너" usemap="#Map1566_sky" border="0" >
             <map name="Map1566_sky" id="Map1566_sky">
@@ -228,10 +232,9 @@
             --}}
         </div>                  
 
-		<div class="evtCtnsBox evtTop">
+		<div class="evtCtnsBox evtTop">        
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
-            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >     
+            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>                 
             <div class="evtMenu">
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
@@ -244,11 +247,16 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1602_01.jpg" alt="사전예약 이벤트" usemap="#Map1566A" border="0" >
                 <map name="Map1566A" id="Map1566A">
                     <area shape="rect" coords="100,9,1016,259" href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank" alt="리뷰생활">
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1566_01.jpg">
+            @endif
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>
@@ -259,7 +267,10 @@
         </div>
 
         <div id="tab02">
-            <div class="evtCtnsBox evt02">
+            <div class="evtCtnsBox evt02_00">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >
+            </div>
+            <div class="evtCtnsBox evt02">                
                 <iframe src="https://www.youtube.com/embed/SqJMAs2mic8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>

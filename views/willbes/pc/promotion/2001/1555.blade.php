@@ -128,14 +128,40 @@
         .evt05 {background:#fff;}
         .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg) no-repeat center top; text-align:center}
     </style>
-
+    @php
+        $now = date('YmdHi');
+        $onoff_1 = $onoff_2 = $onoff_3 = $onoff_4 = $onoff_5 = $onoff_6 = 'null';
+        if (empty($arr_promotion_params['start_active_tab1']) === false && empty($arr_promotion_params['end_active_tab1']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab1']) { $onoff_1 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab1'] && $now < $arr_promotion_params['end_active_tab1']) { $onoff_1 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab1']) { $onoff_1 = 'off'; }
+        } else { $onoff_1 = 'null'; }
+        if (empty($arr_promotion_params['start_active_tab2']) === false && empty($arr_promotion_params['end_active_tab2']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab2']) { $onoff_2 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab2'] && $now < $arr_promotion_params['end_active_tab2']) { $onoff_2 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab2']) { $onoff_2 = 'off'; }
+        } else { $onoff_2 = 'null'; }
+        if (empty($arr_promotion_params['start_active_tab3']) === false && empty($arr_promotion_params['end_active_tab3']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab3']) { $onoff_3 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab3'] && $now < $arr_promotion_params['end_active_tab3']) { $onoff_3 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab3']) { $onoff_3 = 'off'; }
+        } else { $onoff_3 = 'null'; }
+        if (empty($arr_promotion_params['start_active_tab4']) === false && empty($arr_promotion_params['end_active_tab4']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab4']) { $onoff_4 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab4'] && $now < $arr_promotion_params['end_active_tab4']) { $onoff_4 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab4']) { $onoff_4 = 'off'; }
+        } else { $onoff_4 = 'null'; }
+        if (empty($arr_promotion_params['start_active_tab5']) === false && empty($arr_promotion_params['end_active_tab5']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab5']) { $onoff_5 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab5'] && $now < $arr_promotion_params['end_active_tab5']) { $onoff_5 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab5']) { $onoff_5 = 'off'; }
+        } else { $onoff_5 = 'null'; }
+        if (empty($arr_promotion_params['start_active_tab6']) === false && empty($arr_promotion_params['end_active_tab6']) === false) {
+            if ($now < $arr_promotion_params['start_active_tab6']) { $onoff_6 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab6'] && $now < $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'on'; }
+            elseif ($now >= $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'off'; }
+        } else { $onoff_6 = 'null'; }
+    @endphp
     <div class="evtContent NGR" id="evtContainer">        
         <ul class="skyBanner"> 
             <li><a href="#none" onClick='alert("COMING SOON!! ")'><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브"></a></li>           
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1555_sky03.png" title="면접캠프"></a></li>
         </ul>   
-
 
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
@@ -150,7 +176,6 @@
             </div>
         </div>
 
-
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_top.jpg" title="2019년 경찰 2차 합격 풀케어 서비스">
@@ -158,11 +183,12 @@
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
-
             <div class="d-day NSK">
                 2020년 경찰1차 러닝메이트 최종합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
-                    <p class="NSK-Black">필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @if($onoff_1 == 'on')
+                        <p class="NSK-Black">필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @endif
                 @endif
                 <!--
                 <p>체력시험까지 <span>D-00</span></p>
@@ -178,39 +204,67 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
-                    <a href="#tab01" class="active">
+                    @if($onoff_1 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_1 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab01" class="{{ (($onoff_1 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#tab02">
+                    @if($onoff_2 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_2 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab02" class="{{ (($onoff_2 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 <li>
-
-                    <a href="#tab03">
+                    @if($onoff_3 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_3 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab03" class="{{ (($onoff_3 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#tab04">
+                    @if($onoff_4 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_4 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab04" class="{{ (($onoff_4 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab04.jpg" alt="면접시험" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#tab05">
+                    @if($onoff_5 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_5 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab05" class="{{ (($onoff_5 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab05_on.jpg" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab05.jpg" alt="최종합격" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#tab06">
+                    @if($onoff_6 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                    @elseif($onoff_6 == 'off')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                    @else @endif
+                    <a href="#tab06" class="{{ (($onoff_6 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab06_on.jpg" alt="최종합격서비스" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab06.jpg" alt="최종합격서비스" class="off">
                     </a>
@@ -299,12 +353,34 @@
         $(document).ready(function(){
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                //$active.addClass('active');
-                $content = $($active[0].hash);
+                @php
+                    $arr_tab = empty($arr_base['get_data']['tab']) === false ? $arr_base['get_data']['tab'] : null;
+                @endphp
+                @if(empty($arr_tab) === false && ($arr_tab >= 1 && $arr_tab <=5))
+                    //GET으로 Tab 번호 받았을 경우
+                    $active = $($links.filter('[href="'+location.hash+'"]')[{{$arr_tab-1}}] || $links[{{$arr_tab-1}}]);
+                @else
+                    @if($onoff_1 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                    @elseif ($onoff_2 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                    @elseif ($onoff_3 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[2] || $links[2]);
+                    @elseif ($onoff_4 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[3] || $links[3]);
+                    @elseif ($onoff_5 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[4] || $links[4]);
+                    @elseif ($onoff_6 == 'on')
+                        $active = $($links.filter('[href="'+location.hash+'"]')[5] || $links[5]);
+                    @else
+                        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                    @endif
+                @endif
 
+                $active.addClass('active');
+                $content = $($active[0].hash);
                 $links.not($active).each(function () {
-                    $(this.hash).hide();
+                    $(this.hash).hide()
                 });
 
                 // Bind the click event handler

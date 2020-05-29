@@ -1,8 +1,8 @@
 <div class="form-group">
     <label class="control-label col-md-1-1" for="promotion_params">추가 파라미터(GET방식) </label>
     <div class="col-md-10 form-inline">
-        <input type="text" id="promotion_params" name="promotion_params" class="form-control" value="{{ $data['PromotionParams'] }}" title="프로모션 파라미터" style="width: 40%;">
-        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) param=1&amp;param=2&amp;param=3&amp;param=4
+        {{--<input type="text" id="promotion_params" name="promotion_params" class="form-control" value="{{ $data['PromotionParams'] }}" title="프로모션 파라미터" style="width: 40%;">--}}
+        <textarea id="promotion_params" name="promotion_params" class="form-control" rows="6" title="추가 파라미터" placeholder="param=1&amp;param=2&amp;param=3&amp;param=4" style="width: 70%;">{!! $data['PromotionParams'] !!}</textarea>
     </div>
 </div>
 <div class="form-group">

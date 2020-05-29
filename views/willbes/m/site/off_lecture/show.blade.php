@@ -132,8 +132,23 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="lec-btns w25p">
+                @php
+                    $btn_count = 1;
+                    if($data['StudyApplyCcd'] != '654002') {
+                        $btn_count += 1;
+                    }
+                    if($data['StudyApplyCcd'] != '654001') {
+                        $btn_count += 2;
+                    }
+                    switch ($btn_count) {
+                        case 1 : $btn_css = 'w100p';break;
+                        case 2 : $btn_css = 'w50p';break;
+                        case 3 : $btn_css = '';break;
+                        case 4 : $btn_css = 'w25p';break;
+                        default : $btn_css = '';
+                    }
+                @endphp
+                <div class="lec-btns {{$btn_css}}">
                     <ul>
                         <li><a href="#none" onClick='javascript:goListOff()' class="btn_black_line">강좌목록</a></li>
                         @if($data['StudyApplyCcd'] != '654002')

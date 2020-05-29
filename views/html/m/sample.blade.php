@@ -99,6 +99,9 @@
             <a href="{{ site_url('/home/html/m/lecture_offline_pkg3') }}" target="_blank">학원방문결제 접수 > 종합반</a>
             <a href="{{ site_url('/home/html/m/lecture_offline_pkg4') }}" target="_blank">학원방문결제 접수 > 종합반 상세보기</a>
             <a href="{{ site_url('/home/html/m/lecture_offline_pkg5') }}" target="_blank">학원방문결제 접수 > 종합반 상세보기(강사배정)</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/m/board_list') }}" target="_blank">학원게시판 리스트</a>
+            <a href="{{ site_url('/home/html/m/board_view') }}" target="_blank">학원게시판 글보기</a>
         </div>
     </li>
     <li>        

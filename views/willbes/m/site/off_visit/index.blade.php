@@ -119,7 +119,7 @@
                     <tbody>
                     @foreach($data['subjects'] as $subject_idx => $subject_name)
                         {{-- 과목명 --}}
-                        <tr class="replyList willbes-Open-Table">
+                        <tr class="replyList willbes-Open-Table hover">
                             <td class="w-data tx-left">
                                 <div class="w-tit">{{ $subject_name }}</div>
                             </td>
@@ -132,7 +132,7 @@
                             @php ksort($data['list'][$subject_idx]); @endphp
                         @endif
 
-                        <tr class="willbes-Open-List">
+                        <tr class="willbes-Open-List" style="display: table-row;">
                             <td class="w-data tx-left" colspan="2">
                             @foreach($data['list'][$subject_idx] as $idx => $row)
                                 @if(empty($row['ProdPriceData']) === false)

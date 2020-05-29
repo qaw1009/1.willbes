@@ -211,15 +211,17 @@
     {{-- 상품목록과 장바구니 동기화 --}}
     function sameContent() {
         var $_cart_rows = $regi_visit_form.find('#basket_list .basket-row');
+        var $_prod_code;
 
         @if($class_type == 'offvisitpackage')
             {{-- 패키지일 경우 하위상품 동기화 --}}
             var $_prod_code_sub, $_arr_prod_code_sub;
 
             $.each($_cart_rows, function() {
+                $_prod_code = $(this).data('prod-code');
                 $_prod_code_sub = $(this).data('sub-prod-code');
 
-                if ($_prod_code_sub.length > 0) {
+                if ($regi_off_form.find('input[name="prod_code[]"][data-prod-code="' + $_prod_code + '"]').length > 0 && $_prod_code_sub.length > 0) {
                     $_arr_prod_code_sub = $_prod_code_sub.split(',');
 
                     for (var i = 0; i < $_arr_prod_code_sub.length; i++) {
@@ -229,8 +231,6 @@
             });
         @else
             {{-- 단과반일 경우 상품목록과 장바구니 동기화 --}}
-            var $_prod_code;
-
             // 장바구니 체크 (장바구니에 상품코드가 존재하면 선택 처리)
             $.each($_cart_rows, function() {
                 $_prod_code = $(this).data('prod-code');

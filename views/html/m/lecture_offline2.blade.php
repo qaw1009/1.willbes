@@ -130,6 +130,12 @@
             </div>
         </div>
         
+        {{--
+        <div class="lec-btns w25p"> 버튼 4개일때
+        <div class="lec-btns"> 버튼 3개일때
+        <div class="lec-btns w50p"> 버튼 2개일때
+        <div class="lec-btns w100p"> 버튼 1개일때
+        --}}
         <div class="lec-btns w25p">
             <ul>
                 <li><a href="#none" onClick='lecture_offline1' class="btn_black_line">강좌목록</a></li>

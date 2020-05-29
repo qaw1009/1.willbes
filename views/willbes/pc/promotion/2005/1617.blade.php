@@ -257,35 +257,16 @@
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
 
-    /*레이어팝업*/
-        function go_popup() {
-        $('#popup').bPopup();
-        }
-
+    /*레이어팝업*/    
         function go_popup1() {
             $('#popup1').bPopup();
         }
-
-        function go_popup() {
-        $('#popup').bPopup();
-        }
-
         function go_popup2() {
             $('#popup2').bPopup();
         }
-
-        function go_popup() {
-        $('#popup').bPopup();
-        }
-
         function go_popup3() {
             $('#popup3').bPopup();
         }
-
-        function go_popup() {
-        $('#popup').bPopup();
-        }
-
         function go_popup4() {
             $('#popup4').bPopup();
         }

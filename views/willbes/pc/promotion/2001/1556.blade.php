@@ -234,7 +234,7 @@
                     <ul>
                         <li>
                             <div>
-                            <strong>51</strong>만원<br>
+                            <strong>49</strong>만원<br>
                             <input type="radio" id="y_pkg1" name="y_pkg" value="165507" onClick=""/> <label for="y_pkg1">3개월 패스</label>
                             </div>
                         </li>

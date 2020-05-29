@@ -175,8 +175,10 @@
 
     <div id="tab01" class="evtCtnsBox">
         <div class="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566M_01.jpg" alt="창업 다마고치" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1566M_01.jpg" alt="창업 다마고치" >
         </div>
+        {{--시간설정--}}
+        @if(time() < strtotime('202005311159'))
         <div class="evt02">
             <ul class="price NSK-Black">
                 <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
@@ -204,6 +206,12 @@
                 </ul>
             </div>
         </div>
+        @else
+        <div class="evt01 pt30">
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1566M_01_01.jpg" alt="김경은" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1566M_01_02.jpg" alt="김경은" >
+        </div>
+        @endif
     </div>
 
     <div id="tab02">

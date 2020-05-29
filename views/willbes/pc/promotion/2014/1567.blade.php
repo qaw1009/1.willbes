@@ -217,7 +217,10 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1567_sky_01.png" alt="정문진대표"></a>
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
             <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
+            @endif
             {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1567_sky.png" alt="스카이베너" usemap="#Map1567_sky" border="0" >
             <map name="Map15677_sky" id="Map1567_sky">
@@ -241,12 +244,20 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1604_01.jpg" alt="사전예약 이벤트" usemap="#Map1567A" border="0" >
                 <map name="Map1567A" id="Map1567A">
                     <area shape="rect" coords="197,810,450,857" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268601" target="_blank" alt="이용안내" />
                     <area shape="rect" coords="103,9,1021,260" href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank" alt="리뷰생활">
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1567_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1567_01.jpg" usemap="#Map0529" border="0" >
+                <map name="Map0529">
+                    <area shape="rect" coords="230,663,573,710" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268601" target="_blank" alt="샵플링">
+                </map>
+            @endif
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162746" style="display: none;" checked/>

@@ -130,27 +130,41 @@
     </style>
     @php
         $now = date('YmdHi');
+        $text_on2 = 'off';
         $onoff_1 = $onoff_2 = $onoff_3 = $onoff_4 = $onoff_5 = $onoff_6 = 'null';
         if (empty($arr_promotion_params['start_active_tab1']) === false && empty($arr_promotion_params['end_active_tab1']) === false) {
             if ($now < $arr_promotion_params['start_active_tab1']) { $onoff_1 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab1'] && $now < $arr_promotion_params['end_active_tab1']) { $onoff_1 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab1']) { $onoff_1 = 'off'; }
         } else { $onoff_1 = 'null'; }
+
         if (empty($arr_promotion_params['start_active_tab2']) === false && empty($arr_promotion_params['end_active_tab2']) === false) {
-            if ($now < $arr_promotion_params['start_active_tab2']) { $onoff_2 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab2'] && $now < $arr_promotion_params['end_active_tab2']) { $onoff_2 = 'on'; }
-            elseif ($now >= $arr_promotion_params['end_active_tab2']) { $onoff_2 = 'off'; }
+            if ($now < $arr_promotion_params['start_active_tab2']) {
+                $onoff_2 = 'null';
+            } elseif ($now >= $arr_promotion_params['start_active_tab2'] && $now < $arr_promotion_params['end_active_tab2']) {
+                if ($now < '202005301230') {
+                    $text_on2 = 'on';
+                }
+                $onoff_2 = 'on';
+            } elseif ($now >= $arr_promotion_params['end_active_tab2']) {
+                $onoff_2 = 'off';
+            }
         } else { $onoff_2 = 'null'; }
+
         if (empty($arr_promotion_params['start_active_tab3']) === false && empty($arr_promotion_params['end_active_tab3']) === false) {
             if ($now < $arr_promotion_params['start_active_tab3']) { $onoff_3 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab3'] && $now < $arr_promotion_params['end_active_tab3']) { $onoff_3 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab3']) { $onoff_3 = 'off'; }
         } else { $onoff_3 = 'null'; }
+
         if (empty($arr_promotion_params['start_active_tab4']) === false && empty($arr_promotion_params['end_active_tab4']) === false) {
             if ($now < $arr_promotion_params['start_active_tab4']) { $onoff_4 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab4'] && $now < $arr_promotion_params['end_active_tab4']) { $onoff_4 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab4']) { $onoff_4 = 'off'; }
         } else { $onoff_4 = 'null'; }
+
         if (empty($arr_promotion_params['start_active_tab5']) === false && empty($arr_promotion_params['end_active_tab5']) === false) {
             if ($now < $arr_promotion_params['start_active_tab5']) { $onoff_5 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab5'] && $now < $arr_promotion_params['end_active_tab5']) { $onoff_5 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab5']) { $onoff_5 = 'off'; }
         } else { $onoff_5 = 'null'; }
+
         if (empty($arr_promotion_params['start_active_tab6']) === false && empty($arr_promotion_params['end_active_tab6']) === false) {
             if ($now < $arr_promotion_params['start_active_tab6']) { $onoff_6 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab6'] && $now < $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'off'; }
@@ -215,11 +229,15 @@
                     </a>
                 </li>
                 <li>
-                    @if($onoff_2 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
-                    @elseif($onoff_2 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
-                    @else @endif
+                    @if($text_on2 == 'on')
+                        <span>가답안 발표 후 진행</span>
+                    @else
+                        @if($onoff_2 == 'on')
+                            <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        @elseif($onoff_2 == 'off')
+                            <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        @else @endif
+                    @endif
                     <a href="#tab02" class="{{ (($onoff_2 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab02.jpg" alt="합격예측" class="off">

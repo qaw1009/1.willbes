@@ -59,8 +59,8 @@
 
    <div class="skybanner">
         <ul>          
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271605" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=271606&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=276165&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=276164&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
         </ul>
     </div>
 

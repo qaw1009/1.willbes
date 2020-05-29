@@ -27,9 +27,15 @@
         </div>
         <div class="Login-List p_re">
             @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
-                <button type="button" class="myacad" onclick="document.location='{{front_url('/lecture/index/pattern/only')}}';">
-                    <span class="hidden">수강신청</span>
-                </button>
+                @if($__cfg['IsPassSite'] === true)
+                    <button type="button" class="myacad" onclick="document.location='{{front_url('/offLecture')}}';">
+                        <span class="hidden">수강신청</span>
+                    </button>
+                @else
+                    <button type="button" class="myacad" onclick="document.location='{{front_url('/lecture/index/pattern/only')}}';">
+                        <span class="hidden">수강신청</span>
+                    </button>
+                @endif
             @endif
             <ul class="myLog tx-black NG">
             @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)

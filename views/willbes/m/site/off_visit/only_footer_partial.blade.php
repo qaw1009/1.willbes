@@ -219,7 +219,7 @@
 
             $.each($_cart_rows, function() {
                 $_prod_code = $(this).data('prod-code');
-                $_prod_code_sub = $(this).data('sub-prod-code');
+                $_prod_code_sub = $(this).data('sub-prod-code').toString();
 
                 if ($regi_off_form.find('input[name="prod_code[]"][data-prod-code="' + $_prod_code + '"]').length > 0 && $_prod_code_sub.length > 0) {
                     $_arr_prod_code_sub = $_prod_code_sub.split(',');

@@ -10,10 +10,12 @@
                 {{--<area shape="rect" coords="288,1285,833,1375" href="#none" onClick='alert("COMING SOON!!")' alt="합격예측 풀서비스 참여하기">--}}
                 {{--<area shape="rect" coords="288,1285,833,1375" href="{{ site_url('/promotion/index/cate/3001/code/1629') }}" target="_blank" alt="합격예측 풀서비스 참여하기">--}}
                 @if (empty($arr_promotion_params['start_active_tab2']) === false && empty($arr_promotion_params['end_active_tab2']) === false)
-                    @if (date('YmdHi') >= $arr_promotion_params['start_active_tab2'] && date('YmdHi') < $arr_promotion_params['end_active_tab2'])
-                        <area shape="rect" coords="288,1285,833,1375" href="{{ site_url('/promotion/index/cate/3001/code/1629') }}" target="_blank" alt="합격예측 풀서비스 참여하기">
-                    @else
+                    @if (date('YmdHi') < $arr_promotion_params['start_active_tab2'])
                         <area shape="rect" coords="288,1285,833,1375" href="#none" onClick='alert("COMING SOON!!")' alt="합격예측 풀서비스 참여하기">
+                    @elseif (date('YmdHi') >= $arr_promotion_params['start_active_tab2'] && date('YmdHi') < $arr_promotion_params['end_active_tab2'])
+                        <area shape="rect" coords="288,1285,833,1375" href="{{ site_url('/promotion/index/cate/3001/code/1629') }}" target="_blank" alt="합격예측 풀서비스 참여하기">
+                    @elseif (date('YmdHi') >= $arr_promotion_params['end_active_tab2'])
+                        <area shape="rect" coords="288,1285,833,1375" href="#none" onClick='alert("서비스가 종료되었습니다.")' alt="합격예측 풀서비스 참여하기">
                     @endif
                 @else
                     <area shape="rect" coords="288,1285,833,1375" href="#none" onClick='alert("COMING SOON!!")' alt="합격예측 풀서비스 참여하기">

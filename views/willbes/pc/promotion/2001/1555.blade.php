@@ -230,7 +230,7 @@
                 </li>
                 <li>
                     @if($text_on2 == 'on')
-                        <span>가답안 발표 후 진행</span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing02.jpg" alt="가압안발표후진행"></span>
                     @else
                         @if($onoff_2 == 'on')
                             <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>

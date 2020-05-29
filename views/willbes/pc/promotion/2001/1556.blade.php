@@ -227,7 +227,7 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_02_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">

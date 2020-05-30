@@ -24,7 +24,7 @@
 @section('content')
     @php
         //2019년 2차 경행경채를 위한 SpIdx. TODO 하드코딩 개선
-        $sp_idx_201908 = (ENVIRONMENT == 'local' || 'dev' ? 7 : 7 );
+        $sp_idx_201908 = (ENVIRONMENT == 'local' || 'dev' ? 9 : 9 );
         if($SpIdx == $sp_idx_201908){
             $TypeT[] = '수사';
             $TypeT[] = '행정법';
@@ -49,7 +49,13 @@
                                     <input type="hidden" id="totalType{{trim($val3['SqIdx']).$key}}" name="totalType[]" value="{{ trim($val3['Type']) }}" />
                                     @if(trim($val3['Type']) == 'S')
                                         @for($i = 1; $i <= 25; $i++)
-                                            @if(empty(trim($val3['Comment'.$i]))===false) <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_click_serial(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                            @if(empty(trim($val3['Comment'.$i]))===false)
+                                                <li><label>
+                                                        <input type="radio" name="q{{ trim($val3['SqIdx']) }}" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_click_serial(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}
+                                                    </label>
+                                                    <br>{{ trim($val3['Hint'.$i]) }}
+                                                </li>
+                                            @endif
                                         @endfor
                                     @elseif(trim($val3['Type']) == 'M')
                                         @for($i = 1; $i <= 25; $i++)
@@ -161,13 +167,13 @@
                     //응시직렬
                     if(num2 == 2){
                         //경행경채
-                        $('#div30').hide();
-                        $('#div31').hide();
+                        $('#div30').show();
+                        $('#div31').show();
                         $('#div32').show();
                         $('#div33').show();
                         $('#div34').show();
-                        $('#div35').show();
-                        $('#div36').show();
+                        /*$('#div35').show();
+                        $('#div36').show();*/
                         $('#question4').hide();
                     }else{
                         //일반공채, 101단

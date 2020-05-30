@@ -931,11 +931,11 @@ class BasePassPredict extends \app\controllers\FrontController
             foreach ($surveyData as $row) {
                 $tmp_group_key = 'Group' . $row['GroupNumber'];
 
-                if (in_array($row['SerialAnswer'], $arr_serial_answer) === true && $row['GroupNumber'] == '3' && in_array($row['SqIdx'], $arr_p_sqidx) === false) {
+                if (in_array($row['SerialAnswer'], $arr_serial_answer) === true && $row['SerialAnswer'] != '2' && $row['GroupNumber'] == '3' && in_array($row['SqIdx'], $arr_p_sqidx) === false) {
                     // 일반공채, 101단일 경우 필수과목에서 한국사, 영어 이외의 과목 제외
                     continue;
-                } elseif ($row['SerialAnswer'] == '5' && $row['GroupNumber'] == '4') {
-                    // 경행경채일 경우 선택과목 제외
+                } elseif ($row['SerialAnswer'] == '2' && $row['GroupNumber'] == '4') {
+                    // 필수과목만 있는 직렬인(경행경채,전의경경채) 경우 선택과목 제외
                     continue;
                 }
 

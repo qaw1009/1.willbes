@@ -272,7 +272,7 @@
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009C" id="event">
                     <map name="Map1009C" id="Map1009C">
-                        <area shape="rect" coords="474,116,610,150" href="https://police.willbes.net/support/qna/index" target="_blank" alt="환승이벤트 참여하기" />
+                        <!--area shape="rect" coords="474,116,610,150" href="https://police.willbes.net/support/qna/index" target="_blank" alt="환승이벤트 참여하기" />//-->
                         <area shape="rect" coords="830,116,966,150" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
                     </map>
                 </div>

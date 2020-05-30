@@ -304,7 +304,7 @@ class PredictModel extends WB_Model
             $OPoint = "
                 (
                     SELECT 
-                        GROUP_CONCAT(CONCAT('-',PaperName,':',OrgPoint)) AS OPOINT
+                        GROUP_CONCAT(CONCAT('-',PaperName,':',OrgPoint) ORDER BY PgoIdx) AS OPOINT
                     FROM 
                         {$this->_table['predictGradesOrigin']} AS go
                         LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
@@ -313,12 +313,21 @@ class PredictModel extends WB_Model
             ";
 
             $column = " 
-                ApplyType, MemName, MemIdx, MemId, AddPoint, fn_dec(PhoneEnc) AS Phone, TaKeNumber as TaKeNumber,
+                PrIdx, ApplyType, MemName, MemIdx, MemId, AddPoint, fn_dec(PhoneEnc) AS Phone, TaKeNumber as TaKeNumber,
                 (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
                 (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
                 if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
                 if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period, RegDatm,
-                ".$OPoint." AS OPOINT
+                ".$OPoint." AS OPOINT,
+                (
+                    SELECT 
+                        GROUP_CONCAT(go.PgoIdx ORDER BY PgoIdx) AS PgoIdx
+                    FROM 
+                        {$this->_table['predictGradesOrigin']} AS go
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
+                    WHERE go.PrIdx = PR.PrIdx
+                )
+		        AS pgoIdxs
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -352,9 +361,9 @@ class PredictModel extends WB_Model
             $data = $query->result_array();
         }
 
-        foreach ($data as &$it) {
+        /*foreach ($data as &$it) {
             $it['OPOINT'] = str_replace(',','<br>',$it['OPOINT']);
-        }
+        }*/
         return $data;
     }
 
@@ -3855,6 +3864,29 @@ class PredictModel extends WB_Model
 
             if($this->_conn->delete($this->_table['predictRegister'], $target_data) === false){
                 throw new \Exception('삭제에 실패했습니다.(1)');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
+    }
+
+    public function originSampleDataDelete($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $target_data = [
+                'PredictIdx' => element('predict_idx', $form_data),
+                'PrIdx' => element('pr_idx', $form_data),
+                'PgoIdx' => element('pgo_idx', $form_data),
+                'MemIdx' => '1000000'
+            ];
+            if($this->_conn->delete($this->_table['predictGradesOrigin'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

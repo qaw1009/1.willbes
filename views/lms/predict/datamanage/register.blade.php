@@ -92,7 +92,19 @@
                     {'data' : 'MemId', 'class': 'text-center'},
                     {'data' : 'TakeMockPart', 'class': 'text-center'},
                     {'data' : 'TaKeArea', 'class': 'text-center'},
-                    {'data' : 'OPOINT', 'class': 'text-center'},
+                    /*{'data' : 'OPOINT', 'class': 'text-center'},*/
+                    {'data' : 'OPOINT', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var str = '';
+                        if (data != null) {
+                            str = '';
+                            var obj = data.split(',');
+                            var obj2 = row.pgoIdxs.split(',');
+                            $.each(obj, function(i, val){
+                                str += val + " <input type='button' class='btn btn-primary btn-sm btn-delete mb-5' data-pr-idx='"+row.PrIdx+"' data-pgo-idx='"+obj2[i]+"' value='삭제'>" + "<br>";
+                            });
+                        }
+                        return str;
+                    }},
                     {'data' : 'TaKeNumber', 'class': 'text-center'},
                     {'data' : 'LectureType', 'class': 'text-center'},
                     {'data' : 'Period', 'class': 'text-center'},
@@ -139,6 +151,27 @@
         // 샘플엑셀다운로드 버튼 클릭
         $('button[name="btn_file_download"]').on('click', function() {
             location.replace('{{ site_url('/predict/datamanage/sampleDownload') }}');
+        });
+
+        $list_table.on('click', '.btn-delete', function() {
+            var _url = '{{ site_url('/predict/datamanage/originSampleDataDelete') }}/';
+            var data = {
+                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'predict_idx' : '{{ $PredictIdx }}',
+                'pr_idx' : $(this).data("pr-idx"),
+                'pgo_idx' : $(this).data("pgo-idx")
+            };
+
+            if (!confirm('삭제 후 복구 할 수 없습니다.\n해당 데이타를 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable.draw(false);
+                }
+            }, showError, false, 'POST');
         });
     </script>
 @stop

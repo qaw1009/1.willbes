@@ -707,6 +707,7 @@
         @if(empty($surveyList) === false)
             json = {!! json_encode($surveyList) !!};
         @endif
+        /*console.log(json);*/
 
         if (json === null || typeof json[val] === 'undefined') {
             return;
@@ -714,9 +715,9 @@
 
         if (act === 'M') {
             $('#survey3').parents('.question').css('display', '');
-            /*if (val === '2') {    //(특정직렬 선택과목 제외)
+            if (val === '2') {    //(특정직렬 선택과목 제외)
                 $('#survey3').parents('.question').css('display', 'none');
-            }*/
+            }
 
             parent.resizeIframe(parent.document.getElementById('frm'));
         }

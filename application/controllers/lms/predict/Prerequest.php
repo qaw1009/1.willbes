@@ -139,4 +139,17 @@ class Prerequest extends \app\controllers\BaseController
 
     }
 
+    public function delete()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'predict_idx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'pr_idx', 'label' => '등록회원식별자', 'rules' => 'trim|required|integer']
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->predictModel->predictRegistDelete($this->_reqP(null));
+        $this->json_result($result['ret_cd'], '저장되었습니다.', $result);
+    }
+
 }

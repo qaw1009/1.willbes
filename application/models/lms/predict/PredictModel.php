@@ -198,6 +198,7 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = " 
+            PR.PrIdx,
             P.ProdName,
             P.PredictIdx,
             PR.ApplyType,
@@ -3807,5 +3808,61 @@ class PredictModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 합격예측 회원 데이터 삭제
+     * @param $form_data
+     * @return array|bool
+     */
+    public function predictRegistDelete($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx' => element('predict_idx', $form_data),
+                    'PrIdx' => element('pr_idx', $form_data)
+                ]
+            ];
+            $column = '*';
+            $from = " FROM {$this->_table['predictRegister']} ";
+
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $register_data =  $this->_conn->query('select '.$column .$from .$where)->row_array();
+
+            if (empty($register_data) === true) {
+                throw new Exception('조회된 기본정보가 없습니다.');
+            }
+
+            $target_data = ['PredictIdx' => element('predict_idx', $form_data), 'PrIdx' => element('pr_idx', $form_data)];
+            if($this->_conn->delete($this->_table['predictGradesOrigin'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.(5)');
+            }
+
+            if($this->_conn->delete($this->_table['predictGrades'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.(4)');
+            }
+
+            if($this->_conn->delete($this->_table['predictAnswerPaper'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.(3)');
+            }
+
+            if($this->_conn->delete($this->_table['predictRegisterR'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.(2)');
+            }
+
+            if($this->_conn->delete($this->_table['predictRegister'], $target_data) === false){
+                throw new \Exception('삭제에 실패했습니다.(1)');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
     }
 }

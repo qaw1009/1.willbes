@@ -77,6 +77,7 @@
                         <th class="text-center">수강여부</th>
                         <th class="text-center">시험준비기간</th>
                         <th class="text-center">신청일</th>
+                        <th class="text-center">삭제</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -130,7 +131,10 @@
                     {'data' : 'TaKeNumber', 'class': 'text-center'},
                     {'data' : 'LectureType', 'class': 'text-center'},
                     {'data' : 'Period', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : 'RegDatm', 'class': 'text-center'},
+                    {'data' : 'PrIdx', 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="btn-delete red" data-idx="' + row.PrIdx + '"><u>삭제</u></a>';
+                    }}
                 ]
             });
 
@@ -140,6 +144,27 @@
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/predict/prerequest/list/Y') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+
+            $list_table.on('click', '.btn-delete', function () {
+                if (!confirm('삭제할 경우 성적 포함 모든 데이터는 삭제 됩니다. 삭제하시겠습니까?\n삭제 후 조정점수 반영해야 정확한 데이터가 산출됩니다.')) {
+                    return;
+                }
+
+                var _url = '{{ site_url("/predict/prerequest/delete/") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'predict_idx' : $("#search_PredictIdx").val(),
+                    'pr_idx' : $(this).data("idx")
+                };
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

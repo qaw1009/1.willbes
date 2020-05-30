@@ -357,8 +357,14 @@
         });
 
         function doEvent() {
-            var url = "{{front_url('/predict/index/100004')}}";
-            window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+            //사전예약 마감
+            @if($onoff_1 != 'on')
+                var openNewWindow = window.open("about:blank");
+                openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/1629') }}';
+            @else
+                var url = "{{ front_url('/predict/index/' . $arr_promotion_params['PredictIdx']) }}";
+                window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+            @endif
         }
 
         function doEvent2() {

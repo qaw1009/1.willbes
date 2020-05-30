@@ -172,7 +172,12 @@
     @endphp
     <div class="evtContent NGR" id="evtContainer">        
         <ul class="skyBanner"> 
-            <li><a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=276073&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브"></a></li>           
+            <li>
+                <a href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">
+                {{--<a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=276073&" target="_blank">--}}
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브">
+                </a>
+            </li>
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1555_sky03.png" title="면접캠프"></a></li>
         </ul>   

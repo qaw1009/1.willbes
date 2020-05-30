@@ -202,9 +202,9 @@
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_top01.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
             <map name="Map1009A" id="Map1009A">
-                <area shape="rect" coords="298,1275,918,1345" href="#pass" alt="pass신청하기" />
+                <area shape="rect" coords="242,2120,888,2223" href="#pass" alt="pass신청하기" />
             </map>
         </div>
 

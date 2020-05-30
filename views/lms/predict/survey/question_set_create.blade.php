@@ -201,7 +201,7 @@
                 vnum = add;
             }
 
-            if(useYn == 'N') {
+            /*if(useYn == 'N') {
 
                 var tempR2 = $('#r2').html();
                 tempR2 = tempR2 + "<div id='r2" + sqidx + "'>Q<input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + vnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
@@ -236,7 +236,38 @@
             } else {
                 alert('이미 담겨있습니다.');
                 return ;
-            }
+            }*/
+
+            var tempR2 = $('#r2').html();
+            tempR2 = tempR2 + "<div id='r2" + sqidx + "'>Q<input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + vnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
+            $('#r2').html(tempR2);
+
+            var tempR3 = $('#r3').html();
+            tempR3 = tempR3 + "<div id='r3" + sqidx + "'><input type='text' id='title"+ sqidx +"' name='temptitle[]' value='" + $('#title' + sqidx).html() + "' style='width:150px;' disabled/>";
+            tempR3 = tempR3 + "<input type='hidden' name='SubTitle[]' value='" + $('#title' + sqidx).html() + "' style='width:150px;' /></div>";
+            $('#r3').html(tempR3);
+
+            var tempR4 = $('#r4').html();
+            tempR4 = tempR4 + "<div id='r4" + sqidx + "'><input type='text' value='" + $('#cnt' + sqidx).html() + "'  style='width:40px;' disabled /></div>";
+            $('#r4').html(tempR4);
+            var tempR5 = $('#r5').html();
+            tempR5 = tempR5 + "<div id='r5" + sqidx + "'><input type='text' value='" + $('#type' + sqidx).html() + "' style='width:60px;' disabled /></div>";
+            $('#r5').html(tempR5);
+            var tempR6 = $('#r6').html();
+            tempR6 = tempR6 + "<div id='r6" + sqidx + "' style='margin-top:5px;'><button class='btn btn-primary' type='button' onClick='cartDel(" + sqidx + ")'>삭제</button></div>";
+            $('#r6').html(tempR6);
+
+            var tempR7 = $('#r7').html();
+            tempR7 = tempR7 + "<div id='r7" + sqidx + "'><input type='hidden' id='sq"+ sqidx +"' name='SqIdx[]' value=" + sqidx + " style='width:25px;' /></div>";
+            $('#r7').html(tempR7);
+
+            var cartIn = $('#cartIn').val();
+            cartIn = cartIn + sqidx + ',';
+            $('#cartIn').val(cartIn);
+
+            currentnum++;
+
+            groupTextMake();
         }
 
         function cartCheck(cknum){

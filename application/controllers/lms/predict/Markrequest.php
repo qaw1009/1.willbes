@@ -139,8 +139,8 @@ class Markrequest extends \app\controllers\BaseController
                 $excel_data[$key][] = $val['수학'];
                 $excel_data[$key][] = $val['사회'];
                 $excel_data[$key][] = $val['과학'];
-                $excel_data[$key][] = $val['수사'];
-                $excel_data[$key][] = $val['행정법'];
+                /*$excel_data[$key][] = $val['수사'];
+                $excel_data[$key][] = $val['행정법'];*/
 
                 /*$arr_opoint = explode(',', $val['OPOINT']);
                 foreach ($arr_opoint as $pKey => $pVal) {

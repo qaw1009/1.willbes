@@ -1,7 +1,8 @@
 <ul class="skyBanner">
     <li><a href="#event">합격예측 참여하고, <Br />푸짐한 혜택 받자!</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
-    <li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">라이브 토크쇼</a></li>
+    {{--<li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">라이브 토크쇼</a></li>--}}
+    <li><a href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">라이브 토크쇼</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank">적중이벤트</a></li>
     <li><a href="#evtContainer">top</a></li>
 </ul>

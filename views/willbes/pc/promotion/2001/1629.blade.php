@@ -119,7 +119,7 @@
 
                     <div class="sectionEvt02">
                         <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_evt02.jpg" alt="토크쇼 시청 인증샷 공유 이벤트" />
-                        <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
+                        <a href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">
                             <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_evt02_btn.png" alt="공유 이벤트 참여하기" />
                         </a>
                     </div>

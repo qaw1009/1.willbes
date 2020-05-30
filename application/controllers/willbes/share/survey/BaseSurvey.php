@@ -66,8 +66,6 @@ class BaseSurvey extends \app\controllers\FrontController
             }
         }
 
-        print_r($question);
-
         $view_file = 'willbes/pc/survey/index';
         $this->load->view($view_file, [
             'Title' => $product['SpTitle'],

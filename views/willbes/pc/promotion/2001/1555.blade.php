@@ -141,7 +141,7 @@
             if ($now < $arr_promotion_params['start_active_tab2']) {
                 $onoff_2 = 'null';
             } elseif ($now >= $arr_promotion_params['start_active_tab2'] && $now < $arr_promotion_params['end_active_tab2']) {
-                if ($now < '202005301230') {
+                if ($now < '202005300000') {
                     $text_on2 = 'on';
                 }
                 $onoff_2 = 'on';

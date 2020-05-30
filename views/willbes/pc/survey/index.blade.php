@@ -87,6 +87,7 @@
         var $regi_form = $('#regi_form');
 
         function fn_visible(obj, num1, num2, qnum){
+            console.log('#div'+num1+num2);
             var cknum = $('input:checkbox[name="q'+qnum+'[]"]:checked').length;
             if(cknum > pick_sjt_cnt){
                 alert('직렬별 과목은 '+pick_sjt_cnt+'개까지 선택할 수 있습니다.');

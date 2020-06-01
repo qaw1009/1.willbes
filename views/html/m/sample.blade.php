@@ -25,7 +25,9 @@
             <a href="{{ site_url('/home/html/m/main3') }}" target="_blank">메인-취업</a>
             <a href="{{ site_url('/home/html/m/main4') }}" target="_blank">메인-자격증</a>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
-            <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>          
+            <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/m/search_list') }}" target="_blank">검색결과 리스트</a>        
         </div>
     </li>
     <li>
@@ -84,7 +86,7 @@
             <a href="{{ site_url('/home/html/m/payment_04') }}" target="_blank">주문/배송조회 > 상세보기</a> 
             <a href="{{ site_url('/home/html/m/payment_05') }}" target="_blank">포인트관리</a>   
             <a href="{{ site_url('/home/html/m/payment_06') }}" target="_blank">쿠폰/수강권관리</a>      
-            <a href="{{ site_url('/home/html/m/payment_07') }}" target="_blank">수강연장 결제하기</a>     
+            <a href="{{ site_url('/home/html/m/payment_07') }}" target="_blank">수강연장 결제하기</a>    
         </div>
     </li>
     <li>        
@@ -102,6 +104,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/board_list') }}" target="_blank">학원게시판 리스트</a>
             <a href="{{ site_url('/home/html/m/board_view') }}" target="_blank">학원게시판 글보기</a>
+            
         </div>
     </li>
     <li>        

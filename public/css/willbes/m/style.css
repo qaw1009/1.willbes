@@ -949,7 +949,7 @@ body.memBody #Footer {
     height: 25%;
 }
 .rowlineWrap li a span {
-    vertical-align: middle;
+    vertical-align: TOP;
 } 
 .rowlineWrap li a.on {
     position: relative;
@@ -3562,6 +3562,8 @@ body.memBody #Footer {
 
 /*********************************************     학원     *********************************************/
 
+
+/*검색*/
 .onSearch {position: relative; margin-bottom:10px; padding:10px 20px 0; border-top:1px solid #ccc;}
 .onSearch input[type="search"] {border:0; border-bottom:1px solid #000; height:28px; width:100%; color:#ccc; font-size:14px; padding:0}
 .onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
@@ -3570,7 +3572,25 @@ body.memBody #Footer {
     display: block; z-index: 1;
 }
 
+.searchAmount, 
+.searchZero {margin-top:30px; padding-bottom:30px; text-align: center; line-height: 1.5; border-bottom:1px solid #c9c9c9}
+.searchAmount strong {color:#1087ef;}
+.searchZero 
+.searchZero img {width:60px}
+.searchZero h3 {margin-top:30px; font-size:16px; font-weight: bold;}
+.searchZero p {margin-top:20px; color:#666}
 
+.searchTap {border-top:1px solid #ccc; margin-top:30px; }
+.searchTap li {display:inline; float:left; width:25%; border-bottom:2px solid #333}
+.searchTap li a {display:block; text-align: center; border-bottom:2px solid #fff; padding:15px 0}
+.searchTap li span {color:#1087ef}
+.searchTap li.on {border-bottom:2px solid #1087ef}
+.searchTap li.on a {border-bottom:2px solid #1087ef}
+.searchTap ul:after {content:""; display:block; clear:both}
+
+.searchContent h5 {position: relative; font-size:14px; height: 60px; line-height: 60px; padding:0 20px}
+.searchContent h5 select {float: right; vertical-align: middle;}
+.searchContent h5:after {content:""; display:block; clear:both} 
 
 /* iPhone 5/SE */
 @media only screen and (min-width: 320px) and (max-width: 374px) {

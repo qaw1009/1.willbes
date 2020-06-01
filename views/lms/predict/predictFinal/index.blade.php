@@ -8,9 +8,8 @@
             <div class="x_title">
                 <div class="clearfix"></div>
                 <ul class="nav navbar-left panel_toolbox">
-                    <li>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_final_data" aria-expanded="false" aria-controls="addBox_final_data">가데이터 등록</button>
-                    </li>
+                    <li><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_cert_data" aria-expanded="false" aria-controls="addBox_cert_data">합격자 인증번호 등록</button></li>
+                    <li><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_final_data" aria-expanded="false" aria-controls="addBox_final_data">가데이터 등록</button></li>
                 </ul>
             </div>
             <div class="x_content collapse multi-collapse" id="addBox_final_data">
@@ -20,6 +19,16 @@
                     <input type="file" id="attach_file" name="attach_file" class="form-control" title="엑셀파일" value="">
                     <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-upload">엑셀 업로드</button>
                     <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-download">샘플엑셀 다운로드</button>
+                </div>
+            </div>
+            <div class="x_content collapse multi-collapse" id="addBox_cert_data">
+                <div class="col-md-11 form-inline">
+                    <input type="text" name="exam_cert_idx" id="exam_cert_idx" class="form-control" style="width:100px;" title="수강인증코드" placeholder="수강인증코드">
+                    <input type="text" name="exam_name" id="exam_name" class="form-control" style="width:100px;" title="제목" placeholder="경찰 2020년 1회">
+                    <input type="text" name="exam_cen_code" id="exam_cen_code" class="form-control" style="width:100px;" title="police_2020_1" placeholder="police_2020_1">
+                    <input type="file" id="exam_attach_file" name="exam_attach_file" class="form-control" title="엑셀파일" value="">
+                    <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-cert-upload">엑셀 업로드</button>
+                    <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-cert-download">샘플엑셀 다운로드</button>
                 </div>
             </div>
         </form>
@@ -142,6 +151,42 @@
 
             $('.btn-excel-download').on('click', function() {
                 location.replace('{{ site_url('/predict/predictFinal/sampleDownload') }}');
+            });
+
+            $('.btn-excel-cert-download').on('click', function() {
+                location.replace('{{ site_url('/predict/predictFinal/sampleCertDownload') }}');
+            });
+
+            $('.btn-excel-cert-upload').on('click', function() {
+                var data, is_file, files;
+                var exam_cert_idx = $invoice_form.find('input[name="exam_cert_idx"]').val();
+                var exam_name = $invoice_form.find('input[name="exam_name"]').val();
+                var exam_cen_code = $invoice_form.find('input[name="exam_cen_code"]').val();
+
+                files = $invoice_form.find('input[name="exam_attach_file"]')[0].files[0];
+
+                if (exam_cert_idx == '') { alert('수강인증코드를 입력해주세요.'); return; }
+                if (exam_name == '') { alert('인증그룹명을 입력해주세요.'); return; }
+                if (exam_cen_code == '') { alert('인증그룹코드를 입력해주세요.'); return; }
+                if (typeof files === 'undefined') { alert('엑셀파일을 선택해 주세요.'); return; }
+
+                data = new FormData();
+                data.append('{{ csrf_token_name() }}', $invoice_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                data.append('_method', 'POST');
+                data.append('exam_cert_idx', exam_cert_idx);
+                data.append('exam_name', exam_name);
+                data.append('exam_cen_code', exam_cen_code);
+                data.append('attach_file', $invoice_form.find('input[name="exam_attach_file"]')[0].files[0]);
+                is_file = true;
+
+                if (!confirm('업로드 하시겠습니까?')) { return; }
+                sendAjax('{{ site_url('/predict/predictFinal/certDataUpload') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                        $invoice_form.find('input[name="attach_file"]').val('');
+                    }
+                }, showError, false, 'POST', 'json', is_file);
             });
 
             // DataTables

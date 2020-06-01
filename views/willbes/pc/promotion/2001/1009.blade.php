@@ -24,7 +24,7 @@
         .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
         
         .evt00 {background:#0a0a0a}
-        .evt_top {background:#4d79f6;} 
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/06/1009_top_bg.jpg) no-repeat center top} 
        
         .evt01 {padding-bottom:100px; background:#fff !important}
         .evt01 .slide_con {position:relative; width:900px; margin:0 auto}
@@ -128,15 +128,17 @@
         /*타이머*/
         .newTopDday * {font-size:24px}
         .newTopDday {background:#f5f5f5; width:100%; padding:10px 0 35px}
+        .newTopDday div {font-size:22pt;color:#000; margin-top:10px;}
         .newTopDday ul {width:1210px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%}
-        .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
+        .newTopDday ul li:first-child span {font-size:12px; color:#999; margin-top:4px;}
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%}
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
+        .newTopDday ul li:last-child span {display:block; margin-top:10px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         /*레이어팝업*/
@@ -175,8 +177,8 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">{{$arr_promotion_params['turn']}}기</span>
+                        <span>윌비스신광은경찰 PASS</span>
+                        <div class="NGEB">{{$arr_promotion_params['turn']}}기</div>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -190,8 +192,8 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
+                        <a href="#pass" target="_self">수강하기 &gt;</a>
+                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -202,9 +204,9 @@
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
             <map name="Map1009A" id="Map1009A">
-                <area shape="rect" coords="298,1275,918,1345" href="#pass" alt="pass신청하기" />
+                <area shape="rect" coords="242,2120,888,2223" href="#pass" alt="pass신청하기" />
             </map>
         </div>
 
@@ -227,27 +229,27 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_02_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
                     <ul>
                         <li>
                             <div>
-                            <strong>69</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="162531" onClick=""/> <label for="y_pkg1">6개월 패스</label>
+                            <strong>49</strong>만원<br>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="165507" onClick=""/> <label for="y_pkg1">3개월 패스</label>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <strong>89</strong>만원<br>
-                                <input type="radio" id="y_pkg4_1" name="y_pkg" value="162534" onClick=""/> <label for="y_pkg4_1">12개월 패스</label>                           
+                                <strong>79</strong>만원<br>
+                                <input type="radio" id="y_pkg4_1" name="y_pkg" value="165508" onClick=""/> <label for="y_pkg4_1">9개월 패스</label>                           
                             </div>
                         </li>
                         <li>
                             <div>
-                                <strong>115</strong>만원<br>
-                                <input type="radio" id="y_pkg3_1" name="y_pkg" value="163814" onClick=""/> <label for="y_pkg3_1">18개월 패스</label>                           
+                                <strong>109</strong>만원<br>
+                                <input type="radio" id="y_pkg3_1" name="y_pkg" value="165513" onClick=""/> <label for="y_pkg3_1">15개월 패스</label>                           
                             </div>
                         </li>
                     </ul>
@@ -272,7 +274,7 @@
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009C" id="event">
                     <map name="Map1009C" id="Map1009C">
-                        <area shape="rect" coords="474,116,610,150" href="https://police.willbes.net/support/qna/index" target="_blank" alt="환승이벤트 참여하기" />
+                        <!--area shape="rect" coords="474,116,610,150" href="https://police.willbes.net/support/qna/index" target="_blank" alt="환승이벤트 참여하기" />//-->
                         <area shape="rect" coords="830,116,966,150" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
@@ -363,9 +365,9 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6개월 PASS</a></li>
-                <li><a href="#tab2">12개월 PASS</a></li>
-                <li><a href="#tab3">18개월 0원 PASS</a></li>
+                <li><a href="#tab1">3개월 PASS</a></li>
+                <li><a href="#tab2">9개월 PASS</a></li>
+                <li><a href="#tab3">15개월 0원 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
@@ -373,12 +375,12 @@
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>6개월 PASS</h3>
+                        <h3>3개월 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.( <a class="tx-blue" href="javascript:go_popup()">수강가능 교수진 확인하기 ></a> )</li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">2배수</span> 수강 할 수 있습니다.</li>
+                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">무제한</span> 수강 할 수 있습니다.</li>
                             <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                         </ol>
@@ -447,7 +449,7 @@
             <div class="content_guide_box" id="tab2">
                 <dl>
                     <dt>
-                        <h3>12개월 PASS</h3>
+                        <h3>9개월 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -520,7 +522,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <h3>18개월 0원PASS</h3>
+                        <h3>15개월 0원PASS</h3>
                     </dt>
                     <dd>
                         <ol>

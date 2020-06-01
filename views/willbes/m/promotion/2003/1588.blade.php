@@ -142,7 +142,7 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/05/1588m_02.jpg" alt="" >
-        <p>5.31(일)이 지나면 한정특가가 마감됩니다!</p>
+        <p>6.7(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
                 <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/164554" target="_blank">
@@ -180,8 +180,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/pass/mockTest/apply/cate?state=&s_type=&s_keyword=%ED%95%9C%EB%8D%95%ED%98%84+%EC%98%81%EC%96%B4" target="_blank">
-                    <span>5/18(월)~22(금) <br>오후 6시</span>
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">
+                    <span>6/1(월)~5(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

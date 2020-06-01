@@ -396,17 +396,26 @@ class BasePassPredict extends \app\controllers\FrontController
  */
     public function popwin1()
     {
+        $return_type = (APP_DEVICE == 'pc') ? 'close' : 'back';
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', $return_type);
+        }
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = element('ppidx', $arr_input);
 
-        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
 
-        if(empty($ppidx) === false) {
-            $ppidx = $ppidx;
-        } else {
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if (empty($subject_list) === true) {
+            show_alert('등록된 과목이 없습니다.', 'close');
+        }
+
+        if(empty($ppidx) === true) {
             $ppidx = $subject_list[0]['PpIdx'];
         }
 
@@ -414,6 +423,10 @@ class BasePassPredict extends \app\controllers\FrontController
         $filepath = $filepath.$ppidx."/";
 
         $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
+        if (empty($question_list) === true) {
+            show_alert('등록된 문항이 없습니다.', 'close');
+        }
+
         foreach ($subject_list as $key => $val){
             $tMpIdx[] =  $val['PpIdx'];
         }
@@ -494,6 +507,10 @@ class BasePassPredict extends \app\controllers\FrontController
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = '';
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
+
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
         if (empty($subject_list) === true) {
             show_alert('조회된 기본 정보가 없습니다.','back');
@@ -614,9 +631,15 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
-        $pridx = element('pridx', $arr_input);
+        $pridx = (int)element('pridx', $arr_input);
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
 
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if (empty($subject_list) === true) {
+            show_alert('조회된 기본 정보가 없습니다.','back');
+        }
         $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop3', [
@@ -663,8 +686,14 @@ class BasePassPredict extends \app\controllers\FrontController
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = '';
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
 
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if (empty($subject_list) === true) {
+            show_alert('조회된 기본 정보가 없습니다.','back');
+        }
         $question_list = $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         foreach($question_list as $key => $val){

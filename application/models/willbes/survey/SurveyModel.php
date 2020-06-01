@@ -1659,7 +1659,7 @@ class SurveyModel extends WB_Model
 
         $order_by = " ";
 
-        $where = " WHERE PrIdx = ".$pridx;
+        $where = " WHERE PrIdx = '{$pridx}'";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);

@@ -507,6 +507,10 @@ class BasePassPredict extends \app\controllers\FrontController
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = '';
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
+
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
         if (empty($subject_list) === true) {
             show_alert('조회된 기본 정보가 없습니다.','back');
@@ -628,6 +632,9 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = (int)element('pridx', $arr_input);
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
 
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
         if (empty($subject_list) === true) {
@@ -679,6 +686,9 @@ class BasePassPredict extends \app\controllers\FrontController
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = '';
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
 
         $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
         if (empty($subject_list) === true) {

@@ -95,7 +95,7 @@
                         <a href="{{ front_url('/offinfo/boardInfo/index/82') }}"><span>강의실배정표</span></a>
                     </li>
                     <li class="w-infoBox5">
-                        <a href="{{ front_url('/mockTest/apply/cate/') }}"><span>모의고사신청</span></a>
+                        <a href="{{ front_url('/mockTestNew/apply/cate/') }}"><span>모의고사신청</span></a>
                     </li>
                 </ul>
             </div>

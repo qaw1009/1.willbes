@@ -291,7 +291,7 @@
             </div>
         </div>
 
-        <div id="leclist3" class="searchContent">
+        <div id="leclist4" class="searchContent">
             <h5>
                 · 선택패키지 
             </h5>

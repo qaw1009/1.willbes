@@ -24,7 +24,7 @@
         .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
         
         .evt00 {background:#0a0a0a}
-        .evt_top {background:#4d79f6;} 
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/06/1009_top_bg.jpg) no-repeat center top} 
        
         .evt01 {padding-bottom:100px; background:#fff !important}
         .evt01 .slide_con {position:relative; width:900px; margin:0 auto}
@@ -128,15 +128,17 @@
         /*타이머*/
         .newTopDday * {font-size:24px}
         .newTopDday {background:#f5f5f5; width:100%; padding:10px 0 35px}
+        .newTopDday div {font-size:22pt;color:#000; margin-top:10px;}
         .newTopDday ul {width:1210px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%}
-        .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
+        .newTopDday ul li:first-child span {font-size:12px; color:#999; margin-top:4px;}
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%}
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
+        .newTopDday ul li:last-child span {display:block; margin-top:10px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         /*레이어팝업*/
@@ -175,8 +177,8 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">{{$arr_promotion_params['turn']}}기</span>
+                        <span>윌비스신광은경찰 PASS</span>
+                        <div class="NGEB">{{$arr_promotion_params['turn']}}기</div>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -190,8 +192,8 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
+                        <a href="#pass" target="_self">수강하기 &gt;</a>
+                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -202,7 +204,7 @@
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_top01.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
             <map name="Map1009A" id="Map1009A">
                 <area shape="rect" coords="242,2120,888,2223" href="#pass" alt="pass신청하기" />
             </map>

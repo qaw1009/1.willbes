@@ -396,6 +396,10 @@ class BasePassPredict extends \app\controllers\FrontController
  */
     public function popwin1()
     {
+        $return_type = (APP_DEVICE == 'pc') ? 'close' : 'back';
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', $return_type);
+        }
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);

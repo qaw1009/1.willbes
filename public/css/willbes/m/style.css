@@ -3575,8 +3575,7 @@ body.memBody #Footer {
 .searchAmount, 
 .searchZero {margin-top:30px; padding-bottom:30px; text-align: center; line-height: 1.5; border-bottom:1px solid #c9c9c9}
 .searchAmount strong {color:#1087ef;}
-.searchZero 
-.searchZero img {width:60px}
+.searchZero img {width:60px !important}
 .searchZero h3 {margin-top:30px; font-size:16px; font-weight: bold;}
 .searchZero p {margin-top:20px; color:#666}
 

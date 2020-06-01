@@ -15,7 +15,7 @@
 
     {{--검색 결과 없을 경우--}}
     <div class="searchZero">
-        <span><img src="{{ img_url('common/icon_search_big.png')}}"> </span>
+        <span><img src="{{ img_url('common/icon_search_big.png')}}"></span>
         <h3>검색 결과가 없습니다. </h3>
         <p>
         검색어를 바르게 입력하셨는지 확인해주세요.<br>

@@ -199,7 +199,8 @@
                 
             </div>
             <div class="widthAuto curri_schedule">
-                <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="커리큘럼 시간표">               
+                <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="커리큘럼 시간표">    
+                {{--           
                 <ul class="curri_schedules">
                     <li>
                         <span>12.30~1.31</span>
@@ -246,7 +247,8 @@
                     <li>
                         <span>예정</span>
                     </li>
-                </ul>                
+                </ul>      
+                --}}          
             </div>
             {{--
             <div class="widthAuto tx-center pt80">    

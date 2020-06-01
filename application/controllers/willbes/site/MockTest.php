@@ -23,6 +23,9 @@ class MockTest extends \app\controllers\FrontController
      */
     public function info()
     {
+        //신규모의고사 리다이렉트
+        redirect(front_url("/mockTestNew/info/cate/"));
+
         $this->load->view('site/mocktest/info',[
             'page_type' => 'info'
         ]);
@@ -33,6 +36,9 @@ class MockTest extends \app\controllers\FrontController
      */
     public function apply()
     {
+        //신규모의고사 리다이렉트
+        redirect(front_url("/mockTestNew/apply/cate/"));
+
         $applyType = $this->codeModel->getCcd('675');
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -281,6 +287,9 @@ class MockTest extends \app\controllers\FrontController
      */
     public function board()
     {
+        //신규모의고사 리다이렉트
+        redirect(front_url("/mockTestNew/board/cate/"));
+
         $arr_input = $this->_reqG(null,false);
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 's_keyword='.$s_keyword;

@@ -5,7 +5,7 @@
 <div id="Container" class="Container NG c_both">
     <div class="onSearch">
         <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
-        <label for="onsearch"><button title="검색">검색</button></label>
+        <label for="onsearch"><button title="검색">검색</button>
     </div>
 
     {{--검색 결과 있을 경우--}}
@@ -26,7 +26,7 @@
 
     <div class="lineTabs pd-zero c_both">
         <ul class="tabWrap lineWrap rowlineWrap four mt-zero">
-            <li><a href="#leclist1" class="on">단강좌 [<span>3</span>]</a><span class="row-line">|</span></li>
+            <li><a href="#leclist1" class="on">단과강좌 [<span>3</span>]</a><span class="row-line">|</span></li>
             <li><a href="#leclist2">무료강좌 [<span>6</span>]</a><span class="row-line">|</span></li>
             <li><a href="#leclist3">추천패키지 [<span>6</span>]</a><span class="row-line">|</span></li>
             <li><a href="#leclist4">선택패키지 [<span>6</span>]</a></li>
@@ -64,7 +64,7 @@
                                         <dt>수강기간 : <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">완강</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -81,7 +81,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -97,7 +97,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -113,7 +113,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                             </td>
@@ -153,7 +153,7 @@
                                         <dt>수강기간 : <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">완강</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -170,7 +170,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -186,7 +186,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                                 <div class="oneBox">
@@ -202,7 +202,7 @@
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
                                     <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
                                     </ul>
                                 </div>
                             </td>

@@ -371,7 +371,7 @@
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
-            <!--6개월-->
+            <!--3개월-->
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
@@ -381,7 +381,7 @@
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.( <a class="tx-blue" href="javascript:go_popup()">수강가능 교수진 확인하기 ></a> )</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">무제한</span> 수강 할 수 있습니다.</li>
-                            <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
+                            {{--<li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>--}}
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                         </ol>
                     </dd>

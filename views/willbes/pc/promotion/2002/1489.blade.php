@@ -45,7 +45,7 @@
         to{color:#000}
         }
 
-        .wb_top {background:#283754 url(https://static.willbes.net/public/images/promotion/2020/03/1489_top_bg.jpg) no-repeat center; height:1604px;}
+        .wb_top {background:#283754 url(https://static.willbes.net/public/images/promotion/2020/06/1489_top_bg.jpg) no-repeat center; height:1604px;}
         .wb_top span {position:absolute; left:50%; z-index:1;
             -webkit-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
             -moz-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
@@ -111,13 +111,19 @@
         */
 
         .wb_05 {background:#23385e} 
-        .wb_06 {background:#fff}   
-        
+
+        /*유의사항*/
+		.wb_ctsInfo {background:#fff; padding:100px 0}  
+        .wb_ctsInfo div {width:1120px; margin:0 auto; color:#fff;display:block; border:17px solid #555; padding:80px; line-height:1.5; font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; }
+        .wb_ctsInfo div h3 {font-size:36px !important; letter-spacing:-1px; margin-bottom:40px; color:#000;}        
+        .wb_ctsInfo ul li .big {font-size:19px; font-weight:bold;color:#000;}        
+		.txt_point {color:#000; font-size:13px;}
+
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
         <div class="skybanner"> 
-            <a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2020/03/1489_sky01.png"  alt=""  /></a>
+            <a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2020/06/1489_sky01.png"  alt=""  /></a>
             <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1489_sky02.png"  alt=""  /></a>
         </div>
 
@@ -158,7 +164,7 @@
         </div>
 
         <div class="evtCtnsBox wb_03" id="golec">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_03.jpg"  alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1489_03.jpg"  alt=""  />
             <div class="benefitBox">
                 <ul class="slidesbenefit">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit01.jpg" alt=""/></li>
@@ -182,23 +188,56 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_04.jpg"  alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1489_04.jpg"  alt=""  />
         </div>       
 
         <div class="evtCtnsBox wb_05 c_both">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_05.jpg"  alt="" usemap="#Map1489a" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1489_05.jpg"  alt="" usemap="#Map1489a" border="0"  />
             <map name="Map1489a" id="Map1489a">
                 <area shape="rect" coords="296,1231,825,1354" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" />>
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1489_06.jpg"  alt=""  />
+        <div class="wb_ctsInfo">
+            <div>
+                <h3 class="NGEB">12개월 끝장 PASS 유의사항</h3><br/>
+                <ul>
+				    <li>
+                        <span class="big">끝장패스 경찰전문 교수진</span><br> 
+						<span class="txt_point">형사소송법/수사 신광은 교수님, 경찰학개론/행정 장정훈 교수님, 형법 김원욱 교수님, 영어 하승민 교수님, 한국사(택1) 원유철 교수님,오태진 교수님</span>
+					</li><br/> <br/> 
+                    <li>                    
+                        <span class="big">10종 합격팩</span><br/>
+                                         
+                        <span class="txt_point"> 1) 21년 1차 불합격 시 21년 2차까지 , 21년 2차 불합격 시 22년 1차까지 학원강의 수강기간 연장<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;(매 시험 응시이력 소명 필수/수강기간 연장 시 헌법,형사법 선택수강 가능)  
+                        </span><br/>                            
+                        <span class="txt_point"> 2) 인강패스 무료 제공 (수강기간동안/연장시 복습동영상 제공)</span><br/>                                   
+                        <span class="txt_point"> 3) 학원 모의고사 무료 응시 (★무료혜택★ 연장시 21년 2차까지)</span><br/> 			  
+                        <span class="txt_point"> 4) 신광은 경찰팀 특강 무료 (★무료혜택★ 아침특강 제외/연장시 21년 2차까지)</span><br/>                                      
+                        <span class="txt_point"> 5) 영어아침특강 특별할인</span><br/>                                 
+                        <span class="txt_point"> 6) 튜터링 관리반 2개월 50% 할인 (수강기간동안)</span><br/>                                    
+                        <span class="txt_point"> 7) 개인 사물함 제공 (연장시 22년 1차까지)</span><br/> 			                    
+                        <span class="txt_point"> 8) 경찰 전용 자습실 제공 (연장시 22년 1차까지)</span><br/> 			                   
+                        <span class="txt_point"> 9) 체력학원 40% 할인 (첫 등록시 할인)</span><br/>  			                   
+                        <span class="txt_point"> 10) 20년 2차, 21년 1차 필기시험 합격 시 면접반 30% 할인</span><br/>  	
+                    </li><br/> <br/> 
+    				<li>                 
+                        <span class="big">유의사항</span><br/>                       
+                        <span class="txt_point"> - 2021년 1차 시험 불합격 인증 시 21년 2차까지, 2021년 2차 시험 불합격 인증 시 22년 1차까지 학원강의 수강기간이 연장됩니다.<br/>&nbsp;&nbsp;(합격자 발표 후 1주일 이내 연장신청 필수) </span><br/>                    
+                        <span class="txt_point"> - 불합격 성적표 인증 시 모든 과목이 0점이거나 개인사정으로 불응시한 경우 수강기간 연장이 불가합니다. </span><br/>   					                 
+                        <span class="txt_point"> - 등록생 전원에게 인강패스가 지급되며, 정규 수강기간 종료 후에는 사유서 지참하여 데스크에서 신청 시 일별 보강동영상을 제공합니다.</span><br/>   					                   
+                        <span class="txt_point"> - 중도 환불 시 수강기간만큼 차감 후, 무료혜택만큼 제하고 환불되며, 정규 수강기간 종료 후에는 환불이 불가합니다.</span><br/>   				                    
+                        <span class="txt_point"> - 영어집중관리반, 영어아침특강은 별도결제 상품입니다.</span><br/>   				                    
+                        <span class="txt_point"> - 특강의 경우 별도의 신청이 필요합니다.</span><br/>   				                    
+                        <span class="txt_point"> - 상기 혜택 및 수강료는 예고 없이 변경될 수 있습니다.</span><br/>   				                   
+                        <span class="txt_point"> - 2021년까지 수강기간 연장 시 21년 시험대비반(영어,한국사,형법,형소법,경찰학), 2022년 시험대비반(형사법, 헌법,경찰학) 선택수강 가능합니다.</span><br/>   				                    
+                        <span class="txt_point"> - 2020년 2차 또는 21년 1차 시험 최종합격 시 결제금액에서 제세공과금 22% 제외 후,무료혜택을 제한 금액이 환급됩니다.</span>  
+                    </li>    				
+                </ul>
+            </div>
         </div>
-
-        </div>
-
-     
+             
     </div>
     <!-- End Container -->
     <script type="text/javascript">

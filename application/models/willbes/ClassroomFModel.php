@@ -274,7 +274,7 @@ class ClassroomFModel extends WB_Model
 
     public function storeOffLectureSub($MemIdx, $OrderIdx, $OrderProdIdx, $ProdCode, $ProdCodeSub)
     {
-        $today = date("Y-m-d", time());
+        $today = date("Y-m-d H:i:s", time());
 
         $this->_conn->trans_begin();
         try {

@@ -3820,6 +3820,53 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 최종합격예측서비스 합격자인증코드 등록
+     * @param $params
+     * @param array $input_data
+     * @return array|bool
+     */
+    public function certExamDataUpload($params, $input_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $column = "CertIdx";
+            $from = " FROM lms_cert ";
+            $cert_idx = element('exam_cert_idx',$params);
+            $exam_name = element('exam_name',$params);
+            $cen_code = element('exam_cen_code',$params);
+
+            $where = " WHERE CertIdx = ".$cert_idx." AND IsStatus = 'Y' AND IsUse = 'Y'";
+            $query = $this->_conn->query('select ' . $column . $from . $where);
+            $result = $query->row_array();
+            if (empty($result) === true) {
+                throw new \Exception('조회된 수강인증코드가 없습니다.');
+            }
+
+            $dataReg = [];
+            foreach ($input_data as $key => $val) {
+                $dataReg[$key]['CertIdx'] = $cert_idx;
+                $dataReg[$key]['CenCode'] = $cen_code;
+                $dataReg[$key]['ExamName'] = $exam_name;
+                $dataReg[$key]['TakeKindCcd'] = $val['A'];
+                $dataReg[$key]['TakeAreaCcd'] = $val['B'];
+                $dataReg[$key]['PassTakeNumber'] = $val['C'];
+            }
+
+            if($dataReg) $this->_conn->insert_batch('lms_cert_examnumber', $dataReg);
+
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('저장에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 합격예측 회원 데이터 삭제
      * @param $form_data
      * @return array|bool

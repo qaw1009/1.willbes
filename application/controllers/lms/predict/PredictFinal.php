@@ -130,10 +130,42 @@ class PredictFinal extends \app\controllers\BaseController
         return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 합격예측관련 합격자인증번호등록
+     */
+    public function certDataUpload()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'exam_cert_idx', 'label' => '수강인증코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'exam_name', 'label' => '인증그룹명', 'rules' => 'trim|required'],
+            ['field' => 'exam_cen_code', 'label' => '인증그룹코드', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $input_data = $this->_getInvoiceExcelCertData();
+        if ($input_data === false) {
+            return $this->json_error('엑셀파일 읽기에 실패했습니다.');
+        }
+
+        $result = $this->predictModel->certExamDataUpload($this->_reqP(null), $input_data);
+        return $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
     public function sampleDownload()
     {
         $this->load->helper('download');
         $file_path = STORAGEPATH . 'resources/sample/sample_final_predict.xlsx';
+        force_download($file_path, null);
+    }
+
+    public function sampleCertDownload()
+    {
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_cert_takenum.xlsx';
         force_download($file_path, null);
     }
 
@@ -146,11 +178,24 @@ class PredictFinal extends \app\controllers\BaseController
         try {
             $this->load->library('excel');
             $data = $this->excel->readExcel($_FILES['attach_file']['tmp_name']);
-
         } catch (\Exception $e) {
             return false;
         }
+        return $data;
+    }
 
+    /**
+     * 업로드된 엑셀파일 변환
+     * @return array|bool
+     */
+    private function _getInvoiceExcelCertData()
+    {
+        try {
+            $this->load->library('excel');
+            $data = $this->excel->readExcel($_FILES['attach_file']['tmp_name']);
+        } catch (\Exception $e) {
+            return false;
+        }
         return $data;
     }
 }

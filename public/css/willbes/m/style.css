@@ -3588,7 +3588,7 @@ body.memBody #Footer {
 .searchTap ul:after {content:""; display:block; clear:both}
 
 .searchContent h5 {position: relative; font-size:14px; height:50px; padding:20px}
-.searchContent h5 select {position:absolute; top:0; right:20px; font-size: 14px; height: 40px;}
+.searchContent h5 select {position:absolute; top:0; right:20px; font-size: 14px; height: 40px; width:110px}
 .searchContent h5:after {content:""; display:block; clear:both} 
 
 /* iPhone 5/SE */

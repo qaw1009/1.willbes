@@ -61,7 +61,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_03.png" alt="황채영 대표">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_03.gif" alt="황채영 대표">
                             <ul>
                                 <li><span class="tx-red">NEW</span> · 이커머스</li>
                                 <li>재고없이 오픈마켓으로<br>
@@ -74,7 +74,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_04.png" alt="정문진 대표">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_04.gif" alt="정문진 대표">
                             <ul>
                                 <li><span class="tx-red">NEW</span> · 이커머스</li>
                                 <li>진짜 고수에게 배우는 스마트스토어로, <br>

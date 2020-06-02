@@ -30,6 +30,11 @@
                     <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-cert-upload">엑셀 업로드</button>
                     <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-cert-download">샘플엑셀 다운로드</button>
                 </div>
+                <div class="col-md-11 form-inline mt-5">
+                    <span>합격자인증번호 일괄삭제 : </span>
+                    <input type="text" name="del_cert_exam_idx" id="del_cert_exam_idx" class="form-control" style="width:100px;" title="수강인증코드" placeholder="수강인증코드">
+                    <button type="button" class="btn btn-danger btn-sm mb-0 ml-10 mr-10 btn-cert-exam-delete">삭제</button>
+                </div>
             </div>
         </form>
     </div>
@@ -183,10 +188,33 @@
                 sendAjax('{{ site_url('/predict/predictFinal/certDataUpload') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                        $invoice_form.find('input[name="attach_file"]').val('');
+                        $invoice_form.find('input[name="exam_attach_file"]').val('');
                     }
                 }, showError, false, 'POST', 'json', is_file);
+            });
+
+            $('.btn-cert-exam-delete').on('click', function() {
+                var del_cert_exam_idx = $invoice_form.find('input[name="del_cert_exam_idx"]').val();
+                if (del_cert_exam_idx == '') { alert('수강인증코드를 입력해주세요.'); return; }
+
+                if (!confirm('삭제 하시겠습니까?')) { return; }
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'del_cert_exam_idx' : del_cert_exam_idx
+                };
+                sendAjax('{{ site_url('/predict/predictFinal/chkCertApplyDataForDelete') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    } else {
+                        if (!confirm(ret.ret_msg + ' 계속 진행하시겠습니까?')) { return; }
+                        sendAjax('{{ site_url('/predict/predictFinal/certExamDataDelete') }}', data, function(ret) {
+                            if (ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                            }
+                        }, showError, false, 'POST');
+                    }
+                }, showError, false, 'POST');
             });
 
             // DataTables

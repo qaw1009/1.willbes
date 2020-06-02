@@ -3867,6 +3867,64 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 합격자 인증정보 확인 후 삭제
+     * 인증된 회원정보 없을 경우 : 인증번호 삭제
+     * 인증된 회원정보 있을 경우 : 경고메시지 띄움 -> 삭제동의할경우 certExamDataDelete 호출
+     * @param $form_data
+     * @return array|bool
+     */
+    public function chkCertApplyDataForDelete($form_data)
+    {
+        $column = "CertIdx";
+        $from = " FROM lms_cert_apply ";
+        $cert_idx = element('del_cert_exam_idx',$form_data);
+
+        $where = " WHERE CertIdx = ".$cert_idx." AND IsStatus = 'Y'";
+        $data = $this->_conn->query('select ' . $column . $from . $where)->result_array();
+        if (empty($data) === false) {
+            return [
+                'ret_cd' => false,
+                'ret_msg' => '인증된 회원정보가 있습니다.',
+                'ret_status' => 200
+            ];
+        } else {
+            $result = $this->certExamDataDelete($form_data);
+        }
+        return $result;
+    }
+
+    /**
+     * 합격자 인증정보 삭제
+     * @param $form_data
+     * @return array|bool
+     */
+    public function certExamDataDelete($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $column = "CertIdx";
+            $from = " FROM lms_cert ";
+            $cert_idx = element('del_cert_exam_idx',$form_data);
+
+            $where = " WHERE CertIdx = ".$cert_idx." AND IsStatus = 'Y' AND IsUse = 'Y'";
+            $query = $this->_conn->query('select ' . $column . $from . $where);
+            $result = $query->row_array();
+            if (empty($result) === true) {
+                throw new \Exception('조회된 수강인증코드가 없습니다.');
+            }
+
+            if ($this->_conn->delete('lms_cert_examnumber', ['CertIdx' => $cert_idx]) === false) {
+                throw new \Exception('등록된 합격자 인증정보 삭제에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 합격예측 회원 데이터 삭제
      * @param $form_data
      * @return array|bool

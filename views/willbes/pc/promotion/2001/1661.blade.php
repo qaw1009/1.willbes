@@ -100,9 +100,9 @@
         </div>
 
         <div class="evtCtnsBox wb_evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_02.jpg"  alt="쿠폰" usemap="#Map1661b" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_02.jpg"  alt="쿠폰" usemap="#Map1661b" border="0">
             <map name="Map1661b" id="Map1661b">
-                <area shape="rect" coords="290,1501,831,1616" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
+                <area shape="rect" coords="287,1766,830,1886" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
             </map>
         </div>
 

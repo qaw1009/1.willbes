@@ -1,7 +1,4 @@
-@extends('willbes.m.layouts.master')
-
-@section('content')
-    <script>
-        document.location.replace('{{site_url(config_item('app_pass_site_prefix').'/home/index?viewPC=1')}}');
-    </script>
-@stop
+@php
+    /*학원 메인페이지 없음*/
+    header('Location:'.site_url('/m'));
+@endphp

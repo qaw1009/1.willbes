@@ -69,9 +69,9 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_02.jpg"  alt="" usemap="#Map1424A" border="0" />
-            <map name="Map1424A" id="Map1424A">
-                <area shape="rect" coords="320,940,801,1017" href="https://police.willbes.net/promotion/index/cate/3001/code/1361" target="_blank" alt="합격풀케어 서비스" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_02.jpg"  alt="" usemap="#Map1662A" border="0" />
+            <map name="Map1662A" id="Map1662A">
+                <area shape="rect" coords="320,940,801,1017" href="https://police.willbes.net/promotion/index/cate/3001/code/1555" target="_blank" alt="합격풀케어 서비스" />
             </map>  
         </div>
     </div>

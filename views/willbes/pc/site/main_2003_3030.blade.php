@@ -1,3 +1,8 @@
+@php
+    //메뉴폐쇄로 인한 즐겨찾기 리다이렉트 : 2020.06.02 최진영차장님 요청건
+    header('Location:/home/index/cate/3019');
+@endphp
+
 @extends('willbes.pc.layouts.master')
 
 @section('content')

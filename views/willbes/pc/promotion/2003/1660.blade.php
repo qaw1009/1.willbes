@@ -518,6 +518,12 @@
             });
         });
 
+        function fn_FileDownload(path){
+            if(confirm("다운로드 하시겠습니까?")){
+                location.href = "/download.do?path="+path;
+            }
+        }
+
         function pullOpen(){
             var url = "{{front_url('/survey/index/2')}}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');

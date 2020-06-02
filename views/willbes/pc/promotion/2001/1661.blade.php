@@ -120,7 +120,7 @@
         <div class="evtCtnsBox wb_evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_04.jpg"  alt="자세히 보기" usemap="#Map1661d" border="0" />
             <map name="Map1661d" id="Map1661d">
-                <area shape="rect" coords="183,487,288,542" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" />
+                <area shape="rect" coords="183,487,288,542" href="https://police.willbes.net/promotion/index/cate/3001/code/1556" target="_blank" />
                 <area shape="rect" coords="508,487,613,545" href="https://police.willbes.net/promotion/index/cate/3001/code/1015" target="_blank" />
                 <area shape="rect" coords="833,487,939,544" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/164897" target="_blank" />
             </map>

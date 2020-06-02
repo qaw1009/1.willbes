@@ -170,6 +170,42 @@ class PredictFinal extends \app\controllers\BaseController
     }
 
     /**
+     * 등록된 회원 인증식별자 체크 및 인증번호 삭제
+     * @return CI_Output|null
+     */
+    public function chkCertApplyDataForDelete()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'del_cert_exam_idx', 'label' => '수강인증코드', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+        $result = $this->predictModel->chkCertApplyDataForDelete($this->_reqP(null));
+        return $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 인증번호삭제
+     * @return CI_Output|null
+     */
+    public function certExamDataDelete()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'del_cert_exam_idx', 'label' => '수강인증코드', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+        $result = $this->predictModel->certExamDataDelete($this->_reqP(null));
+        return $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 업로드된 엑셀파일 변환
      * @return array|bool
      */

@@ -34,7 +34,7 @@ class SupportMockTest extends BaseSupport
                 'op.PayStatusCcd' => '676001'
             ],
             'RAW' => [
-                'op.MemIdx = ' => $this->session->userdata('mem_idx')
+                'op.MemIdx = ' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx')
             ],
             'LKB' => [
                 'pm.ProdName' => $s_keyword
@@ -170,7 +170,7 @@ class SupportMockTest extends BaseSupport
                 'op.PayStatusCcd' => '676001'
             ],
             'RAW' => [
-                'op.MemIdx = ' => $this->session->userdata('mem_idx')
+                'op.MemIdx = ' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx')
             ]
         ];
         $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
@@ -348,7 +348,7 @@ class SupportMockTest extends BaseSupport
                     'op.PayStatusCcd' => '676001'
                 ],
                 'RAW' => [
-                    'op.MemIdx = ' => $this->session->userdata('mem_idx')
+                    'op.MemIdx = ' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx')
                 ]
             ];
             $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);

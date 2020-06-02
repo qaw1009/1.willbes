@@ -71,7 +71,7 @@
                             ※ 응시직렬은 최초 선택/저장 후 수정 불가
                         </li>
                         <li>
-                            <strong>* 2019년 2차 필기합격 응시번호</strong>
+                            <strong>* 2020년 1차 필기합격 응시번호</strong>
                             <input type="text" name="TakeNo" id="TakeNo"  numberOnly>
                         </li>
                         <li>

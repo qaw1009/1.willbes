@@ -1353,7 +1353,12 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_base['arr_subject_ccd']['P'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
         //선택과목
-        $add_condition = ['EQ' => ['Type' => 'S']];
+        $add_condition = [
+            'EQ' => ['Type' => 'S'],
+            'RAW' => [
+                'Ccd !=' => ' 100901 AND Ccd != 100902'
+            ]
+        ];
         $arr_base['arr_subject_ccd']['S'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
         $this->load->view('predict/create_grade_member', [
@@ -1688,7 +1693,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 '712016' => '42',
                 '712017' => '33'
             ],
-            '800' => [
+            '300' => [
                 '712001' => '46',
                 '712002' => '10',
                 '712003' => '9',

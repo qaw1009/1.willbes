@@ -169,9 +169,11 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="freeLecPass">       
+                                        <p>보강동영상 비밀번호 입력</p>
+                                        <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
+                                        <a href="#none">확인</a>                                
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">

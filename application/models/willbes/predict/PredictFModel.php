@@ -268,7 +268,7 @@ class PredictFModel extends WB_Model
             $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => element('predict', $input), 'a.CertIdx' => element('cert', $input), 'a.IsStatus' => 'Y']];
             $member_ins_type = $this->findPredictFinalMember($arr_condition);
             if (empty($member_ins_type) === false) {
-                throw new \Exception('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.');
+                throw new \Exception('등록된 정보가 있습니다. 나의 위치파악에서 확인해 주세요.');
             }
 
             $add_condition = ['IN' => ['ApprovalStatus' => ['A','Y']]];
@@ -307,7 +307,7 @@ class PredictFModel extends WB_Model
             $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => element('predict', $input), 'a.IsStatus' => 'Y']];
             $member_ins_type = $this->findPredictFinalMember($arr_condition, 'a.PfIdx', false);
             if (empty($member_ins_type) === false) {
-                throw new \Exception('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.');
+                throw new \Exception('등록된 정보가 있습니다. 나의 위치파악에서 확인해 주세요.');
             }
 
             $column = 'PredictIdx, MockPart';

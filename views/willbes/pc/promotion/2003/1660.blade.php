@@ -240,7 +240,7 @@
                                 <td>361.47</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_01_20200527143807.pdf" target="_blank">서울</a></th>
+                                <th><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank">서울</a></th>
                                 <td>2,935</td>
                                 <td>914</td>
                                 <td>49,818</td>
@@ -251,7 +251,7 @@
                                 <td>372.03</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_02_20200527143807.xls" target="_blank">강원</a></th>
+                                <th><a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" target="_blank">강원</a></th>
                                 <td>1,363</td>
                                 <td>424</td>
                                 <td>10,604</td>
@@ -262,7 +262,7 @@
                                 <td>364.13</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_03_20200527143807.pdf" target="_blank">경기</a></th>
+                                <th><a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" target="_blank">경기</a></th>
                                 <td>4,978</td>
                                 <td>1,430</td>
                                 <td>42,261</td>
@@ -273,7 +273,7 @@
                                 <td>362.63</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_04_20200527143807.pdf" target="_blank">경남</a></th>
+                                <th><a href="@if($file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" target="_blank">경남</a></th>
                                 <td>1,639</td>
                                 <td>548</td>
                                 <td>18,384</td>
@@ -284,7 +284,7 @@
                                 <td>363.88</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_05_20200527143807.pdf" target="_blank">경북</a></th>
+                                <th><a href="@if($file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" target="_blank">경북</a></th>
                                 <td>2,022</td>
                                 <td>723</td>
                                 <td>18,226</td>
@@ -295,7 +295,7 @@
                                 <td>359.81</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_06_20200527143807.pdf" target="_blank">광주</a></th>
+                                <th><a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" target="_blank">광주</a></th>
                                 <td>636</td>
                                 <td>248</td>
                                 <td>9,868</td>
@@ -306,7 +306,7 @@
                                 <td>360.68</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_07_20200527143807.hwp" target="_blank">대구</a></th>
+                                <th><a href="@if($file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" target="_blank">대구</a></th>
                                 <td>726</td>
                                 <td>389</td>
                                 <td>11,887</td>
@@ -317,7 +317,7 @@
                                 <td>363.18</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_08_20200527143807.hwp" target="_blank">대전</a></th>
+                                <th><a href="@if($file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" target="_blank">대전</a></th>
                                 <td>404</td>
                                 <td>206</td>
                                 <td>7,407</td>
@@ -328,7 +328,7 @@
                                 <td>364.6</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_09_20200527143807.pdf" target="_blank">부산</a></th>
+                                <th><a href="@if($file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" target="_blank">부산</a></th>
                                 <td>1,274</td>
                                 <td>494</td>
                                 <td>15,943</td>
@@ -339,7 +339,7 @@
                                 <td>370.33</td>
                             </tr>
                             <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_010_20200527143807.hwp" target="_blank">세종</a></th>
+                                <th><a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" target="_blank">세종</a></th>
                                 <td>76</td>
                                 <td>30</td>
                                 <td>1,493</td>
@@ -350,7 +350,7 @@
                                 <td>364.07</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_012_20200527143807.hwp" target="_blank">울산</a></th>
+                                <th><a href="@if($file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" target="_blank">울산</a></th>
                                 <td>354</td>
                                 <td>122</td>
                                 <td>4,936</td>
@@ -361,7 +361,7 @@
                                 <td>369.87</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_013_20200527143807.jpg" target="_blank">인천</a></th>
+                                <th><a href="@if($file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" target="_blank">인천</a></th>
                                 <td>1,461</td>
                                 <td>555</td>
                                 <td>11,355</td>
@@ -372,7 +372,7 @@
                                 <td>346.17</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_014_20200527143807.xlsx" target="_blank">전남</a></th>
+                                <th><a href="@if($file_yn[13] == 'Y') {{ front_url($file_link[13]) }} @else {{ $file_link[13] }} @endif" target="_blank">전남</a></th>
                                 <td>1,496</td>
                                 <td>646</td>
                                 <td>11,769</td>
@@ -383,7 +383,7 @@
                                 <td>357.14</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_015_20200527143807.xlsx" target="_blank">전북</a></th>
+                                <th><a href="@if($file_yn[14] == 'Y') {{ front_url($file_link[14]) }} @else {{ $file_link[14] }} @endif" target="_blank">전북</a></th>
                                 <td>1,119</td>
                                 <td>410</td>
                                 <td>12,237</td>
@@ -394,7 +394,7 @@
                                 <td>357.26</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_016_20200527143807.xlsx" target="_blank">제주</a></th>
+                                <th><a href="@if($file_yn[15] == 'Y') {{ front_url($file_link[15]) }} @else {{ $file_link[15] }} @endif" target="_blank">제주</a></th>
                                 <td>315</td>
                                 <td>126</td>
                                 <td>3,357</td>
@@ -405,7 +405,7 @@
                                 <td>359.44</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_017_20200527143807.pdf" target="_blank">충남</a></th>
+                                <th><a href="@if($file_yn[16] == 'Y') {{ front_url($file_link[16]) }} @else {{ $file_link[16] }} @endif" target="_blank">충남</a></th>
                                 <td>1,690</td>
                                 <td>614</td>
                                 <td>10,750</td>
@@ -416,7 +416,7 @@
                                 <td>352.96</td>
                               </tr>
                               <tr>
-                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2020/0527/board_275854_018_20200527143807.hwp" target="_blank">충북</a></th>
+                                <th><a href="@if($file_yn[17] == 'Y') {{ front_url($file_link[17]) }} @else {{ $file_link[17] }} @endif" target="_blank">충북</a></th>
                                 <td>1,221</td>
                                 <td>502</td>
                                 <td>8,712</td>

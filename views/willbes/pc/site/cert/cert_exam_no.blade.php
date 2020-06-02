@@ -72,7 +72,7 @@
                         </li>
                         <li>
                             <strong>* 2020년 1차 필기합격 응시번호</strong>
-                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly>
+                            <input type="text" name="TakeNo" id="TakeNo" maxlength="5" numberOnly>
                         </li>
                         <li>
                             <strong>* 응시표 인증파일 - (jpg, gif, png 파일만 등록 가능)</strong>
@@ -123,6 +123,20 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            $('#TakeKind').change(function () {
+                if (this.value == '711004') {
+                    $('#TakeArea').val("712001").prop("selected", true);
+                    $('#TakeArea option').each(function(){
+                        if (this.value != '712001') {
+                            $("select option[value*='"+this.value+"']").prop('disabled',true);
+                        }
+                    });
+                } else {
+                    $('#TakeArea option').each(function(){
+                        $("select option[value*='"+this.value+"']").prop('disabled',false);
+                    });
+                }
+            });
 
             $("#btn_cert_check").click(function () {
                 @if($data["IsCertAble"] !== 'Y')
@@ -147,6 +161,30 @@
 
                 if ($('#TakeNo').val() == '') {
                     $('#TakeNo').focus();alert('응시번호를 등록해 주세요.');return;
+                }
+
+                var takenum = $('#TakeNo').val();
+                takenum = parseInt(takenum);
+                if($("#TakeKind").val() == '711001') {
+                    if(takenum<10001||takenum>19999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else if($("#TakeKind").val() == '711002') {
+                    if(takenum<20001||takenum>29999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else if($("#TakeKind").val() == '711005') {
+                    if(takenum<30001||takenum>39999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else {
+                    if(takenum<40001||takenum>49999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
                 }
 
                 if ($('#attachfile').val() == '') {

@@ -201,8 +201,8 @@
 /*바로가기 메뉴*/
 .goMenu { clear:both; background: #52bcc9; padding:0 50px; margin:20px auto 50px;}
 .goMenu li {display: inline; float:left; width:16.66666%}
-.goMenu li a {display:block; text-align:center; height:55px; line-height: 55px; color:#fff; font-size:14px}
-.goMenu li span {vertical-align: top; float:right; color:#fff !important}
+.goMenu li a {display:block; text-align:center; height:55px; line-height: 55px; color:#fff; font-size:16px; font-weight: bold;}
+.goMenu li span {vertical-align: top; float:right; color:#fff !important; font-weight: normal;}
 .goMenu li a:hover {color:#0037ea}
 .goMenu:after {content: ""; display: block; clear:both}
 

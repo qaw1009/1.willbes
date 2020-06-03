@@ -16,7 +16,8 @@ class SearchMockTestModel extends WB_Model
         'order' => 'lms_order',
         'orderProduct' => 'lms_Order_Product',
         'mockProductExam' => 'lms_product_mock_r_paper',
-        'mockExamBase' => 'lms_mock_paper',
+        //'mockExamBase' => 'lms_mock_paper',
+        'mockExamBase' => 'lms_mock_paper_new',
         'mockAreaCate' => 'lms_mock_r_category',
         'mockSubject' => 'lms_mock_r_subject',
         'subject' => 'lms_product_subject',
@@ -145,22 +146,31 @@ class SearchMockTestModel extends WB_Model
      */
     public function listMockTestSubject($prod_code, $mock_type)
     {
-        $select = 'Select b.MpIdx,b.MockType,mp.PapaerName,sj.SubjectIdx,sj.SubjectName';
+        $arr_condition = [
+            'EQ' => [
+                'pm.ProdCode' => $prod_code,
+                'b.MockType' => $mock_type,
+                'pm.IsUse' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
 
+        $column = 'M.MpIdx, M.MockType, M.PapaerName, sj.SubjectIdx, sj.SubjectName';
         $from ="
-            from {$this->_table['vw_mockProduct']} A
-            join {$this->_table['mockProductExam']} b on A.ProdCode = b.ProdCode and b.IsStatus='Y'
-            join {$this->_table['mockExamBase']} mp on b.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
-            join {$this->_table['mockAreaCate']} mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
-            join {$this->_table['mockSubject']} mrs on mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
-            JOIN {$this->_table['subject']} AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+            FROM (
+                SELECT b.MpIdx, b.MockType, mp.PapaerName, mprc.MrcIdx
+                FROM vw_product_mocktest AS pm
+                INNER JOIN lms_product_mock_r_paper AS b ON pm.ProdCode = b.ProdCode AND b.IsStatus='Y'
+                INNER JOIN lms_mock_paper_new AS mp ON b.MpIdx = mp.MpIdx AND mp.IsStatus='Y' AND mp.IsUse='Y'
+                INNER JOIN lms_mock_paper_r_category AS mprc ON mp.MpIdx = mprc.MpIdx AND mprc.IsStatus = 'Y'
+                {$where} GROUP BY mp.MpIdx
+            ) AS M
+            INNER JOIN lms_mock_r_category AS mrc ON M.MrcIdx = mrc.MrcIdx AND mrc.IsStatus='Y'
+            INNER JOIN lms_mock_r_subject AS mrs ON mrc.MrsIdx = mrs.MrsIdx AND mrs.IsStatus='Y'
+            INNER JOIN lms_product_subject AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
         ";
-        $where = " where A.IsUse ='Y' ";
-
-        $where .= $this->_conn->makeWhere(['EQ' => ['A.ProdCode'=>$prod_code, 'b.MockType' => $mock_type]])->getMakeWhere(true);
-        $result = $this->_conn->query($select. $from. $where)->result_array();
-
-        return $result;
+        return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 
     /**

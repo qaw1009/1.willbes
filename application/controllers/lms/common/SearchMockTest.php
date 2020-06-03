@@ -101,6 +101,14 @@ class SearchMockTest extends \app\controllers\BaseController
         //전체결제이력 (학원응시일 경우 접수마감인원 체크)
         $all_pay_check =  $mock_data['AllPayCnt'];
 
+        //응시형태추출
+        $arr_take_forms = $this->codeModel->getCcd('690');
+        foreach (explode(',', preg_replace("/\s+/", "", $mock_data['TakeFormsCcd'])) as $key => $val) {
+            if (empty($arr_take_forms[$val]) === false) {
+                $mock_data['arrTakeFormsCcd'][$val] = $arr_take_forms[$val];
+            }
+        }
+
         //직렬 추출
         $mock_part = $this->searchMockTestModel->listMockTestMockPart($prod_code);
 

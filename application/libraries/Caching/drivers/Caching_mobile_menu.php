@@ -52,7 +52,7 @@ class Caching_mobile_menu extends CI_Driver
             where SG.IsUse = "Y" and SG.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsStatus = "Y"
                 and SM.IsUse = "Y" and SM.IsStatus = "Y"
-                and SM.MenuType = "XN"                             
+                and SM.MenuType in ("XN", "YN", "YM")                             
         ';
         $order_by = ' order by S.OrderNum asc, MenuTypeOrder asc, SM.GroupOrderNum asc, SM.OrderNum asc';
 
@@ -82,7 +82,8 @@ class Caching_mobile_menu extends CI_Driver
             }
 
             // tree menu base key
-            $base_key = 'TreeMenus.' . $key_group;
+            $key_prefix = $key_group . '.' . (starts_with($row['MenuType'], 'X') === true ? 'LNB' : 'GNB');
+            $base_key = 'TreeMenus.' . $key_prefix;
 
             // 개발환경에 맞게 URL 변환
             if ($row['UrlType'] == 'route' && empty($menu_url) === false) {
@@ -109,6 +110,11 @@ class Caching_mobile_menu extends CI_Driver
                 //'UrlSubDomain' => $url_sub_domain
             ];
 
+            // 모바일GNB (전체보기) 맵핑코드 설정
+            if ($key_group != 'GNB' && ends_with($row['MenuType'], 'M') === true) {
+                $arr_menu['MenuSubType'] = strtolower(trim($row['MenuEtc']));
+            }
+
             if ($row['MenuDepth'] > 1) {
                 // $data 배열에 삽입되는 배열 키 생성
                 $child_key = $base_key;
@@ -124,7 +130,7 @@ class Caching_mobile_menu extends CI_Driver
             }
 
             // make menu url array
-            $data['MenuUrls'][$key_group][$key_group . '.' . str_replace('>', '.Children.', $url_route_idx)] = $menu_url;
+            $data['MenuUrls'][$key_group][$key_prefix . '.' . str_replace('>', '.Children.', $url_route_idx)] = $menu_url;
         }
 
         return $data;

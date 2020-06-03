@@ -49,7 +49,7 @@ class Caching_site_menu extends CI_Driver
             where SG.IsUse = "Y" and SG.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsFrontUse = "Y" and S.IsStatus = "Y"
                 and SM.IsUse = "Y" and SM.IsStatus = "Y" 
-                and SM.MenuType != "XN"                             
+                and SM.MenuType not in ("XN", "YN", "YM")                            
         ';
         $order_by = ' order by S.OrderNum asc, MenuTypeOrder asc, SM.GroupOrderNum asc, SM.OrderNum asc';
 

@@ -176,7 +176,7 @@
 
                 // 기타필드 display, disabled 설정
                 function setMenuEtcField(menu_type) {
-                    if (menu_type === 'GM') {
+                    if (menu_type.substr(1, 1) === 'M') {
                         $regi_form.find('#menu_etc1').prop('disabled', true).addClass('hide');
                         $regi_form.find('#menu_etc2').prop('disabled', false).removeClass('hide');
 

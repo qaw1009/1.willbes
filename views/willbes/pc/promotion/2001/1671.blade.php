@@ -70,13 +70,13 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04_title.jpg" title="기본이론 강좌"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1671_title.jpg" title="심화기출 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial')
             @else
               
             @endif          
-        </div>   
+        </div> 
         
 	</div>
     <!-- End Container -->

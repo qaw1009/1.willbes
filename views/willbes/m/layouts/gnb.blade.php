@@ -7,9 +7,9 @@
                 <img src="{{ img_url('m/main/icon_' . $__cfg['SiteGroupId'] . '.png') }}" class="clogo" alt=""/>
                 {{str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle'])}}
             </h2>
-            {{-- 모바일 사이트 메뉴 --}}
-            @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)
-                @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)
+            {{-- 모바일 사이트 LNB 메뉴 --}}
+            @if(empty($__cfg['SiteMenu']['TreeMenu']['LNB']) === false)
+                @foreach($__cfg['SiteMenu']['TreeMenu']['LNB'] as $menu_idx => $menu_row)
                     <li class="ListTit"><h1 class="NGEB">{{ $menu_row['MenuName'] }}</h1></li>
                     @if(isset($menu_row['Children']) === true)
                         @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)

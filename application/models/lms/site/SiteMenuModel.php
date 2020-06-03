@@ -47,7 +47,8 @@ class SiteMenuModel extends WB_Model
                     on M.SiteCode = S.SiteCode
                 left join ' . $this->_table['admin'] . ' as A
                     on M.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
-            where S.IsStatus = "Y"
+            where M.IsStatus = "Y"
+                and S.IsStatus = "Y"
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

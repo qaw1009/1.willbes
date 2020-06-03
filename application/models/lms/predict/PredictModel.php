@@ -367,6 +367,43 @@ class PredictModel extends WB_Model
         return $data;
     }
 
+    /**
+     * 가데이터 엑셀변환
+     * @param $predict_idx
+     * @return mixed
+     */
+    public function predictRegistListForExcel($predict_idx)
+    {
+        $order_by = ['a.TakeMockPart' => 'ASC', 'a.TakeArea' => 'ASC'];
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+
+        $column = "
+            c.CcdName AS TakeMockPartName,
+            d.CcdName AS TakeAreaName,
+            GROUP_CONCAT(b.PaperName ORDER BY a.PpIdx ASC) AS PaperName,
+            GROUP_CONCAT(a.OrgPoint ORDER BY a.PpIdx ASC) AS OrgPoint
+        ";
+        $from = "
+            FROM {$this->_table['predictGradesOrigin']} AS a
+            INNER JOIN {$this->_table['predictPaper']} AS b ON a.PpIdx = b.PpIdx
+            INNER JOIN {$this->_table['predictCode']} AS c ON a.TakeMockPart = c.Ccd
+            INNER JOIN {$this->_table['sysCode']} AS d ON a.TakeArea = d.Ccd
+        ";
+
+        $condition = [
+            'EQ' => [
+                'a.PredictIdx' => $predict_idx,
+            ],
+            'NOT' => [
+                'a.MemIdx' => '1000000'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+        $group_by = " GROUP BY a.PrIdx ";
+        return $this->_conn->query("select ". $column . $from . $where . $group_by . $order_by_offset_limit)->result_array();
+    }
+
 
     /**
      * 데이터 복사

@@ -156,13 +156,15 @@
                         </a>
                     </li>
                     <li>
-                        <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}">
+                        {{-- <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}">--}}
+                        <a id='tab3' href="@if(time() < strtotime('202006131040'))javascript:alert('6/13(토) 10:40 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}@endif">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>
                     </li>     
                     <li>
-                        <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=4#content_4') }}">
+                        {{-- <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=4#content_4') }}">--}}
+                        <a id='tab4' href="@if(time() < strtotime('202006151600'))javascript:alert('6/15(월) 16:00 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=4#content_4') }}@endif">
                             <span>2020 지방직 9급</span>
                             <div class="NSK-Black">기출해설강의</div>
                         </a>

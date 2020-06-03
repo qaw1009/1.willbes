@@ -3,9 +3,11 @@
 <style type="text/css">
 .replySection { 
     width:1000px; 
+    padding:20px;
     margin:30px auto 100px; 
     font-size:12px; 
     line-height: 1.4;
+    background:#fff;
 }
 .replyWrite {
     position:relative; border:1px solid #ababab;

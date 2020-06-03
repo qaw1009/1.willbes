@@ -12,7 +12,9 @@
                         <div class="col-md-11 form-inline">
                             <input type="file" id="attach_file" name="attach_file" class="form-control" title="송장엑셀파일" value="">
                             <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 ml-10 mr-10" onClick="registData({{ $PredictIdx }})">엑셀 업로드</button>
-                            <button type="button" name="btn_file_download" onClick="sampledown()" class="btn btn-success btn-sm mb-0">샘플엑셀 다운로드</button>
+                            <button type="button" name="btn_file_download" class="btn btn-success btn-sm mb-0">샘플엑셀 다운로드</button>
+                            {{--TODO : 가데이터 엑셀변환 : 개발완료, 미적용--}}
+                            {{--<button type="button" name="btn_data_download" class="btn btn-success btn-sm mb-0">엑셀 다운로드</button>--}}
                         </div>
                     </div>
                     <div class="row mt-10">
@@ -151,6 +153,13 @@
         // 샘플엑셀다운로드 버튼 클릭
         $('button[name="btn_file_download"]').on('click', function() {
             location.replace('{{ site_url('/predict/datamanage/sampleDownload') }}');
+        });
+
+        $('button[name="btn_data_download"]').on('click', function(event) {
+            event.preventDefault();
+            if (confirm('엑셀다운로드 하시겠습니까?')) {
+                formCreateSubmit('/predict/datamanage/dataDownload', $search_form.serializeArray(), 'POST');
+            }
         });
 
         $list_table.on('click', '.btn-delete', function() {

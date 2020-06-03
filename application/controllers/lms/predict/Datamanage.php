@@ -13,6 +13,7 @@ class Datamanage extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
     protected $helpers = array();
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -167,5 +168,34 @@ class Datamanage extends \app\controllers\BaseController
 
         $result = $this->predictModel->originSampleDataDelete($this->_reqP(null));
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result);
+    }
+
+    /**
+     * 가데이터 엑셀 변환
+     */
+    public function dataDownload()
+    {
+        $list = $this->predictModel->predictRegistListForExcel($this->_reqP('search_predict_idx'));
+        $query = $this->predictModel->getLastQuery();
+
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $headers = ['직렬','지역','과목','점수'];
+        // 파일명 가공
+        $file_name = '합격예측 성적 가데이터' . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        $result = $this->excel->exportExcel($file_name, $list, $headers);
+        if ($result !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

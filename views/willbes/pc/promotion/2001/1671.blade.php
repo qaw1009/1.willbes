@@ -75,8 +75,7 @@
                 @include('willbes.pc.promotion.display_product_partial')
             @else
               
-            @endif
-          
+            @endif          
         </div>   
         
 	</div>

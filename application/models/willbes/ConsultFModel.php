@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ConsultFModel extends WB_Model
 {
-    public $_ccds = ['661','666','614','631','667', '668', '729'];   //이메일,응시직렬,응시지역,수험기간,수강여부
+    public $_ccds = ['661','666','614','631','667','668','729'];   //이메일,응시직렬,응시지역,수험기간,수강여부
 
     private $_table = [
         'consult_schedule' => 'lms_consult_schedule',
@@ -25,9 +25,10 @@ class ConsultFModel extends WB_Model
      * 로그인 회원 상담예약 방문상태 조회
      * @param $site_code
      * @param $campus_code
+     * @param $consult_type
      * @return mixed
      */
-    public function getScheduleDataForMemberIsConsult($site_code, $campus_code)
+    public function getScheduleDataForMemberIsConsult($site_code, $campus_code, $consult_type = '')
     {
         $arr_condition = [
             'RAW' => [
@@ -36,6 +37,7 @@ class ConsultFModel extends WB_Model
                 'a.CampusCcd = ' => (empty($campus_code) === true) ? '\'\'' : '\''.$campus_code.'\'',
             ],
             'EQ' => [
+                'a.ConsultType' => $consult_type,
                 'a.IsUse' => 'Y',
                 'a.IsStatus' => 'Y'
             ]
@@ -50,7 +52,7 @@ class ConsultFModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule_time']} AS b ON a.CsIdx = b.CsIdx
             INNER JOIN {$this->_table['consult_schedule_member']} AS c ON b.CstIdx = c.CstIdx AND c.IsConsult = 'N' AND c.IsReg = 'Y'
         ";
-        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
 
     /**
@@ -58,9 +60,10 @@ class ConsultFModel extends WB_Model
      * @param $site_code
      * @param $campus_code
      * @param $target_month
+     * @param $consult_type
      * @return mixed
      */
-    public function getScheduleDataForMonth($site_code, $campus_code, $target_month)
+    public function getScheduleDataForMonth($site_code, $campus_code, $target_month, $consult_type = '')
     {
         $arr_condition = [
             'RAW' => [
@@ -69,6 +72,7 @@ class ConsultFModel extends WB_Model
                 'ConsultDate between ' => ' DATE_FORMAT(CONCAT(\''.$target_month.'\',\'-1\'),\'%Y-%m-%d\') and LAST_DAY(DATE_FORMAT(CONCAT(\''.$target_month.'\',\'-1\'),\'%Y-%m-%d\'))'
             ],
             'EQ' => [
+                'ConsultType' => $consult_type,
                 'IsUse' => 'Y',
                 'IsStatus' => 'Y'
             ]
@@ -109,7 +113,7 @@ class ConsultFModel extends WB_Model
                 GROUP BY CsIdx
             ) AS c ON a.CsIdx = c.CsIdx
         ";
-        return $this->_conn->query('select ' . $column . $from)->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from)->result_array();
     }
 
     /**
@@ -134,28 +138,28 @@ class ConsultFModel extends WB_Model
             A.ConsultTime, A.BreakTime,
             A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx,
             D.totalConsult, E.memCount
-            ';
+        ';
 
         $from = "
-        FROM {$this->_table['consult_schedule']} AS A
-        INNER JOIN (
-            SELECT CsIdx, SUM(ConsultPersonCount) AS totalConsult
-            FROM {$this->_table['consult_schedule_time']}
-            WHERE IsUse = 'Y' AND IsStatus = 'Y'
-            GROUP BY CsIdx
-        ) AS D ON A.CsIdx = D.CsIdx
-        
-        LEFT JOIN (
-            SELECT tA.CsIdx, COUNT(tB.CstIdx) AS memCount FROM {$this->_table['consult_schedule_time']} AS tA
-            LEFT JOIN {$this->_table['consult_schedule_member']} AS tB ON tA.CstIdx = tB.CstIdx AND tB.IsReg = 'Y' AND tA.IsUse = 'Y' AND tA.IsStatus = 'Y'
-            GROUP BY tA.CsIdx
-        ) AS E ON A.CsIdx = E.CsIdx
-            ";
+            FROM {$this->_table['consult_schedule']} AS A
+            INNER JOIN (
+                SELECT CsIdx, SUM(ConsultPersonCount) AS totalConsult
+                FROM {$this->_table['consult_schedule_time']}
+                WHERE IsUse = 'Y' AND IsStatus = 'Y'
+                GROUP BY CsIdx
+            ) AS D ON A.CsIdx = D.CsIdx
+            
+            LEFT JOIN (
+                SELECT tA.CsIdx, COUNT(tB.CstIdx) AS memCount FROM {$this->_table['consult_schedule_time']} AS tA
+                LEFT JOIN {$this->_table['consult_schedule_member']} AS tB ON tA.CstIdx = tB.CstIdx AND tB.IsReg = 'Y' AND tA.IsUse = 'Y' AND tA.IsStatus = 'Y'
+                GROUP BY tA.CsIdx
+            ) AS E ON A.CsIdx = E.CsIdx
+        ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
     }
 
     /**
@@ -165,25 +169,26 @@ class ConsultFModel extends WB_Model
      */
     public function findConsultScheduleTime($arr_condition)
     {
-        $column = "STRAIGHT_JOIN A.CstIdx, A.ConsultPersonCount, A.ConsultTargetType, A.IsUse, IFNULL(B.memCount, 0) AS memCount";
+        $column = "STRAIGHT_JOIN B.CstIdx, B.ConsultPersonCount, B.ConsultTargetType, B.IsUse, IFNULL(C.memCount, 0) AS memCount";
 
-        $form = "
-            FROM {$this->_table['consult_schedule_time']} AS A
+        $from = "
+            FROM {$this->_table['consult_schedule']} AS A
+            LEFT JOIN {$this->_table['consult_schedule_time']} AS B ON A.CsIdx = B.CsIdx
             LEFT JOIN 
             (
                 SELECT CstIdx, COUNT(CstIdx) AS memCount
                 FROM {$this->_table['consult_schedule_member']}
                 WHERE IsReg = 'Y'
                 GROUP BY CstIdx
-            ) AS B ON A.CstIdx = B.CstIdx
+            ) AS C ON B.CstIdx = C.CstIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = $this->_conn->makeOrderBy(['A.CstIdx' => 'ASC'])->getMakeOrderBy();
+        $order_by = $this->_conn->makeOrderBy(['B.CstIdx' => 'ASC'])->getMakeOrderBy();
 
         // 쿼리 실행
-        return $this->_conn->query('select ' . $column . $form . $where . $order_by)->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
@@ -201,7 +206,7 @@ class ConsultFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $form = "
+        $from = "
             FROM {$this->_table['consult_schedule_time']} AS a
             INNER JOIN {$this->_table['consult_schedule']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
             LEFT JOIN (
@@ -212,19 +217,21 @@ class ConsultFModel extends WB_Model
         ";
 
         // 쿼리 실행
-        return $this->_conn->query('select ' . $column . $form . $where)->row_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
 
     /**
      * 상담예약 등록
      * @param array $inputData
+     * @param $site_code
+     * @param $consult_type
      * @return array|bool
      */
-    public function addConsultSchedule($inputData = [], $site_code)
+    public function addConsultSchedule($inputData = [], $site_code, $consult_type = '')
     {
         $this->_conn->trans_begin();
         try {
-            $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($site_code, element('s_campus', $inputData));
+            $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($site_code, element('s_campus', $inputData), $consult_type);
             $isCount_cnt = $member_data['cnt'];
             if ($isCount_cnt > 0) {
                 throw new \Exception('등록된 상담예약건이 존재합니다. 취소 후 다시 예약해 주세요.');
@@ -290,9 +297,10 @@ class ConsultFModel extends WB_Model
      * 회원예약정보 목록
      * @param $site_code
      * @param $campus_code
+     * @param $consult_type
      * @return mixed
      */
-    public function listConsultScheduleForMember($site_code, $campus_code)
+    public function listConsultScheduleForMember($site_code, $campus_code, $consult_type = 'V')
     {
         $mem_idx = $this->session->userdata('mem_idx');
 
@@ -302,6 +310,7 @@ class ConsultFModel extends WB_Model
                 'a.CampusCcd = ' => (empty((int)$campus_code) === true) ? '\'\'' : (int)$campus_code
             ],
             'EQ' => [
+                'a.ConsultType' => $consult_type,
                 'c.IsReg' => 'Y',
                 'a.IsUse' => 'Y',
                 'a.IsStatus' => 'Y'
@@ -367,7 +376,7 @@ class ConsultFModel extends WB_Model
         ";
         $order_by = $this->_conn->makeOrderBy(['c.CsmIdx' => 'DESC'])->getMakeOrderBy();
 
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
@@ -406,7 +415,7 @@ class ConsultFModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule']} AS c ON b.CsIdx = c.CsIdx
             LEFT JOIN {$this->_table['sys_category']} AS e ON a.CandidatePosition = e.CateCode AND e.IsStatus = 'Y'
         ";
-        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
     }
 
     /**
@@ -427,13 +436,15 @@ class ConsultFModel extends WB_Model
         $group_by = ' GROUP BY GroupCcd';
 
         // 쿼리 실행
-        $data = $this->_conn->query('select ' . $column . $from . $where . $group_by, [$csm_idx, $group_ccd])->result_array();
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $group_by, [$csm_idx, $group_ccd])->result_array();
 
         return array_pluck($data, 'CcdName', 'CsmIdx');
     }
 
     /**
      * 상담예약취소
+     * @param $formData
+     * @return boolean
      */
     public function cancelConsultSchedule($formData = [])
     {

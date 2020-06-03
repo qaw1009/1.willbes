@@ -94,7 +94,7 @@
         .Cts03 {margin-bottom:100px; text-align:left}
         
         .Cts03 h3 {font-size:16px;}
-        .Cts03 h3 span {color:#fa7738}
+        .Cts03 h3 span {color:#fa7738; vertical-align: top;}
             .graphWrap {width:100%; margin-top:50px; font-size:14px; line-height:1.5;}
             .graphWrap li {position:relative; display:inline; float:left; width:48%; text-align:left; margin:0 0.5%;}
             .graphWrap select {position:absolute; top:5px; right:0}
@@ -434,7 +434,7 @@
 
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
             <div class="mt30 tx-center">
@@ -443,20 +443,22 @@
                 </a>
             </div>
 
-            {{--<div class="Cts03_01">--}}
-                {{--<h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>--}}
-                {{--<div>--}}
-                    {{--{!! $data['Content'] !!}--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            <!--
+            <div class="Cts03_01">
+                <h3>2020년 6월 13일 시행 <span>지방직 9급 시험 총평</span></h3>
+                <div>
+                    {!! $data['Content'] !!}
+                </div>
+            </div>
+            -->
 
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1660_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_3.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1660_03_03.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -466,7 +468,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2020/06/1660_04_01.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
@@ -482,13 +484,13 @@
                                         @else
                                             @if(empty($row['wHD']) === false)
                                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
-                                                <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
+                                                <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_btn03.png" title="해설강의">
                                             </a>
                                             @endif
 
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}">
-                                                    <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료">
+                                                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_btn04.png" title="해설자료">
                                                 </a>
                                             @endif
                                         @endif

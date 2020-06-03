@@ -275,9 +275,10 @@ class ConsultModel extends WB_Model
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param array $arr_consult_status
      * @return mixed
      */
-    public function listAllConsultMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllConsultMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_consult_status = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -317,27 +318,27 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
-            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
-            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
-            WHERE GroupCcd = '666'
-            GROUP BY a.CsmIdx, a.GroupCcd
+                SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
+                FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+                INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE GroupCcd = '666'
+                GROUP BY a.CsmIdx, a.GroupCcd
             ) AS K ON A.CsmIdx = K.CsmIdx
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
-            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
-            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
-            WHERE GroupCcd = '614'
-            GROUP BY a.CsmIdx, a.GroupCcd
+                SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
+                FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+                INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE GroupCcd = '614'
+                GROUP BY a.CsmIdx, a.GroupCcd
             ) AS L ON A.CsmIdx = L.CsmIdx
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
-            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
-            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
-            WHERE GroupCcd = '668'
-            GROUP BY a.CsmIdx, a.GroupCcd
+                SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
+                FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+                INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE GroupCcd = '668'
+                GROUP BY a.CsmIdx, a.GroupCcd
             ) AS M ON A.CsmIdx = M.CsmIdx
         ";
         $arr_condition['IN']['C.SiteCode'] = get_auth_site_codes(false, true);
@@ -385,6 +386,15 @@ class ConsultModel extends WB_Model
                 $re_study_name = substr($re_study_name, 0, -1);
                 $data[$key]['SerialName'] = $re_serial_name;
                 $data[$key]['StudyName'] = $re_study_name;
+
+                // 상담상태
+                if(empty($arr_consult_status) === false) {
+                    foreach($arr_consult_status as $st_key => $st_val) {
+                        if($row['IsConsult'] == $st_key) {
+                            $data[$key]['IsConsultName'] = $st_val;
+                        }
+                    }
+                }
             }
             return $data;
         }
@@ -494,6 +504,7 @@ class ConsultModel extends WB_Model
 
             $data = [
                 'SiteCode' => element('site_code', $input),
+                'ConsultType' => element('consult_type', $input),
                 'CampusCcd' => element('campus_ccd', $input),
                 'StartTime' => $schedule_start_time,
                 'EndTime' => $schedule_end_time,
@@ -503,7 +514,7 @@ class ConsultModel extends WB_Model
                 'BreakTime' => element('break_time', $input),
                 'IsUse' => element('is_use', $input),
                 'RegIp' => $reg_ip,
-                'RegAdminIdx' => $admin_idx,
+                'RegAdminIdx' => $admin_idx
             ];
 
             //날짜 사이의 일수 계산하여 insert
@@ -583,8 +594,11 @@ class ConsultModel extends WB_Model
             }
 
             //일자별 관리 테이블 수정
-            $data = ['IsUse' => element('is_use', $input)];
-            if ($this->_conn->set($data)->where('Csidx', $cs_idx)->update($this->_table['consult_schedule']) === false) {
+            $data = [
+                'IsUse' => element('is_use', $input),
+                'ConsultType' => element('consult_type', $input)
+            ];
+            if ($this->_conn->set($data)->where('CsIdx', $cs_idx)->update($this->_table['consult_schedule']) === false) {
                 throw new \Exception('상담일 수정에 실패했습니다.');
             }
 
@@ -634,7 +648,7 @@ class ConsultModel extends WB_Model
                 'IsStatus' => 'N',
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
-            if ($this->_conn->set($data)->where('Csidx', $cs_idx)->update($this->_table['consult_schedule']) === false) {
+            if ($this->_conn->set($data)->where('CsIdx', $cs_idx)->update($this->_table['consult_schedule']) === false) {
                 throw new \Exception('상담일 삭제에 실패했습니다.');
             }
 

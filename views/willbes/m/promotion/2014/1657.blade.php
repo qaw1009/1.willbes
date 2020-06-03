@@ -64,9 +64,11 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/05/1657M_06.jpg" alt="1억뷰 엔잡" > 
     </div>
 
+    {{--
     <div class="evtCtnsBox evt07">
         <img src="https://static.willbes.net/public/images/promotion/2020/05/1657M_07.jpg" alt="1억뷰 엔잡" > 
     </div>
+    --}}
 
     <div class="evtCtnsBox evt08">
         <img src="https://static.willbes.net/public/images/promotion/2020/05/1657M_08.jpg" alt="1억뷰 엔잡" > 

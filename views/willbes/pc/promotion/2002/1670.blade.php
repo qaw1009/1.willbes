@@ -88,30 +88,27 @@
                     <area shape="rect" coords="788,519,1019,668" href="http://www.bu.ac.kr/sites/web/intro/intro.html" target="_blank" />
                     <area shape="rect" coords="539,699,769,849" href="#apply" />
                 </map>
-            </div>
 
-            <!-- 글쓰기 영역 -->
-            <iframe id="frm_713001" frameborder="0" scrolling="no" width="100%" onload="resizeIframe(this)" src="{{front_url('/promotion/frameCommentList/713001?'.$arr_base['frame_params'])}}"></iframe>
-            <div id="NOTICEPASS" class="willbes-Layer-Black"></div>
-            <script type="text/javascript">
-                function resizeIframe(iframe) {
-                    iframe.height = (iframe.contentWindow.document.body.scrollHeight + 15) + "px";
-                }
-            </script>          
+                {{--댓글url--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                @endif  
+            </div>                  
 
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_02.jpg" usemap="#Map1670a" title="형사법 무료특강 소문내기" border="0">
                 <map name="Map1670a" id="Map1670a">
                     <area shape="rect" coords="304,847,723,907" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
                 </map>
-            </div>
-
+            </div>      
+            
             <!-- sns 및 url 남기기 영역 -->
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial')
             @endif
 
+            
             <div class="evtCtnsBox evt03" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">
                     <div class="request" id="request">
@@ -192,7 +189,7 @@
             </div>
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_04.jpg" title="학원 위치 및 정보"/>
-            </div>
+            </div>           
 
         </form>
 	</div>

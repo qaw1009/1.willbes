@@ -45,8 +45,8 @@ class BaseConsult extends \app\controllers\FrontController
      */
     public function showCalendar()
     {
-        $year = empty((int)$this->uri->segment(4) == true) ? date('Y') : $this->uri->segment(4);
-        $month = empty((int)$this->uri->segment(5) == true) ? date('m') : $this->uri->segment(5);
+        $year = empty((int)$this->uri->segment(5) == true) ? date('Y') : $this->uri->segment(5);
+        $month = empty((int)$this->uri->segment(6) == true) ? date('m') : $this->uri->segment(6);
 
         $arr_input = $this->_reqG(null, true);
         $s_campus = (int)element('s_campus', $arr_input);

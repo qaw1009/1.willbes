@@ -295,16 +295,16 @@
             </div>
 
             <div class="evtCtnsBox evt05" id="sky02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_05.jpg" usemap="#Map1646_professor" title="면접캠프 찐~교수진" border="0">
-                <map name="Map1646_professor" id="Map1646_professor">
-                    <area shape="rect" coords="155,542,253,571" href="javascript:go_popup1()" />
-                    <area shape="rect" coords="274,542,373,570" href="javascript:go_popup2()" />
-                    <area shape="rect" coords="395,542,493,570" href="javascript:go_popup3()" />
-                    <area shape="rect" coords="627,542,727,570" href="javascript:go_popup4()" />
-                    <area shape="rect" coords="748,542,845,571" href="javascript:go_popup5()" />
-                    <area shape="rect" coords="867,542,967,570" href="javascript:go_popup6()" />
-                    <area shape="rect" coords="185,922,283,951" href="javascript:go_popup7()" />
-                    <area shape="rect" coords="445,922,542,950" href="javascript:go_popup8()" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_05.jpg" usemap="#Map1646_profile" border="0" />
+                <map name="Map1646_profile" id="Map1646_profile">
+                    <area shape="rect" coords="167,542,267,570" href="javascript:go_popup4()" />
+                    <area shape="rect" coords="287,542,387,571" href="javascript:go_popup5()" />
+                    <area shape="rect" coords="407,542,508,570" href="javascript:go_popup6()" />
+                    <area shape="rect" coords="614,542,714,570" href="javascript:go_popup1()" />
+                    <area shape="rect" coords="734,542,835,571" href="javascript:go_popup2()" />
+                    <area shape="rect" coords="854,541,955,570" href="javascript:go_popup3()" />
+                    <area shape="rect" coords="184,922,284,950" href="javascript:go_popup7()" />
+                    <area shape="rect" coords="443,922,544,950" href="javascript:go_popup8()" />
                     <area shape="rect" coords="564,922,664,950" href="javascript:go_popup9()" />
                 </map>
             </div>

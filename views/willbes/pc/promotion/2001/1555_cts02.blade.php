@@ -34,7 +34,11 @@
         <div class="evtCtnsBox cts02_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1555_cts02_02.jpg" alt="적중이벤트 바로가기" usemap="#Map1555cts0203" border="0">
             <map name="Map1555cts0203">
-                <area shape="rect" coords="360,1205,762,1331" href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank" alt="적중이벤트 바로가기" />
+                @if (date('YmdHi') >= '202006050000')
+                    <area shape="rect" coords="360,1205,762,1331" href="#none" onclick="javascript:alert('적중이벤트가 마감되었습니다');" alt="적중이벤트 바로가기" />
+                @else
+                    <area shape="rect" coords="360,1205,762,1331" href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank" alt="적중이벤트 바로가기" />
+                @endif
             </map>
         </div>
 	</div>

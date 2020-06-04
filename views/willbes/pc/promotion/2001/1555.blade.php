@@ -333,7 +333,7 @@
             @endif
         </div>
 
-        @if(time() < strtotime('202001301140'))
+        @if($onoff_2 == 'null')
             <div id="tab02" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
             </div>
@@ -343,7 +343,7 @@
             </div>
         @endif
 
-        @if(time() < strtotime('202006041140'))
+        @if($onoff_3 == 'null')
             <div id="tab03" class="comingsoon">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
             </div>
@@ -352,17 +352,33 @@
                 @include('willbes.pc.promotion.2001.1555_cts03')
             </div>
         @endif
-        <div id="tab04" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
-        </div>
 
-        <div id="tab05" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
-        </div>
+        @if($onoff_4 == 'null')
+            <div id="tab04" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab04">
+            </div>
+        @endif
 
-        <div id="tab06" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">  
-        </div> 
+        @if($onoff_5 == 'null')
+            <div id="tab05" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab05">
+            </div>
+        @endif
+
+        @if($onoff_6 == 'null')
+            <div id="tab06" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab06">
+            </div>
+        @endif
     </div>
     <!-- End Container -->
 

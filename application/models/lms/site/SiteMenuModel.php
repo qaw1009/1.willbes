@@ -328,6 +328,45 @@ class SiteMenuModel extends WB_Model
     }
 
     /**
+     * 사이트 메뉴 삭제
+     * @param int $menu_idx [메뉴식별자]
+     * @return array|bool
+     */
+    public function removeSiteMenu($menu_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $menu_idx = get_var($menu_idx, 0);
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            // 자식 메뉴가 있는지 여부 체크
+            $chk_rows = $this->listSiteMenu(['EQ' => ['ParentMenuIdx' => $menu_idx, 'IsStatus' => 'Y']]);
+            if (empty($chk_rows) === false) {
+                throw new \Exception('자식메뉴가 존재하는 메뉴는 삭제하실 수 없습니다.');
+            }
+
+            // 메뉴 삭제
+            $data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $admin_idx
+            ];
+
+            $is_update = $this->_conn->set($data)->where('MenuIdx', $menu_idx)->where('IsUse', 'N')->update($this->_table['site_menu']);
+            if ($is_update === false) {
+                throw new \Exception('메뉴 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 사이트 메뉴 정렬변경 수정
      * @param array $params
      * @return array|bool

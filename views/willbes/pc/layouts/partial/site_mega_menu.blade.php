@@ -768,7 +768,7 @@
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3023/pack/648001')}}">추천패키지</a>
                         <a href="{{front_url('/promotion/index/cate/3023/code/1081')}}">T-PASS</a>
-                        <a href="{{front_url('/promotion/index/cate/3023/code/1060')}}">소방 PASS</a>
+                        <a href="{{front_url('/promotion/index/cate/3019/code/1656')}}">소방 PASS</a>
                     </li>
                     <li>
                         <strong>과목</strong>
@@ -860,7 +860,7 @@
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3024/pack/648001')}}">추천패키지</a>
                         <a href="{{front_url('/userPackage/show/cate/3024/prod-code/155023/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3024/code/1521')}}">군무원 PASS</a>
+                        <a href="{{front_url('/promotion/index/cate/3019/code/1655')}}">군무원 PASS</a>
                     </li>
                     <li>
                         <strong>과목</strong>

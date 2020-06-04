@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 @section('content')
 <style type="text/css">
-    .Cts03 {margin-bottom:100px; text-align:left}
+    .Cts03 {margin-bottom:50px; text-align:left}
     .Cts03 h3 {font-size:16px;}
     .Cts03 h3 span {color:#fa7738}
     .graphWrap {width:100%; margin-top:50px; font-size:14px; line-height:1.5;}
@@ -22,7 +22,7 @@
     .Cts03_01 div {border:1px solid #e4e4e4; padding:20px; margin-top:20px}
     .maxWidth135 {max-width: 135px}
 </style>
-<div class="Cts03">
+<div class="Cts03 NSK">
     <ul class="graphWrap">
         <li>
             <h3>전체 시험 난이도 </h3>

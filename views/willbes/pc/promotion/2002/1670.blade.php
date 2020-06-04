@@ -25,6 +25,8 @@
        
         .top_police{background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_police_bg.jpg) no-repeat center top;}
         .evtTop {background:#5d5d5d url(https://static.willbes.net/public/images/promotion/2020/06/1670_top_bg.jpg) no-repeat center top;}
+        .top_youtube {background:#e0e0e0;position:relative;}
+        .youtubeGod iframe {width:707px;height:398px;position:absolute;margin-left:-350px;top:289px;}
         .evt01 {background:#e0e0e0;}
         .evt02 {background:#c61330;}        
 
@@ -75,8 +77,19 @@
             <div class="evtCtnsBox top_police">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="신광은 경찰팀">
             </div>
+
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_top.jpg" title="신광은 형사법 무료특강">
+            </div>
+
+            <div class="evtCtnsBox top_youtube">
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_youtube.jpg" usemap="#Map1670c" title="신광은 형사법 무료특강" border="0">
+                <map name="Map1670c" id="Map1670c">
+                    <area shape="rect" coords="327,796,790,871" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
+                </map>
+                <div class="youtubeGod">
+                    <iframe src="https://www.youtube.com/embed/bPPX2qZgSBg" frameborder="0" allowfullscreen=""></iframe>        
+                </div>              
             </div>
 
             <div class="evtCtnsBox evt01">

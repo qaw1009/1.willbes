@@ -23,12 +23,22 @@
 </style>
 @section('content')
     @php
-        //2019년 2차 경행경채를 위한 SpIdx. TODO 하드코딩 개선
+        // 2019년 2차 경행경채를 위한 SpIdx. TODO 하드코딩 개선
         $sp_idx_201908 = (ENVIRONMENT == 'local' || 'dev' ? 9 : 9 );
-        if($SpIdx == $sp_idx_201908){
+        if($SpIdx == $sp_idx_201908) {
             $TypeT[] = '수사';
             $TypeT[] = '행정법';
         }
+
+        // *** 직렬별 선택과목 갯수 *** TODO 하드코딩 개선
+        $pick_sjt_cnt = 3;  // 기본 3개
+
+        //2020년 공무원 지방직 9급. 프로모션 코드 1660
+        $sp_idx_20200604 = (ENVIRONMENT == 'local' || 'dev' ? 10 : 10 );
+        if($SpIdx == $sp_idx_20200604) {
+            $pick_sjt_cnt = 2;
+        }
+
     @endphp
     <div class="popcontent NGR">
         <h3>{{ $Title }}</h3>
@@ -83,7 +93,7 @@
     </div>
     <script>
         var overlap_chk = true; //중복 전송 방지
-        var pick_sjt_cnt = 3;   //직렬별 선택과목 갯수
+        var pick_sjt_cnt = {{$pick_sjt_cnt}};   //직렬별 선택과목 갯수
         var $regi_form = $('#regi_form');
 
         function fn_visible(obj, num1, num2, qnum){

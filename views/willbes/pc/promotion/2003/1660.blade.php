@@ -144,27 +144,27 @@
             <div class="evtMenu" id="evtMenu">                
                 <ul>
                     <li>
-                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=1#content_1') }}">
+                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=1#content_1') }}">
                             <span>수험생이면 누구나</span>
                             <div class="NSK-Black">적중모의고사 무료</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=2#content_2') }}">
+                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=2#content_2') }}">
                             <span>경쟁률 및 체감난이도</span>
                             <div class="NSK-Black">지난 시험 완벽분석</div>				
                         </a>
                     </li>
                     <li>
                         {{-- <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}">--}}
-                        <a id='tab3' href="@if(time() < strtotime('202006131040'))javascript:alert('6/13(토) 10:40 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202006131040'))javascript:alert('6/13(토) 10:40 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>
                     </li>     
                     <li>
                         {{-- <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=4#content_4') }}">--}}
-                        <a id='tab4' href="@if(time() < strtotime('202006151600'))javascript:alert('6/15(월) 16:00 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=4#content_4') }}@endif">
+                        <a id='tab4' href="@if(time() < strtotime('202006151600'))javascript:alert('6/15(월) 16:00 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=4#content_4') }}@endif">
                             <span>2020 지방직 9급</span>
                             <div class="NSK-Black">기출해설강의</div>
                         </a>
@@ -184,7 +184,12 @@
             </div>       
             
             <div class="youtube">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_comingsoon.jpg"  title="방송전" />
+                @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
+                    @include('willbes.pc.promotion.live_video_youtube_partial')
+                @else
+                    @include('willbes.pc.promotion.live_video_partial')
+                @endif
+                {{-- <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_comingsoon.jpg"  title="방송전" /> --}}
                 {{--<iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>--}}
             </div>
 
@@ -530,8 +535,13 @@
         }
 
         function pullOpen(){
-            var url = "{{front_url('/survey/index/2')}}";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @if(empty($arr_promotion_params['SpIdx']) === true)
+                alert('설문정보가 없습니다.');
+                return;
+            @else
+                var url = "{{front_url('/survey/index/' . $arr_promotion_params['SpIdx'])}}";
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
         }
     </script>
 @stop

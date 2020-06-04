@@ -805,6 +805,7 @@
 
                 add_file_box_text += '<div class="title file-input-box">';
                 add_file_box_text += '<input type="file" id="attach_file_promotion'+file_id+'" name="attach_file_promotion[]" class="form-control input-file" title="첨부'+file_id+'"/>&nbsp;<input type="text" id="Ordering'+file_id+'" name="Ordering[]" style="width:20px;"/>';
+                add_file_box_text += '<input type="hidden" name="ef_idx[]" value="" />';
                 add_file_box_text += '</div>';
                 $('.file-box').append(add_file_box_text);
 

@@ -37,20 +37,16 @@
         -->
 
         <div class="Section">
-            <div class="widthAuto bnrSec">
-                <ul>
+            <div class="widthAuto">
+                <ul class="bnrSec">
                     <li>
                         <div class="bSlider blue">
-                            <div class="slider">
-                                {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
-                            </div>
+                            {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
                         </div>
                     </li>
                     <li>
                         <div class="bSlider blue">
-                            <div class="slider">
-                                {!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}
-                            </div>
+                            {!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}
                         </div>
                     </li>
                 </ul>

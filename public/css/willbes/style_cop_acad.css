@@ -552,13 +552,14 @@
 .cop_acad .MainQuickMenu li:nth-child(4) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
 }
-.cop_acad .MainQuickMenu li:nth-child(5) a {
+.cop_acad .MainQuickMenu li:nth-child(5) a,
+.cop_acad .MainQuickMenu li:nth-child(6) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
 }
-.cop_acad .MainQuickMenu li:nth-child(6) a {
+.cop_acad .MainQuickMenu li:nth-child(7) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
 }
-.cop_acad .MainQuickMenu li:nth-child(7) a {
+.cop_acad .MainQuickMenu li:nth-child(8) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
 }
 

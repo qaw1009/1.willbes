@@ -60,7 +60,7 @@
     z-index: 10;
 }
 
-/**/
+/*
 .willpass .Section .bnrSec {
     margin-top:8px;
 }
@@ -76,6 +76,20 @@
     content:'';
     display: block;
     clear:both;
+}*/
+
+.willpass .bnrSec {
+    height: 120px;
+    overflow: hidden;
+    margin-top:8px;
+}
+.willpass .bnrSec ul li {
+    float: left;
+    width: 556px !important;
+    margin-left: 8px;
+}
+.willpass .bnrSec ul li:first-child {
+    margin-left: 0;
 }
 
 /* Main Container : Prof */

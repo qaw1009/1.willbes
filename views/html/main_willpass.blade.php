@@ -61,14 +61,41 @@
         </div>
     </div>
 
+
     <div class="Section">
+        {{--
         <div class="widthAuto bnrSec">   
             <ul>
                 <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2009_556x120.jpg" alt="배너명"></a></li>
                 <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2009_556x120.jpg" alt="배너명"></a></li>
             </ul>  
         </div>
+        --}}
+
+        <div class="widthAuto bnrSec">
+            <ul>
+                <li>
+                    <div class="bSlider blue">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://work.willbes.net/public/uploads/willbes/banner/2020/0604/banner_20200604092511.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://work.willbes.net/public/uploads/willbes/banner/2020/0109/banner_20200131100312.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider blue">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://work.willbes.net/public/uploads/willbes/banner/2020/0109/banner_20200131100312.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://work.willbes.net/public/uploads/willbes/banner/2020/0604/banner_20200604092511.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
+
+
+    
 
     <div class="Section NSK mt90">
         <div class="widthAuto"> 

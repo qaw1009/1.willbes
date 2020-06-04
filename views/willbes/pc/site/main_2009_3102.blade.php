@@ -17,14 +17,41 @@
             </div>
         </div>
 
+        <!--
         <div class="Section">
             <div class="widthAuto bnrSec">
                 <ul>
                     <li>
-                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
+                        <div class="bSlider acad blue">
+                            {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
+                        </div>
                     </li>
                     <li>
-                        {!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}
+                        <div class="bSlider acad blue">
+                            {!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        -->
+
+        <div class="Section">
+            <div class="widthAuto bnrSec">
+                <ul>
+                    <li>
+                        <div class="bSlider blue">
+                            <div class="slider">
+                                {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider blue">
+                            <div class="slider">
+                                {!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>

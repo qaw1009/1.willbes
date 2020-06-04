@@ -12,11 +12,6 @@
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control" id="search_is_use" name="search_is_use">
-                            <option value="">메세지성격</option>
-                            <option value="A">자동</option>
-                            <option value="M">일반</option>
-                        </select>
-                        <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>

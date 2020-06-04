@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class TaskModel extends WB_Model
 {
     private $_table =  [
+        'sys_organization' => 'wbs_sys_organization',
         'sys_code' => 'gw_sys_code',
         'task' => 'gw_task',
         'task_attach' => 'gw_task_attach',
@@ -76,8 +77,15 @@ class TaskModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $query = $this->_conn->query('SELECT ' . $column . $from . $where);
+        $return_data = $query->row_array();
 
-        return $query->row_array();
+        if(empty($return_data) === false) {
+            // 프로젝트 조직연결 조회
+            $org_data = $this->listTaskProjectRelationOrganization(['EQ' => ['TP.TpIdx' => $return_data['TpIdx']]]);
+            $return_data['org_data'] = $org_data;
+        }
+
+        return $return_data;
     }
 
     /**
@@ -123,6 +131,13 @@ class TaskModel extends WB_Model
             if ($this->_conn->update($this->_table['task_project']) === false) {
                 throw new \Exception('업무프로젝트 수정을 실패했습니다.');
             }
+
+            if(empty($input_data) === false && empty($input_data['org_code']) === false) {
+                // 업무프로젝트 조직연결 (비교 저장/수정/삭제)
+                // 기존 데이터 비교하기 위하여 조회
+                // TODO
+
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -156,6 +171,35 @@ class TaskModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 업무프로젝트 조직연결 정보 조회
+     * @param $p_arr_condition
+     * @return mixed
+     */
+    public function listTaskProjectRelationOrganization($p_arr_condition = [])
+    {
+        $column = '
+	        SO.wOrgIdx, SO.wOrgCode, SO.wOrgName, SO.wOrgDesc, SO.wOrderNum, SO.wIsUse, SO.wIsStatus
+        ';
+        $from = "
+            FROM {$this->_table['task_project']} AS TP
+            INNER JOIN {$this->_table['task_project_r_organization']} AS TPRO ON TP.TpIdx = TPRO.TpIdx AND TPRO.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_organization']} AS SO ON TPRO.wOrgCode = SO.wOrgCode AND SO.wIsStatus = 'Y'
+        ";
+
+        $arr_condition = ['EQ' => ['TP.IsUse' => 'Y', 'TP.IsStatus' => 'Y']];
+        if (empty($p_arr_condition) === false && is_array($p_arr_condition) === true) {
+            $arr_condition = array_merge_recursive($arr_condition, $p_arr_condition);
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['TP.TpIdx' => 'ASC'])->getMakeOrderBy();
+
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by);
+        return $query->result_array();
     }
 
 }

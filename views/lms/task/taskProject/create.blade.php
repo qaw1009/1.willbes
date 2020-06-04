@@ -27,6 +27,23 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">권한조직 <span class="required">*</span></label>
+                    <div class="form-control-static col-md-10">
+                        <span id="selected_organization" class="pl-10">
+                            @if(isset($data['org_data']) === true)
+                                @foreach($data['org_data'] as $key => $val)
+                                <span class="pr-10">{{ $val['wOrgName'] }}
+                                    <a href="#none" data-cate-code="{{ $val['wOrgCode'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
+                                    <input type="hidden" name="org_code[]" value="{{ $val['wOrgCode'] }}"/>
+                                </span>
+                                @endforeach
+                            @endif
+                        </span>
+                        <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">설명</label>
                     <div class="form-control-static col-md-10">
                         <textarea name="tproject_desc" class="form-control mw-650" rows="6">{!! $data['TprojectDesc'] !!}</textarea>
@@ -67,6 +84,20 @@
                         location.href='{{ site_url("/task/taskProject") }}/' + getQueryString();
                     }
                 }, showValidateError, addValidate, false, 'alert');
+            });
+
+            // 조직 검색
+            $('#btn_search_organization').on('click', function() {
+                $('#btn_search_organization').setLayer({
+                    'modal_id' : 'modal_search_organization',
+                    'url' : '{{ site_url('/lcms/common/searchOrganization/index/') }}',
+                    'width' : 900
+                });
+            });
+
+            // 조직 삭제 이벤트
+            $regi_form.on('click', '.selected-organization-delete', function() {
+                $(this).parent().remove();
             });
         });
     </script>

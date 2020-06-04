@@ -219,7 +219,7 @@
                 <p>최종합격발표까지 <span>D-00</span></p>
                 -->
             </div>
-            @if ($onoff_3 == 'on')
+            @if ($onoff_3 != 'null')
                 <div class="btnJoin NGEB">
                     <a href="#none" onclick="doEvent(); return false;" target="_blank">
                     필기합격생<br> <span>인증하기  ></span>
@@ -374,7 +374,7 @@
         });
 
         function doEvent() {
-            @if($onoff_3 == 'on')
+            @if($onoff_3 != 'null')
                 @if (empty($arr_promotion_params['page']) === true || empty($arr_promotion_params['cert']) === true)
                     alert("필수데이터 누락입니다. 관리자에게 문의해 주세요.");
                     return;

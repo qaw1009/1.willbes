@@ -564,6 +564,18 @@ class EventLectureModel extends WB_Model
             if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type), $ordering) === false) {
                 throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
+            
+            // 프로모션 파일 정렬순서 수정
+            $arr_ef_idx = element('ef_idx', $input);
+            $arr_ef_ordering = element('Ordering', $input);
+            if(empty($arr_ef_idx) === false) {
+                foreach($arr_ef_idx as $ef_key => $ef_val) {
+                    if(empty($ef_val) === false && empty($arr_ef_ordering[$ef_key]) === false)
+                    if ($this->_modifyContentAttachByPromotion($ef_val, ['Ordering' => $arr_ef_ordering[$ef_key]]) === false) {
+                        throw new \Exception('프로모션 파일 수정에 실패했습니다.');
+                    }
+                }
+            }
 
             // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
             if ($this->getMemberForRegisterCount($el_idx) <= 0) {
@@ -1436,6 +1448,33 @@ class EventLectureModel extends WB_Model
                         throw new \Exception('fail');
                     }
                 }
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 파일수정
+     * @param $ef_idx
+     * @param $input
+     * @return bool
+     */
+    private function _modifyContentAttachByPromotion($ef_idx, $input)
+    {
+        try {
+            if(empty($ef_idx) === true) {
+                throw new \Exception('필수 파라미터 오류');
+            }
+
+            $data = [
+                'Ordering' => element('Ordering', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($data)->where('EfIdx', $ef_idx)->update($this->_table['event_file']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return false;

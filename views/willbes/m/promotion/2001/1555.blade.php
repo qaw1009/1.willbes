@@ -72,9 +72,14 @@
     <!-- End Container -->
 
     <script>
+        @if(date('YmdHi') >= '202006050000')
+            alert('2020년 1차 합격예측 풀서비스는 종료 되었습니다.');
+            location.href = '{{ front_url('/') }}';
+        @endif
+
         function event_step_1() {
             <?php echo login_check_inner_script('로그인 후 이용하여 주십시오.','N'); ?>
-                location.href = '{{front_url('/predict/index/'.(empty($arr_promotion_params['PredictIdx']) === true ? '' : $arr_promotion_params['PredictIdx']))}}';
+            location.href = '{{front_url('/predict/index/'.(empty($arr_promotion_params['PredictIdx']) === true ? '' : $arr_promotion_params['PredictIdx']))}}';
         }
     </script>
 @stop

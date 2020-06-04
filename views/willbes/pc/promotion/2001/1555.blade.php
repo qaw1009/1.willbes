@@ -180,7 +180,9 @@
                 </a>
             </li>
             --}}
-            <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
+            @if ($onoff_3 != 'null') @else
+                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
+            @endif
             <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1555_sky03.png" title="면접캠프"></a></li>
         </ul>   
 
@@ -217,11 +219,19 @@
                 <p>최종합격발표까지 <span>D-00</span></p>
                 -->
             </div>
-            <div class="btnJoin NGEB">
-                <a href="#none" onclick="doEvent(); return false;" target="_blank">
-                경찰 1차시험 인증이벤트<br> <span>참여하기  ></span>
-                </a>
-            </div>
+            @if ($onoff_3 != 'null')
+                <div class="btnJoin NGEB">
+                    <a href="#none" onclick="doEvent(); return false;" target="_blank">
+                    필기합격생<br> <span>인증하기  ></span>
+                    </a>
+                </div>
+            @else
+                <div class="btnJoin NGEB">
+                    <a href="#none" onclick="doEvent(); return false;" target="_blank">
+                        경찰 1차시험 인증이벤트<br> <span>참여하기  ></span>
+                    </a>
+                </div>
+            @endif
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
@@ -332,10 +342,16 @@
                 @include('willbes.pc.promotion.2001.1555_cts02')
             </div>
         @endif
-        <div id="tab03" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
-        </div>
 
+        @if(time() < strtotime('202006041140'))
+            <div id="tab03" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab03">
+                @include('willbes.pc.promotion.2001.1555_cts03')
+            </div>
+        @endif
         <div id="tab04" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
         </div>
@@ -364,13 +380,29 @@
         });
 
         function doEvent() {
-            //사전예약 마감
-            @if($onoff_1 != 'on')
-                var openNewWindow = window.open("about:blank");
-                openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/1629') }}';
+            @if($onoff_3 != 'null')
+                @if (empty($arr_promotion_params['page']) === true || empty($arr_promotion_params['cert']) === true)
+                    alert("필수데이터 누락입니다. 관리자에게 문의해 주세요.");
+                    return;
+                @else
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                    @if(empty($cert_apply) === false)
+                        alert("이미 인증이 완료된 상태입니다.");return;
+                    @endif
+                    @if(empty($arr_promotion_params) === false)
+                        var url = '{{ site_url('/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
+                        window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+                    @endif
+                @endif
             @else
-                var url = "{{ front_url('/predict/index/' . $arr_promotion_params['PredictIdx']) }}";
-                window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+                //사전예약 마감
+                @if($onoff_1 != 'on')
+                    var openNewWindow = window.open("about:blank");
+                    openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/1629') }}';
+                @else
+                    var url = "{{ front_url('/predict/index/' . $arr_promotion_params['PredictIdx']) }}";
+                    window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+                @endif
             @endif
         }
 

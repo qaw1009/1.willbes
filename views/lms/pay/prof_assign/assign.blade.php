@@ -184,9 +184,10 @@
                                     <td>
                                         @if($row['IsAssign'] == 'Y')
                                             <button type="button" class="btn btn-xs btn-success mr-0 btn-sub-print" data-site-code="{{ $data['SiteCode'] }}" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">수강증출력</button>
-                                            @if($row['IsPrintCert'] == 'Y')
-                                                <br/><a class="red cs-pointer btn-sub-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">(Y)</a>
-                                            @endif
+                                        @endif
+                                        {{-- 배정된 단과만 표기 => 이전 수강증출력 이력 표기 --}}
+                                        @if($row['IsPrintCert'] == 'Y')
+                                            <br/><a class="red cs-pointer btn-sub-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="{{ $data['OrderIdx'] }}" data-order-prod-idx="{{ $data['OrderProdIdx'] }}" data-prod-code-sub="{{ $row['ProdCodeSub'] }}">(Y)</a>
                                         @endif
                                     </td>
                                 </tr>

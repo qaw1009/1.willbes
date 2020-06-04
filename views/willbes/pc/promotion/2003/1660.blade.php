@@ -184,7 +184,8 @@
             </div>       
             
             <div class="youtube">
-                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_comingsoon.jpg"  title="방송전" />
+                {{--<iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>--}}
             </div>
 
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_02.jpg" title="응시자 준수사항 및 필기장소 안내" />           
@@ -439,7 +440,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
-            <div class="mt30 tx-center">
+            <div class="tx-center">
                 <a href="javascript:pullOpen();">
                     <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" />
                 </a>

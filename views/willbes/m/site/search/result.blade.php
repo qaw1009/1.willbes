@@ -280,6 +280,7 @@
 
         function goShow(prod_code, cate_code, pattern, site_url) {
             var $free_lec_passwd = $regi_form.find('input[id="free_lec_passwd_' + prod_code + '"]');
+
             if ($free_lec_passwd.length > 0) {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -300,7 +301,7 @@
                         @else
                             $url = "{{front_url('/lecture/show/cate/')}}";
                         @endif
-                            goUrl = $url + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
+                            goUrl = $url + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code+'#tab03';
                         window.open(goUrl, '_blank')
                     }
                 }, showAlertError, false, 'POST');

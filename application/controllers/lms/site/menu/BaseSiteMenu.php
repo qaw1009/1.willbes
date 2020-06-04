@@ -186,6 +186,25 @@ class BaseSiteMenu extends \app\controllers\BaseController
     }
 
     /**
+     * 사이트 메뉴 삭제
+     */
+    public function destroy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'idx', 'label' => '메뉴식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->siteMenuModel->removeSiteMenu($this->_reqP('idx'));
+
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 사이트 메뉴 정렬변경
      */
     public function reorder()

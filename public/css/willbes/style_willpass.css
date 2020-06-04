@@ -84,15 +84,15 @@
     overflow: hidden;
     margin-top:8px;
 }
-.willpass .bnrSec ul li {
+.willpass .bnrSec li {
     float: left;
     width: 556px !important;
     margin-left: 8px;
 }
-.willpass .bnrSec ul li:first-child {
+.willpass .bnrSec li:first-child {
     margin-left: 0;
 }
-.willpass .bnrSec ul:after {
+.willpass .bnrSec:after {
     content:"";
     display: block;
     clear:both;

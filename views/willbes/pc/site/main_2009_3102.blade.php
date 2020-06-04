@@ -37,8 +37,8 @@
         -->
 
         <div class="Section">
-            <div class="widthAuto bnrSec">
-                <ul>
+            <div class="widthAuto">
+                <ul class="bnrSec">
                     <li>
                         <div class="bSlider blue">
                             <div class="slider">

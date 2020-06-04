@@ -128,9 +128,9 @@
 
     /*서비스이용현황 */
     $(document).ready(function() {
-        @if(date('YmdHi') >= '202009061500' && ENVIRONMENT == 'production')
+        @if(date('YmdHi') >= '202006050000')
             alert('2020년 1차 합격예측 풀서비스는 종료 되었습니다.');
-            location.href = '{{ site_url('/') }}';
+            location.href = '{{ front_url('/') }}';
         @endif
 
         // 상단 합격안정권 예측 데이터 조회

@@ -192,7 +192,7 @@
                                                         <dt>{{$row['ProdCateName']}}<span class="row-line">|</span>{{$row['CourseName']}}</dt>
                                                     </dl>
                                                     <div class="w-tit tx-blue">
-                                                        <a href="{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/m/' : front_url('')}}package/show/cate/{{$row['CateCode']}}/pack/{{$row['PackTypeCcd']}}/prod-code/{{$row['ProdCode']}}" target="_blank">{{$row['ProdName']}}</a>
+                                                        <a href="{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/m/' : front_url('/')}}package/show/cate/{{$row['CateCode']}}/pack/{{$row['PackTypeCcd']}}/prod-code/{{$row['ProdCode']}}" target="_blank">{{$row['ProdName']}}</a>
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span><span class="row-line">|</span></dt>
@@ -236,7 +236,7 @@
                                                         <dt>{{$row['ProdCateName']}}<span class="row-line">|</span>{{$row['CourseName']}}</dt>
                                                     </dl>
                                                     <div class="w-tit tx-blue">
-                                                        <a href="{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/m/' : front_url('')}}package/show/cate/{{$row['CateCode']}}/pack/{{$row['PackTypeCcd']}}/prod-code/{{$row['ProdCode']}}" target="_blank">{{$row['ProdName']}}</a>
+                                                        <a href="{{$__cfg['SiteCode'] === '2000' ? '//'.app_to_env_url($row['SiteUrl']).'/m/' : front_url('/')}}package/show/cate/{{$row['CateCode']}}/pack/{{$row['PackTypeCcd']}}/prod-code/{{$row['ProdCode']}}" target="_blank">{{$row['ProdName']}}</a>
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span><span class="row-line">|</span></dt>

@@ -3238,7 +3238,7 @@ body.memBody #Footer {
     margin: 10px 0 ;
 }
 .freeLecPass p {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .freeLecPass input[type="password"] { 
     width: 80px;
@@ -3255,8 +3255,8 @@ body.memBody #Footer {
     background: #1387c8;
     float: left;
     color:#fff;
-    width: 50px;
     text-align: center;
+    padding:3px 10px 0;
 }
 .freeLecPass a.view { width:auto; background: #333; margin:0; padding:0 10px}
 .freeLecPass:after {content:""; display:block; clear:both}

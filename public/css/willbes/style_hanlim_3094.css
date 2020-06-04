@@ -179,24 +179,24 @@
 .thisMonth .thisMonthBox p.leftBtn {left:-22px}
 .thisMonth .thisMonthBox p.rightBtn {right:-22px}
 
-.preview {margin-top:50px}
-.preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
-.preview .pvslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
-.preview .pvslider li {display: inline; float: left; width:33.33333%; overflow: hidden;  position: relative;}
-.preview .pvslider li a {display:block; text-align: right; height:234px; overflow: hidden; background:#828181 url("https://static.willbes.net/public/images/promotion/main/btn_play.png") no-repeat 25px 150px ; color:#fff} 
-.preview .pvslider li a img {position:absolute; bottom:0; right:0;
+.Section1 .preview {margin-top:50px}
+.Section1 .preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
+.Section1 .preview .pvslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
+.Section1 .preview .pvslider li {display: inline; float: left; width:33.33333%; overflow: hidden;  position: relative;}
+.Section1 .preview .pvslider li a {display:block; text-align: right; height:234px; overflow: hidden; background:#828181 url("https://static.willbes.net/public/images/promotion/main/btn_play.png") no-repeat 25px 150px ; color:#fff} 
+.Section1 .preview .pvslider li a img {position:absolute; bottom:0; right:0;
   -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
   -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
   -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
   -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
   filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
 }
-.preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
-.preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
-.preview .pvslider:after {content: ""; display: block; clear:both}
-.preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
-.preview .previewBox p.leftBtn {left:-22px}
-.preview .previewBox p.rightBtn {right:-22px}
+.Section1 .preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
+.Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
+.Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
+.Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+.Section1 .preview .previewBox p.leftBtn {left:-22px}
+.Section1 .preview .previewBox p.rightBtn {right:-22px}
 
 /*바로가기 메뉴*/
 .goMenu { clear:both; background: #52bcc9; padding:0 50px; margin:20px auto 50px;}

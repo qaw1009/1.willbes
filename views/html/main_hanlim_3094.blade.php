@@ -134,7 +134,20 @@
         <div class="widthAuto">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_1120x20_sample.jpg" alt="배너명"></a>
         </div>
-    </div>    
+    </div> 
+    
+    <div class="Section mt50">
+        <div class="widthAuto"> 
+            <ul class="goMenu">
+                <li><a href="#none">학원수강신청<span>|</span></a></li>
+                <li><a href="#none">학원보강<span>|</span></a></li>
+                <li><a href="#none">강의실배정표<span>|</span></a></li>
+                <li><a href="#none">신규동영상안내<span>|</span></a></li>
+                <li><a href="#none">무료특강<span>|</span></a></li>
+                <li><a href="#none">강의자료실</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div class="Section lecBanner mt50">
         <div class="widthAuto">
@@ -292,7 +305,7 @@
         </div>
     </div>
 
-    <div class="Section mt100">
+    <div class="Section mt50">
         <div class="widthAuto"> 
             <div class="noticeTabs">
                 <div class="will-listTit">학원 공지사항</div>
@@ -342,20 +355,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto"> 
-            <ul class="goMenu">
-                <li><a href="#none">학원수강신청<span>|</span></a></li>
-                <li><a href="#none">학원보강<span>|</span></a></li>
-                <li><a href="#none">강의실배정표<span>|</span></a></li>
-                <li><a href="#none">신규동영상안내<span>|</span></a></li>
-                <li><a href="#none">무료특강<span>|</span></a></li>
-                <li><a href="#none">강의자료실</a></li>
-            </ul>
-        </div>
-    </div>
+    </div>    
     
     <div class="Section Section4_hl mb50">
         <div class="widthAuto">

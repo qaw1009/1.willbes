@@ -172,7 +172,8 @@
                                     <div class="freeLecPass">       
                                         <p>보강동영상 비밀번호 입력</p>
                                         <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
-                                        <a href="#none">확인</a>                                
+                                        <a href="#none">확인</a>    
+                                        <a href="#none">보강동영상 보기</a>                             
                                     </div>
                                 </div>
                                 <div class="oneBox">

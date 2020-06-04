@@ -385,7 +385,8 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
                     </div>      
                     <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1662" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>
+                    {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1662" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>--}}
+                    <a href="#none" onclick="javascript:alert('준비중입니다.');">버튼</a>
                 </div> 
             </div>
         @endif

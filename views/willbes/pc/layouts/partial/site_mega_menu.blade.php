@@ -669,8 +669,8 @@
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3020/pack/648001')}}">추천패키지</a>
                         <a href="{{front_url('/userPackage/show/cate/3020/prod-code/154961/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3020/code/1519')}}">7급 PASS</a> 
-                        <a href="{{front_url('/promotion/index/cate/3020/code/1520')}}">외무영사 PASS</a> 
+                        <a href="{{front_url('/promotion/index/cate/3020/code/1659')}}">7급 PASS</a> 
+                        <a href="{{front_url('/promotion/index/cate/3020/code/1658')}}">외무영사 PASS</a> 
                     </li>
                     <li>
                         <strong>과목</strong>

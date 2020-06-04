@@ -20,16 +20,19 @@
                     <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                     <span class="file-select file-btn"-->
                         <input type="file" id="attach_file_promotion{{ $i }}" name="attach_file_promotion[]" class="form-control input-file" title="첨부{{ $i }}"/>
-                        <input type="text" id="Ordering'{{ $i }}" name="Ordering[]" style="width:20px;" title="노출순서"/>
+                        <input type="text" id="Ordering{{ $i }}" name="Ordering[]" style="width:20px;" title="노출순서"/>
                     <!--/span>
                     <input class="file-reset btn-danger btn" type="button" value="X" />
                 </div-->
+                @php $ef_idx = ''; @endphp
                 @if(empty($file_data_promotion[$i]) === false)
                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $file_data_promotion[$i]['FileFullPath'] . $file_data_promotion[$i]['FileName'] }}" rel="popup-image">{{ $file_data_promotion[$i]['FileRealName'] }}</a> ]
                         <a href="#none" class="file-delete" data-attach-idx="{{ $file_data_promotion[$i]['EfIdx']  }}"><i class="fa fa-times red"></i></a>
                         / 노출순서 : {{ $file_data_promotion[$i]['Ordering'] }}
                     </p>
+                    @php $ef_idx = $file_data_promotion[$i]['EfIdx']; @endphp
                 @endif
+                <input type="hidden" name="ef_idx[]" value="{{$ef_idx}}" />
             </div>
         @endfor
     </div>

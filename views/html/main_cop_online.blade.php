@@ -2,7 +2,7 @@
 
 @section('content')
 <style type="text/css">
-    .bnSec01 {padding:20px 0}
+    .bnSec01 {padding:20px 0 0} 
     .bnSec01 li {display:inline; float:left}
     .bnSec01:after {content:""; display:block; clear:both}
 
@@ -75,7 +75,17 @@
         width: 550px;
     }
     .bnSec02 ul:after {content:""; display:block; clear:both}
+    
+    .cop .preview .previewBox {position:relative; width:1120px; margin: 0 auto;}
+    .cop .preview .pvslider {width:1120px; margin: 0 auto; height:225px; overflow: hidden;}
+    .cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
+    .cop .preview .pvslider li a {display:block; height:225px;} 
+    .cop .preview .pvslider:after {content: ""; display: block; clear:both}
+    .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+    .cop .preview .previewBox p.leftBtn {left:-22px}
+    .cop .preview .previewBox p.rightBtn {right:-22px}
 </style>
+
 <!-- Container -->
 <div id="Container" class="Container cop NSK c_both">
     <div class="Section widthAuto">
@@ -152,13 +162,13 @@
         </div>
     </div>
 
-    <div class="Section mt50">
+    <div class="Section mt20">
         <div class="widthAuto">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x450.jpg" alt="배너명"></a>
         </div>
     </div>
 
-    <div class="Section HotIssue mt50">
+    <div class="Section HotIssue mt20">
         <ul class="widthAuto">
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_01.jpg" alt="배너명"></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_02.jpg" alt="배너명"></a></li>
@@ -298,7 +308,52 @@
         </div>
     </div>
 
-    <div class="Section Section6 mt50">
+    <div class="Section Section5 mt50">
+        <div class="widthAuto">
+            <div class="will-nTit bd-none">윌비스 <span class="cop-color">경찰 캐스트</span></div>
+            <div class="preview">
+                <div class="previewBox">
+                    <ul class="pvslider">
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                            </a>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="Section Section6 mt80">
         <div class="widthAuto">
             <div class="nNoticeBox three">
                 <div class="noticeList widthAuto350 f_left">
@@ -332,7 +387,7 @@
         </div>
     </div>
 
-    <div class="Section Section7 mt50">
+    <div class="Section Section7 mt30">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>
@@ -515,6 +570,32 @@
                 maxSlides:1, 
                 moveSlides:1,
             });
-        });       
+        });  
+
+        //경찰캐스트
+        $(function() {
+        var slidesImg1 = $(".pvslider").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:3,
+            maxSlides:3,
+            slideWidth: 460,
+            slideMargin:10,
+            autoHover: true,
+            moveSlides:1,
+            pager:true,
+        });
+        $("#imgBannerLeft1").click(function (){
+            slidesImg1.goToPrevSlide();
+        });
+
+        $("#imgBannerRight1").click(function (){
+            slidesImg1.goToNextSlide();
+        });
+    });     
 </script>
 @stop

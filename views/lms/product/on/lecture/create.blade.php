@@ -7,14 +7,12 @@
     if($method == 'PUT') {
         $disabled = "disabled";
     }
-
     //메모코드 초기화
-    for($i=634001; $i<634006; $i++){
+    for($i=634001; $i<634008; $i++){
         ${"MemoTypeCcd_".$i} = ''; //초기화
     }
     foreach ($data_memo as $row) {
         ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
-        //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
     }
 @endphp
 
@@ -636,7 +634,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsEdit">첨삭사용여부
+                    <label class="control-label col-md-2">첨삭사용여부
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
@@ -657,7 +655,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsRefund">환불신청 <span class="required">*</span>
+                    <label class="control-label col-md-2">환불신청 <span class="required">*</span>
                     </label>
                     <div class="col-md-6 form-inline item" >
                         <div class="radio">
@@ -670,13 +668,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsRefund">선수강좌구분 <span class="required">*</span>
+                    <label class="control-label col-md-2">선수강좌구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-6 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
                             &nbsp;&nbsp;
                             <input type="radio" name="LecSaleType" class="flat" value="B" @if($data['LecSaleType']=='B')checked="checked"@endif/> 선수강좌
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Memo_634007">메인추천강의소개
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="hidden" name="MemoTypeCcd[]" id="MemoTypeCcd_634007" value="634007">
+                            <input type="hidden" name="IsOutPut[]" id="IsOutPut_634007" value="Y">
+                            <input type="text" name="Memo[]" id="Memo_634007" value="{{$MemoTypeCcd_634007}}" class="form-control" size="120">
                         </div>
                     </div>
                 </div>
@@ -924,7 +934,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송료 부과여부
+                    <label class="control-label col-md-2" for="IsFreebiesTrans">사은품/무료교재<BR>배송료 부과여부
                     </label>
                     <div class="col-md-10 form-inline">
                         <div class="item inline-block">
@@ -939,7 +949,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    <label class="control-label col-md-2" for="IsDeliveryInfo">사은품/무료교재<BR>배송지 입력여부
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">

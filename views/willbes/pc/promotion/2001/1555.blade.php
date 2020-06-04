@@ -127,6 +127,18 @@
         .evt04 {background:#f6f6f6;}
         .evt05 {background:#fff;}
         .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg) no-repeat center top; text-align:center}
+        .evt06 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1424_top_bg.jpg) no-repeat center top;}	
+        .evt06 .wb_popWrap {width:1120px; margin:0 auto; position:relative}
+        .evt06 .illust {position:absolute; width:1120px; margin:0 auto; animation:only 2s ease-in 0s infinite; z-index:11}
+        @@keyframes only{
+            0%{top:360px}
+            50%{top:380px; opacity:1}
+            100%{top:360px}
+        }
+        .evt06 a {position:absolute; width:600px; top:770px; left:50%; margin-left:-300px; padding:20px 0;
+            color:#fff; font-size:20px; font-weight:600; border:2px solid #fff; border-radius:40px;
+        }
+        .evt06 a:hover {background:#fff; color:#102b3e}
     </style>
     @php
         $now = date('YmdHi');
@@ -367,7 +379,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
             </div>
         @else
-            <div id="tab05">
+            <div id="tab05" class="evtCtnsBox evt06">
+                <div class="wb_popWrap">
+                    <div class="illust">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
+                    </div>      
+                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1662" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>
+                </div> 
             </div>
         @endif
 

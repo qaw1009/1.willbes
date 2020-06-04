@@ -128,7 +128,7 @@
 
     /*서비스이용현황 */
     $(document).ready(function() {
-        @if(date('YmdHi') >= '202006051500' && ENVIRONMENT == 'production')
+        @if(date('YmdHi') >= '202006041500' && ENVIRONMENT == 'production')
             alert('2020년 1차 합격예측 풀서비스는 종료 되었습니다.');
             location.href = '{{ front_url('/') }}';
         @endif

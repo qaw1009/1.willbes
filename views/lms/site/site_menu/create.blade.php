@@ -174,6 +174,27 @@
                     }, showValidateError, null, false, 'alert');
                 });
 
+                // 메뉴 삭제
+                $regi_form.on('click', 'button[name="btn_menu_remove"]', function() {
+                    if (!confirm('정말로 삭제하시겠습니까?')) {
+                        return;
+                    }
+
+                    var data = {
+                        '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method' : 'DELETE',
+                        'idx' : $regi_form.find('input[name="idx"]').val()
+                    };
+
+                    sendAjax('{{ site_url('/site/' . $contr_name . '/destroy') }}', data, function(ret) {
+                        if (ret.ret_cd) {
+                            notifyAlert('success', '알림', ret.ret_msg);
+                            $("#pop_modal").modal('toggle');
+                            $datatable.draw();
+                        }
+                    }, showAlertError, false, 'POST');
+                });
+
                 // 기타필드 display, disabled 설정
                 function setMenuEtcField(menu_type) {
                     if (menu_type.substr(1, 1) === 'M') {
@@ -194,6 +215,10 @@
 
 @section('add_buttons')
     <button type="submit" class="btn btn-success">저장</button>
+    @if($method == 'PUT' && element('IsUse', $data) == 'N')
+        {{-- 해당 메뉴가 미사용인 경우 삭제 가능 --}}
+        <button type="button" name="btn_menu_remove" class="btn btn-danger">삭제</button>
+    @endif
 @endsection
 
 @section('layer_footer')

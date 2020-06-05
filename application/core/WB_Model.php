@@ -119,7 +119,7 @@ class WB_Model extends CI_Model
             foreach ($input_data as $key => $val) {
                 $tempData2 = (empty($input_data2[$key]) === false) ? $input_data2[$key] : '';
                 $tempData3 = (empty($input_data3[$key]) === false) ? $input_data3[$key] : '';
-                $sql = /** @lang text */ "INSERT INTO {$temp_table_name} (tempData, tempData2, tempData3) SELECT fn_enc('?'), '?', '?'";
+                $sql = /** @lang text */ "INSERT INTO {$temp_table_name} (tempData, tempData2, tempData3) SELECT fn_enc(?), ?, ?";
 
                 $result[$key] = $this->_conn->query($sql, [
                     $val, $tempData2, $tempData3

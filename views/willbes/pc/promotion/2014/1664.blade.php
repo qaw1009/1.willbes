@@ -48,6 +48,7 @@
         .evt02 .receive div {padding-left:50px}
         .evt02 .receive div.info {padding-left:80px}
         .evt02 .receive input:focus {border:5px solid #000 !important}
+        .evt02 input:checked + label {border-bottom:1px dashed #fff}
 
         .evt03 {background:#fff;}
 
@@ -86,10 +87,10 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_02.jpg" alt="" > 
             <ul class="inputBox NSK-Black">
-                <li><input type="radio" id="pr01"><label for="pr01"> 이시한 교수</label></li>
-                <li><input type="radio" id="pr02"><label for="pr02"> 이승기 PD</label></li>
-                <li><input type="radio" id="pr03"><label for="pr03"> 안혜빈 대표</label></li>
-                <li><input type="radio" id="pr04"><label for="pr04"> 이기용 대표</label></li>
+                <li><input type="checkbox" id="pr01"><label for="pr01"> 이시한 교수</label></li>
+                <li><input type="checkbox" id="pr02"><label for="pr02"> 이승기 PD</label></li>
+                <li><input type="checkbox" id="pr03"><label for="pr03"> 안혜빈 대표</label></li>
+                <li><input type="checkbox" id="pr04"><label for="pr04"> 이기용 대표</label></li>
             </ul>
             <div class="receive">
                 <ul>

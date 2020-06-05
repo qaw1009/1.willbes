@@ -27,7 +27,8 @@
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
         .tabContaier li {display:inline; float:left; width:50%}
-        .tabContaier a {display:block; height:110px; line-height:50px; text-align:center; font-size:30px; background:#f4f4f4; border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
+        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px; background:#f4f4f4; 
+                        border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,

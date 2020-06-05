@@ -27,8 +27,8 @@
 
         .evtTop {background:#070719 url(https://static.willbes.net/public/images/promotion/2020/05/1646_top_bg.jpg) no-repeat center top;}   
         
-        .evt01 {position:relative;}
-        .youtubeGod iframe{width:500px;height:300px;position:absolute;left:50%;top:50%;margin-left:-250px;margin-top:65px;}
+        .evt01 {position:relative;padding-bottom:100px;}
+        .youtubeGod iframe{width:500px;height:300px;position:absolute;left:50%;top:45%;margin-left:-250px;margin-top:65px;}
 
         .evt01 .btn {clear:both; width:450px; margin:0 auto;}
         .evt01 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
@@ -118,7 +118,7 @@
 
             <div class="sky">
                 <ul>
-                    <li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky01.jpg"  title="면접캠프 설명회" /></a></li>
+                    {{--<li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky01.jpg"  title="면접캠프 설명회" /></a></li>--}}
                     <li><a href="#sky02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky02.jpg"  title="찐 교수님 자세히보기" /></a></li>  
                     <li><a href="#sky03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="인적성검사" /></a></li>  
                     <li><a href="#sky04"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="사전조사서 특강" /></a></li>  
@@ -144,6 +144,7 @@
                 </div>
             </div>
 
+            <!--                  
             <div class="evtCtnsBox evt02" id="sky01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_02.jpg" title="면점캠프 설명회">
                 <div class="request" id="request">
@@ -249,6 +250,7 @@
                     <a href="#none" onclick="javascript:fn_submit();">면접캠프 설명회 신청하기 ></a>
                 </div>
             </div>
+            -->
 
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_03.jpg" title="합격 스토리"/>

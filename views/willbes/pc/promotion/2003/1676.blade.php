@@ -155,29 +155,29 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03.jpg" usemap="#Map1588b" title="지금 바로 출석체크하러 가기" border="0" id="evt1" >
-            <map name="Map1588b" id="Map1588b">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <map name="Map1676b">
                 <area shape="rect" coords="370,976,751,1036" href="#to_go" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03ss.jpg" usemap="#Map1588ss" id="evt3" title="다시보기 서비스" border="0">
-            <map name="Map1588ss" id="Map1588ss">
-                <area shape="rect" coords="182,549,496,624" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" />
-                <area shape="rect" coords="618,548,942,625" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" />
-                <area shape="rect" coords="752,911,891,1029" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+            <map name="Map1676ss">
+                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" />
+                <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" />
+                <area shape="rect" coords="757,926,896,1044" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank" />
             </map>       
         </div>
 
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_04.jpg" usemap="#Map1588e" title="라이브 티비" border="0">
-            <map name="Map1588e" id="Map1588e">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_04.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
+            <map name="Map1676e" id="Map1588e">
                 <area shape="rect" coords="123,27,396,126" href="#pairing" />
                 <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
                 <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" />
-            </map>      
+            </map>                  
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')

@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="SchoolYear">강좌구성 <span class="required">*</span>
+                    <label class="control-label col-md-2">강좌구성 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
                         <p><button type="button" class="btn btn-sm btn-primary ml-5" id="subLecAdd">단강좌검색</button>

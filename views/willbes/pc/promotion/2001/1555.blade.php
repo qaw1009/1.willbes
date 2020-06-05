@@ -374,22 +374,15 @@
             </div>
         @endif
 
-        @if($onoff_5 == 'null')
-            <div id="tab05" class="comingsoon">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+        <div id="tab05" class="evtCtnsBox evt06">
+            <div class="wb_popWrap">
+                <div class="illust">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
+                <a href="{{ front_url('/promotion/index/cate/3001/code/1662') }}" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>
             </div>
-        @else
-            <div id="tab05" class="evtCtnsBox evt06">
-                <div class="wb_popWrap">
-                    <div class="illust">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
-                    </div>      
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
-                    {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1662" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>--}}
-                    <a href="#none" onclick="javascript:alert('준비중입니다.');">버튼</a>
-                </div> 
-            </div>
-        @endif
+        </div>
 
         @if($onoff_6 == 'null')
             <div id="tab06" class="comingsoon">

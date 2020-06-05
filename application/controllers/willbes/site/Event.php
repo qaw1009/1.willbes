@@ -305,7 +305,7 @@ class Event extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false), $this->_site_code, $register_type);
+        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, true), $this->_site_code, $register_type);
         $this->json_result($result, '신청 되었습니다.', $result);
     }
 

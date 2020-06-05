@@ -24,6 +24,20 @@
 
         .evttop_banner {background:#FDEADB;}
 
+        .wb_top_tab {background:#fff;}
+        /* 탭 */
+        .tabContaier{width:1120px; margin:0 auto}
+        .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
+        .tabContaier li {display:inline; float:left; width:50%}
+        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px; background:#f4f4f4; 
+            border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
+        .tabContaier .time {font-size:25px;}
+        .tabContaier li:last-child {margin:0}
+        .tabContaier a:hover,
+        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;}
+        .tabContaier ul:after {content:''; display:block; clear:both;}
+        .tabContents {margin-top:20px}
+
         .evttop {background:#020015 url(https://static.willbes.net/public/images/promotion/2020/06/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
@@ -72,7 +86,22 @@
                 <area shape="rect" coords="-1,359,149,437" href="#evt3" />
                 <area shape="rect" coords="1,443,147,523" href="#evt3" />
             </map>           
-        </div>              
+        </div>
+        
+        <div class="evtCtnsBox wb_top_tab" >
+            <div class="tabContaier">
+                <ul class="NGEB">
+                    <li>
+                        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1675">더켠의 아침 똑똑 영어<br>
+                        <span class="time">매일 아침 07:30AM~08:00AM</span></a>
+                    </li>
+                    <li>
+                        <a href="#none" class="active">더켠의 반반한 밤<br>
+                        <span class="time">매일 밤 21:00PM~22:00PM</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

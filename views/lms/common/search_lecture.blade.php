@@ -16,7 +16,7 @@
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
-        <input type="hidden" name="cate_code" value="{{ $cate_code }}"/>
+        <!--<input type="hidden" name="cate_code" value="{{ $cate_code }}"/>//-->
 
         @endsection
 
@@ -31,13 +31,18 @@
             <div class="form-group pt-10 pb-5">
                 <label class="control-label col-md-2 pt-5" for="search_value">단강좌검색
                 </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control input-sm" id="search_value" name="search_value">
+                <div class="col-md-8 form-inline">
+                    <select class="form-control" id="cate_code" name="cate_code">
+                        <option value="">카테고리</option>
+                        @foreach($cate_list as $row)
+                            <option value="{{ $row['CateCode'] }}" @if($row['CateCode'] == $cate_code) selected="selected" @endif>
+                                {{ $row['ParentCateName']== '' ? $row['CateName'] : $row['ParentCateName'].' > '.$row['CateName'] }}</option>
+                        @endforeach
+                    </select>
+                    <input type="text" class="form-control input-sm" id="search_value" name="search_value" style="width:400px;">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p class="form-control-static">명칭, 코드 검색 가능</p>
-                </div>
-                <div class="col-md-2 text-right pr-5">
                 </div>
             </div>
             <div class="form-group pt-10 pb-5">

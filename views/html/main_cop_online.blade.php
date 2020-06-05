@@ -81,7 +81,7 @@
     .cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
     .cop .preview .pvslider li a {display:block; height:225px;} 
     .cop .preview .pvslider:after {content: ""; display: block; clear:both}
-    .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+    .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
     .cop .preview .previewBox p.leftBtn {left:-22px}
     .cop .preview .previewBox p.rightBtn {right:-22px}
 </style>
@@ -181,60 +181,60 @@
             <div class="will-nTit bd-none">경찰합격 <span class="cop-color">전문교수진</span></div>
             <ul class="onProfBox">
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_01.jpg" usemap="#MapProp01" title="배너명" border="0">
+                    <map name="MapProp01">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론 장정훈">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_02.jpg" usemap="#MapProp02" title="배너명" border="0">
+                    <map name="MapProp02">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_03.jpg" usemap="#MapProp03" title="배너명" border="0">
+                    <map name="MapProp03">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_04.jpg" usemap="#MapProp04" title="배너명" border="0">
+                    <map name="MapProp04">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_05.jpg" usemap="#MapProp05" title="배너명" border="0">
+                    <map name="MapProp05">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
-                </li>                                        
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_06.jpg" usemap="#MapProp06" title="배너명" border="0">
+                    <map name="MapProp06">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>                                       
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_07.jpg" usemap="#MapProp07" title="배너명" border="0">
+                    <map name="MapProp07">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
-                    <div class="onProfBtns">
-                        <div><a href="#none">맛보기 영상</a></div>
-                        <div><a href="#none">베스트 강좌</a></div>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_08.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
             </ul>
         </div>

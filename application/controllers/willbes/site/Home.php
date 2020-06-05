@@ -638,4 +638,51 @@ class Home extends \app\controllers\FrontController
     {
         return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
     }
+
+
+    /**
+     * 사이트 메인
+     */
+    public function indexTest()
+    {
+        // 모바일 리다이렉트
+        $this->_redirectMobile();
+
+        $cate_code = get_var($this->_cate_code, config_app('DefCateCode'));
+        $arr_campus = [];
+
+        // view file name
+        if (APP_DEVICE == 'pc') {
+            // PC
+            if ($this->_is_pass_site === true) {
+                $_view_path = $this->_site_code;
+
+                // 캠퍼스 코드
+                if (config_app('CampusCcdArr') != 'N') {
+                    $arr_campus = array_map(function($var) {
+                        $tmp_arr = explode(':', $var);
+                        return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+                    }, explode(',', config_app('CampusCcdArr')));
+                }
+            } else {
+                if (empty($this->_cate_code) === true) {
+                    // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                    redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                }
+
+                $_view_path = $this->_site_code . '_' . $cate_code;
+            }
+        } else {
+            // 모바일, APP
+            $_view_path = $this->_site_code;
+        }
+
+        // get data
+        $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
+        $this->load->view('site/_viewTest/main_'. $_view_path, [
+            'data' => $data,
+            'cate_code' => $cate_code,
+            'is_site_home' => true
+        ]);
+    }
 }

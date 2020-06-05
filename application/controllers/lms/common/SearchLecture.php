@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLecture extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','product/on/lecture','product/base/course','product/base/subject');
+    protected $models = array('sys/code','product/on/lecture','product/base/course','product/base/subject','sys/category');
     protected $helpers = array();
 
     public function __construct()
@@ -16,6 +16,18 @@ class SearchLecture extends \app\controllers\BaseController
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['618','648']);
 
+        $arr_condition = [
+            'EQ' => [
+                'S.SiteCode' => $this->_req('site_code'),
+                'C.CateDepth' => $this->_req('cate_depth'),
+                'C.IsUse' => $this->_req('is_use'),
+            ],
+            'IN' => ['S.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
+        ];
+
+        //카테고리 목록 추출
+        $cate_list = $this->categoryModel->listSearchCategory(false, $arr_condition, null, null, ['C.OrderNum' => 'ASC']);
+
         $this->load->view('common/search_lecture',[
             'site_code' => $this->_req('site_code')
             ,'LearnPatternCcd' => $this->_req('LearnPatternCcd')
@@ -26,6 +38,7 @@ class SearchLecture extends \app\controllers\BaseController
             ,'arr_course' => $this->courseModel->getCourseArray()
             ,'Sales_ccd' => $codes['618']
             ,'cate_code' => $this->_req('cate_code')
+            ,'cate_list' => $cate_list
         ]);
     }
 

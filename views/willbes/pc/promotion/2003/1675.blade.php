@@ -22,23 +22,24 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .evttop_banner {background:#FDEADB;}
-
         .wb_top_tab {background:#fff;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
         .tabContaier li {display:inline; float:left; width:50%}
         .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px; background:#f4f4f4; 
-            border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
+                        border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;}
+        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;height:110px;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
-        .evttop {background:#020015 url(https://static.willbes.net/public/images/promotion/2020/06/1676_top_bg.jpg) no-repeat center top; }
+
+        .evttop_banner {background:#FDEADB;}
+
+        .evttop {background:#505a7e url(https://static.willbes.net/public/images/promotion/2020/06/1675_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
 
@@ -67,7 +68,7 @@
         .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}               
 	
 	    /*유의사항*/
-		.wb_ctsInfo {background:#2b2b2b; padding:100px 0; margin-top:50px}  
+		.wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
         .wb_ctsInfo div {width:980px; margin:0 auto; color:#fff; width:900px; display:block; border:1px solid #aaa; padding:80px; line-height:1.5; font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; }
         .wb_ctsInfo div h3 {font-size:28px !important; letter-spacing:-1px; margin-bottom:30px; color:#fff;}        
         .wb_ctsInfo ul li .big {font-size:15px; font-weight:bold;}
@@ -78,113 +79,155 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
-            <map name="Map1676_sky">
-                <area shape="rect" coords="6,116,152,194" href="#youtube_watch" />
-                <area shape="rect" coords="4,199,150,272" href="#detail" />
-                <area shape="rect" coords="4,279,149,355" href="#evt1" />
-                <area shape="rect" coords="-1,359,149,437" href="#evt3" />
-                <area shape="rect" coords="1,443,147,523" href="#evt3" />
-            </map>           
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_sky.png" usemap="#Map1675sky" title="아침 똑똑 영어 스카이 베너" border="0" >
+            <map name="Map1675sky" id="Map1675sky">
+                <area shape="rect" coords="3,114,154,190" href="#youtube_watch" />
+                <area shape="rect" coords="4,199,154,271" href="#detail" />
+                <area shape="rect" coords="5,280,151,352" href="#evt1" />
+                <area shape="rect" coords="5,360,149,438" href="#evt3" />
+                <area shape="rect" coords="4,444,149,522" href="#evt4" />          
         </div>
-        
+
+        {{--     
+        <div class="evtCtnsBox evttop_banner" >     
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
+            <map name="Map1588banner" id="Map1588banner">
+                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
+            </map>             
+        </div>
+        --}}               
+
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
                 <ul class="NGEB">
                     <li>
-                        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1675">더켠의 아침 똑똑 영어<br>
-                        <span class="time">매일 아침 07:30AM~08:00AM</span></a>
+                        <a class="active" href="#none">더켠의 아침 똑똑 영어<br><span class="time">매일 아침 07:30AM~08:00AM</span></a>
                     </li>
                     <li>
-                        <a href="#none" class="active">더켠의 반반한 밤<br>
-                        <span class="time">매일 밤 21:00PM~22:00PM</span></a>
+                        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676">더켠의 반반한 밤<br><span class="time">매일 밤 21:00PM~22:00PM</span></a>
                     </li>
                 </ul>
             </div>
         </div>
         
         <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_top.jpg"  title="더켠의 아침 똑똑 영어">            
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01.jpg" title="마무리짓는 1시간"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_01.jpg" title="아침 30분"> 
             <div class="box_book">
                 <div class="slice_area">
                     <ul class="slidesDay">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_monday.png" alt="월요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_tuesday.png" alt="화요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_wednesday.png" alt="수요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_thursday.png" alt="목요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_friday.png" alt="금요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_saturday.png" alt="토요일"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_sunday.png" alt="일요일"/></li>         
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_monday.png" alt="월요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_tuesday.png" alt="화요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_wednesday.png" alt="수요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_thursday.png" alt="목요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_friday.png" alt="금요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_saturday.png" alt="토요일"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_01_sunday.png" alt="일요일"/></li>         
                     </ul> 
                 </div>        
             </div>            
         </div>              
 
         <div class="evtCtnsBox evt01s">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01s.jpg" title="더켠읜 반반한 모의고사">    
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_01s.jpg" title="똑똑한 논리독해&어휘정리"> 
+            {{--   
             <map name="Map1588a" id="Map1588a">
                 <area shape="rect" coords="359,844,751,907" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?view=0&sort=dd&shelf_id=7" target="_blank" />
             </map>
+            --}}
         </div>     
 
         <div class="evtCtnsBox evt01s_youtube">  
-            <iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
+            <iframe src="https://www.youtube.com/embed/sddiacfp9vQ" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
         </div>
 
         <div class="evtCtnsBox evt01ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01ss.jpg" title="공시 영어의 지존">        
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_01ss.jpg" title="공시 영어의 지존">        
         </div>
         
         <div class="evtCtnsBox evt02" id="pairing">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_april.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02_plan.jpg" /></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_april.jpg" /></li>--}}
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02_june.jpg" /></li>
                 </ul>
                 {{--
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_right.png"></a></p>
                 --}}
             </div>        
         </div>           
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
-            <map name="Map1676b">
-                <area shape="rect" coords="370,976,751,1036" href="#to_go" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <map name="evt1Map" id="evt1Map">
+                <area shape="rect" coords="362,952,757,1018" href="#to_go" />
             </map>
         </div>
 
+        {{--
+        <div class="evtCtnsBox evt03c">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
+            <map name="Map1588c" id="Map1588c">
+                <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
+            </map>
+        </div>
+        --}}
+
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
-            <map name="Map1676ss">
-                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" />
-                <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" />
-                <area shape="rect" coords="757,926,896,1044" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank" />
-            </map>       
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
+            <map name="evt3Map" id="evt3Map">
+                <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" onfocus='this.blur()'  />
+            </map>
         </div>
 
+        <div class="evtCtnsBox evt03ss2">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
+            <map name="evt4Map" id="evt4Map">
+                <area shape="rect" coords="772,242,928,379" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" onfocus='this.blur()' />
+            </map>
+        </div>
+
+        {{-- TODO --}}
+        {{-- 다시보기 구매 --}}
+        {{--
+        <div class="evtCtnsBox evt03ss">
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03ss.jpg" usemap="#Map1588d" title="지금 바로 구매하기" border="0">
+            <map name="Map1588d" id="Map1588d">
+                <area shape="rect" coords="378,332,741,382" href="#none;" />
+            </map>
+        </div>
+        --}}
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_04.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
-            <map name="Map1676e" id="Map1588e">
-                <area shape="rect" coords="123,27,396,126" href="#pairing" />
-                <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" />
-            </map>                  
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_04.jpg" usemap="#Map1588f"  title="라이브 티비" border="0">
+            <map name="Map1588f" id="Map1588f">
+                <area shape="rect" coords="90,10,549,110" href="#pairing" />
+                <area shape="rect" coords="568,12,1027,110" href="#none;" />
+            </map>
+            {{--
+            <map name="Map1588e" id="Map1588e">
+                <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
+                <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus='this.blur()' />
+                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" onfocus='this.blur()' />
+            </map>      
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
                 @else
                     @include('willbes.pc.promotion.live_video_partial')
                 @endif
-            </div>                 
+            </div>
+            --}}                 
         </div>
 
         {{-- 출석체크 추가신청 form --}}
@@ -205,18 +248,18 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt05" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_05.jpg" title="출석 횟수">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_05.jpg" title="출석 횟수">
             <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
             @php $apply_check = false; @endphp
             @foreach($arr_base['add_apply_data'] as $row)
                 @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
                     @if($row['MemberLoginCnt'] == '0')
                     <a href="javascript:fn_add_apply_submit();">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_stamp.png" title="출석전" class="checkoff">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
                     </a>
                     @else
                     <a href="javascript:alert('이미 출석체크 하셨습니다.');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_stamp_check.png" title="출석후" class="checkon">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp_check.png" title="출석후" class="checkon">
                     </a>
                     @endif
                     @php $apply_check = true; @endphp
@@ -225,7 +268,7 @@
             @endforeach
             @if($apply_check === false)
                 <a href="javascript:alert('출석체크 기간이 아닙니다.');">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_stamp.png" title="출석전" class="checkoff">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_stamp.png" title="출석전" class="checkoff">
                 </a>
             @endif
         </div>
@@ -240,15 +283,14 @@
                 <h3 class="NGEB">- 유의사항 - </h3>
                 <ul>
 				    <li>
-                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 본 페이지에 접속 후 수강하시면 됩니다.</span><br> 
-						<span class="txt_point">(*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</span>
+                        <span class="big">더켠의 아침 똑똑 영어는 동영상 촬영분을 일정에 맞추어 정기 송출해드리는<br>방송이오니, 본 페이지에 접속 후 방송 시간에 맞추어 페이지 새로고침 하시어 수강하시면 됩니다. </span>
 					</li>
                     <li>                    
                         <span class="big">윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</span>
                     </li>       
                     <li>                    
-                        <span class="big">더켠의 반반한 모의고사 과정 진행 안내</span><br>
-						&nbsp;- 매주 월~금 오후 9~10시 : 더켠의 반반한 모의고사+해설 정규 방송<br>    
+                        <span class="big">더켠의 아침 똑똑 영어 과정 진행 안내 (온라인 모의고사는 반반한 밤과 동일한 모의고사로 통합하여 진행됩니다.)</span><br>
+						&nbsp;- 매주 월~금 오전 7시30분~8시 : 더켠의 아침 똑똑 영어 정규 방송<br>    
 						&nbsp;- 매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 모의고사 신청 접수 마감)<br>
 						&nbsp;- 매월 홀수 주 토~일 : 무료 온라인 모의고사 응시 기간<br>
 						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
@@ -260,8 +302,8 @@
 					</li>
                     <li>                    
                         <span class="big">강의 자료 제공 일정 안내</span><br>
-                        &nbsp;- 방송 당일 오후 12시~오후 22시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
-						&nbsp;- 방송 당일 오후 22시~자정 : 문제+해설+스터디 자료<br>
+                        &nbsp;- 방송 전일 오후 5시~오전 8시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+						&nbsp;- 방송 전일 오전 8시~오후 12시 : 문제+해설자료<br>
 					</li>     
                     <li>                   
                         <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br>
@@ -270,11 +312,10 @@
 					</li>   
                     <li>                    
                         <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 6월 8일(월)부터 7월 3일(금)까지 총 20회 진행됩니다. (공휴일 제외)<br>
-						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (6/8(월), 6/22(월))의 경우<br>
-						&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 6월 15일(월)부터 7월 3일(금)까지 총 15회 진행됩니다. (공휴일 제외)<br>
+						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오전 7시 30분~8시 사이만 인정되며, 방송이 종료되지 않더라도<br>&nbsp;&nbsp;&nbsp;해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 당첨자 안내 공지는 6월 9일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
+						&nbsp;- 당첨자 안내 공지는 7월 7일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 					</li>
                     <li>                    
                         <span class="big">돌발퀴즈 이벤트 관련</span><br>
@@ -378,6 +419,7 @@
             if(apply_msg == '') apply_msg = ret_msg;
             return apply_msg;
         }
+
     </script>
 
 @stop

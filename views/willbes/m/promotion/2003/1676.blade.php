@@ -7,6 +7,14 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox ul:after {content:""; display:block; clear:both}
 
+    .tabBox li {display:inline; float:left; width:50%}
+    .tabBox a {display:block; padding:15px 0; line-height:1.2; text-align:center; font-size:16px; background:#f4f4f4; 
+    border:1px solid #e6e6e6; color:#b5b5b5;}     
+    .tabBox span {display:block;  font-size:20px;}
+    .tabBox a:hover,
+    .tabBox a.active {background:#000; border:1px solid #000; color:#fff;}
+    .tabBox:after {content:''; display:block; clear:both;}
+
     .evtTop {position:relative}
 
     .evtMenu {background:#f3f3f3; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
@@ -94,15 +102,7 @@
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
 
 
-    .tabBox li {display:inline; float:left; width:50%}
-    .tabBox a {display:block; padding:15px 0; line-height:1.2; text-align:center; font-size:20px; background:#f4f4f4; 
-    border:1px solid #e6e6e6; color:#b5b5b5;}     
-    .tabBox span {font-size:16px; display:block;}
-
-    .tabBox a:hover,
-    .tabBox a.active {background:#000; border:1px solid #000; color:#fff;}
-    .tabBox ul:after {content:''; display:block; clear:both;}
-    .tabBox {margin-top:20px}
+    
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
@@ -126,17 +126,17 @@
 
 <div id="Container" class="Container NSK c_both">       
     <div class="evtCtnsBox tabBox" >
-        <ul class="NSK-Black">
+        <ul>
             <li>
                 <a href="/m/promotion/index/cate/3019/code/1675">
-                    더켠의<br> 아침 똑똑 영어
-                    <span>매일 아침<br>07:30AM~08:00AM</span>
+                    <span class="NSK-Black">더켠의<br> 아침 똑똑 영어</span>
+                    매일 아침<br>07:30AM~08:00AM
                 </a>
             </li>
             <li>
                 <a class="active" href="#none">
-                    더켠의<br>반반한 밤
-                    <span>매일 밤<br>21:00PM~22:00PM</span>
+                    <span class="NSK-Black"> 더켠의<br>반반한 밤</span>
+                    매일 밤<br>21:00PM~22:00PM
                 </a>
             </li>
         </ul>

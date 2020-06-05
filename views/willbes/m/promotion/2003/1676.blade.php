@@ -148,9 +148,9 @@
 
     <div class="evtMenu">
         <ul class="tabs">
-            <li><a href="#tab01" data-tab="tab01" class="top-tab">반밤 모의고사</a></li>
+            <li><a href="#tab01" data-tab="tab01" class="top-tab">반밤한 밤이란?</a></li>
             <li><a href="#tab02" data-tab="tab02" class="top-tab">반밤 신청하기</a></li>
-            <li><a href="#tab03" data-tab="tab03" class="top-tab">반밤 라이브</a></li>
+            <li><a href="#tab03" data-tab="tab03" class="top-tab">반밤 방송보기</a></li>
             <li><a href="#tab04" data-tab="tab04" class="top-tab">반밤 유의사항</a></li>
         </ul>
     </div> 

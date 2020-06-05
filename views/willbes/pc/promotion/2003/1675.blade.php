@@ -101,10 +101,10 @@
             <div class="tabContaier">
                 <ul class="NGEB">
                     <li>
-                        <a class="active" href="https://pass.local.willbes.net/promotion/index/cate/3019/code/1675">더켠의 아침 똑똑 영어<br><span class="time">매일 아침 07:30AM~08:00AM</span></a>
+                        <a class="active" href="#none">더켠의 아침 똑똑 영어<br><span class="time">매일 아침 07:30AM~08:00AM</span></a>
                     </li>
                     <li>
-                        <a href="https://pass.local.willbes.net/promotion/index/cate/3019/code/1676">더켠의 반반한 밤<br><span class="time">매일 밤 21:00PM~22:00PM</span></a>
+                        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676">더켠의 반반한 밤<br><span class="time">매일 밤 21:00PM~22:00PM</span></a>
                     </li>
                 </ul>
             </div>

@@ -12202,7 +12202,7 @@ table.acadlecInfoPackageTable tr.Top td {
 /*****************************************고등고시, 자격증 학원 오시는 길***********************************************/
 .Section4_hl {
     width: 1120px !important;
-    margin: 0 auto !important;
+    margin: auto;
 }
 .Section4_hl .noticeTabs {
     width: 100% !important;

@@ -329,7 +329,7 @@
                         </li>
                         <li>
                             <strong>경찰간부</strong>
-                            <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
+                            <a href="{{ front_app_url('/home/index', 'spo', true) }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>교원임용</strong>
@@ -337,13 +337,13 @@
                         </li>
                         <li>
                             <strong>고등고시</strong>
-                            <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}">신림(한림법학원)</a>
+                            <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>전문자격</strong>
-                            <a href="{{ front_app_url('/home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">감평/노무 - 신림(한림법학원)</a><span>|</span>
                             <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                            <a href="{{ front_app_url('/home/index/cate/309004', 'job') }}">변리사-강남</a>
+                            <a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사-강남</a>
                         </li>
                     </ul>
                 </div>

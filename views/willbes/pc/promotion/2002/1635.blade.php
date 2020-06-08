@@ -22,7 +22,7 @@
 .sky li{margin-bottom:10px;}
 
 .evt_top {background:#000308 url(https://static.willbes.net/public/images/promotion/2020/05/1635_top_bg.jpg) no-repeat center top;position:relative;}
-.evt_top span {position:absolute; bottom:111.5px; left:50%; margin-left:-193px; z-index:10}
+.evt_top span {position:absolute; bottom:110px; left:42%; margin-left:-193px; z-index:10}
 .evt_top .check{position:absolute;width: 1000px;left:62%;top:900px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;
               letter-spacing:-1px;}
 .evt_top .check label{color:#fff;font-size:16px;}
@@ -53,28 +53,29 @@
         <div class="evtCtnsBox evt_top">           
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_top.jpg" alt="해양경찰 봉투모의고사" >            
             <span>
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_top_btn.gif">                
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1635_top_btn.gif">                
             </span>    
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_01.jpg" alt="5회분">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1635_01.jpg" alt="5회분">
         </div> 
 
          <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_02.jpg" alt="경쟁자보다 빠른 합격">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1635_02.jpg" alt="경쟁자보다 빠른 합격">
         </div>   
 
          <div class="evtCtnsBox evt03" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_03.jpg" alt="봉투모의고사 신청하기" usemap="#Map1635a" border="0">
-            <map name="Map1635a" id="Map1635a">
-                <area shape="rect" coords="249,671,446,725" href="https://police.willbes.net/pass/offLecture/show/cate/3016/prod-code/164663" target="_blank" />
-                <area shape="rect" coords="674,670,870,723" href="https://police.willbes.net/pass/offLecture/show/cate/3016/prod-code/164323" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1635_03.jpg" alt="봉투모의고사 신청하기" usemap="#Map" border="0">
+            <map name="Map" id="Map">
+                <area shape="rect" coords="99,679,277,726" href="https://police.willbes.net/pass/offLecture/show/cate/3016/prod-code/165624" target="_blank" />
+                <area shape="rect" coords="473,679,650,728" href="https://police.willbes.net/pass/offLecture/show/cate/3016/prod-code/165622" target="_blank" />
+                <area shape="rect" coords="848,679,1025,728" href="https://police.willbes.net/pass/offLecture/show/cate/3016/prod-code/165621" target="_blank" />
             </map>
         </div>   
 
          <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1635_04.jpg" alt="유의사항">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1635_04.jpg" alt="유의사항">
         </div>      
        
     </div>

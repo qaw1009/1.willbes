@@ -119,6 +119,71 @@
         </div>
     </div>
 
+    <div class="Section mt50">
+        <div class="widthAuto"> 
+            <div class="noticeTabs">
+                <div class="will-listTit">학원 공지사항</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="noticeTabs">
+                <div class="will-listTit">동영상 공지사항</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="noticeTabs mr-zero">
+                <div class="will-listTit">수험정보</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section mt30">
+        <div class="widthAuto"> 
+            <ul class="goMenu">
+                <li><a href="#none">학원수강신청<span>|</span></a></li>
+                <li><a href="#none">학원보강<span>|</span></a></li>
+                <li><a href="#none">강의실배정표<span>|</span></a></li>
+                <li><a href="#none">신규동영상안내<span>|</span></a></li>
+                <li><a href="#none">무료특강<span>|</span></a></li>
+                <li><a href="#none">강의자료실</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="Section lecBanner mt50">
         <div class="widthAuto">
             <div class="copyTit NSK-Thin mb50">
@@ -136,50 +201,6 @@
         </div>
     </div>
     
-    {{--
-    <div class="Section Section1">
-        <div class="widthAuto">
-            <div class="copyTit NSK-Thin mb50">
-                최단기 합격을 위한<br />
-                <strong class="NSK-Black">수강생을 위한 <span class="tx-color">맞춤형 추천 강좌</span></strong>
-            </div>
-            <ul class="PBcts">
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    --}}
 
     {{--이달의 강의 / 강의맛보기 --}}
     <div class="Section Section1">
@@ -320,72 +341,8 @@
         </div>
     </div>
 
-    <div class="Section mt90">
-        <div class="widthAuto"> 
-            <div class="noticeTabs">
-                <div class="will-listTit">학원 공지사항</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <div class="noticeTabs">
-                <div class="will-listTit">동영상 공지사항</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="noticeTabs mr-zero">
-                <div class="will-listTit">수험정보</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto"> 
-            <ul class="goMenu">
-                <li><a href="#none">학원수강신청<span>|</span></a></li>
-                <li><a href="#none">학원보강<span>|</span></a></li>
-                <li><a href="#none">강의실배정표<span>|</span></a></li>
-                <li><a href="#none">신규동영상안내<span>|</span></a></li>
-                <li><a href="#none">무료특강<span>|</span></a></li>
-                <li><a href="#none">강의자료실</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section Section4_hl mb50">
+    <div class="Section Section4_hl mt50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
             <div class="noticeTabs campus c_both">
@@ -460,7 +417,7 @@
         </div>
     </div>
 
-    <div class="Section NSK mt90 mb90">
+    <div class="Section mt90 mb90 c_both">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>

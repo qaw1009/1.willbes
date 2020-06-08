@@ -32,7 +32,7 @@
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;height:110px;}
+        .tabContaier a.active {background:#8AC8DD; border:1px solid #8AC8DD; color:#fff;height:110px;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 

@@ -34,7 +34,7 @@
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;}
+        .tabContaier a.active {background:#435AA6; border:1px solid #435AA6; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
@@ -88,7 +88,6 @@
             </map>           
         </div>
         
-        {{--
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
                 <ul class="NGEB">
@@ -103,7 +102,6 @@
                 </ul>
             </div>
         </div>
-        --}}
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

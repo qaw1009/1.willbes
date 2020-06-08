@@ -237,7 +237,31 @@
         <!-- HotIssue //-->
 
         <div class="Section Section5 mt50">
-            @include('willbes.pc.site.main_partial.hot_pick_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
+            <div class="widthAuto">
+                <div class="sliderPick nSlider pick">
+                    <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
+                    <div class="pickBox pick1">
+                        {!! banner_html(element('메인_hotpick1', $data['arr_main_banner'])) !!}
+                    </div>
+                    <div class="pickBox pick2">
+                        {!! banner_html(element('메인_hotpick2', $data['arr_main_banner'])) !!}
+                    </div>
+                </div>
+                <div class="sliderEvt nSlider pick">
+                    <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 무료특강</div>
+                    <ul>
+                        {!! banner_html(element('메인_hotpick3', $data['arr_main_banner'])) !!}
+                        {{--
+                        <li>
+                            <div class="sliderNum">
+                                <div><img src="{{ img_url('cop/event/evt_190104.jpg') }}"></div>
+                                <div><img src="{{ img_url('cop/event/evt_190105.jpg') }}"></div>
+                            </div>
+                        </li>
+                        --}}
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="Section Section5 mt50">

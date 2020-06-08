@@ -22,7 +22,7 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .wb_top_tab {background:#fff;}
+        .wb_top_tab {background:#302840;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}

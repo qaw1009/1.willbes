@@ -453,7 +453,7 @@
             </div>
 
             <div class="evtCtnsBox evt08">
-                <img src="https://static.willbes.net/public/images/promotion/2020/0/1646_08.jpg" title="면접캠프 일정안내"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_08.jpg" title="면접캠프 일정안내"/>
             </div>
 
         </form>

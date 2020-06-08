@@ -30,7 +30,7 @@ class BannerFModel extends WB_Model
 
         $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.PopWidth, B.PopHeight, B.BannerFullPath, B.BannerImgName, B.Desc
             , BD.DispName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime
-            , (SELECT CONCAT("[", GROUP_CONCAT(JSON_OBJECT("ImgType", `ImgType`, "ImgArea", `ImgArea`, "LinkUrl", LinkUrl)), "]")
+            , (SELECT CONCAT("[", GROUP_CONCAT(JSON_OBJECT("ImgType", ImgType, "ImgArea", ImgArea, "LinkUrl", LinkUrl, "LinkUrlType", LinkUrlType)), "]")
                 FROM '. $this->_table['banner_imagemap'] . '
                 WHERE BIdx = B.BIdx AND IsUse = "Y" AND IsStatus = "Y" AND ImgType != "default"
             ) AS BannerImgMapData

@@ -120,7 +120,7 @@ class BannerRegistModel extends WB_Model
      */
     public function listBannerImageMap($b_idx)
     {
-        $column = "BiIdx, ImgArea, ImgType, LinkUrl";
+        $column = "BiIdx, ImgArea, ImgType, LinkUrl, LinkUrlType";
         $from = "
             from {$this->_table['banner_imageMap']}
         ";
@@ -201,12 +201,14 @@ class BannerRegistModel extends WB_Model
             $image_map_types = element('image_map_type', $input);
             $image_map_areas = element('image_map_area', $input);
             $image_map_link_urls = element('image_map_link_url', $input);
+            $image_map_link_url_types = element('image_map_link_url_type', $input);
             if (count($image_map_types) >= 0) {
                 foreach ($image_map_types as $key => $val) {
                     $imageMap_data['BIdx'] = $b_idx;
                     $imageMap_data['ImgType'] = $val;
                     $imageMap_data['ImgArea'] = $image_map_areas[$key];
                     $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
+                    $imageMap_data['LinkUrlType'] = $image_map_link_url_types[$key];
                     $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $imageMap_data['RegIp'] = $this->input->ip_address();
                     if ($this->_addBannerImageMap($imageMap_data) === false) {
@@ -312,6 +314,7 @@ class BannerRegistModel extends WB_Model
             $image_map_types = element('image_map_type', $input);
             $image_map_areas = element('image_map_area', $input);
             $image_map_link_urls = element('image_map_link_url', $input);
+            $image_map_link_url_types = element('image_map_link_url_type', $input);
             if (count($image_map_types) >= 0) {
                 $upd_imageMap_data['BIdx'] = $b_idx;
                 $this->_modifyBannerImageMap($upd_imageMap_data);
@@ -321,6 +324,7 @@ class BannerRegistModel extends WB_Model
                     $imageMap_data['ImgType'] = $val;
                     $imageMap_data['ImgArea'] = $image_map_areas[$key];
                     $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
+                    $imageMap_data['LinkUrlType'] = $image_map_link_url_types[$key];
                     $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $imageMap_data['RegIp'] = $this->input->ip_address();
                     if ($this->_addBannerImageMap($imageMap_data) === false) {

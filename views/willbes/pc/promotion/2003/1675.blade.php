@@ -22,17 +22,16 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .wb_top_tab {background:#fff;}
+        .wb_top_tab {background:#DEEAF6;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
         .tabContaier li {display:inline; float:left; width:50%}
-        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px; background:#f4f4f4; 
-                        border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
+        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px;color:#7B7F82;} 
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;height:110px;}
+        .tabContaier a.active {background:#ED7D31; border:1px solid #ED7D31; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 

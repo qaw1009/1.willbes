@@ -24,17 +24,16 @@
 
         .evttop_banner {background:#FDEADB;}
 
-        .wb_top_tab {background:#fff;}
+        .wb_top_tab {background:#FBE5D7;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
         .tabContaier li {display:inline; float:left; width:50%}
-        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px; background:#f4f4f4; 
-            border:1px solid #e6e6e6; color:#b5b5b5; margin-right:10px} 
+        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px;color:#7B7F82;} 
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#000; border:1px solid #000; color:#fff;}
+        .tabContaier a.active {background:#435AA6; border:1px solid #435AA6; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
@@ -88,7 +87,6 @@
             </map>           
         </div>
         
-        {{--
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
                 <ul class="NGEB">
@@ -103,7 +101,6 @@
                 </ul>
             </div>
         </div>
-        --}}
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

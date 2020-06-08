@@ -318,7 +318,7 @@
                         </li>
                         <li>
                             <strong>경찰</strong>
-                            <a href="{{ front_app_url('/campus/show/code/605001', 'police', true) }}" target="_blank">노량진</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a><span>|</span>
                             <a href="{{ front_app_url('/campus/show/code/605005', 'police', true) }}" target="_blank">인천</a><span>|</span>
                             <a href="{{ front_app_url('/campus/show/code/605004', 'police', true) }}" target="_blank">대구</a><span>|</span>
                             <a href="{{ front_app_url('/campus/show/code/605003', 'police', true) }}" target="_blank">부산</a><span>|</span>

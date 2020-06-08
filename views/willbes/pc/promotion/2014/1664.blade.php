@@ -68,6 +68,7 @@
             <input type="hidden" name="target_params[]" value="register_data1"/>
             <input type="hidden" name="target_param_names[]" value="한줄기대평"/>
             <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="register_chk_no_member" value="Y"/>  {{-- MemIdx 제외하고 등록중복체크 --}}
 
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_top.jpg" alt="" >

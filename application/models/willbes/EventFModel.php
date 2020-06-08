@@ -394,7 +394,8 @@ class EventFModel extends WB_Model
                     $etc_value = substr($etc_value, 0, -1);
                 }
 
-                if(empty($this->session->userdata('mem_idx')) === true) {
+                // register_chk_no_member 값이 Y일 경우, 로그인이어도 비로그인과 동일하게 이름/전화번호/이메일로 등록 체크.
+                if(empty($this->session->userdata('mem_idx')) === true || (empty($inputData['register_chk_no_member']) === false && $inputData['register_chk_no_member'] == 'Y')) {
                     $arr_condition = [
                         'EQ' => [
                             'A.ErIdx' => $key,
@@ -411,6 +412,11 @@ class EventFModel extends WB_Model
                         'UserMailEnc' => $register_email,
                         'EtcValue' => $etc_value
                     ];
+
+                    if(empty($inputData['register_chk_no_member']) === false && $inputData['register_chk_no_member'] == 'Y') {
+                        // 등록 중복체크가 정상적으로 넘어갔을 경우, 신청 등록에서 memIdx가 등록 되어야함.
+                        $input_register_data['MemIdx'] = $this->session->userdata('mem_idx');
+                    }
                 } else {
                     $arr_condition = [
                         'EQ' => [

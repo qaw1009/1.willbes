@@ -21,6 +21,9 @@
 
         /************************************************************/     
 
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+
         .evtTop {background:#eee7e0 url("https://static.willbes.net/public/images/promotion/2020/05/1577_top_bg.jpg") no-repeat center top}          
         
         .evt01,.evt02,.evt03 {background:#fff;}      
@@ -60,7 +63,13 @@
         .tab02:after {content:""; display:block; clear:both}
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">           
+    <div class="p_re evtContent NGR" id="evtContainer">    
+
+        <div class="skybanner">
+            <ul>          
+                <li><a href="#none" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1577_sky.png"  title="기미진 기특한 국어" /></a></li>
+            </ul>
+        </div>       
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1577_top.gif" title="불꽃소방"/>

@@ -1,44 +1,21 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <style>
+    <link href="/public/css/willbes/style_main_v3.css?ver={{time()}}" rel="stylesheet">
+    <style type="text/css">
         .favor-cate-on {background: #0396cf;color: #fff !important;}
     </style>
-
-    <!-- Container -->
-    <div id="Container" class="Container mainV2 NG c_both">
-        <div class="Section gateSearch">
-            <form id="areaSearch_form" name="areaSearch_form" method="GET">
-                <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}">
-                <input type="text" name="" class="d_none">
-                <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
-                <input type="hidden" name="searchfull_order" id="searchfull_order" value="">
-                <label for="areaSearch_text"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>
-            </form>
-            {{--
-            <input type="search" id="search" name="" value="" placeholder="검색어를 입력하세요." />
-            <label for="search"><button title="검색">검색</button></label>
-            --}}
-        </div>
-
-        <div class="Section Area1 widthAuto">
+    <div id="Container" class="Container mainV3 NG c_both">
+        <div class="Section Area1">
+            {{-- 선택된 관심분야 영역 --}}
             <ul id="favor_cate_view" class="addList">
-                <li><a href="javascript:initFavorCatePop();" class="add">+</a></li>
-                {{--
-                <li><a href="#none" onclick="openWin('addArea')" class="add">+</a></li>
-                <li><a href="#none">일반경찰</a></li>
-                <li><a href="#none">9급공무원</a></li>
-                <li><a href="#none">기술직</a></li>
-                <li><a href="#none">법원직</a></li>
-                <li><a href="#none">경찰간부</a></li>
-                <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>
-                <li><a href="#none" onclick="openWin('addArea')" class="blank">+</a></li>
-                --}}
+                <li></li>
             </ul>
-            {{--추가팝업--}}
+            <span><a href="#none" onclick="initFavorCatePop();" class="add">관심분야 설정</a></span>
+            {{--//추가팝업--}}
             <div id="addArea" class="willbes-Layer-Black gate-add-popup">
                 <div class="willbes-Layer-CartBox">
-                    <a class="closeBtn" href="javascript:closeWin('addArea');">
+                    <a class="closeBtn" href="#none" onclick="closeWin('addArea')">
                         <img src="{{ img_url('cart/close_cart.png') }}">
                     </a>
                     <div class="Layer-Tit NG">나의 관심분야를 선택해 주세요!</div>
@@ -142,27 +119,27 @@
                         </div>
                     </div>
                     <div class="addBtn">
-                        <a href="javascript:saveFavorCatePop();">관심분야 추가하기</a>
+                        <a href="#none" onclick="saveFavorCatePop();">관심분야 추가하기</a>
                     </div>
                 </div>
             </div>
-            {{--//추가팝업--}}
+            {{--추가팝업//--}}
         </div>
 
-        <div class="Section mt40">
-            <div class="widthAuto">
-                <div class="bar-banner">
-                    <div>
-                        {!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}
-                        {{--
-                        <div><a href="none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/main_900x90_01.jpg"></a></div>
-                        <div><a href="none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/main_900x90_02.jpg"></a></div>
-                        --}}
-                    </div>
-                </div>
+        {{-- 검색 영역 --}}
+        <div class="Section gateSearch">
+            <img src="https://static.willbes.net/public/images/promotion/main/gate_v3_01.png">
+            <div>
+                <form id="areaSearch_form" name="areaSearch_form" method="GET">
+                    <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}"/>
+                    <input type="hidden" name="searchfull_order" id="searchfull_order" value=""/>
+                    <input type="search" name="searchfull_text" id="areaSearch_text" class='areaSearch' data-form="areaSearch_form" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="검색어를 입력하세요." maxlength="100"/>
+                    <label for="search"><button type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form" title="검색">검색</button></label>
+                </form>
             </div>
         </div>
 
+        {{-- 윌비스 전체사이트 링크 --}}
         <div class="Section Area2 mt50">
             <div class="widthAuto">
                 <div class="will-Tit mb-zero">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
@@ -251,36 +228,46 @@
                         </tr>
                         <tr>
                             <th scope="row">N잡/e창업</th>
-                            <td><a href="{{ front_app_url('/home/index/cate/3114', 'njob') }}" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/common/icon_new.png"></a></td>
+                            <td><a href="{{ front_app_url('/home/index/cate/3114', 'njob') }}" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a></td>
                             <th>취업</th>
                             <td><a href="{{ front_app_url('/home/index/cate/3102', 'work') }}" target="_blank">공기업</a></td>
                             <th>학점은행</th>
-                            <td><a href="http://www.willbeslife.net/" target="_blank">학점은행</a></td>
+                            <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">학점은행</a></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
 
-        @if(isset($data['dday']) === true)
-            <div class="Section Area3 mt50" style="list-style: none;">
+        {{-- 메인_서브 배너 --}}
+        <div class="Section Area7">
+            <div class="widthAuto">
+                <div class="bar-banner">
+                    {!! banner('메인_서브1', '', $__cfg['SiteCode'], '0') !!}
+                </div>
+                <div class="bar-banner">
+                    {!! banner('메인_서브2', '', $__cfg['SiteCode'], '0') !!}
+                </div>
+            </div>
+        </div>
+
+        {{-- 시험일정 --}}
+        @if(empty($data['dday']) === false)
+            <div class="Section Area3">
                 <div class="widthAuto">
                     <div class="will-Tit mb-zero">시험일정</div>
                     <ul class="sliderDayList">
-                        <li>
-                            @foreach($data['dday'] as $idx => $row)
-                                @if($idx != 0 && $idx % 4 == 0) </li><li> @endif
+                        @foreach($data['dday'] as $idx => $row)
+                            <li>
                                 <div class="dDayBox">
-                                    <a href="#none">
-                                        <span class="dTit">
-                                            {{ $row['DayMainTitle'] }}
-                                            <div class="w-date">{{ $row['DayDatm'] }}</div>
-                                        </span>
-                                        <span class="dDay tx-color">D{{ $row['DDay'] }}</span>
-                                    </a>
+                                <span class="dTit">
+                                    {{ $row['DayMainTitle'] }}
+                                    <div class="w-date">{{ $row['DayDatm'] }}</div>
+                                </span>
+                                    <span class="dDay">D{{ $row['DDay'] }}</span>
                                 </div>
-                            @endforeach
-                        </li>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -289,35 +276,34 @@
         <div class="Section Area4 mt50">
             <div class="widthAuto">
                 <dl>
+                    {{-- 공지사항 --}}
                     <dt class="NowWillbes">
-                        <div class="will-Tit">윌비스 소식 <a href="https://www.willbes.net/support/notice/index?s_cate_code=&s_campus=&s_keyword=&prof_idx=&subject_idx=&view_type=&page=&s_cate_code_disabled=" target="_blank">+</a></div>
+                        <div class="will-Tit">윌비스 소식 <a href="{{ site_url('/support/notice/index') }}" target="_blank">+ 더보기</a></div>
                         <ul>
-                            @foreach($data['notice'] as $row)
-                                <li>
-                                    <a href="{{site_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">
-                                        <span class="w-tit">{{$row['Title']}}
-                                            @if(date('Y-m-d') == $row['RegDatm']) <span class="w-new">N</span> @endif
-                                        </span>
-                                        <span class="w-date">{{$row['RegDatm']}}</span>
-                                    </a>
-                                </li>
-                            @endforeach
+                            @if(empty($data['notice']) === false)
+                                @foreach($data['notice'] as $row)
+                                    <li>
+                                        <a href="{{ site_url('/support/notice/show?board_idx='.$row['BoardIdx']) }}">
+                                            <span class="w-tit">{{$row['Title']}}
+                                                @if(date('Y-m-d') == $row['RegDatm']) <span class="w-new">N</span> @endif
+                                            </span>
+                                            <span class="w-date">{{$row['RegDatm']}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </dt>
+                    {{-- 메인_미들 배너 --}}
                     <dt class="WhyWillbes">
-                        <div>
-                            <div>{!! banner('메인_미들1', '', $__cfg['SiteCode'], '0') !!}</div>
-                            <div>{!! banner('메인_미들2', '', $__cfg['SiteCode'], '0') !!}</div>
-                            {{--
-                            <div><a href="#none" target="_blank"><img src="{{ img_url('main/banner/bnr_180918.jpg') }}"></a></div>
-                            <div><a href="#none" target="_blank"><img src="{{ img_url('main/banner/bnr_180919.jpg') }}"></a></div>
-                            --}}
-                        </div>
+                        <div>{!! banner('메인_미들1', '', $__cfg['SiteCode'], '0') !!}</div>
+                        <div>{!! banner('메인_미들2', '', $__cfg['SiteCode'], '0') !!}</div>
                     </dt>
                 </dl>
             </div>
         </div>
 
+        {{-- 윌비스 직영학원 --}}
         <div class="Section Area5 mt50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 직영학원</div>
@@ -325,25 +311,25 @@
                     <ul>
                         <li>
                             <strong>공무원</strong>
-                            <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index', 'pass', true) }}" target="_blank">노량진</a><span>|</span>
                             <a href="http://willbesedu.co.kr" target="_blank">인천</a><span>|</span>
-                            <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">대구</a><span>|</span>
-                            <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">부산</a>
+                            <a href="{{ front_app_url('/home/index', 'pass', true) }}" target="_blank">대구</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index', 'pass', true) }}" target="_blank">부산</a>
                         </li>
                         <li>
                             <strong>경찰</strong>
-                            <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a><span>|</span>
+                            <a href="{{ front_app_url('/campus/show/code/605005', 'police', true) }}" target="_blank">인천</a><span>|</span>
+                            <a href="{{ front_app_url('/campus/show/code/605004', 'police', true) }}" target="_blank">대구</a><span>|</span>
+                            <a href="{{ front_app_url('/campus/show/code/605003', 'police', true) }}" target="_blank">부산</a><span>|</span>
+                            <a href="{{ front_app_url('/campus/show/code/605006', 'police', true) }}" target="_blank">광주</a><span>|</span>
+                            <a href="{{ front_app_url('/campus/show/code/605009', 'police', true) }}" target="_blank">제주</a><span>|</span>
                             <a href="https://blog.naver.com/als9946" target="_blank">전북</a><span>|</span>
-                            <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
+                            <a href="{{ front_app_url('/campus/show/code/605010', 'police', true) }}" target="_blank">경기 광주(기숙형)</a>
                         </li>
                         <li>
                             <strong>경찰간부</strong>
-                            <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
+                            <a href="{{ front_app_url('/home/index', 'spo', true) }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>교원임용</strong>
@@ -351,13 +337,13 @@
                         </li>
                         <li>
                             <strong>고등고시</strong>
-                            <a href="{{ app_url('/home/index/cate/3094', 'gosi') }}">신림(한림법학원)</a>
+                            <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>전문자격</strong>
-                            <a href="{{ app_url('/home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                            <a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">감평/노무 - 신림(한림법학원)</a><span>|</span>
                             <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                            <a href="{{ app_url('/home/index/cate/309004', 'job') }}">변리사-강남</a>
+                            <a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사-강남</a>
                         </li>
                     </ul>
                 </div>
@@ -370,6 +356,7 @@
             </div>
         </div>
 
+        {{-- 고객센터 --}}
         <div class="Section Area6 mt50 mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 고객센터</div>
@@ -381,25 +368,25 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="njobBn">
-        <a href="https://njob.willbes.net/home/index/cate/3114"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_full.gif" alt="N job"></a>
+        {{-- 엔잡 배너 --}}
+        <div class="njobBn">
+            <a href="{{ front_app_url('/home/index/cate/3114', 'njob') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_full.gif" alt="N job"></a>
+        </div>
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-
-        var default_cate = new Array('2001_3001', 'ssam_1', '2005_3094', '2005_3095', '2003_3019', '2006_309002', '2014_3114');
-        var favor_cate_cnt = 7;
+        var default_cate = new Array('2001_3001', 'ssam_1', '2005_3094', '2005_3095', '2003_3019', '2003_3035', '2006_309002', '2014_3114');
+        var favor_cate_cnt = 8;
         var $favor_cate_pop = $('#favor_cate_pop');
+        var images = ['gate_v3_bg1.jpg', 'gate_v3_bg2.jpg', 'gate_v3_bg3.jpg'];
 
         $(document).ready(function(){
             // 팝업 클릭 이벤트
             $('.favor-cate-each').click(function() {
-
                 if($(this).hasClass('favor-cate-on')) {
-                    // $(this).removeClass('favor-cate-on');
+                    //$(this).removeClass('favor-cate-on');
                 } else {
                     if($favor_cate_pop.find('.favor-cate-on').length >= favor_cate_cnt) {
                         alert('관심분야는 ' + favor_cate_cnt + '개까지 선택 가능합니다.'); return;
@@ -409,6 +396,9 @@
             });
 
             initFavorCateView();{{-- 관심분야 화면 초기 셋팅 --}}
+
+            // 상단 백그라운드 이미지
+            $('.mainV3').css({'background-image': 'url(https://static.willbes.net/public/images/promotion/main/' + images[Math.floor(Math.random() * images.length)] + ')'});
         });
 
         function initFavorCateView() {
@@ -419,9 +409,9 @@
             var arr_favor_cate = getCookieStrToArr($.cookie('favor_cate'));
             var cate_html = '';
             var cate_html_cnt = 0;
-            for(var i = 0; i <= arr_favor_cate.length; i++) {
+            for(var i = 0; i < arr_favor_cate.length; i++) {
                 $favor_cate_pop.find('.favor-cate-each').each(function() {
-                    if(arr_favor_cate[i] == $(this).data('key')) {
+                    if(arr_favor_cate[i] === $(this).data('key')) {
                         cate_html += '<li>';
                         cate_html += '  <a href="' + $(this).data('url') + '">' + $(this).html() + '</a>';
                         cate_html += '  <span onclick="removeFavorCateView(this);" data-key="' + $(this).data('key') + '">x</span>';
@@ -433,11 +423,13 @@
             }
 
             {{-- 남은 갯수 그리기 --}}
-            for(cate_html_cnt; cate_html_cnt < favor_cate_cnt; cate_html_cnt++) {
+            /*for(cate_html_cnt; cate_html_cnt < favor_cate_cnt; cate_html_cnt++) {
                 cate_html += '<li><a href="javascript:initFavorCatePop();" class="blank">+</a></li>';
-            }
-            $('#favor_cate_view').children().first().nextAll().remove();
-            $('#favor_cate_view').children().first().after(cate_html);
+            }*/
+            //$('#favor_cate_view').children().first().nextAll().remove();
+            //$('#favor_cate_view').children().first().after(cate_html);
+
+            $('#favor_cate_view').html(cate_html);
         }
 
         {{-- 카테고리 즐겨찾기 팝업 셋팅 --}}
@@ -456,9 +448,9 @@
                 });
 
                 {{-- 추가 --}}
-                for(var i=0; i <= arr_favor_cate.length; i++) {
+                for(var i = 0; i < arr_favor_cate.length; i++) {
                     $favor_cate_pop.find('.favor-cate-each').each(function(){
-                        if(arr_favor_cate[i] == $(this).data('key')) {
+                        if(arr_favor_cate[i] === $(this).data('key')) {
                             $(this).addClass('favor-cate-on');
                         }
                     });
@@ -477,7 +469,7 @@
                 }
             });
 
-            if(arr_favor_cate.length == 0) {
+            if(arr_favor_cate.length === 0) {
                 alert('관심분야를 선택해주세요.'); return;
             } else if(arr_favor_cate.length > favor_cate_cnt) {
                 alert('관심분야는 ' + favor_cate_cnt + '개까지 선택 가능합니다.'); return;
@@ -492,8 +484,8 @@
             var favor_cate_key = $(ele).data('key');
             if(typeof favor_cate_key != 'undefined') {
                 var arr_favor_cate = getCookieStrToArr($.cookie('favor_cate'));
-                for(var i = 0; i <= arr_favor_cate.length; i++) {
-                    if(arr_favor_cate[i] == favor_cate_key) {
+                for(var i = 0; i < arr_favor_cate.length; i++) {
+                    if(arr_favor_cate[i] === favor_cate_key) {
                         arr_favor_cate.splice(i, 1);
                     }
                 }
@@ -506,7 +498,5 @@
             if(!str) return '';
             return str.split(',');
         }
-
     </script>
-
 @stop

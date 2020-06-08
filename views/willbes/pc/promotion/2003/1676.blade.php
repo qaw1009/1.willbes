@@ -88,6 +88,7 @@
             </map>           
         </div>
         
+        {{--
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
                 <ul class="NGEB">
@@ -102,6 +103,7 @@
                 </ul>
             </div>
         </div>
+        --}}
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

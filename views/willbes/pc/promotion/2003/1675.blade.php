@@ -212,14 +212,15 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_04.jpg" usemap="#Map1588f"  title="라이브 티비" border="0">
             <map name="Map1588f" id="Map1588f">
                 <area shape="rect" coords="90,10,549,110" href="#pairing" />
-                <area shape="rect" coords="568,12,1027,110" href="#none;" />
+                <area shape="rect" coords="568,12,1027,110" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus="this.blur()" />
             </map>
             {{--
             <map name="Map1588e" id="Map1588e">
                 <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
                 <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus='this.blur()' />
                 <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" onfocus='this.blur()' />
-            </map>      
+            </map>
+            --}}
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
@@ -227,7 +228,6 @@
                     @include('willbes.pc.promotion.live_video_partial')
                 @endif
             </div>
-            --}}                 
         </div>
 
         {{-- 출석체크 추가신청 form --}}
@@ -302,7 +302,7 @@
 					</li>
                     <li>                    
                         <span class="big">강의 자료 제공 일정 안내</span><br>
-                        &nbsp;- 방송 전일 오후 5시~오전 8시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+                        &nbsp;- 방송 전일 오후 12시~오전 8시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
 						&nbsp;- 방송 전일 오전 8시~오후 12시 : 문제+해설자료<br>
 					</li>     
                     <li>                   

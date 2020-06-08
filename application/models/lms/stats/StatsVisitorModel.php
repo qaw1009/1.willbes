@@ -59,6 +59,40 @@ class StatsVisitorModel extends BaseStatsModel
     }
 
     /**
+     * 기간별 시간대별 방문자수 조회
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getVisitorHourCount($arr_input = [])
+    {
+        $arr_search_date = $this->_getSearchDate($arr_input);
+
+        $arr_condition = $this->_getCondition($arr_input);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        $arr_bind = [$arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date']];
+
+        $column = 'A.VisitHour, ifnull(B.VisitorCnt, 0) as VisitorCnt';
+        $from = '
+            from (
+                select lpad((num - 1), 2, "0") as VisitHour
+                from tmp_numbers
+                where num between 1 and 24
+            ) as A
+                left join (
+                    select substring(RegDatm, 12, 2) as VisitHour, count(0) as VisitorCnt
+                    from ' . $this->_table['visitor'] . '
+                    where VisitDate between ? and ?
+                    ' . $where . '
+                    group by 1
+                ) as B
+                    on A.VisitHour = B.VisitHour
+            order by A.VisitHour asc            
+        ';
+
+        return $this->_conn->query('select ' . $column . $from, $arr_bind)->result_array();
+    }
+
+    /**
      * 사이트별 방문자수 조회
      * @param array $arr_input
      * @return mixed

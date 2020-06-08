@@ -143,7 +143,7 @@
             <div class="slide_con">
                 <ul id="slidesImg4">
                     {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_april.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02_plan.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_june.jpg" /></li>
                 </ul>
                 {{--
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>

@@ -69,7 +69,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['promotion_live_data'] = $promotion_live_data;
         $arr_base['promotion_live_file_link'] = $promotion_live_file_link;
         $arr_base['promotion_live_file_yn'] = $promotion_live_file_yn;
-        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing';
+        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'];
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
         $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;

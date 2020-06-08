@@ -19,12 +19,15 @@
             <a href="{{ site_url('/home/html/m/loading') }}" target="_blank">로딩화면</a>
             <a href="{{ site_url('/home/html/m/intro2') }}" target="_blank">인트로</a>
             <a href="{{ site_url('/home/html/m/intro3') }}" target="_blank">인트로-2020</a>
+            <br><br>
             <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
             <a href="{{ site_url('/home/html/m/main2') }}" target="_blank">메인-고등고시</a>
+            <a href="{{ site_url('/home/html/m/main2_v2') }}" target="_blank">메인-고등고시 new ing</a>
             <a href="{{ site_url('/home/html/m/main3') }}" target="_blank">메인-취업</a>
             <a href="{{ site_url('/home/html/m/main4') }}" target="_blank">메인-자격증</a>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
+            <br><br>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/search_list') }}" target="_blank">검색결과 리스트</a>        

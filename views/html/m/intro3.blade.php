@@ -1,4 +1,4 @@
-@extends('html.m.layouts.master')
+@extends('html.m.layouts.v2.master')
 
 @section('content')
 <!-- Container -->

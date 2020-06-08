@@ -35,7 +35,7 @@
 @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '309002'))
     @if(empty(sess_data('mem_hanlimid')) == false)
 <div>
-    <a href="javascript:popupOpen('{{front_app_url('/classroom/home/gotoHanlim?site=2&param=nomu20200604', 'www')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');">
+    <a href="javascript:popupOpen('{{front_app_url('/classroom/home/gotoHanlim?site=2&param=nomu20200609', 'www')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/0603-01.jpg">
     </a>
 </div>

@@ -41,8 +41,7 @@ class BannerRegistModel extends WB_Model
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             B.SiteName, IFNULL(E.CateName,"전체카테고리") AS CateName, F.DispName,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
-            fn_ccd_name(A.CampusCcd) AS CampusCcdName
-            ,ifnull(temp.ClickCnt,0) as ClickCnt
+            G.CcdName AS CampusCcdName, ifnull(temp.ClickCnt,0) as ClickCnt
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -52,10 +51,11 @@ class BannerRegistModel extends WB_Model
         $from = "
             FROM {$this->_table['banner']} AS A
                 INNER JOIN {$this->_table['site']} AS B ON A.SiteCode = B.SiteCode
-                LEFT JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode
-                INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
-                LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
                 INNER JOIN {$this->_table['banner_disp']} AS F ON A.BdIdx = F.BdIdx
+                INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
+                LEFT JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode
+                LEFT JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
+                LEFT JOIN {$this->_table['sys_code']} AS G ON A.CampusCcd = G.Ccd
                 Left outer join 
 		            (
 						SELECT 

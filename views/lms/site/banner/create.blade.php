@@ -157,7 +157,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="image_map">이미지맵</label>
-                    <div class="col-md-7 item">
+                    <div class="col-md-9 item">
                         <div class="x_panel mb-0">
                             <div class="x_content pb-0">
                                 <div class="form-group">
@@ -165,16 +165,23 @@
                                         <table id="image_map_table" class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <td>이미지맵타입</td>
-                                                <td>이미지맵</td>
-                                                <td>링크URL</td>
-                                                <td>필드삭제</td>
-                                                <td class="text-right"><button type="button" class="btn btn-sm btn-success btn-image-map-add">필드 추가</button></td>
+                                                <td style="width: 120px;">링크URL타입</td>
+                                                <td style="width: 120px;">이미지맵타입</td>
+                                                <td style="width: 120px;">이미지맵</td>
+                                                <td style="width: 50%">링크URL</td>
+                                                <td style="width: 120px;">필드삭제</td>
+                                                <td class="text-left"><button type="button" class="btn btn-sm btn-success btn-image-map-add">필드 추가</button></td>
                                             </tr>
                                             </thead>
                                             <tbody class="form-group-sm">
                                             @if($method == 'POST' || empty($data['imageMaps']) === true)
                                                 <tr>
+                                                    <td>
+                                                        <select class="form-control" name="image_map_link_url_type[]" title="URL타입">
+                                                            <option value="L">링크</option>
+                                                            <option value="J">스크립트함수</option>
+                                                        </select>
+                                                    </td>
                                                     <td>
                                                         <select class="form-control" name="image_map_type[]" title="이미지맵 타입">
                                                             <option value="default">전체영역</option>
@@ -192,6 +199,12 @@
                                             @else
                                                 @foreach($data['imageMaps'] as $row)
                                                     <tr>
+                                                        <td>
+                                                            <select class="form-control" name="image_map_link_url_type[]" title="URL타입">
+                                                                <option value="L" @if($row['LinkUrlType'] == 'L')selected="selected"@endif>링크</option>
+                                                                <option value="J" @if($row['LinkUrlType'] == 'J')selected="selected"@endif>스크립트함수</option>
+                                                            </select>
+                                                        </td>
                                                         <td>
                                                             <select class="form-control" name="image_map_type[]" title="이미지맵 타입">
                                                                 <option value="default" @if($row['ImgType'] == 'default')selected="selected"@endif>전체영역</option>

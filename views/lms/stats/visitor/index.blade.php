@@ -83,6 +83,16 @@
 
         <div class="x_content mt-20">
             <div class="form-group no-border-bottom">
+                <div class="col-md-12">
+                    <div id="visitor_hour_count" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
+                        <canvas id="visitor_hour_count_stats"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="x_content mt-20">
+            <div class="form-group no-border-bottom">
                 <div class="col-md-7">
                     <div id="visitor_site" style="position: relative; width: 100%; height: 430px; border: 1px solid #ccc; align-content: center">
                         <canvas id="visitor_site_stats"></canvas>
@@ -106,8 +116,8 @@
 
     <div class="x_panel form-horizontal" id="data_view_area">
         <div class="x_content">
-            <div class="form-group no-border-bottom">
-                <div class="col-md-3 form-inline pl-0">
+            <div class="form-group">
+                <div class="col-md-6 form-inline pl-0">
                     <strong>[기간별 회원/비회원 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_count_table" class="table table-striped table-bordered">
@@ -124,7 +134,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-3 form-inline pl-0">
+                <div class="col-md-6 form-inline pl-0">
                     <strong>[기간별 PC/모바일 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_app_count_table" class="table table-striped table-bordered">
@@ -141,7 +151,24 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-3 form-inline pr-0">
+            </div>
+            <div class="form-group no-border-bottom mt-20">
+                <div class="col-md-4 form-inline pl-0">
+                    <strong>[시간대별 접속현황]</strong>
+                    <div class="x_content">
+                        <table id="list_hour_count_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-center">시간</th>
+                                <th class="text-center">접속수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4 form-inline pr-0">
                     <strong>[사이트별 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_site_table" class="table table-striped table-bordered">
@@ -162,7 +189,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-3 form-inline pr-0">
+                <div class="col-md-4 form-inline pr-0">
                     <strong>[플랫폼별 접속현황]</strong>
                     <div class="x_content">
                         <table id="list_platform_table" class="table table-striped table-bordered">
@@ -190,8 +217,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var $search_form = $('#search_form');
-            var $data_count = [], $data_site = [], $data_platform = [];   // 각 항목의 데이터 결과 변수
-            var $datatable_count, $datatable_app_count, $datatable_site, $datatable_platform;
+            var $data_count = [], $data_hour_count = [], $data_site = [], $data_platform = [];   // 각 항목의 데이터 결과 변수
+            var $datatable_count, $datatable_app_count, $datatable_hour_count, $datatable_site, $datatable_platform;
 
             function getStats($type) {
                 var data = $.extend($search_form.serializeArray(), {});
@@ -207,6 +234,7 @@
                 var chartColors = window.chartColors;
                 var color = Chart.helpers.color;
                 var $base_date = [], $visitor_cnt = [], $mem_cnt = [], $guest_cnt = [], $pc_cnt = [], $mobile_cnt = [];
+                var $base_hour = [], $hour_cnt = [];
                 var $site_name = [], $site_cnt = [];
                 var $platform_name = [], $platform_cnt = [];
 
@@ -365,6 +393,72 @@
                     }
                 };
 
+                {{--###################################################### 시간대별 현황 ####################################################--}}
+                $data_hour_count = getStats('Visitor/HourCount');
+                $.each($data_hour_count, function(i, item) {
+                    $base_hour.push(item.VisitHour);
+                    $hour_cnt.push(item.VisitorCnt);
+                });
+
+                var config_hour_count = {
+                    type: 'line',
+                    data: {
+                        labels: $base_hour,
+                        datasets: [{
+                            label: '접속수',
+                            fill: true,
+                            backgroundColor: color(window.chartColors.purple2).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.purple2,
+                            data: $hour_cnt,
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: '시간대별 접속현황'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var tooltipLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var tooltipValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    return tooltipLabel+' : '+parseInt(tooltipValue).toLocaleString();
+                                }
+                            }
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '시간'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '접속수'
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback:
+                                        function(value) {
+                                            return  value.toLocaleString();
+                                        }
+                                }
+                            }]
+                        }
+                    }
+                };
+
                 {{--###################################################### 사이트별 ####################################################--}}
                 $data_site = getStats('Visitor/Site');
                 $.each($data_site, function(i, item) {
@@ -408,6 +502,10 @@
                 canvas_clear('visitor_app_count');
                 var ctx_app_count = document.getElementById('visitor_app_count_stats').getContext('2d');
                 window.myLine = new Chart(ctx_app_count, config_app_count);
+
+                canvas_clear('visitor_hour_count');
+                var ctx_hour_count = document.getElementById('visitor_hour_count_stats').getContext('2d');
+                window.myLine = new Chart(ctx_hour_count, config_hour_count);
 
                 canvas_clear('visitor_site');
                 var ctx_site = document.getElementById('visitor_site_stats').getContext('2d');
@@ -545,6 +643,24 @@
                     ]
                 });
 
+                $datatable_hour_count = $("#list_hour_count_table").DataTable({
+                    dom: 'Pfrtip',
+                    paging : false,
+                    serverSide: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: $data_hour_count,
+                    columns: [
+                        {'data': 'VisitHour', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                            return '<span class="black">' + data + '시</span>';
+                        }},
+                        {'data': 'VisitorCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                            return '<strong>' + addComma(data) + '</strong>';
+                        }}
+                    ]
+                });
+
                 $datatable_site = $("#list_site_table").DataTable({
                     dom: 'Pfrtip',
                     paging : false,
@@ -602,6 +718,7 @@
 
             function datatableReset() {
                 $datatable_count.destroy();
+                $datatable_hour_count.destroy();
                 $datatable_app_count.destroy();
                 $datatable_site.destroy();
                 $datatable_platform.destroy();

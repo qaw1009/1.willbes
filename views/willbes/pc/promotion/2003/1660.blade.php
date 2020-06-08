@@ -72,7 +72,7 @@
         .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:0}	
-        .tabCts .youtube iframe {width:936px; height:527px; margin:0 auto}
+        .tabCts .youtube iframe {width:980px; height:551px; margin:0 auto}
 
         .Cts02 .mt20 > a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; margin-left:20px}
         .Cts02 a:hover {background:#e50001}
@@ -178,8 +178,9 @@
             <div class="download">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_01.jpg" usemap="#Map1660A" title="적중모의고사 무료" border="0" />
                 <map name="Map1660A">
-                    <area shape="rect" coords="182,915,555,1008" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="무료접수">
-                    <area shape="rect" coords="568,916,938,1006" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" alt="무료응시하기">
+                    <area shape="rect" coords="102,941,396,1039" href="@if($file_yn[17] == 'Y') {{ front_url($file_link[17]) }} @else {{ $file_link[17] }} @endif" target="_blank" alt="기미진국어 자료">
+                    <area shape="rect" coords="409,942,700,1038" href="@if($file_yn[18] == 'Y') {{ front_url($file_link[18]) }} @else {{ $file_link[18] }} @endif" target="_blank" alt="한덕현영어 자료">
+                    <area shape="rect" coords="726,942,1020,1036" href="@if($file_yn[19] == 'Y') {{ front_url($file_link[19]) }} @else {{ $file_link[19] }} @endif" target="_blank" alt="조민주영어 자료">
                 </map>   
             </div>       
             

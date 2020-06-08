@@ -297,7 +297,7 @@
             </div>
 
             <div class="evtCtnsBox evt05" id="sky02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_05.jpg" usemap="#Map1646_profile" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_05.jpg" usemap="#Map1646_profile" border="0" />
                 <map name="Map1646_profile" id="Map1646_profile">
                     <area shape="rect" coords="167,542,267,570" href="javascript:go_popup4()" />
                     <area shape="rect" coords="287,542,387,571" href="javascript:go_popup5()" />
@@ -404,14 +404,14 @@
             </div>
 
             <div class="evtCtnsBox evt06" id="sky03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_06.jpg" usemap="#Map1646a" title="검사신청하기 " border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06.jpg" usemap="#Map1646a" title="검사신청하기 " border="0"/>
                 <map name="Map1646a" id="Map1646a">
                     <area shape="rect" coords="750,369,988,434"  href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
                 </map>
             </div>
 
             <div class="evtCtnsBox evt06s" id="sky04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_06s.jpg" usemap="#Map1646abcd" title="검사신청하기" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06s.jpg" usemap="#Map1646abcd" title="검사신청하기" border="0"/>
                 <map name="Map1646abcd" id="Map1646abcd">
                     <area shape="rect" coords="749,488,990,554" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1070"  target="_blank" />
                 </map>         
@@ -432,7 +432,7 @@
                         <area shape="rect" coords="280,561,458,598" href="javascript:go_popup10()" />
                         <area shape="rect" coords="471,561,647,597" href="javascript:go_popup11()" />
                         <area shape="rect" coords="661,561,837,598" href="javascript:go_popup12()" />
-                        <area shape="rect" coords="711,666,968,805" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165244" target="_blank" />
+                        <area shape="rect" coords="711,666,968,805" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165750" target="_blank" />
                     </map>                   
                 </div>
                 <div id="tab02">
@@ -453,7 +453,7 @@
             </div>
 
             <div class="evtCtnsBox evt08">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_08.jpg" title="면접캠프 일정안내"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/0/1646_08.jpg" title="면접캠프 일정안내"/>
             </div>
 
         </form>

@@ -178,8 +178,9 @@
             <div class="download">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_01.jpg" usemap="#Map1660A" title="적중모의고사 무료" border="0" />
                 <map name="Map1660A">
-                    <area shape="rect" coords="182,915,555,1008" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="무료접수">
-                    <area shape="rect" coords="568,916,938,1006" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" alt="무료응시하기">
+                    <area shape="rect" coords="102,941,396,1039" href="@if($file_yn[17] == 'Y') {{ front_url($file_link[17]) }} @else {{ $file_link[17] }} @endif" target="_blank" alt="기미진국어 자료">
+                    <area shape="rect" coords="409,942,700,1038" href="@if($file_yn[18] == 'Y') {{ front_url($file_link[18]) }} @else {{ $file_link[18] }} @endif" target="_blank" alt="한덕현영어 자료">
+                    <area shape="rect" coords="726,942,1020,1036" href="@if($file_yn[19] == 'Y') {{ front_url($file_link[19]) }} @else {{ $file_link[19] }} @endif" target="_blank" alt="조민주영어 자료">
                 </map>   
             </div>       
             

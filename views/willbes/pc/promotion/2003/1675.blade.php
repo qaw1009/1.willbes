@@ -214,7 +214,6 @@
                 <area shape="rect" coords="90,10,549,110" href="#pairing" />
                 <area shape="rect" coords="568,12,1027,110" href="#none;" />
             </map>
-            {{--
             <map name="Map1588e" id="Map1588e">
                 <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
                 <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus='this.blur()' />
@@ -227,7 +226,6 @@
                     @include('willbes.pc.promotion.live_video_partial')
                 @endif
             </div>
-            --}}                 
         </div>
 
         {{-- 출석체크 추가신청 form --}}

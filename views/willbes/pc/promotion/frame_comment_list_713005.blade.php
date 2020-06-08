@@ -158,8 +158,14 @@
                 <ul class="characterImg2">
                     @for ($i=1; $i<=8; $i++)
                         <li class="sel_icon" id="character_{{$i}}">
-                            <div class="off" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" /></div>                        
-                            <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" /></div>                            
+                            @php
+                                $emoticon_img = '1588_character';
+                                if(empty($arr_input['promotion_code']) === false && $arr_input['promotion_code'] == '1675' && ($i == 1 || $i == 2 || $i == 3)) {
+                                    $emoticon_img = '1675_character';     // 한덕현 교수 아침 1~3 이모티콘
+                                }
+                            @endphp
+                            <div class="off" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}_1.png" alt="" /></div>
+                            <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}.png" alt="" /></div>
                         </li>
                     @endfor
                 </ul>
@@ -214,7 +220,13 @@
                     @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
                         <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
                     @elseif(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
-                        <img src="https://static.willbes.net/public/images/promotion/common/1588_character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
+                        @php
+                            $emoticon_img = '1588_character';
+                            if(empty($arr_input['promotion_code']) === false && $arr_input['promotion_code'] == '1675' && ($row['EmoticonNo'] == 1 || $row['EmoticonNo'] == 2 || $row['EmoticonNo'] == 3)) {
+                                $emoticon_img = '1675_character';     // 한덕현 교수 아침 1~3 이모티콘
+                            }
+                        @endphp
+                        <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
                     @endif
                     <div>
                         <p>{!! hpSubString($row['MemName'],0,2,'*') !!} <span>{{$row['RegDatm']}}</span></p>

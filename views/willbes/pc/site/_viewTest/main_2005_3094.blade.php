@@ -69,62 +69,18 @@
                 <div class="thisMonth NSK">
                     <div class="thisMonthBox">
                         <ul class="tmslider">
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
-                                    <div class="tx-color">경제학 예비순환</div>
-                                    <div class="NSK-Black">황종휴</div>
-                                    <div>2020 거시경제학 예비순환</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
-                                    <div class="tx-color">행정법 예비순환</div>
-                                    <div class="NSK-Black">김정일</div>
-                                    <div>2020 행정법 예비순환<br> (미시+거시)</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
-                                    <div class="tx-color">행정법 예비순환</div>
-                                    <div class="NSK-Black">박도원</div>
-                                    <div>행정법 GS3순환(미시+거시)<br>+매일모의고사추가</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
-                                    <div class="tx-color">경제학 예비순환</div>
-                                    <div class="NSK-Black">김기홍</div>
-                                    <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
-                                    <div class="tx-color">경제학 예비순환</div>
-                                    <div class="NSK-Black">이동호</div>
-                                    <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
-                                    <div class="tx-color">경제학 예비순환</div>
-                                    <div class="NSK-Black">최승호</div>
-                                    <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50852/prof_index_50852_1586137263.png">
-                                    <div class="tx-color">경제학 예비순환</div>
-                                    <div class="NSK-Black">안진우</div>
-                                    <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                                </a>
-                            </li>
+                            @if(!empty($data['best_product']))
+                                @foreach($data['best_product'] as $row)
+                                    <li>
+                                        <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
+                                            <img src="{{$row['ProfIndexImg'] or ''}}">
+                                            <div class="tx-color">{{$row['ProdName']}}</div>
+                                            <div class="NSK-Black">{{$row['ProfNickName']}}</div>
+                                            <div>{{$row['ProdMainIntroMemo']}}</div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
                         <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
@@ -137,60 +93,26 @@
                 <div class="preview NSK">
                     <div class="previewBox">
                         <ul class="pvslider">
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
-                                    <div>
-                                        오리엔테이션, 무역모형기초 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
-                                    <div>
-                                        03월 27일 : 제 10회 모의고사 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
-                                    <div>
-                                        09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
-                                    <div>
-                                        오리엔테이션, 무역모형기초 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
-                                    <div>
-                                        09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
-                                    <div>
-                                        03월 27일 : 제 10회 모의고사 1회 1강
-                                        <strong>국제경제학 황종휴</strong>
-                                    </div>
-                                </a>
-                            </li>
+                            @if(!empty($data['new_product']))
+                                @foreach($data['new_product'] as $row)
+                                    @php
+                                        $sample_info = [];
+                                        if($row['LectureSamplewUnit'] !== 'N') {
+                                            $sample_info = json_decode($row['LectureSamplewUnit'], true);
+                                        }
+                                    @endphp
+                                    <li>
+                                        <a href="javascript:{{!empty($sample_info[0]['wUnitIdx']) ? "fnPlayerSample('".$row["ProdCode"]."','".$sample_info[0]["wUnitIdx"]."','".($sample_info[0]["wHD"] != '' ? 'HD' : 'SD')."')" : "alert('샘플영상 준비중입니다.')" }};">
+                                            <img src="{{$row['ProfIndexImg'] or ''}}">
+                                            <div>
+                                                {{$row['ProdName']}}<BR>
+                                                {{empty($sample_info) ? '' : $sample_info[0]['wUnitName']}}
+                                                <strong>{{$row['SubjectName']}} {{$row['ProfNickName']}}</strong>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
                         <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>

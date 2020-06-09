@@ -280,6 +280,12 @@
 <!-- End Container -->
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        {{-- 기존 프로모션 종료. 리다이렉트 1588 -> 1676 --}}
+        location.href = '{{ front_url('/promotion/index/cate/3019/code/1676') }}';
+    });
+
     /*스크롤고정*/
     $(function() {
         var nav = $('.evtMenu');

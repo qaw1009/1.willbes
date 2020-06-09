@@ -73,7 +73,7 @@
         .evt04 .evt04Box li {list-style: disc; margin-left:15px}
         .evt04 .evt04Box ul {margin-bottom:30px}
 
-        @@media only screen and (max-width: 374px) {
+        @@media only screen and (max-width: 640px) {
             .evt02 .inputBox li {width:50%; text-align:left}
         }
     </style>

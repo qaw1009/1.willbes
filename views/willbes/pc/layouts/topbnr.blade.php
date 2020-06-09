@@ -1,5 +1,5 @@
 @if($__cfg['SiteCode'] == '2001')
-    {{-- 경찰온라인 사이트일 경우만 적용 --}}
+    {{-- 경찰온라인 사이트일 경우만 적용
     <div id="topBannerLayer">
         <div class="topBanner">
             <!--a id="show_topBanner" href="javascript:showOrHidefigure(0);"-->
@@ -28,12 +28,15 @@
             }
         }
     </script>
+     --}}
 @endif
 @if($__cfg['SiteCode'] == '2002')
     {{-- 경찰학원--}}
     <div id="topBannerLayer">
         <div class="topBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1284_00.jpg" alt="적중! 적중! 또 다시 적중!">
+            <a href="{{site_url('/promotion/index/cate/3001/code/1022')}}">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1022_top_ban.jpg" alt="적중! 적중! 또 다시 적중!">
+            </a>
         </div>
     </div>
 @endif

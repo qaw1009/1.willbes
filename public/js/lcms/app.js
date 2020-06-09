@@ -627,9 +627,20 @@ $(document).ready(function() {
     init_file();
 });
 
+/**
+ * 페이지 로딩 중 표시
+ */
+function pageLoading(type) {
+    if (type === 'show') {
+        $('body').find('.page-loading').removeClass('hide');
+    } else if (type === 'hide') {
+        $('body').find('.page-loading').addClass('hide');
+    } else {
+        $('body').append('<div class="page-loading">로딩 중 ... <i class="fa fa-spin fa-refresh"></i></div>');     // init
+    }
+}
 
-function fnViewMember($MemIdx)
-{
+function fnViewMember($MemIdx) {
     popupOpen('/member/manage/detail_popup/'+$MemIdx, 'MemberInfo',
         1200, 800,
         null, null,

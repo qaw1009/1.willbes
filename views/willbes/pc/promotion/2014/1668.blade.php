@@ -22,24 +22,21 @@
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1668_top_bg.jpg) no-repeat center top}
+        .evt01 {background:#787878; padding-bottom:100px}        
+        .evt01 .review {position:absolute; top:348px; left:50%; margin-left:-483px; width:966px; height:60px; z-index:5; overflow:hidden;}
+        .evt01 .review li {font-size:16px; color:#000; text-align:left; padding-left:200px}
+        .evt01 .review li p {position:relative; width:100%; overflow:hidden; white-space:nowrap; height:60px; line-height: 60px; text-overflow:ellipsis; padding:0 15% 0 0}
+        .evt01 .review span {position:absolute; top:0; width:80px; right:0; height:60px; line-height: 60px;  z-index:5; text-align:center}
+        .evt01 .youtube iframe {width:960px; height:540px; margin:0 auto}
 
-        .evt01 {background:#eee}
-        .evt01 .review {position:absolute; top:100px; left:50%; margin-left:-400px; width:800px; padding:20px; height:180px; background:#000; z-index:5; overflow:hidden;}
-        .evt01 .review li {font-size:16px; color:#fff; text-align:left; background:#333}
-        .evt01 .review li p {position:relative; width:100%; overflow:hidden; white-space:nowrap; height:40px; line-height: 40px;  text-overflow:ellipsis; padding:0 15% 0 20px}
-        .evt01 .review span {position:absolute; top:0; width:80px; right:0; height:40px; line-height: 40px;  z-index:5; text-align:center}
-        .evt01 .youtube {position:absolute; top:250px; left:50%; margin-left:-450px; width:900px; z-index:10}
-        .evt01 .youtube iframe {width:800px; height:400px; margin:0 auto}
-
-        .evt02 {background:#1b58ef}
-        .evt03 {background:#fff;}
+        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1668_02_bg.jpg) no-repeat center top}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1665_03_bg.jpg) no-repeat center top}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_top.jpg" alt="" > 
-        </div> 
-        
+        </div>         
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_01.jpg" alt="" > 
             <div class="review">
@@ -71,7 +68,10 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_03.jpg" alt="" > 
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_03.jpg" alt="" usemap="#MapbtnGo" border="0" >
+            <map name="MapbtnGo">
+                <area shape="rect" coords="313,854,807,964" href="/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약하기">
+            </map>
         </div>
     </div>
     <!-- End Container -->

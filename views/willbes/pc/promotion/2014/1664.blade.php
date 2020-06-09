@@ -127,7 +127,7 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt03">
+            <div class="evtCtnsBox evt03" id="evtn03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_03.jpg" alt="" >
             </div>
 

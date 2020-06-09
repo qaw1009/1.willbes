@@ -11,12 +11,11 @@
         .evt01 {}
 
         .evtprof {background:#1e252e;}
-        .evtprof .swiper-container-prof {overflow:hidden; margin:0}
+        .evtprof .swiper-container-prof {overflow:hidden; height:100%; margin:0}
         .evtprof .swiper-container-prof .swiper-slide { 
-            width:100%;  
-            height:100%;           
+            width:100%;             
             margin:0 !important;
-            padding: !important;  
+            padding:0 !important;  
             background:#1e252e;
         /* Center slide text vertically */ 
             display: -webkit-box; 
@@ -32,14 +31,12 @@
             -webkit-align-items: left; 
             align-items: left; 
         } 
-        .evtprof .swiper-container-prof .swiper-slide img {width:100%}
+        .evtprof .swiper-container-prof .swiper-slide img {width:100%;}
         .evtprof .swiper-container-prof .swiper-pagination {top:30px !important;} 
         .evtprof .review { position:absolute; bottom:20px; left:3%; width:94%; height:50px; background:#fff; overflow:hidden; z-index:10}
         .evtprof .review li {position:relative; height:50px; line-height:50px; font-size:16px; }
         .evtprof .review li p {width:calc(100% - 60px); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; text-align:left; padding-left:10px}
         .evtprof .review span {position:absolute; top:0; height:50px;width:60px; right:0; line-height: 50px; z-index:11; color:#000}
-
-
         .evt02 {background:#1b58ef}
 
         .evt02 .inputBox {padding:0 20px; margin-bottom:20px}
@@ -204,5 +201,62 @@
                 moveSlides:1,
             });
         });
+
+        
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
+                alert('교수님을 선택해주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            {{-- register_chk_name 필요한것 이외 disabled 처리. (신청리스트명 문자발송 치환을 위한 정보) --}}
+            var reg_chk_val = $regi_form_register.find('input[name="register_chk[]"]:checked').val();
+            $regi_form_register.find('input[name="register_chk_name[]"]').each(function(i) {
+                if($(this).data('register-chk') == reg_chk_val) {
+                    $(this).attr('disabled', false);
+                } else {
+                    $(this).attr('disabled', true);
+                }
+            });
+
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(getApplyMsg(ret.ret_msg));
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        {{-- 해당 프로모션 종속 결과 메세지 --}}
+        function getApplyMsg(ret_msg) {
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['신청 되었습니다.','사전예약이 완료되었습니다.'],
+            ];
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
+
+        {{-- 숫자만 유효성 체크 --}}
+        function onlyNumberCheck(object){
+            object.value = object.value.replace(/[^0-9.]/g, "");
+            if (object.value.length > object.maxLength) {
+                object.value = object.value.slice(0, object.maxLength);
+            }
+        }
     </script>
 @stop

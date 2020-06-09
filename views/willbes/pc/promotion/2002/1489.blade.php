@@ -170,7 +170,6 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit01.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit02.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit03.jpg" alt=""/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit04.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit06.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit07.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit08.jpg" alt=""/></li>
@@ -178,7 +177,6 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit01.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit02.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit03.jpg" alt=""/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit04.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit06.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit07.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1489_03_benefit08.jpg" alt=""/></li> 
@@ -207,20 +205,19 @@
 						<span class="txt_point">형사소송법/수사 신광은 교수님, 경찰학개론/행정 장정훈 교수님, 형법 김원욱 교수님, 영어 하승민 교수님, 한국사(택1) 원유철 교수님,오태진 교수님</span>
 					</li><br/> <br/> 
                     <li>                    
-                        <span class="big">10종 합격팩</span><br/>
+                        <span class="big">9종 합격팩</span><br/>
                                          
                         <span class="txt_point"> 1) 21년 1차 불합격 시 21년 2차까지 , 21년 2차 불합격 시 22년 1차까지 학원강의 수강기간 연장<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;(매 시험 응시이력 소명 필수/수강기간 연장 시 헌법,형사법 선택수강 가능)  
+                        &nbsp;&nbsp;&nbsp;&nbsp;(매 시험 응시이력 소명 필수/수강기간 연장 시 헌법,형사법 선택수강 가능) 
                         </span><br/>                            
                         <span class="txt_point"> 2) 인강패스 무료 제공 (수강기간동안/연장시 복습동영상 제공)</span><br/>                                   
                         <span class="txt_point"> 3) 학원 모의고사 무료 응시 (★무료혜택★ 연장시 21년 2차까지)</span><br/> 			  
                         <span class="txt_point"> 4) 신광은 경찰팀 특강 무료 (★무료혜택★ 아침특강 제외/연장시 21년 2차까지)</span><br/>                                      
                         <span class="txt_point"> 5) 영어아침특강 특별할인</span><br/>                                 
-                        <span class="txt_point"> 6) 튜터링 관리반 2개월 50% 할인 (수강기간동안)</span><br/>                                    
-                        <span class="txt_point"> 7) 개인 사물함 제공 (연장시 22년 1차까지)</span><br/> 			                    
-                        <span class="txt_point"> 8) 경찰 전용 자습실 제공 (연장시 22년 1차까지)</span><br/> 			                   
-                        <span class="txt_point"> 9) 체력학원 40% 할인 (첫 등록시 할인)</span><br/>  			                   
-                        <span class="txt_point"> 10) 20년 2차, 21년 1차 필기시험 합격 시 면접반 30% 할인</span><br/>  	
+                        <span class="txt_point"> 6) 개인 사물함 제공 (연장시 22년 1차까지)</span><br/>                                    
+                        <span class="txt_point"> 7) 경찰 전용 자습실 제공 (연장시 22년 1차까지)</span><br/> 			                    
+                        <span class="txt_point"> 8) 체력학원 특별할인 (첫 등록시 할인)</span><br/> 			                   
+                        <span class="txt_point"> 9) 20년 2차, 21년 1차 필기시험 합격 시 면접반 특별 할인)</span><br/>                
                     </li><br/> <br/> 
     				<li>                 
                         <span class="big">유의사항</span><br/>                       

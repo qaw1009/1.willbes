@@ -276,7 +276,7 @@ span {
     border-bottom: 1px solid #ccc;
 }
 #aside .List-Depth {
-    display: none;
+    display: block;
 }
 #aside .Depth {padding-right:80px}
 #aside .Depth li { display:inline; float:left; margin-right:20px}

@@ -188,7 +188,7 @@
 
         <div class="searchBox">   
             <div>             
-                <input type="search" id="search" name="" value="" placeholder="검색어를 입력하세요." />
+                <input type="search" id="search" name="" value="" placeholder="온라인강의 검색" />
                 <label for="search"><button title="검색">검색</button></label>  
             </div>              
         </div>        

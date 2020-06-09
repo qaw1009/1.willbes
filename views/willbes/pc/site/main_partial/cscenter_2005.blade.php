@@ -22,10 +22,10 @@
                 </li>
                 <li>
                     <div class="nTit">학원 고객센터</div>
-                    <div class="nNumber tx-color">1544-1881 <span>▶</span> 3</div>
+                    <div class="nNumber tx-color">1544-1881~3</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
-                        평일/주말: 08시~ 18시<br/>
+                        평일/주말: 09시~ 18시<br/>
                     </div>
                 </li>
             </ul>
@@ -40,9 +40,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/support/mobile/index') }}">
-                        <img src="{{ img_url('cop/icon_cecenter2.png') }}">
-                        <div class="nTxt">모바일<br/>서비스</div>
+                    <a href="{{ site_url('/support/qna/index?s_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
+                        <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                        <div class="nTxt">학원<br/>상담실</div>
                     </a>
                 </li>
                 <li>
@@ -59,6 +59,5 @@
                 </li>
             </ul>
         </dt>
-
     </dl>
 </div>

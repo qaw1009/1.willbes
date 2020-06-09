@@ -1044,6 +1044,7 @@
                 $tbody.append(html);
             });
 
+            $('#content_byte').val(fn_chk_byte($('#sms_content').val()));   // 초기 자동문자 Byte수 표시 호출
         });
 
         function addValidate() {

@@ -2,11 +2,10 @@
 <div id="Header" class="NG c_both">
     <div class="widthAutoFull">
         <div class="Menu-List p_re">
-            {{--게이트 상단--}}
-            <!--
+            {{--게이트 상단          
             <div>
                 <button type="button" class="home Menu_open">
-                    <span class="hidden">메뉴바</span>
+                    <span class="hidden">통합 메뉴</span>
                 </button>
                 <div class="logo">
                     <a href="{{ site_url('/home/html/m/sample') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
@@ -14,53 +13,42 @@
                 <button type="button" class="mypage Menu_open">
                     <span class="hidden">내강의실</span>
                 </button>
-                <ul class="myLog tx-black NG">    
-                    {{--      
+                <ul class="myLog tx-black NG">   
                     <li class="joinUs">
                         <a class="Tit" href="#none">회원가입</a>
                         <span class="row-line">|</span>
-                    </li>
-                    --}}
+                    </li>                    
                     <li class="Login">
                         <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>                    
-                    </li>                    
-                    {{--
+                    </li>                   
+                    <!--
                     <li class="Login">
                         <a class="Tit" href="#none">로그아웃</a>
                     </li> 
-                    --}}         
+                    -->
                 </ul> 
             </div>
-            -->
+            --}} 
+            
 
-            {{--사이트 상단--}}    
-            <div>
-                <button type="button" class="home Menu_open">
-                    <span class="hidden">메뉴바</span>
+            {{--사이트 상단--}} 
+            <div class="main">
+                <button type="button" class="menubar Menu_open">
+                    <span class="hidden">사이트 메뉴</span>
                 </button>
-                <div class="logo">
-                    <a href="#none" class="siteTitle NSK-Black">5급행정</a>
-                </div>            
                 <button type="button" class="mypage Menu_open">
                     <span class="hidden">내강의실</span>
                 </button>
-                <ul class="myLog tx-black NG">  
-                    <li class="joinUs">
-                        <a class="Tit" href="#none">회원가입</a>
-                        <span class="row-line">|</span>
-                    </li>                    
-                    <li class="Login">
-                        <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>                    
-                    </li>                    
-                    {{--
-                    <li class="Login">
-                        <a class="Tit" href="#none">로그아웃</a>
-                    </li> 
-                    --}}         
-                </ul>                 
-            </div>
+                <div class="logo">
+                    <a href="#none" class="siteTitle NSK-Black">5급행정</a>
+                </div>        
+                <button type="button" class="basket">
+                    <span class="hidden">장바구니</span>
+                </button>                
+            </div>                     
+        </div>
 
-            <div class="subMenuBox c_both">
+        <div class="subMenuBox c_both">
                 <ul class="subMenu">
                     <li class="sMenuList">
                         <a href="#none" class="moreMenu">교수진소개<span class="rowLine"></span></a>
@@ -183,8 +171,7 @@
                         </div>                      
                     </li>
                 </ul>                
-            </div>          
-        </div>
+            </div> 
 
         <div class="searchBox">   
             <div>             

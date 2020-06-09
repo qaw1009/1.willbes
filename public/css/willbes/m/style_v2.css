@@ -303,7 +303,7 @@ span {
 }
 
 #Header button.menubar {
-    background: url("../../../img/willbes/m/main/icon_menu.png") no-repeat center center;
+    background: url("../../../img/willbes/m/main/icon_menu2.png") no-repeat center center;
     background-size: 100%;
     width: 46px;
     height: 46px;
@@ -333,7 +333,7 @@ span {
     border: none;
     position: absolute;
     top: 50%;
-    right: 51px;
+    right: 5px;
     margin-top: -23px;
 }
 #Header button.myacad {
@@ -386,6 +386,7 @@ span {
     height: 10px;
     margin: -5px 8px 0;
 }
+#Header .Menu-List .main:after,
 #Header .Menu-List div:after,
 #Header .Menu-List:after {content:""; display:block; clear:both}
 

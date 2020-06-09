@@ -75,7 +75,7 @@
                 <map name="Map1644">
                     <area shape="rect" coords="190,701,349,743" href="/promotion/index/cate/3114/code/1665" target="_blank" alt="이시한">
                     <area shape="rect" coords="435,701,596,744" href="/promotion/index/cate/3114/code/1666" target="_blank" alt="이승기">
-                    <area shape="rect" coords="689,700,852,746" href="/promotion/index/cate/3114/code/1667" target="_blank" alt="안혜빈">
+                    <area shape="rect" coords="689,700,852,746" href="/promotion/index/cate/3114/code/1668" target="_blank" alt="안혜빈">
                     <area shape="rect" coords="928,700,1086,742" href="/promotion/index/cate/3114/code/1669" target="_blank" alt="이기용">
                 </map>
 

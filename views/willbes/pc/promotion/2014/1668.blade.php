@@ -29,6 +29,8 @@
         .evt01 .review span {position:absolute; top:0; width:80px; right:0; height:60px; line-height: 60px;  z-index:5; text-align:center}
         .evt01 .youtube iframe {width:960px; height:540px; margin:0 auto}
 
+        .evt01_01 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1668_03_bg.jpg) no-repeat center top}
+
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1668_02_bg.jpg) no-repeat center top}
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1665_03_bg.jpg) no-repeat center top}
     </style>
@@ -36,7 +38,8 @@
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_top.jpg" alt="" > 
-        </div>         
+        </div> 
+
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_01.jpg" alt="" > 
             <div class="review">
@@ -59,8 +62,12 @@
                 </ul>
             </div>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/_yVIa13RFW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/sO1Y3lGfMsM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+        </div>
+
+        <div class="evtCtnsBox evt01_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1668_03.jpg" alt="" > 
         </div>
 
         <div class="evtCtnsBox evt02">

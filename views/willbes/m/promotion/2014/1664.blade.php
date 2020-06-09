@@ -10,8 +10,8 @@
         .evtTop {}
         .evt01 {}
 
-        .evtprof {background:#1e252e;}
-        .evtprof .swiper-container-prof {overflow:hidden; height:100%; margin:0}
+        .evtprof {background:#1e252e;overflow:hidden;position:relative}
+        .evtprof .swiper-container-prof {}
         .evtprof .swiper-container-prof .swiper-slide { 
             width:100%;             
             margin:0 !important;

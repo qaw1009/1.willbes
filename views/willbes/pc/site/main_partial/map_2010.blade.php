@@ -75,14 +75,14 @@
         @endif
     });
 </script>
-    <div class="Section Section4_hl mb50">
+    <div class="Section Section4_hl mt50">
         <div class="widthAuto">
-            <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>
+            <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
             <div class="noticeTabs campus c_both">
                 {{-- <ul class="tabWrap noticeWrap_campus"> --}}
                 <ul class="tabWrapCustom noticeWrap_campus">
                     <li><a id="campus1_btn" href="#campus1" class="on">신림(본원)</a><span class="row-line">|</span></li>
-                    <li><a id="campus2_btn" href="#campus2" class="">강남(분원)-변호사시험/법원행시</a></li>
+                    <li><a id="campus2_btn" href="#campus2" class="">강남(분원)</a></li>
                 </ul>
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
@@ -119,12 +119,12 @@
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
                             <img src="https://static.willbes.net/public/images/promotion/main/2010_map02.jpg" alt="강남(분원)">
-                            <span>강남(분원)-변호사시험/법원행시</span>
+                            <span>강남(분원)</span>
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">강남(분원)-변호사시험/법원행시</span> 학원 오시는 길</div>
+                                <div class="c-tit"><span class="tx-color">강남(분원)</span> 학원 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1881 ▶ 3</span>
+                                            <span class="tx-color">1544-1661</span>
                                         </div>
                                     </div>
                                 </dt>

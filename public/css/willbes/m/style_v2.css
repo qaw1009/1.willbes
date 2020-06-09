@@ -423,7 +423,7 @@ span {
 #Header .subMenuBox ul:after {content:""; display:block; clear:both}
 
 #Header .searchBox {position:relative; clear: both; max-width: 720px; margin: 0 auto 10px;}
-#Header .searchBox div {border:10px solid #2364fe; height:64px !important; width:98%; margin:0 auto; background:#fff;
+#Header .searchBox div {border:2px solid #2364fe; height:50px !important; width:98%; margin:0 auto; background:#fff;
     font-size:16px; padding:0 20px; border-radius: 50px; z-index: 20; animation:bdchange 2s infinite; -webkit-animation:bdchange 2s infinite;}
 @keyframes bdchange {
     from{border-color:#2364fe}
@@ -435,10 +435,10 @@ span {
     50%{border-color:#072877}
     to{border-color:#2364fe}
 }
-#Header .searchBox div input[type=search] {border:0; height:40px; width:calc(100% - 80px); float: left;}
+#Header .searchBox div input[type=search] {border:0; height:46px; width:calc(100% - 80px); float: left;}
 #Header .searchBox div input:focus {border:0 !important; color:#333}
-#Header .searchBox button {display:block; position:absolute; width:80px; font-size:0; text-indent: -9999px; top:10px; right:25px; height:40px; line-height:40px;
-    background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_search.png") no-repeat center center; 
+#Header .searchBox button {display:block; position:absolute; width:80px; font-size:0; text-indent: -9999px; top:5px; right:25px; height:40px; line-height:40px;
+    background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_search.png") no-repeat center center; background-size: 60px;
      z-index: 1;}
 #Header .searchBox:after {content:""; display:block; clear:both}
 

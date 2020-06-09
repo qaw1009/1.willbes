@@ -175,7 +175,6 @@ class Home extends \app\controllers\FrontController
     {
         $data = [];
         $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
-
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
@@ -183,8 +182,8 @@ class Home extends \app\controllers\FrontController
 
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
-        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
-
+        /*$data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);*/
+        $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
         return $data;
     }
 
@@ -565,6 +564,28 @@ class Home extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'p.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardTwoWayFModel->listBoardForProfStudy(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 강의계획표 조회
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _boardLecturePlan($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => 109
+                ,'b.IsUse' => 'Y'
+                ,'d.OnOffLinkCateCode' => $cate_code
+            ]
+        ];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, '', $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

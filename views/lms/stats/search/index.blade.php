@@ -814,14 +814,22 @@
             }
 
             $search_form.on('click', '.btn-search', function() {
-                chartExe();
-                wordCloud();
-                datatableReset();
+                pageLoading('show');
+                setTimeout(function() {
+                    chartExe();
+                    wordCloud();
+                    datatableReset();
+                    pageLoading('hide');
+                }, 0);
             });
 
-            chartExe();
-            wordCloud();
-            datatableExe();
+            pageLoading('init');
+            setTimeout(function() {
+                chartExe();
+                wordCloud();
+                datatableExe();
+                pageLoading('hide');
+            }, 0);
         });
     </script>
 @stop

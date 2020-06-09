@@ -645,12 +645,20 @@
             }
 
             $search_form.on('click', '.btn-search', function() {
-                chartExe();
-                datatableReset();
+                pageLoading('show');
+                setTimeout(function() {
+                    chartExe();
+                    datatableReset();
+                    pageLoading('hide');
+                }, 0);
             });
 
-            chartExe();
-            datatableExe();
+            pageLoading('init');
+            setTimeout(function() {
+                chartExe();
+                datatableExe();
+                pageLoading('hide');
+            }, 0);
         });
     </script>
 @stop

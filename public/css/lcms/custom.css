@@ -1633,7 +1633,7 @@ select.input-sm {
 }
 
 /* loading Form */
-div.dataTables_wrapper div.dataTables_processing {
+div.dataTables_wrapper div.dataTables_processing, div.page-loading {
     position: fixed;
     top: 0;
     left: 0;

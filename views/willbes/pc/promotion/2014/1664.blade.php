@@ -25,12 +25,8 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1664_01_bg.jpg) no-repeat center top}
         .evt01 .review {position:absolute; top:833px; left:50%; margin-left:-298px; width:766px; height:60px; z-index:10; overflow:hidden;}
         .evt01 .review li {position:relative; height:60px; line-height: 60px; font-size:16px;}
-        .evt01 .review li p {padding:0 90px 0 100px; width:760px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-        .evt01 .review span,
-        .evt01 .review strong {position:absolute; top:0; height:60px; line-height: 60px; z-index:11; color:#000}
-        .evt01 .review strong {width:100px; left:0;}
-        .evt01 .review span {width:80px; right:0;}
-
+        .evt01 .review li p {padding:0 60px 0 20px; width:760px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; text-align:left}
+        .evt01 .review span {position:absolute; top:0; height:60px; line-height: 60px; width:80px; right:0; z-index:11; color:#000}
 
         .evt02 {background:#1b58ef}
         .evt02 .inputBox {position:absolute; top:942px; left:50%; margin-left:-393px; width:786px; z-index:10}
@@ -85,10 +81,10 @@
 
                 <div class="review">
                     <ul>
-                        <li><strong>이시한 교수</strong><p>유튜브에서 보고 완전 팬이에요. 멋진 강의 완전 기대됩니다. 유튜브에서 보고 완전 팬이에요. 멋진 강의 완전 기대됩니다.</p><span>(홍**)</span></li>
-                        <li><strong>이승기 PD</strong><p>당첨발표시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</p><span>(김**)</span></li>
-                        <li><strong>안혜빈 대표</strong><p>멋진 강의 완전 기대됩니다. 유튜브에서 보고 완전 팬이에요. 유튜브에서 보고 완전 팬이에요,  멋진 강의 완전 기대됩니다.</p><span>(최**)</span></li>
-                        <li><strong>이기용 대표</strong><p>제공받은 개인 정보는 경품 배송 목적으로만 활용되며, 이벤트 종료 후 3개월 이후 모두 폐기됩니다.</p><span>(박**)</span></li>
+                        <li><p>안혜빈 대표님의 강의가 정말 기대됩니다</p><span>(박민*)</span></li>
+                        <li><p>싹PD님~~ 팬이에요 ^^ 멋진 강의 기대하겠습니다~~ </p><span>(황희*)</span></li>
+                        <li><p>이기용대표님 영상 보니 너무 멋지십니다. 믿고 따라하면 블로그마켓팅 성공 할 수 있을것 같아요^^</p><span>(김영*)</span></li>
+                        <li><p>제공받은 개인 정보는 경품 배송 목적으로만 활용되며, 이벤트 종료 후 3개월 이후 모두 폐기됩니다.</p><span>(박**)</span></li>
                     </ul>
                 </div>
             </div>
@@ -128,7 +124,15 @@
             </div>
 
             <div class="evtCtnsBox evt03" id="evtn03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_03.jpg" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_03.jpg" alt="" usemap="#Mapsnslink" border="0" >
+                <map name="Mapsnslink">
+                    <area shape="rect" coords="249,735,335,822" href="https://section.blog.naver.com" target="_blank">
+                    <area shape="rect" coords="359,738,440,820" href="https://www.instagram.com/" target="_blank">
+                    <area shape="rect" coords="464,737,549,822" href="https://www.facebook.com/" target="_blank">
+                    <area shape="rect" coords="573,738,656,823" href="https://story.kakao.com/" target="_blank">
+                    <area shape="rect" coords="680,738,767,822" href="https://band.us/" target="_blank">
+                    <area shape="rect" coords="789,737,872,821" href="https://twitter.com/" target="_blank">
+                </map>
             </div>
 
             {{--홍보url--}}

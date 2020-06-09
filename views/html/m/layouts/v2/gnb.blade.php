@@ -66,7 +66,7 @@
                     <div class="Depth">
                         <ul>
                             <li><a href="#none">· 공지사항</a></li>
-                            <li><a href="#none">· 자주하는 질문</a></li>
+                            <li><a href="#none">· FAQ</a></li>
                             <li><a href="#none">· 동영상 상담실</a></li>
                         </ul>
                     </div>

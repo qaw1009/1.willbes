@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container hanlim3095 NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -28,21 +28,6 @@
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
-
-        <div class="Section mt50">
-            <div class="widthAuto">
-                {{-- board include --}}
-                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
-            </div>
-        </div>
-
-        <div class="Section mt30">
-            <div class="widthAuto">
-                {{-- 학원수강신청, 학원보강, 강의실배정표, 신규동영상안내, 무료특강, 강의자료실 버튼 --}}
-                @include('willbes.pc.site.main_partial.content_menu_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
-            </div>
-        </div>
-
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">
@@ -61,64 +46,47 @@
             </div>
         </div>
 
-        {{--이달의 강의 / 강의맛보기 --}}
-        <div class="Section Section1">
-            <div>
-                <div class="copyTit">
-                    <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+        <div class="Section">
+            <div class="widthAuto">
+                <div class="copyTit NSK-Thin mt100">
+                    흉내 낼 수는 있지만 <strong class="NSK-Black"><span class="tx-color">같을 수 없습니다.</span></strong><br />
+                    <strong class="NSK-Black">합격을 위한 이유있는 선택!</strong> 시험을 가장 잘 아는 <strong class="NSK-Black"><span class="tx-color">한림법학원</span></strong>의 합격 최적화 강의!
                 </div>
-                <div class="thisMonth NSK">
-                    <div class="thisMonthBox">
-                        <ul class="tmslider">
-                            @if(!empty($data['best_product']))
-                                @foreach($data['best_product'] as $row)
-                                    <li>
-                                        <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
-                                            <img src="{{$row['ProfIndexImg'] or ''}}">
-                                            <div class="tx-color">{{$row['ProdName']}}</div>
-                                            <div class="NSK-Black">{{$row['ProfNickName']}}</div>
-                                            <div>{{$row['ProdMainIntroMemo']}}</div>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                        <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                        <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
-                    </div>
-                </div>
+                <img src="https://static.willbes.net/public/images/promotion/main/3095_visual01.gif" alt="로드맵" usemap="#Map3095" border="0">
+                <map name="Map3095" id="Map3095">
+                    <area shape="rect" coords="77,384,233,476" href="https://gosi.willbes.net/lecture/index/cate/3094/pattern/only?search_order=course&amp;coㅁurse_idx=1107" alt="원론강의" />
+                    <area shape="rect" coords="216,194,374,286" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1108" alt="예비순환" />
+                    <area shape="rect" coords="472,114,657,203" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1109" alt="GS1순환" />
+                    <area shape="rect" coords="737,192,895,286" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1110" alt="GS2순환" />
+                    <area shape="rect" coords="877,382,1034,476" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1111" alt="GS3순환" />
+                </map>
+            </div>
+        </div>
 
-                <div class="copyTit mt100">
-                    <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
+        <div class="Section Section1">
+            <div class="widthAuto">
+                <div class="copyTit NSK-Thin mb50">
+                    최단기 합격을 위한<br />
+                    <strong class="NSK-Black">수강생을 위한 <span class="tx-color">맞춤형 추천 강좌</span></strong>
                 </div>
-                <div class="preview NSK">
-                    <div class="previewBox">
-                        <ul class="pvslider">
-                            @if(!empty($data['new_product']))
-                                @foreach($data['new_product'] as $row)
-                                    @php
-                                        $sample_info = [];
-                                        if($row['LectureSamplewUnit'] !== 'N') {
-                                            $sample_info = json_decode($row['LectureSamplewUnit'], true);
-                                        }
-                                    @endphp
-                                    <li>
-                                        <a href="javascript:{{!empty($sample_info[0]['wUnitIdx']) ? "fnPlayerSample('".$row["ProdCode"]."','".$sample_info[0]["wUnitIdx"]."','".($sample_info[0]["wHD"] != '' ? 'HD' : 'SD')."')" : "alert('샘플영상 준비중입니다.')" }};">
-                                            <img src="{{$row['ProfIndexImg'] or ''}}">
-                                            <div>
-                                                {{$row['ProdName']}}<BR>
-                                                {{empty($sample_info) ? '' : $sample_info[0]['wUnitName']}}
-                                                <strong>{{$row['SubjectName']}} {{$row['ProfNickName']}}</strong>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                        <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                        <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
-                    </div>
-                </div>
+                <ul class="PBcts">
+                    @for($i=1; $i<=5; $i++)
+                        @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
+                            <li>
+                                <div class="bSlider">
+                                    {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                </div>
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt90">
+            <div class="widthAuto">
+                {{-- board include --}}
+                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
             </div>
         </div>
 
@@ -127,7 +95,70 @@
 
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">
-                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+                <div class="CScenterBox">
+                    <dl>
+                        <dt class="willbesNumber">
+                        <ul>
+                            <li>
+                                <div class="nTit">온라인 수강문의</div>
+                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 3</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">교재문의</div>
+                                <div class="nNumber tx-color">1544-4944</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">학원 고객센터</div>
+                                <div class="nNumber tx-color">1544-1881</div>
+                                <div class="nTxt">
+                                    [전화/방문상담 운영시간]<br/>
+                                    평일/주말: 08시~ 18시<br/>
+                                </div>
+                            </li>
+                        </ul>
+                        </dt>
+                        <dt class="willbesCenter">
+                        <div class="centerTit">윌비스 고등고시 사이트에 물어보세요!</div>
+                        <ul>
+                            <li>
+                                <a href="{{ site_url('/support/faq/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
+                                    <div class="nTxt">자주하는<br/>질문</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/mobile/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                                    <div class="nTxt">모바일<br/>서비스</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/qna/index?s_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                                    <div class="nTxt">동영상<br/>상담실</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/remote/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
+                                    <div class="nTxt">1:1<br/>고객지원</div>
+                                </a>
+                            </li>
+                        </ul>
+                        </dt>
+
+                    </dl>
+                </div>
             </div>
         </div>
         <!-- CS센터 //-->
@@ -139,56 +170,4 @@
     </div>
     <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-
-    <script type="text/javascript">
-        $(function() {
-            var slidesImg = $(".tmslider").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:4,
-                maxSlides:4,
-                slideWidth: 274,
-                slideMargin:8,
-                autoHover: true,
-                moveSlides:1,
-                pager:true,
-            });
-            $("#imgBannerLeft").click(function (){
-                slidesImg.goToPrevSlide();
-            });
-
-            $("#imgBannerRight").click(function (){
-                slidesImg.goToNextSlide();
-            });
-        });
-
-        $(function() {
-            var slidesImg1 = $(".pvslider").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:3,
-                maxSlides:3,
-                slideWidth: 460,
-                slideMargin:10,
-                autoHover: true,
-                moveSlides:1,
-                pager:true,
-            });
-            $("#imgBannerLeft1").click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-
-            $("#imgBannerRight1").click(function (){
-                slidesImg1.goToNextSlide();
-            });
-        });
-    </script>
 @stop

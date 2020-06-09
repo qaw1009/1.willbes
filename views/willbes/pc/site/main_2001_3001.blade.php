@@ -112,7 +112,7 @@
             </div>
         </div>
 
-        <div class="Section mt20">
+        <div class="Section mt50">
             <div class="widthAuto">
                 {!! banner_html(element('메인_빅배너', $data['arr_main_banner'])) !!}
             </div>

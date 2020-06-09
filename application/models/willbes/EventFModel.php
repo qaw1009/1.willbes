@@ -89,7 +89,8 @@ class EventFModel extends WB_Model
     // 메세지 발송 치환 정보
     private $_sms_send_content_replace = [
         '{{name}}' => 'register_name',
-        '{{id}}' => 'register_id'
+        '{{id}}' => 'register_id',
+        '{{register_info_name}}' => 'register_info_name'
     ];
 
     // 회원 관심직렬
@@ -503,6 +504,11 @@ class EventFModel extends WB_Model
                 if ($this->_addEventRegisterMember($input_register_data) !== true) {
                     throw new \Exception('특강 신청에 등록 실패했습니다.');
                 }
+            }
+
+            // 자동문자 신청리스트명 치환 셋팅
+            if(empty($inputData['register_chk_name']) === false) {
+                $inputData['register_info_name'] = $inputData['register_chk_name'][0];
             }
 
             //SMS 발송
@@ -1220,7 +1226,7 @@ class EventFModel extends WB_Model
     {
         //메세지 치환
         foreach($this->_sms_send_content_replace as $key => $val) {
-            if(strpos($data['SmsContent'], $key) !== false) {
+            if(strpos($data['SmsContent'], $key) !== false && empty($send_data[$val]) === false) {
                 $data['SmsContent'] = str_replace($key, $send_data[$val], $data['SmsContent']);
             }
         }

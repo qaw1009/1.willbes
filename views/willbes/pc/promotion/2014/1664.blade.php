@@ -97,7 +97,10 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_02.jpg" alt="" >
                 <ul class="inputBox NSK-Black">
                     @foreach($arr_base['register_list'] as $row)
-                        <li><input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{ $row['ErIdx'] }}"><label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label></li>
+                        <li>
+                            <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{ $row['ErIdx'] }}"><label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
+                            <input type="hidden" name="register_chk_name[]" value="{{ $row['Name'] }}" data-register-chk="{{ $row['ErIdx'] }}"/>
+                        </li>
                     @endforeach
                     {{--
                     <li><input type="radio" id="pr01"><label for="pr01"> 이시한 교수</label></li>
@@ -183,6 +186,16 @@
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
+
+            {{-- register_chk_name 필요한것 이외 disabled 처리. (신청리스트명 문자발송 치환을 위한 정보) --}}
+            var reg_chk_val = $regi_form_register.find('input[name="register_chk[]"]:checked').val();
+            $regi_form_register.find('input[name="register_chk_name[]"]').each(function(i) {
+                if($(this).data('register-chk') == reg_chk_val) {
+                    $(this).attr('disabled', false);
+                } else {
+                    $(this).attr('disabled', true);
+                }
+            });
 
             if (!confirm('저장하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

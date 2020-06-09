@@ -392,9 +392,13 @@
                                     <div class="col-md-5 form-inline">
                                         <input type="checkbox" id="add_name_chk" name="add_name_chk" class="flat" value="Y"/>
                                     </div>
-                                    <div class="col-md-5">
-                                        <p class="form-control-static"></p>
+                                    <label class="control-label col-md-1-1">신청명삽입</label>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" id="add_register_info_name_chk" name="add_register_info_name_chk" class="flat" value="Y"/>
                                     </div>
+{{--                                    <div class="col-md-5">--}}
+{{--                                        <p class="form-control-static"></p>--}}
+{{--                                    </div>--}}
                                 </div>
 
                                 <div class="row mt-10">
@@ -888,10 +892,21 @@
                 window.open(_url, '_blank');
             });
 
-            //이름 삽입
+            // 이름 삽입
             $regi_form.on('ifChanged', '#add_name_chk', function(){
                 var $sms_content = $regi_form.find('#sms_content');
                 var add_name_msg = '\{\{name\}\} 회원님 \n';
+                if($(this).is(':checked')){
+                    $sms_content.val(add_name_msg + $sms_content.val());
+                }else{
+                    $sms_content.val($sms_content.val().replace(new RegExp(add_name_msg,'gi'), ''));
+                }
+            });
+
+            // 신청명 삽입
+            $regi_form.on('ifChanged', '#add_register_info_name_chk', function(){
+                var $sms_content = $regi_form.find('#sms_content');
+                var add_name_msg = '\{\{register_info_name\}\}\n';
                 if($(this).is(':checked')){
                     $sms_content.val(add_name_msg + $sms_content.val());
                 }else{

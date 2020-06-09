@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim3099 NGR c_both">
+    <div id="Container" class="Container hanlim3095 NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -23,13 +23,11 @@
                 </div>
             </div>
         </div>
-        {{--
-           <div class="Section barBnr">
-               <div class="widthAuto">
-                   {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
-               </div>
-           </div>
-           --}}
+        <div class="Section barBnr">
+            <div class="widthAuto">
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">
@@ -54,13 +52,13 @@
                     흉내 낼 수는 있지만 <strong class="NSK-Black"><span class="tx-color">같을 수 없습니다.</span></strong><br />
                     <strong class="NSK-Black">합격을 위한 이유있는 선택!</strong> 시험을 가장 잘 아는 <strong class="NSK-Black"><span class="tx-color">한림법학원</span></strong>의 합격 최적화 강의!
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/main/3099_visual01.gif" alt="로드맵" usemap="#Map3099" border="0">
-                <map name="Map3099" id="Map3099">
-                    <area shape="rect" coords="76,383,232,475" href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only?search_order=course&amp;course_idx=1209" alt="기본강의" />
-                    <area shape="rect" coords="217,194,371,285" href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only?search_order=course&amp;course_idx=1205" alt="쟁점정리" />
-                    <area shape="rect" coords="476,112,653,206" href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only?search_order=course&amp;course_idx=1206" alt="중요판례정리" />
-                    <area shape="rect" coords="736,193,896,289" href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only?search_order=course&amp;course_idx=1207" alt="문제풀이" />
-                    <area shape="rect" coords="877,382,1034,476" href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only?search_order=course&amp;course_idx=1208" alt="마무리핵심체크" />
+                <img src="https://static.willbes.net/public/images/promotion/main/3095_visual01.gif" alt="로드맵" usemap="#Map3095" border="0">
+                <map name="Map3095" id="Map3095">
+                    <area shape="rect" coords="77,384,233,476" href="https://gosi.willbes.net/lecture/index/cate/3094/pattern/only?search_order=course&amp;coㅁurse_idx=1107" alt="원론강의" />
+                    <area shape="rect" coords="216,194,374,286" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1108" alt="예비순환" />
+                    <area shape="rect" coords="472,114,657,203" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1109" alt="GS1순환" />
+                    <area shape="rect" coords="737,192,895,286" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1110" alt="GS2순환" />
+                    <area shape="rect" coords="877,382,1034,476" href="https://gosi.willbes.net/lecture/index/cate/3095/pattern/only?search_order=course&amp;course_idx=1111" alt="GS3순환" />
                 </map>
             </div>
         </div>
@@ -97,8 +95,70 @@
 
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">
-                {{-- cscenter --}}
-                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+                <div class="CScenterBox">
+                    <dl>
+                        <dt class="willbesNumber">
+                        <ul>
+                            <li>
+                                <div class="nTit">온라인 수강문의</div>
+                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 3</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">교재문의</div>
+                                <div class="nNumber tx-color">1544-4944</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">학원 고객센터</div>
+                                <div class="nNumber tx-color">1544-1881</div>
+                                <div class="nTxt">
+                                    [전화/방문상담 운영시간]<br/>
+                                    평일/주말: 08시~ 18시<br/>
+                                </div>
+                            </li>
+                        </ul>
+                        </dt>
+                        <dt class="willbesCenter">
+                        <div class="centerTit">윌비스 고등고시 사이트에 물어보세요!</div>
+                        <ul>
+                            <li>
+                                <a href="{{ site_url('/support/faq/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
+                                    <div class="nTxt">자주하는<br/>질문</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/mobile/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                                    <div class="nTxt">모바일<br/>서비스</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/qna/index?s_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                                    <div class="nTxt">동영상<br/>상담실</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url('/support/remote/index') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
+                                    <div class="nTxt">1:1<br/>고객지원</div>
+                                </a>
+                            </li>
+                        </ul>
+                        </dt>
+
+                    </dl>
+                </div>
             </div>
         </div>
         <!-- CS센터 //-->
@@ -109,6 +169,5 @@
         </div>
     </div>
     <!-- End Container -->
-    
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

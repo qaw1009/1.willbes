@@ -176,12 +176,22 @@
         <!--최종 마무리 전략-->
         <div id="content_1" class="tabCts">
             <div class="download">
+                {{--
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_01.jpg" usemap="#Map1660A" title="적중모의고사 무료" border="0" />
                 <map name="Map1660A">
                     <area shape="rect" coords="102,941,396,1039" href="@if($file_yn[18] == 'Y') {{ front_url($file_link[18]) }} @else {{ $file_link[18] }} @endif" target="_blank" alt="기미진국어 자료">
                     <area shape="rect" coords="409,942,700,1038" href="@if($file_yn[19] == 'Y') {{ front_url($file_link[19]) }} @else {{ $file_link[19] }} @endif" target="_blank" alt="한덕현영어 자료">
                     <area shape="rect" coords="726,942,1020,1036" href="@if($file_yn[20] == 'Y') {{ front_url($file_link[20]) }} @else {{ $file_link[20] }} @endif" target="_blank" alt="조민주영어 자료">
-                </map>   
+                </map>
+                --}} 
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_01_01.jpg" usemap="#Map0609" border="0">
+                <map name="Map0609">
+                    <area shape="rect" coords="232,930,533,1028" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="무료접수">
+                    <area shape="rect" coords="584,930,880,1027" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" alt="무료응시">
+                    <area shape="rect" coords="11,1630,356,1859" href="#none" onclick="javascript:alert('준비중입니다.');">
+                    <area shape="rect" coords="383,1632,732,1864" href="#none" onclick="javascript:alert('준비중입니다.');">
+                    <area shape="rect" coords="764,1630,1108,1863" href="#none" onclick="javascript:alert('준비중입니다.');">
+                </map>  
             </div>       
             
             <div class="youtube">

@@ -15,7 +15,7 @@ class SupportBoardFModel extends BaseSupportFModel
      * @param $is_count
      * @param array $arr_condition
      * @param $cate_code
-     * @param null $column
+     * @param string $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
@@ -82,7 +82,7 @@ class SupportBoardFModel extends BaseSupportFModel
      * @param $site_code
      * @param $cate_code
      * @param array $arr_condition
-     * @param null $column
+     * @param string $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
@@ -124,7 +124,7 @@ class SupportBoardFModel extends BaseSupportFModel
             ) AS s ON b.SiteGroupCode = s.SiteGroupCode
         ";
 
-        if (empty($cate_code) === false) {
+        if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {
             $from .= "
                 inner join {$this->_table['lms_board_r_category']} as c
                     on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'

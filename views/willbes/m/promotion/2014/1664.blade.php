@@ -1,59 +1,68 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
-        .evtContent {
-            position:relative;
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-            color:#3a3a3a;
-        }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
+        .evtCtnsBox img {width:100%; max-width:720px;}
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1664_top_bg.jpg) no-repeat center top}
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1664_01_bg.jpg) no-repeat center top}
-        .evt01 .review {position:absolute; top:833px; left:50%; margin-left:-298px; width:766px; height:60px; z-index:10; overflow:hidden;}
-        .evt01 .review li {position:relative; height:60px; line-height: 60px; font-size:16px;}
-        .evt01 .review li p {padding:0 90px 0 100px; width:760px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-        .evt01 .review span,
-        .evt01 .review strong {position:absolute; top:0; height:60px; line-height: 60px; z-index:11; color:#000}
-        .evt01 .review strong {width:100px; left:0;}
-        .evt01 .review span {width:80px; right:0;}
+        .evtTop {}
+        .evt01 {}
 
-
+        .evtprof {background:#1e252e;overflow:hidden;position:relative}
+        .evtprof .swiper-container-prof {}
+        .evtprof .swiper-container-prof .swiper-slide { 
+            width:100%;             
+            margin:0 !important;
+            padding:0 !important;  
+            background:#1e252e;
+        /* Center slide text vertically */ 
+            display: -webkit-box; 
+            display: -ms-flexbox; 
+            display: -webkit-flex; 
+            display: flex; 
+            -webkit-box-pack: left; 
+            -ms-flex-pack: left; 
+            -webkit-justify-content: left; 
+            justify-content: left; 
+            -webkit-box-align: left; 
+            -ms-flex-align: left; 
+            -webkit-align-items: left; 
+            align-items: left; 
+        } 
+        .evtprof .swiper-container-prof .swiper-slide img {width:100%;}
+        .evtprof .swiper-container-prof .swiper-pagination {top:30px !important;} 
+        .evtprof .review { position:absolute; bottom:20px; left:3%; width:94%; height:50px; background:#fff; overflow:hidden; z-index:10}
+        .evtprof .review li {position:relative; height:50px; line-height:50px; font-size:16px; }
+        .evtprof .review li p {width:calc(100% - 60px); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; text-align:left; padding-left:10px}
+        .evtprof .review span {position:absolute; top:0; height:50px;width:60px; right:0; line-height: 50px; z-index:11; color:#000}
         .evt02 {background:#1b58ef}
-        .evt02 .inputBox {position:absolute; top:942px; left:50%; margin-left:-393px; width:786px; z-index:10}
+
+        .evt02 .inputBox {padding:0 20px; margin-bottom:20px}
         .evt02 .inputBox li {display:inline; float:left; width:25%; text-align:center; font-size:18px; color:#fff}
         .evt02 input[type=checkbox],
         .evt02 input[type=radio] {width:20px; height:20px}
         .evt02 label {margin-left:10px}
         .evt02 input[type=text],
         .evt02 input[type=number] {height:56px; line-height:56px; font-size:16px ; width:100%; border:0; border-radius:30px; color:#666; padding-left:20px}
-        .evt02 .receive {position:absolute; top:1110px; left:50%; margin-left:-365px; width:730px; z-index:10; font-size:14px; color:#fff; line-height:1.5; text-align:left}
+        .evt02 .receive {padding:20px; font-size:14px; color:#fff; line-height:1.5; text-align:left}
         .evt02 .receive li {margin-bottom:24px}
         .evt02 .receive li:nth-child(2) {display:inline; float:left; width:35%; margin-right:5%}
         .evt02 .receive li:nth-child(3) {display:inline; float:left; width:60%;}
         .evt02 .receive ul:after {content:""; display:block; clear:both}
-        .evt02 .receive div {padding-left:50px}
-        .evt02 .receive div.info {padding-left:80px}
+        .evt02 .receive div {padding-left:20px}
+        .evt02 .receive div.info {padding-left:40px}
         .evt02 .receive input:focus {border:5px solid #000 !important}
+        .evt02 .receive img {max-width:432px}
         .evt02 input:checked + label {border-bottom:1px dashed #fff}
 
-        .evt03 {background:#fff;}
+        .evt03 {background:#fff; padding-bottom:100px}
+        .evt03 a {display:inline-block; height:60px; line-height:60px; text-align:center; color:#fff; font-size:30px;
+            border-radius:30px; padding:0 40px; margin:0 auto; background:#000}
 
         .evt04 {background:#c2c2c2;}
-        .evt04 .evt04Box {width:900px; margin:0 auto; color:#3a3a3a; text-align:left; padding:50px 0; font-size:14px; line-height:1.5}
+        .evt04 .evt04Box {color:#3a3a3a; text-align:left; padding:40px; font-size:14px; line-height:1.5}
         .evt04 h3 {font-size:28px; margin-bottom:30px}
         .evt04 div {font-size:16px; margin-bottom:10px}
         .evt04 .evt04Box li {list-style: disc; margin-left:15px}
@@ -71,30 +80,36 @@
             <input type="hidden" name="register_chk_no_member" value="Y"/>  {{-- MemIdx 제외하고 등록중복체크 --}}
 
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_top.jpg" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_top.jpg" alt="" >
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_01.jpg" alt="" usemap="#Map1644" border="0" >
-                <map name="Map1644">
-                    <area shape="rect" coords="190,701,349,743" href="/promotion/index/cate/3114/code/1665" target="_blank" alt="이시한">
-                    <area shape="rect" coords="435,701,596,744" href="/promotion/index/cate/3114/code/1666" target="_blank" alt="이승기">
-                    <area shape="rect" coords="689,700,852,746" href="/promotion/index/cate/3114/code/1667" target="_blank" alt="안혜빈">
-                    <area shape="rect" coords="928,700,1086,742" href="/promotion/index/cate/3114/code/1669" target="_blank" alt="이기용">
-                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_01.jpg">
+            </div>
+
+            <div class="evtCtnsBox evtprof">
+                <div class="swiper-container-prof">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_t01.jpg" alt="" ></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_t02.jpg" alt="" ></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_t03.jpg" alt="" ></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_t04.jpg" alt="" ></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
 
                 <div class="review">
                     <ul>
-                        <li><strong>이시한 교수</strong><p>유튜브에서 보고 완전 팬이에요. 멋진 강의 완전 기대됩니다. 유튜브에서 보고 완전 팬이에요. 멋진 강의 완전 기대됩니다.</p><span>(홍**)</span></li>
-                        <li><strong>이승기 PD</strong><p>당첨발표시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</p><span>(김**)</span></li>
-                        <li><strong>안혜빈 대표</strong><p>멋진 강의 완전 기대됩니다. 유튜브에서 보고 완전 팬이에요. 유튜브에서 보고 완전 팬이에요,  멋진 강의 완전 기대됩니다.</p><span>(최**)</span></li>
-                        <li><strong>이기용 대표</strong><p>제공받은 개인 정보는 경품 배송 목적으로만 활용되며, 이벤트 종료 후 3개월 이후 모두 폐기됩니다.</p><span>(박**)</span></li>
+                        <li><p>안혜빈 대표님의 강의가 정말 기대됩니다. </p><span>(박민*)</span></li>
+                        <li><p>싹PD님~~ 팬이에요 ^^ 멋진 강의 기대하겠습니다~~</p><span>(황희*)</span></li>
+                        <li><p>이기용대표님 영상 보니 너무 멋지십니다. 믿고 따라하면 블로그마켓팅 성공 할 수 있을것 같아요^^</p><span>(김영*)</span></li>
+                        <li><p>이시한 교수님!! 다른 강의도 들어서 잘 알고 있는데, 정말 좋아요!! 유튜브 저도 시작해보겠습니다!</p><span>(이정*)</span></li>
                     </ul>
                 </div>
             </div>
 
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_02.jpg" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_02.jpg" alt="" >
                 <ul class="inputBox NSK-Black">
                     @foreach($arr_base['register_list'] as $row)
                         <li>
@@ -123,18 +138,14 @@
                         3. 보유 및 이용 기간: 이벤트 종료 후 3개월까지<br>
                         ※ 제공받은 개인 정보는 경품 배송 목적으로만 활용되며, 이벤트 종료 후 3개월 이후 모두 폐기됩니다.
                     </div>
-                    <div class="mt50 tx-center"><a href="javascript:fn_submit();"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664_btn.png" alt="신청하기"></a></div>
+                    <div class="mt50 tx-center"><a href="javascript:fn_submit();"><img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_btn.png" alt="신청하기"></a></div>
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt03" id="evtn03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_03.jpg" alt="" >
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1664m_03.jpg" alt="" >
+                <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1664#evtn03" target="_blank" class="NSK-Black">소문내기 이벤트 바로가기 ></a>
             </div>
-
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
-            @endif
 
             <div class="evtCtnsBox evt04">
                 <div class="evt04Box">
@@ -158,7 +169,25 @@
         </form>
     </div>
     <!-- End Container -->
-    <script type="text/javascript">
+
+    <script src="/public/vendor/jquery/swiper/swiper.js"></script>
+    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+    <script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script> 
+    <script>    
+        var swiper = new Swiper ('.swiper-container-prof', { 
+            slidesPerView: 'auto',
+            spaceBetween: 0, 
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: { 
+                el: '.swiper-pagination', 
+                clickable: true, 
+            }, 
+        }); 
+
         $(document).ready(function() {
             var collaboslides = $(".review ul").bxSlider({
                 mode:'fade', //option : 'horizontal', 'vertical', 'fade'
@@ -173,6 +202,7 @@
             });
         });
 
+        
         function fn_submit() {
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';

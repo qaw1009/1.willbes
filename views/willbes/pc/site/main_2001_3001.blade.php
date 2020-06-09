@@ -96,12 +96,10 @@
             <div class="widthAuto">
                 <ul class="bnSec01">
                     <li>
-                        {{--<a href="#collaboslides"><img src="https://static.willbes.net/public/images/promotion/main/3001_315x120_01.jpg" alt="협력기관"></a>--}}
                         {!! banner_html(element('메인_상단1', $data['arr_main_banner'])) !!}
                     </li>
                     <li><a href="/"><img src="https://static.willbes.net/public/images/promotion/main/3001_logo.jpg"></a></li>
                     <li>
-                        {{--<a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1393" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/main/3001_315x120_02.jpg" alt="만점자"></a>--}}
                         {!! banner_html(element('메인_상단2', $data['arr_main_banner'])) !!}
                     </li>
                 </ul>
@@ -110,23 +108,18 @@
 
         <div class="Section">
             <div class="widthAuto">
-                {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a>--}}
                 {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
         <div class="Section mt20">
             <div class="widthAuto">
-                {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x450.jpg" alt="배너명"></a>--}}
                 {!! banner_html(element('메인_빅배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
         <div class="Section HotIssue mt20">
             <ul class="widthAuto">
-                {{--<li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_01.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_02.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_03.jpg" alt="배너명"></a></li>--}}
                 <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
                 <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>
                 <li>{!! banner_html(element('메인_서브3', $data['arr_main_banner'])) !!}</li>
@@ -142,62 +135,6 @@
                             {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
                         </li>
                     @endfor
-                    {{--<li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_01.jpg" usemap="#MapProp01" title="배너명" border="0">
-                        <map name="MapProp01">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_02.jpg" usemap="#MapProp02" title="배너명" border="0">
-                        <map name="MapProp02">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_03.jpg" usemap="#MapProp03" title="배너명" border="0">
-                        <map name="MapProp03">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_04.jpg" usemap="#MapProp04" title="배너명" border="0">
-                        <map name="MapProp04">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_05.jpg" usemap="#MapProp05" title="배너명" border="0">
-                        <map name="MapProp05">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_06.jpg" usemap="#MapProp06" title="배너명" border="0">
-                        <map name="MapProp06">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_07.jpg" usemap="#MapProp07" title="배너명" border="0">
-                        <map name="MapProp07">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_08.jpg" usemap="#MapProp08" title="배너명" border="0">
-                        <map name="MapProp08">
-                            <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
-                            <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
-                        </map>
-                    </li>--}}
                 </ul>
             </div>
         </div>
@@ -206,26 +143,16 @@
             <div class="widthAuto">
                 <ul>
                     <li>
-                        {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_01.jpg" title="배너명"></a>--}}
                         {!! banner_html(element('메인_미들1', $data['arr_main_banner'])) !!}
                     </li>
                     <li>
                         {!! banner_html(element('메인_미들2', $data['arr_main_banner'])) !!}
-                        {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_02.jpg" title="배너명"></a>--}}
                     </li>
                     <li class="sliderbnSec02 nSlider pick">
                         {!! banner_html(element('메인_미들3', $data['arr_main_banner']), 'sliderNum') !!}
-                        {{--<div class="sliderNum">
-                            <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_03.jpg"></div>
-                            <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_04.jpg"></div>
-                        </div>--}}
                     </li>
                     <li class="sliderbnSec02 nSlider pick">
                         {!! banner_html(element('메인_미들4', $data['arr_main_banner']), 'sliderNum') !!}
-                        {{--<div class="sliderNum">
-                            <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_04.jpg"></div>
-                            <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_03.jpg"></div>
-                        </div>--}}
                     </li>
                 </ul>
             </div>
@@ -251,14 +178,6 @@
                     <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 무료특강</div>
                     <ul>
                         {!! banner_html(element('메인_hotpick3', $data['arr_main_banner'])) !!}
-                        {{--
-                        <li>
-                            <div class="sliderNum">
-                                <div><img src="{{ img_url('cop/event/evt_190104.jpg') }}"></div>
-                                <div><img src="{{ img_url('cop/event/evt_190105.jpg') }}"></div>
-                            </div>
-                        </li>
-                        --}}
                     </ul>
                 </div>
             </div>
@@ -277,36 +196,6 @@
                                     }
                                 }
                             @endphp
-                            {{--<li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                                </a>
-                            </li>--}}
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
                         <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>

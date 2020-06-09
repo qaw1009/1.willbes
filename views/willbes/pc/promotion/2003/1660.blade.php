@@ -188,12 +188,13 @@
                 <map name="Map0609">
                     <area shape="rect" coords="232,930,533,1028" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="무료접수">
                     <area shape="rect" coords="584,930,880,1027" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" alt="무료응시">
-                    <area shape="rect" coords="11,1630,356,1859" href="#none" onclick="javascript:alert('준비중입니다.');">
+                    <area shape="rect" coords="11,1630,356,1859" href="https://www.youtube.com/embed/y8L8RSxCOzc" target="_blank">
                     <area shape="rect" coords="383,1632,732,1864" href="#none" onclick="javascript:alert('준비중입니다.');">
-                    <area shape="rect" coords="764,1630,1108,1863" href="#none" onclick="javascript:alert('준비중입니다.');">
+                    <area shape="rect" coords="764,1630,1108,1863" href="https://www.youtube.com/embed/G5MiVdQEiNo" target="_blank">
                 </map>  
             </div>       
             
+            <!--
             <div class="youtube">
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
@@ -203,6 +204,7 @@
                 {{-- <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_comingsoon.jpg"  title="방송전" /> --}}
                 {{--<iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>--}}
             </div>
+            -->
 
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_02.jpg" title="응시자 준수사항 및 필기장소 안내" />           
         </div>

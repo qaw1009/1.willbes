@@ -725,18 +725,26 @@
                 datatableExe();
             }
 
-            $search_form.on('click', '.btn-search', function() {
-                chartExe();
-                datatableReset();
-            });
-
             $search_form.on('ifChanged','input[name="site_code_all_check"]', function () {
                 var $_name = $('input[name="'+$(this).data("name")+'[]"]');
                 iCheckAll($_name, $(this));
             });
 
-            chartExe();
-            datatableExe();
+            $search_form.on('click', '.btn-search', function() {
+                pageLoading('show');
+                setTimeout(function() {
+                    chartExe();
+                    datatableReset();
+                    pageLoading('hide');
+                }, 0);
+            });
+
+            pageLoading('init');
+            setTimeout(function() {
+                chartExe();
+                datatableExe();
+                pageLoading('hide');
+            }, 0);
         });
     </script>
 @stop

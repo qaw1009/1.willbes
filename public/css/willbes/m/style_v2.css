@@ -937,11 +937,11 @@ body.memBody #Footer {
 }
 
 /*고등고시*/
-.gosibtns ul {border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
-.gosibtns li {display:inline; float:left; width:33.33333%}
-.gosibtns li img {width:100%;max-width: 240px;}
-.gosibtns li:last-child {border:0}
-.gosibtns ul:after {content:""; display:block; clear:both}
+.bnSec02 ul {border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+.bnSec02 li {display:inline; float:left; width:33.33333%}
+.bnSec02 li img {width:100%;max-width: 240px;}
+.bnSec02 li:last-child {border:0}
+.bnSec02 ul:after {content:""; display:block; clear:both}
 
 .mainTab {border-top:1px solid #ccc; margin-top: 20px;}
 .mainTab li {display:inline; float:left; width:33.33333%}
@@ -1055,6 +1055,16 @@ body.memBody #Footer {
 .csCenter li span {display: block; color:#006cff; font-weight: bold;}
 .csCenter .tel li:after,
 .csCenter ul:after {content:""; display:block; clear:both}
+
+.gosibtns {margin:20px 20px 0; border-bottom:2px solid #333; padding-bottom:20px}
+.gosibtns li {display:inline; float:left; width:33.33333%;}
+.gosibtns li a {display:block; text-align:center; margin:0 5px 5px 0; border:1px solid #e4e4e4; font-size:0.9rem;
+    padding:10px 0; color:#666;}
+.gosibtns li:nth-child(3) a,
+.gosibtns li:nth-child(6) a {margin-right:0}
+.gosibtns li a:hover,
+.gosibtns li a:active {background: #1a8ccc; color: #fff; border:1px solid #1a8ccc;}
+.gosibtns ul:after {content:""; display:block; clear:both}
 
 /* Tabs : lineTab 공통 */
 .lineTabs {
@@ -1318,6 +1328,7 @@ body.memBody #Footer {
     background: #ececec;
     border-top: 1px solid #ccc;
     padding-bottom:120px !important;
+    margin-top: 30px;
 }
 #Footer .ft-Link {
     font-size: 12px;
@@ -1807,6 +1818,7 @@ body.memBody #Footer {
     height: 22px;
     line-height: 22px;
 }
+
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;
@@ -2792,7 +2804,6 @@ body.memBody #Footer {
     margin:0 4px;
 }
 
-
 .lec-info .w-data {
     border-top:1px solid #edebeb;
     padding:20px 0 0;
@@ -3752,6 +3763,24 @@ body.memBody #Footer {
     margin:20px;
 }
 
+/*교수*/
+.profArea {padding:0 20px}
+.profArea .subjectBox {margin-top:30px;}
+.profArea .subjectBox .subTitle {font-size:16px; margin-bottom:10px}
+.profArea .subjectBox li {
+    display: inline;
+    float:left;
+    width:calc(33.3333330% - 10px);
+    background:#eee; 
+    overflow: hidden;
+    margin-bottom:10px;
+}
+.profArea .subjectBox a {display: block; height: 152px; position: relative;}
+.profArea .subjectBox li div {position:absolute; top:38px; left:18px; width:60%; text-align: left; line-height: 1.2; font-size: 18px; z-index: 2;}
+.profArea .subjectBox li img {width:100%; margin-top:-10px}
+.profArea .subjectBox span {display: block; font-size:20px; color:#1a8ccc}
+.profArea .subjectBox ul:after {content:""; display:block; clear: both;}
+
 /*********************************************     MYPAGE     *********************************************/
 
 /*게시판 신규강의리스트*/
@@ -3826,7 +3855,7 @@ body.memBody #Footer {
     }
     .csCenter .link li a {font-size:14px;}
     .csCenter .tel li {display: block; float:none; width:100%; border-right:0}
-    .csCenter .tel li br {display:none}    
+    .csCenter .tel li br {display:none}     
 }
 
 
@@ -3841,7 +3870,7 @@ body.memBody #Footer {
     .filetype .file-text {
         width: 64%;
     }
-    .csCenter .tel li div {margin-left:20px}
+    .csCenter .tel li div {margin-left:20px}        
 }
 
 /* Calendar */

@@ -22,6 +22,10 @@
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1665_top_bg.jpg) no-repeat center top}
+        .evtTop div {position:absolute; top:25px; left:50%; margin-left:200px; width:360px; height:100px; z-index:10;}
+        .evtTop div a {display:block; float:left; width:90px; height:100px; font-size:0; text-indent: -9999px;}
+        .evtTop div:after {content:""; display:block; clear:both}
+
         .evtTop_01{background:#4d79f6}
 
         .evt01 {background:#787878; padding-bottom:100px}        
@@ -38,6 +42,12 @@
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_top.jpg" alt="" > 
+            <div>
+                <a href="#none">이시한교수</a>
+                <a href="/promotion/index/cate/3114/code/1666">이승기PD</a>
+                <a href="/promotion/index/cate/3114/code/1668">안혜빈대표</a>
+                <a href="/promotion/index/cate/3114/code/1669">이기용대표</a>
+            </div>
         </div> 
         <div class="evtCtnsBox evtTop_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_top_01.jpg" alt="" > 

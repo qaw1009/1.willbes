@@ -3767,15 +3767,14 @@ body.memBody #Footer {
 .profArea {padding:0 20px}
 .profArea .subjectBox {margin-top:30px;}
 .profArea .subjectBox .subTitle {font-size:16px; margin-bottom:10px}
+.profArea .subjectBox ul {margin-right: -10px;}
 .profArea .subjectBox li {
     display: inline;
     float:left;
-    width:calc(33.3333330% - 10px);
-    background:#eee; 
-    overflow: hidden;
-    margin-bottom:10px;
+    width:calc(33.333333% - 10px);    
+    margin-right:10px;
 }
-.profArea .subjectBox a {display: block; height: 152px; position: relative;}
+.profArea .subjectBox a {display: block; height:152px; background:#eee; position:relative; margin-bottom:10px; overflow: hidden; }
 .profArea .subjectBox li div {position:absolute; top:38px; left:18px; width:60%; text-align: left; line-height: 1.2; font-size: 18px; z-index: 2;}
 .profArea .subjectBox li img {width:100%; margin-top:-10px}
 .profArea .subjectBox span {display: block; font-size:20px; color:#1a8ccc}

@@ -82,6 +82,8 @@
             <a href="{{ site_url('/home/html/m/lecture_online_free3') }}" target="_blank">보강동영상</a>
             <a href="{{ site_url('/home/html/m/lecture_online_free4#tab03') }}" target="_blank">보강동영상 > 상세보기</a>
             <br><br>
+            <a href="{{ site_url('/home/html/m/prof_online1') }}" target="_blank">교수소개 리스트</a>
+            <br><br>
             <a href="{{ site_url('/home/html/m/basket_01') }}" target="_blank">장바구니</a>
             <a href="{{ site_url('/home/html/m/payment_01') }}" target="_blank">결제하기</a>
             <a href="{{ site_url('/home/html/m/payment_02') }}" target="_blank">결제완료</a>

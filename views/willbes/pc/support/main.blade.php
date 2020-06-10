@@ -213,8 +213,9 @@
                                         <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray bdb-gray tx-gray">
                                             <colgroup>
                                                 <col style="width: 100px;">
-                                                <col style="width: 100px;">
-                                                <col style="width: 740px;">
+                                                <col style="width: 150px;">
+                                                <col>
+                                                <col style="width: 50px;">
                                             </colgroup>
                                             <tbody>
                                         @php $int=0 @endphp
@@ -223,10 +224,11 @@
                                                 <tr class="replyList w-replyList">
                                                     <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                                     <td class="w-select tx-blue">[{{$list['FaqTypeCcd_Name']}}]</td>
-                                                    <td class="w-list tx-left pl20">{{$list['Title']}}<span class="arrow-Btn">></span></td>
+                                                    <td class="w-list tx-left pl20">{{$list['Title']}}</td>
+                                                    <td><span class="arrow-Btn">></span></td>
                                                 </tr>
                                                 <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                                    <td colspan="3">
+                                                    <td colspan="4">
                                                         {!! $list['Content'] !!}
                                                     </td>
                                                 </tr>

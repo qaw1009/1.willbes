@@ -152,6 +152,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-send mr-10"></i> 엑셀다운로드', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-copy mr-10"></i> HOT/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
@@ -325,6 +326,12 @@
                         $datatable.draw(false);
                     }
                 }, showError, false, 'POST');
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                formCreateSubmit('{{ site_url('/board/studyComment/excel/?bm_idx=85') }}', $search_form.serializeArray(), 'POST');
             });
         });
     </script>

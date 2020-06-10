@@ -46,20 +46,24 @@ class BoardModel extends WB_Model
      * @param null $offset
      * @param array $order_by
      * @param string $column
+     * @param boolean $use_master_column
      * @return mixed
      */
-    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*')
+    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*', $use_master_column = true)
     {
         if ($is_count === true) {
             $master_column = '';
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = \'Y\') AS CommentCnt, ';
-            $column .= '
-                ,IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),\'N\') AS CateCode
-                ,IFNULL(fn_board_attach_data(LB.BoardIdx),NULL) AS AttachFileName
-            ';
+            $master_column = '';
+            if($use_master_column === true) {
+                $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = \'Y\') AS CommentCnt, ';
+                $column .= '
+                    ,IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),\'N\') AS CateCode
+                    ,IFNULL(fn_board_attach_data(LB.BoardIdx),NULL) AS AttachFileName
+                ';
+            }
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

@@ -73,7 +73,7 @@
         .evt04 .evt04Box li {list-style: disc; margin-left:15px}
         .evt04 .evt04Box ul {margin-bottom:30px}
 
-        @@media only screen and (max-width: 374px) {
+        @@media only screen and (max-width: 640px) {
             .evt02 .inputBox li {width:50%; text-align:left}
         }
     </style>
@@ -164,7 +164,7 @@
                     <ul>
                         <li>사전예약 쿠폰은 7월 1일(월) 발급 예정입니다.(신청자에 한함)</li>
                         <li>할인쿠폰 사용가능일은 발급일로부터 14일입니다.</li>
-                        <li>해당 쿠폰은 인플루언서 강좌(이승기교수,이시한PD,안혜빈대표,이기용대표) 수강신청 접수 시 결제 적용됩니다.</li>
+                        <li>해당 쿠폰은 인플루언서 강좌(이시한교수,이승기PD,안혜빈대표,이기용대표) 수강신청 접수 시 결제 적용됩니다.</li>
                         <li>사전예약 신청자에 한해 할인쿠폰이 발급되며, 결제 완료시 수강기간이 연장됩니다.(총 수강가능기간 365일)</li>
                     </ul>
 

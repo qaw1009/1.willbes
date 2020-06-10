@@ -3501,6 +3501,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     border-left: 4px solid #4f4f4f;
 }
 
+
 .willbes-Layer-Box.d2 .Layer-Tit {
     margin-bottom: 0;
     border-bottom: 2px solid #000;
@@ -7437,17 +7438,19 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-bottom: none;
 }
 .csCenterSearch ul li {
-    display: inline-block;
+    /*display: inline-block;
     margin: 0 45px;
     line-height: 55px;
     width: auto;
     height: 55px;
-    float: inherit;
+    float: inherit;*/
+    display:inline; float:left; width:14.28571%;
 }
 .csCenterSearch ul li:first-child a {
     border: none;
 }
 .csCenterSearch ul li a {
+    display: block;
     background: none;
     border: none;
     height: auto;
@@ -7478,7 +7481,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .csCenterSearch .replyList.hover .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
 }
-
+.csCenterSearch .replyList td:after {content: ""; display: block; clear: both;}
 /* subContainer : Cs : CScenterIndex : ActIndex3 */
 .willbes-firstinfo ul {
     border: 1px solid #e5e5e5;
@@ -7705,6 +7708,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 11px;
     margin: 7px 0 7px 10px;
 }
+
 
 /* subContainer : Cs : CScenter1 : Act4 : 사이트 이용가이드 */
 .w-Guide {

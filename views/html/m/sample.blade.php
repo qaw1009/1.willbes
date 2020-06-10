@@ -22,8 +22,13 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
-            <a href="{{ site_url('/home/html/m/main2') }}" target="_blank">메인-고등고시</a>
-            <a href="{{ site_url('/home/html/m/main2_v2') }}" target="_blank">메인-고등고시 new</a>
+            <a href="{{ site_url('/home/html/m/main2') }}" target="_blank">메인-고등고시 old</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3094') }}" target="_blank">메인-고등고시 5급행정</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3095') }}" target="_blank">메인-고등고시 국립외교원</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3096') }}" target="_blank">메인-고등고시 PSAT</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3097') }}" target="_blank">메인-고등고시 5급헌법</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3098') }}" target="_blank">메인-고등고시 법원행시</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3099') }}" target="_blank">메인-고등고시 변호사시험</a>
             <a href="{{ site_url('/home/html/m/main3') }}" target="_blank">메인-취업</a>
             <a href="{{ site_url('/home/html/m/main4') }}" target="_blank">메인-자격증</a>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>

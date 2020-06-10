@@ -99,6 +99,7 @@ class BaseSiteMenu extends \app\controllers\BaseController
     {
         $data = null;
         $site_code = '';
+        $menu_type = null;
         $menu_route_name = null;
 
         if (isset($params[1]) === true) {
@@ -115,6 +116,7 @@ class BaseSiteMenu extends \app\controllers\BaseController
                 }
 
                 $site_code = $row['SiteCode'];
+                $menu_type = $row['MenuType'];
                 $menu_route_name = $row['MenuRouteName'];
             }
         } else {
@@ -129,6 +131,7 @@ class BaseSiteMenu extends \app\controllers\BaseController
             $site_code = $data['SiteCode'];
             $menu_depth = $data['MenuDepth'];
             $parent_menu_idx = $data['ParentMenuIdx'];
+            $menu_type = $data['MenuType'];
             $menu_route_name = $data['MenuRouteName'];
         }
 
@@ -137,6 +140,7 @@ class BaseSiteMenu extends \app\controllers\BaseController
             'idx' => $idx,
             'data' => $data,
             'site_code' => $site_code,
+            'menu_type' => $menu_type,
             'menu_depth' => $menu_depth,
             'parent_menu_idx' => $parent_menu_idx,
             'menu_route_name' => $menu_route_name,

@@ -75,8 +75,9 @@
                                     <li>
                                         <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
                                             <img src="{{$row['ProfIndexImg'] or ''}}">
-                                            <div class="tx-color">{{$row['ProdName']}}</div>
-                                            <div class="NSK-Black">{{$row['ProfNickName']}}</div>
+                                            <div class="tx-color">{{$row['ProdName']}}
+                                                <span class="NSK-Black">{{$row['ProfNickName']}}</span>
+                                            </div>
                                             <div>{{$row['ProdMainIntroMemo']}}</div>
                                         </a>
                                     </li>

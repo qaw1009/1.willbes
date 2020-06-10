@@ -432,7 +432,7 @@
                         <area shape="rect" coords="280,561,458,598" href="javascript:go_popup10()" />
                         <area shape="rect" coords="471,561,647,597" href="javascript:go_popup11()" />
                         <area shape="rect" coords="661,561,837,598" href="javascript:go_popup12()" />
-                        <area shape="rect" coords="711,666,968,805" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165750" target="_blank" />
+                        <area shape="rect" coords="711,666,968,805" href="javascript:alert('마감 되었습니다.\n예약대기는 학원으로 문의 부탁 드립니다.\n1544-0336')" />
                     </map>                   
                 </div>
                 <div id="tab02">
@@ -440,14 +440,14 @@
                     <map name="Map1646_tab02" id="Map1646_tab02">
                         <area shape="rect" coords="376,562,552,597" href="javascript:go_popup13()" />
                         <area shape="rect" coords="566,562,743,597" href="javascript:go_popup14()" />
-                        <area shape="rect" coords="712,662,971,804" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165245" target="_blank" />
+                        <area shape="rect" coords="712,662,971,804" href="javascript:alert('마감 되었습니다.\n예약대기는 학원으로 문의 부탁 드립니다.\n1544-0336')" />
                     </map>
                 </div>
                 <div id="tab03">
                     <img src="https://static.willbes.net/public/images/promotion/2020/05/1646_07_c3.jpg" usemap="#Map1646_tab03" border="0" />
                     <map name="Map1646_tab03" id="Map1646_tab03">
                         <area shape="rect" coords="471,562,647,598" href="javascript:go_popup15()" />
-                        <area shape="rect" coords="711,665,973,806" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165247" target="_blank" />
+                        <area shape="rect" coords="711,665,973,806" href="javascript:alert('마감 되었습니다.\n예약대기는 학원으로 문의 부탁 드립니다.\n1544-0336')" />
                     </map>         
                 </div>
             </div>

@@ -38,7 +38,7 @@ class HanlimCalcModel extends BaseOrderModel
             $column = 'count(*) AS numrows';
         } else {
             $column = 'TA.ProfIdx, TA.ProdCode, TA.ProdType
-                , P.ProdName, PL.StudyStartDate, PL.StudyEndDate, PL.CampusCcd, PL.Amount, PC.CateCode
+                , P.ProdName, PL.StudyStartDate, PL.StudyEndDate, PL.CampusCcd, PL.Amount, PL.StudyPatternCcd, PC.CateCode
                 , PCH.PchIdx, PCH.PchSeq, PCH.BaseDatm, PCH.MemCnt, PCH.LecMemCnt, PCH.PackMemCnt, PCH.PayPrice, PCH.RefundPrice                    	
                 , ifnull(PCH.PrePrice, TA.PrevPrePrice) as PrePrice, ifnull(PCH.RemainPrice, TA.PrevRemainPrice) as RemainPrice
                 , PCH.PgFeePrice, PCH.LecRemainPrice, PCH.PackRemainPrice, PCH.DeductPrice, PCH.TargetPrice
@@ -68,7 +68,7 @@ class HanlimCalcModel extends BaseOrderModel
                     , left(PCH.RegDatm, 10) as CalcDate
                     , (select case PCH.LecCalcType when "R" then "%" when "P" then "(월)" when "T" then "(시)" else null end) as LecCalcRateUnit                    
                     , (select case PCH.PackCalcType when "R" then "%" when "P" then "(월)" when "T" then "(시)" else null end) as PackCalcRateUnit                    
-                    , SC.CateName, WPF.wProfName, CCA.CcdName as CampusCcdName
+                    , SC.CateName, WPF.wProfName, CCA.CcdName as CampusCcdName, CSP.CcdName as StudyPatternCcdName
                 ';
             }
         }
@@ -97,7 +97,9 @@ class HanlimCalcModel extends BaseOrderModel
                 left join ' . $this->_table['category'] . ' as SC
                     on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CCA
-                    on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"                
+                    on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"
+                left join ' . $this->_table['code'] . ' as CSP
+                    on PL.StudyPatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and CSP.GroupCcd = "' . $this->_group_ccd['StudyPattern'] . '"                                    
             ';
         }
 
@@ -112,11 +114,11 @@ class HanlimCalcModel extends BaseOrderModel
         // 최종 쿼리
         if ($is_count === 'excel') {
             if ($prod_type == 'CP') {
-                $out_column = 'CalcDate, wProfName, CateName, CampusCcdName, ProdCode, ProdName, StudyStartDate, StudyEndDate, Amount, (LecRealCnt + PackRealCnt) as RealCnt
+                $out_column = 'CalcDate, wProfName, CateName, CampusCcdName, ProdCode, ProdName, StudyPatternCcdName, StudyStartDate, StudyEndDate, Amount, (LecRealCnt + PackRealCnt) as RealCnt
                     , PrePrice, RemainPrice, DeductPrice, TargetPrice, concat(PackCalcRate, PackCalcRateUnit) as PackCalcRate
                     , CalcPrice, TaxPrice, EtcDeductPrice, FinalCalcPrice';
             } else {
-                $out_column = 'CalcDate, wProfName, CateName, CampusCcdName, ProdCode, ProdName, StudyStartDate, StudyEndDate, Amount, LecRealCnt, PackRealCnt, (LecRealCnt + PackRealCnt) as RealCnt
+                $out_column = 'CalcDate, wProfName, CateName, CampusCcdName, ProdCode, ProdName, StudyPatternCcdName, StudyStartDate, StudyEndDate, Amount, LecRealCnt, PackRealCnt, (LecRealCnt + PackRealCnt) as RealCnt
                     , PrePrice, RemainPrice, DeductPrice, TargetPrice, concat(LecCalcRate, LecCalcRateUnit) as LecCalcRate, concat(PackCalcRate, PackCalcRateUnit) as PackCalcRate
                     , CalcPrice, TaxPrice, EtcDeductPrice, FinalCalcPrice';
             }

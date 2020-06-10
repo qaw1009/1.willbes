@@ -20,6 +20,7 @@
                         <th rowspan="2" class="valign-middle">대분류</th>
                         <th rowspan="2" class="valign-middle">캠퍼스</th>
                         <th rowspan="2" class="valign-middle">단과반명</th>
+                        <th rowspan="2" class="valign-middle">수강형태</th>
                         <th rowspan="2" class="valign-middle">개강일</th>
                         <th rowspan="2" class="valign-middle">종강일</th>
                         <th rowspan="2" class="valign-middle">횟수</th>
@@ -54,6 +55,7 @@
                         <td>{{ $data['CateName'] }}</td>
                         <td>{{ $data['CampusCcdName'] }}</td>
                         <td>[{{ $data['ProdCode'] }}] {{ $data['ProdName'] }}</td>
+                        <td>{{ $data['StudyPatternCcdName'] }}</td>
                         <td>{{ $data['StudyStartDate'] }}</td>
                         <td>{{ $data['StudyEndDate'] }}</td>
                         <td>{{ $data['Amount'] }}</td>

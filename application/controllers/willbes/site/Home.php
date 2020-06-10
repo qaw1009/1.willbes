@@ -47,7 +47,33 @@ class Home extends \app\controllers\FrontController
             }
         } else {
             // 모바일, APP
-            $_view_path = $this->_site_code;
+            if (ENVIRONMENT == "local") {
+                // 고등고시
+                if ($this->_site_code == '2005') {
+                    if ($this->_is_pass_site === true) {
+                        $_view_path = $this->_site_code;
+
+                        // 캠퍼스 코드
+                        if (config_app('CampusCcdArr') != 'N') {
+                            $arr_campus = array_map(function($var) {
+                                $tmp_arr = explode(':', $var);
+                                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+                            }, explode(',', config_app('CampusCcdArr')));
+                        }
+                    } else {
+                        if (empty($this->_cate_code) === true) {
+                            // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                            redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                        }
+
+                        $_view_path = $this->_site_code . '_' . $cate_code;
+                    }
+                } else {
+                    $_view_path = $this->_site_code;
+                }
+            } else {
+                $_view_path = $this->_site_code;
+            }
         }
 
         // get data
@@ -178,6 +204,8 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
+        } elseif (APP_DEVICE == 'm') {
+            $data['arr_main_banner'] = $this->_bannerMobile($s_cate_code);
         }
         $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
         $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
@@ -389,6 +417,23 @@ class Home extends \app\controllers\FrontController
             $data[$row['DispName']][] = $result[$key];
         }
 
+        return $data;
+    }
+
+    /**
+     * 모바일 메인 베너
+     * @param int $cate_code
+     * @return array
+     */
+    private function _bannerMobile($cate_code = 0)
+    {
+        $banner_disp_group = 'GRPM:M_메인';
+        $result = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
         return $data;
     }
 

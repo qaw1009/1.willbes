@@ -266,56 +266,39 @@
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])
     </div>
     <!-- End Container -->
-    <script>
-        //상단메뉴
+    <script type="text/javascript">
         $(function() {
-            $('.subMenu .sMenuList a.moreMenu').click(function() {
-                $('.subMenu .sMenuList .dropBox').removeClass('on');
-
-                if ($(this).next().is(':visible')) {
-                    $(this).next().hide();
-                    $(this).removeClass('on');
-                } else {
-                    $('.dropBox').hide();
-                    $(this).next().show();
-                    $(this).addClass('on');
-                }
+            //이달의강의
+            var swiper = new Swiper ('.swiper-container-Lec', {
+                slidesPerView: 'auto',
+                spaceBetween: 7,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
             });
-        });
 
+            //맛보기강의
+            var swiper = new Swiper('.swiper-container-view', {
+                slidesPerView: 1,
+                slidesPerColumn: 4,
+                spaceBetween: 10,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
 
-        //이달의강의
-        var swiper = new Swiper ('.swiper-container-Lec', {
-            slidesPerView: 'auto',
-            spaceBetween: 7,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-
-        //맛보기강의
-        var swiper = new Swiper('.swiper-container-view', {
-            slidesPerView: 1,
-            slidesPerColumn: 4,
-            spaceBetween: 10,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-
-        //로드맵
-        $(function() {
+            //로드맵
             $('.loadMap .lmTitle a').click(function() {
                 var $loadmap_table = $(this).parents('.loadMap li').find('.lmCts');
                 if ($loadmap_table.is(':hidden')) {
@@ -327,6 +310,5 @@
                 }
             });
         });
-
     </script>
 @stop

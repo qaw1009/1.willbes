@@ -114,7 +114,8 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/board_list') }}" target="_blank">학원게시판 리스트</a>
             <a href="{{ site_url('/home/html/m/board_view') }}" target="_blank">학원게시판 글보기</a>
-            
+            <br><br>
+            <a href="{{ site_url('/home/html/m/map') }}" target="_blank">학원오시는 길</a>
         </div>
     </li>
     <li>        

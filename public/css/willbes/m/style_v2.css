@@ -1083,6 +1083,7 @@ body.memBody #Footer {
 .gosibtns li a:active {background: #1a8ccc; color: #fff; border:1px solid #1a8ccc;}
 .gosibtns ul:after {content:""; display:block; clear:both}
 
+
 /* Tabs : lineTab 공통 */
 .lineTabs {
     float: left;
@@ -3796,6 +3797,12 @@ body.memBody #Footer {
 .profArea .subjectBox li img {width:100%; margin-top:-10px}
 .profArea .subjectBox span {display: block; font-size:20px; color:#1a8ccc}
 .profArea .subjectBox ul:after {content:""; display:block; clear: both;}
+
+
+/*학원오시는길*/
+.mapArea {padding:0 20px}
+.mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:10px}
+.mapArea li {margin-left:15px; list-style-type: disc; font-size:14px; line-height: 1.4; margin-bottom:5px}
 
 /*********************************************     MYPAGE     *********************************************/
 

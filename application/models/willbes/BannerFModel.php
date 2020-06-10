@@ -56,8 +56,6 @@ class BannerFModel extends WB_Model
         } else {
             if (strpos($disp_name, 'GRP:') !== false) {
                 $arr_condition['LKR']['BD.DispName'] = substr($disp_name, 4) . '_';
-            } elseif (strpos($disp_name, 'GRPM:') !== false) {
-                $arr_condition['LKR']['BD.DispName'] = substr($disp_name, 5);
             } else {
                 $arr_condition['EQ']['BD.DispName'] = $disp_name;
             }

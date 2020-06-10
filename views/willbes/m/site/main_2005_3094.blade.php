@@ -3,23 +3,23 @@
 @section('content')
     <div id="Container" class="Container NSK mb40">
 
-        <div class="MainSlider swiper-container swiper-container-page">
+        {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {{--<div class="MainSlider swiper-container swiper-container-page">
             <div class="swiper-wrapper">
-                {!! banner_html(element('M_메인', $data['arr_main_banner']), '','','','','swiper-slide') !!}
-                {{--<div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
+                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg"></div>
-                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>--}}
+                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
-        </div>
+        </div>--}}
 
         <div class="gosibtns">
             <ul>
-                <li>{!! banner_html(element('M_메인서브1', $data['arr_main_banner'])) !!}</li>
-                <li>{!! banner_html(element('M_메인서브2', $data['arr_main_banner'])) !!}</li>
-                <li>{!! banner_html(element('M_메인서브3', $data['arr_main_banner'])) !!}</li>
+                <li>{!! banner('M_메인서브1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
+                <li>{!! banner('M_메인서브2', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
+                <li>{!! banner('M_메인서브3', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
             </ul>
         </div>
 

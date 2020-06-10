@@ -24,7 +24,6 @@
 
         .evttop_banner {background:#FDEADB;}
 
-        .wb_top_tab {background:#FBE5D7;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
@@ -33,7 +32,7 @@
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#435AA6; border:1px solid #435AA6; color:#fff;}
+        .tabContaier a.active {background:#433F71; border:1px solid #433F71; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 

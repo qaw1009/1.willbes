@@ -68,7 +68,7 @@ class SiteMenuModel extends WB_Model
      */
     public function findSiteMenuByMenuIdx($menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table['site_menu'], 'MenuIdx, SiteCode, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, GroupOrderNum, OrderNum', [
+        return $this->_conn->getFindResult($this->_table['site_menu'], 'MenuIdx, SiteCode, MenuType, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, GroupOrderNum, OrderNum', [
             'EQ' => ['MenuIdx' => $menu_idx, 'IsStatus' => 'Y']
         ]);
     }
@@ -80,7 +80,7 @@ class SiteMenuModel extends WB_Model
      */
     public function findSiteMenuWithRouteName($menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table['site_menu'], 'MenuIdx, SiteCode, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, GroupOrderNum, OrderNum, fn_site_menu_connect_by_type(MenuIdx, "name") as MenuRouteName', [
+        return $this->_conn->getFindResult($this->_table['site_menu'], 'MenuIdx, SiteCode, MenuType, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, GroupOrderNum, OrderNum, fn_site_menu_connect_by_type(MenuIdx, "name") as MenuRouteName', [
             'EQ' => ['MenuIdx' => $menu_idx, 'IsStatus' => 'Y']
         ]);
     }

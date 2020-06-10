@@ -88,6 +88,7 @@
                     <th rowspan="2" class="valign-middle">대분류</th>
                     <th rowspan="2" class="valign-middle">캠퍼스</th>
                     <th rowspan="2" class="valign-middle">단과반명</th>
+                    <th rowspan="2" class="valign-middle">수강형태</th>
                     <th rowspan="2" class="valign-middle">개강일</th>
                     <th rowspan="2" class="valign-middle">종강일</th>
                     <th rowspan="2" class="valign-middle">횟수</th>
@@ -120,7 +121,7 @@
                 </tbody>
                 <tfoot>
                 <tr class="bg-odd">
-                    <th colspan="9" class="text-center">합계</th>
+                    <th colspan="10" class="text-center">합계</th>
                     @if($prod_type == 'OL')
                         <th id="t_lec_real_cnt" class="sumTh"></th>
                         <th id="t_pack_real_cnt" class="sumTh"></th>
@@ -182,6 +183,7 @@
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return data !== '' ? '<div style="max-width: 160px; word-break: break-all;">[' + row.ProdCode + '] ' + data + '</div>' : '';
                     }},
+                    {'data' : 'StudyPatternCcdName'},
                     {'data' : 'StudyStartDate'},
                     {'data' : 'StudyEndDate'},
                     {'data' : 'Amount'},

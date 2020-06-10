@@ -65,7 +65,7 @@
             <div class="col-md-10 item form-inline">
                 <select class="form-control" id="menu_type" name="menu_type" title="메뉴 구분">
                     @foreach($menu_type_code as $key => $val)
-                        <option value="{{ $key }}">{{ $val }}</option>
+                        <option value="{{ $key }}" {{ $menu_type == $key ? 'selected="selected"' : '' }}>{{ $val }}</option>
                     @endforeach
                 </select>
             </div>
@@ -142,7 +142,6 @@
             $(document).ready(function() {
                 // 입력값 셋팅
                 if($regi_form.find('input[name="_method"]').val() === 'PUT') {
-                    $regi_form.find('select[name="menu_type"]').val('{{ $data['MenuType'] }}');
                     $regi_form.find('select[name="url_type"]').val('{{ $data['UrlType'] }}');
                     $regi_form.find('select[name="url_target"]').val('{{ $data['UrlTarget'] }}');
 

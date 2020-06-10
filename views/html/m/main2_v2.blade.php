@@ -15,7 +15,7 @@
         <div class="swiper-pagination"></div>
     </div>  
 
-    <div class="gosibtns">
+    <div class="bnSec02">
         <ul>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_01.jpg"></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_02.jpg"></a></li>

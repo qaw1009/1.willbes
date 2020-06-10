@@ -2,19 +2,7 @@
 
 @section('content')
     <div id="Container" class="Container NSK mb40">
-
         {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-        {{--<div class="MainSlider swiper-container swiper-container-page">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
-                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
-                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg"></div>
-                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-        </div>--}}
-
         <div class="gosibtns">
             <ul>
                 <li>{!! banner('M_메인서브1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>

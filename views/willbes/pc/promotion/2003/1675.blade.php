@@ -22,7 +22,6 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .wb_top_tab {background:#DEEAF6;}
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
@@ -31,7 +30,7 @@
         .tabContaier .time {font-size:25px;}
         .tabContaier li:last-child {margin:0}
         .tabContaier a:hover,
-        .tabContaier a.active {background:#ED7D31; border:1px solid #ED7D31; color:#fff;}
+        .tabContaier a.active {background:#5FC5DC; border:1px solid #5FC5DC; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 

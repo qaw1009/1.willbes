@@ -81,7 +81,7 @@
         .cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
         .cop .preview .pvslider li a {display:block; height:225px;}
         .cop .preview .pvslider:after {content: ""; display: block; clear:both}
-        .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+        .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:50}
         .cop .preview .previewBox p.leftBtn {left:-22px}
         .cop .preview .previewBox p.rightBtn {right:-22px}
     </style>

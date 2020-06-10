@@ -25,6 +25,8 @@ class StudyComment extends BaseBoard
         '636002' => 'off'
     ];
 
+    private $_memory_limit_size = '512M';
+
     public function __construct()
     {
         $this->models = array_merge($this->models, $this->temp_models);
@@ -79,52 +81,8 @@ class StudyComment extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
 
-        $arr_condition = [
-            'EQ' => [
-                'LB.BmIdx' => $this->bm_idx,
-                /*'LB.IsStatus' => 'Y',*/
-                'LB.SubjectIdx' => $this->_reqP('search_subject'),
-                'LB.ProfIdx' => $this->_reqP('search_professor'),
-                'LB.IsUse' => $this->_reqP('search_is_use'),
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'LB.Title' => $this->_reqP('search_value'),
-                    'LB.Content' => $this->_reqP('search_value'),
-                    'MEM.MemId' => $this->_reqP('search_member_value'),
-                    'MEM.MemName' => $this->_reqP('search_member_value')
-                ]
-            ]
-        ];
-
-        if ($this->_reqP('search_chk_create_by_admin') == 1) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'LB.RegType' => '1'
-            ]);
-        }
-
-        if ($this->_reqP('search_chk_hot_display') == 1) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
-        }
-
-        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
-            $arr_condition = array_merge($arr_condition, [
-                'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-            ]);
-        }
-
-        $sub_query_condition = [];
-        if (empty($this->_reqP('search_category')) === false) {
-            $sub_query_condition = [
-                'EQ' => [
-                    'subLBrC.IsStatus' => 'Y',
-                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
-                ],
-                'LKR' => [
-                    'subLBrC.CateCode' => $this->_reqP('search_category')
-                ]
-            ];
-        }
+        $arr_condition = $this->_getListConditions();
+        $sub_query_condition = $this->_getListSubConditions();
 
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
@@ -140,13 +98,13 @@ class StudyComment extends BaseBoard
                 INNER JOIN lms_sys_category AS b ON a.CateCode = b.CateCode AND b.IsUse = \'Y\' AND b.IsStatus = \'Y\'
                 WHERE a.ProdCode = LB.ProdCode AND a.IsStatus = \'Y\'
             ) AS ProdCateName
-            ';
+        ';
 
         $list = [];
-        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
+        $count = $this->boardModel->listAllBoard($this->board_name, true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name, false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
@@ -445,7 +403,7 @@ class StudyComment extends BaseBoard
         $is_use_val = $params[0];
 
         $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => '_method', 'label' => '전송방식', 'rul es' => 'trim|required|in_list[PUT]'],
             ['field' => 'target', 'label' => '식별자', 'rules' => 'trim|required'],
         ];
 
@@ -528,6 +486,104 @@ class StudyComment extends BaseBoard
             ]
         ];
 
-        return$input_data;
+        return $input_data;
+    }
+
+    /**
+     * 조회조건 가져오기
+     */
+    private function _getListConditions()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $this->bm_idx,
+                //'LB.IsStatus' => 'Y',
+                'LB.SubjectIdx' => $this->_reqP('search_subject'),
+                'LB.ProfIdx' => $this->_reqP('search_professor'),
+                'LB.IsUse' => $this->_reqP('search_is_use'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'LB.Title' => $this->_reqP('search_value'),
+                    'LB.Content' => $this->_reqP('search_value'),
+                    'MEM.MemId' => $this->_reqP('search_member_value'),
+                    'MEM.MemName' => $this->_reqP('search_member_value')
+                ]
+            ]
+        ];
+
+        if ($this->_reqP('search_chk_create_by_admin') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'LB.RegType' => '1'
+            ]);
+        }
+
+        if ($this->_reqP('search_chk_hot_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
+        return $arr_condition;
+    }
+
+    /**
+     * 서브 조회조건 가져오기
+     */
+    private function _getListSubConditions()
+    {
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
+                ],
+                'LKR' => [
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
+        return $sub_query_condition;
+    }
+
+    /**
+     * 리스트 엑셀 다운로드
+     */
+    public function excel()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $file_name = '수강후기_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $headers = ['운영사이트', '카테고리', '과목', '교수명', '제목', '강좌명', '평점', '등록자', '등록일', 'HOT', '사용', '조회수'];
+
+        $arr_condition = $this->_getListConditions();
+        $sub_query_condition = $this->_getListSubConditions();
+
+        $column = "
+            LS.SiteName, IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),'N') AS CateCode,
+            PS.SubjectName, PROFESSOR.ProfNickName, LB.Title, lms_product.ProdName, LB.LecScore, LB.RegMemName,
+            LB.RegDatm, IF(LB.IsBest = 1, 'HOT', '') AS IsBest, LB.IsUse, LB.ReadCnt
+        ";
+
+        $list = $this->boardModel->listAllBoard($this->board_name, false, $arr_condition, $sub_query_condition, $this->site_code, null, null, ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column, false);
+
+        $download_query = $this->boardModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 }

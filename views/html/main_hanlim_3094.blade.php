@@ -230,57 +230,71 @@
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">황종휴</div>
-                                <div>2020 거시경제학 예비순환</div>
+                                <div class="tx-color">
+                                    미시경제학 3대 難題 복습 특강
+                                    <span class="NSK-Black">황종휴<span>
+                                </div>
+                                <div>경제학을 위한 기초수학 동영상 무료업로드!</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
-                                <div class="tx-color">행정법 예비순환</div>
-                                <div class="NSK-Black">김정일</div>
-                                <div>2020 행정법 예비순환<br> (미시+거시)</div>
+                                <div class="tx-color">
+                                    행정법 예비순환
+                                    <span class="NSK-Black">김정일</span>
+                                </div>
+                                <div>기본서(행정법강의)를 중심으로 행정법의 전체흐름과 주요내용을 학습, 법학의 기초개념을 마스터하고</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
-                                <div class="tx-color">행정법 예비순환</div>
-                                <div class="NSK-Black">박도원</div>
-                                <div>행정법 GS3순환(미시+거시)<br>+매일모의고사추가</div>
+                                <div class="tx-color">
+                                    2020 행정법 GS3순환
+                                    <span class="NSK-Black">박도원</span>
+                                </div>
+                                <div>행정법 GS3순환(미시+거시) + 매일모의고사추가</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">김기홍</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">김기홍</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">이동호</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">이동호</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">최승호</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">최승호</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50852/prof_index_50852_1586137263.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">안진우</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">안진우</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
                             </a>
                         </li>
                     </ul>  

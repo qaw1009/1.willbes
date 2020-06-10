@@ -28,7 +28,7 @@
 
         .wb_top {background:#2f328b url(https://static.willbes.net/public/images/promotion/2020/06/1677_top_bg.jpg) no-repeat center}
 
-        .wb_evt02 {padding-bottom:100px}        
+        .wb_evt01 {padding-bottom:50px}        
 
         .wb_evt03 {background:#313131}
 
@@ -38,15 +38,10 @@
 
         <ul class="sky">
             <li>
-                <a href="#sky01"> 
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1682" target="_blank"> 
                     <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_sky_01.jpg" alt="재시생 플랜" >
                 </a>
-            </li>
-            <li>
-                <a href="#sky02"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_sky_02.jpg" alt="초시생 플랜" >
-                </a>
-            </li>                
+            </li>            
         </ul>       
 
         <div class="evtCtnsBox wb_top">
@@ -56,7 +51,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_evt01" id="sky01">
+        <div class="evtCtnsBox wb_evt01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_01.jpg" title="재시생을 위한 합격 플랜" />
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_01_college.jpg" title="심화기출이론 단과" />
             @if(empty($arr_base['display_product_data']) === false)
@@ -71,6 +66,7 @@
             </map>
         </div> 
 
+        {{--
         <div class="evtCtnsBox wb_evt02" id="sky02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_02.jpg" title="초시생을 위한 합격 플랜" />
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_02_college.jpg" title="기본이론 단과" />
@@ -85,6 +81,7 @@
                 <area shape="rect" coords="839,543,1038,594" href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/161160" target="_blank" />
             </map>
         </div> 
+        --}}
 
         <div class="evtCtnsBox wb_evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="소문내고 커피득템고" border="0" />

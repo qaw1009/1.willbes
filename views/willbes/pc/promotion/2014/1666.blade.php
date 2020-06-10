@@ -41,7 +41,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1666_top.jpg" alt="" > 
             <div>
-                <a href="/promotion/index/cate/3114/code/1666">이시한교수</a>
+                <a href="/promotion/index/cate/3114/code/1665">이시한교수</a>
                 <a href="#none">이승기PD</a>
                 <a href="/promotion/index/cate/3114/code/1668">안혜빈대표</a>
                 <a href="/promotion/index/cate/3114/code/1669">이기용대표</a>

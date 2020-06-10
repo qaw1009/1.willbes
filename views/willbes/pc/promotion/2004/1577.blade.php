@@ -67,7 +67,7 @@
 
         <div class="skybanner">
             <ul>          
-                <li><a href="#none" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1577_sky.png"  title="기미진 기특한 국어" /></a></li>
+                <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=278985&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1577_sky.png"  title="기미진 기특한 국어" /></a></li>
             </ul>
         </div>       
 

@@ -47,9 +47,7 @@ class Home extends \app\controllers\FrontController
             }
         } else {
             // 모바일, APP
-            if (ENVIRONMENT == "production") {
-                $_view_path = $this->_site_code;
-            } else {
+            if (ENVIRONMENT == "local") {
                 // 고등고시
                 if ($this->_site_code == '2005') {
                     if ($this->_is_pass_site === true) {
@@ -73,6 +71,8 @@ class Home extends \app\controllers\FrontController
                 } else {
                     $_view_path = $this->_site_code;
                 }
+            } else {
+                $_view_path = $this->_site_code;
             }
         }
 

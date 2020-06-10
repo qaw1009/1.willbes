@@ -39,7 +39,7 @@
         <ul class="sky">
             <li>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1682" target="_blank"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_sky_01.jpg" alt="재시생 플랜" >
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_sky_02.jpg" alt="초시생 플랜" >
                 </a>
             </li>            
         </ul>       
@@ -64,24 +64,7 @@
                 <area shape="rect" coords="452,494,653,547" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/165249" target="_blank" />
                 <area shape="rect" coords="838,496,1040,547" href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/165250" target="_blank" />
             </map>
-        </div> 
-
-        {{--
-        <div class="evtCtnsBox wb_evt02" id="sky02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_02.jpg" title="초시생을 위한 합격 플랜" />
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_02_college.jpg" title="기본이론 단과" />
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
-            @else
-            @endif        
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_02_university.jpg" usemap="#Map1677c" title="기본이론 종합반" border="0" />
-            <map name="Map1677c" id="Map1677c">
-                <area shape="rect" coords="67,543,270,594" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/161154" target="_blank" />
-                <area shape="rect" coords="452,542,654,596" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/161155" target="_blank" />
-                <area shape="rect" coords="839,543,1038,594" href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/161160" target="_blank" />
-            </map>
-        </div> 
-        --}}
+        </div>        
 
         <div class="evtCtnsBox wb_evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="소문내고 커피득템고" border="0" />

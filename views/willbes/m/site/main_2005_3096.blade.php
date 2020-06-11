@@ -6,7 +6,7 @@
         @include('willbes.m.site.main_partial.topmenu_'.$__cfg['SiteCode'].'_'.$__cfg['CateCode'])
 
         {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-        <div class="gosibtns">
+        <div class="bnSec02">
             <ul>
                 <li>{!! banner('M_메인서브1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
                 <li>{!! banner('M_메인서브2', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>

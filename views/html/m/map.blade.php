@@ -21,7 +21,8 @@
         </ul>
 
         <div class="location_map">
-            지도영역
+            <span><img src="https://static.willbes.net/public/images/promotion/m/icon_add.png" alt="학원"></span>
+            <div class="mapimg"><img src="https://static.willbes.net/public/images/promotion/m/map.jpg" alt="오시는 길"></div>
         </div>
     </div>
 

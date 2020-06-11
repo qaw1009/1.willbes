@@ -114,7 +114,6 @@ abstract class AdminAuthService
                 'IconClassName' => $row['IconClassName'],
                 'TreeNum' => $row['TreeNum'],
                 'UrlRouteName' => $row['UrlRouteName'],
-                'IsOpen' => $row['IsOpen'],
             ];
 
             switch ($row['MenuDepth']) {
@@ -178,3 +177,4 @@ abstract class AdminAuthService
         return $html;
     }
 }
+

@@ -142,8 +142,8 @@
         </label>
         <div class="col-md-3">
             <div class="radio">
-                <input type="radio" id="is_open_y" name="is_open" class="flat" value="Y" required="required" title="노출여부" @if( $data['IsOpen']=='Y')checked="checked"@endif/> <label for="is_open_y" class="input-label">노출</label>
-                <input type="radio" id="is_open_n" name="is_open" class="flat" value="N" @if($method == 'POST' || $data['IsOpen']=='N')checked="checked"@endif/> <label for="is_open_n" class="input-label">숨김</label>
+                <input type="radio" id="is_open_y" name="is_open" class="flat" value="Y" required="required" title="노출여부" @if($method == 'POST' || $data['IsOpen']=='Y')checked="checked"@endif/> <label for="is_open_y" class="input-label">노출</label>
+                <input type="radio" id="is_open_n" name="is_open" class="flat" value="N" @if($data['IsOpen']=='N')checked="checked"@endif/> <label for="is_open_n" class="input-label">숨김</label>
             </div>
         </div>
         <div class="col-md-3 tx-left form-control-static">

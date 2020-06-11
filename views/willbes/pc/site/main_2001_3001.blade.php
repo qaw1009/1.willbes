@@ -2,9 +2,11 @@
 
 @section('content')
 <style type="text/css">
-    .bnSec01 {padding:20px 0 0} 
+    .bnSec01 {padding:20px 0 0;} 
     .bnSec01 li {display:inline; float:left}
     .bnSec01:after {content:""; display:block; clear:both}
+
+    .bnSecbar01 {height:100px; overflow:hidden}
 
     .onProfBox {margin-right:-12px; margin-bottom: -12px;}
     .onProfBox li {
@@ -107,7 +109,7 @@
         </div>
 
         <div class="Section">
-            <div class="widthAuto">
+            <div class="widthAuto bnSecbar01">
                 {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>

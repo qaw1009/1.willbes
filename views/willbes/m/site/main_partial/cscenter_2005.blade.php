@@ -35,7 +35,7 @@
     </ul>
 </div>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $(".goTel").click(function () {
             var csTel = $(this).next().find('span').text();

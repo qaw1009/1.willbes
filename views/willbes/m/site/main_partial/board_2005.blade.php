@@ -1,7 +1,7 @@
 <ul class="tabWrap mainTab">
-    <li><a href="#notice1" class="on">학원 공지사항</a></li>
-    <li><a href="#notice2">동영상 공지사항</a></li>
-    <li><a href="#notice3">강의계획서</a></li>
+    <li><a href="#notice1" class="on">학원<br>공지사항</a></li>
+    <li><a href="#notice2">동영상<br>공지사항</a></li>
+    <li><a href="#notice3">강의<br>계획서</a></li>
 </ul>
 <div class="tabBox buttonBox noticeBox">
     <div id="notice1" class="tabContent pd20">

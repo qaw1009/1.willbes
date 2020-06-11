@@ -43,7 +43,7 @@
                     </button>
                 </div>
                 <div class="resetBtn width10p">
-                    <a href="{{front_url($default_path.'/notice/index')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+                    <a href="{{front_url($default_path.'/index')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                 </div>
             </div>
         </div>

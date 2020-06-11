@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <div class="Section mt20">
+    <div class="Section mt50">
         <div class="widthAuto">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x450.jpg" alt="배너명"></a>
         </div>

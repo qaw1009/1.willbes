@@ -1685,7 +1685,7 @@ body.memBody #Footer {
     font-size: 12px;
     margin: 20px -20px 0;
     padding: 15px 20px;
-    border-top: 1px solid #ccc;
+    border-top: 1px dashed #ccc;
     line-height: 2;
 }
 .lecTable .w-subtxt {
@@ -1781,7 +1781,7 @@ body.memBody #Footer {
 }
 .lecTable .w-line {
     background: #e9e9e9;
-    height: 15px;
+    height: 5px;
     margin: 0 -20px;
     border-top: 1px solid #ccc;
     text-indent: -9999px;
@@ -3779,7 +3779,7 @@ body.memBody #Footer {
     margin:20px;
 }
 
-/*교수*/
+/*교수진소개 리스트*/
 .profArea {padding:0 20px}
 .profArea .subjectBox {margin-top:30px;}
 .profArea .subjectBox .subTitle {font-size:16px; margin-bottom:10px}
@@ -3795,6 +3795,21 @@ body.memBody #Footer {
 .profArea .subjectBox li img {position:absolute; width:100%; top:-10px}
 .profArea .subjectBox span {display: block; font-size:20px; color:#1a8ccc}
 .profArea .subjectBox ul:after {content:""; display:block; clear: both;}
+
+/*교수 상세보기*/
+.profAreaView {position:relative; background: url("../../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0; overflow: hidden; 
+    line-height: 1.4; max-height:280px; border-bottom:1px solid #e4e4e4}
+.profAreaView .profImg img {width:38%}
+.profAreaView .profCopy {position: absolute; top:20px; left:40%; font-size: 18px; padding-right:10px}
+.profAreaView .profCopy span {color:#1a8ccc}
+.profAreaView .profCopy p {font-size:14px; color:#666; margin-top:10px}
+.profAreaView .profMenu {position: absolute; bottom:20px; left:40%; width: 60%;}
+.profAreaView .profMenu ul{float:right}
+.profAreaView .profMenu li {display: inline; float:left;}
+.profAreaView .profMenu li a {display:block; padding-left:7px; margin-right:7px; border-left:1px solid #ccc}
+.profAreaView .profMenu li:nth-child(1) a {padding:0; border:0}
+.profAreaView .profMenu ul:after {content: ""; display:block; clear:both}
+
 
 
 /*학원오시는길*/

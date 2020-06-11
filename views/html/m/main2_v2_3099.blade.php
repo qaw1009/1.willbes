@@ -233,7 +233,7 @@
     <div class="loadMap tabContent" id="loadmap1">
         <p class="start"><span>START</span></p>
         <ul>
-        <li class="lmTitle"><a href="#none">1순환-쟁점정리(4~7월)</a>
+            <li class="lmTitle"><a href="#none">1순환-쟁점정리(4~7월)</a>
                 <div class="lmCts">
                     출제 빈도가 높은 쟁점 위주의 실전적 정리 
                     <ul>

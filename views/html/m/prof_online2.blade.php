@@ -14,8 +14,8 @@
     
     <div class="profAreaView">
         <div class="profImg"><img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_detail_50769.png" alt="강사명"></div>
-        <div class="profCopy">
-            <strong class="NGEB"><span>경제학</span> 황종휴</strong> 강사
+        <div class="profCopy NSK">
+            <strong class="NSK-Black"><span>경제학</span> 황종휴</strong> 강사
             <p>
                 직관적 이해!<br>
                 냉철한 분석과 정리!

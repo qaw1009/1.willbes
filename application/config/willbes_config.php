@@ -25,6 +25,9 @@ $config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
 // 추가 배송료 추가 대상 우편번호 앞자리
 $config['delivery_add_price_charge_zipcode'] = ['63', '69'];
 
+// 카카오 자바스크립트 APP Key
+$config['kakao_js_app_key'] = '413096825136cb284bad9dead87bb841';
+
 if(ENVIRONMENT == "production" || ENVIRONMENT == "testing"){
     /*
     스타플레이어 모바일 라이센스 실서버용

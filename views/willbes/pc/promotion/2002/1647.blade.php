@@ -22,8 +22,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px;right:0;z-index:10;}
-        .sky li{padding-bottom:10px;}
+        .sky {position:fixed; top:200px;right:0;z-index:10;}
+        .sky li{padding-bottom:25px;}
 
         .wb_cts00 {background:#404040}
 

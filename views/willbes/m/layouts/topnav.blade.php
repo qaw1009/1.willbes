@@ -78,10 +78,15 @@
                             <li class="sMenuList">
                                 @if(empty($menu_row['MenuSubType']) === false)
                                     {{-- 모바일GNB (전체보기) 메뉴 --}}
-                                    <a href="#none" class="moreMenu">{{ $menu_row['MenuName'] }}<span class="rowLine"></span></a>
-                                    <div class="dropBox dropBox2">
-                                        @yield('mega_menu_' . $menu_row['MenuSubType'])
-                                    </div>
+                                    @hasSection('mega_menu_' . $menu_row['MenuSubType'])
+                                        <a href="#none" class="moreMenu">{{ $menu_row['MenuName'] }}<span class="rowLine"></span></a>
+                                        <div class="dropBox dropBox2">
+                                            @yield('mega_menu_' . $menu_row['MenuSubType'])
+                                        </div>
+                                    @else
+                                        {{-- 모바일GNB (전체보기) 메뉴 내용이 없을 경우 (장바구니와 같이 카테고리 코드가 없는 경우) --}}
+                                        <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}<span class="rowLine"></span></a>
+                                    @endif
                                 @else
                                     @if(isset($menu_row['Children']) === true)
                                         <a href="#none" class="moreMenu">{{ $menu_row['MenuName'] }}<span class="rowLine"></span></a>

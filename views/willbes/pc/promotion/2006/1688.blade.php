@@ -116,10 +116,10 @@
 		<div class="evtCtnsBox evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1504_03.jpg" alt="신청하기" usemap="#Map1504a" border="0" />
             <map name="Map1504a" id="Map1504a">
-                <area shape="rect" coords="877,537,1050,711" href="https://job.willbes.net/package/show/cate/309003/prod-code/166194" target="_blank" alt="1차감평패스" />
-                <area shape="rect" coords="878,730,1050,903" href="https://job.willbes.net/package/show/cate/309003/prod-code/166195" target="_blank" alt="2차감평패스" />
-                <area shape="rect" coords="878,922,1051,1095" href="https://job.willbes.net/package/show/cate/309003/prod-code/166196" target="_blank" alt="동차감평패스" />
-                <area shape="rect" coords="878,1113,1050,1288" href="https://job.willbes.net/package/show/cate/309003/prod-code/166197" target="_blank" alt="동차감평패스 프리미엄" />
+                <area shape="rect" coords="877,537,1050,711" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/166194" target="_blank" alt="1차감평패스" />
+                <area shape="rect" coords="878,730,1050,903" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/166195" target="_blank" alt="2차감평패스" />
+                <area shape="rect" coords="878,922,1051,1095" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/166196" target="_blank" alt="동차감평패스" />
+                <area shape="rect" coords="878,1113,1050,1288" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/166197" target="_blank" alt="동차감평패스 프리미엄" />
             </map>
 		</div>
         {{--

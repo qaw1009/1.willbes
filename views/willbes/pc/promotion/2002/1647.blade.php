@@ -22,7 +22,9 @@
 
         /************************************************************/
 
-        .sky{position:fixed;top:250px;right:0;z-index:1;}
+        .sky {position:fixed; top:200px;right:0;z-index:10;}
+        .sky li{padding-bottom:25px;}
+
         .wb_cts00 {background:#404040}
 
         /*타이머*/
@@ -60,9 +62,19 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
 
-        <div class="sky" >
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/05/1647_sky.png" alt="스카이베너" ></a>
-        </div>     
+        <ul class="sky">
+            <li>
+                <a href="#apply">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1647_sky.png" alt="스카이베너" >            
+                </a>
+            </li>
+            <li>
+                <a href="http://cafe.daum.net/tntpolice/WoSU/775" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/jang_sky.png" alt="스카이베너" >
+                </a>
+            </li>       
+        </ul>       
+
 
 		<div class="evtCtnsBox wb_cts00">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1283_00.jpg" alt="신광은 경찰팀"/>            

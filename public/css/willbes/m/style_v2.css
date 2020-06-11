@@ -411,8 +411,9 @@ span {
 
 #Header .sMenuList li {padding:8px 0; /*border-bottom: 1px solid #e4e4e4;*/ line-height: 1.4;}
 #Header .sMenuList li a {display:inline-block; margin-right:5px; color:#666}
-#Header .sMenuList .dropBox2 li {padding-left:90px; position:relative;}
-#Header .sMenuList .dropBox2 li span {display:block; position: absolute; width:80px; left:0; z-index: 2; border-right:1px solid #ccc; text-align: center;}
+#Header .sMenuList .dropBox2 li {padding-left:120px; position:relative;}
+#Header .sMenuList .dropBox2 li span {display:block; position: absolute; width:110px; left:0; z-index: 2; 
+    border-right:1px solid #ccc; text-align: center;}
 #Header .sMenuList li:last-child {border:0}
 #Header .sMenuList:nth-child(2) li {padding-left:27%}
 #Header .sMenuList:nth-child(4) li {padding-left:77%}

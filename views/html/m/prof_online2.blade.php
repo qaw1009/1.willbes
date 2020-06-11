@@ -36,337 +36,402 @@
             <li><a href="#leclist1" class="on">동영상수강신청</a><span class="row-line">|</span></li>
             <li><a href="#leclist2">학원수강신청</a><span class="row-line">|</span></li>
             <li><a href="#leclist3">무료특강신청</a><span class="row-line">|</span></li>
-        </ul>
+        </ul>        
+
         <div class="tabBox lineBox lecListBox">
+            {{--동영상수강신청--}}
             <div id="leclist1" class="tabContent">
-                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-                    <tbody>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="Paging">
-                    <ul>
-                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                        <li><a href="#none">5</a></li>
-                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                <div class="profLecTab">
+                    <ul class="tabWrap">
+                        <li><a href="#onList1" class="on">단과강좌</a></li>
+                        <li><a href="#onList2">추천패키지</a></li>
+                        <li><a href="#onList3">선택패키지</a></li>
                     </ul>
+                </div>
+
+                {{--단과강좌--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="onList1">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        <dl class="w-info">
+                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>학원실강의 : 2020년 1월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                        </dl>
+                                        <ul>
+                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        </ul>
+                                        <div class="w-buy">       
+                                            <ul class="two">
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div class="oneBox">
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        <dl class="w-info">
+                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>학원실강의 : 2020년 1월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                        </dl>
+                                        <ul>
+                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        </ul>
+                                        <div class="w-buy">       
+                                            <ul class="two">
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div class="oneBox">
+                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        <dl class="w-info">
+                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>학원실강의 : 2020년 1월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                        </dl>
+                                        <ul>
+                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                        </ul>
+                                        <div class="w-buy">       
+                                            <ul class="two">
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+
+                {{--추천패키지--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="onList2">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <colgroup>
+                            <col style="width: 87%;">
+                            <col style="width: 13%;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+
+                {{--선택패키지--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="onList3">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <colgroup>
+                            <col style="width: 87%;">
+                            <col style="width: 13%;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2019 일반경찰 선택패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2019 일반경찰 선택패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>기본이론</dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="#none">2019 일반경찰 선택패키지</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
+                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>                    
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div id="leclist2" class="tabContent" style="display: none;">
-                <div class="willbes-Txt NGR c_both mt20">
-                    <div class="willbes-Txt-Tit NG">· 수강시작일 설정 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
-                    - 수강시작일은 개강일 전까지만 변경 가능합니다.<br/>
-                    (수강연장강좌는 시작일 변경이 불가능합니다.)<br/>
-                    - 사직일 변경(잔여횟수) 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지만</span> 변경이 가능합니다.<br/>
-                    - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
-                    - 수강시작이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
+            {{--학원수강신청--}}
+            <div id="leclist2" class="tabContent">
+                <div class="profLecTab">
+                    <ul class="tabWrap two">
+                        <li><a href="#offList1" class="on">단과</a></li>
+                        <li><a href="#offList2">종합반</a></li>
+                    </ul>
                 </div>
-                <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess width21p">
-                        <option selected="selected">과정</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
-                        <option selected="selected">과목</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
-                        <option selected="selected">교수님</option>
-                        <option value="교수님1">교수님1</option>
-                        <option value="교수님2">교수님2</option>
-                        <option value="교수님3">교수님3</option>
-                    </select>
-                    <div class="resetBtn width10p ml1p">
-                        <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+
+                {{--단과--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="offList1">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                </td>                        
+                            </tr>                
+                        </tbody>
+                    </table>
+
+                    <div id="LecBuyMessagePop" class="willbes-Layer-Black">
+                        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h250 fix">
+                            <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop')">
+                                <img src="{{ img_url('m/calendar/close.png') }}">
+                            </a>
+                            <div class="Message NG">
+                                <p>해당 상품이<br> 학원방문결제 접수에 담겼습니다.</p>
+                                <p>학원방문결제 접수로<br> 이동하시겠습니까?<p>
+                            </div>
+                            <div class="MessageBtns">
+                                <a href="#none" class="btn_gray">예</a>
+                                <a href="#none" class="btn_white">계속구매</a>
+                            </div>
+                        </div>
+                        <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
                     </div>
-                </div>
-                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-                    <tbody>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="Paging">
-                    <ul>
-                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                        <li><a href="#none">5</a></li>
-                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                    </ul>
-                </div>
+                    <!-- willbes-Layer-PassBox : 쪽지 -->
+                </div>  
+                
+                {{--종합반--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="offList2">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
+                                        <dt><span class="tx-blue">350,000원</span>(↓50%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
+                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
+                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div> 
             </div>
 
+            {{--무료수강신청--}}
             <div id="leclist3" class="tabContent">
-                <div class="willbes-Txt NGR c_both mt20">
-                    <div class="willbes-Txt-Tit NG">· 수강시작일 설정 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
-                    - 수강시작일은 개강일 전까지만 변경 가능합니다.<br/>
-                    (수강연장강좌는 시작일 변경이 불가능합니다.)<br/>
-                    - 사직일 변경(잔여횟수) 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지만</span> 변경이 가능합니다.<br/>
-                    - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
-                    - 수강시작이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
-                </div>
-                <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess width21p">
-                        <option selected="selected">과정</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
-                        <option selected="selected">과목</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
-                        <option selected="selected">교수님</option>
-                        <option value="교수님1">교수님1</option>
-                        <option value="교수님2">교수님2</option>
-                        <option value="교수님3">교수님3</option>
-                    </select>
-                    <div class="resetBtn width10p ml1p">
-                        <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
-                    </div>
-                </div>
-                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-                    <tbody>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일 (2020.05.01~2020.05.30)</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <div class="w-tit">
-                                    <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일 (2020.05.01~2020.05.30)</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일 (2020.05.01~2020.05.30)</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
-                                </dl>
-                                <div class="w-start tx-gray">                        
-                                    <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                        <li class="btn_blue"><a href="#none">수강시작</a></li>
-                                    </ul> 
-                                </div>
-                                <div class="w-line">-</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="Paging">
-                    <ul>
-                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                        <li><a href="#none">5</a></li>
-                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                    </ul>
+                <div class="lineTabs lecListTabs c_both pd-zero">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div>
+                                        <dl class="w-info">
+                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>학원실강의 : 2020년 1월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="two">
+                                                <li class="btn_blue"><a href="#none">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <dl class="w-info">
+                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>학원실강의 : 2020년 1월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="two">
+                                                <li class="btn_blue"><a href="#none">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>                   
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <!--lineTabs//-->
 
     <div class="goTopbtn">
         <a href="javascript:link_go();">

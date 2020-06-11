@@ -34,6 +34,11 @@
 
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="evtContent NSK" id="evtContainer">
 
         <ul class="sky">
@@ -67,10 +72,11 @@
         </div>        
 
         <div class="evtCtnsBox wb_evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="소문내고 커피득템고" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="이미지 다운받기 및 쿠폰 받기" border="0" />
             <map name="Map1677a" id="Map1677a">
-                <area shape="rect" coords="305,1081,727,1142" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-            </map>            
+                <area shape="rect" coords="279,1088,621,1141" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
+                <area shape="rect" coords="637,1088,982,1141" href="javascript:;" onclick="giveCheck()" alt="쿠폰 받기" />
+            </map>         
         </div>
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -79,5 +85,33 @@
 
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('전국 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
+        });
+    </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 
 @stop

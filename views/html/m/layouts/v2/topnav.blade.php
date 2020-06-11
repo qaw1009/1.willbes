@@ -106,7 +106,7 @@
                                     <a href="#none">이인재</a>
                                 </li>
                                 <li>
-                                    <span>국제경제학</span>
+                                    <span>선택>국제거래법</span>
                                     <a href="#none">황종휴</a>
                                 </li>
                             </ul>

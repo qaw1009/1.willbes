@@ -1,8 +1,19 @@
+@php
+$pass_cate_code = '';
+switch ($__cfg['CateCode']) {
+    case "3094" : $pass_cate_code = '3104'; break;
+    case "3095" : $pass_cate_code = '3105'; break;
+    case "3096" : $pass_cate_code = '3106'; break;
+    case "3097" : $pass_cate_code = '3107'; break;
+    case "3098" : $pass_cate_code = '3108'; break;
+    case "3099" : $pass_cate_code = '3109'; break;
+}
+@endphp
 <div class="csCenter">
     <ul class="link">
-        <li><a href="{{front_url('/support/qna/index?s_site_code=2005&s_cate_code=3094')}}">동영상 1:1상담</a></li>
-        <li><a href="{{front_url('/support/qna/index?s_site_code=2010&s_cate_code=3104')}}">학원 1:1상담</a></li>
-        <li><a href="#none">학원 오시는 길</a></li>
+        <li><a href="{{front_url('/support/qna/index/cate/'.$__cfg['CateCode'].'?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">동영상 1:1상담</a></li>
+        <li><a href="{{front_url('/pass/support/qna/index/?s_cate_code='.$pass_cate_code.'&on_off_link_cate_code'.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">학원 1:1상담</a></li>
+        <li><a href="{{front_url('/location/map/cate/'.$__cfg['CateCode'])}}">학원 오시는 길</a></li>
     </ul>
     <ul class="tel">
         <li>

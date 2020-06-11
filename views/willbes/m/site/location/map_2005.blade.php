@@ -18,10 +18,10 @@
 
             {{-- 카카오맵 영역 --}}
             <div id="map" class="location_map">
-                <div id="alterMap" style="display: none;">
-                    <span><img src="https://static.willbes.net/public/images/promotion/m/icon_add.png" alt="학원"></span>
-                    <div class="mapimg"><img src="https://static.willbes.net/public/images/promotion/m/map.jpg" alt="오시는 길"></div>
-                </div>
+            </div>
+            <div id="alterMap" class="location_map" style="display: none;">
+                <span><img src="https://static.willbes.net/public/images/promotion/m/icon_add.png" alt="학원"></span>
+                <div class="mapimg"><img src="https://static.willbes.net/public/images/promotion/m/map.jpg" alt="오시는 길"></div>
             </div>
         </div>
 

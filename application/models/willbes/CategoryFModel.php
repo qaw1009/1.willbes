@@ -81,4 +81,27 @@ class CategoryFModel extends WB_Model
         $data =  $this->_conn->query('select * From (select '.$column .$from .$where.') mm ' .$where_route .$order_by)->result_array();
         return $data;
     }
+
+    /**
+     * 온라인<->학원 매핑된 카테고리 조회
+     * @param $cate_code
+     * @return mixed
+     */
+    public function getMappingCateCode($cate_code)
+    {
+        $column = 'SiteCode, CateCode, CateName';
+
+        $from = " FROM {$this->_table['category']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'OnOffLinkCateCode' => $cate_code,
+                'IsUse' => 'Y',
+                'IsStatus' => 'Y'
+            ],
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition) ->getMakeWhere(false);
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
 }

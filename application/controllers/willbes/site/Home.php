@@ -205,8 +205,8 @@ class Home extends \app\controllers\FrontController
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
-        $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
-        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
+        $data['best_product'] = $this->_product('on_lecture', 20, $cate_code, 'Best');
+        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $cate_code, 'New');
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         /*$data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);*/

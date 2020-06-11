@@ -268,12 +268,12 @@
             </div>
         </div>
         <ul class="widthAuto mt50">
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiA01.jpg') }}" title="배너명"></a></li>
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiB01.jpg') }}" title="배너명"></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_01.jpg" title="배너명"></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_02.jpg" title="배너명"></a></li>
             <li class="sliderHotIssue nSlider pick">
                 <div class="sliderNum">
-                    <div><img src="{{ img_url('cop/banner/bnr_onHiC01.jpg') }}"></div>
-                    <div><img src="{{ img_url('cop/banner/bnr_onHiC01.jpg') }}"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_03.jpg"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_01.jpg"></div>
                 </div>
             </li>
         </ul>
@@ -285,16 +285,16 @@
             <div class="sliderPick nSlider pick">
                 <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
                 <div class="pickBox pick1">
-                    <a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a>
+                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_01.jpg"></a>
                 </div>
                 <div class="pickBox pick2">
-                    <a href="#none"><img src="{{ img_url('cop/event/evt_190102.jpg') }}"></a>
+                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_02.jpg"></a>
                 </div>
             </div>
             <div class="sliderEvt nSlider pick">
                 <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 무료특강</div>
                 <ul>
-                    <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_353x196.jpg"></a></li>
+                    <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_03.jpg"></a></li>
                     {{--
                     <li>
                         <div class="sliderNum">

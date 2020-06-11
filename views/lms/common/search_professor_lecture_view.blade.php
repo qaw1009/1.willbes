@@ -89,7 +89,7 @@
                             @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button>@endif
                             @if(empty($row['wSD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-0" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button>@endif
 
-@if(sess_data('admin_id') == 'hereisme')
+@if(ENVIRONMENT != "production" && ENVIRONMENT != "testing")
     @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">와이드</button>@endif
     @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">고화질</button>@endif
     @if(empty($row['wSD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">일반화질</button>@endif

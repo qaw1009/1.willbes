@@ -165,13 +165,18 @@
 
         {{-- cs box --}}
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])
+
+        <div class="appPlayer c_both">
+            {{-- app player include --}}
+            @include('willbes.m.site.main_partial.app_player')
+        </div>
     </div>
     <!-- End Container -->
     <script type="text/javascript">
         $(function() {
             //이달의강의
             var swiper = new Swiper ('.swiper-container-Lec', { 
-                slidesPerView: 3,
+                slidesPerView: 'auto',
                 spaceBetween: 7, 
                 slidesPerGroup: 2,
                 loop: true,

@@ -13,7 +13,7 @@
         <button type="button" class="goback" onclick="history.back(-1); return false;">
             <span class="hidden">뒤로가기</span>
         </button>
-        동영상 상담실
+        상담실
     </div>
     <div class="willbes-Lec-Selected NG tx-gray">
         <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess width32n5p" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>

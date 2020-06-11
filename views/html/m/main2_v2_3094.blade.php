@@ -377,16 +377,18 @@
 
     //이달의강의
     var swiper = new Swiper ('.swiper-container-Lec', { 
-        slidesPerView: 'auto',
+        slidesPerView: 3,
         spaceBetween: 7, 
+        slidesPerGroup: 2,
         loop: true,
+        loopFillGroupWithBlank: true,
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
         }, //3초에 한번씩 자동 넘김
         pagination: { 
             el: '.swiper-pagination', 
-            clickable: true, 
+            type: 'fraction', 
         }, 
     }); 
 

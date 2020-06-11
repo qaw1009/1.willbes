@@ -965,7 +965,7 @@ body.memBody #Footer {
     position: relative;
 } 
 .thisMonth .swiper-slide { 
-    width:220px;
+    width:33.33333%;
     height: 152px;
     text-align: center; 
     font-size: 18px; 
@@ -989,7 +989,7 @@ body.memBody #Footer {
 .thisMonth .swiper-slide a {display: block; height: 152px;}
 .thisMonth .swiper-slide div {position: absolute; top:38px; left:18px; width:60%; text-align: left; color:#ff3600; line-height: 1.2; font-size: 18px; z-index: 2;}
 .thisMonth .swiper-slide span {display: block; font-size:24px; color:#2e2e2e}
-.thisMonth .swiper-slide img {position: absolute; top:0; right:0; width:100%; max-width: 200px; z-index: 1; }
+.thisMonth .swiper-slide img {position: absolute; bottom:-40px; right:0; width:100%; max-width: 200px; z-index: 1; }
 .thisMonth .swiper-container-lec .swiper-pagination {bottom:0 !important;} 
 
 .sampleView  {height: 360px; width:calc(100% - 40px); margin: 0 auto; overflow: hidden; padding-bottom:50px;}
@@ -3874,6 +3874,9 @@ body.memBody #Footer {
         margin: 0 1%;
     }
     #Header .sMenuList > a br {display: block;}
+    .thisMonth .swiper-slide {width:50%; height:160px;}
+    .thisMonth .swiper-slide img {bottom:0;}
+    .thisMonth .swiper-slide div {top:70px;}
     .mainTab li a br {display: block;}
     .csCenter .link li a {font-size:14px;}
     .csCenter .tel li {display: block; float:none; width:100%; border-right:0}
@@ -3892,6 +3895,9 @@ body.memBody #Footer {
     .filetype .file-text {
         width: 64%;
     }
+    .thisMonth .swiper-slide {width:50%; height:160px;}
+    .thisMonth .swiper-slide img {bottom:-40px;}
+    .thisMonth .swiper-slide div {top:40px;}
     .csCenter .tel li div {margin-left:20px}        
 }
 

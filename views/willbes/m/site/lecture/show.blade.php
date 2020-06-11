@@ -40,7 +40,7 @@
                                     @endif
                                     @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
                                         @if(empty($data['SaleStartDatm']) === false && empty($data['SaleEndDatm'] === false))
-                                            <dt class="h27"><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt><br/>
+                                            <dt class="h27"><strong>수강가능기간</strong>{{date('Y.m.d',strtotime($data['SaleStartDatm']))}} ~ {{date('Y.m.d', strtotime($data['SaleEndDatm']))}}</dt><br/>
                                         @endif
                                     @endif
                                     @if($pattern == 'only')

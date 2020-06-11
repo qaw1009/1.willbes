@@ -5,14 +5,14 @@
 </ul>
 <div class="tabBox buttonBox noticeBox">
     <div id="notice1" class="tabContent pd20">
-        <div class="moreBtn"><a href="{{front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode'])}}">+ 더보기</a></div>
+        <div class="moreBtn"><a href="{{front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode'].'?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['off_notice']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else
                 @foreach($data['off_notice'] as $row)
                     <li>
-                        <a href="{{front_url('/support/gosiNotice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                        <a href="{{front_url('/support/gosiNotice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
                             {{-- <span>EVENT</span> --}}
                             {{$row['Title']}}
                         </a>
@@ -23,14 +23,14 @@
         </ul>
     </div>
     <div id="notice2" class="tabContent pd20">
-        <div class="moreBtn"><a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}">+ 더보기</a></div>
+        <div class="moreBtn"><a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'].'?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['notice']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else
                 @foreach($data['notice'] as $row)
                     <li>
-                        <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                        <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
                             {{-- <span>EVENT</span> --}}
                             {{$row['Title']}}
                         </a>

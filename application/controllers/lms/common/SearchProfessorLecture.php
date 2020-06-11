@@ -60,9 +60,12 @@ class SearchProfessorLecture extends \app\controllers\BaseController
 
         $data_unit = $this->searchWMasterLectureModel->listAllUnit($data[0]['wLecIdx']);
 
+        $this->load->library('user_agent');
+
         $this->load->view('common/search_professor_lecture_view',[
             'data' => $data[0],
-            'data_unit' => $data_unit
+            'data_unit' => $data_unit,
+            'ismobile' => $this->agent->is_mobile()
         ]);
     }
 }

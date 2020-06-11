@@ -236,6 +236,30 @@ if (!function_exists('front_url')) {
     }
 }
 
+if (!function_exists('front_cate_url')) {
+    /**
+     * front_url 대체 헬퍼 (카테고리가 있을 경우 카테고리 URI 양식에 맞게 추가하여 리턴)
+     * @param string $uri [URI]
+     * @param null|string $add_param_name [카테고리 추가 파라미터명]
+     * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @return string
+     */
+    function front_cate_url($uri, $add_param_name = null, $is_force_pass = false)
+    {
+        $url = front_url($uri, $is_force_pass);
+
+        if (empty(config_app('CateCode')) === false) {
+            $url = rtrim($url, '/') . '/' . config_get('uri_segment_keys.cate') . '/' . config_app('CateCode');
+
+            if (empty($add_param_name) === false) {
+                $url .= '?' . $add_param_name . '=' . config_app('CateCode');
+            }
+        }
+
+        return $url;
+    }
+}
+
 if (!function_exists('front_device_url')) {
     /**
      * site_url 대체 헬퍼 (모바일 또는 앱 사이트를 지정하여 URI 생성)

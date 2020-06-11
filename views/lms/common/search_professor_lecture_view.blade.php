@@ -70,7 +70,7 @@
                 <tr>
                     <th width="120px">회차</th>
                     <th>회차제목</th>
-                    <th width="220px">강의보기</th>
+                    <th width="250px">강의보기</th>
                     <th>보조자료</th>
                     <th width="100px">강의시간<BR>/북페이지</th>
                     <th width="100px">촬영일</th>

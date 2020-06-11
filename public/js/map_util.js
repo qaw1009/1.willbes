@@ -10,6 +10,7 @@
 function kakaoMap(ele_id, alter_id, lat, lng, addr, info_txt) {
     // 카카오 라이브러리가 없을 경우 대체 지도 표시
     if (alter_id.length > 0 && typeof kakao === 'undefined') {
+        document.getElementById(ele_id).style.display = 'none';
         document.getElementById(alter_id).style.display = '';
         return;
     }

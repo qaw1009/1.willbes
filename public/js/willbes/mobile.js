@@ -1,6 +1,8 @@
-// Menu Script
+// LNB 메뉴
 $(function() {
     $('.Menu_open').click(function() {
+        $('#aside .navi').addClass('d_none');
+        $('#aside #navi_' + $(this).data('navi')).removeClass('d_none');
         $('.dim').show().css('display','block');
         $('#aside').addClass('on');
     });
@@ -12,21 +14,34 @@ $(function() {
     });
 });
 
+// GNB 메뉴    
+$(function() {
+    $('.subMenu .sMenuList a.moreMenu').click(function() {
+        $('.subMenu .sMenuList .dropBox').removeClass('on');
+
+        if ($(this).next().is(':visible')) {
+            $(this).next().hide();
+            $(this).removeClass('on');
+        } else {
+            $('.dropBox').hide();
+            $(this).next().show();
+            $(this).addClass('on');
+        }
+    });
+});
+
 // Aside 아코디언 메뉴 Script
 $(function() {
     $('.ListBox .List').click(function() {
-
-        $('.ListBox .List').removeClass('on')
+        $('.ListBox .List').removeClass('on');
 
         if ($(this).next().is(':visible')) {
             $(this).next().slideUp('normal');
             $(this).removeClass('on');
-
         } else {
             $('.ListBox .List-Depth').slideUp('normal');
             $(this).next().slideDown('normal');
             $(this).addClass('on');
-
         }   
     });
 });

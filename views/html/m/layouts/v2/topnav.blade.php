@@ -51,7 +51,7 @@
         <div class="subMenuBox c_both">
                 <ul class="subMenu">
                     <li class="sMenuList">
-                        <a href="#none" class="moreMenu">교수진소개<span class="rowLine"></span></a>
+                        <a href="#none" class="moreMenu">교수진<br>소개</a>
                         <div class="dropBox dropBox2">
                             <ul>
                                 <li>
@@ -113,7 +113,7 @@
                         </div>
                     </li>
                     <li class="sMenuList">
-                        <a href="#none" class="moreMenu">학원실강<span class="rowLine"></span></a>
+                        <a href="#none" class="moreMenu">학원<br>실강</a>
                         <div class="dropBox">
                             <ul>
                                 <li><a href="#none">단과반수강신청</a></li>
@@ -126,7 +126,7 @@
                         </div>
                     </li>
                     <li class="sMenuList">
-                        <a href="#none" class="moreMenu">동영상강의<span class="rowLine"></span></a>
+                        <a href="#none" class="moreMenu">동영상<br>강의</a>
                         <div class="dropBox dropBox2">
                             <ul>
                                 <li>
@@ -162,7 +162,7 @@
                         </div>
                     </li>
                     <li class="sMenuList">
-                        <a href="#none" class="moreMenu">공개특강/보강</a>
+                        <a href="#none" class="moreMenu">공개특강<br>/보강</a>
                         <div class="dropBox">
                             <ul>
                                 <li><a href="#none">공개특강</a></li>

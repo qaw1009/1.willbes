@@ -34,7 +34,8 @@ class LmsAuthService extends AdminAuthService
                     when 1 then G.MenuName
                     when 2 then concat(G.MenuName, ">", M.MenuName)
                     when 3 then concat(G.MenuName, ">", P.MenuName, ">", M.MenuName) 
-                  end) as UrlRouteName        
+                  end) as UrlRouteName
+                 ,M.IsOpen        
         ';
 
         $from = '
@@ -60,7 +61,6 @@ class LmsAuthService extends AdminAuthService
 
         // 쿼리 실행
         $query = $this->_db->query('select ' . $column . $from . $where . $order_by_offset_limit, [$role_idx]);
-
         return $query->result_array();
     }
 

@@ -377,7 +377,7 @@
 
     //이달의강의
     var swiper = new Swiper ('.swiper-container-Lec', { 
-        slidesPerView: 3,
+        slidesPerView: 'auto',
         spaceBetween: 7, 
         slidesPerGroup: 2,
         loop: true,

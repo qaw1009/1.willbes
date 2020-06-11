@@ -3798,8 +3798,13 @@ body.memBody #Footer {
 
 /*학원오시는길*/
 .mapArea {padding:0 20px}
-.mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:10px}
-.mapArea li {margin-left:15px; list-style-type: disc; font-size:14px; line-height: 1.4; margin-bottom:5px}
+.mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:20px}
+.mapArea li {padding-left:30px; font-size:14px; line-height: 1.4; margin-bottom:10px; min-height: 30px; padding-top:12px}
+.mapArea li:nth-child(1) {background:url("https://static.willbes.net/public/images/promotion/m/icon_add.png") no-repeat left top}
+.mapArea li:nth-child(2) {background:url("https://static.willbes.net/public/images/promotion/m/icon_tel2.png") no-repeat left top}
+.location_map {width:100%; height:500px; overflow: hidden; position: relative; margin-top:20px; border:1px solid #ccc}
+.location_map span {position: absolute; top:50%; left:50%; margin-top:-29px; margin-left: -10px; z-index: 10;}
+.location_map .mapimg {position: absolute; top:50%; left:50%; margin-top: -350px; margin-left: -560px;}
 
 /*********************************************     MYPAGE     *********************************************/
 
@@ -3897,8 +3902,8 @@ body.memBody #Footer {
     }
     .thisMonth .swiper-slide {width:50%; height:160px;}
     .thisMonth .swiper-slide img {bottom:-40px;}
-    .thisMonth .swiper-slide div {top:40px;}
-    .csCenter .tel li div {margin-left:20px}        
+    .csCenter .tel li div {margin-left:20px} 
+    .location_map {height:300px;}
 }
 
 /* Calendar */

@@ -21,8 +21,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:50px;right:0;z-index:10;}
-        .sky li{padding-bottom:10px;}
+        .sky {position:fixed; top:200px;right:0;z-index:10;}
+        .sky li{padding-bottom:25px;}
 
         .evtTop00 {background:#404040}
 
@@ -123,20 +123,10 @@
                 <a href="#event">
                     <img src="https://static.willbes.net/public/images/promotion/2020/05/1644_sky01.png" alt="6월 심화기출" >
                 </a>
-            </li>
-            <li>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042" target="_blank"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1644_sky02.png" alt="3개월 필합 패스" >
-                </a>
-            </li>       
-            <li>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1644_sky03.png" alt="3개월 슈퍼 패스" >
-                </a>
-            </li>  
+            </li>          
             <li>
                 <a href="http://cafe.daum.net/tntpolice/WoSU/775" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1644_sky04.png" alt="장정훈" >
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/jang_sky.png" alt="장정훈" >
                 </a>
             </li>                
         </ul>       

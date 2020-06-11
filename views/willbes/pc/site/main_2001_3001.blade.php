@@ -6,7 +6,7 @@
     .bnSec01 li {display:inline; float:left}
     .bnSec01:after {content:""; display:block; clear:both}
 
-    .bnSecbar01 {height:100px; overflow:hidden}
+    .bnSecbar01 .bx-viewport {overflow:hidden}
 
     .onProfBox {margin-right:-12px; margin-bottom: -12px;}
     .onProfBox li {

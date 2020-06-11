@@ -19,66 +19,20 @@
         <div class="thisMonth">
             <div class="swiper-container-lec">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
+                    @if(!empty($data['best_product']))
+                        @foreach($data['best_product'] as $row)
+                            <div class="swiper-slide">
+                                <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
+                                    <img src="{{$row['ProfIndexImg'] or ''}}" alt="{{$row['ProfNickName']}}">
+                                    <div>
+                                        <span>{{$row['ProfNickName']}}</span>
+                                        {{$row['SubjectName']}}<br>
+                                        {{$row['CourseName']}}
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/prof_index_50836.png" alt="강사명">
-                            <div>
-                                <span>황종휴</span>
-                                경제학<br>
-                                예비순환
-                            </div>
-                        </a>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -90,78 +44,29 @@
             <div class="overhidden">
                 <div class="swiper-container-view">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                                <div>
-                                    경제학<span></span><strong>황종휴</strong>
-                                    <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                        @if(!empty($data['new_product']))
+                            @foreach($data['new_product'] as $row)
+                                @php
+                                    $sample_info = [];
+                                    if($row['LectureSamplewUnit'] !== 'N') {
+                                        $sample_info = json_decode($row['LectureSamplewUnit'], true);
+                                    }
+                                @endphp
+                                <div class="swiper-slide">
+                                    @if(!empty($sample_info[0]['wUnitIdx']))
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row["ProdCode"]}}&u={{$sample_info[0]["wUnitIdx"]}}&q={{$sample_info[0]["wHD"] != '' ? 'HD' : 'SD'}}", "{{config_item('starplayer_license')}}");'></a>
+                                    @else
+                                        <a href="javascript:alert('샘플영상 준비중입니다.')">
+                                    @endif
+                                            <img src="{{$row['ProfIndexImg'] or ''}}" alt="{{$row['ProfNickName']}}">
+                                            <div>
+                                                {{$row['SubjectName']}}<span></span><strong>{{$row['ProfNickName']}}</strong>
+                                                <p>{{empty($sample_info) ? '' : $sample_info[0]['wUnitName']}}</p>
+                                            </div>
+                                        </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/lec_list_50837.png" alt="강사명">
-                                <div>
-                                    행정법<span></span><strong>김정일</strong>
-                                    <p>행정법 원론강의 </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/lec_list_50838.png" alt="강사명">
-                                <div>
-                                    행정법<span></span><strong>박도원</strong>
-                                    <p>행정법 GS3순환 </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/lec_list_50836.png" alt="강사명">
-                                <div>
-                                    행정학<span></span><strong>백승준</strong>
-                                    <p>2020 행정학 예비순환 오리엔테이션, 무역모형기초 1회 1강</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                                <div>
-                                    경제학<span></span><strong>황종휴</strong>
-                                    <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                                <div>
-                                    경제학<span></span><strong>황종휴</strong>
-                                    <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                                <div>
-                                    경제학<span></span><strong>황종휴</strong>
-                                    <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                                <div>
-                                    경제학<span></span><strong>황종휴</strong>
-                                    <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                                </div>
-                            </a>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>

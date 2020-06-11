@@ -56,7 +56,7 @@
                                 </a>
                             @else
                                 <a href="{{ front_app_url('/home/index', SUB_DOMAIN, false, true) }}" class="siteTitle NSK-Black">
-                                    <img src="{{ img_url('m/main/logo.png') }}">
+                                    {{ str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle']) }}
                                 </a>
                             @endif
                         </div>

@@ -40,7 +40,7 @@ class Home extends \app\controllers\FrontController
             } else {
                 if (empty($this->_cate_code) === true) {
                     // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
-                    redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                    redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
                 }
 
                 $_view_path = $this->_site_code . '_' . $cate_code;
@@ -65,7 +65,7 @@ class Home extends \app\controllers\FrontController
                     } else {
                         if (empty($this->_cate_code) === true) {
                             // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
-                            redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                            redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
                         }
 
                         $_view_path = $this->_site_code . '_' . $cate_code;
@@ -205,8 +205,8 @@ class Home extends \app\controllers\FrontController
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
-        $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
-        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
+        $data['best_product'] = $this->_product('on_lecture', 20, $cate_code, 'Best');
+        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $cate_code, 'New');
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         /*$data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);*/

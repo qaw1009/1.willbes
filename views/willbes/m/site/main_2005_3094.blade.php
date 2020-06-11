@@ -58,7 +58,7 @@
                                     @else
                                         <a href="javascript:alert('샘플영상 준비중입니다.')">
                                     @endif
-                                            <img src="{{$row['ProfIndexImg'] or ''}}" alt="{{$row['ProfNickName']}}">
+                                            <img src="{{$row['ProfLecListImg'] or ''}}" alt="{{$row['ProfNickName']}}">
                                             <div>
                                                 {{$row['SubjectName']}}<span></span><strong>{{$row['ProfNickName']}}</strong>
                                                 <p>{{empty($sample_info) ? '' : $sample_info[0]['wUnitName']}}</p>

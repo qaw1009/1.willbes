@@ -992,7 +992,7 @@ body.memBody #Footer {
 .thisMonth .swiper-slide img {position: absolute; bottom:-40px; right:0; width:100%; max-width: 200px; z-index: 1; }
 .thisMonth .swiper-container-lec .swiper-pagination {bottom:0 !important;} 
 
-.sampleView  {height: 360px; width:calc(100% - 40px); margin: 0 auto; overflow: hidden; padding-bottom:50px;}
+.sampleView  {height: 360px; width:calc(100% - 40px); margin: 0 auto; overflow: hidden; padding-bottom:60px;}
 .sampleView .swiper-container-view { 
     width: 100%;
     height: 100%;
@@ -1019,7 +1019,8 @@ body.memBody #Footer {
     -webkit-align-items: center;
     align-items: center;
 } 
-.sampleView .swiper-container-View .swiper-pagination {bottom:-40px !important;} 
+.sampleView .swiper-container-View .swiper-pagination {bottom:-55px !important;} 
+.sampleView .swiper-container-View .swiper-pagination .swiper-pagination-bullet {width: 20px !important; height: 20px !important;}
 
 .sampleView .swiper-slide a {display: block; width: 100%; height: 100%; overflow: hidden; color:#5a5a5a}
 .sampleView .swiper-slide a img {max-width:80px; float:left; display: inline-block; margin:0 10px}

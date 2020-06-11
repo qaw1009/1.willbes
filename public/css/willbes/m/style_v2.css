@@ -393,19 +393,15 @@ span {
 #Header .subMenu {position:relative;}
 #Header .subMenuBox {max-width: 720px; margin: 0 auto;}
 #Header .sMenuList {display:inline; float:left; width:25%}
-#Header .sMenuList > a {display: block; text-align:center; font-size: 14px; padding:20px 0; font-weight: bold;}
-#Header .sMenuList span.rowLine {
-    float:right;
-    background: #ccc;
-    width: 1px;
-    height: 14px;
-}
+#Header .sMenuList > a {display:block; text-align:center; font-size:14px; margin:20px 0; font-weight:bold; line-height:1.2; border-right:1px solid #ccc}
+#Header .sMenuList > a br {display: none;}
+#Header .sMenuList:last-child a {border:0}
 #Header .sMenuList .dropBox {
     display: none;
     position: absolute; 
     width:100%; left:0; 
     border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:10px 0;
-    background: #fff;
+    background: #ededed;
     font-size:12px;
     z-index:10;    
 }
@@ -413,10 +409,10 @@ span {
     display:block;
 }
 
-#Header .sMenuList li {padding:10px 0; border-bottom: 1px solid #e4e4e4; line-height: 1.5;}
+#Header .sMenuList li {padding:8px 0; /*border-bottom: 1px solid #e4e4e4;*/ line-height: 1.4;}
 #Header .sMenuList li a {display:inline-block; margin-right:5px; color:#666}
 #Header .sMenuList .dropBox2 li {padding-left:90px; position:relative;}
-#Header .sMenuList .dropBox2 li span {display: block; position: absolute; width:80px; left:0; z-index: 2; border-right:1px solid #e4e4e4; text-align: center;}
+#Header .sMenuList .dropBox2 li span {display:block; position: absolute; width:80px; left:0; z-index: 2; border-right:1px solid #ccc; text-align: center;}
 #Header .sMenuList li:last-child {border:0}
 #Header .sMenuList:nth-child(2) li {padding-left:27%}
 #Header .sMenuList:nth-child(4) li {padding-left:77%}
@@ -943,9 +939,17 @@ body.memBody #Footer {
 .bnSec02 li:last-child {border:0}
 .bnSec02 ul:after {content:""; display:block; clear:both}
 
+.bnSec03 {margin-bottom:10px; padding:0 10px}
+.bnSec03 ul {border-top:1px solid #ccc; border-left:1px solid #ccc;}
+.bnSec03 li {display:inline; float:left; width:50%}
+.bnSec03 li a {display:block; text-align:center; height: 40px; line-height:40px; font-size:14px; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.bnSec03 li:last-child {border:0}
+.bnSec03 ul:after {content:""; display:block; clear:both}
+
 .mainTab {border-top:1px solid #ccc; margin-top: 20px;}
 .mainTab li {display:inline; float:left; width:33.33333%}
-.mainTab li a {display:block; font-size:16px; text-align:center; background:#eaeaea; color:#8a8a8a; height:65px; line-height:65px; font-size:bold; border-right:1px solid #ccc}
+.mainTab li a {display:block; font-size:16px; text-align:center; background:#eaeaea; color:#8a8a8a; padding:20px 0; font-size:bold; border-right:1px solid #ccc; line-height: 1.2;}
+.mainTab li a br {display: none;}
 .mainTab li:last-child a {border:0}
 .mainTab li a.on {background:#fff; color:#313131;}
 .mainTab:after {content:""; display: block; clear:both}
@@ -1027,22 +1031,32 @@ body.memBody #Footer {
 
 /*로드맵*/
 .loadMap {font-size:14px; padding:0 20px}
-.loadMap ul {margin:10px 0; border:1px solid #d9d9d9; border-bottom:0}
-.loadMap p {border:1px dashed #e4e4e4; height: 30px; line-height: 30px; text-align: center;}
-.loadMap p.start {border-bottom:0}
-.loadMap p.goal {border-top:0}
-.loadMap p span {font-size:20px; font-weight: bold; display: inline-block; background: #fff; padding:0 5px}
-.loadMap p.start span {margin-top: -16px;}
-.loadMap p.goal span {margin-top: 14px}
+.loadMap > ul {margin:10px 0; border:1px solid #d9d9d9; border-bottom:0}
+.loadMap > p {border:1px dashed #e4e4e4; height: 30px; line-height: 30px; text-align: center;}
+.loadMap > p.start {border-bottom:0}
+.loadMap > p.goal {border-top:0}
+.loadMap > p span {font-size:20px; font-weight: bold; display: inline-block; background: #fff; padding:0 5px}
+.loadMap > p.start span {margin-top: -16px;}
+.loadMap > p.goal span {margin-top: 14px}
 .loadMap li.lmTitle > a {display:block; font-weight:bold; font-size:18px; color:#757575; 
     padding:15px; border-bottom:1px solid #d9d9d9;
     background:#eee url("../../../img/willbes/m/main/icon_arr_top.png") no-repeat 98% center}
 .loadMap .lmCts a.moreBtn {display:block; height: 30px; line-height: 30px; color:#fff; background: #2e2e2e; 
     border-radius: 20px; width: 130px; margin:20px auto 0; text-align: center;}
 .loadMap .lmCts {display:none;padding:15px; border-bottom:1px solid #d9d9d9; color:#757575; line-height: 1.4;}
+.loadMap .lmCts ul {margin:15px 0}
+.loadMap .lmCts ul li {list-style: disc; margin-left:15px }
+.loadMap .lmCts div span {box-shadow:inset 0 -10px 0 rgba(255, 255, 0, 0.3); color:#333}
+
+.loadTab {border-top:1px solid #ccc; margin-bottom:40px;}
+.loadTab li {display:inline; float:left; width:50%}
+.loadTab li a {display:block; font-size:16px; text-align:center; background:#eaeaea; color:#8a8a8a; height:50px; line-height:50px; font-size:bold; border-right:1px solid #ccc}
+.loadTab li:last-child a {border:0}
+.loadTab li a.on {background:#fff; color:#313131;}
+.loadTab:after {content:""; display: block; clear:both}
 
 /*메인 cs센터*/
-.csCenter {border-top:1px solid #ccc; margin-top:50px;}
+.csCenter {border-top:1px solid #ccc; margin-top:50px; margin-bottom:30px}
 .csCenter li {display: inline; float:left; width:33.33333%}
 .csCenter li a {display: block; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
 .csCenter .link li:last-child a {border-right:0; letter-spacing: -1px;}
@@ -1065,6 +1079,7 @@ body.memBody #Footer {
 .gosibtns li a:hover,
 .gosibtns li a:active {background: #1a8ccc; color: #fff; border:1px solid #1a8ccc;}
 .gosibtns ul:after {content:""; display:block; clear:both}
+
 
 /* Tabs : lineTab 공통 */
 .lineTabs {
@@ -3780,6 +3795,12 @@ body.memBody #Footer {
 .profArea .subjectBox span {display: block; font-size:20px; color:#1a8ccc}
 .profArea .subjectBox ul:after {content:""; display:block; clear: both;}
 
+
+/*학원오시는길*/
+.mapArea {padding:0 20px}
+.mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:10px}
+.mapArea li {margin-left:15px; list-style-type: disc; font-size:14px; line-height: 1.4; margin-bottom:5px}
+
 /*********************************************     MYPAGE     *********************************************/
 
 /*게시판 신규강의리스트*/
@@ -3852,6 +3873,8 @@ body.memBody #Footer {
     #Footer .ft-Link ul li {
         margin: 0 1%;
     }
+    #Header .sMenuList > a br {display: block;}
+    .mainTab li a br {display: block;}
     .csCenter .link li a {font-size:14px;}
     .csCenter .tel li {display: block; float:none; width:100%; border-right:0}
     .csCenter .tel li br {display:none}     

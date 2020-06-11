@@ -5,7 +5,11 @@
                 <span class="hidden">뒤로가기</span>
             </button>
             @if(empty($__cfg['SiteMenu']['ActiveMenu']) === false)
-                {{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteName'] }}
+                @if(array_has($__cfg['SiteMenu'], 'TreeMenu.GNB') === true)
+                    {{ str_first_pos_after($__cfg['SiteMenu']['ActiveMenu']['UrlRouteName'], ' > ', '') }}
+                @else
+                    {{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteName'] }}
+                @endif
             @else
                 @yield('page_title')
             @endif

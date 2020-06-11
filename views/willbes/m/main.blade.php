@@ -8,6 +8,27 @@
                 <div>
                     <h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4>
                     <ul class="bigType">
+                    {{-- TODO : 최종 오픈할 경우 환경변수 제어조건 및 이전 소스 제거 요망 --}}
+                    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                        {{-- 신규버전 --}}
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=3001', 'police') }}" target="_blank">신광은경찰</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3094/pattern/only?search_order=course&cate_code=3094', 'gosi') }}" target="_blank">5급행정</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=regist&cate_code=3019', 'pass') }}" target="_blank">공무원</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3095/pattern/only?search_order=course&cate_code=3095', 'gosi') }}" target="_blank">국립외교원</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=309002', 'job') }}" target="_blank">공인노무사</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3096/pattern/only?search_order=course&cate_code=3096', 'gosi') }}" target="_blank">PSAT</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=309003', 'job') }}" target="_blank">감정평가사</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3097/pattern/only?search_order=course&cate_code=3097', 'gosi') }}" target="_blank">5급헌법</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=309004', 'job') }}" target="_blank">변리사</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3098/pattern/only?search_order=course&cate_code=3098', 'gosi') }}" target="_blank">법원행시</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=309006', 'job') }}" target="_blank">세무사</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/cate/3099/pattern/only?search_order=course&cate_code=3099', 'gosi') }}" target="_blank">변호사시험</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=309005', 'job') }}" target="_blank">관세사</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'spo') }}" target="_blank">경찰간부(간부후보생)</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'lang') }}" target="_blank">어학</a></li>
+                        <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'work') }}" target="_blank">취업</a></li>
+                        <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡/e창업 e-커머스</a></li>
+                    @else
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=3001', 'police') }}" target="_blank">신광은경찰</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=3094', 'gosi') }}" target="_blank">5급행정</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=regist&cate_code=3019', 'pass') }}" target="_blank">공무원</a></li>
@@ -25,6 +46,7 @@
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'lang') }}" target="_blank">어학</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only', 'work') }}" target="_blank">취업</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡/e창업 e-커머스</a></li>
+                    @endif
                     </ul>
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>

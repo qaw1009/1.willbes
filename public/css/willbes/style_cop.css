@@ -474,11 +474,13 @@
 .HotIssue li {
     display: inline;
     float: left;
-    margin-right:4px;
+    width:370px;
+    margin-right:5px;
 }
 .HotIssue li:last-child {
     margin: 0;
 }
+.HotIssue li img {width: 100%;}
 .HotIssue li.nSlider {
     display: inline;
 }
@@ -722,19 +724,20 @@
 /* Main Container : pick : nSlider : Cop */
 .sliderPick {
     float: left;
-    width: 763px;
 }
 .pickBox {
     float: left;
-    width: 379px;
+    width: 370px;
 }
+.pickBox img {width:100%}
 .pickBox.pick1 {
     margin-right: 5px;
 }
 .sliderEvt {
     float: right;
-    width: 353px;
+    width: 370px;
 }
+.sliderEvt img {width:100%}
 .sliderEvt ul li {
     margin-top: 4px;
 }

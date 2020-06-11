@@ -30,19 +30,6 @@
                 @if($method == 'PUT'){{ $data['MenuIdx'] }}@else # 등록 시 자동 생성 @endif
             </div>
         </div>
-        <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="is_tzone">T-Zone 적용여부
-            </label>
-            <div class="col-md-3">
-                <div class="radio">
-                    <input type="radio" id="is_tzone_y" name="is_tzone" class="flat" value="Y" required="required" title="Tzone적용여부" @if( $data['IsTzone']=='Y')checked="checked"@endif/> <label for="is_tzone_y" class="input-label">적용</label>
-                    <input type="radio" id="is_tzone_n" name="is_tzone" class="flat" value="N" @if($method == 'POST' || $data['IsTzone']=='N')checked="checked"@endif/> <label for="is_tzone_n" class="input-label">미적용</label>
-                </div>
-            </div>
-            <div class="col-md-3 tx-left form-control-static">
-                # T-Zone 사이트 메뉴 적용 여부
-            </div>
-        </div>
     @else
         {{-- LNB 메뉴 등록 --}}
         @if(isset($parent_menus['GNB']) === true)
@@ -116,28 +103,30 @@
             </div>
         </div>
         @endif
-        <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="is_tzone">T-Zone 적용여부
-            </label>
-            <div class="col-md-3">
-                <div class="radio">
-                    <input type="radio" id="is_tzone_y" name="is_tzone" class="flat" value="Y" required="required" title="Tzone적용여부" @if( $data['IsTzone']=='Y')checked="checked"@endif/> <label for="is_tzone_y" class="input-label">적용</label>
-                    <input type="radio" id="is_tzone_n" name="is_tzone" class="flat" value="N" @if($method == 'POST' || $data['IsTzone']=='N')checked="checked"@endif/> <label for="is_tzone_n" class="input-label">미적용</label>
-                </div>
-            </div>
-            <div class="col-md-3 tx-left form-control-static">
-                # T-Zone 사이트 메뉴 적용 여부
+    @endif
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="is_tzone">T-Zone 적용여부
+        </label>
+        <div class="col-md-3">
+            <div class="radio">
+                <input type="radio" id="is_tzone_y" name="is_tzone" class="flat" value="Y" required="required" title="Tzone적용여부" @if( $data['IsTzone']=='Y')checked="checked"@endif/> <label for="is_tzone_y" class="input-label">적용</label>
+                <input type="radio" id="is_tzone_n" name="is_tzone" class="flat" value="N" @if($method == 'POST' || $data['IsTzone']=='N')checked="checked"@endif/> <label for="is_tzone_n" class="input-label">미적용</label>
             </div>
         </div>
-        <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
-            </label>
-            <div class="col-md-4 item form-inline">
-                <div class="radio">
-                    <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                    <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
-                </div>
+        <div class="col-md-3 tx-left form-control-static">
+            # T-Zone 사이트 메뉴 적용 여부
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
+        </label>
+        <div class="col-md-4 item form-inline">
+            <div class="radio">
+                <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
             </div>
+        </div>
+        @if(!($menu_depth == '1'))
             <label class="control-label col-md-2" for="order_num">정렬
             </label>
             <div class="col-md-1">
@@ -146,8 +135,21 @@
             <div class="col-md-3 form-control-static">
                 # 미 입력시 마지막 DP
             </div>
+        @endif
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="is_tzone">GNB 노출 여부
+        </label>
+        <div class="col-md-3">
+            <div class="radio">
+                <input type="radio" id="is_open_y" name="is_open" class="flat" value="Y" required="required" title="노출여부" @if( $data['IsOpen']=='Y')checked="checked"@endif/> <label for="is_open_y" class="input-label">노출</label>
+                <input type="radio" id="is_open_n" name="is_open" class="flat" value="N" @if($method == 'POST' || $data['IsOpen']=='N')checked="checked"@endif/> <label for="is_open_n" class="input-label">숨김</label>
+            </div>
         </div>
-    @endif
+        <div class="col-md-3 tx-left form-control-static">
+            # GNB 메뉴 노출 여부
+        </div>
+    </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">등록자
         </label>

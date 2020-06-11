@@ -67,10 +67,11 @@
         </div> 
 
         <div class="evtCtnsBox wb_evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="소문내고 커피득템고" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_03.jpg" usemap="#Map1677a" title="이미지 다운받기 및 쿠폰 받기" border="0" />
             <map name="Map1677a" id="Map1677a">
-                <area shape="rect" coords="305,1081,727,1142" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-            </map>            
+                <area shape="rect" coords="279,1088,621,1141" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
+                <area shape="rect" coords="637,1088,982,1141" href="javascript:;" onclick="giveCheck()" alt="쿠폰 받기" />
+            </map>         
         </div>
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

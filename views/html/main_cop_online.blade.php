@@ -6,7 +6,7 @@
     .bnSec01 li {display:inline; float:left}
     .bnSec01:after {content:""; display:block; clear:both}
 
-    .bnSecbar01 {height:100px; overflow:hidden}
+    .bnSecbar01 .slider{height:100px; overflow:hidden}
 
     .onProfBox {margin-right:-12px; margin-bottom: -12px;}
     .onProfBox li {
@@ -160,7 +160,10 @@
 
     <div class="Section">
         <div class="widthAuto bnSecbar01">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a>
+            <div class="slider">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
+            </div>
         </div>
     </div>
 

@@ -161,7 +161,7 @@
                     </li>
                     <li>
                         {{-- <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/2?tab=3#content_3') }}">--}}
-                        <a id='tab3' href="@if(time() < strtotime('202006131040'))javascript:alert('6/13(토) 10:40 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202006131140'))javascript:alert('6/13(토) 11:40 오픈!');@else{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1660/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>

@@ -122,7 +122,7 @@ class MenuModel extends WB_Model
      */
     public function findMenuForModify($menu_idx)
     {
-        $column = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm ,M.IsTzone';
+        $column = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm ,M.IsTzone, M.IsOpen';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 
@@ -159,6 +159,8 @@ class MenuModel extends WB_Model
             $data = [
                 'MenuName' => element('menu_name', $input),
                 'IsTzone' => element('is_tzone', $input,'N'),
+                'IsUse' => element('is_use', $input,'Y'),
+                'IsOpen' => element('is_open', $input,'Y'),
                 'RegAdminIdx' => $admin_idx
             ];
 
@@ -181,7 +183,6 @@ class MenuModel extends WB_Model
                     'MenuDepth' => intval($row['MenuDepth']) + 1,
                     'MenuUrl' => element('menu_url', $input),
                     'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getMenuOrderNum($parent_menu_idx) : element('order_num', $input),
-                    'IsUse' => element('is_use', $input),
                 ]);
 
                 if ($row['MenuDepth'] == 1) {
@@ -230,6 +231,8 @@ class MenuModel extends WB_Model
             $data = [
                 'MenuName' => element('menu_name', $input),
                 'IsTzone' => element('is_tzone', $input,'N'),
+                'IsUse' => element('is_use', $input,'Y'),
+                'IsOpen' => element('is_open', $input,'Y'),
                 'UpdAdminIdx' => $admin_idx
             ];
 
@@ -245,7 +248,6 @@ class MenuModel extends WB_Model
                     'GroupMenuIdx' => $row['GroupMenuIdx'],
                     'MenuUrl' => element('menu_url', $input),
                     'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getMenuOrderNum($parent_menu_idx) : element('order_num', $input),
-                    'IsUse' => element('is_use', $input),
                 ]);
 
                 if ($row['MenuDepth'] == 1) {

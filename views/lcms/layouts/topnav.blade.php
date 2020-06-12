@@ -25,6 +25,9 @@
                     </div>
                     <div class="pull-left mr-15 mt-5">
                         <ul class="nav nav-pills" role="tablist">
+                            @if( (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') && APP_NAME == 'lms')
+                                <li role="presentation" class="mr-5"><a href="{{ app_url('/', 'lms').'task/taskProject/' }}" class="no-padding" target="_new"><i class="fa fa-lg fa-pencil dark-blue"></i></a>
+                            @endif
                             <li role="presentation" class="mr-5"><a href="#" class="btn-cog no-padding"><i class="fa fa-lg fa-cog dark-blue"></i></a>
                             <li role="presentation" class="mr-5">
                                 <a href="#none" class="dropdown-toggle no-padding" role="button" id="favorite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -60,31 +63,40 @@
                         @php
                             $css_right_menu = $loop->count > 15 && $loop->remaining <= 2 ? 'right-menu' : '';
                         @endphp
-
                         @if(isset($bmenu['Children']) === true)
-                            <li role="presentation" class="dropdown">
-                                <a id="{{ $bmenu['TreeNum'] }}" href="#">
-                                    {{ $bmenu['MenuName'] }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    @foreach($bmenu['Children'] as $midx => $mmenu)
-                                        @if(isset($mmenu['Children']) === true)
-                                            <li role="presentation" class="dropdown-submenu">
-                                                <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
-                                                <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
-                                                    @foreach($mmenu['Children'] as $sidx => $smenu)
-                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" target="_{{ $smenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @else
-                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" target="_{{ $mmenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
+                            @if($bmenu['IsOpen'] =='Y')
+                                <li role="presentation" class="dropdown">
+                                    <a id="{{ $bmenu['TreeNum'] }}" href="#">
+                                        {{ $bmenu['MenuName'] }} <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach($bmenu['Children'] as $midx => $mmenu)
+                                            @if(isset($mmenu['Children']) === true)
+                                                @if($mmenu['IsOpen'] =='Y')
+                                                    <li role="presentation" class="dropdown-submenu">
+                                                        <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
+                                                        <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
+                                                            @foreach($mmenu['Children'] as $sidx => $smenu)
+                                                                @if($smenu['IsOpen'] =='Y')
+                                                                    <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" target="_{{ $smenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                @endif
+                                            @else
+                                                @if($mmenu['IsOpen'] =='Y')
+                                                    <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" target="_{{ $mmenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
                         @else
-                            <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
+                            @if($bmenu['IsOpen'] =='Y')
+                                <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
+                            @endif
                         @endif
                     @endforeach
                 @endif

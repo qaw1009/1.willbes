@@ -13,6 +13,11 @@
             @else
                 @yield('page_title')
             @endif
+
+            {{-- 별도 추가된 타이틀 표시 (교수진 상세) --}}
+            @hasSection('add_title')
+                @yield('add_title')
+            @endif
         </div>
     </div>
 </div>

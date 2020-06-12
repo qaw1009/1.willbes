@@ -36,6 +36,7 @@ class WbsAuthService extends AdminAuthService
                     when 2 then concat(G.wMenuName, ">", M.wMenuName)
                     when 3 then concat(G.wMenuName, ">", P.wMenuName, ">", M.wMenuName) 
                   end) as UrlRouteName        
+                  ,M.wIsOpen as IsOpen
         ';
 
         $from = '

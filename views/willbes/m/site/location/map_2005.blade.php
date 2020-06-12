@@ -9,8 +9,8 @@
         @include('willbes.m.layouts.page_title')
 
         <ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
-            <li><a href="#location1" class="on">신림(본원)</a><span class="row-line">|</span></li>
-            <li><a href="#location2">강남(분원)</a></li>
+            <li><a href="#location1" id="tab_location1" class="on">신림(본원)</a><span class="row-line">|</span></li>
+            <li><a href="#location2" id="tab_location2">강남(분원)</a></li>
         </ul>
 
         <div class="mapArea">
@@ -56,11 +56,18 @@
     </div>
     <!-- End Container -->
     {{--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
-    <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
+    <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>--}}
     <script type="text/javascript">
         $(document).ready(function() {
-            kakaoMap('map1', 'alterMap1', '37.470481', '126.934476', '서울 관악구 신림로 23길 16', '신림(본원)');
-            kakaoMap('map2', 'alterMap2', '37.501191', '127.033478', '서울 강남구 테헤란로 19길 18', '강남(분원)');
+            // 법원행시, 변호사시험 카테고리는 강남(분원) 탭 디폴트 처리
+            @if(in_array($__cfg['CateCode'], ['3098', '3099']) === true)
+                $(function() {
+                    $('#tab_location2').trigger('click');
+                });
+            @endif
+
+            {{--kakaoMap('map1', 'alterMap1', '37.470481', '126.934476', '서울 관악구 신림로 23길 16', '신림(본원)');
+            kakaoMap('map2', 'alterMap2', '37.501191', '127.033478', '서울 강남구 테헤란로 19길 18', '강남(분원)');--}}
         });
-    </script>--}}
+    </script>
 @stop

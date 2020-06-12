@@ -25,7 +25,7 @@
                     </div>
                     <div class="pull-left mr-15 mt-5">
                         <ul class="nav nav-pills" role="tablist">
-                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                            @if( (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') && APP_NAME == 'lms')
                                 <li role="presentation" class="mr-5"><a href="{{ app_url('/', 'lms').'task/taskProject/' }}" class="no-padding"><i class="fa fa-lg fa-pencil dark-blue"></i></a>
                             @endif
                             <li role="presentation" class="mr-5"><a href="#" class="btn-cog no-padding"><i class="fa fa-lg fa-cog dark-blue"></i></a>

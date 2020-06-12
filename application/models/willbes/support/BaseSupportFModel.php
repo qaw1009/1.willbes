@@ -29,6 +29,7 @@ class BaseSupportFModel extends WB_Model
         ,'lms_order_product' => 'lms_order_product'
         ,'lms_mock_register' => 'lms_mock_register'
         ,'lms_professor' => 'lms_professor'
+        ,'lms_professor_board_info' => 'lms_professor_board_info'
     ];
 
     //등록파일 rule 설정

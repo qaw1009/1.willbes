@@ -144,6 +144,69 @@
                         <p class="form-control-static"># 체크시 사용자단 교수소개 영역에 노출됩니다. (단, 첨삭게시판 제외)</p>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsSmsUse">학습Q&A 새글 자동문자
+                    </label>
+                    <div class="col-md-10 form-inline item">
+                        <input type="hidden" name="sms_bm_idx[]" value="66"/>
+                        <div class="radio">
+                            [문자발송사용여부]
+                            <input type="radio" name="is_sms_use[]" class="flat" value="Y" required="required" title="문자발송사용여부" @if(empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'Y')checked="checked"@endif/> 사용
+                            <input type="radio" name="is_sms_use[]" class="flat" value="N" @if($method == 'POST' || (empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'N'))checked="checked"@endif/> 미사용
+                        </div>
+                        <p>
+                            <textarea id="sms_content" name="sms_content[]" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">@if(empty($data['BoardInfo']['qna']['SmsContent']) === false){{ $data['BoardInfo']['qna']['SmsContent'] }}@endif</textarea>
+                        </p>
+                        <div class="text">
+                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, (empty($data['BoardInfo']['qna']['SmsSendTel']) === false ? $data['BoardInfo']['qna']['SmsSendTel'] : ''), 'sms_send_tel', 'sms_send_tel[]', '', '발신번호', '') !!}
+                            <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0"><span class="red">byte</span>   (55byte 이상일 경우 MMS로 전환됩니다.)
+                            <br> [수신번호]
+                            <input type="text" id="sms_receive_tel" name="sms_receive_tel[]" class="form-control" title="문자수신번호" value="@if(empty($data['BoardInfo']['qna']['SmsReceiveTel']) === false){{ $data['BoardInfo']['qna']['SmsReceiveTel'] }}@endif">
+                            <br> [문자 수신허용 시간]
+                            <select class="form-control ml-5" id="sms_limit_start_hour" name="sms_limit_start_hour[]">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartHour']) === false ? $data['BoardInfo']['qna']['SmsLimitStartHour'] : '')) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
+                            </select>
+                            <span>:</span>
+                            <select class="form-control" id="sms_limit_start_min" name="sms_limit_start_min[]">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartMin']) === false ? $data['BoardInfo']['qna']['SmsLimitStartMin'] : '')) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
+                            </select>
+                            <span class="pl-5 pr-5">~</span>
+                            <select class="form-control ml-5" id="sms_limit_end_hour" name="sms_limit_end_hour[]">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndHour']) === false ? $data['BoardInfo']['qna']['SmsLimitEndHour'] : '')) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
+                            </select>
+                            <span>:</span>
+                            <select class="form-control" id="sms_limit_end_min" name="sms_limit_end_min[]">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndMin']) === false ? $data['BoardInfo']['qna']['SmsLimitEndMin'] : '')) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_board_public">게시판 학습Q&A 공개.비공개 사용여부
                     </label>
@@ -756,6 +819,11 @@
             // 목록 이동
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/base/professor/index') }}' + getQueryString());
+            });
+
+            // 문자 바이트 수 계산
+            $('#sms_content').on('change keyup', function() {
+                $('#content_byte').val(fn_chk_byte($(this).val()));
             });
         });
     </script>

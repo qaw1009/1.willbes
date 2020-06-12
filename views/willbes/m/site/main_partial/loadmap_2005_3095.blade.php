@@ -14,7 +14,7 @@
                 </ul>
                 <div><span>[향후 진행되는 정규 순환에 대한 학습성취도를 높이는데 큰 도움이 되는 강의입니다. 
                     특히, 비전공자라면 반드시 수강하셔야 할 필수강좌입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1107') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">예비순환(3~6월)</a>
@@ -29,7 +29,7 @@
                         그리고 매주 1회의 복습 모의고사를 통해 2차 답안 작성의 기초 연습이 병행됩니다.</li>
                 </ul>
                 <div><span>[2차 논문형 시험에 필요한 기본이론 전반을 학습할 수 있는 강의입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1108') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">GS-1순환(7~10월)</a>
@@ -42,7 +42,7 @@
                 </ul>
                 <div><span>[학습한 수험 이론들이 어떻게 문제에 적용되는지를 확인합니다. 복습 모의고사를 통해
                         답안 작성에 필요한 이론들을 구체화할 수 있도록 연습하는 순환입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1109') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">GS-2순환(10~12월)</a>
@@ -54,7 +54,7 @@
                 </ul>
                 <div><span>[기출문제와 다양한 연습문제의 풀이로 문제해결능력을 향상시키고,
                         중요 문제들을 이용하여 핵심 이론들을 정리하는 순환입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1110') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">GS-3순환(다음 해 3~5월)</a>
@@ -67,7 +67,7 @@
                         연습문제풀이를 통해 수험 내용의 암기와 이론의 적용 연습이 병행됩니다.</li>
                 </ul>
                 <div><span>[각 과목 공부량을 줄이고 답안작성 능력은 끌어올리는, 실전을 대비하는 순환입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1111') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
     </ul>

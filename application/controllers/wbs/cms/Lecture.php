@@ -330,6 +330,7 @@ class Lecture extends \app\controllers\BaseController
         }
 
         if($this->unitModel->storeAdminViewLog([
+                'Type' => 'P',
                 'wAdminIdx' => $this->session->userdata('admin_idx'),
                 'ProdCode' => $prodcode,
                 'wLecIdx' => $lecidx,

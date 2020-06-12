@@ -138,6 +138,7 @@ class Starplayer extends \app\controllers\BaseController
         }
 
         if($this->unitModel->storeAdminViewLog([
+                'Type' => 'M',
                 'wAdminIdx' => $AdminIdx,
                 'ProdCode' => $ProdCode,
                 'wLecIdx' => $LecIdx,

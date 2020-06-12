@@ -56,7 +56,7 @@
         .evt04 .evt04Box ul {margin-bottom:30px}
 
         /*타이머*/
-        .newTopDday {background:#f5f5f5; width:100%; padding:10px 0}
+        .newTopDday {background:#f5f5f5; width:100%; padding:20px 0}
         .newTopDday ul {width:1120px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; line-height:60px;
             font-weight:600; color:#000; font-size:22px;}
@@ -98,7 +98,7 @@
                         <li>남았습니다.</li>
                         <li>
                             파격혜택, 지금 확인하세요!
-                            <a href="#pass" target="_self">신청하기 &gt;</a>
+                            <a href="#evt02" target="_self">신청하기 &gt;</a>
                         </li>
                     </ul>
                 </div>
@@ -127,7 +127,7 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt02">
+            <div class="evtCtnsBox evt02" id="evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_02.jpg" alt="" >
                 <ul class="inputBox NSK-Black">
                     @foreach($arr_base['register_list'] as $row)

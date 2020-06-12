@@ -127,19 +127,19 @@
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_03') }}" target="_blank">└ 채점하기</a>
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_04') }}" target="_blank">└ 성적확인</a>
             <br><br> 
-            <a href="{{ site_url('/home/html/m/1332M') }}" target="_blank">경찰2차 합격예측 풀서비스 사전예약 및 채점서비스</a>            
+            <a href="{{ site_url('/home/html/m/promotion/1332M') }}" target="_blank">경찰2차 합격예측 풀서비스 사전예약 및 채점서비스</a>            
             <br><br> 
-            <a href="{{ site_url('/home/html/m/1555M') }}" target="_blank">2020년 경찰1차 합격예측 풀서비스</a>
-            <a href="{{ site_url('/home/html/m/1555M_01') }}" target="_blank">└ 기본정보입력</a>
-            <a href="{{ site_url('/home/html/m/1555M_02') }}" target="_blank">└ 채점하기</a>
-            <a href="{{ site_url('/home/html/m/1555M_03') }}" target="_blank">└ 성적확인</a>
+            <a href="{{ site_url('/home/html/m/promotion/1555M') }}" target="_blank">2020년 경찰1차 합격예측 풀서비스</a>
+            <a href="{{ site_url('/home/html/m/promotion/1555M_01') }}" target="_blank">└ 기본정보입력</a>
+            <a href="{{ site_url('/home/html/m/promotion/1555M_02') }}" target="_blank">└ 채점하기</a>
+            <a href="{{ site_url('/home/html/m/promotion/1555M_03') }}" target="_blank">└ 성적확인</a>
             <br><br> 
-            <a href="{{ site_url('/home/html/m/1564M') }}" target="_blank">엔잡 김정환</a>
-            <a href="{{ site_url('/home/html/m/1565M') }}" target="_blank">엔잡 황채영</a>
-            <a href="{{ site_url('/home/html/m/1566M') }}" target="_blank">엔잡 김경은</a>
-            <a href="{{ site_url('/home/html/m/1567M') }}" target="_blank">엔잡 정문진</a>
+            <a href="{{ site_url('/home/html/m/promotion/1564M') }}" target="_blank">엔잡 김정환</a>
+            <a href="{{ site_url('/home/html/m/promotion/1565M') }}" target="_blank">엔잡 황채영</a>
+            <a href="{{ site_url('/home/html/m/promotion/1566M') }}" target="_blank">엔잡 김경은</a>
+            <a href="{{ site_url('/home/html/m/promotion/1567M') }}" target="_blank">엔잡 정문진</a>
             <br><br> 
-            <a href="{{ site_url('/home/html/m/1588') }}" target="_blank">공무원 한덕현</a>
+            <a href="{{ site_url('/home/html/m/promotion/1588') }}" target="_blank">공무원 한덕현</a>
         </div>
     </li>
 </ul>

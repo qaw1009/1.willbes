@@ -94,8 +94,6 @@ class Starplayer extends \app\controllers\BaseController
 
     private function checkAuth($input)
     {
-        return $this->StarplayerResult(true,'테스트 강제 에러 발생');
-
         // ^{$AdminId}^{$AdminIdx}^{$ProdCode}^{$LecIdx}^{$UnitIdx}^
         @$input_arr = explode('^', $input);
 
@@ -109,8 +107,7 @@ class Starplayer extends \app\controllers\BaseController
             || empty($AdminIdx) == true
             || empty($ProdCode) == true
             || empty($LecIdx) == true
-            || empty($UnitIdx) == true
-            || empty($Quility) == true ){
+            || empty($UnitIdx) == true ){
             return $this->StarplayerResult(true,'정보가 정확하지 않습니다.');
         }
 
@@ -136,6 +133,17 @@ class Starplayer extends \app\controllers\BaseController
         if(empty($unitdata) == true){
             return $this->StarplayerResult(true,'회차정보가 없습니다.');
         }
+
+        if($this->unitModel->storeAdminViewLog([
+                'Type' => 'M',
+                'wAdminIdx' => $AdminIdx,
+                'ProdCode' => $ProdCode,
+                'wLecIdx' => $LecIdx,
+                'wUnitIdx' => $UnitIdx,
+                'RegIp' => $this->input->ip_address()
+            ]) === false){
+            return $this->StarplayerResult(true,'오류가 발생하였습니다.');
+        };
     }
 
 

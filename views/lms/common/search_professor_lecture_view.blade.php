@@ -86,11 +86,9 @@
                         <td>{{ $row['wUnitName'] }}</td>
                         <td>
                             @if($ismobile == true)
-                                @if(ENVIRONMENT != "production" && ENVIRONMENT != "testing")
-                                    @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">와이드[M]</button>@endif
-                                    @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">고화질[M]</button>@endif
-                                    @if(empty($row['wSD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">일반화질[M]</button>@endif
-                                @endif
+                                @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">와이드[M]</button>@endif
+                                @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">고화질[M]</button>@endif
+                                @if(empty($row['wSD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="fnMobile('https:{{front_app_url('/Starplayer/getMobileAdmin/', 'api')}}?i={{sess_data('admin_id')}}&x={{sess_data('admin_idx')}}&p={{$data['ProdCode']}}&l={{$data['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD', '{{config_item('starplayer_license_admin')}}')">일반화질[M]</button>@endif
                             @else
                                 @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button>@endif
                                 @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-5" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button>@endif
@@ -114,7 +112,7 @@
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         function vodViewUnit(quility, idx) {
-            popupOpen(app_url('/cms/lecture/player/?lecidx={{$data['wLecIdx']}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
+            popupOpen(app_url('/cms/lecture/player/?prodcode={{$data['ProdCode']}}&lecidx={{$data['wLecIdx']}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
         }
     </script>
 @stop

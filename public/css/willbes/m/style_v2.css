@@ -3820,6 +3820,95 @@ body.memBody #Footer {
 .profLecTab .tabWrap.two li { width:50% !important;}
 .profLecTab ul:after {content:""; display:block; clear:both}
 
+/* subContainer : Prof : willbes-Layer-ProfileBox */
+.willbes-Layer-ProfileBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left:-48%;
+    margin-top:-310px;
+    width: 96%;
+    height: 620px;
+    z-index: 110;    
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-ProfileBox .closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.willbes-Layer-ProfileBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-ProfileBox .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-ProfileBox .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-ProfileBox .Layer-Txt {
+    height: 183px;
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+
+/* subContainer : Prof : willbes-Layer-CurriBox */
+.willbes-Layer-CurriBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left:-48%;
+    margin-top:-10%;
+    width: 96%;
+    height: auto;
+    z-index: 110;    
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-CurriBox .closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.willbes-Layer-CurriBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-CurriBox .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-CurriBox .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-CurriBox .Layer-Txt {
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+.willbes-Layer-CurriBox .Layer-Cont img {
+    max-width: 100%;
+}
+.willbes-Layer-CurriBox .Layer-Cont {
+    overflow-y: auto;
+}
+
 /*학원오시는길*/
 .mapArea {padding:0 20px}
 .mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:20px}
@@ -3945,6 +4034,11 @@ body.memBody #Footer {
     .willbes-Layer-PassBox600 {
         left: 50%;
         margin-left: -300px;
+    }
+    .willbes-Layer-ProfileBox,
+    .willbes-Layer-CurriBox {
+        margin-left:-300px;
+        width: 600px;
     }
     .calendarTable .table-condensed tr th,
     .calendarTable .table-condensed tr td {

@@ -23,9 +23,9 @@
         </div>
         <div class="profMenu">
             <ul>
-                <li><a href="#none">프로필</a><li>
+                <li><a href="#none" onclick="openWin('LayerProfile'),openWin('Profile')">프로필</a><li>
                 <li><a href="#none">맛보기</a><li>
-                <li><a href="#none">커리큘럼</a><li>
+                <li><a href="#none" onclick="openWin('LayerCurriculum'),openWin('Curriculum')">커리큘럼</a><li>
                 <li><a href="#none">강사카페</a><li>
             </ul>
         </div>        
@@ -303,25 +303,7 @@
                                 </td>                        
                             </tr>                
                         </tbody>
-                    </table>
-
-                    <div id="LecBuyMessagePop" class="willbes-Layer-Black">
-                        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h250 fix">
-                            <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop')">
-                                <img src="{{ img_url('m/calendar/close.png') }}">
-                            </a>
-                            <div class="Message NG">
-                                <p>해당 상품이<br> 학원방문결제 접수에 담겼습니다.</p>
-                                <p>학원방문결제 접수로<br> 이동하시겠습니까?<p>
-                            </div>
-                            <div class="MessageBtns">
-                                <a href="#none" class="btn_gray">예</a>
-                                <a href="#none" class="btn_white">계속구매</a>
-                            </div>
-                        </div>
-                        <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
-                    </div>
-                    <!-- willbes-Layer-PassBox : 쪽지 -->
+                    </table>                    
                 </div>  
                 
                 {{--종합반--}}
@@ -432,6 +414,69 @@
         </div>
     </div>
     <!--lineTabs//-->
+
+    {{--학원방문결제 메세지--}}
+    <div id="LecBuyMessagePop" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h250 fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Message NG">
+                <p>해당 상품이<br> 학원방문결제 접수에 담겼습니다.</p>
+                <p>학원방문결제 접수로<br> 이동하시겠습니까?<p>
+            </div>
+            <div class="MessageBtns">
+                <a href="#none" class="btn_gray">예</a>
+                <a href="#none" class="btn_white">계속구매</a>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
+    </div>
+    <!-- LecBuyMessagePop //-->
+
+    {{--프로필 팝업--}}
+    <div id="LayerProfile" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-ProfileBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">황종휴</span> 강사님 프로필</div>
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit NG">· 약력</div>
+                <div class="Layer-Txt tx-gray">
+                    - (현) 윌비스한림법학원 경제학/재정학/국제경제학 전임<br>
+                    - 정운찬-김영식 공저 거시경제이론 개정작업 참여<br>
+                    - 제44회 행정고등고시 재경직 합격<br>
+                    - 제16회 입법고등고시 최연소 및 전체수석합격 <br>
+                </div>
+                <div class="Layer-SubTit NG">· 저서</div>
+                <div class="Layer-Txt tx-gray">
+                    - 다이제스트 시리즈(경제학/재정학/국제경제학)(도서출판 윌비스)<br>
+                    - Trinity of Macroeconomics(ver 3.0)(도서출판 윌비스)<br>
+                    - Trinity of Microeconomics(ver 3.0)(도서출판 윌비스)<br>
+                    - 2013 연습책(경제학/재정학/국제경제학)(도서출판 윌비스)<br>
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerProfile')"></div>
+    </div>
+    <!--willbes-Layer-ProfileBox // -->
+
+    {{-- 커리큘럼 팝업--}}
+    <div id="LayerCurriculum" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-CurriBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">황종휴</span> 강사님 커리큘럼</div>
+            <div class="Layer-Cont">
+                <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3510.JPG"/>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerCurriculum')"></div>
+    </div>
+    <!-- // willbes-Layer-CurriBox -->
+
 
     <div class="goTopbtn">
         <a href="javascript:link_go();">

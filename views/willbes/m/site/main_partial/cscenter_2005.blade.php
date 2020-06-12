@@ -6,31 +6,34 @@
     </ul>
     <ul class="tel">
         <li>
-            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}"></span>
-            <div>
-                <strong>온라인문의</strong>
-                <span>1544-5006</span>
-                평일 09시~18시<Br>
-                주말/공휴일 제외
-            </div>
+            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+                <div>
+                    <strong>온라인문의</strong>
+                    <span>1544-5006</span>
+                    평일 09시~18시<Br>
+                    주말/공휴일 제외
+                </div>
+            </span>
         </li>
         <li>
-            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}"></span>
-            <div>
-                <strong>학원문의</strong>
-                <span>1544-5881</span>
-                평일 08시~18시<Br>
-                주말/공휴일 가능
-            </div>
+            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+                <div>
+                    <strong>학원문의</strong>
+                    <span>1544-5881</span>
+                    평일 08시~18시<Br>
+                    주말/공휴일 가능
+                </div>
+            </span>
         </li>
         <li>
-            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}"></span>
-            <div>
-                <strong>교재문의</strong>
-                <span>1544-4944</span>
-                평일 09시~18시<Br>
-                주말/공휴일 제외
-            </div>
+            <span class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+                <div>
+                    <strong>교재문의</strong>
+                    <span>1544-4944</span>
+                    평일 09시~18시<Br>
+                    주말/공휴일 제외
+                </div>
+            </span>
         </li>
     </ul>
 </div>

@@ -86,10 +86,10 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-			<img src="https://static.willbes.net/public/images/promotion/2020/05/1427_04.jpg" usemap="#Map1427" border="0"  title="수강신청" />
-			<map name="#Map1427" id="#Map1427">
-				<area shape="rect" coords="88,720,1042,812" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&campus_ccd=605001&search_text=UHJvZE5hbWU67Yyo6raM" target="_blank" alt="수강신청" onfocus='this.blur()' />
-			</map>            
+            <img src="https://static.willbes.net/public/images/promotion/2020/05/1427_04.jpg" usemap="#Map1427a" title="수강신청" border="0" />
+            <map name="Map1427a" id="Map1427a">
+                <area shape="rect" coords="120,652,998,729" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&search_text=UHJvZE5hbWU67Yyo6raM" target="_blank" />
+            </map> 
         </div>       
 
     </div>

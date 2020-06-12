@@ -19,7 +19,9 @@
 
     <div class="mapArea">      
         <div id="location1" class="tabContent">
-            <div class="mapTitle">한림법학원 신림(본원)</div>
+            <div class="mapTitle">한림법학원 신림(본원)
+                <p>5급행정 / 국립외교원 / PSAT / 5급헌법</p>
+            </div>
             <ul>
                 <li>서울 관악구 신림로 23길 16 일성트루엘 4층<br>
                     (신림동 1523-1)</li>
@@ -33,7 +35,9 @@
         </div>
 
         <div id="location2" class="tabContent">
-            <div class="mapTitle">한림법학원 강남(분원)</div>
+            <div class="mapTitle">한림법학원 강남(분원)
+                <p>법원행시 / 변호사시험</p>
+            </div>
             <ul>
                 <li>서울 강남구 테헤란로 19길 18<br>
                     (역삼동 645-12)</li>

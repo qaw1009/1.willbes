@@ -107,8 +107,7 @@ class Starplayer extends \app\controllers\BaseController
             || empty($AdminIdx) == true
             || empty($ProdCode) == true
             || empty($LecIdx) == true
-            || empty($UnitIdx) == true
-            || empty($Quility) == true ){
+            || empty($UnitIdx) == true ){
             return $this->StarplayerResult(true,'정보가 정확하지 않습니다.');
         }
 

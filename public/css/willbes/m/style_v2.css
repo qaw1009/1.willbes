@@ -3781,7 +3781,7 @@ body.memBody #Footer {
 }
 
 /*교수진소개 리스트*/
-.profArea {padding:0 20px}
+.profArea {padding:0 20px; margin-bottom:30px}
 .profArea .subjectBox {margin-top:30px;}
 .profArea .subjectBox .subTitle {font-size:16px; margin-bottom:10px}
 .profArea .subjectBox ul {margin-right: -10px;}

@@ -136,6 +136,17 @@ class Starplayer extends \app\controllers\BaseController
         if(empty($unitdata) == true){
             return $this->StarplayerResult(true,'회차정보가 없습니다.');
         }
+
+        if($this->unitModel->storeAdminViewLog([
+                'Type' => 'M',
+                'wAdminIdx' => $AdminIdx,
+                'ProdCode' => $ProdCode,
+                'wLecIdx' => $LecIdx,
+                'wUnitIdx' => $UnitIdx,
+                'RegIp' => $this->input->ip_address()
+            ]) === false){
+            return $this->StarplayerResult(true,'오류가 발생하였습니다.');
+        };
     }
 
 

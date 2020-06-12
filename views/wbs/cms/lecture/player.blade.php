@@ -89,7 +89,7 @@
         screenResize();
 
         config = {
-            userId: "{{sess_data('admin_id')}}_admin",
+            userId: "{{sess_data('admin_id')}}(A)",
             id: "starplayer",
             videoContainer: "video-container",
             controllerContainer: "controller-container",

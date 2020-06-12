@@ -7,6 +7,7 @@ class UnitModel extends WB_Model
     protected $models = array('cms/lecture');
 
     private $_table = 'wbs_cms_lecture_unit';
+    private $_log_table = 'wbs_sys_admin_view_log';
 
 
     public function __construct()
@@ -317,6 +318,27 @@ class UnitModel extends WB_Model
         $order_by = $this->_conn->makeOrderBy(['A.wOrderNum'=>'ASC'])->getMakeOrderBy();
 
         return $this->_conn->query('select ' .$column .$from .$where .$order_by) ->result_array();
+    }
+
+
+
+    public function storeAdminViewLog($input)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if($this->_conn->set($input)->insert($this->_log_table) === false){
+                throw new \Exception('수강기록 초기화에 실패');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
 }

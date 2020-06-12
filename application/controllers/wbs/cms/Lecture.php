@@ -282,6 +282,7 @@ class Lecture extends \app\controllers\BaseController
     public function player()
     {
         $lecidx = $this->_req("lecidx");
+        $prodcode = $this->_req('prodcode');
         $unitidx = $this->_req('unitidx');
         $quility = $this->_req('quility');
         $url = $this->_req("url");
@@ -327,6 +328,16 @@ class Lecture extends \app\controllers\BaseController
             $url = $data['wMediaUrl'].'/'.$filename;
             $title = $unitdata['wUnitNum'].'회 '.$unitdata['wUnitLectureNum'].'강 '.$unitdata['wUnitName'];
         }
+
+        if($this->unitModel->storeAdminViewLog([
+                'wAdminIdx' => $this->session->userdata('admin_idx'),
+                'ProdCode' => $prodcode,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx,
+                'RegIp' => $this->input->ip_address()
+            ]) === false){
+            show_alert('오류가 발생하였습니다.', 'close');
+        };
 
 
         $this->load->view('cms/lecture/player', [

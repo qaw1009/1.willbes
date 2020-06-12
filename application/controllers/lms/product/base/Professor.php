@@ -95,6 +95,9 @@ class Professor extends \app\controllers\BaseController
 
             // 교수배너 데이터 조회
             $data['Bnr'] = $this->professorModel->listProfessorBanner($idx);
+
+            // 교수 게시판 데이터 조회
+            $data['BoardInfo'] = $this->professorModel->listProfessorBoardInfo($idx);
         }
 
         $this->load->view('product/base/professor/create', [
@@ -104,6 +107,7 @@ class Professor extends \app\controllers\BaseController
             'arr_bm_idx' => $this->professorModel->_bm_idx,
             'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget(),
             'arr_subject_idx' => $arr_subject_idx,
+            'arr_send_callback_ccd' => $this->codeModel->getCcd(706, 'CcdValue'),
             'onlec_view_ccd' => $codes['719'],
             'appellation_ccd' => $codes['724']
         ]);

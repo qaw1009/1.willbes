@@ -71,11 +71,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skybanner" >            
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=275707&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1579_sky.png" alt="최우영" ></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=279700&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1579_sky01.png" alt="최우영" ></a>
         </div>   
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1579_top.jpg" alt="윌비스 기술직" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1579_top.gif" alt="윌비스 기술직" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -105,9 +105,11 @@
         <div class="evtCtnsBox wb_cts04">            
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1579_04.jpg" alt="수강신청" usemap="#Map1579_apply" border="0" />
             <map name="Map1579_apply" id="Map1579_apply">
-                <area shape="rect" coords="94,524,536,597" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67Luo7IWJ&subject_idx=&course_idx=" target="_blank" />
-                <area shape="rect" coords="581,524,1025,597" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/165356" target="_blank" />
-            </map>       
+                <area shape="rect" coords="68,526,304,598" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/166005" target="_blank" />
+                <area shape="rect" coords="318,526,553,598" href="https://pass.willbes.net/pass/offLecture/show/cate/3048/prod-code/166006" target="_blank" />
+                <area shape="rect" coords="568,526,804,598" href="https://pass.willbes.net/pass/offLecture/show/cate/3048/prod-code/166007" target="_blank" />
+                <area shape="rect" coords="816,526,1053,598" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU66riw7Lac" target="_blank" />
+            </map>  
         </div>
         
          <!--유의사항-->

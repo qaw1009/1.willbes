@@ -14,6 +14,7 @@ class ProfessorModel extends WB_Model
         'professor_banner' => 'lms_professor_banner',
         'professor_r_subject_r_category' => 'lms_professor_r_subject_r_category',
         'professor_calculate_rate' => 'lms_professor_calculate_rate',
+        'professor_board_info' => 'lms_professor_board_info',
         'admin' => 'wbs_sys_admin',
         'board' => 'lms_board'
     ];
@@ -556,6 +557,30 @@ class ProfessorModel extends WB_Model
                 throw new \Exception($is_bnr_upload);
             }
 
+            // 강사 게시판정보 등록
+            $arr_sms_bm_idx = element('sms_bm_idx', $input);
+            if(empty($arr_sms_bm_idx) === false) {
+                $i = 0;
+                foreach($arr_sms_bm_idx as $row) {
+                    $sms_limit_start_time = element('sms_limit_start_hour', $input)[$i] . ':' . element('sms_limit_start_min', $input)[$i] . ':00';
+                    $sms_limit_end_time = element('sms_limit_end_hour', $input)[$i] . ':' . element('sms_limit_end_min', $input)[$i] . ':59';
+                    $is_add_board_info = $this->addProfessorBoardInfo([
+                        'prof_idx' => $prof_idx,
+                        'sms_bm_idx' => $row,
+                        'sms_limit_start_time' => $sms_limit_start_time,
+                        'sms_limit_end_time' => $sms_limit_end_time,
+                        'sms_send_tel' => element('sms_send_tel', $input)[$i],
+                        'sms_receive_tel' => element('sms_receive_tel', $input)[$i],
+                        'sms_content' => element('sms_content', $input)[$i],
+                        'is_sms_use' => element('is_sms_use', $input)[$i]
+                    ]);
+                    if ($is_add_board_info !== true) {
+                        throw new \Exception($is_add_board_info);
+                    }
+                    $i++;
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -637,6 +662,33 @@ class ProfessorModel extends WB_Model
             $is_bnr_upload = $this->_attachProfessorBannerImg($input, $bnr_data, $prof_idx);
             if ($is_bnr_upload !== true) {
                 throw new \Exception($is_bnr_upload);
+            }
+
+            // 강사 게시판정보 삭제/등록
+            $is_remove_board_info = $this->removeProfessorBoardInfo($prof_idx);
+            if($is_remove_board_info === true) {
+                $arr_sms_bm_idx = element('sms_bm_idx', $input);
+                if(empty($arr_sms_bm_idx) === false) {
+                    $i = 0;
+                    foreach($arr_sms_bm_idx as $row) {
+                        $sms_limit_start_time = element('sms_limit_start_hour', $input)[$i] . ':' . element('sms_limit_start_min', $input)[$i] . ':00';
+                        $sms_limit_end_time = element('sms_limit_end_hour', $input)[$i] . ':' . element('sms_limit_end_min', $input)[$i] . ':59';
+                        $is_add_board_info = $this->addProfessorBoardInfo([
+                            'prof_idx' => $prof_idx,
+                            'sms_bm_idx' => $row,
+                            'sms_limit_start_time' => $sms_limit_start_time,
+                            'sms_limit_end_time' => $sms_limit_end_time,
+                            'sms_send_tel' => element('sms_send_tel', $input)[$i],
+                            'sms_receive_tel' => element('sms_receive_tel', $input)[$i],
+                            'sms_content' => element('sms_content', $input)[$i],
+                            'is_sms_use' => element('is_sms_use', $input)[$i]
+                        ]);
+                        if ($is_add_board_info !== true) {
+                            throw new \Exception($is_add_board_info);
+                        }
+                        $i++;
+                    }
+                }
             }
 
             $this->_conn->trans_commit();
@@ -1172,5 +1224,103 @@ class ProfessorModel extends WB_Model
         $result = $this->_conn->query('select ' . $column . $from)->result_array();
 
         return array_pluck($result, 'SubjectName', 'SubjectIdx');
+    }
+
+    /**
+     * 교수별 게시판정보 데이터 조회
+     * @param $prof_idx
+     * @return array
+     */
+    public function listProfessorBoardInfo($prof_idx)
+    {
+        $column = "
+            PBI.PbiIdx, PBI.ProfIdx, PBI.BmIdx, PBI.SmsLimitStartTime, PBI.SmsLimitEndTime, PBI.SmsSendTel, PBI.SmsReceiveTel, PBI.SmsContent, 
+            PBI.IsSmsUse, PBI.IsStatus, PBI.RegDatm, PBI.RegAdminIdx, PBI.RegIp, PBI.UpdDatm, PBI.UpdAdminIdx,
+            DATE_FORMAT(PBI.SmsLimitStartTime, '%H') AS SmsLimitStartHour, DATE_FORMAT(PBI.SmsLimitStartTime, '%i') AS SmsLimitStartMin,                    
+            DATE_FORMAT(PBI.SmsLimitEndTime, '%H') AS SmsLimitEndHour, DATE_FORMAT(PBI.SmsLimitEndTime, '%i') AS SmsLimitEndMin
+        ";
+        $from = "
+            FROM {$this->_table['professor_board_info']} PBI
+        ";
+        $where = " WHERE PBI.ProfIdx = ? AND PBI.IsStatus = 'Y'";
+        $order_by_offset_limit = " ORDER BY PBI.ProfIdx ASC";
+
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$prof_idx])->result_array();
+
+        $result = [];
+        foreach ($this->_bm_idx as $bm_key => $bm_val) {
+            $result[$bm_key] = [];
+            foreach ($data as $row) {
+                if($bm_val == $row['BmIdx']) {
+                    $result[$bm_key] = $row;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * 교수별 게시판정보 삭제
+     * @param $prof_idx
+     * @return array|bool
+     */
+    public function removeProfessorBoardInfo($prof_idx)
+    {
+        try {
+            if(empty($prof_idx) === true) {
+                throw new \Exception('필수 파라메터 누락 오류');
+            }
+
+            $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->where('ProfIdx', $prof_idx)->update($this->_table['professor_board_info']);
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 교수별 게시판정보 등록
+     * @param array $input
+     * @return array|bool
+     */
+    public function addProfessorBoardInfo($input = [])
+    {
+        try {
+            $prof_idx = element('prof_idx', $input);
+            $bm_idx = element('sms_bm_idx', $input);
+
+            if(empty($prof_idx) === true || empty($bm_idx) === true) {
+                throw new \Exception('필수 파라메터 누락 오류');
+            }
+
+            $data = [
+                'ProfIdx' => $prof_idx,
+                'BmIdx' => $bm_idx,
+                'SmsLimitStartTime' => element('sms_limit_start_time', $input),
+                'SmsLimitEndTime' => element('sms_limit_end_time', $input),
+                'SmsSendTel' => element('sms_send_tel', $input),
+                'SmsReceiveTel' => element('sms_receive_tel', $input),
+                'SmsContent' => element('sms_content', $input),
+                'IsSmsUse' => element('is_sms_use', $input),
+                'IsStatus' => 'Y',
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['professor_board_info']) === false) {
+                throw new \Exception('교수 게시판정보 등록에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 }

@@ -24,7 +24,7 @@
         .skybanner {position:fixed; top:150px; right:10px; z-index:1;}
         .skybanner ul li {padding-bottom:10px;}
 
-        .evt_top {position:relative; overflow:hidden;  background:#f0eada url("https://static.willbes.net/public/images/promotion/2020/05/1575_top_bg.jpg") center top  no-repeat}
+        .evt_top {position:relative; overflow:hidden;  background:#17881b url("https://static.willbes.net/public/images/promotion/2020/06/1575_top_bg.jpg") center top  no-repeat}
         .evt_tops{background:#f8f8f8;}
         .evt_01 {background:#f7f7f7}
         .evt_02 {background:#e7e7e7;}
@@ -72,7 +72,7 @@
   
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1427" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1537_sky3.png"  title="이상구 패권반" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1427" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky.png"  title="이상구 패권반" /></a></li>
           <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=276165&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_01.png"  title="기미진 기특한 국어" /></a></li>
           <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=276164&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1575_sky_02.png" title="한덕혁 제니스 영어" /></a></li>		
       </ul>
@@ -80,7 +80,7 @@
  
 
     <div class="evtCtnsBox evt_top">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_top.gif" title="윌비스 7급" />        
+        <img src="https://static.willbes.net/public/images/promotion/2020/06/1575_top.gif" title="윌비스 7급" />        
     </div>
 
     <div class="evtCtnsBox evt_tops">
@@ -88,7 +88,7 @@
     </div>
         
     <div class="evtCtnsBox evt_01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1538_01.jpg" title="과목별 고득점 커리큘럼" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/06/1575_01.jpg" title="과목별 고득점 커리큘럼" />
     </div>
   
     <div class="evtCtnsBox evt_02">
@@ -96,13 +96,13 @@
     </div>
 
     <div class="evtCtnsBox evt_03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_03.jpg" title="시간표" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/06/1575_03.jpg" title="시간표" />
     </div>  
 
     <div class="evtCtnsBox evt_apply">
-      <img src="https://static.willbes.net/public/images/promotion/2020/05/1575_04.jpg" usemap="#Map1575a" title="시간표" border="0" />
-      <map name="Map1575a" id="Map1575a">
-        <area shape="rect" coords="268,569,848,653" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044" target="_blank" onfocus='this.blur()'  />
+      <img src="https://static.willbes.net/public/images/promotion/2020/06/1575_04.jpg" usemap="#Map" title="수강신청" border="0"  />
+      <map name="Map" id="Map">
+        <area shape="rect" coords="269,609,849,687" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044#none" target="_blank" />
       </map>
     </div>   
 

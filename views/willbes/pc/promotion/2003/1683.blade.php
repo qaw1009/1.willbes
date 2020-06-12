@@ -131,8 +131,7 @@
                         animation-timing-function: ease-out;
                 opacity: 1;
             }
-            }
- 
+            } 
     </style>
 
 

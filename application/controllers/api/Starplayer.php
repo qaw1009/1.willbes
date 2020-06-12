@@ -94,8 +94,6 @@ class Starplayer extends \app\controllers\BaseController
 
     private function checkAuth($input)
     {
-        return $this->StarplayerResult(true,'테스트 강제 에러 발생');
-
         // ^{$AdminId}^{$AdminIdx}^{$ProdCode}^{$LecIdx}^{$UnitIdx}^
         @$input_arr = explode('^', $input);
 

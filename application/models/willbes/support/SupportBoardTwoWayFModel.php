@@ -386,6 +386,24 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 }
             }
 
+            // 교수 새글등록 자동문자 발송
+            if(empty($board_data['ProfIdx']) === false && empty($board_data['BmIdx']) === false) {
+                $arr_prof_board_info = $this->getProfBoardInfoList(['EQ' => [
+                    'ProfIdx' => $board_data['ProfIdx'],
+                    'BmIdx' => $board_data['BmIdx'],
+                    'IsStatus' => 'Y'
+                ]]);
+                if(empty($arr_prof_board_info) === false) {
+                    $prof_board_info = $arr_prof_board_info[0];
+                    if(empty($prof_board_info['IsSmsUse']) === false && $prof_board_info['IsSmsUse'] == 'Y') {
+                        if(strtotime(date('H:i:s')) >= strtotime($prof_board_info['SmsLimitStartTime']) && strtotime(date('H:i:s')) <= strtotime($prof_board_info['SmsLimitEndTime'])) {
+                            $this->load->loadModels(['crm/smsF']);
+                            $this->smsFModel->addKakaoMsg($prof_board_info['SmsReceiveTel'], $prof_board_info['SmsContent'], $prof_board_info['SmsSendTel'], null, 'KFT');
+                        }
+                    }
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -995,5 +1013,25 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         ]);
 
         return $data;
+    }
+
+    /**
+     * 교수별 게시판정보 조회
+     * @param $arr_condition
+     * @return array
+     */
+    public function getProfBoardInfoList($arr_condition)
+    {
+        $column = "
+            PbiIdx, ProfIdx, BmIdx, SmsLimitStartTime, SmsLimitEndTime, SmsSendTel, SmsReceiveTel, 
+            SmsContent, IsSmsUse, IsStatus, RegDatm, RegAdminIdx, RegIp, UpdDatm, UpdAdminIdx
+        ";
+        $from = "
+            FROM {$this->_table['lms_professor_board_info']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
     }
 }

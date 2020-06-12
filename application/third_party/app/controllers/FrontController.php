@@ -345,12 +345,13 @@ abstract class FrontController extends BaseController
 
             // 트리 메뉴에 GNB 메뉴가 있을 경우
             if (array_has($mobile_tree_menus, 'GNB') === true) {
-                // GNB 그룹메뉴식별자
-                $_gnb_group_menu_idx = null;
+                $_gnb_group_menu_idx = null;    // GNB 그룹메뉴식별자
+                $_gnb_match_cate_code = null;   // GNB 그룹메뉴 카테고리코드 (GNB 전체보기 메뉴에서 사용)
                 
-                // Active 메뉴가 있을 경우 그룹메뉴식별자 추출
+                // Active 메뉴가 있을 경우 그룹메뉴식별자 추출, 그룹메뉴 카테고리코드값 셋팅
                 if (empty($_active_route_idx) === false) {
                     $_gnb_group_menu_idx = implode('.', array_slice(explode('.', $_active_route_idx), 1, 2));
+                    $_gnb_match_cate_code = $this->_cate_code;
                 }
 
                 // 그룹메뉴식별자가 없고 온라인 사이트일 경우 카테고리 > 메인 페이지를 기준으로 그룹메뉴식별자 조회
@@ -372,6 +373,15 @@ abstract class FrontController extends BaseController
 
                 // 최종 GNB 메뉴 추출
                 $mobile_tree_menus['GNB'] = array_get($mobile_tree_menus, $_gnb_group_menu_idx, []);
+
+                // GNB 그룹메뉴 카테고리코드가 없을 경우 GNB 1번째 메인 메뉴 URL에 매칭된 카테고리 코드 추출
+                if (empty($_gnb_match_cate_code) === true) {
+                    $_gnb_first_menu_uri = rtrim(parse_url($mobile_tree_menus['GNB']['MenuUrl'], PHP_URL_PATH), '/') . '/';
+                    $_gnb_match_cate_code = str_first_pos_before(str_first_pos_after($_gnb_first_menu_uri, '/' . config_get('uri_segment_keys.cate') . '/'), '/');
+                }
+
+                // GNB 그룹메뉴 카테고리코드 셋팅
+                $mobile_tree_menus['GNB']['MenuCateCode'] = $_gnb_match_cate_code;
             }
 
             // 모바일 사이트 메뉴

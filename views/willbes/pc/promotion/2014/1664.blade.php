@@ -54,6 +54,19 @@
         .evt04 div {font-size:16px; margin-bottom:10px}
         .evt04 .evt04Box li {list-style: disc; margin-left:15px}
         .evt04 .evt04Box ul {margin-bottom:30px}
+
+        /*타이머*/
+        .newTopDday {background:#f5f5f5; width:100%; padding:10px 0}
+        .newTopDday ul {width:1120px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; line-height:60px;
+            font-weight:600; color:#000; font-size:22px;}
+        .newTopDday ul li img {width:40px; height:56px}
+        .newTopDday ul li:first-child {padding-right:10px;}
+        .newTopDday ul li:last-child {padding-left:50px; font-size:18px; }
+        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; margin-top:5px; padding:4px 20px; background:#effe01; border:1px solid #777e09; color:#000; 
+            text-align:center; border-radius:20px; line-height:1}
+        .newTopDday ul li:last-child a:hover {background:#333; color:#fff}
+        .newTopDday ul:after {content:""; display:block; clear:both}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -65,6 +78,31 @@
             <input type="hidden" name="target_param_names[]" value="한줄기대평"/>
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="register_chk_no_member" value="Y"/>  {{-- MemIdx 제외하고 등록중복체크 --}}
+
+            <!-- 타이머 -->
+            <div class="newTopDday">
+                <div id="ddaytime">
+                    <ul>
+                        <li>사전예약 혜택 마감까지</li>
+                        <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>일</strong></li>
+                        <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>:</strong></li>
+                        <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>:</strong></li>
+                        <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li>남았습니다.</li>
+                        <li>
+                            파격혜택, 지금 확인하세요!
+                            <a href="#pass" target="_self">신청하기 &gt;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1664_top.jpg" alt="" >
@@ -232,5 +270,12 @@
                 object.value = object.value.slice(0, object.maxLength);
             }
         }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

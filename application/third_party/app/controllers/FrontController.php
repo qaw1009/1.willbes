@@ -376,7 +376,7 @@ abstract class FrontController extends BaseController
 
                 // GNB 그룹메뉴 카테고리코드가 없을 경우 GNB 1번째 메인 메뉴 URL에 매칭된 카테고리 코드 추출
                 if (empty($_gnb_match_cate_code) === true) {
-                    $_gnb_first_menu_uri = parse_url($mobile_tree_menus['GNB']['MenuUrl'], PHP_URL_PATH);
+                    $_gnb_first_menu_uri = rtrim(parse_url($mobile_tree_menus['GNB']['MenuUrl'], PHP_URL_PATH), '/') . '/';
                     $_gnb_match_cate_code = str_first_pos_before(str_first_pos_after($_gnb_first_menu_uri, '/' . config_get('uri_segment_keys.cate') . '/'), '/');
                 }
 

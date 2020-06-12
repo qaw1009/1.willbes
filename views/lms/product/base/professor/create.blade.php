@@ -162,7 +162,7 @@
                             [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, (empty($data['BoardInfo']['qna']['SmsSendTel']) === false ? $data['BoardInfo']['qna']['SmsSendTel'] : ''), 'sms_send_tel', 'sms_send_tel[]', '', '발신번호', '') !!}
                             <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0"><span class="red">byte</span>   (55byte 이상일 경우 MMS로 전환됩니다.)
                             <br> [수신번호]
-                            <input type="text" id="sms_receive_tel" name="sms_receive_tel[]" class="form-control" title="문자수신번호" required="required" value="@if(empty($data['BoardInfo']['qna']['SmsReceiveTel']) === false){{ $data['BoardInfo']['qna']['SmsReceiveTel'] }}@endif">
+                            <input type="text" id="sms_receive_tel" name="sms_receive_tel[]" class="form-control" title="문자수신번호" value="@if(empty($data['BoardInfo']['qna']['SmsReceiveTel']) === false){{ $data['BoardInfo']['qna']['SmsReceiveTel'] }}@endif">
                             <br> [문자 수신허용 시간]
                             <select class="form-control ml-5" id="sms_limit_start_hour" name="sms_limit_start_hour[]">
                                 @php

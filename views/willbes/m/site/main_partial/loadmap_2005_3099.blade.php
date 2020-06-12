@@ -18,7 +18,7 @@
                     <li>선별과 분석을 통한 실전적 정리(기본적인 지식 전제)</li>
                     <li>기록형 기본기 점검 : 매주 토요일 진행하는 영역별 기록형 AtoZ(정리강의) 수강</li>
                 </ul>                    
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab01') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>         
 
@@ -30,7 +30,7 @@
                     <li>최신판례와 지금까지 학습한 내용의 연결고리를 확인함으로써 새로운 판례지식과 기존 지식의 융합</li>
                     <li>020년 상반기 판례까지 반영, 하반기 최신판례는 필요 시 추록 제공</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab01') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">3순환-문제풀이(8~10월)</a>
@@ -43,7 +43,7 @@
                     <li>매일 첨삭 : 익일, 첨삭완료 답안지 배부</li>
                     <li>매일 확인 : 선택형 및 사례형 통계를 통해 객관적인 위치 확인과 개인별 취약점 보완</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab01') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">4순환-핵심체크(10~11월</a>
@@ -54,7 +54,7 @@
                     <li>단기간동안 전과목의 빠른 1회독을 통해 취약점 최종확인</li>
                     <li>출제 가능한 판례의 핵심문구 정리 및 예상 출제유형의 실전적 대비</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab01') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
     </ul>
@@ -71,7 +71,7 @@
                     <li>중간수준 난이도의 사례문제로 필수 중요쟁점 추출과 답안작성 기본틀 작성 연습</li>
                     <li>기록형 기본기 점검 : 매주 토요일 진행하는 영역별 기록형AtoZ(정리강의) 수강</li>
                 </ul>                    
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab02') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>         
 
@@ -82,7 +82,7 @@
                     <li>기록형 중요기출문제 시험(주5회) + 해설강의(주5회) + 1:1 첨삭</li>
                     <li>서면을 보는 방법과 형식적 기재사항 리마인드</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab02') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">3순환-문제풀이(8~10월)</a>
@@ -95,7 +95,7 @@
                     <li>매일 첨삭 : 익일, 첨삭완료 답안지 배부</li>
                     <li>매일 확인 : 선택형 및 사례형 통계를 통해 객관적인 위치 확인과 개인별 취약점 보완</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab02') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">4순환-사례형 전범위 모의고사+1:1 첨삭(10~11월)</a>
@@ -105,7 +105,7 @@
                     <li>실전대비 전범위 사례형 모의시험 및 대면첨삭</li>
                     <li>최종 답안작성 점검</li>
                 </ul>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1607#tab02') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
     </ul>

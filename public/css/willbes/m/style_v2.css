@@ -3912,6 +3912,7 @@ body.memBody #Footer {
 /*학원오시는길*/
 .mapArea {padding:0 20px; margin-bottom:30px}
 .mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:20px}
+.mapArea .mapTitle p {font-size: 12px; margin-top:5px; color:#666}
 .mapArea li {padding-left:30px; font-size:14px; line-height: 1.4; margin-bottom:10px; min-height: 30px; padding-top:12px}
 .mapArea li:nth-child(1) {background:url("https://static.willbes.net/public/images/promotion/m/icon_add.png") no-repeat left top}
 .mapArea li:nth-child(2) {background:url("https://static.willbes.net/public/images/promotion/m/icon_tel2.png") no-repeat left top}

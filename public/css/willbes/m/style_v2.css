@@ -538,12 +538,7 @@ body.memBody #Footer {
     text-align: center;
     color:#fff;
 }
-.introBox3 {/*background-color: #181818;*/padding:20px; 
-    background-color: rgba(0,0,0,.9) ;
-    background-image:url("https://static.willbes.net/public/images/promotion/m/gate_m_bg1.png");
-    background-position: center center; 
-    background-repeat: no-repeat
-}
+.introBox3 {background-color: #181818; padding:20px 0}
 .introBox3 .menuGroup {width:100%; max-width: 720px; margin:0 auto; }
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
 .introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}

@@ -40,7 +40,8 @@
 <div class="evtContent NGR" id="evtContainer">
 
     <div class="evtCtnsBox wb_cts03" >
-        <p><img src="https://static.willbes.net/public/images/promotion/2020/06/1022_top.png" alt=""  /></p>        
+        <p><img src="https://static.willbes.net/public/images/promotion/2020/06/1022_top.png" alt=""  /></p>    
+        {{--    
         <div class="skyBanner">
             <ul>            
                 <li>
@@ -48,6 +49,7 @@
                 </li>
             </ul>               
         </div>
+        --}}
         <div class="menuWarp">
             <div class="PeMenu">
                 <ul>

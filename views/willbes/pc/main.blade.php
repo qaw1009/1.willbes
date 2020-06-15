@@ -232,7 +232,7 @@
                             <th>취업</th>
                             <td><a href="{{ front_app_url('/home/index/cate/3102', 'work') }}" target="_blank">공기업</a></td>
                             <th>학점은행</th>
-                            <td><a href="https://lang.willbes.net/home/index/cate/3093" target="_blank">학점은행</a></td>
+                            <td><a href="http://www.willbeslife.net" target="_blank">학점은행</a></td>
                         </tr>
                     </table>
                 </div>

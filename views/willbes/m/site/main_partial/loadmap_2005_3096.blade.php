@@ -10,7 +10,7 @@
                     <li>기출문제를 통한 유형별 분석과 출제경향을 파악하는 과정으로, 향후 올바른 방향으로 PSAT 대비를 할 수 있도록 학습의 기준을 잡아주는 강의입니다.</li>
                 </ul>
                 <div><span>[PSAT의 올바른 학습을 위한 출발점에 있는 강좌입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1128') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>          
         <li class="lmTitle"><a href="#none">기본강의(6~8월)</a>
@@ -21,7 +21,7 @@
                     <li>기초입문강의에서 학습한 기출문제가 최근에는 어떻게 응용되고 있는지, 최신 출제경향은 어떠한지, 더 크게는 앞으로의 응용방향까지 연습해볼 수 있는 강의입니다.</li>
                 </ul>
                 <div><span>[PSAT 시험에서 요구되는 기본기를 습득할 수 있는 필수 강좌입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1129') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">심화강의(9~10월)</a>
@@ -32,7 +32,7 @@
                     <li>기출변형문제를 중심으로 이루어지는 강의로써 입법고시 문제까지 아우르게 되어, PSAT 문제해결능력을 한 단계 업그레이드 할 수 있습니다.</li>
                 </ul>
                 <div><span>[각 유형별 이론들을 하프모의고사에 직접 적용하여 문제해결을 위한 SKILL과 TIP을 학습하고 속도감 있는 문제풀이 방법을 연습합니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1130') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">핵심강의(11~12월)</a>
@@ -43,7 +43,7 @@
                     <li>기초입문강의, 기본강의, 심화강의가 주로 문제를 유형별로 학습하는데 초점이 맞추어져 있다면, 핵심강의는 연도별로 기출문제를 정리할 수 있으므로 균형적인 감각을 유지하는데 큰 도움이 되는 강의입니다.</li>
                 </ul>
                 <div><span>[그동안 공부한 기출문제를 빠르게 연도별로 정리하고, 실전모의고사 전 PSAT에 대한 균형감각을 되살리기에 적합한 강의입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1131') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">실전모의고사+핵심해설강의(12~1월)</a>
@@ -55,7 +55,7 @@
                 </ul>
                 <div><span>[매일 40문제의 신작 모의고사로 실전 연습하고, 시험 전반의 능력을 모두 향상시키는 합격을 위한 필수 강좌입니다.]</span></div>
                 <br>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1132') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
         <li class="lmTitle"><a href="#none">테마특강</a>
@@ -66,7 +66,7 @@
                     <li>PSAT의 근본이 되는 핵심 테마를 학습하는 과정으로, 향후 기본이론 습득과 문제적용에 큰 도움이 되는 강의입니다.</li>
                 </ul>
                 <div><span>[주요 테마에 대한 심도 있는 학습과 관련 연습문제를 풀이하는 포인트 강좌입니다.]</span></div>
-                <a href="#none" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1113') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
     </ul>

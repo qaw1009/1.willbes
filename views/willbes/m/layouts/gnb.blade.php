@@ -6,7 +6,11 @@
             @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
                 <h2 class="NGEB">
                     <img src="{{ img_url('m/main/icon_' . $__cfg['SiteGroupId'] . '.png') }}" class="clogo">
-                    {{ str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle']) }}
+                    @if($__cfg['SiteCode'] == '2014')
+                        N잡/e창업
+                    @else
+                        {{ str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle']) }}
+                    @endif
                 </h2>
                 <ul class="NGEB">
                 @if(empty($__cfg['SiteMenu']['TreeMenu']['LNB']) === false)

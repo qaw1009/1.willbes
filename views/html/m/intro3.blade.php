@@ -6,7 +6,7 @@
     <div class="introBox3 NSK"> 
         <div class="menuGroup">
             <div>
-                <h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4>
+                <!--h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4-->
                 <ul class="bigType">
                     <li><a href="https://police.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3001" target="_blank">신광은경찰</a></li>
                     <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3094" target="_blank">5급행정</a></li>
@@ -45,19 +45,23 @@
 <!-- End Container -->
 
 <script type="text/javascript">
-$(function() {
-    $(".etc > a").click(function(){
-        $(".smallType").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
-        if($(this).hasClass('btnMainToggle')) {
-            var $toggle_span = $(this).find('span');
-            switch ($toggle_span.html()) {
-                case '+' : $toggle_span.html('-');
-                    break;
-                case '-' : $toggle_span.html('+');
-                    break;
+    $(function() {
+        $(".etc > a").click(function(){
+            $(".smallType").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
+            if($(this).hasClass('btnMainToggle')) {
+                var $toggle_span = $(this).find('span');
+                switch ($toggle_span.html()) {
+                    case '+' : $toggle_span.html('-');
+                        break;
+                    case '-' : $toggle_span.html('+');
+                        break;
+                }
             }
-        }
-    })
-});
+        })
+    });
+
+    // 백그라운드 이미지
+    var images = ['gate_m_bg1.png', 'gate_m_bg2.png', 'gate_m_bg3.png'];    
+    $('.introBox3').css({'background-image': 'url(https://static.willbes.net/public/images/promotion/m/' + images[Math.floor(Math.random() * images.length)] + ')'});
 </script>
 @stop

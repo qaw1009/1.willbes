@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/style_main_v3.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <div id="Container" class="Container mainV3 NG c_both">
     <div class="Section Area1">

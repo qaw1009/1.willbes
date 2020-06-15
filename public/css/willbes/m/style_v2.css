@@ -542,8 +542,9 @@ body.memBody #Footer {
     text-align: center;
     color:#fff;
 }
-.introBox3 {background-color: #181818; padding:20px 0}
-.introBox3 .menuGroup {width:100%; max-width: 720px; margin:0 auto; }
+.introBox3 {background-color: #181818; background-image:url("https://static.willbes.net/public/images/promotion/m/gate_m_bg1.png");
+    background-repeat: no-repeat; background-position: center center; padding:20px;}
+.introBox3 .menuGroup {max-width: 720px; margin:0 auto;}
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
 .introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}
 .introBox3 h4 img {width:24px; vertical-align: middle; margin-right:5px; }
@@ -973,11 +974,11 @@ body.memBody #Footer {
 .csCenter li {display: inline; float:left; width:33.33333%}
 .csCenter li a {display: block; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
 .csCenter .link li:last-child a {border-right:0; letter-spacing: -1px;}
-.csCenter .link li a { height: 50px; line-height: 50px; text-align:center; font-size:18px; color:#313131}
-.csCenter .tel li {background: #eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc}
+.csCenter .link li a {height: 50px; line-height: 50px; text-align:center; font-size:18px; color:#313131}
+.csCenter .tel li {background: #eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; cursor: pointer;}
 .csCenter .tel li:last-child {border-right:0}
 .csCenter li img {float:left; margin:0 10px 10px 20px}
-.csCenter li div {float:left; font-size:14px; line-height: 1.2;}
+.csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2;}
 .csCenter li strong {display: block; font-size:18px; color:#313131}
 .csCenter li span {display: block; color:#006cff; font-weight: bold;}
 .csCenter .tel li:after,
@@ -3932,7 +3933,7 @@ body.memBody #Footer {
     }
     .thisMonth .swiper-slide {width:50%; height:160px;}
     .thisMonth .swiper-slide img {bottom:-40px;}
-    .csCenter .tel li div {margin-left:20px} 
+    .csCenter .tel li div.goTel div {margin-left:20px} 
     .location_map {height:300px;}
     .profArea .subjectBox li {width:calc(50% - 10px);}
     .profArea .subjectBox a {height:140px;}

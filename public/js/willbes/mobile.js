@@ -186,7 +186,7 @@ $(function() {
             disableOnInteraction: false
         },
         loop: true,
-        loopFillGroupWithBlank: true,
+        loopFillGroupWithBlank: false,
         pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -200,7 +200,7 @@ $(function() {
             disableOnInteraction: false
         },
         loop: true,
-        loopFillGroupWithBlank: true,
+        loopFillGroupWithBlank: false,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'

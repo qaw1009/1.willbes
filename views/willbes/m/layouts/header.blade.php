@@ -16,13 +16,7 @@
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
-    {{-- TODO : 최종 오픈할 경우 환경변수 제어조건 및 이전 소스 제거 요망 --}}
-    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-        {{-- 신규버전 --}}
-        <link href="/public/css/willbes/m/style_v2.css?ver={{time()}}" rel="stylesheet">
-    @else
-        <link href="/public/css/willbes/m/style.css?ver={{time()}}" rel="stylesheet">
-    @endif
+   <link href="/public/css/willbes/m/style_v2.css?ver={{time()}}" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->

@@ -159,7 +159,8 @@ class TaskProject extends \app\controllers\BaseController
         return [
             'TprojectName' => element('tproject_name', $input),
             'TprojectDesc' => element('tproject_desc', $input),
-            'IsUse' => element('is_use', $input)
+            'IsUse' => element('is_use', $input),
+            'OrgCode' => element('org_code', $input)
         ];
     }
 

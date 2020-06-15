@@ -16,6 +16,16 @@
                 <div class="form-control-static col-md-10">{{ $data['TprojectName'] }}</div>
             </div>
             <div class="form-group">
+                <label class="control-label col-md-1-1">권한조직</label>
+                <div class="form-control-static col-md-10">
+                    @if(isset($data['org_data']) === true)
+                        @foreach($data['org_data'] as $key => $val)
+                            <span class="pr-10">{{ $val['wOrgName'] }}</span>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-md-1-1">설명</label>
                 <div class="form-control-static col-md-10">{{ $data['TprojectDesc'] }}</div>
             </div>

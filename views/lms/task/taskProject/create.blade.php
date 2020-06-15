@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">프로젝트명 <span class="required">*</span></label>
                     <div class="form-control-static col-md-10">
-                        <input type="text" name="tproject_name" value="{{ $data['TprojectName'] }}" required="required" class="form-control mw-650" maxlength="10">
+                        <input type="text" name="tproject_name" value="{{ $data['TprojectName'] }}" required="required" class="form-control mw-650" maxlength="150">
                     </div>
                 </div>
                 <div class="form-group">
@@ -42,7 +42,6 @@
                         <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-1-1">설명</label>
                     <div class="form-control-static col-md-10">

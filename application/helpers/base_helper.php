@@ -222,13 +222,14 @@ if (!function_exists('front_url')) {
      * site_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
      * @param string $uri [URI]
      * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @param bool $is_except_pass [학원사이트 URI 제외 여부]
      * @return string
      */
-    function front_url($uri, $is_force_pass = false)
+    function front_url($uri, $is_force_pass = false, $is_except_pass = false)
     {
         $uri_prefix = '';
         APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
-        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+        if ($is_except_pass === false && (config_app('IsPassSite') === true || $is_force_pass === true)) {
             $uri_prefix .= '/' . config_item('app_pass_site_prefix');
         }
 
@@ -242,11 +243,12 @@ if (!function_exists('front_cate_url')) {
      * @param string $uri [URI]
      * @param null|string $add_param_name [카테고리 추가 파라미터명]
      * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @param bool $is_except_pass [학원사이트 URI 제외 여부]
      * @return string
      */
-    function front_cate_url($uri, $add_param_name = null, $is_force_pass = false)
+    function front_cate_url($uri, $add_param_name = null, $is_force_pass = false, $is_except_pass = false)
     {
-        $url = front_url($uri, $is_force_pass);
+        $url = front_url($uri, $is_force_pass, $is_except_pass);
 
         if (empty(config_app('CateCode')) === false) {
             $url = rtrim($url, '/') . '/' . config_get('uri_segment_keys.cate') . '/' . config_app('CateCode');
@@ -266,9 +268,10 @@ if (!function_exists('front_device_url')) {
      * @param string $uri [URI]
      * @param string $device [디바이스 (pc/m/app)]
      * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
+     * @param bool $is_except_pass [학원사이트 URI 제외 여부]
      * @return string
      */
-    function front_device_url($uri, $device, $is_force_pass = false)
+    function front_device_url($uri, $device, $is_force_pass = false, $is_except_pass = false)
     {
         $uri_prefix = '';
 
@@ -278,7 +281,7 @@ if (!function_exists('front_device_url')) {
             $uri_prefix .= '/' . config_item('app_app_site_prefix');
         }
 
-        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+        if ($is_except_pass === false && (config_app('IsPassSite') === true || $is_force_pass === true)) {
             $uri_prefix .= '/' . config_item('app_pass_site_prefix');
         }
 

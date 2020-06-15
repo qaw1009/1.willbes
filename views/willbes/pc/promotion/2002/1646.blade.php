@@ -120,8 +120,8 @@
                 <ul>
                     {{--<li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky01.jpg"  title="면접캠프 설명회" /></a></li>--}}
                     <li><a href="#sky02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky02.jpg"  title="찐 교수님 자세히보기" /></a></li>  
-                    <li><a href="#sky03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="인적성검사" /></a></li>  
-                    <li><a href="#sky04"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="사전조사서 특강" /></a></li>  
+                    {{--<li><a href="#sky03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky03.jpg"  title="인적성검사" /></a></li>--}}  
+                    {{--<li><a href="#sky04"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky04.jpg"  title="사전조사서 특강" /></a></li>--}}  
                     <li><a href="#sky05"><img src="https://static.willbes.net/public/images/promotion/2020/05/1646_sky05.jpg"  title="수강신청" /></a></li>                            
                 </ul>
             </div>
@@ -403,19 +403,23 @@
                 </div>
             </div>
 
+            {{--
             <div class="evtCtnsBox evt06" id="sky03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06.jpg" usemap="#Map1646a" title="검사신청하기 " border="0"/>
                 <map name="Map1646a" id="Map1646a">
                     <area shape="rect" coords="750,369,988,434"  href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
                 </map>
             </div>
+            --}}
 
+            {{--
             <div class="evtCtnsBox evt06s" id="sky04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06s.jpg" usemap="#Map1646abcd" title="검사신청하기" border="0"/>
                 <map name="Map1646abcd" id="Map1646abcd">
                     <area shape="rect" coords="749,488,990,554" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1070"  target="_blank" />
                 </map>         
-            </div>        
+            </div>
+            --}}        
 
             <div class="evtCtnsBox evt07Tab" id="sky05">
                 <ul class="tabs NGEB">

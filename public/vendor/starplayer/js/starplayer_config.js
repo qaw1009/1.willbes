@@ -13,8 +13,8 @@ var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/Sta
 var STARPLAYER_OSX_VERSION = "1,0,4,16";
 
 //Agent
-var STARPLAYER_AGENT_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer_agent_1.2.7.76.exe";
-var STARPLAYER_AGENT_VERSION = "1,2,7,76";
+var STARPLAYER_AGENT_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer_agent_1.2.7.77.exe";
+var STARPLAYER_AGENT_VERSION = "1,2,7,77";
 
 //CHROME
 var STARPLAYER_CHROME_URL = "https://cabstarplayer.myskcdn.com/starplayer/chrome.txt";

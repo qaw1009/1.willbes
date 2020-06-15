@@ -89,6 +89,7 @@
         </div>
     </div>
     <!-- End Container -->
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         $(function() {
             //이달의강의

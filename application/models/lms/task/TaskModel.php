@@ -20,7 +20,7 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무 프로젝트 정보 조회
+     * 업무프로젝트 정보 조회
      * @param $is_count
      * @param $arr_condition
      * @param $limit
@@ -52,7 +52,7 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무 프로젝트 정보 상세 조회
+     * 업무프로젝트 정보 상세 조회
      * @param $idx
      * @return mixed
      */
@@ -89,21 +89,41 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무 프로젝트 등록
+     * 업무프로젝트 등록
      * @param $input_data
      * @return mixed
      */
     public function addTaskProject($input_data = []){
         $this->_conn->trans_begin();
         try {
-            $input_data = array_merge($input_data,[
+            $add_data = [
+                'TprojectName' => element('TprojectName', $input_data),
+                'TprojectDesc' => element('TprojectDesc', $input_data),
+                'IsUse' => element('IsUse', $input_data),
                 'RegAdminIdx'=> $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
-            ]);
-
-            if ($this->_conn->set($input_data)->insert($this->_table['task_project']) === false) {
+            ];
+            if ($this->_conn->set($add_data)->insert($this->_table['task_project']) === false) {
                 throw new \Exception('업무프로젝트 등록을 실패했습니다.');
             }
+            $tp_idx = $this->_conn->insert_id();
+
+            // 업무프로젝트 조직연결 저장
+            if(empty($input_data) === false && empty($input_data['OrgCode']) === false) {
+                foreach($input_data['OrgCode'] as $row) {
+                    $org_result = $this->addTaskProjectRelationOrganization([
+                        'TpIdx' => $tp_idx,
+                        'wOrgCode' => $row,
+                        'IsStatus' => 'Y',
+                        'RegAdminIdx'=> $this->session->userdata('admin_idx'),
+                        'RegIp' => $this->input->ip_address()
+                    ]);
+                    if ($org_result !== true) {
+                        throw new \Exception('업무프로젝트 수정을 실패했습니다.');
+                    }
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -113,7 +133,7 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무 프로젝트 수정
+     * 업무프로젝트 수정
      * @param $input_data
      * @param $idx
      * @return mixed
@@ -122,21 +142,36 @@ class TaskModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $input_data = array_merge($input_data, [
+            $modify_data = [
+                'TprojectName' => element('TprojectName', $input_data),
+                'TprojectDesc' => element('TprojectDesc', $input_data),
+                'IsUse' => element('IsUse', $input_data),
                 'UpdAdminIdx'=> $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')
-            ]);
+            ];
 
-            $this->_conn->set($input_data)->where('TpIdx', $idx);
+            $this->_conn->set($modify_data)->where('TpIdx', $idx);
             if ($this->_conn->update($this->_table['task_project']) === false) {
                 throw new \Exception('업무프로젝트 수정을 실패했습니다.');
             }
 
-            if(empty($input_data) === false && empty($input_data['org_code']) === false) {
-                // 업무프로젝트 조직연결 (비교 저장/수정/삭제)
-                // 기존 데이터 비교하기 위하여 조회
-                // TODO
-
+            // 업무프로젝트 조직연결 정보 수정(삭제/저장)
+            if(empty($input_data) === false && empty($input_data['OrgCode']) === false) {
+                if ($this->removeTaskProjectRelationOrganization($idx) !== true) {
+                    throw new \Exception('업무프로젝트 수정을 실패했습니다.');
+                }
+                foreach($input_data['OrgCode'] as $row) {
+                    $org_result = $this->addTaskProjectRelationOrganization([
+                        'TpIdx' => $idx,
+                        'wOrgCode' => $row,
+                        'IsStatus' => 'Y',
+                        'RegAdminIdx'=> $this->session->userdata('admin_idx'),
+                        'RegIp' => $this->input->ip_address()
+                    ]);
+                    if ($org_result !== true) {
+                        throw new \Exception('업무프로젝트 수정을 실패했습니다.');
+                    }
+                }
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -147,12 +182,17 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무 프로젝트 삭제
-     * @param $idx
+     * 업무프로젝트 삭제
+     * @param $tp_idx
      * @return mixed
+     * @throws Exception
      */
-    public function removeTaskProject($idx)
+    public function removeTaskProject($tp_idx)
     {
+        if(empty($tp_idx) === true) {
+            throw new \Exception('필수파라미터 누락 오류');
+        }
+
         $this->_conn->trans_begin();
         try {
             $input_data = [
@@ -161,7 +201,7 @@ class TaskModel extends WB_Model
                 'UpdDatm' => date('Y-m-d H:i:s')
             ];
 
-            $this->_conn->set($input_data)->where('TpIdx', $idx);
+            $this->_conn->set($input_data)->where('TpIdx', $tp_idx);
             if ($this->_conn->update($this->_table['task_project']) === false) {
                 throw new \Exception('업무프로젝트 삭제를 실패했습니다.');
             }
@@ -174,7 +214,7 @@ class TaskModel extends WB_Model
     }
 
     /**
-     * 업무프로젝트 조직연결 정보 조회
+     * 업무프로젝트 조직연결정보 조회
      * @param $p_arr_condition
      * @return mixed
      */
@@ -189,7 +229,7 @@ class TaskModel extends WB_Model
             INNER JOIN {$this->_table['sys_organization']} AS SO ON TPRO.wOrgCode = SO.wOrgCode AND SO.wIsStatus = 'Y'
         ";
 
-        $arr_condition = ['EQ' => ['TP.IsUse' => 'Y', 'TP.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['TPRO.IsStatus' => 'Y']];
         if (empty($p_arr_condition) === false && is_array($p_arr_condition) === true) {
             $arr_condition = array_merge_recursive($arr_condition, $p_arr_condition);
         }
@@ -200,6 +240,55 @@ class TaskModel extends WB_Model
 
         $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by);
         return $query->result_array();
+    }
+
+    /**
+     * 업무프로젝트 조직연결정보 삭제
+     * @param $tp_idx
+     * @return mixed
+     * @throws Exception
+     */
+    public function removeTaskProjectRelationOrganization($tp_idx)
+    {
+        if(empty($tp_idx) === true) {
+            throw new \Exception('필수파라미터 누락 오류');
+        }
+        try {
+            $input_data = [
+                'IsStatus'=> 'N',
+                'UpdAdminIdx'=> $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+
+            $this->_conn->set($input_data)->where('TpIdx', $tp_idx);
+            if ($this->_conn->update($this->_table['task_project_r_organization']) === false) {
+                throw new \Exception('업무프로젝트 조직연결정보 삭제를 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 업무프로젝트 조직연결정보 등록
+     * @param $input_data
+     * @return mixed
+     */
+    public function addTaskProjectRelationOrganization($input_data = []){
+        try {
+            $input_data = array_merge($input_data,[
+                'RegAdminIdx'=> $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ]);
+
+            if ($this->_conn->set($input_data)->insert($this->_table['task_project_r_organization']) === false) {
+                throw new \Exception('업무프로젝트 조직연결정보 등록을 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 
 }

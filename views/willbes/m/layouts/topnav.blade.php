@@ -53,7 +53,11 @@
                                 </a>
                             @else
                                 <a href="{{ front_url('/home/index', false, true) }}" class="siteTitle NSK-Black">
-                                    {{ str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle']) }}
+                                    @if($__cfg['SiteCode'] == '2014')
+                                        N잡/e창업
+                                    @else
+                                        {{ str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle']) }}
+                                    @endif
                                 </a>
                             @endif
                         </div>

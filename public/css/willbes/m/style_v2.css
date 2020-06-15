@@ -401,22 +401,24 @@ span {
     position: absolute; 
     width:100%; left:0; 
     border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:10px 0;
-    background: #ededed;
+    background: #ededed;    
     font-size:12px;
     z-index:10;    
 }
 #Header .sMenuList .on {
     display:block;
 }
-
+#Header .sMenuList .dropBox > ul {margin-left:20px}
 #Header .sMenuList li {padding:8px 0; /*border-bottom: 1px solid #e4e4e4;*/ line-height: 1.4;}
 #Header .sMenuList li a {display:inline-block; margin-right:5px; color:#666}
 #Header .sMenuList .dropBox2 li {padding-left:120px; position:relative;}
 #Header .sMenuList .dropBox2 li span {display:block; position: absolute; width:110px; left:0; z-index: 2; 
     border-right:1px solid #ccc; text-align: center;}
 #Header .sMenuList li:last-child {border:0}
+/*
 #Header .sMenuList:nth-child(2) li {padding-left:27%}
 #Header .sMenuList:nth-child(4) li {padding-left:77%}
+*/
 #Header .sMenuList a:after,
 #Header .subMenuBox ul:after {content:""; display:block; clear:both}
 

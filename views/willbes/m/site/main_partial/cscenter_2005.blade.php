@@ -6,7 +6,7 @@
     </ul>
     <ul class="tel">
         <li>
-            <div class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+            <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>온라인문의</strong>
                     <span>1544-5006</span>
@@ -16,7 +16,7 @@
             </div>
         </li>
         <li>
-            <div class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+            <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>학원문의</strong>
                     <span>1544-5881</span>
@@ -26,7 +26,7 @@
             </div>
         </li>
         <li>
-            <div class="goTel" style="cursor: pointer"><img src="{{ img_url('m/main/icon_tel.png') }}">
+            <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>교재문의</strong>
                     <span>1544-4944</span>

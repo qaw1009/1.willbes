@@ -58,5 +58,9 @@
                 }
             })
         });
+
+        // 백그라운드 이미지
+    var images = ['gate_m_bg1.png', 'gate_m_bg2.png', 'gate_m_bg3.png'];    
+    $('.introBox3').css({'background-image': 'url(https://static.willbes.net/public/images/promotion/m/' + images[Math.floor(Math.random() * images.length)] + ')'});
     </script>
 @stop

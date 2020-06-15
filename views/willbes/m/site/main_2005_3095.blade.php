@@ -57,7 +57,7 @@
                                 @endphp
                                 <div class="swiper-slide">
                                     @if(!empty($sample_info[0]['wUnitIdx']))
-                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row["ProdCode"]}}&u={{$sample_info[0]["wUnitIdx"]}}&q={{$sample_info[0]["wHD"] != '' ? 'HD' : 'SD'}}","{{config_item('starplayer_license')}}");'>
+                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row["ProdCode"]}}&u={{$sample_info[0]["wUnitIdx"]}}&q={{$sample_info[0]["wHD"] != '' ? 'HD' : 'SD'}}", "{{config_item('starplayer_license')}}");'>
                                     @else
                                         <a href="javascript:alert('샘플영상 준비중입니다.')">
                                     @endif
@@ -89,6 +89,7 @@
         </div>
     </div>
     <!-- End Container -->
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         $(function() {
             //이달의강의

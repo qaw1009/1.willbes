@@ -192,6 +192,7 @@ span {
     top: 0;
     left:50%; 
     width:70%;
+
     margin-left:calc(-50% - 70%);
     -webkit-transition:transform 0.3s ease;
     transition:transform 0.3s ease;
@@ -200,7 +201,8 @@ span {
 #aside .asideBox {
     position:relative;    
     background: #fff;
-    width: 100%;   
+    width: 100%; 
+    min-height: 300px;  
 }
 
 #aside.on {
@@ -392,7 +394,7 @@ span {
 
 #Header .subMenu {position:relative;}
 #Header .subMenuBox {max-width: 720px; margin: 0 auto;}
-#Header .sMenuList {display:inline; float:left; width:25%}
+#Header .sMenuList {display:inline-block; float:left; width:25%}
 #Header .sMenuList > a {display:block; text-align:center; font-size:14px; margin:20px 0; font-weight:bold; line-height:1.2; border-right:1px solid #ccc}
 #Header .sMenuList > a br {display: none;}
 #Header .sMenuList:last-child a {border:0}

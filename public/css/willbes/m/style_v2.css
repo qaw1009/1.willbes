@@ -538,102 +538,13 @@ body.memBody #Footer {
     text-align: center;
     color:#fff;
 }
-
-.introBox {
-    background: #1b98ef;
+.introBox3 {/*background-color: #181818;*/padding:20px; 
+    background-color: rgba(0,0,0,.9) ;
+    background-image:url("https://static.willbes.net/public/images/promotion/m/gate_m_bg1.png");
+    background-position: center center; 
+    background-repeat: no-repeat
 }
-.introBox img {
-    width: 100%; 
-}
-.introBox img a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.introBox li {display:inline; float:left; width: 50%;}
-.introBox li:last-child { 
-    background: #eb8136;
-}
-.introBox ul:after {content:''; display:block; clear:both}
-.introBox li div {padding:50px 10px; text-align: center}
-.introBox .subTit {
-    font-size: 14px;
-}
-.introBox .siteTit {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top:20px;
-    line-height: 1.5;
-}
-.introBox .siteTit span {
-    color:#fff;
-    border-bottom:2px solid #fff;
-    margin-bottom:3px;
-}
-.introBox .siteTit span:last-child {
-    color:#000;
-    border-bottom:2px solid #000;
-}
-.introBox .btnGo {
-    display: inline-block;
-    font-size: 14px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 8px 20px;
-    margin-top: 40px;
-    color:#fff;
-}
-
-
-.introBox2 {
-  margin:10px;
-  font-size: 14px;
-  line-height: 1.5;  
-}
-.introBox2 ul {
-    border-top:1px solid #e4e4e4;
-    border-left:1px solid #e4e4e4;
-}
-.introBox2 li {
-    display: inline-block; 
-    float:left; width:50%;     
-    position: relative;
-    border-bottom:1px solid #e4e4e4;
-    border-right:1px solid #e4e4e4;
-}
-
-.introBox2 ul:after {content:''; display:block; clear:both}
-.introBox2 li div {
-    border-right:1px solid #fff;
-    border-bottom:1px solid #fff;
-}
-.introBox2 li div a {
-    display:block; height: 120px; color:#000;    
-}
-.introBox2 li div a:active, 
-.introBox2 li div a:hover {background:#fff}
-.introBox2 .subTit {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top:30px;
-    padding:0 10px;
-    font-size: 12px;
-}
-.introBox2 .siteTit {
-    position: absolute;
-    width: 100%;
-    bottom:20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;    
-}
-.introBox2 .siteTit img {
-    vertical-align: middle;
-    margin-right:5px;
-}
-.introBox3 {background-color: #181818; padding:20px;}
-.introBox3 .menuGroup {width:100%; max-width: 720px; margin:0 auto}
+.introBox3 .menuGroup {width:100%; max-width: 720px; margin:0 auto; }
 .introBox3 div.w50 {float: left; display: inline; width: 50%;}
 .introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}
 .introBox3 h4 img {width:24px; vertical-align: middle; margin-right:5px; }
@@ -703,8 +614,8 @@ body.memBody #Footer {
     width: 100% !important;
 }
 .swiper-pagination-bullet {
-    width: 20px !important;
-    height: 20px !important;
+    width: 12px !important;
+    height: 12px !important;
     text-align: center;
     line-height: 20px;
     font-size: 12px;
@@ -753,8 +664,8 @@ body.memBody #Footer {
 }
 .MainSlider .swiper-pagination-bullet {
     background: #fff;
-    width: 12px;
-    height: 12px;
+    width: 12px !important;
+    height: 12px !important;
     line-height: 12px;
     border-radius: 12px;
     margin: 0 2px;

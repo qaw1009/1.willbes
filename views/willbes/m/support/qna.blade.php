@@ -22,7 +22,7 @@
                 <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
             @endforeach
         </select>
-        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCate width32n5p ml1p" onchange="goUrl('s_cate_code',this.value)">
+        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCate width32n5p ml1p" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
             <option value="">카테고리</option>
             @foreach($arr_base['category'] as $row)
                 <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>

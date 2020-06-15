@@ -6,7 +6,6 @@
         <div class="introBox3 NSK">
             <div class="menuGroup">
                 <div>
-                    <h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4>
                     <ul class="bigType">
                         <li><a href="{{ front_app_url('/lecture/index/pattern/only?search_order=course&cate_code=3001', 'police') }}" target="_blank">신광은경찰</a></li>
                         <li><a href="{{ front_app_url('/lecture/index/cate/3094/pattern/only?search_order=course&cate_code=3094', 'gosi') }}" target="_blank">5급행정</a></li>

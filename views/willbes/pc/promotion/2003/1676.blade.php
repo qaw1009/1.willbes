@@ -75,6 +75,7 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
+
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
@@ -84,7 +85,7 @@
                 <area shape="rect" coords="-1,359,149,437" href="#evt3" />
                 <area shape="rect" coords="1,443,147,523" href="#evt3" />
             </map>           
-        </div>
+        </div>           
         
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
@@ -100,6 +101,14 @@
                 </ul>
             </div>
         </div>
+
+        <div class="evtCtnsBox evttop_banner" >     
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
+            <map name="Map1588banner" id="Map1588banner">
+                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
+            </map>             
+        </div>          
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

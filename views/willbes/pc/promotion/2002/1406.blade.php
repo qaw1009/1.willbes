@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:202px;right:0;z-index:1;}
+        .skybanner {position:fixed;top:200px;right:0;z-index:1;}
         .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
@@ -45,7 +45,7 @@
         to{color:#000}
         }
         .wb_00 {background:#404040}
-        .wb_top {background:#953100 url(https://static.willbes.net/public/images/promotion/2020/06/1406_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#00691f url(https://static.willbes.net/public/images/promotion/2020/06/1406_top_bg.jpg) no-repeat center top;}
         .wb_top_01 {background:#333; position:relative; padding:100px 0; color:#fff} 
         .box-book {width:100%;}
         .box-book .bx-wrapper{max-width:100% !important;}
@@ -126,10 +126,10 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1406_top.jpg" alt="6월 개강반 신청하기" usemap="#Map1406a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1406_top.jpg" alt="7월 개강반 신청하기" usemap="#Map1406a" border="0" />
             <map name="Map1406a" id="Map1406a">
-                <area shape="rect" coords="322,1229,798,1355" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" />
-            </map>   
+                <area shape="rect" coords="323,1220,796,1348" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" />
+            </map>  
         </div>
         {{--
         <div class="evtCtnsBox wb_06">

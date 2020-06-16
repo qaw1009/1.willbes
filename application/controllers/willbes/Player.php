@@ -1591,6 +1591,71 @@ class Player extends \app\controllers\FrontController
 
 
     /**
+     * 강사 샘플보기
+     * @return CI_Output
+     */
+    function getMobileProf()
+    {
+        $MemId = $this->_req("id");
+        $MemIdx = $this->_req("idx");
+        $profIdx = $this->_req("p");
+        $viewType = $this->_req("v");
+
+        if(empty($profIdx) === true || empty($viewType) === true){
+            return $this->StarplayerResult(true,'파라미터가 잘못 되었습니다.');
+        }
+
+        if(empty($MemIdx) == false){
+            $MemId = "ANONYMOUS";
+        }
+
+        if(empty($this->_profReferDataName[$viewType]) === true){
+            return $this->StarplayerResult(true,'파라미터가 잘못되었습니다.');
+        }
+
+        $viewType = $this->_profReferDataName[$viewType];
+
+        $data = $this->professorFModel->findProfessorByProfIdx($profIdx, true);
+        if(empty($data) === true){
+            return $this->StarplayerResult(true,'해당 강사를 찾을수 없습니다.');
+        }
+
+        $profRefer = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
+        if(empty($profRefer) === true){
+            return $this->StarplayerResult(true,'맛보기 강좌가 없습니다.');
+        }
+
+        if(empty($profRefer[$viewType]) === true){
+            return $this->StarplayerResult(true,'맛보기 강좌가 없습니다.');
+        }
+
+        $url = $this->clearUrl($profRefer[$viewType]);
+
+        if(empty($url) === true){
+            return $this->StarplayerResult(true,'샘플강의가 없습니다.');
+        }
+
+        $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
+        $XMLString .= "<axis-app>";
+        $XMLString .= "<security>true</security>"; // 보안설정
+        $XMLString .= "<action-type>streaming</action-type>"; // 스트리밍/다운로드
+        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>"; // 회원 아이디
+        $XMLString .= "<content>";
+        $XMLString .= "<id><![CDATA[SAMPLE]]></id>";
+        $XMLString .= "<url><![CDATA[".$url."]]></url>";
+        $XMLString .= "<title><![CDATA[".$data['wProfName']."교수님 맛보기강의 입니다.]]></title>";
+        $XMLString .= "<position>0</position>";
+        $XMLString .= "</content>";
+        $XMLString .= "</axis-app>";
+
+        $this->load->library('Crypto', ['license' => config_item('starplayer_license')]);
+
+        echo $this->crypto->encrypt($XMLString);
+        exit(0);
+    }
+
+
+    /**
      * 하이브리드앱 플레이 정보 읽어오기
      * @return CI_Output
      */

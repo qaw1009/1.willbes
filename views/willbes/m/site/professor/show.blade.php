@@ -26,7 +26,8 @@
         <div class="profMenu">
             <ul>
                 <li><a href="#none" onclick="openWin('LayerProfile');">프로필</a><li>
-                {{--<li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'' . $data['ProfReferData']['sample_url_type'] . '\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li>--}}
+                <li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnMobile(\'https:'.front_app_url('/Player/getMobileProf/', 'www').'?idx='.sess_data('mem_idx').'&id='.sess_data('mem_id').'&p='.$prof_idx.'&v='.$data['ProfReferData']['sample_url_type'].'\', \''.config_item('starplayer_license').'\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li>
+                {{-- <li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnMobile(\'' . $prof_idx . '\', \'' . $data['ProfReferData']['sample_url_type'] . '\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li> --}}
                 <li><a href="#none" onclick="openWin('LayerCurriculum');">커리큘럼</a><li>
                 @if(empty($data['ProfReferData']['cafe_url']) === false)
                     {{-- 카페링크 있을 경우만 노출 --}}

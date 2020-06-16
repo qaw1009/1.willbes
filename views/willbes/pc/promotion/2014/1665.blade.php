@@ -28,7 +28,7 @@
 
         .evtTop_01{background:#4d79f6}
 
-        .evt01 {background:#787878; padding-bottom:100px}        
+        .evt01 {background:#c09260; padding-bottom:100px}        
         .evt01 .review {position:absolute; top:298px; left:50%; margin-left:-483px; width:966px; height:60px; z-index:5; overflow:hidden;}
         .evt01 .review li {font-size:16px; color:#000; text-align:left; padding-left:200px}
         .evt01 .review li p {position:relative; width:100%; overflow:hidden; white-space:nowrap; height:60px; line-height: 60px; text-overflow:ellipsis; padding:0 15% 0 0}

@@ -26,7 +26,6 @@
         <div class="profMenu">
             <ul>
                 <li><a href="#none" onclick="openWin('LayerProfile');">프로필</a><li>
-                {{-- TODO : 맛보기 모바일 버전으로 수정 필요 --}}
                 {{--<li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'' . $data['ProfReferData']['sample_url_type'] . '\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li>--}}
                 <li><a href="#none" onclick="openWin('LayerCurriculum');">커리큘럼</a><li>
                 @if(empty($data['ProfReferData']['cafe_url']) === false)

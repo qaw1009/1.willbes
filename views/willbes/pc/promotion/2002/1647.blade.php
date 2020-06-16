@@ -68,11 +68,6 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/05/1647_sky.png" alt="스카이베너" >            
                 </a>
             </li>
-            <li>
-                <a href="http://cafe.daum.net/tntpolice/WoSU/775" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/jang_sky.png" alt="스카이베너" >
-                </a>
-            </li>       
         </ul>       
 
 

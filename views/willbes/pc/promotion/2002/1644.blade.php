@@ -123,11 +123,6 @@
                 <a href="#event">
                     <img src="https://static.willbes.net/public/images/promotion/2020/05/1644_sky01.png" alt="6월 심화기출" >
                 </a>
-            </li>          
-            <li>
-                <a href="http://cafe.daum.net/tntpolice/WoSU/775" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/jang_sky.png" alt="장정훈" >
-                </a>
             </li>                
         </ul>       
         

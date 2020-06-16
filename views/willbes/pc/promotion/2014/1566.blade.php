@@ -271,7 +271,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >
             </div>
             <div class="evtCtnsBox evt02">                
-                <iframe src="https://www.youtube.com/embed/SqJMAs2mic8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/SqJMAs2mic8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>
                     유튜브 채널 "단아쌤TV"를 운영중인<br>

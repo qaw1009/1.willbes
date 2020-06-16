@@ -65,7 +65,7 @@
                 </ul>
             </div>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/OzRyEe5Vops" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/OzRyEe5Vops?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 

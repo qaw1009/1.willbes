@@ -50,7 +50,7 @@
             </div>
         </div> 
         <div class="evtCtnsBox evtTop_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_top_01.jpg" alt="" > 
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_top_01.gif" alt="" > 
         </div> 
         
         <div class="evtCtnsBox evt01">

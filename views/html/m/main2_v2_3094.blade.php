@@ -77,7 +77,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 1</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -87,7 +87,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 2</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -97,7 +97,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 3</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -107,7 +107,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 4</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -117,7 +117,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 5</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -127,7 +127,17 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/prof_index_50836.png" alt="강사명">
                         <div>
-                            <span>황종휴</span>
+                            <span>황종휴 6</span>
+                            경제학<br>
+                            예비순환
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/prof_index_50836.png" alt="강사명">
+                        <div>
+                            <span>황종휴 7</span>
                             경제학<br>
                             예비순환
                         </div>
@@ -148,7 +158,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
                             <div>
-                                경제학<span></span><strong>황종휴</strong>
+                                경제학<span></span><strong>황종휴 1</strong>
                                 <p>오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>
@@ -157,7 +167,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/lec_list_50837.png" alt="강사명">
                             <div>
-                                행정법<span></span><strong>김정일</strong>
+                                행정법<span></span><strong>김정일 2</strong>
                                 <p>행정법 원론강의 </p>
                             </div>
                         </a>
@@ -166,7 +176,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/lec_list_50838.png" alt="강사명">
                             <div>
-                                행정법<span></span><strong>박도원</strong>
+                                행정법<span></span><strong>박도원 3</strong>
                                 <p>행정법 GS3순환 </p>
                             </div>
                         </a>
@@ -175,7 +185,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/lec_list_50836.png" alt="강사명">
                             <div>
-                                행정학<span></span><strong>백승준</strong>
+                                행정학<span></span><strong>백승준 4</strong>
                                 <p>2020 행정학 예비순환 오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>
@@ -184,7 +194,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
                             <div>
-                            경제학<span></span><strong>황종휴</strong>
+                            경제학<span></span><strong>황종휴 5</strong>
                             <p>오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>
@@ -193,7 +203,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
                             <div>
-                            경제학<span></span><strong>황종휴</strong>
+                            경제학<span></span><strong>황종휴 6</strong>
                             <p>오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>
@@ -202,7 +212,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
                             <div>
-                            경제학<span></span><strong>황종휴</strong>
+                            경제학<span></span><strong>황종휴 7</strong>
                             <p>오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>
@@ -211,7 +221,7 @@
                         <a href="#none">
                             <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
                             <div>
-                            경제학<span></span><strong>황종휴</strong>
+                            경제학<span></span><strong>황종휴 8</strong>
                             <p>오리엔테이션, 무역모형기초 1회 1강</p>
                             </div>
                         </a>

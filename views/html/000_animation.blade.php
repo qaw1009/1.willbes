@@ -1,6 +1,8 @@
 @extends('willbes.pc.layouts.master')
+<link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
 
 @section('content')    
+
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
@@ -321,6 +323,28 @@
                     transform-origin: top;
         }
         }
+        .wb_cts13 {font-weight:bold; color:#fff; overflow:hidden}
+
+        @@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+        .wb_cts13 div {
+            font-size: 15rem;
+	        text-align: center;
+            height:90vh;
+            line-height: 90vh;
+            color: #fcedd8;
+            background: #d52e3f;
+            font-family: 'Niconne', cursive;
+            font-weight: 700;
+            text-shadow: 5px 5px 0px #eb452b, 
+                  10px 10px 0px #efa032, 
+                  15px 15px 0px #46b59b, 
+                  20px 20px 0px #017e7f, 
+                  25px 25px 0px #052939, 
+                  30px 30px 0px #c11a2b, 
+                  35px 35px 0px #c11a2b, 
+                  40px 40px 0px #c11a2b, 
+                  45px 45px 0px #c11a2b;
+        }        
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -401,6 +425,10 @@
             <div>
             배경2
             </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts13">
+            <div>Roses</div>
         </div>
 
     </div>

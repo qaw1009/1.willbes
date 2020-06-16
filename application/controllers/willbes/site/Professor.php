@@ -140,6 +140,11 @@ class Professor extends \app\controllers\FrontController
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
 
+        // 과목명 파라미터가 없을 경우 LNB 메뉴용 전체 교수 정보에서 과목명 추출
+        if (empty($arr_input['subject_idx']) === false && isset($arr_input['subject_name']) === false) {
+            $arr_input['subject_name'] = array_key_first(element($arr_input['subject_idx'], $arr_subject2professor, []));
+        }
+
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
@@ -160,34 +165,41 @@ class Professor extends \app\controllers\FrontController
             $data['ProfReferData']['yt_url'] = array_value_first($refer_data['yt_url']);
         }
 
-        // 교수 배너 정보
-        $data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
+        // PC 사이트일 경우만 조회
+        if (APP_DEVICE == 'pc') {
+            // 교수 배너 정보
+            $data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
 
-        // 베스트강좌 상품 조회
-        $best_product = $this->_getProfBestNewProductData($prof_idx, $prod_type, 'Best', 4, ['ProdCode' => 'desc'], $arr_input);
-        $best_product = array_map(function ($arr) {
-            $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
-            $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
-            return $arr;
-        }, $best_product);
+            // 베스트강좌 상품 조회
+            $data['BestProduct'] = $this->_getProfBestNewProductData($prof_idx, $prod_type, 'Best', 4, ['ProdCode' => 'desc'], $arr_input);
+            $data['BestProduct'] = array_map(function ($arr) {
+                $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
+                $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
+                return $arr;
+            }, $data['BestProduct']);
 
-        // 선택된 탭에 맞는 정보 조회
+            // 게시판 사용 유무에 탭 버튼 개수 설정
+            $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard'], $data['IsAnonymousBoard']);
+            $tabUseCount = 3;
+            foreach ($temp_UseBoardJson as $key => $val) {
+                if ($val == 'Y') {
+                    $tabUseCount += 1;
+                }
+            }
+            $data['tabUseCount'] = $tabUseCount;
+        }
+
+        // 선택된 탭에 맞는 정보 조회 및 디폴트 탭 설정
         $is_tab_select = isset($arr_input['tab']);
-        $arr_input['tab'] = element('tab', $arr_input, 'home');
+        if($this->_is_mobile === true) {
+            $arr_input['tab'] = element('tab', $arr_input, ($this->_is_pass_site === true ? 'off_lecture' : 'on_lecture'));
+        } else {
+            $arr_input['tab'] = element('tab', $arr_input, 'home');
+        }
         if (!method_exists($this,'_tab_' . $arr_input['tab'])) {
             show_alert('잘못된 접근입니다.', 'back');
         }
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input, $data['OnLecViewCcd']);
-
-        // 게시판 사용 유무에 탭 버튼 개수 설정
-        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard'], $data['IsAnonymousBoard']);
-        $tabUseCount = 3;
-        foreach ($temp_UseBoardJson as $key => $val) {
-            if ($val == 'Y') {
-                $tabUseCount += 1;
-            }
-        }
-        $data['tabUseCount'] = $tabUseCount;
 
         // 선택한 정렬순서가 없을 경우
         if(empty(element('search_order', $arr_input)) === true) {
@@ -213,7 +225,7 @@ class Professor extends \app\controllers\FrontController
             'def_cate_code' => $this->_def_cate_code,
             'prof_idx' => $prof_idx,
             'data' => $data,
-            'best_product' => $best_product,
+            'best_product' => element('BestProduct', $data, []),
             'tab_data' => $tab_data,
             'is_tab_select' => $is_tab_select
         ]);
@@ -295,7 +307,7 @@ class Professor extends \app\controllers\FrontController
      * @param $on_lec_view_ccd [온라인강좌 노출형태 구분]
      * @return mixed
      */
-    private function _tab_open_lecture($prof_idx, $wprof_idx, $arr_input = [], $on_lec_view_ccd='719001')
+    private function _tab_open_lecture($prof_idx, $wprof_idx, $arr_input = [], $on_lec_view_ccd = '719001')
     {
         $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
 
@@ -393,6 +405,113 @@ class Professor extends \app\controllers\FrontController
             'selected_search_order' =>  element('search_order', $arr_input),
             'selected_series' =>  element('series', $arr_input),
             'selected_campus_ccd' =>  element('campus_ccd', $arr_input)
+        ];
+    }
+
+    /**
+     * 동영상수강신청 탭 (모바일 전용)
+     * @param int $prof_idx [교수식별자]
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param array $arr_input
+     * @return array
+     */
+    private function _tab_on_lecture($prof_idx, $wprof_idx, $arr_input = [])
+    {
+        $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
+
+        // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
+        $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);
+
+        // 온라인, 학원 교수식별자 조회 (온라인 : on => 50004, 학원 : off => 50079)
+        $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
+
+        // 온라인강좌 조회
+        if (empty($arr_prof_idx['on']) === false) {
+            // 디폴트 과정순 정렬 적용
+            if (empty(element('search_order', $arr_input)) === true) {
+                $arr_input['search_order'] = 'course';
+            }
+
+            // 온라인 단강좌 조회
+            $data['on_lecture'] = $this->_getOnLectureData('on_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
+
+            // 온라인 패키지 조회
+            $adminpack_lecture_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
+            foreach ($adminpack_lecture_type_ccd as $key => $code) {
+                $data[$key] = $this->_getOnPackageData('adminpack_lecture', $code, $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
+            }
+        }
+
+        return [
+            'on_lecture' => element('on_lecture', $data, []),
+            'on_pack_normal' => element('on_pack_normal', $data, []),
+            'on_pack_choice' => element('on_pack_choice', $data, [])
+        ];
+    }
+
+    /**
+     * 학원수강신청 탭 (모바일 전용)
+     * @param int $prof_idx [교수식별자]
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param array $arr_input
+     * @return array
+     */
+    private function _tab_off_lecture($prof_idx, $wprof_idx, $arr_input = [])
+    {
+        $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
+
+        // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
+        $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);
+
+        // 온라인, 학원 교수식별자 조회 (온라인 : on => 50004, 학원 : off => 50079)
+        $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
+
+        if (empty($arr_prof_idx['off']) === false) {
+            // 학원 단과 조회
+            $data['off_lecture'] = $this->_getOffLectureData('off_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
+
+            // 학원 종합반 조회
+            $data['off_pack_lecture'] = $this->_getOffLectureData('off_pack_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
+        }
+
+        return [
+            'off_lecture' => element('off_lecture', $data, []),
+            'off_pack_lecture' => element('off_pack_lecture', $data, [])
+        ];
+    }
+
+    /**
+     * 무료강좌 탭 (PC/모바일 공통)
+     * @param int $prof_idx [교수식별자]
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param array $arr_input
+     * @return mixed
+     */
+    private function _tab_free_lecture($prof_idx, $wprof_idx, $arr_input)
+    {
+        $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
+
+        // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
+        $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);
+
+        // 온라인, 학원 교수식별자 조회 (온라인 : on => 50004, 학원 : off => 50079)
+        $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
+
+        $data['on_free_lecture'] = [];
+        if (empty($arr_prof_idx['on']) === false) {
+            $data['on_free_lecture'] = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
+        }
+
+        // 온라인 사이트일 경우만 수강후기 조회 (PC 사이트일 경우만 조회)
+        $data['study_comment'] = [];
+        if (APP_DEVICE == 'pc' && $this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
+
+        return [
+            'on_free_lecture' => element('on_free_lecture', $data, []),
+            'study_comment' => element('study_comment', $data, []),
         ];
     }
 
@@ -610,41 +729,6 @@ class Professor extends \app\controllers\FrontController
         ];
         $data = $this->lectureFModel->findProductSubjectSeries($add_condition, $order);
         return $data;
-    }
-
-    /**
-     * 무료강좌 탭
-     * @param int $prof_idx [교수식별자]
-     * @param int $wprof_idx [WBS 교수식별자]
-     * @param array $arr_input
-     * @return mixed
-     */
-    private function _tab_free_lecture($prof_idx, $wprof_idx, $arr_input)
-    {
-        $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
-
-        // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
-        $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);
-
-        // 온라인, 학원 교수식별자 조회 (온라인 : on => 50004, 학원 : off => 50079)
-        $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
-
-        $data['on_free_lecture'] = [];
-        if (empty($arr_prof_idx['on']) === false) {
-            $data['on_free_lecture'] = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
-        }
-
-        // 온라인 사이트일 경우만 수강후기 조회
-        $data['study_comment'] = [];
-        if ($this->_is_pass_site === false) {
-            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
-        }
-
-        return [
-            'on_free_lecture' => element('on_free_lecture', $data, []),
-            'study_comment' => element('study_comment', $data, []),
-        ];
     }
 
     /**

@@ -215,18 +215,11 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
+        <div class="skybanner">
+            <a href="/book/index/cate/3114?cate_code=3114&subject_idx=1786&prof_idx=51009" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1564_sky_02.png" alt="교재구매">
+            </a>
             <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1565_sky_01.png" alt="황채영대표"></a>
-            {{--시간설정--}}
-            @if(time() < strtotime('202005311159'))
-            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
-            @endif
-            {{--           
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565_sky.png" alt="스카이베너" usemap="#Map1565_sky" border="0" >
-            <map name="Map1565_sky" id="Map1565_sky">
-                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');" alt="강의신청" />
-            </map>
-            --}}
         </div>                  
 
 		<div class="evtCtnsBox evtTop">

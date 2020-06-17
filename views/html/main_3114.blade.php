@@ -1,182 +1,6 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-
-<style type="text/css">
-/*********************************************     Main Container : cert     *********************************************/
-
-.skybanner {
-    position:fixed;
-    bottom:20px;
-    right:10px;
-    z-index:1;
-}
-
-
-/* Main Container : MainVisual */
-.njob2 .Section0 {background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx110_bg.jpg) no-repeat center top; border-top:2px solid #000; margin-top:-2px}
-.njob2 .Section1 {background:#bebcbd}
-.njob2 .MainVisual {
-    position: relative;
-    width: 1120px;
-    margin:0 auto;
-    height: 670px;
-}
-.njob2 .MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.njob2 .VisualBox {
-    position: absolute;
-    width:1120px;  
-    height: 670px;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-.njob2 .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
-    bottom: 20px;
-    width: 50px;
-    z-index: 90;
-}
-.njob2 .VisualBox .bx-wrapper .bx-pager {
-    width: auto;
-    left:60px;
-    bottom: 22px;
-    text-align: left;
-    z-index: 90;
-}
-.njob2 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-  }
-
-.njob2 .VisualsubBox {
-    width: 1120px;
-    height: 380px;
-    overflow: hidden;
-}
-.njob2 .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
-    bottom: 20px;
-    margin: 0;
-    width: 50px;
-    z-index:90;
-  }
-.njob2 .VisualsubBox .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    left:60px;
-    bottom: 20px;
-    text-align: right;
-    z-index:90;
-}
-.njob2 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
-    width: 8px;
-    height: 8px;
-    margin: 0 2px;
-}
-
-.njob2 .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #ccc !important;
-}
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #3997f0 !important;
-    z-index: 10;
-}
-.njob2 .will-listTi, 
-.njob2 .will-listTit {font-size:24px; margin-bottom:30px}
-.njob2 .will-listTit {margin-bottom:20px}
-
-/**/
-.njob2 .bestLec > li {
-    display: inline;
-    float: left;
-    width:25%;
-}
-.njob2 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5}
-.njob2 .bestLec li ul li {margin-bottom:10px}
-.njob2 .bestLec li ul li:first-child {font-size:14px}
-.njob2 .bestLec li ul li span {vertical-align: bottom;}
-.njob2 .bestLec li ul li:last-child a {display:block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
-.njob2 .bestLec:after {
-    content:'';
-    display: block;
-    clear:both;
-}
-
-.njob2 .Section2 {
-    background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx600_bg.jpg) no-repeat center top;
-}
-.njob2 .Section3 {background:#f7f7f7}
-.njob2 .tipLec li {
-    display: inline;
-    float: left;
-    width:25%;
-    text-align:center;
-    font-size:15px;
-}
-.njob2 .tipLec li a {margin-bottom:10px; display:block}
-
-/* Main Container : Notice : noticeTabs */
-.njob2 .willbesNews {width:466px; height:297px; float:left}
-.njob2 .List-Table {
-    width: 100%;
-    border-top:1px solid #000;
-    padding:0;
-}
-.njob2 .List-Table li {
-    position: relative;
-    font-size: 13px;
-    color: #3a3a3a;
-    height: 48px;
-    line-height: 48px;
-    border-bottom: 1px solid #e3e3e3;
-}
-.njob2 .List-Table li a {
-    display: inline-block;
-    width: 80%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: 0;
-}
-.njob2 .List-Table li a span {
-    background: #3997f0;
-    color:#fff;
-    padding: 0 10px;
-    border-radius: 10px;
-    margin-right: 5px;
-}
-.njob2 .List-Table li:last-child {
-    border-bottom: 1px solid #000;
-}
-.njob2 .willbesCenter {float:right; width:600px; height:297px; border:10px solid #f0f0f0; background:#fff; padding:40px 50px; text-align:left} 
-.njob2 .willbesCenter h5 {font-size:24px; margin-bottom:30px; color:#000}
-.njob2 .willbesCenter span { vertical-align: bottom;}
-.njob2 .willbesCenter ul {width:100%; margin-top:34px}
-.njob2 .willbesCenter ul li {display: inline; float:left; width:25%; padding:0; margin:0;}
-.njob2 .willbesCenter ul li a {display:block; border-right:1px solid #e4e4e4; text-align:center}
-.njob2 .willbesCenter ul li:last-child a {border-right:0; }
-.njob2 .willbesCenter ul:after,
-.njob2 .widthAuto:after {content:""; display:block; clear:both}
-.njob2 .willbesCenter .tel {font-size:18px; margin-top:34px; line-height:1.5}
-
-
-
-/* Main Container */
-.njob2 .tx-color {
-    color: #3997f0;
-}
-</style>
-
-
-
 <div id="Container" class="Container njob2 NGR c_both">
     <!-- site nav -->
     @include('willbes.pc.layouts.partial.site_menu')
@@ -245,13 +69,14 @@
         </div>
     </div>
 
+    {{--
     <div class="Section NSK mt70">
         <div class="widthAuto">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 인기강좌</div> 
             <ul class="bestLec">
                 <li>
                     <div>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.png" alt="김정한 대표">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.png" alt="김정한 대표">                        
                         <ul>
                             <li><span class="tx-red">NEW</span> · 이커머스</li>
                             <li>가장 현실적인 월 100만원 만들기, <br>
@@ -300,6 +125,66 @@
                             <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">신청하기</a></li>
                         </ul>
                     </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    --}}
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 인기강좌</div> 
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_01.gif" alt="김정한 대표">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_02.gif" alt="김경은 대표">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_03.gif" alt="황채영 대표">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_04.gif" alt="정문진 대표">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 신규강좌 
+                <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>                    
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
                 </li>
             </ul>
         </div>

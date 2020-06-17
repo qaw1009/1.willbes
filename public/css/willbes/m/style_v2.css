@@ -3841,8 +3841,10 @@ body.memBody #Footer {
     -webkit-line-clamp: 2;
     width: 100%;
     text-overflow: ellipsis;
+    height: 40px;
+    color:#0d74ae;
 }
-.bookInfo > li {margin-bottom:10px; line-height: 1.4;}
+.bookInfo > li {margin-bottom:8px; line-height: 1.4;}
 .bookInfo > li:nth-of-type(2) {font-size:12px; color:#666}
 .bookInfo > li .row-line {background: #b5b5b5;
     width: 1px;
@@ -3850,6 +3852,39 @@ body.memBody #Footer {
     margin: 0 5px;
     vertical-align: middle;
 }
+.bookInfo a.bookView {
+    background: url("../../../img/willbes/m/main/icon_search_btn2.png") no-repeat right center;
+    display:inline-block !important;
+    padding-right:25px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+}
+.bookInfo .w-buy {
+    font-size: 12px;
+    padding: 15px 0;
+    line-height: 33px;
+}
+.bookInfo .w-buy ul {
+    width: 60%;
+    margin:0 auto;
+}
+.bookInfo .w-buy li {
+    display: inline-block;
+    float: left;
+    height: 34px;  
+    width: 50%; 
+}
+.bookInfo .w-buy li a {
+    display: block; 
+    height: 100%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 32px;
+    letter-spacing: -1px;
+    margin-right:5px;
+}
+.bookInfo .w-buy:after,
 .bookListWrap:after,
 .bookList:after {content: ""; display:block; clear:both}
 

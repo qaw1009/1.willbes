@@ -47,7 +47,7 @@
     <div class="willbes-Lec-Selected NG c_both tx-gray pb-zero">
         <select id="process" name="process" title="process" class="seleProcess width30p">
             <option selected="selected">최근등록순</option>
-            <option value="">과정순</option>
+            <option value="">상품명순</option>
         </select>
         <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
             <option selected="selected">교재명</option>
@@ -69,10 +69,10 @@
         <div class="bookList">
             <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></div>
             <ul class="bookInfo">
-                <li>2019 기태국어 기본이론(어법, 독해)(세트전2권) </li>
+                <li class="bookTitle">2019 기태국어 기본이론(어법, 독해)(세트전2권) </li>
                 <li>강인엽 저 <span class="row-line">|</span> 2020-06-15</li>
-                <li>교재상세정보</li>
-                <li>[판매중] 31,500원 (↓10%)</li>
+                <li><a href="#none" class="bookView" onclick="openWin('viewBook')">교재상세정보</a></li>
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
                     <select id="" name="" class="seleLec width30p ml1p">
                         <option selected="selected">1</option>
@@ -93,10 +93,10 @@
         <div class="bookList">
             <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304121/book_304121_og.jpg"></div>
             <ul class="bookInfo">
-                <li>2018 9급 오대혁 국어 백발백중 전범위 동형모의고사 665제 </li>
+                <li class="bookTitle">2018 9급 오대혁 국어 백발백중 전범위 동형모의고사 665제 </li>
                 <li>강인엽 저 <span class="row-line">|</span> 2020-06-15</li>
-                <li>교재상세정보</li>
-                <li>[판매중] 31,500원 (↓10%)</li>
+                <li><a href="#none" class="bookView" onclick="openWin('viewBook')">교재상세정보</a></li>
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
                     <select id="" name="" class="seleLec width30p ml1p">
                         <option selected="selected">1</option>
@@ -115,12 +115,12 @@
             </ul>
         </div>
         <div class="bookList">
-            <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></div>
+            <div class="bookImg"><img src="https://gosi.willbes.net/public/uploads/wbs/book/2020/307874/book_307874_og.jpg"></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2017 정채영 국어 마무리시리즈(적중문제편) 100문제만 찍어주마! </li>
                 <li>강인엽 저 <span class="row-line">|</span> 2020-06-15</li>
-                <li>교재상세정보</li>
-                <li>[판매중] 31,500원 (↓10%)</li>
+                <li><a href="#none" class="bookView" onclick="openWin('viewBook')">교재상세정보</a></li>
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
                     <select id="" name="" class="seleLec width30p ml1p">
                         <option selected="selected">1</option>
@@ -139,12 +139,12 @@
             </ul>
         </div>
         <div class="bookList">
-            <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></div>
+            <div class="bookImg"><img src="https://police.willbes.net/public/uploads/wbs/book/2020/305041/book_305041_og.jpg"></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
                 <li>강인엽 저 <span class="row-line">|</span> 2020-06-15</li>
-                <li>교재상세정보</li>
-                <li>[판매중] 31,500원 (↓10%)</li>
+                <li><a href="#none" class="bookView" onclick="openWin('viewBook')">교재상세정보</a></li>
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
                     <select id="" name="" class="seleLec width30p ml1p">
                         <option selected="selected">1</option>
@@ -163,12 +163,12 @@
             </ul>
         </div>
         <div class="bookList">
-            <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></div>
+            <div class="bookImg"><img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303318/book_303318_og.jpg"></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
                 <li>강인엽 저 <span class="row-line">|</span> 2020-06-15</li>
-                <li>교재상세정보</li>
-                <li>[판매중] 31,500원 (↓10%)</li>
+                <li><a href="#none" class="bookView" onclick="openWin('viewBook')">교재상세정보</a></li>
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
                     <select id="" name="" class="seleLec width30p ml1p">
                         <option selected="selected">1</option>
@@ -188,6 +188,41 @@
         </div>
     </div>
     <!--bookListWrap//-->
+
+    {{--교재 보기 팝업 --}}
+    <div id="viewBook" class="willbes-Layer-Black NG">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('viewBook')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <h4>2020 장정훈 경찰학개론 최신기출문제 [개정판] 2020 장정훈 경찰학개론 2020</h4>
+            <div class="LecDetailBox">
+                <h5>교재상세정보</h5>
+                <div class="tx-dark-gray">
+                    분야 : 일반경찰<br>
+                    저자 : 강인엽<br>
+                    출판사 : 좋은책<br>
+                    판형/쪽수 : 190*260 / 581<br>
+                    출판일 : 2020-06-15<br>
+                    교재비 : 31,500원 (↓10%) [판매중]<br>
+                </div>
+                <h5>교재소개</h5>
+                <div class="tx-dark-gray">
+                    21세기 세계정치경제질서의 진로<br>
+                    <br>
+                    세계화가 본격화되고 냉정과 이데올로기의 시대가 종식된 지난 20여 년간 세계정치경제질서에는 중대한 구조적 변화들이 진행되고 있다. 
+                    문제는 이러한 변화들이 어떻게 이루어지고 있는지 정확히 파악되지 못할 뿐 아니라, 
+                    이 현상들이 서로 어떻게 연관되고 있는지, 궁극적으로 어떤 지향점을 향해 가고 있는지, 단계적으로 어떤 변화들을 겪으면서 전개될 것인지, 
+                    그리고 이 변화들을 추동하는 요인이 무엇이며 어느 정도까지 영향을 미칠 수 있는지에 대해 체계적 논의가 시작되지 못하고 있다는 점이다.
+                    이 책은 이러한 문제의식을 바탕으로 시작해 오랜 공동작업과 논의의 결과물이다. 현장의 필요를 십분 반영하여 
+                    21세기 세계정치경제질서를 총괄하는 입문서로 기능하도록 기획되었다.<br>
+                    <br>
+                    20세기로부터의 유산, 21세기의 진로<br>
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('viewBook')"></div>
+    </div>
 
 
     <div class="goTopbtn">

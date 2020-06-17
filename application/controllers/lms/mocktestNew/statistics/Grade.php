@@ -90,7 +90,8 @@ class Grade extends BaseMocktest
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
         }
-        $product_info = $this->regGradeModel->productInfo($params[0]);
+        $prod_code = $params[0];
+        $product_info = $this->regGradeModel->productInfo($prod_code);
         if (empty($product_info) === true) {
             show_error('조회된 상품이 없습니다.');
         }
@@ -109,7 +110,7 @@ class Grade extends BaseMocktest
 
         //직렬별 과목점수
         $list_register_subject = $data_total_avg = [];
-        $arr_result = $this->regGradeModel->registerForSubjectDetail($params[0]);
+        $arr_result = $this->regGradeModel->registerForSubjectDetail($prod_code);
         if (empty($arr_result['data']) === false) {
             $list_register_subject = $arr_result['data'];
             $data_total_avg = $arr_result['total_avg'];
@@ -125,12 +126,13 @@ class Grade extends BaseMocktest
             $arr_total_avg[$row['TakeMockPart']]['응시인원'] = $row['AvgMemCount'];
         }
 
-        $arr_take_mock_part = $arr_subject_e = $arr_subject_s = [];
+        $arr_take_mock_part = $arr_subject = $arr_subject_e = $arr_subject_s = [];
         foreach ($list_register_subject as $key => $row) {
             $arr_take_mock_part[$row['TakeMockPart']] = $row['TakeMockPartName'];
         }
 
         foreach ($list_register_subject as $key => $row) {
+            $arr_subject[$row['MpIdx']] = $row['SubjectName'];
             if ($row['MockType'] == 'E') {
                 $arr_subject_e[$row['MpIdx']]['subject_name'] = $row['SubjectName'];
             } else {
@@ -163,6 +165,27 @@ class Grade extends BaseMocktest
             }
         }
 
+        // 과목별, 문항별 마킹 통계
+        $arr_answer_stats = [];
+        $arr_answernum = $this->regGradeModel->PaperAnswerNumList($prod_code);
+        $answer_stats = $this->regGradeModel->AnswerStatsList($prod_code);
+        foreach ($answer_stats as $key => $row) {
+            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['RightAnswer'] = $row['RightAnswer'];
+            foreach ($arr_answernum as $answer_key => $answer_val) {
+                if (empty($arr_answernum[$row['MpIdx']]) === false) {
+                    for ($i=1; $i<=$answer_val; $i++) {
+                        if ($i == $row['Answer']) {
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer'][$i]['count'] = $row['AnsCount'];
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer'][$i]['avg'] = $row['AnswerAvg'];
+                        } else if ($row['Answer'] == 'N') {
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer']['N']['count'] = $row['AnsCount'];
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer']['N']['avg'] = $row['AnswerAvg'];
+                        }
+                    }
+                }
+            }
+        }
+
         $this->load->view('mocktestNew/statistics/grade/detail', [
             'product_info' => $product_info,
             'list_register_subject' => $list_register_subject,
@@ -173,7 +196,10 @@ class Grade extends BaseMocktest
             'data_s' => $data_s,
             'data_default_e' => $data_default_e,
             'data_default_s' => $data_default_s,
-            'arr_total_avg' => $arr_total_avg
+            'arr_total_avg' => $arr_total_avg,
+            'arr_subject' => $arr_subject,
+            'arr_answernum' => $arr_answernum,
+            'arr_answer_stats' => $arr_answer_stats
         ]);
     }
 

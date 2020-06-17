@@ -454,6 +454,67 @@ class RegGradeModel extends WB_Model
     }
 
     /**
+     * 과목별 문항수 조회
+     * @param $prod_code
+     * @return array
+     */
+    public function PaperAnswerNumList($prod_code)
+    {
+        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'P.IsStatus' => 'Y', 'MP.IsStatus' => 'Y', 'MP.IsUse' => 'Y']];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by = $this->_conn->makeOrderBy(['MP.MpIdx' => 'ASC'])->getMakeOrderBy();
+        $column = "P.MpIdx, MP.AnswerNum";
+
+        $from = "
+            FROM {$this->_table['product_mock_r_paper']} AS P
+            INNER JOIN {$this->_table['mock_paper']} AS MP ON P.MpIdx = MP.MpIdx
+        ";
+        $data = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+        return array_pluck($data, 'AnswerNum', 'MpIdx');
+    }
+
+    /**
+     * 과목별 문항별 마킹정보
+     * @param $prod_code
+     * @return mixed
+     */
+    public function AnswerStatsList($prod_code)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'ProdCode' => $prod_code
+            ],
+            /*'NOT' => [
+                'Answer' => 'N'
+            ]*/
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by = $this->_conn->makeOrderBy(['AP.MpIdx' => 'ASC', 'AP.MqIdx' => 'ASC', 'AP.Answer' => 'ASC'])->getMakeOrderBy();
+        $column = "AP.MpIdx, AP.MqIdx, MQ.QuestionNO, MQ.RightAnswer, AP.Answer, AP.cnt AS AnsCount, QT.cnt AS AnsTotalCount, ROUND((AP.cnt / QT.cnt) * 100, 2) AS AnswerAvg";
+
+        $from = "
+            FROM (
+                SELECT MpIdx, MqIdx, Answer, COUNT(*) AS cnt
+                FROM {$this->_table['mock_answerpaper']} AS ap
+                {$where}
+                GROUP BY MqIdx, Answer
+            ) AS AP
+            INNER JOIN {$this->_table['mock_questions']} AS MQ ON AP.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y'
+            INNER JOIN (
+                SELECT MqIdx, COUNT(*) AS cnt
+                FROM {$this->_table['mock_answerpaper']}
+                {$where}
+                GROUP BY MqIdx
+            ) AS QT ON AP.MqIdx = QT.MqIdx
+        ";
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
+    }
+
+    /**
      * 모의고사 문항상세
      * @param bool $is_count
      * @param array $arr_condition

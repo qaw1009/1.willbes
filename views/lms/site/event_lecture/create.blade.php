@@ -172,11 +172,11 @@
                 <div class="form-group">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                        <div class="form-group hide" id="limit_{{$optoins_keys[0]}}">
+                        <div class="form-group hide" id="limit_{{$options_keys[0]}}">
                             <div class="row">
                                 <div class="col-md-3 item form-inline">
                                     <div class="radio">
-                                        <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$optoins_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif>
+                                        <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$options_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif>
                                         <label for="limit_type_S" class="input-label">단일리스트</label>
                                         <input type="radio" class="flat mr-10" id="limit_type_M" name="limit_type" data-limit-type="M" value="M" title="다중리스트" @if($data['LimitType']=='M')checked="checked"@endif>
                                         <label for="limit_type_M" class="input-label">다중리스트</label>
@@ -249,15 +249,15 @@
                                                         <td>
                                                             <input type="hidden" name="event_register_er_idx[]" value="{{$row['ErIdx']}}">
                                                             {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
-                                                            <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
-                                                            <select class="form-control" name="event_register_parson_limit_type[]" id="event_register_parson_limit_type_{{$i}}" style="min-width: 70px;">
+                                                            <input type="hidden" name="event_register_person_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
+                                                            <select class="form-control" name="event_register_person_limit_type[]" id="event_register_person_limit_type_{{$i}}" style="min-width: 70px;">
                                                                 <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>인원제한</option>
                                                                 <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
                                                             </select>
                                                         </td>
                                                         <td>
                                                             {{--{{$row['PersonLimit']}}--}}
-                                                            <input type="text" name="event_register_parson_limit[]" id="event_register_parson_limit_{{$i}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
+                                                            <input type="text" name="event_register_person_limit[]" id="event_register_person_limit_{{$i}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
                                                         </td>
                                                         <td>
                                                             {{--{{$row['Name']}}--}}
@@ -312,7 +312,7 @@
                             </div>
                         </div>
 
-                        <div class="hide" id="limit_{{$optoins_keys[1]}}">
+                        <div class="hide" id="limit_{{$options_keys[1]}}">
                             <div class="form-group">
                                 <label class="control-label col-md-2">댓글사용영역</label>
                                 <div class="col-md-7 form-inline">
@@ -374,7 +374,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">
+                        <div class="form-group hide" id="limit_{{$options_keys[2]}}">
                             <label class="control-label col-md-2">자동문자정보</label>
                             <div class="col-md-10">
                                 <div class="row">
@@ -418,7 +418,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group hide" id="limit_{{$optoins_keys[3]}}">
+                        <div class="form-group hide" id="limit_{{$options_keys[3]}}">
                             <label class="control-label col-md-2">바로신청팝업</label>
                             <div class="col-md-5">
                                 <input type="text" id="popup_title" name="popup_title" class="form-control" value="{{$data['PopupTitle']}}" placeholder="팝업타이틀명" title="팝업타이틀명">
@@ -428,7 +428,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-banner hide" id="banner_{{$optoins_keys[3]}}">
+                        <div class="form-group form-banner hide" id="banner_{{$options_keys[3]}}">
                             <label class="control-label col-md-2">배너선택</label>
                             <div class="col-md-8 item form-inline">
                                 <button type="button" id="btn_banner_search" class="btn btn-sm btn-primary">배너검색</button>
@@ -449,7 +449,7 @@
 
                         {{-- DP강좌신청 --}}
                         <span id="temp_event_display_product" class="hide"></span>
-                        <div class="form-group hide" id="limit_{{$optoins_keys[4]}}">
+                        <div class="form-group hide" id="limit_{{$options_keys[4]}}">
                             <div class="row">
 
                                 <div class="col-md-11">
@@ -516,6 +516,135 @@
                             </div>
                         </div>
 
+                        {{-- 프로모션 추가신청정보 --}}
+                        <div class="form-group hide" id="limit_{{$options_keys[5]}}">
+                            <div class="row">
+                                <div class="col-md-1 item form-inline ml-10">
+                                    <button type="button" class="btn btn-info btn-apply-add">추가</button>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크 이벤트)</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        <table class="table table-striped table-bordered" id="table_add_apply">
+                                            <thead>
+                                                <tr>
+                                                    <th>인원제한</th>
+                                                    <th>인원수</th>
+                                                    <th>신청정보명</th>
+                                                    <th>신청가능 시작일시</th>
+                                                    <th>신청가능 종료일시</th>
+                                                    <th>접수가능</th>
+                                                    {{-- <th>사용</th> --}}
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(empty($list_event_add_apply) === false)
+                                                @php $add_apply_index = 1; @endphp
+                                                @foreach($list_event_add_apply as $row)
+                                                    <tr id="event_add_apply_row_{{$add_apply_index}}">
+                                                        <td>
+                                                            <input type="hidden" name="event_add_apply_eaa_idx[]" value="{{$row['EaaIdx']}}">
+                                                            <input type="hidden" name="add_apply_is_use[]" value="Y">
+                                                            <select class="form-control" name="event_add_apply_person_limit_type[]" id="event_add_apply_person_limit_type_{{$add_apply_index}}" style="min-width: 70px;">
+                                                                <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>제한</option>
+                                                                <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_{{$add_apply_index}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="event_add_apply_name[]" id="event_add_apply_name_{{$add_apply_index}}" value="{{$row['Name']}}" style="min-width: 170px;">
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group mb-0">
+                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                <input type="text" class="form-control datepicker" name="event_add_apply_start_date[]" id="event_add_apply_start_date_{{$add_apply_index}}" value="{{ $row['ApplyStartDate'] }}" style="min-width: 70px; max-width: 70px;">
+                                                            </div>
+                                                            <br>
+                                                            <select class="form-control" name="event_add_apply_start_hour[]" id="event_add_apply_start_hour_{{$add_apply_index}}">
+                                                                @php
+                                                                    $start_hour = $row['ApplyStartHour'];
+                                                                    for($j=0; $j<=23; $j++) {
+                                                                        $str = (strlen($j) <= 1) ? '0' : '';
+                                                                        $selected = ($str.$j == $start_hour) ? "selected='selected'" : "";
+                                                                        echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                    }
+                                                                @endphp
+                                                            </select>
+                                                            <select class="form-control" name="event_add_apply_start_min[]" id="event_add_apply_start_min_{{$add_apply_index}}">
+                                                                @php
+                                                                    $start_min = $row['ApplyStartMin'];
+                                                                    for($j=0; $j<=59; $j++) {
+                                                                        $str = (strlen($j) <= 1) ? '0' : '';
+                                                                        $selected = ($str.$j == $start_min) ? "selected='selected'" : "";
+                                                                        echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                    }
+                                                                @endphp
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group mb-0">
+                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                <input type="text" class="form-control datepicker" name="event_add_apply_end_date[]" id="event_add_apply_end_date_{{$add_apply_index}}" value="{{ $row['ApplyEndDate'] }}" style="min-width: 70px; max-width: 70px;">
+                                                            </div>
+                                                            <br>
+                                                            <select class="form-control" name="event_add_apply_end_hour[]" id="event_add_apply_end_hour_{{$add_apply_index}}">
+                                                                @php
+                                                                    $end_hour = $row['ApplyEndHour'];
+                                                                    for($j=0; $j<=23; $j++) {
+                                                                        $str = (strlen($j) <= 1) ? '0' : '';
+                                                                        $selected = ($str.$j == $end_hour) ? "selected='selected'" : "";
+                                                                        echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                    }
+                                                                @endphp
+                                                            </select>
+                                                            <select class="form-control" name="event_add_apply_end_min[]" id="event_add_apply_end_min_{{$add_apply_index}}">
+                                                                @php
+                                                                    $end_min = $row['ApplyEndMin'];
+                                                                    for($j=0; $j<=59; $j++) {
+                                                                        $str = (strlen($j) <= 1) ? '0' : '';
+                                                                        $selected = ($str.$j == $end_min) ? "selected='selected'" : "";
+                                                                        echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                    }
+                                                                @endphp
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select name="event_add_apply_register_expire_status[]" id="event_add_apply_register_expire_status_{{$add_apply_index}}" class="form-control" style="min-width: 60px;">
+                                                                <option value="Y" @if($row['RegisterExpireStatus'] == 'Y')selected="selected"@endif>가능</option>
+                                                                <option value="N" @if($row['RegisterExpireStatus'] == 'N')selected="selected"@endif>만료</option>
+                                                            </select>
+                                                        </td>
+                                                        {{--
+                                                        <td>
+                                                            <select name="event_add_apply_is_use[]" id="event_add_apply_is_use_{{$add_apply_index}}" class="form-control" style="min-width: 70px;">
+                                                                <option value="Y" @if($row['IsUse'] == 'Y')selected="selected"@endif>사용</option>
+                                                                <option value="N" @if($row['IsUse'] == 'N')selected="selected"@endif>미사용</option>
+                                                            </select>
+                                                        </td>
+                                                        --}}
+                                                        <td>
+                                                            <button type="button" class="btn btn-success mr-10 btn-add-apply-expire-submit" data-add-apply-idx="{{$row['EaaIdx']}}" data-modify-number="{{$add_apply_index}}">수정</button>
+                                                        </td>
+                                                        <td><a href="#none" class="btn-add-apply-delete-submit" data-add-apply-index="{{$add_apply_index}}"><i class="fa fa-times fa-lg red"></i></a></td>
+                                                    </tr>
+                                                    @php $add_apply_index++; @endphp
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -550,10 +679,6 @@
         </div>
     </form>
 
-    <!-- cheditor -->
-    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
-    <script src="/public/vendor/cheditor/cheditor.js"></script>
-    <script src="/public/js/editor_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
@@ -726,9 +851,9 @@
                 add_lists = '<tr id="temp-lecture-'+temp_idx+'">';
                 add_lists += '<td>';
                 add_lists += '  <input type="hidden" name="event_register_er_idx[]" value="0">';
-                add_lists += '  <input type="hidden" name="event_register_parson_limit_type[]" value="'+temp_person_limit_type+'">'+temp_person_limit_type_text;
+                add_lists += '  <input type="hidden" name="event_register_person_limit_type[]" value="'+temp_person_limit_type+'">'+temp_person_limit_type_text;
                 add_lists += '</td>';
-                add_lists += '<td><input type="text" name="event_register_parson_limit[]" class="form-control" readonly="readonly" value="'+temp_person_limit+'"></td>';
+                add_lists += '<td><input type="text" name="event_register_person_limit[]" class="form-control" readonly="readonly" value="'+temp_person_limit+'"></td>';
                 add_lists += '<td><input type="text" name="event_register_name[]" class="form-control no-border" readonly="readonly" value="'+temp_lecture_name+'"></td>';
                 add_lists += '<td><input type="hidden" name="expire_status[]" value="Y"></td>';
                 add_lists += '<td><input type="hidden" name="register_is_use[]" value="Y"></td>';
@@ -783,8 +908,8 @@
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
                     'er_idx' : $(this).data('register-idx'),
-                    'person_limit_type' : $("#event_register_parson_limit_type_"+modify_number).val(),
-                    'person_limit' : $("#event_register_parson_limit_"+modify_number).val(),
+                    'person_limit_type' : $("#event_register_person_limit_type_"+modify_number).val(),
+                    'person_limit' : $("#event_register_person_limit_"+modify_number).val(),
                     'register_name' : $("#event_register_name_"+modify_number).val(),
                     'expire_status' : $("#expire_status_"+modify_number).val(),
                     'is_use' : $("#register_is_use_"+modify_number).val(),
@@ -1050,7 +1175,7 @@
         function addValidate() {
             var $method = '{{$method}}';
             var limit_type = $(":input:radio[name=limit_type]:checked").val();
-            var event_register_length = $regi_form.find('input[name="event_register_parson_limit_type[]"]').length;
+            var event_register_length = $regi_form.find('input[name="event_register_person_limit_type[]"]').length;
 
             if ($method == 'POST' && limit_type == 'M' && event_register_length <= 0) {
                 alert('다중리스트 정보를 입력해 주세요.');
@@ -1058,5 +1183,109 @@
             }
             return true;
         }
+
+        // 프로모션 추가신청정보 단일수정
+        $regi_form.on('click', '.btn-add-apply-expire-submit', function() {
+            var modify_number = $(this).data('modify-number');
+
+            var apply_start_datm = $('#event_add_apply_start_date_' + modify_number).val() + ' ' + $('#event_add_apply_start_hour_' + modify_number).val() + ':' + $('#event_add_apply_start_min_' + modify_number).val() + ':00';
+            var apply_end_datm = $('#event_add_apply_end_date_' + modify_number).val() + ' ' + $('#event_add_apply_end_hour_' + modify_number).val() + ':' + $('#event_add_apply_end_min_' + modify_number).val() + ':00';
+
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'eaa_idx' : $(this).data('add-apply-idx'),
+                'person_limit_type' : $('#event_add_apply_person_limit_type_' + modify_number).val(),
+                'person_limit' : $('#event_add_apply_person_limit_' + modify_number).val(),
+                'name' : $('#event_add_apply_name_' + modify_number).val(),
+                'apply_start_datm' : apply_start_datm,
+                'apply_end_datm' : apply_end_datm,
+                'register_expire_status' : $('#event_add_apply_register_expire_status_' + modify_number).val()
+            };
+
+            if (!confirm('상태를 변경 하시겠습니까?')) {
+                return;
+            }
+            sendAjax('{{ site_url("/site/eventLecture/updateAddApply") }}', data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+                }
+            }, showError, false, 'POST');
+        });
+
+        // 프로모션 추가신청정보 추가
+        var temp_apply_idx = {{$add_apply_index}};
+        $regi_form.on('click', '.btn-apply-add', function() {
+            var add_lists = '';
+            add_lists += '<tr>';
+            add_lists += '	<td>';
+            add_lists += '		<input type="hidden" name="event_add_apply_eaa_idx[]" value="">';
+            add_lists += '		<input type="hidden" name="add_apply_is_use[]" value="Y">';
+            add_lists += '		<select class="form-control" name="event_add_apply_person_limit_type[]" id="event_add_apply_person_limit_type_' + temp_apply_idx + '" style="min-width: 70px;">';
+            add_lists += '			<option value="L">제한</option>';
+            add_lists += '			<option value="N" selected="selected">무제한</option>';
+            add_lists += '		</select>';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            add_lists += '		<input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_' + temp_apply_idx + '" value="0" style="width: 50px;">';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            add_lists += '		<input type="text" name="event_add_apply_name[]" id="event_add_apply_name_' + temp_apply_idx + '" value="" style="min-width: 170px;">';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            add_lists += '		<div class="input-group mb-0">';
+            add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+            add_lists += '			<input type="text" class="form-control datepicker" name="event_add_apply_start_date[]" id="event_add_apply_start_date_' + temp_apply_idx + '" value="" style="min-width: 70px; max-width: 70px;">';
+            add_lists += '		</div>';
+            add_lists += '		<br>';
+            add_lists += '		<select class="form-control" name="event_add_apply_start_hour[]" id="event_add_apply_start_hour_' + temp_apply_idx + '">';
+            add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
+            add_lists += '		</select>';
+            add_lists += '		<select class="form-control" name="event_add_apply_start_min[]" id="event_add_apply_start_min_' + temp_apply_idx + '">';
+            add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>';
+            add_lists += '		</select>';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            add_lists += '		<div class="input-group mb-0">';
+            add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+            add_lists += '			<input type="text" class="form-control datepicker" name="event_add_apply_end_date[]" id="event_add_apply_end_date_' + temp_apply_idx + '" value="" style="min-width: 70px; max-width: 70px;">';
+            add_lists += '		</div>';
+            add_lists += '		<br>';
+            add_lists += '		<select class="form-control" name="event_add_apply_end_hour[]" id="event_add_apply_end_hour_' + temp_apply_idx + '">';
+            add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
+            add_lists += '		</select>';
+            add_lists += '		<select class="form-control" name="event_add_apply_end_min[]" id="event_add_apply_end_min_' + temp_apply_idx + '">';
+            add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>';
+            add_lists += '		</select>';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            add_lists += '		<select name="event_add_apply_register_expire_status[]" id="event_add_apply_register_expire_status_' + temp_apply_idx + '" class="form-control" style="min-width: 60px;">';
+            add_lists += '			<option value="Y">가능</option>';
+            add_lists += '			<option value="N">만료</option>';
+            add_lists += '		</select>';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            // add_lists += '		<button type="button" class="btn btn-success mr-10 btn-add-apply-expire-submit" data-add-apply-idx="" data-modify-number="">수정</button>';
+            add_lists += '	</td>';
+            add_lists += '	<td>';
+            // add_lists += '		<a href="#none" class="btn-add-apply-delete-submit" data-el-idx="" data-add-apply-idx="">';
+            // add_lists += '			<i class="fa fa-times fa-lg red"></i>';
+            // add_lists += '		</a>';
+            add_lists += '	</td>';
+            add_lists += '</tr>';
+
+            $('#table_add_apply > tbody').prepend(add_lists);
+        });
+
+        // 프로모션 추가신청정보 삭제
+        $regi_form.on('click', '.btn-add-apply-delete-submit', function() {
+            $('#event_add_apply_row_' + $(this).data('add-apply-index')).remove();
+        });
+
     </script>
+    <!-- cheditor -->
+    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
+    <script src="/public/vendor/cheditor/cheditor.js"></script>
+    <script src="/public/js/editor_util.js"></script>
 @stop

@@ -3985,6 +3985,7 @@ body.memBody #Footer {
     .profAreaView .profCopy {font-size:20px;}
     .profAreaView .profCopy p {font-size:16px;} 
     .profAreaView .profMenu li a {padding-left:7px; margin-right:7px; font-size:12px;}
+    .bookInfo .w-buy ul {width: 100%;}
 }
 
 
@@ -4007,6 +4008,7 @@ body.memBody #Footer {
     .profArea .subjectBox a {height:140px;}
     .profArea .subjectBox li img {width:90%; right:0; top:-10px}   
     .profAreaView .profMenu li a {font-size:12px;}
+    .bookInfo .w-buy ul {width: 80%;}
 }
 
 /* Calendar */

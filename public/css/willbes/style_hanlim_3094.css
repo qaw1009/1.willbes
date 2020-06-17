@@ -162,7 +162,7 @@
 .thisMonth .thisMonthBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
 .thisMonth .tmslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
 .thisMonth .tmslider li {display: inline; float: left; width:25%; overflow: hidden;  position: relative;}
-.thisMonth .tmslider li a {display:block; text-align: right; height:234px; overflow: hidden; border:1px solid #e3e3e3; background:#fff lin} 
+.thisMonth .tmslider li a {display:block; text-align: right; height:234px; overflow: hidden; border:1px solid #e3e3e3; background:#fff} 
 .thisMonth .tmslider li a img {position:absolute; bottom:0; right:0;
   -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
   -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
@@ -200,7 +200,7 @@ transition: 0.2s all ease;
     -webkit-line-clamp: 2;
 }
 .thisMonth .tmslider:after {content: ""; display: block; clear:both}
-.thisMonth .thisMonthBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+.thisMonth .thisMonthBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
 .thisMonth .thisMonthBox p.leftBtn {left:-22px}
 .thisMonth .thisMonthBox p.rightBtn {right:-22px}
 
@@ -237,17 +237,10 @@ transition: 0.2s all ease;
 .Section1 .preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
 .Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
 .Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
-.Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:9999}
+.Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
 .Section1 .preview .previewBox p.leftBtn {left:-22px}
 .Section1 .preview .previewBox p.rightBtn {right:-22px}
 
-/*바로가기 메뉴*/
-.goMenu { clear:both; background: #52bcc9; padding:0 50px; margin:20px auto 50px;}
-.goMenu li {display: inline; float:left; width:16.66666%}
-.goMenu li a {display:block; text-align:center; height:55px; line-height: 55px; color:#fff; font-size:16px; font-weight: bold;}
-.goMenu li span {vertical-align: top; float:right; color:#fff !important; font-weight: normal;}
-.goMenu li a:hover {color:#0037ea}
-.goMenu:after {content: ""; display: block; clear:both}
 
 /**/
 .hanlim3094 .Section .willbesLec {

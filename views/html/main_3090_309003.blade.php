@@ -549,4 +549,56 @@
 </div>
 <!-- End Container -->
 
+<script type="text/javascript">
+        $(function() {
+            var slidesImg = $(".tmslider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:4,
+                maxSlides:4,
+                slideWidth: 274,
+                slideMargin:8,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
+            });
+
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
+            });
+        });
+
+        $(function() {
+            var slidesImg1 = $(".pvslider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:3,
+                maxSlides:3,
+                slideWidth: 460,
+                slideMargin:10,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+    </script>
+
 @stop

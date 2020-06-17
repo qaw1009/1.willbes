@@ -456,6 +456,33 @@ $('*[id*=Sticky]:visible').ready(function() {
 });
 
 
+// 사이트 메인 학원 메뉴 스크롤
+$(function() {
+    var nav = $('.goMenu');
+    var navTop = nav.offset().top+100;
+    var navHeight = nav.height()+10;
+    var showFlag = false;
+    nav.css('top', -navHeight+'px');
+    $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        if (winTop >= navTop) {
+            if (showFlag == false) {
+                showFlag = true;
+                nav
+                    .addClass('fixed')
+                    .stop().animate({'top' : '0px'}, 100);
+            }
+        } else if (winTop <= navTop) {
+            if (showFlag) {
+                showFlag = false;
+                nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
+                    nav.removeClass('fixed');
+                });
+            }
+        }
+    });
+});
+
 
 // 사이트 메인 퀵 배너 스크롤 이벤트
 $('*[id*=QuickMenu]:visible').ready(function() {
@@ -471,6 +498,7 @@ $('*[id*=QuickMenu]:visible').ready(function() {
         });
     }
 });
+
 /*자격증,고등고시*/
 $('*[id*=QuickMenuB]:visible').ready(function() {
     var stickyOffset = $('#QuickMenuB').offset();

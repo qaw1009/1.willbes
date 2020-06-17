@@ -207,6 +207,7 @@
                                         <th>{{$i}}번 선택인원(%)</th>
                                     @endfor
                                 @endif
+                                <th>고민중</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -225,6 +226,12 @@
                                                     <td>0</td>
                                                 @endif
                                             @endfor
+                                            <td>
+                                                @if (empty($row['Answer']['N']) === false)
+                                                    {{$row['Answer']['N']['count']}}
+                                                    ({{$row['Answer']['N']['avg']}}%)
+                                                @else 0 @endif
+                                            </td>
                                         @endif
                                     </tr>
                                 @endforeach

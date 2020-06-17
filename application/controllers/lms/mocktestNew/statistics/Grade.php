@@ -177,13 +177,14 @@ class Grade extends BaseMocktest
                         if ($i == $row['Answer']) {
                             $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer'][$i]['count'] = $row['AnsCount'];
                             $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer'][$i]['avg'] = $row['AnswerAvg'];
+                        } else if ($row['Answer'] == 'N') {
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer']['N']['count'] = $row['AnsCount'];
+                            $arr_answer_stats[$row['MpIdx']][$row['QuestionNO']]['Answer']['N']['avg'] = $row['AnswerAvg'];
                         }
                     }
                 }
             }
         }
-        /*print_r($arr_answernum);
-        print_r($arr_answer_stats);*/
 
         $this->load->view('mocktestNew/statistics/grade/detail', [
             'product_info' => $product_info,

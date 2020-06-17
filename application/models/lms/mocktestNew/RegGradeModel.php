@@ -482,7 +482,14 @@ class RegGradeModel extends WB_Model
      */
     public function AnswerStatsList($prod_code)
     {
-        $arr_condition = ['EQ' => ['ProdCode' => $prod_code]];
+        $arr_condition = [
+            'EQ' => [
+                'ProdCode' => $prod_code
+            ],
+            /*'NOT' => [
+                'Answer' => 'N'
+            ]*/
+        ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 

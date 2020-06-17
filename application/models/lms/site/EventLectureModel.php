@@ -37,12 +37,13 @@ class EventLectureModel extends WB_Model
         'CommentUiType' => '713'        //댓글 UI 종류
     ];
 
-    // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업
+    // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업, 추가프로모션신청
     public $_event_lecture_option_ccds = [
         '0' => '660001',
         '1' => '660002',
         '2' => '660003',
-        '3' => '660004'
+        '3' => '660004',
+        '4' => '660005'
     ];
 
     // 신청유형
@@ -606,6 +607,11 @@ class EventLectureModel extends WB_Model
                 if ($this->_addEventDisplayProduct($el_idx, $input) === false) {
                     throw new \Exception('이벤트 DP상품 등록에 실패했습니다.');
                 }
+            }
+
+            // 프로모션 추가신청정보 비교수정
+            if ($this->_modifyEventAddApply($el_idx, $input) === false) {
+                throw new \Exception('프로모션 추가신청정보 수정에 실패했습니다.');
             }
             
             $this->_conn->trans_commit();
@@ -1554,16 +1560,16 @@ class EventLectureModel extends WB_Model
                     throw new \Exception('fail');
                 }
             } else if ($limit_type == 'M') {
-                $event_register_parson_limit_type = element('event_register_parson_limit_type', $input);
-                $event_register_parson_limit = element('event_register_parson_limit', $input);
+                $event_register_person_limit_type = element('event_register_person_limit_type', $input);
+                $event_register_person_limit = element('event_register_person_limit', $input);
                 $event_register_name = element('event_register_name', $input);
 
-                if (empty($event_register_parson_limit_type) === false) {
-                    foreach ($event_register_parson_limit_type as $key => $val) {
+                if (empty($event_register_person_limit_type) === false) {
+                    foreach ($event_register_person_limit_type as $key => $val) {
                         $reg_set_data = [
                             'ElIdx' => $el_idx,
                             'PersonLimitType' => $val,
-                            'PersonLimit' => $event_register_parson_limit[$key],
+                            'PersonLimit' => $event_register_person_limit[$key],
                             'Name' => $event_register_name[$key],
                             'RegAdminIdx' => $this->session->userdata('admin_idx'),
                             'RegIp' => $this->input->ip_address()
@@ -2010,7 +2016,7 @@ class EventLectureModel extends WB_Model
                     $inputData['LiveUrl'] = $input['live_url'][$key];
                     $inputData['IsUse'] = $input['live_is_use'][$key];
 
-                    $inputData['FileStartDatm'] =  str_replace('-','',$input['file_start_date'][$key].$input['file_start_hour'][$key].$input['file_start_min'][$key].'00');;
+                    $inputData['FileStartDatm'] =  str_replace('-','',$input['file_start_date'][$key].$input['file_start_hour'][$key].$input['file_start_min'][$key].'00');
                     $inputData['FileEndDatm'] = str_replace('-','',$input['file_end_date'][$key].$input['file_end_hour'][$key].$input['file_end_min'][$key].'00');
 
                     if(empty($set_attach_data['FileFullPath'][$key]) === false) {
@@ -2181,8 +2187,8 @@ class EventLectureModel extends WB_Model
                 // 다중 리스트: 비교 수정
                 $arr_event_register_er_idx = element('event_register_er_idx', $input);
                 $arr_event_register_name = element('event_register_name', $input);
-                $arr_event_register_parson_limit_type = element('event_register_parson_limit_type', $input);
-                $arr_event_register_parson_limit = element('event_register_parson_limit', $input);
+                $arr_event_register_person_limit_type = element('event_register_person_limit_type', $input);
+                $arr_event_register_person_limit = element('event_register_person_limit', $input);
                 $arr_expire_status = element('expire_status', $input);
                 $arr_register_is_use = element('register_is_use', $input);
 
@@ -2194,7 +2200,7 @@ class EventLectureModel extends WB_Model
                     $del_data = array_values(array_diff($before_data, $arr_event_register_er_idx));
                     if(empty($del_data) === false && count($del_data) > 0) {
                         if($this->removeEventForRegister($del_data) !== true) {
-                            throw new \Exception('프로모션 신청리스트 삭제 업데이트를 실패하였습니다.');
+                            throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                         }
                     }
                     // 비교 등록
@@ -2204,8 +2210,8 @@ class EventLectureModel extends WB_Model
                             $arr_key = array_search($i_val, $arr_event_register_er_idx) ;
                             $add_param = [
                                 'ElIdx' => $input['el_idx'],
-                                'PersonLimitType' => $arr_event_register_parson_limit_type[$arr_key],
-                                'PersonLimit' => $arr_event_register_parson_limit[$arr_key],
+                                'PersonLimitType' => $arr_event_register_person_limit_type[$arr_key],
+                                'PersonLimit' => $arr_event_register_person_limit[$arr_key],
                                 'Name' => $arr_event_register_name[$arr_key],
                                 'RegisterExpireStatus' => $arr_expire_status[$arr_key],
                                 'IsUse' => $arr_register_is_use[$arr_key],
@@ -2214,7 +2220,7 @@ class EventLectureModel extends WB_Model
                                 'RegIp' => $this->input->ip_address()
                             ];
                             if($this->addEventForRegister($add_param) !== true) {
-                                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                                throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                             }
                         }
                     }
@@ -2225,14 +2231,14 @@ class EventLectureModel extends WB_Model
                         foreach ($update_data as $i_key => $i_val) {
                             $arr_key = array_search($i_val, $arr_event_register_er_idx) ;
                             $modify_param = [
-                                'PersonLimitType' => $arr_event_register_parson_limit_type[$arr_key],
-                                'PersonLimit' => $arr_event_register_parson_limit[$arr_key],
+                                'PersonLimitType' => $arr_event_register_person_limit_type[$arr_key],
+                                'PersonLimit' => $arr_event_register_person_limit[$arr_key],
                                 'Name' => $arr_event_register_name[$arr_key],
                                 'RegisterExpireStatus' => $arr_expire_status[$arr_key],
                                 'IsUse' => $arr_register_is_use[$arr_key]
                             ];
                             if($this->modifyEventForRegister($i_val, $modify_param) !== true) {
-                                throw new \Exception('프로모션 지급상품 등록을 실패하였습니다.');
+                                throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                             }
                         }
                     }
@@ -2250,7 +2256,6 @@ class EventLectureModel extends WB_Model
      * @param array $arr_er_idx
      * @return mixed
      */
-
     public function removeEventForRegister($arr_er_idx)
     {
         try {
@@ -2316,7 +2321,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 이벤트 추가신청 회원 리스트
+     * 프로모션 추가신청정보 회원 리스트
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -2442,6 +2447,233 @@ class EventLectureModel extends WB_Model
             }
         } catch (\Exception $e) {
             return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 추가신청정보 조회
+     * @param $el_idx
+     * @param $rtn_col
+     * @return bool
+     */
+    public function listEventForAddApply($el_idx, $rtn_col = '')
+    {
+        $column = "
+            AA.EaaIdx, AA.ElIdx, AA.ProdCode, AA.PersonLimitType, AA.PersonLimit, AA.Name, AA.ApplyStartDatm, AA.ApplyEndDatm, 
+            AA.RegisterExpireStatus, AA.IsUse, AA.IsStatus, AA.RegDatm, AA.RegAdminIdx, AA.RegIp, AA.UpdDatm, AA.UpdAdminIdx,
+            DATE_FORMAT(AA.ApplyStartDatm, '%Y-%m-%d') AS ApplyStartDate,
+            DATE_FORMAT(AA.ApplyEndDatm, '%Y-%m-%d') AS ApplyEndDate,
+            DATE_FORMAT(AA.ApplyStartDatm, '%H') AS ApplyStartHour,
+            DATE_FORMAT(AA.ApplyEndDatm, '%H') AS ApplyEndHour,
+            DATE_FORMAT(AA.ApplyStartDatm, '%i') AS ApplyStartMin,
+            DATE_FORMAT(AA.ApplyEndDatm, '%i') AS ApplyEndMin
+        ";
+        $from = "
+            FROM {$this->_table['event_add_apply']} AS AA
+        ";
+        $where = " WHERE AA.ElIdx = ? AND AA.IsStatus = 'Y'";
+        $order_by_offset_limit = " ORDER BY AA.EaaIdx DESC";
+
+        $result = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+
+        // 특정 컬럼만 리턴
+        if(empty($rtn_col) === false) {
+            $arr_rtn_col = [];
+            foreach($result as $row){
+                $arr_rtn_col = array_merge($arr_rtn_col, [$row[$rtn_col]]);
+            }
+            $result = $arr_rtn_col;
+        }
+        return $result;
+    }
+
+    /**
+     * 프로모션 추가신청정보 수정
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyAddApply($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'PersonLimitType' => $input['person_limit_type'],
+                'PersonLimit' => $input['person_limit'],
+                'Name' => $input['name'],
+                'ApplyStartDatm' => $input['apply_start_datm'],
+                'ApplyEndDatm' => $input['apply_end_datm'],
+                'RegisterExpireStatus' => $input['register_expire_status'],
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($input_data)->where('EaaIdx', $input['eaa_idx']);
+            if($this->_conn->update($this->_table['event_add_apply']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 프로모션 추가신청정보 비교/수정
+     * @param $el_idx
+     * @param $input
+     * @return bool
+     */
+    private function _modifyEventAddApply($el_idx, $input)
+    {
+        try {
+            $arr_event_add_apply_eaa_idx = element('event_add_apply_eaa_idx', $input);
+            $arr_event_add_apply_name = element('event_add_apply_name', $input);
+            $arr_event_add_apply_person_limit_type = element('event_add_apply_person_limit_type', $input);
+            $arr_event_add_apply_person_limit = element('event_add_apply_person_limit', $input);
+            $arr_expire_status = element('event_add_apply_register_expire_status', $input);
+            $arr_add_apply_is_use = element('add_apply_is_use', $input);
+            $arr_event_add_apply_start_date = element('event_add_apply_start_date', $input);
+            $arr_event_add_apply_start_hour = element('event_add_apply_start_hour', $input);
+            $arr_event_add_apply_start_min = element('event_add_apply_start_min', $input);
+            $arr_event_add_apply_end_date = element('event_add_apply_end_date', $input);
+            $arr_event_add_apply_end_hour = element('event_add_apply_end_hour', $input);
+            $arr_event_add_apply_end_min = element('event_add_apply_end_min', $input);
+
+            if (empty($el_idx) === false && empty($arr_event_add_apply_eaa_idx) === false) {
+
+                $before_data = $this->listEventForAddApply($el_idx, 'EaaIdx');
+
+                // 비교 삭제
+                $del_data = array_values(array_diff($before_data, $arr_event_add_apply_eaa_idx));
+                if(empty($del_data) === false && count($del_data) > 0) {
+                    if($this->removeEventForAddApply($del_data) !== true) {
+                        throw new \Exception('프로모션 추가신청정보 업데이트를 실패하였습니다.');
+                    }
+                }
+                // 비교 등록
+                $insert_data = array_values(array_diff($arr_event_add_apply_eaa_idx, $before_data));
+                if(empty($insert_data) === false) {
+                    foreach ($insert_data as $i_key => $i_val) {
+                        $arr_key = array_search($i_val, $arr_event_add_apply_eaa_idx) ;
+                        $event_add_apply_start_datm = $arr_event_add_apply_start_date[$arr_key] . ' ' . $arr_event_add_apply_start_hour[$arr_key] . ':' . $arr_event_add_apply_start_min[$arr_key] . ':00';
+                        $event_add_apply_end_datm = $arr_event_add_apply_end_date[$arr_key] . ' ' . $arr_event_add_apply_end_hour[$arr_key] . ':' . $arr_event_add_apply_end_min[$arr_key] . ':59';
+
+                        $add_param = [
+                            'ElIdx' => $el_idx,
+                            'PersonLimitType' => $arr_event_add_apply_person_limit_type[$arr_key],
+                            'PersonLimit' => $arr_event_add_apply_person_limit[$arr_key],
+                            'Name' => $arr_event_add_apply_name[$arr_key],
+                            'ApplyStartDatm' => $event_add_apply_start_datm,
+                            'ApplyEndDatm' => $event_add_apply_end_datm,
+                            'RegisterExpireStatus' => $arr_expire_status[$arr_key],
+                            'IsUse' => $arr_add_apply_is_use[$arr_key],
+                            'IsStatus' => 'Y',
+                            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                            'RegIp' => $this->input->ip_address()
+                        ];
+                        if($this->addEventForAddApply($add_param) !== true) {
+                            throw new \Exception('프로모션 추가신청정보 업데이트를 실패하였습니다.');
+                        }
+                    }
+                }
+
+                // 비교 수정
+                $update_data = array_values(array_intersect($before_data, $arr_event_add_apply_eaa_idx));
+                if(empty($update_data) === false) {
+                    foreach ($update_data as $i_key => $i_val) {
+                        $arr_key = array_search($i_val, $arr_event_add_apply_eaa_idx) ;
+                        $event_add_apply_start_datm = $arr_event_add_apply_start_date[$arr_key] . ' ' . $arr_event_add_apply_start_hour[$arr_key] . ':' . $arr_event_add_apply_start_min[$arr_key] . ':00';
+                        $event_add_apply_end_datm = $arr_event_add_apply_end_date[$arr_key] . ' ' . $arr_event_add_apply_end_hour[$arr_key] . ':' . $arr_event_add_apply_end_min[$arr_key] . ':59';
+
+                        $modify_param = [
+                            'PersonLimitType' => $arr_event_add_apply_person_limit_type[$arr_key],
+                            'PersonLimit' => $arr_event_add_apply_person_limit[$arr_key],
+                            'Name' => $arr_event_add_apply_name[$arr_key],
+                            'ApplyStartDatm' => $event_add_apply_start_datm,
+                            'ApplyEndDatm' => $event_add_apply_end_datm,
+                            'RegisterExpireStatus' => $arr_expire_status[$arr_key],
+                            'IsUse' => $arr_add_apply_is_use[$arr_key]
+                        ];
+                        if($this->modifyEventForAddApply($i_val, $modify_param) !== true) {
+                            throw new \Exception('프로모션 추가신청정보 업데이트를 실패하였습니다.');
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 추가신청정보 삭제 업데이트
+     * @param array $arr_eaa_idx
+     * @return mixed
+     */
+    public function removeEventForAddApply($arr_eaa_idx)
+    {
+        try {
+            if (empty($arr_eaa_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if(is_array($arr_eaa_idx) === false) {
+                $arr_eaa_idx[0] = $arr_eaa_idx;   //단건 처리
+            }
+
+            $is_update = $this->_conn->set(['IsStatus' => 'N'])
+                ->where_in('EaaIdx', $arr_eaa_idx)
+                ->update($this->_table['event_add_apply']);
+
+            if ($is_update !== true) {
+                throw new \Exception('프로모션 추가신청정보 삭제 업데이트를 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 추가신청정보 등록
+     * @param array $input
+     * @return mixed
+     */
+    public function addEventForAddApply($input)
+    {
+        try {
+            if (empty($input) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if ($this->_conn->set($input)->insert($this->_table['event_add_apply']) === false) {
+                throw new \Exception('프로모션 추가신청정보 등록을 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 추가신청정보 수정
+     * @param string $eaa_idx
+     * @param array $input
+     * @return mixed
+     */
+    public function modifyEventForAddApply($eaa_idx, $input)
+    {
+        try {
+            if (empty($eaa_idx) === true || empty($input) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+            if ($this->_conn->set($input)->where('EaaIdx', $eaa_idx)->update($this->_table['event_add_apply']) === false) {
+                throw new \Exception('프로모션 추가신청정보 수정을 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
         return true;
     }

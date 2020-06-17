@@ -96,12 +96,13 @@ class EventLecture extends \app\controllers\BaseController
         $file_data = null;
         $file_data_promotion = null;
         $list_event_display_product = null;
+        $list_event_add_apply = null;
 
         //관리옵션
-        $optoins_keys = [];
+        $options_keys = [];
         $arr_options = $this->codeModel->getCcd($this->_groupCcd['option']);
         foreach ($arr_options as $key => $val) {
-            $optoins_keys[] = $key;
+            $options_keys[] = $key;
         }
 
         //댓글UI종류
@@ -181,12 +182,14 @@ class EventLecture extends \app\controllers\BaseController
             // 강좌신청 조회
             $list_event_display_product = $this->eventLectureModel->listEventForDisplayProduct($el_idx);
 
+            // 프로모션 추가신청정보 조회
+            $list_event_add_apply = $this->eventLectureModel->listEventForAddApply($el_idx);
         }
 
         $this->load->view("site/event_lecture/create", [
             'arr_options' => $arr_options,
             'arr_comment_ui_type_ccd' => $arr_comment_ui_type_ccd,
-            'optoins_keys' => $optoins_keys,
+            'options_keys' => $options_keys,
             'method' => $method,
             'data' => $data,
             'el_idx' => $el_idx,
@@ -203,6 +206,7 @@ class EventLecture extends \app\controllers\BaseController
             'file_data_promotion' => $file_data_promotion,
             'list_event_register' => $list_event_register,
             'list_event_display_product' => $list_event_display_product,
+            'list_event_add_apply' => $list_event_add_apply,
             'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true,
             'promotion_attach_file_cnt' => (empty($file_data_promotion) === true) ? 3 : count($file_data_promotion),
             'onLineSite_list' => $onLineSite_list,
@@ -262,7 +266,7 @@ class EventLecture extends \app\controllers\BaseController
                             ]);
                         } else if ($limit_type == 'M') {
                             $rules = array_merge($rules, [
-                                ['field' => 'event_register_parson_limit_type[]', 'label' => '단일,다중선택', 'rules' => 'trim|required'],
+                                ['field' => 'event_register_person_limit_type[]', 'label' => '단일,다중선택', 'rules' => 'trim|required'],
                                 ['field' => 'event_register_name[]', 'label' => '특강명', 'rules' => 'trim|required']
                             ]);
                         }
@@ -1172,7 +1176,7 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
-     * 이벤트 추가신청 회원 리스트
+     * 프로모션 추가신청정보 회원 리스트
      * @param array $params
      * @return CI_Output
      */
@@ -1215,5 +1219,30 @@ class EventLecture extends \app\controllers\BaseController
         $result = $this->eventLectureModel->delDisplayProduct($this->_reqP('edp_idx'));
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
+
+    /**
+     * 프로모션 추가신청정보 수정
+     */
+    public function updateAddApply()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'eaa_idx', 'label' => '프로모션 추가신청정보식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'trim|required|in_list[L,N]'],
+            ['field' => 'person_limit', 'label' => '인원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+            ['field' => 'name', 'label' => '신청정보명', 'rules' => 'trim|required'],
+            ['field' => 'apply_start_datm', 'label' => '신청가능 시작일시', 'rules' => 'trim|required'],
+            ['field' => 'apply_end_datm', 'label' => '신청가능 종료일시', 'rules' => 'trim|required'],
+            ['field' => 'register_expire_status', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->modifyAddApply($this->_reqP(null, false));
+        $this->json_result($result, '프로모션 추가신청정보가 정상적으로 수정 되었습니다.', $result);
+    }
+
 
 }

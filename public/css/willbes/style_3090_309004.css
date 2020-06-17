@@ -236,7 +236,10 @@
 
 /* Main Container */
 .patent .tx-color {
-    color: #034c03;
+    color: #034c03 !important;
+}
+.patent .tx-color2 {
+    color: #12a912 !important;
 }
 .patent .Section1 {
     background: #f8f8f8;

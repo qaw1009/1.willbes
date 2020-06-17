@@ -247,7 +247,7 @@
                                     </select>
                                     <select class="form-control ml-5" name="file_start_min[]">
                                         @php
-                                            $start_min = $row['FileStartMin'];;
+                                            $start_min = $row['FileStartMin'];
                                             for($i=0; $i<=59; $i++) {
                                                 $str = (strlen($i) <= 1) ? '0' : '';
                                                 $selected = ($str.$i == $start_min) ? "selected='selected'" : "";

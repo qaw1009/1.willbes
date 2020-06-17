@@ -456,7 +456,6 @@ $('*[id*=Sticky]:visible').ready(function() {
 });
 
 
-
 // 사이트 메인 퀵 배너 스크롤 이벤트
 $('*[id*=QuickMenu]:visible').ready(function() {
     var stickyOffset = $('#QuickMenu').offset();
@@ -471,7 +470,8 @@ $('*[id*=QuickMenu]:visible').ready(function() {
         });
     }
 });
-/*자격증,고등고시*/
+
+// 자격증,고등고시
 $('*[id*=QuickMenuB]:visible').ready(function() {
     var stickyOffset = $('#QuickMenuB').offset();
 

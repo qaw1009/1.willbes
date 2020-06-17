@@ -104,6 +104,71 @@
         </div>
     </div>
 
+    <div class="Section mt50">
+        <div class="widthAuto"> 
+            <div class="noticeTabs">
+                <div class="will-listTit">학원 공지사항</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="noticeTabs">
+                <div class="will-listTit">동영상 공지사항</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="noticeTabs mr-zero">
+                <div class="will-listTit">강의계획서</div>
+                <div class="tabBox noticeBox">
+                    <div class="tabContent p_re">
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section mt20">
+        <div class="widthAuto p_re"> 
+            <ul class="goMenu">
+                <li><a href="#none">학원수강신청<span>|</span></a></li>
+                <li><a href="#none">학원보강<span>|</span></a></li>
+                <li><a href="#none">강의실배정표<span>|</span></a></li>
+                <li><a href="#none">강의시간표<span>|</span></a></li>
+                <li><a href="#none">무료특강<span>|</span></a></li>
+                <li><a href="#none">강의자료실</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="Section lecBanner mt50">
         <div class="widthAuto">
             <div class="copyTit NSK-Thin mb50">
@@ -118,6 +183,160 @@
         </div>
     </div>
     
+    {{--이달의 강의 / 강의맛보기 --}}
+    <div class="Section Section1">
+        <div>
+            <div class="copyTit">
+                <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+            </div>
+            <div class="thisMonth NSK">
+                <div class="thisMonthBox">
+                    <ul class="tmslider">
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
+                                <div class="tx-color">
+                                    미시경제학 3대 難題 복습 특강
+                                    <span class="NSK-Black">황종휴<span>
+                                </div>
+                                <div>경제학을 위한 기초수학 동영상 무료업로드!</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
+                                <div class="tx-color">
+                                    행정법 예비순환
+                                    <span class="NSK-Black">김정일</span>
+                                </div>
+                                <div>기본서(행정법강의)를 중심으로 행정법의 전체흐름과 주요내용을 학습, 법학의 기초개념을 마스터하고</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
+                                <div class="tx-color">
+                                    2020 행정법 GS3순환
+                                    <span class="NSK-Black">박도원</span>
+                                </div>
+                                <div>행정법 GS3순환(미시+거시) + 매일모의고사추가</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">김기홍</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">이동호</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">최승호</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50852/prof_index_50852_1586137263.png">
+                                <div class="tx-color">
+                                    경제학 예비순환
+                                    <span class="NSK-Black">안진우</span>
+                                </div>
+                                <div>경제학 10개년 기출문제 연도별 해설특강(2019년기출..</div>
+                            </a>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                 
+                </div>
+            </div>
+
+            <div class="copyTit mt100">
+                <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
+            </div>
+            <div class="preview NSK">
+                <div class="previewBox">
+                    <ul class="pvslider">
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
+                                <div>
+                                    오리엔테이션, 무역모형기초 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
+                                <div>
+                                    03월 27일 : 제 10회 모의고사 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
+                                <div>
+                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
+                                <div>
+                                    오리엔테이션, 무역모형기초 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
+                                <div>
+                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
+                                <div>
+                                    03월 27일 : 제 10회 모의고사 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    {{--
     <div class="Section mt90">
         <div class="widthAuto">
             <ul class="PBcts">
@@ -165,54 +384,78 @@
             </ul>
         </div>
     </div>
+    --}}
 
-    <div class="Section NSK mt90">
-        <div class="widthAuto"> 
-            <div class="noticeTabs">
-                <div class="will-listTit">학원 공지사항</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
+    <div class="Section Section4_hl mt50">
+        <div class="widthAuto">
+            <div class="will-acadTit">윌비스 <span class="tx-color">자격증</span> 학원</div>
+            <div class="noticeTabs campus c_both">
+                <ul class="tabWrap noticeWrap_campus">
+                    <li><a href="#campus1" class="on">신림(본원)</a><span class="row-line">|</span></li>
+                    <li><a href="#campus2" class="">강남(분원)</a></li>
+                </ul>
+                <div class="tabBox noticeBox_campus">
+                    <div id="campus1" class="tabContent">
+                        <div class="map_img">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2010_map01.jpg" alt="신림(본원)">
+                            <span class="origin">신림(본원)</span>
+                        </div>
+                        <div class="campus_info">
+                            <dl>
+                                <dt>
+                                    <div class="c-tit"><span class="tx-color">신림(본원)</span> 학원 오시는 길</div>
+                                    <div class="c-info">
+                                        <div class="address">
+                                            <span class="a-tit">주소</span>
+                                            <span>
+                                                서울 관악구 신림로 23길 16 일성트루엘 4층<br/>
+                                                (신림동 1523-1)
+                                            </span>
+                                        </div>
+                                        <div class="tel">
+                                            <span class="a-tit">연락처</span>
+                                            <span class="tx-color">1544-4774</span>
+                                        </div>
+                                    </div>
+                                </dt>
+                            </dl>
+                            <div class="btn NSK-Black">
+                                <a href="{{ site_url('/pass/support/qna/index?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}">1:1 상담신청</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <!-- 신림동 //-->
 
-            <div class="noticeTabs">
-                <div class="will-listTit">동영상 공지사항</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
+                    <div id="campus2" class="tabContent">
+                        <div class="map_img">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2010_map02.jpg" alt="강남(분원)">
+                            <span>강남(분원)</span>
+                        </div>
+                        <div class="campus_info">
+                            <dl>
+                                <dt>
+                                    <div class="c-tit"><span class="tx-color">강남(분원)</span> 학원 오시는 길</div>
+                                    <div class="c-info">
+                                        <div class="address">
+                                            <span class="a-tit">주소</span>
+                                            <span>
+                                                서울 강남구 테헤란로19길 18<br>
+                                                (역삼동 645-12)
+                                            </span>
+                                        </div>
+                                        <div class="tel">
+                                            <span class="a-tit">연락처</span>
+                                            <span class="tx-color">1544-3383</span>
+                                        </div>
+                                    </div>
+                                </dt>
+                            </dl>
+                            <div class="btn NSK-Black">
+                                <a href="{{ site_url('/pass/support/qna/index?on_off_link_cate_code=' . $__cfg['CateCode'] . '&s_cate_code_disabled=Y') }}x">1:1 상담신청</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="noticeTabs mr-zero">
-                <div class="will-listTit">수험정보</div>
-                <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                        </ul>
-                    </div>
+                    <!-- 강남 //-->
                 </div>
             </div>
         </div>
@@ -226,7 +469,7 @@
                         <ul>
                             <li>
                                 <div class="nTit">온라인 수강문의</div>
-                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
+                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 4</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 18시 (점심시간12시~13시)<br/>
@@ -238,7 +481,7 @@
                                 <div class="nNumber tx-color">1544-4944</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
-                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
                                     공휴일/일요일휴무<br/>
                                 </div>
                             </li>
@@ -247,7 +490,7 @@
                                 <div class="nNumber tx-color">1544-4774</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
-                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                    평일: 08시~ 18시<br/>
                                     공휴일/일요일휴무<br/>
                                 </div>
                             </li>
@@ -289,19 +532,71 @@
     </div>
     <!-- CS센터 //-->
 
-    
     <div id="QuickMenu" class="MainQuickMenu">
         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2000_sky01.jpg" alt="학원보강"></a></div> 
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2000_sky02.jpg" alt="학원 1:1상담"></a></div>    
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2000_sky02.jpg" alt="학원 1:1상담"></a></div>  
+        {{--  
         <ul>
             <li><a href="#none">강의 계획서</a></li>
             <li><a href="#none">강의 시간표</a></li>
             <li><a href="#none">강의실 배정표</a></li>
         </ul>
-    </div>
-    
+        --}}
+    </div>  
 
 </div>
 <!-- End Container -->
+
+<script type="text/javascript">
+        $(function() {
+            var slidesImg = $(".tmslider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:4,
+                maxSlides:4,
+                slideWidth: 274,
+                slideMargin:8,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
+            });
+
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
+            });
+        });
+
+        $(function() {
+            var slidesImg1 = $(".pvslider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:3,
+                maxSlides:3,
+                slideWidth: 460,
+                slideMargin:10,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+    </script>
 
 @stop

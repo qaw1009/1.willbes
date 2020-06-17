@@ -3820,6 +3820,10 @@ body.memBody #Footer {
     overflow-y: auto;
 }
 
+/*교재구매*/
+.bookListWrap {padding:20px}
+.bookList {}
+
 /*학원오시는길*/
 .mapArea {padding:0 20px; margin-bottom:30px}
 .mapArea .mapTitle {font-size:16px; margin-top:30px; margin-bottom:20px}

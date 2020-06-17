@@ -35,7 +35,9 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/search_list') }}" target="_blank">검색결과 리스트</a>        
+            <a href="{{ site_url('/home/html/m/search_list') }}" target="_blank">검색결과 리스트</a>      
+            <br><br>
+            <a href="{{ site_url('/home/html/m/book_list') }}" target="_blank">교재</a>    
         </div>
     </li>
     <li>

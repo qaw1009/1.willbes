@@ -220,6 +220,8 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
+        $data['best_product'] = $this->_product('on_lecture', 20, $cate_code, 'Best');
+        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $cate_code, 'New');
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);

@@ -3895,6 +3895,7 @@ table.classTable tr td img {
     height: 10px;
     margin: -3px 10px 0;
 }
+.bookDetail .tabDepth2 a {padding:0 20px}
 
 /* subContainer : Content : 2nd Tabs 공통 */
 .tabWrap {

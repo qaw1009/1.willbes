@@ -122,6 +122,7 @@
             $('.btnbuy').show();
         }
     });
+    console.log('반영 테스트');
 </script>
 
 @stop

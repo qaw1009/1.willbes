@@ -195,8 +195,8 @@
         <ul>
             <li>
                 <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif">
-                    <span>17시~8시 문제 <br>+ 8시~12시 해설</span>
-                    반반모의고사<br>다운받기 >
+                    <span>12PM~8AM 문제 <br>+ 8AM~12PM 해설</span>
+                    아침똑똑영어<br>다운받기 >
                 </a>
             </li>
             <li>

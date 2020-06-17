@@ -62,7 +62,7 @@
                     <li><a href="#tab01" class="active">영어 이섬가</a></li>
                     <li><a href="#tab02">국어 이휘웅</a></li>
                     <li><a href="#tab03">한국사 김민규</a></li>
-                    <li><a href="#tab04">소방학/법규 이중휘</a></li>
+                    <li><a href="#tab04">소방학/법규 이중희</a></li>
                 </ul>
             </div>
             <div id="tab01" class="tabContents">

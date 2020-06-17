@@ -455,6 +455,20 @@ $('*[id*=Sticky]:visible').ready(function() {
     }
 });
 
+// 고등고시, 자격증 메인 학원 메뉴 배너 스크롤 이벤트
+$('*[id*=goMenu]:visible').ready(function() {
+    var stickyOffset = $('.goMenu').offset();
+
+    if (typeof stickyOffset !== 'undefined') {
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > stickyOffset.top) {
+                $('.goMenu').addClass('fixed');
+            } else {
+                $('.goMenu').removeClass('fixed');
+            }
+        });
+    }
+});
 
 // 사이트 메인 퀵 배너 스크롤 이벤트
 $('*[id*=QuickMenu]:visible').ready(function() {

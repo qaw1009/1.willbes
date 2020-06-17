@@ -158,7 +158,7 @@
 
     <div class="Section mt20">
         <div class="widthAuto p_re"> 
-            <ul class="goMenu">
+            <ul id="goMenu" class="goMenu" >
                 <li><a href="#none">학원수강신청<span>|</span></a></li>
                 <li><a href="#none">학원보강<span>|</span></a></li>
                 <li><a href="#none">강의실배정표<span>|</span></a></li>

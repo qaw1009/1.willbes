@@ -163,7 +163,7 @@
                 <li><a href="#none">학원수강신청<span>|</span></a></li>
                 <li><a href="#none">학원보강<span>|</span></a></li>
                 <li><a href="#none">강의실배정표<span>|</span></a></li>
-                <li><a href="#none">신규동영상안내<span>|</span></a></li>
+                <li><a href="#none">강의시간표<span>|</span></a></li>
                 <li><a href="#none">무료특강<span>|</span></a></li>
                 <li><a href="#none">강의자료실</a></li>
             </ul>

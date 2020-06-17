@@ -54,7 +54,7 @@
             <div class="PeMenu">
                 <ul>
                     <li>
-                        <a href="javascript:alert('20년 1차 적중, 곧 공개됩니다!');" >
+                        <a href="/promotion/index/cate/3001/code/1692" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6.jpg" class="off" alt="원유철 경찰한국사"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6on.jpg" class="on" alt="원유철 경찰한국사"  />
                         </a>

@@ -27,7 +27,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1669m_top.jpg" alt="" > 
             <div class='embed-container'>
-                <iframe src='https://www.youtube.com/embed/tXL-6wWRTfI' frameborder='0' allowfullscreen></iframe> 
+                <iframe src='https://www.youtube.com/embed/tXL-6wWRTfI?rel=0' frameborder='0' allowfullscreen></iframe> 
             </div>
         </div> 
         

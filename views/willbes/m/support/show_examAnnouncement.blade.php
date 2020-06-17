@@ -26,6 +26,12 @@
                     </td>
                 </tr>
 
+                <tr class="txt">
+                    <td class="w-txt NGR">
+                        {!! $data['Content'] !!}
+                    </td>
+                </tr>
+
                 @if(empty($data['AttachData']) === false)
                     <tr class="flie">
                         <td class="w-file NGR">
@@ -36,12 +42,6 @@
                         </td>
                     </tr>
                 @endif
-
-                <tr class="txt">
-                    <td class="w-txt NGR">
-                        {!! $data['Content'] !!}
-                    </td>
-                </tr>
                 </tbody>
             </table>
             <div class="lecSubject mt40">

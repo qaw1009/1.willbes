@@ -184,6 +184,59 @@
         </div>
     </div>
 
+    {{-- 과목별 문항별 마킹통계 --}}
+    <div class="x_panel">
+        <div class="pull-left mb-5"><h2>과목별 문항 정보</h2></div>
+        <div class="x_content">
+        <ul class="nav nav-tabs nav-divider" role="tablist">
+            @foreach($arr_subject as $key => $val)
+                <li class="{{($loop->first === true) ? 'active' : ''}}"><a data-toggle="tab" href="#subject_{{$key}}">{{$val}}</a></li>
+            @endforeach
+        </ul>
+        <div class="tab-content mt-5">
+            @foreach($arr_subject as $key => $val)
+                <div id="subject_{{$key}}" class="form-group tab-pane fade {{($loop->first === true) ? 'in active' : ''}}">
+                    @if(empty($arr_answer_stats[$key]) === false)
+                        <table class="table table-striped table-bordered">
+                            <thead class="bg-white-gray">
+                            <tr>
+                                <th>문항번호</th>
+                                <th>정답</th>
+                                @if (empty($arr_answernum[$key]) === false)
+                                    @for ($i=1; $i<=$arr_answernum[$key]; $i++)
+                                        <th>{{$i}}번 선택인원(%)</th>
+                                    @endfor
+                                @endif
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($arr_answer_stats[$key] as $no => $row)
+                                    <tr>
+                                        <td>{{$no}}</td>
+                                        <td>{{$row['RightAnswer']}}</td>
+                                        @if (empty($arr_answernum[$key]) === false)
+                                            @for ($i=1; $i<=$arr_answernum[$key]; $i++)
+                                                @if(empty($row['Answer'][$i]) === false)
+                                                    <td>
+                                                        {{$row['Answer'][$i]['count']}}
+                                                        ({{$row['Answer'][$i]['avg']}}%)
+                                                    </td>
+                                                @else
+                                                    <td>0</td>
+                                                @endif
+                                            @endfor
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+            @endforeach
+        </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function () {

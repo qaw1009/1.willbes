@@ -101,7 +101,6 @@ class CartFModel extends BaseOrderFModel
                 left join ' . $this->_table['category'] . ' as SC
                     on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                      
             where CA.IsStatus = "Y"   
-                and P.IsUse = "Y"
                 and P.IsStatus = "Y"                                                                  
         ';
 
@@ -127,14 +126,15 @@ class CartFModel extends BaseOrderFModel
      * @param string $is_direct_pay [바로결제 여부, Y/N]
      * @param string $is_visit_pay [방문접수 여부, Y/N]
      * @param bool $is_check_closing [정원체크 여부]
+     * @param string $cond_type [장바구니 조건구분]
      * @return mixed
      */
-    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N', $is_check_closing = false)
+    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N', $is_check_closing = false, $cond_type = '')
     {
+        $arr_out_condition = [];
         $arr_condition = [
             'EQ' => [
                 'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
-                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N'
             ],
             'IN' => [
                 'CA.CartIdx' => $cart_idx,
@@ -146,23 +146,31 @@ class CartFModel extends BaseOrderFModel
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',
                 'CA.ConnOrderIdx is ' => 'null',
-                'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',
                 '(P.ProdTypeCcd != ' => '"' . $this->_prod_type_ccd['book']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
             ]
         ];
-        $arr_out_condition = [];
+
+        // 재수강, 수강연장일 경우
+        if ($cond_type == 'retake' || $cond_type == 'extend') {
+            $arr_condition['RAW']['(P.IsUse = '] = '"Y" OR P.SaleStatusCcd != "' . $this->_not_sale_status_ccd . '")';
+        } else {
+            $arr_condition['EQ']['P.IsUse'] = 'Y';
+            $arr_condition['EQ']['P.IsSaleEnd'] = 'N';
+            $arr_condition['EQ']['P.SaleStatusCcd'] = $this->_available_sale_status_ccd['product'];
+            $arr_condition['RAW']['NOW() between '] = 'P.SaleStartDatm and P.SaleEndDatm';
+        }
 
         // 방문결제일 경우 세션 아이디 컬럼 추가
         if ($is_visit_pay == 'Y') {
             $arr_condition['EQ']['CA.SessId'] = $this->session->userdata($this->_sess_cart_sess_id);
-            $order_by =['CartIdx' => 'asc'];
+            $order_by = ['CartIdx' => 'asc'];
         } else {
-            $order_by =['ProdTypeCcd' => 'asc', 'CartIdx' => 'desc'];
+            $order_by = ['ProdTypeCcd' => 'asc', 'CartIdx' => 'desc'];
         }
 
         // 정원 체크 조건
         if ($is_check_closing === true) {
-            $arr_out_condition = ['EQ' => ['IsClosing' => 'N']];
+            $arr_out_condition['EQ']['IsClosing'] = 'N';
         }
 
         return $this->listCart(false, $arr_condition, null, null, $order_by, $arr_out_condition);
@@ -338,7 +346,7 @@ class CartFModel extends BaseOrderFModel
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, true);
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, true, $sale_pattern_ccd);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -627,14 +635,26 @@ class CartFModel extends BaseOrderFModel
      * @param string $is_visit_pay [방문결제여부, Y/N]
      * @param bool $is_data_return [상품 데이터 리턴 여부]
      * @param bool $is_cart [장바구니여부]
+     * @param string $sale_pattern_ccd [판매형태공통코드]
      * @return bool|array|string
      */
-    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false)
+    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false, $sale_pattern_ccd = '')
     {
-        $data = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code);
+        $sale_pattern = array_search($sale_pattern_ccd, $this->_sale_pattern_ccd);  // 판매형태구분
 
-        if (empty($data) === true) {
-            return '판매 중인 상품만 주문 가능합니다.';
+        if ($sale_pattern == 'retake' || $sale_pattern == 'extend') {
+            // 재수강, 수강연장일 경우
+            $data = $this->productFModel->findProductByProdCode($learn_pattern, $prod_code);
+
+            // 미사용 and 판매불가일 경우만 수강신청 불가
+            if ($data['IsUse'] == 'N' && $data['SaleStatusCcd'] == $this->_not_sale_status_ccd) {
+                return '판매 중인 상품만 주문 가능합니다.';
+            }
+        } else {
+            $data = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code);
+            if (empty($data) === true) {
+                return '판매 중인 상품만 주문 가능합니다.';
+            }
         }
 
         // 사이트코드 체크

@@ -26,13 +26,6 @@ class Cart extends \app\controllers\FrontController
         $lecture_key = $on_off_type . '_lecture';
         $pack_lecture_key = $on_off_type . '_pack_lecture';
 
-        // 모바일 학원사이트에서 접근 불가 : 해제 20200527
-        /*
-        if ($this->_is_mobile === true && $this->_is_pass_site === true) {
-            show_alert('잘못된 접근입니다.', site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
-        }
-        */
-
         // 장바구니 조회
         $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'N', true);
 
@@ -402,7 +395,7 @@ class Cart extends \app\controllers\FrontController
         ];
 
         // 리턴 URL 지정
-        $ret_url = front_app_url('/order/index?tab=' . $cart_type, $this->getSiteCacheItem($site_code, 'SiteGroupId'));
+        $ret_url = front_app_url('/order/index?tab=' . $cart_type . '&stab=' . $sale_pattern, $this->getSiteCacheItem($site_code, 'SiteGroupId'));
 
         return [
             'learn_pattern' => $learn_pattern,

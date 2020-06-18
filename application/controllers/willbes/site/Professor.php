@@ -418,6 +418,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_on_lecture($prof_idx, $wprof_idx, $arr_input = [])
     {
         $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
+        $data = [];
 
         // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
         $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);
@@ -459,6 +460,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_off_lecture($prof_idx, $wprof_idx, $arr_input = [])
     {
         $site_group_code = config_app('SiteGroupCode');     // 사이트그룹 코드
+        $data = [];
 
         // 온라인, 학원 사이트 코드 조회 (온라인 : on => 2001, 학원 : off => 2002)
         $arr_site_code = $this->siteFModel->getSiteCodeByGroupCode($site_group_code);

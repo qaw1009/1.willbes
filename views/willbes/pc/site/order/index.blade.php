@@ -10,6 +10,7 @@
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="cart_type" value="{{ $results['cart_type'] }}"/>
+                <input type="hidden" name="cart_sub_type" value="{{ $cart_sub_type }}"/>
                 <input type="hidden" name="aff_idx" value="{{ $results['aff_idx'] }}"/>
                 <div class="willbes-Cartlist c_both">
                     <div class="stepCart NG">
@@ -671,6 +672,7 @@
                     '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'POST',
                     'cart_type' : '{{ $results['cart_type'] }}',
+                    'cart_sub_type' : '{{ $cart_sub_type }}',
                     'use_point' : use_point,
                     'coupon_detail_idx' : JSON.stringify(coupon_detail_idx),
                     'aff_idx' : '{{ $results['aff_idx'] }}'

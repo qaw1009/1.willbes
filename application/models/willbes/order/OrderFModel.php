@@ -487,6 +487,7 @@ class OrderFModel extends BaseOrderFModel
             $is_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
             $pay_status_ccd = $is_vbank === true ? $this->_pay_status_ccd['vbank_wait'] : $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료/입금대기)
             $is_escrow = element('is_escrow', $post_data, 'N'); // 에스크로 결제 여부
+            $cart_sub_type = element('cart_sub_type', $post_data, '');  // 장바구니 상세구분 (retake : 재수강, extend : 수강연장)
 
             // 제휴할인 식별자 세션 체크
             $sess_aff_idx = $this->checkSessAffIdx(element('aff_idx', $post_data));
@@ -495,7 +496,7 @@ class OrderFModel extends BaseOrderFModel
             }
             
             // 장바구니 조회
-            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
+            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N', false, $cart_sub_type);
 
             // 장바구니 식별자 세션 수와 조회된 장바구니 데이터 수 비교
             if (empty($cart_rows) === true || count($sess_cart_idx) != count($cart_rows)) {
@@ -587,7 +588,7 @@ class OrderFModel extends BaseOrderFModel
                 $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
                 $vw_name = $this->getProductViewName($learn_pattern, $cart_row['LecSaleType']);
 
-                $is_prod_check = $this->cartFModel->checkProduct($vw_name, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N');
+                $is_prod_check = $this->cartFModel->checkProduct($vw_name, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N', false, false, $cart_row['SalePatternCcd']);
                 if ($is_prod_check !== true) {
                     throw new \Exception($is_prod_check);
                 }

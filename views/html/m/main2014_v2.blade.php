@@ -272,6 +272,7 @@
             </ul>
         </div>  
         
+        
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌
             <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span> 

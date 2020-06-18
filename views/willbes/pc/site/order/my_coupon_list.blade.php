@@ -36,8 +36,8 @@
         </div>
         <div class="couponWrap p_re">
             <ul class="tabWrap">
-                <li><a href="#coupon1" class="on">적용 가능 쿠폰</a></li>
-                <li><a href="#coupon2">전체 보유 쿠폰</a></li>
+                <li><a href="#coupon1" class="pl10 pr10 on">적용 가능 쿠폰</a></li>
+                <li><a href="#coupon2" class="pl10 pr10">전체 보유 쿠폰</a></li>
             </ul>
             <ul class="btnWrap">
                 <li class="subBtn white NSK"><a href="#none" id="_btn_coupon_cancel">쿠폰 적용 안함 ></a></li>
@@ -75,7 +75,7 @@
                                     <td><input type="radio" name="_coupon_detail_idx" value="{{ $row['CdIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CdIdx'], $arr_coupon_detail_idx) === true) disabled="disabled" @endif/></td>
                                     <td>{{ $row['ApplyTypeCcdName'] }}</td>
                                     <td>{{ $row['CouponPin'] }}</td>
-                                    <td>{{ $row['CouponName'] }}</td>
+                                    <td class="lh1_5">{{ $row['CouponName'] }}</td>
                                     <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
                                     <td>{{ $row['ValidDay'] }}일</td>
                                     <td>{{ $row['RemainDay'] }}일</td>
@@ -113,7 +113,7 @@
                             <tr>
                                 <td>{{ $row['ApplyTypeCcdName'] }}</td>
                                 <td>{{ $row['CouponPin'] }}</td>
-                                <td>{{ $row['CouponName'] }}</td>
+                                <td class="lh1_5">{{ $row['CouponName'] }}</td>
                                 <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
                                 <td>@if($row['ValidStatusName'] == '만료') ~ {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ $row['ValidDay'] }}일 @endif</td>
                                 <td>{{ $row['ValidStatusName'] }}</td>

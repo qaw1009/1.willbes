@@ -67,6 +67,9 @@ class BaseOrderFModel extends WB_Model
     // 판매가능 공통코드 (판매가능, 판매중 (WBS))
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
+    // 판매불가 공통코드
+    public $_not_sale_status_ccd = '618003';
+
     // 포인트 구분명 (장바구니 구분명과 맵핑)
     public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재', 'mock_exam' => '강좌'];
 

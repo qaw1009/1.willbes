@@ -99,7 +99,7 @@ class Payment extends \app\controllers\FrontController
         }
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N', false, element('cart_sub_type', $arr_input));
 
         // 장바구니 식별자 세션 수와 조회된 장바구니 데이터 수 비교
         if (empty($cart_rows) === true || count($sess_cart_idx) != count($cart_rows)) {
@@ -215,6 +215,7 @@ class Payment extends \app\controllers\FrontController
         $pay_results = $this->{$pg_object}->returnResult();
         if ($pay_results['result'] === false) {
             $err_msg = array_get($pay_results, 'result_msg', '결제연동 중 오류가 발생하였습니다.');
+            //$err_msg = '결제연동 중 오류가 발생하였습니다.\n(' . array_get($pay_results, 'result_msg', '알수 없는 오류') . ')';
             show_alert($err_msg, $this->_getErrUrl(), false);
         }
 

@@ -25,12 +25,13 @@ class Order extends \app\controllers\FrontController
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $sess_cart_idx = $this->orderFModel->checkSessCartIdx();
         $cart_type = $this->_req('tab');    // 장바구니 구분
+        $cart_sub_type = get_var($this->_req('stab'), '');   // 장바구니 상세구분 (retake : 재수강, extend : 수강연장)
         $pay_type = get_var($this->_req('pay_type'), 'pg');    // 결제루트 구분
         $is_visit_pay = $pay_type == 'visit' ? 'Y' : 'N';     // 방문결제 여부
         $sess_aff_idx = $this->orderFModel->getSessAffIdx();  // 제휴할인식별자
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, $is_visit_pay);
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, $is_visit_pay, false, $cart_sub_type);
 
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
         $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, [], 0, '', $sess_aff_idx);
@@ -83,6 +84,7 @@ class Order extends \app\controllers\FrontController
 
         $this->load->view('site/order/index', [
             'cart_type' => $cart_type,
+            'cart_sub_type' => $cart_sub_type,
             'arr_tel1_ccd' => $codes[$this->_group_ccd['Tel1']],
             'arr_phone1_ccd' => $codes[$this->_group_ccd['Phone1']],
             'arr_pay_method_ccd' => $arr_pay_method_ccd,
@@ -171,7 +173,7 @@ class Order extends \app\controllers\FrontController
         }
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N', false, element('cart_sub_type', $arr_input));
         
         // 사용자 쿠폰 식별자
         $arr_coupon_detail_idx = json_decode(element('coupon_detail_idx', $arr_input, []), true);

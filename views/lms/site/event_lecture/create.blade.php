@@ -544,8 +544,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @php $add_apply_index = 1; @endphp
                                             @if(empty($list_event_add_apply) === false)
-                                                @php $add_apply_index = 1; @endphp
                                                 @foreach($list_event_add_apply as $row)
                                                     <tr id="event_add_apply_row_{{$add_apply_index}}">
                                                         <td>

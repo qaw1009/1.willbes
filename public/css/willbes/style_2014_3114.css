@@ -368,9 +368,13 @@
             background: #3997f0 !important;
             z-index: 10;
         }
+
+
         .njob2 .will-listTi,
         .njob2 .will-listTit {font-size:24px; margin-bottom:30px}
         .njob2 .will-listTit {margin-bottom:20px}
+
+        .njob2 .will-listTi span {font-size: 16px; vertical-align: middle; color:#666}
 
         /**/
         .njob2 .bestLec > li {

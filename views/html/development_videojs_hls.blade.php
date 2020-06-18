@@ -24,7 +24,10 @@
         poster="/public/img/willbes/willbes_video_test.jpg"
         data-setup="{}"
     >
+        {{--
         <source src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" type="application/x-mpegURL"/>
+        --}}
+        <source src="https://gscdn.willbes.net/Sillim/nomu/2020_06/dongcha/leesoojin_nodongbub_dongcha/lsj_04_02_0617_nodongbub_dongcha.mp4/mp4hls/playlist.m3u8" type="application/x-mpegURL"/>
     </video>
 
     <script>

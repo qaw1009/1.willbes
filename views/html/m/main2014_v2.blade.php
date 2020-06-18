@@ -17,6 +17,7 @@
 
     .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
     .evtCtnsBox .will-listTi > img {width:50px}
+    .evtCtnsBox .will-listTi span {font-size: 16px; vertical-align: middle; color:#666; display:block} 
     .evt02 {padding:20px 30px;}  
     .evt02 .bestLec {width:100%; margin:0 auto}
     .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
@@ -129,7 +130,8 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {  
-          
+        .evt02 .bestLec > li {display: inline ; float:left; width:calc(50% - 4%); margin:0 2%}
+        .evt02 .bestLec:after {content:""; display:block; clear:both} 
     }
 
     /* 태블릿 세로 */
@@ -141,11 +143,9 @@
         .evt07 {padding:40px 60px 0 40px;}
         .evt08 {margin:40px auto 60px}  
         .evtCtnsBox .will-listTi > img {width:64px}       
-        .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}
-        .evt02 .bestLec > li {
-        display: inline ; float:left; width:50% ; 
-        }
-        .evt02 .bestLec:after {content:""; display:block; clear:both}    
+        .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}   
+        .evtCtnsBox .will-listTi span {display:inline}             
+           
         .evt07 br {display:none}
         .evt08 img {width:78px} 
         .btnbuy div {height:60px; line-height:60px;}  
@@ -190,6 +190,7 @@
 
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
+            {{--
             <ul class="bestLec">
                 <li>
                     <div>
@@ -244,7 +245,58 @@
                     </div>
                 </li>
             </ul>
-        </div>    
+            --}}
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_01.gif" alt="김정한 대표">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_02.gif" alt="김경은 대표">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_03.gif" alt="황채영 대표">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_04.gif" alt="정문진 대표">
+                    </a>
+                </li>
+            </ul>
+        </div>  
+        
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌
+            <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span> 
+        </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div> 
 
         <div class="evtCtnsBox evt01">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn03.jpg" title=""></a>

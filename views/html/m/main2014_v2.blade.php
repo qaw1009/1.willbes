@@ -18,7 +18,7 @@
     .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
     .evtCtnsBox .will-listTi > img {width:50px}
     .evtCtnsBox .will-listTi span {font-size: 16px; vertical-align: middle; color:#666; display:block} 
-    .evt02 {padding:20px 30px;}  
+    .evt02 {padding:20px;}  
     .evt02 .bestLec {width:100%; margin:0 auto}
     .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
     .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5; }
@@ -28,7 +28,7 @@
     .evt02 .bestLec li ul li:last-child a {display:inline-block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
     
 
-    .evt03 {padding:20px 30px 0 30px; text-align:left; background:#f7f7f7}
+    .evt03 {padding:20px 20px 0 20px; text-align:left; background:#f7f7f7}
     .evt03 .hotLec {margin-left:-20px}
     .evt03 .hotLec li {
         display: inline;
@@ -46,7 +46,7 @@
 
     .evt04 {margin:0 auto}
 
-    .evt05 {padding:20px 30px 0 30px; text-align:left}
+    .evt05 {padding:20px 20px 0 20px; text-align:left}
     .evt05 .tipLec {margin-left:-20px}
     .evt05 .tipLec li {
         display: inline;
@@ -61,7 +61,7 @@
         display: block;
         clear:both;
     }
-    .evt06 {padding:20px 30px 0 30px; text-align:left}
+    .evt06 {padding:20px 20px 0 20px; text-align:left}
     .evt06 .List-Table {
         width: 100%;
         border-top:1px solid #000;
@@ -95,7 +95,7 @@
         border-bottom: 1px solid #000;
     }
 
-    .evt07 {padding:20px 30px 0 30px;}
+    .evt07 {padding:20px 20px 0 20px;}
     .evt07 ul {background:#f5f5f5}
     .evt07 li { display:inline; float:left; width:25%; padding:20px 0; line-height:1.5}
     .evt07 div {margin-top:5px}
@@ -130,7 +130,8 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {  
-        .evt02 .bestLec > li {display: inline ; float:left; width:calc(50% - 4%); margin:0 2%}
+        .evt02 .bestLec > li {display: inline ; float:left; width:46%; margin-right:4%}
+        .evt02 .bestLec > li:nth-of-type(even) {margin-right:0}
         .evt02 .bestLec:after {content:""; display:block; clear:both} 
     }
 

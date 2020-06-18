@@ -68,6 +68,7 @@
         </div>
 
         <div class="evtCtnsBox evt_04" id="tab02" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_01_words.jpg" alt="문구" />
             <ul class="evt_04_list">
                 <li>
                     <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_01.png" title="국어" class="off"/>

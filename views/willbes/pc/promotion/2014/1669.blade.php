@@ -33,7 +33,7 @@
         .evt01 .review span {position:absolute; top:0; width:80px; right:0; height:60px; line-height: 60px;  z-index:5; text-align:center}
         .evt01 .youtube iframe {width:960px; height:540px; margin:0 auto}
 
-        .evt02 {background:#01835d}
+        .evt02 {background:#2878bb}
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1665_03_bg.jpg) no-repeat center top}
     </style>
 

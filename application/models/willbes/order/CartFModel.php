@@ -101,7 +101,6 @@ class CartFModel extends BaseOrderFModel
                 left join ' . $this->_table['category'] . ' as SC
                     on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                      
             where CA.IsStatus = "Y"   
-                #and P.IsUse = "Y"
                 and P.IsStatus = "Y"                                                                  
         ';
 

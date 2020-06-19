@@ -204,9 +204,9 @@
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0" />
             <map name="Map1009A" id="Map1009A">
-                <area shape="rect" coords="242,2120,888,2223" href="#pass" alt="pass신청하기" />
+                <area shape="rect" coords="249,1465,867,1537"  href="#pass" alt="pass신청하기" />
             </map>
         </div>
 
@@ -237,19 +237,19 @@
                         <li>
                             <div>
                             <strong>49</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="165507" onClick=""/> <label for="y_pkg1">3개월 패스</label>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="167005" onClick=""/> <label for="y_pkg1">6개월 패스</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>79</strong>만원<br>
-                                <input type="radio" id="y_pkg4_1" name="y_pkg" value="165508" onClick=""/> <label for="y_pkg4_1">9개월 패스</label>                           
+                                <input type="radio" id="y_pkg4_1" name="y_pkg" value="167006" onClick=""/> <label for="y_pkg4_1">10개월 패스</label>                           
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>109</strong>만원<br>
-                                <input type="radio" id="y_pkg3_1" name="y_pkg" value="165513" onClick=""/> <label for="y_pkg3_1">15개월 패스</label>                           
+                                <input type="radio" id="y_pkg3_1" name="y_pkg" value="167007" onClick=""/> <label for="y_pkg3_1">14개월 패스</label>                           
                             </div>
                         </li>
                     </ul>
@@ -365,9 +365,9 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">3개월 PASS</a></li>
-                <li><a href="#tab2">9개월 PASS</a></li>
-                <li><a href="#tab3">15개월 0원 PASS</a></li>
+                <li><a href="#tab1">6개월 PASS</a></li>
+                <li><a href="#tab2">10개월 PASS</a></li>
+                <li><a href="#tab3">14개월 PASS</a></li>
                 <li><a href="#tab4">합격 환승 이벤트</a></li>
             </ul>
 
@@ -375,13 +375,13 @@
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>3개월 PASS</h3>
+                        <h3>6개월 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.( <a class="tx-blue" href="javascript:go_popup()">수강가능 교수진 확인하기 ></a> )</li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">무제한</span> 수강 할 수 있습니다.</li>
-                            {{--<li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>--}}
+                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 <span class="tx-red">2배수</span> 수강 할 수 있습니다.</li>
+                            <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. ( <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                         </ol>
                     </dd>
@@ -449,7 +449,7 @@
             <div class="content_guide_box" id="tab2">
                 <dl>
                     <dt>
-                        <h3>9개월 PASS</h3>
+                        <h3>10개월 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -522,7 +522,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <h3>15개월 0원PASS</h3>
+                        <h3>14개월 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -530,10 +530,10 @@
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                            <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                         </ol>
                     </dd>
 
+                    {{--
                     <dt>
                         <h3>상품설명: 환급안내</h3>
                     </dt>
@@ -552,6 +552,7 @@
                             <li>환급금 수령 후 패스 잔여 수강기간에 관계없이 수강 종료됩니다.</li>
                         </ol>
                     </dd>
+                    --}}
 
                     <dt>
                         <h3>PASS 수강</h3>

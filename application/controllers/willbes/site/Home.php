@@ -47,7 +47,7 @@ class Home extends \app\controllers\FrontController
             }
         } else {
             // 모바일카테고리적용
-            if ($this->_site_code == '2005' || $this->_site_code == '2014') {
+            if ($this->_site_code == '2005') {
                 if ($this->_is_pass_site === true) {
                     $_view_path = $this->_site_code;
 
@@ -381,14 +381,8 @@ class Home extends \app\controllers\FrontController
     private function _getSite2014Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
-        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
-
-        if (APP_DEVICE == 'pc') {
-            $s_cate_code = $cate_code;
-            $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
-        }
-        $data['notice'] = $this->_boardNotice(4, $s_cate_code);
-
+        $data['arr_main_banner'] = array_merge($this->_banner($cate_code), $this->_banner('0'));
+        $data['notice'] = $this->_boardNotice(4, $cate_code);
         return $data;
     }
 

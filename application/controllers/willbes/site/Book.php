@@ -26,13 +26,30 @@ class Book extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         // 카테고리 조회
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['category_top'] = [];
+        $arr_base['category'] = [];
+        
+        if ($this->_site_code == '2006' && $this->_is_mobile === true) {
+            // 자격증 사이트일 경우 2뎁스 카테고리를 기본 카테고리로 지정
+            $category_data = $this->categoryFModel->listSiteCategory($this->_site_code, 2);
+            if (empty($category_data) === false) {
+                foreach ($category_data as $row) {
+                    $arr_key = $row['CateDepth'] == '1' ? 'category_top' : 'category';
+                    $arr_base[$arr_key][] = $row;
+                }
+            }
+        } else {
+            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        }
 
         // 카테고리 코드가 없을 경우 디폴트 설정
-        if (isset($arr_input['cate_code']) === false) {
-            $arr_input['cate_code'] = get_var($this->_cate_code, array_get($arr_base['category'], '0.CateCode'));
+        if (empty($arr_input['cate_code']) === true) {
+            $arr_input['cate_code'] = get_var($this->_cate_code, config_app('DefCateCode'));
         }
-        $cate_code = element('cate_code', $arr_input, $this->_cate_code);
+        $cate_code = element('cate_code', $arr_input, array_get($arr_base['category'], '0.CateCode'));
+
+        // 대분류 카테고리 코드 디폴트 설정
+        $arr_base['category_top_default'] = substr($cate_code, 0, 4);
 
         // 과목 조회
         if (config_app('SiteGroupCode') == '1002') {

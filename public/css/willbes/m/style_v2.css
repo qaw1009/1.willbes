@@ -1740,6 +1740,7 @@ body.memBody #Footer {
 .lecTable .oneBox:last-child {border-bottom:0; margin-bottom:0;padding-bottom:0}
 .lecTable a.lecView {
     background: url("../../../img/willbes/m/main/icon_search_btn2.png") no-repeat right center;
+    background-size: 20px;
     display:inline-block !important;
     padding-right:25px;
     font-weight: bold;
@@ -2775,6 +2776,7 @@ body.memBody #Footer {
 .lec-choice-pkg .w-info a {display:inline-block !important}
 .lec-choice-pkg .lecView {
     background: url("../../../img/willbes/m/main/icon_search_btn2.png") no-repeat right center;
+    background-size: 20px;
     display:inline-block; 
     padding-right:25px;
     font-weight: bold;

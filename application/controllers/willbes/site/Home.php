@@ -46,8 +46,8 @@ class Home extends \app\controllers\FrontController
                 $_view_path = $this->_site_code . '_' . $cate_code;
             }
         } else {
-            // 고등고시
-            if ($this->_site_code == '2005') {
+            // 모바일카테고리적용
+            if ($this->_site_code == '2005' || $this->_site_code == '2014') {
                 if ($this->_is_pass_site === true) {
                     $_view_path = $this->_site_code;
 

@@ -8,6 +8,9 @@
         @if($menu_cate_code == '3094')
             {{-- 5급행정 --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>경제학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50769?subject_idx=1480') }}">황종휴</a>
@@ -67,6 +70,9 @@
         @elseif($menu_cate_code == '3095')
             {{-- 국립외교원 --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>경제학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50769?subject_idx=1480') }}">황종휴</a>
@@ -89,6 +95,9 @@
         @elseif($menu_cate_code == '3096')
             {{-- PSAT --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>자료해석</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50944?subject_idx=1716') }}">석치수</a>
@@ -107,6 +116,9 @@
         @elseif($menu_cate_code == '3097')
             {{-- 5급헌법 --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>5급헌법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50949?subject_idx=1719') }}">김유향</a>
@@ -116,6 +128,9 @@
         @elseif($menu_cate_code == '3098')
             {{-- 법원행시 --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>행정법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50837?subject_idx=1481') }}">김정일</a>
@@ -152,6 +167,9 @@
         @elseif($menu_cate_code == '3099')
             {{-- 변호사시험 --}}
             <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
                 <li>
                     <span>민사>민사법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50952?subject_idx=1723') }}">김남훈</a>

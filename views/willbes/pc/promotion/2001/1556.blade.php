@@ -236,19 +236,19 @@
                     <ul>
                         <li>
                             <div>
-                            <strong>49</strong>만원<br>
+                            <strong>69</strong>만원<br>
                             <input type="radio" id="y_pkg1" name="y_pkg" value="167005" onClick=""/> <label for="y_pkg1">6개월 패스</label>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <strong>79</strong>만원<br>
+                                <strong>84</strong>만원<br>
                                 <input type="radio" id="y_pkg4_1" name="y_pkg" value="167006" onClick=""/> <label for="y_pkg4_1">10개월 패스</label>                           
                             </div>
                         </li>
                         <li>
                             <div>
-                                <strong>109</strong>만원<br>
+                                <strong>84</strong>만원<br>
                                 <input type="radio" id="y_pkg3_1" name="y_pkg" value="167007" onClick=""/> <label for="y_pkg3_1">14개월 패스</label>                           
                             </div>
                         </li>

@@ -107,7 +107,7 @@
                 <div class="bookImg"><img src="{{ $row['wAttachImgPath'] . $row['wAttachImgOgName'] }}" style="max-height: 200px;"></div>
                 <ul class="bookInfo">
                     <li class="bookTitle">{{ $row['ProdName'] }}</li>
-                    <li>{{ $row['wAuthorNames'] }} 저 <span class="row-line">|</span> {{ $row['wPublDate'] }}</li>
+                    <li><span class="writer">{{ $row['wAuthorNames'] }} 저</span><br><span class="row-line">|</span> {{ $row['wPublDate'] }}</li>
                     <li><a href="#none" class="bookView" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/book') }}')">교재상세정보</a></li>
                     <li>[{{ $row['wSaleCcdName'] }}] 
                         <span class="tx-blue">{{ number_format($row['RealSalePrice'], 0) }}원</span> (↓{{ number_format($row['SaleRate'], 0) . $row['SaleRateUnit'] }})

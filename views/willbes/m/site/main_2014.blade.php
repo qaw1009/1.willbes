@@ -181,13 +181,10 @@
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
             <ul class="bestLec">
-                @for($i=1; $i<=4; $i++)
-                    @if(isset($data['arr_main_banner']['M_메인_hot인기강좌'.$i]) === true)
-                        <li>
-                            {!! banner_html($data['arr_main_banner']['M_메인_hot인기강좌'.$i]) !!}
-                        </li>
-                    @endif
-                @endfor
+                <li>{!! banner('M_메인_hot인기강좌1', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌3', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌4', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 
@@ -196,13 +193,10 @@
                 <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>
             </div>
             <ul class="bestLec">
-                @for($i=1; $i<=4; $i++)
-                    @if(isset($data['arr_main_banner']['M_메인_신규강좌'.$i]) === true)
-                        <li>
-                            {!! banner_html($data['arr_main_banner']['M_메인_신규강좌'.$i]) !!}
-                        </li>
-                    @endif
-                @endfor
+                <li>{!! banner('M_메인_신규강좌1', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌3', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌4', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 

@@ -130,7 +130,10 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_02.jpg" title="문제풀이 단계"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_02.jpg" usemap="#Map1685_step1" title="문제풀이 단계" border="0"/>
+            <map name="Map1685_step1" id="Map1685_step1">
+                <area shape="rect" coords="355,945,764,1009" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt03" id="apply">

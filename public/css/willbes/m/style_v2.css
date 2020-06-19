@@ -3853,6 +3853,7 @@ body.memBody #Footer {
 }
 .bookInfo a.bookView {
     background: url("../../../img/willbes/m/main/icon_search_btn2.png") no-repeat right center;
+    background-size: 20px;
     display:inline-block !important;
     padding-right:25px;
     font-weight: bold;

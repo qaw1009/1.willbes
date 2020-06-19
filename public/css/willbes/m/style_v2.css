@@ -3844,6 +3844,7 @@ body.memBody #Footer {
     text-overflow: ellipsis;
     height: 40px;
     color:#0d74ae;
+    word-break: keep-all; 
 }
 .bookInfo > li {margin-bottom:8px; line-height: 1.4;}
 .bookInfo > li:nth-of-type(2) {font-size:12px; color:#666;}

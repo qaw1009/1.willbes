@@ -16,14 +16,6 @@
                 <div class="VisualBox">
                     <div class="bSlider">
                         {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
-                        {{--
-                        <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_1120x670_01.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_1120x670_02.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_1120x670_03.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_1120x670_04.jpg" alt="배너명"></a></div>
-                        </div>
-                        --}}
                     </div>
                 </div>
             </div>
@@ -33,58 +25,31 @@
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 인기강좌</div>
                 <ul class="bestLec">
-                    <li>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.gif" alt="김정한 대표">
-                            <ul>
-                                <li><span class="tx-red">NEW</span> · 이커머스</li>
-                                <li>가장 현실적인 월 100만원 만들기, <br>
-                                    지금 바로 시작하는 스마트스토어!</li>
-                                <li>다마고치 김정환 대표<br>
-                                    <strong class="NSK-Black">온라인강의</strong></li>
-                                <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">신청하기</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_02.gif" alt="김경은 대표">
-                            <ul>
-                                <li><span class="tx-red">NEW</span> · 이커머스</li>
-                                <li>혼자서도 할 수 있는 <br>
-                                    1인 온라인 창업</li>
-                                <li>단아쌤 김경은 대표<br>
-                                    <strong class="NSK-Black">온라인강의</strong></li>
-                                <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank">신청하기</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_03.gif" alt="황채영 대표">
-                            <ul>
-                                <li><span class="tx-red">NEW</span> · 이커머스</li>
-                                <li>재고없이 오픈마켓으로<br>
-                                    월 1천만원 수익 만들기</li>
-                                <li>황채영 대표<br>
-                                    <strong class="NSK-Black">온라인강의</strong></li>
-                                <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank">신청하기</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_04.gif" alt="정문진 대표">
-                            <ul>
-                                <li><span class="tx-red">NEW</span> · 이커머스</li>
-                                <li>진짜 고수에게 배우는 스마트스토어로, <br>
-                                    제2의 월급통장 만들기!</li>
-                                <li>정문진 대표<br>
-                                    <strong class="NSK-Black">온라인강의</strong></li>
-                                <li><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">신청하기</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_hot인기강좌'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_hot인기강좌'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 신규강좌
+                    <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_신규강좌'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_신규강좌'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
@@ -106,12 +71,6 @@
                             </li>
                         @endif
                     @endfor
-                    {{--
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_01.png" alt="김정한"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_02.png" alt="김경은"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_03.png" alt="황채영"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_04.png" alt="정문진"></a></li>
-                    --}}
                 </ul>
             </div>
 
@@ -125,12 +84,6 @@
                             </li>
                         @endif
                     @endfor
-                    {{--
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_01.png" alt="김정한"></a>[추천] 김정환 대표</li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_02.png" alt="김경은"></a>[추천] 김경은 대표</li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_03.png" alt="황채영"></a>[추천] 황채영 대표</li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_04.png" alt="정문진"></a>[추천] 정문진 대표</li>
-                    --}}
                 </ul>
             </div>
         </div>

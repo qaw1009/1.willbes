@@ -41,15 +41,15 @@
 
     <div class="evtCtnsBox wb_cts03" >
         <p><img src="https://static.willbes.net/public/images/promotion/2020/06/1022_top.png" alt=""  /></p>    
-        {{--    
+          
         <div class="skyBanner">
             <ul>            
                 <li>
-                    <a href="https://police.willbes.net/pass/support/notice/show?board_idx=237398&s_campus=605001"><img src="https://static.willbes.net/public/images/promotion/2019/09/1022_pop01.jpg" title="합격생과 함께하는 설명회"></a>
+                    <a href="https://police.willbes.net/pass/support/notice/show?board_idx=280794&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1022_sky.jpg" title="합격이야기 바로보기"></a>
                 </li>
             </ul>               
         </div>
-        --}}
+      
         <div class="menuWarp">
             <div class="PeMenu">
                 <ul>

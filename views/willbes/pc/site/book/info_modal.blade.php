@@ -30,8 +30,8 @@
                         </div>
                         <div class="bookBoxWrap">
                             <ul class="tabWrap tabDepth2">
-                                <li><a href="#info1" class="on">교재소개</a></li>
-                                <li><a href="#info2">교재목차</a></li>
+                                <li><a href="#info1" class="pl10 pr10 on">교재소개</a></li>
+                                <li><a href="#info2" class="pl10 pr10">교재목차</a></li>
                             </ul>
                             <div class="tabBox">
                                 <div id="info1" class="tabContent">

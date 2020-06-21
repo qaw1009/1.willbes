@@ -85,7 +85,7 @@ class Caching extends CI_Driver_Library
      */
     public function get($key = '')
     {
-        $this->_driver != 'dummy' && $key =  $this->{$this->_driver}->_key;
+        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
 
         if (($data = @$this->_CI->cache->get($key)) === false) {
             // get backup cache
@@ -100,6 +100,27 @@ class Caching extends CI_Driver_Library
         }
 
         return $data;
+    }
+
+    /**
+     * get adapter cache by key
+     * @param string $adapter [file/memcached]
+     * @param string $key
+     * @return mixed
+     */
+    public function getToAdapter($adapter, $key = '')
+    {
+        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+
+        if (empty($adapter) === true) {
+            return null;
+        }
+
+        if ($adapter == 'file') {
+            $key = $this->_file_adapter_dir . $key;
+        }
+
+        return @$this->_CI->cache->{$adapter}->get($key);
     }
 
     /**
@@ -136,18 +157,78 @@ class Caching extends CI_Driver_Library
     }
 
     /**
+     * save adapter cache by driver
+     * @param string $adapter [file/memcached]
+     * @param string $driver
+     * @return bool
+     */
+    public function saveToAdapter($adapter, $driver = '')
+    {
+        try {
+            empty($driver) === true && $driver = $this->_driver;
+            $key = $this->{$driver}->_key;
+            $ttl = $this->{$driver}->_ttl;
+
+            if (empty($adapter) === true) {
+                throw new \Exception('No adapter');
+            }
+
+            if ($adapter == 'file') {
+                $key = $this->_file_adapter_dir . $key;
+            }
+
+            // load database
+            $this->_db = $this->_CI->load->database($this->{$driver}->_database, true);
+
+            // get save driver data
+            $data = $this->{$driver}->_getSaveData();
+
+            // save cache
+            @$this->_CI->cache->{$adapter}->save($key, $data, $ttl);
+        } catch (\Exception $e) {
+            log_message('error', 'Failed to save caching driver : ' . $driver);
+            return false;
+        } finally {
+            $this->_db->close();
+        }
+
+        return true;
+    }
+
+    /**
      * delete cache by key
      * @param $key
      * @return bool
      */
     public function delete($key = '')
     {
-        $this->_driver != 'dummy' && $key =  $this->{$this->_driver}->_key;
+        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
 
         // delete backup cache
         $this->_CI->cache->{$this->_cache_backup_adapter}->delete($this->_file_adapter_dir . $key);
 
         return @$this->_CI->cache->delete($key);
+    }
+
+    /**
+     * delete adapter cache by key
+     * @param string $adapter [file/memcached]
+     * @param string $key
+     * @return bool
+     */
+    public function deleteToAdapter($adapter, $key = '')
+    {
+        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+
+        if (empty($adapter) === true) {
+            return false;
+        }
+
+        if ($adapter == 'file') {
+            $key = $this->_file_adapter_dir . $key;
+        }
+
+        return @$this->_CI->cache->{$adapter}->delete($key);
     }
 
     /**

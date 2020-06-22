@@ -47,8 +47,8 @@
         .LAeventB03 td {padding:15px 20px; font-size:16px; font-weight:bold;}
         .LAeventB03 th {background:#5f5f5f; color:#fff}
         .LAeventB03 td:nth-child(1) {text-align:center}
-        .LAeventB03 td:nth-child(2) {text-align:left}
-        .LAeventB03 td:nth-child(3) {color:#2f6c64;}
+        .LAeventB03 td:nth-child(2) {text-align:center}
+        .LAeventB03 td:nth-child(3) {color:#2f6c64;text-align:left}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
 		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#2f6c64; font-size:14px; display:block; border-radius:20px 20px 0 20px}

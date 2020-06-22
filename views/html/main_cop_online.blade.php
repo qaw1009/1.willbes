@@ -1,93 +1,6 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<style type="text/css">
-    .bnSec01 {padding:20px 0 0;} 
-    .bnSec01 li {display:inline; float:left}
-    .bnSec01:after {content:""; display:block; clear:both}
-
-    .bnSecbar01 .slider{height:100px; overflow:hidden}
-
-    .onProfBox {margin-right:-12px; margin-bottom: -12px;}
-    .onProfBox li {
-        position: relative;
-        display: inline;
-        float: left;
-        width: 271px;
-        height: 297px;
-        margin-right:12px;
-        margin-bottom: 12px;
-        overflow: hidden;
-        background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
-    }
-
-    .onProfBox li img {
-        position: absolute;
-        left:50%;
-        margin-left:-50%;
-    }
-    .onProfBox .onProfBtns {
-        position: absolute;
-        top:170px;
-        left:35px;
-        font-size: 14px;
-    }
-    .onProfBox .onProfBtns a {
-        display: block;
-        font-size: 16px;
-        background: url("https://static.willbes.net/public/images/promotion/main/icon_arrow.png") no-repeat 95% 7px;
-        padding:5px 30px 5px 5px;
-        margin-left:-5px;
-        margin-bottom: 5px
-    }
-    .onProfBox .onProfBtns span {
-        display: block;
-        font-size: 13px;
-        color:#fd6f31;
-        margin-top: 4px;
-    }
-    .onProfBox .onProfBtns a:hover {
-        color:#fff !important;
-        background: #0c5dc0 url("https://static.willbes.net/public/images/promotion/main/icon_arrow.png") no-repeat 95% 7px;
-        border-radius: 0 5px 0 5px;
-    }
-    .onProfBox .onProfBtns a:hover span {
-        color:#fff;
-    }
-    .onProfBox:after {
-        content: '';
-        display: block;
-        clear: both;
-    }
-
-    .bnSec02 ul {margin-right:-20px; margin-bottom:-20px}
-    .bnSec02 li {
-        display: inline;
-        float: left;
-        margin-right:20px;
-        margin-bottom:20px;
-    }
-    .bnSec02 li:last-child {
-        margin: 0;
-    }
-    .bnSec02 li.nSlider {
-        display: inline;
-    }
-    .sliderbnSec02 {
-        width: 550px;
-    }
-    .bnSec02 ul:after {content:""; display:block; clear:both}
-    
-    .cop .preview .previewBox {position:relative; width:1120px; margin: 0 auto;}
-    .cop .preview .pvslider {width:1120px; margin: 0 auto; height:225px; overflow: hidden;}
-    .cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
-    .cop .preview .pvslider li a {display:block; height:225px;} 
-    .cop .preview .pvslider:after {content: ""; display: block; clear:both}
-    .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-    .cop .preview .previewBox p.leftBtn {left:-22px}
-    .cop .preview .previewBox p.rightBtn {right:-22px}
-</style>
-
 <!-- Container -->
 <div id="Container" class="Container cop NSK c_both">
     <div class="Section widthAuto">
@@ -323,31 +236,37 @@
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>190504 중앙경찰학교 입교 현장스케치</div>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
                         </li>
                         <li>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
                             </a>
+                            <div>압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
                         </li>
                     </ul>  
                     <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>

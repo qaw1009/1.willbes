@@ -30,7 +30,9 @@
             <a href="{{ site_url('/home/html/m/main2_v2_3098') }}" target="_blank">메인-고등고시 법원행시</a>
             <a href="{{ site_url('/home/html/m/main2_v2_3099') }}" target="_blank">메인-고등고시 변호사시험</a>
             <a href="{{ site_url('/home/html/m/main3') }}" target="_blank">메인-취업</a>
-            <a href="{{ site_url('/home/html/m/main4') }}" target="_blank">메인-자격증</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_309002') }}" target="_blank">메인-공인노무사</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_309003') }}" target="_blank">메인-감정평가사</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_309004') }}" target="_blank">메인-변리사</a>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>

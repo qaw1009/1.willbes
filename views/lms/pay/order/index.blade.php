@@ -57,8 +57,14 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                    <div class="col-md-3 form-inline">
+                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;">
+                            <option value="MemId">회원아이디</option>
+                            <option value="MemIdx">회원식별자</option>
+                            <option value="MemName">회원명</option>
+                            <option value="Phone3">휴대폰번호</option>
+                        </select>
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -66,8 +72,15 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
+                    <div class="col-md-3 form-inline">
+                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
+                            <option value="OrderNo">주문번호</option>
+                            <option value="OrderIdx">주문식별자</option>
+                            <option value="CertNo">수강증번호</option>
+                            <option value="ProdCode">상품코드</option>
+                            <option value="ProdName">상품명</option>
+                        </select>
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>

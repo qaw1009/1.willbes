@@ -214,6 +214,46 @@ class BaseOrder extends \app\controllers\BaseController
     }
 
     /**
+     * 목록 회원검색 조건 리턴
+     * @param string $search_keyword [검색키워드 (컬럼명)]
+     * @param string $search_value [검색어]
+     * @return mixed
+     */
+    protected function _getListMemConditions($search_keyword, $search_value = '')
+    {
+        $arr_condition = [];
+        $arr_alias = ['MemIdx' => 'O', 'MemId' => 'M', 'MemName' => 'M', 'Phone3' => 'M'];
+
+        if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
+            $column = $arr_alias[$search_keyword] . '.' . $search_keyword;
+            $arr_condition['LKR'][$column] = $search_value;
+        }
+
+        return $arr_condition;
+    }
+
+    /**
+     * 목록 상품검색 조건 리턴
+     * @param string $search_keyword [검색키워드 (컬럼명)]
+     * @param string $search_value [검색어]
+     * @return array
+     */
+    protected function _getListProdConditions($search_keyword, $search_value = '')
+    {
+        $arr_condition = [];
+        $arr_alias = ['OrderIdx' => 'O', 'OrderNo' => 'O', 'ProdCode' => 'P', 'ProdName' => 'P', 'CertNo' => 'OOI'];
+        $arr_operator = ['OrderIdx' => 'EQ', 'OrderNo' => 'EQ', 'ProdCode' => 'EQ', 'ProdName' => 'LKB', 'CertNo' => 'EQ'];
+
+        if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
+            $column = $arr_alias[$search_keyword] . '.' . $search_keyword;
+            $operator = $arr_operator[$search_keyword];
+            $arr_condition[$operator][$column] = $search_value;
+        }
+
+        return $arr_condition;
+    }
+
+    /**
      * 목록 order by 배열 리턴
      * @return array
      */

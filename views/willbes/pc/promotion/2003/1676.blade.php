@@ -36,7 +36,7 @@
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
-        .evttop {background:#020015 url(https://static.willbes.net/public/images/promotion/2020/06/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
 
@@ -102,13 +102,15 @@
             </div>
         </div>
 
+        {{--
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
                 <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
             </map>             
-        </div>          
+        </div>      
+        --}}    
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

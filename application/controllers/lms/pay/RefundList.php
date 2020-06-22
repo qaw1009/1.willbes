@@ -82,7 +82,7 @@ class RefundList extends BaseOrder
                 'O.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
                 //'OP.PayStatusCcd' => [$this->orderListModel->_pay_status_ccd['refund']]
             ],
-            'ORG1' => [
+            /*'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
                     'M.MemId' => $this->_reqP('search_member_value'),
@@ -99,8 +99,17 @@ class RefundList extends BaseOrder
                 'LKB' => [
                     'P.ProdName' => $this->_reqP('search_prod_value')
                 ],
-            ],
+            ],*/
         ];
+
+        // 회원 검색
+        $arr_mem_condition = $this->_getListMemConditions($this->_reqP('search_member_keyword'), $this->_reqP('search_member_value'));
+
+        // 상품 검색
+        $arr_prod_condition = $this->_getListProdConditions($this->_reqP('search_prod_keyword'), $this->_reqP('search_prod_value'));
+
+        // 조건 병합
+        $arr_condition = array_replace_recursive($arr_condition, $arr_mem_condition, $arr_prod_condition);
 
         // 배송료 조건
         switch ($this->_reqP('search_delivery_price_type')) {
@@ -127,7 +136,7 @@ class RefundList extends BaseOrder
                 $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'vbank' :
-                $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank']];
+                $arr_condition['EQ']['O.PayMethodCcd'] = $this->orderListModel->_pay_method_ccd['vbank'];
                 $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'delivery_send' :

@@ -120,7 +120,7 @@ class Order extends BaseOrder
                 $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'vbank' :
-                $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank']];
+                $arr_condition['EQ']['O.PayMethodCcd'] = $this->orderListModel->_pay_method_ccd['vbank'];
                 $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'refund' :

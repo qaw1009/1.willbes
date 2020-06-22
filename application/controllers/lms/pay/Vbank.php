@@ -83,10 +83,10 @@ class Vbank extends BaseOrder
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon')
             ],
             'IN' => [
-                'O.SiteCode' => get_auth_site_codes(),   //사이트 권한 추가
+                'O.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
                 'OP.PayStatusCcd' => $this->_vbank_pay_status_ccd
             ],
-            'ORG1' => [
+            /*'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
                     'M.MemId' => $this->_reqP('search_member_value'),
@@ -103,8 +103,17 @@ class Vbank extends BaseOrder
                 'LKB' => [
                     'P.ProdName' => $this->_reqP('search_prod_value')
                 ],
-            ],
+            ],*/
         ];
+
+        // 회원 검색
+        $arr_mem_condition = $this->_getListMemConditions($this->_reqP('search_member_keyword'), $this->_reqP('search_member_value'));
+
+        // 상품 검색
+        $arr_prod_condition = $this->_getListProdConditions($this->_reqP('search_prod_keyword'), $this->_reqP('search_prod_value'));
+
+        // 조건 병합
+        $arr_condition = array_replace_recursive($arr_condition, $arr_mem_condition, $arr_prod_condition);
 
         // 날짜 검색
         $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));

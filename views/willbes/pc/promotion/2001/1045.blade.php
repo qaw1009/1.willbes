@@ -28,23 +28,23 @@
             z-index:1;
         }
 
-        .WB_con01 {background:#ebe4d2 url('https://static.willbes.net/public/images/promotion/2019/06/1045_top_bg.png') no-repeat center;}
-        .WB_con02{background:#590100 url('https://static.willbes.net/public/images/promotion/2019/06/1045_01_bg.png') no-repeat center;}
+        .WB_con01 {background:url('https://static.willbes.net/public/images/promotion/2019/06/1045_top_bg.png') no-repeat center;}
+        .WB_con02{background:url('https://static.willbes.net/public/images/promotion/2020/06/1045_01_bg.png') no-repeat center;}
         .WB_con03{background:#f8f9fb;}
         .WB_con04{background:#e8e8e8;}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#0219_lecgo"><img src="https://static.willbes.net/public/images/promotion/2019/06/1045_skybanner.png" alt="영어지옥탈출반" /></a>
+            <a href="#0219_lecgo"><img src="https://static.willbes.net/public/images/promotion/2020/06/1045_skybanner.png" alt="영어지옥탈출반" /></a>
         </div>
 
         <div class="evtCtnsBox WB_con01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_top.png" alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1045_top.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_01.png" alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1045_01.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con03">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="evtCtnsBox WB_con04" id="0219_lecgo">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_03.png" usemap="#Map_0219_lec" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1045_03.png" usemap="#Map_0219_lec" border="0" />
             <map name="Map_0219_lec" id="Map_0219_lec">
                 <area shape="rect" coords="209,687,909,790" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1106&subject_idx=1054" target="_blank" />
             </map>          

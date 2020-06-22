@@ -889,6 +889,94 @@
     margin-left: 50px;
 }
 
+/*2020.06 일반경찰 메인*/
+.bnSec01 {padding:20px 0 0;} 
+.bnSec01 li {display:inline; float:left}
+.bnSec01:after {content:""; display:block; clear:both}
+
+.bnSecbar01 .slider{height:100px; overflow:hidden}
+
+.onProfBox {margin-right:-12px; margin-bottom: -12px;}
+.onProfBox li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 271px;
+    height: 297px;
+    margin-right:12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
+}
+
+.onProfBox li img {
+    position: absolute;
+    left:50%;
+    margin-left:-50%;
+}
+.onProfBox .onProfBtns {
+    position: absolute;
+    top:170px;
+    left:35px;
+    font-size: 14px;
+}
+.onProfBox .onProfBtns a {
+    display: block;
+    font-size: 16px;
+    background: url("https://static.willbes.net/public/images/promotion/main/icon_arrow.png") no-repeat 95% 7px;
+    padding:5px 30px 5px 5px;
+    margin-left:-5px;
+    margin-bottom: 5px
+}
+.onProfBox .onProfBtns span {
+    display: block;
+    font-size: 13px;
+    color:#fd6f31;
+    margin-top: 4px;
+}
+.onProfBox .onProfBtns a:hover {
+    color:#fff !important;
+    background: #0c5dc0 url("https://static.willbes.net/public/images/promotion/main/icon_arrow.png") no-repeat 95% 7px;
+    border-radius: 0 5px 0 5px;
+}
+.onProfBox .onProfBtns a:hover span {
+    color:#fff;
+}
+.onProfBox:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.bnSec02 ul {margin-right:-20px; margin-bottom:-20px}
+.bnSec02 li {
+    display: inline;
+    float: left;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+.bnSec02 li:last-child {
+    margin: 0;
+}
+.bnSec02 li.nSlider {
+    display: inline;
+}
+.sliderbnSec02 {
+    width: 550px;
+}
+.bnSec02 ul:after {content:""; display:block; clear:both}
+
+.cop .preview .previewBox {position:relative; width:1120px; margin: 0 auto;}
+.cop .preview .pvslider {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
+.cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
+.cop .preview .pvslider li a {display:block; height:225px;} 
+.cop .preview .pvslider li div {height:40px; line-height:40px; font-size:14px; text-align:center; 
+    width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+.cop .preview .pvslider:after {content: ""; display: block; clear:both}
+.cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.cop .preview .previewBox p.leftBtn {left:-22px}
+.cop .preview .previewBox p.rightBtn {right:-22px}
+
 /**/
 .collaborate {
     background:url(https://static.willbes.net/public/images/promotion/main/3001_collaborate.jpg) no-repeat left top;

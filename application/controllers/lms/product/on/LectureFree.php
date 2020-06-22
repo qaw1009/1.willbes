@@ -38,7 +38,7 @@ Class LectureFree extends CommonLecture
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_course' => $this->courseModel->getCourseArray(),
-            'arr_professor' => $this->professorModel->getProfessorArray(),
+            'arr_professor' => $this->professorModel->getProfessorArray(null,null,['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']),
             'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
             'FreeLecType_ccd' => $codes['652'],
             'Sales_ccd' => $codes['618'],

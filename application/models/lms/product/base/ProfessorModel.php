@@ -402,9 +402,12 @@ class ProfessorModel extends WB_Model
             $arr_condition['EQ']['P.wProfIdx'] = $wprof_idx;
         }
 
+        $column = 'P.SiteCode, P.ProfIdx, WP.wProfName 
+                        ,(case WHEN ASCII(SUBSTRING(wP.wProfName,1)) < 128 THEN 2 ELSE 1 end) as wProfName_order_by'; //한글우선순위로 정렬하기 위한 컬럼재생성
+
         $data = $this->_conn->getJoinListResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP'
             , 'P.wProfIdx = WP.wProfIdx'
-            , 'P.SiteCode, P.ProfIdx, WP.wProfName', $arr_condition, null, null, $order_by
+            , $column, $arr_condition, null, null, $order_by
         );
 
         return (empty($site_code) === false) ? array_pluck($data, 'wProfName', 'ProfIdx') : $data;

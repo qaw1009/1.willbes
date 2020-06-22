@@ -31,9 +31,10 @@ if (!function_exists('banner_html')) {
      * @param bool $is_desc
      * @param string $view_html
      * @param string $view_html_class
+     * @param string $title_class
      * @return string
      */
-    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false, $view_html = '', $view_html_class = '')
+    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false, $view_html = '', $view_html_class = '', $title_class = '')
     {
         $html = '';
         $rolling_start = '';
@@ -125,6 +126,9 @@ if (!function_exists('banner_html')) {
             }
             if ($is_desc === true) {
                 $html .= '<p>' . $row['BannerName'] . '</p>' . $row['Desc'];
+            }
+            if (empty($title_class) === false) {
+                $html .= '<div class="' . $title_class . '">' . $row['BannerName'] . '</div>';
             }
         }
         return $rolling_start . $html . $rolling_end . $map_data;

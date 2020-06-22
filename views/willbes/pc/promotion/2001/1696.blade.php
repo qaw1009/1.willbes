@@ -79,7 +79,7 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1696_04.jpg" usemap="#Map1696B" alt="적중사례" />
             <map name="Map1696B" id="Map">
-                <area shape="rect" coords="350,612,768,677" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="자료다운"  target="_blank" />
+                <area shape="rect" coords="350,612,768,677" href="https://police.willbes.net/pass/support/notice/show?board_idx=280603" alt="자료다운"  target="_blank" />
             </map>
             <div class="slide_con">
                 <ul id="slidesImg3">

@@ -104,7 +104,7 @@
         <div class="evtCtnsBox wb_cts05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1696_05.jpg"  alt="커리큘럼 & 강의신청" usemap="#map1696"  />
             <map name="map1696">
-                <area shape="rect" coords="250,1037,527,1092" href="https://police.willbes.net/pass/professor/show/prof-idx/50132/?cate_code=3010&subject_idx=1055&subject_name=한국사" alt="온라인강의 신청" target="_blank">
+                <area shape="rect" coords="250,1037,527,1092" href="/pass/professor/show/prof-idx/50132/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" alt="온라인강의 신청" target="_blank">
                 <area shape="rect" coords="593,1033,868,1092" href="https://police.willbes.net/pass/professor/show/prof-idx/50132/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" alt="학원강의 신청" target="_blank">
             </map>
         </div>

@@ -128,7 +128,7 @@
                                                         //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                                     @endphp
                                                     @if(time() >= strtotime($reg_date. '+1 days'))
-                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @else
                                                         <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @endif
@@ -204,10 +204,12 @@
             }
             if ($.trim($regi_form_register.find('input[name="register_name"]').val()) == '') {
                 alert('이름을 입력하셔야 합니다.');
+                $("#register_name").focus();
                 return;
             }
             if ($.trim($regi_form_register.find('input[name="register_tel"]').val()) == '') {
                 alert('연락처를 입력하셔야 합니다.');
+                $("#register_tel").focus();
                 return;
             }
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {

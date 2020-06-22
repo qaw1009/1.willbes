@@ -29,8 +29,8 @@
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
                         <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
-                            <option value="ProdCode">상품코드</option>
                             <option value="ProdName">상품명</option>
+                            <option value="ProdCode">상품코드</option>
                         </select>
                         <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
                     </div>

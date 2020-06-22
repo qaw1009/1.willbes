@@ -10,13 +10,12 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -178,6 +177,8 @@
                 <li><a href="#tab5" id="menu_tab5">전기직 7급</a></li>
                 <li><a href="#tab6" id="menu_tab6">군무원<span>전자/통신직</span></a></li>
             </ul>
+
+            {{--전송기술 9급--}}
             <div class="tabContents" id="tab1">
                 <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
@@ -218,16 +219,11 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
-                        <td>전자공학</td>
-                        <td>문제풀이</td>
-                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
+                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+
                 <p>● 무선공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -268,11 +264,12 @@
                         <td>무선공학</td>
                         <td>문제풀이</td>
                         <td>2020 최우영 무선공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162037" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166306" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
 
+            {{--통신기술 9급--}}
             <div class="tabContents" id="tab2">
                 <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
@@ -313,16 +310,11 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
-                        <td>전자공학</td>
-                        <td>문제풀이</td>
-                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
+                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+
                 <p>● 통신이론/공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -643,6 +635,7 @@
                 </table>
             </div>
 
+            {{--군무원--}}
             <div class="tabContents" id="tab6">
                 <h3 class="NGEB">군무원 전자직 9/7급</h3>
                 <p>● 전자공학</p>
@@ -684,14 +677,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
-                        <td>전자공학</td>
-                        <td>문제풀이</td>
-                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
+                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -723,6 +710,12 @@
                         <td>유료특강</td>
                         <td>2018 최우영 전자회로 기출문제특강</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자회로</td>
+                        <td>문제풀이</td>
+                        <td>2020 [군무원] 최우영 전자회로 최종모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166761" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -766,14 +759,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162036" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
-                        <td>전자공학</td>
-                        <td>문제풀이</td>
-                        <td>2020 [지방직] 최우영 전자공학 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164571" target="_blank">수강신청</a></td>
+                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -782,6 +769,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+
                 <p>● 통신이론/공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -830,6 +818,12 @@
                         <td>2020 [지방직] 최우영 통신이론 동형모의고사</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/164572" target="_blank">수강신청</a></td>
                     </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2020 [군무원] 최우영 통신공학 최종모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166761" target="_blank">수강신청</a></td>
+                    </tr>
                 </table>
                 <p>● 전기자기학</p>
                 <table cellspacing="0" cellpadding="0">
@@ -857,37 +851,8 @@
                     </tr>
                 </table>
             </div>
-        </div><!--wb_cts03//-->   
-        
-        {{--
-        <div class="evtCtnsBox wb_cts04">      
-            <div class="tabContaier2">    
-                <ul>    
-                    <li><a href="#tabs1" id="tabs1_btn" class="active">최우영 통신직 T-PASS</a></li>
-                    <li><a href="#tabs2" id="tabs2_btn">최우영 전기직 T-PASS</a></li>
-                </ul>
-            </div> 
-            <div id="tabs1" class="tabContents2">       
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_04_tab1.png" usemap="#Map1071z" title="" border="0" id="evt1"/>
-                <map name="Map1071z" id="Map1071z">
-                    <area shape="rect" coords="754,616,934,726" href="javascript:go_PassLecture('159161');" >
-                </map>
-            </div>
-            <div id="tabs2" class="tabContents2">       
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_04_tab2.png" usemap="#Map1071y"  title="" border="0" id="evt2"/>
-                <map name="Map1071y" id="Map1071y">
-                    <area shape="rect" coords="746,618,936,726" href="javascript:go_PassLecture('159162');" >
-                </map>
-            </div>   
-            <div class="check">
-                <label>
-                    <input type="checkbox" name="ischk" value="Y" id="cb1">
-                    페이지 하단 최우영 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다. 
-                </label>
-                <a href="#tip">이용안내확인하기 ↓</a>
-            </div>   
-        </div>  
-        --}}
+        </div><!--wb_cts03//-->          
+
 
          <!-- 타이머 -->
          <div class="evtCtnsBox time NGEB"  id="newTopDday">
@@ -910,13 +875,8 @@
                     </tr>
                 </table>                
             </div>
-        </div>
-        
-        {{--
-        <div class="evtCtnsBox wb_tip" id="tip">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_tip.jpg" alt="유의사항"  > 
-        </div>        
-        --}}               
+        </div>       
+             
     </div>
     <!-- End Container -->
 

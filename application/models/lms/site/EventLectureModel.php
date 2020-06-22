@@ -578,15 +578,15 @@ class EventLectureModel extends WB_Model
                 }
             }
 
-            // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
-            if ($this->getMemberForRegisterCount($el_idx) <= 0) {
+            // 프로모션 신청리스트 수정 비교/수정
+            //if ($this->getMemberForRegisterCount($el_idx) <= 0) {
                 if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
                     //if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
                     if ($this->_modifyEventRegister($el_idx, $input) === false) {
                         throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
                     }
                 }
-            }
+            //}
 
             // 프로모션 부가정보 수정
             if (empty(element('promotion_code', $input)) === false) {

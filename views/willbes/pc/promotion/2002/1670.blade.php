@@ -57,11 +57,8 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
             <!--
             <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
@@ -122,7 +119,6 @@
                 @include('willbes.pc.promotion.show_comment_list_url_partial')
             @endif
 
-            
             <div class="evtCtnsBox evt03" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">
                     <div class="request" id="request">
@@ -147,13 +143,31 @@
                                     <th>* 참여일</th>
                                     <td>
                                         <ul>
-                                            <input type="hidden" name="register_data1" value=""/>
-                                            {{--<li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="6.21(일) 14시 형사법 무료특강" /> <label for="campus3">1회 - 6.21(일) 14시 형사법 무료특강</label></li>--}}
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus4" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus4">2회 - 6.28(일) 14시 형사법 무료특강</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus5" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus5">3회 - 7.5(일) 14시 형사법 무료특강</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus6" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus6">4회 - 7.12(일) 14시 형사법 무료특강</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus7" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus7">5회 - 7.19(일) 14시 형사법 무료특강</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus8" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus8">6회 - 7.26(일) 14시 형사법 무료특강</label></li>
+                                            @foreach($arr_base['register_list'] as $key => $val)
+                                                @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                                                    @php
+                                                        // 강의 기간 지나면 자동 disabled 처리
+                                                        // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                                        //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
+                                                        $reg_year = '2020';
+                                                        $temp_date = explode(' ', $val['Name'])[0];
+                                                        if(strpos($temp_date, '(') !== false) {
+                                                            $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
+                                                        }
+                                                        $reg_month_day = explode('.', $temp_date);
+                                                        $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                                        $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                                        $reg_date = $reg_year.$reg_month.$reg_day.'0000';
+                                                        //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                                    @endphp
+                                                    @if(time() >= strtotime($reg_date. '+1 days'))
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                    @else
+                                                        <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </ul>
                                         </ul>
                                     </td>
                                 </tr>
@@ -161,13 +175,13 @@
                                     <th>* 참여 캠퍼스</th>
                                     <td>
                                         <ul>
-                                            <li><input type="radio" name="register_data2" id="CT1" value="노량진" /> <label for="CT1">노량진</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT2" value="인천" /> <label for="CT2">인천</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT3" value="대구" /> <label for="CT3">대구</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT4" value="부산" /> <label for="CT4">부산</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT5" value="광주" /> <label for="CT5">광주</label></li>
-                                            &nbsp;&nbsp;<li><input type="radio" name="register_data2" id="CT6" value="제주" /> <label for="CT6">제주</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT7" value="전북" /> <label for="CT7">전북</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT1" value="노량진" /> <label for="CT1">노량진</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT2" value="인천" /> <label for="CT2">인천</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT3" value="대구" /> <label for="CT3">대구</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT4" value="부산" /> <label for="CT4">부산</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT5" value="광주" /> <label for="CT5">광주</label></li>
+                                            &nbsp;&nbsp;<li><input type="radio" name="register_data1" id="CT6" value="제주" /> <label for="CT6">제주</label></li>
+                                            <li><input type="radio" name="register_data1" id="CT7" value="전북" /> <label for="CT7">전북</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -230,23 +244,16 @@
                 alert('연락처를 입력하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data1_tmp[]"]:checked').length == 0) {
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
                 alert('참여일을 선택하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
-                alert('직렬을 선택하셔야 합니다.');
+            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
+                alert('캠퍼스을 선택하셔야 합니다.');
                 return;
             }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
-            // $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
-
-            var register_data1_value = '';
-            $regi_form_register.find('input[name="register_data1_tmp[]"]:checked').each(function(i){
-                register_data1_value += (i==0? '' : ',') + $(this).val();
-            });
-            $regi_form_register.find('input[name="register_data1"]').val(register_data1_value);
 
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {

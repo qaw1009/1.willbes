@@ -222,7 +222,7 @@ class BaseOrder extends \app\controllers\BaseController
     protected function _getListMemConditions($search_keyword, $search_value = '')
     {
         $arr_condition = [];
-        $arr_alias = ['MemIdx' => 'O', 'MemId' => 'M', 'MemName' => 'M', 'Phone3' => 'M'];
+        $arr_alias = ['MemIdx' => 'M', 'MemId' => 'M', 'MemName' => 'M', 'Phone3' => 'M', 'wAdminId' => 'A', 'wAdminName' => 'A', 'Receiver' => 'ODA'];
 
         if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
             $column = $arr_alias[$search_keyword] . '.' . $search_keyword;
@@ -241,8 +241,8 @@ class BaseOrder extends \app\controllers\BaseController
     protected function _getListProdConditions($search_keyword, $search_value = '')
     {
         $arr_condition = [];
-        $arr_alias = ['OrderIdx' => 'O', 'OrderNo' => 'O', 'ProdCode' => 'P', 'ProdName' => 'P', 'CertNo' => 'OOI'];
-        $arr_operator = ['OrderIdx' => 'EQ', 'OrderNo' => 'EQ', 'ProdCode' => 'EQ', 'ProdName' => 'LKB', 'CertNo' => 'EQ'];
+        $arr_alias = ['OrderIdx' => 'O', 'OrderNo' => 'O', 'ProdCode' => 'P', 'ProdName' => 'P', 'CertNo' => 'OOI', 'InvoiceNo' => 'OPD'];
+        $arr_operator = ['OrderIdx' => 'EQ', 'OrderNo' => 'EQ', 'ProdCode' => 'EQ', 'ProdName' => 'LKB', 'CertNo' => 'EQ', 'InvoiceNo' => 'EQ'];
 
         if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
             $column = $arr_alias[$search_keyword] . '.' . $search_keyword;

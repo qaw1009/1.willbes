@@ -127,7 +127,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEBS"> * 6월 무료특강 신청접수 </h3>
+                            <h3 class="NGEBS"> * 무료특강 신청접수 </h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="25%" />
                                 <col  />
@@ -148,8 +148,12 @@
                                     <td>
                                         <ul>
                                             <input type="hidden" name="register_data1" value=""/>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="6.21(일) 14시 형사법 무료특강" /> <label for="campus3">1회 - 6.21(일) 14시 형사법 무료특강</label></li>
+                                            {{--<li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="6.21(일) 14시 형사법 무료특강" /> <label for="campus3">1회 - 6.21(일) 14시 형사법 무료특강</label></li>--}}
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus4" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus4">2회 - 6.28(일) 14시 형사법 무료특강</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus5" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus5">3회 - 7.5(일) 14시 형사법 무료특강</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus6" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus6">4회 - 7.12(일) 14시 형사법 무료특강</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus7" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus7">5회 - 7.19(일) 14시 형사법 무료특강</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus8" value="6.28(일) 14시 형사법 무료특강" /> <label for="campus8">6회 - 7.26(일) 14시 형사법 무료특강</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -157,7 +161,7 @@
                                     <th>* 참여 캠퍼스</th>
                                     <td>
                                         <ul>
-                                            <li><input type="radio" name="register_data2" id="CT1" value="노량진" /><label for="CT1">노량진</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT1" value="노량진" /> <label for="CT1">노량진</label></li>
                                             <li><input type="radio" name="register_data2" id="CT2" value="인천" /> <label for="CT2">인천</label></li>
                                             <li><input type="radio" name="register_data2" id="CT3" value="대구" /> <label for="CT3">대구</label></li>
                                             <li><input type="radio" name="register_data2" id="CT4" value="부산" /> <label for="CT4">부산</label></li>
@@ -198,7 +202,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년 6월 형사법 무료특강 신청하기  ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년 형사법 무료특강 신청하기  ></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">

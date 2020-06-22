@@ -39,7 +39,7 @@ Class ProfLectureFree extends LectureFree
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_course' => $this->courseModel->getCourseArray(),
-            'arr_professor' => $this->professorModel->getProfessorArray(null,null,['WP.wProfName' => 'asc']),
+            'arr_professor' => $this->professorModel->getProfessorArray(null,null,['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']),
             'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
             'LecType_ccd' => $codes['652'],
             'Multiple_ccd' => $codes['611'],

@@ -342,7 +342,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">원천세</label>
                     <div class="col-md-5 form-inline item">
-                        <input type="number" name="tax_rate" class="form-control" title="원천세율" required="required" value="{{ empty($data['TaxRate']) === false ? $data['TaxRate'] : '3.3' }}" style="width: 80px;"> %
+                        <input type="number" name="tax_rate" class="form-control" title="원천세율" required="required" value="{{ $data['TaxRate'] or '3.3' }}" style="width: 80px;"> %
                         <input type="text" name="tax_price" class="form-control set-add-comma ml-20" title="원천세" required="required" value="" readonly="readonly"> 원
                     </div>
                     <div class="col-md-4">

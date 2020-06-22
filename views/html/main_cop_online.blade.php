@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container cop NSK c_both">
+<div id="Container" class="Container cop NGR c_both">
     <div class="Section widthAuto">
         <div class="onSearch NGR">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />

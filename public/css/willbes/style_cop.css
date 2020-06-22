@@ -970,7 +970,7 @@
 .cop .preview .pvslider {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
 .cop .preview .pvslider li {display: inline; float: left; width:33.33333%;}
 .cop .preview .pvslider li a {display:block; height:225px;} 
-.cop .preview .pvslider li div {height:40px; line-height:40px; font-size:14px; text-align:center; 
+.cop .preview .pvslider li p {height:40px; line-height:40px; font-size:14px; text-align:center; 
     width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
 .cop .preview .pvslider:after {content: ""; display: block; clear:both}
 .cop .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}

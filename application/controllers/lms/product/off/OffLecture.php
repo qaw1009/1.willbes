@@ -41,7 +41,7 @@ Class OffLecture extends CommonLecture
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_course' => $this->courseModel->getCourseArray(),
-            'arr_professor' => $this->professorModel->getProfessorArray(null,null,['WP.wProfName' => 'asc']),
+            'arr_professor' => $this->professorModel->getProfessorArray(null,null,['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']),
             'studypattern_ccd' => $codes['653'],
             'studyapply_ccd' => $codes['654'],
             'accept_ccd' => $codes['675'],

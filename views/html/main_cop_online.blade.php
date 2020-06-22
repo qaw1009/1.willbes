@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container cop NSK c_both">
+<div id="Container" class="Container cop NGR c_both">
     <div class="Section widthAuto">
         <div class="onSearch NGR">
             <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
@@ -233,40 +233,52 @@
                 <div class="previewBox">
                     <ul class="pvslider">
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
                         </li>
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </li>
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>190504 중앙경찰학교 입교 현장스케치</div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
                         </li>
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
                         </li>
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
                         </li>
                         <li>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
-                            </a>
-                            <div>압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
                         </li>
                     </ul>  
                     <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>

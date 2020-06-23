@@ -114,7 +114,7 @@ class OffVisitPackage extends BaseOrder
                 // 일반형일 경우 관리자 등록건만 조회, 선택형(강사배정)일 경우는 전체 주문건 조회
                 '(PL.PackTypeCcd =' => ' "' . $this->_target_pack_type_ccd['choice_prof'] . '" or (PL.PackTypeCcd = "' . $this->_target_pack_type_ccd['normal'] . '" and O.RegAdminIdx is not null))'
             ],
-            'ORG1' => [
+            /*'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
                     'M.MemId' => $this->_reqP('search_member_value'),
@@ -131,8 +131,17 @@ class OffVisitPackage extends BaseOrder
                 'LKB' => [
                     'P.ProdName' => $this->_reqP('search_prod_value')
                 ],
-            ],
+            ],*/
         ];
+
+        // 회원 검색
+        $arr_mem_condition = $this->_getListMemConditions($this->_reqP('search_member_keyword'), $this->_reqP('search_member_value'));
+
+        // 상품 검색
+        $arr_prod_condition = $this->_getListProdConditions($this->_reqP('search_prod_keyword'), $this->_reqP('search_prod_value'));
+
+        // 조건 병합
+        $arr_condition = array_replace_recursive($arr_condition, $arr_mem_condition, $arr_prod_condition);
 
         // 미수금여부 조건
         if (empty($this->_reqP('search_is_unpaid')) === false) {

@@ -26,9 +26,10 @@ class Caching_site_subject_professor extends CI_Driver
 
     /**
      * get cache save data
+     * @param string $skey
      * @return array
      */
-    public function _getSaveData()
+    public function _getSaveData($skey = '')
     {
         $_table = [
             'site' => 'lms_site',

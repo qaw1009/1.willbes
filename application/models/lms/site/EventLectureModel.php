@@ -2159,29 +2159,18 @@ class EventLectureModel extends WB_Model
         $limit_type = element('limit_type', $input);
 
         try {
-            if ($limit_type == 'S') {
-                // 단일 리스트: 기존로직
-                $up_register_input['IsStatus'] = 'N';
-                $up_register_input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
-                $up_register_input['UpdDatm'] = date('Y-m-d H:i:s');
-
-                $this->_conn->set($up_register_input)->where(['ElIdx' => $el_idx, 'IsStatus' => 'Y']);
-
-                if ($this->_conn->update($this->_table['event_register']) === false) {
-                    throw new \Exception('데이터 수정에 실패했습니다.');
-                }
-
-                $reg_set_data = [
-                    'ElIdx' => $el_idx,
+            if ($limit_type == 'S' && empty(element('er_idx', $input)) === false) {
+                // 단일 리스트: 수정
+                $update_data = [
                     'PersonLimitType' => element('person_limit_type', $input),
                     'PersonLimit' => element('person_limit', $input),
                     'Name' => element('register_name', $input),
-                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                    'RegIp' => $this->input->ip_address()
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    'UpdDatm' =>  date('Y-m-d H:i:s')
                 ];
 
-                if ($this->_conn->set($reg_set_data)->insert($this->_table['event_register']) === false) {
-                    throw new \Exception('fail');
+                if ($this->_conn->set($update_data)->where('ErIdx', element('er_idx', $input))->update($this->_table['event_register']) === false) {
+                    throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                 }
             } else if ($limit_type == 'M') {
                 // 다중 리스트: 비교 수정

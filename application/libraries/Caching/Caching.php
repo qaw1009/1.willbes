@@ -79,13 +79,21 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * get cache by key
-     * @param $key
+     * get driver cache
+     * @param string $skey
      * @return mixed
      */
-    public function get($key = '')
+    public function get($skey = '')
     {
-        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+        $key = $this->{$this->_driver}->_key;
+
+        if (empty($key) === true) {
+            return null;
+        }
+
+        if (empty($skey) === false) {
+            $key .= '_' . $skey;
+        }
 
         if (($data = @$this->_CI->cache->get($key)) === false) {
             // get backup cache
@@ -103,17 +111,25 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * get adapter cache by key
+     * get driver cache to adapter
      * @param string $adapter [file/memcached]
-     * @param string $key
+     * @param string $skey
      * @return mixed
      */
-    public function getToAdapter($adapter, $key = '')
+    public function getToAdapter($adapter, $skey = '')
     {
-        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+        $key = $this->{$this->_driver}->_key;
 
         if (empty($adapter) === true) {
             return null;
+        }
+
+        if (empty($key) === true) {
+            return null;
+        }
+
+        if (empty($skey) === false) {
+            $key .= '_' . $skey;
         }
 
         if ($adapter == 'file') {
@@ -124,22 +140,30 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * save cache by driver
-     * @param string $driver
+     * save driver cache
+     * @param string $skey
      * @return bool
      */
-    public function save($driver = '')
+    public function save($skey = '')
     {
         try {
-            empty($driver) === true && $driver = $this->_driver;
+            $driver = $this->_driver;
             $key = $this->{$driver}->_key;
             $ttl = $this->{$driver}->_ttl;
+
+            if (empty($key) === true || strlen($ttl) < 1) {
+                throw new \Exception('No key or ttl');
+            }
+
+            if (empty($skey) === false) {
+                $key .= '_' . $skey;
+            }
 
             // load database
             $this->_db = $this->_CI->load->database($this->{$driver}->_database, true);
 
             // get save driver data
-            $data = $this->{$driver}->_getSaveData();
+            $data = $this->{$driver}->_getSaveData($skey);
 
             // save backup cache
             $this->_CI->cache->{$this->_cache_backup_adapter}->save($this->_file_adapter_dir . $key, $data, $ttl);
@@ -157,20 +181,28 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * save adapter cache by driver
+     * save driver cache to adapter
      * @param string $adapter [file/memcached]
-     * @param string $driver
+     * @param string $skey
      * @return bool
      */
-    public function saveToAdapter($adapter, $driver = '')
+    public function saveToAdapter($adapter, $skey = '')
     {
         try {
-            empty($driver) === true && $driver = $this->_driver;
+            $driver = $this->_driver;
             $key = $this->{$driver}->_key;
             $ttl = $this->{$driver}->_ttl;
 
             if (empty($adapter) === true) {
                 throw new \Exception('No adapter');
+            }
+
+            if (empty($key) === true || strlen($ttl) < 1) {
+                throw new \Exception('No key or ttl');
+            }
+
+            if (empty($skey) === false) {
+                $key .= '_' . $skey;
             }
 
             if ($adapter == 'file') {
@@ -181,7 +213,7 @@ class Caching extends CI_Driver_Library
             $this->_db = $this->_CI->load->database($this->{$driver}->_database, true);
 
             // get save driver data
-            $data = $this->{$driver}->_getSaveData();
+            $data = $this->{$driver}->_getSaveData($skey);
 
             // save cache
             @$this->_CI->cache->{$adapter}->save($key, $data, $ttl);
@@ -196,13 +228,21 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * delete cache by key
-     * @param $key
+     * delete driver cache
+     * @param string $skey
      * @return bool
      */
-    public function delete($key = '')
+    public function delete($skey = '')
     {
-        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+        $key = $this->{$this->_driver}->_key;
+
+        if (empty($key) === true) {
+            return false;
+        }
+
+        if (empty($skey) === false) {
+            $key .= '_' . $skey;
+        }
 
         // delete backup cache
         $this->_CI->cache->{$this->_cache_backup_adapter}->delete($this->_file_adapter_dir . $key);
@@ -211,17 +251,25 @@ class Caching extends CI_Driver_Library
     }
 
     /**
-     * delete adapter cache by key
+     * delete driver cache to adapter
      * @param string $adapter [file/memcached]
-     * @param string $key
+     * @param string $skey
      * @return bool
      */
-    public function deleteToAdapter($adapter, $key = '')
+    public function deleteToAdapter($adapter, $skey = '')
     {
-        $this->_driver != 'dummy' && $key = $this->{$this->_driver}->_key;
+        $key = $this->{$this->_driver}->_key;
 
         if (empty($adapter) === true) {
             return false;
+        }
+
+        if (empty($key) === true) {
+            return false;
+        }
+
+        if (empty($skey) === false) {
+            $key .= '_' . $skey;
         }
 
         if ($adapter == 'file') {

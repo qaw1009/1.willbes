@@ -116,7 +116,7 @@ class Visit extends BaseOrder
                     'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
                     'ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd))' => $this->_reqP('search_campus_ccd')
                 ],
-                'ORG1' => [
+                /*'ORG1' => [
                     'LKR' => [
                         'M.MemName' => $this->_reqP('search_member_value'),
                         'M.MemId' => $this->_reqP('search_member_value'),
@@ -133,8 +133,17 @@ class Visit extends BaseOrder
                     'LKB' => [
                         'P.ProdName' => $this->_reqP('search_prod_value')
                     ],
-                ],
+                ],*/
             ]);
+
+            // 회원 검색
+            $arr_mem_condition = $this->_getListMemConditions($this->_reqP('search_member_keyword'), $this->_reqP('search_member_value'));
+
+            // 상품 검색
+            $arr_prod_condition = $this->_getListProdConditions($this->_reqP('search_prod_keyword'), $this->_reqP('search_prod_value'));
+
+            // 조건 병합
+            $arr_condition = array_replace_recursive($arr_condition, $arr_mem_condition, $arr_prod_condition);
 
             // 수강증출력여부 조건
             if (empty($this->_reqP('search_is_print_cert')) === false) {

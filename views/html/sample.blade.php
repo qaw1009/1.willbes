@@ -177,8 +177,7 @@
                 <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
                 <li><a href="{{ site_url('/home/html/searchList2') }}" target="_blank">검색 결과 화면 2</a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/promotion/1015_leclist') }}" target="_blank">프로모션 단강좌 DP</a></li>
-                <li><a href="{{ site_url('/home/html/promotion/promotionLecList') }}" target="_blank">└ 단강좌 리스트</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1015_leclist') }}" target="_blank">프로모션 강좌 DP</a></li>
             </ul>
         </div>
     </li>

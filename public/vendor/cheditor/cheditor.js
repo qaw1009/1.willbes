@@ -2186,7 +2186,8 @@ cheditor.prototype = {
 
             containerReSize = function () {
                 windowSize = self.getWindowSize();
-                container.style.width = windowSize.width + 'px';
+                // container.style.width = windowSize.width + 'px';
+                container.style.width = (windowSize.width - container.getBoundingClientRect().left - container.getBoundingClientRect().right - container.getBoundingClientRect().width) + 'px';
                 if (self.cheditor.mode === 'code') {
                     self.resizeTextContent();
                     height = (windowSize.height - except - 6 - parseInt(self.cheditor.textContent.getAttribute('xbar-height'), 10));

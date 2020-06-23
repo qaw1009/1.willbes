@@ -29,19 +29,6 @@
         .wb_evt04 {background:#f4f4f4; padding-bottom:150px}     
         
         h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
-
-        .proLecPkg {width: 1120px; margin:0 auto;}
-        .proLecPkg .willbes-Lec-Table {background:#fff; text-align: left;}
-        .proLecPkg table {width:100%}
-        .proLecPkg .lecTable {border-top:1px solid #000;}
-        .proLecPkg .lecTable td {border-bottom:1px solid #000;}
-        .proLecPkg .lecTable td {padding:30px 10px; line-height:1.5;}
-        .proLecPkg .lecTable td dt {margin-right:10px}
-        .proLecPkg .lecTable td span {vertical-align: baseline;}
-        .proLecPkg .lecTable td span.row-line {background:#b5b5b5; width: 1px; height: 13px; margin: 0 10px -3px;}
-        .proLecPkg .lecTable td a.lecbuy {background:#707070; color:#fff; display:inline-block; height:28px; line-height:28px; padding:0 15px; font-size:12px}
-        .proLecPkg .lecTable td a.lecbuy:hover {background:#333}
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

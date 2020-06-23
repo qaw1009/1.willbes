@@ -12278,5 +12278,19 @@ table.acadlecInfoPackageTable tr.Top td {
 .proLecList .lecInfoTable {display: block; width: 1120px !important}
 .proLecList .lecInfoTable span.select {width: 80px; text-align: right; display: inline-block;}
 
+.proLecPkg {width: 1120px; margin:0 auto;}
+.proLecPkg .willbes-Lec-Table {background:#fff; text-align: left;}
+.proLecPkg table {width:100%}
+.proLecPkg .lecTable {border-top:1px solid #000;}
+.proLecPkg .lecTable td {border-bottom:1px solid #000;}
+.proLecPkg .lecTable td {padding:30px 10px; line-height:1.5;}
+.proLecPkg .lecTable td dt {margin-right:10px}
+.proLecPkg .lecTable td span {vertical-align: baseline;}
+.proLecPkg .lecTable td span.row-line {background:#b5b5b5; width: 1px; height: 13px; margin: 0 10px -3px;}
+.proLecPkg .lecTable td a.lecbuy {background:#707070; color:#fff; display:inline-block; height:28px; line-height:28px; padding:0 15px; font-size:12px}
+.proLecPkg .lecTable td a.lecbuy:hover {background:#333}
+
 
 /***************************윌스토리 - 온라인서점*************************************/
+
+.wsBookQuick {}

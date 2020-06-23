@@ -26,9 +26,10 @@ class Caching_site extends CI_Driver
 
     /**
      * get cache save data
+     * @param string $skey
      * @return array
      */
-    public function _getSaveData()
+    public function _getSaveData($skey = '')
     {
         // 학원 사이트 구분값
         $pass_site_prefix = config_item('app_pass_site_prefix');

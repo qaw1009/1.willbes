@@ -1267,6 +1267,10 @@ table.auTable tr td {
     margin-top: -2px;
     margin-left: 14px;
 }
+#Footer .ft-Link ul li:last-child {float: right;
+    background: url("../../img/willbes/common/icon_mobile.png") no-repeat 0 center;
+    padding-left:25px; background-size: 24px;    
+} 
 #Footer address {
     background: url("../../img/willbes/gnb/logo_footer.gif") no-repeat 0 55px;
     line-height: 18px;
@@ -12273,3 +12277,6 @@ table.acadlecInfoPackageTable tr.Top td {
 .proLecList .lecTable dl dt {float: left;}
 .proLecList .lecInfoTable {display: block; width: 1120px !important}
 .proLecList .lecInfoTable span.select {width: 80px; text-align: right; display: inline-block;}
+
+
+/***************************윌스토리 - 온라인서점*************************************/

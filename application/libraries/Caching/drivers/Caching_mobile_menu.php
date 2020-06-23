@@ -26,9 +26,10 @@ class Caching_mobile_menu extends CI_Driver
 
     /**
      * get cache save data
+     * @param string $skey
      * @return array
      */
-    public function _getSaveData()
+    public function _getSaveData($skey = '')
     {
         // 모바일 사이트 구분값
         $mobile_site_prefix = config_item('app_mobile_site_prefix');

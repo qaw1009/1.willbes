@@ -1267,7 +1267,7 @@ table.auTable tr td {
     margin-top: -2px;
     margin-left: 14px;
 }
-#Footer .ft-Link ul li:last-child {float: right;
+#Footer .ft-Link ul li.mobileView {float: right;
     background: url("../../img/willbes/common/icon_mobile.png") no-repeat 0 center;
     padding-left:25px; background-size: 24px;    
 } 

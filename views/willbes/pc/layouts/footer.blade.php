@@ -13,9 +13,11 @@
                 <li>
                     <a href="{{ front_url('/profRecruit/index') }}">강사모집</a><span class="tx-white">&nbsp;{{@(explode('.',$_SERVER["SERVER_ADDR"])[3])}}</span>
                 </li>
-                <li>
+                {{--
+                <li class="mobileView">
                     <a href="#none">모바일버전</a>
                 </li>
+                --}}
             </ul>
         </div>
     </div>

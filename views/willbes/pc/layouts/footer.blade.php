@@ -15,7 +15,7 @@
                 </li>
                 @if(isMobile() == true)
                     <li class="mobileView">
-                        <a href="{{site_url('/?viewPC=0')}}">모바일버전<?php  ?></a>
+                        <a href="{{site_url('/?viewPC=0')}}">모바일버전</a>
                     </li>
                 @endif
             </ul>

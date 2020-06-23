@@ -106,9 +106,9 @@
          <div class="evtCtnsBox evt05" id="apply02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_05.jpg" usemap="#map1697c"  title="수강신청" border="0">
             <map name="map1697c" id="map1697c">
-                <area shape="rect" coords="129,676,279,716" href="javascript:go_PassLecture('167104');"  alt="수강신청" />
-                <area shape="rect" coords="484,676,633,716" href="javascript:go_PassLecture('167105');"  alt="수강신청" />
-                <area shape="rect" coords="841,677,989,717" href="javascript:go_PassLecture('167106');"  alt="수강신청" />
+                <area shape="rect" coords="129,676,279,716" href="javascript:go_PassLecture('167104', '3001');"  alt="수강신청" />
+                <area shape="rect" coords="484,676,633,716" href="javascript:go_PassLecture('167105', '3001');"  alt="수강신청" />
+                <area shape="rect" coords="841,677,989,717" href="javascript:go_PassLecture('167106', '3002');"  alt="수강신청" />
             </map>  
             <div class="check" id="chkInfo">   
                 <label>
@@ -159,29 +159,30 @@
 <script type="text/javascript">
 
     /*탭(텍스터버전)*/
-        $(document).ready(function(){
+    $(document).ready(function(){
         $(".tabContents").hide();
         $(".tabContents:first").show();
         $(".tabContaier ul li a").click(function(){
-        var activeTab = $(this).attr("href");
-        $(".tabContaier ul li a").removeClass("active");
-        $(this).addClass("active");
-        $(".tabContents").hide();
-        $(activeTab).fadeIn();
-        return false;
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
         });
     });
 
     /* 이용안내 동의 */
-    function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-
-            var url = '{{ site_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
-            location.href = url;            
+    function go_PassLecture(code, cate) {
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
+            return;
         }
+
+        {{--var url = '{{ site_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;--}}
+        var url = '{{ site_url('/periodPackage/show/cate/') }}' + cate + '/pack/648001/prod-code/' + code;
+        location.href = url;
+    }
 
 </script>
     {{-- 프로모션용 스크립트 include --}}

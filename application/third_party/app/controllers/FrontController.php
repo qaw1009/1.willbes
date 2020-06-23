@@ -558,24 +558,27 @@ abstract class FrontController extends BaseController
     /**
      * PC 화면 접속시 디바이스가 모바일이면 모바일로 redirect 시키고
      * 사용자가 pc 보겠다고 viewPC=1 을 달고 오면 그냥 PC를 보여준다.
+     * viewPC = 0 을 달고 오면 모바일로 리다이렉트
+     * 해당 함수는 사이트 home controller index function 에서만 호출
      */
     protected function _redirectMobile()
     {
         if(APP_DEVICE == 'pc'){ // PC 화면일때
-        //if($this->_is_mobile == false && $this->_is_app == false) {
             $this->load->library('user_agent');
-            if ($this->agent->is_mobile() == true) { // 모바일 이면
+            if ($this->agent->is_mobile() == true) {
                 $viewPC = $this->_req("viewPC");
-                if ($viewPC == 1) { // PC 보기 파라미터가 있으면
-                    $this->session->set_userdata('viewPC', 1);
-                } else { // 파람이 없으면
+
+                if($viewPC == '1' || $viewPC == '0'){
+                    $this->session->set_userdata('viewPC', $viewPC);
+                } else {
                     $viewPC = $this->session->userdata('viewPC');
-                    if ($viewPC != 1) { // 세션이 있으면
-                        if ($this->_is_pass_site === true) {
-                            redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/' . config_item('app_pass_site_prefix') . '/home/index'));
-                        } else {
-                            redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
-                        }
+                }
+
+                if ($viewPC != '1') { // 세션이 있으면
+                    if ($this->_is_pass_site === true) {
+                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/' . config_item('app_pass_site_prefix') . '/home/index'));
+                    } else {
+                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
                     }
                 }
             }

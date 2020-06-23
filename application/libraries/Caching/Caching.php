@@ -102,9 +102,9 @@ class Caching extends CI_Driver_Library
 
         if ($data === false) {
             // save cache
-            $this->save();
+            $this->save($skey);
 
-            return $this->get($key);
+            return $this->get($skey);
         }
 
         return $data;

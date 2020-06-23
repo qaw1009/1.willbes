@@ -201,3 +201,16 @@ if (!function_exists('hpSubString')) {
         return $string;
     }
 }
+
+if(!function_exists('isMobile')) {
+    /**
+     * 사용자 환경이 모바일인지
+     * @return bool
+     */
+    function isMobile()
+    {
+        $_CI =& get_instance();
+        $_CI->load->library('user_agent');
+        return $_CI->agent->is_mobile();
+    }
+}

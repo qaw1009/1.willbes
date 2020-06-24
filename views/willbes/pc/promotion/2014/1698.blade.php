@@ -21,7 +21,7 @@
         /************************************************************/
 
         .wb_top {position:relative}
-        .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
+        .rulletBox {position:absolute; top:649px; width:786px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:280px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 

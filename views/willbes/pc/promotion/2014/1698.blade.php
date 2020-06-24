@@ -21,7 +21,7 @@
         /************************************************************/
 
         .wb_top {position:relative}
-        .rulletBox {position:absolute; top:670px; width:786px; left:50%; margin-left:-393px; z-index:5}
+        .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:280px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
@@ -64,7 +64,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_top.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
-                <canvas id="box_roulette" class="tutCanvas" width="786" height="786">Canvas not supported</canvas>
+                <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>

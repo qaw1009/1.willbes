@@ -59,6 +59,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="site_nickname">사이트닉네임
+                    </label>
+                    <div class="col-md-3">
+                        <input type="text" id="site_nickname" name="site_nickname" class="form-control" title="사이트닉네임" value="{{ $data['SiteNickName'] }}">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-static"># 사이트명과 구분되는 별칭을 입력해 주세요. ex) 신광은경찰</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="none_campus">캠퍼스 구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">

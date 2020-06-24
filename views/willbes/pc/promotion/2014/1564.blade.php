@@ -249,15 +249,13 @@
                     <area shape="rect" coords="105,10,1014,263" href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank" alt="리뷰생활">
                 </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
             @else
                 <img src="https://static.willbes.net/public/images/promotion/2020/05/1564_01.jpg" usemap="#Map0529" border="0" >
                 <map name="Map0529">
                     <area shape="rect" coords="230,663,573,710" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="기획전">
-                </map>
+                </map>                
             @endif   
-                
-            
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
                     <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>

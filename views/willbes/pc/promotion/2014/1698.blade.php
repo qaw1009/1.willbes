@@ -32,7 +32,6 @@
         .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1698_04_bg.jpg) no-repeat center top;}
         .wb_03 {background:#555}
 
-
         .giftPopupWrap {
             position:absolute; 
             background: rgba(0, 0, 0, 0.6);

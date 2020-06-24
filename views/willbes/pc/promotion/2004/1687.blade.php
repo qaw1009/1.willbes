@@ -25,6 +25,19 @@
 
         .wb_top {background:#D63942 url(https://static.willbes.net/public/images/promotion/2020/06/1687_top_bg.jpg) center top no-repeat}
 
+         /* 슬라이드배너 */
+        .slide_con {position:relative; width:1120px; margin:0 auto}
+        .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:0}
+        .slide_con p.rightBtn {right:0}
+    
+        .evt01 {background:#e4e4e4;padding-bottom:50px}
+        .evt01 .slide_con {position:relative; width:950px; margin:0 auto}
+        .evt01 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+        .evt01 .slide_con p.leftBtn {left:-80px}
+        .evt01 .slide_con p.rightBtn {right:-80px}         
+
         .wb_cts01 {background:#fff;}
         
         .wb_cts02 {background:#ECECEC url(https://static.willbes.net/public/images/promotion/2020/06/1687_02_bg.jpg) center top no-repeat}
@@ -47,13 +60,26 @@
 
         <div class="skybanner">
             <ul>          
-                <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=278985&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1577_sky.png"  title="기미진 기특한 국어" /></a></li>
+                <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1186" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1687_sky.png"  title="기미진 기특한 국어" /></a></li>
             </ul>
         </div>       
 
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1687_top.jpg" alt="왕기초 클라쓰" />            
         </div>    
+
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/thank.jpg"  alt="소방직 합격"/>
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/thanks01.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/thanks02.jpg" /></li>     
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowR.png"></a></p>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/thanks_emo.jpg"  alt="이모티콘"/>
+        </div>
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1687_01.jpg" alt="불꽃 소방" />         
@@ -85,33 +111,61 @@
     </div>
     <!-- End Container -->
 
-    <script>
+    <script type="text/javascript">     
+
         $(document).ready(function() {
-            var slidesImg1 = $("#slidesImg1").bxSlider({
-                mode:'fade',
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
-                pause:3000,
+                pause:4000,
                 pager:true,
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
-                slideWidth:1210,
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1,
-                pager:false
+                pager:false,
             });
 
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });
+
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg1").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
 
             $("#imgBannerLeft").click(function (){
-                slidesImg1.goToPrevSlide();
+                slidesImg4.goToPrevSlide();
             });
 
             $("#imgBannerRight").click(function (){
-                slidesImg1.goToNextSlide();
+                slidesImg4.goToNextSlide();
             });
         });
-    </script>
 
+</script>
+
+{{-- 프로모션용 스크립트 include --}}
+@include('willbes.pc.promotion.promotion_script')
 @stop

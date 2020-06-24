@@ -7,6 +7,10 @@ class Home extends \app\controllers\FrontController
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
+    private $_category_mobile = [
+        '2005' => 'all',
+        '2006' => ['309002','309003','309004']
+    ];
 
     public function __construct()
     {
@@ -47,23 +51,27 @@ class Home extends \app\controllers\FrontController
             }
         } else {
             // 모바일카테고리적용
-            if ($this->_site_code == '2005') {
-                if ($this->_is_pass_site === true) {
-                    $_view_path = $this->_site_code;
+            if (empty($this->_category_mobile[$this->_site_code]) === false) {
+                if (($this->_category_mobile[$this->_site_code] == 'all') || in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
+                    if ($this->_is_pass_site === true) {
+                        $_view_path = $this->_site_code;
 
-                    // 캠퍼스 코드
-                    if (config_app('CampusCcdArr') != 'N') {
-                        $arr_campus = array_map(function($var) {
-                            $tmp_arr = explode(':', $var);
-                            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-                        }, explode(',', config_app('CampusCcdArr')));
+                        // 캠퍼스 코드
+                        if (config_app('CampusCcdArr') != 'N') {
+                            $arr_campus = array_map(function($var) {
+                                $tmp_arr = explode(':', $var);
+                                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+                            }, explode(',', config_app('CampusCcdArr')));
+                        }
+                    } else {
+                        if (empty($this->_cate_code) === true) {
+                            // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                            redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                        }
+                        $_view_path = $this->_site_code . '_' . $cate_code;
                     }
                 } else {
-                    if (empty($this->_cate_code) === true) {
-                        // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
-                        redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
-                    }
-                    $_view_path = $this->_site_code . '_' . $cate_code;
+                    $_view_path = $this->_site_code;
                 }
             } else {
                 $_view_path = $this->_site_code;
@@ -214,14 +222,22 @@ class Home extends \app\controllers\FrontController
     {
         $data = [];
         $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
-
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
+            $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code , 'Best');
+            $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code , 'New');
+            $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
+        } else {
+            if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
+                $s_cate_code = $cate_code;
+                $data['arr_main_banner'] = $this->_banner($s_cate_code);
+                $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
+                $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
+                $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
+            }
         }
 
-        $data['best_product'] = $this->_product('on_lecture', 20, $cate_code, 'Best');
-        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $cate_code, 'New');
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);

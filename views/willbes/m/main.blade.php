@@ -11,11 +11,11 @@
                         <li><a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">5급행정</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'pass') }}" target="_blank">공무원</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" target="_blank">국립외교원</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">공인노무사</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">공인노무사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">PSAT</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">감정평가사</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/309003', 'job') }}" target="_blank">감정평가사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">변리사</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" target="_blank">법원행시</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">세무사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3099', 'gosi') }}" target="_blank">변호사시험</a></li>

@@ -45,7 +45,7 @@ class SiteModel extends WB_Model
      */
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
+        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteNickName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['EQ']['G.IsStatus'] = 'Y';
@@ -211,7 +211,7 @@ class SiteModel extends WB_Model
     public function findSiteForModify($site_code)
     {
         $column = '
-            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
+            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteNickName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.MobileFooterInfo
                 , S.CommPcScript, S.CommMobileScript, S.CommAppScript
                 , S.IsCampus, S.IsUse, S.IsFrontUse, S.IsNaviUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
@@ -264,6 +264,7 @@ class SiteModel extends WB_Model
                 'SiteGroupCode' => $site_group_code,
                 'SiteTypeCcd' => element('site_type_ccd', $input),
                 'SiteName' => element('site_name', $input),
+                'SiteNickName' => element('site_nickname', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
                 'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),
@@ -357,6 +358,7 @@ class SiteModel extends WB_Model
                 'SiteGroupCode' => element('site_group_code', $input),
                 'SiteTypeCcd' => element('site_type_ccd', $input),
                 'SiteName' => element('site_name', $input),
+                'SiteNickName' => element('site_nickname', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
                 'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),

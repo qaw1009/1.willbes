@@ -49,7 +49,7 @@ class Caching_site extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
+            S.SiteCode, S.SiteName, S.SiteNickName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.HeaderInfo, S.FooterInfo, S.MobileFooterInfo, S.CommPcScript, S.CommMobileScript, S.CommAppScript
                 , (select CateCode from ' . $_table['category'] . ' where SiteCode = S.SiteCode and IsUse = "Y" and IsFrontUse = "Y" and IsStatus = "Y" order by IsDefault desc, OrderNum asc limit 1) as DefCateCode

@@ -51,7 +51,7 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="giftPopupWrap" id="giftPopupWrap" style="display:block;">
+        <div class="giftPopupWrap" id="giftPopupWrap" style="display:none;">
             <div class="giftPop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
                 <map name="Map1698pop" id="Map1698pop">

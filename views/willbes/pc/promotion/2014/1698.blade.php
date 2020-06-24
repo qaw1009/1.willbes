@@ -64,7 +64,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_top.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
-                <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
+                <canvas id="box_roulette" class="tutCanvas" width="786" height="786">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>

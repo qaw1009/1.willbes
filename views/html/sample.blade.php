@@ -27,8 +27,6 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/m/sample') }}" target="_blank">모바일 html 퍼블리싱 페이지</a></li>
                 <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인-2019</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_v2') }}" target="_blank">통합메인-2020</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_v3') }}" target="_blank">통합메인-2020-01</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
@@ -179,8 +177,7 @@
                 <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
                 <li><a href="{{ site_url('/home/html/searchList2') }}" target="_blank">검색 결과 화면 2</a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/1015_leclist') }}" target="_blank">프로모션 단강좌 DP</a></li>
-                <li><a href="{{ site_url('/home/html/promotionLecList.blade') }}" target="_blank">└ 단강좌 리스트</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1015_leclist') }}" target="_blank">프로모션 강좌 DP</a></li>
             </ul>
         </div>
     </li>
@@ -513,7 +510,8 @@
     <li>
         <div>  
             <ul>          
-                                 
+                <li><a href="#none" target="_blank">윌스토리 메인</a></li>   
+                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank">└ 교재리스트 </a></li>           
             </ul>
         </div>
     </li>

@@ -46,8 +46,8 @@
             height: 100%;  
             z-index: 105;        
         }
-        .giftPop {width:786px; margin:150px auto 0; position:relative}
-        .giftPop span {display:block; position:absolute; top:245px; width:100%; text-align:center; z-index:10}
+        .giftPop {width:786px; margin:100px auto 0; position:relative}
+        .giftPop span {display:block; position:absolute; top:343px; width:100%; text-align:center; z-index:10}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -55,7 +55,7 @@
             <div class="giftPop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
                 <map name="Map1698pop" id="Map1698pop">
-                    <area shape="rect" coords="332,652,455,691" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
+                    <area shape="rect" coords="637,85,715,163" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
                 </map>
                 {{-- 상품이미지 01 ~ 08 --}}
                 <span id="gift_box_id"></span>

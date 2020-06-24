@@ -27,7 +27,7 @@
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
-            .rulletBox a:hover {background:#810000; color:#fff}
+            .rulletBox a:hover {background:#5a14d6; color:#fff}
         .wb_01 {width:1120px; margin}
         .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1698_04_bg.jpg) no-repeat center top;}
         .wb_03 {background:#555}

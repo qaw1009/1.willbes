@@ -16,7 +16,7 @@
             background:#fff url(https://static.willbes.net/public/images/promotion/2020/06/1698_top_bg.jpg) no-repeat center top;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; margin:0 auto;}
 
         /************************************************************/
 
@@ -27,24 +27,13 @@
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
-            .rulletBox a:hover {background:#810000; color:#fff}
-        .wb_01 {}
-        .wb_02 {padding-bottom:120px}
-        .wb_02 ul {width:960px; margin:0 auto}
-        .wb_02 li {display:inline; float:left; margin-right:20px; margin-bottom:20px}
-        .wb_02 li a img.off {display:block}
-        .wb_02 li a img.on {display:none}
-        .wb_02 li a:hover img.off {display:none}
-        .wb_02 li a:hover img.on {display:block}
-        .wb_02 ul:after {content:""; display:block; clear:both}
-        .wb_03 {background:#fff}
-        .wb_04 {background:#fff; padding:100px 0}
-        .wb_05 {background:#dce5ea; padding:100px 0}
-
+            .rulletBox a:hover {background:#5a14d6; color:#fff}
+        .wb_01 {width:1120px; margin}
+        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1698_04_bg.jpg) no-repeat center top;}
+        .wb_03 {background:#555}
 
         .giftPopupWrap {
             position:absolute; 
-            /*display: none;*/
             background: rgba(0, 0, 0, 0.6);
             filter: alpha(opacity=60);
             position: fixed;
@@ -56,16 +45,16 @@
             height: 100%;  
             z-index: 105;        
         }
-        .giftPop {width:728px; margin:150px auto 0; position:relative}
-        .giftPop span {display:block; position:absolute; top:245px; width:100%; text-align:center; z-index:10}
+        .giftPop {width:786px; margin:100px auto 0; position:relative}
+        .giftPop span {display:block; position:absolute; top:343px; width:100%; text-align:center; z-index:10}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="giftPopupWrap" id="giftPopupWrap" style="display:none;">
             <div class="giftPop">
-                <img src="https://static.willbes.net/public/images/promotion/2019/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1289pop" border="0"/>
-                <map name="Map1289pop" id="Map1289pop">
-                    <area shape="rect" coords="341,484,387,527" href="#none" onclick="closeWin('giftPopupWrap')" alt="닫기" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
+                <map name="Map1698pop" id="Map1698pop">
+                    <area shape="rect" coords="637,85,715,163" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
                 </map>
                 {{-- 상품이미지 01 ~ 08 --}}
                 <span id="gift_box_id"></span>
@@ -73,7 +62,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_top.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_top.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_start.png" alt="start" /></button>
@@ -82,72 +71,33 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_01.jpg" alt="회원가입 합격 룰렛 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_01.jpg" alt="룰렛 이벤트" usemap="#Map1698A" border="0" />
+            <map name="Map1698A">
+                <area shape="rect" coords="254,639,368,680" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2014" target="_blank" alt="신규가입">
+            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02.jpg" alt="룰렛 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_03.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1698B" border="0"/>
+            <map name="Map1698B">
+                <area shape="rect" coords="430,855,493,919" href="https://www.instagram.com/" target="_blank" alt="인스타">
+                <area shape="rect" coords="525,855,590,920" href="https://www.facebook.com/" target="_blank" alt="페이스북">
+                <area shape="rect" coords="623,856,688,919" href="https://section.blog.naver.com/BlogHome.nhn" target="_blank" alt="블로그">
+            </map>
         </div>
+
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
+        @endif
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02.jpg" alt="회원가입" usemap="#Map1288A" border="0" />
-            <map name="Map1288A" id="Map1288A">
-                <area shape="rect" coords="304,978,815,1058" href="https://www.willbes.net/member/join/?ismobile=0&amp;sitecode=2000" target="_blank" alt="회원가입" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_04.jpg" alt="사전예약" usemap="#Map1698C" border="0" />
+            <map name="Map1698C">
+                <area shape="rect" coords="547,1393,824,1458" href="https://njob.willbes.net/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약">
             </map>
-            <ul>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c1.jpg" alt="윌비스 T-PASS" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c1_on.jpg" alt="윌비스 T-PASS" class="on"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c2.jpg" alt="7급 외무영사직" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c2_on.jpg" alt="7급 외무영사직" class="on"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c3.jpg" alt="김동진 법원팀" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c3_on.jpg" alt="김동진 법원팀" class="on"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c4.jpg" alt="윌비스 소방 PASS" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c4_on.jpg" alt="윌비스 소방 PASS" class="on"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c5.jpg" alt="윌비스 기술직" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c5_on.jpg" alt="윌비스 기술직" class="on"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pass.willbes.net/home/index/cate/3024 " target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c6.jpg" alt="윌비스 군무원 PASS" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02_c6_on.jpg" alt="윌비스 군무원 PASS" class="on"/>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="evtCtnsBox wb_05">
-            <a href="https://pass.willbes.net/home/index/cate/3092" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_05.jpg"  alt="0원으로 공무원 시작하기"/></a>
-        </div>
+        </div>        
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_03.png"  alt="소문내기 이벤트" usemap="#Map1288B" border="0"/>
-            <map name="Map1288B" id="Map1288B">
-                <area shape="rect" coords="337,998,782,1067" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="소문내기 이미지 다운로드" />
-            </map>
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
-            @endif
-        </div>
-        
-
-        <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_04.png"  alt="유의사항"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_last.jpg"  alt="유의사항"/>
         </div>
     </div>
     <!-- End Container -->

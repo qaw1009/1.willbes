@@ -18,8 +18,23 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.skybanner {position:fixed; top:200px; right:20px; z-index:1;}
+.skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+.skybanner ul li {padding-bottom:10px;}
+
 .evt_top {background:#2e171e url(https://static.willbes.net/public/images/promotion/2020/02/1486_top_bg.jpg) no-repeat center top;}
+
+ /* 슬라이드배너 */
+.slide_con {position:relative; width:1120px; margin:0 auto}
+.slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
+.slide_con p a {cursor:pointer}
+.slide_con p.leftBtn {left:0}
+.slide_con p.rightBtn {right:0}
+
+.evt01s {background:#e4e4e4;padding-bottom:50px}
+.evt01s .slide_con {position:relative; width:950px; margin:0 auto}
+.evt01s .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.evt01s .slide_con p.leftBtn {left:-80px}
+.evt01s .slide_con p.rightBtn {right:-80px}         
 
 .evt01{background:#f0f0f0;}
 
@@ -84,19 +99,29 @@
 </style>
 
 
-    <div class="evtContent NGR" id="evtContainer">     
+    <div class="evtContent NGR" id="evtContainer">            
 
-
-        {{--
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=255632" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_sky.png" alt="소방영어 특강">
-            </a>
-        </div>
-        --}}
-            
+            <ul>          
+                <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1186" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1687_sky.png"  title="기미진 기특한 국어" /></a></li>
+            </ul>
+        </div>   
+
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/02/1486_top.jpg" alt="0원 무료특강">   
+        </div>
+
+        <div class="evtCtnsBox evt01s">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/thank.jpg"  alt="소방직 합격"/>
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/thanks01.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/thanks02.jpg" /></li>     
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowR.png"></a></p>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/thanks_emo.jpg"  alt="이모티콘"/>
         </div>
 
         <div class="evtCtnsBox evt01">          
@@ -288,7 +313,30 @@
     <!-- End Container --> 
 
     <script type="text/javascript">
-        
+             $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

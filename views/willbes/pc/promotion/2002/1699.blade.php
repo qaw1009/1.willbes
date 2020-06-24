@@ -60,7 +60,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
 
-         <!-- 타이머 -->
+        <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
                 <ul>
@@ -196,8 +196,15 @@
                     slidesImg.goToNextSlide();
                 });
         });
+
+    /*디데이카운트다운*/
+    $(document).ready(function() {
+            @if(empty($arr_promotion_params['edate']) === false)
+                dDayCountDown('{{$arr_promotion_params['edate']}}');
+            @endif
+        });
     </script>
 
-  {{-- 프로모션용 스크립트 include --}}
+    {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

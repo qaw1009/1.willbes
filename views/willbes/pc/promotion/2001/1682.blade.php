@@ -43,7 +43,7 @@
 
         <ul class="sky">
             <li>
-                <a href="https://police.willbes.net/promotion/index/cate/3002/code/1677" target="_blnak"> 
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1701" target="_blnak"> 
                     <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_sky_01.jpg" alt="재시생 플랜" >
                 </a>
             </li>                

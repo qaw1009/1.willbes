@@ -42,13 +42,13 @@
         .evt01 div span {position:absolute;  display:block; width:433px; height:67px; line-height:67px; z-index:10}
         .evt01 div span:nth-child(1) {top:250px;left:460px;}
 
-        .evt01 div span:nth-child(2) {top:700px;}
-        .evt01 div span:nth-child(3) {top:780px}
-        .evt01 div span:nth-child(4) {top:860px}
+        .evt01 div span:nth-child(2) {top:700px;left:200px;}
+        .evt01 div span:nth-child(3) {top:780px;left:200px;}
+        .evt01 div span:nth-child(4) {top:860px;left:200px;}
 
         .evt01 div span:nth-child(5) {top:1200px;left:460px;}
 
-        .evt01 div span:nth-child(6) {top:1740px}
+        .evt01 div span:nth-child(6) {top:1740px;left:200px;}
 
         .evt01 div span:nth-child(7) {top:2300px;left:460px;}
 

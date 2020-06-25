@@ -75,7 +75,7 @@
         </div>
 
         {{-- 합격 로드맵 --}}
-        {{--@include('willbes.m.site.main_partial.loadmap_'.$__cfg['SiteCode'].'_'.$__cfg['CateCode'])--}}
+        @include('willbes.m.site.main_partial.loadmap_'.$__cfg['SiteCode'].'_'.$__cfg['CateCode'])
 
         {{-- cs box --}}
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])

@@ -17,9 +17,9 @@
                         <li><a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" target="_blank">법원행시</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">세무사</a></li>
+                        <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">세무사</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3099', 'gosi') }}" target="_blank">변호사시험</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">관세사</a></li>
+                        <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">관세사</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'spo') }}" target="_blank">경찰간부(간부후보생)</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'lang') }}" target="_blank">어학</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'work') }}" target="_blank">취업</a></li>
@@ -28,13 +28,13 @@
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>
                         <ul class="smallType">
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">스포츠지도사</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">소프트웨어자산관리사</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">전기(산업)기사</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">소방(산업)기사</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">한국사능력시험</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">경제교육지도사</a></li>
-                            <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">진로직업체험지도사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">스포츠지도사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">소프트웨어자산관리사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">전기(산업)기사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">소방(산업)기사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">한국사능력시험</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">경제교육지도사</a></li>
+                            <li><a href="{{ front_app_url('/home/index/type/etc', 'job') }}" target="_blank">진로직업체험지도사</a></li>
                         </ul>
                     </div>
                 </div>

@@ -247,7 +247,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50770?subject_idx=1492') }}">김춘환</a>
                 </li>
                 <li>
-                    <span></span>
+                    <span>경영학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50783?subject_idx=1504') }}">전수환</a>
                 </li>
 

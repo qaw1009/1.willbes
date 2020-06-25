@@ -106,7 +106,7 @@
 	  <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_02.jpg" usemap="#Map1186a" title="불꽃소방팀의 합격전담반" border="0" />
         <map name="Map1186a" id="Map1186a">
-            <area shape="rect" coords="380,1071,741,1142" href="{{ site_url('/lecture/show/cate/3050/pattern/free/prod-code/167379') }}" target="_blank" >
+            <area shape="rect" coords="380,1071,741,1142" href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/167379" target="_blank" >
         </map>     
 	  </div>
 

@@ -103,7 +103,7 @@
         <div class="evtCtnsBox sec05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_05.gif" alt="수강신청" usemap="#Map1296b" border="0">
             <map name="Map1296b" id="Map1296b">
-                <area shape="rect" coords="536,619,726,717" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="536,619,726,717" href="javascript:go_PassLecture(1);" alt="수강신청" />
             </map> 
             <div class="check">
                 <label>

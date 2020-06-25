@@ -335,7 +335,7 @@
                 <img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>학원문의</strong>
-                    <span>1544-5881</span>
+                    <span>1544-4774</span>
                     평일 08시~18시<Br>
                     주말/공휴일 가능
                 </div>

@@ -125,7 +125,7 @@
             <div class="check_bg">
                 <div class="check" id="chkInfo">
                     <label>
-                        <input name="is_chk" type="checkbox" value="Y" /> 페에지 하단 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다.             
+                        <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다.             
                     </label>
                     <a href="#tip">이용안내확인하기 ↓</a>
                 </div> 

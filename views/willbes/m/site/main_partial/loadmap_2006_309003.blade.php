@@ -1,86 +1,143 @@
 <div class="mSubTit NSK-Black mt30" ><span>{{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }}</span> 합격 로드맵</div>
-<div class="loadMap">
+<div class="tabWrap">
+    <ul class="tabWrap loadTab">
+        <li><a href="#loadmap1" class="on">1차 대비</a></li>
+        <li><a href="#loadmap2">2차 대비</a></li>
+    </ul>
+</div>
+<div class="loadMap tabContent" id="loadmap1">
     <p class="start"><span>START</span></p>
     <ul>
-        <li class="lmTitle"><a href="#none">원론강의(1~2월)</a>
+        <li class="lmTitle"><a href="#none">입문강의_회계원리(6월)</a>
             <div class="lmCts">
-                입문자 및 비전공자를 위한 기초이론 중심 강의
+                <div><span>5과목 중 과락률이 제일 높은 회계학의 기초를 다지는 필수 과정</span></div> 
                 <ul>
-                    <li>2차 논문형 시험의 특성상 ‘아는 것’과 ‘쓰는 것’의 차이는 매우 큽니다. 
-                또한 최근 출제경향은 기존의 ‘알고 있는가’에서, 알고 있는 것을 전제로 
-                ‘자신의 것인가’를 묻고 있는 추세입니다. 따라서 좋은 답안을 쓸 수 있도록 
-                기본이론들의 큰 그림을 이해하고 자신의 것으로 만드는 훈련이 무엇보다 중요합니다. 
-                원론 강의에서는 각 과목의 핵심적인 이론들을 습득하고 응용할 수 있도록 전체 내용에 
-                대한 철저한 이해 위주의 수업이 진행됩니다.</li>
-                </ul>
-                <div><span>[향후 진행되는 정규 순환에 대한 학습성취도를 높이는데 큰 도움이 되는 강의입니다. 
-                특히, 비전공자라면 반드시 수강하셔야 할 필수강좌입니다.]</span></div>                    
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1107') }}" class="moreBtn">강의 바로보기 ></a>
+                    <li>1차 시험 응시를 위한 첫 입문 단계</li>
+                    <li>중급회계인 회계학을 공부하기 위한 필수 요소인 초급회계에 해당하는 과정</li>
+                </ul>                   
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1268') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>          
-        <li class="lmTitle"><a href="#none">예비순환(3~6월)</a>
+        <li class="lmTitle"><a href="#none">기본이론(7월~8월)</a>
             <div class="lmCts">
-                기본서를 중심으로 진행되는 이론 위주의 강의!
+                <div><span>과목별 기본을 다지고 수험에 필요한 내용을 정립하는 첫 강의</span></div> 
                 <ul>
-                    <li>합격자들이 이구동성(異口同聲)으로 강조하는 공부 방법론 중 하나가 기본서의 회독입니다. 
-                기본서의 회독 수에 따라 수험 기간이 결정된다는 말이 있을 정도로 기본서의 중요성은 강조됩니다. 
-                각 이론에 대한 폭넓고 체계적인 이해를 위함은 물론이고, 2차 답안 작성 시 요구되는 올바른 문장의 
-                선택과 글의 논리적 전개 등을 위해 매우 중요합니다. 따라서 예비순환에서는 정평한 기본서를 중심으로 
-                기본이론의 전반적인 내용들을 이해 위주로 학습하게 됩니다. 
-                그리고 매주 1회의 복습 모의고사를 통해 2차 답안 작성의 기초 연습이 병행됩니다.</li>
+                    <li>1차 시험을 본격적으로 시작하며 합격의 기반이 되는 필수 단계</li>
+                    <li>각 과목별 이론에 대한 논리적이고 체계적인 이해를 위한 단계</li>
                 </ul>
-                <div><span>[2차 논문형 시험에 필요한 기본이론 전반을 학습할 수 있는 강의입니다.]</span></div> 
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1108') }}" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1247') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">GS-1순환(7~10월)</a>
+        <li class="lmTitle"><a href="#none">핵심이론(9월~10월)</a>
             <div class="lmCts">
-                이론의 내용 정리 완성과 답안 적용을 위한 구체적인 연습을 병행하는 강의!
+                <div><span>6개월 단기반의 첫 시작이며, 이론을 빠르게 정리하는 강의</span></div> 
                 <ul>
-                    <li>기본이론의 확인과 심화이론의 정리를 통하여 수험 이론의 전반을 완성하는 과정입니다. 
-                예비순환에서 다뤘던 기본이론의 확인과 2차 답안 작성에 필요한 핵심 이론의 체계적 정리의 심화 학습이 진행되며, 
-                주 2회 복습 모의고사를 통해 중요 논점의 답안 적용을 연습합니다.</li>
+                    <li>
+                        핵심이론 과정을 통해 기존 수강생은 이론을 더 탄탄하게 다지고, 
+                        6개월 단기 합격을 노리는 수험생들은 이론을 빠르게 정리해볼 수 있는 최적의 단계
+                    </li>
+                    <li>
+                        각 과목별 중요 논점과 출제 빈도수가 높은 내용 위주로 이론을 빠르게 정리하는 단계
+                    </li>
                 </ul>
-                <div><span>[학습한 수험 이론들이 어떻게 문제에 적용되는지를 확인합니다. 복습 모의고사를 통해 
-                답안 작성에 필요한 이론들을 구체화할 수 있도록 연습하는 순환입니다.]</span></div> 
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1109') }}" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1247') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">GS-2순환(10~12월)</a>
+        <li class="lmTitle"><a href="#none">문제풀이 (11월~12월)</a>
             <div class="lmCts">
-                기출문제와 연습문제의 풀이를 통해 문제해결능력을 향상시키고, 답안 구성 능력을 완성하기 위한 강의!
+                <div><span>중요 이론위주로 심화된 내용을 정리+기출·예상문제를 통해 객관식 문제의 적응력을 키워주는 강의</span></div> 
                 <ul>
-                    <li>격일로 진행되는 복습 모의고사를 통해 답안지에 직접 쓸 수 있는 중요 논점들의 핵심 이론을 학습합니다. 
-                모의고사에 대한 자세한 강평으로 답안 작성 시 범할 수 있는 오류를 최소화하며, 답안작성의 기법을 습득하게 됩니다.</li>
+                    <li>각 과목별 중요 논점과 출제 빈도수가 높은 내용들 위주로 정리하는 단계</li>
+                    <li>객관식 문제를 푸는데 있어 이론을 적재적소에 접목시킬 수 있는 해결 능력을 배양시키는 단계</li>
                 </ul>
-                <div><span>[기출문제와 다양한 연습문제의 풀이로 문제해결능력을 향상시키고, 
-                중요 문제들을 이용하여 핵심 이론들을 정리하는 순환입니다.]</span></div>
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1110') }}" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1248') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">GS-3순환(다음 해 3~5월)</a>
+        <li class="lmTitle"><a href="#none">진도별 모의고사 (1월)</a>
             <div class="lmCts">
-                수험 이론 전반에 대한 압축(단권화)과 매일 복습 범위 모의고사가 진행되는 실전 연습을 위한 강의!
+                <div><span>실제 시험과 같은 모의고사를 진도별로 확인하고 해설 강의를 통해 실전감각을 향상시키는 강의</span></div> 
                 <ul>
-                    <li>1차 시험 후 시작되는 최종 마무리용 강의입니다. 중요 논점의 요약정리와 추가 핵심 이슈의 점검으로 
-                각 과목의 단권화가 이루어지는 과정입니다. 또한, 매일 진행되는 신작 모의고사로 문제 적응력을 높이고, 
-                자세한 강평으로 답안지 현출 능력을 향상시킬 수 있는 강의입니다. 실제 2차 논문형 시험의 난이도와 유사한 
-                연습문제풀이를 통해 수험 내용의 암기와 이론의 적용 연습이 병행됩니다.</li>
+                    <li>진도별 모의고사를 통해 실전훈련과 약점을 파악하는 단계</li>
+                    <li>축적된 기본이론과 문제풀이 해결능력으로 진도별 모의고사를 풀어봄으로써, 
+                    실제 시험과 같은 긴장을 유지하면서, 시간배분까지 컨트롤하는 연습을 하는 단계</li>
                 </ul>
-                <div><span>[각 과목 공부량을 줄이고 답안작성 능력은 끌어올리는, 실전을 대비하는 순환입니다.]</span></div>
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1111') }}" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1249') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">GS-4순환(6월)</a>
+        <li class="lmTitle"><a href="#none">최종 마무리 (2월)</a>
             <div class="lmCts">
-                매일 출제 예상 모의고사(전범위)와 강평이 진행되는 실전 감각 유지를 위한 강의!
+                <div><span>시험 전 빠르게 내용을 정리하는 핵심체크 강의</span></div> 
                 <ul>
-                    <li>출제가 예상되는 문제들로 답안 작성의 반복적인 훈련이 진행되는 4순환 과정은, 
-                단기간에 2차 논문형 시험 전반에 대한 실전 감각과 자신감을 배가시킬 수 있는 강의입니다. 
-                최근 출제경향과 시사 이슈를 적극 반영한 예상문제의 풀이와 차별화된 답안 작성을 위한 핵심 내용의 암기가 병행됩니다.</li>
+                    <li>시험 전 핵심쟁점사항과 중요이론을 빠르게 1회독 하는 단계</li>
+                    <li>취약부분을 최종적으로 확인하고 출제예상부분을 중심으로 단기간에 최종적으로 정리하는 단계</li>
                 </ul>
-                <div><span>[출제 예상문제와 핵심 이론을 확실하게 정리할 수 있는 순환입니다.]</span></div>
-                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1112') }}" class="moreBtn">강의 바로보기 ></a>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1250') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>
+    </ul>
+    <p class="goal"><span>GOAL</span></p>
+</div>
+<div class="loadMap tabContent" id="loadmap2">
+    <p class="start"><span>START</span></p>
+    <ul>
+        <li class="lmTitle"><a href="#none">기본이론(3월~6월)</a>
+            <div class="lmCts">
+                <div><span>수험에 처음 입문하는 수험생을 위한 기본강의</span></div> 
+                <ul>
+                    <li>감정평가사 자격증 취득에 가장 근본이 되는 단계</li>
+                    <li>각 과목별 이론에 대한 논리적이고 체계적인 이해를 위한 필수 단계</li>
+                </ul>                   
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1251') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>          
+        <li class="lmTitle"><a href="#none">0기 스터디(6월~8월)</a>
+            <div class="lmCts">
+                <div><span>2차 과목들의 이론 정리 완성과 답안작성(목차정리와 정렬)연습을 시작하는 강의</span></div> 
+                <ul>
+                    <li>기본이론의 반복학습과 심화이론의 정리를 통해 각 과목별 이론의 전반을 완성하는 단계</li>
+                    <li>2차 답안작성에 필요한 전반적 이론의 체계적 정리와 심화학습이 진행되며, 과목별 답안작성(목차정리와 정렬)연습을 시작하는 단계</li>
+                </ul>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1121') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>
+        <li class="lmTitle"><a href="#none">1기 스터디(9월~12월)</a>
+            <div class="lmCts">
+                <div><span>매주 과목별 50~80점 진도별 실전 모의고사를 통해 실전연습과 과목별 단권화를 위한 강의</span></div> 
+                <ul>
+                    <li>진도별 기출문제와 예상문제들을 통하여 본격적인 2차 답안작성(실전답안)을 연습하는 단계</li>
+                    <li>매주 진행되는 진도별 50~80점 모의고사와 강평으로 실전답안작성 능력을 향상시키고 강평을 통해 핵심내용의 압축과 암기가 병행되며, 중요 논점들을 학습하는 단계</li>
+                </ul>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1122') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>
+        <li class="lmTitle"><a href="#none">2기 스터디 (12월~2월)</a>
+            <div class="lmCts">
+                <div><span>매주 과목별 100점 진도별 실전 모의고사를 통해 실전연습과 중요 논점들을 정리하는 강의</span></div> 
+                <ul>
+                    <li>2단계에서 진행된 내용을 다시 한번 점검하고 진도별 예상문제들을 통하여 2차 답안작성을 완성하는 단계</li>
+                    <li>매주 진행되는 진도별 100점 실전모의고사와 강평으로 실전답안작성 능력을 완성시키고 정리강의를 통해 핵심내용과 중요 논점들을 정리하는 단계</li>
+                </ul>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1123') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>
+        <li class="lmTitle"><a href="#none">3기 스터디(3월~4월)</a>
+            <div class="lmCts">
+                <div><span>매주 100점 모의고사가 진행되는 실전 감각을 향상시키는 강의</span></div> 
+                <ul>
+                    <li>답안작성의 반복적인 훈련으로 2차 논술형 필기시험에 대한 실전감각을 유지하고 자신감과 실력을 증진 시키는 단계</li>
+                    <li>2단계, 3단계를 통해 축적한 중요 논점들을 재점검하고 문제풀이해결능력을 실전 연습하여 스스로의 문제점을 파악하고 보완하는 단계</li>
+                </ul>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1124') }}" class="moreBtn">강의 바로보기 ></a>
+            </div>
+        </li>
+        <li class="lmTitle"><a href="#none">4기 스터디(5월~6월)</a>
+            <div class="lmCts">
+                <div><span>매주 100점 모의고사가 진행되는 실전 위주의 최종정리 강의</span></div> 
+                <ul>
+                    <li>답안작성의 반복적인 훈련을 진행함과 동시에 추가적으로 감정평가사업계 각종 시사이슈를 반영한 실전 예상문제를 확실히 정리할 수 있는 단계</li>
+                    <li>완벽한 최종점검을 위해 출제경향 분석을 한 실전 시험과 강평이 진행되는 단계</li>
+                </ul>
+                <a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only?course_idx=1125') }}" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
     </ul>

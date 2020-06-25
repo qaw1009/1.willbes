@@ -42,13 +42,13 @@
         .evt01 div span {position:absolute;  display:block; width:433px; height:67px; line-height:67px; z-index:10}
         .evt01 div span:nth-child(1) {top:250px;left:460px;}
 
-        .evt01 div span:nth-child(2) {top:700px}
-        .evt01 div span:nth-child(3) {top:780px}
-        .evt01 div span:nth-child(4) {top:860px}
+        .evt01 div span:nth-child(2) {top:700px;left:200px;}
+        .evt01 div span:nth-child(3) {top:780px;left:200px;}
+        .evt01 div span:nth-child(4) {top:860px;left:200px;}
 
         .evt01 div span:nth-child(5) {top:1200px;left:460px;}
 
-        .evt01 div span:nth-child(6) {top:1740px}
+        .evt01 div span:nth-child(6) {top:1740px;left:200px;}
 
         .evt01 div span:nth-child(7) {top:2300px;left:460px;}
 
@@ -81,22 +81,22 @@
       <div class="evtCtnsBox evt01">
           
         <div>          
-          {{--국어 김새령--}}
+          {{--국어 김세령--}}
           <span><a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" >2020 소방직 국어 해설강의 및 총평&해설자료 ></a></span>
 
           {{--소방학개론/소방관계법규 김종상--}}
-          <span><a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" >2020 소방직 소방학개론 및 총평&해설자료 ></a></span>
-          <span><a href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" >2020 소방직 공채 소방관계법규 및 총평&해설자료 ></a></span>
-          <span><a href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" >2020 소방직 경채 소방관계법규 및 총평&해설자료 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/167423') }}" target="_blank" >2020 소방직 소방학개론 기출해설강의 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/167422') }}" target="_blank" >2020 소방직 공채 소방관계법규 기출해설강의 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/167420') }}" target="_blank" >2020 소방직 경채 소방관계법규 기출해설강의 ></a></span>
 
           {{--영어 이아림--}}
           <span><a href="javascript:alert('준비중입니다.')">2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
 
           {{--영어 양익--}}
-          <span><a href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" >2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
+          <span><a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" >2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
 
           {{--한국사 한경준--}}
-          <span><a href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" >2020 소방직 한국사 및 총평&해설자료 ></a></span>
+          <span><a href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" >2020 소방직 한국사 및 총평&해설자료 ></a></span>
 
           <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_01.png" title="소방직 해설강의" border="0">
         </div>
@@ -106,7 +106,7 @@
 	  <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_02.jpg" usemap="#Map1186a" title="불꽃소방팀의 합격전담반" border="0" />
         <map name="Map1186a" id="Map1186a">
-            <area shape="rect" coords="380,1071,741,1142" href="javascript:alert('준비중입니다.');">
+            <area shape="rect" coords="380,1071,741,1142" href="{{ site_url('/lecture/show/cate/3050/pattern/free/prod-code/167379') }}" target="_blank" >
         </map>     
 	  </div>
 

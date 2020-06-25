@@ -93,7 +93,7 @@
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_04.jpg" alt="사전예약" usemap="#Map1698C" border="0" />
             <map name="Map1698C">
-                <area shape="rect" coords="547,1393,824,1458" href="https://njob.willbes.net/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약">
+                <area shape="rect" coords="548,2067,825,2132" href="https://njob.willbes.net/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약">
             </map>
         </div>        
 

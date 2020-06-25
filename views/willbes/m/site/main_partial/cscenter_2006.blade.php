@@ -19,7 +19,7 @@
             <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>학원문의</strong>
-                    <span>1544-1881</span>
+                    <span>{{ ($__cfg['CateCode'] == '309002' || $__cfg['CateCode'] == '309003') ? '1544-4774' : '1544-3383' }}</span>
                     평일 08시~18시<Br>
                     주말/공휴일 가능
                 </div>

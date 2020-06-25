@@ -86,7 +86,7 @@
                     <area shape="rect" coords="327,796,790,871" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
                 </map>
                 <div class="youtubeGod">
-                    <iframe src="https://www.youtube.com/embed/bPPX2qZgSBg" frameborder="0" allowfullscreen=""></iframe>        
+                    <iframe src="https://www.youtube.com/embed/ZbL80DLO5ks?rel=0 " frameborder="0" allowfullscreen=""></iframe>        
                 </div>              
             </div>
 

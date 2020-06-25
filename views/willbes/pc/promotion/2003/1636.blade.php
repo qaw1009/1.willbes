@@ -39,6 +39,7 @@
         .evt_04_list li:last-child{padding-right:0;}
         .evt_04_list:after {content:""; display:block; clear:both}
 
+        .evt_04s {background:#FB8612}
         .evt_05 {background:#37bdc6}
         .evt_06 {background:#000 url(https://static.willbes.net/public/images/promotion/2020/05/1636_07_bg.jpg) no-repeat center top;}   
 
@@ -67,29 +68,43 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_graph.gif" alt="실전동형모의고사" />
         </div>
 
-        <div class="evtCtnsBox evt_04" id="tab02" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_01_words.jpg" alt="문구" />
-            <ul class="evt_04_list">
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_01.png" title="국어" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_01_on.png" title="국어" class="on"/>                      
-                </li>            
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_02.png" title="영어" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_02_on.png" title="영어" class="on"/>                       
-                </li>            
-                <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_03.png" title="한국사" class="off"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_03_on.png" title="한국사" class="on"/>                       
-                </li>                     
-            </ul>
-        </div>
-
         <div class="evtCtnsBox evt_03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_02.jpg" alt="선택형 패키지 신청하기" usemap="#Map1636a" border="0"/>
             <map name="Map1636a" id="Map1636a">
                 <area shape="rect" coords="126,705,995,864" href="https://pass.willbes.net/package/show/cate/3019/pack/648002/prod-code/166994" target=_blank />
             </map> 
+        </div>
+
+        <div class="evtCtnsBox evt_03s" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_03s.jpg" alt="국영사 특강" />
+        </div>
+
+        <div class="evtCtnsBox evt_04" id="tab02" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_01_words.jpg" alt="문구" />
+            <ul class="evt_04_list">
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_01.png" title="국어" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_04_01_on.png" title="국어" class="on"/>                      
+                </li>            
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_02.png" title="영어" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_04_02_on.png" title="영어" class="on"/>                       
+                </li>            
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/05/1636_04_03.png" title="한국사" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_04_03_on.png" title="한국사" class="on"/>                       
+                </li>                     
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt_04s" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_04s.jpg" alt="수강 신청" usemap="#Map1636apply" border="0" />
+            <map name="Map1636apply" id="Map1636apply">
+                <area shape="rect" coords="784,245,996,441" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161955" target="_blank" />
+                <area shape="rect" coords="195,786,324,822" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161947" target="_blank" />
+                <area shape="rect" coords="497,786,625,822" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158684" target="_blank" />
+                <area shape="rect" coords="801,787,929,821" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/161955" target="_blank" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt_06" >

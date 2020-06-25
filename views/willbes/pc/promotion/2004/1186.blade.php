@@ -93,7 +93,7 @@
           <span><a href="javascript:alert('준비중입니다.')">2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
 
           {{--영어 양익--}}
-          <span><a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" >2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
+          <span><a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" >2020 소방직 특채 영어 및 총평&해설자료 ></a></span>
 
           {{--한국사 한경준--}}
           <span><a href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" >2020 소방직 한국사 및 총평&해설자료 ></a></span>

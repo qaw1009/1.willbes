@@ -3,6 +3,13 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NSK mb40"> 
+    <div class="bnSec03">
+        <ul>
+            <li><a href="https://pass.willbes.net/m/pass/support/notice/show?board_idx=274671&s_cate_code=3059">6~8월 강의시간표</a></li>
+            <li><a href="http://cafe.daum.net/LAW-KDJTEAM" target="_blank">김동진법원팀 다음카페</a></li>
+        </ul>
+    </div>
+
     <div class="MainSlider swiper-container swiper-container-page">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
@@ -26,7 +33,7 @@
         <ul class="tabWrap mainTab">
             <li><a href="#notice1" class="on">학원<br>공지사항</a></li>
             <li><a href="#notice2">동영상<br>공지사항</a></li>
-            <li><a href="#notice3">강의<br>계획서</a></li>
+            <li><a href="#notice3">신규<br>강의안내</a></li>
         </ul>
         <div class="tabBox buttonBox noticeBox">
             <div id="notice1" class="tabContent pd20">
@@ -62,7 +69,7 @@
         </div>
     </div>
 
-    <div class="mSubTit NSK-Black" >윌비스 한림법학원 <span>이달의 강의</span></div>
+    <div class="mSubTit NSK-Black" >윌비스 김동진법원팀 <span>이달의 강의</span></div>
     <div class="thisMonth">
         <div class="swiper-container-lec">
             <div class="swiper-wrapper">
@@ -142,7 +149,7 @@
         </div>
     </div> 
 
-    <div class="mSubTit NSK-Black mt30" >윌비스 <span>대표 강의 맛보기</span></div>
+    <div class="mSubTit NSK-Black mt30" >윌비스 김동진법원팀<span>대표 강의 맛보기</span></div>
     <div class="sampleView">
         <div class="overhidden">
             <div class="swiper-container-view">
@@ -226,7 +233,7 @@
         </div>
     </div>
 
-    <div class="mSubTit NSK-Black mt30" ><span>감정평가사</span> 합격 로드맵</div>
+    <div class="mSubTit NSK-Black mt30" ><span>법원직</span> 합격 로드맵</div>
     <div class="loadMap">
         <p class="start"><span>START</span></p>
         <ul>
@@ -317,8 +324,8 @@
 
     <div class="csCenter">
         <ul class="link">
-            <li><a href="#none">동영상 1:1상담</a></li>
-            <li><a href="#none">학원 1:1상담</a></li>
+            <li><a href="https://pass.willbes.net/m/support/qna/index?s_cate_code=3035">동영상 1:1상담</a></li>
+            <li><a href="https://pass.willbes.net/m/pass/support/qna/index?s_cate_code=3059">학원 1:1상담</a></li>
             <li><a href="#none">학원 오시는 길</a></li>
         </ul>
         <ul class="tel">
@@ -335,7 +342,7 @@
                 <img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>학원문의</strong>
-                    <span>1544-4774</span>
+                    <span>1544-0330</span>
                     평일 08시~18시<Br>
                     주말/공휴일 가능
                 </div>

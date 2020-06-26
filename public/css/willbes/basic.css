@@ -1134,6 +1134,9 @@ select[disabled] {
 .bg-gray-purple {
   background: #626d82;
 }
+.bg-green {
+  background: #00b22a;
+}
 
 .bg-none {
   background: none !important;
@@ -1153,6 +1156,9 @@ select[disabled] {
 }
 .bd-deep-gray {
   border: 1px solid #707070;
+}
+.bd-green {
+  border: 1px solid #029b26;
 }
 
 .bdt-bright-gray {

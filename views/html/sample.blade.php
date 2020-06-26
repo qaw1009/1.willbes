@@ -510,8 +510,13 @@
     <li>
         <div>  
             <ul>          
-                <li><a href="#none" target="_blank">윌스토리 메인</a></li>   
-                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank">└ 교재리스트 </a></li>           
+                <li><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
+                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank">└ 도서리스트 </a></li>
+                <li><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank">└ 도서보기 </a></li> 
+                <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank">└ 베스트셀러 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank">└ 신간안내 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank">└ 출판사 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank">└ 업무제휴 문의 </a></li>   
             </ul>
         </div>
     </li>

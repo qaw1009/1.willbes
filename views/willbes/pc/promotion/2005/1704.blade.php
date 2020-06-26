@@ -46,7 +46,6 @@
                     <area shape="rect" coords="153,800,494,910" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
                     <area shape="rect" coords="539,800,963,912" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
                 </map>
-                @else
                 @endif         
         </div> 
         

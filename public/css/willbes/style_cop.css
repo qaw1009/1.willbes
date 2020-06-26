@@ -1182,7 +1182,7 @@
 
 
             .onAirTabs.tabWrap {background:#FFF; border:none; height: 35px; border-bottom: 1px solid #0c5dc0}
-            .onAirTabs.tabWrap li {width: 230px; float:left; height: 35px; margin-right: -1px;}
+            .onAirTabs.tabWrap li {width: 130px; float:left; height: 35px; margin-right: -1px;}
             .onAirTabs.tabWrap a {background:#FFF; display:block; height:34px; line-height:35px; font-weight:bold; color:#7c7c7c; border:1px solid #e1e1e1; border-bottom: none;}
             .onAirTabs.tabWrap a.on {background:#fff; color:#0c5dc0; z-index:auto; border:1px solid #0c5dc0; border-bottom: none; height:35px; line-height:35px}
             .onAirTabs.tabWrap:after {content:""; display:block; clear:both}

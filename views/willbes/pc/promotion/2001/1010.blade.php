@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01_bg.jpg) no-repeat center top}
+        .wb_cts01 {background:#0633B6 url(https://static.willbes.net/public/images/promotion/2020/06/1010_top_bg.jpg) no-repeat center top;}
         .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
 
         .wb_cts01 .giveaway {position:absolute; width:550px; left:50%; margin-left:50px; animation:only 2s infinite; z-index:11}
@@ -85,16 +85,16 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">
-                <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1010_top.jpg" alt="" />
 
                 <div class="giveaway">
-                    <a href="#event"><img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01_btn.png"  alt="" /></a>
+                    <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2020/06/1010_top_btn.png"  alt="" /></a>
                 </div>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1010_01.jpg" alt="" />
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_04.gif" alt="" usemap="#Map181127_c" border="0" />
             <map name="Map181127_c" >
                 <area shape="rect" coords="307,344,420,480" href="#tab01" alt="최근 5개년 기출문제"/>
@@ -113,6 +113,11 @@
                         <col width="15%"  />
                         <col width=""  />
                         <col width="15%"  />
+                        <tr>
+                            <td>2020년 1차</td>
+                            <td>경찰공무원(일반/101단/전의경) 채용시험 기출</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3001?board_idx=276300&s_keyword=&view_type=&page=" target="_blank">바로가기</a></td>
+                        </tr>
                         <tr>
                             <td>2019년 2차</td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출</td>
@@ -196,6 +201,16 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
+                            <td>2019년 3차</td>
+                            <td>해양경찰(순경) 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/?board_idx=258432&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
+                            <td>2019년 1차</td>
+                            <td>해양경찰(순경) 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/?board_idx=229416&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
                             <td>2018년 3차</td>
                             <td>해양경찰(함정요원) 채용시험 기출문제</td>
                             <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162332&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
@@ -249,6 +264,11 @@
                         <col width="15%"  />
                         <col width=""  />
                         <col width="15%"  />
+                        <tr>
+                            <td width="117">2020년 69기</td>
+                            <td width="374">경찰간부후보생 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/?board_idx=258409&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>
+                        </tr>
                         <tr>
                             <td width="117">2019년 68기</td>
                             <td width="374">경찰간부후보생 채용시험 기출문제</td>

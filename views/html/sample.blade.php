@@ -510,7 +510,7 @@
     <li>
         <div>  
             <ul>          
-                <li><a href="#none" target="_blank">윌스토리 메인</a></li>   
+                <li><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
                 <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank">└ 도서리스트 </a></li>
                 <li><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank">└ 도서보기 </a></li> 
                 <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank">└ 베스트셀러 </a></li>  

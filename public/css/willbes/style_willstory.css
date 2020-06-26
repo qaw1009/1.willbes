@@ -1,17 +1,18 @@
-/* Header : drop-Box */
+/* Header : drop-Box 메뉴*/
 .dropdown:hover .drop-Box-wsBook {
     display: block;
 }
 .drop-Box-wsBook {
-    display: block;
+    display: none;
     position: absolute;
     background: #fff;
     width:1120px;
     padding:20px;
-    left:-644px;
+    left:-643px;
     border: 1px solid #acacac;
     box-shadow: 5px 5px 25px #e1e1e1;    
 }
+_:-ms-fullscreen, :root .drop-Box-wsBook { left:-644px; }
 .drop-Box-wsBook:after,
 .drop-Box-wsBook:before {
     content: '';
@@ -39,13 +40,18 @@
 .Menu .drop-Box-wsBook:before {
     display: none;
 }
+.drop-Box-wsBook table {border-top:1px solid #f0f0f0}
+.drop-Box-wsBook tr {border-bottom:1px solid #f0f0f0}
+.drop-Box-wsBook tbody th {font-size: 14px; vertical-align: top; border-right:1px solid #f0f0f0; background: #f9f9f9; text-align: right; padding-right:20px}
 .one-depth {position:relative; border-bottom:1px solid #ccc;}
 .one-depth:last-child {border:0}
 .one-depth strong {display: inline-block; width: 140px; text-align: right; padding-right:15px; border-right:1px solid #e4e4e4}
 .two-depth {display: inline-block; position: relative;}
 .two-depth > a {font-size: 14px; padding:0 10px; color:#666; display:block;}
-.two-depth:hover {box-shadow: inset 0 -2px 0 #0dbe00;} 
-.two-depth:hover > a{color:#0dbe00}
+.two-depth > a span {font-size:12px; color:#ccc; margin-left:10px}
+.two-depth:hover {background: #0dbe00;} 
+.two-depth:hover > a,
+.two-depth:hover > a span {color:#fff}
 .three-depth {display:none; position:absolute; width:400px; border:2px solid #0dbe00; padding:5px 10px; background:#fff; z-index:1;} 
 .two-depth:hover .three-depth {display:block}
 .three-depth li {display:inline !important; float:left; width:25%; margin:0 !important; padding:0 !important; }

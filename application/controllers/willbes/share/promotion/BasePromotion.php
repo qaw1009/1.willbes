@@ -191,16 +191,34 @@ class BasePromotion extends \app\controllers\FrontController
             }
         }
 
-        // DP상품 조회
+        // DP상품 그룹핑
         if(empty($data['data_option_ccd']) === false && isset($data['data_option_ccd']['660005']) === true) {
-            $display_product_data = $this->eventFModel->listEventDisplayProduct($data['ElIdx']);
-            foreach ($display_product_data as $idx => $row) {
-                $display_product_data[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                $display_product_data[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
-                $display_product_data[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-                $display_product_data[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+
+            // DP상품 조회
+            $display_product_data = $this->eventFModel->listEventDisplayProductV2($data['ElIdx']);
+            $display_group_data = [];
+            foreach ($display_product_data as $key => $val) {
+                $display_group_data[$val['GroupOrderNum']][$val['LearnPatternCcd']][] = $val['ProdCode'];
             }
-            $arr_base['display_product_data'] = $display_product_data;
+
+            // DP상품 그룹핑
+            foreach ($display_group_data as $group => $data) {
+                foreach ($data as $ccd => $arr_prod_idx) {
+                    $display_group_data[$group][$ccd] = $this->eventFModel->listEventDisplayProductPartial($ccd,$arr_prod_idx);
+
+                    foreach ($display_group_data[$group][$ccd] as $idx => $row) {
+                        $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                        if($ccd == '615001'){
+                            $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                            $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                            $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                        }
+                    }
+
+                }
+            }
+
+            $arr_base['display_product_data'] = $display_group_data;
         }
 
         //모바일체크

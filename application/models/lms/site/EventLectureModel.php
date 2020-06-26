@@ -26,7 +26,8 @@ class EventLectureModel extends WB_Model
         'product' => 'lms_product',
         'event_add_apply' => 'lms_event_add_apply',
         'event_add_apply_member' => 'lms_event_add_apply_member',
-        'event_display_product' => 'lms_event_display_product'
+        'event_display_product' => 'lms_event_display_product',
+        'product_lecture' => 'lms_product_lecture',
     ];
 
     public $_groupCcd = [
@@ -2367,10 +2368,12 @@ class EventLectureModel extends WB_Model
      */
     public function listEventForDisplayProduct($el_idx)
     {
-        $column = 'DP.EdpIdx, DP.ElIdx, DP.ProdCode, DP.IsDispCart, DP.IsDispDirectPay, DP.OrderNum, DP.IsStatus, P.ProdName';
+        $column = 'DP.EdpIdx, DP.ElIdx, DP.ProdCode, DP.GroupOrderNum, DP.IsDispCart, DP.IsDispDirectPay, DP.OrderNum, DP.IsStatus, P.ProdName, PL.LearnPatternCcd, SC.CcdName';
         $from = "
             FROM {$this->_table['event_display_product']} AS DP
             LEFT OUTER JOIN {$this->_table['product']} AS P ON DP.ProdCode = P.ProdCode AND P.IsStatus = 'Y'
+            INNER JOIN {$this->_table['product_lecture']} AS PL ON DP.ProdCode = PL.ProdCode
+            INNER JOIN {$this->_table['sys_code']} AS SC ON PL.LearnPatternCcd = SC.Ccd AND SC.IsStatus='Y'
         ";
         $where = ' WHERE DP.ElIdx = ? AND DP.IsStatus = "Y"';
         $order_by_offset_limit = ' ORDER BY DP.EdpIdx ASC';
@@ -2416,6 +2419,7 @@ class EventLectureModel extends WB_Model
                     $inputData['EdpIdx'] = $input['edp_idx'][$key];
                     $inputData['ElIdx'] = $el_idx;
                     $inputData['ProdCode'] = $input['event_display_product_prod_code'][$key];
+                    $inputData['GroupOrderNum'] = $input['event_display_product_group_order'][$key];
                     $inputData['IsDispCart'] = $input['event_display_product_is_disp_cart'][$key];
                     $inputData['IsDispDirectPay'] = $input['event_display_product_is_disp_direct_pay'][$key];
                     $inputData['OrderNum'] = $input['event_display_product_order_num'][$key];

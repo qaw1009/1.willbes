@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:alert('20년 1차 적중, 곧 공개됩니다!');" >
+                        <a href="/promotion/index/cate/3001/code/1703" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3.jpg" class="off" alt="김원욱 형법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3on.jpg" class="on" alt="김원욱 형법"  />
                         </a>

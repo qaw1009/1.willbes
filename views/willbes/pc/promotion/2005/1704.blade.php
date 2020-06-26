@@ -38,13 +38,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1704_02.jpg" alt="수강신청" usemap="#Map1704a" border="0" />
                 @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
                 <map name="Map1704a" id="Map1704a">
-                    <area shape="rect" coords="153,800,494,910" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
-                    <area shape="rect" coords="539,800,963,912" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
+                    <area shape="rect" coords="153,800,494,910" href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
+                    <area shape="rect" coords="539,800,963,912" href="{{ site_url('/m/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
                 </map>
                 @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
                 <map name="Map1704a" id="Map1704a">
-                    <area shape="rect" coords="153,800,494,910" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
-                    <area shape="rect" coords="539,800,963,912" href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
+                    <area shape="rect" coords="153,800,494,910" href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
+                    <area shape="rect" coords="539,800,963,912" href="{{ site_url('/m/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only') }}" target="_blank"/>
                 </map>
                 @endif         
         </div> 

@@ -1,0 +1,185 @@
+/* Header : drop-Box */
+.dropdown:hover .drop-Box-wsBook {
+    display: block;
+}
+.drop-Box-wsBook {
+    display: block;
+    position: absolute;
+    background: #fff;
+    width:1120px;
+    padding:20px;
+    left:-644px;
+    border: 1px solid #acacac;
+    box-shadow: 5px 5px 25px #e1e1e1;    
+}
+.drop-Box-wsBook:after,
+.drop-Box-wsBook:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.drop-Box-wsBook:before {
+    top: -12px;
+    left: 50%;
+    margin-left: -6px;
+    border-color: transparent transparent #acacac;
+    border-width: 6px;
+}
+.drop-Box-wsBook:after {
+    top: -10px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent #fff;
+    border-width: 5px;
+}
+.Menu .drop-Box-wsBook:after,
+.Menu .drop-Box-wsBook:before {
+    display: none;
+}
+.one-depth {position:relative; border-bottom:1px solid #ccc;}
+.one-depth:last-child {border:0}
+.one-depth strong {display: inline-block; width: 140px; text-align: right; padding-right:15px; border-right:1px solid #e4e4e4}
+.two-depth {display: inline-block; position: relative;}
+.two-depth > a {font-size: 14px; padding:0 10px; color:#666; display:block;}
+.two-depth:hover {box-shadow: inset 0 -2px 0 #0dbe00;} 
+.two-depth:hover > a{color:#0dbe00}
+.three-depth {display:none; position:absolute; width:400px; border:2px solid #0dbe00; padding:5px 10px; background:#fff; z-index:1;} 
+.two-depth:hover .three-depth {display:block}
+.three-depth li {display:inline !important; float:left; width:25%; margin:0 !important; padding:0 !important; }
+.three-depth li a {display:block; font-size:12px; text-align:center}
+.three-depth li a:hover {color:#0dbe00}
+.three-depth:after {content: ""; display: block; clear:both}
+
+/*검색*/
+.wsSearch {width:700px; margin:40px auto 15px; padding:10px 0; padding-left:20px; border:10px solid #0b9d00; border-radius:40px; position:relative}
+.wsSearch select {        
+    background:url('/public/img/willbes/common/icon_arrow_green.png') no-repeat right center;
+    color:#0dbe00; border:0; font-size:18px; padding:0; padding-right:20px; margin-right:10px; height:30px;
+    vertical-align:middle;
+    -webkit-appearance: none !important;  /* 네이티브 외형 감추기 */
+    -moz-appearance: none !important;
+    appearance: none !important;             
+}
+.wsSearch select::-ms-expand { display: none; }   
+.wsSearch input[type="search"] {border:0; width:420px; height:30px; color:#ccc; font-size:16px}
+.wsSearch input:focus {border:0 !important; color:#1087ef}
+.wsSearch button {width:85px; height:28px; font-size: 20px; color:#0dbe00; background:none;
+    vertical-align:top; display: inline-block; position: absolute; right:20px; z-index: 1;}
+.wsSearchWrap .keyword {width:700px; margin:0 auto; text-align:center}
+.wsSearchWrap .keyword strong {color:#0b9d00; margin-right:10px; display:inline-block}
+.wsSearchWrap .keyword a {color:#6d6d6d; margin-right:10px; display:inline-block}
+
+/*퀵배너*/
+.wsBookQuick {
+    position: fixed;
+    top: 180px;
+    right: 10px;
+    width: 100px;
+    height: auto;
+    z-index: 100;
+}
+.wsBookQuick li {text-align:center; margin-bottom: 8px;}
+.wsBookQuick .bookimg {border:1px solid #cacaca; height:170px; overflow:hidden; background:#fff}
+.wsBookQuick .lastBook {height:30px; line-height: 30px; text-align: center; background:#f0f0f0;}
+.wsBookQuick .lastBook span {color:#1a8ccb}
+.wsBookQuick .QuickSlider {padding:10px}
+.wsBookQuick .QuickSlider .sliderNum {width:78px; position:relative}
+.wsBookQuick .QuickSlider .sliderNum div {position:absolute; left:0; top:0; width:78px; height:98px; overflow:hidden; z-index:10;}
+.wsBookQuick .QuickSlider .sliderNum img {width: 78px !important;}
+.wsBookQuick .QuickSlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    right: 0;
+    width: 54px;
+    height: 14px;
+    margin: 0 auto;
+}
+.wsBookQuick .QuickSlider .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.wsBookQuick .QuickSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+.wsBookQuick .cart {margin:0}
+.wsBookQuick .cart a {display:block; background:#46be4f; color:#fff; height:28px; line-height:28px}
+.wsBookQuick .order a {display:block; background:#003e7c; color:#fff; height:28px; line-height:28px}
+.wsBookQuick .top a {display:block; color:#000; height:28px; line-height:28px; border:1px solid #d9d9d9; background: #fff;}
+
+.wsBook-buyBtn ul {float:right;}
+.wsBook-buyBtn ul li {float:left; display: inline-block; margin-left:10px;}
+.wsBook-buyBtn:after,
+.wsBook-buyBtn ul:after {content: ""; display:block; clear:both}
+
+/*도서목록*/
+.wsBook-Subject {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    padding-bottom:20px;
+}
+.wsBookWrap {position:relative; clear:both;}
+.wsBookWrap .amount {font-weight: bold; position: absolute; top:25px;}
+.wsBookWrap .amount span {color:#1087ef}
+.wsBookListBox {border-top:2px solid #000}
+.wsBookListBox .wsBook {display:inline; float:left; width:50%; padding:30px; border-bottom:1px solid #c9c9c9; position:relative; min-height:270px}
+.wsBookListBox .wsBookImg {width:120px; position:absolute;}
+.wsBookListBox .wsBookImg img {width:100%;}
+.wsBookListBox .wsBookInfo {line-height:1.4; margin-left:140px;}
+.wsBookListBox .wsBookInfo li {margin-bottom:5px;  letter-spacing: normal;}
+.wsBookListBox .wsBookInfo li:last-child {margin-top:10px}
+.wsBookListBox .wsBookInfo .bookTitle {font-size:16px; color:#1a8ccc; margin-bottom:10px}
+.wsBookListBox .wsBookInfo a {margin-top:5px; display:block}
+.wsBookListBox .wsBookInfo label {cursor: pointer;}
+.wsBookListBox .wsBookInfo strong {display:inline-block; width:60px; font-weight:normal !important}
+.wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}
+.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+
+.wsBookListBox:after,
+.wsBook:after {content:""; display:block; clear:both;}
+
+/*도서상세보기*/
+.wsBookViewWrap {border-top:1px solid #e1e1e1}
+.wsBookView {margin:45px 0}
+.wsBookView .wsBookImg {display: inline-block; float:left; width: 45%; text-align: center;}
+.wsBookView .wsBookImg img {width:250px}
+.wsBookView .wsBookInfo {display: inline-block; float:left; width: 55%; letter-spacing: normal;}
+.wsBookView .wsBookInfo h5 {font-size:18px; margin-bottom:10px}
+.wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
+.wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
+.wsBookView .wsBooktxt strong.shead {display:inline-block; width:13.5%}
+.wsBookView .wsBooktxt a.another {display:inline-block; font-weight: bold; color:#0b9d00}
+.wsBookView .wsBooktxt span {display:inline-block; min-width:36%}
+.wsBookView .wsBooktxt li.total {text-align:right; font-size:16px}
+.wsBookView .wsBooktxt li.total strong {display: inline-block; width: 40%;  color:#0b9d00}
+.wsBookView .wsBooktxt a.more {display:inline-block; height: 18px; line-height: 18px; width:18px; text-align: center; font-size: 11px;
+    background:#0b9d00; color:#fff; border-radius: 4px; vertical-align: middle; margin-left:10px;}
+.wsBookView .wsBooktxt a.more .delivery {display:none;}
+.wsBookView .wsBooktxt a.more:hover .delivery {display:block; position: absolute; top:40px; left:0; text-align: left; font-size: 12px;
+    border:2px solid #0b9d00; background:#fff; color:#333; padding:20px; width: 520px; line-height: 1.5; z-index: 5;}
+.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+.wsBookView .wsBook-buyBtn {margin-top:20px}
+.wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
+.wsBookView .wsBookInfo:after,
+.wsBookView:after {content:""; display:block; clear:both;}
+
+.wsBookDetailBox {line-height: 1.7; padding:20px 0; color:#666}
+.wsBookDetailBox-img {margin:20px 0}
+.wsBookDetailBox-img img {max-width:940px}
+.wsBookDetailBox .guidanceBox {margin-bottom:30px}
+.wsBookDetailBox .guidanceBox strong {font-size:18px; padding:8px 16px; background: #0b9d00; color:#fff; display: inline-block; margin-bottom:20px}
+.wsBookDetailBox .guidanceBox li {list-style-type: disc; margin-left:20px}

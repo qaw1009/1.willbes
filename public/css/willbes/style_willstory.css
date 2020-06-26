@@ -146,10 +146,11 @@ _:-ms-fullscreen, :root .drop-Box-wsBook { left:-644px; }
 .wsBookListBox .wsBookImg {width:120px; position:absolute;}
 .wsBookListBox .wsBookImg img {width:100%;}
 .wsBookListBox .wsBookInfo {line-height:1.4; margin-left:140px;}
-.wsBookListBox .wsBookInfo li {margin-bottom:5px;  letter-spacing: normal;}
+.wsBookListBox .wsBookInfo li {letter-spacing: normal; margin-bottom:5px}
 .wsBookListBox .wsBookInfo li:last-child {margin-top:10px}
+.wsBookListBox .wsBookInfo li a:hover {color:#0b9d00}
 .wsBookListBox .wsBookInfo .bookTitle {font-size:16px; color:#1a8ccc; margin-bottom:10px}
-.wsBookListBox .wsBookInfo a {margin-top:5px; display:block}
+.wsBookListBox .wsBookInfo .bookTitle a {margin-top:5px; display:block}
 .wsBookListBox .wsBookInfo label {cursor: pointer;}
 .wsBookListBox .wsBookInfo strong {display:inline-block; width:60px; font-weight:normal !important}
 .wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}

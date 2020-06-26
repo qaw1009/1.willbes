@@ -13,7 +13,6 @@
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -23,12 +22,13 @@
 
         /************************************************************/
 
-        .wb_top {background:#ffb9b5 url(https://static.willbes.net/public/images/promotion/2020/04/1015_top_bg.jpg) no-repeat center}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/04/1015_top_bg.jpg) no-repeat center}
         .wb_evt01 {background:#fff}
-        .wb_evt02 {background:#62282b url(https://static.willbes.net/public/images/promotion/2020/04/1015_02_bg.jpg) no-repeat center}
+        .wb_evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/04/1015_02_bg.jpg) no-repeat center}
         .wb_evt03 {background:#fff}
         .wb_evt04 {background:#f4f4f4; padding-bottom:150px}
-        
+
+        #evtContainer h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

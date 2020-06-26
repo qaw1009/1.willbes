@@ -467,9 +467,11 @@
                                             <table class="table table-striped table-bordered" id="table_display_product">
                                                 <thead>
                                                     <tr>
+                                                        <th>그룹</th>
                                                         <th>강좌명</th>
                                                         <th class="hide">장바구니</th>
                                                         <th class="hide">바로결제</th>
+                                                        <th>상품종류</th>
                                                         <th>DP순서</th>
                                                         <th>삭제</th>
                                                     </tr>
@@ -480,24 +482,32 @@
                                                     @foreach($list_event_display_product as $row)
                                                         <tr>
                                                             <td>
+                                                                <select name='event_display_product_group_order[]' data-ccd = "{{$row['LearnPatternCcd']}}" class="form-control mr-10" style="min-width: 50px;">
+                                                                    @for($ii=1;$ii<10;$ii++)
+                                                                        <option value='{{$ii}}' @if($ii ==$row['GroupOrderNum']) selected="selected" @endif>{{$ii}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </td>
+                                                            <td>
                                                                 <input type="hidden" name="edp_idx[]" value="{{$row['EdpIdx']}}">
                                                                 <input type="hidden" name="event_display_product_prod_code[]" value="{{$row['ProdCode']}}">
                                                                 [{{$row['ProdCode']}}] {{$row['ProdName']}}
                                                             </td>
                                                             <td class="hide">
-                                                                <select class="form-control" name="event_display_product_is_disp_cart[]" id="event_display_product_is_disp_cart{{$i}}" style="min-width: 70px;">
+                                                                <select class="form-control" name="event_display_product_is_disp_cart[]" style="min-width: 70px;">
                                                                     <option value="Y" @if($row['IsDispCart'] == 'Y')selected="selected"@endif>사용</option>
                                                                     <option value="N" @if($row['IsDispCart'] == 'N')selected="selected"@endif>미사용</option>
                                                                 </select>
                                                             </td>
                                                             <td class="hide">
-                                                                <select class="form-control" name="event_display_product_is_disp_direct_pay[]" id="event_display_product_is_disp_direct_pay{{$i}}" style="min-width: 70px;">
+                                                                <select class="form-control" name="event_display_product_is_disp_direct_pay[]" style="min-width: 70px;">
                                                                     <option value="Y" @if($row['IsDispDirectPay'] == 'Y')selected="selected"@endif>사용</option>
                                                                     <option value="N" @if($row['IsDispDirectPay'] == 'N')selected="selected"@endif>미사용</option>
                                                                 </select>
                                                             </td>
+                                                            <td>{{$row['CcdName']}}</td>
                                                             <td>
-                                                                <input type="text" name="event_display_product_order_num[]" id="event_display_product_order_num{{$i}}" value="{{$row['OrderNum']}}">
+                                                                <input type="text" name="event_display_product_order_num[]" value="{{$row['OrderNum']}}">
                                                             </td>
                                                             <td>
                                                                 <a href="#none" class="btn-display-product-delete" data-edp-idx="{{$row['EdpIdx']}}">
@@ -994,6 +1004,35 @@
                     alert('운영사이트가 학원인 경우 카테고리는 하나만 선택 가능합니다.');
                     return;
                 }
+
+                // 같은 상품종류만 그룹핑 가능 순차 비교
+                var set_group_cnt = $regi_form.find("select[name^='event_display_product_group_order']").length;
+                if(set_group_cnt > 1){
+                    var is_break = false;
+                    var s_pointer = 1;
+
+                    $regi_form.find("select[name^='event_display_product_group_order']").each(function() {
+                        for(var i=s_pointer;i<set_group_cnt;i++){
+                            var group_idx = $("select[name^='event_display_product_group_order']").eq(i).val();
+                            var group_ccd = $("select[name^='event_display_product_group_order']").eq(i).data('ccd');
+
+                            if($(this).val() == group_idx){
+                                if($(this).data('ccd') != group_ccd){
+                                    is_break = true;
+                                    break;
+                                    return false;
+                                }
+                            }
+                        }
+                        s_pointer++;
+                    });
+
+                    if(is_break == true) {
+                        alert('같은 상품종류로만 그룹 셋팅 가능합니다.');
+                        return false;
+                    }
+                }
+
                 getEditorBodyContent($editor_profile);
                 getEditorBodyContent($promotion_editor_profile);
                 var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
@@ -1080,7 +1119,7 @@
                 $('.btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
                         + '&prod_type=' + p_prod_type + '&return_type=inline&target_id=' + event_product_target_id + '&target_field=' + event_product_target_field
-                        + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture,adminpack_lecture,periodpack_lecture&is_event=Y',
+                        + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture&is_event=Y',
                     'width' : 1400
                 });
                 {{--
@@ -1138,23 +1177,31 @@
 
                     html += '<tr>';
                     html += '	<td>';
+                    html += '	<select name="event_display_product_group_order[]" data-ccd="' + data.learnPatternCcd + '" class="form-control mr-10" style="min-width: 50px;">';
+                                for(var i=1;i<10;i++) {
+                    html += '       <option value="' + i + '">' + i + '</option>';
+                                }
+                    html += '	</select>';
+                    html += '	</td>';
+                    html += '	<td>';
                     html += '		<input type="hidden" name="edp_idx[]" value=""> [' + code + '] ' + Base64.decode(data.prodName);
                     html += '		<input type="hidden" name="event_display_product_prod_code[]" value="' + code + '">';
                     html += '	</td>';
                     html += '	<td class="hide">';
-                    html += '		<select class="form-control" name="event_display_product_is_disp_cart[]" id="event_display_product_is_disp_cart' + dp_prod_num + '" style="min-width: 70px;">';
+                    html += '		<select class="form-control" name="event_display_product_is_disp_cart[]" style="min-width: 70px;">';
                     html += '			<option value="Y">사용</option>';
                     html += '			<option value="N">미사용</option>';
                     html += '		</select>';
                     html += '	</td>';
                     html += '	<td class="hide">';
-                    html += '		<select class="form-control" name="event_display_product_is_disp_direct_pay[]" id="event_display_product_is_disp_direct_pay' + dp_prod_num + '" style="min-width: 70px;">';
+                    html += '		<select class="form-control" name="event_display_product_is_disp_direct_pay[]" style="min-width: 70px;">';
                     html += '			<option value="Y">사용</option>';
                     html += '			<option value="N">미사용</option>';
                     html += '		</select>';
                     html += '	</td>';
+                    html += '	<td>' + data.learnPatternCcdName + '</td>';
                     html += '	<td>';
-                    html += '		<input type="text" name="event_display_product_order_num[]" id="event_display_product_order_num' + dp_prod_num + '" value="999">';
+                    html += '		<input type="text" name="event_display_product_order_num[]" value="999">';
                     html += '	</td>';
                     html += '	<td>';
                     // html += '		<a href="#none" class="btn-display-product-delete" data-edp-idx="">';

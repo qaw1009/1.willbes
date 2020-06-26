@@ -41,7 +41,10 @@ class EventFModel extends WB_Model
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'event_display_product' => 'lms_event_display_product',
-        'product_on_lecture' => 'vw_product_on_lecture'
+        'product_on_lecture' => 'vw_product_on_lecture',
+        'product_adminpack_lecture' => 'vw_product_adminpack_lecture',
+        'product_periodpack_lecture' => 'vw_product_periodpack_lecture',
+        'product_lecture' => 'lms_product_lecture',
     ];
 
     //등록파일 rule 설정
@@ -1807,6 +1810,102 @@ class EventFModel extends WB_Model
         $order_by_offset_limit = " GROUP BY ST.result ORDER BY COUNT(*) DESC";
 
         return $this->_conn->query('SELECT ' . $column . $from . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
+    /**
+     * 이벤트 DP상품 세부데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
+     * @param $learn_code
+     * @param array $arr_prod_idx
+     * @return mixed
+     */
+    public function listEventDisplayProductPartial($learn_code,$arr_prod_idx)
+    {
+        if(empty($learn_code) === true || empty($arr_prod_idx) === true) {
+            return false;
+        }
+
+        $column = "ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,";
+
+        if($learn_code == '615001'){ // 단강좌
+            $table_name = "product_on_lecture";
+            $column .= " IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData";
+            $arr_condition = [
+                'EQ' => [
+                    'wIsUse' => 'Y',
+                    'LecSaleType' => 'N',
+                    'SaleStatusCcd' => '618001'
+                ],
+            ];
+        }else if($learn_code == '615003'){ // 운영자패키지
+            $table_name = "product_adminpack_lecture";
+            $column .= " StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount";
+            $arr_condition = [
+                'IN' => [
+                    'SaleStatusCcd' => ['618001','618002']
+                ]
+            ];
+        }else if($learn_code == '615004'){ // 기간제패키지
+            $table_name = "product_periodpack_lecture";
+            $column .= " StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount";
+            $arr_condition = [
+                'EQ' => [
+                    'SaleStatusCcd' => '618001'
+                ]
+            ];
+        }
+
+        $from = " FROM {$this->_table[$table_name]} ";
+
+        $default_arr_condition = [
+            'EQ' => [
+                'IsUse' => 'Y',
+                'IsSaleEnd' => 'N'
+            ],
+            'LTE' => [
+                'SaleStartDatm' => date('Y-m-d H:i:s')
+            ],
+            'GTE' => [
+                'SaleEndDatm' => date('Y-m-d H:i:s')
+            ],
+            'IN' => [
+                'ProdCode' => $arr_prod_idx
+            ]
+        ];
+
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
+        $prod_ids = implode(',', $arr_prod_idx);
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = ' ORDER BY FIELD(ProdCode,' . $prod_ids . ')';
+        $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
+        return $query->result_array();
+    }
+
+    /**
+     * 이벤트 DP상품 데이터 조회 V2
+     * @param $el_idx
+     * @return mixed
+     */
+    public function listEventDisplayProductV2($el_idx)
+    {
+        $column = "A.ProdCode, A.GroupOrderNum, B.LearnPatternCcd";
+
+        $from = "
+            FROM {$this->_table['event_display_product']} AS A
+            INNER JOIN {$this->_table['product_lecture']} AS B ON A.ProdCode = B.ProdCode
+        ";
+
+        $arr_condition = [
+            'EQ' => [
+                'A.ElIdx' => $el_idx,
+                'A.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = ' ORDER BY A.GroupOrderNum ASC, A.OrderNum ASC';
+        $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
+        return $query->result_array();
     }
 
     /**

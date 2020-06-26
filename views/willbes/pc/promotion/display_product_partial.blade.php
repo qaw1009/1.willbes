@@ -3,6 +3,7 @@
         .btnCart:hover { background: #707070 !important; }
         .btnBuy:hover { border: 1px solid #0d74ae !important; background: #1a8ccb !important; }
         .visi-hidden {visibility: hidden !important;}
+        #event_display_product_list h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
     <form id="dp_prod_form" name="dp_prod_form" method="POST" onsubmit="return false;" novalidate="">
         {!! csrf_field() !!}

@@ -14,14 +14,14 @@
         <div id="event_display_product_list" class="proLecList">
 
             @foreach($arr_base['display_product_data'] as $group => $data)
-                @if(count($data) > 0)
+                @if(empty($data) === false)
                     @foreach($data as $ccd => $val)
                         @if($ccd == '615001')
                             <div class="proLecList">
                                 <h1>단과 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                 <div class="willbes-Lec-Table mt20">
-                                    @if(count($val) > 0)
+                                    @if(empty($val) === false)
                                         @foreach($val as $key => $row)
                                             <table cellspacing="0" cellpadding="0" class="lecTable">
                                                 <colgroup>
@@ -154,7 +154,7 @@
                                             <col width="120px;">
                                         </colgroup>
                                         <tbody>
-                                        @if(count($val) > 0)
+                                        @if(empty($val) === false)
                                             @foreach($val as $key => $row)
                                                 <tr>
                                                     <td>{{$row['CourseName']}}</td>
@@ -197,12 +197,12 @@
                                             <col width="120px;">
                                         </colgroup>
                                         <tbody>
-                                            @if(count($val) > 0)
+                                            @if(empty($val) === false)
                                                 @foreach($val as $key => $row)
                                                     <tr>
                                                         <td class="w-data tx-left">
                                                             <div class="w-tit">
-                                                                <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                                <a href="{{ site_url('/periodPackage/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                                             </div>
                                                             <dl class="w-info">
                                                                 <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span> <span class="row-line">|</span>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
@@ -215,7 +215,7 @@
                                                             @foreach($row['ProdPriceData'] as $price_row)
                                                                 @if($loop -> index === 1)
                                                                     <td class="strong"><span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>  (↓{{ number_format($price_row['SalePrice'] - $price_row['RealSalePrice'],0) }}원)</td>
-                                                                    <td><a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}" class="lecbuy">수강신청</a></td>
+                                                                    <td><a href="{{ site_url('/periodPackage/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}" class="lecbuy">수강신청</a></td>
                                                                 @endif
                                                             @endforeach
                                                         @endif

@@ -290,7 +290,6 @@
                             {{--var $result = cartNDirectPay($dp_prod_form, $is_direct_pay, $is_redirect);--}}
                     var $result = addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect, 'on');
 
-                    console.log($dp_prod_form{{$group_num}}.find('input[name="prod_code[]"]:checked'));
                     if ($is_redirect === 'N' && $result === true) {
                         $buy_layer{{$group_num}}.find('.pocketBox').css('display','none').show();
                         $buy_layer{{$group_num}}.addClass('active');

@@ -79,7 +79,7 @@ class EventFModel extends WB_Model
         'option' => [
             'regist_list' => '660001',
             'comment_list' => '660002',
-            'send_sms' => '660003'
+            'send_sms' => '660003',
         ]
     ];
 
@@ -105,6 +105,13 @@ class EventFModel extends WB_Model
         '718005' => '2008',     // 경찰간부
         '718006' => '2009',     // 취업
         '718007' => '2007',     // 어학
+    ];
+
+    // 이벤트 상품 그룹 구분
+    private $_event_group_type = [
+        '615001' => 'ProductOn',        // 단강좌
+        '615003' => 'ProductAdminpack', // 운영자패키지
+        '615004' => 'ProductPeriodpack' // 기간제패키지
     ];
 
     // 회원의 관심직렬이 없을경우 default 세팅
@@ -1813,53 +1820,40 @@ class EventFModel extends WB_Model
     }
 
     /**
-     * 이벤트 DP상품 세부데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
+     * 이벤트 DP상품 그룹별 데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
      * @param $learn_code
      * @param array $arr_prod_idx
      * @return mixed
      */
-    public function listEventDisplayProductPartial($learn_code,$arr_prod_idx)
+    public function listEventDisplayProductGroup($learn_code,$arr_prod_idx)
     {
         if(empty($learn_code) === true || empty($arr_prod_idx) === true) {
             return false;
         }
 
-        $column = "ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,";
+        return $this->{$this->_event_group_type[$learn_code] . 'Lecture'}($arr_prod_idx);
+    }
 
-        if($learn_code == '615001'){ // 단강좌
-            $table_name = "product_on_lecture";
-            $column .= " IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData";
-            $arr_condition = [
-                'EQ' => [
-                    'wIsUse' => 'Y',
-                    'LecSaleType' => 'N',
-                    'SaleStatusCcd' => '618001'
-                ],
-            ];
-        }else if($learn_code == '615003'){ // 운영자패키지
-            $table_name = "product_adminpack_lecture";
-            $column .= " StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount";
-            $arr_condition = [
-                'IN' => [
-                    'SaleStatusCcd' => ['618001','618002']
-                ]
-            ];
-        }else if($learn_code == '615004'){ // 기간제패키지
-            $table_name = "product_periodpack_lecture";
-            $column .= " StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount";
-            $arr_condition = [
-                'EQ' => [
-                    'SaleStatusCcd' => '618001'
-                ]
-            ];
-        }
+    /**
+     * 단과 강좌 조회
+     * @param array $arr_prod_idx
+     * @return array
+     */
+    private function ProductOnLecture($arr_prod_idx){
+        $column = "
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
+            IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData
+        ";
 
-        $from = " FROM {$this->_table[$table_name]} ";
+        $from = " FROM {$this->_table['product_on_lecture']} ";
 
-        $default_arr_condition = [
+        $arr_condition = [
             'EQ' => [
                 'IsUse' => 'Y',
-                'IsSaleEnd' => 'N'
+                'wIsUse' => 'Y',
+                'IsSaleEnd' => 'N',
+                'LecSaleType' => 'N',
+                'SaleStatusCcd' => '618001'
             ],
             'LTE' => [
                 'SaleStartDatm' => date('Y-m-d H:i:s')
@@ -1872,14 +1866,87 @@ class EventFModel extends WB_Model
             ]
         ];
 
-        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $prod_ids = implode(',', $arr_prod_idx);
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by_offset_limit = ' ORDER BY FIELD(ProdCode,' . $prod_ids . ')';
         $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
         return $query->result_array();
     }
+
+    /**
+     * 운영자패키지 조회
+     * @param array $arr_prod_idx
+     * @return array
+     */
+    private function ProductAdminpackLecture($arr_prod_idx){
+        $column = " 
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,
+            StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+        ";
+
+        $from = " FROM {$this->_table['product_adminpack_lecture']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'IsUse' => 'Y',
+                'IsSaleEnd' => 'N'
+            ],
+            'LTE' => [
+                'SaleStartDatm' => date('Y-m-d H:i:s')
+            ],
+            'GTE' => [
+                'SaleEndDatm' => date('Y-m-d H:i:s')
+            ],
+            'IN' => [
+                'SaleStatusCcd' => ['618001','618002'],
+                'ProdCode' => $arr_prod_idx
+            ]
+        ];
+
+        $prod_ids = implode(',', $arr_prod_idx);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = ' ORDER BY FIELD(ProdCode,' . $prod_ids . ')';
+        $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
+        return $query->result_array();
+    }
+
+    /**
+     * 기간제패키지 조회
+     * @param array $arr_prod_idx
+     * @return array
+     */
+    private function ProductPeriodpacklecture($arr_prod_idx){
+        $column = "
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
+            StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+        ";
+
+        $from = " FROM {$this->_table['product_periodpack_lecture']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'IsUse' => 'Y',
+                'IsSaleEnd' => 'N',
+                'SaleStatusCcd' => '618001'
+            ],
+            'LTE' => [
+                'SaleStartDatm' => date('Y-m-d H:i:s')
+            ],
+            'GTE' => [
+                'SaleEndDatm' => date('Y-m-d H:i:s')
+            ],
+            'IN' => [
+                'ProdCode' => $arr_prod_idx
+            ]
+        ];
+
+        $prod_ids = implode(',', $arr_prod_idx);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = ' ORDER BY FIELD(ProdCode,' . $prod_ids . ')';
+        $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
+        return $query->result_array();
+    }
+
 
     /**
      * 이벤트 DP상품 데이터 조회 V2

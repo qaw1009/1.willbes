@@ -91,13 +91,7 @@
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_01.jpg" usemap="#Map1670b" title="무료특강&질문하기" border="0" >
-                <map name="Map1670b" id="Map1670b">
-                    <area shape="rect" coords="520,463,1019,615" href="#apply" />
-                    <area shape="rect" coords="527,702,755,851" href="#apply" />
-                    <area shape="rect" coords="790,702,1020,851" href="#apply" />
-                    <area shape="rect" coords="527,871,755,1020" href="#apply" />
-                </map>                
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_01.jpg" title="무료특강&질문하기" >               
                 {{--댓글url--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_normal_partial')

@@ -76,7 +76,7 @@
         .evt04 .slidesLec li span {width:130px; display:inline-block}
         .evt04 .slidesLec:after {content:""; display:block; clear:both}
         .evt04 .evt04Sec2 {position:relative;}
-        .evt04 .slide_con { width:784px; position:absolute; top:1040px; left:50%; margin-left:-392px; z-index:1}
+        .evt04 .slide_con { width:784px; position:absolute; top:575px; left:50%; margin-left:-392px; z-index:1}
         .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px !important; height:45px !important; z-index:10}
         .evt04 .slide_con p.leftBtn {left:-22px}
         .evt04 .slide_con p.rightBtn {right:-22px}
@@ -301,7 +301,8 @@
             </div>
         
             <div class="evt04Sec2">  
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02.jpg"  alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_04_02.jpg"  alt="" />
+                {{--
                 <div class="leclist">
                     <ul class="slidesLec">
                         <li>
@@ -331,7 +332,9 @@
                         </li>			
                     </ul>
                 </div>
-
+                --}}
+        
+                    
                 <div class="slide_con">
                     <ul id="slidesImg3">
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02_txt01.jpg" alt="1" /></li>
@@ -342,6 +345,7 @@
                     <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_arrowL.png"></a></p>
                     <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_arrowR.png"></a></p>
                 </div>
+              
             </div>
 
             <div>

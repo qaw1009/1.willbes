@@ -564,8 +564,8 @@ body.memBody #Footer {
         to{color:#fff}
         }
 .introBox3 .bigType li:nth-of-type(even) a {margin-right:0;}
-.introBox3 .bigType li:last-child {width:100%}
-/*.introBox3 .bigType li:last-child a {margin-right:0}*/
+/*.introBox3 .bigType li:last-child {width:100%}*/
+.introBox3 .bigType li:last-child a {margin-right:0}
 .introBox3 .bigType:after {content:""; display:block; clear:both}
 .introBox3 .etc > a {display:block; padding:10px; border:1px solid #808080; font-size:14px; color:#fff; margin-bottom:10px}
 .introBox3 .etc > a:hover {background: #ffff00; border:1px solid #ffff00; color:#000}

@@ -55,12 +55,7 @@
         <div class="evtCtnsBox wb_evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04_title.jpg" title="기본이론 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
-                여기에 추가 문구 들어갑니다. 그룹3번 테스트 입니다.
                 @include('willbes.pc.promotion.display_product_partial')
-                여기에 추가 문구 들어갑니다. 그룹1번 테스트 입니다.
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                여기에 추가 문구 들어갑니다. 그룹2번 테스트 입니다.
             @else
                 <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04.jpg" usemap="#Map1015b" title="기본이론 강좌" border="0" />
                 <map name="Map1015b" id="Map1015b">

@@ -60,22 +60,22 @@
             <div class="tabContaier">  
                 <ul class="NGEB">
                     <li><a href="#tab01" class="active">영어 안성호</a></li>
-                    <li><a href="#tab02">국어 박경미</a></li>
+                    <li><a href="#tab02">국어 박영미</a></li>
                     <li><a href="#tab03">한국사 김민규</a></li>
-                    <li><a href="#tab04">소방학/법규 이중희</a></li>
+                    <li><a href="#tab04">소방학/법규 이종오</a></li>
                 </ul>
             </div>
             <div id="tab01" class="tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents01.jpg" alt="안성호"/>
             </div>
             <div id="tab02" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents02.jpg" alt="박경미"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents02.jpg" alt="박영미"/>
             </div>
             <div id="tab03" class="tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents03.jpg" alt="김민규"/>
             </div>
             <div id="tab04" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents04.jpg" alt="이중희"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_03_contents04.jpg" alt="이종오"/>
             </div>
         </div>
         

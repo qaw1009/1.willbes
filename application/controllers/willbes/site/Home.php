@@ -8,6 +8,7 @@ class Home extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
     private $_category_mobile = [
+        '2003' => ['3035'],
         '2005' => 'all',
         '2006' => ['309002','309003','309004']
     ];
@@ -160,6 +161,15 @@ class Home extends \app\controllers\FrontController
                 $target_time = '2011-01-03 00:00:00';
                 $data['Interval_time'] = number_format(floor((strtotime(date('Y-m-d H:i:s')) - strtotime($target_time)) / 3600));
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
+            }
+        } else {
+            if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
+                $s_cate_code = $cate_code;
+                $data['off_notice'] = $this->_boardNoticeForPassCate(5, $s_cate_code);
+                $data['arr_main_banner'] = $this->_banner($s_cate_code);
+                $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
+                $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
+                $data['board_lecture_infomation'] = $this->_boardLectureInformation(5, $s_cate_code);
             }
         }
 
@@ -518,6 +528,27 @@ class Home extends \app\controllers\FrontController
 
     }
 
+    /**
+     * 학원 <-> 온라인에 매핑된 카테고리 공지사항 조회
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _boardNoticeForPassCate($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => 45
+                ,'b.IsUse' => 'Y'
+                ,'d.OnOffLinkCateCode' => $cate_code
+            ]
+        ];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, '', $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
 
     /**
      * 캠퍼스별 공지사항 조회
@@ -612,6 +643,28 @@ class Home extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => 109
+                ,'b.IsUse' => 'Y'
+                ,'d.OnOffLinkCateCode' => $cate_code
+            ]
+        ];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, '', $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 신규강의안내 조회
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _boardLectureInformation($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => 78
                 ,'b.IsUse' => 'Y'
                 ,'d.OnOffLinkCateCode' => $cate_code
             ]

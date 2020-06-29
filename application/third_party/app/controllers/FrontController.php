@@ -317,7 +317,7 @@ abstract class FrontController extends BaseController
             // 현재 URL의 메뉴정보 추출
             foreach ($mobile_menu_urls as $menu_route_idx => $menu_url) {
                 // 트리 메뉴에 GNB 메뉴가 있을 경우 GNB 메뉴 기준으로 체크 (LNB 메뉴는 체크 제외)
-                if (array_has($mobile_tree_menus, 'GNB') === true && strpos($menu_route_idx, '.GNB.') === false) {
+                if (array_has($mobile_tree_menus, 'GNB') === true && strpos($menu_route_idx, '.LNB.') !== false) {
                     continue;
                 }
 
@@ -333,7 +333,12 @@ abstract class FrontController extends BaseController
                     if ((empty($check_menu_postfix) === true)
                         || (empty($check_menu_postfix) === false && strpos($uri_post_string, $check_menu_postfix) !== false)) {
                         $_active_route_idx = $menu_route_idx;
-                        break;
+
+                        // LNB 메뉴이거나 GNB 메뉴 URI에 카테고리 정보가 있을 경우만 break 처리
+                        if (strpos($_active_route_idx, '.LNB.') !== false
+                            || strpos('/' . $check_menu_postfix, '/' . config_get('uri_segment_keys.cate') . '/') !== false) {
+                            break;
+                        }
                     }
                 }
             }

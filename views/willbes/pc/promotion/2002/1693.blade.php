@@ -35,7 +35,7 @@
 
         <ul class="sky">
             <li>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1677" target="_blank"> 
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1701" target="_blank"> 
                     <img src="https://static.willbes.net/public/images/promotion/2020/06/1693_sky.jpg" alt="추천강좌 신청하기" >
                 </a>
             </li>            

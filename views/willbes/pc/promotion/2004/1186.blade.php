@@ -22,6 +22,9 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+
         .evtTop {background:#B7130F url(https://static.willbes.net/public/images/promotion/2020/06/1186_top_bg.jpg) no-repeat center top;}
 
          /* 슬라이드배너 */
@@ -61,6 +64,12 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
 
+    <div class="skybanner">
+        <ul>          
+            <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a></li>
+        </ul>
+    </div>   
+
       <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_top.gif" title="소방전담 교수님의 완벽분석 해설강의">
       </div>
@@ -90,7 +99,7 @@
           <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/167420') }}" target="_blank" >2020 소방직 경채 소방관계법규 기출해설강의 ></a></span>
 
           {{--영어 이아림--}}
-          <span><a href="javascript:alert('준비중입니다.')">2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
+          <span><a href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[2] }} @endif">2020 소방직 공채 영어 및 총평&해설자료 ></a></span>
 
           {{--영어 양익--}}
           <span><a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" >2020 소방직 특채 영어 및 총평&해설자료 ></a></span>

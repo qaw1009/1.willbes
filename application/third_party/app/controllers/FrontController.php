@@ -323,11 +323,14 @@ abstract class FrontController extends BaseController
 
                 // controller check
                 if (starts_with($menu_url, site_url() . $check_menu_prefix) === true) {
+                    // 메뉴 URI
+                    $menu_path = parse_url($menu_url, PHP_URL_PATH);
+
                     // 현재 URL의 후위 uri string
                     $uri_post_string = urldecode(str_first_pos_after($uri_string, $check_menu_prefix . $this->router->method . '/', ''));
 
                     // 메뉴 URL에서 method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
-                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_url, $check_menu_prefix), '/', '');
+                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/', '');
 
                     // controller 만으로 체크 가능 || controller + 후위 uri string 으로 체크
                     if ((empty($check_menu_postfix) === true)

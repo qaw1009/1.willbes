@@ -204,7 +204,7 @@ class BasePromotion extends \app\controllers\FrontController
             // DP상품 그룹핑
             foreach ($display_group_data as $group => $data) {
                 foreach ($data as $ccd => $arr_prod_idx) {
-                    $display_group_data[$group][$ccd] = $this->eventFModel->listEventDisplayProductPartial($ccd,$arr_prod_idx);
+                    $display_group_data[$group][$ccd] = $this->eventFModel->listEventDisplayProductGroup($ccd,$arr_prod_idx);
 
                     foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                         $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);

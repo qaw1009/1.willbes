@@ -3,7 +3,25 @@
 
 {{-- 교수진 소개 --}}
 @section('mega_menu_professor')
-    @if($__cfg['SiteCode'] == '2005')
+    @if($__cfg['SiteCode'] == '2003')
+        {{-- 공무원 --}}
+        @if($menu_cate_code == '3035')
+            {{-- 법원직 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50065?subject_idx=1107') }}">이현나</a></li>
+                <li><span>영어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50651?subject_idx=1108') }}">박초롱</a></li>
+                <li><span>한국사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50571?subject_idx=1109') }}">임진석</a></li>
+                <li><span>헌법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50591?subject_idx=1114') }}">이국령</a></li>
+                <li><span>형법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50073?subject_idx=1116') }}">문형석</a></li>
+                <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50685?subject_idx=1117') }}">유안석</a></li>
+                <li><span>민법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50519?subject_idx=1118') }}">김동진</a></li>
+                <li><span>민사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50145?subject_idx=1119') }}">이덕훈</a></li>
+            </ul>
+        @endif
+    @elseif($__cfg['SiteCode'] == '2005')
         {{-- 고등고시온라인 --}}
         @if($menu_cate_code == '3094')
             {{-- 5급행정 --}}
@@ -458,7 +476,39 @@
 
 {{-- 수강신청 --}}
 @section('mega_menu_lecture')
-    @if($__cfg['SiteCode'] == '2005')
+    @if($__cfg['SiteCode'] == '2003')
+        {{-- 공무원온라인 --}}
+        @if($menu_cate_code == '3035')
+            {{-- 법원직 --}}
+            <ul>
+                <li>
+                    <span>순환별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY') }}">예비순환</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D') }}">1순환(기본)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D') }}">2순환(심화)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D') }}">3순환(핵심)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D') }}">4순환(진도별모고)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D') }}">5순환(실전모고)</a>
+                </li>
+                <li>
+                    <span>과목별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1107') }}">국어</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1108') }}">영어</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1109') }}">한국사</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1114') }}">헌법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1116') }}">형법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1117') }}">형사소송법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1118') }}">민법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1119') }}">민사소송법</a>
+                </li>
+                <li>
+                    <span>패키지</span>
+                    <a href="{{ front_url('/package/index/cate/' . $menu_cate_code . '/pack/648001') }}">순환별패키지</a>
+                    <a href="{{ front_url('/periodPackage/show/cate/' . $menu_cate_code . '/pack/648001/prod-code/163827') }}">법원직PASS</a>
+                </li>
+            </ul>
+        @endif
+    @elseif($__cfg['SiteCode'] == '2005')
         {{-- 고등고시온라인 --}}
         @if($menu_cate_code == '3094')
             {{-- 5급행정 --}}

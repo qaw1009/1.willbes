@@ -1,21 +1,26 @@
 @if(empty($arr_base['display_product_data']) === false)
+    @if(empty($group_num))
+        @php $group_num = 1; @endphp
+    @endif
+    @if($group_num == 1)
     <style>
         .btnCart:hover { background: #707070 !important; }
         .btnBuy:hover { border: 1px solid #0d74ae !important; background: #1a8ccb !important; }
         .visi-hidden {visibility: hidden !important;}
-        #event_display_product_list h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
+        #event_display_product_list1 h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
-    <form id="dp_prod_form" name="dp_prod_form" method="POST" onsubmit="return false;" novalidate="">
+    @endif
+    <form id="dp_prod_form{{$group_num}}" method="POST" onsubmit="return false;" novalidate="">
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
         <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
         <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
         <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
-        <div id="event_display_product_list" class="proLecList">
+        <div id="event_display_product_list{{$group_num}}" class="proLecList">
 
             @foreach($arr_base['display_product_data'] as $group => $data)
-                @if(empty($data) === false)
+                @if(empty($data) === false && $group == $group_num)
                     @foreach($data as $ccd => $val)
                         @if($ccd == '615001')
                             <div class="proLecList">
@@ -37,7 +42,7 @@
                                                     <td rowspan="2" class="pt20"><img src="{{$row['ProfReferData']['lec_list_img']}}" alt="{{$row['ProfNickName']}}"></td>
                                                     <td rowspan="2" class="w-data tx-left p_re">
                                                         <div class="w-tit">
-                                                            <a href="javascript:goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'only');">{{$row['ProdName']}}</a>
+                                                            <a href="{{ site_url('/lecture/show/cate/').$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                                         </div>
                                                         <dl class="w-info">
                                                             <dt>강의촬영(실강) : {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
@@ -234,8 +239,8 @@
                 @endif
             @endforeach
 
-            <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
-                <div id="pocketBox" class="pocketBox">
+            <div id="buy_layer{{$group_num}}" class="willbes-Lec-buyBtn-sm NG">
+                <div class="pocketBox">
                     해당 상품이 장바구니에 담겼습니다.<br/>
                     장바구니로 이동하시겠습니까?
                     <ul class="NSK mt20">
@@ -247,10 +252,12 @@
         </div>
     </form>
 
+    @if($group_num == 1)
     <script src="/public/js/willbes/product_util.js"></script>
+    @endif
     <script type="text/javascript">
-        var $dp_prod_form = $('#dp_prod_form');
-        var $buy_layer = $('#buy_layer');
+        var $dp_prod_form{{$group_num}} = $('#dp_prod_form{{$group_num}}');
+        var $buy_layer{{$group_num}} = $('#buy_layer{{$group_num}}');
         var $is_show = location.href.indexOf('show') > -1;
         var $is_professor =  location.href.indexOf('professor') > -1;
 
@@ -258,62 +265,39 @@
             if ($is_show === false || $is_professor === true) {
                 // 목록 페이지
                 // 상품 선택/해제
-                $dp_prod_form.on('change', '.chk_products, .chk_books', function() {
-                    showBuyLayer('on', $(this), 'buy_layer');
-                    setCheckLectureProduct($dp_prod_form, $(this), '', '', '', '');
+                $dp_prod_form{{$group_num}}.on('change', '.chk_products, .chk_books', function() {
+                    showBuyLayer('on', $(this), 'buy_layer{{$group_num}}');
+                    setCheckLectureProduct($dp_prod_form{{$group_num}}, $(this), '', '', '', '');
                 });
 
                 // 장바구니 이동 버튼 클릭
-                $buy_layer.on('click', '.answerBox_block', function() {
-                    goCartPage(getCartType($dp_prod_form),'on');
+                $buy_layer{{$group_num}}.on('click', '.answerBox_block', function() {
+                    goCartPage(getCartType($dp_prod_form{{$group_num}}),'on');
                 });
 
                 // 계속구매 버튼 클릭
-                $buy_layer.on('click', '.waitBox_block', function() {
-                    $buy_layer.find('.pocketBox').css('display','none').hide();
-                    $buy_layer.removeClass('active');
+                $buy_layer{{$group_num}}.on('click', '.waitBox_block', function() {
+                    $buy_layer{{$group_num}}.find('.pocketBox').css('display','none').hide();
+                    $buy_layer{{$group_num}}.removeClass('active');
                 });
 
                 // 장바구니, 바로결제 버튼 클릭
-                $('button[name="btn_cart"], button[name="btn_direct_pay"]').on('click', function() {
+                $dp_prod_form{{$group_num}}.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function() {
                             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                     var $is_direct_pay = $(this).data('direct-pay');
                     var $is_redirect = $(this).data('is-redirect');
 
                             {{--var $result = cartNDirectPay($dp_prod_form, $is_direct_pay, $is_redirect);--}}
-                    var $result = addCartNDirectPay($dp_prod_form, $is_direct_pay, $is_redirect, 'on');
+                    var $result = addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect, 'on');
 
+                    console.log($dp_prod_form{{$group_num}}.find('input[name="prod_code[]"]:checked'));
                     if ($is_redirect === 'N' && $result === true) {
-                        $buy_layer.find('.pocketBox').css('display','none').show();
-                        $buy_layer.addClass('active');
+                        $buy_layer{{$group_num}}.find('.pocketBox').css('display','none').show();
+                        $buy_layer{{$group_num}}.addClass('active');
                     }
                 });
-            } else {
-                {{--
-                // 뷰 페이지
-                // 상품 선택/해제
-                $dp_prod_form.on('change', '.chk_products, .chk_books', function() {
-                    setCheckLectureProduct($dp_prod_form, $(this), 'price', 'prod_sale_price', 'book_sale_price', 'tot_sale_price');
-                });
-
-                // 장바구니, 바로결제 버튼 클릭
-                $dp_prod_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function() {
-                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-                    var $is_direct_pay = $(this).data('direct-pay');
-
-                    cartNDirectPay($dp_prod_form, $is_direct_pay, 'Y');
-                });
-                --}}
             }
         });
-
-        /**
-         * 상세 페이지 이동
-         */
-        function goShow(prod_code, cate_code, pattern) {
-            //location.href = '{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
-            window.open('{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code);
-        }
     </script>
 
 @endif

@@ -71,7 +71,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skybanner" >            
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=279700&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1579_sky01.png" alt="최우영" ></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&course_idx=&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1579_skybanner.png" alt="최우영" ></a>
         </div>   
 
         <div class="evtCtnsBox wb_top" >            

@@ -106,7 +106,7 @@
                 <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1186" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1687_sky.png"  title="소방직 기출해설" /></a></li>
             </ul>
             <ul>          
-                <li><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/167379" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a></li>
+                <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a></li>
             </ul>
         </div>   
 

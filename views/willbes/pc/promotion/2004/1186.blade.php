@@ -22,6 +22,9 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+        
         .evtTop {background:#B7130F url(https://static.willbes.net/public/images/promotion/2020/06/1186_top_bg.jpg) no-repeat center top;}
 
          /* 슬라이드배너 */
@@ -60,6 +63,12 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
+    <div class="skybanner">
+        <ul>          
+            <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a></li>
+        </ul>
+    </div>   
 
       <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_top.gif" title="소방전담 교수님의 완벽분석 해설강의">

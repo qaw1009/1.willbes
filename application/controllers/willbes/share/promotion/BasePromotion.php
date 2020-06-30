@@ -213,12 +213,14 @@ class BasePromotion extends \app\controllers\FrontController
                 foreach ($data as $ccd => $arr_prod_idx) {
                     $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
 
-                    foreach ($display_group_data[$group][$ccd] as $idx => $row) {
-                        $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                        if($ccd == '615001'){
-                            $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
-                            $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-                            $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                    if (empty($display_group_data[$group][$ccd]) === false) {
+                        foreach ($display_group_data[$group][$ccd] as $idx => $row) {
+                            $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                            if ($ccd == '615001') {
+                                $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                                $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                                $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                            }
                         }
                     }
 

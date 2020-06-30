@@ -1,16 +1,6 @@
-@if($__cfg["IsPassSite"] === false)
-{{--온라인 사이트의 경우 검색 창 노출--}}
-<div class="Section widthAuto">
-    <div class="onSearch NGR">
-        <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
-            <input type="hidden" name="cate" id="unifiedSearch_cate" value="{{$__cfg['CateCode']}}">
-            <input type="text" name="" class="d_none">
-            <input type="search" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
-            <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
-        </form>
-    </div>
-</div>
-@endif
+{{-- 사이트 검색창 --}}
+@include('willbes.pc.layouts.partial.site_search')
+
 @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)
     {{-- 일반메뉴 (전체보기) 메뉴 설정 --}}
     @include('willbes.pc.layouts.partial.site_mega_menu')
@@ -31,8 +21,15 @@
                             @endif
                         </a>
                         @if($menu_row['MenuType'] == 'GM' && empty($menu_row['MenuSubType']) === false)
-                            {{-- 일반메뉴 (전체보기) 메뉴 --}}
-                            @yield('mega_menu_' . $menu_row['MenuSubType'])
+                            @if($menu_row['MenuSubType'] == 'sort_mapping')
+                                {{-- 일반메뉴 (전체보기) > 전체메뉴(소트매핑) 메뉴 --}}
+                                @if(empty($menu_row['Children']) === false)
+                                    @include('willbes.pc.layouts.partial.site_sort_mapping_menu', ['_sort_mapping_menu' => $menu_row['Children']])
+                                @endif
+                            @else
+                                {{-- 일반메뉴 (전체보기) > 교수진소개, 수강신청 메뉴 --}}
+                                @yield('mega_menu_' . $menu_row['MenuSubType'])
+                            @endif
                         @else
                             @if(isset($menu_row['Children']) === true)
                                 <div class="drop-Box list-drop-Box">

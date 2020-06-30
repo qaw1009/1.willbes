@@ -152,13 +152,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_april.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_june.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_june.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_july.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_august.jpg" /></li>
                 </ul>
-                {{--
+         
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
-                --}}
+            
             </div>        
         </div>           
 
@@ -258,9 +259,9 @@
                     <li>                    
                         <span class="big">더켠의 반반한 모의고사 과정 진행 안내</span><br>
 						&nbsp;- 매주 월~금 오후 9~10시 : 더켠의 반반한 모의고사+해설 정규 방송<br>    
-						&nbsp;- 매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 모의고사 신청 접수 마감)<br>
-						&nbsp;- 매월 홀수 주 토~일 : 무료 온라인 모의고사 응시 기간<br>
-						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
+						&nbsp;- 2주분 방송 진행 후 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 신청 접수 마감)<br>
+						&nbsp;- 모의고사 접수 후 토~일 : 무료 온라인 모의고사 응시 기간<br>
+						&nbsp;- 모의고사 응시 후 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
 						<span class="txt_point"> (*무료 온라인 모의고사의 경우, 2주에 1회 진행)</span><br>    
 					</li>    
                     <li>                    
@@ -290,6 +291,9 @@
 						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
 						&nbsp;- 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
 						&nbsp;- 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.				
+                    </li>  
+                    <li>                    
+                        <span class="big">국가직 시험을 위하여 고생하신 수험생 여러분들의 합격을 기원하며, 7/13(월)~7/17(금) 해당 주간은 휴방합니다.</span><br>			
                     </li>                            
                 </ul>
             </div>

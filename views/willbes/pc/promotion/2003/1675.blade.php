@@ -150,14 +150,15 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_april.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02_june.jpg" /></li>
+                <ul id="slidesImg4">                  
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_june.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_july.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_august.jpg" /></li>
                 </ul>
-                {{--
+               
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_right.png"></a></p>
-                --}}
+              
             </div>        
         </div>           
 
@@ -289,10 +290,7 @@
                     <li>                    
                         <span class="big">더켠의 아침 똑똑 영어 과정 진행 안내 (온라인 모의고사는 반반한 밤과 동일한 모의고사로 통합하여 진행됩니다.)</span><br>
 						&nbsp;- 매주 월~금 오전 7시30분~8시 : 더켠의 아침 똑똑 영어 정규 방송<br>    
-						&nbsp;- 매월 홀수 주 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 모의고사 신청 접수 마감)<br>
-						&nbsp;- 매월 홀수 주 토~일 : 무료 온라인 모의고사 응시 기간<br>
-						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
-						<span class="txt_point"> (*무료 온라인 모의고사의 경우, 2주에 1회 진행)</span><br>    
+						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>     
 					</li>    
                     <li>                    
                         <span class="big">본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>단, 정규방송과의 형평성을 고려하여 방송 후 일주일 뒤 동영상
@@ -320,6 +318,9 @@
 						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
 						&nbsp;- 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
 						&nbsp;- 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.				
+                    </li>       
+                    <li>                    
+                        <span class="big">국가직 시험을 위하여 고생하신 수험생 여러분들의 합격을 기원하며, 7/13(월)~7/17(금) 해당 주간은 휴방합니다.</span><br>			
                     </li>                            
                 </ul>
             </div>

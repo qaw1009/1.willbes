@@ -186,7 +186,11 @@ abstract class FrontController extends BaseController
                     if ((empty($check_menu_postfix) === true)
                         || (empty($check_menu_postfix) === false && strpos($uri_post_string, $check_menu_postfix) !== false)) {
                         $_active_route_idx = $menu_route_idx;
-                        break;
+
+                        // 후위 uri string이 있을 경우만 break (동일한 controller의 메뉴가 여러개 있을 경우 계속 체크)
+                        if (empty($check_menu_postfix) === false) {
+                            break;
+                        }
                     }
                 }
             }

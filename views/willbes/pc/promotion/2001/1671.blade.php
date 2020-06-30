@@ -72,7 +72,7 @@
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1671_title.jpg" title="심화기출 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @else
               
             @endif          

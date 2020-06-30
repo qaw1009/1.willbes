@@ -107,13 +107,6 @@ class EventFModel extends WB_Model
         '718007' => '2007',     // 어학
     ];
 
-    // 이벤트 상품 그룹별 호출
-    private $_event_group_type = [
-        '615001' => '_ProductOnLecture',        // 단강좌
-        '615003' => '_ProductAdminpackLecture', // 운영자패키지
-        '615004' => '_ProductPeriodpackLecture' // 기간제패키지
-    ];
-
     // 회원의 관심직렬이 없을경우 default 세팅
     private $_default_point_site_code = '2001';     // 경찰 온라인
 
@@ -1820,31 +1813,11 @@ class EventFModel extends WB_Model
     }
 
     /**
-     * 이벤트 DP상품 그룹별 데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
-     * @param $learn_code
-     * @param array $arr_prod_idx
-     * @return mixed
-     */
-    public function listEventDisplayProductGroup($learn_code,$arr_prod_idx)
-    {
-        if(empty($learn_code) === true || empty($arr_prod_idx) === true) {
-            return false;
-        }
-
-        $method = $this->_event_group_type[$learn_code];
-        if (method_exists($this, $method)) {
-            return $this->{$method}($arr_prod_idx);
-        } else {
-            show_404(strtolower(get_class($this)) . '/' . $method);
-        }
-    }
-
-    /**
      * 단과 강좌 조회
      * @param array $arr_prod_idx
      * @return array
      */
-    private function _ProductOnLecture($arr_prod_idx){
+    public function getProductOnLecture($arr_prod_idx){
         $column = "
             ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
             IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData
@@ -1883,7 +1856,7 @@ class EventFModel extends WB_Model
      * @param array $arr_prod_idx
      * @return array
      */
-    private function _ProductAdminpackLecture($arr_prod_idx){
+    public function getProductAdminpackLecture($arr_prod_idx){
         $column = " 
             ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,
             StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
@@ -1920,7 +1893,7 @@ class EventFModel extends WB_Model
      * @param array $arr_prod_idx
      * @return array
      */
-    private function _ProductPeriodpacklecture($arr_prod_idx){
+    public function getProductPeriodpacklecture($arr_prod_idx){
         $column = "
             ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
             StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount

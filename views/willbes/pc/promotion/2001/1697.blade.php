@@ -94,7 +94,7 @@
         <div class="evtCtnsBox evt02_title" id="apply01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_02_title.jpg"  title="1단계 과목별 신청하기">
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @else
             @endif    
         </div>

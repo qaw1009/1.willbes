@@ -64,7 +64,7 @@
 
         <div class="evtCtnsBox evt04" id="goLec">
             <div class="evt04title"><img src="https://static.willbes.net/public/images/promotion/2020/05/1425_04.jpg"></div>
-            @include('willbes.pc.promotion.display_product_partial')
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
         </div>
     </div>
     <!-- End Container -->

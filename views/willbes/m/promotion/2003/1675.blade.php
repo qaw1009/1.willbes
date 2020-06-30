@@ -170,7 +170,7 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1675m_02.jpg" alt="" >
-        <p>7.3(금)이 지나면 한정특가가 마감됩니다!</p>
+        <p>7.5(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
                 <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank">
@@ -201,7 +201,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>6/15(월)~19(금) <br>오후 6시</span>
+                    <span>6/29(월)~7/3(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

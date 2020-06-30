@@ -9,7 +9,9 @@ class SearchModel  extends WB_Model
         'site' => 'lms_site',
         'category' => 'lms_sys_category',
         'member' => 'lms_member',
-        'willbes_ip' => 'lms_willbes_ip'
+        'willbes_ip' => 'lms_willbes_ip',
+        'search_word_setup' => 'lms_search_word_setup',
+        'admin' => 'wbs_sys_admin'
     ];
 
     public function __construct()
@@ -17,92 +19,154 @@ class SearchModel  extends WB_Model
         parent::__construct('lms');
     }
 
-    public function getGroupByData($arr_condition=[], $get_type, $order_by=['count(*)' => 'DESC'], $add_condition=[])
+    public function listWord($is_count, $arr_condition=[], $limit = null, $offset = null, $order_by=[])
     {
 
-        $column = 'count(*) as cnt';
-        $group_by = '';
-        $limit = '';
-
-        switch ($get_type) {
-            case 'cate' :
-                $column .= ',sc.CateName';
-                $group_by .= (empty($group_by) ? '':',').'sc.CateName';
-
-            case 'site' :
-                $column .= ', s.SiteName';
-                $group_by .= (empty($group_by) ? '':',').'s.SiteName';
-
-            case 'word' :
-                $column .= ', sl.SearchWord';
-                $group_by .= (empty($group_by) ? '':',').'sl.SearchWord';
-                $limit = ' limit 10';
-                $order_by = array_merge($order_by,[ 'SearchWord' =>'ASC']);
-                break;
-
-            case 'cloud' :
-                $column .= ', sl.SearchWord';
-                $group_by .= (empty($group_by) ? '':',').'sl.SearchWord';
-                $limit = ' limit 50';
-                break;
-
-            case 'os' :
-                $column .=  ', if(left(sl.UserPlatform,7)=\'Unknown\',\'기타\',left(sl.UserPlatform,7)) AS UserPlatform ';
-                $group_by = 'left(sl.UserPlatform,6)';
-                $order_by=['UserPlatform' => 'ASC'];
-                $limit = ' limit 6';
-                break;
-        }
-
-        $from = '
-                    from
-                        '.$this->_table['search_log'].' as sl
-                        join '.$this->_table['site'].' as s on sl.SiteCode = s.SiteCode
-                        left join '.$this->_table['category'].' as sc on sl.CateCode = sc.CateCode
-                    where 1=1
-        ';
-
-        $arr_condition['IN']['s.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
-        $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-
-        if(!empty(element('search_except_will_ip',$add_condition))) {
-            $where .= ' and sl.UserIp NOT IN (Select Ip From '.$this->_table['willbes_ip'].')';
-        }
-
-        $query = $this->_conn->query('select '.$column .$from .$where .' group by '.$group_by .$order_by .$limit);
-        return $query->result_array();
-    }
-
-    public function listSearch($is_count, $arr_condition=[], $limit = null, $offset = null, $order_by=[], $add_condition=[])
-    {
-
-        if ($is_count === true) {
+        if($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'sl.*,s.SiteGroupCode,s.SiteName,sc.CateName';
+            $column ='A.* 
+                        ,B.SiteName
+                        ,C.CateName
+                        ,D.wAdminName as RegAdminName
+                        ,E.wAdminName as UpdAdminName';
+
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = '
                     from 
-                        '. $this->_table['search_log'].' as sl
-                        join '. $this->_table['site'].' as s on sl.SiteCode = s.SiteCode
-                        left join '. $this->_table['category'].' as sc on sl.CateCode = sc.CateCode
-                    where 1=1
+                        '.$this->_table['search_word_setup'].' A
+                        join '.$this->_table['site'].'  B on A.SiteCode = B.SiteCode
+                        left outer join '.$this->_table['category'].'  C on A.CateCode = C.CateCode
+                        left outer join '.$this->_table['admin'].'  D on A.RegAdminIdx = D.wAdminIdx
+                        left outer join '.$this->_table['admin'].' E on A.UpdAdminIdx = E.wAdminIdx
+                    where A.IsStatus=\'Y\'
         ';
 
-        $arr_condition['IN']['s.SiteCode'] = get_auth_site_codes();
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'IN' => [
+                'A.SiteCode' => get_auth_site_codes(false,true,false)
+            ]
+        ]);
+
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        if(!empty(element('search_except_will_ip',$add_condition))) {
-            $where .= ' and sl.UserIp NOT IN (Select Ip From '.$this->_table['willbes_ip'].')';
+        $query = $this->_conn->query('select '. $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function addWord($input=[])
+    {
+        $this->_conn->trans_begin();
+        try{
+
+            $input_data = array_merge($this->_inputCommon($input), [
+                'SiteCode'=>element('SiteCode',$input),
+                'RegAdminIdx'=>$this->session->userdata('admin_idx')
+                ,'RegIp'=>$this->input->ip_address()
+            ]);
+
+            if($this->_conn->set($input_data)->insert($this->_table['search_word_setup']) === false) {
+                throw new \Exception('검색어 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function modifyWord($input=[])
+    {
+        $this->_conn->trans_begin();
+        try{
+            $SwIdx = element('SwIdx',$input);
+
+            $input_data = array_merge($this->_inputCommon($input), [
+                'UpdAdminIdx'=>$this->session->userdata('admin_idx'),
+            ]);
+
+            if ($this->_conn->set($input_data)->set('UpdDatm', 'NOW()', false)->where('SwIdx', $SwIdx)->update($this->_table['search_word_setup']) === false) {
+                throw new \Exception('검색어 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    private function _inputCommon($input=[])
+    {
+        $input_data = [
+            'CateCode' => element('CateCode',$input,0)
+            ,'SearchWord' => element('SearchWord',$input)
+            ,'StartDate' => element('StartDate',$input)
+            ,'EndDate' => element('EndDate',$input)
+            ,'TargetType' => element('TargetType',$input,'S')
+            ,'TargetUrl' => element('TargetUrl',$input)
+            ,'TargetOpen' => element('TargetOpen',$input,'_self')
+            ,'OrderNum' => element('OrderNum',$input,'0')
+            ,'IsUse' => element('IsUse',$input,'Y')
+        ];
+        return $input_data;
+    }
+
+    public function modifyByColumn($params=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $SwIdx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->set('UpdDatm', 'NOW()', false)->where('SwIdx', $SwIdx);
+
+                if ($this->_conn->update($this->_table['search_word_setup']) === false) {
+                    throw new \Exception('정보 수정에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
-        $query = $this->_conn->query('select '. $column . $from . $where . $order_by_offset_limit);
-        return ($is_count===true) ? $query->row(0)->numrows : $query->result_array();
+        return true;
+    }
+
+    public function modifyByOrder($params=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $SwIdx => $order_num) {
+                $this->_conn->set('OrderNum',$order_num )->set('UpdDatm', 'NOW()', false)->where('SwIdx', $SwIdx);
+
+                if ($this->_conn->update($this->_table['search_word_setup']) === false) {
+                    throw new \Exception('정렬 정보 수정에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

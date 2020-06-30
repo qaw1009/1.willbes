@@ -23,7 +23,9 @@ class Caching extends CI_Driver_Library
         'site',
         'site_menu',
         'site_subject_professor',
-        'mobile_menu'
+        'mobile_menu',
+        'search_word_setup',    //설정 검색어
+        'search_word_auto'      //자동완성 검색어
     );
 
     /**
@@ -146,6 +148,7 @@ class Caching extends CI_Driver_Library
      */
     public function save($skey = '')
     {
+
         try {
             $driver = $this->_driver;
             $key = $this->{$driver}->_key;

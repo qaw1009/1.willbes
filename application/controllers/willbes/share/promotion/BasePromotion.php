@@ -10,7 +10,7 @@ class BasePromotion extends \app\controllers\FrontController
     protected $_paging_count = 10;
 
     // 이벤트 상품 그룹별 호출
-    private $_event_group_ccd = [
+    private $_event_learn_ccd = [
         '615001' => 'OnLecture',        // 단강좌
         '615003' => 'AdminpackLecture', // 운영자패키지
         '615004' => 'PeriodpackLecture' // 기간제패키지
@@ -643,7 +643,7 @@ class BasePromotion extends \app\controllers\FrontController
      */
     private function _getEventProductGroup($learn_ccd,$arr_prod_idx)
     {
-        $method = empty(element($learn_ccd,$this->_event_group_ccd)) === true ? '' : element($learn_ccd,$this->_event_group_ccd);
+        $method = element($learn_ccd,$this->_event_learn_ccd);
 
         if(empty($method) === true || empty($arr_prod_idx) === true) {
             return false;

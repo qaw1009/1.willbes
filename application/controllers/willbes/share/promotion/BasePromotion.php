@@ -9,6 +9,13 @@ class BasePromotion extends \app\controllers\FrontController
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
 
+    // 이벤트 상품 그룹별 호출
+    private $_event_group_ccd = [
+        '615001' => 'OnLecture',        // 단강좌
+        '615003' => 'AdminpackLecture', // 운영자패키지
+        '615004' => 'PeriodpackLecture' // 기간제패키지
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -204,7 +211,7 @@ class BasePromotion extends \app\controllers\FrontController
             // DP상품 그룹핑
             foreach ($display_group_data as $group => $data) {
                 foreach ($data as $ccd => $arr_prod_idx) {
-                    $display_group_data[$group][$ccd] = $this->eventFModel->listEventDisplayProductGroup($ccd,$arr_prod_idx);
+                    $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
 
                     foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                         $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
@@ -626,6 +633,23 @@ class BasePromotion extends \app\controllers\FrontController
             return $this->json_error('이벤트를 신청한뒤 이용 가능한 서비스입니다.');
         }
         return $this->json_result(true);
+    }
+
+    /**
+     * 이벤트 DP상품 그룹 데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
+     * @param $learn_code
+     * @param array $arr_prod_idx
+     * @return mixed
+     */
+    private function _getEventProductGroup($learn_ccd,$arr_prod_idx)
+    {
+        $method = empty(element($learn_ccd,$this->_event_group_ccd)) === true ? '' : element($learn_ccd,$this->_event_group_ccd);
+
+        if(empty($method) === true || empty($arr_prod_idx) === true) {
+            return false;
+        }
+
+        return $this->eventFModel->{'getProduct' . $method}($arr_prod_idx);
     }
 
 }

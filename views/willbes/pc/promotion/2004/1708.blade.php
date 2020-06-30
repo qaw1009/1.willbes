@@ -52,11 +52,13 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">      
 
+        {{--
         <div class="skybanner">
             <ul>          
                 <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1186" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1687_sky.png"  title="기미진 기특한 국어" /></a></li>
             </ul>
-        </div>       
+        </div> 
+        --}}      
 
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1708_top.jpg" alt="왕기초 클라쓰" />            

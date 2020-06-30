@@ -55,7 +55,7 @@
         <div class="evtCtnsBox wb_evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04_title.jpg" title="기본이론 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @else
                 <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04.jpg" usemap="#Map1015b" title="기본이론 강좌" border="0" />
                 <map name="Map1015b" id="Map1015b">

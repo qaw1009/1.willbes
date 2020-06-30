@@ -60,7 +60,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_01.jpg" title="재시생을 위한 합격 플랜" />
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_01_college.jpg" title="심화기출이론 단과" />
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @else
             @endif        
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1677_01_university.jpg" usemap="#Map1677b" title="심화기출이론 종합반" border="0" />

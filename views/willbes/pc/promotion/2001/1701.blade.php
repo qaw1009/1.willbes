@@ -59,7 +59,7 @@
         <div class="evtCtnsBox wb_evt02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1701_02.jpg" title="문제풀이 단과" />
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial')
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @else
             @endif 
         </div> 

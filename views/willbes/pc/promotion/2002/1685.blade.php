@@ -65,7 +65,11 @@
         .evt05 div span.area08 {top:750px; left:856px} /*진주*/
         .evt05 div span.area09 {top:859px; left:754px} /*제주*/
 
-        .evt06 {background:#555;}
+        .evtInfo {padding:100px 0; background:#555; color:#fff; font-size:17px}
+		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:35px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:20px;}
+		.evtInfoBox ul {margin-bottom:30px}
 
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
@@ -199,9 +203,30 @@
 			</div>
 		</div>
 
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_06.jpg" title="학원 실강 이용안내">           
-        </div>
+        <div class="evtCtnsBox evtInfo NGR">
+			<div class="evtInfoBox">
+				<h4 class="NGEB">문제풀이 풀패키지 학원 실갈 이용안내</h4>
+				<div class="infoTit NG"><strong>문제풀이 유의사항</strong></div>
+				<ul>
+					<li>① 문제풀이 1단계는 영어 제외 모두 오전강의만 진행됩니다. (영어과목은 오전,오후 모두 진행)<br/>
+                    &nbsp;&nbsp;- 형소법, 경찰학, 형법, 한국사(원), 수사, 행정법 : 핵심요약 진행 / 영어 : 오전)핵심요약, 오후)진도별 문제풀이 / 한국사(오) : 전범위 모의고사
+                    </li> 
+                    <li>② 문제풀이 2,3단계 일정은 2020년 2차 시험 일정에 따라 변경될 수 있습니다.</li>                
+				</ul>
+				<div class="infoTit NG"><strong>문제풀이 이벤트 유의사항</strong></div>
+				<ul>
+					<li>① 사전접수 이벤트<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이벤트 기간 : 조기마감유의(할인진행중)</li>
+                    <li>② 타학원 환승 이벤트<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- 환승 대상자 (아래 두 가지 모두 해당할 시 가능)<br/> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;* 타학원 정규과정 실강 또는 인강 수력이력 증빙이 가능한 수강생<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;* 최근 1년 이내 신광은 경찰학원 정규과정 수강이력이 없는 수강생<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- 타학원 수강이력 증빙 필수          
+                    </li>  
+				</ul>                
+				<div class="infoTit NG"><strong>학원 문의 : 1544-0336</strong></div>			
+			</div>
+		</div>
+        
 	</div>
     <!-- End Container -->
 

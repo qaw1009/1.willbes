@@ -32,14 +32,14 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .wb_00 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1480_00_bg.jpg) no-repeat center top;}
+        .wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1480_00_bg.jpg) no-repeat center top;}
         .wb_top {background:#f2f7f9 url(https://static.willbes.net/public/images/promotion/2019/12/1480_top_bg.jpg) no-repeat center top; position:relative;}
         .leclist {position:absolute; top:693px; left:50%; margin-left:-344px; width:600px; height:365px;  overflow:hidden}
         .slidesLec li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:70px; overflow:hidden; display:inline; float:left; width:300px}
         .slidesLec li span {width:50px; display:inline-block}
         .slidesLec:after {content:""; display:block; clear:both}
         .wb_01 {background:#212121}
-        .wb_02 {background:#EA84AC; padding-bottom:150px}
+        .wb_02 {background:#E2B528; padding-bottom:150px}
             .check {margin-top:20px; color:#fff; font-size:14px}
             .check label {cursor:pointer}
             .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -57,7 +57,7 @@
         </div>   
 
         <div class="evtCtnsBox wb_00">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_00.gif" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_00.gif" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
         </div>
 
         <!-- 타이머 -->
@@ -87,7 +87,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_top.jpg" alt="김동진 법원팀"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_top.jpg" alt="김동진 법원팀"/>
             <div class="leclist">
                 <ul class="slidesLec">
                     <li>
@@ -209,18 +209,18 @@
         </div>
 
         <div class="evtCtnsBox wb_01" >           
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_01.gif" alt="혁신적인 커리큘럼"/><Br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_02.jpg" alt="김동진 법원팀 교수진" usemap="#Map1480A" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_01_01.gif" alt="혁신적인 커리큘럼"/><Br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_01_02.jpg" alt="김동진 법원팀 교수진" usemap="#Map1480A" border="0"/>
             <map name="Map1480A" id="Map1480A">
                 <area shape="rect" coords="831,1090,922,1115" href="http://cafe.daum.net/LAW-KDJTEAM" target="_blank" alt="온라인상담" />
             </map>
         </div>
 
         <div class="evtCtnsBox wb_02" id="buyLec">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.gif" alt="수강신청" usemap="#Map1480B" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_02.gif" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
-                <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('163827');"  alt="수강신청" />
-            </map>  
+                <area shape="rect" coords="764,942,919,1045" href="javascript:go_PassLecture('163827');"  alt="수강신청" />>
+            </map>
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
@@ -231,7 +231,7 @@
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_03.jpg" alt="이용안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_03.jpg" alt="이용안내" />
         </div>
         
         {{--

@@ -516,7 +516,8 @@
                 <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank">└ 베스트셀러 </a></li>  
                 <li><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank">└ 신간안내 </a></li>  
                 <li><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank">└ 출판사 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank">└ 업무제휴 문의 </a></li>   
+                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank">└ 업무제휴 문의 </a></li> 
+                <li><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank">└ 저자모집</a></li>   
             </ul>
         </div>
     </li>

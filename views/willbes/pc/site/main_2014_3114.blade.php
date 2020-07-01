@@ -40,7 +40,7 @@
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black">
                     <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 신규강좌
-                    <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>
+                    {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
                 </div>
                 <ul class="bestLec">
                     @for($i=1; $i<=4; $i++)

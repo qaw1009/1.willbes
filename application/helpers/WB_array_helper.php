@@ -209,3 +209,20 @@ if (!function_exists('array_value_first')) {
         return is_null($key) === true ? null : $array[$key];
     }
 }
+
+if (!function_exists('array_unset')) {
+    /**
+     * $array 배열에서 키값에 해당하는 배열 삭제 후 리턴
+     * @param array $array [대상 배열]
+     * @param string $key [삭제할 배열 키]
+     * @return array
+     */
+    function array_unset(array $array, $key)
+    {
+        if (array_key_exists($key, $array) === true) {
+            unset($array[$key]);
+        }
+
+        return $array;
+    }
+}

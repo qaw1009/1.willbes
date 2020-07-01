@@ -60,6 +60,7 @@ $config['app_name_mapping'] = [
     'spo' => 'willbes',
     'work' => 'willbes',
     'njob' => 'willbes',
+    'book' => 'willbes',
 ];
 
 /*
@@ -78,6 +79,7 @@ $config['app_front_site_except'] = [
     'spo' => ['route_add_path' => '/site'],
     'work' => ['route_add_path' => '/site'],
     'njob' => ['route_add_path' => '/site'],
+    'book' => ['route_add_path' => '/site'],
 ];
 
 /*

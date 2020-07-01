@@ -114,10 +114,6 @@
                         <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161786') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
-                        <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 박상규 실무종합</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161796') }}" target="_blink">수강신청   ></a></td>
-                    </tr>
-                    <tr>
                         <td class="tx-left">【경장,경사,경위 승진대비】<br>&nbsp; 2021 신광은 형소법 &amp; 김원욱 형법 PASS &amp; 오현웅 실무종합</td>
                         <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161795') }}" target="_blink">수강신청   ></a></td>
                     </tr>
@@ -141,10 +137,6 @@
                     <tr>
                         <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 송광호 교수</td>
                         <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161782') }}" target="_blink">수강신청   ></a></td>
-                    </tr>
-                    <tr>
-                        <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 박상규 교수</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/161780') }}" target="_blink">수강신청   ></a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">【2021 승진대비 실무종합 12개월 동영상 PASS】 오현웅 교수</td>

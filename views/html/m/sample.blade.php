@@ -22,6 +22,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
+            <a href="{{ site_url('/home/html/m/main2_2008') }}" target="_blank">메인-경찰간부</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/main2_v2_3035') }}" target="_blank">메인-공무원 법원직</a>
             <br><br>

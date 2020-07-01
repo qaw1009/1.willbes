@@ -70,7 +70,7 @@
         .rulletBox a {position:absolute; top:520px; left:580px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
-        .rulletBox a:hover {background:#52fee7; color:#fff}
+        .rulletBox a:hover {background:#52fee7; color:#000}
 
         
 

@@ -376,3 +376,8 @@ _:-ms-fullscreen, :root .drop-Box-wsBook { left:-644px; }
 .wsBookDetailBox .guidanceBox {margin-bottom:30px}
 .wsBookDetailBox .guidanceBox strong {font-size:18px; padding:8px 16px; background: #0b9d00; color:#fff; display: inline-block; margin-bottom:20px}
 .wsBookDetailBox .guidanceBox li {list-style-type: disc; margin-left:20px}
+
+/*저자모집*/
+.wsBook_recruit {width:668px; margin:0 auto; border:1px solid #303030; padding:50px; line-height: 2; letter-spacing: normal;}
+.wsBook_recruit strong {display:block; font-size:14px;}
+

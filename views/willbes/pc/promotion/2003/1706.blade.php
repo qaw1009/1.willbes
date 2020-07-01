@@ -24,7 +24,7 @@
         .sky ul li {padding-bottom:10px;}
 
         .evtTop {
-            background:#EEC7B8 url(https://static.willbes.net/public/images/promotion/2020/07/1706_top_bg.jpg) no-repeat center top;
+            background:url(https://static.willbes.net/public/images/promotion/2020/07/1706_top_bg.jpg) no-repeat center top;
         }
         .evtTop > span { position:absolute; left:50%; z-index:10}
         .evtTop span.img01 {top:770px; margin-left:-700px; width:465px; animation:iptimg1 1s ease-in;-webkit-animation:iptimg1 1s ease-in;}

@@ -221,7 +221,7 @@
                         <area shape="rect" coords="568,81,646,159" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
                     </map>
                     {{-- 상품이미지 01 ~ 08 --}}
-                    <span id="gift_box_id"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_giftbox01.png"></span>
+                    <span id="gift_box_id"></span>
                 </div>
             </div>
 
@@ -229,7 +229,9 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_01.jpg" title="합격 룰렛" />  
                 <div class="rulletBox">
                     <canvas id="box_roulette" class="tutCanvas" width="698" height="698">Canvas not supported</canvas>
-                    <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_start.png" alt="start" /></button>
+                    <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_start.png" alt="start" />
+                    </button>
                     <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
                 </div>
             </div>       

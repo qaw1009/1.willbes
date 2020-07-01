@@ -72,7 +72,7 @@
                                 <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh.jpg" alt="장정훈">
                                 <ul class="ProfBtns">
                                     <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50996/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
+                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
                                 </ul>
                             </li>
                             <li>

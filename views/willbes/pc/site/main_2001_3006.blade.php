@@ -69,19 +69,19 @@
                                 </ul>
                             </li>
                             <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh.jpg" alt="송광호">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50115/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk.jpg" alt="박상규">
+                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh.jpg" alt="장정훈">
                                 <ul class="ProfBtns">
                                     <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
                                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50996/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh.jpg" alt="송광호">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
+                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50115/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
+                                </ul>
+                            </li>                            
                             <li>
                                 <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ohw.jpg" alt="오현웅">
                                 <ul class="ProfBtns">

@@ -56,6 +56,22 @@
             border:10px solid #000; z-index:6}
         .rulletBox a:hover {background:#5a14d6; color:#fff}
 
+        .giftPopupWrap {
+            position:absolute; 
+            background: rgba(0, 0, 0, 0.6);
+            filter: alpha(opacity=60);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;            
+            width: 100%;
+            height: 100%;  
+            z-index: 105;        
+        }
+        .giftPop {width:786px; margin:100px auto 0; position:relative}
+        .giftPop span {display:block; position:absolute; top:343px; width:100%; text-align:center; z-index:10}
+
         .evtMenu { position:absolute; left:50%; margin-left:-560px; bottom:0; z-index:10}
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
@@ -196,6 +212,17 @@
 
         <!--최종 마무리 전략-->
         <div id="content_1" class="tabCts">
+            <div class="giftPopupWrap" id="giftPopupWrap" style="display:none;">
+                <div class="giftPop">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
+                    <map name="Map1698pop" id="Map1698pop">
+                        <area shape="rect" coords="637,85,715,163" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
+                    </map>
+                    {{-- 상품이미지 01 ~ 08 --}}
+                    <span id="gift_box_id"></span>
+                </div>
+            </div>
+
             <div class="download">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_01.jpg" title="합격 룰렛" />  
                 <div class="rulletBox">
@@ -204,20 +231,7 @@
                     <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
                 </div>
             </div>       
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_01_01.jpg" title="유의 사항" />
-            
-            <!--
-            <div class="youtube">
-                @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
-                    @include('willbes.pc.promotion.live_video_youtube_partial')
-                @else
-                    @include('willbes.pc.promotion.live_video_partial')
-                @endif
-                {{-- <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_comingsoon.jpg"  title="방송전" /> --}}
-                {{--<iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>--}}
-            </div>
-            -->
-
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_01_01.jpg" title="유의 사항" />      
         </div>
 
         <!--완벽분석-->
@@ -1255,7 +1269,7 @@
             </div>
         </div>
     </div>
-    <!-- End Container --> 
+    <!-- End Container -->   
 
     <script type="text/javascript">
         /*tab*/
@@ -1288,4 +1302,6 @@
             @endif
         }
     </script>
+
+@include('willbes.pc.promotion.roulette_script')
 @stop

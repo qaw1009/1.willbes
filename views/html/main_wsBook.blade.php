@@ -176,20 +176,20 @@
                     <ul>
                         <li>
                             <div class="bookImg">
-                                <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002721L.JPG" title="교재명">
-                            </div>
-                            <p>[회계사]</p>
-                            <p>2020 원가관리회계 문제풀이</p>
-                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
-                        </li>
-                        <li>
-                            <div class="bookImg">
                                 <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002712L.JPG" title="교재명">
                             </div>
                             <p>[회계사]</p>
                             <p>2021 법률저널 LEET 전국 봉투 모의고사 제4회 - 20.06.21 시행</p>
                             <p><span>28,000원</span> → <strong>25,200원</strong></p>
                         </li>
+                        <li>
+                            <div class="bookImg">
+                                <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002721L.JPG" title="교재명">
+                            </div>
+                            <p>[회계사]</p>
+                            <p>2020 원가관리회계 문제풀이</p>
+                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                        </li>                        
                         <li>
                             <div class="bookImg">
                                 <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002707L.JPG" title="교재명">
@@ -267,6 +267,14 @@
                     <ul>
                         <li>
                             <div class="bookImg">
+                                <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002707L.JPG" title="교재명">
+                            </div>
+                            <p>[회계사]</p>
+                            <p>2020 슬림한 친족 상속법의 맥</p>
+                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                        </li>
+                        <li>
+                            <div class="bookImg">
                                 <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002721L.JPG" title="교재명">
                             </div>
                             <p>[회계사]</p>
@@ -280,15 +288,7 @@
                             <p>[회계사]</p>
                             <p>2021 법률저널 LEET 전국 봉투 모의고사 제4회 - 20.06.21 시행</p>
                             <p><span>28,000원</span> → <strong>25,200원</strong></p>
-                        </li>
-                        <li>
-                            <div class="bookImg">
-                                <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002707L.JPG" title="교재명">
-                            </div>
-                            <p>[회계사]</p>
-                            <p>2020 슬림한 친족 상속법의 맥</p>
-                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
-                        </li>
+                        </li>                        
                         <li>
                             <div class="bookImg">
                                 <img src="http://www.willstory.co.kr/DataWillstory/upload/willstory_book/PW20002687L.JPG" title="교재명">

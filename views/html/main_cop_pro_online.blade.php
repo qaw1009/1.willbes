@@ -63,9 +63,10 @@
 
     <div class="Section">
         <div class="widthAuto Profinfo">          
-            <img src="{{ img_url('cop_pro/visual/visual_190227_01.jpg') }}" alt="전문화된 교수진">
-            <span class="btn01"><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95">자세히보기 &gt;</a></span>
-            <span class="btn02"><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95">자세히보기 &gt;</a></span>
+        <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_01_200701.jpg" alt="전문화된 교수진">
+                <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" alt="김원욱">자세히보기 &gt;</a></span>
+                <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
+                <span class="btn03"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}" alt="장정훈">자세히보기 &gt;</a></span>
             <ul>
                 <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50553/?subject_idx=1024&subject_name=%EC%A3%BC%EA%B4%80%EC%8B%9D%ED%96%89%EC%A0%95%EB%B2%9"><img src="{{ img_url('cop_pro/banner/bnr_372_01.jpg') }}" alt="경찰행정학 이성호"></a></li>
                 <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50115/?subject_idx=1027&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B42"><img src="{{ img_url('cop_pro/banner/bnr_372_02.jpg') }}" alt="경찰실무 송광호"></a></li>
@@ -102,6 +103,7 @@
         <div class="widthAuto">
             <div class="will-nTit bd-none">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
             <ul class="ProfCopBox mt20 mb100">
+                {{--
                 <li>
                     <img src="{{ img_url('cop_pro/prof/prof_ske.jpg') }}" alt="신광은">
                     <ul class="ProfBtns">
@@ -136,6 +138,54 @@
                         <li><a href="#none">▶</a></li>
                         <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50277/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9" >교수소개</a></li>
                     </ul>
+                </li>
+                --}}
+
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ske.jpg" alt="신광은" usemap="#Map220A" border="0">
+                    <map name="Map220A">
+                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_kwu.jpg" alt="김원욱" usemap="#Map220B" border="0">
+                    <map name="Map220B">
+                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh.jpg" alt="장정훈" usemap="#Map220C" border="0">
+                    <map name="Map220C">
+                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                    </map>
+                </li>                
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh.jpg" alt="송광호" usemap="#Map220D" border="0">
+                    <map name="Map220D">
+                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                    </map>
+                </li>
+                <li>
+                    <div class="slider">
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk.jpg" alt="박상규" usemap="#Map220E" border="0">
+                            <map name="Map220E">
+                                <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                                <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                            </map>
+                        </div>                            
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ohw.jpg" alt="오현웅" usemap="#Map220F" border="0">
+                            <map name="Map220B">
+                                <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                                <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                            </map>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

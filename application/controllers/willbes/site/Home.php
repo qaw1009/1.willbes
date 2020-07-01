@@ -12,7 +12,7 @@ class Home extends \app\controllers\FrontController
         '2005' => 'all',
         '2006' => ['309002','309003','309004']
     ];
-    private $_no_cate_pc_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
+    private $_no_pc_cate_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
     public function __construct()
     {
@@ -39,7 +39,7 @@ class Home extends \app\controllers\FrontController
                 // 캠퍼스 코드
                 $arr_campus = $this->_getCampusCcdArray();
             } else {
-                if (in_array($this->_site_code, $this->_no_cate_pc_main) === true) {
+                if (in_array($this->_site_code, $this->_no_pc_cate_main) === true) {
                     // 카테고리 메인이 없는 사이트일 경우
                     $_view_path = $this->_site_code;
                 } else {

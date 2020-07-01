@@ -2547,7 +2547,7 @@ class EventLectureModel extends WB_Model
                     }
                 }
                 // 비교 등록
-                $insert_data = array_values(array_diff($arr_event_add_apply_eaa_idx, $before_data));
+                $insert_data = array_reverse(array_values(array_diff($arr_event_add_apply_eaa_idx, $before_data)));
                 if(empty($insert_data) === false) {
                     foreach ($insert_data as $i_key => $i_val) {
                         $arr_key = array_search($i_val, $arr_event_add_apply_eaa_idx) ;

@@ -1267,7 +1267,7 @@
             var add_lists = '';
             add_lists += '<tr>';
             add_lists += '	<td>';
-            add_lists += '		<input type="hidden" name="event_add_apply_eaa_idx[]" value="">';
+            add_lists += '		<input type="hidden" name="event_add_apply_eaa_idx[]" value="new' + temp_apply_idx + '">';
             add_lists += '		<input type="hidden" name="add_apply_is_use[]" value="Y">';
             add_lists += '		<select class="form-control" name="event_add_apply_person_limit_type[]" id="event_add_apply_person_limit_type_' + temp_apply_idx + '" style="min-width: 70px;">';
             add_lists += '			<option value="L">제한</option>';
@@ -1323,6 +1323,7 @@
             add_lists += '</tr>';
 
             $('#table_add_apply > tbody').prepend(add_lists);
+            temp_apply_idx++;
         });
 
         // 프로모션 추가신청정보 삭제

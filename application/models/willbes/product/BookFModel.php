@@ -111,4 +111,53 @@ class BookFModel extends ProductFModel
 
         return $query->result_array();
     }
+
+    /**
+     * 온라인서점 교재 목록
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listBookStoreProduct($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $learn_pattern = 'book';    // 교재
+        $add_column = '';
+
+        if ($is_count === false) {
+            // 추가 조회컬럼
+            $add_column = ', rwSaleTypeCcd, rwSalePrice, rwRealSalePrice, wSaleCcdName, wAuthorNames, wPublName, wPublDate
+                , wAttachImgPath, wAttachImgOgName, replace(wAttachImgOgName, "_og", "_sm") as wAttachImgSmName, wBookIdx';
+        }
+
+        return $this->listSalesProduct($learn_pattern, $is_count, $arr_condition, $limit, $offset, $order_by, $add_column);
+    }
+
+    /**
+     * 온라인서점 교재정보 조회
+     * @param int $prod_code
+     * @return array|mixed
+     */
+    public function findBookStoreProductByProdCode($prod_code)
+    {
+        $arr_condition = ['EQ' => ['ProdCode' => get_var($prod_code, 0)]];
+        $data = $this->listBookStoreProduct(false, $arr_condition, 1, 0);
+
+        return array_get($data, '0', []);
+    }
+
+    /**
+     * WBS BMS 교재정보 조회
+     * @param int $wbook_idx
+     * @return array
+     */
+    public function findBmsBookByWBookIdx($wbook_idx)
+    {
+        $column = 'wIsbn, wEditionSize, wPageCnt, wBookDesc, wAuthorDesc, wTableDesc';
+        $arr_condition = ['EQ' => ['wBookIdx' => get_var($wbook_idx, 0)]];
+
+        return $this->_conn->getFindResult($this->_table['bms_book_combine'], $column, $arr_condition);
+    }
 }

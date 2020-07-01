@@ -47,15 +47,6 @@
         to{margin-left:250px; opacity: 1;}
         }
 
-        /*룰렛박스*/
-        .rulletBox {position:absolute; top:551px; width:810px; left:50%; margin-left:-400px; z-index:5}
-        .rulletBox .btn-roulette {position:absolute; top:164px; width:164px; 
-            height:164px; left:50%; padding:0; margin:0; margin-left:-82px; background:none; z-index:6}
-        .rulletBox a {position:absolute; top:485px; left:580px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
-            border-radius:40px;
-            border:10px solid #000; z-index:6}
-        .rulletBox a:hover {background:#5a14d6; color:#fff}
-
         .giftPopupWrap {
             position:absolute; 
             background: rgba(0, 0, 0, 0.6);
@@ -70,7 +61,18 @@
             z-index: 105;        
         }
         .giftPop {width:786px; margin:100px auto 0; position:relative}
-        .giftPop span {display:block; position:absolute; top:343px; width:100%; text-align:center; z-index:10}
+        .giftPop span {display:block; position:absolute; top:276px; width:100%; text-align:center; z-index:10}
+
+        /*룰렛박스*/        
+        .rulletBox {position:absolute; top:551px; width:698px; height:698px; left:50%; margin-left:-349px; z-index:5; border:1px solid #000}
+        .rulletBox .btn-roulette {position:absolute; top:268px; width:164px; 
+            height:164px; left:50%; padding:0; margin:0; margin-left:-82px; background:none; z-index:6}
+        .rulletBox a {position:absolute; top:520px; left:580px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
+            border-radius:40px;
+            border:10px solid #000; z-index:6}
+        .rulletBox a:hover {background:#5a14d6; color:#fff}
+
+        
 
         .evtMenu { position:absolute; left:50%; margin-left:-560px; bottom:0; z-index:10}
         .evtMenu ul {width:1120px; margin:0 auto;}
@@ -214,19 +216,19 @@
         <div id="content_1" class="tabCts">
             <div class="giftPopupWrap" id="giftPopupWrap" style="display:none;">
                 <div class="giftPop">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
-                    <map name="Map1698pop" id="Map1698pop">
-                        <area shape="rect" coords="637,85,715,163" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_popup.png" alt="당첨팝업" usemap="#Map1706pop" border="0"/>
+                    <map name="Map1706pop" id="Map1706pop">
+                        <area shape="rect" coords="568,81,646,159" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
                     </map>
                     {{-- 상품이미지 01 ~ 08 --}}
-                    <span id="gift_box_id"></span>
+                    <span id="gift_box_id"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_giftbox01.png"></span>
                 </div>
             </div>
 
             <div class="download">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_01.jpg" title="합격 룰렛" />  
                 <div class="rulletBox">
-                    <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
+                    <canvas id="box_roulette" class="tutCanvas" width="698" height="698">Canvas not supported</canvas>
                     <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_rull_start.png" alt="start" /></button>
                     <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
                 </div>

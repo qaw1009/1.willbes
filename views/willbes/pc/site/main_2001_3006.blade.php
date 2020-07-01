@@ -17,8 +17,8 @@
         <div class="Section">
             <div class="widthAuto Profinfo">
                 <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_01_200701.jpg" alt="전문화된 교수진">
-                <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
-                <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" alt="김원욱">자세히보기 &gt;</a></span>
+                <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" alt="김원욱">자세히보기 &gt;</a></span>
+                <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
                 <span class="btn03"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}" alt="장정훈">자세히보기 &gt;</a></span>
                 <ul>
                     {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'li') !!}

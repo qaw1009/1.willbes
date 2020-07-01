@@ -105,7 +105,10 @@
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1665m_02.jpg" alt="" > 
-            <a href="/m/promotion/index/cate/3114/code/1664" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/06/1665m_btn.png" alt="" ></a>
+            {{--<a href="/m/promotion/index/cate/3114/code/1664" target="_blank">--}}
+            <a href="#none"  onclick="javascript:alert('곧 본강의가 오픈됩니다!');" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/06/1665m_btn.png" alt="" >
+            </a>
         </div>
     </div>
     <!-- End Container -->

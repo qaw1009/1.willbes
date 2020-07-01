@@ -12,6 +12,7 @@ class Home extends \app\controllers\FrontController
         '2005' => 'all',
         '2006' => ['309002','309003','309004']
     ];
+    private $_no_pc_cate_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
     public function __construct()
     {
@@ -36,19 +37,19 @@ class Home extends \app\controllers\FrontController
                 $_view_path = $this->_site_code;
 
                 // 캠퍼스 코드
-                if (config_app('CampusCcdArr') != 'N') {
-                    $arr_campus = array_map(function($var) {
-                        $tmp_arr = explode(':', $var);
-                        return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-                    }, explode(',', config_app('CampusCcdArr')));
-                }
+                $arr_campus = $this->_getCampusCcdArray();
             } else {
-                if (empty($this->_cate_code) === true) {
-                    // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
-                    redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
-                }
+                if (in_array($this->_site_code, $this->_no_pc_cate_main) === true) {
+                    // 카테고리 메인이 없는 사이트일 경우
+                    $_view_path = $this->_site_code;
+                } else {
+                    if (empty($this->_cate_code) === true) {
+                        // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                        redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                    }
 
-                $_view_path = $this->_site_code . '_' . $cate_code;
+                    $_view_path = $this->_site_code . '_' . $cate_code;
+                }
             }
         } else {
             // 모바일카테고리적용
@@ -58,12 +59,7 @@ class Home extends \app\controllers\FrontController
                         $_view_path = $this->_site_code;
 
                         // 캠퍼스 코드
-                        if (config_app('CampusCcdArr') != 'N') {
-                            $arr_campus = array_map(function($var) {
-                                $tmp_arr = explode(':', $var);
-                                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-                            }, explode(',', config_app('CampusCcdArr')));
-                        }
+                        $arr_campus = $this->_getCampusCcdArray();
                     } else {
                         if (empty($this->_cate_code) === true) {
                             // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
@@ -87,6 +83,24 @@ class Home extends \app\controllers\FrontController
             'cate_code' => $cate_code,
             'is_site_home' => true
         ]);
+    }
+
+    /**
+     * 사이트 설정 정보의 캠퍼스 데이터 가공
+     * @return array
+     */
+    private function _getCampusCcdArray()
+    {
+        $arr_campus = [];
+
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_campus = array_map(function($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
+
+        return $arr_campus;
     }
 
     /**
@@ -774,12 +788,7 @@ class Home extends \app\controllers\FrontController
                 $_view_path = $this->_site_code;
 
                 // 캠퍼스 코드
-                if (config_app('CampusCcdArr') != 'N') {
-                    $arr_campus = array_map(function($var) {
-                        $tmp_arr = explode(':', $var);
-                        return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-                    }, explode(',', config_app('CampusCcdArr')));
-                }
+                $arr_campus = $this->_getCampusCcdArray();
             } else {
                 if (empty($this->_cate_code) === true) {
                     // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트

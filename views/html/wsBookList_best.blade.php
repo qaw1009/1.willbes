@@ -130,7 +130,7 @@
                         <ul>
                             <li class="bookTitle NSK">
                                 <label><input type="checkbox" name="" id=""></label>
-                                <a href="#none">2019 기태국어 실전문제 1340(전2권) </a>
+                                <a href="#none">2019 기태국어 실전문제 1340(전2권) 2019 기태국어 실전문제 1340(전2권) 2019 기태국어 실전문제 1340(전2권)  </a>
                             </li>
                             <li><strong>[저자]</strong> <a href="#none">윌비스</a></li>
                             <li><strong>[출판사]</strong> <a href="#none">윌비스</a></li>

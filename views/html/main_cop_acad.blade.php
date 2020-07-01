@@ -350,43 +350,6 @@
         </div>      
     </div>
 
-    {{--
-    <div class="Section Section2 mb50">
-        <div class="widthAuto p_re">
-            <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" title="신광은경찰 합격커리큘럼">
-            <div class="passCurriWrap">
-                <ul>
-                    <li class="curriStep1">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" title="집중 연강식 진행" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" title="집중 연강식 진행" class="over">
-                    </li>
-                    <li class="curriStep2">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" title="프리미엄 심화과정" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" title="프리미엄 심화과정" class="over">
-                    </li>
-                    <li class="curriStep3">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" title="핵심요약/진도별 정리" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" title="핵심요약/진도별 정리" class="over">
-                    </li>
-                    <li class="curriStep4">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" title="집중 약점 보안" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" title="집중 약점 보안" class="over">
-                    </li>
-                    <li class="curriStep5">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" title="실전력 극대화" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" title="실전력 극대화" class="over">
-                    </li>
-                    <li class="curriStep6">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" title="집단+개별면접대비" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" title="집단+개별면접대비" class="over">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- 합격커리큘럼 //-->
-    --}}
-
     {{-- on air include --}}
     @include('willbes.pc.site.main_partial.on_air')
 

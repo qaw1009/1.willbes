@@ -85,6 +85,9 @@ $config['work'] = array(
 $config['njob'] = array(
 );
 
+// willstory
+$config['book'] = array(
+);
 
 // 모의고사
 $config['mock'] = array(

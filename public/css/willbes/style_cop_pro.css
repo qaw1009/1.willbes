@@ -72,7 +72,6 @@
     position: absolute;
     width: 100px;
     top:720px;
-    left:60px;
     z-index: 1;
 }
 .pro .Profinfo span a {
@@ -90,9 +89,16 @@
     background: #0c5dc0;
     color:#fff;
 }
+.pro .Profinfo span.btn01 {
+    left:200px;
+}
 .pro .Profinfo span.btn02 {
+    left:530px;
+}
+.pro .Profinfo span.btn03 {
     left:863px;
 }
+
 
 /**/
 .pro .proPAss li {

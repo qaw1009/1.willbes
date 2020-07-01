@@ -381,3 +381,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook { left:-644px; }
 .wsBook_recruit {width:668px; margin:0 auto; border:1px solid #303030; padding:50px; line-height: 2; letter-spacing: normal;}
 .wsBook_recruit strong {display:block; font-size:14px;}
 
+/*검색결과*/
+.wsBookWrap .bookSearch {font-size:18px; text-align: center; margin: 100px 0;}
+.wsBookWrap .bookSearch span {color:#0b9d00}
+

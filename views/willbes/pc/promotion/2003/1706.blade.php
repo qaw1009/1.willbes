@@ -64,13 +64,13 @@
         .giftPop span {display:block; position:absolute; top:276px; width:100%; text-align:center; z-index:10}
 
         /*룰렛박스*/        
-        .rulletBox {position:absolute; top:551px; width:698px; height:698px; left:50%; margin-left:-349px; z-index:5; border:1px solid #000}
+        .rulletBox {position:absolute; top:551px; width:698px; height:698px; left:50%; margin-left:-349px; z-index:5;}
         .rulletBox .btn-roulette {position:absolute; top:268px; width:164px; 
             height:164px; left:50%; padding:0; margin:0; margin-left:-82px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:520px; left:580px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
-        .rulletBox a:hover {background:#5a14d6; color:#fff}
+        .rulletBox a:hover {background:#52fee7; color:#fff}
 
         
 

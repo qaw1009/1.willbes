@@ -51,7 +51,7 @@
         .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-400px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:164px; width:164px; 
             height:164px; left:50%; padding:0; margin:0; margin-left:-82px; background:none; z-index:6}
-        .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
+        .rulletBox a {position:absolute; top:485px; left:580px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
         .rulletBox a:hover {background:#5a14d6; color:#fff}

@@ -237,6 +237,7 @@ abstract class FrontController extends BaseController
 
             if (empty($_active_menu) === false) {
                 $_active_menu['UrlRouteNames'] = explode('>', $_active_menu['UrlRouteName']);
+                $_active_menu['GroupMenuUrl'] = array_value_first($menu_urls);  // 그룹메뉴 URL 추가 (사이트메뉴 2depth 링크)
                 unset($_active_menu['Children']);
             }
 

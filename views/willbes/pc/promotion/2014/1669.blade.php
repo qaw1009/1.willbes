@@ -133,7 +133,8 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1665_03.jpg" alt="" usemap="#MapbtnGo" border="0" >
             <map name="MapbtnGo">
-                <area shape="rect" coords="313,854,807,964" href="/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약하기">
+                {{--<area shape="rect" coords="313,854,807,964" href="/promotion/index/cate/3114/code/1664" target="_blank" alt="사전예약하기">--}}
+                <area shape="rect" coords="313,854,807,964" href="#none"  onclick="javascript:alert('곧 본강의가 오픈됩니다!');" alt="신청하기">
             </map>
         </div>
     </div>

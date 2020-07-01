@@ -115,7 +115,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_subject = $this->subjectModel->getSubjectArray();
 
         //교수조회
-        $arr_professor = $this->professorModel->getProfessorArray();
+        $arr_professor = $this->professorModel->getProfessorArray(null, null, ['P.ProfNickName' => 'ASC', 'P.ProfIdx' => 'ASC']);
 
         //발신번호조회
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');

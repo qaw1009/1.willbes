@@ -19,8 +19,8 @@
 
         /************************************************************/
 
-        .wb_top {background:#4290e1 url(http://file3.willbes.net/new_cop/2019/02/EV190214_c1_bg.jpg) no-repeat center top}
-	    .wb_cts01 {background:#dfdfe1 url(http://file3.willbes.net/new_cop/2019/02/EV190214_c2_bg.jpg) center top no-repeat;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/07/1129_top_bg.jpg) no-repeat center top}
+	    .wb_cts01 {background:#dfdfe1 url(https://static.willbes.net/public/images/promotion/2020/07/1129_01_bg.jpg) center top no-repeat;}
 	    .wb_cts02 {background:#dfdfe1;}	
 
         /* 탭 */
@@ -40,11 +40,14 @@
         .wb_cts03 {background:#FFF;}
         .menuWarp {position:relative; width:1210px; height:490px; margin:0 auto; }
         .PeMenu {position:absolute; width:1210px; height:328px; top:0px; left:0px;}
-        .PeMenu li { display:inline; float:left}
-        .PeMenu li a img.off {display:block} 	
-        .PeMenu li a img.on {display:none} 	
+        .PeMenu li { display:inline; float:left}	
+        .PeMenu li a img.off {display:block}
+        .PeMenu li a img.on {display:none}
+        .PeMenu li a:hover img.off {display:none}
+        .PeMenu li a:hover img.on {display:block}
 
         .video_area{padding-bottom:75px;margin-top:75px;}
+
 
     </style>
 
@@ -52,12 +55,12 @@
 <div class="evtContent" id="evtContainer">     
 
     <div class="evtCtnsBox wb_top" >
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c1.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_top.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
     </div>     
 
     <div class="evtCtnsBox wb_cts01">
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c2.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " /><br/>
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c3.jpg" alt=" 경찰수험가 10년간 변함없는 신뢰의 아이콘, 신광은경찰팀" />
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_01.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " /><br/>
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_02.jpg" alt=" 경찰수험가 10년간 변함없는 신뢰의 아이콘, 신광은경찰팀" />
     </div>
     
       
@@ -66,31 +69,32 @@
             <ul class="cf">
                 <li> 
                     <a class="active" href="#tab1">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap01.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap01on.jpg" class="on"  />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap01.jpg"  class="off" alt=""/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap01on.jpg" class="on"  />
                     </a>
                 </li>
                 <li> 
                     <a  href="#tab2">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap02.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap02on.jpg" class="on"  />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap02.jpg"  class="off" alt=""/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap02on.jpg" class="on"  />
                     </a>
                 </li>
                 <li> 
                     <a  href="#tab3">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap03.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap03on.jpg" class="on"  />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap03.jpg"  class="off" alt=""/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap03on.jpg" class="on"  />
                     </a>
                 </li>
                 <li> 
                     <a  href="#tab4">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap04.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap04on.jpg" class="on"  />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap04.jpg"  class="off" alt=""/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_tap04on.jpg" class="on"  />
                     </a>
                 </li>
             </ul>
             
             <div class="tabContents" id="tab1" >
+                {{--
                 <div class="Section Section2 mt100">
                     <div class="widthAuto p_re">
                         <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_0.jpg" alt="신광은경찰 합격커리큘럼">
@@ -121,41 +125,44 @@
                                     <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" alt="집단+개별면접대비" class="over">
                                 </li>
                             </ul>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
-                <!-- 합격커리큘럼 //-->
-                <!--p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p-->  
+                --}}
+                <div class="mt100">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="신광은경찰 합격커리큘럼">
+                </div>
+
                 <!--동영상-->                
                 <div class="video_area">
-                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/re8w_IFAPS4" frameborder="0" allowfullscreen></iframe></p>
-                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/mGt001If-5g" frameborder="0" allowfullscreen></iframe></p>
-                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/GLQ9KlRsusk" frameborder="0" allowfullscreen></iframe></p>
+                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
+                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/mGt001If-5g?rel=0" frameborder="0" allowfullscreen></iframe></p>
+                    <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/GLQ9KlRsusk?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 </div>    
                 <!--//동영상-->
             </div>
 
             <div class=" tabContents" id="tab2">
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_2.jpg"  alt=""/></p>                    
+                <p><img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_2.jpg"  alt=""/></p>                    
             </div>
 
             <div class=" tabContents" id="tab3">
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_3.jpg"  alt=""/></p>  
+                <p><img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_3.jpg"  alt=""/></p>  
                 <!--동영상-->
-                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/unImcehy2dI" frameborder="0" allowfullscreen></iframe></p>
+                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0" frameborder="0" allowfullscreen></iframe></p>
-                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/Bh0dUfkZ7Bk" frameborder="0" allowfullscreen></iframe></p>
+                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/Bh0dUfkZ7Bk?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 <!--//동영상-->
                 <p>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_4.jpg"  alt="" usemap="#Map190214_c1" border="0"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_4.jpg"  alt="" usemap="#Map190214_c1" border="0"/>
                     <map name="Map190214_c1" >
-                        <area shape="rect" coords="452,40,912,129" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
+                        <area shape="rect" coords="452,40,912,129" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ?rel=0" target="_blank" />
                     </map>
                 </p>  
             </div>
 
             <div class=" tabContents" id="tab4">
-                <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_5.jpg"  alt="" usemap="#Map190214_c2" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_03_4.jpg"  alt="" usemap="#Map190214_c2" border="0"/>
                 <map name="Map190214_c2" >
                     <area shape="rect" coords="235,483,484,580" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1542"  target="_blank"  alt="슈퍼패스"/>
                     <area shape="rect" coords="740,486,978,573" href="https://police.willbes.net/pass/consultManagement/index" target="_blank"  alt="1:1 심층상담" />
@@ -166,28 +173,32 @@
       
       
     <div class="evtCtnsBox wb_cts03" >
-        <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5.jpg" alt=""  /></p>
+        <p><img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04.jpg" alt=""  /></p>
         <div class="menuWarp">
             <div class="PeMenu">
                 <ul>
                     <li> 
                         <a href="{{ site_url('/promotion/index/cate/3001/code/1012') }}" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" alt=""  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap01.jpg" alt=""  class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap01on.jpg" alt=""  class="on"/>
                         </a>
                     </li>
                     <li>
                         <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" alt=""  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap02.jpg"  alt=""  class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap02on.jpg"  alt=""  class="on"/>
                         </a>
                     </li>
                     <li> 
                         <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1204" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" alt=""  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap03.jpg" alt="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap03on.jpg" alt="" class="on" />
                         </a>
                     </li>
                     <li> 
                         <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1455">
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" alt=""  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap04.jpg" alt=""  class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/07/1129_04_tap04on.jpg" alt=""  class="on"/>
                         </a>
                     </li>
                 </ul>

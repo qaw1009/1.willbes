@@ -7,8 +7,7 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="Section MainVisual">
-            <div class="widthAuto">
-                <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
+            <div class="widthAuto">                
                 <a href="{{ site_url('/promotion/index/cate/3006/code/1019') }}">
                     <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_top.jpg" alt="대한민국 1등 경찰학원">
                 </a>
@@ -17,18 +16,14 @@
 
         <div class="Section">
             <div class="widthAuto Profinfo">
-                <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_01.jpg" alt="전문화된 교수진">
-                <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">자세히보기 &gt;</a></span>
-                <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}">자세히보기 &gt;</a></span>
+                <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_01_200701.jpg" alt="전문화된 교수진">
+                <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
+                <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" alt="김원욱">자세히보기 &gt;</a></span>
+                <span class="btn03"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}" alt="장정훈">자세히보기 &gt;</a></span>
                 <ul>
                     {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'li') !!}
                     {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'li') !!}
                     {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'li') !!}
-                    {{--
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50553/?subject_idx=1024&subject_name=%EC%A3%BC%EA%B4%80%EC%8B%9D%ED%96%89%EC%A0%95%EB%B2%9') }}"><img src="{{ img_url('cop_pro/banner/bnr_372_01.jpg') }}" alt="경찰행정학 이성호"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50115/?subject_idx=1027&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B42') }}"><img src="{{ img_url('cop_pro/banner/bnr_372_02.jpg') }}" alt="경찰실무 송광호"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50277/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}"><img src="{{ img_url('cop_pro/banner/bnr_372_03.jpg') }}" alt="실무종합 조용석"></a></li>
-                    --}}
                 </ul>
             </div>
         </div>
@@ -39,10 +34,6 @@
                 <ul class="proPAss">
                     {!! banner_html(element('메인_승진패스1', $data['arr_main_banner']), null, null, null, 'li') !!}
                     {!! banner_html(element('메인_승진패스2', $data['arr_main_banner']), null, null, null, 'li') !!}
-                    {{--
-                    <li><a href="javascript:alert('NEW 2021년대비 Coming soon')"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
-                    <li><a href="javascript:alert('NEW 2021년대비 Coming soon')"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
-                    --}}
                 </ul>
             </div>
         </div>

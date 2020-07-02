@@ -31,7 +31,7 @@ class SearchWBookModel extends WB_Model
         } else {
             $column = '
                 B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublName, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wEditionSize
-                    , B.wPrintCnt, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wBookDesc, B.wAuthorDesc, B.wTableDesc
+                    , B.wPrintCnt, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword, B.wBookDesc, B.wAuthorDesc, B.wTableDesc
 		            , B.wAttachImgPath, B.wAttachImgName, B.wRegDatm, B.wRegAdminIdx, B.wAuthorNames
                     , B.wEditionCcdName, B.wSaleCcdName, A.wAdminName as wRegAdminName
             ';

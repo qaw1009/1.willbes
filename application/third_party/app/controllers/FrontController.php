@@ -209,7 +209,11 @@ abstract class FrontController extends BaseController
                     if (empty($_active_route_idx) === false) {
                         if (is_numeric($_active_group_menu_idx) === true) {
                             // 사이트 일반 메뉴
-                            $_tree_menu = array_get($all_site_tree_menus, implode('.', array_slice(explode('.', $_active_route_idx), 0, 4)) . '.Children');
+                            $_active_start_route_idx = implode('.', array_slice(explode('.', $_active_route_idx), 0, 4));
+                            $_tree_menu = array_get($all_site_tree_menus, $_active_start_route_idx . '.Children');
+
+                            // Home URL 추가 (사이트메뉴 2depth 링크)
+                            $_active_menu['HomeUrl'] = array_get($menu_urls, $_active_start_route_idx);
                         } else {
                             // 사이트 예외메뉴 (불필요한 배열 초기화)
                             //$_tree_menu = current(current($_tree_menu)['Children'])['Children'];
@@ -231,6 +235,9 @@ abstract class FrontController extends BaseController
                             }
                         }
                         $_tree_menu = element('Children', $_active_menu);
+
+                        // Home URL 추가 (사이트메뉴 2depth 링크)
+                        $_active_menu['HomeUrl'] = $_active_menu['MenuUrl'];
                     }
                 }
             }

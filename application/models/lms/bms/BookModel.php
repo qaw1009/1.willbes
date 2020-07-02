@@ -201,7 +201,8 @@ class BookModel extends WB_Model
     public function findBookForModify($prod_code)
     {
         $column = '
-            P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsFreebiesTrans, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsFreebiesTrans, P.Keyword, P.OptionCcds
+                , P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , B.wBookIdx, B.SchoolYear, B.CourseIdx, B.DispTypeCcd, B.IsFree
                 , S.SaleRate, S.SaleDiscType, S.RealSalePrice
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
@@ -237,6 +238,12 @@ class BookModel extends WB_Model
             // 신규 상품코드 조회
             $row = $this->_conn->getFindResult($this->_table['product'], 'ifnull(max(ProdCode) + 1, 200001) as ProdCode');
 
+            // 상품 옵션
+            $option_ccds = element('option_ccd', $input);
+            if (empty($option_ccds) === false) {
+                $option_ccds = implode(',', $option_ccds);
+            }
+
             // 상품 등록
             $data = [
                 'ProdCode' => $row['ProdCode'],
@@ -257,6 +264,8 @@ class BookModel extends WB_Model
                 'IsRefund' => 'Y',
                 'IsFreebiesTrans' => element('is_freebies_trans', $input, 'Y'),
                 'IsDeliveryInfo' => 'Y',
+                'Keyword' => element('keyword', $input),
+                'OptionCcds' => $option_ccds,
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -344,6 +353,12 @@ class BookModel extends WB_Model
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
+            // 상품 옵션
+            $option_ccds = element('option_ccd', $input);
+            if (empty($option_ccds) === false) {
+                $option_ccds = implode(',', $option_ccds);
+            }
+
             // 상품 정보 수정
             $data = [
                 'ProdName' => element('book_name', $input),
@@ -354,6 +369,8 @@ class BookModel extends WB_Model
                 'IsBest' => element('is_best', $input, 'N'),
                 'IsNew' => element('is_new', $input, 'N'),
                 'IsFreebiesTrans' => element('is_freebies_trans', $input, 'Y'),
+                'Keyword' => element('keyword', $input),
+                'OptionCcds' => $option_ccds,
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

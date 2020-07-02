@@ -7,7 +7,8 @@ class Book extends \app\controllers\BaseController
     protected $helpers = array();
     private $_ccd = [
         'wSale' => '112',
-        'DispType' => '619'
+        'DispType' => '619',
+        'Option' => '730'
     ];
 
     public function __construct()
@@ -106,6 +107,9 @@ class Book extends \app\controllers\BaseController
                 show_error('데이터 조회에 실패했습니다.');
             }
 
+            // 상품 옵션
+            $data['OptionCcds'] = array_filter(explode(',', $data['OptionCcds']));
+
             // 카테고리 연결 데이터 조회 (단일)
             $arr_book_category = $this->bookModel->listBookCategory($idx);
             $data['CateCode'] = key($arr_book_category);
@@ -128,6 +132,7 @@ class Book extends \app\controllers\BaseController
             'data' => $data,
             'arr_disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
             'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
+            'arr_option_ccd' => $this->codeModel->getCcd($this->_ccd['Option']),
             'arr_course' => $arr_course
         ]);
     }

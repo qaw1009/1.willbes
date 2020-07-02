@@ -206,6 +206,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2">키워드
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" maxlength="200" value="{{ $data['Keyword'] }}">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2">교재소개
                     </label>
                     <div class="col-md-9">
@@ -242,12 +249,15 @@
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse'] == 'N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="is_new">신규/추천여부
+                    <label class="control-label col-md-2" for="is_new">메인적용여부
                     </label>
                     <div class="col-md-4">
                         <div class="checkbox">
                             <input type="checkbox" id="is_new" name="is_new" class="flat" value="Y" title="신규여부" @if($data['IsNew'] == 'Y')checked="checked"@endif/> <label for="is_new" class="input-label">신규</label>
                             <input type="checkbox" id="is_best" name="is_best" class="flat" value="Y" @if($data['IsBest'] == 'Y')checked="checked"@endif/> <label for="is_best" class="input-label">추천</label>
+                            @foreach($arr_option_ccd as $key => $val)
+                                <label class="input-label"><input type="checkbox" id="option_ccd_{{ $key }}" name="option_ccd[]" class="flat" value="{{ $key }}" @if(empty($data['OptionCcds']) === false && array_search($key, $data['OptionCcds']) !== false)checked="checked"@endif/> {{ $val }}</label>
+                            @endforeach
                         </div>
                     </div>
                 </div>

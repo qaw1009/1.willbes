@@ -142,28 +142,28 @@
                 --}}
 
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ske.jpg" alt="신광은" usemap="#Map220A" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ske2.jpg" alt="신광은" usemap="#Map220A" border="0">
                     <map name="Map220A">
                         <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                         <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
                     </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_kwu.jpg" alt="김원욱" usemap="#Map220B" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_kwu2.jpg" alt="김원욱" usemap="#Map220B" border="0">
                     <map name="Map220B">
                         <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                         <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
                     </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh.jpg" alt="장정훈" usemap="#Map220C" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh2.jpg" alt="장정훈" usemap="#Map220C" border="0">
                     <map name="Map220C">
                         <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                         <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
                     </map>
                 </li>                
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh.jpg" alt="송광호" usemap="#Map220D" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh2.jpg" alt="송광호" usemap="#Map220D" border="0">
                     <map name="Map220D">
                         <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                         <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
@@ -172,14 +172,14 @@
                 <li>
                     <div class="slider">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk.jpg" alt="박상규" usemap="#Map220E" border="0">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk2.jpg" alt="박상규" usemap="#Map220E" border="0">
                             <map name="Map220E">
                                 <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                                 <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
                             </map>
                         </div>                            
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ohw.jpg" alt="오현웅" usemap="#Map220F" border="0">
+                            <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ohw2.jpg" alt="오현웅" usemap="#Map220F" border="0">
                             <map name="Map220B">
                                 <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
                                 <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">

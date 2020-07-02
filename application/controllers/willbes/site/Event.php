@@ -47,7 +47,7 @@ class Event extends \app\controllers\FrontController
      */
     public function list($params = [])
     {
-        if (empty($this->_is_pass_site) === true) {
+        if (empty($params['cate']) === false) {
             $onoff_type = $params['pattern'];
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $view_url = '/event/show/cate/'.$params['cate'].'/pattern/'.$onoff_type;
@@ -93,7 +93,7 @@ class Event extends \app\controllers\FrontController
         }
 
         //학원,온라인 경로 셋팅
-        if (empty($this->_is_pass_site) === true) {
+        if (empty($params['cate']) === false) {
             $onoff_type = $params['pattern'];
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;

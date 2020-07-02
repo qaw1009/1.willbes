@@ -55,10 +55,11 @@
 .pro .Profinfo {
     position: relative;
 }
+.pro .Profinfo ul {margin:0 auto; text-align: center;}
 .pro .Profinfo li {
     display: inline;
-    float: left;
-    margin-right:2px;
+    margin-right:0;
+    width: 372px;
 }
 .pro .Profinfo li:last-child {
     margin:0;

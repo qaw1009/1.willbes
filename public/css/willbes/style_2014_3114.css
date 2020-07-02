@@ -14,10 +14,10 @@
 
 /* Main Container : MainVisual */
 .njob2 .Section0 {background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx110_bg.jpg) no-repeat center top; border-top:2px solid #000; margin-top:-2px}
-.njob2 .Section1 {background:#bebcbd}
 .njob2 .MainVisual {
     position: relative;
-    width: 1120px;
+    width: 100%;
+    max-width: 2000px;
     margin:0 auto;
     height: 670px;
 }
@@ -29,21 +29,25 @@
 
 .njob2 .VisualBox {
     position: absolute;
-    width:1120px;
+    width:2000px;
+    left:50%;
+    margin-left:-1000px;
     height: 670px;
     overflow: hidden;
     z-index: 1;
 }
 
 .njob2 .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left:50%;
+    margin-left:-500px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
 .njob2 .VisualBox .bx-wrapper .bx-pager {
     width: auto;
-    left:60px;
+    left:50%;
+    margin-left:-450px;
     bottom: 22px;
     text-align: left;
     z-index: 90;

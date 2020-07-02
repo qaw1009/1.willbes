@@ -209,8 +209,8 @@ class OffLectureHL extends \app\controllers\BaseController
         // 정산대상 주문 합계금액 조회
         $sum_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, $prod_type, true);
 
-        // 정산대상 기준 결제일시 (최종 결제일시)
-        $base_datm = array_get($order_data, '0.CompleteDatm');
+        // 정산대상 기준 결제일시 (최종 결제일시, 주문내역이 없을 경우 현재일시)
+        $base_datm = array_get($order_data, '0.CompleteDatm', date('Y-m-d H:i:s'));
 
         $this->load->view('business/calc/hanlim_show', [
             'data' => $data,
@@ -321,13 +321,14 @@ class OffLectureHL extends \app\controllers\BaseController
             return null;
         }
 
-        if (strip_comma($this->_reqP('pre_price')) < 1) {
-            return $this->json_error('수수료공제전수강총액은 0원보다 커야 합니다.', _HTTP_VALIDATION_ERROR);
+        // 수강총액이 0원이거나 수강이력이 없어도 정산 가능하도록 수정
+        /*if (strip_comma($this->_reqP('pre_price')) < 1) {
+            return $this->json_error('수수료공제전수강총액은 0원보다 커야 합니다.');
         }
 
         if ($this->_reqP('prod_type') == 'CP' && strip_comma($this->_reqP('pack_remain_price')) < 1) {
-            return $this->json_error('수수료공제후수강총액은 0원보다 커야 합니다.', _HTTP_VALIDATION_ERROR);
-        }
+            return $this->json_error('수수료공제후수강총액은 0원보다 커야 합니다.');
+        }*/
 
         $result = $this->hanlimCalcModel->addCalcHist($this->_reqP(null, false));
 
@@ -361,9 +362,11 @@ class OffLectureHL extends \app\controllers\BaseController
 
         // 정산대상 주문조회
         $order_data = $this->hanlimCalcModel->listCalcOrder($prof_idx, $prod_code, $prod_type, false, false, $data['BaseDatm']);
-        if (empty($order_data) === true) {
+
+        // 수강총액이 0원이거나 수강이력이 없어도 정산 가능하도록 수정
+        /*if (empty($order_data) === true) {
             show_alert('강사료정산 주문 데이터가 없습니다.', 'back');
-        }
+        }*/
 
         // 공제내역 조회
         $deduct_data = $this->hanlimCalcModel->getCalcDeduct($data['PchIdx']);

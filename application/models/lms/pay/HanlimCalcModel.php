@@ -355,10 +355,10 @@ class HanlimCalcModel extends BaseOrderModel
                 , ifnull(sum(U.LecRemainPrice), 0) as tLecRemainPrice
                 , ifnull(sum(U.PackRemainPrice), 0) as tPackRemainPrice
                 , count(U.OrderProdIdx) as tPayCnt	
-                , sum(if(U.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '", 1, 0)) as tRefundCnt                	
-                , sum(if(U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)) as tMemCnt
-                , sum(if(U.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)) as tLecMemCnt
-                , sum(if(U.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)) as tPackMemCnt
+                , ifnull(sum(if(U.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '", 1, 0)), 0) as tRefundCnt                	
+                , ifnull(sum(if(U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)), 0) as tMemCnt
+                , ifnull(sum(if(U.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)), 0) as tLecMemCnt
+                , ifnull(sum(if(U.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)), 0) as tPackMemCnt
             ';
         } else {
             $column = 'U.*

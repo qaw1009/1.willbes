@@ -460,6 +460,7 @@
                 var is_deduct_check = true;
                 var is_etc_deduct_check = true;
 
+                /* 수강총액이 0원이거나 수강이력이 없어도 정산 가능하도록 수정
                 if ($regi_form.find('.list_order_tr').length < 1) {
                     alert('정산대상이 없습니다.');
                     return false;
@@ -468,7 +469,7 @@
                 if (parseInt(onlyNumber($regi_form.find('[name="pre_price"]').val()), 10) < 1) {
                     alert('수수료공제전 수강총액은 0원보다 커야만 합니다.');
                     return false;
-                }
+                }*/
 
                 if ($regi_form.find('[name="prod_type"]').val() === 'CP') {
                     if (parseInt(onlyNumber($regi_form.find('[name="pre_price"]').val()), 10) < parseInt(onlyNumber($regi_form.find('[name="pack_remain_price"]').val()), 10)) {

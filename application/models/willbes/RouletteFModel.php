@@ -143,7 +143,7 @@ class RouletteFModel extends WB_Model
             return error_result($e);
         }
 
-        return array('ret_cd' => true, 'ret_msg' => $otherinfo_data['OrderNum'], 'ret_prod_img' => ($otherinfo_data['FinishFileFullPath'] ? $otherinfo_data['FinishFileFullPath'] : $otherinfo_data['FileFullPath']) );
+        return array('ret_cd' => true, 'ret_msg' => $otherinfo_data['OrderNum'], 'ret_prod_img' => $otherinfo_data['FileFullPath'] );
     }
 
     /**
@@ -188,7 +188,7 @@ class RouletteFModel extends WB_Model
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-        return array('ret_cd' => true, 'ret_msg' => $result_data['result_win_num'], 'ret_prod_img' => ($result_data['result_finish_file_full_path'] ? $result_data['result_finish_file_full_path'] : $result_data['result_file_full_path'] ));
+        return array('ret_cd' => true, 'ret_msg' => $result_data['result_win_num'], 'ret_prod_img' => $result_data['result_file_full_path']);
     }
 
     /**

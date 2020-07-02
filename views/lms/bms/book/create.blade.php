@@ -256,7 +256,7 @@
                             <input type="checkbox" id="is_new" name="is_new" class="flat" value="Y" title="신규여부" @if($data['IsNew'] == 'Y')checked="checked"@endif/> <label for="is_new" class="input-label">신규</label>
                             <input type="checkbox" id="is_best" name="is_best" class="flat" value="Y" @if($data['IsBest'] == 'Y')checked="checked"@endif/> <label for="is_best" class="input-label">추천</label>
                             @foreach($arr_option_ccd as $key => $val)
-                                <label class="input-label"><input type="checkbox" id="option_ccd_{{ $key }}" name="option_ccd[]" class="flat" value="{{ $key }}" @if(array_search($key, $data['OptionCcds']) !== false)checked="checked"@endif/> {{ $val }}</label>
+                                <label class="input-label"><input type="checkbox" id="option_ccd_{{ $key }}" name="option_ccd[]" class="flat" value="{{ $key }}" @if(empty($data['OptionCcds']) === false && array_search($key, $data['OptionCcds']) !== false)checked="checked"@endif/> {{ $val }}</label>
                             @endforeach
                         </div>
                     </div>

@@ -42,8 +42,8 @@
                     'callbackFinished' : function () {
                         $("#giftPopupWrap").css("display","block");
                         $("#temp_roulette_starting").val('1');
-                        $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
-                        // $("#gift_box_id").html('<img src="'+ret_prod_img+'" alt="당첨상품"/>');
+                        {{-- 당첨이미지 하드코딩하지말것. 여러개의 룰렛 이벤트가 동시에 진행될수있음. 룰렛이미지와 당첨이미지가 동일함. --}}
+                        $("#gift_box_id").html('<img src="'+ret_prod_img+'" alt="당첨상품"/>');
                     }
                 },
         });
@@ -59,6 +59,7 @@
             if (ret.ret_cd) {
                 var segmentNumber = ret.ret_data.ret_msg;   // The segment number should be in response.
                 if (segmentNumber) {
+                    //console.log('ret', ret);
                     ret_prod_img = (ret.ret_data.ret_prod_img ? ret.ret_data.ret_prod_img : '')
                     $("#temp_prod_num").val(segmentNumber);
                     var stopAt = theWheel.getRandomForSegment(segmentNumber);

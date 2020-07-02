@@ -1,0 +1,311 @@
+/*********************************************     Main Container : Gosi Acad     *********************************************/
+/* Main Container : Gosi Acad */
+.incheon .tx-color {
+    color: #0c5dc0;
+}
+.incheon .Menu .menu-List li.Acad a {
+    color: #0c5dc0;
+}
+.incheon .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+/*상단 메뉴*/
+.incheon .list-drop-Box2 {
+        top: 38px;
+        left: 50%;
+        margin-left: -109px;
+        width: 420px;
+        padding: 20px;
+        text-align: left;
+        z-index: 9999;
+}
+.incheon .list-drop-Box2 .Tit {margin-top:10px !important}
+.incheon .list-drop-Box2 li:first-child {margin:0 !important}
+.incheon .list-drop-Box2 span {display: inline-block; font-size: 14px !important; width:50px}
+.incheon .list-drop-Box2 li a {display: inline-block; padding-right:20px}
+
+.incheon .VisualBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;    
+}
+
+.incheon .VisualBox .MaintabList {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.incheon .VisualBox .MaintabList ul li {
+    background: #251c1c;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+    width: 180px;
+}
+.incheon .VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.incheon .VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.incheon .VisualBox .MaintabList.five ul li {
+    width: 188px;
+}
+.incheon .VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.incheon .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.incheon .VisualBox .MaintabList ul li a:hover,
+.incheon .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
+
+.incheon .VisualsubBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 160px;
+    overflow: hidden;
+}
+.incheon .VisualsubBox ul li {
+    float: left;
+    width: 370px;
+    margin-left: 5px;
+}
+.incheon .VisualsubBox ul li:first-child {
+    margin-left: 0;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #b7b7b7;
+}
+.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #0c5dc0;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc;
+    width: 9px;
+    height: 9px;
+}
+.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #313131;
+}
+
+/* Main Container : campus : */
+.incheon .campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.incheon .campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.incheon .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #0c5dc0;
+    text-align: center;
+    border: 1px solid #0c5dc0;    
+}
+.incheon .campus_info .btn a img {
+    vertical-align: middle;
+}
+
+/*학원둘러보기*/
+.incheon .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
+.incheon .acadview .avslider {height:180px; overflow: hidden;}
+.incheon .acadview .avslider li {display:inline; float:left; width: 25%;}
+.incheon .acadview .avslider li a {display:block;} 
+.incheon .acadview .avslider:after {content: ""; display: block; clear:both}
+.incheon .acadview p {position:absolute; top:40%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.incheon .acadview p.leftBtn {left:-22px}
+.incheon .acadview p.rightBtn {right:-22px}
+
+
+/* Main Container : Notice : noticeTabs */
+.incheon .noticeTabs {
+    width: 345px !important;
+    float:left;
+    margin-right:40px;
+}
+.incheon .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.incheon .tabBox.noticeBox .List-Table {
+    width: 100%;    
+    border-top:2px solid #000;
+    padding:0;
+    margin-top:-10px;
+}
+.incheon .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.incheon .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.incheon .tabBox.noticeBox .List-Table li a span {
+    background: #0c5dc0;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.incheon .willbesNumber ul li {
+    margin-left: 40px;
+    vertical-align: top;
+}
+
+/*학원 오시는 길*/
+.Section4_ic {
+    width: 1120px !important;
+    margin: auto;
+}
+.Section4_ic .will-acadTit {border-bottom:2px solid #000; margin-bottom:20px}
+.Section4_ic .noticeTabs {
+    width: 100% !important;
+}
+.Section4_ic .map_img {
+    position: relative;
+    float: left !important;
+    width: 698px;
+    height: 328px;
+    overflow: hidden;
+}
+.Section4_ic .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.Section4_ic .campus_info {
+    position: relative;
+    float: right !important;
+    width: 320px;
+    height: 328px;
+}
+.Section4_ic .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.Section4_ic .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
+}
+.Section4_ic .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #000;
+    text-align: center;
+    border: 1px solid #000;    
+}
+
+/* Main Container : QuickMenu : iccheon */
+.incheon .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.incheon .MainQuickMenu ul {
+    padding:0 8px !important;
+    background: #ececec;
+    width:100%;
+}
+.incheon .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.incheon .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.incheon .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.incheon .MainQuickMenu li a {
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+}
+.incheon .MainQuickMenu li a:hover {
+    color:#00acec; 
+}
+.incheon .MainQuickMenu li:nth-child(1) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
+}
+.incheon .MainQuickMenu li:nth-child(2) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
+}
+.incheon .MainQuickMenu li:nth-child(3) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
+}
+.incheon .MainQuickMenu li:nth-child(4) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
+}
+.incheon .MainQuickMenu li:nth-child(5) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
+}
+.incheon .MainQuickMenu li:nth-child(6) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
+}
+.incheon .MainQuickMenu li:nth-child(7) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
+}
+.incheon .MainQuickMenu li:nth-child(8) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
+}

@@ -33,9 +33,9 @@
         // *** 직렬별 선택과목 갯수 *** TODO 하드코딩 개선
         $pick_sjt_cnt = 3;  // 기본 3개
 
-        //2020년 공무원 지방직 9급. 프로모션 코드 1660
-        $sp_idx_20200604 = (ENVIRONMENT == 'local' || 'dev' ? 10 : 10 );
-        if($SpIdx == $sp_idx_20200604) {
+        //2020년 공무원 지방직 9급. 프로모션 코드 1706
+        $sp_idx_20200702 = (ENVIRONMENT == 'local' || 'dev' ? 11 : 11 );
+        if($SpIdx == $sp_idx_20200702) {
             $pick_sjt_cnt = 2;
         }
 

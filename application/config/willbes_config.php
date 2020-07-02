@@ -89,6 +89,10 @@ $config['njob'] = array(
 $config['book'] = array(
 );
 
+// 인천학원
+$config['willbesedu'] = array(
+);
+
 // 모의고사
 $config['mock'] = array(
     'sysCode_kind' => 686,             // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)

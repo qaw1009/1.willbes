@@ -41,6 +41,8 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
             <br><br>
+            <a href="{{ site_url('/home/html/m/main_2015') }}" target="_blank">메인-인천 고시학원</a>
+            <br><br>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/search_list') }}" target="_blank">검색결과 리스트</a>      

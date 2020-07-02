@@ -116,6 +116,7 @@
                 var $parent_selected_edition_ccd_name = $('#selected_edition_ccd_name');
                 var $parent_selected_print_edtion_cnt = $('#selected_print_edtion_cnt');
                 var $parent_selected_edtion_size = $('#selected_edtion_size');
+                var $parent_selected_keyword = $parent_regi_form.find('input[name="keyword"]');
                 var $parent_selected_wbook_desc = $('#selected_wbook_desc');
                 var $parent_selected_wauthor_desc = $('#selected_wauthor_desc');
                 var $parent_selected_wtable_desc = $('#selected_wtable_desc');
@@ -135,6 +136,7 @@
                 if ($parent_selected_edition_ccd_name.length > 0) { $parent_selected_edition_ccd_name.text(row.wEditionCcdName); }
                 if ($parent_selected_print_edtion_cnt.length > 0) { $parent_selected_print_edtion_cnt.text(  row.wEditionCnt+ '판 ' +row.wPrintCnt + '쇄'); }
                 if ($parent_selected_edtion_size.length > 0) { $parent_selected_edtion_size.text(row.wEditionSize); }
+                if ($parent_selected_keyword.length > 0) { $parent_selected_keyword.val(row.wKeyword); }
                 if ($parent_selected_wbook_desc.length > 0) { $parent_selected_wbook_desc.html(row.wBookDesc); }
                 if ($parent_selected_wauthor_desc.length > 0) { $parent_selected_wauthor_desc.html(row.wAuthorDesc); }
                 if ($parent_selected_wtable_desc.length > 0) { $parent_selected_wtable_desc.html(row.wTableDesc); }

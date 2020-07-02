@@ -14,36 +14,43 @@
 
 /* Main Container : MainVisual */
 .njob2 .Section0 {background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx110_bg.jpg) no-repeat center top; border-top:2px solid #000; margin-top:-2px}
-.njob2 .Section1 {background:#bebcbd}
+.njob2 .Section1 {height: 670px; position: relative; max-width: 2000px; margin: 0 auto;}
 .njob2 .MainVisual {
-    position: relative;
-    width: 1120px;
-    margin:0 auto;
-    height: 670px;
-}
-.njob2 .MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.njob2 .VisualBox {
     position: absolute;
-    width:1120px;
+    width: 100%;   
+    max-width: 2000px; 
     height: 670px;
-    overflow: hidden;
-    z-index: 1;
+    left:50%;
+    margin-left:-50%;
 }
-
+.njob2 .VisualBox {
+    width:2000px;
+    height: 670px;
+    text-align: center !important;
+    overflow: hidden;
+    position: absolute; left:50%; top:50%; 
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.njob2 .VisualBox .sliderStopAutoPager img {
+    min-width: 1120px;
+    margin: 0 auto;
+}
 .njob2 .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left:50%;
+    margin-left:-500px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
 .njob2 .VisualBox .bx-wrapper .bx-pager {
     width: auto;
-    left:60px;
+    left:50%;
+    margin-left:-450px;
     bottom: 22px;
     text-align: left;
     z-index: 90;
@@ -51,7 +58,14 @@
 .njob2 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
+.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #3997f0 !important;
+    z-index: 10;
+}
 
+/*
 .njob2 .VisualsubBox {
     width: 1120px;
     height: 380px;
@@ -82,12 +96,8 @@
 .njob2 .bx-wrapper .bx-pager.bx-default-pager a {
     background: #ccc !important;
 }
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.njob2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #3997f0 !important;
-    z-index: 10;
-}
+*/
+
 
 
 .njob2 .will-listTi,

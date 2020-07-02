@@ -25,7 +25,6 @@
                     <li>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a><br>                 
@@ -143,7 +142,6 @@
                     <li>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                     </li>
                     <li>
@@ -249,7 +247,6 @@
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
                     </li>
@@ -358,10 +355,6 @@
                         <a href="{{front_url('/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        {{--
-                        <a href="{{front_url('/professor/show/prof-idx/50346/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50274/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
-                        --}}
                         <a href="{{front_url('/professor/show/prof-idx/50310/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
                         <a href="{{front_url('/professor/show/prof-idx/50072/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                     </li>
@@ -375,10 +368,6 @@
                         <a href="{{front_url('/professor/show/prof-idx/50560/?cate_code=3043&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                     </li>
                     <li>
-                        {{--
-                        <span>[사회]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50182/?cate_code=3043&subject_idx=1279&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
-                        --}}
                         <span>[국제법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50394/?cate_code=3043&subject_idx=1273&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95')}}">이상구</a>
                     </li>
@@ -392,8 +381,7 @@
                         <span>[국어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50242/?cate_code=3044&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
                         <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50500/?cate_code=3044&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        {{--<a href="{{front_url('/professor/show/prof-idx/50346/?cate_code=3044&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>--}}
+                        <a href="{{front_url('/professor/show/prof-idx/50500/?cate_code=3044&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>                        
                         <span>[한국사]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50648/?cate_code=3044&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">조민주</a>
                     </li>
@@ -417,12 +405,7 @@
                         <span>[국제법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50394/?cate_code=3044&subject_idx=1273&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95')}}">이상구</a>
                         <span>[국제정치학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50394/?cate_code=3044&subject_idx=1274&subject_name=%EA%B5%AD%EC%A0%9C%EC%A0%95%EC%B9%98%ED%95%99')}}">이상구</a>
-                        {{--
-                        <span>[일본어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50727/?cate_code=3044&subject_idx=1307&subject_name=%EC%9D%BC%EB%B3%B8%EC%96%B4')}}">황선아</a>
-                        --}}
-                    </li>
+                        <a href="{{front_url('/professor/show/prof-idx/50394/?cate_code=3044&subject_idx=1274&subject_name=%EA%B5%AD%EC%A0%9C%EC%A0%95%EC%B9%98%ED%95%99')}}">이상구</a>                    </li>
                     <li>
                         <span>[프랑스어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50002/?cate_code=3044&subject_idx=1324&subject_name=%ED%94%84%EB%9E%91%EC%8A%A4%EC%96%B4')}}">박훈</a>
@@ -442,10 +425,6 @@
                         <a href="{{front_url('/professor/show/prof-idx/50242/?cate_code=3046&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50500/?cate_code=3046&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        {{--
-                        <a href="{{front_url('/professor/show/prof-idx/50346/?cate_code=3046&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50274/?cate_code=3046&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
-                        --}}
                         <a href="{{front_url('/professor/show/prof-idx/50310/?cate_code=3046&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
                     </li>
                     <li>

@@ -68,7 +68,7 @@
                 <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
                 <span class="btn03"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}" alt="장정훈">자세히보기 &gt;</a></span>
             <ul>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50553/?subject_idx=1024&subject_name=%EC%A3%BC%EA%B4%80%EC%8B%9D%ED%96%89%EC%A0%95%EB%B2%9"><img src="{{ img_url('cop_pro/banner/bnr_372_01.jpg') }}" alt="경찰행정학 이성호"></a></li>
+                {{--<li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50553/?subject_idx=1024&subject_name=%EC%A3%BC%EA%B4%80%EC%8B%9D%ED%96%89%EC%A0%95%EB%B2%9"><img src="{{ img_url('cop_pro/banner/bnr_372_01.jpg') }}" alt="경찰행정학 이성호"></a></li>--}}
                 <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50115/?subject_idx=1027&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B42"><img src="{{ img_url('cop_pro/banner/bnr_372_02.jpg') }}" alt="경찰실무 송광호"></a></li>
                 <li><a href="https://cop.dev.willbes.net/professor/show/cate/3006/prof-idx/50277/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9"><img src="{{ img_url('cop_pro/banner/bnr_372_03.jpg') }}" alt="실무종합 조용석"></a></li>
             </ul>           

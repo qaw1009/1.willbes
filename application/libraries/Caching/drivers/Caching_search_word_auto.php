@@ -50,7 +50,7 @@ class Caching_search_word_auto extends CI_Driver
             	1=1                        
         ';
 
-        $group_order_by = ' group by S.SiteCode, s.SiteName, left(sl.SearchWord,20) order by count(*) DESC LIMIT 200';  //300개 제한
+        $group_order_by = ' group by S.SiteCode, s.SiteName, left(sl.SearchWord,20) order by count(*) DESC LIMIT 500';  //500개 제한
 
         $arr_condition = [
             'EQ' => [
@@ -58,7 +58,7 @@ class Caching_search_word_auto extends CI_Driver
             ],
             'GT' => ['sl.ResultCount' => 0],
             'RAW' => [
-                'sl.RegDatm between ' => 'date_format(date_add(now(),interval -1 year),\'%Y-%m-%d\') and date_format(now(),\'%Y-%m-%d\')'
+                'date_format(sl.RegDatm,\'%Y-%m-%d\') between ' => 'date_format(date_add(now(),interval -1 year),\'%Y-%m-%d\') and date_format(now(),\'%Y-%m-%d\')'
             ]
         ];
 

@@ -30,8 +30,8 @@ class SearchModel  extends WB_Model
                         ,B.SiteName
                         ,C.CateName
                         ,D.wAdminName as RegAdminName
-                        ,E.wAdminName as UpdAdminName';
-
+                        ,E.wAdminName as UpdAdminName
+                        ,(Select Count(*) from '.$this->_table['search_log'].' Where EtcInfo = A.SwIdx) as Click_Cnt';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

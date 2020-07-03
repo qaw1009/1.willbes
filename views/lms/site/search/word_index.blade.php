@@ -57,6 +57,7 @@
                     <th width="90" class="text-center">사용여부</th>
                     <th width="100" class="text-center">등록자</th>
                     <th width="120" class="text-center">등록일</th>
+                    <th width="80" class="text-center">클릭수</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -115,7 +116,8 @@
                             return '<input type="checkbox" class="flat" name="IsUse" value="Y" data-idx="'+ row.SwIdx +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
                     {'data' : 'RegAdminName','class': 'text-center'},
-                    {'data' : 'RegDatm','class': 'text-center'}
+                    {'data' : 'RegDatm','class': 'text-center'},
+                    {'data' : 'Click_Cnt','class': 'text-center'}
                 ]
             });
 

@@ -158,7 +158,9 @@
                             수정
                         @else
                             @if(empty($arr_swich['reply']['btn_name']) === false)
-                            {{ $arr_swich['reply']['btn_name'] }}
+                                {{ $arr_swich['reply']['btn_name'] }}
+                            @else
+                                저장
                             @endif
                         @endif
 

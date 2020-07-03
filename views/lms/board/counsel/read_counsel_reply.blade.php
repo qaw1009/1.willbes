@@ -2,11 +2,11 @@
 
 @section('content')
     {!! form_errors() !!}
-    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_swich['title'] or '온라인 고객센터 1:1 상담 게시판'}} 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal form-label-left" novalidate>
         <div class="x_panel">
             <div class="x_title">
-                <h2>1:1 상담 게시판 관리</h2>
+                <h2>{{$arr_swich['title'] or '1:1 상담 게시판 관리'}}</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -28,11 +28,13 @@
                             @foreach($data['arr_cate_code'] as $key => $val)
                                 {{$val}} @if ($loop->last === false) | @endif
                             @endforeach
+                        @elseif(empty($arr_swich['cate_name']) === false)
+                            {{$arr_swich['cate_name']}}
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group {{$arr_swich['reply']['MdCateName'] or ''}}">
                     <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-4">
                         {{$data['MdCateName']}}
@@ -103,17 +105,20 @@
                 <label class="col-md-1-1 mt-15 text-right" for="">답변</label>
                 <div class="col-md-9">
                     <div class="form-control-static col-md-1-1">
-                        <div class="form-control-static col-md-12 short-div"><b>답변상태</b></div>
-                        <div class="form-control-static col-md-12 short-div"><b>VOC 강도</b></div>
+                        <div class="form-control-static col-md-12 short-div {{$arr_swich['reply']['reply_status_ccd'] or ''}}"><b>답변상태</b></div>
+                        <div class="form-control-static col-md-12 short-div {{$arr_swich['reply']['voc_value'] or ''}}"><b>VOC 강도</b></div>
                         <div class="form-control-static col-md-12 short-div"><b>답변자</b></div>
                         <div class="form-control-static col-md-12 short-div"><b>최종 수정자</b></div>
+                        @if(empty($arr_swich['reply']['reply_status_ccd']) === false)
+                        <div class="form-control-static short-div"><b>답변첨부파일</b></div>
+                        @endif
                     </div>
 
                     <div class="form-control-static col-md-4">
-                        <div class="form-control-static short-div">
+                        <div class="form-control-static short-div {{$arr_swich['reply']['reply_status_ccd'] or ''}}">
                             {{$data['reply_status']}}
                         </div>
-                        <div class="form-control-static short-div">
+                        <div class="form-control-static short-div {{$arr_swich['reply']['voc_value'] or ''}}">
                             @if($data['VocCcd'] == $voc_ccd_level3)
                                 <span class="red">{{$data['voc_value']}}</span>
                             @else
@@ -126,16 +131,33 @@
                         <div class="form-control-static short-div">
                             {{$data['counselUpdAdminName']}}
                         </div>
+
+                        @if(empty($arr_swich['reply']['reply_status_ccd']) === false)
+                        <div class="short-div">
+                            @for($i = 0; $i < $attach_file_cnt; $i++)
+                                @if(empty($data['arr_reply_attach_file_path'][$i]) === false)
+                                    <p class="form-control-static">
+                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
+                                            {{ $data['arr_reply_attach_file_real_name'][$i] }}
+                                        </a> ]
+                                    </p>
+                                @endif
+                            @endfor
+                        </div>
+                        @endif
                     </div>
 
                     <div class="form-control-static col-md-1-1">
-                        <div class="form-control-static short-div"><b>답변첨부파일</b></div>
-                        <div class="form-control-static short-div"></div>
+                        <div class="form-control-static short-div {{$arr_swich['reply']['voc_value'] or ''}}"></div>
                         <div class="form-control-static short-div"><b>답변일</b></div>
                         <div class="form-control-static short-div"><b>최종수정일</b></div>
+                        @if(empty($arr_swich['reply']['reply_status_ccd']) === true)
+                        <div class="form-control-static short-div"><b>답변첨부파일</b></div>
+                        @endif
                     </div>
 
                     <div class="form-control-static col-md-4">
+                        @if(empty($arr_swich['reply']['reply_status_ccd']) === true)
                         <div class="short-div">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_reply_attach_file_path'][$i]) === false)
@@ -146,9 +168,9 @@
                                 </p>
                             @endif
                         @endfor
-
                         </div>
-                        <div class="form-control-static short-div"></div>
+                        @endif
+                        <div class="form-control-static short-div {{$arr_swich['reply']['voc_value'] or ''}}"></div>
                         <div class="form-control-static short-div">{{$data['ReplyRegDatm']}}</div>
                         <div class="form-control-static short-div">{{$data['ReplyUpdDatm']}}</div>
                     </div>
@@ -164,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row {{$arr_swich['reply']['memo'] or ''}}">
                 <div class="form-group">
                     <label class="col-md-1-1 mt-25 text-right" for="memo_contents">매모</label>
                     <div class="col-md-9 mt-20 ml-20">
@@ -203,11 +225,17 @@
             </div>
 
             <div class="form-group text-center btn-wrap mt-50">
-                @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
-                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">수정</button>
-                @else
-                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">답변</button>
-                @endif
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">
+                        @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
+                            수정
+                        @else
+                            답변
+                        @endif
+                        @if(empty($arr_swich['reply']['cate_cnt']) === false)
+                            <span class="reply_cnt">{{$arr_unAnswered[$arr_swich['reply']['cate_cnt']]}}</span>
+                        @endif
+                    </button>
+
                 <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             </div>
  

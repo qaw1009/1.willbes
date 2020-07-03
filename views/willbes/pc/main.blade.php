@@ -370,9 +370,12 @@
         </div>
 
         {{-- 엔잡 배너 --}}
+        {{--
         <div class="njobBn">
             <a href="{{ front_app_url('/home/index/cate/3114', 'njob') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_full.gif" alt="N job"></a>
         </div>
+        --}}
+        {!! popup('657001', $__cfg['SiteCode']) !!}
     </div>
     <!-- End Container -->
 

@@ -40,7 +40,7 @@ class Caching_search_word_auto extends CI_Driver
 
         $column =
             ((empty($skey) || $skey == '2000') ? '\'2000\'' : 'S.SiteCode'). ' AS SiteCode
-            , sl.SearchWord, count(*) as SearchCount, sum(sl.ResultCount) as SearchResultSum
+            , left(sl.SearchWord,20) as SearchWord, count(*) as SearchCount, sum(sl.ResultCount) as SearchResultSum
         ';
 
         $from = '
@@ -50,7 +50,7 @@ class Caching_search_word_auto extends CI_Driver
             	1=1                        
         ';
 
-        $group_order_by = ' group by S.SiteCode, s.SiteName, sl.SearchWord order by count(*) DESC LIMIT 2000';  //2000개 제한
+        $group_order_by = ' group by S.SiteCode, s.SiteName, left(sl.SearchWord,20) order by count(*) DESC LIMIT 200';  //300개 제한
 
         $arr_condition = [
             'EQ' => [

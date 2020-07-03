@@ -389,6 +389,25 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 온라인서점 데이터 조회
+     * @return mixed
+     */
+    private function _getSite2012Data()
+    {
+        $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
+        if (APP_DEVICE == 'pc') {
+        }
+
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_errata'] = $this->_boardExamErrata(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
+
+        return $data;
+    }
+
+    /**
      * 경찰간부[학원] 데이터 조회
      * @param string $cate_code
      * @param array $arr_campus
@@ -606,6 +625,21 @@ class Home extends \app\controllers\FrontController
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 정오표/추록 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _boardExamErrata($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 114, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }

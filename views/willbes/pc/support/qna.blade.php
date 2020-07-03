@@ -23,14 +23,14 @@
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray mt0">
                         <div class="f_left">
-                            <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                            <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess {{$arr_swich['consult_type'] or ''}}" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                                 <option value="">과정</option>
-                                @foreach($arr_base['site_list'] as $key => $val)
+                                @foreach($arr_base['site'] as $key => $val)
                                     <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>
 
-                            <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
+                            <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory {{$arr_swich['cate'] or ''}}" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
                                 <option value="">카테고리</option>
                                 @php $temp_s_cate_code = ''; @endphp
                                 @foreach($arr_base['category'] as $row)
@@ -42,7 +42,7 @@
                                 <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
                             @endif
 
-                            <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA" onchange="goUrl('s_consult_type',this.value)">
+                            <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA {{$arr_swich['consult_type'] or ''}}" onchange="goUrl('s_consult_type',this.value)">
                                 <option value="">상담유형</option>
                                 @foreach($arr_base['consult_type'] as $key => $val)
                                     <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -64,19 +64,25 @@
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
-                                <col style="width: 65px;">
-                                <col style="width: 90px;">
-                                <col style="width: 100px;">
-                                <col style="width: 315px;">
-                                <col style="width: 90px;">
-                                <col style="width: 110px;">
-                                <col style="width: 90px;">
+                                @if(empty($arr_swich['arr_table_width']) === false)
+                                    @foreach($arr_swich['arr_table_width'] as $width)
+                                    <col style="width: {{$width}}px;">
+                                    @endforeach
+                                @else
+                                    <col style="width: 65px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 315px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 110px;">
+                                    <col style="width: 90px;">
+                                @endif
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
-                                <th>과정<span class="row-line">|</span></th>
-                                <th>상담유형<span class="row-line">|</span></th>
+                                <th class="{{$arr_swich['site'] or ''}}">과정<span class="row-line">|</span></th>
+                                <th class="{{$arr_swich['consult_type'] or ''}}">상담유형<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>작성자<span class="row-line">|</span></th>
                                 <th>작성일<span class="row-line">|</span></th>
@@ -92,8 +98,8 @@
                             @foreach($list as $row)
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                    <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
-                                    <td class="w-A">{{$row['TypeCcd_Name']}}</td>
+                                    <td class="w-process {{$arr_swich['site'] or ''}}"><div class="pBox p5">{{$row['SiteName']}}</div></td>
+                                    <td class="w-A {{$arr_swich['consult_type'] or ''}}">{{$row['TypeCcd_Name']}}</td>
                                     <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                             <a href="javascript:alert('비밀글입니다.');">

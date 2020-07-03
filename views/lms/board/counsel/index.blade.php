@@ -48,8 +48,8 @@
                         <select class="form-control {{$arr_swich['search']['search_reply_type'] or ''}}" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
                             @foreach($arr_reply as $key => $val)
-                                @if(empty($arr_swich['search']['search_reply_type']) === false)
-                                    @foreach($arr_swich['search']['search_reply_type'] as $type)
+                                @if(empty($arr_swich['search']['arr_search_reply_type']) === false)
+                                    @foreach($arr_swich['search']['arr_search_reply_type'] as $type)
                                         @if($type == $key)
                                             <option value="{{$key}}">{{$val}}</option>
                                         @endif

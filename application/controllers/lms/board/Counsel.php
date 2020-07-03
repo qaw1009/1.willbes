@@ -32,7 +32,8 @@ class Counsel extends BaseBoard
         'type_group_ccd' => '622' //유형 그룹 코드 = 상담유형
     ];
     private $_on_off_swich = [
-        '115' => [                                  // bm_idx=115
+        '115' => [                                  // bm_idx=115     
+            'title' => '업무제휴문의',                // 게시판 제목 arr_unAnswered
             'cate' => ['2012' => '월스토리'],        // 카테고리 설정
             'cate_name' => '온라인서점',             // 카테고리명 설정
             'search' => [                          // 검색조건 설정
@@ -41,7 +42,7 @@ class Counsel extends BaseBoard
                 'search_md_cate_code' => 'hide',
                 'search_type_group_ccd' => 'hide',
                 'vod_value' => 'hide',
-                'search_reply_type' => ['621001','621004']
+                'arr_search_reply_type' => ['621001','621004']
             ],
             'list' => [                             // 리스트 항목 설정
                 'CateCode' => '카테고리',
@@ -62,7 +63,8 @@ class Counsel extends BaseBoard
                 'default_voc_ccd' => '620001',
                 'voc_value' => 'hide',
                 'memo' => 'hide',
-                'btn_name' => '답변'
+                'btn_name' => '답변등록',
+                'cate_cnt' => '2012'
             ]
         ],
     ];
@@ -480,6 +482,19 @@ class Counsel extends BaseBoard
         $arr_voc_code = $this->_getCcdArray($this->_groupCcd['voc']);
         $data['arr_voc_code'] = $arr_voc_code;
 
+        //미답변현황
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->bm_idx,
+                'IsStatus' => 'Y',
+                'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
+            ],
+            'GTE' => [
+                'RegDatm' => '2019-03-25 00:00:00'
+            ]
+        ];
+        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
+
         $this->load->view("board/{$this->board_name}/create_counsel_reply", [
             'boardName' => $this->board_name,
             'data' => $data,
@@ -487,6 +502,7 @@ class Counsel extends BaseBoard
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'arr_swich' => element($this->bm_idx,$this->_on_off_swich),
             'arr_ccd_reply' => $this->_Ccd['reply'],
+            'arr_unAnswered' => $arr_unAnswered
         ]);
     }
 
@@ -602,6 +618,19 @@ class Counsel extends BaseBoard
         $arr_voc_code = $this->_getCcdArray($this->_groupCcd['voc']);
         $data['voc_value'] = (empty($arr_voc_code[$data['VocCcd']])) ? '' : $arr_voc_code[$data['VocCcd']];
 
+        //미답변현황
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->bm_idx,
+                'IsStatus' => 'Y',
+                'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
+            ],
+            'GTE' => [
+                'RegDatm' => '2019-03-25 00:00:00'
+            ]
+        ];
+        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
+
         $this->load->view("board/{$this->board_name}/read_counsel_reply", [
             'boardName' => $this->board_name,
             'data' => $data,
@@ -612,7 +641,8 @@ class Counsel extends BaseBoard
             'board_previous' => $board_previous,
             'board_next' => $board_next,
             'memo_data' => $memo_data,
-            'arr_swich' => element($this->bm_idx,$this->_on_off_swich)
+            'arr_swich' => element($this->bm_idx,$this->_on_off_swich),
+            'arr_unAnswered' => $arr_unAnswered
         ]);
     }
 

@@ -1627,6 +1627,9 @@ select.input-sm {
     border-top: none;
 }
 
+#btn_reply_modify { position: relative;}
+#btn_reply_modify span.reply_cnt { position: absolute; width: 20px; height: 20px; border-radius: 20px;background: red; color: white; right: -10px;top:-10px; line-height: 20px; }
+
 /* form-control-static */
 .form-horizontal .form-group .form-control-static p {
     margin: 0;

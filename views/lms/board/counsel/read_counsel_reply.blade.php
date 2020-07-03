@@ -2,11 +2,11 @@
 
 @section('content')
     {!! form_errors() !!}
-    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_swich['title'] or '온라인 고객센터 1:1 상담 게시판'}} 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal form-label-left" novalidate>
         <div class="x_panel">
             <div class="x_title">
-                <h2>1:1 상담 게시판 관리</h2>
+                <h2>{{$arr_swich['title'] or '1:1 상담 게시판 관리'}}</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -225,11 +225,17 @@
             </div>
 
             <div class="form-group text-center btn-wrap mt-50">
-                @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
-                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">수정</button>
-                @else
-                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">답변</button>
-                @endif
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">
+                        @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
+                            수정
+                        @else
+                            답변
+                        @endif
+                        @if(empty($arr_swich['reply']['cate_cnt']) === false)
+                            <span class="reply_cnt">{{$arr_unAnswered[$arr_swich['reply']['cate_cnt']]}}</span>
+                        @endif
+                    </button>
+
                 <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             </div>
  

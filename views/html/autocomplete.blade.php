@@ -20,11 +20,12 @@
         <link rel="stylesheet" href="/public/vendor/jquery/v.1.12.1/jquery-ui.css">
         <script src="/public/vendor/jquery/v.1.12.1/jquery-ui.js"></script>
         <style type="text/css">
+            /*
             .ui-autocomplete
             {
                 width: 150px;
                 max-height: 200px;
-                overflow-y: auto; /* prevent horizontal scrollbar */
+                overflow-y: auto; 
                 overflow-x: hidden;
             }
             html .ui-autocomplete
@@ -41,6 +42,25 @@
                 color: #ffffff !important;
                 font-size:8px;
             }
+            */
+            .ui-autocomplete {
+                width: 150px;
+                max-height: 200px;
+                overflow-y: auto; /* prevent horizontal scrollbar */
+                font-size:14px;
+                font-weight: bold !important;
+                color:#666;
+                line-height:1.5;
+                overflow-x: hidden;
+            }
+            html .ui-autocomplete { }
+            .ui-menu .ui-menu-item a { }
+            .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+                background: #666 !important;
+                font-weight: bold !important;                
+                color: #fff !important;
+                border:0  !important;
+            }
         </style>
         <script>
             $(function(){
@@ -55,12 +75,6 @@
                 })
             })
         </script>
-
-
-
-
-
-
 
 
 

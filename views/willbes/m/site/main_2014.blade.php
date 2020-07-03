@@ -211,6 +211,10 @@
                 <li>{!! banner('M_메인_hot클립2', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot클립3', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot클립4', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot클립5', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot클립6', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot클립7', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot클립8', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 

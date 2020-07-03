@@ -64,7 +64,7 @@
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 클립 영상</div>
                 <ul class="bestLec">
-                    @for($i=1; $i<=4; $i++)
+                    @for($i=1; $i<=8; $i++)
                         @if(isset($data['arr_main_banner']['메인_hot클립'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_hot클립'.$i]) !!}

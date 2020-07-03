@@ -206,10 +206,10 @@
             $('.btn-save-cache').on('click', function() {
 
                 if($("#search_site_code").val() === '') {
-                    alert("개별사이트를 선택 후 ''을 사용하여 주십시오.");
+                    alert("개별사이트를 선택 후 사용하여 주십시오.");
                     return;
                 }
-                if (!confirm('수동으로 설정 검색어 캐시를 업데이트 하시겠습니까?\n(주의요망 : 자동 완성 검색어도 동시 업데이트 됨)')) {
+                if (!confirm('설정 검색어 캐시를 업데이트 하시겠습니까?\n(주의요망 : 자동 완성 검색어도 동시 업데이트 됨)')) {
                     return;
                 }
                 var data = {

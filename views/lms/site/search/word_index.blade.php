@@ -57,6 +57,7 @@
                     <th width="90" class="text-center">사용여부</th>
                     <th width="100" class="text-center">등록자</th>
                     <th width="120" class="text-center">등록일</th>
+                    <th width="80" class="text-center">클릭수</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -115,7 +116,8 @@
                             return '<input type="checkbox" class="flat" name="IsUse" value="Y" data-idx="'+ row.SwIdx +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
                     {'data' : 'RegAdminName','class': 'text-center'},
-                    {'data' : 'RegDatm','class': 'text-center'}
+                    {'data' : 'RegDatm','class': 'text-center'},
+                    {'data' : 'Click_Cnt','class': 'text-center'}
                 ]
             });
 
@@ -204,10 +206,10 @@
             $('.btn-save-cache').on('click', function() {
 
                 if($("#search_site_code").val() === '') {
-                    alert("개별사이트를 선택 후 ''을 사용하여 주십시오.");
+                    alert("개별사이트를 선택 후 사용하여 주십시오.");
                     return;
                 }
-                if (!confirm('수동으로 설정 검색어 캐시를 업데이트 하시겠습니까?\n(주의요망 : 자동 완성 검색어도 동시 업데이트 됨)')) {
+                if (!confirm('설정 검색어 캐시를 업데이트 하시겠습니까?\n(주의요망 : 자동 완성 검색어도 동시 업데이트 됨)')) {
                     return;
                 }
                 var data = {

@@ -1,5 +1,9 @@
-@extends('willbes.m.layouts.master')
+@php
+//온라인 사이트로 리다이렉트
+redirect(front_url('/home/index/cate/3100')); exit;
+@endphp
 
+@extends('willbes.m.layouts.master')
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both mb20">

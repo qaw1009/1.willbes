@@ -10,7 +10,8 @@ class Home extends \app\controllers\FrontController
     private $_category_mobile = [
         '2003' => ['3035'],
         '2005' => 'all',
-        '2006' => ['309002','309003','309004']
+        '2006' => ['309002','309003','309004'],
+        '2008' => ['3100']
     ];
     private $_no_pc_cate_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
@@ -179,6 +180,7 @@ class Home extends \app\controllers\FrontController
         } else {
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;
+                $data['mapping_cate_data'] = $this->_getMappingCateCode($s_cate_code);
                 $data['off_notice'] = $this->_boardNoticeForPassCate(5, $s_cate_code);
                 $data['arr_main_banner'] = $this->_banner($s_cate_code);
                 $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
@@ -302,19 +304,17 @@ class Home extends \app\controllers\FrontController
     private function _getSite2008Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
-        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
-
-        if (APP_DEVICE == 'pc') {
-            $s_cate_code = $cate_code;
-            $data['arr_main_banner'] = $this->_banner($s_cate_code);
-            $data['dday'] = $this->_dday();
-        }
-
-        $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
-        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
-        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
-
+        $data['mapping_cate_data'] = $this->_getMappingCateCode($cate_code);
+        $data['arr_main_banner'] = $this->_banner($cate_code);
+        $data['dday'] = $this->_dday();
+        /*$data['off_notice'] = $this->_boardNotice(5, $cate_code, null, 108);*/
+        $data['off_notice'] = $this->_boardNoticeForPassCate(5, $cate_code);
+        $data['notice'] = $this->_boardNotice(5, $cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $cate_code);
+        $data['best_product'] = $this->_product('on_lecture', 20, $cate_code, 'Best');
+        $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $cate_code, 'New');
+        $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $cate_code);
         return $data;
     }
 

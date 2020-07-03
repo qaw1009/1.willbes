@@ -471,6 +471,22 @@
                 </li>
             </ul>
         @endif
+    @elseif($__cfg['SiteCode'] == '2008')
+        @if($menu_cate_code == '3100')
+            {{-- 경찰간부 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li><span>한국사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50855?subject_idx=1591') }}">임진석</a></li>
+                <li><span>형법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50856?subject_idx=1592') }}">문형석</a></li>
+                <li><span>행정학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50858?subject_idx=1593') }}">이동호</a></li>
+                <li><span>경찰학개론</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50862?subject_idx=1594') }}">정진천</a></li>
+                <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50859?subject_idx=1595') }}">정주형</a></li>
+                <li><span>행정법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50861?subject_idx=1596') }}">조현</a></li>
+                <li><span>민법총칙</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50863?subject_idx=1597') }}">고태환</a></li>
+            </ul>
+        @endif
     @endif
 @endsection
 
@@ -769,6 +785,32 @@
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1557') }}">상표법</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1558') }}">특허법</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1559') }}">회로이론</a>
+                </li>
+            </ul>
+        @endif
+    @elseif($__cfg['SiteCode'] == '2008')
+        {{-- 경찰간부 --}}
+        @if($menu_cate_code == '3100')
+            <ul>
+                <li>
+                    <span>순환별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&course_idx=1147') }}">예비순환</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&course_idx=1148') }}">1순환</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&course_idx=1149') }}">2순환</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&course_idx=1150') }}">3순환</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=1151') }}">특강 </a>
+                </li>
+                <li>
+                    <span>과목별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&course_idx=&subject_idx=1591') }}">한국사</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1592') }}">형법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1593') }}">행정학</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1594') }}">경찰학개론</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1595') }}">형사소송법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1596') }}">행정법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1597') }}">민법총칙</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1600') }}">설명회</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1741') }}">영어</a>
                 </li>
             </ul>
         @endif

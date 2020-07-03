@@ -192,62 +192,7 @@
 
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
-            {{--
-            <ul class="bestLec">
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_01.png" alt="김정한 대표">
-                        <ul>
-                            <li><span class="tx-red">NEW</span> · 이커머스</li>
-                            <li>가장 현실적인 월 100만원 만들기, <br>
-                                지금 바로 시작하는 스마트스토어!</li>
-                            <li>다마고치 김정환 대표<br>
-                                <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
-                            <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1564" target="_blank">신청하기</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_02.png" alt="김경은 대표">
-                        <ul>
-                            <li><span class="tx-red">NEW</span> · 이커머스</li>
-                            <li>혼자서도 할 수 있는 <br>
-                                1인 온라인 창업</li>
-                            <li>단아쌤 김경은 대표<br>
-                                <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
-                            <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1566" target="_blank">신청하기</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_03.png" alt="황채영 대표">
-                        <ul>
-                            <li><span class="tx-red">NEW</span> · 이커머스</li>
-                            <li>재고없이 오픈마켓으로<br>
-                                월 1천만원 수익 만들기</li>
-                            <li>황채영 대표<br>
-                                <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
-                            <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1565" target="_blank">신청하기</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_272x316_04.png" alt="정문진 대표">
-                        <ul>
-                            <li><span class="tx-red">NEW</span> · 이커머스</li>
-                            <li>진짜 고수에게 배우는 스마트스토어로, <br>
-                                제2의 월급통장 만들기!</li>
-                            <li>정문진 대표<br>
-                                <strong class="NSK-Black">온라인강의 · <span class="tx-red">10%할인</span></strong></li>
-                            <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1567" target="_blank">신청하기</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-            --}}
+
             <ul class="bestLec">
                 <li>
                     <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">
@@ -268,14 +213,14 @@
                     <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_04.gif" alt="정문진 대표">
                     </a>
-                </li>
+                </li>                
             </ul>
         </div>  
         
         
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌
-            <span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span> 
+            {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
         </div>
             <ul class="bestLec">
                 <li>
@@ -308,6 +253,10 @@
         <div class="evtCtnsBox evt03">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 클립 영상</div>
             <ul class="hotLec">
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_01.png" alt="김정한"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_02.png" alt="김경은"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_03.png" alt="황채영"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_04.png" alt="정문진"></a></li>
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_01.png" alt="김정한"></a></li>
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_02.png" alt="김경은"></a></li>
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/m/3114_clip_03.png" alt="황채영"></a></li>

@@ -180,7 +180,7 @@
 		<div class="evtCtnsBox wb_05" > 
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1709_05.jpg"  alt="전국모의고사 이벤트" usemap="#Map1709a" border="0">
             <map name="Map1709a" id="Map1709a">
-                <area shape="rect" coords="255,1076,859,1213" href="javascript:;" onclick="giveCheck()" alt="할인받으러 고" />
+                <area shape="rect" coords="255,1076,859,1213" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" />
             </map>    
 		</div>
 

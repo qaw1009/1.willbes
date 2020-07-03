@@ -1,6 +1,3 @@
-<style>
-    .nav-md .container.body .col-md-3.left_col.menu_fixed { height:100vh; overflow-y: auto; overflow-x:hidden }
-</style>
 <div class="col-md-3 left_col menu_fixed">
     <div class="left_col scroll-view">
         <!-- sidebar menu -->

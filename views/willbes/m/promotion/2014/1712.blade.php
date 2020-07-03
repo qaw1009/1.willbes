@@ -85,8 +85,8 @@
     .evt06 .columns div strong {font-size:bold; color:#333}
 
     .evt07 {background:#3a99f0; padding:20px}
-    /*.evt07 li {display:inline; float:left; width:50%}*/
-    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 li {margin-bottom:10px}
+    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 10px; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -107,7 +107,7 @@
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
     .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
-    .btnbuy a span {font-size:1.2rem;}
+    .btnbuy a span {font-size:1rem;}
     .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -136,7 +136,8 @@
     @@media only all and (min-width: 768px) {
         .evt02 .price br,
         .evt05 h5 br {display:none}
-        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}        
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4} 
+        .evt07 li {display:inline; float:left; width:50%}    
     }
 
     /* 태블릿 가로, PC */
@@ -147,22 +148,18 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top.jpg" alt="이시한 교수" ></div>             
+        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top.jpg" alt="이승기 PD" ></div>             
         <div class="evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top_txt.jpg" alt="이시한 교수" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_top_txt.jpg" alt="" >
         </div>
         <ul>
             <li class="strong">윌비스 N잡 대표강사</li>
-            <li>연세대학교 국문과 졸업, 연세대학교 대학원 석사 졸, 박사수료</li>
-            <li>성신여대 겸임교수 / 70권의 책을 낸 작가 / 100여개 대학 특강</li>
-            <li><유튜브 지금 시작하시나요?> 책 저자</li> 
-            <li>잡코리아 좋은일연구소 자문위원</li>
-            <li>(주) SH미래인재연구소 대표</li>
-            <li>매일경제, 네이버 비즈니스 칼럼니스트</li>
-            <li>tv N 예능 <뇌섹시대-문제적 남자>기획과 출연</li>
-            <li>KBS라디오 <김난도의 트랜드플러스> 고정패널 </li>
-            <li>MBN <직장의 신> 전문가 MC, EBS TV <최종면접> 고정패널</li>
-            <li>한국멘사 회원</li>
+            <li>고려대학교 온라인마케팅 최고경영자과정 수료</li>
+            <li>한국비지니스협회 최고경영자과정 수료</li>
+            <li>3P자기경영연구소 프로과정 수료</li>
+            <li>개인사업자 및 스타트업 SNS마케팅 강의출강</li>
+            <li>한국직업방송 <청산유수> 출연</li>
+            <li>2019 소비자 만족도 1위! 교육브랜드 대상 수상</li>
         </ul>
         <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>       
         <div class="evtMenu">
@@ -224,14 +221,21 @@
         <div class="evtCtnsBox evt03">
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/OzRyEe5Vops?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/sO1Y3lGfMsM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="evt03Txt01">
-                <span class="NSK-Black">이시한의 읽은척 책방!</span><br>
-                안녕하세요! 유튜브에서 지식편의점<br>
-                시한책방을 운영하고 있는<br>
-                성신여대 겸임교수, 부업 북튜버 이시한입니다! 
+            <div class="evt03Txt01">                
+                안녕하세요. 어디서든 자유롭게 일하고<br>
+                하루에 수백, 수천의 매출을 올리는<br>
+                홈비지니스의 모든것,<br>
+                여러분께 인스타마켓 강의의<br>
+                A-Z를 전수하러 온  안혜빈입니다.<br>
+                <br>
+                사무실 없이 평범하게 5살, 3살<br>
+                두 아이를 키우던 젊은 엄마는<br>
+                어떻게 SNS마케팅과 홈비니지스를 통해 <br>
+                <span class="NSK-Black">억대 매출을 내는 CEO</span>가 되었을까 <br>
+                궁금하지 않으셔요?
             </div>            
         </div> 
 
@@ -273,7 +277,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_04.jpg" alt="인플루언서" >
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/zF21fLMGoJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/BsqW9fk1V6M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_05.jpg" alt="e커머스 강좌소개" ><br>
@@ -338,8 +342,8 @@
     <div id="tab03">
         <div class="evtCtnsBox evt05">
             <h5 class="NSK-Black">
-                <div>지속가능한<br> 유튜브 채널만들기 :</div>
-                <div>기획부터<br> 실행까지 한 방에</div>
+                <div>인스타마켓 <br>실전 창업의 모든것</div>
+                <div>시작하자마자 <br>흑자사업을 위한 커리큘럼</div>
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
             <div class="curriculum">
@@ -372,65 +376,78 @@
                 </dl>                       
                         
             	<dl>
-                    <dt>1부 : 유튜브 목적</dt> 
-                    <dd>1강 : 유튜브 지금 시작하시나요?</dd>
-                    <dd>2강 : 도대체 당신이 유튜브를 하려는 이유는?</dd>
-                    <dd>3강 : 유튜브를 하려는 8가지 목적과 각각의 핵심 포인트 Part 1</dd>
-                    <dd>4강 : 유튜브를 하려는 8가지 목적과 각각의 핵심 포인트 Part 2</dd>
-                    <dd>5강 : 유튜브 목적이 채널 운영에 미치는 영향</dd>
+                    <dt>1. 인스타그램 계정 키우기 10강</dt>
+                    <dd>1강. 인스타마켓, 얼마나 벌 수 있어요?</dd>
+                    <dd>2강. 인스타에 대한 거짓, 전부 리뷰해드립니다.</dd>
+                    <dd>3강. 인스타 마켓, 진성고객 1000명이 필요한 이유</dd>
+                    <dd>4강. 상품이 잘 팔리는 계정은 뭐가 다를까?</dd>
+                    <dd>5강. 내 상품을 사줄 고객 데려오는 법</dd>
+                    <dd>6강. 고객이 나에게 끌리는 가장 확실한 방법</dd>
+                    <dd>7강. 고객이 내가 더 궁금해지는 인스타그램 프로필</dd>
+                    <dd>8강. 좋아요 500개, 댓글 100개받는 일상글의 비밀</dd>
+                    <dd>9강. 고객이 하루에도 3번 찾는 계정 만들기</dd>
+                    <dd>10강. 고객을 사로잡는 감각적인 피드 구성법</dd>
 
-                    <dt>2부 : 유튜브 최신 트렌드 </dt>
-                    <dd>6강 : 유튜브 2세대가 시작된 해는 과연 언제일까?</dd>
-                    <dd>7강 : 1세대 유튜버와 2세대 유튜버의 세대 차이 </dd>
-                    <dd>8강 : 요즘 잘 나가는 채널 분석 </dd>
-                    <dd>9강 : 유튜브 7가지 최신 트렌드</dd>
-                    <dd>10강 : 2세대 유튜버의 2가지 핵심은?</dd>
+                    <dt>2. 이미지마케팅  10강</dt>
+                    <dd>1강. 인스타마켓, 정말 사진이 중요할까?</dd>
+                    <dd>2강. 포토샵 없이 보정할 수 있는 어플 모음집</dd>
+                    <dd>3강. 동영상으로 매력 어필하기</dd>
+                    <dd>3강. 인스타마켓 - 셀카 잘 찍는 법</dd>
+                    <dd>4강. 인스타마켓 - 인물사진 잘 찍는 법</dd>
+                    <dd>5강. 인스타마켓 - 음식 사진 잘 찍는 법</dd>
+                    <dd>6강. 인스타마켓 - 배경사진 잘 찍는 법</dd>
+                    <dd>7강. 인스타마켓 이미지마케팅 추가 강의 1</dd>
+                    <dd>8강. 인스타마켓 이미지마케팅 추가 강의 2</dd>
+                    <dd>9강. 인스타마켓 이미지마케팅 추가 강의 3</dd>
+                    <dd>10강. 인스타마켓 이미지마케팅 추가 강의 4</dd>
 
-                    <dt>3부 : 유튜브 기획</dt>
-                    <dd>11강 : 채널 기획 전 반드시 체크해야 할 스스로에 대한 5대 점검사항 </dd>
-                    <dd>12강 : 지속가능하기 위한 콘텐츠의 5가지 조건 </dd>
-                    <dd>13강 : 콘텐츠의 뼈대가 되는 두 가지 기둥</dd>
-                    <dd>14강 : 콘텐츠에 매력을 더하는 두 가지 양념</dd>
-                    <dd>15강 : 구독자가 느끼는 매력은 어디서 나오는가?</dd>
-                    <dd>16강 : 차마 대놓고 물어보지 못하는 질문들</dd>
-                    <dd>17강 : 채널의 내용결정</dd>
-                    <dd>18강 : 채널의 형식결정 </dd>
-                    <dd>19강 : 채널의 등장인물 결정 </dd>
-                    <dd>20강 : 사소한 것 같지만 결코 사소하지 않은 것들 결정하기</dd>
+                    <dt>3. 툴 사용법 10강</dt>
+                    <dd>1강. 인스타그램 스토리로 고객과 소통하기</dd>
+                    <dd>2강. 인스타그램 하이라이트에 나만의 모음집 만들기</dd>
+                    <dd>3강. 인스타그램 프로필 링크, 필요한 만큼 추가할 수 있는 비밀</dd>
+                    <dd>4강. 개인사업자, 이렇게 판매링크 만들면 된다.</dd>
+                    <dd>5강. 고객의 후기, 리포스트로 적극 활용하자.</dd>
+                    <dd>6강. 인스타그램 언팔로우 사용하기</dd>
+                    <dd>7강. 인스타마켓 툴 사용법 추가 강의 1</dd>
+                    <dd>8강. 인스타마켓 툴 사용법 추가 강의 2</dd>
+                    <dd>9강. 인스타마켓 툴 사용법 추가 강의 3</dd>
+                    <dd>10강. 인스타마켓 툴 사용법 추가 강의 4</dd>
 
-                    <dt>4부 : 유튜브 운영</dt>
-                    <dd>21강 : 장비 결정하기 1 - 카메라는 어떤 것을 쓸까?</dd>
-                    <dd>22강 : 장비 결정하기 2 - 마이크는 따로 쓰는 것이 좋을까? </dd>
-                    <dd>23강 : 장비 결정하기 3 - 기타 장비들과 장비들의 조합</dd>
-                    <dd>24강 : 편집 결정하기 </dd>
-                    <dd>25강 : 여러 가지 편집 프로그램들 </dd>
-                    <dd>26강 : 채널 제목은 브랜드 만들기다</dd>
-                    <dd>27강 : 채널 대문 만들기 </dd>
-                    <dd>28강 : 매력적인 섬네일 만들기</dd> 
-                    <dd>29강 : 영상제목 만들기</dd>
-                    <dd>30강 : 운영을 도와주는 결정적 무료 프로그램들</dd>
+                    <dt>4. 성공사례 벤치마킹 10강</dt>
+                    <dd>1강. 인스타마켓 성공사례 1</dd>
+                    <dd>2강. 인스타마켓 성공사례 2</dd>
+                    <dd>3강. 인스타마켓 성공사례 3</dd>
+                    <dd>4강. 인스타마켓 성공사례 4</dd>
+                    <dd>5강. 인스타마켓 성공사례 5</dd>
+                    <dd>6강. 인스타마켓 성공사례 6</dd>
+                    <dd>7강. 인스타마켓 성공사례 7</dd>
+                    <dd>8강. 인스타마켓 성공사례 8</dd>
+                    <dd>9강. 인스타마켓 성공사례 9</dd>
+                    <dd>10강.인스타마켓 성공사례 10</dd>    
 
-                    <dt>5부 : 유튜브 실행</dt>
-                    <dd>31강 : 콘텐츠 업로드 하기</dd>
-                    <dd>32강 : 유튜브 분석툴 활용하기</dd> 
-                    <dd>33강 : 구독자를 늘리는 방법</dd>
-                    <dd>34강 : 악플 대응 방법 </dd>
-                    <dd>35강 : 콜라보와 콘텐츠 벤치마킹</dd>
-                    <dd>36강 : 유튜브 홍보를 보완해주는 도구들</dd> 
-                    <dd>37강 : 저작권 문제는 어떻게 되나?</dd>
+                    <dt>5. 마켓의 이해와 글쓰기 10강</dt>
+                    <dd>1강. 인스타마켓에서 잘 팔리는 아이템</dd>
+                    <dd>2강. 인스타마켓, 판매 전 고객과 신뢰쌓기</dd>
+                    <dd>3강. 인스타 마켓 예고글</dd>
+                    <dd>4강. 인스타마켓 판매글</dd>
+                    <dd>5강. 인스타마켓 이해/글쓰기 추가강의 1</dd>
+                    <dd>6강. 인스타마켓 이해/글쓰기 추가강의 2</dd>
+                    <dd>7강. 인스타마켓 이해/글쓰기 추가강의 3</dd>
+                    <dd>8강. 인스타마켓 이해/글쓰기 추가강의 4</dd>
+                    <dd>9강. 인스타마켓 이해/글쓰기 추가강의 5</dd>
+                    <dd>10강. 인스타마켓 이해/글쓰기 추가강의 6</dd>
 
-                    <dt>6부 : 유튜브로 수입 창출하기</dt>
-                    <dd>38강 : 유튜브 광고수익의 기본 원리</dd>
-                    <dd>39강 : 구글 에드센스 설정</dd>
-                    <dd>40강 : 유튜브로 돈 벌 때, 반드시 피해야 할 사항</dd>
-                    <dd>41강 : 협찬으로 돈 벌기</dd>
-                    <dd>42강 : 브랜드로 돈 벌기</dd>
-                    <dd>43강 : 비즈니스로 확장하기</dd>
-                    <dd>44강 : 채널분화를 고민하는 시점</dd>
-                </dl>                
-                <dl>
-                    <dt>강의를 마치며</dt>
-                    <dd>45강 : 시작한 사람만이 성공할 수 있다</dd>
+                    <dt>6. 매출 구매전환 및 단골관리를 위한 다른 마케팅 채널과 콜라보 10강</dt>
+                    <dd>1강. 나는 왜 판매가 안되었을까 자가점검 해보기</dd>
+                    <dd>2강. 팬덤 형성하는 방법 - 이벤트 진행</dd>
+                    <dd>3강. 인스타 마켓은 첫째날이 가장 중요하다</dd>
+                    <dd>4강. 객단가 높혀 매출 2배 올리기 (프로모션 진행 등)</dd>
+                    <dd>5강. 클레임 고객을 단골로 만드는 커뮤니케이션 스킬</dd>
+                    <dd>6강. 특별 아이템 제공 - 셀픽스</dd>
+                    <dd>7강. 1+1 콜라보 마케팅:  인스타와 스마트스토어</dd>
+                    <dd>8강. 1+1 콜라보 마케팅: 인스타와 블로그 , 인스타와 페이스북</dd>
+                    <dd>9강. 1+1 콜라보 마케팅: 인스타와 틱톡, 인스타와 IGTV, 인스타와 유튜브</dd>
+                    <dd>10강. 앞으로 구매전환을 높히기 위해 내가 해야할 일 체크리스트</dd>
                 </dl>
             </div>
         </div>
@@ -441,71 +458,58 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_11.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
-                    <p>Golden B**</p>
-                    우와… 부럽네요. 저도 유튜브 채널 운영해 보고 싶네요. 
+                    <p>장현*</p>
+                    안혜빈 대표님의 컨설팅으로, 2019년 초 인스타 계정조차 없던 제가, 현재 인스타 팔로워 2,000명을 넘고, 
+                    진심으로 소통했더니 좋아요 기본 250개 이상! 댓글 기본 100개 이상! 달리는 계정이 되었답니다. 
+                    그렇게 키운 인스타로 공구 진행도 2번이나 해보고, 공구 역제안도 20건 정도 받게 되어서 제가 원하는 제품을 무료로 제공 받기도 했답니다!
                 </div>  
                 <div>
-                    <p>IY*</p>
-                    와~ 숨차지만 멋지게 달려 오셨네요. 저에게 시한책방은 생각할 틈도 없이 바쁠 때 한 박자 쉬어가는 “잠깐”멈춤” 입니다! 앞으로 더 기대됩니다!!
-                </div>                     
-                <div>
-                    <p>리바*</p>
-                    다른 북튜버들 구독도 많이 하고 자주 보는 편인데 무료로 영상 보는 게 죄송한 유일한 유튜버
+                    <p>정희*</p>
+                    2월초 70만원 매출도 감동이였어요ㅠㅠ 큰금액은 아니지만 눈물이 났답니다. 제 이번달 목표액은 150만원인데 지금 현재 매출액이 무려 269만원! 
+                    예전에는 걱정만 앞서서 자주 못했는데요, 
+                    대표님과 코치님 모두 계속 용기를 주셔서 적극적으로 진행했더니 이런 성과가 났네요! 너무 감사합니다~!
                 </div> 
                 <div>
-                    <p>정현*</p>
-                    저는 한끼줍쇼로 지구인이 되었죠^^! 시한 책방 파이팅~♡ 
+                    <p>이영*</p>
+                    안혜빈 대표님과 1:1 컨설팅을 받았습니다. 대표님과의 면담에서 메모한 사업아이템들을 보여드렸어요. 다양한 의견과 구체적인 방법들을 제시해주셨습니다. 
+                    정말 작은 성과이지만 지난 주말부터 업데이트 하지 않고 있던 쇼핑몰 계정에 하루에 3개씩 꾸준히 업데이트했습니다. 신기하게도 구매가 이루어졌습니다! 
+                    하루종일 기분을 좋아지게 만들고 앞으로를 기대하게 만들고 열심히 해야겠구나 다짐을 하게 만들고 진짜로 어마어마한 힘을 가지고 있는 매출이였습니다.
+                </div>  
+                <div>
+                    <p>주혜*</p>
+                    제 계정은 현재 1천명 조금 넘은 상태이지만 6.7만개 게시글에서 인기게시물에 올라갈 수도 있더라구요~^^ 
+                    인스타 마켓 강의 신청 마감 게시글이었는데 이 게시글 이전에 해시태그를 적절히 사용했었는데, 모두 홈비협에서 배운 덕분입니다^^
+                </div> 
+                <div>
+                    <p>박송*</p>
+                    35일만에 인스타 팔로워 1,000명 만들기 성공했어요! 홈비협을 만나 정말 다행입니다! 정말 든든하구요! 
+                    알려주신대로 하니까 내 타겟이 찾아가지 않아도 알아서 찾아오는 효과도 볼 수 있었답니다^^! 
+                    이렇게 좋은 교육 마련해주시고 늘 최선을 다해 알려주시는 안혜빈대표님과 교육 원장님, 모두 항상 감사합니다!
                 </div>
                 <div>
-                    <p>like Y**</p>
-                    책이 나온다니 너무 축하드립니다. 도서관에 신간신청해야겠어요!
-                </div> 
-                <div>
-                    <p>래*</p>
-                    와 정말 너무 축하드립니다! 항상 신선한 자극을 많이 받습니다. 앞으로도 쭉쭉 번창하셔요!
-                </div> 
-                <div>
-                    <p>Cheong a k**</p>
-                    유익한 콘텐츠 뒤에 많은 우여곡절이 있었군요.. 앞으로도 파이팅이요!
-                </div> 
-                <div>
-                    <p>바나*</p>
-                    정말 기대돼요!!
-                </div> 
-                <div>
-                    <p>꽃*</p>
-                    우와 진짜 하루에 잠은 몇시간 자고 하시는 건가요? 항상 배우고갑니다^^
-                </div> 
-                <div>
-                    <p>YH*</p>
-                    시한책방은 제가 고전에 입문할 수 있도록 도와준 채널이예요! 
-                    책소개도 군더더기 없고 동영상 후반부에 토론거리 소개해주시는거 보면서 주제에 대해 이런저런 생각을 할 수 있어서 좋아요!! 
-                    앞으로도 좋은 책 소개 많이 부탁드릴게요~ 유튜브 실버버튼 골드버튼 다 받으시길!!ㅋㅋㅋ
-                </div> 
-                <div>
-                    <p>SG*</p>
-                    와아......책들을 매번 편의하게 맛보여주시더니 이젠 어느 때고 먹으라고 도시락을 보내주시네요. 
-                    잘먹겠습니다~ 여러번 꼭꼭 씹어 먹을게요~ 2주년 축하합니다! 구독자도 감개무량~~
+                    <p>방민*</p>
+                    안대표님이 알려주신 나에게 맞는 상품과 상품 사용후기를 잘 찍어서 벌써 세번째 공구를 진행합니다! 이렇게 공구를 쉽게 다가갈 수 있게 해주신 혜빈대표님 사랑합니다
                 </div>
                 <div>
-                    <p>Yonghun K**</p>
-                    우연히 보게 된 영상인데요. 시한님의 엄청난 내공에 놀라고 갑니다. 3번 연속으로 집중해서 보았네요~^^;; 
-                    이 영상을 보면서 다시금 제게 질문하게 되네요. 왜 책을 읽고 있는지...^^;; 
-                    2년 동안 '꾸준히', '정직하게', '겸손하게' 방송 해주셔서 너무 감사합니다!!
-                    (보지 못한 영상들은 틈틈히 역주행하도록 하겠습니다..ㅎㅎㅎ)
-
+                    <p>김해*</p>
+                    본업은 따로 있으나 생활비를 더 벌어볼까 싶은 마음에 작년부터 재택 부업을 시작했어요. 당장 생활비를 버는 것이 목표였지만 잘 되지 않았어요. 
+                    저는 인스타로 소통도 안하고 짧게 한두문장, 해시태그도 대충 쓰던 사람입니다. 
+                    혜빈대표님의 컨설팅 이후 많이 신경 썼어요. 갑자기 신경 쓰려니 시간도 오래 걸리고 어렵게 느껴졌지만 일단 알려준대로 시작했습니다. 
+                    그랬더니 즉각 계정에서 도달,노출,반응이 많이 올랐고 피드마다 유입 비율도 높아졌네요. 더 열심히 해야겠다는 의지를 불태우게 합니다!
                 </div>
                 <div>
-                    <p>박수*</p>
-                    인기쟁이네요 교수님 책을 등진 세계에서 등불같은 존재로 빛나주시길
+                    <p>이은*</p>
+                    안녕하세요! 혜빈대표님과의 컨설팅 후 하루에 100명까지는 못해도 꾸준히 진심으로 소통하고 컨설팅 내용에 맞추어 열심히 노력했더니 키워드 인기 게시물에 올랐어요! 
+                    그리고 제가 단 해시태그 모두 거의 인기게시물에 오르는 놀라운 경험을 하고 있습니다! 
+                    이래서인지 계정 팔로워도 많이 늘고 노출수도 엄청 올랐더라구요ㅠㅠ 정말 단기간에 놀랍고 감사한 결과입니다. 이대로면 좀 더 목표를 빨리 달성할 수 있을 것 같아요!
                 </div>
                 <div>
-                    <p>파라*</p>
-                    오래전부터 영상 꾸준히 잘 보고 여러가지 많은 것들을 배워갔는데요, 
-                    댓글은 한 번도 쓴적이 없는 것 같아요! 그런데 오늘은 꼭 댓글을 달고 싶더라구요. 
-                    좋은 일 하시는 시한님 정말 멋있으세요bb 앞으로 채널이 더 커지길 바랄게요!
+                    <p>김나*</p>
+                    대표님의 전화상담으로 자세한 설명에, 꼭 재택부업으로 성공하고 싶은데 자꾸 실패만 반복한다고 솔직하게 말씀드렸어요. 대표님이 목표와 의지만 있으시다면, 
+                    내주는 미션을 받아 목표를 세워보라는 말에 목표를 세웠고, 실천력으로 열심히 소통하여 팔로워수가 천명을 훌쩍 넘었습니다. 
+                    최근 첫 공구도 진행하게 되어서 너무 감사합니다.
                 </div>
-            </div>              
+            </div>             
         </div>
         <div class="evtCtnsBox evt07">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_12.png" >
@@ -516,6 +520,12 @@
                         신청하고 부수입 만들기 도전! →
                     </a>
                 </li>
+                <li>
+                    <a href="#none">
+                        <span class="NSK-Black">인플루언서 커머스</span>
+                        A to Z 기획전 바로가기! →
+                    </a>
+                </li>
             </ul>
         </div>	
     </div>
@@ -524,7 +534,6 @@
         <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
         <p># 수강안내</p>
         <ul>
-
             <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다. (내강의실 > '수강 중 강좌'에서 확인 가능)</li>
             <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
             <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>

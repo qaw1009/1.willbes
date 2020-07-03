@@ -27,7 +27,7 @@
                             <col style="width: 820px;">
                         </colgroup>
                         <tbody>
-                        <tr>
+                        <tr class="{{$arr_swich['cate'] or ''}}">
                             <td class="w-tit bg-light-white tx-left strong pl30">과정선택<span class="tx-light-blue">(*)</span></td>
                             <td class="w-selected tx-left pl30">
                                 <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code') || $method == 'PUT') disabled @endif>
@@ -41,7 +41,7 @@
                                     <option value="">구분</option>
                                     @php $temp_s_cate_code = ''; @endphp
                                     @foreach($arr_base['category'] as $row)
-                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'] || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']) || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode']))selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'] || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']) || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode']))selected="selected"@endif @if((empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) || empty($arr_swich['cate']) === false) disabled @endif>{{$row['CateNameRoute']}}</option>
                                         @php if($data['Category_String'] == $row['CateCode'] || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']) || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode'])) $temp_s_cate_code = $row['CateCode']; @endphp
                                     @endforeach
                                 </select>
@@ -58,13 +58,13 @@
 
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="{{$arr_swich['consult_type'] or ''}}">
                             <td class="w-tit bg-light-white tx-left strong pl30">상담유형<span class="tx-light-blue">(*)</span></td>
                             <td class="w-selected full tx-left pl30" colspan="3">
                                 <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA">
                                     <option value="">상담 유형 선택</option>
                                     @foreach($arr_base['consult_type'] as $key => $val)
-                                        <option value="{{$key}}" @if($data['TypeCcd'] == $key)selected="selected"@endif>{{$val}}</option>
+                                        <option value="{{$key}}" @if($data['TypeCcd'] == $key || (empty(element($arr_swich['default_consult_type'],$arr_base['consult_type'])) === false && element($arr_swich['default_consult_type'],$arr_base['consult_type']) == $val))selected="selected"@endif>{{$val}}</option>
                                     @endforeach
                                 </select>
                             </td>

@@ -20,6 +20,15 @@ class SupportQna extends BaseSupport
         'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
         'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
     ];
+    private $_on_off_swich = [
+        '115' => [                              // bm_idx=115
+            'site' => 'd_none',                 // 과정 노출여부
+            'cate' => 'd_none',                 // 카테고리 노출여부
+            'consult_type' => 'd_none',         // 상담유형 노출여부
+            'default_consult_type' => '622006', // 상담유형 디폴트 선택
+            'arr_table_width' => [65,555,100,120,100]
+        ]
+    ];
 
     public function __construct()
     {
@@ -165,7 +174,8 @@ class SupportQna extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
-            'get_params' => $get_params
+            'get_params' => $get_params,
+            'arr_swich' => element($this->_bm_idx,$this->_on_off_swich)
         ]);
     }
 
@@ -268,7 +278,8 @@ class SupportQna extends BaseSupport
             'data' => $data,
             'board_idx' => $board_idx,
             'reg_type' => $this->_reg_type,
-            'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt
+            'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt,
+            'arr_swich' => element($this->_bm_idx,$this->_on_off_swich)
         ]);
     }
 

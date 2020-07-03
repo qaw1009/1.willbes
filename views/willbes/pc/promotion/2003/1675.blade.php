@@ -151,7 +151,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_june.jpg" /></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_june.jpg" /></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_july.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_august.jpg" /></li>
                 </ul>
@@ -164,7 +164,7 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="evt1Map" id="evt1Map">
                 <area shape="rect" coords="362,952,757,1018" href="#to_go" />
             </map>
@@ -308,10 +308,10 @@
 					</li>   
                     <li>                    
                         <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 6월 15일(월)부터 7월 3일(금)까지 총 15회 진행됩니다. (공휴일 제외)<br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 7월 6일(월)부터 8월 7일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
 						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오전 7시 30분~8시 사이만 인정되며, 방송이 종료되지 않더라도<br>&nbsp;&nbsp;&nbsp;해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 당첨자 안내 공지는 7월 7일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
+						&nbsp;- 당첨자 안내 공지는 8월 11일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 					</li>
                     <li>                    
                         <span class="big">돌발퀴즈 이벤트 관련</span><br>

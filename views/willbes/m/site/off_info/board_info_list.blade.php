@@ -26,7 +26,7 @@
                     <option value="">카테고리</option>
                     @php $temp_s_cate_code = ''; @endphp
                     @foreach($arr_base['category'] as $row)
-                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'] || element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode']) selected="selected" @endif>{{$row['CateName']}}</option>
+                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'] || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode'])) selected="selected" @endif>{{$row['CateName']}}</option>
                         @php if(element('s_cate_code', $arr_input) == $row['CateCode'] || element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode']) $temp_s_cate_code = $row['CateCode']; @endphp
                     @endforeach
                 </select>

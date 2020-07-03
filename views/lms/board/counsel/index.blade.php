@@ -4,7 +4,11 @@
     <h5>- {{ str_replace('게시판', '', $__menu['CURRENT']['MenuName']) }} 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, $arr_unAnswered, true) !!}
+        @if(empty($arr_swich['cate']) === false)
+            {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', false, $arr_unAnswered, true, $arr_swich['cate']) !!}
+        @else
+            {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, $arr_unAnswered, true) !!}
+        @endif
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
 
         <div class="x_panel">
@@ -13,51 +17,65 @@
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
-                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
+                        <select class="form-control {{$arr_swich['search']['search_campus_ccd'] or ''}}" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_category" name="search_category">
+                        <select class="form-control {{$arr_swich['search']['search_category'] or ''}}" id="search_category" name="search_category">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control {{$arr_swich['search']['search_md_cate_code'] or ''}}" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_m_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_type_group_ccd" name="search_type_group_ccd">
+                        <select class="form-control {{$arr_swich['search']['search_type_group_ccd'] or ''}}" id="search_type_group_ccd" name="search_type_group_ccd">
                             <option value="">상담유형</option>
                             @foreach($arr_type_group_ccd as $key => $val)
                                 <option value="{{$key}}">{{$val}}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_reply_type" name="search_reply_type">
+                        <select class="form-control {{$arr_swich['search']['search_reply_type'] or ''}}" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
                             @foreach($arr_reply as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                                @if(empty($arr_swich['search']['arr_search_reply_type']) === false)
+                                    @foreach($arr_swich['search']['arr_search_reply_type'] as $type)
+                                        @if($type == $key)
+                                            <option value="{{$key}}">{{$val}}</option>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <option value="{{$key}}">{{$val}}</option>
+                                @endif
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_public" name="search_is_public">
+                        <select class="form-control {{$arr_swich['search']['search_is_public'] or ''}}" id="search_is_public" name="search_is_public">
                             <option value="">공개여부</option>
                             <option value="Y">공개</option>
                             <option value="N">비공개</option>
                         </select>
 
                         <div class="checkbox ml-30">
+                            @if(empty($arr_swich['search']['vod_value']) === true)
                             <input type="checkbox" name="search_chk_vod_value" value="1" class="flat" id="vod_value"/> <label for="vod_value" class="mr-10">강성 클레임</label>
+                            @endif
+                            @if(empty($arr_swich['search']['delete_value']) === true)
                             <input type="checkbox" name="search_chk_delete_value" value="1" class="flat" id="delete_value"/> <label for="delete_value" class="mr-10">삭제글 보기</label>
+                            @endif
+                            @if(empty($arr_swich['search']['notice_display']) === true)
                             <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -117,19 +135,25 @@
                 <tr>
                     <th>NO</th>
                     <th>운영사이트</th>
-                    <th>캠퍼스</th>
-                    <th>카테고리</th>
-                    <th>분류</th>
-                    <th>상담유형</th>
-                    <th>제목</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
-                    <th>답변상태</th>
-                    <th>답변자</th>
-                    <th>답변일</th>
-                    <th>공개</th>
-                    <th>조회수</th>
-                    <th>댓글수</th>
+                    @if(empty($arr_swich['list']) === false)
+                    @foreach($arr_swich['list'] as $key => $title)
+                        <th>{{ $title }}</th>
+                    @endforeach
+                    @else
+                        <th>캠퍼스</th>
+                        <th>카테고리</th>
+                        <th>분류</th>
+                        <th>상담유형</th>
+                        <th>제목</th>
+                        <th>등록자</th>
+                        <th>등록일</th>
+                        <th>답변상태</th>
+                        <th>답변자</th>
+                        <th>답변일</th>
+                        <th>공개</th>
+                        <th>조회수</th>
+                        <th>댓글수</th>
+                    @endif
                     <th>수정</th>
                     <th>삭제(관리자)</th>
                 </tr>
@@ -197,7 +221,12 @@
                             }
                         }},
                     {'data' : 'SiteName'},
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['CampusName']) === false)
                     {'data' : 'CampusName'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['CateCode']) === false)
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                         if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
                             return '통합';
@@ -213,8 +242,17 @@
                             return str;
                         }
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['MdCateName']) === false)
                     {'data' : 'MdCateName'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['TypeCcdName']) === false)
                     {'data' : 'TypeCcdName'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['Title']) === false)
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             if (row.IsBest == 1) {
                                 return '<a href="javascript:void(0);" class="btn-admin-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
@@ -222,6 +260,17 @@
                                 return '<a href="javascript:void(0);" class="btn-counsel-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                             }
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']['AttachRealFileName']) === false)
+                    {'data' : 'AttachRealFileName', 'render' : function(data, type, row, meta) {
+                            var tmp_return;
+                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                            return tmp_return;
+                        }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['RegType']) === false)
                     {'data' : 'RegType', 'render' : function(data, type, row, meta) {
                             if (data == 1) {
                                 return'<a href="/member/manage/detail/' + row.wAdminIdx + '/" target="_blank">' + row.wAdminName + '</a>';
@@ -233,12 +282,27 @@
                                 }
                             }
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['RegDatm']) === false)
                     {'data' : 'RegDatm'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['ReplyStatusCcdName']) === false)
                     {'data' : 'ReplyStatusCcdName', 'render' : function(data, type, row, meta) {
                             return (data == '미답변') ? '<p class="red">'+data+'</p>' : data;
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['ReplyRegAdminName']) === false)
                     {'data' : 'ReplyRegAdminName'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['ReplyRegDatm']) === false)
                     {'data' : 'ReplyRegDatm'},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['IsPublic']) === false)
                     {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
                             if (row.IsBest == 1) {
                                 return '';
@@ -246,11 +310,19 @@
                                 return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
                             }
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['ReadCnt']) === false)
                     {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
                             var cnt = Number(data) + Number(row.SettingReadCnt);
                             return cnt;
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['CommentCnt']) === false)
                     {'data' : 'CommentCnt'},
+                    @endif
+
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             if (row.RegType == 1) {
                                 return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';

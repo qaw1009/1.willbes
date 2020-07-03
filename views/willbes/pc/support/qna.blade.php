@@ -25,7 +25,7 @@
                         <div class="f_left">
                             <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess {{$arr_swich['consult_type'] or ''}}" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                                 <option value="">과정</option>
-                                @foreach($arr_base['site'] as $key => $val)
+                                @foreach($arr_base['site_list'] as $key => $val)
                                     <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>

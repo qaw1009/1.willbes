@@ -195,7 +195,7 @@ class SearchWord extends \app\controllers\BaseController
         //$this->caching->search_word_setup->delete();return;
         //$this->caching->mobile_menu->deleteToAdapter('memcached', '');return;
         $setup = $this->caching->search_word_setup->get($site_code);
-        $auto = $this->caching->search_word_auto->get($site_code);
+        $auto = $this->caching->search_word_auto->getToAdapter('file',$site_code);
         dd(['설정검색어'=>$setup, '자동완성'=>$auto]);
     }
 }

@@ -1,7 +1,7 @@
 <ul class="tabWrap mainTab">
     <li><a href="#notice1" class="on">학원<br>공지사항</a></li>
     <li><a href="#notice2">동영상<br>공지사항</a></li>
-    <li><a href="#notice3">신규<br>강의안내</a></li>
+    <li><a href="#notice3">강의<br>계획서</a></li>
 </ul>
 <div class="tabBox buttonBox noticeBox">
     <div id="notice1" class="tabContent pd20">
@@ -41,14 +41,14 @@
         </ul>
     </div>
     <div id="notice3" class="tabContent pd20">
-        <div class="moreBtn"><a href="{{front_url('/pass/offinfo/boardInfo/index/78?s_cate_code='.$data['mapping_cate_data']['CateCode'])}}">+ 더보기</a></div>
+        <div class="moreBtn"><a href="{{front_url('/pass/offinfo/boardInfo/index/109').'?on_off_link_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y'}}">+ 더보기</a></div>
         <ul class="List-Table">
-            @if(empty($data['board_lecture_infomation']) === true)
+            @if(empty($data['board_lecture_plan']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else
-                @foreach($data['board_lecture_infomation'] as $row)
+                @foreach($data['board_lecture_plan'] as $row)
                     <li>
-                        <a href="{{front_url('/pass/offinfo/boardInfo/show/78?board_idx='.$row['BoardIdx']).'&s_cate_code='.$data['mapping_cate_data']['CateCode']}}">
+                        <a href="{{front_url('/pass/offinfo/boardInfo/show/109?board_idx='.$row['BoardIdx']).'&on_off_link_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y'}}">
                             {{-- <span>EVENT</span> --}}
                             {{$row['Title']}}
                         </a>

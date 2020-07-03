@@ -1,11 +1,11 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_swich['title'] or '온라인 고객센터 1:1 상담 게시판'}} 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal form-label-left" novalidate>
         <div class="x_panel">
             <div class="x_title">
-                <h2>1:1 상담 게시판 관리</h2>
+                <h2>{{$arr_swich['title'] or '1:1 상담 게시판 관리'}}</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -27,11 +27,13 @@
                             @foreach($data['arr_cate_code'] as $key => $val)
                                 {{$val}} @if ($loop->last === false) | @endif
                             @endforeach
+                        @elseif(empty($arr_swich['cate_name']) === false)
+                            {{$arr_swich['cate_name']}}
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group {{$arr_swich['reply']['MdCateName'] or ''}}">
                     <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-4">
                         {{$data['MdCateName']}}
@@ -93,7 +95,7 @@
         <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" name="idx" value="{{ $board_idx }}"/>
-            <div class="row">
+            <div class="row {{$arr_swich['reply']['reply_status_ccd'] or ''}}">
                 <label class="col-md-1-1 mt-15 text-right" for="">답변</label>
                 <div class="col-md-9">
                     <div class="form-control-static col-md-1-1">
@@ -103,13 +105,13 @@
                     <div class="form-control-static col-md-10">
                         <div class="short-div">
                             @foreach($data['arr_reply_code'] as $key => $val)
-                                <input type="radio" id="reply_status_ccd_{{$key}}" name="reply_status_ccd" class="flat" value="{{$key}}" title="{{$val}}" @if($key == $data['ReplyStatusCcd'])checked="checked"@endif/>
+                                <input type="radio" id="reply_status_ccd_{{$key}}" name="reply_status_ccd" class="flat" value="{{$key}}" title="{{$val}}" @if($key == $data['arr_reply_code'] || (empty(element($arr_swich['reply']['default_reply_status_ccd'],$data['arr_reply_code'])) === false && element($arr_swich['reply']['default_reply_status_ccd'],$data['arr_reply_code']) == $val))checked="checked"@endif/>
                                 <label for="reply_status_ccd_{{$key}}" class="input-label">{{$val}}</label>
                             @endforeach
                         </div>
                         <div class="short-div item">
                             @foreach($data['arr_voc_code'] as $key => $val)
-                                <input type="radio" id="voc_ccd_{{$key}}" name="voc_ccd" class="flat" value="{{$key}}" title="{{$val}}" @if($key == $data['VocCcd'])checked="checked"@endif/>
+                                <input type="radio" id="voc_ccd_{{$key}}" name="voc_ccd" class="flat" value="{{$key}}" title="{{$val}}" @if($key == $data['VocCcd'] || (empty(element($arr_swich['reply']['default_voc_ccd'],$data['arr_voc_code'])) === false && element($arr_swich['reply']['default_voc_ccd'],$data['arr_voc_code']) == $val))checked="checked"@endif/>
                                 <label for="voc_ccd_{{$key}}" class="hover mr-5">{{$val}}</label>
                             @endforeach
                         </div>
@@ -151,7 +153,21 @@
 
             <div class="row">
                 <div class="form-group text-center btn-wrap mt-50">
-                    <button type="submit" class="btn btn-success mr-10">저장</button>
+                    <button type="submit" class="btn btn-success mr-10" id="btn_reply_modify">
+                        @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
+                            수정
+                        @else
+                            @if(empty($arr_swich['reply']['btn_name']) === false)
+                                {{ $arr_swich['reply']['btn_name'] }}
+                            @else
+                                저장
+                            @endif
+                        @endif
+
+                        @if(empty($arr_swich['reply']['cate_cnt']) === false)
+                            <span class="reply_cnt">{{$arr_unAnswered[$arr_swich['reply']['cate_cnt']]}}</span>
+                        @endif
+                    </button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
             </div>
@@ -180,6 +196,9 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                if (!confirm('저장 하시겠습니까?')) {
+                    return false;
+                }
                 getEditorBodyContent($editor_profile);
                 var _url = '{{ site_url("/board/{$boardName}/storeReply") }}' + getQueryString();
 

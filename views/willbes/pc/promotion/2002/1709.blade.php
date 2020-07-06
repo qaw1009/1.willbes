@@ -21,12 +21,8 @@
 
         /************************************************************/
 
-        .skybanner {
-            position:fixed; 
-            top:200px; 
-            right:0;
-            z-index:1;            
-        }
+        .skybanner {position:fixed;top:200px;right:0;z-index:1;}
+        .skybanner img{width:200px;height:300px;}
 
         .wb_top {background:#601ec9 url(https://static.willbes.net/public/images/promotion/2020/07/1709_top_bg.jpg) no-repeat center;}
 
@@ -62,12 +58,12 @@
         .wb_06 {background:#fff;}   
         .wb_07 {background:#5227AA;}
 
-        .wb_ctsInfo {background:#777; padding:100px 0}  
+        .wb_ctsInfo {background:black; padding:100px 0}  
         .wb_ctsInfo div {
             width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
         }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#5115C3} 
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:yellow;} 
         .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;}  
         .wb_ctsInfo div dd {margin-bottom:30px}
         .wb_ctsInfo div dl {
@@ -75,7 +71,7 @@
             padding-left:10px;
         }
         .wb_ctsInfo div dl:before{
-            background: #5115C3 none repeat scroll 0 0; 
+            background: yellow none repeat scroll 0 0; 
             border-radius: 2px;
             content: '';
             display: block;
@@ -157,7 +153,7 @@
                 <ul>
                     <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
                     <li><a href="#none" alt="광주(참수리)" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">학원문의</a></li>
-                    <li><a href="#none" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">마감</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">신청하기</a></li>
                     <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">신청하기</a></li>
                     <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
                    

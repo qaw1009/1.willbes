@@ -10,10 +10,15 @@ class BaseSearch extends \app\controllers\FrontController
     protected $auth_methods = array();
     protected $_view_dir = '';
 
+    private $_page_per_rows = 10;   // 페이지당 출력되는 상품수
+    private $_show_page_num = 10;   // 페이지 수
+    private $_learn_pattern = '';
+
+
     public function __construct($_view_file='site/search/result')
     {
         parent::__construct();
-        $this->_view_dir = $_view_file;
+        $this->_view_dir = ($this->_site_code !== '2012' ? $_view_file : 'site/search/result_book');
     }
 
     public function index()
@@ -22,75 +27,105 @@ class BaseSearch extends \app\controllers\FrontController
     }
 
     /**
-     * 검색결과
+     * 검색 결과
      * @param array $params
      */
     public function result($params=[])
     {
         $arr_search_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_search_input = array_unset($arr_search_input,'page');
+
         $common_condition = [
             'EQ' => [
                 'SiteCode' => ($this->_site_code === '2000' ? null : $this->_site_code)
             ]
-            //,'LKR' => ['CateCode' => element('cate',$arr_search_input)]
-            ,'ORG1' =>[
-                'LKB' => [
-                    'ProdName' => element('searchfull_text',$arr_search_input),
-                    'Keyword' => element('searchfull_text',$arr_search_input)
-                ]
-            ]
         ];
 
-        $order_by = empty(element('searchfull_order',$arr_search_input)) ? ['ProdCode'=>'DESC'] : [element('searchfull_order',$arr_search_input)=>'DESC'];
-        $order_by_pack = ['ProdCode'=>'DESC'];
-
-        $data = [];
-        $total_cnt = 0;
-        $limit = ($this->_site_code === '2000' ? '200' : null);
-
-        if(empty($arr_search_input) === false && empty(element('searchfull_text',$arr_search_input)) === false ) {
-            //단강좌
-            $data_lecture = $this->searchFModel->findSearchProduct('on_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
-
-            //무료강좌
-            $data_free_lecture = $this->searchFModel->findSearchProduct('on_free_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
-
-            //추천패키지
-            $data_adminpack_lecture_648001= $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648001']]), $order_by_pack,$limit);
-
-            //선택패키지
-            $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by_pack,$limit);
-
-            /*
-             *로그 저장
-             */
-            $result_info = '단강좌:'.count($data_lecture).
-                ', 무료강좌:' .count($data_free_lecture).
-                ', 추천패키지:' .count($data_adminpack_lecture_648001).
-                ', 선택패키지:' .count($data_adminpack_lecture_648002)
-            ; // 검색 항목이 추가될때마다 해당 내용 기재
-
-            $total_cnt = count($data_lecture)
-                + count($data_free_lecture)
-                + count($data_adminpack_lecture_648001)
-                + count($data_adminpack_lecture_648002)
-            ;
-
-            $log_data = [
-                'SiteCode' => $this->_site_code,
-                'CateCode' => element('cate',$arr_search_input),
-                'SearchWord' => element('searchfull_text',$arr_search_input),
-                'ResultCount' => $total_cnt,
-                'ResultInfo' => $result_info,
-                'SearchType' => 'U'
+        if(element('search_class',$arr_search_input) == '') {
+            $type_condition = [
+                'ORG1' =>[
+                    'LKB' => [
+                        'ProdName' => element('searchfull_text',$arr_search_input),
+                        'Keyword' => element('searchfull_text',$arr_search_input)
+                    ]
+                ]
             ];
-            $this->searchFModel->saveSearchLog($log_data);
+        } else {
+            $type_condition = [
+                'ORG1' =>[
+                    'LKB' => [
+                        element('search_class',$arr_search_input) => element('searchfull_text',$arr_search_input),
+                    ]
+                ]
+            ];
         }
 
+        $common_condition = array_merge_recursive($common_condition,$type_condition);
+        $result = [];
+        if(empty($arr_search_input) === false && empty(element('searchfull_text',$arr_search_input)) === false ) {
+
+            if (element('search_target', $arr_search_input) == '') {
+
+                $result = $this->_Search($arr_search_input, $common_condition);
+
+            } elseif (element('search_target', $arr_search_input) == 'book') {
+
+                $this->_learn_pattern = 'book';
+                $result = $this->_SearchBook($arr_search_input, $common_condition);
+
+            }
+        }
+
+        $this->load->view($this->_view_dir,[
+            'arr_search_input'=>$arr_search_input,
+            'total_count' => element('total_cnt',$result,0),
+            'data'=>$result,
+            'learn_pattern' => $this->_learn_pattern,   //교재검색시 사용
+            'query_string' => element('query_string',$result),    //교재검색시 사용
+            'paging' => element('paging',$result),    //교재검색시 사용
+            'count' => element('total_cnt',$result,0),  //교재검색시 사용
+        ]);
+    }
+
+    /**
+     * 일반검색 - 강의
+     * @param array $arr_search_input
+     * @param array $common_condition
+     * @return array
+     */
+    private function _Search($arr_search_input=[], $common_condition=[])
+    {
+        $data = [];
         $data['on_lecture'] = [];
         $data['on_free_lecture'] = [];
         $data['adminpack_lecture_648001'] = [];
         $data['adminpack_lecture_648002'] = [];
+
+        $order_by = empty(element('searchfull_order',$arr_search_input)) ? ['ProdCode'=>'DESC'] : [element('searchfull_order',$arr_search_input)=>'DESC'];
+        $order_by_pack = ['ProdCode'=>'DESC'];
+
+        $limit = ($this->_site_code === '2000' ? '200' : null);
+
+        //단강좌
+        $data_lecture = $this->searchFModel->findSearchProduct('on_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
+        //무료강좌
+        $data_free_lecture = $this->searchFModel->findSearchProduct('on_free_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
+        //추천패키지
+        $data_adminpack_lecture_648001 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648001']]), $order_by_pack, $limit);
+        //선택패키지
+        $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by_pack, $limit);
+
+        $result_info = '단강좌:'.count($data_lecture).
+            ', 무료강좌:' .count($data_free_lecture).
+            ', 추천패키지:' .count($data_adminpack_lecture_648001).
+            ', 선택패키지:' .count($data_adminpack_lecture_648002)
+        ; // 검색 항목이 추가될때마다 해당 내용 기재
+
+        $total_cnt = count($data_lecture)
+            + count($data_free_lecture)
+            + count($data_adminpack_lecture_648001)
+            + count($data_adminpack_lecture_648002)
+        ;
 
         if(!empty($data_lecture)) {
             foreach ($data_lecture as $idx => $row) {
@@ -124,11 +159,66 @@ class BaseSearch extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view($this->_view_dir,[
-            'arr_search_input'=>$arr_search_input,
-            'total_count' => $total_cnt,
-            'data'=>$data
-        ]);
+        $data['total_cnt'] = $total_cnt;
+
+        $this->_SaveLog($arr_search_input,['total_cnt'=>$total_cnt, 'result_info'=>$result_info]);
+        return $data;
+    }
+
+    /**
+     * 교재전용검색
+     * @param array $arr_search_input
+     * @param array $common_condition
+     * @return array
+     */
+    private function _SearchBook($arr_search_input=[], $common_condition=[])
+    {
+        $query_string = http_build_query($arr_search_input);
+
+        $data = [];
+        $list = [];
+
+        $order_by = empty(element('searchfull_order',$arr_search_input)) ? ['ProdCode'=>'DESC'] : [element('searchfull_order',$arr_search_input)=>'DESC'];
+
+        $count = $this->searchFModel->findSearchBookStoreProduct(true, $common_condition);
+
+        $paging_url = '/' . $this->getFinalUriString() . (empty($query_string) === false ? '?' . $query_string : '');
+        $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $this->_show_page_num, true);
+
+        if ($count > 0) {
+            $list = $this->searchFModel->findSearchBookStoreProduct(false, $common_condition, $paging['limit'], $paging['offset'], $order_by);
+        }
+
+        $result_info = '교재검색:'.$count;
+        $total_cnt = $count;
+
+        $data['total_cnt'] = $count;
+        $data['paging_url'] = $paging;
+        $data['paging'] = $paging;
+        $data['book'] = $list;
+
+        $this->_SaveLog($arr_search_input,['total_cnt'=>$total_cnt, 'result_info'=>$result_info]);
+        return $data;
+    }
+
+    /*
+     * 검색로그 저장
+     */
+    private function _SaveLog($arr_search_input=[], $arr_etc=[])
+    {
+        $log_data = [
+            'SiteCode' => $this->_site_code,
+            'CateCode' => element('cate',$arr_search_input,0),
+            'SearchWord' => element('searchfull_text',$arr_search_input),
+            'ResultCount' => $arr_etc['total_cnt'],
+            'ResultInfo' => $arr_etc['result_info'],
+            'SearchType' => 'U',
+            'SearchTarget' => empty(element('search_target',$arr_search_input)) ? 'lecture' : $arr_search_input['search_target'],
+            'SearchClass' => empty(element('search_class',$arr_search_input)) ? null : $arr_search_input['search_class'],
+            'EtcInfo' => empty(element('etc_info',$arr_search_input)) ? null : $arr_search_input['etc_info'],
+        ];
+        $this->searchFModel->saveSearchLog($log_data);
+        return;
     }
 
     /**

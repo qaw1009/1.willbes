@@ -1,12 +1,8 @@
-
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
-        <!-- site nav -->
-        {{--@include('willbes.pc.layouts.partial.site_menu')--}}
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
@@ -14,8 +10,11 @@
         <div class="Section widthAuto">
             <div class="onSearch onSearchBig NG">
                 <form id="areaSearch_form" name="areaSearch_form" method="GET">
+                    <input type="text" name="" class="d_none">{{--삭제금지 --}}
                     <input type="hidden" name="cate" id="areaSearch_cate" value="">
-                    <input type="text" name="" class="d_none">
+                    <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                    <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                    <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
                     <input type="text" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
                     <input type="hidden" name="searchfull_order" id="searchfull_order" value="">
                     <label for="areaSearch_text"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>

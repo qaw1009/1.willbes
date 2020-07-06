@@ -16,7 +16,7 @@
                 <form id="areaSearch_form" name="areaSearch_form" method="GET">
                     <input type="hidden" name="cate" id="areaSearch_cate" value="">
                     <input type="text" name="" class="d_none">
-                    <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                    <input type="text" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
                     <input type="hidden" name="searchfull_order" id="searchfull_order" value="">
                     <label for="areaSearch_text"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>
                 </form>

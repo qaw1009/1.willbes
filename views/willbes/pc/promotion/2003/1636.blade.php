@@ -75,7 +75,7 @@
             </map> 
         </div>
 
-        <div class="evtCtnsBox evt_03s" >
+        <div class="evtCtnsBox evt_03s" id="evt_03s">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1636_03s.jpg" alt="국영사 특강" />
         </div>
 

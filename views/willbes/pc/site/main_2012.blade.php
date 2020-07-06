@@ -219,14 +219,14 @@
                     <div class="will-listTit">공지사항</div>
                     <div class="tabBox noticeBox">
                         <div class="tabContent p_re">
-                            <a href="{{ front_url('/support/notice/index') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                            <a href="{{ front_url('/support/notice/index?s_cate_code_disabled=Y') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                             <ul class="List-Table">
                                 @if(empty($data['notice']) === true)
                                     <li><span>등록된 내용이 없습니다.</span></li>
                                 @else
                                     @foreach($data['notice'] as $row)
                                         <li>
-                                            <a href="{{ front_url('/support/notice/show?board_idx='.$row['BoardIdx']) }}">
+                                            <a href="{{ front_url('/support/notice/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
                                                 @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
@@ -242,14 +242,14 @@
                     <div class="will-listTit">수험정보센터</div>
                     <div class="tabBox noticeBox">
                         <div class="tabContent p_re">
-                            <a href="{{ front_url('/support/examNews/index') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                            <a href="{{ front_url('/support/examNews/index?s_cate_code_disabled=Y') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                             <ul class="List-Table">
                                 @if(empty($data['notice']) === true)
                                     <li><span>등록된 내용이 없습니다.</span></li>
                                 @else
                                     @foreach($data['exam_news'] as $row)
                                         <li>
-                                            <a href="{{ front_url('/support/examNews/show?board_idx='.$row['BoardIdx']) }}">
+                                            <a href="{{ front_url('/support/examNews/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
                                                 @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
@@ -306,7 +306,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ front_url('/support/remote/index') }}">
+                                    <a href="{{ front_url('/support/qna/index?s_cate_code_disabled=Y') }}">
                                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
                                         <div class="nTxt">1:1<br/>고객지원</div>
                                     </a>

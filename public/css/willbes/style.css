@@ -12170,8 +12170,8 @@ table.acadlecInfoPackageTable tr.Top td {
     border:0  !important;
 }
 
-.onSearchBig {float:none; width:600px; margin:0 auto 50px;}
-.onSearchBig input[type="search"] {height:40px; width:400px; font-size:18px; color:#000;}
+.onSearchBig {float:none; width:600px; margin:0 auto 50px; text-align: center;}
+.onSearchBig input[type="text"] {height:40px; width:400px; font-size:18px; color:#000;}
 .onSearchBig button {width:30px; height:40px; background-size:30px; border:0; }
 .onSearchBig span {height:40px; line-height: 40px; font-size:14px; margin-left:20px}
 .onSearchBig span input {width:18px; height:18px; margin-right:5px}

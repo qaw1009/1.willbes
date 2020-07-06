@@ -25,7 +25,7 @@
 <div class="noticeTabs f_right">
     <ul class="tabWrap noticeWrap three">
         <li><a href="#notice1" class="on">시험공고</a></li>
-        <li><a href="#notice2" class="">수험뉴스</a></li>
+        {{--<li><a href="#notice2" class="">수험뉴스</a></li>--}}
     </ul>
     <div class="tabBox noticeBox">
         <div id="notice1" class="tabContent p_re">
@@ -46,6 +46,7 @@
                 @endif
             </ul>
         </div>
+        {{--
         <div id="notice2" class="tabContent p_re">
             <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
@@ -64,6 +65,7 @@
                 @endif
             </ul>
         </div>
+        --}}
     </div>
 </div>
 <!--willbesNews //-->

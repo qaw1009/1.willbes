@@ -308,7 +308,7 @@
                                 <li>
                                     <a href="{{ front_url('/support/qna/index?s_cate_code_disabled=Y') }}">
                                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                                        <div class="nTxt">1:1<br/>고객지원</div>
+                                        <div class="nTxt">1:1상담</div>
                                     </a>
                                 </li>
                                 <li>

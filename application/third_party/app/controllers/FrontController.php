@@ -268,13 +268,21 @@ abstract class FrontController extends BaseController
         // GNB 메뉴에서 Active 되는 그룹메뉴 식별자
         $front_menus['GNB']['ActiveGroupMenuIdx'] = array_get($all_site_menu_cache, 'GNBGroupMenuIdxs.' . SUB_DOMAIN);
 
+        // 설정검색어 캐쉬 조회
+        $site_word_setup = $this->getCacheBySkey('search_word_setup', '', $site_code);
+
+        //자동완성검색어 캐쉬 조회
+        $site_word_auto =  $this->getCacheBySkey('search_word_auto','file', $site_code);
+
         $configs = array_merge(
             $site_cache,
             ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile, 'IsApp' => $this->_is_app],
             config_get(SUB_DOMAIN, []),
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
-            ['TabMenu' => $tab_menus]
+            ['TabMenu' => $tab_menus],
+            ['Word_Setup' => $site_word_setup],
+            ['Word_Auto' => $site_word_auto]
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

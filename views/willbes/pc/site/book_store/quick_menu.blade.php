@@ -1,12 +1,20 @@
 <div id="QuickMenu" class="wsBookQuick">
     <ul>
         <li class="bookimg">
-            <div class="lastBook">최근본책<span>(2)개</span></div>
+            @php $_ck_recent_books = get_ck_recent_products(); @endphp
+            <div class="lastBook">최근본책<span>({{ count($_ck_recent_books) }})개</span></div>
             <div class="QuickSlider">
-                <div class="sliderNum">
-                    <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2018/304013/book_304013_og.png" title="교재명"></a></div>
-                    <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303945/book_303945_og.png" title="교재명"></a></div>
-                </div>
+                @if(empty($_ck_recent_books) === false)
+                    <div class="sliderNum">
+                        @foreach($_ck_recent_books as $prod_code => $thumb_img_url)
+                            <div>
+                                <a href="{{ front_url('/bookStore/show/pattern/all/prod-code/' . $prod_code) }}">
+                                    <img src="{{ $thumb_img_url }}" title="최근본책-{{ $loop->index }}">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </li>
         <li class="cart">

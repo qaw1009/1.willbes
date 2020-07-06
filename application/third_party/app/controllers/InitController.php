@@ -132,4 +132,29 @@ trait InitController
 
         return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
     }
+
+    /**
+     * 캐쉬 데이터 추출
+     * @param $driver
+     * @param string $adapter 추출대상 - memcached, file
+     * @param $skey sitecode
+     * @return array
+     */
+    public function getCacheBySkey($driver, $adapter='', $skey)
+    {
+        is_object(@$this->caching) === false && $this->load->driver('caching');
+        $this->caching->setDriver($driver);
+
+        if($adapter === '') {
+            if (($items = $this->caching->{$driver}->get($skey)) === false) {
+                $items = [];
+            }
+        } else {
+            if (($items = $this->caching->{$driver}->getToAdapter($adapter, $skey)) === false) {
+                $items = [];
+            }
+        }
+        return $items;
+    }
+
 }

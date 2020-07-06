@@ -102,14 +102,15 @@
             </div>
         </div>
 
-      
+        {{--
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
                 <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
             </map>             
-        </div>      
+        </div>
+        --}}      
   
         
         <div class="evtCtnsBox evttop" >     
@@ -152,7 +153,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_june.jpg" /></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_june.jpg" /></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_july.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_august.jpg" /></li>
                 </ul>
@@ -165,16 +166,16 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="Map1676b">
                 <area shape="rect" coords="370,976,751,1036" href="#to_go" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
             <map name="Map1676ss">
-                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" />
+                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/167720" target="_blank" />
                 <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" />
                 <area shape="rect" coords="757,926,896,1044" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" target="_blank" />
             </map>       
@@ -280,11 +281,11 @@
 					</li>   
                     <li>                    
                         <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 6월 8일(월)부터 7월 3일(금)까지 총 20회 진행됩니다. (공휴일 제외)<br>
-						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (6/8(월), 6/22(월))의 경우<br>
-						&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 7월 6일(월)부터 8월 7일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE (7/6(월), 7/27(월)의 경우<br>
+						&nbsp;&nbsp;&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 당첨자 안내 공지는 6월 9일(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
+						&nbsp;- 당첨자 안내 공지는 8월 11일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 					</li>
                     <li>                    
                         <span class="big">돌발퀴즈 이벤트 관련</span><br>

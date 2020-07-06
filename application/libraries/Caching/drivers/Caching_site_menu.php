@@ -139,6 +139,12 @@ class Caching_site_menu extends CI_Driver
                 
                 // 생성된 배열 키로 값 설정
                 array_set($data, $child_key, $arr_menu);
+
+                // 일반메뉴(전체보기) > 전체메뉴(소트매핑) 메뉴일 경우 하위 메뉴 설정
+                if (isset($arr_menu['MenuSubType']) === true && $arr_menu['MenuSubType'] == 'sort_mapping') {
+                    $sort_mapping_data = $this->_getSortMappingData($row['SiteCode'], $menu_url);
+                    array_set($data, $child_key . '.Children', $sort_mapping_data);
+                }
             } else {
                 array_set($data, $base_key . '.' . $row['MenuIdx'], $arr_menu);
             }
@@ -148,5 +154,99 @@ class Caching_site_menu extends CI_Driver
         }
 
         return $data;
+    }
+
+    /**
+     * 사이트별 소트매핑 데이터 조회
+     * @param int $site_code [사이트코드]
+     * @param string $base_url [기준URL]
+     * @return array
+     */
+    public function _getSortMappingData($site_code, $base_url)
+    {
+        $results = [];
+        $_table = [
+            'category' => 'lms_sys_category',
+            'subject_r_category' => 'lms_product_subject_r_category',
+            'subject' => 'lms_product_subject'
+        ];
+        $base_url = array_get(explode('?', $base_url), '0', $base_url);     // 쿼리스트링 제거
+
+        // 카테고리 정보 조회
+        $column = 'CateCode, CateName, CateRouteIdx, CateRouteName';
+        $from = '
+            from (
+                select SC.CateCode, SC.CateName
+                    , if(PC.CateCode is null, SC.CateCode, concat(PC.CateCode, ">", SC.CateCode)) as CateRouteIdx
+                    , if(PC.CateCode is null, SC.CateName, concat(PC.CateName, ">", SC.CateName)) as CateRouteName
+                    , ifnull(PC.OrderNum, SC.OrderNum) as GroupOrderNum
+                    , if(SC.CateDepth = 1, 0, SC.OrderNum) as OrderNum
+                from ' . $_table['category'] . ' as SC
+                    left join ' . $_table['category'] . ' as PC
+                        on SC.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"			
+                where SC.SiteCode = ?
+                    and SC.IsUse = "Y"
+                    and SC.IsFrontUse = "Y"
+                    and SC.IsStatus = "Y"
+            ) as U
+            order by GroupOrderNum asc, OrderNum asc   
+        ';
+
+        $category_data = $this->_db->query('select ' . $column . $from, $site_code)->result_array();
+
+        // 카테고리별 과목 맵핑 데이터 조회
+        $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
+        $from = '
+            from ' . $_table['subject_r_category'] . ' as PSC
+                inner join ' . $_table['category'] . ' as SC
+                    on PSC.CateCode = SC.CateCode
+                inner join ' . $_table['subject'] . ' as PS
+                    on PSC.SubjectIdx = PS.SubjectIdx
+            where PSC.SiteCode = ?
+                and PSC.IsStatus = "Y"
+                and SC.IsUse = "Y" and SC.IsFrontUse = "Y" and SC.IsStatus = "Y"
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"
+            order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc        
+        ';
+
+        $subject_data = $this->_db->query('select ' . $column . $from, $site_code)->result_array();
+        $subject_data = array_data_pluck($subject_data, 'SubjectName', ['CateCode', 'SubjectIdx']);     // [CateCode => [SubjectIdx => SubjectName]] 형태로 가공
+
+        // 카테고리와 과목 맵핑 데이터 병합
+        foreach ($category_data as $idx => $row) {
+            $menu_url = $base_url . '?cate_code=' . $row['CateCode'];
+            $arr_key = str_replace('>', '.Children.', $row['CateRouteIdx']);
+            $arr_menu = [
+                'MenuType' => 'GN',
+                'MenuName' => $row['CateName'],
+                'MenuUrl' => $menu_url,
+                'UrlTarget' => 'self',
+                'UrlRouteName' => $row['CateRouteName']
+            ];
+
+            // 카테고리 메뉴
+            array_set($results, $arr_key, $arr_menu);
+
+            // 과목 메뉴
+            if (array_key_exists($row['CateCode'], $subject_data) === true) {
+                // 2개 이상일 경우만 하위 메뉴 생성
+                if (count($subject_data[$row['CateCode']]) > 1) {
+                    foreach ($subject_data[$row['CateCode']] as $subject_idx => $subject_name) {
+                        $arr_subject_key = $arr_key . '.Children.' . $subject_idx;
+                        $arr_subject_menu = [
+                            'MenuType' => 'GN',
+                            'MenuName' => $subject_name,
+                            'MenuUrl' => $menu_url . '&subject_idx=' . $subject_idx,
+                            'UrlTarget' => 'self',
+                            'UrlRouteName' => $row['CateRouteName'] . '>' . $subject_name
+                        ];
+
+                        array_set($results, $arr_subject_key, $arr_subject_menu);
+                    }
+                }
+            }
+        }
+
+        return $results;
     }
 }

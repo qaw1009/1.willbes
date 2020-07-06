@@ -15,12 +15,47 @@ class Cart extends \app\controllers\FrontController
 
     /**
      * 장바구니 목록
+     * TODO : 비회원 장바구니 구현 예정
      * @param array $params
      */
     public function index($params = [])
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        // 윌스토리 사이트를 제외하고 로그인 필수
+        if ($this->_site_code == '2012') {
+            $arr_input['tab'] = 'book';     // 교재 장바구니 디폴트 처리
+            $arr_input['return_url'] = front_url('/bookStore/index/pattern/all');   // 다른상품 더보기 URL
+        } else {
+            // 로그인 체크
+            //$this->checkLogin();
+
+            // 다른상품 더보기 URL
+            if ($this->_is_pass_site === true) {
+                $arr_input['return_url'] = front_url('/offLecture/index/type/all');
+            } else {
+                $arr_input['return_url'] = front_url('/');
+                if (empty(config_app('DefCateCode')) === false) {
+                    $arr_input['return_url'] = front_url('/lecture/index/cate/' . config_app('DefCateCode') . '/pattern/only');
+                }
+            }
+        }
+
+        // 장바구니 뷰
+        if ($this->isLogin() === true) {
+            $this->_showMemberCart($arr_input);
+        } else {
+            $this->_showGuestCart($arr_input);
+        }
+    }
+
+    /**
+     * 회원 장바구니
+     * @param array $arr_input
+     */
+    private function _showMemberCart($arr_input = [])
+    {
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $on_off_type = $this->_is_pass_site === true ? 'off' : 'on';
         $lecture_key = $on_off_type . '_lecture';
@@ -73,9 +108,18 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
+     * 비회원 장바구니 (윌스토리 네이버페이 전용)
+     * @param array $arr_input
+     */
+    private function _showGuestCart($arr_input = [])
+    {
+        show_404();
+    }
+
+    /**
      * 상품정보 상세 (레이어 팝업)
      * @param array $params
-     * @return CI_Output
+     * @return mixed
      */
     public function info($params = [])
     {
@@ -96,7 +140,7 @@ class Cart extends \app\controllers\FrontController
         // 패키지 서브강좌 조회
         $list = $this->packageFModel->findProductSubLectures($cart_data['ProdCode'], $cart_data['ProdCodeSub']);
 
-        $this->load->view('site/cart/info_modal', [
+        return $this->load->view('site/cart/info_modal', [
             'ele_id' => $this->_req('ele_id'),
             'arr_learn_pattern_ccd' => $this->cartFModel->_learn_pattern_ccd,
             'arr_adminpack_lecture_type_ccd' => $this->cartFModel->_adminpack_lecture_type_ccd,

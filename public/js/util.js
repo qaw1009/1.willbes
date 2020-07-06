@@ -905,6 +905,24 @@ $('.btn_unifiedSearch, .btn_areaSearch').on('click', function() {
     goFullSearch($(this).data('form'));
 });
 
+/**
+ * 설정검색어 이동
+ */
+$('.word-setup').on('click', function() {
+    $form = $(this).closest('form').attr('id');
+    if(($(this).data('target')) === 'S') {
+        $('#'+$form).find('input[name="etc_info"]').val($(this).data('idx'));
+        $('#'+$form).find('input[name="searchfull_text"]').val($(this).data('word'));
+        goFullSearch($form);
+    }else if(($(this).data('target')) === 'L') {
+        if($(this).data('open') === '_self') {
+            location.href = $(this).data('url');
+        } else if($(this).data('open') === '_blank') {
+            window.open($(this).data('url'));
+        }
+    }
+});
+
 function goFullSearch($form){
     if($form === '') {return;}
     $search_form = "#"+$form;

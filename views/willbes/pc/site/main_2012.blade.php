@@ -47,10 +47,12 @@
                             @foreach($data['new_product'] as $row)
                                 <li>
                                     <div class="bookImg">
-                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                            <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        </a>
                                     </div>
                                     <p>[{{ $row['ProdCateName'] }}]</p>
-                                    <p>{{ $row['ProdName'] }}</p>
+                                    <p><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">{{ $row['ProdName'] }}</a></p>
                                     <p><span>{{ number_format($row['rwSalePrice']) }}원</span> → <strong>{{ number_format($row['rwRealSalePrice']) }}원</strong></p>
                                 </li>
                             @endforeach
@@ -69,10 +71,12 @@
                             @foreach($data['topic_product'] as $row)
                                 <li>
                                     <div class="bookImg">
-                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                            <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        </a>
                                     </div>
                                     <p>[{{ $row['ProdCateName'] }}]</p>
-                                    <p>{{ $row['ProdName'] }}</p>
+                                    <p><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">{{ $row['ProdName'] }}</a></p>
                                     <p><span>{{ number_format($row['rwSalePrice']) }}원</span> → <strong>{{ number_format($row['rwRealSalePrice']) }}원</strong></p>
                                 </li>
                             @endforeach
@@ -91,10 +95,12 @@
                             @foreach($data['resv_product'] as $row)
                                 <li>
                                     <div class="bookImg">
-                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                            <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        </a>
                                     </div>
                                     <p>[{{ $row['ProdCateName'] }}]</p>
-                                    <p>{{ $row['ProdName'] }}</p>
+                                    <p><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">{{ $row['ProdName'] }}</a></p>
                                     <p><span>{{ number_format($row['rwSalePrice']) }}원</span> → <strong>{{ number_format($row['rwRealSalePrice']) }}원</strong></p>
                                 </li>
                             @endforeach
@@ -121,10 +127,12 @@
                             @foreach($data['best_product'] as $row)
                                 <li>
                                     <div class="bookImg">
-                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                            <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                        </a>
                                     </div>
                                     <p>[{{ $row['ProdCateName'] }}]</p>
-                                    <p>{{ $row['ProdName'] }}</p>
+                                    <p><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">{{ $row['ProdName'] }}</a></p>
                                     <p><span>{{ number_format($row['rwSalePrice']) }}원</span> → <strong>{{ number_format($row['rwRealSalePrice']) }}원</strong></p>
                                 </li>
                             @endforeach
@@ -142,11 +150,13 @@
                         @foreach($data['today_product'] as $row)
                             <div class="bookList">
                                 <div class="bookimgB">
-                                    <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgOgName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                    <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgOgName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                    </a>
                                 </div>
                                 <ul class="summary">
                                     <li>오늘 이런 책은 어떠신가요?</li>
-                                    <li><a href="#none"><span>[오늘의 책]</span> {{ $row['ProdName'] }}</a></li>
+                                    <li><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');"><span>[오늘의 책]</span> {{ $row['ProdName'] }}</a></li>
                                     <li class="introduction">
                                         {{ strip_tags($row['wBookDesc']) }}
                                     </li>
@@ -179,11 +189,13 @@
                         @foreach($data['md_product'] as $row)
                             <div class="mdList">
                                 <a href="#none">
-                                    <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                    <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}">
+                                    </a>
                                 </a>
                                 <ul>
                                     <li>[{{ $row['ProdCateName'] }}]</li>
-                                    <li><a href="#none">{{ $row['ProdName'] }}</a></li>
+                                    <li><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">{{ $row['ProdName'] }}</a></li>
                                     <li><span>{{ number_format($row['rwSalePrice']) }}원</span> → <strong>{{ number_format($row['rwRealSalePrice']) }}원</strong></li>
                                 </ul>
                             </div>
@@ -368,5 +380,10 @@
                 bookInfo.goToNextSlide();
             });
         });
+
+        // 상세 페이지 이동
+        function goShow(prod_code) {
+            location.href = '{{ front_url('/bookStore/show/pattern/all/prod-code/') }}' + prod_code;
+        }
     </script>
 @stop

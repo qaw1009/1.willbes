@@ -64,7 +64,7 @@
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
         }
         .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#313131;} 
-        .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;color:#696969;}  
+        .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;color:#696969;font-weight:bold;}  
         .wb_ctsInfo div dd {margin-bottom:30px}
         .wb_ctsInfo div dl {
             position: relative;

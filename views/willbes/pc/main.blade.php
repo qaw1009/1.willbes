@@ -131,9 +131,13 @@
             <img src="https://static.willbes.net/public/images/promotion/main/gate_v3_01.png">
             <div>
                 <form id="areaSearch_form" name="areaSearch_form" method="GET">
-                    <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}"/>
+                    <input type="text" name="" class="d_none">{{--삭제금지 --}}
+                    <input type="hidden" name="cate" id="areaSearch_cate" value=""/>
+                    <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                    <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                    <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
                     <input type="hidden" name="searchfull_order" id="searchfull_order" value=""/>
-                    <input type="search" name="searchfull_text" id="areaSearch_text" class='areaSearch' data-form="areaSearch_form" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="검색어를 입력하세요." maxlength="100"/>
+                    <input type="search" name="searchfull_text" id="areaSearch_text" class='areaSearch' data-form="areaSearch_form" value="" placeholder="검색어를 입력하세요." maxlength="100"/>
                     <label for="search"><button type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form" title="검색">검색</button></label>
                 </form>
             </div>

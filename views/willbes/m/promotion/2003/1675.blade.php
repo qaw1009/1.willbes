@@ -170,12 +170,12 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1675m_02.jpg" alt="" >
-        <p>7.5(일)이 지나면 한정특가가 마감됩니다!</p>
+        <p>8.9(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/167719" target="_blank">
                     <span>아똑영어</span>
-                    <span>6월 방송<br>다시보기</span>
+                    <span>7월 방송<br>다시보기</span>
                     <span><strong>1</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
@@ -201,7 +201,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>6/29(월)~7/3(금) <br>오후 6시</span>
+                    <span>7/20(월)~7/24(금)  <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>
@@ -273,10 +273,10 @@
             <p class="NSK-Black"><span>●</span>더켠의 아침 똑똑 영어 과정 진행 안내</p>
             <ul>
                 <li>매주 월~금 오전 7시30분~8시 : 아침 똑똑 영어+해설 정규 방송</li>
-                <li>매월 홀수 주 월~금 : 무료 온라인 모의고사 접수<br>
+                <li>2주분 방송 진행 후 월~금 : 무료 온라인 모의고사 접수<br>
                     <span>*금요일 오후 6시 마감</span></li>
-                <li>매월 홀수 주 토~일 : 무료 온라인 모의고사 응시</li>
-                <li>매월 짝수 주 월 오후 7~8시 : 모의고사 해설 LIVE 방송<br>
+                <li>모의고사 접수 후 토~일 : 무료 온라인 모의고사 응시</li>
+                <li>모의고사 응시 후 월 오후 7~8시 : 모의고사 해설 LIVE 방송<br>
                 <span>*무료 온라인 모의고사의 경우, 2주에 1회 진행</span></li>
             </ul>
 
@@ -289,7 +289,7 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 6월 15일(월)부터 7월 3일(금)까지 총 15회 진행됩니다. <span>* 공휴일 제외</span></li>
+                <li>본 이벤트는 로그인 후 참여 가능하며, 7월 6일(월)부터 8월 7일(금)까지 총 20회 진행됩니다.<span>* 공휴일 제외</span></li>
                 <li>출석 체크 가능 시간은 정규방송 오전 7시 30분~8시이며 방송이 종료되지 않더라도<br> 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.</li>
             </ul>
         </div>

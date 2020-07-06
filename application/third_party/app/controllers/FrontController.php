@@ -440,19 +440,26 @@ abstract class FrontController extends BaseController
     private function _checkLogin()
     {
         if ($this->auth_controller === true || in_array($this->router->method, $this->auth_methods) === true) {
-            if ($this->isLogin() !== true) {
-                if ($this->input->is_ajax_request() === true) {
-                    $this->json_error('로그인 후 이용해 주십시오.', _HTTP_UNAUTHORIZED);
-                    $this->output->_display();
-                    exit(_HTTP_UNAUTHORIZED);
-                } else {
-                    //show_error('접근 권한이 없습니다.', _HTTP_UNAUTHORIZED, '접근 권한 없음');
-                    if($this->_is_app === true){
-                        redirect(app_url('/app/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
-                    } else {
-                        redirect(app_url('/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
-                    }
+            $this->checkLogin();
+        }
+    }
 
+    /**
+     * 로그인 체크
+     */
+    public function checkLogin()
+    {
+        if ($this->isLogin() !== true) {
+            if ($this->input->is_ajax_request() === true) {
+                $this->json_error('로그인 후 이용해 주십시오.', _HTTP_UNAUTHORIZED);
+                $this->output->_display();
+                exit(_HTTP_UNAUTHORIZED);
+            } else {
+                //show_error('접근 권한이 없습니다.', _HTTP_UNAUTHORIZED, '접근 권한 없음');
+                if($this->_is_app === true){
+                    redirect(app_url('/app/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                } else {
+                    redirect(app_url('/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
                 }
             }
         }

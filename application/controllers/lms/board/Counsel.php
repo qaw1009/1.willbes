@@ -493,7 +493,7 @@ class Counsel extends BaseBoard
                 'RegDatm' => '2019-03-25 00:00:00'
             ]
         ];
-        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
+        //$arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
 
         $this->load->view("board/{$this->board_name}/create_counsel_reply", [
             'boardName' => $this->board_name,
@@ -502,7 +502,7 @@ class Counsel extends BaseBoard
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'arr_swich' => element($this->bm_idx,$this->_on_off_swich),
             'arr_ccd_reply' => $this->_Ccd['reply'],
-            'arr_unAnswered' => $arr_unAnswered
+            //'arr_unAnswered' => $arr_unAnswered
         ]);
     }
 
@@ -629,7 +629,7 @@ class Counsel extends BaseBoard
                 'RegDatm' => '2019-03-25 00:00:00'
             ]
         ];
-        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
+        //$arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
 
         $this->load->view("board/{$this->board_name}/read_counsel_reply", [
             'boardName' => $this->board_name,
@@ -642,7 +642,7 @@ class Counsel extends BaseBoard
             'board_next' => $board_next,
             'memo_data' => $memo_data,
             'arr_swich' => element($this->bm_idx,$this->_on_off_swich),
-            'arr_unAnswered' => $arr_unAnswered
+            //'arr_unAnswered' => $arr_unAnswered
         ]);
     }
 

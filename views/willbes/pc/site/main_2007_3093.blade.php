@@ -61,7 +61,7 @@
             <img src="https://static.willbes.net/public/images/promotion/main/3093_visual06.jpg" alt="" usemap="#Map3093C" border="0">
             <map name="Map3093C" id="Map3093C">
                 <area shape="rect" coords="120,751,325,794" href="{{ front_url('/guide/show/cate/3093/pattern/gtelp') }}" target="_blank"/>
-                <area shape="rect" coords="452,752,655,793" href="https://lang.willbes.net/support/examAnnouncement/show/cate/3093?board_idx=240562" target="_blank" />
+                <area shape="rect" coords="452,752,655,793" href="https://lang.willbes.net/support/examAnnouncement/show/cate/3093?board_idx=283488" target="_blank" />
                 <area shape="rect" coords="785,750,979,796" href="https://www.g-telp.co.kr:335/" target="_blank"/>
             </map>
         </div>

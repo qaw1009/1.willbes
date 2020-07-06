@@ -9,7 +9,7 @@ class BookStore extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     private $_learn_pattern = 'book';     // 학습형태 (교재)
-    private $_pattern_name = ['all' => '전체', 'best' => '베스트셀러', 'new' => '신간안내', 'willbes' => '윌비스출판사'];
+    private $_pattern_name = ['all' => '전체메뉴', 'best' => '베스트셀러', 'new' => '신간안내', 'willbes' => '윌비스출판사'];
     private $_page_per_rows = 10;   // 페이지당 출력되는 상품수
     private $_show_page_num = 10;   // 페이지 수
 
@@ -36,6 +36,12 @@ class BookStore extends \app\controllers\FrontController
         // 패턴값 체크
         if (array_key_exists($pattern, $this->_pattern_name) === false) {
             redirect(front_url('/bookStore/index/pattern/all'));
+        }
+
+        // 소트매핑 영역 노출 여부
+        $is_sort_mapping = false;
+        if (in_array($pattern, ['all', 'willbes']) === true) {
+            $is_sort_mapping = true;
         }
 
         // 카테고리 코드
@@ -116,6 +122,7 @@ class BookStore extends \app\controllers\FrontController
             'pattern' => $pattern,
             'pattern_name' => $this->_pattern_name[$pattern],
             'query_string' => $query_string,
+            'is_sort_mapping' => $is_sort_mapping,
             'paging' => $paging,
             'count' => $count,
             'data' => $list
@@ -146,10 +153,44 @@ class BookStore extends \app\controllers\FrontController
         // 데이터 병합
         $data = array_merge($data, $w_data);
 
+        // 최근본책 쿠키 저장
+        $this->_setCookieRecentBooks($prod_code, $data['wAttachImgPath'] . $data['wAttachImgSmName']);
+
         return $this->load->view('site/book_store/show', [
             'learn_pattern' => $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'all'),
             'data' => $data
         ]);
+    }
+
+    /**
+     * 온라인서점 랜딩페이지 (recruit : 저자모집)
+     * @param array $params
+     */
+    public function landing($params = [])
+    {
+        $type = element('type', $params);
+        if (empty($type) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        $this->load->view('site/book_store/landing_' . $type);
+    }
+
+    /**
+     * 온라인서점 최근본책 쿠키 저장
+     * @param $prod_code
+     * @param $thumb_img_url
+     */
+    private function _setCookieRecentBooks($prod_code, $thumb_img_url)
+    {
+        $ck_name = 'recent_vw_products';
+        $ck_data = get_arr_var(json_decode(base64_decode(get_cookie($ck_name)), true), []);
+
+        // 이전 데이터에 신규 데이터 쿠키 저장
+        $ck_data[$prod_code] = $thumb_img_url;
+        $ck_data = base64_encode(json_encode($ck_data));
+
+        set_cookie($ck_name, $ck_data, 0);
     }
 }

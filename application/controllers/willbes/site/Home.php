@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -341,7 +341,6 @@ class Home extends \app\controllers\FrontController
         return $data;
     }
 
-
     /**
      * 고등고시[학원] 데이터 조회
      * @param string $cate_code
@@ -383,6 +382,30 @@ class Home extends \app\controllers\FrontController
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 윌스토리 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array
+     */
+    private function _getSite2012Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['new_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'new', 10);
+            $data['topic_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'topic', 10);
+            $data['resv_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'resv_sale', 10);
+            $data['best_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'best', 10);
+            $data['today_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'today', 5);
+            $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
+            $data['notice'] = $this->_boardNotice(5);
         }
 
         return $data;
@@ -538,8 +561,8 @@ class Home extends \app\controllers\FrontController
                 'b.CampusCcd' => $arr_campus
             ]
         ];
-        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
 
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
     }
 
     /**
@@ -768,7 +791,6 @@ class Home extends \app\controllers\FrontController
     {
         return $this->categoryFModel->getMappingCateCode($cate_code);
     }
-
 
     /**
      * 사이트 메인

@@ -119,20 +119,53 @@ class BookFModel extends ProductFModel
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param string $extra_column
      * @return array|int
      */
-    public function listBookStoreProduct($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listBookStoreProduct($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $extra_column = '')
     {
         $learn_pattern = 'book';    // 교재
         $add_column = '';
 
         if ($is_count === false) {
             // 추가 조회컬럼
-            $add_column = ', rwSaleTypeCcd, rwSalePrice, rwRealSalePrice, wSaleCcdName, wAuthorNames, wPublName, wPublDate
-                , wAttachImgPath, wAttachImgOgName, replace(wAttachImgOgName, "_og", "_sm") as wAttachImgSmName, wBookIdx';
+            $add_column = ', ProdCateName, rwSaleTypeCcd, rwSalePrice, rwSaleRate, rwSaleRateUnit, rwSaleDiscType, rwRealSalePrice
+                , wSaleCcdName, wAuthorNames, wPublName, wPublDate, wAttachImgPath, wAttachImgOgName, replace(wAttachImgOgName, "_og", "_sm") as wAttachImgSmName
+                , wBookIdx' . $extra_column;
         }
 
         return $this->listSalesProduct($learn_pattern, $is_count, $arr_condition, $limit, $offset, $order_by, $add_column);
+    }
+
+    /**
+     * 온라인서점 옵션별 상품 조회
+     * @param $site_code
+     * @param $option
+     * @param int $limit_cnt
+     * @return array|int
+     */
+    public function getBookStoreOptionProduct($site_code, $option, $limit_cnt = 10)
+    {
+        $arr_option = ['new' => 'Y', 'best' => 'Y', 'resv_sale' => '730001', 'topic' => '730002', 'today' => '730003', 'md_best' => '730004'];
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code]];
+        $extra_column = '';
+
+        if (array_key_exists($option, $arr_option) === false) {
+            return [];
+        }
+
+        // 옵션조건 설정
+        if ($arr_option[$option] == 'Y') {
+            $arr_condition['EQ']['Is' . ucfirst($option)] = 'Y';
+        } else {
+            $arr_condition['LKB']['OptionCcds'] = $arr_option[$option];
+        }
+
+        if ($option == 'today') {
+            $extra_column = ', wBookDesc';
+        }
+
+        return $this->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $extra_column);
     }
 
     /**

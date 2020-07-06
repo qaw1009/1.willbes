@@ -58,20 +58,21 @@
         .wb_06 {background:#fff;}   
         .wb_07 {background:#5227AA;}
 
-        .wb_ctsInfo {background:black; padding:100px 0}  
+        .wb_ctsInfo {background:#D7D7D7; padding:100px 0}  
         .wb_ctsInfo div {
             width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
         }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:yellow;} 
-        .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;}  
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#313131;} 
+        .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;color:#696969;}  
         .wb_ctsInfo div dd {margin-bottom:30px}
         .wb_ctsInfo div dl {
             position: relative;
             padding-left:10px;
+            color:#696969;
         }
         .wb_ctsInfo div dl:before{
-            background: yellow none repeat scroll 0 0; 
+            background: #696969 none repeat scroll 0 0; 
             border-radius: 2px;
             content: '';
             display: block;
@@ -202,7 +203,7 @@
         
         <div class="wb_ctsInfo NGR" id="ctsInfo">
             <div>
-                <h3 class="NGEB">응시자 유의사항</h3>
+                <h3 class="NGEB">유의사항학원 실강패스</h3>
                 <dd>
                     <dt>유의사항</dt>
                     <dl>학원 실강패스 수강생은 응시 지역별 학원 상담실 문의해 주시기 바랍니다. 모든 고사장 주차 불가합니다.<br>

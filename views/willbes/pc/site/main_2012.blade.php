@@ -242,13 +242,21 @@
                     <div class="will-listTit">수험정보센터</div>
                     <div class="tabBox noticeBox">
                         <div class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                            <a href="{{ front_url('/support/examNews/index') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                             <ul class="List-Table">
-                                <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                                @if(empty($data['notice']) === true)
+                                    <li><span>등록된 내용이 없습니다.</span></li>
+                                @else
+                                    @foreach($data['exam_news'] as $row)
+                                        <li>
+                                            <a href="{{ front_url('/support/examNews/show?board_idx='.$row['BoardIdx']) }}">
+                                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                                @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
+                                            </a>
+                                            <span class="date">{{$row['RegDatm']}}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>

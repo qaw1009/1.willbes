@@ -65,11 +65,6 @@
 
     <div class="evtCtnsBox evt03">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1698m_03.jpg" alt="사전 예약하기" >
-        <div class="roulette_reservation">
-            <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1664" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1698m_reservation.png" alt="서전예약하기">
-            </a>
-        </div> 
     </div>
 </div>
 <!-- End Container -->

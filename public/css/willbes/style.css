@@ -1979,7 +1979,6 @@ table.auTable tr td {
 }
 .Menu .menu-List {
     position: relative;
-    z-index: 100;
     float: right;
 }
 .Menu .menu-List li {
@@ -11808,7 +11807,7 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 10px;
     border: 1px solid #acacac;
     box-shadow: 5px 5px 25px #e1e1e1;
-    z-index: 100 !important;
+    z-index: 10 !important;
 }
 
 .list-drop-Box-1120 {
@@ -12146,7 +12145,7 @@ table.acadlecInfoPackageTable tr.Top td {
     vertical-align:top; display: inline-block; position: absolute; z-index: 1;
 }
 .searchPop {display:none; position:absolute; margin-top:-1px; padding:10px; font-size:14px; background-color:#fff; 
-    width: 300px; border:1px solid #1087ef; z-index: 1000;} 
+    width: 300px; border:1px solid #1087ef; z-index: 51;} 
 .searchPop .popTit {font-weight: 600; margin-bottom: 5px;}
 .searchPop li {height: 30px; line-height: 30px; list-style: decimal; list-style-position: inside; padding-left: 10px;}
 .searchPop li a {display: inline-block;}
@@ -12162,6 +12161,7 @@ table.acadlecInfoPackageTable tr.Top td {
     color:#666;
     line-height:1.5;
     overflow-x: hidden;
+    z-index: 102;
 }
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
     background: #666 !important;

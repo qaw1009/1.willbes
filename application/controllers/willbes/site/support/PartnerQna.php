@@ -6,7 +6,7 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportQna.php';
 class PartnerQna extends SupportQna
 {
     protected $_bm_idx = '115';       //bmidx : 윌스토리 -> 업무제휴문의 게시판
-    protected $_default_path = '/support/partnerqna';
+    protected $_default_path = '/support/partnerQna';
 
     public function __construct()
     {

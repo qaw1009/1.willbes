@@ -406,6 +406,7 @@ class Home extends \app\controllers\FrontController
             $data['today_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'today', 5);
             $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
             $data['notice'] = $this->_boardNotice(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
         }
 
         return $data;
@@ -489,9 +490,9 @@ class Home extends \app\controllers\FrontController
 
         if ($learn_pattern == 'on_lecture') {
             $add_column = ', ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg
-                                 , ifnull(JSON_VALUE(ProfReferData, "$.prof_index_img"), "") as ProfIndexImg
-                                 , ProdMainIntroMemo
-                                 , ifnull(FN_PRODUCT_LECTURE_SAMPLE_DATA(ProdCode),\'N\') As LectureSamplewUnit';
+                , ifnull(JSON_VALUE(ProfReferData, "$.prof_index_img"), "") as ProfIndexImg
+                , ProdMainIntroMemo
+                , ifnull(FN_PRODUCT_LECTURE_SAMPLE_DATA(ProdCode),\'N\') As LectureSamplewUnit';
         }
 
         return $this->productFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $add_column);

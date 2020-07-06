@@ -281,8 +281,8 @@ abstract class FrontController extends BaseController
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
             ['TabMenu' => $tab_menus],
-            ['Word_Setup' => $site_word_setup],
-            ['Word_Auto' => $site_word_auto]
+            ['SearchWordSetup' => $site_word_setup],
+            ['SearchWordAuto' => $site_word_auto]
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

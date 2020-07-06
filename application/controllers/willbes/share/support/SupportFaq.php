@@ -35,7 +35,7 @@ class SupportFaq extends BaseSupport
         }
 
         //pc일 경우에만 초기값
-        if(APP_DEVICE == 'pc' && empty($s_faq) == true) {
+        if(APP_DEVICE == 'pc' && empty($s_faq) == true && empty($faq_ccd) === false) {
             $s_faq = $faq_ccd[0]['Ccd'];
         }
 

@@ -65,9 +65,11 @@
         /************************************************************/      
     </style> 
 	<div class="evtContent">
+		{{--
 		<div class="skybanner">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_sky.png" alt="전기기사 베너">
 		</div>
+		--}}
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top.jpg" alt="전기/소방 윌비스 자격증" />
 		</div>

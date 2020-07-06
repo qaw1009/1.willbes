@@ -21,7 +21,7 @@
     </li>
     <li>
         <a href="{{ site_url('/support/notice/index/cate/' . $__cfg['CateCode']) }}">
-            <img src="https://static.willbes.net/public/images/promotion/main/2000_sky04.jpg" alt="학원 공지사항">
+            <img src="https://static.willbes.net/public/images/promotion/main/2000_sky05.jpg" alt="동영상 공지사항">
         </a>
     </li>
 </ul>

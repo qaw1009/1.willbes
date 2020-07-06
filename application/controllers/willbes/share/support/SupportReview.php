@@ -36,7 +36,7 @@ class SupportReview extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 인덱스
+     * 수강평/합격수기관리 > 합격수기 인덱스
      * @param array $params
      */
     public function index($params = [])
@@ -181,9 +181,7 @@ class SupportReview extends BaseSupport
         ]);
     }
 
-    /**
-     * 고객센터 > 상담게시판 등록/수정 폼
-     */
+
     public function create()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -414,9 +412,6 @@ class SupportReview extends BaseSupport
         );
     }
 
-    /**
-     * 고객센터 > 상담게시판 등록/수정
-     */
     public function store()
     {
         $idx = '';
@@ -491,9 +486,6 @@ class SupportReview extends BaseSupport
         $this->json_result($result, $msg, $result);
     }
 
-    /**
-     * 고객센터 > 상담게시판 삭제
-     */
     public function delete()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -525,9 +517,6 @@ class SupportReview extends BaseSupport
         show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
     }
 
-    /**
-     * 파일 삭제
-     */
     public function destroyFile()
     {
         $rules = [

@@ -906,7 +906,7 @@ $('.btn_unifiedSearch, .btn_areaSearch').on('click', function() {
 });
 
 /**
- * 설정검색어
+ * 설정검색어 이동
  */
 $('.word-setup').on('click', function() {
     $form = $(this).closest('form').attr('id');

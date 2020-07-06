@@ -164,9 +164,9 @@
                             @endif
                         @endif
 
-                        @if(empty($arr_swich['reply']['cate_cnt']) === false)
+                        {{--@if(empty($arr_swich['reply']['cate_cnt']) === false)
                             <span class="reply_cnt">{{$arr_unAnswered[$arr_swich['reply']['cate_cnt']]}}</span>
-                        @endif
+                        @endif--}}
                     </button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

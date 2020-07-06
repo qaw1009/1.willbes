@@ -14,7 +14,7 @@
         <div class="Section widthAuto">
             <div class="onSearch onSearchBig NG">
                 <form id="areaSearch_form" name="areaSearch_form" method="GET">
-                    <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}">
+                    <input type="hidden" name="cate" id="areaSearch_cate" value="">
                     <input type="text" name="" class="d_none">
                     <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
                     <input type="hidden" name="searchfull_order" id="searchfull_order" value="">

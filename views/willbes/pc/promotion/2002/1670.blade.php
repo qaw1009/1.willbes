@@ -98,12 +98,14 @@
                 @endif  
             </div>                  
 
+            {{--
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_02.jpg" usemap="#Map1670a" title="형사법 무료특강 소문내기" border="0">
                 <map name="Map1670a" id="Map1670a">
                     <area shape="rect" coords="304,847,723,907" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
                 </map>
-            </div>      
+            </div>
+            --}}      
             
             <!-- sns 및 url 남기기 영역 -->
             {{--홍보url--}}

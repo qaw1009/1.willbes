@@ -12138,17 +12138,40 @@ table.acadlecInfoPackageTable tr.Top td {
 
 /***********************************************  온라인 강의 검색  ************************************************************/
 
-.onSearch {width:350px; float:right; padding:10px; text-align: center;}
-.onSearch input[type="search"] {border:0; border-bottom:1px solid #000; width:90%; height:28px; color:#ccc; font-size:14px}
+.onSearch {width:328px; float:right; padding:10px 0; position: relative;}
+.onSearch input[type="text"] {border:0; border-bottom:1px solid #000; width:300px; height:28px; color:#ccc; font-size:14px}
 .onSearch input:focus {border:0 !important; border-bottom:1px solid #1087ef !important; color:#1087ef}
 .onSearch button {width:28px; height:28px; font-size: 0; text-indent: -9999px; 
     background:url("../../img/willbes/common/icon_search.png") no-repeat center bottom; background-size:18px;
     vertical-align:top; display: inline-block; position: absolute; z-index: 1;
 }
+.searchPop {display:none; position:absolute; margin-top:-1px; padding:10px; font-size:14px; background-color:#fff; 
+    width: 300px; border:1px solid #1087ef; z-index: 100;} 
+.searchPop .popTit {font-weight: 600; margin-bottom: 5px;}
+.searchPop li {height: 30px; line-height: 30px; list-style: decimal; list-style-position: inside; padding-left: 10px;}
+.searchPop li a {display: inline-block;}
+.searchPop li:hover {background-color: #f4f4f4;}
 .onSearch:after {content: ""; display: block; clear: both;}
 
-.onSearchBig {float:none; width:600px; margin:0 auto 50px;}
-.onSearchBig input[type="search"] {height:40px; width:400px; font-size:18px; color:#000;}
+.ui-autocomplete {
+    width: 150px;
+    max-height: 200px;
+    overflow-y: auto; /* prevent horizontal scrollbar */
+    font-size:14px;
+    font-weight: bold !important;
+    color:#666;
+    line-height:1.5;
+    overflow-x: hidden;
+}
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #666 !important;
+    font-weight: bold !important;                
+    color: #fff !important;
+    border:0  !important;
+}
+
+.onSearchBig {float:none; width:600px; margin:0 auto 50px; text-align: center;}
+.onSearchBig input[type="text"] {height:40px; width:400px; font-size:18px; color:#000;}
 .onSearchBig button {width:30px; height:40px; background-size:30px; border:0; }
 .onSearchBig span {height:40px; line-height: 40px; font-size:14px; margin-left:20px}
 .onSearchBig span input {width:18px; height:18px; margin-right:5px}
@@ -12293,7 +12316,3 @@ table.acadlecInfoPackageTable tr.Top td {
 
 
 /***************************윌스토리 - 온라인서점*************************************/
-
-
-
-

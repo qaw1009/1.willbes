@@ -19,7 +19,7 @@
                         <option value="3">출판사</option>
                     </select>
                     <input type="text" name="" class="d_none">                
-                    <input type="search" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="검색어를 입력하세요." maxlength="100"/>
+                    <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="검색어를 입력하세요." maxlength="100"/>
                     <label for="onsearch" class="NSK-Black"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">Search</button></label>
                 </form>
             </div>
@@ -680,7 +680,7 @@
                             <li>
                                 <a href="#none">
                                     <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                                    <div class="nTxt">1:1<br/>고객지원</div>
+                                    <div class="nTxt">1:1상담</div>
                                 </a>
                             </li>
                             <li>

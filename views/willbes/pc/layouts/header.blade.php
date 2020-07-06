@@ -18,6 +18,8 @@
     <!-- CSS -->
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+    <!-- UI -->
+    <link rel="stylesheet" href="/public/vendor/jquery/v.1.12.1/jquery-ui.css">
     <!-- bootstrap-datepicker -->
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- PNotify -->
@@ -33,6 +35,6 @@
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
-
+    <script src="/public/vendor/jquery/v.1.12.1/jquery-ui.js"></script>
     <!--// JAVASCRIPT -->
 </head>

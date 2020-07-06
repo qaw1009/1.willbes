@@ -26,6 +26,22 @@ class SearchFModel extends ProductFModel
     }
 
     /**
+     * 교재 검색 실행
+     * @param $is_count
+     * @param $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function findSearchBookStoreProduct($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $this->load->loadModels(['product/bookF']);
+        $result_data = $this->bookFModel->listBookStoreProduct($is_count, $arr_condition, $limit, $offset, $order_by);
+        return $result_data;
+    }
+
+    /**
      * 검색 실행 결과 로그 저장
      * @param array $log_data
      * @return array|bool

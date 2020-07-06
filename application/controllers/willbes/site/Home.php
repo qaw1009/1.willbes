@@ -407,6 +407,7 @@ class Home extends \app\controllers\FrontController
             $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
             $data['notice'] = $this->_boardNotice(5);
             $data['exam_news'] = $this->_boardExamNews(5);
+            $data['exam_errata'] = $this->_boardExamErrata(5);
         }
 
         return $data;
@@ -791,6 +792,21 @@ class Home extends \app\controllers\FrontController
     private function _getMappingCateCode($cate_code)
     {
         return $this->categoryFModel->getMappingCateCode($cate_code);
+    }
+
+    /**
+     * 정오표/추록 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _boardExamErrata($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 114, 'b.IsUse' => 'Y']];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

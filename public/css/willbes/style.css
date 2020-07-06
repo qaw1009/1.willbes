@@ -12146,7 +12146,7 @@ table.acadlecInfoPackageTable tr.Top td {
     vertical-align:top; display: inline-block; position: absolute; z-index: 1;
 }
 .searchPop {display:none; position:absolute; margin-top:-1px; padding:10px; font-size:14px; background-color:#fff; 
-    width: 300px; border:1px solid #1087ef; z-index: 100;} 
+    width: 300px; border:1px solid #1087ef; z-index: 1000;} 
 .searchPop .popTit {font-weight: 600; margin-bottom: 5px;}
 .searchPop li {height: 30px; line-height: 30px; list-style: decimal; list-style-position: inside; padding-left: 10px;}
 .searchPop li a {display: inline-block;}

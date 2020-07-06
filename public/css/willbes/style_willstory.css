@@ -68,7 +68,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook { left:-644px; }
     appearance: none !important;             
 }
 .wsSearch select::-ms-expand { display: none; }   
-.wsSearch input[type="search"] {border:0; width:420px; height:30px; color:#ccc; font-size:16px}
+.wsSearch input[type="text"] {border:0; width:420px; height:30px; color:#ccc; font-size:16px}
 .wsSearch input:focus {border:0 !important; color:#1087ef}
 .wsSearch button {width:85px; height:28px; font-size: 20px; color:#0dbe00; background:none;
     vertical-align:top; display: inline-block; position: absolute; right:20px; z-index: 1;}

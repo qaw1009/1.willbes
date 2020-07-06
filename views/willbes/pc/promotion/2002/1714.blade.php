@@ -20,34 +20,32 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
-        .skyBanner ul li{padding-bottom:10px;}
-       
-        .top_police{background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_police_bg.jpg) no-repeat center top;}
-        .evtTop {background:#5d5d5d url(https://static.willbes.net/public/images/promotion/2020/06/1670_top_bg.jpg) no-repeat center top;}
-        .top_youtube {background:#e0e0e0;position:relative;}
-        .youtubeGod{position:absolute;top:290px;left:50%;margin-left:-351px;}
-        .youtubeGod iframe {width:707px;height:398px;}
-        .evt01 {background:#e0e0e0;}
-        .evt02 {background:#c61330;}        
+        .skyBanner {position:fixed; width:162px; top:200px; right:0; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:5px}
 
-        .evt03 {background:#fff;}
+       
+        .evt00 {background:#404040}
+        .evtTop {background:#1e1f39;}
+        .evt01 {background:#0ae695;}
+        .evt02 {background:#efefef;}        
+
+        .evt03 {background:#fff; padding-bottom:150px}
         .evt03 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt03 .request h3 {font-size:17px;}
         .evt03 .request td {padding:10px}
         .evt03 .request input {height:26px;}
         .evt03 .requestL {width:48%; float:left}
         .evt03 .requestR {width:48%; float:right; }
-        .evt03 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:241px; overflow-y:scroll }
+        .evt03 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:271px; overflow-y:scroll }
         .evt03 .requestL li {display:inline-block; margin-right:10px}
         .evt03 .requestR li {margin-bottom:5px}
         .evt03 .request:after {content:""; display:block; clear:both}
         .evt03 .btn {clear:both; width:450px; margin:0 auto;}
-        .evt03 .btn a {display:block; text-align:center; font-size:21px;color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
+        .evt03 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt03 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .evt03 .NGEBS{font-weight:bold;}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1670_04_bg.jpg) no-repeat center top;}
+        .evt04 {background:#d7d7d7 url(https://static.willbes.net/public/images/promotion/2020/07/1714_04_bg.jpg) no-repeat center top;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
@@ -57,67 +55,40 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>--}}
+            {{--@foreach($arr_base['register_list'] as $key => $val)
+                <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
+            @endforeach--}}
+{{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
-            <!--
-            <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
-            <input type="hidden" name="register_chk_val[]" value=""/>
-            -->
+            <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
+            <input type="hidden" name="register_chk_val[]" value=""/>-->
 
-            <div class="skyBanner">
-                <ul>                  
-                    <li>
-                        <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/06/1670_sky.png" title="무료특강 신청하기"></a>
-                    </li>
-                </ul>               
+            <div class="skyBanner">               
+                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2020/07/1714_sky.png" title="설명회 베너"></a>
             </div>
-            <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="신광은 경찰팀">
+            <div class="evtCtnsBox evt00">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
             </div>
-
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_top.jpg" title="신광은 형사법 무료특강">
-            </div>
-
-            <div class="evtCtnsBox top_youtube">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_youtube.jpg" usemap="#Map1670c" title="신광은 형사법 무료특강" border="0">
-                <map name="Map1670c" id="Map1670c">
-                    <area shape="rect" coords="327,796,790,871" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
-                </map>
-                <div class="youtubeGod">
-                    <iframe src="https://www.youtube.com/embed/ZbL80DLO5ks?rel=0 " frameborder="0" allowfullscreen=""></iframe>        
-                </div>              
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1714_top.jpg" title="합격전략 설명회">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_01.jpg" title="무료특강&질문하기" >               
-                {{--댓글url--}}
-                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
-                @endif  
-            </div>                  
-
-            {{--
-            <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_02.jpg" usemap="#Map1670a" title="형사법 무료특강 소문내기" border="0">
-                <map name="Map1670a" id="Map1670a">
-                    <area shape="rect" coords="304,847,723,907" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1714_01.jpg" title="커리큘럼">
             </div>
-            --}}      
-            
-            <!-- sns 및 url 남기기 영역 -->
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
-            @endif
 
-            <div class="evtCtnsBox evt03" id="apply">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">
+            <div class="evtCtnsBox evt02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1714_02.jpg" title="선물 증정">
+            </div>
+            <div class="evtCtnsBox evt03" id="to_go">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1714_03.jpg" title="신청접수">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEBS"> * 무료특강 신청접수 </h3>
+                            <h3 class="NGEBS">* 7월 설명회  신청접수</h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="25%" />
                                 <col  />
@@ -155,27 +126,26 @@
                                                         //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                                     @endphp
                                                     @if(time() >= strtotime($reg_date. '+1 days'))
-                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @else
                                                         <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                     @endif
                                                 @endif
                                             @endforeach
                                         </ul>
-                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>* 참여 캠퍼스</th>
+                                    <th>* 직렬</th>
                                     <td>
                                         <ul>
-                                            <li><input type="radio" name="register_data1" id="CT1" value="노량진" /> <label for="CT1">노량진</label></li>
-                                            <li><input type="radio" name="register_data1" id="CT2" value="인천" /> <label for="CT2">인천</label></li>
-                                            <li><input type="radio" name="register_data1" id="CT3" value="대구" /> <label for="CT3">대구</label></li>
-                                            <li><input type="radio" name="register_data1" id="CT4" value="부산" /> <label for="CT4">부산</label></li>
-                                            <li><input type="radio" name="register_data1" id="CT5" value="광주" /> <label for="CT5">광주</label></li>
-                                            &nbsp;&nbsp;<li><input type="radio" name="register_data1" id="CT6" value="제주" /> <label for="CT6">제주</label></li>
-                                            <li><input type="radio" name="register_data1" id="CT7" value="전북" /> <label for="CT7">전북</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></li>
+                                            &nbsp;&nbsp;&nbsp;<li><input type="radio" name="register_data2" id="CT3" value="101단" /> <label for="CT3">101단</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT4" value="경행경채" /> <label for="CT4">경행경채</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT6" value="법학경채" /> <label for="CT6">법학경채</label></li>
+                                            <li><input type="radio" name="register_data2" id="CT7" value="기타" /> <label for="CT7">기타</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -191,7 +161,7 @@
                                     - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
                                 </li>
                                 <li><strong>2. 개인정보 수집 항목</strong> <br>
-                                - 필수항목 : 성명, 연락처, 참여캠퍼스, 직렬항목
+                                - 필수항목 : 성명, 연락처, 직렬항목
                                 </li>
                                 <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
                                 - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
@@ -210,12 +180,12 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년 형사법 무료특강 신청하기  ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년 7월 설명회  신청하기 ></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_04.jpg" title="학원 위치 및 정보"/>
-            </div>           
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1714_04.jpg" title="위치 및 정보"/>
+            </div>
 
         </form>
 	</div>
@@ -242,12 +212,20 @@
                 alert('참여일을 선택하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
-                alert('캠퍼스을 선택하셔야 합니다.');
+            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
+                alert('직렬을 선택하셔야 합니다.');
                 return;
             }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
+
+            //전부 disabled 처리
+            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', true);
+
+            //체크 disable 해제
+            $regi_form_register.find('input[name="register_chk[]"]:checked').each(function(i){
+                $(this).attr('disabled', false);
+            });
 
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
@@ -255,6 +233,7 @@
                     location.reload();
                 }
             }, showValidateError, null, false, 'alert');
+            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
         }
     </script>
-@stop
+@stop 

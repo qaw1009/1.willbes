@@ -214,3 +214,14 @@ if(!function_exists('isMobile')) {
         return $_CI->agent->is_mobile();
     }
 }
+
+if(!function_exists('get_ck_recent_products')) {
+    /**
+     * 최근 본 상품 쿠키값 리턴
+     * @return array
+     */
+    function get_ck_recent_products()
+    {
+        return get_arr_var(json_decode(base64_decode(get_cookie('recent_vw_products')), true), []);
+    }
+}

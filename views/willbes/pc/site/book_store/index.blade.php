@@ -16,7 +16,7 @@
         </form>
 
         <div class="curriWrap c_both">
-            @if($pattern == 'all')
+            @if($is_sort_mapping === true)
                 {{-- 대분류 카테고리 --}}
                 <ul class="curriTabs c_both">
                     @foreach($arr_base['category_d1'] as $idx => $row)

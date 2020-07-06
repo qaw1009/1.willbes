@@ -365,12 +365,7 @@
 
         // 다른상품 더보기 버튼 클릭
         $('button[name="btn_continue"]').on('click', function () {
-            @if($lecture_key == 'on_lecture')
-                var cate_code = '{{ element('DefCateCode', $__cfg, '') }}';
-                location.href = cate_code.length > 0 ? '{{ front_url('/lecture/index/cate/') }}' + cate_code + '/pattern/only' : frontUrl('');
-            @else
-                location.href = '{{ front_url('/offLecture/index/type/all') }}';
-            @endif
+            location.href = '{{ element('return_url', $arr_input, '/') }}';
         });
 
         // 결제하기 버튼 클릭

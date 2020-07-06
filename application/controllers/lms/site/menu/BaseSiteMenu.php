@@ -9,7 +9,7 @@ class BaseSiteMenu extends \app\controllers\BaseController
         'site' => ['GN' => '일반메뉴', 'GA' => '일반메뉴 (학원)', 'GM' => '일반메뉴 (전체보기)', 'PS' => '예외메뉴 (고객센터)', 'PC' => '예외메뉴 (내강의실)'],
         'mobile' => ['XN' => '모바일LNB', 'YN' => '모바일GNB', 'YM' => '모바일GNB (전체보기)']
     ];
-    private $_mega_type_code = ['professor' => '교수진소개', 'lecture' => '수강신청'];   // 사이트 일반메뉴(전체보기) 상세코드
+    private $_mega_type_code = ['professor' => '교수진소개', 'lecture' => '수강신청', 'sort_mapping' => '전체메뉴(소트매핑)'];   // 사이트 일반메뉴(전체보기) 상세코드
     private $_menu_type_code = array(); // 사이트/모바일 구분별 메뉴타입코드
     private $_front_type = '';  // 사이트/모바일 구분코드
     private $_front_name = '';  // 사이트/모바일 구분명

@@ -183,14 +183,14 @@
         --}}
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
             <map name="evt3Map" id="evt3Map">
-                <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165709" target="_blank" onfocus='this.blur()'  />
+                <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/167719" target="_blank" onfocus='this.blur()'  />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
             <map name="evt4Map" id="evt4Map">
                 <area shape="rect" coords="772,242,928,379" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" onfocus='this.blur()' />
             </map>

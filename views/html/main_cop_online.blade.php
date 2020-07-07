@@ -13,7 +13,7 @@
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
+                <li class="Tit">온라인경찰<span class="row-line">|</span></li>
                 <li class="subTit">일반경찰</li>
             </ul>
             <ul class="menu-List">
@@ -456,82 +456,51 @@
 </div>
 
 <script type="text/javascript">  
-        var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+    //하단이벤트배너 닫기
+    $(function(){        
+        $('.mainBottomBn .btmEvClose').click(function(){
+            $('.mainBottomBn').hide();
+        });
+    });	 
 
-        $(function() {
-        $(".youtubeBox").hide(); 
-        $(".youtubeBox:first").show();
-        $(".youtubetab li a").click(function(){ 
-                var activeTab = $(this).attr("href"); 
-                var html_str = "";
-                if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
-                }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
-                }
-                $(".youtubetab a").removeClass("active"); 
-                $(this).addClass("active"); 
-                $(".youtubeBox").hide(); 
-                $(".youtubeBox").html(''); 
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn(); 
-                return false; 
-                });
-            });	
-
-
-        //하단이벤트배너 닫기
-        $(function(){        
-            $('.mainBottomBn .btmEvClose').click(function(){
-                $('.mainBottomBn').hide();
-            });
-        });	 
-
-        $(document).ready(function() {
-            var collaboslides = $("#collaboslides ul").bxSlider({
-                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:750,
-                pause:3000,
-                pager:false,
-                controls:false,
-                minSlides:1,
-                maxSlides:1, 
-                moveSlides:1,
-            });
-        });  
-
-        //경찰캐스트
-        $(function() {
-        var slidesImg1 = $(".pvslider").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+    $(document).ready(function() {
+        var collaboslides = $("#collaboslides ul").bxSlider({
+            mode:'fade', //option : 'horizontal', 'vertical', 'fade'
             auto:true,
-            speed:350,
-            pause:4000,
-            pager:true,
+            speed:750,
+            pause:3000,
+            pager:false,
             controls:false,
-            minSlides:3,
-            maxSlides:3,
-            slideWidth: 460,
-            slideMargin:10,
-            autoHover: true,
+            minSlides:1,
+            maxSlides:1, 
             moveSlides:1,
-            pager:true,
         });
-        $("#imgBannerLeft1").click(function (){
-            slidesImg1.goToPrevSlide();
-        });
+    });  
 
-        $("#imgBannerRight1").click(function (){
-            slidesImg1.goToNextSlide();
-        });
-    });     
+    //경찰캐스트
+    $(function() {
+    var slidesImg1 = $(".pvslider").bxSlider({
+        mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+        auto:true,
+        speed:350,
+        pause:4000,
+        pager:true,
+        controls:false,
+        minSlides:3,
+        maxSlides:3,
+        slideWidth: 460,
+        slideMargin:10,
+        autoHover: true,
+        moveSlides:1,
+        pager:true,
+    });
+    $("#imgBannerLeft1").click(function (){
+        slidesImg1.goToPrevSlide();
+    });
+
+    $("#imgBannerRight1").click(function (){
+        slidesImg1.goToNextSlide();
+    });
+});     
 </script>
 @stop

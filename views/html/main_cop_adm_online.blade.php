@@ -6,8 +6,8 @@
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">일반경찰</li>
+                <li class="Tit">온라인경찰<span class="row-line">|</span></li>
+                <li class="subTit">경행경채</li>
             </ul>
             <ul class="menu-List">
                 <li>
@@ -54,449 +54,259 @@
         </h3>
     </div>
 
-    <div class="Section MainVisual">
-        <div class="widthAuto">            
-            <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>            
-            <img src="{{ img_url('cop_adm/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">            
-        </div>
-    </div>
-
-    <div class="Section youtubeWrap">
-        <div class="widthAuto smallTit">          
-            <p><span>수험생에게 도움이 되는 <strong>특별한 영상!</strong></span></p>
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop_adm/icon_add_big.png') }}" alt="동영상 더보기"></a>             
-        </div>
-
-        <div class="widthAuto mt80">
-            <div class="youtubetabWrap">
-                <ul class="youtubetab">
-                    <li>
-                        <a href="#tab1" class="active">
-                            2018년 2차 최종합격생 인터뷰
-                            <span>신광은경찰TV</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab2">
-                            신의 법칙! 2주만에 1회독?
-                            <span>신광은경찰TV</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab3">
-                            스타강사가 들려주는 시험 꿀팁!
-                            <span>신광은경찰TV</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab4">
-                            중경입교식! 그 현장을 가다!
-                            <span>신광은경찰TV</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div id="tab1" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-            <div id="tab2" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-            <div id="tab3" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-            <div id="tab4" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-        </div>
-    </div> 
-    <!-- youtubeWrap //-->   
-
-    <div class="Section Flipped">
+    <div class="Section">
         <div class="widthAuto">
-            <ul class="inner">
-                <li class="l1">
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
-                        <img src="{{ img_url('cop_adm/flipped/flipped01.jpg') }}" alt="평생0원PASS"> 
-                    </a>
-                </li>
-                <li class="l2">
-                    <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
-                        <img src="{{ img_url('cop_adm/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
-                    </a>
-                </li>
-                <li class="l3">
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
-                        <img src="{{ img_url('cop_adm/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
-                    </a>
-                </li>
+            <ul class="bnSec01">
+                <li><a href="#collaboslides"><img src="https://static.willbes.net/public/images/promotion/main/3001_315x120_01.jpg" alt="협력기관"></a></li>
+                <li><a href="/"><img src="https://static.willbes.net/public/images/promotion/main/3001_logo.jpg"></a></li>
+                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1393" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/main/3001_315x120_02.jpg" alt="만점자"></a></li>
             </ul>
-            <div class="willbes-Bnr mt60">
-                <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190102_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}"></a></li>
-                </ul>
+        </div>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto bnSecbar01">
+            <div class="slider">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
             </div>
         </div>
     </div>
 
-    <div class="Section Section2 pb110">            
-            <div class="widthAuto curriculumTit">                
-                <img src="{{ img_url('cop_adm/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
-                <a href="#none">신의법칙 자세히 보기 &gt;</a>                
-            </div>
-
-            <div class="widthAuto CurriStepBox">
-                <ul class="CurriStep">
-                    <li class="active">                        
-                        <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop_adm/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>
-                            <div class="Tit">기본과정</div>
-                            <div class="subTit">집중연강식 진행</div>
-                            <ul class="info">
-                                <li>2주마다 개강</li>
-                                <li>형소법 → 경찰학 → 형법 진행
-                                    <br/> (수사, 행정법 영상반 진행)</li>
-                            </ul>                            
-                        </div>
-                        <a href="#none">OT보기 &gt;</a>                      
-                    </li>
-                    <li>&nbsp;</li>
-                    <li>
-                        <div class="curriculumBox">
-                            <div class="Tit">심화과정</div>
-                            <div class="subTit">프리미엄 심화과정</div>
-                            <ul class="info">
-                                <li>이론 재정리</li>
-                                <li>10주 과정</li>
-                            </ul>
-                        </div>
-                        <a href="#none">OT보기 &gt;</a> 
-                    </li>
-                    <li>&nbsp;</li>
-                    <li>
-                        <div class="curriculumBox">
-                            <div class="Tit">3개월 필합 풀패키지</div>
-                            <div class="subTit">핵심요약/진도별 정리</div>
-                            <ul class="info">
-                                <li>5주 단권화</li>
-                                <li>5주 동형모의고사</li>
-                                <li>FINAL 실전 모의고사</li>
-                            </ul>
-                        </div>
-                        <a href="#none">OT보기 &gt;</a> 
-                    </li>
-                </ul>
-                <div class="curriculumTxt">
-                    <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.                    
-                    <span class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">평생 0원 PASS 구매하기</a></span>
-                </div>
-            </div>
-            <!-- CurriStepBox //-->        
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x450.jpg" alt="배너명"></a>
+        </div>
     </div>
 
-    <div class="Section Section3 mt95">
+    <div class="Section HotIssue mt20">
+        <ul class="widthAuto">
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_01.jpg" alt="배너명"></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_02.jpg" alt="배너명"></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_03.jpg" alt="배너명"></a></li>
+        </ul>
+    </div>
+
+    <div class="Section Section5 mt50">
         <div class="widthAuto">
-            <div class="will-big-Tit">
-                <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                <div class="big NSK-Black"><span class="cop-color">오늘도 최선을 다하는</span> 윌비스 신광은 경찰팀</div>
-            </div>
-            <ul class="ProfCopBox mt60 mb100">
-                <li class="sliderHotIssue nSlider pick">
-                    <div class="sliderNum">
-                        <div><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}"></div>
-                        <div><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}"></div>
-                    </div>
-                </li>
-                <li class="sliderHotIssue nSlider pick">
-                    <div class="sliderNum">
-                        <div><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}"></div>
-                        <div><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg') }}"></div>
-                    </div>
+            <div class="will-nTit bd-none">경찰합격 <span class="cop-color">전문교수진</span></div>
+            <ul class="onProfBox">
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_01.jpg" usemap="#MapProp01" title="배너명" border="0">
+                    <map name="MapProp01">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_02.jpg" usemap="#MapProp02" title="배너명" border="0">
+                    <map name="MapProp02">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_03.jpg" usemap="#MapProp03" title="배너명" border="0">
+                    <map name="MapProp03">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_04.jpg" usemap="#MapProp04" title="배너명" border="0">
+                    <map name="MapProp04">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_05.jpg" usemap="#MapProp05" title="배너명" border="0">
+                    <map name="MapProp05">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_06.jpg" usemap="#MapProp06" title="배너명" border="0">
+                    <map name="MapProp06">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>                                       
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_07.jpg" usemap="#MapProp07" title="배너명" border="0">
+                    <map name="MapProp07">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2002_prof_08.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="30,171,135,196" href="#none" alt="맛보기">
+                        <area shape="rect" coords="30,203,136,229" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="Section Section2 mt90 mb90">
-        <div class="widthAuto">  
-            <img src="{{ img_url('cop_adm/visual/visual_03.jpg') }}" alt="합격수기">
-        </div>
-    </div>
-
-    <div class="Section Section3 mt100 pb90">        
+    <div class="Section bnSec02 mt50">
         <div class="widthAuto">
-            <div class="widthAuto smallTit">          
-                <p><span>기출문제와 강의를 한 곳에 <strong>기출강의!</strong></span></p>            
-            </div>
-            <div class="will-big-Tit pt100">
-                <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
-                <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>
-            </div>
-            <div class="SpecialLecBox mt60">
-                <dl>
-                    <dt class="nLec p_re">
-                        <div class="infoBox">
-                            <div class="infoTit">
-                                <div class="small NSK-Thin">경행경채</div>
-                                <div class="big NSK-Black">
-                                    최근 5개년<br/>
-                                    기출문제
-                                </div>
-                                <div class="btn">
-                                    <div class="btn-sbj"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y&topMenuType=O" target="_blank">+ &nbsp; 문제 더 보기</a></div>
-                                    <div class="btn-lec mt5"><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=20032" target="_blank">+ &nbsp; 강의 더 보기</a></div>
-                                </div>
-                            </div>
-                            <div class="infoList">
-                                <ul class="List-Table">
-                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </dt>
-                </dl>
-            </div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_01.jpg" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_02.jpg" title="배너명"></a></li>
+                <li class="sliderbnSec02 nSlider pick">
+                    <div class="sliderNum">
+                        <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_03.jpg"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_04.jpg"></div>
+                    </div>
+                </li>
+                <li class="sliderbnSec02 nSlider pick">
+                    <div class="sliderNum">
+                        <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_04.jpg"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/main/3001_550x150_03.jpg"></div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- 기출강의// -->
     
-    <div class="Section HotIssue pt50 pb50">
+    <div class="Section HotIssue mt80">
         <div class="widthAuto">  
             <div class="widthAuto smallTit">          
                 <p><span>학원 최신 소식을 한 눈에! <strong>학원 Hot Issue</strong></span></p>            
             </div>
         </div>
-        <ul class="widthAuto mt60">
-            <li><a href="#none"><img src="{{ img_url('cop_adm/banner/bnr_onHiA01.jpg') }}" alt="배너명"></a></li>
-            <li><a href="#none"><img src="{{ img_url('cop_adm/banner/bnr_onHiB01.jpg') }}" alt="배너명"></a></li>
+        <ul class="widthAuto mt50">
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_01.jpg" title="배너명"></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_02.jpg" title="배너명"></a></li>
             <li class="sliderHotIssue nSlider pick">
                 <div class="sliderNum">
-                    <div><img src="{{ img_url('cop_adm/banner/bnr_onHiC01.jpg') }}"></div>
-                    <div><img src="{{ img_url('cop_adm/banner/bnr_onHiC01.jpg') }}"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_03.jpg"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/3001_370x140_01.jpg"></div>
                 </div>
             </li>
         </ul>
     </div>
-    <!-- HotIssue //-->    
+    <!-- HotIssue //-->
 
-    <div class="Section Bnr mt40 mb70">
-        <div class="widthAuto">
-            <div class="widthAuto smallTit">          
-                <p><span>신광은경찰 Hot Pick! <strong>온라인특강/이벤트</strong></span></p>            
-            </div>
-            <div class="willbes-Bnr mt60">
-                <ul>
-                    <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180604_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/banner/bnr_190109.jpg') }}"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="Section Section5 mb70">
+    <div class="Section Section5 mt50">
         <div class="widthAuto">
             <div class="sliderPick nSlider pick">
                 <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
                 <div class="pickBox pick1">
-                    <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190101.jpg') }}"></a>
+                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_01.jpg"></a>
                 </div>
                 <div class="pickBox pick2">
-                    <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190102.jpg') }}"></a>
+                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_02.jpg"></a>
                 </div>
             </div>
             <div class="sliderEvt nSlider pick">
-                <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 특강/이벤트</div>
+                <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 무료특강</div>
                 <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/event/evt_190103.jpg') }}"></a></li>
+                    <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x190_03.jpg"></a></li>
+                    {{--
                     <li>
-                        <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190105.jpg') }}" alt="김원욱 형법 1개년 최신기출/판례"></a>
-                        <!--div class="sliderNum">
-                            <div><img src="{{ img_url('cop_adm/event/evt_190104.jpg') }}"></div>
-                            <div><img src="{{ img_url('cop_adm/event/evt_190105.jpg') }}"></div>
-                        </div-->
+                        <div class="sliderNum">
+                            <div><img src="{{ img_url('cop/event/evt_190104.jpg') }}"></div>
+                            <div><img src="{{ img_url('cop/event/evt_190105.jpg') }}"></div>
+                        </div>
                     </li>
+                    --}}
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section Section5 mt50">
+        <div class="widthAuto">
+            <div class="will-nTit bd-none">윌비스 <span class="cop-color">경찰 캐스트</span></div>
+            <div class="preview">
+                <div class="previewBox">
+                    <ul class="pvslider">
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                </div>
             </div>
 
         </div>
     </div>
-    <div class="Section Section6 mb50">
+
+    <div class="Section Section6 mt80">
         <div class="widthAuto">
-            <div class="nNoticeBox two">
-                <div class="recommendLec Lec widthAuto550 f_left p_re">
-                    <div class="will-nlistTit">추천강좌</div>
-                    <div class="nSliderTM graySlider AbsControls">
-                        <div class="sliderNumTM">
-                            <div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_4.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">경찰영어 하승민</div>
-                                            <div class="infoTxt">
-                                                2019 하승민 영어 기본이론 (18년 11월)<br/>
-                                                <span class="small">56강 /80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_3.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">경찰학개론 장정훈</div>
-                                            <div class="infoTxt">
-                                                2018 장정훈 경찰학개론 기본이론 (18년 4월)<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_2.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">한국사 오태진</div>
-                                            <div class="infoTxt">
-                                                2018년 1차대비 오태진 한국사 Final 실전모의고사...<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_1.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">한국사 원유철</div>
-                                            <div class="infoTxt">
-                                                2019 원유철 한국사 기본이론 (근현대사) (18년 9월)<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="newLec Lec widthAuto550 f_right p_re">
-                    <div class="will-nlistTit">신규강좌</div>
-                    <div class="nSliderTM graySlider AbsControls">
-                        <div class="sliderNumTM">
-                            <div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_2.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">한국사 오태진</div>
-                                            <div class="infoTxt">
-                                                2018년 1차대비 오태진<br/>
-                                                한국사 Final 실전모의고사...<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_1.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">한국사 원유철</div>
-                                            <div class="infoTxt">
-                                                2019 원유철 한국사 기본이론<br/>
-                                                (근현대사) (18년 9월)<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_4.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">경찰영어 하승민</div>
-                                            <div class="infoTxt">
-                                                2019 하승민 영어 기본이론<br/>
-                                                (18년 11월)<br/>
-                                                <span class="small">56강 /80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="LecBox">
-                                    <a href="#none">
-                                        <div class="imgBox cover">
-                                            <img class="coverImg" src="{{ img_url('cop_adm/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_3.jpg') }}">
-                                        </div>
-                                        <div class="infoBox">
-                                            <div class="infoTit">경찰학개론 장정훈</div>
-                                            <div class="infoTxt">
-                                                2018 장정훈 경찰학개론<br/>
-                                                기본이론 (18년 4월)<br/>
-                                                <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="nNoticeBox three mt50">
+            <div class="nNoticeBox three">
                 <div class="noticeList widthAuto350 f_left">
-                    <div class="will-nlistTit p_re">공지사항 <a href="https://cop.dev.willbes.net/support/notice/index" target="_blank" class="btn-add"><img src="{{ img_url('cop_adm/icon_add_big.png') }}"></a></div>
+                    <div class="will-nlistTit p_re">공지사항 <a href="https://cop.dev.willbes.net/support/notice/index" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
                     <ul class="List-Table">
-                        <li><a href="#none"><span>[공지] 경찰3과 과목별 만점자를 소개합니다.</span><img src="{{ img_url('cop_adm/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>[공지] 경찰3과 과목별 만점자를 소개합니다.</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
                         <li><a href="#none"><span>하승민 영어 2018년 3차 시험 적중!</span></a><span class="date">2018-09-01</span></li>
                         <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원(순경)채용 공고 입니다.</span></a><span class="date">2018-08-24</span></li>
                         <li><a href="#none"><span>[신규강의 안내] 해양경찰특채 11~12월 동영상 업데이트 안내</span></a><span class="date">2018-08-13</span></li>
                     </ul>
                 </div>
                 <div class="noticeList widthAuto350 f_left ml35">
-                    <div class="will-nlistTit p_re">시험공고 <a href="https://cop.dev.willbes.net/support/examAnnouncement/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop_adm/icon_add_big.png') }}"></a></div>
+                    <div class="will-nlistTit p_re">시험공고 <a href="https://cop.dev.willbes.net/support/examAnnouncement/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
                     <ul class="List-Table">
-                        <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원(순경)채용 필기시험 문제 및 가답안</span><img src="{{ img_url('cop_adm/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원(순경)채용 필기시험 문제 및 가답안</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
                         <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원 채용 필기시험 문제 및 가답안</span></a><span class="date">2018-09-01</span></li>
                         <li><a href="#none"><span>2018년 제3차 경찰공무원 채용시험 원서접수일정 안내입니다.</span></a><span class="date">2018-08-24</span></li>
                         <li><a href="#none"><span>[공지] 2018년 제2차 경찰공무원 채용시험 일정 안내입니다.</span></a><span class="date">2018-08-13</span></li>
                     </ul>
                 </div>
                 <div class="noticeList widthAuto350 f_left ml35">
-                    <div class="will-nlistTit p_re">수험뉴스 <a href="https://cop.dev.willbes.net/support/examNews/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop_adm/icon_add_big.png') }}"></a></div>
+                    <div class="will-nlistTit p_re">수험뉴스 <a href="https://cop.dev.willbes.net/support/examNews/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
                     <ul class="List-Table">
-                        <li><a href="#none"><span>경찰청, 경찰간부후보생 68기 최종합격자 명단 입니다. 확인 바랍니다.</span><img src="{{ img_url('cop_adm/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>경찰청, 경찰간부후보생 68기 최종합격자 명단 입니다. 확인 바랍니다.</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
                         <li><a href="#none"><span>12월 22일, 경찰공무원 합격의 기회가 다가옵니다.</span></a><span class="date">2018-09-01</span></li>
                         <li><a href="#none"><span>제주자치경찰 확대 시험운영 추진</span></a><span class="date">2018-08-24</span></li>
                         <li><a href="#none"><span>순경 3차 '필기시험 대비, 기출 분석으로 철저하게'</span></a><span class="date">2018-08-13</span></li>
@@ -505,7 +315,8 @@
             </div>
         </div>
     </div>
-    <div class="Section Section7 mb100">
+
+    <div class="Section Section7 mt30">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>
@@ -514,25 +325,25 @@
                         <ul>
                             <li>
                                 <a href="#none">
-                                    <img src="{{ img_url('cop_adm/icon_cecenter1.png') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
                                     <div class="nTxt">자주하는<br/>질문</div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#none">
-                                    <img src="{{ img_url('cop_adm/icon_cecenter2.png') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter2.png') }}">
                                     <div class="nTxt">모바일<br/>서비스</div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#none">
-                                    <img src="{{ img_url('cop_adm/icon_cecenter3.png') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
                                     <div class="nTxt">동영상<br/>상담실</div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#none">
-                                    <img src="{{ img_url('cop_adm/icon_cecenter4.png') }}">
+                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
                                     <div class="nTxt">1:1<br/>고객지원</div>
                                 </a>
                             </li>
@@ -561,8 +372,42 @@
                         </ul>
                     </dt>
                 </dl>
+            </div>            
+        </div>
+    </div>
+
+    <div class="Section Section7 mt50 mb50">
+        <div class="widthAuto">
+            <div class="collaborate">
+                <div id="collaboslides">
+                    <ul>
+                        <li>
+                            <a href="https://www.police.go.kr/main.html" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_01.jpg" alt="경찰청"></a>
+                            <a href="http://www.smpa.go.kr/home/homeIndex.do?menuCode=kidonghq" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_02.jpg" alt="서울지방경찰청기동본부"></a>
+                            <a href="http://www.gangdong.ac.kr/Home/Main.mbz" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_03.jpg" alt="강동대학교"></a>
+                            <a href="http://kollabo.kiu.ac.kr/pages/index_mapsi.htm" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_04.jpg" alt="경일대학교"></a>
+                            <a href="http://cover.kimpo.ac.kr/intro/new/index.html" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_05.jpg" alt="김포대학교"></a>
+                            <a href="http://www.jjpolice.go.kr/jjpolice" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_06.jpg" alt="제주지방경찰청"></a>
+                            <a href="https://www.police.ac.kr/police/index.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_07.jpg" alt="경찰대학"></a>
+                            <a href="https://job.kyungnam.ac.kr/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_08.jpg" alt="경남대학교"></a>
+                            <a href="http://ipsi.kmcu.ac.kr/admission/index.htm" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_09.jpg" alt="계명문화대학교"></a>
+                            <a href="http://www.dju.ac.kr/kor/html/main.htm" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_10.jpg" alt="대전대학교"></a>
+                        </li>
+                        <li>
+                            <a href="http://www.seowon.ac.kr/web/kor/home" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_11.jpg" alt="서원대학교"></a>
+                            <a href="http://www.sehan.ac.kr/main/main.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_12.jpg" alt="세한대학교"></a>
+                            <a href="http://www.jbnu.ac.kr/kor/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_13.jpg" alt="전북대학교"></a>
+                            <a href="https://www3.chosun.ac.kr/chosun/index.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_14.jpg" alt="조선대학교"></a>
+                            <a href="https://www.hyundai1990.ac.kr/index/main.asp?re=y" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_15.jpg" alt="특성화학교"></a>
+                            <a href="https://lily.sunmoon.ac.kr/MainDefault.aspx" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_16.jpg" alt="선문대학교"></a>
+                            <a href="http://www.wku.ac.kr/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_17.jpg" alt="원광대학교"></a>
+                            <a href="http://www.jj.ac.kr/jj/index.jsp" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_18.jpg" alt="전주대학교"></a>
+                            <a href="http://www.joongbu.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_19.jpg" alt="중부대학교"></a>
+                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_temp.jpg" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            
         </div>
     </div>
     <div id="QuickMenu" class="MainQuickMenu">
@@ -594,35 +439,30 @@
 <!-- End Container -->
 
 <script type="text/javascript">        
-        var tab1_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+    //경찰캐스트
+    $(function() {
+    var slidesImg1 = $(".pvslider").bxSlider({
+        mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+        auto:true,
+        speed:350,
+        pause:4000,
+        pager:true,
+        controls:false,
+        minSlides:3,
+        maxSlides:3,
+        slideWidth: 460,
+        slideMargin:10,
+        autoHover: true,
+        moveSlides:1,
+        pager:true,
+    });
+    $("#imgBannerLeft1").click(function (){
+        slidesImg1.goToPrevSlide();
+    });
 
-        $(function() {
-        $(".youtubeBox").hide(); 
-        $(".youtubeBox:first").show();
-        $(".youtubetab li a").click(function(){ 
-                var activeTab = $(this).attr("href"); 
-                var html_str = "";
-                if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
-                }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
-                }
-                $(".youtubetab a").removeClass("active"); 
-                $(this).addClass("active"); 
-                $(".youtubeBox").hide(); 
-                $(".youtubeBox").html(''); 
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn(); 
-                return false; 
-                });
-            });		
+    $("#imgBannerRight1").click(function (){
+        slidesImg1.goToNextSlide();
+    });	
 </script>
 
 @stop

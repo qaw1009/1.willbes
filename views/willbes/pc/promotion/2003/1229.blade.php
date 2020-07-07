@@ -10,22 +10,23 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_cts01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1229_top_bg.jpg") center top  no-repeat; margin-top:5px;}
+        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2020/07/1229_top_bg.jpg") center top  no-repeat;}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#d7d7d7}
         .wb_cts04 {background:#141319; padding-bottom:100px}
-		.wb_cts05 {background:#e1e1e1 url("https://static.willbes.net/public/images/promotion/2019/05/1229_04_bg.jpg") center top  no-repeat;}
-		.wb_cts06 {background:#c12525}
+		.wb_cts05 {}
+		.wb_cts06 {background:#eee}
+		.wb_cts07 {padding:100px 0}
+
 		
 		/*TAB*/
         .tabWrapEvt{width:980px; margin:0 auto}
@@ -48,92 +49,103 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 	  
-	  <div class="evtCtnsBox wb_cts01">
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_top.png" usemap="#Map_1229_lec"  title="G-TELP서민지" border="0"/>
-		<map name="Map_1229_lec">
-		<area shape="rect" coords="142,946,647,1033" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153255" target="_blank" alt="수강신청">
-		</map>
-	  </div>
-	  <!--wb_cts01//-->
+		<div class="evtCtnsBox wb_cts01">
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_top.jpg" usemap="#Map_1229_lec"  title="G-TELP서민지" border="0"/>
+			<map name="Map_1229_lec">
+				<area shape="rect" coords="203,952,708,1039" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153255" target="_blank" alt="수강신청">
+			</map>
+		</div>
+	  	<!--wb_cts01//-->
 	  
-	  <div class="evtCtnsBox wb_cts02">
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_01.jpg"  title="G-TELP국제공인영어시험"/>
-	  </div>
-	  <!--wb_cts02//-->
+		<div class="evtCtnsBox wb_cts02">
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_01.jpg"  title="G-TELP국제공인영어시험"/>
+		</div>
+		<!--wb_cts02//-->
 	  
-	  <div class="evtCtnsBox wb_cts03">
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_02.jpg" alt="G-TELP서민지약력"/>
-	  </div>
-	  <!--wb_cts03//-->
+		<div class="evtCtnsBox wb_cts03">
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_02.jpg" alt="G-TELP서민지약력"/>
+		</div>
+		<!--wb_cts03//-->
 	  
 	  <div class="evtCtnsBox wb_cts04">
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03.jpg"  title="G-TELP모든것"/>
+		<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03.jpg"  title="G-TELP모든것"/>
 		
-		<!--tab-->
-		<ul class="tabWrapEvt">
-		  <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t1.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t1_on.png" alt="" class="on"/></a></li>
-		  <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t2.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t2_on.png" alt="" class="on"/></a></li>
-		  <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t3.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t3_on.png" alt="" class="on"/></a></li>
-		</ul>
-		<div id="tab1" class="tabcts">
-			<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_03_t_c1.png" alt=""/>
-			<iframe src="https://www.youtube.com/embed/afYUa3Al1Vo?rel=0" frameborder="0" allowfullscreen></iframe>
-		</div>
-		<div id="tab2" class="tabcts">			
-		</div>
-		<div id="tab3" class="tabcts">			
-		</div>
-		<!--tab//--> 
+			<!--tab-->
+			<ul class="tabWrapEvt">
+				<li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t1.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t1_on.png" alt="" class="on"/></a></li>
+				<li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t2.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t2_on.png" alt="" class="on"/></a></li>
+				<li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t3.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t3_on.png" alt="" class="on"/></a></li>
+			</ul>
+			<div id="tab1" class="tabcts">
+				<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_03_t_c1.png" alt=""/>
+				<iframe src="https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div id="tab2" class="tabcts">			
+			</div>
+			<div id="tab3" class="tabcts">			
+			</div>
+			<!--tab//--> 
 
 	  </div>
 	  <!--wb_cts04//-->
 	  
-	  <div class="evtCtnsBox wb_cts05">
-		 <img src="https://static.willbes.net/public/images/promotion/2019/05/1229_04.png" usemap="#Map_1229_book"  title="교재구매하기" border="0"/>
-		 <map name="Map_1229_book">
-		    <area shape="rect" coords="253,773,854,873" href="https://pass.willbes.net/book/index/cate/3024?cate_code=3024&subject_idx=1177" target="_blank" alt="교재구매하기">
-		 </map>
-	  </div>
-	  <!--wb_cts05//-->
+		<div class="evtCtnsBox wb_cts05">
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_04.png" usemap="#Map_1229_book"  title="교재구매하기" border="0"/>
+			<map name="Map_1229_book">
+				<area shape="rect" coords="253,773,854,873" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재구매하기">
+			</map>
+		</div>
+		<!--wb_cts05//-->
 	  
-	  <div class="evtCtnsBox wb_cts06">
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1229_05.jpg" usemap="#Map_1229_lec2"  title="수강신청" border="0"/>
-		<map name="Map_1229_lec2">
-		  <area shape="rect" coords="118,711,695,799" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153255" target="_blank" alt="수강신청">
-		</map>
-	  </div>
-	  <!--wb_cts06//--> 
+		<div class="evtCtnsBox wb_cts06">
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_05.jpg" usemap="#Map_1229_lec2"  title="수강신청" border="0"/>
+			<map name="Map_1229_lec2">
+			<area shape="rect" coords="118,711,695,799" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153255" target="_blank" alt="수강신청">
+			</map>
+		</div>
+		<!--wb_cts06//--> 
+
+		@if(empty($arr_base['display_product_data']) === false)
+			@include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+		@else
+		@endif
+
+		<div class="evtCtnsBox wb_cts07">
+			<a href="https://lang.willbes.net/package/show/cate/3093/pack/648001/prod-code/168104" target="_blank">
+				<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_06.jpg" title="수강신청">
+			</a>
+		</div>
 	  
 	</div>
 	<!-- End Container -->
 
 	<script type="text/javascript">
-			var tab1_url = "https://www.youtube.com/embed/afYUa3Al1Vo?rel=0";
-			var tab2_url = "https://www.youtube.com/embed/Fb9xMNurYac?rel=0";
-			var tab3_url = "https://www.youtube.com/embed/GDz8dCWTw1w?rel=0";
+		var tab1_url = "https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/7cTjv9t9I9U?rel=0";
+		var tab3_url = "https://www.youtube.com/embed/4lnzF1RLG88?rel=0";
 
-			$(document).ready(function(){
+		$(document).ready(function(){
+		$(".tabcts").hide(); 
+		$(".tabcts:first").show();
+		$(".tabWrapEvt li a").click(function(){ 
+			var activeTab = $(this).attr("href"); 
+			var html_str = "";
+			if(activeTab == "#tab1"){
+				html_str = "<img src='https://static.willbes.net/public/images/promotion/2020/07/1229_03_t_c1.png' alt=''/> <iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+			}else if(activeTab == "#tab2"){
+				html_str = "<img src='https://static.willbes.net/public/images/promotion/2020/07/1229_03_t_c2.png' alt=''/> <iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+			}else if(activeTab == "#tab3"){
+				html_str = "<img src='https://static.willbes.net/public/images/promotion/2020/07/1229_03_t_c3.png' alt=''/> <iframe src='"+tab3_url+"' allowfullscreen></iframe>";
+			}
+			$(".tabWrapEvt li a").removeClass("active"); 
+			$(this).addClass("active"); 
 			$(".tabcts").hide(); 
-			$(".tabcts:first").show();
-			$(".tabWrapEvt li a").click(function(){ 
-					var activeTab = $(this).attr("href"); 
-					var html_str = "";
-					if(activeTab == "#tab1"){
-                        html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/05/1229_03_t_c1.png' alt=''/> <iframe src='"+tab1_url+"' allowfullscreen></iframe>";
-					}else if(activeTab == "#tab2"){
-						html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/05/1229_03_t_c2.png' alt=''/> <iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
-                    }else if(activeTab == "#tab3"){
-						html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/05/1229_03_t_c3.png' alt=''/> <iframe src='"+tab3_url+"' allowfullscreen></iframe>";
-					}
-					$(".tabWrapEvt li a").removeClass("active"); 
-					$(this).addClass("active"); 
-					$(".tabcts").hide(); 
-					$(".tabcts").html(''); 
-					$(activeTab).html(html_str);
-					$(activeTab).fadeIn(); 
-					return false; 
-					});
-				});
+			$(".tabcts").html(''); 
+			$(activeTab).html(html_str);
+			$(activeTab).fadeIn(); 
+			return false; 
+			});
+		});
 	</script>
 
 @stop

@@ -54,41 +54,11 @@
                     <div class="widthAuto">
                         <div class="will-nTit bd-none">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
                         <ul class="ProfCopBox mt20 mb100">
+                        @for($i=1; $i<=5; $i++)
                             <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ske.jpg" alt="신광은">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">교수소개</a></li>
-                                </ul>
+                                {!! banner_html(element('메인_승진교수'.$i, $data['arr_main_banner'])) !!}
                             </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_kwu.jpg" alt="김원욱">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}">교수소개</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh.jpg" alt="장정훈">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh.jpg" alt="송광호">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50115/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
-                                </ul>
-                            </li>                            
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ohw.jpg" alt="오현웅">
-                                <ul class="ProfBtns">
-                                    <li><a href="#none" onclick="alert('준비중입니다.');">▶</a></li>
-                                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50997/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}">교수소개</a></li>
-                                </ul>
-                            </li>
+                        @endfor
                         </ul>
                     </div>
                 </div>

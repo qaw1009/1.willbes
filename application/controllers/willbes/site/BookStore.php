@@ -49,7 +49,7 @@ class BookStore extends \app\controllers\FrontController
         $arr_base['cate_code_d2'] = strlen($cate_code) > 4 ? $cate_code : '';
 
         // 대분류 카테고리 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
-        $arr_base['category_d1'] = $this->categoryFModel->listSiteCategory($this->_site_code, 1, ['NOT' => ['CateCode' => '3132']]);
+        $arr_base['category_d1'] = $this->categoryFModel->listSiteCategory($this->_site_code, 1, ['EQ' => ['IsDisp' => 'Y']]);
 
         // 중분류 카테고리 조회
         if (empty($arr_base['cate_code_d1']) === false) {

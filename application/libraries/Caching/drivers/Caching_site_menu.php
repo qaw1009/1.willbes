@@ -187,8 +187,8 @@ class Caching_site_menu extends CI_Driver
                 where SC.SiteCode = ?
                     and SC.IsUse = "Y"
                     and SC.IsFrontUse = "Y"
+                    and SC.IsDisp = "Y"                    
                     and SC.IsStatus = "Y"
-                    and SC.CateCode != "3132"
             ) as U
             order by GroupOrderNum asc, OrderNum asc   
         ';

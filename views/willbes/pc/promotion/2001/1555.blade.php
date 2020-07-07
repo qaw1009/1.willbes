@@ -196,7 +196,7 @@
                 <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             @endif
             <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky01.png" title="면접캠프"></a></li>
-            <li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>
+            {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   
 
         <div class="evtCtnsBox evt_counter">

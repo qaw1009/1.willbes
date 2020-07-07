@@ -52,7 +52,7 @@
 		<div class="evtCtnsBox wb_cts01">
 			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_top.jpg" usemap="#Map_1229_lec"  title="G-TELP서민지" border="0"/>
 			<map name="Map_1229_lec">
-				<area shape="rect" coords="203,952,708,1039" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153255" target="_blank" alt="수강신청">
+				<area shape="rect" coords="203,952,708,1039" href="#buylec" alt="수강신청">
 			</map>
 		</div>
 	  	<!--wb_cts01//-->
@@ -90,7 +90,7 @@
 	  <!--wb_cts04//-->
 	  
 		<div class="evtCtnsBox wb_cts05">
-			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_04.png" usemap="#Map_1229_book"  title="교재구매하기" border="0"/>
+			<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_04.jpg" usemap="#Map_1229_book"  title="교재구매하기" border="0"/>
 			<map name="Map_1229_book">
 				<area shape="rect" coords="253,773,854,873" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재구매하기">
 			</map>
@@ -104,7 +104,8 @@
 			</map>
 		</div>
 		<!--wb_cts06//--> 
-
+		
+		<div id="buylec"></div>
 		@if(empty($arr_base['display_product_data']) === false)
 			@include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
 		@else

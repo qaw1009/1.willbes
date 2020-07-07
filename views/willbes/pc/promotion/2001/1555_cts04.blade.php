@@ -1,5 +1,5 @@
     <style type="text/css">  
-        .cts04_top {background:url(https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_top_bg.jpg) no-repeat center top;}
+        .cts04_top {background:#1A67FF url(https://static.willbes.net/public/images/promotion/2020/07/1555_cts04_top_bg.jpg) no-repeat center top;}
         .cts04_top ul {
             position:absolute; top:915px; left:50%; width:890px; margin-left:-445px;
         }
@@ -13,7 +13,7 @@
         .cts04_top li a:hover span {color:#0f0704}
         .cts04_top li a:hover {background:#fdda80; color:#0f0704}
 
-        .cts04_01 {background:#ffe040;} 
+        .cts04_01 {background:#EBEBEB;} 
         .cts04_02 {background:#555}
         .cts04_03 {background:#484c57 url(https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_03_bg.jpg) no-repeat center top;} 
         .cts04_04 {background:#fffcdf}
@@ -22,20 +22,16 @@
         .cts04_07 {background:#fff}
         .cts04_08 {background:#e9e7e8}
 
-        .cts04_talkshow{background:url(https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_talkshow_bg.jpg) no-repeat center top;}
     </style>
     <div>
-        <div class="evtCtnsBox cts04_talkshow">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_talkshow.jpg" alt="신광은 토크쇼">
-        </div>
         <div class="evtCtnsBox cts04_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_top.jpg" alt="3법 면접 무료특강">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1555_cts04_top.jpg" alt="3법 면접 무료특강">
         </div>
         <div class="evtCtnsBox cts04_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_01.jpg" alt="면접합격 스테이션">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1555_cts04_01.jpg" alt="면접합격 스테이션">
         </div>
         <div class="evtCtnsBox cts04_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_02.jpg" alt="유의사항">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1555_cts04_02.jpg" alt="유의사항">
         </div>
         {{--
         <div class="evtCtnsBox cts04_top">             

@@ -170,6 +170,12 @@
                     </map>
                 </li>
                 <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk2.jpg" alt="박상규" usemap="#Map220E" border="0">
+                    <map name="Map220E">
+                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
+                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
+                    </map>
+                    {{--
                     <div class="slider">
                         <div>
                             <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk2.jpg" alt="박상규" usemap="#Map220E" border="0">
@@ -186,6 +192,7 @@
                             </map>
                         </div>
                     </div>
+                    --}}
                 </li>
             </ul>
         </div>

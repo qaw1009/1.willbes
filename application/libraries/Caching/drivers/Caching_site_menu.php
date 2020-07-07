@@ -172,7 +172,7 @@ class Caching_site_menu extends CI_Driver
         ];
         $base_url = array_get(explode('?', $base_url), '0', $base_url);     // 쿼리스트링 제거
 
-        // 카테고리 정보 조회
+        // 카테고리 정보 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
         $column = 'CateCode, CateName, CateRouteIdx, CateRouteName';
         $from = '
             from (
@@ -187,12 +187,13 @@ class Caching_site_menu extends CI_Driver
                 where SC.SiteCode = ?
                     and SC.IsUse = "Y"
                     and SC.IsFrontUse = "Y"
+                    and SC.IsDisp = "Y"                    
                     and SC.IsStatus = "Y"
             ) as U
             order by GroupOrderNum asc, OrderNum asc   
         ';
 
-        $category_data = $this->_db->query('select ' . $column . $from, $site_code)->result_array();
+        $category_data = $this->_db->query('select ' . $column . $from, [$site_code])->result_array();
 
         // 카테고리별 과목 맵핑 데이터 조회
         $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
@@ -209,7 +210,7 @@ class Caching_site_menu extends CI_Driver
             order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc        
         ';
 
-        $subject_data = $this->_db->query('select ' . $column . $from, $site_code)->result_array();
+        $subject_data = $this->_db->query('select ' . $column . $from, [$site_code])->result_array();
         $subject_data = array_data_pluck($subject_data, 'SubjectName', ['CateCode', 'SubjectIdx']);     // [CateCode => [SubjectIdx => SubjectName]] 형태로 가공
 
         // 카테고리와 과목 맵핑 데이터 병합

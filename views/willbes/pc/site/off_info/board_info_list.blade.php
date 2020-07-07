@@ -15,12 +15,12 @@
                 @endforeach
 
             <div class="willbes-AcadInfo c_both">
-                <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
+                {{--<div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                     · {{$bm_title}}
-                </div>
-                <div class="Acad_info mt30">
+                </div>--}}
+                <div class="Acad_info">
                     @if($tab_menu === true)
-                    <ul class="tabMock four mb60">
+                    <ul class="tabMock four mb30">
                         <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/80?') }}@if(empty(element('s_cate_code', $arr_input)) === false){{'s_cate_code='.element('s_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('on_off_link_cate_code', $arr_input)) === false){{'&on_off_link_cate_code='.element('on_off_link_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('s_cate_code_disabled', $arr_input)) === false){{'&s_cate_code_disabled='.element('s_cate_code_disabled', $arr_input)}}@endif">강의시간표</a></li>
                         <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/82?') }}@if(empty(element('s_cate_code', $arr_input)) === false){{'s_cate_code='.element('s_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('on_off_link_cate_code', $arr_input)) === false){{'&on_off_link_cate_code='.element('on_off_link_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('s_cate_code_disabled', $arr_input)) === false){{'&s_cate_code_disabled='.element('s_cate_code_disabled', $arr_input)}}@endif">강의실배정표</a></li>
                         <li><a @if($bm_idx=='109')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/109?') }}@if(empty(element('s_cate_code', $arr_input)) === false){{'s_cate_code='.element('s_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('on_off_link_cate_code', $arr_input)) === false){{'&on_off_link_cate_code='.element('on_off_link_cate_code', $arr_input)}}@endif{{----}}@if(empty(element('s_cate_code_disabled', $arr_input)) === false){{'&s_cate_code_disabled='.element('s_cate_code_disabled', $arr_input)}}@endif">강의계획서</a></li>

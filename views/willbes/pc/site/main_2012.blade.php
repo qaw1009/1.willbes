@@ -227,7 +227,7 @@
                                     @foreach($data['notice'] as $row)
                                         <li>
                                             <a href="{{ front_url('/support/notice/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
-                                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
                                             <span class="date">{{$row['RegDatm']}}</span>
@@ -244,13 +244,13 @@
                         <div class="tabContent p_re">
                             <a href="{{ front_url('/support/examNews/index?s_cate_code_disabled=Y') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                             <ul class="List-Table">
-                                @if(empty($data['notice']) === true)
+                                @if(empty($data['exam_news']) === true)
                                     <li><span>등록된 내용이 없습니다.</span></li>
                                 @else
                                     @foreach($data['exam_news'] as $row)
                                         <li>
                                             <a href="{{ front_url('/support/examNews/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
-                                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
                                             <span class="date">{{$row['RegDatm']}}</span>
@@ -262,16 +262,24 @@
                     </div>
                 </div>
                 <div class="noticeTabs mr-zero">
-                    <div class="will-listTit">정오록/추록</div>
+                    <div class="will-listTit">정오표/추록</div>
                     <div class="tabBox noticeBox">
                         <div class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                            <a href="{{ front_url('/support/examErrata/index?s_cate_code_disabled=Y') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                             <ul class="List-Table">
-                                <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                                @if(empty($data['exam_errata']) === true)
+                                    <li><span>등록된 내용이 없습니다.</span></li>
+                                @else
+                                    @foreach($data['exam_errata'] as $row)
+                                        <li>
+                                            <a href="{{ front_url('/support/examErrata/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
+                                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
+                                                @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
+                                            </a>
+                                            <span class="date">{{$row['RegDatm']}}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -306,13 +314,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ front_url('/support/qna/index?s_cate_code_disabled=Y') }}">
+                                    <a href="{{ front_url('/support/qna/index?s_cate_code=3132&s_cate_code_disabled=Y') }}">
                                         <img src="{{ img_url('cop/icon_cecenter4.png') }}">
                                         <div class="nTxt">1:1상담</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#none">
+                                    <a href="{{ front_url('/support/partnerQna/index?s_cate_code=3132&s_cate_code_disabled=Y') }}">
                                         <img src="{{ img_url('cop/icon_cecenter5.png') }}">
                                         <div class="nTxt">제휴문의</div>
                                     </a>

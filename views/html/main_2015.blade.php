@@ -24,7 +24,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#none">수강신청</a>
-                    <div class="drop-Box list-drop-Box list-drop-Box2">
+                    <div class="drop-Box list-drop-Box list-drop-Box-ic">
                         <ul>
                             <li class="Tit">9급 공무원</li>
                             <li>

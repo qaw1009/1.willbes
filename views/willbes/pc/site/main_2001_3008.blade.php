@@ -165,6 +165,7 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
+                                        <li><p><span>[2020년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=283615') }}" target="_blank">바로가기 ></a></span></li>   
                                         <li><p><span>[2019년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=258432') }}" target="_blank">바로가기 ></a></span></li>    
                                         <li><p><span>[2019년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=229416') }}" target="_blank">바로가기 ></a></span></li>    
                                         <li><p><span>[2018년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=162332') }}" target="_blank">바로가기 ></a></span></li>                     

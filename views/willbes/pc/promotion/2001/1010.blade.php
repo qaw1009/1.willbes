@@ -201,6 +201,11 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
+                            <td>2020년 1차</td>
+                            <td>해양경찰(순경) 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3007?board_idx=283615&" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
                             <td>2019년 3차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
                             <td><a href="https://police.willbes.net/support/examQuestion/show/cate/?board_idx=258432&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>

@@ -17,15 +17,19 @@ class CategoryFModel extends WB_Model
      * 사이트 카테고리 조회 (기본값으로 대분류만 조회)
      * @param int $site_code
      * @param int $cate_depth
-     * @param null|int $parent_cate_code
+     * @param null|array $add_condition
      * @return array
      */
-    public function listSiteCategory($site_code, $cate_depth = 1, $parent_cate_code = null)
+    public function listSiteCategory($site_code, $cate_depth = 1, $add_condition = null)
     {
         $arr_condition = [
-            'EQ' => ['SiteCode' => $site_code, 'ParentCateCode' => $parent_cate_code, 'IsUse' => 'Y', 'IsStatus' => 'Y', 'IsFrontUse' => 'Y'],
+            'EQ' => ['SiteCode' => $site_code, 'IsUse' => 'Y', 'IsStatus' => 'Y', 'IsFrontUse' => 'Y'],
             'LTE' => ['CateDepth' => $cate_depth]
         ];
+
+        if (empty($add_condition) === false) {
+            $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+        }
 
         return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth, IsDefault, OnOffLinkCateCode',
             $arr_condition, null, null, ['CateDepth' => 'asc', 'OrderNum' => 'asc']);

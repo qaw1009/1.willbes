@@ -24,9 +24,8 @@ class SupportExamNews extends BaseSupport
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
+
         $s_keyword = element('s_keyword', $arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
         $view_type = element('view_type', $arr_input);
         $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
@@ -43,8 +42,6 @@ class SupportExamNews extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
                 'b.SiteCode' => $this->_site_code,
-                'b.ProfIdx' => $prof_idx,
-                'b.SubjectIdx' => $subject_idx
             ],
             'ORG' => [
                 'LKB' => [
@@ -69,11 +66,11 @@ class SupportExamNews extends BaseSupport
 
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, $cate_code);
+        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
         $paging = $this->pagination($this->_default_path.'/examNews/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoard(false,$arr_condition, $cate_code, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

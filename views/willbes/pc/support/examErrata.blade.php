@@ -17,16 +17,17 @@
             <div class="willbes-Lec-Selected tx-gray mt0">
                 <div class="f_left">
                     @if(empty($arr_base['category']) === false)
-                    <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
-                    <option value="">카테고리</option>
-                    @foreach($arr_base['category'] as $row)
-                    <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
-                    @php if(element('s_cate_code', $arr_input) == $row['CateCode']) $temp_s_cate_code = $row['CateCode']; @endphp
-                    @endforeach
-                    </select>
-                    @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y')
-                    <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
-                    @endif
+                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
+                            <option value="">카테고리</option>
+                            @php $temp_s_cate_code = ''; @endphp
+                            @foreach($arr_base['category'] as $row)
+                            <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                            @php if(element('s_cate_code', $arr_input) == $row['CateCode']) $temp_s_cate_code = $row['CateCode']; @endphp
+                        @endforeach
+                        </select>
+                        @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y')
+                            <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
+                        @endif
                     @endif
                 </div>
                 <div class="willbes-Lec-Search GM f_left mg0">
@@ -70,7 +71,7 @@
                             <tr>
                                 <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                 <td class="w-list tx-left pl20">
-                                    <a href="{{front_url($default_path.'/examErrata/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                    <a href="{{front_url($default_path.'/examErrata/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                         @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                     </a>
                                 </td>

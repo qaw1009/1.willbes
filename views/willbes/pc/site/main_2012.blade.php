@@ -227,7 +227,7 @@
                                     @foreach($data['notice'] as $row)
                                         <li>
                                             <a href="{{ front_url('/support/notice/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
-                                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
                                             <span class="date">{{$row['RegDatm']}}</span>
@@ -250,7 +250,7 @@
                                     @foreach($data['exam_news'] as $row)
                                         <li>
                                             <a href="{{ front_url('/support/examNews/show?board_idx=' . $row['BoardIdx'] . '&s_cate_code_disabled=Y') }}">
-                                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                             </a>
                                             <span class="date">{{$row['RegDatm']}}</span>
@@ -320,7 +320,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#none">
+                                    <a href="{{ front_url('/support/partnerQna/index?s_cate_code=3132&s_cate_code_disabled=Y') }}">
                                         <img src="{{ img_url('cop/icon_cecenter5.png') }}">
                                         <div class="nTxt">제휴문의</div>
                                     </a>

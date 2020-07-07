@@ -1120,6 +1120,16 @@ class OrderListModel extends BaseOrderModel
             // 주문정보 추출
             $data = element('0', $data);
             $data['ViewType'] = 'H';
+        } elseif ($site_code == '2015') {
+            // 인천학원
+            // 주문상품 조회
+            $data = $this->getPrintCertBaseOrderData($order_idx);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+
+            // 주문정보 추출
+            $data = element('0', $data);
         } else {
             return '일치하는 사이트코드가 없습니다.';
         }
@@ -1131,13 +1141,13 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * 학원수강증 출력용 주문 데이터 조회 (고등고시/자격증/경찰간부 전용)
+     * 학원수강증 출력용 주문 데이터 조회 (고등고시/자격증/경찰간부/인천학원 전용)
      * @param int $order_idx [주문식별자]
      * @return mixed
      */
     public function getPrintCertBaseOrderData($order_idx)
     {
-        $column = 'O.OrderNo, OOI.CertNo, M.MemId, M.MemName, P.ProdName
+        $column = 'O.OrderNo, OOI.CertNo, O.RealPayPrice, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone, P.ProdName
             , (case PL.LearnPatternCcd 
                 when "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "N"
                 when "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "Y"

@@ -967,9 +967,59 @@
         </div>
     @elseif($__cfg['SiteCode'] == '2015')
         {{-- 인천학원 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gp2">
+        <div class="drop-Box list-drop-Box list-drop-Box2">
+            <ul>
+                <li class="Tit">9급 공무원</li>
+                <li>
+                    <span>종합반</span>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1302')}}">ALL PASS</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1305')}}">특강</a>
+                </li>
+                <li>
+                    <span>단과</span>
+                    <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1305')}}">특강</a>
+                </li>
+                <li class="Tit">경찰 공무원</li>
+                <li>
+                    <span>종합반</span>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1302')}}">ALL PASS</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1305')}}">특강</a>
+                </li>
+                <li>
+                    <span>단과</span>
+                    <a href="{{front_url('/offLecture/index?cate_code=3125&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3125&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3125&course_idx=1305')}}">특강</a>
+                </li>
+                <li class="Tit">소방 공무원</li>
+                <li>
+                    <span>종합반</span>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1302')}}">ALL PASS</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1305')}}">특강</a>
+                </li>
+                <li>
+                    <span>단과</span>
+                    <a href="#none">이론관정</a>
+                    <a href="#none">문제풀이</a>
+                    <a href="#none">특강</a>
+                </li>
+            </ul>
+        </div>
+        {{--
+        <div class="drop-Box list-drop-Box list-drop-Box2">
             <div class="lec-drop-Box-gosi">
-                <h5>9급공무원</h5>
+                <h5>9급</h5>
                 <ul>
                     <li>
                         <strong>종합반</strong>
@@ -981,14 +1031,15 @@
                     </li>
                     <li>
                         <strong>단과</strong>
-                        <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1303')}}">이론과정</a>
-                        <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1304')}}">문제풀이</a>
-                        <a href="{{front_url('/offLecture/index?cate_code=3124&course_idx=1305')}}">특강</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1303')}}">이론과정</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1304')}}">문제풀이</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1305')}}">특강</a>
                     </li>
                 </ul>
             </div>
+            
             <div class="lec-drop-Box-gosi">
-                <h5>경찰공무원</h5>
+                <h5>경찰</h5>
                 <ul>
                     <li>
                         <strong>종합반</strong>
@@ -1007,7 +1058,7 @@
                 </ul>
             </div>
             <div class="lec-drop-Box-gosi">
-                <h5>소방공무원</h5>
+                <h5>소방직</h5>
                 <ul>
                     <li>
                         <strong>종합반</strong>
@@ -1025,6 +1076,8 @@
                     </li>
                 </ul>
             </div>
+            
         </div>
+        --}}
     @endif
 @endsection

@@ -21,7 +21,7 @@
         width: 420px;
         padding: 20px;
         text-align: left;
-        z-index: 9999;
+        z-index: 100;
 }
 .incheon .list-drop-Box2 .Tit {margin-top:10px !important}
 .incheon .list-drop-Box2 li:first-child {margin:0 !important}

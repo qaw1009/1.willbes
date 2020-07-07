@@ -19,7 +19,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; background:#000 url("https://static.willbes.net/public/images/promotion/2020/07/1229_top_bg.jpg") center top  no-repeat; margin-top:5px;}
+        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2020/07/1229_top_bg.jpg") center top  no-repeat;}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#d7d7d7}
         .wb_cts04 {background:#141319; padding-bottom:100px}

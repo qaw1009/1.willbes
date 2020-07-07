@@ -61,7 +61,7 @@
                                                                         <td width="100" height="10" align="center" class="title2-text"><!-- Document Start -->
                                                                             <p> &nbsp;수 강 No </p>
                                                                             <!-- Document End --></td>
-                                                                        <td width="200" height="30" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['OrderNo'] }}</td>
+                                                                        <td width="200" height="30" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['CertNo'] }}</td>
                                                                         <td width="100" align="center" class="title2-text">직렬분류</td>
                                                                         <td width="200" height="0" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['LgCateName'] }}</td>
                                                                     </tr>
@@ -205,7 +205,7 @@
                                                                         <td width="100" height="10" align="center" class="title2-text"><!-- Document Start -->
                                                                             <p> &nbsp;수 강 No </p>
                                                                             <!-- Document End --></td>
-                                                                        <td width="200" height="30" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['OrderNo'] }}</td>
+                                                                        <td width="200" height="30" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['CertNo'] }}</td>
                                                                         <td width="100" align="center" class="title2-text">직렬분류</td>
                                                                         <td width="200" height="0" bgcolor="#FFFFFF" class="basic_text">&nbsp;{{ $data['LgCateName'] }}</td>
                                                                     </tr>

@@ -407,6 +407,7 @@ class Home extends \app\controllers\FrontController
             $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
             $data['notice'] = $this->_boardNotice(5);
             $data['exam_news'] = $this->_boardExamNews(5);
+            $data['exam_errata'] = $this->_boardExamErrata(5);
         }
 
         return $data;
@@ -448,6 +449,35 @@ class Home extends \app\controllers\FrontController
         $data['arr_main_banner'] = array_merge($this->_banner($cate_code), $this->_banner('0'));
         $data['notice'] = $this->_boardNotice(4, $cate_code);
         return $data;
+    }
+
+    /**
+     * 인천학원[학원] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2015Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        if (APP_DEVICE == 'pc') {
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice'] = $this->_boardNotice(5, null, ['605005']);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+        }
+        return $data;
+    }
+
+    /**
+     * 인천학원[온라인] 메인페이지 없음
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array
+     */
+    private function _getSite2016Data($cate_code = '', $arr_campus = [])
+    {
+        redirect(front_url('/pass/home/index'));
     }
 
     /**
@@ -791,6 +821,21 @@ class Home extends \app\controllers\FrontController
     private function _getMappingCateCode($cate_code)
     {
         return $this->categoryFModel->getMappingCateCode($cate_code);
+    }
+
+    /**
+     * 정오표/추록 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _boardExamErrata($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 114, 'b.IsUse' => 'Y']];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

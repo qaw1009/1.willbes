@@ -26,7 +26,7 @@
 
         .evtTop00 {background:#404040}
 
-        .wb_top {background:#0055b8;}
+        .wb_top {background:#EF518E url(https://static.willbes.net/public/images/promotion/2020/07/1661_top_bg.jpg) no-repeat center top;}
 
         /*타이머*/
         .newTopDday * {font-size:24px}
@@ -52,8 +52,8 @@
 
         <ul class="sky">
             <li>
-                <a href="#inform">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_sky.png" alt="">
+                <a href="#none;">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_sky.png" alt="">
                 </a>
             </li>
         </ul>
@@ -89,9 +89,9 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_top.jpg"  alt="윌비스 광은팩" usemap="#Map1661a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_top.jpg"  alt="윌비스 광은팩" usemap="#Map1661a" border="0" />
             <map name="Map1661a" id="Map1661a">
-                <area shape="rect" coords="291,1383,830,1504" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
+                <area shape="rect" coords="264,1387,856,1506" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
             </map>
         </div>
 
@@ -100,22 +100,11 @@
         </div>
 
         <div class="evtCtnsBox wb_evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_02.jpg"  alt="쿠폰" usemap="#Map1661b" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_02.jpg"  alt="쿠폰" usemap="#Map1661b" border="0">
             <map name="Map1661b" id="Map1661b">
-                <area shape="rect" coords="287,1766,830,1886" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
+                <area shape="rect" coords="260,2133,858,2252" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
             </map>
         </div>
-
-        <div class="evtCtnsBox wb_evt03" id="inform">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_03.jpg"  alt="소문내기 이벤트" usemap="#Map1661c" border="0" />
-            <map name="Map1661c" id="Map1661c">
-                <area shape="rect" coords="350,1134,805,1205" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-            </map> 
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif
-        </div>       
 
         <div class="evtCtnsBox wb_evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1661_04.jpg"  alt="자세히 보기" usemap="#Map1661d" border="0" />

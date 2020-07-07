@@ -27,6 +27,9 @@ class PrintCert extends \app\controllers\BaseController
                 $order_prod_idx = $this->_reqG('order_prod_idx');
                 $site_code = $this->_reqG('site_code');
 
+                //인천학원 뷰
+                $view_page = ($site_code == '2015') ? $view_page.'_'.$site_code : $view_page;
+
                 // 데이터 조회
                 $data = $this->orderListModel->getPrintCertData($order_idx, $order_prod_idx, $site_code);
 

@@ -195,7 +195,8 @@
             @if ($onoff_3 != 'null') @else
                 <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             @endif
-            <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1555_sky03.png" title="면접캠프"></a></li>
+            <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1646" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky01.png" title="면접캠프"></a></li>
+            {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   
 
         <div class="evtCtnsBox evt_counter">
@@ -273,20 +274,24 @@
                     </a>
                 </li>
                 <li>
-                    @if($onoff_3 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
-                    @elseif($onoff_3 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
-                    @else @endif
+                    @if($text_on2 == 'on')
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing02.jpg" alt="가압안발표후진행"></span>
+                    @else
+                        @if($onoff_2 == 'on')
+                            <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        @elseif($onoff_2 == 'off')
+                            <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        @else @endif
+                    @endif
                     <a href="#tab03" class="{{ (($onoff_3 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
-                    @if($onoff_4 == 'on')
+                    @if($onoff_3 == 'on')
                         <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
-                    @elseif($onoff_4 == 'off')
+                    @elseif($onoff_3 == 'off')
                         <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab04" class="{{ (($onoff_4 == 'on') ? 'active' : '') }}">
@@ -367,7 +372,7 @@
 
         @if($onoff_4 == 'null')
             <div id="tab04" class="comingsoon">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="coming soon">
+                @include('willbes.pc.promotion.2001.1555_cts04')
             </div>
         @else
             <div id="tab04">

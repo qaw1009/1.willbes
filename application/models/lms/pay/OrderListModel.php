@@ -1129,6 +1129,7 @@ class OrderListModel extends BaseOrderModel
             }
 
             // 주문정보 추출
+            $add_data['OrderProdNameData'] = implode('<br/>', array_pluck($data, 'ProdName'));
             $data = element('0', $data);
         } else {
             return '일치하는 사이트코드가 없습니다.';
@@ -1136,7 +1137,6 @@ class OrderListModel extends BaseOrderModel
 
         // 데이터 병합
         $data = array_merge($data, $add_data);
-
         return $data;
     }
 

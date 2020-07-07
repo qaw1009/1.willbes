@@ -51,7 +51,7 @@
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/3093_visual05.jpg" alt="" usemap="#Map3093B" border="0">
             <map name="Map3093B" id="Map3093B">
-                <area shape="rect" coords="40,380,671,595" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재 자세히 보기" />
+                <area shape="rect" coords="414,711,707,779" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재 자세히 보기" />
             </map>
         </div>
     </div>

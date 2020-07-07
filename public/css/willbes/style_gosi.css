@@ -50,7 +50,7 @@
     left:60px;
     bottom: 22px;
     text-align: left;
-    z-index: 90;
+    z-index: 50;
 }
 .gosi .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
@@ -58,17 +58,21 @@
 
 .gosi .VisualsubBox {
     width: 384px;
+    height: 400px;
     padding:10px;
     float:right;
     background: #ccc;
+    z-index: 1;
 }
 
 
 .gosi .VisualsubBox .bSlider:nth-child(2) {
+    position: absolute;
     margin-top:3px;
     width: 364px;
     height: 248px !important;
     overflow: hidden;
+    z-index: 1;
   }
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
@@ -76,7 +80,7 @@
     bottom: 20px;
     margin: 0;
     width: 50px;
-    z-index: 90;
+    z-index: 50;
   }
 .gosi .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
@@ -84,7 +88,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
-    z-index: 90;
+    z-index: 50;
 }
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
@@ -93,7 +97,7 @@
     margin: 0 2px;
 }
 
-.gosi .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+.gosi .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden; z-index: 1;}
 
 .gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
     float: left;
@@ -101,6 +105,7 @@
     left: 20px;
     bottom: 10px;
     text-align: left;
+    z-index: 1;
 }
 .gosi .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;

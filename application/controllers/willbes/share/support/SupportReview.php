@@ -73,11 +73,9 @@ class SupportReview extends BaseSupport
             if (empty($s_site_code) === true) {
                 $arr_base['category'] = [];
             } else {
-                //$arr_base['category'] = $this->categoryFModel->listSiteCategory($s_site_code);
                 $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($s_site_code);
             }
         } else {
-            //$arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
             $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
         }
 

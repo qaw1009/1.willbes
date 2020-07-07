@@ -834,8 +834,8 @@ class Home extends \app\controllers\FrontController
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 114, 'b.IsUse' => 'Y']];
-
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
     }
 
     /**

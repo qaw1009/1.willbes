@@ -262,7 +262,7 @@
                     </div>
                 </div>
                 <div class="noticeTabs mr-zero">
-                    <div class="will-listTit">정오록/추록</div>
+                    <div class="will-listTit">정오표/추록</div>
                     <div class="tabBox noticeBox">
                         <div class="tabContent p_re">
                             <a href="{{ front_url('/support/examErrata/index?s_cate_code_disabled=Y') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>

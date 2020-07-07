@@ -274,7 +274,7 @@
             // 수강증 출력 버튼 클릭
             $list_table.on('click', '.btn-print', function() {
                 var url = '{{ site_url('/common/printCert/') }}?prod_type=' + $(this).data('prod-type') + '&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&site_code=' + $(this).data('site-code');
-                popupOpen(url, '_cert_print', 620, 350);
+                popupOpen(url, '_cert_print', 620, 350, '', '', 'yes', 'yes');
             });
 
             // 수강증 출력 로그 보기

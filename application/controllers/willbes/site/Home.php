@@ -452,6 +452,35 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 인천학원[학원] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2015Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        if (APP_DEVICE == 'pc') {
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice'] = $this->_boardNotice(5, null, ['605005']);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+        }
+        return $data;
+    }
+
+    /**
+     * 인천학원[온라인] 메인페이지 없음
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array
+     */
+    private function _getSite2016Data($cate_code = '', $arr_campus = [])
+    {
+        redirect(front_url('/pass/home/index'));
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array

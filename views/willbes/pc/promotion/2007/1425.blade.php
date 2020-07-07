@@ -20,16 +20,25 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;} 
 
         /************************************************************/
-        .evtTop {background:#EBE0CA url(https://static.willbes.net/public/images/promotion/2020/05/1425_top_bg.jpg) no-repeat center top;}   
-        .evt01 {background:#fff}       
-        .evt02 {background:#d7d7d7}
-        .evt02 iframe {position:absolute; top:670px; left:50%; margin-left:-280px;}
-        .evt03 {background:#fff}
-        .evt04 {background:#eee; padding-bottom:100px}
-        .evt04title {border-bottom:1px solid #ccc; width:1120px; margin:0 auto 50px}
-
+        
         .skyBanner {position:fixed; width:180px; top:200px; right:10px; z-index:5;}
         .skyBanner a {display:block; margin-bottom:5px}
+
+        .evtTop {background:#fff url(https://static.willbes.net/public/images/promotion/2020/07/1425_top_bg.jpg) no-repeat center top;}   
+
+        .evt01 {background:#fff}       
+
+        .evt02 {background:#d7d7d7}
+
+        .evt02 iframe {position:absolute; top:670px; left:50%; margin-left:-280px;}
+
+        .evt03 {background:#fff}
+
+        .evt04 {background:#eee; padding-bottom:100px}        
+        .evt04title {border-bottom:1px solid #ccc; width:1120px; margin:0 auto 50px}
+
+        .evt05 {padding:100px 0}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -40,7 +49,7 @@
         --}}
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
             <map name="Map1425A" id="Map1425A">
                 <area shape="rect" coords="687,898,973,973" href="#goLec" alt="수강신청" />
             </map>
@@ -52,7 +61,7 @@
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_02.jpg" title="1초비법">
-            <iframe width="720" height="364" src="https://www.youtube.com/embed/afYUa3Al1Vo" frameborder="0" allowfullscreen></iframe>
+            <iframe width="720" height="364" src="https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt03" >
@@ -66,6 +75,12 @@
             <div class="evt04title"><img src="https://static.willbes.net/public/images/promotion/2020/05/1425_04.jpg"></div>
             @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
         </div>
+
+        <div class="evtCtnsBox evt05">
+			<a href="https://lang.willbes.net/package/show/cate/3093/pack/648001/prod-code/168104" target="_blank">
+				<img src="https://static.willbes.net/public/images/promotion/2020/07/1425_05.png" title="수강신청">
+			</a>
+		</div>
     </div>
     <!-- End Container -->
 @stop

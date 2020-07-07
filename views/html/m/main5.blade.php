@@ -247,8 +247,7 @@
         clickable: true,
       },
     });
-
-    //맛보기강의
+    //베스트강의
     var swiper = new Swiper('.swiper-container-view', {
         slidesPerView: 1,
         slidesPerColumn: 4,

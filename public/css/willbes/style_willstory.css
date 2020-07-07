@@ -13,7 +13,7 @@
     box-shadow: 5px 5px 25px #e1e1e1;   
     z-index: 10; 
 }
-_:-ms-fullscreen, :root .drop-Box-wsBook {left:-644px;}
+_:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .drop-Box-wsBook:after,
 .drop-Box-wsBook:before {
     content: '';

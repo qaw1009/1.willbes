@@ -79,6 +79,21 @@
                         <li>
                             <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_06.jpg">
                         </li>
+                        <li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_07.jpg">
+                        </li>
+                        <li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_08.jpg">
+                        </li>
+                        <li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_09.jpg">
+                        </li>
+                        <li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_10.jpg">
+                        </li>
+                        <li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_11.jpg">
+                        </li>
                     </ul>
                     <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
                     <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>

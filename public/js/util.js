@@ -893,22 +893,37 @@ function setRowspan(classname) {
     });
 }
 
-/**
- * 전체검색
- */
+/*
+* 검색
+*/
 $('.unifiedSearch, .areaSearch').on('keypress', function() {
     if (window.event.keyCode === 13) {
         goFullSearch($(this).data('form'));
     }
 });
+
 $('.btn_unifiedSearch, .btn_areaSearch').on('click', function() {
     goFullSearch($(this).data('form'));
 });
 
-/**
- * 설정검색어 이동
- */
-$('.word-setup').on('click', function() {
+$('.unifiedSearch, .areaSearch').on('keyup', function() {
+    $('.unifiedSearch').val().length === 0 ? $('.searchWordSetupPop').show() :  $('.searchWordSetupPop').hide();
+});
+
+$('.unifiedSearch').focus(function() {
+    if($('.unifiedSearch').val().length === 0) {
+        var div = $('.searchWordSetupPop').show();
+        $(document).bind('focusin.unifiedSearch click.unifiedSearch', function (e) {
+            if ($(e.target).closest('.unifiedSearch').length) return;
+            $(document).unbind('.unifiedSearch');
+            div.fadeOut('fast');
+        });
+    } else {
+        $('.searchWordSetupPop').hide();
+    }
+});
+
+$('.search_word_setup').on('click', function() {
     $form = $(this).closest('form').attr('id');
     if(($(this).data('target')) === 'S') {
         $('#'+$form).find('input[name="etc_info"]').val($(this).data('idx'));

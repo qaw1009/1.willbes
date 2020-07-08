@@ -22,7 +22,7 @@
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
-    .evt01 {margin:20px;}
+    .evt01 {margin:20px 0;}
     .evt01 .dday {font-size:18px; text-align:center; margin-bottom:20px}
     .evt01 .dday strong {font-size:24px}
     .evt01 .dday img {display:inline-block; margin-right:10px; width:70px;

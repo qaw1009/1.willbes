@@ -26,22 +26,13 @@
             bottom:20px;
             right:10px;
             z-index:1;
-            width:120px;
+            width:152px;
+            text-align:center;
         }
-        .skybanner a {display:block; margin-bottom:5px}
+        .skybanner a {display:block; margin-bottom:5px;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top}
-        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-        @@keyframes upDown{
-             from{top:500px}
-             50%{top:520px}
-             to{top:500px}
-         }
-        @@-webkit-keyframes upDown{
-             from{top:500px}
-             50%{top:520px}
-             to{top:500px}
-         }
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/07/1713_top_bg.jpg) no-repeat center top}
+        .evtTop_01 {background:#626a74}
 
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
         .tabs {width:1120px; margin:0 auto;}
@@ -51,8 +42,8 @@
         .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
         .tabs:after {content:""; display:block; clear:both}
 
-        .evt01 {background:#fff; padding:100px 0}
-        .evt01 .dday {font-size:30px; position:absolute; top:430px; left:50%; width:940px; margin-left:-470px; text-align:center;}
+        .evt01 {padding:50px 0 100px;}
+        .evt01 .dday {font-size:30px; width:720px; margin:0 auto 50px; text-align:center;}
         .evt01 .dday strong {font-size:40px}
         .evt01 .dday img {display:inline-block; margin:0 20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
@@ -111,104 +102,93 @@
              }
          }
 
-        .evt01 .dday span {color:#3a99f0; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
-        .evt01 .btnbuy {width:940px; margin:50px auto 0}
+        .evt01 .dday span {color:#01c73c; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
+        .evt01 .btnbuy {width:720px; margin:50px auto 0}
         .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
-        .evt01 .btnbuy a:hover {background:#3a99f0;
-            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-        @@-webkit-keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        @@keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        .infoCheck {margin-top:30px; font-size:14px}
+        .evt01 .btnbuy a:hover {background:#01c73c;}
+
+        .infoCheck {font-size:14px; max-width:720px; margin:30px auto 0}
         .infoCheck label {margin-right:30px; cursor: pointer;}
         .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
         .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
         .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-        .infoCheck a:hover {background:#0099ff;}
+        .infoCheck a:hover {background:#01c73c;}
 
-        .evt02 {background:#f6f6f6; padding-top:100px}
-        .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
+        .evt02 {padding-top:100px}
+        .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#01c73c}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff; padding-top:100px;}
-        .evt03 .sample {width:900px; margin:0 auto}
-        .evt03 .sample li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
-        .evt03 .sample li p {font-size:20px; margin-bottom:15px; font-weight:600}
-        .evt03 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
-        .evt03 .sample li a.btnst01 {border:1px solid #ccc;}
-        .evt03 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-        .evt03 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-        .evt03 .sample li a:hover {background:#000; color:#fff}
-        .evt03 .sample:after {content:""; display:block; clear:both}
-        .evt03 .evt03Txt01 {width:1120px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333; padding-left:140px;}        
+        .evt03 {background:#01c73c;}
+        
+        .evt04 {padding-top:120px}     
 
-        .evt04 {background:#ececec; padding:100px 0}
-        .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#3a99f0; font-size:18px}
-        .evt04 .columns {width:940px; margin:50px auto 0;
+        .evt05 {background:#f6f6f6;}       
+
+        .evt06 {background:#fff; padding-bottom:120px}
+
+        .evt07 {background:#f6f6f6;}          
+        
+        .evt08 {background:#fff;}
+        .evt09 {background:#f6f6f6;}
+        .evt10 {background:#e7e7e7;}
+
+        .evt11 {background:#fff; text-align:left; padding-top:120px}
+        .evt11 .copy {width:720px; margin:0 auto;}
+        .evt11 h5 {color:#01c73c; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evt11 .evt07Txt01 {font-size:28px; margin:20px auto 80px}
+        .evt11 .sample {width:720px; margin:0 auto}
+        .evt11 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
+            background:#01c73c; color:#fff; font-size:20px; font-weight:600; text-align:center}
+        .evt11 .sample li p {margin-bottom:15px;}
+        .evt11 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
+        .evt11 .sample li a.btnst01 {border:1px solid #ccc;}
+        .evt11 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt11 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt11 .sample li a:hover {background:#000; color:#fff}
+        .evt11 .sample li:last-child {margin:0}
+        .evt11 .sample:after {content:""; display:block; clear:both}
+        .evt11 .evt07Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;}
+        
+        .evt12 {background:#ececec; padding:120px 0}
+        .evt12 .columns {width:720px; margin:50px auto 0;
             column-count: 2;
-            column-gap:20px;
+            column-gap:10px;
         }
-        .evt04 .columns div {
+        .evt12 .columns div {
             text-align:justify; font-size:14px; line-height:1.4;
             display:inline-block;
             padding:20px; border:1px solid #eee; border-radius:10px;
-            margin-bottom:20px; color:#888; background:#fff;
+            margin-bottom:10px; color:#888; background:#fff;
             width:100%;
         }
-        .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
-        .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 .columns div strong {font-size:bold; color:#333}        
+        .evt12 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px; color:#01c73c}
+        .evt12 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+        .evt12 .columns div strong {font-size:bold; color:#333}
 
-        .evt05 {background:#3a99f0; padding-bottom:100px}
-        .evt05 ul {width:940px; margin:0 auto;}
-        .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
-        .evt05 li a:hover {background:#fff; color:#000;
+        .evt13 {background:#f6f6f6;}
+
+        .evt14 {background:#01c73c; padding-bottom:120px}
+        .evt14 ul {width:720px; margin:0 auto;}
+        .evt14 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
+        .evt14 li a:hover {background:#fff; color:#000;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
-        .evt05 li span {display:block; font-size:28px}
-        .evt05 li:last-child a{margin-left:10px}
-        .evt05 ul:after {content:""; display:block; clear:both}
+        .evt14 li span {display:block; font-size:28px}
+        .evt14 li:last-child a{margin-left:10px}
+        .evt14 ul:after {content:""; display:block; clear:both}
 
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}
 
-        .evtCurri {width:900px; margin:50px auto 100px; text-align:left}
-        .evtCurri li {font-size:26px; margin-bottom:15px; color:#262626; letter-spacing:-1px; line-height:1.4}
-        .evtCurri li.cTitle {color:#ff0004; font-size:30px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
+        .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
+        .evtCurri li.cTitle {color:#01c73c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
-        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
+        .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
@@ -220,18 +200,19 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_01.png" alt="이기용 대표"></a>
-            {{--시간설정--}}
-            @if(time() < strtotime('202005311159'))
-            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
-            @endif 
-            <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
-            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_04.png" alt="이용안내"></a>
+            <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_sky01.png" alt="신청하기"></a>
+            <a href="#evt11Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" > 
-            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_top.jpg" alt="이기용 대표" >             
+        </div>
+
+        <div class="evtCtnsBox evtTop_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_01.jpg" alt="" >             
+        </div>
+
+        <div class="evtCtnsBox">
             <div class="evtMenu">
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
@@ -239,19 +220,20 @@
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
-            </div>
-        </div>       
+            </div>  
+        </div>  
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1564_01.jpg" usemap="#Map1710" border="0" >
-                <map name="Map1710">
-                    <area shape="rect" coords="230,663,573,710" href="#none" alt="기획전">
-                </map>                
-
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="dday NSK-Thin"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_img01.png" alt="시계" >
+                    <strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_02.jpg">
+                <div class="btnbuy NSK-Black">
+                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
+                </div>
                 <div id="pass" class="infoCheck">
-                    <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
+                    <input type="checkbox" name="y_pkg" value="168102" style="display: none;" checked/>
                     <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="#infoText">이용안내 확인하기 ↓</a>
                 </div>
@@ -261,33 +243,54 @@
         <div id="tab02">
             <div class="evtCtnsBox evt02">
                 <iframe src="https://www.youtube.com/embed/tXL-6wWRTfI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="evt02Txt01">                    
-                    안녕하세요! <br>
-                    1,500개 기업에서 마케팅 강의를 진행하고 있는<br>
-                    <span class="NSK-Black">8년차, 마케팅 전문가 이기용</span>입니다.<br>                    
-                </div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_03.jpg" alt="생활리뷰 싹PD" >
+                </div>                
             </div>
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" ><br>
-                <iframe src="https://www.youtube.com/embed/1zxi4wiYXk4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
-            </div>   
-        </div>  
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_04.jpg" alt="인플루언서" >             
+            </div>  
+            <div class="evtCtnsBox evt04">                
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_05.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_06.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt06">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_07.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt07">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_08.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt08">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_09.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt09">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_10.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt10">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_11.jpg" alt=" " >
+            </div>
+        </div>       
+
 
         <div id="tab03">
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼 강좌소개" >
+            <div class="evtCtnsBox evt11" id="evt11Sec">
+                <div class="copy">
+                    <h5 class="NSK-Black">
+                        <div>‘1,500개 정부 및 공기업 전문 강사 </div>
+                        <div>이기용이 알려주는 전문 커리큘럼</div>
+                    </h5>
+                    <div class="evt07Txt01 NSK-Thin">우리가 배울 수 있는 과정은?<br>
+                    수익 창출을 위한 네이버 블로그 마케팅 新전략</div>
+                </div>
 
                 <ul class="sample">
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @php $i = 1; @endphp
-                        @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                            {{-- <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강 맛보기 수강 ></a></li> --}}
+                        @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
                             <li>
-                                <p>{{$i}}강 맛보기 수강 ▼</p>
-                                {{--<a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" class="btnst01">WIDE ></a>--}}
+                                <p>{{$i}}강 맛보기 수강 ▼</p>                                
                                 <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
                                 <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
                             </li>
@@ -299,12 +302,12 @@
                     @endif
                 </ul> 
 
-                <div class="evt03Txt01">
+                <div class="evt07Txt02">
                     * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
                     스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
                     팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
                 </div>
-                
+
                 <div class="evtCurri">
                     <ul>
                         <li class="cTitle">챕터 1</li>
@@ -371,69 +374,69 @@
         </div>
 
         <div id="tab04">
-            <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_01.png" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt12">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_09.png" alt="BEST 수강후기" >
                 <div class="columns">
-                    <div>
-                        <p>민트*</p>
-                        마케팅 전문가인 이기용 대표님 강의에서만 공개되었던 노하우, 정보들이 모두 기록되어있는 책입니다. 
-                        블로그를 첨으로 시작하려고 계획하는 분들, 활용하여 마케팅에 도전하고 싶은 분들 모두에게 추천드리고 싶은 책입니다! 
-                        대표님의 경력 사항만 봐도 헉 소리가 나는 분이였어요… 다음에는 꼭 강의도 참여해보고 싶었습니다!
-                    </div>  
-                    <div>
-                        <p>토마토*</p>
-                        예전에 사둔 책으로 미뤄왔던 블로그 마케팅 책을 보고 있습니다. 바로 이기용 대표님의 블로그 마케팅…! 
-                        이름 그대로 어려운 용어 없이 누구나 쉽게 읽을 수 있는 책이었어요! 이기용 대표님은 마케팅 강의를 무려 1,500회 이상 진행하신 전문가세요! 
-                        심지어 책도 술술 읽혀서 잘 읽고 있다고나 할까… 
-                        블로그 초보자부터 중상급자를 위한 내용까지 모두 녹아있습니다!
-                    </div> 
-                    <div>
-                        <p>이유갓*</p>
-                        제목부터 이미 누구나 쉽게 따라 할 수 있다고 써있는 블로그 책 ㅋㅋㅋ초보자도 진짜 쉽게 할 수 있어요! 
-                        그리고 이 책은 특히나 블로그에 대한게 자세한 것도 있지만 카테고리가 여유 있게 잡혀있어서 날짜에 맞춰서 따라해보기도 좋은거 같더라구요~? 
-                        저자는 이기용 대표님이시고 개인적으로 블로그 마케팅 전문가로 활동하시면서 여기저기 강의도 엄청 많이 다니신다고 하더라구요!
-                        거기다가 방송출연도 많아서 유명하신 분! 교수도 하시고 위원장도 하시는거보니 진짜 경력이 대단하신 거 같아요!
-                    </div>  
-                    <div>
-                        <p>포*</p>
-                        최근에 자기개발(?)겸사 블로그를 좀 더 진지하게 공부해보고자 관련하는 마케팅책을 여러개 읽어보고 있어요. 
-                        그 외에 SNS마케팅과 블로그 마케팅 책으로 공부하면서 블로그 글을 써보고자 하는데요~! 
-                        최근에 읽고 있는 블로그 마케팅 책 중에서 '누구나 쉽게 따라하는 블로그 마케팅'이란 책이 제가 봐온 관련 책 중에서 제일 이해하기 쉽기도 하고 
-                        블로그를 막 이제 시작하는 분들이나 블로그를 저처럼 어중간하게 알고 계신 분들에게 확실히 어떻다 하는 정보를 알 수 있는 책이어서 추천을 하려구요!
-                    </div> 
-                    <div>
-                        <p>욜*</p>
-                        마케팅의 고수가 되고 싶으신 분들 주목하세요!  
-                        '누구나 쉽게 따라하는 블로그 마케팅'이라는 블로그 마케팅 책은 초보자도 쉽게 따라 할 수 있는 마케팅 8주 완성 프로젝트가  
-                        정리되어 있는 책으로, 그동안 어디에서도 얻을 수 없었던 전문가의 마케팅 노하우를 배워볼 수 있는 책이랍니다 ㅎㅎ 
-                        사실 그동안 쌓아온 자신만의 노하우를 남들에게 그대로 공개한다는 것이 절대 쉬운 게 아닌데, 책 한 권으로 강사님의 가지고 있으신 노하우와 정보들을 배워볼 수 있어서 감사하더라구요
-                    </div>
-                    <div>
-                        <p>키*</p>
-                        이 책을 추천하게 된 이유는 정말 간단해요 블로그 책들 중에서 정말 초보자의 입장으로 쓰여진 책이거든요! 앞으로의 포스팅을 보면 대강 느낌 오실거에요 ㅎㅎ 
-                        PC와 모바일버전으로 나누어서도 굉장히 구체적으로 설명이 들어가있고 또 그 외에도 다양한 카테고리들이 심화적으로 책을 이루고 있습니다. 
-                        8주안에 블로그 완벽하게 만들기!라면서 시작되는 이 책은 말그대로 8주차라는 카테고리가 나누어져 있습니다. 
-                        그래서 저처럼 한번에 책을 정독하지 못하면 포기해버리는 사람들에게도 여유있게 읽기 좋아요! 괜히 강박관념이 없어지는 듯한 느낌 ㅎㅎ
-                    </div>
-                    <div>
-                        <p>만복이**</p>
-                        파트1은 8주만에 최적화 블로그 만들기! 이 챕터에서는 말 그대로 브로그를 만들어보는 것에 대해 나와있었어요! 
-                        쉽게 따라하게 만든 마케팅책이라고 하더니 정말 하나, 하나, 담겨있더라구요! 이 정도면 저희 아빠도 블로그 만드실 수 있을듯요 ㅋㅋㅋ! 
-                        그런데 마케팅을 잘 모르는 저도 이해도 가고, 이제부터 더 배우고자 하는 마음이 생기더라구요~ 이것도 배움의즐거움이겠죠!
-                    </div>
-                    <div>
-                        <p>뚬바**</p>
-                        이 책을 쓰신 이기용강사님의 엄청난 고스펙을 알 수 있어요..! 사실 저는 대단한 사람이 쓴 책일수록 더 어려운 책일까봐 두려워하는 경향이 있어요. 
-                        그도 그럴게 너무나 전문적이다보니..ㅎㅎ 그런데 이 블로그책은 그 편견을 말끔하게 깨부셔버렸지요! 
-                        목차에서 먼저 본 것으로는 굉장히 세부적으로 단원이 구성되어 있었고 단락을 펼칠때마다 그림 및 실사이미지 그리고 그에 맞는 설명 등이 적혀있는데 엄청 보기 쉬웠다고 감히 장담할 수 있습니다!
-                    </div>
-                    <div>
-                        <p>포롱**</p>
-                        이게 제가 슥- 훑어보니까 그냥 정보를 알려주는 책이 아니라 실질적으로 행동을 하게끔 만드는 책이더라구요 그래서 목차에 보면 큰 단원마다 weeks라고 써있어요! 
-                        말 그대로 한 주에 한 단원 이라는 말이죠! 과제라고 써있어요! 진짜 학교에서 배우고 복습하는 과제를 던져주는 느낌이네요! 블로그를 하는 이유부터 하나하나 기본의 틀을 잡는다는 느낌이에요. 
-                        저도 지금 이 1주차 과제를 하려고 이 책에 직접 적어보면서 구상중이거든요 ㅎㅎ 이런건 참 좋은 아이디어같아요! 책에 대한 거부감이 없어지는~?
-                    </div>
+                <div>
+                    <p>민트*</p>
+                    마케팅 전문가인 이기용 대표님 강의에서만 공개되었던 노하우, 정보들이 모두 기록되어있는 책입니다. 
+                    블로그를 첨으로 시작하려고 계획하는 분들, 활용하여 마케팅에 도전하고 싶은 분들 모두에게 추천드리고 싶은 책입니다! 
+                    대표님의 경력 사항만 봐도 헉 소리가 나는 분이였어요… 다음에는 꼭 강의도 참여해보고 싶었습니다!
+                </div>  
+                <div>
+                    <p>토마토*</p>
+                    예전에 사둔 책으로 미뤄왔던 블로그 마케팅 책을 보고 있습니다. 바로 이기용 대표님의 블로그 마케팅…! 
+                    이름 그대로 어려운 용어 없이 누구나 쉽게 읽을 수 있는 책이었어요! 이기용 대표님은 마케팅 강의를 무려 1,500회 이상 진행하신 전문가세요! 
+                    심지어 책도 술술 읽혀서 잘 읽고 있다고나 할까… 
+                    블로그 초보자부터 중상급자를 위한 내용까지 모두 녹아있습니다!
                 </div> 
+                <div>
+                    <p>이유갓*</p>
+                    제목부터 이미 누구나 쉽게 따라 할 수 있다고 써있는 블로그 책 ㅋㅋㅋ초보자도 진짜 쉽게 할 수 있어요! 
+                    그리고 이 책은 특히나 블로그에 대한게 자세한 것도 있지만 카테고리가 여유 있게 잡혀있어서 날짜에 맞춰서 따라해보기도 좋은거 같더라구요~? 
+                    저자는 이기용 대표님이시고 개인적으로 블로그 마케팅 전문가로 활동하시면서 여기저기 강의도 엄청 많이 다니신다고 하더라구요!
+                    거기다가 방송출연도 많아서 유명하신 분! 교수도 하시고 위원장도 하시는거보니 진짜 경력이 대단하신 거 같아요!
+                </div>  
+                <div>
+                    <p>포*</p>
+                    최근에 자기개발(?)겸사 블로그를 좀 더 진지하게 공부해보고자 관련하는 마케팅책을 여러개 읽어보고 있어요. 
+                    그 외에 SNS마케팅과 블로그 마케팅 책으로 공부하면서 블로그 글을 써보고자 하는데요~! 
+                    최근에 읽고 있는 블로그 마케팅 책 중에서 '누구나 쉽게 따라하는 블로그 마케팅'이란 책이 제가 봐온 관련 책 중에서 제일 이해하기 쉽기도 하고 
+                    블로그를 막 이제 시작하는 분들이나 블로그를 저처럼 어중간하게 알고 계신 분들에게 확실히 어떻다 하는 정보를 알 수 있는 책이어서 추천을 하려구요!
+                </div> 
+                <div>
+                    <p>욜*</p>
+                    마케팅의 고수가 되고 싶으신 분들 주목하세요!  
+                    '누구나 쉽게 따라하는 블로그 마케팅'이라는 블로그 마케팅 책은 초보자도 쉽게 따라 할 수 있는 마케팅 8주 완성 프로젝트가  
+                    정리되어 있는 책으로, 그동안 어디에서도 얻을 수 없었던 전문가의 마케팅 노하우를 배워볼 수 있는 책이랍니다 ㅎㅎ 
+                    사실 그동안 쌓아온 자신만의 노하우를 남들에게 그대로 공개한다는 것이 절대 쉬운 게 아닌데, 책 한 권으로 강사님의 가지고 있으신 노하우와 정보들을 배워볼 수 있어서 감사하더라구요
+                </div>
+                <div>
+                    <p>키*</p>
+                    이 책을 추천하게 된 이유는 정말 간단해요 블로그 책들 중에서 정말 초보자의 입장으로 쓰여진 책이거든요! 앞으로의 포스팅을 보면 대강 느낌 오실거에요 ㅎㅎ 
+                    PC와 모바일버전으로 나누어서도 굉장히 구체적으로 설명이 들어가있고 또 그 외에도 다양한 카테고리들이 심화적으로 책을 이루고 있습니다. 
+                    8주안에 블로그 완벽하게 만들기!라면서 시작되는 이 책은 말그대로 8주차라는 카테고리가 나누어져 있습니다. 
+                    그래서 저처럼 한번에 책을 정독하지 못하면 포기해버리는 사람들에게도 여유있게 읽기 좋아요! 괜히 강박관념이 없어지는 듯한 느낌 ㅎㅎ
+                </div>
+                <div>
+                    <p>만복이**</p>
+                    파트1은 8주만에 최적화 블로그 만들기! 이 챕터에서는 말 그대로 브로그를 만들어보는 것에 대해 나와있었어요! 
+                    쉽게 따라하게 만든 마케팅책이라고 하더니 정말 하나, 하나, 담겨있더라구요! 이 정도면 저희 아빠도 블로그 만드실 수 있을듯요 ㅋㅋㅋ! 
+                    그런데 마케팅을 잘 모르는 저도 이해도 가고, 이제부터 더 배우고자 하는 마음이 생기더라구요~ 이것도 배움의즐거움이겠죠!
+                </div>
+                <div>
+                    <p>뚬바**</p>
+                    이 책을 쓰신 이기용강사님의 엄청난 고스펙을 알 수 있어요..! 사실 저는 대단한 사람이 쓴 책일수록 더 어려운 책일까봐 두려워하는 경향이 있어요. 
+                    그도 그럴게 너무나 전문적이다보니..ㅎㅎ 그런데 이 블로그책은 그 편견을 말끔하게 깨부셔버렸지요! 
+                    목차에서 먼저 본 것으로는 굉장히 세부적으로 단원이 구성되어 있었고 단락을 펼칠때마다 그림 및 실사이미지 그리고 그에 맞는 설명 등이 적혀있는데 엄청 보기 쉬웠다고 감히 장담할 수 있습니다!
+                </div>
+                <div>
+                    <p>포롱**</p>
+                    이게 제가 슥- 훑어보니까 그냥 정보를 알려주는 책이 아니라 실질적으로 행동을 하게끔 만드는 책이더라구요 그래서 목차에 보면 큰 단원마다 weeks라고 써있어요! 
+                    말 그대로 한 주에 한 단원 이라는 말이죠! 과제라고 써있어요! 진짜 학교에서 배우고 복습하는 과제를 던져주는 느낌이네요! 블로그를 하는 이유부터 하나하나 기본의 틀을 잡는다는 느낌이에요. 
+                    저도 지금 이 1주차 과제를 하려고 이 책에 직접 적어보면서 구상중이거든요 ㅎㅎ 이런건 참 좋은 아이디어같아요! 책에 대한 거부감이 없어지는~?
+                </div>
+            </div>  
 
                 @if(empty($data['ProdCode']) === false)
                     <div class="evtReply">
@@ -446,13 +449,13 @@
                 @endif
             </div>
 
-            <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt14">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_12.jpg" alt="" >
                 <ul>
                     <li>
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
-                            <span class="NSK-Black">지금, N잡강의</span>
-                            신청하고 부수입 만들기 도전! → 
+                            <span class="NSK-Black">지금, N잡강의  신청하고</span>
+                            부수입 만들기 도전! → 
                         </a>
                     </li>
                 </ul>

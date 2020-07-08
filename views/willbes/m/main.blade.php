@@ -25,6 +25,7 @@
                         <li><a href="{{ front_app_url('/home/index', 'work') }}" target="_blank">취업</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'lang') }}" target="_blank">어학</a></li>              
                         <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡/e창업 e-커머스</a></li>
+                        {{--<li><a href="{{ front_app_url('/home/index', 'willbesedu') }}" target="_blank">인천학원</a></li>--}}
                     </ul>
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>

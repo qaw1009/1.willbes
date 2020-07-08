@@ -185,6 +185,30 @@ class SearchWord extends \app\controllers\BaseController
     }
 
     /**
+     * 검색어 캐쉬 제거
+     * @param string $site_code
+     */
+    public function deleteCache($site_code = '')
+    {
+        $site_code = (is_array($site_code) ? $site_code[0] :  $site_code);
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $this->load->driver('caching');
+        $this->caching->search_word_setup->delete($site_code);
+        $this->caching->search_word_auto->delete($site_code);
+
+        $result = true;
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 캐쉬 확인용
      * @param string $site_code
      */
@@ -194,7 +218,7 @@ class SearchWord extends \app\controllers\BaseController
         $this->load->driver('caching');
         //$this->caching->search_word_setup->delete();return;
         //$this->caching->mobile_menu->deleteToAdapter('memcached', '');return;
-        $setup = $this->caching->search_word_setup->get($site_code);
+        $setup = $this->caching->search_word_setup->get($site_code,false);
         $auto = $this->caching->search_word_auto->getToAdapter('file',$site_code);
         dd(['설정검색어'=>$setup, '자동완성'=>$auto]);
     }

@@ -120,11 +120,11 @@
 
         .evt03 {background:#01c73c;}
         
-        .evt04 {padding-top:120px}     
+        .evt04 {}     
 
         .evt05 {background:#f6f6f6;}       
 
-        .evt06 {background:#fff; padding-bottom:120px}
+        .evt06 {background:#fff;}
 
         .evt07 {background:#f6f6f6;}          
         

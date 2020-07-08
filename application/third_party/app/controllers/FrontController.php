@@ -269,7 +269,7 @@ abstract class FrontController extends BaseController
         $front_menus['GNB']['ActiveGroupMenuIdx'] = array_get($all_site_menu_cache, 'GNBGroupMenuIdxs.' . SUB_DOMAIN);
 
         // 설정검색어 캐쉬 조회
-        $site_word_setup = $this->getCacheBySkey('search_word_setup', '', $site_code);
+        $site_word_setup = $this->getCacheBySkey('search_word_setup', '', $site_code, false);
 
         //자동완성검색어 캐쉬 조회
         $site_word_auto =  $this->getCacheBySkey('search_word_auto','file', $site_code);

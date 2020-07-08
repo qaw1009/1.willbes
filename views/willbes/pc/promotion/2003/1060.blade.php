@@ -173,24 +173,19 @@
   			<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c6.jpg" alt="소방공무원의 꿈을 이루어줄 따라만 가도 완성되는 커리큘럼"/>
         </div><!--wb_cts02//-->
           
-        <div class="evtCtnsBox wb_cts03" id="event">             
-            <ul>                
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="167765" onClick=""/><label for="y_pkg">공채 12개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="167766" onClick=""/><label for="y_pkg">특채 12개월</label></li>              
-            </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1060_07.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" usemap="#Map1060A" border="0" />
-            <map name="Map1060A" id="Map1060A">
-                <area shape="rect" coords="838,387,946,447" href="#none" onclick="goPassLecture()">
-                <area shape="rect" coords="840,517,950,578" href="#none" onclick="goPassLecture()">
-            </map>
-            <div>
-                <div class="check" id="chkInfo">
-                    <label>
-                    <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.              
-                    </label>
-                    <a href="#tab1">이용안내확인하기 ↓</a>
-                </div>          
-            </div>                   
+        <div class="evtCtnsBox wb_cts03" id="event">       
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1060_07.jpg" usemap="#Map1060_07" title="수강신청" border="0" />
+            <map name="Map1060_07" id="Map1060_07">
+                <area shape="rect" coords="836,386,950,447" href="javascript:go_PassLecture('167765');">
+                <area shape="rect" coords="840,516,951,577" href="javascript:go_PassLecture('167766');">
+            </map> 
+            <div class="check">
+                <label>
+                    <input name="ischk"  type="checkbox" value="Y" />
+                    페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#tab1">이용안내확인하기 ↓</a>
+            </div>    
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05" id="tab1">
@@ -231,23 +226,18 @@
             });
         });
 
-        function goPassLecture() {
-            var frm = $('#event');
-            var prod_code = frm.find('input[name="y_pkg"]:checked');
-            var is_chk = frm.find('input[name="is_chk"]:checked');
 
-            if (is_chk.length < 1) {
-                alert('이용안내에 동의하셔야 합니다.');
+        /* 수강신청 */
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
 
-            if (prod_code.length < 1) {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code.val();
+            var url = '{{ site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + code;
+            location.href = url;
         }
+
 
         var quick_top = $(".skybanner").offset().top;
         $(window).scroll(function(){

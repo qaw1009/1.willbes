@@ -236,16 +236,16 @@
 <script>  
     //경찰케스트
     var swiper = new Swiper('.swiper-container-Lec', {
-      slidesPerView: 'auto',
-      spaceBetween: 2,
-      autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
+        slidesPerView: 'auto',
+        spaceBetween: 2,
+        autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
     //베스트강의
     var swiper = new Swiper('.swiper-container-view', {

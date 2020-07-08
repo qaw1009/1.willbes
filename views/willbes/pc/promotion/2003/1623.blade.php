@@ -96,7 +96,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1623_top_bg.gif" title="기미진T-PASS" />                  
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1623_top.gif" title="기미진T-PASS" />                  
         </div>
 
         <div class="evtCtnsBox evt01">

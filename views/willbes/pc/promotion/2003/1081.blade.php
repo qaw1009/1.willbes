@@ -53,15 +53,17 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_top_01.png" alt="윌비스 행정학의 대세 김덕관 행정학 T-PASS " usemap="#Map18113_c1" border="0"  />
             <map name="Map18113_c1" >
-                <area shape="rect" coords="409,996,606,1052" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153462" target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="635,996,835,1052" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153463" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="871,996,1067,1052" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153464" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="409,996,606,1052" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168356" target="_blank" />
+                <area shape="rect" coords="635,996,835,1052" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168357" target="_blank" />
+                <area shape="rect" coords="871,996,1067,1052" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168358" target="_blank" />
             </map>
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_01.jpg" alt="기출문제, 이미 출제된 문제이기에 더욱 중요합니다." />
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_02.jpg" alt="소방학/관계법규는 필수입니다." usemap="#map1081a" border="0" />
@@ -87,9 +89,9 @@
         <div class="evtCtnsBox wb_cts03" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_06.jpg" alt="윌비스 소방직의 새로운 합격 공식, 김종상!" usemap="#Map18113_c2" border="0" />
             <map name="Map18113_c2" >
-                <area shape="rect" coords="434,857,598,908" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153462" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="633,857,796,908" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153463" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="840,857,1009,908" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/153464" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="434,857,598,908" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168356" target="_blank" />
+                <area shape="rect" coords="633,857,796,908" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168357" target="_blank" />
+                <area shape="rect" coords="840,857,1009,908" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/168358" target="_blank" />
             </map>
         </div>
 

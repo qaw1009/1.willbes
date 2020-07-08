@@ -1,4 +1,9 @@
 <!-- JAVASCRIPT -->
+<!-- Slider jQuery -->
+<link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
+    <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
+    <script src="/public/vendor/jquery/swiper/swiper.js"></script>
+    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
 <!-- PNotify -->
 <script src="/public/vendor/pnotify/pnotify.js"></script>
 <script src="/public/vendor/pnotify/pnotify.buttons.js"></script>

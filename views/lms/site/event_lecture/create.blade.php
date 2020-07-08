@@ -691,6 +691,9 @@
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+        var arr_offline_site_code = {{json_encode($arr_offline_site_code)}};
+        var arr_online_site_code = {{json_encode($arr_online_site_code)}};
+
         $(document).ready(function() {
             //editor load
             var $editor_profile = new cheditor();
@@ -1000,9 +1003,8 @@
             // ajax submit
             $regi_form.submit(function() {
                 var site_code_val = parseInt($regi_form.find('select[name="site_code"]').val());
-                var arr_site_code = {{json_encode($arr_site_code)}};
 
-                if( arr_site_code.indexOf(site_code_val) !== -1 && $regi_form.find('input[name="cate_code[]"]').length > 1 ){
+                if( arr_offline_site_code.indexOf(site_code_val) !== -1 && $regi_form.find('input[name="cate_code[]"]').length > 1 ){
                     alert('운영사이트가 학원인 경우 카테고리는 하나만 선택 가능합니다.');
                     return;
                 }
@@ -1097,25 +1099,23 @@
                         break;
                     default :
                         alert('오류가 발생하였습니다.');
-                        return;
+                        return false;
                 }
 
-                var site_code = $regi_form.find('#'+pop_type+'_product_site_code').val();    //지급상품 사이트코드
+                var site_code = parseInt($regi_form.find('#'+pop_type+'_product_site_code').val());    //지급상품 사이트코드
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.');
-                    $regi_form.find('#'+pop_type+'_product_site_code').focus();  //지급상품 사이트코드
-                    return;
+                    return false;
                 }
+
                 var p_prod_type;
-                var arr_online = ['2001', '2003', '2005', '2006', '2007', '2008', '2009'];
-                var arr_offline = ['2002', '2004', '2011', '2013'];
-                if(arr_online.lastIndexOf(site_code) !== -1) {
+                if(arr_online_site_code.indexOf(site_code) !== -1) {
                     p_prod_type = 'on';
-                } else if(arr_offline.lastIndexOf(site_code) !== -1) {
+                } else if(arr_offline_site_code.indexOf(site_code) !== -1) {
                     p_prod_type = 'off';
                 } else {
                     alert('사이트코드가 잘못 되었습니다.');
-                    return;
+                    return false;
                 }
 
                 $('.btn_product_search').setLayer({
@@ -1124,14 +1124,7 @@
                         + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture&is_event=Y',
                     'width' : 1400
                 });
-                {{--
-                $('.btn_product_search').setLayer({
-                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
-                        + '&prod_type=off&return_type=inline&target_id=event_register_product_' + ret_er_idx + '&target_field=prod_code'
-                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
-                    'width' : 1400
-                });
-                --}}
+
             });
 
             // 지급상품 삭제 이벤트

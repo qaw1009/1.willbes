@@ -83,7 +83,7 @@
             <div class="evtCtnsBox top_youtube">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1670_youtube.jpg" usemap="#Map1670youtube" title="신광은 형사법 무료특강" border="0">
                 <map name="Map1670youtube" id="Map1670youtube">
-                    <area shape="rect" coords="319,784,795,872" href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1004" target="_blank" />
+                    <area shape="rect" coords="319,784,795,872" href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1004&course_idx=1072" target="_blank" />
                 </map>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/ZbL80DLO5ks?rel=0 " frameborder="0" allowfullscreen=""></iframe>        

@@ -83,9 +83,10 @@ class Caching extends CI_Driver_Library
     /**
      * get driver cache
      * @param string $skey
-     * @return mixed
+     * @param bool $re_save : 재저장 여부
+     * @return bool|mixed|null
      */
-    public function get($skey = '')
+    public function get($skey = '', $re_save = true)
     {
         $key = $this->{$this->_driver}->_key;
 
@@ -103,10 +104,11 @@ class Caching extends CI_Driver_Library
         }
 
         if ($data === false) {
-            // save cache
-            $this->save($skey);
-
-            return $this->get($skey);
+            if($re_save) {
+                // save cache
+                $this->save($skey);
+                return $this->get($skey);
+            }
         }
 
         return $data;

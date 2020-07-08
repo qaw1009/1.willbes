@@ -21,7 +21,7 @@ class UnitTest extends \app\controllers\FrontController
     public function npayResult()
     {
         logger('npay register result', '', 'ERROR');
-        
-        echo 'SUCCESS:1:2';
+
+        $this->response('SUCCESS:1:2', _HTTP_OK, 'php');
     }
 }

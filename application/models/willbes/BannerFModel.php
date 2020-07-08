@@ -37,8 +37,8 @@ class BannerFModel extends WB_Model
             ';
         $arr_condition = [
             'EQ' => [
-                'BD.SiteCode' => $site_code,
-                'BD.CateCode' => $cate_code,
+                'B.SiteCode' => $site_code,
+                'B.CateCode' => $cate_code,
                 'BD.IsUse' => 'Y',
                 'BD.IsStatus' => 'Y',
                 'B.CampusCcd' => $campus_code,

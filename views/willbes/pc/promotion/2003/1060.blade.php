@@ -71,10 +71,8 @@
         
         .wb_cts03 {background:#f3f5f7;position:relative;}	
         .wb_cts03 ul {position:absolute; left:50%;top:475px;}
-        .wb_cts03 li:nth-child(1) {margin-left:-500px;margin-top:85px;}
-        .wb_cts03 li:nth-child(2) {margin-left:-500px;margin-top:85px;}
-        .wb_cts03 li:nth-child(3) {margin-left:350px;margin-top:-145px;}   
-        .wb_cts03 li:nth-child(4) {margin-left:350px;margin-top:85px;}  
+        .wb_cts03 li:nth-child(1) {margin-left:400px;margin-top:-70px;}
+        .wb_cts03 li:nth-child(2) {margin-left:400px;margin-top:100px;}
         .wb_cts03 li input {height:30px; width:30px;}
         .wb_cts03 li label {display:none}
         .wb_cts03 .btn {padding-left:300px;}       
@@ -177,14 +175,13 @@
           
         <div class="evtCtnsBox wb_cts03" id="event">             
             <ul>                
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/><label for="y_pkg">공채 12개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/><label for="y_pkg">특채 12개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="161023" onClick=""/><label for="y_pkg">공채 3개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="163094" onClick=""/><label for="y_pkg">특채 3개월</label></li>                
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="167765" onClick=""/><label for="y_pkg">공채 12개월</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="167766" onClick=""/><label for="y_pkg">특채 12개월</label></li>              
             </ul>
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1060_07.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" usemap="#Map1060A" border="0" />
             <map name="Map1060A" id="Map1060A">
-                <area shape="rect" coords="645,974,755,1018" href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank" alt="소방체력풀패키지 상세보기" id="event2"/>
+                <area shape="rect" coords="838,387,946,447" href="#none" onclick="goPassLecture()">
+                <area shape="rect" coords="840,517,950,578" href="#none" onclick="goPassLecture()">
             </map>
             <div>
                 <div class="check" id="chkInfo">
@@ -192,13 +189,7 @@
                     <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.              
                     </label>
                     <a href="#tab1">이용안내확인하기 ↓</a>
-                </div>               
-                <div class="check04">
-                    {{--<a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
-                    <a href="#none" onclick="goPassLecture()">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c7_2_1.jpg" alt="장바구니"/>
-                    </a> <!--소방패스 신청하기-->
-                </div>
+                </div>          
             </div>                   
         </div><!--wb_cts03//-->
 

@@ -87,6 +87,13 @@ $config['njob'] = array(
 
 // willstory
 $config['book'] = array(
+    'npay_merchant_id' => 'np_uuzbk371472',  // 상점 아이디
+    'npay_comm_cert_key' => 's_10828d6a1923',   // 공통 인증키
+    'npay_btn_cert_key' => '6C3109A5-0221-488F-89FE-F238536F1058',  // 버튼 인증키
+    'npay_mart_cert_key' => '4918C2A6-DF88-448E-99CD-0140E9380181',  // 가맹점 인증키
+    'npay_delivery_group_id' => 'willstory001',  // 묶음배송 그룹아이디
+    'npay_delivery_add_area2_price' => '3000',  // 제주 추가배송료
+    'npay_delivery_add_area3_price' => '5000',  // 제주 외 도서산간 추가배송료
 );
 
 // 인천학원
@@ -108,7 +115,6 @@ $config['mock'] = array(
     'sysCode_SaleTypeCcd' => 613001,   // lms_Product_Sale > 판매타입코드 입력값 (PC+모바일)
     'sysCode_paymentStatus' => 676,    // 결제상태
     'sysCode_acceptStatus' => 675,        // 접수상태
-
     'upload_path_mock' => $config['upload_prefix_dir'] . '/mocktest/', // 통파일 저장경로: ~/mocktest/{idx}/
     'upload_path_mockQ' => '/question/',                               // 개별 문제파일 저장경로 {$uploadPath_mock}/question/
     'upload_path_mockBackup' => 'bak_' . date("Ymd"),                  // 백업파일 저장경로 {$uploadPath_mock}/bak_{date}/

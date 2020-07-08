@@ -462,10 +462,11 @@ class Home extends \app\controllers\FrontController
         $data = [];
         if (APP_DEVICE == 'pc') {
             $data['arr_main_banner'] = $this->_banner('0');
-            $data['notice'] = $this->_boardNotice(5, null, ['605005']);
-            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
-            $data['exam_news'] = $this->_boardExamNews(5);
         }
+
+        $data['notice'] = $this->_boardNotice(5, null, ['605005']);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+        $data['exam_news'] = $this->_boardExamNews(5);
         return $data;
     }
 

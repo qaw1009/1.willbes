@@ -30,7 +30,7 @@
                     <select class="form-control" id="CateCode" name="CateCode" title="카테고리">
                         <option value="">카테고리</option>
                         @foreach($arr_category as $row)
-                            <!--<option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if($data['CateCode'] == $row['CateCode']) selected="selected"@endif >{{ $row['CateRouteName'] }}</option>//-->
+                            <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if($data['CateCode'] == $row['CateCode']) selected="selected"@endif >{{ $row['CateRouteName'] }}</option>
                         @endforeach
                     </select>
                 </div>

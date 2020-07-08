@@ -26,22 +26,13 @@
             bottom:20px;
             right:10px;
             z-index:1;
-            width:120px;
+            width:152px;
+            text-align:center;
         }
-        .skybanner a {display:block; margin-bottom:5px}
+        .skybanner a {display:block; margin-bottom:5px;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top}
-        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-        @@keyframes upDown{
-             from{top:500px}
-             50%{top:520px}
-             to{top:500px}
-         }
-        @@-webkit-keyframes upDown{
-             from{top:500px}
-             50%{top:520px}
-             to{top:500px}
-         }
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/07/1710_top_bg.jpg) no-repeat center top}
+        .evtTop_01 {background:#626a74}
 
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
         .tabs {width:1120px; margin:0 auto;}
@@ -51,8 +42,8 @@
         .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
         .tabs:after {content:""; display:block; clear:both}
 
-        .evt01 {background:#fff; padding:100px 0}
-        .evt01 .dday {font-size:30px; position:absolute; top:430px; left:50%; width:940px; margin-left:-470px; text-align:center;}
+        .evt01 {padding:50px 0 100px;}
+        .evt01 .dday {font-size:30px; width:720px; margin:0 auto 50px; text-align:center;}
         .evt01 .dday strong {font-size:40px}
         .evt01 .dday img {display:inline-block; margin:0 20px;
             -webkit-animation: vibrate-1 1s linear infinite both;
@@ -112,103 +103,86 @@
          }
 
         .evt01 .dday span {color:#3a99f0; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
-        .evt01 .btnbuy {width:940px; margin:50px auto 0}
+        .evt01 .btnbuy {width:720px; margin:50px auto 0}
         .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
-        .evt01 .btnbuy a:hover {background:#3a99f0;
-            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-        @@-webkit-keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        @@keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        .infoCheck {margin-top:30px; font-size:14px}
+        .evt01 .btnbuy a:hover {background:#3a99f0;}
+
+        .infoCheck {font-size:14px; max-width:720px; margin:30px auto 0}
         .infoCheck label {margin-right:30px; cursor: pointer;}
         .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
         .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
         .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
         .infoCheck a:hover {background:#0099ff;}
 
-        .evt02 {background:#f6f6f6; padding-top:100px}
+        .evt02 {padding-top:100px}
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff; padding-top:100px;}
-        .evt03 .sample {width:900px; margin:0 auto}
-        .evt03 .sample li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
-        .evt03 .sample li p {font-size:20px; margin-bottom:15px; font-weight:600}
-        .evt03 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
-        .evt03 .sample li a.btnst01 {border:1px solid #ccc;}
-        .evt03 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-        .evt03 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-        .evt03 .sample li a:hover {background:#000; color:#fff}
-        .evt03 .sample:after {content:""; display:block; clear:both}
-        .evt03 .evt03Txt01 {width:1120px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333; padding-left:140px;}        
-
-        .evt04 {background:#ececec; padding:100px 0}
+        .evt03 {background:#f6f6f6; padding:0;}
+        
         .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#3a99f0; font-size:18px}
-        .evt04 .columns {width:940px; margin:50px auto 0;
+        .evt04 h4 {color:#3a99f0; font-size:18px}        
+
+        .evt05 {background:#ececec;}       
+
+        .evt06 {background:#f6f6f6; padding-bottom:120px}
+        .evt06 div {color:#2a92ed; font-size:30px; font-weight:600; margin-top:20px}
+
+        .evt07 { padding:120px 0 0; text-align:left;}
+        .evt07 .copy {width:720px; margin:0 auto;}
+        .evt07 h5 {color:#2a92ed; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evt07 .evt07Txt01 {font-size:28px; margin:20px auto 80px}
+        .evt07 .sample {width:720px; margin:0 auto}
+        .evt07 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
+            background:#2a92ed; color:#fff; font-size:20px; font-weight:600; text-align:center}
+        .evt07 .sample li p {margin-bottom:15px;}
+        .evt07 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
+        .evt07 .sample li a.btnst01 {border:1px solid #ccc;}
+        .evt07 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt07 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt07 .sample li a:hover {background:#000; color:#fff}
+        .evt07 .sample li:last-child {margin:0}
+        .evt07 .sample:after {content:""; display:block; clear:both}
+        .evt07 .evt07Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;}  
+        
+        .evt08 {background:#ececec; padding:120px 0}
+        .evt08 .columns {width:720px; margin:50px auto 0;
             column-count: 2;
-            column-gap:20px;
+            column-gap:10px;
         }
-        .evt04 .columns div {
+        .evt08 .columns div {
             text-align:justify; font-size:14px; line-height:1.4;
             display:inline-block;
             padding:20px; border:1px solid #eee; border-radius:10px;
-            margin-bottom:20px; color:#888; background:#fff;
+            margin-bottom:10px; color:#888; background:#fff;
             width:100%;
         }
-        .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
-        .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 .columns div strong {font-size:bold; color:#333}        
+        .evt08 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px; color:#2a92ed}
+        .evt08 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+        .evt08 .columns div strong {font-size:bold; color:#333}
 
-        .evt05 {background:#3a99f0; padding-bottom:100px}
-        .evt05 ul {width:940px; margin:0 auto;}
-        .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
-        .evt05 li a:hover {background:#fff; color:#000;
+        .evt09 {background:#2a92ed; padding-bottom:120px}
+        .evt09 ul {width:720px; margin:0 auto;}
+        .evt09 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
+        .evt09 li a:hover {background:#fff; color:#000;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
-        .evt05 li span {display:block; font-size:28px}
-        .evt05 li:last-child a{margin-left:10px}
-        .evt05 ul:after {content:""; display:block; clear:both}
+        .evt09 li span {display:block; font-size:28px}
+        .evt09 li:last-child a{margin-left:10px}
+        .evt09 ul:after {content:""; display:block; clear:both}
 
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}
 
-        .evtCurri {width:900px; margin:50px auto 100px; text-align:left}
-        .evtCurri li {font-size:26px; margin-bottom:15px; color:#262626; letter-spacing:-1px}
-        .evtCurri li.cTitle {color:#ff0004; font-size:30px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
+        .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
+        .evtCurri li.cTitle {color:#2a92ed; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
-        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
+        .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
@@ -220,18 +194,19 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_01.png" alt="이시한 교수"></a>
-            {{--시간설정--}}
-            @if(time() < strtotime('202005311159'))
-            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
-            @endif 
-            <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
-            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_04.png" alt="이용안내"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky01.png" alt="신청하기"></a>
+            <a href="#evt07Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_top.jpg" alt="창업 다마고치" > 
-            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_top.jpg" alt="이시한 교수" >             
+        </div>
+
+        <div class="evtCtnsBox evtTop_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_01.jpg" alt="이시한 교수" >             
+        </div>
+
+        <div class="evtCtnsBox">
             <div class="evtMenu">
                 <ul class="tabs">
                     <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
@@ -239,17 +214,18 @@
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
-            </div>
-        </div>       
+            </div>  
+        </div>  
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1564_01.jpg" usemap="#Map1710" border="0" >
-                <map name="Map1710">
-                    <area shape="rect" coords="230,663,573,710" href="#none" alt="기획전">
-                </map>                
-
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
+                <div class="dday NSK-Thin"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_img01.png" alt="시계" >
+                    <strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_02.jpg">
+                <div class="btnbuy NSK-Black">
+                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
+                </div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
                     <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
@@ -261,34 +237,44 @@
         <div id="tab02">
             <div class="evtCtnsBox evt02">
                 <iframe src="https://www.youtube.com/embed/OzRyEe5Vops?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="evt02Txt01">
-                    <span class="NSK-Black">이시한의 읽은척 책방! </span><br>
-                    <br>
-                    안녕하세요! 유튜브에서 지식편의점 시한책방을 운영하고 있는 <br>
-                    성신여대 겸임교수, 부업 북튜버 이시한입니다!  
+                <div class="mt80 mb100">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_03.png" alt="2시한의 읽은척 책방" >
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_02.jpg" alt="인플루언서" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_04.jpg" alt="인플루언서" >
             </div>
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_01.jpg" alt="e커머스 강좌소개" ><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_05.jpg" alt=" " >              
+            </div>  
+            <div class="evtCtnsBox evt04">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_06.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_07.jpg" alt=" " >
+            </div>
+            <div class="evtCtnsBox evt06">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_08.jpg" alt=" " ><br>
                 <iframe src="https://www.youtube.com/embed/zF21fLMGoJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_02.jpg" alt="e커머스 강좌소개" ><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_03.jpg" alt="e커머스 강좌소개" ><br>
-            </div>   
-        </div>  
+                <div class="NSK-Black">#유튜브, 지금 시작하시나요?</div>
+            </div>
+        </div>       
+
 
         <div id="tab03">
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_01.jpg" alt="커리큘럼 강좌소개" >
+            <div class="evtCtnsBox evt07" id="evt07Sec">
+                <div class="copy">
+                    <h5 class="NSK-Black">
+                        <div>지속가능한 유튜브 채널만들기 :</div>
+                        <div>기획부터 실행까지 한 방에</div>
+                    </h5>
+                    <div class="evt07Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+                </div>
 
                 <ul class="sample">
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @php $i = 1; @endphp
-                        @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                            {{-- <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강 맛보기 수강 ></a></li> --}}
+                        @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
                             <li>
-                                <p>{{$i}}강 맛보기 수강 ▼</p>
-                                {{--<a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" class="btnst01">WIDE ></a>--}}
+                                <p>{{$i}}강 맛보기 수강 ▼</p>                                
                                 <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
                                 <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
                             </li>
@@ -300,7 +286,7 @@
                     @endif
                 </ul> 
 
-                <div class="evt03Txt01">
+                <div class="evt07Txt02">
                     * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
                     스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
                     팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
@@ -356,8 +342,8 @@
         </div>
 
         <div id="tab04">
-            <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_01.png" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt08">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_09.png" alt="BEST 수강후기" >
                 <div class="columns">
                     <div>
                         <p>Golden B**</p>
@@ -437,13 +423,13 @@
                 @endif
             </div>
 
-            <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_04_02.jpg" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt09">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1710_10.jpg" alt="" >
                 <ul>
                     <li>
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
-                            <span class="NSK-Black">지금, N잡강의</span>
-                            신청하고 부수입 만들기 도전! → 
+                            <span class="NSK-Black">지금, N잡강의 신청하고</span>
+                             부수입 만들기 도전! → 
                         </a>
                     </li>
                 </ul>

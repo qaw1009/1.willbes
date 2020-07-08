@@ -80,6 +80,7 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 검색어 적용(캐쉬)', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
+                    { text: '<i class="fa fa-floppy-o mr-5"></i> 캐쉬 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-delete-cache' },
                     @if(sess_data('admin_auth_data')['Role']['RoleIdx'] === '1030')
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 캐쉬 확인', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-get-cache' },
                     @endif
@@ -231,6 +232,26 @@
                     'width' : 900
                     ,'modal_id' : 'word_get'
                 });
+            });
+
+            //캐쉭삭제
+            $('.btn-delete-cache').on('click', function(){
+                if($("#search_site_code").val() === '') {
+                    alert("개별사이트를 선택 후 사용하여 주십시오.");
+                    return;
+                }
+                if (!confirm('설정 검색어 캐시를 삭제하시겠습니까?)')) {
+                    return;
+                }
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT'
+                };
+                sendAjax('{{ site_url('/site/search/searchWord/deleteCache/') }}'+$("#search_site_code").val(), data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    }
+                }, showError, false, 'POST');
             });
 
         });

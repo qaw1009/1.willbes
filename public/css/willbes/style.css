@@ -12157,15 +12157,14 @@ table.acadlecInfoPackageTable tr.Top td {
     max-height: 200px;
     overflow-y: auto; /* prevent horizontal scrollbar */
     font-size:14px;
-    font-weight: bold !important;
     color:#666;
     line-height:1.5;
     overflow-x: hidden;
     z-index: 102;
 }
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
-    background: #666 !important;
-    font-weight: bold !important;                
+    background: #a0bfcf !important;
+    font-weight: bold !important;
     color: #fff !important;
     border:0  !important;
 }

@@ -140,13 +140,13 @@ trait InitController
      * @param $skey sitecode
      * @return array
      */
-    public function getCacheBySkey($driver, $adapter='', $skey)
+    public function getCacheBySkey($driver, $adapter='', $skey, $re_save = true)
     {
         is_object(@$this->caching) === false && $this->load->driver('caching');
         $this->caching->setDriver($driver);
 
         if($adapter === '') {
-            if (($items = $this->caching->{$driver}->get($skey)) === false) {
+            if (($items = $this->caching->{$driver}->get($skey,$re_save)) === false) {
                 $items = [];
             }
         } else {

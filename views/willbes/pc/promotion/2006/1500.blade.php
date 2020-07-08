@@ -119,7 +119,7 @@
                             <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
                         </tr>
                         <tr>
-                            <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
+                            <td>김상범 /ALL PASS 한국사능력시험 대비 기본강의</td>
                             <td>100일</td>
                             <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158955" target="_blank">수강신청 ></a></td>
                         </tr>
@@ -185,7 +185,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="tx-left">2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) - 중급/고급 대비</td>
+                            <td class="tx-left">ALL PASS 한국사능력시험 대비 기본강의 – 중급/고급</td>
                             <td>100일</td>
                             <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
                         </tr>                       

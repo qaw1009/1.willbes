@@ -15,11 +15,7 @@
     <link href="/public/css/willbes/basic.css" rel="stylesheet">
     <link href="/public/css/willbes/m/style.css" rel="stylesheet">
     
-    <!-- Slider jQuery -->
-    <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
-    <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
-    <script src="/public/vendor/jquery/swiper/swiper.js"></script>
-    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+    
     <!-- JAVASCRIPT -->
     <!--// CSS -->
     <!-- jQuery -->

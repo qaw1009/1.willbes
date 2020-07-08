@@ -118,10 +118,7 @@
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#f6f6f6; padding:0;}
-        
-        .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#3a99f0; font-size:18px}        
+        .evt03 {background:#f6f6f6; padding:0;}    
 
         .evt05 {background:#ececec;}       
 
@@ -194,7 +191,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky01.png" alt="신청하기"></a>
+            <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky01.png" alt="신청하기"></a>
             <a href="#evt07Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
         </div>                  
 

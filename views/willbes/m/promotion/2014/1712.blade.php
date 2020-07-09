@@ -426,8 +426,8 @@
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
-                        <span class="NSK-Black">지금, N잡강의</span>
-                        신청하고 부수입 만들기 도전! →
+                        <span class="NSK-Black">지금, N잡강의 신청하고</span>
+                        부수입 만들기 도전! →
                     </a>
                 </li>
             </ul>

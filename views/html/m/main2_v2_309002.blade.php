@@ -71,8 +71,7 @@
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png" alt="강사명">
                         <div>
                             <span>황종휴 1</span>
-                            경제학<br>
-                            예비순환
+                            감정평가 및 보상법규 4기 스터디
                         </div>
                     </a>
                 </div>            

@@ -193,4 +193,52 @@ class BookFModel extends ProductFModel
 
         return $this->_conn->getFindResult($this->_table['bms_book_combine'], $column, $arr_condition);
     }
+
+    /**
+     * 네이버페이 상품 제공 정보 추출
+     * @param array $add_condition
+     * @return mixed
+     */
+    public function NpayListBookStoreProduct($add_condition=[])
+    {
+        $arr_condition = array_merge_recursive($add_condition, [
+            'EQ' => [
+                'A.IsSaleEnd' => 'N'
+                ,'A.IsUse' => 'Y'
+                ,'A.wIsUse' => 'Y'
+                ,'A.wSaleCcd' => '112001'
+                ,'A.SaleStatusCcd' => '618001'
+            ],
+            'RAW' => ['NOW() between ' => ' A.SaleStartDatm and A.SaleEndDatm ']
+        ]);
+
+        #$cur_url = parse_url(current_url(), PHP_URL_HOST); //환경에 맞는 URL 적용시 stage에서 생성시 문제 발생 (실서비스와 스토리지 공유로 인해)
+        $cur_url = 'book.willbes.net';
+
+        $column = 'A.ProdCode as id, A.ProdName as title, A.rwRealSalePrice as price_pc, A.rwRealSalePrice as price_mobile, A.rwSalePrice as normal_price
+                        ,concat(\'https://'.$cur_url.'/bookStore/show/pattern/all/prod-code/\',A.ProdCode) as link
+                        ,concat(\'https://'.$cur_url.'\', A.wAttachImgPath, A.wAttachImgOgName) as image_link
+                        ,A.ProdCateName as category_name1
+                        ,null as category_name2
+                        ,null as category_name3
+                        ,\'50006391\' as naver_category
+                        ,\'신상품\' as \'condition\'
+                        ,A.wAuthorNames as brand
+                        ,A.wPublName as maker
+                        ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(A.keyword,\' \',\'\')) as search_tag
+                        ,(if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice)) as shipping
+                    ';
+        $from = '
+                    from vw_product_book A
+	                        join lms_site B on A.SiteCode = B.SiteCode
+                    where 1=1 
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $order_by = $this->_conn->makeOrderBy(['A.ProdCode' => 'DESC'])->getMakeOrderBy();
+
+        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+        return $result;
+    }
 }

@@ -111,7 +111,7 @@
         background:    -moz-linear-gradient(right, #f69ab1, #b5ade9);
         background:      -o-linear-gradient(right, #f69ab1, #b5ade9);
         background:         linear-gradient(to right, #f69ab1, #b5ade9);
-        color:#fff; font-size:20px; font-weight:600; text-align:center}
+        color:#fff; font-size:16px; font-weight:600; text-align:center}
     .evt04 .sample li p {margin-bottom:15px;}
     .evt04 .sample li a {display:inline-block; padding:5px 10px; font-size:14px; margin-right:5px; border-radius:4px}
     .evt04 .sample li a.btnst01 {border:1px solid #ccc;}

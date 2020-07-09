@@ -36,7 +36,7 @@ class NpayProduct extends \app\controllers\FrontController
         $real_file_path = public_to_upload_path(config_item('upload_prefix_dir').'/npay/product.txt');
         write_file($real_file_path, $write);
         header('Content-type: text/html; charset=utf-8');
-        header( 'Location:/uploads/willbes/npay/product.txt');
+        header( 'Location:/public/uploads/willbes/npay/product.txt');
         //$temp = file_get_contents($real_file_path);
         //echo '<xmp>'.$temp.'</xmp>';
         return;

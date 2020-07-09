@@ -94,7 +94,7 @@
                                 </ul>
                             </div>
                             <div class="naver">
-                                네이버페이 영역
+                                {{--네이버페이 영역--}}
                             </div>
                         @else
                             <div class="wsBook-buyBtn tx-right">

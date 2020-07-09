@@ -374,7 +374,7 @@
                                 <span class="price tx-light-blue">142,500원</span>
                             </li>
                         </ul>
-                        <div class="willbes-Lec-buyBtn c_both">
+                        <div class="willbes-Lec-buyBtn">
                             <ul>
                                 <li class="btnAuto180 h36">
                                     <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
@@ -385,12 +385,12 @@
                                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                                         <span>결제하기</span>
                                     </button>
-                                </li>                               
-                            </ul>                            
-                        </div>                        
+                                </li>
+                            </ul>                           
+                        </div>                       
                     </div>                    
                     <!-- willbes-Cart-Price -->
-                    
+
                     <div class="naverPay">네이버페이</div>
 
                     <div class="willbes-Cart-Txt c_both">

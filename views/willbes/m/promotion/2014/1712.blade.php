@@ -193,8 +193,7 @@
         .evt01 .dday img {width:142px;}
         .evt02 .price br,
         .evt04 h5 br {display:none}
-        .evt04 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}     
-        .evt07 li {display:inline; float:left; width:50%}   
+        .evt04 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}   
     }
 
     /* 태블릿 가로, PC */
@@ -427,14 +426,8 @@
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
-                        <span class="NSK-Black">지금, N잡강의</span>
-                        신청하고 부수입 만들기 도전! →
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
-                        <span class="NSK-Black">인플루언서 커머스</span>
-                        A to Z 기획전 바로가기! →
+                        <span class="NSK-Black">지금, N잡강의 신청하고</span>
+                        부수입 만들기 도전! →
                     </a>
                 </li>
             </ul>
@@ -470,6 +463,7 @@
 
         <p># 기타유의사항</p>
         <ul>
+            <li>셀픽스 수강생 혜택은 강의 중에 확인 하실 수 있으니, 참고 부탁드립니다.</li>
             <li>제공되는 사은혜택과 동영상은 구분하여 별도구매 불가합니다.</li>
             <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다. </li>
             <li>수강혜택 사은품으로 발급된 인증코드 및 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>

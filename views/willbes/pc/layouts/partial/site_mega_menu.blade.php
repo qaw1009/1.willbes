@@ -972,7 +972,7 @@
                 <li class="Tit">9급 공무원</li>
                 <li>
                     <span>종합반</span>
-                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1301')}}">관리형 ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1302')}}">ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1303')}}">이론과정</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3124&course_idx=1304')}}">문제풀이</a>
@@ -987,7 +987,7 @@
                 <li class="Tit">경찰 공무원</li>
                 <li>
                     <span>종합반</span>
-                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1301')}}">관리형 ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1302')}}">ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1303')}}">이론과정</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3125&course_idx=1304')}}">문제풀이</a>
@@ -1002,7 +1002,7 @@
                 <li class="Tit">소방 공무원</li>
                 <li>
                     <span>종합반</span>
-                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1301')}}">특공반</a>
+                    <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1301')}}">관리형 ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1302')}}">ALL PASS</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1303')}}">이론과정</a>
                     <a href="{{front_url('/offPackage/index?cate_code=3126&course_idx=1304')}}">문제풀이</a>
@@ -1010,9 +1010,13 @@
                 </li>
                 <li>
                     <span>단과</span>
-                    <a href="#none">이론관정</a>
+                    <a href="#none">이론과정</a>
                     <a href="#none">문제풀이</a>
                     <a href="#none">특강</a>
+                </li>
+                <li class="Tit">스파르타 독서실</li>
+                <li>
+                    <a href="{{front_url('/offLecture/index?cate_code=3130')}}">바로가기</a>
                 </li>
             </ul>
         </div>

@@ -899,7 +899,8 @@ body.memBody #Footer {
 } 
 
 .thisMonth .swiper-slide a {display: block; height: 152px;}
-.thisMonth .swiper-slide div {position: absolute; top:38px; left:18px; width:60%; text-align: left; color:#ff3600; line-height: 1.2; font-size: 18px; z-index: 2;}
+.thisMonth .swiper-slide div {position: absolute; top:38px; left:18px; width:50%; text-align: left; color:#ff3600; 
+    line-height: 1.2; font-size: 14px; word-break: keep-all; z-index: 2;}
 .thisMonth .swiper-slide span {display: block; font-size:24px; color:#2e2e2e}
 .thisMonth .swiper-slide img {position: absolute; bottom:-40px; right:0; width:100%; max-width: 200px; z-index: 1; }
 .thisMonth .swiper-container-lec .swiper-pagination {bottom:0 !important;} 

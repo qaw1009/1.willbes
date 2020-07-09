@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
+            <label class="control-label col-md-2" for="is_use_y">사용 여부 <span class="required">*</span>
             </label>
             <div class="col-md-4 item form-inline">
                 <div class="radio">
@@ -81,7 +81,25 @@
                     <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                 </div>
             </div>
-            <label class="control-label col-md-2" for="is_default">디폴트 여부 <span class="required">*</span>
+            <label class="control-label col-md-2" for="is_front_use_y">Front 사용 여부 <span class="required">*</span>
+            </label>
+            <div class="col-md-4 item form-inline">
+                <div class="radio">
+                    <input type="radio" id="is_front_use_y" name="is_front_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsFrontUse']=='Y')checked="checked"@endif/> <label for="is_front_use_y" class="input-label">사용</label>
+                    <input type="radio" id="is_front_use_n" name="is_front_use" class="flat" value="N" @if($data['IsFrontUse']=='N')checked="checked"@endif/> <label for="is_front_use_n" class="input-label">미사용</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="is_disp_y">노출 여부 <span class="required">*</span>
+            </label>
+            <div class="col-md-4 item form-inline">
+                <div class="radio">
+                    <input type="radio" id="is_disp_y" name="is_disp" class="flat" value="Y" required="required" title="노출여부" @if($method == 'POST' || $data['IsDisp']=='Y')checked="checked"@endif/> <label for="is_disp_y" class="input-label">노출</label>
+                    <input type="radio" id="is_disp_n" name="is_disp" class="flat" value="N" @if($data['IsDisp']=='N')checked="checked"@endif/> <label for="is_disp_n" class="input-label">미노출</label>
+                </div>
+            </div>
+            <label class="control-label col-md-2" for="is_default_n">디폴트 여부 <span class="required">*</span>
             </label>
             <div class="col-md-4 item form-inline">
                 <div class="radio">
@@ -97,16 +115,8 @@
             <div class="col-md-1">
                 <input type="text" name="order_num" class="form-control" value="{{ $data['OrderNum'] }}" style="width: 60px;" />
             </div>
-            <div class="col-md-3 form-control-static">
+            <div class="col-md-9 form-control-static">
                 # 미 입력시 마지막 DP
-            </div>
-            <label class="control-label col-md-2" for="is_front_use">Front 사용 여부 <span class="required">*</span>
-            </label>
-            <div class="col-md-4 item form-inline">
-                <div class="radio">
-                    <input type="radio" id="is_front_use_y" name="is_front_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsFrontUse']=='Y')checked="checked"@endif/> <label for="is_front_use_y" class="input-label">사용</label>
-                    <input type="radio" id="is_front_use_n" name="is_front_use" class="flat" value="N" @if($data['IsFrontUse']=='N')checked="checked"@endif/> <label for="is_front_use_n" class="input-label">미사용</label>
-                </div>
             </div>
         </div>
         <div class="form-group form-group-sm">

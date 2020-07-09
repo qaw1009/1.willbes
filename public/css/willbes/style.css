@@ -2040,6 +2040,24 @@ table.auTable tr td {
     margin: 15px 5px 0;
 }
 
+/*인천학원*/
+.Menu .menu-List li.willbesedu > a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat left center;
+    font-size: 16px;
+    color: #0c5dc0;
+    padding-left: 26px; 
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.Menu .menu-List li.willbesedu > a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
 .Menu .menu-List-Center {
     float: inherit;
     text-align: center;

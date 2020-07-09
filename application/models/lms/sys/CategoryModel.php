@@ -24,7 +24,7 @@ class CategoryModel extends WB_Model
      */
     public function listCategory($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse, IsFrontUse';
+        $column = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse, IsFrontUse, IsDisp';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
         return $this->_conn->getListResult($this->_table['category'], $column, $arr_condition, $limit, $offset, $order_by);
@@ -41,18 +41,21 @@ class CategoryModel extends WB_Model
         $from = '
             from (
                 select SiteCode, SiteName 
-                    , BCateCode, BCateName, BCateDepth, BOrderNum, if(BCateDepth < LastCateDepth, BIsUse, "") as BIsUse, BIsDefault
-                    , MCateCode, MCateName, MCateDepth, MOrderNum, if(MCateDepth < LastCateDepth, MIsUse, "") as MIsUse, MIsDefault
+                    , BCateCode, BCateName, BCateDepth, BOrderNum, if(BCateDepth < LastCateDepth, BIsUse, "") as BIsUse, BIsDefault, BIsDisp
+                    , MCateCode, MCateName, MCateDepth, MOrderNum, if(MCateDepth < LastCateDepth, MIsUse, "") as MIsUse, MIsDefault, MIsDisp
                     , if(LastCateDepth = 1, BIsUse, MIsUse) as LastIsUse
-                    , if(LastCateDepth = 1, BRegAdminIdx, MRegAdminIdx) as LastRegAdminIdx
-                    , if(LastCateDepth = 1, BRegDatm, MRegDatm) as LastRegDatm
                     , if(LastCateDepth = 1, BIsFrontUse, MIsFrontUse) as LastIsFrontUse
+                    , if(LastCateDepth = 1, BIsDisp, MIsDisp) as LastIsDisp
+                    , if(LastCateDepth = 1, BRegAdminIdx, MRegAdminIdx) as LastRegAdminIdx
+                    , if(LastCateDepth = 1, BRegDatm, MRegDatm) as LastRegDatm                    
                 from (
                     select S.SiteCode, S.SiteName
                         , BC.CateCode as BCateCode, BC.CateName as BCateName, BC.CateDepth as BCateDepth, BC.OrderNum as BOrderNum
-                        , BC.IsDefault as BIsDefault, BC.IsUse as BIsUse, BC.IsFrontUse as BIsFrontUse,  BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
+                        , BC.IsDefault as BIsDefault, BC.IsUse as BIsUse, BC.IsFrontUse as BIsFrontUse, BC.IsDisp as BIsDisp
+                        , BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
                         , MC.CateCode as MCateCode, MC.CateName as MCateName, MC.CateDepth as MCateDepth, MC.OrderNum as MOrderNum
-                        , MC.IsDefault as MIsDefault, MC.IsUse as MIsUse, MC.IsFrontUse as MIsFrontUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
+                        , MC.IsDefault as MIsDefault, MC.IsUse as MIsUse, MC.IsFrontUse as MIsFrontUse, MC.IsDisp as MIsDisp
+                        , MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
                         , greatest(BC.CateDepth, ifnull(MC.CateDepth, 0)) as LastCateDepth
                     from ' . $this->_table['site'] . ' as S
                         inner join ' . $this->_table['category'] . ' as BC
@@ -267,7 +270,7 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryForModify($cate_code)
     {
-        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse,C.IsFrontUse, C.RegDatm, C.UpdDatm';
+        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse, C.IsFrontUse, C.IsDisp, C.RegDatm, C.UpdDatm';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -333,6 +336,7 @@ class CategoryModel extends WB_Model
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),
+                'IsDisp' => element('is_disp', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
             ];
@@ -376,6 +380,7 @@ class CategoryModel extends WB_Model
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),
+                'IsDisp' => element('is_disp', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
 

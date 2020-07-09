@@ -344,7 +344,10 @@
         @include('willbes.pc.site.book_store.quick_menu')
     </div>
     <!-- End Container -->
-    {!! popup('657001', $__cfg['SiteCode'], '0', 'blank') !!}
+
+    {{-- popup 온라인서점 --}}
+    {!! popup('657001', $__cfg['SiteCode'], '3132') !!}
+
     <script type="text/javascript">
         $(document).ready(function() {
             // 메인 빅배너

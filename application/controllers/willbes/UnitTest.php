@@ -17,39 +17,4 @@ class UnitTest extends \app\controllers\FrontController
     {
         var_dump('unit test controller method');
     }
-
-    public function curlSend()
-    {
-        $url = 'https://www.dev.willbes.net/unitTest/index';
-        $send_xml = '<?xml version="1.0" encoding="utf-8"?>';
-        $send_xml .= '<order>';
-        $send_xml .= '<item>1000</item>';
-        $send_xml .= '</order>';
-
-        $this->load->library('curl');
-        $this->curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
-        $this->curl->setOpt(CURLOPT_SSL_VERIFYHOST, false);
-        $this->curl->setOpt(CURLOPT_SSLVERSION, 1);
-        $this->curl->setOpt(CURLOPT_RETURNTRANSFER, true);
-        $this->curl->setOpt(CURLOPT_HEADER, false);
-        $this->curl->setOpt(CURLOPT_HTTPHEADER, ['Content-Type: application/xml; charset=utf-8']);
-        $this->curl->setOpt(CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-        $this->curl->setOpt(CURLOPT_TIMEOUT, 10);
-        $this->curl->setOpt(CURLOPT_FAILONERROR, false);
-        $this->curl->post($url, $send_xml);
-
-        if ($this->curl->error === true) {
-            echo $this->curl->errorMessage . ' (' . $this->curl->errorCode . ')';
-        } else {
-            echo $this->curl->rawResponse;
-        }
-
-        $this->curl->close();
-    }
-
-    public function curlResult()
-    {
-        header('Access-Control-Allow-Origin: *');
-        echo 'SUCCESS:1:2';
-    }
 }

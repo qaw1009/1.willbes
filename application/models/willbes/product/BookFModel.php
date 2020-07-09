@@ -225,7 +225,7 @@ class BookFModel extends ProductFModel
                         ,\'신상품\' as \'condition\'
                         ,A.wAuthorNames as brand
                         ,A.wPublName as maker
-                        ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(A.keyword,\' \',\'\')) as search_tag
+                        ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(ifnull(A.keyword,\'\'),\' \',\'\')) as search_tag
                         ,(if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice)) as shipping
                     ';
         $from = '

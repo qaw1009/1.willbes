@@ -215,7 +215,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky01.png" alt="신청하기"></a>
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky02.png" alt="신청하기"></a>
+            <a href="https://www.celpicks.com/tutorial?next=%2F" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky02.png" alt="신청하기"></a>
             <a href="#evt09Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
         </div>                  
 

@@ -43,6 +43,10 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .wb_evt01,.wb_evt02 {background:#2b3541}
+
+        .evtCtnsBox .buyLec {width:600px; margin:0 auto;padding:30px 0 100px;}
+		.evtCtnsBox .buyLec a { display:block; text-align:center; font-size:35px;background:#000; color:#fff; padding:20px 0; border-radius:50px;font-weight:bold;}
+		.evtCtnsBox .buyLec a:hover {background:#000; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
    
         .wb_evt04 {background:#f5f5f5}
 
@@ -52,7 +56,7 @@
 
         <ul class="sky">
             <li>
-                <a href="#none;">
+                <a href="#receive">
                     <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_sky.png" alt="">
                 </a>
             </li>
@@ -100,10 +104,10 @@
         </div>
 
         <div class="evtCtnsBox wb_evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_02.jpg"  alt="쿠폰" usemap="#Map1661b" border="0">
-            <map name="Map1661b" id="Map1661b">
-                <area shape="rect" coords="260,2133,858,2252" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1661_02.jpg"  alt="쿠폰" />
+            <div class="buyLec" id="receive">
+                <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank">회원가입하고 광은팩 <span style="color:#ffff00;vertical-align:top;">플러스</span> 받기 > </a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_evt04">

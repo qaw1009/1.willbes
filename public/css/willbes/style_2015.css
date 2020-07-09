@@ -14,6 +14,20 @@
     margin: 15px 5px 0;
 }
 /*상단 메뉴*/
+.Menu .menu-List li.willbesedu > a {
+    font-size: 16px;
+    color: #0c5dc0;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.Menu .menu-List li.willbesedu > a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
 .dropdown .list-drop-Box-ic {
     top: 38px;
     left: 50%;

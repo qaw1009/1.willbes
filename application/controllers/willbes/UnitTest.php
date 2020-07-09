@@ -17,10 +17,4 @@ class UnitTest extends \app\controllers\FrontController
     {
         var_dump('unit test controller method');
     }
-
-    public function npayResult()
-    {
-        logger('npay register result', '', 'ERROR');
-        echo 'SUCCESS:1:2';
-    }
 }

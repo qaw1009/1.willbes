@@ -230,8 +230,10 @@
                                         <span>결제하기</span>
                                     </button>
                                 </li>
-                            </ul>
-                        </div>
+                                <li class="naverPay"><div>네이버페이</div><li>
+                            </ul>                           
+                        </div>  
+                                             
                     </div>
                     <!-- willbes-Cart-Price -->
 
@@ -385,6 +387,7 @@
                                         <span>결제하기</span>
                                     </button>
                                 </li>
+                                <li class="naverPay"><div>네이버페이</div><li>
                             </ul>
                         </div>
                     </div>

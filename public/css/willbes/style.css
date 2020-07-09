@@ -2599,15 +2599,18 @@ table.auTable tr td {
 }
 .willbes-Lec-buyBtn ul {
     float: right;
+    text-align: right;
 }
 .willbes-Lec-buyBtn ul li {
-    float: left;
     display: inline-block;
     margin-left: 10px;
 }
 .willbes-Lec-buyBtn ul li:first-child {
     margin-left: 0;
 }
+.willbes-Lec-buyBtn ul li.naverPay {clear:both; display: block; float:none; margin: 0;}
+.willbes-Lec-buyBtn ul li.naverPay div {text-align:right; padding-top:30px;;}
+.willbes-Lec-buyBtn ul:after {content: ""; display: block; clear: both;}
 .willbes-Lec-buyBtn-sm {
     display: none;
     position:absolute;
@@ -2630,6 +2633,7 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm button span {
     font-size: 11px;
 }
+
 .pocketBox {
     display:none;
     background: #fff;
@@ -5482,7 +5486,7 @@ span.calendar_btn {
     margin: 9px 0;
 }
 .willbes-Cart-Price {
-    height: 190px;
+    height: 250px;
     margin: 25px 0 40px;
 }
 .cart-PriceBox {

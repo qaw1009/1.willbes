@@ -6,7 +6,7 @@ class Player extends \app\controllers\FrontController
     protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF', '_lms/sys/code', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index');
+    protected $auth_methods = array('index', 'listBookmark', 'storeBookmark', 'deleteBookmark', 'info', 'Curriculum', 'qna');
 
     private $_groupCcd = [
         'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형

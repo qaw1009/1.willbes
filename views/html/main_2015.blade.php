@@ -107,9 +107,9 @@
                         </ul>
                     </div>
                 </li>
-                <li class="Acad">
+                <li class="willbesedu">
                     <a href="#none" target="_self">
-                    윌비스 온라인강의<span class="arrow-Btn">></span>
+                    학원방문결제<span class="arrow-Btn">></span>
                     </a>
                  </li>
             </ul>

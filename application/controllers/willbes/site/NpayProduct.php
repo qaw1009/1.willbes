@@ -39,8 +39,11 @@ class NpayProduct extends \app\controllers\FrontController
             }
 
             if ($type === '') {
+            
                 echo '<xmp>' . $write . '</xmp>'; //바로 호출
-            } else if ($type === 'file') {
+            
+            } else if ($type === 'file') {  //txt 파일 형태
+
                 /* 파일 생성 후 리다이렉트 처리*/
                 $this->load->helper('file');
                 $dir = public_to_upload_path(config_item('upload_prefix_dir') . '/npay');
@@ -52,9 +55,7 @@ class NpayProduct extends \app\controllers\FrontController
                 $real_file_path = $dir.'/product.txt';
                 write_file($real_file_path, $write);
                 header('Location:'.upload_path_to_public($real_file_path));
-                //$temp = file_get_contents($real_file_path);
-                //echo '<xmp>'.$temp.'</xmp>';
-                exit;
+
             }
         } catch (\Exception $e) {
             return error_result($e);

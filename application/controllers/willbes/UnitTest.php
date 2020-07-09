@@ -20,7 +20,7 @@ class UnitTest extends \app\controllers\FrontController
 
     public function curlSend()
     {
-        $url = 'https://www.dev.willbes.net/unitTest/npayResult';
+        $url = 'https://www.dev.willbes.net/unitTest/curlResult';
         $send_xml = '<?xml version="1.0" encoding="utf-8"?>';
         $send_xml .= '<order>';
         $send_xml .= '<item>1000</item>';

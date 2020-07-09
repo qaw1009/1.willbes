@@ -26,11 +26,16 @@
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
-                        </select>&nbsp;
+                        </select>
                         <select class="form-control" id="search_is_front_use" name="search_is_front_use">
                             <option value="">Front 사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
+                        </select>
+                        <select class="form-control" id="search_is_disp" name="search_is_disp">
+                            <option value="">노출여부</option>
+                            <option value="Y">노출</option>
+                            <option value="N">미노출</option>
                         </select>
                     </div>
                 </div>
@@ -54,6 +59,7 @@
                         <th class="searching">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
                         <th class="searching_is_use" width="120">사용여부</th>
                         <th class="searching_is_front_use" width="120">Front 사용여부</th>
+                        <th class="searching_is_disp" width="120">노출여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
                     </tr>
@@ -69,6 +75,7 @@
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
                                     [<span class="blue">{{ $row['BCateCode'] }}</span>]
                                     @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
+                                    @if($row['BIsDisp'] == 'N') <span class="red pl-5">[미노출]</span> @endif
                                     @if($row['BIsDefault'] == 'Y') <span class="red pl-5">[디폴트]</span> @endif
                                 </div>
                             </td>
@@ -87,6 +94,9 @@
                             </td>
                             <td>@if($row['LastIsFrontUse'] == 'Y') 사용 @elseif($row['LastIsFrontUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['LastIsFrontUse'] }}</span>
+                            </td>
+                            <td>@if($row['LastIsDisp'] == 'Y') 노출 @elseif($row['LastIsDisp'] == 'N') <span class="red">미노출</span> @endif
+                                <span class="hide">{{ $row['LastIsDisp'] }}</span>
                             </td>
                             <td>{{ $row['LastRegAdminName'] }}</td>
                             <td>{{ $row['LastRegDatm'] }}</td>
@@ -190,6 +200,7 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .column('.searching_is_front_use').search($search_form.find('select[name="search_is_front_use"]').val())
+                .column('.searching_is_disp').search($search_form.find('select[name="search_is_disp"]').val())
                 .draw();
         }
     </script>

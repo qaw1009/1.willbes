@@ -61,7 +61,7 @@
                                             <img src="{{$row['ProfLecListImg'] or ''}}" alt="{{$row['ProfNickName']}}">
                                             <div>
                                                 {{$row['SubjectName']}}<span></span><strong>{{$row['ProfNickName']}}</strong>
-                                                <p>{{empty($sample_info) ? '' : $sample_info[0]['wUnitName']}}</p>
+                                                <p>{{$row['ProdName']}}</p>
                                             </div>
                                         </a>
                                 </div>

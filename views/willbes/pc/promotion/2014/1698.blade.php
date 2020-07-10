@@ -13,7 +13,7 @@
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff url(https://static.willbes.net/public/images/promotion/2020/06/1698_top_bg.jpg) no-repeat center top;
+            background:#fff url(https://static.willbes.net/public/images/promotion/2020/07/1698_top_bg.jpg) no-repeat center top;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; margin:0 auto;}
@@ -29,7 +29,9 @@
             border:10px solid #000; z-index:6}
             .rulletBox a:hover {background:#5a14d6; color:#fff}
         .wb_01 {width:1120px; margin}
-        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2020/06/1698_04_bg.jpg) no-repeat center top;}
+        .wb_02 {background:#ebebeb; padding-bottom:150px}
+        .wb_02 .slider {position:absolute; width:1200px; left:50%; margin-left:-600px;}
+        .wb_02 .slider div {}
         .wb_03 {background:#555}
 
         .giftPopupWrap {
@@ -62,7 +64,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_top.jpg" alt="룰렛 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_top.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_start.png" alt="start" /></button>
@@ -71,12 +73,12 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_01.jpg" alt="룰렛 이벤트" usemap="#Map1698A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_01.jpg" alt="룰렛 이벤트" usemap="#Map1698A" border="0" />
             <map name="Map1698A">
                 <area shape="rect" coords="254,639,368,680" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2014" target="_blank" alt="신규가입">
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_02.jpg" alt="룰렛 이벤트" />
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_03.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1698B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_02.jpg" alt="룰렛 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_03.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1698B" border="0"/>
             <map name="Map1698B">
                 <area shape="rect" coords="383,834,446,898" href="https://www.instagram.com/" target="_blank" alt="인스타">
                 <area shape="rect" coords="478,835,543,900" href="https://www.facebook.com/" target="_blank" alt="페이스북">
@@ -91,14 +93,19 @@
         @endif
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_04.jpg" alt="사전예약" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_04.jpg" alt="사전예약" />
+            <div class="slider">
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/07/1698_04_01.jpg" alt="강사진"></div>                            
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/07/1698_04_02.jpg" alt="강사진"></div>
+            </div>
         </div>        
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1698_last.jpg"  alt="유의사항"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1698_last.jpg"  alt="유의사항"/>
         </div>
     </div>
     <!-- End Container -->
 
     @include('willbes.pc.promotion.roulette_script')
+    
 @stop

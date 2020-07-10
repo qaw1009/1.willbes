@@ -205,10 +205,8 @@ class BookFModel extends ProductFModel
          * TODO
          * 고대윤씨 협의 2020.07.10
          * 네이버 페이 상품 DB 정보 연동시 배송료 설정 방법
-         * lms 등록 된 '배송료부과여부' 와 관계없이 30000원 이상일 경우 배송료는 무조건 '0 ' 으로 연동되게끔 결정  (사이트정보내 무료배송조건)
-         * 조건 쿼리 -> (if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice)) as shipping
+         * lms 등록 된 '배송료부과여부' 가 우선시 되며 이후 사이트배송정책금액과 비교하여 배송료 설정
          */
-
         $arr_condition = array_merge_recursive($add_condition, [
             'EQ' => [
                 'A.IsSaleEnd' => 'N'
@@ -233,7 +231,9 @@ class BookFModel extends ProductFModel
                         ,A.wAuthorNames as brand
                         ,A.wPublName as maker
                         ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(ifnull(A.keyword,\'\'),\' \',\'\')) as search_tag
-                        ,(if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice)) as shipping
+                        ,(
+                        	if(A.IsFreebiesTrans=\'N\', 0, if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice))
+						) as shipping
                     ';
         $from = '
                     from vw_product_book A

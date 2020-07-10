@@ -27,7 +27,7 @@
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
-            .rulletBox a:hover {background:#5a14d6; color:#fff}
+        .rulletBox a:hover {background:#5a14d6; color:#fff}
         .wb_01 {width:1120px; margin}
         .wb_02 {background:#ebebeb; padding-bottom:150px}
         .wb_02 .slider {position:absolute; width:1200px; left:50%; margin-left:-600px;}
@@ -105,7 +105,6 @@
         </div>
     </div>
     <!-- End Container -->
-
     @include('willbes.pc.promotion.roulette_script')
     
 @stop

@@ -18,7 +18,7 @@
             </div>
         </li>
         <li class="cart">
-            <a href="{{ front_url('/cart/index?tab=book') }}">장바구니</a>
+            <a href="{{ front_url('/cart/index') }}">장바구니</a>
         </li>
         <li class="order">
             <a href="{{ front_app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>

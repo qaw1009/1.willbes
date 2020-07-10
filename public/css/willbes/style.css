@@ -2588,7 +2588,6 @@ table.auTable tr td {
     right: 0;
     bottom: 0;
     z-index: 10;*/
-    background-color: lawngreen;
     margin-top: 20px;
 }
 .willbes-Lec-buyBtn .btnAgree {
@@ -2600,7 +2599,6 @@ table.auTable tr td {
     margin: 4px 11px;
 }
 .willbes-Lec-buyBtn ul {
-    float: right;
     text-align: right;
 }
 .willbes-Lec-buyBtn li {
@@ -2611,7 +2609,7 @@ table.auTable tr td {
     margin-left: 0;
 }
 .willbes-Lec-buyBtn ul:after {content: ""; display: block; clear: both;}
-.naverPay {display:block; margin:20px 0 40px; text-align:right; background-color: lemonchiffon;}
+.pocketDetailWrap .naverPay {display:block; text-align:right;}
 .willbes-Lec-buyBtn-sm {
     display: none;
     position:absolute;
@@ -5488,7 +5486,7 @@ span.calendar_btn {
 }
 .willbes-Cart-Price {
     /*height: 190px;*/
-    margin: 25px 0 40px;
+    margin:25px 0;
 }
 .willbes-Cart-Price:after {content: ""; display: contents; clear:both}
 .cart-PriceBox {
@@ -5567,6 +5565,7 @@ span.calendar_btn {
     display: block;
     clear:both;
 }
+.willbes-Cart-Txt {margin-top:50px}
 .willbes-Cart-Txt .MoreBtn {
     position: absolute;
     top: 45px;

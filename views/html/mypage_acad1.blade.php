@@ -313,6 +313,7 @@
                                         <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
                                     </ul>
+                                    <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>
                                 </td>
                                 <td class="w-period">2018.10.20 <br>
                                     ~ 2018.11.20</td>

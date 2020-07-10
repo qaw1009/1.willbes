@@ -101,7 +101,7 @@ $config['book'] = array(
         'address2' => '세정빌딩 지하1층',
         'sellername' => '윌비스',
         'contact' => '15444944',
-    ),
+    ),  // 반품주소정보
 );
 
 // 인천학원

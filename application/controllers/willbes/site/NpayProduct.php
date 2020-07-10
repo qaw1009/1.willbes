@@ -64,7 +64,7 @@ class NpayProduct extends \app\controllers\FrontController
 
     /**
      * 윌스토리 네이버페이 상품정보 요청
-     * @example https://book.local.willbes.net/npayProduct/info?product[0][id]=159390&product[0][ecmallproductId]=159390&product[1][id]=159371&product[1][ecmallproductId]=159371&product[2][id]=159406&product[2][ecmallproductId]=159406&supplementSearch=true&optionSearch=true
+     * @example https://book.dev.willbes.net/npayProduct/info?product[0][id]=159390&product[1][id]=159371&product[2][id]=159406
      * @param array $params
      * @return CI_Output
      */
@@ -149,7 +149,7 @@ class NpayProduct extends \app\controllers\FrontController
                 $output .= '</surchargeByArea>';
                 $output .= '</shippingPolicy>';
 
-                // 반품정보
+                // 반품주소정보
                 $output .= '<returnInfo>';
                 $output .= '<zipcode>' . $_return_info_zipcode . '</zipcode>';
                 $output .= '<address1><![CDATA[' . $_return_info_address1 . ']]></address1>';

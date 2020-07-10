@@ -201,6 +201,12 @@ class BookFModel extends ProductFModel
      */
     public function NpayListBookStoreProduct($add_condition=[])
     {
+        /**
+         * TODO
+         * 고대윤씨 협의 2020.07.10
+         * 네이버 페이 상품 DB 정보 연동시 배송료 설정 방법
+         * lms 등록 된 '배송료부과여부' 가 우선시 되며 이후 사이트배송정책금액과 비교하여 배송료 설정
+         */
         $arr_condition = array_merge_recursive($add_condition, [
             'EQ' => [
                 'A.IsSaleEnd' => 'N'
@@ -208,13 +214,12 @@ class BookFModel extends ProductFModel
                 ,'A.wIsUse' => 'Y'
                 ,'A.wSaleCcd' => '112001'
                 ,'A.SaleStatusCcd' => '618001'
+                ,'A.IsFree' => 'N'      //무료 아님
             ],
             'RAW' => ['NOW() between ' => ' A.SaleStartDatm and A.SaleEndDatm ']
         ]);
 
-        #$cur_url = parse_url(current_url(), PHP_URL_HOST); //환경에 맞는 URL 적용시 stage에서 생성시 문제 발생 (실서비스와 스토리지 공유로 인해)
-        $cur_url = 'book.willbes.net';
-
+        $cur_url = config_app('SiteUrl');
         $column = 'A.ProdCode as id, A.ProdName as title, A.rwRealSalePrice as price_pc, A.rwRealSalePrice as price_mobile, A.rwSalePrice as normal_price
                         ,concat(\'https://'.$cur_url.'/bookStore/show/pattern/all/prod-code/\',A.ProdCode) as link
                         ,concat(\'https://'.$cur_url.'\', A.wAttachImgPath, A.wAttachImgOgName) as image_link
@@ -226,7 +231,9 @@ class BookFModel extends ProductFModel
                         ,A.wAuthorNames as brand
                         ,A.wPublName as maker
                         ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(ifnull(A.keyword,\'\'),\' \',\'\')) as search_tag
-                        ,(if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice)) as shipping
+                        ,(
+                        	if(A.IsFreebiesTrans=\'N\', 0, if(A.rwRealSalePrice >= B.DeliveryFreePrice,0,B.DeliveryPrice))
+						) as shipping
                     ';
         $from = '
                     from vw_product_book A

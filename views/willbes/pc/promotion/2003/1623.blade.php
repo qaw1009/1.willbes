@@ -120,7 +120,7 @@
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="164737" onClick=""/><label for="y_pkg">새벽모고 제외 12개월</label></li>
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="163552" onClick=""/><label for="y_pkg">새벽모고 4개월</label></li>
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1623_04.jpg" alt="수강신청"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1623_04.jpg" alt="수강신청"/>
             
             <div class="check_bg">
                 <div class="check" id="chkInfo">

@@ -123,12 +123,9 @@ class EventLecture extends \app\controllers\BaseController
         //포인트적립타입
         $arr_pointapply_ccd = $this->codeModel->getCcd('635');
 
-        //캠퍼스'N'상태 사이트 코드 조회
-        $onLineSite_list = $this->siteModel->getOnLineSiteArray();
-
-        // 학원사이트 코드 조회
+        //상태별 사이트 코드 조회
+        $arr_online_site_list = get_auth_on_off_site_codes('N',true);
         $arr_offline_site_code = get_auth_on_off_site_codes('Y');
-        $arr_online_site_code = get_auth_on_off_site_codes('N');
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -213,9 +210,8 @@ class EventLecture extends \app\controllers\BaseController
             'list_event_add_apply' => $list_event_add_apply,
             'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true,
             'promotion_attach_file_cnt' => (empty($file_data_promotion) === true) ? 3 : count($file_data_promotion),
-            'onLineSite_list' => $onLineSite_list,
             'arr_offline_site_code' => $arr_offline_site_code,
-            'arr_online_site_code' => $arr_online_site_code,
+            'arr_online_site_list' => $arr_online_site_list,
         ]);
     }
 

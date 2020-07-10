@@ -597,6 +597,8 @@ abstract class FrontController extends BaseController
      */
     protected function _redirectMobile()
     {
+        $sub_url = (empty($this->_cate_code) == true ? '' : '/cate/'.$this->_cate_code);
+
         if(APP_DEVICE == 'pc'){ // PC 화면일때
             $this->load->library('user_agent');
             if ($this->agent->is_mobile() == true) {
@@ -610,9 +612,9 @@ abstract class FrontController extends BaseController
 
                 if ($viewPC != '1') { // 세션이 있으면
                     if ($this->_is_pass_site === true) {
-                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/' . config_item('app_pass_site_prefix') . '/home/index'));
+                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/' . config_item('app_pass_site_prefix') . '/home/index'.$sub_url));
                     } else {
-                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
+                        redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'.$sub_url));
                     }
                 }
             }

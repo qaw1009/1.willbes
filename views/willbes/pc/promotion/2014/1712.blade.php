@@ -214,8 +214,8 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky01.png" alt="신청하기"></a>
-            {{--<a href="https://www.celpicks.com/tutorial?next=%2F" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky02.png" alt="신청하기"></a>--}}
-            <a href="#evt09Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
+            <a href="/book/index/cate/3114?cate_code=3114&subject_idx=1952&prof_idx=51030"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky02.png" alt="교재"></a>
+            <a href="#evt09Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>            
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
@@ -322,26 +322,25 @@
                         <li class="cTitle">1. 인스타그램 계정 키우기 10강</li>
                         <li>1강. 인스타마켓, 얼마나 벌 수 있어요?</li>
                         <li>2강. 인스타에 대한 거짓, 전부 리뷰해드립니다.</li>
-                        <li>3강. 인스타 마켓, 진성고객 1000명이 필요한 이유</li>
-                        <li>4강. 상품이 잘 팔리는 계정은 뭐가 다를까?</li>
-                        <li>5강. 내 상품을 사줄 고객 데려오는 법</li>
-                        <li>6강. 고객이 나에게 끌리는 가장 확실한 방법</li>
-                        <li>7강. 고객이 내가 더 궁금해지는 인스타그램 프로필</li>
-                        <li>8강. 좋아요 500개, 댓글 100개받는 일상글의 비밀</li>
-                        <li>9강. 고객이 하루에도 3번 찾는 계정 만들기</li>
-                        <li>10강. 고객을 사로잡는 감각적인 피드 구성법</li>
+                        <li>3강. 많은 SNS중 인스타그램을 하는 이유</li>
+                        <li>4강. 인스타마켓을 준비하기 전 인스타그램 이해하기</li>
+                        <li>5강. 인스타그램으로 성공하는 계정들 특징</li>
+                        <li>6강. 인스타그램 용어 정리의 모든 것</li>
+                        <li>7강. 인스타 마켓, 진성고객 1000명이 필요한 이유</li>
+                        <li>8강. 판매량이 높은 계정은 프로필이 다르다</li>
+                        <li>9강. 좋아요 500개, 댓글 100개받는 일상글의 비밀</li>
+                        <li>10강. 고객이 하루에도 3번 찾는 계정 만들기</li>
                         <li class="cTitle">2. 이미지마케팅  10강</li>
                         <li>1강. 인스타마켓, 정말 사진이 중요할까?</li>
-                        <li>2강. 포토샵 없이 보정할 수 있는 어플 모음집</li>
-                        <li>3강. 동영상으로 매력 어필하기</li>
-                        <li>3강. 인스타마켓 - 셀카 잘 찍는 법</li>
-                        <li>4강. 인스타마켓 - 인물사진 잘 찍는 법</li>
-                        <li>5강. 인스타마켓 - 음식 사진 잘 찍는 법</li>
-                        <li>6강. 인스타마켓 - 배경사진 잘 찍는 법</li>
-                        <li>7강. 인스타마켓 이미지마케팅 추가 강의 1</li>
-                        <li>8강. 인스타마켓 이미지마케팅 추가 강의 2</li>
-                        <li>9강. 인스타마켓 이미지마케팅 추가 강의 3</li>
-                        <li>10강. 인스타마켓 이미지마케팅 추가 강의 4</li>
+                        <li>2강. 인스타그램, 같이 활용하면 좋은 어플/웹사이트 모음집 (1)</li>
+                        <li>3강.  인스타그램, 같이 활용하면 좋은 어플/웹사이트 모음집 (2)</li>
+                        <li>4강. 컨셉에 맞는 이미지 마케팅 하는 법</li>
+                        <li>5강. 인물사진, 스마트폰 하나로 화보 만들기</li>
+                        <li>6강. 상품사진, 스마트폰 하나로 200만원 절약하기</li>
+                        <li>7강. 배경사진, 0원으로 DSLR처럼 찍기</li>
+                        <li>8강. 음식사진, 촬영 전문가에게 배운 스마트폰 사진술</li>
+                        <li>9강. 눈길을 사로잡는 사진 보정 법</li>
+                        <li>10강. 스마트폰 하나로 영상 정복하기</li>
                         <li class="cTitle">3. 툴 사용법 10강</li>
                         <li>1강. 인스타그램 스토리로 고객과 소통하기</li>
                         <li>2강. 인스타그램 하이라이트에 나만의 모음집 만들기</li>

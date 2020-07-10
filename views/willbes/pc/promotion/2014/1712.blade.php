@@ -23,7 +23,7 @@
         /************************************************************/
         .skybanner {
             position:fixed;
-            bottom:20px;
+            top:100px;
             right:10px;
             z-index:1;
             width:152px;
@@ -213,6 +213,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
+            <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1952&prof_idx=51030" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky03.png" alt="교재구매하기"></a>
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky01.png" alt="신청하기"></a>
             {{--<a href="https://www.celpicks.com/tutorial?next=%2F" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_sky02.png" alt="신청하기"></a>--}}
             <a href="#evt09Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>

@@ -595,9 +595,9 @@ abstract class FrontController extends BaseController
      * viewPC = 0 을 달고 오면 모바일로 리다이렉트
      * 해당 함수는 사이트 home controller index function 에서만 호출
      */
-    protected function _redirectMobile($cate_code = '')
+    protected function _redirectMobile()
     {
-        $sub_url = (empty($cate_code) == true ? '' : '/cate/'.$cate_code);
+        $sub_url = (empty($this->_cate_code) == true ? '' : '/cate/'.$this->_cate_code);
 
         if(APP_DEVICE == 'pc'){ // PC 화면일때
             $this->load->library('user_agent');

@@ -597,7 +597,7 @@ abstract class FrontController extends BaseController
      */
     protected function _redirectMobile()
     {
-        $sub_url = (empty($this->_cate_code) == true ? '' : '/cate/'.$this->_cate_code);
+        $sub_url = (empty($this->_cate_code) == true ? '' : '/'.config_get('uri_segment_keys.cate').'/'.$this->_cate_code);
 
         if(APP_DEVICE == 'pc'){ // PC 화면일때
             $this->load->library('user_agent');

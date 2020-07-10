@@ -37,9 +37,9 @@
                                 <td>접수기간 : 2.4 ~ 2.6<br>
                                 (취소마감일 2.9. 21:00)</td>
                                 <td rowspan="2">제1차시험</td>
-                                <td rowspan="2">2.21</td>
-                                <td rowspan="2">2.29</td>
-                                <td rowspan="2">3.31</td>
+                                <td rowspan="2">5.8.</td>
+                                <td rowspan="2">5.16.</td>
+                                <td rowspan="2">6.16.</td>
                             </tr>
                         </tbody>
                     </table>

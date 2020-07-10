@@ -455,7 +455,7 @@
                                 <div class="col-md-11">
                                     <div class="form-group form-inline">
                                         <div class="col-md-11">
-                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '', '', false, $onLineSite_list) !!}
+                                            {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '', '', false, $arr_online_site_list) !!}
                                             <button type="button" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
                                         </div>
                                     </div>
@@ -692,7 +692,6 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var arr_offline_site_code = {{json_encode($arr_offline_site_code)}};
-        var arr_online_site_code = {{json_encode($arr_online_site_code)}};
 
         $(document).ready(function() {
             //editor load
@@ -1108,14 +1107,9 @@
                     return false;
                 }
 
-                var p_prod_type;
-                if(arr_online_site_code.indexOf(site_code) !== -1) {
-                    p_prod_type = 'on';
-                } else if(arr_offline_site_code.indexOf(site_code) !== -1) {
+                var p_prod_type = 'on';
+                if(arr_offline_site_code.indexOf(site_code) !== -1) {
                     p_prod_type = 'off';
-                } else {
-                    alert('사이트코드가 잘못 되었습니다.');
-                    return false;
                 }
 
                 $('.btn_product_search').setLayer({

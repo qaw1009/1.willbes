@@ -175,11 +175,7 @@
             </ul>
         </div> 
         <div class="evtCtnsBox evtTop" >
-            <span class="img01">
-                <a href="/promotion/index/cate/3019/code/1706/spidx/10?tab=1#content_1">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top_img01.png" alt="신문">
-                </a>
-            </span>
+            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top_img01.png" alt="신문"></span>
             <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top_img02.png" alt="상품"></span>
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
             <div class="evtMenu" id="evtMenu">                

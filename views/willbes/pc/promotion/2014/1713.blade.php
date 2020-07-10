@@ -27,9 +27,10 @@
             right:10px;
             z-index:1;
             width:152px;
-            text-align:center;
+            text-align:left;
         }
         .skybanner a {display:block; margin-bottom:5px;}
+        .skybanner a:last-child {text-align:center}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/07/1713_top_bg.jpg) no-repeat center top}
         .evtTop_01 {background:#626a74}
@@ -199,8 +200,9 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
+        <div class="skybanner" >            
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_sky01.png" alt="신청하기"></a>
+            <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1952&prof_idx=51029" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_sky03.png" alt="교재구매하기"></a>
             <a href="#evt11Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>
         </div>                  
 

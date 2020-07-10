@@ -83,8 +83,23 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_willpass') }}" target="_blank">취업 공기업</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/main_3114') }}" target="_blank">N잡</a></li>             
-                <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>
+                <li class="c_both"></li>  
+                <li><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
+                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank" class="w50">└ 도서리스트 </a></li>
+                <li><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank" class="w50">└ 도서보기 </a></li> 
+                <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank" class="w50">└ 베스트셀러 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank" class="w50">└ 신간안내 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank" class="w50">└ 출판사 </a></li>  
+                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank" class="w50">└ 업무제휴 문의 </a></li> 
+                <li><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
+                <li><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li>               
+            </ul>
+        </div>        
+    </li>
+    <li>
+        <div>
+            <ul>
+            <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memcombine') }}" target="_blank">통합회원가입</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memconvert') }}" target="_blank">통합회원전환</a></li>
@@ -130,7 +145,7 @@
                 <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경</a></li>
                 <li class="c_both"></li>
             </ul>
-        </div>        
+        </div>
     </li>
     <li>
         <div>
@@ -512,15 +527,7 @@
     <li>
         <div>  
             <ul>          
-                <li><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
-                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank">└ 도서리스트 </a></li>
-                <li><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank">└ 도서보기 </a></li> 
-                <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank">└ 베스트셀러 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank">└ 신간안내 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank">└ 출판사 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank">└ 업무제휴 문의 </a></li> 
-                <li><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank">└ 저자모집</a></li>   
-                <li><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank">└ 검색화면</a></li> 
+                
             </ul>
         </div>
     </li>

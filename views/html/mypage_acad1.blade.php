@@ -95,12 +95,167 @@
         <div class="willbes-Leclist c_both">
             <div class="c_both mb30">
                 <ul class="tabWrap tabDepthPass">
-                    <li><a href="#Mypagetab1" class="on">단과반 (2)</a></li>
-                    <li><a href="#Mypagetab2">종합반 (3)</a></li>
+                    <li><a href="#Mypagetab1" class="on">종합반 (3)</a></li>
+                    <li><a href="#Mypagetab2">단과반 (2)</a></li>                    
                 </ul>
             </div>
 
             <div id="Mypagetab1">
+                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                    <div class="willbes-Lec-Search GM f_right">
+                        <div class="inputBox p_re">
+                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
+                            <button type="submit" onclick="" class="search-Btn">
+                                <span>검색</span>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+            
+                <div class="willbes-Lec-Table NG d_block c_both">
+                    <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
+                        <colgroup>
+                            <col>
+                            <col style="width: 140px;">
+                            <col style="width: 120px;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <div class="w-tit">[영어강화형_분납] 8개월 슈퍼PASS(원) [1/13~8/31]</div>
+                                </td>
+                                <td class="w-period">2018.10.20<br>
+                                    ~ 2018.11.20</td>
+                                <td class="w-answer p_re">
+                                    <a href="#none" onclick="openWin('profChoice')"><span class="bBox blueBox">강사선택하기</span></a>
+                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                    <dl class="w-info">
+                                        <dt>
+                                            기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                            한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                        </dt>
+                                    </dl>     
+                                    <ul class="seatsection">
+                                        <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
+                                        <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                        <li>[좌석번호] <span>086</span></li>
+                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                    </ul>
+                                    <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <div class="w-tit">★기본서제공★기본종합(원)[1/6~3/6]</div>
+                                </td>
+                                <td class="w-period">2018.10.20<br>
+                                    ~ 2018.11.20</td>
+                                <td class="w-answer p_re">
+                                    <a href="#none"><span class="bBox blueBox">강사선택하기</span></a>
+                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span>066</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb10">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            </dt>
+                                        </dl>     
+                                        <ul class="seatsection">
+                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
+                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
+                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
+                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <div class="w-tit">[9급 일행] 2개월 진도별 문제풀이반 4과목 (20.1-2)</div>
+                                </td>
+                                <td class="w-period">2018.10.20<br>
+                                 ~ 2018.11.20</td>
+                                <td class="w-answer p_re">
+                                    <a href="#none" onclick="openWin('lecList')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                    <div id="lecList" class="willbes-Layer-lecList">
+                                        <a class="closeBtn" href="#none" onclick="closeWin('lecList')">
+                                            <img src="{{ img_url('prof/close.png') }}">
+                                        </a>
+                                        <div class="Layer-Cont">
+                                            <div class="Layer-SubTit tx-gray">
+                                                <ul>
+                                                    <li>형소법 기본(단과)[1/6-1/24]</li>
+                                                    <li>경찰학 기본(단과)[1/6~2/18]</li>
+                                                    <li>형법 기본(단과)[1/28~2/14]</li>
+                                                    <li>영어 기본(단과) [1/8~2/21]</li>
+                                                    <li>원유철한국사 기본(단과)[2/17~3/6]</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="Paging">
+                        <ul>
+                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                            <li><a href="#none">2</a><span class="row-line">|</span></li>
+                            <li><a href="#none">3</a><span class="row-line">|</span></li>
+                            <li><a href="#none">4</a><span class="row-line">|</span></li>
+                            <li><a href="#none">5</a><span class="row-line">|</span></li>
+                            <li><a href="#none">6</a><span class="row-line">|</span></li>
+                            <li><a href="#none">7</a><span class="row-line">|</span></li>
+                            <li><a href="#none">8</a><span class="row-line">|</span></li>
+                            <li><a href="#none">9</a><span class="row-line">|</span></li>
+                            <li><a href="#none">10</a></li>
+                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Mypagetab2">
                 <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                     <select id="process" name="process" title="process" class="seleProcess">
                         <option selected="selected">과정</option>
@@ -229,161 +384,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <div id="Mypagetab2">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                    <div class="willbes-Lec-Search GM f_right">
-                        <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                    </div>
-                </div> 
-            
-                <div class="willbes-Lec-Table NG d_block c_both">
-                    <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
-                        <colgroup>
-                            <col>
-                            <col style="width: 140px;">
-                            <col style="width: 120px;">
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td class="w-data tx-left pl10">
-                                    <div class="w-tit">[영어강화형_분납] 8개월 슈퍼PASS(원) [1/13~8/31]</div>
-                                </td>
-                                <td class="w-period">2018.10.20<br>
-                                    ~ 2018.11.20</td>
-                                <td class="w-answer p_re">
-                                    <a href="#none" onclick="openWin('profChoice')"><span class="bBox blueBox">강사선택하기</span></a>
-                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
-                                    <dl class="w-info">
-                                        <dt>
-                                            기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                            한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                                        </dt>
-                                    </dl>     
-                                    <ul class="seatsection">
-                                        <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
-                                        <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                        <li>[좌석번호] <span>086</span></li>
-                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-data tx-left pl10">
-                                    <div class="w-tit">★기본서제공★기본종합(원)[1/6~3/6]</div>
-                                </td>
-                                <td class="w-period">2018.10.20<br>
-                                    ~ 2018.11.20</td>
-                                <td class="w-answer p_re">
-                                    <a href="#none"><span class="bBox blueBox">강사선택하기</span></a>
-                                    <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
-                                    <div class="mb10">
-                                        <dl class="w-info">
-                                            <dt>
-                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                                            </dt>
-                                        </dl>     
-                                        <ul class="seatsection">
-                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
-                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
-                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mb10">
-                                        <dl class="w-info">
-                                            <dt>
-                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                                            </dt>
-                                        </dl>     
-                                        <ul class="seatsection">
-                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
-                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                            <li>[좌석번호] <span>066</span></li>
-                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mb10">
-                                        <dl class="w-info">
-                                            <dt>
-                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
-                                                한덕현 교수님 <span class="row-line">|</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                                            </dt>
-                                        </dl>     
-                                        <ul class="seatsection">
-                                            <li><button href="#" onclick="openWin('seatChoice')">좌석선택 ></button></li>
-                                            <li>[강의실명] <span>드림타워 3층 305호</span></li>
-                                            <li>[좌석번호] <span class="tx-red">미선택</span></li>
-                                            <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-data tx-left pl10">
-                                    <div class="w-tit">[9급 일행] 2개월 진도별 문제풀이반 4과목 (20.1-2)</div>
-                                </td>
-                                <td class="w-period">2018.10.20<br>
-                                 ~ 2018.11.20</td>
-                                <td class="w-answer p_re">
-                                    <a href="#none" onclick="openWin('lecList')"><span class="bBox grayBox">강좌구성보기</span></a>
-                                    <div id="lecList" class="willbes-Layer-lecList">
-                                        <a class="closeBtn" href="#none" onclick="closeWin('lecList')">
-                                            <img src="{{ img_url('prof/close.png') }}">
-                                        </a>
-                                        <div class="Layer-Cont">
-                                            <div class="Layer-SubTit tx-gray">
-                                                <ul>
-                                                    <li>형소법 기본(단과)[1/6-1/24]</li>
-                                                    <li>경찰학 기본(단과)[1/6~2/18]</li>
-                                                    <li>형법 기본(단과)[1/28~2/14]</li>
-                                                    <li>영어 기본(단과) [1/8~2/21]</li>
-                                                    <li>원유철한국사 기본(단과)[2/17~3/6]</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            </div>            
 
             <!--좌석선택 팝업-->
             <div id="seatChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
@@ -762,9 +763,380 @@
                 </div>
             </div>
 
-        </div>
-        <!-- willbes-Leclist -->
+            <!--첨삭 팝업-->
+            <div id="lookOver" class="willbes-Layer-Black">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix abs">
+                    <a class="closeBtn" href="#none" onclick="closeWin('lookOver')">
+                        <img src="{{ img_url('sub/close.png') }}">
+                    </a>
+                    <div class="Layer-Tit NG tx-dark-black">온라인 첨삭</div>
 
+                    {{--리스트--}}
+                    <div class=" lookover-cont">
+                        <div class="mt20 tx14 NG">· 답안제출 및 채점결과 보기</div>
+                        <div class="Layer-Cont">
+                            <ul class="lookoverInfo tx-gray NGR mt20 mb20">
+                                <li class="sTit">- 제출상태</li>
+                                <li><span class="stbox stbox-red mr10">답안제출</span> ‘답안제출’을 클릭하여 첨삭과제를 확인하고 답안을 제출하세요.</li>
+                                <li><span class="stbox stbox-blue mr10">답안수정</span> 첨삭 체출을 완료했으나 답안수정이 필요한 경우 제출기간 내에 답안 수정이 가능합니다.</li>
+                                <li class="sTit mt20">- 채점상태</li>
+                                <li><span class="stbox stbox-blue-line mr10">채점중</span> 제출기간이 지나면 채점이 진행됩니다. 채점은 2-3일 소요됩니다.＇채점중'을 클릭하여 제출한 답안을 확인할 수 있습니다.</li>
+                                <li><span class="stbox stbox-333-line mr10">채점완료</span> 채점이 완료되었습니다. '채점완료'를 클릭하여 채점 결과를 확인하세요.</li>
+                            </ul>
+                            <div class="lookoverList mt20">
+                                <table class="lookoverTable">
+                                    <colgroup>
+                                        <col width="50px"/>
+                                        <col/>
+                                        <col width="100px"/>
+                                        <col width="200px"/>
+                                        <col width="100px"/>
+                                        <col width="100px"/>
+                                        <col width="100px"/>
+                                        <col width="100px"/>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>회차명</th>
+                                            <th>첨부파일</th>
+                                            <th>제출기간</th>
+                                            <th>제출상태</th>
+                                            <th>제출일</th>
+                                            <th>채점상태</th>
+                                            <th>채점일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>6회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><a href="#none"><span class="stbox stbox-red">답안제출</span></a></td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>5회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><a href="#none"><span class="stbox stbox-blue">답안수정</span></a></td>
+                                            <td>2020-01-15</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>4회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><span class="stbox stbox-blue-txt">제출완료</span></td>
+                                            <td>2020-01-15</td>
+                                            <td><a href="#none"><span class="stbox stbox-blue-line">채점중</span></a></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>3회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><span class="stbox stbox-red-txt">미제출</span></td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>2회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><span class="stbox stbox-blue-txt">제출완료</span></td>
+                                            <td>2020-01-15</td>
+                                            <td><a href="#none"><span class="stbox stbox-333-line">채점완료</span></a></td>
+                                            <td>2020-01-20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>1회차</td>
+                                            <td><img src="https://www.local.willbes.net/public/img/willbes/prof/icon_file.gif"/></td>
+                                            <td>2020-01-10 ~ 2020-02-01</td>
+                                            <td><span class="stbox stbox-blue-txt">제출완료</span></td>
+                                            <td>2020-01-15</td>
+                                            <td><a href="#none"><span class="stbox stbox-333-line">채점완료</span></a></td>
+                                            <td>2020-01-20</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {{--딥안제출--}}
+                    <div class=" lookover-cont">
+                        <div class="mt20 tx14 NG">· 답안제출</div>
+                        <div class="mt10 NG"> - 첨삭과제 확인</div>
+                        <div class="Layer-Cont lookover-cont">
+                            <div class="lookoverList mt20">
+                                <table class="lookoverTable">
+                                    <colgroup>
+                                        <col width="150px"/>
+                                        <col/>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>회차명</th>
+                                            <td class="tx-left"> 6회차</td>
+                                        </tr>
+                                        <tr>
+                                            <th>첨부파일</th>
+                                            <td class="tx-left"> 
+                                                <ul class="up-file">
+                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 2순환 실영상 김유미 인사노무관리론 1회차.pdfx</a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 6회차 답안지.hwp</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>내용</th>
+                                            <td class="tx-left"> 6회차 첨삭과제 제출 부탁 드립니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mt40 NG"> - 답안작성</div>
+                        <div class="Layer-Cont">
+                            <div class="lookoverList mt20">
+                                <table class="lookoverTable">
+                                    <colgroup>
+                                        <col width="150px"/>
+                                        <col/>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>답안내용<span class="tx-red">(*)</span></th>
+                                            <td class="tx-left"><textarea></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <th>답안첨부<span class="tx-red">(*)</span></th>
+                                            <td class="tx-left"> 
+                                                <ul class="up-file">
+                                                    <li><input type="file" class="input-file" size="3"></li>
+                                                    <li><input type="file" class="input-file" size="3">
+                                                    </li>
+                                                    <li>
+                                                        • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
+                                                        • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="search-Btn mt20 h36 p_re mb20">
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                    <span class="tx-purple-gray">취소</span>
+                                </button>
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center">
+                                    <span>제출하기</span>
+                                </button>
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_right">
+                                    <span class="tx-purple-gray">목록</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{--채점결과--}}
+                    <div class=" lookover-cont">
+                        <div class="mt20 tx14 NG">· 채점결과</div>
+                        <div class="Layer-Cont">
+                            <div class="PASSZONE-Lec-Section">
+                                <div class="LeclistTable editTableList mt20">
+                                    <table cellspacing="0" cellpadding="0" class="listTable editTable bdt-gray bdb-gray upper-gray fc-bd-none tx-gray">
+                                        <colgroup>
+                                            <col style="width: 115px;">
+                                            <col style="width: 235px;">
+                                            <col style="width: 115px;">
+                                            <col style="width: 235px;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th class="w-tit bg-light-white strong">과제제목</th>
+                                                <td class="w-data tx-left tx-gray pl15" colspan="3">온라인 독해 첨삭지도1</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit bg-light-white strong">첨삭교수</th>
+                                                <td class="w-data tx-left pl15">한덕현</td>
+                                                <th class="w-tit bg-light-white strong">채점완료일</th>
+                                                <td class="w-data tx-left pl15">2018-00-00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="editDetailWrap p_re mt30 mb60">
+                                        <ul class="tabWrap tabDepth2">
+                                            <li><a id="edit1" href="#ch1" class="on">과제보기</a></li>
+                                            <li><a id="edit2" href="#ch2">작성답안</a></li>
+                                            <li><a id="edit3" href="#ch3">채점결과</a></li>
+                                        </ul>
+                                        <div class="tabBox mt30">
+                                            <div id="ch1" class="tabLink">
+                                                <table cellspacing="0" cellpadding="0" class="listTable editTable upper-gray bdt-gray bdb-gray tx-gray fc-bd-none">
+                                                    <colgroup>
+                                                        <col style="width: 100%;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt-zero pb-zero">
+                                                                <ul class="up-file">
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일4가 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일5가 노출됩니다.docx</a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt20 pl30 pr30">
+                                                                A. 다음 각 문장을 끊어진 대로 해석하시오.<br/><br/>
+                                                                1. Everyone's nose is a different shape.// <br/><br/>
+                                                                2. Researchers may know why.// <br/><br/>
+                                                                3. Researchers say / it could be because of the climate.//<br/><br/>
+                                                                4. People with wider noses / live / in warm, humid areas.// <br/><br/>
+                                                                5. People with narrower noses / live / in colder, drier places.// <br/><br/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="search-Btn mt20 h36 p_re mb20">
+                                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_right">
+                                                        <span class="tx-purple-gray">목록</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div id="ch2" class="tabLink">
+                                                <table cellspacing="0" cellpadding="0" class="listTable editTable upper-gray bdt-gray bdb-gray tx-gray">
+                                                    <colgroup>
+                                                        <col style="width: 550px;">
+                                                        <col style="width: 150px;">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="w-list tx-left pl30"><strong>답안 제목이 노출됩니다.</strong><span class="row-line">|</span></th>
+                                                            <th class="w-date normal">2018-00-00 00:00</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt-zero pb-zero" colspan="2">
+                                                                <ul class="up-file">
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt20 pl30 pr30" colspan="2">
+                                                                A. 다음 각 문장을 끊어진 대로 해석하시오.<br/>
+                                                                1. Riyadh, / the Saudi capital, / offers cheap cost of living / in a more stable environment, / with price controls on staples in Saudi Arabia continuing to guarantee low prices for many goods.//<br/>
+                                                                Riyadh는 / 사우디의 수도인 / 낮은 생계비를 요구한다 / 보다 안정적인 환경에서, / 사우디 아라비아에서 주 요품목 가격 통제를 통해 / 많은 상폼의 낮은 가격 보장을 지속하면서.<br/><br/>
+
+                                                                2. Saudi Arabia has / enough recoverable oil / to maintain current levels of production for 90 years.<br/>
+                                                                사우디 아라비아는 가지고 있다 / 충분한 원유를 / 90년 간 현재 생산 수준을 유지할.<br/><br/>
+
+                                                                3. Trends / in oil output and the global oil market / will remain a key determinant of the country's long-term prospects.<br/>
+                                                                석유 생산과 국제 석유 시작의 경향은 / 유지될 것이다 / 국가의 장기적 전망의 핵심 결정 요인으로서.<br/><br/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="search-Btn mt20 h36 p_re mb20">
+                                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_right">
+                                                        <span class="tx-purple-gray">목록</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div id="ch3" class="tabLink">
+                                                <table cellspacing="0" cellpadding="0" class="listTable editTable upper-gray bdt-gray bdb-gray tx-gray">
+                                                    <colgroup>
+                                                        <col style="width: 550px;">
+                                                        <col style="width: 150px;">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="w-list tx-left pl30"><strong>답안 제목이 노출됩니다.</strong><span class="row-line">|</span></th>
+                                                            <th class="w-date normal">2018-00-00 00:00</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt-zero pb-zero" colspan="2">
+                                                                <ul class="up-file">
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="w-file tx-left pt20 pl30 pr30" colspan="2">
+                                                                A. 다음 각 문장을 끊어진 대로 해석하시오.<br/>
+                                                                1. Riyadh, / the Saudi capital, / offers cheap cost of living / in a more stable environment, / with price controls on staples in Saudi Arabia continuing to guarantee low prices for many goods.//<br/>
+                                                                Riyadh는 / 사우디의 수도인 / 낮은 생계비를 요구한다 / 보다 안정적인 환경에서, / 사우디 아라비아에서 주 요품목 가격 통제를 통해 / 많은 상폼의 낮은 가격 보장을 지속하면서.<br/><br/>
+
+                                                                2. Saudi Arabia has / enough recoverable oil / to maintain current levels of production for 90 years.<br/>
+                                                                사우디 아라비아는 가지고 있다 / 충분한 원유를 / 90년 간 현재 생산 수준을 유지할.<br/><br/>
+
+                                                                3. Trends / in oil output and the global oil market / will remain a key determinant of the country's long-term prospects.<br/>
+                                                                석유 생산과 국제 석유 시작의 경향은 / 유지될 것이다 / 국가의 장기적 전망의 핵심 결정 요인으로서.<br/><br/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table cellspacing="0" cellpadding="0" class="listTable editTable upper-gray bdb-gray tx-gray fc-bd-none">
+                                                    <colgroup>
+                                                        <col style="width: 115px;">
+                                                        <col style="width: 585px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="w-tit bg-light-white strong">첨삭첨부</th>
+                                                            <td class="w-file tx-left pt-zero pb-zero">
+                                                                <ul class="up-file">
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
+                                                                    <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>    
+                                                <div class="search-Btn mt20 h36 p_re mb20">
+                                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_right">
+                                                        <span class="tx-purple-gray">목록</span>
+                                                    </button>
+                                                </div>                                            
+                                            </div>                                            
+                                        </div>
+                                    </div> 
+                                </div>                                
+                            </div>                            
+                        </div>                        
+                    </div>
+                </div>
+            </div><!--첨삭 팝업//-->
+
+        </div><!-- willbes-Leclist -->
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

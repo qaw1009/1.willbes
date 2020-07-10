@@ -99,11 +99,8 @@ class EventLecture extends \app\controllers\BaseController
         $list_event_add_apply = null;
 
         //관리옵션
-        $options_keys = [];
         $arr_options = $this->codeModel->getCcd($this->_groupCcd['option']);
-        foreach ($arr_options as $key => $val) {
-            $options_keys[] = $key;
-        }
+        $options_keys = array_keys($arr_options);
 
         //댓글UI종류
         $arr_comment_ui_type_ccd = $this->codeModel->getCcd($this->_groupCcd['CommentUiType']);
@@ -121,9 +118,9 @@ class EventLecture extends \app\controllers\BaseController
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         //포인트적립타입
-        $arr_pointapply_ccd = $this->codeModel->getCcd('635');
+        $arr_pointapply_ccd = $this->codeModel->getCcd($this->_groupCcd['PointApply']);
 
-        //상태별 사이트 코드 조회
+        //상태별 사이트 정보 조회
         $arr_online_site_list = get_auth_on_off_site_codes('N',true);
         $arr_offline_site_code = get_auth_on_off_site_codes('Y');
 
@@ -151,7 +148,7 @@ class EventLecture extends \app\controllers\BaseController
 
             // 등록파일 데이터 조회
             $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
-            if ($data['RequestType'] == '5') {
+            if ($this->eventLectureModel->_request_type_names[$data['RequestType']] == '프로모션') {
                 $file_data_promotion = $list_event_file;
             } else {
                 foreach ($list_event_file as $row) {
@@ -197,7 +194,6 @@ class EventLecture extends \app\controllers\BaseController
             'arr_campus' => $arr_campus,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
-            /*'site_csTel' => $site_csTel,*/
             'arr_send_callback_ccd' => $arr_send_callback_ccd,
             'arr_request_types' => $this->eventLectureModel->_request_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
@@ -448,13 +444,13 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         // 신청유형
-        $data['RequestTypeName'] = (empty($this->eventLectureModel->_request_type_names[$data['RequestType']]) === true) ? '' : $this->eventLectureModel->_request_type_names[$data['RequestType']];
+        $data['RequestTypeName'] = element($data['RequestType'],$this->eventLectureModel->_request_type_names);
 
         // 참여구분
-        $data['TakeTypeName'] = (empty($this->eventLectureModel->_take_type_names[$data['TakeType']]) === true) ? '' : $this->eventLectureModel->_take_type_names[$data['TakeType']];
+        $data['TakeTypeName'] = element($data['TakeType'],$this->eventLectureModel->_take_type_names);
 
         // 접수상태
-        $data['IsRegisterName'] = (empty($this->eventLectureModel->_is_register_names[$data['IsRegister']]) === true) ? '' : $this->eventLectureModel->_is_register_names[$data['IsRegister']];
+        $data['IsRegisterName'] = element($data['IsRegister'],$this->eventLectureModel->_is_register_names);
 
         //댓글UI종류
         $data['arr_comment_ui_type_ccd'] = $this->codeModel->getCcd($this->_groupCcd['CommentUiType']);
@@ -488,7 +484,7 @@ class EventLecture extends \app\controllers\BaseController
 
         // 등록파일 데이터 조회
         $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
-        if ($data['RequestType'] == '5') {
+        if ($this->eventLectureModel->_request_type_names[$data['RequestType']] == '프로모션') {
             $file_data_promotion = $list_event_file;
         } else {
             foreach ($list_event_file as $row) {

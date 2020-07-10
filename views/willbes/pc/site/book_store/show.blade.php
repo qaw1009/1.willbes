@@ -93,9 +93,32 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="naver">
-                                {{--네이버페이 영역--}}
-                            </div>
+                            @if($is_npay === true)
+                                <div class="naver">
+                                    {{--<script type="text/javascript" src="http://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
+                                    <script type="text/javascript" >//<![CDATA[
+                                        naver.NaverPayButton.apply({
+                                            BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
+                                            TYPE: 'A', // 버튼 모음 종류 설정
+                                            COLOR: 1, // 버튼 모음의 색 설정
+                                            COUNT: 2, // 버튼 개수 설정. 구매하기 버튼만 있으면 1, 찜하기 버튼도 있으면 2를 입력.
+                                            ENABLE: 'Y', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
+                                            BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
+                                            BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
+                                            WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
+                                            WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
+                                            '':''
+                                        });
+                                    //]]></script>--}}
+                                    {{-- 테스트 --}}
+                                    <button type="button" name="btn_book_npay" class="mem-Btn bg-green bd-green h36" onclick="buy_nc();">
+                                        <span>네이버페이</span>
+                                    </button>
+                                    <button type="button" name="btn_book_npay_wish" class="mem-Btn bg-green bd-green h36" onclick="wishlist_nc();">
+                                        <span>네이버찜</span>
+                                    </button>
+                                </div>
+                            @endif
                         @else
                             <div class="wsBook-buyBtn tx-right">
                                 <span class="tx-red">구매할 수 없는 상품입니다.</span>
@@ -211,8 +234,24 @@
     var $regi_form = $('#regi_book_form');
 
     $(document).ready(function() {
-        // 장바구니, 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_book_cart"], button[name="btn_book_direct_pay"]', function() {
+        // 장바구니 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_book_cart"]', function() {
+            @if(sess_data('is_login') === true)
+                var $is_direct_pay = $(this).data('direct-pay');
+                var $is_redirect = $(this).data('is-redirect');
+                addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
+            @else
+                @if($is_npay === true)
+                    addGuestCart($regi_form, 'Y');
+                @else
+                    {{-- 네이버페이 결제를 사용하지 않을 경우 로그인 필수 --}}
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                @endif
+            @endif
+        });
+
+        // 바로결제 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
@@ -233,5 +272,20 @@
     function goSearchKeyword(keyword, value) {
         location.href = '{{ front_url('/bookStore/index/pattern/all?search_text=') }}' + Base64.encode(keyword + ':' + value);
     }
+
+    @if($is_npay === true)
+        // 네이버페이 결제
+        function buy_nc() {
+            formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $regi_form.serializeArray(), 'POST');
+            return false;
+        }
+
+        // 네이버페이 찜
+        function wishlist_nc() {
+            popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
+            formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $regi_form.serializeArray(), 'POST', '_wishlist_nc');
+            return false;
+        }
+    @endif
 </script>
 @stop

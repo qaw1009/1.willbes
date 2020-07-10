@@ -12,10 +12,21 @@ class BookStore extends \app\controllers\FrontController
     private $_pattern_name = ['all' => '전체메뉴', 'best' => '베스트셀러', 'new' => '신간안내', 'willbes' => '윌비스출판사'];
     private $_page_per_rows = 10;   // 페이지당 출력되는 상품수
     private $_show_page_num = 10;   // 페이지 수
+    private $_is_npay = false;  // 네이버페이 사용여부
 
     public function __construct()
     {
         parent::__construct();
+
+        // 네이버페이 사용여부
+        if ($this->_site_code == '2012') {
+            $this->_is_npay = true;
+        }
+
+        // TODO : 윌스토리 사이트 외 접근 금지 (실제 오픈 후 삭제)
+        if ($this->_site_code != '2012') {
+            redirect(app_url('/', 'www'));
+        }
     }
 
     /**
@@ -123,6 +134,7 @@ class BookStore extends \app\controllers\FrontController
             'pattern_name' => $this->_pattern_name[$pattern],
             'query_string' => $query_string,
             'is_sort_mapping' => $is_sort_mapping,
+            'is_npay' => $this->_is_npay,
             'paging' => $paging,
             'count' => $count,
             'data' => $list
@@ -159,6 +171,7 @@ class BookStore extends \app\controllers\FrontController
         return $this->load->view('site/book_store/show', [
             'learn_pattern' => $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'all'),
+            'is_npay' => $this->_is_npay,
             'data' => $data
         ]);
     }

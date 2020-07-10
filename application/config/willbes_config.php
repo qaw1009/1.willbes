@@ -92,8 +92,16 @@ $config['book'] = array(
     'npay_btn_cert_key' => '6C3109A5-0221-488F-89FE-F238536F1058',  // 버튼 인증키
     'npay_mart_cert_key' => '4918C2A6-DF88-448E-99CD-0140E9380181',  // 가맹점 인증키
     'npay_delivery_group_id' => 'willstory001',  // 묶음배송 그룹아이디
+    'npay_delivery_add_split_unit' => '3',  // 지역별 배송비 권역 구분
     'npay_delivery_add_area2_price' => '3000',  // 제주 추가배송료
     'npay_delivery_add_area3_price' => '5000',  // 제주 외 도서산간 추가배송료
+    'npay_return_info' => array(
+        'zipcode' => '08812',
+        'address1' => '서울특별시 관악구 호암로 26길 13',
+        'address2' => '세정빌딩 지하1층',
+        'sellername' => '윌비스',
+        'contact' => '15444944',
+    ),
 );
 
 // 인천학원

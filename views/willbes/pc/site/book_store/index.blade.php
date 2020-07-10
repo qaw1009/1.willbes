@@ -205,8 +205,24 @@
     var $regi_form = $('#regi_book_form');
 
     $(document).ready(function() {
-        // 장바구니, 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_book_cart"], button[name="btn_book_direct_pay"]', function() {
+        // 장바구니 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_book_cart"]', function() {
+            @if(sess_data('is_login') === true)
+                var $is_direct_pay = $(this).data('direct-pay');
+                var $is_redirect = $(this).data('is-redirect');
+                addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
+            @else
+                @if($is_npay === true)
+                    addGuestCart($regi_form, 'Y');
+                @else
+                    {{-- 네이버페이 결제를 사용하지 않을 경우 로그인 필수 --}}
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                @endif
+            @endif
+        });
+
+        // 바로결제 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');

@@ -35,7 +35,8 @@ class EventLectureModel extends WB_Model
         'SerialCcd' => '666',
         'CandidateAreaCcd' => '631',
         'SmsSendCallBackNum' => '706',   //SMS 발송번호
-        'CommentUiType' => '713'        //댓글 UI 종류
+        'CommentUiType' => '713',        //댓글 UI 종류
+        'PointApply' => '635'
     ];
 
     // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업, 추가프로모션신청

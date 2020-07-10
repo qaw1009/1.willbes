@@ -52,10 +52,9 @@ class NpayProduct extends \app\controllers\FrontController
                         throw new \Exception(sprintf('디렉토리 생성에 실패했습니다. (%s)', $dir));
                     }
                 }
-                $real_file_path = $dir.'/product.txt';
+                $real_file_path = $dir.'/product'.$this->_site_code.'.txt';
                 write_file($real_file_path, $write);
                 header('Location:'.upload_path_to_public($real_file_path));
-
             }
         } catch (\Exception $e) {
             return error_result($e);

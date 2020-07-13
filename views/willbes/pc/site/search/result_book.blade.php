@@ -41,6 +41,7 @@
                                             <li><strong class="@if($row['wSaleCcd'] == '112002' || $row['wSaleCcd'] == '112003') tx-red @endif">[{{ $row['wSaleCcdName'] }}]</strong>
                                                 <span class="line-through">{{ number_format($row['rwSalePrice']) }}원</span> →
                                                 <span class="tx-blue strong">{{ number_format($row['rwRealSalePrice']) }}원</span></li>
+                                            <li></li>
                                         </ul>
                                     </div>
                                 </div>

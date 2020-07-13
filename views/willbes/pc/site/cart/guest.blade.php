@@ -231,7 +231,26 @@
                         @if($is_npay === true)
                             {{-- 네이버페이 --}}
                             <div class="naverPay">
-                                <script type="text/javascript" src="https://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
+                                <script type="text/javascript">
+                                    // 네이버페이 결제
+                                    function buy_nc() {
+                                        var $_book_form = $('#book_form');
+
+                                        @if($npay_enable_yn == 'N')
+                                            alert('죄송합니다. 구매상품이 없거나 네이버페이로 구매가 불가한 상품입니다.');
+                                        @else
+                                            if ($_book_form.find('input[name="prod_code[]"]:checked').length < 1) {
+                                                // 상품 자동 선택 처리
+                                                $_book_form.find('input[name="prod_code[]"]').prop('checked', true);
+                                            }
+
+                                            formCreateSubmit('{{ front_url('/npayOrder/register/pattern/cart') }}', $_book_form.serializeArray(), 'POST');
+                                        @endif
+
+                                        return false;
+                                    }
+                                </script>
+                                <script type="text/javascript" src="https://test-pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
                                 <script type="text/javascript" >//<![CDATA[
                                     naver.NaverPayButton.apply({
                                         BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
@@ -246,10 +265,6 @@
                                         '':''
                                     });
                                 //]]></script>
-                                {{-- 테스트 --}}
-                                {{--<button type="button" name="btn_book_npay" class="bg-green bd-green btnAuto180 h36" onclick="buy_nc();">
-                                    <span>네이버페이</span>
-                                </button>--}}
                             </div>
                         @endif
 
@@ -339,23 +354,5 @@
             location.href = '{{ element('return_url', $arr_input, '/') }}';
         });
     });
-
-    @if($is_npay === true)
-        // 네이버페이 결제
-        function buy_nc() {
-            @if($npay_enable_yn == 'N')
-                alert('죄송합니다. 구매상품이 없거나 네이버페이로 구매가 불가한 상품입니다.');
-            @else
-                if ($book_form.find('input[name="prod_code[]"]:checked').length < 1) {
-                    // 상품 자동 선택 처리
-                    $book_form.find('input[name="prod_code[]"]').prop('checked', true);
-                }
-
-                formCreateSubmit('{{ front_url('/npayOrder/register/pattern/cart') }}', $book_form.serializeArray(), 'POST');
-            @endif
-
-            return false;
-        }
-    @endif
 </script>
 @stop

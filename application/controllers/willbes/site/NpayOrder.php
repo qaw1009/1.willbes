@@ -137,12 +137,14 @@ class NpayOrder extends \app\controllers\FrontController
                 $send_xml .= '<shippingPolicy>';
                 $send_xml .= '<groupId>' . $_delivery_group_id . '</groupId>';
                 $send_xml .= '<method>DELIVERY</method>';
-                $send_xml .= '<feeType>CONDITIONAL_FREE</feeType>';
 
-                if ($row['IsFreebiesTrans'] == 'N') {
+                // 가격이 30,000원 미만일 경우만 배송료 무료조건 적용
+                if ($row['IsFreebiesTrans'] == 'N' && $row['RealSalePrice'] < $_delivery_free_price) {
+                    $send_xml .= '<feeType>FREE</feeType>';
                     $send_xml .= '<feePayType>FREE</feePayType>';
                     $send_xml .= '<feePrice>0</feePrice>';
                 } else {
+                    $send_xml .= '<feeType>CONDITIONAL_FREE</feeType>';
                     $send_xml .= '<feePayType>PREPAYED</feePayType>';
                     $send_xml .= '<feePrice>' . $_delivery_price . '</feePrice>';
                     $send_xml .= '<conditionalFree>';

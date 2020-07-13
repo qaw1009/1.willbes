@@ -22,11 +22,6 @@ class BookStore extends \app\controllers\FrontController
         if ($this->_site_code == '2012') {
             $this->_is_npay = true;
         }
-
-        // TODO : 윌스토리 사이트 외 접근 금지 (실제 오픈 후 삭제)
-        if ($this->_site_code != '2012') {
-            redirect(app_url('/', 'www'));
-        }
     }
 
     /**

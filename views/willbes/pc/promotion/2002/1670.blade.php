@@ -106,12 +106,6 @@
                 </map>
             </div>
             --}}      
-            
-            <!-- sns 및 url 남기기 영역 -->
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
-            @endif
 
             <div class="evtCtnsBox evt03" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">

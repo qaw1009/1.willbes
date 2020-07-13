@@ -224,6 +224,7 @@ class BookFModel extends ProductFModel
                 ,'A.SaleStatusCcd' => '618001'
                 ,'A.IsFree' => 'N'      //무료 아님
             ],
+            'LKR' => ['A.CateCode' => '3133'],
             'RAW' => ['NOW() between ' => ' A.SaleStartDatm and A.SaleEndDatm ']
         ]);
 

@@ -10,104 +10,150 @@
                 <li><a href="{{ front_url('/support/notice/show?board_idx=259726') }}">신규강의안내</a></li>
             </ul>
         </div>
-        {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
-        <div class="MainFixBnr c_both">
-            <ul>
-                <li>{!! banner('M_메인_02_01', '', $__cfg['SiteCode'], '0') !!}</li>
-                <li>{!! banner('M_메인_02_02', '', $__cfg['SiteCode'], '0') !!}</li>
-            </ul>
-        </div>
-        {!! banner('M_메인_03', 'MainBnrSlider', $__cfg['SiteCode'], '0') !!}
-        <div class="line">-</div>
-        {!! banner('M_메인서브1', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], '0') !!}
 
-        {{--
-        <div class="lineTabs lecProfTabs c_both">
-            <div class="MainCampusTabs">
-                <div class="willbes-Txt-Tit NG">· 전국캠퍼스</div>
-                <div class="MainCampusSlider swiper-container swiper-container-campus c_both">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a class="on" href="#none">노량진</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">신림</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">인천</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">대구</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">부산</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">광주</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">제주</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">전북</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">전남</a><span class="row-line">|</span></div>
-                        <div class="swiper-slide"><a href="#none">강원</a></div>
-                    </div>
-                </div>
-                <div class="MainCampusListSlider c_both p_re">
-                    <div class="campuslistWrap swiper-container swiper-container-campus-list swiper-wrapper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a class="on" href="#none">국어</a></div>
-                            <div class="swiper-slide"><a href="#none">공무원영어</a></div>
-                            <div class="swiper-slide"><a href="#none">공무원국어</a></div>
-                            <div class="swiper-slide"><a href="#none">영어</a></div>
-                            <div class="swiper-slide"><a href="#none">공무원수학</a></div>
-                            <div class="swiper-slide"><a href="#none">공무원한국사</a></div>
+        {!! banner('M_메인서브1', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+
+        {{-- 경찰 캐스트 --}}
+        <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
+        <div class="cast">
+            <div class="swiper-container-lec">
+                <div class="swiper-wrapper">
+                    @for($i=1; $i<=6; $i++)
+                        <div class="swiper-slide">
+                            {!! banner('M_메인_cast'.$i, '', $__cfg['SiteCode'], '0') !!}
                         </div>
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    @endfor
                 </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="tabSection">
-                <ul class="tabWrap lineWrap boxlineWrap lecProfWrap two">
-                    <li><a href="#lecprof1" class="on"><img src="{{ img_url('m/main/icon_new.png') }}">신규강좌</a></li>
-                    <li><a href="#lecprof2"><img src="{{ img_url('m/main/icon_best.png') }}">추천강좌</a></li>
-                </ul>
-                <div class="tabBox lineBox lecProfBox">
-                    <div id="lecprof1" class="tabContent">
-                        <ul>
-                            <li class="profImg"><img src="{{ img_url('m/sample/prof1.jpg') }}"></li>
-                            <li class="w-list">
-                                <div class="w-tit">22222차 대비 적중예상 문제풀이</div>
-                                <div class="w-name">신광은 교수님</div>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li class="profImg"><img src="{{ img_url('m/sample/prof1.jpg') }}"></li>
-                            <li class="w-list">
-                                <div class="w-tit">hggkghggkh2차 대비 적중예상 문제풀이</div>
-                                <div class="w-name">신광은 교수님</div>
-                            </li>
-                        </ul>
+        </div>
+
+        {{-- 베스트 강좌 --}}
+        <div class="mSubTit NSK-Black mt40 tx-left" >신광은 경찰 <span class="tx-blue">베스트 강좌</span></div>
+        <div class="bestView">
+            <div class="overhidden">
+                <div class="swiper-container-view">
+                    <div class="swiper-wrapper">
+                        @if(!empty($data['best_product']))
+                            @foreach($data['best_product'] as $row)
+                                <div class="swiper-slide">
+                                    <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
+                                        <img src="{{$row['ProfLecListImg'] or ''}}" alt="{{$row['ProfNickName']}}">
+                                        <div>
+                                            {{$row['CourseName']}}
+                                            <p>{{$row['ProdName']}}</p>
+                                            <span>신청하기 ></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
-                    <div id="lecprof2" class="tabContent" style="display: none;">
-                        <ul>
-                            <li class="profImg"><img src="{{ img_url('m/sample/prof1.jpg') }}"></li>
-                            <li class="w-list">
-                                <div class="w-tit">33333hjdaslhflashdj차 대비 적중예상 문제풀이</div>
-                                <div class="w-name">신광은 교수님</div>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li class="profImg"><img src="{{ img_url('m/sample/prof1.jpg') }}"></li>
-                            <li class="w-list">
-                                <div class="w-tit">00차 대비 적중예상 문제풀이</div>
-                                <div class="w-name">신광은 교수님</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-        --}}
-        <div class="buttonTabs noticeTabs c_both">
-            {{-- board include --}}
-            @include('willbes.m.site.main_partial.board')
+
+        <div class="noticeTabs c_both">
+            <ul class="tabWrap mainTab">
+                <li><a href="#notice1" class="on">공지사항</a></li>
+                <li><a href="#notice2">시험공고</a></li>
+                <li><a href="#notice3">수험뉴스</a></li>
+            </ul>
+            <div class="tabBox buttonBox noticeBox">
+                <div id="notice1" class="tabContent pd20">
+                    <div class="moreBtn"><a href="{{front_url('/support/notice/index')}}">+ 더보기</a></div>
+                    <ul class="List-Table">
+                        @if(empty($data['notice']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['notice'] as $row)
+                                <li>
+                                    <a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+                <div id="notice2" class="tabContent pd20">
+                    <div class="moreBtn"><a href="{{front_url('/support/examAnnouncement/index')}}">+ 더보기</a></div>
+                    <ul class="List-Table">
+                        @if(empty($data['exam_announcement']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['exam_announcement'] as $row)
+                                <li>
+                                    <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+                <div id="notice3" class="tabContent pd20">
+                    <div class="moreBtn"><a href="{{front_url('/support/examNews/index')}}">+ 더보기</a></div>
+                    <ul class="List-Table">
+                        @if(empty($data['exam_news']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['exam_news'] as $row)
+                                <li>
+                                    <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="bannerSec01">
             {!! banner('M_메인서브2', null, $__cfg['SiteCode'], '0') !!}
         </div>
-        <div class="appPlayer c_both">
+
+        {!! banner('M_메인서브3', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+
+        <div class="appPlayer mt20">
             {{-- app player include --}}
             @include('willbes.m.site.main_partial.app_player')
         </div>
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //경찰케스트
+            var swiper = new Swiper('.swiper-container-Lec', {
+                slidesPerView: 'auto',
+                spaceBetween: 2,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            //베스트강의
+            var swiper = new Swiper('.swiper-container-view', {
+                slidesPerView: 1,
+                slidesPerColumn: 4,
+                spaceBetween: 10,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        });
+    </script>
 @stop

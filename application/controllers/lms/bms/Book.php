@@ -61,8 +61,11 @@ class Book extends \app\controllers\BaseController
                 'BPS.ProfIdxs' => $this->_reqP('search_prof_idx'),
             ],
             'ORG1' => [
-                'LKB' => [
+                'EQ' => [
                     'P.ProdCode' => $this->_reqP('search_value'),
+                    'VWB.wIsbn' => $this->_reqP('search_value')
+                ],
+                'LKB' => [
                     'P.ProdName' => $this->_reqP('search_value')
                 ]
             ],

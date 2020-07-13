@@ -95,7 +95,21 @@
                             </div>
                             @if($is_npay === true)
                                 <div class="naver">
-                                    <script type="text/javascript" src="https://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
+                                    <script type="text/javascript">
+                                        // 네이버페이 결제
+                                        function buy_nc() {
+                                            formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $('#regi_book_form').serializeArray(), 'POST');
+                                            return false;
+                                        }
+
+                                        // 네이버페이 찜
+                                        function wishlist_nc() {
+                                            popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
+                                            formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $('#regi_book_form').serializeArray(), 'POST', '_wishlist_nc');
+                                            return false;
+                                        }
+                                    </script>
+                                    <script type="text/javascript" src="https://test-pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
                                     <script type="text/javascript" >//<![CDATA[
                                         naver.NaverPayButton.apply({
                                             BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
@@ -110,13 +124,6 @@
                                             '':''
                                         });
                                     //]]></script>
-                                    {{-- 테스트 --}}
-                                    {{--<button type="button" name="btn_book_npay" class="mem-Btn bg-green bd-green h36" onclick="buy_nc();">
-                                        <span>네이버페이</span>
-                                    </button>
-                                    <button type="button" name="btn_book_npay_wish" class="mem-Btn bg-green bd-green h36" onclick="wishlist_nc();">
-                                        <span>네이버찜</span>
-                                    </button>--}}
                                 </div>
                             @endif
                         @else
@@ -272,20 +279,5 @@
     function goSearchKeyword(keyword, value) {
         location.href = '{{ front_url('/bookStore/index/pattern/all?search_text=') }}' + Base64.encode(keyword + ':' + value);
     }
-
-    @if($is_npay === true)
-        // 네이버페이 결제
-        function buy_nc() {
-            formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $regi_form.serializeArray(), 'POST');
-            return false;
-        }
-
-        // 네이버페이 찜
-        function wishlist_nc() {
-            popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
-            formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $regi_form.serializeArray(), 'POST', '_wishlist_nc');
-            return false;
-        }
-    @endif
 </script>
 @stop

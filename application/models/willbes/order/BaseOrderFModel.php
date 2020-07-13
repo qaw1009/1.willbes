@@ -103,6 +103,9 @@ class BaseOrderFModel extends WB_Model
     // 학원 방문결제 장바구니 세션 아이디 세션명
     public $_sess_cart_sess_id = 'make_sessionid';
 
+    // 비회원 장바구니 세션명
+    public $_sess_guest_cart_name = 'guest_cart_data';
+
     // 주문번호 세션명
     public $_sess_order_no_name = 'order_no';
     
@@ -273,6 +276,24 @@ class BaseOrderFModel extends WB_Model
     public function destroySessAffIdx()
     {
         $this->session->unset_userdata($this->_sess_aff_idx_name);
+    }
+
+    /**
+     * 비회원 장바구니 세션 데이터 리턴
+     * @return mixed
+     */
+    public function getSessGuestCartData()
+    {
+        return get_arr_var($this->session->userdata($this->_sess_guest_cart_name), []);
+    }
+
+    /**
+     * 비회원 장바구니 세션 생성
+     * @param array $data
+     */
+    public function makeSessGuestCartData($data)
+    {
+        $this->session->set_userdata($this->_sess_guest_cart_name, $data);
     }
 
     /**

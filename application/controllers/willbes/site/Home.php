@@ -118,11 +118,11 @@ class Home extends \app\controllers\FrontController
             $s_cate_code = $cate_code;
 
             $data['dday'] = $this->_dday();
-            $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
         }
 
+        $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(4, $s_cate_code);

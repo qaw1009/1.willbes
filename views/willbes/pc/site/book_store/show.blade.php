@@ -111,12 +111,12 @@
                                         });
                                     //]]></script>
                                     {{-- 테스트 --}}
-                                    <button type="button" name="btn_book_npay" class="mem-Btn bg-green bd-green h36" onclick="buy_nc();">
+                                    {{--<button type="button" name="btn_book_npay" class="mem-Btn bg-green bd-green h36" onclick="buy_nc();">
                                         <span>네이버페이</span>
                                     </button>
                                     <button type="button" name="btn_book_npay_wish" class="mem-Btn bg-green bd-green h36" onclick="wishlist_nc();">
                                         <span>네이버찜</span>
-                                    </button>
+                                    </button>--}}
                                 </div>
                             @endif
                         @else

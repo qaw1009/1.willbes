@@ -247,9 +247,9 @@
                                     });
                                 //]]></script>
                                 {{-- 테스트 --}}
-                                <button type="button" name="btn_book_npay" class="bg-green bd-green btnAuto180 h36" onclick="buy_nc();">
+                                {{--<button type="button" name="btn_book_npay" class="bg-green bd-green btnAuto180 h36" onclick="buy_nc();">
                                     <span>네이버페이</span>
-                                </button>
+                                </button>--}}
                             </div>
                         @endif
 
@@ -354,12 +354,6 @@
                 formCreateSubmit('{{ front_url('/npayOrder/register/pattern/cart') }}', $book_form.serializeArray(), 'POST');
             @endif
 
-            return false;
-        }
-
-        // 네이버페이 결제 불가
-        function not_buy_nc() {
-            alert('죄송합니다. 구매상품이 없거나 네이버페이로 구매가 불가한 상품입니다.');
             return false;
         }
     @endif

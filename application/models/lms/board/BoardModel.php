@@ -840,7 +840,7 @@ class BoardModel extends WB_Model
             }
 
             foreach ($params as $board_idx => $columns) {
-                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BoardIdx', $board_idx);
+                $this->_conn->set($columns)->set('BestOrderNum', '0')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BoardIdx', $board_idx);
 
                 if ($this->_conn->update($this->_table) === false) {
                     throw new \Exception('게시판 정보 수정에 실패했습니다.');

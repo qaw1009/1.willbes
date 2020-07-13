@@ -34,6 +34,7 @@ class Book extends \app\controllers\BaseController
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_professor' => $this->professorModel->getProfessorArray(),
             'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
+            'arr_disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
         ]);
     }
 
@@ -51,7 +52,8 @@ class Book extends \app\controllers\BaseController
                 'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
                 'P.IsNew' =>$this->_reqP('search_chk_is_new'),
-                'P.IsBest' =>$this->_reqP('search_chk_is_best')
+                'P.IsBest' =>$this->_reqP('search_chk_is_best'),
+                'B.DispTypeCcd' =>$this->_reqP('search_disp_type_ccd'),
             ],
             'LKR' => [
                 'BC.CateCode' => $this->_reqP('search_lg_cate_code'),

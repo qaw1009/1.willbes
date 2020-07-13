@@ -258,8 +258,8 @@
                                         ENABLE: '{{ $npay_enable_yn }}', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
                                         BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
                                         BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
-                                        WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
-                                        WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
+                                        //WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
+                                        //WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
                                         '':''
                                     });
                                 //]]></script>

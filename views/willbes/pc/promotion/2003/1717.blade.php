@@ -86,7 +86,16 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="event01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_05.jpg" alt="환승 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_05.jpg" alt="환승 이벤트" usemap="#Map1717sns" border="0" />
+            <map name="Map1717sns" id="Map1717sns">
+                <area shape="rect" coords="113,461,288,534" href="https://cafe.naver.com" target="_blank" />
+                <area shape="rect" coords="310,460,398,535" href="http://cafe.daum.net" target="_blank" />
+                <area shape="rect" coords="413,459,645,535" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" />
+            </map>
+            {{--홍보url--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
+            @endif
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="event02">

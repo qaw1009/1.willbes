@@ -92,7 +92,7 @@
         <div class="evtCtnsBox wb_cts06" id="event02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_06.jpg" alt="인증하기" usemap="#Map1717b" border="0" />
             <map name="Map1717b" id="Map1717b">
-                <area shape="rect" coords="339,847,775,902" href="https://pass.willbes.net/certApply/index/page/transfer/cert/15" target="_blank" />
+                <area shape="rect" coords="339,847,775,902" href="javascript:certOpen();"/>
                 <area shape="rect" coords="469,927,619,958" href="#careful" />
             </map>
         </div>
@@ -116,6 +116,16 @@
             var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }    
+
+        /* 팝업창 */ 
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
 
     </script>
 

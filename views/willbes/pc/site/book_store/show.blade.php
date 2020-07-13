@@ -95,7 +95,7 @@
                             </div>
                             @if($is_npay === true)
                                 <div class="naver">
-                                    {{--<script type="text/javascript" src="http://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
+                                    <script type="text/javascript" src="http://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
                                     <script type="text/javascript" >//<![CDATA[
                                         naver.NaverPayButton.apply({
                                             BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
@@ -109,7 +109,7 @@
                                             WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
                                             '':''
                                         });
-                                    //]]></script>--}}
+                                    //]]></script>
                                     {{-- 테스트 --}}
                                     <button type="button" name="btn_book_npay" class="mem-Btn bg-green bd-green h36" onclick="buy_nc();">
                                         <span>네이버페이</span>

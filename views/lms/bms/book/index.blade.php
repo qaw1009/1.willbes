@@ -51,6 +51,12 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_disp_type_ccd" name="search_disp_type_ccd">
+                            <option value="">노출위치</option>
+                            @foreach($arr_disp_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

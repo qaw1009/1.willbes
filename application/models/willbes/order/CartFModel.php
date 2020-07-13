@@ -54,7 +54,7 @@ class CartFModel extends BaseOrderFModel
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", PL.IsLecStart) as IsLecStart                                          
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod                               
                 , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
-                , PL.LecSaleType, SC.CateName
+                , PL.LecSaleType, SC.CateName, WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
@@ -833,4 +833,140 @@ class CartFModel extends BaseOrderFModel
 
         return $cart_rows;
     }
+
+    /**
+     * 비회원 장바구니 목록 조회 (교재 기준)
+     * @param int $site_code [사이트코드]
+     * @param null|array $arr_prod_code [선택된 상품코드]
+     * @return array
+     */
+    public function listGuestCart($site_code, $arr_prod_code = null)
+    {
+        // 장바구니 세션 데이터
+        $sess_site_cart_data = array_get($this->getSessGuestCartData(), $site_code);
+        if (empty($sess_site_cart_data) === true) {
+            return [];
+        }
+
+        // 상품코드 추출
+        $arr_sess_prod_code = array_keys($sess_site_cart_data);
+
+        // 장바구니 상품 조회
+        $arr_condition = ['IN' => ['P.ProdCode' => $arr_prod_code]];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $column = 'P.ProdCode, P.ProdName, P.IsFreebiesTrans, SC.CateName, ifnull(fn_product_saleprice_data(P.ProdCode), "N") as ProdPriceData
+            , WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName, "book" as CartType, "book" as CartProdType';
+
+        $from = '
+            from ' . $this->_table['product'] . ' as P
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on P.ProdCode = PC.ProdCode
+                left join ' . $this->_table['product_book'] . ' as PB
+                    on P.ProdCode = PB.ProdCode
+                left join ' . $this->_table['bms_book'] . ' as WB
+                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
+                left join ' . $this->_table['category'] . ' as SC		
+                    on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"
+            where P.IsStatus = "Y"
+                and P.IsUse = "Y"
+                and P.IsSaleEnd = "N"
+                and P.SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '"
+                and NOW() between P.SaleStartDatm and P.SaleEndDatm
+                and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book'] . '"		
+                and P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '"
+                and P.SiteCode = ?
+                and P.ProdCode in ?
+            ' . $where . '                   
+            order by P.ProdCode desc                     
+        ';
+
+        // 쿼리 실행
+        $results = $this->_conn->query('select ' . $column . $from, [$site_code, $arr_sess_prod_code])->result_array();
+
+        // 가격정보, 수량 정보 추가
+        foreach ($results as $idx => $row) {
+            $arr_price_data = $row['ProdPriceData'] != 'N' ? element('0', json_decode($row['ProdPriceData'], true)) : [];
+            if (empty($arr_price_data) === false) {
+                $results[$idx] = array_merge($row, $arr_price_data);
+            }
+
+            $results[$idx]['ProdQty'] = array_get($sess_site_cart_data, $row['ProdCode'], 1);
+        }
+
+        return $results;
+    }
+
+    /**
+     * 비회원 장바구니 세션 저장
+     * @param string $learn_pattern [학습형태]
+     * @param array $input [입력정보]
+     * @return array|bool|bool[]
+     */
+    public function addGuestCart($learn_pattern, $input = [])
+    {
+        try {
+            $arr_temp_prod_code = $this->makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
+            $arr_prod_code = element('data', $arr_temp_prod_code);
+            $site_code = element('site_code', $input, '');
+            $sess_cart_data = $this->getSessGuestCartData();    // 비회원 장바구니 세션 데이터
+
+            foreach ($arr_prod_code as $prod_code => $prod_row) {
+                // 학습형태별 사전 체크
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], 'N', false, true);
+                if ($check_result !== true) {
+                    throw new \Exception($check_result);
+                }
+
+                // 상품 수량
+                $prod_qty = array_get($input, 'prod_qty.' . $prod_code, 1);
+                if (empty($prod_qty) === true || is_numeric($prod_qty) === false || $prod_qty < 1) {
+                    $prod_qty = 1;
+                }
+
+                // 비회원 장바구니 세션 저장 데이터 (수량)
+                $sess_cart_data[$site_code][$prod_code] = $prod_qty;
+            }
+
+            // 비회원 장바구니 세션 저장
+            $this->makeSessGuestCartData($sess_cart_data);
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
+    }
+
+    /**
+     * 비회원 장바구니 세션 삭제
+     * @param int $site_code [사이트코드]
+     * @param array $arr_prod_code [삭제대상 상품코드배열]
+     * @return array|bool
+     */
+    public function removeGuestCart($site_code, $arr_prod_code = [])
+    {
+        try {
+            if (count($arr_prod_code) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            $sess_cart_data = $this->getSessGuestCartData();    // 비회원 장바구니 세션 데이터
+            $sess_site_cart_data = array_get($sess_cart_data, $site_code);  // 해당 사이트 비회원 장바구니 세션 데이터
+
+            if (empty($sess_site_cart_data) === true) {
+                throw new \Exception('장바구니 데이터가 없습니다.');
+            }
+
+            // 해당 상품 세션 삭제
+            $sess_site_cart_data = array_unset($sess_site_cart_data, $arr_prod_code);
+
+            // 변경된 비회원 장바구니 세션 저장
+            $sess_cart_data[$site_code] = $sess_site_cart_data;
+            $this->makeSessGuestCartData($sess_cart_data);
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }    
 }

@@ -43,28 +43,22 @@
                                         <th><input type="checkbox" name="_is_all" class="all-check" data-tab-id="lecture"/><span class="row-line">|</span></th>
                                         <th>상품정보<span class="row-line">|</span></th>
                                         <th>판매가<span class="row-line">|</span></th>
-                                        <th>결제/삭제</th>
+                                        <th>삭제</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if(isset($results['list'][$lecture_key]) === true)
                                         @foreach($results['list'][$lecture_key] as $idx => $row)
                                             <tr>
-                                                <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
+                                                <td class="w-chk"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] }}" class="chk-cart"/></td>
                                                 <td class="w-list tx-left p_re pl20">
                                                     <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                                     {{ $row['ProdAddInfo'] }}
-                                                    @if($row['CartProdType'] == 'on_pack_lecture')
-                                                        <a href="#none" class="btn-package-info d_inblock" data-cart-idx="{{ $row['CartIdx'] }}"><strong>{{ $row['ProdName'] }}</strong></a>
-                                                        <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm"></div>
-                                                    @else
-                                                        <strong>{{ $row['ProdName'] }}</strong>
-                                                    @endif
+                                                    <strong>{{ $row['ProdName'] }}</strong>
                                                 </td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">
-                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
-                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
+                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="lecture" data-prod-code="{{ $row['ProdCode'] }}">삭제</a></span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -123,11 +117,6 @@
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
-                                    <li class="btnAuto180 h36">
-                                        <button type="submit" name="btn_pay" data-tab-id="lecture" class="mem-Btn bg-blue bd-dark-blue">
-                                            <span>결제하기</span>
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -139,7 +128,7 @@
                                 @if($lecture_key == 'on_lecture')
                                     <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>
                                 @endif
-                                <tr><td>• 장바구니 상품은 14일 안에 미구매 시 자동 삭제 처리됩니다.</td></tr>
+                                <tr><td>• 비회원에서 로그인으로 전환 시, 기존 장바구니에 담겨있던 상품이 모두 사라집니다. 로그인 후 다시 상품을 선택하여 장바구니에 담아야 합니다.</td></tr>
                                 <tr><td>• 장바구니 강좌 삭제 시 해당 강좌의 수강생 교재가 포함된 경우 함께 삭제 처리됩니다.</td></tr>
                                 @if($lecture_key == 'on_lecture')
                                     <tr><td>• 장바구니 담기 후 해당 상품의 접수기간이 지났거나, 판매상태가 '판매종료'로 변경된 경우 자동 삭제 처리됩니다.</td></tr>
@@ -176,20 +165,19 @@
                                         <th>상품정보<span class="row-line">|</span></th>
                                         <th>수량<span class="row-line">|</span></th>
                                         <th>판매가<span class="row-line">|</span></th>
-                                        <th>결제/삭제</th>
+                                        <th>삭제</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if(isset($results['list']['book']) === true)
                                         @foreach($results['list']['book'] as $idx => $row)
                                             <tr>
-                                                <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
+                                                <td class="w-chk"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] }}" class="chk-cart"/></td>
                                                 <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong></td>
                                                 <td>{{ $row['ProdQty'] }}</td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">
-                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
-                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
+                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="book" data-prod-code="{{ $row['ProdCode'] }}">삭제</a></span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -235,11 +223,6 @@
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
-                                    <li class="btnAuto180 h36">
-                                        <button type="submit" name="btn_pay" data-tab-id="book" class="mem-Btn bg-blue bd-dark-blue">
-                                            <span>결제하기</span>
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -273,11 +256,12 @@
                         <div class="willbes-Cart-Txt">
                             <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                                 <tbody>
-                                <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>                                
-                                <tr><td>• 장바구니 상품은 14일 안에 미구매 시 자동 삭제 처리됩니다.</td></tr>
-                                <tr><td>• 장바구니 강좌 삭제 시 해당 강좌의 수강생 교재가 포함된 경우 함께 삭제 처리됩니다.</td></tr>
+                                <tr><td>• <span class="tx-red">윌스토리 온라인서점은 회원이 아닐 경우에는 원칙적으로 상품 구매가 불가능합니다. 단, 네이버페이를 통한 구매의 경우 비회원도 구입이 가능합니다.</span></td></tr>
+                                <tr><td>• 네이버페이 결제 시 주문내역은 ‘네이버쇼핑(네이버페이) > 쇼핑 MY > 주문확인/배송조회’에서 확인 가능합니다.</td></tr>
+                                <tr><td>• 네이버페이 결제는 네이버페이 운영방침에 따라 이루어집니다. (<a href="https://help.pay.naver.com/faq/list.help?categoryId=697" target="_blank">https://help.pay.naver.com/faq/list.help?categoryId=697</a>)</td></tr>
+                                <tr><td>• 비회원에서 로그인으로 전환 시, 기존 장바구니에 담겨있던 상품이 모두 사라집니다. 로그인 후 다시 상품을 선택하여 장바구니에 담아야 합니다.</td></tr>
                                 <tr><td>• 장바구니 담기 후 해당 상품의 판매상태가 '품절', '절판', '출간예정'으로 변경된 경우 자동 삭제 처리됩니다.</td></tr>
-                                <tr><td>• 배송 상품은 당일 오후 2시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토,일,공휴일 제외)</td></tr>
+                                <tr><td>• 배송 상품은 당일 오후 2시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토, 일, 공휴일 제외)</td></tr>
                                 <tr><td>• 교재는 공급사(출판사) 재고 사정에 의해 품절/지연될 수 있으며, 품절 시 관련 사항에 대해 전화나 문자로 안내합니다.</td></tr>
                                 </tbody>
                             </table>
@@ -305,20 +289,10 @@
             }
         });
 
-        // 패키지 레이어 팝업
-        $lecture_form.on('click', '.btn-package-info', function() {
-            var cart_idx = $(this).data('cart-idx');
-            var ele_id = 'package_lec_list_' + cart_idx;
-            var data = { 'ele_id' : ele_id, 'cart_idx' : cart_idx };
-            sendAjax('{{ front_url('/cart/info') }}', data, function(ret) {
-                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-            }, showAlertError, false, 'GET', 'html');
-        });
-
         // 전체선택/해제
         $('.all-check').on('change', function() {
             var $form = $('#' + $(this).data('tab-id') + '_form');
-            checkAll($form.find('input[name="cart_idx[]"]'), $(this));
+            checkAll($form.find('input[name="prod_code[]"]'), $(this));
         });
 
         // 선택삭제/개별삭제 버튼 클릭
@@ -331,7 +305,7 @@
 
             if (btn_name === 'btn-checked-delete') {
                 // 선택삭제
-                $form.find('input[name="cart_idx[]"]:checked').each(function(idx) {
+                $form.find('input[name="prod_code[]"]:checked').each(function(idx) {
                     data[idx] = $(this).val();
                 });
 
@@ -341,48 +315,20 @@
                 }
             } else {
                 // 개별삭제
-                data = { 0 : $(this).data('cart-idx').toString() };
-                confirm_msg = '해당 강좌 삭제 시 관련 교재도 함께 삭제됩니다.\n해당 상품을 삭제하시겠습니까?';
+                data = { 0 : $(this).data('prod-code').toString() };
+                confirm_msg = '해당 상품을 삭제하시겠습니까?';
             }
 
             if (confirm(confirm_msg)) {
                 data = {
                     '{{ csrf_token_name() }}' : $form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',
-                    'cart_idx' : JSON.stringify(data)
+                    'prod_code' : JSON.stringify(data)
                 };
-                sendAjax('{{ front_url('/cart/destroy') }}', data, function(ret) {
+                sendAjax('{{ front_url('/cart/destroyGuest') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         var reload_url = location.pathname + '?tab=' + $form.find('input[name="cart_type"]').val();
                         location.replace(reload_url);
-                    }
-                }, showAlertError, false, 'POST');
-            }
-        });
-
-        // 개별결제 버튼 클릭
-        $('.btn-only-pay').on('click', function() {
-            var $tab_id = $(this).data('tab-id');
-            var $form = $('#' + $tab_id + '_form');
-
-            {{-- // 교재상품 선구매 불가 처리
-            if ($tab_id === 'book') {
-                if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
-                    alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
-                    return;
-                }
-            }--}}
-
-            if (confirm('해당 상품을 결제하시겠습니까?')) {
-                var data = {
-                    '{{ csrf_token_name() }}' : $form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'POST',
-                    'cart_idx[]' : $(this).data('cart-idx').toString(),
-                    'cart_type' : $form.find('input[name="cart_type"]').val()
-                };
-                sendAjax('{{ front_url('/cart/toOrder') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        location.href = ret.ret_data.ret_url;
                     }
                 }, showAlertError, false, 'POST');
             }
@@ -392,37 +338,6 @@
         $('button[name="btn_continue"]').on('click', function () {
             location.href = '{{ element('return_url', $arr_input, '/') }}';
         });
-
-        // 결제하기 버튼 클릭
-        $('button[name="btn_pay"]').on('click', function () {
-            var $tab_id = $(this).data('tab-id');
-            var $form = $('#' + $tab_id + '_form');
-
-            if ($form.find('input[name="cart_idx[]"]').length < 1) {
-                alert('구매할 상품이 없습니다.');
-                return;
-            }
-
-            {{-- // 교재상품 선구매 불가 처리
-            if ($tab_id === 'book') {
-                if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
-                    alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
-                    return;
-                }
-            }--}}
-
-            if ($form.find('input[name="cart_idx[]"]:checked').length < 1) {
-                // 상품 자동 선택 처리
-                $form.find('input[name="cart_idx[]"]').prop('checked', true);
-            }
-
-            var url = '{{ front_url('/cart/toOrder') }}';
-            ajaxSubmit($form, url, function(ret) {
-                if(ret.ret_cd) {
-                    location.href = ret.ret_data.ret_url;
-                }
-            }, showValidateError, null, false, 'alert');
-        });
     });
 
     @if($is_npay === true)
@@ -431,14 +346,20 @@
             @if($npay_enable_yn == 'N')
                 alert('죄송합니다. 구매상품이 없거나 네이버페이로 구매가 불가한 상품입니다.');
             @else
-                if ($book_form.find('input[name="cart_idx[]"]:checked').length < 1) {
+                if ($book_form.find('input[name="prod_code[]"]:checked').length < 1) {
                     // 상품 자동 선택 처리
-                    $book_form.find('input[name="cart_idx[]"]').prop('checked', true);
+                    $book_form.find('input[name="prod_code[]"]').prop('checked', true);
                 }
 
                 formCreateSubmit('{{ front_url('/npayOrder/register/pattern/cart') }}', $book_form.serializeArray(), 'POST');
             @endif
 
+            return false;
+        }
+
+        // 네이버페이 결제 불가
+        function not_buy_nc() {
+            alert('죄송합니다. 구매상품이 없거나 네이버페이로 구매가 불가한 상품입니다.');
             return false;
         }
     @endif

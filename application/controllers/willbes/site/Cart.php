@@ -6,7 +6,7 @@ class Cart extends \app\controllers\FrontController
     protected $models = array('order/cartF', 'product/packageF', 'order/orderListF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index', 'info', 'checkStudentBook', 'toOrder', 'store', '_getAddNormalData', '_getAddPatternData', 'destroy'); // checkProduct() 로그인 체크 제외. 2019-10-23 최형진
+    protected $auth_methods = array('info', 'checkStudentBook', 'toOrder', 'store', 'destroy');
 
     public function __construct()
     {
@@ -15,21 +15,27 @@ class Cart extends \app\controllers\FrontController
 
     /**
      * 장바구니 목록
-     * TODO : 비회원 장바구니 구현 예정
      * @param array $params
      */
     public function index($params = [])
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $on_off_type = $this->_is_pass_site === true ? 'off' : 'on';
+        $lecture_key = $on_off_type . '_lecture';
+        $pack_lecture_key = $on_off_type . '_pack_lecture';
+        $is_npay = false;   // 네이버페이 사용여부
+        $npay_enable_yn = 'N'; // 네이버페이 버튼 활성화 여부
 
         // 윌스토리 사이트를 제외하고 로그인 필수
         if ($this->_site_code == '2012') {
             $arr_input['tab'] = 'book';     // 교재 장바구니 디폴트 처리
             $arr_input['return_url'] = front_url('/bookStore/index/pattern/all');   // 다른상품 더보기 URL
+            $is_npay = true;    // 네이버페이 사용여부
         } else {
             // 로그인 체크
-            //$this->checkLogin();
+            $this->checkLogin();
 
             // 다른상품 더보기 URL
             if ($this->_is_pass_site === true) {
@@ -42,27 +48,14 @@ class Cart extends \app\controllers\FrontController
             }
         }
 
-        // 장바구니 뷰
-        if ($this->isLogin() === true) {
-            $this->_showMemberCart($arr_input);
-        } else {
-            $this->_showGuestCart($arr_input);
-        }
-    }
-
-    /**
-     * 회원 장바구니
-     * @param array $arr_input
-     */
-    private function _showMemberCart($arr_input = [])
-    {
-        $sess_mem_idx = $this->session->userdata('mem_idx');
-        $on_off_type = $this->_is_pass_site === true ? 'off' : 'on';
-        $lecture_key = $on_off_type . '_lecture';
-        $pack_lecture_key = $on_off_type . '_pack_lecture';
-
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'N', true);
+        if ($this->isLogin() === true) {
+            $view_name = 'index';
+            $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'N', true);
+        } else {
+            $view_name = 'guest';
+            $list = $this->cartFModel->listGuestCart($this->_site_code);
+        }
 
         $results = [];
         foreach ($list as $idx => $row) {
@@ -99,21 +92,19 @@ class Cart extends \app\controllers\FrontController
             $results['delivery_price']['book'] = 0;
         }
 
-        $this->load->view('site/cart/index', [
+        // 네이버페이 구매가능 여부
+        if ($is_npay === true && array_get($results, 'count.book', 0) > 0) {
+            $npay_enable_yn = 'Y';
+        }
+
+        $this->load->view('site/cart/' . $view_name, [
             'arr_input' => $arr_input,
             'lecture_key' => $lecture_key,
             'pack_lecture_key' => $pack_lecture_key,
+            'is_npay' => $is_npay,
+            'npay_enable_yn' => $npay_enable_yn,
             'results' => $results
         ]);
-    }
-
-    /**
-     * 비회원 장바구니 (윌스토리 네이버페이 전용)
-     * @param array $arr_input
-     */
-    private function _showGuestCart($arr_input = [])
-    {
-        show_404();
     }
 
     /**
@@ -473,6 +464,77 @@ class Cart extends \app\controllers\FrontController
         $result = $this->cartFModel->$_method_name(json_decode($this->_reqP('cart_idx'), true));
 
         $this->json_result($result, '삭제 되었습니다.', $result);        
+    }
+
+    /**
+     * 비회원 장바구니 저장
+     * @param array $params
+     * @return mixed
+     */
+    public function storeGuest($params = [])
+    {
+        $is_ajax = $this->input->is_ajax_request();
+
+        try {
+            $learn_pattern = $this->_reqP('learn_pattern');
+            $cart_type = $this->_reqP('cart_type');
+            $prod_code = $this->_reqP('prod_code');
+            $site_code = $this->_site_code;
+            $ret_url = front_url('/cart/index?tab=' . $cart_type);
+
+            // 필수 파라미터 체크
+            if (empty($cart_type) === true || empty($prod_code) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            // 저장 데이터
+            $add_data = [
+                'prod_code' => $prod_code,
+                'prod_qty' => $this->_reqP('prod_qty'),
+                'site_code' => $site_code
+            ];
+
+            // 비회원 장바구니 세션 저장
+            $result = $this->cartFModel->addGuestCart($learn_pattern, $add_data);
+
+            if ($is_ajax === true) {
+                return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $ret_url]);
+            } else {
+                if ($result['ret_cd'] === true) {
+                    redirect($ret_url);
+                } else {
+                    show_alert($result['ret_msg'], 'back');
+                }
+            }
+        } catch (\Exception $e) {
+            if ($is_ajax === true) {
+                return $this->json_error($e->getMessage(), _HTTP_BAD_REQUEST);
+            } else {
+                show_alert($e->getMessage(), 'back');
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 비회원 장바구니 삭제
+     * @param array $params
+     */
+    public function destroyGuest($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->cartFModel->removeGuestCart($this->_site_code, json_decode($this->_reqP('prod_code'), true));
+
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

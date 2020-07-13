@@ -41,7 +41,7 @@
             </ul>
         </div>
 
-        <div class="Section Section5 mt50">
+        {{--<div class="Section Section5 mt50">
             <div class="widthAuto">
                 <div class="will-nTit bd-none">경찰합격 <span class="cop-color">전문교수진</span></div>
                 <ul class="onProfBox">
@@ -52,7 +52,7 @@
                     @endfor
                 </ul>
             </div>
-        </div>
+        </div>--}}
 
         <div class="Section bnSec02 mt50">
             <div class="widthAuto">

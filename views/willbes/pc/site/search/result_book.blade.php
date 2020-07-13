@@ -25,9 +25,11 @@
                         <div class="wsBookListBox mt20">
                             @foreach($data['book'] as $row)
                                 <div class="wsBook">
-                                    <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
-                                        <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}"/>
-                                    </a>
+                                    <div class="wsBookImg">
+                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}');">
+                                            <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgSmName'] }}" width="150" alt="{{ $row['ProdName'] }}" title="{{ $row['ProdName'] }}"/>
+                                        </a>
+                                    </div>
                                     <div class="wsBookInfo">
                                         <ul>
                                             <li class="bookTitle NSK">

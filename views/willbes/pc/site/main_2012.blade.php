@@ -8,6 +8,7 @@
 
         {{-- 메인_빅배너 --}}
         <div class="Section">
+            @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
             <div id="MainRollingSlider" class="MaintabBox">
                 {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
 
@@ -22,6 +23,7 @@
                     </ul>
                 </div>
             </div>
+            @endif
         </div>
 
         {{-- 신간/화제의책/예약판매 --}}

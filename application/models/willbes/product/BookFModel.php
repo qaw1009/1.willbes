@@ -127,6 +127,9 @@ class BookFModel extends ProductFModel
         $learn_pattern = 'book';    // 교재
         $add_column = '';
 
+        // TODO : 네이버페이 심사를 위해 유아/어린이 카테고리 상품만 노출되도록 수정
+        $arr_condition['LKR']['CateCode'] = '3133';
+
         if ($is_count === false) {
             // 추가 조회컬럼
             $add_column = ', ProdCateName, rwSaleTypeCcd, rwSalePrice, rwSaleRate, rwSaleRateUnit, rwSaleDiscType, rwRealSalePrice
@@ -221,6 +224,7 @@ class BookFModel extends ProductFModel
                 ,'A.SaleStatusCcd' => '618001'
                 ,'A.IsFree' => 'N'      //무료 아님
             ],
+            'LKR' => ['A.CateCode' => '3133'],
             'RAW' => ['NOW() between ' => ' A.SaleStartDatm and A.SaleEndDatm ']
         ]);
 

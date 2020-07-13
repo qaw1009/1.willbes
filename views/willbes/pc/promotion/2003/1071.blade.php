@@ -822,7 +822,7 @@
                         <td>통신공학</td>
                         <td>문제풀이</td>
                         <td>2020 [군무원] 최우영 통신공학 최종모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166761" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/166765" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>

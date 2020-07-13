@@ -21,7 +21,7 @@
         /*****************************************************************/  
 
         .sky {position:fixed; top:250px; right:10px; z-index:1;}
-        .sky ul li {padding-bottom:10px;}
+        .sky ul li {padding-bottom:15px;}
 
         .evtTop {
             background:url(https://static.willbes.net/public/images/promotion/2020/07/1706_top_bg.jpg) no-repeat center top;
@@ -172,6 +172,7 @@
         <div class="sky">
             <ul>          
                 <li><a href="https://pass.willbes.net/promotion/index/cate/3020/code/1700" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_sky.png"  title="실전모의고사 패키지 바로가기" /></a></li>
+                <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=284682&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_sky02.png"  title="실전모의고사 패키지 바로가기" /></a></li>
             </ul>
         </div> 
         <div class="evtCtnsBox evtTop" >

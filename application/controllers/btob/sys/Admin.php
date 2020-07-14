@@ -110,7 +110,13 @@ class Admin extends \app\controllers\BaseController
         $arr_role = $this->btobRoleModel->getRoleArray($this->_sess_btob_idx);
 
         // 사용하는 코드값 조회
+        $pattern_tel1 = 'tel';
         $arr_tel1_ccd = $this->codeModel->getCcd('672');
+        $arr_phone1_ccd = $this->codeModel->getCcd('673');
+        if ($this->_sess_btob_idx == '4') {
+            $arr_tel1_ccd = $arr_phone1_ccd;
+            $pattern_tel1 = 'mobile';
+        }
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -127,6 +133,7 @@ class Admin extends \app\controllers\BaseController
             'idx' => $idx,
             'data' => $data,
             'arr_tel1_ccd' => $arr_tel1_ccd,
+            'pattern_tel1' => $pattern_tel1,
             'arr_area_ccd' => $arr_area_ccd,
             'arr_branch_ccd' => $arr_branch_ccd,
             'arr_role' => $arr_role

@@ -57,7 +57,7 @@
                         </select>
                         - <input type="number" id="admin_phone2" name="admin_phone2" required="required" class="form-control" maxlength="4" title="연락처2" value="{{ $data['AdminPhone2'] }}" style="width: 90px">
                         - <input type="number" id="admin_phone3" name="admin_phone3" required="required" class="form-control" maxlength="4" title="연락처3" value="{{ $data['AdminPhone3'] }}" style="width: 90px">
-                        <input type="hidden" id="admin_phone" name="admin_phone" required="required" pattern="tel" title="연락처" value="{{ $data['AdminPhone1'] }}-{{ $data['AdminPhone2'] }}-{{ $data['AdminPhone3'] }}"/>
+                        <input type="hidden" id="admin_phone" name="admin_phone" required="required" pattern="{{ $pattern_tel1 }}" title="연락처" value="{{ $data['AdminPhone1'] }}-{{ $data['AdminPhone2'] }}-{{ $data['AdminPhone3'] }}"/>
                     </div>
                 </div>
                 <div class="form-group">

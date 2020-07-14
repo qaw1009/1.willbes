@@ -118,21 +118,18 @@
     border-top: 7px solid #fff;
 }
 
-.adm .Section .ProfCopBox > li {
+.adm .ProfCopBox li {
     position: relative;
     display: inline;
     float: left;
-    width: 379px;
-    height: 190px;
+    width: 220px;
+    height: 327px;
     margin-left: 5px;
 }
-.adm .Section .ProfCopBox > li:first-child {
+.adm .ProfCopBox li:first-child {
     margin-left: 0;
 }
-.adm .Section .ProfCopBox > li:last-child {
-    width: 353px;
-    margin-left: 4px;
-}
+.adm .ProfCopBox:after {content: ""; display:block; clear:both}
 
 /* Main Container : pass : cSlider : sliderPassList : Cop_adm */
 .adm .cSlider.sliderPassList .bx-wrapper .bx-prev {

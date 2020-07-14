@@ -433,6 +433,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsBest'=>element('IsBest',$input, 'N')
                 ,'IsNew'=>element('IsNew',$input, 'N')
                 ,'IsCart'=>element('IsCart',$input,'N')
+                ,'IsCorrect'=>element('IsCorrect',$input,'N')
                 ,'IsRefund'=>element('IsRefund',$input,'N')
                 ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
                 ,'IsSms'=>element('IsSms',$input,'N')

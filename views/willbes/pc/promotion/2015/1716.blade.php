@@ -89,14 +89,6 @@
             </div>
         </div>
         
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_04.jpg" title="실강 일과표">           
-        </div>
-        
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_05.jpg" title="독학 일과표">           
-        </div>
-
          <div class="evtCtnsBox evt06" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_06.jpg" usemap="#Map1716_apply"  title="수강신청" border="0">
             <map name="Map1716_apply" id="Map1716_apply">
@@ -106,7 +98,7 @@
                 <area shape="rect" coords="577,516,680,554" href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/167955" target="_blank" />
                 <area shape="rect" coords="775,517,881,554" href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/167764" target="_blank" />
                 <area shape="rect" coords="914,515,1017,556" href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/167746" target="_blank" />
-                <area shape="rect" coords="745,880,910,938" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3130" target="_blank" />
+                <area shape="rect" coords="699,880,865,938" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3130" target="_blank" />
             </map>         
         </div>
 

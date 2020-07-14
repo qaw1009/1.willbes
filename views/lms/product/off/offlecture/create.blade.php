@@ -496,6 +496,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsCoupon">첨삭사용여부
+                    </label>
+                    <div class="col-md-4 form-inline">
+                        <div class="radio">
+                            <input type="radio" id="IsCorrect_y" name="IsCorrect" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCorrect']=='Y')checked="checked"@endif/> <label for="IsCorrect_y" class="mr-10">가능</label>
+                            <input type="radio" id="IsCorrect_n" name="IsCorrect" class="flat" value="N" @if($method == 'POST' || $data['IsCorrect']=='N')checked="checked"@endif/> <label for="IsCorrect_n">불가능</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="ProfChoiceStartDate">강사배정기간
                     </label>

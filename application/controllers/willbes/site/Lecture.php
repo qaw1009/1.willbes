@@ -12,6 +12,8 @@ class Lecture extends \app\controllers\FrontController
     private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
     private $_pattern_banner_section = ['only' => '수강신청_우측퀵', 'free' => '수강신청_우측퀵'];
 
+    private $_order_by_regist_default = ['2003', '2005', '2006'];  //등록순 디폴트 정렬 사이트 코드
+
     public function __construct()
     {
         parent::__construct();
@@ -32,8 +34,8 @@ class Lecture extends \app\controllers\FrontController
 
         //디폴트 적용
         if (empty(element('search_order', $arr_input))) {
-
-            if($this->_site_code === '2003') {  //공무원
+            //등록일 디폴트 정렬
+            if(in_array($this->_site_code, $this->_order_by_regist_default)) {
                 $arr_input['search_order'] = 'regist';
             } else {
                 $arr_input['search_order'] = 'course';

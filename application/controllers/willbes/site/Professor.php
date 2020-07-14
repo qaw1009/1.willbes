@@ -13,6 +13,8 @@ class Professor extends \app\controllers\FrontController
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
 
+    private $_order_by_regist_default = ['2003', '2005', '2006'];  //등록순 디폴트 정렬 사이트 코드
+
     public function __construct()
     {
         parent::__construct();
@@ -328,12 +330,18 @@ class Professor extends \app\controllers\FrontController
 
         // 온라인사이트일 경우만 조회
         if ($this->_is_pass_site === false && empty($arr_prof_idx['on']) === false) {
-            // 디폴트 과정순 정렬 적용
-            if (empty(element('search_order', $arr_input)) === true) {
-                $arr_input['search_order'] = 'course';
+
+            if (empty(element('search_order', $arr_input))) {
+                //등록일 디폴트 정렬
+                if(in_array($this->_site_code, $this->_order_by_regist_default)) {
+                    $arr_input['search_order'] = 'regist';
+                } else {
+                    $arr_input['search_order'] = 'course';
+                }
             }
 
             if($on_lec_view_ccd == '719002') {  //과목별 노출형태일 경우
+
                 // 해당강사 모든 강좌의 과목연결 직렬 추출
                 $data['setting_series'] = $this->_getOnLectureSeries($arr_site_code['on'], $arr_prof_idx['on']);
 

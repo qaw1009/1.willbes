@@ -7236,6 +7236,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #333;
     color: #fff;
 }
+.red-line-Box {
+    border: 1px solid #ff0000;
+    background: #fff;
+    color: #ff0000;
+}
 
 .willbes-Lec-Selected .chkBox {
     display: inline-block;

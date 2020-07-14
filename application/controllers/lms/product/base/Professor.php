@@ -184,11 +184,17 @@ class Professor extends \app\controllers\BaseController
      */
     public function reorderList()
     {
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);  // 1차 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryArray();
+        $arr_category = [];
+        foreach ($category_data as $row) {
+            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+            $arr_category[$arr_key][] = $row;
+        }
         $arr_subject = $this->subjectModel->getSubjectArray();
 
         $this->load->view('product/base/professor/reorder', [
-            'arr_category' => $arr_category,
+            'arr_lg_category' => element('LG', $arr_category, []),
+            'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $arr_subject,
         ]);
     }
@@ -200,17 +206,21 @@ class Professor extends \app\controllers\BaseController
     public function reorderListAjax()
     {
         $search_site_code = $this->_reqP('_search_site_code');
-        $search_cate_code = $this->_reqP('_search_cate_code');
+        $search_lg_cate_code = $this->_reqP('_search_lg_cate_code');
+        $search_md_cate_code = $this->_reqP('_search_md_cate_code');
         $search_subject_idx = $this->_reqP('_search_subject_idx');
         $count = 0;
         $list = [];
 
-        if (empty($search_site_code) === false && empty($search_site_code) === false && empty($search_site_code) === false) {
+        if (empty($search_site_code) === false && empty($search_lg_cate_code) === false) {
             $arr_condition = [
                 'EQ' => [
                     'PF.SiteCode' => $search_site_code,
-                    'PSC.CateCode' => $search_cate_code,
+                    'PSC.CateCode' => $search_md_cate_code,
                     'PSC.SubjectIdx' => $search_subject_idx
+                ],
+                'LKR' => [
+                    'PSC.CateCode' => $search_lg_cate_code,
                 ],
                 'IN' => ['PF.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
             ];

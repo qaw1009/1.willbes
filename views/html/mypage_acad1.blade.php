@@ -129,6 +129,7 @@
                                 <td class="w-answer p_re">
                                     <a href="#none" onclick="openWin('profChoice')"><span class="bBox blueBox">강사선택하기</span></a>
                                     <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                    <a href="#none"><span class="bBox red-line-Box">온라인첨삭</span></a>
                                 </td>
                             </tr>
                             <tr>
@@ -144,8 +145,8 @@
                                         <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                         <li>[좌석번호] <span>086</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                    </ul>
-                                    <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>
+                                    </ul> 
+                                    <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>                              
                                 </td>
                             </tr>
                             <tr>
@@ -157,6 +158,7 @@
                                 <td class="w-answer p_re">
                                     <a href="#none"><span class="bBox blueBox">강사선택하기</span></a>
                                     <a href="#none"><span class="bBox blackBox">좌석선택하기</span></a>
+                                    <a href="#none"><span class="bBox red-line-Box">온라인첨삭</span></a>
                                 </td>
                             </tr>
                             <tr>
@@ -173,7 +175,8 @@
                                             <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                             <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>
+                                        </ul>  
+                                        <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>                                      
                                     </div>
                                     <div class="mb10">
                                         <dl class="w-info">
@@ -188,6 +191,7 @@
                                             <li>[좌석번호] <span>066</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
                                         </ul>
+                                        <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>
                                     </div>
                                     <div class="mb10">
                                         <dl class="w-info">
@@ -201,7 +205,8 @@
                                             <li>[강의실명] <span>드림타워 3층 305호</span></li>
                                             <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                             <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
-                                        </ul>
+                                        </ul> 
+                                        <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>                                       
                                     </div>
                                 </td>
                             </tr>
@@ -784,6 +789,7 @@
                                 <li><span class="stbox stbox-blue-line mr10">채점중</span> 제출기간이 지나면 채점이 진행됩니다. 채점은 2-3일 소요됩니다.＇채점중'을 클릭하여 제출한 답안을 확인할 수 있습니다.</li>
                                 <li><span class="stbox stbox-333-line mr10">채점완료</span> 채점이 완료되었습니다. '채점완료'를 클릭하여 채점 결과를 확인하세요.</li>
                             </ul>
+                            <div class="mt20 tx14 NG">2018 [지방직/서울시] 정채영 국어 필살모고</div>
                             <div class="lookoverList mt20">
                                 <table class="lookoverTable">
                                     <colgroup>

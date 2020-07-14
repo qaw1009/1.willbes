@@ -18,12 +18,19 @@
         </label>
         <div class="col-md-10 form-inline">
             {!! html_site_select('', '_search_site_code', '_search_site_code', 'mr-10', '운영 사이트', '') !!}
-            <select class="form-control mr-10" id="_search_cate_code" name="_search_cate_code">
-                <option value="">카테고리</option>
-                @foreach($arr_category as $row)
+            <select class="form-control mr-10" id="_search_lg_cate_code" name="_search_lg_cate_code">
+                <option value="">대분류</option>
+                @foreach($arr_lg_category as $row)
                     <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                 @endforeach
             </select>
+            <select class="form-control mr-10" id="_search_md_cate_code" name="_search_md_cate_code">
+                <option value="">중분류</option>
+                @foreach($arr_md_category as $row)
+                    <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                @endforeach
+            </select>
+
             <select class="form-control" id="_search_subject_idx" name="_search_subject_idx">
                 <option value="">과목</option>
                 @foreach($arr_subject as $row)
@@ -86,7 +93,8 @@
             });
 
             // 카테고리, 과목 자동 변경
-            $search_form_modal.find('select[name="_search_cate_code"]').chained("#_search_site_code");
+            $search_form_modal.find('select[name="_search_lg_cate_code"]').chained("#_search_site_code");
+            $search_form_modal.find('select[name="_search_md_cate_code"]').chained("#_search_lg_cate_code");
             $search_form_modal.find('select[name="_search_subject_idx"]').chained("#_search_site_code");
 
             // 순서 변경

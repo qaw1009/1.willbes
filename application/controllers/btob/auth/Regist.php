@@ -26,7 +26,13 @@ class Regist extends \app\controllers\BaseController
         $arr_area_ccd = array_unique(array_pluck($arr_area_branch_ccd, 'AreaCcdName', 'AreaCcd'));
 
         // 사용하는 코드값 조회
+        $pattern_tel1 = 'tel';
         $arr_tel1_ccd = $this->codeModel->getCcd('672');
+        $arr_phone1_ccd = $this->codeModel->getCcd('673');
+        if ($this->_sess_btob_idx == '4') {
+            $arr_tel1_ccd = $arr_phone1_ccd;
+            $pattern_tel1 = 'mobile';
+        }
 
         // 운영자 정보 조회
         $data = $this->btobAdminModel->findAdminForModify($this->session->userdata('btob.admin_idx'));
@@ -37,6 +43,7 @@ class Regist extends \app\controllers\BaseController
 
         return $this->load->view('auth/edit', [
             'arr_tel1_ccd' => $arr_tel1_ccd,
+            'pattern_tel1' => $pattern_tel1,
             'arr_area_ccd' => $arr_area_ccd,
             'arr_branch_ccd' => $arr_branch_ccd,
             'data' => $data

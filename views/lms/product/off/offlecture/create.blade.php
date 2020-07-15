@@ -503,7 +503,7 @@
                     <div class="col-md-4 form-inline">
                         <div class="radio">
                             @foreach($correct_optionccd as $key => $val)
-                                <input type="radio" name="OptionCcds[]" id="correct_ccd{{$key}}" value="{{$key}}" class="flat" @if(($method == 'POST' && $loop->last === true) || $data['OptionCcds']==$key) checked="checked"@endif> <label for="correct_ccd{{$key}}" class="mr-10">{{$val}}</label>
+                                <input type="radio" name="OptionCcds[]" id="correct_ccd{{$key}}" value="{{$key}}" class="flat" @if(($method == 'POST' && $loop->last === true) || (in_array($key, explode(',',$data['OptionCcds'])) === true)) checked="checked"@endif> <label for="correct_ccd{{$key}}" class="mr-10">{{$val}}</label>
                             @endforeach
                         </div>
                     </div>

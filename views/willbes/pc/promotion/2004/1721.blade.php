@@ -71,7 +71,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_top.jpg" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
             <map name="Map1721a" id="Map1721a">
                 <area shape="rect" coords="144,1112,546,1208" href="#apply" />
-                <area shape="rect" coords="573,1112,980,1210" href="cafe.daum.net/sharkchoi" target="_blank" />
+                <area shape="rect" coords="573,1112,980,1210" href="http://cafe.daum.net/sharkchoi" target="_blank" />
             </map>           
         </div>
 

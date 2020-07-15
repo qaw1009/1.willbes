@@ -137,6 +137,7 @@ class NpayProduct extends \app\controllers\FrontController
                 $output .= '<groupId>' . $_delivery_group_id . '</groupId>';
                 $output .= '<method>DELIVERY</method>';
 
+                // 가격이 30,000원 미만일 경우만 배송료 무료조건 적용
                 if ($row['IsFreebiesTrans'] == 'N' && $row['rwRealSalePrice'] < $_delivery_free_price) {
                     $output .= '<feeType>FREE</feeType>';
                     $output .= '<feePayType>FREE</feePayType>';

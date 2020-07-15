@@ -86,7 +86,9 @@
         
                     <div class="littlefovd_wrap">
                         <div class="preview_area">
-                            <div class="avi_box" ><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe></div>
+                            <div class="avi_box">
+                                <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
+                            </div>
                             <h2 class="prt_bnr_ttl">[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</h2>
                             <span class="prt_bnr_info">국어 / 문명교수님<a href="/tch/MM" target="_blank" class="adClick" data-adarea="맛보기영상팝업_교수님홈바로가기">교수님홈바로가기</a></span>
                         </div>
@@ -140,18 +142,6 @@
                     
                 </div>
             </div>
-            <div id="tab1" class="youtubeBoxes">
-                <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-            <div id="tab2" class="youtubeBoxes">
-                <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>            
-            <div id="tab3" class="youtubeBoxes">
-                <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
-            <div id="tab4" class="youtubeBoxes">
-                <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
@@ -198,12 +188,12 @@
             $(".tabContents").hide();
             $(".tabContents:first").show();
             $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
+                var activeTab = $(this).attr("href");
+                $(".tabContaier ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).fadeIn();
+                return false;
             });
         });
 
@@ -214,29 +204,24 @@
         var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
 
         $(function() {
-        $(".youtubeBoxes").hide(); 
-        $(".youtubeBoxes:first").show();
-        $(".youtubetabs li a").click(function(){ 
-                var activeTab = $(this).attr("href"); 
-                var html_str = "";
+            $(".preview_list ul li a").click(function(){
+                var activeTab = $(this).attr("href");
+                var video_tab_url = '';
+                var html_str = '';
                 if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                    video_tab_url = tab1_url;
                 }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                    video_tab_url = tab2_url;
                 }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                    video_tab_url = tab3_url;
                 }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
+                    video_tab_url = tab4_url;
                 }
-                $(".youtubetabs a").removeClass("active"); 
-                $(this).addClass("active"); 
-                $(".youtubeBoxes").hide(); 
-                $(".youtubeBoxes").html(''); 
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn(); 
-                return false; 
-                });
-            });	
+                html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
+                $(this).addClass("active");
+                $('.avi_box').html(html_str);
+            });
+        });
 
     </script>
 

@@ -58,6 +58,15 @@
                     <input type="text" id="Email" name="Email" class="form-control" title="이메일" value="{{ $data['ManagerName'] }}">
                 </div>
             </div>
+
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="site_code">운영사이트</label>
+                <div class="col-md-6 form-inline">
+                    {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', '', '', true) !!}
+                    <span class="pl-10"># 제휴사 매핑 운영사이트</span>
+                </div>
+            </div>
+
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="Tel1">전화번호
                 </label>

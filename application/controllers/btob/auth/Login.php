@@ -55,7 +55,7 @@ class Login extends \app\controllers\BaseController
         $is_no_match = false;
 
         // 제휴사 정보 조회
-        $btob_row = $this->btobModel->findCompany('BtobIdx, BtobName', ['EQ' => ['BtobId' => $btob_id, 'IsUse' => 'Y']]);
+        $btob_row = $this->btobModel->findCompany('BtobIdx, BtobName, SiteCode', ['EQ' => ['BtobId' => $btob_id, 'IsUse' => 'Y']]);
         if (empty($btob_row) === true) {
             return $this->json_error('일치하는 제휴사 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
@@ -88,6 +88,7 @@ class Login extends \app\controllers\BaseController
         $row['BtobIdx'] = $btob_row['BtobIdx'];     // 제휴사식별자
         $row['BtobId'] = $btob_id;                  // 제휴사아이디
         $row['BtobName'] = $btob_row['BtobName'];   // 제휴사명
+        $row['BtobSiteCode'] = $btob_row['SiteCode']; // 제휴사와 매핑된 사이트코드
         $row['LmsAdminIdx'] = $this->btobLoginModel->getLmsAdminIdx();  // LMS 운영자 식별자
 
         // 로그인 성공
@@ -110,6 +111,7 @@ class Login extends \app\controllers\BaseController
         $this->session->set_userdata('btob.btob_idx', $data['BtobIdx']);
         $this->session->set_userdata('btob.btob_id', $data['BtobId']);
         $this->session->set_userdata('btob.btob_name', $data['BtobName']);
+        $this->session->set_userdata('btob.site_code', $data['BtobSiteCode']);
         $this->session->set_userdata('btob.admin_idx', $data['AdminIdx']);
         $this->session->set_userdata('btob.admin_id', $data['AdminId']);
         $this->session->set_userdata('btob.admin_name', $data['AdminName']);

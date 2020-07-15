@@ -254,7 +254,7 @@
                 addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
             @else
                 @if($is_npay === true)
-                    addGuestCart($regi_form, 'Y');
+                    addGuestCart($regi_form, 'N', 'Y');
                 @else
                     // 네이버페이 결제를 사용하지 않을 경우 로그인 필수
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}

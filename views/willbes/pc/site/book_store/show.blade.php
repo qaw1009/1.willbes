@@ -109,7 +109,7 @@
                                             return false;
                                         }
                                     </script>
-                                    <script type="text/javascript" src="https://test-pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
+                                    <script type="text/javascript" src="https://pay.naver.com/customer/js/naverPayButton.js" charset="utf-8"></script>
                                     <script type="text/javascript" >//<![CDATA[
                                         naver.NaverPayButton.apply({
                                             BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력

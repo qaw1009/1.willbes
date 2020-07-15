@@ -23,7 +23,7 @@
         .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
         .evtTop00 {background:#0a0a0a}
 
-        .evtTop {background:#363c43 url(https://static.willbes.net/public/images/promotion/2020/06/1685_top_bg.jpg) repeat-y center top;}     
+        .evtTop {background:#273445 url(https://static.willbes.net/public/images/promotion/2020/07/1685_top_bg.jpg) repeat-y center top;}     
 
         .evt01 {background:#f8f8f8;} 
 
@@ -91,7 +91,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
             <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_sky.png" alt="스카이베너" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_sky.png" alt="스카이베너" >
             </a>
         </div>       
      
@@ -126,55 +126,56 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_top.jpg" title="문제풀이 풀패키지">                    
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_top.jpg" title="문제풀이 풀패키지">                    
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_01.jpg" title="커리큘럼">           
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_01.jpg" title="커리큘럼">           
         </div>
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_02.jpg" usemap="#Map1685_step1" title="문제풀이 단계" border="0"/>
             <map name="Map1685_step1" id="Map1685_step1">
                 <area shape="rect" coords="355,945,764,1009" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="355,1896,762,1956" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
             </map>
         </div>
 
-        <div class="evtCtnsBox evt03" id="apply">
+        {{--
+        <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_03.jpg" usemap="#Map1685_apply" title="풀패키지 신청하기" border="0"/>
             <map name="Map1685_apply" id="Map1685_apply">
                 <area shape="rect" coords="175,915,465,974" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
                 <area shape="rect" coords="658,914,949,974" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
             </map>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_04.jpg" title="단계별 종합반" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_04.jpg" title="단계별 종합반" >
             <div class="evtCtnsBox wb_tab">
-                <div class="tabContaier">    
+                <div class="tabContaier" id="apply">    
                     <ul>    
                         <li><a href="#tab1" class="active">일반공채</a></li>
                             
                         <li><a href="#tab2">경행경채</a></li>          
                     </ul>
                 </div> 
-                <div id="tab1" class="tabContents">       
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_04_tab01.jpg" usemap="#Map1685a"  title="일반공채 수강신청" border="0" />
+                <div id="tab1" class="tabContents">   
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_04_tab01.jpg" usemap="#Map1685a"  title="일반공채 수강신청" border="0" />
                     <map name="Map1685a" id="Map1685a">
-                        <area shape="rect" coords="896,121,1026,155" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                        <area shape="rect" coords="897,301,1025,336" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                        <area shape="rect" coords="896,490,1026,526" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
-                        <area shape="rect" coords="894,681,1026,715" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                        <area shape="rect" coords="897,146,1024,179" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                        <area shape="rect" coords="897,335,1024,369" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
+                        <area shape="rect" coords="897,524,1025,559" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
                     </map>  
                 </div>
-                <div id="tab2" class="tabContents">       
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_04_tab02.jpg" usemap="#Map1685b"  title="경행경채 수강신청" border="0" />
+                <div id="tab2" class="tabContents">    
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_04_tab02.jpg" usemap="#Map1685b"  title="경행경채 수강신청" border="0" />
                     <map name="Map1685b" id="Map1685b">
-                        <area shape="rect" coords="897,120,1024,155" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-                        <area shape="rect" coords="897,302,1026,334" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
-                        <area shape="rect" coords="896,492,1026,525" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1045" target="_blank" />
-                        <area shape="rect" coords="895,681,1027,716" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
-                    </map>     
+                        <area shape="rect" coords="897,146,1026,179"  href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
+                        <area shape="rect" coords="897,335,1025,370" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1045" target="_blank" />
+                        <area shape="rect" coords="897,525,1026,559" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
+                    </map>   
                 </div>     
             </div>     
         </div>

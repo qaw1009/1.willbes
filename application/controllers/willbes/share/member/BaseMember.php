@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseMember extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF','classroomF', 'couponF', 'mocktest/mockExam', 'order/orderF', 'crm/smsF');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF','classroomF', 'couponF', 'mocktest/mockExam', 'order/orderF', 'crm/smsF', '_lms/crm/send/sms');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -14,6 +14,36 @@ class BaseMember extends \app\controllers\FrontController
         '662003' => '/member/findpwd',
         '662004' => '/member/sleep',
         '662005' => '/'
+    ];
+
+    private $_send_type = 'sms';
+
+    // 메세지 발송 종류 (SMS,쪽지,메일)
+    private $_send_type_ccd = [
+        'sms' => '641001',
+        'message' => '641002',
+        'mail' => '641003'
+    ];
+
+    // 메시지 상태 (성공,예약,취소)
+    private $_send_status_ccd = [
+        '0' => '639001',
+        '1' => '639002',
+        '2' => '639003'
+    ];
+
+    // 메시지 발송 옵션 (즉시발송, 예약발송)
+    private $_send_option_ccd = [
+        '0' => '640001',
+        '1' => '640002'
+    ];
+
+    // 메시지 발송 옵션 (SMS, LMS, 친구톡, 알림톡)
+    private $_send_text_length_ccd = [
+        '0' => '638001',
+        '1' => '638002',
+        '2' => '638003',
+        '3' => '638004'
     ];
 
     public function __construct()
@@ -97,13 +127,15 @@ class BaseMember extends \app\controllers\FrontController
             $this->session->set_tempdata('sms_name', $name, 180);
             $this->session->set_tempdata('sms_id', $id, 180);
 
-            $this->load->library('sendSms');
-            if($this->sendsms->send($phone, '윌비스 본인확인 번호입니다. [ '.$code.' ]를 입력해주십시요.', '1544-5006') === false){
+            $inputData = $this->_setInputData();
+            list($result, $return_count) = $this->smsModel->addSms($inputData, $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
+            //$this->load->library('sendSms');
+            //if($this->sendsms->send($phone, '윌비스 본인확인 번호입니다. [ '.$code.' ]를 입력해주십시요.', '1544-5006') === false){
 //            if($this->smsFModel->addKakaoMsg($phone, null, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $code]]) === false) {
-                return $this->json_error('메세지 발송에 실패했습니다.\n다시한번 시도해 주십시요.');
-            }
+                //return $this->json_error('메세지 발송에 실패했습니다.\n다시한번 시도해 주십시요.');
+            //}
 
-            return $this->json_result(true,"인증번호를 발송하였습니다.",
+            return $this->json_result($result,"인증번호를 발송하였습니다.",
                 null, [
                     'limit_date' => $limit_date
                 ]);
@@ -201,9 +233,51 @@ class BaseMember extends \app\controllers\FrontController
         return $this->json_result(true, "인증메일을 발송했습니다.\n발송된 메일의 인증링크를 30분 안에 클릭해 주세요. ");
     }
 
+    /**
+     * 발송완료 SMS 발송
+     * @param $data [발신자 정보]
+     * @param $send_data [수신자 정보]
+     * @return bool
+     */
+    private function _sendSms($data, $send_data)
+    {
+        //메세지 치환
+        foreach($this->_sms_send_content_replace as $key => $val) {
+            if(strpos($data['SmsContent'], $key) !== false && empty($send_data[$val]) === false) {
+                $data['SmsContent'] = str_replace($key, $send_data[$val], $data['SmsContent']);
+            }
+        }
 
+        //$this->load->library('sendSms');
+        //if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
+        if($this->smsFModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], $data['SendTel'], null, 'KFT') === false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    /**
+     * input data 셋팅
+     * @return array
+     */
+    private function _setInputData()
+    {
+        $input_data = [
+            'send_type' => 1,                               // 1:개별발송, 2:일괄발송(엑셀)
+            'site_code' => 2000,
+            'send_pattern_ccd' => 637003,                   // 637001:일반발송, 637002:예약발송, 637003:자동발송
+            'cs_tel_ccd' => 706001,                         // 706001:WCA, 706002:경찰학원
+            'send_content' => '윌비스 본인확인 번호입니다. [ '.$this->session->userdata('sms_code').' ]를 입력해주십시요.',
+            'mem_name' => array($this->session->userdata('sms_name')),
+            'mem_phone' => array($this->session->userdata('sms_phone')),
+            'send_option_ccd' => 640001,                    // 640001:즉시발송, 640002:예약발송
+            'reg_admin_idx' => 1000,                        //자동문자는 발송 등록 관리자가 없음
+            'from_phone' => '1544-5006'
+        ];
 
+        return $input_data;
+    }
 
 }
 

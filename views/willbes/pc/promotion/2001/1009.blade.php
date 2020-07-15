@@ -24,7 +24,7 @@
         .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
         
         .evt00 {background:#0a0a0a}
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/06/1009_top_bg.jpg) no-repeat center top} 
+        .evt_top {background:#023032} 
        
         .evt01 {padding-bottom:100px; background:#fff !important}
         .evt01 .slide_con {position:relative; width:900px; margin:0 auto}
@@ -37,14 +37,12 @@
 
         .evt02 {background:#ececec;}
         .evt02 .passLecBuy {position:relative; width:1120px; margin:0 auto}
-        .evt02 .price {width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2020/04/1009_02_bg.jpg) repeat-y center; }
-        .evt02 .passLecBuy ul { width:954px; margin:0 auto}
-        .evt02 .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000;}
-        .evt02 .passLecBuy li:nth-child(1) {width:312px}
-        .evt02 .passLecBuy li:nth-child(2) {width:312px}
-        .evt02 .passLecBuy li:nth-child(3) {width:328px}
-        .evt02 .passLecBuy li div {font-size:14px; font-weight:bold; background:#4d79f6; color:#fff; text-align:left; padding:15px; border-radius:10px; margin:0 20px}
-        .evt02 .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
+        .evt02 .price {width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2020/07/1009_02_bg.jpg) repeat-y center; }
+        .evt02 .passLecBuy ul { width:974px; margin:0 auto}
+        .evt02 .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; width:312px; margin-right:11px}
+        .evt02 .passLecBuy li:last-child {width:328px; margin:0}
+        .evt02 .passLecBuy li div {font-size:14px; font-weight:bold; background:#dfba61; color:#fff; text-align:left; padding:15px 30px; border-radius:10px; margin:0 20px}
+        .evt02 .passLecBuy li:last-child div {background:#166669;} /*컬러변경*/
         .evt02 .passLecBuy li:last-child p {font-size:16px}
         .evt02 strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .evt02 .passLecBuy ul:after {content:""; display:block; clear:both}        
@@ -67,28 +65,28 @@
         .evt02 .passLecbtn span {margin-left:50px}
         .evt02 .passLecbtn ul:after {content:""; display:block; clear:both}
 
-        .evt03 {background:#313131; padding-bottom:150px}
+        .evt03 {background:#313131 url(https://static.willbes.net/public/images/promotion/2020/07/1009_03_bg.jpg) no-repeat center top; padding-bottom:150px}
         .evt03 iframe {width:853px; height:480px}
 
-        .evt04 {background:#1a1a1a;}
-        .evt04 .leclist {position:absolute; top:526px; left:50%; margin-left:-392px; width:784px; height:228px;  overflow:hidden}
-        .evt04 .slidesLec li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:70px; overflow:hidden; display:inline; float:left; }
-        .evt04 .slidesLec li span {width:130px; display:inline-block}
-        .evt04 .slidesLec:after {content:""; display:block; clear:both}
-        .evt04 .evt04Sec2 {position:relative;}
-        .evt04 .slide_con { width:784px; position:absolute; top:575px; left:50%; margin-left:-392px; z-index:1}
-        .evt04 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px !important; height:45px !important; z-index:10}
-        .evt04 .slide_con p.leftBtn {left:-22px}
-        .evt04 .slide_con p.rightBtn {right:-22px}
-        .evt04 .slide_con li {display:inline; float:left}
-        .evt04 .slide_con li img {width:100%}
-        .evt04 .slide_con ul:after {content::""; display:block; clear:both}
-        .evt04 .playTv {position:relative;}
-        .evt04 .playTv div {position:absolute; top:2012px; width:328px; left:50%; margin-left:-333px; z-index:1}
-        .evt04 .playTv div:last-child {margin-left:10px}
-        .evt04 .playTv iframe {width:328px; height:184px}
+        .evt04 {background:#1a1a1a;} 
+
+        .evt04_01 {background:#272727; padding-bottom:150px}
+        .evt04_01 .slide_con {width:784px; margin:0 auto; position:relative;}
+        .evt04_01 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px !important; height:45px !important; z-index:10}
+        .evt04_01 .slide_con p.leftBtn {left:-22px}
+        .evt04_01 .slide_con p.rightBtn {right:-22px}
+        .evt04_01 .slide_con li {display:inline; float:left}
+        .evt04_01 .slide_con li img {width:100%}
+        .evt04_01 .slide_con ul:after {content::""; display:block; clear:both}
+
+        .evt04_02 {background:#1a1a1a;}  
+        .evt04_03 {background:#343434;}
+        .evt04_03 .playTv {position:relative;}
+        .evt04_03 .playTv div {position:absolute; top:2030px; width:328px; left:50%; margin-left:-333px; z-index:1}
+        .evt04_03 .playTv div:last-child {margin-left:10px}
+        .evt04_03 .playTv iframe {width:328px; height:184px}
         
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2020/04/1009_05_bg.jpg) no-repeat center top;}
+        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1009_05_bg.jpg) no-repeat center top;}
 
 
         /* 이용안내 */
@@ -200,36 +198,41 @@
         </div>
 
         <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_first.jpg"  alt="경찰학원부분 1위"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evt_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0" />
             <map name="Map1009A" id="Map1009A">
-                <area shape="rect" coords="249,1465,867,1537"  href="#pass" alt="pass신청하기" />
+                <area shape="rect" coords="251,1574,869,1646"  href="#pass" alt="pass신청하기" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01.jpg"  alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01.jpg"  alt=""/>
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt02.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt03.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt04.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt05.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_txt06.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt02.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt03.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt04.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt05.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_txt06.png" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_arrowL.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_arrowL.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/04//1009_01_arrowR.png"></a></p>
             </div>            
+        </div>
+
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_03.gif"  alt="열공지원" />
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/4947Jur0ZP4?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_02_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_02_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
@@ -257,7 +260,7 @@
                 
                 <div>
                     <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_02.jpg"  alt="체력" usemap="#Map1009C"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_02_02.jpg"  alt="체력" usemap="#Map1009C"/>
                     </a>
                 </div>
 
@@ -272,10 +275,10 @@
                 </div>
 
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_02_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009C" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_02_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009C" id="event">
                     <map name="Map1009C" id="Map1009C">
-                        <!--area shape="rect" coords="474,116,610,150" href="https://police.willbes.net/support/qna/index" target="_blank" alt="환승이벤트 참여하기" />//-->
-                        <area shape="rect" coords="830,116,966,150" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
+                        <area shape="rect" coords="474,108,610,142" href="https://www.willbes.net/classroom/qna/index" target="_blank" alt="재수강 쿠폰받기" />
+                        <area shape="rect" coords="847,108,983,142" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
             </div>
@@ -288,81 +291,43 @@
                 </div>
             </div>
         </div>
-        <!-- evt02//-->
+        <!-- evt02//-->        
 
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_03.gif"  alt="열공지원" />
-            <iframe width="853" height="480" src="https://www.youtube.com/embed/4947Jur0ZP4?rel=0" frameborder="0" allowfullscreen></iframe>
+        <div class="evtCtnsBox evt04">  
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_01.jpg"  alt="" />
+        </div>
+
+        <div class="evtCtnsBox evt04_01">  
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_02.jpg"  alt="" />
+            <div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_02_txt01.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_02_txt02.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_02_txt03.jpg" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_02_txt04.jpg" alt="4" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/07/1009_01_arrowR.png"></a></p>
+            </div>
         </div>
         
-        <div class="evtCtnsBox evt04">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_01.jpg"  alt="" />
-            </div>
-        
-            <div class="evt04Sec2">  
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_04_02.jpg"  alt="" />
-                {{--
-                <div class="leclist">
-                    <ul class="slidesLec">
-                        <li>
-                        <span>cool9***</span><span>노승*</span><span>ljl0***</span><span>이진*</span><span>kjh01***</span><span>김종*</span><br>
-                        <span>wkaak***</span><span>주재*</span><span>kasa***</span><span>정다*</span><span>bong3***</span><span>봉원*</span><br>
-                        <span>9***9***</span><span>김규*</span><span>juj0***</span><span>정우*</span><span>ljc0***</span><span>이준*</span><br>
-                        <span>gogom***</span><span>김성*</span><span>jjw***</span><span>정재*</span><span>chltjd***</span><span>최성*</span><br>
-                        <span>iamkore***</span><span>김정*</span><span>ysc8***</span><span>양승*</span><span>tnghwls***</span><span>홍진*</span><br>
-                        <span>sdo***</span><span>서동*</span><span>lastki***</span><span>최선*</span><span>fntld***</span><span>김소*</span><br>
-                        <span>w-j***</span><span>우지*</span><span>wanyoung4***</span><span>허완*</span><span>kth11***</span><span>김태*</span><br>
-                        <span>ghr***</span><span>이호*</span><span>optim***</span><span>홍승*</span><span>kos0***</span><span>전현*</span><br>
-                        <span>vkstjr***</span><span>임정*</span><span>final0***</span><span>권준*</span><span>rong***</span><span>김아*</span><br>
-                        <span>dbtjq9***</span><span>전유*</span><span>skfkrh***</span><span>김종* </span><span>young8***</span><span>박화*</span><br>
-                        <span>pppp***</span><span>조권*</span><span>dlsgh1***</span><span>양인*</span><span>jnh0***</span><span>정다*</span><br>
-                        <span>meko***</span><span>채지*</span><span>ljn0***</span><span>임종*</span><span>nky0***</span><span>노건*</span><br>
-                        <span>jwoo1***</span><span>한지*</span><span>koreapa***</span><span>정경*</span><span>pyse***</span><span>박민*</span><br>
-                        <span>pusuy0***</span><span>강지*</span><span>shine2***</span><span>조성*</span><span>zxc***</span><span>박종*</span><br>
-                        <span>akdlwkd7***</span><span>고장*</span><span>gktngjs***</span><span>하수*</span><span>aaa***</span><span>안선*</span><br>
-                        <span>tjddbf***</span><span>김성*</span><span>crab0***</span><span>김지*</span><span>tragedian***</span><span>이*</span><br>
-                        <span>airjor***</span><span>김영*</span><span>tree***</span><span>박현*</span><span>ymc***</span><span>김영*</span><br>
-                        <span>kimyy1***</span><span>김용*</span><span>wlst***</span><span>안진*</span><span>lsm5***</span><span>이선*</span><br>
-                        <span>ckdghk***</span><span>김창*</span><span>daily0***</span><span>이대*</span><span>saem***</span><span>이한*</span><br>
-                        <span>pmonk***</span><span>김현*</span><span>look***</span><span>신재*</span><span>ranhee0***</span><span>이란*</span><br>
-                        <span>sls8***</span><span>손승*</span><span>dksgk***</span><span>안하*</span><span>tmddnjs***</span><span>이승*</span><br>
-                        <span>tjddn1***</span><span>송성*</span><span>wind2***</span><span>윤여*</span><span>ljh***</span><span>이지*</span><br>
-                        <span>marlred***</span><span>송승*</span><span>s0***</span><span>송호*</span><span></span><span></span><br>
-                        </li>			
-                    </ul>
-                </div>
-                --}}
+        <div class="evtCtnsBox evt04_02">  
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_03.jpg"  alt="" />
+        </div>
 
-                <div class="slide_con">
-                    <ul id="slidesImg3">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02_txt01.jpg" alt="1" /></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02_txt02.jpg" alt="2" /></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02_txt03.jpg" alt="3" /></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_02_txt04.jpg" alt="4" /></li>
-                    </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_arrowL.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/04/1009_01_arrowR.png"></a></p>
-                </div>
-            </div>
-        
-
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_03.jpg"  alt="" />
-            </div>
-
+        <div class="evtCtnsBox evt04_03"> 
             <div class="playTv">
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_04_04.jpg"  alt="" usemap="#Map1009D" border="0" />               
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_04_04.jpg"  alt="" usemap="#Map1009D" border="0" />               
                 <map name="Map1009D">
-                    <area shape="rect" coords="279,2263,862,2340" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" alt="신광은경찰팀 TV">
+                    <area shape="rect" coords="279,2283,862,2360" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" alt="신광은경찰팀 TV">
                 </map>
-                <div><iframe src="https://www.youtube.com/embed/JxkyQIx1RGM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div><iframe src="https://www.youtube.com/embed/oYUJjLMKoZc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe src="https://www.youtube.com/embed/JxkyQIx1RGM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe src="https://www.youtube.com/embed/oYUJjLMKoZc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
             </div>
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1009_05.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_05.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
         </div>
 
         <div class="content_guide_wrap" id="tab">
@@ -719,23 +684,6 @@
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
-
-        $(document).ready(function() {
-            $(function() {
-                //Count the number of li elements
-                var bx_num01 = $(".slidesLec li").length;
-                var ticker01 = $('.slidesLec').bxSlider({
-                    minSlides: 0,
-                    maxSlides: 100,
-                    slideWidth: 980,
-                    slideMargin: 0,
-                    ticker: true,
-                    mode: 'vertical',
-                    tickerHover: true,
-                    speed:50000*bx_num01
-                });
-            });
-        });
 
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({

@@ -194,7 +194,7 @@
         
         <div class="wb_ctsInfo NGR" id="ctsInfo">
             <div>
-                <h3 class="NGEB">유의사항학원 실강패스</h3>
+                <h3 class="NGEB">응시자 유의사항</h3>
                 <dd>
                     <dt>유의사항</dt>
                     <dl>학원 실강패스 수강생은 응시 지역별 학원 상담실 문의해 주시기 바랍니다. 모든 고사장 주차 불가합니다.<br>

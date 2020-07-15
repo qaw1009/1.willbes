@@ -582,7 +582,7 @@
                 <li>
                     <span>순환별</span>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1128') }}">기초입문</a>
-                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1129') }}">기초강의</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1129') }}">기본강의</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1130') }}">집중심화</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1131') }}">핵심체크</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1132') }}">실전모강+해설및핵심정리</a>

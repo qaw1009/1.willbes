@@ -260,7 +260,7 @@
                 
                 <div>
                     <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_02_02.jpg"  alt="체력" usemap="#Map1009C"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_02_02.jpg"  alt="체력"/>
                     </a>
                 </div>
 

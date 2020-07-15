@@ -234,30 +234,6 @@ class BaseMember extends \app\controllers\FrontController
     }
 
     /**
-     * 발송완료 SMS 발송
-     * @param $data [발신자 정보]
-     * @param $send_data [수신자 정보]
-     * @return bool
-     */
-    private function _sendSms($data, $send_data)
-    {
-        //메세지 치환
-        foreach($this->_sms_send_content_replace as $key => $val) {
-            if(strpos($data['SmsContent'], $key) !== false && empty($send_data[$val]) === false) {
-                $data['SmsContent'] = str_replace($key, $send_data[$val], $data['SmsContent']);
-            }
-        }
-
-        //$this->load->library('sendSms');
-        //if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
-        if($this->smsFModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], $data['SendTel'], null, 'KFT') === false) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
      * input data 셋팅
      * @return array
      */

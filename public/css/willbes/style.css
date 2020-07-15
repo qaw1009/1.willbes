@@ -11345,6 +11345,20 @@ table.acadlecInfoPackageTable tr.Top td {
     display:block;
     margin-bottom:10px;
 }
+.Quick-Bnr-book {
+    border:1px solid #e4e4e4;
+    margin-top:20px;
+    text-align: center;
+    font-size: 22px;
+    font-family: "Noto Sans KR Regular", "Noto Sans KR", "sans-serif" !important;    
+    line-height: 1.2;
+}
+.Quick-Bnr-book a {
+    display:block;
+    padding:40px 0;
+    margin:0;
+}
+.Quick-Bnr-book a:hover {background: #333; color:#fff; }
 
 /* 제대군인인증팝업 */
 .leaveArmyJoin {padding-bottom:30px; overflow-y:scroll; width:740px; height: 700px;}

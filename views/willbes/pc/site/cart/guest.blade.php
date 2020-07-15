@@ -278,7 +278,7 @@
                         <div class="willbes-Cart-Txt">
                             <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                                 <tbody>
-                                <tr><td>• <span class="tx-red">윌스토리 온라인서점은 회원이 아닐 경우에는 원칙적으로 상품 구매가 불가능합니다. 단, 네이버페이를 통한 구매의 경우 비회원도 구입이 가능합니다.</span></td></tr>
+                                {{--<tr><td>• <span class="tx-red">윌스토리 온라인서점은 회원이 아닐 경우에는 원칙적으로 상품 구매가 불가능합니다. 단, 네이버페이를 통한 구매의 경우 비회원도 구입이 가능합니다.</span></td></tr>--}}
                                 <tr><td>• 네이버페이 결제 시 주문내역은 ‘네이버쇼핑(네이버페이) > 쇼핑 MY > 주문확인/배송조회’에서 확인 가능합니다.</td></tr>
                                 <tr><td>• 네이버페이 결제는 네이버페이 운영방침에 따라 이루어집니다. (<a href="https://help.pay.naver.com/faq/list.help?categoryId=697" target="_blank">https://help.pay.naver.com/faq/list.help?categoryId=697</a>)</td></tr>
                                 <tr><td>• 비회원에서 로그인으로 전환 시, 기존 장바구니에 담겨있던 상품이 모두 사라집니다. 로그인 후 다시 상품을 선택하여 장바구니에 담아야 합니다.</td></tr>
@@ -294,6 +294,11 @@
             </div>
         </div>
     </div>
+
+    <div class="Quick-Bnr Quick-Bnr-book">
+        <a href="#none" onclick="javascript:alert('비회원 주문내역은 고객센터로 연락하여 확인해주세요');">비회원<br>주문내역</a>     
+    </div>
+
     {!! banner('결제_우측퀵', 'Quick-Bnr ml20 mt85', $__cfg['SiteCode'], '0') !!}
 </div>
 <!-- End Container -->

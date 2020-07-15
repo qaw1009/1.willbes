@@ -136,12 +136,21 @@ class NpayProduct extends \app\controllers\FrontController
                 $output .= '<shippingPolicy>';
                 $output .= '<groupId>' . $_delivery_group_id . '</groupId>';
                 $output .= '<method>DELIVERY</method>';
-                $output .= '<feeType>CONDITIONAL_FREE</feeType>';
-                $output .= '<conditionalFree>';
-                $output .= '<basePrice>' . $_delivery_free_price . '</basePrice>';
-                $output .= '</conditionalFree>';
-                $output .= '<feePayType>PREPAYED</feePayType>';
-                $output .= '<feePrice>' . $_delivery_price . '</feePrice>';
+
+                // 가격이 30,000원 미만일 경우만 배송료 무료조건 적용
+                if ($row['IsFreebiesTrans'] == 'N' && $row['rwRealSalePrice'] < $_delivery_free_price) {
+                    $output .= '<feeType>FREE</feeType>';
+                    $output .= '<feePayType>FREE</feePayType>';
+                    $output .= '<feePrice>0</feePrice>';
+                } else {
+                    $output .= '<feeType>CONDITIONAL_FREE</feeType>';
+                    $output .= '<conditionalFree>';
+                    $output .= '<basePrice>' . $_delivery_free_price . '</basePrice>';
+                    $output .= '</conditionalFree>';
+                    $output .= '<feePayType>PREPAYED</feePayType>';
+                    $output .= '<feePrice>' . $_delivery_price . '</feePrice>';
+                }
+
                 $output .= '<surchargeByArea>';
                 $output .= '<splitUnit>' . $_delivery_add_split_unit . '</splitUnit>';
                 $output .= '<area2Price>' . $_delivery_add_area2_price . '</area2Price>';

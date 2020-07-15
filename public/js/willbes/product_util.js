@@ -82,12 +82,14 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url) {
 /**
  * 비회원 장바구니 저장
  * @param $regi_form
+ * @param $is_direct_pay
  * @param $is_redirect
  */
-function addGuestCart($regi_form, $is_redirect) {
+function addGuestCart($regi_form, $is_direct_pay, $is_redirect) {
     // 초기값 설정
-    var $result = false;
+    $is_direct_pay = $is_direct_pay || 'N';
     $is_redirect = $is_redirect || 'Y';
+    var $result = false;
 
     if ($regi_form.find('input[name="sale_status_ccd"]').length > 0 && $regi_form.find('input[name="sale_status_ccd"]').val() !== '618001') {
         alert('판매 중인 상품만 주문 가능합니다.');
@@ -103,6 +105,7 @@ function addGuestCart($regi_form, $is_redirect) {
     if ($regi_form.find('input[name="cart_type"]').val().length < 1) {
         $regi_form.find('input[name="cart_type"]').val(getCartType($regi_form));
     }
+    $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
     // url 설정
     var uri = '/cart/storeGuest';

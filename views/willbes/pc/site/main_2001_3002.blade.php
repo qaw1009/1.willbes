@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container cop NGR c_both">
+    <div id="Container" class="Container adm NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -41,18 +41,18 @@
             </ul>
         </div>
 
-        {{--<div class="Section Section5 mt50">
+        <div class="Section mt50">
             <div class="widthAuto">
                 <div class="will-nTit bd-none">경찰합격 <span class="cop-color">전문교수진</span></div>
-                <ul class="onProfBox">
-                    @for($i=1; $i<=8; $i++)
+                <ul class="ProfCopBox mt20">
+                    @for($i=1; $i<=5; $i++)
                         <li>
                             {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
                         </li>
                     @endfor
                 </ul>
             </div>
-        </div>--}}
+        </div>
 
         <div class="Section bnSec02 mt50">
             <div class="widthAuto">

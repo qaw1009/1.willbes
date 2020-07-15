@@ -498,12 +498,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsCoupon">첨삭사용여부
+                    <label class="control-label col-md-2" for="correct_ccd">첨삭사용여부
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="radio">
-                            <input type="radio" id="IsCorrect_y" name="IsCorrect" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCorrect']=='Y')checked="checked"@endif/> <label for="IsCorrect_y" class="mr-10">가능</label>
-                            <input type="radio" id="IsCorrect_n" name="IsCorrect" class="flat" value="N" @if($method == 'POST' || $data['IsCorrect']=='N')checked="checked"@endif/> <label for="IsCorrect_n">불가능</label>
+                            @foreach($correct_optionccd as $key => $val)
+                                <input type="radio" name="OptionCcds[]" id="correct_ccd{{$key}}" value="{{$key}}" class="flat" @if(($method == 'POST' && $loop->last === true) || (in_array($key, explode(',',$data['OptionCcds'])) === true)) checked="checked"@endif> <label for="correct_ccd{{$key}}" class="mr-10">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
                 </div>

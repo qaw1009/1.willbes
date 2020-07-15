@@ -149,7 +149,7 @@ Class OffLecture extends CommonLecture
 
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['610','653','654','613','675']);
+        $codes = $this->codeModel->getCcdInArray(['610','653','654','613','675','731']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.SubjectName' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
@@ -207,6 +207,7 @@ Class OffLecture extends CommonLecture
             ,'studyapply_ccd'=>$codes['654']          //수강신청구분(학원) [654]
             ,'salestype_ccd'=>$codes['613'] //강좌제공구분
             ,'accept_ccd' => $codes['675'] //접수상태
+            ,'correct_optionccd' => $codes['731'] //첨삭사용여부
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
             ,'campusList' =>$campusList     //캠퍼스목록

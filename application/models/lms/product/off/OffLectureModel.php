@@ -417,6 +417,11 @@ class OffLectureModel extends CommonLectureModel
                 $ProfChoiceEndDate = null;
             }
 
+            $option_ccds = element('OptionCcds', $input);
+            if (empty($option_ccds) === false) {
+                $option_ccds = implode(',', $option_ccds);
+            }
+
             //상품관리 테이블 입력
             $input_product = [
                 'ProdName'=>element('ProdName',$input)
@@ -433,7 +438,6 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsBest'=>element('IsBest',$input, 'N')
                 ,'IsNew'=>element('IsNew',$input, 'N')
                 ,'IsCart'=>element('IsCart',$input,'N')
-                ,'IsCorrect'=>element('IsCorrect',$input,'N')
                 ,'IsRefund'=>element('IsRefund',$input,'N')
                 ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
                 ,'IsSms'=>element('IsSms',$input,'N')
@@ -441,6 +445,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsUse'=>element('IsUse',$input)
                 ,'Keyword'=>element('Keyword',$input)
                 ,'IsAllianceDisc'=>element('IsAllianceDisc',$input,'N')
+                ,'OptionCcds'=>$option_ccds
             ];
 
             $input_lecture = [

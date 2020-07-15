@@ -6263,7 +6263,9 @@ ul li.profList .Name {
     font-weight: 600;
     color: #363636;
     line-height: 24px;
+    z-index: 10;
 }
+
 ul li.profList .Name strong {
     color: #1b6db6;
 }

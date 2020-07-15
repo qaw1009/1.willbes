@@ -248,7 +248,7 @@
                             <strong>정채영</strong><br/>
                             교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
                         </div>
-                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
+                        <img class="profImg" src="https://pass.willbes.net/public/uploads/willbes/professor/51055/prof_index_51055_1593594578.png">
                     </a>
                     <div class="w-notice">
                         <dl>

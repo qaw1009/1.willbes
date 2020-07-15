@@ -467,6 +467,33 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
+     * 비회원 주문 페이지 이동 (장바구니 페이지에서 결제하기 버튼 클릭)
+     * @param array $params
+     * @return mixed
+     */
+    public function toGuestOrder($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'prod_code[]', 'label' => '상품코드', 'rules' => 'trim|required'],
+            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[book]'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $cart_type = $this->_reqP('cart_type'); // 장바구니 구분값
+        $arr_prod_code = $this->_reqP('prod_code');   // 선택한 장바구니 식별자 배열
+        $return_url = front_url('/guestOrder/index?tab=' . $cart_type);  // 리턴 URL
+
+        // 장바구니 상품코드 세션 생성
+        $this->cartFModel->makeSessCartIdx($arr_prod_code);
+
+        return $this->json_result(true, '', [], ['ret_url' => $return_url]);
+    }
+
+    /**
      * 비회원 장바구니 저장
      * @param array $params
      * @return mixed
@@ -479,8 +506,9 @@ class Cart extends \app\controllers\FrontController
             $learn_pattern = $this->_reqP('learn_pattern');
             $cart_type = $this->_reqP('cart_type');
             $prod_code = $this->_reqP('prod_code');
+            $is_direct_pay = $this->_reqP('is_direct_pay');
             $site_code = $this->_site_code;
-            $ret_url = front_url('/cart/index?tab=' . $cart_type);
+            $ret_url = $is_direct_pay == 'Y' ? front_url('/guestOrder/index?tab=' . $cart_type) : front_url('/cart/index?tab=' . $cart_type);
 
             // 필수 파라미터 체크
             if (empty($cart_type) === true || empty($prod_code) === true) {
@@ -496,6 +524,14 @@ class Cart extends \app\controllers\FrontController
 
             // 비회원 장바구니 세션 저장
             $result = $this->cartFModel->addGuestCart($learn_pattern, $add_data);
+
+            // 바로결제일 경우 장바구니 상품코드 세션 생성
+            if ($result['ret_cd'] === true && $is_direct_pay == 'Y') {
+                $arr_prod_code = $result['ret_data'];
+
+                // 장바구니 상품코드 세션 생성
+                $this->cartFModel->makeSessCartIdx($arr_prod_code);
+            }
 
             if ($is_ajax === true) {
                 return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $ret_url]);

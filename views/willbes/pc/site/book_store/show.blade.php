@@ -214,16 +214,17 @@
                             <li>출고 후 1일~3일(72시간) 내 수령 가능하며, 발송일 오후 6시부터 배송조회가 가능합니다.</li>
                             <li>배송조회 : “내강의실 >결제관리 >주문/배송조회”에서 확인할 수 있습니다.</li>
                             <li class="tx-red">네이버페이로 결제시 도서 주문내역은 네이버쇼핑(네이버페이) 주문조회에서 확인가능합니다.</li>
-                            <li>배송 방법 : 택배 (배송업체-CJ대한통운)</li>
+                            <li>배송 방법 : 택배 (배송업체-{{ config_app('DeliveryCompName', 0) }})</li>
                             <li>배송 지역 : 전국지역 (군부대, 해외배송 제한)</li>
-                            <li>배송 비용 : 2,500원 (30,000원 이상 구매시 무료배송)<br>
-                            ※ 최초 도서결제 후 묶음 배송을 위한 추가 결제 불가</li>
+                            <li>배송 비용 : {{ number_format(config_app('DeliveryPrice', 0)) }}원 ({{ number_format(config_app('DeliveryFreePrice', 0)) }}원 이상 구매시 무료배송)<br>
+                                ※ 최초 도서결제 후 묶음 배송을 위한 추가 결제 불가</li>
                             <li>도서산간지방은 추가 배송비가 발생할 수 있습니다.</li>
-                            <li>군부대 지역의 경우 해당 군부대에 CJ대한통운 택배배송이 되는지 먼저 확인 후 주문을 해주시기 바랍니다. 일부 군부대 지역은 우체국 택배를 제외한 타택배사는 출입이 제한이 될 수 있습니다. (군부대 사서함 주소 사용 시 배송제한)<br>
-                            ※ 유의사항 : 군부대 지역 배송 시 우체국 사서함 주소지를 제외하고, 정확한 지번/도로명 주소, 부대명칭 등 을 기재해 주셔야 합니다.<br>
-                            예) 경기도 00군 00리 00번지(00도로명) 0000부대(사단, 연대, 대대 등) 00중대 일병 000</li>
+                            <li>군부대 지역의 경우 해당 군부대에 {{ config_app('DeliveryCompName', 0) }} 택배배송이 되는지 먼저 확인 후 주문을 해주시기 바랍니다. 일부 군부대 지역은 우체국 택배를 제외한 타택배사는 출입이 제한이 될 수 있습니다. (군부대 사서함 주소 사용 시 배송제한)<br>
+                                ※ 유의사항 : 군부대 지역 배송 시 우체국 사서함 주소지를 제외하고, 정확한 지번/도로명 주소, 부대명칭 등 을 기재해 주셔야 합니다.<br>
+                                예) 경기도 00군 00리 00번지(00도로명) 0000부대(사단, 연대, 대대 등) 00중대 일병 000</li>
                             <li>배송기간 : 발송일로부터 1일~3일(72시간) [도서산간 지방은 2~3일 추가 소요]<br>
-                            ※ 익일 배송완료를 원칙으로 하지만 택배사 사정에 따라 배송이 지연 될 수 있습니다.</li>
+                                ※ 익일 배송완료를 원칙으로 하지만 택배사 사정에 따라 배송이 지연 될 수 있습니다.</li>
+
                         </ul>
                     </div>
                 </div>
@@ -246,28 +247,46 @@
 
     $(document).ready(function() {
         // 장바구니 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_book_cart"]', function() {
+        {{--$regi_form.on('click', 'button[name="btn_book_cart"]', function() {
             @if(sess_data('is_login') === true)
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
                 addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
             @else
                 @if($is_npay === true)
-                    addGuestCart($regi_form, 'Y');
+                    addGuestCart($regi_form, 'N', 'Y');
                 @else
-                    {{-- 네이버페이 결제를 사용하지 않을 경우 로그인 필수 --}}
+                    // 네이버페이 결제를 사용하지 않을 경우 로그인 필수
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 @endif
             @endif
-        });
+        });--}}
 
         // 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
+        {{--$regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
             addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
+        });--}}
+
+        {{-- TODO : 네이버페이 심사 --}}
+        // 장바구니, 바로결제 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_book_cart"], button[name="btn_book_direct_pay"]', function() {
+            var $is_direct_pay = $(this).data('direct-pay');
+            var $is_redirect = $(this).data('is-redirect');
+
+            @if(sess_data('is_login') === true)
+                addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
+            @else
+                @if($is_npay === true)
+                    addGuestCart($regi_form, $is_direct_pay, $is_redirect);
+                @else
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                @endif
+            @endif
         });
+        {{--// 네이버페이 심사 --}}
 
         // 주문수량 변경할 경우 총 상품금액 변경 이벤트
         $regi_form.on('change', 'select[id="prod_qty"]', function() {

@@ -223,6 +223,13 @@
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
+                                    {{-- TODO : 네이버페이 심사 --}}
+                                    <li class="btnAuto180 h36">
+                                        <button type="submit" name="btn_pay" data-tab-id="book" class="mem-Btn bg-blue bd-dark-blue">
+                                            <span>결제하기</span>
+                                        </button>
+                                    </li>
+                                    {{--// 네이버페이 심사 --}}
                                 </ul>
                             </div>
                         </div>
@@ -353,6 +360,31 @@
         $('button[name="btn_continue"]').on('click', function () {
             location.href = '{{ element('return_url', $arr_input, '/') }}';
         });
+
+        {{-- TODO : 네이버페이 심사 --}}
+        // 결제하기 버튼 클릭
+        $('button[name="btn_pay"]').on('click', function () {
+            var $tab_id = $(this).data('tab-id');
+            var $form = $('#' + $tab_id + '_form');
+
+            if ($form.find('input[name="prod_code[]"]').length < 1) {
+                alert('구매할 상품이 없습니다.');
+                return;
+            }
+
+            if ($form.find('input[name="prod_code[]"]:checked').length < 1) {
+                // 상품 자동 선택 처리
+                $form.find('input[name="prod_code[]"]').prop('checked', true);
+            }
+
+            var url = '{{ front_url('/cart/toGuestOrder') }}';
+            ajaxSubmit($form, url, function(ret) {
+                if(ret.ret_cd) {
+                    location.href = ret.ret_data.ret_url;
+                }
+            }, showValidateError, null, false, 'alert');
+        });
+        {{--// 네이버페이 심사 --}}
     });
 </script>
 @stop

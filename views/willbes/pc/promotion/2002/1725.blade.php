@@ -22,7 +22,6 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px;right:0;z-index:1;}
-        .skybanner img{width:200px;height:300px;}
 
         .wb_top {background:#296F6F url(https://static.willbes.net/public/images/promotion/2020/07/1725_top_bg.jpg) no-repeat center;}
 

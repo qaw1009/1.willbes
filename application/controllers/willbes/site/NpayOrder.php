@@ -9,7 +9,7 @@ class NpayOrder extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     // API 연동모드 (test/real)
-    private $_api_mode = 'test';
+    private $_api_mode = 'real';
 
     // API 연동주소 설정
     private $_api_url_info = [

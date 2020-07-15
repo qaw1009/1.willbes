@@ -838,15 +838,21 @@ class CartFModel extends BaseOrderFModel
      * 비회원 장바구니 목록 조회 (교재 기준)
      * @param int $site_code [사이트코드]
      * @param null|array $arr_prod_code [선택된 상품코드]
+     * @param bool $is_order [주문여부]
      * @return array
      */
-    public function listGuestCart($site_code, $arr_prod_code = null)
+    public function listGuestCart($site_code, $arr_prod_code = null, $is_order = false)
     {
         // 장바구니 세션 데이터
         $sess_site_cart_data = array_get($this->getSessGuestCartData(), $site_code);
         if (empty($sess_site_cart_data) === true) {
             return [];
         }
+
+        // 변수 초기화
+        $total_prod_cnt = 0;
+        $total_prod_order_price = 0;
+        $arr_is_freebies_trans = [];
 
         // 상품코드 추출
         $arr_sess_prod_code = array_keys($sess_site_cart_data);
@@ -892,6 +898,77 @@ class CartFModel extends BaseOrderFModel
             }
 
             $results[$idx]['ProdQty'] = array_get($sess_site_cart_data, $row['ProdCode'], 1);
+
+            // 주문 페이지
+            if ($is_order === true) {
+                $results[$idx]['RealPayPrice'] = array_get($results[$idx], 'RealSalePrice', 0) * $results[$idx]['ProdQty'];
+
+                // 상품구분명 / 상품구분명 색상 class 번호
+                $results[$idx]['CartProdTypeName'] = $this->_cart_prod_type_name[$row['CartProdType']];
+                $results[$idx]['CartProdTypeNum'] = $this->_cart_prod_type_idx[$row['CartProdType']];
+
+                // 상품 부가정보 컬럼 추가
+                $results[$idx]['ProdAddInfo'] = '';
+                empty($row['CateName']) === false && $results[$idx]['ProdAddInfo'] .= $row['CateName'] . ' | ';
+
+                // 배송료 부과여부
+                $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
+
+                // 전체상품 주문금액
+                $total_prod_order_price += $results[$idx]['RealPayPrice'];
+
+                // 전체상품 수량
+                $total_prod_cnt++;
+            }
+        }
+
+        // 주문 페이지
+        if ($is_order === true) {
+            // 배송료 상품 추가
+            $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price, $arr_is_freebies_trans);
+
+            if ($delivery_price > 0) {
+                $prod_rows = $this->productFModel->listSalesProduct('delivery_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+                if (empty($prod_rows) === true) {
+                    return [];  // 배송료상품이 없을 경우
+                }
+                $prod_row = element('0', $prod_rows);
+
+                // 판매가격 정보 확인
+                $arr_price_data = $prod_row['ProdPriceData'] != 'N' ? element('0', json_decode($prod_row['ProdPriceData'], true)) : [];
+                if (empty($arr_price_data) === true || isset($arr_price_data['SaleTypeCcd']) === false) {
+                    return [];  // 배송료상품 가격정보가 없을 경우
+                }
+
+                $results[] = array_merge([
+                    'ProdCode' => $prod_row['ProdCode'],
+                    'ProdName' => $prod_row['ProdName'],
+                    'IsFreebiesTrans' => 'N',
+                    'CateName' => null,
+                    'ProdPriceData' => $prod_row['ProdPriceData'],
+                    'wAttachImgPath' => null,
+                    'wAttachImgOgName' => null,
+                    'CartType' => 'etc',
+                    'CartProdType' => 'delivery_price',
+                ], $arr_price_data, [
+                    'ProdQty' => '1',
+                    'RealPayPrice' => $arr_price_data['RealSalePrice'],
+                    'CartProdTypeName' => $this->_cart_prod_type_name['delivery_price'],
+                    'CartProdTypeNum' => $this->_cart_prod_type_idx['delivery_price'],
+                    'ProdAddInfo' => ''
+                ]);
+            }
+
+            $results = [
+                'list' => $results,
+                'total_prod_cnt' => $total_prod_cnt,
+                'total_prod_order_price' => $total_prod_order_price,
+                'delivery_price' => $delivery_price,
+                'total_pay_price' => $total_prod_order_price + $delivery_price,
+                'is_delivery_info' => true,
+                'repr_prod_name' => $results[0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : ''),
+                'cart_type' => $results[0]['CartType']
+            ];
         }
 
         return $results;
@@ -905,6 +982,8 @@ class CartFModel extends BaseOrderFModel
      */
     public function addGuestCart($learn_pattern, $input = [])
     {
+        $results = [];
+
         try {
             $arr_temp_prod_code = $this->makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
             $arr_prod_code = element('data', $arr_temp_prod_code);
@@ -926,6 +1005,9 @@ class CartFModel extends BaseOrderFModel
 
                 // 비회원 장바구니 세션 저장 데이터 (수량)
                 $sess_cart_data[$site_code][$prod_code] = $prod_qty;
+
+                // 장바구니 상품코드
+                $results[] = $prod_code;
             }
 
             // 비회원 장바구니 세션 저장
@@ -934,7 +1016,7 @@ class CartFModel extends BaseOrderFModel
             return error_result($e);
         }
 
-        return ['ret_cd' => true];
+        return ['ret_cd' => true, 'ret_data' => $results];
     }
 
     /**

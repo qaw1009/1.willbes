@@ -22,6 +22,25 @@
 
         /************************************************************/
 
+         /*타이머*/
+         .time {width:100%; text-align:center; background:#e1e1e1}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:80%}
+        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }    
+
         .sky {position:fixed; top:250px; right:10px; z-index:1;}
         .sky ul li {padding-bottom:10px;}
  
@@ -43,6 +62,29 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
+                <table>
+                    <tr>
+                    <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+        <!-- 타이머 //-->
 
         <div class="sky">
             <ul>          
@@ -134,6 +176,12 @@
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
+
+         /*디데이카운트다운*/
+         $(document).ready(function() {
+                dDayCountDown('{{$arr_promotion_params['edate']}}');
+            });
+        });
 
 
     </script>

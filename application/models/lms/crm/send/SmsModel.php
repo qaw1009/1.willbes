@@ -202,7 +202,7 @@ class SmsModel extends WB_Model
             }
 
             $inputData = array_merge($inputData,[
-                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegAdminIdx' => empty($this->session->userdata('admin_idx')) ? 1000 : $this->session->userdata('admin_idx'),
                 'RegDatm' => date('Y-m-d H:i:s'),
                 'RegIp' => $this->input->ip_address()
             ]);

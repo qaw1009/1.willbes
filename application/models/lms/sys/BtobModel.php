@@ -63,7 +63,7 @@ class BtobModel extends WB_Model
     public function findCompanyForModify($compidx)
     {
 
-        $column = 'BtobIdx, BtobId, BtobName, ManagerName, Phone1, fn_dec(Phone2Enc) as Phone2, Phone3, Tel1, fn_dec(Tel2Enc) as Tel2, Tel3
+        $column = 'BtobIdx, BtobId, BtobName, ManagerName, SiteCode, Phone1, fn_dec(Phone2Enc) as Phone2, Phone3, Tel1, fn_dec(Tel2Enc) as Tel2, Tel3
                         ,fn_dec(EmailEnc) as Email, ReferDomains, `Desc`, IpControlTypeCcds, A.ReturnUrl, A.IsUse, A.RegDatm, A.RegIp, A.UpdDatm
                         ,C.wAdminName as RegAdminName 
                         ,D.wAdminName as UpdAdminName ';
@@ -199,6 +199,7 @@ class BtobModel extends WB_Model
         $input_product = [
             'BtobName'=>element('BtobName',$input)
             ,'ManagerName'=>element('ManagerName',$input)
+            ,'SiteCode'=>element('site_code',$input)
             ,'Phone1'=>element('Phone1',$input)
             ,'Phone3'=>element('Phone3',$input)
             ,'Tel1'=>element('Tel1',$input)

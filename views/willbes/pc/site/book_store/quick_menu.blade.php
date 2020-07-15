@@ -21,7 +21,8 @@
             <a href="{{ front_url('/cart/index') }}">장바구니</a>
         </li>
         <li class="order">
-            <a href="{{ front_app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>
+            {{--<a href="{{ front_app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>--}}
+            <a href="#none" onclick="javascript:alert('비회원 주문내역은 고객센터로 연락하여 확인해주세요');">비회원 주문내역</a>
         </li>
         <li class="top">
             <a href="#Container">TOP</a>

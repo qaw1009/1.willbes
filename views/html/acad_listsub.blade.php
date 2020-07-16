@@ -82,8 +82,8 @@
                 <div class="willbes-Buy-List">
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
-                            <col style="width: 445px;">
-                            <col style="width: 265px;">
+                            <col>
+                            <col style="width: 270px;">
                         </colgroup>
                         <tbody>
                             <tr>
@@ -94,12 +94,12 @@
                             </tr>
                             <tr>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit tx-spacing">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
+                                    <div class="w-tit">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
                                 </td>
                                 <td class="tx-left">
                                     <div class="pl10">
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <label for="goods_chk" class="pl5 d_inblock tx-spacing">
+                                        <label for="goods_chk" class="pl5 d_inblock">
                                             <span>1,800,000원</span>
                                             <span class="discount">(↓10%) ▶ </span>
                                             <span class="tx-blue">1,620,000원</span>
@@ -112,7 +112,7 @@
                     <!-- lecTable -->
 
                     <div class="lecInfoTable" style="display: block">
-                        <div class="w-lectit tx-left" colspan="3">
+                        <div class="w-lectit tx-left">
                             <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
                             <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>
                         </div>
@@ -179,6 +179,7 @@
                     </div>
                     <!-- lecInfoTable -->
                 </div>
+
                 <div class="willbes-Buy-Price">
                     <table cellspacing="0" cellpadding="0" class="priceTable">
                         <colgroup>
@@ -204,29 +205,30 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="willbes-Lec-buyBtn GM">
-                    <ul>
-                        <li class="btnAuto130 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                <span class="tx-light-blue">방문결제</span>
-                            </button>
-                        </li>
-                        <li class="btnAuto130 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-heavy-gray bd-dark-gray">
-                                <span>장바구니</span>
-                            </button>
-                        </li>                        
-                        <li class="btnAuto130 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                <span class="tx-white">바로결제</span>
-                            </button>
-                        </li>                        
-                    </ul>
-                </div>
-                <!-- willbes-Lec-buyBtn -->
+                </div>                
             </div>
             <!-- willbes-Buy-Table -->
+
+            <div class="willbes-Lec-buyBtn GM">
+                <ul>
+                    <li class="btnAuto130 h36">
+                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                            <span class="tx-light-blue">방문결제</span>
+                        </button>
+                    </li>
+                    <li class="btnAuto130 h36">
+                        <button type="submit" onclick="" class="mem-Btn bg-heavy-gray bd-dark-gray">
+                            <span>장바구니</span>
+                        </button>
+                    </li>                        
+                    <li class="btnAuto130 h36">
+                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                            <span class="tx-white">바로결제</span>
+                        </button>
+                    </li>                        
+                </ul>
+            </div>
+            <!-- willbes-Lec-buyBtn -->
 
         </div>
         <!-- willbes-Lec -->

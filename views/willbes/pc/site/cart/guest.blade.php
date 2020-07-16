@@ -224,11 +224,11 @@
                                         </button>
                                     </li>
                                     {{-- TODO : 네이버페이 심사 --}}
-                                    <li class="btnAuto180 h36">
+                                    {{--<li class="btnAuto180 h36">
                                         <button type="submit" name="btn_pay" data-tab-id="book" class="mem-Btn bg-blue bd-dark-blue">
                                             <span>결제하기</span>
                                         </button>
-                                    </li>
+                                    </li>--}}
                                     {{--// 네이버페이 심사 --}}
                                 </ul>
                             </div>
@@ -295,9 +295,11 @@
         </div>
     </div>
 
-    <div class="Quick-Bnr Quick-Bnr-book">
-        <a href="#none" onclick="javascript:alert('비회원 주문내역은 고객센터로 연락하여 확인해주세요');">비회원<br>주문내역</a>     
-    </div>
+    {{-- TODO : 네이버페이 심사 --}}
+    {{--<div class="Quick-Bnr Quick-Bnr-book">
+        <a href="#none" onclick="alert('비회원 주문내역은 고객센터로 연락하여 확인해주세요');">비회원<br>주문내역</a>
+    </div>--}}
+    {{--// 네이버페이 심사 --}}
 
     {!! banner('결제_우측퀵', 'Quick-Bnr ml20 mt85', $__cfg['SiteCode'], '0') !!}
 </div>
@@ -367,7 +369,7 @@
         });
 
         {{-- TODO : 네이버페이 심사 --}}
-        // 결제하기 버튼 클릭
+        {{--// 결제하기 버튼 클릭
         $('button[name="btn_pay"]').on('click', function () {
             var $tab_id = $(this).data('tab-id');
             var $form = $('#' + $tab_id + '_form');
@@ -388,7 +390,7 @@
                     location.href = ret.ret_data.ret_url;
                 }
             }, showValidateError, null, false, 'alert');
-        });
+        });--}}
         {{--// 네이버페이 심사 --}}
     });
 </script>

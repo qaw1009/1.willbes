@@ -205,8 +205,9 @@
     var $regi_form = $('#regi_book_form');
 
     $(document).ready(function() {
+        {{-- 실서비스 --}}
         // 장바구니 버튼 클릭
-        {{--$regi_form.on('click', 'button[name="btn_book_cart"]', function() {
+        $regi_form.on('click', 'button[name="btn_book_cart"]', function() {
             @if(sess_data('is_login') === true)
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
@@ -219,19 +220,20 @@
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 @endif
             @endif
-        });--}}
+        });
 
         // 바로결제 버튼 클릭
-        {{--$regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
+        $regi_form.on('click', 'button[name="btn_book_direct_pay"]', function() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
             addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
-        });--}}
+        });
+        {{--// 실서비스 --}}
 
         {{-- TODO : 네이버페이 심사 --}}
         // 장바구니, 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_book_cart"], button[name="btn_book_direct_pay"]', function() {
+        {{--$regi_form.on('click', 'button[name="btn_book_cart"], button[name="btn_book_direct_pay"]', function() {
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
 
@@ -244,7 +246,7 @@
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 @endif
             @endif
-        });
+        });--}}
         {{--// 네이버페이 심사 --}}
 
         // 검색어 입력 후 엔터

@@ -70,7 +70,14 @@
                 <iframe src="https://www.youtube.com/embed/CsqieWAVZi4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="btn NSK-Black"><a href="javascript:goLecture();">지금, 사전 예약하고<br> 끝장 혜택받기 ></a></div>
+        <div class="btn NSK-Black">
+            {{-- <a href="javascript:goLecture();">지금, 사전 예약하고<br> 끝장 혜택받기 ></a> --}}
+            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">지금, 사전 예약하고<br> 끝장 혜택받기 ></a>
+            <div id="pass" class="infoCheck" style="display: none;">
+                <input type="checkbox" name="y_pkg" value="169144" checked/>
+                <input type="checkbox" id="is_chk" name="is_chk" checked>
+            </div>
+        </div>
     </div> 
 
     <div class="evtCtnsBox evt04">
@@ -157,6 +164,46 @@
         function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+        }
+
+        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
+        {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var $regi_form = $('#' + ele_id);
+            var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
+            var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
+            var params;
+
+            if ($is_chk.length > 0) {
+                if ($is_chk.is(':checked') === false) {
+                    alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
+                    return;
+                }
+            }
+
+            if ($prod_code.length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            {{-- 장바구니 저장 기본 파라미터 --}}
+                params = [
+                { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
+                { 'name' : '_method', 'value' : 'POST' },
+                { 'name' : 'cart_type', 'value' : cart_type },
+                { 'name' : 'learn_pattern', 'value' : learn_pattern },
+                { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
+            ];
+
+            {{-- 선택된 상품코드 파라미터 --}}
+            $prod_code.each(function() {
+                params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
+            });
+
+            {{-- 장바구니 저장 URL로 전송 --}}
+            formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
         }
 
     </script>

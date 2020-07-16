@@ -98,7 +98,14 @@
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/CsqieWAVZi4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
-            <div class="btn NSK-Black"><a href="javascript:goLecture();">지금, 사전 예약하고 끝장 혜택받기 ></a></div>
+            <div class="btn NSK-Black">
+                {{--  <a href="javascript:goLecture();">지금, 사전 예약하고 끝장 혜택받기 ></a> --}}
+                <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">지금, 사전 예약하고 끝장 혜택받기 ></a>
+                <div id="pass" class="infoCheck" style="display: none;">
+                    <input type="checkbox" name="y_pkg" value="169144" checked/>
+                    <input type="checkbox" id="is_chk" name="is_chk" checked>
+                </div>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03">

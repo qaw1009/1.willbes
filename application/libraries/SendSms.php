@@ -39,7 +39,7 @@ class SendSms
      * @param $send_title [발송제목 : MMS 경우에 한함]
      * @return array|bool
      */
-    public function send($send_phone, $send_msg, $send_call_center, $send_date = null, $send_title = '윌비스 안내 메세지')
+    public function send($send_phone, $send_msg, $send_call_center, $send_date = null, $send_title = '윌비스 안내 메세지', $send_idx = null)
     {
         try {
             $result = 0;
@@ -47,7 +47,7 @@ class SendSms
                 throw new \Exception('필수 데이터 누락.');
             }
 
-            list($table, $data) = $this->_send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title);
+            list($table, $data) = $this->_send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title, $send_idx);
             if($data) $result = $this->_db->insert_batch($table, $data);
             if ($result <= 0) {
                 throw new \Exception('발송 실패');
@@ -67,7 +67,7 @@ class SendSms
      * @param $send_title
      * @return array
      */
-    private function _send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title)
+    private function _send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title, $send_idx= null)
     {
         $this_table = '';
         $data = [];
@@ -95,7 +95,10 @@ class SendSms
                         'REQDATE' => $set_send_date,
                         'MSG' => $send_msg,
                         'EXPIRETIME' => '0',
-                        'TYPE' => '0'
+                        'TYPE' => '0',
+                        'ETC1' => $send_idx,
+                        'ETC2' => $this->getKakaoLogEtc2(),
+                        'ETC3' => 'SMS'
                     ];
                 }
             } else {
@@ -108,7 +111,10 @@ class SendSms
                         'TR_PHONE' => $val,
                         'TR_CALLBACK' => $send_call_center,
                         'TR_MSG' => $send_msg,
-                        'TR_ORG_CALLBACK' => $send_call_center
+                        'TR_ORG_CALLBACK' => $send_call_center,
+                        'TR_ETC1' => $send_idx,
+                        'TR_ETC2' => $this->getKakaoLogEtc2(),
+                        'TR_ETC3' => 'SMS'
                     ];
                 }
             }

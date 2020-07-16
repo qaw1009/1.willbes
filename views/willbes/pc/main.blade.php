@@ -353,7 +353,7 @@
                 </div>
                 <div class="imgBox">
                     <ul>
-                        <li><a href="http://www.willstory.co.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gate_willstory.jpg" alt="온라인 서점 윌스토리"></a></li>
+                        <li><a href="{{ front_app_url('/home/index', 'book') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gate_willstory.jpg" alt="온라인 서점 윌스토리"></a></li>
                         <li><a href="http://www.willbeslife.net" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gate_willbeslife.jpg" alt="학점은행"></a></li>
                     </ul>
                 </div>

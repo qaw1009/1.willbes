@@ -230,14 +230,14 @@ class NpayOrder extends \app\controllers\FrontController
 
             // 전송 데이터
             $post_data = [
-                'SHOP_ID' => urlencode(config_app('npay_merchant_id')),
-                'CERTI_KEY' => urlencode(config_app('npay_mart_cert_key')),
+                'SHOP_ID' => rawurldecode(config_app('npay_merchant_id')),
+                'CERTI_KEY' => rawurldecode(config_app('npay_mart_cert_key')),
                 'RESERVE1' => '', 'RESERVE2' => '', 'RESERVE3' => '', 'RESERVE4' => '', 'RESERVE5' => '',
-                'ITEM_ID' => urlencode($data['ProdCode']),
-                'ITEM_NAME' => urlencode($data['ProdName']),
-                'ITEM_UPRICE' => urlencode($data['RealSalePrice']),
-                'ITEM_IMAGE' => urlencode($image_url),
-                'ITEM_URL' => urlencode($info_url),
+                'ITEM_ID' => rawurldecode($data['ProdCode']),
+                'ITEM_NAME' => rawurldecode($data['ProdName']),
+                'ITEM_UPRICE' => rawurldecode($data['RealSalePrice']),
+                'ITEM_IMAGE' => rawurldecode($image_url),
+                'ITEM_URL' => rawurldecode($info_url),
             ];
 
             // 찜 정보 전송
@@ -245,7 +245,7 @@ class NpayOrder extends \app\controllers\FrontController
             $this->curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
             $this->curl->setOpt(CURLOPT_SSL_VERIFYHOST, false);
             $this->curl->setOpt(CURLOPT_RETURNTRANSFER, true);
-            $this->curl->setOpt(CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded;charset=utf-8']);
+            $this->curl->setOpt(CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded; charset=utf-8']);
             $this->curl->setOpt(CURLOPT_HTTPAUTH, CURLAUTH_ANY);
             $this->curl->setOpt(CURLOPT_TIMEOUT, 10);
             $this->curl->setOpt(CURLOPT_FAILONERROR, false);

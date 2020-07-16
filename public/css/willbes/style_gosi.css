@@ -50,7 +50,7 @@
     left:60px;
     bottom: 22px;
     text-align: left;
-    z-index: 50;
+    z-index: 90;
 }
 .gosi .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
@@ -80,7 +80,7 @@
     bottom: 20px;
     margin: 0;
     width: 50px;
-    z-index: 50;
+    z-index: 90;
   }
 .gosi .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
@@ -88,7 +88,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
-    z-index: 50;
+    z-index: 90;
 }
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;

@@ -21,8 +21,15 @@
 
         /************************************************************/     
 
+        .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+
         .wb_top {background:#FE8A8D url(https://static.willbes.net/public/images/promotion/2020/07/1721_top_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#FE8A8D;}
+        .wb_cts03 {padding-top:50px;}
+        .wb_cts04 {padding-top:50px;}
+        .wb_cts04 .change {margin:0 auto;width:920px;text-align:right;padding:25px 0;color:#a8272b;font-size:13px;font-weight:bold;}
+        .wb_cts05 {padding-top:50px;}
  
         /* 탭 */
         .tabContaier {width:920px; margin:0 auto;padding-top:50px;}
@@ -36,41 +43,50 @@
         .tabContaier a.active {background:#fff; color:#000; border:1px solid #666;}
 
         /*분할 유튜브*/
-        .youtube_contents + .youtube_contents{padding-top:100px;}
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
-        .event_littlepop_wrap {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
+        .youtube_divide {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
+        .youtube_divide .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
+        .youtube_divide .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
+        .youtube_divide .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
+        .youtube_divide .preview_area span {font-size:14px;font-weight:400;color:#555;}
+        .youtube_divide .preview_area span a {display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
+                                              background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;background-size:100% auto;font-size:0;}
+        .youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
+        .youtube_divide .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
+        .youtube_divide .preview_list_area .preview_list ul li {margin-bottom:12px;}
+        .youtube_divide .preview_list_area .preview_list ul li .num_box {width:26px;display:inline-block;font-size: 12px;font-weight:400;
+                                                                         color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;}
+        .youtube_divide .preview_list_area .preview_list ul li .thum_box {display: inline-block;width: 120px;height: 70px;box-sizing: border-box;vertical-align: middle;overflow: hidden;}
+        /*.youtube_divide .preview_list_area .preview_list ul li.on .thum_box {border:3px solid #00E752;}*/
+        .youtube_divide .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
+        .youtube_divide .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
+        .youtube_divide .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
+                                                                            overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
+        .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}        
 
-        .event_littlepop_wrap .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
-        .event_littlepop_wrap .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
-        .event_littlepop_wrap .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
-        .event_littlepop_wrap .preview_area span {font-size:14px;font-weight:400;color:#555;}
-        .event_littlepop_wrap .preview_area span a {display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
-                                                    background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;background-size:100% auto;font-size:0;}
-        .event_littlepop_wrap .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
-        .event_littlepop_wrap .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li {margin-bottom:12px;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .num_box {width:21px;display:inline-block;font-size: 12px;font-weight:400;
-                                                                                color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .thum_box {display: inline-block;width: 125px;height: 70px;box-sizing: border-box;vertical-align: middle;overflow: hidden;}
-        .preview_list_area .preview_list ul li.on .thum_box {border:3px solid #00E752;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
-                                                                                  overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
-        .event_littlepop_wrap .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}                                            
-
-
-
-        
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
+        <div class="skybanner">
+            <ul>          
+                <li>          
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky.png" usemap="#Map1721sky"  title="기미진 기특한 국어" border="0" />
+                    <map name="Map1721sky" id="Map1721sky">
+                        <area shape="rect" coords="6,115,110,247" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168787" target="_blank" />
+                        <area shape="rect" coords="8,269,109,398" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168781" target="_blank" />
+                        <area shape="rect" coords="9,417,110,553" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168770" target="_blank" />
+                    </map>
+                </li>
+                <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky2.png"  title="최우영 티패스" /></a></li>
+            </ul>
+        </div> 
+
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_top.jpg" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
             <map name="Map1721a" id="Map1721a">
-                <area shape="rect" coords="144,1112,546,1208" href="#apply" />
+                <area shape="rect" coords="144,1112,546,1208" href="#t_pass_go" />
                 <area shape="rect" coords="573,1112,980,1210" href="http://cafe.daum.net/sharkchoi" target="_blank" />
             </map>           
         </div>
@@ -81,65 +97,120 @@
         
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_02.jpg" alt="합경을 이끌어낸 그 과정"/>
-            <div class="youtube_contents" id="little">
-                <div class="event_littlepop_wrap">                 
-        
-                    <div class="littlefovd_wrap">
-                        <div class="preview_area">
-                            <div class="avi_box">
-                                <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
-                            </div>
-                            <h2 class="prt_bnr_ttl">[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</h2>
-                            <span class="prt_bnr_info">국어 / 문명교수님<a href="/tch/MM" target="_blank" class="adClick" data-adarea="맛보기영상팝업_교수님홈바로가기">교수님홈바로가기</a></span>
+            <div class="youtube_contents">
+                <div class="youtube_divide">             
+                    <div class="preview_area">
+                        <div class="avi_box">
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
                         </div>
-                        <div class="preview_list_area">
-                            <div class="preview_list">
-                                <ul>
-                                    <li class="on">
-                                        <a href="#tab1" class="active">
-                                            <span class="num_box" data-num="1">1</span>
-                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
-                                            <div class="text_box">
-                                                <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                                <span>국어 / 이근갑</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#tab2">
-                                            <span class="num_box" data-num="2">2</span>
-                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
-                                            <div class="text_box">
-                                                <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                <span>영어 / 이리라</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#tab3">
-                                            <span class="num_box" data-num="3">3</span>
-                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
-                                            <div class="text_box">
-                                                <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                <span>행정학 / 김덕관</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#tab4">
-                                            <span class="num_box" data-num="4">4</span>
-                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
-                                            <div class="text_box">
-                                                <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                <span>국어 / 문명</span>
-                                            </div>
-                                        </a>
-                                    </li>                                   
-                                </ul>
-                            </div>
+                        <h2>[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
+                    </div>
+                    <div class="preview_list_area">
+                        <div class="preview_list">
+                            <ul>
+                                <li class="on">
+                                    <a href="#tab1" class="active">
+                                        <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
+                                            <span>국어 / 이근갑</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab2">
+                                        <span class="num_box" data-num="2">2</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>영어 / 이리라</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>행정학 / 김덕관</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>국어 / 문명</span>
+                                        </div>
+                                    </a>
+                                </li> 
+                                <li class="">
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
+                                            <span>국어 / 이근갑</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>영어 / 이리라</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>행정학 / 김덕관</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>국어 / 문명</span>
+                                        </div>
+                                    </a>
+                                </li>  
+                                <li class="">
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
+                                            <span>국어 / 이근갑</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>영어 / 이리라</span>
+                                        </div>
+                                    </a>
+                                </li>                                         
+                            </ul>
                         </div>
-                    </div>                        
-                    
+                    </div>          
                 </div>
             </div>
         </div>
@@ -158,6 +229,7 @@
                     <li><a href="#tab04">전자직</a></li>
                 </ul>
             </div>
+            <p class="change">*시험일정에 따른 개강/종강일 변동 가능</p>
             <div id="tab01" class="tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_04_tab01.jpg" alt="전기직 9급"/>
             </div>
@@ -172,7 +244,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="apply" >
+        <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
             <map name="Map1721b" id="Map1721b">
                 <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU6KO2VmeybkOyLpOqwlXZlci4p" target="_blank" />

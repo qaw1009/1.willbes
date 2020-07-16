@@ -72,6 +72,8 @@ class SendSms
         $this_table = '';
         $data = [];
         $set_send_phone = $send_phone;
+        $set_send_msg = ( is_array($send_msg) === false ? array($send_msg) : $send_msg );
+
         if (is_array($send_phone) === false) {
             $set_send_phone = array($send_phone);
         }
@@ -82,43 +84,42 @@ class SendSms
             $set_send_date = $send_date;
         }
 
-        if (mb_strlen($send_title) <= $this->_title_max_length) {
-            //byte 체크
-            if (mb_strlen($send_msg) > $this->_msg_max_length) {
+        foreach ($set_send_phone as $key => $val) {
+
+            //장문 단문 구분
+            if (mb_strlen($set_send_msg[$key]) > $this->_msg_max_length) {
                 $this_table = $this->_table['mms'];
-                foreach ($set_send_phone as $key => $val) {
-                    $data[] = [
-                        'SUBJECT' => $send_title,
-                        'PHONE' => $val,
-                        'CALLBACK' => $send_call_center,
-                        'STATUS' => '0',
-                        'REQDATE' => $set_send_date,
-                        'MSG' => $send_msg,
-                        'EXPIRETIME' => '0',
-                        'TYPE' => '0',
-                        'ETC1' => $send_idx,
-                        'ETC2' => $this->getKakaoLogEtc2(),
-                        'ETC3' => 'SMS'
-                    ];
-                }
+                $data[] = [
+                    'SUBJECT' => $send_title,
+                    'PHONE' => $val,
+                    'CALLBACK' => $send_call_center,
+                    'STATUS' => '0',
+                    'REQDATE' => $set_send_date,
+                    'MSG' => $set_send_msg[$key],
+                    'EXPIRETIME' => '0',
+                    'TYPE' => '0',
+                    'ETC1' => $send_idx,
+                    'ETC2' => $this->getKakaoLogEtc2(),
+                    'ETC3' => 'LMS'
+                ];
             } else {
                 $this_table = $this->_table['sms'];
-                foreach ($set_send_phone as $key => $val) {
-                    $data[] = [
-                        'TR_SENDDATE' => $set_send_date,
-                        'TR_SENDSTAT' => '0',
-                        'TR_MSGTYPE' => '0',
-                        'TR_PHONE' => $val,
-                        'TR_CALLBACK' => $send_call_center,
-                        'TR_MSG' => $send_msg,
-                        'TR_ORG_CALLBACK' => $send_call_center,
-                        'TR_ETC1' => $send_idx,
-                        'TR_ETC2' => $this->getKakaoLogEtc2(),
-                        'TR_ETC3' => 'SMS'
-                    ];
-                }
+                $data[] = [
+                    'TR_SENDDATE' => $set_send_date,
+                    'TR_SENDSTAT' => '0',
+                    'TR_MSGTYPE' => '0',
+                    'TR_PHONE' => $val,
+                    'TR_CALLBACK' => $send_call_center,
+                    'TR_MSG' => $set_send_msg[$key],
+                    'TR_ORG_CALLBACK' => $send_call_center,
+                    'TR_ETC1' => $send_idx,
+                    'TR_ETC2' => $this->getKakaoLogEtc2(),
+                    'TR_ETC3' => 'SMS'
+                ];
             }
+
         }
+
         return array($this_table, $data);
     }
 

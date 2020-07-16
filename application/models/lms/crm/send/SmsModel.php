@@ -242,8 +242,6 @@ class SmsModel extends WB_Model
                 }
             }
 
-            $formData['send_content'] = $arr_replace_content[0];
-
             list($get_send_data, $set_send_data_name, $set_send_data_msg, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone'], $formData['mem_name'], $arr_replace_content);
             $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd);
 
@@ -296,7 +294,7 @@ class SmsModel extends WB_Model
             $this->dropTempTable($this->_table_temp);
 
             /** 즉시 발송 시작 [솔루션 호출] */
-            $result = $this->_smsSend($inputData, $get_send_data,$send_idx);
+            $result = $this->_smsSend($inputData, $get_send_data,$set_send_data_msg,$send_idx);
             if ($result === false) {
                 throw new \Exception('문자 발송 실패 입니다.');
             }
@@ -460,13 +458,14 @@ class SmsModel extends WB_Model
      * SMS 발송 (2019-09-19 이전, TODO 제거)
      * @param $inputData
      * @param $arr_send_data
+     * @param $arr_send_data_msg
      * @param $send_idx [lms_crm_send.SendIdx]
      * @return bool
      */
-    private function _smsSend($inputData, $arr_send_data, $send_idx)
+    private function _smsSend($inputData, $arr_send_data, $arr_send_data_msg= array(), $send_idx)
     {
         $send_date = $inputData['SendDatm'];
-        $send_msg = $inputData['Content'];
+        $send_msg = empty($arr_send_data_msg) === false ? $arr_send_data_msg : $inputData['Content'];
 
         $arr_condition = ['EQ' => ['Ccd' => $inputData['CsTelCcd']]];
         $arr_ccd_data = $this->codeModel->listAllCode($arr_condition)[0];
@@ -534,12 +533,8 @@ class SmsModel extends WB_Model
             $send_type_ccd = $this->_kakao_msg_type[$kakao_msg_type];
             $tmpl_cd = element('tmpl_cd', $formData);
         }else{
-            if(empty($formData['send_type_ccd']) === false){
-                $send_type_ccd = $formData['send_type_ccd'];
-            }else{
-                //이전 SMS,LMS
-                $send_type_ccd = (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1];
-            }
+            //이전 SMS,LMS
+            $send_type_ccd = (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1];
         }
 
         $input_data = [

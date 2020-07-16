@@ -139,7 +139,8 @@
                 <iframe src="https://www.youtube.com/embed/CsqieWAVZi4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="btn NSK-Black"><a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144" target="_blank">지금, 사전 예약하고<br> 끝장 혜택받기 ></a></div>            
+        <div class="btn NSK-Black"><a href="javascript:goLecture();">지금, 사전 예약하고<br> 끝장 혜택받기 ></a></div>
+
     </div> 
 
     <div class="evtCtnsBox evt04">
@@ -220,6 +221,11 @@
             } else {
                 $('#'+ele_id).hide();
             }
+        }
+
+        function goLecture() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
         }
 
     </script>

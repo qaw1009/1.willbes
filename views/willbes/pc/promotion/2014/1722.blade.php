@@ -124,12 +124,12 @@
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_08.jpg" alt="소문내기 이벤트" usemap="#Map1722A" border="0">
             <map name="Map1722A">
-                <area shape="rect" coords="251,768,333,852" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" alt="블로그">
-                <area shape="rect" coords="359,768,440,852" href="https://www.instagram.com" target="_blank" alt="인스타">
-                <area shape="rect" coords="466,768,547,852" href="https://www.facebook.com" target="_blank" alt="페이스북">
-                <area shape="rect" coords="574,768,654,852" href="https://story.kakao.com/ch/kakaostory" target="_blank" alt="카카오스토리">
-                <area shape="rect" coords="682,768,765,852" href="https://band.us/ko" target="_blank" alt="밴드">
-                <area shape="rect" coords="787,768,867,852" href="https://twitter.com" target="_blank" alt="트위터">
+                <area shape="rect" coords="52,768,134,852" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" alt="블로그">
+                <area shape="rect" coords="159,768,240,852" href="https://www.instagram.com" target="_blank" alt="인스타">
+                <area shape="rect" coords="266,768,347,852" href="https://www.facebook.com" target="_blank" alt="페이스북">
+                <area shape="rect" coords="373,768,453,852" href="https://story.kakao.com/ch/kakaostory" target="_blank" alt="카카오스토리">
+                <area shape="rect" coords="480,768,563,852" href="https://band.us/ko" target="_blank" alt="밴드">
+                <area shape="rect" coords="584,768,672,852" href="https://twitter.com" target="_blank" alt="트위터">
             </map>
         </div>
 
@@ -144,30 +144,6 @@
     </div>
     <!-- End Container -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            var slidesImg = $("#slidesImg").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft3").click(function (){
-                slidesImg.goToPrevSlide();
-            });
-
-            $("#imgBannerRight3").click(function (){
-                slidesImg.goToNextSlide();
-            });
-        });
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');

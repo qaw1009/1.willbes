@@ -242,6 +242,8 @@ class SmsModel extends WB_Model
                 }
             }
 
+            $formData['send_content'] = $arr_replace_content[0];
+
             list($get_send_data, $set_send_data_name, $set_send_data_msg, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone'], $formData['mem_name'], $arr_replace_content);
             $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd);
 

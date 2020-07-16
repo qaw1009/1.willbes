@@ -40,7 +40,7 @@ class NpayProduct extends \app\controllers\FrontController
 
             if ($type === '') {
             
-                echo '<xmp>' . $write . '</xmp>'; //바로 호출
+                echo $write; //바로 호출
             
             } else if ($type === 'file') {  //txt 파일 형태
 

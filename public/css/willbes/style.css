@@ -2583,14 +2583,14 @@ table.auTable tr td {
 
 /* subContainer : Content : Lec-buyBtn */
 .willbes-Lec-buyBtn {
-    clear:both;
+    clear:both !important;
     width: 100%;
+    margin-top: 20px; 
     /*position: absolute;
     right: 0;
     bottom: 0;
     z-index: 10;*/
-    margin-top: 20px;
-    
+       
 }
 .willbes-Lec-buyBtn .btnAgree {
     float: left;
@@ -3675,7 +3675,8 @@ table.profTable tr td .priceWrap {
 .willbes-Buy-List table.lecTable .MoreBtn {
     float: inherit;
     position: relative;
-    top: -10px;
+    top: -3px;
+    line-height: 13px;
     left: 0;
     right: 0;
 }

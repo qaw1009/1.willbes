@@ -36,10 +36,8 @@
         .tabContaier a.active {background:#fff; color:#000; border:1px solid #666;}
 
         /*분할 유튜브*/
-        .event_contents + .event_contents{padding-top:100px;}
-        .event_contents {position:relative;width:1050px;margin:auto;z-index:1;}
-        .event_subtitle.type6 {font-size:28px;line-height:38px;font-weight:700;text-align:left;color:#000;}
-        .event_subtitle.def, .event_subtitle.def + small, .event_subtitle.def + p {padding-left:90px;}
+        .youtube_contents + .youtube_contents{padding-top:100px;}
+        .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
         .event_littlepop_wrap {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
 
         .event_littlepop_wrap .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
@@ -73,7 +71,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_top.jpg" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
             <map name="Map1721a" id="Map1721a">
                 <area shape="rect" coords="144,1112,546,1208" href="#apply" />
-                <area shape="rect" coords="573,1112,980,1210" href="cafe.daum.net/sharkchoi" target="_blank" />
+                <area shape="rect" coords="573,1112,980,1210" href="http://cafe.daum.net/sharkchoi" target="_blank" />
             </map>           
         </div>
 
@@ -83,126 +81,65 @@
         
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_02.jpg" alt="합경을 이끌어낸 그 과정"/>
-            <div class="event_contents" id="little">
-                <div class="event_subtitle def type6">놀라운 강의력 겁나 빠른 맛보기 TOP10</div>
-                <div class="event_littlepop_wrap">
-                    <div class="contents_g">
-                        <div class="layout_w100">
-                            <div class="littlefovd_wrap">
-                                <div class="preview_area">
-                                    <div class="avi_box" style="display: inline-flex;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe></div>
-                                    <h2 class="prt_bnr_ttl">[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</h2>
-                                    <span class="prt_bnr_info">국어 / 문명교수님<a href="/tch/MM" target="_blank" class="adClick" data-adarea="맛보기영상팝업_교수님홈바로가기">교수님홈바로가기</a></span>
-                                </div>
-                                <div class="preview_list_area">
-                                    <div class="preview_list">
-                                        <ul>
-                                            <li class="on">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! " data-vodseq="929" data-ttl="[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! " data-tch="이근갑" data-subj="국어" data-nic="LGG">
-                                                    <span class="num_box" data-num="1">1</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                                        <span>국어 / 이근갑</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-vodseq="445" data-ttl="[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-tch="이리라" data-subj="영어" data-nic="LLL">
-                                                    <span class="num_box" data-num="2">2</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                        <span>영어 / 이리라</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-vodseq="906" data-ttl="[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-tch="김덕관" data-subj="행정학" data-nic="KDK">
-                                                    <span class="num_box" data-num="3">3</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                        <span>행정학 / 김덕관</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-vodseq="434" data-ttl="[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-tch="문명" data-subj="국어" data-nic="MM">
-                                                    <span class="num_box" data-num="4">4</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                        <span>국어 / 문명</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[도끼한국사] 김종우 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-vodseq="462" data-ttl="[도끼한국사] 김종우 교수님의 역대급 강의력 겁나 빠르게 확인하기!" data-tch="김종우" data-subj="한국사" data-nic="KJW">
-                                                    <span class="num_box" data-num="5">5</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201528_4343.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[도끼한국사] 김종우 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                                        <span>한국사 / 김종우</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_역사를 가장 역사답게! 황현필교수님의 공무원 한국사 기본이론!" data-vodseq="980" data-ttl="역사를 가장 역사답게! 황현필교수님의 공무원 한국사 기본이론!" data-tch="황현필" data-subj="한국사" data-nic="HHP">
-                                                    <span class="num_box" data-num="6">6</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200707/20200707152915_2272.jpg" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>역사를 가장 역사답게! 황현필교수님의 공무원 한국사 기본이론!</p>
-                                                        <span>한국사 / 황현필</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_[덩허접영어] 이박사 교수님의 역대급 강의력 겁나 빠르게 확인하기! " data-vodseq="782" data-ttl="[덩허접영어] 이박사 교수님의 역대급 강의력 겁나 빠르게 확인하기! " data-tch="이박사" data-subj="영어" data-nic="LBS">
-                                                    <span class="num_box" data-num="7">7</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200629/20200629180831_4508.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>[덩허접영어] 이박사 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                                        <span>영어 / 이박사</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_행정법 기본이론 핵심만을 임팩트있게 뽑아내는 한수성 교수님의 개념강의!" data-vodseq="616" data-ttl="행정법 기본이론 핵심만을 임팩트있게 뽑아내는 한수성 교수님의 개념강의!" data-tch="한수성" data-subj="행정법" data-nic="HSS">
-                                                    <span class="num_box" data-num="8">8</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200707/20200707152939_9678.jpg" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>행정법 기본이론 핵심만을 임팩트있게 뽑아내는 한수성 교수님의 개념강의!</p>
-                                                        <span>행정법 / 한수성</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_행정법공부 키워드만 알면 완전정복이 가능?" data-vodseq="921" data-ttl="행정법공부 키워드만 알면 완전정복이 가능?" data-tch="김현민" data-subj="행정법" data-nic="KHMH">
-                                                    <span class="num_box" data-num="9">9</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200707/20200707153030_9245.jpg" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>행정법공부 키워드만 알면 완전정복이 가능?</p>
-                                                        <span>행정법 / 김현민</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;" class="adClick" data-adarea="맛보기영상팝업_송하라 교수님의 기본이론 강좌로 헷갈리는 음운을 재미있게 암기! " data-vodseq="488" data-ttl="송하라 교수님의 기본이론 강좌로 헷갈리는 음운을 재미있게 암기! " data-tch="송하라" data-subj="국어" data-nic="SHR">
-                                                    <span class="num_box" data-num="10">10</span>
-                                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200713/20200713114344_7501.png" alt=""></div>
-                                                    <div class="text_box">
-                                                        <p>송하라 교수님의 기본이론 강좌로 헷갈리는 음운을 재미있게 암기! </p>
-                                                        <span>국어 / 송하라</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+            <div class="youtube_contents" id="little">
+                <div class="event_littlepop_wrap">                 
+        
+                    <div class="littlefovd_wrap">
+                        <div class="preview_area">
+                            <div class="avi_box">
+                                <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
+                            </div>
+                            <h2 class="prt_bnr_ttl">[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</h2>
+                            <span class="prt_bnr_info">국어 / 문명교수님<a href="/tch/MM" target="_blank" class="adClick" data-adarea="맛보기영상팝업_교수님홈바로가기">교수님홈바로가기</a></span>
+                        </div>
+                        <div class="preview_list_area">
+                            <div class="preview_list">
+                                <ul>
+                                    <li class="on">
+                                        <a href="#tab1" class="active">
+                                            <span class="num_box" data-num="1">1</span>
+                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                            <div class="text_box">
+                                                <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
+                                                <span>국어 / 이근갑</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tab2">
+                                            <span class="num_box" data-num="2">2</span>
+                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                            <div class="text_box">
+                                                <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                                <span>영어 / 이리라</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tab3">
+                                            <span class="num_box" data-num="3">3</span>
+                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
+                                            <div class="text_box">
+                                                <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                                <span>행정학 / 김덕관</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tab4">
+                                            <span class="num_box" data-num="4">4</span>
+                                            <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
+                                            <div class="text_box">
+                                                <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                                <span>국어 / 문명</span>
+                                            </div>
+                                        </a>
+                                    </li>                                   
+                                </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>                        
+                    
                 </div>
             </div>
         </div>
@@ -251,14 +188,41 @@
             $(".tabContents").hide();
             $(".tabContents:first").show();
             $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
+                var activeTab = $(this).attr("href");
+                $(".tabContaier ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).fadeIn();
+                return false;
             });
         });
+
+        //유툽
+        var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
+        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+
+        $(function() {
+            $(".preview_list ul li a").click(function(){
+                var activeTab = $(this).attr("href");
+                var video_tab_url = '';
+                var html_str = '';
+                if(activeTab == "#tab1"){
+                    video_tab_url = tab1_url;
+                }else if(activeTab == "#tab2"){
+                    video_tab_url = tab2_url;
+                }else if(activeTab == "#tab3"){
+                    video_tab_url = tab3_url;
+                }else if(activeTab == "#tab4"){
+                    video_tab_url = tab4_url;
+                }
+                html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
+                $(this).addClass("active");
+                $('.avi_box').html(html_str);
+            });
+        });
+
     </script>
 
 @stop

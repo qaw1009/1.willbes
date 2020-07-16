@@ -244,7 +244,7 @@ class BaseMember extends \app\controllers\FrontController
             'site_code' => 2000,
             'send_pattern_ccd' => 637003,                   // 637001:일반발송, 637002:예약발송, 637003:자동발송
             'cs_tel_ccd' => 706001,                         // 706001:WCA, 706002:경찰학원
-            'send_content' => '윌비스 본인확인 번호입니다. [ '.$this->session->userdata('sms_code').' ]를 입력해주십시요.',
+            'send_content' => '윌비스 본인확인 번호입니다. [ '.$this->session->userdata('sms_code').' ]를 입력해 주십시오.',
             'mem_name' => array($this->session->userdata('sms_name')),
             'mem_phone' => array($this->session->userdata('sms_phone')),
             'send_option_ccd' => 640001,                    // 640001:즉시발송, 640002:예약발송

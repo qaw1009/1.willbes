@@ -43,6 +43,14 @@ class Sms extends \app\controllers\BaseController
         'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
+    // 메세지 발송 종류 (SMS,쪽지,메일)
+    private $_send_log_type_ccd = [
+        '638001' => 'SmsLog',
+        '638002' => 'SmsLog',
+        '638003' => 'KakaoLog',
+        '638004' => 'KakaoLog',
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -187,7 +195,9 @@ class Sms extends \app\controllers\BaseController
                         try{
                             if(empty($row['SendYyyyMm']) === false) {
                                 if(strtotime('201910') <= strtotime($row['SendYyyyMm'])){ //카카오 알림톡 적용시점
-                                    $list[$i]['log_data'] = $this->smsModel->findKakaoLog($row['SendYyyyMm'], $row['Receive_PhoneEnc'], $row['SendIdx']);
+                                    $method = element($row['SendTypeCcd'],$this->_send_log_type_ccd);
+                                    $list[$i]['log_data'] = $this->smsModel->{'find' . $method}($row['SendYyyyMm'], $row['Receive_PhoneEnc'], $row['SendIdx']);
+                                    //$list[$i]['log_data'] = $this->smsModel->findKakaoLog($row['SendYyyyMm'], $row['Receive_PhoneEnc'], $row['SendIdx']);
                                 }
                             }
                         } catch (\Exception $e) {

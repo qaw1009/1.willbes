@@ -235,6 +235,7 @@
                     </div>
                     <!-- lecInfoTable -->
                 </div>
+
                 <div class="willbes-Buy-Price">
                     <table cellspacing="0" cellpadding="0" class="priceTable">
                         <colgroup>
@@ -261,6 +262,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="willbes-Lec-buyBtn GM">
                     <ul>
                         <li class="btnAuto180 h36">

@@ -46,105 +46,105 @@
             <!-- willbes-Prof-Detail -->
 
             <div class="willbes-Lec mb100 NG c_both">
-                <div class="willbes-Buy-Table p_re mt20">
+                <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
+                    <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
+                    <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+                    <div class="willbes-Buy-Table p_re mt20">           
+                        <div class="willbes-Buy-List">
+                            <table cellspacing="0" cellpadding="0" class="lecTable profTable">
+                                <colgroup>
+                                    <col style="width: 445px;">
+                                    <col style="width: 265px;">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <td class="w-lectit tx-left" colspan="3">
+                                        <span class="w-obj NSK"><div class="pBox p1">강좌</div></span>
+                                        <span class="MoreBtn"><a href="#Class">강좌정보 보기 ▼</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-data tx-left">
+                                        <div class="w-tit">{{ $data['ProdName'] }}</div>
+                                    </td>
+                                    <td class="tx-left">
+                                        @if(empty($data['ProdPriceData']) === false)
+                                            <div class="pl10">
+                                                <input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $data['ProdPriceData'][0]['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['ProdPriceData'][0]['RealSalePrice'] }}" class="chk_products" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif>
+                                                <label for="goods_chk" class="pl5 d_inblock tx-spacing">
+                                                    <span>{{ number_format($data['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
+                                                    <span class="discount">(↓{{ $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'] }}) ▶ </span>
+                                                    <span class="tx-blue">{{ number_format($data['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
+                                                </label>
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecTable -->
 
-                    <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
-                        {!! csrf_field() !!}
-                        {!! method_field('POST') !!}
-                        <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
-                        <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
-                        <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-
-                    <div class="willbes-Buy-List">
-                        <table cellspacing="0" cellpadding="0" class="lecTable profTable">
-                            <colgroup>
-                                <col style="width: 445px;">
-                                <col style="width: 265px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <td class="w-lectit tx-left" colspan="3">
-                                    <span class="w-obj NSK"><div class="pBox p1">강좌</div></span>
-                                    <span class="MoreBtn"><a href="#Class">강좌정보 보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-data tx-left">
-                                    <div class="w-tit">{{ $data['ProdName'] }}</div>
-                                </td>
-                                <td class="tx-left">
-                                    @if(empty($data['ProdPriceData']) === false)
-                                        <div class="pl10">
-                                            <input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $data['ProdPriceData'][0]['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['ProdPriceData'][0]['RealSalePrice'] }}" class="chk_products" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif>
-                                            <label for="goods_chk" class="pl5 d_inblock tx-spacing">
-                                                <span>{{ number_format($data['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
-                                                <span class="discount">(↓{{ $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'] }}) ▶ </span>
-                                                <span class="tx-blue">{{ number_format($data['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
-                                            </label>
+                            <div class="lecInfoTable" style="display: block">
+                                <div class="w-lectit tx-left" colspan="3">
+                                    <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
+                                    <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>
+                                </div>
+                                <div class="w-grid">
+                                    @if(empty($data['ProdBookData']) === false)
+                                        @foreach($data['ProdBookData'] as $book_idx => $book_row)
+                                            <div class="w-sub overflow">
+                                                <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
+                                                <span class="chk">
+                                                    <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                    <label>[{{ $book_row['wSaleCcdName'] }}]</label>
+                                                </span>
+                                                <span class="priceWrap">
+                                                <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                            </span>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="w-sub overflow">
+                                            {{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}
                                         </div>
                                     @endif
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- lecTable -->
-
-                        <div class="lecInfoTable" style="display: block">
-                            <div class="w-lectit tx-left" colspan="3">
-                                <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
-                                <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>
+                                </div>
                             </div>
-                            <div class="w-grid">
-                                @if(empty($data['ProdBookData']) === false)
-                                    @foreach($data['ProdBookData'] as $book_idx => $book_row)
-                                        <div class="w-sub overflow">
-                                            <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
-                                            <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
-                                            <span class="chk">
-                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
-                                                <label>[{{ $book_row['wSaleCcdName'] }}]</label>
-                                            </span>
-                                            <span class="priceWrap">
-                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
-                                        </span>
-                                        </div>
-                                    @endforeach
-                                @else
-                                    <div class="w-sub overflow">
-                                        {{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}
-                                    </div>
-                                @endif
-                            </div>
+                            <!-- lecInfoTable -->
                         </div>
-                        <!-- lecInfoTable -->
+                        <div class="willbes-Buy-Price">
+                            <table cellspacing="0" cellpadding="0" class="priceTable">
+                                <colgroup>
+                                    <col style="width: 60px;"/>
+                                    <col style="width: 140px;"/>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">총 주문금액</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="tx-center tx-black">강좌</td>
+                                    <td class="price tx-right tx-light-blue"><span id="prod_sale_price">0</span>원</td>
+                                </tr>
+                                <tr>
+                                    <td class="tx-center tx-black">교재</td>
+                                    <td class="price tx-right tx-light-blue"><span id="book_sale_price">0</span>원</td>
+                                </tr>
+                                <tr>
+                                    <td class="total-price tx-right tx-light-blue" colspan="2"><span id="tot_sale_price">0</span>원</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>                        
                     </div>
-                    <div class="willbes-Buy-Price">
-                        <table cellspacing="0" cellpadding="0" class="priceTable">
-                            <colgroup>
-                                <col style="width: 60px;"/>
-                                <col style="width: 140px;"/>
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th colspan="2">총 주문금액</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="tx-center tx-black">강좌</td>
-                                <td class="price tx-right tx-light-blue"><span id="prod_sale_price">0</span>원</td>
-                            </tr>
-                            <tr>
-                                <td class="tx-center tx-black">교재</td>
-                                <td class="price tx-right tx-light-blue"><span id="book_sale_price">0</span>원</td>
-                            </tr>
-                            <tr>
-                                <td class="total-price tx-right tx-light-blue" colspan="2"><span id="tot_sale_price">0</span>원</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- willbes-Buy-Table -->
 
                     <div class="willbes-Lec-buyBtn GM">
                         @if($data['IsSalesAble'] == 'Y')
@@ -172,13 +172,9 @@
                         @else
                             <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
                         @endif
-                    </div>
-
-                    </form>
+                    </div>                    
                     <!-- willbes-Lec-buyBtn -->
-                </div>
-                <!-- willbes-Buy-Table -->
-
+                </form>
             </div>
             <!-- willbes-Lec -->
 

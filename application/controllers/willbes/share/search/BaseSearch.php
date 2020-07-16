@@ -50,6 +50,17 @@ class BaseSearch extends \app\controllers\FrontController
                     ]
                 ]
             ];
+            if($this->_site_code==='2012') {
+                $type_condition =  array_merge_recursive($type_condition,[
+                        'ORG1' =>[
+                            'LKB' => [
+                                'wAuthorNames' => element('searchfull_text',$arr_search_input),
+                                'wPublName' => element('searchfull_text',$arr_search_input)
+                            ]
+                        ]
+                    ]
+                );
+            }
         } else {
             $type_condition = [
                 'ORG1' =>[
@@ -58,18 +69,6 @@ class BaseSearch extends \app\controllers\FrontController
                     ]
                 ]
             ];
-        }
-
-        if($this->_site_code==='2012') {
-            $type_condition =  array_merge_recursive($type_condition,[
-                'ORG1' =>[
-                        'LKB' => [
-                            'wAuthorNames' => element('searchfull_text',$arr_search_input),
-                            'wPublName' => element('searchfull_text',$arr_search_input)
-                        ]
-                    ]
-                ]
-            );
         }
 
         $common_condition = array_merge_recursive($common_condition,$type_condition);

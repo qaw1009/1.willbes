@@ -17,6 +17,7 @@ class SmsModel extends WB_Model
     private $_table_kakao_msg = 'kkt_msg';
     private $_table_kakao_log = 'kkt_log_';     //kkt_log_yyyymm
     private $_table_sms_log = 'sms_log_';     //sms_log_yyyymm
+    private $_table_mms_log = 'mms_log_';     //mms_log_yyyymm
 
     // 메세지 발송 치환 정보
     private $_sms_send_content_replace = [
@@ -972,7 +973,7 @@ class SmsModel extends WB_Model
                 'EQ' => [
                     'KL.PHONE' => $phone,
                     'KL.ETC1' => $send_idx,
-                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2()
+                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2(),
                 ]
             ];
             $column = "
@@ -1055,11 +1056,52 @@ class SmsModel extends WB_Model
             $column = "
                 KL.*, 
                 IFNULL(RC.RSLT_INFO, '알수없는 결과코드') AS RSLT_INFO,
-                KL.TR_RSLTSTAT AS RSLT_SEND
+                KL.TR_ETC3 AS RSLT_SEND
             ";
             $from = "
                 FROM {$this->_table_sms_log}{$yyyymm} AS KL
                 LEFT OUTER JOIN common_result_code AS RC ON KL.TR_RSLTSTAT = RC.RSLT AND MsgType = 'msg'
+            ";
+
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $result = $this->_db->query('SELECT ' . $column . $from . $where)->row_array();
+
+            //수신결과명
+            if(empty($result) === false && empty($result['RSLT_SEND']) === false){
+                $result['RSLT_SEND_NAME'] = $this->_rslt_send_name[$result['RSLT_SEND']];
+            }
+            return $result;
+
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * mms 발송 로그 상세 조회
+     * @param $yyyymm
+     * @param $phone
+     * @param $send_idx
+     * @return mixed
+     */
+    public function findMmsLog($yyyymm, $phone, $send_idx){
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'KL.PHONE' => $phone,
+                    'KL.ETC1' => $send_idx,
+                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2()
+                ]
+            ];
+            $column = "
+                KL.*, 
+                IFNULL(RC.RSLT_INFO, '알수없는 결과코드') AS RSLT_INFO,
+                KL.ETC3 AS RSLT_SEND
+            ";
+            $from = "
+                FROM {$this->_table_mms_log}{$yyyymm} AS KL
+                LEFT OUTER JOIN common_result_code AS RC ON KL.RSLT = RC.RSLT AND MsgType = 'msg'
             ";
 
             $where = $this->_conn->makeWhere($arr_condition);

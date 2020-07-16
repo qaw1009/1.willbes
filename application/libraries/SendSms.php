@@ -98,6 +98,7 @@ class SendSms
                         'TYPE' => '0',
                         'ETC1' => $send_idx,
                         'ETC2' => $this->getKakaoLogEtc2(),
+                        'ETC3' => 'SMS'
                     ];
                 }
             } else {
@@ -113,6 +114,7 @@ class SendSms
                         'TR_ORG_CALLBACK' => $send_call_center,
                         'TR_ETC1' => $send_idx,
                         'TR_ETC2' => $this->getKakaoLogEtc2(),
+                        'TR_ETC3' => 'SMS'
                     ];
                 }
             }

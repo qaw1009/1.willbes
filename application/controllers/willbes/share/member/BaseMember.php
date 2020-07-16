@@ -258,5 +258,6 @@ class BaseMember extends \app\controllers\FrontController
         return $input_data;
     }
 
+
 }
 

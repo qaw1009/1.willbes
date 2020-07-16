@@ -14,6 +14,9 @@ class GuestOrder extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
+        
+        // 실서비스일 경우 접금금지 처리
+        redirect(app_url('/', 'www'));
     }
 
     /**

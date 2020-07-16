@@ -43,8 +43,6 @@ class Sms extends \app\controllers\BaseController
         'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
-    private $_msg_max_length = '54';    //발송메세지 바이트 최대 길이
-
     public function __construct()
     {
         parent::__construct();

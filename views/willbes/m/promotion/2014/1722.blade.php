@@ -13,10 +13,11 @@
     .evt02 .dday {font-size:22px;padding:20px 0;}
     .evt02 .dday span {color:#a0774e; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
 
-    .evt03 {background:#252525; padding-bottom:80px}      
+    .evt03 {background:#252525; padding-bottom:80px}   
 
-    .evt04 {margin-top:80px}
     .evt04 div {font-size:16px; font-weight:600; margin-top:20px}
+
+    .evt05 {margin-top:80px}
 
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
     .video-container iframe,
@@ -33,7 +34,6 @@
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {        
         .evt02 .dday strong {font-size:32px}
-        .evt02 .dday br {display:none} 
         .evt03 .btn a {font-size:30px;}        
     }
 
@@ -83,7 +83,7 @@
         <div class="btn NSK-Black"><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1722" target="_blank">소문내기 이벤트 참여하기 ></a></div>       
     </div>  
 
-    <div class="evtCtnsBox evt04">
+    <div class="evtCtnsBox evt05">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_09.jpg" alt="" >
     </div>
 </div>

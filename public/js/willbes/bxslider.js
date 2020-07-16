@@ -6,7 +6,8 @@ $(function() {
         stopAutoOnClick: true,
         pager: false,
         touchEnabled: false,
-        controls: false
+        controls: false,
+        autoHover: true,
     });
 });
 
@@ -18,7 +19,8 @@ $(function() {
         stopAutoOnClick: true,
         pager: true,
         touchEnabled: false,
-        controls: false
+        controls: false,
+        autoHover: true,
     });
 });
 
@@ -28,6 +30,7 @@ $(function() {
         touchEnabled: false,
         controls: false,
         pause: 3000,
+        autoHover: true,
         onSliderLoad: function(){
             $(".bSlider").css("visibility", "visible").animate({opacity:1});
         }
@@ -73,6 +76,7 @@ $(function() {
         adaptiveHeight: true,
         infiniteLoop: true,
         touchEnabled: false,
+        autoHover: true,
         onSliderLoad: function(){
             $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
         }  

@@ -17,7 +17,7 @@
     bottom: 34px;
     left: 0;
     right: 0;
-    z-index: 99;
+    z-index: 2;
     text-align: center;
 }
 .GA .VisualBox .MaintabList ul li {
@@ -45,6 +45,7 @@
     width: 100%;
     height: 100%;
 }
+.GA .VisualBox .MaintabSlider {z-index: 1;}
 .GA .VisualBox .MaintabSlider li img {
     width: 100%;
     height: 100%;

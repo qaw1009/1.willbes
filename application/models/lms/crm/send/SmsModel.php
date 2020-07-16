@@ -16,6 +16,8 @@ class SmsModel extends WB_Model
     private $_table_kakao_template = 'lms_crm_kakao_template';
     private $_table_kakao_msg = 'kkt_msg';
     private $_table_kakao_log = 'kkt_log_';     //kkt_log_yyyymm
+    private $_table_sms_log = 'sms_log_';     //sms_log_yyyymm
+    private $_table_mms_log = 'mms_log_';     //mms_log_yyyymm
 
     // 메세지 발송 치환 정보
     private $_sms_send_content_replace = [
@@ -148,7 +150,7 @@ class SmsModel extends WB_Model
         } else {
             $column = '
                 SEND.SmsSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_PhoneEnc) AS Receive_PhoneEnc, SEND.Receive_Name, SEND.SmsRcvStatus, TM.Phone3 ,MEM.MemId, MEM.MemName, 
-                CSM.SendDatm, DATE_FORMAT(CSM.SendDatm, \'%Y%m\') AS SendYyyyMm, SEND.ReplaceContent
+                CSM.SendDatm, DATE_FORMAT(CSM.SendDatm, \'%Y%m\') AS SendYyyyMm, SEND.ReplaceContent, CSM.SendTypeCcd
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -191,7 +193,56 @@ class SmsModel extends WB_Model
         $this->_conn->trans_begin();
         try {
             $get_send_data_count = 0;
-            list($get_send_data, $set_send_data_name, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone'], $formData['mem_name']);
+            $arr_replace_content = array(); // 치환된 메세지가 담길 배열
+
+            // *** 메세지 치환 ***
+            if(empty($formData['tmpl_cd']) === false){
+                // 템플릿 조회
+                $tmpl_data = $this->kakaoTemplateModel->findKakaoTemplate(null, $formData['tmpl_cd']);
+                if(empty($tmpl_data) === true || empty($tmpl_data['Msg']) === true){
+                    throw new \Exception('템플릿코드가 잘못 되었습니다.');
+                }
+
+                // 치환할 변수가 넘어왔을 경우
+                if(empty($formData['send_content_value']) === false) {
+                    $arr_send_content_value = ( is_array($formData['send_content_value']) === false ? array($formData['send_content_value']) : $formData['send_content_value'] );
+                    $formData['send_content'] = $tmpl_data['Msg'];
+                }
+
+                foreach($formData['mem_phone'] as $i => $i_val) {
+                    if(empty($i_val) === false){
+                        if(empty($arr_send_content_value) === false) {
+                            $temp_content = $tmpl_data['Msg'];
+                            foreach($arr_send_content_value as $j => $j_val) {
+                                if(empty($j_val) === false) {
+                                    foreach ($j_val as $k => $k_val) {
+                                        $temp_content = str_replace($k, (empty($k_val) === false ? $k_val : '-'), $temp_content);
+                                    }
+                                    array_push($arr_replace_content, $temp_content);
+                                }
+                            }
+                        } else {
+                            // 넘어온 치환 변수 배열이 없을 경우
+                            array_push($arr_replace_content, $formData['send_content']);
+                        }
+                    }
+                }
+            } else {
+                foreach($formData['mem_phone'] as $i => $i_val) {
+                    if(empty($i_val) === false) {
+                        $temp_content = $formData['send_content'];
+                        // {{name}} 사용자 이름 치환
+                        foreach($this->_sms_send_content_replace as $j => $j_val) {
+                            if(strpos($temp_content, $j) !== false) {
+                                $temp_content = str_replace($j, $formData[$j_val][$i], $temp_content);
+                            }
+                        }
+                        array_push($arr_replace_content, $temp_content);
+                    }
+                }
+            }
+
+            list($get_send_data, $set_send_data_name, $set_send_data_msg, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone'], $formData['mem_name'], $arr_replace_content);
             $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd);
 
             if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
@@ -202,7 +253,7 @@ class SmsModel extends WB_Model
             }
 
             $inputData = array_merge($inputData,[
-                'RegAdminIdx' => empty($this->session->userdata('admin_idx')) ? 1000 : $this->session->userdata('admin_idx'),
+                'RegAdminIdx' => empty($formData['reg_admin_idx']) ? $this->session->userdata('admin_idx') : $formData['reg_admin_idx'],
                 'RegDatm' => date('Y-m-d H:i:s'),
                 'RegIp' => $this->input->ip_address()
             ]);
@@ -224,7 +275,7 @@ class SmsModel extends WB_Model
                 throw new \Exception('등록에 실패했습니다.');
             }
 
-            $result = $this->insertTempTable($this->_table_temp, $get_send_data, $set_send_data_name);
+            $result = $this->insertTempTable($this->_table_temp, $get_send_data, $set_send_data_name, $set_send_data_msg);
             if ($result === false) {
                 throw new \Exception('등록에 실패했습니다.');
             }
@@ -242,23 +293,12 @@ class SmsModel extends WB_Model
             // 임시테이블 삭제
             $this->dropTempTable($this->_table_temp);
 
-            //메세지 치환
-            $before_content = $inputData['Content'];
-            foreach($get_send_data as $i => $row){
-                $after_content = $before_content;
-                foreach($this->_sms_send_content_replace as $key => $val) {
-                    if(strpos($after_content, $key) !== false) {
-                        $after_content = str_replace($key, $formData[$val][$i], $after_content);
-                    }
-                }
-                $inputData['Content'] = $after_content;
-
-                /** 즉시 발송 시작 [솔루션 호출] */
-                $result = $this->_smsSend($inputData, $get_send_data[$i]);
-                if ($result === false) {
-                    throw new \Exception('문자 발송 실패 입니다.');
-                }
+            /** 즉시 발송 시작 [솔루션 호출] */
+            $result = $this->_smsSend($inputData, $get_send_data,$send_idx);
+            if ($result === false) {
+                throw new \Exception('문자 발송 실패 입니다.');
             }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -418,9 +458,10 @@ class SmsModel extends WB_Model
      * SMS 발송 (2019-09-19 이전, TODO 제거)
      * @param $inputData
      * @param $arr_send_data
+     * @param $send_idx [lms_crm_send.SendIdx]
      * @return bool
      */
-    private function _smsSend($inputData, $arr_send_data)
+    private function _smsSend($inputData, $arr_send_data, $send_idx)
     {
         $send_date = $inputData['SendDatm'];
         $send_msg = $inputData['Content'];
@@ -431,7 +472,7 @@ class SmsModel extends WB_Model
         $send_call_center = $arr_ccd_data['CcdValue'];
         $arr_send_phone = $arr_send_data;
 
-        if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date) !== true) {
+        if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date, '윌비스 안내 메세지', $send_idx) !== true) {
             return false;
         } else {
             return true;
@@ -491,8 +532,12 @@ class SmsModel extends WB_Model
             $send_type_ccd = $this->_kakao_msg_type[$kakao_msg_type];
             $tmpl_cd = element('tmpl_cd', $formData);
         }else{
-            //이전 SMS,LMS
-            $send_type_ccd = (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1];
+            if(empty($formData['send_type_ccd']) === false){
+                $send_type_ccd = $formData['send_type_ccd'];
+            }else{
+                //이전 SMS,LMS
+                $send_type_ccd = (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1];
+            }
         }
 
         $input_data = [
@@ -537,11 +582,12 @@ class SmsModel extends WB_Model
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
-    private function _get_send_detail_data($send_type, $arr_send_data, $arr_send_data_name)
+    private function _get_send_detail_data($send_type, $arr_send_data, $arr_send_data_name, $arr_send_msg = array())
     {
         $set_send_data = [];
         $set_send_data_name = [];
         $set_send_data_count = [];
+        $set_send_data_msg = [];
         switch ($send_type) {
             case "1" :
                 foreach ($arr_send_data as $key => $val) {
@@ -549,6 +595,7 @@ class SmsModel extends WB_Model
                         $set_send_data_count[$key] = $val;
                         $set_send_data[$key] = $val;
                         $set_send_data_name[$key] = $arr_send_data_name[$key];
+                        $set_send_data_msg[$key] = $arr_send_msg[$key];
                     }
                 }
                 break;
@@ -578,7 +625,7 @@ class SmsModel extends WB_Model
                 break;
         }
 
-        return array($set_send_data, $set_send_data_name, count($set_send_data_count));
+        return array($set_send_data, $set_send_data_name, $set_send_data_msg, count($set_send_data_count));
     }
 
     /**
@@ -926,7 +973,7 @@ class SmsModel extends WB_Model
                 'EQ' => [
                     'KL.PHONE' => $phone,
                     'KL.ETC1' => $send_idx,
-                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2()
+                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2(),
                 ]
             ];
             $column = "
@@ -987,6 +1034,88 @@ class SmsModel extends WB_Model
         } catch (\Exception $e) {
             $this->_db->trans_rollback();
             throw new \Exception('SMS 발송 삭제를 실패하였습니다.');
+        }
+    }
+
+    /**
+     * sms 발송 로그 상세 조회
+     * @param $yyyymm
+     * @param $phone
+     * @param $send_idx
+     * @return mixed
+     */
+    public function findSmsLog($yyyymm, $phone, $send_idx){
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'KL.TR_PHONE' => $phone,
+                    'KL.TR_ETC1' => $send_idx,
+                    'KL.TR_ETC2' => $this->sendsms->getKakaoLogEtc2()
+                ]
+            ];
+            $column = "
+                KL.*, 
+                IFNULL(RC.RSLT_INFO, '알수없는 결과코드') AS RSLT_INFO,
+                KL.TR_ETC3 AS RSLT_SEND
+            ";
+            $from = "
+                FROM {$this->_table_sms_log}{$yyyymm} AS KL
+                LEFT OUTER JOIN common_result_code AS RC ON KL.TR_RSLTSTAT = RC.RSLT AND MsgType = 'msg'
+            ";
+
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $result = $this->_db->query('SELECT ' . $column . $from . $where)->row_array();
+
+            //수신결과명
+            if(empty($result) === false && empty($result['RSLT_SEND']) === false){
+                $result['RSLT_SEND_NAME'] = $this->_rslt_send_name[$result['RSLT_SEND']];
+            }
+            return $result;
+
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * mms 발송 로그 상세 조회
+     * @param $yyyymm
+     * @param $phone
+     * @param $send_idx
+     * @return mixed
+     */
+    public function findMmsLog($yyyymm, $phone, $send_idx){
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'KL.PHONE' => $phone,
+                    'KL.ETC1' => $send_idx,
+                    'KL.ETC2' => $this->sendsms->getKakaoLogEtc2()
+                ]
+            ];
+            $column = "
+                KL.*, 
+                IFNULL(RC.RSLT_INFO, '알수없는 결과코드') AS RSLT_INFO,
+                KL.ETC3 AS RSLT_SEND
+            ";
+            $from = "
+                FROM {$this->_table_mms_log}{$yyyymm} AS KL
+                LEFT OUTER JOIN common_result_code AS RC ON KL.RSLT = RC.RSLT AND MsgType = 'msg'
+            ";
+
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $result = $this->_db->query('SELECT ' . $column . $from . $where)->row_array();
+
+            //수신결과명
+            if(empty($result) === false && empty($result['RSLT_SEND']) === false){
+                $result['RSLT_SEND_NAME'] = $this->_rslt_send_name[$result['RSLT_SEND']];
+            }
+            return $result;
+
+        } catch (\Exception $e) {
+            return null;
         }
     }
 }

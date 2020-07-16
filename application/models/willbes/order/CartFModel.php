@@ -867,7 +867,7 @@ class CartFModel extends BaseOrderFModel
         $from = '
             from ' . $this->_table['product'] . ' as P
                 left join ' . $this->_table['product_r_category'] . ' as PC
-                    on P.ProdCode = PC.ProdCode
+                    on P.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
                 left join ' . $this->_table['product_book'] . ' as PB
                     on P.ProdCode = PB.ProdCode
                 left join ' . $this->_table['bms_book'] . ' as WB

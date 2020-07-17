@@ -118,7 +118,9 @@
 .gosi-gate .castBox p.leftBtn {left:-22px}
 .gosi-gate .castBox p.rightBtn {right:-22px}
 
-.gosi-gate-bnSec04 li a {display:block; width:370px; height:320px;} 
+.gosi-gate-bnSec04 li {display:inline; float:left; width:370px; margin-right:5px}
+.gosi-gate-bnSec04 li:last-child {margin:0}
+
 
 /*********************************************     Main Container : Gosi     *********************************************/
 .gosi .Depth .depth:last-child strong {

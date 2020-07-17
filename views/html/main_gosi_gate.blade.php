@@ -277,14 +277,27 @@
     </div>
 
     <div class="Section mt50">
-        <div class="widthAuto">
+        <div class="widthAuto gosi-gate-bnSec04 nSlider pick">   
             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt05.jpg" alt="학원 실강 안내">
-            <ul class="gosi-gate-bnSec04">
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
+            <ul>
+                <li>
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -410,7 +423,7 @@
             minSlides:3,
             maxSlides:3,
             slideWidth: 370,
-            slideMargin:10,
+            slideMargin:5,
             autoHover: true,
             moveSlides:1,
             pager:true,
@@ -421,25 +434,6 @@
 
         $("#imgBannerRight1").click(function (){
             slidesImg1.goToNextSlide();
-        });
-    }); 
-
-    //학원 실강 안내
-    $(function() {
-        var slidesImg1 = $(".gosi-gate-bnSec04").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:350,
-            pause:4000,
-            pager:true,
-            controls:false,
-            minSlides:3,
-            maxSlides:3,
-            slideWidth: 370,
-            slideMargin:10,
-            autoHover: true,
-            moveSlides:1,
-            pager:true,
         });
     }); 
 

@@ -3,6 +3,121 @@
 .gosi .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .gosi .topBanner p img {width:100%}
 
+/************************************* gosi gate**********************************************/
+.gosi-gate-top { position:relative; height:120px;}
+.gosi-gate-sns {width:150px; height:40px; float:left; position:absolute; top:60px; z-index:10}
+.gosi-gate-sns li {display:inline; float:left; margin-right:5px}
+.gosi-gate-sns ul:after {content:''; display:block; clear:both}
+
+.gosi-logo {position:absolute; left:50%; margin-left:-107px; width:214px; top:30px; z-index:10}
+
+.gosi-gate-search {position:absolute; top:40px; right:0; z-index:1}
+
+.gosi-gate-menu {width:1120px; margin:0 auto; border-bottom:2px solid #000}
+.gosi-gate-menu li {display:inline; float:left; width:11.11111%;}    
+.gosi-gate-menu a {display:block; text-align:center; font-size:16px; margin:10px 0 15px; border-right:1px solid #b7b7b7; font-weight:bold}
+.gosi-gate-menu a:hover {color:#ba5610}
+.gosi-gate-menu li:last-child a {border:0}
+.gosi-gate-menu ul:after {content:''; display:block; clear:both}
+
+.gosi-gate-bnSec01 > div {width: 540px; height:400px; overflow:hidden}
+.gosi-gate-bnSec01:after {content:''; display:block; clear:both}
+
+.gosi-gate-bnSec02 {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;    
+}
+
+.gosi-gate-bnSec02 .MaintabList {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.gosi-gate-bnSec02 .MaintabList ul li {
+    background: #251c1c;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+    width: 180px;
+}
+.gosi-gate-bnSec02 .MaintabList.three ul li {
+    width: 209px;
+}
+.gosi-gate-bnSec02 .MaintabList.four ul li {
+    width: 156px;
+}
+.gosi-gate-bnSec02 .MaintabList.five ul li {
+    width: 188px;
+}
+.gosi-gate-bnSec02 .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.gosi-gate-bnSec02 .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+.gosi-gate-bnSec02 .MaintabList ul li a:hover,
+.gosi-gate-bnSec02 .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
+.gosi-gate-bnSec03 li {display:inline; float:right; margin-left:20px}
+.gosi-gate-bnSec03 li:first-child {margin:0; float:left}
+
+.gosi-gate-prof li {
+    display: inline;
+    float: left;    
+    width: 220px;
+    height: 380px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+.gosi-gate-prof li:first-child {
+    margin-left: 0;
+}
+.gosi-gate-prof:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+}
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e !important;
+}
+.gosi-gate-prof:after {content:''; display:block; clear:both}
+
+.gosi-gate .castBox {position:relative; width:1120px; margin: 0 auto;}
+.gosi-gate .castslider {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
+.gosi-gate .castslider li {display: inline; float: left; width:33.33333%;}
+.gosi-gate .castslider li a {display:block; width:370px; height:220px;} 
+.gosi-gate .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; 
+   width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+.gosi-gate .castslider:after {content: ""; display: block; clear:both}
+.gosi-gate .castBox p {position:absolute; top:45%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.gosi-gate .castBox p.leftBtn {left:-22px}
+.gosi-gate .castBox p.rightBtn {right:-22px}
+
 /*********************************************     Main Container : Gosi     *********************************************/
 .gosi .Depth .depth:last-child strong {
     color: #ba560e;

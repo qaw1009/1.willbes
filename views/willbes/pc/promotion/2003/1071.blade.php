@@ -19,7 +19,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:50px;right:10px;width:122px;z-index:10;}
+        .skybanner {position:fixed;top:100px;right:10px;width:122px;z-index:10;}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#000}
@@ -117,13 +117,16 @@
                     <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_sky2.png" alt="">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728#apply" target="_blank" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_sky.png" alt="" style="padding-top:15px;">
             </a>
         </div>         
         
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1071_top.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수" usemap="#Map1071pass" border="0"  >
+            <map name="Map1071pass" id="Map1071pass">
+                <area shape="rect" coords="980,93,1107,297" href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank" onfocus='this.blur()' />
+            </map>
             <div class="tabContaier">
                 <ul class="youtubeTab">
                     <li>

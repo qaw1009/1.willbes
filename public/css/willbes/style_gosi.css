@@ -103,7 +103,7 @@
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+    background: #0d74ae !important;
 }
 .gosi-gate-prof:after {content:''; display:block; clear:both}
 

@@ -21,6 +21,15 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
+        .skybanner {
+            position:fixed;
+            bottom:20px;
+            right:10px;
+            z-index:1;
+            width:138px;
+        }
+        .skybanner a {display:block; margin-bottom:5px}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/07/1722_top_bg.jpg) no-repeat center top}
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1722_01_bg.jpg) no-repeat center top}         
@@ -59,7 +68,14 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">        
+    <div class="p_re evtContent NSK" id="evtContainer">    
+        <div class="skybanner">
+            <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/07/1722_sky02.png" alt="황채영대표"></a>
+            <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1971&prof_idx=51060" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_sky01.png" alt="교재구매">
+            </a>            
+        </div>
+
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_top.jpg" alt="양원근 대표 책쓰기 브랜딩" > 
         </div>  
@@ -93,10 +109,10 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_02.jpg" alt="사전예약 특별혜택" >
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/CsqieWAVZi4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/AhPAFng06cA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
             <div class="btn NSK-Black">
                 {{--  <a href="javascript:goLecture();">지금, 사전 예약하고 끝장 혜택받기 ></a> --}}

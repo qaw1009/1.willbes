@@ -58,7 +58,7 @@
 
             <div class="form-group form-group-sm form-group-inline">
                 <div class="mb-30">
-                    <label class="control-label col-md-1-1">문항설명</label>
+                    <label class="control-label col-md-1-1">답변항목 <span class="required">*</span></label>
                     <div class="col-md-10">
                         <button type="button" class="btn btn-sm btn-dark clearfix-r" onclick="add_question_item();">답변항목생성</button>
                     </div>
@@ -102,7 +102,8 @@
     </form>
 
     <style>
-        .form-group-inline .col-md-offset-2 input { width: 470px;}
+        .form-group-inline .col-md-offset-1 input { width: 476px;}
+        .form-group-inline .col-md-offset-2 textarea { width: 468px;}
         .form-group-inline .col-md-offset-3 input { width: 400px;}
     </style>
 

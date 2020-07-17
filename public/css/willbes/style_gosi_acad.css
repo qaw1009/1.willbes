@@ -416,7 +416,7 @@
     vertical-align: middle;
 }
 
-/* Main Container : QuickMenu : gosi */
+/* Main Container : QuickMenu : gosi 
 .GA .MainQuickMenu {
     position: fixed;
     top: 110px;
@@ -471,3 +471,4 @@
 .GA .MainQuickMenu li:nth-child(7) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq07.png");
 }
+*/

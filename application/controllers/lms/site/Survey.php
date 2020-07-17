@@ -51,7 +51,7 @@ class Survey extends \app\controllers\BaseController
         $SqAction = $this->_reqG('SqAction');
         $IsObj = $this->_reqG('IsObj');
 
-        $this->load->view('site/survey/question_item', [
+        $this->load->view('site/survey/question_item_modal', [
             'SqType' => $SqType,
             'SqAction' => $SqAction,
             'IsObj' => $IsObj

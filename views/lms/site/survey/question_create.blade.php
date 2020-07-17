@@ -5,7 +5,7 @@
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value=""/>
@@ -43,10 +43,11 @@
             </div>
 
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1-1" for="publ_tel1">답변유형</label>
+                <label class="control-label col-md-1-1" for="publ_tel1">답변유형 <span class="required">*</span></label>
                 <div class="col-md-10">
-                    <select id="SqType" name="SqType" title="SqType" class="form-control" onchange="sq_type(this);">
-                        <option selected="selected">-유형-</option>
+                    <span style="color:red;">유형설명 - 선택형(단일선택 객관식), 선다형(서술형 여러개), 복수형(다중선택 객관식)</span>
+                    <select id="SqType" name="SqType" title="SqType" class="form-control" required="required" title="답변유형" onchange="sq_type(this.value);">
+                        <option value="">-유형선택-</option>
                         <option value="S">선택형</option>
                         <option value="M">선다형</option>
                         <option value="T">복수형</option>
@@ -59,39 +60,12 @@
                 <div class="mb-30">
                     <label class="control-label col-md-1-1">문항설명</label>
                     <div class="col-md-10">
-                        <button type="button" class="btn btn-sm btn-dark clearfix-r">답변항목생성</button>
+                        <button type="button" class="btn btn-sm btn-dark clearfix-r" onclick="add_question_item();">답변항목생성</button>
                     </div>
                 </div>
-
-                <div class="col-md-10 col-md-offset-2 form-inline mt-10">
-                    <input type="text" name="" required="required" class="form-control" title="" value="1">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
-                    <button type="button" class="btn btn-sm btn-primary ml-5">문항추가</button>
-                </div>
-                <div class="col-md-10 col-md-offset-3 form-inline mt-5">
-                    <input type="text" name="" required="required" class="form-control" title="" value="2">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
-                </div>
-                <div class="col-md-10 col-md-offset-3 form-inline mt-5">
-                    <input type="text" name="" required="required" class="form-control" title="" value="3">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
-                </div>
-
-                <div class="col-md-10 col-md-offset-2 form-inline mt-10">
-                    <input type="text" name="" required="required" class="form-control" title="" value="4">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
-                    <button type="button" class="btn btn-sm btn-primary ml-5">문항추가</button>
-                </div>
-                <div class="col-md-10 col-md-offset-3 form-inline mt-5">
-                    <input type="text" name="" required="required" class="form-control" title="" value="5">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
-                </div>
-                <div class="col-md-10 col-md-offset-3 form-inline mt-5">
-                    <input type="text" name="" required="required" class="form-control" title="" value="6">
-                    <a href="#none" class="btn-delete-submit" data-idx="" data-register-idx=""><i class="fa fa-times fa-lg red"></i></a>
+                <div id="question_item">
                 </div>
             </div>
-
 
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">등록자</label>
@@ -133,14 +107,50 @@
     </style>
 
     <script>
-        //유형선택
-        function sq_type(obj){
-            if(obj.value == 'S'||obj.value == 'M'||obj.value == 'T'){
-                $('#hintgroup').show();
-                $('#numgroup').show();
+        var $datatable;
+        var $regi_form = $('#regi_form');
+
+        // 답변유형선택/항목추가
+        function sq_type(type,action,obj) {
+            var _url = '{{ site_url('/site/survey/questionItem') }}';
+            var is_obj = (typeof obj === 'undefined') ? '' : true;
+            var data = {'SqType': type, 'SqAction': action, 'IsObj': is_obj};
+
+            if(type){
+                sendAjax(_url, data, function(html) {
+                    if(action == 'item') {
+                        if(is_obj === true){
+                            $(obj).parents(".group_box").find("div:last").after(html);
+                        }else{
+                            $('#question_item .group_box:last').after(html);
+                        }
+                    }else{
+                        $('#question_item').html(html);
+                    }
+                }, showAlertError, false, 'GET', 'html');
             }else{
-                $('#hintgroup').hide();
-                $('#numgroup').hide();
+                $('#question_item').html("");
+            }
+        }
+
+        // 답변항목생성/문항추가
+        function add_question_item(obj) {
+            var add_type = $("#SqType option:selected").val();
+
+            if(add_type == ""){
+                alert("답변유형을 선택해주세요.");
+                return;
+            }
+
+            sq_type(add_type,'item',obj);
+        }
+
+        // 문항 삭제
+        function delete_question_item(obj,item){
+            var remove_obj = (typeof item === 'undefined') ? 'div' : '.group_box';
+
+            if (confirm('문항을 삭제하시겠습니까?')) {
+                $(obj).closest(remove_obj).remove();
             }
         }
     </script>

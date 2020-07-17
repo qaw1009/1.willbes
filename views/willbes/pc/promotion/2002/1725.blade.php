@@ -170,10 +170,17 @@
                 <span class="area07">부산</span>
                 <span class="area09">제주</span>   
 			</div>
-		</div>  	
+		</div>  
+
+        <div class="evtCtnsBox wb_05s" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1725_05s.jpg" alt="할인쿠폰1" usemap="#Map1725_coupon" border="0" />
+            <map name="Map1725_coupon" id="Map1725_coupon">
+                <area shape="rect" coords="262,1071,859,1206" href="https://police.willbes.net/pass/mockTestNew/apply/cate/" target="_blank" />
+            </map>
+		</div>	
 
         <div class="evtCtnsBox wb_05" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1725_05.jpg"  alt="할인쿠폰" usemap="#Map1725a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1725_05.jpg"  alt="할인쿠폰2" usemap="#Map1725a" border="0" />
             <map name="Map1725a" id="Map1725a">
                 <area shape="rect" coords="441,1018,681,1095" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
                 <area shape="rect" coords="366,1417,751,1470" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />

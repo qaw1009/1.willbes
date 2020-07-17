@@ -1,6 +1,85 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+
+<style type="text/css">
+.GA .VisualBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;    
+}
+
+.GA .VisualBox .MaintabList {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+}
+.GA .VisualBox .MaintabList ul li {
+    background: #251c1c;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+    width: 180px;
+}
+.GA .VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.GA .VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.GA .VisualBox .MaintabList.five ul li {
+    width: 188px;
+}
+.GA .VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.GA .VisualBox .MaintabSlider {z-index: 1;}
+.GA .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.GA .VisualBox .MaintabList ul li a:hover,
+.GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
+
+.GA .VisualsubBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 160px;
+    overflow: hidden;
+}
+.GA .VisualsubBox ul li {
+    float: left;
+    width: 370px;
+    margin-left: 5px;
+}
+.GA .VisualsubBox ul li:first-child {
+    margin-left: 0;
+}
+/* slider : 페이징 버튼 => bSlider */
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #b7b7b7;
+}
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {    
+    background: #ba560e;
+}
+</style>
+
 <!-- Container -->
 <div id="Container" class="Container GA NGR c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -389,50 +468,79 @@
         </h3>
     </div>
 
-    <div class="Section mt20">
+    <div class="Section MainVisual mt20">
         <div class="widthAuto">
-            <ul class="bnSecTop">
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a>
-                </li>
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a>
-                </li>
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a>
-                </li>
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a>
-                </li>
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
+            <div class="VisualBox p_re">
+                <div id="MainRollingDiv" class="MaintabList five">
+                    <ul class="Maintab">
+                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">7급공무원</a></li>
+                        <li><a data-slide-index="1" href="javascript:void(0);" class="">9급공무원</a></li>
+                        <li><a data-slide-index="2" href="javascript:void(0);" class="">소방직</a></li>
+                        <li><a data-slide-index="3" href="javascript:void(0);" class="">군무원</a></li>
+                        <li><a data-slide-index="4" href="javascript:void(0);" class="">기술직</a></li>
+                    </ul>
+                </div>
+                <div id="MainRollingSlider" class="MaintabBox">
+                    <div class="bx-wrapper">
+                        <div class="bx-viewport">
+                            <ul class="MaintabSlider">
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider01.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider02.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider03.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider04.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider05.jpg') }}" alt="배너명"></a></li>
+                            </ul>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </div> 
+                </div>
+            </div>
+            <div class="VisualsubBox mt20">
+                <ul>
+                    <li>
+                        <div class="bSlider acad">
+                            <div class="sliderTM">
+                                <div><a href="http://willbes.com"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
+                                <div>
+                                    <img src="https://www.local.willbes.net/public/img/willbes/gosi_acad/visual/visualsub_190131.jpg" usemap="#Mapaaaaa" border="0" />
+                                    <map name="Mapaaaaa" id="Mapaaaaa">
+                                        <area shape="rect" coords="24,17,162,142" href="http://www.naver.com" />
+                                        <area shape="rect" coords="172,21,360,144" href="http://www.daum.net" />
+                                    </map>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider acad">
+                            <div class="sliderTM">
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider acad">
+                            <div class="sliderTM">
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Section Bnr mt5 mb80">
+        <div class="widthAuto">
+            <div class="willbes-Bnr">
+                <ul>
+                    <li><a href="#none"><img src="{{ img_url('gosi_acad/banner/bnr_190129.jpg') }}" alt="배너명"></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="Section">
-        <div class="widthAuto bnSec01">
-            <div class="will-acadTit">합격생 추천 단과 시리즈</div>
-            <ul>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_01.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_02.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_03.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_04.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_05.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_06.jpg" alt="배너명"></a><li>
-            </ul>
-        </div>
-    </div>
 
-    <div class="Section barBnr">
-        <a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
-    </div>
 
 
     <div class="Section Section2 pt80 pb80">
@@ -444,7 +552,7 @@
             <ul class="ProfBox">
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -452,7 +560,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -460,7 +568,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -468,7 +576,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -476,7 +584,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -484,7 +592,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -492,7 +600,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -500,7 +608,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -508,7 +616,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -516,7 +624,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -571,7 +679,7 @@
             <div class="sliderEvt pick">
                 <div class="will-acadTit">윌비스 <span class="tx-color">이벤트</span></div>
                 <div class="bSlider acad">
-                    <div class="slider">
+                    <div class="sliderTM">
                         <div><a href="#none"><img src="{{ img_url('gosi_acad/event/evt190130.jpg') }}" alt="배너명"></a></div>
                         <div><a href="#none"><img src="{{ img_url('gosi_acad/event/evt190130.jpg') }}" alt="배너명"></a></div>
                     </div>
@@ -598,12 +706,14 @@
         </div>
     </div>
 
+
     <div class="Section mt80">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
             <img src="{{ img_url('gosi_acad/prof/ProfBig.jpg') }}" alt="배너명">
         </div>
     </div>
+
 
     <div class="Section mb50">
         <div class="widthAuto">
@@ -637,6 +747,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="Section Section4 mb50">
         <div class="widthAuto">
@@ -864,22 +975,6 @@
                     <!-- 광주 //-->
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="QuickMenu" class="MainQuickMenu">
-        <ul>
-            <li><a href="#none">이달의 개강안내</a></li>
-            <li><a href="#none">학원 실강 접수</a></li>
-            <li><a href="#none">강의실 배정표</a></li>
-            <li><a href="#none">공지사항</a></li>
-            <li><a href="#none">1:1 방문상담</a></li>
-            <li><a href="#none">전국모의고사 신청</a></li>
-            <li><a href="#none">진행 중 이벤트</a></li>
-        </ul>
-        <div class="mt5">
-            <a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0706/banner_20200717103807.jpg"></a>
-            <a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0625/banner_20200701102100.jpg"></a>
         </div>
     </div>
 </div>

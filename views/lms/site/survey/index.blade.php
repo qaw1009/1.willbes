@@ -29,18 +29,33 @@
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
+                    <colgroup>
+                        <col style="width:5%">
+                        <col style="">
+                        <col style="width:18%">
+                        <col style="width:18%">
+                        <col style="width:18%">
+                        <col style="width:8%">
+                    </colgroup>
                     <thead class="bg-white-gray">
-                    <tr>
-                        <th class="text-center" style="width:5%">NO</th>
-                        <th class="text-center">제목</th>
-                        <th class="text-center" style="width:18%">설문팝업링크</th>
-                        <th class="text-center" style="width:18%">그래프추가시</th>
-                        <th class="text-center" style="width:18%">시작일 / 종료일</th>
-                        <th class="text-center" style="width:8%">결과</th>
-                    </tr>
-
+                        <tr>
+                            <th class="text-center">NO</th>
+                            <th class="text-center">제목</th>
+                            <th class="text-center">설문팝업링크</th>
+                            <th class="text-center">그래프추가시</th>
+                            <th class="text-center">시작일 / 종료일</th>
+                            <th class="text-center">결과</th>
+                        </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>[2020 국가직 9급 풀케어] 시험 난이도 설문조사</td>
+                            <td>https://www.local.willbes.net/survey/index/11</td>
+                            <td>프로모션 페이지 URL + /spidx/11</td>
+                            <td>2020-07-01 00:00:00 / 2020-07-15 00:00:00</td>
+                            <td>5</td>
+                        </tr>
                     </tbody>
                 </table>
             </form>

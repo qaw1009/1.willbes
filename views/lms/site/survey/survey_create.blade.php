@@ -84,12 +84,86 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">설문항목관리 <span class="required">*</span></label>
-                    <div class="col-md-10 form-inline">
-                        <button type="button" id="add_question" class="btn btn-sm btn-primary">설문항목등록</button>
+                    <div class="row">
+                        <label class="control-label col-md-1-1 ml-10">설문항목관리 <span class="required">*</span></label>
+                        <div class="col-md-8 mb-15">
+                            <button type="button" class="btn btn-sm btn-primary clearfix-r mr-20 add_question" data-id="add_question" onclick="show_question_layer(this)">설문항목등록</button>
+                        </div>
+                    </div>
+
+                    <label class="control-label col-md-1-1"></label>
+                    <div class="col-md-8 form-inline">
+                        <table class="table table-striped table-bordered">
+                            <colgroup>
+                                <col width="32%">
+                                <col width="7%">
+                                <col width="50%">
+                                <col width="11%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>질문내용</th>
+                                    <th>답변유형</th>
+                                    <th>질문메타</th>
+                                    <th>수정/삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1) 응시하신 과목을 선택해주세요.</td>
+                                    <td>복수형</td>
+                                    <td>
+                                        <p><strong>항목1: 헌법 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                        <p><strong>항목2: 행정법 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                        <p><strong>항목3: 행정학 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                        <p><strong>항목4: 경제학 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                        <p><strong>항목5: 회계학 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                        <p><strong>항목6: 세법 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-modify" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-danger btn-delete" onclick="delete_survey_question(this)">삭제</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>가장 도움이 된 커리큘럼은 무엇인가요?</td>
+                                    <td>선택형</td>
+                                    <td>
+                                        <p><strong>항목1: 기본/심화이론</strong></p>
+                                        <p><strong>항목2: 기출문제풀이</strong></p>
+                                        <p><strong>항목3: 단원별문제풀이</strong></p>
+                                        <p><strong>항목4: 동형모의고사</strong></p>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-modify" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-danger btn-delete" onclick="delete_survey_question(this)">삭제</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">등록자</label>
+                    <div class="col-md-4">
+                        <p class="form-control-static">테스트</p>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">등록일</label>
+                    <div class="col-md-4 ml-12-dot">
+                        <p class="form-control-static">2020-07-17</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">최종 수정자</label>
+                    <div class="col-md-4">
+                        <p class="form-control-static">테스트2</p>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">최종 수정일</label>
+                    <div class="col-md-4 ml-12-dot">
+                        <p class="form-control-static">2020-07-17</p>
+                    </div>
+                </div>
 
                 <div class="form-group text-center btn-wrap mt-50">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
@@ -100,13 +174,27 @@
     </form>
 
     <script>
-        // 설문항목 등록/수정 모달창 오픈
-        $('#add_question').on('click', function(event) {
+        var $regi_form = $('#regi_form');
 
-            $('#add_question').setLayer({
+        // 설문항목 등록/수정 모달창 오픈
+        function show_question_layer(obj){
+            var set_id = $(obj).data("id");
+            $("."+set_id).setLayer({
                 'url' : '{{ site_url('/site/survey/questionCreate') }}',
                 'width' : 900
             });
+        }
+
+        // 설문항목 삭제
+        function delete_survey_question(obj){
+            if (confirm('설문항목을 삭제하시겠습니까?')) {
+                $(obj).closest("tr").remove();
+            }
+        }
+
+        // 목록 이동
+        $('#goList').click(function() {
+            location.replace('{{ site_url('/site/survey/index') }}');
         });
     </script>
 @stop

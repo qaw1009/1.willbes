@@ -873,7 +873,7 @@
             <li><a href="#none">학원 실강 접수</a></li>
             <li><a href="#none">강의실 배정표</a></li>
             <li><a href="#none">공지사항</a></li>
-            <li><a href="#none">1:1 방문담</a></li>
+            <li><a href="#none">1:1 방문상담</a></li>
             <li><a href="#none">전국모의고사 신청</a></li>
             <li><a href="#none">진행 중 이벤트</a></li>
         </ul>

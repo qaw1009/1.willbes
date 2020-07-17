@@ -95,16 +95,18 @@
                     <div class="col-md-8 form-inline">
                         <table class="table table-striped table-bordered">
                             <colgroup>
-                                <col width="32%">
+                                <col width="24%">
                                 <col width="7%">
                                 <col width="50%">
-                                <col width="11%">
+                                <col width="7%">
+                                <col width="12%">
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <th>질문내용</th>
+                                    <th>문항제목</th>
                                     <th>답변유형</th>
-                                    <th>질문메타</th>
+                                    <th>답변항목</th>
+                                    <th>사용유무</th>
                                     <th>수정/삭제</th>
                                 </tr>
                             </thead>
@@ -120,9 +122,10 @@
                                         <p><strong>항목5: 회계학 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
                                         <p><strong>항목6: 세법 => 1.매우쉬움 2.쉬움 3.보통 4.어려움 5.매우어려움</strong></p>
                                     </td>
+                                    <td>사용</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-modify" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
-                                        <button type="button" class="btn btn-danger btn-delete" onclick="delete_survey_question(this)">삭제</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-danger btn-delete mb-10" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,9 +137,10 @@
                                         <p><strong>항목3: 단원별문제풀이</strong></p>
                                         <p><strong>항목4: 동형모의고사</strong></p>
                                     </td>
+                                    <td>미사용</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-modify" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
-                                        <button type="button" class="btn btn-danger btn-delete" onclick="delete_survey_question(this)">삭제</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-danger btn-delete mb-10" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>
                             </tbody>

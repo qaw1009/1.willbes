@@ -36,6 +36,7 @@
                         <col style="width:18%">
                         <col style="width:18%">
                         <col style="width:8%">
+                        <col style="width:8%">
                     </colgroup>
                     <thead class="bg-white-gray">
                         <tr>
@@ -45,6 +46,7 @@
                             <th class="text-center">그래프추가시</th>
                             <th class="text-center">시작일 / 종료일</th>
                             <th class="text-center">결과</th>
+                            <th class="text-center">사용유무</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +57,7 @@
                             <td>프로모션 페이지 URL + /spidx/11</td>
                             <td>2020-07-01 00:00:00 / 2020-07-15 00:00:00</td>
                             <td>5</td>
+                            <td>사용</td>
                         </tr>
                     </tbody>
                 </table>

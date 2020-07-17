@@ -424,7 +424,7 @@
         });
     }); 
 
-    //캐스트
+    //학원 실강 안내
     $(function() {
         var slidesImg1 = $(".gosi-gate-bnSec04").bxSlider({
             mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
@@ -440,13 +440,6 @@
             autoHover: true,
             moveSlides:1,
             pager:true,
-        });
-        $("#imgBannerLeft1").click(function (){
-            slidesImg1.goToPrevSlide();
-        });
-
-        $("#imgBannerRight1").click(function (){
-            slidesImg1.goToNextSlide();
         });
     }); 
 

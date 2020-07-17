@@ -416,21 +416,100 @@
     vertical-align: middle;
 }
 
-/* Main Container : QuickMenu : gosi 
-.GA .MainQuickMenu {
+
+/* Main Container : QuickMenu*/ 
+.GA .acadMainQuickMenu {
     position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 160px;
-    height: auto;    
+    top: 180px;
+    right: 10px;
+    width: 164px;
+    height: auto;
     z-index: 100;
 }
-.GA .MainQuickMenu ul {
+.GA .acadMainQuickMenu ul li {
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.GA .acadMainQuickMenu .QuickDdayBox {
+    position: relative; 
+    height: 100px;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+    width: 100%;    
+    overflow: hidden;
+}
+.GA .acadMainQuickMenu .q_tit {
+    font-size: 15px;
+    font-weight: 600;
+    color: #464646;
+    padding-top: 10px;
+}
+.GA .acadMainQuickMenu .q_day {
+    font-size: 11px;
+    color: #464646;
+    line-height: 16px;
+}
+.GA .acadMainQuickMenu .q_dday {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ba560e;
+    padding-top: 10px;
+    letter-spacing: 0;
+}
+.GA .acadMainQuickMenu li:first-child .QuickSlider {
+    width: 164px;
+    height: 100px;
+    overflow: hidden;
+}
+.GA .acadMainQuickMenu .sliderNum {
+    width: 164px;
+    min-height: 238px;
+    overflow: hidden;
+}
+.GA .acadMainQuickMenu .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.GA .acadMainQuickMenu .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.GA .acadMainQuickMenu .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 54px;
+    height: 14px;
+    margin: 0 auto;
+}
+.GA .acadMainQuickMenu .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.GA .acadMainQuickMenu .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+.GA .acadMainQuickMenu .gobtn {
     padding:0 8px !important;
     background: #ececec;
     width:100%;
+    margin-bottom:8px;
 }
-.GA .MainQuickMenu li {
+.GA .acadMainQuickMenu .gobtn li {
     border-top:1px solid #f6f6f6;
     border-bottom:1px solid #d4d4d4;
     height: 40px;
@@ -438,37 +517,36 @@
     background: url("../../img/willbes/gosi_acad/icon_arrow.png") no-repeat 95% center;
     margin: 0;
 }
-.GA .MainQuickMenu li:first-child {
+.GA .acadMainQuickMenu .gobtn li:first-child {
     border-top:0;
 }
-.GA .MainQuickMenu li:last-child {
+.GA .acadMainQuickMenu .gobtn li:last-child {
     border-bottom:0;
 }
-.GA .MainQuickMenu li a {
+.GA .acadMainQuickMenu .gobtn li a {
     display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
 }
-.GA .MainQuickMenu li a:hover {
+.GA .acadMainQuickMenu .gobtn li a:hover {
     color:#00acec; 
 }
-.GA .MainQuickMenu li:nth-child(1) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(1) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq01.png");
 }
-.GA .MainQuickMenu li:nth-child(2) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(2) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq02.png");
 }
-.GA .MainQuickMenu li:nth-child(3) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(3) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq03.png");
 }
-.GA .MainQuickMenu li:nth-child(4) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(4) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq04.png");
 }
-.GA .MainQuickMenu li:nth-child(5) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(5) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq05.png");
 }
-.GA .MainQuickMenu li:nth-child(6) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(6) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq06.png");
 }
-.GA .MainQuickMenu li:nth-child(7) a {
+.GA .acadMainQuickMenu .gobtn li:nth-child(7) a {
     background-image: url("../../img/willbes/gosi_acad/icon_rq07.png");
 }
-*/

@@ -867,8 +867,8 @@
         </div>
     </div>
 
-    <div id="QuickMenu" class="MainQuickMenu">
-        <ul>
+    <div id="QuickMenu" class="acadMainQuickMenu">
+        <ul class="gobtn">
             <li><a href="#none">이달의 개강안내</a></li>
             <li><a href="#none">학원 실강 접수</a></li>
             <li><a href="#none">강의실 배정표</a></li>
@@ -877,10 +877,40 @@
             <li><a href="#none">전국모의고사 신청</a></li>
             <li><a href="#none">진행 중 이벤트</a></li>
         </ul>
-        <div class="mt5">
-            <a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0706/banner_20200717103807.jpg"></a>
-            <a href="#none"><img src="https://police.willbes.net/public/uploads/willbes/banner/2020/0625/banner_20200701102100.jpg"></a>
-        </div>
+        <ul>
+            <li>
+                <div class="QuickSlider ">
+                    <div class="sliderNum">
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">3차 필기시험</div>
+                            <div class="q_day">2018.12.12</div>
+                            <div class="q_dday NSK-Blac">D-5</div>
+                        </div>
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">1차 공무원</div>
+                            <div class="q_day">2019.04.05</div>
+                            <div class="q_dday NSK-Blac">D-10</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 <!-- End Container -->

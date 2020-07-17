@@ -91,7 +91,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_02.jpg"  title="문제풀이 1단계">
         </div>
 
-        <div class="evtCtnsBox evt02_title" id="apply01">
+        <div class="evtCtnsBox evt02_title" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_02_title.jpg"  title="1단계 과목별 신청하기">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
@@ -99,8 +99,12 @@
             @endif    
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="apply01">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_03.jpg"  title="문제풀이 2단계">
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @else
+            @endif    
         </div>
 
         <div class="evtCtnsBox evt04">

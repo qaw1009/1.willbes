@@ -4,6 +4,8 @@
     color: #ba560e;
 }
 
+
+/**/
 .GA .VisualBox {
     clear: both;
     float: left;
@@ -54,7 +56,6 @@
 .GA .VisualBox .MaintabList ul li a:hover,
 .GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
 
-
 .GA .VisualsubBox {
     clear: both;
     float: left;
@@ -70,17 +71,45 @@
 .GA .VisualsubBox ul li:first-child {
     margin-left: 0;
 }
-
 /* slider : 페이징 버튼 => bSlider */
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #b7b7b7;
 }
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
-.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {    
     background: #ba560e;
 }
+/**/
 
+.GA .Section .bnSecTop li {
+    display: inline;
+    float: left;
+    width: 216px;
+	height: 300px !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.GA .Section .bnSecTop li:last-child {
+    margin-right: 0;
+}
+
+.GA .Section .bnSecTop:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.GA .Section.barBnr {
+    background:url("https://static.willbes.net/public/images/promotion/main/2004/2004_bn_1120_bg.jpg") repeat-x left bottom;
+    margin-top:20px;
+    text-align: center;
+}
+
+.GA .bnSec01 ul {margin-right:-5px}
+.GA .bnSec01 li {display: inline; float:left; width:33.33333%}
+.GA .bnSec01 li a {display:block; margin-right:5px; margin-bottom:5px}
 
 .GA .Section2 {
     background: #f7f7f7;
@@ -350,7 +379,7 @@
     margin-right: 0;
 }
 
-/* Main Container : campus : Cop Acad */
+/* Main Container : campus : gosi Acad */
 .GA .tabWrap.noticeWrap_campus li a.on {
     color: #ba560e;
 }
@@ -385,4 +414,60 @@
 }
 .GA .campus_info .btn a img {
     vertical-align: middle;
+}
+
+/* Main Container : QuickMenu : gosi */
+.GA .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.GA .MainQuickMenu ul {
+    padding:0 8px !important;
+    background: #ececec;
+    width:100%;
+}
+.GA .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/gosi_acad/icon_arrow.png") no-repeat 95% center;
+    margin: 0;
+}
+.GA .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.GA .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.GA .MainQuickMenu li a {
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+}
+.GA .MainQuickMenu li a:hover {
+    color:#00acec; 
+}
+.GA .MainQuickMenu li:nth-child(1) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq01.png");
+}
+.GA .MainQuickMenu li:nth-child(2) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq02.png");
+}
+.GA .MainQuickMenu li:nth-child(3) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq03.png");
+}
+.GA .MainQuickMenu li:nth-child(4) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq04.png");
+}
+.GA .MainQuickMenu li:nth-child(5) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq05.png");
+}
+.GA .MainQuickMenu li:nth-child(6) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq06.png");
+}
+.GA .MainQuickMenu li:nth-child(7) a {
+    background-image: url("../../img/willbes/gosi_acad/icon_rq07.png");
 }

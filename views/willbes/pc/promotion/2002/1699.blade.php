@@ -122,8 +122,8 @@
         <div class="evtCtnsBox evt03" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_03.jpg" usemap="#Map1699a" title="전용 패키지 방문접수" border="0">
             <map name="Map1699a" id="Map1699a">
-                <area shape="rect" coords="177,989,466,1053" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="660,991,947,1052" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="177,989,466,1053" href="javascript:alert('마감 되었습니다.')" />
+                <area shape="rect" coords="660,991,947,1052" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
             </map>
         </div>
 

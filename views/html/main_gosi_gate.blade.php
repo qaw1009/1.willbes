@@ -112,14 +112,14 @@
         <div class="widthAuto gosi-gate-bnSec01 nSlider pick">   
             <div class="f_left">                
                 <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="정태정 핵심이론"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_01.jpg" alt="정태정 핵심이론"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_02.jpg" alt="10일 완성 패키지"></a></div>
                 </div>
             </div>
             <div class="f_right">                    
                 <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="10일 완성 패키지"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" title="KCG 핵심요약"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_02.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_01.jpg" title="KCG 핵심요약"></a></div>
                 </div>
             </div>
             </ul>         
@@ -146,11 +146,11 @@
                 </div>
                 <div id="MainRollingSlider" class="MaintabBox">
                     <ul class="MaintabSlider">
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_02.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_02.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
                     </ul>
                 </div>
             </div>
@@ -161,8 +161,8 @@
         <div class="widthAuto">
             <ul class="gosi-gate-bnSec03">
                 <li><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_img01.jpg" alt="공무원, 어떻게 시작해야될지 고민된다면?"></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200_01.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200_02.jpg" alt="배너명"></a></li>
             </ul>
         </div>
     </div>
@@ -282,20 +282,20 @@
             <ul>
                 <li>
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_01.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_02.jpg" alt="10일 완성 패키지"></a></div>
                     </div>
                 </li>
                 <li>
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_03.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_01.jpg" alt="10일 완성 패키지"></a></div>
                     </div>
                 </li>
                 <li>
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_02.jpg" alt="정태정 핵심이론"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_03.jpg" alt="10일 완성 패키지"></a></div>
                     </div>
                 </li>
             </ul>

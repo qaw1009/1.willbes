@@ -3,19 +3,11 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
-    .gosi-gate-sns {width:150px; height:40px; float:left; position:absolute; top:30px}
-    .gosi-gate-sns li {display:inline; float:left; margin-right:5px}
-    .gosi-gate-sns ul:after {content:''; display:block; clear:both}
-    .gosi-gate-menu {width:1120px; margin:30px auto 0}
-    .gosi-gate-menu li {display:inline; float:left; width:11.11111%;}    
-    .gosi-gate-menu a {display:block; text-align:center; font-size:14px; border:1px solid #333; margin-right:5px; padding:10px 0}
-    .gosi-gate-menu a:hover {background:#333; color:#fff}
-    .gosi-gate-menu li:last-child a {margin:0}
-    .gosi-gate-menu ul:after {content:''; display:block; clear:both}
+
 </style>
 
-<div id="Container" class="Container gosi NGR c_both">
-    <div class="widthAuto p_re">
+<div id="Container" class="Container gosi-gate NGR c_both">
+    <div class="widthAuto gosi-gate-top">
         <div class="gosi-gate-sns">
             <ul>
                 <li>
@@ -28,7 +20,7 @@
                         <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
                     </a>
                 </li>
-                <dt>
+                <li>
                     <a href="https://tv.naver.com/willbes79" target="_blank">
                         <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
                     </a>
@@ -40,48 +32,54 @@
                 </li>
                 <li>
                     <a href=" https://www.instagram.com/willbes_gong/" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/icon_instagram.png" title="인스타그램">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/icon_instagram.png" title="인스타그램"> 
                     </a>
                 </li>
             </ul>
         </div>
 
-        <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
-            <div class="Section widthAuto">
-                <div class="onSearch NGR">
-                    <div>
-                        <input type="hidden" name="cate" id="unifiedSearch_cate" value="">
-                        <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
-                        <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
-                        <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
-                        <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
-                        <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
-                    </div>
-                    <div class="searchPop">
-                        <div class="popTit">인기검색어</div>
-                        <ul>
-                            <li><a href="#nnon">신광은</a></li>
-                            <li><a href="#nnon">무료특강</a></li>
-                            <li><a href="#nnon">형소법</a></li>
-                            <li><a href="#nnon">기미진</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                            <li><a href="#nnon">모의고사</a></li>
-                        </ul>
+        <div class="gosi-logo">
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2003_logo.png" alt="윌비스 공무원">
+        </div>
+
+        <div class="gosi-gate-search">
+            <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
+                <div class="Section widthAuto">
+                    <div class="onSearch NGR">
+                        <div>
+                            <input type="hidden" name="cate" id="unifiedSearch_cate" value="">
+                            <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                            <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                            <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
+                            <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                            <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
+                        </div>
+                        <div class="searchPop">
+                            <div class="popTit">인기검색어</div>
+                            <ul>
+                                <li><a href="#nnon">신광은</a></li>
+                                <li><a href="#nnon">무료특강</a></li>
+                                <li><a href="#nnon">형소법</a></li>
+                                <li><a href="#nnon">기미진</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                                <li><a href="#nnon">모의고사</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <div class="gosi-gate-menu">
@@ -98,98 +96,119 @@
         </ul>
     </div>
     
-    <div class="Section">
-        <div class="widthAuto mt20">
+    <div class="Section mt30">
+        <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x80.jpg" alt="배너명">
         </div>
     </div>
 
     <div class="Section">
-        <div class="widthAuto mt20">
-            차년도 합격을 위한 레이스는 이미 시작되었다!
-            경쟁자보다 앞서가기 위한 전략, 윌비스 PASS가 정답입니다.
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt01.jpg" alt="윌비스 패스">
         </div>
     </div>
 
-    
-
-    <div class="Section p_re">        
-        <div class="MainVisual NSK">            
-            <div class="VisualBox">
-                <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/1007/banner_20200122114821.jpg" alt="배너명"></a></div>
-                    </div>
+    <div class="Section">
+        <div class="widthAuto gosi-gate-bnSec01 nSlider pick">   
+            <div class="f_left">                
+                <div class="sliderNum">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="정태정 핵심이론"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="10일 완성 패키지"></a></div>
                 </div>
             </div>
-            <div class="VisualsubBox">
-                <div class="bSlider VisualsubBoxTop">                    
-                    <div class="slider">
-                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/0604/banner_20190604154532.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x128_01.jpg') }}" alt="배너명"></a></div>
-                    </div>
-                </div>   
-                <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
-                    </div>
-                </div>   
+            <div class="f_right">                    
+                <div class="sliderNum">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400.jpg" title="KCG 핵심요약"></a></div>
+                </div>
             </div>
+            </ul>         
         </div>
     </div>
 
-    <div class="Section barBnr">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
-        </div>
-    </div>
-    
     <div class="Section">
         <div class="widthAuto">
-            <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
-            <ul class="PBcts">
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt02.jpg" alt="윌비스 티패스">
+        </div>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto">
+            <div class="gosi-gate-bnSec02 p_re">
+                <div id="MainRollingDiv" class="MaintabList five">
+                    <ul class="Maintab">
+                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9/7급공무원</a></li>
+                        <li><a data-slide-index="1" href="javascript:void(0);" class="">소방직</a></li>
+                        <li><a data-slide-index="2" href="javascript:void(0);" class="">세무직</a></li>
+                        <li><a data-slide-index="3" href="javascript:void(0);" class="">법원직</a></li>
+                        <li><a data-slide-index="4" href="javascript:void(0);" class="">군무원/기술직</a></li>
+                    </ul>
+                </div>
+                <div id="MainRollingSlider" class="MaintabBox">
+                    <ul class="MaintabSlider">
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400.jpg" alt="배너명"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <ul class="gosi-gate-bnSec03">
+                <li><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_img01.jpg" alt="공무원, 어떻게 시작해야될지 고민된다면?"></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200.jpg" alt="배너명"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt03.jpg" alt="윌비스 교수진">
+            <ul class="gosi-gate-prof">
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_01.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_03.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_03.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_04.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_04.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_05.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_05.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
@@ -197,235 +216,114 @@
         </div>
     </div>
 
-    <div class="Section Section3 mt110">
+    <div class="Section">
         <div class="widthAuto">
-            <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" alt="추천강좌/이벤트/최신소식"></div>
-            <ul class="SpecialBox">
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t04.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t05.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t06.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t07.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t08.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t09.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t10.jpg') }}" alt="배너명"></a></li>
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt04.jpg" alt="수험생활 tip">
+            <div class="castBox">
+                <ul class="castslider">
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                            </a>
+                        </div>
+                        <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
+                    </li>
+                </ul>  
+                <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+            </div>
+        </div>
+    </div>
+
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt05.jpg" alt="학원 실강 안내">
+            <ul class="gosi-gate-bnSec04">
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320.jpg" alt="배너명"></a></li>
             </ul>
         </div>
     </div>
 
-    <div class="Section NSK mt90">
+    <div class="Section mt80">
         <div class="widthAuto">
-            <div class="willbesLec">
-                <div class="smallTit mb30">          
-                    <p><span>합격 콘텐츠를 한 눈에! <strong>윌비스 강좌</strong></span></p>            
-                </div> 
-                <div class="will-listTit">BEST 강좌</div>                
-                <div class="bestLectBx">                                                  
-                    <ul class="prof-subject">                        
-                        <li><a href='#none'><span>|</span>국어</a></li>                        
-                        <li><a href='#none'><span>|</span>영어</a></li>                        
-                        <li><a href='#none'><span>|</span>한국사</a></li>                        
-                        <li><a href='#none'><span>|</span>헌법</a></li>                        
-                        <li><a href='#none'><span>|</span>행정법</a></li>                        
-                        <li><a href='#none'><span>|</span>행정학</a></li>                        
-                        <li><a href='#none'><span>|</span>사회</a></li>                        
-                        <li><a href='#none'><span>|</span>세법</a></li>                        
-                        <li><a href='#none'><span>|</span>회계학</a></li>                        
-                        <li><a href='#none'><span>|</span>경제학</a></li>                        
-                        <li><a href='#none'><span>|</span>국제법</a></li>                        
-                        <li><a href='#none'><span>|</span>전자공학</a></li>                        
-                        <li><a href='#none'><span>|</span>무선공학</a></li>                        
-                        <li><a href='#none'><span>|</span>통신이론</a></li>                        
-                        <li><a href='#none'><span>|</span>전기이론</a></li>                        
-                        <li><a href='#none'><span>|</span>전기기기</a></li>                        
-                        <li><a href='#none'><span>|</span>소방학개론</a></li>                        
-                        <li><a href='#none'><span>|</span>소방관계법규</a></li>                        
-                        <li><a href='#none'><span>|</span>한국사검정능력시험</a></li>                        
+            <div class="nNoticeBox three">
+                <div class="noticeList widthAuto350 f_left">
+                    <div class="will-nlistTit p_re">공지사항 <a href="https://cop.dev.willbes.net/support/notice/index" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>[공지] 경찰3과 과목별 만점자를 소개합니다.</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>하승민 영어 2018년 3차 시험 적중!</span></a><span class="date">2018-09-01</span></li>
+                        <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원(순경)채용 공고 입니다.</span></a><span class="date">2018-08-24</span></li>
+                        <li><a href="#none"><span>[신규강의 안내] 해양경찰특채 11~12월 동영상 업데이트 안내</span></a><span class="date">2018-08-13</span></li>
                     </ul>
-
-                    <div id="prof-professors" class="prof-professors">
-                        <ul class="prof-slider">                        
-                            <li>
-                                <div><img src="{{ img_url('gosi/prof/tea_myroom_1_kmj_145x152.png') }}" alt="" class="강사명"/></div>
-                                <span class="txt1">영어</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>  
-                            <li>
-                                <div><img src="{{ img_url('gosi/prof/tea_myroom_1_kmj_145x152.png') }}" alt="" class="강사명"/></div>
-                                <span class="txt1">영어2</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>                          
-                        </ul>
-                    </div> 
                 </div>
-                
-                <div class="will-listTit mt45">무료특강</div>
-                <ul class="freeLectBx">
-                    <li>
-                        <img src="{{ img_url('gosi/banner/bnr_free01.jpg') }}" alt="" class="배너명"/>
-                        <p>기초입문특강</p>
-                        국어,영어,한국사 기초입문 풀패키지
-                    </li>
-                    <li>
-                        <img src="{{ img_url('gosi/banner/bnr_free02.jpg') }}" alt="" class="배너명"/>
-                        <p>기초문제 해설특강</p>
-                        출제경향 완벽대비
-                    </li>
-                </ul>
-            </div>
-            <!-- willbesLec//-->
-
-            <div class="willbesNews">
-                <div class="smallTit mb30">          
-                    <p><span>윌비스 <strong>소식</strong></span></p>                                
-                </div>
-                <div class="noticeTabs">
-                <div class="will-listTit mt45">공지사항</div>
-                    <div class="tabBox noticeBox" style="margin-top:-30px">
-                        <div class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="noticeTabs mt30">
-                    <ul class="tabWrap noticeWrap three">
-                        <li><a href="#notice1" class="on">시험정보</a></li>
-                        <li><a href="#notice2" class="">수험공고</a></li>
-                        <li><a href="#notice3" class="">수험뉴스</a></li>
+                <div class="noticeList widthAuto350 f_left ml35">
+                    <div class="will-nlistTit p_re">시험공고 <a href="https://cop.dev.willbes.net/support/examAnnouncement/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원(순경)채용 필기시험 문제 및 가답안</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>[공지] 2018년 제3차 경찰공무원 채용 필기시험 문제 및 가답안</span></a><span class="date">2018-09-01</span></li>
+                        <li><a href="#none"><span>2018년 제3차 경찰공무원 채용시험 원서접수일정 안내입니다.</span></a><span class="date">2018-08-24</span></li>
+                        <li><a href="#none"><span>[공지] 2018년 제2차 경찰공무원 채용시험 일정 안내입니다.</span></a><span class="date">2018-08-13</span></li>
                     </ul>
-                    <div class="tabBox noticeBox">
-                        <div id="notice1" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none"><span>HOT</span>서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">제주도 | 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">광주광역시 | 2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">부산광역시 | 2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                        <div id="notice2" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내22</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                        <div id="notice3" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내333</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                    </div>
+                </div>
+                <div class="noticeList widthAuto350 f_left ml35">
+                    <div class="will-nlistTit p_re">수험뉴스 <a href="https://cop.dev.willbes.net/support/examNews/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>경찰청, 경찰간부후보생 68기 최종합격자 명단 입니다. 확인 바랍니다.</span><img src="{{ img_url('cop/icon_new.png') }}"></a><span class="date">2018-09-06</span></li>
+                        <li><a href="#none"><span>12월 22일, 경찰공무원 합격의 기회가 다가옵니다.</span></a><span class="date">2018-09-01</span></li>
+                        <li><a href="#none"><span>제주자치경찰 확대 시험운영 추진</span></a><span class="date">2018-08-24</span></li>
+                        <li><a href="#none"><span>순경 3차 '필기시험 대비, 기출 분석으로 철저하게'</span></a><span class="date">2018-08-13</span></li>
+                    </ul>
                 </div>
             </div>
-            <!--willbesNews //-->
         </div>
     </div>
 
-    <div class="Section NG mt90">
-        <div class="widthAuto">            
-            <div class="smallTit mb30">          
-                <p><span>솔직한 <strong>수강후기</strong><a href="#none"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>                                
-            </div>
-            <div class="reviewBx">
-                <div class="sliderNumV vSlider">
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                    <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                        </div>
-                        <ul>
-                            <li>[작물생리학] 장사원</li>
-                            <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                            <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <!-- 수강후기 //-->
-
-    <div class="Section NSK mt90 mb90">
+    <div class="Section NSK mt50 mb90">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>
@@ -494,83 +392,56 @@
         </div>
     </div>
     <!-- CS센터 //-->
-
-    <div id="QuickMenu" class="MainQuickMenu">
-        <ul>
-            <li>
-                <div class="QuickSlider ">
-                    <div class="sliderNum">
-                        <div class="QuickDdayBox">
-                            <div class="q_tit">3차 필기시험</div>
-                            <div class="q_day">2018.12.12</div>
-                            <div class="q_dday NSK-Blac">D-5</div>
-                        </div>
-                        <div class="QuickDdayBox">
-                            <div class="q_tit">1차 공무원</div>
-                            <div class="q_day">2019.04.05</div>
-                            <div class="q_dday NSK-Blac">D-10</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>   
-                <div class="QuickSlider">      
-                    <div class="sliderNum">
-                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
-                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" title="배너명"></a>
-            </li>
-            <li>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" title="배너명"></a>
-            </li>
-        </ul>
-    </div>
-
 </div>
 
 <!-- End Container -->
 <script src="/public/js/willbes/jquery.counterup.min.js"></script>
 <script src="/public/js/willbes/waypoints.min.js"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function( $ ) {
-        $('#counter').counterUp({
-            delay: 11, // the delay time in ms
-            time: 1000 // the speed time in ms
-        });
-    });
-    
-    $(function(){ 
-        $('.prof-subject').bxSlider({ 
-            speed:800,  
-            responsive:true,
-            infiniteLoop:true,
-            pager:false,
-            slideWidth:78,
-            minSlides:1,
-            maxSlides:8
-        });
-    });
-
+    //캐스트
     $(function() {
-        $('.sliderNumV').bxSlider({
-            mode: 'vertical', 
-            auto: true,
-            controls: true,
-            infiniteLoop: true,
-            slideWidth: 1120,
-            pagerType: 'short',
-            minSlides: 3,
-            pause: 3000,
-            pager: true,
-            onSliderLoad: function(){
-                $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
-            } 
+        var slidesImg1 = $(".castslider").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:3,
+            maxSlides:3,
+            slideWidth: 370,
+            slideMargin:10,
+            autoHover: true,
+            moveSlides:1,
+            pager:true,
         });
-    });
+        $("#imgBannerLeft1").click(function (){
+            slidesImg1.goToPrevSlide();
+        });
+
+        $("#imgBannerRight1").click(function (){
+            slidesImg1.goToNextSlide();
+        });
+    }); 
+
+    //학원 실강 안내
+    $(function() {
+        var slidesImg1 = $(".gosi-gate-bnSec04").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:3,
+            maxSlides:3,
+            slideWidth: 370,
+            slideMargin:10,
+            autoHover: true,
+            moveSlides:1,
+            pager:true,
+        });
+    }); 
 
     //자동검색어
     $(function(){

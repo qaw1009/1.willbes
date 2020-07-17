@@ -43,8 +43,6 @@ class Sms extends \app\controllers\BaseController
         'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
-    private $_msg_max_length = '54';    //발송메세지 바이트 최대 길이
-
     public function __construct()
     {
         parent::__construct();
@@ -190,14 +188,12 @@ class Sms extends \app\controllers\BaseController
                             if(empty($row['SendYyyyMm']) === false) {
                                 if(strtotime('201910') <= strtotime($row['SendYyyyMm'])){ //카카오 알림톡 적용시점
 
-                                    if($row['SendTypeCcd'] == $this->_send_text_length_ccd[2] || $row['SendTypeCcd'] == $this->_send_text_length_ccd[3]){
-                                        $method = 'KakaoLog';
-                                    }else{
-                                        if (mb_strlen($row['ReplaceContent']) > $this->_msg_max_length) {
-                                            $method = 'MmsLog';
-                                        }else{
-                                            $method = 'SmsLog';
-                                        }
+                                    $method = 'KakaoLog';
+
+                                    if($row['SendTypeCcd'] == $this->_send_text_length_ccd[0]){
+                                        $method = 'SmsLog';
+                                    }else if($row['SendTypeCcd'] == $this->_send_text_length_ccd[1]){
+                                        $method = 'MmsLog';
                                     }
 
                                     $list[$i]['log_data'] = $this->smsModel->{'find' . $method}($row['SendYyyyMm'], $row['Receive_PhoneEnc'], $row['SendIdx']);

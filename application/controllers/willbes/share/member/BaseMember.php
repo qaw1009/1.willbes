@@ -252,7 +252,6 @@ class BaseMember extends \app\controllers\FrontController
             'reg_admin_idx' => 1000,                        //자동문자는 발송 등록 관리자가 없음
             'from_phone' => '1544-5006',
             'tmpl_cd' => 'cert001',                          // 휴대폰 인증 탬플릿 코드
-            'send_type_ccd' => '638001'                     // 638001:SMS, 638002:LMS, 638003:친구톡, 638004:알림톡
         ];
 
         return $input_data;

@@ -60,55 +60,55 @@
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
                             <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/164759">형소법 기본이론<span>7.6 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165983">형소법 문풀1단계<span>6.29 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165995">형소법 문풀2단계<span>7.27 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
                         <div class="caProfBtsn">                            
                             <div><a href="/pass/offLecture/show/cate/3010/prod-code/166541">경찰학 기본이론<span>7.6 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165984">경찰학 문풀1단계<span>7.4 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165996">경찰학 문풀2단계<span>7.29 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165987">한국사 문풀1단계<span>7.4 개강</span></a></div>
-                            {{--<div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165014">한국사 심화기출<span>6.4 개강</span></a></div>--}}
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/166505">한국사 기본이론<span>8.17 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165999">한국사 문풀2단계<span>7.28 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165989">한국사 문풀1단계<span>7.4 개강</span></a></div>
-                            {{--<div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/165012">한국사 심화기출<span>6.4 개강</span></a></div>--}}
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/166506">한국사 기본이론<span>8.17 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/166000">한국사 문풀2단계<span>7.28 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1056">형법 기본이론<span>7.27 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165985">형법 문풀1단계<span>7.9 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165997">형법 문풀2단계<span>7.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/166540">영어 기본이론<span>7.8 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/168957">영어 기본이론<span>8.10 개강</span></a></div>
                             <div><a href="/pass/offLecture/show/cate/3010/prod-code/165986">영어 문풀1단계<span>7.21 개강</span></a></div>
                         </div>
                     </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/166500">영어 아침특강<span>7.6 개강</span></a></div>
-                            <div><a href="/pass/offPackage/show/prod-code/166499">영어 집중관리반<span>7.13 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/168994">영어 아침특강<span>8.3 개강</span></a></div>
+                            <div><a href="/pass/offPackage/show/cate/3010/prod-code/166499">영어 집중관리반<span>7.13 개강</span></a></div>
                         </div> 
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">                           
-                            <div><a href="/pass/offPackage/show/prod-code/166499">영어 집중관리반<span>7.13 개강</span></a></div>
+                            {{--<div><a href="/pass/offPackage/show/prod-code/166499">영어 집중관리반<span>7.13 개강</span></a></div>--}}
                             {{--<div><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/161584">베이직 하이힐 특강<span>4.6 개강</span></a></div>--}}
                         </div>
                     </li>

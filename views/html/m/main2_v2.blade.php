@@ -368,23 +368,6 @@
 </div>
 <!-- End Container -->
 <script>    
-    //상단메뉴    
-    $(function() {
-        $('.subMenu .sMenuList a.moreMenu').click(function() {
-            $('.subMenu .sMenuList .dropBox').removeClass('on');
-
-            if ($(this).next().is(':visible')) {
-                $(this).next().hide();
-                $(this).removeClass('on');
-            } else {
-                $('.dropBox').hide();
-                $(this).next().show();
-                $(this).addClass('on');
-            }   
-        });
-    });
-
-
     //이달의강의
     $(function() {
         var swiper = new Swiper ('.swiper-container-Lec', { 

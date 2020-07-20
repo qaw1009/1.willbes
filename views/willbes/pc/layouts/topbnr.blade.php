@@ -44,7 +44,7 @@
     {{--공무원 인트로--}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/top_1120_200310.gif" alt="9급"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/top_1120_pass_intro.gif" alt="공무원 인트로"></a>
         </div>
     </div>
 @endif

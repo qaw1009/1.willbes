@@ -39,10 +39,47 @@
 
         .wb_cts06 {background:#E1E1E1;}
 
+         /*타이머*/
+         .newTopDday * {font-size:24px}
+        .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
+        .newTopDday ul {width:1120px; margin:0 auto;}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-size:28px; height:60px; line-height:60px; padding-top:10px !important; font-weight:bold; color:#000}
+        .newTopDday ul li strong {line-height:60px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%; font-size:16px; color:#666; line-height:1.3; }
+        .newTopDday ul li:first-child span { font-size:28px; color:#000; }
+        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
+        .newTopDday ul:after {content:""; display:block; clear:both}
+
     </style>
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        <!-- 타이머 -->
+        <div id="newTopDday" class="newTopDday NG">        
+            <div>
+                <ul>
+                    <li>
+                        9급 PASS - {{$arr_promotion_params['turn']}}기<br />
+                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
+                    </li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>일</strong></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li>
+                        남았습니다
+                    </li>
+                </ul>
+            </div>
+        </div>
 
         <div class="sky">
             <ul>          
@@ -134,7 +171,10 @@
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
-        
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

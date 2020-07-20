@@ -313,7 +313,7 @@
         <!-- CS센터 //-->
     </div>
     <!-- End Container -->
-    {!! popup('657005', $__cfg['SiteCode'], '0', 'blank') !!}
+    {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}
 
     <script src="/public/js/willbes/jquery.counterup.min.js"></script>
     <script src="/public/js/willbes/waypoints.min.js"></script>

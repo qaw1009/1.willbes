@@ -40,6 +40,7 @@
         </div>
     </div>
 @endif
+
 @if($__cfg['CateCode'] == '3019')
     {{-- 공무원 9급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">

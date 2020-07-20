@@ -15,7 +15,7 @@
                     @endforeach
                 </form>
                 @if(empty($arr_base['category_top']) !== true)
-                    <li>
+                    <li {{empty($__cfg['CateCode']) === true ? '' : 'class=d_none' }}>
                         <select id="cate_code_top" name="cate_code_top" title="상위 카테고리" class="">
                             @foreach($arr_base['category_top'] as $idx => $row)
                                 <option value="{{$row['CateCode']}}" @if($arr_base['category_top_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
@@ -24,13 +24,13 @@
                     </li>
                 @endif
                 @if(isset($arr_base['category']) === true)
-                <li>
+                <li {{empty($__cfg['CateCode']) === true ? '' : 'class=d_none'}}>
                     <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
                         @if(empty($arr_base['category_top']) !== true)
                         <option value="">카테고리선택</option>
                         @endif
                         @foreach($arr_base['category'] as $idx => $row)
-                            <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode'] || $arr_base['category_default'] == $row['CateCode']){{'selected'}}@endif class="{{$row['ParentCateCode']}}">{{$row['CateName']}}</option>
+                            <option value="{{$row['CateCode']}}" @if($arr_base['category_default'] == $row['CateCode'] || element('cate_code', $arr_input) == $row['CateCode']){{'selected'}}@endif class="{{$row['ParentCateCode']}}">{{$row['CateName']}}</option>
                         @endforeach
                     </select>
                 </li>

@@ -81,15 +81,10 @@
             </div>
         </div>
 
-        <div class="Section">
+        <div class="Section gosi-gate-Sec">
+        @if(empty($data['banner']['인트로_메인빅배너']) === false)            
             <div class="widthAuto">
                 <img src="{{ img_static_url('promotion/main/gosi_gate/gosi_gate_txt02.jpg') }}" alt="윌비스 티패스">
-            </div>
-        </div>
-
-        <div class="Section">
-        @if(empty($data['banner']['인트로_메인빅배너']) === false)
-            <div class="widthAuto">
                 <div class="gosi-gate-bnSec02 p_re">
                     <div id="MainRollingDiv" class="MaintabList five">
                         <ul class="Maintab">

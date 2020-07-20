@@ -41,9 +41,9 @@ class Intro extends \app\controllers\FrontController
     private function _getSite2003Data()
     {
         $data['banner'] = $this->_banner();
-        $data['notice'] = $this->_board('notice', 4);
-        $data['exam_announcement'] = $this->_boardForSiteGroup('exam_announcement', 4);
-        $data['exam_news'] = $this->_boardForSiteGroup('exam_news', 4);
+        $data['notice'] = $this->_board('notice', 5);
+        $data['exam_announcement'] = $this->_boardForSiteGroup('exam_announcement', 5);
+        $data['exam_news'] = $this->_boardForSiteGroup('exam_news', 5);
 
         return $data;
     }

@@ -78,6 +78,87 @@
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {    
     background: #ba560e;
 }
+
+/* Main Container : acad_infoBox */
+.acad_infoBox {
+    float: left;
+    width: 1120px;
+    border: 10px solid #b7550e;
+    clear: both;
+    margin-top: 50px;
+    padding: 10px 0;
+    height: 90px;
+}
+.acad_infoBox li {
+    float: left;
+    width: 20%;
+    height: 50px;
+    border-left: 1px solid #ebebeb;
+}
+.acad_infoBox li:first-child {
+    border-left:0;
+}
+.acad_infoBox li a {
+    background-size: 60px !important;
+    float: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: #606060;
+    text-align: center;
+    line-height: inherit;
+    letter-spacing: 0;
+    border: none;
+}
+.GA .acad_infoBox li a.on,
+.GA .acad_infoBox li a:hover {
+    color: #b7550e;
+}
+.GA .acad_infoBox li a span {
+    display: block;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 100px;
+}
+.GA .acad_infoBox li.w-infoBox1 a {
+    background: url("../../img/willbes/gosi_acad/icon_info1.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a {
+    background: url("../../img/willbes/gosi_acad/icon_info2.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a {
+    background: url("../../img/willbes/gosi_acad/icon_info3.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a {
+    background: url("../../img/willbes/gosi_acad/icon_info4.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a {
+    background: url("../../img/willbes/gosi_acad/icon_info5.png") no-repeat 30px center;
+}
+
+.GA .acad_infoBox li.w-infoBox1 a.on,
+.GA .acad_infoBox li.w-infoBox1 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info1_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a.on,
+.GA .acad_infoBox li.w-infoBox2 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info2_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a.on,
+.GA .acad_infoBox li.w-infoBox3 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info3_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a.on,
+.GA .acad_infoBox li.w-infoBox4 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info4_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a.on,
+.GA .acad_infoBox li.w-infoBox5 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info5_on.png") no-repeat 30px center;
+}
 </style>
 
 <!-- Container -->
@@ -977,6 +1058,32 @@
             </div>
         </div>
     </div>
+
+    <div id="QuickMenu" class="MainQuickMenu">
+        <ul>
+            <li>
+                <div class="QuickDdayBox">
+                    <div class="q_tit">3차 필기시험</div>
+                    <div class="q_day">2018.12.12</div>
+                    <div class="q_dday NSK-Blac">D-5</div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" title="배너명"></a></div>
+                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" title="배너명"></a>
+            </li>
+            <li>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" title="배너명"></a>
+            </li>
+        </ul>
+    </div> 
 </div>
 <!-- End Container -->
 @stop

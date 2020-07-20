@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <div class="Section mt50">
+    <div class="Section mt100">
         <div class="widthAuto">
             <ul class="gosi-gate-bnSec03">
                 <li><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_img01.jpg" alt="공무원, 어떻게 시작해야될지 고민된다면?"></li>
@@ -162,13 +162,22 @@
         </div>
     </div>
 
-    <div class="Section">
+    <div class="Section gosi-gate-Sec">
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt03.jpg" alt="윌비스 교수진">
             <ul class="gosi-gate-prof">
                 <li>
                     <div class="bSlider">
                         <div class="slider">
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111345.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111418.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111529.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
@@ -177,16 +186,7 @@
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111708.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111824.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720112057.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
                         </div>
                     </div>

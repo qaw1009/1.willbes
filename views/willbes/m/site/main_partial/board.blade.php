@@ -26,7 +26,7 @@
             @else
                 @foreach($data['exam_announcement'] as $row)
                     <li>
-                        <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                        <a href="{{front_url($row['PassRoute'] . '/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'], false, true)}}">{{$row['Title']}}</a>
                         <span class="date">{{$row['RegDatm']}}</span>
                     </li>
                 @endforeach
@@ -41,7 +41,7 @@
             @else
                 @foreach($data['exam_news'] as $row)
                     <li>
-                        <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                        <a href="{{front_url($row['PassRoute'] . '/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'], false, true)}}">{{$row['Title']}}</a>
                         <span class="date">{{$row['RegDatm']}}</span>
                     </li>
                 @endforeach

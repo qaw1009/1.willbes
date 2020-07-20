@@ -4,6 +4,9 @@
 .gosi .topBanner p img {width:100%}
 
 /************************************* gosi gate**********************************************/
+.gosi-gate .tx-color {
+    color: #ba560e;
+}
 .gosi-gate-top { position:relative; height:120px;}
 .gosi-gate-sns {width:150px; height:40px; float:left; position:absolute; top:60px; z-index:10}
 .gosi-gate-sns li {display:inline; float:left; margin-right:5px}
@@ -16,7 +19,7 @@
 .gosi-gate-menu {width:1120px; margin:0 auto; border-bottom:2px solid #000}
 .gosi-gate-menu li {display:inline; float:left; width:11.11111%;}    
 .gosi-gate-menu a {display:block; text-align:center; font-size:16px; margin:10px 0 15px; border-right:1px solid #b7b7b7; font-weight:bold}
-.gosi-gate-menu a:hover {color:#ba5610}
+.gosi-gate-menu a:hover {color:#ba560e}
 .gosi-gate-menu li:last-child a {border:0}
 .gosi-gate-menu ul:after {content:''; display:block; clear:both}
 
@@ -103,7 +106,7 @@
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #0d74ae !important;
+    background: #ba560e !important;
 }
 .gosi-gate-prof:after {content:''; display:block; clear:both}
 

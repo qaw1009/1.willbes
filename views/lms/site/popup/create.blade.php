@@ -36,8 +36,8 @@
                         @if($method == 'PUT')
                             <p class="form-control-static">{{ $data['CateNames'] }}</p>
                         @else
-                            <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10">
+                            <button type="button" id="btn_category_search" class="btn btn-sm btn-primary mr-10">카테고리검색</button>
+                            <span id="selected_category">
                                 @if(isset($data['CateCodes']) === true)
                                     @foreach($data['CateCodes'] as $cate_code => $cate_name)
                                         <span class="pr-10">{{ $cate_name }}
@@ -345,7 +345,7 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
-
+            // 학원사이트 캠퍼스 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
 
             // 운영사이트 변경
@@ -355,15 +355,33 @@
                 $('#selected_category').html('');
 
                 var is_campus = $(this).find(':selected').data('is-campus');
-                if(is_campus !== undefined && is_campus == 'Y') {
-                    //학원일 경우 전체 카테고리0으로 고정
+                if (is_campus !== undefined && is_campus === 'Y') {
+                    // 학원사이트일 경우 전체카테고리 값으로 고정 (0)
                     var html = '';
-                    html += '<span class="pr-10">전체카테고리';
+                    html += '<p class="form-control-static">전체카테고리';
                     html += '	<input type="hidden" name="cate_code[]" value="0">';
-                    html += '</span>';
+                    html += '</p>';
+
                     $('#selected_category').html(html);
                     $('#btn_category_search').hide();
                 } else {
+                    $('#btn_category_search').show();
+                }
+            });
+
+            // 노출섹션 변경
+            $regi_form.on('change', 'select[name="popup_disp"]', function() {
+                if ($(this).val() === '657005') {
+                    // 노출섹션이 인트로 영역일 경우 전체카테고리 값으로 고정 (0)
+                    var html = '';
+                    html += '<p class="form-control-static">전체카테고리';
+                    html += '	<input type="hidden" name="cate_code[]" value="0">';
+                    html += '</p>';
+
+                    $('#selected_category').html(html);
+                    $('#btn_category_search').hide();
+                } else {
+                    $('#selected_category').html('');
                     $('#btn_category_search').show();
                 }
             });
@@ -452,7 +470,8 @@
                     return false;
                 }
                 @endif
-                    return true;
+
+                return true;
             }
 
         });

@@ -909,11 +909,9 @@ body.memBody #Footer {
 .gosi .mapCts {text-align:center; margin-top:10px; font-size:14px; word-break: keep-all;}
 .gosi .mapCts img {width:100%; max-width:698px}
 .gosi .mapCts .add {margin:20px 10px 0; text-align:left; line-height:1.4}
-.gosi .mapCts .add span {display:none}
+.gosi .mapCts .add span {display:inline-block; color:#ccc} 
 .gosi .mapCts .add a {display:block; height:40px; line-height:40px; background:#1a8ccc; color:#fff; vertical-align: middle; text-align:center; margin:10px auto}
-.gosi .mapCts .add br {display:none} 
-
-
+.gosi .mapCts .add br {display:block} 
 
 /*고등고시*/
 .bnSec02 ul {border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
@@ -4128,7 +4126,7 @@ body.memBody #Footer {
 
     .gosi .gosiProf {max-height:253px;}
     .gosi .gosiProf .swiper-slide {width:50%;}
-    .gosi .mapCts .add br {display:block} 
+    .gosi .mapCts .add span {display:none} 
 }
 
 
@@ -4179,4 +4177,5 @@ body.memBody #Footer {
         font-size: 16px;
     }
     .Message p br {display:none}
+    .gosi .mapCts .add br {display:none}
 }

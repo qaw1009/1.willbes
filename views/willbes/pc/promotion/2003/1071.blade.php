@@ -117,11 +117,11 @@
                     <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>
-            {{--
+           
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728#apply" target="_blank" >
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_sky.png" alt="" style="padding-top:15px;">
             </a>
-            --}}
+            
         </div>         
         
         <div class="evtCtnsBox wb_top" >

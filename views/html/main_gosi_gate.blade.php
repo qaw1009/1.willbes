@@ -112,28 +112,23 @@
         <div class="widthAuto gosi-gate-bnSec01 nSlider pick">   
             <div class="f_left">                
                 <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_01.jpg" alt="정태정 핵심이론"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_02.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_01.jpg" alt="정태정 핵심이론"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_02.jpg" alt="10일 완성 패키지"></a></div>
                 </div>
             </div>
             <div class="f_right">                    
                 <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_02.jpg" alt="10일 완성 패키지"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_540x400_01.jpg" title="KCG 핵심요약"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_02.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_01.jpg" title="KCG 핵심요약"></a></div>
                 </div>
             </div>
             </ul>         
         </div>
     </div>
 
-    <div class="Section">
+    <div class="Section gosi-gate-Sec">
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt02.jpg" alt="윌비스 티패스">
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto">
             <div class="gosi-gate-bnSec02 p_re">
                 <div id="MainRollingDiv" class="MaintabList five">
                     <ul class="Maintab">

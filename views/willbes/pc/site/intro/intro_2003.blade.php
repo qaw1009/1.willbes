@@ -318,11 +318,12 @@
                     <li>
                         <div class="QuickSlider">
                             <div class="sliderNum">
-                                @foreach($data['dday'] as $row)
+                                @foreach($data['dday'] as $val)
+                                    @php $arr_dday = explode('::', $val); @endphp
                                     <div class="QuickDdayBox">
-                                        <div class="q_tit">{{$row['DayTitle']}}</div>
-                                        <div class="q_day">{{$row['DayDatm']}}</div>
-                                        <div class="q_dday NSK-Black">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</div>
+                                        <div class="q_tit">{{ $arr_dday[0] }}</div>
+                                        <div class="q_day">{{ $arr_dday[1] }}</div>
+                                        <div class="q_dday NSK-Black">{{ $arr_dday[2] == 0 ? 'D-' . $arr_dday[2] : 'D' . $arr_dday[2] }}</div>
                                     </div>
                                 @endforeach
                             </div>

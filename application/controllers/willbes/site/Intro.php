@@ -44,7 +44,7 @@ class Intro extends \app\controllers\FrontController
         $data['notice'] = $this->_board('notice', 5);
         $data['exam_announcement'] = $this->_boardForSiteGroup('exam_announcement', 5);
         $data['exam_news'] = $this->_boardForSiteGroup('exam_news', 5);
-        $data['dday'] = $this->_dday();
+        $data['dday'] = array_data_pluck($this->_dday(), ['DayTitle', 'DayDatm', 'DDay'], 'DIdx');  // 중복제거
 
         return $data;
     }

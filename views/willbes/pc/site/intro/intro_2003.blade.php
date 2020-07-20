@@ -101,7 +101,7 @@
         @endif
         </div>
 
-        <div class="Section mt50">
+        <div class="Section mt100">
             <div class="widthAuto">
                 <ul class="gosi-gate-bnSec03">
                     <li><img src="{{ img_static_url('promotion/main/gosi_gate/gosi_gate_img01.jpg') }}" alt="공무원, 어떻게 시작해야될지 고민된다면?"></li>
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div class="Section">
+        <div class="Section gosi-gate-Sec">
             <div class="widthAuto">
                 <img src="{{ img_static_url('promotion/main/gosi_gate/gosi_gate_txt03.jpg') }}" alt="윌비스 교수진">
                 <ul class="gosi-gate-prof">

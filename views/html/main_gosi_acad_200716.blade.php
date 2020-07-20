@@ -78,6 +78,87 @@
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {    
     background: #ba560e;
 }
+
+/* Main Container : acad_infoBox */
+.acad_infoBox {
+    float: left;
+    width: 1120px;
+    border: 10px solid #b7550e;
+    clear: both;
+    margin-top: 50px;
+    padding: 10px 0;
+    height: 90px;
+}
+.acad_infoBox li {
+    float: left;
+    width: 20%;
+    height: 50px;
+    border-left: 1px solid #ebebeb;
+}
+.acad_infoBox li:first-child {
+    border-left:0;
+}
+.acad_infoBox li a {
+    background-size: 60px !important;
+    float: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: #606060;
+    text-align: center;
+    line-height: inherit;
+    letter-spacing: 0;
+    border: none;
+}
+.GA .acad_infoBox li a.on,
+.GA .acad_infoBox li a:hover {
+    color: #b7550e;
+}
+.GA .acad_infoBox li a span {
+    display: block;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 100px;
+}
+.GA .acad_infoBox li.w-infoBox1 a {
+    background: url("../../img/willbes/gosi_acad/icon_info1.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a {
+    background: url("../../img/willbes/gosi_acad/icon_info2.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a {
+    background: url("../../img/willbes/gosi_acad/icon_info3.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a {
+    background: url("../../img/willbes/gosi_acad/icon_info4.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a {
+    background: url("../../img/willbes/gosi_acad/icon_info5.png") no-repeat 30px center;
+}
+
+.GA .acad_infoBox li.w-infoBox1 a.on,
+.GA .acad_infoBox li.w-infoBox1 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info1_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a.on,
+.GA .acad_infoBox li.w-infoBox2 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info2_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a.on,
+.GA .acad_infoBox li.w-infoBox3 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info3_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a.on,
+.GA .acad_infoBox li.w-infoBox4 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info4_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a.on,
+.GA .acad_infoBox li.w-infoBox5 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info5_on.png") no-repeat 30px center;
+}
 </style>
 
 <!-- Container -->

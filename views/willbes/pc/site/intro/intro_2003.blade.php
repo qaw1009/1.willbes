@@ -215,7 +215,7 @@
                             @else
                                 @foreach($data['exam_announcement'] as $row)
                                     <li>
-                                        <a href="{{front_url('/support/examAnnouncement/show?board_idx='.$row['BoardIdx'])}}">
+                                        <a href="{{front_url($row['PassRoute'] . '/support/examAnnouncement/show?board_idx='.$row['BoardIdx'], false, true)}}">
                                             <span>{{$row['Title']}}</span>
                                             @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
                                         </a>
@@ -233,7 +233,7 @@
                             @else
                                 @foreach($data['exam_news'] as $row)
                                     <li>
-                                        <a href="{{front_url('/support/examNews/show?board_idx=' . $row['BoardIdx'])}}">
+                                        <a href="{{front_url($row['PassRoute'] . '/support/examNews/show?board_idx=' . $row['BoardIdx'], false, true)}}">
                                             <span>{{$row['Title']}}</span>
                                             @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
                                         </a>

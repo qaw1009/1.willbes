@@ -22,7 +22,7 @@
 
         .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
 
-        .evttop_banner {background:#FDEADB;}
+        .evttop_banner {background:#433F71; padding-top:50px}
 
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        {{--
+
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
@@ -110,7 +110,7 @@
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
             </map>             
         </div>
-        --}}      
+     
   
         
         <div class="evtCtnsBox evttop" >     

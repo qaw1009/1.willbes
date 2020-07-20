@@ -95,7 +95,7 @@ class SupportBoardFModel extends BaseSupportFModel
             $order_by_offset_limit = '';
         } else {
             $def_column = "
-                m.*,
+                m.*, IF(m.CampusYn = 'Y', '/pass', '') AS PassRoute,
                 IFNULL((
                     SELECT
                     CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
@@ -139,7 +139,7 @@ class SupportBoardFModel extends BaseSupportFModel
         $where = $where->getMakeWhere(false);
         $where .= $this->addDefWhereOfCampus();
 
-        $set_query = ' FROM ( select ' . $column;
+        $set_query = ' FROM ( select b.IsCampus AS CampusYn, ' . $column;
         $set_query .= $from . $where;
         $set_query .= ') AS m ';
         $set_query .= $order_by_offset_limit;

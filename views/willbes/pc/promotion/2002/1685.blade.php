@@ -156,8 +156,7 @@
             <div class="evtCtnsBox wb_tab">
                 <div class="tabContaier" id="apply">    
                     <ul>    
-                        <li><a href="#tab1" class="active">일반공채</a></li>
-                            
+                        <li><a href="#tab1" class="active">일반공채</a></li>                            
                         <li><a href="#tab2">경행경채</a></li>          
                     </ul>
                 </div> 
@@ -206,7 +205,7 @@
 
         <div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
-				<h4 class="NGEB">문제풀이 풀패키지 학원 실갈 이용안내</h4>
+				<h4 class="NGEB">문제풀이 풀패키지 학원 실강 이용안내</h4>
 				<div class="infoTit NG"><strong>문제풀이 유의사항</strong></div>
 				<ul>
 					<li>① 문제풀이 1단계는 영어 제외 모두 오전강의만 진행됩니다. (영어과목은 오전,오후 모두 진행)<br/>

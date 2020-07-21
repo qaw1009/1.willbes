@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">운영사이트</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_checkbox($def_site_code, 'search_site_code', 'search_site_code', '', '운영 사이트', 'required', '', true, $arr_site_code, '', 'checked', true)!!}
+                        {!! html_site_checkbox($def_site_code, 'search_site_code', 'search_site_code', '', '운영 사이트', 'required', '', true, $arr_site_code, 7, 'checked', true)!!}
                     </div>
                 </div>
                 <div class="form-group">

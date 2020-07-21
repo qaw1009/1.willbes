@@ -360,7 +360,7 @@
                             </li>
                             <li>
                                 <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-033</div>
+                                <div class="nNumber tx-color">1544-0330</div>
                                 <div class="nTxt">
                                     [전화/방문상담 운영시간]<br/>
                                     평일/주말: 09시~ 22시<br/>
@@ -403,6 +403,51 @@
         </div>
     </div>
     <!-- CS센터 //-->
+
+    <div id="QuickMenu" class="MainQuickMenu">
+        <ul>
+            <li>
+                <div class="QuickSlider ">
+                    <div class="sliderNum">
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">3차 필기시험</div>
+                            <div class="q_day">2018.12.12</div>
+                            <div class="q_dday NSK-Blac">D-5</div>
+                        </div>
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">1차 공무원</div>
+                            <div class="q_day">2019.04.05</div>
+                            <div class="q_dday NSK-Blac">D-10</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720103645.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0625/banner_20200625154631.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0224/banner_20200624133355.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <!-- End Container -->

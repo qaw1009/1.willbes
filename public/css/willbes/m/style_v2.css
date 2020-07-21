@@ -358,11 +358,12 @@ span {
 }
 #header .logo a {
     display: inline-block;
-    width: 100px;
+    width: 140px;
 }
 #header .logo a.siteTitle {
     font-size:20px; color:#000; text-align: center; height: 35px; line-height: 35px; 
 }
+#header .logo a.siteTitle span {color:#0d74ae;}
 #header .logo a img {
     width: 100%;
 }
@@ -410,17 +411,15 @@ span {
 #Header .sMenuList .on {
     display:block;
 }
-
-#Header .sMenuList li {padding:8px 0; /*border-bottom: 1px solid #e4e4e4;*/ line-height: 1.4;}
+#Header .sMenuList:nth-child(2) .dropBox ul {padding-left:26%}
+#Header .sMenuList:nth-child(4) .dropBox ul {padding-left:76%}
+#Header .sMenuList li {padding:8px 0; line-height: 1.4;}
 #Header .sMenuList li a {display:inline-block; margin-right:5px; color:#666}
 #Header .sMenuList .dropBox2 li {padding-left:120px; position:relative;}
 #Header .sMenuList .dropBox2 li span {display:block; position: absolute; width:110px; left:0; z-index: 2; 
     border-right:1px solid #ccc; text-align: center;}
 #Header .sMenuList li:last-child {border:0}
-/*
-#Header .sMenuList:nth-child(2) li {padding-left:27%}
-#Header .sMenuList:nth-child(4) li {padding-left:77%}
-*/
+
 #Header .sMenuList a:after,
 #Header .subMenuBox ul:after {content:""; display:block; clear:both}
 
@@ -574,8 +573,6 @@ body.memBody #Footer {
 .introBox3 .etc li{display: inline; float:left; width:50%;}
 .introBox3 .etc li a {color:#fff; border-bottom: 1px solid #fff; margin-left:10px; margin-bottom:10px; padding-bottom:3px; display: inline-block;}
 .introBox3 .etc ul:after {content:""; display:block; clear:both}
-
-
 
 /*********************************************     MAIN PAGE     *********************************************/
 
@@ -841,8 +838,80 @@ body.memBody #Footer {
     font-size: 12px;
 }
 .MainCampusListSlider .swiper-slide a.on {
-    color: #1a8ccc;
+    color: #1a8ccc; 
 }
+
+/*공무원*/
+.gosiTitle {font-size:22px; text-align:center; padding:30px 0 20px; word-break: keep-all; line-height:1.2}
+.gosiSecBn01 li {display:inline; float:left; width:49%; max-width:350px}
+.gosiSecBn01 li.f_left {float:left;}
+.gosiSecBn01 li.f_right {float:right;}
+.gosiSecBn01 ul:after {content:''; display:block; clear:both}
+.gosiSecBn01 .c_both {clear:both; margin-top:2.5%}
+.gosiSecBn01 img {width:100%}
+
+.gosi .gosiProf {
+    position:relative; 
+    height:100%;
+    max-height:330px;
+    padding-bottom:30px;
+    max-width:720px;
+    overflow:hidden;
+}
+.gosi .gosiProf .swiper-container-lec { 
+    position:absolute;
+    top:0;
+    width: 100%; 
+    height:auto;
+} 
+.gosi .gosiProf .swiper-slide { 
+    width:33.333333%;
+    max-width:227px; 
+    display:inline; 
+/* Center slide text vertically */ 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: -webkit-flex; 
+    display: flex; 
+    -webkit-box-pack: left; 
+    -ms-flex-pack: left; 
+    -webkit-justify-content: left; 
+    justify-content: left; 
+    -webkit-box-align: left; 
+    -ms-flex-align: left; 
+    -webkit-align-items: left; 
+    align-items: left; 
+} 
+
+.gosi .gosiProf .swiper-slide a {display:block;}
+.gosi .gosiProf .swiper-slide img {width:100%;}
+.gosi .gosiProf .swiper-container-lec .swiper-pagination {bottom:-30px !important; padding:10px 0} 
+.gosi .gosiProf .swiper-container-lec .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
+
+.gosi .gosiTip {position:relative; max-width:720px; height: 180px; margin:0 auto; overflow:hidden;}
+.gosi .gosiTip .swiper-container-tip { 
+    width: 100%;  
+} 
+.gosi .gosiTip .swiper-slide { 
+    width: 227px;
+    height: 150px;
+} 
+.gosi .gosiTip .swiper-slide a {display: block;}
+.gosi .gosiTip .swiper-container-lec .swiper-pagination {bottom:0 !important;} 
+.gosi .gosiTip .swiper-container-lec .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
+
+.gosi .campus li {display:inline; float:left; width:20%}
+.gosi .campus li a {display:block; border:1px solid #333; text-align:center; padding:15px 0; margin-right:5px; font-size:14px;
+    width:calc(100%-5px); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.gosi .campus li:last-child a {margin:0}
+.gosi .campus ul:after {content:''; display:block; clear:both}
+.gosi .mapCts {text-align:center; margin-top:10px; font-size:14px; word-break: keep-all;}
+.gosi .mapCts img {width:100%; max-width:698px}
+.gosi .mapCts .add {margin:20px 10px 0; text-align:left; line-height:1.4}
+.gosi .mapCts .add span {display:inline-block; color:#ccc} 
+.gosi .mapCts .add a {display:block; height:40px; line-height:40px; background:#1a8ccc; color:#fff; vertical-align: middle; text-align:center; margin:10px auto}
+.gosi .mapCts .add br {display:block} 
 
 /*고등고시*/
 .bnSec02 ul {border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
@@ -1330,7 +1399,14 @@ body.memBody #Footer {
     line-height: 16px;
 }
 
+/*********************************************     공무원 메인     *********************************************/
 
+#Header .tab-onoff {max-width: 720px; margin: 20px auto 0;}
+#Header .tab-onoff li {display:inline; float:left; width: 50%;}
+#Header .tab-onoff li a {display: block; text-align: center; border:2px solid #f4f4f4; background: #f4f4f4; border-bottom:2px solid #0d74ae; 
+    font-size: 16px; padding:15px 0; color:#666}
+#Header .tab-onoff li a.on {background: #fff; color:#0d74ae; border:2px solid #0d74ae; border-bottom:2px solid #fff}
+#Header .tab-onoff:after {content:''; display:block; clear:both}
 
 /*********************************************     CONTAINER PAGE     *********************************************/
 .Container:after {
@@ -4047,6 +4123,10 @@ body.memBody #Footer {
     .bookList {display:block; float:none; width:100%;}
     .bookInfo .w-buy ul {width: 100%;}  
     .bookInfo > li br {display: none;}  
+
+    .gosi .gosiProf {max-height:253px;}
+    .gosi .gosiProf .swiper-slide {width:50%;}
+    .gosi .mapCts .add span {display:none} 
 }
 
 
@@ -4073,10 +4153,16 @@ body.memBody #Footer {
     .bookInfo > li .writer {width:90%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display: inline-block;}
     .bookInfo > li br {display: block;}
     .bookInfo > li .row-line {display: none;}
+
+    .gosi .gosiProf {max-height:330px;}
+    .gosi .gosiProf .swiper-slide {width:50%;}  
+    .gosi .mapCts .add span {display:inline-block}    
+    .gosi .mapCts .add br {display:none} 
 }
 
 /* Calendar */
 @media only screen and (min-width: 690px) {
+         
     .willbes-Layer-PassBox600 {
         left: 50%;
         margin-left: -300px;
@@ -4091,4 +4177,5 @@ body.memBody #Footer {
         font-size: 16px;
     }
     .Message p br {display:none}
+    .gosi .mapCts .add br {display:none}
 }

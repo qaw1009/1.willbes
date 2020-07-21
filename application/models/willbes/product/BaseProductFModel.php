@@ -107,9 +107,10 @@ class BaseProductFModel extends WB_Model
      * 카테고리별 과목 데이터 조회
      * @param string $site_code
      * @param null|string $cate_code
+     * @param bool $is_use_sm_order_num [소트매핑정렬번호사용여부]
      * @return mixed
      */
-    public function listSubjectCategoryMapping($site_code, $cate_code = null)
+    public function listSubjectCategoryMapping($site_code, $cate_code = null, $is_use_sm_order_num = false)
     {
         $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
         $from = '
@@ -130,6 +131,10 @@ class BaseProductFModel extends WB_Model
         $where = $where->getMakeWhere(true);
         $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
 
+        if ($is_use_sm_order_num === true) {
+            $order_by = ' order by SC.OrderNum asc, PSC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
+        }
+
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);
 
@@ -141,9 +146,10 @@ class BaseProductFModel extends WB_Model
      * @param $site_code
      * @param null|string $cate_code
      * @param null|string $child_ccd
+     * @param bool $is_use_sm_order_num [소트매핑정렬번호사용여부]
      * @return mixed
      */
-    public function listSubjectSeriesMapping($site_code, $cate_code = null, $child_ccd = null)
+    public function listSubjectSeriesMapping($site_code, $cate_code = null, $child_ccd = null, $is_use_sm_order_num = false)
     {
         $add_join = $group_by = '';
         if (empty($child_ccd) === true) {
@@ -161,16 +167,31 @@ class BaseProductFModel extends WB_Model
                 inner join ' . $this->_table['category'] . ' as SC
                     on PSC.CateCode = SC.CateCode
                 inner join ' . $this->_table['subject'] . ' as PS
-                    on PSC.SubjectIdx = PS.SubjectIdx' . $add_join . '
+                    on PSC.SubjectIdx = PS.SubjectIdx
+                ' . $add_join . '
+        ';
+
+        if ($is_use_sm_order_num === true) {
+            $from .= '
+                left join ' . $this->_table['subject_r_category'] . ' as PSCO
+                    on PSCO.SiteCode = PSC.SiteCode and PSCO.CateCode = PSC.CateCode and PSCO.SubjectIdx = PSC.SubjectIdx and PSCO.IsStatus = "Y" 
+            ';
+        }
+
+        $from .= '
             where PSC.SiteCode = ? and PSC.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsStatus = "Y"
                 and SC.IsUse = "Y" and SC.IsStatus = "Y"
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"            
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"
         ';
 
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.ChildCcd' => $child_ccd]]);
         $where = $where->getMakeWhere(true);
         $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
+
+        if ($is_use_sm_order_num === true) {
+            $order_by = ' order by SC.OrderNum asc, ifnull(PSCO.OrderNum, 0) asc, PS.OrderNum asc, PSC.CsIdx asc';
+        }
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by, [$site_code]);
@@ -215,11 +236,12 @@ class BaseProductFModel extends WB_Model
      * 과목별 교수 데이터 조회
      * @param string $site_code
      * @param array $arr_add_column
-     * @param null|$cate_code
-     * @param null|$subject_idx
+     * @param null|string $cate_code
+     * @param null|string $subject_idx
+     * @param bool $is_use_sm_order_num [소트매핑정렬번호사용여부]
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $arr_add_column = [], $cate_code = null, $subject_idx = null)
+    public function listProfessorSubjectMapping($site_code, $arr_add_column = [], $cate_code = null, $subject_idx = null, $is_use_sm_order_num = false)
     {
         $add_column = '';   // 추가 조회 컬럼
         if (empty($arr_add_column) === false) {
@@ -241,9 +263,9 @@ class BaseProductFModel extends WB_Model
         }
 
         $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName
-                        , P.IsOpenStudyComment, SC1.CcdName As AppellationCcdName
-                        , concat(P.ProfNickName,\' \',CcdName) as ProfNickNameAppellation
-                        ' . $add_column;
+            , P.IsOpenStudyComment, SC1.CcdName As AppellationCcdName
+            , concat(P.ProfNickName, \' \', CcdName) as ProfNickNameAppellation
+            ' . $add_column;
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $this->_table['professor'] . ' as P
@@ -258,7 +280,18 @@ class BaseProductFModel extends WB_Model
                     on PSC.SubjectIdx = PS.SubjectIdx
                 left join ' . $this->_table['code'] . ' as SC1
                     on P.AppellationCcd = SC1.Ccd and SC1.IsUse = "Y" and SC1.IsStatus = "Y"
-            where P.SiteCode = ? and P.IsUse = "Y" and P.IsStatus = "Y"
+        ';
+
+        if ($is_use_sm_order_num === true) {
+            $from .= '
+                left join ' . $this->_table['subject_r_category'] . ' as PSCO
+                    on PSCO.SiteCode = P.SiteCode and PSCO.CateCode = PSC.CateCode and PSCO.SubjectIdx = PSC.SubjectIdx and PSCO.IsStatus = "Y"   
+            ';
+        }
+
+        $from .= '
+            where P.SiteCode = ?
+                and P.IsUse = "Y" and P.IsStatus = "Y"
                 and WP.wIsUse = "Y" and WP.wIsStatus = "Y"
                 and PSC.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsStatus = "Y"
@@ -269,6 +302,10 @@ class BaseProductFModel extends WB_Model
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.SubjectIdx' => $subject_idx]]);
         $where = $where->getMakeWhere(true);
         $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
+
+        if ($is_use_sm_order_num === true) {
+            $order_by = ' order by SC.OrderNum asc, ifnull(PSCO.OrderNum, 0) asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
+        }
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);

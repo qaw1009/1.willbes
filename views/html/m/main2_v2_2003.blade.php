@@ -27,7 +27,7 @@
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
-    <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>    
+    <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
 </head>
 <body id="goTop">
     <!-- Gnb -->
@@ -325,48 +325,53 @@
     </div>
 
     <div class="gosiProf">
-        <div class="swiper-container-lec">
+        <div class="swiper-container-prof">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
-                    </a>
-                </div>            
-                <div class="swiper-slide">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120109.png" alt="배너명">
+                    </a>  
+                </div> 
+                <div class="swiper-slide">             
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120055.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120000.png" alt="배너명">
+                    </a>
+                    </div> 
+                <div class="swiper-slide"> 
+                    <a href="#none">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115804.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721100237.png" alt="배너명">
+                    </a>
+                    </div> 
+                <div class="swiper-slide"> 
+                    <a href="#none">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120037.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115944.png" alt="배너명">
                     </a>
-                </div>
-                <div class="swiper-slide">
+                    </div> 
+                <div class="swiper-slide"> 
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_2270x300.jpg" alt="배너명">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115841.png" alt="배너명">
                     </a>
                 </div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
-    </div> 
+    </div>  
 
     <div class="gosiTitle NSK-Black">
         합격을 앞당기는 수험생활 TIP
@@ -509,22 +514,19 @@
 <!-- End Container -->
 <script>    
     //교수진
-    $(function() {
-        var swiper = new Swiper ('.swiper-container-Lec', { 
-            slidesPerView: 'auto',
-            spaceBetween: 5, 
-            slidesPerGroup: 1,
-            loop: true,
-            loopFillGroupWithBlank: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            pagination: { 
-                el: '.swiper-pagination',
-                clickable: true,
-            }, 
-        }); 
+    var swiper = new Swiper('.swiper-container-prof', {
+      slidesPerView: 'auto',
+      slidesPerColumn: 2,
+      spaceBetween: 30,
+      autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }, //3초에 한번씩 자동 넘김
+      // init: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
     });
 
     //수험생활 팁
@@ -532,9 +534,9 @@
         slidesPerView: 'auto',
         spaceBetween: 5,
         autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
+            delay: 3000,
+            disableOnInteraction: false,
+        }, //3초에 한번씩 자동 넘김
         pagination: {
             el: '.swiper-pagination',
             clickable: true,

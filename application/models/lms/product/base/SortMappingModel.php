@@ -79,7 +79,7 @@ class SortMappingModel extends WB_Model
      */
     public function listCourseMapping($site_code, $cate_code)
     {
-        $column = 'PCO.CourseIdx, PCO.CourseName, ifnull(PCC.CourseIdx, "") as RCourseIdx';
+        $column = 'PCO.CourseIdx, PCO.CourseName, ifnull(PCC.CourseIdx, "") as RCourseIdx, ifnull(PCC.OrderNum, "") as ROrderNum, ifnull(PCC.OrderNum, 99999) as ListOrderNum';
         $from = '
             from ' . $this->_table['site'] . ' as S
                 inner join ' . $this->_table['category'] . ' as C
@@ -94,7 +94,7 @@ class SortMappingModel extends WB_Model
                 and C.CateCode = ? and C.IsStatus = "Y"
                 and PCO.IsUse = "Y" and PCO.IsStatus = "Y"            
         ';
-        $order_by = ' order by PCO.CourseIdx asc';
+        $order_by = ' order by ListOrderNum asc, PCO.CourseIdx asc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code, $cate_code]);
@@ -123,7 +123,7 @@ class SortMappingModel extends WB_Model
             $_binds = [$child_ccd, $site_code, $cate_code];
         }
 
-        $column = 'PS.SubjectIdx, PS.SubjectName, ifnull(PSC.SubjectIdx, "") as RSubjectIdx';
+        $column = 'PS.SubjectIdx, PS.SubjectName, ifnull(PSC.SubjectIdx, "") as RSubjectIdx, ifnull(PSC.OrderNum, "") as ROrderNum, ifnull(PSC.OrderNum, 99999) as ListOrderNum';
         $from = '
             from ' . $this->_table['site'] . ' as S
                 inner join ' . $this->_table['category'] . ' as C
@@ -138,7 +138,7 @@ class SortMappingModel extends WB_Model
                 and C.CateCode = ? and C.IsStatus = "Y"
                 and PS.IsUse = "Y" and PS.IsStatus = "Y"            
         ';
-        $order_by = ' order by PS.SubjectIdx asc';
+        $order_by = ' order by ListOrderNum asc, PS.SubjectIdx asc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, $_binds);
@@ -251,8 +251,9 @@ class SortMappingModel extends WB_Model
             $cate_code = element('_cate_code', $input);
             $child_ccd = element('child_ccd', $input, '');
             $arr_subject_idx = element('subject_idx', $input);
+            $arr_order_num = element('order_num', $input);
 
-            if ($this->_replaceSubjectMapping($conn_type, $arr_subject_idx, $site_code, $cate_code, $child_ccd) === false) {
+            if ($this->_replaceSubjectMapping($conn_type, $arr_subject_idx, $arr_order_num, $site_code, $cate_code, $child_ccd) === false) {
                 throw new \Exception('과목 연결에 실패했습니다.');
             }
 
@@ -269,12 +270,13 @@ class SortMappingModel extends WB_Model
      * 과목 연결 데이터 저장
      * @param $conn_type
      * @param $arr_subject_idx
+     * @param $arr_order_num
      * @param $site_code
      * @param $cate_code
      * @param $child_ccd
      * @return bool|string
      */
-    private function _replaceSubjectMapping($conn_type, $arr_subject_idx, $site_code, $cate_code, $child_ccd = '')
+    private function _replaceSubjectMapping($conn_type, $arr_subject_idx, $arr_order_num, $site_code, $cate_code, $child_ccd = '')
     {
         $_arr_condition = ['SiteCode' => $site_code, 'CateCode' => $cate_code, 'IsStatus' => 'Y'];
 
@@ -300,9 +302,11 @@ class SortMappingModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
 
             // 기존 설정된 과목 연결 데이터 조회
-            $data = $this->_conn->getListResult($_table, $_key_column, ['EQ' => $_arr_condition]);
-            if (count($data) > 0) {
-                $data = array_pluck($data, $_key_column);
+            $ori_data = $this->_conn->getListResult($_table, $_key_column . ', OrderNum', ['EQ' => $_arr_condition]);
+
+            if (count($ori_data) > 0) {
+                $data = array_pluck($ori_data, $_key_column);   // 기 등록된 식별자 데이터
+                $order_num_data = array_pluck($ori_data, 'OrderNum', $_key_column);     // 기 등록된 정렬번호 데이터
 
                 // 기존 등록된 과목 연결 데이터 삭제 처리 (전달된 과목 식별자 중에 기 등록된 과목 식별자가 없다면 삭제 처리)
                 $arr_delete_subject_idx = array_diff($data, $arr_subject_idx);
@@ -322,6 +326,36 @@ class SortMappingModel extends WB_Model
                         throw new \Exception('기 설정된 ' . $_title . ' 연결 데이터 수정에 실패했습니다.');
                     }
                 }
+
+                // 기존 등록된 과목 연결 데이터 정렬번호 업데이트 처리 (전달된 과목 식별자와 기 등록된 과목 식별자 동일하다면 업데이트 처리)
+                // 과목연결 저장 프로세스일 경우만 사용
+                if ($conn_type == 'subject') {
+                    $arr_update_subject_idx = array_values(array_intersect($data, $arr_subject_idx));
+                    if (empty($arr_update_subject_idx) === false) {
+                        foreach ($arr_update_subject_idx as $update_subject_idx) {
+                            $ori_order_num = array_get($order_num_data, $update_subject_idx, 0);
+                            $new_order_num = array_get($arr_order_num, $update_subject_idx, 0);
+
+                            if ($ori_order_num != $new_order_num) {
+                                // 정렬번호 업데이트
+                                $upd_query = $this->_conn->set([
+                                    'OrderNum' => $new_order_num,
+                                    'UpdAdminIdx' => $admin_idx
+                                ])->where('SiteCode', $site_code)->where('CateCode', $cate_code)->where($_key_column, $update_subject_idx);
+
+                                // 복합연결일 경우
+                                if ($conn_type == 'complex') {
+                                    $upd_query = $upd_query->where('ChildCcd', $child_ccd);
+                                }
+
+                                $is_update = $upd_query->update($_table);
+                                if ($is_update === false) {
+                                    throw new \Exception($_title . ' 연결 정렬번호 수정에 실패했습니다.');
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             // 신규 등록 (기 등록된 과목 식별자 중에 전달된 과목 식별자가 없다면 등록 처리)
@@ -331,6 +365,7 @@ class SortMappingModel extends WB_Model
                     'SiteCode' => $site_code,
                     'CateCode' => $cate_code,
                     $_key_column => $subject_idx,
+                    'OrderNum' => array_get($arr_order_num, $subject_idx, 0),
                     'RegAdminIdx' => $admin_idx,
                     'RegIp' => $this->input->ip_address()
                 ]);

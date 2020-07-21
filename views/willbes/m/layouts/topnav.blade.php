@@ -72,7 +72,6 @@
                     <div class="subMenuBox c_both">
                         <ul class="subMenu">
                         @foreach($__cfg['SiteMenu']['TreeMenu']['GNB']['Children'] as $menu_idx => $menu_row)
-                            @php $_smenu_pl_perc = (($loop->index - 1) * 25) + 7; @endphp
                             <li class="sMenuList">
                                 @if(empty($menu_row['MenuSubType']) === false)
                                     {{-- 모바일GNB (전체보기) 메뉴 --}}
@@ -91,7 +90,7 @@
                                         <div class="dropBox">
                                             <ul>
                                             @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)
-                                                <li style="padding-left: {{ $_smenu_pl_perc }}%"><a href="{{ $child_menu_row['MenuUrl'] }}" target="_{{ $child_menu_row['UrlTarget'] }}">{{ $child_menu_row['MenuName'] }}</a></li>
+                                                <li><a href="{{ $child_menu_row['MenuUrl'] }}" target="_{{ $child_menu_row['UrlTarget'] }}">{{ $child_menu_row['MenuName'] }}</a></li>
                                             @endforeach
                                             </ul>
                                         </div>

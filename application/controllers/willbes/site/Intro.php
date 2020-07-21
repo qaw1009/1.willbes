@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Intro extends \app\controllers\FrontController
 {
-    protected $models = array('support/supportBoardF', 'support/supportBoardTwoWayF', 'bannerF');
+    protected $models = array('support/supportBoardF', 'support/supportBoardTwoWayF', 'bannerF', 'dDayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -44,6 +44,7 @@ class Intro extends \app\controllers\FrontController
         $data['notice'] = $this->_board('notice', 5);
         $data['exam_announcement'] = $this->_boardForSiteGroup('exam_announcement', 5);
         $data['exam_news'] = $this->_boardForSiteGroup('exam_news', 5);
+        $data['dday'] = array_data_pluck($this->_dday(), ['DayTitle', 'DayDatm', 'DDay'], 'DIdx');  // 중복제거
 
         return $data;
     }
@@ -64,6 +65,17 @@ class Intro extends \app\controllers\FrontController
         }
 
         return $data;
+    }
+
+    /**
+     * 시험일정 조회 (디데이)
+     * @return mixed
+     */
+    private function _dday()
+    {
+        $arr_condition = ['EQ' => ['a.SiteCode' => $this->_site_code]];
+
+        return $this->dDayFModel->getDDays($arr_condition);
     }
 
     /**

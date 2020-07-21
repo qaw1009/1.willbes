@@ -311,6 +311,43 @@
             </div>
         </div>
         <!-- CS센터 //-->
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            <ul>
+                @if(empty($data['dday']) === false)
+                    <li>
+                        <div class="QuickSlider">
+                            <div class="sliderNum">
+                                @foreach($data['dday'] as $val)
+                                    @php $arr_dday = explode('::', $val); @endphp
+                                    <div class="QuickDdayBox">
+                                        <div class="q_tit">{{ $arr_dday[0] }}</div>
+                                        <div class="q_day">{{ $arr_dday[1] }}</div>
+                                        <div class="q_dday NSK-Black">{{ $arr_dday[2] == 0 ? 'D-' . $arr_dday[2] : 'D' . $arr_dday[2] }}</div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                <li>
+                    <div class="QuickSlider">
+                        {!! banner_html(element('인트로_우측퀵_01', $data['banner']), 'sliderNum') !!}
+                    </div>
+                </li>
+                <li>
+                    <div class="QuickSlider">
+                        {!! banner_html(element('인트로_우측퀵_02', $data['banner']), 'sliderNum') !!}
+                    </div>
+                </li>
+                <li>
+                    <div class="QuickSlider">
+                        {!! banner_html(element('인트로_우측퀵_03', $data['banner']), 'sliderNum') !!}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 퀵메뉴 //-->
     </div>
     <!-- End Container -->
     {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}

@@ -67,7 +67,7 @@
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
                         <div class="caProfBtsn">                            
                             <div><a href="/pass/offLecture/show/cate/3010/prod-code/166541">경찰학 기본이론<span>7.6 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165996">경찰학 문풀2단계<span>7.29 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165996">경찰학 문풀2단계<span>7.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
@@ -88,14 +88,14 @@
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1056">형법 기본이론<span>7.27 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165997">형법 문풀2단계<span>7.30 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165997">형법 문풀2단계<span>7.29 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
                             <div><a href="/pass/offLecture/show/cate/3010/prod-code/168957">영어 기본이론<span>8.10 개강</span></a></div>
-                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165986">영어 문풀1단계<span>7.21 개강</span></a></div>
+                            <div><a href="/pass/offLecture/show/cate/3010/prod-code/165998">영어 문풀1단계<span>7.31 개강</span></a></div>
                         </div>
                     </li>                                        
                     <li>

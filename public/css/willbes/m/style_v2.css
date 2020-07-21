@@ -4117,6 +4117,13 @@ body.memBody #Footer {
     .bookList {display:block; float:none; width:100%;}
     .bookInfo .w-buy ul {width: 100%;}  
     .bookInfo > li br {display: none;}  
+
+    .gosi .gosiProf .swiper-container-prof {
+        height: 520px;                     
+    }
+    .gosi .gosiProf .swiper-slide {
+        width: 150px;
+    }
     .gosi .mapCts .add span {display:none} 
 }
 

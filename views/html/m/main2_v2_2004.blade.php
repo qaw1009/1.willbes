@@ -525,6 +525,11 @@
         el: '.swiper-pagination',
         clickable: true,
       },
+      breakpoints: {
+        640: {
+          spaceBetween: 10,
+        },
+      }
     });
 
     //수험생활 팁

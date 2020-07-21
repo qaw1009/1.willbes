@@ -406,8 +406,8 @@
 
     <div id="QuickMenu" class="MainQuickMenu">
         <ul>
-            <li>
-                <div class="QuickSlider ">
+            <li class="dday">
+                <div class="QuickSlider">
                     <div class="sliderNum">
                         <div class="QuickDdayBox">
                             <div class="q_tit">3차 필기시험</div>

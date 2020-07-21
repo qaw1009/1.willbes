@@ -1811,7 +1811,7 @@ table.auTable tr td {
     background: #fff;
     margin-bottom: 8px;
 }
-.MainQuickMenu li:first-child .QuickSlider{
+.MainQuickMenu li.dday{
     height: 100px;
     width: 100%;
     overflow: hidden;

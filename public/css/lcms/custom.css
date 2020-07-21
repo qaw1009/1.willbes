@@ -911,6 +911,9 @@ button.btn-sm {
 .bold {
     font-weight: bold !important;
 }
+.normal {
+    font-weight: normal !important;
+}
 
 /* form */
 .form-inline .btn.btn-sm {

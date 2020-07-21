@@ -29,16 +29,45 @@
             @endif
         </div>
     </div>
-    <div class="x_title mt-20 mb-0">
+    <div class="mt-20 mb-10">
         <span class="required">*</span> {{ $title }}을 선택해 주세요. (다중 선택 가능합니다.)
     </div>
-    <div class="form-group form-group-sm">
-        @foreach($arr_subject_idx as $row)
-            <div class="col-xs-3 checkbox">
-                <input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row[$col_key . 'Idx'] }}" @if($row[$col_key . 'Idx'] == $row['R' . $col_key . 'Idx']) checked="checked" @endif @if($loop->index == 1) required="required" title="{{ $title }}" @endif/>
-                <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row[$col_key . 'Name'] }}</label>
-            </div>
-        @endforeach
+    <div class="row">
+        <div class="col-md-12">
+            <table id="_list_table" class="table table-striped table-bordered">
+                <colgroup>
+                    <col width="50"/>
+                    <col width="275"/>
+                    <col width="100"/>
+                    <col width="50"/>
+                    <col width="275"/>
+                    <col width="100"/>
+                </colgroup>
+                <thead class="bg-odd">
+                <tr>
+                    <th>선택</th>
+                    <th>과목</th>
+                    <th>정렬</th>
+                    <th>선택</th>
+                    <th>과목</th>
+                    <th>정렬</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach($arr_subject_idx as $idx => $row)
+                            @if($idx != 0 && $idx % 2 == 0)
+                                {!! '</tr></tr>' !!}
+                            @endif
+
+                            <td><input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row[$col_key . 'Idx'] }}" @if($row[$col_key . 'Idx'] == $row['R' . $col_key . 'Idx']) checked="checked" @endif @if($loop->index == 1) required="required" title="{{ $title }}" @endif/></td>
+                            <td><label for="subject_idx_{{ $loop->index }}" class="input-label no-line-height normal">{{ $row[$col_key . 'Name'] }}</label></td>
+                            <td><input type="number" name="order_num[{{ $row[$col_key . 'Idx'] }}]" class="form-control input-sm" value="{{ $row['ROrderNum'] }}" @if($params['_conn_type'] != 'subject') readonly="readonly" @endif></td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script type="text/javascript">
         var $regi_form = $('#_regi_form');

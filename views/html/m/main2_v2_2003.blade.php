@@ -28,10 +28,6 @@
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
-    <style type=text/css>
-
-    </style>  
-
 </head>
 <body id="goTop">
     <!-- Gnb -->
@@ -375,7 +371,7 @@
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
-    </div> 
+    </div>  
 
     <div class="gosiTitle NSK-Black">
         합격을 앞당기는 수험생활 TIP

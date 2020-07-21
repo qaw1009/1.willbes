@@ -27,11 +27,7 @@
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
-    <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>
-    <style type="text/css">
-        
-    </style>
-    
+    <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>    
 </head>
 <body id="goTop">
     <!-- Gnb -->

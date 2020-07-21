@@ -878,7 +878,7 @@ body.memBody #Footer {
 }
 .gosi .gosiProf .swiper-slide a {display:block; }
 .gosi .gosiProf .swiper-slide img {width:100%;}
-.gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:0px !important; padding:10px 0; z-index:20} 
+.gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:10px;} 
 .gosi .gosiProf .swiper-container-prof .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
 
 
@@ -4124,6 +4124,7 @@ body.memBody #Footer {
     .gosi .gosiProf .swiper-slide {
         width: 150px;
     }
+    .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:none} 
 }
 
@@ -4151,6 +4152,13 @@ body.memBody #Footer {
     .bookInfo > li .writer {width:90%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display: inline-block;}
     .bookInfo > li br {display: block;}
     .bookInfo > li .row-line {display: none;} 
+    .gosi .gosiProf .swiper-container-prof {
+        height: 690px;                     
+    }
+    .gosi .gosiProf .swiper-slide {
+        width: 200px;
+    }
+    .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:inline-block}    
     .gosi .mapCts .add br {display:none} 
 }

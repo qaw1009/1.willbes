@@ -371,7 +371,10 @@
 
             // 노출섹션 변경
             $regi_form.on('change', 'select[name="popup_disp"]', function() {
-                if ($(this).val() === '657005') {
+
+                var site_is_campus = $('select[name="site_code"]').find(':selected').data('is-campus');
+
+                if ($(this).val() === '657005' || (site_is_campus !== undefined && site_is_campus == 'Y')) {
                     // 노출섹션이 인트로 영역일 경우 전체카테고리 값으로 고정 (0)
                     var html = '';
                     html += '<p class="form-control-static">전체카테고리';

@@ -351,21 +351,22 @@ span {
 }
 #header .logo {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
-    margin-top: -17px;
-    margin-left: -50px;
+    margin-left: -70px;
 }
 #header .logo a {
     display: inline-block;
     width: 140px;
+    text-align: center;
+    height: 52px; line-height: 52px;
 }
 #header .logo a.siteTitle {
-    font-size:20px; color:#000; text-align: center; height: 35px; line-height: 35px; 
+    font-size:20px; color:#000; text-align: center;
 }
 #header .logo a.siteTitle span {color:#0d74ae;}
 #header .logo a img {
-    width: 100%;
+    margin-top: 5px;
 }
 #Header .Login-List {
     height: 52px;

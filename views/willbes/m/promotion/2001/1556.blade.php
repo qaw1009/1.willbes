@@ -134,7 +134,7 @@
 <div id="Container" class="Container NSK c_both"> 
     <div class="evtCtnsBox dday NSK-Thin">
         <strong class="NSK-Black">{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText"></span> </strong>
-        <a href="#none">수강신청 ></a>
+        <a href="#evt02">수강신청 ></a>
     </div>
 
     <div class="evtCtnsBox evt00">
@@ -156,7 +156,7 @@
         </div> 
     </div> 
     
-    <div class="evtCtnsBox evt02">        
+    <div class="evtCtnsBox evt02" id="evt02">        
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_02.jpg" alt="" > 
         <ul class="price">
             <li><input type="radio" id="y_pkg1" name="y_pkg" value="167005" onClick=""/> <label for="y_pkg1">6개월 패스</label><li>

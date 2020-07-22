@@ -103,7 +103,7 @@
                         <div class="avi_box">
                             <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
                         </div>
-                        <h2>[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
+                        <h2 class="avi_title">[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -293,6 +293,7 @@
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");
                 $('.avi_box').html(html_str);
+                $('.avi_title').html($(this).find('p').html());
             });
         });
 

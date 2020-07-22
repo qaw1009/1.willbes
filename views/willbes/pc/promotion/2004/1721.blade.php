@@ -103,7 +103,7 @@
                         <div class="avi_box">
                             <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
                         </div>
-                        <h2>[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
+                        <h2 class="avi_title">[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -111,53 +111,54 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                            <span>국어 / 이근갑</span>
+                                            <p>기초전기전자 직렬별 출제유형 전격 공개</p>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                            <span>영어 / 이리라</span>
+                                            <p>전기이론 10분만에 정리하기</p>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="#tab3">
+                                    <a href="javascript:alert('Comimg Soon :)')">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200625/20200625152724_2686.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[스마트행정학] 김덕관 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                            <span>행정학 / 김덕관</span>
+                                            <p>우영쌤의 < 무선/통신 공통 기초강의 > 10분만에 정리하기</p>
+                                            <span>Comimg Soon</span>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="#tab4">
+                                    <a href="javascript:alert('Comimg Soon :)')">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                            <span>국어 / 문명</span>
+                                            <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
+                                            <span>Comimg Soon</span>
                                         </div>
                                     </a>
                                 </li> 
+                              
                                 <li class="">
-                                    <a href="#tab5">
+                                    <a href="javascript:alert('Comimg Soon :)')">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                            <span>국어 / 이근갑</span>
+                                            <p>[통신] 무선/통신 공통 이론 『변조이론과 통신일반』 빠르게 확인하기!</p>   
+                                            <span>Comimg Soon</span>                                     
                                         </div>
                                     </a>
                                 </li>
+
+                                {{--                                
                                 <li class="">
                                     <a href="#tab6">
                                         <span class="num_box" data-num="6">6</span>
@@ -207,7 +208,8 @@
                                             <span>영어 / 이리라</span>
                                         </div>
                                     </a>
-                                </li>                                         
+                                </li>    
+                                --}}                                     
                             </ul>
                         </div>
                     </div>          
@@ -270,10 +272,9 @@
         });
 
         //유툽
-        var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+        var tab1_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";        
+    
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -292,6 +293,7 @@
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");
                 $('.avi_box').html(html_str);
+                $('.avi_title').html($(this).find('p').html());
             });
         });
 

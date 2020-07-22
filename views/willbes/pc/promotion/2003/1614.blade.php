@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .sky_bottom{position: fixed; bottom:0; text-align:center; width:100%;background: rgba(0,0,0,0.75);z-index:100;}
+        .sky_bottom{position: fixed; bottom:0; text-align:center; width:100%;background:#616161;opacity:0.9;z-index:100;}
 
 		.evtTop {background:#191b20 url(https://static.willbes.net/public/images/promotion/2020/04/1614_graph_bg.jpg) no-repeat center top;}
 
@@ -89,7 +89,7 @@
 
         <div class="sky_bottom">
             <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1614_bottom.png" title="바로가기" />    
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1614_bottom.png" title="바로가기" />    
             </a>        
         </div>
 

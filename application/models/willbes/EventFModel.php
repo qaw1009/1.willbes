@@ -806,7 +806,8 @@ class EventFModel extends WB_Model
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx,
                 'b.ElIdx' => $event_idx,
-                'b.IsUse' => 'Y'
+                'b.IsUse' => 'Y',
+                'b.IsStatus' => 'Y'
             ],
         ];
 

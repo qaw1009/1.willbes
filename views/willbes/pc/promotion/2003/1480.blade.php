@@ -219,7 +219,7 @@
         <div class="evtCtnsBox wb_02" id="buyLec">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_02.gif" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
-                <area shape="rect" coords="764,942,919,1045" href="javascript:go_PassLecture('163827');"  alt="수강신청" />>
+                <area shape="rect" coords="764,942,919,1045" href="javascript:go_PassLecture('163827');"  alt="수강신청" />
             </map>
             <div class="check" id="chkInfo">   
                 <label>
@@ -227,7 +227,7 @@
                     페이지 하단 김동진법원팀PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
-            </div>              
+            </div>               
         </div>
 
         <div class="evtCtnsBox wb_03">

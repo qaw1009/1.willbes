@@ -116,7 +116,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/periodPackage/show/cate/309002/prod-code/') }}' + code;
+            var url = '{{ site_url('/userPackage/show/cate/309002/prod-code/') }}' + code;
             location.href = url;
         }    
 

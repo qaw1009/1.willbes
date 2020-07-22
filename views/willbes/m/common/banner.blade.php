@@ -2,7 +2,7 @@ var html = '', link_url = '#none';
 
 @if($disp['DispTypeCcd'] == '664002')
     // 롤링 배너
-    html = '<div class="swiper-container {{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
+    html = '<div class="{{ strpos($disp['DispRollingTypeName'], 'manual') === false ? 'swiper-container' : '' }} {{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
     html += '   <div class="swiper-wrapper">';
     @foreach($data as $idx => $row)
         @if(empty($row['LinkUrl']) === false)

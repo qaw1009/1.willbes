@@ -12078,7 +12078,7 @@ table.acadlecInfoPackageTable tr.Top td {
     font-weight: 600;
     color:#333;
 }
-
+.basicWd.tx-cneter td {text-align: center;}
 /* 자격증 */
 .Menu .menu-List li.job > a {
     color: #b85712;

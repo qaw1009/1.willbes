@@ -158,6 +158,8 @@
                         <tr>
                             <th scope="row">공무원</th>
                             <td colspan="5">
+                                <a href="{{ front_app_url('/intro/index', 'pass') }}" target="_blank">메인(통합) <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a>
+                                <a href="{{ front_app_url('/home/index/cate/3019', 'pass') }}" target="_blank">9급 공무원</a>
                                 <a href="{{ front_app_url('/home/index/cate/3019', 'pass') }}" target="_blank">9급 공무원</a>
                                 <a href="{{ front_app_url('/home/index/cate/3020', 'pass') }}" target="_blank">7급 공무원</a>
                                 <a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급PSAT</a>

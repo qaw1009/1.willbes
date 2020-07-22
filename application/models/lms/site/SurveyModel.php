@@ -98,7 +98,7 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyForQuestion($sp_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y']];
         $order_by = ['A.SqIdx'=>'ASC'];
 
         $column = "

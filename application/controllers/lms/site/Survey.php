@@ -48,24 +48,6 @@ class Survey extends \app\controllers\BaseController
         ]);
     }
 
-    public function creatSurveyPartial(){
-        $method = $this->_reqP('_method');
-        $sp_idx = $this->_reqP('sp_idx');
-
-        //설문정보
-        $survey_list = $this->surveyModel->listsurvey();
-        $data_survey = $this->surveyModel->findSurveyForModify($sp_idx);
-        $data_question = $this->surveyModel->listSurveyForQuestion($sp_idx);
-
-
-        $this->load->view('site/survey/create_survey_partial', [
-            'method' => $method,
-            'survey_list' => $survey_list,
-            'data_survey' => $data_survey,
-            'data_question' => $data_question,
-        ]);
-    }
-
     /**
      * 설문조사 등록/수정
      */

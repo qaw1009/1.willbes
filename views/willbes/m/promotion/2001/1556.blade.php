@@ -7,7 +7,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
-    .dday {font-size:24px !important; padding:20px; background:#f5f5f5; color:#000; text-align:left}
+    .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
@@ -74,7 +74,7 @@
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
     .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px}
-    .content_guide_box dl{margin:0 10px; word-break:keep-all; padding:20px}
+    .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
     .content_guide_box dt img.btn{padding:2px 0 0 0}
@@ -108,7 +108,7 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
-        .dday {font-size:18px !important; letter-spacing:-1px} 
+        .dday {font-size:18px !important;} 
         .dday a {padding:5px 10px;}
         .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
@@ -117,7 +117,8 @@
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-
+        .dday {font-size:18px !important;} 
+        .dday a {padding:5px 10px;}
     }
 
     /* 태블릿 가로, PC */
@@ -138,7 +139,7 @@
 
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_top.jpg" alt="신광은경찰 PASS" > 
-        <div><a href="#none">신광은경찰 PASS 신청하기 ></a></div>       
+        <div><a href="#evt02">신광은경찰 PASS 신청하기 ></a></div>
     </div> 
     
     <div class="evtCtnsBox evt01">
@@ -166,7 +167,7 @@
                 <li>※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강생관리]에서 확인 가능합니다. </li>
             </ul>
         </div> 
-        <div><a href="#none">신광은경찰 PASS 신청하기 ></a></div>      
+        <div><a href="#none" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>
     </div>
 
     <div class="evtCtnsBox evt03">
@@ -535,6 +536,7 @@
         </div>
     </div>
 </div>
+
 <!-- End Container -->
 <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
@@ -571,6 +573,45 @@
             return dd2.getFullYear()-dd1.getFullYear();
         }
     };
+
+    function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
+    {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+        var $regi_form = $('#' + ele_id);
+        var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
+        var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
+        var params;
+
+        if ($is_chk.length > 0) {
+            if ($is_chk.is(':checked') === false) {
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+        }
+
+        if ($prod_code.length < 1) {
+            alert('강좌를 선택해 주세요.');
+            return;
+        }
+
+        {{-- 장바구니 저장 기본 파라미터 --}}
+            params = [
+            { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
+            { 'name' : '_method', 'value' : 'POST' },
+            { 'name' : 'cart_type', 'value' : cart_type },
+            { 'name' : 'learn_pattern', 'value' : learn_pattern },
+            { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
+        ];
+
+        {{-- 선택된 상품코드 파라미터 --}}
+        $prod_code.each(function() {
+            params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
+        });
+
+        {{-- 장바구니 저장 URL로 전송 --}}
+        formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
+    }
 
     {{--
         * 프로모션용 디데이카운터 텍스트

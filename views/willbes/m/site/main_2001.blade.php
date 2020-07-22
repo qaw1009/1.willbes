@@ -10,24 +10,14 @@
                 <li><a href="{{ front_url('/support/notice/show?board_idx=259726') }}">신규강의안내</a></li>
             </ul>
         </div>
-        {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인_01', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
-        {!! banner('M_메인서브1', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인서브1', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 
         {{-- 경찰 캐스트 --}}
         <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
         <div class="cast">
-            <div class="swiper-container-lec">
-                <div class="swiper-wrapper">
-                    @for($i=1; $i<=6; $i++)
-                        <div class="swiper-slide">
-                            {!! banner('M_메인_cast'.$i, '', $__cfg['SiteCode'], '0') !!}
-                        </div>
-                    @endfor
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
+            {!! banner('M_메인_cast', 'swiper-container-lec', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{-- 베스트 강좌 --}}
@@ -113,10 +103,10 @@
         </div>
 
         <div class="bannerSec01">
-            {!! banner('M_메인서브2', null, $__cfg['SiteCode'], '0') !!}
+            {!! banner('M_메인서브2', '', $__cfg['SiteCode'], '0') !!}
         </div>
 
-        {!! banner('M_메인서브3', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인서브3', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 
         <div class="appPlayer mt20">
             {{-- app player include --}}
@@ -127,28 +117,29 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            //경찰케스트
-            var swiper = new Swiper('.swiper-container-Lec', {
+            // 경찰케스트
+            new Swiper('.swiper-container-lec', {
                 slidesPerView: 'auto',
                 spaceBetween: 2,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
+                }, // 3초에 한번씩 자동 넘김
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                 },
             });
-            //베스트강의
-            var swiper = new Swiper('.swiper-container-view', {
+
+            // 베스트강의
+            new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
                 spaceBetween: 10,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
+                }, // 3초에 한번씩 자동 넘김
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,

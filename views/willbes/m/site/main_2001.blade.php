@@ -118,7 +118,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             // 경찰케스트
-            new Swiper('.swiper-container-Lec', {
+            new Swiper('.swiper-container-lec', {
                 slidesPerView: 'auto',
                 spaceBetween: 2,
                 autoplay: {

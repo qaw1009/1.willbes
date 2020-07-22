@@ -10,9 +10,9 @@
                 <li><a href="{{ front_url('/support/notice/show?board_idx=259726') }}">신규강의안내</a></li>
             </ul>
         </div>
-        {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인_01', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
-        {!! banner('M_메인서브1', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인서브1', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 
         {{-- 경찰 캐스트 --}}
         <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
@@ -103,10 +103,10 @@
         </div>
 
         <div class="bannerSec01">
-            {!! banner('M_메인서브2', null, $__cfg['SiteCode'], '0') !!}
+            {!! banner('M_메인서브2', '', $__cfg['SiteCode'], '0') !!}
         </div>
 
-        {!! banner('M_메인서브3', 'MainSlider swiper-container swiper-container-page c_both mt20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인서브3', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 
         <div class="appPlayer mt20">
             {{-- app player include --}}

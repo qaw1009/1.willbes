@@ -314,7 +314,8 @@ class Regist extends \app\controllers\BaseController
             ],
             'ORG1' => [
                 'LKB' => [
-                    'A.BannerName' => $this->_reqP('search_value')
+                    'A.BannerName' => $this->_reqP('search_value'),
+                    'F.DispName' => $this->_reqP('search_value'),
                 ]
             ]
         ];

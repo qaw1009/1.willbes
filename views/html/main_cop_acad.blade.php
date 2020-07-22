@@ -85,16 +85,6 @@
             </ul>
         </h3>
     </div>
-    
-    <div class="Section Bnr mt40">
-        <div class="widthAuto">
-            <div class="willbes-Bnr">
-                <ul>
-                    <li><a href="/promotion/index/cate/3001/code/1019" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" title="적중은역시신광은경찰팀"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <div class="Section MainVisual MainVisual_acad mb20 mt20">
         <div class="widthAuto">
@@ -122,7 +112,6 @@
 
     <div class="Section mb50">
         <div class="widthAuto">
-            {{--<div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>--}}
             <ul class="specialClass">   
                 <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" title="스파르타"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" title="영어지옥 탈출반"></a></li>
@@ -135,114 +124,67 @@
     <div class="Section mb50">
         <div class="widthAuto">
             <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
-                <ul class="caProfBox">
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
-                            <div><a href="#none">기본형소법<span>3.21 개강</span></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론 장정훈">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
-                            <div><a href="#none">무료특강</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
-                            <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>                                        
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
-                            <div><a href="#none">아침특강</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
-                            <div><a href="#none">아침특강</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" title="면접 황세웅">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">면접캠프</a></div>
-                            <div><a href="#none">면접 스파르타</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">면접캠프</a></div>
-                            <div><a href="#none">면접 스파르타</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">면접캠프</a></div>
-                            <div><a href="#none">면접 스파르타</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">면접캠프</a></div>
-                            <div><a href="#none">면접 스파르타</a></div>
-                        </div>
-                    </li>
-
-                    <!--
-                    <li class="p_re">         
-                        <div class="cSlider graySlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p_re">         
-                        <div class="cSlider graySlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    -->
-                </ul>
+            <ul class="caProfBox">
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_ske.jpg') }}" usemap="#MapProf01" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf01">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_jjh.jpg') }}" usemap="#MapProf02" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf02">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_wyc.jpg') }}" usemap="#MapProf03" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf03">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_otj.jpg') }}" usemap="#MapProf04" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf04">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_kwu.jpg') }}" usemap="#MapProf05" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf05">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_hsm.jpg') }}" usemap="#MapProf06" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf06">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>                                        
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_khj.jpg') }}" usemap="#MapProf07" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf07">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_kjk.jpg') }}" usemap="#MapProf08" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf08">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>                  
+            </ul>
         </div>
     </div>
-    <!-- 교수별 빠른강좌 //-->
+    <!-- 교수별 빠른강좌 //--> 
     
 
     <div class="Section Section2 pb110">     

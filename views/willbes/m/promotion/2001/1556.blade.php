@@ -34,7 +34,7 @@
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #023032;
+        background: #d5c15e;
     }
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
         width: 30px;
@@ -63,11 +63,6 @@
     .evt08 .slide_con {}
     .evt08 .slide_con .bx-wrapper .bx-pager {     
         bottom: -30px;
-    }
-    .evt08 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-    .evt08 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
-    .evt08 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #d5c15e;
     }
 
     /* 이용안내 */

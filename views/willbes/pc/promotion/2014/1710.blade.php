@@ -194,8 +194,7 @@
         <div class="skybanner" >            
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky01.png" alt="신청하기"></a>
             <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1952&prof_idx=51032" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky03.png" alt="교재구매하기"></a>
-            <a href="#evt07Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>            
-        </div>                  
+            <a href="#evt07Sec"><img src="https://static.willbes.net/public/images/promotion/2020/07/1710_sky02.png" alt="맛보기"></a>                            
         </div>                  
 
 		<div class="evtCtnsBox evtTop">

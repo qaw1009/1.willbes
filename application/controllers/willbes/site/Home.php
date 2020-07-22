@@ -208,13 +208,16 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $data['dday'] = $this->_dday();
-            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
-            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
-            $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        } else {
+            $data['notice'] = $this->_boardNotice(5);
         }
+
+        $data['arr_campus_info'] = $this->_getSiteCampusInfo();
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+        $data['exam_news'] = $this->_boardExamNews(5);
 
         return $data;
     }
@@ -474,7 +477,6 @@ class Home extends \app\controllers\FrontController
      * 인천학원[온라인] 메인페이지 없음
      * @param string $cate_code
      * @param array $arr_campus
-     * @return array
      */
     private function _getSite2016Data($cate_code = '', $arr_campus = [])
     {

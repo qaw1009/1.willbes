@@ -7,7 +7,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
-    .dday {font-size:24px !important; padding:20px; background:#f5f5f5; color:#000; text-align:left}
+    .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
@@ -74,7 +74,7 @@
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
     .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px}
-    .content_guide_box dl{margin:0 10px; word-break:keep-all; padding:20px}
+    .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
     .content_guide_box dt img.btn{padding:2px 0 0 0}
@@ -108,7 +108,7 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
-        .dday {font-size:18px !important; letter-spacing:-1px} 
+        .dday {font-size:18px !important;} 
         .dday a {padding:5px 10px;}
         .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
@@ -117,7 +117,8 @@
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-
+        .dday {font-size:18px !important;} 
+        .dday a {padding:5px 10px;}
     }
 
     /* 태블릿 가로, PC */

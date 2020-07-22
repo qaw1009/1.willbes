@@ -17,17 +17,7 @@
         {{-- 경찰 캐스트 --}}
         <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
         <div class="cast">
-            <div class="swiper-container-lec">
-                <div class="swiper-wrapper">
-                    @for($i=1; $i<=6; $i++)
-                        <div class="swiper-slide">
-                            {!! banner('M_메인_cast'.$i, '', $__cfg['SiteCode'], '0') !!}
-                        </div>
-                    @endfor
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
+            {!! banner('M_메인_cast', 'swiper-container-lec', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{-- 베스트 강좌 --}}
@@ -127,28 +117,29 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            //경찰케스트
-            var swiper = new Swiper('.swiper-container-Lec', {
+            // 경찰케스트
+            new Swiper('.swiper-container-Lec', {
                 slidesPerView: 'auto',
                 spaceBetween: 2,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
+                }, // 3초에 한번씩 자동 넘김
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                 },
             });
-            //베스트강의
-            var swiper = new Swiper('.swiper-container-view', {
+
+            // 베스트강의
+            new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
                 spaceBetween: 10,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
+                }, // 3초에 한번씩 자동 넘김
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,

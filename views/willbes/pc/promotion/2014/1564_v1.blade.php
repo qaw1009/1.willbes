@@ -12,7 +12,6 @@
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,14 +21,14 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-
         .skybanner {
             position:fixed;
-            top:250px;
-            right:0;
-            display:none;
+            bottom:20px;
+            right:10px;
             z-index:1;
+            width:120px;
         }
+        .skybanner a {display:block; margin-bottom:5px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/03/1564_top_bg.jpg) repeat-x left top}
         .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
@@ -147,6 +146,12 @@
                  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
              }
          }
+        .infoCheck {margin-top:30px; font-size:14px}
+        .infoCheck label {margin-right:30px; cursor: pointer;}
+        .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
+        .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
+        .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
+        .infoCheck a:hover {background:#0099ff;}
 
         .evt02 {background:#f6f6f6; padding-top:100px}
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#3a99f0}
@@ -180,7 +185,7 @@
         }
         .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
         .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
-        .evt04 .columns div strong {font-size:bold; color:#333}
+        .evt04 .columns div strong {font-size:bold; color:#333}        
 
         .evt05 {background:#3a99f0; padding-bottom:100px}
         .evt05 ul {width:940px; margin:0 auto;}
@@ -200,17 +205,25 @@
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
-        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;  background:#fff !important}
+        .evtFooter {width:900px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666; background:#fff !important}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal; }
+
+        .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2020/03/1561_sky01.png" alt="스카이베너" ></a>
+            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_01.png" alt="김정환대표"></a>
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
+            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
+            @endif 
+            <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
+            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_04.png" alt="이용안내"></a>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
@@ -218,26 +231,42 @@
             <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>
             <div class="evtMenu">
                 <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">사전예약 이벤트</a></li>
+                    <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
                     <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
                     <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
                     <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
                 </ul>
             </div>
-
         </div>       
 
         <div id="tab01">
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_01.jpg" alt="사전예약 이벤트" >
+            {{--시간설정--}}
+            @if(time() < strtotime('202005311159'))
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1601_01.jpg" alt="사전예약 이벤트" usemap="#Map1564A" border="0" >
+                <map name="Map1564A" id="Map1564A">
+                    <area shape="rect" coords="193,811,450,856" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="이용안" />
+                    <area shape="rect" coords="105,10,1014,263" href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank" alt="리뷰생활">
+                </map>
                 <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">[온라인강의] 사전예약 신청하기 ></a></div>
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/2020/05/1564_01.jpg" usemap="#Map0529" border="0" >
+                <map name="Map0529">
+                    <area shape="rect" coords="230,663,573,710" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank" alt="기획전">
+                </map>                
+            @endif   
+                <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
+                <div id="pass" class="infoCheck">
+                    <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
+                    <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <a href="#infoText">이용안내 확인하기 ↓</a>
+                </div>
             </div>
         </div>
 
         <div id="tab02">
             <div class="evtCtnsBox evt02">
-                <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="evt02Txt01">
                     안녕하세요, 네이버 스마트스토어를  운영하고 있고,<br>
                     유튜브에 저의 창업 성장기를 많은 분들께<br>
@@ -271,8 +300,8 @@
                             @php $i += 1; @endphp
                         @endforeach
                     @else
-                        <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
-                        <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                        <li><a href="#none">1강 맛보기 준비중 ></a></li>
+                        <li><a href="#none">2강 맛보기 준비중 ></a></li>
                     @endif
                 </ul> 
 
@@ -282,7 +311,7 @@
                     팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
                 </div>
 
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1564_03_04_0327_02.jpg" alt="커리큘럼 강좌소개" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/04/1601_03_04.jpg" alt="커리큘럼 강좌소개" >
             </div>
         </div>
 
@@ -349,14 +378,18 @@
                         생각했습니다.<br>
                         솔직히 강의를 마친후에 많은 숙제를 떠안은 것처럼 마음이 무겁기도 하지만
                         일단 나아갈 방향을 알게 된 것에 대해 감사한 마음이 큽니다. 
-                    </div>           
-                </div>                
-            </div>
+                    </div>
+                </div> 
 
-            {{-- 상품바로결제 정보 --}}
-            <div id="pass" style="display: none">
-                <input type="checkbox" name="y_pkg" value="162748" checked/>
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y" checked/>
+                @if(empty($data['ProdCode']) === false)
+                    <div class="evtReply">
+                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
+                        @include('willbes.pc.site.lecture.iframe_reply_partial')
+                        <div class="TopBtn">
+                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <div class="evtCtnsBox evt05">
@@ -364,13 +397,13 @@
                 <ul>
                     <li>
                         {{-- <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/162748" target="_blank"> --}}
-                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'])}}');">
-                        <span class="NSK-Black">지금, 사전예약 </span>
-                        신청하고 100만원 만들기 도전! → 
+                        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
+                        <span class="NSK-Black">지금, 수강신청하고 </span>
+                        100만원 만들기 도전! → 
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:alert('사전예약 신청기간 종료 후, 4월 9일 부터 혜택 제공됩니다.');">
+                        <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank">
                         <span class="NSK-Black">이미 신청했다면,</span>
                         위탁/사입상품 추천 받기! → 
                         </a>
@@ -379,21 +412,17 @@
             </div>	
         </div>
 
-        <div class="evtFooter">
+        <div class="evtFooter" id="infoText">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
-
-            <p># 사전예약 이벤트 안내</p>
-            <div>사전예약신청 강좌는 내강의실>수강대기 강좌에서 확인 가능합니다.<br>
-            (현재 진행중인 2020년 3월 9일 사전 예약신청 강좌의 경우 4월 9일부터 수강 시작)</div>
 
             <p># 수강안내</p>
             <ul>
-                <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
+                <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다. (내강의실 > '수강 중 강좌'에서 확인 가능)</li>
                 <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
                 <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>
                 <li>동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
+                    스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                    팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
             </ul>
 
             <p># 환불안내</p>
@@ -405,8 +434,7 @@
                 * 기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)<br>
                 * 수강시작일로부터 7일 이내 위약금 없음<br>
                 * 수강시작일로부터 7일 이후 위약금 적용 (정상가의 10% 공제) </li>
-                <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.<br>
-                (샵플링 프로그램 1개월 정가 275,000원 기준 환불시 기사용분 차감)</li>
+                <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.</li>
                 <li>환불이 진행 된 후에는 자동 수강 종료됩니다.</li>
                 <li>총강의수 전체 기수강 시에는 전액환불이 불가합니다.</li>
             </ul>
@@ -417,6 +445,10 @@
                 <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다. </li>
                 <li>수강혜택 사은품으로 발급된 인증코드 및 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
                 <li>수강상품 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
+                <li>결제 완료 시 강의는 즉시 수강 시작되오니, 이 점 참고 부탁 드립니다.</li>
+                <li>김정환대표 강의 학습 Q&A에 질문하기는 자유롭게 등록 가능하오나 질문에 대한 답변은 
+                    개별 답변이 아닌 질문유형별 FAQ 형식으로 제공될 예정이오니 이용시 양해 및 참조 부탁드립니다.
+                </li>
             </ul>
 
             <div>※ 이용문의 : 고객만족센터 1544-5006</div>

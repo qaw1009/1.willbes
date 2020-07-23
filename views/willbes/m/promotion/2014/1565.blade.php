@@ -22,41 +22,13 @@
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
-    .evt02 {border:1px solid #ccc; border-radius:10px; margin:20px;}
-    .evt02 .price {padding:30px; letter-spacing:-1px}
-    .evt02 .price li {margin-bottom:10px; font-size:1.5rem; }
-    .evt02 .price li:nth-child(1) {font-size:1.9rem;}
-    .evt02 .price li:nth-child(1) span {color:#ff0066}
-    .evt02 .price li:nth-child(2) {margin-bottom:30px;}
-    .evt02 .price li:nth-child(2) div {border-radius:10px; background:#ff0066; color:#fff}
-    .evt02 .price li:nth-child(3) {margin-bottom:30px; text-align:center}
-    .evt02 .price li:nth-child(3) dl {position:relative; line-height:1; margin:0 auto;}
-    .evt02 .price li:nth-child(3) dd {font-size:1.2rem; margin-top:5px;}
-    .evt02 .price li:nth-child(3) dd span {font-size:3rem; color:#ff0066}
-    .evt02 .price li:nth-child(3) dd span:last-child {font-size:1.2rem;}
-    .evt02 .price li:nth-child(4) {font-size:1.4rem; }
-    .evt02 .price li:nth-child(4) i {color:#a3a3a3; text-decoration: line-through;}
-    .evt02 .price li:nth-child(4) span {color:#fff; border-radius:5px; background:#ff0000; padding:0 5px}
-    .evt02 .price li:nth-child(5) {color:#ff0000; font-size:2.4rem}
-    .evt02 .price li:nth-child(5) span {font-size:3.4rem}
-    .evt02 .price li:nth-child(6) {text-align:left; color:#414141; font-size:1.1rem}
-    .evt02 .evt02-txt {background:#363636; color:#fff; border-radius:0 0 10px 10px; text-align:left; padding:20px; }
-    .evt02 .evt02-txt div {font-size:1.5rem}
-    .evt02 .evt02-txt li {list-style: decimal; margin-left:30px}
-    .evt02 .evt02-txt a {color:#f7be10}
-
-    .evt03 {background:#fff; padding-top:50px}
-    .evt03 .evt03Txt01 {color:#ff0066; font-size:1rem; margin-bottom:30px; padding:0 20px}  
-
-    .evt04 .evt04Txt01 {margin-bottom:30px; padding:20px; text-align:left}
-
-    .evt05 {text-align:left; padding:0 20px}
+    .evt05 {text-align:left; padding:0 20px; margin-top:80px; word-break: keep-all;}
     .evt05 h5 {color:#ff0066; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
     .evt05 .evt05Txt01 { font-size:1.6rem;}
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#a0774e; margin:30px 0 10px}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#ff0066; margin:30px 0 10px}
     .evt05 dt:first-child {margin:0 0 10px}
     .evt05 dd {margin-bottom:10px; line-height:1.4}
 
@@ -68,6 +40,8 @@
     .evt05 .sample li a:hover {background:#fff; color:#000}
     .evt05 .sample li:last-child {margin:0}
     .evt05 .sample:after {content:""; display:block; clear:both}
+
+    .evt05 .evt05Txt02 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; margin:20px auto 0; text-align:left}
 
     .evt06 {background:#f5f5f5}
     .evt06 .columns {padding:20px;
@@ -105,9 +79,9 @@
     }
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy a {display:block; width:94%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+    .btnbuy a {display:block; width:94%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#3a99f0;
+    .btnbuy a:hover {background:#ff0066;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
@@ -116,7 +90,7 @@
     .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
     .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-    .infoCheck a:hover {background:#0099ff;}
+    .infoCheck a:hover {background:#ff0066;}
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -158,32 +132,25 @@
         </ul>
     </div>
 
-    <div id="tab01">
-        <div class="evtCtnsBox">
-            <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_02.jpg" alt="" >
-            </a>
-        </div>
+    <div id="tab01"  class="evtCtnsBox">
+        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_02.jpg" alt="" >
+        </a>
     </div>
 
-    <div id="tab02">
-        <div class="evtCtnsBox evt03">
-            <div class="video-container-box">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/v8vHoj2Cpt8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+    <div id="tab02" class="evtCtnsBox mt50">
+        <div class="video-container-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/v8vHoj2Cpt8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_01.jpg" alt=" " >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_02.jpg" alt=" " >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_04.jpg" alt=" " >
-        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_01.jpg" alt=" " >
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_02.jpg" alt=" " >
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_04.jpg" alt=" " >
     </div>  
 
-    <div id="tab03">
-        <div class="evtCtnsBox evt05 mt50">
+    <div id="tab03" class="evtCtnsBox mt50">
+        <div class="evt05">
             <h5 class="NSK-Black">
                 <div>무재고 배송대행<Br> 도매매 샵플링</div>
                 <div>반드시 이기는<Br> 사업을 위한 커리큘럼</div>
@@ -207,6 +174,12 @@
                 @endif
             </ul>
 
+            <div class="evt05Txt02">
+                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+            </div>
+
             <div class="curriculum">
             	<dl>
                     <dt>1. 무재고 쇼핑몰 창업 시작 (창업준비 및 성공하는 창업 스케줄러)</dt> 
@@ -215,9 +188,7 @@
                     <dd>3) 따라하면 성공하는 창업 스케쥴러 </dd>
                     <dd>4) 시간을 절약하는 업무 툴 추천</dd>
                     <dd>5) 사업자등록 및 쇼핑몰 입점</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>2. 상품등록 (샵플링 프로세스 이해하기)</dt>
                     <dd>1) 빠르고 쉽게 상품 소싱하는 방법</dd>
                     <dd>2) 계절 / 시즌 / 365일 상품 소싱 방법</dd>
@@ -231,58 +202,43 @@
                     <dd>10) 묶음배송 기본정보 세팅 (오픈마켓, 소셜커머스)</dd>
                     <dd>11) 묶음배송 상품등록</dd>
                     <dd>12) 묶음 상품 그룹 생성</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>3. 상품관리 (상품 동기화 및 샵플링 DB관리)</dt>
                     <dd>1) 동기화와 판매기간 연장</dd>
                     <dd>2) 판매된 상품 샵플링 속 관리 방법</dd>
                     <dd>3) 샵플링 DB 정리 방법</dd>
                     <dd>4) 샵플링 상품 DB 직접 등록</dd>                        
-                </dl>
-                
-                <dl>
+
                     <dt>4. 주문처리 (쇼핑몰 주문 수집하기 및 반품/취소 처리)</dt>
                     <dd>1) 쇼핑몰 주문수집하기</dd>
                     <dd>2) 운송장 쇼핑몰 전송</dd>
                     <dd>3) 취소 처리 방법</dd>
                     <dd>4) 반품/교환 처리 방법</dd>
                     <dd>5) 못 받은 반품 비 받는 꿀팁</dd>
-                </dl>
-                
-				<dl>
+
                     <dt>5. C/S 줄이기 (포토샵 없이 이미지 편집하기)</dt>
                     <dd>1) HTML을 활용한 배송공지 만들기</dd>
                     <dd>2) 포토샵 없이 이미지 편집하기</dd>
-				</dl>
-                
-                <dl>
+
                     <dt>6. 회계관리 (쇼핑몰 정산 관리 및 회계 엑셀 만들기)</dt>
                     <dd>1) 온라인 쇼핑몰 정산 관리</dd>
                     <dd>2) 온라인 셀러를 위한 회계 엑셀 만들기</dd>
                     <dd>3) 돈을 모으는 통장 관리법</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>7. 사업확장 (판매채널 늘리기 및 확장기획)</dt>
                     <dd>1) 판매 채널 늘리기</dd>
                     <dd>2) 유통 사업 확장 기획</dd>
                     <dd>3) 쇼핑몰 광고 개념</dd>
-                </dl>
 
-                <dl>
                     <dt>8. 정부지원 사업 활용 노하우</dt>
                     <dd>1) 무료로 사무실 구하기</dd>
                     <dd>2) 정책자금 알아보기</dd>                        
-                </dl>
-                 
-                <dl>
+
                     <dd>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</dd>
                 </dl>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_05.jpg" alt="커리큘럼" >
+            </div>            
         </div>            
-        
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_05.jpg" alt="커리큘럼" >
     </div>
 
     <div id="tab04">

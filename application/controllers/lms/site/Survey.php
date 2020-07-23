@@ -27,7 +27,7 @@ class Survey extends \app\controllers\BaseController
         $method = 'POST';
 
         //설문정보
-        $survey_list = $this->surveyModel->listEventSurvey();
+        //$survey_list = $this->surveyModel->listEventSurvey();
 
         $data_survey = [];
         $data_question = [];
@@ -42,7 +42,7 @@ class Survey extends \app\controllers\BaseController
 
         $this->load->view('site/survey/event_survey_create', [
             'method' => $method,
-            'survey_list' => $survey_list,
+            //'survey_list' => $survey_list,
             'data_survey' => $data_survey,
             'data_question' => $data_question,
         ]);
@@ -146,7 +146,7 @@ class Survey extends \app\controllers\BaseController
             $list = $this->surveyModel->eventSurveyList(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SpIdx' => 'desc']);
 
             foreach ($list as $key => $val){
-                $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/survey/index/'.$val['SpIdx'];
+                $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SpIdx'];
                 $list[$key]['include'] = "프로모션 페이지 URL + /spidx/".$val['SpIdx'];
             }
         }

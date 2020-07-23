@@ -21,8 +21,8 @@ class SurveyModel extends WB_Model
     ];
 
     private $_selection_type = [
-        'S' => '선택형',
-        'M' => '선다형',
+        'S' => '선택형(단일)',
+        'M' => '선택형(그룹)',
         'T' => '복수형',
         'D' => '서술형'
     ];
@@ -99,10 +99,10 @@ class SurveyModel extends WB_Model
     public function listSurveyForQuestion($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y']];
-        $order_by = ['A.SqIdx'=>'ASC'];
+        $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
 
         $column = "
-            A.SpIdx, A.SqIdx, A.SqTitle, A.SqComment, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
+            A.SpIdx, A.SqIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -224,15 +224,17 @@ class SurveyModel extends WB_Model
             $sq_question_title = element('sq_question_title', $input);
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
+            $sq_type = element('sq_type', $input);
 
-            $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr);
+            $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
             $data = [
                 'SpIdx' => element('SpIdx', $input),
                 'SqTitle' => element('sq_title', $input),
                 'SqComment' => element('sq_comment', $input),
+                'OrderNum' => element('order_num', $input),
                 'SqIsUse' => element('sq_is_use', $input),
-                'SqType' => element('sq_type', $input),
+                'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
                 'SqJsonData' => $json_data,
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -267,14 +269,16 @@ class SurveyModel extends WB_Model
             $sq_question_title = element('sq_question_title', $input);
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
+            $sq_type = element('sq_type', $input);
 
-            $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr);
+            $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
             $data = [
                 'SqTitle' => element('sq_title', $input),
                 'SqComment' => element('sq_comment', $input),
+                'OrderNum' => element('order_num', $input),
                 'SqIsUse' => element('sq_is_use', $input),
-                'SqType' => element('sq_type', $input),
+                'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
                 'SqJsonData' => $json_data,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
@@ -322,21 +326,26 @@ class SurveyModel extends WB_Model
      * @param integer $question_cnt
      * @param array $question_item
      * @param array $question_item_arr
+     * @param string $question_type
      * @return string JSON string
      */
-    private function _setEncodeData($question_title,$question_cnt,$question_item,$question_item_arr){
+    private function _setEncodeData($question_title,$question_cnt,$question_item,$question_item_arr,$question_type){
 
         $data = [];
         foreach ($question_title as $key => $val){
             if(empty($val) === false && $key <= $question_cnt){
-                $data["title"][$key] = $val;
-
-                foreach ((array)$question_item[$key] as $k => $v){
-                    if(empty($v) === false && $k <= $question_item_arr[$key]){
-                        $data["item"][$key][$k] = $v;
-                        $data["item_cnt"][$key] = $question_item_arr[$key];
-                    }else{
-                        break;
+                if($question_type == 'S'){
+                    $data[1]["title"] = '';
+                    $data[1]["item"][$key] = $val;
+                }else{
+                    $data[$key]["title"] = $val;
+                    foreach ((array)$question_item[$key] as $k => $v){
+                        if(empty($v) === false && $k <= $question_item_arr[$key]){
+                            $data[$key]["item"][$k] = $v;
+                            $data[$key]["item_cnt"] = $question_item_arr[$key];
+                        }else{
+                            break;
+                        }
                     }
                 }
             }else{

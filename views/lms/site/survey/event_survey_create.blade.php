@@ -98,14 +98,16 @@
                     <div class="col-md-8 form-inline">
                         <table class="table table-striped table-bordered">
                             <colgroup>
-                                <col width="29%">
+                                <col width="4%">
+                                <col width="20%">
                                 <col width="7%">
-                                <col width="45%">
+                                <col width="50%">
                                 <col width="7%">
                                 <col width="12%">
                             </colgroup>
                             <thead>
                             <tr>
+                                <th class="text-center">노출순서</th>
                                 <th class="text-center">문항제목</th>
                                 <th class="text-center">답변유형</th>
                                 <th class="text-center">답변항목</th>
@@ -116,15 +118,23 @@
                             <tbody>
                             @foreach($data_question as $row)
                                 <tr>
+                                    <td class="text-center">{{$row['OrderNum']}}</td>
                                     <td>{{$row['SqTitle']}}</td>
                                     <td class="text-center">{{$row['SqTypeTxt']}}</td>
                                     <td>
-                                        @foreach($row['SqJsonData']['title'] as $key => $title)
-                                            <p>항목{{$key}}. {{$title}}
-                                                @if(empty($row['SqJsonData']['item']) === false)
-                                                    @foreach($row['SqJsonData']['item'][$key] as $cnt => $item)
-                                                        <br/> {{$cnt}} => {{$item}}
+                                        <p><strong>{{$row['SqComment']}}</strong></p>
+                                        @foreach($row['SqJsonData'] as $key => $val)
+                                            <p>
+                                                @if($row['SqType'] != 'S')
+                                                    항목{{$key}}. <strong>{{$val['title']}} </strong>
+                                                @endif
+
+                                                @if(empty($val['item']) === false)
+                                                    =>
+                                                    @foreach($val['item'] as $k => $v)
+                                                        {{$k}}. {{$v}},
                                                     @endforeach
+                                                    <br/>
                                                 @endif
                                             </p>
                                         @endforeach

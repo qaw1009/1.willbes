@@ -889,15 +889,17 @@ body.memBody #Footer {
 .gosi .gosiProf .swiper-container-prof .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
 
 
-.gosi .gosiTip {position:relative; max-width:720px; height: 180px; margin:0 auto; overflow:hidden;}
+.gosi .gosiTip {position:relative; padding-bottom:100px; overflow: hidden; margin-top:-30px;}
 .gosi .gosiTip .swiper-container-tip { 
-    width: 100%;  
+     width:100%; padding-bottom:56.25%; margin:0; 
 } 
+.gosi .gosiTip .swiper-wrapper {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 .gosi .gosiTip .swiper-slide { 
-    width: 227px;
-    height: 150px;
+    background-color: transparent;
 } 
 .gosi .gosiTip .swiper-slide a {display: block;}
+.gosi .gosiTip .swiper-slide .bnTit {display:block; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; 
+    margin:10px auto 0; font-size: 12px;}
 .gosi .gosiTip .swiper-slide img {width:100%;}
 .gosi .gosiTip .swiper-container-lec .swiper-pagination {bottom:0 !important;} 
 .gosi .gosiTip .swiper-container-lec .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
@@ -4133,7 +4135,7 @@ body.memBody #Footer {
         width: 150px;
     }
     .gosi .gosiTip .swiper-slide {
-        width: 150px;
+        /*width: 150px;*/
     }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:none} 
@@ -4170,7 +4172,7 @@ body.memBody #Footer {
         width: 200px;
     }
     .gosi .gosiTip .swiper-slide {
-        width: 200px;
+        /*width: 200px;*/
     }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:inline-block}    
@@ -4195,4 +4197,10 @@ body.memBody #Footer {
     }
     .Message p br {display:none}
     .gosi .mapCts .add br {display:none}
+
+    .gosi .gosiTip {position:relative; padding-bottom:0; overflow: hidden; margin-top:-30px;}
+    .gosi .gosiTip .swiper-container-tip { 
+     width:100%; padding-bottom:42.25%; margin:0; 
+} 
+    .gosi .gosiTip .swiper-slide {width:calc(50% - 10px)}
 }

@@ -8,7 +8,14 @@ var html = '', link_url = '#none';
         @if(empty($row['LinkUrl']) === false)
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $row['LinkUrlType'], 'www') }}';
         @endif
-        html += '   <div class="swiper-slide"><a href="' + link_url + '" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/></a></div>';
+        html += '   <div class="swiper-slide">';
+        html += '       <a href="' + link_url + '" target="_{{ $row['LinkType'] }}">';
+        html += '           <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/>';
+        @if($set_class == 'bnTit')
+            html += '       <div class="{{ $set_class }}">{{ $row['BannerName'] }}</div>';
+        @endif
+        html += '       </a>';
+        html += '   </div>';
     @endforeach
     html += '   </div>';
     @if(strpos($disp['DispRollingTypeName'], 'page') > -1)
@@ -28,7 +35,6 @@ var html = '', link_url = '#none';
     @else
         @if(empty($data[0]['LinkUrl']) === false)
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'] ,'www') }}';
-
         @endif
         html = '<a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
     @endif

@@ -5,15 +5,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtTop {position:relative}
-    .evtTop01 {background:#bebcbd;}
-    .evtTop > ul {padding:20px 40px}
-    .evtTop > ul li { list-style:disc; margin-left:15px; margin-bottom:5px; text-align:left;}
-    .evtTop span {position:absolute; right:5%; top:35%; animation: sp01 1.5s linear infinite;}
-    .evtTop span img {width:80px}
-    @@keyframes sp01{
-         from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-     }
+
     .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
     .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%}
@@ -37,7 +29,7 @@
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#a0774e; margin:30px 0 10px}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#383368; margin:30px 0 10px}
     .evt05 dt:first-child {margin:0 0 10px}
     .evt05 dd {margin-bottom:10px; line-height:1.4}
    
@@ -58,9 +50,9 @@
     .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
     .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt07 {background:#3a99f0; padding:20px}
+    .evt07 {background:#3a99f0; padding-bottom:20px}
     .evt07 li {display:inline; float:left; width:50%}
-    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 20px;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -79,7 +71,7 @@
     }
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy a {display:block; width:94%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+    .btnbuy a {display:block; width:94%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
     .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -197,16 +189,12 @@
                     <dt>INTRO</dt> 
                     <dd>1강 월 수익 100만원,  스마트스토어가 가장 현실적인 이유?</dd>
                     <dd>2강 ‘지금 바로 시작하는 스마트스토어’ 강의를 제대로 활용하는 방법</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 1.스마트스토어 개설하기</dt>
                     <dd>3강 나만의 쇼핑몰 만들자! 스마트스토어 개설하기</dd>
                     <dd>4강 스마트스토어를 운영을 위해 꼭 필요한 것들_사업자등록증</dd>
                     <dd>5강 스마트스토어를 운영을 위해 꼭 필요한 것들_통신판매업신고</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 2. 위탁판매로 재고 없이 소자본 창업하기</dt>
                     <dd>6강 재고 부담이 없는 판매 방식! 위탁판매란 무엇일까?</dd>
                     <dd>7강 스마트스토어에 위탁판매 상품 등록하기<dd>
@@ -220,9 +208,7 @@
                     <dd>15강 교환/반품 및 CS 처리 하기</dd>
                     <dd>16강 고객이 어떻게 찾아왔을까? 유입경로 분석하기</dd>
                     <dd>17강 나만의 위탁공급처를 만드는 방법</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 3. 도매상품 사입 판매로 매출 만들기</dt>
                     <dd>18강 무엇을 팔아야할까? 사입판매 카테고리 정하기</dd>
                     <dd>19강 이 제품 사입해도 될까?</dd>
@@ -231,30 +217,22 @@
                     <dd>22강 설득의 심리학 상세페이지 만들기</dd>
                     <dd>23강 고객의 평가를 결정 하는 제품 포장과 발송</dd>
                     <dd>24강 좋은 구매평과 재구매를 만드는 방법</dd>
-                </dl>
-                
-				<dl>
+
                     <dt>Chapter 4. 중국 소싱으로 마진 극대화</dt>
                     <dd>25강 1688에서 원하는 상품을 찾아 내는 방법</dd>
                     <dd>26강 생각보다 쉬운 개인 무역! 중국에서 직접 수입하기</dd>
                     <dd>27강 수입 통관절차 및 제품 받아보기</dd>
-				</dl>
-                
-                <dl>
+
                     <dt>Chapter 5. 나도 글로벌 셀러, 해외구매대행 사업</dt>
                     <dd>28강 부업으로도 최고! 해외구매대행 사업</dd>
                     <dd>29강 타오바오 상품을 내 스마트스토어에서 판매하기</dd>
                     <dd>30강 배송대행지를 이용한 상품 발송</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 6. 매출을 확대를 위한 오픈마켓 진출</dt>
                     <dd>31강 판매채널 확장하기! 오픈마켓 비교 분석</dd>
                     <dd>32강 1688 수입상품을 국내에서 판매할 때 주의 해야 할 점</dd>
                     <dd>33강 1688 수입상품을 도매사이트에서 판매 하는 방법</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 7. 외부 유입으로 고객을 모아보자</dt>
                     <dd>34강 스마트스토어 매출을 폭발시키는 비결_외부 유입</dd>
                     <dd>35강 네이버 블로그로 외부 유입에 대한 감을 잡자</dd>
@@ -262,21 +240,18 @@
                     <dd>37강 잠들어 있는 내 SNS 계정 마케팅 채널로 활용하기</dd>
                     <dd>38강 대세는 유튜브_유튜브 컨텐츠로 마케팅하기</dd>
                     <dd>39강 이제는 미디어 커머스_유튜브로 매출을 끌어올리는 비결</dd>
-                </dl>
-                
-                <dl>
+
                     <dt>Chapter 8. 아웃소싱으로 사업규모 키우기 </dt>
                     <dd>40강 3자 물류로 택배 포장에서 벗어 나자</dd>
                     <dd>41강 이제는 세금과의 싸움_초보창업자의 세금처리에 대해</dd>
                     <dd>42강 디지털노마드가 되어 볼까요</dd>
-                </dl>
-                 
-                <dl>
+
                     <dt>Chapter 9. OUTRO</dt>
                     <dd>43강 여러분의 경제적 자유를 응원합니다 / 종강</dd>
                 </dl>
             </div>
         </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_05.jpg" alt="" >
     </div>
 
     <div id="tab04">

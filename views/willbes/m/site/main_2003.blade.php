@@ -13,8 +13,9 @@
                 <li class="f_left">{!! banner('M_메인상단01', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li class="f_right">{!! banner('M_메인상단02', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
-            <div class="c_both">{!! banner('M_메인상단03', '', $__cfg['SiteCode'], '0') !!}</div>
         </div>
+
+        {!! banner('M_메인상단03', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
 
         <div class="gosiTitle NSK-Black">
             합격을 위해 필요한 모든 것, 윌비스PASS
@@ -41,7 +42,7 @@
         </div>
 
         <div class="gosiTip">
-            {!! banner('M_메인_cast', 'swiper-container-tip', $__cfg['SiteCode'], '0') !!}
+            {!! banner('M_메인_cast', 'swiper-container-tip', $__cfg['SiteCode'], '0', 'bnTit') !!}
         </div>
 
         <div class="noticeTabs c_both mt30">

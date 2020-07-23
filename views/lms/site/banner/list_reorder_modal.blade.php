@@ -38,7 +38,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-primary btn-search" id="btn_modal_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                            <button type="button" class="btn btn-primary btn-search" id="btn_modal_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                         </div>
                     </div>
                 </div>

@@ -5,15 +5,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtTop {position:relative}
-    .evtTop01 {background:#bebcbd;}
-    .evtTop > ul {padding:20px 40px}
-    .evtTop > ul li { list-style:disc; margin-left:15px; margin-bottom:5px; text-align:left;}
-    .evtTop span {position:absolute; right:5%; top:35%; animation: sp01 1.5s linear infinite;}
-    .evtTop span img {width:80px}
-    @@keyframes sp01{
-         from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-     }
+
     .evtMenu {background:#fff; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
     .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%}
@@ -58,9 +50,9 @@
     .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
     .evt06 .columns div strong {font-size:bold; color:#333}
 
-    .evt07 {background:#00c73c; padding:20px}
+    .evt07 {background:#00c73c; padding-bottom:20px}
     .evt07 li {display:inline; float:left; width:100%}
-    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
+    .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 20px;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

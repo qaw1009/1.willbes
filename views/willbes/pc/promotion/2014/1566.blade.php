@@ -31,21 +31,7 @@
         }
         .skybanner a {display:block; margin-bottom:5px}
 
-
-
         .evtTop {background:#167544}
-        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-        @@keyframes upDown{
-             from{top:600px}
-             50%{top:620px}
-             to{top:600px}
-         }
-        @@-webkit-keyframes upDown{
-             from{top:600px}
-             50%{top:620px}
-             to{top:600px}
-         }
-
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
         .tabs {width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
@@ -69,7 +55,6 @@
         .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
         .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
         .infoCheck a:hover {background:#00c73c;}
-
       
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
@@ -94,7 +79,7 @@
         .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
         .evtCurri li.cTitle {color:#00c73c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
-        .evt06 {background:#f5f5f5; padding:150px 0}
+        .evt06 {background:#f5f5f5; padding:150px 0 100px}
         .evt06 .columns {width:720px; margin:50px auto 0;
             column-count: 1;
             column-gap:20px;
@@ -282,7 +267,7 @@
                         <li>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</li>
                     </ul>
                 </div>
-                <div class="evtCtnsBox"><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_05.jpg" alt="BEST 수강후기" ></div>
+                <div class="evtCtnsBox"><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_05.jpg" alt="" ></div>
             </div>
         </div>
 

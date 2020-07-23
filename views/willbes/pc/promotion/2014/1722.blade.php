@@ -57,6 +57,27 @@
         .evt07 {background:#a1774f}
         .evt09 {background:#c2c2c2}
 
+        .evt10 { padding:120px 0 0; text-align:left;}
+        .evt10 .copy {width:720px; margin:0 auto;}
+        .evt10 h5 {color:#a0774e; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evt10 .evt10Txt01 {font-size:28px; margin:20px auto 80px}
+        .evt10 .sample {width:720px; margin:0 auto}
+        .evt10 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
+            background:#2a92ed; color:#fff; font-size:20px; font-weight:600; text-align:center}
+        .evt10 .sample li p {margin-bottom:15px;}
+        .evt10 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
+        .evt10 .sample li a.btnst01 {border:1px solid #ccc;}
+        .evt10 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
+        .evt10 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt10 .sample li a:hover {background:#000; color:#fff}
+        .evt10 .sample li:last-child {margin:0}
+        .evt10 .sample:after {content:""; display:block; clear:both}
+        .evt10 .evt10Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;} 
+
+        .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
+        .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px; line-height:1.3}
+        .evtCurri li.cTitle {color:#a0774e; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+
 
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
@@ -142,6 +163,152 @@
 
         <div class="evtCtnsBox evt07">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_07.jpg" alt="2년연속 조기마감">
+        </div>
+
+        <div class="evtCtnsBox evt10" id="evt10">
+            <div class="copy">
+                <h5 class="NSK-Black">
+                    <div>책쓰기가 이렇게 쉬울줄이야!</div>
+                </h5>
+                <div class="evt10Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+            </div>
+            {{--
+            <ul class="sample">
+                @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @php $i = 1; @endphp
+                    @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
+                        <li>
+                            <p>{{$i}}강 맛보기 수강 ▼</p>                                
+                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
+                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
+                        </li>
+                        @php $i += 1; @endphp
+                    @endforeach
+                @else
+                    <li><a href="#none">1강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">2강 맛보기 준비중 ></a></li>
+                @endif
+            </ul>             
+
+            <div class="evt10Txt02">
+                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+            </div>
+            --}}
+
+            <div class="evtCurri">
+                <ul>
+                    <li class="cTitle">CHAPTER 1</li>
+                    <li>1강 책은 성공한 사람이 아닌, 성공을 꿈꾸는 사람이 쓰는 것이다<br>
+                    - 왜 책을 쓰려고 하는가? 책은 어떤 사람이 쓰는가?</li>
+                    <li>2강 나같이 평범한 사람도 책을 쓸 수 있을까? - 사례 1</li>
+                    <li>3강 나같이 평범한 사람도 책을 쓸 수 있을까? - 사례 2</li>
+                    <li>4강 나같이 평범한 사람도 책을 쓸 수 있을까? - 사례 3</li>
+
+                    <li class="cTitle">CHAPTER 2</li>
+                    <li>5강 이런 책들은 누가, 그리고 어떤 사람이 쓸까요? - 사례 1<br>
+                    - 전문가가 아니어도 책은 쓸 수 있다</li>
+                    <li>6강 이런 책들은 누가, 그리고 어떤 사람이 쓸까요? - 사례 2<br>
+                    - 우리의 상식으로는 도저히 납득할 수 없는 상식을 뒤집는 책</li>
+                    <li>7강 이런 책들은 누가, 그리고 어떤 사람이 쓸까요? - 사례 3<br>
+                    - 유대인의 생각하는 힘<br>
+                    - 스피치의 매력에 빠지다<br>
+                    - 한권으로 정리하는 4차 산업혁명<br>
+                    - 나는 스타벅스보다 작은 카페가 좋다<br>
+                    - 톡!톡!톡! 생각을 디자인하라<br>
+                    - 내 아이를 위한 칼 비테 교육법<br>
+                    - 공부머리 독서법</li>
+
+                    <li class="cTitle">CHAPTER 3</li>
+                    <li>8강 나만의 콘셉트를 잡기 / "나"는 누구인가? 사례 1<br>
+                    - 대기업 교육 담당 경험으로 커뮤니케이션 코칭<br>
+                    - 독서를 통해 쌓은 지식을 토대로 속독법이나 독서법 코칭</li>
+                    <li>9강 "나"는 누구인가? 사례 2<br>
+                    - 꽃을 매개로 바쁘고 지친 사람들의 마음에 힐링을 주는 에세이<br>
+                    - 누구나 쉽게 갈 수 있는 세계여행<br>
+                    - 왜 실패했는지에 대한 경험을 토대로 비즈니스 성공학<br>
+                    - 작은 회사 200% 매출 올리는 노하우 비법<br>
+                    - 스마트스토어 마케팅<br>
+                    - 미래4차 산업을 어떻게 대처할 것인가?<br>
+                    - 학교를 떠나 성공한 자들의 비결</li>
+
+                    <li class="cTitle">CHAPTER 4</li>
+                    <li>10강 기획부터 출간까지, 책쓰기에 필요한 9가지<br>
+                    - 책은 어떻게 쓰는가?<br>
+                    - 책은 어떻게 만들어지는가?<br>
+                    - 13가지 출판의 흐름 분석하기</li>
+
+                    <li class="cTitle">CHAPTER 5</li>
+                    <li>11강 베스트셀러는 어떻게 만들어지는가?<br>
+                    - 베스트셀러가 되는 5가지 요소</li>
+
+                    <li class="cTitle">CHAPTER 6</li>
+                    <li>12강 책은 제목이 팔 할이다 - 좋은 제목 사례 1</li>
+                    <li>13강 책은 제목이 팔 할이다 - 좋은 제목 사례 2</li>
+                    <li>14강 책은 제목이 팔 할이다 - 제목 실패 사례</li>
+
+                    <li class="cTitle">CHAPTER 7</li>
+                    <li>15강 제목의 짝꿍인 카피, "나도 너만큼 중요해" - 카피의 중요성 1</li>
+                    <li>16강 제목의 짝꿍인 카피, "나도 너만큼 중요해" - 카피의 중요성 2</li>
+
+                    <li class="cTitle">CHAPTER 8</li>
+                    <li>17강 제목을 200% 상승시켜주는 표지 정하기</li>
+                    <li>18강 책 제목의 중요성<br>
+                    - 제목 깎아 먹는 표지 사례<br>
+                    - 내가 만약 표지를 선택한다면?<br>
+                    - 제목을 200% 상승시켜주는 표지<br>
+                    - 제목 깎아 먹는 제목<br>
+                    - 표지를 200% 상승시켜주는 제목</li>
+
+                    <li class="cTitle">CHAPTER 9</li>
+                    <li>19강 제목은 모든 문장의 첫 번째 줄이다!</li>
+                    <li>20강 가장 이상적인 제목의 글자 수는?</li>
+                    <li>21강 출판사 계약을 성공시킨 작은 성공체험</li>
+
+                    <li class="cTitle">CHAPTER 10</li>
+                    <li>22강 독자의 시선을 사로잡는 제목 만들기<br>
+                    - 제목은 모든 문장의 첫 번째 줄이다<br>
+                    - 마음을 담은 제목 한 줄이 상대의 욕구를 자극한다<br>
+                    - 출판사에 계약을 성사시킨 작은 성공체험</li>
+                    <li>23강 제목 만들기 실전 연습 1</li>
+                    <li>24강 제목 만들기 실전 연습 2</li>
+
+                    <li class="cTitle">CHAPTER 11</li>
+                    <li>25강 '대박' 제목 만들기 6가지 법칙 1<br>
+                    - 무엇이 이익인지 확실하게 알려주어야 한다<br>
+                    - 지금이 기회라는 강조와 중요한 일임을 인식시켜야한다<br>
+                    - 내용이 궁금해서 참을 수 없게 만든다.<br>
+                    - ‘왜?’라는 의문이 들게 해야 한다 </li>
+                    <li>26강 '대박' 제목 만들기 6가지 법칙 2<br>
+                    - ‘설마, 그게 가능해?’하는 흥미를 유발시켜야 한다. <br>
+                    - ‘왜 읽어야 하는가?’ 읽어야할 이유를 확실하게 알려야 한다.<br>
+                    - 독자의 마음을 위로하고 대변해주는 표현을 한다.</li>
+                    <li>27강 제목을 지을때 꼭 알아야 할 금기 사항</li>
+
+                    <li class="cTitle">CHAPTER 12</li>
+                    <li>28강 목차 만들기 실전 연습 1</li>
+                    <li>29강 목차 만들기 실전 연습 2</li>
+                    <li>30강 목차 만들기 실전 연습 3</li>
+
+                    <li class="cTitle">CHAPTER 13</li>
+                    <li>31강 책을 쓰려면 어떤 것 부터 준비해야 하나요?<br>
+                    - 나만의 콘셉 잡기<br>
+                    - 나의 언어로 고쳐쓰기<br>
+                    - 진짜 나의 이야기로 표현하는 전문적인 책쓰기<br>
+                    <li>32강 책쓰기, 어떻게 해야 하나요? 실전 연습 1</li>
+                    <li>33강 책쓰기, 어떻게 해야 하나요? 실전 연습 2</li>
+
+                    <li class="cTitle">CHAPTER 14</li>
+                    <li>34강 출판권 설정 계약은 어떻게 해야 하나요<br>
+                    - 출판권 및 전송 이용권의 유효기간과 갱신 및 재고도서의 배포 <br>
+                    - 비용의 부담<br>
+                    - 출판에 따른 저작권 사용료  ‘인세’ 등</li>
+
+                    <li class="cTitle">CHAPTER 15</li>
+                    <li>35강 종강 : 당신의 삶이 책이 되는 양원근의 강의를 마치며</li>
+                </ul>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt08">

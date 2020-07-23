@@ -63,8 +63,10 @@
                     </div>
                 </div>
 
+                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
                 {{-- 사이트탭영역 --}}
                 @include('willbes.m.layouts.toptab')
+                @endif
 
                 {{-- GNB메뉴영역 --}}
                 @if(empty($__cfg['SiteMenu']['TreeMenu']['GNB']['Children']) === false)

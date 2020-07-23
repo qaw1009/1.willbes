@@ -1,6 +1,7 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
+@if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
     <!-- Container -->
     <div id="Container" class="Container NSK gosi mb40">
         <div class="gosiTitle NSK-Black">
@@ -112,4 +113,8 @@
             });
         });
     </script>
+@else
+    {{-- 학원 메인페이지 없음 --}}
+    @php header('Location:'.site_url('/m')); @endphp
+@endif
 @stop

@@ -100,7 +100,7 @@
             // 수험생활 팁
             new Swiper('.swiper-container-tip', {
                 slidesPerView: 'auto',
-                spaceBetween: 5,
+                spaceBetween: 20,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
@@ -108,6 +108,10 @@
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                    spaceBetween: 10,
                 },
             });
         });

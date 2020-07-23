@@ -537,7 +537,7 @@
     //수험생활 팁
     var swiper = new Swiper('.swiper-container-tip', {
         slidesPerView: 'auto',
-        spaceBetween: 5,
+        spaceBetween: 20,
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
@@ -546,6 +546,11 @@
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+        640: {
+          spaceBetween: 10,
+        },
+      }
     });    
 </script> 
 

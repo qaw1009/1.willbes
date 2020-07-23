@@ -898,6 +898,7 @@ body.memBody #Footer {
     height: 150px;
 } 
 .gosi .gosiTip .swiper-slide a {display: block;}
+.gosi .gosiTip .swiper-slide img {width:100%;}
 .gosi .gosiTip .swiper-container-lec .swiper-pagination {bottom:0 !important;} 
 .gosi .gosiTip .swiper-container-lec .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
 
@@ -4131,6 +4132,9 @@ body.memBody #Footer {
     .gosi .gosiProf .swiper-slide {
         width: 150px;
     }
+    .gosi .gosiTip .swiper-slide {
+        width: 150px;
+    }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:none} 
 }
@@ -4163,6 +4167,9 @@ body.memBody #Footer {
         height: 690px;                     
     }
     .gosi .gosiProf .swiper-slide {
+        width: 200px;
+    }
+    .gosi .gosiTip .swiper-slide {
         width: 200px;
     }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 

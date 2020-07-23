@@ -37,8 +37,9 @@
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#1087ef; margin-top:30px}
-    .evt05 dt:first-child {margin:0}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#a0774e; margin:30px 0 10px}
+    .evt05 dt:first-child {margin:0 0 10px}
+    .evt05 dd {margin-bottom:10px; line-height:1.4}
    
     .evt05 .evt05Txt02 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; margin:20px auto 0; text-align:left}
 

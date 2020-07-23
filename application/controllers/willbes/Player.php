@@ -2268,7 +2268,7 @@ class Player extends \app\controllers\FrontController
             return $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
         }
 
-        $mem = $this->memberFModel->getMember([
+        $mem = $this->memberFModel->getMember(false, [
             'Mem.MemIdx' => $memidx,
             'Mem.IsStatus' => 'Y'
         ]);

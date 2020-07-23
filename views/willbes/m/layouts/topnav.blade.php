@@ -63,6 +63,9 @@
                     </div>
                 </div>
 
+                {{-- 사이트탭영역 --}}
+                @include('willbes.m.layouts.toptab')
+
                 {{-- GNB메뉴영역 --}}
                 @if(empty($__cfg['SiteMenu']['TreeMenu']['GNB']['Children']) === false)
                     {{-- 모바일GNB (전체보기) 메뉴 설정 --}}

@@ -9,7 +9,7 @@
                     <ul class="bigType">
                         <li><a href="{{ front_app_url('/home/index', 'police') }}" target="_blank">신광은경찰</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">5급행정</a></li>
-                        <li><a href="{{ front_app_url('/home/index/', 'pass') }}" target="_blank">공무원</a></li>
+                        <li><a href="{{ front_app_url('/home/index', 'pass') }}" target="_blank">공무원</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" target="_blank">국립외교원</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">PSAT</a></li>
@@ -63,7 +63,7 @@
         });
 
         // 백그라운드 이미지
-    var images = ['gate_m_bg1.png', 'gate_m_bg2.png', 'gate_m_bg3.png'];    
-    $('.introBox3').css({'background-image': 'url(https://static.willbes.net/public/images/promotion/m/' + images[Math.floor(Math.random() * images.length)] + ')'});
+        var images = ['gate_m_bg1.png', 'gate_m_bg2.png', 'gate_m_bg3.png'];
+        $('.introBox3').css({'background-image': 'url({{ img_static_url('promotion/m/') }}' + images[Math.floor(Math.random() * images.length)] + ')'});
     </script>
 @stop

@@ -41,7 +41,7 @@ class SupportExamNews extends BaseSupport
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
-                'b.SiteCode' => $this->_site_code,
+                //'b.SiteCode' => $this->_site_code,
             ],
             'ORG' => [
                 'LKB' => [

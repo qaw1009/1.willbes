@@ -9,23 +9,23 @@
 
         @section('layer_content')
             {!! form_errors() !!}
-            <form class="form-horizontal searching" id="search_form_modal" name="search_form_modal" method="POST" onsubmit="return false;" novalidate>
+            <form class="form-horizontal" id="search_form_modal" name="search_form_modal" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
                 <div class="form-group">
                     <div class="row mt-5">
                         <div class="col-md-2">
-                            {!! html_site_select('', 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', 'required', '', true) !!}
+                            {!! html_site_select($search_site_code, 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', 'required', '', true) !!}
                         </div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" id="search_value" name="search_value">
+                            <input type="text" class="form-control" id="search_value" name="search_value" value="@if(empty($search_search_value) === false){{$search_search_value}}@endif">
                         </div>
-                        <div class="col-md-2">
-                            <p class="form-control-static">• 통합 검색 가능</p>
-                        </div>
+
                         <div class="col-md-2">
                             <select class="form-control mr-10" id="search_modal_cate_code" name="search_modal_cate_code" title="카테고리">
                                 <option value="">카테고리</option>
                                 @foreach($arr_cate_code as $row)
-                                    <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                    {{-- <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option> --}}
+                                    <option value="{{$row['CateCode']}}" data-chained="{{ $row['SiteCode'] }}" @if(empty($search_cate_code) === false && $search_cate_code == $row['CateCode'])selected="selected"@endif>{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -33,9 +33,12 @@
                             <select class="form-control mr-10" id="search_modal_banner_disp_idx" name="search_modal_banner_disp_idx" title="노출섹션">
                                 <option value="">노출섹션</option>
                                 @foreach($arr_disp_data as $row)
-                                    <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}_{{$row['CateCode']}}">{{$row['DispName']}}</option>
+                                    <option value="{{$row['BdIdx']}}" data-chained="{{$row['SiteCode']}}+{{$row['CateCode']}}" @if(empty($search_disp_idx) === false && $search_disp_idx == $row['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary btn-search" id="btn_modal_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                         </div>
                     </div>
                 </div>
@@ -59,35 +62,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $row)
-                                <tr>
-                                    <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
-                                    <td>{{ $row['DispName'] }}<span class="hide">{{ $row['BdIdx'] }}</span></td>
-                                    <td>
-                                        <div class="form-group form-group-sm">
-                                            <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['BIdx'] }}" style="width: 80px;" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {{ $row['CateName'] }}
-                                        <span class="hide">{{$row['SiteCode']}}_{{$row['CateCode']}}</span>
-                                    </td>
-                                    <td>{{ $row['BannerName'] }}</td>
-                                    <td>
-                                        <img src="{{$row['BannerFullPath']}}{{$row['BannerImgName']}}" width='100%' height='30%'>
-                                    </td>
-                                    <td>
-                                        {{$row['DispStartDatm']}} ~ {{$row['DispEndDatm']}}
-                                    </td>
-                                    <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
-                                </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </form>
                 </div>
             </div>
 
+            <script src="/public/vendor/jquery/chained/jquery.chained2.min.js"></script>
             <script type="text/javascript">
                 var $datatable_modal;
                 var $search_form_modal = $('#search_form_modal');
@@ -96,16 +77,53 @@
 
                 $(document).ready(function() {
                     // site-code에 매핑되는 select box 자동 변경
-                    $search_form_modal.find('select[name="search_modal_cate_code"]').chained("#search_modal_site_code");
-                    $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').chained("#search_modal_cate_code");
+                    $search_form_modal.find('select[name="search_modal_cate_code"]').chained2('#search_modal_site_code');
+                    $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').chained2('#search_modal_site_code, #search_modal_cate_code');
 
                     $datatable_modal = $list_modal_table.DataTable({
-                        ajax: false,
+                        serverSide: true,
                         paging: false,
-                        searching: true,
                         rowsGroup: ['.rowspan'],
                         buttons: [
                             { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' }
+                        ],
+                        ajax: {
+                            'url' : '{{ site_url('/site/banner/regist/listReOrderModalAjax') }}',
+                            'type' : 'POST',
+                            'data' : function(data) {
+                                return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                                //return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                            }
+                        },
+                        columns: [
+                            {'data' : 'SiteName'},
+                            {'data' : 'DispName'},
+                            {
+                                'data' : null,
+                                'render' : function(data, type, row, meta) {
+                                    return '<input type="text" name="order_num" class="form-control" value="' + row.OrderNum + '" data-origin-order-num="' + row.OrderNum + '" data-idx="' + row.BIdx + '" style="width: 80px;" />';
+                                }
+                            },
+                            {'data' : 'CateName'},
+                            {'data' : 'BannerName'},
+                            {
+                                'data' : null,
+                                'render' : function(data, type, row, meta) {
+                                    return '<img src="' + row.BannerFullPath + row.BannerImgName + '" width="100%" height="30%">';
+                                }
+                            },
+                            {
+                                'data' : null,
+                                'render' : function(data, type, row, meta) {
+                                    return row.DispStartDatm + '~' + row.DispEndDatm;
+                                }
+                            },
+                            {
+                                'data' : null,
+                                'render' : function(data, type, row, meta) {
+                                    return row.IsUse == 'N' ? '<span class="red">미사용</span>' : '사용' ;
+                                }
+                            },
                         ]
                     });
 
@@ -137,25 +155,22 @@
                         sendAjax('{{ site_url('/site/banner/regist/reorder') }}', data, function(ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                replaceModal('/site/banner/regist/listReOrderModal', {});
+                                replaceModal('/site/banner/regist/listReOrderModal/?' +
+                                    'site_code=' + $search_form_modal.find('select[name="search_modal_site_code"]').val() +
+                                    '&cate_code=' + $search_form_modal.find('select[name="search_modal_cate_code"]').val() +
+                                    '&disp_idx=' + $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').val() +
+                                    '&search_value=' + $search_form_modal.find('input[name="search_value"]').val(),
+                                {});
                             }
                         }, showError, false, 'POST');
                     });
                 });
 
-                // datatable searching
-                function datatableSearching() {
-                    $datatable_modal
-                        .columns('.searching').flatten().search($search_form_modal.find('input[name="search_value"]').val())
-                        .column('.searching_site_code').search($search_form_modal.find('select[name="search_modal_site_code"]').val())
-                        .column('.searching_category').search($search_form_modal.find('select[name="search_modal_cate_code"]').val())
-                        .column('.searching_banner_disp_idx').search($search_form_modal.find('select[name="search_modal_banner_disp_idx"]').val())
-                        .draw();
-                }
-
-                // searching: true 옵션일 경우 검색
-                $search_form_modal.filter('.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
-                    datatableSearching();
+                $search_form_modal.on('click', '#btn_modal_search', function() {
+                    if($search_form_modal.find('select[name="search_modal_site_code"]').val() == '') {
+                        alert('사이트를 선택해주세요'); return;
+                    }
+                    $search_form_modal.submit();
                 });
             </script>
         @stop

@@ -56,19 +56,20 @@
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#ff0066; margin-top:30px}
-    .evt05 dt:first-child {margin:0}
-    .evt05 ul {margin:10px auto}
-    .evt05 ul li {display:inline; float:left; padding:15px; border:1px solid #e4e4e4; }
-    .evt05 ul li p {margin-bottom:10px;}
-    .evt05 ul li a {display:inline-block; padding:0 8px; text-align:center;  margin:0 auto 5px; border-radius:4px;}
-    .evt05 ul li a.btnst01 {border:1px solid #ccc;}
-    .evt05 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-    .evt05 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-    .evt05 ul li a:hover {background:#000; color:#fff}
-    .evt05 ul:after {content:""; display:block; clear:both}
-    .evt05 .evt03Txt01 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; width:80%; max-width:900px; margin:20px auto 0; text-align:left}
-    
+    .evt05 dt {font-size:16px; font-weight:bold; color:#a0774e; margin:30px 0 10px}
+    .evt05 dt:first-child {margin:0 0 10px}
+    .evt05 dd {margin-bottom:10px; line-height:1.4}
+
+    .evt05 .sample {margin-top:50px}
+    .evt05 .sample li {display:inline; float:left; width:49%; padding:15px 0; margin-right:1%; border-radius:10px; 
+        background: #acacac; color:#fff; font-size:16px; font-weight:600; text-align:center}
+    .evt05 .sample li p {margin-bottom:15px;}
+    .evt05 .sample li a {display:inline-block; padding:5px 10px; font-size:14px; margin:0 2px 5px; border-radius:4px; background:#000; color:#fff;}
+    .evt05 .sample li a:hover {background:#fff; color:#000}
+    .evt05 .sample li:last-child {margin:0}
+    .evt05 .sample:after {content:""; display:block; clear:both}
+
+    .evt06 {background:#f5f5f5}
     .evt06 .columns {padding:20px;
         column-count: 1;
         column-gap:20px;
@@ -84,6 +85,7 @@
     .evt06 .columns div strong {font-size:bold; color:#333}
 
     .evt07 {background:#ff0066; padding:20px}
+    .evt07 li {display:inline; float:left; width:100%}
     .evt07 li a {display:block; font-size:1rem; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px; margin:0 1.5%;}
     .evt07 li a:hover {background:#fff; color:#000;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -92,7 +94,6 @@
     .evt07 li span {display:block; font-size:1.25rem}
     .evt07 ul:after {content:""; display:block; clear:both}
 
-    .video-container-box {padding:20px}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
     .video-container iframe,
     .video-container object,
@@ -104,7 +105,7 @@
     }
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
+    .btnbuy a {display:block; width:94%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
     .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -125,88 +126,44 @@
     .evtFooter li {margin-left:20px; list-style-type: decimal;}
 
     /* 폰 가로, 태블릿 세로*/
-    @@media only all and (min-width: 408px)  {
-
+    @@media only screen and (max-width: 374px) {
+        .evt07 li {display:block; float:none; width:100%; margin-bottom:5px}  
     }
 
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
+        .evt07 li {display:block; float:none; width:100%; margin-bottom:5px}  
+    }
     /* 태블릿 세로 */
-    @@media only all and (min-width: 768px) {
-        .evt02 .price br {display:none}
-        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}
-    }
-
-    /* 태블릿 가로, PC */
-    @@media only all and (min-width: 1024px) {
-
+    @@media only screen and (min-width: 690px) {
+        .evt05 h5 br {display:none}
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}          
     }
     </style>
 
 <div id="Container" class="Container NSK c_both">            
-    <div class="evtCtnsBox evtTop">
-        <div class="evtTop01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_top.jpg" alt="창업 다마고치" ></div>             
-        <div class="evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_top_txt.jpg" alt="창업 다마고치" >
-        </div>
-        <ul>
-            <li>버킷리스터 (전자상거래업) 대표</li>
-            <li>2019 도매꾹도매매 우수전문셀러</li>
-            <li>2019 원스톱 생존코스 강사</li>
-            <li>2019 빅데이터 기반 e커머스 실천 창업강사</li>
-            <li>2017 스타트업 기업분석 프리젠테이션 콘테스트 대상</li>
-            <li>2016 소셜크리에이터 리그 수상</li>
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_top.jpg" alt="온라인 창업 황채영" >
+    </div> 
+    
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_01.jpg" alt="20대 성공신화" >
+    </div> 
+    
+    <div class="evtMenu">
+        <ul class="tabs">
+            <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
+            <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
+            <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
+            <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
         </ul>
-        <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의"></a></span>  
-        <div class="evtMenu">
-            <ul class="tabs">
-                <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
-                <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
-                <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
-            </ul>
-        </div>  
-    </div>       
+    </div>
 
-    <div id="tab01" class="evtCtnsBox">
-        <div class="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_01.jpg" alt="" >
+    <div id="tab01">
+        <div class="evtCtnsBox">
+            <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_02.jpg" alt="" >
+            </a>
         </div>
-        {{--시간설정--}}
-        @if(time() < strtotime('202005311159'))
-        <div class="evt02">
-            <ul class="price NSK-Black">
-                <li><a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1625" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1625_title.jpg" alt="" ></a></li>
-                <li></li>
-                <li>   
-                    <dl>
-                        <dd>
-                            신청마감까지<br>
-                            <span id="ddayCountDayText"></span><br><span id="ddayCountText"></span> 남았습니다.
-                        </dd>
-                    </dl>
-                </li>
-                <li>289,000원</li>
-                <li>월 <span>4만원</span>대</li>
-                <li>
-                    수강기간 : 6개월<br>
-                    수강대상 : 온라인 쇼핑몰 창업 입문부터 가능
-                </li>
-            </ul>            
-            <div class="evt02-txt">
-                <div>*  이벤트 기간  :  5월1일(금)~5.31(일) 당첨자 발표 : 6.5(금) 공지사항 참조</div>
-                <ul>
-                    <li>생생한 리뷰를 남겨주시면  추첨을 통해 맛~있는 간식을 드립니다!</li>
-                    <li>쇼핑몰 통합관리 솔루션 '샵플링' 1개월 포함<br>
-                        (스탠다드 버전 27만원 상당)<br>
-                        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">☞ 샵플링 이용안내 </a></li>
-                </ul>
-            </div>
-        </div>
-        @else
-        <div class="evt01 pt80">
-            <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1565M_01_01.jpg" alt="황채영" ></a>
-        </div>
-        @endif
     </div>
 
     <div id="tab02">
@@ -216,160 +173,45 @@
                     <iframe src="https://www.youtube.com/embed/v8vHoj2Cpt8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="evt03Txt01">
-                안녕하세요. 올해 대학을 졸업했고,<br>
-                대학 졸업 전 취업보다는 창업을 선택해,<br>
-                무재고로 쇼핑몰 사업을 하고 있는  <br>
-                <span class="NSK-Black">버킷리스터 대표 황채영</span>입니다. 
-            </div>
         </div>
         
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_02.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                저는 대학교 졸업 전, 과일판매  창업, 취업, 정부 사업 등 <br>
-                다양한 도전을 했습니다.<br>
-                <br>
-                이때 많은 실패들을 경험하고 <br>
-                무언가를 다시 도전하기가 두려워지더라구요.<br>
-                <br>
-                그리고 제가 생각한 건, <br>
-                무조건 이기는 사업만 해야겠다는 것입니다.<br>
-                <br>
-                저는 금수저도 아니었고 , <br>
-                부모님의 도움도 전혀 받지 않았습니다. <br>
-                관련 전문 자격이나 기술도 없었습니다.<br>
-                <br>
-                그렇다고, 절대 저에게 <br>
-                대단한 무언가가 있는 것도 아니었어요
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_03.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                저는 단지, 평범한 대학생이였습니다.<br>
-                엑셀은 프로그램 여는 것만 가능했고,<br>
-                단지 노트북으로 인터넷 서칭하는 정도의 능력만 가지고
-                시작했습니다.<br>
-                제게 있는 건, 시간과 열정 뿐이었습니다!<br>
-                여러분도 마음만 있다면 누구나 도전 가능합니다
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_04.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                제가 가능했던  사업은 바로 <br>
-                ‘B2B 무재고 배송대행’ 사업입니다!<br>
-                <br>
-                운영을 위해 상품을 쌓아두지 않아도 된다는 점, <br>
-                그러니까 재고도 없고 리스트도 없는 사업이죠<br>
-                <br>
-                이러한 점들은, <br>
-                더욱 과감하게 부담 없이 도전해 볼 수 있는 계기였습니다.
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_05.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                창업 후 초반에 전, <br>
-                크고 작은 시행착오를 겪었습니다.<br>
-                상품 소싱부터 상품등록, 주문처리 등 <br>
-                혼자서 감당해야 할 일들이 많았습니다.<br>
-                <br>
-                학교를 다니는 학생으로서, <br>
-                그리고 창업한 사업가로서 여러가지 걱정에,<br>
-                잠을 개운하게 잔 날이 손에 꼽을 정도였습니다.<br>
-                <br>
-                당시의 제가<br>
-                조금 더 집중해야 될 방향을 알았다면 참 좋았을 텐데 말이죠.<br>
-                <br>
-                그래서,<br>
-                여러분에게 그 역할, 제가 해드리겠습니다.<br>
-                <br>
-                이미, 오프라인 강의를 통해 많은 분들에게 <br>
-                온라인 창업 노하우를 전달하고 있는데요.<br>
-                <br>
-                지금 이 시간에도 많은 수강생분들이 <br>
-                교육을 수강하고 난 후, <br>
-                실제 매출을 경험하면서 계속해서 발전해 나가고 있습니다.
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_06.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                제가 알려드리는 온라인 창업은,<br>
-                단순히 촉이나 감에 의해 운영하는 그런 사업이 아닙니다.<br>
-                <br>
-                바로, <br>
-                <br>
-                스마트스토어를 비롯한 <br>
-                8대 오픈마켓과 소셜커머스로<br>
-                한 번에 상품등록을 하고 주문 처리하며<br>
-                데이터를 분석하고 나에게 맞게 적용시키는 방법!<br>
-                <br>
-                이것이 핵심 노하우 입니다.
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_07.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                이와 더불어, 무재고 쇼핑몰 셀러로서 ‘놓치지 않았으면’ <br>
-                하는 부분들을 담았습니다.<br>
-                <br>
-                큰 목표가 아닌,<br>
-                강의의 커리큘럼만을 여러분들의 목표로 생각해주시고 <br>
-                함께 따라오신다면<br>
-                무조건 이기는 사업, 여러분도 충분히 하실 수 있습니다.<br>
-                <br>
-                특히, 저와 같은 자본이 부족한 분들이라면, <br>
-                안성맞춤 사업이 바로 무재고 배송대행 사업입니다.<br>
-                <br>
-                대학생이었던 제가 많지 않은 돈으로 창업을 하고<br>
-                매출을 일으켰듯 말이죠.<br>
-                <br>
-                <br>
-                잠깐! <br>
-                무재고 배송대행 사업의 특징은,<br>
-                상품의 대량 등록이 가능한 <br>
-                온라인통합솔루션 “샵플링”을 사용한다는 점인데요.<br>
-                <br>
-                샵플링은 사업 운영 시 해야하는 ‘반복작업’을 줄여줍니다.<br>
-                <br>
-                익숙해지는데 다소 시간이 걸리지만, <br>
-                익숙해지면 내 사업의 큰 무기가 될 수 있습니다. 
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_08.jpg" alt=" " >
-            <div class="evt04Txt01 mb100">
-                두 가지를 모두 잡기 위한 도구 ‘샵플링’을 활용하면!<br>
-                보다 간편하게 대량의 상품을 <br>
-                위탁상품 소싱부터 등록/주문 수집 / 발주 등의 상품 관리가<br>
-                한 번에 가능합니다 
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_01.jpg" alt=" " >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_03_02.jpg" alt=" " >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_04.jpg" alt=" " >
         </div>
     </div>  
 
     <div id="tab03">
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05 mt50">
             <h5 class="NSK-Black">
-                무재고 배송대행<Br>
-                도매매 샵플링 <Br>
-                반드시 이기는<Br>
-                사업을 위한 커리큘럼
+                <div>무재고 배송대행<Br> 도매매 샵플링</div>
+                <div>반드시 이기는<Br> 사업을 위한 커리큘럼</div>
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+
+            <ul class="sample">
+                @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @php $i = 1; @endphp
+                    @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                        <li>
+                            <p>{{$i}}강 맛보기 수강 ▼</p>
+                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>고해상도 ></a>
+                            <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");'>저해상도 ></a>
+                        </li>
+                        @php $i += 1; @endphp
+                    @endforeach
+                @else
+                    <li><a href="#none">1강 맛보기 수강 준비중 ></a></li>
+                    <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
+                @endif
+            </ul>
+
             <div class="curriculum">
             	<dl>
                     <dt>1. 무재고 쇼핑몰 창업 시작 (창업준비 및 성공하는 창업 스케줄러)</dt> 
                     <dd>1) 무재고 쇼핑몰을 해야하는 이유</dd>
                     <dd>2) 도매매와 샵플링으로 만드는 무재고 쇼핑몰</dd>
-                    <dd>
-                        <ul>
-                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                                @php $i = 1; @endphp
-                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                                    <li>
-                                        <p>{{$i}}강 맛보기 수강 ▼</p>
-                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
-                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
-                                    </li>
-                                    @php $i += 1; @endphp
-                                @endforeach
-                            @else
-                                <li>1강 맛보기<br>수강 준비중 ></li>
-                                <li>2강 맛보기<br>수강 준비중 ></li>
-                            @endif
-                        </ul>
-                    </dd>
                     <dd>3) 따라하면 성공하는 창업 스케쥴러 </dd>
                     <dd>4) 시간을 절약하는 업무 툴 추천</dd>
                     <dd>5) 사업자등록 및 쇼핑몰 입점</dd>
@@ -427,7 +269,7 @@
                     <dd>2) 유통 사업 확장 기획</dd>
                     <dd>3) 쇼핑몰 광고 개념</dd>
                 </dl>
-                                
+
                 <dl>
                     <dt>8. 정부지원 사업 활용 노하우</dt>
                     <dd>1) 무료로 사무실 구하기</dd>
@@ -438,14 +280,14 @@
                     <dd>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</dd>
                 </dl>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_09.jpg" alt="커리큘럼" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_05.jpg" alt="커리큘럼" >
         </div>            
         
     </div>
 
     <div id="tab04">
         <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_10.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_06.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
                     <h4>신*화 대표님</h4>
@@ -489,7 +331,7 @@
         </div>
 
         <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1565M_11.png" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_07.jpg" alt="" >
             <ul>
                 <li>
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">

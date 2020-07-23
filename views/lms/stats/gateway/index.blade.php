@@ -428,16 +428,16 @@
                                 return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) > 0) ? '<b><font color=red>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) > 0) ? '<b><font color=red>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (parseInt(row.gateway_count) > 0 ?'<b>' + (parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
@@ -464,16 +464,16 @@
                                 return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) > 0) ? '<b><font color=red>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) > 0) ? '<b><font color=red>' + addComma(data) + '</b>' : '0';
                             }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(data) > 0) ? '<b>' + addComma(data) + '</b>' : '0';
+                                return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (parseInt(row.gateway_count) > 0 ? '<b>' +(parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;

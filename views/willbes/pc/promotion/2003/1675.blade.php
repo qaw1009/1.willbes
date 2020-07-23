@@ -20,7 +20,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
+        .sky2 {position:fixed;top:150px;right:10px;z-index:1;}
+        .sky {position:fixed;top:325px;right:10px;z-index:1;}
 
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
@@ -76,14 +77,21 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
-        <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_sky.png" usemap="#Map1675sky" title="아침 똑똑 영어 스카이 베너" border="0" >
+
+        <div class="sky2">
+            <a href="#evt4">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_sky2.png" title="한덕현 티패스">
+            </a>           
+        </div>
+
+        <div class="sky">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_sky.png" usemap="#Map1675sky" title="아침 똑똑 영어 스카이 베너" border="0" >
             <map name="Map1675sky" id="Map1675sky">
                 <area shape="rect" coords="3,114,154,190" href="#youtube_watch" />
                 <area shape="rect" coords="4,199,154,271" href="#detail" />
                 <area shape="rect" coords="5,280,151,352" href="#evt1" />
                 <area shape="rect" coords="5,360,149,438" href="#evt3" />
-                <area shape="rect" coords="4,444,149,522" href="#evt4" />          
+            </map>          
         </div>
 
         {{--     
@@ -150,10 +158,10 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                  
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_june.jpg" /></li>--}}
+                <ul id="slidesImg4">                                     
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_july.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_august.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_september.jpg" /></li>
                 </ul>
                
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
@@ -192,7 +200,7 @@
         <div class="evtCtnsBox evt03ss2">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
             <map name="evt4Map" id="evt4Map">
-                <area shape="rect" coords="772,242,928,379" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163940" onfocus='this.blur()' />
+                <area shape="rect" coords="641,271,920,386" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank" />
             </map>
         </div>
 
@@ -318,10 +326,7 @@
 						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
 						&nbsp;- 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
 						&nbsp;- 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.				
-                    </li>       
-                    <li>                    
-                        <span class="big">국가직 시험을 위하여 고생하신 수험생 여러분들의 합격을 기원하며, 7/13(월)~7/17(금) 해당 주간은 휴방합니다.</span><br>			
-                    </li>                            
+                    </li>                             
                 </ul>
             </div>
         </div>

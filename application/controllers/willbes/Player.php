@@ -2269,8 +2269,10 @@ class Player extends \app\controllers\FrontController
         }
 
         $mem = $this->memberFModel->getMember(false, [
-            'Mem.MemIdx' => $memidx,
-            'Mem.IsStatus' => 'Y'
+            'EQ' => [
+                'Mem.MemIdx' => $memidx,
+                'Mem.IsStatus' => 'Y'
+            ]
         ]);
 
         if(empty($mem) === true){

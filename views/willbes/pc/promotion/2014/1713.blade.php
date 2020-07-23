@@ -142,9 +142,9 @@
             background:#01c73c; color:#fff; font-size:20px; font-weight:600; text-align:center}
         .evt11 .sample li p {margin-bottom:15px;}
         .evt11 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
-        .evt11 .sample li a.btnst01 {border:1px solid #ccc;}
-        .evt11 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-        .evt11 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
+        .evt11 .sample li a.btnst01 {border:1px solid #ccc; padding:0 10px}
+        .evt11 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333; padding:0 10px}
+        .evt11 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc; padding:0 10px}
         .evt11 .sample li a:hover {background:#000; color:#fff}
         .evt11 .sample li:last-child {margin:0}
         .evt11 .sample:after {content:""; display:block; clear:both}

@@ -111,8 +111,9 @@
                 },
                 breakpoints: {
                     640: {
-                    spaceBetween: 10,
-                },
+                        spaceBetween: 10,
+                    },
+                }
             });
         });
     </script>

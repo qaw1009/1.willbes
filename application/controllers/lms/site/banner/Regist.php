@@ -17,20 +17,16 @@ class Regist extends \app\controllers\BaseController
     public function index()
     {
         //카테고리 조회
-        $category_data = $this->_getCategoryArray(1);
+        $category_data = $this->_getCategoryArray();
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
-
-        //사이트카테고리 중분류 조회
-        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, B.ParentCateCode');
 
         $this->load->view('site/banner/index',[
             'arr_cate_code' => $category_data,
-            'arr_m_category' => $arr_m_category,
             'arr_disp_data' => $arr_disp_data,
             'arr_campus' => $arr_campus
         ]);
@@ -310,7 +306,6 @@ class Regist extends \app\controllers\BaseController
                 'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'A.BdIdx' => $this->_reqP('search_banner_disp_idx'),
                 'A.IsUse' => $this->_reqP('search_is_use'),
-                'A.CateCode' => $this->_reqP('search_md_cate_code')
             ],
             'ORG1' => [
                 'LKB' => [
@@ -321,8 +316,7 @@ class Regist extends \app\controllers\BaseController
         ];
 
         if (empty($this->_reqP('search_cate_code')) === false) {
-            //$arr_condition['LKR']['A.CateCode'] = explode('_', $this->_reqP('search_cate_code'))[1];
-            $arr_condition['LKR']['A.CateCode'] = $this->_reqP('search_cate_code');
+            $arr_condition['LKR']['A.CateCode'] = explode('_', $this->_reqP('search_cate_code'))[1];
         }
 
         // 날짜 검색

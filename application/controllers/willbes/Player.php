@@ -2268,6 +2268,17 @@ class Player extends \app\controllers\FrontController
             return $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
         }
 
+        $mem = $this->memberFModel->getMember(false, [
+            'EQ' => [
+                'Mem.MemIdx' => $memidx,
+                'Mem.IsStatus' => 'Y'
+            ]
+        ]);
+
+        if(empty($mem) === true){
+            return $this->StarplayerResult(true, '사용자정보가 없습니다.', '', $isApp);
+        }
+
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
                 'MemIdx' => $memidx,

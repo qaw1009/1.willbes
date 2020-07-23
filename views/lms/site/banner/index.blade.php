@@ -21,15 +21,7 @@
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
-                                {{-- <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option> --}}
-                                <option value="{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                            @endforeach
-                        </select>
-
-                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code" class="search_cate">
-                            <option value="">중분류</option>
-                            @foreach($arr_m_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
 
@@ -43,7 +35,7 @@
                         <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
-                                <option value="{{$row['BdIdx']}}" class="{{$row['CateCode']}}">{{$row['DispName']}}</option>
+                                <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}_{{$row['CateCode']}}">{{$row['DispName']}}</option>
                             @endforeach
                         </select>
 
@@ -129,7 +121,6 @@
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_md_cate_code"]').chained("#search_cate_code");
             $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -139,8 +130,8 @@
                     { text: '<i class="fa fa-copy mr-10"></i> 미사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-use' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder-open' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 배너 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/site/banner/regist/create') }}' + dtParamsToQueryString($datatable);
-                        }}
+                        location.href = '{{ site_url('/site/banner/regist/create') }}' + dtParamsToQueryString($datatable);
+                    }}
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/banner/regist/listAjax') }}',
@@ -151,28 +142,28 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.BIdx +'">';
-                        }},
+                        return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.BIdx +'">';
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'DispName'},
                     {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
-                        }},
+                        return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
+                    }},
                     {'data' : 'BannerRealFullPath', 'render' : function(data, type, row, meta) {
-                            var img_url = row.BannerFullPath + row.BannerImgName;
-                            return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' height='30%'>";
-                        }},
+                        var img_url = row.BannerFullPath + row.BannerImgName;
+                        return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' height='30%'>";
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
-                        }},
+                        return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},

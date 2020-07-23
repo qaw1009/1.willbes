@@ -187,14 +187,51 @@ class Regist extends \app\controllers\BaseController
      */
     public function listReOrderModal()
     {
-        $this->load->helper('file');
-        $arr_condition = [];
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $search_site_code = element('site_code', $arr_input);
+        $search_cate_code = element('cate_code', $arr_input);
+        $search_disp_idx = element('disp_idx', $arr_input);
+        $search_search_value = element('search_value', $arr_input);
+        if (empty($search_site_code) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
 
         //카테고리 조회
         $category_data = $this->_getCategoryArray(1);
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, B.ParentCateCode');
+
+        $this->load->view("site/banner/list_reorder_modal", [
+            'arr_cate_code' => $category_data,
+            'arr_disp_data' => $arr_disp_data,
+            'search_site_code' => $search_site_code,
+            'search_cate_code' => $search_cate_code,
+            'search_disp_idx' => $search_disp_idx,
+            'search_search_value' => $search_search_value
+        ]);
+    }
+
+    /**
+     * 정렬 변경 리스트 Ajax
+     */
+    public function listReOrderModalAjax()
+    {
+        $this->load->helper('file');
+        $arr_condition = [
+            'EQ' => [
+                'A.SiteCode' => $this->_reqP('search_modal_site_code'),
+                'A.CateCode' => $this->_reqP('search_modal_cate_code'),
+                'A.BdIdx' => $this->_reqP('search_modal_banner_disp_idx'),
+                'A.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'A.BannerName' => $this->_reqP('search_value'),
+                    'F.DispName' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
 
         $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['A.SiteCode' => 'asc', 'A.BdIdx' => 'asc', 'A.OrderNum' => 'asc', 'A.BIdx' => 'desc']);
 
@@ -203,10 +240,8 @@ class Regist extends \app\controllers\BaseController
             $list[$key]['BannerImgInfo'] = @getimagesize($img_real_path);
         }
 
-        $this->load->view("site/banner/list_reorder_modal", [
+        return $this->response([
             'data' => $list,
-            'arr_cate_code' => $category_data,
-            'arr_disp_data' => $arr_disp_data
         ]);
     }
 

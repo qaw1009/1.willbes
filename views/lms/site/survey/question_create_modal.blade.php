@@ -44,13 +44,20 @@
             </div>
 
             <div class="form-group form-group-sm">
+                <label class="control-label col-md-1-1" for="order_num">정렬순서</label>
+                <div class="col-md-10 form-inline">
+                    <input type="number" class="form-control" id="order_num" name="order_num" title="정렬순서" value="{{$sq_data['OrderNum'] or '0' }}">
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1" for="sq_type">답변유형 <span class="required">*</span></label>
                 <div class="col-md-10 form-inline">
-                    <span style="color:red;">유형설명 - 선택형(단일선택 객관식), 선다형(서술형 여러개), 복수형(다중선택 객관식)</span><br/>
+                    <span style="color:red;">유형설명 - 선택형단일(단일선택 객관식), 선택형그룹(단일선택 그룹핑), 복수형(다중선택 객관식)</span><br/>
                     <select class="form-control" id="sq_type" name="sq_type" title="답변유형" required="required" onchange="sel_question_type();">
                         <option value="">-유형선택-</option>
-                        <option value="S" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "S") selected="selected" @endif>선택형</option>
-                        <option value="M" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "M") selected="selected" @endif>선다형</option>
+                        <option value="S" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "S") selected="selected" @endif>선택형(단일)</option>
+                        <option value="M" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "M") selected="selected" @endif>선택형(그룹)</option>
                         <option value="T" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "T") selected="selected" @endif>복수형</option>
                         <option value="D" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "D") selected="selected" @endif>서술형</option>
                     </select>
@@ -77,18 +84,18 @@
 
                             <select id="t{{ $i }}" class="form-control col-md-1-1 hide mr-5" name="sq_item_cnt[{{ $i }}]" title="갯수" onchange="sel_question_item('{{ $i }}',this.value);">
                                 @for($j = 1; $j <= $sq_item_cnt; $j++)
-                                    <option value='{{ $j }}' @if(empty($sq_data['SqJsonData']['item_cnt'][$i]) === false && $sq_data['SqJsonData']['item_cnt'][$i] == $j ) selected="selected" @endif>{{ $j }}</option>
+                                    <option value='{{ $j }}' @if(empty($sq_data['SqJsonData'][$i]['item_cnt']) === false && $sq_data['SqJsonData'][$i]['item_cnt'] == $j ) selected="selected" @endif>{{ $j }}</option>
                                 @endfor
                             </select>
 
-                            <input type="text" class="form-control sq_question" name="sq_question_title[{{$i}}]" title="답변항목 {{ $i }}" required="required" value="{{ $sq_data['SqJsonData']['title'][$i] or ''}}">
+                            <input type="text" class="form-control sq_question" name="sq_question_title[{{$i}}]" title="답변항목 {{ $i }}" required="required" value="@if($sq_data['SqType'] == 'S'){{$sq_data['SqJsonData'][1]['item'][$i] or ''}}@else{{ $sq_data['SqJsonData'][$i]['title'] or ''}}@endif">
                         </div>
 
                         <div class="t{{ $i }} mb-10 hide">
                             @for($j=1; $j <= $sq_item_cnt; $j++)
                                 <div class="mb-10 tt{{ $j }} hide">
                                     <label class="control-label col-md-offset-2 col-md-1" for="sq_question_item[{{$i}}][{{$j}}]" style="text-align: right">{{ $j }}. <span class="required">*</span></label>
-                                    <input type="text" class="form-control sq_question_item" name="sq_question_item[{{$i}}][{{$j}}]" title="항목{{ $j }}" required="required" value="{{ $sq_data['SqJsonData']['item'][$i][$j] or ''}}">
+                                    <input type="text" class="form-control sq_question_item" name="sq_question_item[{{$i}}][{{$j}}]" title="항목{{ $j }}" required="required" value="{{ $sq_data['SqJsonData'][$i]['item'][$j] or ''}}">
                                 </div>
                             @endfor
                         </div>
@@ -167,14 +174,14 @@
             var sel_cnt = $("#sq_cnt option:selected").val();
             var sel_type = $("#sq_type option:selected").val();
 
-            if(sel_type == 'T'){ // 복수형
+            if(sel_type == 'T' || sel_type == 'M'){ // 복수형, 선택형(그룹)
                 add_question_t_type(sel_cnt);
-            }else{// 선택형, 선다형, 서술형
+            }else{// 선택형(단일), 서술형
                 add_question(sel_cnt,sel_type);
             }
         }
 
-        // 서술형, 선택형, 선다형 선택
+        // 선택형(단일), 서술형
         function add_question(sel_cnt,sel_type) {
             for(var i = 1; i <= sel_cnt; i++){
                 $('#sq' + i).removeClass("hide");
@@ -184,7 +191,7 @@
             }
         }
 
-        // 복수형 선택
+        // 복수형, 선택형(그룹)
         function add_question_t_type(sel_cnt) {
             for(var i = 1; i <= sel_cnt; i++){
                 $('#sq' + i).removeClass("hide");

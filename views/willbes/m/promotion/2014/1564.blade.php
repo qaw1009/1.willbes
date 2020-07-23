@@ -22,9 +22,9 @@
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
-    .evt05 {text-align:left; padding:0 20px; margin-top:80px}
+    .evt05 {text-align:left; padding:0 20px; margin-top:80px; word-break: keep-all;}
     .evt05 h5 {color:#383368; font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
-    .evt05 .evt05Txt01 {font-size:1.6rem;}
+    .evt05 .evt05Txt01 {font-size:1.6rem;line-height:1;}
     .evt05 .sample {margin-top:50px}
     .evt05 .sample li {display:inline; float:left; width:49%; padding:15px 0; margin-right:1%; border-radius:10px; 
         background: #acacac; color:#fff; font-size:16px; font-weight:600; text-align:center}
@@ -37,11 +37,13 @@
     .evt05 .curriculum {margin:30px 0}
     .evt05 dl {margin-top:30px;}
     .evt05 dl:first-child {margin:0}
-    .evt05 dt {font-size:16px; font-weight:bold; color:#1087ef; margin-top:30px}
-    .evt05 dt:first-child {margin:0}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#a0774e; margin:30px 0 10px}
+    .evt05 dt:first-child {margin:0 0 10px}
+    .evt05 dd {margin-bottom:10px; line-height:1.4}
    
     .evt05 .evt05Txt02 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; margin:20px auto 0; text-align:left}
-    
+
+    .evt06 {background:#f5f5f5}
     .evt06 .columns {padding:20px;
         column-count: 1;
         column-gap:20px;
@@ -134,8 +136,8 @@
         </ul>
     </div>      
 
-    <div id="tab01" class="evtCtnsBox">
-        <div>
+    <div id="tab01">
+        <div class="evtCtnsBox">
             <a href="https://njob.willbes.net/m/support/notice/show/cate/?board_idx=268597" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_02.jpg" alt="창업 다마고치" >
             </a>
@@ -279,7 +281,7 @@
 
     <div id="tab04">
         <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1564M_11.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_06.jpg" alt="BEST 수강후기" >
             <div class="columns">
                 <div>
                     <h4>지금 바로 시작하게 만드는 다마고치님의 강의! </h4>

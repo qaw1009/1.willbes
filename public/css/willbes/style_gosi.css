@@ -125,6 +125,24 @@
 .gosi-gate-bnSec04 li {display:inline; float:left; width:370px; margin-right:5px}
 .gosi-gate-bnSec04 li:last-child {margin:0}
 
+.gosi-gate .noticeList .List-Table li a {
+    display: inline-block;
+    width: 75%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.gosi-gate .noticeList .List-Table li img {display: inline-block; vertical-align: top; margin-top: 8px;}
+.gosi-gate .noticeList .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-top:3px;
+    margin-right: 5px;
+    height: 19px; line-height: 19px;    
+}
 
 /*********************************************     Main Container : Gosi     *********************************************/
 .gosi .Depth .depth:last-child strong {

@@ -173,8 +173,14 @@
             });
 
             $('.btn-reorder-open').click(function() {
+                {{-- 검색속도 떄문에 전체검색 금지 --}}
+                var search_site_code = $search_form.find('select[name="search_site_code"]').val();
+                if(search_site_code == '' || search_site_code === undefined) {
+                    search_site_code = '{{config_item('app_intg_site_code')}}';
+                }
+
                 $('.btn-reorder-open').setLayer({
-                    "url" : "{{ site_url('/site/banner/regist/listReOrderModal') }}",
+                    "url" : "{{ site_url('/site/banner/regist/listReOrderModal/?site_code=') }}" + search_site_code,
                     "width" : "1400",
                 });
             });

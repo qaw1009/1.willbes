@@ -15,10 +15,6 @@ class SupportExamNews extends BaseSupport
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
 
-    private $_search_bm_idx =[
-        'examAnnouncement' => '54', // 시험공고 bm_idx
-    ];
-
     public function __construct()
     {
         parent::__construct();
@@ -43,11 +39,10 @@ class SupportExamNews extends BaseSupport
         $list = [];
         $arr_condition = [
             'EQ' => [
-                //'b.BmIdx' => $this->_bm_idx,
+                'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
                 //'b.SiteCode' => $this->_site_code,
             ],
-            'IN' => ['b.BmIdx' => [$this->_bm_idx, $this->_search_bm_idx['examAnnouncement']]],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword,

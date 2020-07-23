@@ -31,21 +31,7 @@
         }
         .skybanner a {display:block; margin-bottom:5px}
 
-
-
-        .evtTop {background:#fff7f5 url(https://static.willbes.net/public/images/promotion/2020/03/1566_top_bg.jpg) repeat-x left top}
-        .evtTop span { position:absolute; left:50%; margin-left:350px; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-        @@keyframes upDown{
-             from{top:600px}
-             50%{top:620px}
-             to{top:600px}
-         }
-        @@-webkit-keyframes upDown{
-             from{top:600px}
-             50%{top:620px}
-             to{top:600px}
-         }
-
+        .evtTop {background:#167544}
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
         .tabs {width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
@@ -54,152 +40,71 @@
         .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
         .tabs:after {content:""; display:block; clear:both}
 
-        .evt01 {background:#fff; padding:100px 0}
-        .evt01 .dday {font-size:30px; position:absolute; top:430px; left:50%; width:940px; margin-left:-470px; text-align:center;}
-        .evt01 .dday strong {font-size:40px}
-        .evt01 .dday img {display:inline-block; margin:0 20px;
-            -webkit-animation: vibrate-1 1s linear infinite both;
-            animation: vibrate-1 1s linear infinite both;
-        }
-        @@-webkit-keyframes vibrate-1 {
-             0% {
-                 -webkit-transform: translate(0);
-                 transform: translate(0);
-             }
-             20% {
-                 -webkit-transform: translate(-2px, 2px);
-                 transform: translate(-2px, 2px);
-             }
-             40% {
-                 -webkit-transform: translate(-2px, -2px);
-                 transform: translate(-2px, -2px);
-             }
-             60% {
-                 -webkit-transform: translate(2px, 2px);
-                 transform: translate(2px, 2px);
-             }
-             80% {
-                 -webkit-transform: translate(2px, -2px);
-                 transform: translate(2px, -2px);
-             }
-             100% {
-                 -webkit-transform: translate(0);
-                 transform: translate(0);
-             }
-         }
-        @@keyframes vibrate-1 {
-             0% {
-                 -webkit-transform: translate(0);
-                 transform: translate(0);
-             }
-             20% {
-                 -webkit-transform: translate(-2px, 2px);
-                 transform: translate(-2px, 2px);
-             }
-             40% {
-                 -webkit-transform: translate(-2px, -2px);
-                 transform: translate(-2px, -2px);
-             }
-             60% {
-                 -webkit-transform: translate(2px, 2px);
-                 transform: translate(2px, 2px);
-             }
-             80% {
-                 -webkit-transform: translate(2px, -2px);
-                 transform: translate(2px, -2px);
-             }
-             100% {
-                 -webkit-transform: translate(0);
-                 transform: translate(0);
-             }
-         }
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1566_01_bg.jpg) repeat-x left top;}
 
-        .evt01 .dday span {color:#00c73c; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
-        .evt01 .btnbuy {width:940px; margin:50px auto 0}
-        .evt01 .btnbuy a {border-radius:50px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
-        .evt01 .btnbuy a:hover {background:#00c73c;
-            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-        @@-webkit-keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        @@keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
+        .evt02 {background:#fff7f5; padding-top:100px}
+
+        .evt03 {background:#fff; padding:100px 0}
+        .evt03 .btnbuy {width:720px; margin:50px auto 0}
+        .evt03 .btnbuy a {border-radius:10px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
+        .evt03 .btnbuy a:hover {background:#00c73c;}
+
         .infoCheck {margin-top:30px; font-size:14px}
         .infoCheck label {margin-right:30px; cursor: pointer;}
         .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
         .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
         .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-        .infoCheck a:hover {background:#0099ff;}
-
-        .evt02_00 {background:#fff7f5}
-        .evt02 {background:#f6f6f6; padding-top:100px}
+        .infoCheck a:hover {background:#00c73c;}
+      
         .evt02 .evt02Txt01 {font-size:26px; line-height:1.1; margin-top:40px; letter-spacing:-1px; color:#464646}
         .evt02 .evt02Txt01 span {font-size:38px; box-shadow:inset 0 -30px 0 rgba(0,0,0,.1); color:#000}
 
-        .evt03 {background:#fff;}
-        .evt03 ul li {display:inline; float:left; width:48%; padding:20px; margin:0 1%; border-radius:10px; background:#353267; color:#fff}
-        .evt03 ul li p {font-size:20px; margin-bottom:15px; font-weight:600}
-        .evt03 ul li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
-        .evt03 ul li a.btnst01 {border:1px solid #ccc;}
-        .evt03 ul li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-        .evt03 ul li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-        .evt03 ul li a:hover {background:#000; color:#fff}
-        .evt03 ul:after {content:""; display:block; clear:both}
-        .evt03 .evt03Txt01 {font-size:16px; line-height:1.4; margin-top:20px; letter-spacing:-1px; color:#333; padding-left:140px;}
-        .evt03 ul {width:900px; margin:0 auto}
-        .evt03 div {line-height:1.5; text-align:left; width:1120px; margin:0 auto; font-size:20px; color:#fff;}
+        .evt04 {background:#f5f5f5; padding-top:100px}
 
-        .evt04 {background:#ececec; padding:100px 0}
-        .evt04 img {border-bottom:1px solid #e4e4e4;}
-        .evt04 h4 {color:#00c73c; font-size:18px}
-        .evt04 .columns {width:940px; margin:50px auto 0;
+        .evt05 {background:#fff; padding-top:100px; text-align:left;}
+        .evt05 .copy {width:720px; margin:0 auto;}
+        .evt05 h5 {color:#00c73c; font-size:46px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evt05 .evt05Txt01 {font-size:28px; margin:20px auto 80px}
+        .evt05 .sample {width:720px; margin:0 auto}
+        .evt05 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
+            background:#acacac; color:#fff; font-size:20px; font-weight:600; text-align:center}
+        .evt05 .sample li p {margin-bottom:15px;}
+        .evt05 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:8px; background:#000; color:#fff;}
+        .evt05 .sample li a:hover {background:#fff; color:#000}
+        .evt05 .sample li:last-child {margin:0}
+        .evt05 .sample:after {content:""; display:block; clear:both}
+        .evt05 .evt05Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;}
+
+        .evtCurri {width:720px; margin:50px auto 0; text-align:left}
+        .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
+        .evtCurri li.cTitle {color:#00c73c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+
+        .evt06 {background:#f5f5f5; padding:150px 0 100px}
+        .evt06 .columns {width:720px; margin:50px auto 0;
             column-count: 1;
             column-gap:20px;
         }
-        .evt04 .columns div {
+        .evt06 .columns div {
             text-align:justify; font-size:14px; line-height:1.4;
             display:inline-block;
             padding:20px; border:1px solid #eee; border-radius:10px;
-            margin-bottom:20px; color:#666; background:#fff;
+            margin-bottom:20px; color:#888; background:#fff;
         }
-        .evt04 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
-        .evt04 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+        .evt06 .columns div p {border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px}
+        .evt06 .columns div:hover {box-shadow:0 10px 10px rgba(102,102,102,0.2); color:#000}
+        .evt06 .columns div strong {font-size:bold; color:#333}
 
-        .evt05 {background:#00c73c; padding-bottom:100px}
-        .evt05 ul {width:940px; margin:0 auto;}
-        .evt05 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
-        .evt05 li a:hover {background:#fff; color:#000;
+        .evt07 {background:#00c73c; padding-bottom:100px}
+        .evt07 ul {width:720px; margin:0 auto;}
+        .evt07 li {display:inline; float:left; width:100%}
+        .evt07 li a {display:block; font-size:24px; color:#fff; padding:20px 0; text-align:center; background:#000; line-height:1.5; border-radius:10px}
+        .evt07 li a:hover {background:#fff; color:#000;
             -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }
-        .evt05 li span {display:block; font-size:28px}
-        .evt05 li:last-child a{margin-left:10px}
-        .evt05 ul:after {content:""; display:block; clear:both}
+        .evt07 li span {display:block; font-size:28px}
+        .evt07 li:last-child a{margin-left:10px}
+        .evt07 ul:after {content:""; display:block; clear:both}
 
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}
 
@@ -220,43 +125,32 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
-            {{--시간설정--}}
-            @if(time() < strtotime('202005311159'))
-            <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_02.png" alt="리뷰이벤트"></a>
-            @endif
-            {{--
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1566_sky.png" alt="스카이베너" usemap="#Map1566_sky" border="0" >
-            <map name="Map1566_sky" id="Map1566_sky">
-                <area shape="rect" coords="7,6,112,447" href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');" alt="강의신청" />
-            </map>
-            --}}
         </div>                  
 
 		<div class="evtCtnsBox evtTop">        
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" ><br>
-            <span><a href="#tab03"><img src="https://static.willbes.net/public/images/promotion/2020/03/1564_pup.png" alt="맛보기강의" > </a></span>                 
-            <div class="evtMenu">
-                <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
-                    <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                    <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
-                    <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
-                </ul>
-            </div>  
-        </div>       
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_top.jpg" alt="네이버 파트너스퀘어 공식강사" >            
+        </div>
+
+        <div class="evtCtnsBox evt01">        
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_01.jpg" alt="네이버 파트너스퀘어 공식강사" >            
+        </div> 
+        
+        <div class="evtCtnsBox evt02">        
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_02.jpg" alt="네이버 파트너스퀘어 공식강사" >            
+        </div>  
+        
+        <div class="evtMenu">
+            <ul class="tabs">
+                <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
+                <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
+                <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
+                <li><a href="#tab04" data-tab="tab04" class="top-tab">BEST 수강후기</a></li>
+            </ul>
+        </div>
 
         <div id="tab01">
-            <div class="evtCtnsBox evt01">
-            {{--시간설정--}}
-            @if(time() < strtotime('202005311159'))
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1602_01.jpg" alt="사전예약 이벤트" usemap="#Map1566A" border="0" >
-                <map name="Map1566A" id="Map1566A">
-                    <area shape="rect" coords="100,9,1016,259" href="https://njob.willbes.net/promotion/index/cate/3114/code/1625" target="_blank" alt="리뷰생활">
-                </map>
-                <div class="dday NSK-Thin">신청마감 <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_img01.png" alt="시계" ><strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong></div>
-            @else
-                <img src="https://static.willbes.net/public/images/promotion/2020/05/1566_01.jpg">
-            @endif
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_03.jpg">
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>
@@ -267,35 +161,32 @@
         </div>
 
         <div id="tab02">
-            <div class="evtCtnsBox evt02_00">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_top_01.jpg" alt="네이버 파트너스퀘어 공식강사" >
-            </div>
-            <div class="evtCtnsBox evt02">                
+            <div class="evtCtnsBox evt04">
                 <iframe src="https://www.youtube.com/embed/SqJMAs2mic8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="evt02Txt01">
-                    안녕하세요. 네이버 파트너스퀘어 공식 강사이자,<br>
-                    유튜브 채널 "단아쌤TV"를 운영중인<br>
-                    <span class="NSK-Black">단아쌤 김경은</span>입니다. 
-                </div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_01.jpg" alt="인플루언서" ><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_02_02.jpg" alt="인플루언서" >
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_04_01.jpg" alt="" ></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_04_02.jpg" alt="" ></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_04_03.jpg" alt="" ></div>
             </div> 
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_01.jpg" alt="e커머스 강좌소개" >               
-            </div>  
         </div>  
 
         <div id="tab03">
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_03_02_01.jpg" alt="커리큘럼 안내" >
-                <ul>
+            <div class="evtCtnsBox evt05">
+                <div class="copy">
+                    <h5 class="NSK-Black">
+                        <div>'10년차 쇼핑몰 업계 전문 강사</div>
+                        <div>단아샘이 알려주는 전문 커리큘럼</div>
+                    </h5>
+                    <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
+                </div>
+
+                <ul class="sample">
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @php $i = 1; @endphp
                         @foreach($arr_base['promotion_otherinfo_data'] as $row)
                             <li>
                                 <p>{{$i}}강 맛보기 수강 ▼</p>
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
+                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">고해상도 ></a>
+                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">저해상도 ></a>
                             </li>
                             @php $i += 1; @endphp
                         @endforeach
@@ -304,29 +195,85 @@
                         <li><a href="#none">2강 맛보기 수강 준비중 ></a></li>
                     @endif
                 </ul>
-                {{--
-                <ul>
-                    <li>
-                        <p>1강 맛보기 수강 ▼</p>
-                        <a href="#none" class="btnst01">WIDE ></a>
-                        <a href="#none" class="btnst02">HIGH ></a>
-                        <a href="#none" class="btnst03">LOW ></a>
-                    </li>
-                    <li>
-                        <p>2강 맛보기 수강 ▼</p>
-                        <a href="#none" class="btnst01">WIDE ></a>
-                        <a href="#none" class="btnst02">HIGH ></a>
-                        <a href="#none" class="btnst03">LOW ></a>
-                    </li>
-                </ul>
-                --}}
-                <img src="https://static.willbes.net/public/images/promotion/2020/04/1602_03_02_02.jpg" alt="커리큘럼 안내" >
+
+                <div class="evt05Txt02">
+                    * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                    스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                    팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+                </div>
+
+                <div class="evtCurri">
+                    <ul>
+                        <li class="cTitle">1. 쇼핑몰 창업준비 (사업자 등록 및 세금 준비 등)</li> 
+                        <li>A. 쇼핑몰 창업준비물(사업자등록증,구매안전확인증-통신판매업신고증,사업자계좌,인감증명서등)</li>
+                        <li>B. 집에서 사업자등록증 발급하는 방법</li>
+                        <li>C. 통신판매업신고증 받는 방법 (구매안전확인증이 필요해요!)</li>
+                        <li>D. 세금준비를 위한 3개의 통장 활용방법</li>
+                        <li>E. 선배 창업자의 창업전 알았더라면 좋았을 꿀팁</li>
+
+                        <li class="cTitle">2. 상품소싱을 위한 도매쇼핑몰 가입하기</li>
+                        <li>A. 위탁도매와 사입, 구매대행의 차이점 알아보기</li>
+                        <li>B. 도매매, 도매꾹의 차이점 알아보기</li>
+                        <li>C. 중국 구매대행 상품운영방법 알아보기</li>
+
+                        <li class="cTitle">3. 상품등록을 위한 준비 (마켓별 수수료와 특징 알아보기)</li>
+                        <li>A. 마켓별 수수료와 특징알아보기</li>
+                        <li>B. 상품등록을 위한 준비파일 작성하기</li>
+                        <li>C. 상품가격책정하기</li>
+                        <li>D. 가산점 받는 상세페이지 준비하기</li>
+
+                        <li class="cTitle">4. 스마트스토어에서 판매하기 (스마트스토어 특징과 입점 / 상품 등록 및 꿀팁)</li>
+                        <li>A. 스마트스토어의 특징과 입점방법</li>
+                        <li>B. 가장 효율적으로 관리하는 상품관리법</li>
+                        <li>C. 상품 등록따라하기</li>
+                        <li>D. 등록후에 꼭해야하는 비즈니스 툴</li>
+                        <li>E. 선배 창업자의 창업전 알았더라면 좋았을 꿀팁</li>
+
+                        <li class="cTitle">5. Ebay-G마켓, 옥션에서 판매하기(사이트별 특징과 입점 방법/상품등록 및 광고방법)</li>
+                        <li>A. 한개의 사이트에서 운영하는 G마켓, 옥션, g9의 특징과 입점방법</li>
+                        <li>B. 상품등록을 위한 준비파일 작성하기</li>
+                        <li>C. 상세페이지 사용을 위한 이베이 이미지 호스팅 이용하기</li>
+                        <li>D. 상품등록하기</li>
+                        <li>E. 입찰, CPC광고방법알아보기</li>
+
+                        <li class="cTitle">6.  11번가에서 판매하기(특징과 입점 방법 / 상품 등록 및 광고방법)</li>
+                        <li>A. SKT할인과 해외에서 유명한 11번가의 특징과 입점방법</li>
+                        <li>B. 상품등록을 위한 준비파일 작성하기</li>
+                        <li>C. 상품등록하기</li>
+                        <li>D. 입찰, CPC광고방법알아보기</li>
+                        <li>E. 쇼킹딜 제안하기</li>
+
+                        <li class="cTitle">7. 요즘대세 쿠팡에서 판매하기 (쿠팡 입점 및 상품 등록 등)</li>
+                        <li>A. 남녀노소 가장 많이 쓰는 쇼핑앱 쿠팡에 입점하기</li>
+                        <li>B. 상품등록을 위한 준비파일 작성하기</li>
+                        <li>C. 상품등록하기</li>
+                        <li>D. 쿠팡파트너스와 로켓배송, 쿠팡 스토어기능 알아보기</li>
+
+                        <li class="cTitle">8. 카페24로 나만의 쇼핑몰 만들기 (가입 및 쇼핑몰 만들기 / 상품 등록 및 마켓통합관리)</li>
+                        <li>A. 카페24 가입하고, 쇼핑몰만들기</li>
+                        <li>B. 무료 디자인을 활용한 반응형 쇼핑몰 제작하기</li>
+                        <li>C. 상품등록하기</li>
+                        <li>D. PG(결제)연결과 네이버 페이, 지식쇼핑 입점하기</li>
+                        <li>E. 마켓통합관리를 통한 여러 쇼핑몰에 상품 등록하기</li>
+
+                        <li class="cTitle">9. 판매촉진을 위해 알아야하는 판매자상식 6가지(지적재산권 및 KC인증 등 판매자 상식 알기) </li>
+                        <li>A. 브랜드-상표등록은 앞으로 쇼핑몰에서 가장중요한 핵심</li>
+                        <li>B. 상세페이지 기획방법을 통한 잘 팔리는 상세페이지의 포인트</li>
+                        <li>C. 배송, 고객관리, 진상고객 처리 꿀팁전수</li>
+                        <li>D. 지적재산권이 뭔가요?</li>
+                        <li>E. 전안법? KC인증이 뭔가요?</li>
+                        <li>F. 세금관리! 잘 안하면 잘될때 망할 수 있어요</li>
+
+                        <li>(*커리큘럼은 사정에 따라 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.)</li>
+                    </ul>
+                </div>
+                <div class="evtCtnsBox"><img src="https://static.willbes.net/public/images/promotion/2020/07/1566_05.jpg" alt="" ></div>
             </div>
         </div>
 
         <div id="tab04">
-            <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_01.png" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt06">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_06.jpg" alt="BEST 수강후기" >
                 <div class="columns">
                     <div>
                         <h4>수강생 조*정 님</h4>
@@ -362,8 +309,8 @@
                 @endif
             </div>
 
-            <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1566_04_02.jpg" alt="BEST 수강후기" >
+            <div class="evtCtnsBox evt07">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_07.jpg" alt="BEST 수강후기" >
                 <ul>
                     <li>
                         <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">

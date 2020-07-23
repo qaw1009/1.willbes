@@ -129,9 +129,10 @@
                             </li>
                         @endforeach
                     </ul>
-                    @if (empty($lec_data['LrsrIdx']) === true)
+                    {{--@if (empty($lec_data['LrsrIdx']) === true)
                         <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox widthAutoFull ">적용</button></div>
-                    @endif
+                    @endif--}}
+                    <div class="btnAuto130 mt20 tx-white tx14 strong"><button type="submit" class="bBox blueBox widthAutoFull ">적용</button></div>
                 </div>
             </div>
         </form>
@@ -173,7 +174,7 @@
         var _url = '{{ front_url('/classroom/off/AssignSeatStore') }}';
         var _msg = '';
         if ($("#old_seat_no").val() == '') {
-            _msg = $("#seat_num").val()+'번 좌석으로 선택하시겠습니까?\n(좌석 선택은 1회만 가능합니다.)';
+            _msg = $("#seat_num").val()+'번 좌석으로 선택하시겠습니까?';
         } else {
             _msg = $("#old_seat_no").val() + ' -> ' + $("#seat_num").val()+'번 좌석으로 이동하시겠습니까?';
         }

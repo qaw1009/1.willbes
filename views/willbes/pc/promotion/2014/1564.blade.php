@@ -74,7 +74,7 @@
         .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
         .evtCurri li.cTitle {color:#1087ef; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}   
 
-        .evt06 {background:#f5f5f5; padding:150px 0}
+        .evt06 {background:#f5f5f5; padding:150px 0 100px}
         .evt06 .columns {width:720px; margin:50px auto 0;
             column-count: 1;
             column-gap:20px;

@@ -45,38 +45,7 @@
         .evt02 {background:#fff; padding:100px 0}
         .evt02 .btnbuy {width:720px; margin:50px auto 0}
         .evt02 .btnbuy a {border-radius:10px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
-        .evt02 .btnbuy a:hover {background:#ff0066;
-            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-        @@-webkit-keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
-        @@keyframes shadow-drop-2-center {
-             0% {
-                 -webkit-transform: translateZ(0);
-                 transform: translateZ(0);
-                 -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-             }
-             100% {
-                 -webkit-transform: translateZ(50px);
-                 transform: translateZ(50px);
-                 -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-                 box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-             }
-         }
+        .evt02 .btnbuy a:hover {background:#ff0066;}
         .infoCheck {margin-top:30px; font-size:14px}
         .infoCheck label {margin-right:30px; cursor: pointer;}
         .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
@@ -108,7 +77,7 @@
         .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px}
         .evtCurri li.cTitle {color:#ff0066; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
-        .evt06 {background:#f5f5f5; padding:150px 0}
+        .evt06 {background:#f5f5f5; padding:150px 0 100px}
         .evt06 .columns {width:720px; margin:50px auto 0;
             column-count: 1;
             column-gap:20px;

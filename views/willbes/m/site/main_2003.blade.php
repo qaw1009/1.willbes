@@ -87,7 +87,7 @@
             // 수험생활 팁
             new Swiper('.swiper-container-tip', {
                 slidesPerView: 'auto',
-                spaceBetween: 10,
+                spaceBetween: 20,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

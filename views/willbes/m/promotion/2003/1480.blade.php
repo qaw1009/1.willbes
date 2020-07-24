@@ -64,7 +64,7 @@
 
     <div class="evtCtnsBox evtTime">
         <div class="dday NSK-Thin">
-            <strong class="NSK-Black">사전예약 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
+            <strong class="NSK-Black">마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
         </div> 
     </div>    
     

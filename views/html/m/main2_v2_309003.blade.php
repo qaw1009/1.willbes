@@ -442,8 +442,7 @@
                 $(this).css('background-image','url("/public/img/willbes/m/main/icon_arr_top.png")');
             }
         });    
-    });
-    
+    });    
 </script> 
 
 @stop

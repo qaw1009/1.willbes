@@ -73,7 +73,7 @@
     </div>
 
     <div class="evtCtnsBox evt02" >
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1480m_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/07/1480m_02.gif" alt="" >
     </div>
 
     <div class="evtCtnsBox evt03">

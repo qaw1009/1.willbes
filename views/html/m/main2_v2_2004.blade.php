@@ -271,16 +271,16 @@
 
 <!-- Container -->
 <div id="Container" class="Container NSK gosi mb40"> 
-    <div class="gosiTitle NSK-Black">
-        윌비스공무원학원 직렬별 개강 시리즈
+    <div class="gosiTitle NSK">
+        윌비스공무원학원 <span class="NSK-Black">직렬별 개강 시리즈</span>
     </div>
 
     <div class="MainSlider swiper-container swiper-container-page">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -291,10 +291,10 @@
             <li class="f_left">
                 <div class="MainSlider swiper-container swiper-container-page">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_01.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_02.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_03.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_04.jpg"></div>
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
@@ -303,10 +303,10 @@
             <li class="f_right">
                 <div class="MainSlider swiper-container swiper-container-page">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
-                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_03.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_02.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_04.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_01.jpg"></div>
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
@@ -315,8 +315,8 @@
         </ul>
     </div>
 
-    <div class="gosiTitle NSK-Black">
-        윌비스 교수진 신규개강 안내
+    <div class="gosiTitle NSK">
+        윌비스 교수진 <span class="NSK-Black">신규개강</span> 안내
     </div>
 
     <div class="MainSlider swiper-container swiper-container-page">
@@ -330,8 +330,8 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="gosiTitle NSK-Black">
-        합격을 책임질 윌비스 교수진
+    <div class="gosiTitle NSK">
+        합격을 책임질 <span class="NSK-Black">윌비스 교수진</span>
     </div>
 
     <div class="gosiProf">
@@ -383,8 +383,8 @@
         </div>
     </div>  
 
-    <div class="gosiTitle NSK-Black">
-        윌비스 공무원학원 캠퍼스
+    <div class="gosiTitle NSK">
+        윌비스 공무원학원 <span class="NSK-Black">캠퍼스</span>
     </div>
 
     <div class="campus">

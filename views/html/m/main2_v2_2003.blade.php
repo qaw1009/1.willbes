@@ -291,50 +291,50 @@
     </div>
 
     {{--
-    <div class="gosiTitle NSK-Black">
-        합격을 위해 필요한 모든 것, 윌비스PASS
+    <div class="gosiTitle NSK">
+        합격을 위해 필요한 모든 것, <span class="NSK-Black">윌비스PASS<span>
     </div>
     --}}
 
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_02.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_03.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_04.jpg"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>  
 
-    <div class="gosiTitle NSK-Black">
-        공무원, 어떻게 시작할지 고민이라면?
+    <div class="gosiTitle NSK">
+        공무원, <span class="NSK-Black">어떻게 시작할지 고민</span>이라면?
     </div>
 
     <div class="gosiSecBn01">
         <ul>
-            <li class="f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
-            <li class="f_right"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
+            <li class="f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_01.jpg"></a></li>
+            <li class="f_right"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130_02.jpg"></a></li>
         </ul>
     </div>
 
-    <div class="gosiTitle NSK-Black">
-        지금 윌비스 공무원학원에서는?
+    <div class="gosiTitle NSK">
+        지금 <span class="NSK-Black">윌비스 공무원학원</span>에서는?
     </div>
 
     <div class="MainSlider swiper-container swiper-container-page">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x220.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x220.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x220.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x220.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_02.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_03.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_04.jpg" alt="배너명"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="gosiTitle NSK-Black">
-        합격을 책임질 윌비스 교수진
+    <div class="gosiTitle NSK">
+        합격을 책임질 <span class="NSK-Black">윌비스 교수진</span>
     </div>
 
     <div class="gosiProf">
@@ -386,8 +386,8 @@
         </div>
     </div>  
 
-    <div class="gosiTitle NSK-Black">
-        합격을 앞당기는 수험생활 TIP
+    <div class="gosiTitle NSK">
+        합격을 앞당기는 <span class="NSK-Black">수험생활 TIP</span>
     </div>
 
     <div class="gosiTip">
@@ -395,37 +395,37 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165034.jpg" alt="배너명">
                         <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
                     </a>                    
                 </div>            
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명"> 
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165048.jpg" alt="배너명"> 
                         <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div> 
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165016.jpg" alt="배너명">
                         <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
                     </a>                   
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723170605.jpg" alt="배너명">
                         <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div>
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165034.jpg" alt="배너명">
                         <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165025.jpg" alt="배너명">
                         <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div>
                     </a>                    
                 </div>

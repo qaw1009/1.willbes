@@ -39,6 +39,7 @@ class DownloadFModel extends WB_Model
                 ];
                 break;
             case "board_assignment":
+            case "correct_assignment":
                 $column = 'AttachFilePath AS FilePath, AttachFileName AS FileName, AttachRealFileName AS RealFileName';
                 $table = $this->_table['board_attach'];
                 $arr_condition = [

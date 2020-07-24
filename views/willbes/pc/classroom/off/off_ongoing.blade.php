@@ -58,6 +58,10 @@
                                             @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
                                                 <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
                                             @endif
+
+                                            @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
+                                                <a href="#none"><span class="onoffCorrectAssignmentBox bBox red-line-Box" data-correct-assignment-box-id="{{$key}}">온라인첨삭</span></a>
+                                            @endif
                                         </td>
                                     @else
                                         <td class="w-answer p_re">
@@ -65,6 +69,10 @@
                                             @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
                                                 <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
                                             @endif
+                                            @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
+                                                <a href="#none"><span class="onoffCorrectAssignmentBox bBox red-line-Box" data-correct-assignment-box-id="{{$key}}">온라인첨삭</span></a>
+                                            @endif
+
                                             <div id="lecList{{$row['OrderProdIdx']}}" class="willbes-Layer-lecList">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('lecList{{$row['OrderProdIdx']}}')">
                                                     <img src="{{ img_url('prof/close.png') }}">
@@ -123,6 +131,27 @@
                                                                 ~ {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate'] }}
                                                             </li>
                                                         </ul>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+
+                                {{-- 온라인첨삭 BOX --}}
+                                <tr class="seat-box" id="correct_assignment_box_{{$key}}" style="display: none;">
+                                    <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                        @if (empty($row['subleclist']) === false)
+                                            @foreach($row['subleclist'] as $sub_key => $sub_row)
+                                                @if (in_array('731001',explode(',',$sub_row['OptionCcds'])) === true)
+                                                    <div class="mb10">
+                                                        <dl class="w-info">
+                                                            <dt>
+                                                                {{$sub_row['CourseName']}}<span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>
+                                                                {{$sub_row['wProfName']}} 교수님 <span class="row-line">|</span> {{$sub_row['subProdName']}}
+                                                            </dt>
+                                                        </dl>
+                                                        <div class="lookover"><a href="#none" onclick="assignmentBoardModal('{{ $sub_row['ProdCodeSub'] }}')">온라인첨삭 &gt;</a></div>
                                                     </div>
                                                 @endif
                                             @endforeach
@@ -235,6 +264,10 @@
                                                 <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}</li>
                                             </ul>
                                         @endif
+
+                                        @if (in_array('731001',explode(',',$row['OptionCcds'])) === true)
+                                            <div class="lookover"><a href="#none" onclick="assignmentBoardModal('{{ $row['ProdCode'] }}')">온라인첨삭 &gt;</a></div>
+                                        @endif
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
@@ -265,6 +298,10 @@
             </div>
             <div id="seatChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
+            <div id="assignmentListChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
+            </div>
+            <div id="assignmentCreateChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
+            </div>
 
             <!-- willbes-Leclist -->
         </div>
@@ -288,6 +325,8 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
+            $("#assignmentCreateChoice").html('');
+
             $('#course_ccd,#subject_ccd,#prof_ccd,#orderby,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
@@ -302,6 +341,11 @@
             //좌석선택
             $('.onoffSeatBox').on('click', function () {
                 $('#seat_box_'+$(this).data('seat-box-id')).toggle();
+            });
+
+            //온라인첨삭Box
+            $('.onoffCorrectAssignmentBox').on('click', function () {
+                $('#correct_assignment_box_'+$(this).data('correct-assignment-box-id')).toggle();
             });
 
             @if($tab != '')
@@ -361,6 +405,24 @@
                 function(d){
                     $("#seatChoice").html(d).end();
                     openWin('seatChoice')
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'POST', 'html');
+        }
+
+        function assignmentBoardModal(prod_code)
+        {
+            $("#assignmentListChoice").html('');
+            $('#prod_code').val(prod_code);
+
+            var url = "{{ site_url("/classroom/off/assignmentListModal/") }}";
+            var data = $('#postForm').serialize();
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#assignmentListChoice").html(d).end();
+                    openWin('assignmentListChoice')
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

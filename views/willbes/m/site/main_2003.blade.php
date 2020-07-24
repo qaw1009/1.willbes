@@ -100,6 +100,7 @@
                     640: {
                         spaceBetween: 10,
                     },
+                }
             });
         });
     </script>

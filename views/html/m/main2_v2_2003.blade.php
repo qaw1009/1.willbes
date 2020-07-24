@@ -277,17 +277,7 @@
 
 
 <!-- Container -->
-<div id="Container" class="Container NSK gosi mb40"> 
-    <div class="gosiTitle NSK-Black">
-        공무원, 어떻게 시작할지 고민이라면?
-    </div>
-
-    <div class="gosiSecBn01">
-        <ul>
-            <li class="f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
-            <li class="f_right"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
-        </ul>
-    </div>
+<div id="Container" class="Container NSK gosi mb40">    
 
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
@@ -300,11 +290,13 @@
         <div class="swiper-pagination"></div>
     </div>
 
+    {{--
     <div class="gosiTitle NSK-Black">
         합격을 위해 필요한 모든 것, 윌비스PASS
     </div>
+    --}}
 
-    <div class="MainSlider swiper-container swiper-container-page">
+    <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
@@ -314,6 +306,17 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>  
+
+    <div class="gosiTitle NSK-Black">
+        공무원, 어떻게 시작할지 고민이라면?
+    </div>
+
+    <div class="gosiSecBn01">
+        <ul>
+            <li class="f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
+            <li class="f_right"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_350x130.jpg"></a></li>
+        </ul>
+    </div>
 
     <div class="gosiTitle NSK-Black">
         지금 윌비스 공무원학원에서는?

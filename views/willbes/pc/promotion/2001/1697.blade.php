@@ -142,7 +142,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_06_tab01.jpg" usemap="#Map1697a" title="일반공채 수강신청" border="0"  />
                     <map name="Map1697a" id="Map1697a">
                         <area shape="rect" coords="897,118,1027,154" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1007" target="_blank" />
-                        <area shape="rect" coords="895,298,1026,334" href="javascript:alert('7월 중 오픈예정')" />
+                        <area shape="rect" coords="895,298,1026,334" href="https://police.willbes.net/package/index/cate/3001/pack/648001?" target="_blnak" />
                         <area shape="rect" coords="895,489,1025,523" href="javascript:alert('8월 중 오픈예정')" />
                     </map>
                 </div>
@@ -150,7 +150,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_06_tab02.jpg" usemap="#Map1697b" title="경행경채 수강신청" border="0"  />
                     <map name="Map1697b" id="Map1697b">
                         <area shape="rect" coords="898,118,1025,152" href="https://police.willbes.net/package/index/cate/3002/pack/648001?course_idx=1007" target="_blank" />
-                        <area shape="rect" coords="896,299,1024,332" href="javascript:alert('7월 중 오픈예정')" />
+                        <area shape="rect" coords="896,299,1024,332" href="https://police.willbes.net/package/index/cate/3002/pack/648001?course_idx=1008" target="_blnak" />
                         <area shape="rect" coords="896,487,1026,523" href="javascript:alert('8월 중 오픈예정')" />
                     </map>
                 </div>      

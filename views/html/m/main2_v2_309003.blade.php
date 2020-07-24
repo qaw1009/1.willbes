@@ -16,9 +16,36 @@
 
     <div class="bnSec02">
         <ul>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_01.jpg"></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_02.jpg"></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_03.jpg"></a></li>
+            <li>
+                <div class="MainSlider swiper-container swiper-container-page">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_02.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_03.jpg"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div> 
+            </li>
+            <li>
+                <div class="MainSlider swiper-container swiper-container-page">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_01.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_02.jpg"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div> 
+            </li>
+            <li>
+                <div class="MainSlider swiper-container swiper-container-page">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_03.jpg"></div>
+                        <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_240x146_01.jpg"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div> 
+            </li>
         </ul>
     </div>
 
@@ -415,8 +442,7 @@
                 $(this).css('background-image','url("/public/img/willbes/m/main/icon_arr_top.png")');
             }
         });    
-    });
-    
+    });    
 </script> 
 
 @stop

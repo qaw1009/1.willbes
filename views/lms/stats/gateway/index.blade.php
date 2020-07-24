@@ -189,6 +189,7 @@
                                 <th>광고정보</th>
                                 <th width="180">광고형태</th>
                                 <th width="120">플랫폼</th>
+                                <th width="90">SessId</th>
                                 <th width="90">사용자IP</th>
                                 <th width="120">일자</th>
                             </tr>
@@ -500,7 +501,10 @@
                             }},
                         {'data' : 'CcdName'},
                         {'data' : 'UserPlatform'},
-                        {'data' : 'RegIp'},
+                        {'data' : 'SessId'},
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return "<a href='javascript:;'  onclick=\"popupOpen('https://www.ip-adress.com/ip-address/ipv4/"+row.RegIp+"','viewIp', '1300', '700', 'null', 'null', 'yes','no')\">"+row.RegIp+"</a>";
+                            }},
                         {'data' : 'RegDatm'}
                     ]
                 });

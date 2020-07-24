@@ -120,41 +120,6 @@
 <!-- End Container -->
 
 <script type="text/javascript">
-    /*스크롤고정*/
-    $(function() {
-        var nav = $('.evtMenu');
-        var navTop = nav.offset().top+100;
-        var navHeight = nav.height()+10;
-        var showFlag = false;
-        nav.css('top', -navHeight+'px');
-        $(window).scroll(function () {
-            var winTop = $(this).scrollTop();
-            if (winTop >= navTop) {
-                if (showFlag == false) {
-                    showFlag = true;
-                    nav
-                        .addClass('fixed')
-                        .stop().animate({'top' : '0px'}, 100);
-                }
-            } else if (winTop <= navTop) {
-                if (showFlag) {
-                    showFlag = false;
-                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                        nav.removeClass('fixed');
-                    });
-                }
-            }
-        });
-    });
-
-    $(window).on('scroll', function() {
-        $('.top-tab').each(function() {
-            if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
-                $('.top-tab').removeClass('active')
-                $(this).addClass('active');
-            }
-        });
-    });
 
     /*수강신청 동의*/ 
     function go_PassLecture(code){

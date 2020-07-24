@@ -3,7 +3,18 @@
 @section('content')
 @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
     <!-- Container -->
-    <div id="Container" class="Container NSK gosi mb40">
+    <div id="Container" class="Container NSK gosi mb40">       
+
+        {!! banner('M_메인상단03', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
+
+        {{--
+        <div class="gosiTitle NSK-Black">
+            합격을 위해 필요한 모든 것, 윌비스PASS
+        </div>
+        --}}
+
+        {!! banner('M_메인빅배너', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
+
         <div class="gosiTitle NSK-Black">
             공무원, 어떻게 시작할지 고민이라면?
         </div>
@@ -14,14 +25,6 @@
                 <li class="f_right">{!! banner('M_메인상단02', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
-
-        {!! banner('M_메인상단03', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
-
-        <div class="gosiTitle NSK-Black">
-            합격을 위해 필요한 모든 것, 윌비스PASS
-        </div>
-
-        {!! banner('M_메인빅배너', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
         <div class="gosiTitle NSK-Black">
             지금 윌비스 공무원학원에서는?
@@ -84,7 +87,7 @@
             // 수험생활 팁
             new Swiper('.swiper-container-tip', {
                 slidesPerView: 'auto',
-                spaceBetween: 5,
+                spaceBetween: 20,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
@@ -93,6 +96,11 @@
                     el: '.swiper-pagination',
                     clickable: true,
                 },
+                breakpoints: {
+                    640: {
+                        spaceBetween: 10,
+                    },
+                }
             });
         });
     </script>

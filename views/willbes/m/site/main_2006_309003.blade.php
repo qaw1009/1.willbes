@@ -2,12 +2,19 @@
 
 @section('content')
     <div id="Container" class="Container NSK mb40">
-        {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
         <div class="bnSec02">
             <ul>
-                <li>{!! banner('M_메인서브1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
-                <li>{!! banner('M_메인서브2', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
-                <li>{!! banner('M_메인서브3', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
+                <li>
+                    {!! banner('M_메인서브1', 'MainSlider', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+                </li>
+                <li>
+                    {!! banner('M_메인서브2', 'MainSlider', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+                </li>
+                <li>
+                    {!! banner('M_메인서브3', 'MainSlider', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+                </li>
             </ul>
         </div>
 
@@ -89,8 +96,8 @@
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script type="text/javascript">
         $(function() {
-            //이달의강의
-            var swiper = new Swiper ('.swiper-container-Lec', { 
+            // 이달의강의
+            new Swiper ('.swiper-container-Lec', {
                 slidesPerView: 'auto',
                 spaceBetween: 7, 
                 slidesPerGroup: 2,
@@ -106,8 +113,8 @@
                 }, 
             }); 
 
-            //맛보기강의
-            var swiper = new Swiper('.swiper-container-view', {
+            // 맛보기강의
+            new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
                 spaceBetween: 10,
@@ -121,7 +128,7 @@
                 },
             });
 
-            //로드맵
+            // 로드맵
             $('.loadMap .lmTitle a').click(function() {
                 var $loadmap_table = $(this).parents('.loadMap li').find('.lmCts');
                 if ($loadmap_table.is(':hidden')) {

@@ -119,7 +119,7 @@
     <div class="Section MainVisual mt20">
         <div class="widthAuto">
             <div class="VisualBox p_re">
-                <div id="MainRollingDiv" class="MaintabList five">
+                <div id="MainRollingDiv" class="MaintabList">
                     <ul class="Maintab">
                         <li><a data-slide-index="0" href="javascript:void(0);" class="active">7급공무원</a></li>
                         <li><a data-slide-index="1" href="javascript:void(0);" class="">9급공무원</a></li>
@@ -375,13 +375,37 @@
         </div>
     </div>
 
+
     <div id="QuickMenu" class="MainQuickMenu">
-        <ul>
+        <div class="mb5">
+            <a href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/main/2015_sky01.jpg">
+            </a>
+        </div>
+        <ul class="gobtn">
             <li><a href="#none">이달의 개강안내</a></li>
             <li><a href="#none">학원 갤러리</a></li>
             <li><a href="#none">강의 시간표</a></li>
             <li><a href="#none">모의고사</a></li>            
             <li><a href="#none">실시간 소통실</a></li>
+        </ul>
+        <ul>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

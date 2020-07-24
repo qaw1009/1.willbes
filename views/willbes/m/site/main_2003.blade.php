@@ -7,11 +7,13 @@
 
         {!! banner('M_메인상단03', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
 
+        {{--
         <div class="gosiTitle NSK-Black">
             합격을 위해 필요한 모든 것, 윌비스PASS
         </div>
+        --}}
 
-        {!! banner('M_메인빅배너', 'MainSlider', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인빅배너', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
 
         <div class="gosiTitle NSK-Black">
             공무원, 어떻게 시작할지 고민이라면?

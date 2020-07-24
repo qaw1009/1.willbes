@@ -4,8 +4,8 @@
 @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
     <!-- Container -->
     <div id="Container" class="Container NSK gosi mb40">
-        <div class="gosiTitle NSK-Black">
-            윌비스공무원학원 직렬별 개강 시리즈
+        <div class="gosiTitle NSK-Thin">
+            윌비스공무원학원 <span class="NSK-Black">직렬별 개강 시리즈</span>
         </div>
 
         {!! banner('M_메인빅배너', 'MainSlider', $__cfg['SiteCode'], '0') !!}
@@ -21,22 +21,22 @@
             </ul>
         </div>
 
-        <div class="gosiTitle NSK-Black">
-            윌비스 교수진 신규개강 안내
+        <div class="gosiTitle NSK-Thin">
+            윌비스 교수진 <span class="NSK-Black">신규개강</span> 안내
         </div>
 
         {!! banner('M_메인서브3', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
-        <div class="gosiTitle NSK-Black">
-            합격을 책임질 윌비스 교수진
+        <div class="gosiTitle NSK-Thin">
+            합격을 책임질 <span class="NSK-Black">윌비스 교수진</span>
         </div>
 
         <div class="gosiProf">
             {!! banner('M_메인_교수진', 'swiper-container-prof', $__cfg['SiteCode'], '0') !!}
         </div>
 
-        <div class="gosiTitle NSK-Black">
-            윌비스 공무원학원 캠퍼스
+        <div class="gosiTitle NSK-Thin">
+            윌비스 공무원학원 <span class="NSK-Black">캠퍼스</span>
             <a name="map_campus"></a>
         </div>
 

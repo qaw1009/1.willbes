@@ -8,15 +8,15 @@
         {!! banner('M_메인상단03', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
 
         {{--
-        <div class="gosiTitle NSK-Black">
-            합격을 위해 필요한 모든 것, 윌비스PASS
+        <div class="gosiTitle NSK-Thin">
+            합격을 위해 필요한 모든 것, <span class="NSK-Black">윌비스PASS</span>
         </div>
         --}}
 
         {!! banner('M_메인빅배너', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}
 
-        <div class="gosiTitle NSK-Black">
-            공무원, 어떻게 시작할지 고민이라면?
+        <div class="gosiTitle NSK-Thin">
+            공무원, <span class="NSK-Black">어떻게 시작할지 고민</span>이라면?
         </div>
 
         <div class="gosiSecBn01">
@@ -26,22 +26,22 @@
             </ul>
         </div>
 
-        <div class="gosiTitle NSK-Black">
-            지금 윌비스 공무원학원에서는?
+        <div class="gosiTitle NSK-Thin">
+            지금 <span class="NSK-Black">윌비스 공무원학원</span>에서는?
         </div>
 
         {!! banner('M_메인_실강안내', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
-        <div class="gosiTitle NSK-Black">
-            합격을 책임질 윌비스 교수진
+        <div class="gosiTitle NSK-Thin">
+            합격을 책임질 <span class="NSK-Black">윌비스 교수진</span>
         </div>
 
         <div class="gosiProf">
             {!! banner('M_메인_교수진', 'swiper-container-prof', $__cfg['SiteCode'], '0') !!}
         </div>
 
-        <div class="gosiTitle NSK-Black">
-            합격을 앞당기는 수험생활 TIP
+        <div class="gosiTitle NSK-Thin">
+            합격을 앞당기는 <span class="NSK-Black">수험생활 TIP</span>
         </div>
 
         <div class="gosiTip">

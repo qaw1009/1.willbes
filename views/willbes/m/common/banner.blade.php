@@ -7,7 +7,7 @@ var html = '', link_url = '#none';
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'], 'www') }}';
         @endif
         html = '<div class="{{ $css_class }}">';
-        html += '   <a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
+        html += '   <a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}" style="width: 100%;"/></a>';
         html += '</div>';
     @else
         // 롤링 배너 (등록 배너개수가 2개 이상일 경우)

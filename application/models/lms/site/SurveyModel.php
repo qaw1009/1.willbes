@@ -48,7 +48,7 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.SpIdx, A.SpTitle, A.SpComment, A.SpTakeType, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
+            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -76,7 +76,7 @@ class SurveyModel extends WB_Model
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
 
         $column = "
-            A.SpIdx, A.SpTitle, A.SpComment, A.SpTakeType, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -150,7 +150,6 @@ class SurveyModel extends WB_Model
             $data = [
                 'SpTitle' => element('sp_title', $input),
                 'SpComment' => element('sp_comment', $input),
-                'SpTakeType' => element('sp_take_type', $input),
                 'SpIsUse' => element('sp_is_use', $input),
                 'SpIsDuplicate' => element('sp_is_duplicate', $input),
                 'StartDate' => element('register_start_datm', $input),
@@ -189,7 +188,6 @@ class SurveyModel extends WB_Model
             $data = [
                 'SpTitle' => element('sp_title', $input),
                 'SpComment' => element('sp_comment', $input),
-                'SpTakeType' => element('sp_take_type', $input),
                 'SpIsUse' => element('sp_is_use', $input),
                 'SpIsDuplicate' => element('sp_is_duplicate', $input),
                 'StartDate' => element('register_start_datm', $input),

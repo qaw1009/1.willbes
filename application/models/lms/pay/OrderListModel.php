@@ -807,19 +807,22 @@ class OrderListModel extends BaseOrderModel
                     and OrderIdx = ?
                     and OrderProdIdx = ? 
                     and ProdCodeSub = VP.ProdCode
-              ) as IsPrintCert              
+              ) as IsPrintCert
+            , if(PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(?, ?, PS.ProdCode, PS.ProdCodeSub), "::", "-"), "") as LectureRoomSeatNo                            
         ';
         $from = '
             from ' . $this->_table['product_r_sublecture'] . ' as PS
                 inner join ' . $vw_off_lecture . ' as VP
                     on PS.ProdCodeSub = VP.ProdCode
+                left join ' . $this->_table['product_r_lectureroom'] . ' as PLR
+                    on PS.ProdCodeSub = PLR.ProdCode and PLR.IsStatus = "Y"                    
             where PS.ProdCode = ?
                 and PS.IsStatus = "Y"
             order by VP.OrderNumCourse, VP.OrderNumSubject asc, VP.ProfIdx asc 
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $order_idx, $order_prod_idx, $prod_code]);
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $order_idx, $order_prod_idx, $order_idx, $order_prod_idx, $prod_code]);
 
         return $query->result_array();
     }
@@ -1101,6 +1104,11 @@ class OrderListModel extends BaseOrderModel
                     }
                 }
 
+                // 강의실 좌석번호 추가
+                if (empty($row['LectureRoomSeatNo']) === false) {
+                    $_prod_name .= '_좌석:' . $row['LectureRoomSeatNo'];
+                }
+
                 for($i = 0; $i < $line_cnt; $i++) {
                     $is_bold = $i == 0 ? 'true' : 'false';
                     $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($_prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
@@ -1152,7 +1160,8 @@ class OrderListModel extends BaseOrderModel
             , (select CourseName from ' . $this->_table['course'] . ' where CourseIdx = PL.CourseIdx and IsStatus = "Y") as CourseName
             , (select SubjectName from ' . $this->_table['subject'] . ' where SubjectIdx = PL.SubjectIdx and IsStatus = "Y") as SubjectName
             , substring_index(fn_product_professor_name(P.ProdCode), ",", 1) as ProfName
-            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
+            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
+            , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-"), "") as LectureRoomSeatNo';
 
         $from = '
             from ' . $this->_table['order'] . ' as O
@@ -1165,7 +1174,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['product_r_category'] . ' as PC
-                    on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"		
+                    on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"	
+                left join ' . $this->_table['product_r_lectureroom'] . ' as PLR
+                    on OP.ProdCode = PLR.ProdCode and PLR.IsStatus = "Y"                    	
                 left join ' . $this->_table['member'] . ' as M
                     on O.MemIdx = M.MemIdx
             where O.OrderIdx = ?
@@ -1207,7 +1218,12 @@ class OrderListModel extends BaseOrderModel
                 $_prod_name = $data['SchoolYear'] . '_' . $data['CourseName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
             } else {
                 // 자격증, 경찰간부 (대비년도-카테고리-상품명(종합반)-수강형태)
-                $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['ProdName'] . '(종합반)_' . '_' . $data['StudyPatternCcdName'];
+                $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['ProdName'] . '(종합반)' . '_' . $data['StudyPatternCcdName'];
+            }
+
+            // 강의실 좌석번호 추가
+            if (empty($data['LectureRoomSeatNo']) === false) {
+                $_prod_name .= '_좌석:' . $data['LectureRoomSeatNo'];
             }
 
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
@@ -1244,7 +1260,8 @@ class OrderListModel extends BaseOrderModel
             , (select CourseName from ' . $this->_table['course'] . ' where CourseIdx = PL.CourseIdx and IsStatus = "Y") as CourseName
             , (select SubjectName from ' . $this->_table['subject'] . ' where SubjectIdx = PL.SubjectIdx and IsStatus = "Y") as SubjectName
             , substring_index(fn_product_professor_name(P.ProdCode), ",", 1) as ProfName
-            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName';
+            , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
+            , if(PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.ProdCodeSub), "::", "-"), "") as LectureRoomSeatNo';
 
         $from = '
             from ' . $this->_table['order'] . ' as O
@@ -1259,7 +1276,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OSP.ProdCodeSub = PL.ProdCode
                 left join ' . $this->_table['product_r_category'] . ' as PC
-                    on OSP.ProdCodeSub = PC.ProdCode and PC.IsStatus = "Y"		
+                    on OSP.ProdCodeSub = PC.ProdCode and PC.IsStatus = "Y"	
+                left join ' . $this->_table['product_r_lectureroom'] . ' as PLR
+                    on OSP.ProdCodeSub = PLR.ProdCode and PLR.IsStatus = "Y"                    	
                 left join ' . $this->_table['member'] . ' as M
                     on O.MemIdx = M.MemIdx		
             where O.OrderIdx = ?

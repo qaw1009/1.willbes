@@ -150,7 +150,7 @@
         <div class="evt05">
             <h5 class="NSK-Black">
                 <div>무재고 배송대행 <Br> 도매매 샵플링 </div>
-                <div>진짜 고수에게 배우는<Br> 이커머스 운영전략 커리큘럼</div>
+                <div>진짜 고수에게 배우는<Br> 이커머스 운영전략 커리큘럼</div> 
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
 

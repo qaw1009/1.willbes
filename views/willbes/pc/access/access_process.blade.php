@@ -2,6 +2,7 @@
 @include('willbes.pc.layouts.header')
 <!-- scripts -->
 @include('willbes.pc.layouts.footer_script')
+<script src="/public/js/willbes/tracking.js?ver={{time()}}"></script>
 <script type="text/javascript">
     /*{{(sess_data('gw_idx'))}}*/
     $(document).ready(function(){
@@ -15,6 +16,6 @@
                 }
             }, null, true, 'GET');
         };
-        gateLog();
+        //gateLog();
     })
 </script>

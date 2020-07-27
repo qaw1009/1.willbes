@@ -63,9 +63,9 @@
             @endif        
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1682_01_university.jpg" usemap="#Map1677c" title="기본이론 종합반" border="0" />
             <map name="Map1677c" id="Map1677c">
-                <area shape="rect" coords="67,543,270,594" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/161154" target="_blank" />
-                <area shape="rect" coords="452,542,654,596" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/161155" target="_blank" />
-                <area shape="rect" coords="839,543,1038,594" href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/161160" target="_blank" />
+                <area shape="rect" coords="67,543,270,594" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/169703" target="_blank" />
+                <area shape="rect" coords="452,542,654,596" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/169704" target="_blank" />
+                <area shape="rect" coords="839,543,1038,594" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/169705" target="_blank" />
             </map>
         </div> 
 

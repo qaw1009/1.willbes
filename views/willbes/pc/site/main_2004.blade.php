@@ -12,7 +12,9 @@
                     <li>{!! banner_html(element('메인_상단배너2', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_상단배너3', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_상단배너4', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_상단배너5', $data['arr_main_banner'])) !!}</li>
+                    <div class="bSlider acad">
+                        <li>{!! banner_html(element('메인_상단배너5', $data['arr_main_banner']), 'slider') !!}</li>
+                    </div>
                 </ul>
             </div>
         </div>

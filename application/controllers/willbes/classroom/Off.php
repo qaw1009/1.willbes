@@ -662,7 +662,13 @@ class Off extends \app\controllers\FrontController
         $_temp_arr_data = [];
         foreach ($data as $idx => $row) {
             //개강일, 종강일 날짜 체크
-            if ($row['StudyStartDate'] <= date('Y-m-d') && $row['StudyEndDate'] >= date('Y-m-d')) {
+            /*if ($row['StudyStartDate'] <= date('Y-m-d') && $row['StudyEndDate'] >= date('Y-m-d')) {
+                $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
+                $_temp_arr_data[$idx]['order_prod_idx'][] = $row['OrderProdIdx'];
+                $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];
+                $_temp_arr_data[$idx]['prod_code_sub'][] = $row['ProdCodeSub'];
+            }*/
+            if ($row['StudyEndDate'] >= date('Y-m-d')) {
                 $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
                 $_temp_arr_data[$idx]['order_prod_idx'][] = $row['OrderProdIdx'];
                 $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];
@@ -698,7 +704,13 @@ class Off extends \app\controllers\FrontController
         foreach ($data as $idx => $row) {
             foreach ($row['subleclist'] as $sb_idx => $sb_row) {
                 //개강일, 종강일 날짜 체크
-                if ($sb_row['StudyStartDate'] <= date('Y-m-d') && $sb_row['StudyEndDate'] >= date('Y-m-d')) {
+                /*if ($sb_row['StudyStartDate'] <= date('Y-m-d') && $sb_row['StudyEndDate'] >= date('Y-m-d')) {
+                    $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
+                    $_temp_arr_data[$idx]['order_prod_idx'][] = $sb_row['OrderProdIdx'];
+                    $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];
+                    $_temp_arr_data[$idx]['prod_code_sub'][] = $sb_row['ProdCodeSub'];
+                }*/
+                if ($row['StudyEndDate'] >= date('Y-m-d')) {
                     $_temp_arr_data[$idx]['order_idx'] = $row['OrderIdx'];
                     $_temp_arr_data[$idx]['order_prod_idx'][] = $sb_row['OrderProdIdx'];
                     $_temp_arr_data[$idx]['prod_code_master'] = $row['ProdCode'];

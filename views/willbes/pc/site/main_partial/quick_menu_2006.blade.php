@@ -32,6 +32,7 @@
     </li>
 </ul>
 --}}
+{{--
 @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '309002'))
     @if(empty(sess_data('mem_hanlimid')) == false)
 <div>
@@ -41,6 +42,7 @@
 </div>
     @endif
 @endif
+--}}
 <div>
     <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?search_order=course&course_idx=1220') }}">
         <img src="https://static.willbes.net/public/images/promotion/main/2000_sky01.jpg">

@@ -17,16 +17,19 @@ class AccessFModel extends WB_Model
     }
 
     /**
-     * 외부접속 로그 저장 (광고 / 제휴사 연동 정보 저장)
+     * 접속 로그 저장 (광고 / 제휴사 / 배너 정보 저장)
      * @param $strType
      * @param null $idx
      * @return array|bool
      */
-    public function saveLog($strType, $idx=null, $etcMsg=null)
+    public function saveLog($strType, $idx=null, $etcMsg=null, $input=[])
     {
         $refer_info = get_var($this->input->server('HTTP_REFERER'), null);
         $refer_domain = parse_url($refer_info, PHP_URL_HOST);
         $this->__userAgent($agent_type, $agent_short, $agent, $platform);
+
+        $ajax_refer_info = (empty(element('refer_info', $input)) ? null : element('refer_info', $input));
+        $ajax_refer_domain = get_var(parse_url($ajax_refer_info, PHP_URL_HOST), null);
 
         $input_data = [
             'SiteCode' => config_app('SiteCode'),
@@ -39,6 +42,8 @@ class AccessFModel extends WB_Model
         /* 테이블 분리 */
         if ($strType == 'gw') {
             $input_data = array_merge($input_data,[
+                'ReferDomain' => $ajax_refer_domain, //비동기 방식으로 인한 파람값
+                'ReferInfo' => $ajax_refer_info, //비동기 방식으로 인한 파람값
                 'GwIdx' => $idx,
                 'UserPlatform' =>$platform,
                 'UserAgentShort' =>substr($agent_short,0,99),

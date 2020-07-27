@@ -1,4 +1,7 @@
-<li>
+<style>
+    .lst-none {list-style-type: none !important;}
+</style>
+<li class="lst-none">
     <div class="QuickSlider">
         {!! banner_html(element('메인_퀵배너1', $data['arr_main_banner']), 'sliderNum') !!}
     </div>
@@ -10,12 +13,12 @@
     <li><a href="{{ front_url('/offinfo/boardInfo/index/89') }}">모의고사</a></li>
     <li><a href="https://pf.kakao.com/_xapHUxb" target="_blank">실시간 소통실</a></li>
 </ul>
-<li>
+<li class="lst-none">
     <div class="QuickSlider">
         {!! banner_html(element('메인_퀵배너2', $data['arr_main_banner']), 'sliderNum') !!}
     </div>
 </li>
-<li>
+<li class="lst-none">
     <div class="QuickSlider">
         {!! banner_html(element('메인_퀵배너3', $data['arr_main_banner']), 'sliderNum') !!}
     </div>

@@ -1,5 +1,5 @@
 <style>
-    .lst-none {list-style-type: none !important;}
+    .lst-none {list-style-type: none !important; margin-bottom: 8px;}
 </style>
 <li class="lst-none">
     <div class="QuickSlider">

@@ -169,12 +169,14 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        {{--
         <div class="sky">
             <ul>          
                 <li><a href="https://pass.willbes.net/promotion/index/cate/3020/code/1700" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_sky.png"  title="실전모의고사 패키지 바로가기" /></a></li>
                 <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=284682&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_sky02.png"  title="실전모의고사 패키지 바로가기" /></a></li>
             </ul>
-        </div> 
+        </div>
+        --}} 
         <div class="evtCtnsBox evtTop" >
             <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top_img01.png" alt="신문"></span>
             <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/07/1706_top_img02.png" alt="상품"></span>

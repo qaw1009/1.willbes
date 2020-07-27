@@ -20,10 +20,10 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문 조회
-     * @return integer $sp_idx
+     * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurvey($sp_idx)
+    public function findSurvey($sp_idx = null)
     {
         $arr_condition = [
             'EQ' => ['A.SpIdx' => $sp_idx, 'A.SpIsUse' => 'Y'],
@@ -31,7 +31,7 @@ class SurveyModel extends WB_Model
         ];
 
         $column = "
-            A.SpIdx, A.SpTitle, A.SpComment, A.SpTakeType, A.SpIsDuplicate
+            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsDuplicate
             ";
 
         $from = "
@@ -45,10 +45,10 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문문항 조회
-     * @return integer $sp_idx
+     * @param integer $sp_idx
      * @return mixed
      */
-    public function listSurveyForQuestion($sp_idx)
+    public function listSurveyForQuestion($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
@@ -69,10 +69,10 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문응답 체크
-     * @return integer $sp_idx
-     * @return integer
+     * @param integer $sp_idx
+     * @return mixed
      */
-    public function findSurveyAnswerInfo($sp_idx)
+    public function findSurveyAnswerInfo($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
 
@@ -87,6 +87,35 @@ class SurveyModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
         return $this->_conn->query('select ' . $column . $from . $where)->row(0)->cnt;
+    }
+
+    /**
+     * 설문저장
+     * @param $formData
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function storeSurvey($formData = [],$sp_idx = null){
+        try {
+            $this->_conn->trans_begin();
+
+            // 설문응답
+            $data = [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'SpIdx'  => $sp_idx,
+                'AnswerInfo' => json_encode($formData)
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['event_answer_info']) === false) {
+                throw new \Exception('문항저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
 }

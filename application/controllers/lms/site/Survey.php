@@ -57,7 +57,6 @@ class Survey extends \app\controllers\BaseController
 
         $rules = [
             ['field' => 'sp_title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
-            ['field' => 'sp_take_type', 'label' => '조사범위', 'rules' => 'trim|required|integer|in_list[1,2]'],
             ['field' => 'sp_is_duplicate', 'label' => '중복투표', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'sp_is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],

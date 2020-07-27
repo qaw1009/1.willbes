@@ -26,56 +26,54 @@
         <h3>{{ $data_survey['SpTitle'] }}</h3>
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
+            <input type="hidden" name="sp_idx" value="{{ $data_survey['SpIdx'] }}" />
+            <input type="hidden" name="total_cnt" value="{{ $total_cnt }}" />
 
             @foreach($data_question as $key => $val)
-                <div id="question{{$key}}" class="question">
-                    <p>Q {{ $key }}. {{ $val['SqTitle'] }} </p>
+                <div id="question{{$key+1}}" class="question">
+                    <p>Q{{ $key+1 }}. {{ trim($val['SqTitle']) }} </p>
 
-                    @if(in_array($val['SqType'],array('S','T')) === true)
+                    @if(empty($val['SqComment']) === false)
+                        <strong style="padding-left:10px;">{{$val['SqComment']}}</strong>
+                    @endif
+
+                    @if($val['SqType'] == 'T') {{-- 복수형 --}}
                         <div class="qBox">
-                            <strong>{{$val['SqComment']}}</strong>
                             <ul>
                                 @if(empty($val['SqJsonData']) === false)
                                     @foreach($val['SqJsonData'] as $item_k => $item_v)
-                                    <li>
-                                        <label>
-                                            @if($val['SqType'] == 'S') {{-- 선택형(단일) --}}
-                                                <input type="radio" name="s{{$item_k}}" value="{{ $item_k }}" data-SqIdxKey="" /> {{$item_v['item']}}
-                                            @endif
-                                            @if($val['SqType'] == 'T') {{-- 복수형 --}}
-                                                <input type="checkbox" name="t{{$item_k}}" value="{{ $item_k }}" data-SqIdxKey="" /> {{$item_v['title']}}
-                                            @endif
-                                        </label>
-                                    </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$val['SqIdx']}}_{{$item_k}}')"> {{$item_v['title']}}
+                                            </label>
+                                        </li>
                                     @endforeach
                                 @endif
                             </ul>
                         </div>
                     @endif
 
-                    @if(in_array($val['SqType'],array('D','M','T')) === true)
-                        @if(empty($val['SqJsonData']) === false)
-                            @foreach($val['SqJsonData'] as $item_k => $item_v)
-                                <div class="qBox">
-                                    <strong>{{$item_v['title']}}</strong>
-                                    <ul>
-                                        @if($val['SqType'] == 'D') {{-- 서술형 --}}
-                                            <li><textarea name="d{{ $item_k }}" rows="7" cols="100"></textarea></li>
-                                        @else {{-- 선택형(그룹), 복수형 --}}
-                                            @if(empty($item_v['item_arr']) === false)
-                                                @foreach($item_v['item_arr'] as $k => $item)
-                                                    <li>
-                                                        <label>
-                                                            <input type="radio" name="st{{$k}}" value="{{ $k }}" data-SqIdxKey="" /> {{$item}}
-                                                        </label>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        @endif
-                                    </ul>
-                                </div>
-                            @endforeach
-                        @endif
+                    @if(empty($val['SqJsonData']) === false)
+                        @foreach($val['SqJsonData'] as $item_k => $item_v)
+                            <div class="qBox @if($val['SqType'] == 'T') d_none @endif" id="{{$val['SqType']}}_{{$val['SqIdx']}}_{{$item_k}}">
+                                <strong>{{$item_v['title'] or ''}}</strong>
+                                <ul>
+                                    @if($val['SqType'] == 'D') {{-- 서술형 --}}
+                                        <li><textarea name="d_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
+                                    @endif
+
+                                    @if(empty($item_v['item']) === false) {{-- 선택형 --}}
+                                        @foreach($item_v['item'] as $k => $item)
+                                            <li>
+                                                <label>
+                                                    <input type="radio" name="s_type[{{$val['SqType']}}][{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        @endforeach
                     @endif
 
                 </div>
@@ -90,33 +88,40 @@
         var pick_sjt_cnt = {{$pick_sjt_cnt}};   //직렬별 선택과목 갯수
         var $regi_form = $('#regi_form');
 
-        function fn_visible(obj, num1, num2, qnum){
-            console.log('#div'+num1+num2);
-            var cknum = $('input:checkbox[name="q'+qnum+'[]"]:checked').length;
+        function fn_visible(obj, sel_target){
+            var cknum = $('input:checkbox[name="t_type[]"]:checked').length;
             if(cknum > pick_sjt_cnt){
                 alert('직렬별 과목은 '+pick_sjt_cnt+'개까지 선택할 수 있습니다.');
                 obj.checked = false;
                 return;
             }
             if(obj.checked == true){
-                $('#div'+num1+num2).show();
+                $('#' + sel_target).removeClass('d_none');
             } else {
-                $('#div'+num1+num2).hide();
+                $('#' + sel_target).addClass('d_none');
             }
         }
 
         function fn_submit(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+
             var vali_msg = '';
-            $('input:checkbox').each(function(i){
-                if($(this).is(':visible') && $('input:checkbox[name="' + $(this).prop('name') + '"]:checked').length != pick_sjt_cnt){
-                    vali_msg = '직렬별 선택 과목은 '+pick_sjt_cnt+'개 선택하셔야 합니다.';
-                }
-            });
             $('input:radio').each(function(i) {
                 if($(this).is(':visible') && $('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
                     vali_msg = '응답하지 않은 설문이 있습니다.';
                 }
             });
+            $('input:checkbox').each(function(i){
+                if($(this).is(':visible') && $('input:checkbox[name="' + $(this).prop('name') + '"]:checked').length != pick_sjt_cnt){
+                    vali_msg = '직렬별 선택 과목은 '+pick_sjt_cnt+'개 선택하셔야 합니다.';
+                }
+            });
+            $('textarea').each(function(i) {
+                if($(this).is(':visible') && !$.trim($(this).val())){
+                    vali_msg = '응답하지 않은 설문이 있습니다.';
+                }
+            });
+
             if(vali_msg) { alert(vali_msg); return; }
 
             if(overlap_chk === false){
@@ -124,20 +129,16 @@
                 return false;
             }
 
-            fn_input_disabled(true,function(){
-                var _url = '{{ front_url('/survey/store') }}';
-                overlap_chk = false;
-                ajaxSubmit($regi_form, _url, function(ret) {
-                    fn_input_disabled(false, function(){
-                        if(ret.ret_cd) {
-                            alert(ret.ret_msg);
-                            opener.location.reload();
-                            window.close();
-                        }
-                        overlap_chk = true;
-                    });
-                }, surveyPopValidationError, null, false, 'alert');
-            });
+            var _url = '{{ front_url('/eventSurvey/store') }}';
+            overlap_chk = false;
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    opener.location.reload();
+                    window.close();
+                }
+                overlap_chk = true;
+            }, surveyPopValidationError, null, false, 'alert');
         }
 
         //클릭 중복방지 떄문에 부득이하게 에러 콜백 추가
@@ -158,58 +159,6 @@
             } else {
                 notifyAlert('error', '알림', err_msg);
             }
-
-        }
-
-        function fn_click_serial(obj, num1, num2, qnum){
-            if('{{$sp_idx_201908}}' == '{{$SpIdx}}'){
-                /**
-                 * 2019년 2차 경행경채를 위한 로직.
-                 * 경행경채는 선택과목이 없음. 형법, 형사소송법, 경찰학개론, 수사, 행정법 5개 필수 과목 고정
-                 * TODO 하드코딩 개선
-                 */
-                if(num1 == 1){
-                    //응시직렬
-                    if(num2 == 2){
-                        //경행경채
-                        $('#div30').show();
-                        $('#div31').show();
-                        $('#div32').show();
-                        $('#div33').show();
-                        $('#div34').show();
-                        /*$('#div35').show();
-                        $('#div36').show();*/
-                        $('#question4').hide();
-                    }else{
-                        //일반공채, 101단
-                        $('#div30').show();
-                        $('#div31').show();
-                        $('#div32').hide();
-                        $('#div33').hide();
-                        $('#div34').hide();
-                        $('#div35').hide();
-                        $('#div36').hide();
-                        $('#question4').show();
-                    }
-                }
-            }
-        }
-
-        function fn_input_disabled(disFlag, callBackFunc){
-            //보이지않는 것들은 disabled 처리
-            $('input:radio:hidden, input:checkbox:hidden').each(function(i){
-                var sq_idx_data = $(this).data('sqidxkey');
-                if(disFlag){
-                    $(this).prop('disabled',true);
-                    $('#totalIdx'+sq_idx_data).prop('disabled',true);
-                    $('#totalType'+sq_idx_data).prop('disabled',true);
-                }else{
-                    $(this).prop('disabled',false);
-                    $('#totalIdx'+sq_idx_data).prop('disabled',false);
-                    $('#totalType'+sq_idx_data).prop('disabled',false);
-                }
-            });
-            callBackFunc();
         }
 
     </script>

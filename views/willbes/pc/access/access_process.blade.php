@@ -16,6 +16,6 @@
                 }
             }, null, true, 'GET');
         };
-        //gateLog();
+        gateLog();
     })
 </script>

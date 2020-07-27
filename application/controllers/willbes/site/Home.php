@@ -84,6 +84,11 @@ class Home extends \app\controllers\FrontController
         // get data
         $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
 
+        if(APP_DEVICE == 'pc' && $this->_is_pass_site === true && $this->_site_code == 2004 && ENVIRONMENT == 'production') {
+            // 공무원학원 리뉴얼 오픈전 이전 임시메인. TODO 삭제
+            $_view_path .= '_temp';
+        }
+
         $this->load->view('site/main_'. $_view_path, [
             'data' => $data,
             'cate_code' => $cate_code,

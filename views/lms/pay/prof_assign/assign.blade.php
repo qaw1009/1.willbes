@@ -176,7 +176,11 @@
                                     <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span class="hide">{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}</span></td>
                                     <td><input type="checkbox" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {!! $row['IsAssign'] == 'Y' ? 'checked="checked"' : '' !!}/></td>
                                     <td>{{ $row['wProfName'] }}</td>
-                                    <td>{{ $row['ProdNameSub'] }}</td>
+                                    <td>{{ $row['ProdNameSub'] }}
+                                        @if(empty($row['LectureRoomSeatNo']) === false)
+                                            <br/><span class="blue">좌석번호 : {{ $row['LectureRoomSeatNo'] }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>
                                     <td>{{ $row['WeekArrayName'] }}({{ $row['Amount'] }})</td>
                                     <td>{{ number_format($row['AssignMemCnt']) }}</td>

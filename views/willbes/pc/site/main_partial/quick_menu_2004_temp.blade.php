@@ -1,12 +1,3 @@
-<ul class="gobtn">
-    <li><a href="{{ front_url('/offinfo/boardInfo/index/78') }}">이달의 개강안내</a></li>
-    <li><a href="{{ front_url('/OffVisitLecture') }}">학원 실강 접수</a></li>
-    <li><a href="{{ front_url('/offinfo/boardInfo/index/82') }}">강의실 배정표</a></li>
-    <li><a href="{{ front_url('/support/notice/index') }}">공지사항</a></li>
-    <li><a href="{{ front_url('/consultManagement/index') }}">1:1 방문상담</a></li>
-    <li><a href="{{ front_url('/mockTestNew/apply/cate') }}">전국모의고사 신청</a></li>
-    <li><a href="{{ front_url('/event/list/ongoing') }}">진행 중 이벤트</a></li>
-</ul>
 <ul>
     @if(empty($data['dday']) === false)
         <li class="dday">

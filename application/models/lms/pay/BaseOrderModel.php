@@ -32,6 +32,7 @@ class BaseOrderModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
+        'product_r_lectureroom' => 'lms_product_r_lectureroom',
         'product_sms' => 'lms_product_sms',
         'product_professor_concat' => 'vw_product_r_professor_concat',
         'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',

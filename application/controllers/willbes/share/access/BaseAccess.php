@@ -14,40 +14,48 @@ class BaseAccess extends \app\controllers\FrontController
     }
 
     /**
-     * 외부 광고 접속 처리
+     * 외부 접속
      * @param array $params
      */
     public function gate($params=[])
     {
-        $result_msg = null;
-        $move_url = null;
         $gwIdx = element('0',$params);
-
         if(empty($gwIdx)) {
-            //show_alert('접속코드가 존재하지 않습니다.', '/');
             header('Location: /');exit();
         }
+        $this->load->view('access/access_process',[
+            'gwIdx' => $gwIdx,
+        ]);
+    }
 
-        $data =  $this->accessFModel->findContents('gw',$gwIdx);
+    /**
+     * 외부 접속 로그 저장
+     * @param array $params
+     * @return CI_Output
+     */
+    public function gateSave($params = [])
+    {
+        $result_msg = null;
+        $move_url = '/';
 
-        if(empty($data)) { //오류
+        $arr_input = $this->_reqG(null);
+        $gwIdx = element('gwIdx', $arr_input);
+
+        $data =  $this->accessFModel->findContents('gw', $gwIdx);
+
+        if(empty($data)) {
             $result_msg = '접속코드 등록 정보가 존재하지 않습니다.';
-        } else {        // 정상  (GwIdx 세션 생성)
+        } else {
             $move_url = $data['MoveUrl'];
             $this->session->set_userdata('gw_idx', $gwIdx);         // 접속코드 세션 생성
         }
 
-        $result = $this->accessFModel->saveLog('gw',$gwIdx,$result_msg);
-        if($result !== true) { //오류
+        $result = $this->accessFModel->saveLog('gw', $gwIdx, $result_msg, $arr_input);
+
+        if($result !== true) {
             $result_msg = $result['ret_msg'];
         }
-
-        // TODO 경고창 띄울것인지 여부 필요 ($result_msg 제거시 경고창 없음)
-        $this->load->view('access/access_process',[
-            'conn_type' => 'gw',
-            'result_msg' => $result_msg,
-            'move_url' => empty($move_url) ? '/' : $move_url
-        ]);
+        return $this->json_result(true, $result_msg, [], $move_url);
     }
 
     /**

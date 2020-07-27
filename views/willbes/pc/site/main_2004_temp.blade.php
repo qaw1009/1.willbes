@@ -5,38 +5,49 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section mt20">
+        <div class="Section MainVisual mt20">
             <div class="widthAuto">
-                <ul class="bnSecTop">
-                    <li>{!! banner_html(element('메인_상단배너1', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_상단배너2', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_상단배너3', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_상단배너4', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_상단배너5', $data['arr_main_banner'])) !!}</li>
-                </ul>
+                @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
+                    <div class="VisualBox p_re">
+                        <div id="MainRollingDiv" class="MaintabList">
+                            <ul class="Maintab">
+                                @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div id="MainRollingSlider" class="MaintabBox">
+                            <div class="bx-wrapper">
+                                <div class="bx-viewport">
+                                    {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="VisualsubBox mt20">
+                    <ul>
+                        @for($i=1; $i<=3; $i++)
+                            @if(isset($data['arr_main_banner']['메인_서브'.$i]) === true)
+                                <li>
+                                    <div class="bSlider acad">
+                                        {!! banner_html($data['arr_main_banner']['메인_서브'.$i], 'slider') !!}
+                                    </div>
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <div class="Section">
-            <div class="widthAuto bnSec01">
-                <div class="will-acadTit">합격생 추천 단과 시리즈</div>
-                <ul>
-                    <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_서브3', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_서브4', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_서브5', $data['arr_main_banner'])) !!}</li>
-                    <li>{!! banner_html(element('메인_서브6', $data['arr_main_banner'])) !!}</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="Section barBnr">
+        <div class="Section Bnr mt5 mb80">
             <div class="widthAuto">
-                {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
+                <div class="willbes-Bnr">
+                    {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
+                </div>
             </div>
         </div>
-
         <div class="Section Section2 pt80 pb80">
             <div class="widthAuto">
                 <div class="gosi-acadTit NSK-Thin mb50">
@@ -133,9 +144,9 @@
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])
         </div>
 
-        <div id="QuickMenu" class="acadMainQuickMenu">
+        <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
-            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'] . '_temp')
         </div>
     </div>
     <!-- End Container -->

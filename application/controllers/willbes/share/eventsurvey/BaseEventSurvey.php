@@ -12,6 +12,12 @@ class BaseEventSurvey extends \app\controllers\FrontController
         '1' => 'N'      // 불가능
     ];
 
+    //직렬별 선택과목 갯수
+    private $_pick_sjt_cnt = [
+        'sjt_arr' => ['10'=>'2'],  // [SpIdx => 입력 갯수] 디폴트 3개
+        'default' => '3',
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -45,14 +51,26 @@ class BaseEventSurvey extends \app\controllers\FrontController
             return;
         }
 
+        //직렬별 선택과목 갯수
+        $pick_sjt_cnt = element($data_survey['SpIdx'],$this->_pick_sjt_cnt['sjt_arr'],$this->_pick_sjt_cnt['default']);
+
+        $total_cnt = 0;
         foreach ($data_question as $key => $val){
             $data_question[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
+            if($val['SqType'] == 'T'){ // 복수형은 직렬별 선택과목 갯수 기준
+                continue;
+            }else{
+                $total_cnt += count($data_question[$key]['SqJsonData']);
+            }
         }
+        $total_cnt += $pick_sjt_cnt;
 
         $view_file = 'willbes/pc/eventsurvey/index';
         $this->load->view($view_file, [
             'data_survey' => $data_survey,
-            'data_question' => $data_question
+            'data_question' => $data_question,
+            'pick_sjt_cnt' => $pick_sjt_cnt,
+            'total_cnt' => $total_cnt
         ], false);
     }
 
@@ -162,26 +180,46 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
     public function store()
     {
-        $totalIdx = element('totalIdx', $this->_reqP(null, false));
-        $totalType = element('totalType', $this->_reqP(null, false));
+        $sp_idx = $this->_reqP('sp_idx');
+        $total_cnt = $this->_reqP('total_cnt');
+        $input = element('s_type', $this->_reqP(null, false));
+        $input['D'] = element('d_type', $this->_reqP(null, false));
 
-        //공통 과목만 체크한다.
-        $tyn = 'N';
-        foreach($totalIdx as $key => $val) {
-            // 데이터 수정
-            $snum = $val;
-            $q = element('q' . $snum, $this->_reqP(null, false));
-            $totaltype = $totalType[$key];
-            if($tyn == 'N'){
-                if(empty($q) === true){
-                    $this->json_error('모든 문항을 입력해 주세요.');
-                    return;
+        if(empty($sp_idx) || empty($total_cnt)){
+            $this->json_error('잘못된 접근 입니다.');
+            return;
+        }
+
+        $inputData = $this->_setInputData($input,$total_cnt);
+        if(empty($inputData) === true){
+            $this->json_error('모든 문항을 입력해 주세요.');
+        }
+
+        $result = $this->surveyModel->storeSurvey($inputData,$sp_idx);
+        $this->json_result($result, '저장 되었습니다.', $result, $result);
+    }
+
+    /**
+     * 저장 데이터 셋팅
+     * @param $input
+     * @param integer $total_cnt
+     * @return bool|mixed
+     */
+    private function _setInputData($input,$total_cnt){
+        $ck_cnt = 0;
+        foreach ($input as $type => $data){
+            if(is_array($data)){
+                foreach ($data as $k => $v){
+                    $ck_cnt += count($v);
                 }
             }
-            if($totaltype == 'T') $tyn = 'Y';
         }
-        $result = $this->surveyModel->storeSurvey($this->_reqP(null, false));
-        $this->json_result($result, '저장되었습니다.', $result, $result);
+
+        if($ck_cnt != $total_cnt){
+            return false;
+        }
+
+        return $input;
     }
 
 }

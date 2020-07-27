@@ -32,18 +32,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="sp_take_type">조사범위 <span class="required">*</span></label>
-                    <div class="col-md-8">
-                        <div class="radio">
-                            <input type="radio" class="flat" id="sp_take_y" name="sp_take_type" required="required" value="1" @if($method == 'POST' || (empty($data_survey['SpTakeType']) === false && $data_survey['SpTakeType']=='1'))checked="checked"@endif>
-                            <label for="sp_take_y" class="input-label">회원</label>
-                            <input type="radio" class="flat" id="sp_take_n" name="sp_take_type" required="required" value="2" @if(empty($data_survey['SpTakeType']) === false && $data_survey['SpTakeType']=='2')checked="checked"@endif>
-                            <label for="sp_take_n" class="input-label">회원 + 비회원</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_is_duplicate">중복투표 <span class="required">*</span></label>
                     <div class="col-md-8">
                         <div class="radio">

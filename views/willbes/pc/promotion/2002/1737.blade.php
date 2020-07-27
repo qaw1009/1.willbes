@@ -90,7 +90,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1681_03.jpg" title="신청접수">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEBS">* 6월 설명회  신청접수</h3>
+                            <h3 class="NGEBS">* 8월 설명회  신청접수</h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="25%" />
                                 <col  />
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년 6월 설명회  신청하기 ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년 8월 설명회  신청하기 ></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">

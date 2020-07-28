@@ -76,7 +76,7 @@
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    예비순환 패키지 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    기본실력완성 패키지 이벤트 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#notice">이용안내확인하기 ↓</a>
             </div>   

@@ -56,6 +56,13 @@
     }
     .evtCtnsBox .btn a:hover {color:#fff; background:#282f4c;}
 
+    .evtFooter {margin:80px auto 0; padding:30px 20px; text-align:left; color:#3a3a3a; background:#c2c2c2; font-size:0.875rem; line-height:1.4 }
+    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
+    .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
+    .evtFooter div,
+    .evtFooter ul {margin-bottom:30px; padding-left:10px}
+    .evtFooter li {margin-left:20px; list-style-type: decimal;}
+
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px) {        
@@ -264,9 +271,25 @@
         <div class="btn NSK-Black"><a href="https://njob.willbes.net/promotion/index/cate/3114/code/1722" target="_blank">소문내기 이벤트 참여하기 ></a></div>       
     </div>  
 
-    <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_09.jpg" alt="" >
-    </div>
+    <div class="evtCtnsBox evtFooter" id="infoText">
+        <h3 class="NSK-Black">[이용안내]</h3>
+        <p># 사전예약 혜택</p>
+        <ul>
+            <li>사전예약 혜택은 7월 31일까지 결제완료자에 한해서만 적용됩니다.</li>
+            <li>사전예약 혜택은 수강료 20% 할인 + 수강기간 1개월 추가 연장입니다.<br>
+                수강기간 추가 혜택은 강의 시작(8월 1일) 이후 일괄적으로 적용 예정입니다.
+            </li>
+            <li>강의 시작일은 8월 1일 토요일은 사이트 로그인 후 내강의실에서 수강 할 수 있으며, 수강시작일 변경은 불가능합니다.</li>
+        </ul>
+
+        <p># 소문내기 이벤트</p>
+        <ul>
+            <li>당첨바료시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
+            <li>당첨자 발표는 8월 3일(월) 공지사항을 참고하시면 됩니다.</li>
+        </ul>
+
+        <div>※ 문의안내 1544-5006</div>
+    </div>  
 </div>
 <!-- End Container -->
 

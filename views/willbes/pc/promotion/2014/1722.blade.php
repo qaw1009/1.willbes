@@ -59,20 +59,17 @@
 
         .evt10 { padding:120px 0 0; text-align:left;}
         .evt10 .copy {width:720px; margin:0 auto;}
-        .evt10 h5 {color:#a0774e; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evt10 h5 {color:#a0774e; font-size:46px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
         .evt10 .evt10Txt01 {font-size:28px; margin:20px auto 80px}
         .evt10 .sample {width:720px; margin:0 auto}
         .evt10 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
-            background:#2a92ed; color:#fff; font-size:20px; font-weight:600; text-align:center}
+            background:#acacac; color:#fff; font-size:20px; font-weight:600; text-align:center}
         .evt10 .sample li p {margin-bottom:15px;}
-        .evt10 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:4px}
-        .evt10 .sample li a.btnst01 {border:1px solid #ccc;}
-        .evt10 .sample li a.btnst02 {border:1px solid #000; color:#fff; background:#333}
-        .evt10 .sample li a.btnst03 {border:1px solid #ccc; color:#000; background:#ccc}
-        .evt10 .sample li a:hover {background:#000; color:#fff}
+        .evt10 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:8px; background:#000; color:#fff;}
+        .evt10 .sample li a:hover {background:#fff; color:#000}
         .evt10 .sample li:last-child {margin:0}
         .evt10 .sample:after {content:""; display:block; clear:both}
-        .evt10 .evt10Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;} 
+        .evt10 .evt10Txt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;}
 
         .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
         .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px; line-height:1.3}
@@ -172,7 +169,7 @@
                 </h5>
                 <div class="evt10Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
             </div>
-            {{--
+
             <ul class="sample">
                 @if(empty($arr_base['promotion_otherinfo_data']) === false)
                     @php $i = 1; @endphp
@@ -195,7 +192,7 @@
                 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
                 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
             </div>
-            --}}
+
 
             <div class="evtCurri">
                 <ul>
@@ -333,18 +330,26 @@
         </div>
     </div>
     <!-- End Container -->
-    <script type="text/javascript">
+
+    <script type="text/javascript"> 
+        function goLecture() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+        };
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
         });
-
-        function goLecture() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
-        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
+    <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
+    <script language='javascript'>
+        var _AceGID=(function(){var Inf=['gtp14.acecounter.com','8080','AH1A44052179653','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+        var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+    </script>
+    <noscript><img src='https://gtp14.acecounter.com:8080/?uid=AH1A44052179653&je=n&' border='0' width='0' height='0' alt=''></noscript>
+    <!-- AceCounter Log Gathering Script End -->
 @stop

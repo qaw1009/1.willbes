@@ -420,12 +420,12 @@
         <div class="widthAuto bnSec01">
             <div class="will-acadTit">합격생 추천 단과 시리즈</div>
             <ul>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_01.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_02.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_03.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_04.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_05.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_06.jpg" alt="배너명"></a><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_01.jpg" alt="배너명"></a></div><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_02.jpg" alt="배너명"></a></div><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_03.jpg" alt="배너명"></a></div><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_04.jpg" alt="배너명"></a></div><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_05.jpg" alt="배너명"></a></div><li>
+                <li><div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_370x83_06.jpg" alt="배너명"></a></div><li>
             </ul>
         </div>
     </div>
@@ -577,7 +577,7 @@
                     </div>
                 </div>
             </div>
-
+            {{--
             <ul class="acad_infoBox">
                 <li class="w-infoBox1">
                     <a href="#none"><span>1:1 학습컨설팅</span></a>
@@ -595,6 +595,7 @@
                     <a href="#none"><span>모의고사신청</span></a>
                 </li>
             </ul>
+            --}}
         </div>
     </div>
 

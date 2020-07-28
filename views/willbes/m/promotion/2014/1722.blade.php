@@ -120,7 +120,7 @@
             <div>책쓰기가 이렇게 쉬울줄이야!</div>
         </h5>
         <div class="evt06Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
-        {{--
+
         <ul class="sample">
             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                 @php $i = 1; @endphp
@@ -143,7 +143,6 @@
             * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
             * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
         </div>
-        --}}
         
         <div class="curriculum">              
             <dl>

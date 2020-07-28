@@ -57,7 +57,7 @@
         .evt07 {background:#a1774f}
         .evt09 {background:#c2c2c2}
 
-        .evt10 { padding:120px 0 0; text-align:left;}
+        .evt10 {padding:120px 0 0; text-align:left;}
         .evt10 .copy {width:720px; margin:0 auto;}
         .evt10 h5 {color:#a0774e; font-size:46px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
         .evt10 .evt10Txt01 {font-size:28px; margin:20px auto 80px}
@@ -74,6 +74,13 @@
         .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
         .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px; line-height:1.3}
         .evtCurri li.cTitle {color:#a0774e; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+
+        .evtFooter {padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#3a3a3a; background:#c2c2c2 !important}
+        .evtFooter h3 {width:720px; margin:0 auto;font-size:1.5rem; margin-bottom:30px; }
+        .evtFooter p {width:720px; margin:0 auto;font-size:1.1rem; margin-bottom:10px;}
+        .evtFooter div,
+        .evtFooter ul {width:720px; margin:0 auto 30px; padding-left:10px}
+        .evtFooter li {margin-left:20px; list-style-type: decimal; }
 
 
         /*타이머*/
@@ -325,8 +332,24 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
 
-        <div class="evtCtnsBox evt09">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_09.jpg" alt="이용안내">
+        <div class="evtFooter" id="infoText">
+            <h3 class="NSK-Black">[이용안내]</h3>
+            <p># 사전예약 혜택</p>
+            <ul>
+                <li>사전예약 혜택은 7월 31일까지 결제완료자에 한해서만 적용됩니다.</li>
+                <li>사전예약 혜택은 수강료 20% 할인 + 수강기간 1개월 추가 연장입니다.<br>
+                    수강기간 추가 혜택은 강의 시작(8월 1일) 이후 일괄적으로 적용 예정입니다.
+                </li>
+                <li>강의 시작일은 8월 1일 토요일은 사이트 로그인 후 내강의실에서 수강 할 수 있으며, 수강시작일 변경은 불가능합니다.</li>
+            </ul>
+
+            <p># 소문내기 이벤트</p>
+            <ul>
+                <li>당첨바료시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
+                <li>당첨자 발표는 8월 3일(월) 공지사항을 참고하시면 됩니다.</li>
+            </ul>
+
+            <div>※ 문의안내 1544-5006</div>
         </div>
     </div>
     <!-- End Container -->

@@ -331,52 +331,16 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        /*스크롤고정*/
-        $(function() {
-            var nav = $('.evtMenu');
-            var navTop = nav.offset().top+100;
-            var navHeight = nav.height()+10;
-            var showFlag = false;
-            nav.css('top', -navHeight+'px');
-            $(window).scroll(function () {
-                var winTop = $(this).scrollTop();
-                if (winTop >= navTop) {
-                    if (showFlag == false) {
-                        showFlag = true;
-                        nav
-                            .addClass('fixed')
-                            .stop().animate({'top' : '0px'}, 100);
-                    }
-                } else if (winTop <= navTop) {
-                    if (showFlag) {
-                        showFlag = false;
-                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                            nav.removeClass('fixed');
-                        });
-                    }
-                }
-            });
-        });
-
-        $(window).on('scroll', function() {
-            $('.top-tab').each(function() {
-                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
-                    $('.top-tab').removeClass('active')
-                    $(this).addClass('active');
-                }
-            });
-        });
+    <script type="text/javascript"> 
+        function goLecture() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+        };
 
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
         });
-
-        function goLecture() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
-        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

@@ -88,8 +88,8 @@
                             return date;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var date = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popResult(' + row.SpIdx + ')">' + row.CNT + '</button>' : 0;
-                            return date;
+                            var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popGraph(' + row.SpIdx + ')">' + row.CNT + '</button>' : row.CNT;
+                            return AnswerCnt;
                         }},
                     {'data' : 'SpIsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var SpUseYn = (row.SpIsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
@@ -105,17 +105,12 @@
 
         });
 
-        function popResult(idx){
-
-            var uri_param;
-
-            uri_param = 'spidx=' + idx;
-
-            var _url = '{{ site_url('/predict/survey/surveyResult') }}' + '?' + uri_param;
+        function popGraph(sp_idx){
+            var _param = 'sp_idx=' + sp_idx;
+            var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
 
             win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');
             win.focus();
-
         }
     </script>
 @stop

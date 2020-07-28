@@ -12,7 +12,9 @@ class SurveyModel extends WB_Model
     private $_table = [
         'event_survey' => 'lms_event_survey',
         'event_survey_question' => 'lms_event_survey_question',
+        'event_answer_info' => 'lms_event_survey_answer_info',
         'admin' => 'wbs_sys_admin',
+        'member' => 'lms_member',
     ];
 
     private $_use_type = [
@@ -20,7 +22,7 @@ class SurveyModel extends WB_Model
         'N' => '미사용'
     ];
 
-    private $_selection_type = [
+    public $_selection_type = [
         'S' => '선택형(단일)',
         'M' => '선택형(그룹)',
         'T' => '복수형',
@@ -44,12 +46,13 @@ class SurveyModel extends WB_Model
     public function eventSurveyList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = "count(*) AS numrows";
             $order_by_offset_limit = '';
         } else {
-            $column = '
-            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
-            ';
+            $column = "
+            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            (SELECT COUNT(*) FROM {$this->_table['event_answer_info']} WHERE SpIdx = A.SpIdx) AS CNT
+            ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -92,7 +95,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문문항 조회
+     * 설문조사 문항 조회
      * @return integer $sp_idx
      * @return mixed
      */
@@ -114,14 +117,13 @@ class SurveyModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-
         $data = $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
 
         return $this->_getDecodeData($data);
     }
 
     /**
-     * 설문조사 리스트
+     * 설문조사 리스트 조회
      * @return mixed
      */
     public function listEventSurvey()
@@ -135,6 +137,44 @@ class SurveyModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['SpIdx' => 'ASC'])->getMakeOrderBy();
         return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 설문조사 결과 조회 그래프
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function findSurveyAnswerInfo($sp_idx)
+    {
+        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx]];
+        $column = "AnswerInfo";
+        $from = "
+            FROM {$this->_table['event_answer_info']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['SaIdx' => 'ASC'])->getMakeOrderBy();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 설문조사 결과 조회 데이터
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function findSurveyForAnswerInfo($sp_idx)
+    {
+        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
+        $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
+        $from = "
+            FROM {$this->_table['event_answer_info']} AS A
+            LEFT JOIN {$this->_table['member']} AS B ON A.MemIdx = B.MemIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+        return $this->_getDecodeData($data,'AnswerInfo');
     }
 
     /**
@@ -357,14 +397,19 @@ class SurveyModel extends WB_Model
     /**
      * 답변항목 디코딩
      * @param array $data
+     * @param string $field
      * @return mixed
      */
-    private function _getDecodeData($data){
+    private function _getDecodeData($data=[],$field=false){
 
         foreach ($data as $key => $val){
-            $data[$key]['SqTypeTxt'] = element($val['SqType'],$this->_selection_type);
-            $data[$key]['SqUseTxt'] = element($val['SqIsUse'],$this->_use_type);
-            $data[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
+            if(empty($field) === false){
+                $data[$key][$field] = json_decode($val[$field],true);
+            }else{
+                $data[$key]['SqTypeTxt'] = element($val['SqType'],$this->_selection_type);
+                $data[$key]['SqUseTxt'] = element($val['SqIsUse'],$this->_use_type);
+                $data[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
+            }
         }
 
         return $data;

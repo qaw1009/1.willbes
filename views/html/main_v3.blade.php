@@ -286,10 +286,11 @@
                 <ul>
                     <li>
                         <strong>공무원</strong>
-                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a><span>|</span>
-                        <a href="http://willbesedu.co.kr" target="_blank">인천</a><span>|</span>
-                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">대구</a><span>|</span>
-                        <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">부산</a>
+                        <a href="{{ front_app_url('/home/index', 'pass', true) }}" target="_blank">노량진</a><span>|</span>
+                        <a href="{{ front_app_url('/home/index', 'willbesedu', true) }}" target="_blank">인천</a><span>|</span>
+                        <a href="https://pass.willbes.net/pass/campus/show/code/605004" target="_blank">대구</a><span>|</span>
+                        <a href="http://busan.willbes.net" target="_blank">부산</a><span>|</span>
+                        <a href="https://pass.willbes.net/pass/campus/show/code/605006" target="_blank">광주</a>
                     </li>
                     <li>
                         <strong>경찰</strong>

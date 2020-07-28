@@ -108,8 +108,10 @@
 }
 
 .GA .bnSec01 ul {margin-right:-5px}
-.GA .bnSec01 li {display: inline; float:left; width:33.33333%}
-.GA .bnSec01 li a {display:block; margin-right:5px; margin-bottom:5px}
+.GA .bnSec01 li {display:inline; float:left; width:370px; margin-right:5px}
+.GA .bnSec01 li div {width:370px !important; margin-bottom:5px}
+.GA .bnSec01 li a {display:block;}
+.GA .bnSec01 ul:after {content:''; display: block; clear:both}
 
 .GA .Section2 {
     background: #f7f7f7;

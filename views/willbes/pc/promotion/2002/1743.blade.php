@@ -99,7 +99,7 @@
                     <h4><span style="color:#f77b00;vertical-align:baseline;">8월 29일(토)</span> 장정훈 경찰학 무료 숫자특강</h4>
                     <div class="privacy">
                         <div class="contacts">
-                            <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/></p>
+                            <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
                             <p><strong><span class="star">*</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
                             <p class="check_contact">
                                 <strong><span class="star">*</span>참여캠퍼스</strong><br><br>

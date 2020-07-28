@@ -7,7 +7,6 @@ class SurveyModel extends WB_Model
         'event_survey' => 'lms_event_survey',
         'event_survey_question' => 'lms_event_survey_question',
         'event_answer_info' => 'lms_event_survey_answer_info',
-        'event_answer_detail' => 'lms_event_survey_answer_detail',
     ];
 
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
@@ -72,7 +71,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyAnswerInfo($sp_idx = null)
+    public function findSurveyAnswer($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
 

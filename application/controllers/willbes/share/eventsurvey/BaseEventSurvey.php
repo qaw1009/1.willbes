@@ -38,7 +38,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         if($data_survey['SpIsDuplicate'] == $this->_duplicate_type[1]){
-            $count = $this->surveyModel->findSurveyAnswerInfo($sp_idx);
+            $count = $this->surveyModel->findSurveyAnswer($sp_idx);
             if($count > 0){
                 show_alert('이미 설문에 참여하셨습니다.','close');
                 return;
@@ -183,7 +183,6 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $sp_idx = $this->_reqP('sp_idx');
         $total_cnt = $this->_reqP('total_cnt');
         $input = element('s_type', $this->_reqP(null, false));
-        $input['D'] = element('d_type', $this->_reqP(null, false));
 
         if(empty($sp_idx) || empty($total_cnt)){
             $this->json_error('잘못된 접근 입니다.');
@@ -207,12 +206,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
      */
     private function _setInputData($input,$total_cnt){
         $ck_cnt = 0;
-        foreach ($input as $type => $data){
-            if(is_array($data)){
-                foreach ($data as $k => $v){
-                    $ck_cnt += count($v);
-                }
-            }
+        foreach ($input as $data){
+            $ck_cnt += count($data);
         }
 
         if($ck_cnt != $total_cnt){

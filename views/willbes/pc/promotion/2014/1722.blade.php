@@ -332,10 +332,10 @@
     <!-- End Container -->
 
     <script type="text/javascript"> 
-        function goLecture() {
+       /* function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
-        };
+        };*/
 
         /*디데이카운트다운*/
         $(document).ready(function() {

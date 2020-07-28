@@ -59,14 +59,14 @@
                                 <strong>{{$item_v['title'] or ''}}</strong>
                                 <ul>
                                     @if($val['SqType'] == 'D') {{-- 서술형 --}}
-                                        <li><textarea name="d_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
+                                        <li><textarea name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
                                     @endif
 
                                     @if(empty($item_v['item']) === false) {{-- 선택형 --}}
                                         @foreach($item_v['item'] as $k => $item)
                                             <li>
                                                 <label>
-                                                    <input type="radio" name="s_type[{{$val['SqType']}}][{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
+                                                    <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
                                                 </label>
                                             </li>
                                         @endforeach

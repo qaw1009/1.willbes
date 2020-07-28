@@ -577,7 +577,7 @@
                     </div>
                 </div>
             </div>
-
+            {{--
             <ul class="acad_infoBox">
                 <li class="w-infoBox1">
                     <a href="#none"><span>1:1 학습컨설팅</span></a>
@@ -595,6 +595,7 @@
                     <a href="#none"><span>모의고사신청</span></a>
                 </li>
             </ul>
+            --}}
         </div>
     </div>
 

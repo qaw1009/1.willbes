@@ -22,7 +22,7 @@
         <div class="Section">
             <div class="widthAuto bnSec01">
                 <div class="will-acadTit">합격생 추천 단과 시리즈</div>
-                <ul>
+                    <ul>
                     <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_서브3', $data['arr_main_banner'])) !!}</li>
@@ -71,7 +71,7 @@
                         {!! banner_html(element('메인_이벤트', $data['arr_main_banner']), 'sliderTM') !!}
                     </div>
                 </div>
-
+                {{--
                 <ul class="acad_infoBox">
                     <li class="w-infoBox1">
                         <a href="{{ front_url('/consultManagement/index') }}"><span>1:1 학습컨설팅</span></a>
@@ -89,6 +89,7 @@
                         <a href="{{ front_url('/mockTestNew/apply/cate/') }}"><span>모의고사신청</span></a>
                     </li>
                 </ul>
+                --}}
             </div>
         </div>
 

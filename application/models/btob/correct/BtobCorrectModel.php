@@ -59,7 +59,7 @@ class BtobCorrectModel extends WB_Model
         }
 
         $from = " FROM {$this->_table['lms_correct_unit']} AS CU
-            INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.RegAdminIdx
+            INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.AdminIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -107,10 +107,10 @@
                     {'data' : 'ProdCode', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-regist-issue" data-prod-code="' + row.ProdCode + '"><u>확인</u></a>';
                         }},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
-                    {'data' : null},
+                    {'data' : 'unitCount'},
+                    {'data' : 'assignMentCount'},
+                    {'data' : 'replyNCount'},
+                    {'data' : 'replyYCount'}
                 ],
             });
 

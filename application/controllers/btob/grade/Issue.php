@@ -71,6 +71,9 @@ class Issue extends BaseAssign
      */
     public function managerAssignmentModal()
     {
+        if (empty($this->_reqG('cua_idx')) === true) {
+            show_error('필수데이터 누락입니다.');
+        }
         $arr_condition = [
             'EQ' => [
                 'CuaIdx' => $this->_reqG('cua_idx')

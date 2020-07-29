@@ -30,11 +30,11 @@
                         <div class="col-md-2 form-control-static">
                             {{$data['MemName']}} ({{$data['MemId']}})
                         </div>
-                        <label class="control-label col-md-2 form-control-static">점수</label>
+                        <label class="control-label col-md-1 form-control-static">점수</label>
                         <div class="col-md-2 form-control-static">
                             {{$data['ReplyScore']}}
                         </div>
-                        <label class="control-label col-md-2 form-control-static">제출일</label>
+                        <label class="control-label col-md-1 form-control-static">제출일</label>
                         <div class="col-md-3 form-control-static">
                             {{$data['RegDatm']}}
                         </div>
@@ -44,11 +44,11 @@
                         <div class="col-md-2 form-control-static">
                             {!! $data['IsReply'] == 'Y' ? '채점' : '미채점' !!}
                         </div>
-                        <label class="control-label col-md-2 form-control-static">채점자</label>
+                        <label class="control-label col-md-1 form-control-static">채점자</label>
                         <div class="col-md-2 form-control-static">
                             {{$data['ReplyAdminName']}}
                         </div>
-                        <label class="control-label col-md-2 form-control-static">채점일</label>
+                        <label class="control-label col-md-1 form-control-static">채점일</label>
                         <div class="col-md-3 form-control-static">
                             {{$data['ReplyRegDatm']}}
                         </div>

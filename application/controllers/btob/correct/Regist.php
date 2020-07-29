@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('_lms/product/base/subject','_lms/product/base/professor','correct/btobOffLecture','correct/btobCorrect');
+    protected $models = array('_lms/product/base/subject','_lms/product/base/professor','correct/btobOffLecture','correct/btobCorrect','correct/btobAssign');
     protected $helpers = array('download');
     private $_sess_btob_idx = null;
     private $_sess_btob_site_code = null;
@@ -383,6 +383,24 @@ class Regist extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 제출첨삭 삭제
+     * @param array $params
+     */
+    public function deleteAssignment($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->btobAssignModel->deleteForAssignment($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
 
     public function unitFileDownload()
     {

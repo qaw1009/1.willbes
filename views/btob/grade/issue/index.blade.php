@@ -142,7 +142,7 @@
                     {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
                             var str = '<p class="red">미채점</p>';
                             if (data == 'Y') {
-                                var str = row.AssignRegDate;
+                                var str = row.ReplyRegDatm;
                             }
                             return str;
                         }},
@@ -176,7 +176,6 @@
 
             $list_table.on('click', '.btn-manager-assignment', function() {
                 var idx = $(this).data('idx');
-                var correct_idx = $(this).data('correct-idx');
                 $('.btn-manager-assignment').setLayer({
                     "url" : "{{ site_url("/grade/issue/managerAssignmentModal") }}",
                     "width" : "1200",

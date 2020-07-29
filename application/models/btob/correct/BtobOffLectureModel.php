@@ -10,6 +10,8 @@ class BtobOffLectureModel extends WB_Model
     ];
 
     private $_table = [
+        'lms_correct_unit' => 'lms_correct_unit',
+        'lms_correct_unit_assignment' => 'lms_correct_unit_assignment',
         'lms_product' => 'lms_product'
         ,'lms_product_lecture' => 'lms_product_lecture'
         ,'lms_product_course' => 'lms_product_course'
@@ -28,6 +30,16 @@ class BtobOffLectureModel extends WB_Model
         parent::__construct('lms');
     }
 
+    /**
+     * 첨삭용 상품정보
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @param bool $is_authority
+     * @return mixed
+     */
     public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $is_authority = true)
     {
         if ($is_count === true) {
@@ -43,6 +55,27 @@ class BtobOffLectureModel extends WB_Model
                 ,Ba.CourseName,Bb.SubjectName,E.wProfName_String
                 ,Bg.CcdName AS CampusCcd_Name,Bc.CcdName AS LearnPatternCcd_Name,Bd.CcdName AS StudyPatternCcd_Name,Be.CcdName AS StudyApplyCcd_Name
                 ,Ca.CateName
+                ,(
+                    SELECT COUNT(*) AS cnt FROM '.$this->_table['lms_correct_unit'].' WHERE ProdCode = A.ProdCode AND IsStatus = \'Y\'
+                ) AS unitCount #회차수
+                ,(
+                    SELECT COUNT(*) AS cnt
+                    FROM '.$this->_table['lms_correct_unit'].' AS a1
+                    INNER JOIN '.$this->_table['lms_correct_unit_assignment'].' AS b1 ON a1.CorrectIdx = b1.CorrectIdx
+                    WHERE a1.ProdCode = A.ProdCode AND a1.IsStatus = \'Y\' AND b1.IsStatus = \'Y\'
+                ) AS assignMentCount #제출인원
+                ,(
+                    SELECT COUNT(*) AS cnt
+                    FROM '.$this->_table['lms_correct_unit'].' AS a1
+                    INNER JOIN '.$this->_table['lms_correct_unit_assignment'].' AS b1 ON a1.CorrectIdx = b1.CorrectIdx
+                    WHERE a1.ProdCode = A.ProdCode AND a1.IsStatus = \'Y\' AND b1.IsStatus = \'Y\' AND IsReply = \'N\'
+                ) AS replyNCount #미채점
+                ,(
+                    SELECT COUNT(*) AS cnt
+                    FROM '.$this->_table['lms_correct_unit'].' AS a1
+                    INNER JOIN '.$this->_table['lms_correct_unit_assignment'].' AS b1 ON a1.CorrectIdx = b1.CorrectIdx
+                    WHERE a1.ProdCode = A.ProdCode AND a1.IsStatus = \'Y\' AND b1.IsStatus = \'Y\' AND IsReply = \'Y\'
+                ) AS replyYCount #채점완료
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

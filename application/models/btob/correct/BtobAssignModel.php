@@ -218,4 +218,61 @@ class BtobAssignModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
+
+    public function deleteForAssignment($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $cua_idx = $idx;
+            $admin_idx = $this->session->userdata('btob.admin_idx');
+            $result = $this->_findUnitAssignMentData($cua_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsReply' => 'N',
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdAdminDatm' => date('Y-m-d H:i:s')
+            ])->where('CuaIdx', $cua_idx)->where('IsStatus', 'Y')->where('AssignmentStatusCcd', '698002')->update($this->_table['lms_correct_unit_assignment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 단일 데이터 조회(데이터 update 발생 시 idx 검증)
+     * @param $idx
+     * @return mixed
+     */
+    private function _findUnitAssignMentData($idx)
+    {
+        $column = 'CuaIdx';
+        $from = "
+            FROM {$this->_table['lms_correct_unit_assignment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'CuaIdx' => $idx,
+                'AssignmentStatusCcd' => '698002',
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
+    }
 }

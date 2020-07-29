@@ -138,9 +138,6 @@
     $(document).ready(function() {
         $datatable = $list_table.DataTable({
             serverSide: true,
-            buttons: [
-                { text: '<i class="fa fa-pencil mr-5"></i> 등록', className: 'btn-sm btn-success border-radius-reset mr-15 btn-create-unit'}
-            ],
             ajax: {
                 'url' : '{{ site_url('/correct/regist/issueForProductAjax') }}',
                 'type' : 'POST',
@@ -159,7 +156,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-read" data-correct-idx="' + row.CorrectIdx + '"><u>' + data + '</u></a>';
+                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.CuaIdx + '"><u>' + data + '</u></a>';
                     }},
                 {'data' : 'AttachAssignmentData_User', 'render' : function(data, type, row, meta) {
                         var tmp_return;
@@ -187,7 +184,7 @@
                 {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
                         var str = '<p class="red">미채점</p>';
                         if (data == 'Y') {
-                            var str = row.AssignRegDate;
+                            var str = row.ReplyRegDatm;
                         }
                         return str;
                     }},
@@ -199,7 +196,7 @@
                 {'data' : 'BaIdx', 'render' : function(data, type, row, meta) {
                         if (row.IsStatus == 'Y') {
                             if (row.AssignmentStatusCcd == '698002') {
-                                return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BaIdx + '"><u><p class="red">삭제</p></u></a>';
+                                return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.CuaIdx + '"><u><p class="red">삭제</p></u></a>';
                             } else {
                                 return '삭제불가';
                             }
@@ -215,49 +212,36 @@
             location.href = '{{ site_url("/correct/regist/product/") }}';
         });
 
-        //회차등록
-        $('.btn-create-unit').click(function() {
-            unitCreateModal('');
-        });
-
-        //회차수정
-        $list_table.on('click', '.btn-create-unit', function() {
-            var correct_idx = $(this).data('correct-idx');
-            unitCreateModal(correct_idx);
-        });
-
-        //read
-        $list_table.on('click', '.btn-read', function() {
-            var site_code = $search_form.find('input[name="site_code"]').val();
-            var prod_code = $search_form.find('input[name="prod_code"]').val();
-
-            $('.btn-read').setLayer({
-                "url" : "{{ site_url("/correct/regist/unitReadModal/") }}" + $(this).data('correct-idx'),
+        $list_table.on('click', '.btn-manager-assignment', function() {
+            var idx = $(this).data('idx');
+            $('.btn-manager-assignment').setLayer({
+                "url" : "{{ site_url("/grade/issue/managerAssignmentModal") }}",
                 "width" : "1200",
                 'add_param_type' : 'param',
                 'add_param' : [
-                    { 'id' : 'site_code', 'name' : '사이트코드', 'value' : site_code, 'required' : true },
-                    { 'id' : 'prod_code', 'name' : '상품코드', 'value' : prod_code, 'required' : true }
+                    { 'id' : 'cua_idx', 'name' : '첨삭식별자', 'value' : idx, 'required' : true }
                 ]
             });
         });
-    });
 
-    function unitCreateModal(correct_idx)
-    {
-        var site_code = $search_form.find('input[name="site_code"]').val();
-        var prod_code = $search_form.find('input[name="prod_code"]').val();
+        $list_table.on('click', '.btn-delete', function() {
+            var _url = '{{ site_url("/correct/regist/deleteAssignment") }}/' + $(this).data('idx') + getQueryString();
+            var data = {
+                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE'
+            };
 
-        $('.btn-create-unit').setLayer({
-            "url" : "{{ site_url("/correct/regist/unitCreateModal/") }}" + correct_idx,
-            "width" : "1200",
-            'add_param_type' : 'param',
-            'add_param' : [
-                { 'id' : 'site_code', 'name' : '사이트코드', 'value' : site_code, 'required' : true },
-                { 'id' : 'prod_code', 'name' : '상품코드', 'value' : prod_code, 'required' : true }
-            ]
+            if (!confirm('해당 과제를 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
         });
-    }
+    });
 
     function comma(str) {
         str = String(str);

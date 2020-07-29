@@ -87,7 +87,7 @@
                                 @endfor
                             </select>
 
-                            <input type="text" class="form-control sq_question" name="sq_question_title[{{$i}}]" title="답변항목 {{ $i }}" required="required" value="@if($sq_data['SqType'] == 'S'){{$sq_data['SqJsonData'][1]['item'][$i] or ''}}@else{{ $sq_data['SqJsonData'][$i]['title'] or ''}}@endif">
+                            <input type="text" class="form-control sq_question" name="sq_question_title[{{$i}}]" title="답변항목 {{ $i }}" required="required" value="@if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == 'S'){{$sq_data['SqJsonData'][1]['item'][$i] or ''}}@else{{ $sq_data['SqJsonData'][$i]['title'] or ''}}@endif">
                         </div>
 
                         <div class="t{{ $i }} mb-10 hide">
@@ -205,16 +205,29 @@
             }
         }
 
-        // 복수형 갯수 선택
+        // 복수형, 선택형(그룹) 갯수 선택
         function sel_question_item(sel_point,sel_item_cnt) {
+            // 디폴트 입력값
+            var _obj = {1:'매우쉬움',2:'쉬움',3:'보통',4:'어려움',5:'매우어려움'};
+            var _auto = true;
+
             for(var j=1; j<=sel_item_cnt; j++){
                 $('.t' + sel_point).find('.tt' + j).removeClass("hide");
+
+                if(_auto === true){
+                    if(!$.trim($('.t' + sel_point).find('.tt' + j).find('input').val())){
+                        $('.t' + sel_point).find('.tt' + j).find('input').val(_obj[j]);
+                    }else{
+                        _auto = false;
+                    }
+                }
             }
 
             sel_item_cnt++;
 
             for(var i = sel_item_cnt; i <= sq_item_cnt; i++){
                 $('.t' + sel_point).find('.tt' + i).addClass("hide");
+
             }
         }
 

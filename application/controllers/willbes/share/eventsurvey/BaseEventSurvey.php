@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseEventSurvey extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'eventsurvey/survey');
+    protected $models = array('eventsurvey/survey');
     protected $helpers = array();
 
     // 중복투표
@@ -56,14 +56,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         $total_cnt = 0;
         foreach ($data_question as $key => $val){
-            $data_question[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
-            if($val['SqType'] == 'T'){ // 복수형은 직렬별 선택과목 갯수 기준
-                continue;
-            }else{
+            if($val['SqType'] != 'T'){ // 복수형은 직렬별 선택과목 갯수 기준
                 $total_cnt += count($data_question[$key]['SqJsonData']);
             }
         }
-        $total_cnt += $pick_cnt;
+        $total_cnt += $pick_cnt; // 복수형 갯수 추가
 
         $view_file = 'willbes/pc/eventsurvey/index';
         $this->load->view($view_file, [
@@ -76,106 +73,23 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
     public function graph($params = [])
     {
-        $idx = $params[0];
+        $sp_idx = $params[0];
+        $answer_info = $this->surveyModel->findSurveyForAnswerInfo($sp_idx);
+        $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
-        $res = $this->surveyModel->answerCall($idx);
+        echo '<pre>';
+        print_r($answer_info);
+        exit;
 
-        $tempSq = '';
-        $temptitle = '';
-        $tempType = '';
-        $tempCNT = '';
-        $tempIsDisp = '';
-        $resSet = array();
-        $titleSet = array();
-        $numberSet = array();
-        $questionSet = array();
-        $typeSet = array();
-        $isDispSet = array();
 
-        for($i = 1; $i <= 25; $i++){
-            ${"num".$i} = 0;
-        }
+        // 설문 응답 비율 계산
+        $data = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
-        $resCnt = count($res);
-        $defnum = 0;
-        foreach ($res as $key => $val){
-            $SqIdx = $val['SqIdx'];
-            $CNT = $val['CNT'];
-            $Answer = $val['Answer'];
-            $j = $key + 1;
-            if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
-                $tnum = 0;
-                if($resCnt == $j){
-                    ${"num".$Answer}++;
-                }
-                for($i = 1; $i <= $tempCNT; $i++) {
-                    $tnum = $tnum + ${"num".$i};
-                }
-                $resSet[$defnum]['SubTitle'] = $temptitle;
-                for($i = 1; $i <= $tempCNT; $i++){
-                    $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0) ? round(${"num".$i} / $tnum, 2) * 100 : 0;
-                }
-                for($i = 1; $i <= $CNT; $i++){
-                    if($Answer == $i){
-                        if($val['Type'] == 'S') {
-                            ${"num" . $i} = 1;
-                        } else {
-                            $AnswerArr = explode('/',$Answer);
-                            for($i = 1; $i <= $CNT; $i++){
-                                ${"num".$i} = 0;
-                                for($j = 0; $j < count($AnswerArr); $j++){
-                                    if($AnswerArr[$j] == $i){
-                                        ${"num".$i}++;
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if($val['Type'] == 'S') ${"num".$i} = 0;
-                    }
-                }
-                $resSet[$defnum]['CNT'] = $tempCNT;
-                $titleSet[] = $temptitle;
-                $numberSet[] = $defnum;
-                $typeSet[] = $tempType;
-                $isDispSet[] = $tempIsDisp;
-
-                $questionSet[] = $this->surveyModel->questionSet($tempSq);
-                $defnum++;
-            } else {
-                if($val['Type'] == 'S'){
-                    for($i = 1; $i <= $CNT; $i++){
-                        if($Answer == $i) ${"num".$i}++;
-                    }
-                } else {
-                    //TYPE == 'T'
-                    $AnswerArr = explode('/',$Answer);
-                    for($i = 1; $i <= $CNT; $i++){
-                        for($j = 0; $j < count($AnswerArr); $j++){
-                            if($AnswerArr[$j] == $i){
-                                ${"num".$i}++;
-                            }
-                        }
-                    }
-                }
-            }
-            $tempSq = $SqIdx;
-            $tempType = $val['Type'];
-            $temptitle = $val['SubTitle'];
-            $tempIsDisp = $val['IsDispResult'];
-            $tempCNT = $CNT;
-        }
-
-        $view_file = 'willbes/pc/survey/graph';
+        $view_file = 'willbes/pc/eventsurvey/graph';
         $this->load->view($view_file, [
-            'resSet' => $resSet,
-            'titleSet' => $titleSet,
-            'typeSet' => $typeSet,
-            'questionSet' => $questionSet,
-            'numberSet' => $numberSet,
-            'isDispSet' => $isDispSet,
-            'SpIdx' => $idx
-        ], false);
+            'sp_idx' => $sp_idx,
+            'data' => $data
+        ],false);
     }
 
     public function store()

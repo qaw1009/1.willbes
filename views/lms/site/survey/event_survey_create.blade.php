@@ -129,7 +129,7 @@
                                     </td>
                                     <td class="text-center">{{$row['SqUseTxt']}}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-data="{{json_encode($row)}}" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-idx="{{$row['SqIdx']}}" onclick="show_question_layer(this)">수정</button>
                                         <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>
@@ -193,7 +193,7 @@
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'sp_idx', 'name' : '설문 식별자', 'value' : $(obj).data("sp-idx"), 'required' : true },
-                    { 'id' : 'sq_data', 'name' : '설문항목 배열', 'value' : $(obj).data("sq-data"), 'required' : true},
+                    { 'id' : 'sq_idx', 'name' : '설문문항 식별자', 'value' : $(obj).data("sq-idx"), 'required' : true},
                 ],
                 'width' : 900
             });

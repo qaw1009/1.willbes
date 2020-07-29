@@ -95,6 +95,31 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 설문조사 문항 수정 폼 데이터 조회
+     * @return integer $sq_idx
+     * @return mixed
+     */
+    public function findQuestionForModify($sq_idx=null)
+    {
+        $arr_condition = ['EQ' => ['A.SqIdx' => $sq_idx, 'A.IsStatus' => 'Y']];
+
+        $column = "
+            A.SqIdx, A.SpIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
+            C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
+            ";
+
+        $from = "
+            FROM {$this->_table['event_survey_question']} AS A
+            INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
      * 설문조사 문항 조회
      * @return integer $sp_idx
      * @return mixed
@@ -158,7 +183,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 결과 조회 데이터
+     * 설문조사 결과 조회
      * @param integer $sp_idx
      * @return mixed
      */

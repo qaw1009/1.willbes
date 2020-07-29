@@ -56,10 +56,9 @@
                     <span style="color:red;">유형설명 - 선택형단일(단일선택 객관식), 선택형그룹(단일선택 그룹핑), 복수형(다중선택 객관식)</span><br/>
                     <select class="form-control" id="sq_type" name="sq_type" title="답변유형" required="required" onchange="sel_question_type();">
                         <option value="">-유형선택-</option>
-                        <option value="S" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "S") selected="selected" @endif>선택형(단일)</option>
-                        <option value="M" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "M") selected="selected" @endif>선택형(그룹)</option>
-                        <option value="T" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "T") selected="selected" @endif>복수형</option>
-                        <option value="D" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == "D") selected="selected" @endif>서술형</option>
+                        @foreach($arr_type as $type => $txt)
+                            <option value="{{$type}}" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == $type) selected="selected" @endif>{{$txt}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

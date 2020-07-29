@@ -113,12 +113,12 @@
                                         <p><strong>{{$row['SqComment']}}</strong></p>
                                         @foreach($row['SqJsonData'] as $key => $val)
                                             <p>
-                                                @if($row['SqType'] != 'S')
+                                                @if($row['SqType'] != 'S') {{--선택형(단일)--}}
                                                     항목{{$key}}. <strong>{{$val['title']}} </strong>
                                                 @endif
 
                                                 @if(empty($val['item']) === false)
-                                                    =>
+                                                    @if($row['SqType'] != 'S') => @endif
                                                     @foreach($val['item'] as $k => $v)
                                                         {{$k}}. {{$v}},
                                                     @endforeach

@@ -74,7 +74,7 @@ class SurveyModel extends WB_Model
      * @return integer $sp_idx
      * @return mixed
      */
-    public function findSurveyForModify($sp_idx)
+    public function findSurveyForModify($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
 
@@ -144,7 +144,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyAnswerInfo($sp_idx)
+    public function findSurveyAnswerInfo($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx]];
         $column = "AnswerInfo";
@@ -162,7 +162,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyForAnswerInfo($sp_idx)
+    public function findSurveyForAnswerInfo($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
@@ -341,7 +341,7 @@ class SurveyModel extends WB_Model
      * @param integer $sq_idx
      * @return array|bool
      */
-    public function removeSurveyQuestion($sq_idx)
+    public function removeSurveyQuestion($sq_idx=null)
     {
         $this->_conn->trans_begin();
         try {
@@ -367,7 +367,7 @@ class SurveyModel extends WB_Model
      * @param string $question_type
      * @return string JSON string
      */
-    private function _setEncodeData($question_title,$question_cnt,$question_item,$question_item_arr,$question_type){
+    private function _setEncodeData($question_title=[],$question_cnt=null,$question_item=[],$question_item_arr=[],$question_type=null){
 
         $data = [];
         foreach ($question_title as $key => $val){
@@ -400,7 +400,7 @@ class SurveyModel extends WB_Model
      * @param string $field
      * @return mixed
      */
-    private function _getDecodeData($data=[],$field=false){
+    private function _getDecodeData($data=[],$field=null){
 
         foreach ($data as $key => $val){
             if(empty($field) === false){

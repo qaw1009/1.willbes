@@ -101,6 +101,7 @@ class Survey extends \app\controllers\BaseController
             'sp_idx' => $sp_idx,
             'sq_cnt' => $sq_cnt,
             'sq_item_cnt' => $sq_item_cnt,
+            'arr_type' => $this->surveyModel->_selection_type,
             'sq_data' => $sq_data
         ]);
     }
@@ -184,55 +185,13 @@ class Survey extends \app\controllers\BaseController
         $answer_info = $this->surveyModel->findSurveyForAnswerInfo($sp_idx);
         $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
-        // 설문 항목 매칭
-        foreach ($answer_info as $key => $answer_data){
-            $answer_info[$key] = $this->_mathAnswerRateData($question_info,$answer_data['AnswerInfo']);
-        }
+        // 설문 응답 비율 계산
+        $data = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
-        echo '<pre>';
-        print_r($answer_info);
-        exit;
-        
         $this->load->view('site/survey/survey_graph_popup', [
             'sp_idx' => $sp_idx,
-            'resSet' => $resSet,
-            'titleSet' => $titleSet,
-            'typeSet' => $typeSet,
-            'questionSet' => $questionSet,
-            'numberSet' => $numberSet
+            'data' => $data
         ]);
-    }
-
-    /**
-     * 설문응답 비율 계산
-     * @param $question_info
-     * @param $answer_data
-     * @return mixed
-     */
-    private function _mathAnswerRateData($question_info=[],$answer_data=[]){
-        $data = [];
-        $new_question_info = [];
-
-        foreach ($question_info as $key => $val){
-            $new_question_info[$val['SqIdx']] = $val;
-        }
-
-        foreach ($answer_data as $question_key => $answer){
-            $SqTitle = $new_question_info[$question_key]['SqTitle'];
-            $SqType = $new_question_info[$question_key]['SqType'];
-            foreach ((array)$answer as $key => $val){
-                $question_info = $new_question_info[$question_key]['SqJsonData'][$key];
-                if($SqType == 'D'){ // 서술형
-                    $data[$SqTitle][$key] = $question_info['title'];
-                }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
-                    $data[$question_info['title']][$key] = $question_info['item'][$val];
-                }else{
-                    $data[$SqTitle][$key] = $question_info['item'][$val];
-                }
-            }
-        }
-
-        return $data;
     }
 
     /**
@@ -280,6 +239,67 @@ class Survey extends \app\controllers\BaseController
                     $data[$question_info['title']][$key] = $question_info['item'][$val];
                 }else{
                     $data[$SqTitle][$key] = $question_info['item'][$val];
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 설문응답 비율 계산
+     * @param $question_info
+     * @param $answer_info
+     * @return mixed
+     */
+    private function _mathAnswerSpreadData($question_info=[],$answer_info=[]){
+        $data = [];
+        $new_question_info = [];
+        $new_answer_info = [];
+
+        foreach ($question_info as $key => $val){
+            $new_question_info[$val['SqIdx']] = $val;
+
+            if($val['SqType'] == 'D'){ // 서술형
+                $new_answer_info[$val['SqIdx']] = 'D';
+            }else{
+                foreach ($val['SqJsonData'] as $answer_key => $answer){
+                    foreach ($answer['item'] as $k => $v){
+                        $new_answer_info[$val['SqIdx']][$answer_key][$k] = 0; // 초기화
+                    }
+                }
+            }
+        }
+
+        // 카운트
+        foreach ($answer_info as $key => $val){
+            foreach ($val['AnswerInfo'] as $question_key => $answer){
+                if($new_answer_info[$question_key] != 'D'){ // 서술형 제외
+                    foreach ($answer as $k => $v){
+                        $new_answer_info[$question_key][$k][$v] += 1;
+                    }
+                }
+            }
+        }
+
+        // 데이타 매칭
+        foreach ($new_answer_info as $question_key => $answer){
+            $SqTitle = $new_question_info[$question_key]['SqTitle'];
+            $SqType = $new_question_info[$question_key]['SqType'];
+
+            if($SqType != 'D'){ // 서술형 제외
+                foreach ((array)$answer as $key => $val){
+                    $question_info = $new_question_info[$question_key]['SqJsonData'][$key];
+                    $item_sum = array_sum($val);
+
+                    if($item_sum > 0){
+                        foreach ($val as $k => $v){
+                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
+                                $SqTitle = $question_info['title'];
+                            }
+                            $data[$SqTitle][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
+                        }
+                    }
                 }
             }
         }

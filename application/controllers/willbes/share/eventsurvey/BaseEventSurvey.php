@@ -13,8 +13,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
     ];
 
     //직렬별 선택과목 갯수
-    private $_pick_sjt_cnt = [
-        'sjt_arr' => ['10'=>'2'],  // [SpIdx => 입력 갯수] 디폴트 3개
+    private $_pick_sbj = [
+        'list' => ['10'=>'2'],  // [SpIdx => 입력 갯수] 디폴트 3개
         'default' => '3',
     ];
 
@@ -52,7 +52,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         //직렬별 선택과목 갯수
-        $pick_sjt_cnt = element($data_survey['SpIdx'],$this->_pick_sjt_cnt['sjt_arr'],$this->_pick_sjt_cnt['default']);
+        $pick_cnt = element($data_survey['SpIdx'],$this->_pick_sbj['list'],$this->_pick_sbj['default']);
 
         $total_cnt = 0;
         foreach ($data_question as $key => $val){
@@ -63,13 +63,13 @@ class BaseEventSurvey extends \app\controllers\FrontController
                 $total_cnt += count($data_question[$key]['SqJsonData']);
             }
         }
-        $total_cnt += $pick_sjt_cnt;
+        $total_cnt += $pick_cnt;
 
         $view_file = 'willbes/pc/eventsurvey/index';
         $this->load->view($view_file, [
             'data_survey' => $data_survey,
             'data_question' => $data_question,
-            'pick_sjt_cnt' => $pick_sjt_cnt,
+            'pick_cnt' => $pick_cnt,
             'total_cnt' => $total_cnt
         ], false);
     }
@@ -192,6 +192,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $inputData = $this->_setInputData($input,$total_cnt);
         if(empty($inputData) === true){
             $this->json_error('모든 문항을 입력해 주세요.');
+            return;
         }
 
         $result = $this->surveyModel->storeSurvey($inputData,$sp_idx);

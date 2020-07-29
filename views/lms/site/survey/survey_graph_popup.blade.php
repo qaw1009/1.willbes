@@ -30,7 +30,7 @@
         .Cts03 .graph p {padding:10px 0; background:#fff}
         .Cts03 .graph p:last-child {border-top:1px solid #333}
         .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto; }
-        .Cts03 .graph div img {position:absolute; bottom:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
+        .Cts03 .graph div img {position:absolute; left:0; bottom:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
         .Cts03 .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
         .Cts03 .graphbox:after {content:""; display:block; clear:both}
         .Cts03 .graphWrap:after {content:""; display:block; clear:both}
@@ -78,67 +78,64 @@
                 <div class="Cts03">
                     <ul class="graphWrap">
                         <li>
-                            <div>
-                                @if(empty($resSet)===false)
-                                    @for($i=1; $i < count($titleSet); $i++)
-                                        [{{ $titleSet[$i] }}]
-                                        <div id="div{{ $i }}" class="graphbox">
-                                            @for($j=1; $j <= $resSet[$i]['CNT']; $j++)
-                                                <div class="graph graph2">
-                                                    <p>@if(empty($resSet[$i]['Answer'.$j]) === false) {{ $resSet[$i]['Answer'.$j] }}@endif%</p>
-                                                    <div>
-                                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer'.$j] }}%">
-                                                    </div>
-                                                    <p>@if(empty($questionSet[$i]['Comment'.$j]) === false) {{$questionSet[$i]['Comment'.$j] }} @endif</p>
-                                                </div>
-                                            @endfor
-                                        </div>
-                                    @endfor
-                                @else
+                            @if(empty($data)===false)
+                                @foreach($data as $title => $val)
+                                    [{{ $title }}]
                                     <div class="graphbox">
-                                        <div class="graph graph2">
-                                            <p>0 %</p>
-                                            <div>
-                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        @foreach($val as $item => $spread)
+                                            <div class="graph graph2">
+                                                <p>{{ $spread }}%</p>
+                                                <div>
+                                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $spread }}%">
+                                                </div>
+                                                <p>{{ $item }}</p>
                                             </div>
-                                            <p>매우 쉬움</p>
-                                        </div>
-
-                                        <div class="graph graph2">
-                                            <p>0 %</p>
-                                            <div>
-                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
-                                            </div>
-                                            <p>쉬움</p>
-                                        </div>
-
-                                        <div class="graph graph2">
-                                            <p>0 %</p>
-                                            <div>
-                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
-                                            </div>
-                                            <p>보통</p>
-                                        </div>
-
-                                        <div class="graph graph2">
-                                            <p>0 %</p>
-                                            <div>
-                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
-                                            </div>
-                                            <p>어려움</p>
-                                        </div>
-
-                                        <div class="graph graph2">
-                                            <p>0 %</p>
-                                            <div>
-                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
-                                            </div>
-                                            <p>매우 어려움</p>
-                                        </div>
+                                        @endforeach
                                     </div>
+                                @endforeach
+                            @else
+                                <div class="graphbox">
+                                    <div class="graph graph2">
+                                        <p>0 %</p>
+                                        <div>
+                                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        </div>
+                                        <p>매우 쉬움</p>
+                                    </div>
+
+                                    <div class="graph graph2">
+                                        <p>0 %</p>
+                                        <div>
+                                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        </div>
+                                        <p>쉬움</p>
+                                    </div>
+
+                                    <div class="graph graph2">
+                                        <p>0 %</p>
+                                        <div>
+                                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        </div>
+                                        <p>보통</p>
+                                    </div>
+
+                                    <div class="graph graph2">
+                                        <p>0 %</p>
+                                        <div>
+                                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        </div>
+                                        <p>어려움</p>
+                                    </div>
+
+                                    <div class="graph graph2">
+                                        <p>0 %</p>
+                                        <div>
+                                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="0%">
+                                        </div>
+                                        <p>매우 어려움</p>
+                                    </div>
+                                </div>
                             @endif
-                            <!--graphbox//-->
-                            </div>
                         </li>
                     </ul>
                 </div>

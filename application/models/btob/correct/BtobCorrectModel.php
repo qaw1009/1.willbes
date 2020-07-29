@@ -20,8 +20,13 @@ class BtobCorrectModel extends WB_Model
 
     private $_table = [
         'lms_correct_unit' => 'lms_correct_unit',
+        'lms_correct_unit_assignment' => 'lms_correct_unit_assignment',
         'lms_board_attach' => 'lms_board_attach',
-        'lms_btob_admin' => 'lms_btob_admin'
+        'lms_correct_assign' => 'lms_correct_assign',
+        'lms_correct_assign_detail' => 'lms_correct_assign_detail',
+        'lms_btob_admin' => 'lms_btob_admin',
+        'lms_product' => 'lms_product',
+        'lms_member' => 'lms_member',
     ];
 
     public function __construct()
@@ -54,7 +59,7 @@ class BtobCorrectModel extends WB_Model
         }
 
         $from = " FROM {$this->_table['lms_correct_unit']} AS CU
-            INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.RegAdminIdx
+            INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.AdminIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -363,23 +368,38 @@ class BtobCorrectModel extends WB_Model
         return true;
     }
 
+    /** 첨삭현황 리스트
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listCorrectAssignment($is_count = false, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        /*if ($is_count === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                CU.CorrectIdx,CU.SiteCode,CU.ProdCode,CU.Title,CU.Price,CU.StartDate,CU.EndDate,CU.IsUse,CU.RegDatm,CU.RegAdminIdx,BA.AdminName
-                ,IFNULL(fn_board_attach_data_correct(CU.CorrectIdx),NULL) AS AttachFileName
-                ,DATEDIFF(CU.EndDate, DATE_FORMAT(NOW(), "%Y-%m-%d")) AS Date_Diff
+            $column = 'cua.CuaIdx,cua.CorrectIdx,cua.IsReply,cua.RegDatm,cua.ReplyRegDatm,cua.ReplyScore,cua.AssignmentStatusCcd
+                ,p.ProdName,cu.Title,cu.StartDate,cu.EndDate,cu.Price,ba.AdminName AS AssignAdminName,m.MemName,m.MemId
+                ,ca.RegDatm AS AssignRegDate,cua.IsStatus
+                ,IFNULL(fn_board_attach_data_correct_assignment(cua.CuaIdx,0),NULL) AS AttachAssignmentData_User
+                ,DATEDIFF(cu.EndDate, DATE_FORMAT(NOW(), "%Y-%m-%d")) AS Date_Diff
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = " FROM {$this->_table['lms_correct_unit']} AS CU
-            INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.RegAdminIdx
+        $from = "
+            FROM {$this->_table['lms_correct_unit_assignment']} AS cua
+            INNER JOIN {$this->_table['lms_correct_assign_detail']} AS cad ON cua.CuaIdx = cad.CuaIdx
+            INNER JOIN {$this->_table['lms_correct_unit']} AS cu ON cua.CorrectIdx = cu.CorrectIdx
+            INNER JOIN {$this->_table['lms_product']} AS p ON cu.ProdCode = p.ProdCode
+            INNER JOIN {$this->_table['lms_member']} AS m ON cua.MemIdx = m.MemIdx
+            INNER JOIN {$this->_table['lms_btob_admin']} AS ba ON cad.AssignAdminIdx = ba.AdminIdx
+            INNER JOIN {$this->_table['lms_correct_assign']} AS ca ON cad.CaIdx = ca.CaIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -388,7 +408,145 @@ class BtobCorrectModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();*/
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 첨삭게시판 상세 정보 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function findCorrectAssignment($arr_condition)
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = '
+            a.CuaIdx, b.Title, p.ProdName,
+            f.MemName, f.MemId, fn_dec(f.PhoneEnc) AS MemPhone, f2.SmsRcvStatus,
+            ReplyADMIN.AdminName AS ReplyAdminName, a.RegDatm, a.IsReply, a.ReplyScore, a.ReplyRegDatm,
+            b.Content AS ProfContent, a.Content AS MemContent, a.ReplyContent
+            ,fn_board_attach_data_correct(a.CorrectIdx) AS adminFiles
+            ,fn_board_attach_data_correct_assignment(a.CuaIdx,0) AS userFiles
+            ,fn_board_attach_data_correct_assignment(a.CuaIdx,1) AS replyAdminFiles
+        ';
+
+        $from = "
+            FROM (
+                SELECT CuaIdx, CorrectIdx, Content, ReplyContent, MemIdx, IsReply, ReplyScore, RegDatm, ReplyRegDatm, ReplyRegAdminIdx
+                FROM lms_correct_unit_assignment {$where}
+            ) AS a
+            INNER JOIN lms_correct_unit AS b ON a.CorrectIdx = b.CorrectIdx
+            INNER JOIN lms_product AS p ON b.ProdCode = p.ProdCode
+            INNER JOIN lms_member AS f ON a.MemIdx = f.MemIdx
+            INNER JOIN lms_member_otherinfo AS f2 ON a.MemIdx = f2.MemIdx
+            LEFT OUTER JOIN lms_btob_admin AS ReplyADMIN ON a.ReplyRegAdminIdx = ReplyADMIN.AdminIdx AND ReplyADMIN.IsStatus='Y'
+        ";
+        return $this->_conn->query('select ' . $column . $from)->row_array();
+    }
+
+    /**
+     * 회차별 등록된 첨삭 회원
+     * @param bool $is_count
+     * @param $correct_idx
+     * @return mixed
+     */
+    public function getUnitMember($is_count = true, $correct_idx = '')
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+        } else {
+            $column = 'CuaIdx, MemIdx';
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'CorrectIdx' => $correct_idx,
+                'IsReply' => 'N',
+                'IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                "CuaIdx NOT IN" => "(SELECT b.CuaIdx FROM {$this->_table['lms_correct_assign']} AS a 
+                                        INNER JOIN {$this->_table['lms_correct_assign_detail']} AS b ON a.CaIdx = b.CaIdx and b.IsStatus = 'Y'
+                                        WHERE a.CorrectIdx = '{$correct_idx}' AND a.IsStatus = 'Y')"
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['lms_correct_unit_assignment']}
+        ";
+        $query = $this->_conn->query('select ' . $column .$from .$where);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 첨삭등록
+     * @param $form_data
+     */
+    public function modifyAssignmentBoard($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $cua_idx = element('cua_idx', $form_data);
+            if (empty($cua_idx) === true) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $result_data = $this->findCorrectAssignment(['EQ' => ['CuaIdx' => $cua_idx]]);
+            if (empty($result_data) === true) {
+                throw new \Exception('조회된 첨삭 회원 데이터가 없습니다.');
+            }
+
+            $board_data = [
+                'IsReply' => 'Y',
+                'AssignmentStatusCcd' => $this->arr_assignment_status_ccd['M'],
+                'ReplyContent' => element('board_content', $form_data),
+                'ReplyScore' => element('reply_score', $form_data),
+                'ReplyRegDatm' => date('Y-m-d H:i:s'),
+                'ReplyRegAdminIdx' => $this->session->userdata('btob.admin_idx'),
+                'ReplyRegIp' => $this->input->ip_address()
+            ];
+
+            $this->_conn->set($board_data)->where('CuaIdx', $cua_idx);
+            if ($this->_conn->update($this->_table['lms_correct_unit_assignment']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            //파일저장
+            $this->load->library('upload');
+            $upload_sub_dir = 'willbes/correct/' . '/' . date('Y') . '/' . date('md');
+
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cua_idx), $upload_sub_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            foreach ($uploaded as $idx => $attach_files) {
+                if (count($attach_files) > 0) {
+                    $set_board_attach_data['CuaIdx'] = $cua_idx;
+                    $set_board_attach_data['RegType'] = 1;
+                    $set_board_attach_data['AttachFileType'] = 0;
+                    $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+                    $set_board_attach_data['AttachFileName'] = $attach_files['orig_name'];
+                    $set_board_attach_data['AttachRealFileName'] = $attach_files['client_name'];
+                    $set_board_attach_data['AttachFileSize'] = $attach_files['file_size'];
+                    $set_board_attach_data['RegAdminIdx'] = $this->session->userdata('btob.admin_idx');
+                    $set_board_attach_data['RegIp'] = $this->input->ip_address();
+
+                    if ($this->_addBoardAttach($set_board_attach_data) === false) {
+                        throw new \Exception('게시판 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

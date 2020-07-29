@@ -32,7 +32,7 @@ class SearchCoupon extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.SiteCode' => $this->_reqP('site_code'),
+                //'A.SiteCode' => $this->_reqP('site_code'),
                 'A.DeployType' => $this->_reqP('deploy_type'),
             ],
             'ORG' =>[

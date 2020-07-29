@@ -66,6 +66,11 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
+                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                            <option value="">결제상태</option>
+                            <option value="pay">결제완료</option>
+                            <option value="refund">환불완료</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

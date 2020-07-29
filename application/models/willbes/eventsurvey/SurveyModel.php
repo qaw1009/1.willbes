@@ -62,8 +62,29 @@ class SurveyModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $data = $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
+        return $this->_getDecodeData($data,'SqJsonData');
+    }
 
-        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
+
+
+    /**
+     * 설문조사 결과 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function findSurveyForAnswerInfo($sp_idx=null)
+    {
+        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
+        $column = "A.AnswerInfo";
+        $from = "
+            FROM {$this->_table['event_answer_info']} AS A
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+        return $this->_getDecodeData($data,'AnswerInfo');
     }
 
     /**
@@ -115,6 +136,23 @@ class SurveyModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 답변항목 디코딩
+     * @param array $data
+     * @param string $field
+     * @return mixed
+     */
+    private function _getDecodeData($data=[],$field=null){
+
+        foreach ($data as $key => $val){
+            if(empty($field) === false){
+                $data[$key][$field] = json_decode($val[$field],true);
+            }
+        }
+
+        return $data;
     }
 
 }

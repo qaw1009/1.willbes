@@ -86,14 +86,17 @@ class Survey extends \app\controllers\BaseController
         $sq_item_cnt = 10;  // 복수형 항목 갯수
         $arr_param = $this->_reqG(null);
         $sp_idx = element('sp_idx', $arr_param);
-        $sq_data = element('sq_data', $arr_param);
+        $sq_idx = element('sq_idx', $arr_param);
+        $sq_data = [];
 
         if(empty($sp_idx) === true || !is_numeric($sp_idx)){
             show_alert("잘못된 접근 입니다.");
         }
 
-        if(empty($sq_data) === false){
+        if(empty($sq_idx) === false){
             $method = 'PUT';
+            $sq_data = $this->surveyModel->findQuestionForModify($sq_idx);
+            $sq_data['SqJsonData']= json_decode($sq_data['SqJsonData'],true);
         }
 
         $this->load->view('site/survey/question_create_modal', [

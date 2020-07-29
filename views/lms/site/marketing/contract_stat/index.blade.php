@@ -38,6 +38,8 @@
         </div>
     </div>
 
+
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
@@ -45,7 +47,7 @@
             function drawChart() {
                 var cont_idx = [
                     @foreach($contract_data as $row)
-                        @if($row['ClickCnt'] > 0 || $row['MemCnt'] > 0 || $row['CartCnt'] > 0 || $row['OrderCnt'] > 0)
+                        @if($row['ClickCnt'] > 0 || $row['MemCnt'] > 0 || $row['CartCnt'] > 0 || $row['OrderCnt'] > 0 || $row['RefundCnt'] > 0)
                             {{$row['ContIdx']}},
                         @endif
                     @endforeach
@@ -56,7 +58,7 @@
                             {
                                 title : '{{$row['ContName']}} - [ {{$row['ClickCnt']}} ] 회 접속',
                                 is3D: true,
-                                colors: ['#78C900','#0036EA', '#EAA400', '#CE0600'],
+                                colors: ['#bdbdbd','#78C900','#EAA400','#CE0600', '#0036EA'],
                             },
                         @endif
                     @endforeach
@@ -66,10 +68,12 @@
                         @if($row['ClickCnt'] > 0 || $row['MemCnt'] > 0 || $row['CartCnt'] > 0 || $row['OrderCnt'] > 0 )
                             [
                                 ['계약', '계약단위전체'],
-                                ['접속수',   {{$row['ClickCnt']}}],
+                                //['접속수',   {{$row['ClickCnt']}}],
+                                ['',   0],
                                 ['회원가입수',   {{$row['MemCnt']}}],
                                 ['장바구니수',   {{$row['CartCnt']}}],
-                                ['결제건수',    {{$row['OrderCnt']}}]
+                                ['결제건수',    {{$row['OrderCnt']}}],
+                                ['환불건수',    {{$row['OrderCnt']}}]
                             ],
                         @endif
                     @endforeach
@@ -82,8 +86,8 @@
                                 vAxis: {title: ''},
                                 hAxis: {title: ''},
                                 seriesType: 'bars',
-                                series: {4: {type: 'line'}},
-                                colors: ['#78C900', '#0036EA', '#EAA400', '#CE0600'],
+                                series: {5: {type: 'line'}},
+                                colors: ['#bdbdbd','#78C900','#EAA400','#CE0600', '#0036EA'],
                             },
                         @endif
                     @endforeach
@@ -94,10 +98,10 @@
                         @if($row['ClickCnt'] > 0 || $row['MemCnt'] > 0 || $row['CartCnt'] > 0 || $row['OrderCnt'] > 0)
                             @if(empty($gateway_data) != true)
                                 [
-                                    ['광고명', '접속수', '회원가입수', '장바구니수', '결제건수'],
+                                    ['광고명', '접속수', '회원가입수', '장바구니수', '결제건수', '환불건수'],
                                 @foreach($gateway_data as $gateway_row)
                                     @if($gateway_row['ContIdx'] == $row['ContIdx'])
-                                    ['{{$gateway_row['GwName']}}',  {{$gateway_row['ClickCnt']}},{{$gateway_row['MemCnt']}},{{$gateway_row['CartCnt']}},{{$gateway_row['OrderCnt']}}],
+                                    ['{{$gateway_row['GwName']}}',  {{$gateway_row['ClickCnt']}},{{$gateway_row['MemCnt']}},{{$gateway_row['CartCnt']}},{{$gateway_row['OrderCnt']}},{{$gateway_row['RefundCnt']}}],
                                     @endif
                                 @endforeach
                                 ],
@@ -126,7 +130,7 @@
             function statDetail(cont_idx){
                 $('.cont_idx').setLayer({
                     'url' : '{{ site_url('/site/marketing/contractStat/contractDetail/') }}' + cont_idx,
-                    'width' : 1200,
+                    'width' : 1400,
                     'modal_id' : 'cont_modal'
                 });
             }

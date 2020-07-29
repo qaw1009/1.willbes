@@ -17,7 +17,6 @@ class Gateway extends \app\controllers\BaseController
         $this->load->view('site/marketing/gateway/index',[
             'adType_ccd' => $codes['663'],
         ]);
-
     }
 
     public function listAjax($params=[])

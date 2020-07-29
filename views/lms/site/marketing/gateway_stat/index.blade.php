@@ -49,17 +49,19 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th width="30">NO</th>
-                    <th class="rowspan" width="220">계약명</th>
-                    <th class="rowspan" width="220">광고명</th>
-                    <th class="rowspan" width="100">광고형태</th>
-                    <th class="rowspan" width="70">집행금액</th>
-                    <th width="110">접속사이트</th>
-                    <th width="60">클릭수</th>
-                    <th width="60">회원가입수</th>
-                    <th width="60">장바구니수</th>
-                    <th width="60">결제건수</th>
-                    <th width="80">결제금액</th>
+                    <th class="text-center" width="30">NO</th>
+                    <th class="text-center rowspan" width="180">계약명</th>
+                    <th class="text-center rowspan" width="250">광고명</th>
+                    <th class="text-center rowspan" width="100">광고형태</th>
+                    <th class="text-center rowspan" width="70">집행금액</th>
+                    <th class="text-center" width="110">접속사이트</th>
+                    <th class="text-center" width="60">클릭수</th>
+                    <th class="text-center" width="60">회원가입수</th>
+                    <th class="text-center" width="60">장바구니수</th>
+                    <th class="text-center" width="60">결제건수</th>
+                    <th class="text-center" width="80">결제금액</th>
+                    <th class="text-center" width="60">환불건수</th>
+                    <th class="text-center" width="80">환불금액</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -105,19 +107,25 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'ClickCnt', 'render' : function(data, type, row, meta) {
-                            return "<B>"+addComma(data) +"";
+                            return "<B><div class=\"text-right\">"+addComma(data) +"</div></B>";
                         }},
                     {'data' : 'MemCnt', 'render' : function(data, type, row, meta) {
-                            return "<B>"+addComma(data) +"";
+                            return "<B><div class=\"text-right\">"+addComma(data) +"</div></B>";
                         }},
                     {'data' : 'CartCnt', 'render' : function(data, type, row, meta) {
-                            return "<B>"+addComma(data) +"";
+                            return "<B><div class=\"text-right\">"+addComma(data) +"</div></B>";
                         }},
                     {'data' : 'OrderCnt', 'render' : function(data, type, row, meta) {
-                            return "<B>"+addComma(data) +"";
+                            return "<B><div class=\"text-right\">"+addComma(data) +"</div></B>";
                         }},
                     {'data' : 'OrderPrice', 'render' : function(data, type, row, meta) {
-                            return "<B>"+addComma(data) +" 원";
+                            return "<B><div class=\"text-right\">"+addComma(data) +" 원</div></B>";
+                        }},
+                    {'data' : 'RefundCnt', 'render' : function(data, type, row, meta) {
+                            return "<B><div class=\"text-right\">"+addComma(data) +"</div></B>";
+                        }},
+                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
+                            return "<B><div class=\"text-right\">"+addComma(data) +" 원</div></B>";
                         }},
                 ]
             });

@@ -36,41 +36,23 @@ class Offlecture extends BaseStudent
             return $this->json_error('강좌코드를 입력해주십시요.');
         }
 
-        /*
-        if(is_array($ProdCode) == true){
-            $arr_condition = [
-                'IN' => [
-                    'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                ],
-                'EQ' => [
-                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
-                ]
-            ];
-
-        } else {
-            $arr_condition = [
-                'EQ' => [
-                    'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
-                ]
-            ];
-        }
-        */
-
         // 날짜 검색
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
-        //$arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
         $ProdCode_arr = $this->studentModel->getProdCode($ProdCode);// 해당 단과가 속한 종합반 코드
+
+        switch($this->_reqP('search_pay_status_ccd')){
+            case 'pay':
+                $payStatus_arr = ['676001', '676007'];
+                break;
+            case 'refund':
+                $payStatus_arr = ['676006'];
+                break;
+            default:
+                $payStatus_arr = ['676001', '676006', '676007'];
+                break;
+        }
 
         if(empty($ProdCode_arr) == true){
             // 종합반이 없으면
@@ -79,7 +61,7 @@ class Offlecture extends BaseStudent
                     'IN' => [
                         'OP.ProdCode' => $ProdCode,
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -108,7 +90,7 @@ class Offlecture extends BaseStudent
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
                     ],
                     'IN' => [
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ]
                 ];
             }
@@ -129,7 +111,7 @@ class Offlecture extends BaseStudent
                     'IN' => [
                         'OP.ProdCode' => $ProdCode_tmp,
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
 
                     ],
                     'EQ' => [
@@ -149,7 +131,7 @@ class Offlecture extends BaseStudent
                 $arr_condition = [
                     'IN' => [
                         'OP.ProdCode' => $ProdCode_tmp,
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
@@ -195,9 +177,9 @@ class Offlecture extends BaseStudent
             $file_name = '수강생현황_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
 
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '강좌번호', '주문번호', '주문상태', '수강증번호', '결제루트', '결제수단',
-                '결제금액', '결제자', '결제일', '환불일', '휴대폰', '이메일', '할인사유', '주문메모'];
+                '결제금액', '결제자', '결제일', '환불일', '휴대폰', '이메일', '할인사유', '주문메모', '주소'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdNameSub, ProdCodeSub, OrderIdx, PayStatusName, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, 
-            Price, ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo';
+            Price, ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo, CONCAT( \'(\', ZipCode, \') \', Addr1, \' \', Addr2) AS Addr';
 
         } else {
             $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);
@@ -205,9 +187,9 @@ class Offlecture extends BaseStudent
             $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
 
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '주문번호', '주문상태', '수강증번호', '결제루트', '결제수단',
-                '결제금액', '결제자', '결제일', '환불일', '휴대폰', '이메일', '할인사유', '주문메모'];
+                '결제금액', '결제자', '결제일', '환불일', '휴대폰', '이메일', '할인사유', '주문메모', '주소'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdName, OrderIdx, PayStatusName, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, 
-            Price, ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo';
+            Price, ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo, CONCAT( \'(\', ZipCode, \') \', Addr1, \' \', Addr2) AS Addr';
         }
 
         // 날짜 검색
@@ -217,6 +199,18 @@ class Offlecture extends BaseStudent
 
         $ProdCode_arr = $this->studentModel->getProdCode($ProdCode);
 
+        switch($this->_reqP('search_pay_status_ccd')){
+            case 'pay':
+                $payStatus_arr = ['676001', '676007'];
+                break;
+            case 'refund':
+                $payStatus_arr = ['676006'];
+                break;
+            default:
+                $payStatus_arr = ['676001', '676006', '676007'];
+                break;
+        }
+
         if(empty($ProdCode_arr) == true){
             // 종합반이 없으면
             if(is_array($ProdCode) == true){
@@ -224,7 +218,7 @@ class Offlecture extends BaseStudent
                     'IN' => [
                         'OP.ProdCode' => $ProdCode,
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -253,7 +247,7 @@ class Offlecture extends BaseStudent
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
                     ],
                     'IN' => [
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ]
                 ];
             }
@@ -274,7 +268,7 @@ class Offlecture extends BaseStudent
                     'IN' => [
                         'OP.ProdCode' => $ProdCode_tmp,
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -293,7 +287,7 @@ class Offlecture extends BaseStudent
                 $arr_condition = [
                     'IN' => [
                         'OP.ProdCode' => $ProdCode_tmp,
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드

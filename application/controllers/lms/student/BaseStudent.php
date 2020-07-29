@@ -246,11 +246,28 @@ class BaseStudent extends \app\controllers\BaseController
             return $this->json_error('강좌코드를 입력해주십시요.');
         }
 
+        switch($this->_reqP('search_pay_status_ccd')){
+            case 'pay':
+                $payStatus_arr = ['676001', '676007'];
+                break;
+            case 'refund':
+                $payStatus_arr = ['676006'];
+                break;
+            default:
+                $payStatus_arr = ['676001', '676006', '676007'];
+                break;
+        }
+
+        // 학원 강의가 아니면 결제완료만 나오게
+        if($this->LearnPattern != 'offlecture' && $this->LearnPattern != 'offpkg' ){
+            $payStatus_arr = ['676001', '676007'];
+        }
+
         if(is_array($ProdCode) == true){
             $arr_condition = [
                 'IN' => [
                     'OP.ProdCode' => $ProdCode, // 강좌코드
-                    'OP.PayStatusCcd' => ['676001', '676007']
+                    'OP.PayStatusCcd' => $payStatus_arr
                 ],
                 'EQ' => [
                     'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -272,7 +289,7 @@ class BaseStudent extends \app\controllers\BaseController
                     'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
                 ],
                 'IN' => [
-                    'OP.PayStatusCcd' => ['676001', '676007']
+                    'OP.PayStatusCcd' => $payStatus_arr
                 ]
             ];
         }
@@ -339,15 +356,32 @@ class BaseStudent extends \app\controllers\BaseController
 
         } else if($this->LearnPattern == 'offpkg'){
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '주문상태', '수강증번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '환불태일', '휴대폰', '이메일', '할인사유', '주문메모'];
+                '결제자', '결제일', '환불태일', '휴대폰', '이메일', '할인사유', '주문메모', '주소'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayStatusName, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo, CONCAT( \'(\', ZipCode, \') \', Addr1, \' \', Addr2) AS Addr';
 
         } else {
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
                 '결제자', '결제일', '휴대폰', '이메일'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+        }
+
+        switch($this->_reqP('search_pay_status_ccd')){
+            case 'pay':
+                $payStatus_arr = ['676001', '676007'];
+                break;
+            case 'refund':
+                $payStatus_arr = ['676006'];
+                break;
+            default:
+                $payStatus_arr = ['676001', '676006', '676007'];
+                break;
+        }
+
+        // 학원 강의가 아니면 결제완료만 나오게
+        if($this->LearnPattern != 'offlecture' && $this->LearnPattern != 'offpkg' ){
+            $payStatus_arr = ['676001', '676007'];
         }
 
         // 강좌코드가 배열일때
@@ -360,7 +394,7 @@ class BaseStudent extends \app\controllers\BaseController
                 $arr_condition = [
                     'IN' => [
                         'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                        'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                        'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -375,7 +409,7 @@ class BaseStudent extends \app\controllers\BaseController
                     $arr_condition = [
                         'IN' => [
                             'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                            'OP.PayStatusCcd' => ['676001', '676006', '676007']
+                            'OP.PayStatusCcd' => $payStatus_arr
                         ],
                         'EQ' => [
                             'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -389,7 +423,7 @@ class BaseStudent extends \app\controllers\BaseController
                     $arr_condition = [
                         'IN' => [
                             'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                            'OP.PayStatusCcd' => ['676001', '676007']
+                            'OP.PayStatusCcd' => $payStatus_arr
                         ],
                         'EQ' => [
                             'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -416,7 +450,7 @@ class BaseStudent extends \app\controllers\BaseController
                     'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
                 ],
                 'IN' => [
-                    'OP.PayStatusCcd' => ['676001', '676007']
+                    'OP.PayStatusCcd' => $payStatus_arr
                 ]
             ];
         }

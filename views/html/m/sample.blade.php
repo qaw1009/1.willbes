@@ -25,8 +25,9 @@
             <a href="{{ site_url('/home/html/m/main2_2008') }}" target="_blank">메인-경찰간부</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/main2_v2_2003') }}" target="_blank">메인-공무원</a>
-            <a href="{{ site_url('/home/html/m/main2_v2_2004') }}" target="_blank">메인-공무원 학원</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_3019') }}" target="_blank">메인-공무원 9급</a>
             <a href="{{ site_url('/home/html/m/main2_v2_3035') }}" target="_blank">메인-공무원 법원직</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_2004') }}" target="_blank">메인-공무원 학원</a>            
             <br><br>
             <a href="{{ site_url('/home/html/m/main2_v2_3094') }}" target="_blank">메인-고등고시 5급행정</a>
             <a href="{{ site_url('/home/html/m/main2_v2_3095') }}" target="_blank">메인-고등고시 국립외교원</a>

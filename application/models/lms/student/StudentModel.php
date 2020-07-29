@@ -197,6 +197,7 @@ class StudentModel extends WB_Model
             ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData, OP.DiscReason
             ,(SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo    
             ,IFNULL(OI.CertNo, '') AS CertNo , OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
+            ,MI.ZipCode, MI.Addr1, fn_dec(MI.Addr2Enc) AS Addr2
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -309,6 +310,7 @@ class StudentModel extends WB_Model
             CONCAT(P1.ProdName, ' [',P1.ProdCode,']') AS ProdName , P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub,
             OP.DiscReason, (SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
             ,IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
+            ,MI.ZipCode, MI.Addr1, fn_dec(MI.Addr2Enc) AS Addr2
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

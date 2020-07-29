@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('_lms/product/base/subject','_lms/product/base/professor','correct/btobOffLecture','correct/btobCorrect');
+    protected $models = array('_lms/product/base/subject','_lms/product/base/professor','correct/btobOffLecture','correct/btobCorrect','correct/btobAssign');
     protected $helpers = array('download');
     private $_sess_btob_idx = null;
     private $_sess_btob_site_code = null;
@@ -349,13 +349,14 @@ class Regist extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'lcu.ProdCode' => $this->_reqP('prod_code'),
-                'lcua.IsReply' => $this->_reqP('search_is_reply'),
+                'cad.IsStatus' => 'Y'
+                ,'cu.ProdCode' => $this->_reqP('search_prod_code')
+                ,'cua.IsReply' => $this->_reqP('search_is_reply')
             ],
             'ORG' => [
                 'LKB' => [
-                    'lcu.Title' => $this->_reqP('search_value'),
-                    'lcu.Content' => $this->_reqP('search_value')
+                    'cu.Title' => $this->_reqP('search_value'),
+                    'cu.Content' => $this->_reqP('search_value')
                 ]
             ]
         ];
@@ -365,28 +366,15 @@ class Regist extends \app\controllers\BaseController
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         if (empty($search_date_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
-            switch ($search_date_type) {
-                case 'AssignDate' :  // 배정일
-                    $arr_condition['BDT'] = ['AssignDate' => [$search_start_date, $search_end_date]];
-                    break;
-                case 'ReplyRegDate' :  // 채점일
-                    $arr_condition['BDT'] = ['lcua.ReplyRegDate' => [$search_start_date, $search_end_date]];
-                    break;
-                case 'MemRegDatm' :  // 제출일
-                    $arr_condition['BDT'] = ['lcua.RegDatm' => [$search_start_date, $search_end_date]];
-                    break;
-            }
+            $arr_condition['BDT'] = [$search_date_type => [$search_start_date, $search_end_date]];
         }
 
         $list = [];
         $count = $this->btobCorrectModel->listCorrectAssignment(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->btobCorrectModel->listCorrectAssignment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['lcua.RegDatm' => 'desc']);
+            $list = $this->btobCorrectModel->listCorrectAssignment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['cua.CuaIdx' => 'desc']);
         }
-
-        /*$count = 0;
-        $list = [];*/
 
         return $this->response([
             'recordsTotal' => $count,
@@ -395,6 +383,24 @@ class Regist extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 제출첨삭 삭제
+     * @param array $params
+     */
+    public function deleteAssignment($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->btobAssignModel->deleteForAssignment($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
 
     public function unitFileDownload()
     {

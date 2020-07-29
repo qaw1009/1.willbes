@@ -85,7 +85,7 @@
     </div>
     <script>
         var overlap_chk = true; //중복 전송 방지
-        var pick_sjt_cnt = {{$pick_sjt_cnt}};   //직렬별 선택과목 갯수
+        var pick_sjt_cnt = {{$pick_cnt}};   //직렬별 선택과목 갯수
         var $regi_form = $('#regi_form');
 
         function fn_visible(obj, sel_target){

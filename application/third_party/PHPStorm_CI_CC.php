@@ -284,6 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BtobStatsModel $btobStatsModel                                     Btob Statistics Model Class
  * @property BtobOffLectureModel $btobOffLectureModel                           Btob OffLecture Model Class
  * @property BtobCorrectModel $btobCorrectModel                                 Btob Correct Model Class
+ * @property BtobAssignModel $btobAssignModel                                   Btob Assign Model Class
  *********************************************************************************************************
  */
 class PHPStorm_CI_CC

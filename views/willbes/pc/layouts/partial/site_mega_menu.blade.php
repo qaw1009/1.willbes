@@ -870,10 +870,10 @@
                 <h5>9급</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3043')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3043&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3043')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3043&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3019')}}">교재구매</a>
@@ -884,10 +884,10 @@
                 <h5>7급</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3044')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3044&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3044')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3044&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3020')}}">교재구매</a>
@@ -898,10 +898,10 @@
                 <h5>세무직</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3046')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3046&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3046')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3046&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3022')}}">교재구매</a>
@@ -912,10 +912,10 @@
                 <h5>군무원</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3048')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3048&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3048')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3048&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3024')}}">교재구매</a>
@@ -926,10 +926,10 @@
                 <h5>소방직</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3050')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3050&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3050')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3050&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3023')}}">교재구매</a>
@@ -940,10 +940,10 @@
                 <h5>기술직</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3052')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3052&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3052')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3052&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3028')}}">교재구매</a>
@@ -954,10 +954,10 @@
                 <h5>법원직</h5>
                 <ul>
                     <li>
-                        <a href="{{front_url('/offPackage/index?cate_code=3059')}}">종합반</a>
+                        <a href="{{front_url('/offPackage/index?cate_code=3059&campus_ccd=605001')}}">종합반</a>
                     </li>
                     <li>
-                        <a href="{{front_url('/offLecture/index?cate_code=3059')}}">단과</a>
+                        <a href="{{front_url('/offLecture/index?cate_code=3059&campus_ccd=605001')}}">단과</a>
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3035')}}">교재구매</a>

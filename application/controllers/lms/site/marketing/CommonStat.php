@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CommonStat extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'site/marketing/contract', 'site/marketing/gateway', 'site/marketing/gatewayStat');
+    protected $models = array('sys/code', 'site/marketing/contract', 'site/marketing/gateway');
     protected $helpers = array();
 
     public function __construct()
@@ -40,8 +40,8 @@ class CommonStat extends \app\controllers\BaseController
             ]);
         }
 
-        $contract_data = $this->gatewayStatModel->listContractStat($arr_condition_contract,['gc.ContIdx' => 'desc']);
-        $gateway_data = $this->gatewayStatModel->listGatewayStat(null,['gc.ContIdx' => 'desc', 'gw.GwIdx' =>'asc']);
+        $contract_data = $this->gatewayModel->listContractStat($arr_condition_contract,['gc.ContIdx' => 'desc']);
+        $gateway_data = $this->gatewayModel->listGateway(false, null, null, null, ['gc.ContIdx' => 'desc', 'g.GwIdx' =>'asc']);
         $codes = $this->codeModel->getCcdInArray(['663']);
         $this->load->view('site/marketing/contract_stat/index', [
             'adType_ccd' => $codes['663'],
@@ -63,8 +63,9 @@ class CommonStat extends \app\controllers\BaseController
             'EQ' => ['gc.ContIdx' => $cont_idx]
         ];
 
-        $contract_data = $this->gatewayStatModel->listContractStat($arr_condition,['gc.ContIdx' => 'desc']);
-        $gateway_data = $this->gatewayStatModel->listGatewayStat($arr_condition,['gc.ContIdx' => 'desc', 'gw.GwIdx' =>'asc']);
+        $contract_data = $this->gatewayModel->listContractStat($arr_condition,['gc.ContIdx' => 'desc']);
+        $gateway_data = $this->gatewayModel->listGateway(false, $arr_condition, null, null, ['gc.ContIdx' => 'desc', 'g.GwIdx' =>'asc']);
+        //$gateway_data = $this->gatewayStatModel->listGatewayStat($arr_condition,['gc.ContIdx' => 'desc', 'gw.GwIdx' =>'asc']);
 
         if(empty($contract_data)) {
             return $this->json_error('계약정보가 존재하지 않습니다.');
@@ -97,8 +98,8 @@ class CommonStat extends \app\controllers\BaseController
 
         $arr_condition= [
             'EQ' => [
-                'gw.GwTypeCcd' => $arr_input['search_gwtype_ccd'],
-                'default_tbl.SiteCode' => $arr_input['search_site_code'],
+                'g.GwTypeCcd' => $arr_input['search_gwtype_ccd'],
+                'gc.SiteCode' => $arr_input['search_site_code'],
             ]
         ];
 
@@ -107,13 +108,14 @@ class CommonStat extends \app\controllers\BaseController
                 'ORG' => [
                     'LKB' => [
                         'gc.ContName' => $arr_input['search_value'],
-                        'gw.GwName' => $arr_input['search_value'],
+                        'g.GwName' => $arr_input['search_value'],
                     ]
                 ]
             ]);
         }
 
-        $list =$this->gatewayStatModel->detailListGatewayStat($arr_condition,['gc.ContIdx' => 'desc', 'gw.GwIdx' =>'asc']);
+        //$list =$this->gatewayStatModel->detailListGatewayStat($arr_condition,['gc.ContIdx' => 'desc', 'gw.GwIdx' =>'asc']);
+        $list = $this->gatewayModel->listGateway(false, $arr_condition, null, null, ['gc.ContIdx' => 'desc', 'g.GwIdx' =>'asc']);
         $count = count($list);
 
         return $this->response([

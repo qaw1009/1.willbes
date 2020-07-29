@@ -50,17 +50,17 @@
                 <thead>
                 <tr>
                     <th width="30">NO</th>
-                    <th class="rowspan" width="220">계약명</th>
-                    <th width="220">광고명</th>
+                    <th class="rowspan" width="250">계약명</th>
+                    <th width="">광고명</th>
                     <th width="110">광고형태</th>
-                    <!--th width="110">접속사이트</th//-->
+                    <th width="110">접속사이트</th>
                     <th width="70">이동URL</th>
                     <th width="70">집행금액</th>
-                    <th width="70">접속수</th>
+                    <!--<th width="70">접속수</th>
                     <th width="70">회원가입수</th>
                     <th width="70">장바구니수</th>
-                    <th width="70">결제건수</th>
-                    <!--th width="80">등록자</th//-->
+                    <th width="70">결제건수</th>//-->
+                    <th width="80">등록자</th>
                     <th width="120">등록일</th>
                 </tr>
                 </thead>
@@ -102,18 +102,19 @@
                             return '<a href="javascript:;" class="btn-modify" data-idx="'+row.GwIdx+'"><u>['+row.GwIdx+'] '+ row.GwName +'</u></a>';
                         }},
                     {'data' : 'GwTypeCcd_Name'},
-                    //{'data' : 'SiteName'},
+                    {'data' : 'SiteName'},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return '<a class="btn-info btn-sm btn-primary border-radius-reset"  href="'+row.MoveUrl+'" target="_new">이동</a>';
                         }},
                     {'data' : 'ExecutePrice', 'render' : function(data, type, row, meta) {
                             return addComma(data) +" 원";
                         }},
+                    /*
                     {'data' : 'ClickCnt'},
                     {'data' : 'MemCnt'},
                     {'data' : 'CartCnt'},
-                    {'data' : 'OrderCnt'},
-                    //{'data' : 'RegAdminName'},
+                    {'data' : 'OrderCnt'},*/
+                    {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                 ]
             });

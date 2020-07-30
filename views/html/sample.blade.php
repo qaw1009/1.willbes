@@ -203,109 +203,109 @@
     <li>
         <div>       
             <ul>            
-                <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>                
+                <li><a href="{{ site_url('/home/html/promotion/1137') }}" target="_blank">통합 웰컴팩 </a></li>                
                 <li><p>경찰 온라인 ▼</p></li>
-                <li><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈<span>*</span></a></li>  
-                <li><a href="{{ site_url('/home/html/event_onMouPop_2019') }}" target="_blank">2019 온라인 교육 콘텐츠 제공 MOU 체결 팝업 size 850x700 <span>*</span></a></li>  
-                <li><a href="{{ site_url('/home/html/1227') }}" target="_blank">최종합격기원감사제 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1211_popup01') }}" target="_blank">└ 일반채점 팝업 1300x900<span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1211_popup02') }}" target="_blank">└ 빠른채점 팝업 680x650<span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1211_popup03') }}" target="_blank">└ 직접입력 팝업 600x420<span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1211_popup04') }}" target="_blank">└ 정오표 팝업 1300x900<span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1210') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #1 메인 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1210_popup') }}" target="_blank">└ 2019 경찰 1차 합격예측 풀서비스 #1 난이도 설문팝업 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1199') }}" target="_blank">2019 경찰1차 적중 소문내기 이벤트 </a></li>
-                <li><a href="{{ site_url('/home/html/event_incReplyEmoticonUrl') }}" target="_blank">└ 강사 이모티콘 홍보 URL 댓글 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1208') }}" target="_blank">2019 경찰 1차 라이브 토크쇼 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/liveTalkShowCaption') }}" target="_blank">└ 영상자막 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1187') }}" target="_blank">2019 경찰1차 합격예측 사전예약 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1187_popup') }}" target="_blank">└ 사전예약 신청팝업 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1203') }}" target="_blank">3단계 파이널 실전모의고사 </a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1202') }}" target="_blank">필합 4개월 패스 </a></li>                
-                <li><a href="{{ site_url('/home/html/1188') }}" target="_blank">중경입교버스 든든이벤트 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1188_popup') }}" target="_blank">└ 입교버스 신청팝업 <span>*</span></a></li>                
+                <li><a href="{{ site_url('/home/html/promotion/supporters') }}" target="_blank">광은 서포터즈<span>*</span></a></li>  
+                <li><a href="{{ site_url('/home/html/promotion/event_onMouPop_2019') }}" target="_blank">2019 온라인 교육 콘텐츠 제공 MOU 체결 팝업 size 850x700 <span>*</span></a></li>  
+                <li><a href="{{ site_url('/home/html/promotion/1227') }}" target="_blank">최종합격기원감사제 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1211_popup01') }}" target="_blank">└ 일반채점 팝업 1300x900<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1211_popup02') }}" target="_blank">└ 빠른채점 팝업 680x650<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1211_popup03') }}" target="_blank">└ 직접입력 팝업 600x420<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1211_popup04') }}" target="_blank">└ 정오표 팝업 1300x900<span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1210') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #1 메인 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1210_popup') }}" target="_blank">└ 2019 경찰 1차 합격예측 풀서비스 #1 난이도 설문팝업 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/promotion/1199') }}" target="_blank">2019 경찰1차 적중 소문내기 이벤트 </a></li>
+                <li><a href="{{ site_url('/home/html/promotion/promotion/event_incReplyEmoticonUrl') }}" target="_blank">└ 강사 이모티콘 홍보 URL 댓글 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1208') }}" target="_blank">2019 경찰 1차 라이브 토크쇼 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/liveTalkShowCaption') }}" target="_blank">└ 영상자막 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1187') }}" target="_blank">2019 경찰1차 합격예측 사전예약 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1187_popup') }}" target="_blank">└ 사전예약 신청팝업 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1203') }}" target="_blank">3단계 파이널 실전모의고사 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1202') }}" target="_blank">필합 4개월 패스 </a></li>                
+                <li><a href="{{ site_url('/home/html/promotion/1188') }}" target="_blank">중경입교버스 든든이벤트 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1188_popup') }}" target="_blank">└ 입교버스 신청팝업 <span>*</span></a></li>                
                 
-                <li><a href="{{ site_url('/home/html/1139') }}" target="_blank">리바운드 환승이벤트 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">└ 타학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1138') }}" target="_blank">경찰면접 꿀팁 이벤트 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1138_pop') }}" target="_blank">└ 필기합격 인증하기 팝업 size 590x550 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1138_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1127') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_replyUrl') }}" target="_blank">└ 홍보 url 댓글 include <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_basic_2019') }}" target="_blank">기본이론 2019 3/21(목) 개강</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1 모의고사</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1129') }}" target="_blank">신의법칙을 믿어라</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1126') }}" target="_blank">3단계 커리큘럼</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1136') }}" target="_blank">신기록의 대행진</a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_181027_p') }}" target="_blank">장정훈 경찰학 무료숫자특강신청 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1034_popup') }}" target="_blank">└ 장정훈 경찰학 무료숫자특강신청 팝업 590x485 <span>*</span></a></li>   
+                <li><a href="{{ site_url('/home/html/promotion/1139') }}" target="_blank">리바운드 환승이벤트 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCopReboundPop') }}" target="_blank">└ 타학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1138') }}" target="_blank">경찰면접 꿀팁 이벤트 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1138_pop') }}" target="_blank">└ 필기합격 인증하기 팝업 size 590x550 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1138_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1127') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_replyUrl') }}" target="_blank">└ 홍보 url 댓글 include <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_basic_2019') }}" target="_blank">기본이론 2019 3/21(목) 개강</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1 모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1129') }}" target="_blank">신의법칙을 믿어라</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1126') }}" target="_blank">3단계 커리큘럼</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1136') }}" target="_blank">신기록의 대행진</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_181027_p') }}" target="_blank">장정훈 경찰학 무료숫자특강신청 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/1034_popup') }}" target="_blank">└ 장정훈 경찰학 무료숫자특강신청 팝업 590x485 <span>*</span></a></li>   
                 <li>&nbsp;</li>
                 <li>&nbsp;</li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업 size 740x700 <span>*</span></a></li>                        
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_181228_p_pop1') }}" target="_blank">최종합격예측서비스 나의 위치파악 팝업 size 500x850 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_171129_p') }}" target="_blank">0원 입문 특강 </a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181226_p') }}" target="_blank">윌비스 웰컴팩</a></li>
-                <li><a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700 <span>*</span></a></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180122_c') }}" target="_blank">초시생을 위한 합격비법</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_basic') }}" target="_blank">기본이론</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_premium') }}" target="_blank">프리미엄 심화이론/기출</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181127_c') }}" target="_blank">N수생의 합격비법</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181129_p') }}" target="_blank">18년 2차 최종합격자의 밤</a></li>
-                <li><a href="{{ site_url('/home/html/event_offCop_190107_p') }}" target="_blank">18년 2차 최종합격자 중경입교식, 그 현장을 가다!</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_170802_p') }}" target="_blank">해양경찰특채 PASS <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_170126_p') }}" target="_blank">영향력있는 언론들이 주목하는 윌비스신광은경찰팀</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190123_c') }}" target="_blank">적중 통합 페이지</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_c') }}" target="_blank">18년 3차 신광은 형사소송법 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190118_y') }}" target="_blank">18년 3차 장정훈 경찰학개론 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_p') }}" target="_blank">18년 3차 하승민 경찰영어 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190110_o') }}" target="_blank">18년 3차 오태진 한국사 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_pp') }}" target="_blank">18년 3차 원유철 한국사 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_p') }}" target="_blank">18년 3차 김현정 경찰영어 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190113_p') }}" target="_blank">2019 쌩기초 경찰영어</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180713_y') }}" target="_blank">신광은경찰 합격스토리 대공개</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181203_L') }}" target="_blank">김원욱 형법 1개년 최기판 무료특강</a></li>                
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190208_g') }}" target="_blank">2019 KCG 핵심요약 플러스</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180125_p') }}" target="_blank">해양경찰학개론 만점골든키 정태정</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180205_p') }}" target="_blank">윌비스 해양경찰특채 T-PASS <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_181218_c') }}" target="_blank">2019 KCG 해양경찰특채 기출,예상문제풀이</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190215_c') }}" target="_blank">1단계 요약문제풀이</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190305_c') }}" target="_blank">노량진 24시</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190226_c') }}" target="_blank">18년 3차 김원욱 형법 적중</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190222_g') }}" target="_blank">하승민 좋은데이 경찰영어</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190225_g') }}" target="_blank">2019 해양경찰 기본이론</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190218_g') }}" target="_blank">영어 지옥 탈출반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190219_g') }}" target="_blank">경찰영어 아침특강</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180504_p') }}" target="_blank">법학경채 PASS</a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_190219_c') }}" target="_blank">19 경찰1차대비 실전 문제풀이 패키지 <span>*</span></a></li>             
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCopPromotionPass') }}" target="_blank">승진 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업 size 740x700 <span>*</span></a></li>                        
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_181228_p_pop1') }}" target="_blank">최종합격예측서비스 나의 위치파악 팝업 size 500x850 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_171129_p') }}" target="_blank">0원 입문 특강 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_181226_p') }}" target="_blank">윌비스 웰컴팩</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_180122_c') }}" target="_blank">초시생을 위한 합격비법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_basic') }}" target="_blank">기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_premium') }}" target="_blank">프리미엄 심화이론/기출</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_181127_c') }}" target="_blank">N수생의 합격비법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_181129_p') }}" target="_blank">18년 2차 최종합격자의 밤</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_offCop_190107_p') }}" target="_blank">18년 2차 최종합격자 중경입교식, 그 현장을 가다!</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_170802_p') }}" target="_blank">해양경찰특채 PASS <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_170126_p') }}" target="_blank">영향력있는 언론들이 주목하는 윌비스신광은경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190123_c') }}" target="_blank">적중 통합 페이지</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190111_c') }}" target="_blank">18년 3차 신광은 형사소송법 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190118_y') }}" target="_blank">18년 3차 장정훈 경찰학개론 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190102_p') }}" target="_blank">18년 3차 하승민 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190110_o') }}" target="_blank">18년 3차 오태진 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190111_pp') }}" target="_blank">18년 3차 원유철 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190111_p') }}" target="_blank">18년 3차 김현정 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190113_p') }}" target="_blank">2019 쌩기초 경찰영어</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_180713_y') }}" target="_blank">신광은경찰 합격스토리 대공개</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_181203_L') }}" target="_blank">김원욱 형법 1개년 최기판 무료특강</a></li>                
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190208_g') }}" target="_blank">2019 KCG 핵심요약 플러스</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_180125_p') }}" target="_blank">해양경찰학개론 만점골든키 정태정</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_180205_p') }}" target="_blank">윌비스 해양경찰특채 T-PASS <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_181218_c') }}" target="_blank">2019 KCG 해양경찰특채 기출,예상문제풀이</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190215_c') }}" target="_blank">1단계 요약문제풀이</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190305_c') }}" target="_blank">노량진 24시</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190226_c') }}" target="_blank">18년 3차 김원욱 형법 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190222_g') }}" target="_blank">하승민 좋은데이 경찰영어</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190225_g') }}" target="_blank">2019 해양경찰 기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190218_g') }}" target="_blank">영어 지옥 탈출반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_190219_g') }}" target="_blank">경찰영어 아침특강</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_onCop_180504_p') }}" target="_blank">법학경채 PASS</a></li>
+                <li><a href="{{ site_url('/home/html/promotion/event_onCop_190219_c') }}" target="_blank">19 경찰1차대비 실전 문제풀이 패키지 <span>*</span></a></li>             
                 
                 
                 <li><p>경찰 학원 ▼</p></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/1177') }}" target="_blank">김원욱 형법</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1170') }}" target="_blank">필기고득점자 인터뷰</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_sparta') }}" target="_blank">스파르타</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181220_j') }}" target="_blank">황세웅 경찰면접캠프</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180828_g') }}" target="_blank">경찰 통합생활관리반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190108_dg_L') }}" target="_blank">대구 경찰면접팀</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_01_g') }}" target="_blank">스파르타 올인원 - 공무원 강습반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_02_g') }}" target="_blank">스파르타 올인원 - 신광은 경찰팀</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/1051') }}" target="_blank">스파르타 강한학습관리반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/1124') }}" target="_blank">기본이론 2019 3/25(월) 개강</a></li>    
-                <li class="w50"><a href="{{ site_url('/home/html/1131') }}" target="_blank">박우찬 실용글쓰기</a></li>          
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1177') }}" target="_blank">김원욱 형법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1170') }}" target="_blank">필기고득점자 인터뷰</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_sparta') }}" target="_blank">스파르타</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_181220_j') }}" target="_blank">황세웅 경찰면접캠프</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_180828_g') }}" target="_blank">경찰 통합생활관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_190108_dg_L') }}" target="_blank">대구 경찰면접팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_180611_01_g') }}" target="_blank">스파르타 올인원 - 공무원 강습반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_180611_02_g') }}" target="_blank">스파르타 올인원 - 신광은 경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1051') }}" target="_blank">스파르타 강한학습관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/event_offCop_181112') }}" target="_blank">독한회독</a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1124') }}" target="_blank">기본이론 2019 3/25(월) 개강</a></li>    
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/1131') }}" target="_blank">박우찬 실용글쓰기</a></li>          
 
             </ul>
         </div>

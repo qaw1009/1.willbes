@@ -86,11 +86,15 @@
                         <li><strong>응시 시험정보</strong>
                             <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
-                                @foreach($arr_cert['kind_ccd'] as $key => $val)
-                                    @if($key != '711005') {{-- 전의경경채 제외 --}}
-                                        <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
-                                    @endif
-                                @endforeach
+{{--                                @foreach($arr_cert['kind_ccd'] as $key => $val)--}}
+{{--                                    @if($key != '711005') --}}{{-- 전의경경채 제외 --}}
+{{--                                        <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+                                <option value="711001" {{($takekind == '711001' ? 'selected="selected"' : '')}}>일반공채:남</option>
+                                <option value="711002" {{($takekind == '711002' ? 'selected="selected"' : '')}}>일반공채:여</option>
+                                <option value="711004" {{($takekind == '711004' ? 'selected="selected"' : '')}}>101단</option>
+                                <option value="711005" {{($takekind == '711005' ? 'selected="selected"' : '')}}>전의경경채</option>
                             </select>
                             <select id="TakeArea" name="TakeArea" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>

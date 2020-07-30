@@ -43,7 +43,7 @@ class BtobCorrectModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listCorrectUnit($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listCorrectUnit($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $is_authority = true, $arr_condition_authority = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -61,6 +61,21 @@ class BtobCorrectModel extends WB_Model
         $from = " FROM {$this->_table['lms_correct_unit']} AS CU
             INNER JOIN {$this->_table['lms_btob_admin']} AS BA ON CU.RegAdminIdx = BA.AdminIdx
         ";
+
+        if ($is_authority === false) {
+            $where_authority = $this->_conn->makeWhere($arr_condition_authority);
+            $where_authority = $where_authority->getMakeWhere(false);
+
+            $from .= "
+                INNER JOIN (
+                    SELECT CorrectIdx
+                    FROM {$this->_table['lms_correct_assign']} AS a
+                    INNER JOIN {$this->_table['lms_correct_assign_detail']} AS b ON a.CaIdx = b.CaIdx
+                    {$where_authority}
+                    GROUP BY a.CorrectIdx
+                ) AS assign ON assign.CorrectIdx = CU.CorrectIdx
+            ";
+        }
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

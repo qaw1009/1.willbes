@@ -127,8 +127,41 @@ class AssignmentProduct extends \app\controllers\FrontController
         $prod_code = $this->_reqP('prod_code');
         $correct_idx = $this->_reqP('correct_idx');
         $edit_id = $this->_reqP('edit_id');
+        $join_type = 'inner';
 
-        $data = [];
+        $column = '
+            lcu.CorrectIdx, lcu.SiteCode, lcu.ProdCode, lcu.Title, lcu.Content, lcu.Price, lcu.StartDate, lcu.EndDate, lcua.ReplyScore, lcua.RegDatm
+            ,IFNULL(fn_board_attach_data_correct(lcu.CorrectIdx),NULL) AS AttachData
+            ,IFNULL(fn_board_attach_data_correct_assignment(lcua.CuaIdx,1),NULL) AS AttachAssignmentData_Admin
+            ,IFNULL(fn_board_attach_data_correct_assignment(lcua.CuaIdx,0),NULL) AS AttachAssignmentData_User
+            ,lcua.CuaIdx	#첨삭식별자
+            ,lcua.AssignmentStatusCcd	#제출상태
+            ,lcua.IsReply	#채점상태
+            ,lcua.ReplyRegDatm #채점일
+            ,lcua.Content AS AnswerContent, lcua.ReplyContent
+        ';
+        $arr_condition = [
+            'EQ' => [
+                'lcu.CorrectIdx' => $correct_idx,
+                'lcu.IsStatus' => 'Y',
+                'lcu.IsUse' => 'Y'
+            ]
+        ];
+
+        $arr_condition_sub = [
+            'EQ' => [
+                'lcua.MemIdx' => $this->session->userdata('mem_idx'),
+                'lcua.IsStatus' => 'Y'
+            ]
+        ];
+
+        $data = $this->assignmentProductFModel->findCorrectAssignment($column, $arr_condition, $arr_condition_sub, $join_type);
+        if (empty($data) === true) {
+            show_alert('잘못된 접근 입니다.', '/classroom/home/', false);
+        }
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //과제 첨부파일
+        $data['AttachAssignmentData_Admin'] = json_decode($data['AttachAssignmentData_Admin'],true);    //답변 첨부파일
+        $data['AttachAssignmentData_User'] = json_decode($data['AttachAssignmentData_User'],true);      //과제 제출 첨부파일
 
         $this->load->view('classroom/assignmentProduct/show_modal', [
             'prod_code' => $prod_code,

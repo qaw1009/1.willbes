@@ -292,42 +292,42 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120109.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_01.png" alt="배너명">
                     </a>  
                 </div> 
                 <div class="swiper-slide">             
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120055.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_02.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120000.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_03.png" alt="배너명">
                     </a>
                     </div> 
                 <div class="swiper-slide"> 
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115804.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_04.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721100237.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_05.png" alt="배너명">
                     </a>
                     </div> 
                 <div class="swiper-slide"> 
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721120037.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_06.png" alt="배너명">
                     </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115944.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_07.png" alt="배너명">
                     </a>
                     </div> 
                 <div class="swiper-slide"> 
                     <a href="#none">
-                        <img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200721115841.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_08.png" alt="배너명">
                     </a>
                 </div>
             </div>

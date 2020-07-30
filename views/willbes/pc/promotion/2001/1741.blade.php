@@ -138,6 +138,13 @@
 
         {{-- 쿠폰발급 --}}
         function giveCheck() {
+
+            @if(ENVIRONMENT == 'production')
+                @if(date('YmdHi') < '202007310000' || date('YmdHi') >= '202008010000')
+                    alert('쿠폰발급 기간이 아닙니다.'); return;
+                @endif
+            @endif
+
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             @if(empty($arr_promotion_params) === false)
                 var $regi_form = $('#regi_form');

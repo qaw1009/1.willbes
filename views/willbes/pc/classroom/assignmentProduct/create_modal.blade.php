@@ -32,7 +32,7 @@
                                 @if(empty($data['AttachData']) === false)
                                     @foreach($data['AttachData'] as $row)
                                         <li>
-                                            <a href="{{front_url('/classroom/off/assignmentDownload?file_idx=').$row['FileIdx'].'&attach_type=0&correct_idx='.$data['CorrectIdx'] }}" target="_blank">
+                                            <a href="{{front_url('/classroom/assignmentProduct/download?file_idx=').$row['FileIdx'].'&attach_type=0&correct_idx='.$data['CorrectIdx'] }}" target="_blank">
                                                 <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                         </li>
                                     @endforeach
@@ -72,7 +72,7 @@
                                     <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
                                     @if(empty($data['AttachAssignmentData_User'][$i]) === false)
                                         <span>
-                                            <a href="{{front_url('/classroom/off/assignmentDownload?file_idx=').$data['AttachAssignmentData_User'][$i]['FileIdx'].'&attach_type=1' }}" target="_blank">
+                                            <a href="{{front_url('/classroom/assignmentProduct/download?file_idx=').$data['AttachAssignmentData_User'][$i]['FileIdx'].'&attach_type=1' }}" target="_blank">
                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['AttachAssignmentData_User'][$i]['RealName']}}</a>
                                         </span>
                                     @endif
@@ -133,7 +133,7 @@
             }
 
             getEditorBodyContent($editor_profile);
-            var _url = '{{front_url('/classroom/off/assignmentStore')}}';
+            var _url = '{{front_url('/classroom/assignmentProduct/store')}}';
 
             ajaxSubmit($regi_form_modal, _url, function(ret) {
                 if(ret.ret_cd) {

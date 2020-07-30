@@ -96,7 +96,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_02.jpg" alt="경찰 파이널 패스" usemap="#Map1741" border="0">
             <map name="Map1741">
                 <area shape="rect" coords="471,492,651,555" href="#evt06" alt="수강신청">
-                <area shape="rect" coords="464,1412,658,1471" href="#none" alt="쿠폰받기">
+                <area shape="rect" coords="464,1412,658,1471" href="javascript:giveCheck();" alt="쿠폰받기">
             </map>
         </div>
 
@@ -123,13 +123,36 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_07.jpg" alt="경찰 파이널 패스">
         </div>           
     </div>
-    <!-- End Container --> 
+    <!-- End Container -->
 
-    <script type="text/javascript">       
-          /*디데이카운트다운*/
-          $(document).ready(function() {
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
+    <script type="text/javascript">
+        /*디데이카운트다운*/
+        $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
+
+        {{-- 쿠폰발급 --}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var $regi_form = $('#regi_form');
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn=N';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n내강의실에서 확인해 주세요.');
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

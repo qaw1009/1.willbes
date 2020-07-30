@@ -10,6 +10,7 @@
         <input type="hidden" name="prod_code" id="prod_code" value="{{ element('prod_code', $form_data) }}" />
         <input type="hidden" name="correct_idx" id="correct_idx" value="">
         <input type="hidden" name="cua_idx" id="cua_idx" value="">
+        <input type="hidden" name="edit_id" id="edit_id" value="">
     </form>
     <div class="mt20 tx14 NG">· 답안제출 및 채점결과 보기</div>
     <div class="Layer-Cont">
@@ -80,8 +81,22 @@
                                 @endif
                             </td>
                             <td>{{ $row['RegDatm'] }}</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>
+                                @if(empty($row['CuaIdx']) === false && $row['AssignmentStatusCcd'] != $arr_save_type_ccd[0])
+                                    @if($row['IsReply'] == 'Y')
+                                        <a href="#none"><span class="stbox stbox-333-line btn-show-assignment" data-edit-id="3" data-correct-idx="{{ $row['CorrectIdx'] }}">채점완료</span></a>
+                                    @else
+                                        <a href="#none"><span class="stbox stbox-blue-line btn-show-assignment" data-edit-id="2" data-correct-idx="{{ $row['CorrectIdx'] }}">채점중</span></a>
+                                    @endif
+                                @else - @endif
+                            </td>
+                            <td>
+                                @if(empty($row['CuaIdx']) === false && $row['AssignmentStatusCcd'] != $arr_save_type_ccd[0])
+                                    @if($row['IsReply'] == 'Y')
+                                        {{ $row['ReplyRegDatm'] }}
+                                    @else - @endif
+                                @else - @endif
+                            </td>
                         </tr>
                     @endforeach
                 @endif
@@ -99,7 +114,26 @@
             $('#correct_idx').val($(this).data('correct-idx'));
             $('#cua_idx').val($(this).data('cua-idx'));
 
-            var url = "{{ site_url("/classroom/off/assignmentCreateModal/") }}";
+            var url = "{{ site_url("/classroom/assignmentProduct/createModal/") }}";
+            var data = $('#assignmentForm').serialize();
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#assignmentCreateChoice").html(d).end();
+                    openWin('assignmentCreateChoice');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'POST', 'html');
+        });
+
+        $('.btn-show-assignment').on('click', function () {
+            closeWin('assignmentListChoice');
+
+            $('#correct_idx').val($(this).data('correct-idx'));
+            $('#edit_id').val($(this).data('edit-id'));
+
+            var url = "{{ site_url("/classroom/assignmentProduct/showModal/") }}";
             var data = $('#assignmentForm').serialize();
             sendAjax(url,
                 data,

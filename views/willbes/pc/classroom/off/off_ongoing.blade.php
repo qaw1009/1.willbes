@@ -416,7 +416,7 @@
             $("#assignmentListChoice").html('');
             $('#prod_code').val(prod_code);
 
-            var url = "{{ site_url("/classroom/off/assignmentListModal/") }}";
+            var url = "{{ site_url("/classroom/assignmentProduct/") }}";
             var data = $('#postForm').serialize();
             sendAjax(url,
                 data,

@@ -863,7 +863,7 @@ body.memBody #Footer {
     position: relative; 
 }
 .gosi .gosiProf .swiper-container-prof {
-    height: 760px;                     
+    height: 600px;                     
 }
 
 .gosi .gosiProf .swiper-slide {
@@ -4128,7 +4128,7 @@ body.memBody #Footer {
     .bookInfo > li br {display: none;}  
 
     .gosi .gosiProf .swiper-container-prof {
-        height: 520px;                     
+        height: 450px;                     
     }
     .gosi .gosiProf .swiper-slide {
         width: 150px;
@@ -4165,13 +4165,10 @@ body.memBody #Footer {
     .bookInfo > li br {display: block;}
     .bookInfo > li .row-line {display: none;} 
     .gosi .gosiProf .swiper-container-prof {
-        height: 690px;                     
+        height: 500px;                     
     }
     .gosi .gosiProf .swiper-slide {
-        width: 200px;
-    }
-    .gosi .gosiTip .swiper-slide {
-        /*width: 200px;*/
+        width: 170px;
     }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:inline-block}    

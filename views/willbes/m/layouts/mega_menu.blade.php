@@ -698,6 +698,7 @@
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1120') }}">3순환</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1253') }}">2차최종정리</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1290') }}">공부방법론</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?course_idx=1114') }}">모의고사</a>
                 </li>
                 <li>
                     <span>과목별</span>

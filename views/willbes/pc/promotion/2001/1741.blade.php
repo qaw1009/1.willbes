@@ -115,7 +115,7 @@
         <div class="evtCtnsBox evt06" id="evt06">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_06.jpg" alt="경찰 파이널 패스" usemap="#Map1741B" border="0">
             <map name="Map1741B">
-                <area shape="rect" coords="247,633,871,705" href="#none" alt="파이널패스 수강신청">
+                <area shape="rect" coords="247,633,871,705" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/169919" target="_blank" alt="파이널패스 수강신청">
             </map>
         </div>    
 

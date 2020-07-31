@@ -100,14 +100,14 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1750_04.jpg" alt="수강신청" usemap="#Map1656A" border="0"/>
-            <map name="Map1656A" id="Map1656A">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1750_04.jpg" alt="수강신청" usemap="#Map1750A" border="0"/>
+            <map name="Map1750A" id="Map1750A">
                 <area shape="rect" coords="663,605,950,717" href="javascript:go_PassLecture('170032');"  alt="수강신청" />
             </map>     
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                        페이지 하단 윌비스 군무원문제풀이PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                        페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>                 

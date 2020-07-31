@@ -124,7 +124,7 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="/package/show/cate/3001/pack/648001/prod-code/169919" target="_blank">
+        <a href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/169919') }}" target="_blank">
         FINAL PASS 수강신청하기 >
         </a>
     </div>

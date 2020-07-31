@@ -125,7 +125,7 @@
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
         <a href="/package/show/cate/3001/pack/648001/prod-code/169919" target="_blank">
-        [온라인강의] 신청하기 >
+        FINAL PASS 수강신청하기 >
         </a>
     </div>
 </div>

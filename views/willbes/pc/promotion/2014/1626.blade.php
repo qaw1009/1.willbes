@@ -45,52 +45,11 @@
         .evt03 .sampleView .viewBtns {margin-top:15px; text-align:center}
         .evt03 .sampleView .viewBtns a {display:inline-block; height:30px; line-height:30px; text-align:center; color:#fff; background:#f79601; border-radius:6px;
         width:70px; margin-right:8px; font-size:14px}
+        .evt03 .sampleView .viewBtns a:hover {background:#333}
         .evt03 .sampleView .viewBtns a:last-child {margin:0}
         .evt03 .sampleView ul:after {content:''; display:block; clear:both}
-        .evt03 .evt03Txt01 {font-size:14px; line-height:1.4; margin-top:20px; text-align:center; letter-spacing:-1px; color:#333;}
         
-
-
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1626_04_bg.jpg) no-repeat center top}
-        .evt05 {background:#484c57}       
-        .evt06 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1626_05_bg.jpg) repeat}
-        .evt07 {background:#a1774f}
-        .evt09 {background:#c2c2c2}
-
-        .evt10 {padding:120px 0 0; text-align:left;}
-        .evt10 .copy {width:720px; margin:0 auto;}
-        .evt10 h5 {color:#a0774e; font-size:46px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
-        .evt10 .evt10Txt01 {font-size:28px; margin:20px auto 80px}
-        .evt10 .sample {width:720px; margin:0 auto}
-        .evt10 .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
-            background:#acacac; color:#fff; font-size:20px; font-weight:600; text-align:center}
-        .evt10 .sample li p {margin-bottom:15px;}
-        .evt10 .sample li a {display:inline-block; padding:10px 20px; font-size:16px; margin-right:10px; border-radius:8px; background:#000; color:#fff;}
-        .evt10 .sample li a:hover {background:#fff; color:#000}
-        .evt10 .sample li:last-child {margin:0}
-        .evt10 .sample:after {content:""; display:block; clear:both}
-        
-
-        .evtCurri {width:720px; margin:50px auto 100px; text-align:left}
-        .evtCurri li {font-size:20px; margin-bottom:15px; color:#232323; letter-spacing:-1px; line-height:1.3}
-        .evtCurri li.cTitle {color:#a0774e; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
-
-        .evtFooter {padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#3a3a3a; background:#c2c2c2 !important}
-        .evtFooter h3 {width:720px; margin:0 auto;font-size:1.5rem; margin-bottom:30px; }
-        .evtFooter p {width:720px; margin:0 auto;font-size:1.1rem; margin-bottom:10px;}
-        .evtFooter div,
-        .evtFooter ul {width:720px; margin:0 auto 30px; padding-left:10px}
-        .evtFooter li {margin-left:20px; list-style-type: decimal; }
-
-
-        /*타이머*/
-        .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
-        .newTopDday ul {width:1120px; margin:0 auto}
-        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000; line-height:70px}
-        .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:5px; width:28%;}
-        .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%;}
-        .newTopDday ul:after {content:""; display:block; clear:both}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">    
@@ -105,7 +64,7 @@
             </map>             
         </div>
 
-        <div class="evtCtnsBox evt02" id="evt02">
+        <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_02.jpg" alt="신규회원 웰컴팩" >
         </div>
 
@@ -184,17 +143,11 @@
                         </div>
                     </li>                   
                 </ul>
-
-                <div class="evt03Txt01">
-                    * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                    * 스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                    * 팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
-                </div>
             </div>
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_04.jpg" alt="doming soon" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_04.jpg" alt="coming soon" >
         </div>
     </div>
     <!-- End Container -->

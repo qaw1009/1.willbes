@@ -65,7 +65,7 @@
 
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1741m_02.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
-        <a href="#none" class="NSK-Black">쿠폰받기 ></a>
+        <a href="javascript:giveCheck();" class="NSK-Black">쿠폰받기 ></a>
     </div> 
 
     <div class="evtCtnsBox">

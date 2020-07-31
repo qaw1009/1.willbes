@@ -92,6 +92,7 @@ to{border-color:#2364fe}
 .mainV3 .Area2 .will-Tit {
     font-size: 18px !important; color:#2364fe !important;
 }
+.mainV3 .Area2 .will-Tit div {display: block; float:right !important; color:#333 !important}
 .mainV3 .Area2 table {background: rgba(0,0,0,.65); display: block;}
 .mainV3 .Area2 table:hover {box-shadow: 10px 10px 20px 1px rgba(0,0,0,.2); }
 .mainV3 .Area2 th {background: rgba(0,0,0,.35); font-size: 14px; padding:20px 0; text-align: center; font-weight: bold; color:#fff; border-bottom:1px solid #403d3c}

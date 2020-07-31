@@ -14,7 +14,9 @@
                             <div class="c-info">
                                 <div class="address">
                                     <span class="a-tit">주소</span>
-                                    <span>인천 부평구 경원대로 1395 부평일번가 11층</span>
+                                    <span>
+                                        인천 부평구 경원대로 1395 부평일번가 11층<br> (부평역 13번 출구)
+                                    </span>
                                 </div>
                                 <div class="tel">
                                     <span class="a-tit">연락처</span>

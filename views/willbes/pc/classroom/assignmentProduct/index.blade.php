@@ -84,9 +84,9 @@
                             <td>
                                 @if(empty($row['CuaIdx']) === false && $row['AssignmentStatusCcd'] != $arr_save_type_ccd[0])
                                     @if($row['IsReply'] == 'Y')
-                                        <a href="#none"><span class="stbox stbox-333-line btn-show-assignment" data-edit-id="3" data-correct-idx="{{ $row['CorrectIdx'] }}">채점완료</span></a>
+                                        <a href="#none"><span class="stbox stbox-333-line btn-show-assignment" data-edit-id="3" data-correct-idx="{{ $row['CorrectIdx'] }}" data-cua-idx="{{ $row['CuaIdx'] }}">채점완료</span></a>
                                     @else
-                                        <a href="#none"><span class="stbox stbox-blue-line btn-show-assignment" data-edit-id="2" data-correct-idx="{{ $row['CorrectIdx'] }}">채점중</span></a>
+                                        <a href="#none"><span class="stbox stbox-blue-line btn-show-assignment" data-edit-id="2" data-correct-idx="{{ $row['CorrectIdx'] }}" data-cua-idx="{{ $row['CuaIdx'] }}">채점중</span></a>
                                     @endif
                                 @else - @endif
                             </td>
@@ -132,6 +132,7 @@
 
             $('#correct_idx').val($(this).data('correct-idx'));
             $('#edit_id').val($(this).data('edit-id'));
+            $('#cua_idx').val($(this).data('cua-idx'));
 
             var url = "{{ site_url("/classroom/assignmentProduct/showModal/") }}";
             var data = $('#assignmentForm').serialize();

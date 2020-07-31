@@ -18,7 +18,7 @@
     .evtContent span {vertical-align:auto}
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
     /*****************************************************************/ 
-    .evt00 {background:#404040}
+    .evt00 {background:#0a0a0a}
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/07/1741_top_bg.jpg) no-repeat center top;}    
     .evt01 {}
     .evt02 {background:#f6f6f6}
@@ -81,7 +81,7 @@
         </div> 
 
         <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1740_00.jpg" alt="대한민국 경찰학원 1위">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_00.jpg" alt="대한민국 경찰학원 1위">
         </div> 
 
         <div class="evtCtnsBox evt_top">  

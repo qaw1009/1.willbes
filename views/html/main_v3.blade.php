@@ -82,8 +82,11 @@
 
     <div class="Section Area2 mt50">
         <div class="widthAuto">
-            <div class="will-Tit mb-zero">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-            <div class="NSK">
+            <div class="will-Tit mb-zero">
+                윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span>
+                <div class="will-subTit">코스피상장 수험전문 교육기업, 윌비스</div>
+            </div>
+            <div class="NSK c_both">
                 <table>
                     <col width="18%">
                     <col width="">

@@ -35,7 +35,7 @@
 
     </style>
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
-        <div><h3 class="NSK">타 학원 수강생 인증</h3></div>
+        <div><h3 class="NSK">응시표 인증</h3></div>
         <div class="laj_sec">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -66,11 +66,13 @@
                     </table>
                     <h4 class="mt40">학습이력</h4>
                     <ul class="attach">
+                        {{--
                         <li>
                             <strong>수강사이트</strong>
                             <input id="EtcContent" name="EtcContent" type="text" style="width:150px;">
                             * 10자 미만 입력
                         </li>
+                        --}}
                         <li>
                             <strong>첨부 파일</strong>
                             <!--div class="filetype">

@@ -42,7 +42,7 @@
                 </tbody>
             </table>
             <div class="lecSubject mt40">
-                <a href="{{front_url($default_path.'/examNews/index?'.$get_params)}}">목록</a>
+                <a href="{{front_url($default_path.'/examNews/index'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : '').'?'.$get_params)}}">목록</a>
             </div>
         </div>
 

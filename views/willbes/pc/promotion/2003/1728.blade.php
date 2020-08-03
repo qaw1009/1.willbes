@@ -151,7 +151,7 @@
         <div class="evtCtnsBox evt04s" id="certification">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_04s.jpg" usemap="#Map1728_certification" title="인증하기" border="0" />
             <map name="Map1728_certification" id="Map1728_certification">
-                <area shape="rect" coords="301,721,816,796" href="https://pass.willbes.net/certApply/index/page/transfer/cert/29" target="_blank" />
+                <area shape="rect" coords="301,721,816,796" href="javascript:certOpen();" />
                 <area shape="rect" coords="472,821,649,854" href="#notice" />
             </map>
         </div>
@@ -258,6 +258,16 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+
+        {{-- 수강인증 --}}
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         /* 수강신청 동의*/
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){

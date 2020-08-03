@@ -12,7 +12,7 @@ class Search extends \app\controllers\BaseController
     {
         parent::__construct();
         $this->_sess_btob_role_idx = $this->session->userdata('btob.admin_auth_data')['Role']['RoleIdx'];
-        if ($this->_sess_btob_role_idx != '6004') {
+        if ($this->_sess_btob_role_idx == '6005') {
             $this->_is_authority = false;
         }
     }

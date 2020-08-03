@@ -28,16 +28,20 @@
                 <h3>전체 시험 난이도 </h3>
                 <div>
                     <div class="graphbox">
-                        @if(empty($resSet) === false)
-                            @for($i=1; $i <= $resSet[0]['CNT']; $i++)
-                                <div class="graph">
-                                    <p> {{ $resSet[0]['Answer'.$i] }} %</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{$resSet[0]['Answer'.$i] }}%">
-                                    </div>
-                                    <p>{{ $questionSet[0]['Comment'.$i] }}</p>
-                                </div>
-                            @endfor
+                        @if(empty($survey_title) === false)
+                            @foreach($survey_title as $title => $val)
+                                @if($loop->index == 1)
+                                    @foreach($val as $item => $spread)
+                                        <div class="graph">
+                                            <p> {{ $spread }} %</p>
+                                            <div>
+                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $spread }}%">
+                                            </div>
+                                            <p>{{ $item }}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         @else
                             <div class="graph">
                                 <p> 0 %</p>
@@ -87,41 +91,35 @@
                 <div>
                     <h3>과목별 시험 난이도 :
                         <span id="karea">
-                            @if(empty($resSet) === false)
-                                @for($i=1; $i < count($titleSet); $i++)
-                                    @if($typeSet[$i] == 'S' && $isDispSet[$i] != 'N')
-                                        [{{$titleSet[$i]}}]
-                                        @break;
-                                    @endif
-                                @endfor
+                            @if(empty($survey_data) === false)
+                                [{{key($survey_data)}}]
                             @endif
-                    </span>
+                        </span>
                     </h3>
                     <select title="과목선택" onchange="fn_sel(this)" class="maxWidth135">
-                        @if(empty($resSet) === false)
-                            @for($i=1; $i < count($titleSet); $i++)
-                                @if($typeSet[$i] == 'S' && $isDispSet[$i] != 'N') <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option> @endif
-                            @endfor
+                        @if(empty($survey_data) === false)
+                            @foreach($survey_data as $item => $val)
+                                <option value="{{ $item }}">{{ $item }}</option>
+                            @endforeach
                         @endif
                     </select>
                     <div>
-                        @if(empty($resSet) === false)
-                            @for($i=1; $i < count($titleSet); $i++)
-                                <div id="div{{ $i }}" class="graphbox" @if($i != 1) style="display:none;" @endif>
-                                    @for($j=1; $j <= $resSet[$i]['CNT']; $j++)
-                                        @if($typeSet[$i] == 'S')
+                        @if(empty($survey_data) === false)
+                            @foreach($survey_data as $title => $val)
+                                <div class="graphbox graph_box @if($loop->index > 1) d_none @endif">
+                                    @if(empty($val) === false)
+                                        @foreach($val as $item => $spread)
                                             <div class="graph graph2">
-                                                <p>{{ $resSet[$i]['Answer'.$j] }}%</p>
+                                                <p>{{ $spread }}%</p>
                                                 <div>
-                                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer'.$j] }}%">
+                                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $spread }}%">
                                                 </div>
-                                                <p>{{ $questionSet[$i]['Comment'.$j] }}</p>
+                                                <p>{{ $item }}</p>
                                             </div>
-                                        @endif
-                                    @endfor
-
+                                        @endforeach
+                                    @endif
                                 </div>
-                            @endfor
+                            @endforeach
                         @else
                             <div class="graphbox">
                                 <div class="graph graph2">
@@ -174,13 +172,11 @@
     <script>
         //과목 선택
         function fn_sel(obj){
-            var seltxt = obj.value;
-            var arrTxt = seltxt.split('/');
-            for(var i=1; i <= 25; i++){
-                $('#div'+i).hide();
-            }
-            $('#div'+arrTxt[0]).show();
-            $('#karea').html('['+arrTxt[1]+']');
+            var sel_index = obj.selectedIndex;
+            var sel_txt = obj.value;
+
+            $(".graph_box").addClass("d_none").eq(sel_index).removeClass("d_none");
+            $('#karea').html('['+sel_txt+']');
         }
     </script>
 @stop

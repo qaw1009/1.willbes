@@ -26,7 +26,7 @@ class SurveyModel extends WB_Model
         'S' => '선택형(단일)',
         'M' => '선택형(그룹)',
         'T' => '복수형',
-        'D' => '서술형'
+        'D' => '서술형',
     ];
 
     public function __construct()
@@ -71,7 +71,7 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 수정 폼 데이터 조회
-     * @return integer $sp_idx
+     * @param integer $sp_idx
      * @return mixed
      */
     public function findSurveyForModify($sp_idx=null)
@@ -96,7 +96,7 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 수정 폼 데이터 조회
-     * @return integer $sq_idx
+     * @param integer $sq_idx
      * @return mixed
      */
     public function findQuestionForModify($sq_idx=null)
@@ -104,7 +104,7 @@ class SurveyModel extends WB_Model
         $arr_condition = ['EQ' => ['A.SqIdx' => $sq_idx, 'A.IsStatus' => 'Y']];
 
         $column = "
-            A.SqIdx, A.SpIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
+            A.SqIdx, A.SpIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqIsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -121,7 +121,7 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 조회
-     * @return integer $sp_idx
+     * @param integer $sp_idx
      * @return mixed
      */
     public function listSurveyForQuestion($sp_idx=null)
@@ -297,6 +297,7 @@ class SurveyModel extends WB_Model
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
                 'SqIsUse' => element('sq_is_use', $input),
+                'SqSubjectCnt' => element('sq_subject_cnt', $input),
                 'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
                 'SqJsonData' => $json_data,
@@ -343,6 +344,7 @@ class SurveyModel extends WB_Model
                 'SqIsUse' => element('sq_is_use', $input),
                 'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
+                'SqSubjectCnt' => element('sq_subject_cnt', $input),
                 'SqJsonData' => $json_data,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];

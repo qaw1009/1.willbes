@@ -383,15 +383,17 @@ class BtobCorrectModel extends WB_Model
         return true;
     }
 
-    /** 첨삭현황 리스트
-     * @param bool $is_count
+    /**
+     * 첨삭현황 리스트
+     * @param $join_type
+     * @param false $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listCorrectAssignment($is_count = false, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listCorrectAssignment($join_type = 'INNER', $is_count = false, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -409,12 +411,12 @@ class BtobCorrectModel extends WB_Model
 
         $from = "
             FROM {$this->_table['lms_correct_unit_assignment']} AS cua
-            INNER JOIN {$this->_table['lms_correct_assign_detail']} AS cad ON cua.CuaIdx = cad.CuaIdx
             INNER JOIN {$this->_table['lms_correct_unit']} AS cu ON cua.CorrectIdx = cu.CorrectIdx
             INNER JOIN {$this->_table['lms_product']} AS p ON cu.ProdCode = p.ProdCode
             INNER JOIN {$this->_table['lms_member']} AS m ON cua.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['lms_btob_admin']} AS ba ON cad.AssignAdminIdx = ba.AdminIdx
-            INNER JOIN {$this->_table['lms_correct_assign']} AS ca ON cad.CaIdx = ca.CaIdx
+            {$join_type} JOIN {$this->_table['lms_correct_assign_detail']} AS cad ON cua.CuaIdx = cad.CuaIdx AND cad.IsStatus = 'Y'
+            {$join_type} JOIN {$this->_table['lms_correct_assign']} AS ca ON cad.CaIdx = ca.CaIdx
+            {$join_type} JOIN {$this->_table['lms_btob_admin']} AS ba ON cad.AssignAdminIdx = ba.AdminIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

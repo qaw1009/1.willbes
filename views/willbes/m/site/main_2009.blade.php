@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both mb20">
-        {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
 
         <div class="buttonTabs noticeTabs c_both">
             {{-- board include --}}

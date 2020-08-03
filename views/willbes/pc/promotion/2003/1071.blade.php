@@ -19,7 +19,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:100px;right:10px;width:122px;z-index:10;}
+        .skybanner {position:fixed;top:100px;right:100px;width:122px;z-index:10;}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#000}
@@ -107,7 +107,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0" style="padding-left:50px;>
                 <map name="Map1071A" id="Map1071A" >
                     <area shape="rect" coords="5,137,116,189" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="1" />
                     <area shape="rect" coords="5,196,116,258" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="2"/>
@@ -119,7 +119,7 @@
             </div>
            
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728#apply" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_sky.png" alt="" style="padding-top:15px;">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="" style="padding-top:15px;">
             </a>
             
         </div>         

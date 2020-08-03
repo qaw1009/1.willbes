@@ -51,10 +51,10 @@
         .evt04s {background:#154E3B;}
 
         .evt05 {background:#4fdeb1;padding-top:125px;padding-bottom:160px;position:relative;}
-        .evt05 .contents_img{width:926px;}
+        .evt05 .contents_img{width:927px;}
 
         /* TAB */
-        .tab {width:926px; margin:0 auto; bottom:120px;}		
+        .tab {width:927px; margin:0 auto; bottom:120px;}		
         .tab li { float:left;}
         .tab a img.off {display:block}
         .tab a img.on {display:none}
@@ -151,15 +151,15 @@
         <div class="evtCtnsBox evt04s" id="certification">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_04s.jpg" usemap="#Map1728_certification" title="인증하기" border="0" />
             <map name="Map1728_certification" id="Map1728_certification">
-                <area shape="rect" coords="301,721,816,796" href="https://pass.willbes.net/certApply/index/page/transfer/cert/29" target="_blank" />
+                <area shape="rect" coords="301,721,816,796" href="javascript:certOpen();" />
                 <area shape="rect" coords="472,821,649,854" href="#notice" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt05">
             <ul class="tab" id="apply">
-            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
-            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_on.png" class="on"  /></a></li>
+            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
+            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_on.png" class="on"  /></a></li>
             <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_on.png" class="on"  /></a></li>
             </ul>
             <div id="tab1">
@@ -258,6 +258,16 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+
+        {{-- 수강인증 --}}
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         /* 수강신청 동의*/
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){

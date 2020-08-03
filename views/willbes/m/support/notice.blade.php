@@ -43,7 +43,7 @@
                     </button>
                 </div>
                 <div class="resetBtn width10p">
-                    <a href="{{front_url($default_path.'/index')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+                    <a href="{{front_url($default_path.'/index/cate/'.$__cfg['CateCode'])}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                     <tr class="{{$row['IsBest'] == '1' ? 'bg-light-blue' : ''}}">
                         <td class="w-data tx-left">
                             <div class="w-tit">
-                                <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                <a href="{{front_url($default_path.'/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                     {{hpSubString($row['Title'],0,40,'...')}}
                                 </a>
                             </div>

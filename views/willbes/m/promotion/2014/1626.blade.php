@@ -5,6 +5,8 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
+    .welcome_pack {position:relative;}
+    .njob_join {position:absolute;left:50%;top:60%;margin-left:-285px;}
 
     .sampleView1626 {padding-bottom:50px}
     .sampleView1626 h4 {margin-bottom:20px; font-size:20px; color:#c06b0c; clear:both; text-align:left; padding-left:2%}
@@ -24,15 +26,22 @@
     @@media only screen and (max-width: 374px) {        
         .sampleView1626 ul {margin-bottom:30px; margin-right:0}
         .sampleView1626 li {margin-bottom:20px}
+        .welcome_pack {position:relative;}
+        .njob_join {position:absolute;left:50%;top:65%;margin-left:-163px;}
+        .njob_join img{width:325px;}
     }
 
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
         .sampleView1626 ul {margin-bottom:30px; margin-right:0}
+        .welcome_pack {position:relative;}
+        .njob_join {position:absolute;left:50%;top:70%;margin-left:-175px;}
+        .njob_join img{width:350px;}
     }
 
     /* 태블릿 세로 */
-    @@media only screen and (min-width: 690px) {       
-
+    @@media only screen and (min-width: 690px) {   
+        .welcome_pack {position:relative;}
+        .njob_join {position:absolute;left:50%;top:69%;margin-left:-285px;}
     }
 
 </style>
@@ -44,10 +53,14 @@
     </div>  
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_01.jpg" alt="혜택" usemap="#Map1626A" border="0" >
-        <map name="Map1626A">
-            <area shape="rect" coords="242,468,865,568" href="https://www.willbes.net/member/login/?rtnUrl=%2F%2Fnjob.willbes.net%2Fm%2Fhome%2Findex" target="_blank" alt="회원가입하기">
-        </map>             
+        <div class="welcome_pack"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_01.jpg" alt="혜택">
+        </div>
+        <div class="njob_join">
+            <a href="https://www.willbes.net/member/login/?rtnUrl=%2F%2Fnjob.willbes.net%2Fm%2Fhome%2Findex" target="_blank" alt="회원가입하기">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1626m_01_btn.png" alt="회원가입하고 N잡러 되기">
+            </a>
+        </div>             
     </div>
 
     <div class="evtCtnsBox">

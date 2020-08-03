@@ -45,7 +45,7 @@
         to{color:#000}
         }
         .wb_00 {background:#404040}
-        .wb_top {background:#9DB2CF url(https://static.willbes.net/public/images/promotion/2020/07/1406_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#CDB89D url(https://static.willbes.net/public/images/promotion/2020/08/1406_top_bg.jpg) no-repeat center top;}
         .wb_top_01 {background:#333; position:relative; padding:100px 0; color:#fff} 
         .box-book {width:100%;}
         .box-book .bx-wrapper{max-width:100% !important;}
@@ -76,7 +76,7 @@
         .wb_01 {background:#ededed}
         .wb_02 {background:#fff}
         .wb_03 {background:#f3f3f3}
-        .wb_04 {background:#3d3d3d url(https://static.willbes.net/public/images/promotion/2020/06/1406_04_bg.jpg) no-repeat center top}
+        .wb_04 {background:#3d3d3d url(https://static.willbes.net/public/images/promotion/2020/08/1406_04_bg.jpg) no-repeat center top}
         .wb_05 {background:#40c8f4;}
         .tabs {width:1120px; margin:0 auto}
         .tabs li {display:inline; float:left; width:50%}
@@ -94,7 +94,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
-            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1406_sky.png" alt="기본이론 종합반" ></a>
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1406_sky.png" alt="기본이론 종합반" ></a>
             {{--<a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1406_sky02.jpg" alt="튜터링관리반" ></a>--}}
         </div>           
 
@@ -126,7 +126,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1406_top.jpg" alt="7월 개강반 신청하기" usemap="#Map1406a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1406_top.jpg" alt="7월 개강반 신청하기" usemap="#Map1406a" border="0" />
             <map name="Map1406a" id="Map1406a">
                 <area shape="rect" coords="320,1230,799,1356" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" />
             </map>
@@ -189,19 +189,19 @@
         --}}
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1406_01.jpg" alt="2달 완성"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1406_01.jpg" alt="2달 완성"/>
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1406_02.jpg" alt="기본이론은 신광은경찰"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1406_02.jpg" alt="기본이론은 신광은경찰"/>
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1406_03.jpg" alt="혜택은 특별"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1406_03.jpg" alt="혜택은 특별"/>
         </div>
                
         <div class="evtCtnsBox wb_04" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1406_04.jpg" alt="수강신청하기" usemap="#Map1406B" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1406_04.jpg" alt="수강신청하기" usemap="#Map1406B" border="0" />
             <map name="Map1406B" id="Map1406B">
                 <area shape="rect" coords="239,1022,542,1167" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" />
                 <area shape="rect" coords="579,1021,889,1167" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&course_idx=1040&campus_ccd=605001" target="_blank" />

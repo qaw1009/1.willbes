@@ -83,7 +83,7 @@ class Home extends \app\controllers\FrontController
 
         // get data
         $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
-
+echo 'site/main_'. $_view_path;
         $this->load->view('site/main_'. $_view_path, [
             'data' => $data,
             'cate_code' => $cate_code,

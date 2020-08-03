@@ -154,7 +154,7 @@ class Scheduler
     {
         if (empty($output) === false) {
             $log_path = $this->logFileDir . 'log-' . date('Y-m-d') . '.log';
-            logger('Cron run log: ', $output, 'debug', $log_path);
+            logger('Cron run log', $output, 'debug', $log_path);
         }
 
         return null;

@@ -17,7 +17,11 @@ class StatsVisitorModel extends BaseStatsModel
 
         $arr_condition = $this->_getCondition($arr_input);
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-        $arr_bind = [$arr_search_date['search_start_date'], $arr_search_date['search_end_date'], $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date']];
+        $arr_bind = [
+            $arr_search_date['search_start_date'], $arr_search_date['search_end_date'],
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date'],
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date']
+        ];
 
         $column = 'A.BaseDate, ifnull(B.VisitorCnt, 0) as VisitorCnt, ifnull(B.MemCnt, 0) as MemCnt, ifnull(B.GuestCnt, 0) as GuestCnt
                 , ifnull(B.PcCnt, 0) as PcCnt, ifnull(B.MobileCnt, 0) as MobileCnt, ifnull(B.AppCnt, 0) as AppCnt';
@@ -30,7 +34,7 @@ class StatsVisitorModel extends BaseStatsModel
             ) as A
                 left join (
                     select TA.VisitDate
-                        , sum(TA.VisitorCnt) as VisitorCnt
+                        , sum(TA.VisitCnt) as VisitorCnt
                         , sum(TA.MemCnt) as MemCnt
                         , sum(TA.GuestCnt) as GuestCnt
                         , sum(TA.PcCnt) as PcCnt
@@ -38,16 +42,29 @@ class StatsVisitorModel extends BaseStatsModel
                         , sum(TA.AppCnt) as AppCnt
                     from (
                         select date_format(VisitDate, "' . $date_format . '") as VisitDate
-                            , count(0) as VisitorCnt
-                            , sum(if(MemIdx is null, 0, 1)) as MemCnt
-                            , sum(if(MemIdx is null, 1, 0)) as GuestCnt
-                            , sum(if(AccessDevice = "P", 1, 0)) as PcCnt
-                            , sum(if(AccessDevice = "M", 1, 0)) as MobileCnt
-                            , sum(if(AccessDevice = "A", 1, 0)) as AppCnt
+                            , 1 as VisitCnt
+                            , if(MemIdx is null, 0, 1) as MemCnt
+                            , if(MemIdx is null, 1, 0) as GuestCnt
+                            , if(AccessDevice = "P", 1, 0) as PcCnt
+                            , if(AccessDevice = "M", 1, 0) as MobileCnt
+                            , if(AccessDevice = "A", 1, 0) as AppCnt
                         from ' . $this->_table['visitor'] . '
                         where VisitDate between ? and ?
+                            and VisitDate > ?
                         ' . $where . '
-                        group by VisitDate
+                        union all
+                        select date_format(VisitDate, "' . $date_format . '") as VisitDate
+                            , if(StatsType = "TOTAL", VisitCnt, 0) as VisitCnt
+                            , if(StatsType = "MEM", VisitCnt, 0) as MemCnt
+                            , if(StatsType = "GUEST", VisitCnt, 0) as GuestCnt
+                            , if(StatsType = "PC", VisitCnt, 0) as PcCnt
+                            , if(StatsType = "MOBILE", VisitCnt, 0) as MobileCnt
+                            , if(StatsType = "APP", VisitCnt, 0) as AppCnt
+                        from ' . $this->_table['visitor_stats'] . '
+                        where VisitDate between ? and ?
+                            and VisitDate <= ?
+                            and StatsGroup = "TO"  
+                        ' . $where . '                                                  
                     ) as TA
                     group by TA.VisitDate
                 ) as B
@@ -69,9 +86,12 @@ class StatsVisitorModel extends BaseStatsModel
 
         $arr_condition = $this->_getCondition($arr_input);
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-        $arr_bind = [$arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date']];
+        $arr_bind = [
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date'],
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date']
+        ];
 
-        $column = 'A.VisitHour, ifnull(B.VisitorCnt, 0) as VisitorCnt';
+        $column = 'A.VisitHour, ifnull(B.VisitCnt, 0) as VisitorCnt';
         $from = '
             from (
                 select lpad((num - 1), 2, "0") as VisitHour
@@ -79,11 +99,22 @@ class StatsVisitorModel extends BaseStatsModel
                 where num between 1 and 24
             ) as A
                 left join (
-                    select substring(RegDatm, 12, 2) as VisitHour, count(0) as VisitorCnt
-                    from ' . $this->_table['visitor'] . '
-                    where VisitDate between ? and ?
-                    ' . $where . '
-                    group by 1
+                    select RD.VisitHour, sum(RD.VisitCnt) as VisitCnt
+                    from (
+                        select substring(RegDatm, 12, 2) as VisitHour, 1 as VisitCnt
+                        from ' . $this->_table['visitor'] . '
+                        where VisitDate between ? and ?
+                            and VisitDate > ?
+                        ' . $where . '                            
+                        union all
+                        select StatsType as VisitHour, VisitCnt
+                        from ' . $this->_table['visitor_stats'] . '
+                        where VisitDate between ? and ?
+                            and VisitDate <= ?
+                            and StatsGroup = "HO"
+                        ' . $where . '                            
+                    ) as RD
+                    group by RD.VisitHour                
                 ) as B
                     on A.VisitHour = B.VisitHour
             order by A.VisitHour asc            
@@ -103,7 +134,10 @@ class StatsVisitorModel extends BaseStatsModel
 
         $arr_condition = $this->_getCondition($arr_input);
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-        $arr_bind = [$arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date']];
+        $arr_bind = [
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date'],
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date']
+        ];
 
         $arr_out_condition['IN']['S.SiteCode'] = get_auth_site_codes(false,true);
         $out_where = $this->_conn->makeWhere($arr_out_condition)->getMakeWhere(true);
@@ -113,12 +147,24 @@ class StatsVisitorModel extends BaseStatsModel
             from ' . $this->_table['site'] . ' as S
                 inner join ' . $this->_table['site_group'] . ' as SG
                     on S.SiteGroupCode = SG.SiteGroupCode
-                left join (		
-                    select SiteCode, sum(VisitCnt) as VisitCnt 
-                    from ' . $this->_table['visitor_sum'] . '	
-                    where VisitDate between ? and ?
-                    ' . $where . '
-                    group by SiteCode
+                left join (	
+                    select RD.SiteCode, sum(RD.VisitCnt) as VisitCnt
+                    from (                	
+                        select SiteCode, 1 as VisitCnt 
+                        from ' . $this->_table['visitor'] . '	
+                        where VisitDate between ? and ?
+                            and VisitDate > ?
+                        ' . $where . '
+                        union all
+                        select SiteCode, VisitCnt 
+                        from ' . $this->_table['visitor_stats'] . '	
+                        where VisitDate between ? and ?
+                            and VisitDate <= ?
+                            and StatsGroup = "TO"
+                            and StatsType = "TOTAL"
+                        ' . $where . '                             
+                    ) RD
+                    group by RD.SiteCode                                                   
                 ) as TA
                     on S.SiteCode = TA.SiteCode
             where S.IsUse = "Y"
@@ -141,14 +187,28 @@ class StatsVisitorModel extends BaseStatsModel
 
         $arr_condition = $this->_getCondition($arr_input);
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-        $arr_bind = [$arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date']];
+        $arr_bind = [
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date'],
+            $arr_search_date['search_start_nd_date'], $arr_search_date['search_end_nd_date'], $arr_search_date['search_div_nd_date']
+        ];
 
-        $column = 'if(TA.UserPlatform = "Unknown", "검색엔진/크롤러", if(TA.UserPlatform = "", "기타", TA.UserPlatform)) as UserPlatform, count(0) as VisitorCnt';
+        $column = 'if(TA.UserPlatform = "Unknown", "검색엔진/크롤러", TA.UserPlatform) as UserPlatform, ifnull(sum(TA.VisitCnt), 0) as VisitorCnt';
         $from = '
             from (
-                select substring_index(UserPlatform, " ", 1) as UserPlatform
-                from ' . $this->_table['visitor'] . '
+                select if(RD.UserPlatform = "", "Etc", RD.UserPlatform) as UserPlatform, 1 as VisitCnt
+                from (
+                    select substring_index(UserPlatform, " ", 1) as UserPlatform
+                    from ' . $this->_table['visitor'] . '
+                    where VisitDate between ? and ?
+                        and VisitDate > ?
+                    ' . $where . '                        
+                ) as RD	
+                union all
+                select StatsType, VisitCnt
+                from ' . $this->_table['visitor_stats'] . '
                 where VisitDate between ? and ?
+                    and VisitDate <= ?
+                    and StatsGroup = "PF"
                 ' . $where . '
             ) as TA
             group by TA.UserPlatform
@@ -169,7 +229,11 @@ class StatsVisitorModel extends BaseStatsModel
         $arr_search_date['search_start_date'] = empty(element('search_start_date', $arr_input)) === true ? date('Y-m-d', strtotime($arr_search_date['search_end_date'] . ' -14 day')) : $arr_input['search_start_date'];
         $arr_search_date['search_start_nd_date'] = str_replace('-', '', $arr_search_date['search_start_date']);
         $arr_search_date['search_end_nd_date'] = str_replace('-', '', $arr_search_date['search_end_date']);
-        
+
+        // 이력과 통계 테이블 조회기준 경계(분할)일자
+        $arr_search_date['search_div_date'] = date('Y-m-d', strtotime('-7 day'));
+        $arr_search_date['search_div_nd_date'] = str_replace('-', '', $arr_search_date['search_div_date']);
+
         return $arr_search_date;
     }
 

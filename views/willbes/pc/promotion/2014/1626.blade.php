@@ -76,29 +76,57 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_01.jpg" alt="김정환" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51010') {{-- 김정환 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_02.jpg" alt="김경은" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51007') {{-- 김경은 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_03.jpg" alt="황채영" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51009') {{-- 황채영 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_04.jpg" alt="정문진" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51008') {{-- 정문진 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>                    
                 </ul>
@@ -107,29 +135,57 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_05.jpg" alt="이시한" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51032') {{-- 이시한 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_06.jpg" alt="이승기" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51031') {{-- 이승기 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_07.jpg" alt="안혜빈" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51030') {{-- 안혜빈 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_08.jpg" alt="이기용" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51029') {{-- 이기용 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>                    
                 </ul>
@@ -138,8 +194,15 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_09.jpg" alt="양원근" >
                         <div class="viewBtns">
-                            <a href="#none">1강</a>
-                            <a href="#none">2강</a>
+                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                                @php $i = 1; @endphp
+                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                    @if($row['ProfIdx'] == '51060') {{-- 양원근 --}}
+                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
+                                        @php $i += 1; @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </li>                   
                 </ul>

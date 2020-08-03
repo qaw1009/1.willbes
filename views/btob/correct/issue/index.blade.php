@@ -104,7 +104,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 ajax: {
-                    'url' : '{{ site_url('/grade/issue/listAjax') }}',
+                    'url' : '{{ site_url('/correct/issue/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});

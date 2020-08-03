@@ -40,6 +40,7 @@ class BaseStatsModel extends WB_Model
         /*방문자*/
         'visitor' => 'lms_visitor',
         'visitor_sum' => 'lms_visitor_sum',
+        'visitor_stats' => 'lms_visitor_stats',
     ];
 
     public function __construct()

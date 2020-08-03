@@ -101,60 +101,30 @@ class AccessFModel extends WB_Model
             if (empty($sess_sess_id) === true) {
                 return true;
             }
-            
-            // 기등록여부 확인
-            $row = $this->_conn->getFindResult($this->_table['visitor'], 'SessId', ['EQ' => ['SessId' => $sess_sess_id]]);
-            
-            if (empty($row) === false) {
-                // 방문자 정보 수정
-                $data = [
-                    'MemIdx' => $sess_mem_idx,
-                    'AccessTms' => $access_timestamp
-                ];
 
-                $is_update = $this->_conn->set($data)->set('PageView', 'PageView + 1', false)
-                    ->where('SessId', $sess_sess_id)
-                    ->update($this->_table['visitor']);
-                if ($is_update === false) {
-                    throw new \Exception('방문자 정보 수정에 실패했습니다.');
-                }
-            } else {
-                // 방문자 정보 등록
-                $data = [
-                    'SessId' => $sess_sess_id,
-                    'VisitDate' => $today,
-                    'SiteCode' => $site_code,
-                    'MemIdx' => $sess_mem_idx,
-                    'AccessTms' => $access_timestamp,
-                    'AccessDomain' => $access_domain,
-                    'AccessUrl' => substr($access_url, 0, 199),
-                    'AccessDevice' => $access_device,
-                    'UserPlatform' => $platform,
-                    'UserAgentType' => $agent_type,
-                    'UserAgentShort' => substr($agent_short, 0, 99),
-                    'UserAgent' => substr($agent, 0, 199),
-                    'ReferDomain' => $refer_domain,
-                    'ReferInfo' => substr($refer_info, 0, 199),
-                    'PageView' => '1',
-                    'RegIp' => $reg_ip
-                ];
-                
-                $is_insert = $this->_conn->set($data)->insert($this->_table['visitor']);
-                if ($is_insert === false) {
-                    throw new \Exception('방문자 정보 등록에 실패했습니다.');
-                }
+            // 방문자 정보 등록
+            $data = [
+                $sess_sess_id, $today, $site_code, $sess_mem_idx, $access_timestamp, $access_domain, substr($access_url, 0, 199), $access_device,
+                $platform, $agent_type, substr($agent_short, 0, 99), substr($agent, 0, 199),
+                $refer_domain, substr($refer_info, 0, 199), '1', $reg_ip,
+                $sess_mem_idx, $access_timestamp
+            ];
 
-                // 방문자 합계 등록
-                $query = /** @lang text */ 'insert into ' . $this->_table['visitor_sum'] . ' (VisitDate, SiteCode, VisitCnt) values 
-                (?, ?, 1) ON DUPLICATE KEY UPDATE VisitCnt = VisitCnt + 1';
+            $query = /** @lang text */ '
+                insert into ' . $this->_table['visitor'] . ' (
+                    SessId, VisitDate, SiteCode, MemIdx, AccessTms, AccessDomain, AccessUrl, AccessDevice, UserPlatform, UserAgentType, UserAgentShort, UserAgent,
+                    ReferDomain, ReferInfo, PageView, RegIp
+                ) values (
+                    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ) ON DUPLICATE KEY UPDATE PageView = PageView + 1, MemIdx = ?, AccessTms = ?
+            ';
 
-                $is_replace = $this->_conn->query($query, [$today, $site_code]);
-                if ($is_replace === false) {
-                    throw new \Exception('방문자 합계 저장에 실패했습니다.');
-                }
+            $is_insert = $this->_conn->query($query, $data);
+            if ($is_insert === false) {
+                throw new \Exception('방문자 정보 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return error_result($e);
         }
 
         return true;

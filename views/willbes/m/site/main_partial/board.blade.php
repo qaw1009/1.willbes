@@ -5,14 +5,14 @@
 </ul>
 <div class="tabBox buttonBox noticeBox">
     <div id="notice1" class="tabContent pd20">
-        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/notice/index')}}';">+ 더보기</a></div>
+        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/notice/index'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['notice']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else
                 @foreach($data['notice'] as $row)
                     <li>
-                        <a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                        <a href="{{front_url('/support/notice/show'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : '').'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
                         <span class="date">{{$row['RegDatm']}}</span>
                     </li>
                 @endforeach
@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div id="notice2" class="tabContent pd20">
-        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/examAnnouncement/index')}}';">+ 더보기</a></div>
+        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/examAnnouncement/index'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['exam_announcement']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
@@ -35,7 +35,7 @@
         </ul>
     </div>
     <div id="notice3" class="tabContent pd20">
-        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/examNews/index')}}';">+ 더보기</a></div>
+        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/support/examNews/index'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['exam_news']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>

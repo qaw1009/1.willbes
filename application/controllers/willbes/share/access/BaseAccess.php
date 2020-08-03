@@ -135,7 +135,7 @@ class BaseAccess extends \app\controllers\FrontController
         // 방문자 정보 저장
         $result = $this->accessFModel->saveVisitor($arr_input);
         if ($result !== true) {
-            return $this->json_error($result);
+            return $this->json_error($result['ret_msg']);
         }
 
         // 방문자 접근시간 쿠키 생성

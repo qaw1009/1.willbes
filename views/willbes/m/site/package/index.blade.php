@@ -15,7 +15,7 @@
                     @endforeach
                 </form>
                 @if(isset($arr_base['category']) === true)
-                    <li>
+                    <li {{empty($__cfg['CateCode']) === true ? '' : 'class=d_none' }}>
                         <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
                             @foreach($arr_base['category'] as $idx => $row)
                                 <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode']  || $arr_base['category_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>

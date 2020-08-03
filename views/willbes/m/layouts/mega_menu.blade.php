@@ -5,7 +5,160 @@
 @section('mega_menu_professor')
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원 --}}
-        @if($menu_cate_code == '3035')
+        @if($menu_cate_code == '3019')
+            {{-- 9급공무원 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li>
+                    <span>국어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50661?subject_idx=1107') }}">김세령</a>
+                </li>
+                <li>
+                    <span>영어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50499?subject_idx=1108') }}">한덕현</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50383?subject_idx=1108') }}">김영</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50651?subject_idx=1108') }}">박초롱</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50309?subject_idx=1108') }}">이아림</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50071?subject_idx=1108') }}">양익</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50991?subject_idx=1108') }}">안성호</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51011?subject_idx=1108') }}">이섬가</a>
+                </li>
+                <li>
+                    <span>한국사</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">한경준</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">오태진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50003?subject_idx=1109') }}">원유철</a>
+                </li>
+                <li>
+                    <span>행정법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1111') }}">황남기</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50717?subject_idx=1111') }}">한세훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
+                </li>
+                <li>
+                    <span>행정학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559?subject_idx=1112') }}">김덕관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50041?subject_idx=1112') }}">윤세훈</a>
+                </li>
+                <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50187?subject_idx=1123') }}">고선미</a></li>
+                <li>
+                    <span>회계학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50227?subject_idx=1124') }}">김영훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50057?subject_idx=1124') }}">김현식</a>
+                </li>
+                <li><span>국제법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1127') }}">이상구</a></li>
+                <li><span>사회</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50181?subject_idx=1133') }}">문병일</a></li>
+                <li><span>수학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50201?subject_idx=1135') }}">곽윤근</a></li>
+                <li><span>공직선거법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1137') }}">황남기</a></li>
+            </ul>
+        @elseif($menu_cate_code == '3020')
+            {{-- 7급 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a></li>
+                <li>
+                    <span>영어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50499?subject_idx=1108') }}">한덕현</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>
+                </li>
+                <li>
+                    <span>한국사</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>
+                </li>
+                <li>
+                    <span>행정법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50717?subject_idx=1111') }}">한세훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1111') }}">황남기</a>
+                </li>
+                <li>
+                    <span>행정학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559?subject_idx=1112') }}">김덕관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50041?subject_idx=1112') }}">윤세훈</a>
+                </li>
+                <li>
+                    <span>헌법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50139?subject_idx=1114') }}">유시완</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50139?subject_idx=1114') }}">황남기</a>
+                </li>
+                <li><span>경제학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50487?subject_idx=1115') }}">황정빈</a></li>
+                <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50487?subject_idx=1115') }}">고선미</a></li>
+                <li>
+                    <span>회계학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50227?subject_idx=1124') }}">김영훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50057?subject_idx=1124') }}">김현식</a>
+                </li>
+                <li><span>국제법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1127') }}">이상구</a></li>
+                <li><span>국제정치학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1128') }}">이상구</a></li>
+                <li><span>공직선거법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1137') }}">황남기</a></li>
+                <li><span>G-TELP</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a></li>
+                <li><span>프랑스어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50001?subject_idx=1178') }}">박훈</a></li>
+                <li><span>중국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50061?subject_idx=1162') }}">조소현</a></li>
+                <li><span>경영학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50763?subject_idx=1185') }}">고강유</a></li>
+                <li><span>경영학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50763?subject_idx=1185') }}">전수환</a></li>
+            </ul>
+        @elseif($menu_cate_code == '3023')
+            {{-- 소방직 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50661?subject_idx=1107') }}">김세령</a></li>
+                <li>
+                    <span>영어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50309?subject_idx=1108') }}">이아림</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50071?subject_idx=1108') }}">양익</a>
+                </li>
+                <li>
+                    <span>한국사</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50305?subject_idx=1109') }}">한경준</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>
+                </li>
+                <li><span>소방학개론</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50465?subject_idx=1113') }}">김종상</a></li>
+                <li><span>사회</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50181?subject_idx=1133') }}">문병일</a></li>
+                <li><span>소방관계법규</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50465?subject_idx=1138') }}">김종상</a></li>
+
+            </ul>
+        @elseif($menu_cate_code == '3024')
+            {{-- 군무원 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li>
+                    <span>국어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50729?subject_idx=1107') }}">오훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50621?subject_idx=1107') }}">임재진</a>
+                </li>
+                <li>
+                    <span>행정법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50107?subject_idx=1112') }}">김덕관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50107?subject_idx=1112') }}">김헌</a>
+                </li>
+                <li><span>공중보건</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=1130') }}">하재남</a></li>
+                <li><span>G-TELP</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a></li>
+                <li>
+                    <span>경영학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50763?subject_idx=1185') }}">고강유</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50549?subject_idx=1185') }}">전수환</a>
+                </li>
+                <li><span>전자회로</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50549?subject_idx=1185') }}">최우영</a></li>
+                <li>
+                    <span>한국사검정능력시험</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1237') }}">김상범</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50305?subject_idx=1237') }}">한경준</a>
+                </li>
+            </ul>
+        @elseif($menu_cate_code == '3035')
             {{-- 법원직 --}}
             <ul>
                 <li class="pl25">
@@ -19,6 +172,32 @@
                 <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50685?subject_idx=1117') }}">유안석</a></li>
                 <li><span>민법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50519?subject_idx=1118') }}">김동진</a></li>
                 <li><span>민사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50145?subject_idx=1119') }}">이덕훈</a></li>
+            </ul>
+        @elseif($menu_cate_code == '3028')
+            {{-- 기술직 --}}
+            <ul>
+                <li class="pl25">
+                    <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
+                </li>
+                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a></li>
+                <li>
+                    <span>영어</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50499?subject_idx=1108') }}">한덕현</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50383?subject_idx=1108') }}">김영</a>
+                </li>
+                <li>
+                    <span>한국사</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>
+                </li>
+                <li><span>보건직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=1129') }}">하재남</a></li>
+                <li><span>통신직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=1129') }}">최우영</a></li>
+                <li><span>전기직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50718?subject_idx=1173') }}">최우영</a></li>
+                <li><span>토목직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50435?subject_idx=1215') }}">장성국</a></li>
+                <li><span>농업직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1172') }}">장사원</a></li>
+                <li><span>농촌지도사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1230') }}">장사원</a></li>
+                <li><span>유기농업기능사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1232') }}">장사원</a></li>
             </ul>
         @endif
     @elseif($__cfg['SiteCode'] == '2005')

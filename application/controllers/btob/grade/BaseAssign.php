@@ -16,7 +16,7 @@ class BaseAssign extends \app\controllers\BaseController
         $this->_sess_btob_idx = $this->session->userdata('btob.btob_idx');   // 제휴사식별자
         $this->_sess_btob_site_code = $this->session->userdata('btob.site_code'); // 제휴사메핑 사이트코드
         $this->_sess_btob_role_idx = $this->session->userdata('btob.admin_auth_data')['Role']['RoleIdx'];
-        if ($this->_sess_btob_role_idx != '6004') {
+        if ($this->_sess_btob_role_idx == '6005') {
             $this->_is_authority = false;
         }
     }

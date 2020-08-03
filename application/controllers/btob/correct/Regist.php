@@ -349,8 +349,7 @@ class Regist extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'cad.IsStatus' => 'Y'
-                ,'cu.ProdCode' => $this->_reqP('search_prod_code')
+                'cu.ProdCode' => $this->_reqP('prod_code')
                 ,'cua.IsReply' => $this->_reqP('search_is_reply')
             ],
             'ORG' => [
@@ -370,10 +369,10 @@ class Regist extends \app\controllers\BaseController
         }
 
         $list = [];
-        $count = $this->btobCorrectModel->listCorrectAssignment(true, $arr_condition);
+        $count = $this->btobCorrectModel->listCorrectAssignment('LEFT', true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->btobCorrectModel->listCorrectAssignment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['cua.CuaIdx' => 'desc']);
+            $list = $this->btobCorrectModel->listCorrectAssignment('LEFT',false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['cua.CuaIdx' => 'desc']);
         }
 
         return $this->response([

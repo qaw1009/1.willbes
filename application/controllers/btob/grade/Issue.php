@@ -40,7 +40,7 @@ class Issue extends BaseAssign
             ]
         ];
 
-        if ($this->_sess_btob_role_idx != '6004') {
+        if ($this->_sess_btob_role_idx == '6005') {
             $arr_condition['EQ']['cad.AssignAdminIdx'] = $this->session->userdata('btob.admin_idx');
         }
 
@@ -53,10 +53,10 @@ class Issue extends BaseAssign
         }
 
         $list = [];
-        $count = $this->btobCorrectModel->listCorrectAssignment(true,$arr_condition);
+        $count = $this->btobCorrectModel->listCorrectAssignment('INNER', true,$arr_condition);
 
         if($count > 0) {
-            $list = $this->btobCorrectModel->listCorrectAssignment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['cua.CuaIdx' => 'Desc']);
+            $list = $this->btobCorrectModel->listCorrectAssignment('INNER', false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['cua.CuaIdx' => 'Desc']);
         }
 
         return $this->response([

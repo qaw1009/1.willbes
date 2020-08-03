@@ -51,10 +51,10 @@
         .evt04s {background:#154E3B;}
 
         .evt05 {background:#4fdeb1;padding-top:125px;padding-bottom:160px;position:relative;}
-        .evt05 .contents_img{width:926px;}
+        .evt05 .contents_img{width:927px;}
 
         /* TAB */
-        .tab {width:926px; margin:0 auto; bottom:120px;}		
+        .tab {width:927px; margin:0 auto; bottom:120px;}		
         .tab li { float:left;}
         .tab a img.off {display:block}
         .tab a img.on {display:none}
@@ -158,8 +158,8 @@
 
         <div class="evtCtnsBox evt05">
             <ul class="tab" id="apply">
-            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
-            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_on.png" class="on"  /></a></li>
+            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
+            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_on.png" class="on"  /></a></li>
             <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_on.png" class="on"  /></a></li>
             </ul>
             <div id="tab1">

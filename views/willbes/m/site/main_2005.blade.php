@@ -22,7 +22,7 @@
                 <li>{!! banner('M_메인서브2', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
-        {!! banner('M_메인', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
 
         <div class="gosibtns">
             <ul>

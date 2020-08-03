@@ -67,8 +67,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51010') {{-- 김정환 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -81,8 +81,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51007') {{-- 김경은 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -95,8 +95,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51009') {{-- 황채영 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -109,8 +109,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51008') {{-- 정문진 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -127,8 +127,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51032') {{-- 이시한 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -141,8 +141,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51031') {{-- 이승기 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -155,8 +155,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51030') {{-- 안혜빈 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -169,8 +169,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51029') {{-- 이기용 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif
@@ -186,8 +186,8 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51060') {{-- 양원근 --}}
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                @php $i += 1; @endphp
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
                                 @endif
                             @endforeach
                         @endif

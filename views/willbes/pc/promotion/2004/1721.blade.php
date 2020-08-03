@@ -136,12 +136,11 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="javascript:alert('Comimg Soon :)')">
+                                    <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
-                                            <span>Comimg Soon</span>
                                         </div>
                                     </a>
                                 </li> 
@@ -273,7 +272,8 @@
         //유툽
         var tab1_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
         var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
-        var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";           
+        var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
+        var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";           
     
 
         $(function() {

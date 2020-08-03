@@ -92,6 +92,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_01.jpg" alt="경찰 파이널 패스">
         </div>  
 
+        {{--
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_02.jpg" alt="경찰 파이널 패스" usemap="#Map1741" border="0">
             <map name="Map1741">
@@ -99,6 +100,7 @@
                 <area shape="rect" coords="464,1412,658,1471" href="javascript:giveCheck();" alt="쿠폰받기">
             </map>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_03.jpg" alt="경찰 파이널 패스">

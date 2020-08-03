@@ -45,7 +45,7 @@
 
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1" for="order_num">정렬순서</label>
-                <div class="col-md-10 form-inline">
+                <div class="col-md-1 item">
                     <input type="number" class="form-control" id="order_num" name="order_num" title="정렬순서" value="{{$sq_data['OrderNum'] or '0' }}">
                 </div>
             </div>
@@ -59,18 +59,32 @@
                         @foreach($arr_type as $type => $txt)
                             <option value="{{$type}}" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == $type) selected="selected" @endif>{{$txt}}</option>
                         @endforeach
-                    </select>
+                    </select><br/>
+                    <span style="color:red;">* 선택형(그룹), 복수형은 항목1 갯수 선택시 항목은 자동으로 입력됩니다.</span><br/>(1.매우쉬움, 2.쉬움, 3.보통, 4.어려움, 5.매우어려움)
                 </div>
             </div>
 
             <div class="form-group form-group-sm form-group-inline hide">
                 <label class="control-label col-md-1-1" for="sq_cnt">항목갯수 <span class="required">*</span></label>
-                <div class="col-md-10 form-inline">
+                <div class="col-md-1 item">
                     <select class="form-control" id="sq_cnt" name="sq_cnt" title="항목갯수" required="required" onchange="sel_question_type();">
                         @for($i = 1; $i <= $sq_cnt; $i++)
                             <option value='{{ $i }}' @if(empty($sq_data['SqCnt']) === false && $sq_data['SqCnt'] == $i ) selected="selected" @endif>{{ $i }}</option>
                         @endfor
                     </select>
+                </div>
+
+                <div class="col-md-1"></div>
+
+                <div id="sq_subject_box" class="hide">
+                    <label class="control-label col-md-2">응시과목 선택 갯수(복수형 전용)</label>
+                    <div class="col-md-1 item">
+                        <select class="form-control" id="sq_subject_cnt" name="sq_subject_cnt">
+                            @for($i = 1; $i <= $sq_cnt; $i++)
+                                <option value='{{ $i }}' @if(empty($sq_data['SqSubjectCnt']) === false && $sq_data['SqSubjectCnt'] == $i ) selected="selected" @endif>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -173,6 +187,10 @@
             var sel_cnt = $("#sq_cnt option:selected").val();
             var sel_type = $("#sq_type option:selected").val();
 
+            if(sel_type == 'T'){ // 응시과목 선택 갯수
+                $("#sq_subject_box").removeClass("hide");
+            }
+
             if(sel_type == 'T' || sel_type == 'M'){ // 복수형, 선택형(그룹)
                 add_question_t_type(sel_cnt);
             }else{// 선택형(단일), 서술형
@@ -239,6 +257,7 @@
                 $('#t' + i).addClass("hide").attr("disabled",true);
                 $('.t' + i).addClass("hide");
             }
+            $("#sq_subject_box").addClass("hide");
         }
     </script>
 @endsection

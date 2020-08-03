@@ -2,9 +2,9 @@
 
 @section('content')
     <div id="Container" class="Container NSK gosi mb40">
-        {!! banner('M_메인상단', 'MainSlider swiper-container swiper-container-page mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-        {!! banner('M_메인빅배너', 'MainSlider swiper-container swiper-container-page mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-        {!! banner('M_메인서브', 'MainSlider swiper-container swiper-container-page mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인상단', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인빅배너', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인서브', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
         <div class="gosiTitle NSK">합격을 책임질 <span class="NSK-Black">윌비스 교수진</span></div>
         <div class="gosiProf">{!! banner('M_메인_교수진', 'swiper-container-prof', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</div>

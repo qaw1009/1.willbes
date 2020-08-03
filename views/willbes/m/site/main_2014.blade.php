@@ -174,7 +174,7 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="evt04">
-            {!! banner('M_메인_빅배너', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
+            {!! banner('M_메인_빅배너', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{--핫 인기강좌--}}

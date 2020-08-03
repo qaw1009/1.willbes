@@ -20,20 +20,41 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px; z-index:1;}
-        .sky ul li {padding-bottom:10px;}
+        /*타이머*/
+        .time {width:100%; text-align:center; background:#e9e7e8}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#407df3; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#407df3}
+        50%{color:#d20f5d}
+        to{color:#407df3}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#407df3}
+        50%{color:#d20f5d}
+        to{color:#407df3}
+        } 
 
-        .evtTop {background:#154E3B url(https://static.willbes.net/public/images/promotion/2020/07/1728_top_bg.jpg) no-repeat center top;}
+        .sky {position:fixed; top:250px; right:10px; z-index:1;}
+        .sky ul li {padding-bottom:15px;}
+
+        .evtTop {background:#154E3B url(https://static.willbes.net/public/images/promotion/2020/08/1728_top_bg.jpg) no-repeat center top;}
 
         .evt02 {background:#EAEAEA url(https://static.willbes.net/public/images/promotion/2020/07/1728_02_bg.jpg) no-repeat center top;}
 
         .evt04 {background:#E4E4E4;}
 
+        .evt04s {background:#154E3B;}
+
         .evt05 {background:#4fdeb1;padding-top:125px;padding-bottom:160px;position:relative;}
-        .evt05 .contents_img{width:918px;}
+        .evt05 .contents_img{width:926px;}
 
         /* TAB */
-        .tab {width:918px; margin:0 auto; bottom:120px;}		
+        .tab {width:926px; margin:0 auto; bottom:120px;}		
         .tab li { float:left;}
         .tab a img.off {display:block}
         .tab a img.on {display:none}
@@ -42,7 +63,7 @@
         .tab:after {content:""; display:block; clear:both}
 
         /*수강신청 체크*/
-        .check { position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#000; z-index:5}
+        .check { position:absolute; bottom:50px; left:50%; margin-left:-490px; width:930px; padding:20px 0px 20px 10px; letter-spacing:3; color:#000; z-index:5}
         .check label {cursor:pointer; font-size:18px;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#000; margin-left:50px; border-radius:20px;font-size:14px;}
@@ -74,14 +95,38 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">      
 
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
+                <table>
+                    <tr>
+                    <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 마감!</span></td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+        <!-- 타이머 //-->
+
         <div class="sky">
             <ul>          
-                <li><a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1728_sky.png"  title="티패스 추가할인" /></a></li>
+                <li><a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png"  title="티패스 추가할인" /></a></li>
+                <li><a href="#certification"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky2.png"  title="수험표 인증 특별할인" /></a></li>
             </ul>
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_top.jpg" title="최우영 T-PASS" />          
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_top.jpg" title="최우영 T-PASS" />          
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -103,24 +148,39 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_04.jpg" title="커리큘럼" />
         </div>
 
+        <div class="evtCtnsBox evt04s" id="certification">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_04s.jpg" usemap="#Map1728_certification" title="인증하기" border="0" />
+            <map name="Map1728_certification" id="Map1728_certification">
+                <area shape="rect" coords="301,721,816,796" href="https://pass.willbes.net/certApply/index/page/transfer/cert/29" target="_blank" />
+                <area shape="rect" coords="472,821,649,854" href="#notice" />
+            </map>
+        </div>
+
         <div class="evtCtnsBox evt05">
             <ul class="tab" id="apply">
-            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab01_on.png" class="on"  /></a></li>
-            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab02_on.png" class="on"  /></a></li>
+            <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
+            <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_on.png" class="on"  /></a></li>
+            <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_on.png" class="on"  /></a></li>
             </ul>
             <div id="tab1">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab01_contents.png" usemap="#Map1728cts1" class="contents_img" title="통신직" border="0"  />
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_contents.png" usemap="#Map1728cts1" class="contents_img" title="통신직" border="0"  />
                 <map name="Map1728cts1" id="Map1728cts1">
-                    <area shape="rect" coords="695,461,855,598" href="javascript:go_PassLecture('169198');" onfocus='this.blur()' >
+                    <area shape="rect" coords="695,461,855,598" href="javascript:go_PassLecture('169198');"  >
                 </map>
             </div>
             <div id="tab2">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_tab02_contents.png" usemap="#Map1728cts2" class="contents_img" title="전기직" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab02_contents.png" usemap="#Map1728cts2" class="contents_img" title="전기직" border="0" />
                 <map name="Map1728cts2" id="Map1728cts2">
-                    <area shape="rect" coords="696,441,855,558" href="javascript:go_PassLecture('169199');" onfocus='this.blur()' >
-                    <area shape="rect" coords="696,566,855,681" href="javascript:go_PassLecture('169201');" onfocus='this.blur()' >
+                    <area shape="rect" coords="697,472,856,588" href="javascript:go_PassLecture('169199');"  >
+                    <area shape="rect" coords="696,597,855,711" href="javascript:go_PassLecture('169201');"  >
                 </map>
             </div>   
+            <div id="tab3">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab03_contents.png" usemap="#Map1728cts3" class="contents_img" title="통신직" border="0"  />
+                <map name="Map1728cts3" id="Map1728cts3">
+                    <area shape="rect" coords="695,461,855,598" href="javascript:go_PassLecture('170039');"  >
+                </map>
+            </div>
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
@@ -141,7 +201,7 @@
                             <ol>
                                 <li>최우영 T-PASS 제공 과정</li>
                                 &nbsp;&nbsp;- 통신직 : 2020년도 대비 이론 + 2021년도 9급 국가직·지방직/군무원 대비 신규 개강 전 과정<br/>
-                                &nbsp;&nbsp;- 전기직 : 2020년도 대비 이론 및 문제풀이 + 2021년도 9/7급 국가직·지방직/군무원 대비 신규 개강 전 과정                               
+                                &nbsp;&nbsp;- 전자직 : 2020년도 대비 이론 및 문제풀이 + 2021년도 군무원 전자직 대비 신규 개강 전 과정                          
                                 <li>본 T-PASS 내 제공되는 과정 중 신규 개강이 진행되지 않는 경우, 전년도 진행 과정으로 대체 제공될 수 있습니다.</li>
                                 <li>본 T-PASS를 통한 강의 수강 시, 각 과정당 3배수 제한이 적용됩니다.</li>
                             </ol>
@@ -234,6 +294,11 @@
         
             e.preventDefault()})})}
         );
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });   
       
     </script>
     {{-- 프로모션용 스크립트 include --}}

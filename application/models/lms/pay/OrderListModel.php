@@ -1071,7 +1071,7 @@ class OrderListModel extends BaseOrderModel
 
             // 주문상품명 추출 및 가공
             $page_cnt = 4;  // 한 페이지당 출력되는 상품수
-            $line_cnt = 2;  // 한 상품명당 출력되는 라인수
+            $line_cnt = 3;  // 한 상품명당 출력되는 라인수
             $cut_str = 14;  // 라인당 출력되는 상품명 길이
             $arr_idx = 0;   // 페이지 인덱스
             $arr_line = [];
@@ -1117,7 +1117,7 @@ class OrderListModel extends BaseOrderModel
 
             $add_data['OrderProdNameData'] = $arr_line;
             $add_data['LineCnt'] = $page_cnt * $line_cnt;
-            $add_data['StartLine'] = 7;
+            $add_data['StartLine'] = 6;
 
             // 주문정보 추출
             $data = element('0', $data);

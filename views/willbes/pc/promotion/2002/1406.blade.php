@@ -11,7 +11,6 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -44,7 +43,7 @@
         50%{color:#2784d2}
         to{color:#000}
         }
-        .wb_00 {background:#404040}
+        .wb_00 {background:#0a0a0a}
         .wb_top {background:#CDB89D url(https://static.willbes.net/public/images/promotion/2020/08/1406_top_bg.jpg) no-repeat center top;}
         .wb_top_01 {background:#333; position:relative; padding:100px 0; color:#fff} 
         .box-book {width:100%;}
@@ -122,7 +121,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_00">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_00.jpg" alt="경찰학원 1위 윌비스 신광은 경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1741_00.jpg" alt="경찰학원 1위 윌비스 신광은 경찰팀" />
         </div>
 
         <div class="evtCtnsBox wb_top">

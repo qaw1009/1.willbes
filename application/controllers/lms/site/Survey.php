@@ -25,10 +25,6 @@ class Survey extends \app\controllers\BaseController
     public function eventSurveyCreate($params = [])
     {
         $method = 'POST';
-
-        //설문정보
-        //$survey_list = $this->surveyModel->listEventSurvey();
-
         $data_survey = [];
         $data_question = [];
 
@@ -42,7 +38,6 @@ class Survey extends \app\controllers\BaseController
 
         $this->load->view('site/survey/event_survey_create', [
             'method' => $method,
-            //'survey_list' => $survey_list,
             'data_survey' => $data_survey,
             'data_question' => $data_question,
         ]);
@@ -87,6 +82,8 @@ class Survey extends \app\controllers\BaseController
         $arr_param = $this->_reqG(null);
         $sp_idx = element('sp_idx', $arr_param);
         $sq_idx = element('sq_idx', $arr_param);
+        $series_idx = element('series_idx', $arr_param);
+        $series_data = element('series_data', $arr_param,[]);
         $sq_data = [];
 
         if(empty($sp_idx) === true || !is_numeric($sp_idx)){
@@ -97,6 +94,8 @@ class Survey extends \app\controllers\BaseController
             $method = 'PUT';
             $sq_data = $this->surveyModel->findQuestionForModify($sq_idx);
             $sq_data['SqJsonData']= json_decode($sq_data['SqJsonData'],true);
+            $SqSeries = element('SqSeries',$sq_data,[]);
+            $sq_data['SqSeries']= json_decode($SqSeries,true);
         }
 
         $this->load->view('site/survey/question_create_modal', [
@@ -105,7 +104,9 @@ class Survey extends \app\controllers\BaseController
             'sq_cnt' => $sq_cnt,
             'sq_item_cnt' => $sq_item_cnt,
             'arr_type' => $this->surveyModel->_selection_type,
-            'sq_data' => $sq_data
+            'sq_data' => $sq_data,
+            'series_idx' => $series_idx,
+            'series_data' => $series_data
         ]);
     }
 

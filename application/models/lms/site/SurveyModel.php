@@ -77,21 +77,24 @@ class SurveyModel extends WB_Model
     public function findSurveyForModify($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
+        $order_by = ['B.RegDatm'=>'DESC'];
 
         $column = "
             A.SpIdx, A.SpTitle, A.SpComment, A.SpIsUse, A.SpIsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            B.SqIdx AS seriesIdx , B.SqJsonData AS seriesData,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
         $from = "
             FROM {$this->_table['event_survey']} AS A
-            INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['event_survey_question']} AS B ON A.SpIdx = B.SpIdx AND B.IsSeries='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-
-        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->row_array();
     }
 
     /**
@@ -104,7 +107,7 @@ class SurveyModel extends WB_Model
         $arr_condition = ['EQ' => ['A.SqIdx' => $sq_idx, 'A.IsStatus' => 'Y']];
 
         $column = "
-            A.SqIdx, A.SpIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqIsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
+            A.SqIdx, A.SpIdx, A.IsSeries, A.SqSeries, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqIsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -145,23 +148,6 @@ class SurveyModel extends WB_Model
         $data = $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
 
         return $this->_getDecodeData($data);
-    }
-
-    /**
-     * 설문조사 리스트 조회
-     * @return mixed
-     */
-    public function listEventSurvey()
-    {
-        $arr_condition = ['EQ' => ['SpIsUse' => 'Y']];
-        $column = 'SpIdx, SpTitle';
-        $from = "
-            FROM {$this->_table['event_survey']}
-        ";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        $order_by = $this->_conn->makeOrderBy(['SpIdx' => 'ASC'])->getMakeOrderBy();
-        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
@@ -288,11 +274,14 @@ class SurveyModel extends WB_Model
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
             $sq_type = element('sq_type', $input);
+            $sq_series = element('sq_series', $input);
 
             $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
             $data = [
                 'SpIdx' => element('SpIdx', $input),
+                'IsSeries' => element('is_series', $input, 'N'),
+                'SqSeries' => empty($sq_series) ? '' : json_encode($sq_series),
                 'SqTitle' => element('sq_title', $input),
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
@@ -334,11 +323,14 @@ class SurveyModel extends WB_Model
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
             $sq_type = element('sq_type', $input);
+            $sq_series = element('sq_series', $input);
 
             $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
             $data = [
                 'SqTitle' => element('sq_title', $input),
+                'IsSeries' => element('is_series', $input, 'N'),
+                'SqSeries' => empty($sq_series) ? '' : json_encode($sq_series),
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
                 'SqIsUse' => element('sq_is_use', $input),

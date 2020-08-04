@@ -404,6 +404,7 @@ class BtobCorrectModel extends WB_Model
                 ,ca.RegDatm AS AssignRegDate,cua.IsStatus
                 ,IFNULL(fn_board_attach_data_correct_assignment(cua.CuaIdx,0),NULL) AS AttachAssignmentData_User
                 ,DATEDIFF(cu.EndDate, DATE_FORMAT(NOW(), "%Y-%m-%d")) AS Date_Diff
+                ,a.AdminName AS SuperAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -417,8 +418,8 @@ class BtobCorrectModel extends WB_Model
             {$join_type} JOIN {$this->_table['lms_correct_assign_detail']} AS cad ON cua.CuaIdx = cad.CuaIdx AND cad.IsStatus = 'Y'
             {$join_type} JOIN {$this->_table['lms_correct_assign']} AS ca ON cad.CaIdx = ca.CaIdx
             {$join_type} JOIN {$this->_table['lms_btob_admin']} AS ba ON cad.AssignAdminIdx = ba.AdminIdx
+            LEFT JOIN {$this->_table['lms_btob_admin']} AS a ON cua.ReplyRegAdminIdx = a.AdminIdx AND a.RoleIdx != '6005'
         ";
-
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 

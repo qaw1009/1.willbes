@@ -26,10 +26,10 @@
                         <div class="radio">
                             <input type="radio" class="flat" id="is_series_y" name="is_series" title="사용여부" required="required" value="Y"
                                    @if(empty($sq_data['IsSeries']) === false && $sq_data['IsSeries']=='Y')checked="checked"@endif/>
-                            <label for="is_series_y" class="input-label" onclick="check_series()">사용</label>
+                            <label for="is_series_y" class="input-label">사용</label>
                             <input type="radio" class="flat" id="is_series_n" name="is_series" required="required" value="N"
-                                   @if($method == 'POST' || empty($sq_data['IsSeries'] === true && $sq_data['IsSeries']=='N'))checked="checked"@endif/>
-                            <label for="is_series_n" class="input-label" onclick="check_series()">미사용</label>
+                                   @if($method == 'POST' || (empty($sq_data['IsSeries']) === false && $sq_data['IsSeries']=='N'))checked="checked"@endif/>
+                            <label for="is_series_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -68,9 +68,11 @@
                 <label class="control-label col-md-1-1" for="sq_is_use">사용여부 <span class="required">*</span></label>
                 <div class="col-md-10">
                     <div class="radio">
-                        <input type="radio" class="flat" id="sq_is_use_y" name="sq_is_use" title="사용여부" required="required" value="Y" @if($method == 'POST' || (empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='Y'))checked="checked"@endif/>
+                        <input type="radio" class="flat" id="sq_is_use_y" name="sq_is_use" title="사용여부" required="required" value="Y"
+                               @if($method == 'POST' || (empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='Y'))checked="checked"@endif/>
                         <label for="sq_is_use_y" class="input-label">사용</label>
-                        <input type="radio" class="flat" id="sq_is_use_n" name="sq_is_use" required="required" value="N" @if(empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='N')checked="checked"@endif/>
+                        <input type="radio" class="flat" id="sq_is_use_n" name="sq_is_use" required="required" value="N"
+                               @if(empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='N')checked="checked"@endif/>
                         <label for="sq_is_use_n" class="input-label">미사용</label>
                     </div>
                 </div>
@@ -90,8 +92,7 @@
                     <select class="form-control" id="sq_type" name="sq_type" title="답변유형" required="required" onchange="sel_question_type();">
                         <option value="">-유형선택-</option>
                         @foreach($arr_type as $type => $txt)
-                            <option value="{{$type}}" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == $type) selected="selected" @endif
-                            @if(empty($sq_data['IsSeries']) === false && $sq_data['IsSeries'] == 'Y' && $type != 'S') disabled="disabled" @endif>{{$txt}}</option>
+                            <option value="{{$type}}" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == $type) selected="selected" @endif>{{$txt}}</option>
                         @endforeach
                     </select><br/>
                     <span style="color:red;">* 선택형(그룹), 복수형은 항목1 갯수 선택시 항목은 자동으로 입력됩니다.</span><br/>(1.매우쉬움, 2.쉬움, 3.보통, 4.어려움, 5.매우어려움)
@@ -292,21 +293,6 @@
                 $('.t' + i).addClass("hide");
             }
             $("#sq_subject_box").addClass("hide");
-        }
-
-        // 직렬적용
-        function check_series(){
-            var obj_val = $("input:radio[name='is_series']:checked").val();
-
-            if(obj_val != 'Y'){
-                $("#sq_type option[value*='M']").prop("disabled",true);
-                $("#sq_type option[value*='T']").prop("disabled",true);
-                $("#sq_type option[value*='D']").prop("disabled",true);
-            }else{
-                $("#sq_type option[value*='M']").prop("disabled",false);
-                $("#sq_type option[value*='T']").prop("disabled",false);
-                $("#sq_type option[value*='D']").prop("disabled",false);
-            }
         }
     </script>
 @endsection

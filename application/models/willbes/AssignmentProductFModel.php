@@ -148,7 +148,7 @@ class AssignmentProductFModel extends WB_Model
             $arr_condition_sub = [
                 'EQ' => [
                     'lcua.MemIdx' => $this->session->userdata('mem_idx'),
-                    'lcua.IsStatus' => 'Y'
+                    /*'lcua.IsStatus' => 'Y'*/
                 ]
             ];
             $result = $this->findCorrectAssignment('*', $arr_condition, $arr_condition_sub, $join_type);

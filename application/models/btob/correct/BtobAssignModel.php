@@ -10,7 +10,8 @@ class BtobAssignModel extends WB_Model
         'lms_btob_admin' => 'lms_btob_admin',
         'lms_correct_assign' => 'lms_correct_assign',
         'lms_correct_assign_detail' => 'lms_correct_assign_detail',
-        'lms_member' => 'lms_member'
+        'lms_member' => 'lms_member',
+        'lms_board_attach' => 'lms_board_attach'
     ];
 
     public function __construct()
@@ -226,6 +227,8 @@ class BtobAssignModel extends WB_Model
             $cua_idx = $idx;
             $admin_idx = $this->session->userdata('btob.admin_idx');
             $result = $this->_findUnitAssignMentData($cua_idx);
+            $file_data = $this->_findUnitAssignMentAttachData($cua_idx);
+
             if (empty($result)) {
                 throw new \Exception('필수 데이터 누락입니다.');
             }
@@ -236,6 +239,14 @@ class BtobAssignModel extends WB_Model
                 'UpdAdminIdx' => $admin_idx,
                 'UpdAdminDatm' => date('Y-m-d H:i:s')
             ])->where('CuaIdx', $cua_idx)->where('IsStatus', 'Y')->where('AssignmentStatusCcd', '698002')->update($this->_table['lms_correct_unit_assignment']);
+
+            if (empty($file_data) === false) {
+                foreach ($file_data as $key => $row) {
+                    if ($this->btobCorrectModel->removeFile($row['BoardFileIdx']) === false) {
+                        throw new \Exception('첨부 파일 삭제에 실패했습니다.');
+                    }
+                }
+            }
 
             if ($is_update === false) {
                 throw new \Exception('데이터 삭제에 실패했습니다.');
@@ -272,6 +283,32 @@ class BtobAssignModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
         $query = $query->row_array();
+
+        return $query;
+    }
+
+    /**
+     * 첨삭파일 조회
+     * @param $idx
+     * @return mixed
+     */
+    private function _findUnitAssignMentAttachData($idx)
+    {
+        $column = 'BoardFileIdx';
+        $from = "
+            FROM {$this->_table['lms_board_attach']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'CuaIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->result_array();
 
         return $query;
     }

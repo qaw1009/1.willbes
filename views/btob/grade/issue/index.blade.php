@@ -124,7 +124,7 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var str = row.MemId;
-                            return row.MemName + ' ('+str.slice(-3)+'***)';
+                            return row.MemName + ' ('+str.replace(str.slice(-3),'***')+')';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.StartDate + ' - ' + row.EndDate;

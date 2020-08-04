@@ -61,7 +61,7 @@
                     <tr>
                         <th>답안내용<span class="tx-red">(*)</span></th>
                         <td class="tx-left">
-                            <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['AnswerContent'] !!}</textarea>
+                            <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['temp_AnswerContent'] !!}</textarea>
                         </td>
                     </tr>
                     <tr>

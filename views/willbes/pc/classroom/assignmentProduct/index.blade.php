@@ -64,19 +64,23 @@
                             </td>
                             <td>{{ $row['StartDate'] }} ~ {{ $row['EndDate'] }}</td>
                             <td>
-                                @if(str_replace('-','',$row['StartDate']) > date('Ymd'))
-                                    -
-                                @elseif(str_replace('-','',$row['StartDate']) <= date('Ymd') && str_replace('-','',$row['EndDate']) >= date('Ymd'))
-                                    @if (empty($row['CuaIdx']) === true)
-                                        <a href="#none"><span class="stbox stbox-red btn-create-assignment" data-correct-idx="{{ $row['CorrectIdx'] }}">답안제출</span></a>
-                                    @else
-                                        <a href="#none"><span class="stbox stbox-blue btn-create-assignment" data-correct-idx="{{ $row['CorrectIdx'] }}" data-cua-idx="{{ $row['CuaIdx'] }}">답안수정</span></a>
-                                    @endif
-                                @elseif(str_replace('-','',$row['EndDate']) < date('Ymd'))
-                                    @if (empty($row['CuaIdx']) === true || $row['AssignmentStatusCcd'] == $arr_save_type_ccd[0])
-                                        <span class="stbox stbox-red-txt">미제출</span>
-                                    @else
-                                        <span class="stbox stbox-blue-txt">제출완료</span>
+                                @if ($row['IsReply'] == 'Y')
+                                    <span class="stbox stbox-blue-txt">제출완료</span>
+                                @else
+                                    @if(str_replace('-','',$row['StartDate']) > date('Ymd'))
+                                        -
+                                    @elseif(str_replace('-','',$row['StartDate']) <= date('Ymd') && str_replace('-','',$row['EndDate']) >= date('Ymd'))
+                                        @if (empty($row['CuaIdx']) === true)
+                                            <a href="#none"><span class="stbox stbox-red btn-create-assignment" data-correct-idx="{{ $row['CorrectIdx'] }}">답안제출</span></a>
+                                        @else
+                                            <a href="#none"><span class="stbox stbox-blue btn-create-assignment" data-correct-idx="{{ $row['CorrectIdx'] }}" data-cua-idx="{{ $row['CuaIdx'] }}">답안수정</span></a>
+                                        @endif
+                                    @elseif(str_replace('-','',$row['EndDate']) < date('Ymd'))
+                                        @if (empty($row['CuaIdx']) === true || $row['AssignmentStatusCcd'] == $arr_save_type_ccd[0])
+                                            <span class="stbox stbox-red-txt">미제출</span>
+                                        @else
+                                            <span class="stbox stbox-blue-txt">제출완료</span>
+                                        @endif
                                     @endif
                                 @endif
                             </td>

@@ -441,7 +441,7 @@ class BtobCorrectModel extends WB_Model
         $column = '
             a.CuaIdx, b.Title, p.ProdName,
             f.MemName, f.MemId, fn_dec(f.PhoneEnc) AS MemPhone, f2.SmsRcvStatus,
-            ReplyADMIN.AdminName AS ReplyAdminName, a.RegDatm, a.IsReply, a.ReplyScore, a.ReplyRegDatm,
+            ReplyADMIN.AdminName AS ReplyAdminName, a.RegDatm, a.IsReply, a.ReplyScore, a.ReplyRegDatm, a.ReplyIsStatus,
             b.Content AS ProfContent, a.Content AS MemContent, a.ReplyContent
             ,fn_board_attach_data_correct(a.CorrectIdx) AS adminFiles
             ,fn_board_attach_data_correct_assignment(a.CuaIdx,0) AS userFiles
@@ -450,7 +450,7 @@ class BtobCorrectModel extends WB_Model
 
         $from = "
             FROM (
-                SELECT CuaIdx, CorrectIdx, Content, ReplyContent, MemIdx, IsReply, ReplyScore, RegDatm, ReplyRegDatm, ReplyRegAdminIdx
+                SELECT CuaIdx, CorrectIdx, Content, ReplyContent, MemIdx, IsReply, ReplyScore, RegDatm, ReplyRegDatm, ReplyRegAdminIdx, IsStatus AS ReplyIsStatus
                 FROM lms_correct_unit_assignment {$where}
             ) AS a
             INNER JOIN lms_correct_unit AS b ON a.CorrectIdx = b.CorrectIdx

@@ -110,6 +110,11 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                "createdRow" : function( row, data, index ) {
+                    if (data['IsStatus'] == 'N') {
+                        $(row).addClass('bg-gray-custom');
+                    }
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -126,7 +131,7 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var str = row.MemId;
-                            return row.MemName + ' ('+str.slice(-3)+'***)';
+                            return row.MemName + ' ('+str.replace(str.slice(-3),'***')+')';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.StartDate + ' - ' + row.EndDate;

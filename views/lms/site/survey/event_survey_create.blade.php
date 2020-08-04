@@ -20,21 +20,21 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_title">제목 <span class="required">*</span></label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <input type="text" class="form-control" id="sp_title" name="sp_title" maxlength="100" title="제목" required="required" value="{{ $data_survey['SpTitle'] or ''}}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">설명</label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <textarea class="form-control" id="sp_comment" name="sp_comment" cols="50" rows="3" title="설명">{{ $data_survey['SpComment'] or ''}}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_is_duplicate">중복투표 <span class="required">*</span></label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="radio">
                             <input type="radio" class="flat" id="sp_is_duplicate_n" name="sp_is_duplicate" required="required" value="N" @if($method == 'POST' || (empty($data_survey['SpIsDuplicate']) === false && $data_survey['SpIsDuplicate']=='N'))checked="checked"@endif>
                             <label for="sp_is_duplicate_n" class="input-label">불가능</label>
@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_is_use">사용여부 <span class="required">*</span></label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="radio">
                             <input type="radio" class="flat" id="sp_is_use_y" name="sp_is_use" title="사용여부" required="required" value="Y" @if($method == 'POST' || (empty($data_survey['SpIsUse']) === false && $data_survey['SpIsUse']=='Y'))checked="checked"@endif>
                             <label for="sp_is_use_y" class="input-label">사용</label>
@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">설문기간 <span class="required">*</span></label>
-                    <div class="col-md-8 form-inline">
+                    <div class="col-md-9 form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="register_start_datm" name="register_start_datm" value="@if(empty($data_survey['StartDate']) === false) {{substr($data_survey['StartDate'],0,10)}} @endif">
@@ -74,30 +74,32 @@
                 <div class="form-group">
                     <div class="row">
                         <label class="control-label col-md-1-1 ml-10">설문항목관리 <span class="required">*</span></label>
-                        <div class="col-md-8 mb-15">
+                        <div class="col-md-9 mb-15">
                             @if($method == 'PUT')
-                                <span style="color: red">* 응시직렬은 응시직렬 항목 설정 후 항목별 그룹핑 가능합니다.</span>
+                                <span style="color: red">* 응시직렬은 응시직렬 항목 등록 후 저장된 응시직렬 항목에 따라 그룹선택이 노출 됩니다.</span>
                                 <button type="button" class="btn btn-sm btn-primary clearfix-r mr-20 add_question" data-id="add_question" data-sp-idx="{{$data_survey['SpIdx']}}" data-sq-idx="" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)">설문항목등록</button>
                             @else
-                                <span style="color: red"># 설문 저장후 항목 생성 가능합니다.</span>
+                                # 설문을 등록 하면 <span style="color: red"> [설문항목등록] </span> 버튼이 생성됩니다.
                             @endif
                         </div>
                     </div>
 
                     <label class="control-label col-md-1-1"></label>
-                    <div class="col-md-8 form-inline">
+                    <div class="col-md-9 form-inline">
                         <table class="table table-striped table-bordered">
                             <colgroup>
                                 <col width="4%">
-                                <col width="20%">
-                                <col width="7%">
-                                <col width="50%">
-                                <col width="7%">
-                                <col width="12%">
+                                <col width="10%">
+                                <col width="18%">
+                                <col width="5%">
+                                <col width="48%">
+                                <col width="5%">
+                                <col width="10%">
                             </colgroup>
                             <thead>
                             <tr>
                                 <th class="text-center">노출순서</th>
+                                <th class="text-center">직렬그룹</th>
                                 <th class="text-center">문항제목</th>
                                 <th class="text-center">답변유형</th>
                                 <th class="text-center">답변항목</th>
@@ -109,6 +111,13 @@
                             @foreach($data_question as $row)
                                 <tr>
                                     <td class="text-center">{{$row['OrderNum']}}</td>
+                                    <td>
+                                        @if(empty($row['SqSeries']) === false)
+                                            @foreach($row['SqSeries'] as $series)
+                                                [{{$series}}]<br/>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>{{$row['SqTitle']}}</td>
                                     <td class="text-center">{{$row['SqTypeTxt']}}</td>
                                     <td>

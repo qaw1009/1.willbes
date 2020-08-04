@@ -133,7 +133,7 @@ class SurveyModel extends WB_Model
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
 
         $column = "
-            A.SpIdx, A.SqIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
+            A.SpIdx, A.SqIdx, A.SqSeries, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -428,6 +428,7 @@ class SurveyModel extends WB_Model
                 $data[$key]['SqTypeTxt'] = element($val['SqType'],$this->_selection_type);
                 $data[$key]['SqUseTxt'] = element($val['SqIsUse'],$this->_use_type);
                 $data[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
+                $data[$key]['SqSeries'] = empty($val['SqSeries']) ? [] : json_decode($val['SqSeries'],true);
             }
         }
 

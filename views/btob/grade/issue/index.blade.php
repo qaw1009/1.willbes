@@ -124,14 +124,20 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var str = row.MemId;
-                            return row.MemName + ' ('+str.slice(-3)+'***)';
+                            return row.MemName + ' ('+str.replace(str.slice(-3),'***')+')';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.StartDate + ' - ' + row.EndDate;
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'AssignRegDate'},
-                    {'data' : 'AssignAdminName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var str = row.AssignAdminName;
+                            if (row.IsReply == 'Y' && row.SuperAdminName != null) {
+                                str += '<p><b>관리자채점 : '+row.SuperAdminName+'</b></p>';
+                            }
+                            return str;
+                        }},
                     {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
                             var str = '<p class="red">미채점</p>';
                             if (data == 'Y') {

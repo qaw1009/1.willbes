@@ -25,12 +25,11 @@ class Issue extends BaseAssign
     {
         $arr_condition = [
             'EQ' => [
-                'cua.IsStatus' => 'Y'
-                ,'cad.IsStatus' => 'Y'
-                ,'cu.ProdCode' => $this->_reqP('search_prod_code')
+                'cu.ProdCode' => $this->_reqP('search_prod_code')
                 ,'cu.CorrectIdx' => $this->_reqP('search_correct_idx')
                 ,'ba.AdminIdx' => $this->_reqP('search_admin_idx')
                 ,'cua.IsReply' => $this->_reqP('search_is_reply')
+                /*,'cua.IsStatus' => 'Y'*/
             ],
             'ORG' => [
                 'LKB' => [

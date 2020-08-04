@@ -28,7 +28,7 @@
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-1 form-control-static">등록자</label>
                         <div class="col-md-2 form-control-static">
-                            {{$data['MemName']}} ({{$data['MemId']}})
+                            {{$data['MemName']}} ({!! hpSubString($data['MemId'],0,2,'*') !!})
                         </div>
                         <label class="control-label col-md-1 form-control-static">점수</label>
                         <div class="col-md-2 form-control-static">
@@ -72,11 +72,13 @@
                             <div class="form-group form-group-sm">
                                 <label class="control-label col-md-1" for="content">첨부1</label>
                                 <div class="col-md-10">
-                                    @foreach($data['arrAdminFiles'] as $key => $row)
-                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ $row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
-                                            {{ $row['RealName'] }}
-                                        </a> ] <span class="mr-10"></span>
-                                    @endforeach
+                                    @if (empty($data['arrAdminFiles']) === false)
+                                        @foreach($data['arrAdminFiles'] as $key => $row)
+                                            [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ $row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
+                                                {{ $row['RealName'] }}
+                                            </a> ] <span class="mr-10"></span>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group form-group-sm">
@@ -91,11 +93,13 @@
                             <div class="form-group form-group-sm">
                                 <label class="control-label col-md-1" for="content">첨부2</label>
                                 <div class="col-md-10">
-                                    @foreach($data['arrUserFiles'] as $key => $row)
-                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ $row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
-                                            {{ $row['RealName'] }}
-                                        </a> ] <span class="mr-10"></span>
-                                    @endforeach
+                                    @if (empty($data['arrUserFiles']) === false)
+                                        @foreach($data['arrUserFiles'] as $key => $row)
+                                            [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ $row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
+                                                {{ $row['RealName'] }}
+                                            </a> ] <span class="mr-10"></span>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group form-group-sm">
@@ -111,11 +115,13 @@
                                 <div class="form-group form-group-sm">
                                     <label class="control-label col-md-1" for="content">첨부</label>
                                     <div class="col-md-10">
-                                        @foreach($data['arrUserFiles'] as $key => $row)
-                                            [ <a href="javascript:void(0);" class="file-download" data-file-path="{{$row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
-                                                {{ $row['RealName'] }}
-                                            </a> ] <span class="mr-10"></span>
-                                        @endforeach
+                                        @if (empty($data['arrUserFiles']) === false)
+                                            @foreach($data['arrUserFiles'] as $key => $row)
+                                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{$row['FilePath'].$row['FileName']}}" data-file-name="{{ $row['RealName'] }}" target="_blank">
+                                                    {{ $row['RealName'] }}
+                                                </a> ] <span class="mr-10"></span>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group form-group-sm">
@@ -150,7 +156,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn-sm btn-success">저장</button>
+                                    @if ($data['ReplyIsStatus'] == 'N')
+                                        <div class="bg-red">삭제처리된 데이터는 채점할 수 없습니다.</div>
+                                    @else
+                                        <button type="submit" class="btn-sm btn-success">저장</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>

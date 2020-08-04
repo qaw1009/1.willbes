@@ -80,6 +80,7 @@ class AssignmentProduct extends \app\controllers\FrontController
             ,lcua.IsReply	#채점상태
             ,lcua.ReplyRegDatm #채점일
             ,lcua.Content AS AnswerContent, lcua.ReplyContent
+            ,lcua.IsStatus AS AnswerIsStatus
         ';
         $arr_condition = [
             'EQ' => [
@@ -92,7 +93,7 @@ class AssignmentProduct extends \app\controllers\FrontController
         $arr_condition_sub = [
             'EQ' => [
                 'lcua.MemIdx' => $this->session->userdata('mem_idx'),
-                'lcua.IsStatus' => 'Y'
+                /*'lcua.IsStatus' => 'Y'*/
             ]
         ];
 
@@ -107,6 +108,11 @@ class AssignmentProduct extends \app\controllers\FrontController
         $data['AttachData'] = json_decode($data['AttachData'],true);       //과제 첨부파일
         $data['AttachAssignmentData_Admin'] = json_decode($data['AttachAssignmentData_Admin'],true);    //답변 첨부파일
         $data['AttachAssignmentData_User'] = json_decode($data['AttachAssignmentData_User'],true);      //과제 제출 첨부파일
+        if ($data['AnswerIsStatus'] == 'Y') {
+            $data['temp_AnswerContent'] = $data['AnswerContent'];
+        } else {
+            $data['temp_AnswerContent'] = $data['Content'];
+        }
 
         return $this->load->view('/classroom/assignmentProduct/create_modal',[
             'method' => $method,

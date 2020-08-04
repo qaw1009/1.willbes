@@ -6,6 +6,7 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="sp_idx" value="{{ $data_survey['SpIdx'] or '' }}" />
+        <input type="hidden" id="series_idx" name="series_idx" value="{{ $data_survey['seriesIdx'] or '' }}" />
 
         <div class="x_panel">
             <div class="x_title">
@@ -75,7 +76,8 @@
                         <label class="control-label col-md-1-1 ml-10">설문항목관리 <span class="required">*</span></label>
                         <div class="col-md-8 mb-15">
                             @if($method == 'PUT')
-                                <button type="button" class="btn btn-sm btn-primary clearfix-r mr-20 add_question" data-id="add_question" data-sp-idx="{{$data_survey['SpIdx']}}" onclick="show_question_layer(this)">설문항목등록</button>
+                                <span style="color: red">* 응시직렬은 응시직렬 항목 설정 후 항목별 그룹핑 가능합니다.</span>
+                                <button type="button" class="btn btn-sm btn-primary clearfix-r mr-20 add_question" data-id="add_question" data-sp-idx="{{$data_survey['SpIdx']}}" data-sq-idx="" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)">설문항목등록</button>
                             @else
                                 <span style="color: red"># 설문 저장후 항목 생성 가능합니다.</span>
                             @endif
@@ -129,7 +131,7 @@
                                     </td>
                                     <td class="text-center">{{$row['SqUseTxt']}}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-idx="{{$row['SqIdx']}}" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-idx="{{$row['SqIdx']}}" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)">수정</button>
                                         <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>
@@ -193,7 +195,9 @@
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'sp_idx', 'name' : '설문 식별자', 'value' : $(obj).data("sp-idx"), 'required' : true },
-                    { 'id' : 'sq_idx', 'name' : '설문문항 식별자', 'value' : $(obj).data("sq-idx"), 'required' : true},
+                    { 'id' : 'sq_idx', 'name' : '설문문항 식별자', 'value' : $(obj).data("sq-idx"), 'required' : false},
+                    { 'id' : 'series_idx', 'name' : '응시직렬 식별자', 'value' : $("#series_idx").val(), 'required' : false},
+                    { 'id' : 'series_data', 'name' : '응시직렬', 'value' : $(obj).data("sq-series"), 'required' : false},
                 ],
                 'width' : 900
             });

@@ -167,6 +167,17 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -196,6 +207,17 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -212,6 +234,13 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>합계</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -228,6 +257,13 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>합계</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -252,6 +288,17 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -275,7 +322,7 @@
                 return $result;
             }
 
-             {{--각 항목의 데이터 결과 변수--}}
+                    {{--각 항목의 데이터 결과 변수--}}
             var $order_info=[], $order_sex=[], $order_site=[], $order_channel=[], $order_method=[];
 
             function chartExe() {
@@ -294,6 +341,19 @@
                     $refund_pay.push($order_info[key]['refund_pay']);
                     $real_count.push($order_info[key]['real_count']);
                     $real_pay.push($order_info[key]['real_pay']);
+                }
+                $pay_info = ['$order_pay',  '$refund_pay', '$real_pay'];
+                $count_info = ['$order_count', '$refund_count', '$real_count'];
+
+                for($i = 0; $i < $pay_info.length; $i++) {
+                    this[$pay_info[$i]+'_sum'] =  this[$pay_info[$i]].reduce(function(a, b) {
+                        return a + b * 1;
+                    }, 0);
+                }
+                for($i = 0; $i < $count_info.length; $i++) {
+                    this[$count_info[$i]+'_sum'] =  this[$count_info[$i]].reduce(function(a, b) {
+                        return a + b * 1;
+                    }, 0);
                 }
                 var config_order_pay = {
                     type: 'line',
@@ -323,7 +383,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '주문금액 현황'
+                            text: '주문금액 현황 (결제 : ' + addComma($order_pay_sum) + ',  환불 : ' + addComma($refund_pay_sum) +',  매출 : '+ addComma($real_pay_sum) +')'
                         },
                         tooltips: {
                             mode: 'index',
@@ -393,7 +453,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '주문건수 현황'
+                            text: '주문건수 현황  (결제 : ' + addComma($order_count_sum) + ',  환불 : ' + addComma($refund_count_sum) +',  매출 : '+ addComma($real_count_sum) +')'
                         },
                         tooltips: {
                             mode: 'index',
@@ -738,7 +798,19 @@
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return  (data == 0)  ? '0' : ((data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font><b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font><b>') ;
                             }}
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=1;$i<7;$i++) {
+                            $(api.column($i).footer()).html("<font size='3px'>"+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_sex = $("#list_sex_table").DataTable({
@@ -771,7 +843,19 @@
                         {'data': 'not_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data < 0 ? '<font color=\'4bc0c0\'>': '<font color=\'eb7f36\'>') + addComma(data) + '</font>';
                             }}
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=1;$i<7;$i++) {
+                            $(api.column($i).footer()).html("<font size='3px'>"+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_channel = $("#list_channel_table").DataTable({
@@ -792,7 +876,19 @@
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '' + addComma(data) + '';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=1;$i<3;$i++) {
+                            $(api.column($i).footer()).html("<font size='3px'>"+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_method = $("#list_method_table").DataTable({
@@ -815,7 +911,19 @@
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '' + addComma(data) + '';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=1;$i<3;$i++) {
+                            $(api.column($i).footer()).html("<font size='3px'>"+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_site = $("#list_site_table").DataTable({
@@ -851,7 +959,19 @@
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '</b><font color=\'blue\'>' + addComma(data) + '</font></b>' ;
                             }}
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=1;$i<7;$i++) {
+                            $(api.column($i).footer()).html("<font size='3px'>"+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $search_form.on('ifChanged','input[name="site_code_all_check"]', function () {

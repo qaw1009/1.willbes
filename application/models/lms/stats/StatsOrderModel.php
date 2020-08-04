@@ -286,12 +286,12 @@ class StatsOrderModel extends BaseStatsModel
 
         $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
 
-        $column = 'O.PayMethodCcd, SC.CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
+        $column = 'Ifnull(O.PayMethodCcd,\'600000\') as PayMethodCcd, Ifnull(SC.CcdName,\'기타무료결제\') as CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
 
         $from = '   from '. $this->_table['order'] .' as O
                             join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
                             left join '. $this->_table['order_refund'] .' as OPR on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
-                            join '. $this->_table['code'] .' SC on O.PayMethodCcd = SC.Ccd
+                            left join '. $this->_table['code'] .' SC on O.PayMethodCcd = SC.Ccd
                         where 1=1
                          '. $pay_where .'
                         group by O.PayMethodCcd

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AssignmentProduct extends \app\controllers\FrontController
 {
-    protected $models = array('assignmentProductF', 'downloadF');
+    protected $models = array('classroomF', 'assignmentProductF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -24,6 +24,22 @@ class AssignmentProduct extends \app\controllers\FrontController
         }
         $form_data = $this->_reqP(null);
 
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'ProdCodeSub' => element('prod_code', $form_data),
+            ],
+            'RAW' => [
+                '1' => '1 AND FIND_IN_SET(\'731001\',OptionCcds)'
+            ]
+        ];
+        $orderby = 'OrderDate ASC';
+        $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
+        if (empty($leclist) === true) {
+            show_alert('조회된 상품이 없습니다. 다시 시도해 주세요.', '/classroom/home/', false);
+        }
+        $lec_data = $leclist[0];
+
         $column = '
             lcu.CorrectIdx, lcu.SiteCode, lcu.ProdCode, lcu.Title, lcu.Price, lcu.StartDate, lcu.EndDate
             ,IFNULL(fn_board_attach_data_correct(lcu.CorrectIdx),NULL) AS AttachFileName
@@ -33,7 +49,6 @@ class AssignmentProduct extends \app\controllers\FrontController
             ,lcua.IsReply	#채점상태
             ,DATE_FORMAT(lcua.ReplyRegDatm, \'%Y-%m-%d\') as ReplyRegDatm #채점일
         ';
-
         $arr_condition = [
             'EQ' => [
                 'lcu.ProdCode' => element('prod_code', $form_data),
@@ -41,7 +56,6 @@ class AssignmentProduct extends \app\controllers\FrontController
                 'lcu.IsUse' => 'Y'
             ]
         ];
-
         $arr_condition_sub = [
             'EQ' => [
                 'lcua.MemIdx' => $this->session->userdata('mem_idx'),
@@ -52,6 +66,7 @@ class AssignmentProduct extends \app\controllers\FrontController
 
         return $this->load->view('/classroom/assignmentProduct/index',[
             'form_data' => $form_data,
+            'lec_data' => $lec_data,
             'list' => $list,
             'arr_save_type_ccd' => ['698001','698002']    //임시저장, 제출완료
         ]);

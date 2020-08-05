@@ -38,9 +38,9 @@ class Regist extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
 
         $list = [];
-        $count = $this->bannerRegistModel->listAllBanner(true, $arr_condition);
+        $count = $this->bannerRegistModel->listAllBanner(false, true, $arr_condition);
         if ($count > 0) {
-            $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.BIdx' => 'desc']);
+            $list = $this->bannerRegistModel->listAllBanner(true, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.BIdx' => 'desc']);
 
             foreach ($list as $key => $val) {
                 $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);
@@ -233,7 +233,7 @@ class Regist extends \app\controllers\BaseController
             ]
         ];
 
-        $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['A.SiteCode' => 'asc', 'A.BdIdx' => 'asc', 'A.OrderNum' => 'asc', 'A.BIdx' => 'desc']);
+        $list = $this->bannerRegistModel->listAllBanner(false, false, $arr_condition, null, null, ['A.SiteCode' => 'asc', 'A.BdIdx' => 'asc', 'A.OrderNum' => 'asc', 'A.BIdx' => 'desc']);
 
         foreach ($list as $key => $val) {
             $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);

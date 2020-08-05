@@ -22,14 +22,15 @@ class BannerRegistModel extends WB_Model
 
     /**
      * 배너 목록 조회
-     * @param $is_count
+     * @param bool $is_join
+     * @param bool $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listAllBanner($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllBanner($is_join = true, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -41,7 +42,7 @@ class BannerRegistModel extends WB_Model
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             B.SiteName, IFNULL(E.CateName,"전체카테고리") AS CateName, F.DispName,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
-            G.CcdName AS CampusCcdName, ifnull(temp.ClickCnt,0) as ClickCnt
+            G.CcdName AS CampusCcdName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -56,21 +57,26 @@ class BannerRegistModel extends WB_Model
                 LEFT JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode
                 LEFT JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
                 LEFT JOIN {$this->_table['sys_code']} AS G ON A.CampusCcd = G.Ccd
-                Left outer join 
-		            (
-						SELECT 
-							BIdx,COUNT(*) as ClickCnt
-						FROM {$this->_table['banner_log']}
-						GROUP BY BIdx
-		            ) temp on temp.BIdx = A.BIdx
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        $query_string = 'select A.*';
+        $query_string .= ($is_join === true) ? ' ,COUNT(BL.BIdx) AS ClickCnt' : '';
+        $query_string .= ' from ( ';
+            $query_string .= " select {$column} {$from} {$where} {$order_by_offset_limit}";
+        $query_string .= ' ) as A';
+
+        if ($is_join === true) {
+            $query_string .= " LEFT OUTER JOIN {$this->_table['banner_log']} AS BL ON A.BIdx = BL.BIdx";
+            $query_string .= ' GROUP BY A.BIdx';
+            $query_string .= $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        }
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

@@ -171,6 +171,9 @@
                                         @if(empty($order_prod_row['Remark']) === false)
                                             <div class="red">{{ $order_prod_row['Remark'] }}</div>
                                         @endif
+                                        @if(empty($order_prod_row['LectureRoomSeatNo']) === false)
+                                            <div class="blue">좌석번호 : {{ $order_prod_row['LectureRoomSeatNo'] }}</div>
+                                        @endif
                                     </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['OrderPrice']) }}</td>

@@ -72,8 +72,6 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
             <!--
             <input type="hidden" name="register_chk_col[]" value="EtcValue"/>

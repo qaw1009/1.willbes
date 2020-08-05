@@ -390,9 +390,13 @@ span {
     height: 52px;
 }
 #header .myLog {
-    float: right;
-    margin-right: 15px;
+    /*float: right;*/
+    /*margin-right: 15px;*/
+    position: absolute;
+    top: 0;
+    right: 15px;    
     letter-spacing: -1px;
+    z-index: 10;
 }
 #header .myLog li {
     float: left;

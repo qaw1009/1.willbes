@@ -27,57 +27,91 @@
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" name="sp_idx" value="{{ $data_survey['SpIdx'] }}" />
-            <input type="hidden" name="total_cnt" value="{{ $total_cnt }}" />
+            <input type="hidden" name="is_series" id="is_series" value="{{$is_series}}">
+            <input type="hidden" name="series_subject_cnt" id="series_subject_cnt" value="1">
+            <input type="hidden" name="total_cnt" id="total_cnt" value="">
 
-            @foreach($data_question as $key => $val)
-                <div id="question{{$key+1}}" class="question">
-                    <p>Q{{ $key+1 }}. {{ trim($val['SqTitle']) }} </p>
+            @for($i=1;$i<=$count;$i++)
+                @if(empty($data_question[$i]) === false)
+                    @foreach($data_question[$i] as $key => $val)
 
-                    @if(empty($val['SqComment']) === false)
-                        <strong style="padding-left:10px;">{{$val['SqComment']}}</strong>
-                    @endif
-
-                    @if($val['SqType'] == 'T') {{-- 복수형 --}}
-                        <div class="qBox">
-                            <ul>
-                                @if(empty($val['SqJsonData']) === false)
-                                    @foreach($val['SqJsonData'] as $item_k => $item_v)
-                                        <li>
-                                            <label>
-                                                <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$val['SqIdx']}}_{{$item_k}}')"> {{$item_v['title']}}
-                                            </label>
-                                        </li>
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </div>
-                    @endif
-
-                    @if(empty($val['SqJsonData']) === false)
-                        @foreach($val['SqJsonData'] as $item_k => $item_v)
-                            <div class="qBox @if($val['SqType'] == 'T') d_none @endif" id="{{$val['SqType']}}_{{$val['SqIdx']}}_{{$item_k}}">
-                                <strong>{{$item_v['title'] or ''}}</strong>
-                                <ul>
-                                    @if($val['SqType'] == 'D') {{-- 서술형 --}}
-                                        <li><textarea name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
-                                    @endif
-
-                                    @if(empty($item_v['item']) === false) {{-- 선택형 --}}
-                                        @foreach($item_v['item'] as $k => $item)
-                                            <li>
-                                                <label>
-                                                    <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
-                                                </label>
-                                            </li>
+                        @if($is_series == 'Y' && $key == 0 ) {{--응시직렬--}}
+                            @if($i==1)
+                                <div class="question">
+                                    <p>Q{{ $key+1 }}. {{ trim($val['SqTitle']) }} </p>
+                                    @if(empty($val['SqJsonData']) === false)
+                                        @foreach($val['SqJsonData'] as $item_k => $item_v)
+                                            <div class="qBox">
+                                                <ul>
+                                                    @if(empty($item_v['item']) === false)
+                                                        @foreach($item_v['item'] as $k => $item)
+                                                            <li>
+                                                                <label>
+                                                                    <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}" onclick="fn_display(this,{{$k}})"> {{$item}}
+                                                                </label>
+                                                            </li>
+                                                        @endforeach
+                                                    @endif
+                                                </ul>
+                                            </div>
                                         @endforeach
                                     @endif
-                                </ul>
-                            </div>
-                        @endforeach
-                    @endif
+                                </div>
+                            @endif
 
-                </div>
-            @endforeach
+                        @else
+                            <div class="question series_group series_{{$i}} @if($i > 1) d_none @endif">
+                                <p>Q{{ $key+1 }}. {{ trim($val['SqTitle']) }} </p>
+
+                                @if(empty($val['SqComment']) === false)
+                                    <strong style="padding-left:10px;">{{ trim($val['SqComment']) }}</strong>
+                                @endif
+
+                                @if($val['SqType'] == 'T') {{-- 복수형 --}}
+                                    <div class="qBox">
+                                        <ul>
+                                            @if(empty($val['SqJsonData']) === false)
+                                                @foreach($val['SqJsonData'] as $item_k => $item_v)
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}',{{$data_question_count[$i]['subject_cnt']}})"> {{$item_v['title']}}
+                                                        </label>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                @if(empty($val['SqJsonData']) === false)
+                                    @foreach($val['SqJsonData'] as $item_k => $item_v)
+                                        <div class="qBox @if($val['SqType'] == 'T') series_type_group d_none @endif" id="{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}">
+                                            <strong>{{$item_v['title'] or ''}}</strong>
+                                            <ul>
+                                                @if($val['SqType'] == 'D') {{-- 서술형 --}}
+                                                    <li><textarea name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
+                                                @endif
+
+                                                @if(empty($item_v['item']) === false) {{-- 선택형 --}}
+                                                    @foreach($item_v['item'] as $k => $item)
+                                                        <li>
+                                                            <label>
+                                                                <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
+                                                            </label>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                @endif
+
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            @endfor
+
             <div class="btnsSt3 btn-submit-survey">
                 <a href="javascript:fn_submit();">설문 완료</a>
             </div>
@@ -85,10 +119,10 @@
     </div>
     <script>
         var overlap_chk = true; //중복 전송 방지
-        var pick_sjt_cnt = {{$subject_cnt}};   //응시과목 선택 갯수
         var $regi_form = $('#regi_form');
 
-        function fn_visible(obj, sel_target){
+        // 관목 선택 갯수 체크
+        function fn_visible(obj, sel_target, pick_sjt_cnt){
             var cknum = $('input:checkbox[name="t_type[]"]:checked').length;
             if(cknum > pick_sjt_cnt){
                 alert('직렬별 과목은 '+pick_sjt_cnt+'개까지 선택할 수 있습니다.');
@@ -102,10 +136,31 @@
             }
         }
 
+        // 응시직렬
+        function fn_display(obj,idx){
+            $(".series_group").addClass("d_none");
+            $(".series_" + idx).removeClass("d_none");
+            $(".series_type_group").addClass("d_none");
+            $("#series_subject_cnt").val(idx);
+
+            $('input:radio').not(obj).each(function(i) {
+                $(this).prop("checked",false);
+            });
+            $('input:checkbox').each(function(i){
+                $(this).prop("checked",false);
+            });
+        }
+
         function fn_submit(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
 
             var vali_msg = '';
+            var series_subject_cnt = $("#series_subject_cnt").val();
+            var json_data = {!! json_encode($data_question_count) !!};
+            var pick_sjt_cnt = json_data[series_subject_cnt]['subject_cnt'];
+
+            $("#total_cnt").val(json_data[series_subject_cnt]['total_cnt']);
+
             $('input:radio').each(function(i) {
                 if($(this).is(':visible') && $('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
                     vali_msg = '응답하지 않은 설문이 있습니다.';

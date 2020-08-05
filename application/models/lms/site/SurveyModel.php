@@ -10,9 +10,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SurveyModel extends WB_Model
 {
     private $_table = [
-        'event_survey' => 'lms_event_survey',
-        'event_survey_question' => 'lms_event_survey_question',
-        'event_answer_info' => 'lms_event_survey_answer_info',
+        'event_survey' => 'lms_survey',
+        'event_survey_question' => 'lms_survey_question_list',
+        'event_answer_info' => 'lms_survey_answer_detail',
         'admin' => 'wbs_sys_admin',
         'member' => 'lms_member',
     ];
@@ -133,7 +133,7 @@ class SurveyModel extends WB_Model
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
 
         $column = "
-            A.SpIdx, A.SqIdx, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
+            A.SpIdx, A.SqIdx, A.SqSeries, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -274,14 +274,25 @@ class SurveyModel extends WB_Model
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
             $sq_type = element('sq_type', $input);
-            $sq_series = element('sq_series', $input);
+            $is_series = element('is_series', $input, 'N');
+            $sq_series = [];
 
             $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
+            if($is_series == 'Y'){
+                foreach (json_decode($json_data,true)[1]['item'] as $key => $val){
+                    $sq_series[] = $val;
+                }
+            }else{
+                $sq_series = element('sq_series', $input);
+            }
+
+            $sq_series = empty($sq_series) ? '' : json_encode($sq_series);
+
             $data = [
                 'SpIdx' => element('SpIdx', $input),
-                'IsSeries' => element('is_series', $input, 'N'),
-                'SqSeries' => empty($sq_series) ? '' : json_encode($sq_series),
+                'IsSeries' => $is_series,
+                'SqSeries' => $sq_series,
                 'SqTitle' => element('sq_title', $input),
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
@@ -323,14 +334,24 @@ class SurveyModel extends WB_Model
             $sq_question_item = element('sq_question_item', $input);
             $sq_question_item_arr = element('sq_item_cnt', $input);
             $sq_type = element('sq_type', $input);
-            $sq_series = element('sq_series', $input);
+            $is_series = element('is_series', $input, 'N');
+            $sq_series = [];
 
             $json_data = $this->_setEncodeData($sq_question_title,$sq_cnt,$sq_question_item,$sq_question_item_arr,$sq_type);
 
+            if($is_series == 'Y'){
+                foreach (json_decode($json_data,true)[1]['item'] as $key => $val){
+                    $sq_series[] = $val;
+                }
+            }else{
+                $sq_series = element('sq_series', $input);
+            }
+            $sq_series = empty($sq_series) ? '' : json_encode($sq_series);
+
             $data = [
                 'SqTitle' => element('sq_title', $input),
-                'IsSeries' => element('is_series', $input, 'N'),
-                'SqSeries' => empty($sq_series) ? '' : json_encode($sq_series),
+                'IsSeries' => $is_series,
+                'SqSeries' => $sq_series,
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
                 'SqIsUse' => element('sq_is_use', $input),
@@ -428,6 +449,7 @@ class SurveyModel extends WB_Model
                 $data[$key]['SqTypeTxt'] = element($val['SqType'],$this->_selection_type);
                 $data[$key]['SqUseTxt'] = element($val['SqIsUse'],$this->_use_type);
                 $data[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
+                $data[$key]['SqSeries'] = empty($val['SqSeries']) ? [] : json_decode($val['SqSeries'],true);
             }
         }
 

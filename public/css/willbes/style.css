@@ -2907,7 +2907,7 @@ table.lecTable tr td .priceWrap .discount {
     width: 70px;
     color: #464646;*/
 }
-table.lecTable tr td .priceWrap span {display: block;}
+
 table.lecTable tr td .visitBuy {clear: both;}
 table.lecTable tr td .visitBuy a {    
     display:block;

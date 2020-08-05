@@ -31,6 +31,7 @@
                                    @if($method == 'POST' || (empty($sq_data['IsSeries']) === false && $sq_data['IsSeries']=='N'))checked="checked"@endif/>
                             <label for="is_series_n" class="input-label">미사용</label>
                         </div>
+                        <span style="color: red">* 응시직렬 사용시 답변유형은 선택형(단일)로 선택해주세요.</span>
                     </div>
                 </div>
             @elseif(empty($sq_data['SqIdx']) === true || (empty($series_idx) === false && empty($sq_data['SqIdx']) === false && $series_idx != $sq_data['SqIdx']))
@@ -88,14 +89,14 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1" for="sq_type">답변유형 <span class="required">*</span></label>
                 <div class="col-md-10 form-inline">
-                    <span style="color:red;">유형설명 - 선택형단일(단일선택 객관식), 선택형그룹(단일선택 그룹핑), 복수형(다중선택 객관식)</span><br/>
+                    유형설명 - 선택형단일(단일선택 객관식), 선택형그룹(단일선택 그룹핑), 복수형(다중선택 객관식)<br/>
                     <select class="form-control" id="sq_type" name="sq_type" title="답변유형" required="required" onchange="sel_question_type();">
                         <option value="">-유형선택-</option>
                         @foreach($arr_type as $type => $txt)
                             <option value="{{$type}}" @if(empty($sq_data['SqType']) === false && $sq_data['SqType'] == $type) selected="selected" @endif>{{$txt}}</option>
                         @endforeach
                     </select><br/>
-                    <span style="color:red;">* 선택형(그룹), 복수형은 항목1 갯수 선택시 항목은 자동으로 입력됩니다.</span><br/>(1.매우쉬움, 2.쉬움, 3.보통, 4.어려움, 5.매우어려움)
+                    <span style="color:red;">* 선택형(그룹)과 복수형은 항목 갯수 선택시 자동으로 입력됩니다.</span><br/>자동 입력(1.매우쉬움, 2.쉬움, 3.보통, 4.어려움, 5.매우어려움)
                 </div>
             </div>
 

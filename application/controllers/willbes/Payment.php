@@ -214,8 +214,7 @@ class Payment extends \app\controllers\FrontController
         // 결제연동 결과 리턴
         $pay_results = $this->{$pg_object}->returnResult();
         if ($pay_results['result'] === false) {
-            $err_msg = array_get($pay_results, 'result_msg', '결제연동 중 오류가 발생하였습니다.');
-            //$err_msg = '결제연동 중 오류가 발생하였습니다.\n(' . array_get($pay_results, 'result_msg', '알수 없는 오류') . ')';
+            $err_msg = '결제연동 중 오류가 발생하였습니다.\n(' . array_get($pay_results, 'result_msg', '알수 없는 오류') . ')';
             show_alert($err_msg, $this->_getErrUrl(), false);
         }
 

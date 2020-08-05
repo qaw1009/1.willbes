@@ -236,15 +236,6 @@
                 alert('연락처를 입력하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
-                alert('참여일을 선택하셔야 합니다.');
-                return;
-            }
-            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
-                alert('캠퍼스을 선택하셔야 합니다.');
-                return;
-            }
-
             if (!confirm('저장하시겠습니까?')) { return true; }
 
             ajaxSubmit($regi_form_register, _url, function(ret) {

@@ -174,6 +174,9 @@ class Pg_inisis extends CI_Driver
         // 리턴 결과
         $returns = array_merge($this->_CI->input->get(null, false), $this->_CI->input->post(null, false));
 
+        // 리턴 메시지
+        $return_msg = '';
+
         // 상점 데이터
         $return_data = [];
         empty($returns['merchantData']) === false && parse_str($returns['merchantData'], $return_data);
@@ -208,6 +211,7 @@ class Pg_inisis extends CI_Driver
                     if ($this->_http_util->processHTTP($returns['authUrl'], $auth_params)) {
                         $auth_result = $this->_http_util->body;
                     } else {
+                        $return_msg = '결제 승인요청에 실패했습니다.';
                         throw new AuthException('결제 승인요청 실패 (결과메시지 : ' . $this->_http_util->errormsg . ')');
                     }
 
@@ -248,10 +252,10 @@ class Pg_inisis extends CI_Driver
                         // 승인결과 리턴
                         $this->_parent->saveFileLog('결제 승인완료');
 
-/*                        // 망취소 테스트
+                        /*// 망취소 테스트
                         throw new AuthException('망취소 테스트');*/
 
-/*                        // 승인취소 테스트
+                        /*// 승인취소 테스트
                         return $this->cancel([
                             'order_no' => $auth_results['MOID'],
                             'mid' => $auth_results['mid'],
@@ -280,6 +284,7 @@ class Pg_inisis extends CI_Driver
 
                         return array_merge([
                             'result' => true,
+                            'result_msg' => $auth_results['resultMsg'],
                             'order_no' => $auth_results['MOID'],
                             'mid' => $auth_results['mid'],
                             'tid' => $auth_results['tid'],
@@ -289,6 +294,8 @@ class Pg_inisis extends CI_Driver
                             'return_data' => $return_data
                         ], $add_results);
                     } else {
+                        $return_msg = $auth_results['resultMsg'];
+
                         if (strcmp($auth_signature, $auth_results['authSignature']) != 0) {
                             throw new AuthException('결제 승인요청 위변조 체크 오류 발생');
                         } else {
@@ -308,6 +315,7 @@ class Pg_inisis extends CI_Driver
                     throw new \Exception($e->getMessage());
                 }
             } else {
+                $return_msg = $returns['resultMsg'];
                 throw new \Exception('결제 인증요청 실패 (결과코드 : ' . $returns['resultCode'] . ', 결과메시지 : ' . $returns['resultMsg'] . ', 주문번호 : ' . $returns['orderNumber'] . ')');
             }
         } catch (\Exception $e) {
@@ -315,6 +323,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => false,
+                'result_msg' => $return_msg,
                 'order_no' => $returns['orderNumber'],
                 'return_data' => $return_data
             ];
@@ -618,12 +627,13 @@ class Pg_inisis extends CI_Driver
         try {
             $returns['reg_ip'] = $this->_CI->input->ip_address();   // 연동 아이피
 
-            // 입금일시
-            if (empty(element('dt_trans', $params)) === false && empty(element('tm_trans', $params)) === false) {
-                $returns['dtm_trans'] = date('Y-m-d H:i:s', strtotime(element('dt_trans', $params) . ' ' . element('tm_trans', $params)));
+            // 입금일시 (연동일시 사용)
+            /*if (empty(element('dt_trans', $returns)) === false && empty(element('tm_trans', $returns)) === false) {
+                $returns['dtm_trans'] = date('Y-m-d H:i:s', strtotime(element('dt_trans', $returns) . ' ' . element('tm_trans', $returns)));
             } else {
                 $returns['dtm_trans'] = date('Y-m-d H:i:s');
-            }
+            }*/
+            $returns['dtm_trans'] = date('Y-m-d H:i:s');
 
             // 입금은행명, 입금자명 인코딩 변환
             /*$returns['nm_inputbank'] = iconv('EUC-KR', 'UTF-8', $returns['nm_inputbank']);

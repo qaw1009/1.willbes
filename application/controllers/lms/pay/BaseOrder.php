@@ -31,6 +31,10 @@ class BaseOrder extends \app\controllers\BaseController
         $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct', 'visit_card', 'category'];
         if (in_array($this->_order_type, ['order', 'visit']) === true) {
             $_show_add_join[] = 'campus_all';
+
+            if ($this->_order_type == 'visit') {
+                $_show_add_join[] = 'lectureroom_seat';
+            }
         } elseif (in_array($this->_order_type, ['offvisitpackage', 'offprofassign']) === true) {
             $_show_add_join[] = 'campus';
         }

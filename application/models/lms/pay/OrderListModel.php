@@ -396,14 +396,18 @@ class OrderListModel extends BaseOrderModel
             // 학원접수 수강증출력 로그 추가
             if (in_array('print_cert_log', $arr_add_join) === true) {
                 $from .= '
-                    left join (
-                        select OrderIdx, OrderProdIdx, "Y" as IsPrintCert
-                        from ' . $this->_table['order_product_activity_log'] . '
-                        where ActType = "PrintCert"
-                        group by OrderIdx, OrderProdIdx                         
-                    ) as LPC
-                        on O.OrderIdx = LPC.OrderIdx and OP.OrderProdIdx = LPC.OrderProdIdx';
-                $column .= ', LPC.IsPrintCert';
+                    left join ' . $this->_table['order_product_activity_log'] . ' as LPC
+                        on O.OrderIdx = LPC.OrderIdx and OP.OrderProdIdx = LPC.OrderProdIdx and LPC.ActType = "PrintCert" and LPC.IsFirstAct = "Y"';
+                $column .= ', if(LPC.OrderIdx is not null, "Y", "N") as IsPrintCert';
+                $excel_column .= '';
+            }
+
+            // 학원단과반 강의실/좌석번호 정보 추가
+            if (in_array('lectureroom_seat', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['product_r_lectureroom'] . ' as PLR
+                        on OP.ProdCode = PLR.ProdCode and PLR.IsStatus = "Y"';
+                $column .= ', if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-"), "") as LectureRoomSeatNo';
                 $excel_column .= '';
             }
         }

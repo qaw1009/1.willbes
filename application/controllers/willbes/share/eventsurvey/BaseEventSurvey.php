@@ -39,21 +39,36 @@ class BaseEventSurvey extends \app\controllers\FrontController
             }
         }
 
-        $data_question = $this->surveyModel->listSurveyForQuestion($sp_idx);
-        if(empty($data_question) === true){
+        $question_list = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        if(empty($question_list) === true){
             show_alert('등록되지 않은 설문입니다.','close');
             return;
         }
 
+        // 응시직렬
+        $is_series = 'N';
+        $data_question = [];
+        $data_question_count = [];
+        $data_series = $this->surveyModel->findQuestionForSeries($sp_idx);
+        if(empty($data_series) === false){
+            $data_question = $this->_getSeriesData($question_list,array_value_first($data_series));
+            $is_series = 'Y';
+        }else{
+            $data_question[1] = $question_list;
+        }
+
         // 응시과목 선택 갯수,전체 항목 갯수
-        list($subject_cnt,$total_cnt) = $this->_recordsTotalCount($data_question);
+        foreach ($data_question as $key => $val){
+            list($data_question_count[$key]['subject_cnt'],$data_question_count[$key]['total_cnt']) = $this->_recordsTotalCount($val);
+        }
 
         $view_file = 'willbes/pc/eventsurvey/index';
         $this->load->view($view_file, [
             'data_survey' => $data_survey,
             'data_question' => $data_question,
-            'subject_cnt' => $subject_cnt,
-            'total_cnt' => $total_cnt
+            'data_question_count' => $data_question_count,
+            'is_series' => $is_series,
+            'count' => count($data_question),
         ], false);
     }
 
@@ -86,6 +101,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         $inputData = $this->_setInputData($input,$total_cnt);
+
         if(empty($inputData) === true){
             $this->json_error('모든 문항을 입력해 주세요.');
             return;
@@ -231,7 +247,10 @@ class BaseEventSurvey extends \app\controllers\FrontController
         list($survey_title,$spSubjectList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
         // 9. 직렬별 설문조사 결과
-        $surveyList = $this->_matchingQuestionData($question_info,$answer_info);
+        $data_series = $this->surveyModel->findQuestionForSeries($spidx2);
+        //$data_question = $this->_getSeriesData($question_info,array_value_first($data_series));
+        $data_answer = $this->_matchingSeriesData($answer_info,$data_series);
+        $surveyList = $this->_mathSeriesSpreadData($question_info,$data_answer);
 
         // 10. 과목별 오답랭킹
         $wrongData = $this->surveyModel->wrongRank($PredictIdx);
@@ -255,9 +274,9 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'spSubjectList' => $spSubjectList,
             'wrongSubject' => $wrongSubject,
             'wrongList' => $wrongList,
-            'survey_title' => $survey_title,
             'surveyList' => $surveyList,
-            'spidx2' => $spidx2
+            'spidx2' => $spidx2,
+            'data_series' => $data_series
         ], false);
     }
 
@@ -344,7 +363,52 @@ class BaseEventSurvey extends \app\controllers\FrontController
     }
 
     /**
-     * 설문응답 비율 계산
+     * 직렬 데이타 가공
+     * @param $question_info
+     * @param $series_info
+     * @return mixed
+     */
+    private function _getSeriesData($question_info=[],$series_info=[]){
+        $data = [];
+
+        foreach ($series_info as $key => $val){
+            foreach ($question_info as $row){
+                if(empty($row['SqSeries']) === false && in_array($val,$row['SqSeries'])){
+                    unset($row['SqSeries']);
+                    $data[$key][] = $row;
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 직렬 데이타 매핑
+     * @param $answer_info
+     * @param $data_series
+     * @return mixed
+     */
+    private function _matchingSeriesData($answer_info, $data_series){
+        $data = [];
+
+        foreach ($answer_info as $key => $val){
+            foreach ($val['AnswerInfo'] as $question_key => $answer){
+                $arr_series = element($question_key,$data_series);
+                if(empty($arr_series) === false){
+                    foreach ($answer as $k => $v){
+                        unset($val['AnswerInfo'][$question_key]);
+                        $data[$v][] = $val['AnswerInfo'];
+                    }
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 설문응답 답변 갯수 카운트
      * @param $question_info
      * @return mixed
      */
@@ -364,77 +428,67 @@ class BaseEventSurvey extends \app\controllers\FrontController
     }
 
     /**
-     * 설문응답 항목 매칭
+     * 응시직렬 비율 계산
      * @param $question_info
-     * @param $answer_data
+     * @param $data_answer
      * @return mixed
      */
-    private function _matchingQuestionData($question_info=[],$answer_data=[]){
+    private function _mathSeriesSpreadData($question_info=[],$data_answer=[]){
         $data = [];
+        $reset_question = [];
+        $new_answer = [];
         $new_question_info = [];
-        $new_answer_info = [];
-        $new_answer_data = [];
 
-        // 설문문항 키 재조합
         foreach ($question_info as $key => $val){
             $new_question_info[$val['SqIdx']] = $val;
-        }
-        
-        // 일반공채/전의경경채/101단 등 문항별 분류
-        foreach ($answer_data as $key => $val){
-            foreach ($val['AnswerInfo'] as $answer_key => $answer){
-                if($answer_key == array_key_first($val['AnswerInfo'])){
-                    foreach ($answer as $k => $v){
-                        unset($val['AnswerInfo'][array_key_first($val['AnswerInfo'])]);
-                        $question_data = $new_question_info[$answer_key]['SqJsonData'][$k];
-                        $new_answer_info[$question_data['item'][$v]][] = $val['AnswerInfo'];
-                    }
-                    break;
+
+            foreach ($val['SqJsonData'] as $answer_key => $answer){
+                foreach ($answer['item'] as $k => $v){
+                    $reset_question[$val['SqIdx']][$answer_key][$k] = 0;
                 }
             }
         }
 
-        // 데이타 초기화
-        foreach ($new_answer_info as $title => $arr){
-            foreach ($arr[0] as $question_key => $answer) {
-                foreach ($answer as $k => $v) {
-                    $question_data = $new_question_info[$question_key]['SqJsonData'];
-                    foreach ($question_data as $k2 => $v2) {
-                        foreach ($v2['item'] as $k3 => $v3){
-                            $new_answer_data[$title][$question_key][$k2][$k3] = 0;
-                        }
-                    }
-                }
-            }
-        }
-
-        // 선택 항목 카운트
-        foreach ($new_answer_info as $title => $arr){
-            foreach ($arr as $key => $val) {
+        // 초기화
+        foreach ($data_answer as $series_key => $series_val){
+            foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
+                    foreach ($answer as $k => $v){
+                        $new_answer[$series_key][$question_key][$k] = $reset_question[$question_key][$k];
+                    }
+                }
+            }
+        }
+
+        // 선택항목 카운트
+        foreach ($data_answer as $series_key => $series_val){
+            foreach ($series_val as $key => $val) {
+                foreach ($val as $question_key => $answer) {
+                    ksort($new_answer[$series_key][$question_key]);
                     foreach ($answer as $k => $v) {
-                        $new_answer_data[$title][$question_key][$k][$v] += 1;
+                        $new_answer[$series_key][$question_key][$k][$v] += 1;
                     }
                 }
             }
         }
 
         // 데이타 매칭
-        foreach ($new_answer_data as $title => $arr){
-            foreach ($arr as $question_key => $answer) {
+        foreach ($new_answer as $series_key => $series_val){
+            foreach ($series_val as $question_key => $answer) {
                 $SqType = $new_question_info[$question_key]['SqType'];
                 $SqTitle = $new_question_info[$question_key]['SqTitle'];
-                foreach ($answer as $k => $v) {
-                    $question_info = $new_question_info[$question_key]['SqJsonData'][$k];
-                    $item_sum = array_sum($v);
+                foreach ($answer as $answer_key => $answer_val) {
+                    $question_info = $new_question_info[$question_key]['SqJsonData'][$answer_key];
+                    $item_sum = array_sum($answer_val);
 
                     if($item_sum > 0){
-                        foreach ($v as $k2 => $v2){
+                        foreach ($answer_val as $k => $v){
                             if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $data[$title][$SqType][$question_info['title']][$question_info['item'][$k2]] = round(($v2 / $item_sum) * 100, 0);
+                                $data[$series_key][$SqType][$SqTitle][$question_info['title']][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
                             }else{
-                                $data[$title][$SqType][$SqTitle][$question_info['item'][$k2]] = round(($v2 / $item_sum) * 100, 0);
+                                $data[$series_key][$SqType][$SqTitle][$SqTitle][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
                             }
+
                         }
                     }
                 }

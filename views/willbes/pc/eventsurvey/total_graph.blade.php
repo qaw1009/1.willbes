@@ -431,7 +431,7 @@
 
         {{--설문결과--}}
         <div class="m_section3_7">
-            @if(empty($survey_title) === false)
+            @if(empty($data_series) === false)
                 <div>
                     <h3>설문조사 결과</h3>
                     <div class="popcontent">
@@ -439,36 +439,17 @@
                             <p>응시직렬 </p>
                             <div class="qBox">
                                 <ul>
-                                    @foreach($survey_title as $key => $val)
-                                        @if($loop->index == 1)
-                                            @foreach($val as $title => $spread)
-                                                <li>
-                                                    <label><input type="radio" name="sp_serial" value="{{ $title }}" onClick="selSurvey2(this.value,{{ $loop->index }});" {{ $loop->index == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
-                                                </li>
-                                            @endforeach
-                                        @endif
+                                    @foreach($data_series as $series_key => $series_val)
+                                        @foreach($series_val as $key => $title)
+                                        <li>
+                                            <label><input type="radio" name="sp_serial" value="{{ $key }}" onClick="selSurvey2(this.value,{{ $key }});" {{ $key == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
+                                        </li>
+                                        @endforeach
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-                        <div class="question">
-                            <p>Q1. 전체적인 시험 체감 난이도</p>
-                            <div class="qBox">
-                                <div id="survey1"></div>
-                            </div>
-                        </div>
-                        <div class="question">
-                            <p>Q2. 공통 과목 시험 체감 난이도</p>
-                            <div class="qBox">
-                                <div id="survey2"></div>
-                            </div>
-                        </div>
-                        <div class="question">
-                            <p>Q3. 선택 과목 시험 체감 난이도</p>
-                            <div class="qBox">
-                                <div id="survey3"></div>
-                            </div>
-                        </div>
+                        <div id="graph_box"></div>
                     </div>
                 </div>
             @endif
@@ -707,13 +688,14 @@
 
         function selSurvey2(obj_val,index) {
             $(".survey_graph").hide();
-            $("#survey" + index).show();
+            $(".survey" + index).show();
             selSurveyGraph(obj_val);
         }
 
         // 설문결과
         function selSurveyGraph(obj_val) {
             var json_data = [];
+            var html = "";
             @if(empty($surveyList) === false)
                 json_data = {!! json_encode($surveyList) !!};
             @endif
@@ -721,31 +703,30 @@
             if (json_data === null || typeof json_data[obj_val] === 'undefined') {
                 return;
             }
+            console.log(json_data[obj_val]);
+            return;
+            $.each(json_data[obj_val], function(type, data) {
+                html += nwagonChart(type,data);
+            });
 
-            // 전체적인 시험 체감 난이도
-            if(json_data[obj_val]['S'] !== 'undefined'){
-                nwagonChart(json_data[obj_val]['S'],'S');
-            }
 
-            // 공통 과목 시험 체감 난이도
-            if(json_data[obj_val]['M'] !== 'undefined'){
-                nwagonChart(json_data[obj_val]['M'],'M');
-            }
 
-            // 선택 과목 시험 체감 난이도
-            if(json_data[obj_val]['T'] !== 'undefined'){
-                nwagonChart(json_data[obj_val]['T'],'T');
-            }
+            $("#graph_box").html(html);
         }
 
-        function nwagonChart(data,type) {
+        function nwagonChart(type,data) {
             var names = [];
             var fields = [];
             var values = [];
             var idx = 0;
 
             $.each(data, function(name, val) {
-                names.push(name);
+                if(type == 'S'){ // 전체 시험 난이도
+                    names.push(name.substring(0,2));
+                }else{
+                    names.push(name);
+                }
+
                 var spreads = [];
                 $.each(val, function(item, spread) {
                     if(idx == 0){
@@ -760,7 +741,7 @@
             var set = {
                 'S': {
                     id : '1',
-                    names: ['전체시험'],
+                    names: names,
                     title: '전체적인 시험 체감 난이도',
                     values: values,
                     fields: fields
@@ -795,6 +776,16 @@
                 'increment': 10
             };
             Nwagon.chart(options);
+
+            var html = "";
+            html += '<div class="question">';
+            html += '<p>Q1. 전체적인 시험 체감 난이도</p>';
+            html += '<div class="qBox">';
+            html += '<div id="survey1"></div>';
+            html += '</div>';
+            html += '</div>';
+
+            return html;
         }
 
         function surveyOpen(){

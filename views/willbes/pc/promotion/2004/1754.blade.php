@@ -21,8 +21,7 @@
         /************************************************************/
         .skyBanner {position:fixed; top:200px;right:0; z-index:10;}
         .skyBanner a{ display:block; padding-bottom:10px;}
-       
-        .evt00{background:#0a0a0a}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/08/1754_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#111;}      
@@ -77,10 +76,6 @@
             <div class="skyBanner">
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky01.jpg" title="소방등불 면접캠프 설명회"></a>   
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky02.jpg" title="소방등불 면접캠프 개강"></a>      
-            </div>
-
-            <div class="evtCtnsBox evt00">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_00.jpg" title="1위 윌비스 신광은 경찰학원">
             </div>
 
             <div class="evtCtnsBox evtTop">

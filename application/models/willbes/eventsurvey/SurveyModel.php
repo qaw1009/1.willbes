@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SurveyModel extends WB_Model
 {
     private $_table = [
-        'event_survey' => 'lms_event_survey',
-        'event_survey_question' => 'lms_event_survey_question',
-        'event_answer_info' => 'lms_event_survey_answer_info',
+        'event_survey' => 'lms_survey',
+        'event_survey_question' => 'lms_survey_question_list',
+        'event_answer_info' => 'lms_survey_answer_detail',
         'predict_code' => 'lms_predict_code',
         'product_predict' => 'lms_product_predict',
         'predict_grades_line' => 'lms_predict_grades_line',
@@ -16,6 +16,12 @@ class SurveyModel extends WB_Model
         'predict_question' => 'lms_predict_questions',
 
         'sysCode' => 'lms_sys_code',
+    ];
+
+    // 디코딩 필드
+    private $_field = [
+        'lms' => ['SqSeries','SqJsonData'],
+        'wbs' => ['AnswerInfo'],
     ];
 
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
@@ -62,7 +68,7 @@ class SurveyModel extends WB_Model
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
 
         $column = "
-            A.SqIdx, A.SqTitle, A.SqComment, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData
+            A.SqIdx, A.IsSeries, A.SqSeries, A.SqTitle, A.SqComment, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData
             ";
 
         $from = "
@@ -72,7 +78,7 @@ class SurveyModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $data = $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
-        return $this->_getDecodeData($data,'SqJsonData');
+        return $this->_getDecodeData($data,$this->_field['lms']);
     }
 
 
@@ -93,7 +99,7 @@ class SurveyModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
-        return $this->_getDecodeData($data,'AnswerInfo');
+        return $this->_getDecodeData($data,$this->_field['wbs']);
     }
 
     /**
@@ -116,6 +122,28 @@ class SurveyModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
         return $this->_conn->query('select ' . $column . $from . $where)->row(0)->cnt;
+    }
+
+    /**
+     * 직렬 항목 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function findQuestionForSeries($sp_idx = null)
+    {
+        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'IsSeries' => 'Y']];
+        $column = "SqIdx,SqJsonData";
+        $from = " FROM {$this->_table['event_survey_question']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $row[0] = $this->_conn->query('select '. $column . $from . $where)->row_array();
+
+        $data = [];
+        if(empty($row[0]) === false){
+            $data[$row[0]['SqIdx']] = $this->_getDecodeData($row,['SqJsonData'])[0]['SqJsonData'][1]['item'];
+        }
+
+        return $data;
     }
 
     /**
@@ -150,14 +178,18 @@ class SurveyModel extends WB_Model
     /**
      * 답변항목 디코딩
      * @param array $data
-     * @param string $field
+     * @param array $fields
      * @return mixed
      */
-    private function _getDecodeData($data=[],$field=null){
-
+    private function _getDecodeData($data=[],$fields=[]){
         foreach ($data as $key => $val){
-            if(empty($field) === false){
-                $data[$key][$field] = json_decode($val[$field],true);
+            if(empty($fields) === false){
+                foreach ($fields as $field){
+                    $data[$key][$field] = [];
+                    if(empty($val[$field]) === false){
+                        $data[$key][$field] = json_decode($val[$field],true);
+                    }
+                }
             }
         }
 

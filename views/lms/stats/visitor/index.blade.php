@@ -131,6 +131,14 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th class="text-center">합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -148,6 +156,14 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th class="text-center">합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -165,6 +181,12 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th class="text-center">합계</th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -182,7 +204,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th class="text-center">총합</th>
+                                <th class="text-center">합계</th>
                                 <th></th>
                             </tr>
                             </tfoot>
@@ -203,7 +225,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th class="text-center">총합</th>
+                                <th class="text-center">합계</th>
                                 <th></th>
                             </tr>
                             </tfoot>
@@ -267,7 +289,7 @@
                             borderColor: window.chartColors.blue,
                             data: $guest_cnt,
                         }, {
-                            label: '총합',
+                            label: '합계',
                             fill: true,
                             backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
                             borderColor: window.chartColors.grey,
@@ -339,7 +361,7 @@
                             borderColor: window.chartColors.green,
                             data: $mobile_cnt,
                         }, {
-                            label: '총합',
+                            label: '합계',
                             fill: true,
                             backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
                             borderColor: window.chartColors.grey,
@@ -616,7 +638,19 @@
                         {'data': 'VisitorCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return '<strong>' + addComma(data) + '</strong>';
                         }}
-                    ]
+                    ],
+                    footerCallback: function(tfoot, data, start, end, display) {
+                        var api = this.api();
+                        for(var i = 1; i <= 3; i++) {
+                            $(api.column(i).footer()).html(
+                                addComma(
+                                    api.column(i).data().reduce(function (a, b) {
+                                        return a + b * 1;
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_app_count = $("#list_app_count_table").DataTable({
@@ -640,7 +674,19 @@
                         {'data': 'VisitorCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return '<strong>' + addComma(data) + '</strong>';
                         }}
-                    ]
+                    ],
+                    footerCallback: function(tfoot, data, start, end, display) {
+                        var api = this.api();
+                        for(var i = 1; i <= 3; i++) {
+                            $(api.column(i).footer()).html(
+                                addComma(
+                                    api.column(i).data().reduce(function (a, b) {
+                                        return a + b * 1;
+                                    }, 0)
+                                )
+                            );
+                        }
+                    }
                 });
 
                 $datatable_hour_count = $("#list_hour_count_table").DataTable({
@@ -658,7 +704,16 @@
                         {'data': 'VisitorCnt', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return '<strong>' + addComma(data) + '</strong>';
                         }}
-                    ]
+                    ], footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        $(api.column(1).footer()).html(
+                            addComma(
+                                api.column(1).data().reduce(function ( a, b ) {
+                                    return (parseInt(a) + parseInt(b));
+                                }, 0)
+                            )
+                        );
+                    }
                 });
 
                 $datatable_site = $("#list_site_table").DataTable({

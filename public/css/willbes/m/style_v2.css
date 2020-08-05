@@ -264,6 +264,7 @@ span {
     padding-left: 20px;
     border-bottom: 1px solid #ccc;
 }
+#aside .ListBox .List a {display:block} 
 #aside h1 a {display: block; padding:10px 0; text-align: center}
 #aside h1 a img {width: 100px;}
 #aside h2 {border-bottom:1px solid #333; text-align: left; height: 60px; line-height: 60px;

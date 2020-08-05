@@ -1264,7 +1264,6 @@ select[disabled] {
   cursor: pointer;
 }
 
-
 /*게시판 내 링크 버튼*/
 .btn-Board-Link {padding:15px 20px !important; color:#fff !important; background:#1a8ccc !important; border-radius: 40px; font-size:16px !important; font-weight:600 !important; border:1px solid #1a8ccc;
   font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}

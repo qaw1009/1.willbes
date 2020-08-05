@@ -147,8 +147,8 @@
     <div id="tab03" class="evtCtnsBox mt50">
         <div class="evt05">
             <h5 class="NSK-Black">
-                <div>무재고 배송대행<Br> 도매매 샵플링</div>
-                <div>반드시 이기는<Br> 사업을 위한 커리큘럼</div>
+                <div>10년차 쇼핑몰 업계 전문 강사</div>
+                <div>단아샘이 알려주는 전문 커리큘럼</div>
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
 

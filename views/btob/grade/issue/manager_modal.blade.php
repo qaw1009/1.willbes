@@ -28,7 +28,7 @@
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-1 form-control-static">등록자</label>
                         <div class="col-md-2 form-control-static">
-                            {{$data['MemName']}} ({!! hpSubString($data['MemId'],0,2,'*') !!})
+                            {{$data['MemName']}} ({!! substr($data['MemId'], 0, -3) !!}***)
                         </div>
                         <label class="control-label col-md-1 form-control-static">점수</label>
                         <div class="col-md-2 form-control-static">

@@ -45,6 +45,13 @@
 
         .evt03 {background:#ebebeb;}
         .evt04 {background:#fff;}
+        .evt04 ul {width:1070px; margin:0 auto}
+        .evt04 li {width:20%; display:inline; float:left}
+        .evt04 li img.on {display:none}
+        .evt04 li img.off {display:block}
+        .evt04 li:hover img.on {display:block}
+        .evt04 li:hover img.off {display:none}
+        .evt04 ul:after {content:""; display:block; clear:both}
         .evt05 {background:#fbfbfb; padding-bottom:150px}
         .evt06 {background:#fff; padding-bottom:150px}
 
@@ -65,8 +72,6 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
             <!--
             <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
@@ -152,7 +157,7 @@
                                 - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
                             </li>
                             <li><strong>2. 개인정보 수집 항목</strong> <br>
-                            - 필수항목 : 성명, 연락처, 직렬항목</li>
+                            - 필수항목 : 성명, 연락처</li>
                             <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
                             - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기</li>
                             <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
@@ -175,7 +180,29 @@
             </div>   
 
             <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_tit.jpg" title="소방등불 면접캠프"/>
+                <ul>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_01.jpg" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_01_on.jpg" class="on">
+                    <li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_02.jpg" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_02_on.jpg" class="on">
+                    <li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_03.jpg" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_03_on.jpg" class="on">
+                    <li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_04.jpg" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_04_on.jpg" class="on">
+                    <li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_05.jpg" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_05_on.jpg" class="on">
+                    <li>
+                </ul>
             </div>   
 
             <div class="evtCtnsBox evt05">

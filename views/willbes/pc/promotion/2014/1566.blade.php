@@ -124,7 +124,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
+            <a href="#evt03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">        
@@ -149,7 +149,7 @@
         </div>
 
         <div id="tab01">
-            <div class="evtCtnsBox evt03">
+            <div class="evtCtnsBox evt03" id="evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_03.jpg">
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
@@ -173,7 +173,7 @@
             <div class="evtCtnsBox evt05">
                 <div class="copy">
                     <h5 class="NSK-Black">
-                        <div>'10년차 쇼핑몰 업계 전문 강사</div>
+                        <div>10년차 쇼핑몰 업계 전문 강사</div>
                         <div>단아샘이 알려주는 전문 커리큘럼</div>
                     </h5>
                     <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>

@@ -134,7 +134,7 @@
                 <area shape="rect" coords="343,568,468,631" href="javascript:go_PassLecture('169730');">
                 <area shape="rect" coords="907,443,1000,490" href="javascript:go_PassLecture('170030');">
                 <area shape="rect" coords="907,514,1000,562" href="javascript:go_PassLecture('170029');">
-                <area shape="rect" coords="908,584,1000,632" href="javascript:go_PassLecture('170039');">
+                <area shape="rect" coords="908,584,1000,632" href="javascript:go_PassLecture('170031');">
             </map>
             <div class="check">
                 <label>

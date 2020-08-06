@@ -179,20 +179,22 @@
 
             $search_form.on('change', 'select[name="search_prod_code"]', function() {
                 $('#search_correct_idx').children('option:not(:first)').remove();
-                var add_options = '';
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    'prod_code' : $(this).val()
-                };
-                var url = '/common/search/correctUnitAjax/';
-                sendAjax(url, data, function(ret) {
-                    if (ret !== null && Object.keys(ret).length > 0) {
-                        $.each(ret, function (k, v) {
-                            add_options += '<option value="'+k+'">'+v+'</option>';
-                        });
-                        $('#search_correct_idx').append(add_options);
-                    }
-                }, showValidateError, false, 'POST');
+                if ($(this).val() != '') {
+                    var add_options = '';
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        'prod_code': $(this).val()
+                    };
+                    var url = '/common/search/correctUnitAjax/';
+                    sendAjax(url, data, function (ret) {
+                        if (ret !== null && Object.keys(ret).length > 0) {
+                            $.each(ret, function (k, row) {
+                                add_options += '<option value="' + row['CorrectIdx'] + '">' + row['Title'] + '</option>';
+                            });
+                            $('#search_correct_idx').append(add_options);
+                        }
+                    }, showValidateError, false, 'POST');
+                }
             });
 
             $list_table.on('click', '.btn-manager-assignment', function() {

@@ -79,21 +79,22 @@
                 $('#search_correct_idx').children('option:not(:first)').remove();
                 $regi_form.find('input[name="MemCnt"]').val('');
                 $regi_form.find('input[name="eachCnt[]"]').val('');
-
-                var add_options = '';
-                var data = {
-                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    'prod_code' : $(this).val()
-                };
-                var url = '/common/search/correctUnitAjax/';
-                sendAjax(url, data, function(ret) {
-                    if (ret !== null && Object.keys(ret).length > 0) {
-                        $.each(ret, function (k, v) {
-                            add_options += '<option value="'+k+'">'+v+'</option>';
-                        });
-                        $('#search_correct_idx').append(add_options);
-                    }
-                }, showValidateError, false, 'POST');
+                if ($(this).val() != '') {
+                    var add_options = '';
+                    var data = {
+                        '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        'prod_code': $(this).val()
+                    };
+                    var url = '/common/search/correctUnitAjax/';
+                    sendAjax(url, data, function (ret) {
+                        if (ret !== null && Object.keys(ret).length > 0) {
+                            $.each(ret, function (k, row) {
+                                add_options += '<option value="' + row['CorrectIdx'] + '">' + row['Title'] + '</option>';
+                            });
+                            $('#search_correct_idx').append(add_options);
+                        }
+                    }, showValidateError, false, 'POST');
+                }
             });
 
             $regi_form.on('change', 'select[name="search_correct_idx"]', function() {
@@ -102,13 +103,8 @@
             });
 
             $("#btn_search").click(function () {
-                if($("#search_prod_code").val() == "") {
-                    alert("강좌명을 선택해 주세요.");return;
-                }
-                if($("#search_correct_idx").val() == "") {
-                    alert("회차명을 선택해 주세요.");return;
-                }
-
+                if($("#search_prod_code").val() == ""){alert("강좌명을 선택해 주세요.");return;}
+                if($("#search_correct_idx").val() == ""){alert("회차명을 선택해 주세요.");return;}
                 $("#MemCnt").val('');
                 $("input[name='eachCnt[]']").val('');
 
@@ -120,8 +116,8 @@
 
                 sendAjax('{{ site_url('/grade/assignMng/search/') }}', data, function(ret) {
                     if(ret.ret_data == '0') {
-                        /*notifyAlert("error", "알림", "등록된 첨삭데이터가 없거나 배정이 완료된 회차입니다."); return;*/
-                        alert("등록된 첨삭데이터가 없거나 배정이 완료된 회차입니다.");return;
+                        notifyAlert("error", "알림", "등록된 첨삭데이터가 없거나 배정이 완료된 회차입니다."); return;
+                        /*alert("등록된 첨삭데이터가 없거나 배정이 완료된 회차입니다.");return;*/
                     }
                     setAssignCount(ret.ret_data);
                 }, showError, false, 'POST');
@@ -139,11 +135,10 @@
                     sum += +$(this).val();
                 });
 
-                /*
-                if($("#MemCnt").val() != sum) {
+                /*if($("#MemCnt").val() != sum) {
                     alert("검색건수 와 배정회원건수의 합이 일치하지 않습니다.");return;
-                }
-                 */
+                }*/
+
                 if( parseInt($("#MemCnt").val()) < sum) {
                     alert("배정건수가 더 많습니다. 배정건수를 확인하여 주십시오.\n\n배정건수 : "+sum);return;
                 }
@@ -189,15 +184,7 @@
                 var sum_cnt = 0;
                 for (i=0;i<tm_adminCnt;i++){
                     sum_cnt += divide_cnt;
-                    /*
-                    if(member_count >= sum_cnt) {
-                        $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
-                    } else {
-                        $("input[name='eachCnt[]']:eq(" + i + ")").val('0');
-                    }
-                    */
                     if(i < (tm_adminCnt-1) ) {
-
                         if(member_count >= sum_cnt) {
                             $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
                         } else {
@@ -205,9 +192,7 @@
                         }
 
                     } else if( i == (tm_adminCnt -1) ) {    //마지막 배열이면
-
-                        if(member_count != sum_cnt) {   //멤버수와 합계가 틀리면 조정
-
+                        if(member_count != sum_cnt) {       //멤버수와 합계가 틀리면 조정
                             if(member_count < sum_cnt) {    //합계가 많을경우
                                 change_cnt = divide_cnt - (sum_cnt-member_count);
                             } else { // 합계가 적을경우

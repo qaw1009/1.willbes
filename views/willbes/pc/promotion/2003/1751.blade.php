@@ -104,19 +104,19 @@
                         </li>                        
                 		<li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts2.png" alt="국어 임재진" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts1_on.png" alt="국어 임재진on" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts2_on.png" alt="국어 임재진on" class="on"/>
                         </li>                        
                 		<li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts3.png" alt="행정학 김덕관" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts1_on.png" alt="정학 김덕관on" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts3_on.png" alt="정학 김덕관on" class="on"/>
                         </li>
                         <li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts4.png" alt="행정학 김헌" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts1_on.png" alt="행정학 김헌on" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts4_on.png" alt="행정학 김헌on" class="on"/>
                         </li>
                         <li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts5.png" alt="행정법 이석준" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts1_on.png" alt="행정법 이석준on" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01_cts5_on.png" alt="행정법 이석준on" class="on"/>
                         </li>                        
                		 </ul>
             	</div>

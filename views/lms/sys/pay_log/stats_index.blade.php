@@ -56,7 +56,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="rowspan">일자</th>
+                    <th>일자</th>
                     <th class="rowspan">상점아이디</th>
                     <th>결제방법</th>
                     <th>결제건수</th>

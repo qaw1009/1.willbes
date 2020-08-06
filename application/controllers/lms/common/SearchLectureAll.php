@@ -57,6 +57,11 @@ class SearchLectureAll extends \app\controllers\BaseController
             $arr_code['arr_category'] = $this->categoryModel->getCategoryArray($site_code, '', '', '1');
         }
 
+        // 학원사이트일 경우만 조회
+        if ($is_off_site === true) {
+            $arr_code['arr_study_pattern_ccd'] = $this->codeModel->getCcd('653');   // 수강형태공통코드 조회
+        }
+
         $this->load->view('common/search_lecture_all', array_merge([
             'prod_type' => $prod_type,
             'prod_tabs' => $prod_tabs,
@@ -86,6 +91,7 @@ class SearchLectureAll extends \app\controllers\BaseController
                 'B.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'B.CourseIdx' => $this->_reqP('search_course_idx'),
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
+                'B.StudyPatternCcd' => $this->_reqP('search_study_pattern_ccd'),
                 'A.SiteCode' => $this->_reqP('site_code'),
                 'Ca.GroupCateCode' => $this->_reqP('search_lg_cate_code')
             ]

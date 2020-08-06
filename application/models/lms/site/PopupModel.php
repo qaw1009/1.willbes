@@ -19,7 +19,7 @@ class PopupModel extends WB_Model
     }
 
     /**
-     * 배너 목록 조회
+     * 팝업 목록 조회
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -37,7 +37,7 @@ class PopupModel extends WB_Model
                 A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
                 A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.OrderNum,
                 A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
-                D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName, A.CampusCcd, FN_CCD_NAME(A.CampusCcd) AS CampusName
+                D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName, A.CampusCcd, IFNULL(J.CcdName,\'\') AS CampusName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -57,6 +57,7 @@ class PopupModel extends WB_Model
             INNER JOIN {$this->_table['sys_code']} AS I ON A.PopUpTypeCcd = I.Ccd
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);

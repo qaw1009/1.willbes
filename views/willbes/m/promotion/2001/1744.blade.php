@@ -138,7 +138,7 @@
                 </a>    
             <li>
         </ul>
-        <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1741"  target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_08.jpg" alt="경찰패스" ></a>
+        <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1556"  target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_08.jpg" alt="경찰패스" ></a>
     </div>  
 </div>
 <!-- End Container -->

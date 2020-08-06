@@ -124,6 +124,26 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
                     </a>
                 </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -208,6 +228,22 @@
                 </div>
             </div>            
         </div>
+    </div>
+
+    <div id="QuickMenu" class="MainQuickMenu">
+        <ul>
+            <li>   
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" title="배너명"></a>
+            </li>
+        </ul>
     </div>
 </div>
 <!-- End Container -->

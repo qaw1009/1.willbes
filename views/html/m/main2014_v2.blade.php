@@ -219,10 +219,28 @@
         
         
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌
-            {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
-        </div>
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌</div>
             <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
                 <li>
                     <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        

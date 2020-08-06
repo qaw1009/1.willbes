@@ -56,7 +56,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>일자</th>
+                    <th class="rowspan">일자</th>
                     <th class="rowspan">상점아이디</th>
                     <th>결제방법</th>
                     <th>결제건수</th>
@@ -123,7 +123,9 @@
                     }
                 },
                 columns: [
-                    {'data' : 'RegDate'},
+                    {'data' : 'PgMid', 'render' : function(data, type, row, meta) {
+                        return row.RegDate; // 상점 아이디별로 rowspan 처리
+                    }},
                     {'data' : 'PgMid'},
                     {'data' : 'PayMethod', 'render' : function(data, type, row, meta) {
                         return meta.settings.json.codes.PayMethodName[data];

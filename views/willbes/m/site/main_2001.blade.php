@@ -62,7 +62,10 @@
                         @else
                             @foreach($data['notice'] as $row)
                                 <li>
-                                    <a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">
+                                        @if($row['IsBest'] == 1)<span>HOT</span>@endif
+                                        {{$row['Title']}}
+                                    </a>
                                     <span class="date">{{$row['RegDatm']}}</span>
                                 </li>
                             @endforeach
@@ -77,7 +80,10 @@
                         @else
                             @foreach($data['exam_announcement'] as $row)
                                 <li>
-                                    <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                        @if($row['IsBest'] == 1)<span>HOT</span>@endif
+                                        {{$row['Title']}}
+                                    </a>
                                     <span class="date">{{$row['RegDatm']}}</span>
                                 </li>
                             @endforeach
@@ -92,7 +98,10 @@
                         @else
                             @foreach($data['exam_news'] as $row)
                                 <li>
-                                    <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a>
+                                    <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                        @if($row['IsBest'] == 1)<span>HOT</span>@endif
+                                        {{$row['Title']}}
+                                    </a>
                                     <span class="date">{{$row['RegDatm']}}</span>
                                 </li>
                             @endforeach

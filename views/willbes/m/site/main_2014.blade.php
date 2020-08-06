@@ -237,6 +237,7 @@
                     @foreach($data['notice'] as $row)
                         <li>
                             <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                @if($row['IsBest'] == 1)<span>HOT</span>@endif
                                 {{$row['Title']}}
                             </a>
                             <span class="date">{{$row['RegDatm']}}</span>

@@ -13,7 +13,7 @@
                 @foreach($data['off_notice'] as $row)
                     <li>
                         <a href="{{front_url('/pass/support/notice/show?board_idx='.$row['BoardIdx'].'&s_cate_code='.$data['mapping_cate_data']['CateCode'])}}">
-                            {{-- <span>EVENT</span> --}}
+                            @if($row['IsBest'] == 1)<span>HOT</span>@endif
                             {{$row['Title']}}
                         </a>
                         <span class="date">{{$row['RegDatm']}}</span>
@@ -31,7 +31,7 @@
                 @foreach($data['notice'] as $row)
                     <li>
                         <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y')}}">
-                            {{-- <span>EVENT</span> --}}
+                            @if($row['IsBest'] == 1)<span>HOT</span>@endif
                             {{$row['Title']}}
                         </a>
                         <span class="date">{{$row['RegDatm']}}</span>
@@ -49,7 +49,7 @@
                 @foreach($data['board_lecture_infomation'] as $row)
                     <li>
                         <a href="{{front_url('/pass/offinfo/boardInfo/show/78?board_idx='.$row['BoardIdx']).'&s_cate_code='.$data['mapping_cate_data']['CateCode']}}">
-                            {{-- <span>EVENT</span> --}}
+                            @if($row['IsBest'] == 1)<span>HOT</span>@endif
                             {{$row['Title']}}
                         </a>
                         <span class="date">{{$row['RegDatm']}}</span>

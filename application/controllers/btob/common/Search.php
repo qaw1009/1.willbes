@@ -46,7 +46,6 @@ class Search extends \app\controllers\BaseController
         ];
 
         $result = $this->btobCorrectModel->listCorrectUnit(false, $arr_condition, null, null, ['CU.CorrectIdx' => 'desc'], $this->_is_authority, $arr_condition_authority);
-        $data = array_pluck($result,'Title', 'CorrectIdx');
-        return $this->response($data);
+        return $this->response($result);
     }
 }

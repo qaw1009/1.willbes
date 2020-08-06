@@ -8,6 +8,9 @@ class PayLog extends \app\controllers\BaseController
     private $_codes = [
         'pay' => [
             'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소', 'MP' => '결제요청(모바일)']
+        ],
+        'stats' => [
+            'PayMethodName' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)', 'VDeposit' => '가상계좌(입금통보)']
         ]
     ];
 
@@ -104,6 +107,43 @@ class PayLog extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list,
             'codes' => element($log_type, $this->_codes, [])
+        ]);
+    }
+
+    /**
+     * 결제통계 인덱스
+     * @param array $params
+     */
+    public function stats($params = [])
+    {
+        $this->load->view('sys/pay_log/stats_index', []);
+    }
+
+    /**
+     * 결제통계 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function statsAjax($params = [])
+    {
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
+        $arr_condition = [
+            'EQ' => [
+                'PgMid' => $this->_reqP('search_pg_mid'),
+                'PayMethod' => $this->_reqP('search_pay_method'),
+            ]
+        ];
+
+        // 통계 데이터 조회
+        $list = $this->payLogModel->listPayStats($search_start_date, $search_end_date, $arr_condition);
+        $count = count($list);
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+            'codes' => element('stats', $this->_codes, [])
         ]);
     }
 }

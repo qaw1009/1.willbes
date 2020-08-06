@@ -97,6 +97,14 @@
                     @endforeach
                 </select>
             @endif
+            @if(empty($arr_study_pattern_ccd) === false)
+                <select class="form-control mr-10" id="search_study_pattern_ccd" name="search_study_pattern_ccd">
+                    <option value="">수강형태</option>
+                    @foreach($arr_study_pattern_ccd as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
         </div>
         <div class="col-md-2 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>

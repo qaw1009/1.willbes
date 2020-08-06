@@ -246,7 +246,7 @@
     <div id="tab03">
         <div class="evtCtnsBox evt05">
             <h5 class="NSK-Black">
-                <div>'1,500개 정부 및 <br>공기업 전문 강사 </div>
+                <div>1,500개 정부 및 <br>공기업 전문 강사 </div>
                 <div>이기용이 알려주는 <br>전문 커리큘럼</div>
             </h5>
             <div class="evt05Txt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>

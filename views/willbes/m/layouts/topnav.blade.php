@@ -52,7 +52,7 @@
                                     {{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }}
                                 </a>
                             @else
-                                <a href="{{ front_url('/home/index', false, true) }}" class="siteTitle NSK-Black">
+                                <a href="{{ front_url('/home/index', false, ($__cfg['IsPassSite'] == 1 ? false : true)) }}" class="siteTitle NSK-Black">
                                     {{ get_var(element('SiteNickName', $__cfg), str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle'])) }}
                                 </a>
                             @endif

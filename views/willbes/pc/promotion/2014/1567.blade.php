@@ -125,7 +125,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2020/05/1567_sky_01.png" alt="정문진대표"></a>
+            <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1567_sky_01.png" alt="정문진대표"></a>
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
@@ -146,7 +146,7 @@
         </div> 
 
         <div id="tab01">
-            <div class="evtCtnsBox evt02">
+            <div class="evtCtnsBox evt02" id="evt02">
                 <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268601" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/07/1567_02.jpg">
                 </a>

@@ -280,7 +280,7 @@
             <div class="evtCtnsBox evt11" id="evt11Sec">
                 <div class="copy">
                     <h5 class="NSK-Black">
-                        <div>‘1,500개 정부 및 공기업 전문 강사 </div>
+                        <div>1,500개 정부 및 공기업 전문 강사 </div>
                         <div>이기용이 알려주는 전문 커리큘럼</div>
                     </h5>
                     <div class="evt07Txt01 NSK-Thin">우리가 배울 수 있는 과정은?<br>

@@ -80,7 +80,7 @@
 
             <div class="skyBanner">
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky01.jpg" title="소방등불 면접캠프 설명회"></a>   
-                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky02.jpg" title="소방등불 면접캠프 개강"></a>      
+                <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky02.jpg" title="소방등불 면접캠프 개강"></a>      
             </div>
 
             <div class="evtCtnsBox evtTop">
@@ -185,23 +185,23 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_01.jpg" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_01_on.jpg" class="on">
-                    <li>
+                    </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_02.jpg" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_02_on.jpg" class="on">
-                    <li>
+                    </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_03.jpg" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_03_on.jpg" class="on">
-                    <li>
+                    </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_04.jpg" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_04_on.jpg" class="on">
-                    <li>
+                    </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_05.jpg" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_05_on.jpg" class="on">
-                    <li>
+                    </li>
                 </ul>
             </div>   
 
@@ -225,7 +225,7 @@
                 </div>
             </div>   
 
-            <div class="evtCtnsBox evt06">
+            <div class="evtCtnsBox evt06" id="evt06">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_06.jpg" title="소방등불 면접캠프"/>
                 <div class="btn NGEB mt80">
                     <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank">소방등불 면접캠프 신청하기 ></a>

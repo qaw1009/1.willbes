@@ -76,21 +76,26 @@
                                     <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                                 </div>
                                 <div class="w-data tx-left pl15">
-                                    <div class="OTclass"><span>직장인/재학생반</span></div>
-                                    <dl class="w-info">
-                                        <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    <dl class="w-info pt-zero">
+                                        <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                                     </dl>
-                                    <div class="w-tit tx-blue">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                    <div class="w-tit">
+                                        <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)</a>
                                     </div>
-                                    <dl class="w-info tx-gray">
-                                        <dt>강의촬영(실강) : 2020년 1월</dt><br>
-                                        <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                        <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
-                                    </dl>
-                                    <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    </ul>
+                                    <div class="w-info tx-gray">
+                                        <dl>
+                                            <dt class="h27"><strong>강의촬영(실강)</strong>2020년 1월</dt><br/>
+                                            <dt class="h27"><strong>강의수</strong>32강 / 55강</dt><br/>
+                                            <dt class="h27"><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                            <dt class="h27">
+                                                <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
+                                            </dt><br/>
+                                            <dt class="h27">
+                                                <input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label>
+                                            </dt>
+                                        </dl>
+                                    </div>
                                     <div class="w-buy">       
                                         <ul class="two">
                                             <li><a href="#none" class="btn_gray">장바구니</a></li>
@@ -137,21 +142,27 @@
                                     <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                                 </div>
                                 <div class="w-data tx-left pl15">
-                                    <div class="OTclass"><span>직장인/재학생반</span></div>
-                                    <dl class="w-info">
-                                        <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                    <dl class="w-info pt-zero">
+                                        <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                                     </dl>
-                                    <div class="w-tit tx-blue">
-                                        2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                    <div class="w-tit">
+                                        <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)</a>
                                     </div>
-                                    <dl class="w-info tx-gray">
-                                        <dt>강의촬영(실강) : 2020년 1월</dt><br>
-                                        <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                        <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
-                                    </dl>
-                                    <ul>
-                                        <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    </ul>
+                                    <div class="w-info tx-gray">
+                                        <dl>
+                                            <dt class="h27"><strong>강의촬영(실강)</strong>2020년 1월</dt><br/>
+                                            <dt class="h27"><strong>강의수</strong>32강 / 55강</dt><br/>
+                                            <dt class="h27"><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                            <dt class="h27">
+                                                <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
+                                            </dt><br/>
+                                            <dt class="h27">
+                                                <input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label>
+                                            </dt> 
+                                        </dl>
+                                    </div>
+
                                     <div class="w-buy">       
                                         <ul class="two">
                                             <li><a href="#none" class="btn_gray">장바구니</a></li>

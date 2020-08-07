@@ -92,7 +92,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1722_01.jpg" alt="이시한 교수" >
     </div> 
     
-    <div class="evtCtnsBox evt02">
+    <div class="evtCtnsBox evt02 ddayArea">
         <div class="dday NSK-Thin">
             <strong class="NSK-Black">사전예약 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
         </div> 
@@ -354,6 +354,7 @@
                 }, 1000);
             } else {
                 $('#'+ele_id).hide();
+                $('.ddayArea').hide();
             }
         }
 

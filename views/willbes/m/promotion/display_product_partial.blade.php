@@ -127,7 +127,7 @@
                                             <dt>{{ $row['CourseName'] }}</dt>
                                         </dl>
                                         <div class="w-tit">
-                                            <a href="#none">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/m/package/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>개강일 <span class="tx-blue">{{ $row['StudyStartDateYM'] }}</span> <span class="row-line">|</span></dt>
@@ -171,7 +171,7 @@
                                 <tr>
                                     <td class="w-data tx-left" colspan="2">
                                         <div class="w-tit">
-                                            <a href="#none">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/m/periodPackage/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>개강일 <span class="tx-blue">{{ $row['StudyStartDateYM'] }}</span> <span class="row-line">|</span></dt>
@@ -218,8 +218,6 @@
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         var $is_direct_pay = $(this).data('direct-pay');
         var $is_redirect = $(this).data('is-redirect');
-        console.log($is_direct_pay);
-        console.log($is_redirect);
         addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect,'{{front_url('')}}');
     });
 </script>

@@ -62,14 +62,29 @@
 
     @if(empty($arr_base['display_product_data']) === false)
         @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
-
-        @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
-
-        @include('willbes.m.promotion.display_product_partial',array('group_num'=>3))
-
-        @include('willbes.m.promotion.display_product_partial',array('group_num'=>4))
     @endif
 
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_04.jpg" alt="기본이론 종합반" >
+        <ul>
+            <li>
+                <a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/169703" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_05.jpg" alt="기본이론 원유철" >
+                </a>
+            <li>
+            <li>
+                <a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/169704" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_06.jpg" alt="기본이론 오태진" >
+                </a>
+            <li>
+            <li>
+                <a href="https://police.willbes.net/m/package/show/cate/3002/pack/648001/prod-code/169705" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_07.jpg" alt="기본이론 경행경채" >
+                </a>
+            <li>
+        </ul>
+        <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1556"  target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_08.jpg" alt="경찰패스" ></a>
+    </div>
 </div>
 <!-- End Container -->
 

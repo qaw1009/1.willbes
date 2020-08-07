@@ -11,7 +11,7 @@
     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
     @foreach($arr_base['display_product_data'][$group_num] as $ccd => $val)
-        @if($ccd == '615001')
+        @if($pattern_ccd[$ccd] == 'only') {{-- 단과강좌 --}}
             <div class="mb100">
                 <div class="pd20">
                     <div class="NSK-Black tx22 mb10">단과 강좌</div>
@@ -88,13 +88,13 @@
                                         <li>
                                             <span class="chk">
                                                 <label>[판매]</label>
-                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                             </span>
                                             <div class="priceWrap NG">
                                                 {{ $book_row['BookProvisionCcdName'] }}  <span class="NGR">{{ $book_row['ProdBookName'] }}</span><br>
                                                 <p class="NGR">
                                                     [{{ $book_row['wSaleCcdName'] }}]
-                                                    <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }}%)
+                                                    <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})
                                                 </p>
                                             </div>
                                         </li>
@@ -105,8 +105,7 @@
                     @endforeach
                 @endif
             </div>
-            {{-- End 단과강좌 --}}
-        @elseif($ccd == '615003')
+        @elseif($pattern_ccd[$ccd] == 'package') {{-- 운영자 패키지 --}}
             <div class="mb100">
                 <div class="pd20">
                     <div class="NSK-Black tx22 mb10">운영자 패키지 강좌</div>
@@ -154,8 +153,7 @@
                     </table>
                 </div>
             </div>
-            {{-- End 운영자 패키지 강좌 --}}
-        @elseif($ccd == '615004')
+        @elseif($pattern_ccd[$ccd] == 'period') {{-- 기간제 패키지 --}}
             <div class="mb100">
                 <div class="pd20">
                     <div class="NSK-Black tx22 mb10">기간제 패키지 강좌</div>

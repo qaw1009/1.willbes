@@ -23,6 +23,13 @@ class BasePromotion extends \app\controllers\FrontController
         '607003' => '직장인/재학생반'
     ];
 
+    // 상품유형
+    private $_pattern_ccd = [
+        '615001' => 'only',     // 단강좌
+        '615003' => 'package',  // 운영자패키지
+        '615004' => 'period'    // 기간제패키지
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -222,7 +229,7 @@ class BasePromotion extends \app\controllers\FrontController
                     if (empty($display_group_data[$group][$ccd]) === false) {
                         foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                             $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                            if ($ccd == '615001') {
+                            if ($this->_pattern_ccd[$ccd] == 'only') {
                                 $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
                                 $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
                                 $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
@@ -252,6 +259,7 @@ class BasePromotion extends \app\controllers\FrontController
             'file_yn' => $file_yn,
             'ismobile' => $ismobile,
             'lec_type' => $this->_lec_type_ccd,
+            'pattern_ccd' => $this->_pattern_ccd,
         ], false);
     }
 

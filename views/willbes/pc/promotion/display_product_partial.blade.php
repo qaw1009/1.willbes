@@ -22,7 +22,7 @@
             @foreach($arr_base['display_product_data'] as $group => $data)
                 @if(empty($data) === false && $group == $group_num)
                     @foreach($data as $ccd => $val)
-                        @if($ccd == '615001')
+                        @if($pattern_ccd[$ccd] == 'only') {{-- 단과강좌 --}}
                             <div class="proLecList">
                                 <h1 class="group_h1">단과 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
@@ -146,8 +146,7 @@
                                     @endif
                                 </div>
                             </div>
-                            {{-- End 단과강좌 --}}
-                        @elseif($ccd == '615003')
+                        @elseif($pattern_ccd[$ccd] == 'package') {{-- 운영자 패키지 --}}
                             <div class="proLecPkg">
                                 <h1 class="group_h1">운영자 패키지 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
@@ -190,8 +189,7 @@
                                     </table>
                                 </div>
                             </div>
-                            {{-- End 운영자 패키지 강좌 --}}
-                        @elseif($ccd == '615004')
+                        @elseif($pattern_ccd[$ccd] == 'period') {{-- 기간제 패키지 --}}
                             <div class="proLecPkg">
                                 <h1 class="group_h1">기간제 패키지 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
@@ -232,8 +230,6 @@
                                     </table>
                                 </div>
                             </div>
-
-                            {{-- End 기간제 패키지 강좌 --}}
                         @endif
                     @endforeach
                 @endif

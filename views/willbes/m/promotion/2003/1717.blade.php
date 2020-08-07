@@ -15,8 +15,8 @@
     .evt01 {}
 
     .evt02 {position:relative;}
-    .evt02 li img {position:absolute;left:50%;top:70%;margin-left:-288px;width:80%;}    
-    .check { position:absolute; bottom:50px; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
+    .evt02 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
+    .check {position:absolute; bottom:50px; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
     .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
@@ -38,16 +38,14 @@
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
 
     /* 폰 가로, 태블릿 세로*/
-    @@media all and (min-width:320px) and (max-width:480px)  {
-        .evt02 li img {position:absolute;left:50%;top:70%;margin-left:-135px;width:80%;}    
+    @@media all and (min-width:320px) and (max-width:480px)  { 
         .check {position:absolute;width:300px;left:50%;margin-left:-150px;bottom:0;}
         .check label {font-size:12px;}
         .check input {width:16px;height:16px;}
     }
 
     /* 태블릿 세로 */
-    @@media all and (min-width:481px) and (max-width:768px)  {
-        .evt02 li img {position:absolute;left:50%;top:70%;margin-left:-190px;width:80%;}    
+    @@media all and (min-width:481px) and (max-width:768px)  {  
         .check {position:absolute;width:400px;left:50%;margin-left:-200px;bottom:20px;padding:10px;}
         .check label {font-size:13px;}
         .check input {width:20px;height:20px;}
@@ -70,11 +68,11 @@
 
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_02.jpg" alt="" >
-        <li> 
+        <p> 
             <a href="javascript:go_PassLecture('168184');">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_02_apply.png" alt="" >
             </a>    
-        </li>
+        </p>
         <div class="check">
             <label>
                 <input name="ischk"  type="checkbox" value="Y" />

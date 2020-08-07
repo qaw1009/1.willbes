@@ -197,6 +197,10 @@
                 <li>{!! banner('M_메인_신규강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌3', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌4', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌5', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌6', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌7', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌8', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 

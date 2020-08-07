@@ -1,12 +1,18 @@
-@extends('html.m.layouts.master')
+@extends('html.m.layouts.v2.master')
 
 @section('content')
 
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="onSearch">
-        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
-        <label for="onsearch"><button title="검색">검색</button></label>
+    <div class="MainSlider swiper-container swiper-container-page mt20 mb20">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
     </div>
 
     <div id="Sticky" class="sticky-Title">

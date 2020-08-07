@@ -4,9 +4,9 @@
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/stats') }}" class="cs-pointer"><strong>결제완료통계</strong></a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/stats') }}" class="cs-pointer"><strong>승인완료통계</strong></a></li>
     </ul>
-    <h5>- 결제완료 집계 데이터를 확인하는 메뉴입니다. (PG 데이터와 비교/검증용)</h5>
+    <h5>- 결제 승인완료 집계 데이터를 확인하는 메뉴입니다. (PG 데이터와 비교/검증용, 결제취소/망취소 이력 제외)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">

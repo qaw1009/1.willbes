@@ -2454,7 +2454,7 @@ class EventLectureModel extends WB_Model
     public function listEventForAddApply($el_idx, $rtn_col = '')
     {
         $column = "
-            AA.EaaIdx, AA.ElIdx, AA.ProdCode, AA.PersonLimitType, AA.PersonLimit, AA.Name, AA.ApplyStartDatm, AA.ApplyEndDatm, 
+            AA.EaaIdx, AA.ElIdx, AA.ProductGiveType, AA.ProdCode, AA.PersonLimitType, AA.PersonLimit, AA.Name, AA.ApplyStartDatm, AA.ApplyEndDatm, 
             AA.RegisterExpireStatus, AA.IsUse, AA.IsStatus, AA.RegDatm, AA.RegAdminIdx, AA.RegIp, AA.UpdDatm, AA.UpdAdminIdx,
             DATE_FORMAT(AA.ApplyStartDatm, '%Y-%m-%d') AS ApplyStartDate,
             DATE_FORMAT(AA.ApplyEndDatm, '%Y-%m-%d') AS ApplyEndDate,
@@ -2524,6 +2524,8 @@ class EventLectureModel extends WB_Model
     {
         try {
             $arr_event_add_apply_eaa_idx = element('event_add_apply_eaa_idx', $input);
+            $arr_event_add_apply_product_give_type = element('event_add_apply_product_give_type', $input);
+            $arr_event_add_apply_prod_code = element('event_add_apply_prod_code', $input);
             $arr_event_add_apply_name = element('event_add_apply_name', $input);
             $arr_event_add_apply_person_limit_type = element('event_add_apply_person_limit_type', $input);
             $arr_event_add_apply_person_limit = element('event_add_apply_person_limit', $input);
@@ -2558,6 +2560,8 @@ class EventLectureModel extends WB_Model
                         $add_param = [
                             'ElIdx' => $el_idx,
                             'PersonLimitType' => $arr_event_add_apply_person_limit_type[$arr_key],
+                            'ProductGiveType' => $arr_event_add_apply_product_give_type[$arr_key],
+                            'ProdCode' => $arr_event_add_apply_prod_code[$arr_key],
                             'PersonLimit' => $arr_event_add_apply_person_limit[$arr_key],
                             'Name' => $arr_event_add_apply_name[$arr_key],
                             'ApplyStartDatm' => $event_add_apply_start_datm,
@@ -2583,6 +2587,8 @@ class EventLectureModel extends WB_Model
                         $event_add_apply_end_datm = $arr_event_add_apply_end_date[$arr_key] . ' ' . $arr_event_add_apply_end_hour[$arr_key] . ':' . $arr_event_add_apply_end_min[$arr_key] . ':59';
 
                         $modify_param = [
+                            'ProductGiveType' => $arr_event_add_apply_product_give_type[$arr_key],
+                            'ProdCode' => $arr_event_add_apply_prod_code[$arr_key],
                             'PersonLimitType' => $arr_event_add_apply_person_limit_type[$arr_key],
                             'PersonLimit' => $arr_event_add_apply_person_limit[$arr_key],
                             'Name' => $arr_event_add_apply_name[$arr_key],

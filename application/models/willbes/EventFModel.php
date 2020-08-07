@@ -1488,20 +1488,17 @@ class EventFModel extends WB_Model
                 }
 
                 // 지급할 강의상품이 있을 경우
-                // TODO: 1545프로모션. 수동으로 교재 보낸다고함. 추후 상품 자동지급 필요시 개발
-                /*
-                if(empty($row['EaaIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
-                    //중복신청여부 로그인 아이디 기준으로 체크
-                    $result_apply_member = $this->getApplyMember(['EQ' => [ 'A.EaaIdx' => $row['EaaIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
-                    if(count($result_apply_member) == 0) {
-                        if(empty($row['ProdCode']) === false) {
-                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $row['ProdCode']) !== true) {
-                                throw new \Exception('제공 상품이 처리되지 않았습니다.');
-                            }
+                if(empty($row['ProdCode']) === false && empty($row['ProductGiveType']) === false && empty($this->session->userdata('mem_idx')) == false) {
+                    if($row['ProductGiveType'] == 'C') {
+                        // 장바구니지급 TODO
+
+                    } else if($row['ProductGiveType'] == 'D') {
+                        // 즉시지급
+                        if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $row['ProdCode']) !== true) {
+                            throw new \Exception('제공 상품이 처리되지 않았습니다.');
                         }
                     }
                 }
-                */
 
                 if ($this->_addEventApplyMember($input_register_data) !== true) {
                     throw new \Exception('추가 이벤트 신청 등록을 실패했습니다.');
@@ -1558,7 +1555,7 @@ class EventFModel extends WB_Model
     }
 
     /**
-     * 프로모션 기타 로직 처리
+     * 프로모션 기타 로직 처리 (PromotionParams 제한체크 -> 유료상품 장바구니 담기 -> PromotionParams 업데이트)
      * @param array $inputData
      * @param String $p_site_code
      * @return array|bool

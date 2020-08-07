@@ -533,7 +533,7 @@
                                     <button type="button" class="btn btn-info btn-apply-add">추가</button>
                                 </div>
                                 <div class="col-md-9">
-                                    <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크 이벤트)</p>
+                                    <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크/선착순당첨)</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -542,8 +542,8 @@
                                         <table class="table table-striped table-bordered" id="table_add_apply">
                                             <thead>
                                                 <tr>
-                                                    <th>인원제한</th>
-                                                    <th>인원수</th>
+                                                    <th>인원제한/인원수</th>
+                                                    <th>지급상품/상품코드</th>
                                                     <th>신청정보명</th>
                                                     <th>신청가능 시작일시</th>
                                                     <th>신청가능 종료일시</th>
@@ -565,9 +565,17 @@
                                                                 <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>제한</option>
                                                                 <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
                                                             </select>
+                                                            /
+                                                            <input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_{{$add_apply_index}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_{{$add_apply_index}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
+                                                            <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_{{$add_apply_index}}" style="min-width: 70px;">
+                                                                <option value="N" @if($row['ProductGiveType'] == 'N')selected="selected"@endif>미지급</option>
+                                                                <option value="C" @if($row['ProductGiveType'] == 'C')selected="selected"@endif>장바구니지급</option>
+                                                                <option value="D" @if($row['ProductGiveType'] == 'D')selected="selected"@endif>즉시지급</option>
+                                                            </select>
+                                                            /
+                                                            <input type="text" name="event_add_apply_prod_code[]" id="event_add_apply_prod_code_{{$add_apply_index}}" value="{{$row['ProdCode']}}"  style="width: 90px;">
                                                         </td>
                                                         <td>
                                                             <input type="text" name="event_add_apply_name[]" id="event_add_apply_name_{{$add_apply_index}}" value="{{$row['Name']}}" style="min-width: 170px;">
@@ -1262,9 +1270,17 @@
             add_lists += '			<option value="L">제한</option>';
             add_lists += '			<option value="N" selected="selected">무제한</option>';
             add_lists += '		</select>';
+            add_lists += '		/';
+            add_lists += '		<input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_' + temp_apply_idx + '" value="0" style="width: 50px;">';
             add_lists += '	</td>';
             add_lists += '	<td>';
-            add_lists += '		<input type="text" name="event_add_apply_person_limit[]" id="event_add_apply_person_limit_' + temp_apply_idx + '" value="0" style="width: 50px;">';
+            add_lists += '      <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_' + temp_apply_idx + '" style="min-width: 70px;">';
+            add_lists += '      	<option value="N">미지급</option>';
+            add_lists += '      	<option value="C">장바구니지급</option>';
+            add_lists += '      	<option value="D">즉시지급</option>';
+            add_lists += '      </select>';
+            add_lists += '      /';
+            add_lists += '      <input type="text" name="event_add_apply_prod_code[]" id="event_add_apply_prod_code_' + temp_apply_idx + '" value="" style="width: 90px;">';
             add_lists += '	</td>';
             add_lists += '	<td>';
             add_lists += '		<input type="text" name="event_add_apply_name[]" id="event_add_apply_name_' + temp_apply_idx + '" value="" style="min-width: 170px;">';

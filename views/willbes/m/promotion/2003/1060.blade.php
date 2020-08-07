@@ -7,7 +7,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtTop {position:relative}
 
-    .evt00 { text-align:center;}
+    .evt00 {text-align:center;}
     .evt00 .dday {font-size:22px;padding:20px 0;}
     .evt00 .dday span {color:#435d96; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
 
@@ -199,30 +199,6 @@
         } else {
             $('#'+ele_id).hide();
         }
-    }
-
-    {{-- 쿠폰발급 --}}
-    function giveCheck() {
-
-        @if(ENVIRONMENT == 'production')
-            @if(date('YmdHi') < '202007310000' || date('YmdHi') >= '202008010000')
-                alert('쿠폰발급 기간이 아닙니다.'); return;
-            @endif
-        @endif
-
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-        @if(empty($arr_promotion_params) === false)
-            var $regi_form = $('#regi_form');
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn=N';
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('쿠폰이 발급되었습니다. \n내강의실에서 확인해 주세요.');
-                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
-                }
-            }, showValidateError, null, false, 'alert');
-        @else
-            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
-        @endif
     }
 </script>
 

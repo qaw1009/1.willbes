@@ -57,7 +57,7 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">      
-    <div class="evtCtnsBox evt00">
+    <div class="evtCtnsBox evt00 ddayArea">
         <div class="dday NSK-Thin">
             <strong class="NSK-Black">소방패스 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
         </div>     
@@ -116,10 +116,10 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/167765') }}" target="_blank">
+        <a href="javascript:goLecture('167765');">
         공채 12개월 신청 >
         </a>
-        <a href="{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/167766') }}" target="_blank">
+        <a href="javascript:goLecture('167765');">
         특채 12개월 신청 >
         </a>
     </div>
@@ -198,8 +198,19 @@
             }, 1000);
         } else {
             $('#'+ele_id).hide();
+            $('.ddayArea').hide();
         }
     }
+
+    {{-- 수강신청 이동 --}}
+    function goLecture(prod_code) {
+        if ($('#is_chk').is(':checked') === false) {
+            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+            return;
+        }
+        location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code;
+    }
+
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

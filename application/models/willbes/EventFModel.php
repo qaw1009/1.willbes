@@ -1821,7 +1821,7 @@ class EventFModel extends WB_Model
     public function getProductOnLecture($arr_prod_idx){
         $column = "
             ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
-            IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData
+            IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData, LecTypeCcd
         ";
 
         $from = " FROM {$this->_table['product_on_lecture']} ";

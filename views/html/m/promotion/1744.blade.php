@@ -6,6 +6,9 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; word-break: keep-all;}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
+    .evt01 {position:relative; width:device-width;}
+    .evt01 img {display:block}
+
     .evt03 {padding-bottom:100px}
     .evt03 div {font-size:1.6rem; margin:50px 0 30px}
     .evt03 li {display:inline;float:left; width:calc(50% - 20px); margin:0 10px 20px; position:relative;}
@@ -51,8 +54,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_top.jpg" alt="윌비스 신광은 경찰팀 추천강좌" >
     </div> 
 
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_01.jpg" alt="파이널패스" >
+    <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_01.jpg" alt="파이널패스" usemap="#Map1744" border="0" >
+        <map name="Map1744">
+          <area shape="rect" coords="29,527,179,599" href="#" alt="1단계">
+          <area shape="rect" coords="197,524,352,599" href="#" alt="2단계">
+          <area shape="rect" coords="366,527,521,602" href="#" alt="3단계">
+          <area shape="rect" coords="540,527,694,598" href="#" alt="4단계">
+        </map>
         <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1741" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_02.jpg" alt="파이널패스" ></a>
     </div> 
 
@@ -365,5 +374,14 @@
     </div>
 </div>
 <!-- End Container -->
+
+<script src="/public/js/willbes/jquery.rwdImageMaps.js"></script>
+<script> 
+    $(function(){ 
+        $(document).ready(function(e) { 
+            $('img[usemap]').rwdImageMaps(); 
+        }); 
+    });
+</script> 
 
 @stop

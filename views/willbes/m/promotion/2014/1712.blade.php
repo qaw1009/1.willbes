@@ -222,9 +222,11 @@
 
     <div id="tab01" class="evtCtnsBox">
         <div class="evt01">
+            {{--
             <div class="dday NSK-Thin"><img src="https://static.willbes.net/public/images/promotion/2020/07/1712_img01.png" alt="시계" >
                 <strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong>
-            </div> 
+            </div>
+            --}} 
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1712_02.jpg" alt="" > <br>
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1712_03.jpg" alt="" >      
         </div>

@@ -43,7 +43,7 @@
                     {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
                 </div>
                 <ul class="bestLec">
-                    @for($i=1; $i<=4; $i++)
+                    @for($i=1; $i<=8; $i++)
                         @if(isset($data['arr_main_banner']['메인_신규강좌'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_신규강좌'.$i]) !!}
@@ -143,6 +143,11 @@
                 </div>
             </div> 
             </div>
+        </div>
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
 
     </div>

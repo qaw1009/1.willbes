@@ -156,7 +156,7 @@
             <a href="{{ site_url('/home/html/m/promotion/1567M') }}" target="_blank">엔잡 정문진</a>
             <br><br> 
             <a href="{{ site_url('/home/html/m/promotion/1588') }}" target="_blank">공무원 한덕현</a>
-            <a href="{{ site_url('/home/html/m/promotion/1744') }}" target="_blank">프로모션 강의 DP</a>
+            <a href="{{ site_url('/home/html/m/promotion/1744') }}" target="_blank">프로모션 강의 DP(모바일 이미지맵도 적용)</a>
         </div>
     </li>
 </ul>

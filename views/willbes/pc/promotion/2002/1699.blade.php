@@ -86,20 +86,23 @@
             </div>
         </div>
 
-        <ul class="sky">
-            <li>
-                <a href="#to_go">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_sky.png" alt="필합생 전용 이벤트">
-                </a>
-            </li>
-        </ul>
+        <div class="sky">
+            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_sky.png" alt="필합생 전용 이벤트"></a>
+        </div>
 
         <div class="evtCtnsBox evtTop00">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">    
         </div>       
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_top.jpg" title="문제풀이 풀패키지">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1699_top.jpg" title="문제풀이 풀패키지">
+        </div>
+
+        <div class="evtCtnsBox evt03" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1699_03.jpg" usemap="#Map1699a" title="전용 패키지 방문접수" border="0">
+            <map name="Map1699a" id="Map1699a">
+              <area shape="rect" coords="388,859,730,926" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -117,22 +120,14 @@
                 <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowL.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_arrowR.png"></a></p>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt03" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_03.jpg" usemap="#Map1699a" title="전용 패키지 방문접수" border="0">
-            <map name="Map1699a" id="Map1699a">
-                <area shape="rect" coords="177,989,466,1053" href="javascript:alert('마감 되었습니다.')" />
-                <area shape="rect" coords="660,991,947,1052" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-            </map>
-        </div>
+        </div>        
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_04.jpg" title="핸리 포드">
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_05.jpg" title="상품 구성">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1699_05.jpg" title="상품 구성">
         </div>
 
         {{--

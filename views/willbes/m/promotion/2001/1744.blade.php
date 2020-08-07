@@ -58,88 +58,18 @@
 
     <div class="evtCtnsBox evt03">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_03.jpg" alt="기본이론 집중완성" >
-        <div class="NSK-Black tx-18">기본이론 단과</div>
-        <ul>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/167090" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50547/prof_detail_505471.png">
-                    <span>2020년 2차대비 신광은 형사소송법 기본이론 (20년 7월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3002/pattern/only/prod-code/153345" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50547/prof_detail_505471.png">
-                    <span>2019 신광은 수사 이론 (19년 5월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/167094" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50031/prof_detail_50031.png">
-                    <span>2020년 2차대비 장정훈 경찰학개론 기본이론 (20년 7,8월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3002/pattern/only/prod-code/151726" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50031/prof_detail_50031.png">
-                    <span>2020 장정훈 행정법 이론 (19년 3월 + 20년 5월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/169214" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50297/prof_detail_50297.png">
-                    <span>2020년 2차대비 김원욱 형법 기본이론 (20년 7월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/167096" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50135/prof_detail_50135.png">
-                    <span>2020년 2차대비 하승민 영어 기본이론 (20년 7,8월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/169222" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50641/prof_detail_50641.png">
-                    <span>2020년 2차대비 원유철 한국사 기본이론 (20년 8월) </span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-            <li>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/only/prod-code/169252" target="_blank">
-                    <img src="https://police.willbes.net/public/uploads/willbes/professor/50131/prof_detail_50131_1567240397.png">
-                    <span>2020년 2차대비 오태진 한국사 기본이론 (20년 8월)</span>
-                    <strong>수강신청 ></strong>
-                </a>   
-            </li>
-        </ul>
-    </div> 
+    </div>
 
-    <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_04.jpg" alt="기본이론 종합반" >
-        <ul>
-            <li>
-                <a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/169703" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_05.jpg" alt="기본이론 원유철" >
-                </a>    
-            <li>
-            <li>
-                <a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/169704" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_06.jpg" alt="기본이론 오태진" >
-                </a>    
-            <li>
-            <li>
-                <a href="https://police.willbes.net/m/package/show/cate/3002/pack/648001/prod-code/169705" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_07.jpg" alt="기본이론 경행경채" >
-                </a>    
-            <li>
-        </ul>
-        <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1556"  target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_08.jpg" alt="경찰패스" ></a>
-    </div>  
+    @if(empty($arr_base['display_product_data']) === false)
+        @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+
+        @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
+
+        @include('willbes.m.promotion.display_product_partial',array('group_num'=>3))
+
+        @include('willbes.m.promotion.display_product_partial',array('group_num'=>4))
+    @endif
+
 </div>
 <!-- End Container -->
 

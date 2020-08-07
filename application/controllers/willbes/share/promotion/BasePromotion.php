@@ -16,6 +16,13 @@ class BasePromotion extends \app\controllers\FrontController
         '615004' => 'PeriodpackLecture' // 기간제패키지
     ];
 
+    // 강좌유형
+    private $_lec_type_ccd = [
+        '607001' => '일반강좌',
+        '607002' => '특강',
+        '607003' => '직장인/재학생반'
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -212,7 +219,6 @@ class BasePromotion extends \app\controllers\FrontController
             foreach ($display_group_data as $group => $data) {
                 foreach ($data as $ccd => $arr_prod_idx) {
                     $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
-
                     if (empty($display_group_data[$group][$ccd]) === false) {
                         foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                             $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
@@ -244,7 +250,8 @@ class BasePromotion extends \app\controllers\FrontController
             'arr_promotion_params' => $arr_promotion_params,
             'file_link' => $file_link,
             'file_yn' => $file_yn,
-            'ismobile' => $ismobile
+            'ismobile' => $ismobile,
+            'lec_type' => $this->_lec_type_ccd,
         ], false);
     }
 

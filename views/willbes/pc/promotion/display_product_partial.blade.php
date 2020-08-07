@@ -7,7 +7,7 @@
         .btnCart:hover { background: #707070 !important; }
         .btnBuy:hover { border: 1px solid #0d74ae !important; background: #1a8ccb !important; }
         .visi-hidden {visibility: hidden !important;}
-        #event_display_product_list1 h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
+        .group_h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
     @endif
     <form id="dp_prod_form{{$group_num}}" method="POST" onsubmit="return false;" novalidate="">
@@ -24,7 +24,7 @@
                     @foreach($data as $ccd => $val)
                         @if($ccd == '615001')
                             <div class="proLecList">
-                                <h1>단과 강좌</h1>
+                                <h1 class="group_h1">단과 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                 <div class="willbes-Lec-Table mt20">
                                     @if(empty($val) === false)
@@ -149,7 +149,7 @@
                             {{-- End 단과강좌 --}}
                         @elseif($ccd == '615003')
                             <div class="proLecPkg">
-                                <h1>운영자 패키지 강좌</h1>
+                                <h1 class="group_h1">운영자 패키지 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                 <div class="willbes-Lec-Table mt20">
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -193,7 +193,7 @@
                             {{-- End 운영자 패키지 강좌 --}}
                         @elseif($ccd == '615004')
                             <div class="proLecPkg">
-                                <h1>기간제 패키지 강좌</h1>
+                                <h1 class="group_h1">기간제 패키지 강좌</h1>
                                 <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                 <div class="willbes-Lec-Table mt20">
                                     <table cellspacing="0" cellpadding="0" class="lecTable">

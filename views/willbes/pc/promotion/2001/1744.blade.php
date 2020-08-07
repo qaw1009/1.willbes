@@ -64,9 +64,6 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1744_03.jpg" title="기본이론 단과" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
             @else
             @endif        
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1744_04.jpg" usemap="#Map1744b" title="기본이론 종합반" border="0" />

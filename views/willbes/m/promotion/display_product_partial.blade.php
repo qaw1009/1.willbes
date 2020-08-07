@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="w-buy">
                                                 <ul class="two">
-                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="N">장바구니</a></li>
+                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                     <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                                 </ul>
                                             </div>
@@ -218,6 +218,8 @@
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         var $is_direct_pay = $(this).data('direct-pay');
         var $is_redirect = $(this).data('is-redirect');
+        console.log($is_direct_pay);
+        console.log($is_redirect);
         addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect,'{{front_url('')}}');
     });
 </script>

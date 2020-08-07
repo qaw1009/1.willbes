@@ -16,6 +16,20 @@ class BasePromotion extends \app\controllers\FrontController
         '615004' => 'PeriodpackLecture' // 기간제패키지
     ];
 
+    // 강좌유형
+    private $_lec_type_ccd = [
+        '607001' => '일반강좌',
+        '607002' => '특강',
+        '607003' => '직장인/재학생반'
+    ];
+
+    // 상품유형
+    private $_pattern_ccd = [
+        '615001' => 'only',     // 단강좌
+        '615003' => 'package',  // 운영자패키지
+        '615004' => 'period'    // 기간제패키지
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -212,11 +226,10 @@ class BasePromotion extends \app\controllers\FrontController
             foreach ($display_group_data as $group => $data) {
                 foreach ($data as $ccd => $arr_prod_idx) {
                     $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
-
                     if (empty($display_group_data[$group][$ccd]) === false) {
                         foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                             $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                            if ($ccd == '615001') {
+                            if ($this->_pattern_ccd[$ccd] == 'only') {
                                 $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
                                 $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
                                 $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
@@ -244,7 +257,9 @@ class BasePromotion extends \app\controllers\FrontController
             'arr_promotion_params' => $arr_promotion_params,
             'file_link' => $file_link,
             'file_yn' => $file_yn,
-            'ismobile' => $ismobile
+            'ismobile' => $ismobile,
+            'lec_type' => $this->_lec_type_ccd,
+            'pattern_ccd' => $this->_pattern_ccd,
         ], false);
     }
 

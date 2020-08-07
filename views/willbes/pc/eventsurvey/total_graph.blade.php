@@ -442,7 +442,7 @@
                                     @foreach($data_series as $series_key => $series_val)
                                         @foreach($series_val as $key => $title)
                                         <li>
-                                            <label><input type="radio" name="sp_serial" value="{{ $key }}" onClick="selSurvey2(this.value,{{ $key }});" {{ $key == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
+                                            <label><input type="radio" name="sp_serial" value="{{ $key }}" onClick="selSurveyGraph(this.value);" {{ $key == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
                                         </li>
                                         @endforeach
                                     @endforeach
@@ -686,16 +686,11 @@
             $(".wtr_" + val).show();
         }
 
-        function selSurvey2(obj_val,index) {
-            $(".survey_graph").hide();
-            $(".survey" + index).show();
-            selSurveyGraph(obj_val);
-        }
-
-        // 설문결과
+        // 직렬선택
         function selSurveyGraph(obj_val) {
             var json_data = [];
             var html = "";
+            var idx = 1;
             @if(empty($surveyList) === false)
                 json_data = {!! json_encode($surveyList) !!};
             @endif
@@ -703,89 +698,67 @@
             if (json_data === null || typeof json_data[obj_val] === 'undefined') {
                 return;
             }
-            console.log(json_data[obj_val]);
-            return;
+
+            $("#graph_box").html('');
             $.each(json_data[obj_val], function(type, data) {
-                html += nwagonChart(type,data);
+                html = '<div class="question">';
+                html += '<p>Q' + idx + '. ' + Object.keys(data) + '</p>';
+                html += '<div class="qBox">';
+                html += '<div id="survey_' + idx + '"></div>';
+                html += '</div>';
+                html += '</div>';
+                $("#graph_box").append(html);
+                nwagonChart(type, data, idx);
+                idx++;
             });
-
-
-
-            $("#graph_box").html(html);
         }
 
-        function nwagonChart(type,data) {
+        // 응시직렬 차트
+        function nwagonChart(type,data,idx) {
             var names = [];
             var fields = [];
             var values = [];
-            var idx = 0;
+            var cnt = 0;
+            var title = '';
 
             $.each(data, function(name, val) {
-                if(type == 'S'){ // 전체 시험 난이도
-                    names.push(name.substring(0,2));
-                }else{
-                    names.push(name);
-                }
-
-                var spreads = [];
-                $.each(val, function(item, spread) {
-                    if(idx == 0){
-                        fields.push(item);
+                title = name;
+                $.each(val, function(item_title, items) {
+                    if(type == 'S'){ // 전체 시험 난이도
+                        names.push(item_title.substring(0,2));
+                    }else{
+                        names.push(item_title);
                     }
-                    spreads.push(spread);
+
+                    var spreads = [];
+                    $.each(items, function(item, spread) {
+                        if(cnt == 0){
+                            fields.push(item);
+                        }
+                        spreads.push(spread);
+                    });
+                    values[cnt] = spreads;
+                    cnt++;
                 });
-                values[idx] = spreads;
-                idx++;
             });
 
-            var set = {
-                'S': {
-                    id : '1',
-                    names: names,
-                    title: '전체적인 시험 체감 난이도',
-                    values: values,
-                    fields: fields
-                },
-                'M': {
-                    id : '2',
-                    names: names,
-                    title: '공통 과목 시험 체감 난이도',
-                },
-                'T': {
-                    id : '3',
-                    names: names,
-                    title: '선택 과목 시험 체감 난이도',
-                },
-            }
-
-            $('#survey' + set[type]['id']).html('');
             var options = {
                 'legend': {
-                    names: set[type]['names']
+                    names: names
                 },
                 'dataset': {
-                    title: set[type]['title'],
+                    title: [title],
                     values: values,
                     colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
                     fields: fields
                 },
-                'chartDiv': 'survey' + set[type]['id'],
+                'chartDiv': 'survey_' + idx,
                 'chartType': 'multi_column',
                 'chartSize': { width: 900, height: 300 },
                 'maxValue': 100,
                 'increment': 10
             };
             Nwagon.chart(options);
-
-            var html = "";
-            html += '<div class="question">';
-            html += '<p>Q1. 전체적인 시험 체감 난이도</p>';
-            html += '<div class="qBox">';
-            html += '<div id="survey1"></div>';
-            html += '</div>';
-            html += '</div>';
-
-            return html;
         }
 
         function surveyOpen(){

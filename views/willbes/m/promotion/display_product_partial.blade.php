@@ -60,7 +60,7 @@
                                                     @if(empty($row['ProdPriceData']) === false)
                                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                             <dt class="h27">
-                                                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif>
+                                                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="goods_chk chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
                                                                 <label for="prod_code" class="pl10">
                                                                     [{{ $price_row['SaleTypeCcdName'] }}] :
                                                                     <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})
@@ -72,8 +72,8 @@
                                             </div>
                                             <div class="w-buy">
                                                 <ul class="two">
-                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
-                                                    <li><a href="#none" class="btn_blue direct_pay">바로결제</a></li>
+                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="N">장바구니</a></li>
+                                                    <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -88,7 +88,7 @@
                                         <li>
                                             <span class="chk">
                                                 <label>[판매]</label>
-                                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                <input type="checkbox" name="prod_code[]" class="goods_chk chk_books" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                             </span>
                                             <div class="priceWrap NG">
                                                 {{ $book_row['BookProvisionCcdName'] }}  <span class="NGR">{{ $book_row['ProdBookName'] }}</span><br>
@@ -200,23 +200,6 @@
         @endif
     @endforeach
 
-    <div id="LecBuyMessagePop{{$group_num}}" class="willbes-Layer-Black">
-        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h250 fix">
-            <a class="closeBtn" href="#none" onclick="closeWin('LecBuyMessagePop{{$group_num}}')">
-                <img src="{{ img_url('m/calendar/close.png') }}">
-            </a>
-            <div class="Message NG">
-                도서구입비 소득공제 시행에 따라 강좌와 교재는 동시 결제가 불가능 합니다.<Br>
-                선택한 교재는 장바구니에 자동으로 담기며, <Br>
-                강좌 선 결제 후 장바구니에 담긴 교재를 결제하실 수 있습니다.
-            </div>
-            <div class="MessageBtns">
-                <a href="#none" data-direct-pay="Y" data-is-redirect="Y"  class="btn_gray btn_direct_pay">확인</a>
-            </div>
-        </div>
-        <div class="dim" onclick="closeWin('LecBuyMessagePop{{$group_num}}')"></div>
-    </div>
-
 </form>
 @endif
 
@@ -231,20 +214,10 @@
     var $dp_prod_form{{$group_num}} = $('#dp_prod_form{{$group_num}}');
 
     {{--장바구니, 바로결제 버튼 클릭--}}
-    $dp_prod_form{{$group_num}}.on('click', 'a[name="btn_cart"], .btn_direct_pay', function() {
+    $dp_prod_form{{$group_num}}.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         var $is_direct_pay = $(this).data('direct-pay');
-        addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, 'Y','{{front_url('')}}');
+        var $is_redirect = $(this).data('is-redirect');
+        addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect,'{{front_url('')}}');
     });
-
-    {{-- 결제 팝업 --}}
-    $dp_prod_form{{$group_num}}.on('click', '.direct_pay', function() {
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-        if($dp_prod_form{{$group_num}}.find('input[name="prod_code[]"]:checked').length < 1) {
-            alert('상품을 선택해 주세요.');
-            return;
-        }
-        openWin('LecBuyMessagePop{{$group_num}}')
-    });
-
 </script>

@@ -86,13 +86,9 @@
             </div>
         </div>
 
-        <ul class="sky">
-            <li>
-                <a href="#to_go">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1699_sky.png" alt="필합생 전용 이벤트">
-                </a>
-            </li>
-        </ul>
+        <div class="sky">
+            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_sky.png" alt="필합생 전용 이벤트"></a>
+        </div>
 
         <div class="evtCtnsBox evtTop00">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">    

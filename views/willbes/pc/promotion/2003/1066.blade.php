@@ -77,8 +77,8 @@
                     <area shape="rect" coords="829,559,879,577" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169812" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="230,635,278,653" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169815" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="831,677,877,695" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170173" target="_blank" onfocus='this.blur()' />
-                    <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170281" target="_blank" onfocus='this.blur()' />>
-                    <area shape="rect" coords="832,868,878,886" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/169814" target="_blank" onfocus='this.blur()' />>
+                    <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170281" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="832,868,878,886" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/169814" target="_blank" onfocus='this.blur()' />
                 </map>        
         </div>
 

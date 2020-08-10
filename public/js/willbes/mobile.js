@@ -254,3 +254,10 @@ function link_go() {
     }, 200);
 }
 
+
+// 반응형 이미지맵
+$(function(){ 
+    $(document).ready(function(e) { 
+        $('img[usemap]').rwdImageMaps(); 
+    }); 
+});

@@ -279,7 +279,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             $ck_cnt += count($data);
         }
 
-        if($ck_cnt < $total_cnt){
+        if($ck_cnt != $total_cnt){
             return false;
         }
 
@@ -390,9 +390,13 @@ class BaseEventSurvey extends \app\controllers\FrontController
         foreach ($question_info as $key => $val){
             $new_question_info[$val['SqIdx']] = $val;
 
-            foreach ($val['SqJsonData'] as $answer_key => $answer){
-                foreach ($answer['item'] as $k => $v){
-                    $reset_question[$val['SqIdx']][$answer_key][$k] = 0;
+            if($val['SqType'] == 'D'){ // 서술형
+                $reset_question[$val['SqIdx']] = 'D';
+            }else {
+                foreach ($val['SqJsonData'] as $answer_key => $answer) {
+                    foreach ($answer['item'] as $k => $v) {
+                        $reset_question[$val['SqIdx']][$answer_key][$k] = 0;
+                    }
                 }
             }
         }
@@ -402,7 +406,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
             foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
                     foreach ($answer as $k => $v){
-                        $new_answer[$series_key][$question_key][$k] = $reset_question[$question_key][$k];
+                        if($reset_question[$question_key] == 'D'){ // 서술형 제외
+                            unset($data_answer[$series_key][$key][$question_key]);
+                        }else{
+                            $new_answer[$series_key][$question_key][$k] = $reset_question[$question_key][$k];
+                        }
                     }
                 }
             }

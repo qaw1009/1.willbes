@@ -148,6 +148,9 @@
             $('input:checkbox').each(function(i){
                 $(this).prop("checked",false);
             });
+            $('textarea').each(function(i) {
+                $(this).prop("disabled",false);
+            });
         }
 
         function fn_submit(){
@@ -180,7 +183,7 @@
                         vali_msg = '응답하지 않은 설문이 있습니다.';
                     }
                 }else{
-                    $(this).val("");
+                    $(this).prop("disabled",true);
                 }
             });
 

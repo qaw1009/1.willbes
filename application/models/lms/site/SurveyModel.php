@@ -17,11 +17,6 @@ class SurveyModel extends WB_Model
         'member' => 'lms_member',
     ];
 
-    private $_use_type = [
-        'Y' => '사용',
-        'N' => '미사용'
-    ];
-
     public $_selection_type = [
         'S' => '선택형(단일)',
         'M' => '선택형(그룹)',
@@ -35,7 +30,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문리스트
+     * 설문리스트 조회
      * @param $is_count
      * @param $arr_condition
      * @param $limit
@@ -63,14 +58,12 @@ class SurveyModel extends WB_Model
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-
-        // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
-     * 설문조사 수정 폼 데이터 조회
+     * 설문조사 수정 폼 조회
      * @param integer $sp_idx
      * @return mixed
      */
@@ -98,7 +91,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 문항 수정 폼 데이터 조회
+     * 설문조사 답변문항 수정 폼 조회
      * @param integer $sq_idx
      * @return mixed
      */
@@ -118,7 +111,6 @@ class SurveyModel extends WB_Model
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
@@ -146,26 +138,7 @@ class SurveyModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $data = $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
-
         return $this->_getDecodeData($data);
-    }
-
-    /**
-     * 설문조사 결과 조회 그래프
-     * @param integer $sp_idx
-     * @return mixed
-     */
-    public function findSurveyAnswerInfo($sp_idx=null)
-    {
-        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx]];
-        $column = "AnswerInfo";
-        $from = "
-            FROM {$this->_table['event_answer_info']}
-        ";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        $order_by = $this->_conn->makeOrderBy(['SaIdx' => 'ASC'])->getMakeOrderBy();
-        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**
@@ -261,7 +234,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 항목 등록
+     * 설문조사 답변항목 등록
      * @param $input
      * @return array|bool
      */
@@ -319,7 +292,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 항목 수정
+     * 설문조사 답변항목 수정
      * @param $input
      * @return mixed
      */
@@ -377,7 +350,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 항목 삭제 (업데이트)
+     * 설문조사 답변항목 삭제 (업데이트)
      * @param integer $sq_idx
      * @return array|bool
      */
@@ -399,6 +372,41 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 설문항목 정렬순서, 사용유무 (업데이트)
+     * @param array $params
+     * @return bool
+     */
+    public function surveyUseOrderNum($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $sq_idx => $val) {
+                if(empty($sq_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
+
+                $data = [
+                    'OrderNum' => $val['sq_order_num'],
+                    'SqIsUse' => $val['sq_is_use'],
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+
+                if ($this->_conn->set($data)->where('SqIdx', $sq_idx)->update($this->_table['event_survey_question']) === false) {
+                    throw new \Exception('수정에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 답변항목 인코딩
      * @param array $question_title
      * @param integer $question_cnt
@@ -407,8 +415,8 @@ class SurveyModel extends WB_Model
      * @param string $question_type
      * @return string JSON string
      */
-    private function _setEncodeData($question_title=[],$question_cnt=null,$question_item=[],$question_item_arr=[],$question_type=null){
-
+    private function _setEncodeData($question_title=[],$question_cnt=null,$question_item=[],$question_item_arr=[],$question_type=null)
+    {
         $data = [];
         foreach ($question_title as $key => $val){
             if(empty($val) === false && $key <= $question_cnt){
@@ -440,14 +448,13 @@ class SurveyModel extends WB_Model
      * @param string $field
      * @return mixed
      */
-    private function _getDecodeData($data=[],$field=null){
-
+    private function _getDecodeData($data=[],$field=null)
+    {
         foreach ($data as $key => $val){
             if(empty($field) === false){
                 $data[$key][$field] = json_decode($val[$field],true);
             }else{
                 $data[$key]['SqTypeTxt'] = element($val['SqType'],$this->_selection_type);
-                $data[$key]['SqUseTxt'] = element($val['SqIsUse'],$this->_use_type);
                 $data[$key]['SqJsonData'] = json_decode($val['SqJsonData'],true);
                 $data[$key]['SqSeries'] = empty($val['SqSeries']) ? [] : json_decode($val['SqSeries'],true);
             }

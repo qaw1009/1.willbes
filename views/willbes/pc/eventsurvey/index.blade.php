@@ -58,7 +58,6 @@
                                     @endif
                                 </div>
                             @endif
-
                         @else
                             <div class="question series_group series_{{$i}} @if($i > 1) d_none @endif">
                                 <p>Q{{ $key+1 }}. {{ trim($val['SqTitle']) }} </p>
@@ -74,7 +73,7 @@
                                                 @foreach($val['SqJsonData'] as $item_k => $item_v)
                                                     <li>
                                                         <label>
-                                                            <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}',{{$data_question_count[$i]['subject_cnt']}})"> {{$item_v['title']}}
+                                                            <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}',{{$question_count[$i]['subject_cnt']}})"> {{$item_v['title']}}
                                                         </label>
                                                     </li>
                                                 @endforeach
@@ -156,14 +155,18 @@
 
             var vali_msg = '';
             var series_subject_cnt = $("#series_subject_cnt").val();
-            var json_data = {!! json_encode($data_question_count) !!};
+            var json_data = {!! json_encode($question_count) !!};
             var pick_sjt_cnt = json_data[series_subject_cnt]['subject_cnt'];
 
             $("#total_cnt").val(json_data[series_subject_cnt]['total_cnt']);
 
             $('input:radio').each(function(i) {
-                if($(this).is(':visible') && $('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
-                    vali_msg = '응답하지 않은 설문이 있습니다.';
+                if($(this).is(':visible')){
+                    if($('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
+                        vali_msg = '응답하지 않은 설문이 있습니다.';
+                    }
+                }else{
+                    $(this).prop("checked",false);
                 }
             });
             $('input:checkbox').each(function(i){
@@ -172,8 +175,12 @@
                 }
             });
             $('textarea').each(function(i) {
-                if($(this).is(':visible') && !$.trim($(this).val())){
-                    vali_msg = '응답하지 않은 설문이 있습니다.';
+                if($(this).is(':visible')){
+                    if(!$.trim($(this).val())){
+                        vali_msg = '응답하지 않은 설문이 있습니다.';
+                    }
+                }else{
+                    $(this).val("");
                 }
             });
 

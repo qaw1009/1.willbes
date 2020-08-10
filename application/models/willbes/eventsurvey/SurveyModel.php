@@ -24,16 +24,13 @@ class SurveyModel extends WB_Model
         'wbs' => ['AnswerInfo'],
     ];
 
-    public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
-
     public function __construct()
     {
         parent::__construct('lms');
-        $this->upload_path_predict = $this->config->item('upload_path_predict', 'predict');
     }
 
     /**
-     * 설문 조회
+     * 설문조사 조회
      * @param integer $sp_idx
      * @return mixed
      */
@@ -53,7 +50,6 @@ class SurveyModel extends WB_Model
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
@@ -81,8 +77,6 @@ class SurveyModel extends WB_Model
         return $this->_getDecodeData($data,$this->_field['lms']);
     }
 
-
-
     /**
      * 설문조사 결과 조회
      * @param integer $sp_idx
@@ -103,24 +97,18 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문응답 체크
+     * 설문 참여 여부 체크
      * @param integer $sp_idx
      * @return mixed
      */
     public function findSurveyAnswer($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
-
-        $column = "
-            COUNT(*) AS cnt
-        ";
-
+        $column = "COUNT(*) AS cnt";
         $from = "
             FROM {$this->_table['event_answer_info']}
         ";
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-
         return $this->_conn->query('select ' . $column . $from . $where)->row(0)->cnt;
     }
 
@@ -131,14 +119,15 @@ class SurveyModel extends WB_Model
      */
     public function findQuestionForSeries($sp_idx = null)
     {
+        $data = [];
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'IsSeries' => 'Y']];
+
         $column = "SqIdx,SqJsonData";
         $from = " FROM {$this->_table['event_survey_question']} ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $row[0] = $this->_conn->query('select '. $column . $from . $where)->row_array();
 
-        $data = [];
         if(empty($row[0]) === false){
             $data[$row[0]['SqIdx']] = $this->_getDecodeData($row,['SqJsonData'])[0]['SqJsonData'][1]['item'];
         }
@@ -147,7 +136,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문저장
+     * 설문조사 저장
      * @param $formData
      * @param integer $sp_idx
      * @return mixed
@@ -198,7 +187,7 @@ class SurveyModel extends WB_Model
 
 
     /**
-     #################### pridict 함수 ####################
+     #################### pridict 함수 옮겨옴 ####################
      */
 
     /**

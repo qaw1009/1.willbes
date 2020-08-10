@@ -820,7 +820,7 @@ class CartFModel extends BaseOrderFModel
                                 $cart_rows[$idx]['Remark'] = $disc_row['DiscTitle'] . '(' . $disc_row['DiscRate'] . $disc_row['DiscRateUnit'] . ')';
 
                                 if ($disc_row['DiscType'] == 'R') {
-                                    $cart_rows[$idx]['RealSalePrice'] = intval($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));
+                                    $cart_rows[$idx]['RealSalePrice'] = ceil($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));    // 소숫점 올림
                                 } else {
                                     $cart_rows[$idx]['RealSalePrice'] = $row['RealSalePrice'] - $disc_row['DiscRate'];
                                 }

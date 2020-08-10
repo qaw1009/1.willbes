@@ -36,9 +36,11 @@
                     <label class="control-label col-md-1-1" for="sp_is_duplicate">중복투표 <span class="required">*</span></label>
                     <div class="col-md-9">
                         <div class="radio">
-                            <input type="radio" class="flat" id="sp_is_duplicate_n" name="sp_is_duplicate" required="required" value="N" @if($method == 'POST' || (empty($data_survey['SpIsDuplicate']) === false && $data_survey['SpIsDuplicate']=='N'))checked="checked"@endif>
+                            <input type="radio" class="flat" id="sp_is_duplicate_n" name="sp_is_duplicate" required="required" value="N"
+                                   @if($method == 'POST' || (empty($data_survey['SpIsDuplicate']) === false && $data_survey['SpIsDuplicate']=='N'))checked="checked"@endif>
                             <label for="sp_is_duplicate_n" class="input-label">불가능</label>
-                            <input type="radio" class="flat" id="sp_is_duplicate_y" name="sp_is_duplicate" required="required" value="Y" @if(empty($data_survey['SpIsDuplicate']) === false && $data_survey['SpIsDuplicate']=='Y')checked="checked"@endif>
+                            <input type="radio" class="flat" id="sp_is_duplicate_y" name="sp_is_duplicate" required="required" value="Y"
+                                   @if(empty($data_survey['SpIsDuplicate']) === false && $data_survey['SpIsDuplicate']=='Y')checked="checked"@endif>
                             <label for="sp_is_duplicate_y" class="input-label">가능</label>
                         </div>
                     </div>
@@ -48,9 +50,11 @@
                     <label class="control-label col-md-1-1" for="sp_is_use">사용여부 <span class="required">*</span></label>
                     <div class="col-md-9">
                         <div class="radio">
-                            <input type="radio" class="flat" id="sp_is_use_y" name="sp_is_use" title="사용여부" required="required" value="Y" @if($method == 'POST' || (empty($data_survey['SpIsUse']) === false && $data_survey['SpIsUse']=='Y'))checked="checked"@endif>
+                            <input type="radio" class="flat" id="sp_is_use_y" name="sp_is_use" title="사용여부" required="required" value="Y"
+                                   @if($method == 'POST' || (empty($data_survey['SpIsUse']) === false && $data_survey['SpIsUse']=='Y'))checked="checked"@endif>
                             <label for="sp_is_use_y" class="input-label">사용</label>
-                            <input type="radio" class="flat" id="sp_is_use_n" name="sp_is_use" required="required" value="N" @if(empty($data_survey['SpIsUse']) === false && $data_survey['SpIsUse']=='N')checked="checked"@endif>
+                            <input type="radio" class="flat" id="sp_is_use_n" name="sp_is_use" required="required" value="N"
+                                   @if(empty($data_survey['SpIsUse']) === false && $data_survey['SpIsUse']=='N')checked="checked"@endif>
                             <label for="sp_is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
@@ -74,12 +78,15 @@
                 <div class="form-group">
                     <div class="row">
                         <label class="control-label col-md-1-1 ml-10">설문항목관리 <span class="required">*</span></label>
-                        <div class="col-md-9 mb-15">
+                        <div class="col-md-9 mb-5">
                             @if($method == 'PUT')
-                                <span style="color: red">* 응시직렬은 응시직렬 항목 등록 후 저장된 응시직렬 항목에 따라 그룹선택이 노출 됩니다.</span>
-                                <button type="button" class="btn btn-sm btn-primary clearfix-r mr-20 add_question" data-id="add_question" data-sp-idx="{{$data_survey['SpIdx']}}" data-sq-idx="" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)">설문항목등록</button>
+                                <span clss="clearfix" style="color: red; position: relative; top:6px">* 응시직렬은 응시직렬 항목 등록 후 저장된 응시직렬 항목에 따라 그룹선택이 노출 됩니다.</span>
+                                <div class="clearfix-r">
+                                    <button type="button" class="btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>정렬/사용 적용</button>
+                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_question mr-15" data-id="add_question" data-sp-idx="{{$data_survey['SpIdx']}}" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)"><i class="fa fa-pencil mr-10"></i>설문항목등록</button>
+                                </div>
                             @else
-                                # 설문을 등록 하면 <span style="color: red"> [설문항목등록] </span> 버튼이 생성됩니다.
+                                # 설문 저장 후 <span style="color: red"> [설문항목등록] </span> 버튼이 생성됩니다.
                             @endif
                         </div>
                     </div>
@@ -98,7 +105,7 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th class="text-center">노출순서</th>
+                                <th class="text-center">정렬순서</th>
                                 <th class="text-center">직렬그룹</th>
                                 <th class="text-center">문항제목</th>
                                 <th class="text-center">답변유형</th>
@@ -110,7 +117,7 @@
                             <tbody>
                             @foreach($data_question as $row)
                                 <tr>
-                                    <td class="text-center">{{$row['OrderNum']}}</td>
+                                    <td class="text-center"><input type="number" name="sq_order_num" value="{{$row['OrderNum']}}" data-origin-order-num="{{$row['OrderNum']}}" data-sq-idx= "{{$row['SqIdx']}}" maxlength="3" style="width: 100%"></td>
                                     <td>
                                         @if(empty($row['SqSeries']) === false)
                                             @foreach($row['SqSeries'] as $series)
@@ -138,7 +145,7 @@
                                             </p>
                                         @endforeach
                                     </td>
-                                    <td class="text-center">{{$row['SqUseTxt']}}</td>
+                                    <td class="text-center"><input type="checkbox" name="sq_is_use" value="Y" class="flat" data-origin-is-use="{{$row['SqIsUse']}}" @if($row['SqIsUse'] == 'Y') checked="checked" @endif></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-idx="{{$row['SqIdx']}}" data-sq-series="{{$data_survey['seriesData']}}" onclick="show_question_layer(this)">수정</button>
                                         <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
@@ -182,6 +189,48 @@
 
     <script>
         var $regi_form = $('#regi_form');
+
+        // 정렬/사용유무 적용
+        $('.btn_sort_use').on('click', function() {
+            if (!confirm('정렬/사용 상태를 적용하시겠습니까?')) {
+                return;
+            }
+
+            var $order_num = $regi_form.find('input[name="sq_order_num"]');
+            var $is_use = $regi_form.find('input[name="sq_is_use"]');
+            var origin_val, this_val, this_order_val, this_use_val;
+            var $params = {};
+            var _url = '{{ site_url("/site/survey/storeUseOrderNum") }}';
+
+            $order_num.each(function(idx) {
+                // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                this_order_val = $(this).data('origin-order-num');
+                this_use_val = $is_use.eq(idx).filter(':checked').val() || 'N';
+                this_val = this_order_val + ':' + this_use_val;
+                origin_val = $(this).val() + ':' + $is_use.eq(idx).data('origin-is-use');
+                if (this_val != origin_val) {
+                    $params[$(this).data('sq-idx')] = { 'sq_order_num' : $(this).val(), 'sq_is_use' : this_use_val };
+                }
+            });
+
+            if (Object.keys($params).length < 1) {
+                alert('변경된 내용이 없습니다.');
+                return;
+            }
+
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'params' : JSON.stringify($params)
+            };
+
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+                }
+            }, showError, false, 'POST');
+        });
 
         // ajax submit
         $regi_form.submit(function() {

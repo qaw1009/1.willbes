@@ -9,7 +9,7 @@
 
     .evt_apply {background:#f5f5f5;padding:25px;}
     .evt_apply ul {margin-bottom:15px}
-    .evt_apply li {display:inline;float:left; width:50%;}
+    .evt_apply li {display:inline;float:left; width:48%;}
     .evt_apply li:nth-child(odd) {padding-left:25px;}
     .evt_apply ul:after {content:''; display:block; clear:both}
 
@@ -56,32 +56,32 @@
     <div class="evtCtnsBox evt_apply">
         <ul>
             <li>
-                <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3019" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_04.jpg" alt="9급" >
                 </a>
             <li>
             <li>
-                <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3020" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_05.jpg" alt="7급" >
                 </a>
             <li>
             <li style="margin:25px 0;">
-                <a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3035" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_06.jpg" alt="법원직" >
                 </a>
             <li>
             <li style="margin:25px 0;">
-                <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3023" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_07.jpg" alt="소방직" >
                 </a>
             <li>
             <li>
-                <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3028" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_08.jpg" alt="기술직" >
                 </a>
             <li>
             <li>
-                <a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">
+                <a href="https://pass.willbes.net/m/home/index/cate/3024" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_09.jpg" alt="군무원" >
                 </a>
             <li>

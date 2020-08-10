@@ -46,28 +46,15 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         // 응시직렬
-        $is_series = 'N';
-        $data_question = [];
-        $data_question_count = [];
         $data_series = $this->surveyModel->findQuestionForSeries($sp_idx);
-        if(empty($data_series) === false){
-            $data_question = $this->_getSeriesData($question_list,array_value_first($data_series));
-            $is_series = 'Y';
-        }else{
-            $data_question[1] = $question_list;
-        }
-
-        // 응시과목 선택 갯수,전체 항목 갯수
-        foreach ($data_question as $key => $val){
-            list($data_question_count[$key]['subject_cnt'],$data_question_count[$key]['total_cnt']) = $this->_recordsTotalCount($val);
-        }
+        list($data_question,$question_count) = $this->_getQuestionForSeriesData($question_list,$data_series);
 
         $view_file = 'willbes/pc/eventsurvey/index';
         $this->load->view($view_file, [
             'data_survey' => $data_survey,
             'data_question' => $data_question,
-            'data_question_count' => $data_question_count,
-            'is_series' => $is_series,
+            'question_count' => $question_count,
+            'is_series' => empty($data_series) ? 'N' : 'Y',
             'count' => count($data_question),
         ], false);
     }
@@ -248,7 +235,6 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 9. 직렬별 설문조사 결과
         $data_series = $this->surveyModel->findQuestionForSeries($spidx2);
-        //$data_question = $this->_getSeriesData($question_info,array_value_first($data_series));
         $data_answer = $this->_matchingSeriesData($answer_info,$data_series);
         $surveyList = $this->_mathSeriesSpreadData($question_info,$data_answer);
 
@@ -286,13 +272,14 @@ class BaseEventSurvey extends \app\controllers\FrontController
      * @param integer $total_cnt
      * @return bool|mixed
      */
-    private function _setInputData($input,$total_cnt){
+    private function _setInputData($input,$total_cnt)
+    {
         $ck_cnt = 0;
         foreach ($input as $data){
             $ck_cnt += count($data);
         }
 
-        if($ck_cnt != $total_cnt){
+        if($ck_cnt < $total_cnt){
             return false;
         }
 
@@ -305,7 +292,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
      * @param $answer_info
      * @return mixed
      */
-    private function _mathAnswerSpreadData($question_info=[],$answer_info=[]){
+    private function _mathAnswerSpreadData($question_info=[],$answer_info=[])
+    {
         $title_data = [];
         $data = [];
         $new_question_info = [];
@@ -359,39 +347,18 @@ class BaseEventSurvey extends \app\controllers\FrontController
             }
         }
 
-        return array($title_data,$data);
+        return [$title_data,$data];
     }
 
     /**
-     * 직렬 데이타 가공
-     * @param $question_info
-     * @param $series_info
-     * @return mixed
-     */
-    private function _getSeriesData($question_info=[],$series_info=[]){
-        $data = [];
-
-        foreach ($series_info as $key => $val){
-            foreach ($question_info as $row){
-                if(empty($row['SqSeries']) === false && in_array($val,$row['SqSeries'])){
-                    unset($row['SqSeries']);
-                    $data[$key][] = $row;
-                }
-            }
-        }
-
-        return $data;
-    }
-
-    /**
-     * 직렬 데이타 매핑
+     * 응시직렬 데이타 매핑
      * @param $answer_info
      * @param $data_series
      * @return mixed
      */
-    private function _matchingSeriesData($answer_info, $data_series){
+    private function _matchingSeriesData($answer_info, $data_series)
+    {
         $data = [];
-
         foreach ($answer_info as $key => $val){
             foreach ($val['AnswerInfo'] as $question_key => $answer){
                 $arr_series = element($question_key,$data_series);
@@ -408,32 +375,13 @@ class BaseEventSurvey extends \app\controllers\FrontController
     }
 
     /**
-     * 설문응답 답변 갯수 카운트
-     * @param $question_info
-     * @return mixed
-     */
-    private function _recordsTotalCount($question_info=[]){
-        $total_cnt = 0;
-        $subject_cnt = 0;
-        foreach ($question_info as $key => $val){
-            if($val['SqType'] == 'T'){ // 복수형은 선택과목 갯수 기준
-                $subject_cnt = $val['SqSubjectCnt'];
-                $total_cnt += $subject_cnt;
-            }else{
-                $total_cnt += count($question_info[$key]['SqJsonData']);
-            }
-        }
-
-        return array($subject_cnt,$total_cnt);
-    }
-
-    /**
      * 응시직렬 비율 계산
      * @param $question_info
      * @param $data_answer
      * @return mixed
      */
-    private function _mathSeriesSpreadData($question_info=[],$data_answer=[]){
+    private function _mathSeriesSpreadData($question_info=[],$data_answer=[])
+    {
         $data = [];
         $reset_question = [];
         $new_answer = [];
@@ -496,6 +444,73 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         return $data;
+    }
+
+    /**
+     * 응시직렬 데이타 조회
+     * @param $question_list
+     * @param $data_series
+     * @return mixed
+     */
+    private function _getQuestionForSeriesData($question_list,$data_series)
+    {
+        $data_question = [];
+        $question_count = [];
+
+        if(empty($data_series) === false){
+            $data_question = $this->_getSeriesData($question_list,array_value_first($data_series));
+        }else{
+            $data_question[1] = $question_list;
+        }
+
+        // 응시과목 선택 갯수,전체 항목 갯수
+        foreach ($data_question as $key => $val){
+            list($question_count[$key]['subject_cnt'],$question_count[$key]['total_cnt']) = $this->_recordsTotalCount($val);
+        }
+
+        return [$data_question,$question_count];
+    }
+
+    /**
+     * 응시직렬 데이타 가공
+     * @param $question_info
+     * @param $series_info
+     * @return mixed
+     */
+    private function _getSeriesData($question_info=[],$series_info=[])
+    {
+        $data = [];
+        foreach ($series_info as $key => $val){
+            foreach ($question_info as $row){
+                if(empty($row['SqSeries']) === false && in_array($val,$row['SqSeries'])){
+                    unset($row['SqSeries']);
+                    $data[$key][] = $row;
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 설문응답 답변 갯수 카운트
+     * @param $question_info
+     * @return mixed
+     */
+    private function _recordsTotalCount($question_info=[])
+    {
+        $total_cnt = 0;
+        $subject_cnt = 0;
+        foreach ($question_info as $key => $val){
+            if($val['SqType'] == 'T'){ // 복수형은 선택과목 갯수 기준
+                $subject_cnt = $val['SqSubjectCnt'];
+                $total_cnt += $subject_cnt;
+            }else{
+                $total_cnt += count($question_info[$key]['SqJsonData']);
+            }
+        }
+
+        return [$subject_cnt,$total_cnt];
     }
 
 }

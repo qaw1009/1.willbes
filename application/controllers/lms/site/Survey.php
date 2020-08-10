@@ -71,6 +71,24 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
+     * 정렬순서, 사용유무 적용
+     */
+    public function storeUseOrderNum()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->surveyModel->surveyUseOrderNum(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
      * 설문조사 항목 등록/수정 레이어
      * @param array $params
      */
@@ -267,7 +285,7 @@ class Survey extends \app\controllers\BaseController
             if($val['SqType'] == 'D'){ // 서술형
                 $new_answer_info[$val['SqIdx']] = 'D';
             }else{
-                foreach ($val['SqJsonData'] as $answer_key => $answer){
+                foreach ((array)$val['SqJsonData'] as $answer_key => $answer){
                     foreach ($answer['item'] as $k => $v){
                         $new_answer_info[$val['SqIdx']][$answer_key][$k] = 0; // 초기화
                     }

@@ -93,7 +93,7 @@
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_03.jpg" alt="응시표 인증하기" usemap="#Map1728B" border="0" >
         <map name="Map1728B">
-            <area shape="rect" coords="43,440,678,535" href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#certification" target="_blank" alt="응시표인증하기">
+            <area shape="rect" coords="43,440,678,535" href="javascript:certOpen();" alt="응시표인증하기">
         </map>
     </div>
 
@@ -206,6 +206,15 @@
             }
         };
 
+        {{-- 수강인증 --}}
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         {{--
          * 프로모션용 디데이카운터 텍스트
          * @@param end_date [마감일 (YYYY-MM-DD)]
@@ -285,29 +294,29 @@
 
         /*탭*/
         $(document).ready(function(){
-        $('.tab').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-        
-            $content = $($active[0].hash);
-        
-            $links.not($active).each(function () {
-            $(this.hash).hide()});
-        
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})})}
-        );
+            $('.tab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                })
+            })
+        });
 
     </script>
 

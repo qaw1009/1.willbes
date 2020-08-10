@@ -93,7 +93,7 @@
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_03.jpg" alt="응시표 인증하기" usemap="#Map1728B" border="0" >
         <map name="Map1728B">
-            <area shape="rect" coords="43,440,678,535" href="javascript:certOpen();" alt="응시표인증하기">
+            <area shape="rect" coords="43,440,678,535" href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#certification" target="_blank" alt="응시표인증하기">
         </map>
     </div>
 
@@ -105,29 +105,29 @@
         </ul>
         <div id="tab01">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_1_t.jpg" alt="통신직">
-            <a href="javascript:go_PassLecture('169198');" target="_blank">
+            <a href="javascript:go_PassLecture('169198');">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_1_b.jpg" alt="통신직">
             </a>
         </div>
         <div id="tab02">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_2_t.jpg" alt="전기직">
-            <a href="javascript:go_PassLecture('169199');" target="_blank">
+            <a href="javascript:go_PassLecture('169199');">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_2_m.jpg" alt="전기직7급수강신청">
             </a>
-            <a href="javascript:go_PassLecture('169201');" target="_blank">
+            <a href="javascript:go_PassLecture('169201');">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_2_b.jpg" alt="전기직9급수강신청">
             </a>
         </div>
         <div id="tab03">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_3_t.jpg" alt="전자직">
-            <a href="javascript:go_PassLecture('170039');" target="_blank">
+            <a href="javascript:go_PassLecture('170039');">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_04_3_b.jpg" alt="전자직">
             </a>
         </div>
 
         <div class="check">
             <label>
-                <input name="ischk"  type="checkbox" value="Y" />
+                <input name="ischk" type="checkbox" value="Y" />
                 페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
             </label>
             <a href="#infoText">이용안내 확인하기 ↓</a>
@@ -206,15 +206,6 @@
             }
         };
 
-        {{-- 수강인증 --}}
-        function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
-
         {{--
          * 프로모션용 디데이카운터 텍스트
          * @@param end_date [마감일 (YYYY-MM-DD)]
@@ -247,9 +238,16 @@
             }
         }
 
-        function goLecture() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+
+        {{-- 수강신청 동의 --}}
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
+            location.href = url;
         }
 
         function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)

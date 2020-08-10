@@ -20,6 +20,7 @@
 <script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/mobile.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
+<script src="/public/js/willbes/jquery.rwdImageMaps.js?ver={{time()}}"></script><!--반응형 이미지맵-->
 <!--// JAVASCRIPT -->
 <!-- Common Site Script -->
 {!! base64_decode($__cfg['CommMobileScript']) !!}

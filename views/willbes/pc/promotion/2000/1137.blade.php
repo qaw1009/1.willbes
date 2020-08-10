@@ -69,12 +69,14 @@
         </div> 
 
 		<div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1137_02_L.png"  alt="자세히보기" usemap="#Map1137b" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1137_02_L.png"  alt="자세히보기" usemap="#Map1137b" border="0" />
             <map name="Map1137b" id="Map1137b">
-                <area shape="rect" coords="124,377,236,419" href="https://pass.willbes.net/home/index/cate/3019" target="_blank"/>
-                <area shape="rect" coords="377,378,490,421"  href="https://pass.willbes.net/home/index/cate/3035" target="_blank"/>
-                <area shape="rect" coords="629,377,744,421"  href="https://pass.willbes.net/home/index/cate/3023" target="_blank"/>
-                <area shape="rect" coords="884,376,996,420" href="https://pass.willbes.net/home/index/cate/3028" target="_blank"/>
+                <area shape="rect" coords="160,497,278,546" href="https://pass.willbes.net/home/index/cate/3019" target="_blank"/>
+                <area shape="rect" coords="502,497,617,546" href="https://pass.willbes.net/home/index/cate/3020" target="_blank"/>
+                <area shape="rect" coords="840,496,959,545" href="https://pass.willbes.net/home/index/cate/3035" target="_blank"/>
+                <area shape="rect" coords="159,888,279,939" href="https://pass.willbes.net/home/index/cate/3023" target="_blank"/>
+                <area shape="rect" coords="499,889,619,938" href="https://pass.willbes.net/home/index/cate/3028" target="_blank"/>
+                <area shape="rect" coords="841,887,958,938" href="https://pass.willbes.net/home/index/cate/3024" target="_blank"/>
             </map>
         </div>
         

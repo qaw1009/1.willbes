@@ -177,7 +177,13 @@
             function sendContent() {
                 var addCnt = $("input[name='checkBook']:checked").length;		//적용할 갯수
                 var allCnt = $("input[name='checkBook']").length;		//노출된 전체 갯수
+                var is_single = '{{ $is_single }}';
                 if(addCnt === 0) {alert("적용할 교재가 없습니다. 선택 후 적용하여 주십시오.");return;}
+
+                if (is_single === 'Y' && addCnt > 1) {
+                    alert('한번에 1개 상품만 적용 가능합니다.');
+                    return;
+                }
 
                 if (!confirm('해당 교재를 적용하시겠습니까?')) {
                     return;

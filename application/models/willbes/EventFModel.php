@@ -1381,11 +1381,11 @@ class EventFModel extends WB_Model
     /**
      * 추가 이벤트 신청자 등록
      * @param array $inputData
-     * @param $site_code
+     * @param $p_site_code
      * @param $register_type
      * @return array|bool
      */
-    public function addEventApplyMember($inputData = [], $site_code, $register_type)
+    public function addEventApplyMember($inputData = [], $p_site_code = null, $register_type)
     {
         $this->_conn->trans_begin();
         try {
@@ -1449,6 +1449,7 @@ class EventFModel extends WB_Model
                 } else {
                     $arr_condition = [
                         'EQ' => [
+                            'A.IsStatus' => 'Y',
                             'A.EaaIdx' => $key,
                             'A.MemIdx' => $this->session->userdata('mem_idx')
                         ]
@@ -1490,7 +1491,18 @@ class EventFModel extends WB_Model
                 // 지급할 강의상품이 있을 경우
                 if(empty($row['ProdCode']) === false && empty($row['ProductGiveType']) === false && empty($this->session->userdata('mem_idx')) == false) {
                     if($row['ProductGiveType'] == 'C') {
-                        // 장바구니지급 TODO
+                        $learn_pattern = 'book';    //TODO
+                        $prod_code[0] = $row['ProdCode'] . ':613001:' . $row['ProdCode'];
+                        $add_data = [
+                            'site_code' => $p_site_code,
+                            'prod_code' => $prod_code,
+                            'is_direct_pay' => 'N',
+                            'is_visit_pay' => 'N'
+                        ];
+                        $result = $this->cartFModel->addCart($learn_pattern, $add_data);
+                        if(empty($result) === true || $result['ret_cd'] !== true){
+                            throw new \Exception('장바구니 처리 도중 오류가 발생하였습니다.');
+                        }
 
                     } else if($row['ProductGiveType'] == 'D') {
                         // 즉시지급

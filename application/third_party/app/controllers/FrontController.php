@@ -374,6 +374,7 @@ abstract class FrontController extends BaseController
             if (array_has($mobile_tree_menus, 'GNB') === true) {
                 $_gnb_group_menu_idx = null;    // GNB 그룹메뉴식별자
                 $_gnb_match_cate_code = null;   // GNB 그룹메뉴 카테고리코드 (GNB 전체보기 메뉴에서 사용)
+                $_gnb_intg_site_code = ['2003'];    // GNB 통합메인 그룹메뉴가 존재하는 사이트코드
                 
                 // Active 메뉴가 있을 경우 그룹메뉴식별자 추출, 그룹메뉴 카테고리코드값 셋팅
                 if (empty($_active_route_idx) === false) {
@@ -381,8 +382,8 @@ abstract class FrontController extends BaseController
                     $_gnb_match_cate_code = $this->_cate_code;
                 }
 
-                // 그룹메뉴식별자가 없고 온라인 사이트일 경우 카테고리 > 메인 페이지를 기준으로 그룹메뉴식별자 조회
-                if (empty($_gnb_group_menu_idx) === true && $this->_is_pass_site === false) {
+                // 그룹메뉴식별자가 없고 온라인 사이트이면서 통합메인이 없는 경우 카테고리 > 메인 페이지를 기준으로 그룹메뉴식별자 조회
+                if (empty($_gnb_group_menu_idx) === true && $this->_is_pass_site === false && in_array($this->_site_code, $_gnb_intg_site_code) === false) {
                     $_not_match_cate_code = get_var($this->_cate_code, element('DefCateCode', $site_cache));
                     $_not_match_route_val = front_url('/home/index/') . config_get('uri_segment_keys.cate') . '/' . $_not_match_cate_code;
                     $_gnb_group_menu_idx = str_first_pos_after(array_search($_not_match_route_val, $mobile_menu_urls), '.', '');

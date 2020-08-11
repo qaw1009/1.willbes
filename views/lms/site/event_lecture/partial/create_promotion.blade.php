@@ -43,18 +43,20 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label col-md-1 mt-5">
+    <label class="control-label col-md-1-1">
         라이브송출관리
     </label>
-    <div class="col-md-11">
+    <div class="col-md-4 form-inline">
         <div class="col-md-10 mb-10">
             <div class="radio">
                 <input type="radio" id="promotion_live_type_y" name="promotion_live_type" class="flat" value="Y" required="required" title="사용여부" @if($data['PromotionLiveType']=='Y')checked="checked"@endif/> <label for="promotion_live_type_y" class="input-label">사용</label>
                 <input type="radio" id="promotion_live_type_n" name="promotion_live_type" class="flat" value="N" @if($method == 'POST' || $data['PromotionLiveType']=='N')checked="checked"@endif/> <label for="promotion_live_type_n" class="input-label">미사용</label>
             </div>
         </div>
-
-        <div class="live-box">
+    </div>
+    <div class="col-md-10">
+        <div class="live-box form-group" style="display: none;">
+            <div class="col-md-2"></div>
             <div class="col-md-10 form-inline">
                 <input type="text" class="form-control" id="set_live_title" name="set_live_title" placeholder="제목" style="width: 400px;">
                 <div class="checkbox ml-20">
@@ -64,6 +66,7 @@
                 <span class="ml-20">동영상비율</span>
                 <input type="text" class="form-control" id="set_live_ratio" name="set_live_ratio" placeholder="동영상비율[16:9]" style="width: 50px;" value="16:9">
             </div>
+            <div class="col-md-2"></div>
             <div class="col-md-10 form-inline mt-10">
                 기간설정
                 <div class="input-group mb-0">
@@ -114,6 +117,7 @@
                 </select>
             </div>
 
+            <div class="col-md-2"></div>
             <div class="col-md-10 form-inline mt-10">
                 <span>라이브송출경로</span>
                 <input type="text" class="form-control" id="set_live_url" name="set_live_url" placeholder="willbes.flive.skcdn.com/willbeslive/livestreamcop501" style="width: 400px;">
@@ -121,13 +125,15 @@
                 <button type="button" class="btn btn-info btn-live-add" style="margin-bottom: 2px;" data-add-type="add">추가</button>
             </div>
 
+            <div class="col-md-2"></div>
             <div class="col-md-10 form-inline mt-10">
                 <label>플레이어</label>
                 <input type="radio" class="flat" id="promotion_live_player_jw" name="promotion_live_player" value="jw" required="required" @if($data['PromotionLivePlayer'] == 'jw' || empty($data['PromotionLivePlayer']) === true)checked="checked"@endif> <label for="promotion_live_player_jw" class="input-label">내부 플레이어</label>
                 <input type="radio" class="flat" id="promotion_live_player_youtube" name="promotion_live_player" value="youtube" required="required" @if($data['PromotionLivePlayer'] == 'youtube')checked="checked"@endif> <label for="promotion_live_player_youtube" class="input-label">유튜브</label>
             </div>
 
-            <div class="col-md-12 form-inline mt-10">
+            <div class="col-md-2"></div>
+            <div class="col-md-10 form-inline mt-10">
                 <table class="table table-striped table-bordered" id="table_promotion_live_detail">
                     <thead>
                     <tr>
@@ -305,7 +311,7 @@
         상세설정
     </label>
     <div class="col-md-10">
-        <div class="form-group">
+        <div class="form-group" style="border-bottom:none;">
             <div class="col-md-5 form-inline">
                 <select class="form-control" id="set_other_data_1" name="set_other_data_1">
                     <option value="">교수선택</option>
@@ -328,7 +334,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="border-bottom:none;">
             <div class="col-md-10 form-inline">
                 <table class="table table-striped table-bordered" id="table_promotion_detail">
                     <thead>

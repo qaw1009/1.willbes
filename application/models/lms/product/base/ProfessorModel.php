@@ -65,7 +65,7 @@ class ProfessorModel extends WB_Model
             from (
                 select I.*, substring_index(I.SubjectMapping, "_", 1) as CateCode, substring_index(I.SubjectMapping, "_", -1) as SubjectIdx
                 from (
-                    select P.ProfIdx, P.SiteCode, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx
+                    select P.ProfIdx, P.SiteCode, P.UseBoardJson, P.IsBoardPublic, P.IsDispIntro, P.IsUse, P.RegDatm, P.RegAdminIdx
                         , WP.wProfIdx, WP.wProfId, WP.wProfName, WP.wIsUse, S.SiteName, A.wAdminName as RegAdminName
                         , (select concat(CateCode, "_", SubjectIdx)
                             from ' . $this->_table['professor_r_subject_r_category'] . '
@@ -466,7 +466,7 @@ class ProfessorModel extends WB_Model
     {
         $column = '
             P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.ProfContent, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
-                , P.AppellationCcd ,P.IsOpenStudyComment
+                , P.AppellationCcd, P.IsOpenStudyComment, P.IsDispIntro
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -514,6 +514,7 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
+                'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -621,6 +622,7 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
+                'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

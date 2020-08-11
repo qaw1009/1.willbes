@@ -151,100 +151,120 @@
                     <div class="col-md-10 form-inline item">
                         <input type="hidden" name="sms_bm_idx[]" value="66"/>
                         <div class="radio">
-                            [문자발송사용여부]
-                            <input type="radio" name="is_sms_use[]" class="flat" value="Y" required="required" title="문자발송사용여부" @if(empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'Y')checked="checked"@endif/> 사용
-                            <input type="radio" name="is_sms_use[]" class="flat" value="N" @if($method == 'POST' || (empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'N'))checked="checked"@endif/> 미사용
+                            <span class="pr-10">[문자발송사용여부]</span>
+                            <input type="radio" id="is_sms_use_y" name="is_sms_use[]" class="flat" value="Y" required="required" title="문자발송사용여부" @if(empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'Y')checked="checked"@endif/> <label for="is_sms_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_sms_use_n" name="is_sms_use[]" class="flat" value="N" @if($method == 'POST' || (empty($data['BoardInfo']['qna']['IsSmsUse']) === false && $data['BoardInfo']['qna']['IsSmsUse'] == 'N'))checked="checked"@endif/> <label for="is_sms_use_n" class="input-label">미사용</label>
                         </div>
                         <p>
                             <textarea id="sms_content" name="sms_content[]" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">@if(empty($data['BoardInfo']['qna']['SmsContent']) === false){{ $data['BoardInfo']['qna']['SmsContent'] }}@endif</textarea>
                         </p>
                         <div class="text">
-                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, (empty($data['BoardInfo']['qna']['SmsSendTel']) === false ? $data['BoardInfo']['qna']['SmsSendTel'] : ''), 'sms_send_tel', 'sms_send_tel[]', '', '발신번호', '') !!}
-                            <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0"><span class="red">byte</span>   (55byte 이상일 경우 MMS로 전환됩니다.)
-                            <br> [수신번호]
-                            <input type="text" id="sms_receive_tel" name="sms_receive_tel[]" class="form-control" title="문자수신번호" value="@if(empty($data['BoardInfo']['qna']['SmsReceiveTel']) === false){{ $data['BoardInfo']['qna']['SmsReceiveTel'] }}@endif">
-                            <br> [문자 수신허용 시간]
-                            <select class="form-control ml-5" id="sms_limit_start_hour" name="sms_limit_start_hour[]">
-                                @php
-                                    for($i=0; $i<=23; $i++) {
-                                        $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartHour']) === false ? $data['BoardInfo']['qna']['SmsLimitStartHour'] : '')) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                    }
-                                @endphp
-                            </select>
-                            <span>:</span>
-                            <select class="form-control" id="sms_limit_start_min" name="sms_limit_start_min[]">
-                                @php
-                                    for($i=0; $i<=59; $i++) {
-                                        $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartMin']) === false ? $data['BoardInfo']['qna']['SmsLimitStartMin'] : '')) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                    }
-                                @endphp
-                            </select>
-                            <span class="pl-5 pr-5">~</span>
-                            <select class="form-control ml-5" id="sms_limit_end_hour" name="sms_limit_end_hour[]">
-                                @php
-                                    for($i=0; $i<=23; $i++) {
-                                        $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndHour']) === false ? $data['BoardInfo']['qna']['SmsLimitEndHour'] : '')) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                    }
-                                @endphp
-                            </select>
-                            <span>:</span>
-                            <select class="form-control" id="sms_limit_end_min" name="sms_limit_end_min[]">
-                                @php
-                                    for($i=0; $i<=59; $i++) {
-                                        $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndMin']) === false ? $data['BoardInfo']['qna']['SmsLimitEndMin'] : '')) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                    }
-                                @endphp
-                            </select>
+                            <div>
+                                <span class="pr-5">[발신번호]</span>
+                                {!! html_callback_num_select($arr_send_callback_ccd, (empty($data['BoardInfo']['qna']['SmsSendTel']) === false ? $data['BoardInfo']['qna']['SmsSendTel'] : ''), 'sms_send_tel', 'sms_send_tel[]', '', '발신번호', '') !!}
+                                <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0"><span class="red">byte</span>   (55byte 이상일 경우 MMS로 전환됩니다.)
+                            </div>
+                            <div class="mt-5">
+                                <span class="pr-5">[수신번호]</span>
+                                <input type="text" id="sms_receive_tel" name="sms_receive_tel[]" class="form-control" title="문자수신번호" value="@if(empty($data['BoardInfo']['qna']['SmsReceiveTel']) === false){{ $data['BoardInfo']['qna']['SmsReceiveTel'] }}@endif">
+                            </div>
+                            <div class="mt-5">
+                                <span class="pr-5">[문자 수신허용 시간]</span>
+                                <select class="form-control" id="sms_limit_start_hour" name="sms_limit_start_hour[]">
+                                    @php
+                                        for($i=0; $i<=23; $i++) {
+                                            $str = (strlen($i) <= 1) ? '0' : '';
+                                            $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartHour']) === false ? $data['BoardInfo']['qna']['SmsLimitStartHour'] : '')) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        }
+                                    @endphp
+                                </select>
+                                <span>:</span>
+                                <select class="form-control" id="sms_limit_start_min" name="sms_limit_start_min[]">
+                                    @php
+                                        for($i=0; $i<=59; $i++) {
+                                            $str = (strlen($i) <= 1) ? '0' : '';
+                                            $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitStartMin']) === false ? $data['BoardInfo']['qna']['SmsLimitStartMin'] : '')) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        }
+                                    @endphp
+                                </select>
+                                <span class="pl-5 pr-5">~</span>
+                                <select class="form-control ml-5" id="sms_limit_end_hour" name="sms_limit_end_hour[]">
+                                    @php
+                                        for($i=0; $i<=23; $i++) {
+                                            $str = (strlen($i) <= 1) ? '0' : '';
+                                            $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndHour']) === false ? $data['BoardInfo']['qna']['SmsLimitEndHour'] : '')) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        }
+                                    @endphp
+                                </select>
+                                <span>:</span>
+                                <select class="form-control" id="sms_limit_end_min" name="sms_limit_end_min[]">
+                                    @php
+                                        for($i=0; $i<=59; $i++) {
+                                            $str = (strlen($i) <= 1) ? '0' : '';
+                                            $selected = ($i == (empty($data['BoardInfo']['qna']['SmsLimitEndMin']) === false ? $data['BoardInfo']['qna']['SmsLimitEndMin'] : '')) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        }
+                                    @endphp
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_board_public">게시판 학습Q&A 공개.비공개 사용여부
+                    <label class="control-label col-md-2" for="is_board_public">학습Q&A 공개/비공개 사용여부
                     </label>
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         <div class="checkbox">
                             <input type="checkbox" id="is_board_public" name="is_board_public" class="flat" value="Y" @if($data['IsBoardPublic'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="is_board_public" class="input-label">공개</label>
+                            <span class="pl-30"># 미체크시 사용자단 학습Q&A에서 공개로 자동 설정됩니다.</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <p class="form-control-static"># 미체크시 사용자단 학습Q&A에서 공개로 자동 설정됩니다.</p>
+                </div>
+                <div class="form-group form-control-static">
+                    <label class="control-label col-md-2">단강좌 노출형태 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="radio">
+                            @foreach($onlec_view_ccd as $key => $val)
+                                <input type="radio" id="onlec_view_ccd_{{$key}}" name="onlec_view_ccd" value="{{$key}}" class="flat" @if($data['OnLecViewCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> <label for="onlec_view_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                            @endforeach
+                            <span class="pl-20"># 사용자단 교수소개 영역내 단강좌 노출형태를 설정합니다.</span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group form-control-static">
-                    <label class="control-label col-md-2">단강좌노출형태 <span class="required">*</span>
+                    <label class="control-label col-md-2">수강후기 노출여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
-                        @foreach($onlec_view_ccd as $key => $val)
-                            <input type="radio" name="onlec_view_ccd" id="onlec_view_ccd_{{$key}}" value="{{$key}}" class="flat" @if($data['OnLecViewCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> {{$val}}&nbsp;&nbsp;
-                        @endforeach
-                        &nbsp;# 사용자단 교수소개 영역내 단강좌 노출형태를 설정합니다.
+                        <div class="radio">
+                            <input type="radio" id="is_open_studycomment_y" name="is_open_studycomment" class="flat" value="Y" required="required" title="수강후기노출여부" @if($method == 'POST' || $data['IsOpenStudyComment'] === 'Y') checked="checked" @endif/> <label for="is_open_studycomment_y" class="input-label">노출</label>
+                            <input type="radio" id="is_open_studycomment_n" name="is_open_studycomment" class="flat" value="N" @if($data['IsOpenStudyComment'] === 'N') checked="checked" @endif/> <label for="is_open_studycomment_n" class="input-label">숨김</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group form-control-static">
-                    <label class="control-label col-md-2">수강후기노출여부 <span class="required">*</span>
+                    <label class="control-label col-md-2">교수진소개 사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
-                        <input type="radio" id="is_open_studycomment_y" name="is_open_studycomment" class="flat" value="Y" required="required" title="수강후기노출여부" @if($method == 'POST' || $data['IsOpenStudyComment'] === 'Y') checked="checked" @endif/> 노출
-                        &nbsp;
-                        <input type="radio" id="is_open_studycomment_n" name="is_open_studycomment" class="flat" value="N" @if($data['IsOpenStudyComment'] === 'N') checked="checked" @endif/> 숨김
+                        <div class="radio">
+                            <input type="radio" id="is_disp_intro_y" name="is_disp_intro" class="flat" value="Y" required="required" title="교수진소개 사용여부" @if($method == 'POST' || $data['IsDispIntro'] === 'Y') checked="checked" @endif/> <label for="is_disp_intro_y" class="input-label">사용</label>
+                            <input type="radio" id="is_disp_intro_n" name="is_disp_intro" class="flat" value="N" @if($data['IsDispIntro'] === 'N') checked="checked" @endif/> <label for="is_disp_intro_n" class="input-label">미사용</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group form-control-static">
-                    <label class="control-label col-md-2">출력호칭선택 <span class="required">*</span>
+                    <label class="control-label col-md-2">출력호칭 선택 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
-                        @foreach($appellation_ccd as $key => $val)
-                            <input type="radio" name="appellation_ccd" id="appellation_ccd_{{$key}}" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> {{$val}}&nbsp;&nbsp;
-                        @endforeach
+                        <div class="radio">
+                            @foreach($appellation_ccd as $key => $val)
+                                <input type="radio" id="appellation_ccd_{{$key}}" name="appellation_ccd" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> <label for="appellation_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -252,10 +272,9 @@
                     </label>
                     <div class="col-md-9">
                         <div class="row">
-                            <div class="control-label col-md-1">[사용유무]
-                            </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="radio item">
+                                    <span class="pr-10">[사용유무]</span>
                                     <input type="radio" id="is_cafe_use_y" name="is_cafe_use" class="flat" value="Y" required="required" title="사용여부" @if(empty($data['cafe_url']) === false) checked="checked" @endif/> <label for="is_cafe_use_y" class="input-label">사용</label>
                                     <input type="radio" id="is_cafe_use_n" name="is_cafe_use" class="flat" value="N" @if($method == 'POST' || empty($data['cafe_url']) === true) checked="checked" @endif/> <label for="is_cafe_use_n" class="input-label">미사용</label>
                                 </div>

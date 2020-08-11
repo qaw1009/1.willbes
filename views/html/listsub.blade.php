@@ -261,25 +261,25 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="willbes-Lec-buyBtn GM">
-                    <ul>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>장바구니</span>
-                            </button>
-                        </li>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                <span class="tx-light-blue">바로결제</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- willbes-Lec-buyBtn -->
+                </div>              
             </div>
             <!-- willbes-Buy-Table -->
+
+            <div class="willbes-Lec-buyBtn GM">
+                <ul>
+                    <li class="btnAuto180 h36">
+                        <button type="submit" onclick="" class="mem-Btn bg-heavy-gray bd-dark-gray">
+                            <span>장바구니</span>
+                        </button>
+                    </li>
+                    <li class="btnAuto180 h36">
+                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                            <span class="tx-white">바로결제</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- willbes-Lec-buyBtn -->
 
         </div>
         <!-- willbes-Lec -->

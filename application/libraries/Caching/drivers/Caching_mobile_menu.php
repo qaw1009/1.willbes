@@ -103,7 +103,7 @@ class Caching_mobile_menu extends CI_Driver
                 'MenuName' => $row['MenuName'],
                 'MenuUrl' => $menu_url,
                 //'MenuOrgUrl' => $row['MenuUrl'],
-                //'MenuIcon' => $row['MenuIcon'],
+                'MenuIcon' => $row['MenuIcon'],
                 //'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
                 //'UrlRouteIdx' => $url_route_idx,

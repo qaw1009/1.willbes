@@ -61,7 +61,8 @@ class Professor extends \app\controllers\FrontController
         }
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_def_cate_code, null, true);
+        $arr_add_condition = ['EQ' => ['P.IsDispIntro' => 'Y']];    // 교수진소개 노출여부
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_def_cate_code, null, true, $arr_add_condition);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -137,7 +138,8 @@ class Professor extends \app\controllers\FrontController
         $prod_type = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code, null, true);
+        $arr_add_condition = ['EQ' => ['P.IsDispIntro' => 'Y']];    // 교수진소개 노출여부
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code, null, true, $arr_add_condition);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);

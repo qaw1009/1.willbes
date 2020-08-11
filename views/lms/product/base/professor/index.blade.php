@@ -52,6 +52,7 @@
                     <th rowspan="2" class="valign-middle">카테고리정보<br/>(대표카테고리만 표기)</th>
                     <th colspan="7">게시판운영여부</th>
                     <th rowspan="2" class="valign-middle">공개사용여부<br/>(학습Q&A)</th>
+                    <th rowspan="2" class="valign-middle">교수진소개<br/>사용여부</th>
                     <th rowspan="2" class="valign-middle">사용여부</th>
                     <th rowspan="2" class="valign-middle">사용여부(W)</th>
                     <th rowspan="2" class="valign-middle">등록자</th>
@@ -61,10 +62,10 @@
                     <th>공지</th>
                     <th>Q&A</th>
                     <th>자료실</th>
-                    <th>T-pass자료실</th>
-                    <th>첨삭게시판</th>
-                    <th style="border-right-width: 1px;">TCC게시판</th>
-                    <th style="border-right-width: 1px;">자유게시판</th>
+                    <th>T-pass</th>
+                    <th>첨삭</th>
+                    <th style="border-right-width: 1px;">TCC</th>
+                    <th style="border-right-width: 1px;">자유</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,8 +117,11 @@
                     {'data' : 'IsTccBoard'},
                     {'data' : 'IsAnonymousBoard'},
                     {'data' : 'IsBoardPublic', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                    {'data' : 'IsDispIntro', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SurveyModel extends WB_Model
 {
     private $_table = [
-        'event_survey' => 'lms_survey',
+        'event_survey' => 'lms_survey_list',
         'event_survey_question' => 'lms_survey_question_list',
         'event_answer_info' => 'lms_survey_answer_detail',
         'admin' => 'wbs_sys_admin',

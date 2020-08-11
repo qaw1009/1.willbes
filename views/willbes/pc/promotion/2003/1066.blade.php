@@ -58,7 +58,7 @@
         <div class="evtCtnsBox wb_cts04" id="cts04">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1066_04.png" usemap="#Map1066b" border="0" />
                 <map name="Map1066b" id="Map1066b">
-                <area shape="rect" coords="230,694,277,711" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" onfocus='this.blur()' />
+                    <area shape="rect" coords="230,694,277,711" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="230,752,278,769" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157580" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="229,828,278,845" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146100" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="426,456,472,474" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145623" target="_blank" onfocus='this.blur()' />
@@ -79,7 +79,7 @@
                     <area shape="rect" coords="831,677,877,695" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170173" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170281" target="_blank" onfocus='this.blur()' />
                     <area shape="rect" coords="832,868,878,886" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/169814" target="_blank" onfocus='this.blur()' />
-                </map>        
+                </map >        
         </div>
 
         <div class="evtCtnsBox wb_cts06" >

@@ -200,8 +200,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2020 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -244,8 +244,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -291,8 +291,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2020 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -335,8 +335,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -387,8 +387,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -442,35 +442,10 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
                     </tr>
-                </table>
-                <p>● 전자회로</p>
-                <table cellspacing="0" cellpadding="0">
-                    <col width="15%"/>
-                    <col width="15%"/>
-                    <col />
-                    <col width="12%"/>
-                    <tr>
-                        <th>과목</th>
-                        <th>과정</th>
-                        <th>강좌명</th>
-                        <th>수강신청</th>
-                    </tr>
-                    <tr>
-                        <td>전자회로</td>
-                        <td>이론</td>
-                        <td>2018 최우영 전자회로 이론 및 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146195" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
-                        <td>전자회로</td>
-                        <td>유료특강</td>
-                        <td>2018 최우영 전자회로 기출문제특강</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
-                    </tr>
-                </table>
+                </table>              
             </div>
 
             <div class="tabContents" id="tab4">
@@ -489,8 +464,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 전기이론 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155016" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169231" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -609,8 +584,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 회로이론</p>
@@ -634,8 +609,8 @@
                     <tr>
                         <td>회로이론</td>
                         <td>문제풀이</td>
-                        <td>2017 최우영 회로이론 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145710" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 회로이론 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168660" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -658,8 +633,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2020 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -688,8 +663,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2019 [군무원대비] 최우영 전자공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
+                        <td>2020 [군무원] 최우영 전자회로(전자공학 포함) 최종모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/166792" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전자회로</p>
@@ -713,8 +688,8 @@
                     <tr>
                         <td>전자회로</td>
                         <td>유료특강</td>
-                        <td>2018 최우영 전자회로 기출문제특강</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
+                        <td>2020 [군무원] 최우영 전자공학/전자회로 기출 복원 문풀 FINAL 특강</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/166718" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자회로</td>
@@ -740,8 +715,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2020 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -790,8 +765,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -851,8 +826,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>

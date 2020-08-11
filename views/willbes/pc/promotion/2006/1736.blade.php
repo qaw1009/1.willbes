@@ -58,8 +58,7 @@
         <div class="evtCtnsBox evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1736_03.jpg" alt="수강신청 바로가기" usemap="#Map1736_apply" border="0" />
             <map name="Map1736_apply" id="Map1736_apply">
-                <area shape="rect" coords="73,313,555,423" href="javascript:go_PassLecture('169683');">
-                <area shape="rect" coords="569,313,1045,424" href="javascript:go_PassLecture('169684');">
+              <area shape="rect" coords="71,313,1045,422" href="javascript:go_PassLecture('169684');">
             </map>
             <div class="check">
                 <label>

@@ -14,7 +14,19 @@
     .evt02 {padding-bottom:120px; background:#f6f6f6}
     .evt02 a {display:block; margin:0 auto; width:60%; font-size:20px; background:#293342; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
 
-
+    .evt03 {position:relative;}
+  
+    .evt03 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
+    .evt03 .apply ul li a:first-child {position: absolute;width:100%;left:50%;top:48%;margin-left:-28%;}
+    .evt03 .apply ul li a:nth-child(2) {position: absolute;width:100%;left:50%;top:68%;margin-left:-28%;}
+    .evt03 .apply ul li a:nth-child(3) {position: absolute;width:100%;left:50%;top:73%;margin-left:-28%;}
+    .evt03 .apply ul li a:nth-child(4) {position: absolute;width:100%;left:50%;top:78%;margin-left:-28%;}
+    .evt03 .apply img{width:13.5%;}
+    .check {position:absolute; bottom:7%; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
+    .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff;margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;
+              position:absolute;left:50%;top:90%;margin-left:-23%;}
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
     .btnbuy {max-width:720px; margin:0 auto}
     .btnbuy a {display:block; width:99%; max-width:700px; margin:0 auto 5px; font-size:14px; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
@@ -39,15 +51,23 @@
 
 
     /* 폰 가로, 태블릿 세로*/
-    @@media only all and (min-width: 408px)  {        
-        .btnbuy a {display:inline-block;width:49%; }  
+    @@media all and (min-width:320px) and (max-width:408px) {       
+    .check label {font-size:10px;}
+    .check input {width:15px;height:15px;}
+    .check img {width:75%;}
+    }
+
+    @@media all and (min-width:409px) and (max-width:588px) {       
+    .check label {font-size:12px;}
+    .check input {width:20px;height:20px;}
+    .check img {width:75%;}
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
         .evt00 .dday {font-size:30px;}
         .evt00 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}  
-        .btnbuy a {font-size:16px;}  
+     
     }
 
     /* 태블릿 가로, PC */
@@ -79,11 +99,38 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_02.jpg" alt="" >
     </div> 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox evt03">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03.jpg" alt="" >
+        <div class="apply"> 
+            <ul>
+                <li>
+                    <a href="javascript:go_PassLecture('169730');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
+                    </a>    
+                    <a href="javascript:go_PassLecture('170030');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
+                    </a>  
+                    <a href="javascript:go_PassLecture('170029');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
+                    </a>  
+                    <a href="javascript:go_PassLecture('170031');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
+                    </a>  
+                </li>
+            </ul>          
+        </div>
+        <div class="check">
+            <label>
+                <input name="ischk"  type="checkbox" value="Y" />
+                페이지 하단 군무원 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+            </label>
+            <a href="#guide">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_guide.png" alt="" >
+            </a>
+        </div>        
     </div> 
 
-    <div class="evtCtnsBox evtFooter" id="infoText">
+    <div class="evtCtnsBox evtFooter" id="guide">
         <h3 class="NSK-Black">윌비스 군무원PASS 이용안내</h3>
         <p>● 상품구성 </p>
         <ul>
@@ -112,28 +159,6 @@
     </div>  
 </div>
 <!-- End Container -->
-
-<div class="btnbuyBox">
-    <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('169730');">
-        행정직 12개월<br/> 신청 >
-        </a>
-        <a href="javascript:goLecture('170030');">
-        국어+행정법 12개월<br/> 신청 >
-        </a>
-        <a href="javascript:goLecture('170029');">
-        국어+행정학 12개월<br/> 신청 >
-        </a>
-        <a href="javascript:goLecture('170031');">
-        행정학+행정법 12개월<br/> 신청 >
-        </a>
-    </div>
-    <div id="pass" class="infoCheck">
-        <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
-        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-        <a href="#infoText">이용안내 확인하기 ↓</a>
-    </div>
-</div>
 
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
@@ -207,14 +232,16 @@
         }
     }
 
-    {{-- 수강신청 이동 --}}
-    function goLecture(prod_code) {
-        if ($('#is_chk').is(':checked') === false) {
-            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-            return;
-        }
-        location.href = '{{ front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}' + prod_code;
-    }
+      /*수강신청 동의*/ 
+      function go_PassLecture(code){
+                if($("input[name='ischk']:checked").size() < 1){
+                    alert("이용안내에 동의하셔야 합니다.");
+                    return;
+                }
+
+                var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
+                location.href = url;
+        }    
 
 </script>
 

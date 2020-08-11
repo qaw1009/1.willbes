@@ -57,7 +57,7 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377open" border="0" />
             <map name="Map1377open" id="Map1377open">
-                <area shape="rect" coords="669,329,833,373" href="/lecture/show/cate/3019/pattern/only/prod-code/166106" target="_blank" />
+                <area shape="rect" coords="669,329,833,373" href="/lecture/show/cate/3019/pattern/only/prod-code/166672" target="_blank" />
                 <area shape="rect" coords="668,446,832,495" href="/lecture/show/cate/3019/pattern/only/prod-code/169566" target="_blank" />
                 <area shape="rect" coords="666,567,835,614" href="/lecture/show/cate/3019/pattern/only/prod-code/169905" target="_blank" />
                 <area shape="rect" coords="839,328,1001,376" href="javascript:alert('마감되었습니다.')">

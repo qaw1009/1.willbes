@@ -169,9 +169,9 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="border-bottom:none;">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="form-group hide" id="limit_{{$options_keys[0]}}">
                             <div class="row">
                                 <div class="col-md-3 item form-inline">
@@ -188,7 +188,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
-                                    <div class="form-group form-inline">
+                                    <div class="form-group form-inline" style="border-bottom:none">
                                         <div class="col-md-11">
                                             <input type="hidden" name="er_idx" value="@if(empty($list_event_register['S']) === false && empty($list_event_register['S'][0]['ErIdx']) === false){{$list_event_register['S'][0]['ErIdx']}}@endif">
                                             <select class="form-control" id="person_limit_type" name="person_limit_type">
@@ -203,7 +203,7 @@
                                 </div>
 
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
-                                    <div class="form-group form-inline">
+                                    <div class="form-group form-inline" style="border-bottom:none;">
                                         <div class="col-md-3">
                                             <select class="form-control" id="select_type" name="select_type">
                                                 <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
@@ -214,7 +214,7 @@
                                             <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
                                         </div>
                                     </div>
-                                    <div class="form-group form-inline">
+                                    <div class="form-group form-inline" style="border-bottom:none;">
                                         <div class="col-md-11">
                                         <select class="form-control" id="temp_person_limit_type" name="temp_person_limit_type">
                                             <option value="L">인원제한</option>
@@ -226,7 +226,7 @@
                                         <button type="button" class="btn btn-info btn-lecture-add" style="margin-bottom: 2px;">등록</button>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="border-bottom:none;">
                                         <div class="col-md-12">
                                         <table class="table table-striped table-bordered" id="table_lecture">
                                             <thead>
@@ -453,7 +453,7 @@
                             <div class="row">
 
                                 <div class="col-md-11">
-                                    <div class="form-group form-inline">
+                                    <div class="form-group form-inline" style="border-bottom:none;">
                                         <div class="col-md-11">
                                             {!! html_site_select('', 'display_product_site_code', '', '', '운영 사이트', '', '', false, $arr_online_site_list) !!}
                                             <button type="button" data-poptype="display" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
@@ -462,7 +462,7 @@
                                 </div>
 
                                 <div class="col-md-11">
-                                    <div class="form-group">
+                                    <div class="form-group" style="border-bottom:none;">
                                         <div class="col-md-12">
                                             <table class="table table-striped table-bordered" id="table_display_product">
                                                 <thead>
@@ -533,23 +533,23 @@
                                     <button type="button" class="btn btn-info btn-apply-add">추가</button>
                                 </div>
                                 <div class="col-md-9">
-                                    <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크/선착순당첨)</p>
+                                    <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크/선착순당첨) &nbsp;&nbsp; • 지급상품은 해당프로모션과 동일한 운영사이트상품을 지급해야합니다.</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group">
+                                <div class="form-group" style="border-bottom:none;">
                                     <div class="col-md-12 form-inline">
                                         <table class="table table-striped table-bordered" id="table_add_apply">
                                             <thead>
                                                 <tr>
                                                     <th>인원제한/인원수</th>
-                                                    <th>지급상품/상품코드</th>
+                                                    <th>지급상품 {!! html_site_select('', 'add_apply_product_site_code', '', '', '운영 사이트', '') !!}</th>
                                                     <th>신청정보명</th>
                                                     <th>신청가능 시작일시</th>
                                                     <th>신청가능 종료일시</th>
                                                     <th>접수가능</th>
                                                     {{-- <th>사용</th> --}}
-                                                    <th>수정</th>
+                                                    {{-- <th>수정</th> --}}
                                                     <th>삭제</th>
                                                 </tr>
                                             </thead>
@@ -572,10 +572,18 @@
                                                             <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_{{$add_apply_index}}" style="min-width: 70px;">
                                                                 <option value="N" @if($row['ProductGiveType'] == 'N')selected="selected"@endif>미지급</option>
                                                                 <option value="C" @if($row['ProductGiveType'] == 'C')selected="selected"@endif>장바구니지급</option>
-                                                                <option value="D" @if($row['ProductGiveType'] == 'D')selected="selected"@endif>즉시지급</option>
+                                                                {{-- <option value="D" @if($row['ProductGiveType'] == 'D')selected="selected"@endif>즉시지급</option> --}}
                                                             </select>
-                                                            /
-                                                            <input type="text" name="event_add_apply_prod_code[]" id="event_add_apply_prod_code_{{$add_apply_index}}" value="{{$row['ProdCode']}}"  style="width: 90px;">
+                                                            <button type="button" data-eaaidx="{{$row['EaaIdx']}}" data-poptype="add_apply" class="btn_product_search btn btn-sm btn-primary mb-0">상품추가</button>
+                                                            <span id="event_add_apply_product_{{$row['EaaIdx']}}" class="event_add_apply_product">
+                                                                <br/>
+                                                                <span class="pr-10 @if(empty($row['ProdCode']) === true){{----}}hide{{----}}@endif">[{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                                                    <a href="#none" data-prod-code="{{$row['ProdCode']}}" class="selected-product-delete">
+                                                                        <i class="fa fa-times red"></i>
+                                                                    </a>
+                                                                    <input type="hidden" name="event_add_apply_prod_code[]" value="{{$row['ProdCode']}}">
+                                                                </span>
+                                                            </span>
                                                         </td>
                                                         <td>
                                                             <input type="text" name="event_add_apply_name[]" id="event_add_apply_name_{{$add_apply_index}}" value="{{$row['Name']}}" style="min-width: 170px;">
@@ -648,9 +656,11 @@
                                                             </select>
                                                         </td>
                                                         --}}
+                                                        {{--
                                                         <td>
                                                             <button type="button" class="btn btn-success mr-10 btn-add-apply-expire-submit" data-add-apply-idx="{{$row['EaaIdx']}}" data-modify-number="{{$add_apply_index}}">수정</button>
                                                         </td>
+                                                        --}}
                                                         <td><a href="#none" class="btn-add-apply-delete-submit" data-add-apply-index="{{$add_apply_index}}"><i class="fa fa-times fa-lg red"></i></a></td>
                                                     </tr>
                                                     @php $add_apply_index++; @endphp
@@ -1091,7 +1101,6 @@
 
             // 프로모션 지급상품 검색 버튼 클릭. 레이어 팝업 호출.
             $('.btn_product_search').on('click', function() {
-
                 var pop_type = $(this).data('poptype');
                 var event_product_target_id, event_product_target_field = null;
                 switch (pop_type) {
@@ -1103,6 +1112,10 @@
                     case 'display' :
                         event_product_target_id = 'temp_event_display_product';
                         event_product_target_field = 'event_display_product_prod_code';
+                        break;
+                    case 'add_apply' :
+                        event_product_target_id = 'event_add_apply_product_' + $(this).data('eaaidx');
+                        event_product_target_field = 'event_add_apply_prod_code';
                         break;
                     default :
                         alert('오류가 발생하였습니다.');
@@ -1116,17 +1129,24 @@
                 }
 
                 var p_prod_type = 'on';
-                if(arr_offline_site_code.indexOf(site_code) !== -1) {
+                var p_prod_tabs = 'on';
+                var p_hide_tabs = 'off_pack_lecture';
+                var p_is_single = 'N'
+                var search_product_url = 'searchLectureAll';
+                if(pop_type == 'add_apply') {
+                    p_is_single = 'Y'
+                    search_product_url = 'searchBook';
+                }else if(arr_offline_site_code.indexOf(site_code) !== -1) {
                     p_prod_type = 'off';
+                    p_prod_tabs = 'off';
                 }
 
                 $('.btn_product_search').setLayer({
-                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code
+                    'url' : '{{ site_url('/common/') }}' + search_product_url + '/?site_code=' + site_code
                         + '&prod_type=' + p_prod_type + '&return_type=inline&target_id=' + event_product_target_id + '&target_field=' + event_product_target_field
-                        + '&prod_tabs=' + p_prod_type + '&hide_tabs=off_pack_lecture&is_event=Y',
+                        + '&prod_tabs=' + p_prod_tabs + '&hide_tabs=' + p_hide_tabs + '&is_event=Y&is_single=' + p_is_single,
                     'width' : 1400
                 });
-
             });
 
             // 지급상품 삭제 이벤트
@@ -1140,6 +1160,16 @@
 
             // 지급상품 결과 이벤트
             $regi_form.on('change', '.event_register_product', function() {
+                $(this).children('br').remove();
+                $(this).children('span').before('<br>');
+            });
+
+            // 지급상품 결과 이벤트
+            $regi_form.on('change', '.event_add_apply_product', function() {
+                var cnt = $(this).find('input[type=hidden]').length;
+                if(cnt > 1) {
+                    $(this).find('span').eq(0).remove();
+                }
                 $(this).children('br').remove();
                 $(this).children('span').before('<br>');
             });
@@ -1277,7 +1307,7 @@
             add_lists += '      <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_' + temp_apply_idx + '" style="min-width: 70px;">';
             add_lists += '      	<option value="N">미지급</option>';
             add_lists += '      	<option value="C">장바구니지급</option>';
-            add_lists += '      	<option value="D">즉시지급</option>';
+            //add_lists += '      	<option value="D">즉시지급</option>';
             add_lists += '      </select>';
             add_lists += '      /';
             add_lists += '      <input type="text" name="event_add_apply_prod_code[]" id="event_add_apply_prod_code_' + temp_apply_idx + '" value="" style="width: 90px;">';

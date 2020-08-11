@@ -363,10 +363,10 @@
     <script type="text/javascript">
 
         {{-- 유료 --}}
+        {{--
         function fn_promotion_etc_submit() {
-
-            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
-                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
+            @if(date('YmdHi') < '202008172000' && ENVIRONMENT == 'production')
+                alert('8월17일 20:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 
@@ -386,12 +386,17 @@
                 alert( getApplyMsg(ret.ret_msg || '') );
             }, null, false, 'alert');
         }
+        --}}
 
         {{-- 무료 당첨 --}}
         function fn_add_apply_submit() {
+            @if(date('YmdHi') < '202008172000' && ENVIRONMENT == 'production')
+                alert('8월17일  20:00 부터 이벤트 참여 가능합니다.');
+                return;
+            @endif
 
-            @if(date('YmdHi') < '202003202000' && ENVIRONMENT == 'production')
-                alert('3월20일 20:00 부터 이벤트 참여 가능합니다.');
+            @if(date('YmdHi') >= '202008202000' && date('YmdHi') < '202008222000' && ENVIRONMENT == 'production')
+                alert('8/21(금) 학원방문 선착순 이벤트 진행! 22일 20시에 도전해 주세요');
                 return;
             @endif
 
@@ -416,29 +421,29 @@
         }
 
         {{-- 통계그래프 보기 체크 --}}
+        {{--
         function fn_check_reg_member() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             var $add_apply_form = $('#add_apply_form');
             var _check_url = '{!! front_url('/promotion/checkEventRegisterMember/') !!}?el_idx={{$data['ElIdx']}}';
             ajaxSubmit($add_apply_form, _check_url, function (ret) {
                 if (ret.ret_cd) {
-                    /*$('.stats-div').css('opacity',.1);*/
                     $('.stats-confirm').hide();
                 }
             }, showValidateError, null, false, 'alert');
         }
+        --}}
 
-        // 이벤트 추가 신청 메세지
+        {{-- 이벤트 추가 신청 메세지 --}}
         function getApplyMsg(ret_msg) {
             {{-- 해당 프로모션 종속 결과 메세지 --}}
             var apply_msg = '';
             var arr_apply_msg = [
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
-                ['신청 되었습니다.','당첨을 축하합니다. 추후 안내 문자 발송 예정입니다.'],
+                ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
                 ['처리 되었습니다.','장바구니에 담겼습니다.'],
                 ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
             ];
-
             for (var i = 0; i < arr_apply_msg.length; i++) {
                 if(arr_apply_msg[i][0] == ret_msg) {
                     apply_msg = arr_apply_msg[i][1];
@@ -496,6 +501,9 @@
                         break;
                     case '101단' :
                         if(exam_num < 40001 || exam_num > 49999) exam_num_check = false;
+                        break;
+                    case '경행경채' :
+                        if(exam_num < 50001 || exam_num > 59999) exam_num_check = false;
                         break;
                     case '경력채용' :
                         if(exam_num < 60001 || exam_num > 99999) exam_num_check = false;

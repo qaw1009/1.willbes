@@ -28,8 +28,8 @@
                 <h3>전체 시험 난이도 </h3>
                 <div>
                     <div class="graphbox">
-                        @if(empty($survey_title) === false)
-                            @foreach($survey_title as $title => $val)
+                        @if(empty($survey_levels) === false)
+                            @foreach($survey_levels as $title => $val)
                                 @if($loop->index == 1)
                                     @foreach($val as $item => $spread)
                                         <div class="graph">

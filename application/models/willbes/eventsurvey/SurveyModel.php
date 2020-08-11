@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SurveyModel extends WB_Model
 {
     private $_table = [
-        'event_survey' => 'lms_survey',
+        'event_survey' => 'lms_survey_list',
         'event_survey_question' => 'lms_survey_question_list',
         'event_answer_info' => 'lms_survey_answer_detail',
         'predict_code' => 'lms_predict_code',
@@ -136,7 +136,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 저장
+     * 설문 저장
      * @param $formData
      * @param integer $sp_idx
      * @return mixed
@@ -145,7 +145,6 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            // 설문응답
             $data = [
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SpIdx'  => $sp_idx,
@@ -187,7 +186,7 @@ class SurveyModel extends WB_Model
 
 
     /**
-     #################### pridict 함수 옮겨옴 ####################
+     #################### /lms/predict/PredictModel.php 함수 ####################
      */
 
     /**

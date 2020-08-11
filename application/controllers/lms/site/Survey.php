@@ -44,7 +44,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문조사 등록/수정
+     * 설문 등록/수정
      */
     public function eventSurveyStore()
     {
@@ -89,8 +89,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문조사 항목 등록/수정 레이어
-     * @param array $params
+     * 설문조사 문항 등록/수정 레이어
      */
     public function questionCreateModal()
     {
@@ -129,7 +128,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문조사 항목 등록/수정
+     * 설문조사 문항 등록/수정
      */
     public function surveyQuestionStore()
     {
@@ -181,7 +180,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문조사 항목 삭제
+     * 설문조사 문항 삭제
      */
     public function delSurveyQuestion()
     {
@@ -237,7 +236,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문응답 항목 매칭
+     * 설문응답 선택 문항 매칭
      * @param $question_info
      * @param $answer_data
      * @return mixed
@@ -269,7 +268,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문응답 비율 계산
+     * 설문응답 선택 문항 비율 계산
      * @param $question_info
      * @param $answer_info
      * @return mixed
@@ -293,7 +292,7 @@ class Survey extends \app\controllers\BaseController
             }
         }
 
-        // 카운트
+        // 선택 문항 카운트
         foreach ($answer_info as $key => $val){
             foreach ($val['AnswerInfo'] as $question_key => $answer){
                 if($new_answer_info[$question_key] != 'D'){ // 서술형 제외

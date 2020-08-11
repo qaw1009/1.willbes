@@ -90,6 +90,13 @@
             </div>
         </div>
         <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="menu_icon">메뉴 아이콘
+            </label>
+            <div class="col-md-9">
+                <input type="text" id="menu_icon" name="menu_icon" class="form-control" title="메뉴 아이콘" value="{{ $data['MenuIcon'] }}" placeholder="메뉴 아이콘 이미지 파일경로">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="menu_etc1">기타
             </label>
             <div class="col-md-9 form-inline item">

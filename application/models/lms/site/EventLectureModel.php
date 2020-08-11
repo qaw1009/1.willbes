@@ -2461,10 +2461,12 @@ class EventLectureModel extends WB_Model
             DATE_FORMAT(AA.ApplyStartDatm, '%H') AS ApplyStartHour,
             DATE_FORMAT(AA.ApplyEndDatm, '%H') AS ApplyEndHour,
             DATE_FORMAT(AA.ApplyStartDatm, '%i') AS ApplyStartMin,
-            DATE_FORMAT(AA.ApplyEndDatm, '%i') AS ApplyEndMin
+            DATE_FORMAT(AA.ApplyEndDatm, '%i') AS ApplyEndMin,
+            P.ProdName
         ";
         $from = "
             FROM {$this->_table['event_add_apply']} AS AA
+            LEFT OUTER JOIN {$this->_table['product']} AS P ON AA.ProdCode = P.ProdCode
         ";
         $where = " WHERE AA.ElIdx = ? AND AA.IsStatus = 'Y'";
         $order_by_offset_limit = " ORDER BY AA.EaaIdx DESC";

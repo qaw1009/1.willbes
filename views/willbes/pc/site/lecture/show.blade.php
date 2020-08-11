@@ -84,13 +84,13 @@
     @if($pattern == 'only' || ($pattern == 'free' && $data['FreeLecTypeCcd'] == '652001'))
         {{-- 단강좌, 일반 무료강좌일 경우만 노출 --}}
         <div class="willbes-Lec mb170 NG c_both">
-            <div class="willbes-Buy-Table p_re mt20">
-                <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-                    {!! csrf_field() !!}
-                    {!! method_field('POST') !!}
-                    <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
-                    <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
-                    <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
+                <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
+                <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+            <div class="willbes-Buy-Table p_re mt20">                
                 <div class="willbes-Buy-List">
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
@@ -160,6 +160,7 @@
                     </div>
                     <!-- lecInfoTable -->
                 </div>
+
                 <div class="willbes-Buy-Price">
                     <table cellspacing="0" cellpadding="0" class="priceTable">
                         <colgroup>
@@ -185,31 +186,31 @@
                         </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="willbes-Lec-buyBtn GM">
-                    @if($data['IsSalesAble'] == 'Y')
-                        <ul>
-                            <li class="btnAuto130 h36">
-                                @if($data['IsCart'] == 'Y' && $pattern != 'free')
-                                <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-heavy-gray bd-dark-gray">
-                                    <span>장바구니</span>
-                                </button>
-                                @endif
-                            </li>
-                            <li class="btnAuto130 h36">
-                                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span class="tx-white">바로결제</span>
-                                </button>
-                            </li>
-                        </ul>
-                    @else
-                        <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
-                    @endif
-                </div>
-                </form>
-                <!-- willbes-Lec-buyBtn -->
+                </div>           
             </div>
             <!-- willbes-Buy-Table -->
+            <div class="willbes-Lec-buyBtn GM">
+                @if($data['IsSalesAble'] == 'Y')
+                    <ul>
+                        @if($data['IsCart'] == 'Y' && $pattern != 'free')
+                        <li class="btnAuto130 h36">                                
+                            <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-heavy-gray bd-dark-gray">
+                                <span>장바구니</span>
+                            </button>                                
+                        </li>
+                        @endif
+                        <li class="btnAuto130 h36">
+                            <button type="submit" name="btn_direct_pay" data-direct-pay="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                <span class="tx-white">바로결제</span>
+                            </button>
+                        </li>
+                    </ul>
+                @else
+                    <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
+                @endif
+            </div>
+            </form>
+            <!-- willbes-Lec-buyBtn -->
         </div>
         <!-- willbes-Lec -->
     @endif

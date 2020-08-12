@@ -1075,6 +1075,7 @@ body.memBody #Footer {
 .csCenter .tel li:last-child {border-right:0}
 .csCenter li img {float:left; margin:0 10px 10px 20px}
 .csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2;}
+.csCenter li div.goTel a {border:0}
 .csCenter li strong {display: block; font-size:18px; color:#313131}
 .csCenter li span {display: block; color:#006cff; font-weight: bold;}
 .csCenter .tel li:after,

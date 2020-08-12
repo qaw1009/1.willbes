@@ -66,6 +66,8 @@
         .evt02 div table td {font-size:18px; color:#fff;}
         .evt02 div table td div {position:relative}
         .evt02 div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
+        .evt02 div table td span.first_come {position:absolute;width:100%;left:619px;top:-493px;margin-left:-59px;}
+        .evt02 div table td span.bubble {position:absolute;width:100%;left:715px;top:-503px;margin-left:-59px;}
         .evt02 div table tbody th {background: #f9f9f9; color:#555;} 
         .evt02 div table tbody th:last-child,
         .evt02 div table tbody td:last-child {border-right:0;}
@@ -326,7 +328,14 @@
 
                             @endfor
                         @endif
-
+                        <tr>
+                            <td>
+                                <div>                                    
+                                    <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>                                    
+                                    <span class="first_come"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img03.png" alt="선착순"></span>
+                                </div>
+                            </td>                        
+                        </tr>                        
                         </tbody>
                     </table>
                 </div>

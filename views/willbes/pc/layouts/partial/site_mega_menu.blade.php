@@ -50,7 +50,7 @@
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50041/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">윤세훈</a>
-                        <span>[형사소송법]]</span>
+                        <span>[형사소송법]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50035/?subject_idx=1117&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">신광은</a>
                     </li>
                     <li>

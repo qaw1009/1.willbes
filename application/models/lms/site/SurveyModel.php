@@ -119,7 +119,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function listSurveyQuestion($sp_idx=null)
+    public function listSurveyForQuestion($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
@@ -146,7 +146,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyByAnswer($sp_idx=null)
+    public function findSurveyForAnswer($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";

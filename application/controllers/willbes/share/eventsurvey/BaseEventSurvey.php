@@ -39,7 +39,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             }
         }
 
-        $question_list = $this->surveyModel->listSurveyQuestion($sp_idx);
+        $question_list = $this->surveyModel->listSurveyForQuestion($sp_idx);
         if(empty($question_list) === true){
             show_alert('등록되지 않은 설문입니다.','close');
             return;
@@ -62,8 +62,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
     public function graph($params = [])
     {
         $sp_idx = $params[0];
-        $answer_info = $this->surveyModel->listSurveyAnswer($sp_idx);
-        $question_info = $this->surveyModel->listSurveyQuestion($sp_idx);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($sp_idx);
+        $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 응답 비율 계산
         list($survey_levels,$survey_data) = $this->_mathAnswerSpreadData($question_info,$answer_info);
@@ -228,13 +228,13 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 8. 과목별 체감난이도
         // 이전 설문
-        $answer_info = $this->surveyModel->listSurveyAnswer($spidx1);
-        $question_info = $this->surveyModel->listSurveyQuestion($spidx1);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($spidx1);
+        $question_info = $this->surveyModel->listSurveyForQuestion($spidx1);
         list($survey_levels,$spSubjectList['Prev']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
         
         // 진행중 설문
-        $answer_info = $this->surveyModel->listSurveyAnswer($spidx2);
-        $question_info = $this->surveyModel->listSurveyQuestion($spidx2);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($spidx2);
+        $question_info = $this->surveyModel->listSurveyForQuestion($spidx2);
         list($survey_levels,$spSubjectList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
         // 9. 직렬별 설문조사

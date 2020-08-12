@@ -33,7 +33,7 @@ class Survey extends \app\controllers\BaseController
             $sp_idx = $params[0];
 
             $survey_data = $this->surveyModel->findSurveyForModify($sp_idx);
-            $question_data = $this->surveyModel->listSurveyQuestion($sp_idx);
+            $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
         }
 
         $this->load->view('site/survey/event_survey_create', [
@@ -203,8 +203,8 @@ class Survey extends \app\controllers\BaseController
     public function surveyGraphPopup()
     {
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_data = $this->surveyModel->findSurveyByAnswer($sp_idx);
-        $question_data = $this->surveyModel->listSurveyQuestion($sp_idx);
+        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 응답 비율 계산
         $data = $this->_mathAnswerSpreadData($question_data,$answer_data);
@@ -222,8 +222,8 @@ class Survey extends \app\controllers\BaseController
     {
         $data = [];
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_data = $this->surveyModel->findSurveyByAnswer($sp_idx);
-        $question_data = $this->surveyModel->listSurveyQuestion($sp_idx);
+        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 항목 매칭
         foreach ($answer_data as $key => $val){

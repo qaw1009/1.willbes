@@ -5,23 +5,30 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
-
-    
-
-
     .evtTop {position:relative}
 
-    .evtMenu {background:#f3f3f3; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
+    .evt00 {text-align:center;}
+    .evt00 .dday {font-size:22px;padding:20px 0;}
+    .evt00 .dday span {color:#435d96; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
 
-    .evt01 {}
-    .evt01 .dday {font-size:22px;padding:20px 0;}
-    .evt01 .dday span {color:#154e3b; box-shadow:inset 0 -25px 0 rgba(252,243,64,0.5);}
+    .evt02 {padding-bottom:120px; background:#f6f6f6}
+    .evt02 a {display:block; margin:0 auto; width:60%; font-size:20px; background:#293342; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
 
+    .evt03 {position:relative;}
+  
+    .evt03 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
+    .evt03 .apply ul li a:first-child {position: absolute;width:100%;left:50%;top:78%;margin-left:-28%;}
+    .evt03 .apply img{width:33%;}
+    .check {position:absolute; bottom:6%; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
+    .check label {cursor:pointer; font-size:14px;color:#000;font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff;margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;
+              position:absolute;left:50%;top:90%;margin-left:-23%;}
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
     .btnbuy {max-width:720px; margin:0 auto}
-    .btnbuy a {display:block; width:99%; max-width:700px; margin:0 auto 5px; font-size:1.2rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+    .btnbuy a {display:block; width:99%; max-width:700px; margin:0 auto 5px; font-size:14px; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#3A6B12;
+    .btnbuy a:hover {background:#3a99f0;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
@@ -32,31 +39,34 @@
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
     .infoCheck a:hover {background:#0099ff;}
 
-
-
-    .evtFooter {margin:0 auto;text-align:left; color:#000; line-height:1.7;background:#6b6b6b; color:#fff }
-    .evtFooter h3 {font-size:20px;color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
-    .evtFooter .infoBox {padding:20px;}
-    .evtFooter p {margin-bottom:10px; font-size:18px;}
-    .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
+    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
+    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
+    .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
     .evtFooter div,
-    .evtFooter ul {margin-bottom:20px; padding:0 10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; font-size:14px;}
-    .evtFooter li span {color:#252525;}
+    .evtFooter ul {margin-bottom:30px; padding-left:10px}
+    .evtFooter li {margin-left:20px; list-style-type: decimal;}
 
-    .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
-    .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
 
-     /* 폰 가로, 태블릿 세로*/
-     @@media only all and (min-width: 408px)  {        
-        .btnbuy a {display:inline-block;width:49%; }  
+    /* 폰 가로, 태블릿 세로*/
+    @@media all and (min-width:320px) and (max-width:408px) {       
+    .check label {font-size:10px;}
+    .check {bottom:4%;}
+    .check a {top:50%;}
+    .check input {width:15px;height:15px;}
+    .check img {width:65%;}
+    }
+
+    @@media all and (min-width:409px) and (max-width:588px) {       
+    .check label {font-size:13px;}
+    .check input {width:20px;height:20px;}
+    .check img {width:75%;}
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
         .evt00 .dday {font-size:30px;}
         .evt00 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}  
-        .btnbuy a {font-size:1.5rem;}  
+     
     }
 
     /* 태블릿 가로, PC */
@@ -65,84 +75,92 @@
     }
 </style>
 
-<div id="Container" class="Container NSK c_both"> 
-    <div class="evtCtnsBox evt01 ddayArea">
+<div id="Container" class="Container NSK c_both">      
+    <div class="evtCtnsBox evt00 ddayArea">
         <div class="dday NSK-Thin">
-            <strong class="NSK-Black">지방직 7급 PASS 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
-        </div>      
-    </div>
-               
-    <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_top.jpg" alt="지방직 7급PASS" > 
-    </div>  
+            <strong class="NSK-Black">지방직 7급 패스 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
+        </div>     
+    </div>   
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_top.jpg" alt="" >
+    </div> 
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_01.jpg" alt="" >
+    </div> 
     
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_01.jpg" alt="기출문제풀이" >
-    </div>
-        
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_02.jpg" alt="" >
+    </div> 
+
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_02.jpg" alt="단원별 문제풀이" >
-    </div>
-        
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_03.jpg" alt="동형 모의고사" >
-    </div>
-        
-    <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_04.jpg" alt="수강신청" >
-    </div>    
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_03.jpg" alt="" >
+    </div> 
 
-    <div class="evtCtnsBox evtFooter" id="infoText">
-        <h3 class="NSK-Black">윌비스 지방직 7급 실전마스터PASS 이용안내</h3>
-        <div class="infoBox">
-            <p class="NSK-Black"><span>●</span> 상품구성 </p>
+    <div class="evtCtnsBox evt03">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_04.jpg" alt="" >
+        <div class="apply"> 
             <ul>
-                <li>본 PASS는 윌비스 7급 교수진의 지정 과정을 배수 제한 없이 무제한으로 수강 가능한 상품입니다.</li>
-                <li>수강 가능 과목 및 교수진 <br>
-                    - 국어 : 기미진 (아침특강 제외)<br>
-                    - 영어 : 한덕현(기출리뷰,스나이퍼32, 9급 국가/지방직 모의고사, 7급 지방직대비 문제풀이과정, 아작내기특강만 제공), 성기건(2019 새벽모의고사 6개월분만 제공)<br/>
-                    - 한국사 : 조민주, 행정학 : 김덕관, 행정법 : 황남기/한세훈, 헌법 : 황남기/유시완, 경제학 : 황정빈
+                <li>
+                    <a href="javascript:go_PassLecture('170032');">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1750m_04_apply.png" alt="" >
+                    </a>    
                 </li>
-                <li>본 PASS는 2020년도 대비에 맞추어 개강된 강의를 제공해드리는 상품입니다.<br>
-                    - 제공 과정 : 기출문제풀이, 단원별 문제풀이, 실전동형모의고사
-                </li>
-                <li>교수진 사정으로 강의가 부득이하게 진행되지 않을 시, 대체 강의를 제공해드립니다.</li>
-            </ul>            
-            <p class="NSK-Black"><span>●</span> 수강관련</p>
-            <ul>
-                <li>[내강의실]-[무한PASS존]-[강좌추가]버튼을 클릭, 원하는 과목/교수/강좌를 선택 등록 후 수강할 수 있습니다.</li>
-                <li>본 PASS는 일시정지/연장/재수강 기능을 제공하지 않습니다.</li>
-                <li>본 PASS 수강 시 이용가능한 기기는 PC/모바일 총 2대입니다.</li>
-                <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>
-            </ul>
-
-            <p class="NSK-Black"><span>●</span>환불정책</p>
-            <ul>
-                <li>결제 후 7일 이내 전액 환불 가능합니다.</li> 
-                <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
-                <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
-                <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 정가 기준으로 계산하여 사용 일수만큼 차감하고 환불됩니다.</li>
-            </ul>
-
-            <p class="NSK-Black">※ 이용문의 : 1544-5006</p>
-
+            </ul>          
         </div>
-    </div>
+        <div class="check">
+            <label>
+                <input name="ischk"  type="checkbox" value="Y" />
+                페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+            </label>
+            <a href="#guide">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_guide.png" alt="" >
+            </a>
+        </div>        
+    </div> 
+
+    <div class="evtCtnsBox evtFooter" id="guide">
+        <h3 class="NSK-Black">윌비스 지방직 7급 실전마스터PASS 이용안내</h3>
+        <p>● 상품구성 </p>
+        <ul>
+            <li>본 PASS는 윌비스 7급 교수진의 지정 과정을 배수 제한 없이 무제한으로 수강 가능한 상품입니다.</li>
+            <li>수강 가능 과목 및 교수진<br>
+                - 국어 : 기미진 (아침특강 제외)<br>
+                - 영어 : 한덕현(기출리뷰,스나이퍼32, 9급 국가/지방직 모의고사, 7급 지방직대비 문제풀이과정, 아작내기특강만 제공), 성기건(2019 새벽모의고사 6개월분만 제공)<br>
+                - 한국사 : 조민주, 행정학 : 김덕관, 행정법 : 황남기/한세훈, 헌법 : 황남기/유시완, 경제학 : 황정빈
+            </li>
+            <li>본 PASS는 2020년도 대비에 맞추어 개강된 강의를 제공해드리는 상품입니다.<br>
+                - 제공 과정 : 기출문제풀이, 단원별 문제풀이, 실전동형모의고사            
+            </li>
+            <li>교수진 사정으로 강의가 부득이하게 진행되지 않을 시, 대체 강의를 제공해드립니다.</li>
+        </ul>
+
+        <p>● 수강관련</p>
+        <ul>
+            <li>[내강의실]-[무한PASS존]-[강좌추가]버튼을 클릭, 원하는 과목/교수/강좌를 선택 등록 후 수강할 수 있습니다.</li>
+            <li>본 PASS는 일시정지/연장/재수강 기능을 제공하지 않습니다.</li>
+            <li>본 PASS 수강 시 이용가능한 기기는 PC/모바일 총 2대입니다.</li>
+            <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>
+        </ul>
+
+        <p>● 환불정책</p>
+        <ul>
+            <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
+            <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
+            <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
+            <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 정가 기준으로 계산하여 사용 일수만큼 차감하고 환불됩니다.</li>
+        </ul>
+        <div>※ 이용문의 : 1544-5006</div>
+    </div>  
 </div>
 <!-- End Container -->
 
-<div class="btnbuyBox">
-    <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('170032');">
-        7급 지방직 신청 >
-        </a>
-    </div>
-    <div id="pass" class="infoCheck">
-        <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
-        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-        <a href="#infoText">이용안내 확인하기 ↓</a>
-    </div>
-</div>
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+</form>
+
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
@@ -210,14 +228,16 @@
         }
     }
 
-    {{-- 수강신청 이동 --}}
-    function goLecture(prod_code) {
-        if ($('#is_chk').is(':checked') === false) {
-            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-            return;
-        }
-        location.href = '{{ front_url('/periodPackage/show/cate/3020/pack/648001/prod-code/') }}' + prod_code;
-    }
+      /*수강신청 동의*/ 
+      function go_PassLecture(code){
+                if($("input[name='ischk']:checked").size() < 1){
+                    alert("이용안내에 동의하셔야 합니다.");
+                    return;
+                }
+
+                var url = '{{ site_url('/m/periodPackage/show/cate/3020/pack/648001/prod-code/') }}' + code;
+                location.href = url;
+        }     
 
 </script>
 

@@ -58,7 +58,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function listSurveyForQuestion($sp_idx = null)
+    public function listSurveyQuestion($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
@@ -82,7 +82,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyForAnswerInfo($sp_idx=null)
+    public function listSurveyAnswer($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
         $column = "A.AnswerInfo";
@@ -101,7 +101,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyAnswer($sp_idx = null)
+    public function findSurveyForAnswer($sp_idx = null)
     {
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
         $column = "COUNT(*) AS cnt";
@@ -117,7 +117,7 @@ class SurveyModel extends WB_Model
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findQuestionForSeries($sp_idx = null)
+    public function findSurveyBySeries($sp_idx = null)
     {
         $data = [];
         $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'IsSeries' => 'Y']];

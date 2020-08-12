@@ -274,6 +274,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property LandingFModel $landingFModel                                       Landing Model Class
  * @property SearchFModel $searchFModel                                       Search Model Class
  * @property AssignmentProductFModel $assignmentProductFModel                 AssignmentProduct Model Class
+ * @property NpayFModel $npayFModel                                             Npay Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  * @property EventAModel $eventAModel                                           API Event Model Class

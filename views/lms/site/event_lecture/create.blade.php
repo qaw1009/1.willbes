@@ -1099,8 +1099,8 @@
                 }
             });
 
-            // 프로모션 지급상품 검색 버튼 클릭. 레이어 팝업 호출.
-            $('.btn_product_search').on('click', function() {
+            // 프로모션 지급상품 검색
+            $regi_form.on('click', '.btn_product_search', function() {
                 var pop_type = $(this).data('poptype');
                 var event_product_target_id, event_product_target_field = null;
                 switch (pop_type) {
@@ -1151,11 +1151,13 @@
 
             // 지급상품 삭제 이벤트
             $regi_form.on('click', '.selected-product-delete', function() {
-                var that = $(this);
-                var prod_code = that.data('prod-code');
-                var remark = $regi_form.find('#prod_' + prod_code).find('[name="remark[]"]').val();
-                that.parent().prev().remove(); // <br> 삭제
-                that.parent().remove();
+                var $add_apply_span = $(this).parent().parent();
+                var is_add_apply = $add_apply_span.hasClass('event_add_apply_product');
+                $(this).parent().prev().remove(); // <br> 삭제
+                $(this).parent().remove();
+                if(is_add_apply === true) {
+                    $add_apply_span.html('<span><input type="hidden" name="event_add_apply_prod_code[]" value=""></span>')
+                }
             });
 
             // 지급상품 결과 이벤트
@@ -1309,8 +1311,9 @@
             add_lists += '      	<option value="C">장바구니지급</option>';
             //add_lists += '      	<option value="D">즉시지급</option>';
             add_lists += '      </select>';
-            add_lists += '      /';
-            add_lists += '      <input type="text" name="event_add_apply_prod_code[]" id="event_add_apply_prod_code_' + temp_apply_idx + '" value="" style="width: 90px;">';
+            add_lists += '	    <button type="button" data-eaaidx="' + temp_apply_idx + '" data-poptype="add_apply" class="btn_product_search btn btn-sm btn-primary mb-0">상품추가</button>';
+            add_lists += '	    <span id="event_add_apply_product_' + temp_apply_idx + '" class="event_add_apply_product">';
+            add_lists += '	    </span>';
             add_lists += '	</td>';
             add_lists += '	<td>';
             add_lists += '		<input type="text" name="event_add_apply_name[]" id="event_add_apply_name_' + temp_apply_idx + '" value="" style="min-width: 170px;">';
@@ -1347,9 +1350,9 @@
             add_lists += '			<option value="N">만료</option>';
             add_lists += '		</select>';
             add_lists += '	</td>';
-            add_lists += '	<td>';
+            // add_lists += '	<td>';
             // add_lists += '		<button type="button" class="btn btn-success mr-10 btn-add-apply-expire-submit" data-add-apply-idx="" data-modify-number="">수정</button>';
-            add_lists += '	</td>';
+            // add_lists += '	</td>';
             add_lists += '	<td>';
             // add_lists += '		<a href="#none" class="btn-add-apply-delete-submit" data-el-idx="" data-add-apply-idx="">';
             // add_lists += '			<i class="fa fa-times fa-lg red"></i>';

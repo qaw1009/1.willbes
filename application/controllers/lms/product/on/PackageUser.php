@@ -195,26 +195,4 @@ Class PackageUser extends CommonLecture
         $result = $this->packageUserModel->{$method.'Product'}($this->_reqP(null),'packageuser');
         $this->json_result($result, '저장 되었습니다.', $result);
     }
-
-//    /**
-//     * 강좌복사
-//     */
-//    public function copy()
-//    {
-//        $rules = [
-//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-//        ];
-//
-//        if ($this->validate($rules) === false) {
-//            return;
-//        }
-//
-//        $prodcode = $this->_reqP('prodCode');
-//
-//        $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
-//        //var_dump($result);exit;
-//        $this->json_result($result,'복사 되었습니다.',$result);
-//    }
-
 }

@@ -220,19 +220,18 @@ class Survey extends \app\controllers\BaseController
      */
     public function surveyDataPopup()
     {
-        $data = [];
         $sp_idx = $this->_reqG('sp_idx');
         $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
         $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 항목 매칭
         foreach ($answer_data as $key => $val){
-            $data[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_data,$val['AnswerInfo']);
+            $answer_data[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_data,$val['AnswerInfo']);
         }
 
         $this->load->view('site/survey/survey_data_popup', [
             'sp_idx' => $sp_idx,
-            'data' => $data
+            'data' => $answer_data
         ]);
     }
 
@@ -256,7 +255,7 @@ class Survey extends \app\controllers\BaseController
             foreach ((array)$answer as $key => $val){
                 $question_data = $new_question_info[$question_key]['SqJsonData'][$key];
                 if($SqType == 'D'){ // 서술형
-                    $data[$SqTitle][$key] = $question_data['title'];
+                    $data[$SqTitle][$question_data['title']] = $val;
                 }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
                     $data[$question_data['title']][$key] = $question_data['item'][$val];
                 }else{

@@ -33,16 +33,6 @@
         width: 30px;
     }
 
-    .evtFooter {margin:0 auto;text-align:left; color:#000; line-height:1.7;background:#fff }
-    .evtFooter h3 {font-size:20px;color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
-    .evtFooter .infoBox {padding:20px;}
-    .evtFooter p {margin-bottom:10px; color:#252525; font-size:19px;}
-    .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
-    .evtFooter div,
-    .evtFooter ul {margin-bottom:20px; padding:0 10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; color:#636363;font-size:14px;}
-    .evtFooter li span {color:#252525;}
-
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
 
@@ -89,48 +79,32 @@
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_04.jpg" alt="수강신청" usemap="#Map1068m_apply" border="0" >
-        <map name="Map1068m_apply" id="Map1068m_apply">
-            <area shape="rect" coords="112,954,319,999" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156702" />
-            <area shape="rect" coords="395,953,606,1001" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156703" />
-            <area shape="rect" coords="472,1115,592,1157" href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B"/>
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_04.jpg" alt="패키지 수강신청" >
+    </div> 
+
+    <div class="evtCtnsBox evt05">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_05.jpg" alt="농업직 이론 패키지" usemap="#Map1068m_a" border="0" >
+        <map name="Map1068m_a" id="Map1068m_a">
+            <area shape="rect" coords="116,586,315,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156691" />
+            <area shape="rect" coords="400,586,599,627" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156692" />
         </map>
     </div> 
 
-     <div class="evtCtnsBox evtFooter">
-        <h3 class="NSK-Black">이용안내 및 유의사항</h3>
-        <div class="infoBox">
-            <p class="NSK-Black"><span>●</span>상품구성</p>
-            <ul>
-                <li>최우영 T-PASS 제공 과정<br>
-                    - 통신직 : 2020년도 대비 이론 + 2021년도 9급 국가직·지방직/군무원 대비 신규 개강 전 과정<br>
-                    - 전자직 : 2020년도 대비 이론 및 문제풀이 + 2021년도 군무원 전자직 대비 신규 개강 전 과정
-                </li>
-                <li>본 T-PASS 내 제공되는 과정 중 신규 개강이 진행되지 않는 경우, 전년도 진행 과정으로 대체 제공될 수 있습니다.</li>
-                <li>본 T-PASS를 통한 강의 수강 시, 각 과정당 3배수 제한이 적용됩니다.</li>
-            </ul>
-            <p class="NSK-Black"><span>●</span>기기제한</p>
-            <ul>
-                <li>본 PASS 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br>
-                    - PC+모바일 수강 시 : PC 2대 or 모바일 2대 or PC 1대+모바일 1대 (총 2대)                 
-                </li>
-                <li>계정당 최초 1회에 한해 직접 기기정보 초기화 진행 가능하며, 별도 기기정보 초기화가 추가로 필요하신 경우 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다. (윌비스 고객만족센터 1544-5006)</li>
-            </ul>
-            <p class="NSK-Black"><span>●</span>수강안내</p>
-            <ul>
-                <li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li>
-                <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 과목/교수/강좌를 선택 등록 후 수강할 수 있습니다.</li>
-                <li>본 PASS 이용 중에는 일시정지/재수강/연장 기능을 사용할 수 없습니다.</li>
-            </ul>
-            <p class="NSK-Black"><span>●</span>결제/환불</p>
-            <ul>
-                <li>결제일로부터 7일 이내 전액 환불 가능합니다. 단, 맛보기 강좌를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다. 강의 자료 및 모바일 강의 다운로드 서비스 이용 시 수강한 것으로 간주됩니다.</li>
-                <li>본 상품은 특별 기획 강좌로 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감 후 환불됩니다.</li>
-                <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하오니 유의 바랍니다.</li>
-            </ul>            
-        </div>
-    </div>   
+    <div class="evtCtnsBox evt06">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_06.jpg" alt="농촌지도사 이론 패키지" usemap="#Map1068m_b" border="0" >
+        <map name="Map1068m_b" id="Map1068m_b">
+            <area shape="rect" coords="115,586,315,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156702" />
+            <area shape="rect" coords="400,586,600,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156703" />
+        </map>
+    </div> 
 
+    <div class="evtCtnsBox evt07">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_07.jpg" alt="수강신청 바로가기" usemap="#Map1068m_c" border="0" >
+        <map name="Map1068m_c" id="Map1068m_c">
+            <area shape="rect" coords="476,77,588,114" href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" />
+        </map>
+    </div> 
+    
 </div>
 
 <!-- End Container -->

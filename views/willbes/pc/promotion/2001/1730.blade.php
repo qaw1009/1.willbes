@@ -66,8 +66,8 @@
         .evt02 div table td {font-size:18px; color:#fff;}
         .evt02 div table td div {position:relative}
         .evt02 div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
-        .evt02 div table td span.first_come {position:absolute;width:100%;left:619px;top:-493px;margin-left:-59px;}
-        .evt02 div table td span.bubble {position:absolute;width:100%;left:715px;top:-503px;margin-left:-59px;}
+        .evt02 div table td span.first_come {position:absolute;width:100%;left:48%;margin-left:-59px;margin-top:-59px;}
+        .evt02 div table td span.bubble {position:absolute;width:100%;left:125%;margin-left:-59px;margin-top:-69px;}
         .evt02 div table tbody th {background: #f9f9f9; color:#555;} 
         .evt02 div table tbody th:last-child,
         .evt02 div table tbody td:last-child {border-right:0;}
@@ -311,7 +311,14 @@
                                                     @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
                                                         <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img02.png" alt="마감"></span>
                                                     @endif
-                                                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img01.png" alt="">
+
+                                                    @if(strtotime('202008210000') > strtotime($arr_base['add_apply_data'][$j]['ApplyStartDatm']) && strtotime('202008210000') < strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']))
+                                                        {{-- 8/21 이미지 하드코딩 --}}
+                                                        <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>
+                                                        <span class="first_come"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img03.png" alt="선착순"></span>
+                                                    @else
+                                                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img01.png" alt="">
+                                                    @endif
                                                 </div>
                                             </td>
                                         @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
@@ -328,14 +335,16 @@
 
                             @endfor
                         @endif
+                        {{--
                         <tr>
                             <td>
                                 <div>                                    
-                                    <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>                                    
+                                    <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>
                                     <span class="first_come"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img03.png" alt="선착순"></span>
                                 </div>
                             </td>                        
-                        </tr>                        
+                        </tr>
+                        --}}
                         </tbody>
                     </table>
                 </div>
@@ -451,7 +460,7 @@
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
                 ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
                 ['처리 되었습니다.','장바구니에 담겼습니다.'],
-                ['마감되었습니다.','이벤트 기간에 응모해주세요. 당일 20:00부터 시작됩니다.']
+                ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
             ];
             for (var i = 0; i < arr_apply_msg.length; i++) {
                 if(arr_apply_msg[i][0] == ret_msg) {

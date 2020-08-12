@@ -23,10 +23,8 @@
 
         .m_title {display: block; position:absolute; top:550px; left:50%; margin-left:-605px; z-index:10}
 
-        .wb_cts01 {background:#dbc6b3 url(https://static.willbes.net/public/images/promotion/2020/08/1084_01_bg.jpg) no-repeat center top}
-        .wb_cts01 div { position:relative; width:1210px; margin:0 auto}
-        .wb_cts01 div .why {position: absolute; top:550px; left:50%; width:1210px; margin-left:-605px; z-index:100}
-
+        .wb_cts_top {background:url(https://static.willbes.net/public/images/promotion/2020/08/1084_top_bg.jpg) no-repeat center top}
+        .wb_cts01 {background:#edf1f4}
         .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/08/1084_02_bg.jpg) no-repeat center top}
 
         .wb_cts03 {padding-bottom:50px; background:#edf1f4;}
@@ -64,17 +62,17 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts01" >
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_top.jpg" usemap="#Map171218_c2" border="0"  >
-                <map name="Map171218_c2" >
-                    <area shape="rect" coords="158,18,585,103"  href="#none"alt="초시생을 위한 합격비법"/>
-                    <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3019/code/1085') }}" target="_blank"alt="N수생의 합격노트" />
-                </map>
-                <div class="why"><img src="https://static.willbes.net/public/images/promotion/2020/08/1084_top_img01.gif" alt=""/></div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_01.jpg"  >
-            </div>
-        </div><!--wb_cts01//-->
+        <div class="evtCtnsBox wb_cts_top" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_top.gif" usemap="#Map171218_c2" border="0"  >
+            <map name="Map171218_c2" >
+                <area shape="rect" coords="158,18,585,103"  href="#none"alt="초시생을 위한 합격비법"/>
+                <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3019/code/1085') }}" target="_blank"alt="N수생의 합격노트" />
+            </map>        
+        </div>
+
+        <div class="evtCtnsBox wb_cts01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_01.jpg"  >
+        </div>
 
         <div class="evtCtnsBox wb_cts02">
             <ul>

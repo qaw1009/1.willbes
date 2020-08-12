@@ -377,11 +377,15 @@ class PackagePeriodModel extends CommonLectureModel
             ,'MultipleApply'=>element('MultipleApply',$input)                        //수강배수정보 - 배수제한값
             ,'MultipleTypeCcd'=>element('MultipleTypeCcd',$input)               //수강배수정보 - 적용
             ,'AllLecTime'=>element('AllLecTime',$input)                               //전체강의시간
+            ,'IsPackLecStartType'=>element('IsPackLecStartType',$input,'P')
             ,'IsLecStart'=>element('IsLecStart',$input,'N')
+            ,'IsPackPauseType'=>element('IsPackPauseType',$input, 'P')
             ,'IsPause'=>element('IsPause',$input,'N')
-            ,'PauseNum'=>element('PauseNum',$input)
+            ,'PauseNum'=>element('PauseNum',$input,0)
+            ,'IsPackExtenType'=>element('IsPackExtenType',$input, 'P')
             ,'IsExten'=>element('IsExten',$input,'N')
-            ,'ExtenNum'=>element('ExtenNum',$input)
+            ,'ExtenNum'=>element('ExtenNum',$input,0)
+            ,'IsPackRetakeType'=>element('IsPackRetakeType',$input,'P')
             ,'IsRetake'=>element('IsRetake',$input,'N')
             ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)

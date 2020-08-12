@@ -32,8 +32,7 @@
         .wb_cts03 {padding-bottom:50px; background:#edf1f4;}
         .wb_cts04 ul {width:100%; margin:0 auto; max-width:980px}
 
-        .menuWarp {position:relative; width:980px; height:730px; margin:0 auto} /**/
-        .PeMenu {position:absolute; width:980px; height:328px; top:0px; left:0px;}
+        .menuWarp {position:relative; width:980px; height:730px; margin:0 auto} 
         .PeMenu li { display:inline; float:left}
         .PeMenu li a img.off {display:block}
         .PeMenu li a img.on {display:none}

@@ -88,6 +88,15 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_03.jpg" alt="커리큘러" > 
     </div> 
 
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_04.jpg" alt="수강신청" usemap="#Map1068m_apply" border="0" >
+        <map name="Map1068m_apply" id="Map1068m_apply">
+            <area shape="rect" coords="112,954,319,999" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156702" />
+            <area shape="rect" coords="395,953,606,1001" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156703" />
+            <area shape="rect" coords="472,1115,592,1157" href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B%E2%80%8B"/>
+        </map>
+    </div> 
+
      <div class="evtCtnsBox evtFooter">
         <h3 class="NSK-Black">이용안내 및 유의사항</h3>
         <div class="infoBox">

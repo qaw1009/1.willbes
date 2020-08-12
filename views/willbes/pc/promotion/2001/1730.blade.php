@@ -66,8 +66,8 @@
         .evt02 div table td {font-size:18px; color:#fff;}
         .evt02 div table td div {position:relative}
         .evt02 div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
-        .evt02 div table td span.first_come {position:absolute;width:100%;left:619px;top:-493px;margin-left:-59px;}
-        .evt02 div table td span.bubble {position:absolute;width:100%;left:715px;top:-503px;margin-left:-59px;}
+        .evt02 div table td span.first_come {position:absolute;width:100%;left:48%;margin-left:-59px;margin-top:-59px;}
+        .evt02 div table td span.bubble {position:absolute;width:100%;left:125%;margin-left:-59px;margin-top:-69px;}
         .evt02 div table tbody th {background: #f9f9f9; color:#555;} 
         .evt02 div table tbody th:last-child,
         .evt02 div table tbody td:last-child {border-right:0;}

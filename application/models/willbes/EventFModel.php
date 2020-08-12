@@ -1437,7 +1437,12 @@ class EventFModel extends WB_Model
 
             // *** 신청수 체크 ***
             $arr_condition = [
-                'IN' => ['EaaIdx' => $inputData['add_apply_chk']]
+                'EQ' => [
+                    'IsStatus' => 'Y'
+                ],
+                'IN' => [
+                    'EaaIdx' => $inputData['add_apply_chk']
+                ]
             ];
             $result_apply_member_info = $this->getApplyMemberCount($arr_condition);
             $arr_apply_member = array_pluck($result_apply_member_info, 'MemCount', 'EaaIdx');

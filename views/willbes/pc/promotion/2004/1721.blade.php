@@ -146,12 +146,11 @@
                                 </li> 
                               
                                 <li class="">
-                                    <a href="javascript:alert('Comimg Soon :)')">
+                                    <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[통신] 무선/통신 공통 이론 『변조이론과 통신일반』 빠르게 확인하기!</p>   
-                                            <span>Comimg Soon</span>                                     
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
                                         </div>
                                     </a>
                                 </li>
@@ -273,7 +272,8 @@
         var tab1_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
         var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
         var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
-        var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";           
+        var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
+        var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0";           
     
 
         $(function() {
@@ -289,6 +289,8 @@
                     video_tab_url = tab3_url;
                 }else if(activeTab == "#tab4"){
                     video_tab_url = tab4_url;
+                }else if(activeTab == "#tab5"){
+                    video_tab_url = tab5_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

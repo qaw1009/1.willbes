@@ -68,6 +68,9 @@
 /*@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);*/
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
 
+/*검은고딕*/
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
 
 
 html {
@@ -388,6 +391,7 @@ select[disabled] {
 .NGR {
   font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;   
 }
+.BlackGothic {font-family: 'Black Han Sans', sans-serif;}
 
 /* Basic Code */
 .widthAuto {

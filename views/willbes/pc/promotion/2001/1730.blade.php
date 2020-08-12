@@ -414,7 +414,7 @@
                 return;
             @endif
 
-            @if(date('YmdHi') >= '202008202000' && date('YmdHi') < '202008222000' && ENVIRONMENT == 'production')
+            @if(date('YmdHi') >= '202008211900' && date('YmdHi') < '202008222000')
                 alert('8/21(금) 학원방문 선착순 이벤트 진행! 22일 20시에 도전해 주세요');
                 return;
             @endif

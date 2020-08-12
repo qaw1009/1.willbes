@@ -25,21 +25,21 @@ class Survey extends \app\controllers\BaseController
     public function eventSurveyCreate($params = [])
     {
         $method = 'POST';
-        $data_survey = [];
-        $data_question = [];
+        $survey_data = [];
+        $question_data = [];
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $sp_idx = $params[0];
 
-            $data_survey = $this->surveyModel->findSurveyForModify($sp_idx);
-            $data_question = $this->surveyModel->listSurveyForQuestion($sp_idx);
+            $survey_data = $this->surveyModel->findSurveyForModify($sp_idx);
+            $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
         }
 
         $this->load->view('site/survey/event_survey_create', [
             'method' => $method,
-            'data_survey' => $data_survey,
-            'data_question' => $data_question,
+            'survey_data' => $survey_data,
+            'question_data' => $question_data,
         ]);
     }
 
@@ -84,7 +84,7 @@ class Survey extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->surveyModel->surveyUseOrderNum(json_decode($this->_reqP('params'), true));
+        $result = $this->surveyModel->modifyQuestionUseOrderNum(json_decode($this->_reqP('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -162,9 +162,9 @@ class Survey extends \app\controllers\BaseController
         $condition = [];
         $list = [];
 
-        $count = $this->surveyModel->eventSurveyList(true);
+        $count = $this->surveyModel->listAllSurvey(true);
         if ($count > 0) {
-            $list = $this->surveyModel->eventSurveyList(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SpIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurvey(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SpIdx' => 'desc']);
 
             foreach ($list as $key => $val){
                 $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SpIdx'];
@@ -203,11 +203,11 @@ class Survey extends \app\controllers\BaseController
     public function surveyGraphPopup()
     {
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_info = $this->surveyModel->findSurveyForAnswerInfo($sp_idx);
-        $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 응답 비율 계산
-        $data = $this->_mathAnswerSpreadData($question_info,$answer_info);
+        $data = $this->_mathAnswerSpreadData($question_data,$answer_data);
 
         $this->load->view('site/survey/survey_graph_popup', [
             'sp_idx' => $sp_idx,
@@ -221,31 +221,31 @@ class Survey extends \app\controllers\BaseController
     public function surveyDataPopup()
     {
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_info = $this->surveyModel->findSurveyForAnswerInfo($sp_idx);
-        $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 항목 매칭
-        foreach ($answer_info as $key => $answer_data){
-            $answer_info[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_info,$answer_data['AnswerInfo']);
+        foreach ($answer_data as $key => $val){
+            $answer_data[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_data,$val['AnswerInfo']);
         }
 
         $this->load->view('site/survey/survey_data_popup', [
             'sp_idx' => $sp_idx,
-            'data' => $answer_info
+            'data' => $answer_data
         ]);
     }
 
     /**
      * 설문응답 선택 문항 매칭
-     * @param $question_info
+     * @param $question_data
      * @param $answer_data
      * @return mixed
      */
-    private function _matchingQuestionData($question_info=[],$answer_data=[]){
+    private function _matchingQuestionData($question_data=[],$answer_data=[]){
         $data = [];
         $new_question_info = [];
 
-        foreach ($question_info as $key => $val){
+        foreach ($question_data as $key => $val){
             $new_question_info[$val['SqIdx']] = $val;
         }
 
@@ -253,13 +253,13 @@ class Survey extends \app\controllers\BaseController
             $SqTitle = $new_question_info[$question_key]['SqTitle'];
             $SqType = $new_question_info[$question_key]['SqType'];
             foreach ((array)$answer as $key => $val){
-                $question_info = $new_question_info[$question_key]['SqJsonData'][$key];
+                $question_data = $new_question_info[$question_key]['SqJsonData'][$key];
                 if($SqType == 'D'){ // 서술형
-                    $data[$SqTitle][$key] = $question_info['title'];
+                    $data[$SqTitle][$question_data['title']] = $val;
                 }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
-                    $data[$question_info['title']][$key] = $question_info['item'][$val];
+                    $data[$question_data['title']][$key] = $question_data['item'][$val];
                 }else{
-                    $data[$SqTitle][$key] = $question_info['item'][$val];
+                    $data[$SqTitle][$key] = $question_data['item'][$val];
                 }
             }
         }
@@ -269,16 +269,16 @@ class Survey extends \app\controllers\BaseController
 
     /**
      * 설문응답 선택 문항 비율 계산
-     * @param $question_info
-     * @param $answer_info
+     * @param $question_data
+     * @param $answer_data
      * @return mixed
      */
-    private function _mathAnswerSpreadData($question_info=[],$answer_info=[]){
+    private function _mathAnswerSpreadData($question_data=[],$answer_data=[]){
         $data = [];
         $new_question_info = [];
         $new_answer_info = [];
 
-        foreach ($question_info as $key => $val){
+        foreach ($question_data as $key => $val){
             $new_question_info[$val['SqIdx']] = $val;
 
             if($val['SqType'] == 'D'){ // 서술형
@@ -293,7 +293,7 @@ class Survey extends \app\controllers\BaseController
         }
 
         // 선택 문항 카운트
-        foreach ($answer_info as $key => $val){
+        foreach ($answer_data as $key => $val){
             foreach ($val['AnswerInfo'] as $question_key => $answer){
                 if($new_answer_info[$question_key] != 'D'){ // 서술형 제외
                     foreach ($answer as $k => $v){

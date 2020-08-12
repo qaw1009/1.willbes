@@ -23,17 +23,17 @@
 </style>
 @section('content')
     <div class="popcontent NGR">
-        <h3>{{ $data_survey['SpTitle'] }}</h3>
+        <h3>{{ $survey_data['SpTitle'] }}</h3>
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
-            <input type="hidden" name="sp_idx" value="{{ $data_survey['SpIdx'] }}" />
+            <input type="hidden" name="sp_idx" value="{{ $survey_data['SpIdx'] }}" />
             <input type="hidden" name="is_series" id="is_series" value="{{$is_series}}">
             <input type="hidden" name="series_subject_cnt" id="series_subject_cnt" value="1">
             <input type="hidden" name="total_cnt" id="total_cnt" value="">
 
             @for($i=1;$i<=$count;$i++)
-                @if(empty($data_question[$i]) === false)
-                    @foreach($data_question[$i] as $key => $val)
+                @if(empty($question_data[$i]) === false)
+                    @foreach($question_data[$i] as $key => $val)
 
                         @if($is_series == 'Y' && $key == 0 ) {{--응시직렬--}}
                             @if($i==1)

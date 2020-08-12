@@ -38,7 +38,7 @@ class SurveyModel extends WB_Model
      * @param $order_by
      * @return mixed
      */
-    public function eventSurveyList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllSurvey($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = "count(*) AS numrows";
@@ -142,11 +142,11 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 결과 조회
+     * 설문조사 답변 결과 조회
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyForAnswerInfo($sp_idx=null)
+    public function findSurveyForAnswer($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
@@ -376,7 +376,7 @@ class SurveyModel extends WB_Model
      * @param array $params
      * @return bool
      */
-    public function surveyUseOrderNum($params = [])
+    public function modifyQuestionUseOrderNum($params = [])
     {
         $this->_conn->trans_begin();
 

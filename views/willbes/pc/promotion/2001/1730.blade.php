@@ -309,12 +309,13 @@
                                             <td>
                                                 <div>
                                                     @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
-                                                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img02.png" alt="마감"></span>
+                                                        @if($arr_base['add_apply_data'][$j]['Name'] != '8/21(금)') {{-- 21일 하드코딩 --}}
+                                                            <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img02.png" alt="마감"></span>
+                                                        @endif
                                                     @endif
 
-                                                    @if(strtotime('202008210000') > strtotime($arr_base['add_apply_data'][$j]['ApplyStartDatm']) && strtotime('202008210000') < strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']))
-                                                        {{-- 8/21 이미지 하드코딩 --}}
-                                                        <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>
+                                                    @if($arr_base['add_apply_data'][$j]['Name'] == '8/21(금)') {{-- 21일 하드코딩 --}}
+                                                        <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt=""></span>
                                                         <span class="first_come"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img03.png" alt="선착순"></span>
                                                     @else
                                                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img01.png" alt="">
@@ -413,7 +414,7 @@
                 return;
             @endif
 
-            @if(date('YmdHi') >= '202008202000' && date('YmdHi') < '202008222000' && ENVIRONMENT == 'production')
+            @if(date('YmdHi') >= '202008211900' && date('YmdHi') < '202008222000')
                 alert('8/21(금) 학원방문 선착순 이벤트 진행! 22일 20시에 도전해 주세요');
                 return;
             @endif

@@ -337,7 +337,8 @@ class Off extends \app\controllers\FrontController
         $notassign = false;
         if(empty($UnPaidInfo) == false){
             if($UnPaidInfo[0]['PayStatusCcd'] == '676006'){
-                $notassign = true;
+                // $notassign = true;
+                // 메인 주문 환불이 아니면 그냥 처리가능한게
             }
         }
 

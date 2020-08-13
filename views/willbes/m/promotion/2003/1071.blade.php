@@ -41,9 +41,9 @@
             <area shape="rect" coords="48,431,665,538" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/155797" target="_blank" alt="통신기술직">
             <area shape="rect" coords="46,561,665,666" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/155798" target="_blank" alt="전송기술직">
             <area shape="rect" coords="55,689,664,804" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/155799" target="_blank" alt="전기직">
-            <area shape="rect" coords="60,979,652,1097" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
-            <area shape="rect" coords="69,1152,651,1263" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="전기직">
-            <area shape="rect" coords="37,1375,693,1493" href="https://pass.willbes.net/m/search/result/?=&cate=3028&searchfull_text=최우영" target="_blank" alt="단가 수강신청">
+            <area shape="rect" coords="60,988,652,1106" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
+            <area shape="rect" coords="69,1152,651,1263" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="전기직">
+            <area shape="rect" coords="37,1375,693,1493" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=최우영" target="_blank" alt="단가 수강신청">
         </map>
     </div>  
 </div>

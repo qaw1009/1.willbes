@@ -11,7 +11,7 @@
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        <!--<input type="hidden" name="site_code" value="{{ $site_code }}"/>//-->
         <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd }}"/>
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
@@ -31,6 +31,39 @@
                 <div class="form-group form-group-bordered pt-10 pb-5">
                     <label class="control-label col-md-2 pt-5" for="search_value">단과반검색
                     </label>
+                    <div class="col-md-10 form-inline">
+                        {!! html_site_select($site_code, 'site_code', 'site_code', 'hide', '운영 사이트', '', false, []) !!}
+                        <select class="form-control mr-2" id="search_lg_cate_code" name="search_lg_cate_code">
+                            <option value="">대분류</option>
+                            @foreach($arr_lg_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-2" id="search_course_idx" name="search_course_idx">
+                            <option value="">과정</option>
+                            @foreach($arr_course as $row)
+                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-2" id="search_subject_idx" name="search_subject_idx">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd">
+                            <option value="">수강형태</option>
+                            @foreach($studypattern_ccd as $key => $val)
+                                @if($key != '653003')
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <bR><bR>
+                    <div class="col-md-2">
+
+                    </div>
                     <div class="col-md-4">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value">
                     </div>
@@ -227,6 +260,10 @@
                         }
                         $("#pop_modal").modal('toggle');
                     }
+
+                    $search_form_modal.find('select[name="search_lg_cate_code"]').chained("#site_code");
+                    $search_form_modal.find('select[name="search_course_idx"]').chained("#site_code");
+                    $search_form_modal.find('select[name="search_subject_idx"]').chained("#site_code");
                 });
             </script>
         @stop

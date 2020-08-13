@@ -90,8 +90,8 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50139?subject_idx=1114') }}">유시완</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109/?subject_idx=1114&subject_name=%ED%97%8C%EB%B2%95') }}">황남기</a>
                 </li>
-                <li><span>경제학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50035?subject_idx=1117') }}">신광은</a></li>
-                <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50487?subject_idx=1115') }}">황정빈</a></li>
+                <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50035?subject_idx=1117') }}">신광은</a></li>
+                <li><span>경제학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50487?subject_idx=1115') }}">황정빈</a></li>
                 <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50187/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95') }}">고선미</a></li>
                 <li>
                     <span>회계학</span>
@@ -135,7 +135,7 @@
                 </li>                
                 <li>
                     <span>소방관계법규</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51068?subject_idx=1113') }}">이종오</a>      
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51068?subject_idx=1138') }}">이종오</a>      
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50465?subject_idx=1138') }}">김종상</a>                
                 </li>
                 <li><span>사회</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50181?subject_idx=1133') }}">문병일</a></li>

@@ -12,13 +12,12 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -35,7 +34,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1013_top.jpg" usemap="#Map1013a" title="윌비스 웰컴팩" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1013_top.gif" usemap="#Map1013a" title="윌비스 웰컴팩" border="0" />
             <map name="Map1013a" id="Map1013a">
                 <area shape="rect" coords="321,993,802,1098" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" />
             </map>

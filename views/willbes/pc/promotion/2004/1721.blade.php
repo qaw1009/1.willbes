@@ -246,8 +246,8 @@
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
             <map name="Map1721b" id="Map1721b">
-                <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU6KO2VmeybkOyLpOqwlXZlci4p" target="_blank" />
-                <area shape="rect" coords="611,906,1013,1001" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU6KO2VmeybkOyLpOqwlXZlci4p" target="_blank" />
+                <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
+                <area shape="rect" coords="611,906,1013,1001" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
             </map>
         </div>
 

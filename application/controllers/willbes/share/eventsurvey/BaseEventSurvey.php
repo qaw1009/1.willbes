@@ -5,6 +5,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
 {
     protected $models = array('eventsurvey/survey');
     protected $helpers = array();
+    protected $auth_controller = false;
+    protected $auth_methods = array('index');
 
     // 중복투표
     private $_duplicate_type = [

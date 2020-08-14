@@ -218,7 +218,7 @@ class Survey extends \app\controllers\BaseController
             $answer_data = $this->_matchingSeriesData($answer_info,$series_data);
             $data = $this->_mathSeriesSpreadData($question_data,$answer_data,array_value_first($series_data));
         }else{
-            $data = $this->_mathAnswerSpreadData($question_data,$answer_info);
+            $data[0] = $this->_mathAnswerSpreadData($question_data,$answer_info);
         }
 
 
@@ -371,11 +371,11 @@ class Survey extends \app\controllers\BaseController
                     if($item_sum > 0){
                         foreach ($val as $k => $v){
                             if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $data[$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $data[$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
                             }else{
-                                $data[$SqTitle][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $data[$SqTitle][$question_info['item'][$k]]['count'] = $v;
+                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
                             }
                         }
                     }

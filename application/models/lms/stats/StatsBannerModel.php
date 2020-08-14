@@ -195,7 +195,47 @@ class StatsBannerModel extends BaseStatsModel
     }
 
     /**
-     * 사이트별 배너 클릭 순위
+     * 사이트별 배너 클릭 낮은 순위
+     * @param array $arr_input
+     * @return mixed
+     */
+    public function getBannerSiteLowRank($arr_input=[])
+    {
+        $get_condition = $this->_setCondition($arr_input);
+
+        $sub_condition = array_merge_recursive($get_condition['comm_condition'],[
+                'BDT' => ['bal.RegDatm' => [$get_condition['search_start_date'] , $get_condition['search_end_date']]]
+            ]
+        );
+
+        $base_condition['IN']['S.SiteCode'] = get_auth_site_codes(false,true);    //; 기준사이트
+        $base_condition['EQ'] = ['S.IsStatus' => 'Y','S.IsUse' => 'Y', 'b.IsUse' => 'Y'];   //사용중인 배너 조건 추가
+
+        $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
+        $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);
+
+        $column = ' straight_join b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName,COUNT(*) AS click_count';
+
+        $from = '   from
+                            '. $this->_table['banner_log'] .' bal 
+                            join '. $this->_table['banner'] .' b on bal.BIdx = b.BIdx
+                            join '. $this->_table['site'] .' S on b.SiteCode = S.SiteCode
+                        where 1=1
+                         '. $base_where .'
+                         '. $sub_where .'
+        ';
+
+        $group_by = ' group by b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName ';
+        $order_by = ' order by count(*) ASC, SiteName ASC' ;
+        $limit = ' limit 20 ';
+
+        return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
+    }
+
+
+
+    /**
+     * 전체 배너 클릭 순위
      * @param array $arr_input
      * @return mixed
      */
@@ -238,7 +278,7 @@ class StatsBannerModel extends BaseStatsModel
      * @param array $arr_input
      * @return mixed
      */
-    public function getBannerHistotyList($is_count, $arr_input=[])
+    public function getBannerHistoryList($is_count, $arr_input=[])
     {
         $get_condition = $this->_setCondition($arr_input);
 

@@ -129,6 +129,18 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -161,8 +173,8 @@
                             <tbody>
                             </tbody>
                             <tfoot>
-                            <!--tr>
-                                <th style="text-align: center;">총합</th>
+                            <tr>
+                                <th><font>합계</font></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -170,7 +182,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                            </tr//-->
+                            </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -237,6 +249,14 @@
                     $order_count.push($gateway_info[key]['order_count']);
                     $refund_count.push($gateway_info[key]['refund_count']);
                 }
+
+                $var_info = ['$gateway_count',  '$member_count', '$order_count', '$refund_count'];
+                for($i = 0; $i < $var_info.length; $i++) {
+                    this[$var_info[$i]+'_sum'] =  this[$var_info[$i]].reduce(function(a, b) {
+                        return a + b * 1;
+                    }, 0);
+                }
+
                 var config_count = {
                     type: 'line',
                     data: {
@@ -271,7 +291,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '광고 접속현황'
+                            text: '광고 현황 ( 접속수 : ' + addComma($gateway_count_sum) + '  /  회원가입수 : ' + addComma($member_count_sum) +'  /  결제건수 :  '+ addComma($order_count_sum) +'  /  환불건수 :  '+ addComma($refund_count_sum) +' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -372,7 +392,7 @@
                         },
                         title: {
                             display: true,
-                            text: '사이트별 광고현황'
+                            text: '사이트별 광고 현황'
                         },
                         tooltips: {
                             mode: 'index',
@@ -407,6 +427,7 @@
                 $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
             }
 
+            var $font = "<font color='#9c1e1e' size='3px'>";
             var $datatable_count_info, $datatable_site, $datatable_list;
 
             function datatableExe() {
@@ -443,7 +464,29 @@
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (parseInt(row.gateway_count) > 0 ?'<b>' + (parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        sum_conn=0, sum_mem=0;
+                        for($i=1;$i<8;$i++) {
+                            $result = api.column($i).data().reduce(function (a, b) {
+                                    return (parseInt(a) + parseInt(b));
+                                }
+                            );
+                            if($i == 1) {
+                                sum_conn += $result
+                            } else if($i == 2) {
+                                sum_mem +=$result
+                            } else if($i == 7) {
+                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn)).toFixed(2) )
+                            }
+                            $(api.column($i).footer()).html($font
+                                + addComma(
+                                    ($i < 7 ? $result :sum_ratio )
+                                    ,0)
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_site = $("#list_site_table").DataTable({
@@ -479,7 +522,29 @@
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (parseInt(row.gateway_count) > 0 ? '<b>' +(parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        sum_conn=0, sum_mem=0;
+                        for($i=1;$i<8;$i++) {
+                            $result = api.column($i).data().reduce(function (a, b) {
+                                    return (parseInt(a) + parseInt(b));
+                                }
+                            );
+                            if($i == 1) {
+                                sum_conn += $result
+                            } else if($i == 2) {
+                                sum_mem +=$result
+                            } else if($i == 7) {
+                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn)).toFixed(2) )
+                            }
+                            $(api.column($i).footer()).html($font
+                                + addComma(
+                                    ($i < 7 ? $result :sum_ratio )
+                                    ,0)
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_list = $('#list_ajax_table').DataTable({

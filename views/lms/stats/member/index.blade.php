@@ -149,6 +149,13 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -164,6 +171,12 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -273,12 +286,20 @@
 
             {{--######################################################  가입/탈퇴수    ####################################################--}}
             $member_count = getStats('Member/Count');
-            var $base_date = [], $join_count = []; $out_count = [];
+            $base_date = []; $join_count = []; $out_count = [];
             for (key in $member_count) {
                 $base_date.push($member_count[key]['base_date']);
                 $join_count.push($member_count[key]['join_count']);
                 $out_count.push($member_count[key]['out_count']);
             }
+
+            $var_info = ['$join_count', '$out_count'];
+            for($i = 0; $i < $var_info.length; $i++) {
+                this[$var_info[$i]+'_sum'] =  this[$var_info[$i]].reduce(function(a, b) {
+                    return a + b * 1;
+                }, 0);
+            }
+
             var config_member_count = {
                 type: 'line',
                 data: {
@@ -301,7 +322,7 @@
                     maintainAspectRatio: false,
                     title: {
                         display: true,
-                        text: '회원현황'
+                        text: '회원현황 ( 가입 : ' + addComma($join_count_sum) + '  /  탈퇴 : ' + addComma($out_count_sum) +' )'
                     },
                     tooltips: {
                         mode: 'index',
@@ -464,6 +485,9 @@
                 $base_date_login.push($member_login[key]['base_date']);
                 $login_count.push($member_login[key]['login_count']);
             }
+            $login_count_sum =  $login_count.reduce(function(a, b) {
+                return a + b * 1;
+            }, 0);
             var config_login_count = {
                     type: 'line',
                     data: {
@@ -480,7 +504,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '로그인 현황 - 다량의 데이터로 인해 검색기간만 조건적용'
+                            text: '로그인 현황 - 다량의 데이터로 인해 검색기간만 조건적용 ( 로그인 수 : ' + addComma($login_count_sum) + ' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -623,7 +647,7 @@
             $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
         }
 
-
+        var $font = "<font color='#9c1e1e' size='3px'>";
         var $datatable_member, $datatable_login, $datatable_age, $datatable_sex, $datatable_interest;
 
         function datatableExe() {
@@ -645,7 +669,19 @@
                     {'data': 'out_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return (data > 0) ? '<b><font color=\'blue\'>' + addComma(data) + '</font></b>' : data;
                     }}
-                ]
+                ],
+                footerCallback: function( tfoot, data, start, end, display ) {
+                    var api = this.api();
+                    for($i=1;$i<3;$i++) {
+                        $(api.column($i).footer()).html($font+
+                            addComma(
+                                api.column($i).data().reduce(function (a, b) {
+                                    return (parseInt(a) + parseInt(b));
+                                }, 0)
+                            )
+                            +"</font>");
+                    }
+                }
             });
 
             $datatable_login = $("#list_login_table").DataTable({
@@ -663,7 +699,19 @@
                     {'data': 'login_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                             return (data > 0) ? '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>' : data;
                     }}
-                ]
+                ],
+                footerCallback: function( tfoot, data, start, end, display ) {
+                    var api = this.api();
+                    for($i=1;$i<2;$i++) {
+                        $(api.column($i).footer()).html($font+
+                            addComma(
+                                api.column($i).data().reduce(function (a, b) {
+                                    return (parseInt(a) + parseInt(b));
+                                }, 0)
+                            )
+                            +"</font>");
+                    }
+                }
             });
 
             $datatable_age = $("#list_age_table").DataTable({

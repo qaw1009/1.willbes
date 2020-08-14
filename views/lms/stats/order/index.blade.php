@@ -322,7 +322,7 @@
                 return $result;
             }
 
-                    {{--각 항목의 데이터 결과 변수--}}
+            {{--각 항목의 데이터 결과 변수--}}
             var $order_info=[], $order_sex=[], $order_site=[], $order_channel=[], $order_method=[];
 
             function chartExe() {
@@ -342,19 +342,16 @@
                     $real_count.push($order_info[key]['real_count']);
                     $real_pay.push($order_info[key]['real_pay']);
                 }
-                $pay_info = ['$order_pay',  '$refund_pay', '$real_pay'];
-                $count_info = ['$order_count', '$refund_count', '$real_count'];
 
-                for($i = 0; $i < $pay_info.length; $i++) {
-                    this[$pay_info[$i]+'_sum'] =  this[$pay_info[$i]].reduce(function(a, b) {
-                        return a + b * 1;
-                    }, 0);
+                $var_info = [['$order_pay',  '$refund_pay', '$real_pay'],['$order_count', '$refund_count', '$real_count']]
+                for($k = 0; $k < $var_info.length; $k++) {
+                    for ($i = 0; $i < $var_info[$k].length; $i++) {
+                        this[$var_info[$k][$i] + '_sum'] = this[$var_info[$k][$i]].reduce(function (a, b) {
+                            return a + b * 1;
+                        }, 0);
+                    }
                 }
-                for($i = 0; $i < $count_info.length; $i++) {
-                    this[$count_info[$i]+'_sum'] =  this[$count_info[$i]].reduce(function(a, b) {
-                        return a + b * 1;
-                    }, 0);
-                }
+
                 var config_order_pay = {
                     type: 'line',
                     data: {
@@ -383,7 +380,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '주문금액 현황 (결제 : ' + addComma($order_pay_sum) + ',  환불 : ' + addComma($refund_pay_sum) +',  매출 : '+ addComma($real_pay_sum) +')'
+                            text: '주문금액 현황 ( 결제 : ' + addComma($order_pay_sum) + '  /  환불 : ' + addComma($refund_pay_sum) +'  /  매출 : '+ addComma($real_pay_sum) +' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -453,7 +450,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '주문건수 현황  (결제 : ' + addComma($order_count_sum) + ',  환불 : ' + addComma($refund_count_sum) +',  매출 : '+ addComma($real_count_sum) +')'
+                            text: '주문건수 현황  ( 결제 : ' + addComma($order_count_sum) + '  /  환불 : ' + addComma($refund_count_sum) +'  /  매출 : '+ addComma($real_count_sum) +' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -499,7 +496,7 @@
 
                 {{--######################################################  성별   ####################################################--}}
                 $order_sex = getStats('Order/Sex');
-                $pay_sex=[], $refund_sex=[];
+                $pay_sex=[]; $refund_sex=[];
                 $pay_sex.push($order_sex[0]['m_pay'],$order_sex[0]['f_pay'],$order_sex[0]['not_pay']);
                 $refund_sex.push($order_sex[1]['m_pay'],$order_sex[1]['f_pay'],$order_sex[1]['not_pay']);
                 var config_sex = {
@@ -610,7 +607,7 @@
 
                 {{--######################################################  결제수단   ####################################################--}}
                 $order_method = getStats('Order/Method');
-                $method_name = [], $method_order = [], $method_color = [];
+                $method_name = []; $method_order = []; $method_color = [];
                 $util_color = Object.keys(chartColors).map(function(i) {
                     return chartColors[i];
                 });
@@ -766,6 +763,7 @@
                 $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
             }
 
+            var $font = "<font color='#9c1e1e' size='3px'>";
             var $datatable_order, $datatable_site, $datatable_sex, $datatable_channel, $datatable_method;
 
             function datatableExe() {
@@ -802,13 +800,13 @@
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
                         for($i=1;$i<7;$i++) {
-                            $(api.column($i).footer()).html("<font size='3px'>"+
+                            $(api.column($i).footer()).html($font+
                                 addComma(
                                     api.column($i).data().reduce(function (a, b) {
                                         return (parseInt(a) + parseInt(b));
                                     }, 0)
                                 )
-                            );
+                                +"</font>");
                         }
                     }
                 });
@@ -847,13 +845,13 @@
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
                         for($i=1;$i<7;$i++) {
-                            $(api.column($i).footer()).html("<font size='3px'>"+
+                            $(api.column($i).footer()).html($font+
                                 addComma(
                                     api.column($i).data().reduce(function (a, b) {
                                         return (parseInt(a) + parseInt(b));
                                     }, 0)
                                 )
-                            );
+                                +"</font>");
                         }
                     }
                 });
@@ -880,13 +878,13 @@
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
                         for($i=1;$i<3;$i++) {
-                            $(api.column($i).footer()).html("<font size='3px'>"+
+                            $(api.column($i).footer()).html($font+
                                 addComma(
                                     api.column($i).data().reduce(function (a, b) {
                                         return (parseInt(a) + parseInt(b));
                                     }, 0)
                                 )
-                            );
+                                +"</font>");
                         }
                     }
                 });
@@ -915,13 +913,13 @@
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
                         for($i=1;$i<3;$i++) {
-                            $(api.column($i).footer()).html("<font size='3px'>"+
+                            $(api.column($i).footer()).html($font+
                                 addComma(
                                     api.column($i).data().reduce(function (a, b) {
                                         return (parseInt(a) + parseInt(b));
                                     }, 0)
                                 )
-                            );
+                                +"</font>");
                         }
                     }
                 });
@@ -963,13 +961,13 @@
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
                         for($i=1;$i<7;$i++) {
-                            $(api.column($i).footer()).html("<font size='3px'>"+
+                            $(api.column($i).footer()).html($font+
                                 addComma(
                                     api.column($i).data().reduce(function (a, b) {
                                         return (parseInt(a) + parseInt(b));
                                     }, 0)
                                 )
-                            );
+                                +"</font>");
                         }
                     }
                 });

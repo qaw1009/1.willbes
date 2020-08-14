@@ -5,7 +5,7 @@
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="sp_idx" value="{{ $survey_data['SpIdx'] or '' }}" />
+        <input type="hidden" name="sp_idx" value="{{ $survey_data['SsIdx'] or '' }}" />
         <input type="hidden" id="series_idx" name="series_idx" value="{{ $survey_data['seriesIdx'] or '' }}" />
 
         <div class="x_panel">
@@ -21,14 +21,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_title">제목 <span class="required">*</span></label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" id="sp_title" name="sp_title" maxlength="100" title="제목" required="required" value="{{ $survey_data['SpTitle'] or ''}}">
+                        <input type="text" class="form-control" id="sp_title" name="sp_title" maxlength="100" title="제목" required="required" value="{{ $survey_data['SurveyTitle'] or ''}}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">설명</label>
                     <div class="col-md-9">
-                        <textarea class="form-control" id="sp_comment" name="sp_comment" cols="50" rows="3" title="설명">{{ $survey_data['SpComment'] or ''}}</textarea>
+                        <textarea class="form-control" id="sp_comment" name="sp_comment" cols="50" rows="3" title="설명">{{ $survey_data['SurveyComment'] or ''}}</textarea>
                     </div>
                 </div>
 
@@ -37,10 +37,10 @@
                     <div class="col-md-9">
                         <div class="radio">
                             <input type="radio" class="flat" id="sp_is_duplicate_n" name="sp_is_duplicate" required="required" value="N"
-                                   @if($method == 'POST' || (empty($survey_data['SpIsDuplicate']) === false && $survey_data['SpIsDuplicate']=='N'))checked="checked"@endif>
+                                   @if($method == 'POST' || (empty($survey_data['IsDuplicate']) === false && $survey_data['IsDuplicate']=='N'))checked="checked"@endif>
                             <label for="sp_is_duplicate_n" class="input-label">불가능</label>
                             <input type="radio" class="flat" id="sp_is_duplicate_y" name="sp_is_duplicate" required="required" value="Y"
-                                   @if(empty($survey_data['SpIsDuplicate']) === false && $survey_data['SpIsDuplicate']=='Y')checked="checked"@endif>
+                                   @if(empty($survey_data['IsDuplicate']) === false && $survey_data['IsDuplicate']=='Y')checked="checked"@endif>
                             <label for="sp_is_duplicate_y" class="input-label">가능</label>
                         </div>
                     </div>
@@ -51,10 +51,10 @@
                     <div class="col-md-9">
                         <div class="radio">
                             <input type="radio" class="flat" id="sp_is_use_y" name="sp_is_use" title="사용여부" required="required" value="Y"
-                                   @if($method == 'POST' || (empty($survey_data['SpIsUse']) === false && $survey_data['SpIsUse']=='Y'))checked="checked"@endif>
+                                   @if($method == 'POST' || (empty($survey_data['SurveyIsUse']) === false && $survey_data['SurveyIsUse']=='Y'))checked="checked"@endif>
                             <label for="sp_is_use_y" class="input-label">사용</label>
                             <input type="radio" class="flat" id="sp_is_use_n" name="sp_is_use" required="required" value="N"
-                                   @if(empty($survey_data['SpIsUse']) === false && $survey_data['SpIsUse']=='N')checked="checked"@endif>
+                                   @if(empty($survey_data['SurveyIsUse']) === false && $survey_data['SurveyIsUse']=='N')checked="checked"@endif>
                             <label for="sp_is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                 <span clss="clearfix" style="color: red; position: relative; top:6px">* 응시직렬은 응시직렬 항목 등록 후 저장된 응시직렬 항목에 따라 그룹선택이 노출 됩니다.</span>
                                 <div class="clearfix-r">
                                     <button type="button" class="btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>정렬/사용 적용</button>
-                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_question mr-15" data-id="add_question" data-sp-idx="{{$survey_data['SpIdx']}}" data-sq-series="{{$survey_data['seriesData']}}" onclick="show_question_layer(this)"><i class="fa fa-pencil mr-10"></i>설문항목등록</button>
+                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_question mr-15" data-id="add_question" data-sp-idx="{{$survey_data['SsIdx']}}" data-sq-series="{{$survey_data['SqJsonData'] or ''}}" onclick="show_question_layer(this)"><i class="fa fa-pencil mr-10"></i>설문항목등록</button>
                                 </div>
                             @else
                                 # 설문 저장 후 <span style="color: red"> [설문항목등록] </span> 버튼이 생성됩니다.
@@ -117,10 +117,10 @@
                             <tbody>
                             @foreach($question_data as $row)
                                 <tr>
-                                    <td class="text-center"><input type="number" name="sq_order_num" value="{{$row['OrderNum']}}" data-origin-order-num="{{$row['OrderNum']}}" data-sq-idx= "{{$row['SqIdx']}}" maxlength="3" style="width: 100%"></td>
+                                    <td class="text-center"><input type="number" name="sq_order_num" value="{{$row['OrderNum']}}" data-origin-order-num="{{$row['OrderNum']}}" data-sq-idx= "{{$row['SsqIdx']}}" maxlength="3" style="width: 100%"></td>
                                     <td>
-                                        @if(empty($row['SqSeries']) === false)
-                                            @foreach($row['SqSeries'] as $series)
+                                        @if(empty($row['SeriesData']) === false)
+                                            @foreach($row['SeriesData'] as $series)
                                                 [{{$series}}]<br/>
                                             @endforeach
                                         @endif
@@ -147,8 +147,8 @@
                                     </td>
                                     <td class="text-center"><input type="checkbox" name="sq_is_use" value="Y" class="flat" data-origin-is-use="{{$row['SqIsUse']}}" @if($row['SqIsUse'] == 'Y') checked="checked" @endif></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SpIdx']}}" data-sq-idx="{{$row['SqIdx']}}" data-sq-series="{{$survey_data['seriesData']}}" onclick="show_question_layer(this)">수정</button>
-                                        <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SsIdx']}}" data-sq-idx="{{$row['SsqIdx']}}" data-sq-series="{{$survey_data['SqJsonData'] or ''}}" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SsqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>
                             @endforeach

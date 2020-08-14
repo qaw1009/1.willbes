@@ -33,7 +33,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             return;
         }
 
-        if($survey_data['SpIsDuplicate'] == $this->_duplicate_type[1]){
+        if($survey_data['IsDuplicate'] == $this->_duplicate_type[1]){
             $answer_count = $this->surveyModel->findSurveyForAnswer($sp_idx);
             if($answer_count > 0){
                 show_alert('이미 설문에 참여하셨습니다.','close');
@@ -76,7 +76,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         $view_file = 'willbes/pc/eventsurvey/graph';
         $this->load->view($view_file, [
-            'SpIdx' => $sp_idx,
+            'SsIdx' => $sp_idx,
             'survey_levels' => $survey_levels,
             'survey_data' => $survey_data
         ],false);
@@ -113,8 +113,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
-        $spidx1 = element('spidx1', $arr_input);    // 이전 설문조사
-        $spidx2 = element('spidx2', $arr_input);    // 진행 설문조사
+        $SsIdx1 = element('spidx1', $arr_input);    // 이전 설문조사
+        $SsIdx2 = element('spidx2', $arr_input);    // 진행 설문조사
 
         // 1. 지역별 현황
         // 직렬코드 조회
@@ -234,17 +234,17 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 8. 과목별 체감난이도
         // 이전 설문
-        $answer_info = $this->surveyModel->listSurveyForAnswer($spidx1);
-        $question_info = $this->surveyModel->listSurveyForQuestion($spidx1);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($SsIdx1);
+        $question_info = $this->surveyModel->listSurveyForQuestion($SsIdx1);
         list($survey_levels,$spSubjectList['Prev']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
-        
+
         // 진행중 설문
-        $answer_info = $this->surveyModel->listSurveyForAnswer($spidx2);
-        $question_info = $this->surveyModel->listSurveyForQuestion($spidx2);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($SsIdx2);
+        $question_info = $this->surveyModel->listSurveyForQuestion($SsIdx2);
         list($survey_levels,$spSubjectList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
         // 9. 직렬별 설문조사
-        $series_data = $this->surveyModel->findSurveyBySeries($spidx2);
+        $series_data = $this->surveyModel->findSurveyBySeries($SsIdx2);
         $answer_data = $this->_matchingSeriesData($answer_info,$series_data);
         $surveyList = $this->_mathSeriesSpreadData($question_info,$answer_data);
 
@@ -271,7 +271,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'wrongSubject' => $wrongSubject,
             'wrongList' => $wrongList,
             'surveyList' => $surveyList,
-            'spidx2' => $spidx2,
+            'SsIdx2' => $SsIdx2,
             'series_data' => $series_data
         ], false);
     }
@@ -344,14 +344,14 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $new_question_info = [];
         $reset_data = [];
         foreach ($question_info as $key => $val){
-            $new_question_info[$val['SqIdx']] = $val;
+            $new_question_info[$val['SsqIdx']] = $val;
 
             if($val['SqType'] == 'D'){ // 서술형
-                $reset_data[$val['SqIdx']] = 'D';
+                $reset_data[$val['SsqIdx']] = 'D';
             }else{
                 foreach ($val['SqJsonData'] as $answer_key => $answer){
                     foreach ($answer['item'] as $k => $v){
-                        $reset_data[$val['SqIdx']][$answer_key][$k] = 0;
+                        $reset_data[$val['SsqIdx']][$answer_key][$k] = 0;
                     }
                 }
             }
@@ -429,8 +429,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
         if(empty($series_data) === false){
             foreach (array_value_first($series_data) as $key => $val){
                 foreach ($question_list as $row){
-                    if(empty($row['SqSeries']) === false && in_array($val,$row['SqSeries'])){
-                        unset($row['SqSeries']);
+                    if(empty($row['SeriesData']) === false && in_array($val,$row['SeriesData'])){
+                        unset($row['SeriesData']);
                         $question_data[$key][] = $row;
                     }
                 }

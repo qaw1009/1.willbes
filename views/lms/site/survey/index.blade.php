@@ -78,8 +78,8 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'SpTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.SpIdx + '"><u class="blue">' + row.SpTitle + '</u></a>';
+                    {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.SsIdx + '"><u class="blue">' + row.SurveyTitle + '</u></a>';
                         }},
                     {'data' : 'link', 'class': 'text-center'},
                     {'data' : 'include', 'class': 'text-center'},
@@ -88,11 +88,11 @@
                             return date;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popGraph(' + row.SpIdx + ')">' + row.CNT + '</button>' : row.CNT;
+                            var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popGraph(' + row.SsIdx + ')">' + row.CNT + '</button>' : row.CNT;
                             return AnswerCnt;
                         }},
-                    {'data' : 'SpIsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var SpUseYn = (row.SpIsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
+                    {'data' : 'SurveyIsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            var SpUseYn = (row.SurveyIsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
                             return SpUseYn;
                         }},
                 ]

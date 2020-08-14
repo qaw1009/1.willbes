@@ -8,8 +8,8 @@
     <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="SpIdx" value="{{ $sp_idx }}"/>
-        <input type="hidden" name="sq_idx" value="{{ $sq_data['SqIdx'] or ''}}"/>
+        <input type="hidden" name="SsIdx" value="{{ $sp_idx }}"/>
+        <input type="hidden" name="sq_idx" value="{{ $sq_data['SsqIdx'] or ''}}"/>
         @endsection
 
         @section('layer_content')
@@ -18,7 +18,7 @@
             </div>
             {!! form_errors() !!}
 
-            @if(empty($sq_data['SqIdx']) === false && $sq_data['SqIdx'] == $series_idx)
+            @if(empty($sq_data['SsqIdx']) === false && $sq_data['SsqIdx'] == $series_idx)
                 <input type="hidden" name="is_series" value="{{ $sq_data['IsSeries'] }}">
             @elseif(($method == 'POST' && empty($series_idx) === true) )
                 <div class="form-group form-group-sm">
@@ -35,7 +35,7 @@
                         <span style="color: red">* 응시직렬 사용시 답변유형은 선택형(단일)로 선택해주세요.</span>
                     </div>
                 </div>
-            @elseif(empty($sq_data['SqIdx']) === true || (empty($series_idx) === false && empty($sq_data['SqIdx']) === false && $series_idx != $sq_data['SqIdx']))
+            @elseif(empty($sq_data['SsqIdx']) === true || (empty($series_idx) === false && empty($sq_data['SsqIdx']) === false && $series_idx != $sq_data['SsqIdx']))
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-1-1" for="is_series">그룹선택 <span class="required">*</span></label>
                     <div class="col-md-10">
@@ -43,7 +43,7 @@
                             @if(empty($series_data) === false)
                                 @foreach($series_data[1]['item'] as $key => $val)
                                     <input type="checkbox" name="sq_series[]" class="flat" id="sq_series_{{$key}}" title="응시직렬" required="required" value="{{$val}}"
-                                           @if(empty($sq_data['SqSeries']) === false && in_array($val, $sq_data['SqSeries']) === true)checked="checked"@endif/>
+                                           @if(empty($sq_data['SeriesData']) === false && in_array($val, $sq_data['SeriesData']) === true)checked="checked"@endif/>
                                     <label class="inline-block mr-5 pl-5" for="sq_series_{{$key}}">{{$val}}</label>
                                 @endforeach
                             @endif
@@ -71,10 +71,10 @@
                 <div class="col-md-10">
                     <div class="radio">
                         <input type="radio" class="flat" id="sq_is_use_y" name="sq_is_use" title="사용여부" required="required" value="Y"
-                               @if($method == 'POST' || (empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='Y'))checked="checked"@endif/>
+                               @if($method == 'POST' || (empty($sq_data['SurveyIsUse']) === false && $sq_data['SurveyIsUse']=='Y'))checked="checked"@endif/>
                         <label for="sq_is_use_y" class="input-label">사용</label>
                         <input type="radio" class="flat" id="sq_is_use_n" name="sq_is_use" required="required" value="N"
-                               @if(empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='N')checked="checked"@endif/>
+                               @if(empty($sq_data['SurveyIsUse']) === false && $sq_data['SurveyIsUse']=='N')checked="checked"@endif/>
                         <label for="sq_is_use_n" class="input-label">미사용</label>
                     </div>
                 </div>

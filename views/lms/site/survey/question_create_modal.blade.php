@@ -18,8 +18,9 @@
             </div>
             {!! form_errors() !!}
 
-
-            @if(($method == 'POST' && empty($series_idx) === true) || (empty($sq_data['SqIdx']) === false && $sq_data['SqIdx'] == $series_idx))
+            @if(empty($sq_data['SqIdx']) === false && $sq_data['SqIdx'] == $series_idx)
+                <input type="hidden" name="is_series" value="{{ $sq_data['IsSeries'] }}">
+            @elseif(($method == 'POST' && empty($series_idx) === true) )
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-1-1" for="is_series">응시직렬 <span class="required">*</span></label>
                     <div class="col-md-10">

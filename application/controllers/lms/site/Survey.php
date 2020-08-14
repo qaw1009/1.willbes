@@ -203,15 +203,29 @@ class Survey extends \app\controllers\BaseController
     public function surveyGraphPopup()
     {
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+        
+        // 설문응답
+        $answer_info = $this->surveyModel->listAnswerGraphData($sp_idx);
+        
+        // 설문문항
         $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        
+        // 직렬
+        $series_data = $this->surveyModel->findSurveyBySeries($sp_idx);
 
         // 설문 응답 비율 계산
-        $data = $this->_mathAnswerSpreadData($question_data,$answer_data);
+        if(empty($series_data) === false){
+            $answer_data = $this->_matchingSeriesData($answer_info,$series_data);
+            $data = $this->_mathSeriesSpreadData($question_data,$answer_data,array_value_first($series_data));
+        }else{
+            $data = $this->_mathAnswerSpreadData($question_data,$answer_info);
+        }
+
 
         $this->load->view('site/survey/survey_graph_popup', [
             'sp_idx' => $sp_idx,
-            'data' => $data
+            'data' => $data,
+            'is_series' => empty($series_data) ? 'N' : 'Y',
         ]);
     }
 
@@ -221,7 +235,11 @@ class Survey extends \app\controllers\BaseController
     public function surveyDataPopup()
     {
         $sp_idx = $this->_reqG('sp_idx');
-        $answer_data = $this->surveyModel->findSurveyForAnswer($sp_idx);
+
+        // 설문응답
+        $answer_data = $this->surveyModel->listAnswerPopupData($sp_idx);
+
+        // 설문문항
         $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 항목 매칭
@@ -236,7 +254,7 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
-     * 설문응답 선택 문항 매칭
+     * 설문응답 문항 매칭
      * @param $question_data
      * @param $answer_data
      * @return mixed
@@ -252,15 +270,18 @@ class Survey extends \app\controllers\BaseController
         foreach ($answer_data as $question_key => $answer){
             $SqTitle = $new_question_info[$question_key]['SqTitle'];
             $SqType = $new_question_info[$question_key]['SqType'];
+            $typeName = $this->surveyModel->_selection_type[$SqType];
+
             foreach ((array)$answer as $key => $val){
                 $question_data = $new_question_info[$question_key]['SqJsonData'][$key];
+
                 if($SqType == 'D'){ // 서술형
-                    $data[$SqTitle][$question_data['title']] = $val;
+                    $question_data['item'][$val] = $val;
                 }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
-                    $data[$question_data['title']][$key] = $question_data['item'][$val];
-                }else{
-                    $data[$SqTitle][$key] = $question_data['item'][$val];
+                    $typeName = $question_data['title'];
                 }
+
+                $data[$SqTitle][$SqType][$typeName] = $question_data['item'][$val];
             }
         }
 
@@ -270,55 +291,92 @@ class Survey extends \app\controllers\BaseController
     /**
      * 설문응답 선택 문항 비율 계산
      * @param $question_data
-     * @param $answer_data
+     * @param $answer_info
      * @return mixed
      */
-    private function _mathAnswerSpreadData($question_data=[],$answer_data=[]){
-        $data = [];
-        $new_question_info = [];
-        $new_answer_info = [];
-
-        foreach ($question_data as $key => $val){
-            $new_question_info[$val['SqIdx']] = $val;
-
-            if($val['SqType'] == 'D'){ // 서술형
-                $new_answer_info[$val['SqIdx']] = 'D';
-            }else{
-                foreach ((array)$val['SqJsonData'] as $answer_key => $answer){
-                    foreach ($answer['item'] as $k => $v){
-                        $new_answer_info[$val['SqIdx']][$answer_key][$k] = 0; // 초기화
-                    }
-                }
-            }
-        }
+    private function _mathAnswerSpreadData($question_data=[],$answer_info=[]){
+        // 선택 문항 초기화
+        list($new_question_data,$reset_data) = $this->_resetSurveyRecords($question_data);
 
         // 선택 문항 카운트
-        foreach ($answer_data as $key => $val){
-            foreach ($val['AnswerInfo'] as $question_key => $answer){
-                if($new_answer_info[$question_key] != 'D'){ // 서술형 제외
-                    foreach ($answer as $k => $v){
-                        $new_answer_info[$question_key][$k][$v] += 1;
+        $answer_data = $this->_countSurveyRecords($answer_info,$reset_data);
+
+        return $this->_matchingSurveyData($answer_data,$new_question_data);
+    }
+
+    /**
+     * 설문조사 문항 초기화
+     * @param $question_data
+     * @return mixed
+     */
+    private function _resetSurveyRecords($question_data=[])
+    {
+        $new_question_data = [];
+        $reset_data = [];
+        foreach ($question_data as $key => $val){
+            $new_question_data[$val['SqIdx']] = $val;
+
+            if($val['SqType'] == 'D'){ // 서술형
+                $reset_data[$val['SqIdx']] = 'D';
+            }else{
+                foreach ($val['SqJsonData'] as $answer_key => $answer){
+                    foreach ($answer['item'] as $k => $v){
+                        $reset_data[$val['SqIdx']][$answer_key][$k] = 0;
                     }
                 }
             }
         }
 
-        // 데이타 매칭
-        foreach ($new_answer_info as $question_key => $answer){
-            $SqTitle = $new_question_info[$question_key]['SqTitle'];
-            $SqType = $new_question_info[$question_key]['SqType'];
+        return [$new_question_data,$reset_data];
+    }
 
+    /**
+     * 설문조사 선택 문항 카운트
+     * @param $answer_data
+     * @param $reset_data
+     * @return mixed
+     */
+    private function _countSurveyRecords($answer_data=[],$reset_data=[])
+    {
+        foreach ($answer_data as $key => $val){
+            foreach ($val['AnswerInfo'] as $question_key => $answer){
+                if($reset_data[$question_key] != 'D'){ // 서술형 제외
+                    foreach ($answer as $k => $v){
+                        $reset_data[$question_key][$k][$v] += 1;
+                    }
+                }
+            }
+        }
+
+        return $reset_data;
+    }
+
+    /**
+     * 설문조사 데이타 매칭
+     * @param $answer_data
+     * @param $new_question_data
+     * @return mixed
+     */
+    private function _matchingSurveyData($answer_data=[],$new_question_data=[])
+    {
+        $data = [];
+        foreach ($answer_data as $question_key => $answer){
+            $SqType = $new_question_data[$question_key]['SqType'];
+            $SqTitle = $new_question_data[$question_key]['SqTitle'];
             if($SqType != 'D'){ // 서술형 제외
                 foreach ((array)$answer as $key => $val){
-                    $question_info = $new_question_info[$question_key]['SqJsonData'][$key];
+                    $question_info = $new_question_data[$question_key]['SqJsonData'][$key];
                     $item_sum = array_sum($val);
 
                     if($item_sum > 0){
                         foreach ($val as $k => $v){
                             if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $SqTitle = $question_info['title'];
+                                $data[$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                            }else{
+                                $data[$SqTitle][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$SqTitle][$question_info['item'][$k]]['count'] = $v;
                             }
-                            $data[$SqTitle][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
                         }
                     }
                 }
@@ -326,6 +384,122 @@ class Survey extends \app\controllers\BaseController
         }
 
         return $data;
+    }
+
+    /**
+     * 직렬 데이타 매칭
+     * @param $answer_info
+     * @param $series_data
+     * @return mixed
+     */
+    private function _matchingSeriesData($answer_info=[],$series_data=[])
+    {
+        $data = [];
+        foreach ($answer_info as $key => $val){
+            foreach ($val['AnswerInfo'] as $question_key => $answer){
+                $arr_series = element($question_key,$series_data);
+                if(empty($arr_series) === false){
+                    foreach ($answer as $k => $v){
+                        unset($val['AnswerInfo'][$question_key]);
+                        $data[$v][] = $val['AnswerInfo'];
+                    }
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 직렬 선택 문항 비율 계산
+     * @param $question_data
+     * @param $answer_data
+     * @param $series_info
+     * @return mixed
+     */
+    private function _mathSeriesSpreadData($question_data=[],$answer_data=[],$series_info=[])
+    {
+        // 선택 문항 초기화
+        list($new_question_data,$reset_data) = $this->_resetSurveyRecords($question_data);
+
+        // 선택 문항 카운트
+        $series_data = $this->_countSeriesRecords($answer_data,$reset_data);
+
+        return $this->_matchingSurveySeriesData($series_data,$new_question_data,$series_info);
+    }
+
+    /**
+     * 직렬 선택 문항 카운트
+     * @param $answer_data
+     * @param $reset_data
+     * @return mixed
+     */
+    private function _countSeriesRecords($answer_data=[],$reset_data=[])
+    {
+        $series_data = [];
+        foreach ($answer_data as $series_key => $series_val){
+            foreach ($series_val as $key => $val) {
+                foreach ($val as $question_key => $answer) {
+                    foreach ($answer as $k => $v){
+                        if($reset_data[$question_key] == 'D'){ // 서술형 제외
+                            unset($answer_data[$series_key][$key][$question_key]);
+                        }else{
+                            $series_data[$series_key][$question_key][$k] = $reset_data[$question_key][$k];
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach ($answer_data as $series_key => $series_val){
+            foreach ($series_val as $key => $val) {
+                foreach ($val as $question_key => $answer) {
+                    ksort($series_data[$series_key][$question_key]);
+                    foreach ($answer as $k => $v) {
+                        $series_data[$series_key][$question_key][$k][$v] += 1;
+                    }
+                }
+            }
+        }
+
+        return $series_data;
+    }
+
+    /**
+     * 직렬 데이타 매칭
+     * @param $series_data
+     * @param $new_question_data
+     * @param $series_info
+     * @return mixed
+     */
+    private function _matchingSurveySeriesData($series_data=[],$new_question_data=[],$series_info=[])
+    {
+        $survey_data = [];
+        foreach ($series_data as $series_key => $series_val){
+            foreach ($series_val as $question_key => $answer) {
+                $SqType = $new_question_data[$question_key]['SqType'];
+                $SqTitle = $new_question_data[$question_key]['SqTitle'];
+
+                foreach ($answer as $answer_key => $answer_val) {
+                    $question_info = $new_question_data[$question_key]['SqJsonData'][$answer_key];
+                    $item_sum = array_sum($answer_val);
+
+                    if($item_sum > 0){
+                        foreach ($answer_val as $k => $v){
+                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
+                                $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                            }else{
+                                $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $survey_data;
     }
 
 }

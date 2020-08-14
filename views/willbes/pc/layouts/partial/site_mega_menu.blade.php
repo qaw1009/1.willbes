@@ -381,7 +381,7 @@
                         <a href="{{front_url('/professor/show/prof-idx/50648/?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">조민주</a>
                         <a href="{{front_url('/professor/show/prof-idx/50306/?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50716/?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">한세훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3043&subject_idx=1257&subject_name=행정법')}}">이석준</a>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50560/?cate_code=3043&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                     </li>
@@ -405,7 +405,7 @@
                     </li>
                     <li>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50716/?cate_code=3044&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">한세훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3044&subject_idx=1257&subject_name=행정법')}}">이석준</a>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50560/?cate_code=3044&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                         <span>[헌법]</span>
@@ -506,9 +506,9 @@
                     </li>
                     <li>
                         <span>[소방학개론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50466/?cate_code=3050&subject_idx=1259&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">김종상</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51055/?cate_code=3050&subject_idx=1259&subject_name=소방학개론')}}">이종오</a>
                         <span>[소방관계법규]]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50466/?cate_code=3050&subject_idx=1284&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51055/?cate_code=3050&subject_idx=1284&subject_name=소방관계법규')}}">이종오</a>
                     </li>
                 </ul>
             </div>
@@ -584,7 +584,7 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50728/?cate_code=3048&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50242/?cate_code=3048&subject_idx=1253&subject_name=국어')}}">기미진</a>
                         <span>[행정법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>
                         <span>[행정학]</span>

@@ -143,6 +143,17 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -164,11 +175,11 @@
                             <tbody>
                             </tbody>
                             <tfoot>
-                                <tr>
-                                    <th>총합</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -188,7 +199,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>총합</th>
+                                <th><font>합계</font></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -201,7 +212,7 @@
             <div class="form-group">
                 <p></p>
                 <div class="col-md-7 form-inline">
-                    <strong>[사이트별 검색어 순위]</strong>
+                    <strong>[사이트별 검색어 순위 : 상위 20개]</strong>
                     <div class="x_content">
                         <table id="list_site_search_word_table" class="table table-striped table-bordered">
                             <thead>
@@ -215,11 +226,18 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="3"><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
                 <div class="col-md-5 form-inline">
-                    <strong>[전체 검색어 순위]</strong>
+                    <strong>[전체 검색어 순위 : 상위 20개]</strong>
                     <div class="x_content">
                         <table id="list_search_word_table" class="table table-striped table-bordered">
                             <thead>
@@ -232,6 +250,13 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="2"><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -240,7 +265,7 @@
             <div class="form-group">
                 <p></p>
                 <div class="col-md-7 form-inline">
-                    <strong><font color="red">[사이트별 검색어 순위 - 검색결과 없음]</font></strong>
+                    <strong><font color="red">[사이트별 검색어 순위 - 검색결과 없음 : 상위 20개]</font></strong>
                     <div class="x_content">
                         <table id="list_site_search_word_no_result_table" class="table table-striped table-bordered">
                             <thead>
@@ -254,11 +279,18 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="3"><font'>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
                 <div class="col-md-5 form-inline">
-                    <strong><font color="red">[전체 검색어 순위 - 검색결과 없음]</font></strong>
+                    <strong><font color="red">[전체 검색어 순위 - 검색결과 없음 : 상위 20개]</font></strong>
                     <div class="x_content">
                         <table id="list_search_word_no_result_table" class="table table-striped table-bordered">
                             <thead>
@@ -271,6 +303,13 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="2"><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -338,6 +377,14 @@
                     $login_search_count.push($search_count[key]['login_search_count']);
                     $not_search_count.push($search_count[key]['not_search_count']);
                }
+
+                $var_info = ['$all_search_count',  '$login_search_count', '$not_search_count'];
+                for($i = 0; $i < $var_info.length; $i++) {
+                    this[$var_info[$i]+'_sum'] =  this[$var_info[$i]].reduce(function(a, b) {
+                        return a + b * 1;
+                    }, 0);
+                }
+
                 var config_count = {
                     type: 'line',
                     data: {
@@ -355,7 +402,7 @@
                             borderColor: window.chartColors.green2,
                             data: $not_search_count,
                         }, {
-                            label: '총합',
+                            label: '합계',
                             fill: true,
                             backgroundColor: color(window.chartColors.yellow2).alpha(0.5).rgbString(),
                             borderColor: window.chartColors.yellow2,
@@ -366,7 +413,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '검색현황'
+                            text: '검색현황 ( 로그인 : ' + addComma($login_search_count_sum) + '  /  비로그인 : ' + addComma($not_search_count_sum) +'  /  합계 :  '+ addComma($all_search_count_sum) +' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -545,6 +592,7 @@
                 $("#search_cloud_words").jQCloud(word_list);
             }
 
+            var $font = "<font color='#9c1e1e' size='3px'>";
             var $datatable_search_info, $datatable_site, $datatable_platform, $datatable_site_word, $datatable_word;
 
             function datatableExe() {
@@ -577,7 +625,27 @@
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '' + addComma( parseInt(row.login_search_result_sum) + parseInt(row.not_search_result_sum)) + '';
                             }}
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        sum_search_count=0, sum_search_result=0;
+                        for($i=1;$i<7;$i++) {
+                            $result = api.column($i).data().reduce(function (a, b) {
+                                            return (parseInt(a) + parseInt(b));
+                                        }
+                            );
+                            if($i == 1 || $i == 3) {
+                                sum_search_count +=$result
+                            } else if($i == 2 || $i == 4) {
+                                sum_search_result +=$result
+                            }
+                            $(api.column($i).footer()).html($font
+                                + addComma(
+                                        ($i < 5 ? $result : ($i == 5 ? sum_search_count : sum_search_result))
+                                    ,0)
+                                +"</font>");
+                        }
+                    }
                 });
                 $datatable_site = $("#list_site_search_table").DataTable({
                     dom: 'T<"clear">rtip',
@@ -600,20 +668,15 @@
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        $(api.column(1).footer()).html(
-                            addComma(
-                                api.column(1).data().reduce(function ( a, b ) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
-                        $(api.column(2).footer()).html(
-                            addComma(
-                                api.column(2).data().reduce(function ( a, b ) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
+                        for($i=1;$i<3;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
                     }
                 });
 
@@ -640,20 +703,15 @@
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        $(api.column(1).footer()).html(
-                            addComma(
-                                api.column(1).data().reduce(function (a, b) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
-                        $(api.column(2).footer()).html(
-                            addComma(
-                                api.column(2).data().reduce(function (a, b) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                        );
+                        for($i=1;$i<3;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
                     }
                 });
 
@@ -683,7 +741,19 @@
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '') + addComma(data) + '</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=3;$i<5;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_word = $("#list_search_word_table").DataTable({
@@ -709,7 +779,19 @@
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '') + addComma(data) + '</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=2;$i<4;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_site_word_no_result = $("#list_site_search_word_no_result_table").DataTable({
@@ -738,7 +820,19 @@
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=3;$i<5;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_word_no_result = $("#list_search_word_no_result_table").DataTable({
@@ -764,9 +858,20 @@
                         {'data': 'search_result_sum', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#ab6d93\'>' : '') + addComma(data) + '</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        for($i=2;$i<4;$i++) {
+                            $(api.column($i).footer()).html($font+
+                                addComma(
+                                    api.column($i).data().reduce(function (a, b) {
+                                        return (parseInt(a) + parseInt(b));
+                                    }, 0)
+                                )
+                                +"</font>");
+                        }
+                    }
                 });
-
 
                 $datatable_list = $('#list_ajax_table').DataTable({
                     serverSide: true,

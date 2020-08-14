@@ -126,6 +126,14 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th><font>합계</font></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -143,7 +151,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="text-align: center;">총합</th>
+                                <th><font>합계</font></th>
                                 <th></th>
                             </tr>
                             </tfoot>
@@ -164,7 +172,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="text-align: center;">총합</th>
+                                <th><font>합계</font></th>
                                 <th></th>
                             </tr>
                             </tfoot>
@@ -175,8 +183,8 @@
 
             <div class="form-group">
                 <p></p>
-                <div class="col-md-7 form-inline">
-                    <strong>[사이트별 클릭순위]</strong>
+                <div class="col-md-6 form-inline">
+                    <strong>[사이트별 배너 클릭 순위 : 상위 20개]</strong>
                     <div class="x_content">
                         <table id="list_site_rank_table" class="table table-striped table-bordered">
                             <thead>
@@ -190,11 +198,42 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="4"><font>합계</font></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
+                <div class="col-md-6 form-inline">
+                    <strong><font color="red">[사이트별 배너 클릭 하위 순위 : 하위 20개 - '사용중' 배너]</font></strong>
+                    <div class="x_content">
+                        <table id="list_site_low_rank_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th width="120">사이트</th>
+                                <th>배너명</th>
+                                <th width="80">배너정보</th>
+                                <th width="80">클릭수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="4"><font>합계</font></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!--
                 <div class="col-md-5 form-inline">
-                    <strong>[전체 클릭순위]</strong>
+                    <strong>[전체 클릭 순위 : 상위 20개]</strong>
                     <div class="x_content">
                         <table id="list_rank_table" class="table table-striped table-bordered">
                             <thead>
@@ -207,14 +246,21 @@
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="3"><font>합계</font></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
+                //-->
             </div>
 
             <div class="form-group">
                 <div class="col-md-12 form-inline">
-                    <strong>[배너 클릭이력]</strong>
+                    <strong>[배너 클릭 이력]</strong>
                     <div class="x_content">
                         <table id="list_ajax_table" class="table table-striped table-bordered">
                             <thead>
@@ -271,6 +317,14 @@
                     $login_count.push($banner_count[key]['click_count']);
                     $not_count.push($banner_count[key]['not_click_count']);
                 }
+
+                $var_info = ['$all_count',  '$login_count', '$not_count'];
+                for($i = 0; $i < $var_info.length; $i++) {
+                    this[$var_info[$i]+'_sum'] =  this[$var_info[$i]].reduce(function(a, b) {
+                        return a + b * 1;
+                    }, 0);
+                }
+
                 var config_count = {
                     type: 'line',
                     data: {
@@ -299,7 +353,7 @@
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: '배너 클릭현황'
+                            text: '배너 클릭 현황 ( 로그인 : ' + addComma($login_count_sum) + '  /  비로그인 : ' + addComma($not_count_sum) +'  /  합계 :  '+ addComma($all_count_sum) +' )'
                         },
                         tooltips: {
                             mode: 'index',
@@ -471,7 +525,7 @@
                 $divId.append("<canvas id='"+str_div_id+"_stats'></canvas>");
             }
 
-
+            var $font = "<font color='#9c1e1e' size='3px'>";
             var $datatable_count_info, $datatable_site, $datatable_platform, $datatable_site_rank, $datatable_rank, $datatable_list;
 
             function datatableExe() {
@@ -488,15 +542,33 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                                return '' + addComma(data) + '';
                             }},
                         {'data': 'not_click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                                return '' + addComma(data) + '';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return '<b>' + addComma( parseInt(row.click_count) + parseInt(row.not_click_count)) + '</b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        sum_click_count=0;
+                        for($i=1;$i<4;$i++) {
+                            $result = api.column($i).data().reduce(function (a, b) {
+                                    return (parseInt(a) + parseInt(b));
+                                }
+                            );
+                            if($i < 3) {
+                                sum_click_count +=$result
+                            }
+                            $(api.column($i).footer()).html($font
+                                + addComma(
+                                    ($i < 3 ? $result : sum_click_count)
+                                    ,0)
+                                +"</font>");
+                        }
+                    }
                 });
 
                 $datatable_site = $("#list_site_table").DataTable({
@@ -512,17 +584,18 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                                return '' + addComma(data) + '';
                             }},
-                    ],footerCallback: function( tfoot, data, start, end, display ) {
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        $(api.column(1).footer()).html(
+                        $(api.column(1).footer()).html($font+
                             addComma(
                                 api.column(1).data().reduce(function ( a, b ) {
                                     return (parseInt(a) + parseInt(b));
                                 }, 0)
                             )
-                        );
+                            +"</font>");
                     }
                 });
 
@@ -539,17 +612,18 @@
                                 return '<font color="black">' + data+ '</font>';
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<b>' + addComma(data) + '</b>';
+                                return '' + addComma(data) + '';
                             }},
-                    ],footerCallback: function( tfoot, data, start, end, display ) {
+                    ]
+                    ,footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        $(api.column(1).footer()).html(
+                        $(api.column(1).footer()).html($font+
                             addComma(
                                 api.column(1).data().reduce(function ( a, b ) {
                                     return (parseInt(a) + parseInt(b));
                                 }, 0)
                             )
-                        );
+                            +"</font>");
                     }
                 });
 
@@ -572,14 +646,62 @@
                                 return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
+                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='15px'>";
                             }},
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                    var api = this.api();
+                    $(api.column(4).footer()).html($font+
+                        addComma(
+                            api.column(4).data().reduce(function ( a, b ) {
+                                return (parseInt(a) + parseInt(b));
+                            }, 0)
+                        )
+                        +"</font>");
+                    }
                 });
 
+                $datatable_site_low_rank = $("#list_site_low_rank_table").DataTable({
+                    dom: 'Pfrtip',
+                    paging : false,
+                    serverSide: false,
+                    ajax: false,
+                    searching: false,
+                    info : '',
+                    data: getStats('Banner/SiteLowRank'),
+                    columns: [
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(meta.row + 1)+'</font></b>';
+                            }},
+                        {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
+                            }},
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
+                            }},
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='15px'>";
+                            }},
+                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
+                            }},
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        $(api.column(4).footer()).html($font+
+                            addComma(
+                                api.column(4).data().reduce(function ( a, b ) {
+                                    return (parseInt(a) + parseInt(b));
+                                }, 0)
+                            )
+                            +"</font>");
+                    }
+                });
+
+                /* 사이트별 랭크와 별반 차이 없음
                 $datatable_rank = $("#list_rank_table").DataTable({
                     dom: 'Pfrtip',
                     paging : false,
@@ -601,8 +723,19 @@
                         {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
                             }},
-                    ]
+                    ],
+                    footerCallback: function( tfoot, data, start, end, display ) {
+                        var api = this.api();
+                        $(api.column(3).footer()).html($font+
+                            addComma(
+                                api.column(3).data().reduce(function ( a, b ) {
+                                    return (parseInt(a) + parseInt(b));
+                                }, 0)
+                            )
+                            +"</font>");
+                    }
                 });
+                 */
 
                 $datatable_list = $('#list_ajax_table').DataTable({
                     serverSide: true,

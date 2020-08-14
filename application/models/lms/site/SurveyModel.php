@@ -91,7 +91,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 답변문항 수정 폼 조회
+     * 설문조사 문항 수정 폼 조회
      * @param integer $sq_idx
      * @return mixed
      */
@@ -142,11 +142,11 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 답변 결과 조회
+     * 설문조사 팝업 데이타 조회
      * @param integer $sp_idx
      * @return mixed
      */
-    public function findSurveyForAnswer($sp_idx=null)
+    public function listAnswerPopupData($sp_idx=null)
     {
         $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
@@ -159,6 +159,48 @@ class SurveyModel extends WB_Model
         $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
         return $this->_getDecodeData($data,'AnswerInfo');
+    }
+
+    /**
+     * 설문조사 팝업 그래프 데이타 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function listAnswerGraphData($sp_idx=null)
+    {
+        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
+        $column = "A.AnswerInfo";
+        $from = "
+            FROM {$this->_table['event_answer_info']} AS A
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
+        return $this->_getDecodeData($data,'AnswerInfo');
+    }
+
+    /**
+     * 직렬 항목 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function findSurveyBySeries($sp_idx = null)
+    {
+        $data = [];
+        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'IsSeries' => 'Y']];
+
+        $column = "SqIdx,SqJsonData";
+        $from = " FROM {$this->_table['event_survey_question']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $row[0] = $this->_conn->query('select '. $column . $from . $where)->row_array();
+
+        if(empty($row[0]) === false){
+            $data[$row[0]['SqIdx']] = $this->_getDecodeData($row,'SqJsonData')[0]['SqJsonData'][1]['item'];
+        }
+
+        return $data;
     }
 
     /**
@@ -234,7 +276,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 답변항목 등록
+     * 설문조사 문항 등록
      * @param $input
      * @return array|bool
      */
@@ -292,7 +334,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 답변항목 수정
+     * 설문조사 문항 수정
      * @param $input
      * @return mixed
      */
@@ -350,7 +392,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문조사 답변항목 삭제 (업데이트)
+     * 설문조사 문항 삭제 (업데이트)
      * @param integer $sq_idx
      * @return array|bool
      */
@@ -372,7 +414,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문항목 정렬순서, 사용유무 (업데이트)
+     * 설문문항 정렬순서, 사용유무 (업데이트)
      * @param array $params
      * @return bool
      */
@@ -407,7 +449,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 답변항목 인코딩
+     * 답변문항 인코딩
      * @param array $question_title
      * @param integer $question_cnt
      * @param array $question_item
@@ -443,7 +485,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 답변항목 디코딩
+     * 답변문항 디코딩
      * @param array $data
      * @param string $field
      * @return mixed

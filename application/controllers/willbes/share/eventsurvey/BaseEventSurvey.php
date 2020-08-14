@@ -62,7 +62,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
     public function graph($params = [])
     {
         $sp_idx = $params[0];
+
+        // 설문응답
         $answer_info = $this->surveyModel->listSurveyForAnswer($sp_idx);
+
+        // 설문문항
         $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
 
         // 설문 응답 비율 계산
@@ -329,7 +333,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
     }
 
     /**
-     * 설문조사 선택 문항 초기화
+     * 설문조사 문항 초기화
      * @param $question_info
      * @return mixed
      */
@@ -364,7 +368,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
     {
         foreach ($answer_info as $key => $val){
             foreach ($val['AnswerInfo'] as $question_key => $answer){
-                if($reset_data[$question_key] != 'D'){ // 서술형 제외
+                if(empty($reset_data[$question_key]) === false && $reset_data[$question_key] != 'D'){ // 서술형 제외
                     foreach ($answer as $k => $v){
                         $reset_data[$question_key][$k][$v] += 1;
                     }
@@ -466,7 +470,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
     }
 
     /**
-     * 직렬 비율 계산
+     * 직렬 선택 문항 비율 계산
      * @param $question_info
      * @param $answer_data
      * @return mixed
@@ -495,10 +499,12 @@ class BaseEventSurvey extends \app\controllers\FrontController
             foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
                     foreach ($answer as $k => $v){
-                        if($reset_data[$question_key] == 'D'){ // 서술형 제외
-                            unset($answer_data[$series_key][$key][$question_key]);
-                        }else{
-                            $series_data[$series_key][$question_key][$k] = $reset_data[$question_key][$k];
+                        if(empty($reset_data[$question_key]) === false){
+                            if($reset_data[$question_key] == 'D'){ // 서술형 제외
+                                unset($answer_data[$series_key][$key][$question_key]);
+                            }else{
+                                $series_data[$series_key][$question_key][$k] = $reset_data[$question_key][$k];
+                            }
                         }
                     }
                 }
@@ -508,9 +514,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
         foreach ($answer_data as $series_key => $series_val){
             foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
-                    ksort($series_data[$series_key][$question_key]);
-                    foreach ($answer as $k => $v) {
-                        $series_data[$series_key][$question_key][$k][$v] += 1;
+                    if(empty($series_data[$series_key][$question_key]) === false){
+                        ksort($series_data[$series_key][$question_key]);
+                        foreach ($answer as $k => $v) {
+                            $series_data[$series_key][$question_key][$k][$v] += 1;
+                        }
                     }
                 }
             }

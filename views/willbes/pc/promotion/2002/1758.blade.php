@@ -124,9 +124,11 @@
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&course_idx=1046&campus_ccd=605001&subject_idx=1059" target="_blank">수강신청</a></td>
                         </tr> 
                         <tr>
-                            <td>경찰학 신광은</td>
+                            <td>경찰학 장정훈</td>
                             <td>마무리 특강</td>
-                            <td>9.4(금) 14:00</td>
+                            <td>9.4(금) 14:00<br>
+                                9.5(토) 09:00 
+                            </td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1058&campus_ccd=605001" target="_blank">수강신청</a></td>
                         </tr> 
                         <tr>

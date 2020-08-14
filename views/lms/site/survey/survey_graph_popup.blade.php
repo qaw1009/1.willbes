@@ -79,20 +79,44 @@
                     <ul class="graphWrap">
                         <li>
                             @if(empty($data)===false)
-                                @foreach($data as $title => $val)
-                                    [{{ $title }}]
-                                    <div class="graphbox">
-                                        @foreach($val as $item => $spread)
-                                            <div class="graph graph2">
-                                                <p>{{ $spread }}%</p>
-                                                <div>
-                                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $spread }}%">
+                                @if($is_series == 'Y') {{--응시직렬--}}
+                                    @foreach($data as $series => $value)
+                                        @foreach($value as $title => $arr)
+                                            <strong>[{{ $series }} - {{ $title }}]<br/></strong>
+                                            @foreach($arr as $type => $val)
+                                                @if($type != 'S')
+                                                    [{{ $series }} - {{ $type }}]
+                                                @endif
+                                                <div class="graphbox" style="margin-top: 10px">
+                                                    @foreach($val as $item => $row)
+                                                        <div class="graph graph2">
+                                                            <p>{{ $row['spread'] }}%<br/>({{ $row['count'] }}명)</p>
+                                                            <div>
+                                                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $row['spread'] }}%">
+                                                            </div>
+                                                            <p>{{ $item }}</p>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-                                                <p>{{ $item }}</p>
-                                            </div>
+                                            @endforeach
                                         @endforeach
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    @foreach($data as $title => $val)
+                                        [{{ $title }}]
+                                        <div class="graphbox">
+                                            @foreach($val as $item => $row)
+                                                <div class="graph graph2">
+                                                    <p>{{ $row['spread'] }}%<br/>({{ $row['count'] }}명)</p>
+                                                    <div>
+                                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $row['spread'] }}%">
+                                                    </div>
+                                                    <p>{{ $item }}</p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                @endif
                             @else
                                 <div class="graphbox">
                                     <div class="graph graph2">

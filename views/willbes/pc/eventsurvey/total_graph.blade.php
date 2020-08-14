@@ -431,7 +431,7 @@
 
         {{--설문결과--}}
         <div class="m_section3_7">
-            @if(empty($series_data) === false)
+            @if(empty($surveyList) === false)
                 <div>
                     <h3>설문조사 결과</h3>
                     <div class="popcontent">
@@ -439,13 +439,15 @@
                             <p>응시직렬 </p>
                             <div class="qBox">
                                 <ul>
-                                    @foreach($series_data as $series_key => $series_val)
-                                        @foreach($series_val as $key => $title)
-                                        <li>
-                                            <label><input type="radio" name="sp_serial" value="{{ $key }}" onClick="selSurveyGraph(this.value);" {{ $key == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
-                                        </li>
+                                    @if(empty($series_data) === false)
+                                        @foreach($series_data as $series_key => $series_val)
+                                            @foreach($series_val as $key => $title)
+                                            <li>
+                                                <label><input type="radio" name="sp_serial" value="{{ $key }}" onClick="selSurveyGraph(this.value);" {{ $key == 1 ? 'checked="checked"' : '' }}>{{ $title }}</label>
+                                            </li>
+                                            @endforeach
                                         @endforeach
-                                    @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>

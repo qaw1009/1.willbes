@@ -210,6 +210,9 @@ class StatsBannerModel extends BaseStatsModel
 
         $base_condition['IN']['S.SiteCode'] = get_auth_site_codes(false,true);    //; 기준사이트
         $base_condition['EQ'] = ['S.IsStatus' => 'Y','S.IsUse' => 'Y', 'b.IsUse' => 'Y'];   //사용중인 배너 조건 추가
+        $base_condition['RAW'] = [
+            'date_format(now(),\'%Y-%m-%d\') between ' =>  'date_format(DispStartDatm,\'%Y-%m-%d\') and date_format(DispEndDatm,\'%Y-%m-%d\')'
+        ];
 
         $base_where = $this->_conn->makeWhere($base_condition)->getMakeWhere(true);
         $sub_where = $this->_conn->makeWhere($sub_condition)->getMakeWhere(true);

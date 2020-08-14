@@ -83,17 +83,17 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'wAdminName', 'render' : function(data, type, row, meta) {
-                        return data + '</u> (' + row.wAdminId.substr(0, row.wAdminId.length - 3) + '***)';
+                        return data + ' (' + row.wAdminId.substr(0, row.wAdminId.length - 3) + '***)';
                     }},
                     {'data' : 'wAdminDeptCcdName'},
                     {'data' : 'wAdminPositionCcdName'},
                     {'data' : 'RoleName'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
-                        var is_use_text = '-'
-                        if (data == 'Y') {
+                        var is_use_text = '-';
+                        if (data === 'Y') {
                             is_use_text = '활동';
-                        } else if (data == 'N') {
-                            is_use_text = '<span class="red">비활동</span>'
+                        } else if (data === 'N') {
+                            is_use_text = '<span class="red">비활동</span>';
                         }
                         return is_use_text;
                     }},

@@ -280,6 +280,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property EventAModel $eventAModel                                           API Event Model Class
  ***************** BtoB **********************************************************************************
  * @property BtobLoginModel $btobLoginModel                                     Btob Login Model Class
+ * @property BtobLoginLogModel $btobLoginLogModel                               Btob Login Log Model Class
  * @property BtobAdminModel $btobAdminModel                                     Btob Admin Model Class
  * @property BtobCertModel $btobCertModel                                       Btob Cert Apply Model Class
  * @property BtobStudyModel $btobStudyModel                                     Btob Study Model Class

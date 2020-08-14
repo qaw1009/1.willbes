@@ -10,6 +10,7 @@
                     <label class="control-label col-md-1" for="search_btob_idx">제휴사검색</label>
                     <div class="col-md-2">
                         <select class="form-control" id="search_btob_idx" name="search_btob_idx">
+                            <option value="">제휴사선택</option>
                             @foreach($arr_btob_idx as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach

@@ -112,8 +112,8 @@
 		@endif
 
 		<div class="evtCtnsBox wb_cts07">
-			<a href="https://lang.willbes.net/package/show/cate/3093/pack/648001/prod-code/168104" target="_blank">
-				<img src="https://static.willbes.net/public/images/promotion/2020/07/1229_06.jpg" title="수강신청">
+			<a href="https://lang.willbes.net/package/show/cate/3024/pack/648001/prod-code/170880" target="_blank">
+				<img src="https://static.willbes.net/public/images/promotion/2020/07/1425_05.png" title="수강신청">
 			</a>
 		</div>
 	  

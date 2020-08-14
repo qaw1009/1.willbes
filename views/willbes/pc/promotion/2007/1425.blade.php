@@ -77,7 +77,7 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-			<a href="https://lang.willbes.net/package/show/cate/3093/pack/648001/prod-code/168104" target="_blank">
+			<a href="https://lang.willbes.net/package/show/cate/3093/pack/648001/prod-code/170880" target="_blank">
 				<img src="https://static.willbes.net/public/images/promotion/2020/07/1425_05.png" title="수강신청">
 			</a>
 		</div>

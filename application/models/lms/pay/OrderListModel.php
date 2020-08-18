@@ -290,6 +290,25 @@ class OrderListModel extends BaseOrderModel
                     $from .= '                        
                         left join ' . $this->_table['code'] . ' as CDS
                             on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y" and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus'] . '"
+                        left join ' . $this->_table['code'] . ' as CDC
+                            on OPD.DeliveryCompCcd = CDC.Ccd and CDC.IsStatus = "Y" and CDC.GroupCcd = "' . $this->_group_ccd['DeliveryComp'] . '"';
+                }
+                $column .= ', OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
+                    , OPD.DeliveryCompCcd, CDC.CcdName as DeliveryCompCcdName, CDC.CcdEtc as DeliverySearchUrl
+                    , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm';
+                $excel_column .= ', CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
+                    , CDC.CcdName as DeliveryCompCcdName, OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm';
+            }
+
+            // 배송정보 추가 (관리자정보 포함)
+            if (in_array('delivery_info_all', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
+                        on OP.OrderProdIdx = OPD.OrderProdIdx';
+                if ($is_all_from === true) {
+                    $from .= '                        
+                        left join ' . $this->_table['code'] . ' as CDS
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y" and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus'] . '"
                         left join ' . $this->_table['admin'] . ' as AIR
                             on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
                         left join ' . $this->_table['admin'] . ' as AIU
@@ -302,13 +321,11 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
                     , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
-                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
-                ';
+                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName';
                 $excel_column .= ', CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
                     , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
-                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
-                ';
+                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName';
             }
 
             // 회원정보 추가

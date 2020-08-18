@@ -13,8 +13,16 @@ class SurveyModel extends WB_Model
         'survey_set' => 'lms_survey_set',
         'survey_set_question' => 'lms_survey_set_question',
         'survey_set_answer' => 'lms_survey_set_answer',
+        'survey_set_statistics' => 'lms_survey_set_statistics',
         'admin' => 'wbs_sys_admin',
         'member' => 'lms_member',
+
+        'old_survey_answer' => 'lms_survey_answer',
+        'old_survey_answer_info' => 'lms_survey_answer_info',
+        'old_survey_product' => 'lms_survey_product',
+        'old_survey_question' => 'lms_survey_question',
+        'old_survey_question_set' => 'lms_survey_question_set',
+        'old_survey_question_set_r_question' => 'lms_survey_question_set_r_question',
     ];
 
     public $_selection_type = [
@@ -27,6 +35,134 @@ class SurveyModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * old 설문 조회
+     * @return mixed
+     */
+    public function listOldSurvey(){
+        $column = "
+            SpIdx, SpTitle, StartDate, EndDate,
+            (SELECT COUNT(*) FROM {$this->_table['old_survey_answer_info']} WHERE SpIdx = sp.SpIdx) AS count
+            ";
+
+        $from = "
+            FROM {$this->_table['old_survey_product']} AS sp
+        ";
+
+        return $this->_conn->query('select '.$column .$from)->result_array();
+    }
+
+    /**
+     * old 설문결과 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function listOldSurveyAnswer($sp_idx=null){
+        $arr_condition = ['EQ' => ['sp.SpIdx' => $sp_idx, 'sa.TYPE' => 'S']];
+        $order_by = ['sq.SqIdx'=>'ASC','sa.Answer'=>'ASC'];
+        $column = "
+            sa.Answer,sq.*
+            ";
+
+        $from = "
+            FROM {$this->_table['old_survey_product']} AS sp
+            LEFT OUTER JOIN {$this->_table['old_survey_answer_info']} AS si ON sp.SpIdx = si.SpIdx
+            LEFT OUTER JOIN {$this->_table['old_survey_answer']} AS sa ON si.SaIdx = sa.SaIdx
+            LEFT OUTER JOIN {$this->_table['old_survey_question_set_r_question']} AS sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+            LEFT OUTER JOIN {$this->_table['old_survey_question']} AS sq ON sa.SqIdx = sq.SqIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
+    }
+
+    /**
+     * old 통계 데이타 업데이트
+     * @param $input
+     * @param $old_survey_info
+     * @return mixed
+     */
+    public function addOldSurveyData($input=[],$old_survey_info=[]){
+        $this->_conn->trans_begin();
+        try {
+            foreach ($input as $question_title => $answer_val){
+                foreach ($answer_val as $item => $answer){
+                    $data = [
+                        'SsIdx' => $old_survey_info['SpIdx'],
+                        'SurveyVersion' => 1,
+                        'SurveyTitle' => $old_survey_info['SpTitle'],
+                        'SurveyQuestion' => $question_title,
+                        'SurveyItem' => $item,
+                        'SurveyCount' => $old_survey_info['count'],
+                        'AnswerRate' => $answer['spread'],
+                        'AnswerCount' => $answer['count'],
+                        'StartDate' => $old_survey_info['StartDate'],
+                        'EndDate' => $old_survey_info['EndDate'],
+                    ];
+
+                    //등록
+                    if ($this->_conn->set($data)->insert($this->_table['survey_set_statistics']) === false) {
+                        throw new \Exception('업데이트 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 설문통계 리스트 조회
+     * @param $is_count
+     * @param $arr_condition
+     * @param $limit
+     * @param $offset
+     * @param $order_by
+     * @return mixed
+     */
+    public function listAllSurveyStatistics($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = "count(*) AS numrows";
+            $order_by_offset_limit = '';
+        } else {
+            $column = "
+            A.SsIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate, A.EndDate
+            ";
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['survey_set_statistics']} AS A
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 설문통계 제목 조회
+     * @return mixed
+     */
+    public function listSurveyStatisticsTitle()
+    {
+        $column = "SsIdx, SurveyTitle";
+        $from = "
+            FROM {$this->_table['survey_set_statistics']}
+            GROUP BY SsIdx
+        ";
+        return $this->_conn->query('SELECT ' . $column . $from)->result_array();
     }
 
     /**
@@ -45,8 +181,7 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
-            (SELECT COUNT(*) FROM {$this->_table['survey_set_answer']} WHERE SsIdx = A.SsIdx) AS CNT
+            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -73,7 +208,7 @@ class SurveyModel extends WB_Model
         $order_by = ['B.RegDatm'=>'DESC'];
 
         $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            A.SsIdx, A.SiteCode, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
             B.SsqIdx AS seriesIdx , B.SqJsonData AS SeriesData,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
@@ -373,9 +508,13 @@ class SurveyModel extends WB_Model
                 'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
                 'SqSubjectCnt' => element('sq_subject_cnt', $input),
-                'SqJsonData' => $json_data,
+                'SqJsonData' => [$json_data],
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
+
+            echo '<pre>';
+            print_r($data);
+            exit;
 
             //수정
             if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
@@ -481,7 +620,7 @@ class SurveyModel extends WB_Model
             }
         }
 
-        return json_encode($data);
+        return $data;
     }
 
     /**

@@ -181,7 +181,8 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
+            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            (SELECT COUNT(*) FROM {$this->_table['survey_set_answer']} WHERE SsIdx = A.SsIdx) AS CNT
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

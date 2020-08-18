@@ -19,6 +19,8 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+
         .wb_top {background: url(https://static.willbes.net/public/images/promotion/2020/08/1761_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#e61e00;}
@@ -32,6 +34,11 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="skybanner">
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289643&s_campus=605001" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_sky.png" alt="공개무료특강" />
+            </a>
+        </div> 
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_top.jpg" alt="오직, 소방" />            
         </div>

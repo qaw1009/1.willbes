@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SurveyModel extends WB_Model
 {
     private $_table = [
-        'event_survey' => 'lms_survey_list',
-        'event_survey_question' => 'lms_survey_question_list',
-        'event_answer_info' => 'lms_survey_answer_detail',
+        'survey_set' => 'lms_survey_set',
+        'survey_set_question' => 'lms_survey_set_question',
+        'survey_set_answer' => 'lms_survey_set_answer',
         'predict_code' => 'lms_predict_code',
         'product_predict' => 'lms_product_predict',
         'predict_grades_line' => 'lms_predict_grades_line',
@@ -20,7 +20,7 @@ class SurveyModel extends WB_Model
 
     // 디코딩 필드
     private $_field = [
-        'lms' => ['SqSeries','SqJsonData'],
+        'lms' => ['SeriesData','SqJsonData'],
         'wbs' => ['AnswerInfo'],
     ];
 
@@ -37,16 +37,16 @@ class SurveyModel extends WB_Model
     public function findSurvey($sp_idx = null)
     {
         $arr_condition = [
-            'EQ' => ['A.SpIdx' => $sp_idx, 'A.SpIsUse' => 'Y'],
+            'EQ' => ['A.SsIdx' => $sp_idx, 'A.SurveyIsUse' => 'Y'],
             'RAW' => ['NOW() between ' => 'StartDate and EndDate']
         ];
 
         $column = "
-            A.SpIdx, A.SpTitle, A.SpComment, A.SpIsDuplicate
+            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.IsDuplicate
             ";
 
         $from = "
-            FROM {$this->_table['event_survey']} AS A
+            FROM {$this->_table['survey_set']} AS A
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
@@ -60,15 +60,15 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyForQuestion($sp_idx = null)
     {
-        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
-        $order_by = ['A.OrderNum'=>'ASC','A.SqIdx'=>'ASC'];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
+        $order_by = ['A.OrderNum'=>'ASC','A.SsqIdx'=>'ASC'];
 
         $column = "
-            A.SqIdx, A.IsSeries, A.SqSeries, A.SqTitle, A.SqComment, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData
+            A.SsqIdx, A.IsSeries, A.SeriesData, A.SqTitle, A.SqComment, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData
             ";
 
         $from = "
-            FROM {$this->_table['event_survey_question']} AS A
+            FROM {$this->_table['survey_set_question']} AS A
         ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
@@ -84,14 +84,14 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyForAnswer($sp_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SpIdx' => $sp_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx]];
         $column = "A.AnswerInfo";
         $from = "
-            FROM {$this->_table['event_answer_info']} AS A
+            FROM {$this->_table['survey_set_answer']} AS A
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = $this->_conn->makeOrderBy(['A.SaIdx' => 'ASC'])->getMakeOrderBy();
+        $order_by = $this->_conn->makeOrderBy(['A.SsaIdx' => 'ASC'])->getMakeOrderBy();
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by)->result_array();
         return $this->_getDecodeData($data,$this->_field['wbs']);
     }
@@ -103,10 +103,10 @@ class SurveyModel extends WB_Model
      */
     public function findSurveyForAnswer($sp_idx = null)
     {
-        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
+        $arr_condition = ['EQ' => ['SsaIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
         $column = "COUNT(*) AS cnt";
         $from = "
-            FROM {$this->_table['event_answer_info']}
+            FROM {$this->_table['survey_set_answer']}
         ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->row(0)->cnt;
@@ -120,16 +120,16 @@ class SurveyModel extends WB_Model
     public function findSurveyBySeries($sp_idx = null)
     {
         $data = [];
-        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx, 'IsSeries' => 'Y']];
+        $arr_condition = ['EQ' => ['SsIdx' => $sp_idx, 'IsSeries' => 'Y']];
 
-        $column = "SqIdx,SqJsonData";
-        $from = " FROM {$this->_table['event_survey_question']} ";
+        $column = "SsqIdx,SqJsonData";
+        $from = " FROM {$this->_table['survey_set_question']} ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $row[0] = $this->_conn->query('select '. $column . $from . $where)->row_array();
 
         if(empty($row[0]) === false){
-            $data[$row[0]['SqIdx']] = $this->_getDecodeData($row,['SqJsonData'])[0]['SqJsonData'][1]['item'];
+            $data[$row[0]['SsqIdx']] = $this->_getDecodeData($row,['SqJsonData'])[0]['SqJsonData'][1]['item'];
         }
 
         return $data;
@@ -147,11 +147,11 @@ class SurveyModel extends WB_Model
 
             $data = [
                 'MemIdx' => $this->session->userdata('mem_idx'),
-                'SpIdx'  => $sp_idx,
+                'SsIdx'  => $sp_idx,
                 'AnswerInfo' => json_encode($formData)
             ];
 
-            if ($this->_conn->set($data)->insert($this->_table['event_answer_info']) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['survey_set_answer']) === false) {
                 throw new \Exception('문항저장에 실패했습니다.');
             }
 

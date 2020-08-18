@@ -1,4 +1,4 @@
-@extends('html.m.layouts.master')
+@extends('html.m.layouts.v2.master')
 
 @section('content')
 <!-- Container -->
@@ -55,7 +55,7 @@
                                 <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
-                                </dl>
+                                </dl>                                
                                 <div class="w-tit">
                                     <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                 </div>
@@ -78,6 +78,7 @@
                                 <dl class="w-info">
                                     <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
                                 </dl>
+                                
                                 <div class="w-tit">
                                     <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
                                 </div>

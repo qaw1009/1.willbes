@@ -111,8 +111,8 @@ class Survey extends \app\controllers\BaseController
             $method = 'PUT';
             $sq_data = $this->surveyModel->findQuestionForModify($sq_idx);
             $sq_data['SqJsonData']= json_decode($sq_data['SqJsonData'],true);
-            $SqSeries = element('SqSeries',$sq_data,[]);
-            $sq_data['SqSeries']= json_decode($SqSeries,true);
+            $SeriesData = element('SeriesData',$sq_data,[]);
+            $sq_data['SeriesData']= json_decode($SeriesData,true);
         }
 
         $this->load->view('site/survey/question_create_modal', [
@@ -135,7 +135,7 @@ class Survey extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
-            ['field' => 'SpIdx', 'label' => '설문정보없음', 'rules' => 'trim|required|integer'],
+            ['field' => 'SsIdx', 'label' => '설문정보없음', 'rules' => 'trim|required|integer'],
             ['field' => 'sq_title', 'label' => '문항제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'sq_is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'sq_type', 'label' => '답변유형', 'rules' => 'trim|required|in_list[S,M,T,D]'],
@@ -164,11 +164,11 @@ class Survey extends \app\controllers\BaseController
 
         $count = $this->surveyModel->listAllSurvey(true);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurvey(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SpIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurvey(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SsIdx' => 'desc']);
 
             foreach ($list as $key => $val){
-                $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SpIdx'];
-                $list[$key]['include'] = "프로모션 페이지 URL + /spidx/".$val['SpIdx'];
+                $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SsIdx'];
+                $list[$key]['include'] = "프로모션 페이지 URL + /spidx /".$val['SsIdx'];
             }
         }
 
@@ -264,7 +264,7 @@ class Survey extends \app\controllers\BaseController
         $new_question_info = [];
 
         foreach ($question_data as $key => $val){
-            $new_question_info[$val['SqIdx']] = $val;
+            $new_question_info[$val['SsqIdx']] = $val;
         }
 
         foreach ($answer_data as $question_key => $answer){
@@ -314,14 +314,14 @@ class Survey extends \app\controllers\BaseController
         $new_question_data = [];
         $reset_data = [];
         foreach ($question_data as $key => $val){
-            $new_question_data[$val['SqIdx']] = $val;
+            $new_question_data[$val['SsqIdx']] = $val;
 
             if($val['SqType'] == 'D'){ // 서술형
-                $reset_data[$val['SqIdx']] = 'D';
+                $reset_data[$val['SsqIdx']] = 'D';
             }else{
                 foreach ($val['SqJsonData'] as $answer_key => $answer){
                     foreach ($answer['item'] as $k => $v){
-                        $reset_data[$val['SqIdx']][$answer_key][$k] = 0;
+                        $reset_data[$val['SsqIdx']][$answer_key][$k] = 0;
                     }
                 }
             }

@@ -100,6 +100,11 @@
                                             {{$row['wProfName']}}교수님 <span class="NSK ml10 nBox nn{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                         </dt>
                                     </dl>
+                                        @if($row['LearnPatternCcd'] == '615002')
+                                            <div class="w-tit pkg-tit">
+                                                <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                            </div>
+                                        @endif
                                     <div class="w-tit">
                                         {!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!} {{$row['subProdName']}}
                                     </div>
@@ -109,6 +114,8 @@
                                     <div class="w-start tx-gray">
                                         <ul class="two">
                                             @if($row['IsRetake'] == 'N')
+                                                <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
+                                            @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackRetakeType'] == 'P')
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
                                             @else
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>

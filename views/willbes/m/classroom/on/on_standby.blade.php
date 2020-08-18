@@ -82,6 +82,11 @@
                                                 <span class="NSK ml10 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                             </dt>
                                         </dl>
+                                            @if($row['LearnPatternCcd'] == '615002')
+                                                <div class="w-tit pkg-tit">
+                                                    <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                                </div>
+                                            @endif
                                         <div class="w-tit">
                                             <a href="{{ front_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                         </div>
@@ -94,6 +99,8 @@
                                             <ul class="two">
                                                 {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                                 @if($row['SalePatternCcd'] == '694003')
+                                                    <li class="btn_black_line"><a>시작일변경 불가</a></li>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackLecStartType'] == 'P')
                                                     <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                 @elseif($row['IsLecStart'] == 'Y')
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');">시작일변경</a></li>

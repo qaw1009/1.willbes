@@ -126,7 +126,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1685_top.jpg" title="문제풀이 풀패키지">                    
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1685_top.jpg" title="문제풀이 풀패키지">                    
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -134,10 +134,10 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1685_02.jpg" usemap="#Map1685_step1" title="문제풀이 단계" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1685_02.jpg" usemap="#Map1685_step1" title="문제풀이 단계" border="0"/>
             <map name="Map1685_step1" id="Map1685_step1">
-                <area shape="rect" coords="355,945,764,1009" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="355,1896,762,1956" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="355,2748,764,2812" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" alt="3단계 종합반 신청하기" />
+                <area shape="rect" coords="355,1896,762,1956" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" alt="2단계 과목별 신청하기" />
             </map>
         </div>
 

@@ -765,7 +765,7 @@
 
         function surveyOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/eventSurvey/index/' . $spidx2) }}";
+            var url = "{{ site_url('/eventSurvey/index/' . $SsIdx2) }}";
             window.open(url,'pop','width=800 height=900');
         }
 

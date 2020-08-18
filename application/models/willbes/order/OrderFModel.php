@@ -138,19 +138,22 @@ class OrderFModel extends BaseOrderFModel
                 // 강좌시작일 설정 (온라인강좌 + 강좌시작일 설정 가능일 경우)
                 $row['DefaultStudyStartDate'] = $row['DefaultStudyEndDate'] = $row['IsStudyStartDate'] = '';
 
-                if ($row['CartType'] == 'on_lecture' && $row['IsLecStart'] == 'Y') {
-                    $today_date = date('Y-m-d');    // 결제일
+                // 패키지 서브강좌 강좌시작일 설정 가능여부
+                $row['IsSubLecStart'] = 'N';
 
-                    if (empty($row['StudyStartDate']) === false && $today_date < $row['StudyStartDate']) {
-                        // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
-                        $row['DefaultStudyStartDate'] = $row['StudyStartDate'];     // 개강일
-                        $row['IsStudyStartDate'] = 'N';
-                    } else {
-                        // 이미 개강한 상품
-                        $row['DefaultStudyStartDate'] = date('Y-m-d', strtotime($today_date . ' +7 day'));    // 결제일 익일 + 7일
-                        $row['IsStudyStartDate'] = 'Y';
+                if ($row['CartType'] == 'on_lecture') {
+                    if ($row['IsLecStart'] == 'Y') {
+                        $def_study_date_row = $this->getDefaultStudyStartEndDate($row['StudyStartDate'], $row['StudyPeriod']);
+                        $row['DefaultStudyStartDate'] = $def_study_date_row['DefaultStudyStartDate'];
+                        $row['DefaultStudyEndDate'] = $def_study_date_row['DefaultStudyEndDate'];
+                        $row['IsStudyStartDate'] = $def_study_date_row['IsStudyStartDate'];
                     }
-                    $row['DefaultStudyEndDate'] = date('Y-m-d', strtotime($row['DefaultStudyStartDate'] . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
+
+                    // 사용자 패키지 and 수강시작일 설정이 단강좌 속성 기준일 경우 서브강좌 정보 셋팅
+                    if (empty($row['SubProdData']) === false) {
+                        $row['SubProdData'] = $this->getDecPackSubLectureData($row['SubProdData'], true, $row['AddExtenDay']);
+                        $row['IsSubLecStart'] = 'Y';
+                    }
                 }
             } else {
                 // 결제할 경우 쿠폰할인금액 조회
@@ -262,6 +265,58 @@ class OrderFModel extends BaseOrderFModel
         $results['cart_type'] = $cart_type;
 
         return $results;
+    }
+
+    /**
+     * 디폴트 수강시작/종료일/개강여부 리턴
+     * @param string $study_start_date [개강일]
+     * @param int $study_period [수강기간]
+     * @return array
+     */
+    public function getDefaultStudyStartEndDate($study_start_date, $study_period)
+    {
+        $today_date = date('Y-m-d');    // 결제일
+
+        if (empty($study_start_date) === false && $today_date < $study_start_date) {
+            // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
+            $def_study_start_date = $study_start_date;     // 개강일
+            $is_study_start_date = 'N';
+        } else {
+            // 이미 개강한 상품
+            $def_study_start_date = date('Y-m-d', strtotime($today_date . ' +7 day'));    // 결제일 익일 + 7일
+            $is_study_start_date = 'Y';
+        }
+
+        $def_study_end_date = date('Y-m-d', strtotime($def_study_start_date . ' +' . ($study_period - 1) . ' day'));
+
+        return ['DefaultStudyStartDate' => $def_study_start_date, 'DefaultStudyEndDate' => $def_study_end_date, 'IsStudyStartDate' => $is_study_start_date];
+    }
+
+    /**
+     * 패키지 서브강좌 JSON 디코딩 및 디폴트 수강시작/종료일/개강여부 리턴
+     * @param string $json_data [패키지 서브강좌 JSON 데이터]
+     * @param bool $is_def_study_date [디폴트 수강시작/종료일/개강여부 설정여부]
+     * @param int $add_exten_day [추가수강연장일수]
+     * @return mixed
+     */
+    public function getDecPackSubLectureData($json_data, $is_def_study_date = true, $add_exten_day = 0)
+    {
+        $data = json_decode($json_data, true);
+
+        if ($is_def_study_date === true) {
+            foreach ($data as $idx => $row) {
+                $data[$idx]['StudyPeriod'] += $add_exten_day;   // 추가 수강연장일수 합산
+
+                if ($row['IsLecStart'] == 'Y') {
+                    $def_study_date_row = $this->getDefaultStudyStartEndDate($row['StudyStartDate'], $data[$idx]['StudyPeriod']);
+                    $data[$idx]['DefaultStudyStartDate'] = $def_study_date_row['DefaultStudyStartDate'];
+                    $data[$idx]['DefaultStudyEndDate'] = $def_study_date_row['DefaultStudyEndDate'];
+                    $data[$idx]['IsStudyStartDate'] = $def_study_date_row['IsStudyStartDate'];
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -1271,13 +1326,18 @@ class OrderFModel extends BaseOrderFModel
                 }
 
                 foreach ($prod_rows as $idx => $prod_row) {
-                    // 사용자패키지일 경우 패키지 판매정보의 수강연장일수 합산
+                    $lec_user_study_start_date = '';    // 서브강좌별 사용자 지정 강좌시작일
+                    
                     if ($learn_pattern == 'userpack_lecture') {
+                        // 패키지 판매정보의 추가 수강연장일수 합산
                         $prod_row['StudyPeriod'] = $prod_row['StudyPeriod'] + element('AddExtenDay', $input, 0);
+                        
+                        // 수강시작일 설정이 단강좌 속성 기준일 경우 사용자 지정 강좌시작일 셋팅
+                        $lec_user_study_start_date = array_get($user_study_start_date, $prod_row['ProdCode'], '');
                     }
 
                     // 수강시작일, 수강종료일 조회
-                    $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $user_study_start_date);
+                    $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $lec_user_study_start_date);
 
                     $data = [
                         'OrderIdx' => $order_idx,

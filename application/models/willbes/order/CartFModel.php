@@ -77,7 +77,9 @@ class CartFModel extends BaseOrderFModel
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                          else "etc" 
                   end as CartProdType
-                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(CA.ProdCode, PL.FixNumber), "N") as IsClosing';
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(CA.ProdCode, PL.FixNumber), "N") as IsClosing
+                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.IsPackLecStartType = "S", fn_product_sublecture_selected_data(CA.ProdCode, CA.ProdCodeSub), "") as SubProdData
+            ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

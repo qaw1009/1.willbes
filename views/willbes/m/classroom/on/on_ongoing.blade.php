@@ -98,6 +98,8 @@
                                         <ul class="two">
                                             @if($row['IsExten'] == 'N')
                                                 <li class="btn_blue"><a>수강연장불가</a></li>
+                                            @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackExtenType'] == 'P')
+                                                <li class="btn_blue"><a>수강연장불가</a></li>
                                             @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                                 <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
                                             @else
@@ -106,6 +108,8 @@
 
                                             {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                             @if($row['SalePatternCcd'] == '694003')
+                                                <li class="btn_white"><a>일시정지불가</a></li>
+                                            @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackPauseType'] == 'P')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['IsPause'] == 'N')
                                                 <li class="btn_white"><a>일시정지불가</a></li>

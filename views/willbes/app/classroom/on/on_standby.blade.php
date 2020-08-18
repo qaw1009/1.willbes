@@ -93,6 +93,8 @@
                                                 {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                                 @if($row['SalePatternCcd'] == '694003')
                                                     <li class="btn_black_line"><a>시작일변경 불가</a></li>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackLecStartType'] == 'P')
+                                                    <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                 @elseif($row['IsLecStart'] == 'Y')
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');">시작일변경</a></li>
                                                     @if(empty($row['StudyStartDate']) == false && $row['StudyStartDate'] > date('Y-m-d', time()))

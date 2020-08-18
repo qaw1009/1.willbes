@@ -109,6 +109,8 @@
                                             <td class="w-answer">
                                                 @if($row['IsRetake'] == 'N')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackRetakeType'] == 'P')
+                                                    <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
                                                     <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
@@ -127,7 +129,6 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-
                             @forelse( $pkgList as $row )
                                 <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">

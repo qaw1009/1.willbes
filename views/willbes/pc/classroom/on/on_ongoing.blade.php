@@ -176,6 +176,8 @@
                                             <td class="w-answer">
                                                 @if($row['IsExten'] == 'N')
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackExtenType'] == 'P')
+                                                    <a><span class="bBox blueBox NSK">수강연장불가</span></a>
                                                 @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                                     <a><span class="bBox blueBox NSK">연장횟수초과({{$row['RebuyCount']}})</span></a>
                                                 @else
@@ -185,6 +187,8 @@
                                                 {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                                 @if($row['SalePatternCcd'] == '694003')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackPauseType'] == 'P')
+                                                        <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['IsPause'] == 'N')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])

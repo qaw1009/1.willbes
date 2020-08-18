@@ -96,6 +96,8 @@
                                             {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                             @if($row['SalePatternCcd'] == '694003')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
+                                            @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackPauseType'] == 'P')
+                                                <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['IsPause'] == 'N')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['PauseCount'] >= $row['PauseNum'])
@@ -104,7 +106,7 @@
                                                 <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">일시정지({{$row['PauseCount']}})</a></li>
                                         @endif
 
-                                        <!--
+                                        {{--
                                             @if($row['IsExten'] == 'N')
                                             <li class="btn_blue"><a>수강연장불가</a></li>
                                             @elseif($row['RebuyCount'] >= $row['ExtenNum'])
@@ -112,7 +114,7 @@
                                             @else
                                             <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
                                             @endif
-                                                -->
+                                            --}}
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>
@@ -155,6 +157,7 @@
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">일시정지({{$row['PauseCount']}})</a></li>
                                                 @endif
 
+                                                {{--
                                                 @if(true)
                                                 <!-- 패키지강좌 재수강 불가 -->
                                                 @elseif($row['IsExten'] == 'N')
@@ -164,6 +167,7 @@
                                                 @else
                                                     <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
                                                 @endif
+                                                --}}
 
                                             </ul>
                                             <div class="MoreBtn f_right tx-right">

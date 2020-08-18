@@ -73,7 +73,9 @@ class StatsGatewayModel extends BaseStatsModel
                         
                         left Join
                         (
-                            select '. $gateway_date .' as result_date
+                            select 
+                                straight_join
+                                '. $gateway_date .' as result_date
                                 ,COUNT(gal.GwalIdx) AS gateway_count
                             from 
                                 '. $this->_table['gateway_log'] .' gal
@@ -87,7 +89,9 @@ class StatsGatewayModel extends BaseStatsModel
                         
                         left join
                         (
-                            select '. $member_date .' as result_date
+                            select 
+                                straight_join
+                                '. $member_date .' as result_date
                                 ,COUNT(m.MemIdx) AS member_count
                             from 
                                 '. $this->_table['member'] .' m
@@ -102,7 +106,9 @@ class StatsGatewayModel extends BaseStatsModel
                         
                         left join
                         (
-                            select '. $order_date .' as result_date
+                            select 
+                                straight_join
+                                '. $order_date .' as result_date
                                   ,COUNT(OP.OrderProdIdx) AS order_count, Sum(OP.RealPayPrice) as order_pay	
                             from '. $this->_table['order'] .' as O
                                 inner join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx
@@ -116,6 +122,7 @@ class StatsGatewayModel extends BaseStatsModel
                         left join 
                         (
                             select
+                                straight_join
                                  '. $refund_date .' as result_date
                                  ,Count(*) as refund_count, Sum(OPR.RefundPrice) as refund_pay
                             from 
@@ -199,7 +206,9 @@ class StatsGatewayModel extends BaseStatsModel
                             join '. $this->_table['site_group'] .' SG on S.SiteGroupCode = SG.SiteGroupCode
                             left join 
                             (
-                                select g.SiteCode
+                                select 
+                                    straight_join
+                                    g.SiteCode
                                     ,COUNT(gal.GwalIdx) AS gateway_count
                                 from 
                                     '. $this->_table['gateway_log'] .' gal
@@ -213,7 +222,9 @@ class StatsGatewayModel extends BaseStatsModel
                             
                             left join
                             (
-                                select g.SiteCode
+                                select 
+                                    straight_join
+                                    g.SiteCode
                                     ,COUNT(m.MemIdx) AS member_count
                                 from 
                                     '. $this->_table['member'].' m
@@ -229,6 +240,7 @@ class StatsGatewayModel extends BaseStatsModel
                             left join 
                             (
                                 select
+                                    straight_join
                                      g.SiteCode,Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay
                                 from 
                                     '. $this->_table['order'].' as O
@@ -243,6 +255,7 @@ class StatsGatewayModel extends BaseStatsModel
                             left join 
                             (
                                 select
+                                    straight_join
                                      g.SiteCode,Count(*) as refund_count, Sum(OPR.RefundPrice) as refund_pay
                                 from 
                                     '. $this->_table['order_refund'] .' as OPR

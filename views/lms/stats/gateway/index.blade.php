@@ -462,7 +462,7 @@
                                 return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(row.gateway_count) > 0 ?'<b>' + (parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
+                                return (parseInt(row.gateway_count) > 0 ?'<b>' + (parseInt(row.member_count) / parseInt(row.gateway_count) * 100).toFixed(2)+ '</b>' : '0.00') ;
                             }},
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
@@ -478,7 +478,7 @@
                             } else if($i == 2) {
                                 sum_mem +=$result
                             } else if($i == 7) {
-                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn)).toFixed(2) )
+                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn) * 100).toFixed(2) )
                             }
                             $(api.column($i).footer()).html($font
                                 + addComma(
@@ -520,7 +520,7 @@
                                 return (parseInt(data) < 0) ? '<b><font color=blue>' + addComma(data) + '</font></b>' : '0';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (parseInt(row.gateway_count) > 0 ? '<b>' +(parseInt(row.member_count) / parseInt(row.gateway_count)).toFixed(2)+ '</b>' : '0.00') ;
+                                return (parseInt(row.gateway_count) > 0 ? '<b>' +(parseInt(row.member_count) / parseInt(row.gateway_count) * 100).toFixed(2)+ '</b>' : '0.00') ;
                             }},
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
@@ -536,7 +536,7 @@
                             } else if($i == 2) {
                                 sum_mem +=$result
                             } else if($i == 7) {
-                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn)).toFixed(2) )
+                                sum_ratio = (sum_conn == 0 ? 0.00 : (parseInt(sum_mem) / parseInt(sum_conn) * 100).toFixed(2) )
                             }
                             $(api.column($i).footer()).html($font
                                 + addComma(

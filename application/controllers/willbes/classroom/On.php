@@ -883,7 +883,7 @@ class On extends \app\controllers\FrontController
         }
 
         // 사용자 패키지 속성이 S 이면 변경불가
-        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackStarType'] == 'P'){
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackLecStartType'] == 'P'){
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
 
@@ -1005,7 +1005,7 @@ class On extends \app\controllers\FrontController
         }
 
         // 사용자 패키지 속성이 S 이면 변경불가
-        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackStarType'] == 'P'){
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackLecStartType'] == 'P'){
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
 

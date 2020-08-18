@@ -10,7 +10,7 @@ class Delivery extends BaseOrder
     private $_prod_type = null;
     private $_tab = null;
     private $_delivery_pay_status_ccd = array();
-    private $_list_add_join = array('delivery_address', 'delivery_info');
+    private $_list_add_join = array('delivery_address', 'delivery_info_all');
 
     public function __construct()
     {

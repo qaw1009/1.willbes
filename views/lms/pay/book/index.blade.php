@@ -134,7 +134,7 @@
                     <th rowspan="2" class="rowspan valign-middle">결제루트</th>
                     <th rowspan="2" class="rowspan valign-middle">결제수단</th>
                     <th rowspan="2" class="rowspan valign-middle">결제완료(주문)일<br/>(가상계좌신청일)</th>
-                    <th colspan="7">상품구분별정보</th>
+                    <th colspan="8">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>
@@ -144,6 +144,7 @@
                     <th>결제상태</th>
                     <th>배송상태</th>
                     <th>할인율</th>
+                    <th>배송현황</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -195,7 +196,7 @@
                             + ' (사용 교재 포인트 : ' + addComma(t_use_book_point) + ')'
                             + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
-                        return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="7">' + t_html + '</td></tr>');
+                        return $('<tr class="bg-odd"><td colspan="9"></td><td colspan="7">' + t_html + '</td></tr>');
                     },
                     dataSrc : 'OrderIdx'
                 },
@@ -239,7 +240,10 @@
                     }},
                     {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
                         return data + (row.IsUseCoupon === 'Y' ? ' (Y)' : '');
-                    }}
+                    }},
+                    {'data' : 'DeliverySearchUrl', 'render' : function(data, type, row, meta) {
+                        return row.DeliverySendDatm !== null ? '<a href="' + data.replace(/\{\{\$invoice_no\$\}\}/g, row.InvoiceNo) + '" class="btn btn-xs btn-success mb-0 mr-0" target="_blank">배송조회</a>' : '';
+                    }},
                 ]
             });
 

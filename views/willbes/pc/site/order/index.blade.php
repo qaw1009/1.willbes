@@ -103,7 +103,12 @@
                                                                         <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                                     @endif
                                                                 @else
-                                                                    <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                                    @if($row['IsSubLecStart'] == 'Y')
+                                                                        {{-- 사용자 패키지 서브강좌별 강좌시작일 설정 가능일 경우 --}}
+                                                                        <span class="tx-light-blue">설정된 강좌시작일에 시작</span>
+                                                                    @else
+                                                                        <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                                    @endif
                                                                 @endif
                                                             @endif
                                                         @endif
@@ -146,6 +151,36 @@
                                         </dl>
                                     </td>
                                 </tr>
+                                {{-- 사용자 패키지 서브강좌별 강좌시작일 설정 가능일 경우 서브강좌 표기 --}}
+                                @if($row['IsSubLecStart'] == 'Y')
+                                    @foreach($row['SubProdData'] as $sub_row)
+                                        <tr>
+                                            <td class="w-list tx-left pl20">
+                                                <dl>
+                                                    <dt class="tit">
+                                                        <span class="pBox p1">강좌</span>
+                                                        {{ $row['ProdAddInfo'] }}
+                                                        <strong>{{ $sub_row['ProdName'] }}</strong>
+                                                    </dt>
+                                                    <dt>
+                                                        <span class="w-day">수강기간 : <span class="tx-blue">{{ $sub_row['StudyPeriod'] }}일</span></span>
+                                                        <span class="w-data">
+                                                            [강좌시작일 설정]
+                                                            @if($sub_row['IsLecStart'] == 'Y')
+                                                                <input type="text" name="study_start_date[{{ $row['CartIdx'] }}][{{ $sub_row['ProdCode'] }}]" class="iptDate datepicker btn-set-study-date" data-cart-idx="{{ $row['CartIdx'] }}" data-prod-code-sub="{{ $sub_row['ProdCode'] }}" data-study-period="{{ $sub_row['StudyPeriod'] }}" data-is-study-start-date="{{ $sub_row['IsStudyStartDate'] }}" value="{{ $sub_row['DefaultStudyStartDate'] }}" readonly="readonly"/>
+                                                                <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
+                                                                <input type="text" name="study_end_date[{{ $row['CartIdx'] }}][{{ $sub_row['ProdCode'] }}]" class="iptDate bg-gray" value="{{ $sub_row['DefaultStudyEndDate'] }}" readonly="readonly"/>
+                                                            @else
+                                                                <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                            @endif
+                                                        </span>
+                                                    </dt>
+                                                </dl>
+                                            </td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             @endforeach
                             {{-- 자동지급 사은품 --}}
                             @if(empty($results['freebie']) === false)
@@ -572,11 +607,18 @@
                 var default_date = $(this).prop('defaultValue')
                     , selected_date = $(this).val()
                     , cart_idx = $(this).data('cart-idx')
+                    , prod_code_sub = $(this).data('prod-code-sub')
                     , study_days = $(this).data('study-period')
                     , is_study_start_date = $(this).data('is-study-start-date')
                     , base_date = moment().format('YYYY-MM-DD')
                     , after30_date = moment().add(29, 'days').format('YYYY-MM-DD')
-                    , text_date = '결제일';
+                    , text_date = '결제일'
+                    , $input_study_end_date = $regi_form.find('input[name="study_end_date[' + cart_idx + ']"]');
+
+                // 서브강좌일 경우
+                if (typeof prod_code_sub !== 'undefined') {
+                    $input_study_end_date = $regi_form.find('input[name="study_end_date[' + cart_idx + '][' + prod_code_sub + ']"]');
+                }
 
                 if (is_study_start_date === 'N') {
                     // 개강일이 결제일 이후 일 경우
@@ -592,7 +634,7 @@
                 }
 
                 // 강좌종료일 설정
-                $regi_form.find('input[name="study_end_date[' + cart_idx + ']"]').val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+                $input_study_end_date.val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
             });
 
             // 모의고사 응시정보 버튼 클릭

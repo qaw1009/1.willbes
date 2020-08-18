@@ -95,6 +95,11 @@
                                                 @if($row['LecTypeCcd'] == '607003')
                                                     <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                                 @endif
+                                                @if($row['LearnPatternCcd'] == '615002')
+                                                    <div class="w-tit pkg-tit">
+                                                        <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                                    </div>
+                                                @endif
                                                 <div class="w-tit">
                                                     {{$row['subProdName']}}
                                                 </div>
@@ -108,6 +113,8 @@
                                             </td>
                                             <td class="w-answer">
                                                 @if($row['IsRetake'] == 'N')
+                                                    <span class="bBox whiteBox NSK">재수강불가</span>
+                                                @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackRetakeType'] == 'P')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
                                                     <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
@@ -127,7 +134,6 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-
                             @forelse( $pkgList as $row )
                                 <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">

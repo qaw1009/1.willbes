@@ -120,7 +120,7 @@ class On extends \app\controllers\FrontController
             ]
         ]), $orderby);
 
-        // 학습방법 : 단과,  사용자패키
+        // 학습방법 : 단과,  사용자패키지
         // 결제방식 : 온라인, 방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
@@ -882,6 +882,11 @@ class On extends \app\controllers\FrontController
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
+        // 사용자 패키지 속성이 S 이면 변경불가
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackLecStartType'] == 'P'){
+            return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
+        }
+
         if($lec['IsLecStart'] != 'Y'){
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
@@ -999,6 +1004,11 @@ class On extends \app\controllers\FrontController
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
+        // 사용자 패키지 속성이 S 이면 변경불가
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackLecStartType'] == 'P'){
+            return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
+        }
+
         if($lec['IsLecStart'] != 'Y'){
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
@@ -1098,6 +1108,11 @@ class On extends \app\controllers\FrontController
             $lec = $leclist[0];
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        // 사용자 패키지 속성이 S 이면 변경불가
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackPauseType'] == 'P'){
+            return $this->json_error('일시중지할 수 없는 강좌입니다.');
         }
 
         if($lec['IsPause'] != 'Y'){
@@ -1200,6 +1215,11 @@ class On extends \app\controllers\FrontController
             $lec = $leclist[0];
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        // 사용자 패키지 속성이 S 이면 변경불가
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackPauseType'] == 'P'){
+            return $this->json_error('일시중지할 수 없는 강좌입니다.');
         }
 
         if($lec['IsPause'] != 'Y'){
@@ -1365,6 +1385,11 @@ class On extends \app\controllers\FrontController
             $lec = $leclist[0];
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        // 사용자 패키지 속성이 S 이면 변경불가
+        if($lec['LearnPatternCcd'] == '615002' && $lec['IsPackExtenType'] == 'P'){
+            return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
         }
 
         if ($lec['IsExten'] != 'Y') {

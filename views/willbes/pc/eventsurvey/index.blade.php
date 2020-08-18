@@ -23,10 +23,10 @@
 </style>
 @section('content')
     <div class="popcontent NGR">
-        <h3>{{ $survey_data['SpTitle'] }}</h3>
+        <h3>{{ $survey_data['SurveyTitle'] }}</h3>
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
-            <input type="hidden" name="sp_idx" value="{{ $survey_data['SpIdx'] }}" />
+            <input type="hidden" name="sp_idx" value="{{ $survey_data['SsIdx'] }}" />
             <input type="hidden" name="is_series" id="is_series" value="{{$is_series}}">
             <input type="hidden" name="series_subject_cnt" id="series_subject_cnt" value="1">
             <input type="hidden" name="total_cnt" id="total_cnt" value="">
@@ -47,7 +47,7 @@
                                                         @foreach($item_v['item'] as $k => $item)
                                                             <li>
                                                                 <label>
-                                                                    <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}" onclick="fn_display(this,{{$k}})"> {{$item}}
+                                                                    <input type="radio" name="s_type[{{$val['SsqIdx']}}][{{$item_k}}]" value="{{ $k }}" onclick="fn_display(this,{{$k}})"> {{$item}}
                                                                 </label>
                                                             </li>
                                                         @endforeach
@@ -73,7 +73,7 @@
                                                 @foreach($val['SqJsonData'] as $item_k => $item_v)
                                                     <li>
                                                         <label>
-                                                            <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}',{{$question_count[$i]['subject_cnt']}})"> {{$item_v['title']}}
+                                                            <input type="checkbox" name="t_type[]" value="{{$item_k}}" onclick="fn_visible(this,'{{$val['SqType']}}_{{$i}}_{{$val['SsqIdx']}}_{{$item_k}}',{{$question_count[$i]['subject_cnt']}})"> {{$item_v['title']}}
                                                         </label>
                                                     </li>
                                                 @endforeach
@@ -84,18 +84,18 @@
 
                                 @if(empty($val['SqJsonData']) === false)
                                     @foreach($val['SqJsonData'] as $item_k => $item_v)
-                                        <div class="qBox @if($val['SqType'] == 'T') series_type_group d_none @endif" id="{{$val['SqType']}}_{{$i}}_{{$val['SqIdx']}}_{{$item_k}}">
+                                        <div class="qBox @if($val['SqType'] == 'T') series_type_group d_none @endif" id="{{$val['SqType']}}_{{$i}}_{{$val['SsqIdx']}}_{{$item_k}}">
                                             <strong>{{$item_v['title'] or ''}}</strong>
                                             <ul>
                                                 @if($val['SqType'] == 'D') {{-- 서술형 --}}
-                                                    <li><textarea name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
+                                                    <li><textarea name="s_type[{{$val['SsqIdx']}}][{{$item_k}}]" rows="7" cols="100"></textarea></li>
                                                 @endif
 
                                                 @if(empty($item_v['item']) === false) {{-- 선택형 --}}
                                                     @foreach($item_v['item'] as $k => $item)
                                                         <li>
                                                             <label>
-                                                                <input type="radio" name="s_type[{{$val['SqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
+                                                                <input type="radio" name="s_type[{{$val['SsqIdx']}}][{{$item_k}}]" value="{{ $k }}"> {{$item}}
                                                             </label>
                                                         </li>
                                                     @endforeach

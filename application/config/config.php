@@ -522,7 +522,8 @@ $config['sess_regenerate_destroy'] = FALSE;
 //$config['cookie_prefix']	= '';
 $config['cookie_prefix']	= '_wb_';
 $config['cookie_domain']	= '.' . $config['base_domain'];
-$config['cookie_path']		= '/';
+//$config['cookie_path']		= '/';
+$config['cookie_path']		= '/; SameSite=None; Secure';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
 

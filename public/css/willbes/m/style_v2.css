@@ -1717,6 +1717,8 @@ body.memBody #Footer {
     color: #323232;
     line-height: 20px;
 }
+.lecTable .pkg-tit span {border:1px solid #1a8ccc; color:#1a8ccc; padding:2px 5px; font-size:12px !important}
+
 .lecTable .w-info {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;

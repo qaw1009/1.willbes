@@ -18,8 +18,8 @@
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
                 <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a></li>
-                <!-- <li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist4">관리자부여 <span>6</span></a></li> -->
+                {{-- <li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist4">관리자부여 <span>6</span></a></li> --}}
             </ul>
             <div class="tabBox lineBox lecListBox">
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
@@ -30,14 +30,14 @@
                                 <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
                             @endforeach
                         </select>
-                        <!--
+                        {{--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                                 <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
-                        -->
+                        --}}
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
                             <option selected="selected" value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -75,6 +75,11 @@
                                             {{$row['wProfName']}}교수님 <span class="NSK ml10 nBox nn{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                         </dt>
                                     </dl>
+                                        @if($row['LearnPatternCcd'] == '615002')
+                                            <div class="w-tit pkg-tit">
+                                                <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                            </div>
+                                        @endif
                                     <div class="w-tit">
                                         {!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!} {{$row['subProdName']}}
                                     </div>

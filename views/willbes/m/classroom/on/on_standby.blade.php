@@ -82,6 +82,11 @@
                                                 <span class="NSK ml10 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                             </dt>
                                         </dl>
+                                            @if($row['LearnPatternCcd'] == '615002')
+                                                <div class="w-tit pkg-tit">
+                                                    <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                                </div>
+                                            @endif
                                         <div class="w-tit">
                                             <a href="{{ front_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                         </div>

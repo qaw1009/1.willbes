@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
-    <link href="/public/css/willbes/m/style.css?ver={{time()}}" rel="stylesheet">
+    <link href="/public/css/willbes/m/style_v2.css?ver={{time()}}" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->

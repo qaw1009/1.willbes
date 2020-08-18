@@ -39,14 +39,14 @@
                                 <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
                             @endforeach
                         </select>
-                        <!--
+                        {{--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                                 <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
-                        -->
+                        --}}
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option selected="selected" value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -98,6 +98,11 @@
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
                                                     <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                @endif
+                                                @if($row['LearnPatternCcd'] == '615002')
+                                                    <div class="w-tit pkg-tit">
+                                                        <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                                    </div>
                                                 @endif
                                                 <div class="w-tit">
                                                     <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>

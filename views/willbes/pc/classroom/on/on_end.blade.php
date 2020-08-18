@@ -95,6 +95,11 @@
                                                 @if($row['LecTypeCcd'] == '607003')
                                                     <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                                 @endif
+                                                @if($row['LearnPatternCcd'] == '615002')
+                                                    <div class="w-tit pkg-tit">
+                                                        <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                                    </div>
+                                                @endif
                                                 <div class="w-tit">
                                                     {{$row['subProdName']}}
                                                 </div>

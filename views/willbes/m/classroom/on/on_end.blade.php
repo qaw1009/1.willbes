@@ -100,6 +100,11 @@
                                             {{$row['wProfName']}}교수님 <span class="NSK ml10 nBox nn{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                         </dt>
                                     </dl>
+                                        @if($row['LearnPatternCcd'] == '615002')
+                                            <div class="w-tit pkg-tit">
+                                                <a href="#none"><span>패키지</span> {{$row['ProdName']}}</a>
+                                            </div>
+                                        @endif
                                     <div class="w-tit">
                                         {!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!} {{$row['subProdName']}}
                                     </div>

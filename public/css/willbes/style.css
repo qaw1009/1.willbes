@@ -297,17 +297,10 @@ table.joinTable tr td a {
     display: block; 
     line-height: 27px;
 }
-.mem-Login .bSlider {
-    width:100%;
-    max-width:460px; 
-    margin: 0 auto;
-}
 .mem-Login .slider {
-    /*width: 100%;
-    max-width: 460px;
-    margin:0 auto;
+    width: 460px;
     height: 160px;
-    overflow: hidden;*/
+    overflow: hidden;
 }
 
 /* Login Form : 휴면회원 안내 */
@@ -832,7 +825,7 @@ table.auTable tr td {
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background:#eee;
+    background: #eee;
 }
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
     width: 30px;

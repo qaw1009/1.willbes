@@ -817,7 +817,7 @@ table.auTable tr td {
     text-align: right;
 }
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
+    background: #ccc;
     width: 8px;
     height: 8px;
     margin: 0 2px;
@@ -825,7 +825,7 @@ table.auTable tr td {
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #fff;
+    background:#eee;
 }
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
     width: 30px;
@@ -11561,6 +11561,7 @@ table.acadlecInfoPackageTable tr.Top td {
     .Member .tabs-Step li {
         font-size: 12px;
     }
+    .Member .bSlider {max-width:460px; margin: 0 auto;}
 
     /*-- Login Form : 로그인 --*/
     table.joinTable tr td a {

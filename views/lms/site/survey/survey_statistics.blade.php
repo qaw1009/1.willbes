@@ -136,8 +136,8 @@
 
         });
 
-        function popGraph(sp_idx){
-            var _param = 'sp_idx=' + sp_idx;
+        function popGraph(ss_idx){
+            var _param = 'ss_idx=' + ss_idx;
             var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
 
             win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');

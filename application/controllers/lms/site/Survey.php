@@ -191,7 +191,7 @@ class Survey extends \app\controllers\BaseController
         $sq_item_cnt = 10;  // 복수형 항목 갯수
         $arr_param = $this->_reqG(null);
         $ss_idx = element('ss_idx', $arr_param);
-        $sq_idx = element('sq_idx', $arr_param);
+        $ssq_idx = element('ssq_idx', $arr_param);
         $series_idx = element('series_idx', $arr_param);
         $series_data = element('series_data', $arr_param,[]);
         $sq_data = [];
@@ -200,9 +200,9 @@ class Survey extends \app\controllers\BaseController
             show_alert("잘못된 접근 입니다.");
         }
 
-        if(empty($sq_idx) === false){
+        if(empty($ssq_idx) === false){
             $method = 'PUT';
-            $sq_data = $this->surveyModel->findQuestionForModify($sq_idx);
+            $sq_data = $this->surveyModel->findQuestionForModify($ssq_idx);
             $sq_data['SqJsonData']= json_decode($sq_data['SqJsonData'],true);
             $SeriesData = element('SeriesData',$sq_data,[]);
             $sq_data['SeriesData']= json_decode($SeriesData,true);
@@ -279,14 +279,14 @@ class Survey extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
-            ['field' => 'sq_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'ssq_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->surveyModel->removeSurveyQuestion($this->_reqP('sq_idx'));
+        $result = $this->surveyModel->removeSurveyQuestion($this->_reqP('ssq_idx'));
         $this->json_result($result, '삭제 처리 되었습니다.', $result);
     }
 
@@ -341,7 +341,7 @@ class Survey extends \app\controllers\BaseController
         }
 
         $this->load->view('site/survey/survey_data_popup', [
-            '$ss_idx' => $ss_idx,
+            'ss_idx' => $ss_idx,
             'data' => $answer_data
         ]);
     }

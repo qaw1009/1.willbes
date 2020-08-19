@@ -57,7 +57,7 @@
         .btn a {font-size:30px; display:block; border-radius:50px; background:#03675f; color:#fff; padding:20px 0}
         .btn a:hover {background:#333;}   
 
-        .evt02 {background:#393a3e;}
+        .evt02 {background:#393a3e;padding-bottom:100px;}
         .evt02 > div {width:700px; margin:0 auto}
         .evt02 div table {table-layout: auto; border-top:1px solid #757578;}
         .evt02 div table th,
@@ -320,6 +320,7 @@
                                                     @else
                                                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img01.png" alt="">
                                                     @endif
+                                                    
                                                 </div>
                                             </td>
                                         @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
@@ -354,22 +355,22 @@
                     {{--<li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>--}}
                 </ul>            
             </div>
-        </form>     
+        </form>
 
+        {{--
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_03.jpg" usemap="#Map1730a" title="봉투모의고사 학원위치" border="0">
             <map name="Map1730a" id="Map1730a">
                 <area shape="rect" coords="336,703,791,800" href="https://police.willbes.net/pass/home/index#campus1" target="_blank" />
             </map>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1730_04.jpg" usemap="#Map1730b" title="신청하기" border="0">
             <map name="Map1730b" id="Map1730b">
-                <area shape="rect" coords="25,843,373,903" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=740&"  target="_blank" />
-                <area shape="rect" coords="384,842,733,905" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1743"  target="_blank" />
-                <area shape="rect" coords="745,843,1095,906" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1756"  target="_blank" />
-            </map>            
+                <area shape="rect" coords="335,821,786,900" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1756" target="_blank" />
+            </map>           
         </div>
 
         <div class="evtCtnsBox evt05">

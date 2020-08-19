@@ -192,7 +192,7 @@ span {
     top: 0;
     left:50%; 
     width:70%;
-
+    background: #fff;
     margin-left:calc(-50% - 70%);
     -webkit-transition:transform 0.3s ease;
     transition:transform 0.3s ease;

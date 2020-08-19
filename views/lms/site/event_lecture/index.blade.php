@@ -47,14 +47,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">통합검색</label>
+                    <label class="control-label col-md-1" for="search_value">제목검색</label>
                     <div class="col-md-2">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">제목, 프로모션코드 검색 가능</p>
-                    </div>
-                    <label class="control-label col-md-1" for="search_start_date">기간검색</label>
+                    <label class="control-label col-md-1 col-lg-offset-1" for="search_start_date">기간검색</label>
                     <div class="col-md-5">
                         <div class="col-md-11 form-inline">
                             <select class="form-control mr-10" id="search_date_type" name="search_date_type">
@@ -75,6 +72,17 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_promotion_codes">프로모션코드 복수 검색</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="search_promotion_codes" name="search_promotion_codes">
+                    </div>
+                    <div class="col-md-5">
+                        <p class="form-control-static">숫자와 콤마만 허용 [다중검색인경우 콤마(,)로 구분]</p>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="row">

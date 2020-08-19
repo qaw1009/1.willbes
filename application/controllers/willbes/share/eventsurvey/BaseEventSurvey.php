@@ -21,34 +21,34 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
     public function index($params = [])
     {
-        $sp_idx = $params[0];
-        if(empty($sp_idx) === true || !is_numeric($sp_idx)){
+        $ss_idx = $params[0];
+        if(empty($ss_idx) === true || !is_numeric($ss_idx)){
             show_alert('잘못된 접근 입니다.','close');
             return;
         }
 
-        $survey_data = $this->surveyModel->findSurvey($sp_idx);
+        $survey_data = $this->surveyModel->findSurvey($ss_idx);
         if(empty($survey_data) === true){
             show_alert('설문 기간이 아닙니다.','close');
             return;
         }
 
         if($survey_data['IsDuplicate'] == $this->_duplicate_type[1]){
-            $answer_count = $this->surveyModel->findSurveyForAnswer($sp_idx);
+            $answer_count = $this->surveyModel->findSurveyForAnswer($ss_idx);
             if($answer_count > 0){
                 show_alert('이미 설문에 참여하셨습니다.','close');
                 return;
             }
         }
 
-        $question_list = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $question_list = $this->surveyModel->listSurveyForQuestion($ss_idx);
         if(empty($question_list) === true){
             show_alert('등록되지 않은 설문입니다.','close');
             return;
         }
 
         // 응시직렬
-        $series_data = $this->surveyModel->findSurveyBySeries($sp_idx);
+        $series_data = $this->surveyModel->findSurveyBySeries($ss_idx);
         list($question_data,$question_count) = $this->_getQuestionData($question_list,$series_data);
 
         $view_file = 'willbes/pc/eventsurvey/index';
@@ -63,20 +63,20 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
     public function graph($params = [])
     {
-        $sp_idx = $params[0];
+        $ss_idx = $params[0];
 
         // 설문응답
-        $answer_info = $this->surveyModel->listSurveyForAnswer($sp_idx);
+        $answer_info = $this->surveyModel->listSurveyForAnswer($ss_idx);
 
         // 설문문항
-        $question_info = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $question_info = $this->surveyModel->listSurveyForQuestion($ss_idx);
 
         // 설문 응답 비율 계산
         list($survey_levels,$survey_data) = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
         $view_file = 'willbes/pc/eventsurvey/graph';
         $this->load->view($view_file, [
-            'SsIdx' => $sp_idx,
+            'SsIdx' => $ss_idx,
             'survey_levels' => $survey_levels,
             'survey_data' => $survey_data
         ],false);
@@ -84,11 +84,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
     public function store()
     {
-        $sp_idx = $this->_reqP('sp_idx');
+        $ss_idx = $this->_reqP('ss_idx');
         $total_cnt = $this->_reqP('total_cnt');
         $input = element('s_type', $this->_reqP(null, false));
 
-        if(empty($sp_idx) || empty($total_cnt)){
+        if(empty($ss_idx) || empty($total_cnt)){
             $this->json_error('잘못된 접근 입니다.');
             return;
         }
@@ -100,7 +100,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->surveyModel->storeSurvey($inputData,$sp_idx);
+        $result = $this->surveyModel->storeSurvey($inputData,$ss_idx);
         $this->json_result($result, '저장 되었습니다.', $result, $result);
     }
 
@@ -113,8 +113,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
-        $SsIdx1 = element('spidx1', $arr_input);    // 이전 설문조사
-        $SsIdx2 = element('spidx2', $arr_input);    // 진행 설문조사
+        $SsIdx1 = element('SsIdx1', $arr_input);    // 이전 설문조사
+        $SsIdx2 = element('SsIdx2', $arr_input);    // 진행 설문조사
 
         // 1. 지역별 현황
         // 직렬코드 조회

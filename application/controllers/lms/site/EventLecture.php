@@ -1008,10 +1008,20 @@ class EventLecture extends \app\controllers\BaseController
                 'A.RequestType' => $this->_reqP('search_request_type')
             ],
             'ORG1' => [
-                'LKB' => ['A.EventName' => $this->_reqP('search_value')],
-                'LKR' => ['A.PromotionCode' => $this->_reqP('search_value')]
+                'LKB' => ['A.EventName' => $this->_reqP('search_value')]
             ]
         ];
+
+        if (empty($this->_reqP('search_promotion_codes')) === false && preg_match("/^[0-9,]+$/", $this->_reqP('search_promotion_codes'))) {
+            $search_promotion_codes = $this->_reqP('search_promotion_codes');
+            if (is_numeric(substr($search_promotion_codes, -1)) === false) {
+                $search_promotion_codes = substr($search_promotion_codes, 0, -1);
+            }
+            $search_promotion_codes = explode(',',$search_promotion_codes);
+            $arr_condition['ORG3']['IN'] = [
+                'A.PromotionCode' => $search_promotion_codes
+            ];
+        }
 
         // 날짜 검색
         if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {

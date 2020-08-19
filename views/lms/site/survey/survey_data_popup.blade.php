@@ -14,7 +14,7 @@
         <div class="form-group bg-green" style="padding: 15px; font-size:16px; font-weight: 700">데이터 분석</div>
         <div class="form-group no-border-bottom">
             <ul class="nav nav-tabs nav-justified">
-                <li><a href="javascript:gotab('{{ $sp_idx }}');"><strong>문항별 수치분석</strong></a></li>
+                <li><a href="javascript:gotab('{{ $ss_idx }}');"><strong>문항별 수치분석</strong></a></li>
                 <li class="active"><a href="#"><strong>입력 데이터</strong></a></li>
             </ul>
         </div>
@@ -78,8 +78,8 @@
         {!! csrf_field() !!}
     </form>
     <script>
-        function gotab(sp_idx){
-            var _param = 'sp_idx=' + sp_idx;
+        function gotab(ss_idx){
+            var _param = 'ss_idx=' + ss_idx;
             var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
             location.href = _url;
         }

@@ -26,7 +26,7 @@
         <h3>{{ $survey_data['SurveyTitle'] }}</h3>
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
-            <input type="hidden" name="sp_idx" value="{{ $survey_data['SsIdx'] }}" />
+            <input type="hidden" name="ss_idx" value="{{ $survey_data['SsIdx'] }}" />
             <input type="hidden" name="is_series" id="is_series" value="{{$is_series}}">
             <input type="hidden" name="series_subject_cnt" id="series_subject_cnt" value="1">
             <input type="hidden" name="total_cnt" id="total_cnt" value="">

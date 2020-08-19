@@ -23,8 +23,10 @@ class Survey extends \app\controllers\BaseController
      */
     public function surveyStatistics()
     {
+        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
+
         $statistics_title_list = $this->surveyModel->listSurveyStatisticsTitle();
-        $count = $this->surveyModel->listAllSurveyStatistics(true);
+        $count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
 
         $this->load->view('site/survey/survey_statistics', [
             'count' => $count,
@@ -94,12 +96,12 @@ class Survey extends \app\controllers\BaseController
      */
     public function surveyStatisticsList()
     {
-        $condition = [];
         $list = [];
+        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
-        $count = $this->surveyModel->listAllSurveyStatistics(true);
+        $count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SsIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
         }
 
         return $this->response([
@@ -121,10 +123,10 @@ class Survey extends \app\controllers\BaseController
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
-            $sp_idx = $params[0];
+            $ss_idx = $params[0];
 
-            $survey_data = $this->surveyModel->findSurveyForModify($sp_idx);
-            $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
+            $survey_data = $this->surveyModel->findSurveyForModify($ss_idx);
+            $question_data = $this->surveyModel->listSurveyForQuestion($ss_idx);
         }
 
         $this->load->view('site/survey/event_survey_create', [
@@ -153,7 +155,7 @@ class Survey extends \app\controllers\BaseController
             return;
         }
 
-        if (empty($this->_reqP('sp_idx')) === false) {
+        if (empty($this->_reqP('ss_idx')) === false) {
             $method = 'modify';
         }
 
@@ -188,19 +190,19 @@ class Survey extends \app\controllers\BaseController
         $sq_cnt = 25;       // 답변항목 갯수
         $sq_item_cnt = 10;  // 복수형 항목 갯수
         $arr_param = $this->_reqG(null);
-        $sp_idx = element('sp_idx', $arr_param);
-        $sq_idx = element('sq_idx', $arr_param);
+        $ss_idx = element('ss_idx', $arr_param);
+        $ssq_idx = element('ssq_idx', $arr_param);
         $series_idx = element('series_idx', $arr_param);
         $series_data = element('series_data', $arr_param,[]);
         $sq_data = [];
 
-        if(empty($sp_idx) === true || !is_numeric($sp_idx)){
+        if(empty($ss_idx) === true || !is_numeric($ss_idx)){
             show_alert("잘못된 접근 입니다.");
         }
 
-        if(empty($sq_idx) === false){
+        if(empty($ssq_idx) === false){
             $method = 'PUT';
-            $sq_data = $this->surveyModel->findQuestionForModify($sq_idx);
+            $sq_data = $this->surveyModel->findQuestionForModify($ssq_idx);
             $sq_data['SqJsonData']= json_decode($sq_data['SqJsonData'],true);
             $SeriesData = element('SeriesData',$sq_data,[]);
             $sq_data['SeriesData']= json_decode($SeriesData,true);
@@ -208,7 +210,7 @@ class Survey extends \app\controllers\BaseController
 
         $this->load->view('site/survey/question_create_modal', [
             'method' => $method,
-            'sp_idx' => $sp_idx,
+            'ss_idx' => $ss_idx,
             'sq_cnt' => $sq_cnt,
             'sq_item_cnt' => $sq_item_cnt,
             'arr_type' => $this->surveyModel->_selection_type,
@@ -237,7 +239,7 @@ class Survey extends \app\controllers\BaseController
             return;
         }
 
-        if (empty($this->_reqP('sq_idx')) === false) {
+        if (empty($this->_reqP('ssq_idx')) === false) {
             $method = 'modify';
         }
 
@@ -250,10 +252,10 @@ class Survey extends \app\controllers\BaseController
      */
     public function eventSurveyList()
     {
-        $condition = [];
         $list = [];
+        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
-        $count = $this->surveyModel->listAllSurvey(true);
+        $count = $this->surveyModel->listAllSurvey(true,$condition);
         if ($count > 0) {
             $list = $this->surveyModel->listAllSurvey(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SsIdx' => 'desc']);
 
@@ -277,14 +279,14 @@ class Survey extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
-            ['field' => 'sq_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'ssq_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->surveyModel->removeSurveyQuestion($this->_reqP('sq_idx'));
+        $result = $this->surveyModel->removeSurveyQuestion($this->_reqP('ssq_idx'));
         $this->json_result($result, '삭제 처리 되었습니다.', $result);
     }
 
@@ -293,16 +295,16 @@ class Survey extends \app\controllers\BaseController
      */
     public function surveyGraphPopup()
     {
-        $sp_idx = $this->_reqG('sp_idx');
+        $ss_idx = $this->_reqG('ss_idx');
         
         // 설문응답
-        $answer_info = $this->surveyModel->listAnswerGraphData($sp_idx);
+        $answer_info = $this->surveyModel->listAnswerGraphData($ss_idx);
         
         // 설문문항
-        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($ss_idx);
         
         // 직렬
-        $series_data = $this->surveyModel->findSurveyBySeries($sp_idx);
+        $series_data = $this->surveyModel->findSurveyBySeries($ss_idx);
 
         // 설문 응답 비율 계산
         if(empty($series_data) === false){
@@ -314,7 +316,7 @@ class Survey extends \app\controllers\BaseController
 
 
         $this->load->view('site/survey/survey_graph_popup', [
-            'sp_idx' => $sp_idx,
+            'ss_idx' => $ss_idx,
             'data' => $data,
             'is_series' => empty($series_data) ? 'N' : 'Y',
         ]);
@@ -325,13 +327,13 @@ class Survey extends \app\controllers\BaseController
      */
     public function surveyDataPopup()
     {
-        $sp_idx = $this->_reqG('sp_idx');
+        $ss_idx = $this->_reqG('ss_idx');
 
         // 설문응답
-        $answer_data = $this->surveyModel->listAnswerPopupData($sp_idx);
+        $answer_data = $this->surveyModel->listAnswerPopupData($ss_idx);
 
         // 설문문항
-        $question_data = $this->surveyModel->listSurveyForQuestion($sp_idx);
+        $question_data = $this->surveyModel->listSurveyForQuestion($ss_idx);
 
         // 설문 항목 매칭
         foreach ($answer_data as $key => $val){
@@ -339,7 +341,7 @@ class Survey extends \app\controllers\BaseController
         }
 
         $this->load->view('site/survey/survey_data_popup', [
-            'sp_idx' => $sp_idx,
+            'ss_idx' => $ss_idx,
             'data' => $answer_data
         ]);
     }

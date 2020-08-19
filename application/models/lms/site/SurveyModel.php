@@ -91,8 +91,7 @@ class SurveyModel extends WB_Model
             foreach ($input as $question_title => $answer_val){
                 foreach ($answer_val as $item => $answer){
                     $data = [
-                        'SsIdx' => $old_survey_info['SpIdx'],
-                        'SurveyVersion' => 1,
+                        'SubIdx' => $old_survey_info['SpIdx'],
                         'SurveyTitle' => $old_survey_info['SpTitle'],
                         'SurveyQuestion' => $question_title,
                         'SurveyItem' => $item,
@@ -135,17 +134,15 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate, A.EndDate
+            A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-
         $from = "
             FROM {$this->_table['survey_set_statistics']} AS A
         ";
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -157,10 +154,10 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyStatisticsTitle()
     {
-        $column = "SsIdx, SurveyTitle";
+        $column = "SubIdx, SurveyTitle";
         $from = "
             FROM {$this->_table['survey_set_statistics']}
-            GROUP BY SsIdx
+            GROUP BY SubIdx
         ";
         return $this->_conn->query('SELECT ' . $column . $from)->result_array();
     }
@@ -181,7 +178,7 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            A.SsIdx, A.SurveyTitle, A.SurveyComment, A.IsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
             (SELECT COUNT(*) FROM {$this->_table['survey_set_answer']} WHERE SsIdx = A.SsIdx) AS CNT
             ";
 
@@ -200,16 +197,16 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 수정 폼 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function findSurveyForModify($sp_idx=null)
+    public function findSurveyForModify($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx,'A.IsStatus' => 'Y']];
         $order_by = ['B.RegDatm'=>'DESC'];
 
         $column = "
-            A.SsIdx, A.SiteCode, A.SurveyTitle, A.SurveyComment, A.SurveyIsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+            A.SsIdx, A.SiteCode, A.SurveyTitle, A.SurveyComment, A.IsUse, A.IsDuplicate, A.StartDate, A.EndDate, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
             B.SsqIdx AS seriesIdx , B.SqJsonData AS SeriesData,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
@@ -228,15 +225,15 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 수정 폼 조회
-     * @param integer $sq_idx
+     * @param integer $ssq_idx
      * @return mixed
      */
-    public function findQuestionForModify($sq_idx=null)
+    public function findQuestionForModify($ssq_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsqIdx' => $sq_idx, 'A.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SsqIdx' => $ssq_idx, 'A.IsStatus' => 'Y']];
 
         $column = "
-            A.SsqIdx, A.SsIdx, A.IsSeries, A.SeriesData, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
+            A.SsqIdx, A.SsIdx, A.IsSeries, A.SeriesData, A.SqTitle, A.SqComment, A.OrderNum, A.IsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -252,16 +249,16 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function listSurveyForQuestion($sp_idx=null)
+    public function listSurveyForQuestion($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx, 'A.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SsqIdx'=>'ASC'];
 
         $column = "
-            A.SsIdx, A.SsqIdx, A.SeriesData, A.SqTitle, A.SqComment, A.OrderNum, A.SqIsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
+            A.SsIdx, A.SsqIdx, A.SeriesData, A.SqTitle, A.SqComment, A.OrderNum, A.IsUse, A.SqType, A.SqCnt, A.SqJsonData, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx AS SqUpdAdminIdx,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
@@ -279,12 +276,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 팝업 데이타 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function listAnswerPopupData($sp_idx=null)
+    public function listAnswerPopupData($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx]];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
         $from = "
             FROM {$this->_table['survey_set_answer']} AS A
@@ -299,12 +296,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 팝업 그래프 데이타 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function listAnswerGraphData($sp_idx=null)
+    public function listAnswerGraphData($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx]];
         $column = "A.AnswerInfo";
         $from = "
             FROM {$this->_table['survey_set_answer']} AS A
@@ -318,13 +315,13 @@ class SurveyModel extends WB_Model
 
     /**
      * 직렬 항목 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function findSurveyBySeries($sp_idx = null)
+    public function findSurveyBySeries($ss_idx = null)
     {
         $data = [];
-        $arr_condition = ['EQ' => ['SsIdx' => $sp_idx, 'IsSeries' => 'Y']];
+        $arr_condition = ['EQ' => ['SsIdx' => $ss_idx, 'IsSeries' => 'Y', 'IsStatus' => 'Y']];
 
         $column = "SsqIdx,SqJsonData";
         $from = " FROM {$this->_table['survey_set_question']} ";
@@ -352,7 +349,7 @@ class SurveyModel extends WB_Model
             $data = [
                 'SurveyTitle' => element('sp_title', $input),
                 'SurveyComment' => element('sp_comment', $input),
-                'SurveyIsUse' => element('sp_is_use', $input),
+                'IsUse' => element('sp_is_use', $input),
                 'IsDuplicate' => element('sp_is_duplicate', $input),
                 'StartDate' => element('register_start_datm', $input),
                 'EndDate' => element('register_end_datm', $input),
@@ -365,7 +362,7 @@ class SurveyModel extends WB_Model
                 throw new \Exception('설문조사 등록에 실패했습니다.');
             }
 
-            $sp_idx = $this->_conn->insert_id();
+            $ss_idx = $this->_conn->insert_id();
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -373,7 +370,7 @@ class SurveyModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'idx' => $sp_idx];
+        return ['ret_cd' => true, 'idx' => $ss_idx];
     }
 
     /**
@@ -385,12 +382,12 @@ class SurveyModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $sp_idx = element('sp_idx', $input);
+            $ss_idx = element('ss_idx', $input);
 
             $data = [
                 'SurveyTitle' => element('sp_title', $input),
                 'SurveyComment' => element('sp_comment', $input),
-                'SurveyIsUse' => element('sp_is_use', $input),
+                'IsUse' => element('sp_is_use', $input),
                 'IsDuplicate' => element('sp_is_duplicate', $input),
                 'StartDate' => element('register_start_datm', $input),
                 'EndDate' => element('register_end_datm', $input),
@@ -398,7 +395,7 @@ class SurveyModel extends WB_Model
             ];
 
             //수정
-            if ($this->_conn->set($data)->where('SsIdx', $sp_idx)->update($this->_table['survey_set']) === false) {
+            if ($this->_conn->set($data)->where('SsIdx', $ss_idx)->update($this->_table['survey_set']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
 
@@ -408,7 +405,7 @@ class SurveyModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'idx' => $sp_idx];
+        return ['ret_cd' => true, 'idx' => $ss_idx];
     }
 
     /**
@@ -447,7 +444,7 @@ class SurveyModel extends WB_Model
                 'SqTitle' => element('sq_title', $input),
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
-                'SurveyIsUse' => element('sq_is_use', $input),
+                'IsUse' => element('sq_is_use', $input),
                 'SqSubjectCnt' => element('sq_subject_cnt', $input),
                 'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
@@ -466,7 +463,7 @@ class SurveyModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'sp_idx' => $data['SsIdx']];
+        return ['ret_cd' => true, 'ss_idx' => $data['SsIdx']];
     }
 
     /**
@@ -478,8 +475,8 @@ class SurveyModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $sp_idx = element('SsIdx', $input);
-            $sq_idx = element('sq_idx', $input);
+            $ss_idx = element('SsIdx', $input);
+            $ssq_idx = element('ssq_idx', $input);
             $sq_cnt = element('sq_cnt', $input);
             $sq_question_title = element('sq_question_title', $input);
             $sq_question_item = element('sq_question_item', $input);
@@ -505,16 +502,16 @@ class SurveyModel extends WB_Model
                 'SeriesData' => $sq_series,
                 'SqComment' => element('sq_comment', $input),
                 'OrderNum' => element('order_num', $input),
-                'SurveyIsUse' => element('sq_is_use', $input),
+                'IsUse' => element('sq_is_use', $input),
                 'SqType' => $sq_type,
                 'SqCnt' => $sq_cnt,
                 'SqSubjectCnt' => element('sq_subject_cnt', $input),
-                'SqJsonData' => [$json_data],
+                'SqJsonData' => $json_data,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
             //수정
-            if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
+            if ($this->_conn->set($data)->where('SsqIdx', $ssq_idx)->update($this->_table['survey_set_question']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
 
@@ -524,20 +521,20 @@ class SurveyModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'sp_idx' => $sp_idx];
+        return ['ret_cd' => true, 'ss_idx' => $ss_idx];
     }
 
     /**
      * 설문조사 문항 삭제 (업데이트)
-     * @param integer $sq_idx
+     * @param integer $ssq_idx
      * @return array|bool
      */
-    public function removeSurveyQuestion($sq_idx=null)
+    public function removeSurveyQuestion($ssq_idx=null)
     {
         $this->_conn->trans_begin();
         try {
             $data = ['IsStatus'=>'N'];
-            if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
+            if ($this->_conn->set($data)->where('SsqIdx', $ssq_idx)->update($this->_table['survey_set_question']) === false) {
                 throw new \Exception('삭제에 실패했습니다.');
             }
 
@@ -563,16 +560,16 @@ class SurveyModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $sq_idx => $val) {
-                if(empty($sq_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
+            foreach ($params as $ssq_idx => $val) {
+                if(empty($ssq_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
 
                 $data = [
                     'OrderNum' => $val['sq_order_num'],
-                    'SurveyIsUse' => $val['sq_is_use'],
+                    'IsUse' => $val['sq_is_use'],
                     'UpdAdminIdx' => $this->session->userdata('admin_idx')
                 ];
 
-                if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
+                if ($this->_conn->set($data)->where('SsqIdx', $ssq_idx)->update($this->_table['survey_set_question']) === false) {
                     throw new \Exception('수정에 실패했습니다.');
                 }
             }

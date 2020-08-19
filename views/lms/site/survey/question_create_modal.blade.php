@@ -8,8 +8,8 @@
     <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="SsIdx" value="{{ $sp_idx }}"/>
-        <input type="hidden" name="sq_idx" value="{{ $sq_data['SsqIdx'] or ''}}"/>
+        <input type="hidden" name="SsIdx" value="{{ $ss_idx }}"/>
+        <input type="hidden" name="ssq_idx" value="{{ $sq_data['SsqIdx'] or ''}}"/>
         @endsection
 
         @section('layer_content')
@@ -71,10 +71,10 @@
                 <div class="col-md-10">
                     <div class="radio">
                         <input type="radio" class="flat" id="sq_is_use_y" name="sq_is_use" title="사용여부" required="required" value="Y"
-                               @if($method == 'POST' || (empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='Y'))checked="checked"@endif/>
+                               @if($method == 'POST' || (empty($sq_data['IsUse']) === false && $sq_data['IsUse']=='Y'))checked="checked"@endif/>
                         <label for="sq_is_use_y" class="input-label">사용</label>
                         <input type="radio" class="flat" id="sq_is_use_n" name="sq_is_use" required="required" value="N"
-                               @if(empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='N')checked="checked"@endif/>
+                               @if(empty($sq_data['IsUse']) === false && $sq_data['IsUse']=='N')checked="checked"@endif/>
                         <label for="sq_is_use_n" class="input-label">미사용</label>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
             ajaxSubmit($_regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url("/site/survey/eventSurveyCreate/") }}' + ret.ret_data.sp_idx + getQueryString());
+                    location.replace('{{ site_url("/site/survey/eventSurveyCreate/") }}' + ret.ret_data.ss_idx + getQueryString());
                 }
             }, showValidateError, null, false, 'alert');
         });

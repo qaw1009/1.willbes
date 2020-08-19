@@ -513,10 +513,6 @@ class SurveyModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
-            echo '<pre>';
-            print_r($data);
-            exit;
-
             //수정
             if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
@@ -621,7 +617,7 @@ class SurveyModel extends WB_Model
             }
         }
 
-        return $data;
+        return json_encode($data);
     }
 
     /**

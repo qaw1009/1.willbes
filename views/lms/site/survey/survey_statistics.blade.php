@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">등록일</label>
+                    <label class="control-label col-md-1" for="search_is_use">설문기간</label>
                     <div class="col-md-5 form-inline">
                         <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 150px;"  type="text"  value="">
                         ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 150px;"  type="text"  value="">

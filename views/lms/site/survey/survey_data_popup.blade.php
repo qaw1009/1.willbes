@@ -11,17 +11,16 @@
     {!! csrf_field() !!}
 
     <!-- Popup -->
-        <div class="form-group mt-20">
-            <div class="col-md-11">
-                <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $sp_idx }}');">문항별 수치분석</a></li>
-                    <li role="presentation" class="active"><a href="#">입력 데이터</a></li>
-                </ul>
-            </div>
-
+        <div class="form-group bg-green" style="padding: 15px; font-size:16px; font-weight: 700">데이터 분석</div>
+        <div class="form-group no-border-bottom">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="javascript:gotab('{{ $sp_idx }}');"><strong>문항별 수치분석</strong></a></li>
+                <li class="active"><a href="#"><strong>입력 데이터</strong></a></li>
+            </ul>
         </div>
 
-        <table border=1 cellspacing="1" cellpadding="5" class="lecTable" style="margin-top:5px; text-align: center; width: 800px">
+        <div class="form-group">
+            <table border=1 cellspacing="1" cellpadding="5" class="lecTable" style="margin-top:30px; text-align: center; width: 800px">
             <colgroup>
                 <col style="width: 10%;">
                 <col style="width: 30%;">
@@ -43,7 +42,7 @@
                 @foreach($val['AnswerInfo'] as $title => $arr)
                     @foreach($arr as $type => $row)
                         @foreach($row as $k => $item)
-                            <tr @if($key % 2 == 0) style='background-color:lightyellow' @endif>
+                            <tr @if($key % 2 == 0) style='background-color:#eee ' @endif>
                                 <td>{{ $val['MemName'] }}<br>({{ $val['MemId'] }})</td>
                                 <td>{{ $title }}</td>
                                 @if($type == 'S')
@@ -71,6 +70,7 @@
             @endforeach
             </tbody>
         </table>
+        </div>
         <!-- End Popup -->
     </form>
     <!-- //popupContainer -->

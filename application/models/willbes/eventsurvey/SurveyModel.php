@@ -31,13 +31,13 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function findSurvey($sp_idx = null)
+    public function findSurvey($ss_idx = null)
     {
         $arr_condition = [
-            'EQ' => ['A.SsIdx' => $sp_idx, 'A.SurveyIsUse' => 'Y'],
+            'EQ' => ['A.SsIdx' => $ss_idx, 'A.IsUse' => 'Y', 'A.IsStatus' => 'Y'],
             'RAW' => ['NOW() between ' => 'StartDate and EndDate']
         ];
 
@@ -55,12 +55,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문문항 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function listSurveyForQuestion($sp_idx = null)
+    public function listSurveyForQuestion($ss_idx = null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx, 'A.IsStatus' => 'Y', 'A.SqIsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SsqIdx'=>'ASC'];
 
         $column = "
@@ -79,12 +79,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 결과 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function listSurveyForAnswer($sp_idx=null)
+    public function listSurveyForAnswer($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $sp_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
         $column = "A.AnswerInfo";
         $from = "
             FROM {$this->_table['survey_set_answer']} AS A
@@ -98,12 +98,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문 참여 여부 체크
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function findSurveyForAnswer($sp_idx = null)
+    public function findSurveyForAnswer($ss_idx = null)
     {
-        $arr_condition = ['EQ' => ['SsaIdx' => $sp_idx, 'MemIdx' => $this->session->userdata('mem_idx')]];
+        $arr_condition = ['EQ' => ['SsIdx' => $ss_idx, 'MemIdx' => $this->session->userdata('mem_idx'), 'IsStatus' => 'Y']];
         $column = "COUNT(*) AS cnt";
         $from = "
             FROM {$this->_table['survey_set_answer']}
@@ -114,13 +114,13 @@ class SurveyModel extends WB_Model
 
     /**
      * 직렬 항목 조회
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function findSurveyBySeries($sp_idx = null)
+    public function findSurveyBySeries($ss_idx = null)
     {
         $data = [];
-        $arr_condition = ['EQ' => ['SsIdx' => $sp_idx, 'IsSeries' => 'Y']];
+        $arr_condition = ['EQ' => ['SsIdx' => $ss_idx, 'IsSeries' => 'Y', 'IsStatus' => 'Y']];
 
         $column = "SsqIdx,SqJsonData";
         $from = " FROM {$this->_table['survey_set_question']} ";
@@ -138,16 +138,17 @@ class SurveyModel extends WB_Model
     /**
      * 설문 저장
      * @param $formData
-     * @param integer $sp_idx
+     * @param integer $ss_idx
      * @return mixed
      */
-    public function storeSurvey($formData = [],$sp_idx = null){
+    public function storeSurvey($formData = [],$ss_idx = null){
         try {
             $this->_conn->trans_begin();
 
             $data = [
                 'MemIdx' => $this->session->userdata('mem_idx'),
-                'SsIdx'  => $sp_idx,
+                'SsIdx'  => $ss_idx,
+                'UserIp'  => $this->input->ip_address(),
                 'AnswerInfo' => json_encode($formData)
             ];
 

@@ -119,7 +119,7 @@
     {{-- 공무원 무료인강 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044"><img src="https://static.willbes.net/public/images/promotion/main/1119-70-2004.gif" alt="10월 대개강"></a>
+            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001"><img src="https://static.willbes.net/public/images/promotion/main/1119-70-2004.gif" alt="10월 대개강"></a>
         </div>
     </div>
 @endif

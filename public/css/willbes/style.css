@@ -817,7 +817,7 @@ table.auTable tr td {
     text-align: right;
 }
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
+    background: #ccc;
     width: 8px;
     height: 8px;
     margin: 0 2px;
@@ -825,7 +825,7 @@ table.auTable tr td {
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #fff;
+    background: #eee;
 }
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
     width: 30px;

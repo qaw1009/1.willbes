@@ -5,7 +5,7 @@
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="sp_idx" value="{{ $survey_data['SsIdx'] or '' }}" />
+        <input type="hidden" name="ss_idx" value="{{ $survey_data['SsIdx'] or '' }}" />
         <input type="hidden" id="series_idx" name="series_idx" value="{{ $survey_data['seriesIdx'] or '' }}" />
 
         <div class="x_panel">
@@ -58,10 +58,10 @@
                     <div class="col-md-9">
                         <div class="radio">
                             <input type="radio" class="flat" id="sp_is_use_y" name="sp_is_use" title="사용여부" required="required" value="Y"
-                                   @if($method == 'POST' || (empty($survey_data['SurveyIsUse']) === false && $survey_data['SurveyIsUse']=='Y'))checked="checked"@endif>
+                                   @if($method == 'POST' || (empty($survey_data['IsUse']) === false && $survey_data['IsUse']=='Y'))checked="checked"@endif>
                             <label for="sp_is_use_y" class="input-label">사용</label>
                             <input type="radio" class="flat" id="sp_is_use_n" name="sp_is_use" required="required" value="N"
-                                   @if(empty($survey_data['SurveyIsUse']) === false && $survey_data['SurveyIsUse']=='N')checked="checked"@endif>
+                                   @if(empty($survey_data['IsUse']) === false && $survey_data['IsUse']=='N')checked="checked"@endif>
                             <label for="sp_is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                                             </p>
                                         @endforeach
                                     </td>
-                                    <td class="text-center"><input type="checkbox" name="sq_is_use" value="Y" class="flat" data-origin-is-use="{{$row['SqIsUse']}}" @if($row['SqIsUse'] == 'Y') checked="checked" @endif></td>
+                                    <td class="text-center"><input type="checkbox" name="sq_is_use" value="Y" class="flat" data-origin-is-use="{{$row['IsUse']}}" @if($row['IsUse'] == 'Y') checked="checked" @endif></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-sp-idx="{{$row['SsIdx']}}" data-sq-idx="{{$row['SsqIdx']}}" data-sq-series="{{$survey_data['SqJsonData'] or ''}}" onclick="show_question_layer(this)">수정</button>
                                         <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SsqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
@@ -259,7 +259,7 @@
                 'url' : '{{ site_url('/site/survey/questionCreateModal') }}',
                 'add_param_type' : 'param',
                 'add_param' : [
-                    { 'id' : 'sp_idx', 'name' : '설문 식별자', 'value' : $(obj).data("sp-idx"), 'required' : true },
+                    { 'id' : 'ss_idx', 'name' : '설문 식별자', 'value' : $(obj).data("sp-idx"), 'required' : true },
                     { 'id' : 'sq_idx', 'name' : '설문문항 식별자', 'value' : $(obj).data("sq-idx"), 'required' : false},
                     { 'id' : 'series_idx', 'name' : '응시직렬 식별자', 'value' : $("#series_idx").val(), 'required' : false},
                     { 'id' : 'series_data', 'name' : '응시직렬', 'value' : $(obj).data("sq-series"), 'required' : false},

@@ -874,7 +874,7 @@
         }
 
         function pullOpen(){
-            var url = "{{front_url('/eventSurvey/index/'.$arr_promotion_params['SpIdx'])}}";
+            var url = "{{front_url('/eventSurvey/index/'.$arr_promotion_params['SsIdx'])}}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
         }
     </script>

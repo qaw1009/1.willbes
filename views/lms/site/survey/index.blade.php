@@ -2,7 +2,7 @@
 
 @section('content')
     <h5 class="mt-20">- 설문을 등록하는 메뉴입니다.</h5>
-    <h5 class="mt-20 red">- 설문링크 와 프로모션페이지 내 그래프를 willbes/pc/eventSurvey/index+spidx 와 willbes/pc/eventSurvey/graph+spidx 경로에 생성해주세요.</h5>
+    <h5 class="mt-20 red">- 설문링크 와 프로모션페이지 내 그래프를 willbes/pc/eventSurvey/index+SsIdx 와 willbes/pc/eventSurvey/graph+SsIdx 경로에 생성해주세요.</h5>
     <h5 class="mt-20 red">- 프로모션 블레이드에 &#64;include('willbes.pc.eventsurvey.show_graph_partial') </h5>
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
@@ -91,8 +91,8 @@
                             var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popGraph(' + row.SsIdx + ')">' + row.CNT + '</button>' : row.CNT;
                             return AnswerCnt;
                         }},
-                    {'data' : 'SurveyIsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var SpUseYn = (row.SurveyIsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
+                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            var SpUseYn = (row.IsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
                             return SpUseYn;
                         }},
                 ]
@@ -105,8 +105,8 @@
 
         });
 
-        function popGraph(sp_idx){
-            var _param = 'sp_idx=' + sp_idx;
+        function popGraph(ss_idx){
+            var _param = 'ss_idx=' + ss_idx;
             var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
 
             win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');

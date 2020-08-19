@@ -135,17 +135,15 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SsIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate, A.EndDate
+            A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-
         $from = "
             FROM {$this->_table['survey_set_statistics']} AS A
         ";
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -157,10 +155,10 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyStatisticsTitle()
     {
-        $column = "SsIdx, SurveyTitle";
+        $column = "SubIdx, SurveyTitle";
         $from = "
             FROM {$this->_table['survey_set_statistics']}
-            GROUP BY SsIdx
+            GROUP BY SubIdx
         ";
         return $this->_conn->query('SELECT ' . $column . $from)->result_array();
     }

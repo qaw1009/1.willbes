@@ -41,25 +41,25 @@
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <colgroup>
-                        <col style="width:5%">
+                        <col style="width:3%">
                         <col style="">
-                        <col style="width:20%">
-                        <col style="width:10%">
-                        <col style="width:10%">
-                        <col style="width:8%">
-                        <col style="width:8%">
-                        <col style="width:20%">
+                        <col style="width:19%">
+                        <col style="width:7%">
+                        <col style="width:15%">
+                        <col style="width:12%">
+                        <col style="width:7%">
+                        <col style="width:7%">
                     </colgroup>
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">NO</th>
-                        <th class="text-center">제목</th>
-                        <th class="text-center">문항</th>
+                        <th class="rowspan">설문제목</th>
+                        <th class="text-center rowspan">설문기간</th>
+                        <th class="text-center rowspan">전체 응시인원</th>
+                        <th class="text-center rowspan">문항</th>
                         <th class="text-center">항목</th>
                         <th class="text-center">선택 비율</th>
                         <th class="text-center">선택 인원수</th>
-                        <th class="text-center">전체 응시인원</th>
-                        <th class="text-center">시작일 / 종료일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -83,7 +83,8 @@
                 language: {
                     "info": "[ 총 _END_ / _MAX_건 ]",
                 },
-                pageLength: 20,
+                lengthMenu: [10, 20, 50, 100, 200],
+                pageLength: 50,
                 serverSide: true,
                 buttons: [
                     @if($count == 0)
@@ -99,12 +100,19 @@
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                     }
                 },
+                rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'SurveyTitle', 'render' : function(data, type, row, meta) {
-                            return row.SurveyTitle;
+                    {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
+                        }},
+                    {'data' : 'PeriodDate', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
+                        }},
+                    {'data' : 'SurveyCount', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+' 명</b>';
                         }},
                     {'data' : 'SurveyQuestion', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.SurveyQuestion;
@@ -117,13 +125,6 @@
                         }},
                     {'data' : 'AnswerCount', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.AnswerCount + '명';
-                        }},
-                    {'data' : 'SurveyCount', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.SurveyCount + '명';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var date = row.StartDate + ' / ' + row.EndDate;
-                            return date;
                         }},
                 ]
             });

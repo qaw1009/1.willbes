@@ -99,7 +99,7 @@ class Survey extends \app\controllers\BaseController
 
         $count = $this->surveyModel->listAllSurveyStatistics(true);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SsIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
         }
 
         return $this->response([

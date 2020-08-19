@@ -71,10 +71,10 @@
                 <div class="col-md-10">
                     <div class="radio">
                         <input type="radio" class="flat" id="sq_is_use_y" name="sq_is_use" title="사용여부" required="required" value="Y"
-                               @if($method == 'POST' || (empty($sq_data['SurveyIsUse']) === false && $sq_data['SurveyIsUse']=='Y'))checked="checked"@endif/>
+                               @if($method == 'POST' || (empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='Y'))checked="checked"@endif/>
                         <label for="sq_is_use_y" class="input-label">사용</label>
                         <input type="radio" class="flat" id="sq_is_use_n" name="sq_is_use" required="required" value="N"
-                               @if(empty($sq_data['SurveyIsUse']) === false && $sq_data['SurveyIsUse']=='N')checked="checked"@endif/>
+                               @if(empty($sq_data['SqIsUse']) === false && $sq_data['SqIsUse']=='N')checked="checked"@endif/>
                         <label for="sq_is_use_n" class="input-label">미사용</label>
                     </div>
                 </div>

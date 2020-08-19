@@ -32,7 +32,7 @@ class Home extends \app\controllers\BaseController
 
         // 금일 로그인 로그 조회
         $arr_condition = [
-            'EQ' => ['AdminId' => $this->session->userdata('btob.admin_id')],
+            'EQ' => ['AdminId' => $this->session->userdata('btob.admin_id'), 'BtobIdx' => $this->session->userdata('btob.btob_idx')],
             'BDT' => ['LoginDatm' => [$today, $today]]
         ];
 

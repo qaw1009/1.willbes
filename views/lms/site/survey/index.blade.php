@@ -14,7 +14,7 @@
         <input type="hidden" id="MgIdx" name="MgIdx" value="">
     </form>
 
-    <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
+    <div class="x_panel mt-10">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}

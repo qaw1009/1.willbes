@@ -72,14 +72,14 @@ class Login extends \app\controllers\BaseController
 
         if ($is_no_match === true) {
             // 로그인 로그 저장
-            $this->btobLoginModel->addLoginLog($admin_id, 'NO_MATCH');
+            $this->btobLoginModel->addLoginLog($btob_row['BtobIdx'], $admin_id, 'NO_MATCH');
             return $this->json_error('일치하는 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
         // 관리자 접근권한 확인
         if ($row['IsApproval'] != 'Y' || $row['IsUse'] != 'Y' || empty($row['RoleIdx']) === true) {
             // 로그인 로그 저장
-            $this->btobLoginModel->addLoginLog($admin_id, 'NO_AUTH');
+            $this->btobLoginModel->addLoginLog($btob_row['BtobIdx'], $admin_id, 'NO_AUTH');
             return $this->json_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED);
         }
 
@@ -136,7 +136,7 @@ class Login extends \app\controllers\BaseController
         $this->btobLoginModel->modifyAdminLoginInfo($data['AdminIdx']);
 
         // 로그인 로그 저장
-        $this->btobLoginModel->addLoginLog($data['AdminId'], 'SUCCESS');
+        $this->btobLoginModel->addLoginLog($data['BtobIdx'], $data['AdminId'], 'SUCCESS');
 
         // 세션 로그인 테이블에 이력 저장
         $this->session->addSessionLogin($data['AdminIdx'], 'B');
@@ -151,7 +151,7 @@ class Login extends \app\controllers\BaseController
         $sess_btob_id = $this->session->userdata('btob.btob_id');
 
         // 로그아웃 로그 저장
-        $this->btobLoginModel->addLoginLog($this->session->userdata('btob.admin_id'), 'LOGOUT');
+        $this->btobLoginModel->addLoginLog($this->session->userdata('btob.btob_idx'), $this->session->userdata('btob.admin_id'), 'LOGOUT');
 
         // 로그인 세션 삭제
         $this->session->sess_destroy();

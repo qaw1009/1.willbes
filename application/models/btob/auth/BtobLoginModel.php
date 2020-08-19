@@ -88,11 +88,12 @@ class BtobLoginModel extends WB_Model
 
     /**
      * 로그인 로그 저장
-     * @param $admin_id
-     * @param $log_ccd_name
+     * @param int $btob_idx [제휴사식별자]
+     * @param string $admin_id [관리자아이디]
+     * @param string $log_ccd_name [로그인결과코드]
      * @return bool|string
      */
-    public function addLoginLog($admin_id, $log_ccd_name)
+    public function addLoginLog($btob_idx, $admin_id, $log_ccd_name)
     {
         // 로그인 로그 공통코드
         $log_ccds = [
@@ -109,6 +110,7 @@ class BtobLoginModel extends WB_Model
         try {
             $data = [
                 'AdminId' => get_var($admin_id, '_empty_id'),
+                'BtobIdx' => get_var($btob_idx, 0),
                 'LoginIp' => $this->input->ip_address(),
                 'IsLogin' => $log_ccds[$log_ccd_name][1],
                 'LoginLogCcd' => $log_ccds[$log_ccd_name][0]

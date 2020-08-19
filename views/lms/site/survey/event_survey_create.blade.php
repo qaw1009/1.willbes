@@ -19,6 +19,13 @@
 
             <div class="x_content">
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
+                    <div class="form-inline col-md-4 item">
+                        {!! html_site_select(empty($survey_data['SiteCode']) ? '' : $survey_data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="sp_title">제목 <span class="required">*</span></label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" id="sp_title" name="sp_title" maxlength="100" title="제목" required="required" value="{{ $survey_data['SurveyTitle'] or ''}}">

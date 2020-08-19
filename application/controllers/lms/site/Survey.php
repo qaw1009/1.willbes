@@ -19,6 +19,97 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
+     * 설문통계
+     */
+    public function surveyStatistics()
+    {
+        $statistics_title_list = $this->surveyModel->listSurveyStatisticsTitle();
+        $count = $this->surveyModel->listAllSurveyStatistics(true);
+
+        $this->load->view('site/survey/survey_statistics', [
+            'count' => $count,
+            'statistics_title_list' => $statistics_title_list,
+        ]);
+    }
+
+    /**
+     * old 설문통계 데이타 등록 (한번만 실행)
+     */
+    public function runOnce(){
+        $input_data = [];
+        $old_answer_data = [];
+        $new_answer_info = [];
+
+        // 설문조사
+        $old_survey_info = $this->surveyModel->listOldSurvey();
+        foreach ($old_survey_info as $key => $val){
+
+            // 설문결과
+            $old_answer_info = $this->surveyModel->listOldSurveyAnswer($val['SpIdx']);
+            if(empty($old_answer_info) === false){
+
+
+                // 초기화
+                foreach ($old_answer_info as $answer_val){
+                    $new_answer_info[$answer_val['SqIdx']] = $answer_val;
+                    for($i=1;$i<25;$i++){
+                        if(empty(trim($answer_val['Comment'.$i])) === false){
+                            $old_answer_data[$answer_val['SqIdx']][$i] = 0;
+                        }
+                    }
+                }
+
+                // 결과 카운트
+                foreach ($old_answer_info as $answer_val){
+                    $old_answer_data[$answer_val['SqIdx']][$answer_val['Answer']] += 1;
+                }
+
+                // 통계 저장 배열
+                foreach ($old_answer_data as $answer_key => $answer_val){
+                    $item_sum = array_sum($answer_val);
+
+                    if($item_sum > 0){
+                        foreach ($answer_val as $k => $v){
+                            $input_data[$new_answer_info[$answer_key]['SqTitle']][$new_answer_info[$answer_key]['Comment'.$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                            $input_data[$new_answer_info[$answer_key]['SqTitle']][$new_answer_info[$answer_key]['Comment'.$k]]['count'] = $v;
+                        }
+                    }
+                }
+
+                $result = $this->surveyModel->addOldSurveyData($input_data,$val);
+
+                if($result !== true){
+                    show_alert('업데이트 실패했습니다.');
+                    return;
+                }
+            }
+        }
+
+        show_alert('업데이트 되었습니다.','back');
+        return;
+    }
+
+    /**
+     * 설문통계 리스트
+     */
+    public function surveyStatisticsList()
+    {
+        $condition = [];
+        $list = [];
+
+        $count = $this->surveyModel->listAllSurveyStatistics(true);
+        if ($count > 0) {
+            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SsIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
      * 설문 등록/수정
      * @param array $params
      */

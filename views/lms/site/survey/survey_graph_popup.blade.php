@@ -64,13 +64,12 @@
     {!! csrf_field() !!}
 
     <!-- Popup -->
-        <div class="form-group mt-20">
-            <div class="col-md-11">
-                <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="active"><a href="#">문항별 수치분석</a></li>
-                    <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $sp_idx }}');">입력 데이터</a></li>
-                </ul>
-            </div>
+        <div class="form-group bg-green" style="padding: 15px; font-size:16px; font-weight: 700">그래프 분석</div>
+        <div class="form-group no-border-bottom">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#"><strong>문항별 수치분석</strong></a></li>
+                <li><a href="javascript:gotab('{{ $sp_idx }}');"><strong>입력 데이터</strong></a></li>
+            </ul>
         </div>
         <div class="form-group">
             <div class="col-md-12">

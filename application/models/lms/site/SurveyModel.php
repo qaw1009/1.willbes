@@ -225,12 +225,12 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 수정 폼 조회
-     * @param integer $sq_idx
+     * @param integer $ssq_idx
      * @return mixed
      */
-    public function findQuestionForModify($sq_idx=null)
+    public function findQuestionForModify($ssq_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsqIdx' => $sq_idx, 'A.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SsqIdx' => $ssq_idx, 'A.IsStatus' => 'Y']];
 
         $column = "
             A.SsqIdx, A.SsIdx, A.IsSeries, A.SeriesData, A.SqTitle, A.SqComment, A.OrderNum, A.IsUse, A.SqType, A.SqCnt, A.SqSubjectCnt, A.SqJsonData, A.RegDatm, A.UpdDatm,
@@ -526,15 +526,15 @@ class SurveyModel extends WB_Model
 
     /**
      * 설문조사 문항 삭제 (업데이트)
-     * @param integer $sq_idx
+     * @param integer $ssq_idx
      * @return array|bool
      */
-    public function removeSurveyQuestion($sq_idx=null)
+    public function removeSurveyQuestion($ssq_idx=null)
     {
         $this->_conn->trans_begin();
         try {
             $data = ['IsStatus'=>'N'];
-            if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
+            if ($this->_conn->set($data)->where('SsqIdx', $ssq_idx)->update($this->_table['survey_set_question']) === false) {
                 throw new \Exception('삭제에 실패했습니다.');
             }
 
@@ -560,8 +560,8 @@ class SurveyModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $sq_idx => $val) {
-                if(empty($sq_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
+            foreach ($params as $ssq_idx => $val) {
+                if(empty($ssq_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
 
                 $data = [
                     'OrderNum' => $val['sq_order_num'],
@@ -569,7 +569,7 @@ class SurveyModel extends WB_Model
                     'UpdAdminIdx' => $this->session->userdata('admin_idx')
                 ];
 
-                if ($this->_conn->set($data)->where('SsqIdx', $sq_idx)->update($this->_table['survey_set_question']) === false) {
+                if ($this->_conn->set($data)->where('SsqIdx', $ssq_idx)->update($this->_table['survey_set_question']) === false) {
                     throw new \Exception('수정에 실패했습니다.');
                 }
             }

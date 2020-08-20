@@ -190,11 +190,11 @@
                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=276073&" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브">
                 </a>
-            </li>
-            --}}
+            </li>          
             @if ($onoff_3 != 'null') @else
                 <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             @endif
+            --}}
             <li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_sky01.png" title="적중 이벤트"></a></li>
             <li><a href="javascript:alert('9.19(토) 공개됩니다.')"><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_sky02.png" title="라이브"></a></li>
             {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}

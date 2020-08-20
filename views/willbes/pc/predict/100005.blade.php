@@ -53,7 +53,7 @@
 
             <div class="eventPop">
                 <h3>
-                    2020년 1차 <span class="tx-bright-blue">경찰시험 인증</span> 신청하기
+                    2020년 2차 <span class="tx-bright-blue">경찰시험 인증</span> 신청하기
                 </h3>
                 <div class="eventPopS1">
                     <ul>

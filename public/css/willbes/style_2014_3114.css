@@ -14,18 +14,18 @@
 
 /* Main Container : MainVisual */
 .njob2 .Section0 {background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx110_bg.jpg) no-repeat center top; border-top:2px solid #000; margin-top:-2px}
-.njob2 .Section1 {height: 670px; position: relative; max-width: 2000px; margin: 0 auto;}
+.njob2 .Section1 {height: 440px; position: relative; max-width: 2000px; margin: 0 auto;}
 .njob2 .MainVisual {
     position: absolute;
     width: 100%;   
     max-width: 2000px; 
-    height: 670px;
+    height: 440px;
     left:50%;
     margin-left:-50%;
 }
 .njob2 .VisualBox {
     width:2000px;
-    height: 670px;
+    height: 440px;
     text-align: center !important;
     overflow: hidden;
     position: absolute; left:50%; top:50%; 
@@ -43,7 +43,7 @@
 .njob2 .VisualBox .bx-wrapper .bx-controls-auto {
     left:50%;
     margin-left:-500px;
-    bottom: 20px;
+    top: 410px;
     width: 50px;
     z-index: 90;
 }
@@ -51,7 +51,7 @@
     width: auto;
     left:50%;
     margin-left:-450px;
-    bottom: 22px;
+    top: 390px;
     text-align: left;
     z-index: 90;
 }
@@ -91,11 +91,19 @@
 .njob2 .Section2 {background:url(https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190_bg.gif) no-repeat center top;}
 .njob2 .Section3 {background:#fff}
 .njob2 .Section4 {background:#08145d}
-.njob2 .Section5 {background:#ece5e4; padding-top:50px}
+.njob2 .Section5 {background:#ece5e4; padding:50px 0}
 .njob2 .Section5 .will-listTi {position: absolute; top:0; left:0; z-index: 1;}
-.njob2 .Section5 .tip .youtube {height:315px; background-color: khaki; overflow: hidden;}
-.njob2 .Section5 .tip .copytxt {float:left; width:50%; font-size:45px; line-height: 1.2; padding-top:50px; letter-spacing: -1px;}
-.njob2 .Section5 .tip iframe {float:left;width:560px; height:315px}
+.njob2 .Section5 .slidertip .youtube {width:100%; height:315px; overflow: hidden;}
+.njob2 .Section5 .slidertip .copytxt {float:left; width:560px; font-size:45px; line-height: 1.1; padding-top:50px; letter-spacing: -1px;}
+.njob2 .Section5 .slidertip iframe {float:right;width:560px; height:315px}
+.njob2 .Section5 .bx-wrapper .bx-pager {
+    width: auto;
+    left:50%;
+    margin-left:-560px;
+    bottom: 20px;
+    text-align: left;
+    z-index: 90;
+}
 
 .njob2 .tipLec li {
     display: inline;

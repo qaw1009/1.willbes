@@ -21,6 +21,12 @@
             </div>
         </div>
 
+        <div class="Section4">
+            <div class="widthAuto">
+                <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1626"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_1120x110.gif" alt="헤드라인 뉴스"></a>
+            </div>
+        </div>
+
         <div class="Section NSK mt70">
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 인기강좌</div>

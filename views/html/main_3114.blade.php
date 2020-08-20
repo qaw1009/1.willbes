@@ -71,7 +71,7 @@
 
     <div class="Section4">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_1120x110.gif" alt="헤드라인 뉴스">
+            <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1626"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_1120x110.gif" alt="헤드라인 뉴스"></a>
         </div>
     </div>
 

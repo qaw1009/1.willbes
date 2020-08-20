@@ -5,13 +5,15 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        {{--
         <div class="Section Section0">
             <div class="widthAuto">
                 <a href="javascript:popup()" ><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
             </div>
         </div>
+        --}}
 
-        <div class="Section1 p_re">
+        <div class="Section1 p_re mt20">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
@@ -94,7 +96,7 @@
             </div>
         </div>
 
-        <div class="Section mt70 mb70 NSK">
+        <div class="Section mb70 NSK">
             <div class="widthAuto">
                 <div class="willbesNews">
                     <div class="will-listTit NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></div>

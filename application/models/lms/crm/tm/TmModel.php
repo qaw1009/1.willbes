@@ -114,17 +114,14 @@ class TmModel extends WB_Model
                         and A.IsBlackList=\'N\'
                         and B.SmsRcvStatus=\'Y\'
                         and B.InterestCode=\''. $interest_ccd .'\'
-                        # btob 회원이 아닌 회원
+                        # btob 회원이 아닌 회원 
                         and A.MemIdx not in
-                        (
-                            select MemIdx from lms_btob_r_member where IsStatus=\'Y\'
-                        )
+                        (select MemIdx from lms_btob_r_member where IsStatus=\'Y\')
                      ';
-
-        if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687004' ) {
-
+        //신규, 회수(부재중)
+        if($assign_ccd === '687001' || $assign_ccd === '687004' ) {
+            # 30일이내 배정 여부 확인
             $where .= '
-                            # 30일이내 배정여부 확인   
                             and A.MemIdx not in
                             (
                                 select 
@@ -137,11 +134,11 @@ class TmModel extends WB_Model
                                         AND DATE_FORMAT(t.regDatm,\'%Y-%m-%d\') 
                                                 BETWEEN  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -30 DAY),\'%Y-%m-%d\') AND DATE_FORMAT(NOW(),\'%Y-%m-%d\') 
                             )';
-
-        } else if($assign_ccd === '687003'){
-
+        //Todo 장바구니 조건은 2020.08.19 최의식 차장님 요청으로 위의 조건에서 아래 조건으로 이동
+        //재수강, 장바구니의 경우 배정내역이 없어야 함.
+        } else if($assign_ccd === '687003' || $assign_ccd === '687002' ){
             $where .= '
-                            #재수강의 경우 배정 내역이 없어야 함
+                            #재수강의 경우 배정 내역이 없어야 함.(장바구니 조건 추가)
                             and A.MemIdx not in
                             (
                                 select 
@@ -154,7 +151,8 @@ class TmModel extends WB_Model
                              )';
         }
 
-        if($assign_ccd === '687001') {      // 신규 (온라인강좌 상품 주문이력이 없고, 장바구니에도 온라인강좌 상품이 없어야 함)
+        // 신규 (온라인강좌 상품 주문이력이 없고, 장바구니에도 온라인강좌 상품이 없어야 함)
+        if($assign_ccd === '687001') {
             $where .= ' 
                             #검색일이 가입일
                             and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'    
@@ -194,7 +192,8 @@ class TmModel extends WB_Model
                             )
                         ';
 
-        } elseif($assign_ccd === '687002') {      // #장바구니에 온라인 상품이 존재해야 함
+        // #장바구니에 온라인 상품이 존재해야 함
+        } elseif($assign_ccd === '687002') {
             $where .= ' 
                             #검색일이 가입일 --> 제거 2019.06.14 김상구 실장님, 최의식 차장님 협의
                             #and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'
@@ -215,8 +214,8 @@ class TmModel extends WB_Model
                                     and DATE_FORMAT(aa.RegDatm,\'%Y-%m-%d\') =\''.$search_date.'\'    
                             )
                             ';
-
-        } elseif($assign_ccd === '687003') {      // 재수강 ( ‘검색일-30일 <= 수강종료일 <= 검색일+30일’ 회원 중  ‘검색일-30일 <= 결제완료일 <= 검색일+30일' 결제가 존재하지 않는 회원 )
+        // 재수강 ( ‘검색일-30일 <= 수강종료일 <= 검색일+30일’ 회원 중  ‘검색일-30일 <= 결제완료일 <= 검색일+30일' 결제가 존재하지 않는 회원 )
+        } elseif($assign_ccd === '687003') {
             $where .= ' 
                             #2018년1월1일 이후 가입자 조건 추가 : 2019.06.14 김상구 실장님 협의
                             and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') >= \'2018-01-01\'
@@ -326,7 +325,6 @@ class TmModel extends WB_Model
                         where over_cnt=0
                     )
                 ';
-
 
         } else {
             $where .= ' 1=2 ';

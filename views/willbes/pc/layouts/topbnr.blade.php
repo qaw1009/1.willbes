@@ -127,7 +127,10 @@
     {{-- 엔잡 --}}
     <div id="topBannerLayer" class="njob">
         <div class="topBanner">
+            {{--김상구본부장님 요청으로 배너와 같은 프로모션페이지에서 상단 배너 미노출 : TODO  해당 배너 변경시 예외조건 소스 제거--}}
+            @if($_SERVER['REQUEST_URI'] != '/promotion/index/cate/3114/code/1768')
             <a href="{{site_url('/promotion/index/cate/3114/code/1768')}}"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_top_bn.jpg" alt=""></a>
+            @endif
         </div>
     </div>
 @endif

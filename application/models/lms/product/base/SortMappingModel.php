@@ -300,6 +300,7 @@ class SortMappingModel extends WB_Model
             $_table = $this->_table[$_table_key];
             $arr_subject_idx = (is_null($arr_subject_idx) === true) ? [] : array_values(array_unique($arr_subject_idx));
             $admin_idx = $this->session->userdata('admin_idx');
+            $data = [];     // 기 등록된 식별자 데이터 배열 초기화
 
             // 기존 설정된 과목 연결 데이터 조회
             $ori_data = $this->_conn->getListResult($_table, $_key_column . ', OrderNum', ['EQ' => $_arr_condition]);

@@ -91,7 +91,11 @@
 .njob2 .Section2 {background:url(https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190_bg.gif) no-repeat center top;}
 .njob2 .Section3 {background:#fff}
 .njob2 .Section4 {background:#08145d}
-.njob2 .Section5 {background:#ece5e4; padding:50px 0}
+.njob2 .Section5 {background:#ece5e4; padding-top:50px}
+.njob2 .Section5 .will-listTi {position: absolute; top:0; left:0; z-index: 1;}
+.njob2 .Section5 .tip .youtube {height:315px; background-color: khaki; overflow: hidden;}
+.njob2 .Section5 .tip .copytxt {float:left; width:50%; font-size:45px; line-height: 1.2; padding-top:50px; letter-spacing: -1px;}
+.njob2 .Section5 .tip iframe {float:left;width:560px; height:315px}
 
 .njob2 .tipLec li {
     display: inline;

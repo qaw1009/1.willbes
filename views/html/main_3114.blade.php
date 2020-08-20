@@ -48,13 +48,15 @@
         </h3>
     </div>
 
+    {{--
     <div class="Section Section0">
         <div class="widthAuto">
             <a href="https://www.youtube.com/watch?v=sBGMUCaAq6k&feature=youtu.be" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
         </div>
     </div>
+    --}}
         
-    <div class="Section1">        
+    <div class="Section1 mt20">        
         <div class="MainVisual NSK">            
             <div class="VisualBox">
                 <div class="bSlider">
@@ -74,7 +76,6 @@
             <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1626"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_1120x110.gif" alt="헤드라인 뉴스"></a>
         </div>
     </div>
-
 
     <div class="Section NSK mt70">
         <div class="widthAuto">
@@ -178,14 +179,18 @@
     </div>
 
     <div class="Section5 pb100">
-        <div class="widthAuto">
+        <div class="widthAuto p_re">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div> 
             <div class="bSlider">
-                <div class="slider">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_01.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_02.jpg" alt="배너명"></a></div> 
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_03.jpg" alt="배너명"></a></div>  
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_04.jpg" alt="배너명"></a></div>                                                                     
+                <div class="slider tip">
+                    <div class="youtube">
+                        <div class="copytxt NSK-Black">
+                            무재고 쇼핑몰<br>
+                            대학 졸업 전, 이미 월 순수익<br>
+                            천만원 돌파!<br>
+                        </div>
+                        <iframe src="https://www.youtube.com/embed/sBGMUCaAq6k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>                    
                 </div>
             </div>
         </div>

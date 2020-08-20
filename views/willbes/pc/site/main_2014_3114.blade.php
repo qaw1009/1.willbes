@@ -5,13 +5,15 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        {{--
         <div class="Section Section0">
             <div class="widthAuto">
                 <a href="javascript:popup()" ><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
             </div>
         </div>
+        --}}
 
-        <div class="Section1 p_re">
+        <div class="Section1 p_re mt20">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">

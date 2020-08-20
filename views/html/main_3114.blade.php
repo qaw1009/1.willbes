@@ -59,15 +59,22 @@
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_1120x670_04.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_2000x670_02.jpg" alt="배너명"></a></div> 
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_2000x670_03.jpg" alt="배너명"></a></div>  
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3114_bn_2000x670_01.jpg" alt="배너명"></a></div>                                                                     
+                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0710/banner_20200731110751.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0610/banner_20200731110838.jpg" alt="배너명"></a></div> 
+                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0807/banner_20200807181421.jpg" alt="배너명"></a></div>  
+                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0408/banner_20200731111203.jpg" alt="배너명"></a></div>                                                                     
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="Section4">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_1120x110.gif" alt="헤드라인 뉴스">
+        </div>
+    </div>
+
 
     <div class="Section NSK mt70">
         <div class="widthAuto">
@@ -150,7 +157,7 @@
 
     <div class="Section2 mt70">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/3114_fullx600.jpg" alt="전강좌 10% 할인">
+            <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190.gif" alt="전강좌 10% 할인">
         </div>
     </div>
 
@@ -168,14 +175,30 @@
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_04.png" alt="정문진"></a></li>
             </ul>
         </div>
+    </div>
 
-        <div class="widthAuto mt70">
+    <div class="Section5 pb100">
+        <div class="widthAuto">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div> 
+            <div class="bSlider">
+                <div class="slider">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_02.jpg" alt="배너명"></a></div> 
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_03.jpg" alt="배너명"></a></div>  
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_512x288_04.jpg" alt="배너명"></a></div>                                                                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section3 pb100">
+        <div class="widthAuto mt70">
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 수강생 생생 리얼후기</div> 
             <ul class="tipLec NSK-Black">
-                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_01.png" alt="김정한"></a>[추천] 김정환 대표</li>
-                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_02.png" alt="김경은"></a>[추천] 김경은 대표</li>
-                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_03.png" alt="황채영"></a>[추천] 황채영 대표</li>
-                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_04.png" alt="정문진"></a>[추천] 정문진 대표</li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_01.png" alt="김정한"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_02.png" alt="김경은"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_03.png" alt="황채영"></a></li>
+                <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_04.png" alt="정문진"></a></li>
             </ul>
         </div>
     </div>

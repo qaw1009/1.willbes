@@ -81,7 +81,51 @@
                     @endfor
                 </ul>
             </div>
+        </div>
 
+        <div class="Section5">
+            <div class="widthAuto p_re">
+                <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div> 
+                <div class="bSlider">
+                    <div class="slidertip">
+                        <div class="youtube">
+                            <div class="copytxt NSK-Black">
+                                스마트스토어,<br>
+                                언택트 비대면시대엔<br> 
+                                앞으로 더 활성화 된다구요?
+                            </div>
+                            <iframe src="https://www.youtube.com/embed/8Ha99xncaQg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>  
+                        <div class="youtube">
+                            <div class="copytxt NSK-Black">
+                                무재고 쇼핑몰<br>
+                                대학 졸업 전, 이미 월 순수익<br>
+                                천만원 돌파!<br>
+                            </div>
+                            <iframe src="https://www.youtube.com/embed/qm_5TSjrzg0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="youtube">
+                            <div class="copytxt NSK-Black">
+                                쿠팡에서 중국 구매대행까지<br>
+                                1인 온라인 창업,<br>
+                                혼자서도 할 수 있어요!<br>
+                            </div>
+                            <iframe src="https://www.youtube.com/embed/lLgwZwm9Ayw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="youtube">
+                            <div class="copytxt NSK-Black">
+                                재고가 없는데 <br>
+                                물건을 파는 쇼핑몰, <br>
+                                들어보셨어요? <br>
+                            </div>
+                            <iframe src="https://www.youtube.com/embed/IPoWDc0AuwE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>                  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section3 pb100">
             <div class="widthAuto mt70">
                 <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div>
                 <ul class="tipLec NSK-Black">
@@ -176,8 +220,20 @@
         
             window.open(url, name, 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
         }
-</script>
 
+    $(function() {
+        $('.slidertip').bxSlider({
+            auto: false,
+            touchEnabled: false,
+            controls: false,
+            pause: 3000,
+            autoHover: true,
+            onSliderLoad: function(){
+                $(".bSlider").css("visibility", "visible").animate({opacity:1});
+            }
+        });
+    });
+</script>
 
 
 @stop

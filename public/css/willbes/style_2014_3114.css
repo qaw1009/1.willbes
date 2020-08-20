@@ -1,5 +1,5 @@
 /* top bar banner */
-.njob .topBanner {display:block; background:url(https://static.willbes.net/public/images/promotion/main/3114_top_bn_bg.jpg) no-repeat center top !important;  width:100%; text-align:center}
+.njob .topBanner {display:block; background:#091665;  width:100%; text-align:center}
 .njob .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .njob .topBanner p img {width:100%}
 
@@ -88,10 +88,11 @@
     clear:both;
 }
 
-.njob2 .Section2 {
-    background:url(https://static.willbes.net/public/images/promotion/main/3114_fullx600_bg.jpg) no-repeat center top;
-}
-.njob2 .Section3 {background:#f7f7f7}
+.njob2 .Section2 {background:url(https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190_bg.gif) no-repeat center top;}
+.njob2 .Section3 {background:#fff}
+.njob2 .Section4 {background:#08145d}
+.njob2 .Section5 {background:#ece5e4; padding:50px 0}
+
 .njob2 .tipLec li {
     display: inline;
     float: left;

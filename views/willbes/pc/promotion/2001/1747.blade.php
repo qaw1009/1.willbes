@@ -250,9 +250,9 @@
             <ul>
                 <li>
                     @if($onoff_1 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                     @elseif($onoff_1 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab01" class="{{ (($onoff_1 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab01_on.png" alt="사전예약" class="on">
@@ -264,9 +264,9 @@
                         <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing02.jpg" alt="가압안발표후진행"></span>
                     @else
                         @if($onoff_2 == 'on')
-                            <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                         @elseif($onoff_2 == 'off')
-                            <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                         @else @endif
                     @endif                    
                     <a href="#tab02" class="{{ (($onoff_2 == 'on') ? 'active' : '') }}">
@@ -276,9 +276,9 @@
                 </li>
                 <li>
                     @if($onoff_3 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                     @elseif($onoff_3 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab03" class="{{ (($onoff_3 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab03_on.png" alt="체력시험" class="on">
@@ -287,9 +287,9 @@
                 </li>
                 <li>
                     @if($onoff_4 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                     @elseif($onoff_4 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab04" class="{{ (($onoff_4 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab04_on.png" alt="면접시험" class="on">
@@ -298,9 +298,9 @@
                 </li>
                 <li>
                     @if($onoff_5 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                     @elseif($onoff_5 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab05" class="{{ (($onoff_5 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab05_on.png" alt="최종합격" class="on">
@@ -309,9 +309,9 @@
                 </li>
                 <li>
                     @if($onoff_6 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_ing.gif" alt="진행중"></span>
                     @elseif($onoff_6 == 'off')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
                     <a href="#tab06" class="{{ (($onoff_6 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab06_on.png" alt="최종합격서비스" class="on">

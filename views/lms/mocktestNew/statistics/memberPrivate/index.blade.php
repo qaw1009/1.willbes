@@ -60,7 +60,8 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">상품검색</label>
                     <div class="col-md-11">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭검색
+                        <input type="text" class="form-control ml-10" style="width:300px;" id="search_prod_code" name="search_prod_code" value=""> 코드검색
                     </div>
                 </div>
                 <div class="form-group form-inline">
@@ -71,7 +72,7 @@
                 </div>
             </div>
         </div>
-        {{--<div class="row">
+        <div class="row">
             <div class="col-md-1 text-right">
                 <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
             </div>
@@ -79,7 +80,7 @@
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
-        </div>--}}
+        </div>
     </form>
 
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
@@ -167,6 +168,11 @@
 
             // 엑셀다운로드
             $('.btn-excel').on('click', function(event) {
+                if ($('#search_prod_code').val() == '') {
+                    alert('상품코드검색 후 엑셀다운로드 가능합니다.');
+                    return false;
+                }
+
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/mocktestNew/statistics/memberPrivate/excel') }}', $search_form.serializeArray(), 'POST');

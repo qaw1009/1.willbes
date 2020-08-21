@@ -7,36 +7,33 @@
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], true) !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="x_panel">
                     <div class="x_content">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="search_is_use">조건</label>
-                            <div class="col-md-11 form-inline">
-                                {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
-                                <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
-                                    <option value="">캠퍼스</option>
-                                    @foreach($arr_campus as $row)
-                                        <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
-                                    @endforeach
-                                </select>
+                            <label class="control-label col-md-1" for="search_value">설문제목</label>
+                            <div class="col-md-3">
+                                <input type="text" id="search_value" name="search_value" class="form-control">
+                            </div>
+                            <p class="form-control-static">설문제목, 설문번호 검색 가능</p>
+                        </div>
 
-                                <select class="form-control" id="search_category" name="search_category">
-                                    <option value="">카테고리</option>
-                                    @foreach($arr_category as $row)
-                                        <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                                    @endforeach
-                                </select>
-
-                                <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
-                                    <option value="">중분류</option>
-                                    @foreach($arr_m_category as $row)
-                                        <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
-                                    @endforeach
-                                </select>
-
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="search_sdate">설문기간</label>
+                            <div class="col-md-4 form-inline">
+                                <div class="input-group mb-0">
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" class="form-control datepicker" id="search_sdate" name="search_sdate" value="">
+                                    <div class="input-group-addon no-border no-bgcolor">~</div>
+                                    <div class="input-group-addon no-border-right"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" class="form-control datepicker" id="search_edate" name="search_edate" value="">
+                                </div>
+                            </div>
+                            <label class="control-label col-md-1" for="search_sdate">검색조건</label>
+                            <div class="col-md-4 form-inline">
                                 <select class="form-control" id="search_is_use" name="search_is_use">
                                     <option value="">사용여부</option>
                                     <option value="Y">사용</option>
@@ -45,23 +42,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="search_value">설문제목</label>
-                            <div class="col-md-3">
-                                <input type="text" id="search_value" name="search_value" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group form-inline">
-                            <label class="control-label col-md-1" for="search_sdate">설문기간</label>
-                            <div class="input-group mb-0 ml-10">
-                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                <input type="text" class="form-control datepicker" id="search_sdate" name="search_sdate" value="">
-                                <div class="input-group-addon no-border no-bgcolor">~</div>
-                                <div class="input-group-addon no-border-right"><i class="fa fa-calendar"></i></div>
-                                <input type="text" class="form-control datepicker" id="search_edate" name="search_edate" value="">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -110,11 +90,6 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
-
-            // site-code에 매핑되는 select box 자동 변경
-            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_category"]').chained("#search_site_code");
-            $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
 
             // DataTables
             $datatable = $list_table.DataTable({

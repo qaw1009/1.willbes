@@ -13,19 +13,12 @@ class Survey extends \app\controllers\BaseController
 
     public function index()
     {
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
-
-        //카테고리 조회(구분)
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
-
-        //사이트카테고리 중분류 조회
-        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', 2);
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
 
         $this->load->view('site/survey/index', [
-            'arr_campus' => $arr_campus,
-            'arr_category' => $arr_category,
-            'arr_m_category' => $arr_m_category,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
         ]);
     }
 
@@ -57,6 +50,7 @@ class Survey extends \app\controllers\BaseController
             'ORG1' => [
                 'LKB' => [
                     'A.SurveyTitle' => $this->_reqP('search_value'),
+                    'A.SubIdx' => $this->_reqP('search_value')
                 ]
             ],
         ];
@@ -137,13 +131,17 @@ class Survey extends \app\controllers\BaseController
      */
     public function eventSurveyCreate($params = [])
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+
         $method = 'POST';
         $survey_data = [];
         $question_data = [];
+        $disabled = '';
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $ss_idx = $params[0];
+            $disabled = "disabled";
 
             $survey_data = $this->surveyModel->findSurveyForModify($ss_idx);
             $question_data = $this->surveyModel->listSurveyForQuestion($ss_idx);
@@ -153,6 +151,8 @@ class Survey extends \app\controllers\BaseController
             'method' => $method,
             'survey_data' => $survey_data,
             'question_data' => $question_data,
+            'arr_site_code' => $arr_site_code,
+            'disabled' => $disabled,
         ]);
     }
 
@@ -164,7 +164,6 @@ class Survey extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
-            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'sp_title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'sp_is_duplicate', 'label' => '중복투표', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'sp_is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -172,12 +171,16 @@ class Survey extends \app\controllers\BaseController
             ['field' => 'register_end_datm', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
         ];
 
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
         if (empty($this->_reqP('ss_idx')) === false) {
             $method = 'modify';
+        }else{
+            $rules = array_merge($rules,[
+                ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
         }
 
         $result = $this->surveyModel->{$method . 'EventSurvey'}($this->_reqP(null, false));
@@ -279,12 +282,12 @@ class Survey extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'A.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG1' => [
                 'LKB' => [
                     'A.SurveyTitle' => $this->_reqP('search_value'),
+                    'A.SsIdx' => $this->_reqP('search_value')
                 ]
             ]
         ];

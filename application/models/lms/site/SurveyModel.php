@@ -47,7 +47,6 @@ class SurveyModel extends WB_Model
         return $this->_conn->query('select '.$column .$from)->result_array();
     }
 
-
     /**
      * old 설문결과 조회
      * @param integer $sp_idx
@@ -198,7 +197,7 @@ class SurveyModel extends WB_Model
             $column = "COUNT(A.cnt) AS numrows";
             $from = "
                 FROM (
-                    SELECT IsStatus, COUNT(SubIdx) AS cnt
+                    SELECT IsStatus, SurveyTitle, SubIdx, COUNT(SubIdx) AS cnt
                     FROM {$this->_table['survey_set_statistics']}
                     WHERE IsStatus = 'Y'
                     GROUP BY SubIdx, SurveyQuestion
@@ -564,7 +563,6 @@ class SurveyModel extends WB_Model
 
             $data = [
                 'SurveyTitle' => element('sp_title', $input),
-                'SiteCode' => element('site_code', $input),
                 'SurveyComment' => element('sp_comment', $input),
                 'IsUse' => element('sp_is_use', $input),
                 'IsDuplicate' => element('sp_is_duplicate', $input),

@@ -27,7 +27,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             return;
         }
 
-        $survey_data = $this->surveyModel->findSurvey($ss_idx);
+        $survey_data = $this->surveyModel->findSurvey($ss_idx,$this->_site_code);
         if(empty($survey_data) === true){
             show_alert('설문 기간이 아닙니다.','close');
             return;

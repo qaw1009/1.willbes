@@ -45,7 +45,7 @@
         .evt04 a {padding:10px 15px; color:#fff; background:#000; font-size:14px; display:block; border-radius:20px;}
         .evt04 a:hover {background:#f26522;}
         .evt04 a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0} 
-        .evt04 p {text-align:right; color:#000; font-weight:bold; margin-top:20px; font-size:14px}       
+      
     </style>
 
 

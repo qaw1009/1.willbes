@@ -177,7 +177,7 @@ class ProfessorModel extends WB_Model
                     AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
             ) AS P
             LEFT OUTER JOIN (
-                SELECT ProfIdx, `GROUP_CONCAT(CONCAT(B.CateName,"->",C.SubjectName)) AS CateCode`
+                SELECT ProfIdx, GROUP_CONCAT(CONCAT(B.CateName,"->",C.SubjectName)) AS CateCode
                 FROM '. $this->_table['professor_r_subject_r_category'] .' AS A
                 LEFT JOIN '. $this->_table['category'] .' AS B ON A.CateCode = B.CateCode
                 LEFT JOIN '. $this->_table['subject'] .' AS C ON A.SubjectIdx = C.SubjectIdx

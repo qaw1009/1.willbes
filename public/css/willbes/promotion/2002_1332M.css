@@ -9,33 +9,35 @@
 .predictWrap input[type="text"] {height: 2rem;}
 .predictWrap .willbes-Tit {background: #2e3c52; color:#fff; border:0}
 .predictWrap .willbes-Tit span {color:#f6cc20}
-.predictWrap .predictMain { background:#19191a url(https://static.willbes.net/public/images/promotion/2020/03/1555M_bg.jpg) no-repeat center top; background-size:720px;  text-align: center; padding-bottom:50px}
+.predictWrap .predictMain { background:#e4beb0;padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn a { 
-    display:block; width: 80%; max-width: 700px; margin:0 auto; padding:1em 0;
+    display:block; width: 50%; max-width: 700px; margin:0 auto; padding:1em 0;
     text-align: center; background: #000; color:#fff; border-radius: 10px;
     font-size:18px; font-weight: bold;
     box-shadow: 5px 5px 5px rgba(0,0,0,.2);
 }
+
 .predictWrap .predictMain .mainBtn a.btn2 {
     background:#bf1212; 
     animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;
 }
 	@keyframes upDown{
 	from{background:#2e3c52}
-	50%{background:#2fc2e0}
+	50%{background:#bf1212}
 	to{background:#2e3c52}
 	}
 	@-webkit-keyframes upDown{
 	from{background:#2e3c52}
-	50%{background:#2fc2e0}
+	50%{background:#bf1212}
 	to{background:#2e3c52}
     }   
+  
 
-.predictWrap .predictMain .sort {margin-top:30px}
+.predictWrap .predictMain .sort {margin-top:30px;text-align:center;}
 .predictWrap .predictMain .sort div {
     display: inline-block; width: 100px; height: 100px; line-height: 100px; vertical-align: middle;
-    border:3px solid #2fc2e0; border-radius: 50px; background: #fff; color:#2fc2e0;
+    border:3px solid #b01408; border-radius: 50px; background: #fff; color:#b01408;
     font-size:16px; margin-right:10px;
 }
 .predictWrap .predictMain .sort div:last-child {margin:0}
@@ -44,7 +46,7 @@
 .tg-note .tg-tit {background:#1a8ccc; cursor:pointer; padding-left:10px; color:#fff; font-size:14px}
 .tg-note .tg-cont {background:#ddeff9; padding:1em}
 .tg-note .tg-cont li {line-height:1.4; list-style:disc; margin-left:10px}
-.marktxt1 {color:#fff; margin-top:2em; padding:0 10%}
+.marktxt1 {color:#000; margin-top:2em; padding:0 10%;text-align:center;font-size:13px;}
 .marktxt2 {text-align:center; padding:1em}
 
 .markTab {margin-top:10px; /*border-bottom:1px solid #333*/}

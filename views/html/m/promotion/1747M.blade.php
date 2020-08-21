@@ -1,3 +1,4 @@
+
 @extends('html.m.layouts.master')
 
 @section('content')
@@ -29,7 +30,7 @@
         {{--31일 00:00시부터 채점입력 노출--}}
         <div class="predictMain">
             <div class="mainImg">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1555M_02.jpg" title="">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1747M_02.jpg" title="">
             </div>
             <div class="mainBtn">
                 {{--로그인 전--}}

@@ -85,7 +85,7 @@
                 <tr class="bg-odd">
                     <th>No</th>
                     <th>운영사이트</th>
-                    <th>회원명</th>
+                    <th>회원명 (아이디)</th>
                     <th>주문번호</th>
                     <th>유효기간</th>
                     <th>상태</th>
@@ -137,7 +137,7 @@
                     }},
                     {'data' : 'SiteName'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + ' (<u class="blue">' + row.MemId + '</u>)';
+                        return data + ' (' + row.MemId + ')';
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
                         return data != null ? '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>' : '';

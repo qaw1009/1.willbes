@@ -90,7 +90,7 @@
                                 <span clss="clearfix" style="color: red; position: relative; top:6px">* 응시직렬은 응시직렬 항목 등록 후 저장된 응시직렬 항목에 따라 그룹선택이 노출 됩니다.</span>
                                 <div class="clearfix-r">
                                     <button type="button" class="btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>정렬/사용 적용</button>
-                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_question mr-15" data-id="add_question" data-ss-idx="{{$survey_data['SsIdx']}}" data-sq-series="{{$survey_data['SqJsonData'] or ''}}" onclick="show_question_layer(this)"><i class="fa fa-pencil mr-10"></i>설문항목등록</button>
+                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_question mr-15" data-id="add_question" data-ss-idx="{{$survey_data['SsIdx']}}" data-sq-series="{{$survey_data['SeriesData'] or ''}}" onclick="show_question_layer(this)"><i class="fa fa-pencil mr-10"></i>설문항목등록</button>
                                 </div>
                             @else
                                 # 설문 저장 후 <span style="color: red"> [설문항목등록] </span> 버튼이 생성됩니다.
@@ -154,7 +154,7 @@
                                     </td>
                                     <td class="text-center"><input type="checkbox" name="sq_is_use" value="Y" class="flat" data-origin-is-use="{{$row['IsUse']}}" @if($row['IsUse'] == 'Y') checked="checked" @endif></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-ss-idx="{{$row['SsIdx']}}" data-ssq-idx="{{$row['SsqIdx']}}" data-sq-series="{{$survey_data['SqJsonData'] or ''}}" onclick="show_question_layer(this)">수정</button>
+                                        <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-ss-idx="{{$row['SsIdx']}}" data-ssq-idx="{{$row['SsqIdx']}}" data-sq-series="{{$survey_data['SeriesData'] or ''}}" onclick="show_question_layer(this)">수정</button>
                                         <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['SsqIdx']}}" onclick="delete_survey_question(this)">삭제</button>
                                     </td>
                                 </tr>

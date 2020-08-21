@@ -1,7 +1,26 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 설문통계를 참고하는 메뉴입니다.</h5>
+    <h5 class="mt-20">- 설문통계를 확인하는 메뉴입니다.</h5>
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="form-group">
+                <label class="control-label col-md-1" for="survey_update">설문업데이트</label>
+                <div class="col-md-3">
+                    <select class="form-control" id="survey_update" name="survey_update" title="설문업데이트">
+                        <option value="">선택하세요</option>
+                        @foreach($statistics_title_list as $key => $val)
+                            <option value="{{ $val['SsIdx'] }}">{{ $val['SurveyTitle'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <button type="button" class="btn-sm btn-danger btn_survey_update">업데이트</button>
+                    <span class="red">* 선택한 설문을 설문통계로 업데이트해줍니다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -10,12 +29,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">설문제목</label>
                     <div class="col-md-3">
-                        <select class="form-control" id="search_value" name="search_value" title="설문제목">
-                            <option value="">선택하세요</option>
-                            @foreach($statistics_title_list as $key => $val)
-                                <option value="{{ $val['SsIdx'] }}">{{ $val['SurveyTitle'] }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" id="search_value" name="search_value" class="form-control">
                     </div>
                 </div>
 
@@ -42,8 +56,11 @@
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <colgroup>
                         <col style="width:3%">
+                        <col style="width:4%">
                         <col style="">
-                        <col style="width:19%">
+                        <col style="width:15%">
+                        <col style="width:7%">
+                        <col style="width:7%">
                         <col style="width:7%">
                         <col style="width:15%">
                         <col style="width:12%">
@@ -53,9 +70,12 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">NO</th>
+                        <th class="rowspan">설문번호</th>
                         <th class="rowspan">설문제목</th>
                         <th class="text-center rowspan">설문기간</th>
                         <th class="text-center rowspan">전체 응시인원</th>
+                        <th class="text-center rowspan">등록자</th>
+                        <th class="text-center rowspan">등록일</th>
                         <th class="text-center rowspan">문항</th>
                         <th class="text-center">항목</th>
                         <th class="text-center">선택 비율</th>
@@ -71,7 +91,6 @@
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
-        var $list_form = $('#list_form');
         var $list_table = $('#list_table');
         var $regi_form = $('#regi_form');
 
@@ -83,11 +102,11 @@
                 language: {
                     "info": "[ 총 _END_ / _MAX_건 ]",
                 },
-                lengthMenu: [10, 20, 50, 100, 200],
+                lengthMenu: [50, 100, 200],
                 pageLength: 50,
                 serverSide: true,
                 buttons: [
-                    @if($count == 0)
+                    @if($old_survey_count == 0)
                     { text: '<i class="fa fa-copy mr-10"></i> old 데이타 업데이트(1회용)', className: 'btn btn-default btn-sm btn-danger border-radius-reset mr-15 btn-old-survey', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/survey/runOnce') }}' + dtParamsToQueryString($datatable);
                         }},
@@ -105,6 +124,9 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
+                    {'data' : 'SubIdx', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
+                        }},
                     {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<b>'+data+'</b>';
                         }},
@@ -113,6 +135,12 @@
                         }},
                     {'data' : 'SurveyCount', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<b>'+data+' 명</b>';
+                        }},
+                    {'data' : 'RegAdminName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
+                        }},
+                    {'data' : 'RegDatm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
                         }},
                     {'data' : 'SurveyQuestion', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.SurveyQuestion;
@@ -129,11 +157,20 @@
                 ]
             });
 
-            // 데이터 수정 폼
-            $list_table.on('click', '.btn-modify', function() {
-                location.href='{{ site_url('/site/survey/eventSurveyCreate/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
-            });
+        });
 
+        // 설문 업데이트
+        $(".btn_survey_update").click(function () {
+            var sub_idx = $("#survey_update option:selected").val();
+
+            if(sub_idx == ''){
+                alert('설문을 선택해주세요.');
+                return;
+            }
+
+            if(confirm("해당 설문을 업데이트하시겠습니까?")) {
+                location.href = '{{ site_url('/site/survey/storeSurveyStatistics/') }}' + sub_idx + dtParamsToQueryString($datatable);
+            }
         });
 
         function popGraph(ss_idx){

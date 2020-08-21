@@ -41,7 +41,7 @@
                         <tr>
                             <td>{{ $data['SiteName'] }}</td>
                             <td>{{ $data['CateName'] }}</td>
-                            <td><u class="blue">{{ $data['CouponName'] }}</u> [{{ $data['CouponIdx'] }}]</td>
+                            <td><a href="{{ site_url('/service/coupon/regist/create/' . $data['CouponIdx']) }}" target="_blank"><u class="blue">{{ $data['CouponName'] }}</u></a> [{{ $data['CouponIdx'] }}]</td>
                             <td>{{ $data['DeployName'] }}</td>
                             <td>{{ $data['CouponTypeName'] }}</td>
                             <td>{{ $data['PinName'] }}@if($data['PinType'] == 'R')<br/>({{ $data['PinIssueCnt'] }}개)@endif</td>
@@ -254,7 +254,7 @@
                     }},
                     {'data' : 'CouponPin'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return (data !== null) ? data + ' (<u class="blue">' + row.MemId + '</u>)' : '';
+                        return (data !== null) ? data + ' (' + row.MemId + ')' : '';
                     }},
                     {'data' : 'Phone', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? data + ' (' + row.SmsRcvStatus + ')' : '';
@@ -270,7 +270,7 @@
                         return (data !== null) ? ((data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>') : '';
                     }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return (data !== null) ? ((row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '') : '';
+                        return (data !== null) ? ((row.IsUse === 'Y') ? data + '<br/>(<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + row.OrderNo + '</u></a>)' : '') : '';
                     }},
                     {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';

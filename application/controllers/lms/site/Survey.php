@@ -26,69 +26,12 @@ class Survey extends \app\controllers\BaseController
         $condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
         $statistics_title_list = $this->surveyModel->listSurveyStatisticsTitle();
-        $count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
+        $old_survey_count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
 
         $this->load->view('site/survey/survey_statistics', [
-            'count' => $count,
+            'old_survey_count' => $old_survey_count,
             'statistics_title_list' => $statistics_title_list,
         ]);
-    }
-
-    /**
-     * old 설문통계 데이타 등록 (한번만 실행)
-     */
-    public function runOnce(){
-        $input_data = [];
-        $old_answer_data = [];
-        $new_answer_info = [];
-
-        // 설문조사
-        $old_survey_info = $this->surveyModel->listOldSurvey();
-        foreach ($old_survey_info as $key => $val){
-
-            // 설문결과
-            $old_answer_info = $this->surveyModel->listOldSurveyAnswer($val['SpIdx']);
-            if(empty($old_answer_info) === false){
-
-
-                // 초기화
-                foreach ($old_answer_info as $answer_val){
-                    $new_answer_info[$answer_val['SqIdx']] = $answer_val;
-                    for($i=1;$i<25;$i++){
-                        if(empty(trim($answer_val['Comment'.$i])) === false){
-                            $old_answer_data[$answer_val['SqIdx']][$i] = 0;
-                        }
-                    }
-                }
-
-                // 결과 카운트
-                foreach ($old_answer_info as $answer_val){
-                    $old_answer_data[$answer_val['SqIdx']][$answer_val['Answer']] += 1;
-                }
-
-                // 통계 저장 배열
-                foreach ($old_answer_data as $answer_key => $answer_val){
-                    $item_sum = array_sum($answer_val);
-
-                    if($item_sum > 0){
-                        foreach ($answer_val as $k => $v){
-                            $input_data[$new_answer_info[$answer_key]['SqTitle']][$new_answer_info[$answer_key]['Comment'.$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                            $input_data[$new_answer_info[$answer_key]['SqTitle']][$new_answer_info[$answer_key]['Comment'.$k]]['count'] = $v;
-                        }
-                    }
-                }
-
-                $result = $this->surveyModel->addOldSurveyData($input_data,$val);
-
-                if($result !== true){
-                    show_alert('업데이트 실패했습니다.');
-                    return;
-                }
-            }
-        }
-
-        show_alert('업데이트 되었습니다.','back');
-        return;
     }
 
     /**
@@ -97,11 +40,27 @@ class Survey extends \app\controllers\BaseController
     public function surveyStatisticsList()
     {
         $list = [];
-        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
-        $count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.SurveyTitle' => $this->_reqP('search_value'),
+                ]
+            ],
+        ]);
+
+        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => [
+                    'A.RegDatm' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                ],
+            ]);
+        }
+
+        $count = $this->surveyModel->listAllSurveyStatistics(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurveyStatistics(false, $condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurveyStatistics(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
         }
 
         return $this->response([
@@ -109,6 +68,54 @@ class Survey extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list,
         ]);
+    }
+
+    /**
+     * 설문통계 업데이트
+     * @param array $params
+     */
+    public function storeSurveyStatistics($params=[])
+    {
+        $method = 'add';
+        $ss_idx = $params[0];
+
+        if (empty($ss_idx) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+            return;
+        }
+
+        // 전체 응시인원
+        $answer_total_count = $this->surveyModel->countSurveyForAnswer($ss_idx);
+        if ($answer_total_count == 0) {
+            show_alert('설문응답 내역을 찾을 수 없습니다.', 'back');
+            return;
+        }
+
+        // 해당 설문 저장 여부 확인
+        $sub_idx_count = $this->surveyModel->findSurveyForStatisticsr($ss_idx);
+        if ($sub_idx_count > 0) {
+            $method = 'modify';
+        }
+        
+        // 설문제목
+        $survey_info = $this->surveyModel->findSurveyByTitle($ss_idx);
+
+        // 설문응답
+        $answer_info = $this->surveyModel->listAnswerGraphData($ss_idx);
+
+        // 설문문항
+        $question_data = $this->surveyModel->listSurveyForQuestion($ss_idx);
+
+        // 설문 응답 비율 계산
+        $input_data = $this->_mathAnswerSpreadData($question_data,$answer_info);
+
+        $survey_data = $this->_setSurveyInfo($survey_info,$ss_idx,$answer_total_count);
+        $result = $this->surveyModel->storeSurveyStatistics($input_data,$survey_data,$method);
+
+        if($result === true){
+            show_alert('업데이트 되었습니다.','back');
+            return;
+        }
     }
 
     /**
@@ -144,6 +151,7 @@ class Survey extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'sp_title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'sp_is_duplicate', 'label' => '중복투표', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'sp_is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -261,7 +269,7 @@ class Survey extends \app\controllers\BaseController
 
             foreach ($list as $key => $val){
                 $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SsIdx'];
-                $list[$key]['include'] = "프로모션 페이지 URL + /spidx /".$val['SsIdx'];
+                $list[$key]['include'] = "프로모션 페이지 URL + /SsIdx /".$val['SsIdx'];
             }
         }
 
@@ -313,7 +321,6 @@ class Survey extends \app\controllers\BaseController
         }else{
             $data[0] = $this->_mathAnswerSpreadData($question_data,$answer_info);
         }
-
 
         $this->load->view('site/survey/survey_graph_popup', [
             'ss_idx' => $ss_idx,
@@ -433,7 +440,7 @@ class Survey extends \app\controllers\BaseController
     {
         foreach ($answer_data as $key => $val){
             foreach ($val['AnswerInfo'] as $question_key => $answer){
-                if($reset_data[$question_key] != 'D'){ // 서술형 제외
+                if(empty($reset_data[$question_key]) === false && $reset_data[$question_key] != 'D'){ // 서술형 제외
                     foreach ($answer as $k => $v){
                         $reset_data[$question_key][$k][$v] += 1;
                     }
@@ -534,10 +541,12 @@ class Survey extends \app\controllers\BaseController
             foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
                     foreach ($answer as $k => $v){
-                        if($reset_data[$question_key] == 'D'){ // 서술형 제외
-                            unset($answer_data[$series_key][$key][$question_key]);
-                        }else{
-                            $series_data[$series_key][$question_key][$k] = $reset_data[$question_key][$k];
+                        if(empty($reset_data[$question_key]) === false){
+                            if($reset_data[$question_key] == 'D'){ // 서술형 제외
+                                unset($answer_data[$series_key][$key][$question_key]);
+                            }else{
+                                $series_data[$series_key][$question_key][$k] = $reset_data[$question_key][$k];
+                            }
                         }
                     }
                 }
@@ -547,9 +556,11 @@ class Survey extends \app\controllers\BaseController
         foreach ($answer_data as $series_key => $series_val){
             foreach ($series_val as $key => $val) {
                 foreach ($val as $question_key => $answer) {
-                    ksort($series_data[$series_key][$question_key]);
-                    foreach ($answer as $k => $v) {
-                        $series_data[$series_key][$question_key][$k][$v] += 1;
+                    if(empty($series_data[$series_key][$question_key]) === false){
+                        ksort($series_data[$series_key][$question_key]);
+                        foreach ($answer as $k => $v) {
+                            $series_data[$series_key][$question_key][$k][$v] += 1;
+                        }
                     }
                 }
             }
@@ -593,6 +604,52 @@ class Survey extends \app\controllers\BaseController
         }
 
         return $survey_data;
+    }
+
+    /**
+     * 저장배열
+     * @param array $survey_info
+     * @param integer $ss_idx
+     * @param integer $total_count
+     * @return mixed
+     */
+    private function _setSurveyInfo($survey_info=[],$ss_idx=null,$total_count=null)
+    {
+        $data = [
+            'ss_idx' => $ss_idx,
+            'survey_title' => $survey_info['SurveyTitle'],
+            'StartDate' => $survey_info['StartDate'],
+            'EndDate' => $survey_info['EndDate'],
+            'total_count' => $total_count,
+        ];
+
+        return $data;
+    }
+
+    /**
+     * old 설문통계 데이타 등록 (한번만 실행)
+     */
+    public function runOnce()
+    {
+        // 설문조사
+        $old_survey_info = $this->surveyModel->listOldSurvey();
+        foreach ($old_survey_info as $key => $val){
+
+            // 설문결과
+            $input_data = $this->surveyModel->listOldSurveyAnswer($val['SpIdx']);
+
+            if(empty($input_data) === false){
+                $result = $this->surveyModel->addOldSurveyData($input_data,$val);
+
+                if($result !== true){
+                    show_alert('업데이트 실패했습니다.');
+                    return;
+                }
+            }
+        }
+
+        show_alert('업데이트 되었습니다.','back');
+        return;
     }
 
 }

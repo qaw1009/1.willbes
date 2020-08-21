@@ -234,14 +234,12 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 8. 과목별 체감난이도
         // 이전 설문
-        $answer_info = $this->surveyModel->listSurveyForAnswer($SsIdx1);
-        $question_info = $this->surveyModel->listSurveyForQuestion($SsIdx1);
-        list($survey_levels,$spSubjectList['Prev']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
+        $surveyStatisticsList['Prev'] = $this->surveyModel->listSurveyForStatistics($SsIdx1);
 
         // 진행중 설문
         $answer_info = $this->surveyModel->listSurveyForAnswer($SsIdx2);
         $question_info = $this->surveyModel->listSurveyForQuestion($SsIdx2);
-        list($survey_levels,$spSubjectList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
+        list($survey_levels,$surveyStatisticsList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
 
         // 9. 직렬별 설문조사
         $series_data = $this->surveyModel->findSurveyBySeries($SsIdx2);
@@ -267,7 +265,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'subjectPointList' => $subjectPointList,
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
-            'spSubjectList' => $spSubjectList,
+            'surveyStatisticsList' => $surveyStatisticsList,
             'wrongSubject' => $wrongSubject,
             'wrongList' => $wrongList,
             'surveyList' => $surveyList,

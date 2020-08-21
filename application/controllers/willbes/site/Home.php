@@ -407,16 +407,17 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $data['arr_main_banner'] = $this->_banner('0');
-            $data['new_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'new', 10);
             $data['topic_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'topic', 10);
             $data['resv_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'resv_sale', 10);
-            $data['best_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'best', 10);
-            $data['today_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'today', 5);
-            $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
-            $data['notice'] = $this->_boardNotice(5);
-            $data['exam_news'] = $this->_boardExamNews(5);
-            $data['exam_errata'] = $this->_boardExamErrata(5);
         }
+
+        $data['new_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'new', 10);
+        $data['best_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'best', 10);
+        $data['today_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'today', 5);
+        $data['md_product'] = $this->bookFModel->getBookStoreOptionProduct($this->_site_code, 'md_best', 3);
+        $data['notice'] = $this->_boardNotice(5);
+        $data['exam_news'] = $this->_boardExamNews(5);
+        $data['exam_errata'] = $this->_boardExamErrata(5);
 
         return $data;
     }

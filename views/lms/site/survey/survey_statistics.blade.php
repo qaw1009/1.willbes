@@ -1,11 +1,11 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 설문통계를 확인하는 메뉴입니다.</h5>
+    <h5 class="mt-20">- 설문통계를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_content">
             <div class="form-group">
-                <label class="control-label col-md-1" for="survey_update">설문업데이트</label>
+                <label class="control-label col-md-1" for="survey_update">설문통계로 업데이트</label>
                 <div class="col-md-3">
                     <select class="form-control" id="survey_update" name="survey_update" title="설문업데이트">
                         <option value="">선택하세요</option>
@@ -33,11 +33,14 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">설문기간</label>
-                    <div class="col-md-5 form-inline">
-                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 150px;"  type="text"  value="">
-                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 150px;"  type="text"  value="">
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-1" for="search_sdate">설문기간</label>
+                    <div class="input-group mb-0 ml-10">
+                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                        <input type="text" class="form-control datepicker" id="search_sdate" name="search_sdate" value="">
+                        <div class="input-group-addon no-border no-bgcolor">~</div>
+                        <div class="input-group-addon no-border-right"><i class="fa fa-calendar"></i></div>
+                        <input type="text" class="form-control datepicker" id="search_edate" name="search_edate" value="">
                     </div>
                 </div>
             </div>
@@ -57,15 +60,14 @@
                     <colgroup>
                         <col style="width:3%">
                         <col style="width:4%">
-                        <col style="">
-                        <col style="width:15%">
-                        <col style="width:7%">
-                        <col style="width:7%">
-                        <col style="width:7%">
-                        <col style="width:15%">
+                        <col style="width:25%">
                         <col style="width:12%">
+                        <col style="width:5%">
+                        <col style="width:5%">
                         <col style="width:7%">
-                        <col style="width:7%">
+                        <col style="width:10%">
+                        <col style="">
+
                     </colgroup>
                     <thead class="bg-white-gray">
                     <tr>
@@ -73,13 +75,11 @@
                         <th class="rowspan">설문번호</th>
                         <th class="rowspan">설문제목</th>
                         <th class="text-center rowspan">설문기간</th>
-                        <th class="text-center rowspan">전체 응시인원</th>
-                        <th class="text-center rowspan">등록자</th>
-                        <th class="text-center rowspan">등록일</th>
+                        <th class="text-center rowspan">전체<br/>응시인원</th>
+                        <th class="text-center rowspan">설문통계<br/>등록자</th>
+                        <th class="text-center rowspan">설문통계<br/>등록일</th>
                         <th class="text-center rowspan">문항</th>
-                        <th class="text-center">항목</th>
-                        <th class="text-center">선택 비율</th>
-                        <th class="text-center">선택 인원수</th>
+                        <th class="text-center">세부내역</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,7 +92,6 @@
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_table');
-        var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
 
@@ -128,7 +127,7 @@
                             return '<b>'+data+'</b>';
                         }},
                     {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<b>'+data+'</b>';
+                            return '<button class="btn btn-sm btn-primary act-move" onClick="popGraph(' + row.SubIdx + ')">'+data+'</button>';
                         }},
                     {'data' : 'PeriodDate', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<b>'+data+'</b>';
@@ -145,14 +144,8 @@
                     {'data' : 'SurveyQuestion', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.SurveyQuestion;
                         }},
-                    {'data' : 'SurveyItem', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.SurveyItem;
-                        }},
-                    {'data' : 'AnswerRate', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.AnswerRate + '%';
-                        }},
-                    {'data' : 'AnswerCount', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.AnswerCount + '명';
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.SpreadData + '<br/>' + row.CountData;
                         }},
                 ]
             });
@@ -173,11 +166,11 @@
             }
         });
 
-        function popGraph(ss_idx){
-            var _param = 'ss_idx=' + ss_idx;
-            var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
+        function popGraph(sub_idx){
+            var _param = 'sub_idx=' + sub_idx;
+            var _url = '{{ site_url('/site/survey/statisticsGraphPopup') }}' + '?' + _param;
 
-            win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');
+            win = window.open(_url, 'statisticsPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
             win.focus();
         }
     </script>

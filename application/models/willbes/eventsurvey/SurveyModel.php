@@ -33,12 +33,13 @@ class SurveyModel extends WB_Model
     /**
      * 설문조사 조회
      * @param integer $ss_idx
+     * @param integer $site_code
      * @return mixed
      */
-    public function findSurvey($ss_idx = null)
+    public function findSurvey($ss_idx = null, $site_code = null)
     {
         $arr_condition = [
-            'EQ' => ['A.SsIdx' => $ss_idx, 'A.IsUse' => 'Y', 'A.IsStatus' => 'Y'],
+            'EQ' => ['A.SsIdx' => $ss_idx, 'A.IsUse' => 'Y', 'A.IsStatus' => 'Y', 'A.SiteCode' => $site_code],
             'RAW' => ['NOW() between ' => 'StartDate and EndDate']
         ];
 

@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select(empty($survey_data['SiteCode']) ? '' : $survey_data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
+                        {!! html_site_select(empty($survey_data['SiteCode']) ? '' : $survey_data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled, false, $arr_site_code) !!}
                     </div>
                 </div>
 

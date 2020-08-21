@@ -31,6 +31,7 @@
                     <div class="col-md-3">
                         <input type="text" id="search_value" name="search_value" class="form-control">
                     </div>
+                    <p class="form-control-static">설문제목, 설문번호 검색 가능</p>
                 </div>
 
                 <div class="form-group form-inline">

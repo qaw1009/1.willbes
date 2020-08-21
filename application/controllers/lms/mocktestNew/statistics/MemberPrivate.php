@@ -49,7 +49,8 @@ class MemberPrivate extends BaseMocktest
                 'C1.CateCode' => $this->_reqP('search_cateD1'),
                 'MR.TakeMockPart' => $this->_reqP('search_cateD2'),
                 'S.SubjectIdx' => $this->_reqP('search_subject'),
-                'MR.TakeArea' => $this->_reqP('search_takeArea')
+                'MR.TakeArea' => $this->_reqP('search_takeArea'),
+                'MP.ProdCode' => $this->_reqP('search_prod_code'),
             ],
             'ORG' => [
                 'LKB' => [
@@ -95,7 +96,8 @@ class MemberPrivate extends BaseMocktest
                 'C1.CateCode' => $this->_reqP('search_cateD1'),
                 'MR.TakeMockPart' => $this->_reqP('search_cateD2'),
                 'S.SubjectIdx' => $this->_reqP('search_subject'),
-                'MR.TakeArea' => $this->_reqP('search_takeArea')
+                'MR.TakeArea' => $this->_reqP('search_takeArea'),
+                'MP.ProdCode' => $this->_reqP('search_prod_code'),
             ],
             'ORG' => [
                 'LKB' => [

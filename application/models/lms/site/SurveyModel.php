@@ -87,6 +87,20 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * old 전체 응시인원 조회
+     * @param integer $sp_idx
+     * @return mixed
+     */
+    public function countOldSurveyAnswer($sp_idx = null)
+    {
+        $arr_condition = ['EQ' => ['SpIdx' => $sp_idx]];
+        $column = "COUNT(*) AS cnt";
+        $from = " FROM {$this->_table['old_survey_answer_info']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->row(0)->cnt;
+    }
+
+    /**
      * old 통계 데이타 업데이트
      * @param $input
      * @param $old_survey_info
@@ -109,7 +123,7 @@ class SurveyModel extends WB_Model
                         'SurveyType' => $SurveyType,
                         'SurveyQuestion' => trim($val['SqTitle']),
                         'SurveyItem' => trim($val['Comment'.$i]),
-                        'SurveyCount' => $val['CNT'],
+                        'SurveyCount' => $old_survey_info['total_count'],
                         'AnswerRate' => $val['AnswerRatio'.$i],
                         'AnswerCount' => $val['Answer'.$i],
                         'StartDate' => $old_survey_info['StartDate'],
@@ -150,8 +164,8 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate, DATE_FORMAT(A.RegDatm ,'%Y-%m-%d') as RegDatm,
-            C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
+                A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, DATE_FORMAT(A.RegDatm ,'%Y-%m-%d') as RegDatm,
+                C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -163,7 +177,55 @@ class SurveyModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
         ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where .$order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 설문통계 리스트 조회
+     * @param $is_count
+     * @param $arr_condition
+     * @param $limit
+     * @param $offset
+     * @param $order_by
+     * @return mixed
+     */
+    public function listGroupSurveyStatistics($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $order_by_offset_limit = '';
+        $group_by = '';
+        if ($is_count === true) {
+            $column = "COUNT(A.cnt) AS numrows";
+            $from = "
+                FROM (
+                    SELECT IsStatus, COUNT(SubIdx) AS cnt
+                    FROM {$this->_table['survey_set_statistics']}
+                    WHERE IsStatus = 'Y'
+                    GROUP BY SubIdx, SurveyQuestion
+                ) AS A
+            ";
+        } else {
+            $column = "
+                A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, 
+                concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate, DATE_FORMAT(A.RegDatm ,'%Y-%m-%d') as RegDatm,
+                GROUP_CONCAT(CONCAT(A.SurveyItem,'=>',A.AnswerRate,'%')) AS SpreadData, GROUP_CONCAT(CONCAT(A.SurveyItem,'=>',A.AnswerCount,'명')) AS CountData,
+                C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
+            ";
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $from = "
+                FROM {$this->_table['survey_set_statistics']} AS A
+                LEFT OUTER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
+                LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
+            ";
+
+            $group_by = " GROUP BY A.SubIdx, A.SurveyQuestion";
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $query = $this->_conn->query('select ' . $column . $from . $where .$group_by .$order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -371,20 +433,6 @@ class SurveyModel extends WB_Model
         }
 
         return $data;
-    }
-
-    /**
-     * 설문통계 저장 여부 체크
-     * @param integer $ss_idx
-     * @return mixed
-     */
-    public function findSurveyForStatisticsr($ss_idx = null)
-    {
-        $arr_condition = ['EQ' => ['SubIdx' => $ss_idx, 'IsStatus' => 'Y']];
-        $column = "COUNT(*) AS cnt";
-        $from = " FROM {$this->_table['survey_set_statistics']} ";
-        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        return $this->_conn->query('select '. $column . $from . $where)->row(0)->cnt;
     }
 
     /**

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Survey extends \app\controllers\BaseController
 {
-    protected $models = array('site/survey');
+    protected $models = array('site/survey','sys/site', 'sys/category');
     protected $helpers = array();
 
     public function __construct()
@@ -13,8 +13,19 @@ class Survey extends \app\controllers\BaseController
 
     public function index()
     {
-        $this->load->view('site/survey/index', [
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
 
+        //카테고리 조회(구분)
+        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
+
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', 2);
+
+        $this->load->view('site/survey/index', [
+            'arr_campus' => $arr_campus,
+            'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
         ]);
     }
 
@@ -40,27 +51,28 @@ class Survey extends \app\controllers\BaseController
     public function surveyStatisticsList()
     {
         $list = [];
-        $arr_condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
-        $arr_condition = array_merge($arr_condition,[
+        $arr_condition = [
+            'EQ' => ['A.IsStatus' => 'Y'],
             'ORG1' => [
                 'LKB' => [
                     'A.SurveyTitle' => $this->_reqP('search_value'),
                 ]
             ],
-        ]);
+        ];
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
-                'BDT' => [
-                    'A.RegDatm' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                'BET' => [
+                    'A.StartDate' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')],
+                    'A.EndDate' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
                 ],
             ]);
         }
 
-        $count = $this->surveyModel->listAllSurveyStatistics(true, $arr_condition);
+        $count = $this->surveyModel->listGroupSurveyStatistics(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurveyStatistics(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
+            $list = $this->surveyModel->listGroupSurveyStatistics(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
         }
 
         return $this->response([
@@ -92,7 +104,8 @@ class Survey extends \app\controllers\BaseController
         }
 
         // 해당 설문 저장 여부 확인
-        $sub_idx_count = $this->surveyModel->findSurveyForStatisticsr($ss_idx);
+        $arr_condition = ['EQ' => ['SubIdx' => $ss_idx, 'IsStatus' => 'Y']];
+        $sub_idx_count = $this->surveyModel->listAllSurveyStatistics(true,$arr_condition);
         if ($sub_idx_count > 0) {
             $method = 'modify';
         }
@@ -261,11 +274,33 @@ class Survey extends \app\controllers\BaseController
     public function eventSurveyList()
     {
         $list = [];
-        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
 
-        $count = $this->surveyModel->listAllSurvey(true,$condition);
+        $arr_condition = [
+            'EQ' => [
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_reqP('search_site_code'),
+                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'A.IsUse' => $this->_reqP('search_is_use'),
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'A.SurveyTitle' => $this->_reqP('search_value'),
+                ]
+            ]
+        ];
+
+        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => [
+                    'A.StartDate' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')],
+                    'A.EndDate' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                ],
+            ]);
+        }
+
+        $count = $this->surveyModel->listAllSurvey(true,$arr_condition);
         if ($count > 0) {
-            $list = $this->surveyModel->listAllSurvey(false, $condition, $this->input->post('length'), $this->input->post('start'), ['SsIdx' => 'desc']);
+            $list = $this->surveyModel->listAllSurvey(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['SsIdx' => 'desc']);
 
             foreach ($list as $key => $val){
                 $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SsIdx'];
@@ -296,6 +331,42 @@ class Survey extends \app\controllers\BaseController
 
         $result = $this->surveyModel->removeSurveyQuestion($this->_reqP('ssq_idx'));
         $this->json_result($result, '삭제 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 설문통계 그래프 팝업
+     */
+    public function statisticsGraphPopup()
+    {
+        $sub_idx = $this->_reqG('sub_idx');
+
+        // 설문응답
+        $arr_condition = ['EQ' => ['SubIdx' => $sub_idx, 'IsStatus' => 'Y']];
+        $statistics_data = $this->surveyModel->listAllSurveyStatistics(false,$arr_condition);
+        $data = $this->_statisticsPopupSpreadData($statistics_data);
+
+        $this->load->view('site/survey/statistics_graph_popup', [
+            'sub_idx' => $sub_idx,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 설문통계 데이터 팝업
+     */
+    public function statisticsDataPopup()
+    {
+        $sub_idx = $this->_reqG('sub_idx');
+
+        // 설문응답
+        $arr_condition = ['EQ' => ['SubIdx' => $sub_idx, 'IsStatus' => 'Y']];
+        $statistics_data = $this->surveyModel->listAllSurveyStatistics(false,$arr_condition);
+        $data = $this->_statisticsPopupSpreadData($statistics_data);
+
+        $this->load->view('site/survey/statistics_data_popup', [
+            'sub_idx' => $sub_idx,
+            'data' => $data
+        ]);
     }
 
     /**
@@ -607,6 +678,24 @@ class Survey extends \app\controllers\BaseController
     }
 
     /**
+     * 설문통계 그래프 데이타
+     * @param $statistics_data
+     * @return mixed
+     */
+    private function _statisticsPopupSpreadData($statistics_data=[])
+    {
+        $data = [];
+        foreach ($statistics_data as $key => $val){
+            if(empty($val['SurveyQuestion']) === false && empty($val['SurveyItem']) === false){
+                $data[$val['SurveyQuestion']][$val['SurveyItem']]['spread'] = $val['AnswerRate'];
+                $data[$val['SurveyQuestion']][$val['SurveyItem']]['count'] = $val['AnswerCount'];
+            }
+        }
+
+        return $data;
+    }
+
+    /**
      * 저장배열
      * @param array $survey_info
      * @param integer $ss_idx
@@ -634,11 +723,15 @@ class Survey extends \app\controllers\BaseController
         // 설문조사
         $old_survey_info = $this->surveyModel->listOldSurvey();
         foreach ($old_survey_info as $key => $val){
+            // 전체 응시인원
+            $total_count = $this->surveyModel->countOldSurveyAnswer($val['SpIdx']);
 
-            // 설문결과
-            $input_data = $this->surveyModel->listOldSurveyAnswer($val['SpIdx']);
+            if($total_count > 0){
+                $val['total_count'] = $total_count;
 
-            if(empty($input_data) === false){
+                // 설문결과
+                $input_data = $this->surveyModel->listOldSurveyAnswer($val['SpIdx']);
+
                 $result = $this->surveyModel->addOldSurveyData($input_data,$val);
 
                 if($result !== true){

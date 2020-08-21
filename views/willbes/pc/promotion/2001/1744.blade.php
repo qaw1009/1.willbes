@@ -51,6 +51,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1744_top.jpg" title="추천강좌" />
         </div>
         
+        {{--
         <div class="evtCtnsBox wb_evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1744_01.jpg" usemap="#Map1744a" title="파이널패스" border="0" />
             <map name="Map1744a" id="Map1744a">
@@ -58,6 +59,7 @@
                 <area shape="rect" coords="727,1073,927,1118" href="https://police.willbes.net/promotion/index/cate/3001/code/1741" target="_blank" />
             </map>
         </div>
+        --}}
         
         <div class="evtCtnsBox wb_evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1744_02.jpg" title="초시생을 위한 합격 플랜" />

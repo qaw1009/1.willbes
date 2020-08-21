@@ -44,7 +44,7 @@
         to{color:#000}
         }
         .wb_00 {background:#0a0a0a}
-        .wb_top {background:#CDB89D url(https://static.willbes.net/public/images/promotion/2020/08/1406_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/08/1406_top_bg.jpg) no-repeat center top;}
         .wb_top_01 {background:#333; position:relative; padding:100px 0; color:#fff} 
         .box-book {width:100%;}
         .box-book .bx-wrapper{max-width:100% !important;}
@@ -94,7 +94,6 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1406_sky.png" alt="기본이론 종합반" ></a>
-            {{--<a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1406_sky02.jpg" alt="튜터링관리반" ></a>--}}
         </div>           
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -205,17 +204,7 @@
                 <area shape="rect" coords="239,1022,542,1167" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" />
                 <area shape="rect" coords="579,1021,889,1167" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&course_idx=1040&campus_ccd=605001" target="_blank" />
             </map>                 
-        </div>
-
-        {{--
-        <div class="evtCtnsBox wb_05" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1406_05.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map1406C" border="0">
-            <map name="Map1406C" id="Map1406C">
-                <area shape="rect" coords="360,1235,765,1358" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank" />
-            </map>                        
-        </div>
-        --}} 
-      
+        </div>      
     </div>
     <!-- End Container -->
 

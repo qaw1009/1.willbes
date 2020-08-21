@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{--<div class="row">
             <div class="col-md-1 text-right">
                 <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
             </div>
@@ -79,7 +79,7 @@
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
-        </div>
+        </div>--}}
     </form>
 
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">

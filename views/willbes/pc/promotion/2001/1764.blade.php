@@ -22,12 +22,12 @@
         .evttop {background:#132460}
         .evt01 {background:#ececec}
         .evt02 {background:#fff}
-        .evt03 {background:#132460; padding-bottom:150px}
+        .evt03 {background:#132460;}
         .evt03 .evt03box {width:1120px;margin:0 auto; background:#fff; padding:50px 30px}
         .evt03 h3 {text-align:center; color:#f26522; font-weight:bold; margin:20px auto 40px; font-size:40px; line-height:1.5}   
         .evt03 h3 span {display:block; font-size:30px}
 
-        .evt04 {background:#132460; padding-bottom:150px}
+        .evt04 {background:#fff; padding-bottom:100px}
         .evt04 .evt04box {width:1120px;margin:0 auto; background:#fff; padding:50px 30px}
         .evt04 .evt04box p {color:#f26522; font-weight:bold; margin:20px 0; font-size:30px; text-align:left}
         .evt04 tr {border-bottom:1px solid #000;border-top:1px solid #000;}        
@@ -70,12 +70,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1758_03.jpg" alt="마무리특강 교수진"/>
             <div class="evt03box"> 
                 <h3>2020 2차 대비 마무리 특강 수강신청
-                <span>마지막에 무조건 이것만은 보고가자!!!</span></h3>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
-                @endif                
+                <span>마지막에 무조건 이것만은 보고가자!!!</span></h3>                              
             </div>  
         </div>
+
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+        @endif  
 
         <div class="evtCtnsBox evt04">
             <div class="evt04box">

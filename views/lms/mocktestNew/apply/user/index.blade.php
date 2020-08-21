@@ -9,7 +9,7 @@
             <div class="x_content">
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
-                    <div class="col-md-11">
+                    <div class="col-md-4">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $arr_site_code) !!}
                         <select class="form-control mr-5" id="search_PayStatusCcd" name="search_PayStatusCcd">
                             <option value="">결제상태</option>
@@ -34,6 +34,20 @@
                             <option value="Y" @if($arr_base['search_IsTake'] == 'Y') selected="selected" @endif>응시</option>
                             <option value="N" @if($arr_base['search_IsTake'] == 'N') selected="selected" @endif>미응시</option>
                         </select>
+                    </div>
+                    <label class="control-label col-md-1" for="search_start_date">결제완료일</label>
+                    <div class="col-md-4 form-inline">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                            <div class="input-group-addon no-border-right">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group form-inline">
@@ -153,6 +167,11 @@
 
             // 엑셀다운로드
             $('.btn-excel').on('click', function(event) {
+                if ($('#search_start_date').val() == '' || $('#search_end_date').val() == '') {
+                    alert('결제완료일을 검색 후 엑셀다운로드 가능합니다.');
+                    return false;
+                }
+
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/mocktestNew/apply/user/excel') }}', $search_form.serializeArray(), 'POST');

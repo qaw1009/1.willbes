@@ -483,17 +483,8 @@
                         </div>
                     </div>
                 @endif
-            </div>
-            
-            @if(empty($data['ProdCode']) === false)
-                <div class="evtReply">
-                    <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
-                    @include('willbes.pc.site.lecture.iframe_reply_partial')
-                    <div class="TopBtn">
-                        <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-                    </div>
-                </div>
-            @endif
+            </div>           
+
         </div>
 
         <div class="evtFooter" id="infoText">

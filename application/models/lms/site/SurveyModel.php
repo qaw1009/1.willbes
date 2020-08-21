@@ -42,41 +42,48 @@ class SurveyModel extends WB_Model
      * @return mixed
      */
     public function listOldSurvey(){
-        $column = "
-            SpIdx, SpTitle, StartDate, EndDate,
-            (SELECT COUNT(*) FROM {$this->_table['old_survey_answer_info']} WHERE SpIdx = sp.SpIdx) AS count
-            ";
-
-        $from = "
-            FROM {$this->_table['old_survey_product']} AS sp
-        ";
-
+        $column = " SpIdx, SpTitle, StartDate, EndDate ";
+        $from = " FROM {$this->_table['old_survey_product']} ";
         return $this->_conn->query('select '.$column .$from)->result_array();
     }
+
 
     /**
      * old 설문결과 조회
      * @param integer $sp_idx
      * @return mixed
      */
-    public function listOldSurveyAnswer($sp_idx=null){
-        $arr_condition = ['EQ' => ['sp.SpIdx' => $sp_idx, 'sa.TYPE' => 'S']];
-        $order_by = ['sq.SqIdx'=>'ASC','sa.Answer'=>'ASC'];
-        $column = "
-            sa.Answer,sq.*
-            ";
-
-        $from = "
-            FROM {$this->_table['old_survey_product']} AS sp
-            LEFT OUTER JOIN {$this->_table['old_survey_answer_info']} AS si ON sp.SpIdx = si.SpIdx
-            LEFT OUTER JOIN {$this->_table['old_survey_answer']} AS sa ON si.SaIdx = sa.SaIdx
-            LEFT OUTER JOIN {$this->_table['old_survey_question_set_r_question']} AS sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
-            LEFT OUTER JOIN {$this->_table['old_survey_question']} AS sq ON sa.SqIdx = sq.SqIdx
+    public function listOldSurveyAnswer($sp_idx=null)
+    {
+        $column = "A.SqIdx, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.Answer5, A.CNT
+            , round((A.Answer1 / A.CNT) * 100) as AnswerRatio1
+            , round((A.Answer2 / A.CNT) * 100) as AnswerRatio2
+            , round((A.Answer3 / A.CNT) * 100) as AnswerRatio3
+            , round((A.Answer4 / A.CNT) * 100) as AnswerRatio4
+            , round((A.Answer5 / A.CNT) * 100) as AnswerRatio5            
+            , sq.SqTitle
+            , trim(sq.Comment1) as Comment1, trim(sq.Comment2) as Comment2, trim(sq.Comment3) as Comment3, trim(sq.Comment4) as Comment4, trim(sq.Comment5) as Comment5            
         ";
 
-        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit)->result_array();
+        $from = "
+            from (
+                select sa.SqIdx
+                    , sum(if(sa.Answer = '1', 1, 0)) as Answer1
+                    , sum(if(sa.Answer = '2', 1, 0)) as Answer2
+                    , sum(if(sa.Answer = '3', 1, 0)) as Answer3
+                    , sum(if(sa.Answer = '4', 1, 0)) as Answer4
+                    , sum(if(sa.Answer = '5', 1, 0)) as Answer5
+                    , count(0) as CNT
+                from {$this->_table['old_survey_answer_info']} as sai
+                    inner join {$this->_table['old_survey_answer']} as sa on sai.SaIdx = sa.SaIdx
+                where sai.SpIdx = ? group by sa.SqIdx	
+            ) as A
+                inner join {$this->_table['old_survey_question']} as sq
+                    on A.SqIdx = sq.SqIdx and Type = 'S'
+            order by sq.SqTitle asc                            
+        ";
+
+        return $this->_conn->query('select ' . $column . $from, [$sp_idx])->result_array();
     }
 
     /**
@@ -88,18 +95,27 @@ class SurveyModel extends WB_Model
     public function addOldSurveyData($input=[],$old_survey_info=[]){
         $this->_conn->trans_begin();
         try {
-            foreach ($input as $question_title => $answer_val){
-                foreach ($answer_val as $item => $answer){
+            $arr_sq_idx = [68, 1, 45, 75]; // (응시직렬, 전체적인시험난이도, 응시과목선택)
+            foreach ($input as $key => $val){
+                if(in_array($val['SqIdx'],$arr_sq_idx) === true){
+                    $SurveyType = 'S';
+                }else{
+                    $SurveyType = 'T';
+                }
+                for($i=1;$i<=5;$i++){
                     $data = [
                         'SubIdx' => $old_survey_info['SpIdx'],
                         'SurveyTitle' => $old_survey_info['SpTitle'],
-                        'SurveyQuestion' => $question_title,
-                        'SurveyItem' => $item,
-                        'SurveyCount' => $old_survey_info['count'],
-                        'AnswerRate' => $answer['spread'],
-                        'AnswerCount' => $answer['count'],
+                        'SurveyType' => $SurveyType,
+                        'SurveyQuestion' => trim($val['SqTitle']),
+                        'SurveyItem' => trim($val['Comment'.$i]),
+                        'SurveyCount' => $val['CNT'],
+                        'AnswerRate' => $val['AnswerRatio'.$i],
+                        'AnswerCount' => $val['Answer'.$i],
                         'StartDate' => $old_survey_info['StartDate'],
                         'EndDate' => $old_survey_info['EndDate'],
+                        'IsStatus' => 'Y',
+                        'RegAdminIdx' => $this->session->userdata('admin_idx'),
                     ];
 
                     //등록
@@ -134,7 +150,8 @@ class SurveyModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-            A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate
+            A.SubIdx, A.SurveyTitle, A.SurveyQuestion, A.SurveyItem, A.SurveyCount, A.AnswerRate, A.AnswerCount, A.StartDate ,A.EndDate, concat(A.StartDate,' <BR>~ ',A.EndDate) as PeriodDate, DATE_FORMAT(A.RegDatm ,'%Y-%m-%d') as RegDatm,
+            C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -142,6 +159,8 @@ class SurveyModel extends WB_Model
         }
         $from = "
             FROM {$this->_table['survey_set_statistics']} AS A
+            LEFT OUTER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
         ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
@@ -154,12 +173,30 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyStatisticsTitle()
     {
-        $column = "SubIdx, SurveyTitle";
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y']];
+        $order_by_offset_limit = ' order by SsIdx DESC';
+        $column = "SsIdx, SurveyTitle";
         $from = "
-            FROM {$this->_table['survey_set_statistics']}
-            GROUP BY SubIdx
+            FROM {$this->_table['survey_set']}
         ";
-        return $this->_conn->query('SELECT ' . $column . $from)->result_array();
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('SELECT ' . $column . $from .$where .$order_by_offset_limit)->result_array();
+    }
+
+    /**
+     * 설문조사 제목 조회
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    public function findSurveyByTitle($ss_idx=null)
+    {
+        $arr_condition = ['EQ' => ['SsIdx' => $ss_idx,'IsStatus' => 'Y']];
+        $column = "SurveyTitle,StartDate,EndDate";
+        $from = "
+            FROM {$this->_table['survey_set']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('SELECT ' . $column . $from .$where)->row_array();
     }
 
     /**
@@ -254,7 +291,7 @@ class SurveyModel extends WB_Model
      */
     public function listSurveyForQuestion($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsUse' => 'Y','A.IsStatus' => 'Y']];
         $order_by = ['A.OrderNum'=>'ASC','A.SsqIdx'=>'ASC'];
 
         $column = "
@@ -337,6 +374,98 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 설문통계 저장 여부 체크
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    public function findSurveyForStatisticsr($ss_idx = null)
+    {
+        $arr_condition = ['EQ' => ['SubIdx' => $ss_idx, 'IsStatus' => 'Y']];
+        $column = "COUNT(*) AS cnt";
+        $from = " FROM {$this->_table['survey_set_statistics']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->row(0)->cnt;
+    }
+
+    /**
+     * 전체 응시인원 조회
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    public function countSurveyForAnswer($ss_idx = null)
+    {
+        $arr_condition = ['EQ' => ['SsIdx' => $ss_idx, 'IsStatus' => 'Y']];
+        $column = "COUNT(*) AS cnt";
+        $from = " FROM {$this->_table['survey_set_answer']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->row(0)->cnt;
+    }
+
+    /**
+     * 설문통계 업데이트
+     * @param $input
+     * @param $survey_info
+     * @param string $method
+     * @return mixed
+     */
+    public function storeSurveyStatistics($input=[],$survey_info=[],$method=null){
+        $this->_conn->trans_begin();
+        try {
+            // 이미 저장된 설문 상태 변경
+            if($method == 'modify'){
+                $data = [
+                    'IsStatus' => 'N',
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                ];
+                if ($this->_conn->set($data)->where('SubIdx', $survey_info['ss_idx'])->update($this->_table['survey_set_statistics']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+            foreach ($input as $question_title => $value){
+                foreach ($value as $type => $answer_val){
+                    if($type == 'S'){
+                        $title = $question_title;
+                        $SurveyType = 'S';
+                    }else{
+                        $title = $type;
+                        $SurveyType = 'T';
+                    }
+
+                    foreach ($answer_val as $item => $answer){
+                        $data = [
+                            'SubIdx' => $survey_info['ss_idx'],
+                            'SurveyTitle' => $survey_info['survey_title'],
+                            'SurveyType' => $SurveyType,
+                            'SurveyQuestion' => trim($title),
+                            'SurveyItem' => trim($item),
+                            'SurveyCount' => $survey_info['total_count'],
+                            'AnswerRate' => $answer['spread'],
+                            'AnswerCount' => $answer['count'],
+                            'StartDate' => $survey_info['StartDate'],
+                            'EndDate' => $survey_info['EndDate'],
+                            'IsStatus' => 'Y',
+                            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                        ];
+
+                        //등록
+                        if ($this->_conn->set($data)->insert($this->_table['survey_set_statistics']) === false) {
+                            throw new \Exception('업데이트 실패했습니다.');
+                        }
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 설문조사 등록
      * @param $input
      * @return mixed
@@ -348,6 +477,7 @@ class SurveyModel extends WB_Model
 
             $data = [
                 'SurveyTitle' => element('sp_title', $input),
+                'SiteCode' => element('site_code', $input),
                 'SurveyComment' => element('sp_comment', $input),
                 'IsUse' => element('sp_is_use', $input),
                 'IsDuplicate' => element('sp_is_duplicate', $input),
@@ -386,6 +516,7 @@ class SurveyModel extends WB_Model
 
             $data = [
                 'SurveyTitle' => element('sp_title', $input),
+                'SiteCode' => element('site_code', $input),
                 'SurveyComment' => element('sp_comment', $input),
                 'IsUse' => element('sp_is_use', $input),
                 'IsDuplicate' => element('sp_is_duplicate', $input),
@@ -435,7 +566,7 @@ class SurveyModel extends WB_Model
                 $sq_series = element('sq_series', $input);
             }
 
-            $sq_series = empty($sq_series) ? '' : json_encode($sq_series);
+            $sq_series = empty($sq_series) ? '' : json_encode($sq_series,JSON_UNESCAPED_UNICODE);
 
             $data = [
                 'SsIdx' => element('SsIdx', $input),
@@ -494,7 +625,7 @@ class SurveyModel extends WB_Model
             }else{
                 $sq_series = element('sq_series', $input);
             }
-            $sq_series = empty($sq_series) ? '' : json_encode($sq_series);
+            $sq_series = empty($sq_series) ? '' : json_encode($sq_series,JSON_UNESCAPED_UNICODE);
 
             $data = [
                 'SqTitle' => element('sq_title', $input),
@@ -597,12 +728,12 @@ class SurveyModel extends WB_Model
             if(empty($val) === false && $key <= $question_cnt){
                 if($question_type == 'S'){
                     $data[1]["title"] = '';
-                    $data[1]["item"][$key] = $val;
+                    $data[1]["item"][$key] = trim($val);
                 }else{
-                    $data[$key]["title"] = $val;
+                    $data[$key]["title"] = trim($val);
                     foreach ((array)$question_item[$key] as $k => $v){
                         if(empty($v) === false && $k <= $question_item_arr[$key]){
-                            $data[$key]["item"][$k] = $v;
+                            $data[$key]["item"][$k] = trim($v);
                             $data[$key]["item_cnt"] = $question_item_arr[$key];
                         }else{
                             break;
@@ -614,7 +745,7 @@ class SurveyModel extends WB_Model
             }
         }
 
-        return json_encode($data);
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 
     /**

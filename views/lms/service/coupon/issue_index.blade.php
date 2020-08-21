@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="search_member_value" name="search_member_value" value="{{ $memidx }}">
                     </div>
                     <div class="col-md-8">
-                        <p class="form-control-static">이름, 아이디, 회원인덱스, 휴대폰번호 검색 가능 (관리자명, 아이디 검색 가능)</p>
+                        <p class="form-control-static">이름, 아이디, 회원식별자, 휴대폰번호 검색 가능 (관리자명, 아이디 검색 가능)</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -148,13 +148,13 @@
                     }},
                     {'data' : 'CouponPin'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + ' (<u class="blue">' + row.MemId + '</u>)';
+                        return data + ' (' + row.MemId + ')';
                     }},
                     {'data' : 'Phone', 'render' : function(data, type, row, meta) {
                         return data + ' (' + row.SmsRcvStatus + ')';
                     }},
                     {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#none" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
+                        return '<a href="{{ site_url('/service/coupon/regist/create/') }}' + row.CouponIdx + '" target="_blank"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
                     }},
                     {'data' : 'IssueTypeName'},
                     {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {
@@ -167,7 +167,7 @@
                         return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return (row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '';
+                        return (row.IsUse === 'Y') ? data + '<br/>(<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + row.OrderNo + '</u></a>)' : '';
                     }},
                     {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';
@@ -218,11 +218,6 @@
                         $datatable.draw();
                     }
                 }, showError, false, 'POST');
-            });
-
-            // 쿠폰 수정 폼
-            $list_table.on('click', '.btn-modify', function() {
-                location.href = '{{ site_url('/service/coupon/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

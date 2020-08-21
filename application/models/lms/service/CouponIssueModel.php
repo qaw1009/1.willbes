@@ -69,7 +69,7 @@ class CouponIssueModel extends WB_Model
                 , C.CouponIdx, C.SiteCode, C.CouponName
                 , M.MemId, M.MemName, M.PhoneEnc, fn_dec(M.PhoneEnc) as Phone, M.Phone3, MO.SmsRcvStatus
                 , concat(ifnull(P.ProdName, ""), if(P.ProdCode is not null and P.IsStatus = "N", " (삭제)", "")) as ProdName
-                , ifnull(O.OrderNo, "") as OrderNo
+                , O.OrderIdx, ifnull(O.OrderNo, "") as OrderNo
                 , SC.CcdName as IssueTypeName
                 , CD.ValidStatus
                 , (case when CD.IsUse = "Y" then "사용" 

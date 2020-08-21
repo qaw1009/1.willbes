@@ -273,18 +273,18 @@
 
         {{--과목별 체감난이도--}}
         <div class="m_section3_3">
-            @if(empty($spSubjectList['Now'])===false)
+            @if(empty($surveyStatisticsList['Now'])===false)
                 <h2>
                     과목별 <span>체감난이도</span>
                     <div>
                         <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this);">
-                            @foreach($spSubjectList['Now'] as $item => $val)
+                            @foreach($surveyStatisticsList['Now'] as $item => $val)
                                 <option value="{{ $item }}">{{ $item }}</option>
                             @endforeach
                         </select>
                     </div>
                 </h2>
-                @foreach($spSubjectList['Now'] as $title => $val)
+                @foreach($surveyStatisticsList['Now'] as $title => $val)
                     <div class="graph_box" @if($loop->index > 1) style="display: none" @endif>
                         <table class="boardTypeC">
                             <col width="40%" />
@@ -294,8 +294,8 @@
                                 @foreach($val as $item => $spread)
                                 <tr>
                                     <td>
-                                        <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$title][$item] or 0 }}%"></span></div>
-                                        <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$title][$item] or 0 }}%</Expect>
+                                        <div class="graph2ch"><span class="graph2" style="width:{{ $surveyStatisticsList['Prev'][$title][$item] or 0 }}%"></span></div>
+                                        <Expect class="ratio2ch">{{ $surveyStatisticsList['Prev'][$title][$item] or 0 }}%</Expect>
                                     </td>
                                     <th>{{ $item }}</th>
                                     <td>

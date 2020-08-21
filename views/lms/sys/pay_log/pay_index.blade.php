@@ -30,6 +30,7 @@
                             <option value="">상점아이디</option>
                             <option value="willbes015">동영상(willbes015)</option>
                             <option value="willbes515">교재(willbes515)</option>
+                            <option value="willbes006">인천학원(willbes006)</option>
                             <option value="INIpayTest">테스트상점아이디</option>
                         </select>
                         <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">

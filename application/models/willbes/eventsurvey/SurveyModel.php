@@ -7,6 +7,7 @@ class SurveyModel extends WB_Model
         'survey_set' => 'lms_survey_set',
         'survey_set_question' => 'lms_survey_set_question',
         'survey_set_answer' => 'lms_survey_set_answer',
+        'survey_set_statistics' => 'lms_survey_set_statistics',
         'predict_code' => 'lms_predict_code',
         'product_predict' => 'lms_product_predict',
         'predict_grades_line' => 'lms_predict_grades_line',
@@ -136,6 +137,28 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 설문통계 조회
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    public function listSurveyForStatistics($ss_idx = null)
+    {
+        $data = [];
+        $arr_condition = ['EQ' => ['SubIdx' => $ss_idx, 'IsStatus' => 'Y', 'SurveyType' => 'T']];
+        $column = "SurveyQuestion,SurveyItem,AnswerRate";
+        $from = " FROM {$this->_table['survey_set_statistics']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $rows = $this->_conn->query('select '. $column . $from . $where)->result_array();
+
+        foreach ($rows as $key => $val){
+            $data[$val['SurveyQuestion']][$val['SurveyItem']] = $val['AnswerRate'];
+        }
+
+        return $data;
+    }
+
+    /**
      * 설문 저장
      * @param $formData
      * @param integer $ss_idx
@@ -149,7 +172,7 @@ class SurveyModel extends WB_Model
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SsIdx'  => $ss_idx,
                 'UserIp'  => $this->input->ip_address(),
-                'AnswerInfo' => json_encode($formData)
+                'AnswerInfo' => json_encode($formData,JSON_UNESCAPED_UNICODE)
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['survey_set_answer']) === false) {
@@ -184,7 +207,6 @@ class SurveyModel extends WB_Model
 
         return $data;
     }
-
 
     /**
      #################### /lms/predict/PredictModel.php 함수 ####################

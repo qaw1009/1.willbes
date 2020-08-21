@@ -61,14 +61,14 @@
         </div>       
 
         <div class="evtCtnsBox wb_evt03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_03.jpg" usemap="#Map1774C" title="초시생 8개월 슈퍼패스" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_03.jpg" usemap="#Map1774C" title="5개월 슈퍼패스" border="0" />
             <map name="Map1774C">
                 <area shape="rect" coords="192,1260,930,1366" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1770" target="_blank" alt="5개월 슈퍼패스" />
             </map>
         </div>       
 
         <div class="evtCtnsBox wb_evt04" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_04.jpg" usemap="#Map1774D" title="초시생 8개월 슈퍼패스 신청하기" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_04.jpg" usemap="#Map1774D" title="5개월 슈퍼패스 신청하기" border="0" />
             <map name="Map1774D" id="Map1693d">
                 <area shape="rect" coords="96,593,297,645" href="https://police.willbes.net/pass/offPackage/show/prod-code/166166" target="_blank" alt="오태진" />
                 <area shape="rect" coords="465,594,666,645" href="https://police.willbes.net/pass/offPackage/show/prod-code/171110" target="_blank" alt="원유철" />

@@ -65,11 +65,13 @@
         <div class="evtCtnsBox evt04">
             <h3>2020 2차 대비 마무리 특강 수강신청
             <span>마지막에 무조건 이것만은 보고가자!!!</span></h3> 
-            
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif 
+        </div>  
 
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif 
+
+        <div class="evtCtnsBox evt04">
             <p>종합반</p> 
             <table>
                 <col width="" />

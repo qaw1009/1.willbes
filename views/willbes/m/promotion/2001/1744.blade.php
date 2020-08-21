@@ -51,10 +51,12 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_top.jpg" alt="윌비스 신광은 경찰팀 추천강좌" >
     </div> 
 
+    {{--
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_01.jpg" alt="파이널패스" >
         <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/1741" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_02.jpg" alt="파이널패스" ></a>
-    </div> 
+    </div>
+    --}} 
 
     <div class="evtCtnsBox evt03">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1744m_03.jpg" alt="기본이론 집중완성" >

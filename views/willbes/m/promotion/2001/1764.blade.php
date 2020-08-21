@@ -47,15 +47,15 @@
             <tbody> 
                 <tr>
                     <td class="tx-left">2020년 1차대비 마무리특강 패키지(오태진史)</td>
-                    <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1010" target="_blank">수강신청</a></td>
+                    <td><a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/171138" target="_blank">수강신청</a></td>
                 </tr>
                 <tr>
                     <td class="tx-left">2020년 1차대비 마무리특강 패키지(원유철史)</td>
-                    <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1010" target="_blank">수강신청</a></td>
+                    <td><a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/171139" target="_blank">수강신청</a></td>
                 </tr>   
                 <tr>
                     <td class="tx-left">2020년 1차대비 마무리특강 패키지(경행경채)</td>
-                    <td><a href="https://police.willbes.net/package/index/cate/3002/pack/648001?course_idx=1010" target="_blank">수강신청</a></td>
+                    <td><a href="https://police.willbes.net/m/package/show/cate/3002/pack/648001/prod-code/171141" target="_blank">수강신청</a></td>
                 </tr>            
             </tbody>
         </table> 

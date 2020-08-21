@@ -46,7 +46,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1772_02.jpg" alt="코로나19 극복 이벤트" usemap="#Map1772" border="0">
             <map name="Map1772">
                 <area shape="rect" coords="256,720,865,815" href="javascript:;" onclick="giveCheck()" alt="할인쿠폰 받기">
-                <area shape="rect" coords="364,1174,750,1222" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="이벤트이미지받운받기">
+                <area shape="rect" coords="364,1174,750,1222" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이벤트이미지받운받기">
             </map>
         </div> 
         

@@ -78,6 +78,12 @@ class User extends BaseMocktest
             ]
         ];
 
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['O.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
         $list = [];
         $count = $this->applyUserModel->mainList(true, $arr_condition);
         if ($count > 0) {
@@ -116,6 +122,11 @@ class User extends BaseMocktest
                 ]
             ]
         ];
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['O.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
         $results = $this->applyUserModel->mainList('excel', $arr_condition);
         $file_name = '모의고사_개별접수현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = ['주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '결제수단', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];

@@ -9,9 +9,10 @@
         {!! csrf_field() !!}
         <input type="hidden" name="PrIdx"    value="{{ $pridx }}">
         <input type="hidden" name="PredictIdx" value="{{ element('PredictIdx', $arr_input) }}">
+        <input type="hidden" name="type" value="{{ element('type', $arr_input) }}">
         <div class="willbes-Layer-PassBox NGR">
             <div class="markingTilte">
-                <span>빠른 채점</span>
+                <span>{{ ($type == 'answer') ? '답안 등록' : '빠른 채점' }}</span>
                 <div class="btns3">
                     <a href="javascript:window.close()">닫기</a>
                 </div>
@@ -48,7 +49,7 @@
             </div><!--omrWarp//-->
 
             <div class="btns">
-                <a href="javascript:lastSave();">채점완료</a> <a href="javascript:examDeleteAjax()" class="btn2">채점취소</a>
+                <a href="javascript:lastSave();">완료</a> <a href="javascript:examDeleteAjax()" class="btn2">취소</a>
             </div>
         </div>
     </form>
@@ -104,7 +105,7 @@
                     }
                 }, showValidateError, null, false, 'alert');
             }*/
-            if (confirm('채점취소시 입력된 답안은 저장되지 않습니다. \n채점취소 하시겠습니까?')) {
+            if (confirm('취소 시 입력된 답안은 저장되지 않습니다. \n취소 하시겠습니까?')) {
                 window.close();
             }
         }

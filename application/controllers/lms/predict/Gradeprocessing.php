@@ -94,6 +94,17 @@ class Gradeprocessing extends \app\controllers\BaseController
     }
 
     /**
+     * 채점하기
+     */
+    public function editGradePaperAjax()
+    {
+        $formData = $this->_reqP(null, false);
+        $PredictIdx = element('PredictIdx', $formData);
+        $result = $this->predictModel->updateForGradePaper($PredictIdx);
+        $this->json_result($result, '저장되었습니다.', $result, $result);
+    }
+
+    /**
      * 원점수입력
      * @return object|string
      */

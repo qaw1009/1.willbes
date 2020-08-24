@@ -90,7 +90,7 @@ class SurveyModel extends WB_Model
             }
             $PredictIdx = $this->input->post('PredictIdx');
 
-            $column = 'PredictIdx, MockPart, PreServiceIsUse';
+            $column = 'PredictIdx, MockPart, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
             $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
             $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
             $arr_condition = ['EQ' => ['PredictIdx' => $PredictIdx,'IsUse' => 'Y']];
@@ -105,18 +105,21 @@ class SurveyModel extends WB_Model
                 throw new \Exception('사전예약 신청기간이 아닙니다.');
             }
 
-            $arr_condition = [
-                'EQ' => [
-                    'PredictIdx' => $PredictIdx,
-                    'TakeNumber' => $this->input->post('TakeNumber'),
-                    'TakeMockPart' => $this->input->post('TakeMockPart'),
-                    'TakeArea' => $this->input->post('TakeArea'),
-                    'IsStatus' => 'Y'
-                ]
-            ];
-            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
-            if(empty($register_data) === false) {
-                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            //응시번호중복체크 사용인경우
+            if ($predict_data['TakeNumRedundancyCheckIsUse'] == 'Y') {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx' => $PredictIdx,
+                        'TakeNumber' => $this->input->post('TakeNumber'),
+                        'TakeMockPart' => $this->input->post('TakeMockPart'),
+                        'TakeArea' => $this->input->post('TakeArea'),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+                if (empty($register_data) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
             }
 
             $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
@@ -205,27 +208,37 @@ class SurveyModel extends WB_Model
     {
         try {
             $this->_conn->trans_begin();
-
             $PredictIdx = $this->input->post('PredictIdx');
 
-            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
+            $column = 'PredictIdx, MockPart, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
+            $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+            $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+            $arr_condition = ['EQ' => ['PredictIdx' => $PredictIdx,'IsUse' => 'Y']];
+            $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
+            if (empty($predict_data) === true) {
+                throw new \Exception('조회된 합격예측 코드가 없습니다.');
+            }
 
+            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
             if(empty($regist_check) === false) {
                 throw new \Exception('이미 신청하셨습니다.');
             }
 
-            $arr_condition = [
-                'EQ' => [
-                    'PredictIdx' => $PredictIdx,
-                    'TakeNumber' => $this->input->post('TakeNumber'),
-                    'TakeMockPart' => $this->input->post('TakeMockPart'),
-                    'TakeArea' => $this->input->post('TakeArea'),
-                    'IsStatus' => 'Y'
-                ]
-            ];
-            $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
-            if(empty($register_data) === false) {
-                throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+            //응시번호중복체크 사용인경우
+            if ($predict_data['TakeNumRedundancyCheckIsUse'] == 'Y') {
+                $arr_condition = [
+                    'EQ' => [
+                        'PredictIdx' => $PredictIdx,
+                        'TakeNumber' => $this->input->post('TakeNumber'),
+                        'TakeMockPart' => $this->input->post('TakeMockPart'),
+                        'TakeArea' => $this->input->post('TakeArea'),
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $register_data = $this->predictFModel->findPredictRegister2($arr_condition);
+                if (empty($register_data) === false) {
+                    throw new \Exception('이미 등록된 응시번호입니다. 응시번호를 다시 확인해주세요');
+                }
             }
 
             // 데이터 저장
@@ -240,16 +253,13 @@ class SurveyModel extends WB_Model
                 'LectureType' => $this->input->post('LectureType'),
                 'Period' => $this->input->post('Period'),
             );
-
             if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
                 throw new \Exception('저장에 실패했습니다.');
             }
 
             $nowIdx = $this->_conn->insert_id();
-
             $Ssubject = $this->input->post('Ssubject');
             $Psubject = $this->input->post('Psubject');
-
             if(empty($Ssubject)===false){
                 for($i=0; $i < count($Ssubject); $i++){
                     // 데이터 저장
@@ -258,7 +268,6 @@ class SurveyModel extends WB_Model
                         'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Ssubject[$i],
                     );
-
                     if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
                         throw new \Exception('저장에 실패했습니다.');
                     }
@@ -273,7 +282,6 @@ class SurveyModel extends WB_Model
                         'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Psubject[$i],
                     );
-
                     if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
                         throw new \Exception('저장에 실패했습니다.');
                     }
@@ -1999,6 +2007,7 @@ class SurveyModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $type = element('type', $formData);
             $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $PpIdx = element('PpIdx', $formData);
@@ -2011,29 +2020,19 @@ class SurveyModel extends WB_Model
             for($i = 0; $i < count($AnswerArr); $i++){
                 $strAnswer .= $AnswerArr[$i];
             }
-
             $PpIdx = implode(',', $PpIdx);
-
             $MemIdx = $this->session->userdata('mem_idx');
 
-            $column = "
-                PpIdx, PqIdx, RightAnswer
-            ";
-
-            $from = "
-                FROM
-                    {$this->_table['predictQuestion']}
-            ";
-
+            $column = "PpIdx, PqIdx, RightAnswer";
+            $from = " FROM {$this->_table['predictQuestion']} ";
             $order_by = " ORDER BY PpIdx, PqIdx ";
-
-            $where = " WHERE PpIdx IN (".$PpIdx.")";
-
+            $where = " WHERE PpIdx IN (" . $PpIdx . ") AND IsStatus = 'Y'";
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
             $res = $query->result_array();
-
-            foreach($res as $key => $val){
+            if (empty($res) === true) {
+                throw new \Exception('저장에 실패했습니다.');
+            }
+            foreach ($res as $key => $val) {
                 $PpIdx = $val['PpIdx'];
                 $PqIdx = $val['PqIdx'];
                 $Answer = substr($strAnswer, $key, 1);
@@ -2043,30 +2042,25 @@ class SurveyModel extends WB_Model
                 } else {
                     $IsWrong = 'N';
                 }
-
                 $data = [
                     'MemIdx' => $MemIdx,
-                    'PrIdx'  => $PrIdx,
-                    'PredictIdx'=> $PredictIdx,
+                    'PrIdx' => $PrIdx,
+                    'PredictIdx' => $PredictIdx,
                     'PpIdx' => $PpIdx,
                     'PqIdx' => $PqIdx,
                     'Answer' => $Answer,
                     'IsWrong' => $IsWrong
                 ];
-
                 if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictAnswerPaper']) === false) {
                     throw new \Exception('저장에 실패했습니다.');
                 }
             }
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-
         return true;
-
     }
 
     /**

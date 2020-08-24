@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Request extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'site/survey');
     protected $helpers = array();
 
     public function __construct()
@@ -101,7 +101,8 @@ class Request extends \app\controllers\BaseController
         $data = null;
 
         //설문목록 추출 : 2019-08-12 조규호
-        list($surveyList, $count) = $this->predictModel->surveyList(null, '', '');
+        /*list($surveyList, $count) = $this->predictModel->surveyList(null, '', '');*/
+        $surveyList = $this->surveyModel->listAllSurvey(false, [], null, null, ['SsIdx' => 'DESC']);
 
         $prod_data = [];
         if(empty($PredictIdx) === false){
@@ -134,9 +135,17 @@ class Request extends \app\controllers\BaseController
             ['field' => 'PreServiceSDatm_d', 'label' => '사전예약시작일시', 'rules' => 'trim'],
             ['field' => 'PreServiceSDatm_h', 'label' => '사전예약시작일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'PreServiceSDatm_m', 'label' => '사전예약시작일시(분)', 'rules' => 'trim|numeric'],
-            ['field' => 'PreServiceEDatm_d', 'label' => '사전종료시작일시', 'rules' => 'trim'],
-            ['field' => 'PreServiceEDatm_h', 'label' => '사전종료시작일시(시)', 'rules' => 'trim|numeric'],
-            ['field' => 'PreServiceEDatm_m', 'label' => '사전종료시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_d', 'label' => '사전예약종료 시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceEDatm_h', 'label' => '사전예약종료 시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_m', 'label' => '사전예약종료 시작일시(분)', 'rules' => 'trim|numeric'],
+
+            ['field' => 'AnswerServiceSDatm_d', 'label' => '답안입력시작일시', 'rules' => 'trim'],
+            ['field' => 'AnswerServiceSDatm_h', 'label' => '답안입력시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceSDatm_m', 'label' => '답안입력시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceEDatm_d', 'label' => '답안입력종료 시작일시', 'rules' => 'trim'],
+            ['field' => 'AnswerServiceEDatm_h', 'label' => '답안입력종료 시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceEDatm_m', 'label' => '답안입력종료 시작일시(분)', 'rules' => 'trim|numeric'],
+
             ['field' => 'ServiceSDatm_d', 'label' => '본서비스시작일시', 'rules' => 'trim'],
             ['field' => 'ServiceSDatm_h', 'label' => '본서비스시작일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'ServiceSDatm_m', 'label' => '본서비스시작일시(분)', 'rules' => 'trim|numeric'],
@@ -150,6 +159,7 @@ class Request extends \app\controllers\BaseController
             ['field' => 'LastServiceEDatm_h', 'label' => '최종서비스종료일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'LastServiceEDatm_m', 'label' => '최종서비스종료일시(분)', 'rules' => 'trim|numeric'],
             ['field' => 'PreServiceIsUse', 'label' => '사전예약사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'AnswerServiceIsUse', 'label' => '답안입력사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'ServiceIsUse', 'label' => '본서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'LastServiceIsUse', 'label' => '최종서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'ExplainLectureIsUse', 'label' => '해설강의사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -177,9 +187,17 @@ class Request extends \app\controllers\BaseController
             ['field' => 'PreServiceSDatm_d', 'label' => '사전예약시작일시', 'rules' => 'trim'],
             ['field' => 'PreServiceSDatm_h', 'label' => '사전예약시작일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'PreServiceSDatm_m', 'label' => '사전예약시작일시(분)', 'rules' => 'trim|numeric'],
-            ['field' => 'PreServiceEDatm_d', 'label' => '사전종료시작일시', 'rules' => 'trim'],
-            ['field' => 'PreServiceEDatm_h', 'label' => '사전종료시작일시(시)', 'rules' => 'trim|numeric'],
-            ['field' => 'PreServiceEDatm_m', 'label' => '사전종료시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_d', 'label' => '사전예약종료 시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceEDatm_h', 'label' => '사전예약종료 시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_m', 'label' => '사전예약종료 시작일시(분)', 'rules' => 'trim|numeric'],
+
+            ['field' => 'AnswerServiceSDatm_d', 'label' => '답안입력시작일시', 'rules' => 'trim'],
+            ['field' => 'AnswerServiceSDatm_h', 'label' => '답안입력시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceSDatm_m', 'label' => '답안입력시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceEDatm_d', 'label' => '답안입력종료 시작일시', 'rules' => 'trim'],
+            ['field' => 'AnswerServiceEDatm_h', 'label' => '답안입력종료 시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'AnswerServiceEDatm_m', 'label' => '답안입력종료 시작일시(분)', 'rules' => 'trim|numeric'],
+
             ['field' => 'ServiceSDatm_d', 'label' => '본서비스시작일시', 'rules' => 'trim'],
             ['field' => 'ServiceSDatm_h', 'label' => '본서비스시작일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'ServiceSDatm_m', 'label' => '본서비스시작일시(분)', 'rules' => 'trim|numeric'],
@@ -193,6 +211,7 @@ class Request extends \app\controllers\BaseController
             ['field' => 'LastServiceEDatm_h', 'label' => '최종서비스종료일시(시)', 'rules' => 'trim|numeric'],
             ['field' => 'LastServiceEDatm_m', 'label' => '최종서비스종료일시(분)', 'rules' => 'trim|numeric'],
             ['field' => 'PreServiceIsUse', 'label' => '사전예약사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'AnswerServiceIsUse', 'label' => '답안입력사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'ServiceIsUse', 'label' => '본서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'LastServiceIsUse', 'label' => '최종서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'ExplainLectureIsUse', 'label' => '해설강의사용여부', 'rules' => 'trim|required|in_list[Y,N]'],

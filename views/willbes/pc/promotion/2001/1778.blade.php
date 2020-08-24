@@ -6,7 +6,7 @@
 
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
-        @include('willbes.pc.promotion.2001.1629_top')
+        @include('willbes.pc.promotion.2001.1775_top')
 
         <div class="evtCtnsBox">
             <div class="sub_warp">

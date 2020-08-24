@@ -10,38 +10,33 @@
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
-                <div class="x_panel">
-                    <div class="x_content">
-                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="search_value">설문제목</label>
-                            <div class="col-md-3">
-                                <input type="text" id="search_value" name="search_value" class="form-control">
-                            </div>
-                            <p class="form-control-static">설문제목, 설문번호 검색 가능</p>
-                        </div>
+                {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_value">설문제목</label>
+                    <div class="col-md-3">
+                        <input type="text" id="search_value" name="search_value" class="form-control">
+                    </div>
+                    <p class="form-control-static">설문제목, 설문번호 검색 가능</p>
+                </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="search_sdate">설문기간</label>
-                            <div class="col-md-4 form-inline">
-                                <div class="input-group mb-0">
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                    <input type="text" class="form-control datepicker" id="search_sdate" name="search_sdate" value="">
-                                    <div class="input-group-addon no-border no-bgcolor">~</div>
-                                    <div class="input-group-addon no-border-right"><i class="fa fa-calendar"></i></div>
-                                    <input type="text" class="form-control datepicker" id="search_edate" name="search_edate" value="">
-                                </div>
-                            </div>
-                            <label class="control-label col-md-1" for="search_sdate">검색조건</label>
-                            <div class="col-md-4 form-inline">
-                                <select class="form-control" id="search_is_use" name="search_is_use">
-                                    <option value="">사용여부</option>
-                                    <option value="Y">사용</option>
-                                    <option value="N">미사용</option>
-                                </select>
-                            </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_sdate">설문기간</label>
+                    <div class="col-md-4 form-inline">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="search_sdate" name="search_sdate" value="">
+                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                            <div class="input-group-addon no-border-right"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="search_edate" name="search_edate" value="">
                         </div>
-
+                    </div>
+                    <label class="control-label col-md-1" for="search_sdate">검색조건</label>
+                    <div class="col-md-4 form-inline">
+                        <select class="form-control" id="search_is_use" name="search_is_use">
+                            <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -55,6 +50,9 @@
 
     <div class="x_panel mt-10">
         <div class="x_content">
+            <div class="form-group">
+                <p class="red">* 설문조사 완료 후 설문통계 페이지에서 해당 설문을 업데이트 해주세요.</p>
+            </div>
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
@@ -101,11 +99,11 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/site/survey/eventSurveyCreate') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url('/site/surveys/manager/eventSurveyCreate') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/survey/eventSurveyList') }}',
+                    'url' : '{{ site_url('/site/surveys/manager/eventSurveyList') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
@@ -137,14 +135,14 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.href='{{ site_url('/site/survey/eventSurveyCreate/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href='{{ site_url('/site/surveys/manager/eventSurveyCreate/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
         });
 
         function popGraph(ss_idx){
             var _param = 'ss_idx=' + ss_idx;
-            var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
+            var _url = '{{ site_url('/site/surveys/manager/surveyGraphPopup') }}' + '?' + _param;
 
             win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');
             win.focus();

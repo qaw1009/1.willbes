@@ -217,6 +217,14 @@
                             </ul>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="w-data tx-left" colspan="2">
+                            <ul class="payLecList buyerLecList">
+                                <li><strong>실 결제금액</strong> <span class="tx-blue bd-none pd-zero">96,000원</span></li>
+                                <li class="tx12"><strong>강좌시작일 설정</strong> <span class="tx-blue">결제완료 후 바로 수강 시작</span></li>
+                            </ul>
+                        </td>
+                    </tr>
                     <tr class="replyList willbes-Open-Table">
                         <td>
                             총 결제금액

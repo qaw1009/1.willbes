@@ -21,13 +21,19 @@ class Regist extends \app\controllers\BaseController
     public function index()
     {
         // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $category_data = $this->categoryModel->getCategoryArray();
+        $arr_category = [];
+        foreach ($category_data as $row) {
+            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+            $arr_category[$arr_key][] = $row;
+        }
 
         // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
         $codes = $this->_getCodes([$this->_ccd['ApplyType'], $this->_ccd['LecType']]);
 
         $this->load->view('service/coupon/index', [
-            'arr_cate_code' => $category_data,
+            'arr_lg_category' => element('LG', $arr_category, []),
+            'arr_md_category' => element('MD', $arr_category, []),
             'arr_apply_type_ccd' => $codes[$this->_ccd['ApplyType']],
             'arr_lec_type_ccd' => $codes[$this->_ccd['LecType']]
         ]);
@@ -120,7 +126,7 @@ class Regist extends \app\controllers\BaseController
                 'IssueValid' => $this->_reqP('search_issue_valid'),
             ],
             'LKB' => [
-                'CateCodes' => $this->_reqP('search_cate_code'),
+                'CateCodes' => get_var($this->_reqP('search_md_cate_code'), $this->_reqP('search_lg_cate_code')),
                 'LecTypeCcds' => $this->_reqP('search_lec_type_ccd')
             ],
             'ORG1' => [

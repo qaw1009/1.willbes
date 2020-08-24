@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Popup extends \app\controllers\BaseController
 {
-    protected $models = array('site/popup', 'sys/code', 'sys/site');
+    protected $models = array('site/popup', 'sys/code', 'sys/site', 'sys/category');
     protected $helpers = array();
 
     // 노출섹션 그룹공통코드
@@ -22,10 +22,28 @@ class Popup extends \app\controllers\BaseController
      */
     public function index()
     {
-        //노출섹션
+        $total_category_data = [];
+        foreach (get_auth_site_codes(false, true) as $site_code) {
+            $total_category_data[] = [
+                'SiteCode' => $site_code,
+                'SiteName' => '',
+                'CateCode' => '0',
+                'CateName' => '전체카테고리',
+                'ParentCateCode' => '0',
+                'GroupCateCode' => '0',
+                'CateDepth' => '1',
+                'CateRouteName' => '전체카테고리'
+            ];
+        }
+        // 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryRouteArray();
+        $category_data = array_merge($total_category_data, $category_data);
+
+        // 노출섹션
         $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
 
         $this->load->view('site/popup/index',[
+            'arr_cate_code' => $category_data,
             'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']]
         ]);
     }
@@ -242,6 +260,13 @@ class Popup extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        // 카테고리 검색
+        if ($this->_reqP('search_cate_code') == '0') {
+            $arr_condition['RAW']['D.CateCode is'] = ' null';
+        } else {
+            $arr_condition['LKB']['D.CateCode'] = $this->_reqP('search_cate_code');
+        }
 
         // 날짜 검색
         if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {

@@ -108,12 +108,12 @@
                 buttons: [
                     @if($old_survey_count == 0)
                     { text: '<i class="fa fa-copy mr-10"></i> old 데이타 업데이트(1회용)', className: 'btn btn-default btn-sm btn-danger border-radius-reset mr-15 btn-old-survey', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/site/survey/runOnce') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url('/site/surveys/statistics/runOnce') }}' + dtParamsToQueryString($datatable);
                         }},
                     @endif
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/survey/surveyStatisticsList') }}',
+                    'url' : '{{ site_url('/site/surveys/statistics/surveyStatisticsList') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
@@ -163,13 +163,13 @@
             }
 
             if(confirm("해당 설문을 업데이트하시겠습니까?")) {
-                location.href = '{{ site_url('/site/survey/storeSurveyStatistics/') }}' + sub_idx + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/site/surveys/statistics/storeSurveyStatistics/') }}' + sub_idx + dtParamsToQueryString($datatable);
             }
         });
 
         function popGraph(sub_idx){
             var _param = 'sub_idx=' + sub_idx;
-            var _url = '{{ site_url('/site/survey/statisticsGraphPopup') }}' + '?' + _param;
+            var _url = '{{ site_url('/site/surveys/statistics/statisticsGraphPopup') }}' + '?' + _param;
 
             win = window.open(_url, 'statisticsPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
             win.focus();

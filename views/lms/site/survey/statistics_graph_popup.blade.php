@@ -152,7 +152,7 @@
     <script>
         function gotab(sub_idx){
             var _param = 'sub_idx=' + sub_idx;
-            var _url = '{{ site_url('/site/survey/statisticsDataPopup') }}' + '?' + _param;
+            var _url = '{{ site_url('/site/surveys/statistics/statisticsDataPopup') }}' + '?' + _param;
             location.href = _url;
         }
     </script>

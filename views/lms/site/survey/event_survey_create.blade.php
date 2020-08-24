@@ -207,7 +207,7 @@
             var $is_use = $regi_form.find('input[name="sq_is_use"]');
             var origin_val, this_val, this_order_val, this_use_val;
             var $params = {};
-            var _url = '{{ site_url("/site/survey/storeUseOrderNum") }}';
+            var _url = '{{ site_url("/site/surveys/manager/storeUseOrderNum") }}';
 
             $order_num.each(function(idx) {
                 // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
@@ -241,12 +241,12 @@
 
         // ajax submit
         $regi_form.submit(function() {
-            var _url = '{{ site_url("/site/survey/eventSurveyStore") }}' + getQueryString();
+            var _url = '{{ site_url("/site/surveys/manager/eventSurveyStore") }}' + getQueryString();
 
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url("/site/survey/eventSurveyCreate/") }}' + ret.ret_data.idx + getQueryString());
+                    location.replace('{{ site_url("/site/surveys/manager/eventSurveyCreate/") }}' + ret.ret_data.idx + getQueryString());
                 }
             }, showValidateError, null, false, 'alert');
         });
@@ -256,7 +256,7 @@
             var obj_id = $(obj).data("id");
 
             $("." + obj_id).setLayer({
-                'url' : '{{ site_url('/site/survey/questionCreateModal') }}',
+                'url' : '{{ site_url('/site/surveys/manager/questionCreateModal') }}',
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'ss_idx', 'name' : '설문 식별자', 'value' : $(obj).data("ss-idx"), 'required' : true },
@@ -270,7 +270,7 @@
 
         // 설문항목 삭제
         function delete_survey_question(obj){
-            var _url = '{{ site_url("/site/survey/delSurveyQuestion") }}' + getQueryString();
+            var _url = '{{ site_url("/site/surveys/manager/delSurveyQuestion") }}' + getQueryString();
             var data = {
                 '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'DELETE',
@@ -291,7 +291,7 @@
 
         // 목록 이동
         $('#goList').click(function() {
-            location.replace('{{ site_url('/site/survey/index') }}');
+            location.replace('{{ site_url('/site/surveys/manager/index') }}');
         });
     </script>
 @stop

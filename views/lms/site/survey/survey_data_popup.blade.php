@@ -80,7 +80,7 @@
     <script>
         function gotab(ss_idx){
             var _param = 'ss_idx=' + ss_idx;
-            var _url = '{{ site_url('/site/survey/surveyGraphPopup') }}' + '?' + _param;
+            var _url = '{{ site_url('/site/surveys/manager/surveyGraphPopup') }}' + '?' + _param;
             location.href = _url;
         }
     </script>

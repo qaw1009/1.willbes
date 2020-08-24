@@ -61,7 +61,7 @@
     <script>
         function gotab(sub_idx){
             var _param = 'sub_idx=' + sub_idx;
-            var _url = '{{ site_url('/site/survey/statisticsGraphPopup') }}' + '?' + _param;
+            var _url = '{{ site_url('/site/surveys/statistics/statisticsGraphPopup') }}' + '?' + _param;
             location.href = _url;
         }
     </script>

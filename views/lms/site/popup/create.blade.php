@@ -20,7 +20,7 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="site_code">운영사이트 <span class="required">*</span></label>
                     <div class="col-md-2 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true, [], true) !!}
                     </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">
                         @if($method == 'PUT')
@@ -52,17 +52,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="popup_disp">노출섹션<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" id="popup_disp" name="popup_disp" required="required" title="노출섹션">
-                            <option value="">노출섹션</option>
-                            @foreach($popup_disp as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['DispCcd'])selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <label class="control-label col-md-1-1 d-line pt-12" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-4 form-inline item ml-12-dot">
+                    <label class="control-label col-md-1-1" for="campus_ccd">캠퍼스</label>
+                    <div class="col-md-4 form-inline item">
                         <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -73,7 +64,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="popup_type">팝업구분<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="popup_disp">노출섹션 <span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="popup_disp" name="popup_disp" required="required" title="노출섹션">
+                            <option value="">노출섹션</option>
+                            @foreach($popup_disp as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['DispCcd'])selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="popup_type">팝업구분 <span class="required">*</span></label>
                     <div class="col-md-2 item">
                         <select class="form-control" id="popup_type" name="popup_type" required="required" title="팝업구분">
                             <option value="">팝업구분</option>
@@ -85,14 +88,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="popup_name">팝업명<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="popup_name">팝업명 <span class="required">*</span></label>
                     <div class="col-md-7 item">
                         <input type="text" id="popup_name" name="popup_name" required="required" class="form-control" maxlength="100" title="팝업명" value="{{ $data['PopUpName'] }}" >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="disp_start_datm">노출시간</label>
+                    <label class="control-label col-md-1-1" for="disp_start_datm">노출시간</label>
                     <div class="col-md-4 form-inline">
                         <div class="input-group mb-0">
                             <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDatm']}}">
@@ -128,43 +131,49 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="top_pixel">팝업위치<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="top_pixel">팝업위치 <span class="required">*</span></label>
                     <div class="col-md-3">
-                        <div class="control-label col-md-2">[상단]</div>
-                        <div class="col-md-3 item">
-                            <input type="text" id="top_pixel" name="top_pixel" required="required" class="form-control" title="상단" value="{{ $data['TopPixel'] }}">
-                        </div>
-                        <div class="control-label col-md-2">[좌측]</div>
-                        <div class="col-md-3 item">
-                            <input type="text" id="left_pixel" name="left_pixel" required="required" class="form-control" title="좌측" value="{{ $data['LeftPixel'] }}">
-                        </div>
-                    </div>
-
-                    <label class="control-label col-md-1">팝업사이즈<span class="required">*</span></label>
-                    <div class="col-md-3">
-                        <div class="control-label col-md-2">[가로]</div>
-                        <div class="col-md-3 item">
-                            <input type="text" id="width_size" name="width_size" required="required" class="form-control" title="가로" value="{{ $data['Width'] }}">
-                        </div>
-                        <div class="control-label col-md-2">[세로]</div>
-                        <div class="col-md-3 item">
-                            <input type="text" id="height_size" name="height_size" required="required" class="form-control" title="좌측" value="{{ $data['Height'] }}">
+                        <div class="row">
+                            <div class="control-label col-md-2">[상단]</div>
+                            <div class="col-md-3 item">
+                                <input type="text" id="top_pixel" name="top_pixel" required="required" class="form-control" title="상단" value="{{ $data['TopPixel'] }}">
+                            </div>
+                            <div class="control-label col-md-2">[좌측]</div>
+                            <div class="col-md-3 item">
+                                <input type="text" id="left_pixel" name="left_pixel" required="required" class="form-control" title="좌측" value="{{ $data['LeftPixel'] }}">
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_type_self">링크방식<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="width_size">팝업사이즈 <span class="required">*</span></label>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="control-label col-md-2">[가로]</div>
+                            <div class="col-md-3 item">
+                                <input type="text" id="width_size" name="width_size" required="required" class="form-control" title="가로" value="{{ $data['Width'] }}">
+                            </div>
+                            <div class="control-label col-md-2">[세로]</div>
+                            <div class="col-md-3 item">
+                                <input type="text" id="height_size" name="height_size" required="required" class="form-control" title="좌측" value="{{ $data['Height'] }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="link_type_self">링크방식 <span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
-                        <div class="radio pt-5">
-                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="hover mr-5">본창</label>
-                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="">새창</label>
+                        <div class="radio">
+                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="input-label">본창</label>
+                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_url">링크주소<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="link_url">링크주소 <span class="required">*</span></label>
                     <div class="col-md-6 item">
                         <input type="text" id="link_url" name="link_url" required="required" class="form-control" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
                         <div class="mt-10">• 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
@@ -172,7 +181,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="attach_img">팝업이미지<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="attach_img">팝업이미지 <span class="required">*</span></label>
                     <div class="col-md-9 item form-inline">
                         <div class="title">
                             <!--div class="filetype">
@@ -196,7 +205,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="image_map">이미지맵</label>
+                    <label class="control-label col-md-1-1" for="image_map">이미지맵</label>
                     <div class="col-md-10 item">
                         <div class="x_panel mb-0">
                             <div class="x_content pb-0">
@@ -289,30 +298,33 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-2 item form-inline">
-                        <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
-                        </div>
-                    </div>
-                    <label class="control-label col-md-2" for="order_num">정렬</label>
-                    <div class="col-md-1">
-                        <input type="text" id="order_num" name="order_num" class="form-control" maxlength="3" title="정렬" value="{{ $data['OrderNum'] }}" >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="desc">설명</label>
+                    <label class="control-label col-md-1-1" for="desc">설명</label>
                     <div class="col-md-9">
                         <textarea id="desc" name="desc" class="form-control" rows="3" title="설명" placeholder="">{!! $data['Desc'] !!}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">등록자
+                    <label class="control-label col-md-1-1" for="order_num">정렬</label>
+                    <div class="col-md-1">
+                        <input type="text" id="order_num" name="order_num" class="form-control" maxlength="3" title="정렬" value="{{ $data['OrderNum'] }}" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부 <span class="required">*</span></label>
+                    <div class="col-md-2 item form-inline">
+                        <div class="radio">
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -322,9 +334,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">최종 수정자
+                    <label class="control-label col-md-1-1">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

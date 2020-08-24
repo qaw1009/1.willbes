@@ -80,11 +80,12 @@
                             <col style="width: 10%;">
                             <col style="width: 10%;">
                             <col style="width: 5%;">
-                            <col style="width: 10%;">
+                            <col style="width: 8%;">
+                            <col style="width: 8%;">
                             <col>
-                            <col style="width: 15%;">
+                            <col style="width: 8%;">
+                            <col style="width: 10%;">
                             <col style="width: 12%;">
-                            <col style="width: 15%;">
                         </colgroup>
                         <thead>
                         <tr>
@@ -92,8 +93,9 @@
                             <th>과목</th>
                             <th>선택</th>
                             <th>교수</th>
+                            <th>수강형태</th>
                             <th>단과반명</th>
-                            <th>개강일~종강일 </th>
+                            <th>개강일~종강일</th>
                             <th>요일(회차)</th>
                             <th>강사선택기간</th>
                         </tr>
@@ -109,6 +111,7 @@
                                         {{ $row['IsChoice'] == 'Y' ? '' : 'Disabled' }}
                                            onclick="checkOnly('.essSubGroup-{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}', this.value);" /></td>
                                 <td>{{ $row['wProfName'] }}</td>
+                                <td>{{ $row['StudyPatternCcdName'] }}</td>
                                 <td>{{ $row['ProdNameSub'] }}</td>
                                 <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>
                                 <td>{{ $row['WeekArrayName'] }}({{ $row['Amount'] }})</td>

@@ -250,6 +250,7 @@ class CommonLectureModel extends WB_Model
                             ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt,Be.wScheduleCount
                             ,Bg.CcdName as CampusCcd_Name
                             ,Bh.CcdName as AcceptStatusCcd_Name
+                            ,Bi.CcdName as StudyPatternCcd_Name
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.RealSalePrice
@@ -260,7 +261,6 @@ class CommonLectureModel extends WB_Model
                             '.$tableName.' S	
                             join lms_product A on S.ProdCodeSub = A.ProdCode
                                 left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                                
                             join lms_product_lecture B on A.ProdCode = B.ProdCode
                                 left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                                 left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
@@ -268,6 +268,7 @@ class CommonLectureModel extends WB_Model
                                 left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
                                 left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                                 left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
+                                left outer join lms_sys_code Bi on B.StudyPatternCcd = Bi.Ccd
                                 join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx 
                             join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                 join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'

@@ -253,6 +253,7 @@ class ClassroomFModel extends WB_Model
             , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate 
             , IFNULL(datediff(VP.StudyEndDate, VP.StudyStartDate) + 1, 0) AS StudyPeriod
             , VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
+            , VP.StudyPatternCcdName
         ';
         $from = '
             FROM ' . $this->_table['product_r_sublecture'] . ' AS PS

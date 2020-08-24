@@ -1,4 +1,4 @@
-<iframe id='frm' frameborder="0" scrolling="no" width="100%" onload="resizeIframe(this)" src="{{front_url('/predict/totalgraph/?PredictIdx='.$arr_promotion_params['PredictIdx'].'&spidx1='.$arr_promotion_params['spidx1'].'&spidx2='.$arr_promotion_params['spidx2'])}}"></iframe>
+<iframe id='frm' frameborder="0" scrolling="no" width="100%" onload="resizeIframe(this)" src="{{front_url('/eventSurvey/totalgraph/?PredictIdx='.$arr_promotion_params['PredictIdx'].'&SsIdx1='.$arr_promotion_params['SsIdx1'].'&SsIdx2='.$arr_promotion_params['SsIdx2'])}}"></iframe>
 
 <script type="text/javascript">
     function resizeIframe(iframe) {

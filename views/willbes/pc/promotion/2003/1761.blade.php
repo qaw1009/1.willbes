@@ -26,7 +26,9 @@
         .wb_cts01 {background:#e61e00;}
 
         .wb_cts02 {background: url(https://static.willbes.net/public/images/promotion/2020/08/1761_02_bg.jpg) no-repeat center top;}
-        .wb_cts03 {background: url(https://static.willbes.net/public/images/promotion/2020/08/1761_03_bg.jpg) no-repeat center top;}
+        
+        .wb_cts03 {background:#f1f1f1 url(https://static.willbes.net/public/images/promotion/2020/08/1761_03_bg.jpg) no-repeat center top; padding-bottom:150px} 
+        .wb_cts03 iframe {width:800px; height:450px; margin:0 auto;}       
         .wb_cts04 {background:#fff;}
         .wb_cts05 {background: url(https://static.willbes.net/public/images/promotion/2020/08/1761_05_bg.jpg) no-repeat center top;}
 
@@ -48,11 +50,12 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_02.jpg" alt="소방학/소방법규 이종오"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_02.jpg" alt="소방학/소방법규 이종오">
         </div>
 
         <div class="evtCtnsBox wb_cts03" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_03.jpg" alt="시작부터 끝까지"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_03.jpg" alt="시작부터 끝까지"><Br>   
+            <iframe src="https://www.youtube.com/embed/xBWCniTv_Ro?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
         </div>
 
         <div class="evtCtnsBox wb_cts04" >            

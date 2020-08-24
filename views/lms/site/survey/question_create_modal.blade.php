@@ -203,12 +203,12 @@
 
         // ajax submit
         $_regi_form.submit(function() {
-            var _url = '{{ site_url("/site/survey/surveyQuestionStore") }}' + getQueryString();
+            var _url = '{{ site_url("/site/surveys/manager/surveyQuestionStore") }}' + getQueryString();
 
             ajaxSubmit($_regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url("/site/survey/eventSurveyCreate/") }}' + ret.ret_data.ss_idx + getQueryString());
+                    location.replace('{{ site_url("/site/surveys/manager/eventSurveyCreate/") }}' + ret.ret_data.ss_idx + getQueryString());
                 }
             }, showValidateError, null, false, 'alert');
         });

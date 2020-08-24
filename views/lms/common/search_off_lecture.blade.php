@@ -168,6 +168,7 @@
                                         +((row.IsLecOpen === 'Y') ? '개설' : '폐강')+'@$'       //10
                                         +row.AcceptStatusCcd_Name+'@$'    //11
                                         +row.SalePrice+'@$' //12
+                                        +row.StudyPatternCcd_Name+'@$' //13
                                     ;
                                     return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b><input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="hide" value=""></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
@@ -260,6 +261,7 @@
                                         +"		<td>"+temp_data_arr[2]+"</td>"
                                         +"		<td>"+temp_data_arr[3]+"</td>"
                                         +"		<td>"+temp_data_arr[4]+"</td>"
+                                        +"		<td>"+temp_data_arr[13]+"</td>"
                                         +"		<td style='text-align:left'>["+temp_data_arr[0]+"] "+temp_data_arr[5]+"</td>"
                                         +"		<td><div class='{{$locationid === 'essLecAdd' ? 'essLecPrice' : ''}}' data-price='"+temp_data_arr[12]+"'>"+addComma(temp_data_arr[7])+"원</div></td>"
                                         +"		<td>"+(temp_data_arr[10]=='폐강' ? '<font color="red">':'<font>')+temp_data_arr[10]+"</td>"

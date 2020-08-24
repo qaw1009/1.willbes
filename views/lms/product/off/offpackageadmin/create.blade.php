@@ -270,6 +270,21 @@
                             <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
                         </p>
                         <table class="table table-striped table-bordered" id="essLecList" width="100%">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="8%">
+                                <col width="5%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="5%">
+                                <col >
+                                <col width="7%">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="2%">
+                            </colgroup>
                             <tr>
                                 <th>그룹</th>
                                 <th>분류</th>
@@ -278,12 +293,14 @@
                                 <th>과정</th>
                                 <th>과목</th>
                                 <th>교수</th>
+                                <th>수강형태</th>
                                 <th>단과반명</th>
                                 <th>판매가</th>
                                 <th>개설여부</th>
                                 <th>접수상태</th>
                                 <th>삭제</th>
                             </tr>
+
                             @foreach($data_sublecture as $row)
                                 @if($row['IsEssential'] ==='Y')
                                     <tr name='essLecTrId' id='essLecTrId{{$loop->index}}'>
@@ -303,6 +320,7 @@
                                         <td>{{$row['CourseName']}}</td>
                                         <td>{{$row['SubjectName']}}</td>
                                         <td>{{$row['wProfName_String']}}</td>
+                                        <td>{{$row['StudyPatternCcd_Name']}}</td>
                                         <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                         <td><div class='essLecPrice' data-price='{{$row['RealSalePrice']}}'>{{number_format($row['RealSalePrice'])}}원</div></td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<font class="red">폐강</span>' :'개설' !!}</td>
@@ -325,6 +343,21 @@
                             <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
                         </p>
                         <table class="table table-striped table-bordered" id="selLecList" width="100%">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="8%">
+                                <col width="5%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="7%">
+                                <col width="5%">
+                                <col >
+                                <col width="7%">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="2%">
+                            </colgroup>
                             <tr>
                                 <th>그룹</th>
                                 <th>분류</th>
@@ -333,6 +366,7 @@
                                 <th>과정</th>
                                 <th>과목</th>
                                 <th>교수</th>
+                                <th>수강형태</th>
                                 <th>단과반명</th>
                                 <th>판매가</th>
                                 <th>개설여부</th>
@@ -358,6 +392,7 @@
                                         <td>{{$row['CourseName']}}</td>
                                         <td>{{$row['SubjectName']}}</td>
                                         <td>{{$row['wProfName_String']}}</td>
+                                        <td>{{$row['StudyPatternCcd_Name']}}</td>
                                         <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<span class="red">폐강</span>' :'개설' !!}</td>

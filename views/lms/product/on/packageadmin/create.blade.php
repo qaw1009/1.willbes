@@ -133,45 +133,53 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            @foreach($salestype_ccd as $key=>$val)
-                                @if($key == '613001')
-                                    @php
-                                            $SalePriceIsUse = '';
-                                            $SalePrice = '';
-                                            $SaleDiscType = '';
-                                            $SaleRate = '';
-                                            $RealSalePrice = '';
-                                    @endphp
-                                    @if($method === 'PUT')
-                                        @foreach($data_sale as $row)
-                                            @php
-                                                if(trim($key) == trim($row['SaleTypeCcd'])) {
-                                                    $SalePriceIsUse = $row['SalePriceIsUse'];
-                                                    $SalePrice = $row['SalePrice'];
-                                                    $SaleDiscType = $row['SaleDiscType'];
-                                                    $SaleRate = $row['SaleRate'];
-                                                    $RealSalePrice = $row['RealSalePrice'];
-                                                }
-                                            @endphp
-                                        @endforeach
+                            <div id="price_view">
+                                @foreach($salestype_ccd as $key=>$val)
+                                    @if($key == '613001')
+                                        @php
+                                                $SalePriceIsUse = '';
+                                                $SalePrice = '';
+                                                $SaleDiscType = '';
+                                                $SaleRate = '';
+                                                $RealSalePrice = '';
+                                        @endphp
+                                        @if($method === 'PUT')
+                                            @foreach($data_sale as $row)
+                                                @php
+                                                    if(trim($key) == trim($row['SaleTypeCcd'])) {
+                                                        $SalePriceIsUse = $row['SalePriceIsUse'];
+                                                        $SalePrice = $row['SalePrice'];
+                                                        $SaleDiscType = $row['SaleDiscType'];
+                                                        $SaleRate = $row['SaleRate'];
+                                                        $RealSalePrice = $row['RealSalePrice'];
+                                                    }
+                                                @endphp
+                                            @endforeach
+                                        @endif
+                                            <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
+                                            <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
+                                            [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원
+                                            &nbsp;&nbsp;
+                                            [할인율]
+                                                <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
+                                                    <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
+                                                    <option value="P" @if($SaleDiscType == 'P') selected="selected"@endif>-</option>
+                                                </select>&nbsp;
+                                                <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                            &nbsp;&nbsp;
+                                            [판매가]
+                                        <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
+                                        </tr>
                                     @endif
-                                        <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
-                                        <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
-                                        [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원
-                                        &nbsp;&nbsp;
-                                        [할인율]
-                                            <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
-                                                <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
-                                                <option value="P" @if($SaleDiscType == 'P') selected="selected"@endif>-</option>
-                                            </select>&nbsp;
-                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
-                                        &nbsp;&nbsp;
-                                        [판매가]
-                                    <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
-                                    </tr>
-                                @endif
-                            @endforeach
-
+                                @endforeach
+                            </div>
+                            <p>
+                                <BR>
+                                <B>• [정상가]자동산출 기준</B><BR>
+                                 - 필수과목강좌구성에 추가된 단강좌에 대한 정상가 기준으로 금액이 자동 합산됩니다.<BR>
+                                 - 패키지유형이 ‘일반형’일 경우에만 자동 산출됩니다.<BR>
+                                 - 자동 산출된 금액을 수기로 수정한 후 상품 추가 또는 삭제한 경우 정상가 기준으로 반영되어 금액이 변동됩니다.<BR>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +223,7 @@
                                     <td>{{$row['wProfName_String']}}</td>
                                     <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                     <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
-                                    <td>{{number_format($row['RealSalePrice'])}}원</td>
+                                    <td><div class='essLecPrice' data-price='{{$row['RealSalePrice']}}'>{{number_format($row['RealSalePrice'])}}원</div></td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('essLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                 </tr>
@@ -1013,7 +1021,6 @@
                 }
             });
 
-
             //카테고리검색
             $("#searchCategory").on('click', function () {
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
@@ -1203,9 +1210,12 @@
             });
         });
 
-
         function rowDelete(strRow) {
             $('#'+strRow).remove();
+            if(typeof autoPriceSum != 'undefined') {
+                if(strRow.indexOf('essLecTrId') > -1)
+                    autoPriceSum();
+            }
         }
 
         //판매가격 산출
@@ -1227,6 +1237,23 @@
             }
         }
 
+        function autoPriceSum() {
+            if($('input:radio[name="PackTypeCcd"]:checked').val() === '648001') {
+                var total=0;
+                $('.essLecPrice').each(function() {
+                    total += ($(this).data('price'));
+                });
+                setTimeout(function() {
+                    if(confirm("가격이 변경되었습니다. 변경된 가격을 적용하시겠습니까?")) {
+                        $('input[name="SalePrice[]"]:eq(0)').val(total);
+                        $key=$('input[name="SaleTypeCcd[]"]:eq(0)').val();
+                        priceCheck($key);
+                        $('#price_view').attr('class', 'red bold');
+                    }
+                }, 300);
+            }
+        }
+
         //안분율 자동 계산
         function rateCheck(strGubun) {
 
@@ -1240,7 +1267,6 @@
             }
 
             if($('#ProdDivisionPrice_'+strGubun).val() != '') {
-
                 //---   기존 단수처리 항목이 존재할경우 초기화 처리
                 remainValue = parseFloat($("#rateRemain").val());
                 //기존 선택 교수코드
@@ -1270,11 +1296,8 @@
 
                for(i=0;i<ProdDivisionRate.length;i++) {
                     if($('input[name="ProdDivisionRate[]"]')[i].value != "") {
-                        console.log($('input[name="ProdDivisionRate[]"]')[i].value + ' -- ');
                         sum_rate += parseFloat($('input[name="ProdDivisionRate[]"]')[i].value);
                     }
-                    //console.log(sum_rate);
-                    //sum_rate=(Math.floor(sum_rate*cipher)/cipher);  //합산결과
                }
 
                 $("#rateSum").html(sum_rate.toFixed(8));
@@ -1332,8 +1355,7 @@
             }
         }
 
-        function sitecode_chained(site_code) {        //운영사이트 변경으로 인한 수동 조정
-            //과정, 과목 변경
+        function sitecode_chained(site_code) {
             $("#CourseIdx").chained(site_code);
         }
 

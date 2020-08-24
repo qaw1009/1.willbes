@@ -127,12 +127,10 @@
                 var $selected_prodcode = {};
 
                 $(document).ready(function() {
-
                     $("#"+$parent_location).find("tr").each(function() {
                         ele = $(this);
                         prod_code = ele.find('input[name="ProdCodeSub[]"]').val();
                         if(prod_code != undefined) {
-                            console.log(prod_code);
                             $selected_prodcode[prod_code] = prod_code;
                         }
                     });
@@ -168,10 +166,12 @@
                                         +row.wProfName_String+'@$'
                                         +row.ProdName+'@$'
                                         +row.wProgressCcd_Name+' ('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')@$'
-                                        +addComma(row.RealSalePrice)+'원@$'
+                                        //+addComma(row.RealSalePrice)+'원@$'
+                                        +row.RealSalePrice+'@$'
                                         +row.SaleStatusCcd_Name+'@$'
+                                        +row.SalePrice+'@$'
                                     ;
-                                    return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b><input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="hide"></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+                                    return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b><input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="hide" value=""></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
                             @endif
                             {'data' : null, 'render' : function(data, type, row, meta) {
@@ -250,42 +250,45 @@
                             if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
 
                                 temp_data = $("#checkIdx"+i).val();
-                                temp_data_arr = temp_data.split("@$");
 
-                                $(document).find("#"+$parent_location).append(
-
-                                    "<tr id='"+$parent_location_tr+seq+"' name='"+ $parent_location_tr +"'>"
-                                    +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
-                                        @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
-                                    +"		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}"+seq+"' value='Y'>"
-                                    +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
-                                    +"		<td>"
-                                    +"     <select name='SubGroupName[]' id='SubGroupName"+seq+"' class=\"form-control mr-10\">"
+                                if(temp_data != '') {
+                                    temp_data_arr = temp_data.split("@$");
+                                    $(document).find("#" + $parent_location).append(
+                                        "<tr id='" + $parent_location_tr + seq + "' name='" + $parent_location_tr + "'>"
+                                        + "		<input type='hidden'  name='" + $parent_element + "[]' id='" + $parent_element + seq + "' value='" + temp_data_arr[0] + "'>"
+                                            @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
+                                        + "		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}" + seq + "' value='Y'>"
+                                        + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
+                                        + "		<td>"
+                                        + "     <select name='SubGroupName[]' id='SubGroupName" + seq + "' class=\"form-control mr-10\">"
                                             @for($i=1;$i<101;$i++)
-                                    +"         <option value='{{$i}}'>{{$i}}</option>"
+                                        + "         <option value='{{$i}}'>{{$i}}</option>"
                                             @endfor
-                                    +"     </select>"
-                                    +"		</td>"
-                                        @elseif($locationid === 'subLecAdd')
-                                    +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='N'>"
-                                        @endif
-                                    +"		<td>"+temp_data_arr[1]+"</td>"
-                                    +"		<td>"+temp_data_arr[2]+"</td>"
-                                    +"		<td>"+temp_data_arr[3]+"</td>"
-                                    +"		<td>"+temp_data_arr[4]+"</td>"
-                                    +"		<td style='text-align:left'>["+temp_data_arr[0]+"] "+temp_data_arr[5]+"</td>"
-                                    +"		<td>"+temp_data_arr[6]+"</td>"
-                                    +"		<td>"+temp_data_arr[7]+"</td>"
-                                    +"		<td>"+temp_data_arr[8]+"</td>"
-                                    +"		<td><a href='javascript:;' onclick=\"rowDelete('"+$parent_location_tr+seq+"')\"><i class=\"fa fa-times red\"></i></a></td>"
-                                    +"	</tr>"
-                                );
-                                seq = seq + 1;
-                                //##
+                                        + "     </select>"
+                                        + "		</td>"
+                                            @elseif($locationid === 'subLecAdd')
+                                        + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='N'>"
+                                            @endif
+                                        + "		<td>" + temp_data_arr[1] + "</td>"
+                                        + "		<td>" + temp_data_arr[2] + "</td>"
+                                        + "		<td>" + temp_data_arr[3] + "</td>"
+                                        + "		<td>" + temp_data_arr[4] + "</td>"
+                                        + "		<td style='text-align:left'>[" + temp_data_arr[0] + "] " + temp_data_arr[5] + "</td>"
+                                        + "		<td>" + temp_data_arr[6] + "</td>"
+                                        + "		<td><div class='{{$locationid === 'essLecAdd' ? 'essLecPrice' : ''}}' data-price='" + temp_data_arr[9] + "'>" + addComma(temp_data_arr[7]) + "원</div></td>"
+                                        + "		<td>" + temp_data_arr[8] + "</td>"
+                                        + "		<td><a href='javascript:;' onclick=\"rowDelete('" + $parent_location_tr + seq + "')\"><i class=\"fa fa-times red\"></i></a></td>"
+                                        + "	</tr>"
+                                    );
+                                    seq = seq + 1;
+                                }
                             }
-                            //#
                         }
                         $("#pop_modal").modal('toggle');
+
+                        if(typeof autoPriceSum != 'undefined') {
+                            {{$locationid === 'essLecAdd' ? 'autoPriceSum();' : ''}}
+                        }
                     }
                 });
             </script>

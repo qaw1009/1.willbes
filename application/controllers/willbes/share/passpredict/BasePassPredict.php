@@ -57,6 +57,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $column = 'PredictIdx, MockPart, ServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
         $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
@@ -74,6 +75,12 @@ class BasePassPredict extends \app\controllers\FrontController
         $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
         $arr_base['arr_mock_part'] = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
 
+        //답안입력여부
+        $answer_serviceYn = 'N';
+        if (date('YmdHi') >= $arr_base['predict_data']['AnswerServiceSDatm'] && date('YmdHi') <= $arr_base['predict_data']['AnswerServiceEDatm']) {
+            $answer_serviceYn = 'Y';
+        }
+
         $filepath = $this->config->item('upload_url_predict', 'predict');
         $filepath = $filepath.$idx."/";
         $view_file = 'willbes/'.APP_DEVICE.'/predict/'.$idx;
@@ -84,7 +91,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'mode' => $mode,
             'filepath' => $filepath,
             'data' => $data,
-            'arr_base' => $arr_base
+            'arr_base' => $arr_base,
+            'answer_serviceYn' => $answer_serviceYn
         ], false);
     }
 
@@ -96,6 +104,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $column = 'PredictIdx, MockPart';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
         $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
@@ -182,6 +191,12 @@ class BasePassPredict extends \app\controllers\FrontController
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->surveyModel->getArea($sysCode_Area);
 
+        //답안입력여부
+        $answer_serviceYn = 'N';
+        if (date('YmdHi') >= $predict_data['AnswerServiceSDatm'] && date('YmdHi') <= $predict_data['AnswerServiceEDatm']) {
+            $answer_serviceYn = 'Y';
+        }
+
         $view_file = 'willbes/'.APP_DEVICE.'/predict/'.$idx."_v2";
         $this->load->view($view_file, [
             'serial' => $serial,
@@ -194,7 +209,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'addscoreIs' => $addscoreIs,
             'openYn' => $openYn,
             'subject_list' => $subject_list,
-            'scoreType' => $scoreType
+            'scoreType' => $scoreType,
+            'answer_serviceYn' => $answer_serviceYn
         ], false);
     }
 
@@ -494,18 +510,42 @@ class BasePassPredict extends \app\controllers\FrontController
     }
 
     /**
-     * 합격예측채점팝업
+     * 모바일 빠른답안입력폼
      * @return object|string
      */
-    public function popwin2()
+    public function popwin2m()
     {
         if ($this->isLogin() !== true) {
             show_alert('로그인 후 이용해 주세요.', 'back');
         }
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $memidx = $this->session->userdata('mem_idx');
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
+        $type = element('type', $arr_input);
+
+        $column = 'PredictIdx, MockPart';
+        $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
+        $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $arr_condition = ['EQ' => ['PredictIdx' => $PredictIdx,'IsUse' => 'Y']];
+        $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
+        $res = $this->surveyModel->predictResist($PredictIdx, $memidx);
+
+        if (empty($predict_data) === true || empty($res) === true) {
+            show_alert('조회된 기본 정보가 없습니다.', 'back');
+        }
+
+        //답안입력여부
+        $answer_serviceYn = 'N';
+        if (date('YmdHi') >= $predict_data['AnswerServiceSDatm'] && date('YmdHi') <= $predict_data['AnswerServiceEDatm']) {
+            $answer_serviceYn = 'Y';
+        }
+        if ($answer_serviceYn == 'N') {
+            show_alert('답안입력 서비스기간이 아닙니다.', 'back');
+        }
+
         $ppidx = '';
         if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
             show_alert('잘못된 접근 입니다.', 'close');
@@ -579,21 +619,123 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        if ($scoreIs == 'Y') {
+        $this->load->view('willbes/m/predict/gradepop2m', [
+            'PredictIdx' => $PredictIdx,
+            'subject_list' => $subject_list,
+            'question_list' => $question_list,
+            'arr_input' => $arr_input,
+            'pridx' => $pridx,
+            'newQuestion' => $newQuestion,
+            'scoreIs' => $scoreIs,
+            'addscoreIs' => $addscoreIs,
+            'scoreType' => $scoreType,
+            'type' => $type
+        ], false);
+    }
+
+    /**
+     * 합격예측채점팝업
+     * @return object|string
+     */
+    public function popwin2()
+    {
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'back');
+        }
+
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $PredictIdx = element('PredictIdx', $arr_input);
+        $pridx = element('pridx', $arr_input);
+        $type = element('type', $arr_input);
+        $ppidx = '';
+        if ((empty($PredictIdx) === true) || (empty($pridx) === true)) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
+
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if (empty($subject_list) === true) {
+            show_alert('조회된 기본 정보가 없습니다.','back');
+        }
+        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
+
+        $j = 1;
+        $newQuestion = array();
+        $numArr = array();
+        $numstr = '';
+
+        foreach($question_list as $key => $val){
+            $PpIdx = $val['PpIdx'];
+            $Answer = $val['Answer'];
+            $isPP = 'N';
+            foreach($subject_list as $key2 => $val2){
+                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            }
+            if($isPP == 'Y'){
+                $numArr[] = $j;
+                if($Answer) $numstr .= $Answer;
+                if($j % 5 == 0){
+                    $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
+                    $newQuestion['answerset'][$PpIdx][] = $numstr;
+                    unset($numArr);
+                    $numstr = '';
+                    if($j == 20) $j = 0;
+                }
+                $j++;
+            }
+        }
+
+        $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
+        $score2 = $this->surveyModel->getScore2($pridx, $PredictIdx);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if ($scoreIs == 'Y' && empty($type) === true) {
             //결과보기페이지로 이동
             redirect(front_url('/predict/popwin4/') . '?PredictIdx=' . $PredictIdx . '&pridx=' . $pridx);
         }
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
-            'PredictIdx'      => $PredictIdx,
-            'subject_list'  => $subject_list,
+            'PredictIdx' => $PredictIdx,
+            'subject_list' => $subject_list,
             'question_list' => $question_list,
-            'arr_input'     => $arr_input,
-            'pridx'         => $pridx,
-            'newQuestion'   => $newQuestion,
-            'scoreIs'       => $scoreIs,
-            'addscoreIs'    => $addscoreIs,
-            'scoreType'     => $scoreType
+            'arr_input' => $arr_input,
+            'pridx' => $pridx,
+            'newQuestion' => $newQuestion,
+            'scoreIs' => $scoreIs,
+            'addscoreIs' => $addscoreIs,
+            'scoreType' => $scoreType,
+            'type' => $type
         ], false);
     }
 

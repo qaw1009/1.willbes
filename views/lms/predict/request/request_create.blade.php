@@ -16,8 +16,8 @@
 
                 <table class="table table-bordered modal-table">
                     <tr>
-                        <th colspan="1">운영사이트 <span class="required">*</span></th>
-                        <td colspan="3" class="form-inline">
+                        <th>운영사이트 <span class="required">*</span></th>
+                        <td class="form-inline">
                             <select class="form-control mr-5" name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
                                 <option value="">사이트선택</option>
                                 <option value="2001" @if($data['SiteCode']=='2001') selected="selected" @endif>경찰온라인</option>
@@ -27,16 +27,16 @@
                             </select>
                             <span class="ml-20">저장 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
+                        <th>서비스코드</th>
+                        <td>
+                            @if($method == 'PUT'){{ $data['PredictIdx'] }}@endif
+                        </td>
                     </tr>
 
                     <tr>
                         <th>서비스명 <span class="required">*</span></th>
                         <td>
                             <input type="text" class="form-control" name="ProdName" value="@if($method == 'PUT'){{ $data['ProdName'] }}@endif" style="width:70%;">
-                        </td>
-                        <th>서비스코드</th>
-                        <td>
-                            @if($method == 'PUT'){{ $data['PredictIdx'] }}@endif
                         </td>
                     </tr>
 
@@ -67,7 +67,15 @@
                             <div id="chkArea"></div>
                         </td>
                     </tr>
-
+                    <tr>
+                        <th colspan="1">응시번호 중복체크 사용여부 <span class="required">*</span></th>
+                        <td>
+                            <div>
+                                <input type="radio" name="TakeNumRedundancyCheckIsUse" class="flat" value="Y" @if($method == 'PUT' && $data['TakeNumRedundancyCheckIsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
+                                <input type="radio" name="TakeNumRedundancyCheckIsUse" class="flat" value="N" @if($method == 'PUT' && $data['TakeNumRedundancyCheckIsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <th colspan="1">서비스기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
@@ -103,6 +111,41 @@
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['PreServiceEDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분 <br>
+
+                            답안입력서비스 :
+                            <input type="radio" class="flat" name="AnswerServiceIsUse" value="Y" @if($method == 'PUT') @if($data['AnswerServiceIsUse'] == 'Y') checked @endif @endif />사용
+                            <input type="radio" class="flat" name="AnswerServiceIsUse" value="N" @if($method == 'PUT') @if($data['AnswerServiceIsUse'] == 'N') checked @endif @endif />미사용
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="AnswerServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['AnswerServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="답안입력 시작일">
+                            <select name="AnswerServiceSDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['AnswerServiceSDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="AnswerServiceSDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['AnswerServiceSDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분
+                            <span class="ml-10 mr-10"> ~ </span>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="AnswerServiceEDatm_d" value="@if($method == 'PUT'){{ substr($data['AnswerServiceEDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="답안입력 종료일">
+                            <select name="AnswerServiceEDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['AnswerServiceEDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="AnswerServiceEDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['AnswerServiceEDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분 <br>
 
@@ -213,16 +256,14 @@
                             </div>
                         </td>
                         <th colspan="1">설문 </th>
-                        <td>
-                            <div>
-
-                                <select name="SpIdx" class="form-control">
-                                    <option value="">선택</option>
-                                    @foreach($surveyList as $row)
-                                        <option value="{{$row['SpIdx']}}" @if($row['SpIdx'] == $data['SpIdx']) selected @endif>[{{$row['SpIdx']}}] {{$row['SpTitle']}} ({{$row['SpUseYn'] == 'Y' ? '사용' : '미사용'}})</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <td class="form-inline">
+                            <select name="SpIdx" class="form-control">
+                                <option value="">선택</option>
+                                @foreach($surveyList as $row)
+                                    {{--<option value="{{$row['SpIdx']}}" @if($row['SpIdx'] == $data['SpIdx']) selected @endif>[{{$row['SpIdx']}}] {{$row['SpTitle']}} ({{$row['SpUseYn'] == 'Y' ? '사용' : '미사용'}})</option>--}}
+                                    <option value="{{$row['SsIdx']}}" @if($row['SsIdx'] == $data['SpIdx']) selected @endif>[{{$row['SsIdx']}}] {{$row['SurveyTitle']}} ({{$row['IsUse'] == 'Y' ? '사용' : '미사용'}})</option>
+                                @endforeach
+                            </select>
                         </td>
                     </tr>
 
@@ -343,7 +384,7 @@
             }
             // 목록 이동
             $('#goList').on('click', function() {
-                location.replace('{{ site_url('/predict/request') }}' + getQueryString());
+                location.replace('{{ site_url('/predict/request/') }}' + getQueryString());
             });
 
             // 등록,수정
@@ -376,7 +417,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/predict/request') }}' + getQueryString());
+                        location.replace('{{ site_url('/predict/request/') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
 

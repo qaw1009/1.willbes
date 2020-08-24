@@ -114,19 +114,18 @@
         </form>
 
         <div class="sub3_1">
-            <h2>성적 입력/확인</h2>
+            <h2>성적 입력/확인 @if($mode == 'MOD' && $answer_serviceYn == 'Y')<input type="button" onclick="javascript:addAnswer({{ $idx }})" value="답안입력">@endif</h2>
             {{--성적채점--}}
             <div>
-                @if($scoreIs == 'N')
+                @if($scoreIs == 'N' || $answer_serviceYn == 'Y')
                     <div class="sub3_1_txt" id="maskArea" style="display:none;">
                         <div>
                             <p>
                                 {{--4월 27일 11시40분까지--}}
-                                {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>
 
                                 {{--4월 27일 11시40분이후--}}
-                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
-
+                                {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">--}}
                             </p>
                         </div>
                     </div>
@@ -309,6 +308,16 @@
             width = 1300;
             height = 900;
             win = window.open(_url, 'resultpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
+            win.focus();
+        }
+
+        //답안입력
+        function addAnswer(PredictIdx)
+        {
+            _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val() + '&type=answer';
+            width = 680;
+            height = 700;
+            win = window.open(_url, 'answer', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
             win.focus();
         }
 

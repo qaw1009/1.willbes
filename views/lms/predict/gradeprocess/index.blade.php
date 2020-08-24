@@ -106,6 +106,9 @@
                 serverSide: true,
                 paging: false,
                 buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 채점하기', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
+                            editGradePaperAjax();
+                        }},
                     { text: '<i class="fa fa-pencil mr-5"></i> 원점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
                         scoreMakeStep1();
                     }},
@@ -158,6 +161,19 @@
                 }, showValidateError, false, 'POST');
             }
         });
+
+        // 채점하기
+        function editGradePaperAjax()
+        {
+            if(!confirm("채점 하시겠습니까?")) return;
+            var _url = '{{ site_url('/predict/gradeprocessing/editGradePaperAjax') }}';
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    $datatable.draw();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
 
         // 원점수 반영
         function scoreMakeStep1(){

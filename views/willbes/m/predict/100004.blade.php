@@ -67,7 +67,14 @@
                             <a href="#none" onclick="javascript:gotab({{ $idx }});" class="btn2">채점 및 성적확인</a>
                         @endif
                     @else
-                        <a href="#none" onclick="javascript:alert('{{$service_start_mon}}월{{$service_start_day}}일({{$service_yoil}}) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
+                        @if ($mode != 'MOD')
+                            <a href="javascript:alert('기본정보를 입력해주세요.')" class="btn2">빠른답안입력</a>
+                        @elseif ($answer_serviceYn == 'Y')
+                            <a href="#none" onclick="javascript:addAnswer({{ $idx }});" class="btn2">빠른답안입력</a>
+                        @else
+                            <a href="javascript:alert('빠른답안입력 서비스 기간이 아닙니다.')" class="btn2">빠른답안입력</a>
+                        @endif
+                        {{--<a href="#none" onclick="javascript:alert('{{$service_start_mon}}월{{$service_start_day}}일({{$service_yoil}}) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>--}}
                     @endif
                     {{--27일부터 보이는 버튼--}}
                     {{--<a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>--}}
@@ -398,6 +405,10 @@
 
         function gotab(PredictIdx){
             location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
+        }
+
+        function addAnswer(PredictIdx) {
+            location.href = '{{ front_url('/predict/popwin2m/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val() + '&type=answer';
         }
 
         function takeNumChk(take_mock_position, takenum) {

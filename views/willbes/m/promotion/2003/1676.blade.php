@@ -208,7 +208,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">
-                    <span>8/17(월)~8/21(금) <br>오후 6시</span>
+                    <span>8/31(월)~9/4(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

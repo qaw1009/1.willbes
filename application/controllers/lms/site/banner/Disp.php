@@ -26,26 +26,24 @@ class Disp extends \app\controllers\BaseController
         foreach (get_auth_site_codes(false, true) as $site_code) {
             $total_category_data[] = [
                 'SiteCode' => $site_code,
+                'SiteName' => '',
                 'CateCode' => '0',
                 'CateName' => '전체카테고리',
                 'ParentCateCode' => '0',
                 'GroupCateCode' => '0',
-                'CateDepth' => '1'
+                'CateDepth' => '1',
+                'CateRouteName' => '전체카테고리'
             ];
         }
         // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $category_data = $this->categoryModel->getCategoryRouteArray();
         $category_data = array_merge($total_category_data, $category_data);
 
-        //사이트카테고리 중분류 조회
-        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
-
-        //배너노출방식
+        // 배너노출방식
         $disp_info = $this->codeModel->getCcd($this->_groupCcd['banner_disp']);
 
         $this->load->view('site/banner/disp_index',[
             'arr_cate_code' => $category_data,
-            'arr_m_category' => $arr_m_category,
             'arr_disp_info' => $disp_info
         ]);
     }
@@ -146,8 +144,7 @@ class Disp extends \app\controllers\BaseController
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'A.DispTypeCcd' => $this->_reqP('search_banner_disp_type'),
-                'A.IsUse' => $this->_reqP('search_is_use'),
-                'A.CateCode' => $this->_reqP('search_md_cate_code')
+                'A.IsUse' => $this->_reqP('search_is_use')
             ],
             'LKR' => [
                 'A.CateCode' => $this->_reqP('search_cate_code')

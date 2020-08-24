@@ -5,7 +5,6 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -18,6 +17,14 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
+                            <option value="">카테고리</option>
+                            @foreach($arr_cate_code as $row)
+                                <option value="{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control mr-10" id="search_popup_disp" name="search_popup_disp" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($popup_disp as $key => $val)
@@ -104,6 +111,9 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             /*setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');*/
+
+            // 카테고리 자동변경
+            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

@@ -21,14 +21,7 @@
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                            @endforeach
-                        </select>
-
-                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
-                            <option value="">중분류</option>
-                            @foreach($arr_m_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
 
@@ -114,7 +107,6 @@
 
             // 카테고리 자동변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
-            $search_form.find('select[name="search_md_cate_code"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
@@ -122,13 +114,13 @@
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 노출섹션등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/banner/disp/create') }}' + dtParamsToQueryString($datatable);
-                        }}
+                    }}
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/banner/disp/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
                 },
                 columns: [
@@ -149,41 +141,6 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]
-            });
-
-            $('.btn-reorder-open').click(function() {
-                $('.btn-reorder-open').setLayer({
-                    "url" : "{{ site_url('/site/banner/disp/listReOrderModal') }}",
-                    "width" : "1400",
-                });
-            });
-
-            // 삭제
-            $('.btn-is-use').click(function() {
-                var $params = {};
-                var _url = "{{ site_url('/site/banner/disp/delBanner') }}"
-
-                $('input[name="is_use"]:checked').each(function() {
-                    $params[$(this).data('is-use-idx')] = $(this).val();
-                });
-
-                if (Object.keys($params).length <= '0') {
-                    alert('삭제할 리스트를 선택해주세요.');
-                    return false;
-                }
-
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'params' : JSON.stringify($params)
-                };
-
-                sendAjax(_url, data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
             });
 
             // 데이터 수정 폼

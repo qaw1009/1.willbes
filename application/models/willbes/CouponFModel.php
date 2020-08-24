@@ -14,7 +14,8 @@ class CouponFModel extends WB_Model
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'product' => 'lms_product',
-        'product_lecture' => 'lms_product_lecture'
+        'product_lecture' => 'lms_product_lecture',
+        'product_sms' => 'lms_product_sms'
     ];
 
     // 쿠폰유형 (할인권, 수강권)
@@ -33,6 +34,11 @@ class CouponFModel extends WB_Model
 
     // 발급타입 공통코드 (자동, 수동, 환불재발급, 주문결제자동발급)
     private $_coupon_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003', 'order' => '647004'];
+
+    // 상품자동문자 발송할 쿠폰 식별자
+    private $_coupon_idx_prod_sms = [
+        (ENVIRONMENT == 'production' || ENVIRONMENT == 'testing' ? '505' : '312' )      // 엔잡 도매꾹 수강권 쿠폰
+    ];
 
     public function __construct()
     {
@@ -348,8 +354,19 @@ class CouponFModel extends WB_Model
                 if ($is_order !== true) {
                     throw new \Exception($is_order);
                 }
+
+                // 특정쿠폰 상품자동문자 발송
+                $sms_data = $this->getCouponProductAutoSmsMsg($coupon_detail_idx, $this->session->userdata('mem_idx'));
+                if(empty($sms_data) === false && in_array($result['ret_data']['coupon']['CouponIdx'], $this->_coupon_idx_prod_sms) === true) {
+                    $this->load->loadModels(['crm/smsF']);
+                    foreach ($sms_data as $sms_row) {
+                        if (empty($sms_row['SendSmsTel']) === false && empty($sms_row['SendSmsMsg']) === false) {
+                            $send_sms_msg = $this->smsFModel->getProductSendSmsMsg($sms_row);
+                            $this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $send_sms_msg, $sms_row['SendSmsTel'], null, 'KFT');
+                        }
+                    }
+                }
             }
-            
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -473,5 +490,27 @@ class CouponFModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where)->row(0)->checkCnt;
 
         return $query;
+    }
+
+    /**
+     * 쿠폰상품 SMS 발송 메시지 조회
+     * @param int $cd_idx [쿠폰사용식별자]
+     * @param int $mem_idx [회원식별자]
+     * @return mixed
+     */
+    public function getCouponProductAutoSmsMsg($cd_idx, $mem_idx)
+    {
+        $column = 'PSM.SendTel AS SendSmsTel, PSM.Memo AS SendSmsMsg, CONCAT(OP.OrderProdIdx, RIGHT(OP.MemIdx, 3)) AS EventCertCode';
+        $from = "
+            FROM {$this->_table['order_product']} AS OP
+            INNER JOIN {$this->_table['order']} AS O ON OP.OrderIdx = O.OrderIdx
+            LEFT JOIN {$this->_table['product']} AS P ON OP.ProdCode = P.ProdCode AND P.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['product_sms']} AS PSM ON OP.ProdCode = PSM.ProdCode AND PSM.IsStatus = 'Y'
+            WHERE OP.UserCouponIdx = ?
+            AND O.MemIdx = ? 
+            AND P.IsSms = 'Y'                                            
+        ";
+        $query = $this->_conn->query('SELECT ' . $column . $from, [$cd_idx, $mem_idx]);
+        return $query->result_array();
     }
 }

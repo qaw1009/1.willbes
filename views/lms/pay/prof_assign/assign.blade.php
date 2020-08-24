@@ -161,6 +161,7 @@
                                 <th>과목</th>
                                 <th>선택</th>
                                 <th>교수</th>
+                                <th>수강형태</th>
                                 <th width="260">단과반명</th>
                                 <th>개강일~종강일</th>
                                 <th>요일(회차)</th>
@@ -176,6 +177,7 @@
                                     <td class="row_{{ $key }}_subject_name">{{ $row['SubjectName'] }}<span class="hide">{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}</span></td>
                                     <td><input type="checkbox" name="prod_code_sub_{{ $key }}_{{ $row['CourseIdx'] }}_{{ $row['SubjectIdx'] }}" class="flat prod-code-sub" value="{{ $row['ProdCodeSub'] }}" {!! $row['IsAssign'] == 'Y' ? 'checked="checked"' : '' !!}/></td>
                                     <td>{{ $row['wProfName'] }}</td>
+                                    <td>{{ $row['StudyPatternCcdName'] }}</td>
                                     <td>{{ $row['ProdNameSub'] }}
                                         @if(empty($row['LectureRoomSeatNo']) === false)
                                             <br/><span class="blue">좌석번호 : {{ $row['LectureRoomSeatNo'] }}</span>

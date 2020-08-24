@@ -623,11 +623,12 @@
                                         <col style="width: 10%;">
                                         <col style="width: 10%;">
                                         <col style="width: 5%;">
-                                        <col style="width: 10%;">
+                                        <col style="width: 8%;">
+                                        <col style="width: 8%;">
                                         <col>
-                                        <col style="width: 15%;">
-                                        <col style="width: 12%;">
-                                        <col style="width: 15%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
                                     </colgroup>
                                     <thead>
                                         <tr>
@@ -635,6 +636,7 @@
                                             <th>과목</th>
                                             <th>선택</th>
                                             <th>교수</th>
+                                            <th>수강형태</th>
                                             <th>단과반명</th>
                                             <th>개강일~종강일 </th>
                                             <th>요일(회차)</th>
@@ -647,44 +649,50 @@
                                             <td rowspan="2">형법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명1 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명2 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>
+                                                2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="2">민법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명3 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>수목금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명4 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>행정법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명5 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -697,11 +705,12 @@
                                         <col style="width: 10%;">
                                         <col style="width: 10%;">
                                         <col style="width: 5%;">
-                                        <col style="width: 10%;">
+                                        <col style="width: 8%;">
+                                        <col style="width: 8%;">
                                         <col>
-                                        <col style="width: 15%;">
-                                        <col style="width: 12%;">
-                                        <col style="width: 15%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
                                     </colgroup>
                                     <thead>
                                         <tr>
@@ -709,6 +718,7 @@
                                             <th>과목</th>
                                             <th>선택</th>
                                             <th>교수</th>
+                                            <th>수강형태</th>
                                             <th>단과반명</th>
                                             <th>개강일~종강일 </th>
                                             <th>요일(회차)</th>
@@ -721,44 +731,49 @@
                                             <td rowspan="2">형법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명1 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명2 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="2">민법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명3 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>수목금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>○</td>
                                             <td>교수명4 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>행정법 </td>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명5 </td>
+                                            <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                     </tbody>
                                 </table>

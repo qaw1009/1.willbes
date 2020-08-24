@@ -804,7 +804,7 @@ class OrderListModel extends BaseOrderModel
         $vw_off_lecture = 'vw_product_off_lecture';     // 학원단과 뷰 테이블
         $column = 'PS.ProdCode, PS.IsEssential
             , VP.ProdCode as ProdCodeSub, VP.ProdName as ProdNameSub, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName
-            , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate, VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
+            , VP.ProfIdx, VP.wProfName, VP.StudyStartDate, VP.StudyEndDate, VP.StudyPatternCcdName, VP.WeekArrayName, VP.Amount, VP.ProfChoiceStartDate, VP.ProfChoiceEndDate
             , (select count(distinct A.MemIdx)
                 from ' . $this->_table['order_product'] . ' as A 
                     inner join ' . $this->_table['order_sub_product'] . ' as B 

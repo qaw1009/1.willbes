@@ -864,6 +864,22 @@ function fn_chk_byte(val){
 }
 
 /**
+ * 글자수 리턴 함수
+ * @param val
+ * @returns {number}
+ */
+function fn_chk_text_length(msg, textType) {
+    switch(textType){
+        case 'space':
+            msg = msg.replace(/\r\n/gm, '\n');      //공백 포함
+            break;
+        default:
+            msg = msg.replace(/\s/gm, '');          //공백 미포함
+    }
+    return msg.length;
+}
+
+/**
  * 원격지원서비스 실행
  */
 function remoteOpen() {

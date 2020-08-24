@@ -85,7 +85,8 @@
                         </div>
                         <div class="form-group form-group-sm sms-view">
                             <label class="control-label col-md-4" for=""></label>
-                            <div class="col-md-8 text-right form-inline">
+                            <div class="col-md-12 text-right form-inline">
+                                <input type="text" readonly="readonly" class="form-control border-red red" id="content_length" value="0" style="width: 50px;"> <span class="red">글자</span>
                                 <input type="text" readonly="readonly" class="form-control border-red red" id="content_byte" value="0" style="width: 50px;"> <span class="red">byte</span>
                                 (55byte 이상일 경우 MMS로 전환됩니다.)
                             </div>
@@ -363,9 +364,12 @@
                     var send_content = $('#send_content').val();
                     var kakao_msg_type = $(':radio[name="kakao_msg_type"]:checked').val();
 
-                    if(kakao_msg_type == 'KAT') {
-                        if(send_content.lastIndexOf('#{') != -1 || send_content.lastIndexOf('}') != -1) vali_msg = '메세지 내용에 변환되지 않은 변수가 있습니다';
+                    if(kakao_msg_type == 'KAT'&& (send_content.lastIndexOf('#{') != -1 || send_content.lastIndexOf('}') != -1)) {
+                        vali_msg = '메세지 내용에 변환되지 않은 변수가 있습니다';
+                    } else if ($('#content_length').val() > 1000 || $('#content_byte').val() > 2000) {
+                        vali_msg = '메세지 내용은 공백포함 1000글자, 2000바이트 이내로 전송 가능합니다.';
                     }
+
                     if(vali_msg){
                         alert(vali_msg);
                         return;
@@ -405,6 +409,7 @@
 
             function chkByteContent(){
                 $('#content_byte').val(fn_chk_byte($('#send_content').val()));
+                $('#content_length').val(fn_chk_text_length($('#send_content').val(), 'space'));
             }
 
         </script>

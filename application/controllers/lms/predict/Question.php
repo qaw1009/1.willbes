@@ -225,12 +225,12 @@ class Question extends \app\controllers\BaseController
             return;
         }
         //print_r($_POST);
-        foreach ($this->input->post('RightAnswerTmp') as $k => $v) {
+        /*foreach ($this->input->post('RightAnswerTmp') as $k => $v) {
             if( !preg_match('/^[1-9,]+$/', $_POST['RightAnswerTmp'][$k]) ) {
                 $this->json_error('정답을 선택하세요');
                 return;
             }
-        }
+        }*/
 
         $result = $this->predictModel->storePPQuestion();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);

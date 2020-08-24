@@ -98,9 +98,9 @@ class PredictModel extends WB_Model
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
         $column = "
-            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, 
-            PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
-            PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
+            PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
+            PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
         ";
 
@@ -645,10 +645,10 @@ class PredictModel extends WB_Model
     public function getProduct($PredictIdx){
         $column = "
             PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
-            PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
-            PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
-            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
-            ,pp.SuccessfulCount,pp.CertIdxArr,pp.SpIdx
+            PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
+            PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2,
+            pp.SuccessfulCount,pp.CertIdxArr,pp.SpIdx
         ";
 
         $from = "
@@ -766,8 +766,8 @@ class PredictModel extends WB_Model
     public function getProductALL(){
         $column = "
             PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
-            PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
-            PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
+            PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
+            PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
         ";
 
@@ -854,13 +854,12 @@ class PredictModel extends WB_Model
 
         try {
             $this->_conn->trans_start();
-
             $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
             $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
-
+            $AnswerServiceSDatm =   $this->input->post('AnswerServiceSDatm_d') .' '. $this->input->post('AnswerServiceSDatm_h') .':'. $this->input->post('AnswerServiceSDatm_m') .':00';
+            $AnswerServiceEDatm =   $this->input->post('AnswerServiceEDatm_d') .' '. $this->input->post('AnswerServiceEDatm_h') .':'. $this->input->post('AnswerServiceEDatm_m') .':00';
             $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
             $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
-
             $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
             $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
 
@@ -878,13 +877,17 @@ class PredictModel extends WB_Model
                 'ProdName'      => $this->input->post('ProdName', true),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
+                'TakeNumRedundancyCheckIsUse' => $this->input->post('TakeNumRedundancyCheckIsUse'),
                 'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'AnswerServiceIsUse' => $this->input->post('AnswerServiceIsUse'),
                 'ServiceIsUse' => $this->input->post('ServiceIsUse'),
                 'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
                 'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
                 'IsUse' => $this->input->post('IsUse'),
                 'PreServiceSDatm' => $PreServiceSDatm,
                 'PreServiceEDatm' => $PreServiceEDatm,
+                'AnswerServiceSDatm' => $AnswerServiceSDatm,
+                'AnswerServiceEDatm' => $AnswerServiceEDatm,
                 'ServiceSDatm' => $ServiceSDatm,
                 'ServiceEDatm' => $ServiceEDatm,
                 'LastServiceSDatm' => $LastServiceSDatm,
@@ -926,16 +929,14 @@ class PredictModel extends WB_Model
 
         try {
             $this->_conn->trans_start();
-
             $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
             $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
-
+            $AnswerServiceSDatm =   $this->input->post('AnswerServiceSDatm_d') .' '. $this->input->post('AnswerServiceSDatm_h') .':'. $this->input->post('AnswerServiceSDatm_m') .':00';
+            $AnswerServiceEDatm =   $this->input->post('AnswerServiceEDatm_d') .' '. $this->input->post('AnswerServiceEDatm_h') .':'. $this->input->post('AnswerServiceEDatm_m') .':00';
             $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
             $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
-
             $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
             $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
-
 
             // lms_Product_Mock 저장
             $data = array(
@@ -945,13 +946,17 @@ class PredictModel extends WB_Model
                 'SurveyIs'       => empty($this->input->post('SurveyIs')) ? null : implode(',', $this->input->post('SurveyIs')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
+                'TakeNumRedundancyCheckIsUse' => $this->input->post('TakeNumRedundancyCheckIsUse'),
                 'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'AnswerServiceIsUse' => $this->input->post('AnswerServiceIsUse'),
                 'ServiceIsUse' => $this->input->post('ServiceIsUse'),
                 'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
                 'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
                 'IsUse' => $this->input->post('IsUse'),
                 'PreServiceSDatm' => $PreServiceSDatm,
                 'PreServiceEDatm' => $PreServiceEDatm,
+                'AnswerServiceSDatm' => $AnswerServiceSDatm,
+                'AnswerServiceEDatm' => $AnswerServiceEDatm,
                 'ServiceSDatm' => $ServiceSDatm,
                 'ServiceEDatm' => $ServiceEDatm,
                 'LastServiceSDatm' => $LastServiceSDatm,
@@ -1859,6 +1864,44 @@ class PredictModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->result_array();
         return $data;
+    }
+
+    /**
+     * 채점하기
+     * @param $PredictIdx
+     * @return array|bool
+     */
+    public function updateForGradePaper($PredictIdx)
+    {
+        try {
+            $this->_conn->trans_begin();
+            if(empty($PredictIdx) == true){
+                throw new \Exception('필수값 누락입니다.');
+            }
+
+            $query_string = "
+                lms_predict_answerpaper AS a,
+                (
+                    SELECT pa.PrIdx, pa.PpIdx, pa.PqIdx, IF(pa.Answer = pq.RightAnswer,'Y','N') AS targetIsWrong
+                    FROM lms_predict_answerpaper AS pa
+                    INNER JOIN lms_predict_questions AS pq ON pa.PqIdx = pq.PqIdx
+                    WHERE pa.PredictIdx = ?
+                ) AS b
+                SET a.IsWrong = b.targetIsWrong
+                WHERE a.PredictIdx = ? AND a.PrIdx = b.PrIdx AND a.PpIdx = b.PpIdx AND a.PqIdx = b.PqIdx
+            ";
+            // 쿼리 실행
+            $results = $this->_conn->query('update ' . $query_string, [$PredictIdx, $PredictIdx]);
+            if (empty($results) === true) {
+                throw new \Exception('채점하기 실패입니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

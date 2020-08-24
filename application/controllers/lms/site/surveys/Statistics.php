@@ -189,6 +189,104 @@ class Statistics extends \app\controllers\BaseController
     }
 
     /**
+     * 설문조사 선택 문항 비율 계산
+     * @param $question_data
+     * @param $answer_info
+     * @return mixed
+     */
+    private function _mathAnswerSpreadData($question_data=[],$answer_info=[]){
+        // 선택 문항 초기화
+        list($new_question_data,$reset_data) = $this->_resetSurveyRecords($question_data);
+
+        // 선택 문항 카운트
+        $answer_data = $this->_countSurveyRecords($answer_info,$reset_data);
+
+        return $this->_matchingSurveyData($answer_data,$new_question_data);
+    }
+
+    /**
+     * 설문조사 문항 초기화
+     * @param $question_data
+     * @return mixed
+     */
+    private function _resetSurveyRecords($question_data=[])
+    {
+        $new_question_data = [];
+        $reset_data = [];
+        foreach ($question_data as $key => $val){
+            $new_question_data[$val['SsqIdx']] = $val;
+
+            if($val['SqType'] == 'D'){ // 서술형
+                $reset_data[$val['SsqIdx']] = 'D';
+            }else{
+                foreach ($val['SqJsonData'] as $answer_key => $answer){
+                    foreach ($answer['item'] as $k => $v){
+                        $reset_data[$val['SsqIdx']][$answer_key][$k] = 0;
+                    }
+                }
+            }
+        }
+
+        return [$new_question_data,$reset_data];
+    }
+
+    /**
+     * 설문조사 선택 문항 카운트
+     * @param $answer_data
+     * @param $reset_data
+     * @return mixed
+     */
+    private function _countSurveyRecords($answer_data=[],$reset_data=[])
+    {
+        foreach ($answer_data as $key => $val){
+            foreach ($val['AnswerInfo'] as $question_key => $answer){
+                if(empty($reset_data[$question_key]) === false && $reset_data[$question_key] != 'D'){ // 서술형 제외
+                    foreach ($answer as $k => $v){
+                        $reset_data[$question_key][$k][$v] += 1;
+                    }
+                }
+            }
+        }
+
+        return $reset_data;
+    }
+
+    /**
+     * 설문조사 데이타 매칭
+     * @param $answer_data
+     * @param $new_question_data
+     * @return mixed
+     */
+    private function _matchingSurveyData($answer_data=[],$new_question_data=[])
+    {
+        $data = [];
+        foreach ($answer_data as $question_key => $answer){
+            $SqType = $new_question_data[$question_key]['SqType'];
+            $SqTitle = $new_question_data[$question_key]['SqTitle'];
+            if($SqType != 'D'){ // 서술형 제외
+                foreach ((array)$answer as $key => $val){
+                    $question_info = $new_question_data[$question_key]['SqJsonData'][$key];
+                    $item_sum = array_sum($val);
+
+                    if($item_sum > 0){
+                        foreach ($val as $k => $v){
+                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
+                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                            }else{
+                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
      * old 설문통계 데이타 등록 (한번만 실행)
      */
     public function runOnce()

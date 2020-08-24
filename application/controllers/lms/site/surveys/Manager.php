@@ -327,7 +327,7 @@ class Manager extends \app\controllers\BaseController
     }
 
     /**
-     * 설문응답 선택 문항 비율 계산
+     * 설문조사 선택 문항 비율 계산
      * @param $question_data
      * @param $answer_info
      * @return mixed

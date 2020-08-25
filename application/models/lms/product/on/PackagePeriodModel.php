@@ -25,7 +25,7 @@ class PackagePeriodModel extends CommonLectureModel
             $column = ' STRAIGHT_JOIN
                             A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                            ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.StudyPeriod
+                            ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.StudyPeriodCcd,B.StudyPeriod,B.StudyEndDate
                             ,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as PackTypeCcd_Name
                             ,Be.CcdName as PackCateCcd_Name

@@ -465,9 +465,9 @@ span {
 #Header .searchBox:after {content:""; display:block; clear:both}
 
 #Header .searchBox.book div {border:2px solid #0c9d00;}
-#Header .searchBox.book div select { position: absolute; top:4px; left:20px; z-index: 1;}
-#Header .searchBox.book div input[type=search] {border:0; height:46px; width:calc(100% - 255px); float: left; margin-left:125px;}
-#Header .searchBox.book button {background:url("https://static.willbes.net/public/images/promotion/m/wsbook_search.png") no-repeat center center;}
+#Header .searchBox.book div select {position: absolute; top:4px; left:20px; z-index: 1;}
+#Header .searchBox.book div input[type=search] {border:0; height:46px; width:calc(100% - 130px); float: left; /*margin-left:125px;*/}
+#Header .searchBox.book button {background:url("https://static.willbes.net/public/images/promotion/m/2012/wsbook_search.png") no-repeat center center;}
 
 
 /* MainTxtBnr */
@@ -1142,16 +1142,16 @@ body.memBody #Footer {
 .bestView .sampleLecBn:after {content:""; display: block; clear: both;}
 
 
-/****************윌스토리 서점******************/
+/****************윌스토리 서점 : 메인******************/
+
 .wsbook .tx-main {color:#0c9d00}
-.mainTit {font-size:20px; position: relative; height:30px;}
-.mainTit a {position:absolute; bottom:0; right:0; display:block; border:1px solid #ccc; color:#000; line-height: 30px; 
+.mainTit {font-size:20px; position: relative; height:30px; padding:0 10px}
+.mainTit a {position:absolute; bottom:0; right:10px; display:block; border:1px solid #ccc; color:#000; line-height: 30px; 
     padding:0 10px; font-size:12px; z-index: 1;}
 .wsbookList {height:350px; overflow: hidden; position:relative;}
 .wsbookList .swiper-container-nBook{ 
     width: 100%;     
 } 
-.wsbookList .swiper-wrapper {padding-left:-5px;}
 .wsbookList .swiper-slide { 
     width:33.33333%;
     text-align: center; 
@@ -1159,7 +1159,7 @@ body.memBody #Footer {
     height: 310px;
     position: flex;
 } 
-.wsbookList .swiper-slide a {display:block; font-size:14px; margin-left:5px}
+.wsbookList .swiper-slide a {display:block; font-size:14px; margin-right:5px}
 .wsbookList .swiper-slide .bookimg {width:210px; height:250px; margin:0 auto; /*border:1px solid #d9d9d9;*/ position:relative}
 .wsbookList .swiper-slide img {width:100%; max-width:180px; margin: 0 auto }
 .wsbookList ul {margin-top:10px; line-height: 1.4;}
@@ -1170,24 +1170,65 @@ body.memBody #Footer {
 .wsbookList .swiper-container-nBook.swiper-pagination {bottom:0 !important;} 
 .wsbookList .swiper-container-nBook.swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
 
-.wsbookList .mdBook {width:100%}
+.wsbookList .mdBook {width:100%;}
 .wsbookList .mdBook .swiper-slide {display:inline; float:left; width:33.33333%;}
+.wsbookList .swiper-slide a {padding:0 5px}
 .wsbookList .mdBook:after {content: ''; display: block; clear:both}
 
 .wsbook .noticeBox .List-Table li a span {
     background: #0c9d00;
 }
 
+/*메인-오늘의책*/
+.wsBook .todayBook {position:relative; padding:20px; height: auto; background-color: #f3f3f3;}
+.wsBook .todayBook .todaybookList {width:100%;}
+.wsBook .todayBook .todaybookList .bookimgB {float:left; width:45%; text-align: center;  position: relative;}
+.wsBook .todayBook .todaybookList .bookimgB img {width:80%;}
+.wsBook .todayBook .todaybookList .summary {float:right; width:55%;}
+.wsBook .todayBook .todaybookList .summary li {color:#333; display: block; text-align:left; line-height: 1.5; word-break: keep-all}
+.wsBook .todayBook .todaybookList .summary li:nth-child(1) {color:#000; font-size:20px; margin-bottom:10px; line-height: 1.1;}
+.wsBook .todayBook .todaybookList .summary li span {display:inline-block; text-decoration:line-through; margin-right:10px; vertical-align: bottom}
+.wsBook .todayBook .todaybookList .summary li strong {font-size:16px; font-weight:bold; color:#d30000}
+.wsBook .todayBook .todaybookList:after {content:""; display:block; clear:both}
+
+.wsBook .todayBook p {position:absolute; top:50%; margin-top:-10px; width:15px; height:57px; cursor:pointer; 
+    background:url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat;
+    background-size: 30px; z-index:100;}
+.wsBook .todayBook p a {display: none;}
+.wsBook .todayBook p.leftBtn {left:10px;}
+.wsBook .todayBook p.rightBtn {right:10px; background-position: right center;}
+
+.wsBook .todayBook #bx-pager-today {margin-top:20px; margin-right:-10px}
+.wsBook .todayBook #bx-pager-today li {display:inline; float:left; width:20%;;}
+.wsBook .todayBook #bx-pager-today a {display: block; margin-right:10px; background:#000}
+.wsBook .todayBook #bx-pager-today a img {opacity:0.3; width:100%;} 
+.wsBook .todayBook #bx-pager-today a.active img {opacity:1}
+.wsBook .todayBook #bx-pager-today:after {content:""; display:block; clear:both}
+
 .wsbook .csCenterBook {border-top:1px solid #ccc; border-bottom:1px solid #ccc; margin:30px 0;}
 .wsbook .csCenterBook li {display: inline; float:left; padding:15px; font-size:14px; line-height: 1.5; word-break: keep-all}
 .wsbook .csCenterBook li span {display: inline;}
-.wsbook .csCenterBook li:first-child {width:70%}
-.wsbook .csCenterBook li:last-child {width:30%; text-align: center;}
-.wsbook .csCenterBook li:last-child img {max-width: 60px;}
+.wsbook .csCenterBook li:first-child {width:65%}
+.wsbook .csCenterBook li:last-child {width:35%; text-align: center; padding:15px 0;}
+.wsbook .csCenterBook li:last-child img {max-width:60px;}
 .wsbook .csCenterBook li:last-child a {display: block; border-left:1px solid #ccc;}
 .wsbook .csCenterBook ul:after {content:""; display:block; clear:both}
 
-/****************윌스토리 메인 end***********************/
+/****************윌스토리 서점 : 메인 end******************/
+
+/****************윌스토리 서점 : 검색화면******************/
+.wsbook-Search-List {margin-bottom:30px}
+.wsbook-Search-List .wsl-box {padding:20px 0; border-bottom:1px solid #ccc}
+.wsbook-Search-List .wsbookimg {float:left; width:170px; text-align: center;}
+.wsbook-Search-List .wsbookimg img {width: 100%; max-width:130px;}
+.wsbook-Search-List .wsbookinfo {float:left; line-height: 1.2; width:calc(100% - 170px)} 
+.wsbook-Search-List .wsbookinfo li {margin-bottom:8px}
+.wsbook-Search-List .wsbookinfo li:first-child {font-size:16px; margin-bottom:15px}
+.wsbook-Search-List .wsbookinfo li span {display:inline-block; width:50px;}
+.wsbook-Search-List .wsbookinfo li:last-child span {display: inline; width:auto; text-decoration: line-through; color:#666}
+.wsbook-Search-List .wsbookinfo li:last-child strong {color:#d30000; font-size:14px}
+.wsbook-Search-List .wsl-box:after {content:''; display: block; clear:both}
+/****************윌스토리 서점 : 검색화면 end******************/
 
 /* Tabs : lineTab 공통 */
 .lineTabs {

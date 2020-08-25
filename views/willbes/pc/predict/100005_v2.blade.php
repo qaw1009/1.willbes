@@ -158,14 +158,18 @@
                                 <th scope="col">원점수</th>
                                 <th scope="col">조정점수</th>
                             </tr>
-                            @foreach($subject_list as $key => $val)
-                                <tr>
-                                    <td>{{ $val['CcdName'] }}</td>
-                                    @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
-                                    <td>미입력</td>
-                                    <td>미입력</td>
-                                </tr>
-                            @endforeach
+                            @if (empty($subject_list) === true)
+                                {{--<tr><td colspan="4">등록 설정된 과목이 없습니다.</td></tr>--}}
+                            @else
+                                @foreach($subject_list as $key => $val)
+                                    <tr>
+                                        <td>{{ $val['CcdName'] }}</td>
+                                        @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
+                                        <td>미입력</td>
+                                        <td>미입력</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </table>
                     </div>
                 @else
@@ -182,7 +186,6 @@
                                 <th scope="col">원점수</th>
                                 <th scope="col">조정점수</th>
                             </tr>
-
                             @foreach($subject_list as $key => $val)
                                 <tr>
                                     <td>{{ $val['CcdName'] }}</td>

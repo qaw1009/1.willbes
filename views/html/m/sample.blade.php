@@ -133,6 +133,7 @@
             <a href="{{ site_url('/home/html/m/map_2003') }}" target="_blank">학원오시는 길 - 공무원 법원직</a>
             <p>윌스토리</p> 
             <a href="{{ site_url('/home/html/m/main_wsbook') }}" target="_blank">메인-윌스토리</a>
+            <a href="{{ site_url('/home/html/m/wsbook_search_list') }}" target="_blank">윌스토리 검색화면</a>
         </div>
     </li>
     <li>        

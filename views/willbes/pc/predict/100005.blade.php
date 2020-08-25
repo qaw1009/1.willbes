@@ -203,7 +203,7 @@
                 return ;
             }
 
-            if($("#TakeMockPart").val() != '300'){
+            if($("#TakeMockPart").val() != '800'){
                 if($("input[name='Ssubject[]']:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;

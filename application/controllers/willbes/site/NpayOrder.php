@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class NpayOrder extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'product/productF');
+    protected $models = array('order/cartF', 'product/productF', 'order/npayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -53,6 +53,7 @@ class NpayOrder extends \app\controllers\FrontController
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $referer = $this->input->server('HTTP_REFERER');
         $back_url = 'https:' . front_url('/cart/index');
+        $log_data = [];     // 로그 데이터
 
         try {
             // 상품정보 조회
@@ -65,6 +66,9 @@ class NpayOrder extends \app\controllers\FrontController
 
                     // 데이터 조회
                     $data = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $arr_cart_idx, null, 'N', 'N', true);
+
+                    // 로그 데이터
+                    $log_data = ['ApiPattern' => 'ORC', 'ApiParams' => implode(',', $arr_cart_idx)];
                 } else {
                     // 비회원 장바구니
                     if (empty($arr_prod_code) === true) {
@@ -73,6 +77,9 @@ class NpayOrder extends \app\controllers\FrontController
 
                     // 데이터 조회
                     $data = $this->cartFModel->listGuestCart($this->_site_code, $arr_prod_code);
+
+                    // 로그 데이터
+                    $log_data = ['ApiPattern' => 'ORG', 'ApiParams' => implode(',', $arr_prod_code)];
                 }
             } else {
                 // 상품 상세
@@ -90,6 +97,9 @@ class NpayOrder extends \app\controllers\FrontController
                 // 데이터 조회
                 $add_column = ', "' . $prod_qty . '" as ProdQty, wAttachImgPath, wAttachImgOgName, fn_product_saletype_price("'. $prod_code . '", "'. $sale_type_ccd . '", "RealSalePrice") as RealSalePrice';
                 $data[0] = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code, $add_column);
+
+                // 로그 데이터
+                $log_data = ['ApiPattern' => 'ORP', 'ApiParams' => $prod_code];
             }
 
             if (empty(array_filter($data)) === true) {
@@ -184,6 +194,9 @@ class NpayOrder extends \app\controllers\FrontController
             $this->curl->close();
 
             if (array_get($results, '0') === 'SUCCESS') {
+                // 로그 저장
+                $this->npayFModel->addApiLog('OR', array_merge_recursive($log_data, ['ResultCode' => 'Y', 'ResultMsg' => $response]));
+
                 // 주문 페이지 이동
                 redirect($this->_api_url['order_page'] . $results[1] . '/' . $results[2]);
             } else {
@@ -192,6 +205,9 @@ class NpayOrder extends \app\controllers\FrontController
         } catch (\Exception $e) {
             if ($e->getCode() == 9999) {
                 error_result($e);
+
+                // 로그 저장
+                $this->npayFModel->addApiLog('OR', array_merge_recursive($log_data, ['ResultCode' => 'N', 'ResultMsg' => $e->getMessage()]));
             }
             show_alert($e->getMessage(), 'back');
         }

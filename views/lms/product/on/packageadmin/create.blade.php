@@ -118,12 +118,21 @@
                             </select>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="StudyPeriod">수강기간 <span class="required">*</span>
+                </div>
+                <div class="form-group" id="div_LecTypeCcd_1">
+                    <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline item" >
-                        <div class="item inline-block">
-                            [수강기간] <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='{{$data['StudyPeriod']}}' style="width:70px;">일&nbsp;&nbsp;&nbsp;
-                            [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                    <div class="col-md-10 form-inline item">
+                        <div class="radio">
+                            @foreach($studyterm_ccd as $key => $val)
+                                <input type="radio" name="StudyPeriodCcd" id="StudyPeriodCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || ($data['StudyPeriodCcd'] == $key))checked="checked"@endif> {{ $val }}&nbsp;&nbsp;
+                                @if($key == "616001")
+                                    <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
+                                    [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                                @elseif($key == "616002")
+                                    <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="수강종료일" style="width:100px"  value="{{$data['StudyEndDate']}}" readonly>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1168,7 +1177,7 @@
                 getEditorBodyContent($editor_4);
 
                 //선택과목 지우기  : addValidate 에서 처리가 안됨
-                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648001') {
+                if($('input:radio[name="PackTypeCcd"]:checked').val() === '648001') {
                     $("tr[name='selLecTrId']").remove();
                     $("#PackSelCount").val('0');
                 }
@@ -1183,8 +1192,14 @@
             });
 
             function addValidate() {
-                if( $("input[name='essLecAddCheck[]']").length == 0) {
+                if( $("input[name='essLecAddCheck[]']").length === 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
+                }
+
+                if($('input:radio[name="StudyPeriodCcd"]:checked').val() === '616002') {
+                    if($('#StudyEndDate').val() === '') {
+                        alert('수강종료일을 입력하여 주십시오.');$('input:radio[name="StudyPeriodCcd"]:eq(1)').focus();return;
+                    }
                 }
 
                 /* 2019-06-25 최진영 차장 요청건 - 제어 조건 제거

@@ -369,8 +369,11 @@ class PackagePeriodModel extends CommonLectureModel
             ,'PackCateEtcMemo'=>element('PackCateEtcMemo',$input)
             ,'PackSelCount'=>element('PackSelCount',$input)
             ,'SchoolYear'=>element('SchoolYear',$input)
+            ,'LecTypeCcd' => element('LecTypeCcd',$input,'607001')
+            ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input, '616001')
             ,'StudyPeriod'=>element('StudyPeriod',$input)
             ,'StudyStartDate'=>element('StudyStartDate',$input)
+            ,'StudyEndDate'=> element('StudyPeriodCcd',$input, '616001') === '616001' ? null : get_var(element('StudyEndDate',$input,''),null)
             ,'PcProvisionCcd'=>element('PcProvisionCcd',$input)                   //PC제공구분
             ,'MobileProvisionCcd'=>element('MobileProvisionCcd',$input)         //모바일제공구분
             ,'PlayerTypeCcds'=>implode(',', element('PlayerTypeCcds', $input))                //플레이어선택

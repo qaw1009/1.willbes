@@ -118,17 +118,26 @@
                         </div>
 
                     </div>
-                    <label class="control-label col-md-2" for="StudyPeriod">수강기간 <span class="required">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline item" >
-                        <div class="item inline-block">
-                            [수강기간]
-                            <select  name="StudyPeriod" required="required" class="form-control" title="수강기간">
-                                @foreach($packperiod_ccd as $key => $val)
-                                    <option value="{{$key}}" @if($data['StudyPeriod'] == $key) selected="selected" @elseif(empty($data['StudyPeriod']) && $key == '365') selected="selected" @endif>{{$val}}</option>
-                                @endforeach
-                            </select>&nbsp;
-                            [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">
+                    <div class="col-md-10 form-inline item">
+                        <div class="radio">
+                            @foreach($studyterm_ccd as $key => $val)
+                                <input type="radio" name="StudyPeriodCcd" id="StudyPeriodCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || ($data['StudyPeriodCcd'] == $key))checked="checked"@endif> {{ $val }}&nbsp;&nbsp;
+                                @if($key == "616001")
+                                    <select  name="StudyPeriod" required="required" class="form-control" title="수강기간">
+                                        @foreach($packperiod_ccd as $key_period => $val_period)
+                                            <option value="{{$key_period}}" @if($data['StudyPeriod'] == $key_period) selected="selected" @elseif(empty($data['StudyPeriod']) && $key_period == '365') selected="selected" @endif>{{$val_period}}</option>
+                                        @endforeach
+                                    </select>&nbsp;
+                                    [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                                @elseif($key == "616002")
+                                    <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="수강종료일" style="width:100px"  value="{{$data['StudyEndDate']}}" readonly>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -975,6 +984,13 @@
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
+
+                if($('input:radio[name="StudyPeriodCcd"]:checked').val() === '616002') {
+                    if($('#StudyEndDate').val() === '') {
+                        alert('수강종료일을 입력하여 주십시오.');$('input:radio[name="StudyPeriodCcd"]:eq(1)').focus();return;
+                    }
+                }
+
                 /*if( $("input[name='selLecAddCheck[]']").length == 0) {
                     alert('선택과목강좌구성을 선택하여 주십시오.');$('#selLecAdd').focus();return;
                 }*/

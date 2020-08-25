@@ -61,7 +61,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1718_top.jpg" alt="이론패스" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1718_top.gif" alt="이론패스" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >

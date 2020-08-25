@@ -91,6 +91,7 @@
                     </label>
                     <div class="col-md-4 form-inline item">
                         <input type="number" id="pin_issue_cnt" name="pin_issue_cnt" class="form-control" required="required_if:deploy_type,F" title="발급개수" value="{{ $data['PinIssueCnt'] or '1' }}" readonly="readonly" style="width: 100px;"> 개
+                        <span class="pl-20"># 사용 가능한 핀번호 개수 : {{ number_format($available_pin_cnt) }}</span>
                     </div>
                 </div>
                 <div class="form-group">

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/category', 'product/base/course', 'product/base/subject', 'product/base/professor', 'service/couponRegist');
+    protected $models = array('sys/code', 'sys/category', 'product/base/course', 'product/base/subject', 'product/base/professor', 'service/couponRegist', 'service/couponPin');
     protected $helpers = array();
     private $_ccd = [];
 
@@ -195,6 +195,9 @@ class Regist extends \app\controllers\BaseController
             }
         }
 
+        // 사용가능한 쿠폰핀 수량 조회
+        $available_pin_cnt = $this->couponPinModel->getAvailableCouponPinCnt();
+
         // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
         $codes = $this->_getCodes([$this->_ccd['CouponType'], $this->_ccd['ApplyType'], $this->_ccd['LecType']]);
 
@@ -207,6 +210,7 @@ class Regist extends \app\controllers\BaseController
             'idx' => $idx,
             'method' => $method,
             'data' => $data,
+            'available_pin_cnt' => $available_pin_cnt,
             'arr_coupon_type_ccd' => $codes[$this->_ccd['CouponType']],
             'arr_apply_type_ccd' => $codes[$this->_ccd['ApplyType']],
             'arr_lec_type_ccd' => $codes[$this->_ccd['LecType']],

@@ -523,7 +523,7 @@ class LectureModel extends CommonLectureModel
             ,'SubjectIdx'=>element('SubjectIdx',$input)
             ,'LecSaleType'=>element('LecSaleType',$input,'N')
             ,'LecTypeCcd'=>$LecTypeCcd
-            ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input)
+            ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input,'616001')
             ,'StudyPeriod'=>$commonStudyPeriod
             ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
             ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)

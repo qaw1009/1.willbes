@@ -27,7 +27,7 @@ class PredictFModel extends WB_Model
                             WHERE PredictIdx = '.$predict_idx.'
                             GROUP BY PrIdx) AS a
                         ) AS ScoreCnt -- 채점자
-                        ,(SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = pp.SpIdx ) AS SurveyCnt -- 설문
+                        ,(SELECT COUNT(*) FROM lms_survey_set_answer WHERE SsIdx = pp.SpIdx ) AS SurveyCnt -- 설문
                         ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView1 ),0) AS PageViewCnt1  -- 페이지뷰1
                         ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView2 ),0) AS PageViewCnt2  -- 페이지뷰2
                         ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment1) as CommentCnt1 -- 댓글수1
@@ -94,8 +94,10 @@ class PredictFModel extends WB_Model
     {
         if (empty($spIdx) === false) {
             $column = "COUNT(*) AS Cnt";
-            $from = " FROM lms_survey_answer_info ";
-            $arr_condition = ['EQ' => ['SpIdx' => $spIdx]];
+            /*$from = " FROM lms_survey_answer_info ";
+            $arr_condition = ['EQ' => ['SpIdx' => $spIdx]];*/
+            $from = " FROM lms_survey_set_answer ";
+            $arr_condition = ['EQ' => ['SsIdx' => $spIdx]];
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
             $query = $this->_conn->query('select ' . $column . $from . $where);

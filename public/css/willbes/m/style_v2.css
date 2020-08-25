@@ -383,6 +383,7 @@ span {
     font-size:18px; color:#000; text-align: center; letter-spacing: -1px;
 }
 #header .logo a.siteTitle span {color:#0d74ae;}
+#header .logo a.siteTitle span.book {color:#0c9d00;}
 #header .logo a img {
     margin-top: 5px;
 }
@@ -454,23 +455,19 @@ span {
 
 #Header .searchBox {position:relative; clear: both; max-width: 720px; margin: 0 auto 10px;}
 #Header .searchBox div {border:2px solid #2364fe; height:50px !important; width:98%; margin:0 auto; background:#fff;
-    font-size:16px; padding:0 20px; border-radius: 50px; z-index: 20; animation:bdchange 2s infinite; -webkit-animation:bdchange 2s infinite;}
-@keyframes bdchange {
-    from{border-color:#2364fe}
-    50%{border-color:#072877}
-    to{border-color:#2364fe}
-}
-@-webkit-keyframes bdchange {
-    from{border-color:#2364fe}
-    50%{border-color:#072877}
-    to{border-color:#2364fe}
-}
+    font-size:16px; padding:0 20px; border-radius: 50px; z-index: 20;}
+
 #Header .searchBox div input[type=search] {border:0; height:46px; width:calc(100% - 130px); float: left;}
 #Header .searchBox div input:focus {border:0 !important; color:#333}
-#Header .searchBox button {display:block; position:absolute; width:80px; font-size:0; text-indent: -9999px; top:5px; right:25px; height:40px; line-height:40px;
+#Header .searchBox button {display:block; position:absolute; width:80px; font-size:0; text-indent: -9999px; top:5px; right:18px; height:40px; line-height:40px;
     background:url("https://static.willbes.net/public/images/promotion/main/gate_v3_search.png") no-repeat center center; background-size: 60px;
      z-index: 1;}
 #Header .searchBox:after {content:""; display:block; clear:both}
+
+#Header .searchBox.book div {border:2px solid #0c9d00;}
+#Header .searchBox.book div select { position: absolute; top:4px; left:20px; z-index: 1;}
+#Header .searchBox.book div input[type=search] {border:0; height:46px; width:calc(100% - 255px); float: left; margin-left:125px;}
+#Header .searchBox.book button {background:url("https://static.willbes.net/public/images/promotion/m/wsbook_search.png") no-repeat center center;}
 
 
 /* MainTxtBnr */
@@ -1144,6 +1141,53 @@ body.memBody #Footer {
 .bestView .swiper-slide a span {background: #333; display:inline-block; color:#fff; padding:3px 10px; border-radius: 20px; font-size:11px}
 .bestView .sampleLecBn:after {content:""; display: block; clear: both;}
 
+
+/****************윌스토리 서점******************/
+.wsbook .tx-main {color:#0c9d00}
+.mainTit {font-size:20px; position: relative; height:30px;}
+.mainTit a {position:absolute; bottom:0; right:0; display:block; border:1px solid #ccc; color:#000; line-height: 30px; 
+    padding:0 10px; font-size:12px; z-index: 1;}
+.wsbookList {height:350px; overflow: hidden; position:relative;}
+.wsbookList .swiper-container-nBook{ 
+    width: 100%;     
+} 
+.wsbookList .swiper-wrapper {padding-left:-5px;}
+.wsbookList .swiper-slide { 
+    width:33.33333%;
+    text-align: center; 
+    font-size: 18px;  
+    height: 310px;
+    position: flex;
+} 
+.wsbookList .swiper-slide a {display:block; font-size:14px; margin-left:5px}
+.wsbookList .swiper-slide .bookimg {width:210px; height:250px; margin:0 auto; /*border:1px solid #d9d9d9;*/ position:relative}
+.wsbookList .swiper-slide img {width:100%; max-width:180px; margin: 0 auto }
+.wsbookList ul {margin-top:10px; line-height: 1.4;}
+.wsbookList li:first-child {font-size:11px; color:#737373}
+.wsbookList li:nth-child(2) {width:98%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis;}
+.wsbookList li:last-child strong {font-size:14px; color:#0c9d00}
+.wsbookList li:last-child span {color:#000; font-weight:normal; text-decoration:line-through}
+.wsbookList .swiper-container-nBook.swiper-pagination {bottom:0 !important;} 
+.wsbookList .swiper-container-nBook.swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
+
+.wsbookList .mdBook {width:100%}
+.wsbookList .mdBook .swiper-slide {display:inline; float:left; width:33.33333%;}
+.wsbookList .mdBook:after {content: ''; display: block; clear:both}
+
+.wsbook .noticeBox .List-Table li a span {
+    background: #0c9d00;
+}
+
+.wsbook .csCenterBook {border-top:1px solid #ccc; border-bottom:1px solid #ccc; margin:30px 0;}
+.wsbook .csCenterBook li {display: inline; float:left; padding:15px; font-size:14px; line-height: 1.5; word-break: keep-all}
+.wsbook .csCenterBook li span {display: inline;}
+.wsbook .csCenterBook li:first-child {width:70%}
+.wsbook .csCenterBook li:last-child {width:30%; text-align: center;}
+.wsbook .csCenterBook li:last-child img {max-width: 60px;}
+.wsbook .csCenterBook li:last-child a {display: block; border-left:1px solid #ccc;}
+.wsbook .csCenterBook ul:after {content:""; display:block; clear:both}
+
+/****************윌스토리 메인 end***********************/
 
 /* Tabs : lineTab 공통 */
 .lineTabs {
@@ -4159,17 +4203,20 @@ body.memBody #Footer {
     .bookInfo .w-buy ul {width: 100%;}  
     .bookInfo > li br {display: none;}  
 
-    .gosi .gosiProf .swiper-container-prof {
-        height: 450px;                     
-    }
-    .gosi .gosiProf .swiper-slide {
-        width: 150px;
-    }
-    .gosi .gosiTip .swiper-slide {
-        /*width: 150px;*/
-    }
+    .gosi .gosiProf .swiper-container-prof {height: 450px;}
+    .gosi .gosiProf .swiper-slide {width: 150px;}
+
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:none} 
+
+    .wsbook .newbook .swiper-container-newbook {height: 450px;}
+    .wsbook .newbook .swiper-slide {width: 150px;}
+    .wsbook .newbook .swiper-container-newbook .swiper-pagination {bottom:30px;} 
+
+    .wsbookList .swiper-slide {width:50%;height:260px;}
+    .wsbookList .swiper-slide .bookimg {width:100%;}
+    .wsbookList .mdBook .swiper-slide {width:50%;}
+    .wsbookList .mdBook .swiper-slide:last-child {display:none}
 }
 
 
@@ -4204,7 +4251,12 @@ body.memBody #Footer {
     }
     .gosi .gosiProf .swiper-container-prof .swiper-pagination {bottom:30px;} 
     .gosi .mapCts .add span {display:inline-block}    
-    .gosi .mapCts .add br {display:none} 
+    .gosi .mapCts .add br {display:none}   
+    
+    .wsbookList .swiper-slide {width:50%; height:260px;}
+    .wsbookList .swiper-slide .bookimg {width:100%;}
+    .wsbookList .mdBook .swiper-slide {width:50%;}
+    .wsbookList .mdBook .swiper-slide:last-child {display:none}
 }
 
 /* Calendar */

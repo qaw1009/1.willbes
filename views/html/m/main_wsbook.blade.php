@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
     <script src="/public/vendor/jquery/swiper/swiper.js"></script>
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+    
     <!-- JAVASCRIPT -->
     <!--// CSS -->
     <!-- jQuery -->
@@ -157,13 +158,15 @@
 
         <div class="searchBox book">   
             <div>
+                {{--
                 <select name="search_type">
                     <option value="0">통합검색</option>
                     <option value="1">도서명</option>
                     <option value="2">저자명</option>                            
                     <option value="3">출판사</option>
-                </select>             
-                <input type="search" id="search" name="" value="" placeholder="온라인강의 검색" />
+                </select>  
+                --}}           
+                <input type="search" id="search" name="" value="" placeholder="도서 검색" />
                 <label for="search"><button title="검색">검색</button></label>  
             </div>              
         </div>        
@@ -414,7 +417,84 @@
         </div>
     </div> 
 
-    <div class="mainTit mt30 NSK-Black">MD 추천 <a href="#none" class="NSK">+ 더보기</a></div>
+    <div class="mainTit mt30 NSK-Black">오늘의 책</div>
+    <div class="todayBook">
+        <div class="wsbookInfo" id="wsbookInfo">		
+            <div class="todaybookList">
+                <div class="bookimgB">
+                    <img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"/>
+                </div>
+                <ul class="summary">
+                    <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                    <li>저자명 : 홍길동</li>
+                    <li>출판사명 : 윌비스</li>
+                    <li><span>15,000원</span> → <strong>12,150원 (10%할인)</strong> </li>
+                </ul>
+            </div>
+                        
+            <div class="todaybookList">
+                <div class="bookimgB">
+                    <img src="https://book.willbes.net/public/uploads/wbs/book/2020/310920/book_310920_sm.jpg" alt="교재명"/>
+                </div>
+                <ul class="summary">
+                    <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                    <li>저자명 : 홍길동</li>
+                    <li>출판사명 : 윌비스</li>
+                    <li><span>15,000원</span> → <strong>12,150원 (10%할인)</strong> </li>
+                </ul>
+            </div>
+                        
+            <div class="todaybookList">
+                <div class="bookimgB">
+                    <img src="https://book.willbes.net/public/uploads/wbs/book/2020/310919/book_310919_sm.jpg" alt="교재명"/>
+                </div>
+                <ul class="summary">
+                    <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                    <li>저자명 : 홍길동</li>
+                    <li>출판사명 : 윌비스</li>
+                    <li><span>15,000원</span> → <strong>12,150원 (10%할인)</strong> </li>
+                </ul>
+            </div>
+                        
+            <div class="todaybookList">
+                <div class="bookimgB">
+                    <img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"/>
+                </div>
+                <ul class="summary">
+                    <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                    <li>저자명 : 홍길동</li>
+                    <li>출판사명 : 윌비스</li>
+                    <li><span>15,000원</span> → <strong>12,150원 (10%할인)</strong> </li>
+                </ul>
+            </div>
+
+            <div class="todaybookList">
+                <div class="bookimgB">
+                    <img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="교재명"/>
+                </div>
+                <ul class="summary">
+                    <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                    <li>저자명 : 홍길동</li>
+                    <li>출판사명 : 윌비스</li>
+                    <li><span>15,000원</span> → <strong>12,150원 (10%할인)</strong> </li>
+                </ul>
+            </div>
+        </div><!--bookInfo//-->
+        
+        <ul id="bx-pager-today">														
+            <li><a data-slide-index="0" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="쉬운 일은 아니지만"/></a></li>
+            <li><a data-slide-index="1" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310920/book_310920_sm.jpg" alt="90년생이 온다"/></a></li>
+            <li><a data-slide-index="2" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310919/book_310919_sm.jpg" alt="개와 고양이에 관한 작은 세계사"/></a></li>
+            <li><a data-slide-index="3" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="알사탕"/></a></li>
+            <li><a data-slide-index="4" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="90년생이 온다"/></a></li>
+        </ul><!--bookimgS//-->
+
+        <p class="leftBtn" id="bookInfoLeft"><a href="#none">이전</a></p>
+        <p class="rightBtn" id="bookInfogRight"><a href="none">다음</a></p> 
+
+    </div><!--todayBook//-->  
+
+    <div class="mainTit mt30 NSK-Black">MD 추천</div>
     <div class="wsbookList mt20">       
         <div class="mdBook">
             <div class="swiper-slide">
@@ -519,9 +599,9 @@
 
 </div>
 <!-- End Container -->
-<script>    
-    //이달의강의
-    $(function() {
+<script>       
+    $(function() {         
+        //도서롤링
         var swiper = new Swiper ('.swiper-container-nBook', { 
             slidesPerView: 'auto',
             spaceBetween: 0, 
@@ -536,27 +616,36 @@
                 el: '.swiper-pagination', 
                 clickable: true,
             }, 
-        }); 
+        });        
+    });
+    
+    //오늘의책  
+    $(document).ready(function() {
+        var bookInfo = $("#wsbookInfo").bxSlider({
+            mode:'fade',
+            auto:true,
+            speed:350,
+            pause:4000,            
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideMargin:0,
+            autoHover:true,
+            moveSlides:1,
+            touchEnabled : (navigator.maxTouchPoints > 0),
+            pagerCustom:'#bx-pager-today',
+            pager:true,
+        });       
+
+        $("#bookInfoLeft").click(function (){
+            bookInfo.goToPrevSlide();
+        });
+        
+        $("#bookInfogRight").click(function (){
+            bookInfo.goToNextSlide();
+        });
     });
 
-    //수험생활 팁
-    var swiper = new Swiper('.swiper-container-tip', {
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-        640: {
-          spaceBetween: 10,
-        },
-      }
-    });    
 </script> 
 
 <!-- footer -->
@@ -602,5 +691,6 @@
 <script src="/public/js/willbes/tabs.js?ver=1594952526"></script>
 <script src="/public/js/willbes/sub.js?ver=1594952526"></script>
 <script src="/public/js/willbes/app.js?ver=1594952526"></script>
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
 <!--// JAVASCRIPT --></body>
 </html>

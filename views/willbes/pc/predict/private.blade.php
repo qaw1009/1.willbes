@@ -310,8 +310,14 @@
                 },
                 'dataset':{
                     title:'Playing time per day'
-                    ,values: [[0], [{{ $arr_base['count_area_member_point']['cnt_100'] }}], [{{ $arr_base['count_area_member_point']['cnt_200'] }}], [{{ $arr_base['count_area_member_point']['cnt_300'] }}]
-                        , [{{ $arr_base['count_area_member_point']['cnt_400'] }}], [{{ $arr_base['count_area_member_point']['cnt_500'] }}]]
+                    ,values: [
+                        [0],
+                        [{{ (empty($arr_base['count_area_member_point']['cnt_100']) === true ? 0 : $arr_base['count_area_member_point']['cnt_100']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_200']) === true ? 0 : $arr_base['count_area_member_point']['cnt_200']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_300']) === true ? 0 : $arr_base['count_area_member_point']['cnt_300']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_400']) === true ? 0 : $arr_base['count_area_member_point']['cnt_400']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_500']) === true ? 0 : $arr_base['count_area_member_point']['cnt_500']) }}]
+                    ]
                     ,colorset: ['#0072b2']
                     ,fields: ['지원자 수']
                 },

@@ -28,6 +28,9 @@
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
+    <style>
+
+        </style>
 </head>
 <body id="goTop">
     <!-- Gnb -->
@@ -172,10 +175,9 @@
 <div id="Container" class="Container NSK wsbook mb40">  
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_01.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_02.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_03.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_04.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_02.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_03.jpg"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -183,72 +185,268 @@
 
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x130.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x130_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x130_01.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x130_01.jpg"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="MainSlider swiper-container swiper-container-page">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_01.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_02.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_03.jpg" alt="배너명"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x400_04.jpg" alt="배너명"></div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="gosiProf">
-        <div class="swiper-container-prof">
+        
+    <div class="mainTit mt30 NSK-Black">신간안내 <a href="#none" class="NSK">+ 더보기</a></div>
+    <div class="wsbookList mt20">       
+        <div class="swiper-container-nBook">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_01.png" alt="배너명">
-                    </a>  
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div>            
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310943/book_310943_sm_1597971043.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
                 </div> 
-                <div class="swiper-slide">             
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_02.png" alt="배너명">
-                    </a>
-                </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_03.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_04.png" alt="배너명">
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_05.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_06.png" alt="배너명">
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_07.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_08.png" alt="배너명">
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
+        </div>
+    </div> 
+
+    <div class="mainTit mt30 NSK-Black">베스트셀러 <a href="#none" class="NSK">+ 더보기</a></div>
+    <div class="wsbookList mt20">       
+        <div class="swiper-container-nBook">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div>            
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310943/book_310943_sm_1597971043.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>[역사/문화]</li>
+                            <li>근대 세계의 창조</li>
+                            <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div> 
+
+    <div class="mainTit mt30 NSK-Black">MD 추천 <a href="#none" class="NSK">+ 더보기</a></div>
+    <div class="wsbookList mt20">       
+        <div class="mdBook">
+            <div class="swiper-slide">
+                <a href="#none">
+                    <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                    <ul>
+                        <li>[역사/문화]</li>
+                        <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                        <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                    </ul> 
+                </a>                
+            </div>            
+            <div class="swiper-slide">
+                <a href="#none">
+                    <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310943/book_310943_sm_1597971043.jpg" alt="교재명"></div> 
+                    <ul>
+                        <li>[역사/문화]</li>
+                        <li>근대 세계의 창조</li>
+                        <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                    </ul> 
+                </a>                
+            </div> 
+            <div class="swiper-slide">
+                <a href="#none">
+                    <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="교재명"></div> 
+                    <ul>
+                        <li>[역사/문화]</li>
+                        <li>근대 세계의 창조</li>
+                        <li><span>54,000원</span> → <strong>48,600원</strong></li>
+                    </ul> 
+                </a>                
+            </div> 
         </div>
     </div> 
 
@@ -292,24 +490,23 @@
         </div>
     </div>
 
-    <div class="csCenter">
+
+    <div class="csCenterBook">
         <ul class="tel">
             <li>
-                <div class="nTit">도서 문의</div>
-                <div class="nNumber tx-color">1544-4944</div>
+                <div class="nTit">도서 문의 : <span class="tx-main">1544-4944</span></div>
                 <div class="nTxt">
-                    [운영시간]<br/>
-                    평일: 09시~ 18시 (점심시간12시~13시) | 공휴일/일요일휴무
+                    [운영시간] 평일: 09시~ 18시 (점심시간 12시~13시)<Br>
+                    주말/공휴일휴무
                 </div>
             </li>
             <li>
-                <div class="goTel">
-                    <img src="https://static.willbes.net/public/images/promotion/m/icon_book_vs.png">
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2012/icon_book_vs.png">
                     <div>
-                        1:1<br>
-                        상담
+                        1:1 상담
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </div> 
@@ -323,25 +520,23 @@
 </div>
 <!-- End Container -->
 <script>    
-    //교수진
-    var swiper = new Swiper('.swiper-container-prof', {
-      slidesPerView: 'auto',
-      slidesPerColumn: 2,
-      spaceBetween: 30,
-      autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
-      // init: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        640: {
-          spaceBetween: 10,
-        },
-      }
+    //이달의강의
+    $(function() {
+        var swiper = new Swiper ('.swiper-container-nBook', { 
+            slidesPerView: 'auto',
+            spaceBetween: 0, 
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: { 
+                el: '.swiper-pagination', 
+                clickable: true,
+            }, 
+        }); 
     });
 
     //수험생활 팁

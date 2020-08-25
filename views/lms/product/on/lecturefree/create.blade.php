@@ -183,16 +183,21 @@
                     <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <div class="item inline-block">
+                        <div class="radio">
+                            <input type="hidden" name="StudyPeriodCcd" value="616001">{{--수강기간으로 고정 : 20200825 - 한주연--}}
+                            수강기간 <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
+                            [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                        <!--
                             @foreach($studyterm_ccd as $key => $val)
-                                <input type="radio" name="StudyPeriodCcd" id="StudyPeriodCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || ($data['StudyPeriodCcd'] == $key))checked="checked"@endif> {{ $val }}&nbsp;&nbsp;
+                            <input type="radio" name="StudyPeriodCcd" id="StudyPeriodCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || ($data['StudyPeriodCcd'] == $key))checked="checked"@endif> {{ $val }}&nbsp;&nbsp;
                                 @if($key == "616001")
-                                    <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='{{$data['StudyPeriod']}}' style="width:70px;">일&nbsp;&nbsp;&nbsp;
-                                    [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                                <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
+                                    [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
                                 @elseif($key == "616002")
-                                    <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="수강종료일" style="width:100px"  value="{{$data['StudyEndDate']}}"readonly>
+                                <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="수강종료일" style="width:100px"  value="{{$data['StudyEndDate']}}" readonly>
                                 @endif
-                            @endforeach
+                        @endforeach
+                                //-->
                         </div>
                     </div>
                 </div>

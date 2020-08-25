@@ -17,10 +17,10 @@
     <li>
         <div>
             <a href="{{ site_url('/home/html/m/loading') }}" target="_blank">로딩화면</a>
-            <a href="{{ site_url('/home/html/m/intro2') }}" target="_blank">인트로</a>
+            <!--a href="{{ site_url('/home/html/m/intro2') }}" target="_blank">인트로</a-->
             <a href="{{ site_url('/home/html/m/intro3') }}" target="_blank">인트로-2020</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
+            <!--<a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>-->
             <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
             <a href="{{ site_url('/home/html/m/main2_2008') }}" target="_blank">메인-경찰간부</a>
             <br><br>
@@ -42,9 +42,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/main_2015') }}" target="_blank">메인-인천 고시학원</a>
-            <br><br>
-            <a href="{{ site_url('/home/html/m/main_wsbook') }}" target="_blank">메인-윌스토리</a>
+            <a href="{{ site_url('/home/html/m/main_2015') }}" target="_blank">메인-인천 고시학원</a>            
             <br><br>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>
             <br><br>
@@ -133,6 +131,8 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/map') }}" target="_blank">학원오시는 길</a>
             <a href="{{ site_url('/home/html/m/map_2003') }}" target="_blank">학원오시는 길 - 공무원 법원직</a>
+            <p>윌스토리</p> 
+            <a href="{{ site_url('/home/html/m/main_wsbook') }}" target="_blank">메인-윌스토리</a>
         </div>
     </li>
     <li>        

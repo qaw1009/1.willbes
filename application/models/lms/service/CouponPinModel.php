@@ -29,6 +29,16 @@ class CouponPinModel extends WB_Model
     }
 
     /**
+     * 사용가능한 쿠폰핀 수량 리턴
+     * @return int
+     */
+    public function getAvailableCouponPinCnt()
+    {
+        $arr_condition['RAW']['CouponIdx is'] = ' null';
+        return $this->_conn->getListResult($this->_table['coupon_pin'], true, $arr_condition);
+    }
+
+    /**
      * 쿠폰핀 배정 (배정된 쿠폰식별자 업데이트)
      * @param $assign_cnt
      * @param $coupon_idx

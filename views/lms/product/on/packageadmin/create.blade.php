@@ -1224,23 +1224,20 @@
                 location.replace('{{ site_url('/product/on/packageAdmin/') }}' + getQueryString());
             });
 
+            $radio_name = ['IsLecStart','IsPause','IsExten','IsRetake'];
             studyPeriodCheck = function(val) {
                 if(val === '616002') {
-                    $('input[name="IsLecStart"]:eq(1)').iCheck('check');
-                    $('input[name="IsPause"]:eq(1)').iCheck('check');
-                    $('input[name="IsExten"]:eq(1)').iCheck('check');
-                    $('input[name="IsRetake"]:eq(1)').iCheck('check');
-                    $('input[name="IsLecStart"]:eq(0)').iCheck('disable');
-                    $('input[name="IsPause"]:eq(0)').iCheck('disable');
-                    $('input[name="IsExten"]:eq(0)').iCheck('disable');
-                    $('input[name="IsRetake"]:eq(0)').iCheck('disable');
+                    for($i = 0;$i < $radio_name.length; $i++) {
+                        $('input[name="'+$radio_name[$i]+'"]:eq(1)').iCheck('check');
+                        $('input[name="'+$radio_name[$i]+'"]:eq(0)').iCheck('disable');
+                    }
                 } else {
-                    $('input[name="IsLecStart"]:eq(0)').iCheck('enable');
-                    $('input[name="IsPause"]:eq(0)').iCheck('enable');
-                    $('input[name="IsExten"]:eq(0)').iCheck('enable');
-                    $('input[name="IsRetake"]:eq(0)').iCheck('enable');
+                    for($i = 0;$i < $radio_name.length; $i++) {
+                        $('input[name="'+$radio_name[$i]+'"]:eq(0)').iCheck('enable');
+                    }
                 }
             }
+
             $regi_form.on('ifChecked', 'input[name="StudyPeriodCcd"]', function () {
                 studyPeriodCheck($(this).val());
             });

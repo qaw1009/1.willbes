@@ -17,7 +17,7 @@
             </div>
             <div class="mainBtn">
                 <a href="#none" class="btn2">
-                    사전예약 이벤트 참여하기         
+                    사전예약 이벤트<br/> 참여하기         
                 </a>
             </div>
             <div class="sort">
@@ -35,7 +35,7 @@
             <div class="mainBtn">
                 {{--로그인 전--}}
                 <a href="#none">                    
-                    로그인 후 서비스 이용이 가능합니다.
+                    로그인 후 서비스<br/> 이용이 가능합니다.
                 </a>
                 {{--로그인 후--}}
                 <a href="#none" class="btn2">                    
@@ -43,7 +43,7 @@
                 </a>
             </div>
             <div class="marktxt1">
-                OMR 정답지에 답을 체크 하는 [일반채점] 서비스 및 합격예측 분석 데이터는 PC버전을 이용해 주세요
+                OMR 정답지에 답을 체크 하는 [일반채점] 서비스 및 합격예측 분석 데이터는 PC버전을 이용해 주세요.
             </div>
         </div>
     </div>   

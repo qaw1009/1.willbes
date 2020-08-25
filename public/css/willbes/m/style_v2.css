@@ -1677,7 +1677,7 @@ body.memBody #Footer {
 .willbes-Lec-Selected .resetBtn a img {
     width: 100%;
 }
-
+.willbes-Lec-Selected:after {content:''; display:block; clear: both;}
 
 .willbes-WriteBox {
     width: 100%;
@@ -4074,7 +4074,7 @@ body.memBody #Footer {
 }
 
 /*교재구매*/
-.bookListWrap {margin:20px 0 30px; border-top:1px solid #ccc;}
+.bookListWrap {margin:20px 0 30px !important; border-top:1px solid #ccc; clear: both;}
 .bookList {display:inline-block; float:left; width:50%; border-bottom:1px solid #ccc; border-right:1px solid #ccc; padding:20px 10px; text-align: center;}
 .bookList:nth-of-type(even) {border-right:0;}
 .bookImg {width:100%; height:200px; position: relative; }

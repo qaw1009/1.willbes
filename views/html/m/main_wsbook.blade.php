@@ -102,7 +102,7 @@
         <div class="subMenuBox c_both">
             <ul class="subMenu">
                 <li class="sMenuList">
-                    <a href="#none" class="moreMenu">교재<br>구매</a>
+                    <a href="#none" class="moreMenu">도서<br>구매</a>
                     <div class="dropBox">
                         <ul>
                             <li>

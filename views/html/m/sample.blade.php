@@ -134,6 +134,11 @@
             <p>윌스토리</p> 
             <a href="{{ site_url('/home/html/m/main_wsbook') }}" target="_blank">메인-윌스토리</a>
             <a href="{{ site_url('/home/html/m/wsbook_search_list') }}" target="_blank">윌스토리 검색화면</a>
+            <a href="{{ site_url('/home/html/m/wsbook_list') }}" target="_blank">윌스토리 도서리스트</a>
+            <a href="{{ site_url('/home/html/m/wsbook_best') }}" target="_blank">윌스토리 베스트셀러</a>
+            <a href="{{ site_url('/home/html/m/wsbook_new') }}" target="_blank">윌스토리 신간안내</a>
+            <a href="{{ site_url('/home/html/m/wsbook_willbes') }}" target="_blank">윌스토리 베스트셀러</a>
+            <a href="{{ site_url('/home/html/m/wsbook_book_view') }}" target="_blank">윌스토리 도서상세 ing</a>
         </div>
     </li>
     <li>        

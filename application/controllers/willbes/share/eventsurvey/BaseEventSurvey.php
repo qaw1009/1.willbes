@@ -388,27 +388,51 @@ class BaseEventSurvey extends \app\controllers\FrontController
     private function _matchingSurveyData($answer_data=[],$new_question_info=[])
     {
         $survey_levels = [];
+        $reset_data = [];
+        $new_answer_data = [];
         $survey_data = [];
+
         foreach ($answer_data as $question_key => $answer){
             $SqType = $new_question_info[$question_key]['SqType'];
             $SqTitle = $new_question_info[$question_key]['SqTitle'];
 
-            if($SqType != 'D'){ // 서술형 제외
-                foreach ((array)$answer as $key => $val){
+            if($SqType != 'D') { // 서술형 제외
+                foreach ($answer as $key => $val) {
                     $question_info = $new_question_info[$question_key]['SqJsonData'][$key];
                     $item_sum = array_sum($val);
 
-                    if($item_sum > 0){
-                        foreach ($val as $k => $v){
-                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $survey_data[$question_info['title']][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
-                            }else{
+                    foreach ($val as $k => $v) {
+                        if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형 초기화
+                            $reset_data[$question_info['title']][$question_info['item'][$k]] = 0;
+                            $new_answer_data[$question_key][$question_info['title']][$question_info['item'][$k]] = $v;
+                        }else{ // 전체적인 시험난이도
+                            if($item_sum > 0) {
                                 $survey_levels[$SqTitle][$question_info['item'][$k]] = round(($v / $item_sum) * 100, 0);
                             }
                         }
                     }
                 }
             }
+        }
+
+        // 선택 카운트
+        foreach ($new_answer_data as $question_key => $answer){
+            foreach ($answer as $key => $val){
+                foreach ($val as $item => $cnt){
+                    $reset_data[$key][$item] += $cnt;
+                }
+            }
+        }
+
+        // 선택 비율계산
+        foreach ($reset_data as $title => $answer){
+            $item_sum = array_sum($answer);
+            if($item_sum > 0) {
+                foreach ($answer as $item => $cnt){
+                    $survey_data[$title][$item] = round(($cnt / $item_sum) * 100, 0);
+                }
+            }
+
         }
 
         return [$survey_levels,$survey_data];

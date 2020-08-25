@@ -119,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" id="div_LecTypeCcd_1">
+                <div class="form-group">
                     <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
@@ -1223,6 +1223,28 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/packageAdmin/') }}' + getQueryString());
             });
+
+            studyPeriodCheck = function(val) {
+                if(val === '616002') {
+                    $('input[name="IsLecStart"]:eq(1)').iCheck('check');
+                    $('input[name="IsPause"]:eq(1)').iCheck('check');
+                    $('input[name="IsExten"]:eq(1)').iCheck('check');
+                    $('input[name="IsRetake"]:eq(1)').iCheck('check');
+                    $('input[name="IsLecStart"]:eq(0)').iCheck('disable');
+                    $('input[name="IsPause"]:eq(0)').iCheck('disable');
+                    $('input[name="IsExten"]:eq(0)').iCheck('disable');
+                    $('input[name="IsRetake"]:eq(0)').iCheck('disable');
+                } else {
+                    $('input[name="IsLecStart"]:eq(0)').iCheck('enable');
+                    $('input[name="IsPause"]:eq(0)').iCheck('enable');
+                    $('input[name="IsExten"]:eq(0)').iCheck('enable');
+                    $('input[name="IsRetake"]:eq(0)').iCheck('enable');
+                }
+            }
+            $regi_form.on('ifChecked', 'input[name="StudyPeriodCcd"]', function () {
+                studyPeriodCheck($(this).val());
+            });
+            studyPeriodCheck($('input[name="StudyPeriodCcd"]:checked').val());
         });
 
         function rowDelete(strRow) {

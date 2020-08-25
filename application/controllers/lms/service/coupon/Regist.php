@@ -162,6 +162,7 @@ class Regist extends \app\controllers\BaseController
         $method = 'POST';
         $idx = null;
         $data = null;
+        $available_pin_cnt = null;
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -195,8 +196,10 @@ class Regist extends \app\controllers\BaseController
             }
         }
 
-        // 사용가능한 쿠폰핀 수량 조회
-        $available_pin_cnt = $this->couponPinModel->getAvailableCouponPinCnt();
+        if ($method == 'POST') {
+            // 사용가능한 쿠폰핀 수량 조회
+            $available_pin_cnt = $this->couponPinModel->getAvailableCouponPinCnt();
+        }
 
         // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
         $codes = $this->_getCodes([$this->_ccd['CouponType'], $this->_ccd['ApplyType'], $this->_ccd['LecType']]);

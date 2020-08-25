@@ -82,7 +82,7 @@
                     <th width="8%">대분류</th>
                     <th width="5%">대비<br>학년도</th>
                     <th width="6%">패키지<BR>유형</th>
-                    <th width="6%">수강기간</th>
+                    <th width="8%">수강기간</th>
                     <th>기간제패키지명</th>
                     <th width="6%">판매가</th>
                     <th width="5%">배수</th>
@@ -145,7 +145,10 @@
                             return row.PackTypeCcd_Name.replace('패키지','');
                         }},
 
-                    {'data' : 'StudyPeriod_Name'},//수강기간
+                    //{'data' : 'StudyPeriod_Name'},//수강기간
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.StudyPeriodCcd==='616001' ? row.StudyPeriod_Name : '~'+row.StudyEndDate;
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//패키지명

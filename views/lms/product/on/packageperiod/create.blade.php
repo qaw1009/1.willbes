@@ -1013,12 +1013,30 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/packagePeriod/') }}' + getQueryString());
             });
+
+            studyPeriodCheck = function(val) {
+                if(val === '616002') {
+                    $('input[name="IsLecStart"]:eq(1)').iCheck('check');
+                    $('input[name="IsPause"]:eq(1)').iCheck('check');
+                    $('input[name="IsExten"]:eq(1)').iCheck('check');
+                    $('input[name="IsRetake"]:eq(1)').iCheck('check');
+                    $('input[name="IsLecStart"]:eq(0)').iCheck('disable');
+                    $('input[name="IsPause"]:eq(0)').iCheck('disable');
+                    $('input[name="IsExten"]:eq(0)').iCheck('disable');
+                    $('input[name="IsRetake"]:eq(0)').iCheck('disable');
+                } else {
+                    $('input[name="IsLecStart"]:eq(0)').iCheck('enable');
+                    $('input[name="IsPause"]:eq(0)').iCheck('enable');
+                    $('input[name="IsExten"]:eq(0)').iCheck('enable');
+                    $('input[name="IsRetake"]:eq(0)').iCheck('enable');
+                }
+            }
+            $regi_form.on('ifChecked', 'input[name="StudyPeriodCcd"]', function () {
+                studyPeriodCheck($(this).val());
+            });
+            studyPeriodCheck($('input[name="StudyPeriodCcd"]:checked').val());
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
-        function radioclass() {
-            $("input[name=mainFlag]").attr({"class":"flat"});
-        }
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }

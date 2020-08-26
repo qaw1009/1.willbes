@@ -11,11 +11,9 @@
     <div id="Sticky" class="sticky-Title">
         <div class="sticky-Grid sticky-topTit">
             <div class="willbes-Tit NGEB p_re">
-                {{--
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
-                </button>    
-                --}}
+                </button>  
                 결제하기
             </div>
         </div>
@@ -116,40 +114,13 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">이메일</th>
-                                        <td><input type="email" id="" placeholder="id@host" style="width:100%"></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">배송요청사항</th>
-                                        <td><input type="text" id="" name="" style="width:100%" placeholder="배송 메시지를 입력해주세요."></td>
+                                        <td><input type="email" style="width:100%; height:28px"></td>
                                     </tr>
                                 </table>
                             </div>
                         </td>
                     </tr>
-                    <tr class="replyList willbes-Open-Table">
-                        <td>
-                            포인트
-                        </td>
-                        <td class="MoreBtn tx-center">></td>
-                    </tr>
-                    <tr>
-                        <td class="w-data tx-left" colspan="2">
-                            <div class="paymentPoint">포인트 [10,000P 보유] <input type="number" id="" name="" style="width:80px" > P 차감 <a href="#none">잔액사용</a></div>
-                            <ul class="paymentTxt pd_all_none bd-none">
-                                <li>강좌 포인트는 <span class="tx-blue">2,500P</span> 부터 <span class="tx-blue">1P</span> 단위로 사용 가능합니다. </li>
-                                <li>포인트를 사용하여 결제할 경우 포인트가 적립되지 않습니다.</li>
-                                <li>환불 시 사용된 포인트는 복원되지 않고 소멸되며, 적립된 포인트는 회수됩니다.</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="w-data tx-left" colspan="2">
-                            <ul class="payLecList buyerLecList">
-                                <li><strong>실 결제금액</strong> <span class="tx-blue bd-none pd-zero">96,000원</span></li>
-                                <li class="tx12"><strong>강좌시작일 설정</strong> <span class="tx-blue">결제완료 후 바로 수강 시작</span></li>
-                            </ul>
-                        </td>
-                    </tr>
+
                     <tr class="replyList willbes-Open-Table">
                         <td>
                             총 결제금액
@@ -162,12 +133,9 @@
                             <div class="priceBox">
                                 <ul>
                                     <li><strong>상품주문금액</strong> <span>150,000원</span></li>
-                                    <li><strong>쿠폰할인금액</strong> <span>0원</span></li>
-                                    <li><strong>포인트 차감금액</strong> <span>0원</span></li>
                                     <li><strong>배송료</strong> <span>0원</span></li>
                                     <li class="NGEB">
                                         <strong>결제예상금액</strong> <span class="tx-blue">312,000원</span>
-                                        <p class="NGR tx14 pt5"><strong>적립예정포인트</strong> <span class="tx-blue">426원</span></p>
                                     </li>
                                 </ul> 
                                 <p class="mt10">※ 회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 2,500원이 추가</span>로 적용 되었습니다.</p>                                           
@@ -184,8 +152,7 @@
                         <td class="w-data tx-left" colspan="2">
                             <ul class="method">
                                 <li><a href="#none">신용카드</a></li>
-                                <li><a href="#none">실시간 계좌이체</a></li>
-                                <li><a href="#none">무통장입금(가상계좌)</a></li>             
+                                <li><a href="#none">계좌이체</a></li>           
                             </ul>
                         </td>
                     </tr>

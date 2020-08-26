@@ -143,7 +143,6 @@
 
                 <div class="willbes-Lec-Line">-</div>
                 <!-- willbes-Lec-Line -->
-
                 @foreach($data['list'] as $row)
                     <div class="willbes-Lec-Table d_block">
                         <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -167,7 +166,9 @@
                                             </dt>
                                             <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>
                                             <dt><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">
+                                                    {{$row['StudyPeriodCcd'] === '616001' ? $row['StudyPeriod'] : (($study_days = diff_days($row['StudyEndDate'],date('Y-m-d'))+1) < 1 ? 0 : $study_days) }}일
+                                                </span></dt>
                                             <dt class="NSK ml15">
                                                 <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                             </dt>

@@ -232,6 +232,10 @@ html {
   input[type="number"]::-webkit-outer-spin-button {
 	height: auto;
   }
+  input[type="email"]::-webkit-inner-spin-button,
+  input[type="email"]::-webkit-outer-spin-button {
+	height: auto;
+  }
   input[type="search"] {
 	-webkit-box-sizing: content-box;
 	   -moz-box-sizing: content-box;

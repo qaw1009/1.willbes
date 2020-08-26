@@ -58,6 +58,9 @@ class BaseOrderFModel extends WB_Model
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
     public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002', 'choice_prof' => '648003'];
 
+    // 수강기간설정 공통코드 (수강기간, 수강종료일)
+    public $_study_period_ccd = ['period' => '616001', 'end_date' => '616002'];
+
     // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
     public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];
 

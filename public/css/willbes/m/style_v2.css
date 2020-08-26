@@ -3211,8 +3211,9 @@ body.memBody #Footer {
 .basketListBox div:after {
     content:""; display:block; clear:both;
 }
+
 .basketWrap .lecTxt {
-    padding:0 20px 20px;
+    padding:0 20px 50px;
 }
 .basketWrap .lecTxt li {
     line-height: 1.5;

@@ -118,7 +118,7 @@ class ProductFModel extends WB_Model
                 case 'adminpack_lecture' :
                         $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
                             , CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData
-                            , SiteUrl, SiteName, ProdCateName
+                            , SiteUrl, SiteName, ProdCateName, StudyPeriodCcd, StudyEndDate
                             ';
                     break;
 
@@ -130,7 +130,7 @@ class ProductFModel extends WB_Model
                 //기간제패키지
                 case 'periodpack_lecture' :
                         $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
-                            , SchoolYear, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
+                            , SchoolYear, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData, StudyPeriodCcd, StudyEndDate';
                     break;
 
                 // 교재상품

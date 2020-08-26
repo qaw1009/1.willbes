@@ -476,9 +476,11 @@
     float: left;
     width:370px;
     margin-right:5px;
+    margin-bottom:5px;
 }
+.HotIssue li:nth-child(3),
 .HotIssue li:last-child {
-    margin: 0;
+    margin-right: 0;
 }
 .HotIssue li img {width: 100%;}
 .HotIssue li.nSlider {

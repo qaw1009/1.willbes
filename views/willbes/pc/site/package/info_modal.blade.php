@@ -10,7 +10,7 @@
         <dl class="w-info NG">
             <dt>개강일 : <span class="tx-blue">{{$data['lecture']['StudyStartDateYM']}}</span></dt>
             <dt><span class="row-line">|</span></dt>
-            <dt>수강기간 : <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span></dt>
+            <dt>수강기간 : <span class="tx-blue">{{$data['lecture']['StudyPeriodCcd'] === '616001' ? $data['lecture']['StudyPeriod'] : (($study_days=diff_days($data['lecture']['StudyEndDate'],date('Y-m-d'))+1) < 1 ? 0 : $study_days) }}일</span></dt>
             <dt class="NSK ml15">
                 <span class="nBox n1">{{ $data['lecture']['MultipleApply'] === "1" ? '무제한' : $data['lecture']['MultipleApply'].'배수'}}</span>
             </dt>

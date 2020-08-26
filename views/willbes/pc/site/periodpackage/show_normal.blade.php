@@ -15,13 +15,14 @@
                         <col style="width: 940px;"/>
                     </colgroup>
                     <tbody>
+
                     <tr>
                         <td class="pl30">
                             <div class="w-tit">{{$data['ProdName']}}</div>
                             <dl class="w-info">
                                 <dt>개강일 : <span class="tx-blue">{{$data['StudyStartDateYM']}}</span></dt>
                                 <dt><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">{{$data['StudyPeriod']}}일</span></dt>
+                                <dt>수강기간 : <span class="tx-blue">{{$data['StudyPeriodCcd'] === '616001' ? $data['StudyPeriod'] : (($study_days=diff_days($data['StudyEndDate'],date('Y-m-d'))+1) < 1 ? 0 : $study_days) }}일</span></dt>
                                 <dt class="NSK ml15">
                                     <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                                 </dt>

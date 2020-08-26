@@ -14,7 +14,7 @@
         @if($pattern_ccd[$ccd] == 'only') {{-- 단과강좌 --}}
             <div class="mb100">
                 <div class="pd20">
-                    <div class="NSK-Black tx22 mb10">단과 강좌</div>
+                    {{--<div class="NSK-Black tx22 mb10">단과 강좌</div>--}}
                     <div class="tx-red tx14 mb10">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
                 </div>
                 @if(empty($val) === false)
@@ -108,7 +108,7 @@
         @elseif($pattern_ccd[$ccd] == 'package') {{-- 운영자 패키지 --}}
             <div class="mb100">
                 <div class="pd20">
-                    <div class="NSK-Black tx22 mb10">운영자 패키지 강좌</div>
+                    {{--<div class="NSK-Black tx22 mb10">운영자 패키지 강좌</div>--}}
                     <div class="tx-red tx14 mb10">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
                 </div>
 
@@ -156,7 +156,7 @@
         @elseif($pattern_ccd[$ccd] == 'period') {{-- 기간제 패키지 --}}
             <div class="mb100">
                 <div class="pd20">
-                    <div class="NSK-Black tx22 mb10">기간제 패키지 강좌</div>
+                    {{--<div class="NSK-Black tx22 mb10">기간제 패키지 강좌</div>--}}
                     <div class="tx-red tx14 mb10">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
                 </div>
                 <div class="lineTabs lecListTabs c_both">

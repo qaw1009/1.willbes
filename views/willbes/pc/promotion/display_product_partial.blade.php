@@ -14,7 +14,7 @@
         @foreach($arr_base['display_product_data'][$group_num] as $ccd => $val)
             @if($pattern_ccd[$ccd] == 'only') {{-- 단과강좌 --}}
                 <div class="proLecList">
-                    <h1 class="group_h1">단과 강좌</h1>
+                    {{--<h1 class="group_h1">단과 강좌</h1>--}}
                     <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                     <div class="willbes-Lec-Table mt20">
                         @if(empty($val) === false)
@@ -138,7 +138,7 @@
                 </div>
             @elseif($pattern_ccd[$ccd] == 'package') {{-- 운영자 패키지 --}}
                 <div class="proLecPkg">
-                    <h1 class="group_h1">운영자 패키지 강좌</h1>
+                    {{--<h1 class="group_h1">운영자 패키지 강좌</h1>--}}
                     <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                     <div class="willbes-Lec-Table mt20">
                         <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -181,7 +181,7 @@
                 </div>
             @elseif($pattern_ccd[$ccd] == 'period') {{-- 기간제 패키지 --}}
                 <div class="proLecPkg">
-                    <h1 class="group_h1">기간제 패키지 강좌</h1>
+                    {{--<h1 class="group_h1">기간제 패키지 강좌</h1>--}}
                     <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                     <div class="willbes-Lec-Table mt20">
                         <table cellspacing="0" cellpadding="0" class="lecTable">

@@ -58,6 +58,10 @@
             </map>
         </div>
 
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @else
+        @endif  
         
         <div class="evtCtnsBox wb_evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1783_02.jpg" usemap="#Map1783_01" title="초시생을 위한 합격 플랜" border="0" />
@@ -69,7 +73,7 @@
         </div>
 
         @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
         @else
         @endif  
 

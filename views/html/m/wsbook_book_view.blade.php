@@ -157,15 +157,7 @@
         </div> 
 
         <div class="searchBox book">   
-            <div>
-                {{--
-                <select name="search_type">
-                    <option value="0">통합검색</option>
-                    <option value="1">도서명</option>
-                    <option value="2">저자명</option>                            
-                    <option value="3">출판사</option>
-                </select>  
-                --}}           
+            <div>         
                 <input type="search" id="search" name="" value="" placeholder="도서 검색" />
                 <label for="search"><button title="검색">검색</button></label>  
             </div>              
@@ -186,131 +178,151 @@
         </div>
     </div>
 
-    <div class="willbes-Lec-Selected NG c_both tx-gray pb20">
-        <select id="process" name="process" title="process" class="seleProcess width30p">
-            <option selected="selected">최근등록순</option>
-            <option value="">상품명순</option>
-        </select>
-    </div>  
+    <div class="wsBookViewWrap">    
+        <div class="wsBookView">
+            <h5 class="NSK-Black">2020 기특한 국어 전 범위 모의고사 4</h5>
+            <div class="wsBookImg">
+                <img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303154/book_303154_og.jpg" alt="교재명" title="교재명" />
+            </div>
+            <div class="wsBookInfo">                
+                <ul class="wsBooktxt">
+                    <li><strong class="shead">판매가</strong><span><s>12,000원</s> → <strong class="tx-red tx14">10,800원</strong></span></li>
+                    <li><strong class="shead">저자명</strong><span>기미진</span><a href="#none" class="another">&gt;</a></li>
+                    <li><strong class="shead">출판사</strong><span>배움</span><a href="#none" class="another">&gt;</a></li>
+                    <li><strong class="shead">페이지</strong><span>152p</span></li>
+                    <li><strong class="shead">ISBN</strong> <span>9791130335087</span></li>
+                    <li><strong class="shead">출판일</strong><span>2020-06-16</span></li>
+                    <li><strong class="shead">교재판형</strong><span>225*299</span></li>
+                    <li><strong class="shead">배송비</strong><span>2,500원</span> </li>
+                    <li><strong class="shead">주문수량</strong>
+                        <span>
+                            <select id="" name="" title="">
+                                <option selected="selected">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                                <option value="">6</option>
+                                <option value="">7</option>
+                                <option value="">8</option>
+                                <option value="">9</option>
+                                <option value="">10</option>
+                            </select>
+                        </span>
+                    </li>
+                    <li class="total NG">총 상품금액 <strong>10,800원</strong></li>
+                </ul>
+                <div class="wsBook-buyBtn">
+                    <ul>
+                        <li class="btnAuto h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-white bd-light-gray">
+                                <span class="tx-black">장바구니</span>
+                            </button>
+                        </li>
+                        <li class="btnAuto h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-green bd-green">
+                                <span>바로결제</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="naver">
+                    네이버페이 영역
+                </div>
+            </div>                
+        </div>
 
-    <div class="bookListWrap">
-        <div class="bookList">
-            <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></a></div>
-            <ul class="bookInfo">
-                <li class="bookTitle">2019 기태국어 기본이론(어법, 독해)(세트전2권) </li>
-                <li><span class="writer">신광은경찰팀 저</span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
-                <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
-                        <option selected="selected">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </li>
-                <li>
-                    <div class="w-buy">       
-                        <ul class="two">
-                            <li><a href="#none" class="btn_gray">장바구니</a></li>
-                            <li><a href="#none" class="btn_blue">바로결제</a></li>
-                        </ul> 
-                    </div>
-                </li>
+        <div class="lec-info-tab">
+            <ul class="tabWrap">
+                <li><a href="#tab01" class="on">도서소개</a></li>
+                <li><a href="#tab02">저자소개</a></li>
+                <li><a href="#tab03">목차</a></li>
+                <li><a href="#tab04">이용안내</a></li>
             </ul>
-        </div>
-        <div class="bookList">
-            <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304121/book_304121_og.jpg"></a></div>
-            <ul class="bookInfo">
-                <li class="bookTitle">2018 9급 오대혁 국어 백발백중 전범위 동형모의고사 665제 </li>
-                <li><span class="writer">서울대학교정치외교학부 교수진 저</span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
-                <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
-                        <option selected="selected">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </li>
-                <li>
-                    <div class="w-buy">       
-                        <ul class="two">
-                            <li><a href="#none" class="btn_gray">장바구니</a></li>
-                            <li><a href="#none" class="btn_blue">바로결제</a></li>
-                        </ul> 
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="bookList">
-            <div class="bookImg"><a href="#none"><img src="https://gosi.willbes.net/public/uploads/wbs/book/2020/307874/book_307874_og.jpg"></a></div>
-            <ul class="bookInfo">
-                <li class="bookTitle">2017 정채영 국어 마무리시리즈(적중문제편) 100문제만 찍어주마! </li>
-                <li><span class="writer">강인엽 저<span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
-                <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
-                        <option selected="selected">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </li>
-                <li>
-                    <div class="w-buy">       
-                        <ul class="two">
-                            <li><a href="#none" class="btn_gray">장바구니</a></li>
-                            <li><a href="#none" class="btn_blue">바로결제</a></li>
-                        </ul> 
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="bookList">
-            <div class="bookImg"><a href="#none"><img src="https://police.willbes.net/public/uploads/wbs/book/2020/305041/book_305041_og.jpg"></a></div>
-            <ul class="bookInfo">
-                <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
-                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
-                <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
-                        <option selected="selected">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </li>
-                <li>
-                    <div class="w-buy">       
-                        <ul class="two">
-                            <li><a href="#none" class="btn_gray">장바구니</a></li>
-                            <li><a href="#none" class="btn_blue">바로결제</a></li>
-                        </ul> 
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="bookList">
-            <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303318/book_303318_og.jpg"></a></div>
-            <ul class="bookInfo">
-                <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
-                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
-                <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
-                        <option selected="selected">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </li>
-                <li>
-                    <div class="w-buy">       
-                        <ul class="two">
-                            <li><a href="#none" class="btn_gray">장바구니</a></li>
-                            <li><a href="#none" class="btn_blue">바로결제</a></li>
-                        </ul> 
-                    </div>
-                </li>
-            </ul>
-        </div>
+            <div class="tabBox tabBox2">
+                <div id="tab01">
+                    제3판 개정의 가장 큰 특징은 관련 쟁점을 묶어서 이해하기 좋게 정리한 것이다. 이런 작업은 많은 곳에서 있었다. 
+                    예를 들어 판결서 송달의 효력과 당사자의 불복방법(상소, 추후보완상소⋅재심)이 상황에 따라 각각 다른 주제들에서
+                    논의가 되는데, 바로 비교할 수 있도록 한 곳에 모아서 정리를 하였다. 
+                    이는 수험준비를 하는 데 분명 많은 도움이 될 것으로 생각된다.
+                </div>
+
+                <div id="tab02"> 
+                    김유향 변호사<br>
+                    서울대학교 경제학부(국제경제) 졸업<br>
+                    고려대학교 법과대학원 졸업<br>
+                    사법시험 합격/사법연수원 수료<br>
+                    서울중앙지방법원 민사조정위원<br>
+                    법률실무전문가 양성과정(주최 여성부) 담당교수<br>
+                    헌법재판소 국선대리인<br>
+                </div>
+
+                <div id="tab03"> 
+                    제1장 헌법과 헌법학 2<br>
+                    제1절 헌법의 의의와 특성 2<br>
+                    제2절 헌법의 해석 2<br>
+                    제3절 헌법의 제정⋅개정 6<br>
+                    제4절 헌법의 수호 15<br>
+                    제2장 대한민국헌법총설 17<br>
+                    제1절 한국헌법의 개정 17<br>
+                    제2절 헌법의 적용범위 29<br>
+                </div>
+
+                <div id="tab04"> 
+                    <h4 class="NSK-Black">이용안내</h4>
+                    <ul>
+                        <li>평일 오후 2시 이전 결제완료건 : 당일 출고 (도서 공급 및 재고 사정으로 지연될 수 있습니다.)</li>
+                        <li>평일 오후 2시 이후 결제완료건 : 익일 출고 (금요일 오후2시 이후 결제완료건은 차주 월요일 출고)</li>
+                        <li>출고 후 1일~3일(72시간) 내 수령 가능하며, 발송일 오후 6시부터 배송조회가 가능합니다.</li>
+                        <li>배송조회 : “내강의실 >결제관리 >주문/배송조회”에서 확인할 수 있습니다.</li>
+                        <li class="tx-red">네이버페이로 결제시 도서 주문내역은 네이버쇼핑(네이버페이) 주문조회에서 확인가능합니다.</li>
+                        <li>결제 후 주문취소/주소변경이 필요하신 경우 윌스토리 고객센터로 연락주시기 바랍니다.</li>
+                        <li>출고 전 주문취소/주소변경은 출고일 오후 2시 이전까지만 가능합니다.</li>
+                        <li>결제완료 후 오후 2시 이전에 온라인상으로 환불신청된 건에 한해서만 당일출고가 되지 않습니다.</li>
+                        <li class="tx-red">공급사(출판사)및 온라인서점 재고 사정에 의해 결제완료 이후에도 품절/지연될 수 있으며, 품절 시 관련 사항에 대해서는 전화나 문자로 안내드리겠습니다.</li>
+                        <li>윌스토리 고객센터(<span class="tx-red">1544-4944</span>) 전화문의는 평일 오전 9시부터 오후12시, 오후 1시부터 오후5시까지입니다. 주말 공휴일 휴무</li>
+                    </ul>
+                    <h4 class="NSK-Black">교환 및 환불</h4>
+                    <ul>
+                        <li>도서불량 및 오배송 등의 이유로 반품하실 경우, 반품배송비는 무료입니다.</li>
+                        <li>고객님의 변심에 의한 반품, 환불, 교환시 배송비는 고객님 부담입니다.</li>
+                        <li>상담원과의 상담 없이 교환 및 반품으로 반송된 도서에 대하여는 책임지지 않습니다.</li>
+                        <li>반품 신청시 반송된 도서의 본사 수령 확인 후 환불이 진행됩니다. (카드결제는 카드사 영업일 기준 시일이 3~5일이 소요됩니다.)</li>
+                        <li>주문하신 도서의 반품(환불) 및 교환은 교재 결제일로 부터 7일 이내에 온라인상에서 신청 하 실 수 있습니다.</li>
+                        <li>도서 환불신청일로 부터 5일 이내 반송 시 환불처리 가능합니다.</li>
+                        <li>도서가 훼손되거나 포장이 훼손된 경우 반품 및 교환, 환불이 불가능합니다.</li>
+                        <li>반품 또는 교환시 고객님의 사정으로 수거가 지연될 경우에는 반품이 제한될 수 있습니다.</li>
+                    </ul>
+                    <h4 class="NSK-Black">배송안내</h4>
+                    <ul>
+                        <li>평일 오후 2시 이전 결제완료건 : 당일 출고 (도서 공급 및 재고 사정으로 지연될 수 있습니다.)</li>
+                        <li>평일 오후 2시 이후 결제완료건 : 익일 출고 (금요일 오후2시 이후 결제완료건은 차주 월요일 출고)</li>
+                        <li>출고 후 1일~3일(72시간) 내 수령 가능하며, 발송일 오후 6시부터 배송조회가 가능합니다.</li>
+                        <li>배송조회 : “내강의실 >결제관리 >주문/배송조회”에서 확인할 수 있습니다</li>
+                        <li class="tx-red">네이버페이로 결제시 도서 주문내역은 네이버쇼핑(네이버페이) 주문조회에서 확인가능합니다.</li>
+                        <li>배송 방법 : 택배 (배송업체-CJ대한통운)</li>
+                        <li>배송 지역 : 전국지역 (군부대, 해외배송 제한)</li>
+                        <li>배송 비용 : 2,500원 (30,000원 이상 구매시 무료배송)<br>
+                            ※ 최초 도서결제 후 묶음 배송을 위한 추가 결제 불가
+                        <li>도서산간지방은 추가 배송비가 발생할 수 있습니다.</li>
+                        <li>군부대 지역의 경우 해당 군부대에 CJ대한통운 택배배송이 되는지 먼저 확인 후 주문을 해주시기 바랍니다. 
+                            일부 군부대 지역은 우체국 택배를 제외한 타택배사는 출입이 제한이 될 수 있습니다. (군부대 사서함 주소 사용 시 배송제한)<br>
+                            ※ 유의사항 : 군부대 지역 배송 시 우체국 사서함 주소지를 제외하고, 정확한 지번/도로명 주소, 부대명칭 등 을 기재해 주셔야 합니다.<br>
+                            예) 경기도 00군 00리 00번지(00도로명) 0000부대(사단, 연대, 대대 등) 00중대 일병 000</li>
+                        <li>배송기간 : 발송일로부터 1일~3일(72시간) [도서산간 지방은 2~3일 추가 소요]
+                            ※ 익일 배송완료를 원칙으로 하지만 택배사 사정에 따라 배송이 지연 될 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
     </div>
-    <!--bookListWrap//-->
+
+    <div class="lec-btns w50p">
+        <ul>
+            <li><a href="#none" class="btn-purple">장바구니</a></li>
+            <li><a href="#none" class="btn-purple-line">바로결제</a></li>
+        </ul>
+    </div>
 
     <div class="goTopbtn">
         <a href="javascript:link_go();">

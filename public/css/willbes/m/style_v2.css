@@ -1197,14 +1197,6 @@ body.memBody #Footer {
 .wsBook .todayBook p a {display: none;}
 .wsBook .todayBook p.leftBtn {left:10px; background-position: left top;}
 .wsBook .todayBook p.rightBtn {right:10px; background-position: right top;}
-/*
-.wsBook .todayBook #bx-pager-today {margin-top:20px; margin-right:-10px}
-.wsBook .todayBook #bx-pager-today li {display:inline; float:left; width:20%;;}
-.wsBook .todayBook #bx-pager-today a {display: block; margin-right:10px; background:#000}
-.wsBook .todayBook #bx-pager-today a img {opacity:0.3; width:100%;} 
-.wsBook .todayBook #bx-pager-today a.active img {opacity:1}
-.wsBook .todayBook #bx-pager-today:after {content:""; display:block; clear:both}
-*/
 
 .wsbook .csCenterBook {border-top:1px solid #ccc; border-bottom:1px solid #ccc; margin:30px 0;}
 .wsbook .csCenterBook li {display: inline; float:left; padding:15px; font-size:14px; line-height: 1.5; word-break: keep-all}
@@ -1214,7 +1206,6 @@ body.memBody #Footer {
 .wsbook .csCenterBook li:last-child img {max-width:60px;}
 .wsbook .csCenterBook li:last-child a {display: block; border-left:1px solid #ccc;}
 .wsbook .csCenterBook ul:after {content:""; display:block; clear:both}
-
 /****************윌스토리 서점 : 메인 end******************/
 
 /****************윌스토리 서점 : 검색화면******************/
@@ -1230,6 +1221,45 @@ body.memBody #Footer {
 .wsbook-Search-List .wsbookinfo li:last-child strong {color:#d30000; font-size:14px}
 .wsbook-Search-List .wsl-box:after {content:''; display: block; clear:both}
 /****************윌스토리 서점 : 검색화면 end******************/
+
+/****************윌스토리 서점 : 도서 상세보기*************************/
+.wsBookViewWrap {border-top:1px solid #e1e1e1}
+.wsBookViewWrap h5 {font-size:18px; margin-bottom:30px; padding-left:10px; color:#000}
+.wsBookView {margin:45px 0}
+.wsBookView .wsBookImg {display: inline-block; float:left; width:calc(45% - 10px); text-align: center; margin-left:10px}
+.wsBookView .wsBookImg img {width:100%; max-width:250px}
+.wsBookView .wsBookInfo {display: inline-block; float:left; width:calc(55% - 20px); letter-spacing: normal; margin:0 10px}
+.wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
+.wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
+.wsBookView .wsBooktxt strong.shead {display:inline-block; width:50px}
+.wsBookView .wsBooktxt a.another {display:inline-block; font-weight: bold; color:#fff; background:#0b9d00; width: 20px; padding:3px 0; text-align:center; border-radius: 10px;}
+.wsBookView .wsBooktxt span {display:inline-block; min-width:calc(95% - 70px)}
+.wsBookView .wsBooktxt li.total {text-align:right; font-size:16px;}
+.wsBookView .wsBooktxt li.total strong {display: inline-block; width:40%;  color:#0b9d00; padding-right:10px}
+.wsBookView .wsBooktxt a.more {display:inline-block; height: 18px; line-height: 18px; width:18px; text-align: center; font-size: 11px;
+    background:#0b9d00; color:#fff; border-radius: 4px; vertical-align: middle; margin-left:10px;}
+.wsBookView .wsBooktxt a.more .delivery {display:none;}
+.wsBookView .wsBooktxt a.more:hover .delivery {display:block; position: absolute; top:40px; left:0; text-align: left; font-size: 12px;
+    border:2px solid #0b9d00; background:#fff; color:#333; padding:20px; width: 520px; line-height: 1.5; z-index: 5;}
+.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+.wsBookView .wsBook-buyBtn {margin-top:20px}
+.wsBookView .wsBook-buyBtn li {display: inline; float:left; width:50%}
+.wsBookView .wsBook-buyBtn:after {content:''; display: block; clear: both;}
+.wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
+.wsBookView .wsBookInfo:after,
+.wsBookView:after {content:""; display:block; clear:both;}
+
+.wsBookViewWrap .lec-info-tab {font-size:12px}
+.wsBookViewWrap .lec-info-tab .tabWrap li a:hover,
+.wsBookViewWrap .lec-info-tab .tabWrap li a.on {
+    background: #0c9d00;
+    border:1px solid #0c9d01;
+    color:#fff;
+}
+
+.wsBookViewWrap .tabBox li {list-style-type: disc; margin-left:20px}
+
+/****************윌스토리 서점 : 도서 상세보기 end*************************/
 
 /* Tabs : lineTab 공통 */
 .lineTabs {
@@ -4259,6 +4289,10 @@ body.memBody #Footer {
     .wsbookList .swiper-slide .bookimg {width:100%;}
     .wsbookList .mdBook .swiper-slide {width:50%;}
     .wsbookList .mdBook .swiper-slide:last-child {display:none}
+
+
+    .wsBookView .wsBookImg {display:block; width:calc(100% - 20px); text-align: center; margin:0 0 20px}
+    .wsBookView .wsBookInfo {display:block; width:calc(100% - 20px); margin:0 10px}
 }
 
 

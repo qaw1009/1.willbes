@@ -35,7 +35,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky">
-            <a href="#none" onclick="javascript:alert('준비중입니다.');"> 
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1783" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_sky01.jpg" alt="추천강좌 신청하기" >
             </a>
         </div>           

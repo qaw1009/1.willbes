@@ -36,7 +36,7 @@
                 <area shape="rect" coords="10,52,118,104" href="https://pass.willbes.net/promotion/index/cate/3035/code/1485" target="_blank" />
                 <area shape="rect" coords="9,115,117,176" href="#evtContainer" alt="1순환" />
                 <area shape="rect" coords="7,184,118,248" href="https://pass.willbes.net/promotion/index/cate/3035/code/1653" target="_blank"/>
-                <area shape="rect" coords="9,256,119,317" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
+                <area shape="rect" coords="9,256,119,317" href="https://pass.willbes.net/promotion/index/cate/3035/code/1785" target="_blank"/>
                 <area shape="rect" coords="10,324,117,386" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
                 <area shape="rect" coords="10,398,117,470" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
             </map>                         
@@ -51,11 +51,12 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1585_02.jpg" alt="커리큘럼" usemap="#Map1585a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1585_02.jpg" alt="커리큘럼" usemap="#Map1585a" border="0" />
             <map name="Map1585a" id="Map1585a">
                 <area shape="rect" coords="172,780,260,802" href="https://pass.willbes.net/promotion/index/cate/3035/code/1485" target="_blank" />
                 <area shape="rect" coords="310,781,398,802" href="#evtContainer" alt="1순환" />
                 <area shape="rect" coords="450,780,540,804" href="https://pass.willbes.net/promotion/index/cate/3035/code/1653" alt="2순환" />
+                <area shape="rect" coords="581,781,671,803" href="https://pass.willbes.net/promotion/index/cate/3035/code/1785" target="_blank" />
             </map>                       
         </div>
 

@@ -193,7 +193,7 @@ class BaseSearch extends \app\controllers\FrontController
 
         $count = $this->searchFModel->findSearchBookStoreProduct(true, $common_condition);
 
-        $paging_url = '/' . $this->getFinalUriString() . (empty($query_string) === false ? '?' . $query_string : '');
+        $paging_url = '/' . ltrim($this->getFinalUriString(), APP_DEVICE . '/') . (empty($query_string) === false ? '?' . $query_string : '');
         $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $this->_show_page_num, true);
 
         if ($count > 0) {

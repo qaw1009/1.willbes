@@ -38,6 +38,9 @@
                 <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
                 <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>
                 <li>{!! banner_html(element('메인_서브3', $data['arr_main_banner'])) !!}</li>
+                <li>{!! banner_html(element('메인_서브4', $data['arr_main_banner'])) !!}</li>
+                <li>{!! banner_html(element('메인_서브5', $data['arr_main_banner'])) !!}</li>
+                <li>{!! banner_html(element('메인_서브6', $data['arr_main_banner'])) !!}</li>
             </ul>
         </div>
 

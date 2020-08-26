@@ -161,6 +161,8 @@
                 <ul id="slidesImg4">                                  
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_august.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_september.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_october.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_november.jpg" /></li>
                 </ul>
                
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>

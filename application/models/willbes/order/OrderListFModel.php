@@ -123,7 +123,10 @@ class OrderListFModel extends BaseOrderFModel
                 , OPR.RefundDatm             
                 , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, PL.LearnPatternCcd
-                , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
+                , (case when PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['adminpack_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '") and PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '" 
+                    then ""
+                    else ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, ""))
+                  end) as StudyPeriod                                
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
                      when PL.LearnPatternCcd in ("' . implode('","', $this->_on_pack_lecture_pattern_ccd) . '") then "on_pack_lecture"
                      when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"

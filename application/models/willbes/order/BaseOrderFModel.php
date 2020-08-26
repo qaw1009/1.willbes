@@ -36,12 +36,12 @@ class BaseOrderFModel extends WB_Model
 
     // 장바구니 상품타입명
     public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '종합반', 'book' => '교재',
-        'delivery_price' => '배송', 'delivery_add_price' => '배송', 'freebie' => '사은품', 'mock_exam' => '모의고사'
+        'delivery_price' => '배송', 'delivery_add_price' => '배송', 'freebie' => '사은품', 'mock_exam' => '모의고사', 'etc' => '기타'
     ];
 
     // 장바구니 상품타입 순번
     public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_pack_lecture' => '2', 'off_pack_lecture' => '2', 'book' => '3',
-        'delivery_price' => '4', 'delivery_add_price' => '4', 'freebie' => '4', 'mock_exam' => '3'
+        'delivery_price' => '4', 'delivery_add_price' => '4', 'freebie' => '4', 'mock_exam' => '3', 'etc' => '4'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
@@ -57,6 +57,9 @@ class BaseOrderFModel extends WB_Model
 
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
     public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002', 'choice_prof' => '648003'];
+
+    // 수강기간설정 공통코드 (수강기간, 수강종료일)
+    public $_study_period_ccd = ['period' => '616001', 'end_date' => '616002'];
 
     // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
     public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];

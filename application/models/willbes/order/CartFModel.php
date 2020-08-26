@@ -43,7 +43,7 @@ class CartFModel extends BaseOrderFModel
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.PostData
                 , CA.TargetOrderIdx, CA.TargetProdCode, CA.TargetProdCodeSub 
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
-                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice, P.IsAllianceDisc
+                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, PL.StudyPeriodCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice, P.IsAllianceDisc
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '", "N", P.IsPoint) as IsPoint
                 , if((PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['retake'] . '") or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint                
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsFreebiesTrans) as IsFreebiesTrans
@@ -51,8 +51,11 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_subject_idxs(CA.ProdCode), PL.SubjectIdx) as SubjectIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                         
-                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", PL.IsLecStart) as IsLecStart                                          
-                , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod                               
+                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '" or PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '", "N", PL.IsLecStart) as IsLecStart                
+                , case when PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['adminpack_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '") and PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '" 
+                    then ifnull(datediff(PL.StudyEndDate, date_format(NOW(), "%Y-%m-%d")) + 1, "")
+                    else ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, ""))
+                  end as StudyPeriod        	                                                       
                 , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
                 , PL.LecSaleType, SC.CateName, WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice

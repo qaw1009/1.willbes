@@ -479,8 +479,18 @@
                 </ul>
             </div>
         </div><!--bookInfo//-->
+        
+        <ul id="bx-pager-today">														
+            <li><a data-slide-index="0" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="쉬운 일은 아니지만"/></a></li>
+            <li><a data-slide-index="1" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310920/book_310920_sm.jpg" alt="90년생이 온다"/></a></li>
+            <li><a data-slide-index="2" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310919/book_310919_sm.jpg" alt="개와 고양이에 관한 작은 세계사"/></a></li>
+            <li><a data-slide-index="3" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="알사탕"/></a></li>
+            <li><a data-slide-index="4" href="#none"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/310854/book_310854_sm.jpg" alt="90년생이 온다"/></a></li>
+        </ul><!--bookimgS//-->
+
         <p class="leftBtn" id="bookInfoLeft"><a href="#none">이전</a></p>
         <p class="rightBtn" id="bookInfogRight"><a href="none">다음</a></p> 
+
     </div><!--todayBook//-->  
 
     <div class="mainTit mt30 NSK-Black">MD 추천</div>
@@ -610,6 +620,7 @@
     //오늘의책  
     $(document).ready(function() {
         var bookInfo = $("#wsbookInfo").bxSlider({
+            mode:'fade',
             auto:true,
             speed:350,
             pause:4000,            
@@ -619,7 +630,9 @@
             slideMargin:0,
             autoHover:true,
             moveSlides:1,
-            pager:false,
+            touchEnabled : (navigator.maxTouchPoints > 0),
+            pagerCustom:'#bx-pager-today',
+            pager:true,
         });       
 
         $("#bookInfoLeft").click(function (){

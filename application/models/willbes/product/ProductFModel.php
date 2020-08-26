@@ -358,9 +358,15 @@ class ProductFModel extends WB_Model
     public function findProductLectureInfo($prod_code = [])
     {
         $arr_prod_code = get_arr_var($prod_code, '0');
+        $learn_pattern_ccd_to_end_date = '"615003", "615004"';  // 수강기간설정 > 수강종료일 기준이 적용되는 학습형태 (운영자, 기간제패키지)
+        $study_period_end_date_ccd = '616002';  // 수강기간설정 > 수강종료일 기준
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
-        $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, ifnull(PL.IsLecStart, "N") as IsLecStart, PL.StudyStartDate, PL.StudyEndDate
-            , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, 0)) as StudyPeriod            
+        $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, if(PL.StudyPeriodCcd = "' . $study_period_end_date_ccd . '", "N", ifnull(PL.IsLecStart, "N")) as IsLecStart
+            , PL.StudyStartDate, PL.StudyEndDate, PL.StudyPeriodCcd        
+            , (case when PL.LearnPatternCcd in (' . $learn_pattern_ccd_to_end_date . ') and PL.StudyPeriodCcd = "' . $study_period_end_date_ccd . '" 
+                then ifnull(datediff(PL.StudyEndDate, date_format(NOW(),"%Y-%m-%d")) + 1, 0)
+                else ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, 0))
+              end) as StudyPeriod        
         	, PL.MultipleTypeCcd, PL.MultipleApply, ifnull(PL.AllLecTime, 0) as AllLecTime
         	, if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
 	        , PL.IsPackLecStartType';

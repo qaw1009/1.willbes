@@ -90,6 +90,12 @@ class OrderFModel extends BaseOrderFModel
                         return $check_student_book;
                     }
                 }
+
+                // 수강기간설정 > 수강종료일 기준 > 수강기간이 1일보다 작을 경우 (운영자, 기간제패키지만 적용)
+                if (in_array($row['LearnPatternCcd'], [$this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture']]) === true
+                    && $row['StudyPeriodCcd'] == $this->_study_period_ccd['end_date'] && intval($row['StudyPeriod']) < 1) {
+                    return '수강기간은 1일보다 작을 수 없습니다.';
+                }
             }
 
             // 배송정보 입력 여부
@@ -1278,7 +1284,7 @@ class OrderFModel extends BaseOrderFModel
                 }
 
                 // 수강시작일, 수강종료일 조회
-                $arr_lec_date = $this->getMyLectureLecStartEndDate($row['LearnPatternCcd'], $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $user_study_start_date);
+                $arr_lec_date = $this->getMyLectureLecStartEndDate($row['LearnPatternCcd'], $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $row['StudyPeriodCcd'], $user_study_start_date);
 
                 $data = [
                     'OrderIdx' => $order_idx,
@@ -1337,7 +1343,7 @@ class OrderFModel extends BaseOrderFModel
                     }
 
                     // 수강시작일, 수강종료일 조회
-                    $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $lec_user_study_start_date);
+                    $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $prod_row['StudyPeriodCcd'], $lec_user_study_start_date);
 
                     $data = [
                         'OrderIdx' => $order_idx,
@@ -1372,10 +1378,11 @@ class OrderFModel extends BaseOrderFModel
      * @param string $study_start_date [개강일]
      * @param string $study_end_date [종강일]
      * @param int $study_period [수강일수]
+     * @param string $study_period_ccd [수강기간설정공통코드]
      * @param string $user_study_start_date [사용자설정 수강시작일]
      * @return array
      */
-    public function getMyLectureLecStartEndDate($learn_pattern_ccd, $study_start_date, $study_end_date, $study_period, $user_study_start_date = '')
+    public function getMyLectureLecStartEndDate($learn_pattern_ccd, $study_start_date, $study_end_date, $study_period, $study_period_ccd = '', $user_study_start_date = '')
     {
         $today_date = date('Y-m-d');    // 결제일
         $learn_pattern = array_search($learn_pattern_ccd, $this->_learn_pattern_ccd);
@@ -1387,12 +1394,18 @@ class OrderFModel extends BaseOrderFModel
             case 'adminpack_lecture' :
             case 'periodpack_lecture' :
                 // 단강좌, 운영자패키지, 기간제패키지
-                if (empty($study_start_date) === false && empty($user_study_start_date) === false && $study_start_date <= $user_study_start_date) {
-                    $lec_start_date = $user_study_start_date;    // 사용자 설정 수강시작일이 개강일보다 이후일 경우만 수강시작일로 설정
+                if (in_array($learn_pattern, ['adminpack_lecture', 'periodpack_lecture']) === true && $study_period_ccd == $this->_study_period_ccd['end_date']) {
+                    // 수강기간설정 > 수강종료일 기준일 경우 (운영자, 기간제패키지만 적용)
+                    $lec_start_date = $today_date;
+                    $lec_end_date = empty($study_end_date) === false ? $study_end_date : $today_date;
                 } else {
-                    $lec_start_date = empty($study_start_date) === false && $today_date <= $study_start_date ? $study_start_date : $today_date;     // 결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정
+                    if (empty($study_start_date) === false && empty($user_study_start_date) === false && $study_start_date <= $user_study_start_date) {
+                        $lec_start_date = $user_study_start_date;    // 사용자 설정 수강시작일이 개강일보다 이후일 경우만 수강시작일로 설정
+                    } else {
+                        $lec_start_date = empty($study_start_date) === false && $today_date <= $study_start_date ? $study_start_date : $today_date;     // 결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정
+                    }
+                    $lec_end_date = date('Y-m-d', strtotime($lec_start_date . ' +' . ($study_period - 1) . ' day'));
                 }
-                $lec_end_date = date('Y-m-d', strtotime($lec_start_date . ' +' . ($study_period - 1) . ' day'));
                 break;
             case 'on_free_lecture' :
                 // 무료강좌

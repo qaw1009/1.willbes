@@ -98,7 +98,7 @@
                             <p>직렬(지역)구분을 선택해주세요.</p>
                             <div>
                                 <p>- 공통과목 : <span id="karea1"></span></p>
-                                <p>- 선택과목 : </p>
+                                <p id="sel3">- 선택과목 : </p>
                                 <ul id="karea2">
 
                                 </ul>
@@ -204,7 +204,18 @@
                 return ;
             }
 
-            if($("#TakeMockPart").val() != '800'){
+            if ($("#TakeMockPart").val() == '') {
+                alert('응시직렬을 선택해주세요.');
+                return;
+            }
+
+            if ($("#TakeArea").val() == '') {
+                alert('응시지역을 선택해주세요.');
+                return;
+            }
+
+            if($("#TakeMockPart").val() == '300' || $("#TakeMockPart").val() == '800'){
+            } else {
                 if($("input[name='Ssubject[]']:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;
@@ -246,6 +257,12 @@
                 $('#GroupCcd').val('');
                 $('#karea1').html('');
                 $('#karea2').html('');
+            }
+
+            if(num == '300' || num == '800'){
+                $('#sel3').hide();
+            } else {
+                $('#sel3').show();
             }
 
             if(num == '400'){

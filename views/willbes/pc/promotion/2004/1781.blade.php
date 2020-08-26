@@ -48,10 +48,10 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_02.jpg" alt="수강신청" usemap="#Map1781" border="0" />
             <map name="Map1781">
-              <area shape="rect" coords="299,2862,821,2946" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
-              <area shape="rect" coords="146,3281,375,3357" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
-              <area shape="rect" coords="441,3280,690,3360" href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank" alt="기미진 특강">
-              <area shape="rect" coords="777,3279,1003,3355" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1257&prof_idx=50616" target="_blank" alt="이석준 특강">
+              <area shape="rect" coords="301,2600,823,2684" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
+              <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
+              <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank" alt="기미진 특강">
+              <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1257&prof_idx=50616" target="_blank" alt="이석준 특강">
             </map>
         </div>
     </div>

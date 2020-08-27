@@ -7,6 +7,7 @@
         <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/stats') }}" class="cs-pointer"><strong>승인완료통계</strong></a></li>
     </ul>
     <h5>- 결제 승인완료 집계 데이터를 확인하는 메뉴입니다. (PG 데이터와 비교/검증용, 결제취소/망취소 이력 제외)</h5>
+    <h5>- 신용카드금액은 카카오머니, 페이코포인트를 제외한 승인금액입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -60,8 +61,8 @@
                     <th class="rowspan">일자</th>
                     <th class="rowspan">상점아이디</th>
                     <th>결제방법</th>
-                    <th>결제건수</th>
-                    <th>결제금액</th>
+                    <th>결제건수 (무통장입금제외)</th>
+                    <th>결제금액 (무통장입금제외)</th>
                     <th>신용카드금액</th>
                 </tr>
                 </thead>
@@ -103,18 +104,23 @@
                     startRender: null,
                     endRender: function(rows, group) {
                         var arr_column = ['PayCnt', 'PayPrice', 'CardPayPrice'];
-                        var t_html = '';
+                        var t_html = '', t_amt;
 
                         t_html += '<td>' + rows.data().pluck('RegDate')[0] + '</td>';
                         t_html += '<td>' + rows.data().pluck('PgMid')[0] + '</td>';
                         t_html += '<td>합계</td>';
 
                         $.each(arr_column, function(idx, item) {
+                            t_amt = 0;
                             t_html += '<td>' + addComma(
-                                rows.data().pluck(item).reduce(function(a, b) {
+                                rows.data().pluck(item).reduce(function(a, b, curr_idx) {
+                                    if (rows.data().pluck('PayMethod')[curr_idx] !== 'VBank') {
+                                        t_amt = t_amt + (b * 1);
+                                    }
+
                                     return a + b * 1;
                                 }, 0)
-                            ) + '</td>';
+                            ) + (item !== 'CardPayPrice' ? ' (' + addComma(t_amt) + ')' : '') + '</td>';
                         });
 
                         return $('<tr class="bg-info bold">' + t_html + '</tr>');
@@ -143,13 +149,19 @@
                 ],
                 footerCallback: function(tfoot, data, start, end, display) {
                     var api = this.api();
+                    var t_amt;
                     for(var i = 3; i <= 5; i++) {
+                        t_amt = 0;
                         $(api.column(i).footer()).html(
                             addComma(
-                                api.column(i).data().reduce(function (a, b) {
+                                api.column(i).data().reduce(function (a, b, curr_idx) {
+                                    if (api.column(2).data()[curr_idx] !== 'VBank') {
+                                        t_amt = t_amt + (b * 1);
+                                    }
+
                                     return a + b * 1;
                                 }, 0)
-                            )
+                            ) + (i !== 5 ? ' (' + addComma(t_amt) + ')' : '')
                         );
                     }
                 }

@@ -99,7 +99,7 @@
             @endif    
         </div>
 
-        <div class="evtCtnsBox evt03" id="apply01">
+        <div class="evtCtnsBox evt03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_03.jpg"  title="문제풀이 2단계">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
@@ -108,7 +108,12 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_04.jpg"  title="문제풀이 3단계">
+            <img src="https://static.willbes.net/public/images/promotion/2020/06/1697_04.jpg"  title="문제풀이 3단계">   
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1697_03_title.jpg"  title="3단계 과목별 신청하기" id="apply01"> 
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
+            @else
+            @endif    
         </div>     
 
          <div class="evtCtnsBox evt05" id="apply02">

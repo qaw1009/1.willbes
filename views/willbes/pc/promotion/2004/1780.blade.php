@@ -64,7 +64,8 @@
 
         .evtTab {width:984px; margin:0 auto;}
         .evtTab ul li {display:inline; float:left; width:50%}
-        .evtTab ul li a {display:block; text-align:center; padding:20px 0; font-weight:bold; color:#252525; border:1px solid #252525; font-size:18px; background:#fff; margin-right:10px; line-height:1.4}
+        .evtTab ul li a {display:block; text-align:center; padding:20px 0; font-weight:bold; color:#252525; border:1px solid #252525; 
+            font-size:18px; background:#fff; margin-right:10px; line-height:1.4; }
         .evtTab ul li a:hover,
         .evtTab ul li a.active {background:#252525; color:#fff}
         .evtTab ul li:last-child a {margin:0}
@@ -74,7 +75,8 @@
         .evt04 {background:#36374d; padding-bottom:100px;}
         .evt04 div {width:930px; margin:0 auto}
         .evt04 div li {display:inline; float:left; width:50%}
-        .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; border-radius:10px; margin-right:10px; height:80px; line-height:80px; font-size:35px}
+        .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; border-radius:10px; 
+            margin-right:10px; height:80px; line-height:80px; font-size:30px}
         .evt04 div li a.active,
         .evt04 div li a:hover {background:#ebebeb}
         .evt04 div li:last-child a {margin-right:0}
@@ -201,7 +203,7 @@
             <div>
                 <ul class="NSK-Black">
                     <li><a href="#lec1" class="active">9~10월 기본이론 PASS</a></li>
-                    <li><a href="#lec2">20.9월 ~ 21.3월 연간 PASS</a></li>
+                    <li><a href="#lec2">20년 9월 ~ 21년 3월 연간 PASS</a></li>
                 </ul>
                 <div class="mt10" id="lec1">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_08.jpg" title="7월 기본이론 완성반"></a>

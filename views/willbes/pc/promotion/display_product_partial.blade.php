@@ -95,7 +95,7 @@
                                 <table cellspacing="0" cellpadding="0" class="lecInfoTable">
                                     <colgroup>
                                         <col width="140px">
-                                        <col width="730px">
+                                        <col width="*">
                                         <col width="250px">
                                     </colgroup>
                                     <tbody>
@@ -242,7 +242,7 @@
         .btnCart:hover { background: #707070 !important; }
         .btnBuy:hover { border: 1px solid #0d74ae !important; background: #1a8ccb !important; }
         .visi-hidden {visibility: hidden !important;}
-        .group_h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
+        .group_h1 {width: 100%; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
     <script src="/public/js/willbes/product_util.js"></script>
 @endif

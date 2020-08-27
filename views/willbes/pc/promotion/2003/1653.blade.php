@@ -36,7 +36,7 @@
                 <area shape="rect" coords="10,52,118,104" href="https://pass.willbes.net/promotion/index/cate/3035/code/1485" target="_blank" />
                 <area shape="rect" coords="9,115,117,176" href="https://pass.willbes.net/promotion/index/cate/3035/code/1585" target="_blank" alt="1순환" />
                 <area shape="rect" coords="7,184,118,248" href="#none" alt="2순환"/>
-                <area shape="rect" coords="9,256,119,317" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
+                <area shape="rect" coords="9,256,119,317" href="https://pass.willbes.net/promotion/index/cate/3035/code/1785" target="_blank" />
                 <area shape="rect" coords="10,324,117,386" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
                 <area shape="rect" coords="10,398,117,470" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
             </map>                         
@@ -51,12 +51,13 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1653_02.jpg" alt="커리큘럼" usemap="#Map1585a" border="0" />
-            <map name="Map1585a" id="Map1585a">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1653_02.jpg" alt="커리큘럼" usemap="#Map1653a" border="0" />
+            <map name="Map1653a" id="Map1653a">
                 <area shape="rect" coords="172,787,260,809" href="https://pass.willbes.net/promotion/index/cate/3035/code/1485" target="_blank" />
                 <area shape="rect" coords="310,787,398,808" href="https://pass.willbes.net/promotion/index/cate/3035/code/1585" target="_blank" alt="1순환" />
                 <area shape="rect" coords="447,786,537,810" href="#evtContainer" alt="2순환" />
-            </map>                        
+                <area shape="rect" coords="582,786,671,808" href="https://pass.willbes.net/promotion/index/cate/3035/code/1785" target="_blank" />
+            </map>                           
         </div>
 
         <div class="evtCtnsBox evt03">

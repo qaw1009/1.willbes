@@ -37,14 +37,14 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function index($params = [])
     {
-        if (empty($params['code']) === true) {
+        if (empty($params['code']) === true || !is_numeric($params['code'])) {
             show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
         $arr_base['tab_id'] = element('tab', $this->_reqG(null), '1');
         $arr_base['promotion_code'] = $params['code'];
-        $arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
+        //$arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
         $arr_base['get_data'] = $this->_reqG(null);
 
         //인증식별자
@@ -71,45 +71,14 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
 
         // 프로모션 라이브송출 조회
-        $today_now = time();
-        $promotion_live_data = ($data['PromotionLiveType'] == 'Y') ? $this->eventFModel->listEventPromotionForLiveVideo($data['PromotionCode']) : [];
-        $promotion_live_file_link = 'javascript:alert(\'준비중입니다.\')';
-        $promotion_live_file_yn = 'N';
-        if (empty($promotion_live_data) === false) {
-            foreach ($promotion_live_data as $row) {
-                if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
-                    //$promotion_live_file_link = 'javascript:alert(\'라이브 당일 '.$row['FileStartHour'].'시 '.$row['FileStartMin'].'분부터 다운받으실 수 있습니다.\')';
-                    //$promotion_live_file_yn = 'N';
-                    if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
-                        $promotion_live_file_link = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
-                        $promotion_live_file_yn = 'Y';
-                    }
-                }
-            }
-        }
-        $arr_base['promotion_live_data'] = $promotion_live_data;
-        $arr_base['promotion_live_file_link'] = $promotion_live_file_link;
-        $arr_base['promotion_live_file_yn'] = $promotion_live_file_yn;
-        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'];
-        $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
-        $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
-        $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;
-        $arr_base['test_type'] = $test_type;
+        $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);
+        $arr_base['promotion_live_data'] = $promotion_live_data['promotion_live_data'];
+        $arr_base['promotion_live_file_link'] = $promotion_live_data['promotion_live_file_link'];
+        $arr_base['promotion_live_file_yn'] = $promotion_live_data['promotion_live_file_yn'];
 
         // 프로모션 추가 파라미터 배열처리
-        $arr_promotion_params = [];
-        if (empty($data['PromotionParams']) === false) {
-            $temp_params = explode('&', $data['PromotionParams']);
+        $arr_promotion_params = $this->_getPromotionParams($data['PromotionParams']);
 
-            if (empty($temp_params) === false) {
-                foreach ($temp_params as $key => $val) {
-                    $arr_temp_params = explode('=', $val);
-                    if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
-                        $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
-                    }
-                }
-            }
-        }
         // 댓글사용영역 데이터 가공처리
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
@@ -118,22 +87,10 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
 
-        //인원제한체크를 위한 특강별 회원 수
-        $arr_register_member_cnt = [];
+        //인원 제한 체크를 위한 특강별 회원 수
         $arr_base['register_member_list'] = [];
         if (empty($arr_base['register_list']) === false) {
-            $get_register_idxs = array_pluck($arr_base['register_list'], 'Name', 'ErIdx');
-            $arr_condition = [
-                'IN' => ['ErIdx' => array_keys($get_register_idxs)]
-            ];
-            $arr_register_member_cnt = $this->eventFModel->getRegisterMemberCount($arr_condition);
-            $arr_register_member_cnt = array_pluck($arr_register_member_cnt, 'MemCount', 'ErIdx');
-        }
-        foreach ($arr_base['register_list'] as $row) {
-            $arr_base['register_member_list'][$row['ErIdx']]['PersonLimitType'] = $row['PersonLimitType'];
-            $arr_base['register_member_list'][$row['ErIdx']]['PersonLimit'] = $row['PersonLimit'];
-            $arr_base['register_member_list'][$row['ErIdx']]['RegisterExpireStatus'] = $row['RegisterExpireStatus'];
-            $arr_base['register_member_list'][$row['ErIdx']]['mem_cnt'] = (empty($arr_register_member_cnt[$row['ErIdx']]) === true) ? '0' : $arr_register_member_cnt[$row['ErIdx']];
+            $arr_base['register_member_list'] = $this->_getRegisterMemberList($arr_base['register_list']);
         }
 
         // 인증여부 추출
@@ -144,30 +101,12 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 등록파일 데이터 조회
-        $file_link = array();
-        $file_yn = array();
         $list_event_file = $this->eventFModel->listEventForFile($data['ElIdx']);
-
-        for($i = 0; $i <= 99; $i++){
-            $file_link[$i] = "javascript:alert('준비중입니다.')";
-            $file_yn[$i] = 'N';
-        }
-
-        $file_data_promotion = $list_event_file;
+        list($file_link,$file_yn) = $this->_getEventFileData($list_event_file,$data['ElIdx']);
         $arrCircle = array(0 => '①', 1 => '②', 2 => '③', 3 => '④', 4 => '⑤', 5 => '⑥', 6 => '⑦');
 
-        foreach ($file_data_promotion as $key => $row){
-            $fileidx = $row['Ordering'];
-            $file_link[$fileidx] = '/promotion/download?file_idx='.$row['EfIdx'].'&event_idx='.$data['ElIdx'];
-            $file_yn[$fileidx] = 'Y';
-        }
-
         //공지사항 조회
-        $arr_noti_condition = [
-            'EQ' => [
-                'IsUse' => 'Y'
-            ]
-        ];
+        $arr_noti_condition = ['EQ' => ['IsUse' => 'Y']];
         if (empty($arr_promotion_params['PredictIdx']) === false) {
             //합격예측인 경우
             $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['PredictIdx'], 'BmIdx' => '102']);
@@ -214,34 +153,14 @@ class BasePromotion extends \app\controllers\FrontController
 
         // DP상품 그룹핑
         if(empty($data['data_option_ccd']) === false && isset($data['data_option_ccd']['660005']) === true) {
-
-            // DP상품 조회
-            $display_product_data = $this->eventFModel->listEventDisplayProductV2($data['ElIdx']);
-            $display_group_data = [];
-            foreach ($display_product_data as $key => $val) {
-                $display_group_data[$val['GroupOrderNum']][$val['LearnPatternCcd']][] = $val['ProdCode'];
-            }
-
-            // DP상품 그룹핑
-            foreach ($display_group_data as $group => $data) {
-                foreach ($data as $ccd => $arr_prod_idx) {
-                    $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
-                    if (empty($display_group_data[$group][$ccd]) === false) {
-                        foreach ($display_group_data[$group][$ccd] as $idx => $row) {
-                            $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                            if ($this->_pattern_ccd[$ccd] == 'only') {
-                                $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
-                                $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-                                $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
-                            }
-                        }
-                    }
-
-                }
-            }
-
-            $arr_base['display_product_data'] = $display_group_data;
+            $arr_base['display_product_data'] = $this->_getDpGroupdata($data['ElIdx']);
         }
+
+        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'];
+        $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
+        $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
+        $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;
+        $arr_base['test_type'] = $test_type;
 
         //모바일체크
         $this->load->library('user_agent');
@@ -253,7 +172,7 @@ class BasePromotion extends \app\controllers\FrontController
             'data' => $data,
             'arrCircle' => $arrCircle,
             'cert_apply' => $apply_result,
-            'file_data_promotion' => $file_data_promotion,
+            'file_data_promotion' => $list_event_file,
             'arr_promotion_params' => $arr_promotion_params,
             'file_link' => $file_link,
             'file_yn' => $file_yn,
@@ -653,8 +572,148 @@ class BasePromotion extends \app\controllers\FrontController
     }
 
     /**
+     * 이벤트 라이브송출 조회
+     * @param integer $PromotionCode
+     * @param string $PromotionLiveType
+     * @return mixed
+     */
+    private function _getPromotionLiveData($PromotionCode = null,$PromotionLiveType = 'N')
+    {
+        $today_now = time();
+        $data = [];
+        $data['promotion_live_data'] = [];
+        $data['promotion_live_file_link'] = 'javascript:alert(\'준비중입니다.\')';
+        $data['promotion_live_file_yn'] = 'N';
+
+        if($PromotionLiveType == 'Y'){
+            $data['promotion_live_data'] = $this->eventFModel->listEventPromotionForLiveVideo($PromotionCode);
+
+            if (empty($data['promotion_live_data']) === false) {
+                foreach ($data['promotion_live_data'] as $row) {
+                    if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
+                        if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
+                            $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
+                            $data['promotion_live_file_yn'] = 'Y';
+                        }
+                    }
+                }
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 이벤트 라이브송출 조회
+     * @param array $PromotionParams
+     * @return mixed
+     */
+    private function _getPromotionParams($PromotionParams = [])
+    {
+        $arr_promotion_params = [];
+        if (empty($PromotionParams) === false) {
+            $temp_params = explode('&', $PromotionParams);
+
+            if (empty($temp_params) === false) {
+                foreach ($temp_params as $key => $val) {
+                    $arr_temp_params = explode('=', $val);
+                    if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
+                        $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                    }
+                }
+            }
+        }
+
+        return $arr_promotion_params;
+    }
+
+    /**
+     * 인원 제한 체크를 위한 특강별 회원 수
+     * @param array $register_list
+     * @return mixed
+     */
+    private function _getRegisterMemberList($register_list = [])
+    {
+        $data = [];
+        $get_register_idxs = array_pluck($register_list, 'Name', 'ErIdx');
+        $arr_condition = ['IN' => ['ErIdx' => array_keys($get_register_idxs)]];
+        $arr_register_member_cnt = $this->eventFModel->getRegisterMemberCount($arr_condition);
+        $arr_register_member_cnt = array_pluck($arr_register_member_cnt, 'MemCount', 'ErIdx');
+
+        foreach ($register_list as $row) {
+            $data['register_member_list'][$row['ErIdx']]['PersonLimitType'] = $row['PersonLimitType'];
+            $data['register_member_list'][$row['ErIdx']]['PersonLimit'] = $row['PersonLimit'];
+            $data['register_member_list'][$row['ErIdx']]['RegisterExpireStatus'] = $row['RegisterExpireStatus'];
+            $data['register_member_list'][$row['ErIdx']]['mem_cnt'] = (empty($arr_register_member_cnt[$row['ErIdx']]) === true) ? '0' : $arr_register_member_cnt[$row['ErIdx']];
+        }
+
+        return $data['register_member_list'];
+    }
+
+    /**
+     * 등록파일 데이터 조회
+     * @param array $list_event_file
+     * @param integer $ElIdx
+     * @return mixed
+     */
+    private function _getEventFileData($list_event_file = [], $ElIdx = null)
+    {
+        $file_link = array();
+        $file_yn = array();
+
+        for($i = 0; $i <= 99; $i++){
+            $file_link[$i] = "javascript:alert('준비중입니다.')";
+            $file_yn[$i] = 'N';
+        }
+
+        foreach ($list_event_file as $key => $row){
+            $fileidx = $row['Ordering'];
+            $file_link[$fileidx] = '/promotion/download?file_idx='.$row['EfIdx'].'&event_idx='.$ElIdx;
+            $file_yn[$fileidx] = 'Y';
+        }
+
+        return [$file_link,$file_yn];
+    }
+
+    /**
+     * 이벤트 DP상품 그룹핑
+     * @param integer $ElIdx
+     * @return mixed
+     */
+    private function _getDpGroupdata($ElIdx = null)
+    {
+        $display_group_data = [];
+
+        // DP상품 조회
+        $display_product_data = $this->eventFModel->listEventDisplayProductV2($ElIdx);
+        foreach ($display_product_data as $key => $val) {
+            $display_group_data[$val['GroupOrderNum']][$val['LearnPatternCcd']][] = $val['ProdCode'];
+        }
+
+        // DP상품 그룹핑
+        foreach ($display_group_data as $group => $data) {
+            foreach ($data as $ccd => $arr_prod_idx) {
+                $display_group_data[$group][$ccd] = $this->_getEventProductGroup($ccd,$arr_prod_idx);
+
+                if (empty($display_group_data[$group][$ccd]) === false) {
+                    foreach ($display_group_data[$group][$ccd] as $idx => $row) {
+                        $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                        if ($this->_pattern_ccd[$ccd] == 'only') {
+                            $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                            $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                            $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $display_group_data;
+    }
+
+    /**
      * 이벤트 DP상품 그룹 데이터 조회 (단강좌, 운영자패키지, 기간제패키지)
-     * @param $learn_code
+     * @param $learn_ccd
      * @param array $arr_prod_idx
      * @return mixed
      */

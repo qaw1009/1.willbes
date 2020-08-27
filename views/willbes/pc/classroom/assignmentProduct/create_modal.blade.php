@@ -77,12 +77,9 @@
                                         </span>
                                     @endif
                                 @endfor
-                                {{--<li><input type="file" class="input-file" size="3"></li>
-                                <li><input type="file" class="input-file" size="3"></li>--}}
-
                                 <li>
                                     • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
-                                    • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                    • pdf 만 등록 가능합니다.
                                 </li>
                             </ul>
                         </td>
@@ -134,7 +131,6 @@
 
             getEditorBodyContent($editor_profile);
             var _url = '{{front_url('/classroom/assignmentProduct/store')}}';
-
             ajaxSubmit($regi_form_modal, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
@@ -148,6 +144,20 @@
                 alert('답안제목을 입력해 주세요.');
                 return false;
             }*/
+            var file = true;
+            $("input[name='attach_file[]']").each(function(index) {
+                if ($("#attach_file"+index).val() != "") {
+                    var ext = $('#attach_file'+index).val().split('.').pop().toLowerCase();
+                    if ($.inArray(ext, ['pdf']) == -1) {
+                        file = false;
+                    }
+                }
+            });
+
+            if (file == false) {
+                alert('pdf 파일만 업로드 할 수 있습니다.');
+                return false;
+            }
             return true;
         }
     });

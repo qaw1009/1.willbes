@@ -41,13 +41,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_sky.png" alt="공개무료특강" />
             </a>
         </div> 
-        <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_top.jpg" alt="오직, 소방" />            
-        </div>
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_01.jpg" alt="이종오 전격 입성"/>
         </div>
+
+        <div class="evtCtnsBox wb_top" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_top.jpg" alt="오직, 소방" />            
+        </div>        
 
         <div class="evtCtnsBox wb_cts02" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_02.jpg" alt="소방학/소방법규 이종오">

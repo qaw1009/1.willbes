@@ -399,15 +399,26 @@ class BtobCorrectModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'cua.CuaIdx,cua.CorrectIdx,cua.IsReply,cua.RegDatm,cua.ReplyRegDatm,cua.ReplyScore,cua.AssignmentStatusCcd
+            if ($is_count == 'excel') {
+                $column = "
+                    p.ProdName,cu.Title,CONCAT(m.MemName,' (',REPLACE(m.MemId,RIGHT(m.MemId, 3),'***'),')') AS MemName
+                    ,CONCAT(cu.StartDate,' ~ ',cu.EndDate) as SEDate
+                    ,cua.RegDatm,ca.RegDatm AS AssignRegDate
+                    ,ba.AdminName AS AssignAdminName, a.AdminName AS SuperAdminName
+                    ,IF(cua.IsReply = 'Y','채점','미채점') AS IsReply, cua.ReplyRegDatm, cua.ReplyScore, cu.Price
+                ";
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            } else {
+                $column = 'cua.CuaIdx,cua.CorrectIdx,cua.IsReply,cua.RegDatm,cua.ReplyRegDatm,cua.ReplyScore,cua.AssignmentStatusCcd
                 ,p.ProdName,cu.Title,cu.StartDate,cu.EndDate,cu.Price,ba.AdminName AS AssignAdminName,m.MemName,m.MemId
                 ,ca.RegDatm AS AssignRegDate,cua.IsStatus
                 ,IFNULL(fn_board_attach_data_correct_assignment(cua.CuaIdx,0),NULL) AS AttachAssignmentData_User
                 ,DATEDIFF(cu.EndDate, DATE_FORMAT(NOW(), "%Y-%m-%d")) AS Date_Diff
                 ,a.AdminName AS SuperAdminName
             ';
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
         }
 
         $from = "

@@ -102,6 +102,10 @@
 
         $(document).ready(function() {
             $datatable = $list_table.DataTable({
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' }
+
+                ],
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/correct/issue/listAjax') }}',
@@ -225,6 +229,14 @@
                         $datatable.draw();
                     }
                 }, showError, false, 'POST');
+            });
+
+            // 엑셀다운로드
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/correct/issue/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
 

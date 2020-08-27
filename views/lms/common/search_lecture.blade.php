@@ -73,6 +73,7 @@
                     </select>
 
                     <select class="form-control" id="search_is_use" name="search_is_use">
+                        <option value="">전체</option>
                         <option value="Y">사용</option>
                         <option value="N">미사용</option>
                     </select>

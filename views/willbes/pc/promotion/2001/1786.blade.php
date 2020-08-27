@@ -56,10 +56,10 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#none"> 
+            <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky01.png" alt="9월 지텔프" >
             </a> 
-            <a href="#none"> 
+            <a href="#evt05"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky02.png" alt="지텔프 소문내기" >
             </a>               
         </div>   
@@ -84,7 +84,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_02.jpg"/>
         </div>
 
-        <div class="evtCtnsBox evt03" id="evt03">
+        <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_03_01.jpg" />
             <ul class="tabs NSK-Black">
                 <li><a href="#tab01">김준기 교수님</a></li>
@@ -102,7 +102,7 @@
             </div>
         </div> 
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_04.jpg" />
             <div class="evt04box">
                 @if(empty($arr_base['display_product_data']) === false)
@@ -113,7 +113,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_05.jpg" usemap="#Map1786_01" border="0" />
             <map name="Map1786_01">
               <area shape="rect" coords="446,1849,678,1920" href="#none" alt="할인쿠폰받기">

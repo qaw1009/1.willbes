@@ -11,7 +11,7 @@ class AssignmentProductFModel extends WB_Model
 
     //등록파일 rule 설정
     protected $upload_file_rule = [
-        'allowed_types' => 'jpg|gif|png|pdf',
+        'allowed_types' => 'pdf',
         'overwrite' => 'false',
         'max_size' => 5120 //2560
     ];

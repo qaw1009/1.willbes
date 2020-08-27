@@ -151,6 +151,7 @@
                                                 @endif
                                             </div>
                                         @endfor
+                                        <p>첨부파일은 pdf 파일만 등록 가능합니다.</p>
                                     </div>
                                 </div>
                             </div>

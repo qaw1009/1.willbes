@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <p>• TM 회원검색 결과</p>
+        <p>• 첨삭회원 검색 결과</p>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

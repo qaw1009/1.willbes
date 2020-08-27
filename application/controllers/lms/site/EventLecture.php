@@ -1012,8 +1012,8 @@ class EventLecture extends \app\controllers\BaseController
             ]
         ];
 
-        if (empty($this->_reqP('search_promotion_codes')) === false && preg_match("/^[0-9,]+$/", $this->_reqP('search_promotion_codes'))) {
-            $search_promotion_codes = $this->_reqP('search_promotion_codes');
+        $search_promotion_codes = trim($this->_reqP('search_promotion_codes'));
+        if (empty($search_promotion_codes) === false && preg_match("/^[0-9,]+$/", $search_promotion_codes)) {
             if (is_numeric(substr($search_promotion_codes, -1)) === false) {
                 $search_promotion_codes = substr($search_promotion_codes, 0, -1);
             }

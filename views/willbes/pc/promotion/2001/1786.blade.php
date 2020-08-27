@@ -54,6 +54,11 @@
 
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt04"> 
@@ -116,7 +121,7 @@
         <div class="evtCtnsBox evt05" id="evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_05.jpg" usemap="#Map1786_01" border="0" />
             <map name="Map1786_01">
-              <area shape="rect" coords="446,1849,678,1920" href="#none" alt="할인쿠폰받기">
+              <area shape="rect" coords="446,1849,678,1920" href="javascript:giveCheck();" alt="할인쿠폰받기">
               <area shape="rect" coords="358,2250,734,2297" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
             </map>
         </div> 
@@ -151,6 +156,23 @@
     <!-- End Container -->
 
     <script>
+        var $regi_form = $('#regi_form');
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
         $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');

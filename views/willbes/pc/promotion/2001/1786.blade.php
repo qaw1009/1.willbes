@@ -122,7 +122,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_05.jpg" usemap="#Map1786_01" border="0" />
             <map name="Map1786_01">
               <area shape="rect" coords="446,1849,678,1920" href="javascript:giveCheck();" alt="할인쿠폰받기">
-              <area shape="rect" coords="358,2250,734,2297" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
+              <area shape="rect" coords="358,2250,734,2297" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
             </map>
         </div> 
 

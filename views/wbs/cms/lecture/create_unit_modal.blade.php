@@ -13,6 +13,8 @@
         <input type="hidden" name="LecIdx" id="LecIdx" value="{{$lecidx}}" />
         <input type="hidden" name="delwUnitIdx[]" id="delwUnitIdx" value="">
 
+        <input type="hidden" name="MediaUrl_2" id="MediaUrl_2" value="{{$data['wMediaUrl']}}" />
+
         @endsection
 
         @section('layer_content')
@@ -409,7 +411,8 @@
 
                 function vodView(type, idx) {
                     // 데이타를 저장하지 않고도 확인하기 위해 현제 입력한 URL 을 정보로 강의를 플레이합니다.
-                    $url = $('#MediaUrl').val() + '/' + $('#w'+type+idx).val();
+                    $mediaUrl = ( typeof($('#MediaUrl').val()) !== 'undefined' ? $('#MediaUrl').val() : $('#MediaUrl_2').val());
+                    $url = $mediaUrl + '/' + $('#w'+type+idx).val();
                     popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&url='+$url+'&ratio='+$('#wContentSizeCcd'+idx).val() , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
                 }
             </script>

@@ -23,6 +23,9 @@ class BtobOffLectureModel extends WB_Model
         ,'lms_sys_category' => 'lms_sys_category'
         ,'lms_correct_assign' => 'lms_correct_assign'
         ,'lms_correct_assign_detail' => 'lms_correct_assign_detail'
+        ,'lms_product_division' => 'lms_product_division'
+        ,'lms_professor' => 'lms_professor'
+        ,'wbs_pms_professor' => 'wbs_pms_professor'
     ];
 
     public function __construct()
@@ -52,7 +55,9 @@ class BtobOffLectureModel extends WB_Model
                 ,Aa.CcdName AS SaleStatusCcd_Name,A.SiteCode,Ab.SiteName,Ac.CcdName AS ProdTypeCcd_Name
                 ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
                 ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum,B.ProfChoiceStartDate,B.ProfChoiceEndDate,B.LecSaleType
-                ,Ba.CourseName,Bb.SubjectName,E.wProfName_String
+                ,Ba.CourseName,Bb.SubjectName
+                #,E.wProfName_String
+                ,wp.wProfName AS wProfName_String
                 ,Bg.CcdName AS CampusCcd_Name,Bc.CcdName AS LearnPatternCcd_Name,Bd.CcdName AS StudyPatternCcd_Name,Be.CcdName AS StudyApplyCcd_Name
                 ,Ca.CateName
                 ,(
@@ -94,7 +99,10 @@ class BtobOffLectureModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['lms_sys_code']} Bg ON B.CampusCcd = Bg.Ccd
             INNER JOIN {$this->_table['lms_product_r_category']} C ON A.ProdCode = C.ProdCode AND C.IsStatus='Y'
             INNER JOIN {$this->_table['lms_sys_category']} Ca ON C.CateCode = Ca.CateCode  AND Ca.IsStatus='Y'
-            LEFT OUTER JOIN {$this->_table['vw_product_r_professor_concat_repr']} E ON A.ProdCode = E.ProdCode
+            #LEFT OUTER JOIN {$this->_table['vw_product_r_professor_concat_repr']} E ON A.ProdCode = E.ProdCode
+            LEFT JOIN {$this->_table['lms_product_division']} AS pd ON A.ProdCode = pd.ProdCode AND pd.IsStatus = 'Y' AND pd.IsReprProf = 'Y'
+            LEFT JOIN {$this->_table['lms_professor']} AS p ON p.ProfIdx = pd.ProfIdx AND p.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['wbs_pms_professor']} AS wp ON p.wProfIdx = wp.wProfIdx AND wp.wIsStatus = 'Y'
         ";
 
         if ($is_authority === false) {

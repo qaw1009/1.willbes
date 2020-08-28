@@ -166,15 +166,15 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn01.jpg" title=""></a>
-        </div>
-
-        <div class="evtCtnsBox evt01">
-            <a href="https://www.youtube.com/watch?v=sBGMUCaAq6k&feature=youtu.be" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn02.jpg" title=""></a>
+            <a href="{{ front_url('/promotion/index/cate/3114/code/1768') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn01.jpg" title=""></a>
         </div>
 
         <div class="evtCtnsBox evt04" id="evt04">
             {!! banner('M_메인_빅배너', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
+        </div>
+
+        <div class="evtCtnsBox evt01">
+            <a href="{{ front_url('/promotion/index/cate/3114/code/1626') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn04.gif" title=""></a>
         </div>
 
         {{--핫 인기강좌--}}
@@ -205,7 +205,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn03.gif" title=""></a>
+            <img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn03.gif" title="">
         </div>
 
         <div class="evtCtnsBox evt03">
@@ -230,6 +230,10 @@
                 <li>{!! banner('M_메인_추천tip3', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_추천tip4', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
+        </div>
+
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn05.gif" title="">
         </div>
 
         <div class="evtCtnsBox evt06">

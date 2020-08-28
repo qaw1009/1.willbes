@@ -84,51 +84,49 @@
                         <tr>
                             <td>형소법 신광은</td>
                             <td>마무리 특강</td>
-                            <td>8.31(화) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001" target="_blank">수강신청</a></td>                  
                         </tr>
                         <tr>
                             <td>형법 김원욱</td>
                             <td>마무리 특강</td>
-                            <td>9.1(화) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001" target="_blank">수강신청</a></td>                  
                         </tr>
                         <tr>
                             <td>한국사 원유철</td>
                             <td>마무리 특강</td>
-                            <td>9.2(수) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사 오태진</td>
                             <td>마무리 특강</td>
-                            <td>9.2(수) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정법 장정훈</td>
                             <td>마무리 특강</td>
-                            <td>9.2(수) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&course_idx=1046&campus_ccd=605001&subject_idx=1060" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어 하승민</td>
                             <td>마무리 특강</td>
-                            <td>9.3(목) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001" target="_blank">수강신청</a></td>
                         </tr>       
                         <tr>
                             <td>수사 신광은</td>
                             <td>마무리 특강</td>
-                            <td>9.3(목) 14:00</td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&course_idx=1046&campus_ccd=605001&subject_idx=1059" target="_blank">수강신청</a></td>
                         </tr> 
                         <tr>
                             <td>경찰학 장정훈</td>
                             <td>마무리 특강</td>
-                            <td>9.4(금) 14:00<br>
-                                9.5(토) 09:00 
-                            </td>
+                            <td>추후 확정</td>
                             <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1058&campus_ccd=605001" target="_blank">수강신청</a></td>
                         </tr> 
                         <tr>

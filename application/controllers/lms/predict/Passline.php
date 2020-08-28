@@ -38,7 +38,6 @@ class Passline extends \app\controllers\BaseController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx',$arr_input);
-        $productList = $this->predictModel->getProductALL();
         $condition = [
             'EQ' => [
                 'PP.IsUse' => 'Y'
@@ -58,13 +57,13 @@ class Passline extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'PredictIdx' => $PredictIdx
-//                'TakeMockPart' => (empty($arr_input['TakeMockPart']) === true) ? '\'\'' : $arr_input['TakeMockPart'],
-//                'TakeArea' => (empty($arr_input['TakeArea']) === true) ? '\'\'' : $arr_input['TakeArea']
+                /*,'TakeMockPart' => (empty($arr_input['TakeMockPart']) === true) ? '\'\'' : $arr_input['TakeMockPart']
+                ,'TakeArea' => (empty($arr_input['TakeArea']) === true) ? '\'\'' : $arr_input['TakeArea']*/
             ]
         ];
         $agoData = $this->predictModel->statisticsListLine2($arr_condition);
 
-        $dtSet = array();
+        $dtSet = [];
         foreach ($agoData as $key => $val){
             $TakeMockPart = $val['TakeMockPart'];
             $TakeArea = $val['TakeArea'];
@@ -366,7 +365,7 @@ class Passline extends \app\controllers\BaseController
            //var_dump($dataSet);
         }
 
-//        print_r($dataSet); exit;
+        //print_r($dataSet); exit;
         $this->load->view('predict/passline/index', [
             'productList' => $productList,
             'def_site_code' => $def_site_code,

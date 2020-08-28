@@ -343,7 +343,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .sub_warp h2 span {color:#C03}	
 .sub_warp h2 select {padding:5px}
 
-.sub3_1 {position:relative; margin:0 auto 80px}
+.sub3_1 {position:relative; margin:0 auto 80px;padding-top:40px;}
 .sub3_1_txt {position:absolute; display:table; width:100%; height:500px; top:50px; background:url(http://file3.willbes.net/new_cop/2017/03/170306_passcop_bg1.png); text-align:center}
 .sub3_1_txt div {display:table-cell; vertical-align:middle}
 

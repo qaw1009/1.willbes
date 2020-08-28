@@ -115,7 +115,7 @@
 
         @if($mode == 'MOD' && $answer_serviceYn == 'Y')
             <div class="m_section2">
-                <a href="javascript:addAnswer({{ $idx }})">답안입력 ▶</a> 빠른답안입력
+                <a href="javascript:addAnswer({{ $idx }})">빠른답안 입력 ▶</a>가답안 발표 후 채점결과를 확인할 수 있습니다.
             </div>
         @endif
 

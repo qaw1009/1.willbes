@@ -109,8 +109,7 @@ class PredictModel extends WB_Model
             LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = " SELECT COUNT(*) AS cnt";
-        $where = " WHERE PP.PredictIdx > 0 ";
-        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
         $order = " ORDER BY PP.PredictIdx DESC\n";
         //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
@@ -764,6 +763,8 @@ class PredictModel extends WB_Model
      *  합격예측용 기존데이터 호출
      */
     public function getProductALL(){
+        $arr_condition = ['IN' => ['PP.SiteCode' => get_auth_site_codes()]];    //사이트 권한 추가
+
         $column = "
             PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
             PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
@@ -780,7 +781,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ORDER BY PP.PredictIdx DESC ";
-        $where = "";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1852,16 +1853,10 @@ class PredictModel extends WB_Model
      * 문항세트전체호출
      */
     public function statisticsListLine2($arr_condition){
-        $column = "
-            *
-        ";
-        $from = "
-            FROM
-                {$this->_table['predictGradesLine']}
-        ";
+        $column = "*";
+        $from = " FROM {$this->_table['predictGradesLine']}";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $order_by = " ";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where);
         $data = $query->result_array();
         return $data;
     }
@@ -1957,18 +1952,13 @@ class PredictModel extends WB_Model
             ";
 
             $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
-
             $where = " WHERE pg.PredictIdx = " . $PredictIdx . $addQuery;
             //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
             $result = $query->result_array();
 
             foreach($result AS $key => $val){
-
                 $PpIdx = $val['PpIdx'];
-
                 // 응시자 개별과목 / 점수
                 $column = "
                     MQ.PqIdx,
@@ -1996,15 +1986,9 @@ class PredictModel extends WB_Model
                 ";
 
                 $order_by = " GROUP BY PrIdx  ORDER BY OrgPoint DESC";
-
                 $where = " WHERE MP.PpIdx = " . $PpIdx;
-                //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-                //exit;
-
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
                 $result = $query->result_array();
-
                 foreach ($result AS $key => $val) {
                     if(empty($TakeMockPart) == false) {
                         $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx'], 'TakeMockPart' => $TakeMockPart];
@@ -2168,11 +2152,9 @@ class PredictModel extends WB_Model
             ";
 
             $from = "
-                FROM
-                    
-                    {$this->_table['predictGradesOrigin']} AS pg
-	                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
-	                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+	            JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+	            LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
             ";
 
             $order_by = " GROUP BY TakeMockPart, TaKeArea, PpIdx
@@ -2182,15 +2164,11 @@ class PredictModel extends WB_Model
             //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
             $result = $query->result_array();
-
             foreach($result AS $key => $val){
-
                 $PpIdx = $val['PpIdx'];
                 $TakeMockPart = $val['TakeMockPart'];
                 $TakeArea = $val['TakeArea'];
-
                 $arrType[$PpIdx] = $val['Type'];
 
                 //원점수 평균총합 (응시자점수 - 원점수평균)제곱(총)
@@ -2199,16 +2177,12 @@ class PredictModel extends WB_Model
                 ";
 
                 $from = "
-                    FROM
-                        {$this->_table['predictGradesOrigin']} AS pg
-                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
-                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                    FROM {$this->_table['predictGradesOrigin']} AS pg
+                    LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                    LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
                 ";
-
                 $order_by = " ";
-
                 $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea;
-
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
                 $tresult = $query->row_array();
 

@@ -113,8 +113,14 @@
             </div>
         </form>
 
+        @if($mode == 'MOD' && $answer_serviceYn == 'Y')
+            <div class="m_section2">
+                <a href="javascript:addAnswer({{ $idx }})">답안입력 ▶</a> 빠른답안입력
+            </div>
+        @endif
+
         <div class="sub3_1">
-            <h2>성적 입력/확인 @if($mode == 'MOD' && $answer_serviceYn == 'Y')<input type="button" onclick="javascript:addAnswer({{ $idx }})" value="답안입력">@endif</h2>
+            <h2>성적 입력/확인</h2>
             {{--성적채점--}}
             <div>
                 @if($scoreIs == 'N' || $answer_serviceYn == 'Y')

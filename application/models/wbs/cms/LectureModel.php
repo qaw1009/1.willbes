@@ -103,7 +103,7 @@ class LectureModel extends WB_Model
      */
     public function findLectureForUnit($lecidx)
     {
-        $column = ' A.wLecName,A.wLecName,A.wAttachPath,B.wCcdName as wContentCcdName,D.wCpName,E.profName_string';
+        $column = ' A.wLecName,A.wLecName,A.wAttachPath,B.wCcdName as wContentCcdName,D.wCpName,E.profName_string,A.wMediaUrl';
         $from = ' From '.$this->_table.' A 
 	                    join wbs_sys_code B on A.wContentCcd = B.wCcd
                         join wbs_sys_cp D on A.wCpIdx = D.wCpIdx and D.wIsStatus="Y"

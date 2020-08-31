@@ -241,9 +241,8 @@
             </ul>
             <div class="tabBox tabBox2">
                 <div id="tab01">
-                    <div class="bookinfoimg">
-                        <img src="https://lms.willbes.net/public/uploads/willbes/board/92/2020/0723/board_286197_01_20200723161457.jpg" alt="교재명">
-                    </div>
+                    <img src="https://lms.willbes.net/public/uploads/willbes/board/92/2020/0723/board_286197_01_20200723161457.jpg" alt="교재명">
+
                     제3판 개정의 가장 큰 특징은 관련 쟁점을 묶어서 이해하기 좋게 정리한 것이다. 이런 작업은 많은 곳에서 있었다. 
                     예를 들어 판결서 송달의 효력과 당사자의 불복방법(상소, 추후보완상소⋅재심)이 상황에 따라 각각 다른 주제들에서
                     논의가 되는데, 바로 비교할 수 있도록 한 곳에 모아서 정리를 하였다. 

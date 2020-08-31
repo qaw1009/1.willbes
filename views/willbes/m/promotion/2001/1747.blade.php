@@ -72,10 +72,10 @@
     <!-- End Container -->
 
     <script>
-        @if(date('YmdHi') >= '202006041500' && ENVIRONMENT == 'production')
-            alert('2020년 1차 합격예측 풀서비스는 종료 되었습니다.');
+        {{--@if(date('YmdHi') >= '202006041500' && ENVIRONMENT == 'production')
+            alert('2020년 2차 합격예측 풀서비스는 종료 되었습니다.');
             location.href = '{{ front_url('/') }}';
-        @endif
+        @endif--}}
 
         function event_step_1() {
             <?php echo login_check_inner_script('로그인 후 이용하여 주십시오.','N'); ?>

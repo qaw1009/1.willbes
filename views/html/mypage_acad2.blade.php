@@ -146,7 +146,7 @@
                                             한덕현 교수님
                                         </dt>
                                     </dl>
-                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                    <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                                 <td class="w-schedule">
@@ -162,7 +162,7 @@
                                             한덕현 교수님
                                         </dt>
                                     </dl>
-                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                    <div class="w-tit"><span class="tx-blue">라이브+인강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                                 <td class="w-schedule">
@@ -178,7 +178,7 @@
                                             한덕현교수님
                                         </dt>
                                     </dl>
-                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                    <div class="w-tit"><span class="tx-blue">라이브+인강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                                 <td class="w-schedule">

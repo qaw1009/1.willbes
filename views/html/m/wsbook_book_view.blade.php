@@ -225,11 +225,11 @@
                             </button>
                         </li>
                     </ul>
-                </div>
-                <div class="naver">
-                    네이버페이 영역
-                </div>
-            </div>                
+                </div>                
+            </div>                           
+        </div>
+        <div class="naver">
+            네이버페이 영역
         </div>
 
         <div class="lec-info-tab">

@@ -26,7 +26,7 @@ class BookStore extends \app\controllers\FrontController
         // TODO : 온라인서점 개발 테스트
         if ($this->_is_mobile === true) {
             if (ENVIRONMENT == 'production' || ENVIRONMENT == 'testing') {
-                header('Location:'.site_url('/?viewPC=1'));
+                show_404();
             }
         }
     }

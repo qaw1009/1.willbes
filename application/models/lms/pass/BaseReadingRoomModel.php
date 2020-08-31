@@ -1330,7 +1330,8 @@ class BaseReadingRoomModel extends WB_Model
 
         //시작월 기준 +1개월
         for($i=0; $i<$m_diff; $i++) {
-            $start_date = date("Y-m", strtotime(date($start_date)." +1 month"));
+            /*$start_date = date("Y-m", strtotime(date($start_date)." +1 month"));*/
+            $start_date = date("Y-m", strtotime(date('Y-m', strtotime(date($start_date)))." +1 month"));
             $set_days[$start_date][] = $start_date.'-01';  //시작일
 
             //last loop

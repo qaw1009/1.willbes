@@ -21,6 +21,27 @@
 
         /************************************************************/
 
+        /*타이머*/
+        .time {width:100%; text-align:center; background:#ebebeb}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td {line-height:1.2}        
+        .time table td img {width:65%}
+        .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
+        .time span {color:#ffda39; font-size:28px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time table td:last-child,
+        .time table td:last-child span {font-size:40px}
+        @@keyframes upDown{
+        from{color:#000}
+        50%{color:#424ac7}
+        to{color:#000}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#000}
+        50%{color:#424ac7}
+        to{color:#000}
+        } 
+
         .sky li:first-child {position:fixed; top:200px;right:10px;z-index:10;}
         .sky li:last-child {position:fixed; top:400px;right:15px;z-index:10;}
 
@@ -96,7 +117,36 @@
 
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="p_re evtContent NGR" id="evtContainer">        
+
+        <!-- 타이머 -->
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
+                <table>
+                    <tr>                    
+                    <td class="time_txt"><span>마감까지<br>남은시간</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+        <!-- 타이머 //-->
 
         <ul class="sky">
             <li>
@@ -281,11 +331,27 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-       
         /*디데이카운트다운*/
         $(document).ready(function() {
-        dDayCountDown('{{$arr_promotion_params['edate']}}');
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
+
+        {{--쿠폰발급--}}
+        var $regi_form = $('#regi_form');
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&event_code={{$data['ElIdx']}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

@@ -94,42 +94,42 @@
 
                                 <table cellspacing="0" cellpadding="0" class="lecInfoTable">
                                     <colgroup>
-                                        <col width="140px">
-                                        <col width="*">
+                                        <col width="120px">
+                                        <col width="750px">
                                         <col width="250px">
                                     </colgroup>
                                     <tbody>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td>
-                                            @if(empty($row['ProdBookData']) === false)
-                                                @foreach($row['ProdBookData'] as $book_idx => $book_row)
-                                                    <div class="w-sub">
-                                                        <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
-                                                        <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
-                                                    </div>
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <ul class="priceWrap">
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>
                                                 @if(empty($row['ProdBookData']) === false)
                                                     @foreach($row['ProdBookData'] as $book_idx => $book_row)
-                                                        <li>
-                                                            @if($row['IsCart'] == 'Y')
-                                                                <input type="checkbox" name="prod_code[]" class="goods_chk chk_books" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
-                                                            @endif
-                                                            <label>
-                                                                <span class="select">[{{ $book_row['wSaleCcdName'] }}]</span>
-                                                                <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                                <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
-                                                            </label>
-                                                        </li>
+                                                        <div class="w-sub">
+                                                            <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                            <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
+                                                        </div>
                                                     @endforeach
                                                 @endif
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <ul class="priceWrap">
+                                                    @if(empty($row['ProdBookData']) === false)
+                                                        @foreach($row['ProdBookData'] as $book_idx => $book_row)
+                                                            <li>
+                                                                @if($row['IsCart'] == 'Y')
+                                                                    <input type="checkbox" name="prod_code[]" class="goods_chk chk_books" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                                @endif
+                                                                <label>
+                                                                    <span class="select">[{{ $book_row['wSaleCcdName'] }}]</span>
+                                                                    <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                                    <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                                                </label>
+                                                            </li>
+                                                        @endforeach
+                                                    @endif
+                                                </ul>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             @endforeach

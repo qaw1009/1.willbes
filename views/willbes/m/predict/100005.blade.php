@@ -60,7 +60,7 @@
 
                 <div class="markMbtn2">
                     <a href="#none">기본정보입력</a>
-                    @if ($arr_base['predict_data']['ServiceSDatm'] <= date('YmdHi'))
+                    @if ($arr_base['predict_data']['ServiceIsUse'] == 'Y' && $arr_base['predict_data']['ServiceSDatm'] <= date('YmdHi'))
                         @if($mode != 'MOD')
                             <a href="javascript:alert('기본정보를 입력해주세요.')" class="btn2">채점 및 성적확인</a>
                         @else

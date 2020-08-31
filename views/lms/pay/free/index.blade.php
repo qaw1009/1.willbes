@@ -29,7 +29,7 @@
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
                             <option value="">직종</option>
                             @foreach($arr_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">

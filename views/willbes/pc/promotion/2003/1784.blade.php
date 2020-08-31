@@ -80,15 +80,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03_01.jpg" alt="1~3순환/3~5순환" usemap="#Map1784_01">
                 <map name="Map1784_01">
                     <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" target="_blank"  alt="3~5순환" />
-                    <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture('171314');" target="_blank" alt="1~3순환">
+                    <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" target="_blank" alt="1~3순환">
                 </map>                    
             </div> 
             <div id="tab02" class="tabcts">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03_02.jpg" alt="1·2·3·4·5순환" usemap="#Map1784_02" border="0">
                 <map name="Map1784_02">
-                    <area shape="rect" coords="57,304,204,358" href="javascript:go_PassLecture('163599');" target="_blank"  alt="1순환" >
-                    <area shape="rect" coords="235,302,385,361" href="javascript:go_PassLecture('165364');" target="_blank"  alt="2순환" >
-                    <area shape="rect" coords="417,304,563,360" href="javascript:go_PassLecture('171314');" target="_blank"  alt="3순환" >
+                    <area shape="rect" coords="57,304,204,358" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/163599" target="_blank"  alt="1순환" >
+                    <area shape="rect" coords="235,302,385,361" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/165364" target="_blank"  alt="2순환" >
+                    <area shape="rect" coords="417,304,563,360" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/171314" target="_blank"  alt="3순환" >
                 </map>
             </div> 
             <div class="check" id="chkInfo">   
@@ -157,6 +157,15 @@
             }
 
             var url = '{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
+        function go_PassLecture2(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
 

@@ -79,8 +79,8 @@
             <div id="tab01" class="tabcts">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03_01.jpg" alt="1~3순환/3~5순환" usemap="#Map1784_01">
                 <map name="Map1784_01">
-                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" target="_blank"  alt="3~5순환" />
-                    <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" target="_blank" alt="1~3순환">
+                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" alt="3~5순환" />
+                    <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" alt="1~3순환">
                 </map>                    
             </div> 
             <div id="tab02" class="tabcts">

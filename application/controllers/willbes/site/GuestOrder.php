@@ -65,6 +65,14 @@ class GuestOrder extends \app\controllers\FrontController
         // 전달 폼 데이터
         $arr_input = $this->_reqP(null, false);
 
+        // 모바일 접근시 디바이스 체크
+        if ($this->_is_mobile === true) {
+            $this->load->library('user_agent');
+            if ($this->agent->is_mobile() == false) {
+                return $this->json_error('허용된 디바이스가 아닙니다. 모바일 기기로 다시 시도해 주세요.');
+            }
+        }
+
         // 주문요청 폼 데이터 유효성 검증
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
@@ -117,7 +125,7 @@ class GuestOrder extends \app\controllers\FrontController
         $order_no = $this->cartFModel->makeOrderNo();
 
         // PG 드라이버 로드
-        $this->_loadPgDriver();
+        $pg_object = $this->_loadPgDriver();
 
         // PG사 결제요청 폼 생성
         $data = [
@@ -134,7 +142,7 @@ class GuestOrder extends \app\controllers\FrontController
             'return_data' => ''
         ];
 
-        $form = $this->pg->requestForm($data);
+        $form = $this->{$pg_object}->requestForm($data);
         if ($form === false) {
             return $this->json_error('결제요청 중 오류가 발생하였습니다.');
         } else {
@@ -143,14 +151,14 @@ class GuestOrder extends \app\controllers\FrontController
     }
 
     /**
-     * 비회원 PG사 결제요청 취소
+     * 비회원 PG사 결제요청 취소 (PC 전용)
      * @param array $params
      * @return mixed
      */
     public function close($params = [])
     {
         // PG 드라이버 로드
-        $this->_loadPgDriver();
+        $pg_object = $this->_loadPgDriver();
 
         return $this->pg->requestCancel(['order_no' => 'GuestOrder', 'is_post_data_delete' => '']);
     }
@@ -174,10 +182,22 @@ class GuestOrder extends \app\controllers\FrontController
 
     /**
      * load PG Driver
+     * @return string [PG 드라이버 object명]
      */
     private function _loadPgDriver()
     {
         $driver = config_app('PgDriver', 'inisis');
-        $this->load->driver('pg', ['driver' => $driver]);
+        $object_name = 'pg';
+
+        if (APP_DEVICE == 'pc') {
+            // PC 드라이버 로드
+            $this->load->driver('pg', ['driver' => $driver]);
+        } else {
+            // 모바일 드라이버 로드
+            $object_name = 'pg_mobile';
+            $this->load->driver('pg', ['driver' => $driver . '_mobile'], $object_name);
+        }
+
+        return $object_name;
     }
 }

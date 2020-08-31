@@ -19,7 +19,7 @@ class Free extends BaseOrder
      */
     public function index()
     {
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);  // 1차 카테고리 조회
+        $arr_category = $this->categoryModel->getCategoryRouteArray();
         $arr_subject = $this->subjectModel->getSubjectArray();
         $arr_professor = $this->professorModel->getProfessorArray();
 

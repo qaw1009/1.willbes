@@ -54,49 +54,49 @@
                         </li>
                         <li class="total NG">총 상품금액 <strong id="total_real_sale_price">{{ number_format($data['rwRealSalePrice']) }}원</strong></li>
                     </ul>
-                    @if($data['IsSalesAble'] == 'Y')
-                        @if($is_npay === true)
-                            <div class="naver mt20">
-                                <script type="text/javascript">
-                                    // 네이버페이 결제
-                                    function buy_nc() {
-                                        formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $('#regi_book_form').serializeArray(), 'POST');
-                                        return false;
-                                    }
-
-                                    // 네이버페이 찜
-                                    function wishlist_nc() {
-                                        popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
-                                        formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $('#regi_book_form').serializeArray(), 'POST', '_wishlist_nc');
-                                        return false;
-                                    }
-                                </script>
-                                <script type="text/javascript" src="https://pay.naver.com/customer/js/mobile/naverPayButton.js" charset="utf-8"></script>
-                                <script type="text/javascript" >//<![CDATA[
-                                    naver.NaverPayButton.apply({
-                                        BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
-                                        TYPE: 'MA', // 버튼 모음 종류 설정
-                                        COLOR: 1, // 버튼 모음의 색 설정
-                                        COUNT: 1, // 버튼 개수 설정. 구매하기 버튼만 있으면 1, 찜하기 버튼도 있으면 2를 입력.
-                                        ENABLE: 'Y', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
-                                        BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
-                                        BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
-                                        WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
-                                        WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
-                                        '':''
-                                    });
-                                //]]></script>
-                            </div>
-                        @endif
-                    @else
-                        <div class="wsBook-buyBtn tx-right">
-                            <span class="tx-red">구매할 수 없는 상품입니다.</span>
-                        </div>
-                    @endif
                 </div>
             </div>
+            @if($data['IsSalesAble'] == 'Y')
+                @if($is_npay === true)
+                    <div class="naver f_right mr10">
+                        <script type="text/javascript">
+                            // 네이버페이 결제
+                            function buy_nc() {
+                                formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $('#regi_book_form').serializeArray(), 'POST');
+                                return false;
+                            }
 
-            <div class="lec-info-tab">
+                            // 네이버페이 찜
+                            function wishlist_nc() {
+                                popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
+                                formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $('#regi_book_form').serializeArray(), 'POST', '_wishlist_nc');
+                                return false;
+                            }
+                        </script>
+                        <script type="text/javascript" src="https://pay.naver.com/customer/js/mobile/naverPayButton.js" charset="utf-8"></script>
+                        <script type="text/javascript" >//<![CDATA[
+                            naver.NaverPayButton.apply({
+                                BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
+                                TYPE: 'MA', // 버튼 모음 종류 설정
+                                COLOR: 1, // 버튼 모음의 색 설정
+                                COUNT: 1, // 버튼 개수 설정. 구매하기 버튼만 있으면 1, 찜하기 버튼도 있으면 2를 입력.
+                                ENABLE: 'Y', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
+                                BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
+                                BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
+                                WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
+                                WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
+                                '':''
+                            });
+                        //]]></script>
+                    </div>
+                @endif
+            @else
+                <div class="naver tx-right">
+                    <span class="tx-red">구매할 수 없는 상품입니다.</span>
+                </div>
+            @endif
+
+            <div class="lec-info-tab c_both">
                 <ul class="tabWrap">
                     <li><a href="#tab01" class="on">도서소개</a></li>
                     <li><a href="#tab02">저자소개</a></li>

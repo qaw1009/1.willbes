@@ -1225,17 +1225,17 @@ body.memBody #Footer {
 /****************윌스토리 서점 : 도서 상세보기*************************/
 .wsBookViewWrap {border-top:1px solid #e1e1e1}
 .wsBookViewWrap h5 {font-size:18px; margin-bottom:30px; padding-left:10px; color:#000}
-.wsBookView {margin:45px 0}
-.wsBookView .wsBookImg {display: inline-block; float:left; width:calc(45% - 10px); text-align: center; margin-left:10px}
+.wsBookView {margin:45px 0 20px}
+.wsBookView .wsBookImg {display: inline-block; float:left; width:calc(42% - 10px); text-align: center; margin-left:10px}
 .wsBookView .wsBookImg img {width:100%; max-width:250px}
-.wsBookView .wsBookInfo {display: inline-block; float:left; width:calc(55% - 20px); letter-spacing: normal; margin:0 10px}
+.wsBookView .wsBookInfo {display: inline-block; float:left; width:calc(58% - 20px); letter-spacing: normal; margin:0 10px}
 .wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
 .wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
 .wsBookView .wsBooktxt strong.shead {display:inline-block; width:50px}
 .wsBookView .wsBooktxt a.another {display:inline-block; font-weight: bold; color:#fff; background:#0b9d00; width: 20px; padding:3px 0; text-align:center; border-radius: 10px;}
 .wsBookView .wsBooktxt span {display:inline-block; min-width:calc(95% - 70px)}
 .wsBookView .wsBooktxt li.total {text-align:right; font-size:16px;}
-.wsBookView .wsBooktxt li.total strong {display: inline-block; width:40%;  color:#0b9d00; padding-right:10px}
+.wsBookView .wsBooktxt li.total strong {display: inline-block; width:calc(50% - 5px);  color:#0b9d00; padding-right:5px}
 .wsBookView .wsBooktxt a.more {display:inline-block; height: 18px; line-height: 18px; width:18px; text-align: center; font-size: 11px;
     background:#0b9d00; color:#fff; border-radius: 4px; vertical-align: middle; margin-left:10px;}
 .wsBookView .wsBooktxt a.more .delivery {display:none;}
@@ -1245,9 +1245,9 @@ body.memBody #Footer {
 .wsBookView .wsBook-buyBtn {margin-top:20px}
 .wsBookView .wsBook-buyBtn li {display: inline; float:left; width:50%}
 .wsBookView .wsBook-buyBtn:after {content:''; display: block; clear: both;}
-.wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
 .wsBookView .wsBookInfo:after,
 .wsBookView:after {content:""; display:block; clear:both;}
+.wsBookViewWrap .naver {text-align:center; margin-bottom:20px}
 
 .wsBookViewWrap .lec-info-tab {font-size:12px}
 .wsBookViewWrap .lec-info-tab .tabWrap li a:hover,
@@ -1258,6 +1258,7 @@ body.memBody #Footer {
 }
 
 .wsBookViewWrap .tabBox li {list-style-type: disc; margin-left:20px}
+.wsBookViewWrap .lec-info-tab .tabBox img {display:block; width:100%; max-width:680px; height: auto; margin-bottom:20px;}
 
 /****************윌스토리 서점 : 도서 상세보기 end*************************/
 

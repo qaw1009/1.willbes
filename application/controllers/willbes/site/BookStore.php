@@ -22,6 +22,13 @@ class BookStore extends \app\controllers\FrontController
         if ($this->_site_code == '2012') {
             $this->_is_npay = true;
         }
+
+        // TODO : 온라인서점 개발 테스트
+        if ($this->_is_mobile === true) {
+            if (ENVIRONMENT == 'production' || ENVIRONMENT == 'testing') {
+                show_404();
+            }
+        }
     }
 
     /**
@@ -46,16 +53,22 @@ class BookStore extends \app\controllers\FrontController
 
         // 소트매핑 영역 노출 여부
         $is_sort_mapping = false;
-        if (in_array($pattern, ['all', 'willbes']) === true) {
+        $arr_sort_mapping_pattern = $this->_is_mobile === true ? ['all'] : ['all', 'willbes'];
+        if (in_array($pattern, $arr_sort_mapping_pattern) === true) {
             $is_sort_mapping = true;
+        }
+
+        // 대분류 카테고리 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
+        $arr_base['category_d1'] = $this->categoryFModel->listSiteCategory($this->_site_code, 1, ['EQ' => ['IsDisp' => 'Y']]);
+
+        // 모바일 환경일 경우 카테고리 디폴트 선택
+        if ($this->_is_mobile === true && $pattern == 'all' && empty($cate_code) === true) {
+            $cate_code = array_get($arr_base['category_d1'], '0.CateCode');
         }
 
         // 카테고리 코드
         $arr_base['cate_code_d1'] = substr($cate_code, 0, 4);
         $arr_base['cate_code_d2'] = strlen($cate_code) > 4 ? $cate_code : '';
-
-        // 대분류 카테고리 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
-        $arr_base['category_d1'] = $this->categoryFModel->listSiteCategory($this->_site_code, 1, ['EQ' => ['IsDisp' => 'Y']]);
 
         // 중분류 카테고리 조회
         if (empty($arr_base['cate_code_d1']) === false) {
@@ -114,7 +127,7 @@ class BookStore extends \app\controllers\FrontController
         $list = [];
         $count = $this->bookFModel->listBookStoreProduct(true, $arr_condition);
 
-        $paging_url = '/' . $this->getFinalUriString() . (empty($query_string) === false ? '?' . $query_string : '');
+        $paging_url = '/' . ltrim($this->getFinalUriString(), APP_DEVICE . '/') . (empty($query_string) === false ? '?' . $query_string : '');
         $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $this->_show_page_num, true);
 
         if ($count > 0) {

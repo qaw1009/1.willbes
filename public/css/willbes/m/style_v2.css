@@ -1258,6 +1258,8 @@ body.memBody #Footer {
 }
 
 .wsBookViewWrap .tabBox li {list-style-type: disc; margin-left:20px}
+.wsBookViewWrap .bookinfoimg {margin-bottom:20px}
+.wsBookViewWrap .bookinfoimg img {width:100%;}
 
 /****************윌스토리 서점 : 도서 상세보기 end*************************/
 

@@ -3,11 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -99,7 +95,7 @@
             </div>         
         </div>
 
-        <div class="evtCtnsBox evtInfo NGR">
+        <div class="evtCtnsBox evtInfo NGR" id="ctsInfo">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">윌비스김동진법원팀 순환별 패키지 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>

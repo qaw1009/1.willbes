@@ -108,6 +108,11 @@
                                                 <a href="https://tv.naver.com/willbescop" target="_blank">
                                                     <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
                                                 </a>
+                                            </dt><br>
+                                            <dt>
+                                                <a href="{{ site_url('/pass/promotion/index/cate/3010/code/1789') }}">
+                                                    <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
+                                                </a>
                                             </dt>
                                             <dt>
                                                 <a href="http://blog.naver.com/PostList.nhn?blogId=willbes79&from=postList&categoryNo=65" target="_blank">
@@ -129,7 +134,7 @@
                                                 </a>
                                             </dt>
                                             <dt>
-                                                <a href="{{ site_url('/pass/promotion/index/cate/3048/code/1104') }}" target="_blank">
+                                                <a href="{{ site_url('/pass/promotion/index/cate/3048/code/1104') }}">
                                                     <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
                                                 </a>
                                             </dt>

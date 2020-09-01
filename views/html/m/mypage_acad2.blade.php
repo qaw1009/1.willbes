@@ -51,7 +51,7 @@
                                 <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n5">접수중</span></dt>
                             </dl>
                             <div class="w-tit">
-                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                             </div>
                             <dl class="w-info acad tx-gray">
                                 <dt>수강기간 : 2018-00-00~2018-00-00</dt>
@@ -65,7 +65,7 @@
                                 <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">마감</span></dt>
                             </dl>
                             <div class="w-tit">
-                                <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
+                                <a href="#none"><span class="tx-blue">라이브+인강</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
                             </div>
                             <dl class="w-info acad tx-gray">
                                 <dt>수강기간 : 2018-00-00~2018-00-00</dt>
@@ -79,7 +79,7 @@
                                 <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n6">접수예정</span></dt>
                             </dl>
                             <div class="w-tit">
-                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                             </div>
                             <dl class="w-info acad tx-gray">
                                 <dt>수강기간 : 2018-00-00~2018-00-00</dt>

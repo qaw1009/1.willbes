@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- TODO : 온라인서점 개발 테스트 --}}
-@if(ENVIRONMENT == 'production' || ENVIRONMENT == 'testing')
+@if(ENVIRONMENT == 'production')
     @php header('Location:'.site_url('/?viewPC=1')); @endphp
 @endif
 

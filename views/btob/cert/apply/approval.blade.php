@@ -61,9 +61,9 @@
                 </label>
                 <div class="col-md-6 form-inline">
                     <div class="input-group mb-0 item">
-                        <input type="text" class="form-control datepicker" id="lec_start_date" name="lec_start_date" title="수강시작일" readonly="readonly" value="{{ $data['LecStartDate'] }}">
+                        <input type="text" class="form-control" id="lec_start_date" name="lec_start_date" title="수강시작일" readonly="readonly" value="{{ $data['LecStartDate'] }}">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
-                        <input type="text" class="form-control datepicker" id="lec_end_date" name="lec_end_date" title="수강종료일" readonly="readonly" value="{{ $data['LecEndDate'] }}">
+                        <input type="text" class="form-control" id="lec_end_date" name="lec_end_date" title="수강종료일" readonly="readonly" value="{{ $data['LecEndDate'] }}">
                     </div>
                 </div>
             </div>

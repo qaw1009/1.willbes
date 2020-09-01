@@ -1,11 +1,6 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
-{{-- TODO : 온라인서점 개발 테스트 --}}
-@if(ENVIRONMENT == 'production')
-    @php header('Location:'.site_url('/?viewPC=1')); @endphp
-@endif
-
 <!-- Container -->
 <div id="Container" class="Container NSK wsbook mb40">
     {!! banner('M_메인_빅배너', 'MainSlider mt20', $__cfg['SiteCode'], '0') !!}

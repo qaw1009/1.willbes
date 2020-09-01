@@ -229,10 +229,10 @@ class BookFModel extends ProductFModel
 
         // TODO : 네이버페이 심사 (유아/어린이 카테고리 상품만 노출)
         //$arr_condition['LKR']['A.CateCode'] = '3133';
-
         $cur_url = config_app('SiteUrl');
         $column = 'A.ProdCode as id, A.ProdName as title, A.rwRealSalePrice as price_pc, A.rwRealSalePrice as price_mobile, A.rwSalePrice as normal_price
                         ,concat(\'https://'.$cur_url.'/bookStore/show/pattern/all/prod-code/\',A.ProdCode) as link
+                        ,concat(\'https://'.$cur_url.'/m/bookStore/show/pattern/all/prod-code/\',A.ProdCode) as mobile_link
                         ,concat(\'https://'.$cur_url.'\', A.wAttachImgPath, A.wAttachImgOgName) as image_link
                         ,A.ProdCateName as category_name1
                         ,null as category_name2

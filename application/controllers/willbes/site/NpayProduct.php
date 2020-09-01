@@ -31,10 +31,10 @@ class NpayProduct extends \app\controllers\FrontController
             $type = empty($params) ? '' : $params[0];
 
             //$write =  "id	title	price_pc	price_mobile	normal_price	link	image_link	category_name1  naver_category	condition	brand	maker	search_tag	shipping". PHP_EOL;
-            $write = "id\ttitle\tprice_pc\tprice_mobile\tnormal_price\tlink\timage_link\tcategory_name1\tnaver_category\tcondition\tbrand\tmaker\tsearch_tag\tshipping" . PHP_EOL;
+            $write = "id\ttitle\tprice_pc\tprice_mobile\tnormal_price\tlink\tmobile_link\timage_link\tcategory_name1\tnaver_category\tcondition\tbrand\tmaker\tsearch_tag\tshipping" . PHP_EOL;
 
             foreach ($data as $row) {
-                $write .= $row['id'] . "\t" . $row['title'] . "\t" . $row['price_pc'] . "\t" . $row['price_mobile'] . "\t" . $row['normal_price'] . "\t" . $row['link'] . "\t" . $row['image_link'] . "\t" . $row['category_name1']
+                $write .= $row['id'] . "\t" . $row['title'] . "\t" . $row['price_pc'] . "\t" . $row['price_mobile'] . "\t" . $row['normal_price'] . "\t" . $row['link'] . "\t" . $row['mobile_link'] . "\t" . $row['image_link'] . "\t" . $row['category_name1']
                     . "\t" . $row['naver_category'] . "\t" . $row['condition'] . "\t" . $row['brand'] . "\t" . $row['maker'] . "\t" . $row['search_tag'] . "\t" . $row['shipping'] . PHP_EOL;
             }
 

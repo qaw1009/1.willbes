@@ -208,6 +208,12 @@ class Apply extends \app\controllers\BaseController
         $data['ApprovalStatusName'] = $this->_arr_approval_status[$data['ApprovalStatus']];
         $data['ApprovalStatusColor'] = $this->_arr_approval_color[$data['ApprovalStatus']];
 
+        // 미승인일 경우 디폴트 수강기간 설정 (금일부터 30일)
+        if ($data['ApprovalStatus'] == 'N') {
+            $data['LecStartDate'] = date('Y-m-d');
+            $data['LecEndDate'] = date('Y-m-d', strtotime($data['LecStartDate'] . '+29 day'));
+        }
+
         // 신청목록 조회
         $arr_condition = ['EQ' => ['CA.BtobIdx' => $this->_sess_btob_idx, 'CA.MemIdx' => $data['MemIdx']]];
         $list = $this->btobCertModel->listCertApply(false, $arr_condition, null, null, $this->_getListOrderBy());

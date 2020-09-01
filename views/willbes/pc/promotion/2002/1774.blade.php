@@ -5,10 +5,6 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -28,12 +24,10 @@
         .wb_evt02 {background:#fff;}  
         .wb_evt03 {background:#191c23;}  
         .wb_evt04 {background:#fff;}  
-
     </style>
     
 
     <div class="evtContent NSK" id="evtContainer">
-
         <div class="sky">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1783" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1774_sky01.jpg" alt="추천강좌 신청하기" >

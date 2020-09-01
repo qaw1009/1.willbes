@@ -52,7 +52,7 @@
     
     <div class="evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_top" >
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_top.jpg" alt="김동진 법원팀"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_top.gif" alt="김동진 법원팀"/>
         </div>
 
         <div class="evtCtnsBox wb_01" >           

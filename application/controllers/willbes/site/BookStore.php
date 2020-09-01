@@ -22,13 +22,6 @@ class BookStore extends \app\controllers\FrontController
         if ($this->_site_code == '2012') {
             $this->_is_npay = true;
         }
-
-        // TODO : 온라인서점 개발 테스트
-        if ($this->_is_mobile === true) {
-            if (ENVIRONMENT == 'production' || ENVIRONMENT == 'testing') {
-                show_404();
-            }
-        }
     }
 
     /**

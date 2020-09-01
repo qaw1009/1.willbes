@@ -39,7 +39,7 @@
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
         .check a.infotxt:hover {background:#d9312b}   
 
-        .wb_03 {background:#fff;} 
+        .wb_03 {background:#fff} 
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -47,7 +47,6 @@
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:20px;}
 		.evtInfoBox ul {margin-bottom:30px}
-
     </style>
     
     <div class="evtContent NGR" id="evtContainer">

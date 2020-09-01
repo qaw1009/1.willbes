@@ -137,6 +137,7 @@
                 <br/>- 해당 수강기간이 지나면 자동으로 만료 처리됨
             </li>
         </ul>
+        <p class="pl-20 red">※ 수강기간은 승인일로부터 30일로 지정되며, 기간 임의지정은 되지 않습니다.</p>
     </div>
     <script type="text/javascript">
         var $_regi_form = $('#_regi_form');

@@ -144,6 +144,7 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/08/1756_03.jpg"  alt="시간표 및 응시안내" />
 		</div>
        
+       {{--
 		<div class="evtCtnsBox wb_04" id="table">			
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1756_04.jpg"  alt="시간표 및 장소" />
@@ -169,6 +170,7 @@
                 <span class="area09">제주</span>   
 			</div>
 		</div>  
+        --}}
 
         <div class="evtCtnsBox wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1756_05.jpg"  alt="할인쿠폰2" usemap="#Map1756a" border="0" />
@@ -194,24 +196,10 @@
             <div>
                 <h3 class="NGEB">응시자 유의사항</h3>
                 <dd>
-                    <dt>유의사항</dt>
-                    <dl>학원 실강패스 수강생은 응시 지역별 학원 상담실 문의해 주시기 바랍니다. 모든 고사장 주차 불가합니다.<br>
-                        시험 응시생이 많아 혼잡이 예상되오니 대중교통을 이용해 주시기 바랍니다. 반드시 본인이 응시할 학원으로 신청 바랍니다.</dl>                   
-                </dd>                
-                <dd>
-                    <dt>고사장 입실</dt>
-                    <dl>시험당일 09:40까지 해당 고사장으로 반드시 입실해야합니다.</dl>
-                    <dl>시험 종료 후 시험감독관의 지시가 있을때까지 퇴실할 수 없으며, 모든 답안지는 반드시 제출하여 주십시오.</dl>
-                    <dl>본인이 신청한 학원에서만 응시할 수 있습니다.</dl>
-                </dd>
-                <dd>
-                    <dt>신분증 지참</dt>
-                    <dl>본인 확인을 위해 응시표(응시 전 발송 된 문자 메시지 확인 가능)와 공공기관이 발행한 
-                    신분증(주민등록증, 여권, 운전면허증, 주민등록번호가 포함된 장애인등록증(복지카드 중 하나)을 반드시 소지하여야 합니다.</dl>
-                </dd>
-                <dd>
-                    <dt>※ 모의고사문의 : 각 학원에 문의</dt>
-                </dd>
+                    <dl>코로나19로 인해 전국학원이 휴원으로 인해 학원에서 진행되는 빅매치3 모의고사는 진행되지 않습니다.</dl>
+                    <dl>학원진행되지 않는점 양해말씀드립니다.</dl>                              
+                    <dl>온라인 모의고사 : 1544-5006</dl>   
+                </dd>                             
             </div>
         </div>
        

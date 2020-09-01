@@ -23,12 +23,17 @@
                     <option value="{{$key}}" @if($data['SiteCode'] == $key || $__cfg['SiteCode'] == $key)selected="selected"@endif>{{$val}}</option>
                 @endforeach
             </select>
-            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCate width49p ml1p">
+            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCate width49p ml1p" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
                 <option value="">구분</option>
+                @php $temp_s_cate_code = ''; @endphp
                 @foreach($arr_base['category'] as $row)
                     <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                    @php if($data['Category_String'] == $row['CateCode'] || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']) || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode'])) $temp_s_cate_code = $row['CateCode']; @endphp
                 @endforeach
             </select>
+            @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y')
+                <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
+            @endif
             <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA width34p mt1p">
                 <option value="">상담유형</option>
                 @foreach($arr_base['consult_type'] as $key => $val)
@@ -80,7 +85,9 @@
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
+        @if(empty(element('s_cate_code_disabled', $arr_input)) === true || element('s_cate_code_disabled', $arr_input) != 'Y')
         $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
+        @endif
         $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
 
         $('#btn_list').click(function() {

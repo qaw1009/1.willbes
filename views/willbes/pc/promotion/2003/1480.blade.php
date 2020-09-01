@@ -14,255 +14,141 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            position:relative;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        /*타이머*/
-        .newTopDday * {font-size:24px}
-        .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
-        .newTopDday ul {width:1120px; margin:0 auto;}
-        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-size:28px; height:60px; line-height:60px; padding-top:10px !important; font-weight:bold; color:#000}
-        .newTopDday ul li strong {line-height:60px}
-        .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%; font-size:16px; color:#666; line-height:1.3; }
-        .newTopDday ul li:first-child span { font-size:28px; color:#000; }
-        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
-        .newTopDday ul:after {content:""; display:block; clear:both}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/08/1784_top_bg.jpg) no-repeat center top; position:relative;}
 
-        .wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/07/1480_00_bg.jpg) no-repeat center top;}
-        .wb_top {background:#f2f7f9 url(https://static.willbes.net/public/images/promotion/2019/12/1480_top_bg.jpg) no-repeat center top; position:relative;}
-        .leclist {position:absolute; top:693px; left:50%; margin-left:-344px; width:600px; height:365px;  overflow:hidden}
-        .slidesLec li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:70px; overflow:hidden; display:inline; float:left; width:300px}
-        .slidesLec li span {width:50px; display:inline-block}
-        .slidesLec:after {content:""; display:block; clear:both}
-        .wb_01 {background:#212121}
-        .wb_02 {background:#E2B528; padding-bottom:150px}
-            .check {margin-top:20px; color:#fff; font-size:14px}
-            .check label {cursor:pointer}
-            .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-            .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-            .check a.infotxt:hover {background:#d9312b}   
-        .wb_03 {background:#fff;}  
+        .wb_01 {background:#fff}
+        .wb_02 {background:#fff; padding-bottom:150px}
+        .wb_02 .tabMenu {width:980px; margin:0 auto 30px}
+        .wb_02 .tabMenu li {display:inline; float:left; width:50%}
+        .wb_02 .tabMenu li a {display:block; background:#c5c5c5; color:#fff; padding:20px 0; text-align:center; font-size:24px; line-height:1.4}
+        .wb_02 .tabMenu li a p {font-size:16px}
+        .wb_02 .tabMenu li a:hover,
+        .wb_02 .tabMenu li a.active {background:#1e1f23;}
+        .wb_02 ul:after {content:''; display:block; clear:both}
 
-        .skybanner {position:fixed; top:250px;right:0; z-index:1;}
+        .check {margin-top:20px; color:#333; font-size:14px}
+        .check label {cursor:pointer}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .check a.infotxt:hover {background:#d9312b}   
 
+        .wb_03 {background:#fff} 
+
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+        .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+        .evtInfoBox li {list-style:disc; margin-left:20px; font-size:14px}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:20px;}
+		.evtInfoBox ul {margin-bottom:30px}
     </style>
     
-    <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="skybanner">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1480_04.png" alt="스카이베너">        
-        </div>   
-
-        <div class="evtCtnsBox wb_00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_00.gif" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
-        </div>
-
-        <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday NG">        
-            <div>
-                <ul>
-                    <li>
-                        2021 김동진 법원팀 - {{$arr_promotion_params['turn']}}기<br />
-                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
-                    </li>
-                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>일</strong></li>
-                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li>
-                        남았습니다
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_top.jpg" alt="김동진 법원팀"/>
-            <div class="leclist">
-                <ul class="slidesLec">
-                    <li>
-                        2018 합격	동행 1기	112***	서OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	113***	이OO	<span></span>	2019 합격	동행 2기	11****	조OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	15****	권OO	<br>
-                        2018 합격	동행 1기	130***	안OO	<span></span>	2019 합격	동행 2기	11****	장OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	최OO	<br>
-                        2018 합격	동행 1기	110***	강OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	112***	손OO	<span></span>	2019 합격	동행 2기	11****	정OO	<br>
-                        2018 합격	동행 1기	112***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	권OO	<span></span>	2019 합격	동행 2기	11****	조OO	<br>
-                        2018 합격	동행 1기	114***	송OO	<span></span>	2019 합격	동행 2기	11****	장OO	<br>
-                        2018 합격	동행 1기	113***	정OO	<span></span>	2019 합격	동행 2기	11****	석OO	<br>
-                        2018 합격	동행 1기	112***	홍OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	강OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	114***	이OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	111***	김OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	114***	표OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	112***	임OO	<span></span>	2019 합격	동행 2기	11****	정OO	<br>
-                        2018 합격	동행 1기	111***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	112***	윤OO	<span></span>	2019 합격	동행 2기	11****	장OO	<br>
-                        2018 합격	동행 1기	114***	김OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	111***	김OO	<span></span>	2019 합격	동행 2기	11****	소OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	11****	강OO	<br>
-                        2018 합격	동행 1기	110***	권OO	<span></span>	2019 합격	동행 2기	11****	윤OO	<br>
-                        2018 합격	동행 1기	113***	전OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	110***	이OO	<span></span>	2019 합격	동행 2기	11****	장OO	<br>
-                        2018 합격	동행 1기	111***	전OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	전OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	112***	이OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	113***	강OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	정OO	<br>
-                        2018 합격	동행 1기	110***	민OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	150***	안OO	<span></span>	2019 합격	동행 2기	11****	추OO	<br>
-                        2018 합격	동행 1기	112***	손OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	110***	이OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	114***	이OO	<span></span>	2019 합격	동행 2기	14****	이OO	<br>
-                        2018 합격	동행 1기	112***	양OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	장OO	<span></span>	2019 합격	동행 2기	11****	제OO	<br>
-                        2018 합격	동행 1기	111***	최OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	130***	김OO	<span></span>	2019 합격	동행 2기	11****	남OO	<br>
-                        2018 합격	동행 1기	111***	박OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	111***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	112***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	12****	문OO	<br>
-                        2018 합격	동행 1기	140***	추OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	권OO	<span></span>	2019 합격	동행 2기	12****	송OO	<br>
-                        2018 합격	동행 1기	113***	조OO	<span></span>	2019 합격	동행 2기	11****	홍OO	<br>
-                        2018 합격	동행 1기	112***	최OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	111***	지OO	<span></span>	2019 합격	동행 2기	12****	최OO	<br>
-                        2018 합격	동행 1기	113***	김OO	<span></span>	2019 합격	동행 2기	11****	장OO	<br>
-                        2018 합격	동행 1기	110***	권OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	114***	박OO	<span></span>	2019 합격	동행 2기	13****	조OO	<br>
-                        2018 합격	동행 1기	150***	박OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	113***	권OO	<span></span>	2019 합격	동행 2기	11****	유OO	<br>
-                        2018 합격	동행 1기	110***	강OO	<span></span>	2019 합격	동행 2기	14****	김OO	<br>
-                        2018 합격	동행 1기	112***	이OO	<span></span>	2019 합격	동행 2기	11****	문OO	<br>
-                        2018 합격	동행 1기	114***	박OO	<span></span>	2019 합격	동행 2기	15****	정OO	<br>
-                        2018 합격	동행 1기	110***	박OO	<span></span>	2019 합격	동행 2기	11****	양OO	<br>
-                        2018 합격	동행 1기	120***	이OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	150***	남OO	<span></span>	2019 합격	동행 2기	11****	홍OO	<br>
-                        2018 합격	동행 1기	150***	황OO	<span></span>	2019 합격	동행 2기	11****	정OO	<br>
-                        2018 합격	동행 1기	110***	서OO	<span></span>	2019 합격	동행 2기	11****	강OO	<br>
-                        2018 합격	동행 1기	112***	황OO	<span></span>	2019 합격	동행 2기	11****	민OO	<br>
-                        2018 합격	동행 1기	113***	오OO	<span></span>	2019 합격	동행 2기	14****	최OO	<br>
-                        2018 합격	동행 1기	110***	정OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	113***	안OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	111***	이OO	<span></span>	2019 합격	동행 2기	14****	박OO	<br>
-                        2018 합격	동행 1기	110***	김OO	<span></span>	2019 합격	동행 2기	11****	임OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	110***	최OO	<span></span>	2019 합격	동행 2기	13****	남OO	<br>
-                        2018 합격	동행 1기	110***	전OO	<span></span>	2019 합격	동행 2기	11****	오OO	<br>
-                        2018 합격	동행 1기	150***	최OO	<span></span>	2019 합격	동행 2기	15****	김OO	<br>
-                        2018 합격	동행 1기	113***	김OO	<span></span>	2019 합격	동행 2기	11****	서OO	<br>
-                        2018 합격	동행 1기	111***	최OO	<span></span>	2019 합격	동행 2기	11****	최OO	<br>
-                        2018 합격	동행 1기	410***	박OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2018 합격	동행 1기	113***	양OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	111***	조OO	<span></span>	2019 합격	동행 2기	11****	윤OO	<br>
-                        2018 합격	동행 1기	112***	박OO	<span></span>	2019 합격	동행 2기	11****	민OO	<br>
-                        2018 합격	동행 1기	110***	이OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	113***	최OO	<span></span>	2019 합격	동행 2기	11****	최OO	<br>
-                        2018 합격	동행 1기	110***	이OO	<span></span>	2019 합격	동행 2기	11****	조OO	<br>
-                        2018 합격	동행 1기	150***	김OO	<span></span>	2019 합격	동행 2기	11****	나OO	<br>
-                        2018 합격	동행 1기	410***	조OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	113***	박OO	<span></span>	2019 합격	동행 2기	11****	황OO	<br>
-                        2018 합격	동행 1기	111***	송OO	<span></span>	2019 합격	동행 2기	11****	변OO	<br>
-                        2018 합격	동행 1기	113***	원OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	110***	윤OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	130***	박OO	<span></span>	2019 합격	동행 2기	11****	류OO	<br>
-                        2018 합격	동행 1기	110***	박OO	<span></span>	2019 합격	동행 2기	11****	최OO	<br>
-                        2018 합격	동행 1기	116***	황OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2018 합격	동행 1기	110***	최OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2018 합격	동행 1기	150***	김OO	<span></span>	2019 합격	동행 2기	11****	정OO	<br>
-                        2018 합격	동행 1기	111***	김OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2019 합격	동행 2기	12****	장OO	<span></span>	2019 합격	동행 2기	11****	강OO	<br>
-                        2019 합격	동행 2기	11****	오OO	<span></span>	2019 합격	동행 2기	11****	우OO	<br>
-                        2019 합격	동행 2기	11****	김OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2019 합격	동행 2기	11****	하OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2019 합격	동행 2기	14****	유OO	<span></span>	2019 합격	동행 2기	11****	박OO	<br>
-                        2019 합격	동행 2기	11****	윤OO	<span></span>	2019 합격	동행 2기	15****	권OO	<br>
-                        2019 합격	동행 2기	11****	백OO	<span></span>	2019 합격	동행 2기	12****	김OO	<br>
-                        2019 합격	동행 2기	11****	박OO	<span></span>	2019 합격	동행 2기	14****	안OO	<br>
-                        2019 합격	동행 2기	11****	김OO	<span></span>	2019 합격	동행 2기	11****	강OO	<br>
-                        2019 합격	동행 2기	11****	조OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2019 합격	동행 2기	11****	민OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                        2019 합격	동행 2기	14****	송OO	<span></span>	2019 합격	동행 2기	14****	박OO	<br>
-                        2019 합격	동행 2기	11****	최OO	<span></span>	2019 합격	동행 2기	11****	최OO	<br>
-                        2019 합격	동행 2기	11****	정OO	<span></span>	2019 합격	동행 2기	11****	김OO	<br>
-                        2019 합격	동행 2기	11****	박OO	<span></span>	2019 합격	동행 2기	14****	윤OO	<br>
-                        2019 합격	동행 2기	11****	조OO	<span></span>	2019 합격	동행 2기	11****	이OO	<br>
-                    </li>			
-                </ul>
-            </div>
+    <div class="evtContent NGR" id="evtContainer">
+        <div class="evtCtnsBox wb_top" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_top.gif" alt="김동진 법원팀"/>
         </div>
 
         <div class="evtCtnsBox wb_01" >           
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_01_01.gif" alt="혁신적인 커리큘럼"/><Br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_01_02.jpg" alt="김동진 법원팀 교수진" usemap="#Map1480A" border="0"/>
-            <map name="Map1480A" id="Map1480A">
-                <area shape="rect" coords="831,1090,922,1115" href="http://cafe.daum.net/LAW-KDJTEAM" target="_blank" alt="온라인상담" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_01.jpg" alt="후기"/><br>       
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_02.gif" alt="혁신적인 커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox wb_02" id="buyLec">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_02.gif" alt="수강신청" usemap="#Map1480B" border="0">
-            <map name="Map1480B" id="Map1480B">
-                <area shape="rect" coords="764,942,919,1045" href="javascript:go_PassLecture('163827');"  alt="수강신청" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03.jpg" alt="수강신청">
+            <ul class="tabMenu NSK-Black">
+                <li>
+                    <a href="#tab01">
+                        <p class="NSK">1~3순환/3~5순환</p>
+                        패키지 특별 할인
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab02">
+                        <p class="NSK">1·2·3·4·5순환</p>
+                        각 순환별 패키지
+                    </a>
+                </li>
+            </ul>
+            <div id="tab01" class="tabcts">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03_01.jpg" alt="1~3순환/3~5순환" usemap="#Map1784_01">
+                <map name="Map1784_01">
+                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" alt="3~5순환" />
+                    <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" alt="1~3순환">
+                </map>                    
+            </div> 
+            <div id="tab02" class="tabcts">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03_02.jpg" alt="1·2·3·4·5순환" usemap="#Map1784_02" border="0">
+                <map name="Map1784_02">
+                    <area shape="rect" coords="57,304,204,358" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/163599" target="_blank"  alt="1순환" >
+                    <area shape="rect" coords="235,302,385,361" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/165364" target="_blank"  alt="2순환" >
+                    <area shape="rect" coords="417,304,563,360" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/171314" target="_blank"  alt="3순환" >
+                </map>
+            </div> 
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 김동진법원팀PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
-            </div>               
+            </div>         
         </div>
 
-        <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1480_03.jpg" alt="이용안내" />
-        </div>
-        
-        {{--
-        <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_sky.png" alt="배너" usemap="#Map1480C" border="0" />
-            <map name="Map1480C" id="Map1480C">
-                <area shape="rect" coords="479,41,1490,142" href="#buyLec" alt="수강신청" />
-            </map>
-        </div>
-        --}}
-
+        <div class="evtCtnsBox evtInfo NGR">
+			<div class="evtInfoBox">
+				<h4 class="NGEB">윌비스김동진법원팀 순환별 패키지 이용안내</h4>
+				<div class="infoTit NG"><strong>상품구성</strong></div>
+				<ul>
+					<li>본 상품은 윌비스김동진법원팀 교수진의 지정된 순환별 과정을 배수 제한 없이 무제한 수강 가능합니다.<br>
+                        - 1~3순환 법과목 패키지 : 민법 김동진, 형법 문형석, 헌법 이국령, 민사소송법 이덕훈, 형사소송법 유안석 교수별 1~3순환 과정<br>
+                        - 3~5순환 전과목 패키지 : 민법 김동진, 형법 문형석, 헌법 이국령, 민사소송법 이덕훈, 형사소송법 유안석, 국어 이현나, 영어 박초롱, 한국사 임진석 3~5순환 과정<br>
+                            (3~5순환 전과목 패키지 과정의 경우, 강의 진행 일정에 맞추어 순차적으로 업데이트 될 예정입니다.)<br>
+                    </li>                     
+				</ul>
+				<div class="infoTit NG"><strong>수강기간</strong></div>
+				<ul>
+					<li>구매일로부터 6개월 간 제공되며, 결제가 완료되는 즉시 수강이 시작됩니다.</li> 
+                    <li>본 상품 이용 시 일시정지/연장/재수강은 제공되지 않습니다.</li>       
+				</ul>
+				<div class="infoTit NG"><strong>수강관련 <span class="tx-red">(*3~5순환 패키지의 경우에만 해당)</span></strong></div>
+				<ul>
+					<li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li>
+                    <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 과목/교수/강좌를 선택 등록 후 수강할 수 있습니다.</li>
+                    <li>본 상품 수강 시 이용가능한 기기는 다음과 같이 제한됩니다.<br>
+                    - PC 2대 or 모바일 2대 or PC 1대+모바일 1대 (총 2대)</li>
+                    <li>PC/모바일 기기 변경 등 단말기 초기화가 필요한 경우, 
+                    계정당 최초 1회에 한해 직접 초기화가 가능하며 추후 단말기 초기화는 고객센터에서 내용 확인 후 최대 2회까지 추가 진행 가능합니다.</li>                    				
+				</ul>
+                <div class="infoTit NG"><strong>교재관련 <span class="tx-red">(*3~5순환 패키지의 경우에만 해당)</span></strong></div>
+				<ul>
+					<li>본 상품은 교재를 별도 구매하셔야 하며, 각 강좌별 교재는 무한PASS존 내 [교재구매] 버튼을 통해 구매 가능합니다.</li>
+                    <li>4~5순환 모의고사 진행 일정에 맞추어 회원정보에 등록된 휴대폰번호로 신청 방법 및 배송 기간이 문자 안내될 예정입니다.</li>                    				
+				</ul>
+				<div class="infoTit NG"><strong>환불관련</strong></div>
+				<ul>
+					<li>결제 후 7일 이내 전액 환불 가능합니다.</li>
+                    <li>단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
+                    <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
+                    <li>본 상품은 할인가 적용된 특별기획상품이므로 부분환불은 정가 대비 사용일수에 따라 차감 후 환불됩니다.</li>                    				
+				</ul>
+                <div class="infoTit NG"><strong>유의사항</strong></div>
+				<ul>
+					<li>본 상품은 특별할인기획 상품으로 쿠폰 할인/적립금 사용 등 혜택이 적용되지 않습니다.</li>
+                    <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않거나 교수가 변경되는 경우 대체 강의가 제공되며 이로 인한 환불은 불가합니다.</li>
+                    <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>                    				
+				</ul>
+                <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1544-5006</strong></div>
+			</div>
+		</div>       
     </div>
     <!-- End Container -->
-    <script type="text/javascript">  
-        $(document).ready(function() {
-            $(function() {
-                //Count the number of li elements
-                var bx_num01 = $(".slidesLec li").length;
-                var ticker01 = $('.slidesLec').bxSlider({
-                    minSlides: 0,
-                    maxSlides: 100,
-                    slideWidth: 980,
-                    slideMargin: 0,
-                    ticker: true,
-                    mode: 'vertical',
-                    tickerHover: true,
-                    speed:70000*bx_num01
-                });
-            });
-        });
 
+    <script type="text/javascript">  
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
@@ -272,13 +158,38 @@
             var url = '{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+        function go_PassLecture2(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
 
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            var url = '{{ site_url('/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
+
+        $(document).ready(function(){
+            $('.tabMenu').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function(){
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
         });
     </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
 @stop

@@ -61,9 +61,9 @@
                 </label>
                 <div class="col-md-6 form-inline">
                     <div class="input-group mb-0 item">
-                        <input type="text" class="form-control datepicker" id="lec_start_date" name="lec_start_date" title="수강시작일" readonly="readonly" value="{{ $data['LecStartDate'] }}">
+                        <input type="text" class="form-control" id="lec_start_date" name="lec_start_date" title="수강시작일" readonly="readonly" value="{{ $data['LecStartDate'] }}">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
-                        <input type="text" class="form-control datepicker" id="lec_end_date" name="lec_end_date" title="수강종료일" readonly="readonly" value="{{ $data['LecEndDate'] }}">
+                        <input type="text" class="form-control" id="lec_end_date" name="lec_end_date" title="수강종료일" readonly="readonly" value="{{ $data['LecEndDate'] }}">
                     </div>
                 </div>
             </div>
@@ -137,6 +137,7 @@
                 <br/>- 해당 수강기간이 지나면 자동으로 만료 처리됨
             </li>
         </ul>
+        <p class="pl-20 red">※ 수강기간은 승인일로부터 30일로 지정되며, 기간 임의지정은 되지 않습니다.</p>
     </div>
     <script type="text/javascript">
         var $_regi_form = $('#_regi_form');

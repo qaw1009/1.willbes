@@ -159,7 +159,6 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_august.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_september.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_october.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_november.jpg" /></li>

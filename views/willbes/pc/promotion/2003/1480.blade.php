@@ -99,7 +99,7 @@
             </div>         
         </div>
 
-        <div class="evtCtnsBox evtInfo NGR">
+        <div class="evtCtnsBox evtInfo NGR" id="ctsInfo">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">윌비스김동진법원팀 순환별 패키지 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>

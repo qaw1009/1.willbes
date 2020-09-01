@@ -149,6 +149,14 @@ class BookStore extends \app\controllers\FrontController
      */
     public function show($params = [])
     {
+        // 모바일 환경에서 PC 페이지 접근할 경우 모바일 페이지로 리다이렉트
+        if (APP_DEVICE == 'pc') {
+            $this->load->library('user_agent');
+            if ($this->agent->is_mobile() == true && $this->session->userdata('viewPC') != '1') {
+                redirect(front_device_url('/' . $this->getFinalUriString(), 'm', false, true));
+            }
+        }
+
         $prod_code = element('prod-code', $params);
         if (empty($prod_code) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');

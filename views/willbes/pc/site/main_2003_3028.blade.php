@@ -18,7 +18,7 @@
 
         <div class="Section Section2">
             <div class="widthAuto ">
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3028_visual_top.jpg" alt="윌비스 기술직 라인업"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1787"><img src="https://static.willbes.net/public/images/promotion/main/3028_visual_top.jpg" alt="윌비스 기술직 라인업"></a>
             </div>
         </div>
 

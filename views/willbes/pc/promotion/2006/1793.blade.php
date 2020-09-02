@@ -235,7 +235,7 @@
                     return;
                 }
 
-                var url = '{{ site_url('/package/show/cate/309002/pack/648001/prod-code/') }}' + code;
+                var url = '{{ site_url('/package/show/cate/309002/pack/648002/prod-code/') }}' + code;
                 location.href = url;
             }    
     </script>

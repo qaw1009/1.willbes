@@ -53,6 +53,7 @@
                                     </dt>
                                 </dl>
                                 <div class="w-tit">
+                                    <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span>
                                     {{$row['subProdName']}}
                                 </div>
                                 <dl class="w-info acad tx-gray">

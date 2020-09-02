@@ -15,7 +15,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#154E3B url(https://static.willbes.net/public/images/promotion/2020/09/1787_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09/1787_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#272f4c; padding-bottom:150px}
         /* TAB */

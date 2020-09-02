@@ -21,11 +21,11 @@
 
         /************************************************************/
 
-        .wb_top {background:#272A2F url(https://static.willbes.net/public/images/promotion/2020/08/1013_top_bg.jpg) no-repeat center;}
+        .wb_top {background:#272A2F url(https://static.willbes.net/public/images/promotion/2020/09/1013_top_bg.jpg) no-repeat center;}
 
-        .wb_01 {background:#2E3F37;}
+        .wb_01 {background:#2b3541;}
 
-        .wb_02 {background:#2B3541;}
+        .wb_02 {background:#667c32;}
 
         .wb_03 {background:#F5F5F5;} 
 
@@ -34,18 +34,18 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1013_top.gif" usemap="#Map1013a" title="윌비스 웰컴팩" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1013_top.gif" usemap="#Map1013a" title="윌비스 웰컴팩" border="0" />
             <map name="Map1013a" id="Map1013a">
                 <area shape="rect" coords="321,993,802,1098" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" />
             </map>
         </div>  
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1013_01.jpg" title="아주 특별한 혜택" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1013_01.jpg" title="아주 특별한 혜택" />
         </div>  
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1013_02.jpg" usemap="#Map1013b" title="아낌없이 드리는 할인 혜택" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1013_02.jpg" usemap="#Map1013b" title="아낌없이 드리는 할인 혜택" border="0" />
             <map name="Map1013b" id="Map1013b">
                 <area shape="rect" coords="324,1830,797,1934" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" />
             </map>

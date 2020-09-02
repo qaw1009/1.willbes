@@ -1395,6 +1395,26 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
+     * 문자발송여부
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyReadingRoomTakeType($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if ($this->_updateTakeType($input) !== true) {
+                throw new \Exception('문자발송여부 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 문자발송여부 수정
      * @param $input
      * @return bool|string
@@ -1423,4 +1443,24 @@ class BaseReadingRoomModel extends WB_Model
         return true;
     }
 
+    /**
+     * 연장타입 수정
+     * @param $input
+     * @return bool|string
+     */
+    protected function _updateTakeType($input)
+    {
+        try {
+            $data = [
+                'TakeType' => element('take_type', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            if ($this->_conn->set($data)->where('LrIdx', element('lr_idx', $input))->update($this->_table['readingRoom']) === false) {
+                throw new \Exception('문자발송여부 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
 }

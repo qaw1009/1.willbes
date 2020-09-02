@@ -108,7 +108,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $from = "
             FROM (
                 SELECT
-                LrIdx, ProdCode, SubProdCode, SiteCode, CampusCcd, IsUse, IsStatus, Name AS ReadingRoomName, LakeLayer, UseQty, TransverseNum, StartNo, EndNo, IsSmsUse, UseStartDate, UseEndDate
+                LrIdx, ProdCode, SubProdCode, SiteCode, CampusCcd, TakeType, IsUse, IsStatus, Name AS ReadingRoomName, LakeLayer, UseQty, TransverseNum, StartNo, EndNo, IsSmsUse, UseStartDate, UseEndDate
                 ,{$this->_table['readingRoom']}.Desc, SendTel, SmsContent ,RegDatm, RegAdminIdx, UpdAdminIdx, UpdDatm
                 FROM {$this->_table['readingRoom']}
                 WHERE ProdCode = '{$prod_code}' AND IsStatus = 'Y'
@@ -549,7 +549,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             if(!$excel_column){
                 $column = '
-                    b.LrIdx, o.OrderIdx, o.OrderNo, b.MasterOrderIdx, b.NowOrderIdx, o.ReprProdName, o.OrderDatm, op.OrderPrice
+                    b.LrIdx, o.OrderIdx, o.OrderNo, b.MasterOrderIdx, b.NowOrderIdx, b.TakeType, o.ReprProdName, o.OrderDatm, op.OrderPrice
                     , b.NowMIdx, b.CampusCcd, op.PayStatusCcd
                     , op.ProdCode, op.OrderPrice, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
                     , fn_ccd_name(b.CampusCcd) AS CampusName
@@ -570,7 +570,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $from = "
             FROM (
                 SELECT
-                    t_a.SiteCode, t_a.CampusCcd, t_a.LrIdx, t_a.ProdCode, t_a.SubProdCode
+                    t_a.SiteCode, t_a.CampusCcd, t_a.LrIdx, t_a.ProdCode, t_a.SubProdCode, t_a.TakeType
                     , t_b.RegAdminIdx, t_b.NowMIdx, t_b.NowOrderIdx, t_b.StatusCcd, t_b.UseEndDate, t_b.RrudIdx
                     , t_b.MasterOrderIdx, t_b.UseStartDate, t_b.RegDatm, t_a.Name AS ReadingRoomName
                 FROM {$this->_table['readingRoom_useDetail']} AS t_b

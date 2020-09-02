@@ -144,7 +144,7 @@
                                 {!! $data['Content'] !!}
                             @else
                                 @if (empty($file_data['C']) === false)
-                                    <img src='{{$file_data['C']['file_path']}}'>
+                                    <img src='{{$file_data['C']['file_path']}}' style="max-width: 100%">
                                     <p>{{$file_data['C']['file_real_name']}}</p>
                                 @endif
                             @endif

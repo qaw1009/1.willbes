@@ -28,12 +28,12 @@
                         {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}--}}
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), false, $offLineSite_list) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd"><span class="required">*</span>캠퍼스</label>
-                    <div class="col-md-4 ml-12-dot item form-inline item">
+                    <label class="control-label col-md-1-1" for="campus_ccd">캠퍼스<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline item">
                         <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스" @if($method == 'PUT')disabled="disabled"@endif>
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($data['CampusCcd'] == $row['CampusCcd']) selected="selected" @endif>{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -44,8 +44,8 @@
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 ml-12-dot item form-inline">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -58,6 +58,15 @@
                     <div class="col-md-4 form-inline item">
                         <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="{{$mang_title}}명" value="{{ $data['ReadingRoomName'] }}" >
                     </div>
+                    <label class="control-label col-md-1-1" for="take_type">연장타입<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
+                        <select class="form-control mr-5" id="take_type" name="take_type">
+                            <option value="">연장타입</option>
+                            <option value="L" @if($method == 'POST' || ($data['TakeType'] == 'L')) selected="selected" @endif>기간제한</option>
+                            <option value="A" @if($data['TakeType'] == 'A') selected="selected" @endif>상시</option>
+                        </select>
+                        @if($method == 'PUT') <button class="btn-save-is-sms-use btn btn-primary" type="button" id="btn_save_take_type">연장타입 수정</button> @endif
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -65,8 +74,8 @@
                     <div class="col-md-4 form-inline item">
                         <input type="number" class="form-control" id="lake_layer" name="lake_layer" required="required" title="강의실명" value="{{ $data['LakeLayer'] }}" > 호 <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="use_start_date">사용기간<span class="required">*</span></label>
-                    <div class="col-md-5 form-inline ml-12-dot item">
+                    <label class="control-label col-md-1-1" for="use_start_date">사용기간<span class="required">*</span></label>
+                    <div class="col-md-5 form-inline item">
                         <input type="text" class="form-control datepicker" id="use_start_date" name="use_start_date" value="{{$data['UseStartDate']}}">
                         <div class="form-control input-group-addon no-border no-bgcolor">~</div>
                         <input type="text" class="form-control datepicker" id="use_end_date" name="use_end_date" value="{{$data['UseEndDate']}}">
@@ -78,8 +87,8 @@
                     <div class="col-md-4 form-inline item">
                         <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="{{$mang_title}}총{{$mang_title}}총{{($mang_type == 'R') ? '좌석' : '개'}}수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="transverse_num">가로수<span class="required">*</span></label>
-                    <div class="col-md-5 form-inline ml-12-dot item">
+                    <label class="control-label col-md-1-1" for="transverse_num">가로수<span class="required">*</span></label>
+                    <div class="col-md-5 form-inline item">
                         <input type="number" class="form-control" id="transverse_num" name="transverse_num" required="required" title="가로수" value="{{ $data['TransverseNum'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
@@ -89,8 +98,8 @@
                     <div class="col-md-4 form-inline item">
                         <input type="number" class="form-control" id="start_no" name="start_no" required="required" title="{{($mang_type == 'R') ? '좌석' : ''}}시작번호" value="{{ $data['StartNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="end_no">{{($mang_type == 'R') ? '좌석' : ''}}종료번호<span class="required">*</span></label>
-                    <div class="col-md-5 form-inline ml-12-dot item">
+                    <label class="control-label col-md-1-1" for="end_no">{{($mang_type == 'R') ? '좌석' : ''}}종료번호<span class="required">*</span></label>
+                    <div class="col-md-5 form-inline item">
                         <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="{{($mang_type == 'R') ? '좌석' : ''}}종료번호" value="{{ $data['EndNo'] }}" readonly="readonly"> <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
@@ -162,9 +171,9 @@
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
-                    <label class="control-label col-md-1-1 d-line">등록일
+                    <label class="control-label col-md-1-1">등록일
                     </label>
-                    <div class="col-md-4 ml-12-dot">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
@@ -175,9 +184,9 @@
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
-                    <label class="control-label col-md-1-1 d-line">수정일
+                    <label class="control-label col-md-1-1">수정일
                     </label>
-                    <div class="col-md-4 ml-12-dot">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
@@ -238,6 +247,18 @@
                 var sms_is_use = $regi_form.find('input[name="sms_is_use"]:checked').val();
                 if(!confirm('문자발송 사용여부를 '+( sms_is_use == 'Y' ? '사용' : '미사용' )+'으로 저장하시겠습니까?')) return false;
                 var _url = '{{ site_url("/pass/readingRoom/regist/storeSmsIsUse") }}' + getQueryString();
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        //location.replace('{{ site_url("/pass/readingRoom/regist/") }}' + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+
+            //연장타입 수정
+            $('#btn_save_take_type').click(function() {
+                if(!confirm('수정 저장하시겠습니까?')) return false;
+                var _url = '{{ site_url("/pass/readingRoom/regist/storeTakeType") }}' + getQueryString();
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

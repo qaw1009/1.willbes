@@ -125,6 +125,7 @@
                     <th>좌석상태</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>연장타입</th>
                     <th>변경</th>
                     <th>연장</th>
                 </tr>
@@ -184,6 +185,13 @@
                     {'data' : 'SeatStatusName'},
                     {'data' : 'RegAdminName'},
                     {'data' : 'SeatRegDatm'},
+                    {'data' : 'TakeType', 'render' : function(data, type, row, meta) {
+                            if (data == 'A') {
+                                return '상시';
+                            } else {
+                                return '기간제한';
+                            }
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd == '{{$arr_seat_status_ccd['end']}}') {
                                 return '<p style="color: #bdbdbd">[변경]</p>';
@@ -192,19 +200,25 @@
                             }
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            //퇴실
-                            if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}') {
+                            var _url = '{{ site_url('/pay/visit/create') }}?type=extend&target_order_idx='+row.MasterOrderIdx+'&target_prod_code='+row.ProdCode;
+                            //퇴실,만료
+                            if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd == '{{$arr_seat_status_ccd['end']}}') {
                                 return '<p style="color: #bdbdbd">[연장]</p>';
                             } else {
-                                //기간 미만족
-                                if (row.ExtensionType == 'Y'
-                                    && (row.SeatStatusCcd == '{{$arr_seat_status_ccd['in']}}'
-                                        || row.SeatStatusCcd == '{{$arr_seat_status_ccd['extension']}}'
-                                        || row.SeatStatusCcd == '{{$arr_seat_status_ccd['change']}}')
-                                ) {
-                                    return '<a href="javascript:void(0);" class="btn-seat" data-prod-code="' + row.ProdCode + '" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
+                                //상시
+                                if (row.TakeType == 'A') {
+                                    return '<a href="'+_url+'" target="_blank"><u>[연장]</u></a>';
                                 } else {
-                                    return '<p style="color: #bdbdbd">[연장]</p>';
+                                    //만료일 +-7일(기간만족), 배정, 연장, 자리이동
+                                    if (row.ExtensionType == 'Y'
+                                        && (row.SeatStatusCcd == '{{$arr_seat_status_ccd['in']}}'
+                                            || row.SeatStatusCcd == '{{$arr_seat_status_ccd['extension']}}'
+                                            || row.SeatStatusCcd == '{{$arr_seat_status_ccd['change']}}')
+                                    ) {
+                                        return '<a href="'+_url+'" target="_blank"><u>[연장]</u></a>';
+                                    } else {
+                                        return '<p style="color: #bdbdbd">[연장]</p>';
+                                    }
                                 }
                             }
 
@@ -218,13 +232,6 @@
                     "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&now_order_idx=' + $(this).data('order-idx'),
                     "width" : "1200"
                 });
-            });
-
-            // 좌석연장
-            $list_table.on('click', '.btn-seat', function() {
-                var param = 'type=extend&target_order_idx=' + $(this).data('order-idx');
-                param += '&target_prod_code=' + $(this).data('prod-code');
-                location.href='{{ site_url('/pay/visit/create') }}?' + param;
             });
 
             // 엑셀다운로드 이벤트

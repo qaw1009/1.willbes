@@ -251,4 +251,21 @@ class Regist extends \app\controllers\BaseController
         $result = $this->readingRoomModel->modifyReadingRoomSmsIsUse($this->_reqP(null,false));
         $this->json_result($result, '수정 완료 되었습니다.', $result);
     }
+
+    public function storeTakeType()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'take_type', 'label' => '연장타입', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->modifyReadingRoomTakeType($this->_reqP(null,false));
+        $this->json_result($result, '수정 완료 되었습니다.', $result);
+    }
 }

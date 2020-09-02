@@ -129,7 +129,7 @@
                                                 --}}
                                             </dt>
                                         </dl>
-                                        <div class="w-tit">{{$row['subProdName']}}</div>
+                                        <div class="w-tit"><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span> {{$row['subProdName']}}</div>
                                         @if(in_array($row['SiteCode'], ['2010','2011','2013']))
                                             <dl class="w-info">
                                                 <dt>

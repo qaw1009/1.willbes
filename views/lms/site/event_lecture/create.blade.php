@@ -170,213 +170,219 @@
                 </div>
 
                 <div class="form-group" style="border-bottom:none;">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-9">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
                         <div class="form-group hide" id="limit_{{$options_keys[0]}}">
-                            <div class="row">
-                                <div class="col-md-3 item form-inline">
-                                    <div class="radio">
-                                        <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$options_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif>
-                                        <label for="limit_type_S" class="input-label">단일리스트</label>
-                                        <input type="radio" class="flat mr-10" id="limit_type_M" name="limit_type" data-limit-type="M" value="M" title="다중리스트" @if($data['LimitType']=='M')checked="checked"@endif>
-                                        <label for="limit_type_M" class="input-label">다중리스트</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
-                                    <div class="form-group form-inline" style="border-bottom:none">
-                                        <div class="col-md-11">
-                                            <input type="hidden" name="er_idx" value="@if(empty($list_event_register['S']) === false && empty($list_event_register['S'][0]['ErIdx']) === false){{$list_event_register['S'][0]['ErIdx']}}@endif">
-                                            <select class="form-control" id="person_limit_type" name="person_limit_type">
-                                                <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                                <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
-                                            </select>
-                                            <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
-                                            <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
-                                            <button type="button" class="btn btn-dark btn-register-submit" style="margin-bottom: 2px;" data-register-idx="{{empty($list_event_register['S']) === false ? $list_event_register['S'][0]['ErIdx'] : ''}}">단일특강수정</button>
+                            <label class="control-label col-md-1">신청리스트</label>
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <div class="col-md-3 item form-inline">
+                                        <div class="radio">
+                                            <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$options_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif>
+                                            <label for="limit_type_S" class="input-label">단일리스트</label>
+                                            <input type="radio" class="flat mr-10" id="limit_type_M" name="limit_type" data-limit-type="M" value="M" title="다중리스트" @if($data['LimitType']=='M')checked="checked"@endif>
+                                            <label for="limit_type_M" class="input-label">다중리스트</label>
                                         </div>
                                     </div>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택</p>
+                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
+                                        <div class="form-group form-inline" style="border-bottom:none">
+                                            <div class="col-md-11">
+                                                <input type="hidden" name="er_idx" value="@if(empty($list_event_register['S']) === false && empty($list_event_register['S'][0]['ErIdx']) === false){{$list_event_register['S'][0]['ErIdx']}}@endif">
+                                                <select class="form-control" id="person_limit_type" name="person_limit_type">
+                                                    <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
+                                                    <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
+                                                </select>
+                                                <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
+                                                <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
+                                                <button type="button" class="btn btn-dark btn-register-submit" style="margin-bottom: 2px;" data-register-idx="{{empty($list_event_register['S']) === false ? $list_event_register['S'][0]['ErIdx'] : ''}}">단일특강수정</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
-                                    <div class="form-group form-inline" style="border-bottom:none;">
-                                        <div class="col-md-3">
-                                            <select class="form-control" id="select_type" name="select_type">
-                                                <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
-                                                <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
+                                    <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
+                                        <div class="form-group form-inline" style="border-bottom:none;">
+                                            <div class="col-md-3">
+                                                <select class="form-control" id="select_type" name="select_type">
+                                                    <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
+                                                    <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-inline" style="border-bottom:none;">
+                                            <div class="col-md-11">
+                                            <select class="form-control" id="temp_person_limit_type" name="temp_person_limit_type">
+                                                <option value="L">인원제한</option>
+                                                <option value="N">무제한</option>
                                             </select>
+                                            <input type="text" id="temp_person_limit" name="temp_person_limit" class="form-control ml-5" title="정원수" style="width: 80px;"> 명
+                                            <p class="form-control-static ml-20">[특강명]</p>
+                                            <input type="text" id="temp_lecture_name" name="temp_lecture_name" class="form-control ml-5" title="특강명">
+                                            <button type="button" class="btn btn-info btn-lecture-add" style="margin-bottom: 2px;">등록</button>
+                                            </div>
                                         </div>
-                                        <div class="col-md-5">
-                                            <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-inline" style="border-bottom:none;">
-                                        <div class="col-md-11">
-                                        <select class="form-control" id="temp_person_limit_type" name="temp_person_limit_type">
-                                            <option value="L">인원제한</option>
-                                            <option value="N">무제한</option>
-                                        </select>
-                                        <input type="text" id="temp_person_limit" name="temp_person_limit" class="form-control ml-5" title="정원수" style="width: 80px;"> 명
-                                        <p class="form-control-static ml-20">[특강명]</p>
-                                        <input type="text" id="temp_lecture_name" name="temp_lecture_name" class="form-control ml-5" title="특강명">
-                                        <button type="button" class="btn btn-info btn-lecture-add" style="margin-bottom: 2px;">등록</button>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" style="border-bottom:none;">
-                                        <div class="col-md-12">
-                                        <table class="table table-striped table-bordered" id="table_lecture">
-                                            <thead>
-                                            <tr>
-                                                <th>구분</th>
-                                                <th>정원</th>
-                                                <th>특강/설명회명</th>
-                                                <th>만료</th>
-                                                <th>사용</th>
-                                                <th>지급상품 <br> {!! html_site_select('', 'register_product_site_code', '', '', '운영 사이트', '') !!}</th>
-                                                <th>수정</th>
-                                                <th>삭제</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (empty($list_event_register['M']) === false)
-                                                @php $i=1; @endphp
-                                                @foreach($list_event_register['M'] as $row)
-                                                    <tr>
-                                                        <td>
-                                                            <input type="hidden" name="event_register_er_idx[]" value="{{$row['ErIdx']}}">
-                                                            {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
-                                                            <input type="hidden" name="event_register_person_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
-                                                            <select class="form-control" name="event_register_person_limit_type[]" id="event_register_person_limit_type_{{$i}}" style="min-width: 70px;">
-                                                                <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>인원제한</option>
-                                                                <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            {{--{{$row['PersonLimit']}}--}}
-                                                            <input type="text" name="event_register_person_limit[]" id="event_register_person_limit_{{$i}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
-                                                        </td>
-                                                        <td>
-                                                            {{--{{$row['Name']}}--}}
-                                                            <input type="text" name="event_register_name[]" id="event_register_name_{{$i}}" value="{{$row['Name']}}">
-                                                        </td>
-                                                        <td>
-                                                            {{--@if($row['RegisterExpireStatus'] == 'Y')
-                                                                <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="N">[<u>만료</u>]</a>
-                                                            @else
-                                                                <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="Y">[<u>복구</u>]</a>
-                                                            @endif--}}
-                                                            <select class="form-control" name="expire_status[]" id="expire_status_{{$i}}" style="min-width: 60px;">
-                                                                <option value="Y" @if($row['RegisterExpireStatus'] == 'Y')selected="selected"@endif>복구</option>
-                                                                <option value="N" @if($row['RegisterExpireStatus'] == 'N')selected="selected"@endif>만료</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control" name="register_is_use[]" id="register_is_use_{{$i}}" style="min-width: 70px;">
-                                                                <option value="Y" @if($row['IsUse'] == 'Y')selected="selected"@endif>사용</option>
-                                                                <option value="N" @if($row['IsUse'] == 'N')selected="selected"@endif>미사용</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" data-eridx="{{$row['ErIdx']}}" data-poptype="register" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
-                                                            <span id="event_register_product_{{$row['ErIdx']}}" class="event_register_product">
-                                                            @if(empty($row['arr_event_product']) === false)
-                                                                @foreach($row['arr_event_product'] as $p_key => $p_val)
-                                                                    <br/>
-                                                                    <span class="pr-10">{{$p_val['ProdName']}}
-                                                                        <a href="#none" data-prod-code="{{$p_val['ProdCode']}}" class="selected-product-delete">
-                                                                            <i class="fa fa-times red"></i>
-                                                                        </a>
-                                                                        <input type="hidden" name="prod_code[]" value="{{$p_val['ProdCode']}}">
-                                                                    </span>
-                                                                @endforeach
-                                                            @endif
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-success mr-10 btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-modify-number="{{$i}}">수정</button>
-                                                        </td>
-                                                        <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$el_idx}}" data-register-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
-                                                    </tr>
-                                                @php $i++; @endphp
-                                                @endforeach
-                                            @endif
-                                            </tbody>
-                                        </table>
+                                        <div class="form-group" style="border-bottom:none;">
+                                            <div class="col-md-12">
+                                            <table class="table table-striped table-bordered" id="table_lecture">
+                                                <thead>
+                                                <tr>
+                                                    <th>구분</th>
+                                                    <th>정원</th>
+                                                    <th>특강/설명회명</th>
+                                                    <th>만료</th>
+                                                    <th>사용</th>
+                                                    <th>지급상품 <br> {!! html_site_select('', 'register_product_site_code', '', '', '운영 사이트', '') !!}</th>
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @if (empty($list_event_register['M']) === false)
+                                                    @php $i=1; @endphp
+                                                    @foreach($list_event_register['M'] as $row)
+                                                        <tr>
+                                                            <td>
+                                                                <input type="hidden" name="event_register_er_idx[]" value="{{$row['ErIdx']}}">
+                                                                {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
+                                                                <input type="hidden" name="event_register_person_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
+                                                                <select class="form-control" name="event_register_person_limit_type[]" id="event_register_person_limit_type_{{$i}}" style="min-width: 70px;">
+                                                                    <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>인원제한</option>
+                                                                    <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                {{--{{$row['PersonLimit']}}--}}
+                                                                <input type="text" name="event_register_person_limit[]" id="event_register_person_limit_{{$i}}" value="{{$row['PersonLimit']}}"  style="width: 50px;">
+                                                            </td>
+                                                            <td>
+                                                                {{--{{$row['Name']}}--}}
+                                                                <input type="text" name="event_register_name[]" id="event_register_name_{{$i}}" value="{{$row['Name']}}">
+                                                            </td>
+                                                            <td>
+                                                                {{--@if($row['RegisterExpireStatus'] == 'Y')
+                                                                    <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="N">[<u>만료</u>]</a>
+                                                                @else
+                                                                    <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="Y">[<u>복구</u>]</a>
+                                                                @endif--}}
+                                                                <select class="form-control" name="expire_status[]" id="expire_status_{{$i}}" style="min-width: 60px;">
+                                                                    <option value="Y" @if($row['RegisterExpireStatus'] == 'Y')selected="selected"@endif>복구</option>
+                                                                    <option value="N" @if($row['RegisterExpireStatus'] == 'N')selected="selected"@endif>만료</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-control" name="register_is_use[]" id="register_is_use_{{$i}}" style="min-width: 70px;">
+                                                                    <option value="Y" @if($row['IsUse'] == 'Y')selected="selected"@endif>사용</option>
+                                                                    <option value="N" @if($row['IsUse'] == 'N')selected="selected"@endif>미사용</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" data-eridx="{{$row['ErIdx']}}" data-poptype="register" class="btn_product_search btn btn-sm btn-primary mb-0 ml-5">상품추가</button>
+                                                                <span id="event_register_product_{{$row['ErIdx']}}" class="event_register_product">
+                                                                @if(empty($row['arr_event_product']) === false)
+                                                                    @foreach($row['arr_event_product'] as $p_key => $p_val)
+                                                                        <br/>
+                                                                        <span class="pr-10">{{$p_val['ProdName']}}
+                                                                            <a href="#none" data-prod-code="{{$p_val['ProdCode']}}" class="selected-product-delete">
+                                                                                <i class="fa fa-times red"></i>
+                                                                            </a>
+                                                                            <input type="hidden" name="prod_code[]" value="{{$p_val['ProdCode']}}">
+                                                                        </span>
+                                                                    @endforeach
+                                                                @endif
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-success mr-10 btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-modify-number="{{$i}}">수정</button>
+                                                            </td>
+                                                            <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$el_idx}}" data-register-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
+                                                        </tr>
+                                                    @php $i++; @endphp
+                                                    @endforeach
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="hide" id="limit_{{$options_keys[1]}}">
-                            <div class="form-group">
-                                <label class="control-label col-md-2">댓글사용영역</label>
-                                <div class="col-md-7 form-inline">
-                                    <div class="checkbox">
-                                    <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
-                                    <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
+                        <div class="form-group hide" id="limit_{{$options_keys[1]}}">
+                            <label class="control-label col-md-1">댓글기능</label>
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">댓글사용영역</label>
+                                    <div class="col-md-7 form-inline">
+                                        <div class="checkbox">
+                                        <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
+                                        <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
 
-                                    <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
-                                    <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-2">댓글Ui종류</label>
-                                <div class="col-md-7 form-inline">
-                                    <div class="checkbox">
-                                        @foreach($arr_comment_ui_type_ccd as $key => $val)
-                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}"
-                                                   @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif/>
-                                            <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="col-md-10 col-lg-offset-2 form-inline">
-                                    <p class="form-control-static">• 프로모션 댓글 종류에 따라 설정 할 수 있습니다.<br>
-                                        • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-2">자동지급포인트</label>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                        <label class="control-label col-md-1-1">적립대상</label>
-                                        <div class="col-md-4 form-inline">
-                                            <select name="comment_point_type" id="comment_point_type" class="form-control" title="포인트지급타입">
-                                                <option value="">포인트종류</option>
-                                                @foreach($pointapply_ccd as $key => $val)
-                                                    <option value="{{$key}}" @if($data['CommentPointType'] == $key) selected="selected" @endif>{{$val}}</option>
-                                                @endforeach
-                                            </select>
+                                        <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
+                                        <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
                                         </div>
                                     </div>
-                                    <div class="row mt-5">
-                                        <label class="control-label col-md-1-1">적립포인트</label>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control" id="comment_point_amount" name="comment_point_amount" value="{{$data['CommentPointAmount']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">댓글Ui종류</label>
+                                    <div class="col-md-7 form-inline">
+                                        <div class="checkbox">
+                                            @foreach($arr_comment_ui_type_ccd as $key => $val)
+                                                <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}"
+                                                       @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif/>
+                                                <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="row mt-5">
-                                        <label class="control-label col-md-1-1">유효일수</label>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control" id="comment_point_valid_days" name="comment_point_valid_days" value="{{$data['CommentPointValidDays']}}" style="width: 70px;">
-                                        </div>
+                                    <div class="col-md-10 col-lg-offset-2 form-inline">
+                                        <p class="form-control-static">• 프로모션 댓글 종류에 따라 설정 할 수 있습니다.<br>
+                                            • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
+                                        </p>
                                     </div>
-                                    •  댓글 등록 시 지급될 포인트 정보를 등록해주세요. <br/>
-                                    •  기본형 댓글에만 자동지급 포인트 기능 사용이 가능합니다.
+                                </div>
+                                <div class="form-group" style="border-bottom: none">
+                                    <label class="control-label col-md-2">자동지급포인트</label>
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <label class="control-label col-md-1-1">적립대상</label>
+                                            <div class="col-md-4 form-inline">
+                                                <select name="comment_point_type" id="comment_point_type" class="form-control" title="포인트지급타입">
+                                                    <option value="">포인트종류</option>
+                                                    @foreach($pointapply_ccd as $key => $val)
+                                                        <option value="{{$key}}" @if($data['CommentPointType'] == $key) selected="selected" @endif>{{$val}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-5">
+                                            <label class="control-label col-md-1-1">적립포인트</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="comment_point_amount" name="comment_point_amount" value="{{$data['CommentPointAmount']}}">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-5">
+                                            <label class="control-label col-md-1-1">유효일수</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="comment_point_valid_days" name="comment_point_valid_days" value="{{$data['CommentPointValidDays']}}" style="width: 70px;">
+                                            </div>
+                                        </div>
+                                        •  댓글 등록 시 지급될 포인트 정보를 등록해주세요. <br/>
+                                        •  기본형 댓글에만 자동지급 포인트 기능 사용이 가능합니다.
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group hide" id="limit_{{$options_keys[2]}}">
-                            <label class="control-label col-md-2">자동문자정보</label>
-                            <div class="col-md-10">
+                            <label class="control-label col-md-1">자동문자</label>
+                            <div class="col-md-11">
                                 <div class="row">
                                     <label class="control-label col-md-1">발신번호</label>
                                     <div class="col-md-5 form-inline">
@@ -396,9 +402,6 @@
                                     <div class="col-md-4">
                                         <input type="checkbox" id="add_register_info_name_chk" name="add_register_info_name_chk" class="flat" value="Y"/>
                                     </div>
-{{--                                    <div class="col-md-5">--}}
-{{--                                        <p class="form-control-static"></p>--}}
-{{--                                    </div>--}}
                                 </div>
 
                                 <div class="row mt-10">
@@ -419,18 +422,18 @@
                         </div>
 
                         <div class="form-group hide" id="limit_{{$options_keys[3]}}">
-                            <label class="control-label col-md-2">바로신청팝업</label>
+                            <label class="control-label col-md-1">바로신청팝업</label>
                             <div class="col-md-5">
                                 <input type="text" id="popup_title" name="popup_title" class="form-control" value="{{$data['PopupTitle']}}" placeholder="팝업타이틀명" title="팝업타이틀명">
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <p class="form-control-static">• 사용자단에서 노출되는 신청 팝업 타이틀명 입니다.</p>
                             </div>
                         </div>
 
                         <div class="form-group form-banner hide" id="banner_{{$options_keys[3]}}">
-                            <label class="control-label col-md-2">배너선택</label>
-                            <div class="col-md-8 item form-inline">
+                            <label class="control-label col-md-1">배너선택</label>
+                            <div class="col-md-11 item form-inline">
                                 <button type="button" id="btn_banner_search" class="btn btn-sm btn-primary">배너검색</button>
                                 <span id="selected_banner" class="pl-10">
                                     @if (empty($data['BIdx']) === false)
@@ -441,7 +444,7 @@
                                     @endif
                                 </span>
                             </div>
-                            <div class="col-md-10 col-lg-offset-2 form-inline">
+                            <div class="col-md-11 col-lg-offset-1 form-inline">
                                 <p class="form-control-static">• 사이트관리 > 배너관리 > 배너등록에서 링크방식을 '레이어팝업(이벤트 바로신청팝업)으로 등록한 배너만 노출됩니다.<br>
                                     • 배너를 선택하고 이벤트 등록한 후 해당 섹션의 배너 클릭 시 해당 이벤트의 바로신청 팝업이 자동 노출됩니다.</p>
                             </div>
@@ -529,10 +532,10 @@
                         {{-- 프로모션 추가신청정보 --}}
                         <div class="form-group hide" id="limit_{{$options_keys[5]}}">
                             <div class="row">
-                                <div class="col-md-1 item form-inline ml-10">
+                                <div class="col-md-1 item form-inline">
                                     <button type="button" class="btn btn-info btn-apply-add">추가</button>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-11">
                                     <p class="form-control-static">• 신청리스트와 별개 프로세스 (활용 예: 출석체크/선착순당첨) &nbsp;&nbsp; • 지급상품은 해당프로모션과 동일한 운영사이트상품을 지급해야합니다.</p>
                                 </div>
                             </div>
@@ -540,6 +543,15 @@
                                 <div class="form-group" style="border-bottom:none;">
                                     <div class="col-md-12 form-inline">
                                         <table class="table table-striped table-bordered" id="table_add_apply">
+                                            <colgroup>
+                                                <col style="width:13%">
+                                                <col style="">
+                                                <col style="width:15%">
+                                                <col style="width:17%">
+                                                <col style="width:17%">
+                                                <col style="width:6%">
+                                                <col style="width:3%">
+                                            </colgroup>
                                             <thead>
                                                 <tr>
                                                     <th>인원제한/인원수</th>
@@ -593,7 +605,6 @@
                                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                                                 <input type="text" class="form-control datepicker" name="event_add_apply_start_date[]" id="event_add_apply_start_date_{{$add_apply_index}}" value="{{ $row['ApplyStartDate'] }}" style="min-width: 70px; max-width: 70px;">
                                                             </div>
-                                                            <br>
                                                             <select class="form-control" name="event_add_apply_start_hour[]" id="event_add_apply_start_hour_{{$add_apply_index}}">
                                                                 @php
                                                                     $start_hour = $row['ApplyStartHour'];
@@ -620,7 +631,6 @@
                                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                                                 <input type="text" class="form-control datepicker" name="event_add_apply_end_date[]" id="event_add_apply_end_date_{{$add_apply_index}}" value="{{ $row['ApplyEndDate'] }}" style="min-width: 70px; max-width: 70px;">
                                                             </div>
-                                                            <br>
                                                             <select class="form-control" name="event_add_apply_end_hour[]" id="event_add_apply_end_hour_{{$add_apply_index}}">
                                                                 @php
                                                                     $end_hour = $row['ApplyEndHour'];
@@ -1323,7 +1333,6 @@
             add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
             add_lists += '			<input type="text" class="form-control datepicker" name="event_add_apply_start_date[]" id="event_add_apply_start_date_' + temp_apply_idx + '" value="" style="min-width: 70px; max-width: 70px;">';
             add_lists += '		</div>';
-            add_lists += '		<br>';
             add_lists += '		<select class="form-control" name="event_add_apply_start_hour[]" id="event_add_apply_start_hour_' + temp_apply_idx + '">';
             add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
             add_lists += '		</select>';
@@ -1336,7 +1345,6 @@
             add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
             add_lists += '			<input type="text" class="form-control datepicker" name="event_add_apply_end_date[]" id="event_add_apply_end_date_' + temp_apply_idx + '" value="" style="min-width: 70px; max-width: 70px;">';
             add_lists += '		</div>';
-            add_lists += '		<br>';
             add_lists += '		<select class="form-control" name="event_add_apply_end_hour[]" id="event_add_apply_end_hour_' + temp_apply_idx + '">';
             add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
             add_lists += '		</select>';

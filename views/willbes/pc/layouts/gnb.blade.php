@@ -144,8 +144,8 @@
                                                 </a>
                                             </dt>
                                             <dt>
-                                                <a href="https://blog.naver.com/willbes79" target="_blank">
-                                                    <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                                                <a href="https://cafe.naver.com/WILLBES" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_cafe.png') }}" title="카페">
                                                 </a>
                                             </dt>
                                             <dt>

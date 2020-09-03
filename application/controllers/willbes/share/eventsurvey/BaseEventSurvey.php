@@ -130,7 +130,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $arealist = $this->surveyModel->areaList($PredictIdx);
 
         $dtSet = array();
-        foreach ($arealist as $key => $val){
+        foreach ($arealist as $key => $val) {
             $Areaname = $val['Areaname'];
             $Serialname = $val['Serialname'];
             $TakeMockPart = $val['TakeMockPart'];
@@ -239,12 +239,13 @@ class BaseEventSurvey extends \app\controllers\FrontController
         // 진행중 설문
         $answer_info = $this->surveyModel->listSurveyForAnswer($SsIdx2);
         $question_info = $this->surveyModel->listSurveyForQuestion($SsIdx2);
-        list($survey_levels,$surveyStatisticsList['Now']) = $this->_mathAnswerSpreadData($question_info,$answer_info);
+        list($survey_levels, $surveyStatisticsList['Now']) = $this->_mathAnswerSpreadData($question_info, $answer_info);
 
         // 9. 직렬별 설문조사
         $series_data = $this->surveyModel->findSurveyBySeries($SsIdx2);
-        $answer_data = $this->_matchingSeriesData($answer_info,$series_data);
-        $surveyList = $this->_mathSeriesSpreadData($question_info,$answer_data);
+        $answer_data = $this->_matchingSeriesData($answer_info, $series_data);
+        $survey_series_data = $this->_mathSeriesSpreadData($question_info, $answer_data);
+        $surveyList = $this->_getGraphData($series_data,$survey_series_data,$question_info);
 
         // 10. 과목별 오답랭킹
         $wrongData = $this->surveyModel->wrongRank($PredictIdx);
@@ -583,6 +584,38 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         return $survey_data;
+    }
+
+    /**
+     * 직렬별 데이타 체크 (설문결과 없을시 빈 그래프 노출)
+     * @param $series_data
+     * @param $survey_series_data
+     * @param $question_info
+     * @return mixed
+     */
+    private function _getGraphData($series_data=[],$survey_series_data=[],$question_info=[])
+    {
+        foreach ($series_data as $series_key => $series_val){
+            foreach ($series_val as $series_k => $series_v) {
+                if (empty($survey_series_data[$series_k]) === true) { // 해당 응시직렬에 설문결과 없을시 실행
+                    foreach ($question_info as $key => $val){
+                        if($val['IsSeries'] == 'N' && in_array($series_v,$val['SeriesData'])){
+                            foreach ($val['SqJsonData'] as $item_key => $item_val){
+                                foreach ($item_val['item'] as $item){
+                                    if(in_array($val['SqType'],array('M','T'))) { // 선택형(그룹), 복수형
+                                        $survey_series_data[$series_k][$val['SqType']][$val['SqTitle']][$item_val['title']][$item] = 0;
+                                    }else{
+                                        $survey_series_data[$series_k][$val['SqType']][$val['SqTitle']][$val['SqTitle']][$item] = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $survey_series_data;
     }
 
 }

@@ -58,7 +58,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1739_01.jpg" alt="수강 신청하기" usemap="#Map1739_apply" border="0"/>
             <map name="Map1739_apply" id="Map1739_apply">
-                <area shape="rect" coords="142,224,977,322" href="https://lang.willbes.net/promotion/index/cate/3093/code/1791" target="_blank" />
+                <area shape="rect" coords="142,224,977,322" href="#apply" />
             </map>
         </div>
         

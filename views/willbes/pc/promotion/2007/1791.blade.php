@@ -58,24 +58,25 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1739_01.jpg" alt="수강 신청하기" usemap="#Map1739_apply" border="0"/>
             <map name="Map1739_apply" id="Map1739_apply">
-                <area shape="rect" coords="142,224,977,322" href="#none;" />
+                <area shape="rect" coords="142,224,977,322" href="#apply" />
             </map>
         </div>
         
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1739_02.jpg" alt="1초 비법 서민지"/>
-                <!--tab-->
-                <ul class="tabWrapEvt">
-                    <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_1off.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_1on.jpg" alt="" class="on"/></a></li>
-                    <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_2off.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_2on.jpg" alt="" class="on"/></a></li>
-                </ul>
-                <div id="tab1" class="tabcts">
-                    <iframe src="https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div id="tab2" class="tabcts">			
-                </div>
-                
-                <!--tab//--> 
+            <!--tab-->
+            <ul class="tabWrapEvt">
+                <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_1off.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_1on.jpg" alt="" class="on"/></a></li>
+                <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_2off.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2020/08/1739_tab_2on.jpg" alt="" class="on"/></a></li>
+            </ul>
+            <div id="tab1" class="tabcts">
+                <iframe src="https://www.youtube.com/embed/BT7sfyECChA?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div id="tab2" class="tabcts">		
+                <iframe src="https://www.youtube.com/embed/sYw3MWvWhwM?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <!--tab//--> 
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
@@ -97,14 +98,12 @@
             @else
             @endif 
 		</div>	
-
-
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-		var tab1_url = "https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0";
-		var tab2_url = "https://www.youtube.com/embed/7cTjv9t9I9U?rel=0";
+		var tab1_url = "https://www.youtube.com/embed/BT7sfyECChA?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/sYw3MWvWhwM?rel=0";
 
 		$(document).ready(function(){
 		$(".tabcts").hide(); 

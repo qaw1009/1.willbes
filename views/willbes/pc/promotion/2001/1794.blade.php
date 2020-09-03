@@ -17,7 +17,7 @@
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1794_top_bg.jpg) no-repeat center top;}
     .evt00 {background:#0a0a0a}
     .evt01 {background:#f1f1f1;}
-    .evt02 {background:#48575d}
+    .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09/1794_02_bg.jpg) no-repeat center top;}
     .evt03 {background:#898989}
     .evt04 {background:#202020; padding-bottom:150px}
     /* 슬라이드배너 */
@@ -72,10 +72,10 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1794_05.jpg" alt="코로나19 극복 이벤트" usemap="#Map1772" border="0">
-            <map name="Map1772">
-                <area shape="rect" coords="256,720,865,815" href="javascript:;" onclick="giveCheck()" alt="할인쿠폰 받기">
-                <area shape="rect" coords="364,1174,750,1222" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이벤트이미지받운받기">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1794_05.jpg" alt="코로나19 극복 이벤트" usemap="#Map1794" border="0">
+            <map name="Map1794">
+                <area shape="rect" coords="255,1105,864,1200" href="javascript:;" onclick="giveCheck()" alt="할인쿠폰 받기">
+                <area shape="rect" coords="363,1561,749,1609" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이벤트이미지받운받기">
             </map>
         </div> 
         

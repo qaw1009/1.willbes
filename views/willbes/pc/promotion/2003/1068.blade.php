@@ -20,7 +20,7 @@
 		/************************************************************/
 		
 		.skybanner {position:fixed;top:200px;right:50px;width:122px;z-index:10;}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/1068_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#E8E8E8 url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
 		.wb_00 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top;}
 
@@ -92,7 +92,7 @@
         </div>
 		
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
         </div>
         <!--WB_top//-->
 		
@@ -115,12 +115,12 @@
         </div>		
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/09/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
 			<map name="Map1068abc" id="Map1068abc">
-				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156691" target="_blank" />
-				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156692" target="_blank" />
-				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156702" target="_blank" />
-				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156703" target="_blank" />
+				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
+				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
+				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
+				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
 			</map>
 		</div>
 		       
@@ -146,8 +146,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2020 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
+						<td>2021 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -186,8 +186,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2020 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156362">수강신청</a></td>
+						<td>2021 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -230,8 +230,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2020 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
+						<td>2021 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -270,8 +270,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2020 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156362">수강신청</a></td>
+						<td>2021 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -331,8 +331,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2020 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156365">수강신청</a></td>
+						<td>2021 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>
@@ -357,8 +357,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2020 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
+						<td>2021 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -475,8 +475,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2020 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156365">수강신청</a></td>
+						<td>2021 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>

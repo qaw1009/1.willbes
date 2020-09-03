@@ -52,7 +52,7 @@
 <div id="Container" class="Container NSK c_both"> 
 
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_top.jpg" alt="장사원" > 
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_top.jpg" alt="장사원" > 
     </div> 
     
     <div class="evtCtnsBox evt01">
@@ -79,22 +79,22 @@
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_04.jpg" alt="패키지 수강신청" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_04.jpg" alt="패키지 수강신청" >
     </div> 
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_05.jpg" alt="농업직 이론 패키지" usemap="#Map1068m_a" border="0" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_05.jpg" alt="농업직 이론 패키지" usemap="#Map1068m_a" border="0" >
         <map name="Map1068m_a" id="Map1068m_a">
-            <area shape="rect" coords="116,586,315,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156691" />
-            <area shape="rect" coords="400,586,599,627" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156692" />
+            <area shape="rect" coords="115,562,315,603" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171517" />
+            <area shape="rect" coords="398,562,600,604" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171522" />
         </map>
     </div> 
 
     <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_06.jpg" alt="농촌지도사 이론 패키지" usemap="#Map1068m_b" border="0" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_06.jpg" alt="농촌지도사 이론 패키지" usemap="#Map1068m_b" border="0" >
         <map name="Map1068m_b" id="Map1068m_b">
-            <area shape="rect" coords="115,586,315,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156702" />
-            <area shape="rect" coords="400,586,600,626" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/156703" />
+            <area shape="rect" coords="116,562,315,603" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171775" />
+            <area shape="rect" coords="400,562,599,602" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171777" />
         </map>
     </div> 
 

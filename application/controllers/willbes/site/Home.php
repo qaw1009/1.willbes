@@ -455,6 +455,9 @@ class Home extends \app\controllers\FrontController
     private function _getSite2014Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
+        if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
+        }
         $data['arr_main_banner'] = array_merge($this->_banner($cate_code), $this->_banner('0'));
         $data['notice'] = $this->_boardNotice(4, $cate_code);
         return $data;

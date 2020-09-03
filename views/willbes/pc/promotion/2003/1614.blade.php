@@ -35,7 +35,7 @@
 
         .evt04 {background:#f3f5f7;position:relative;padding-bottom:65px;}	
         .evt04 ul {position:absolute; left:50%;top:475px;}
-        .evt04 li:nth-child(1) {margin-left:-830px;margin-top:422px;}
+        .evt04 li:nth-child(1) {margin-left:-830px;margin-top:365px;}
         .evt04 li:nth-child(2) {margin-left:-461px;margin-top:-31px;}
         .evt04 li:nth-child(3) {margin-left:-85px;margin-top:-29px;}   
         .evt04 li:nth-child(4) {margin-left:336px;margin-top:-28px;}  
@@ -44,7 +44,7 @@
 
         .evt04 .check04 {width:877px; height:112px; margin:20px auto 0;}   
         .evt04 .check_bg {background:#ccc;}  
-        .evt04 .check {width:980px; margin:0 auto;  padding:50px 0px 30px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
+        .evt04 .check {width:980px; margin:0 auto;  padding:25px 0px 25px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
         .evt04 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .evt04 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fffbfb; background:#252525; margin-left:50px; border-radius:20px}
 
@@ -169,7 +169,7 @@
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">공채 3개월</label></li>
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">특채 3개월</label></li>                
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1614_04.jpg" alt="수강신청"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1614_04.jpg" alt="수강신청"/>
             
             <div class="check_bg">
                 <div class="check" id="chkInfo">

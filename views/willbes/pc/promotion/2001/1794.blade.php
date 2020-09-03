@@ -17,7 +17,7 @@
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1794_top_bg.jpg) no-repeat center top;}
     .evt00 {background:#0a0a0a}
     .evt01 {background:#f1f1f1;}
-    .evt02 {background:#48575d}
+    .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09/1794_02_bg.jpg) no-repeat center top;}
     .evt03 {background:#898989}
     .evt04 {background:#202020; padding-bottom:150px}
     /* 슬라이드배너 */

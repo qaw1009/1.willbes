@@ -257,7 +257,7 @@
 
     // 키워드 검색
     function goSearchKeyword(keyword, value) {
-        location.href = '{{ front_url('/bookStore/index/pattern/all?search_text=') }}' + Base64.encode(keyword + ':' + value);
+        location.href = '{{ front_url('/bookStore/index/pattern/all?search_text=') }}' + encodeURIComponent(Base64.encode(keyword + ':' + value)) + '&is_def_cate=N';
     }
 </script>
 @stop

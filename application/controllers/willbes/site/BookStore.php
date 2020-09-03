@@ -54,8 +54,8 @@ class BookStore extends \app\controllers\FrontController
         // 대분류 카테고리 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
         $arr_base['category_d1'] = $this->categoryFModel->listSiteCategory($this->_site_code, 1, ['EQ' => ['IsDisp' => 'Y']]);
 
-        // 모바일 환경일 경우 카테고리 디폴트 선택
-        if ($this->_is_mobile === true && $pattern == 'all' && empty($cate_code) === true) {
+        // 모바일 환경일 경우 카테고리 디폴트 선택 (카테고리 디폴트 선택여부가 `N`이면 선택안함)
+        if ($this->_is_mobile === true && $pattern == 'all' && empty($cate_code) === true && element('is_def_cate', $arr_input) != 'N') {
             $cate_code = array_get($arr_base['category_d1'], '0.CateCode');
         }
 

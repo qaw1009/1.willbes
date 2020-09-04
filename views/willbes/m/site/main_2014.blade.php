@@ -295,7 +295,7 @@
             <a href="https://www.instagram.com/willbesnjob/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_instar.png" alt="인스타그램"></a>
             <a href="https://www.facebook.com/willbesnjob" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_fb.png" alt="페이스북"></a>
             <a href="https://tv.naver.com/willbesnjob" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_tv.png" alt="네이버TV"></a>
-            <a href="https://cafe.naver.com/willbes" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_cafe.png" alt="카페"></a>
+            <a href="http://pf.kakao.com/_tUSRK" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_kakao.png" alt="카카오톡"></a>
         </div>
 
         <div class="btnbuy NSK">

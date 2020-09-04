@@ -3418,7 +3418,7 @@ class PredictModel extends WB_Model
     }
 
     /**
-     * 과목 점수 리스트    (직렬100,200인 데이터 같은 직렬로 계산)
+     * 과목 점수 리스트 (직렬100,200인 데이터 같은 직렬로 계산, 직렬300,800인 경우 필수과목(P)으로 정의)
      * @param $PredictIdx
      * @param $TakeMockPart
      * @return mixed
@@ -3428,7 +3428,7 @@ class PredictModel extends WB_Model
         $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart";
         /*$column .= "pp.Type AS PpType";*/
         $column .= "
-            ,CASE WHEN pg.TakeMockPart = '300' THEN 'P'
+            ,CASE WHEN pg.TakeMockPart = '300' THEN 'P' WHEN pg.TakeMockPart = '800' THEN 'P'
             ELSE pp.Type
             END AS PpType
         ";

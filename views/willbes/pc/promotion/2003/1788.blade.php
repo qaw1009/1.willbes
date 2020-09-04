@@ -14,30 +14,30 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/03/1330_top_bg.jpg) no-repeat center top;}
+.evt_top {background:#F7D5D4 url(https://static.willbes.net/public/images/promotion/2020/09/1788_top_bg.jpg) no-repeat center top;}
 
 .evt01_1 {background:#fff}
-.evt01 {background:#eef1f8; padding-bottom:100px}
+.evt01 {background:#fff; padding-bottom:100px}
 .evt01 div {width:1120px; margin:0 auto; position:relative;}
 .evt01 div span {position:absolute; z-index:5}
-.evt01 div .img01 {width:441px; top:25px; left:306px;}
-.evt01 div .img02 {width:176px; top:283px; left:160px;}
-.evt01 div .img03 {width:191px; top:139px; left:795px;}
+.evt01 div .img01 {width:441px; top:38px; left:285px;}
+.evt01 div .img02 {width:176px; top:296px; left:139px;}
+.evt01 div .img03 {width:191px; top:152px; left:774px;}
 
-.evt04 {background:#2bb9a9}
+.evt04 {background:#301943}
 .evt04 .check{
-    position:absolute;width: 800px;left:50%;top:880px;margin-left:-400px;z-index:1;font-size:14px; text-align:center;line-height:1.5;
+    position:absolute;width: 800px;left:50%;top:880px;margin-left:-250px;z-index:1;font-size:14px; text-align:center;line-height:1.5;
     letter-spacing:-1px;
 }
-.evt04 .check label{color:#333}
+.evt04 .check label{color:#fff}
 .evt04 .check input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
 .evt04 .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7;border-radius:20px; margin-left:20px}
 .evt04 .check a:hover {color: #fff;background: #000;}
 
-.evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+.evtInfo {padding:80px 0; background:#fff; color:#000; font-size:16px}
 .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 .evtInfoBox li {list-style:disc; margin-left:20px; font-size:14px}
-.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+.evtInfoBox h4 {font-size:35px; margin-bottom:50px}
 .evtInfoBox .infoTit {font-size:20px;}
 .evtInfoBox ul {margin-bottom:30px}
 
@@ -65,10 +65,10 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1330_04.jpg" alt="수강신청" usemap="#Map1330b" border="0">
-            <map name="Map1330b" id="Map1330b">
-                <area shape="rect" coords="702,710,963,798" href="javascript:go_PassLecture('171515');" alt="수강신청" />
-            </map> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_03.jpg" alt="수강신청" usemap="#Map1788a" border="0">
+            <map name="Map1788a" id="Map1788a">
+                <area shape="rect" coords="719,691,911,769" href="javascript:go_PassLecture('171515');" alt="수강신청" />
+            </map>
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
@@ -96,7 +96,7 @@
 				<ul>
 					<li>본 상품 수강 시 이용 간으한 기기는 다음과 같이 제한됩니다.<br>
                     - PC 2대 or 모바일 2대 or PC 1대+모바일 1대 (총 2대)</li>  
-                    <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 최초 1회에 한해 [내강의실]-[등록기기정보]에서 직접 초기화 가능하며, 
+                    <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 최초 1회에 한해 [내강의실]-[등록기기정보]에서 직접 초기화 가능하며,<br>
                     그 외 특별한 사유에 의한 단말기 초기화의 경우, 고객센터 1544-5006이나 1:1상담게시판으로 문의바랍니다.</li>                    				
 				</ul>
                 <div class="infoTit NG"><strong>수강안내</strong></div>
@@ -107,7 +107,7 @@
 				</ul>
 				<div class="infoTit NG"><strong>결제/환불</strong></div>
 				<ul>
-					<li>결결제 후 7일 이내 전액 환불 가능합니다. 단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다. 
+					<li>결제 후 7일 이내 전액 환불 가능합니다. 단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.<br>
                     강의 자료 및 모바일 강의 다운로드 서비스를 이용 시 수강한 것으로 간주됩니다.</li>
                     <li>본 상품은 특별기획 강좌로 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 참감되고 환불해드립니다.</li>
                     <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의바랍니다.</li>                    				

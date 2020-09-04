@@ -56,7 +56,7 @@
                                 @foreach($data['kind_ccd'] as $key => $val)
                                     @if($cert_idx=='27')
                                         @if($key != '711003')
-                                        <option value="{{$key}}">{{$val}}</option>
+                                            <option value="{{$key}}">{{$val}}</option>
                                         @endif
                                     @else
                                         <option value="{{$key}}">{{$val}}</option>
@@ -121,6 +121,7 @@
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+        var take_num_check_type = 'm';     //인증번호 검승스크립트 타입 (m:직렬형태, am:지역+직렬형태)
 
         $(document).ready(function() {
             $('#TakeKind').change(function () {
@@ -165,26 +166,9 @@
 
                 var takenum = $('#TakeNo').val();
                 takenum = parseInt(takenum);
-                if($("#TakeKind").val() == '711001') {
-                    if(takenum<10001||takenum>19999) {
-                        alert('올바른 응시번호가 아닙니다.');
-                        return;
-                    }
-                } else if($("#TakeKind").val() == '711002') {
-                    if(takenum<20001||takenum>29999) {
-                        alert('올바른 응시번호가 아닙니다.');
-                        return;
-                    }
-                } else if($("#TakeKind").val() == '711005') {
-                    if(takenum<30001||takenum>39999) {
-                        alert('올바른 응시번호가 아닙니다.');
-                        return;
-                    }
-                } else {
-                    if(takenum<40001||takenum>49999) {
-                        alert('올바른 응시번호가 아닙니다.');
-                        return;
-                    }
+                if (takeNumChk($("#TakeKind").val(), $("#TakeArea").val(), takenum, take_num_check_type) != true) {
+                    alert('올바른 응시번호가 아닙니다.');
+                    return;
                 }
 
                 if ($('#attachfile').val() == '') {
@@ -215,6 +199,84 @@
             });
 
         });
+
+        // 지역+직렬 범위
+        function takeNumChk(take_mock_part, take_area, takenum, check_type) {
+            takenum = (isNaN(takenum)) ? 0 : takenum;
+            var take_mock_position = (check_type == 'm') ? take_mock_part : take_area + take_mock_part;
+            var arrItem = {
+                'm' : {
+                    '711001' : {'start': '10001', 'end': '19999'},   //일반공채(남)
+                    '711002' : {'start': '20001', 'end': '29999'},   //일반공채(여)
+                    '711005' : {'start': '30001', 'end': '39999'},   //전의경경채
+                    '711004' : {'start': '40001', 'end': '49999'},   //101단
+                    '711003' : {'start': '50001', 'end': '59999'},   //경행경채
+                },
+                'am' : {
+                    '712001711001': {'start': '10001', 'end': '16975'},
+                    '712001711002': {'start': '20001', 'end': '23855'},
+                    '712001711005': {'start': '30001', 'end': '30363'},
+                    '712001711004': {'start': '40001', 'end': '41687'},
+                    '712002711001': {'start': '10001', 'end': '12650'},
+                    '712002711002': {'start': '20001', 'end': '21234'},
+                    '712002711005': {'start': '30001', 'end': '30090'},
+                    '712003711001': {'start': '10001', 'end': '11808'},
+                    '712003711002': {'start': '20001', 'end': '20767'},
+                    '712003711005': {'start': '30001', 'end': '30075'},
+                    '712004711001': {'start': '10001', 'end': '12545'},
+                    '712004711002': {'start': '20001', 'end': '20944'},
+                    '712004711005': {'start': '30001', 'end': '30048'},
+                    '712005711001': {'start': '10001', 'end': '11234'},
+                    '712005711002': {'start': '20001', 'end': '20507'},
+                    '712005711005': {'start': '30001', 'end': '30069'},
+                    '712006711001': {'start': '10001', 'end': '10945'},
+                    '712006711002': {'start': '20001', 'end': '20476'},
+                    '712006711005': {'start': '30001', 'end': '30052'},
+                    '712007711001': {'start': '10001', 'end': '10692'},
+                    '712007711002': {'start': '20001', 'end': '20283'},
+                    '712007711005': {'start': '30001', 'end': '30068'},
+                    '712008711001': {'start': '10001', 'end': '14346'},
+                    '712008711002': {'start': '20001', 'end': '21578'},
+                    '712008711005': {'start': '30001', 'end': '30257'},
+                    '712009711001': {'start': '10001', 'end': '12458'},
+                    '712009711002': {'start': '20001', 'end': '20872'},
+                    '712009711005': {'start': '30001', 'end': '30155'},
+                    '712010711001': {'start': '10001', 'end': '11757'},
+                    '712010711002': {'start': '20001', 'end': '20812'},
+                    '712010711005': {'start': '30001', 'end': '30064'},
+                    '712011711001': {'start': '10001', 'end': '10741'},
+                    '712011711002': {'start': '20001', 'end': '20329'},
+                    '712011711005': {'start': '30001', 'end': '30084'},
+                    '712012711001': {'start': '10001', 'end': '11726'},
+                    '712012711002': {'start': '20001', 'end': '20761'},
+                    '712012711005': {'start': '30001', 'end': '30150'},
+                    '712013711001': {'start': '10001', 'end': '10739'},
+                    '712013711002': {'start': '20001', 'end': '20334'},
+                    '712013711005': {'start': '30001', 'end': '30048'},
+                    '712014711001': {'start': '10001', 'end': '10556'},
+                    '712014711002': {'start': '20001', 'end': '20346'},
+                    '712014711005': {'start': '30001', 'end': '30048'},
+                    '712015711001': {'start': '10001', 'end': '11066'},
+                    '712015711002': {'start': '20001', 'end': '20470'},
+                    '712015711005': {'start': '30001', 'end': '30037'},
+                    '712016711001': {'start': '10001', 'end': '11530'},
+                    '712016711002': {'start': '20001', 'end': '20611'},
+                    '712016711005': {'start': '30001', 'end': '30130'},
+                    '712017711001': {'start': '10001', 'end': '10429'},
+                    '712017711002': {'start': '20001', 'end': '20183'},
+                    '712017711005': {'start': '30001', 'end': '30080'}
+                }
+            };
+
+            if (typeof arrItem[check_type][take_mock_position] !== 'undefined') {
+                if (takenum < arrItem[check_type][take_mock_position]['start'] || takenum > arrItem[check_type][take_mock_position]['end']) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            return true;
+        }
     </script>
 
 @stop

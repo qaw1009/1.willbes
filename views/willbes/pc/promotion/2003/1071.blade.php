@@ -21,6 +21,8 @@
 
         .skybanner {position:fixed;top:100px;right:100px;width:122px;z-index:10;}
 
+        .wb_top_gif {background:#221823;}
+
         /*타이머*/
         .time {width:100%; text-align:center; background:#000}
         .time {text-align:center; padding:20px 0}
@@ -33,7 +35,7 @@
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         .time p {text-align:center}
 
-        .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_bg.jpg) no-repeat center top;position:relative;}
+        .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2020/09/1071_top_bg.jpg) no-repeat center top;position:relative;}
 
         
         /* 탭 */
@@ -122,35 +124,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="" style="padding-top:15px;">
             </a>
             
-        </div>         
+        </div>  
+
+        <div class="evtCtnsBox wb_top_gif" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_graph.gif" alt="역대급 성적향상"  />
+        </div>       
         
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1071_top.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수" usemap="#Map1071pass" border="0"  >
-            <map name="Map1071pass" id="Map1071pass">
-                <area shape="rect" coords="980,93,1107,297" href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank" onfocus='this.blur()' />
-            </map>
-            <div class="tabContaier">
-                <ul class="youtubeTab">
-                    <li>
-                        <a class="active" href="#ytb01">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap01off.jpg"  class="off" alt="통신직 off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap01on.jpg" class="on" alt="통신직 on" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ytb02">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap02off.jpg"  class="off" alt="전기직 off"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap02on.jpg"  class="on" alt="전기직 on"/>
-                        </a>
-                    </li>       
-                </ul>
-
-                <div class="tabContentsEvt" id="ytb01">
-                    <iframe width="876px" height="480px" src="https://www.youtube.com/embed/rPN9bxcaiLU" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="tabContentsEvt" id="ytb02">                 
-                </div>        
-            </div><!--tabContaier//-->
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_top.jpg" alt="" >
         </div>       
 
         <div class="evtCtnsBox wb_cts01_1">
@@ -162,11 +143,11 @@
         </div>    
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
             <map name="Map1071C" id="Map1071C">
-                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/155797" target="_blank" alt="통신기술직" onfocus="this.blur();"/>
-                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/155798" target="_blank" alt="전송기술직" onfocus="this.blur();"/>
-                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155799" target="_blank" alt="전기직" onfocus="this.blur();" />                
+                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직" onfocus="this.blur();"/>
+                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직" onfocus="this.blur();"/>
+                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직" onfocus="this.blur();" />                
                 <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="문풀패키지" />
                 <area shape="rect" coords="711,1447,919,1490" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="기출문풀패키지" />
             </map>

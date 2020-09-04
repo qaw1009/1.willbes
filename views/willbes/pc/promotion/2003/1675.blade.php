@@ -4,10 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -19,9 +16,8 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-
-        .sky2 {position:fixed;top:150px;right:10px;z-index:1;}
-        .sky {position:fixed;top:325px;right:10px;z-index:1;}
+        .sky {position:fixed;top:225px;right:0;z-index:1;}
+        .sky a {display:block; margin-bottom:10px}
 
         /* 탭 */
         .tabContaier{width:1120px; margin:0 auto}
@@ -34,9 +30,6 @@
         .tabContaier a.active {background:#5FC5DC; border:1px solid #5FC5DC; color:#fff;}
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
-
-
-        .evttop_banner {background:#FDEADB;}
 
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1675_top_bg.jpg) no-repeat center top; }
 
@@ -76,15 +69,11 @@
         	
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">  
-
-        <div class="sky2">
+    <div class="p_re evtContent NGR" id="evtContainer"> 
+        <div class="sky">
             <a href="#evt4">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_sky2.png" title="한덕현 티패스">
-            </a>           
-        </div>
-
-        <div class="sky">
+            </a> 
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_sky.png" usemap="#Map1675sky" title="아침 똑똑 영어 스카이 베너" border="0" >
             <map name="Map1675sky" id="Map1675sky">
                 <area shape="rect" coords="3,114,154,190" href="#youtube_watch" />
@@ -92,17 +81,7 @@
                 <area shape="rect" coords="5,280,151,352" href="#evt1" />
                 <area shape="rect" coords="5,360,149,438" href="#evt3" />
             </map>          
-        </div>
-
-        {{--     
-        <div class="evtCtnsBox evttop_banner" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
-            <map name="Map1588banner" id="Map1588banner">
-                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
-                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/MockExam/" onfocus='this.blur()' target="_blank" />
-            </map>             
-        </div>
-        --}}               
+        </div>          
 
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
@@ -178,18 +157,6 @@
             </map>
         </div>
 
-        {{--
-        <div class="evtCtnsBox evt03c">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1588_03s.jpg" usemap="#Map1588c" title="반반한 소문내기" border="0" id="evt2">
-            <map name="Map1588c" id="Map1588c">
-                <area shape="rect" coords="181,839,363,926" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="392,837,556,926" href="http://cafe.daum.net/9glade" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="587,834,754,927" href="https://cafe.naver.com/gugrade" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="781,832,951,929" href="https://cafe.naver.com/willbes" target="_blank" onfocus='this.blur()' />
-            </map>
-        </div>
-        --}}
-
         <div class="evtCtnsBox evt03ss">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
             <map name="evt3Map" id="evt3Map">
@@ -221,13 +188,6 @@
                 <area shape="rect" coords="90,10,549,110" href="#pairing" />
                 <area shape="rect" coords="568,12,1027,110" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus="this.blur()" />
             </map>
-            {{--
-            <map name="Map1588e" id="Map1588e">
-                <area shape="rect" coords="123,27,396,126" href="#pairing" onfocus='this.blur()' />
-                <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" onfocus='this.blur()' />
-                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" onfocus='this.blur()' />
-            </map>
-            --}}
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
@@ -296,9 +256,8 @@
                         <span class="big">윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</span>
                     </li>       
                     <li>                    
-                        <span class="big">더켠의 아침 똑똑 영어 과정 진행 안내 (온라인 모의고사는 반반한 밤과 동일한 모의고사로 통합하여 진행됩니다.)</span><br>
-						&nbsp;- 매주 월~금 오전 7시30분~8시 : 더켠의 아침 똑똑 영어 정규 방송<br>    
-						&nbsp;- 매월 짝수 주 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>     
+                        <span class="big">더켠의 아침 똑똑 영어 과정 진행 안내</span><br>
+						&nbsp;- 매주 월~금 오전 7시30분~8시 : 더켠의 아침 똑똑 영어 정규 방송 
 					</li>    
                     <li>                    
                         <span class="big">본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>단, 정규방송과의 형평성을 고려하여 방송 후 일주일 뒤 동영상
@@ -307,7 +266,7 @@
                     <li>                    
                         <span class="big">강의 자료 제공 일정 안내</span><br>
                         &nbsp;- 방송 전일 오후 12시~오전 8시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
-						&nbsp;- 방송 당일 오전 8시~오후 12시 : 문제+해설자료<br>
+						&nbsp;- 방송 당일 오전 8시~오전 10시 : 문제+해설자료<br>
 					</li>     
                     <li>                   
                         <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br>

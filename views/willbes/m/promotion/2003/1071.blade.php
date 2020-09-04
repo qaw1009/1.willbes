@@ -26,9 +26,13 @@
     }
 </style>
 
-<div id="Container" class="Container NSK c_both">      
+<div id="Container" class="Container NSK c_both">   
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1071m_01.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_graph.gif" alt="" >
+    </div> 
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_top.jpg" alt="" >
     </div> 
 
     <div class="evtCtnsBox">
@@ -38,9 +42,9 @@
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1071m_03.jpg" alt="" usemap="#Map1071A" border="0" >
         <map name="Map1071A">
-            <area shape="rect" coords="48,431,665,538" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/155797" target="_blank" alt="통신기술직">
-            <area shape="rect" coords="46,561,665,666" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/155798" target="_blank" alt="전송기술직">
-            <area shape="rect" coords="55,689,664,804" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/155799" target="_blank" alt="전기직">
+            <area shape="rect" coords="48,431,665,538" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직">
+            <area shape="rect" coords="46,561,665,666" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직">
+            <area shape="rect" coords="55,689,664,804" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직">
             <area shape="rect" coords="60,988,652,1106" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
             <area shape="rect" coords="69,1152,651,1263" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="전기직">
             <area shape="rect" coords="37,1375,693,1493" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" alt="단가 수강신청">

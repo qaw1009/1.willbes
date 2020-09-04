@@ -524,7 +524,7 @@ class PredictFModel extends WB_Model
                 }
             }
 
-            $final_point = round(((($total_subject_p + $total_subject_s) / 5) / 2), 2) + (element('strength_point', $input, '0') / 2) + element('add_point', $input);
+            $final_point = round(((($total_subject_p + $total_subject_s) / 5) / 2), 2) + ((empty(element('strength_point', $input)) === true) ? '0' : element('strength_point', $input) / 2) + ((empty(element('add_point', $input)) === true ? '0' : element('add_point', $input)));
             if ($this->_conn->set(['FinalPoint' => $final_point])->where('PfIdx', $pf_idx)->update('lms_predict_final') === false) {
                 throw new \Exception('최종 환산점수 등록에 실패했습니다.');
             }

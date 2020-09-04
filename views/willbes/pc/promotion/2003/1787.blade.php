@@ -80,11 +80,9 @@
                 <area shape="rect" coords="104,577,329,627" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" target="_blank" />
               <area shape="rect" coords="281,996,838,1094" href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" alt="농업직패키지">
             </map>
-            {{--
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/chEceiSyKOg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}
         </div>
 
         <div class="evtCtnsBox evt03">

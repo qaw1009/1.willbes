@@ -72,14 +72,11 @@
         <div class="skybanner">
             <ul>          
                 <li>          
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky.png" usemap="#Map1721sky"  title="기미진 기특한 국어" border="0" />
-                    <map name="Map1721sky" id="Map1721sky">
-                        <area shape="rect" coords="6,115,110,247" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168787" target="_blank" />
-                        <area shape="rect" coords="8,269,109,398" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168781" target="_blank" />
-                        <area shape="rect" coords="9,417,110,553" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/168770" target="_blank" />
-                    </map>
+                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1721_sky.png" title="10월 개강"/>
+                    </a>
                 </li>
-                <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky2.png"  title="최우영 티패스" /></a></li>
+                <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky2.png" title="최우영 티패스" /></a></li>
             </ul>
         </div> 
 

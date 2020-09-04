@@ -1514,7 +1514,6 @@ class BasePassPredict extends \app\controllers\FrontController
     public function storeFinalPoint()
     {
         $mock_part = element('mock_part', $this->_reqP(null));
-
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'predict', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
@@ -1539,7 +1538,7 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         //응시직렬에 따른 선택과목 유효성검사 [특정직렬 제외]
-        if ($mock_part != $this->predictFModel->_mock_part_exception_ccd) {
+        if (empty($this->predictFModel->_mock_part_exception_ccd[$mock_part]) === true) {
             if (empty($this->_reqP('subject_s')[$mock_part]) === true) {
                 $rules = array_merge($rules, [
                     ['field' => 'subject_s', 'label' => '선택과목', 'rules' => 'trim|required']
@@ -1569,7 +1568,7 @@ class BasePassPredict extends \app\controllers\FrontController
                     }
 
                     //소수점체크 [전의경경채 제외]
-                    if (($mock_part != $this->predictFModel->_mock_part_exception_ccd && empty($arr_point[1]) === true) || strlen($arr_point[1]) != 2) {
+                    if ((empty($this->predictFModel->_mock_part_exception_ccd[$mock_part]) === true && empty($arr_point[1]) === true) || strlen($arr_point[1]) != 2) {
                         $rules = array_merge($rules, [
                             ['field' => 'point', 'label' => '선택과목 소수점(2자리)', 'rules' => 'trim|required|decimal']
                         ]);

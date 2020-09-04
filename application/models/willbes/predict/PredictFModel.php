@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PredictFModel extends WB_Model
 {
-    public $_mock_part_exception_ccd = '300';    //예외처리코드
+    /*public $_mock_part_exception_ccd = '300';    //예외처리코드*/
+    public $_mock_part_exception_ccd = [
+        '300' => '300'
+        ,'800' => '800'
+    ];
     public function __construct()
     {
         parent::__construct('lms');
@@ -502,7 +506,7 @@ class PredictFModel extends WB_Model
                 $total_subject_p += element('subject_p', $input)[$val];
             }
 
-            if ($mock_part != $this->_mock_part_exception_ccd) {
+            if (empty($this->_mock_part_exception_ccd[$mock_part]) === true) {
                 if (empty(element('subject_s', $input)[$mock_part]) === true) {
                     throw new \Exception('선택 과목이 없습니다.');
                 }

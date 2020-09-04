@@ -52,9 +52,9 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_02.jpg" alt="수강신청" usemap="#Map1788a" border="0">
-            <map name="Map1788a" id="Map1788a">
-                <area shape="rect" coords="719,691,911,769" href="javascript:go_PassLecture('171516');" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_02.jpg" alt="수강신청" usemap="#Map1792a" border="0">
+            <map name="Map1792a" id="Map1788a">
+                <area shape="rect" coords="740,801,982,898" href="javascript:go_PassLecture('171516');" alt="수강신청" />
             </map>
             <div class="check">
                 <label>

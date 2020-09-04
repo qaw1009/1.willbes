@@ -178,8 +178,8 @@
                                                 </a>
                                             </dt>
                                             <dt>
-                                                <a href="https://cafe.naver.com/willbes" target="_blank">
-                                                    <img src="{{ img_url('gnb/icon_cafe.png') }}" title="네이버카페">
+                                                <a href="http://pf.kakao.com/_tUSRK" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
                                                 </a>
                                             </dt>
                                             @endif

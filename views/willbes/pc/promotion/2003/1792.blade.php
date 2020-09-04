@@ -14,25 +14,19 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.evt_top {background:#F7D5D4 url(https://static.willbes.net/public/images/promotion/2020/09/1788_top_bg.jpg) no-repeat center top;}
+.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1792_top_bg.jpg) no-repeat center top;}
 
-.evt01_1 {background:#fff}
-.evt01 {background:#fff; padding-bottom:100px}
-.evt01 div {width:1120px; margin:0 auto; position:relative;}
-.evt01 div span {position:absolute; z-index:5}
-.evt01 div .img01 {width:441px; top:38px; left:285px;}
-.evt01 div .img02 {width:176px; top:296px; left:139px;}
-.evt01 div .img03 {width:191px; top:152px; left:774px;}
+.evt01 {background:#fff;}
 
-.evt04 {background:#301943}
-.evt04 .check{
-    position:absolute;width: 800px;left:50%;top:880px;margin-left:-250px;z-index:1;font-size:14px; text-align:center;line-height:1.5;
+.evt02 {background:#363636}
+.evt02 .check{
+    position:absolute;width:800px;left:50%;top:1000px;margin-left:-250px;z-index:1;font-size:14px; text-align:center;line-height:1.5;
     letter-spacing:-1px;
 }
-.evt04 .check label{color:#fff}
-.evt04 .check input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
-.evt04 .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7;border-radius:20px; margin-left:20px}
-.evt04 .check a:hover {color: #fff;background: #000;}
+.evt02 .check label{color:#fff}
+.evt02 .check input {border:2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
+.evt02 .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7;border-radius:20px; margin-left:20px}
+.evt02 .check a:hover {color: #fff;background:#f58f40;}
 
 .evtInfo {padding:80px 0; background:#fff; color:#000; font-size:16px}
 .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -46,28 +40,21 @@
 
     <div class="evtContent NGR" id="evtContainer"> 
         <div class="evtCtnsBox evt_top">  
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_top.gif" alt="조민주 한국사">  
-        </div>
-
-        <div class="evtCtnsBox evt01_1"> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_QandA.jpg" alt="한국사 정복">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_top.jpg" alt="조민주 한국사">  
         </div>
 
         <div class="evtCtnsBox evt01">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_01.jpg" alt="한국사 정복">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_01.jpg" alt="한국사 정복">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_02.jpg" alt="모니터">
-                <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/09/1788_02_1.gif" alt="강의1"></span>
-                <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/09/1788_02_2.gif" alt="강의2"></span>
-                <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/09/1788_02_3.gif" alt="강의3"></span>
+                <iframe width="720" height="405" src="https://www.youtube.com/embed/8qeIZoyNyDo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
             </div>
-            <iframe width="853" height="480" src="https://www.youtube.com/embed/aj_BQRFRe4M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_01_01.jpg" alt="한국사 정복">
         </div>
 
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_03.jpg" alt="수강신청" usemap="#Map1788a" border="0">
-            <map name="Map1788a" id="Map1788a">
-                <area shape="rect" coords="719,691,911,769" href="javascript:go_PassLecture('171515');" alt="수강신청" />
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1792_02.jpg" alt="수강신청" usemap="#Map1792a" border="0">
+            <map name="Map1792a" id="Map1788a">
+                <area shape="rect" coords="740,801,982,898" href="javascript:go_PassLecture('171516');" alt="수강신청" />
             </map>
             <div class="check">
                 <label>
@@ -83,7 +70,7 @@
 				<h4 class="NGEB">이용안내 및 유의사항</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-					<li>조민주 교수의 2020~2021년 대비 신규 개강 커리큘럼을 수강할 수 있는 상품입니다.</li>
+					<li>이석준 교수의 2020~2021년 대비 신규 개강 커리큘럼을 수강할 수 있는 상품입니다.</li>
                     <li>본 상품의 수강기간은 수강신청 상세 안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강 일정 및 교수님 사정에 따라 커리큘럼의 변동이 있을 수 있습니다.</li>
                     <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>                     

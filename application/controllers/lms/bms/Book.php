@@ -21,16 +21,10 @@ class Book extends \app\controllers\BaseController
      */
     public function index()
     {
-        $category_data = $this->categoryModel->getCategoryArray();
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+        $arr_category = $this->categoryModel->getCategoryRouteArray();
 
         $this->load->view('bms/book/index', [
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
+            'arr_category' => $arr_category,
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_professor' => $this->professorModel->getProfessorArray(),
             'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
@@ -47,7 +41,6 @@ class Book extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'P.SiteCode' => $this->_reqP('search_site_code'),
-                'BC.CateCode' => $this->_reqP('search_md_cate_code'),
                 'P.IsUse' => $this->_reqP('search_is_use'),
                 'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
@@ -56,7 +49,7 @@ class Book extends \app\controllers\BaseController
                 'B.DispTypeCcd' =>$this->_reqP('search_disp_type_ccd'),
             ],
             'LKR' => [
-                'BC.CateCode' => $this->_reqP('search_lg_cate_code'),
+                'BC.CateCode' => $this->_reqP('search_cate_code'),
             ],
             'LKB' => [
                 'BPS.SubjectIdxs' => $this->_reqP('search_subject_idx'),

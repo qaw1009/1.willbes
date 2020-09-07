@@ -17,16 +17,10 @@
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
-                            <option value="">대분류</option>
-                            @foreach($arr_lg_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
-                            <option value="">중분류</option>
-                            @foreach($arr_md_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                            <option value="">카테고리</option>
+                            @foreach($arr_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
@@ -171,8 +165,7 @@
 
             // 캠퍼스, 카테고리 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
-            $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
+            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

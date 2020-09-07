@@ -11,16 +11,10 @@
                     <label class="control-label col-md-1">기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
-                            <option value="">대분류</option>
-                            @foreach($arr_lg_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
-                            <option value="">중분류</option>
-                            @foreach($arr_md_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                            <option value="">카테고리</option>
+                            @foreach($arr_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
@@ -80,8 +74,7 @@
 
         $(document).ready(function() {
             // 카테고리, 과정 자동 변경
-            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
-            $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
+            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회

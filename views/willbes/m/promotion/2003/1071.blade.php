@@ -32,7 +32,12 @@
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_top.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_top.jpg" alt="" usemap="#Map1071m_youtube" border="0" >
+        <map name="Map1071m_youtube" id="Map1071m_youtube">
+            <area shape="rect" coords="24,571,240,694" href="https://youtu.be/FYzC6MElEzw?rel=0 " target="_blank">
+            <area shape="rect" coords="250,571,465,693" href="https://youtu.be/9dxrpJ6TOZg?rel=0 " target="_blank">
+            <area shape="rect" coords="477,570,693,694" href="https://youtu.be/_RDnE7u4k8U?rel=0 " target="_blank">
+        </map>
     </div> 
 
     <div class="evtCtnsBox">
@@ -40,14 +45,14 @@
     </div> 
     
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1071m_03.jpg" alt="" usemap="#Map1071A" border="0" >
-        <map name="Map1071A">
-            <area shape="rect" coords="48,431,665,538" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직">
-            <area shape="rect" coords="46,561,665,666" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직">
-            <area shape="rect" coords="55,689,664,804" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직">
-            <area shape="rect" coords="60,988,652,1106" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
-            <area shape="rect" coords="69,1152,651,1263" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="전기직">
-            <area shape="rect" coords="37,1375,693,1493" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" alt="단가 수강신청">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_03.jpg" alt="" usemap="#Map1071m_apply" border="0" >
+        <map name="Map1071m_apply" id="Map1071m_apply">
+            <area shape="rect" coords="512,553,640,602" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직">
+            <area shape="rect" coords="512,653,640,702" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직">
+            <area shape="rect" coords="512,753,642,802" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직">
+            <area shape="rect" coords="513,953,641,1002" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
+            <area shape="rect" coords="512,1083,640,1133" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158349" target="_blank" alt="전기직">
+            <area shape="rect" coords="512,1262,641,1310" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" alt="단가 수강신청">
         </map>
     </div>  
 </div>

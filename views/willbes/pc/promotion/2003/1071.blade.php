@@ -37,6 +37,13 @@
 
         .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2020/09/1071_top_bg.jpg) no-repeat center top;position:relative;}
 
+        .pass_package {position:absolute;left:50%;margin-left:-525px;top:100px;}
+
+        .YouTube {width:920px; margin:0 auto; text-align:center;position:absolute;left:50%;margin-left:-460px;bottom:-65px;}
+        .YouTube li {display:inline; float:left; width:33.3333%;padding-bottom:130px;}
+        .YouTube li span {margin-top:20px; font-size:15px !important; font-weight:500 !important; color:#fff; letter-spacing:-1px;}
+        .YouTube .text{position:absolute;left:50%;top:115px;}
+        .YouTube:after {content:""; display:block; clear:both}
         
         /* 탭 */
         .tabContaier{padding-top:20px; padding-bottom:120px; position:absolute;left:515px;top:730px; z-index:10}
@@ -105,11 +112,13 @@
         input[id="cb1"]:checked + label {background-color: red;}
 
         .wb_tip{background:#fff; padding:100px 0;}
+        
+
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0" style="padding-left:50px;>
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0" style="padding-left:50px";>
                 <map name="Map1071A" id="Map1071A" >
                     <area shape="rect" coords="5,137,116,189" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="1" />
                     <area shape="rect" coords="5,196,116,258" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="2"/>
@@ -118,20 +127,46 @@
                     <area shape="rect" coords="5,390,116,457" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="5"/>
                     <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
-            </div>
-           
+            </div>           
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728#apply" target="_blank" >
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="" style="padding-top:15px;">
-            </a>
-            
+            </a>            
         </div>  
 
-        <div class="evtCtnsBox wb_top_gif" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_graph.gif" alt="역대급 성적향상"  />
+        <div class="evtCtnsBox wb_top_gif" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_graph.gif" alt="역대급 성적향상"  />        
         </div>       
         
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_top.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_top.jpg" alt="통신/전기 최우영" >
+            <div class="pass_package">
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_sky.png" alt="합격패키지" >
+                </a>
+            </div>
+            <ul class="YouTube">
+                <li>
+                    <a href="https://youtu.be/FYzC6MElEzw?rel=0 " target="_blank">
+                        <span>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview1.png" alt="전기전자 참쉽죠?">
+                        </span>
+                    </a>    
+                </li>
+                <li>
+                    <a href="https://youtu.be/9dxrpJ6TOZg?rel=0 " target="_blank">
+                        <span>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview2.png" alt="변조이론">
+                        </span>
+                    </a>    
+                </li>
+                <li>
+                    <a href="https://youtu.be/_RDnE7u4k8U?rel=0 " target="_blank">
+                        <span>
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview3.png" alt="직렬별 출제">
+                        </span>
+                    </a>    
+                </li>   
+            </ul>  
         </div>       
 
         <div class="evtCtnsBox wb_cts01_1">

@@ -102,6 +102,7 @@
 
         {{--무료 강좌발급--}}
         function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             var _url = '{!! front_url('/event/registerStore') !!}?comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&event_code={{$data["ElIdx"]}}';
 
             ajaxSubmit($regi_form, _url, function(ret) {

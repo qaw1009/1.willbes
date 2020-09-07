@@ -41,7 +41,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289643&s_campus=605001" target="_blank">
+            <a href="#play">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_sky.png" alt="공개무료특강" />
             </a>
         </div> 

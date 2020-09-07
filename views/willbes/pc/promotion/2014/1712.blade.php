@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -360,8 +356,8 @@
                         <li>33강. 인스타마켓 제대로 벤치마킹 하는 법</li>
                         <li>34강. 컨셉별 인스타마켓 성공사례 분석 (1)</li>
                         <li>35강. 컨셉별 인스타마켓 성공사례 분석 (2)</li>
-                        <li>36강. 셀러 초대강의2: 마켓하기 전 준비해야 할 것들</li>
-                        <li>37강. 초보셀러 초대강의1: 컨셉과 카테고리를 어떻게 정하나요?</li>
+                        <li>36강. 초보셀러 초대강의1: 마켓하기 전 준비해야 할 것들</li>
+                        <li>37강. 초보셀러 초대강의2: 컨셉과 카테고리를 어떻게 정하나요?</li>
                         <li>38강. 초보셀러 초대강의3: 제품 소싱, 이렇게 하면 해결된다</li>
                         <li>39강. 초보셀러 초대강의4: 제품판매, 이렇게 하면 팔린다</li>
                         <li>40강. 초보셀러 초대강의5: 공구진행시 초보셀러가 흔히 할 수 있는 실수</li>

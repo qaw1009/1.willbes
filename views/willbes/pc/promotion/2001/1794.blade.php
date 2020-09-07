@@ -33,6 +33,17 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+
+        <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}" readonly="readonly"/>
+        <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+        <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11" readonly="readonly">
+        <input type="hidden" name="register_type" value="promotion" readonly="readonly"/>
+
+        @foreach($arr_base['register_list'] as $key => $val)
+            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                <input type="hidden" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" readonly="readonly"/>
+            @endif
+        @endforeach
     </form>
 
     <div class="evtContent NGR" id="evtContainer">  
@@ -74,7 +85,7 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1794_05.jpg" alt="코로나19 극복 이벤트" usemap="#Map1794" border="0">
             <map name="Map1794">
-                <area shape="rect" coords="255,1105,864,1200" href="javascript:;" onclick="giveCheck()" alt="할인쿠폰 받기">
+                <area shape="rect" coords="255,1105,864,1200" href="javascript:fn_submit();" alt="할인쿠폰 받기">
                 <area shape="rect" coords="363,1561,749,1609" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이벤트이미지받운받기">
             </map>
         </div> 
@@ -89,31 +100,17 @@
     <script type="text/javascript">
         $regi_form = $('#regi_form');
 
-        {{--쿠폰발급--}}
-        function giveCheck() {
+        {{--무료 강좌발급--}}
+        function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
+            var _url = '{!! front_url('/event/registerStore') !!}?comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&event_code={{$data["ElIdx"]}}';
 
-            //다건 쿠폰 중복 발급 체크
-            //arr_give_idx_chk: 콤마(,)를 붙여서 생성
-            var arr_give_idx_chk = '';
-            var give_overlap_chk = '';
-            @if(empty($arr_promotion_params['give_type']) === false && $arr_promotion_params['give_type'] == 'coupons')
-                arr_give_idx_chk = '&arr_give_idx_chk={{$arr_promotion_params['give_idx1']}},{{$arr_promotion_params['give_idx2']}}';
-            @endif
-            @if(empty($arr_promotion_params['give_overlap_chk']) === false)
-                give_overlap_chk = '&give_overlap_chk={{$arr_promotion_params['give_overlap_chk']}}';
-            @endif
-
-
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}'+arr_give_idx_chk;
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert('강좌가 지급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    location.reload();
                 }
             }, showValidateError, null, false, 'alert');
-            @endif
         }
 
         $(document).ready(function() {

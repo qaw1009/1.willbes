@@ -23,7 +23,7 @@
             <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" for="SiteCode">운영사이트 <span class="required">*</span></label>
                 <div class="col-md-4">
-                    {!! html_site_select($data['SiteCode'], 'SiteCode', 'SiteCode', '', '운영 사이트', 'required', $disabled, true) !!}
+                    {!! html_site_select($data['SiteCode'], 'SiteCode', 'SiteCode', '', '운영 사이트', 'required', $disabled, true, $arr_site_code) !!}
                 </div>
                 <label class="control-label col-md-2" for="CateCode">카테고리</label>
                 <div class="col-md-4">

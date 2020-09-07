@@ -60,7 +60,7 @@
 
         <div class="evtCtnsBox wb_cts03" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_03.jpg" alt="시작부터 끝까지"><Br> 
-            <ul class="tabMenu">
+            <ul class="tabMenu" id="play">
                 <li>
                     <a href="#tab1" class="active">
                         <span>소방 합격 전문가</span>

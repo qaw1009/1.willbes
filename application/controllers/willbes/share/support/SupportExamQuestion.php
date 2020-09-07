@@ -29,18 +29,18 @@ class SupportExamQuestion extends BaseSupport
         $get_params = http_build_query($arr_input);
 
         $s_keyword = element('s_keyword',$arr_input);
-        //$s_area = element('s_area',$arr_input);
+        $s_area = element('s_area',$arr_input);
         $s_year = element('s_year',$arr_input);
         $s_subject = element('s_subject',$arr_input);
         $view_type = element('view_type',$arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
         $get_page_params .= '&view_type='.$view_type;
-        //$get_page_params .= '&s_area='.$s_area;
+        $get_page_params .= '&s_area='.$s_area;
         $get_page_params .= '&s_year='.$s_year;
         $get_page_params .= '&s_subject='.$s_subject;
 
         //지역
-        //$arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_area']);
+        $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_area']);
 
         //과목
         $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
@@ -50,7 +50,7 @@ class SupportExamQuestion extends BaseSupport
             'EQ' => [
                 /*'b.SiteCode' => $this->_site_code,*/
                 'b.BmIdx' => $this->_bm_idx,
-                /* 'AreaCcd' => $s_area, */
+                'AreaCcd' => $s_area,
                 'ExamProblemYear' => $s_year,
                 'SubjectIdx' => $s_subject,
                 'b.IsUse' => 'Y'

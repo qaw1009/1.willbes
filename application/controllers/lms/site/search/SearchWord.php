@@ -13,6 +13,7 @@ class SearchWord extends \app\controllers\BaseController
 
     public function index()
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
         $arr_category = $this->categoryModel->getCategoryArray('','','',1);
         $arr_m_category = $this->categoryModel->getCategoryArray('','','',2);
 
@@ -22,6 +23,7 @@ class SearchWord extends \app\controllers\BaseController
             'arr_category' => $arr_category,
             'arr_m_category' => $arr_m_category,
             'arr_input' => $arr_input,
+            'arr_site_code' =>$arr_site_code
         ]);
     }
 
@@ -76,6 +78,7 @@ class SearchWord extends \app\controllers\BaseController
         $SwIdx = null;
         $data = null;
 
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
         $arr_category = $this->categoryModel->getCategoryRouteArray();
 
         if(empty($params[0]) === false) {
@@ -97,6 +100,7 @@ class SearchWord extends \app\controllers\BaseController
             'arr_category' => $arr_category,
             'SwIdx' => $SwIdx,
             'data' => $data,
+            'arr_site_code' =>$arr_site_code
         ]);
     }
 
@@ -170,17 +174,20 @@ class SearchWord extends \app\controllers\BaseController
      * 검색어 캐쉬 저장
      * @param $is_success
      */
-    private function _saveSearchWordCache($is_success, $skey = '')
+    private function _saveSearchWordCache($is_success, $skey = '', $type = '')
     {
         if ($is_success === true) {
 
             $this->load->driver('caching');
 
-            //설정 검색어 캐쉬 저장
-            $this->caching->search_word_setup->save($skey);
-
-            //자동 완성 캐쉬 저장
-            $this->caching->search_word_auto->saveToAdapter('file', $skey);
+            if($type === '' || $type === 'Setup') {
+                //설정 검색어 캐쉬 저장
+                $this->caching->search_word_setup->save($skey);
+            }
+            if($type === '' || $type === 'Auto') {
+                //자동 완성 캐쉬 저장
+                $this->caching->search_word_auto->saveToAdapter('file', $skey);
+            }
         }
     }
 
@@ -221,5 +228,111 @@ class SearchWord extends \app\controllers\BaseController
         $setup = $this->caching->search_word_setup->get($site_code,false);
         $auto = $this->caching->search_word_auto->getToAdapter('file',$site_code);
         dd(['설정검색어'=>$setup, '자동완성'=>$auto]);
+    }
+
+    /**
+     * 자동완성 단어 예외 처리
+     * @param array $params
+     */
+    public function createExcept($params=[])
+    {
+        $method = 'POST';
+        $SwaeIdx = null;
+        $data = null;
+
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+
+        if(empty($params[0]) === false) {
+            $method = 'PUT';
+            $SwaeIdx = $params[0];
+            $arr_condition = [
+                'EQ' => [
+                    'A.SwaeIdx' => $SwaeIdx
+                ],
+            ];
+            $data = $this->searchModel->listWordExcept(false, $arr_condition);
+            if(empty($data) === false) {
+                $data = $data[0];
+            }
+        }
+
+        $this->load->view('site/search/word_create_except_modal',[
+            'method' => $method,
+            'SwaeIdx' => $SwaeIdx,
+            'data' => $data,
+            'arr_site_code' => $arr_site_code
+        ]);
+    }
+
+    /**
+     *자동완성 예외단어 목록
+     * @return CI_Output
+     */
+    public function listExceptAjax()
+    {
+        $list = [];
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $arr_condition = [
+            'EQ' => [
+                //'A.SiteCode' => element('search_site_code', $arr_input),
+            ]
+        ];
+
+        $order_by = ['A.SwaeIdx' => 'DESC'];
+
+        $count = $this->searchModel->listWordExcept(true, $arr_condition, null, null,$order_by);
+
+        if($count > 0) {
+            $list = $this->searchModel->listWordExcept(false, $arr_condition, element('length',$arr_input), element('start',$arr_input), $order_by);
+        }
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 자동완성 예외단어 등록
+     */
+    public function storeExcept()
+    {
+        $method = 'add';
+        $rules = [
+            ['filed' => 'SiteCode', 'label' => '사이트설정',  'rules' => 'trim|required'],
+            ['filed' => 'ExceptWord', 'label' => '예외단어',  'rules' => 'trim|required'],
+            ['field' => 'ExceptType', 'label' => '사용유무', 'rules' => 'trim|required|in_list[E,L]']
+        ];
+
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->searchModel->addWordExcept($this->_reqP(null));
+
+        $this->load->driver('caching');
+        //$this->_saveSearchWordCache(true, $this->_reqP('SiteCode'), $type = '');
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 자동완성 예외단어 삭제
+     */
+    public function deleteExcept()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'SwaeIdx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->searchModel->deleteWordExcept($this->_reqP(null));
+        //$this->saveCache($this->_reqP('SiteCode',false));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 }

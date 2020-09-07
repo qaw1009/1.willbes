@@ -3,7 +3,7 @@
     <h5>- 사용자가 검색한 내용을 확인하는 메뉴입니다. </h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs(element('search_site_code',$arr_input), 'tabs_site_code', 'tab', true, [], true) !!}
+        {!! html_def_site_tabs(element('search_site_code',$arr_input), 'tabs_site_code', 'tab', true, [], true, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -79,6 +79,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 자동완성 예외 등록', className: 'btn-sm btn-warning border-radius-reset mr-15 btn-regist_except'},
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 검색어 적용(캐쉬)', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 캐쉬 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-delete-cache' },
                     @if(sess_data('admin_auth_data')['Role']['RoleIdx'] === '1030')
@@ -86,7 +87,7 @@
                     @endif
                     { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'},
                     { text: '<i class="fa fa-pencil mr-5"></i> 사용여부 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-use-modify'},
-                    { text: '<i class="fa fa-pencil mr-5"></i> 검색어 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 검색어 등록', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-regist'},
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/search/searchWord/listAjax') }}',
@@ -124,9 +125,15 @@
 
             $('.btn-regist').setLayer({
                 'url' : '{{ site_url('/site/search/searchWord/create') }}',
-                'width' : 900
-                ,'modal_id' : 'word_create'
+                'width' : 900,
+                'modal_id' : 'word_create'
             });
+
+            $('.btn-regist_except').setLayer({
+                'url' : '{{ site_url('/site/search/searchWord/createExcept/') }}',
+                'width' : 900,
+                'modal_id' : 'word_except_create'
+            })
 
             $list_table.on('click', '.btn-modify', function() {
                 $('.btn-modify').setLayer({

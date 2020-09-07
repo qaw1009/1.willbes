@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -41,7 +37,6 @@
 
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1780_02_bg.jpg) no-repeat center top}
 
-
         .evt03 {background:#ebebeb; padding-bottom:100px;}
         .evt03 .slide_con1 {width:789px; margin:0 auto; position:relative}
         .evt03 .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
@@ -49,6 +44,15 @@
         .evt03 .slide_con1 p a {cursor:pointer}
         .evt03 .slide_con1 p.leftBtn1 {left:-80px; top:50%; width:62px; height:62px; margin-top:-30px;}
         .evt03 .slide_con1 p.rightBtn1 {right:-80px; top:50%; width:62px; height:62px; margin-top:-30px;}  
+
+            .tabMenu {width:800px; margin:0 auto 30px}
+            .tabMenu li {display:inline; float:left; width:50%}
+            .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#333; color:#fff; font-size:22px}
+            .tabMenu li span {display:block; font-size:14px}
+            .tabMenu li a:hover,
+            .tabMenu li a.active {background:#e41f00;}
+            .tabMenu:after {content:""; display:block; clear:both}
+        .evt03 iframe {width:800px; height:450px; margin:0 auto;} 
 
         #tabwrap2 {width:976px; margin:0 auto; padding:50px 0; border:10px solid #ff635d; background:#fff}
         .tab2 {width:800px; margin:0 auto 50px;}
@@ -144,8 +148,35 @@
                 <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_arr_l.png"></a></p>
                 <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_arr_r.png"></a></p>
             </div>
+            
+            <div class="mt50">
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_01_01.jpg" title="" />
+            </div>
+
+            <ul class="tabMenu">
+                <li>
+                    <a href="#tab1" class="active">
+                        <span>소방 합격 전문가</span>
+                        이종오 교수님을 소개합니다.
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab2">
+                        <span>불꽃 같은 합격 커리큘럼</span>
+                        이종오 소방직 공개설명회
+                    </a>
+                </li>
+            </ul>  
+            <div id="tab1" class="tabcts">
+                <iframe src="https://www.youtube.com/embed/xBWCniTv_Ro?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+            </div>
+            <div id="tab2" class="tabcts">
+                <iframe src="https://www.youtube.com/embed/b06AI4w38gY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+            </div>
 
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_02.jpg" title="" />
+
+            
             
             <div id="tabwrap2">
                 <ul class="tab2">
@@ -503,6 +534,30 @@
             
                 e.preventDefault()})})}
         ); 
+
+        var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/b06AI4w38gY?rel=0";
+
+		$(document).ready(function(){
+		$(".tabcts").hide(); 
+		$(".tabcts:first").show();
+		$(".tabMenu li a").click(function(){ 
+			var activeTab = $(this).attr("href"); 
+			var html_str = "";
+			if(activeTab == "#tab1"){
+				html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+			}else if(activeTab == "#tab2"){
+				html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+			}
+			$(".tabMenu li a").removeClass("active"); 
+			$(this).addClass("active"); 
+			$(".tabcts").hide(); 
+			$(".tabcts").html(''); 
+			$(activeTab).html(html_str);
+			$(activeTab).fadeIn(); 
+			return false; 
+			});
+		});
     </script>
 
 @stop

@@ -28,12 +28,7 @@ class OffProfAssign extends BaseOrder
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray();
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+        $arr_category = $this->categoryModel->getCategoryRouteArray();
 
         // 사용하는 코드값 조회
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayMethod', 'PayStatus']);
@@ -46,8 +41,7 @@ class OffProfAssign extends BaseOrder
             'def_site_code' => key($this->_target_site_code),
             'arr_site_code' => $this->_target_site_code,
             'arr_campus' => $arr_campus,
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
+            'arr_category' => $arr_category,
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
             'chk_pay_status_ccd' => $this->_target_pay_status_ccd
@@ -101,7 +95,6 @@ class OffProfAssign extends BaseOrder
                 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_pack_lecture'],  // 종합반
                 'PL.PackTypeCcd' => $this->orderListModel->_adminpack_lecture_type_ccd['choice_prof'],    // 선택형(강사배정) 유형만 조회
                 'PL.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'PC.CateCode' => $this->_reqP('search_md_cate_code'),
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
             ],
@@ -111,7 +104,7 @@ class OffProfAssign extends BaseOrder
                 'OP.PayStatusCcd' => array_values($this->_target_pay_status_ccd)    // 결제완료/환불완료만 조회
             ],
             'LKR' => [
-                'PC.CateCode' => $this->_reqP('search_lg_cate_code')
+                'PC.CateCode' => $this->_reqP('search_cate_code')
             ],            
             /*'ORG1' => [
                 'LKR' => [

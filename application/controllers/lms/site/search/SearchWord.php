@@ -333,6 +333,6 @@ class SearchWord extends \app\controllers\BaseController
 
         $result = $this->searchModel->deleteWordExcept($this->_reqP(null));
         //$this->saveCache($this->_reqP('SiteCode',false));
-        $this->json_result($result, '저장 되었습니다.', $result);
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 }

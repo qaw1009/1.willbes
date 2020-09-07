@@ -353,6 +353,71 @@ class Off extends \app\controllers\FrontController
 
 
     /**
+     * 배정한 강사 목록 보기
+     * @return CI_Output|object|string
+     */
+    public function ViewAssignProf()
+    {
+        $OrderIdx = $this->_req('orderidx');
+        $OrderProdIdx = $this->_req('orderprodidx');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($OrderIdx) == true || empty($OrderProdIdx) == true){
+            return $this->json_error("정보가 올바르지 않습니다.");
+        }
+
+        $today = date("Y-m-d H:i:s", time());
+        $sub_prod_data = [];
+        $UnPaidInfo = [];
+        $unpaid_data = [];
+
+        // 강의 신청정보 읽어오기
+        $pkginfo = $this->classroomFModel->getPackage([
+            'EQ' => [
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'OrderProdIdx' => $OrderProdIdx
+            ]
+        ],[], false, true);
+        if(count($pkginfo) != 1){
+            return $this->json_error('강좌신청정보가 없습니다.');
+        }
+        $pkginfo = $pkginfo[0];
+
+        // 서브상품코드 추출
+        $pkginfo['OrderSubProdCodes'] = [];
+        if (empty($pkginfo['OrderSubProdData']) === false) {
+            $pkginfo['OrderSubProdCodes'] = array_pluck(json_decode($pkginfo['OrderSubProdData'], true), 'ProdCode');
+        }
+
+        // 선택강좌 정보 읽어오기
+        $sub_prod_rows = $this->classroomFModel->getOffPackageSubLectgure([
+            'EQ' => [
+                'PS.ProdCode' => $pkginfo['ProdCode']
+            ],
+            'IN' => [
+                'PS.ProdCodeSub' => $pkginfo['OrderSubProdCodes']
+            ]
+        ]);
+
+        foreach ($sub_prod_rows as $row) {
+            $arr_key = $row['IsEssential'] == 'Y' ? 'ess' : 'choice';
+            if($row['ProfChoiceStartDate'] <= $today && $today <= $row['ProfChoiceEndDate']){
+                $row['IsChoice'] = 'Y';
+            } else {
+                $row['IsChoice'] = 'N';
+            }
+            $sub_prod_data[$arr_key][] = $row;
+        }
+
+        return $this->load->view('/classroom/off/layer/view_assign_prof',[
+            'pkginfo' => $pkginfo,
+            'sublec' => $sub_prod_data,
+        ]);
+    }
+
+
+    /**
      * 선택한 강좌 적용
      * @return CI_Output
      */

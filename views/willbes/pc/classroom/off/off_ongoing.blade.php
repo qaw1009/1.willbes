@@ -49,6 +49,9 @@
                                                 </dt>
                                             </dl>
                                         @endif
+                                        @if($row['PackTypeCcd'] == '648003')
+                                            <div class="lookover profLook"><a href="javascript:;" onclick="ViewAssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')">강사선택현황보기 ></a></div>
+                                        @endif
                                     </td>
                                     {{-- <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td> --}}
@@ -296,6 +299,8 @@
             </div>
             <div id="profChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
+            <div id="profLook" class="willbes-Layer-Black">
+            </div>
             <div id="seatChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
             <div id="assignmentListChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
@@ -333,9 +338,7 @@
 
             // 검색어 입력 후 엔터
             $('#search_text').on('keyup', function() {
-                if (window.event.keyCode === 13) {
-
-                }
+                if (window.event.keyCode === 13) { }
             });
 
             //좌석선택
@@ -355,6 +358,7 @@
             @endif
         });
 
+
         function AssignProf(o,op)
         {
             $("#profChoice").html('');
@@ -373,8 +377,29 @@
                 function(ret, status){
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
-
         }
+
+
+        function ViewAssignProf(o,op)
+        {
+            $("#profChoice").html('');
+            $('#orderidx').val(o);
+            $('#orderprodidx').val(op);
+
+            url = "{{ site_url("/classroom/off/ViewAssignProf/") }}";
+            data = $('#postForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#profLook").html(d).end();
+                    openWin('profLook')
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
+
 
         function AssignSeat(pkg_yn, p_no, no, flag)
         {
@@ -410,6 +435,7 @@
                     alert(ret.ret_msg);
                 }, false, 'POST', 'html');
         }
+
 
         function assignmentBoardModal(prod_code)
         {

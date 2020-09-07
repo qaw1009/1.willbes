@@ -16,16 +16,10 @@ class LectureDisc extends \app\controllers\BaseController
      */
     public function index()
     {
-        $category_data = $this->categoryModel->getCategoryArray();
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+        $arr_category = $this->categoryModel->getCategoryRouteArray();
 
         $this->load->view('product/etc/lecture_disc/index', [
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
+            'arr_category' => $arr_category,
             'arr_course' => $this->courseModel->getCourseArray()
         ]);
     }
@@ -39,7 +33,6 @@ class LectureDisc extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'PDC.SiteCode' => $this->_reqP('search_site_code'),
-                'PDC.CateCode' => $this->_reqP('search_md_cate_code'),
                 'PDC.CourseIdx' => $this->_reqP('search_course_idx'),
                 'PDC.IsUse' => $this->_reqP('search_is_use')
             ],
@@ -47,7 +40,7 @@ class LectureDisc extends \app\controllers\BaseController
                 'PDC.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ],
             'LKR' => [
-                'PDC.CateCode' => $this->_reqP('search_lg_cate_code')
+                'PDC.CateCode' => $this->_reqP('search_cate_code')
             ],
             'ORG1' => [
                 'LKB' => [

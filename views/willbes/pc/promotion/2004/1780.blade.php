@@ -109,7 +109,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1780_sky2.png" alt=""></a>
+            {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1780_sky2.png" alt=""></a>--}}
             <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1761" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1780_sky.png" alt=""></a>
         </div>
 

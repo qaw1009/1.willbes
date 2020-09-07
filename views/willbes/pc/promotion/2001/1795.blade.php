@@ -26,7 +26,7 @@
 
         .evtTop00 {background:#404040}
         /*타이머*/
-        .time {width:100%; text-align:center; background:#E4E4FE;}
+        .time {width:100%; text-align:center; background:#F5F5F5;}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        
@@ -45,7 +45,7 @@
         .youtube {position:absolute; top:594px; left:50%; width:607px; z-index:1;margin-left:-148px}
         .youtube iframe {width:607px; height:342px}
 
-        .evtInfo {padding:80px 0; background:#333333; color:#fff; font-size:17px}
+        .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:17px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:20px;}
@@ -72,13 +72,8 @@
                 </a>
             </li>
         </ul>
-
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1284_00.jpg" title="대한민국 경찰학원 1위">        
-        </div>
-
-        <!-- 타이머 -->
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
+         <!-- 타이머 -->
+         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
                 <table>
                     <tr>                    
@@ -100,6 +95,10 @@
             </div>
         </div>
         <!-- 타이머 //-->
+
+        <div class="evtCtnsBox evtTop00">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1284_00.jpg" title="대한민국 경찰학원 1위">        
+        </div>       
 
         <div class="evtCtnsBox wb_cts_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1795_top.jpg"  alt="한능검 패스" />
@@ -136,6 +135,10 @@
 
         <div class="evtCtnsBox wb_cts05" id="event2">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1795_05.jpg"  alt="매일 1권씩 추첨" />
+            {{--댓글url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif  
         </div>
 
         <div class="evtCtnsBox wb_cts06">

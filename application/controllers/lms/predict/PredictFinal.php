@@ -109,6 +109,10 @@ class PredictFinal extends \app\controllers\BaseController
         $this->json_result($result,'정상 삭제 되었습니다.',$result);
     }
 
+    /**
+     * 가데이터 등록
+     * @return CI_Output|null
+     */
     public function redata()
     {
         $rules = [
@@ -155,6 +159,70 @@ class PredictFinal extends \app\controllers\BaseController
         return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 최종합격자수 등록
+     * @return CI_Output|null
+     */
+    public function successfulDataUpload()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'predict_idx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $input_data = $this->_getInvoiceExcelData();
+        if ($input_data === false) {
+            return $this->json_error('엑셀파일 읽기에 실패했습니다.');
+        }
+
+        $result = $this->predictModel->successfulDataUpload($this->_reqP(null), $input_data);
+        return $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 최종합격자 수 모달팝업
+     * @param array $params
+     */
+    public function listSuccessfulModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $arr_base['take_mock_part'] = $this->predictModel->getSerialAll();
+        $arr_base['take_area'] = $this->codeModel->getCcd('712');
+        $arr_condition = ['EQ' => ['ps.PredictIdx' => $params[0]]];
+        $data = $this->predictModel->listSuccessful($arr_condition, ['ps.TakeMockPart' => 'asc', 'ps.TakeArea' => 'asc']);
+        $this->load->view("predict/predictFinal/list_successful_modal", [
+            'arr_base' => $arr_base,
+            'predict_idx' => $params[0],
+            'memo_data' => $data
+        ]);
+    }
+
+    /**
+     * 최종합격자 수 정보 수정
+     */
+    public function storeSuccessful()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'predict_idx', 'label' => '합격예측코드', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'take_mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'take_area', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'count', 'label' => '합격자수', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->predictModel->updateForSuccessful($this->_reqP(null));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
     public function sampleDownload()
     {
         $this->load->helper('download');
@@ -166,6 +234,13 @@ class PredictFinal extends \app\controllers\BaseController
     {
         $this->load->helper('download');
         $file_path = STORAGEPATH . 'resources/sample/sample_cert_takenum.xlsx';
+        force_download($file_path, null);
+    }
+
+    public function sampleSuccessfulDownload()
+    {
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_successful_candidate.xlsx';
         force_download($file_path, null);
     }
 

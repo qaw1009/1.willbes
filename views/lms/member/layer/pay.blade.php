@@ -141,7 +141,9 @@
                 },
                 {
                     'data': 'ProdName', 'render': function (data, type, row, meta) {
-                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                        return (row.LecTypeCcdName !== '' ? '<span class="red no-line-height">' + row.LecTypeCcdName + '</span> ' : '')
+                            + '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> '
+                            + data + (row.RealPayPrice > 0 ? ' (' + addComma(row.RealPayPrice) + '원)' : '');
                     }
                 },
                 {

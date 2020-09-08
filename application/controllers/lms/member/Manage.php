@@ -1483,8 +1483,6 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);
 
-        logger("단과",null,'debug');
-
         $userpkg = $this->manageLectureModel->getPackage(false, [
             'EQ' => [
                 'MemIdx' => $memIdx,
@@ -1497,7 +1495,7 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);
-        logger("사용자",null,'debug');
+
         foreach($userpkg as $idx => $row){
             $pkgsublist =  $this->manageLectureModel->getLecture(false, [
                 'EQ' => [
@@ -1509,7 +1507,6 @@ class Manage extends \app\controllers\BaseController
 
             $userpkg[$idx]['subleclist'] = $pkgsublist;
         }
-        logger("사용자상세",null,'debug');
 
         $pkg = $this->manageLectureModel->getPackage(false, [
             'EQ' => [
@@ -1523,7 +1520,7 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);
-        logger("패키지",null,'debug');
+
         foreach($pkg as $idx => $row){
             $pkgsublist =  $this->manageLectureModel->getLecture(false, [
                 'EQ' => [
@@ -1535,7 +1532,6 @@ class Manage extends \app\controllers\BaseController
 
             $pkg[$idx]['subleclist'] = $pkgsublist;
         }
-        logger("패키지상세",null,'debug');
 
         $pass = $this->manageLectureModel->getPackage(false, [
             'EQ' => [
@@ -1549,7 +1545,7 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);
-        logger("기간제",null,'debug');
+
         foreach($pass as $idx => $row){
             $pkgsublist =  $this->manageLectureModel->getLecture(false, [
                 'EQ' => [
@@ -1561,7 +1557,7 @@ class Manage extends \app\controllers\BaseController
 
             $pass[$idx]['subleclist'] = $pkgsublist;
         }
-        logger("기간제 상세",null,'debug');
+
         $free = $this->manageLectureModel->getLecture(false, [
             'EQ' => [
                 'MemIdx' => $memIdx,
@@ -1574,8 +1570,6 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);;
-        logger("무료",null,'debug');
-
 
         $offdan = [];
 

@@ -4,11 +4,10 @@
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/stats') }}" class="cs-pointer"><strong>승인완료통계</strong></a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/cancelStats') }}" class="cs-pointer"><strong>결제취소통계</strong></a></li>
     </ul>
-    <h5>- 결제 승인완료 집계 데이터를 확인하는 메뉴입니다. (PG 데이터와 비교/검증용, 결제취소/망취소 이력 제외)</h5>
-    <h5>- 신용카드금액은 카카오머니, 페이코포인트를 제외한 승인금액입니다.</h5>
+    <h5>- 결제취소 집계 데이터를 확인하는 메뉴입니다. (결제취소/망취소/부분환불)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -36,9 +35,9 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">
-                            <option value="">결제방법</option>
-                            @foreach($codes['PayDepositMethod'] as $key => $val)
+                        <select class="form-control mr-10" id="search_pay_type" name="search_pay_type">
+                            <option value="">취소구분</option>
+                            @foreach($codes['CancelType'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
@@ -59,10 +58,10 @@
                 <tr>
                     <th class="rowspan">일자</th>
                     <th class="rowspan">상점아이디</th>
-                    <th>결제방법</th>
-                    <th>결제건수 (무통장입금제외)</th>
-                    <th>결제금액 (무통장입금제외)</th>
-                    <th>신용카드금액</th>
+                    <th>취소구분</th>
+                    <th>성공건수</th>
+                    <th>실패건수</th>
+                    <th>연동건수</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,7 +91,7 @@
                 serverSide: true,
                 paging : false,
                 ajax: {
-                    'url' : '{{ site_url('/sys/payLog/statsAjax') }}',
+                    'url' : '{{ site_url('/sys/payLog/cancelStatsAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {});
@@ -102,24 +101,19 @@
                 rowGroup: {
                     startRender: null,
                     endRender: function(rows, group) {
-                        var arr_column = ['PayCnt', 'PayPrice', 'CardPayPrice'];
-                        var t_html = '', t_amt;
+                        var arr_column = ['SuccCnt', 'FailCnt', 'CancelCnt'];
+                        var t_html = '';
 
                         t_html += '<td>' + rows.data().pluck('RegDate')[0] + '</td>';
                         t_html += '<td>' + rows.data().pluck('PgMid')[0] + '</td>';
                         t_html += '<td>합계</td>';
 
                         $.each(arr_column, function(idx, item) {
-                            t_amt = 0;
                             t_html += '<td>' + addComma(
-                                rows.data().pluck(item).reduce(function(a, b, curr_idx) {
-                                    if (rows.data().pluck('PayMethod')[curr_idx] !== 'VBank') {
-                                        t_amt = t_amt + (b * 1);
-                                    }
-
+                                rows.data().pluck(item).reduce(function(a, b) {
                                     return a + b * 1;
                                 }, 0)
-                            ) + (item !== 'CardPayPrice' ? ' (' + addComma(t_amt) + ')' : '') + '</td>';
+                            ) + '</td>';
                         });
 
                         return $('<tr class="bg-info bold">' + t_html + '</tr>');
@@ -133,34 +127,28 @@
                         return row.RegDate;     // 일자_상점아이디별로 rowspan 처리
                     }},
                     {'data' : 'PgMid'},
-                    {'data' : 'PayMethod', 'render' : function(data, type, row, meta) {
-                        return meta.settings.json.codes.PayDepositMethod[data];
+                    {'data' : 'PayType', 'render' : function(data, type, row, meta) {
+                        return meta.settings.json.codes.CancelType[data];
                     }},
-                    {'data' : 'PayCnt', 'render' : function(data, type, row, meta) {
+                    {'data' : 'SuccCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : 'PayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'FailCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : 'CardPayPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'CancelCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }}
                 ],
                 footerCallback: function(tfoot, data, start, end, display) {
                     var api = this.api();
-                    var t_amt;
                     for(var i = 3; i <= 5; i++) {
-                        t_amt = 0;
                         $(api.column(i).footer()).html(
                             addComma(
                                 api.column(i).data().reduce(function (a, b, curr_idx) {
-                                    if (api.column(2).data()[curr_idx] !== 'VBank') {
-                                        t_amt = t_amt + (b * 1);
-                                    }
-
                                     return a + b * 1;
                                 }, 0)
-                            ) + (i !== 5 ? ' (' + addComma(t_amt) + ')' : '')
+                            )
                         );
                     }
                 }

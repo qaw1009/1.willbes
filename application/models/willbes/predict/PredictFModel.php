@@ -623,4 +623,23 @@ class PredictFModel extends WB_Model
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
+
+    /**
+     * 최종합격자수 조회
+     * @param $arr_condition
+     * @return array
+     */
+    public function listPredictSuccessful($arr_condition)
+    {
+        $column = 'TakeMockPart, TakeArea, SuccessFulCount';
+        $from = " FROM lms_predict_successful_count ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $result = $this->_conn->query('select ' . $column . $from . $where)->result_array();
+        $data = [];
+        foreach ($result as $row) {
+            $data[$row['TakeMockPart']][$row['TakeArea']] = $row['SuccessFulCount'];
+        }
+        return $data;
+    }
 }

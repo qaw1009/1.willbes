@@ -56,7 +56,7 @@ class PayLogModel extends WB_Model
         $search_end_date .= ' 23:59:59';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        $column = 'RegDate, PgMid, PayMethod, count(0) as PayCnt, sum(ReqPayPrice) as PayPrice, sum(if(PayMethod = "Card", CardPayPrice, 0)) as CardPayPrice';
+        $column = 'RegDate, PgMid, concat(RegDate, "_", PgMid) as RowspanSrc, PayMethod, count(0) as PayCnt, sum(ReqPayPrice) as PayPrice, sum(if(PayMethod = "Card", CardPayPrice, 0)) as CardPayPrice';
         $from = '
             from (
                 select PgMid
@@ -89,5 +89,36 @@ class PayLogModel extends WB_Model
         ';
 
         return $this->_conn->query('select ' . $column . $from, [$search_start_date, $search_end_date, $search_start_date, $search_end_date])->result_array();
+    }
+
+    /**
+     * 결제일자, 상점아이디, 결제취소 타입별 연동 통계
+     * @param string $search_start_date [조회시작일자]
+     * @param string $search_end_date [조회종료일자]
+     * @param array $arr_condition [조회조건]
+     * @return mixed
+     */
+    public function listCancelStats($search_start_date, $search_end_date, $arr_condition = [])
+    {
+        $search_start_date .= ' 00:00:00';
+        $search_end_date .= ' 23:59:59';
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $column = 'RegDate, PgMid, concat(RegDate, "_", PgMid) as RowspanSrc, PayType, count(0) as CancelCnt
+            , ifnull(sum(if(ResultCode in ("00", "0000"), 1, 0)), 0) as SuccCnt, ifnull(sum(if(ResultCode in ("00", "0000"), 0, 1)), 0) as FailCnt';
+
+        $from = '
+            from (
+                select PgMid, PayType, ResultCode, left(RegDatm, 10) as RegDate
+                from ' . $this->_table['pay'] . ' 
+                where PayType in ("CA", "NC", "RP")
+                    and RegDatm between ? and ?
+            ) as U
+            ' . $where . '
+            group by RegDate, PgMid, PayType
+            order by RegDate desc, PgMid asc, PayType asc            
+        ';
+
+        return $this->_conn->query('select ' . $column . $from, [$search_start_date, $search_end_date])->result_array();
     }
 }

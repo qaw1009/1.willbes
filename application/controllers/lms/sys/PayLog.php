@@ -5,13 +5,19 @@ class PayLog extends \app\controllers\BaseController
 {
     protected $models = array('sys/payLog');
     protected $helpers = array();
+    private $_grp_codes = [
+        'pay' => ['PgMid', 'PayType', 'PayMethod'],
+        'deposit' => ['PgMid', 'DepositType'],
+        'stats' => ['PgMid', 'PayDepositMethod'],
+        'cancel_stats' => ['PgMid', 'CancelType'],
+    ];
     private $_codes = [
-        'pay' => [
-            'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소', 'MP' => '결제요청(모바일)']
-        ],
-        'stats' => [
-            'PayMethodName' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)', 'VDeposit' => '가상계좌(입금통보)']
-        ]
+        'PgMid' => ['willbes015' => '동영상(willbes015)', 'willbes515' => '교재(willbes515)', 'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트상점아이디'],
+        'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
+        'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
+        'DepositType' => ['PC' => 'PC', 'MO' => '모바일'],
+        'PayMethod' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)'],
+        'PayDepositMethod' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)', 'VDeposit' => '가상계좌(입금통보)'],
     ];
 
     public function __construct()
@@ -28,7 +34,8 @@ class PayLog extends \app\controllers\BaseController
         $log_type = element('0', $params, 'pay');
         
         $this->load->view('sys/pay_log/' . $log_type . '_index', [
-            'log_type' => $log_type
+            'log_type' => $log_type,
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes[$log_type])
         ]);
     }
 
@@ -106,21 +113,23 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => element($log_type, $this->_codes, [])
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes[$log_type])
         ]);
     }
 
     /**
-     * 결제통계 인덱스
+     * 승인완료 통계 인덱스
      * @param array $params
      */
     public function stats($params = [])
     {
-        $this->load->view('sys/pay_log/stats_index', []);
+        $this->load->view('sys/pay_log/stats_index', [
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['stats'])
+        ]);
     }
 
     /**
-     * 결제통계 조회
+     * 승인완료 통계 조회
      * @param array $params
      * @return CI_Output
      */
@@ -143,7 +152,46 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => element('stats', $this->_codes, [])
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['stats'])
+        ]);
+    }
+
+    /**
+     * 결제취소 통계 인덱스
+     * @param array $params
+     */
+    public function cancelStats($params = [])
+    {
+        $this->load->view('sys/pay_log/cancel_stats_index', [
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['cancel_stats'])
+        ]);
+    }
+
+    /**
+     * 결제취소 통계 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function cancelStatsAjax($params = [])
+    {
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
+        $arr_condition = [
+            'EQ' => [
+                'PgMid' => $this->_reqP('search_pg_mid'),
+                'PayType' => $this->_reqP('search_pay_type'),
+            ]
+        ];
+
+        // 통계 데이터 조회
+        $list = $this->payLogModel->listCancelStats($search_start_date, $search_end_date, $arr_condition);
+        $count = count($list);
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['cancel_stats'])
         ]);
     }
 }

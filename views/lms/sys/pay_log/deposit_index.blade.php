@@ -5,8 +5,9 @@
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/deposit') }}" class="cs-pointer"><strong>가상계좌입금통보</strong></a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
     </ul>
-    <h5>- 결제 관련 로그를 확인하는 메뉴입니다.</h5>
+    <h5>- 가상계좌 입금통보 연동 로그를 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -22,19 +23,19 @@
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
                     </div>
-                    <label class="control-label col-md-1" for="search_pay_type">구분</label>
+                    <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
                         <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid">
                             <option value="">상점아이디</option>
-                            <option value="willbes015">동영상(willbes015)</option>
-                            <option value="willbes515">교재(willbes515)</option>
-                            <option value="willbes006">인천학원(willbes006)</option>
-                            <option value="INIpayTest">테스트상점아이디</option>
+                            @foreach($codes['PgMid'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pay_type" name="search_pay_type">
                             <option value="">연동구분</option>
-                            <option value="PC">PC</option>
-                            <option value="MO">모바일</option>
+                            @foreach($codes['DepositType'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_is_result" name="search_is_result">
                             <option value="">연동성공여부</option>

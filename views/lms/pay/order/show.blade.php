@@ -466,7 +466,9 @@
                                 <td class="bg-white-only">{{ $data['admin_prod']['PayRouteCcdName'] }}
                                     | {{ $data['admin_prod']['ProdTypeCcdName'] }}
                                     {{ isset($data['admin_prod']['MyLecData']['wUnitData']) === true ? '(회차등록)' : '' }}
-                                    | <div class="blue inline-block">[{{ $data['admin_prod']['LearnPatternCcdName'] or $data['admin_prod']['ProdTypeCcdName'] }}]</div> {{ $data['admin_prod']['ProdName'] }}
+                                    | {{ $data['admin_prod']['ProdAddInfo'] }}
+                                    <div class="blue inline-block">[{{ $data['admin_prod']['LearnPatternCcdName'] or $data['admin_prod']['ProdTypeCcdName'] }}]</div>
+                                    {{ $data['admin_prod']['ProdName'] }}
                                 </td>
                             </tr>
                             <tr>

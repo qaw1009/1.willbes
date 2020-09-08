@@ -63,10 +63,10 @@ class BaseOrderModel extends WB_Model
 
     // 공통그룹코드
     // 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유, 캠퍼스
-    // 모의고사응시형태, 모의고사응시지역, 패키지유형, 수강형태(학원)
+    // 모의고사응시형태, 모의고사응시지역, 패키지유형, 수강형태(학원), 강좌유형
     public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'Pg' => '603', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694'
         , 'PayStatus' => '676', 'DeliveryStatus' => '677', 'DeliveryComp' => '606', 'Bank' => '678', 'Card' => '697', 'AdminReason' => '705', 'Campus' => '605'
-        , 'MockTakeForm' => '690', 'MockTakeArea' => '691', 'PackType' => '648', 'StudyPattern' => '653'
+        , 'MockTakeForm' => '690', 'MockTakeArea' => '691', 'PackType' => '648', 'StudyPattern' => '653', 'LecType' => '607'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
@@ -79,6 +79,9 @@ class BaseOrderModel extends WB_Model
 
     // 운영자패키지 타입 공통코드 (일반형, 선택형, 선택형(강사배정))
     public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002', 'choice_prof' => '648003'];
+    
+    // 직장인/재학생반 강좌유형 공통코드
+    public $_worker_lec_type_ccd = '607003';
 
     // 판매형태 공통코드 (일반, 재수강, 수강연장)
     public $_sale_pattern_ccd = ['normal' => '694001', 'retake' => '694002', 'extend' => '694003', 'unit' => '694004', 'auto' => '694005'];

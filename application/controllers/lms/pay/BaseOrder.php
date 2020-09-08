@@ -98,6 +98,7 @@ class BaseOrder extends \app\controllers\BaseController
 
             if (in_array($row['ProdTypeCcd'], $arr_lec_prod_type_ccd) === true) {
                 $data[$idx]['ProdAddInfo'] = $row['CateName'];    // 카테고리명
+                empty($row['LecTypeCcdName']) === false && $data[$idx]['ProdAddInfo'] .= ' | ' . $row['LecTypeCcdName'];  // 강좌유형(직장인재학생반)
                 empty($row['StudyPatternCcdName']) === false && $data[$idx]['ProdAddInfo'] .= ' | ' . $row['StudyPatternCcdName'];  // 수강형태(학원)
             }
 
@@ -135,6 +136,7 @@ class BaseOrder extends \app\controllers\BaseController
                 if (in_array(array_search($order_data['PayRouteCcd'], $this->orderListModel->_pay_route_ccd), ['zero', 'alliance', 'admin_pay']) === true
                         && $row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price']) {
                     $admin_pay_data = $row;
+                    $admin_pay_data['ProdAddInfo'] = $data[$idx]['ProdAddInfo'];    // 상품 부가정보 컬럼 추가
                 }
             }
 

@@ -209,7 +209,9 @@
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                        return (row.LecTypeCcdName !== '' ? '<span class="red no-line-height">' + row.LecTypeCcdName + '</span> ' : '')
+                            + '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> '
+                            + data;
                     }},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);

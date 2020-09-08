@@ -49,7 +49,7 @@ class OrderListModel extends BaseOrderModel
                     , P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName
-                    , CST.CcdName as StudyPatternCcdName';
+                    , CST.CcdName as StudyPatternCcdName, if(PL.LecTypeCcd = "' . $this->_worker_lec_type_ccd . '", CLT.CcdName, "") as LecTypeCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
                 $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice'; // straight_join 삭제
@@ -168,7 +168,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPA
                     on PL.PackTypeCcd = CPA.Ccd and CPA.IsStatus = "Y" and CPA.GroupCcd = "' . $this->_group_ccd['PackType'] . '"
                 left join ' . $this->_table['code'] . ' as CST
-                    on PL.StudyPatternCcd = CST.Ccd and CST.IsStatus = "Y" and CST.GroupCcd = "' . $this->_group_ccd['StudyPattern'] . '"                                        
+                    on PL.StudyPatternCcd = CST.Ccd and CST.IsStatus = "Y" and CST.GroupCcd = "' . $this->_group_ccd['StudyPattern'] . '"
+                left join ' . $this->_table['code'] . ' as CLT
+                    on PL.LecTypeCcd = CLT.Ccd and CLT.IsStatus = "Y" and CLT.GroupCcd = "' . $this->_group_ccd['LecType'] . '"                                                            
             ';
         }
 

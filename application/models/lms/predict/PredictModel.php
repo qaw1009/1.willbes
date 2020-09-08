@@ -65,14 +65,12 @@ class PredictModel extends WB_Model
         'predictGradesArea' => 'lms_predict_grades_area',
         'predictGradesLine' => 'lms_predict_grades_line',
         'predictQuestion' => 'lms_predict_questions',
-
         'predictCnt' => 'lms_predict_cnt',      //todo 사용하지 않을 테이블 : 2019-08-13 조규호
         'predictSubTitles' => 'lms_predict_subtitles',
-
         'predict_r_product' => 'lms_predict_r_product',
-
         'predictFinal' => 'lms_predict_final',
-        'predictFinalPoint' => 'lms_predict_final_point'
+        'predictFinalPoint' => 'lms_predict_final_point',
+        'predictSuccessfulCount' => 'lms_predict_successful_count'
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -178,7 +176,7 @@ class PredictModel extends WB_Model
         $selectCount = " SELECT COUNT(*) AS cnt";
         $where = " WHERE PP.PpIdx > 0 ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = " ORDER BY PP.RegDate DESC";
+        $order = " ORDER BY PP.RegDate ASC";
         //echo "<pre>". 'select' . $column . $from . $where . $order . $offset_limit . "</pre>";
 
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
@@ -508,11 +506,18 @@ class PredictModel extends WB_Model
      * 채점서비스참여현황
      * @param array $condition
      * @param array $order_by
+     * @param array $paperData
      * @return mixed
      */
-    public function predictRegistListExcel2($condition=[], $order_by = [])
+    public function predictRegistListExcel2($condition=[], $order_by = [], $paperData = [])
     {
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $paper_query_string = '';
+        if (empty($paperData) === false) {
+            foreach ($paperData[0] as $row) {
+                $paper_query_string .= ", IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = '{$row['PpIdx']}' AND PrIdx = PR.PrIdx limit 1),'') AS '{$row['PpIdx']}'";
+            }
+        }
 
         $column = "
             PR.ApplyType,MemName,PR.MemIdx,MemId,fn_dec(M.PhoneEnc) AS Phone,
@@ -523,18 +528,8 @@ class PredictModel extends WB_Model
             RegDatm
             ,SUM(PG.OrgPoint) AS SumOrgPoint
             ,(GROUP_CONCAT(CONCAT(PP.PaperName,':',PG.OrgPoint))) AS OPOINT
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 21 AND PrIdx = PR.PrIdx limit 1),'') AS '한국사'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 22 AND PrIdx = PR.PrIdx limit 1),'') AS '영어'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 23 AND PrIdx = PR.PrIdx limit 1),'') AS '형법'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 24 AND PrIdx = PR.PrIdx limit 1),'') AS '형사소송법'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 25 AND PrIdx = PR.PrIdx limit 1),'') AS '경찰학개론'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 26 AND PrIdx = PR.PrIdx limit 1),'') AS '국어'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 27 AND PrIdx = PR.PrIdx limit 1),'') AS '수학'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 28 AND PrIdx = PR.PrIdx limit 1),'') AS '사회'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 29 AND PrIdx = PR.PrIdx limit 1),'') AS '과학'
-            #,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 19 AND PrIdx = PR.PrIdx limit 1),'') AS '수사'
-            #,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 20 AND PrIdx = PR.PrIdx limit 1),'') AS '행정법'
         ";
+        $column .= $paper_query_string;
         $from = "
             FROM {$this->_table['predictRegister']} AS PR
             JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
@@ -3917,6 +3912,108 @@ class PredictModel extends WB_Model
             return error_result($e);
         }
 
+        return true;
+    }
+
+    /**
+     * 최종합격자수 등록
+     * @param $params
+     * @param array $input_data
+     * @return array|bool
+     */
+    public function successfulDataUpload($params, $input_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'PredictIdx' => element('predict_idx', $params)
+                ]
+            ];
+            $column = "PredictIdx";
+            $from = " FROM {$this->_table['predictProduct']} ";
+            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+            $result = $this->_conn->query('select ' . $column . $from . $where)->row_array();
+            if (empty($result) === true) {
+                throw new \Exception('조회된 합격예측 코드가 없습니다.');
+            }
+
+            if ($this->_conn->delete($this->_table['predictSuccessfulCount'], ['PredictIdx' => element('predict_idx', $params)]) === false) {
+                throw new \Exception('등록된 합격자수 데이터 삭제에 실패했습니다.');
+            }
+
+            $addData = []; $i=0;
+            foreach ($input_data as $row) {
+                $addData[$i]['PredictIdx'] = element('predict_idx', $params);
+                $addData[$i]['TakeMockPart'] = $row['A'];
+                $addData[$i]['TakeArea'] = $row['B'];
+                $addData[$i]['SuccessFulCount'] = $row['C'];
+                $addData[$i]['IsUse'] = 'Y';
+                $addData[$i]['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                $i++;
+            }
+
+            if ($this->_conn->insert_batch($this->_table['predictSuccessfulCount'], $addData) === false) {
+                throw new \Exception('등록에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 최종합격자수 조회
+     * @param $arr_condition
+     * @param $order_by
+     * @return mixed
+     */
+    public function listSuccessful($arr_condition, $order_by)
+    {
+        $column = "p.ProdName, ps.TakeMockPart, ps.TakeArea, pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, ps.SuccessFulCount, ps.IsUse, a.wAdminName, ps.RegDatm";
+        $from = "
+            FROM {$this->_table['predictSuccessfulCount']} AS ps
+            INNER JOIN {$this->_table['predictProduct']} AS p ON ps.PredictIdx = p.PredictIdx
+            INNER JOIN {$this->_table['predictCode']} AS pc ON ps.TakeMockPart = pc.Ccd
+            INNER JOIN {$this->_table['sysCode']} AS sc ON ps.TakeArea = sc.Ccd
+            LEFT JOIN {$this->_table['admin']} AS a ON ps.RegAdminIdx = a.wAdminIdx and a.wIsStatus='Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 최종합격자 수 단일 데이터 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function updateForSuccessful($params = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $data = [
+                'SuccessFulCount' => element('count', $params),
+                'IsUse' => element('is_use', $params),
+            ];
+            $where = [
+                'PredictIdx' => element('predict_idx', $params),
+                'TakeMockPart' => element('take_mock_part', $params),
+                'TakeArea' => element('take_area', $params),
+            ];
+
+            $this->_conn->set($data)->where($where);
+            if ($this->_conn->update($this->_table['predictSuccessfulCount']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
         return true;
     }
 

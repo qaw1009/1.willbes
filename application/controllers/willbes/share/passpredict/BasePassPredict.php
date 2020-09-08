@@ -1636,6 +1636,10 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
         $arr_base['cert_idx'] = element('cert', $this->_reqG(null));
 
+        if (empty($arr_base['predict_idx']) === true || empty($arr_base['cert_idx']) === true) {
+            show_alert('필수데이터 누락입니다.','close');
+        }
+
         $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
         $data = $this->predictFModel->findPredictFinalMember($arr_condition, 'PfIdx, c.Ccd as TakeMockPartCcd, c.CcdValue AS TakeMockPartCcdName, TakeAreaCcd, fn_ccd_name(TakeAreaCcd) AS TakeAreaCcdName, b.TakeNo');
         if (empty($data) === true) {
@@ -1655,7 +1659,7 @@ class BasePassPredict extends \app\controllers\FrontController
         ];
         $result_final_count = $this->predictFModel->getFinalData($arr_condition);
 
-        $arr_base['arrAllFinal'] = $this->_arrAllFinal();   //합격자 수 셋팅
+        $arr_base['arrAllFinal'] = $this->_arrAllFinal($arr_base['predict_idx']);   //합격자 수 조회
         $arr_base['service_count'] = $result_final_count['Total'];
         $arr_base['my_rownum'] = $result_final_count['Rownum'];
         $arr_base['my_percentage'] = $result_final_count['MyPercentage'];
@@ -1793,72 +1797,15 @@ class BasePassPredict extends \app\controllers\FrontController
      * 전국 합격자 수 데이터 셋팅
      * @return array
      */
-    private function _arrAllFinal()
+    private function _arrAllFinal($predict_idx)
     {
-        $arr_total_final = [
-            '100' => [
-                '712001' => '671',
-                '712002' => '170',
-                '712003' => '126',
-                '712004' => '270',
-                '712005' => '89',
-                '712006' => '72',
-                '712007' => '50',
-                '712008' => '419',
-                '712009' => '264',
-                '712010' => '175',
-                '712011' => '49',
-                '712012' => '166',
-                '712013' => '51',
-                '712014' => '51',
-                '712015' => '94',
-                '712016' => '83',
-                '712017' => '33'
-            ],
-            '200' => [
-                '712001' => '310',
-                '712002' => '87',
-                '712003' => '53',
-                '712004' => '108',
-                '712005' => '22',
-                '712006' => '22',
-                '712007' => '17',
-                '712008' => '128',
-                '712009' => '94',
-                '712010' => '85',
-                '712011' => '22',
-                '712012' => '72',
-                '712013' => '26',
-                '712014' => '26',
-                '712015' => '44',
-                '712016' => '36',
-                '712017' => '13'
-            ],
-            '300' => [
-                '712001' => '56',
-                '712002' => '8',
-                '712003' => '8',
-                '712004' => '8',
-                '712005' => '8',
-                '712006' => '8',
-                '712007' => '11',
-                '712008' => '47',
-                '712009' => '26',
-                '712010' => '8',
-                '712011' => '9',
-                '712012' => '18',
-                '712013' => '7',
-                '712014' => '8',
-                '712015' => '4',
-                '712016' => '17',
-                '712017' => '9'
-            ],
-            '400' => [
-                '712001' => '192'
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $predict_idx,
+                'IsUse' => 'Y'
             ]
         ];
-
-        return $arr_total_final;
+        return $this->predictFModel->listPredictSuccessful($arr_condition);
     }
 
 

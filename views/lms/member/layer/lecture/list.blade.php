@@ -48,6 +48,9 @@
                         <b style="color:red">[{{$row['PayRouteCcdName']}} - {{$row['SalePatternCcdName']}}]</b>
                         {{$row['CateName']}}
                         | {{$row['SchoolYear']}}학년도
+                        @if($row['LecTypeCcd'] == '607003')
+                            | <span class="red no-line-height">직장인/재학생반</span>
+                        @endif
                         | {{$row['CourseName']}} | {{$row['SubjectName']}} | {{$row['wProfName']}} |
                         <b>{{$row['subProdName']}}</b><br/>
                         <b>[수강기간]</b> {{$row['LecStartDate']}} ~ {{$row['RealLecEndDate']}} ({{$row['RealLecExpireDay']}}일)</br>
@@ -147,6 +150,9 @@
                         <td>
                             {{$row['CateName']}} |
                             {{$subrow['SchoolYear']}}학년도
+                            @if($subrow['LecTypeCcd'] == '607003')
+                                | <span class="red no-line-height">직장인/재학생반</span>
+                            @endif
                             | {{$subrow['CourseName']}} | {{$subrow['SubjectName']}} | {{$subrow['wProfName']}} |
                             <b>{{$subrow['subProdName']}}</b><br/>
                             <b>[수강기간]</b> {{$subrow['LecStartDate']}} ~ {{$subrow['RealLecEndDate']}} ({{$subrow['RealLecExpireDay']}}일)</br>
@@ -248,6 +254,9 @@
                         <td>
                             {{$row['CateName']}} |
                             {{$subrow['SchoolYear']}}학년도
+                            @if($subrow['LecTypeCcd'] == '607003')
+                                | <span class="red no-line-height">직장인/재학생반</span>
+                            @endif
                             | {{$subrow['CourseName']}} | {{$subrow['SubjectName']}} | {{$subrow['wProfName']}} |
                             <b>{{$subrow['subProdName']}}</b><br/>
 
@@ -333,6 +342,9 @@
                         <td>
                             {{$row['CateName']}} |
                             {{$subrow['SchoolYear']}}학년도
+                            @if($subrow['LecTypeCcd'] == '607003')
+                                | <span class="red no-line-height">직장인/재학생반</span>
+                            @endif
                             | {{$subrow['CourseName']}} | {{$subrow['SubjectName']}} | {{$subrow['wProfName']}} |
                             <b>{{$subrow['subProdName']}}</b><br/>
 

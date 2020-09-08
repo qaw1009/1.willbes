@@ -121,8 +121,8 @@
         <div class="evtCtnsBox wb_cts03" id="event1">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1795_03.jpg"  alt="신청하기" usemap="#Map1795_apply" border="0" />
             <map name="Map1795_apply" id="Map1795_apply">
-                <area shape="rect" coords="197,1066,441,1151" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" />
-                <area shape="rect" coords="675,1067,916,1152" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171829" target="_blank" />
+                <area shape="rect" coords="197,1066,441,1151" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171829" target="_blank" />
+                <area shape="rect" coords="675,1067,916,1152" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" />
             </map>
         </div>
 

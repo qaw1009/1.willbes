@@ -27,7 +27,7 @@
 
 <div class="m_sectin1_box">
     <div class="title">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_tit.png" alt="2020 경찰 1차 시험 합격예측 풀서비스">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1775_top_tit.png" alt="2020 경찰 2차 시험 합격예측 풀서비스">
     </div>
 
     <div class="tmap">
@@ -63,17 +63,17 @@
 
 
     <div class="talkShow">
-        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_bn4.png" alt="적중 이벤트">
+        <a href="https://police.willbes.net/promotion/index/cate/3002/code/1766" target="_blank" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1775_top_bn4.png" alt="적중 이벤트">
         </a>
     </div>
 
     <div class="wNotice">
-        <img src="https://static.willbes.net/public/images/promotion/2020/05/1629_top_text.png" alt="최종 합격 솔루션">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1775_top_text.png" alt="최종 합격 솔루션">
         <div>
             <h3>
                 <a href="javascript:go_popup()">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1775_top_notice.png" alt="공지사항">
                 </a>
             </h3>
             <ul>
@@ -84,7 +84,7 @@
                     <li>
                         <a href="javascript:go_popup('{{ $row['BoardIdx'] }}')">
                             {{ $row['Title'] }}
-                            @if(date('Y-m-d') == $row['RegDatm'])<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_icon_new.png" alt="new">@endif
+                            @if(date('Y-m-d') == $row['RegDatm'])<img src="https://static.willbes.net/public/images/promotion/2020/09/1775_icon_new.png" alt="new">@endif
                             <strong>{{ $row['RegDatm'] }}</strong>
                         </a>
                     </li>

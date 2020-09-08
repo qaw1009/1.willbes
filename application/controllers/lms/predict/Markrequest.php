@@ -105,15 +105,28 @@ class Markrequest extends \app\controllers\BaseController
             set_time_limit(0);
             ini_set('memory_limit', $this->_memory_limit_size);
 
-            $data  = $this->predictModel->predictRegistListExcel2($condition, ['PR.RegDatm' => 'DESC']);
+            $paper_condition = [
+                'EQ' => [
+                    'PP.PredictIdx' => $this->_req('search_PredictIdx'),
+                ]
+            ];
+
+            $paperData = $this->predictModel->QuestionMainList($paper_condition);
+            $data  = $this->predictModel->predictRegistListExcel2($condition, ['PR.RegDatm' => 'DESC'], $paperData);
             // export excel
             $file_name = '채점서비스참여현황_'.date('Y-m-d');
 
             $headers = [
                 '구분', '이름', '회원식별자', '회원아이디', '휴대폰번호', '직렬', '지역', '가산점', '응시번호', '수강여부', '시험준비기간', '신청일', '총점',
-                '한국사','영어','형법','형사소송법','경찰학개론','국어','수학','사회','과학','수사','행정법'
             ];
 
+            $paper_headers = [];
+            if (empty($paperData) === false) {
+                foreach ($paperData[0] as $row) {
+                    $paper_headers[$row['PpIdx']] = $row['PaperName'];
+                }
+            }
+            $headers = array_merge($headers,$paper_headers);
             $this->load->library('excel');
             foreach ($data as $key => $val) {
                 $excel_data[$key][] = $val['ApplyType'];
@@ -129,37 +142,20 @@ class Markrequest extends \app\controllers\BaseController
                 $excel_data[$key][] = $val['Period'];
                 $excel_data[$key][] = $val['RegDatm'];
                 $excel_data[$key][] = $val['SumOrgPoint'];
-
-                $excel_data[$key][] = $val['한국사'];
-                $excel_data[$key][] = $val['영어'];
-                $excel_data[$key][] = $val['형법'];
-                $excel_data[$key][] = $val['형사소송법'];
-                $excel_data[$key][] = $val['경찰학개론'];
-                $excel_data[$key][] = $val['국어'];
-                $excel_data[$key][] = $val['수학'];
-                $excel_data[$key][] = $val['사회'];
-                $excel_data[$key][] = $val['과학'];
-                /*$excel_data[$key][] = $val['수사'];
-                $excel_data[$key][] = $val['행정법'];*/
-
-                /*$arr_opoint = explode(',', $val['OPOINT']);
-                foreach ($arr_opoint as $pKey => $pVal) {
-                    $excel_data[$key][] = $pVal;   //과목
-                }*/
+                foreach ($paper_headers as $ppKey => $ppVal) {
+                    $excel_data[$key][] = $val[$ppKey];
+                }
             }
+
             if ($this->excel->exportHugeExcel($file_name, $excel_data, $headers) !== true) {
                 show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
             }
         } else {
-            /*list($data, $count) = $this->predictModel->predictRegistList2($condition, $this->input->post('length'), $this->input->post('start'));*/
-
             $list = [];
             $count = $this->predictModel->predictRegistList2(true, $condition, $this->input->post('length'), $this->input->post('start'));
-
             if ($count > 0) {
                 $list = $this->predictModel->predictRegistList2(false, $condition, $this->input->post('length'), $this->input->post('start'), ['PR.RegDatm' => 'DESC']);
             }
-
             return $this->response([
                 'recordsTotal' => $count,
                 'recordsFiltered' => $count,

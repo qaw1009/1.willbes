@@ -10,6 +10,7 @@
                 <ul class="nav navbar-left panel_toolbox">
                     <li><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_cert_data" aria-expanded="false" aria-controls="addBox_cert_data">합격자 인증번호 등록</button></li>
                     <li><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_final_data" aria-expanded="false" aria-controls="addBox_final_data">가데이터 등록</button></li>
+                    <li><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBox_successful_data" aria-expanded="false" aria-controls="addBox_successful_data">최종합격자수 등록/현황</button></li>
                 </ul>
             </div>
             <div class="x_content collapse multi-collapse" id="addBox_final_data">
@@ -34,6 +35,14 @@
                     <span>합격자인증번호 일괄삭제 : </span>
                     <input type="text" name="del_cert_exam_idx" id="del_cert_exam_idx" class="form-control" style="width:100px;" title="수강인증코드" placeholder="수강인증코드">
                     <button type="button" class="btn btn-danger btn-sm mb-0 ml-10 mr-10 btn-cert-exam-delete">삭제</button>
+                </div>
+            </div>
+            <div class="x_content collapse multi-collapse" id="addBox_successful_data">
+                <div class="col-md-11 form-inline">
+                    <input type="text" name="predict_idx_successful" id="predict_idx_successful" class="form-control" style="width:100px;" title="합격예측코드" placeholder="합격예측코드" maxlength="6">
+                    <input type="file" id="attach_file_successful" name="attach_file_successful" class="form-control" title="엑셀파일" value="">
+                    <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-upload-successful">엑셀 업로드</button>
+                    <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-download-successful">샘플엑셀 다운로드</button>
                 </div>
             </div>
         </form>
@@ -126,6 +135,21 @@
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
 
+            //가데이터 셈플다운로드
+            $('.btn-excel-download').on('click', function() {
+                location.replace('{{ site_url('/predict/predictFinal/sampleDownload') }}');
+            });
+
+            //인증번호 등록 셈플 다운로드
+            $('.btn-excel-cert-download').on('click', function() {
+                location.replace('{{ site_url('/predict/predictFinal/sampleCertDownload') }}');
+            });
+
+            $('.btn-excel-download-successful').on('click', function() {
+                location.replace('{{ site_url('/predict/predictFinal/sampleSuccessfulDownload') }}');
+            });
+
+            //가데이터 등록
             $('.btn-excel-upload').on('click', function() {
                 var data, is_file, files;
                 var predict_idx = $invoice_form.find('input[name="predict_idx"]').val();
@@ -154,14 +178,7 @@
                 }, showError, false, 'POST', 'json', is_file);
             });
 
-            $('.btn-excel-download').on('click', function() {
-                location.replace('{{ site_url('/predict/predictFinal/sampleDownload') }}');
-            });
-
-            $('.btn-excel-cert-download').on('click', function() {
-                location.replace('{{ site_url('/predict/predictFinal/sampleCertDownload') }}');
-            });
-
+            //인증번호 등록
             $('.btn-excel-cert-upload').on('click', function() {
                 var data, is_file, files;
                 var exam_cert_idx = $invoice_form.find('input[name="exam_cert_idx"]').val();
@@ -217,11 +234,38 @@
                 }, showError, false, 'POST');
             });
 
+            //최종합격자수 등록
+            $('.btn-excel-upload-successful').on('click', function() {
+                var data, is_file, files;
+                var predict_idx = $invoice_form.find('input[name="predict_idx_successful"]').val();
+                files = $invoice_form.find('input[name="attach_file_successful"]')[0].files[0];
+
+                if (predict_idx == '') { alert('합격예측코드를 입력해주세요.'); return; }
+                if (typeof files === 'undefined') { alert('엑셀파일을 선택해 주세요.'); return; }
+
+                data = new FormData();
+                data.append('{{ csrf_token_name() }}', $invoice_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                data.append('_method', 'POST');
+                data.append('predict_idx', predict_idx);
+                data.append('attach_file', files);
+                is_file = true;
+
+                if (!confirm('업로드 하시겠습니까?')) { return; }
+                sendAjax('{{ site_url('/predict/predictFinal/successfulDataUpload') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                        $invoice_form.find('input[name="attach_file_successful"]').val('');
+                    }
+                }, showError, false, 'POST', 'json', is_file);
+            });
+
             // DataTables
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
+                    { text: '<i class="fa fa-check-square-o mr-5"></i> 합격자수 등록정보', className: 'btn-sm btn-primary border-radius-reset btn-successful-info' },
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success ml-5 border-radius-reset btn-excel' }
                 ],
                 ajax: {
                     'url' : '{{ site_url('/predict/predictFinal/listAjax') }}',
@@ -255,6 +299,16 @@
                 ]
             });
 
+            //최종합격자 수 모달팝업
+            $('.btn-successful-info').on('click', function(event) {
+                var predict_idx = $search_form.find('select[name="search_PredictIdx"]').val();
+                if (predict_idx == '' || predict_idx == null) { alert('합격예측상품을 선택해주세요.'); return false; }
+                $('.btn-successful-info').setLayer({
+                    "url" : "{{ site_url('/predict/predictFinal/listSuccessfulModal/') }}" + predict_idx,
+                    "width" : "1200",
+                });
+            });
+
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
@@ -268,7 +322,6 @@
                 if (!confirm('삭제 하시겠습니까?')) {
                     return;
                 }
-
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',

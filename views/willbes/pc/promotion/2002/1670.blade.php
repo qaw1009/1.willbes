@@ -3,11 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">     
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
@@ -23,8 +19,8 @@
         .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
         .skyBanner ul li{padding-bottom:10px;}
        
-        .top_police{background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_police_bg.jpg) no-repeat center top;}
-        .evtTop {background:#5d5d5d url(https://static.willbes.net/public/images/promotion/2020/06/1670_top_bg.jpg) no-repeat center top;}
+        .top_police{background:#0a0a0a}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1670_top_bg.jpg) no-repeat center top;}
         .top_youtube {background:#e0e0e0;position:relative;}
         .youtubeGod{position:absolute;top:290px;left:50%;margin-left:-351px;}
         .youtubeGod iframe {width:707px;height:398px;}
@@ -65,6 +61,7 @@
             <input type="hidden" name="register_chk_val[]" value=""/>
             -->
 
+            {{--
             <div class="skyBanner">
                 <ul>                  
                     <li>
@@ -72,8 +69,10 @@
                     </li>
                 </ul>               
             </div>
+            --}}
+
             <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="신광은 경찰팀">
+                <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
             </div>
 
             <div class="evtCtnsBox evtTop">
@@ -91,7 +90,11 @@
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_01.jpg" title="무료특강&질문하기" >               
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1670_01.jpg" usemap="#Map1670_0908" title="무료특강&질문하기" border="0" >
+                <map name="Map1670_0908">
+                    <area shape="rect" coords="318,1017,794,1112" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/172060" target="_blank" alt="무료특강신청">
+                </map> 
+              
                 {{--댓글url--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -107,6 +110,7 @@
             </div>
             --}}      
 
+            {{--
             <div class="evtCtnsBox evt03" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_03.jpg" title="신광은 형사법 무료특강">
                     <div class="request" id="request">
@@ -209,7 +213,8 @@
             </div>
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_04.jpg" title="학원 위치 및 정보"/>
-            </div>           
+            </div>  
+            --}}         
 
         </form>
 	</div>

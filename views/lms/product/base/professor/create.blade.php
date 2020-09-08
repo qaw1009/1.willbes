@@ -281,7 +281,7 @@
                             </div>
                             <div class="control-label col-md-1">[카페 URL]</div>
                             <div class="col-md-6 item">
-                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" required="requiredif:is_cafe_use,Y" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}" disabled="disabled">
+                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" required="required_if:is_cafe_use,Y" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}" disabled="disabled">
                             </div>
                         </div>
                     </div>

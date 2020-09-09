@@ -16,7 +16,7 @@
 
     .tabMenu {width:100%; margin-bottom:30px}
     .tabMenu li {display:inline; float:left; width:50%}
-    .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px}
+    .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px; line-height:1.5}
     .tabMenu li span {display:block; font-size:14px}
     .tabMenu li a:hover,
     .tabMenu li a.active {background:#358c78; color:#fff}
@@ -88,16 +88,16 @@
 
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_03.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
-        <ul class="tabMenu">
+        <ul class="tabMenu NSK-Black">
             <li>
                 <a href="#tab1" class="active">
-                    <span>소방 합격 전문가</span>
+                    <span class="NSK">소방 합격 전문가</span>
                     이종오 교수님을 소개합니다.
                 </a>
             </li>
             <li>
                 <a href="#tab2">
-                    <span>불꽃 같은 합격 커리큘럼</span>
+                    <span class="NSK">불꽃 같은 합격 커리큘럼</span>
                     이종오 소방직 공개설명회
                 </a>
             </li>

@@ -63,7 +63,7 @@
 
             .tabMenu {width:800px; margin:0 auto 30px}
             .tabMenu li {display:inline; float:left; width:50%}
-            .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px}
+            .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px; line-height:1.5}
             .tabMenu li span {display:block; font-size:14px}
             .tabMenu li a:hover,
             .tabMenu li a.active {background:#358c78; color:#fff}
@@ -94,7 +94,7 @@
         
     </style>
     
-    <div class="p_re evtContent NGR" id="evtContainer">
+    <div class="p_re evtContent NSK" id="evtContainer">
         {{--
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
@@ -102,7 +102,7 @@
         </div>   
         --}}
 
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
+        <div class="evtCtnsBox time NSK-Black" id="newTopDday">
             <div>
                 <table>
                     <tr>
@@ -181,16 +181,16 @@
 
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_02.jpg" title="" />
 
-            <ul class="tabMenu">
+            <ul class="tabMenu NSK-Black">
                 <li>
                     <a href="#tab1" class="active">
-                        <span>소방 합격 전문가</span>
+                        <span class="NSK">소방 합격 전문가</span>
                         이종오 교수님을 소개합니다.
                     </a>
                 </li>
                 <li>
                     <a href="#tab2">
-                        <span>불꽃 같은 합격 커리큘럼</span>
+                        <span class="NSK">불꽃 같은 합격 커리큘럼</span>
                         이종오 소방직 공개설명회
                     </a>
                 </li>
@@ -220,7 +220,7 @@
             </div>    
         </div><!--evt04//-->
 
-        <div class="evtCtnsBox evtInfo NGR" id="careful">
+        <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">윌비스 소방PASS 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>

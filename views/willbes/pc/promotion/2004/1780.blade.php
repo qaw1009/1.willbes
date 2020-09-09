@@ -568,10 +568,6 @@
                 return false; 
             });
 
-        //모달팝업 
-
-            $('.PopupWrap').fadeIn();
-            $('#PopupBackWrap').fadeIn();
 
             //레이어팝업 close 버튼 클릭        
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
@@ -608,6 +604,8 @@
             // 팝업 오늘하루안보기 하드코딩
             if($.cookie('_wb_client_popup_860') !== 'done') {
                 $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
             }
         });
     </script>

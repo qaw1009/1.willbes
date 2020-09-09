@@ -381,6 +381,7 @@
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
             </ul>
         </div>
+        <div id="PopupBackWrap" class="willbes-Layer-Black" style="display: block;"></div>
         
     </div>
     <!-- End Container -->
@@ -586,6 +587,17 @@
                         expires: hide_days
                     });
                 }
+            });
+
+            // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 
+            if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                $('#PopupBackWrap').fadeOut();
+            }
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
             });
 
             // 팝업 오늘하루안보기 하드코딩

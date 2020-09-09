@@ -14,6 +14,17 @@
     .evt02 {padding-bottom:120px; background:#f6f6f6}
     .evt02 a {display:block; margin:0 auto; width:60%; font-size:20px; background:#293342; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
 
+    .tabMenu {width:100%; margin-bottom:30px}
+    .tabMenu li {display:inline; float:left; width:50%}
+    .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px}
+    .tabMenu li span {display:block; font-size:14px}
+    .tabMenu li a:hover,
+    .tabMenu li a.active {background:#358c78; color:#fff}
+    .tabMenu:after {content:""; display:block; clear:both}
+    .embed-container {position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;} 
+    .embed-container iframe, 
+    .embed-container object, 
+    .embed-container embed {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
     .btnbuy {max-width:720px; margin:0 auto}
@@ -64,19 +75,45 @@
     </div>   
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1060m_top.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_top.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1060m_01.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_01.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1060m_02.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_02.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1060m_03.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_03.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
+        <ul class="tabMenu">
+            <li>
+                <a href="#tab1" class="active">
+                    <span>소방 합격 전문가</span>
+                    이종오 교수님을 소개합니다.
+                </a>
+            </li>
+            <li>
+                <a href="#tab2">
+                    <span>불꽃 같은 합격 커리큘럼</span>
+                    이종오 소방직 공개설명회
+                </a>
+            </li>
+        </ul>  
+        <div class="embed-container">
+            <div id="tab1" class="tabcts">
+                <iframe src="https://www.youtube.com/embed/xBWCniTv_Ro?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+            </div>
+            <div id="tab2" class="tabcts">
+                <iframe src="https://www.youtube.com/embed/b06AI4w38gY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+            </div>
+        </div>
+    </div>
+    
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_04.jpg" alt="윌비스 신광은 경찰학원 파이널패스" >
     </div> 
 
     <div class="evtCtnsBox evtFooter" id="infoText">
@@ -88,7 +125,7 @@
             [공채] 국어, 영어, 한국사, 소방학개론, 소방관계법규<br>
             [특채] 구조/구급 – 국어, 생활영어, 소방학ㅣ관련학과 – 국어, 소방학, 소방관계법규</li>
             <li>본PASS는 윌비스공무원학원 소방단독반 전문 교수진의 과정을 제공하는 상품입니다.<br>
-            - 국어 김세령, 영어 [공채] 이아림, 영어[특채] 양익, 한국사 한경준, 소방학개론/소방관계법규 김종상</li>
+            - 국어 김세령, 영어 [공채] 이아림, 영어[특채] 양익, 한국사 한경준, 소방학개론/소방관계법규 이종오/김종상</li>
             <li>2019년 7월부터 진행된 2020년 대비 전 과정 및 2021년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
             (일부 교수진의 경우, 신규 과정이 업데이트되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.) </li>
             <li>본 PASS 이용 시 수강기간 내에 시행되는 소방직 대비 온라인 모의고사 응시권이 제공됩니다.</li>
@@ -210,6 +247,30 @@
         }
         location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code;
     }
+
+    var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/b06AI4w38gY?rel=0";
+
+		$(document).ready(function(){
+		$(".tabcts").hide(); 
+		$(".tabcts:first").show();
+		$(".tabMenu li a").click(function(){ 
+			var activeTab = $(this).attr("href"); 
+			var html_str = "";
+			if(activeTab == "#tab1"){
+				html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+			}else if(activeTab == "#tab2"){
+				html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+			}
+			$(".tabMenu li a").removeClass("active"); 
+			$(this).addClass("active"); 
+			$(".tabcts").hide(); 
+			$(".tabcts").html(''); 
+			$(activeTab).html(html_str);
+			$(activeTab).fadeIn(); 
+			return false; 
+			});
+		});
 
 </script>
 

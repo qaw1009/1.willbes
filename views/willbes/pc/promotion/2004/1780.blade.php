@@ -546,47 +546,45 @@
 		var tab2_url = "https://www.youtube.com/embed/b06AI4w38gY?rel=0";
 
 		$(document).ready(function(){
-		$(".tabcts").hide(); 
-		$(".tabcts:first").show();
-		$(".tabMenu li a").click(function(){ 
-			var activeTab = $(this).attr("href"); 
-			var html_str = "";
-			if(activeTab == "#tab1"){
-				html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
-			}else if(activeTab == "#tab2"){
-				html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
-			}
-			$(".tabMenu li a").removeClass("active"); 
-			$(this).addClass("active"); 
-			$(".tabcts").hide(); 
-			$(".tabcts").html(''); 
-			$(activeTab).html(html_str);
-			$(activeTab).fadeIn(); 
-			return false; 
-			});
-        });
-        
+            $(".tabcts").hide(); 
+            $(".tabcts:first").show();
+            $(".tabMenu li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+                }
+                $(".tabMenu li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabcts").hide(); 
+                $(".tabcts").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+            });
 
-        //레이어팝업
-        //close 버튼 클릭
-        $('.PopupWrap').on('click', '.btn-popup-close', function() {
-            var popup_idx = $(this).data('popup-idx');
-            var hide_days = $(this).data('popup-hide-days');
+            //레이어팝업 close 버튼 클릭        
+            $('.PopupWrap').on('click', '.btn-popup-close', function() {
+                var popup_idx = $(this).data('popup-idx');
+                var hide_days = $(this).data('popup-hide-days');
 
-            //// 팝업 close
-            $(this).parents('.PopupWrap').fadeOut();
+                // 팝업 close
+                $(this).parents('.PopupWrap').fadeOut();
 
-            //하루 보지않기
-            if (hide_days !== '') {
-                var domains = location.hostname.split('.');
-                var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+                //하루 보지않기
+                if (hide_days !== '') {
+                    var domains = location.hostname.split('.');
+                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
 
-                $.cookie('_wb_client_popup_' + popup_idx, 'done', {
-                    domain: domain,
-                    path: '/',
-                    expires: hide_days
-                });
-            }
+                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
+                        domain: domain,
+                        path: '/',
+                        expires: hide_days
+                    });
+                }
+            });
         });
     </script>
 

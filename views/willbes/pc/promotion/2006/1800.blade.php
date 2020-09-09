@@ -72,7 +72,7 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/09/1800_03.jpg" alt="" />
 			<ul class="tabs">
 				<li><a href="#tab01">노동법</a></li>
-				<li><a href="#tab02">행정방송</a></li>
+				<li><a href="#tab02">행정쟁송</a></li>
 				<li><a href="#tab03">인사관리</a></li>
 				<li><a href="#tab04">경영조직</a></li>
                 <li><a href="#tab05">노동경제</a></li>
@@ -106,7 +106,7 @@
                 </map>
 			</div>
 			<div id="tab02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1800_03_02.jpg" alt="행정방송" usemap="#Map1800_tab02" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1800_03_02.jpg" alt="행정쟁송" usemap="#Map1800_tab02" border="0" />
                 <map name="Map1800_tab02" id="Map1800_tab02">
                     <area shape="rect" coords="867,314,965,352" href="javascript:go_PassLecture('171826');" />
                     <area shape="rect" coords="867,364,966,401" href="javascript:go_PassLecture('171873');" />
@@ -325,7 +325,7 @@
                     return;
                 }
 
-                var url = '{{ site_url('/package/show/cate/309002/pack/648002/prod-code/') }}' + code;
+                var url = '{{ site_url('/package/show/cate/309002/pack/648001/prod-code/') }}' + code;
                 location.href = url;
             }    
     </script>

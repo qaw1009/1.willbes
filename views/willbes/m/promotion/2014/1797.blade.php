@@ -102,7 +102,7 @@
     <div class="evtCtnsBox evt03">
         <div class="video-container-box">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/AhPAFng06cA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/CMDjINjDQyg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div class="btn NSK-Black">
@@ -110,7 +110,7 @@
             {{-- 
             <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">지금, 사전 예약하고<br> 끝장 혜택받기 ></a>
             <div id="pass" class="infoCheck" style="display: none;">
-                <input type="checkbox" name="y_pkg" value="169144" checked/>
+                <input type="checkbox" name="y_pkg" value="172160" checked/>
                 <input type="checkbox" id="is_chk" name="is_chk" checked>
             </div>
             --}}
@@ -288,7 +288,7 @@
 
         function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/172160';
         }
 
         function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)

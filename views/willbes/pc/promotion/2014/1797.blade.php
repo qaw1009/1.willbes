@@ -125,14 +125,14 @@
         <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_02.jpg" alt="사전예약 특별혜택" >
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/AhPAFng06cA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/CMDjINjDQyg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
             <div class="btn NSK-Black">
                 <a href="javascript:goLecture();">지금, 사전 예약하고 끝장 혜택받기 ></a>
                 {{--
                 <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">지금, 사전 예약하고 끝장 혜택받기 ></a>
                 <div id="pass" class="infoCheck" style="display: none;">
-                    <input type="checkbox" name="y_pkg" value="169144" checked/>
+                    <input type="checkbox" name="y_pkg" value="172160" checked/>
                     <input type="checkbox" id="is_chk" name="is_chk" checked>
                 </div>
                 --}}
@@ -269,7 +269,7 @@
     <script type="text/javascript"> 
         function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/169144';
+            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/172160';
         };
 
         /*디데이카운트다운*/

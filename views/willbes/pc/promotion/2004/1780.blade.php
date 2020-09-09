@@ -568,6 +568,7 @@
                 return false; 
             });
 
+        //모달팝업 
             //레이어팝업 close 버튼 클릭        
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 var popup_idx = $(this).data('popup-idx');

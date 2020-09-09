@@ -73,7 +73,7 @@
                                 <td>{{ number_format((int)$val2['PickNum']) }} ({{ number_format((int)$val2['TakeNum']) }})</td>
                             </tr>
                             <tr>
-                                <th>2020 1차 경쟁률</th>
+                                <th>2020 2차 경쟁률</th>
                                 <td>{{ $val2['CompetitionRateNow'] }}</td>
                             </tr>
                             <tr>
@@ -306,14 +306,14 @@
                                 @endforeach
                             @endif
                             <tr>
-                                <td>2019년 2차</td>
-                                <th>구분</th>
                                 <td>2020년 1차</td>
+                                <th>구분</th>
+                                <td>2020년 2차</td>
                             </tr>
                         </table>
                     </div>
                 @endforeach
-                {{--<div class="tx-red mt10">※ 2019년 1차 경찰시험에서는 경행경채를 진행하지 않았으므로 해당 과목(수사,행정법)에 대한 19년 1차 체감난이도는 제공되지 않습니다.</div>--}}
+                <div class="tx-red mt10">※ 2020년 1차 경찰시험에서는 경행경채를 진행하지 않았으므로 해당 과목(수사, 행정법)에 대한 19년 1차 체감난이도를 제공하지 않습니다.</div>
             @endif
         </div>
 
@@ -771,10 +771,10 @@
 
         function setAreaMsg(num)
         {
-            var msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2019년 2차 시험 기준임.';
+            var msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2020년 1차 시험 기준임.';
             switch (num) {
                 case 800 :
-                    msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2018년 3차 시험 기준임.';
+                    msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2019년 2차 시험 기준임.';
                     break;
                 default :
                     break;

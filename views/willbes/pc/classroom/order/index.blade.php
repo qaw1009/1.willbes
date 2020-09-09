@@ -123,6 +123,11 @@
 
             initSearch();
 
+            // 기간설정 버튼 클릭
+            $search_form.on('click', '.btn-set-search-date', function() {
+                $search_form.submit();
+            });
+
             // 과정, 구분, 교재주문 선택시 검색
             $search_form.on('change', 'select[name="site_group"], select[name="is_pass"], input[name="is_book"]', function () {
                 $search_form.submit();

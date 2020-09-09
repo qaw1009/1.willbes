@@ -65,6 +65,11 @@
 
             initSearch();
 
+            // 기간설정 버튼 클릭
+            $search_form.on('click', '.btn-set-search-date', function() {
+                $search_form.submit();
+            });
+
             // 과정, 정렬일자, 상태 변경시 검색
             $search_form.on('change', 'select[name="site_group"], select[name="order_date_type"], select[name="valid_status"]', function () {
                 $search_form.submit();

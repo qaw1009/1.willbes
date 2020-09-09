@@ -372,7 +372,7 @@
         </div>
         <!--wb_tip//-->
 
-        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox">
+        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1780_popup.gif" usemap="#PopupImgMap860">
             </div>
@@ -381,6 +381,7 @@
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
             </ul>
         </div>
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
         
     </div>
     <!-- End Container -->
@@ -567,6 +568,7 @@
                 return false; 
             });
 
+
             //레이어팝업 close 버튼 클릭        
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 var popup_idx = $(this).data('popup-idx');
@@ -586,7 +588,25 @@
                         expires: hide_days
                     });
                 }
+
+                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 
+                if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                    $('#PopupBackWrap').fadeOut();
+                }
+            });            
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
             });
+
+            // 팝업 오늘하루안보기 하드코딩
+            if($.cookie('_wb_client_popup_860') !== 'done') {
+                $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
+            }
         });
     </script>
 

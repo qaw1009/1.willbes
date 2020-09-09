@@ -173,19 +173,18 @@
                                             <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆 2탄</p>
                                         </div>
                                     </a>
-                                </li>
-                                
-                                {{--
+                                </li>                                
+                             
                                 <li class="">
                                     <a href="#tab8">
                                         <span class="num_box" data-num="8">8</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200615/20200615201504_5886.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[확인국어]  문명 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                            <span>국어 / 문명</span>
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!? 피날레!</p>
                                         </div>
                                     </a>
                                 </li>  
+                                {{--
                                 <li class="">
                                     <a href="#tab9">
                                         <span class="num_box" data-num="9">9</span>
@@ -275,9 +274,8 @@
         var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
         var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
         var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
-        var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";    
-
-                      
+        var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
+        var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";                        
     
 
         $(function() {
@@ -299,6 +297,8 @@
                     video_tab_url = tab6_url;
                 }else if(activeTab == "#tab7"){
                     video_tab_url = tab7_url;
+                }else if(activeTab == "#tab8"){
+                    video_tab_url = tab8_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

@@ -92,7 +92,7 @@
                                                             <li><a class="btn-set-search-date" data-period="6-months">6개월</a></li>
                                                         </ul>
                                                     </span>
-                                                    <button type="submit" onclick="" class="search-Btn">
+                                                    <button type="submit" class="search-Btn">
                                                         <span>검색</span>
                                                     </button>
                                                 </div>
@@ -209,6 +209,11 @@
             };
 
             initSearch();
+
+            // 기간설정 버튼 클릭
+            $search_form.on('click', '.btn-set-search-date', function() {
+                $search_form.submit();
+            });
 
             // 과정, 정렬일자, 상태 변경시 검색
             $search_form.on('change', 'select[name="site_group"]', function () {

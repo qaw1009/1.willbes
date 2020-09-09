@@ -2161,18 +2161,35 @@ class EventLectureModel extends WB_Model
         $limit_type = element('limit_type', $input);
 
         try {
-            if ($limit_type == 'S' && empty(element('er_idx', $input)) === false) {
-                // 단일 리스트: 수정
-                $update_data = [
-                    'PersonLimitType' => element('person_limit_type', $input),
-                    'PersonLimit' => element('person_limit', $input),
-                    'Name' => element('register_name', $input),
-                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-                    'UpdDatm' =>  date('Y-m-d H:i:s')
-                ];
+            if ($limit_type == 'S') {
+                if(empty(element('er_idx', $input)) === false) {
+                    // 단일 리스트: 수정
+                    $update_data = [
+                        'PersonLimitType' => element('person_limit_type', $input),
+                        'PersonLimit' => element('person_limit', $input),
+                        'Name' => element('register_name', $input),
+                        'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                        'UpdDatm' =>  date('Y-m-d H:i:s')
+                    ];
 
-                if ($this->_conn->set($update_data)->where('ErIdx', element('er_idx', $input))->update($this->_table['event_register']) === false) {
-                    throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
+                    if ($this->_conn->set($update_data)->where('ErIdx', element('er_idx', $input))->update($this->_table['event_register']) === false) {
+                        throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
+                    }
+                } else if(empty(element('register_name', $input)) === false) {
+                    // 단일 리스트: 등록 (최초 등록 안하고 이후 수정해서 추가하는 케이스)
+                    $this->_conn->set(['IsStatus' => 'N'])->where('ElIdx', $el_idx)->update($this->_table['event_register']);   //이전정보 삭제 업데이트
+                    $insert_data = [
+                        'ElIdx' => $el_idx,
+                        'PersonLimitType' => element('person_limit_type', $input),
+                        'PersonLimit' => element('person_limit', $input),
+                        'Name' => element('register_name', $input),
+                        'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                        'RegIp' => $this->input->ip_address()
+                    ];
+
+                    if ($this->_conn->set($insert_data)->insert($this->_table['event_register']) === false) {
+                        throw new \Exception('프로모션 신청리스트 등록을 실패하였습니다.');
+                    }
                 }
             } else if ($limit_type == 'M') {
                 // 다중 리스트: 비교 수정

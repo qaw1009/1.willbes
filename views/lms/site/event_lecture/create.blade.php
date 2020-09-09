@@ -199,7 +199,7 @@
                                                 </select>
                                                 <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
                                                 <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
-                                                <button type="button" class="btn btn-dark btn-register-submit" style="margin-bottom: 2px;" data-register-idx="{{empty($list_event_register['S']) === false ? $list_event_register['S'][0]['ErIdx'] : ''}}">단일특강수정</button>
+                                                {{-- <button type="button" class="btn btn-dark btn-register-submit" style="margin-bottom: 2px;" data-register-idx="{{empty($list_event_register['S']) === false ? $list_event_register['S'][0]['ErIdx'] : ''}}">단일특강수정</button> --}}
                                             </div>
                                         </div>
                                     </div>

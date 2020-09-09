@@ -39,7 +39,7 @@
                         <li><a class="btn-set-search-date" data-period="6-months">6개월</a></li>
                     </ul>
                 </span>
-                <button type="submit" onclick="" class="search-Btn">
+                <button type="submit" class="search-Btn">
                     <span>검색</span>
                 </button>
             </div>

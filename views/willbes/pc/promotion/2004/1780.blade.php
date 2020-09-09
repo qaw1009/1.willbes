@@ -107,7 +107,9 @@
         .tab02 li a:hover,
         .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
         .tab02 li:last-child a {margin:0}
-        .tab02:after {content:""; display:block; clear:both}      
+        .tab02:after {content:""; display:block; clear:both}   
+        
+        #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
 
     </style>
 
@@ -370,7 +372,7 @@
         </div>
         <!--wb_tip//-->
 
-        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="position:fixed; top:220px; margin-left:-350px; display:block;">
+        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1780_popup.gif" usemap="#PopupImgMap860">
             </div>

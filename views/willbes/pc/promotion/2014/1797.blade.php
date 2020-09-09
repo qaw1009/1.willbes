@@ -229,8 +229,8 @@
         </div>
 
         <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_07.jpg" alt="소문내기 이벤트" usemap="#Map1722A" border="0">
-            <map name="Map1722A">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_07.jpg" alt="소문내기 이벤트" usemap="#Map1797A" border="0">
+            <map name="Map1797A">
                 <area shape="rect" coords="52,768,134,852" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" alt="블로그">
                 <area shape="rect" coords="159,768,240,852" href="https://www.instagram.com" target="_blank" alt="인스타">
                 <area shape="rect" coords="266,768,347,852" href="https://www.facebook.com" target="_blank" alt="페이스북">

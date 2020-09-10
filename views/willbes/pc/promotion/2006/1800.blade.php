@@ -209,17 +209,12 @@
             <div id="tab06">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1800_03_06.jpg" alt="민사소송" usemap="#Map1800_tab06" border="0" />
                 <map name="Map1800_tab06" id="Map1800_tab06">
-                    <area shape="rect" coords="866,313,966,352" href="javascript:go_PassLecture('172056');" />
-                    <area shape="rect" coords="866,364,965,402" href="javascript:go_PassLecture('172057');" />
-                    <area shape="rect" coords="866,414,965,452" href="javascript:go_PassLecture('172058');" />
-                    <area shape="rect" coords="867,464,966,502" href="javascript:go_PassLecture('172059');" />
-                    <area shape="rect" coords="865,514,965,551" href="javascript:go_PassLecture('172063');" />
-                    <area shape="rect" coords="866,563,966,601" href="javascript:go_PassLecture('172064');" />
-                    <area shape="rect" coords="867,613,965,652" href="javascript:go_PassLecture('172066');" />
-                    <area shape="rect" coords="868,664,965,701" href="javascript:go_PassLecture('172069');" />
-                    <area shape="rect" coords="866,713,965,752" href="javascript:go_PassLecture('172074');" />
-                    <area shape="rect" coords="867,763,965,801" href="javascript:go_PassLecture('172077');" />
-                    <area shape="rect" coords="867,813,965,852" href="javascript:go_PassLecture('172081');" />
+                    <area shape="rect" coords="867,314,965,351" href="javascript:go_PassLecture('172056');" />
+                    <area shape="rect" coords="867,364,966,401" href="javascript:go_PassLecture('172058');" />
+                    <area shape="rect" coords="867,413,965,451" href="javascript:go_PassLecture('172063');" />
+                    <area shape="rect" coords="867,464,965,501" href="javascript:go_PassLecture('172066');" />
+                    <area shape="rect" coords="867,513,965,552" href="javascript:go_PassLecture('172074');" />
+                    <area shape="rect" coords="867,563,965,602" href="javascript:go_PassLecture('172081');" />
                 </map>
 			</div>
         </div>

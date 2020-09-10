@@ -70,7 +70,7 @@
                         },
                         columns: [
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                    return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                                    return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'OrderNo', 'class': 'text-center'},
                             {'data' : 'TakeNumber', 'class': 'text-center'},

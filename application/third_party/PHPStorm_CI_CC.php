@@ -224,6 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGroupModel $regGroupModel                                         MockTest RegGroup Model Class
  * @property MemberPrivateModel $memberPrivateModel                               MockTest MemberPrivate Model Class
  * @property SearchMockTestModel $searchMockTestModel                      Search MockTest Model Class
+ * @property ApplyChangeModel $applyChangeModel                                 MockTest ApplyChange Model Class
  ***************** Predict *****************************************************************************
  * @property PredictModel $predictModel                                    Predict Model Class
  * @property Predict2Model $predict2Model                                    Predict2 Model Class

@@ -312,7 +312,7 @@ class Result extends \app\controllers\FrontController
                 $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
-                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['TotalRank'];
+                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
                 $data_e['상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
                 $data_e['상위30%'][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
                 /*$data_default_e['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];*/
@@ -325,8 +325,8 @@ class Result extends \app\controllers\FrontController
                 $data_s['전체'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
                 $data_s['최고점'][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];
                 $data_s['최고점'][$val['MpIdx']]['adjust'] = $val['MaxAdjustPoint'];
-                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['TotalRank'];
-                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['TotalRank'];
+                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['MemCount'];
+                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['MemCount'];
                 $data_s['상위10%'][$val['MpIdx']]['org'] = $val['Top10AvgOrgPoint'];
                 $data_s['상위10%'][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
                 $data_s['상위30%'][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];

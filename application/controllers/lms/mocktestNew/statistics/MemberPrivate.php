@@ -293,7 +293,10 @@ class MemberPrivate extends BaseMocktest
             if ($val['MockType'] == 'E') {
                 $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
-                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';
+
+                /*$data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';*/
+                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
+
                 $data_e['백분위'][$val['MpIdx']] = $val['tpct'].'%';
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
@@ -306,8 +309,12 @@ class MemberPrivate extends BaseMocktest
                 $data_s['본인'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
                 $data_s['전체평균'][$val['MpIdx']]['org'] = $val['AvgOrgPoint'];
                 $data_s['전체평균'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
-                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';
-                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';
+
+                /*$data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';
+                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['TotalRank'].' ['.$val['MemCount'].']';*/
+                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['MemCount'];
+                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['MemCount'];
+
                 $data_s['백분위'][$val['MpIdx']]['org'] = $val['tpct'].'%';
                 $data_s['백분위'][$val['MpIdx']]['adjust'] = $val['tpct'].'%';
                 $data_s['최고점'][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];
@@ -353,7 +360,10 @@ class MemberPrivate extends BaseMocktest
                 $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
-                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['TotalRank'];
+
+                /*$data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['TotalRank'];*/
+                $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
+
                 $data_e['상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
                 $data_e['상위30%'][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
                 /*$data_default_e['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];*/
@@ -366,8 +376,12 @@ class MemberPrivate extends BaseMocktest
                 $data_s['전체'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
                 $data_s['최고점'][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];
                 $data_s['최고점'][$val['MpIdx']]['adjust'] = $val['MaxAdjustPoint'];
-                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['TotalRank'];
-                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['TotalRank'];
+
+                /*$data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['TotalRank'];
+                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['TotalRank'];*/
+                $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['MemCount'];
+                $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['MemCount'];
+
                 $data_s['상위10%'][$val['MpIdx']]['org'] = $val['Top10AvgOrgPoint'];
                 $data_s['상위10%'][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
                 $data_s['상위30%'][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];

@@ -250,8 +250,10 @@
                     <dd>43강 여러분의 경제적 자유를 응원합니다 / 종강</dd>
                 </dl>
             </div>
+        </div> 
+        <div class="evtCtnsBox">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_05.jpg" alt="" >       
         </div>
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_05.jpg" alt="" >
     </div>
 
     <div id="tab04">

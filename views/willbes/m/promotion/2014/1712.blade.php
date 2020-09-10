@@ -87,17 +87,7 @@
     .evt03 {}  
 
     .evt04 {text-align:left; padding:50px 20px}
-    .evt04 h5 {
-        background: #f69ab1;
-        background: -webkit-linear-gradient(left, #f69ab1, #b5ade9);
-        background:    -moz-linear-gradient(right, #f69ab1, #b5ade9);
-        background:      -o-linear-gradient(right, #f69ab1, #b5ade9);
-        background:         linear-gradient(to right, #f69ab1, #b5ade9);
-        -webkit-background-clip: text;
-                background-clip: text;
-        color: transparent;
-        font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
-    _:-ms-fullscreen, :root .evt04 h5 {color: #f69ab1; background:#fff}
+    .evt04 h5 { font-size:2.2rem; line-height:1; margin-bottom:20px; letter-spacing:-1px;color: #f69ab1; background:#fff}
     .evt04 .evt04Txt01 {font-size:1.6rem;}
     .evt04 dl {margin-top:30px;}
     .evt04 dl:first-child {margin:0}

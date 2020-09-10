@@ -9,11 +9,11 @@
 
     .evt01 {}
 
-    .evt02 { text-align:center;}
-    .evt02 .dday {font-size:22px;padding:20px 0;}
+    .evt02 { text-align:center; padding-bottom:100px; background:#212121}
+    .evt02 .dday {font-size:22px;padding:20px 0; background:#fff}
     .evt02 .dday span {color:#a0774e; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
 
-    .evt03 {background:#212121; padding-bottom:80px}   
+    .evt03 {}   
 
     .evt04 div {font-size:16px; font-weight:600; margin-top:20px}
 
@@ -51,10 +51,10 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .evtCtnsBox .btn {width:90%; margin:30px auto 0}
-    .evtCtnsBox .btn a {display:block; color:#ebc667; background:#fff; border-radius:30px; font-size:20px; padding:15px 0; border:1px solid #ebc667;
+    .evtCtnsBox .btn a {display:block; color:#fff; background:#ebc667; border-radius:30px; font-size:20px; padding:15px 0; border:1px solid #ebc667;
         box-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3)
     }
-    .evtCtnsBox .btn a:hover {color:#fff; background:#ebc667;}
+
 
     .evtFooter {margin:80px auto 0; padding:30px 20px; text-align:left; color:#3a3a3a; background:#c2c2c2; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -67,7 +67,7 @@
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px) {        
         .evt02 .dday strong {font-size:32px}
-        .evt03 .btn a {font-size:30px;}        
+        .evt02 .btn a {font-size:30px;}        
     }
 
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
@@ -76,7 +76,7 @@
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 690px) {       
-        .evt03 .btn a br {display:none}
+        .evt02 .btn a br {display:none}
         .evt06 h5 br {display:none}
         .evt06 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4} 
     }
@@ -96,10 +96,7 @@
         <div class="dday NSK-Thin">
             <strong class="NSK-Black">사전예약 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
         </div> 
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_02.jpg" alt="" >       
-    </div>
-
-    <div class="evtCtnsBox evt03">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_02.jpg" alt="" >
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/CMDjINjDQyg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -114,11 +111,16 @@
                 <input type="checkbox" id="is_chk" name="is_chk" checked>
             </div>
             --}}
-        </div>
+        </div>    
+         
+    </div>
+
+    <div class="evtCtnsBox evt03">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_03.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_04.jpg" alt="" >       
     </div>    
 
-    <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_04.jpg" alt="" ><br>
+    <div class="evtCtnsBox evt04">        
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_05.jpg" alt="" ><br>
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_06.jpg" alt="" > 
     </div>

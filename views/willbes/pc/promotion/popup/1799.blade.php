@@ -107,8 +107,8 @@
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            <input type="radio" id="AddContent11" name="AddContent1" value="필기합격" {{($addcontent1 == '필기합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">필기합격</label>
-                            <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="필기합격" checked {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1" class="mr10">필기합격</label>
+                            {{-- <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label> --}}
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,

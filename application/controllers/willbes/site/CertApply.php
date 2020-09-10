@@ -136,11 +136,12 @@ class CertApply extends \app\controllers\FrontController
         $cert_idx = $this->_reqP('CertIdx');
 
         //합격자 응시번호 여부 파악
-        $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
-        if($take_result == "0") {
-            return $this->json_error('정상적인 응시번호가 아닙니다. ');
+        if(empty($this->_reqP('check_take_no')) === true || $this->_reqP('check_take_no') != 'N'){
+            $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
+            if($take_result == "0") {
+                return $this->json_error('정상적인 응시번호가 아닙니다. ');
+            }
         }
-        //echo var_dump($take_result);exit;
 
        $add_condition=[
             'EQ'=>[

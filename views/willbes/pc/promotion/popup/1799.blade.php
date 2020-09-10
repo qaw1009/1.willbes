@@ -46,7 +46,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>2020년 경찰시험 2차 합격수기 등록하기</h1>
+    <h1>2020년 경찰시험 2차 필기합격수기 등록하기</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -61,6 +61,8 @@
 
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
+
+            <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
 
             <div id="request">                
                 <div class="termsBx">
@@ -87,7 +89,7 @@
                             <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
-                                    @if($key != '711003')  {{--경행경채 제외--}}
+                                    @if($key != '711005')  {{--전의경경채 제외--}}
                                         <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                     @endif
                                 @endforeach
@@ -214,9 +216,8 @@
 
         @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
-                {{--인증 프로세스--}}
                 var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
-                    ajaxSubmit($regi_form_register, _check_url, function(ret) {
+                ajaxSubmit($regi_form_register, _check_url, function(ret) {
                     if(ret.ret_cd) {
                         //alert('정상적으로 등록되었습니다.');
                         submitEnd();
@@ -224,12 +225,11 @@
                         alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");return;
                     }
                 }, showValidateError, null, false, 'alert');
-                {{--인증 프로세스--}}
             @else
                 submitEnd();
             @endif
         @else
-                submitEnd();
+            submitEnd();
         @endif
     }
 

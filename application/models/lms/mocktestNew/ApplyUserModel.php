@@ -38,7 +38,7 @@ class ApplyUserModel extends WB_Model
 
                 $column = "
                     Straight_join
-                    O.OrderNo, U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone, O.CompleteDatm, O.RealPayPrice, SC4.CcdName as PayStatusCcd_Name, SC5.CcdName as PayMethodCcd_Name
+                    MR.MrIdx, O.OrderNo, U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone, O.CompleteDatm, O.RealPayPrice, SC4.CcdName as PayStatusCcd_Name, SC5.CcdName as PayMethodCcd_Name
                     ,concat('[',PD.ProdCode,'] ', PD.ProdName) as prodName, MP.MockYear, MP.MockRotationNo
                     ,SC2.CcdName as TakeForm_Name ,MR.TakeNumber, C1.CateName ,SC1.CcdName as TakeMockPart_Name ,SC3.CcdName as TakeArea_Name
                     ,(

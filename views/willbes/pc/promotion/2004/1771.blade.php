@@ -86,10 +86,10 @@
                 </map>
             </div>
             <div id="tab05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1771_02tab_02.jpg" alt="안성호 영어" usemap="#Map1771D" border="0" />
-                <map name="Map1771D">
-                    <area shape="rect" coords="285,790,832,880" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006&search_text=UHJvZE5hbWU67JWI7ISx7Zi4&course_idx=1061" target="_blank" alt="안성호 영어">
-                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1444_03.jpg" usemap="#Map1444b" border="0" />
+                <map name="Map1444b" id="Map1444b">
+                    <area shape="rect" coords="348,987,762,1095" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006" target="_blank" onfocus='this.blur()' />
+                </map>  
             </div>
         </div>
     </div>

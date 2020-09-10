@@ -2181,6 +2181,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * TODO : 석차 수정필요!!!
      * 회원의 직렬, 과목 : 원점수, 조정점수, 내석차, 응시자수, 전체평균, 상위5%평균
      * @param $PredictIdx
      * @param $take_mock_part
@@ -2189,6 +2190,43 @@ class SurveyModel extends WB_Model
      * @return mixed
      */
     public function AvgListForUserInfo($PredictIdx, $take_mock_part, $take_area, $member_idx)
+    {
+        $column = "
+            pg.MemIdx, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.AdjustPoint, pa.FivePerPoint, pp.PaperName
+            ,rk.MyRank,ct.cnt AS TakeNum,ct.AvrPoint AS AvrPoint
+        ";
+        $from = "
+            FROM (
+                SELECT PgIdx,MemIdx,TakeMockPart, TakeArea, PpIdx, OrgPoint, AdjustPoint
+                FROM {$this->_table['predictGrades']}
+                WHERE PredictIdx = ?
+                AND MemIdx = ?
+                AND TakeMockPart = ?
+                AND TakeArea = ?
+            ) AS pg
+            INNER JOIN {$this->_table['predictGradesArea']} AS pa ON pa.PredictIdx = ? AND pg.TakeMockPart = pa.TakeMockPart AND pg.TakeArea = pa.TakeArea AND pg.PpIdx = pa.PpIdx
+            INNER JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx AND IsStatus = 'Y'
+            INNER JOIN (
+                SELECT PgIdx, RANK() OVER (PARTITION BY TakeMockPart,TakeArea,PpIdx ORDER BY RANK) MyRank
+                FROM {$this->_table['predictGrades']}
+                WHERE PredictIdx = ?
+                AND TakeMockPart = ?
+                AND TakeArea = ?
+            ) AS rk ON pg.PgIdx = rk.PgIdx
+            INNER JOIN (
+                SELECT TakeMockPart, TakeArea, PpIdx, COUNT(*) AS cnt, ROUND(AVG(AdjustPoint),2) AS AvrPoint
+                FROM {$this->_table['predictGrades']} AS a 
+                WHERE PredictIdx = ?
+                AND TakeMockPart = ?
+                AND TakeArea = ?
+                GROUP BY TakeMockPart, TakeArea, PpIdx
+            ) AS ct ON pg.TakeMockPart = ct.TakeMockPart AND pg.TakeArea = ct.TakeArea AND pg.PpIdx = ct.PpIdx
+        ";
+        $order_by = 'ORDER BY pg.PpIdx ASC';
+        $raw_binds = [$PredictIdx, $member_idx, $take_mock_part, $take_area, $PredictIdx, $PredictIdx, $take_mock_part, $take_area, $PredictIdx, $take_mock_part, $take_area];
+        return $this->_conn->query('select ' . $column . $from . $order_by, $raw_binds)->result_array();
+    }
+    /*public function AvgListForUserInfo($PredictIdx, $take_mock_part, $take_area, $member_idx)
     {
         $column = "pg.MemIdx, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.AdjustPoint, pg.MyRank, pa.TakeNum, pa.AvrPoint, pa.FivePerPoint, pp.PaperName";
         $from = "
@@ -2205,7 +2243,7 @@ class SurveyModel extends WB_Model
         ";
         $order_by = 'ORDER BY pg.PpIdx ASC';
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
-    }
+    }*/
 
     /**
      * 직렬/지역의 원점수 총점, 조정점수 총점, 평균총점, 상위5%총점

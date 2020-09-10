@@ -113,6 +113,7 @@ class MemberPrivateModel extends WB_Model
     }
 
     /**
+     * TODO : 석차 수정필요!!!
      * 회원과목별상세
      * @param $prod_code
      * @param $mr_idx

@@ -111,7 +111,7 @@
                             @endforeach
                             <tr>
                                 <th>총점</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalOrgPoint']) === false ? $arr_base['total_area_avg']['TotalOrgPoint'] : '집계중') }}</th>
+                                <th>{{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['TotalOrgPoint'] : '집계중') }}</th>
                                 <th>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '집계중') }}</th>
                                 <th>{{ (empty($arr_base['total_area_avg']['RankNum']) === false ? $arr_base['total_area_avg']['RankNum'] : '집계중') }} / {{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['Cnt'] : '집계중') }} </th>
                                 <th>{{ (empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '집계중') }}</th>

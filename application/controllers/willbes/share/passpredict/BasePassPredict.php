@@ -1154,13 +1154,15 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function private($params = [])
     {
-        $arr_base = [];
-        $idx = $params[0];
-
+        if (empty($params) === true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
         if ($this->isLogin() !== true) {
-            show_alert('로그인 후 이용해 주세요.');
+            show_alert('로그인 후 이용해 주세요.', 'back');
         }
 
+        $arr_base = [];
+        $idx = $params[0];
         $memidx = $this->session->userdata('mem_idx');
         $arr_base['resist_is'] = 'N';
         //기본정보조회

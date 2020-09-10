@@ -2181,7 +2181,6 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * TODO : 석차 수정필요!!!
      * 회원의 직렬, 과목 : 원점수, 조정점수, 내석차, 응시자수, 전체평균, 상위5%평균
      * @param $PredictIdx
      * @param $take_mock_part

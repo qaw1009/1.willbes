@@ -113,7 +113,6 @@ class MemberPrivateModel extends WB_Model
     }
 
     /**
-     * TODO : 석차 수정필요!!!
      * 회원과목별상세
      * @param $prod_code
      * @param $mr_idx
@@ -122,11 +121,7 @@ class MemberPrivateModel extends WB_Model
     public function registerForSubjectDetail($prod_code, $mr_idx)
     {
         $column = "
-            M.*
-            ,(SELECT OrgPoint FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}') AS MyOrgPoint
-            ,ROUND((SELECT AdjustPoint FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}'),2) AS MyAdjustPoint
-            ,(SELECT RANK FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}') AS MyRank
-            ,ROUND((((SELECT RANK FROM lms_mock_grades WHERE ProdCode = M.ProdCode AND MpIdx = M.MpIdx AND MrIdx = '{$mr_idx}') / M.TotalRank) * 100),2) tpct    #백분위
+            M.*, ROUND(((M.MyRank / M.MemCount) * 100),2) AS tpct    #백분위
             ,(
                 SELECT T.Top10AvgOrgPoint
                 FROM (
@@ -142,8 +137,7 @@ class MemberPrivateModel extends WB_Model
                     GROUP BY A.TakeMockPart, A.MpIdx
                 ) AS T 
                 WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
-            ) AS Top10AvgOrgPoint
-            
+            ) AS Top10AvgOrgPoint            
             ,(
                 SELECT T.Top30AvgOrgPoint
                 FROM (
@@ -159,8 +153,7 @@ class MemberPrivateModel extends WB_Model
                     GROUP BY A.TakeMockPart, A.MpIdx
                 ) AS T 
                 WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
-            ) AS Top30AvgOrgPoint
-            
+            ) AS Top30AvgOrgPoint            
             ,(
                 SELECT T.Top10AvgAdjustPoint
                 FROM (
@@ -176,8 +169,7 @@ class MemberPrivateModel extends WB_Model
                     GROUP BY A.TakeMockPart, A.MpIdx
                 ) AS T 
                 WHERE T.ProdCode = M.ProdCode AND T.TakeMockPart = M.TakeMockPart AND T.MpIdx = M.MpIdx
-            ) AS Top10AvgAdjustPoint
-            
+            ) AS Top10AvgAdjustPoint            
             ,(
                 SELECT T.Top30AvgAdjustPoint
                 FROM (
@@ -197,7 +189,22 @@ class MemberPrivateModel extends WB_Model
         ";
 
         $from = "
+        FROM (
+            SELECT b.*, a.MyRank, a.OrgPoint AS MyOrgPoint, a.AdjustPoint AS MyAdjustPoint
             FROM (
+                SELECT a.MrIdx, a.MpIdx, a.OrgPoint, a.AdjustPoint, b.MyRank
+                FROM (
+                    SELECT MrIdx, MpIdx, OrgPoint, AdjustPoint
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}'
+                ) AS a
+                INNER JOIN (
+                    SELECT MrIdx, MpIdx, RANK() OVER (PARTITION BY MpIdx ORDER BY RANK) MyRank
+                    FROM {$this->_table['mock_grades']}
+                    WHERE ProdCode = '{$prod_code}'
+                ) AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+            ) AS a
+            INNER JOIN (
                 SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, A.MockType, A.SubjectName
                 ,ROUND(AVG(A.OrgPoint), 2) AS AvgOrgPoint       #원점수평균
                 ,ROUND(AVG(A.AdjustPoint),2) AS AvgAdjustPoint  #조정점수평균
@@ -205,11 +212,9 @@ class MemberPrivateModel extends WB_Model
                 ,ROUND(MAX(A.AdjustPoint),2) AS MaxAdjustPoint  #조정점수최고점
                 ,A.StandardDeviation                            #표준편차
                 ,COUNT(A.MpIdx) AS MemCount                     #응시인원
-                ,Max(A.Rank) AS TotalRank                       #총석차
                 ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
-                    SELECT 
-                    a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
+                    SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
                     FROM {$this->_table['mock_register']} AS a
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
@@ -218,7 +223,8 @@ class MemberPrivateModel extends WB_Model
                     WHERE a.ProdCode = '{$prod_code}' AND c.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                 ) AS A
                 GROUP BY A.MpIdx
-            ) AS M
+            ) AS b ON a.MpIdx = b.MpIdx
+        ) AS M
         ";
 
         $total_avg_query = "
@@ -236,7 +242,6 @@ class MemberPrivateModel extends WB_Model
             ) AS D
             GROUP BY D.TakeMockPart
         ";
-
         $data = $this->_conn->query('select ' . $column . $from)->result_array();
         $total_avg = $this->_conn->query('select ' . $total_avg_query)->result_array();
         return [

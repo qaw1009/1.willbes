@@ -81,7 +81,7 @@
                     <tbody>
                     @foreach($data_e as $data_key => $data_row)
                         <tr>
-                            <td>{{ $data_key }}{!! ($data_key == '과목석차' ? '<br>(내석차/총석차[총인원])' : '') !!}</td>
+                            <td>{{ $data_key }}{!! ($data_key == '과목석차' ? '<br>(내석차/총석차)' : '') !!}</td>
                             @foreach($data_row as $mp_idx => $val)
                                 <td class="valign-middle">{{ $val }}</td>
                             @endforeach

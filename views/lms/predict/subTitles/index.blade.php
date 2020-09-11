@@ -8,7 +8,7 @@
             <div class="col-md-2 form-inline">
                 <select class="form-control" id="search_is_use" name="search_is_use">
                     <option value="">사용유무</option>
-                    <option value="Y">사용</option>
+                    <option value="Y" selected="selected">사용</option>
                     <option value="N">미사용</option>
                 </select>
             </div>
@@ -21,6 +21,7 @@
                 <thead>
                 <tr>
                     <th>NO</th>
+                    <th width="80px;">자막유형</th>
                     <th>제목</th>
                     <th>이미지</th>
                     <th>등록자</th>
@@ -61,6 +62,9 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'TalkShowContentsType', 'render' : function(data, type, row, meta) {
+                            return (data == '' || data == null) ? '' : '유형'+data;
                         }},
                     {'data' : 'PstIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PstIdx + '"><u>' + row.Title + '</u></a>';

@@ -5,6 +5,12 @@ class SubTitles extends \app\controllers\BaseController
 {
     protected $models = array('predict/predict');
     protected $helpers = array('download');
+    private $_talkshow_contents_type = [
+        '1' => '유형1'
+        ,'2' => '유형2'
+        ,'3' => '유형3'
+        ,'4' => '유형4'
+    ];
 
     public function __construct()
     {
@@ -30,7 +36,7 @@ class SubTitles extends \app\controllers\BaseController
         $count = $this->predictModel->listSubTitles(true, $arr_condition, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->predictModel->listSubTitles(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PstIdx' => 'asc']);
+            $list = $this->predictModel->listSubTitles(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PstIdx' => 'DESC']);
         }
 
         return $this->response([
@@ -71,6 +77,7 @@ class SubTitles extends \app\controllers\BaseController
         }
 
         $this->load->view("predict/subTitles/create", [
+            'arr_talkshow_contents_type' => $this->_talkshow_contents_type,
             'method' => $method,
             'data' => $data,
             'arr_content' => $arr_set_content,
@@ -91,6 +98,7 @@ class SubTitles extends \app\controllers\BaseController
         $rules = [
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'talkshow_contents_type', 'label' => '자막유형', 'rules' => 'trim|required|integer'],
             ['field' => 'content_type', 'label' => '내용등록방식', 'rules' => 'trim|required|integer']
         ];
 

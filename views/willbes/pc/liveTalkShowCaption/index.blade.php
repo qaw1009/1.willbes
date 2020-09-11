@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-
     <!-- Container -->
     <style type="text/css">
         .captionWrap {padding:20px}
@@ -62,9 +61,9 @@
         <div class="viewArea">
             @foreach($arr_input['menu'] as $row)
                 <div class="viewbox" id="tab{{ $row['PstIdx'] }}">
-                    @php if(empty($arr_input['data'][$row['Title']]) === false) {
-                        switch ($row['Title']) {
-                            case '응시현황':
+                    @php if(empty($arr_input['data'][$row['TalkShowContentsType']]) === false) {
+                        switch ($row['TalkShowContentsType']) {
+                            case '1':
                                 echo '<ul class="liveTab01 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         $loop = 1;
@@ -77,9 +76,7 @@
                                     }
                                 echo '</ul>';
                                 break;
-                            case '19년2차 커트라인(일반남)':
-                            case '19년2차 커트라인(일반여)':
-                            case '19년1차 커트라인(전의경)':
+                            case '2':
                                 echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
@@ -94,24 +91,7 @@
                                     }
                                 echo '</ul>';
                                 break;
-                            case "실시간 질문1":
-                            case "실시간 질문2":
-                            case "실시간 질문3":
-                            case "실시간 질문4":
-                            case "실시간 질문5":
-                            case "실시간 질문6":
-                            case "실시간채점현황2":
-                            case "동향이슈 형소법":
-                            case "동향이슈 형법":
-                            case "동향이슈 경찰학":
-                            case "동향이슈 영어":
-                            case "동향이슈 한국사":
-                            case "합격풀케어":
-                            case "6월 1일(월) 설명회":
-                            case "면접캠프 설명회":
-                            case "심화기출":
-                            case "인강PASS":
-                            case "2020 예상컷공개":
+                            case "3":
                                 echo '<ul class="liveTab02 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
@@ -120,7 +100,7 @@
                                     }
                                 echo '</ul>';
                                 break;
-                            case "실시간채점현황1";
+                            case "4";
                                 echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['Title']] as $arr_content) {
                                         echo "<li>";
@@ -134,18 +114,6 @@
                                     }
                                 echo '</ul>';
                                 break;
-                            /*case "동향이슈 형법":
-                            case "동향이슈 경찰학":
-                            case "동향이슈 영어":
-                            case "동향이슈 한국사":
-                                echo '<ul class="liveTab02 slide01">';
-                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
-                                        echo "<li>";
-                                        echo "<span class='st01'>{$arr_content[0]}</span>{$arr_content[1]}";
-                                        echo "</li>";
-                                    }
-                                echo '</ul>';
-                                break;*/
                             default;
                             break;
                         }
@@ -160,9 +128,7 @@
     <script src="/public/js/willbes/waypoints.min.js"></script>
     <script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
     <script type="text/javascript">
-
         $(document).ready(function(){
-
             $('.slide01').bxSlider({
                 speed : 200,
                 auto : true,
@@ -176,13 +142,10 @@
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
-
                 $content = $($active[0].hash);
-
                 $links.not($active).each(function(){
                     $(this.hash).hide()
                 });
-
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
                     $active.removeClass('active');
@@ -201,5 +164,4 @@
             });
         });
     </script>
-
 @stop

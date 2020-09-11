@@ -28,7 +28,7 @@ class SubTitlesFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $column = 'PstIdx, Title, Content, AttachFileFullPath, AttachFileRealName';
+        $column = 'PstIdx, TalkShowContentsType, Title, Content, AttachFileFullPath, AttachFileRealName';
         $from = " FROM {$this->_table['predictSubtitles']} ";
 
         return $this->_conn->query('select ' . $column . $from . $where)->result_array();

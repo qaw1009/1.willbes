@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 합격예측서비스 공지사항을 등록/관리 하는 메뉴입니다.</h5>
+    <h5>- 자막 등록/관리 하는 메뉴입니다.</h5>
     {!! form_errors() !!}
 
     <div class="x_panel">
@@ -11,84 +11,127 @@
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ $pst_idx }}"/>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">제목</label>
-                    <div class="col-md-5 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
-                        <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="">제목</label>
+                            <div class="col-md-6 item">
+                                <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
+                            <div class="col-md-6 item form-inline">
+                                <div class="radio">
+                                    <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                                    <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="is_use_y">자막유형<span class="required">*</span></label>
+                            <div class="col-md-6 item form-inline">
+                                <div class="radio">
+                                    @foreach($arr_talkshow_contents_type as $key => $val)
+                                        <input type="radio" id="talkshow_contents_type_{{$key}}" name="talkshow_contents_type" class="flat" value="{{$key}}" required="required" title="자막유형" @if($data['TalkShowContentsType'] == $key)checked="checked"@endif/> <label for="talkshow_contents_type_{{$key}}" class="input-label">{{$val}}</label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="content_type_1">내용등록방식<span class="required">*</span></label>
+                            <div class="col-md-6 form-inline">
+                                @if($method == 'POST')
+                                    <input type="radio" id="content_type_1" name="content_type" class="flat" value="1"> <label for="content_type_1" class="input-label">텍스트</label>
+                                    <input type="radio" id="content_type_2" name="content_type" class="flat" value="2"> <label for="content_type_2" class="input-label">엑셀파일</label>
+                                @else
+                                    @if ($data['ContentType'] == 1)
+                                        <input type="radio" id="content_type_1" name="content_type" class="flat" value="1" checked="checked"> <label for="content_type_1" class="input-label">텍스트</label>
+                                    @else
+                                        <input type="radio" id="content_type_2" name="content_type" class="flat" value="2" checked="checked"> <label for="content_type_2" class="input-label">엑셀파일</label>
+                                    @endif
+                                @endif
+                                    <span class="form-control-static red"> # 수정 불가 항목</span>
+                            </div>
+                        </div>
+                        <div class="form-group content_type" id="type_1">
+                            <label class="control-label col-md-2" for="">TEXT
+                                <button type="button" class="btn btn-sm btn-info btn-add-content">추가</button>
+                            </label>
+                            <div class="col-md-6" id="text_content">
+                                @if($method == 'PUT' && $data['ContentType'] == 1 || (empty($arr_content) === false))
+                                    @foreach($arr_content as $keys => $row)
+                                        <tr>
+                                            @foreach($row as $key => $val)
+                                                <td><input type="text" name="content[]" class="form-control mt-5" value="{{ $val }}"></td>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <input type="text" name="content[]" class="form-control" title="내용" placeholder="내용 입니다.">
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group content_type" id="type_2">
+                            <label class="control-label col-md-2" for="">엑셀</label>
+                            <div class="col-md-6">
+                                <input type="file" id="content_excel" name="content_excel" class="form-control input-file">
+                                @if(empty($data['ExcelFileRealName']) === false)
+                                    <p class="form-control-static">
+                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['ExcelFileFullPath'])}}" data-file-name="{{ urlencode($data['ExcelFileRealName']) }}" target="_blank">
+                                            {{ $data['ExcelFileRealName'] }}
+                                        </a> ]
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="">배경이미지</label>
+                            <div class="col-md-6">
+                                <input type="file" id="attach_file" name="attach_file" class="form-control input-file">
+                                @if(empty($data['AttachFileRealName']) === false)
+                                    <p class="form-control-static">
+                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['AttachFileFullPath'])}}" data-file-name="{{ urlencode($data['AttachFileRealName']) }}" target="_blank">
+                                            {{ $data['AttachFileRealName'] }}
+                                        </a> ]
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group text-left btn-wrap mt-10">
+                            <button type="submit" class="btn btn-sm btn-success mr-10">저장</button>
+                            <button class="btn btn-sm btn-primary btn_list" type="button">목록</button>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="content_type_1">내용등록방식</label>
-                    <div class="col-md-5 form-inline">
-                        @if($method == 'POST')
-                            <input type="radio" id="content_type_1" name="content_type" class="flat" value="1"> <label for="content_type_1" class="input-label">텍스트</label>
-                            <input type="radio" id="content_type_2" name="content_type" class="flat" value="2"> <label for="content_type_2" class="input-label">엑셀파일</label>
-                        @else
-                            @if ($data['ContentType'] == 1)
-                                <input type="radio" id="content_type_1" name="content_type" class="flat" value="1" checked="checked"> <label for="content_type_1" class="input-label">텍스트</label>
-                            @else
-                                <input type="radio" id="content_type_2" name="content_type" class="flat" value="2" checked="checked"> <label for="content_type_2" class="input-label">엑셀파일</label>
-                            @endif
-                        @endif
-                            <span class="form-control-static red"> # 수정 불가 항목</span>
-                    </div>
-                </div>
-                <div class="form-group content_type" id="type_1">
-                    <label class="control-label col-md-1-1" for="">TEXT
-                        <button type="button" class="btn btn-sm btn-info btn-add-content">추가</button>
-                    </label>
-                    <div class="col-md-6" id="text_content">
-                        @if($method == 'PUT' && $data['ContentType'] == 1 || (empty($arr_content) === false))
-                            @foreach($arr_content as $keys => $row)
-                                <tr>
-                                    @foreach($row as $key => $val)
-                                        <td><input type="text" name="content[]" class="form-control mt-5" value="{{ $val }}"></td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                        @else
-                            <input type="text" name="content[]" class="form-control" title="내용" placeholder="내용 입니다.">
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group content_type" id="type_2">
-                    <label class="control-label col-md-1-1" for="">엑셀</label>
-                    <div class="col-md-5">
-                        <input type="file" id="content_excel" name="content_excel" class="form-control input-file">
-                        @if(empty($data['ExcelFileRealName']) === false)
-                            <p class="form-control-static">
-                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['ExcelFileFullPath'])}}" data-file-name="{{ urlencode($data['ExcelFileRealName']) }}" target="_blank">
-                                    {{ $data['ExcelFileRealName'] }}
-                                </a> ]
-                            </p>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">배경이미지</label>
-                    <div class="col-md-5">
-                        <input type="file" id="attach_file" name="attach_file" class="form-control input-file">
-                        @if(empty($data['AttachFileRealName']) === false)
-                            <p class="form-control-static">
-                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['AttachFileFullPath'])}}" data-file-name="{{ urlencode($data['AttachFileRealName']) }}" target="_blank">
-                                    {{ $data['AttachFileRealName'] }}
-                                </a> ]
-                            </p>
-                        @endif
-                    </div>
-                </div>
 
-                <div class="form-group text-center btn-wrap mt-10">
-                    <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary btn_list" type="button">목록</button>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label class="control-label col-md-12" for="">[자막유형 UI참조]</label></div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1-1" for="">유형1</label>
+                            <div class="col-md-12">
+                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type1.png" width="100%"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1-1" for="">유형2</label>
+                            <div class="col-md-12">
+                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type2.png" width="100%"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1-1" for="">유형3</label>
+                            <div class="col-md-12">
+                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type3.png" width="100%"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1-1" for="">유형4</label>
+                            <div class="col-md-12">
+                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type4.png" width="100%"/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>

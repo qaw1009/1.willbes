@@ -43,7 +43,7 @@ class SupportStudyComment extends BaseSupport
                 /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
-                'ProfIdx is not ' => 'null'
+                'b.ProfIdx is not ' => 'null'
             ]
         ];
 
@@ -51,11 +51,11 @@ class SupportStudyComment extends BaseSupport
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
-                'ProdCode' => $prod_code,
+                'b.ProdCode' => $prod_code,
                 /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
-                'ProfIdx is not ' => 'null'
+                'b.ProfIdx is not ' => 'null'
             ]
         ];
 
@@ -71,10 +71,15 @@ class SupportStudyComment extends BaseSupport
         $column .= ',IF(b.RegType=1, b.RegMemId, m.MemId) AS RegMemId, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
-        $column .= ',SubjectName, ProfName, ProdName';
+        $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
+        $column .= ',b.SubjectName, b.ProdName';
+        // 수강후기 사용안함으로 설정한 교수 이름 보여주기
+        if($this->_bm_idx == '85'){
+            $column .= ',e.ProfNickName AS ProfName';
+        }else{
+            $column .= ',b.ProfName';
+        }
         $column .= ',ProdApplyTypeCcd, LecScore';
-
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
         $list = [];
@@ -193,7 +198,7 @@ class SupportStudyComment extends BaseSupport
                 ]
             ],
             'RAW' => [
-                'ProfIdx is not ' => 'null'
+                'b.ProfIdx is not ' => 'null'
             ]
         ];
 
@@ -213,8 +218,14 @@ class SupportStudyComment extends BaseSupport
         $column .= ',IF(b.RegType=1, b.RegMemId, m.MemId) AS RegMemId, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
-        $column .= ',SubjectName, ProfName, ProdName';
+        $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
+        $column .= ',b.SubjectName, b.ProdName';
+        // 수강후기 사용안함으로 설정한 교수 이름 보여주기
+        if($this->_bm_idx == '85'){
+            $column .= ',e.ProfNickName AS ProfName';
+        }else{
+            $column .= ',b.ProfName';
+        }
         $column .= ',ProdApplyTypeCcd, LecScore';
 
         switch ($orderby) {
@@ -276,7 +287,7 @@ class SupportStudyComment extends BaseSupport
                 ]
             ],
             'RAW' => [
-                'ProfIdx is not ' => 'null'
+                'b.ProfIdx is not ' => 'null'
             ]
         ];
 

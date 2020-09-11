@@ -177,7 +177,6 @@
 
             $regi_form.on('click', '.btn-content-type', function() {
                 var value = $(this).data("id");
-                console.log(value);
                 $regi_form.find("input:radio[name='talkshow_contents_type']").prop('checked', false).iCheck('update');
                 $regi_form.find("input:radio[name='talkshow_contents_type']:radio[value='"+value+"']").prop('checked', true).iCheck('update');
             });

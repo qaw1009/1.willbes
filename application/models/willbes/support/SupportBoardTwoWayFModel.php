@@ -56,6 +56,11 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             FROM {$this->_table['twoway_board_2']}
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
         ";
+        
+        // 수강후기 사용안함으로 설정한 교수 이름 보여주기
+        if(empty($arr_condition['EQ']['b.BmIdx']) === false && $arr_condition['EQ']['b.BmIdx'] == '85'){
+            $from .= " inner join {$this->_table['lms_professor']} AS e ON b.ProfIdx = e.ProfIdx ";
+        }
 
         if (empty($cate_code) === false) {
             $from .= "

@@ -124,7 +124,7 @@
         <a href="javascript:goLecture('171313');">
         3~5순환 전과목 패키지 신청 >
         </a>
-        <a href="javascript:goLecture('171369');">
+        <a href="javascript:goLecture2('171369');">
         1~3순환 법과목 패키지 신청 >
         </a>
     </div>
@@ -145,6 +145,14 @@
         }
         location.href = '{{ front_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + prod_code;
     }
+    function goLecture2(code){
+        if ($('#is_chk').is(':checked') === false) {
+            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+            return;
+        }
+            var url = '{{ site_url('/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
 
     </script>
 

@@ -106,10 +106,10 @@
         <div class="evtCtnsBox wb_04">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1805_04.jpg"  alt="" usemap="#Map1805b" border="0"  />
             <map name="Map1805b" id="Map1805b">
-                <area shape="rect" coords="831,425,1017,498" href="#none" />
-                <area shape="rect" coords="832,536,1017,611" href="#none" />
-                <area shape="rect" coords="830,649,1018,723" href="#none" />
-                <area shape="rect" coords="830,761,1018,835" href="#none" />
+                <area shape="rect" coords="831,425,1017,498" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/172259" target="_blank" />
+                <area shape="rect" coords="832,536,1017,611" href="https://police.willbes.net/periodPackage/show/cate/3002/pack/648001/prod-code/172264" target="_blank" />
+                <area shape="rect" coords="830,649,1018,723" href="https://police.willbes.net/periodPackage/show/cate/3004/pack/648001/prod-code/172266" target="_blank" />
+                <area shape="rect" coords="830,761,1018,835" href="https://police.willbes.net/periodPackage/show/cate/3003/pack/648001/prod-code/172265" target="_blank" />
             </map>
         </div> 
 

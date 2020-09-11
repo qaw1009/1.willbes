@@ -11,7 +11,7 @@
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ $pst_idx }}"/>
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="form-group">
                             <label class="control-label col-md-2" for="">제목</label>
                             <div class="col-md-6 item">
@@ -97,37 +97,39 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group text-left btn-wrap mt-10">
+                        <div class="form-group text-center btn-wrap mt-10">
                             <button type="submit" class="btn btn-sm btn-success mr-10">저장</button>
                             <button class="btn btn-sm btn-primary btn_list" type="button">목록</button>
                         </div>
                     </div>
 
 
-                    <div class="col-md-6">
-                        <div class="form-group"><label class="control-label col-md-12" for="">[자막유형 UI참조]</label></div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1-1" for="">유형1</label>
-                            <div class="col-md-12">
-                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type1.png" width="100%"/>
+                    <div class="col-md-5">
+                        <div class="form-group" id="btn_ui_box" ><div class="col-md-12"><span class="btn">[자막유형 UI참조]</span></div></div>
+                        <div id="ui_box">
+                            <div class="form-group">
+                                <label class="control-label col-md-1-1" for="">유형1</label>
+                                <div class="col-md-12">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type1.png" width="100%"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1-1" for="">유형2</label>
-                            <div class="col-md-12">
-                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type2.png" width="100%"/>
+                            <div class="form-group">
+                                <label class="control-label col-md-1-1" for="">유형2</label>
+                                <div class="col-md-12">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type2.png" width="100%"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1-1" for="">유형3</label>
-                            <div class="col-md-12">
-                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type3.png" width="100%"/>
+                            <div class="form-group">
+                                <label class="control-label col-md-1-1" for="">유형3</label>
+                                <div class="col-md-12">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type3.png" width="100%"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1-1" for="">유형4</label>
-                            <div class="col-md-12">
-                                <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type4.png" width="100%"/>
+                            <div class="form-group">
+                                <label class="control-label col-md-1-1" for="">유형4</label>
+                                <div class="col-md-12">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type4.png" width="100%"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,6 +184,10 @@
 
         $(document).ready(function() {
             $('.content_type').hide();
+            $('#ui_box').hide();
+            $('#btn_ui_box').click(function (){
+                $('#ui_box').toggle();
+            });
 
             $regi_form.on('ifChanged ifCreated', 'input[name="content_type"]:checked', function() {
                 if ($(this).val() == '1') {

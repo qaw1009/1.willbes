@@ -2883,7 +2883,7 @@ class PredictModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.PstIdx, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.PstIdx, a.TalkShowContentsType, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
                 a.UpdDatm, a.UpdAdminIdx, b.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -2912,7 +2912,7 @@ class PredictModel extends WB_Model
     public function findSubTitlesForModify($arr_condition)
     {
         $column = '
-                a.PstIdx, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.PstIdx, a.TalkShowContentsType, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
                 a.UpdDatm, a.UpdAdminIdx, b.wAdminName
             ';
 
@@ -2964,6 +2964,7 @@ class PredictModel extends WB_Model
             }
 
             $input_data = [
+                'TalkShowContentsType' => element('talkshow_contents_type', $input),
                 'Title' => element('title', $input),
                 'ContentType' => element('content_type', $input),
                 'Content' => $content_data,
@@ -3015,12 +3016,14 @@ class PredictModel extends WB_Model
             if ($content_type == 1) {
                 $content_data = '';
                 $temp_content = element('content', $input);
-                foreach ($temp_content as $key => $val) {
-                    if (empty($val) === false) {
-                        $content_data .= $val.'|';
+                if (empty($temp_content) === false) {
+                    foreach ($temp_content as $key => $val) {
+                        if (empty($val) === false) {
+                            $content_data .= $val . '|';
+                        }
                     }
+                    $content_data = substr($content_data, 0, -1);
                 }
-                $content_data = substr($content_data, 0, -1);
                 $excel_file_path = '';
                 $excel_file_name = '';
             } else {    // excel
@@ -3031,6 +3034,7 @@ class PredictModel extends WB_Model
             }
 
             $input_data = [
+                'TalkShowContentsType' => element('talkshow_contents_type', $input),
                 'Title' => element('title', $input),
                 'ContentType' => element('content_type', $input),
                 'IsUse' => element('is_use', $input),

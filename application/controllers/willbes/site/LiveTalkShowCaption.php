@@ -21,6 +21,7 @@ class LiveTalkShowCaption extends \app\controllers\FrontController
         $data_content = [];
         foreach ($result_subTitles as $keys => $vals) {
             $data_subTitles[$keys]['PstIdx'] = $vals['PstIdx'];
+            $data_subTitles[$keys]['TalkShowContentsType'] = $vals['TalkShowContentsType'];
             $data_subTitles[$keys]['Title'] = $vals['Title'];
             $data_subTitles[$keys]['BgImgPath'] = $vals['AttachFileFullPath'];
 

@@ -107,30 +107,16 @@
                     <div class="col-md-5">
                         <div class="form-group" id="btn_ui_box" ><div class="col-md-12"><span class="btn">[자막유형 UI참조]</span></div></div>
                         <div id="ui_box">
-                            <div class="form-group">
-                                <label class="control-label col-md-1-1" for="">유형1</label>
-                                <div class="col-md-12">
-                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type1.png" width="100%"/>
+                            @foreach($arr_talkshow_contents_type as $key => $val)
+                                <div class="form-group">
+                                    <div class="btn btn-content-type" data-id="{{$key}}">
+                                        <label class="btn control-label col-md-1-1">유형{{$key}}</label>
+                                        <div class="col-md-12">
+                                            <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type{{$key}}.png" width="100%"/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1-1" for="">유형2</label>
-                                <div class="col-md-12">
-                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type2.png" width="100%"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1-1" for="">유형3</label>
-                                <div class="col-md-12">
-                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type3.png" width="100%"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1-1" for="">유형4</label>
-                                <div class="col-md-12">
-                                    <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type4.png" width="100%"/>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -187,6 +173,13 @@
             $('#ui_box').hide();
             $('#btn_ui_box').click(function (){
                 $('#ui_box').toggle();
+            });
+
+            $regi_form.on('click', '.btn-content-type', function() {
+                var value = $(this).data("id");
+                console.log(value);
+                $regi_form.find("input:radio[name='talkshow_contents_type']").prop('checked', false).iCheck('update');
+                $regi_form.find("input:radio[name='talkshow_contents_type']:radio[value='"+value+"']").prop('checked', true).iCheck('update');
             });
 
             $regi_form.on('ifChanged ifCreated', 'input[name="content_type"]:checked', function() {

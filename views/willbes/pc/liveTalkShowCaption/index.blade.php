@@ -60,12 +60,12 @@
 
         <div class="viewArea">
             @foreach($arr_input['menu'] as $row)
-                <div class="viewbox" id="tab{{ $row['PstIdx'] }}">
-                    @php if(empty($arr_input['data'][$row['TalkShowContentsType']]) === false) {
+                @php if(empty($arr_input['data'][$row['PstIdx']]) === false) {
+                    echo "<div class='viewbox' id='tab{$row['PstIdx']}'>";
                         switch ($row['TalkShowContentsType']) {
                             case '1':
                                 echo '<ul class="liveTab01 slide01">';
-                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                    foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         $loop = 1;
                                         echo '<li>';
                                             foreach($arr_content as $key => $val) {
@@ -78,7 +78,7 @@
                                 break;
                             case '2':
                                 echo '<ul class="liveTab03 slide01">';
-                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                    foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
                                         echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
                                         echo "<span>{$arr_content[2]}</span>";
@@ -93,7 +93,7 @@
                                 break;
                             case "3":
                                 echo '<ul class="liveTab02 slide01">';
-                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                    foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
                                         echo "<span class='st01'>{$arr_content[0]}</span>";
                                         echo "</li>";
@@ -102,7 +102,7 @@
                                 break;
                             case "4";
                                 echo '<ul class="liveTab03 slide01">';
-                                    foreach($arr_input['data'][$row['Title']] as $arr_content) {
+                                    foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
                                         echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
                                         echo "<span>{$arr_content[2]}</span><span class='st01'>{$arr_content[3]}</span>";
@@ -117,9 +117,8 @@
                             default;
                             break;
                         }
-                    }@endphp
-                    <div class="bgimg"><img src="{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
-                </div>
+                    echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div></div>";
+                } @endphp
             @endforeach
         </div>
     </div>

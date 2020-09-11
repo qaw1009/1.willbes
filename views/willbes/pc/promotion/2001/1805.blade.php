@@ -24,7 +24,7 @@
         .wb_top_banner {background:#0A0A0A;}    
         .wb_top {background:#F830C7 url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
 
-        .wb_branch {background:#480275;color:#fff;position:relative;height:50px;} 
+        .wb_branch {background:#fef51e;color:#000;position:relative;height:50px;} 
         .wb_branch .benefitBox {position:absolute; top:0; left:0; width:100%; z-index:1;line-height:50px;}
         .wb_branch .benefitBox .bx-wrapper{max-width:100% !important;}
         .wb_branch .benefitBox li {display:inline; float:left;font-size:15px;font-weight:bold;}
@@ -38,7 +38,7 @@
         .slide_con p.leftBtn {left:-100px; top:46%; width:67px; height:67px;}
         .slide_con p.rightBtn {right:-100px;top:46%; width:67px; height:67px;}
 
-        .wb_04 {background:#480276;} 
+        .wb_04 {background:#66563f;} 
 
         /*유의사항*/
         .wb_ctsInfo {background:#fff; width:1120px; margin:100px auto; display:block; 

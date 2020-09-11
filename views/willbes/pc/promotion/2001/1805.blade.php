@@ -66,15 +66,24 @@
         <div class="evtCtnsBox wb_branch" id="golec">
             <div class="benefitBox">
                 <ul class="slidesbenefit">
-                    <li>[서울]목동1하임,목동2하임,목동3하임</li>
-                    <li>[서울]신림1하임,신림2하임,신림3하임,신림4하임</li>
-                    <li>[서울]중계1하임,중계2하임</li>
-                    <li>[서울]하계1하임,대치1하임</li>
+                    <li>[서울]목동1하임</li>
+                    <li>[서울]목동2하임</li>
+                    <li>[서울]목동3하임</li>
+                    <li>[서울]신림1하임</li>
+                    <li>[서울]신림2하임</li>
+                    <li>[서울]신림3하임</li>
+                    <li>[서울]신림4하임</li>
+                    <li>[서울]중계1하임</li>
+                    <li>[서울]중계2하임</li>                    
+                    <li>[서울]하계1하임</li>
+                    <li>[서울]대치1하임</li>
                     <li>[서울]당산1하임</li>
-                    <li>[경기]김포1하임,광명1하임 </li>
+                    <li>[경기]김포1하임</li>
+                    <li>[경기]광명1하임</li>
                     <li>[울산]옥동1하임</li>
                     <li>[충북]청주1하임</li>
-                    <li>[대구]테그노폴리스1하임,범어1하임</li>
+                    <li>[대구]테그노폴리스1하임</li>
+                    <li>[대구]범어1하임</li>
                     <li>[제주]제주1하임</li>
                 </ul>
             </div> 
@@ -159,7 +168,7 @@
     <script type="text/javascript">    
         $(document).ready(function() {
             var BxBook = $('.slidesbenefit').bxSlider({
-                slideWidth: 320,
+                slideWidth: 170,
                 slideMargin: 40,
                 maxSlides:10,
                 minSlides:1,

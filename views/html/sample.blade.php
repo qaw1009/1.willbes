@@ -85,15 +85,18 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/main_3114') }}" target="_blank">N잡</a></li>             
                 <li class="c_both"></li>  
-                <li><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
-                <li><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank" class="w50">└ 도서리스트 </a></li>
-                <li><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank" class="w50">└ 도서보기 </a></li> 
-                <li><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank" class="w50">└ 베스트셀러 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank" class="w50">└ 신간안내 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank" class="w50">└ 출판사 </a></li>  
-                <li><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank" class="w50">└ 업무제휴 문의 </a></li> 
-                <li><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
-                <li><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li>               
+                <li class="w50"><a href="{{ site_url('/home/html/main_wsBook') }}" target="_blank">윌스토리 메인</a></li>   
+                <li class="w50"><a href="{{ site_url('/home/html/wsBookList') }}" target="_blank" class="w50">└ 도서리스트 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/wsBookView') }}" target="_blank" class="w50">└ 도서보기 </a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/wsBookList_best') }}" target="_blank" class="w50">└ 베스트셀러 </a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/wsBookList_new') }}" target="_blank" class="w50">└ 신간안내 </a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/wsBookList_publish') }}" target="_blank" class="w50">└ 출판사 </a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank" class="w50">└ 업무제휴 문의 </a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
+                <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
+                <li class="c_both"></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>               
             </ul>
         </div>        
     </li>

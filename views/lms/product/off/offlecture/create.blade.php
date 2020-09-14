@@ -755,7 +755,7 @@
                                     <td>{{$row['AutoCouponIdx']}}</td>
                                     <td style='text-align:left'>{{$row['CouponName']}}</td>
                                     <td>{{number_format($row['DiscRate']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
-                                    <td>{{$row['ValidDay']}}</td>
+                                    <td>{{$row['ValidPeriod']}}</td>
                                     <td>{{$row['IssueValid']}}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('couponTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                 </tr>

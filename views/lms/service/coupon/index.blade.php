@@ -22,6 +22,17 @@
                             <option value="N">온라인</option>
                             <option value="F">오프라인</option>
                         </select>
+                        <select class="form-control mr-10" id="search_coupon_type_ccd" name="search_coupon_type_ccd">
+                            <option value="">쿠폰유형</option>
+                            @foreach($arr_coupon_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_pin_type" name="search_pin_type">
+                            <option value="">핀번호유형</option>
+                            <option value="S">공통핀번호</option>
+                            <option value="R">랜덤핀번호</option>
+                        </select>
                         <select class="form-control mr-10" id="search_apply_type_ccd" name="search_apply_type_ccd">
                             <option value="">적용구분</option>
                             @foreach($arr_apply_type_ccd as $key => $arr)
@@ -62,6 +73,11 @@
                             <option value="유효">유효</option>
                             <option value="만료">만료</option>
                             <option value="발급전">발급전</option>
+                        </select>
+                        <select class="form-control mr-10" id="search_valid_type" name="search_valid_type">
+                            <option value="">사용기간</option>
+                            <option value="day">사용일수</option>
+                            <option value="end_date">종료일</option>
                         </select>
                     </div>
                 </div>
@@ -179,7 +195,7 @@
                     }},
                     {'data' : 'ApplyRangeName'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return row.ValidDay + '일<br/>(' + row.IssueStartDate + '~' + row.IssueEndDate + ')';
+                        return row.ValidPeriod + '<br/>(' + row.IssueStartDate + '~' + row.IssueEndDate + ')';
                     }},
                     {'data' : 'IssueValid', 'render' : function(data, type, row, meta) {
                         return (data !== '유효') ? '<span class="red">' + data + '</span>' : data;

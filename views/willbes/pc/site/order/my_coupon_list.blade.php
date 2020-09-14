@@ -77,7 +77,7 @@
                                     <td>{{ $row['CouponPin'] }}</td>
                                     <td class="lh1_5">{{ $row['CouponName'] }}</td>
                                     <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
-                                    <td>{{ $row['ValidDay'] }}일</td>
+                                    <td class="lh1_5">{{ $row['ValidPeriod'] }}</td>
                                     <td>{{ $row['RemainDay'] }}일</td>
                                 </tr>
                             @endforeach
@@ -115,7 +115,7 @@
                                 <td>{{ $row['CouponPin'] }}</td>
                                 <td class="lh1_5">{{ $row['CouponName'] }}</td>
                                 <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
-                                <td>@if($row['ValidStatusName'] == '만료') ~ {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ $row['ValidDay'] }}일 @endif</td>
+                                <td class="lh1_5">@if($row['ValidStatusName'] == '만료') ~ {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ $row['ValidPeriod'] }} @endif</td>
                                 <td>{{ $row['ValidStatusName'] }}</td>
                                 <td>{{ $row['RemainDay'] }}일</td>
                             </tr>

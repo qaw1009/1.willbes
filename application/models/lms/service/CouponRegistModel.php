@@ -53,7 +53,9 @@ class CouponRegistModel extends WB_Model
                 $column = 'SiteName, CateName, concat(CouponName, " [", CouponIdx, "]") as CouponName, DeployName, CouponTypeName
                     , concat(PinName, if(PinType = "R", concat(" (", PinIssueCnt, "개)"), "")) as PinName
                     , ApplyTypeName, LecTypeCcds, ApplyRangeName
-                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssueCnt
+                    , if(ValidDay > 0, concat(ValidDay, "일"), concat("~ ", left(ValidEndDatm, 16))) as ValidPeriod
+                    , concat(IssueStartDate, " ~ ", IssueEndDate) as IssuePeriod
+                    , IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssueCnt
                     , if(IsIssue = "Y", "발급", "미발급") as IsIssue, RegAdminName, RegDatm';
             }
         }
@@ -61,7 +63,8 @@ class CouponRegistModel extends WB_Model
         $from = /** @lang text */
             'select
                 C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
-                    , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
+                    , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.ValidEndDatm, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
+                    , if(C.ValidDay > 0, concat(C.ValidDay, "일"), concat("~ ", left(C.ValidEndDatm, 16))) as ValidPeriod
                     , if(C.PinType = "S", "공통핀번호", if(C.PinType = "R", "랜덤핀번호", "")) as PinName
                     , if(C.DeployType = "N", "온라인", "오프라인") as DeployName                   
                     , if(C.ApplyRangeType = "A", "전체", if(C.ApplyRangeType = "I", "항목별", "특정상품")) as ApplyRangeName
@@ -126,23 +129,24 @@ class CouponRegistModel extends WB_Model
         } else {
             $column = '
                 A.*
-                ,(case 
+                , (case 
                     when current_date() between A.IssueStartDate and A.IssueEndDate then "유효"
                     when current_date() > A.IssueEndDate then "만료"
                     else "발급전"
-                end) as IssueValid
-                ,B.CcdName as CouponTypeCcdName
-                ,C.CcdName as ApplyTypeCcdName
+                  end) as IssueValid
+                , if(A.ValidDay > 0, concat(A.ValidDay, "일"), concat("~ ", left(A.ValidEndDatm, 16))) as ValidPeriod
+                , B.CcdName as CouponTypeCcdName
+                , C.CcdName as ApplyTypeCcdName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = '
-            from lms_coupon A
-                join lms_sys_code B on A.CouponTypeCcd = B.Ccd
-                join lms_sys_code C on A.ApplyTypeCcd = C.Ccd
-            where A.IsStatus=\'Y\'        
+            from ' . $this->_table['coupon'] . ' A
+                join ' . $this->_table['code'] . ' B on A.CouponTypeCcd = B.Ccd
+                join ' . $this->_table['code'] . ' C on A.ApplyTypeCcd = C.Ccd
+            where A.IsStatus = "Y"        
         ';
 
         // 사이트 권한 추가
@@ -225,7 +229,9 @@ class CouponRegistModel extends WB_Model
         $column = '
             C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
                 , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.DiscType, C.DiscRate, C.DiscAllowPrice
-                , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
+                , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.ValidEndDatm
+                , left(ValidEndDatm, 10) as ValidEndDate, substring(ValidEndDatm, 12, 2) as ValidEndHour, substring(ValidEndDatm, 15, 2) as ValidEndMin
+                , C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName
                 , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName                            
         ';
@@ -267,6 +273,15 @@ class CouponRegistModel extends WB_Model
                 $disc_rate = element('disc_rate', $input);
             }
 
+            // 사용기간 설정
+            if (element('valid_type', $input, 'day') == 'end_date') {
+                $valid_day = 0;
+                $valid_end_datm = element('valid_end_date', $input) . ' ' . element('valid_end_hour', $input) . ':' . element('valid_end_min', $input) . ':00';
+            } else {
+                $valid_day = element('valid_day', $input);
+                $valid_end_datm = null;
+            }
+
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CouponName' => element('coupon_name', $input),
@@ -286,7 +301,8 @@ class CouponRegistModel extends WB_Model
                 'DiscAllowPrice' => element('disc_allow_price', $input),
                 'IssueStartDate' => element('issue_start_date', $input),
                 'IssueEndDate' => element('issue_end_date', $input),
-                'ValidDay' => element('valid_day', $input),
+                'ValidDay' => $valid_day,
+                'ValidEndDatm' => $valid_end_datm,
                 'CouponDesc' => element('coupon_desc', $input),
                 'IsIssue' => element('is_issue', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -353,12 +369,22 @@ class CouponRegistModel extends WB_Model
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
+            // 사용기간 설정
+            if (element('valid_type', $input, 'day') == 'end_date') {
+                $valid_day = 0;
+                $valid_end_datm = element('valid_end_date', $input) . ' ' . element('valid_end_hour', $input) . ':' . element('valid_end_min', $input) . ':00';
+            } else {
+                $valid_day = element('valid_day', $input);
+                $valid_end_datm = null;
+            }
+
             // 상품 정보 수정
             $data = [
                 'CouponName' => element('coupon_name', $input),
                 'IssueStartDate' => element('issue_start_date', $input),
                 'IssueEndDate' => element('issue_end_date', $input),
-                'ValidDay' => element('valid_day', $input),
+                'ValidDay' => $valid_day,
+                'ValidEndDatm' => $valid_end_datm,
                 'CouponDesc' => element('coupon_desc', $input),
                 'IsIssue' => element('is_issue', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

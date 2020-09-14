@@ -48,7 +48,7 @@
                             <td>{{ $data['ApplyTypeName'] }}</td>
                             <td>{{ $data['LecTypeNames'] }}</td>
                             <td>{{ $data['ApplyRangeName'] }}</td>
-                            <td>{{ $data['ValidDay'] }}일<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
+                            <td>{{ $data['ValidPeriod'] }}<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
                             <td>@if($data['IssueValid'] != '유효')<a class="red">{{ $data['IssueValid'] }}</a>@else{{ $data['IssueValid'] }}@endif</td>
                             <td>{{ $data['DiscRate'] }}@if($data['DiscType'] == 'R')%@else원@endif</td>
                             <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssueCnt'] }}</td>

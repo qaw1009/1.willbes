@@ -80,7 +80,9 @@ class CouponFModel extends WB_Model
         } else {
             $column = 'C.CouponIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
                 , C.ApplyTypeCcd, fn_ccd_name(C.ApplyTypeCcd) as ApplyTypeCcdName
-                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IsUse, CD.UseDatm, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
+                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, C.ValidEndDatm
+                , CD.IsUse, CD.UseDatm, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
+                , if(C.ValidDay > 0, concat(C.ValidDay, "일"), concat("~ ", left(C.ValidEndDatm, 16))) as ValidPeriod
                 , (case when CD.IsUse = "Y" then "사용"
                         when NOW() between CD.IssueDatm and CD.ExpireDatm and CD.ValidStatus = "Y" then "유효"
                         when NOW() > CD.ExpireDatm then "만료"
@@ -134,7 +136,8 @@ class CouponFModel extends WB_Model
         } else {
             $column = 'C.CouponIdx, CD.CdIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
                 , C.ApplyTypeCcd, fn_ccd_name(C.ApplyTypeCcd) as ApplyTypeCcdName, ifnull(CP.ProdCodes, "") as ProdCodes
-                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
+                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, C.ValidEndDatm, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
+                , if(C.ValidDay > 0, concat(C.ValidDay, "일"), concat("~ ", left(C.ValidEndDatm, 16))) as ValidPeriod
                 , if(NOW() < CD.ExpireDatm, to_days(CD.ExpireDatm) - to_days(NOW()), 0) as RemainDay                
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -263,8 +266,8 @@ class CouponFModel extends WB_Model
      */
     public function findCoupon($arr_condition = [])
     {
-        $column = 'C.CouponIdx, C.SiteCode, C.CouponTypeCcd, C.DeployType, C.PinType, C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.IsIssue
-            , ifnull(CP.CouponPin, "N") as CouponPin, date_add(NOW(), interval C.ValidDay day) as ExpireDatm';
+        $column = 'C.CouponIdx, C.SiteCode, C.CouponTypeCcd, C.DeployType, C.PinType, C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.ValidEndDatm, C.IsIssue            
+            , ifnull(CP.CouponPin, "N") as CouponPin, if(C.ValidDay > 0, date_add(NOW(), interval C.ValidDay day), C.ValidEndDatm) as ExpireDatm';
 
         $arr_condition = array_merge_recursive($arr_condition, [
             'EQ' => ['C.IsIssue' => 'Y', 'C.IsStatus' => 'Y']

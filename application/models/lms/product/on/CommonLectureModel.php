@@ -219,6 +219,7 @@ class CommonLectureModel extends WB_Model
                                 when current_date() > A.IssueEndDate then "만료"
                                 else "발급전"
                             end) as IssueValid
+                            ,if(A.ValidDay > 0, concat(A.ValidDay, "일"), concat("~ ", left(A.ValidEndDatm, 16))) as ValidPeriod
                             ,B.CcdName as CouponTypeCcdName
                             ,C.CcdName as ApplyTypeCcdName
             ';

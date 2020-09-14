@@ -100,7 +100,7 @@
         <!-- 타이머 //-->
         <div class="skybanner" >
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/08/1770_sky01.jpg" alt="슈퍼패스 12개월" ></a>
-            <a href="#none" onclick="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/08/1770_sky02.jpg" alt="패키지" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1773" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1770_sky02.jpg" alt="패키지" ></a>
         </div>               
 
 		<div class="evtCtnsBox evt00">

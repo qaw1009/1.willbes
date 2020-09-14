@@ -37,7 +37,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1643_top.jpg" usemap="#Map1643a" title="G-TELP 목표점수 단기완성" border="0">
             <map name="Map1643a" id="Map1643a">
-                <area shape="rect" coords="9,673,513,788" href="#goLec" />
+                <area shape="rect" coords="0,580,495,683" href="#goLec" />
             </map>
         </div>
 

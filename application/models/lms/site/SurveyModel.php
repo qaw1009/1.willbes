@@ -225,9 +225,7 @@ class SurveyModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where .$group_by .$order_by_offset_limit);
-//        echo '<pre>';
-//        print_r('select ' . $column . $from . $where .$group_by .$order_by_offset_limit);
-//        exit;
+
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

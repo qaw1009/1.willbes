@@ -39,8 +39,6 @@
 
         .evt05 {padding:100px 0}
 
-        .evt06{background:#f9f9f9}
-
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -72,11 +70,7 @@
                 <area shape="rect" coords="281,830,805,907" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재구매하기" />
             </map>
         </div>
-
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1425_06.jpg" title="국제 공인 영어시험 G-TELP">
-        </div>
-
+        
         <div class="evtCtnsBox evt04" id="goLec">
             <div class="evt04title"><img src="https://static.willbes.net/public/images/promotion/2020/05/1425_04.jpg"></div>
             @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

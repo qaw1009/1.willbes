@@ -72,13 +72,7 @@ class SupportStudyComment extends BaseSupport
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
-        $column .= ',b.SubjectName, b.ProdName';
-        // 수강후기 사용안함으로 설정한 교수 이름 보여주기
-        if($this->_bm_idx == '85'){
-            $column .= ',e.ProfNickName AS ProfName';
-        }else{
-            $column .= ',b.ProfName';
-        }
+        $column .= ',b.SubjectName, b.ProdName, e.ProfName';
         $column .= ',ProdApplyTypeCcd, LecScore';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
@@ -219,13 +213,7 @@ class SupportStudyComment extends BaseSupport
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
-        $column .= ',b.SubjectName, b.ProdName';
-        // 수강후기 사용안함으로 설정한 교수 이름 보여주기
-        if($this->_bm_idx == '85'){
-            $column .= ',e.ProfNickName AS ProfName';
-        }else{
-            $column .= ',b.ProfName';
-        }
+        $column .= ',b.SubjectName, b.ProdName, f.wProfName';
         $column .= ',ProdApplyTypeCcd, LecScore';
 
         switch ($orderby) {

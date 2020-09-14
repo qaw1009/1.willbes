@@ -118,9 +118,6 @@
                             break;
                         }
                     }
-                    /*if (empty($row['TalkShowContentsType']) === false && $row['TalkShowContentsType'] == 5) {
-                        echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div>";
-                    }*/
                     echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div></div>";
                 @endphp
             @endforeach

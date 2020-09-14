@@ -96,7 +96,12 @@
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
                 <li class="c_both"></li>  
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>               
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200608') }}" target="_blank">임용 합격환승센터 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191216') }}" target="_blank">임용 연간패키지 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190703') }}" target="_blank">임용 실전모의고사 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200102') }}" target="_blank">임용 합격전략설명회 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamkcw') }}" target="_blank">임용 교육학 김차웅 <span>*</span></a></li>        
             </ul>
         </div>        
     </li>

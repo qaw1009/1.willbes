@@ -103,7 +103,7 @@
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/surveys/manager/eventSurveyList') }}',
+                    'url' : '{{ site_url('/site/surveys/manager/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});

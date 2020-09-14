@@ -10,6 +10,7 @@ class SubTitles extends \app\controllers\BaseController
         ,'2' => '유형2'
         ,'3' => '유형3'
         ,'4' => '유형4'
+        ,'5' => '유형5'
     ];
 
     public function __construct()

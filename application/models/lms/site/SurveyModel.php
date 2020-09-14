@@ -197,7 +197,7 @@ class SurveyModel extends WB_Model
             $column = "COUNT(A.cnt) AS numrows";
             $from = "
                 FROM (
-                    SELECT IsStatus, SurveyTitle, SubIdx, COUNT(SubIdx) AS cnt
+                    SELECT SiteCode, IsStatus, SurveyTitle, SubIdx, COUNT(SubIdx) AS cnt
                     FROM {$this->_table['survey_set_statistics']}
                     WHERE IsStatus = 'Y'
                     GROUP BY SubIdx, SurveyQuestion
@@ -225,16 +225,18 @@ class SurveyModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where .$group_by .$order_by_offset_limit);
+
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
      * 설문통계 제목 조회
+     * @param integer $site_code
      * @return mixed
      */
-    public function listSurveyStatisticsTitle()
+    public function listSurveyStatisticsTitle($site_code=null)
     {
-        $arr_condition = ['EQ' => ['IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y','SiteCode' => $site_code]];
         $order_by_offset_limit = ' order by SsIdx DESC';
         $column = "SsIdx, SurveyTitle";
         $from = "

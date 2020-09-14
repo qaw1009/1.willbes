@@ -60,8 +60,9 @@
 
         <div class="viewArea">
             @foreach($arr_input['menu'] as $row)
-                @php if(empty($arr_input['data'][$row['PstIdx']]) === false) {
-                    echo "<div class='viewbox' id='tab{$row['PstIdx']}'>";
+                @php
+                echo "<div class='viewbox' id='tab{$row['PstIdx']}'>";
+                    if(empty($arr_input['data'][$row['PstIdx']]) === false) {
                         switch ($row['TalkShowContentsType']) {
                             case '1':
                                 echo '<ul class="liveTab01 slide01">';
@@ -100,7 +101,7 @@
                                     }
                                 echo '</ul>';
                                 break;
-                            case "4";
+                            case "4":
                                 echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
@@ -117,8 +118,12 @@
                             default;
                             break;
                         }
-                    echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div></div>";
-                } @endphp
+                    }
+                    if (empty($row['TalkShowContentsType']) === false && $row['TalkShowContentsType'] == 5) {
+                        echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div>";
+                    }
+                echo "</div>";
+                @endphp
             @endforeach
         </div>
     </div>

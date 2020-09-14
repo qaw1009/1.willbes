@@ -174,7 +174,7 @@ class Manager extends \app\controllers\BaseController
     /**
      * 설문조사 리스트
      */
-    public function eventSurveyList()
+    public function listAjax()
     {
         $list = [];
 

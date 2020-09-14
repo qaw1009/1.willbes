@@ -16,26 +16,30 @@ class Statistics extends \app\controllers\BaseController
      */
     public function index()
     {
-        $condition = ['EQ' => ['A.IsStatus' => 'Y']];
+        //$condition = ['EQ' => ['A.IsStatus' => 'Y']];
+        //$old_survey_count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
 
-        $statistics_title_list = $this->surveyModel->listSurveyStatisticsTitle();
-        $old_survey_count = $this->surveyModel->listAllSurveyStatistics(true, $condition);
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
 
         $this->load->view('site/survey/survey_statistics', [
-            'old_survey_count' => $old_survey_count,
-            'statistics_title_list' => $statistics_title_list,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code,
         ]);
     }
 
     /**
      * 설문통계 리스트
      */
-    public function surveyStatisticsList()
+    public function listAjax()
     {
         $list = [];
 
         $arr_condition = [
-            'EQ' => ['A.IsStatus' => 'Y'],
+            'EQ' => [
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_reqP('search_site_code'),
+            ],
             'ORG1' => [
                 'LKB' => [
                     'A.SurveyTitle' => $this->_reqP('search_value'),
@@ -53,6 +57,9 @@ class Statistics extends \app\controllers\BaseController
             ]);
         }
 
+        // 설문 제목
+        $survey_title_info = $this->surveyModel->listSurveyStatisticsTitle($this->_reqP('search_site_code'));
+
         $count = $this->surveyModel->listGroupSurveyStatistics(true, $arr_condition);
         if ($count > 0) {
             $list = $this->surveyModel->listGroupSurveyStatistics(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['A.SubIdx' => 'desc']);
@@ -62,6 +69,7 @@ class Statistics extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
+            'survey_title_info' => $survey_title_info
         ]);
     }
 

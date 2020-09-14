@@ -2,28 +2,28 @@
 
 @section('content')
     <h5 class="mt-20">- 설문통계를 관리하는 메뉴입니다.</h5>
-    <div class="x_panel">
-        <div class="x_content">
-            <div class="form-group">
-                <label class="control-label col-md-1" for="survey_update">설문통계로 업데이트</label>
-                <div class="col-md-3">
-                    <select class="form-control" id="survey_update" name="survey_update" title="설문업데이트">
-                        <option value="">선택하세요</option>
-                        @foreach($statistics_title_list as $key => $val)
-                            <option value="{{ $val['SsIdx'] }}">{{ $val['SurveyTitle'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-5">
-                    <button type="button" class="btn-sm btn-danger btn_survey_update">업데이트</button>
-                    <span class="red">* 선택한 설문을 설문통계로 업데이트해줍니다.</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+
+        <div class="x_panel">
+            <div class="x_content">
+                {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="survey_update">설문통계로 업데이트</label>
+                    <div class="col-md-3">
+                        <select class="form-control" id="survey_update" name="survey_update" title="설문업데이트">
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" class="btn-sm btn-danger btn_survey_update">업데이트</button>
+                        <span class="red">* 선택한 설문을 설문통계로 업데이트해줍니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -106,16 +106,17 @@
                 pageLength: 50,
                 serverSide: true,
                 buttons: [
-                    @if($old_survey_count == 0)
-                    { text: '<i class="fa fa-copy mr-10"></i> old 데이타 업데이트(1회용)', className: 'btn btn-default btn-sm btn-danger border-radius-reset mr-15 btn-old-survey', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/site/surveys/statistics/runOnce') }}' + dtParamsToQueryString($datatable);
-                        }},
-                    @endif
+{{--                    @if($old_survey_count == 0)--}}
+{{--                    { text: '<i class="fa fa-copy mr-10"></i> old 데이타 업데이트(1회용)', className: 'btn btn-default btn-sm btn-danger border-radius-reset mr-15 btn-old-survey', action: function(e, dt, node, config) {--}}
+{{--                            location.href = '{{ site_url('/site/surveys/statistics/runOnce') }}' + dtParamsToQueryString($datatable);--}}
+{{--                        }},--}}
+{{--                    @endif--}}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/surveys/statistics/surveyStatisticsList') }}',
+                    'url' : '{{ site_url('/site/surveys/statistics/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
+                        $("#survey_update").html('');
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                     }
                 },
@@ -148,7 +149,18 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SpreadData + '<br/>' + row.CountData;
                         }},
-                ]
+                ],
+                "drawCallback": function(settings) {
+                    var survey_title_info = settings.json.survey_title_info;
+                    var option_html = '<option value="">선택하세요</option>';
+
+                    if (typeof survey_title_info !== 'undefined') {
+                        $.each(survey_title_info, function(key, val) {
+                            option_html += '<option value="' + val.SsIdx + '">' + val.SurveyTitle + '</option>';
+                        });
+                    }
+                    $("#survey_update").html(option_html);
+                }
             });
 
         });

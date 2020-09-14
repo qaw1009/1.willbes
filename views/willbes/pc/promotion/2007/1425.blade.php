@@ -51,9 +51,9 @@
         --}}
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
-            <map name="Map1425A" id="Map1425A">
-                <area shape="rect" coords="687,898,973,973" href="#goLec" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1425_top.jpg" usemap="#Map1425a" title="G-TELP 최단기 목표공략" border="0">
+            <map name="Map1425a" id="Map1425a">
+                <area shape="rect" coords="684,814,970,895" href="#goLec" />
             </map>
         </div>
 

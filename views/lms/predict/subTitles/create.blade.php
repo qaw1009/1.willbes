@@ -97,6 +97,30 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">등록자
+                            </label>
+                            <div class="col-md-3">
+                                <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+                            </div>
+                            <label class="control-label col-md-2">등록일
+                            </label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">최종 수정자
+                            </label>
+                            <div class="col-md-3">
+                                <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+                            </div>
+                            <label class="control-label col-md-2">최종 수정일
+                            </label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+                            </div>
+                        </div>
                         <div class="form-group text-center btn-wrap mt-10">
                             <button type="submit" class="btn btn-sm btn-success mr-10">저장</button>
                             <button class="btn btn-sm btn-primary btn_list" type="button">목록</button>

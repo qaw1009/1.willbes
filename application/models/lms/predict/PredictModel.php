@@ -2912,13 +2912,14 @@ class PredictModel extends WB_Model
     public function findSubTitlesForModify($arr_condition)
     {
         $column = '
-                a.PstIdx, a.TalkShowContentsType, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
-                a.UpdDatm, a.UpdAdminIdx, b.wAdminName
+                a.PstIdx, a.TalkShowContentsType, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse
+                ,a.RegDatm, a.RegAdminIdx, a.RegIp, b.wAdminName as RegAdminName, a.UpdDatm, a.UpdAdminIdx, c.wAdminName as UpdAdminName
             ';
 
         $from = "
             FROM {$this->_table['predictSubTitles']} as a
             LEFT JOIN {$this->_table['admin']} AS b ON a.RegAdminIdx = b.wAdminIdx and b.wIsStatus='Y'
+            LEFT JOIN {$this->_table['admin']} AS c ON a.UpdAdminIdx = c.wAdminIdx and c.wIsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -3038,7 +3039,8 @@ class PredictModel extends WB_Model
                 'Title' => element('title', $input),
                 'ContentType' => element('content_type', $input),
                 'IsUse' => element('is_use', $input),
-                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
             ];
 
             if (empty($content_data) === false) {
@@ -3103,8 +3105,13 @@ class PredictModel extends WB_Model
                 }
             }
             $set_temp_data = substr($set_temp_data, 0, -1);
+            $input_data = [
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ,'UpdDatm' => date('Y-m-d H:i:s')
+                ,'content' => $set_temp_data
+            ];
 
-            $this->_conn->set(['content' => $set_temp_data])->where_in('PstIdx',element('idx', $input));
+            $this->_conn->set($input_data)->where_in('PstIdx',element('idx', $input));
             if($this->_conn->update($this->_table['predictSubTitles'])=== false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }

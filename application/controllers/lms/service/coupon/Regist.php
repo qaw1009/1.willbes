@@ -24,10 +24,11 @@ class Regist extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryRouteArray();
 
         // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
-        $codes = $this->_getCodes([$this->_ccd['ApplyType'], $this->_ccd['LecType']]);
+        $codes = $this->_getCodes([$this->_ccd['CouponType'], $this->_ccd['ApplyType'], $this->_ccd['LecType']]);
 
         $this->load->view('service/coupon/index', [
             'arr_category' => $arr_category,
+            'arr_coupon_type_ccd' => $codes[$this->_ccd['CouponType']],
             'arr_apply_type_ccd' => $codes[$this->_ccd['ApplyType']],
             'arr_lec_type_ccd' => $codes[$this->_ccd['LecType']]
         ]);
@@ -76,7 +77,7 @@ class Regist extends \app\controllers\BaseController
      */
     public function excel()
     {
-        $headers = ['운영사이트', '카테고리', '쿠폰명', '배포루트', '쿠폰유형', '핀번호유형 (발급개수)', '적용구분', '적용상세구분', '적용범위', '사용기간 (유효기간)', '유효여부', '할인율 (할인금액)', '쿠폰사용수', '쿠폰발급수', '발급여부', '등록자', '등록일'];
+        $headers = ['운영사이트', '카테고리', '쿠폰명', '배포루트', '쿠폰유형', '핀번호유형 (발급개수)', '적용구분', '적용상세구분', '적용범위', '사용기간', '유효기간', '유효여부', '할인율 (할인금액)', '쿠폰사용수', '쿠폰발급수', '발급여부', '등록자', '등록일'];
 
         $arr_condition = $this->_getListConditions();
         $list = $this->couponRegistModel->listAllCoupon('excel', $arr_condition, null, null, ['CouponIdx' => 'desc']);
@@ -114,6 +115,8 @@ class Regist extends \app\controllers\BaseController
             'EQ' => [
                 'SiteCode' => $this->_reqP('search_site_code'),
                 'DeployType' => $this->_reqP('search_deploy_type'),
+                'CouponTypeCcd' => $this->_reqP('search_coupon_type_ccd'),
+                'PinType' => $this->_reqP('search_pin_type'),
                 'ApplyTypeCcd' => $this->_reqP('search_apply_type_ccd'),
                 'ApplyRangeType' => $this->_reqP('search_apply_range_type'),
                 'IsIssue' => $this->_reqP('search_is_issue'),
@@ -130,6 +133,13 @@ class Regist extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        // 사용기간 검색
+        if ($this->_reqP('search_valid_type') == 'day') {
+            $arr_condition['GT']['ValidDay'] = '0';     // 사용일수
+        } elseif ($this->_reqP('search_valid_type') == 'end_date') {
+            $arr_condition['EQ']['ValidDay'] = '0';     // 종료일
+        }
 
         // 날짜 검색
         if ($this->_reqP('search_date_type') == 'I') {
@@ -226,7 +236,11 @@ class Regist extends \app\controllers\BaseController
             ['field' => 'coupon_name', 'label' => '쿠폰명', 'rules' => 'trim|required'],
             ['field' => 'issue_start_date', 'label' => '유효시작일자', 'rules' => 'trim|required'],
             ['field' => 'issue_end_date', 'label' => '유효종료일자', 'rules' => 'trim|required'],
-            ['field' => 'valid_day', 'label' => '사용기간', 'rules' => 'trim|required|integer'],
+            ['field' => 'valid_type', 'label' => '사용기간구분', 'rules' => 'trim|required|in_list[day,end_date]'],
+            ['field' => 'valid_day', 'label' => '사용기간', 'rules' => 'callback_validateRequiredIf[valid_type,day]|integer|greater_than[0]'],
+            ['field' => 'valid_end_date', 'label' => '사용종료일', 'rules' => 'callback_validateRequiredIf[valid_type,end_date]'],
+            ['field' => 'valid_end_hour', 'label' => '사용종료시간(시)', 'rules' => 'callback_validateRequiredIf[valid_type,end_date]|integer'],
+            ['field' => 'valid_end_min', 'label' => '사용종료시간(분)', 'rules' => 'callback_validateRequiredIf[valid_type,end_date]|integer'],
             ['field' => 'is_issue', 'label' => '발급여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 

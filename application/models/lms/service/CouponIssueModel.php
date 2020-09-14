@@ -242,7 +242,7 @@ class CouponIssueModel extends WB_Model
         $this->load->loadModels(['_lms/service/couponRegist']);
 
         // 기존 쿠폰 기본정보 조회
-        $row = $this->couponRegistModel->findCoupon('CouponIdx, CouponTypeCcd, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
+        $row = $this->couponRegistModel->findCoupon('CouponIdx, CouponTypeCcd, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, ValidEndDatm, IsIssue'
             , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
         if (empty($row) === true) {
             return '쿠폰 정보 조회에 실패했습니다.';
@@ -288,27 +288,36 @@ class CouponIssueModel extends WB_Model
                 $issue_type_ccd = $this->_issue_type_ccd['manual'];
             }
 
+            // 만료일시 설정
+            if ($coupon_data['ValidDay'] > 0) {
+                $expire_datm = $this->_conn->query('select date_add(NOW(), interval ? day) as ExpireDatm', [$coupon_data['ValidDay']])->row(0)->ExpireDatm;     // 사용일수
+                //$expire_datm = date('Y-m-d H:i:s', strtotime('+' . $coupon_data['ValidDay'] . ' day'));   // 프런트와 동일하게 DB시간 사용
+            } else {
+                $expire_datm = $coupon_data['ValidEndDatm'];    // 종료일
+            }
+
+            // 사용자 쿠폰 발급
             $query = /** @lang text */ 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueOrderProdIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)';
             
             if ($coupon_data['DeployType'] == 'N') {
                 // 온라인 배포
-                $binds = ['N', $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
+                $binds = ['N', $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $expire_datm, 'A', $admin_idx, $reg_ip, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select ?, ?, MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select ?, ?, MemIdx, ?, ?, NOW(), NOW(), ?, ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'S') {
                 // 오프라인 배포 && 공통핀번호
-                $binds = [$coupon_idx, $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
+                $binds = [$coupon_idx, $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $expire_datm, 'A', $admin_idx, $reg_ip, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select (select CouponPin from ' . $this->_table['coupon_pin'] . ' where CouponIdx = ?), ?, MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select (select CouponPin from ' . $this->_table['coupon_pin'] . ' where CouponIdx = ?), ?, MemIdx, ?, ?, NOW(), NOW(), ?, ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'R') {
                 // 오프라인 배포 && 랜덤핀번호
-                $binds = [$coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $coupon_idx, $arr_mem_idx];
+                $binds = [$coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $expire_datm, 'A', $admin_idx, $reg_ip, $coupon_idx, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select A.CouponPin, ?, B.MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select A.CouponPin, ?, B.MemIdx, ?, ?, NOW(), NOW(), ?, ?, ?, ?
                     from (
                         select CP.CouponPin, (@rownum1 := @rownum1 + 1) as RowNum
                         from ' . $this->_table['coupon_pin'] . ' as CP left join ' . $this->_table['coupon_detail']. ' as CD

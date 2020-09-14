@@ -222,18 +222,39 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="issue_start_date">유효기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline">
+                    <div class="col-md-9 form-inline">
                         <div class="input-group mb-0 item">
-                            <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="유효시작일자" value="{{ $data['IssueStartDate'] or date('Y-m-d') }}">
+                            <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="발급유효시작일자" value="{{ $data['IssueStartDate'] or date('Y-m-d') }}" readonly="readonly">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <input type="text" class="form-control datepicker" id="issue_end_date" name="issue_end_date" required="required" title="유효종료일자" value="{{ $data['IssueEndDate'] }}">
-                            <div class="input-group-addon no-border no-bgcolor"># 발급 유효기간</div>
+                            <input type="text" class="form-control datepicker" id="issue_end_date" name="issue_end_date" required="required" title="발급유효종료일자" value="{{ $data['IssueEndDate'] }}" readonly="readonly">
+                            <div class="input-group-addon no-border no-bgcolor gray pl-30"># 발급 유효기간</div>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="valid_day">사용기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline item">
-                        <input type="number" id="valid_day" name="valid_day" class="form-control" required="required" title="사용기간" value="{{ $data['ValidDay'] }}" style="width: 100px;"> 일
+                    <div class="col-md-9 form-inline">
+                        <div class="radio item">
+                            <input type="radio" id="valid_type_1" name="valid_type" class="flat" value="day" required="required" title="사용기간구분" @if($method == 'POST' || $data['ValidDay'] > 0)checked="checked"@endif/> <label for="valid_type_1" class="input-label">사용일수</label>
+                            <input type="number" id="valid_day" name="valid_day" class="form-control" required="required_if:valid_type,day" data-validate-minmax="1" title="사용일수" value="{{ $data['ValidDay'] > 0 ? $data['ValidDay'] : '' }}" style="width: 100px;"> 일
+                        </div>
+                        <div class="radio item ml-30">
+                            <input type="radio" id="valid_type_2" name="valid_type" class="flat" value="end_date" @if($data['ValidDay'] == 0)checked="checked"@endif/> <label for="valid_type_2" class="input-label">종료일</label>
+                            <input type="text" class="form-control datepicker" id="valid_end_date" name="valid_end_date" required="required_if:valid_type,end_date" title="사용종료일" value="{{ $data['ValidEndDate'] }}" readonly="readonly">
+                            <select class="form-control ml-5" id="valid_end_hour" name="valid_end_hour" required="required_if:valid_type,end_date" title="사용종료시간(시)" style="width: 50px;">
+                                @foreach(range(0, 23) as $h)
+                                    @php $hour = sprintf('%02d', $h); @endphp
+                                    <option value="{{ $hour }}" @if(empty($data['ValidEndDatm']) === false && $data['ValidEndHour'] == $hour) selected @endif>{{ $hour }}</option>
+                                @endforeach
+                            </select> 시
+                            <select class="form-control" id="valid_end_min" name="valid_end_min" required="required_if:valid_type,end_date" title="사용종료시간(분)" style="width: 50px;">
+                                @foreach(range(0, 59) as $m)
+                                    @php $min = sprintf('%02d', $m); @endphp
+                                    <option value="{{ $min }}" @if(empty($data['ValidEndDatm']) === false && $data['ValidEndMin'] == $min) selected @endif>{{ $min }}</option>
+                                @endforeach
+                            </select> 분
+                        </div>
                         <div class="inline-block ml-20"># 발급 후 사용기간</div>
                     </div>
                 </div>

@@ -60,8 +60,7 @@
 
         <div class="viewArea">
             @foreach($arr_input['menu'] as $row)
-                @php
-                echo "<div class='viewbox' id='tab{$row['PstIdx']}'>";
+                @php echo "<div class='viewbox' id='tab{$row['PstIdx']}'>";
                     if(empty($arr_input['data'][$row['PstIdx']]) === false) {
                         switch ($row['TalkShowContentsType']) {
                             case '1':
@@ -119,10 +118,7 @@
                             break;
                         }
                     }
-                    if (empty($row['TalkShowContentsType']) === false && $row['TalkShowContentsType'] == 5) {
-                        echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div>";
-                    }
-                echo "</div>";
+                    echo "<div class='bgimg'><img src='{$row['BgImgPath']}' title='{$row['Title']}'></div></div>";
                 @endphp
             @endforeach
         </div>

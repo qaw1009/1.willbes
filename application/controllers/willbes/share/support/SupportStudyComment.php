@@ -72,7 +72,7 @@ class SupportStudyComment extends BaseSupport
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
-        $column .= ',b.SubjectName, b.ProdName, e.ProfName';
+        $column .= ',b.SubjectName, b.ProdName, f.wProfName';
         $column .= ',ProdApplyTypeCcd, LecScore';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 

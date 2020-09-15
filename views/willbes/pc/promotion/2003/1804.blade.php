@@ -831,13 +831,13 @@
             </div>
             -->
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_03.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_03.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -847,7 +847,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_04_01.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_04_01.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)

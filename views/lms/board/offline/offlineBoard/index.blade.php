@@ -127,7 +127,7 @@
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
 
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/offline/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                            location.href = '{{ site_url("/board/offline/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}&site_code=' + $("#tabs_site_code .active a").data('site-code');
                         }}
                 ],
                 ajax: {
@@ -195,12 +195,12 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.href='{{ site_url("/board/offline/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                location.href='{{ site_url("/board/offline/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}&site_code=' + $("#tabs_site_code .active a").data('site-code');
             });
 
             // 데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
-                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}&site_code=' + $("#tabs_site_code .active a").data('site-code');
             });
 
             // Best 적용

@@ -41,10 +41,23 @@ class BasePromotion extends \app\controllers\FrontController
             show_alert('잘못된 접근 입니다.', 'back');
         }
 
+        if(empty($params['spidx']) === false){
+            if(!is_numeric($params['spidx'])){
+                show_alert('잘못된 접근 입니다.', 'back');
+            }
+        }
+
+        if(empty($params['SsIdx']) === false){
+            if(!is_numeric($params['SsIdx'])){
+                show_alert('잘못된 접근 입니다.', 'back');
+            }
+        }
+
         $test_type = (int)element('type', $this->_reqG(null), '0');
         $arr_base['tab_id'] = element('tab', $this->_reqG(null), '1');
         $arr_base['promotion_code'] = $params['code'];
-        //$arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
+        $arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
+        $arr_base['SsIdx'] = (empty($params['SsIdx']) === false) ? $params['SsIdx'] : '';
         $arr_base['get_data'] = $this->_reqG(null);
 
         //인증식별자

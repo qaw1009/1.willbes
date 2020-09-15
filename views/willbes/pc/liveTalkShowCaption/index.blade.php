@@ -114,6 +114,18 @@
                                     }
                                 echo '</ul>';
                                 break;
+                            case '5':
+                                echo '<ul class="liveTab03 slide01">';
+                                    foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
+                                        echo "<li>";
+                                        echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
+                                        echo "<span>{$arr_content[2]}</span>";
+                                        echo "<span class='st01'>{$arr_content[3]}</span>";
+                                        echo "<span>{$arr_content[4]}</span>";
+                                        echo "</li>";
+                                    }
+                                echo '</ul>';
+                                break;
                             default;
                             break;
                         }

@@ -243,8 +243,9 @@ class CartFModel extends BaseOrderFModel
         // 5. 회원이 구매한 결제완료된 내강의실 정보 조회
         $add_condition = [];
         if ($real_sale_price < 1) {
-            // 수강생교재 판매금액이 0원일 경우 0원결제 결제루트 제외
-            $add_condition = ['NOT' => ['O.PayRouteCcd' => $this->_pay_route_ccd['zero']]];
+            // 수강생교재 판매금액이 0원일 경우 0원결제 결제루트 제외 (기간제패키지 제외 조건 추가)
+            //$add_condition = ['NOT' => ['O.PayRouteCcd' => $this->_pay_route_ccd['zero']]];
+            $add_condition['RAW']['(O.PayRouteCcd !='] = ' "' . $this->_pay_route_ccd['zero'] . '" OR PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '")';
         }
 
         $my_lecture_rows = $this->orderListFModel->getMemberMyLectureByProdCodeSub($arr_target_prod_code, $add_condition);

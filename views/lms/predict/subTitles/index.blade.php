@@ -40,6 +40,7 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            var arr_talkshow_contents_type = {!! $talkshow_contents_type !!};
             /*$search_form.on('change', '#search_is_use', function() {*/
             $search_form.on('change', 'select[name="search_is_use"]', function() {
                 $datatable.draw();
@@ -64,7 +65,8 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'TalkShowContentsType', 'render' : function(data, type, row, meta) {
-                            return (data == '' || data == null) ? '' : '유형'+data;
+                            return (data == '' || data == null) ? '' : arr_talkshow_contents_type[data];
+                            /*return (data == '' || data == null) ? '' : arr_talkshow_contents_type[data];*/
                         }},
                     {'data' : 'PstIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PstIdx + '"><u>' + row.Title + '</u></a>';

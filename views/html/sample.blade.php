@@ -94,7 +94,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_ask') }}" target="_blank" class="w50">└ 업무제휴 문의 </a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
-                <li class="c_both"></li>  
+                <li class="c_both"></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/sssam_board') }}" target="_blank">임용정보 > 합격수기 <span>*</span></a></li>  
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200608') }}" target="_blank">임용 합격환승센터 <span>*</span></a></li> 

@@ -173,7 +173,7 @@
         <p>10.25(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/170515" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/172387" target="_blank">
                     <span>아똑영어</span>
                     <span>9~10월 방송<br>다시보기</span>
                     <span><strong>1</strong>만원</span>

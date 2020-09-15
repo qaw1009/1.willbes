@@ -3,11 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -171,19 +167,19 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="Map1676b">
                 <area shape="rect" coords="368,974,749,1034" href="#to_go" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
             <map name="Map1676ss" id="Map1676ss">
-                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/170518" target="_blank" />
-                <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" />
-                <area shape="rect" coords="650,950,908,1054" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" />
-            </map>   
+                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/172386" target="_blank" alt="9~10월 방송" />
+                <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="1년치 방송" />
+                <area shape="rect" coords="650,950,908,1054" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
+            </map>  
         </div>
 
 

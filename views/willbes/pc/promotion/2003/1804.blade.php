@@ -167,27 +167,25 @@
             <div class="evtMenu" id="evtMenu">                
                 <ul>
                     <li>
-                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=1#content_1') }}">
+                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
                             <span>행정/세무/외영직</span>
                             <div class="NSK-Black">적중모의고사 무료</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=2#content_2') }}">
+                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
                             <span>경쟁률 및 체감난이도</span>
                             <div class="NSK-Black">지난 시험 완벽 분석</div>				
                         </a>
                     </li>
                     <li>
-                        {{-- <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/2?tab=3#content_3') }}">--}}
-                        <a id='tab3' href="javascript:alert('9.26(토) 오픈!')">
+                        <a id='tab3' href="@if(time() > strtotime('202009260000'))javascript:alert('9.26(토) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }} @endif">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>
                     </li>     
                     <li>
-                        {{-- <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/2?tab=4#content_4') }}">--}}
-                        <a id='tab4' href="javascript:alert('9.28(월) 오픈!')">
+                        <a id='tab4' href="@if(time() > strtotime('202009280000'))javascript:alert('9.28(월) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }} @endif">
                             <span>2020 국가직 7급</span>
                             <div class="NSK-Black">기출해설강의</div>
                         </a>
@@ -928,11 +926,11 @@
         }
 
         function pullOpen(){
-            @if(empty($arr_promotion_params['SpIdx']) === true)
+            @if(empty($arr_promotion_params['SsIdx']) === true)
                 alert('설문정보가 없습니다.');
                 return;
             @else
-                var url = "{{front_url('/survey/index/' . $arr_promotion_params['SpIdx'])}}";
+                var url = "{{front_url('/eventsurvey/index/' . $arr_promotion_params['SsIdx'])}}";
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }

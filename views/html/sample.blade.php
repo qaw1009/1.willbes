@@ -111,7 +111,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191128_wsam32') }}" target="_blank">임용 국어 송원영 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsam22') }}" target="_blank">임용 국어 이원근 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191212_wsamkbm') }}" target="_blank">임용 국어 권보민 <span>*</span></a></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsam33') }}" target="_blank">임용 영어 김유석 <span>*</span></a></li>       
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsam33') }}" target="_blank">임용 영어 김유석 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamkym') }}" target="_blank">임용 영어 김유석 <span>*</span></a></li>       
             </ul>
         </div>        
     </li>

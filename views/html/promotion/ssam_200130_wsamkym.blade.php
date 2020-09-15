@@ -29,13 +29,13 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkym_top.jpg" alt="교육학 이인재" usemap="#Maplij01" border="0" />
                 <map name="Maplij01" id="Maplij01">
-                  <area shape="rect" coords="381,815,767,911" href="javascript:openPrsnt('kym');" alt="설명회보기" />
-                  <area shape="rect" coords="808,813,991,912" href="javascript:openFileCenter('기출적중/2020/kym_orientation(2020).zip');" alt="설명회자료" />
+                  <area shape="rect" coords="381,815,767,911" href="#none" alt="설명회보기" />
+                  <area shape="rect" coords="808,813,991,912" href="#none" alt="설명회자료" />
                 </map>
             </div>
 
             <div class="evt01">
-                <iframe width="853" height="480" src="https://www.youtube.com/embed/ufu2-uydfQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="853" height="480" src="https://www.youtube.com/embed/ufu2-uydfQg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		    </div>
         </div>
     </div>

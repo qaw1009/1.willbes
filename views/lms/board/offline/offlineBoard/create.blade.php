@@ -64,8 +64,12 @@
                     </div>
                     @if(empty($arr_swich['create']['lecture_start_date']) === false)
                         @php
-                            $lecture_start_date = preg_replace("/[^0-9]*/s", "", $data['Title']);
-                            $lecture_start_date = date("Y-m-d", strtotime( $lecture_start_date ) );
+                            if(empty($data['Title']) === false){
+                                $lecture_start_date = preg_replace("/[^0-9]*/s", "", $data['Title']);
+                                $lecture_start_date = date("Y-m-d", strtotime( $lecture_start_date ) );
+                            }else{
+                                $lecture_start_date = date("Y-m-d");
+                            }
                         @endphp
                         <label class="control-label col-md-1-1 d-line" for="lecture_start_date">날짜 선택<span class="required">*</span></label>
                         <div class="col-md-4 ml-12-dot item form-inline">

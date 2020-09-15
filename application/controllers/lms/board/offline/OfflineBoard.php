@@ -24,34 +24,10 @@ class OfflineBoard extends BaseBoard
             'create' => [                            // 등록 항목 설정
                 'lecture_start_date' => 'show',
             ],
-            'list' => [                             // 리스트 항목 설정
-                'CateCode' => '카테고리',
-                'Title' => '제목',
-                'AttachRealFileName' => '첨부',
-                'RegType' => '등록자',
-                'RegDatm' => '등록일',
-                'ReplyStatusCcdName' => '답변상태',
-                'ReplyRegAdminName' => '답변자',
-                'ReplyRegDatm' => '답변일',
-                'IsPublic' => '공개',
-                'ReadCnt' => '조회수',
-            ],
         ],
         '2018' => [                                  // 임용[학원]
             'create' => [                            // 등록 항목 설정
                 'lecture_start_date' => 'show',
-            ],
-            'list' => [                             // 리스트 항목 설정
-                'CateCode' => '카테고리',
-                'Title' => '제목',
-                'AttachRealFileName' => '첨부',
-                'RegType' => '등록자',
-                'RegDatm' => '등록일',
-                'ReplyStatusCcdName' => '답변상태',
-                'ReplyRegAdminName' => '답변자',
-                'ReplyRegDatm' => '답변일',
-                'IsPublic' => '공개',
-                'ReadCnt' => '조회수',
             ],
         ],
     ];

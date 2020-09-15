@@ -151,7 +151,7 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="evt1Map" id="evt1Map">
                 <area shape="rect" coords="362,952,757,1018" href="#to_go" />
             </map>
@@ -165,7 +165,7 @@
         </div>
 
         <div class="evtCtnsBox evt03ss2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
             <map name="evt4Map" id="evt4Map">
                 <area shape="rect" coords="641,271,920,386" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank" />
             </map>

@@ -169,12 +169,12 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_02.jpg" alt="" >
-        <p>9.13(일)이 지나면 한정특가가 마감됩니다!</p>
+        <p>10.25(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/170518" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/172387" target="_blank">
                     <span>반반모고</span>
-                    <span>8월 방송<br>다시보기</span>
+                    <span>9~10월 방송<br>다시보기</span>
                     <span><strong>2</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
@@ -208,7 +208,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">
-                    <span>8/31(월)~9/4(금) <br>오후 6시</span>
+                    <span>9/21(월)~9/25(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

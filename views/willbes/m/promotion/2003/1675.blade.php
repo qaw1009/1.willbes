@@ -170,12 +170,12 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1675m_02.jpg" alt="" >
-        <p>9.13(일)이 지나면 한정특가가 마감됩니다!</p>
+        <p>10.25(일)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
                 <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/170515" target="_blank">
                     <span>아똑영어</span>
-                    <span>8월 방송<br>다시보기</span>
+                    <span>9~10월 방송<br>다시보기</span>
                     <span><strong>1</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
@@ -195,13 +195,13 @@
         <ul>
             <li>
                 <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif">
-                    <span>12PM~8AM 문제 <br>+ 8AM~12PM 해설</span>
+                    <span>12PM~8AM 문제 <br>+ 8AM~10AM 해설</span>
                     아침똑똑영어<br>다운받기 >
                 </a>
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTest/info" target="_blank">
-                    <span>8/31(월)~9/4(금) <br>오후 6시</span>
+                    <span>9/21(월)~9/25(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>

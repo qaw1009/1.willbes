@@ -95,6 +95,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
                 <li class="c_both"></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/sssam_upList') }}" target="_blank">임용정보 > 강의 업데이트 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/sssam_board') }}" target="_blank">임용정보 > 합격수기 <span>*</span></a></li>  
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>
@@ -102,7 +103,16 @@
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191216') }}" target="_blank">임용 연간패키지 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190703') }}" target="_blank">임용 실전모의고사 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200102') }}" target="_blank">임용 합격전략설명회 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamkcw') }}" target="_blank">임용 교육학 김차웅 <span>*</span></a></li>        
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsammjs') }}" target="_blank">임용 교육학 민정선 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsambjm') }}" target="_blank">임용 교육학 배재민 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamkcw') }}" target="_blank">임용 교육학 김차웅 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsam14') }}" target="_blank">임용 교육학 이인재 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamhei') }}" target="_blank">임용 교육학 홍의일 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191128_wsam32') }}" target="_blank">임용 국어 송원영 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsam22') }}" target="_blank">임용 국어 이원근 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191212_wsamkbm') }}" target="_blank">임용 국어 권보민 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsam33') }}" target="_blank">임용 영어 김유석 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_wsamkym') }}" target="_blank">임용 영어 김유석 <span>*</span></a></li>       
             </ul>
         </div>        
     </li>

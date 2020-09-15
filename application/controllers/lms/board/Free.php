@@ -19,6 +19,11 @@ class Free extends BaseBoard
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
     ];
+    private $_on_off_swich = [
+        'create' => [                           // 적용 페이지
+            'product_subject' => ['2017','2018'] // 적용 사이트코드
+        ]
+    ];
 
     public function __construct()
     {
@@ -173,17 +178,20 @@ class Free extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $site_code = $this->_reqG('site_code');
 
         $method = 'POST';
         $data = null;
         $board_idx = null;
+        $arr_swich = null;
+        $product_subject = null;
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType, LB.SubjectIdx,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -214,6 +222,12 @@ class Free extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
+        // 과목 조회
+        if(in_array($site_code,$this->_on_off_swich['create']['product_subject']) === true){
+            $arr_swich = $this->_on_off_swich['create'];
+            $product_subject = $this->boardModel->listSiteProductSubject($arr_swich['product_subject']);
+        }
+
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
@@ -223,7 +237,9 @@ class Free extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'arr_swich' => $arr_swich,
+            'product_subject' => $product_subject
         ]);
     }
 
@@ -394,6 +410,7 @@ class Free extends BaseBoard
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'SettingReadCnt' => element('setting_readCnt', $input),
+                'SubjectIdx' => element('product_subject', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('cate_code', $input)

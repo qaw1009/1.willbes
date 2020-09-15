@@ -930,7 +930,7 @@
                 alert('설문정보가 없습니다.');
                 return;
             @else
-                var url = "{{front_url('/eventsurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+                var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }

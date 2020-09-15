@@ -20,7 +20,7 @@
         
         /*****************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px; z-index:1;}
+        .sky {position:fixed; top:250px; right:10px; z-index:100;}
 
         .evtTop {
             background:#C5C8CD url(https://static.willbes.net/public/images/promotion/2020/09/1804_top_bg.jpg) no-repeat center top;
@@ -158,7 +158,7 @@
 
         <div class="evtCtnsBox evtTop" >
             <span class="img01">
-                <a href="/promotion/index/cate/3019/code/1804/spidx/10?tab=1#content_1">
+                <a href="/promotion/index/cate/3019/code/1804/SsIdx/10?tab=1#content_1">
                     <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_top_img01.png" alt="신문">
                 </a>
             </span>
@@ -167,26 +167,26 @@
             <div class="evtMenu" id="evtMenu">                
                 <ul>
                     <li>
-                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=1#content_1') }}">
+                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
                             <span>행정/세무/외영직</span>
                             <div class="NSK-Black">적중모의고사 무료</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/' . (empty($arr_promotion_params['SpIdx']) === false ? $arr_promotion_params['SpIdx'] : '') . '?tab=2#content_2') }}">
+                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
                             <span>경쟁률 및 체감난이도</span>
                             <div class="NSK-Black">지난 시험 완벽 분석</div>				
                         </a>
                     </li>
                     <li>
-                        {{-- <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/2?tab=3#content_3') }}">--}}
-                        <a id='tab3' href="javascript:alert('9.26(토) 오픈!')">
+                        {{--<a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/SsIdx/2?tab=3#content_3') }}">--}}
+                         <a id='tab3' href="javascript:alert('9.26(토) 오픈!')">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>
                     </li>     
                     <li>
-                        {{-- <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/spidx/2?tab=4#content_4') }}">--}}
+                        {{-- <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1804/SsIdx/2?tab=4#content_4') }}">--}}
                         <a id='tab4' href="javascript:alert('9.28(월) 오픈!')">
                             <span>2020 국가직 7급</span>
                             <div class="NSK-Black">기출해설강의</div>
@@ -813,7 +813,7 @@
 
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
             <div class="tx-center">
@@ -831,13 +831,13 @@
             </div>
             -->
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_03.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_03.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -847,7 +847,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_04_01.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_04_01.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
@@ -928,11 +928,11 @@
         }
 
         function pullOpen(){
-            @if(empty($arr_promotion_params['SpIdx']) === true)
+            @if(empty($arr_promotion_params['SsIdx']) === true)
                 alert('설문정보가 없습니다.');
                 return;
             @else
-                var url = "{{front_url('/survey/index/' . $arr_promotion_params['SpIdx'])}}";
+                var url = "{{front_url('/survey/index/' . $arr_promotion_params['SsIdx'])}}";
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }

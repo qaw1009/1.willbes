@@ -91,7 +91,7 @@ select option:before {height:20px}
                 </ul>
             </div>
             <ul>
-                <li style="font-weight:bold;font-size:15px;">* 본인독시실 수강증 (필수)</li>
+                <li style="font-weight:bold;font-size:15px;">* 본인독서실 수강증 (필수)</li>
                 <li>* 재직증명서, 경찰 공무원 신분증 뒷면 등</li>
                 <li>* 인증 신청 후 24시간 이내에 승인 처리</li>
                 <li>* 인증시간: 오후 4시 이전 요청 시, 당일 승인 | 오후 4시 이후 요청 시 익일 승인</li>

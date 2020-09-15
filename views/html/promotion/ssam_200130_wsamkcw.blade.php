@@ -27,7 +27,7 @@
         <div class="evtCtnsBox ev01">
             @include('html.promotion.ssam_200130_skybanner')
             <div class="evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_top.jpg" alt="전공수학 김철홍" usemap="#Mapkcw01" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_top.jpg" alt="교육학 김차웅" usemap="#Mapkcw01" border="0" />
                 <map name="Mapkcw01" id="Mapkcw01">
                   <area shape="rect" coords="3,819,387,916" href="#none" alt="적중증거자료영상보기" />
                   <area shape="rect" coords="417,820,609,917" href="#none" alt="증거자료다운받기" />

@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline">
+                    <div class="col-md-4 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                         <span id="selected_category" class="pl-10">
                             @if(isset($data['CateCodes']) === true)
@@ -62,6 +62,16 @@
                             @endif
                         </span>
                     </div>
+                    @if(empty($arr_swich['create']['lecture_start_date']) === false)
+                        @php
+                            $lecture_start_date = preg_replace("/[^0-9]*/s", "", $data['Title']);
+                            $lecture_start_date = date("Y-m-d", strtotime( $lecture_start_date ) );
+                        @endphp
+                        <label class="control-label col-md-1-1 d-line" for="lecture_start_date">날짜 선택<span class="required">*</span></label>
+                        <div class="col-md-4 ml-12-dot item form-inline">
+                            <input type="text" name="lecture_start_date" id="lecture_start_date" value="{{ $lecture_start_date }}" class="form-control datepicker" title="날짜" style="width:100px;" >
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group">
@@ -148,6 +158,17 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            // 날짜 선택
+            $("#lecture_start_date").focusout(function (){
+                var s_date = $(this).val();
+                var week = ['일', '월', '화', '수', '목', '금', '토'];
+                var day_of_week = week[new Date(s_date).getDay()];
+                var r_date = s_date.replace(/[^0-9]/g, '');
+
+                s_date = r_date.replace(/(\d{4})(\d{2})(\d{2})/, '$1년$2월$3일');
+                $("#title").val(s_date + ' (' + day_of_week + ')');
+            });
+
             //editor load
             var $editor_profile = new cheditor();
             $editor_profile.config.editorHeight = '170px';

@@ -19,6 +19,42 @@ class OfflineBoard extends BaseBoard
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
     ];
+    private $_on_off_swich = [
+        '2017' => [                                  // 임용[온라인]
+            'create' => [                            // 등록 항목 설정
+                'lecture_start_date' => 'show',
+            ],
+            'list' => [                             // 리스트 항목 설정
+                'CateCode' => '카테고리',
+                'Title' => '제목',
+                'AttachRealFileName' => '첨부',
+                'RegType' => '등록자',
+                'RegDatm' => '등록일',
+                'ReplyStatusCcdName' => '답변상태',
+                'ReplyRegAdminName' => '답변자',
+                'ReplyRegDatm' => '답변일',
+                'IsPublic' => '공개',
+                'ReadCnt' => '조회수',
+            ],
+        ],
+        '2018' => [                                  // 임용[학원]
+            'create' => [                            // 등록 항목 설정
+                'lecture_start_date' => 'show',
+            ],
+            'list' => [                             // 리스트 항목 설정
+                'CateCode' => '카테고리',
+                'Title' => '제목',
+                'AttachRealFileName' => '첨부',
+                'RegType' => '등록자',
+                'RegDatm' => '등록일',
+                'ReplyStatusCcdName' => '답변상태',
+                'ReplyRegAdminName' => '답변자',
+                'ReplyRegDatm' => '답변일',
+                'IsPublic' => '공개',
+                'ReadCnt' => '조회수',
+            ],
+        ],
+    ];
 
     public function __construct()
     {
@@ -176,6 +212,7 @@ class OfflineBoard extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
+        $arr_swich = null;
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
@@ -226,7 +263,8 @@ class OfflineBoard extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'arr_swich' => element($this->_reqG('site_code'),$this->_on_off_swich)
         ]);
     }
 

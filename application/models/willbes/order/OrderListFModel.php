@@ -331,6 +331,8 @@ class OrderListFModel extends BaseOrderFModel
                     on O.OrderIdx = OP.OrderIdx
                 inner join ' . $this->_table['my_lecture'] . ' as ML
                     on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx
+                inner join ' . $this->_table['product_lecture'] . ' as PL
+                    on OP.ProdCode = PL.ProdCode
             where O.MemIdx = ?
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"	
                 and ML.ProdCodeSub in ?            

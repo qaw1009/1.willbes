@@ -27,7 +27,7 @@
         }
         .evtTop > span { position:absolute; left:50%; z-index:10}
         .evtTop span.img01 {top:770px; margin-left:-700px; width:465px; animation:iptimg1 1s ease-in;-webkit-animation:iptimg1 1s ease-in;}
-        .evtTop span.img02 {top:750px; margin-left:250px; width:418px; animation:iptimg2 1s ease-in;-webkit-animation:iptimg2 1s ease-in;}
+        .evtTop span.img02 {top:775px; margin-left:250px; width:418px; animation:iptimg2 1s ease-in;-webkit-animation:iptimg2 1s ease-in;}
         @@keyframes iptimg1{
         from{margin-left:-1200px; opacity: 0;}
         to{margin-left:-700px; opacity: 1;}
@@ -50,16 +50,18 @@
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
-            display:block; text-align:center; padding:30px 0; color:#fff; font-size:24px; 
-            background:#869fbd; border:1px solid #869FF2; border-bottom:0; margin-right:4px
+            display:block; text-align:center; padding:30px 0; color:#eeeded; font-size:24px; 
+            background:#869fbd;border-bottom:0; margin-right:4px
         }  
         .evtMenu li:last-child a {margin:0}
         .evtMenu li a span {font-size:16px}
-        .evtMenu li a div {margin-top:8px;color:#3b6aa4}
+        .evtMenu li a div {margin-top:8px;color:#eeeded}
         .evtMenu li:hover a,
         .evtMenu li a.active {background:#fff; color:#363636; border:1px solid #fff;}
         .evtMenu li:hover a span,
         .evtMenu li a.active span {color:#363636}
+        .evtMenu li:hover a div,
+        .evtMenu li a.active div {color:#3b6aa4}
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
@@ -811,12 +813,12 @@
 
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.eventsurvey.show_graph_partial')
 
             <div class="tx-center">
                 <a href="javascript:pullOpen();">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_btn02.png" title="설문하기" />
                 </a>
             </div>
 
@@ -829,13 +831,13 @@
             </div>
             -->
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_03.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_03_03.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -845,7 +847,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2020/06/1804_04_01.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2020/09/1804_04_01.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)

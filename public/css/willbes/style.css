@@ -4360,7 +4360,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     float: left;
 }
 .LecViewTable .listTable thead tr td dl dt .row-line {
-    margin: 14px;
+    margin:0 14px;
 }
 
 .LecViewTable .w-file a {
@@ -4455,10 +4455,15 @@ form .LeclistTable .evtTable tr td a.w-del {
     padding: 20px;
     line-height: 16px;
 }
-
+.LecWriteTable ul.attach li {line-height: 1.5; margin-bottom: 10px;}
+.LecWriteTable ul.attach li:last-child {margin:0}
 .LecWriteTable ul.attach li .filetype {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
+
+.LecWriteTable .info { height: 200px; overflow-y: auto; line-height: 1.5;margin:20px 0 10px; border:1px solid #ccc; padding:20px}
+.LecWriteTable .info h5 {color:#333; font-weight: bold; margin-bottom:10px}
+.LecWriteTable .info li {margin-bottom:10px; list-style: disc; margin-left:20px}
 .filetype {
     clear: both;
     position: relative;
@@ -9091,7 +9096,7 @@ table.PassZoneTable .w-data {
     line-height: 22px;
 }
 .EditWriteTable ul.attach li .filetype {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .EditWriteTable ul.attach li .filetype .file-text {
     width: 390px;

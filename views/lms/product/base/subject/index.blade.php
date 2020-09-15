@@ -50,7 +50,7 @@
                     <th>등록일</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="sortable_order_num">
                 @foreach($data as $row)
                     <tr>
                         <td>{{ $loop->index }}</td>
@@ -72,6 +72,7 @@
             </form>
         </div>
     </div>
+    <script src="/public/vendor/jquery/v.1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -82,9 +83,12 @@
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
                 ajax: false,
-                paging: false,
+                paging: true,
+                pageLength: 100,
+                lengthMenu: [[10, 20, 50, 100, 200], [10, 20, 50, 100, 200]],
                 searching: true,
                 buttons: [
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬번호초기화', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-order-num-reset hide' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder hide' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 과목 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
@@ -94,12 +98,51 @@
             $datatable.on('draw', function() {
                 if ($search_form.find('input[name="search_site_code"]').val() !== '') {
                     $('.btn-reorder').removeClass('hide');
+                    $('.btn-order-num-reset').removeClass('hide');
                     $list_form.find('input[name="order_num"]').prop('readonly', false);
                 } else {
                     $('.btn-reorder').addClass('hide');
+                    $('.btn-order-num-reset').addClass('hide');
                     $list_form.find('input[name="order_num"]').prop('readonly', true);
                 }
             });
+
+            // 정렬번호 초기화
+            $('.btn-order-num-reset').on('click', function() {
+                if (!confirm('정렬번호를 현재 순서로 초기화하시겠습니까?\n적용하시려면 정렬변경 버튼을 클릭해 주세요.')) {
+                    return;
+                }
+
+                var $order_num = $list_form.find('input[name="order_num"]');
+                $order_num.each(function(idx) {
+                    $(this).val(idx + 1);
+                });
+            });
+
+            // 정렬변경 drag & drop
+            $('#sortable_order_num').sortable({
+                placeholder: 'bg-info',
+                cursor: 'move',
+                start: function(e, ui) {
+                    ui.item.data('start_pos', ui.item.index());
+                },
+                stop: function(e, ui) {
+                    if ($search_form.find('input[name="search_site_code"]').val() === '') {
+                        alert('전체 탭에서는 정렬순서를 변경하실 수 없습니다.');
+                        $(this).sortable('cancel');
+                        return false;
+                    }
+
+                    // 전체 정렬번호 재설정
+                    var $order_num = $list_form.find('input[name="order_num"]');
+                    $order_num.each(function(idx) {
+                        $(this).val(idx + 1);
+                    });
+
+                    // 이동위치 표시
+                    $order_num.eq(ui.item.index()).addClass('bg-red');
+                }
+            }).disableSelection();
 
             // 순서 변경
             $('.btn-reorder').on('click', function() {

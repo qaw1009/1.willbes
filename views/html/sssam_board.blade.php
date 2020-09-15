@@ -292,11 +292,11 @@
                                                     - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은
                                                     이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
-                                            <label class="mr10"><input type="radio"> 동의함</label> <label><input type="radio"> 동희하지 않습니다.</label>
+                                            </ul>                                        
+                                            <div>
+                                                위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
+                                                <label class="mr10"><input type="radio"> 동의함</label> <label><input type="radio"> 동희하지 않습니다.</label>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

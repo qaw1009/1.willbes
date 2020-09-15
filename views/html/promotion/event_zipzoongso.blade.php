@@ -80,7 +80,7 @@ select option:before {height:20px}
                     <li>
                         <input type="hidden" name="WorkType" value="경찰공무원">
                         <label for="Affiliation">지점</label> <input type="text" id="Affiliation" name="Affiliation" class="iptNm" maxlength="30">
-                        <label for="Affiliation">준비 직렬</label> <input type="text" id="Position" name="Position" class="iptNm" maxlength="30">
+                        <label for="Affiliation">준비 직렬</label> <input type="text" id="Position" name="Position" class="iptNm" maxlength="30"> 예) 일반, 경행, 승진, 해경
                     </li>
                     <li>
                         <ul class="attach">

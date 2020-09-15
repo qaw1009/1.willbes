@@ -22,7 +22,7 @@
         /************************************************************/
 
         .wb_top_banner {background:#0A0A0A;}    
-        .wb_top {background:#F830C7 url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
+        .wb_top {background:#63553B url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
 
         .wb_branch {background:#fef51e;color:#000;position:relative;height:50px;} 
         .wb_branch .benefitBox {position:absolute; top:0; left:0; width:100%; z-index:1;line-height:50px;}

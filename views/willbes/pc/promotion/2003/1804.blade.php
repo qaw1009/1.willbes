@@ -158,7 +158,7 @@
 
         <div class="evtCtnsBox evtTop" >
             <span class="img01">
-                <a href="/promotion/index/cate/3019/code/1804/SsIdx/10?tab=1#content_1">
+                <a href="/promotion/index/cate/3019/code/1804/SsIdx/{{$arr_promotion_params['SsIdx'] or ''}}?tab=1#content_1">
                     <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_top_img01.png" alt="신문">
                 </a>
             </span>
@@ -812,7 +812,7 @@
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1804_03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
-            @include('willbes.pc.survey.show_graph_partial')
+            @include('willbes.pc.eventsurvey.show_graph_partial')
 
             <div class="tx-center">
                 <a href="javascript:pullOpen();">

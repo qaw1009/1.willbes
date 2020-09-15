@@ -252,6 +252,7 @@ class StudentModel extends WB_Model
                 IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
                 P1.ProdName, P1.ProdCode, P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub
                 ,IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
+                ,IF(PLR.LrCode IS NOT NULL, REPLACE(fn_order_lectureroom_seat_data(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, P2.ProdCode), '::', '-'), '') AS LectureRoomSeatNo
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -277,6 +278,7 @@ class StudentModel extends WB_Model
                         left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
+                        left join lms_product_r_lectureroom AS PLR ON P2.ProdCode = PLR.ProdCode and PLR.IsStatus = 'Y'    
                     WHERE (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)
         ";
 
@@ -311,6 +313,7 @@ class StudentModel extends WB_Model
             OP.DiscReason, (SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
             ,IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
             ,MI.ZipCode, MI.Addr1, fn_dec(MI.Addr2Enc) AS Addr2
+            ,IF(PLR.LrCode IS NOT NULL, REPLACE(fn_order_lectureroom_seat_data(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, P2.ProdCode), '::', '-'), '') AS LectureRoomSeatNo
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -332,7 +335,8 @@ class StudentModel extends WB_Model
                         join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode     
                         left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx     
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
-                        left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx              
+                        left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
+                        left join lms_product_r_lectureroom AS PLR ON P2.ProdCode = PLR.ProdCode and PLR.IsStatus = 'Y'              
                     WHERE (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)
         ";
 

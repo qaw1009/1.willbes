@@ -149,6 +149,7 @@
                     <th>종합반여부</th>
                     <th>주문번호</th>
                     <th>수강증번호</th>
+                    <th>좌석번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
                     <th>결제금액</th>
@@ -208,6 +209,7 @@
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호
                     {'data' : 'CertNo'},// 결제루트
+                    {'data' : 'LectureRoomSeatNo'},// 좌석정보
                     {'data' : 'PayRouteCcd_Name'},// 결제루트
                     {'data' : 'PayMethodCcd_Name'}, // 결제수단
                     {'data' : 'Price', 'render' : function(data, type, row, meta) {

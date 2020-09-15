@@ -22,8 +22,8 @@
     <li><a href='ssam_191128_wsam32'>전공국어 <strong>송원영</strong></a></li>
     <li><a href='ssam_190924_wsam22'>전공국어 <strong>이원근</strong></a></li>
     <li><a href='ssam_191212_wsamkbm'>전공국어 <strong>권보민</strong></a></li>
-    <li><a href='#none'>전공영어 <strong>김유석</strong></a></li>
-    <li><a href='#none'>전공영어 <strong>김영문</strong></a></li>
+    <li><a href='ssam_190924_wsam33'>전공영어 <strong>김유석</strong></a></li>
+    <li><a href='ssam_200130_wsamkym'>전공영어 <strong>김영문</strong></a></li>
     <li><a href='#none'>전공영어 <strong>공훈</strong></a></li>
     <li><a href='#none'>전공수학 <strong>김철홍</strong></a></li>
     <li><a href='#none'>수학교육론 <strong>박태영</strong></a></li>

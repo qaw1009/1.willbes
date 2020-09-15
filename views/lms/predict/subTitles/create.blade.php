@@ -129,12 +129,15 @@
 
 
                     <div class="col-md-5">
-                        <div class="form-group" id="btn_ui_box" ><div class="col-md-12"><span class="btn">[자막유형 UI참조]</span></div></div>
+                        <div class="form-group">
+                            <div class="col-md-2"><span class="btn" id="btn_ui_box">[자막유형 UI참조]</span></div>
+                            <div class="col-md-2"><span class="btn" id="sample_download">[유형별 셈플다운로드]</span></div>
+                        </div>
                         <div id="ui_box">
                             @foreach($arr_talkshow_contents_type as $key => $val)
                                 <div class="form-group">
                                     <div class="btn btn-content-type" data-id="{{$key}}">
-                                        <label class="btn control-label col-md-1-1">유형{{$key}}</label>
+                                        <label class="btn control-label col-md-1-1">{{$val}}</label>
                                         <div class="col-md-12">
                                             <img src="https://static.willbes.net/public/images/promotion/common/talkshow_type{{$key}}.png" width="100%"/>
                                         </div>
@@ -242,6 +245,21 @@
                     }
                 }, showValidateError, null, false, 'alert');
             });
+
+            //목록
+            $('.btn_list').click(function() {
+                location.href='{{ site_url("/predict/subTitles") }}/' + getQueryString();
+            });
+
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/predict/subTitles/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                window.open(_url, '_blank');
+            });
+
+            $('#sample_download').click(function() {
+                var _url = '{{ site_url("/predict/subTitles/sampleDownload") }}/';
+                window.open(_url, '_blank');
+            });
         });
 
         function addValidate()
@@ -254,15 +272,5 @@
 
             return true;
         }
-
-        //목록
-        $('.btn_list').click(function() {
-            location.href='{{ site_url("/predict/subTitles") }}/' + getQueryString();
-        });
-
-        $('.file-download').click(function() {
-            var _url = '{{ site_url("/predict/subTitles/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
-            window.open(_url, '_blank');
-        });
     </script>
 @stop

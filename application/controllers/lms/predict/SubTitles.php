@@ -6,7 +6,8 @@ class SubTitles extends \app\controllers\BaseController
     protected $models = array('predict/predict');
     protected $helpers = array('download');
     private $_talkshow_contents_type = [
-        '1' => '유형1'
+        '0' => '이미지'
+        ,'1' => '유형1'
         ,'2' => '유형2'
         ,'3' => '유형3'
         ,'4' => '유형4'
@@ -21,6 +22,7 @@ class SubTitles extends \app\controllers\BaseController
     public function index()
     {
         $this->load->view("predict/subTitles/index", [
+            'talkshow_contents_type' => json_encode($this->_talkshow_contents_type)
         ]);
     }
 
@@ -134,5 +136,11 @@ class SubTitles extends \app\controllers\BaseController
         $file_name = $this->_reqG('fname');
 
         public_download($file_path, $file_name);
+    }
+
+    public function sampleDownload()
+    {
+        $file_path = STORAGEPATH . 'resources/sample/sample_talkshow.zip';
+        force_download($file_path, null);
     }
 }

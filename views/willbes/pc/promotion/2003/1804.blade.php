@@ -153,7 +153,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky">
-            <a href="https://pass.willbes.net/promotion/index/cate/3020/code/1750" target="_blank">
+            <a href="https://pass.willbes.net/promotion/index/cate/3092/code/1836" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1804_sky.png" alt="" />
             </a>
         </div>         

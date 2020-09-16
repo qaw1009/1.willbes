@@ -595,6 +595,7 @@ class BoardModel extends WB_Model
             case "mocktest/notice" :
             case "predictNotice" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_predict} AS PP ON LB.PredictIdx = PP.PredictIdx AND PP.IsUse ='Y'
                 ";
@@ -1818,31 +1819,6 @@ class BoardModel extends WB_Model
             return error_result($e);
         }
         return true;
-    }
-
-    /**
-     * 사이트별 과목 조회
-     * @param array $arr_site_code
-     * @return array
-     */
-    public function listSiteProductSubject($arr_site_code = [])
-    {
-        $column = 'SubjectIdx, SiteCode, SubjectName';
-        $arr_condition = [
-            'EQ' => ['IsStatus' => 'Y', 'IsUse' => 'Y'],
-            'IN' => ['SiteCode' => array_values($arr_site_code)]
-        ];
-
-        $result = $this->_conn->getListResult($this->_table_product_subject, $column, $arr_condition, null, null, [
-            'OrderNum'=>'ASC','SubjectIdx'=>'ASC'
-        ]);
-
-        $data = [];
-        foreach ($result as $key => $val){
-            $data[$val['SiteCode']][] = $val;
-        }
-
-        return $data;
     }
 
 }

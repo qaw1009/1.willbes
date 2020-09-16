@@ -62,16 +62,33 @@
                             @endif
                         </span>
                     </div>
-                    @if(empty($arr_swich['product_subject']) === false)
-                        <div class="product_subject_wrap hide">
-                            <label class="control-label col-md-1-1 d-line" for="product_subject">과목<span class="required">*</span></label>
+                    @if(empty($arr_swich['create']['subject']) === false)
+                        <div class="arr_subject_wrap @if($method == 'POST') hide @endif">
+                            <label class="control-label col-md-1-1 d-line" for="subject_idx">과목<span class="required">*</span></label>
                             <div class="col-md-4 ml-12-dot item form-inline">
-                                <select class="form-control" id="product_subject" name="product_subject" required="required" title="과목">
+                                <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required">
+                                    <option value="">과목명</option>
+                                    @if(empty($arr_subject) === false)
+                                        @foreach($arr_subject as $row)
+                                            <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['SubjectIdx'] == $data['SubjectIdx'])) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
                     @endif
                 </div>
+
+                @if(empty($arr_swich['create']['mem_name']) === false)
+                    <div class="arr_subject_wrap @if($method == 'POST') hide @endif">
+                        <div class="form-group">
+                            <label class="control-label col-md-1-1" for="reg_mem_name">회원명<span class="required">*</span></label>
+                            <div class="form-inline col-md-4">
+                                <input type="text" id="reg_mem_name" name="reg_mem_name" required="required" class="form-control" maxlength="46" title="회원명" value="{{$data['RegMemName']}}">
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">BEST</label>
@@ -169,9 +186,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-
-            // 과목 리스트 조회(임용)
-            fn_product_subject($("#site_code option:selected").val());
+            $regi_form.find('select[name="subject_idx"]').chained("#site_code");
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -180,7 +195,12 @@
                 $('#selected_category').html('');
 
                 var obj_val = $(this).val();
-                fn_product_subject(obj_val);
+                var subject_swich = {!! json_encode($arr_swich['site_code']) !!};
+                if(subject_swich.indexOf(obj_val) !== -1){
+                    $(".arr_subject_wrap").removeClass('hide');
+                }else{
+                    $(".arr_subject_wrap").addClass('hide');
+                }
             });
 
             // 카테고리 검색
@@ -269,30 +289,5 @@
             });
 
         });
-
-        // 과목 리스트 조회(임용)
-        function fn_product_subject(obj_val){
-            $("#product_subject").html('');
-            $(".product_subject_wrap").addClass('hide');
-
-            @if(empty($product_subject) === false)
-                var json_data = {!! json_encode($product_subject) !!};
-
-                if (typeof json_data[obj_val] === 'undefined') {
-                    return;
-                }
-
-                var subject_idx = "{{ $data['SubjectIdx'] or ''}}";
-                var html = "<option value=''>과목</option>";
-                $.each(json_data[obj_val], function(key, data) {
-                    var selected = "";
-                    if(data.SubjectIdx == subject_idx) selected = "selected";
-                    html += "<option value='" + data.SubjectIdx + "' " + selected + ">" + data.SubjectName + "</option>";
-                });
-
-                $("#product_subject").html(html);
-                $(".product_subject_wrap").removeClass('hide');
-            @endif
-        }
     </script>
 @stop

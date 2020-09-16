@@ -49,7 +49,7 @@
                                     <select id="s_subject" name="s_subject" title="과목" class="seleLecA {{$arr_swich['subject'] or 'd_none'}}" onchange="goUrl('s_subject',this.value)">
                                         <option value="">과목</option>
                                         @foreach($arr_base['subject'] as $key => $val)
-                                            <option value="{{$key}}" @if(element('s_subject', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                                            <option value="{{$val['SubjectIdx']}}" @if(element('s_subject', $arr_input) == $val['SubjectIdx'])selected="selected"@endif>{{$val['SubjectName']}}</option>
                                         @endforeach
                                     </select>
                                 @endif
@@ -61,6 +61,9 @@
                                         <span>검색</span>
                                     </button>
                                 </div>
+                            </div>
+                            <div class="f_right">
+                                <div class="subBtn blue NSK f_right"><a href="{{front_url($default_path.'/create?'.$get_params)}}">등록하기 ></a></div>
                             </div>
                         </div>
                         <div class="LeclistTable">
@@ -95,14 +98,14 @@
                                 <tbody>
                                 @if(empty($list))
                                     <tr>
-                                        <td class="w-list tx-center" colspan="6">등록된 내용이 없습니다.</td>
+                                        <td class="w-list tx-center" colspan="{{ empty($arr_swich['arr_table_width']) === false ? count($arr_swich['arr_table_width']) : '6' }}">등록된 내용이 없습니다.</td>
                                     </tr>
                                 @endif
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                        @if(empty($arr_base['subject']) === false && empty($arr_swich['subject']) === false)
-                                            <td>{{ empty($row['SubjectIdx']) === false ? $arr_base['subject'][$row['SubjectIdx']] : '' }}</td>
+                                        @if(empty($arr_swich['subject']) === false)
+                                            <td>{{ (empty($row['SubjectIdx']) === false && empty($arr_base['subject']) === false) ? $arr_base['subject'][$row['SubjectIdx']] : '' }}</td>
                                         @endif
                                         @if($__cfg['CampusCcdArr'] != 'N')<td class="{{$arr_swich['campus'] or ''}}"><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                         <td class="w-list tx-left pl20">

@@ -479,6 +479,19 @@
 </div>
 <!-- End Container -->
 
+{{--//유튜브 모달팝업--}}
+<div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="position:fixed; top:100px; left:50%; width:700px; height:555px; margin-left:-350px; display: block;">
+    <div class="Layer-Cont">
+        <iframe width="700" height="555" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <ul class="btnWrapbt popbtn mt10">
+        <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="" data-popup-hide-days="">하루 보지않기</a></li>
+        <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="" data-popup-hide-days="">Close</a></li>
+    </ul>
+</div>
+<div id="PopupBackWrap" class="willbes-Layer-Black" style="display: block;"></div>
+{{--유튜브 모달팝업//--}}
+
 <div class="mainBottomBn">
     <div>
         <a href="#none">

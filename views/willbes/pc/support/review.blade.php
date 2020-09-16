@@ -38,10 +38,18 @@
                                     @endif
                                 @endif
                                 @if(empty($arr_base['campus']) === false)
-                                    <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)">
+                                    <select id="s_campus" name="s_campus" title="campus" class="seleCampus {{$arr_swich['campus'] or ''}}" onchange="goUrl('s_campus',this.value)">
                                         <option value="">캠퍼스</option>
                                         @foreach($arr_base['campus'] as $row)
                                             <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CcdName']}}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
+                                @if(empty($arr_base['subject']) === false)
+                                    <select id="s_subject" name="s_subject" title="과목" class="seleLecA {{$arr_swich['subject'] or 'd_none'}}" onchange="goUrl('s_subject',this.value)">
+                                        <option value="">과목</option>
+                                        @foreach($arr_base['subject'] as $key => $val)
+                                            <option value="{{$key}}" @if(element('s_subject', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                                         @endforeach
                                     </select>
                                 @endif
@@ -58,19 +66,27 @@
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
-                                    <col style="width: 65px;">
-                                    @if($__cfg['CampusCcdArr'] != 'N')<col style="width: 110px;">@endif
-                                    <col style="width: 445px;">
-                                    <col style="width: 65px;">
-                                    <col style="width: 100px;">
-                                    <col style="width: 90px;">
+                                    @if(empty($arr_swich['arr_table_width']) === false)
+                                        @foreach($arr_swich['arr_table_width'] as $width)
+                                            <col style="width: {{$width}}px;">
+                                        @endforeach
+                                    @else
+                                        <col style="width: 65px;">
+                                        @if($__cfg['CampusCcdArr'] != 'N')<col style="width: 110px;">@endif
+                                        <col style="width: 445px;">
+                                        <col style="width: 65px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 90px;">
+                                    @endif
                                 </colgroup>
                                 <thead>
                                 <tr>
                                     <th>No<span class="row-line">|</span></th>
-                                    @if($__cfg['CampusCcdArr'] != 'N')<th>캠퍼스<span class="row-line">|</span></th>@endif
+                                    <th class="{{$arr_swich['subject'] or 'd_none'}}">과목<span class="row-line">|</span></th>
+                                    @if($__cfg['CampusCcdArr'] != 'N')<th class="{{$arr_swich['campus'] or ''}}">캠퍼스<span class="row-line">|</span></th>@endif
                                     <th>제목<span class="row-line">|</span></th>
                                     <th>첨부<span class="row-line">|</span></th>
+                                    <th class="{{$arr_swich['name'] or 'd_none'}}">작성자<span class="row-line">|</span></th>
                                     <th>작성일<span class="row-line">|</span></th>
                                     <th>조회수</th>
                                 </tr>
@@ -85,7 +101,10 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                        @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
+                                        @if(empty($arr_base['subject']) === false && empty($arr_swich['subject']) === false)
+                                            <td>{{ empty($row['SubjectIdx']) === false ? $arr_base['subject'][$row['SubjectIdx']] : '' }}</td>
+                                        @endif
+                                        @if($__cfg['CampusCcdArr'] != 'N')<td class="{{$arr_swich['campus'] or ''}}"><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                         <td class="w-list tx-left pl20">
                                             <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                                 @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
@@ -96,6 +115,7 @@
                                                 <img src="{{ img_url('prof/icon_file.gif') }}">
                                             @endif
                                         </td>
+                                        <td class="{{$arr_swich['name'] or 'd_none'}}">{!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}</td>
                                         <td class="w-date">{{$row['RegDatm']}}</td>
                                         <td class="w-click">{{$row['TotalReadCnt']}}</td>
                                     </tr>

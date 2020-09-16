@@ -4460,10 +4460,11 @@ form .LeclistTable .evtTable tr td a.w-del {
 .LecWriteTable ul.attach li .filetype {
     margin-bottom: 5px;
 }
-
-.LecWriteTable .info { height: 200px; overflow-y: auto; line-height: 1.5;margin:20px 0 10px; border:1px solid #ccc; padding:20px}
-.LecWriteTable .info h5 {color:#333; font-weight: bold; margin-bottom:10px}
+.LecWriteTable .info h5 {color:#333; font-weight: bold;}
+.LecWriteTable .info ul {height: 150px; overflow-y: auto; line-height: 1.5; border:1px solid #ccc; padding:20px}
 .LecWriteTable .info li {margin-bottom:10px; list-style: disc; margin-left:20px}
+.LecWriteTable .info div input {vertical-align: middle;}
+
 .filetype {
     clear: both;
     position: relative;
